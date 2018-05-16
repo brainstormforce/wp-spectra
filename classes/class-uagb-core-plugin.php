@@ -40,41 +40,7 @@ class UAGB_Core_Plugin {
 	 */
 	public function __construct() {
 
-		spl_autoload_register( array( $this, 'autoload' ) );
-
 		$this->includes();
-
-		$this->setup_actions_filters();
-	}
-
-	/**
-	 * AutoLoad
-	 *
-	 * @since 1.0.0
-	 * @param string $class class.
-	 */
-	public function autoload( $class ) {
-
-		if ( 0 !== strpos( $class, __NAMESPACE__ ) ) {
-			return;
-		}
-
-		$class_to_load = $class;
-
-		if ( ! class_exists( $class_to_load ) ) {
-			$filename = strtolower(
-				preg_replace(
-					[ '/^' . __NAMESPACE__ . '\\\/', '/([a-z])([A-Z])/', '/_/', '/\\\/' ],
-					[ '', '$1-$2', '-', DIRECTORY_SEPARATOR ],
-					$class_to_load
-				)
-			);
-			$filename = UAGB_DIR . $filename . '.php';
-
-			if ( is_readable( $filename ) ) {
-				include( $filename );
-			}
-		}
 	}
 
 	/**
@@ -83,14 +49,7 @@ class UAGB_Core_Plugin {
 	 * @since 1.0.0
 	 */
 	private function includes() {
-	}
-
-	/**
-	 * Setup Actions Filters.
-	 *
-	 * @since 1.0.0
-	 */
-	private function setup_actions_filters() {
+		require( UAGB_DIR . 'classes/class-uagb-init-blocks.php' );
 	}
 }
 

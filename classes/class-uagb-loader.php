@@ -77,6 +77,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			}
 
 			$this->load_textdomain();
+
+			require( UAGB_DIR . 'classes/class-uagb-core-plugin.php' );
 		}
 
 		/**
