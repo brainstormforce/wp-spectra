@@ -7,7 +7,7 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
 const uagb_el = wp.element.createElement;
 
 // Visit https://wordpress.org/gutenberg/handbook/block-api/ to learn about Block API
-registerBlockType( 'ultimate-gutenberg/advanced-heading', {
+registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'UAGB Advanced heading' ),
 
 	icon: 'format-status',
