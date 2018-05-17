@@ -1,32 +1,35 @@
-( function( wp ) {
-	var el = wp.element.createElement;
-	var __ = wp.i18n.__;
+//  Import CSS.
+import './style.scss'
+import './editor.scss';
 
-	// Visit https://wordpress.org/gutenberg/handbook/block-api/ to learn about Block API
-	wp.blocks.registerBlockType( 'ultimate-gutenberg/advanced-heading', {
-		title: __( 'UAGB Advanced heading' ),
+const { __ } = wp.i18n; // Import __() from wp.i18n
+const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
+const uagb_el = wp.element.createElement;
 
-		icon: 'format-status',
+// Visit https://wordpress.org/gutenberg/handbook/block-api/ to learn about Block API
+registerBlockType( 'ultimate-gutenberg/advanced-heading', {
+	title: __( 'UAGB Advanced heading' ),
 
-		category: 'formatting',
+	icon: 'format-status',
 
-		// Remove to make block editable in HTML mode.
-		supportHTML: true,
+	category: 'formatting',
 
-		edit: function( props ) {
-			return el(
-				'p',
-				{ className: props.className },
-				__( 'Ultimate Addons For Gutenberg!' )
-			);
-		},
+	// Remove to make block editable in HTML mode.
+	supportHTML: true,
 
-		save: function() {
-			return el(
-				'p',
-				{},
-				__( 'Ultimate Addons For Gutenberg!' )
-			);
-		}
-	} );
-} )( window.wp );
+	edit: function( props ) {
+		return uagb_el(
+			'p',
+			{ className: props.className },
+			__( 'Ultimate Addons For Gutenberg!' )
+		);
+	},
+
+	save: function( props ) {
+		return uagb_el(
+			'p',
+			{},
+			__( 'Ultimate Addons For Gutenberg!' )
+		);
+	}
+} );
