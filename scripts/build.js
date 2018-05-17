@@ -25,12 +25,7 @@ const chalk = require( 'chalk' );
 const webpack = require( 'webpack' );
 const fileSize = require( 'filesize' );
 const gzipSize = require( 'gzip-size' );
-const resolvePkg = require( 'resolve-pkg' );
 const config = require( '../config/webpack.config.prod' );
-const cgbDevUtilsPath = resolvePkg( 'cgb-dev-utils', { cwd: __dirname } );
-const clearConsole = require( cgbDevUtilsPath + '/clearConsole' );
-const formatWebpackMessages = require( cgbDevUtilsPath +
-	'/formatWebpackMessages' );
 
 // Build file paths.
 const theCWD = process.cwd();
@@ -50,7 +45,7 @@ const getFileSize = filePath => {
 	return fileSize( gzipSize.sync( fs.readFileSync( filePath ) ) );
 };
 
-clearConsole();
+// clearConsole();
 
 // Init the spinner.
 const spinner = new ora( { text: '' } );
@@ -63,19 +58,25 @@ const spinner = new ora( { text: '' } );
  * @param {json} webpackConfig config
  */
 async function build( webpackConfig ) {
+
 	// Compiler Instance.
 	const compiler = await webpack( webpackConfig );
 
 	// Run the compiler.
 	compiler.run( ( err, stats ) => {
-		clearConsole();
+		// clearConsole();
 
-		if ( err ) {
-			return console.log( err );
-		}
+		// if ( err ) {
+		// 	return console.log( err );
+		// }
+
+		var stats_json = stats.toJson( {}, true );
+
+		console.log( stats_json.errors );
+		console.log( stats_json.warnings );
 
 		// Get the messages formatted.
-		const messages = formatWebpackMessages( stats.toJson( {}, true ) );
+		/*const messages = formatWebpackMessages( stats.toJson( {}, true ) );
 
 		// If there are errors just show the errors.
 		if ( messages.errors.length ) {
@@ -107,7 +108,7 @@ async function build( webpackConfig ) {
 				)
 			);
 			console.log( messages.warnings.join( '\n\n' ) );
-		}
+		}*/
 
 		// Start the build.
 		console.log( `\n ${ chalk.dim( 'Let\'s build and compile the files...' ) }` );
