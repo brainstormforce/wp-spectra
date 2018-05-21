@@ -15,8 +15,13 @@ const { __ } = wp.i18n;
 // Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
-	RichText,
 } = wp.blocks;
+
+const {
+	AlignmentToolbar,
+	BlockControls,
+	RichText,
+} = wp.editor
 
 // Extend component
 const { Component } = wp.element;
@@ -25,9 +30,20 @@ class UAGBAdvancedHeading extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { headingTitle, headingDesc }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { headingTitle, headingDesc, headingAlign }, isSelected, className, setAttributes } = this.props;
+
+		const headingAlignStyle = { textAlign: headingAlign };
 
 		return [
+
+			isSelected  && (
+			<BlockControls key='controls'>
+				<AlignmentToolbar
+					value={ headingAlign }
+					onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+				/>
+			</BlockControls>
+		),
 
 			<div className={ className }>
 				<RichText
@@ -36,14 +52,19 @@ class UAGBAdvancedHeading extends Component {
 					value={ headingTitle }
 					className='uagb-heading-text'
 					onChange={ ( value ) => this.props.setAttributes( { headingTitle: value } ) }
+					style={ headingAlignStyle }
 				/>
-				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
+				<div
+					className="uagb-separator-wrap"
+					style={ headingAlignStyle }
+				><div className="uagb-separator"></div></div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Write a Description' ) }
 					value={ headingDesc }
 					className='uagb-desc-text'
 					onChange={ ( value ) => this.props.setAttributes( { headingDesc: value } ) }
+					style={ headingAlignStyle }
 				/>
 			</div>
 		];
@@ -81,6 +102,10 @@ registerBlockType( 'uagb/advanced-heading', {
 		},
 		headingDesc: {
 			type: 'string',
+		},
+		headingAlign: {
+			type: 'string',
+			default: 'center',
 		},
 	},
 	/**
@@ -120,13 +145,15 @@ registerBlockType( 'uagb/advanced-heading', {
 		console.log( 'Save props' );
 		console.log( props );
 
-		const { headingTitle, headingDesc } = props.attributes;
+		const { headingTitle, headingDesc, headingAlign } = props.attributes;
+
+		const headingAlignStyle = { textAlign: headingAlign };
 
 		return (
 			<div className={ props.className }>
-				<h1 className="uagb-heading-text">{ headingTitle }</h1>
-				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
-				<p className="uagb-desc-text">{ headingDesc }</p>
+				<h1 className="uagb-heading-text" style={ headingAlignStyle }>{ headingTitle }</h1>
+				<div className="uagb-separator-wrap" style={ headingAlignStyle }><div className="uagb-separator"></div></div>
+				<p className="uagb-desc-text" style={ headingAlignStyle }>{ headingDesc }</p>
 			</div>
 		);
 	}
