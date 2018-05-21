@@ -25,7 +25,7 @@ class UAGBAdvancedHeading extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { headingTitle }, isSelected, className, setAttributes } = this.props;
+		const { attributes: { headingTitle, headingDesc }, isSelected, className, setAttributes } = this.props;
 
 		return [
 
@@ -36,6 +36,14 @@ class UAGBAdvancedHeading extends Component {
 					value={ headingTitle }
 					className='uagb-heading-text'
 					onChange={ ( value ) => this.props.setAttributes( { headingTitle: value } ) }
+				/>
+				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
+				<RichText
+					tagName="p"
+					placeholder={ __( 'Write a Description' ) }
+					value={ headingDesc }
+					className='uagb-desc-text'
+					onChange={ ( value ) => this.props.setAttributes( { headingDesc: value } ) }
 				/>
 			</div>
 		];
@@ -69,6 +77,9 @@ registerBlockType( 'uagb/advanced-heading', {
 
 	attributes: {
 		headingTitle: {
+			type: 'string',
+		},
+		headingDesc: {
 			type: 'string',
 		},
 	},
@@ -109,11 +120,13 @@ registerBlockType( 'uagb/advanced-heading', {
 		console.log( 'Save props' );
 		console.log( props );
 
-		const { headingTitle } = props.attributes;
+		const { headingTitle, headingDesc } = props.attributes;
 
 		return (
 			<div className={ props.className }>
-				<h1> { headingTitle } </h1>
+				<h1 className="uagb-heading-text">{ headingTitle }</h1>
+				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
+				<p className="uagb-desc-text">{ headingDesc }</p>
 			</div>
 		);
 	}

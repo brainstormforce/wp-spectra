@@ -14,3 +14,10 @@
   background: #a78686;
   color: #000000;
   margin: 0 auto; }
+
+.wp-block-uagb-advanced-heading .uagb-separator {
+  border-top-style: solid;
+  display: inline-block;
+  border-top-width: 2px;
+  width: 5%;
+  margin: 0px 0px 10px 0px; }
