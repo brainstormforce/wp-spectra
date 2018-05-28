@@ -20,8 +20,14 @@ const {
 const {
 	AlignmentToolbar,
 	BlockControls,
+	ColorPalette,
+	InspectorControls,
 	RichText,
 } = wp.editor
+
+const {
+    PanelColor,
+} = wp.components;
 
 // Extend component
 const { Component } = wp.element;
@@ -30,20 +36,45 @@ class UAGBAdvancedHeading extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { headingTitle, headingDesc, headingAlign }, isSelected, className, setAttributes } = this.props;
-
-		const headingAlignStyle = { textAlign: headingAlign };
+		const { attributes: { headingTitle, headingDesc, headingAlign, headingColor, subHeadingColor }, isSelected, className, setAttributes } = this.props;
 
 		return [
 
-			isSelected  && (
-			<BlockControls key='controls'>
-				<AlignmentToolbar
-					value={ headingAlign }
-					onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-				/>
-			</BlockControls>
-		),
+			isSelected && (
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ headingAlign }
+						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+					/>
+				</BlockControls>
+			),
+
+			isSelected && (
+                <InspectorControls>
+                    <PanelColor
+                        title={ __( 'Heading Color' ) }
+                        colorValue={ headingColor }
+                        initialOpen={ true }
+                    >
+                        <ColorPalette
+                            value={ headingColor }
+                            onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'Sub-Heading Color' ) }
+                        colorValue={ subHeadingColor }
+                        initialOpen={ true }
+                    >
+                        <ColorPalette
+                            value={ subHeadingColor }
+                            onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                </InspectorControls>
+            ),
 
 			<div className={ className }>
 				<RichText
@@ -51,20 +82,26 @@ class UAGBAdvancedHeading extends Component {
 					placeholder={ __( 'Write a Heading' ) }
 					value={ headingTitle }
 					className='uagb-heading-text'
-					onChange={ ( value ) => this.props.setAttributes( { headingTitle: value } ) }
-					style={ headingAlignStyle }
+					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
+					style={{ 
+						textAlign: headingAlign,
+						color: headingColor
+					}}
 				/>
 				<div
 					className="uagb-separator-wrap"
-					style={ headingAlignStyle }
+					style={{ textAlign: headingAlign }}
 				><div className="uagb-separator"></div></div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Write a Description' ) }
 					value={ headingDesc }
 					className='uagb-desc-text'
-					onChange={ ( value ) => this.props.setAttributes( { headingDesc: value } ) }
-					style={ headingAlignStyle }
+					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
+					style={{
+						textAlign: headingAlign,
+						color: subHeadingColor
+					}}
 				/>
 			</div>
 		];
@@ -107,6 +144,12 @@ registerBlockType( 'uagb/advanced-heading', {
 			type: 'string',
 			default: 'center',
 		},
+		headingColor: {
+            type: 'string',
+        },
+        subHeadingColor: {
+            type: 'string',
+        },
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -145,15 +188,13 @@ registerBlockType( 'uagb/advanced-heading', {
 		console.log( 'Save props' );
 		console.log( props );
 
-		const { headingTitle, headingDesc, headingAlign } = props.attributes;
-
-		const headingAlignStyle = { textAlign: headingAlign };
+		const { headingTitle, headingDesc, headingAlign, headingColor, subHeadingColor } = props.attributes;
 
 		return (
 			<div className={ props.className }>
-				<h1 className="uagb-heading-text" style={ headingAlignStyle }>{ headingTitle }</h1>
-				<div className="uagb-separator-wrap" style={ headingAlignStyle }><div className="uagb-separator"></div></div>
-				<p className="uagb-desc-text" style={ headingAlignStyle }>{ headingDesc }</p>
+				<h1 className="uagb-heading-text" style={{ textAlign: headingAlign, color: headingColor }}>{ headingTitle }</h1>
+				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator"></div></div>
+				<p className="uagb-desc-text" style={{ textAlign: headingAlign, color: subHeadingColor }}>{ headingDesc }</p>
 			</div>
 		);
 	}
