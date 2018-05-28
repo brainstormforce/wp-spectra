@@ -11,9 +11,11 @@
  */
 .wp-block-uagb-advanced-heading {
   padding: 5px 15px;
-  background: #a78686;
   color: #000000;
   margin: 0 auto; }
+
+.wp-block-uagb-advanced-heading .uagb-heading-text {
+  margin: 0; }
 
 .wp-block-uagb-advanced-heading .uagb-separator {
   border-top-style: solid;
@@ -21,3 +23,6 @@
   border-top-width: 2px;
   width: 5%;
   margin: 0px 0px 10px 0px; }
+
+.wp-block-uagb-advanced-heading .uagb-desc-text {
+  margin: 0; }

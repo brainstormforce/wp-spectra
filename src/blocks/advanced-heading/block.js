@@ -28,6 +28,8 @@ const {
 const {
     PanelBody,
     PanelColor,
+    SelectControl,
+    RangeControl,
 } = wp.components;
 
 // Extend component
@@ -48,6 +50,12 @@ class UAGBAdvancedHeading extends Component {
 				headingColor,
 				subHeadingColor,
 				separatorColor,
+				headingTag,
+				headFontSize,
+				subHeadFontSize,
+				headSpace,
+				separatorSpace,
+				subHeadSpace,
 			},
 		} = this.props;
 
@@ -63,8 +71,47 @@ class UAGBAdvancedHeading extends Component {
 			),
 
 			isSelected && (
-                <InspectorControls>
-                <PanelBody title={ __( 'Style Heading Settings' ) }>
+				<InspectorControls>
+				<PanelBody 
+                	title={ __( 'Typography' ) }
+                	initialOpen={ false }
+                >
+                	<SelectControl
+                        label={ __( 'Tag' ) }
+                        value={ headingTag }
+                        onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+                        options={ [
+                            { value: 'h1', label: __( 'H1' ) },
+                            { value: 'h2', label: __( 'H2' ) },
+                            { value: 'h3', label: __( 'H3' ) },
+                            { value: 'h4', label: __( 'H4' ) },
+                            { value: 'h5', label: __( 'H5' ) },
+                            { value: 'h6', label: __( 'H6' ) },
+                        ] }
+                    />
+					<RangeControl
+                        label={ __( 'Heading Font Size' ) }
+                        value={ headFontSize }
+                        onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Sub-Heading Font Size' ) }
+                        value={ subHeadFontSize }
+                        onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+				</PanelBody>
+                <PanelBody 
+                	title={ __( 'Colors' ) }
+                	initialOpen={ false }
+                >
                     <PanelColor
                         title={ __( 'Heading Color' ) }
                         colorValue={ headingColor }
@@ -99,25 +146,59 @@ class UAGBAdvancedHeading extends Component {
                         />
                     </PanelColor>
 				</PanelBody>
+				<PanelBody 
+                	title={ __( 'Spacing' ) }
+                	initialOpen={ false }
+                >
+					<RangeControl
+                        label={ __( 'Heading Spacing' ) }
+                        value={ headSpace }
+                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Separator Spacing' ) }
+                        value={ separatorSpace }
+                        onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Sub-Heading Spacing' ) }
+                        value={ subHeadSpace }
+                        onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+				</PanelBody>
                 </InspectorControls>
             ),
 
 			<div className={ className }>
 				<RichText
-					tagName="h1"
+					tagName={ headingTag }
 					placeholder={ __( 'Write a Heading' ) }
 					value={ headingTitle }
 					className='uagb-heading-text'
 					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
 					style={{ 
 						textAlign: headingAlign,
-						color: headingColor
+						fontSize: headFontSize + 'px',
+						color: headingColor,
+						marginBottom: headSpace + 'px',
 					}}
 				/>
 				<div
 					className="uagb-separator-wrap"
 					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator" style={{ borderColor: separatorColor }}></div></div>
+				><div className="uagb-separator" style={{ borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Write a Description' ) }
@@ -126,7 +207,9 @@ class UAGBAdvancedHeading extends Component {
 					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 					style={{
 						textAlign: headingAlign,
-						color: subHeadingColor
+						fontSize: subHeadFontSize + 'px',
+						color: subHeadingColor,
+						marginBottom: subHeadSpace + 'px',
 					}}
 				/>
 			</div>
@@ -179,6 +262,25 @@ registerBlockType( 'uagb/advanced-heading', {
         separatorColor: {
         	type: 'string',
         },
+        headingTag: {
+        	type: 'string',
+        	default: 'h1'
+        },
+        headFontSize: {
+            type: 'number',
+        },
+        subHeadFontSize: {
+            type: 'number',
+        },
+        headSpace: {
+            type: 'number',
+        },
+		separatorSpace: {
+            type: 'number',
+        },
+		subHeadSpace: {
+            type: 'number',
+        },
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -223,14 +325,30 @@ registerBlockType( 'uagb/advanced-heading', {
 			headingAlign,
 			headingColor,
 			subHeadingColor,
-			separatorColor
+			separatorColor,
+			headingTag,
+			headFontSize,
+			subHeadFontSize,
+			headSpace,
+			separatorSpace,
+			subHeadSpace,
 		} = props.attributes;
 
 		return (
 			<div className={ props.className }>
-				<h1 className="uagb-heading-text" style={{ textAlign: headingAlign, color: headingColor }}>{ headingTitle }</h1>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderColor: separatorColor }}></div></div>
-				<p className="uagb-desc-text" style={{ textAlign: headingAlign, color: subHeadingColor }}>{ headingDesc }</p>
+				<RichText.Content
+					tagName={ headingTag }
+					value={ headingTitle }
+					className='uagb-heading-text'
+					style={{ 
+						textAlign: headingAlign,
+						fontSize: headFontSize + 'px',
+						color: headingColor,
+						marginBottom: headSpace + 'px',
+					}}
+				/>
+				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
+				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + 'px', color: subHeadingColor, marginBottom: subHeadSpace + 'px', }}>{ headingDesc }</p>
 			</div>
 		);
 	}
