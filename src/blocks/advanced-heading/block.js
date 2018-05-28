@@ -54,6 +54,7 @@ class UAGBAdvancedHeading extends Component {
 				headFontSize,
 				subHeadFontSize,
 				separatorWidth,
+				separatorHeight,
 				headSpace,
 				separatorSpace,
 				subHeadSpace,
@@ -152,6 +153,15 @@ class UAGBAdvancedHeading extends Component {
                 	initialOpen={ false }
                 >
                 	<RangeControl
+                        label={ __( 'Separator Height' ) }
+                        value={ separatorHeight }
+                        onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                	<RangeControl
                         label={ __( 'Separator Width' ) }
                         value={ separatorWidth }
                         onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
@@ -164,8 +174,8 @@ class UAGBAdvancedHeading extends Component {
                         label={ __( 'Heading Spacing' ) }
                         value={ headSpace }
                         onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-                        min={ 10 }
-                        max={ 200 }
+                        min={ 0 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -173,8 +183,8 @@ class UAGBAdvancedHeading extends Component {
                         label={ __( 'Separator Spacing' ) }
                         value={ separatorSpace }
                         onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-                        min={ 10 }
-                        max={ 200 }
+                        min={ 0 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -182,8 +192,8 @@ class UAGBAdvancedHeading extends Component {
                         label={ __( 'Sub-Heading Spacing' ) }
                         value={ subHeadSpace }
                         onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-                        min={ 10 }
-                        max={ 200 }
+                        min={ 0 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -208,7 +218,7 @@ class UAGBAdvancedHeading extends Component {
 				<div
 					className="uagb-separator-wrap"
 					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator" style={{ width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
+				><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Write a Description' ) }
@@ -276,6 +286,9 @@ registerBlockType( 'uagb/advanced-heading', {
         	type: 'string',
         	default: 'h1'
         },
+        separatorHeight: {
+        	type: 'number'
+        },
         separatorWidth: {
         	type: 'number'
         },
@@ -341,6 +354,7 @@ registerBlockType( 'uagb/advanced-heading', {
 			separatorColor,
 			headingTag,
 			separatorWidth,
+			separatorHeight,
 			headFontSize,
 			subHeadFontSize,
 			headSpace,
@@ -361,7 +375,7 @@ registerBlockType( 'uagb/advanced-heading', {
 						marginBottom: headSpace + 'px',
 					}}
 				/>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
+				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
 				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + 'px', color: subHeadingColor, marginBottom: subHeadSpace + 'px', }}>{ headingDesc }</p>
 			</div>
 		);
