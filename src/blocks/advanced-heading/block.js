@@ -26,6 +26,7 @@ const {
 } = wp.editor
 
 const {
+    PanelBody,
     PanelColor,
 } = wp.components;
 
@@ -36,7 +37,19 @@ class UAGBAdvancedHeading extends Component {
 	render() {
 
 		// Setup the attributes
-		const { attributes: { headingTitle, headingDesc, headingAlign, headingColor, subHeadingColor }, isSelected, className, setAttributes } = this.props;
+		const {
+			isSelected,
+			className,
+			setAttributes,
+			attributes: { 
+				headingTitle,
+				headingDesc,
+				headingAlign,
+				headingColor,
+				subHeadingColor,
+				separatorColor,
+			},
+		} = this.props;
 
 		return [
 
@@ -51,6 +64,7 @@ class UAGBAdvancedHeading extends Component {
 
 			isSelected && (
                 <InspectorControls>
+                <PanelBody title={ __( 'Style Heading Settings' ) }>
                     <PanelColor
                         title={ __( 'Heading Color' ) }
                         colorValue={ headingColor }
@@ -73,6 +87,18 @@ class UAGBAdvancedHeading extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <PanelColor
+                        title={ __( 'Separator Color' ) }
+                        colorValue={ separatorColor }
+                        initialOpen={ true }
+                    >
+                        <ColorPalette
+                            value={ separatorColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+				</PanelBody>
                 </InspectorControls>
             ),
 
@@ -91,7 +117,7 @@ class UAGBAdvancedHeading extends Component {
 				<div
 					className="uagb-separator-wrap"
 					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator"></div></div>
+				><div className="uagb-separator" style={{ borderColor: separatorColor }}></div></div>
 				<RichText
 					tagName="p"
 					placeholder={ __( 'Write a Description' ) }
@@ -150,6 +176,9 @@ registerBlockType( 'uagb/advanced-heading', {
         subHeadingColor: {
             type: 'string',
         },
+        separatorColor: {
+        	type: 'string',
+        },
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -188,12 +217,19 @@ registerBlockType( 'uagb/advanced-heading', {
 		console.log( 'Save props' );
 		console.log( props );
 
-		const { headingTitle, headingDesc, headingAlign, headingColor, subHeadingColor } = props.attributes;
+		const {
+			headingTitle,
+			headingDesc,
+			headingAlign,
+			headingColor,
+			subHeadingColor,
+			separatorColor
+		} = props.attributes;
 
 		return (
 			<div className={ props.className }>
 				<h1 className="uagb-heading-text" style={{ textAlign: headingAlign, color: headingColor }}>{ headingTitle }</h1>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator"></div></div>
+				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderColor: separatorColor }}></div></div>
 				<p className="uagb-desc-text" style={{ textAlign: headingAlign, color: subHeadingColor }}>{ headingDesc }</p>
 			</div>
 		);
