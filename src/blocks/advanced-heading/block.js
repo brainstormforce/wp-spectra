@@ -68,7 +68,7 @@ class UAGBAdvancedHeading extends Component {
                     <PanelColor
                         title={ __( 'Heading Color' ) }
                         colorValue={ headingColor }
-                        initialOpen={ true }
+                        initialOpen={ false }
                     >
                         <ColorPalette
                             value={ headingColor }
@@ -79,7 +79,7 @@ class UAGBAdvancedHeading extends Component {
                     <PanelColor
                         title={ __( 'Sub-Heading Color' ) }
                         colorValue={ subHeadingColor }
-                        initialOpen={ true }
+                        initialOpen={ false }
                     >
                         <ColorPalette
                             value={ subHeadingColor }
@@ -90,7 +90,7 @@ class UAGBAdvancedHeading extends Component {
                     <PanelColor
                         title={ __( 'Separator Color' ) }
                         colorValue={ separatorColor }
-                        initialOpen={ true }
+                        initialOpen={ false }
                     >
                         <ColorPalette
                             value={ separatorColor }
