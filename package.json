@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://git.brainstormforce.com/wp-sharks/ultimate-gutenberg.git"
+    "url": "git@git.brainstormforce.com:wp-sharks/ultimate-addons-for-gutenberg.git"
   },
   "dependencies": {
     "autoprefixer": "^7.2.4",
@@ -34,7 +34,14 @@
     "postcss-loader": "^2.0.10",
     "raw-loader": "^0.5.1",
     "sass-loader": "^6.0.6",
-    "webpack": "^3.1.0"
+    "webpack": "^3.1.0",
+    "grunt": "^1.0.1",
+    "grunt-bumpup": "^0.6.3",
+    "grunt-contrib-clean": "^1.1.0",
+    "grunt-contrib-compress": "^1.4.3",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-text-replace": "^0.4.0",
+    "grunt-wp-i18n": "^1.0.1"
   },
   "babel": {
     "presets": [
