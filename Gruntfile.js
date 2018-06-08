@@ -56,7 +56,7 @@ module.exports = function(grunt) {
                 options: {
                     domainPath: '/',
                     mainFile: 'ultimate-addons-for-gutenberg.php',
-                    potFilename: 'languages/uagb.pot',
+                    potFilename: 'languages/ultimate-addons-for-gutenberg.pot',
                     exclude: [
 						'admin/bsf-core',
 					],
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
         },
         addtextdomain: {
             options: {
-                textdomain: 'uagb',
+                textdomain: 'ultimate-addons-for-gutenberg',
                 updateDomains: true
             },
             target: {
@@ -105,8 +105,8 @@ module.exports = function(grunt) {
 				overwrite: true,
 				replacements: [
 					{
-						from: /UAEL_VER', '.*?'/g,
-						to: 'UAEL_VER\', \'<%= pkg.version %>\''
+						from: /UAGB_VER', '.*?'/g,
+						to: 'UAGB_VER\', \'<%= pkg.version %>\''
 					}
 				]
 			}
