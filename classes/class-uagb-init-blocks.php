@@ -42,7 +42,7 @@ class UAGB_Init_Blocks {
 	 * Constructor
 	 */
 	public function __construct() {
-		
+
 		// Hook: Frontend assets.
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 

@@ -191,16 +191,18 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 }
 
 /**
- * Check if Gutenberg Pro is installed
- *
- * @since 1.0.0
- *
- * @access public
+ * Is Gutenberg plugin installed.
  */
 if ( ! function_exists( '_is_gutenberg_installed' ) ) {
 
 	/**
-	 * Is Gutenberg plugin installed.
+	 * Check if Gutenberg Pro is installed
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param string $plugin_path Plugin path.
+	 * @return boolean true | false
+	 * @access public
 	 */
 	function _is_gutenberg_installed( $plugin_path ) {
 		$plugins = get_plugins();
