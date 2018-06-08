@@ -1,0 +1,10 @@
+# Ignore node.js Modules #
+node_modules/
+u.sh
+ultimate-elementor.zip
+bcore.sh
+push.sh
+Optimization.txt
+admin/bsf-core/.git
+.DS_Store
+vendor/
