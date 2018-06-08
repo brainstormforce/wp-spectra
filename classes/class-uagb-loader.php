@@ -84,14 +84,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		/**
 		 * Load Ultimate Gutenberg Text Domain.
 		 * This will load the translation textdomain depending on the file priorities.
-		 *      1. Global Languages /wp-content/languages/ultimate-gutenberg/ folder
-		 *      2. Local dorectory /wp-content/plugins/ultimate-gutenberg/languages/ folder
+		 *      1. Global Languages /wp-content/languages/ultimate-addons-for-gutenberg/ folder
+		 *      2. Local dorectory /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder
 		 *
 		 * @since  1.0.0
 		 * @return void
 		 */
 		public function load_textdomain() {
-			// Default languages directory for "ultimate-gutenberg".
+			// Default languages directory for "ultimate-addons-for-gutenberg".
 			$lang_dir = UAGB_DIR . 'languages/';
 
 			/**
@@ -121,13 +121,13 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			// Setup paths to current locale file.
 			$mofile_local  = $lang_dir . $mofile;
-			$mofile_global = WP_LANG_DIR . '/ultimate-gutenberg/' . $mofile;
+			$mofile_global = WP_LANG_DIR . '/ultimate-addons-for-gutenberg/' . $mofile;
 
 			if ( file_exists( $mofile_global ) ) {
-				// Look in global /wp-content/languages/ultimate-gutenberg/ folder.
+				// Look in global /wp-content/languages/ultimate-addons-for-gutenberg/ folder.
 				load_textdomain( 'uagb', $mofile_global );
 			} elseif ( file_exists( $mofile_local ) ) {
-				// Look in local /wp-content/plugins/ultimate-gutenberg/languages/ folder.
+				// Look in local /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder.
 				load_textdomain( 'uagb', $mofile_local );
 			} else {
 				// Load the default language files.
