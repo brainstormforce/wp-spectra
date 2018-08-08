@@ -1,1 +1,54 @@
-.wp-block-uagb-advanced-heading{padding:0;color:#000000;margin:0 auto}.wp-block-uagb-advanced-heading .uagb-heading-text{margin:0}.wp-block-uagb-advanced-heading .uagb-separator-wrap{font-size:0}.wp-block-uagb-advanced-heading .uagb-separator{border-top-style:solid;display:inline-block;border-top-width:2px;width:5%;margin:0px 0px 10px 0px}.wp-block-uagb-advanced-heading .uagb-desc-text{margin:0}
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-uagb-advanced-heading {
+  padding: 0;
+  color: #000000;
+  margin: 0 auto; }
+  .wp-block-uagb-advanced-heading .uagb-heading-text {
+    margin: 0; }
+  .wp-block-uagb-advanced-heading .uagb-separator-wrap {
+    font-size: 0; }
+  .wp-block-uagb-advanced-heading .uagb-separator {
+    border-top-style: solid;
+    display: inline-block;
+    border-top-width: 2px;
+    width: 5%;
+    margin: 0px 0px 10px 0px; }
+  .wp-block-uagb-advanced-heading .uagb-desc-text {
+    margin: 0; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-uagb-timeline {
+  padding: 0;
+  color: #000000;
+  margin: 0 auto; }
+  .wp-block-uagb-timeline .uagb-heading-text {
+    margin: 0; }
+  .wp-block-uagb-timeline .uagb-separator-wrap {
+    font-size: 0; }
+  .wp-block-uagb-timeline .uagb-separator {
+    border-top-style: solid;
+    display: inline-block;
+    border-top-width: 2px;
+    width: 5%;
+    margin: 0px 0px 10px 0px; }
+  .wp-block-uagb-timeline .uagb-desc-text {
+    margin: 0; }
