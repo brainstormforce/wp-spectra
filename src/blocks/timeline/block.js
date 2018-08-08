@@ -46,6 +46,7 @@ class UAGBTimeline extends Component {
 			attributes: { 
 				headingTitle,
 				headingDesc,
+				headingBgcolor,
 				headingAlign,
 				headingColor,
 				subHeadingColor,
@@ -122,6 +123,17 @@ class UAGBTimeline extends Component {
                         <ColorPalette
                             value={ headingColor }
                             onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'Background Color' ) }
+                        colorValue={ headingBgcolor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ headingBgcolor }
+                            onChange={ ( colorValue ) => setAttributes( { headingBgcolor: colorValue } ) }
                             allowReset
                         />
                     </PanelColor>
@@ -213,6 +225,7 @@ class UAGBTimeline extends Component {
 						fontSize: headFontSize + 'px',
 						color: headingColor,
 						marginBottom: headSpace + 'px',
+						backgroundColor :headingBgcolor,
 					}}
 				/>
 				<div
@@ -275,6 +288,9 @@ registerBlockType( 'uagb/timeline', {
 		},
 		headingColor: {
             type: 'string',
+        },
+        headingBgcolor: {
+        	type: 'string',
         },
         subHeadingColor: {
             type: 'string',
@@ -350,6 +366,7 @@ registerBlockType( 'uagb/timeline', {
 			headingDesc,
 			headingAlign,
 			headingColor,
+			headingBgcolor,
 			subHeadingColor,
 			separatorColor,
 			headingTag,
@@ -373,6 +390,7 @@ registerBlockType( 'uagb/timeline', {
 						fontSize: headFontSize + 'px',
 						color: headingColor,
 						marginBottom: headSpace + 'px',
+						backgroundColor : headingBgcolor,
 					}}
 				/>
 				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
