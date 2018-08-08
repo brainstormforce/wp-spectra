@@ -1,5 +1,5 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: post-grid
  */
 
 // Import block dependencies and components.
@@ -35,7 +35,7 @@ const {
 // Extend component
 const { Component } = wp.element;
 
-class UAGBAdvancedHeading extends Component {
+class UAGBPostGrid extends Component {
 	render() {
 
 		// Setup the attributes
@@ -249,14 +249,15 @@ class UAGBAdvancedHeading extends Component {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'uagb/advanced-heading', {
+registerBlockType( 'uagb/post-grid', {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Advanced Heading - UAGB' ), // Block title.
-	description: __( 'Add Advanced Heading block.' ), // Block description.
-	icon: 'editor-textcolor', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( 'Post Grid - UAGB' ), // Block title.
+	description: __( 'Add Post Grid block.' ), // Block description.
+	icon: 'editor-table', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
-		__( 'advanced heading' ),
+		__( 'post grid' ),
 		__( 'uagb' ),
 	],
 	category: 'formatting',
@@ -315,7 +316,7 @@ registerBlockType( 'uagb/advanced-heading', {
 	 *
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
-	edit: UAGBAdvancedHeading,
+	edit: UAGBPostGrid,
 
 	/*function( props ) {
 
