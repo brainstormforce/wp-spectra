@@ -43,7 +43,7 @@ class UAGBPostGrid extends Component {
 			isSelected,
 			className,
 			setAttributes,
-			attributes: { 
+			attributes: {
 				headingTitle,
 				headingDesc,
 				headingAlign,
