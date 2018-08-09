@@ -50,14 +50,11 @@ class UAGBTimeline extends Component {
 				headingAlign,
 				headingColor,
 				subHeadingColor,
-				separatorColor,
 				headingTag,
+				contentType,
 				headFontSize,
 				subHeadFontSize,
-				separatorWidth,
-				separatorHeight,
 				headSpace,
-				separatorSpace,
 				subHeadSpace,
 			},
 		} = this.props;
@@ -90,6 +87,14 @@ class UAGBTimeline extends Component {
                             { value: 'h4', label: __( 'H4' ) },
                             { value: 'h5', label: __( 'H5' ) },
                             { value: 'h6', label: __( 'H6' ) },
+                        ] }
+                    />
+                    <SelectControl
+                        label={ __( 'Select Type' ) }
+                        value={ contentType }
+                        options={ [
+                            { value: 'custom', label: __( 'Custom' ) },
+                            { value: 'post', label: __( 'Post' ) },                            
                         ] }
                     />
 					<RangeControl
@@ -148,40 +153,13 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-                    <PanelColor
-                        title={ __( 'Separator Color' ) }
-                        colorValue={ separatorColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorColor }
-                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
+                    
 				</PanelBody>
 				<PanelBody 
                 	title={ __( 'Additional Options' ) }
                 	initialOpen={ false }
-                >
-                	<RangeControl
-                        label={ __( 'Separator Height' ) }
-                        value={ separatorHeight }
-                        onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                	<RangeControl
-                        label={ __( 'Separator Width' ) }
-                        value={ separatorWidth }
-                        onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
-                        min={ 0 }
-                        max={ 100 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
+                >                	
+                	
 					<RangeControl
                         label={ __( 'Heading Spacing' ) }
                         value={ headSpace }
@@ -190,16 +168,7 @@ class UAGBTimeline extends Component {
                         max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Separator Spacing' ) }
-                        value={ separatorSpace }
-                        onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
+                    />                    
                     <RangeControl
                         label={ __( 'Sub-Heading Spacing' ) }
                         value={ subHeadSpace }
@@ -216,7 +185,7 @@ class UAGBTimeline extends Component {
 			<div className={ className }>
 				<RichText
 					tagName={ headingTag }
-					placeholder={ __( 'Write a Heading' ) }
+					placeholder={ __( 'My Heading 1' ) }
 					value={ headingTitle }
 					className='uagb-timeline-text'
 					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
@@ -227,14 +196,10 @@ class UAGBTimeline extends Component {
 						marginBottom: headSpace + 'px',
 						backgroundColor :headingBgcolor,
 					}}
-				/>
-				<div
-					className="uagb-separator-wrap"
-					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
+				/>				
 				<RichText
 					tagName="p"
-					placeholder={ __( 'Write a Description' ) }
+					placeholder={ __( 'I am timeline card content. You can change me anytime. Click here to edit this text.' ) }
 					value={ headingDesc }
 					className='uagb-desc-text'
 					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
@@ -244,7 +209,8 @@ class UAGBTimeline extends Component {
 						color: subHeadingColor,
 						marginBottom: subHeadSpace + 'px',
 					}}
-				/>
+				/>			
+   
 			</div>
 		];
 	}
@@ -278,9 +244,11 @@ registerBlockType( 'uagb/timeline', {
 	attributes: {
 		headingTitle: {
 			type: 'string',
+			default: 'My Heading 1',
 		},
 		headingDesc: {
 			type: 'string',
+			default: 'I am timeline card content. You can change me anytime. Click here to edit this text.',
 		},
 		headingAlign: {
 			type: 'string',
@@ -294,20 +262,11 @@ registerBlockType( 'uagb/timeline', {
         },
         subHeadingColor: {
             type: 'string',
-        },
-        separatorColor: {
-        	type: 'string',
-        },
+        },       
         headingTag: {
         	type: 'string',
         	default: 'h1'
-        },
-        separatorHeight: {
-        	type: 'number'
-        },
-        separatorWidth: {
-        	type: 'number'
-        },
+        },        
         headFontSize: {
             type: 'number',
         },
@@ -316,10 +275,7 @@ registerBlockType( 'uagb/timeline', {
         },
         headSpace: {
             type: 'number',
-        },
-		separatorSpace: {
-            type: 'number',
-        },
+        },		
 		subHeadSpace: {
             type: 'number',
         },
@@ -370,12 +326,9 @@ registerBlockType( 'uagb/timeline', {
 			subHeadingColor,
 			separatorColor,
 			headingTag,
-			separatorWidth,
-			separatorHeight,
 			headFontSize,
 			subHeadFontSize,
 			headSpace,
-			separatorSpace,
 			subHeadSpace,
 		} = props.attributes;
 
@@ -393,8 +346,8 @@ registerBlockType( 'uagb/timeline', {
 						backgroundColor : headingBgcolor,
 					}}
 				/>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
 				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + 'px', color: subHeadingColor, marginBottom: subHeadSpace + 'px', }}>{ headingDesc }</p>
+   
 			</div>
 		);
 	}
