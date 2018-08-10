@@ -17,12 +17,15 @@ const {
 	registerBlockType,
 } = wp.blocks;
 
+const { decodeEntities } = wp.htmlEntities;
+
 const {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
 	RichText,
+	BlockAlignmentToolbar,
 } = wp.editor
 
 const {
@@ -30,13 +33,78 @@ const {
     PanelColor,
     SelectControl,
     RangeControl,
+    QueryControls,
+	Spinner,
+	ToggleControl,
+	Toolbar,
+	withAPIData,
 } = wp.components;
 
+const MAX_POSTS_COLUMNS = 4;
+
 // Extend component
-const { Component } = wp.element;
+const { Component, Fragment } = wp.element;
 
 class UAGBTimeline extends Component {
+	constructor() {
+		super( ...arguments );
+
+		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
+		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
+		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
+		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
+		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+	}
+
+	toggleDisplayPostDate() {
+		const { displayPostDate } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostDate: ! displayPostDate } );
+	}
+
+	toggleDisplayPostExcerpt() {
+		const { displayPostExcerpt } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
+	}
+
+	toggleDisplayPostAuthor() {
+		const { displayPostAuthor } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
+	}
+
+	toggleDisplayPostImage() {
+		const { displayPostImage } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostImage: ! displayPostImage } );
+	}
+
+	toggleDisplayPostLink() {
+		const { displayPostLink } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostLink: ! displayPostLink } );
+	}
+
 	render() {
+		console.log("render");
+		console.log(this.props);
+		//const latestPosts = this.props.latestPosts.data;
+		/*const { attributes, categoriesList, setAttributes } = this.props;
+		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+
+		// Thumbnail options
+		const imageCropOptions = [
+			{ value: 'landscape', label: __( 'Landscape' ) },
+			{ value: 'square', label: __( 'Square' ) },
+		];*/
+
+		//const isLandscape = imageCrop === 'landscape';
 
 		// Setup the attributes
 		const {
@@ -56,6 +124,20 @@ class UAGBTimeline extends Component {
 				subHeadFontSize,
 				headSpace,
 				subHeadSpace,
+				categories,
+		        postsToShow,
+		        displayPostDate,
+		        postLayout,
+		        columns,
+		        align,
+		        order,
+		        orderBy,
+		        displayPostExcerpt,
+		        displayPostAuthor,
+		        displayPostImage,
+		        displayPostLink,
+		        width,
+		        imageCrop,
 			},
 		} = this.props;
 
@@ -72,10 +154,65 @@ class UAGBTimeline extends Component {
 
 			isSelected && (
 				<InspectorControls>
+				<PanelBody title={ __( 'Post Grid Settings' ) }>
+					<QueryControls
+						{ ...{ order, orderBy } }
+						numberOfItems={ postsToShow }
+						//categoriesList={ get( categoriesList, [ 'data' ], {} ) }
+						selectedCategoryId={ categories }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+					{ postLayout === 'grid' &&
+						<RangeControl
+							label={ __( 'Columns' ) }
+							value={ columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 2 }
+							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+						/>
+					}
+					<ToggleControl
+						label={ __( 'Display Featured Image' ) }
+						checked={ displayPostImage }
+						onChange={ this.toggleDisplayPostImage }
+					/>
+					{ displayPostImage &&
+						<SelectControl
+							label={ __( 'Featured Image Style' ) }
+							options={ imageCropOptions }
+							value={ imageCrop }
+							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+						/>
+					}
+					<ToggleControl
+						label={ __( 'Display Post Author' ) }
+						checked={ displayPostAuthor }
+						onChange={ this.toggleDisplayPostAuthor }
+					/>
+					<ToggleControl
+						label={ __( 'Display Post Date' ) }
+						checked={ displayPostDate }
+						onChange={ this.toggleDisplayPostDate }
+					/>
+					<ToggleControl
+						label={ __( 'Display Post Excerpt' ) }
+						checked={ displayPostExcerpt }
+						onChange={ this.toggleDisplayPostExcerpt }
+					/>
+					<ToggleControl
+						label={ __( 'Display Continue Reading Link' ) }
+						checked={ displayPostLink }
+						onChange={ this.toggleDisplayPostLink }
+					/>
+
+				</PanelBody>
 				<PanelBody 
                 	title={ __( 'Typography' ) }
                 	initialOpen={ false }
-                >
+                	>
                 	<SelectControl
                         label={ __( 'Tag' ) }
                         value={ headingTag }
@@ -279,6 +416,39 @@ registerBlockType( 'uagb/timeline', {
 		subHeadSpace: {
             type: 'number',
         },
+
+        categories: {
+			type: 'string',
+			default: 5,
+		},
+		postsToShow: {
+			type: 'number',
+		},
+		displayPostDate: {
+			type: 'boolean',
+			default: false,
+		},
+		postLayout: {
+            type: 'string',
+            default: 'list',
+        },
+        columns: {
+           type: 'number',
+		   default: 3,
+        },
+        align: {
+        	type: 'string',
+        	default: 'center',
+        },
+        order: {
+        	type: 'string',
+        	default: 'desc'
+        },
+        orderBy: {
+        	type: 'string',
+        	default: 'desc'
+        }, 
+        
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -330,6 +500,14 @@ registerBlockType( 'uagb/timeline', {
 			subHeadFontSize,
 			headSpace,
 			subHeadSpace,
+			categories,
+	        postsToShow,
+	        displayPostDate,
+	        postLayout,
+	        columns,
+	        align,
+	        order,
+	        orderBy,
 		} = props.attributes;
 
 		return (
