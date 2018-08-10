@@ -1,33 +1,20 @@
 /**
- * BLOCK: timeline
+ * BLOCK: advanced-heading
  */
 
-// Import block dependencies and components.
-import classnames from 'classnames';
-import get from 'lodash/get';
 
-//  Import CSS.
-import './style.scss'
-import './editor.scss';
+// Extend component
+const { Component } = wp.element;
 
-// Import __() from wp.i18n
-const { __ } = wp.i18n;
-
-// Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
 } = wp.blocks;
 
 const { decodeEntities } = wp.htmlEntities;
 
-const {
-	AlignmentToolbar,
-	BlockControls,
-	ColorPalette,
-	InspectorControls,
-	RichText,
-	BlockAlignmentToolbar,
-} = wp.editor
+/*var el = wp.element.createElement,
+	registerBlockType = wp.blocks.registerBlockType,
+	withAPIData = wp.components.withAPIData;*/
 
 const {
     PanelBody,
@@ -41,61 +28,18 @@ const {
 	withAPIData,
 } = wp.components;
 
-const MAX_POSTS_COLUMNS = 4;
-
-// Extend component
-const { Component, Fragment } = wp.element;
+const {
+	AlignmentToolbar,
+	BlockControls,
+	ColorPalette,
+	InspectorControls,
+	RichText,
+	BlockAlignmentToolbar,
+} = wp.editor;
 
 class UAGBTimeline extends Component {
-	constructor() {
-		super( ...arguments );
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
-	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostDate: ! displayPostDate } );
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostImage: ! displayPostImage } );
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostLink: ! displayPostLink } );
-	}
-
 	render() {
-		console.log("render");
-		console.log(this.props);
-		
+
 		// Setup the attributes
 		const {
 			isSelected,
@@ -104,31 +48,26 @@ class UAGBTimeline extends Component {
 			attributes: { 
 				headingTitle,
 				headingDesc,
-				headingBgcolor,
 				headingAlign,
 				headingColor,
 				subHeadingColor,
+				separatorColor,
 				headingTag,
-				contentType,
 				headFontSize,
 				subHeadFontSize,
+				separatorWidth,
+				separatorHeight,
 				headSpace,
+				separatorSpace,
 				subHeadSpace,
 				categories,
-		        postsToShow,
-		        displayPostDate,
-		        postLayout,
-		        columns,
-		        align,
-		        order,
-		        orderBy,
-		        displayPostExcerpt,
-		        displayPostAuthor,
-		        displayPostImage,
-		        displayPostLink,
-		        width,
-		        imageCrop,
-		        categoriesList
+				postsToShow,
+				displayPostDate,
+				postLayout,
+				columns,
+				align,
+				order,
+				orderBy
 			},
 		} = this.props;
 
@@ -145,65 +84,10 @@ class UAGBTimeline extends Component {
 
 			isSelected && (
 				<InspectorControls>
-				<PanelBody title={ __( 'Post Grid Settings' ) }>
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						categoriesList={ get( categoriesList, [ 'data' ], {} ) }
-						selectedCategoryId={ categories }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-					/>
-					{ postLayout === 'grid' &&
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 2 }
-							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-						/>
-					}
-					<ToggleControl
-						label={ __( 'Display Featured Image' ) }
-						checked={ displayPostImage }
-						onChange={ this.toggleDisplayPostImage }
-					/>
-					{ displayPostImage &&
-						<SelectControl
-							label={ __( 'Featured Image Style' ) }
-							options={ imageCropOptions }
-							value={ imageCrop }
-							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
-						/>
-					}
-					<ToggleControl
-						label={ __( 'Display Post Author' ) }
-						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
-					/>
-					<ToggleControl
-						label={ __( 'Display Post Date' ) }
-						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
-					/>
-					<ToggleControl
-						label={ __( 'Display Post Excerpt' ) }
-						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
-					/>
-					<ToggleControl
-						label={ __( 'Display Continue Reading Link' ) }
-						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
-					/>
-
-				</PanelBody>
 				<PanelBody 
                 	title={ __( 'Typography' ) }
                 	initialOpen={ false }
-                	>
+                >
                 	<SelectControl
                         label={ __( 'Tag' ) }
                         value={ headingTag }
@@ -215,14 +99,6 @@ class UAGBTimeline extends Component {
                             { value: 'h4', label: __( 'H4' ) },
                             { value: 'h5', label: __( 'H5' ) },
                             { value: 'h6', label: __( 'H6' ) },
-                        ] }
-                    />
-                    <SelectControl
-                        label={ __( 'Select Type' ) }
-                        value={ contentType }
-                        options={ [
-                            { value: 'custom', label: __( 'Custom' ) },
-                            { value: 'post', label: __( 'Post' ) },                            
                         ] }
                     />
 					<RangeControl
@@ -260,17 +136,6 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <PanelColor
-                        title={ __( 'Background Color' ) }
-                        colorValue={ headingBgcolor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ headingBgcolor }
-                            onChange={ ( colorValue ) => setAttributes( { headingBgcolor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
                         title={ __( 'Sub-Heading Color' ) }
                         colorValue={ subHeadingColor }
                         initialOpen={ false }
@@ -281,13 +146,40 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-                    
+                    <PanelColor
+                        title={ __( 'Separator Color' ) }
+                        colorValue={ separatorColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
 				</PanelBody>
 				<PanelBody 
                 	title={ __( 'Additional Options' ) }
                 	initialOpen={ false }
-                >                	
-                	
+                >
+                	<RangeControl
+                        label={ __( 'Separator Height' ) }
+                        value={ separatorHeight }
+                        onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                	<RangeControl
+                        label={ __( 'Separator Width' ) }
+                        value={ separatorWidth }
+                        onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
+                        min={ 0 }
+                        max={ 100 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
 					<RangeControl
                         label={ __( 'Heading Spacing' ) }
                         value={ headSpace }
@@ -296,7 +188,16 @@ class UAGBTimeline extends Component {
                         max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />                    
+                    />
+                    <RangeControl
+                        label={ __( 'Separator Spacing' ) }
+                        value={ separatorSpace }
+                        onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
                     <RangeControl
                         label={ __( 'Sub-Heading Spacing' ) }
                         value={ subHeadSpace }
@@ -313,21 +214,24 @@ class UAGBTimeline extends Component {
 			<div className={ className }>
 				<RichText
 					tagName={ headingTag }
-					placeholder={ __( 'My Heading 1' ) }
+					placeholder={ __( 'Write a Heading' ) }
 					value={ headingTitle }
-					className='uagb-timeline-text'
+					className='uagb-heading-text'
 					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
 					style={{ 
 						textAlign: headingAlign,
 						fontSize: headFontSize + 'px',
 						color: headingColor,
 						marginBottom: headSpace + 'px',
-						backgroundColor :headingBgcolor,
 					}}
-				/>				
+				/>
+				<div
+					className="uagb-separator-wrap"
+					style={{ textAlign: headingAlign }}
+				><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
 				<RichText
 					tagName="p"
-					placeholder={ __( 'I am timeline card content. You can change me anytime. Click here to edit this text.' ) }
+					placeholder={ __( 'Write a Description' ) }
 					value={ headingDesc }
 					className='uagb-desc-text'
 					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
@@ -337,46 +241,22 @@ class UAGBTimeline extends Component {
 						color: subHeadingColor,
 						marginBottom: subHeadSpace + 'px',
 					}}
-				/>			
-   
+				/>
 			</div>
 		];
 	}
 }
 
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( 'uagb/timeline', {
-
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Timeline - UAGB' ), // Block title.
-	description: __( 'Add Timeline.' ), // Block description.
-	icon: 'editor-textcolor', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	category: 'common,post,timeline', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [
-		__( 'timeline' ),
-		__( 'uagb' ),
-	],
-	category: 'formatting',
-
+	title: 'Timeline - UAGB',
+	icon: 'megaphone',
+	category: 'widgets',
 	attributes: {
 		headingTitle: {
 			type: 'string',
-			default: 'My Heading 1',
 		},
 		headingDesc: {
 			type: 'string',
-			default: 'I am timeline card content. You can change me anytime. Click here to edit this text.',
 		},
 		headingAlign: {
 			type: 'string',
@@ -385,16 +265,22 @@ registerBlockType( 'uagb/timeline', {
 		headingColor: {
             type: 'string',
         },
-        headingBgcolor: {
-        	type: 'string',
-        },
         subHeadingColor: {
             type: 'string',
-        },       
+        },
+        separatorColor: {
+        	type: 'string',
+        },
         headingTag: {
         	type: 'string',
         	default: 'h1'
-        },        
+        },
+        separatorHeight: {
+        	type: 'number'
+        },
+        separatorWidth: {
+        	type: 'number'
+        },
         headFontSize: {
             type: 'number',
         },
@@ -403,12 +289,14 @@ registerBlockType( 'uagb/timeline', {
         },
         headSpace: {
             type: 'number',
-        },		
+        },
+		separatorSpace: {
+            type: 'number',
+        },
 		subHeadSpace: {
             type: 'number',
         },
-
-        categories: {
+		categories: {
 			type: 'string',
 			default: 5,
 		},
@@ -439,105 +327,40 @@ registerBlockType( 'uagb/timeline', {
         	type: 'string',
         	default: 'desc'
         }, 
-
 	},
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
-	edit: UAGBTimeline,
 
-	/*function( props ) {
+	edit: withAPIData( function() {
+		return {
+			posts: '/wp/v2/posts?per_page=5'
+		};
+	} )( function( props ) {
+		if ( ! props.posts.data ) {
+			return "loading !";
+		}
+		if ( props.posts.data.length === 0 ) {
+			return "No posts";
+		}
+		//console.log("praju");
+		//console.log(props.posts);
+		var className = props.className;
+		var post = props.posts.data[ 0 ];		
 
-		console.log( 'Edit props' );
-		console.log( props );
+		return (<ul>
+                    {props.posts.data.map(post => {
+                        return (
+                            <li>
+                                <a href={post.link}>
+                                    {post.title.rendered}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>);
+	} ),
 
-		const { headingTitle } = props.attributes;
-
-		return (
-			<div className={ props.className }>
-				<p>Ultimate Addons For Gutenberg!</p>
-			</div>
-		);
-	},*/
-
-	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
-	 *
-	 * The "save" property must be specified and must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
-	save: function( props ) {
-		
+	save: function(props) {
 		console.log( 'Save props' );
 		console.log( props );
-
-		const {
-			headingTitle,
-			headingDesc,
-			headingAlign,
-			headingColor,
-			headingBgcolor,
-			subHeadingColor,
-			separatorColor,
-			headingTag,
-			headFontSize,
-			subHeadFontSize,
-			headSpace,
-			subHeadSpace,
-			categories,
-	        postsToShow,
-	        displayPostDate,
-	        postLayout,
-	        columns,
-	        align,
-	        order,
-	        orderBy,
-		} = props.attributes;
-
-		return (
-			<div className={ props.className }>
-				<RichText.Content
-					tagName={ headingTag }
-					value={ headingTitle }
-					className='uagb-timeline-text'
-					style={{ 
-						textAlign: headingAlign,
-						fontSize: headFontSize + 'px',
-						color: headingColor,
-						marginBottom: headSpace + 'px',
-						backgroundColor : headingBgcolor,
-					}}
-				/>
-				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + 'px', color: subHeadingColor, marginBottom: subHeadSpace + 'px', }}>{ headingDesc }</p>
-   
-			</div>
-		);
-	}
+		return 'Hello';
+	},
 } );
-
-export default withAPIData( ( props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes;
-	const latestPostsQuery = stringify( pickBy( {
-		categories,
-		order,
-		orderby: orderBy,
-		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'featured_image_src_square', 'excerpt', 'author_info' ],
-		_embed: 'embed',
-	}, ( value ) => ! isUndefined( value ) ) );
-	const categoriesListQuery = stringify( {
-		per_page: 100,
-		_fields: [ 'id', 'name', 'parent' ],
-	} );
-	return {
-		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
-		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
-	};
-} )( UAGBTimeline );
