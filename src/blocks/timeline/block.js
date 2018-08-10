@@ -4,6 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from 'classnames';
+import get from 'lodash/get';
 
 //  Import CSS.
 import './style.scss'
@@ -94,18 +95,7 @@ class UAGBTimeline extends Component {
 	render() {
 		console.log("render");
 		console.log(this.props);
-		//const latestPosts = this.props.latestPosts.data;
-		/*const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
-
-		// Thumbnail options
-		const imageCropOptions = [
-			{ value: 'landscape', label: __( 'Landscape' ) },
-			{ value: 'square', label: __( 'Square' ) },
-		];*/
-
-		//const isLandscape = imageCrop === 'landscape';
-
+		
 		// Setup the attributes
 		const {
 			isSelected,
@@ -138,6 +128,7 @@ class UAGBTimeline extends Component {
 		        displayPostLink,
 		        width,
 		        imageCrop,
+		        categoriesList
 			},
 		} = this.props;
 
@@ -158,7 +149,7 @@ class UAGBTimeline extends Component {
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						//categoriesList={ get( categoriesList, [ 'data' ], {} ) }
+						categoriesList={ get( categoriesList, [ 'data' ], {} ) }
 						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
@@ -448,7 +439,7 @@ registerBlockType( 'uagb/timeline', {
         	type: 'string',
         	default: 'desc'
         }, 
-        
+
 	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
@@ -530,3 +521,23 @@ registerBlockType( 'uagb/timeline', {
 		);
 	}
 } );
+
+export default withAPIData( ( props ) => {
+	const { postsToShow, order, orderBy, categories } = props.attributes;
+	const latestPostsQuery = stringify( pickBy( {
+		categories,
+		order,
+		orderby: orderBy,
+		per_page: postsToShow,
+		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'featured_image_src_square', 'excerpt', 'author_info' ],
+		_embed: 'embed',
+	}, ( value ) => ! isUndefined( value ) ) );
+	const categoriesListQuery = stringify( {
+		per_page: 100,
+		_fields: [ 'id', 'name', 'parent' ],
+	} );
+	return {
+		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
+		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
+	};
+} )( UAGBTimeline );
