@@ -2,7 +2,15 @@
  * BLOCK: advanced-heading
  */
 
+// Import block dependencies and components.
+import classnames from 'classnames';
 
+//  Import CSS.
+import './style.scss'
+import './editor.scss';
+
+// Import __() from wp.i18n
+const { __ } = wp.i18n;
 // Extend component
 const { Component } = wp.element;
 
@@ -39,7 +47,7 @@ const {
 
 class UAGBTimeline extends Component {
 	render() {
-
+		console.log('render');
 		// Setup the attributes
 		const {
 			isSelected,
@@ -61,6 +69,7 @@ class UAGBTimeline extends Component {
 				separatorSpace,
 				subHeadSpace,
 				categories,
+				postType,
 				postsToShow,
 				displayPostDate,
 				postLayout,
@@ -70,9 +79,30 @@ class UAGBTimeline extends Component {
 				orderBy
 			},
 		} = this.props;
-
-		return [
-
+		
+		var tm_content = uagb_get_timeline_content( this.props );
+		console.log(this.props);
+		
+		return [			
+			isSelected && (
+				<InspectorControls>
+				<PanelBody 
+                	title={ __( 'Select Type' ) }
+                	initialOpen={ false }
+                >
+                	<SelectControl
+                        label={ __( 'Type' ) }
+                        value={ postType }
+                        onChange={ ( value ) => setAttributes( { postType: value } ) }
+                        options={ [
+                            { value: 'general', label: __( 'Custom' ) },
+                            { value: 'post', label: __( 'Post Type' ) },                            
+                        ] }
+                    />
+            </PanelBody>
+                </InspectorControls> 
+            ),
+       
 			isSelected && (
 				<BlockControls key='controls'>
 					<AlignmentToolbar
@@ -209,42 +239,63 @@ class UAGBTimeline extends Component {
                     />
 				</PanelBody>
                 </InspectorControls>
-            ),
+            ),            
+            <div classnames = "cp-timeline-main">   
+            	{tm_content}
+			</div>
+		];
+	}
+}
 
-			<div className={ className }>
-				<RichText
-					tagName={ headingTag }
+function uagb_get_timeline_content(val) {
+		
+	//var props = props;
+	var p_attr = val.attributes;
+	var time_content = p_attr.postType;
+
+	if( time_content == 'general'){
+	  return <div className={ p_attr.className }>
+	  			<RichText
+					tagName={ p_attr.headingTag }
 					placeholder={ __( 'Write a Heading' ) }
-					value={ headingTitle }
+					value={ p_attr.headingTitle }
 					className='uagb-heading-text'
-					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
+					onChange={ ( value ) => p_attr.setAttributes( { headingTitle: value } ) }
 					style={{ 
-						textAlign: headingAlign,
-						fontSize: headFontSize + 'px',
-						color: headingColor,
-						marginBottom: headSpace + 'px',
+						textAlign: p_attr.headingAlign,
+						fontSize: p_attr.headFontSize + 'px',
+						color: p_attr.headingColor,
+						marginBottom: p_attr.headSpace + 'px',
 					}}
 				/>
 				<div
 					className="uagb-separator-wrap"
-					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorWidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Write a Description' ) }
-					value={ headingDesc }
-					className='uagb-desc-text'
-					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
-					style={{
-						textAlign: headingAlign,
-						fontSize: subHeadFontSize + 'px',
-						color: subHeadingColor,
-						marginBottom: subHeadSpace + 'px',
-					}}
-				/>
-			</div>
-		];
-	}
+					style={{ textAlign: p_attr.headingAlign }}
+				>
+				<div className="uagb-separator" style={{ borderTopWidth: p_attr.separatorHeight + 'px', width: p_attr.separatorWidth + '%', borderColor: p_attr.separatorColor, marginBottom: p_attr.separatorSpace + 'px', }}></div></div>
+	  			<RichText
+							tagName="p"
+							placeholder={ __( 'Write a Description' ) }
+							value={ p_attr.headingDesc }
+							className='uagb-desc-text'
+							onChange={ ( value ) => p_attr.setAttributes( { headingDesc: value } ) }
+							style={{
+								textAlign: p_attr.headingAlign,
+								fontSize: p_attr.subHeadFontSize + 'px',
+								color: p_attr.subHeadingColor,
+								marginBottom: p_attr.subHeadSpace + 'px',
+							}}
+						/>
+	  		</div>;
+	  	}else{	
+	  	  	var t = withAPIData( function() {
+	  	  		console.log('pg');
+				return {
+					posts: '/wp/v2/posts?per_page=5'
+				};
+			} );	
+			console.log(t);
+		}
 }
 
 registerBlockType( 'uagb/timeline', {
@@ -254,9 +305,12 @@ registerBlockType( 'uagb/timeline', {
 	attributes: {
 		headingTitle: {
 			type: 'string',
+			default: 'Timeline heading',
+
 		},
 		headingDesc: {
 			type: 'string',
+			default: 'This is Timeline description, you can change me anytime click here',
 		},
 		headingAlign: {
 			type: 'string',
@@ -264,12 +318,15 @@ registerBlockType( 'uagb/timeline', {
 		},
 		headingColor: {
             type: 'string',
+            default: '#000',
         },
         subHeadingColor: {
             type: 'string',
+            default: '#000',
         },
         separatorColor: {
         	type: 'string',
+        	default: '#000',
         },
         headingTag: {
         	type: 'string',
@@ -300,6 +357,10 @@ registerBlockType( 'uagb/timeline', {
 			type: 'string',
 			default: 5,
 		},
+		postType: {
+			type: 'string',
+			default: 'general',
+		},
 		postsToShow: {
 			type: 'number',
 		},
@@ -329,34 +390,20 @@ registerBlockType( 'uagb/timeline', {
         }, 
 	},
 
-	edit: withAPIData( function() {
-		return {
-			posts: '/wp/v2/posts?per_page=5'
-		};
-	} )( function( props ) {
-		if ( ! props.posts.data ) {
-			return "loading !";
-		}
-		if ( props.posts.data.length === 0 ) {
-			return "No posts";
-		}
-		//console.log("praju");
-		//console.log(props.posts);
-		var className = props.className;
-		var post = props.posts.data[ 0 ];		
+	edit: UAGBTimeline,
+	function( props ) {
 
-		return (<ul>
-                    {props.posts.data.map(post => {
-                        return (
-                            <li>
-                                <a href={post.link}>
-                                    {post.title.rendered}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>);
-	} ),
+		console.log( 'Edit props' );
+		console.log( props );
+
+		const { headingTitle } = props.attributes;
+
+		return (
+			<div className={ props.className }>
+				<p>Ultimate Addons For Gutenberg!</p>
+			</div>
+		);
+	},
 
 	save: function(props) {
 		console.log( 'Save props' );
@@ -364,3 +411,4 @@ registerBlockType( 'uagb/timeline', {
 		return 'Hello';
 	},
 } );
+
