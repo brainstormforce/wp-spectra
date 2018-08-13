@@ -32,14 +32,13 @@ export const name = 'core/latest-posts';
 
 // Register the block
 registerBlockType( 'uagb/post-grid', {
-	title: __( 'Vrunda Post Grid' ),
+	title: __( 'UAGB - Post Grid' ),
 	description: __( 'Add a grid or list of customizable posts to your page.' ),
 	icon: 'grid-view',
-	category: 'atomic-blocks',
+	category: 'formatting',
 	keywords: [
 		__( 'post' ),
 		__( 'grid' ),
-		__( 'atomic' ),
 	],
 
 	getEditWrapperProps( attributes ) {
