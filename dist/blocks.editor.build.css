@@ -17,8 +17,7 @@
  * that are used across the project.
 */
 /**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
+ * Editor styles for the admin
  */
+.uagb-post-grid h2 a {
+  text-decoration: none; }

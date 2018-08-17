@@ -3,7 +3,7 @@
  * Loads on front end and back end
  */
 
- .ab-block-post-grid {
+ .uagb-post-grid {
 	margin: 0 0 1.2em 0;
 	position: relative;
 
@@ -36,7 +36,7 @@
 		}
 	}
 
-	.ab-block-post-grid-image {
+	.uagb-post-grid-image {
 		margin-bottom: 1.2em;
 
 		img {
@@ -45,7 +45,7 @@
 		}
 	}
 
-	.ab-block-post-grid-text {
+	.uagb-post-grid-text {
 		text-align: left;
 	}
 
@@ -56,27 +56,27 @@
 		line-height: 1.2;
 
 		a {
-			color: $black;
+			color: inherit;
 			box-shadow: none;
 			transition: .3s ease;
 
 			&:hover {
-				box-shadow: inset 0 -2px 0 $accent;
-				color: $accent;
+				box-shadow: inset 0 -2px 0 #a00;
+				color: #a00;
 			}
 		}
 	}
 
-	.ab-block-post-grid-byline {
+	.uagb-post-grid-byline {
 		text-transform: uppercase;
 		font-size: 13px;
 		letter-spacing: 1px;
-		color: $lightgray;
+		color: #ababab;
 		margin-bottom: 15px;
 	}
 
-	.ab-block-post-grid-author, 
-	.ab-block-post-grid-date {
+	.uagb-post-grid-author, 
+	.uagb-post-grid-date {
 		display: inline-block;
 
 		&:not(:last-child):after {
@@ -87,17 +87,17 @@
 		}
 	}
 
-	.ab-block-post-grid-author a {
+	.uagb-post-grid-author a {
 		box-shadow: none;
 
 		&:hover {
 			color: inherit;
 			box-shadow: 0 -1px 0 inset;
-			color: $accent;
+			color: #a00;
 		}
 	}
 
-	.ab-block-post-grid-text p {
+	.uagb-post-grid-text p {
 		margin: 0 0 15px 0;
 		line-height: 1.5;
 		font-size: 18px;
@@ -111,19 +111,19 @@
 		}
 	}
 
-	.ab-block-post-grid-link {
+	.uagb-post-grid-link {
 		display: inline-block;
 		box-shadow: none;
 		transition: .3s ease;
 		font-weight: bold;
-		color: $black;
+		color: inherit;
 
 		&:hover {
 			box-shadow: 0 -2px 0 inset;
 		}
 	}
 
-	.ab-block-post-grid-excerpt div + p {
+	.uagb-post-grid-excerpt div + p {
 		margin-top: 15px;
 	}
 
@@ -150,7 +150,7 @@
 			}
 		}
 
-		.ab-block-post-grid-image {
+		.uagb-post-grid-image {
 			margin-bottom: 0;
 
 			@media only screen and (max-width: 600px) {
@@ -158,13 +158,13 @@
 			}
 		}
 
-		.ab-block-post-grid-title {
+		.uagb-post-grid-title {
 			@media only screen and (min-width: 600px) {
 				font-size: 34px;
 			}
 		}
 
-		.no-thumb .ab-block-post-grid-text {
+		.no-thumb .uagb-post-grid-text {
 			grid-column: span 2;
 		}
 	}

@@ -35,7 +35,7 @@ const {
 
 const MAX_POSTS_COLUMNS = 4;
 
-class LatestPostsBlock extends Component {
+class UAGBPostGrid extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -85,6 +85,8 @@ class LatestPostsBlock extends Component {
 		const latestPosts = this.props.latestPosts.data;
 		const { attributes, categoriesList, setAttributes } = this.props;
 		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+
+		console.log(this);
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -161,7 +163,7 @@ class LatestPostsBlock extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'Atomic Blocks Post Grid' ) }
+						label={ __( 'UAGB - Post Grid' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -208,7 +210,7 @@ class LatestPostsBlock extends Component {
 				<div
 					className={ classnames(
 						this.props.className,
-						'ab-block-post-grid',
+						'uagb-post-grid',
 					) }
 				>
 					<div
@@ -228,7 +230,7 @@ class LatestPostsBlock extends Component {
 							>
 								{
 									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="ab-block-post-grid-image">
+										<div class="uagb-post-grid-image">
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -243,28 +245,28 @@ class LatestPostsBlock extends Component {
 
 								{ console.log(post) }
 
-								<div class="ab-block-post-grid-text">
-									<h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+								<div className={ 'uagb-post-grid-text' }>
+									<h2 className={ 'entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
-									<div class="ab-block-post-grid-byline">
+									<div className={ 'uagb-post-grid-byline' }>
 										{ displayPostAuthor && post.author_info.display_name &&
-											<div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+											<div className={ 'uagb-post-grid-author' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 										}
 
 										{ displayPostDate && post.date_gmt &&
-											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post-grid-date' }>
 												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 											</time>
 										}
 									</div>
 
-									<div class="ab-block-post-grid-excerpt">
+									<div className={ 'uagb-post-grid-excerpt' }>
 										{ displayPostExcerpt && post.excerpt &&
 											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 										}
 
 										{ displayPostLink &&
-											<p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
+											<p><a className={ 'uagb-post-grid-link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
 										}
 									</div>
 								</div>
@@ -295,4 +297,4 @@ export default withAPIData( ( props ) => {
 		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
 		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
 	};
-} )( LatestPostsBlock );
+} )( UAGBPostGrid );

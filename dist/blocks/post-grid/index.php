@@ -42,13 +42,13 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		// Get the featured image
 		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 			if( $attributes['imageCrop'] === 'landscape' ) {
-				$post_thumb_size = 'ab-block-post-grid-landscape';
+				$post_thumb_size = 'uagb-post-grid-landscape';
 			} else {
-				$post_thumb_size = 'ab-block-post-grid-square';
+				$post_thumb_size = 'uagb-post-grid-square';
 			}
 			
 			$list_items_markup .= sprintf( 
-				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+				'<div class="uagb-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 				esc_url( get_permalink( $post_id ) ),
 				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
 			);
@@ -56,31 +56,31 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 		// Wrap the text content
 		$list_items_markup .= sprintf(
-			'<div class="ab-block-post-grid-text">'
+			'<div class="uagb-post-grid-text">'
 		);
 
 			// Get the post title 
 			$title = get_the_title( $post_id );
 
 			if ( ! $title ) {
-				$title = __( 'Untitled', 'atomic-blocks' );
+				$title = __( 'Untitled', 'uagb' );
 			}
 
 			$list_items_markup .= sprintf(
-				'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+				'<h2 class="uagb-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 				esc_url( get_permalink( $post_id ) ),
 				esc_html( $title )
 			);
 
 			// Wrap the byline content
 			$list_items_markup .= sprintf(
-				'<div class="ab-block-post-grid-byline">'
+				'<div class="uagb-post-grid-byline">'
 			);
 
 				// Get the post author
 				if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 					$list_items_markup .= sprintf(
-						'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+						'<div class="uagb-post-grid-author"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
 						esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
 						esc_html( get_author_posts_url( $post->post_author ) )
 					);
@@ -89,7 +89,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 				// Get the post date
 				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 					$list_items_markup .= sprintf(
-						'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
+						'<time datetime="%1$s" class="uagb-post-grid-date">%2$s</time>',
 						esc_attr( get_the_date( 'c', $post_id ) ),
 						esc_html( get_the_date( '', $post_id ) )
 					);
@@ -102,7 +102,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Wrap the excerpt content
 			$list_items_markup .= sprintf(
-				'<div class="ab-block-post-grid-excerpt">'
+				'<div class="uagb-post-grid-excerpt">'
 			);
 
 				// Get the excerpt
@@ -122,9 +122,9 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 				if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 					$list_items_markup .= sprintf(
-						'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+						'<p><a class="uagb-post-grid-link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
 						esc_url( get_permalink( $post_id ) ),
-						esc_html__( 'Continue Reading', 'atomic-blocks' )
+						esc_html__( 'Continue Reading', 'uagb' )
 					);
 				}
 
@@ -143,13 +143,13 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	// Build the classes
-	$class = "ab-block-post-grid align{$attributes['align']}";
+	$class = "uagb-post-grid align{$attributes['align']}";
 
 	if ( isset( $attributes['className'] ) ) {
 		$class .= ' ' . $attributes['className'];
 	}
 	
-	$grid_class = 'ab-post-grid-items';
+	$grid_class = 'uagb-post-grid-items';
 
 	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
 		$grid_class .= ' is-list';
@@ -296,7 +296,7 @@ add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 function uagb_blocks_get_image_src_landscape( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'ab-block-post-grid-landscape',
+		'uagb-post-grid-landscape',
 		false
 	);
 	return $feat_img_array[0];
@@ -308,7 +308,7 @@ function uagb_blocks_get_image_src_landscape( $object, $field_name, $request ) {
 function uagb_blocks_get_image_src_square( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'ab-block-post-grid-square',
+		'uagb-post-grid-square',
 		false
 	);
 	return $feat_img_array[0];

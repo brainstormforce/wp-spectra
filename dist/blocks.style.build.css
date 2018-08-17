@@ -25,3 +25,125 @@
     margin: 0px 0px 10px 0px; }
   .wp-block-uagb-advanced-heading .uagb-desc-text {
     margin: 0; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Post grid styles
+ * Loads on front end and back end
+ */
+.uagb-post-grid {
+  margin: 0 0 1.2em 0;
+  position: relative; }
+  .uagb-post-grid .is-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0 2em; }
+    .uagb-post-grid .is-grid article {
+      margin-bottom: 2.5em; }
+  .uagb-post-grid .is-grid.columns-2 {
+    grid-template-columns: 1fr 1fr; }
+  .uagb-post-grid .is-grid.columns-3 {
+    grid-template-columns: 1fr 1fr 1fr; }
+  .uagb-post-grid .is-grid.columns-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+  @media only screen and (max-width: 600px) {
+    .uagb-post-grid div[class*="columns"].is-grid {
+      grid-template-columns: 1fr; } }
+  .uagb-post-grid .uagb-post-grid-image {
+    margin-bottom: 1.2em; }
+    .uagb-post-grid .uagb-post-grid-image img {
+      display: block;
+      width: 100%; }
+  .uagb-post-grid .uagb-post-grid-text {
+    text-align: left; }
+  .uagb-post-grid h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 28px;
+    line-height: 1.2; }
+    .uagb-post-grid h2 a {
+      color: inherit;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      -webkit-transition: .3s ease;
+      -o-transition: .3s ease;
+      transition: .3s ease; }
+      .uagb-post-grid h2 a:hover {
+        -webkit-box-shadow: inset 0 -2px 0 #a00;
+                box-shadow: inset 0 -2px 0 #a00;
+        color: #a00; }
+  .uagb-post-grid .uagb-post-grid-byline {
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #ababab;
+    margin-bottom: 15px; }
+  .uagb-post-grid .uagb-post-grid-author,
+  .uagb-post-grid .uagb-post-grid-date {
+    display: inline-block; }
+    .uagb-post-grid .uagb-post-grid-author:not(:last-child):after,
+    .uagb-post-grid .uagb-post-grid-date:not(:last-child):after {
+      content: "\B7";
+      vertical-align: middle;
+      margin: 0 5px;
+      line-height: 1; }
+  .uagb-post-grid .uagb-post-grid-author a {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+    .uagb-post-grid .uagb-post-grid-author a:hover {
+      color: inherit;
+      -webkit-box-shadow: 0 -1px 0 inset;
+              box-shadow: 0 -1px 0 inset;
+      color: #a00; }
+  .uagb-post-grid .uagb-post-grid-text p {
+    margin: 0 0 15px 0;
+    line-height: 1.5;
+    font-size: 18px; }
+    @media only screen and (max-width: 600px) {
+      .uagb-post-grid .uagb-post-grid-text p {
+        font-size: 16px; } }
+    .uagb-post-grid .uagb-post-grid-text p:last-of-type {
+      margin-bottom: 0; }
+  .uagb-post-grid .uagb-post-grid-link {
+    display: inline-block;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    transition: .3s ease;
+    font-weight: bold;
+    color: inherit; }
+    .uagb-post-grid .uagb-post-grid-link:hover {
+      -webkit-box-shadow: 0 -2px 0 inset;
+              box-shadow: 0 -2px 0 inset; }
+  .uagb-post-grid .uagb-post-grid-excerpt div + p {
+    margin-top: 15px; }
+  .uagb-post-grid .is-list article {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0 2em; }
+    .uagb-post-grid .is-list article:not(:last-child) {
+      margin-bottom: 5%;
+      padding-bottom: 5%; }
+    @media only screen and (min-width: 600px) {
+      .uagb-post-grid .is-list article:not(:last-child) {
+        border-bottom: solid 1px #eee; } }
+    @media only screen and (max-width: 600px) {
+      .uagb-post-grid .is-list article {
+        grid-template-columns: 1fr; } }
+  .uagb-post-grid .is-list .uagb-post-grid-image {
+    margin-bottom: 0; }
+    @media only screen and (max-width: 600px) {
+      .uagb-post-grid .is-list .uagb-post-grid-image {
+        margin-bottom: 5%; } }
+  @media only screen and (min-width: 600px) {
+    .uagb-post-grid .is-list .uagb-post-grid-title {
+      font-size: 34px; } }
+  .uagb-post-grid .is-list .no-thumb .uagb-post-grid-text {
+    grid-column: span 2; }
