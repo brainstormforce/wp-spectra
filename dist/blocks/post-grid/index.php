@@ -10,6 +10,7 @@
  * Renders the post grid block on server.
  */
 function uagb_blocks_render_block_core_latest_posts( $attributes ) {
+
 	$recent_posts = wp_get_recent_posts( array(
 		'numberposts' => $attributes['postsToShow'],
 		'post_status' => 'publish',
@@ -178,10 +179,10 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 function uagb_blocks_register_block_core_latest_posts() {
 	
 	// Check if the register function exists
-	if ( ! function_exists( 'register_block_type' ) ) {
+	/*if ( ! function_exists( 'register_block_type' ) ) {
 		return;
-	}
-
+	}*/
+	
 	register_block_type( 'uagb/post-grid', array(
 		'attributes' => array(
 			'categories' => array(

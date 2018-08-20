@@ -64,7 +64,7 @@ class UAGB_Init_Blocks {
 		/**
 		 * Load Post Grid PHP
 		 */
-		require_once plugin_dir_path( __FILE__ ) . 'dist/blocks/post-grid/index.php';
+		//require_once UAGB_DIR . 'dist/blocks/post-grid/index.php';
 	}
 
 	/**
