@@ -48,23 +48,6 @@ class UAGB_Init_Blocks {
 
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
-
-		add_action( 'plugins_loaded', array( $this, 'blocks_loader' ) );
-	}
-
-	/**
-	 * Initialize the blocks
-	 */
-	function blocks_loader() {
-		/**
-		 * Load the blocks functionality
-		 */
-		//require_once plugin_dir_path( __FILE__ ) . 'dist/init.php';
-
-		/**
-		 * Load Post Grid PHP
-		 */
-		//require_once UAGB_DIR . 'dist/blocks/post-grid/index.php';
 	}
 
 	/**
