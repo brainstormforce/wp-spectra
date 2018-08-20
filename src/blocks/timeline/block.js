@@ -15,14 +15,14 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 const {
-	registerBlockType,
+    registerBlockType,
 } = wp.blocks;
 
 const { decodeEntities } = wp.htmlEntities;
 
 /*var el = wp.element.createElement,
-	registerBlockType = wp.blocks.registerBlockType,
-	withAPIData = wp.components.withAPIData;*/
+    registerBlockType = wp.blocks.registerBlockType,
+    withAPIData = wp.components.withAPIData;*/
 
 const {
     PanelBody,
@@ -30,67 +30,93 @@ const {
     SelectControl,
     RangeControl,
     QueryControls,
-	Spinner,
-	ToggleControl,
-	Toolbar,
-	withAPIData,
+    Spinner,
+    ToggleControl,
+    Toolbar,
+    withAPIData,
 } = wp.components;
 
 const {
-	AlignmentToolbar,
-	BlockControls,
-	ColorPalette,
-	InspectorControls,
-	RichText,
-	BlockAlignmentToolbar,
+    AlignmentToolbar,
+    BlockControls,
+    ColorPalette,
+    InspectorControls,
+    RichText,
+    BlockAlignmentToolbar,
 } = wp.editor;
 
 class UAGBTimeline extends Component {
-	render() {
-		console.log('render');
-		// Setup the attributes
-		const {
-			isSelected,
-			className,
-			setAttributes,
-			attributes: { 
-				headingTitle,
-				headingDesc,
-				headingAlign,
-				headingColor,
-				subHeadingColor,
-				separatorColor,
-				headingTag,
-				headFontSize,
-				subHeadFontSize,
-				separatorWidth,
-				separatorHeight,
-				headSpace,
-				separatorSpace,
-				subHeadSpace,
-				categories,
-				postType,
-				postsToShow,
-				displayPostDate,
-				postLayout,
-				columns,
-				align,
-				order,
-				orderBy
-			},
-		} = this.props;
-		
-		var tm_content = uagb_get_timeline_content( this.props );
-		console.log(this.props);
-		
-		return [			
-			isSelected && (
-				<InspectorControls>
-				<PanelBody 
-                	title={ __( 'Select Type' ) }
-                	initialOpen={ false }
+   
+
+    constructor() {
+        console.log('constructor');
+
+        super( ...arguments );
+              
+        // Bind so we can use 'this' inside the method.
+        this.getOptions = this.getOptions.bind(this);
+
+        // Load posts.
+        this.getOptions();        
+    }
+   
+
+    /**
+    * Loading Posts
+    */
+    getOptions() { 
+        console.log('getoption');       
+        return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
+            this.setState({ posts });
+        });   
+        
+    }
+
+    render() {
+        //console.log('render');
+        // Setup the attributes
+        const {
+            isSelected,
+            className,
+            setAttributes,
+            attributes: { 
+                headingTitle,
+                headingDesc,
+                headingAlign,
+                headingColor,
+                subHeadingColor,
+                separatorColor,
+                headingTag,
+                headFontSize,
+                subHeadFontSize,
+                separatorWidth,
+                separatorHeight,
+                headSpace,
+                separatorSpace,
+                subHeadSpace,
+                categories,
+                postType,
+                postsToShow,
+                displayPostDate,
+                postLayout,
+                columns,
+                align,
+                order,
+                orderBy
+            },
+        } = this.props;
+        //console.log(this.state);
+        var tm_content = uagb_get_timeline_content( this.props ,this.state );
+        //console.log(this.props);
+        
+        return [            
+            isSelected && (
+                <InspectorControls>
+                <PanelBody 
+                    title={ __( 'Select Type' ) }
+                    initialOpen={ false }
                 >
-                	<SelectControl
+                    <SelectControl
                         label={ __( 'Type' ) }
                         value={ postType }
                         onChange={ ( value ) => setAttributes( { postType: value } ) }
@@ -103,22 +129,22 @@ class UAGBTimeline extends Component {
                 </InspectorControls> 
             ),
        
-			isSelected && (
-				<BlockControls key='controls'>
-					<AlignmentToolbar
-						value={ headingAlign }
-						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-					/>
-				</BlockControls>
-			),
+            isSelected && (
+                <BlockControls key='controls'>
+                    <AlignmentToolbar
+                        value={ headingAlign }
+                        onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+                    />
+                </BlockControls>
+            ),
 
-			isSelected && (
-				<InspectorControls>
-				<PanelBody 
-                	title={ __( 'Typography' ) }
-                	initialOpen={ false }
+            isSelected && (
+                <InspectorControls>
+                <PanelBody 
+                    title={ __( 'Typography' ) }
+                    initialOpen={ false }
                 >
-                	<SelectControl
+                    <SelectControl
                         label={ __( 'Tag' ) }
                         value={ headingTag }
                         onChange={ ( value ) => setAttributes( { headingTag: value } ) }
@@ -131,7 +157,7 @@ class UAGBTimeline extends Component {
                             { value: 'h6', label: __( 'H6' ) },
                         ] }
                     />
-					<RangeControl
+                    <RangeControl
                         label={ __( 'Heading Font Size' ) }
                         value={ headFontSize }
                         onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
@@ -149,10 +175,10 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
-				</PanelBody>
+                </PanelBody>
                 <PanelBody 
-                	title={ __( 'Colors' ) }
-                	initialOpen={ false }
+                    title={ __( 'Colors' ) }
+                    initialOpen={ false }
                 >
                     <PanelColor
                         title={ __( 'Heading Color' ) }
@@ -187,12 +213,12 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-				</PanelBody>
-				<PanelBody 
-                	title={ __( 'Additional Options' ) }
-                	initialOpen={ false }
+                </PanelBody>
+                <PanelBody 
+                    title={ __( 'Additional Options' ) }
+                    initialOpen={ false }
                 >
-                	<RangeControl
+                    <RangeControl
                         label={ __( 'Separator Height' ) }
                         value={ separatorHeight }
                         onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
@@ -201,7 +227,7 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
-                	<RangeControl
+                    <RangeControl
                         label={ __( 'Separator Width' ) }
                         value={ separatorWidth }
                         onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
@@ -210,7 +236,7 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
-					<RangeControl
+                    <RangeControl
                         label={ __( 'Heading Spacing' ) }
                         value={ headSpace }
                         onChange={ ( value ) => setAttributes( { headSpace: value } ) }
@@ -237,86 +263,105 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
-				</PanelBody>
+                </PanelBody>
                 </InspectorControls>
             ),            
             <div classnames = "cp-timeline-main">   
-            	{tm_content}
-			</div>
-		];
-	}
+                {tm_content}
+            </div>
+        ];
+    }
 }
 
-function uagb_get_timeline_content(val) {
-		
-	//var props = props;
-	var p_attr = val.attributes;
-	var time_content = p_attr.postType;
+function uagb_get_timeline_content(val, post_data) {
+        
+    var p_attr = val.attributes;
+    var time_content = p_attr.postType;    
 
-	if( time_content == 'general'){
-	  return <div className={ p_attr.className }>
-	  			<RichText
-					tagName={ p_attr.headingTag }
-					placeholder={ __( 'Write a Heading' ) }
-					value={ p_attr.headingTitle }
-					className='uagb-heading-text'
-					onChange={ ( value ) => p_attr.setAttributes( { headingTitle: value } ) }
-					style={{ 
-						textAlign: p_attr.headingAlign,
-						fontSize: p_attr.headFontSize + 'px',
-						color: p_attr.headingColor,
-						marginBottom: p_attr.headSpace + 'px',
-					}}
-				/>
-				<div
-					className="uagb-separator-wrap"
-					style={{ textAlign: p_attr.headingAlign }}
-				>
-				<div className="uagb-separator" style={{ borderTopWidth: p_attr.separatorHeight + 'px', width: p_attr.separatorWidth + '%', borderColor: p_attr.separatorColor, marginBottom: p_attr.separatorSpace + 'px', }}></div></div>
-	  			<RichText
-							tagName="p"
-							placeholder={ __( 'Write a Description' ) }
-							value={ p_attr.headingDesc }
-							className='uagb-desc-text'
-							onChange={ ( value ) => p_attr.setAttributes( { headingDesc: value } ) }
-							style={{
-								textAlign: p_attr.headingAlign,
-								fontSize: p_attr.subHeadFontSize + 'px',
-								color: p_attr.subHeadingColor,
-								marginBottom: p_attr.subHeadSpace + 'px',
-							}}
-						/>
-	  		</div>;
-	  	}else{	
-	  	  	var t = withAPIData( function() {
-	  	  		console.log('pg');
-				return {
-					posts: '/wp/v2/posts?per_page=5'
-				};
-			} );	
-			console.log(t);
-		}
+    if( time_content == 'general'){
+      return <div className={ p_attr.className }>
+                <RichText
+                    tagName={ p_attr.headingTag }
+                    placeholder={ __( 'Write a Heading' ) }
+                    value={ p_attr.headingTitle }
+                    className='uagb-heading-text'
+                    onChange={ ( value ) => p_attr.setAttributes( { headingTitle: value } ) }
+                    style={{ 
+                        textAlign: p_attr.headingAlign,
+                        fontSize: p_attr.headFontSize + 'px',
+                        color: p_attr.headingColor,
+                        marginBottom: p_attr.headSpace + 'px',
+                    }}
+                />
+                <div
+                    className="uagb-separator-wrap"
+                    style={{ textAlign: p_attr.headingAlign }}
+                >
+                <div className="uagb-separator" style={{ borderTopWidth: p_attr.separatorHeight + 'px', width: p_attr.separatorWidth + '%', borderColor: p_attr.separatorColor, marginBottom: p_attr.separatorSpace + 'px', }}></div></div>
+                <RichText
+                            tagName="p"
+                            placeholder={ __( 'Write a Description' ) }
+                            value={ p_attr.headingDesc }
+                            className='uagb-desc-text'
+                            onChange={ ( value ) => p_attr.setAttributes( { headingDesc: value } ) }
+                            style={{
+                                textAlign: p_attr.headingAlign,
+                                fontSize: p_attr.subHeadFontSize + 'px',
+                                color: p_attr.subHeadingColor,
+                                marginBottom: p_attr.subHeadSpace + 'px',
+                            }}
+                        />
+            </div>;
+        }else{  
+            //console.log(post_data);
+            if ( post_data.length === 0 ) {
+                return "No posts";
+            } 
+            return (<ul>
+                    {post_data.posts.map(post => {
+                        return (
+                            <li>
+                                <a href={post.link}>
+                                    {post.title.rendered}
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>);       
+        }
 }
 
 registerBlockType( 'uagb/timeline', {
-	title: 'Timeline - UAGB',
-	icon: 'megaphone',
-	category: 'widgets',
-	attributes: {
-		headingTitle: {
-			type: 'string',
-			default: 'Timeline heading',
-
-		},
-		headingDesc: {
-			type: 'string',
-			default: 'This is Timeline description, you can change me anytime click here',
-		},
-		headingAlign: {
-			type: 'string',
-			default: 'center',
-		},
-		headingColor: {
+    title: 'Timeline - UAGB',
+    icon: 'megaphone',
+    category: 'widgets',
+    attributes: {
+        content: {
+          type: 'array',
+          source: 'children',
+          selector: 'p',
+        },
+        title: {
+          type: 'string',
+          selector: 'h2'
+        },
+        link: {
+          type: 'string',
+          selector: 'a'
+        },       
+        headingTitle: {
+            type: 'string',
+            default: 'Timeline heading',
+        },
+        headingDesc: {
+            type: 'string',
+            default: 'This is Timeline description, you can change me anytime click here',
+        },
+        headingAlign: {
+            type: 'string',
+            default: 'center',
+        },
+        headingColor: {
             type: 'string',
             default: '#000',
         },
@@ -325,18 +370,18 @@ registerBlockType( 'uagb/timeline', {
             default: '#000',
         },
         separatorColor: {
-        	type: 'string',
-        	default: '#000',
+            type: 'string',
+            default: '#000',
         },
         headingTag: {
-        	type: 'string',
-        	default: 'h1'
+            type: 'string',
+            default: 'h1'
         },
         separatorHeight: {
-        	type: 'number'
+            type: 'number'
         },
         separatorWidth: {
-        	type: 'number'
+            type: 'number'
         },
         headFontSize: {
             type: 'number',
@@ -347,68 +392,55 @@ registerBlockType( 'uagb/timeline', {
         headSpace: {
             type: 'number',
         },
-		separatorSpace: {
+        separatorSpace: {
             type: 'number',
         },
-		subHeadSpace: {
+        subHeadSpace: {
             type: 'number',
         },
-		categories: {
-			type: 'string',
-			default: 5,
-		},
-		postType: {
-			type: 'string',
-			default: 'general',
-		},
-		postsToShow: {
-			type: 'number',
-		},
-		displayPostDate: {
-			type: 'boolean',
-			default: false,
-		},
-		postLayout: {
+        categories: {
+            type: 'string',
+            default: 5,
+        },
+        postType: {
+            type: 'string',
+            default: 'general',
+        },
+        postsToShow: {
+            type: 'number',
+        },
+        displayPostDate: {
+            type: 'boolean',
+            default: false,
+        },
+        postLayout: {
             type: 'string',
             default: 'list',
         },
         columns: {
            type: 'number',
-		   default: 3,
+           default: 3,
         },
         align: {
-        	type: 'string',
-        	default: 'center',
+            type: 'string',
+            default: 'center',
         },
         order: {
-        	type: 'string',
-        	default: 'desc'
+            type: 'string',
+            default: 'desc'
         },
         orderBy: {
-        	type: 'string',
-        	default: 'desc'
+            type: 'string',
+            default: 'desc'
         }, 
-	},
+    },
 
-	edit: UAGBTimeline,
-	function( props ) {
-
-		console.log( 'Edit props' );
-		console.log( props );
-
-		const { headingTitle } = props.attributes;
-
-		return (
-			<div className={ props.className }>
-				<p>Ultimate Addons For Gutenberg!</p>
-			</div>
-		);
-	},
-
-	save: function(props) {
-		console.log( 'Save props' );
-		console.log( props );
-		return 'Hello';
-	},
+    edit: UAGBTimeline,
+  
+    save: function(props) {
+        //console.log( 'Save props' );
+        //console.log( props );
+        return 'Hello';
+    },
 } );
 
