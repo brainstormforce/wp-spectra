@@ -49,8 +49,6 @@ class UAGBTimeline extends Component {
    
 
     constructor() {
-        console.log('constructor');
-
         super( ...arguments );
               
         // Bind so we can use 'this' inside the method.
@@ -65,7 +63,6 @@ class UAGBTimeline extends Component {
     * Loading Posts
     */
     getOptions() { 
-        console.log('getoption');       
         return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
             this.setState({ posts });
         });   
@@ -73,7 +70,6 @@ class UAGBTimeline extends Component {
     }
 
     render() {
-        //console.log('render');
         // Setup the attributes
         const {
             isSelected,
@@ -105,9 +101,8 @@ class UAGBTimeline extends Component {
                 orderBy
             },
         } = this.props;
-        //console.log(this.state);
+
         var tm_content = uagb_get_timeline_content( this.props ,this.state );
-        //console.log(this.props);
         
         return [            
             isSelected && (
@@ -324,6 +319,7 @@ function uagb_get_timeline_content(val, post_data) {
                                 <a href={post.link}>
                                     {post.title.rendered}
                                 </a>
+                                <p dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } }></p>
                             </li>
                         );
                     })}
