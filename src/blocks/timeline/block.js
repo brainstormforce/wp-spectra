@@ -49,29 +49,29 @@ class UAGBTimeline extends Component {
    
 
     constructor() {
-        super( ...arguments );
-              
-        // Bind so we can use 'this' inside the method.
-        this.getOptions = this.getOptions.bind(this);
-
-        // Load posts.
-        this.getOptions(); 
+        super( ...arguments );         
 
         this.state = {
-            data : []
+            data : [],
+            posts : []
         }
 
+        // Bind so we can use 'this' inside the method.
+        this.getContent = this.getContent.bind(this);
         // Load data.
         this.getContent(); 
-        //this.state = this.constructor.getInitialState( this.props.attributes.selectedPost );
 
+        // Bind so we can use 'this' inside the method.
+        this.getOptions = this.getOptions.bind(this);
+        // Load posts.
+        this.getOptions(); 
     }
 
    /**
     * Loading Content
     */
     getContent() {  
-        console.log('getcontent');       
+        //console.log('getcontent');  
         var item_number = this.props.attributes.timelineItem;
        
         var item =[];
@@ -81,23 +81,28 @@ class UAGBTimeline extends Component {
             var title_heading_val = 'Timeline Heading '+i;
             var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
             var temp = [];
-            var p = { time_heading : title_heading_val,time_desc:title_desc_val };
-            item.push(p);
+            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            item.push(p);            
         }    
-        this.state = {"data": item}
+        //this.state = {"data": item}
+        this.state.data = item;
     }  
 
     /**
     * Loading Posts
     */
     getOptions() {   
+        //console.log('getoption');      
         return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
-            this.setState({ posts });
+            this.setState({
+                'posts': posts
+            });
+            //this.setState({ posts });
         });           
     }    
 
     render() {
-        // Setup the attributes
+        // Setup the attribute
         const {
             isSelected,
             className,
@@ -129,6 +134,7 @@ class UAGBTimeline extends Component {
                 orderBy
             },
         } = this.props;
+        console.log(this);
         //console.log(this.state.data);
         //console.log(this.state.posts);
         var tm_content = uagb_get_timeline_content( this.props ,this.state );
