@@ -4,3 +4,9 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+.uagb-post-content p{
+	text-align:inherit;
+	font-size:inherit;
+	color :inherit;
+	margin-bottom:inherit;
+}

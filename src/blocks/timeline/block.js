@@ -313,8 +313,8 @@ function uagb_get_timeline_content(val, state_data) {
     var timeline_item = p_attr.timelineItem;
     var post_data = state_data.posts;
     var data = state_data.data;
-    //console.log(time_heading, time_desc);
-    //
+    //console.log(post_data);
+
     if( time_content == 'general'){
          return (<div className={ p_attr.className }>
                  {data.map(post => {
@@ -354,14 +354,25 @@ function uagb_get_timeline_content(val, state_data) {
             if ( post_data.length === 0 ) {
                 return "No posts";
             } 
-            return (<ul>
+            return (<ul className="uagb-desc-text">
                     {post_data.map(post => {
                         return (
                             <li>
-                                <a href={post.link}>
+                                <a href={post.link} style={{ 
+                                    textAlign: p_attr.headingAlign,
+                                    fontSize: p_attr.headFontSize + 'px',
+                                    color: p_attr.headingColor,
+                                    marginBottom: p_attr.headSpace + 'px',
+                                }} >
                                     {post.title.rendered}
                                 </a>
-                                <p dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } }></p>
+                                <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
+                                    textAlign: p_attr.headingAlign,
+                                    fontSize: p_attr.subHeadFontSize + 'px',
+                                    color: p_attr.subHeadingColor,
+                                    marginBottom: p_attr.subHeadSpace + 'px',
+                                }}>
+                                 </div>
                             </li>
                         );
                     })}
