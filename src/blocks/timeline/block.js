@@ -1,5 +1,5 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: Timeline
  */
 
 // Import block dependencies and components.
@@ -55,19 +55,46 @@ class UAGBTimeline extends Component {
         this.getOptions = this.getOptions.bind(this);
 
         // Load posts.
-        this.getOptions();        
+        this.getOptions(); 
+
+        this.state = {
+            data : []
+        }
+
+        // Load data.
+        this.getContent(); 
+        //this.state = this.constructor.getInitialState( this.props.attributes.selectedPost );
+
     }
-   
+
+   /**
+    * Loading Content
+    */
+    getContent() {  
+        console.log('getcontent');       
+        var item_number = this.props.attributes.timelineItem;
+       
+        var item =[];
+        for (var i = 1; i <= item_number; i++) {
+            var time_heading      = 'headingTitle_'+i;
+            var time_desc         = 'headingDesc_' +i;
+            var title_heading_val = 'Timeline Heading '+i;
+            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            var temp = [];
+            var p = { time_heading : title_heading_val,time_desc:title_desc_val };
+            item.push(p);
+        }    
+        this.state = {"data": item}
+    }  
 
     /**
     * Loading Posts
     */
-    getOptions() { 
+    getOptions() {   
         return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
             this.setState({ posts });
-        });   
-        
-    }
+        });           
+    }    
 
     render() {
         // Setup the attributes
@@ -76,14 +103,15 @@ class UAGBTimeline extends Component {
             className,
             setAttributes,
             attributes: { 
-                headingTitle,
-                headingDesc,
+                headingTitle1,
+                headingDesc1,
                 headingAlign,
                 headingColor,
                 subHeadingColor,
                 separatorColor,
                 headingTag,
                 headFontSize,
+                timelineItem,
                 subHeadFontSize,
                 separatorWidth,
                 separatorHeight,
@@ -101,9 +129,10 @@ class UAGBTimeline extends Component {
                 orderBy
             },
         } = this.props;
-
+        //console.log(this.state.data);
+        //console.log(this.state.posts);
         var tm_content = uagb_get_timeline_content( this.props ,this.state );
-        
+        //console.log(this.props.attributes.timelineItem);
         return [            
             isSelected && (
                 <InspectorControls>
@@ -119,6 +148,15 @@ class UAGBTimeline extends Component {
                             { value: 'general', label: __( 'Custom' ) },
                             { value: 'post', label: __( 'Post Type' ) },                            
                         ] }
+                    />
+                    <RangeControl
+                        label={ __( 'Timeline Item Number' ) }
+                        value={ timelineItem }
+                        onChange={ ( value ) => setAttributes( { timelineItem: value } ) }
+                        min={ 1 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
                     />
             </PanelBody>
                 </InspectorControls> 
@@ -268,52 +306,56 @@ class UAGBTimeline extends Component {
     }
 }
 
-function uagb_get_timeline_content(val, post_data) {
-        
+function uagb_get_timeline_content(val, state_data) {
+    //..    
     var p_attr = val.attributes;
     var time_content = p_attr.postType;    
-
+    var timeline_item = p_attr.timelineItem;
+    var post_data = state_data.posts;
+    var data = state_data.data;
+    //console.log(time_heading, time_desc);
+    //
     if( time_content == 'general'){
-      return <div className={ p_attr.className }>
-                <RichText
-                    tagName={ p_attr.headingTag }
-                    placeholder={ __( 'Write a Heading' ) }
-                    value={ p_attr.headingTitle }
-                    className='uagb-heading-text'
-                    onChange={ ( value ) => p_attr.setAttributes( { headingTitle: value } ) }
-                    style={{ 
-                        textAlign: p_attr.headingAlign,
-                        fontSize: p_attr.headFontSize + 'px',
-                        color: p_attr.headingColor,
-                        marginBottom: p_attr.headSpace + 'px',
-                    }}
-                />
-                <div
-                    className="uagb-separator-wrap"
-                    style={{ textAlign: p_attr.headingAlign }}
-                >
-                <div className="uagb-separator" style={{ borderTopWidth: p_attr.separatorHeight + 'px', width: p_attr.separatorWidth + '%', borderColor: p_attr.separatorColor, marginBottom: p_attr.separatorSpace + 'px', }}></div></div>
-                <RichText
-                            tagName="p"
-                            placeholder={ __( 'Write a Description' ) }
-                            value={ p_attr.headingDesc }
-                            className='uagb-desc-text'
-                            onChange={ ( value ) => p_attr.setAttributes( { headingDesc: value } ) }
-                            style={{
-                                textAlign: p_attr.headingAlign,
-                                fontSize: p_attr.subHeadFontSize + 'px',
-                                color: p_attr.subHeadingColor,
-                                marginBottom: p_attr.subHeadSpace + 'px',
-                            }}
-                        />
-            </div>;
+         return (<div className={ p_attr.className }>
+                 {data.map(post => {
+                        return (  <div>
+                            <RichText
+                                tagName={ p_attr.headingTag }
+                                placeholder={ __( 'Write a Heading' ) }
+                                value={ post.time_heading }
+                                className='uagb-heading-text'
+                                //onChange={ ( value ) => val.setAttributes( { headingTitle1: value } ) }
+                                style={{ 
+                                    textAlign: p_attr.headingAlign,
+                                    fontSize: p_attr.headFontSize + 'px',
+                                    color: p_attr.headingColor,
+                                    marginBottom: p_attr.headSpace + 'px',
+                                }}
+                            />
+                            <RichText
+                                tagName="p"
+                                placeholder={ __( 'Write a Description' ) }
+                                value={ post.time_desc }
+                                className='uagb-desc-text'
+                                //onChange={ ( value ) => val.setAttributes( { headingDesc1: value } ) }
+                                style={{
+                                    textAlign: p_attr.headingAlign,
+                                    fontSize: p_attr.subHeadFontSize + 'px',
+                                    color: p_attr.subHeadingColor,
+                                    marginBottom: p_attr.subHeadSpace + 'px',
+                                }}
+                            />
+                            </div>                      
+                        );
+                    })}
+            </div>);         
         }else{  
-            //console.log(post_data);
+            //custom query data
             if ( post_data.length === 0 ) {
                 return "No posts";
             } 
             return (<ul>
-                    {post_data.posts.map(post => {
+                    {post_data.map(post => {
                         return (
                             <li>
                                 <a href={post.link}>
@@ -345,11 +387,11 @@ registerBlockType( 'uagb/timeline', {
           type: 'string',
           selector: 'a'
         },       
-        headingTitle: {
+        headingTitle1: {
             type: 'string',
             default: 'Timeline heading',
         },
-        headingDesc: {
+        headingDesc1: {
             type: 'string',
             default: 'This is Timeline description, you can change me anytime click here',
         },
@@ -371,7 +413,7 @@ registerBlockType( 'uagb/timeline', {
         },
         headingTag: {
             type: 'string',
-            default: 'h1'
+            default: 'h3'
         },
         separatorHeight: {
             type: 'number'
@@ -381,6 +423,10 @@ registerBlockType( 'uagb/timeline', {
         },
         headFontSize: {
             type: 'number',
+        },
+        timelineItem:{
+            type: 'number',
+            default: 5,
         },
         subHeadFontSize: {
             type: 'number',
