@@ -76,8 +76,6 @@ class UAGBTimeline extends Component {
        
         var item =[];
         for (var i = 1; i <= item_number; i++) {
-            var time_heading      = 'headingTitle_'+i;
-            var time_desc         = 'headingDesc_' +i;
             var title_heading_val = 'Timeline Heading '+i;
             var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
             var temp = [];
@@ -108,8 +106,6 @@ class UAGBTimeline extends Component {
             className,
             setAttributes,
             attributes: { 
-                headingTitle1,
-                headingDesc1,
                 headingAlign,
                 headingColor,
                 subHeadingColor,
@@ -134,11 +130,12 @@ class UAGBTimeline extends Component {
                 orderBy
             },
         } = this.props;
-        console.log(this);
         //console.log(this.state.data);
         //console.log(this.state.posts);
-        var tm_content = uagb_get_timeline_content( this.props ,this.state );
-        //console.log(this.props.attributes.timelineItem);
+        var tm_content = uagb_get_timeline_content( this );
+        
+        //function to change heading state.       
+
         return [            
             isSelected && (
                 <InspectorControls>
@@ -312,25 +309,28 @@ class UAGBTimeline extends Component {
     }
 }
 
-function uagb_get_timeline_content(val, state_data) {
-    //..    
-    var p_attr = val.attributes;
+// Output render.
+function uagb_get_timeline_content(current) {
+    //..  this.props ,this.state
+    console.log(current);  
+    var p_attr = current.props.attributes;
     var time_content = p_attr.postType;    
     var timeline_item = p_attr.timelineItem;
-    var post_data = state_data.posts;
-    var data = state_data.data;
-    //console.log(post_data);
-
+    var post_data = current.state.posts;
+    var data = current.state.data;
+    let data_copy = [ ...current.state.data ];
+    //let posts_copy = [ ...current.state.posts ];
+    //console.log(data_copy);
     if( time_content == 'general'){
          return (<div className={ p_attr.className }>
-                 {data.map(post => {
+                 {data.map((post,index) => {                    
                         return (  <div>
                             <RichText
                                 tagName={ p_attr.headingTag }
                                 placeholder={ __( 'Write a Heading' ) }
                                 value={ post.time_heading }
                                 className='uagb-heading-text'
-                                //onChange={ ( value ) => val.setAttributes( { headingTitle1: value } ) }
+                                onChange={ ( value ) => { data_copy[index] = {...data_copy[index], 'time_heading': value};current.setState({ data:data_copy }); } }
                                 style={{ 
                                     textAlign: p_attr.headingAlign,
                                     fontSize: p_attr.headFontSize + 'px',
@@ -343,7 +343,7 @@ function uagb_get_timeline_content(val, state_data) {
                                 placeholder={ __( 'Write a Description' ) }
                                 value={ post.time_desc }
                                 className='uagb-desc-text'
-                                //onChange={ ( value ) => val.setAttributes( { headingDesc1: value } ) }
+                                onChange={ ( value ) => { data_copy[index] = {...data_copy[index], 'time_desc': value};current.setState({ data:data_copy }); } }
                                 style={{
                                     textAlign: p_attr.headingAlign,
                                     fontSize: p_attr.subHeadFontSize + 'px',
@@ -404,14 +404,6 @@ registerBlockType( 'uagb/timeline', {
           type: 'string',
           selector: 'a'
         },       
-        headingTitle1: {
-            type: 'string',
-            default: 'Timeline heading',
-        },
-        headingDesc1: {
-            type: 'string',
-            default: 'This is Timeline description, you can change me anytime click here',
-        },
         headingAlign: {
             type: 'string',
             default: 'center',
