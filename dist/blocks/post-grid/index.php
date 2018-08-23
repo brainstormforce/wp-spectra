@@ -70,14 +70,16 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 			}
 
 			$list_items_markup .= sprintf(
-				'<h3 class="uagb-post__title"><a href="%1$s" rel="bookmark">%2$s</a></h3>',
+				'<h3 class="uagb-post__title" style="color: %2$s;"><a href="%1$s" rel="bookmark">%3$s</a></h3>',
 				esc_url( get_permalink( $post_id ) ),
+				$attributes['titleColor'],
 				esc_html( $title )
 			);
 
 			// Wrap the byline content
 			$list_items_markup .= sprintf(
-				'<div class="uagb-post-grid-byline">'
+				'<div class="uagb-post-grid-byline" style="color: %1$s;">',
+				$attributes['metaColor']
 			);
 
 				// Get the post author
@@ -113,7 +115,8 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Wrap the excerpt content
 			$list_items_markup .= sprintf(
-				'<div class="uagb-post__excerpt">'
+				'<div class="uagb-post__excerpt" style="color: %1$s;">',
+				$attributes['excerptColor']
 			);
 
 				// Get the excerpt
@@ -138,9 +141,11 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 			if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 				$list_items_markup .= sprintf(
-					'<div class="uagb-post__cta"><a class="uagb-post__link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></div>',
+					'<div class="uagb-post__cta" style="color: %3$s; background: %4$s;"><a class="uagb-post__link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></div>',
 					esc_url( get_permalink( $post_id ) ),
-					esc_html__( 'Continue Reading', 'uagb' )
+					esc_html__( 'Read More', 'uagb' ),
+					$attributes['ctaColor'],
+					$attributes['ctaBgColor']
 				);
 			}
 
@@ -268,6 +273,26 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'bgColor' => array(
 				'type' => 'string',
 				'default' => '#e4e4e4'
+			),
+			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#3b3b3b'
+			),
+			'metaColor' => array(
+				'type' => 'string',
+				'default' => '#777777'
+			),
+			'excerptColor' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'ctaColor' => array(
+				'type' => 'string',
+				'default' => '#ffffff'
+			),
+			'ctaBgColor' => array(
+				'type' => 'string',
+				'default' => '#333333'
 			),
 			'contentPadding' => array(
 				'type' => 'number',

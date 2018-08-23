@@ -117,7 +117,12 @@ class UAGBPostGrid extends Component {
 			rowGap,
 			columnGap,
 			bgColor,
-			contentPadding
+			contentPadding,
+			titleColor,
+			metaColor,
+			excerptColor,
+			ctaColor,
+			ctaBgColor
 		} = attributes;
 
 		console.log(this);
@@ -154,12 +159,27 @@ class UAGBPostGrid extends Component {
 					}
 
 				</PanelBody>
-				<PanelBody title={ __( 'Content' ) }>
+				<PanelBody title={ __( 'Image' ) }>
 					<ToggleControl
 						label={ __( 'Show Featured Image' ) }
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Title' ) }>
+					<PanelColor
+                        title={ __( 'Color' ) }
+                        colorValue={ titleColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ titleColor }
+                            onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+				</PanelBody>
+				<PanelBody title={ __( 'Meta' ) }>
 					<ToggleControl
 						label={ __( 'Show Author' ) }
 						checked={ displayPostAuthor }
@@ -175,17 +195,64 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostComment }
 						onChange={ this.toggleDisplayPostComment }
 					/>
+					<PanelColor
+                        title={ __( 'Meta Color' ) }
+                        colorValue={ metaColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ metaColor }
+                            onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+				</PanelBody>
+				<PanelBody title={ __( 'Excerpt' ) }>
 					<ToggleControl
 						label={ __( 'Show Excerpt' ) }
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
+					<PanelColor
+                        title={ __( 'Excerpt Color' ) }
+                        colorValue={ excerptColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ excerptColor }
+                            onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+				</PanelBody>
+				<PanelBody title={ __( 'CTA' ) }>
 					<ToggleControl
-						label={ __( 'Display Continue Reading Link' ) }
+						label={ __( 'Show Read More Link' ) }
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
-
+					<PanelColor
+                        title={ __( 'CTA Color' ) }
+                        colorValue={ ctaColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ ctaColor }
+                            onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'CTA Background Color' ) }
+                        colorValue={ ctaBgColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ ctaBgColor }
+                            onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
 				</PanelBody>
 				<PanelBody title={ __( 'Style' ) }>
 					<RangeControl
@@ -333,31 +400,49 @@ class UAGBPostGrid extends Component {
 											padding: contentPadding
 										}}
 									>
-										<h3 className={ 'uagb-post__title entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h3>
+										<h3
+											className={ 'uagb-post__title entry-title' }
+											style={{ color: titleColor }}
+										><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h3>
 
-										<div className={ 'uagb-post-grid-byline' }>
+										<div
+											className={ 'uagb-post-grid-byline' }
+											style={{ color: metaColor }}
+										>
 											{ displayPostAuthor && post.author_info.display_name &&
-												<div className={ 'uagb-post__author fa fa-user' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+												<div
+													className={ 'uagb-post__author fa fa-user' }
+													style={{ color: metaColor }}
+												><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 											}
 
 											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post__date fa fa-clock' }>
+												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post__date fa fa-clock' } >
 													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 												</time>
 											}
 
 											{ displayPostComment &&
-												<div className={ 'uagb-post__comment fa fa-comment' }>{ post.author_info.comments }</div>
+												<div className={ 'uagb-post__comment fa fa-comment' } >{ post.author_info.comments }</div>
 											}
 										</div>
 
-										<div className={ 'uagb-post__excerpt' }>
+										<div
+											className={ 'uagb-post__excerpt' }
+											style={{ color: excerptColor }}
+										>
 											{ displayPostExcerpt && post.excerpt &&
 												<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 											}
 										</div>
 										{ displayPostLink &&
-											<div className={ 'uagb-post__cta' }><a className={ 'uagb-post__link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></div>
+											<div
+												className={ 'uagb-post__cta' }
+												style={{
+													color: ctaColor,
+													background: ctaBgColor
+												}}
+											><a className={ 'uagb-post__link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Read More', 'atomic-blocks' ) }</a></div>
 										}
 									</div>
 								</div>

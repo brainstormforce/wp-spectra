@@ -138,7 +138,7 @@
 	}
 
 	.uagb-post__cta {
-		border: 1px solid #333;
+		border: 1px solid #333333;
 		display: inline-block;
 	}
 
@@ -154,6 +154,10 @@
 
 	.uagb-post__excerpt div + p {
 		margin-top: 15px;
+	}
+
+	.uagb-post__excerpt p {
+		color: inherit;
 	}
 
 	.is-list {

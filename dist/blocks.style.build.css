@@ -131,7 +131,7 @@
     .uagb-post-grid .uagb-post__text p:last-of-type {
       margin-bottom: 0; }
   .uagb-post-grid .uagb-post__cta {
-    border: 1px solid #333;
+    border: 1px solid #333333;
     display: inline-block; }
   .uagb-post-grid .uagb-post__link {
     display: inline-block;
@@ -146,6 +146,8 @@
     padding: 5px 10px; }
   .uagb-post-grid .uagb-post__excerpt div + p {
     margin-top: 15px; }
+  .uagb-post-grid .uagb-post__excerpt p {
+    color: inherit; }
   .uagb-post-grid .is-list article {
     display: grid;
     grid-template-columns: 30% 1fr;
