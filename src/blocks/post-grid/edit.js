@@ -20,6 +20,7 @@ const {
 	Placeholder,
 	QueryControls,
 	RangeControl,
+	PanelColor,
 	SelectControl,
 	Spinner,
 	ToggleControl,
@@ -31,6 +32,7 @@ const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
+	ColorPalette
 } = wp.editor;
 
 const MAX_POSTS_COLUMNS = 4;
@@ -104,7 +106,9 @@ class UAGBPostGrid extends Component {
 			width,
 			imageCrop,
 			rowGap,
-			columnGap
+			columnGap,
+			bgColor,
+			contentPadding
 		} = attributes;
 
 		console.log(this);
@@ -193,6 +197,26 @@ class UAGBPostGrid extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
 					/>
+					<RangeControl
+						label={ __( 'Content Padding' ) }
+                        value={ contentPadding }
+                        onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+					/>
+					<PanelColor
+                        title={ __( 'Background Color' ) }
+                        colorValue={ bgColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ bgColor }
+                            onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
 				</PanelBody>
 			</InspectorControls>
 		);
@@ -278,46 +302,56 @@ class UAGBPostGrid extends Component {
 									marginBottom: columnGap
 								}}
 							>
-								{
-									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div className={ 'uagb-post-grid-image' }>
-											<a href={ post.link } target="_blank" rel="bookmark">
-												<img
-													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-													alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-												/>
-											</a>
+								<div
+									className={ 'uagb-post__inner-wrap' }
+									style={{ background: bgColor }}
+								>
+									{
+										displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+											<div className={ 'uagb-post-grid-image' }>
+												<a href={ post.link } target="_blank" rel="bookmark">
+													<img
+														src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+														alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+													/>
+												</a>
+											</div>
+										) : (
+											null
+										)
+									}
+
+									{ console.log(post) }
+
+									<div
+										className={ 'uagb-post-grid-text' }
+										style={{
+											padding: contentPadding
+										}}
+									>
+										<h2 className={ 'entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+
+										<div className={ 'uagb-post-grid-byline' }>
+											{ displayPostAuthor && post.author_info.display_name &&
+												<div className={ 'uagb-post-grid-author' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+											}
+
+											{ displayPostDate && post.date_gmt &&
+												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post-grid-date' }>
+													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+												</time>
+											}
 										</div>
-									) : (
-										null
-									)
-								}
 
-								{ console.log(post) }
+										<div className={ 'uagb-post-grid-excerpt' }>
+											{ displayPostExcerpt && post.excerpt &&
+												<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+											}
 
-								<div className={ 'uagb-post-grid-text' }>
-									<h2 className={ 'entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
-
-									<div className={ 'uagb-post-grid-byline' }>
-										{ displayPostAuthor && post.author_info.display_name &&
-											<div className={ 'uagb-post-grid-author' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-										}
-
-										{ displayPostDate && post.date_gmt &&
-											<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post-grid-date' }>
-												{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-											</time>
-										}
-									</div>
-
-									<div className={ 'uagb-post-grid-excerpt' }>
-										{ displayPostExcerpt && post.excerpt &&
-											<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-										}
-
-										{ displayPostLink &&
-											<p><a className={ 'uagb-post-grid-link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
-										}
+											{ displayPostLink &&
+												<p><a className={ 'uagb-post-grid-link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
+											}
+										</div>
 									</div>
 								</div>
 							</article>

@@ -36,8 +36,10 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 		// Start the markup for the post
 		$list_items_markup .= sprintf(
-			'<article class="%1$s">',
-			esc_attr( $post_thumb_class )
+			'<article class="%1$s" style="padding-right: %2$spx;padding-left: %2$spx; margin-bottom: %3$spx"><div class="uagb-post__inner-wrap" style="background: ' . $attributes['bgColor'] . ';">',
+			esc_attr( $post_thumb_class ),
+			$attributes['rowGap'] / 2,
+			$attributes['columnGap']
 		);
 		
 		// Get the featured image
@@ -57,7 +59,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 		// Wrap the text content
 		$list_items_markup .= sprintf(
-			'<div class="uagb-post-grid-text">'
+			'<div class="uagb-post-grid-text" style="padding: ' . $attributes['contentPadding'] . 'px" >'
 		);
 
 			// Get the post title 
@@ -140,7 +142,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		);
 
 		// Close the markup for the post
-		$list_items_markup .= "</article>\n";
+		$list_items_markup .= "</div></article>\n";
 	}
 
 	// Build the classes
@@ -221,7 +223,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			),
 			'columns' => array(
 				'type' => 'number',
-				'default' => 2,
+				'default' => 3,
 			),
 			'align' => array(
 				'type' => 'string',
@@ -248,6 +250,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'default' => 20,
 			),
 			'columnGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'bgColor' => array(
+				'type' => 'string',
+				'default' => '#e4e4e4'
+			),
+			'contentPadding' => array(
 				'type' => 'number',
 				'default' => 20,
 			),

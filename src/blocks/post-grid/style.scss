@@ -27,6 +27,10 @@
 		flex-wrap: wrap;
 	}
 
+	.uagb-post__inner-wrap {
+		height: 100%;
+	}
+
 	.is-grid.columns-8 article { width: 12.5%; }
 	.is-grid.columns-7 article { width: 14.28%; }
 	.is-grid.columns-6 article { width: 16.66%; }
@@ -43,7 +47,6 @@
 	}
 
 	.uagb-post-grid-image {
-		margin-bottom: 1.2em;
 
 		img {
 			display: block;
