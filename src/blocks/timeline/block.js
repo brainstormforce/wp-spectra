@@ -47,14 +47,37 @@ const {
 
 class UAGBTimeline extends Component {
    
+     // Method for setting the initial state
+    static getInitialdataState( content ) {
+        //if( content.length == 0 ){
+            var data = [];
+            var posts = [];
+            return {                
+                data: data,
+                posts: posts       
+            };  
+       /* }else{
+            //console.log(content);
+            var data = [];
+            var posts = [];
+             return {                
+                data: data,
+                posts: posts       
+            };  
+        }       */        
+    }
 
     constructor() {
         super( ...arguments );         
 
-        this.state = {
+        /*this.state = {
             data : [],
             posts : []
-        }
+        }*/
+        console.log(this.props);
+
+        this.state = this.constructor.getInitialdataState(this.props.attributes.content);
+        //console.log(this.state);
 
         // Bind so we can use 'this' inside the method.
         this.getContent = this.getContent.bind(this);
@@ -72,40 +95,43 @@ class UAGBTimeline extends Component {
     */
     getContent() {  
         //console.log('getcontent');  
-        var item_number = this.props.attributes.timelineItem;
-       
-        var item =[];
-        for (var i = 1; i <= item_number; i++) {
-            var title_heading_val = 'Timeline Heading '+i;
-            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-            var temp = [];
-            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            item.push(p);            
-        }    
-        //this.state = {"data": item}
-        this.state.data = item;
+        if( Object.keys(this.state.data).length == 0 ){
+
+            var item_number = this.props.attributes.timelineItem;
+            
+            var item =[];
+            for (var i = 1; i <= item_number; i++) {
+                var title_heading_val = 'Timeline Heading '+i;
+                var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+                var temp = [];
+                var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+                item.push(p);            
+            }    
+            //this.state = {"data": item}
+            this.state.data = item;
+        }
     }  
 
     /**
     * Loading Posts
     */
     getOptions() {   
-        //console.log('getoption');      
         return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
             this.setState({
                 'posts': posts
             });
-            //this.setState({ posts });
         });           
     }    
 
     render() {
         // Setup the attribute
+        //console.log('render');
         const {
             isSelected,
             className,
             setAttributes,
             attributes: { 
+                content,
                 headingAlign,
                 headingColor,
                 subHeadingColor,
@@ -129,8 +155,13 @@ class UAGBTimeline extends Component {
                 order,
                 orderBy
             },
-        } = this.props;
-        //console.log(this.state.data);
+        } = this.props;       
+        
+        this.props.setAttributes( {
+            content: this.state.data,
+        });
+
+        //console.log(this);
         //console.log(this.state.posts);
         var tm_content = uagb_get_timeline_content( this );
         
@@ -312,15 +343,15 @@ class UAGBTimeline extends Component {
 // Output render.
 function uagb_get_timeline_content(current) {
     //..  this.props ,this.state
-    console.log(current);  
-    var p_attr = current.props.attributes;
-    var time_content = p_attr.postType;    
+   
+    var p_attr        = current.props.attributes;
+    var time_content  = p_attr.postType;
     var timeline_item = p_attr.timelineItem;
-    var post_data = current.state.posts;
-    var data = current.state.data;
-    let data_copy = [ ...current.state.data ];
+    var post_data     = current.state.posts;
+    var data          = current.state.data;
+    let data_copy     = [ ...current.state.data ];
     //let posts_copy = [ ...current.state.posts ];
-    //console.log(data_copy);
+
     if( time_content == 'general'){
          return (<div className={ p_attr.className }>
                  {data.map((post,index) => {                    
@@ -330,7 +361,13 @@ function uagb_get_timeline_content(current) {
                                 placeholder={ __( 'Write a Heading' ) }
                                 value={ post.time_heading }
                                 className='uagb-heading-text'
-                                onChange={ ( value ) => { data_copy[index] = {...data_copy[index], 'time_heading': value};current.setState({ data:data_copy }); } }
+                                onChange={ ( value ) => { 
+                                    data_copy[index] = {...data_copy[index], 'time_heading': value};
+                                    current.setState({ data:data_copy }); 
+                                    current.props.setAttributes( {
+                                        content: data_copy,
+                                    });                                    
+                                } }
                                 style={{ 
                                     textAlign: p_attr.headingAlign,
                                     fontSize: p_attr.headFontSize + 'px',
@@ -343,7 +380,13 @@ function uagb_get_timeline_content(current) {
                                 placeholder={ __( 'Write a Description' ) }
                                 value={ post.time_desc }
                                 className='uagb-desc-text'
-                                onChange={ ( value ) => { data_copy[index] = {...data_copy[index], 'time_desc': value};current.setState({ data:data_copy }); } }
+                                onChange={ ( value ) => { 
+                                    data_copy[index] = { ...data_copy[index], 'time_desc': value};
+                                    current.setState({ data:data_copy });
+                                    current.props.setAttributes( {
+                                            content: data_copy,
+                                        });
+                                 } }
                                 style={{
                                     textAlign: p_attr.headingAlign,
                                     fontSize: p_attr.subHeadFontSize + 'px',
@@ -394,7 +437,7 @@ registerBlockType( 'uagb/timeline', {
         content: {
           type: 'array',
           source: 'children',
-          selector: 'p',
+          selector: 'pre',
         },
         title: {
           type: 'string',
@@ -489,7 +532,35 @@ registerBlockType( 'uagb/timeline', {
     edit: UAGBTimeline,
   
     save: function(props) {
-        //console.log( 'Save props' );
+        console.log( 'Save props' );
+        console.log(content);
+        const {
+            content,
+            title,
+            link,
+            headingAlign,
+            headingColor,
+            subHeadingColor,
+            separatorColor,
+            headingTag,
+            separatorHeight,
+            separatorWidth,
+            headFontSize,
+            timelineItem,
+            subHeadFontSize,
+            headSpace,
+            separatorSpace,
+            subHeadSpace,
+            categories,
+            postType,
+            postsToShow,
+            displayPostDate,
+            postLayout,
+            columns,
+            align,
+            order,
+            orderBy,
+        } = props.attributes;
         //console.log( props );
         return 'Hello';
     },
