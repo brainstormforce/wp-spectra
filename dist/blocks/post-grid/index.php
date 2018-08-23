@@ -243,6 +243,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'landscape',
 			),
+			'rowGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'columnGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
 		),
 		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );

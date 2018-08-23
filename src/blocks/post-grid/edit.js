@@ -83,8 +83,29 @@ class UAGBPostGrid extends Component {
 
 	render() {
 		const latestPosts = this.props.latestPosts.data;
-		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, columns, order, orderBy, categories, postsToShow, width, imageCrop } = attributes;
+		const {
+			attributes,
+			categoriesList,
+			setAttributes
+		} = this.props;
+		const {
+			displayPostDate,
+			displayPostExcerpt,
+			displayPostAuthor,
+			displayPostImage,
+			displayPostLink,
+			align,
+			postLayout,
+			columns,
+			order,
+			orderBy,
+			categories,
+			postsToShow,
+			width,
+			imageCrop,
+			rowGap,
+			columnGap
+		} = attributes;
 
 		console.log(this);
 
@@ -153,6 +174,26 @@ class UAGBPostGrid extends Component {
 					/>
 
 				</PanelBody>
+				<PanelBody title={ __( 'Post Style Settings' ) }>
+					<RangeControl
+						label={ __( 'Row Gap' ) }
+                        value={ rowGap }
+                        onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+					/>
+					<RangeControl
+						label={ __( 'Column Gap' ) }
+                        value={ columnGap }
+                        onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+					/>
+				</PanelBody>
 			</InspectorControls>
 		);
 
@@ -218,8 +259,12 @@ class UAGBPostGrid extends Component {
 							'is-grid': postLayout === 'grid',
 							'is-list': postLayout === 'list',
 							[ `columns-${ columns }` ]: postLayout === 'grid',
-							'ab-post-grid-items' : 'ab-post-grid-items'
+							'uagb-post-grid-items' : 'uagb-post-grid-items'
 						} ) }
+						style={{
+							marginRight: -rowGap/2,
+							marginLeft: -rowGap/2,
+						}}
 					>
 						{ displayPosts.map( ( post, i ) =>
 							<article
@@ -227,10 +272,15 @@ class UAGBPostGrid extends Component {
 								className={ classnames(
 									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
 								) }
+								style={{
+									paddingRight: rowGap/2,
+									paddingLeft: rowGap/2,
+									marginBottom: columnGap
+								}}
 							>
 								{
 									displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-										<div class="uagb-post-grid-image">
+										<div className={ 'uagb-post-grid-image' }>
 											<a href={ post.link } target="_blank" rel="bookmark">
 												<img
 													src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }

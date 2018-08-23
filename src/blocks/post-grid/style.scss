@@ -8,27 +8,33 @@
 	position: relative;
 
 	.is-grid {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		grid-template-rows: 1fr;
-		grid-gap: 0 2em;
 
 		article {
-			margin-bottom: 2.5em;
+			float: left;
+			display: inline-block;
 		}
 	}
 
-	.is-grid.columns-2 {
-		grid-template-columns: 1fr 1fr;
+	.uagb-post-grid-items {
+		-js-display: flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+		-ms-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		flex-wrap: wrap;
 	}
 
-	.is-grid.columns-3 {
-		grid-template-columns: 1fr 1fr 1fr;
-	}
-
-	.is-grid.columns-4 {
-		grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
+	.is-grid.columns-8 article { width: 12.5%; }
+	.is-grid.columns-7 article { width: 14.28%; }
+	.is-grid.columns-6 article { width: 16.66%; }
+	.is-grid.columns-5 article { width: 20%; }
+	.is-grid.columns-4 article { width: 25%; }
+	.is-grid.columns-3 article { width: 33.2%; }
+	.is-grid.columns-2 article { width: 50%; }
+	.is-grid.columns-1 article { width: 100%; }
 
 	div[class*="columns"].is-grid {
 		@media only screen and (max-width: 600px) {
