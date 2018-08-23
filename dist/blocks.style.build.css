@@ -41,7 +41,7 @@
   .uagb-post-grid .is-grid article {
     float: left;
     display: inline-block; }
-  .uagb-post-grid .uagb-post-grid-items {
+  .uagb-post-grid .uagb-post__items {
     -js-display: flex;
     display: -ms-flexbox;
     display: flex;
@@ -49,79 +49,91 @@
     flex-wrap: wrap; }
   .uagb-post-grid .uagb-post__inner-wrap {
     height: 100%; }
-  .uagb-post-grid .is-grid.columns-8 article {
+  .uagb-post-grid .uagb-post__comment:before,
+  .uagb-post-grid .uagb-post__author:before,
+  .uagb-post-grid .uagb-post__date:before {
+    margin-right: 4px; }
+  .uagb-post-grid .is-grid.uagb-post__columns-8 article {
     width: 12.5%; }
-  .uagb-post-grid .is-grid.columns-7 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-7 article {
     width: 14.28%; }
-  .uagb-post-grid .is-grid.columns-6 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-6 article {
     width: 16.66%; }
-  .uagb-post-grid .is-grid.columns-5 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-5 article {
     width: 20%; }
-  .uagb-post-grid .is-grid.columns-4 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-4 article {
     width: 25%; }
-  .uagb-post-grid .is-grid.columns-3 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-3 article {
     width: 33.2%; }
-  .uagb-post-grid .is-grid.columns-2 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-2 article {
     width: 50%; }
-  .uagb-post-grid .is-grid.columns-1 article {
+  .uagb-post-grid .is-grid.uagb-post__columns-1 article {
     width: 100%; }
   @media only screen and (max-width: 600px) {
     .uagb-post-grid div[class*="columns"].is-grid {
       grid-template-columns: 1fr; } }
-  .uagb-post-grid .uagb-post-grid-image img {
+  .uagb-post-grid .uagb-post__image img {
     display: block;
     width: 100%; }
-  .uagb-post-grid .uagb-post-grid-text {
+  .uagb-post-grid .uagb-post__text {
     text-align: left; }
-  .uagb-post-grid h2 {
+  .uagb-post-grid .uagb-post__title {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 28px;
     line-height: 1.2; }
-    .uagb-post-grid h2 a {
+    .uagb-post-grid .uagb-post__title a {
       color: inherit;
       -webkit-box-shadow: none;
               box-shadow: none;
       -webkit-transition: .3s ease;
       -o-transition: .3s ease;
-      transition: .3s ease; }
-      .uagb-post-grid h2 a:hover {
-        -webkit-box-shadow: inset 0 -2px 0 #a00;
-                box-shadow: inset 0 -2px 0 #a00;
-        color: #a00; }
+      transition: .3s ease;
+      text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:hover {
+        text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:focus {
+        text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:active {
+        text-decoration: none; }
   .uagb-post-grid .uagb-post-grid-byline {
     text-transform: uppercase;
     font-size: 13px;
     letter-spacing: 1px;
-    color: #ababab;
     margin-bottom: 15px; }
-  .uagb-post-grid .uagb-post-grid-author,
-  .uagb-post-grid .uagb-post-grid-date {
+  .uagb-post-grid .uagb-post__author,
+  .uagb-post-grid .uagb-post__date,
+  .uagb-post-grid .uagb-post__author {
     display: inline-block; }
-    .uagb-post-grid .uagb-post-grid-author:not(:last-child):after,
-    .uagb-post-grid .uagb-post-grid-date:not(:last-child):after {
+    .uagb-post-grid .uagb-post__author:not(:last-child):after,
+    .uagb-post-grid .uagb-post__date:not(:last-child):after,
+    .uagb-post-grid .uagb-post__author:not(:last-child):after {
       content: "\B7";
       vertical-align: middle;
       margin: 0 5px;
       line-height: 1; }
-  .uagb-post-grid .uagb-post-grid-author a {
+  .uagb-post-grid .uagb-post__author a {
     -webkit-box-shadow: none;
             box-shadow: none; }
-    .uagb-post-grid .uagb-post-grid-author a:hover {
+    .uagb-post-grid .uagb-post__author a:hover {
       color: inherit;
       -webkit-box-shadow: 0 -1px 0 inset;
-              box-shadow: 0 -1px 0 inset;
-      color: #a00; }
-  .uagb-post-grid .uagb-post-grid-text p {
+              box-shadow: 0 -1px 0 inset; }
+  .uagb-post-grid .uagb-post__excerpt {
+    margin-bottom: 25px; }
+  .uagb-post-grid .uagb-post__text p {
     margin: 0 0 15px 0;
     line-height: 1.5;
     font-size: 18px; }
     @media only screen and (max-width: 600px) {
-      .uagb-post-grid .uagb-post-grid-text p {
+      .uagb-post-grid .uagb-post__text p {
         font-size: 16px; } }
-    .uagb-post-grid .uagb-post-grid-text p:last-of-type {
+    .uagb-post-grid .uagb-post__text p:last-of-type {
       margin-bottom: 0; }
-  .uagb-post-grid .uagb-post-grid-link {
+  .uagb-post-grid .uagb-post__cta {
+    border: 1px solid #333;
+    display: inline-block; }
+  .uagb-post-grid .uagb-post__link {
     display: inline-block;
     -webkit-box-shadow: none;
             box-shadow: none;
@@ -129,11 +141,10 @@
     -o-transition: .3s ease;
     transition: .3s ease;
     font-weight: bold;
-    color: inherit; }
-    .uagb-post-grid .uagb-post-grid-link:hover {
-      -webkit-box-shadow: 0 -2px 0 inset;
-              box-shadow: 0 -2px 0 inset; }
-  .uagb-post-grid .uagb-post-grid-excerpt div + p {
+    color: inherit;
+    text-decoration: none;
+    padding: 5px 10px; }
+  .uagb-post-grid .uagb-post__excerpt div + p {
     margin-top: 15px; }
   .uagb-post-grid .is-list article {
     display: grid;
@@ -149,13 +160,13 @@
     @media only screen and (max-width: 600px) {
       .uagb-post-grid .is-list article {
         grid-template-columns: 1fr; } }
-  .uagb-post-grid .is-list .uagb-post-grid-image {
+  .uagb-post-grid .is-list .uagb-post__image {
     margin-bottom: 0; }
     @media only screen and (max-width: 600px) {
-      .uagb-post-grid .is-list .uagb-post-grid-image {
+      .uagb-post-grid .is-list .uagb-post__image {
         margin-bottom: 5%; } }
   @media only screen and (min-width: 600px) {
-    .uagb-post-grid .is-list .uagb-post-grid-title {
+    .uagb-post-grid .is-list .uagb-post__title {
       font-size: 34px; } }
-  .uagb-post-grid .is-list .no-thumb .uagb-post-grid-text {
+  .uagb-post-grid .is-list .no-thumb .uagb-post__text {
     grid-column: span 2; }

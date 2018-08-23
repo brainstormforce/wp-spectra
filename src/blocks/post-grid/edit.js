@@ -42,10 +42,18 @@ class UAGBPostGrid extends Component {
 		super( ...arguments );
 
 		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
+		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this );
 		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+	}
+
+	toggleDisplayPostComment() {
+		const { displayPostComment } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostComment: ! displayPostComment } );
 	}
 
 	toggleDisplayPostDate() {
@@ -92,6 +100,7 @@ class UAGBPostGrid extends Component {
 		} = this.props;
 		const {
 			displayPostDate,
+			displayPostComment,
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
@@ -123,7 +132,7 @@ class UAGBPostGrid extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Post Grid Settings' ) }>
+				<PanelBody title={ __( 'Query' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -143,31 +152,31 @@ class UAGBPostGrid extends Component {
 							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 						/>
 					}
+
+				</PanelBody>
+				<PanelBody title={ __( 'Content' ) }>
 					<ToggleControl
-						label={ __( 'Display Featured Image' ) }
+						label={ __( 'Show Featured Image' ) }
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
-					{ displayPostImage &&
-						<SelectControl
-							label={ __( 'Featured Image Style' ) }
-							options={ imageCropOptions }
-							value={ imageCrop }
-							onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
-						/>
-					}
 					<ToggleControl
-						label={ __( 'Display Post Author' ) }
+						label={ __( 'Show Author' ) }
 						checked={ displayPostAuthor }
 						onChange={ this.toggleDisplayPostAuthor }
 					/>
 					<ToggleControl
-						label={ __( 'Display Post Date' ) }
+						label={ __( 'Show Date' ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
 					<ToggleControl
-						label={ __( 'Display Post Excerpt' ) }
+						label={ __( 'Show Comment' ) }
+						checked={ displayPostComment }
+						onChange={ this.toggleDisplayPostComment }
+					/>
+					<ToggleControl
+						label={ __( 'Show Excerpt' ) }
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
@@ -178,14 +187,13 @@ class UAGBPostGrid extends Component {
 					/>
 
 				</PanelBody>
-				<PanelBody title={ __( 'Post Style Settings' ) }>
+				<PanelBody title={ __( 'Style' ) }>
 					<RangeControl
 						label={ __( 'Row Gap' ) }
                         value={ rowGap }
                         onChange={ ( value ) => setAttributes( { rowGap: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
 					/>
 					<RangeControl
@@ -194,7 +202,6 @@ class UAGBPostGrid extends Component {
                         onChange={ ( value ) => setAttributes( { columnGap: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
 					/>
 					<RangeControl
@@ -203,7 +210,6 @@ class UAGBPostGrid extends Component {
                         onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
 					/>
 					<PanelColor
@@ -282,8 +288,8 @@ class UAGBPostGrid extends Component {
 						className={ classnames( {
 							'is-grid': postLayout === 'grid',
 							'is-list': postLayout === 'list',
-							[ `columns-${ columns }` ]: postLayout === 'grid',
-							'uagb-post-grid-items' : 'uagb-post-grid-items'
+							[ `uagb-post__columns-${ columns }` ]: postLayout === 'grid',
+							'uagb-post__items' : 'uagb-post__items'
 						} ) }
 						style={{
 							marginRight: -rowGap/2,
@@ -308,7 +314,7 @@ class UAGBPostGrid extends Component {
 								>
 									{
 										displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-											<div className={ 'uagb-post-grid-image' }>
+											<div className={ 'uagb-post__image' }>
 												<a href={ post.link } target="_blank" rel="bookmark">
 													<img
 														src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -321,37 +327,38 @@ class UAGBPostGrid extends Component {
 										)
 									}
 
-									{ console.log(post) }
-
 									<div
-										className={ 'uagb-post-grid-text' }
+										className={ 'uagb-post__text' }
 										style={{
 											padding: contentPadding
 										}}
 									>
-										<h2 className={ 'entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+										<h3 className={ 'uagb-post__title entry-title' }><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h3>
 
 										<div className={ 'uagb-post-grid-byline' }>
 											{ displayPostAuthor && post.author_info.display_name &&
-												<div className={ 'uagb-post-grid-author' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+												<div className={ 'uagb-post__author fa fa-user' }><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
 											}
 
 											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post-grid-date' }>
+												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post__date fa fa-clock' }>
 													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 												</time>
 											}
+
+											{ displayPostComment &&
+												<div className={ 'uagb-post__comment fa fa-comment' }>{ post.author_info.comments }</div>
+											}
 										</div>
 
-										<div className={ 'uagb-post-grid-excerpt' }>
+										<div className={ 'uagb-post__excerpt' }>
 											{ displayPostExcerpt && post.excerpt &&
 												<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 											}
-
-											{ displayPostLink &&
-												<p><a className={ 'uagb-post-grid-link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></p>
-											}
 										</div>
+										{ displayPostLink &&
+											<div className={ 'uagb-post__cta' }><a className={ 'uagb-post__link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Continue Reading', 'atomic-blocks' ) }</a></div>
+										}
 									</div>
 								</div>
 							</article>

@@ -51,7 +51,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 			}
 			
 			$list_items_markup .= sprintf( 
-				'<div class="uagb-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+				'<div class="uagb-post__image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 				esc_url( get_permalink( $post_id ) ),
 				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
 			);
@@ -59,7 +59,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 		// Wrap the text content
 		$list_items_markup .= sprintf(
-			'<div class="uagb-post-grid-text" style="padding: ' . $attributes['contentPadding'] . 'px" >'
+			'<div class="uagb-post__text" style="padding: ' . $attributes['contentPadding'] . 'px" >'
 		);
 
 			// Get the post title 
@@ -70,7 +70,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 			}
 
 			$list_items_markup .= sprintf(
-				'<h2 class="uagb-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+				'<h3 class="uagb-post__title"><a href="%1$s" rel="bookmark">%2$s</a></h3>',
 				esc_url( get_permalink( $post_id ) ),
 				esc_html( $title )
 			);
@@ -83,7 +83,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 				// Get the post author
 				if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 					$list_items_markup .= sprintf(
-						'<div class="uagb-post-grid-author"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
+						'<div class="uagb-post__author fa fa-user"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
 						esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
 						esc_html( get_author_posts_url( $post->post_author ) )
 					);
@@ -92,9 +92,17 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 				// Get the post date
 				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 					$list_items_markup .= sprintf(
-						'<time datetime="%1$s" class="uagb-post-grid-date">%2$s</time>',
+						'<time datetime="%1$s" class="uagb-post__date fa fa-clock">%2$s</time>',
 						esc_attr( get_the_date( 'c', $post_id ) ),
 						esc_html( get_the_date( '', $post_id ) )
+					);
+				}
+
+				// Get the post date
+				if ( isset( $attributes['displayPostComment'] ) && $attributes['displayPostComment'] ) {
+					$list_items_markup .= sprintf(
+						'<div class="uagb-post__comment fa fa-comment">%1$s</div>',
+						get_comments_number( $post_id )
 					);
 				}
 
@@ -105,7 +113,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 			// Wrap the excerpt content
 			$list_items_markup .= sprintf(
-				'<div class="uagb-post-grid-excerpt">'
+				'<div class="uagb-post__excerpt">'
 			);
 
 				// Get the excerpt
@@ -123,18 +131,18 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 					$list_items_markup .=  wp_kses_post( $excerpt );
 				}
 
-				if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-					$list_items_markup .= sprintf(
-						'<p><a class="uagb-post-grid-link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
-						esc_url( get_permalink( $post_id ) ),
-						esc_html__( 'Continue Reading', 'uagb' )
-					);
-				}
-
 			// Close the excerpt content
 			$list_items_markup .= sprintf(
 				'</div>'
 			);
+
+			if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
+				$list_items_markup .= sprintf(
+					'<div class="uagb-post__cta"><a class="uagb-post__link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></div>',
+					esc_url( get_permalink( $post_id ) ),
+					esc_html__( 'Continue Reading', 'uagb' )
+				);
+			}
 
 		// Wrap the text content
 		$list_items_markup .= sprintf(
@@ -152,7 +160,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		$class .= ' ' . $attributes['className'];
 	}
 	
-	$grid_class = 'uagb-post-grid-items';
+	$grid_class = 'uagb-post__items';
 
 	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
 		$grid_class .= ' is-list';
@@ -161,7 +169,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	}
 
 	if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
-		$grid_class .= ' columns-' . $attributes['columns'];
+		$grid_class .= ' uagb-post__columns-' . $attributes['columns'];
 	}
 
 	// Output the post markup
@@ -206,6 +214,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'default' => true,
 			),
 			'displayPostAuthor' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostComment' => array(
 				'type' => 'boolean',
 				'default' => true,
 			),
@@ -342,6 +354,10 @@ function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 	
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
+
+	// Get the comments link
+	$comments_count = wp_count_comments( $object['id'] );
+	$author_data['comments'] = $comments_count->total_comments;
 	
 	// Return the author data
 	return $author_data;
