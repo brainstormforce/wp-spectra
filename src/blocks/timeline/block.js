@@ -45,93 +45,59 @@ const {
     BlockAlignmentToolbar,
 } = wp.editor;
 
-class UAGBTimeline extends Component {
-   
-     // Method for setting the initial state
-    static getInitialdataState( content ) {
-        //if( content.length == 0 ){
-            var data = [];
-            var posts = [];
-            return {                
-                data: data,
-                posts: posts       
-            };  
-       /* }else{
-            //console.log(content);
-            var data = [];
-            var posts = [];
-             return {                
-                data: data,
-                posts: posts       
-            };  
-        }       */        
-    }
+class UAGBTimeline extends Component {  
 
     constructor() {
-        super( ...arguments );         
-
-        /*this.state = {
-            data : [],
-            posts : []
-        }*/
-        console.log(this.props);
-
-        this.state = this.constructor.getInitialdataState(this.props.attributes.content);
-        //console.log(this.state);
-
-        // Bind so we can use 'this' inside the method.
-        this.getContent = this.getContent.bind(this);
-        // Load data.
-        this.getContent(); 
+        super( ...arguments );
 
         // Bind so we can use 'this' inside the method.
         this.getOptions = this.getOptions.bind(this);
-        // Load posts.
-        this.getOptions(); 
-    }
-
-   /**
-    * Loading Content
-    */
-    getContent() {  
-        //console.log('getcontent');  
-        if( Object.keys(this.state.data).length == 0 ){
-
-            var item_number = this.props.attributes.timelineItem;
-            
-            var item =[];
-            for (var i = 1; i <= item_number; i++) {
-                var title_heading_val = 'Timeline Heading '+i;
-                var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-                var temp = [];
-                var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-                item.push(p);            
-            }    
-            //this.state = {"data": item}
-            this.state.data = item;
-        }
-    }  
+    }   
 
     /**
     * Loading Posts
     */
     getOptions() {   
-        return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {
-            this.setState({
-                'posts': posts
-            });
-        });           
-    }    
+        //console.log('getoption');
+        if( (this.props.attributes.post_content).length == '0' ){
+            return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {           
+                this.props.attributes.post_content = posts;
+            });    
+        }       
+    }   
+
 
     render() {
+        //console.log(this);
+        // Get Initial Timeline content
+        var item_number = this.props.attributes.timelineItem;
+            
+        var item =[];
+        for (var i = 1; i <= item_number; i++) {
+            var title_heading_val = 'Timeline Heading '+i;
+            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            var temp = [];
+            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            item.push(p);            
+        }
         // Setup the attribute
-        //console.log('render');
+        if( (this.props.attributes.tm_content).length == '0' ){
+           this.props.attributes.tm_content = item;
+        }
+        let data_copy     = [ ...this.props.attributes.tm_content ];
+        
+        // Get inital post content.
+        this.getOptions();
+
+        //console.log(this);
+
         const {
             isSelected,
             className,
             setAttributes,
             attributes: { 
-                content,
+                tm_content,
+                post_content,
                 headingAlign,
                 headingColor,
                 subHeadingColor,
@@ -155,18 +121,9 @@ class UAGBTimeline extends Component {
                 order,
                 orderBy
             },
-        } = this.props;       
-        
-        this.props.setAttributes( {
-            content: this.state.data,
-        });
+        } = this.props; 
 
-        //console.log(this);
-        //console.log(this.state.posts);
-        var tm_content = uagb_get_timeline_content( this );
-        
-        //function to change heading state.       
-
+        //function to change heading state. 
         return [            
             isSelected && (
                 <InspectorControls>
@@ -333,120 +290,119 @@ class UAGBTimeline extends Component {
                 </PanelBody>
                 </InspectorControls>
             ),            
-            <div classnames = "cp-timeline-main">   
-                {tm_content}
+            <div className={ className } > 
+                {this.uagb_get_timeline_content()}
             </div>
         ];
-    }
-}
+    }  
 
-// Output render.
-function uagb_get_timeline_content(current) {
-    //..  this.props ,this.state
-   
-    var p_attr        = current.props.attributes;
-    var time_content  = p_attr.postType;
-    var timeline_item = p_attr.timelineItem;
-    var post_data     = current.state.posts;
-    var data          = current.state.data;
-    let data_copy     = [ ...current.state.data ];
-    //let posts_copy = [ ...current.state.posts ];
+    //Render output here.
+    uagb_get_timeline_content(){
 
-    if( time_content == 'general'){
-         return (<div className={ p_attr.className }>
-                 {data.map((post,index) => {                    
-                        return (  <div>
-                            <RichText
-                                tagName={ p_attr.headingTag }
-                                placeholder={ __( 'Write a Heading' ) }
-                                value={ post.time_heading }
-                                className='uagb-heading-text'
-                                onChange={ ( value ) => { 
-                                    data_copy[index] = {...data_copy[index], 'time_heading': value};
-                                    current.setState({ data:data_copy }); 
-                                    current.props.setAttributes( {
-                                        content: data_copy,
-                                    });                                    
-                                } }
-                                style={{ 
-                                    textAlign: p_attr.headingAlign,
-                                    fontSize: p_attr.headFontSize + 'px',
-                                    color: p_attr.headingColor,
-                                    marginBottom: p_attr.headSpace + 'px',
-                                }}
-                            />
-                            <RichText
-                                tagName="p"
-                                placeholder={ __( 'Write a Description' ) }
-                                value={ post.time_desc }
-                                className='uagb-desc-text'
-                                onChange={ ( value ) => { 
-                                    data_copy[index] = { ...data_copy[index], 'time_desc': value};
-                                    current.setState({ data:data_copy });
-                                    current.props.setAttributes( {
-                                            content: data_copy,
-                                        });
-                                 } }
-                                style={{
-                                    textAlign: p_attr.headingAlign,
-                                    fontSize: p_attr.subHeadFontSize + 'px',
-                                    color: p_attr.subHeadingColor,
-                                    marginBottom: p_attr.subHeadSpace + 'px',
-                                }}
-                            />
-                            </div>                      
-                        );
+        var attr            = this.props.attributes;
+        var content         = attr.tm_content;
+        var post_content    = attr.post_content;
+        var headingTag      = attr.headingTag;
+        var headingAlign    = attr.headingAlign;
+        var headFontSize    = attr.headFontSize;
+        var headingColor    = attr.headingColor;
+        var headSpace       = attr.headSpace;
+        var time_type       = attr.postType;
+        var subHeadFontSize = attr.subHeadFontSize;
+        var subHeadingColor = attr.subHeadingColor;
+        var subHeadSpace    = attr.subHeadSpace;
+
+        let data_copy     = [ ...this.props.attributes.tm_content ];
+        if( time_type == 'general'){
+            return ( <div className='uagb-timeline-content'>
+                 {content.map((post,index) => {                    
+                            return (  <div class='uagb-timeline-block'>
+                                <RichText
+                                    tagName={ headingTag }
+                                    placeholder={ __( 'Write a Heading' ) }
+                                    value={ post.time_heading }
+                                    className='uagb-heading-text'
+                                    onChange={ ( value ) => { 
+                                        var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
+                                        data_copy[index] = p;                                       
+                                        this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                    } }
+                                    style={{ 
+                                        textAlign: headingAlign,
+                                        fontSize: headFontSize + 'px',
+                                        color: headingColor,
+                                        marginBottom: headSpace + 'px',
+                                    }}
+                                />
+                                <RichText
+                                    tagName="p"
+                                    placeholder={ __( 'Write a Description' ) }
+                                    value={ post.time_desc }
+                                    className='uagb-desc-text'
+                                    onChange={ ( value ) => { 
+                                        var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
+                                        data_copy[index] = p;                                       
+                                        this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                     } }
+                                    style={{
+                                        textAlign: headingAlign,
+                                        fontSize: subHeadFontSize + 'px',
+                                        color: subHeadingColor,
+                                        marginBottom: subHeadSpace + 'px',
+                                    }}
+                                />
+                                </div>                      
+                            );
                     })}
-            </div>);         
-        }else{  
-            //custom query data
-            if ( post_data.length === 0 ) {
+                </div>
+            );
+        }else{
+            if ( post_content.length === 0 ) {
                 return "No posts";
             } 
             return (<ul className="uagb-desc-text">
-                    {post_data.map(post => {
-                        return (
-                            <li>
-                                <a href={post.link} style={{ 
-                                    textAlign: p_attr.headingAlign,
-                                    fontSize: p_attr.headFontSize + 'px',
-                                    color: p_attr.headingColor,
-                                    marginBottom: p_attr.headSpace + 'px',
-                                }} >
-                                    {post.title.rendered}
-                                </a>
-                                <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
-                                    textAlign: p_attr.headingAlign,
-                                    fontSize: p_attr.subHeadFontSize + 'px',
-                                    color: p_attr.subHeadingColor,
-                                    marginBottom: p_attr.subHeadSpace + 'px',
-                                }}>
-                                 </div>
-                            </li>
-                        );
-                    })}
-                </ul>);       
+                        {post_content.map(post => {
+                            return (
+                                <li>
+                                    <a href={post.link} style={{ 
+                                        textAlign: headingAlign,
+                                        fontSize: headFontSize + 'px',
+                                        color: headingColor,
+                                        marginBottom: headSpace + 'px',
+                                    }} >
+                                        {post.title.rendered}
+                                    </a>
+                                    <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
+                                        textAlign: headingAlign,
+                                        fontSize: subHeadFontSize + 'px',
+                                        color: subHeadingColor,
+                                        marginBottom: subHeadSpace + 'px',
+                                    }}>
+                                     </div>
+                                </li>
+                            );
+                        })}
+                </ul>);   
         }
+        //console.log(attr.tm_content);
+        
+    } 
 }
+
 
 registerBlockType( 'uagb/timeline', {
     title: 'Timeline - UAGB',
     icon: 'megaphone',
     category: 'widgets',
     attributes: {
-        content: {
+        tm_content: {
           type: 'array',
-          source: 'children',
-          selector: 'pre',
+          default: [],
         },
-        title: {
-          type: 'string',
-          selector: 'h2'
-        },
-        link: {
-          type: 'string',
-          selector: 'a'
-        },       
+        post_content: {
+          type: 'array',
+          default: [],
+        },  
         headingAlign: {
             type: 'string',
             default: 'center',
@@ -533,35 +489,8 @@ registerBlockType( 'uagb/timeline', {
   
     save: function(props) {
         console.log( 'Save props' );
-        console.log(content);
-        const {
-            content,
-            title,
-            link,
-            headingAlign,
-            headingColor,
-            subHeadingColor,
-            separatorColor,
-            headingTag,
-            separatorHeight,
-            separatorWidth,
-            headFontSize,
-            timelineItem,
-            subHeadFontSize,
-            headSpace,
-            separatorSpace,
-            subHeadSpace,
-            categories,
-            postType,
-            postsToShow,
-            displayPostDate,
-            postLayout,
-            columns,
-            align,
-            order,
-            orderBy,
-        } = props.attributes;
-        //console.log( props );
+        var attributes = props.attributes;
+        console.log( attributes );
         return 'Hello';
     },
 } );
