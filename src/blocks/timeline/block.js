@@ -101,7 +101,10 @@ class UAGBTimeline extends Component {
                 headingAlign,
                 headingColor,
                 subHeadingColor,
+                backgroundColor,
                 separatorColor,
+                separatorBg,
+                separatorBorder,
                 headingTag,
                 headFontSize,
                 timelineItem,
@@ -128,11 +131,11 @@ class UAGBTimeline extends Component {
             isSelected && (
                 <InspectorControls>
                 <PanelBody 
-                    title={ __( 'Select Type' ) }
+                    title={ __( 'General' ) }
                     initialOpen={ false }
                 >
                     <SelectControl
-                        label={ __( 'Type' ) }
+                        label={ __( 'Select Source' ) }
                         value={ postType }
                         onChange={ ( value ) => setAttributes( { postType: value } ) }
                         options={ [
@@ -141,7 +144,7 @@ class UAGBTimeline extends Component {
                         ] }
                     />
                     <RangeControl
-                        label={ __( 'Timeline Item Number' ) }
+                        label={ __( 'Timeline Item' ) }
                         value={ timelineItem }
                         onChange={ ( value ) => setAttributes( { timelineItem: value } ) }
                         min={ 1 }
@@ -201,7 +204,7 @@ class UAGBTimeline extends Component {
                     />
                 </PanelBody>
                 <PanelBody 
-                    title={ __( 'Colors' ) }
+                    title={ __( 'Timeline Items' ) }
                     initialOpen={ false }
                 >
                     <PanelColor
@@ -216,7 +219,7 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <PanelColor
-                        title={ __( 'Sub-Heading Color' ) }
+                        title={ __( 'Description Color' ) }
                         colorValue={ subHeadingColor }
                         initialOpen={ false }
                     >
@@ -227,13 +230,51 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <PanelColor
-                        title={ __( 'Separator Color' ) }
+                        title={ __( 'Background Color' ) }
+                        colorValue={ backgroundColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ subHeadingColor }
+                            onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                </PanelBody>
+                <PanelBody 
+                    title={ __( 'Connector' ) }
+                    initialOpen={ false }
+                >
+                    <PanelColor
+                        title={ __( 'Line Color' ) }
                         colorValue={ separatorColor }
                         initialOpen={ false }
                     >
                         <ColorPalette
                             value={ separatorColor }
                             onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'Background Color' ) }
+                        colorValue={ separatorBg }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorBg }
+                            onChange={ ( colorValue ) => setAttributes( { separatorBg: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'Border Color' ) }
+                        colorValue={ separatorBorder }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorBorder }
+                            onChange={ ( colorValue ) => setAttributes( { separatorBorder: colorValue } ) }
                             allowReset
                         />
                     </PanelColor>
@@ -313,13 +354,32 @@ class UAGBTimeline extends Component {
         var subHeadFontSize = attr.subHeadFontSize;
         var subHeadingColor = attr.subHeadingColor;
         var subHeadSpace    = attr.subHeadSpace;
+        var backgroundColor = attr.backgroundColor;
+        var separatorColor  = attr.separatorColor;
+        var separatorBg     = attr.separatorBg;
+        var separatorBorder = attr.separatorBorder;
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
         if( time_type == 'general'){
             return ( <div className='uagb-timeline'>
+                    <style dangerouslySetInnerHTML={{
+                                  __html: [
+                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '  border-color: transparent transparent transparent ',backgroundColor,
+                                    '}',
+                                    '.uagb-timeline::after{',
+                                        'background-color:',separatorColor,
+                                    '}',
+                                    '.uagb-timeline-container::after{',
+                                      'background-color:',separatorBg,';',
+                                      'border-color:',separatorBorder,
+                                    '}',                                   
+                                    ].join('\n')
+                                  }}>
+                                </style>
                  {content.map((post,index) => {                    
-                    return (<div class='uagb-timeline-container uagb-tl-item-left'>
-                                <div class="uagb-timeline-content">
+                    return (<div class='uagb-timeline-container uagb-tl-item-left' >                                
+                                <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
                                         tagName={ headingTag }
                                         placeholder={ __( 'Write a Heading' ) }
@@ -421,9 +481,21 @@ registerBlockType( 'uagb/timeline', {
             type: 'string',
             default: '#000',
         },
+        backgroundColor: {
+            type: 'string',
+            default: '#eee',
+        },
         separatorColor: {
             type: 'string',
-            default: '#000',
+            default: '#eee',
+        },
+        separatorBg: {
+            type: 'string',
+            default: '#eee',
+        },
+        separatorBorder: {
+            type: 'string',
+            default: '#eee',
         },
         headingTag: {
             type: 'string',
