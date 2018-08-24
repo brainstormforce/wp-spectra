@@ -104,7 +104,8 @@
   .uagb-post-grid .uagb-post__author,
   .uagb-post-grid .uagb-post__date,
   .uagb-post-grid .uagb-post__author {
-    display: inline-block; }
+    display: inline-block;
+    word-break: break-all; }
     .uagb-post-grid .uagb-post__author:not(:last-child):after,
     .uagb-post-grid .uagb-post__date:not(:last-child):after,
     .uagb-post-grid .uagb-post__author:not(:last-child):after {
