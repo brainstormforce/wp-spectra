@@ -291,7 +291,9 @@ class UAGBTimeline extends Component {
                 </InspectorControls>
             ),            
             <div className={ className } > 
-                {this.uagb_get_timeline_content()}
+                <div className = "uagb-timeline-main">
+                    { this.uagb_get_timeline_content() }
+                </div>
             </div>
         ];
     }  
@@ -314,45 +316,47 @@ class UAGBTimeline extends Component {
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
         if( time_type == 'general'){
-            return ( <div className='uagb-timeline-content'>
+            return ( <div className='uagb-timeline'>
                  {content.map((post,index) => {                    
-                            return (  <div class='uagb-timeline-block'>
-                                <RichText
-                                    tagName={ headingTag }
-                                    placeholder={ __( 'Write a Heading' ) }
-                                    value={ post.time_heading }
-                                    className='uagb-heading-text'
-                                    onChange={ ( value ) => { 
-                                        var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
-                                        data_copy[index] = p;                                       
-                                        this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                    } }
-                                    style={{ 
-                                        textAlign: headingAlign,
-                                        fontSize: headFontSize + 'px',
-                                        color: headingColor,
-                                        marginBottom: headSpace + 'px',
-                                    }}
-                                />
-                                <RichText
-                                    tagName="p"
-                                    placeholder={ __( 'Write a Description' ) }
-                                    value={ post.time_desc }
-                                    className='uagb-desc-text'
-                                    onChange={ ( value ) => { 
-                                        var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
-                                        data_copy[index] = p;                                       
-                                        this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                     } }
-                                    style={{
-                                        textAlign: headingAlign,
-                                        fontSize: subHeadFontSize + 'px',
-                                        color: subHeadingColor,
-                                        marginBottom: subHeadSpace + 'px',
-                                    }}
-                                />
-                                </div>                      
-                            );
+                    return (<div class='uagb-timeline-container uagb-tl-item-left'>
+                                <div class="uagb-timeline-content">
+                                    <RichText
+                                        tagName={ headingTag }
+                                        placeholder={ __( 'Write a Heading' ) }
+                                        value={ post.time_heading }
+                                        className='uagb-heading-text'
+                                        onChange={ ( value ) => { 
+                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
+                                            data_copy[index] = p;                                       
+                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                        } }
+                                        style={{ 
+                                            textAlign: headingAlign,
+                                            fontSize: headFontSize + 'px',
+                                            color: headingColor,
+                                            marginBottom: headSpace + 'px',
+                                        }}
+                                    />
+                                    <RichText
+                                        tagName="p"
+                                        placeholder={ __( 'Write a Description' ) }
+                                        value={ post.time_desc }
+                                        className='uagb-desc-text'
+                                        onChange={ ( value ) => { 
+                                            var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
+                                            data_copy[index] = p;                                       
+                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                         } }
+                                        style={{
+                                            textAlign: headingAlign,
+                                            fontSize: subHeadFontSize + 'px',
+                                            color: subHeadingColor,
+                                            marginBottom: subHeadSpace + 'px',
+                                        }}
+                                    />
+                                </div> 
+                            </div>                      
+                        );
                     })}
                 </div>
             );
@@ -360,29 +364,31 @@ class UAGBTimeline extends Component {
             if ( post_content.length === 0 ) {
                 return "No posts";
             } 
-            return (<ul className="uagb-desc-text">
+            return (<div className='uagb-timeline'>                    
                         {post_content.map(post => {
                             return (
-                                <li>
-                                    <a href={post.link} style={{ 
-                                        textAlign: headingAlign,
-                                        fontSize: headFontSize + 'px',
-                                        color: headingColor,
-                                        marginBottom: headSpace + 'px',
-                                    }} >
-                                        {post.title.rendered}
-                                    </a>
-                                    <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
-                                        textAlign: headingAlign,
-                                        fontSize: subHeadFontSize + 'px',
-                                        color: subHeadingColor,
-                                        marginBottom: subHeadSpace + 'px',
-                                    }}>
-                                     </div>
-                                </li>
+                                <div class='uagb-timeline-container uagb-tl-item-left'>
+                                    <div class="uagb-timeline-content">
+                                        <a href={post.link} style={{ 
+                                            textAlign: headingAlign,
+                                            fontSize: headFontSize + 'px',
+                                            color: headingColor,
+                                            marginBottom: headSpace + 'px',
+                                        }} >
+                                            {post.title.rendered}
+                                        </a>
+                                        <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
+                                            textAlign: headingAlign,
+                                            fontSize: subHeadFontSize + 'px',
+                                            color: subHeadingColor,
+                                            marginBottom: subHeadSpace + 'px',
+                                        }}>
+                                        </div>
+                                    </div>
+                                </div>
                             );
-                        })}
-                </ul>);   
+                        })}                    
+                </div>);   
         }
         //console.log(attr.tm_content);
         
