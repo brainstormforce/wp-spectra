@@ -71,7 +71,6 @@ class UAGBTimeline extends Component {
         //console.log(this);
         // Get Initial Timeline content
         var item_number = this.props.attributes.timelineItem;
-            
         var item =[];
         for (var i = 1; i <= item_number; i++) {
             var title_heading_val = 'Timeline Heading '+i;
@@ -85,7 +84,19 @@ class UAGBTimeline extends Component {
            this.props.attributes.tm_content = item;
         }
         let data_copy     = [ ...this.props.attributes.tm_content ];
+        let data_length = data_copy.length;
         
+        if( item_number < data_length ){
+            let data_new = data_copy;
+            data_new.pop();
+            this.props.attributes.tm_content = data_new;
+        }if( item_number > data_length ){            
+            var diff = item_number - 1;
+            var title_heading_val = 'Timeline Heading '+item_number;
+            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            this.props.attributes.tm_content = data_copy;   
+        }
         // Get inital post content.
         this.getOptions();
 
@@ -170,7 +181,7 @@ class UAGBTimeline extends Component {
                 <PanelBody 
                     title={ __( 'Typography' ) }
                     initialOpen={ false }
-                >
+                    >
                     <SelectControl
                         label={ __( 'Tag' ) }
                         value={ headingTag }
@@ -206,7 +217,7 @@ class UAGBTimeline extends Component {
                 <PanelBody 
                     title={ __( 'Timeline Items' ) }
                     initialOpen={ false }
-                >
+                    >
                     <PanelColor
                         title={ __( 'Heading Color' ) }
                         colorValue={ headingColor }
@@ -244,7 +255,7 @@ class UAGBTimeline extends Component {
                 <PanelBody 
                     title={ __( 'Connector' ) }
                     initialOpen={ false }
-                >
+                    >
                     <PanelColor
                         title={ __( 'Line Color' ) }
                         colorValue={ separatorColor }
@@ -282,7 +293,7 @@ class UAGBTimeline extends Component {
                 <PanelBody 
                     title={ __( 'Additional Options' ) }
                     initialOpen={ false }
-                >
+                    >
                     <RangeControl
                         label={ __( 'Separator Height' ) }
                         value={ separatorHeight }
