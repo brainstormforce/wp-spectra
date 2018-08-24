@@ -110,8 +110,6 @@ class UAGBTimeline extends Component {
         // Get inital post content.
         this.getOptions();
 
-        //console.log(this);
-
         const {
             isSelected,
             className,
@@ -225,7 +223,7 @@ class UAGBTimeline extends Component {
                     />
                 </PanelBody>
                 <PanelBody 
-                    title={ __( 'Timeline Items' ) }
+                    title={ __( 'Timeline Colors' ) }
                     initialOpen={ false }
                     >
                     <PanelColor
@@ -445,11 +443,26 @@ class UAGBTimeline extends Component {
             if ( post_content.length === 0 ) {
                 return "No posts";
             } 
-            return (<div className='uagb-timeline'>                    
+            return (<div className='uagb-timeline'>  
+                    <style dangerouslySetInnerHTML={{
+                                  __html: [
+                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '  border-color: transparent transparent transparent ',backgroundColor,
+                                    '}',
+                                    '.uagb-timeline::after{',
+                                        'background-color:',separatorColor,
+                                    '}',
+                                    '.uagb-timeline-container::after{',
+                                      'background-color:',separatorBg,';',
+                                      'border-color:',separatorBorder,
+                                    '}',                                   
+                                    ].join('\n')
+                                  }}>
+                                </style>                  
                         {post_content.map(post => {
                             return (
                                 <div class='uagb-timeline-container uagb-tl-item-left'>
-                                    <div class="uagb-timeline-content">
+                                    <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                         <a href={post.link} style={{ 
                                             textAlign: headingAlign,
                                             fontSize: headFontSize + 'px',
