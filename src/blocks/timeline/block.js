@@ -52,6 +52,7 @@ class UAGBTimeline extends Component {
 
         // Bind so we can use 'this' inside the method.
         this.getOptions = this.getOptions.bind(this);
+        this.getTimelinecontent = this.getTimelinecontent.bind(this);
     }   
 
     /**
@@ -66,10 +67,10 @@ class UAGBTimeline extends Component {
         }       
     }   
 
-
-    render() {
-        //console.log(this);
-        // Get Initial Timeline content
+    /**
+    * Loading Timeline content.
+    */
+    getTimelinecontent() {   
         var item_number = this.props.attributes.timelineItem;
         var item =[];
         for (var i = 1; i <= item_number; i++) {
@@ -96,7 +97,16 @@ class UAGBTimeline extends Component {
             var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
             data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
             this.props.attributes.tm_content = data_copy;   
-        }
+        }  
+        return this.props.attributes.tm_content;
+    }   
+
+
+    render() {
+        //console.log(this);
+        // Get Initial Timeline content
+        this.getTimelinecontent();
+
         // Get inital post content.
         this.getOptions();
 
