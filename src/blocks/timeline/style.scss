@@ -60,9 +60,7 @@
 .uagb-tl-item-right {
     left: 0%;
 }
-.uagb-tl-item-center-right {
-    left: 50%;
-}
+
 
 /* Add arrows to the left uagb-timeline-container (pointing right) */
 .uagb-tl-item-left::before {
@@ -94,9 +92,6 @@
 
 /* Fix the circle for uagb-timeline-containers on the right side */
 .uagb-tl-item-right::after {
-    left: -16px;
-}
-.uagb-tl-item-center-right::after {
     left: -12px;
 }
 
@@ -125,6 +120,15 @@
 }
 .uagb-timeline.uagb-tl-right::after{
   left: 0%;
+}
+
+/* Center Alignment */
+.uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-left,
+.uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
+    width: 50%;
+}
+.uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
+    left: 50%;
 }
 
 /* Media queries - Responsive uagb-timeline on screens less than 600px wide */

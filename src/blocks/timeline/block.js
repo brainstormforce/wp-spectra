@@ -400,7 +400,7 @@ class UAGBTimeline extends Component {
             align_item_class = 'uagb-timeline-container uagb-tl-item-right';
         }else{
             align_class = 'uagb-timeline uagb-tl-center';
-            //align_item_class = 'uagb-tl-item-right';
+            align_item_class = '';
         }
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
@@ -424,7 +424,14 @@ class UAGBTimeline extends Component {
                                     ].join('\n')
                                   }}>
                                 </style>
-                 {content.map((post,index) => {                    
+                 {content.map((post,index) => {  
+                    if(timelinAlignment == 'center'){
+                        if(index % 2 == '0'){
+                            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                        }else{
+                            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                        }  
+                    }                                
                     return (<div className = {align_item_class} >                                
                                 <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
