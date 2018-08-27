@@ -166,8 +166,14 @@
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent; }
   /* Make sure all circles are at the same spot */
-  .uagb-tl-item-left::after, .right::after {
-    left: 15px; }
+  .uagb-tl-item-left::after,
+  .uagb-tl-item-right::after {
+    left: 18px; }
   /* Make all right uagb-timeline-containers behave like the left ones */
   .uagb-tl-item-right {
+    left: 0%; }
+  .uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-left,
+  .uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
+    width: 100%; }
+  .uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
     left: 0%; } }
