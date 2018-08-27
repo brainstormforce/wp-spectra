@@ -127,6 +127,7 @@ class UAGBTimeline extends Component {
                 headingTag,
                 headFontSize,
                 timelineItem,
+                timelinAlignment,
                 subHeadFontSize,
                 separatorWidth,
                 separatorHeight,
@@ -170,6 +171,16 @@ class UAGBTimeline extends Component {
                         max={ 200 }
                         beforeIcon="editor-textcolor"
                         allowReset
+                    />
+                    <SelectControl
+                        label={ __( 'Alignment' ) }
+                        value={ timelinAlignment }
+                        onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
+                        options={ [
+                            { value: 'left', label: __( 'Left' ) },
+                            { value: 'right', label: __( 'Right' ) },
+                            { value: 'center', label: __( 'center' ) },
+                        ] }
                     />
             </PanelBody>
                 </InspectorControls> 
@@ -377,10 +388,24 @@ class UAGBTimeline extends Component {
         var separatorColor  = attr.separatorColor;
         var separatorBg     = attr.separatorBg;
         var separatorBorder = attr.separatorBorder;
+        var timelinAlignment = attr.timelinAlignment;
+        var align_class      = '';
+        var align_item_class = '';
+
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline uagb-tl-left';
+            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+        }else if(timelinAlignment == 'right'){
+            align_class = 'uagb-timeline uagb-tl-right';
+            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+        }else{
+            align_class = 'uagb-timeline uagb-tl-center';
+            //align_item_class = 'uagb-tl-item-right';
+        }
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
         if( time_type == 'general'){
-            return ( <div className='uagb-timeline'>
+            return ( <div className= {align_class} >
                     <style dangerouslySetInnerHTML={{
                                   __html: [
                                     '.uagb-timeline-container.uagb-tl-item-left::before {',
@@ -392,12 +417,15 @@ class UAGBTimeline extends Component {
                                     '.uagb-timeline-container::after{',
                                       'background-color:',separatorBg,';',
                                       'border-color:',separatorBorder,
+                                    '}',
+                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
                                     '}',                                   
                                     ].join('\n')
                                   }}>
                                 </style>
                  {content.map((post,index) => {                    
-                    return (<div class='uagb-timeline-container uagb-tl-item-left' >                                
+                    return (<div className = {align_item_class} >                                
                                 <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
                                         tagName={ headingTag }
@@ -443,7 +471,7 @@ class UAGBTimeline extends Component {
             if ( post_content.length === 0 ) {
                 return "No posts";
             } 
-            return (<div className='uagb-timeline'>  
+            return (<div className = {align_class}>  
                     <style dangerouslySetInnerHTML={{
                                   __html: [
                                     '.uagb-timeline-container.uagb-tl-item-left::before {',
@@ -455,13 +483,16 @@ class UAGBTimeline extends Component {
                                     '.uagb-timeline-container::after{',
                                       'background-color:',separatorBg,';',
                                       'border-color:',separatorBorder,
-                                    '}',                                   
+                                    '}',
+                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
+                                    '}',                                 
                                     ].join('\n')
                                   }}>
                                 </style>                  
                         {post_content.map(post => {
                             return (
-                                <div class='uagb-timeline-container uagb-tl-item-left'>
+                                <div className = {align_item_class} >
                                     <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                         <a href={post.link} style={{ 
                                             textAlign: headingAlign,
@@ -547,6 +578,10 @@ registerBlockType( 'uagb/timeline', {
         timelineItem:{
             type: 'number',
             default: 5,
+        },
+        timelinAlignment: {
+            type: 'string',
+            default: 'left',
         },
         subHeadFontSize: {
             type: 'number',

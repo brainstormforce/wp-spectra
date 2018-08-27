@@ -58,6 +58,9 @@
 
 /* Place the uagb-timeline-container to the right */
 .uagb-tl-item-right {
+    left: 0%;
+}
+.uagb-tl-item-center-right {
     left: 50%;
 }
 
@@ -93,6 +96,9 @@
 .uagb-tl-item-right::after {
     left: -16px;
 }
+.uagb-tl-item-center-right::after {
+    left: -12px;
+}
 
 /* The actual content */
 .uagb-timeline-content {
@@ -100,6 +106,25 @@
     background-color: white;
     position: relative;
     border-radius: 6px;
+}
+
+/*Left Content*/
+.uagb-timeline.uagb-tl-left::after{
+  left: 100%;
+}
+
+/*
+.uagb-timeline.uagb-tl-left::after{
+  left: 100%;
+}
+*/
+
+.uagb-timeline-container.uagb-tl-item-left,
+.uagb-timeline-container.uagb-tl-item-right {
+    width: 100%;
+}
+.uagb-timeline.uagb-tl-right::after{
+  left: 0%;
 }
 
 /* Media queries - Responsive uagb-timeline on screens less than 600px wide */
