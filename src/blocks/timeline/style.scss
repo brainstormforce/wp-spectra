@@ -138,17 +138,16 @@
       transform: translateY(-50%);
   }
 
-  uagb-top-arrow
   .uagb-top-arrow .uagb-timeline-container:before,
   .uagb-top-arrow .uagb-timeline-container:after {
-      top: 25%;
-      transform: translateY(-25%);
+      top: 15%;
+      transform: translateY(-15%);
   }
 
   .uagb-bottom-arrow .uagb-timeline-container:before,
   .uagb-bottom-arrow .uagb-timeline-container:after {
-      top: 75%;
-      transform: translateY(-75%);
+      top: 85%;
+      transform: translateY(-85%);
   }
 }
 
