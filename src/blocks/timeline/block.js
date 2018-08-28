@@ -193,7 +193,6 @@ class UAGBTimeline extends Component {
                         label={ __( 'Posts per Page' ) }
                         value={ postNumber }
                         onChange={ ( value ) => {
-                            console.log('change');
                             this.onChangeSelectNumberPost(value);
                             setAttributes( { postNumber: value } ) }
                         }
@@ -253,7 +252,7 @@ class UAGBTimeline extends Component {
                         allowReset
                     />
                     <RangeControl
-                        label={ __( 'Sub-Heading Font Size' ) }
+                        label={ __( 'Description Font Size' ) }
                         value={ subHeadFontSize }
                         onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
                         min={ 10 }
@@ -686,8 +685,179 @@ registerBlockType( 'uagb/timeline', {
     save: function(props) {
         console.log( 'Save props' );
         var attributes = props.attributes;
-        console.log( attributes );
-        return 'Hello';
+        const {
+            tm_content,
+            post_content,
+            headingAlign,
+            headingColor,
+            subHeadingColor,
+            backgroundColor,
+            separatorColor,
+            separatorBg,
+            separatorBorder,
+            headingTag,
+            headFontSize,
+            timelineItem,
+            postNumber,
+            timelinAlignment,
+            subHeadFontSize,
+            separatorWidth,
+            separatorHeight,
+            headSpace,
+            separatorSpace,
+            subHeadSpace,
+            categories,
+            postType,
+            postsToShow,
+            displayPostDate,
+            postLayout,
+            columns,
+            align,
+            order,
+            orderBy
+        } = props.attributes;
+
+        var align_class = '';
+        var align_item_class = '';
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline uagb-tl-left';
+            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+        }else if( timelinAlignment == 'right'){
+            align_class = 'uagb-timeline uagb-tl-right';
+            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+        }else{
+            align_class = 'uagb-timeline uagb-tl-center';
+            align_item_class = '';
+        }
+        if( postType == 'general'){
+            return (
+                 <div className={ props.className } > 
+                    <div className = "uagb-timeline-main">
+                       <div className= {align_class} >
+                        <style dangerouslySetInnerHTML={{
+                          __html: [
+                            '.uagb-timeline-container.uagb-tl-item-left::before {',
+                            '  border-color: transparent transparent transparent ',backgroundColor,
+                            '}',
+                            '.uagb-timeline::after{',
+                                'background-color:',separatorColor,
+                            '}',
+                            '.uagb-timeline-container::after{',
+                              'background-color:',separatorBg,';',
+                              'border-color:',separatorBorder,
+                            '}',
+                            '.uagb-timeline-container.uagb-tl-item-right::before {',
+                            '  border-color: transparent ',backgroundColor,' transparent transparent',
+                            '}',                                   
+                            ].join('\n')
+                          }}>
+                        </style>
+                        { tm_content.map((post,index) => {  
+                            if(timelinAlignment == 'center'){
+                                if(index % 2 == '0'){
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                                }else{
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                                }  
+                            }  
+                            return (
+                                <div className = {align_item_class} >
+                                    <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                                        <RichText.Content
+                                            tagName={ headingTag }
+                                            value={ post.time_heading  }
+                                            className='uagb-content-title'
+                                            style={{ 
+                                            textAlign: headingAlign,
+                                            fontSize: headFontSize + 'px',
+                                            color: headingColor,
+                                            marginBottom: headSpace + 'px',
+                                        }}
+                                        />
+                                        <RichText.Content
+                                            tagName="p"
+                                            value={ post.time_desc  }
+                                            className='uagb-content-description'
+                                            style={{ 
+                                            textAlign: headingAlign,
+                                            fontSize: subHeadFontSize + 'px',
+                                            color: subHeadingColor,
+                                            marginBottom: subHeadSpace + 'px',
+                                        }}
+                                        />
+                                    </div> 
+                                </div>
+                            );
+                        })
+                        }
+                       </div>
+                    </div>
+                </div>
+            );
+        }else{
+            if ( post_content.length === 0 ) {
+                return "No posts";
+            }else{
+                return (
+                    <div className={ props.className } > 
+                        <div className = "uagb-timeline-main">
+                           <div className= {align_class} >
+                                <style dangerouslySetInnerHTML={{
+                                  __html: [
+                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '  border-color: transparent transparent transparent ',backgroundColor,
+                                    '}',
+                                    '.uagb-timeline::after{',
+                                        'background-color:',separatorColor,
+                                    '}',
+                                    '.uagb-timeline-container::after{',
+                                      'background-color:',separatorBg,';',
+                                      'border-color:',separatorBorder,
+                                    '}',
+                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
+                                    '}',                                   
+                                    ].join('\n')
+                                  }}>
+                                </style>
+                                {  
+                                    post_content.map((post,index) => { 
+                                        if(timelinAlignment == 'center'){
+                                            if(index % 2 == '0'){
+                                                align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                                            }else{
+                                                align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                                            }  
+                                        } 
+                                        return ( 
+                                            <div className = {align_item_class} >
+                                                <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                                    <a href={post.link} style={{ 
+                                                        textAlign: headingAlign,
+                                                        fontSize: headFontSize + 'px',
+                                                        color: headingColor,
+                                                        marginBottom: headSpace + 'px',
+                                                    }} >
+                                                        {post.title.rendered}
+                                                    </a>
+                                                    <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
+                                                        textAlign: headingAlign,
+                                                        fontSize: subHeadFontSize + 'px',
+                                                        color: subHeadingColor,
+                                                        marginBottom: subHeadSpace + 'px',
+                                                    }}>
+                                                    </div>
+                                                </div>
+                                            </div> 
+                                        );  
+                                    })
+                                }
+                           </div>
+                        </div>
+                    </div>
+                );
+            }            
+        }
     },
 } );
 
