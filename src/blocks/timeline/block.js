@@ -20,10 +20,6 @@ const {
 
 const { decodeEntities } = wp.htmlEntities;
 
-/*var el = wp.element.createElement,
-    registerBlockType = wp.blocks.registerBlockType,
-    withAPIData = wp.components.withAPIData;*/
-
 const {
     PanelBody,
     PanelColor,
@@ -124,8 +120,7 @@ class UAGBTimeline extends Component {
         //console.log(this);
         // Get Initial Timeline content
         this.getTimelinecontent();
-        //console.log('render');       
-        
+       
         const {
             isSelected,
             className,
@@ -145,6 +140,7 @@ class UAGBTimeline extends Component {
                 timelineItem,
                 postNumber,
                 timelinAlignment,
+                arrowlinAlignment,
                 subHeadFontSize,
                 separatorWidth,
                 separatorHeight,
@@ -199,7 +195,16 @@ class UAGBTimeline extends Component {
                         min={ 1 }
                         max={ 200 }
                         beforeIcon="editor-textcolor"                        
-                    /> }                       
+                    /> } 
+                 </PanelBody>
+                </InspectorControls> 
+            ),           
+            isSelected && (
+                <InspectorControls>
+                <PanelBody 
+                    title={ __( 'Layout' ) }
+                    initialOpen={ false }
+                >                      
                     <SelectControl
                         label={ __( 'Alignment' ) }
                         value={ timelinAlignment }
@@ -207,7 +212,17 @@ class UAGBTimeline extends Component {
                         options={ [
                             { value: 'left', label: __( 'Left' ) },
                             { value: 'right', label: __( 'Right' ) },
-                            { value: 'center', label: __( 'center' ) },
+                            { value: 'center', label: __( 'Center' ) },
+                        ] }
+                    />
+                    <SelectControl
+                        label={ __( 'Arrow Alignment' ) }
+                        value={ arrowlinAlignment }
+                        onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
+                        options={ [
+                            { value: 'top', label: __( 'Top' ) },
+                            { value: 'bottom', label: __( 'Bottom' ) },
+                            { value: 'center', label: __( 'Center' ) },
                         ] }
                     />
             </PanelBody>
@@ -400,36 +415,43 @@ class UAGBTimeline extends Component {
     //Render output here.
     uagb_get_timeline_content(){
 
-        var attr             = this.props.attributes;
-        var content          = attr.tm_content;
-        var post_content     = attr.post_content;
-        var headingTag       = attr.headingTag;
-        var headingAlign     = attr.headingAlign;
-        var headFontSize     = attr.headFontSize;
-        var headingColor     = attr.headingColor;
-        var headSpace        = attr.headSpace;
-        var time_type        = attr.postType;
-        var subHeadFontSize  = attr.subHeadFontSize;
-        var subHeadingColor  = attr.subHeadingColor;
-        var subHeadSpace     = attr.subHeadSpace;
-        var backgroundColor  = attr.backgroundColor;
-        var separatorColor   = attr.separatorColor;
-        var separatorBg      = attr.separatorBg;
-        var separatorBorder  = attr.separatorBorder;
-        var timelinAlignment = attr.timelinAlignment;
-        var postNumber       = attr.postNumber;
-        var align_class      = '';
-        var align_item_class = '';
-        //console.log(attr.post_content);
+        var attr              = this.props.attributes;
+        var content           = attr.tm_content;
+        var post_content      = attr.post_content;
+        var headingTag        = attr.headingTag;
+        var headingAlign      = attr.headingAlign;
+        var headFontSize      = attr.headFontSize;
+        var headingColor      = attr.headingColor;
+        var headSpace         = attr.headSpace;
+        var time_type         = attr.postType;
+        var subHeadFontSize   = attr.subHeadFontSize;
+        var subHeadingColor   = attr.subHeadingColor;
+        var subHeadSpace      = attr.subHeadSpace;
+        var backgroundColor   = attr.backgroundColor;
+        var separatorColor    = attr.separatorColor;
+        var separatorBg       = attr.separatorBg;
+        var separatorBorder   = attr.separatorBorder;
+        var timelinAlignment  = attr.timelinAlignment;
+        var arrowlinAlignment = attr.arrowlinAlignment;
+        var postNumber        = attr.postNumber;
+        var align_class       = '';
+        var align_item_class  = '';
+        var arrow_align_class = 'uagb-top-arrow';
+
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-center-arrow';
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-bottom-arrow';
+        }       
 
         if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline uagb-tl-left';
+            align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
             align_item_class = 'uagb-timeline-container uagb-tl-item-left';
         }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline uagb-tl-right';
+            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
             align_item_class = 'uagb-timeline-container uagb-tl-item-right';
         }else{
-            align_class = 'uagb-timeline uagb-tl-center';
+            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
             align_item_class = '';
         }
 
@@ -506,7 +528,7 @@ class UAGBTimeline extends Component {
             );
         }else{
             if ( post_content.length === 0 ) {
-                return "No posts";
+                return "Hello";
             } 
             return (<div className = {align_class}>  
                     <style dangerouslySetInnerHTML={{
@@ -618,6 +640,7 @@ registerBlockType( 'uagb/timeline', {
         },
         headFontSize: {
             type: 'number',
+            default: '15',
         },
         timelineItem:{
             type: 'number',
@@ -631,8 +654,13 @@ registerBlockType( 'uagb/timeline', {
             type: 'string',
             default: 'left',
         },
+        arrowlinAlignment:{
+            type: 'string',
+            default: 'top',
+        },
         subHeadFontSize: {
             type: 'number',
+            default: '12',
         },
         headSpace: {
             type: 'number',
@@ -685,6 +713,7 @@ registerBlockType( 'uagb/timeline', {
     save: function(props) {
         console.log( 'Save props' );
         var attributes = props.attributes;
+        console.log( attributes);
         const {
             tm_content,
             post_content,
@@ -700,6 +729,7 @@ registerBlockType( 'uagb/timeline', {
             timelineItem,
             postNumber,
             timelinAlignment,
+            arrowlinAlignment,
             subHeadFontSize,
             separatorWidth,
             separatorHeight,
@@ -719,14 +749,23 @@ registerBlockType( 'uagb/timeline', {
 
         var align_class = '';
         var align_item_class = '';
+
+        var arrow_align_class = 'uagb-top-arrow';
+
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-center-arrow';
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-bottom-arrow';
+        }      
+
         if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline uagb-tl-left';
+            align_class = 'uagb-timeline uagb-tl-left '+ arrow_align_class;
             align_item_class = 'uagb-timeline-container uagb-tl-item-left';
         }else if( timelinAlignment == 'right'){
-            align_class = 'uagb-timeline uagb-tl-right';
+            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
             align_item_class = 'uagb-timeline-container uagb-tl-item-right';
         }else{
-            align_class = 'uagb-timeline uagb-tl-center';
+            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
             align_item_class = '';
         }
         if( postType == 'general'){
@@ -796,7 +835,7 @@ registerBlockType( 'uagb/timeline', {
             );
         }else{
             if ( post_content.length === 0 ) {
-                return "No posts";
+                return "Hello";
             }else{
                 return (
                     <div className={ props.className } > 

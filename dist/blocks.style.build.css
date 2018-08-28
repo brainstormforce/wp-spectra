@@ -149,6 +149,27 @@
 .uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
   left: 50%; }
 
+@media screen and (min-width: 600px) {
+  .uagb-center-arrow .uagb-timeline-container:before,
+  .uagb-center-arrow .uagb-timeline-container:after {
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%); }
+  uagb-top-arrow
+.uagb-top-arrow .uagb-timeline-container:before,
+  .uagb-top-arrow .uagb-timeline-container:after {
+    top: 25%;
+    -webkit-transform: translateY(-25%);
+        -ms-transform: translateY(-25%);
+            transform: translateY(-25%); }
+  .uagb-bottom-arrow .uagb-timeline-container:before,
+  .uagb-bottom-arrow .uagb-timeline-container:after {
+    top: 75%;
+    -webkit-transform: translateY(-75%);
+        -ms-transform: translateY(-75%);
+            transform: translateY(-75%); } }
+
 /* Media queries - Responsive uagb-timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
   /* Place the timelime to the left */
