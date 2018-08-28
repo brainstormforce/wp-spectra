@@ -52,19 +52,37 @@ class UAGBTimeline extends Component {
 
         // Bind so we can use 'this' inside the method.
         this.getOptions = this.getOptions.bind(this);
+
+        // Get inital post content.
+        this.getOptions();
+
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
+
+        // Bind it.
+        this.onChangeSelectNumberPost = this.onChangeSelectNumberPost.bind(this);
     }   
 
     /**
     * Loading Posts
     */
+    onChangeSelectNumberPost( value ) {       
+        return ( new wp.api.collections.Posts() ).fetch({ data: { per_page:value } }).then( ( posts ) => {
+            this.props.setAttributes({post_content:posts});
+        });
+    }
+
+    /**
+    * Loading Posts
+    */
     getOptions() {   
-        //console.log('getoption');
+        var postperpages = this.props.attributes.postNumber;
+        
         if( (this.props.attributes.post_content).length == '0' ){
-            return ( new wp.api.collections.Posts() ).fetch().then( ( posts ) => {           
-                this.props.attributes.post_content = posts;
-            });    
-        }       
+            return(new wp.api.collections.Posts().fetch({ data: { per_page:postperpages } }).then( ( posts ) => {
+               this.props.attributes.post_content = posts;
+            })); 
+        }
+
     }   
 
     /**
@@ -106,10 +124,8 @@ class UAGBTimeline extends Component {
         //console.log(this);
         // Get Initial Timeline content
         this.getTimelinecontent();
-
-        // Get inital post content.
-        this.getOptions();
-
+        //console.log('render');       
+        
         const {
             isSelected,
             className,
@@ -127,6 +143,7 @@ class UAGBTimeline extends Component {
                 headingTag,
                 headFontSize,
                 timelineItem,
+                postNumber,
                 timelinAlignment,
                 subHeadFontSize,
                 separatorWidth,
@@ -162,16 +179,28 @@ class UAGBTimeline extends Component {
                             { value: 'general', label: __( 'Custom' ) },
                             { value: 'post', label: __( 'Post Type' ) },                            
                         ] }
-                    />
-                    <RangeControl
-                        label={ __( 'Timeline Item' ) }
+                    /> 
+                    { postType === 'general' && <RangeControl
+                        label={ __( 'Number of Items' ) }
                         value={ timelineItem }
                         onChange={ ( value ) => setAttributes( { timelineItem: value } ) }
                         min={ 1 }
                         max={ 200 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />
+                    /> }
+                    { postType === 'post' && <RangeControl
+                        label={ __( 'Posts per Page' ) }
+                        value={ postNumber }
+                        onChange={ ( value ) => {
+                            console.log('change');
+                            this.onChangeSelectNumberPost(value);
+                            setAttributes( { postNumber: value } ) }
+                        }
+                        min={ 1 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"                        
+                    /> }                       
                     <SelectControl
                         label={ __( 'Alignment' ) }
                         value={ timelinAlignment }
@@ -184,8 +213,8 @@ class UAGBTimeline extends Component {
                     />
             </PanelBody>
                 </InspectorControls> 
-            ),
-       
+            ),           
+            
             isSelected && (
                 <BlockControls key='controls'>
                     <AlignmentToolbar
@@ -372,25 +401,27 @@ class UAGBTimeline extends Component {
     //Render output here.
     uagb_get_timeline_content(){
 
-        var attr            = this.props.attributes;
-        var content         = attr.tm_content;
-        var post_content    = attr.post_content;
-        var headingTag      = attr.headingTag;
-        var headingAlign    = attr.headingAlign;
-        var headFontSize    = attr.headFontSize;
-        var headingColor    = attr.headingColor;
-        var headSpace       = attr.headSpace;
-        var time_type       = attr.postType;
-        var subHeadFontSize = attr.subHeadFontSize;
-        var subHeadingColor = attr.subHeadingColor;
-        var subHeadSpace    = attr.subHeadSpace;
-        var backgroundColor = attr.backgroundColor;
-        var separatorColor  = attr.separatorColor;
-        var separatorBg     = attr.separatorBg;
-        var separatorBorder = attr.separatorBorder;
+        var attr             = this.props.attributes;
+        var content          = attr.tm_content;
+        var post_content     = attr.post_content;
+        var headingTag       = attr.headingTag;
+        var headingAlign     = attr.headingAlign;
+        var headFontSize     = attr.headFontSize;
+        var headingColor     = attr.headingColor;
+        var headSpace        = attr.headSpace;
+        var time_type        = attr.postType;
+        var subHeadFontSize  = attr.subHeadFontSize;
+        var subHeadingColor  = attr.subHeadingColor;
+        var subHeadSpace     = attr.subHeadSpace;
+        var backgroundColor  = attr.backgroundColor;
+        var separatorColor   = attr.separatorColor;
+        var separatorBg      = attr.separatorBg;
+        var separatorBorder  = attr.separatorBorder;
         var timelinAlignment = attr.timelinAlignment;
+        var postNumber       = attr.postNumber;
         var align_class      = '';
         var align_item_class = '';
+        //console.log(attr.post_content);
 
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline uagb-tl-left';
@@ -431,7 +462,7 @@ class UAGBTimeline extends Component {
                         }else{
                             align_item_class = 'uagb-timeline-container uagb-tl-item-right';
                         }  
-                    }                                
+                    }  
                     return (<div className = {align_item_class} >                                
                                 <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
@@ -497,7 +528,14 @@ class UAGBTimeline extends Component {
                                     ].join('\n')
                                   }}>
                                 </style>                  
-                        {post_content.map(post => {
+                        {post_content.map((post,index) => {
+                            if(timelinAlignment == 'center'){
+                                if(index % 2 == '0'){
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                                }else{
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                                }  
+                            }       
                             return (
                                 <div className = {align_item_class} >
                                     <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
@@ -583,6 +621,10 @@ registerBlockType( 'uagb/timeline', {
             type: 'number',
         },
         timelineItem:{
+            type: 'number',
+            default: 5,
+        },
+        postNumber:{           
             type: 'number',
             default: 5,
         },
