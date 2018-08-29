@@ -104,14 +104,17 @@ class UAGBTimeline extends Component {
         if( item_number < data_length ){
             let data_new = data_copy;
             data_new.pop();
-            this.props.attributes.tm_content = data_new;
+           // this.props.attributes.tm_content = data_new;
+            this.props.setAttributes({tm_content:data_new});
         }if( item_number > data_length ){            
             var diff = item_number - 1;
             var title_heading_val = 'Timeline Heading '+item_number;
             var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
             data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            this.props.attributes.tm_content = data_copy;   
+            //this.props.attributes.tm_content = data_copy; 
+            this.props.setAttributes({tm_content:data_copy});  
         }  
+
         return this.props.attributes.tm_content;
     }   
 
@@ -485,7 +488,7 @@ class UAGBTimeline extends Component {
                         }  
                     }  
                     return (<div className = {align_item_class} >                                
-                                <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                                <div className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
                                         tagName={ headingTag }
                                         placeholder={ __( 'Write a Heading' ) }
@@ -559,7 +562,7 @@ class UAGBTimeline extends Component {
                             }       
                             return (
                                 <div className = {align_item_class} >
-                                    <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                    <div className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                         <a href={post.link} style={{ 
                                             textAlign: headingAlign,
                                             fontSize: headFontSize + 'px',
