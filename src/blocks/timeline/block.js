@@ -801,7 +801,7 @@ registerBlockType( 'uagb/timeline', {
                             }  
                             return (
                                 <div className = {align_item_class} >
-                                    <div class="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                                    <div className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                         <RichText.Content
                                             tagName={ headingTag }
                                             value={ post.time_heading  }
@@ -870,7 +870,7 @@ registerBlockType( 'uagb/timeline', {
                                         } 
                                         return ( 
                                             <div className = {align_item_class} >
-                                                <div class="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                                <div className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                                     <a href={post.link} style={{ 
                                                         textAlign: headingAlign,
                                                         fontSize: headFontSize + 'px',
