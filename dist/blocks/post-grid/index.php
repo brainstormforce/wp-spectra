@@ -2,8 +2,8 @@
 /**
  * Server-side rendering for the post grid block
  *
- * @since 	1.1.7
- * @package Atomic Blocks
+ * @since 	0.0.1
+ * @package UAGB
  */
 
 /**
@@ -70,10 +70,12 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 			}
 
 			$list_items_markup .= sprintf(
-				'<h3 class="uagb-post__title" style="color: %2$s;"><a href="%1$s" rel="bookmark">%3$s</a></h3>',
+				'<%4$s class="uagb-post__title" style="color: %2$s;font-size: %5$s"><a href="%1$s" rel="bookmark">%3$s</a></%4$s>',
 				esc_url( get_permalink( $post_id ) ),
 				$attributes['titleColor'],
-				esc_html( $title )
+				esc_html( $title ),
+				$attributes['titleTag'],
+				$attributes['titleFontSize']
 			);
 
 			// Wrap the byline content
@@ -277,6 +279,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'titleColor' => array(
 				'type' => 'string',
 				'default' => '#3b3b3b'
+			),
+			'titleTag' => array(
+				'type' => 'string',
+				'default' => 'h3',
+			),
+			'titleFontSize' => array(
+				'type' => 'number',
+				'default' => '',
 			),
 			'metaColor' => array(
 				'type' => 'string',

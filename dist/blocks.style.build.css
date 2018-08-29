@@ -79,9 +79,7 @@
     text-align: left; }
   .uagb-post-grid .uagb-post__title {
     margin-top: 0;
-    margin-bottom: 15px;
-    font-size: 28px;
-    line-height: 1.2; }
+    margin-bottom: 15px; }
     .uagb-post-grid .uagb-post__title a {
       color: inherit;
       -webkit-box-shadow: none;
@@ -98,7 +96,7 @@
         text-decoration: none; }
   .uagb-post-grid .uagb-post-grid-byline {
     text-transform: uppercase;
-    font-size: 13px;
+    font-size: 11px;
     letter-spacing: 1px;
     margin-bottom: 15px; }
   .uagb-post-grid .uagb-post__author,
@@ -123,12 +121,7 @@
   .uagb-post-grid .uagb-post__excerpt {
     margin-bottom: 25px; }
   .uagb-post-grid .uagb-post__text p {
-    margin: 0 0 15px 0;
-    line-height: 1.5;
-    font-size: 18px; }
-    @media only screen and (max-width: 600px) {
-      .uagb-post-grid .uagb-post__text p {
-        font-size: 16px; } }
+    margin: 0 0 15px 0; }
     .uagb-post-grid .uagb-post__text p:last-of-type {
       margin-bottom: 0; }
   .uagb-post-grid .uagb-post__cta {
@@ -168,8 +161,5 @@
     @media only screen and (max-width: 600px) {
       .uagb-post-grid .is-list .uagb-post__image {
         margin-bottom: 5%; } }
-  @media only screen and (min-width: 600px) {
-    .uagb-post-grid .is-list .uagb-post__title {
-      font-size: 34px; } }
   .uagb-post-grid .is-list .no-thumb .uagb-post__text {
     grid-column: span 2; }

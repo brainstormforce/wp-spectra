@@ -32,7 +32,8 @@ const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette
+	ColorPalette,
+	RichText
 } = wp.editor;
 
 const MAX_POSTS_COLUMNS = 4;
@@ -119,6 +120,8 @@ class UAGBPostGrid extends Component {
 			bgColor,
 			contentPadding,
 			titleColor,
+			titleTag,
+			titleFontSize,
 			metaColor,
 			excerptColor,
 			ctaColor,
@@ -178,6 +181,28 @@ class UAGBPostGrid extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <SelectControl
+                        label={ __( 'Title Tag' ) }
+                        value={ titleTag }
+                        onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+                        options={ [
+                            { value: 'h1', label: __( 'H1' ) },
+                            { value: 'h2', label: __( 'H2' ) },
+                            { value: 'h3', label: __( 'H3' ) },
+                            { value: 'h4', label: __( 'H4' ) },
+                            { value: 'h5', label: __( 'H5' ) },
+                            { value: 'h6', label: __( 'H6' ) },
+                        ] }
+                    />
+					<RangeControl
+                        label={ __( 'Heading Font Size' ) }
+                        value={ titleFontSize }
+                        onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
 				</PanelBody>
 				<PanelBody title={ __( 'Meta' ) }>
 					<ToggleControl
@@ -213,17 +238,19 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
-					<PanelColor
-                        title={ __( 'Excerpt Color' ) }
-                        colorValue={ excerptColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ excerptColor }
-                            onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
+					{ displayPostExcerpt == true &&
+						<PanelColor
+	                        title={ __( 'Excerpt Color' ) }
+	                        colorValue={ excerptColor }
+	                        initialOpen={ false }
+	                    >
+	                        <ColorPalette
+	                            value={ excerptColor }
+	                            onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
+	                            allowReset
+	                        />
+	                    </PanelColor>
+	                }
 				</PanelBody>
 				<PanelBody title={ __( 'CTA' ) }>
 					<ToggleControl
@@ -231,28 +258,32 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
-					<PanelColor
-                        title={ __( 'CTA Color' ) }
-                        colorValue={ ctaColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ ctaColor }
-                            onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'CTA Background Color' ) }
-                        colorValue={ ctaBgColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ ctaBgColor }
-                            onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
+					{ displayPostLink == true &&
+						<PanelColor
+	                        title={ __( 'CTA Color' ) }
+	                        colorValue={ ctaColor }
+	                        initialOpen={ false }
+	                    >
+	                        <ColorPalette
+	                            value={ ctaColor }
+	                            onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+	                            allowReset
+	                        />
+	                    </PanelColor>
+	                }
+	                { displayPostLink == true &&
+	                    <PanelColor
+	                        title={ __( 'CTA Background Color' ) }
+	                        colorValue={ ctaBgColor }
+	                        initialOpen={ false }
+	                    >
+	                        <ColorPalette
+	                            value={ ctaBgColor }
+	                            onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+	                            allowReset
+	                        />
+	                    </PanelColor>
+	                }
 				</PanelBody>
 				<PanelBody title={ __( 'Style' ) }>
 					<RangeControl
@@ -400,11 +431,15 @@ class UAGBPostGrid extends Component {
 											padding: contentPadding
 										}}
 									>
-										<h3
+										<RichText.Content
+											tagName={ titleTag }
+											value={ <a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a> }
 											className={ 'uagb-post__title entry-title' }
-											style={{ color: titleColor }}
-										><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h3>
-
+											style={{ 
+												color: titleColor,
+												fontSize: titleFontSize
+											}}
+										/>
 										<div
 											className={ 'uagb-post-grid-byline' }
 											style={{ color: metaColor }}
