@@ -104,14 +104,12 @@ class UAGBTimeline extends Component {
         if( item_number < data_length ){
             let data_new = data_copy;
             data_new.pop();
-           // this.props.attributes.tm_content = data_new;
             this.props.setAttributes({tm_content:data_new});
         }if( item_number > data_length ){            
             var diff = item_number - 1;
             var title_heading_val = 'Timeline Heading '+item_number;
             var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
             data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            //this.props.attributes.tm_content = data_copy; 
             this.props.setAttributes({tm_content:data_copy});  
         }  
 
@@ -479,7 +477,8 @@ class UAGBTimeline extends Component {
                                     ].join('\n')
                                   }}>
                                 </style>
-                 {content.map((post,index) => {  
+                 {content.map((time_content,index) => {  
+                    var second_index = 'uagb-'+index;
                     if(timelinAlignment == 'center'){
                         if(index % 2 == '0'){
                             align_item_class = 'uagb-timeline-container uagb-tl-item-left';
@@ -487,12 +486,12 @@ class UAGBTimeline extends Component {
                             align_item_class = 'uagb-timeline-container uagb-tl-item-right';
                         }  
                     }  
-                    return (<div className = {align_item_class} >                                
-                                <div className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                    return (<div key={index} className = {align_item_class} >                                
+                                <div  key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                     <RichText
                                         tagName={ headingTag }
                                         placeholder={ __( 'Write a Heading' ) }
-                                        value={ post.time_heading }
+                                        value={ time_content.time_heading }
                                         className='uagb-heading-text'
                                         onChange={ ( value ) => { 
                                             var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
@@ -509,7 +508,7 @@ class UAGBTimeline extends Component {
                                     <RichText
                                         tagName="p"
                                         placeholder={ __( 'Write a Description' ) }
-                                        value={ post.time_desc }
+                                        value={ time_content.time_desc }
                                         className='uagb-desc-text'
                                         onChange={ ( value ) => { 
                                             var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
@@ -553,6 +552,7 @@ class UAGBTimeline extends Component {
                                   }}>
                                 </style>                  
                         {post_content.map((post,index) => {
+                            var second_index = 'uagb-'+index;
                             if(timelinAlignment == 'center'){
                                 if(index % 2 == '0'){
                                     align_item_class = 'uagb-timeline-container uagb-tl-item-left';
@@ -561,8 +561,8 @@ class UAGBTimeline extends Component {
                                 }  
                             }       
                             return (
-                                <div className = {align_item_class} >
-                                    <div className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                <div key={index} className = {align_item_class} >
+                                    <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                         <a href={post.link} style={{ 
                                             textAlign: headingAlign,
                                             fontSize: headFontSize + 'px',
@@ -795,6 +795,7 @@ registerBlockType( 'uagb/timeline', {
                           }}>
                         </style>
                         { tm_content.map((post,index) => {  
+                            var second_index = 'uagb-'+index;
                             if(timelinAlignment == 'center'){
                                 if(index % 2 == '0'){
                                     align_item_class = 'uagb-timeline-container uagb-tl-item-left';
@@ -803,8 +804,8 @@ registerBlockType( 'uagb/timeline', {
                                 }  
                             }  
                             return (
-                                <div className = {align_item_class} >
-                                    <div className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                                <div key={index} className = {align_item_class} >
+                                    <div key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
                                         <RichText.Content
                                             tagName={ headingTag }
                                             value={ post.time_heading  }
@@ -864,6 +865,7 @@ registerBlockType( 'uagb/timeline', {
                                 </style>
                                 {  
                                     post_content.map((post,index) => { 
+                                        var second_index = 'uagb-'+index;
                                         if(timelinAlignment == 'center'){
                                             if(index % 2 == '0'){
                                                 align_item_class = 'uagb-timeline-container uagb-tl-item-left';
@@ -872,8 +874,8 @@ registerBlockType( 'uagb/timeline', {
                                             }  
                                         } 
                                         return ( 
-                                            <div className = {align_item_class} >
-                                                <div className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                            <div key={index} className = {align_item_class} >
+                                                <div key={second_index} className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                                     <a href={post.link} style={{ 
                                                         textAlign: headingAlign,
                                                         fontSize: headFontSize + 'px',
