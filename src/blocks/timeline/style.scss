@@ -131,7 +131,7 @@
     left: 50%;
 }
 
-@media screen and (min-width:600px){
+@media screen and (min-width:768px){
   .uagb-center-arrow .uagb-timeline-content:before,
   .uagb-center-arrow .uagb-timeline-container:after {
       top: 50%;
@@ -157,33 +157,28 @@
   }
 }
 
-/* Media queries - Responsive uagb-timeline on screens less than 600px wide */
-@media screen and (max-width: 600px) {
+/* Media queries - Responsive uagb-timeline on screens less than 768px wide */
+@media screen and (max-width: 768px) {
   /* Place the timelime to the left */
   .uagb-timeline::after {
-    left: 31px;
+    left: 0;
+  } 
+  .uagb-tl-center .uagb-timeline-container.uagb-tl-item-left::after {
+    left: -12px;
   }
-  
-  /* Full-width uagb-timeline-containers */
-  .uagb-timeline-container {
-    width: 100%;
-    padding-left: 70px;
-    padding-right: 25px;
+
+  .uagb-tl-center .uagb-tl-item-left .uagb-timeline-content::before {
+      left: -10px;
+      transform: rotate(180deg);
   }
   
   /* Make sure that all arrows are pointing leftwards */
   .uagb-timeline-content::before {
-    left: 60px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
     border-color: transparent white transparent transparent;
   }
 
-  /* Make sure all circles are at the same spot */
-  .uagb-tl-item-left::after, 
-  .uagb-tl-item-right::after {
-    left: 18px;
-  }
   
   /* Make all right uagb-timeline-containers behave like the left ones */
   .uagb-tl-item-right {
@@ -197,4 +192,13 @@
   .uagb-timeline.uagb-tl-center .uagb-timeline-container.uagb-tl-item-right {
     left: 0%;
   }
+
+  /*Arrow position */
+  .uagb-timeline-container:after {
+    top: 20%;
+    -webkit-transform: translateY(-20%);
+    -ms-transform: translateY(-20%);
+    transform: translateY(-20%);
+  }
+ 
 }
