@@ -143,8 +143,8 @@ class UAGBTimeline extends Component {
                 timelinAlignment,
                 arrowlinAlignment,
                 subHeadFontSize,
-                separatorWidth,
-                separatorHeight,
+                verticalSpace,
+                horizontalSpace,
                 headSpace,
                 separatorSpace,
                 subHeadSpace,
@@ -352,29 +352,29 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <RangeControl
+                        label={ __( 'Horizontal Space' ) }
+                        value={ horizontalSpace }
+                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
+                        min={ 10 }
+                        max={ 80 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Vertical Space' ) }
+                        value={ verticalSpace }
+                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
+                        min={ 0 }
+                        max={ 80 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
                 </PanelBody>
                 <PanelBody 
                     title={ __( 'Additional Options' ) }
                     initialOpen={ false }
-                    >
-                    <RangeControl
-                        label={ __( 'Separator Height' ) }
-                        value={ separatorHeight }
-                        onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Separator Width' ) }
-                        value={ separatorWidth }
-                        onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
-                        min={ 0 }
-                        max={ 100 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
+                    >                   
                     <RangeControl
                         label={ __( 'Heading Spacing' ) }
                         value={ headSpace }
@@ -435,6 +435,8 @@ class UAGBTimeline extends Component {
         var timelinAlignment  = attr.timelinAlignment;
         var arrowlinAlignment = attr.arrowlinAlignment;
         var postNumber        = attr.postNumber;
+        var verticalSpace     = attr.verticalSpace;
+        var horizontalSpace   = attr.horizontalSpace;
         var align_class       = '';
         var align_item_class  = '';
         var arrow_align_class = 'uagb-top-arrow';
@@ -473,8 +475,17 @@ class UAGBTimeline extends Component {
                                     '}',
                                     '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}',                                   
-                                    ].join('\n')
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-left {',
+                                    ' padding-right:',horizontalSpace,'px',
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-right {',
+                                    ' padding-left:',horizontalSpace,'px',
+                                    '}',
+                                    '.uagb-timeline-container {',
+                                    ' padding-top:',verticalSpace,'px',
+                                    '}',                                                                        
+                                    ].join('')
                                   }}>
                                 </style>
                  {content.map((time_content,index) => {  
@@ -547,8 +558,17 @@ class UAGBTimeline extends Component {
                                     '}',
                                     '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}',                                 
-                                    ].join('\n')
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-left {',
+                                    ' padding-right:',horizontalSpace,'px',
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-right {',
+                                    ' padding-left:',horizontalSpace,'px',
+                                    '}',
+                                    '.uagb-timeline-container {',
+                                    ' padding-top:',verticalSpace,'px',
+                                    '}',                                       
+                                    ].join('')
                                   }}>
                                 </style>                  
                         {post_content.map((post,index) => {
@@ -635,11 +655,13 @@ registerBlockType( 'uagb/timeline', {
             type: 'string',
             default: 'h3'
         },
-        separatorHeight: {
-            type: 'number'
+        horizontalSpace: {
+            type: 'number',
+            default: '30',
         },
-        separatorWidth: {
-            type: 'number'
+        verticalSpace: {
+            type: 'number',
+            default: '10',
         },
         headFontSize: {
             type: 'number',
@@ -734,8 +756,8 @@ registerBlockType( 'uagb/timeline', {
             timelinAlignment,
             arrowlinAlignment,
             subHeadFontSize,
-            separatorWidth,
-            separatorHeight,
+            verticalSpace,
+            horizontalSpace,
             headSpace,
             separatorSpace,
             subHeadSpace,
@@ -790,8 +812,17 @@ registerBlockType( 'uagb/timeline', {
                             '}',
                             '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                             '  border-color: transparent ',backgroundColor,' transparent transparent',
-                            '}',                                   
-                            ].join('\n')
+                            '}',
+                            '.uagb-timeline-container.uagb-tl-item-left {',
+                            ' padding-right:',horizontalSpace,'px',
+                            '}', 
+                            '.uagb-timeline-container.uagb-tl-item-right {',
+                            ' padding-left:',horizontalSpace,'px',
+                            '}',
+                            '.uagb-timeline-container {',
+                            ' padding-top:',verticalSpace,'px',
+                            '}',                                          
+                            ].join('')
                           }}>
                         </style>
                         { tm_content.map((post,index) => {  
@@ -859,8 +890,17 @@ registerBlockType( 'uagb/timeline', {
                                     '}',
                                     '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}',                                   
-                                    ].join('\n')
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-left {',
+                                    ' padding-right:',horizontalSpace,'px',
+                                    '}', 
+                                    '.uagb-timeline-container.uagb-tl-item-right {',
+                                    ' padding-left:',horizontalSpace,'px',
+                                    '}',
+                                    '.uagb-timeline-container {',
+                                    ' padding-top:',verticalSpace,'px',
+                                    '}',                                          
+                                    ].join('')
                                   }}>
                                 </style>
                                 {  
