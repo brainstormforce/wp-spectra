@@ -440,12 +440,16 @@ class UAGBTimeline extends Component {
         var align_class       = '';
         var align_item_class  = '';
         var arrow_align_class = 'uagb-top-arrow';
+        var vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(75))/100);            
         }else if( arrowlinAlignment == 'bottom' ){
             arrow_align_class = 'uagb-bottom-arrow';
-        }       
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(41))/100);
+        } 
+        //console.log(vert_per);
 
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
@@ -457,6 +461,7 @@ class UAGBTimeline extends Component {
             align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
             align_item_class = '';
         }
+
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
         if( time_type == 'general'){
@@ -484,7 +489,16 @@ class UAGBTimeline extends Component {
                                     '}',
                                     '.uagb-timeline-container {',
                                     ' padding-top:',verticalSpace,'px',
-                                    '}',                                                                        
+                                    '}',
+                                    '.uagb-top-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(20% + ',vert_per,'px)!important',
+                                    '}',
+                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(80% + ',vert_per,'px)!important',
+                                    '}', 
+                                    '.uagb-center-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(50% + ',vert_per,'px)!important',
+                                    '}'                                                                        
                                     ].join('')
                                   }}>
                                 </style>
@@ -567,7 +581,16 @@ class UAGBTimeline extends Component {
                                     '}',
                                     '.uagb-timeline-container {',
                                     ' padding-top:',verticalSpace,'px',
-                                    '}',                                       
+                                    '}',
+                                    '.uagb-top-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(20% + ',vert_per,'px)!important',
+                                    '}',
+                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(80% + ',vert_per,'px)!important',
+                                    '}', 
+                                    '.uagb-center-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(50% + ',vert_per,'px)!important',
+                                    '}'                                            
                                     ].join('')
                                   }}>
                                 </style>                  
@@ -776,11 +799,17 @@ registerBlockType( 'uagb/timeline', {
         var align_item_class = '';
 
         var arrow_align_class = 'uagb-top-arrow';
+        var vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
+
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(75))/100);            
+
         }else if( arrowlinAlignment == 'bottom' ){
             arrow_align_class = 'uagb-bottom-arrow';
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(41))/100);            
+
         }      
 
         if( timelinAlignment == 'left' ){
@@ -821,7 +850,16 @@ registerBlockType( 'uagb/timeline', {
                             '}',
                             '.uagb-timeline-container {',
                             ' padding-top:',verticalSpace,'px',
-                            '}',                                          
+                            '}',
+                            '.uagb-top-arrow .uagb-timeline-container:after{',
+                            ' top:calc(20% + ',vert_per,'px)!important',
+                            '}',
+                            '.uagb-bottom-arrow .uagb-timeline-container:after{',
+                            ' top:calc(80% + ',vert_per,'px)!important',
+                            '}', 
+                            '.uagb-center-arrow .uagb-timeline-container:after{',
+                            ' top:calc(50% + ',vert_per,'px)!important',
+                            '}',                                               
                             ].join('')
                           }}>
                         </style>
@@ -899,7 +937,16 @@ registerBlockType( 'uagb/timeline', {
                                     '}',
                                     '.uagb-timeline-container {',
                                     ' padding-top:',verticalSpace,'px',
-                                    '}',                                          
+                                    '}',
+                                    '.uagb-top-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(20% + ',vert_per,'px)!important',
+                                    '}',
+                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(80% + ',vert_per,'px)!important',
+                                    '}', 
+                                    '.uagb-center-arrow .uagb-timeline-container:after{',
+                                    ' top:calc(50% + ',vert_per,'px)!important',
+                                    '}'                                               
                                     ].join('')
                                   }}>
                                 </style>
