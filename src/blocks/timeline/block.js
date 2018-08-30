@@ -461,7 +461,7 @@ class UAGBTimeline extends Component {
             return ( <div className= {align_class} >
                     <style dangerouslySetInnerHTML={{
                                   __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
@@ -471,7 +471,7 @@ class UAGBTimeline extends Component {
                                       'background-color:',separatorBg,';',
                                       'border-color:',separatorBorder,
                                     '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
                                     '}',                                   
                                     ].join('\n')
@@ -535,7 +535,7 @@ class UAGBTimeline extends Component {
             return (<div className = {align_class}>  
                     <style dangerouslySetInnerHTML={{
                                   __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
@@ -545,7 +545,7 @@ class UAGBTimeline extends Component {
                                       'background-color:',separatorBg,';',
                                       'border-color:',separatorBorder,
                                     '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
                                     '}',                                 
                                     ].join('\n')
@@ -778,7 +778,7 @@ registerBlockType( 'uagb/timeline', {
                        <div className= {align_class} >
                         <style dangerouslySetInnerHTML={{
                           __html: [
-                            '.uagb-timeline-container.uagb-tl-item-left::before {',
+                            '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
                             '  border-color: transparent transparent transparent ',backgroundColor,
                             '}',
                             '.uagb-timeline::after{',
@@ -788,7 +788,7 @@ registerBlockType( 'uagb/timeline', {
                               'background-color:',separatorBg,';',
                               'border-color:',separatorBorder,
                             '}',
-                            '.uagb-timeline-container.uagb-tl-item-right::before {',
+                            '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                             '  border-color: transparent ',backgroundColor,' transparent transparent',
                             '}',                                   
                             ].join('\n')
@@ -847,7 +847,7 @@ registerBlockType( 'uagb/timeline', {
                            <div className= {align_class} >
                                 <style dangerouslySetInnerHTML={{
                                   __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
@@ -857,7 +857,7 @@ registerBlockType( 'uagb/timeline', {
                                       'background-color:',separatorBg,';',
                                       'border-color:',separatorBorder,
                                     '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right::before {',
+                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
                                     '  border-color: transparent ',backgroundColor,' transparent transparent',
                                     '}',                                   
                                     ].join('\n')
@@ -865,7 +865,6 @@ registerBlockType( 'uagb/timeline', {
                                 </style>
                                 {  
                                     post_content.map((post,index) => { 
-                                        var second_index = 'uagb-'+index;
                                         if(timelinAlignment == 'center'){
                                             if(index % 2 == '0'){
                                                 align_item_class = 'uagb-timeline-container uagb-tl-item-left';
@@ -875,7 +874,7 @@ registerBlockType( 'uagb/timeline', {
                                         } 
                                         return ( 
                                             <div key={index} className = {align_item_class} >
-                                                <div key={second_index} className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                                <div key={index} className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
                                                     <a href={post.link} style={{ 
                                                         textAlign: headingAlign,
                                                         fontSize: headFontSize + 'px',

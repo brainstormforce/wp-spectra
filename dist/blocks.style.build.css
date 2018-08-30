@@ -89,27 +89,27 @@
   left: 0%; }
 
 /* Add arrows to the left uagb-timeline-container (pointing right) */
-.uagb-tl-item-left::before {
+.uagb-tl-item-left .uagb-timeline-content::before {
   content: " ";
   height: 0;
   position: absolute;
   top: 22px;
   width: 0;
   z-index: 1;
-  right: 30px;
+  left: 100%;
   border: medium solid white;
   border-width: 10px 0 10px 10px;
   border-color: transparent transparent transparent white; }
 
 /* Add arrows to the right uagb-timeline-container (pointing left) */
-.uagb-tl-item-right::before {
+.uagb-tl-item-right .uagb-timeline-content::before {
   content: " ";
   height: 0;
   position: absolute;
   top: 22px;
   width: 0;
   z-index: 1;
-  left: 30px;
+  right: 100%;
   border: medium solid white;
   border-width: 10px 10px 10px 0;
   border-color: transparent white transparent transparent; }
@@ -150,27 +150,24 @@
   left: 50%; }
 
 @media screen and (min-width: 600px) {
-  .uagb-center-arrow .uagb-timeline-container:before,
+  .uagb-center-arrow .uagb-timeline-content:before,
   .uagb-center-arrow .uagb-timeline-container:after {
     top: 50%;
-    webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
     -webkit-transform: translateY(-50%);
-            transform: translateY(-50%); }
-  .uagb-top-arrow .uagb-timeline-container:before,
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%); }
+  .uagb-top-arrow .uagb-timeline-content:before,
   .uagb-top-arrow .uagb-timeline-container:after {
     top: 20%;
-    webkit-transform: translateY(-20%);
-    -ms-transform: translateY(-20%);
     -webkit-transform: translateY(-20%);
-            transform: translateY(-20%); }
-  .uagb-bottom-arrow .uagb-timeline-container:before,
+    -ms-transform: translateY(-20%);
+    transform: translateY(-20%); }
+  .uagb-bottom-arrow .uagb-timeline-content:before,
   .uagb-bottom-arrow .uagb-timeline-container:after {
     top: 80%;
-    webkit-transform: translateY(-80%);
-    -ms-transform: translateY(-80%);
     -webkit-transform: translateY(-80%);
-            transform: translateY(-80%); } }
+    -ms-transform: translateY(-80%);
+    transform: translateY(-80%); } }
 
 /* Media queries - Responsive uagb-timeline on screens less than 600px wide */
 @media screen and (max-width: 600px) {
@@ -183,7 +180,7 @@
     padding-left: 70px;
     padding-right: 25px; }
   /* Make sure that all arrows are pointing leftwards */
-  .uagb-timeline-container::before {
+  .uagb-timeline-content::before {
     left: 60px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
