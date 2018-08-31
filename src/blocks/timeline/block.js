@@ -454,7 +454,7 @@ class UAGBTimeline extends Component {
         return (
             <Fragment>
             { timeline_control }
-                 <div className={ className } > 
+                <div className={ className } > 
                     <div className = "uagb-timeline-main">
                         { this.uagb_get_timeline_content(displayPosts) }
                     </div>

@@ -52,11 +52,31 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
     $align_class        = '';
     $align_item_class   = '';
     $arrow_align_class  = 'uagb-top-arrow';
-    $seperator_margin   =  (int)(separatorwidth/2);
-    $vert_per           =  (int)(( (int)(verticalSpace) * (75))/100);
+    $seperator_margin   =  (int)($separatorwidth/2);
+    $vert_per           =  (int)(( (int)($verticalSpace) * (75))/100);
 
 	$list_items_markup = '';
 
+
+    if( $arrowlinAlignment == 'center' ){
+        $arrow_align_class = 'uagb-center-arrow';
+        $vert_per = (int)(((int)($verticalSpace) * (int)(40))/100);            
+    }else if( $arrowlinAlignment == 'bottom' ){
+        $arrow_align_class = 'uagb-bottom-arrow';
+        $vert_per = (int)(((int)($verticalSpace) * (int)(12))/100);
+    } 
+
+    if( $timelinAlignment == 'left' ){
+        $align_class = 'uagb-timeline uagb-tl-left ' . $arrow_align_class;
+        $align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+    }else if( $timelinAlignment == 'right'){
+        $align_class = 'uagb-timeline uagb-tl-right '. $arrow_align_class;
+        $align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+    }else{
+        $align_class = 'uagb-timeline uagb-tl-center '. $arrow_align_class;
+        $align_item_class = '';
+    }
+    
 //wp-block-uagb-timeline
 
 	return 'Hello';
