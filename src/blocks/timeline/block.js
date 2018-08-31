@@ -141,11 +141,10 @@ class UAGBTimeline extends Component {
          // Get Initial Timeline content
         this.getTimelinecontent();
 
-        const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
+        const { className, attributes, categoriesList, setAttributes, latestPosts } = this.props;
         const { tm_content, post_content,headingAlign,headingColor,subHeadingColor,backgroundColor,separatorColor,separatorBg,separatorBorder,headingTag,headFontSize,timelineItem,postNumber,timelinAlignment,arrowlinAlignment,subHeadFontSize,verticalSpace,horizontalSpace,headSpace,separatorwidth,subHeadSpace,postType
-,displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
+        ,displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
         
-        console.log(this);
         // Thumbnail options
         const imageCropOptions = [
             { value: 'landscape', label: __( 'Landscape' ) },
@@ -153,65 +152,6 @@ class UAGBTimeline extends Component {
         ];
 
         const isLandscape = imageCrop === 'landscape';
-
-      /*  const inspectorControls = (
-            <InspectorControls>
-                <PanelBody title={ __( 'Post Grid Settings' ) }>
-                    <QueryControls
-                        { ...{ order, orderBy } }
-                        numberOfItems={ postsToShow }
-                        categoriesList={ categoriesList }
-                        selectedCategoryId={ categories }
-                        onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-                        onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-                        onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
-                    />                   
-                    <ToggleControl
-                        label={ __( 'Display Featured Image' ) }
-                        checked={ displayPostImage }
-                        onChange={ this.toggleDisplayPostImage }
-                    />
-                    { displayPostImage &&
-                        <SelectControl
-                            label={ __( 'Featured Image Style' ) }
-                            options={ imageCropOptions }
-                            value={ imageCrop }
-                            onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
-                        />
-                    }
-                    <ToggleControl
-                        label={ __( 'Display Post Author' ) }
-                        checked={ displayPostAuthor }
-                        onChange={ this.toggleDisplayPostAuthor }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Post Date' ) }
-                        checked={ displayPostDate }
-                        onChange={ this.toggleDisplayPostDate }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Post Excerpt' ) }
-                        checked={ displayPostExcerpt }
-                        onChange={ this.toggleDisplayPostExcerpt }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Continue Reading Link' ) }
-                        checked={ displayPostLink }
-                        onChange={ this.toggleDisplayPostLink }
-                    />
-                    { displayPostLink &&
-                    <TextControl
-                        label={ __( 'Customize Read More Link' ) }
-                        type="text"
-                        value={ readMoreText }
-                        onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                    />
-                    }
-
-                </PanelBody>
-            </InspectorControls>
-        );*/
 
         const timeline_control = (
             <InspectorControls>
@@ -495,7 +435,7 @@ class UAGBTimeline extends Component {
                     { timeline_control }                    
                     <Placeholder
                         icon="admin-post"
-                        label={ __( 'Atomic Blocks Post Grid' ) }
+                        label={ __( 'UAGB timeline' ) }
                     >
                         { ! Array.isArray( latestPosts ) ?
                             <Spinner /> :
@@ -511,91 +451,242 @@ class UAGBTimeline extends Component {
             latestPosts.slice( 0, postsToShow ) :
             latestPosts;
 
-        const layoutControls = [
-            {
-                icon: 'grid-view',
-                title: __( 'Grid View' ),
-                onClick: () => setAttributes( { postLayout: 'grid' } ),
-                isActive: postLayout === 'grid',
-            },
-            {
-                icon: 'list-view',
-                title: __( 'List View' ),
-                onClick: () => setAttributes( { postLayout: 'list' } ),
-                isActive: postLayout === 'list',
-            },
-        ];
-
         return (
             <Fragment>
-                { timeline_control }
-                
-                <div
-                    className={ classnames(
-                        this.props.className,
-                        'ab-block-post-grid',
-                    ) }
-                >
-                    <div
-                        className={ classnames( {
-                            'is-grid': postLayout === 'grid',
-                            'is-list': postLayout === 'list',
-                            'ab-post-grid-items' : 'ab-post-grid-items'
-                        } ) }
-                    >
-                        { displayPosts.map( ( post, i ) =>
-                            <article
-                                key={ i }
-                                className={ classnames(
-                                    post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
-                                ) }
-                            >
-                                {
-                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                        <div class="ab-block-post-grid-image">
-                                            <a href={ post.link } target="_blank" rel="bookmark">
-                                                <img
-                                                    src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-                                                    alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                />
-                                            </a>
-                                        </div>
-                                    ) : (
-                                        null
-                                    )
-                                }
-
-                                <div class="ab-block-post-grid-text">
-                                    <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
-
-                                    <div class="ab-block-post-grid-byline">
-                                        { displayPostAuthor && post.author_info.display_name &&
-                                            <div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-                                        }
-
-                                        { displayPostDate && post.date_gmt &&
-                                            <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
-                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-                                            </time>
-                                        }
-                                    </div>
-
-                                    <div class="ab-block-post-grid-excerpt">
-                                        { displayPostExcerpt && post.excerpt &&
-                                            <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-                                        }
-
-                                        { displayPostLink &&
-                                            <p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-                                        }
-                                    </div>
-                                </div>
-                            </article>
-                        ) }
+            { timeline_control }
+                 <div className={ className } > 
+                    <div className = "uagb-timeline-main">
+                        { this.uagb_get_timeline_content(displayPosts) }
                     </div>
                 </div>
             </Fragment>
         );
+    }
+
+    /* Render output at backend */
+    uagb_get_timeline_content( displayPosts ){
+        var attr              = this.props.attributes,
+            content            = attr.tm_content,
+            headingTag         = attr.headingTag,
+            headingAlign       = attr.headingAlign,
+            headFontSize       = attr.headFontSize,
+            headingColor       = attr.headingColor,
+            headSpace          = attr.headSpace,
+            time_type          = attr.postType,
+            subHeadFontSize    = attr.subHeadFontSize,
+            subHeadingColor    = attr.subHeadingColor,
+            subHeadSpace       = attr.subHeadSpace,
+            backgroundColor    = attr.backgroundColor,
+            separatorColor     = attr.separatorColor,
+            separatorBg        = attr.separatorBg,
+            separatorBorder    = attr.separatorBorder,
+            timelinAlignment   = attr.timelinAlignment,
+            arrowlinAlignment  = attr.arrowlinAlignment,
+            postNumber         = attr.postNumber,
+            verticalSpace      = attr.verticalSpace,
+            horizontalSpace    = attr.horizontalSpace,
+            separatorwidth     = attr.separatorwidth,
+            displayPostImage   = attr.displayPostImage,
+            displayPostDate    = attr.displayPostDate,
+            displayPostExcerpt = attr.displayPostExcerpt,
+            displayPostAuthor  = attr.displayPostAuthor,
+            displayPostImage   = attr.displayPostImage,
+            displayPostLink    = attr.displayPostLink,
+            order              = attr.order,
+            orderBy            = attr.orderBy,
+            categories         = attr.categories,
+            postsToShow        = attr.postsToShow,
+            width              = attr.width,
+            imageCrop          = attr.imageCrop,
+            readMoreText       = attr.readMoreText,
+            align_class        = '',
+            align_item_class   = '',
+            arrow_align_class  = 'uagb-top-arrow',
+            seperator_margin   = parseInt(separatorwidth/2),
+            vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);
+        //console.log(displayPosts);
+        
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-center-arrow';
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-bottom-arrow';
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);
+        } 
+
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
+            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+        }else if(timelinAlignment == 'right'){
+            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
+            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+        }else{
+            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
+            align_item_class = '';
+        }
+
+        let data_copy     = [ ...this.props.attributes.tm_content ];
+
+         /* Style for elements */
+        var back_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
+                        '  border-color: transparent transparent transparent '+backgroundColor+
+                        '}'+
+                        '.uagb-timeline::after{'+
+                            'background-color:'+separatorColor+';'+
+                            'width:'+separatorwidth+'px'+';'+
+                            'margin-left:-'+seperator_margin+'px'+
+                        '}'+
+                        '.uagb-timeline-container::after{'+
+                          'background-color:'+separatorBg+';'+
+                          'border-color:'+separatorBorder+
+                        '}'+
+                        '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
+                        '  border-color: transparent '+backgroundColor+' transparent transparent'+
+                        '}'+ 
+                        '.uagb-timeline-container.uagb-tl-item-left {'+
+                        ' padding-right:'+horizontalSpace+'px'+
+                        '}'+ 
+                        '.uagb-timeline-container.uagb-tl-item-right {'+
+                        ' padding-left:'+horizontalSpace+'px'+
+                        '}'+
+                        '.uagb-timeline-container {'+
+                        ' padding-top:'+verticalSpace+'px'+
+                        '}'+
+                        '.uagb-top-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(20% + '+vert_per+'px)!important'+
+                        '}'+
+                        '.uagb-bottom-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(80% + '+vert_per+'px)!important'+
+                        '}'+ 
+                        '.uagb-center-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(50% + '+vert_per+'px)!important'+
+                        '}' ;
+
+        if( time_type == 'general'){
+            return ( <div className= {align_class} >
+                <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                {content.map((time_content,index) => {  
+                    var second_index = 'uagb-'+index;
+                    if(timelinAlignment == 'center'){
+                        if(index % 2 == '0'){
+                            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                        }else{
+                            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                        }  
+                    }  
+                    return (<div key={index} className = {align_item_class} >                                
+                                <div  key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
+                                    <RichText
+                                        tagName={ headingTag }
+                                        placeholder={ __( 'Write a Heading' ) }
+                                        value={ time_content.time_heading }
+                                        className='uagb-heading-text'
+                                        onChange={ ( value ) => { 
+                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
+                                            data_copy[index] = p;                                       
+                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                        } }
+                                        style={{ 
+                                            textAlign: headingAlign,
+                                            fontSize: headFontSize + 'px',
+                                            color: headingColor,
+                                            marginBottom: headSpace + 'px',
+                                        }}
+                                    />
+                                    <RichText
+                                        tagName="p"
+                                        placeholder={ __( 'Write a Description' ) }
+                                        value={ time_content.time_desc }
+                                        className='uagb-desc-text'
+                                        onChange={ ( value ) => { 
+                                            var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
+                                            data_copy[index] = p;                                       
+                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
+                                         } }
+                                        style={{
+                                            textAlign: headingAlign,
+                                            fontSize: subHeadFontSize + 'px',
+                                            color: subHeadingColor,
+                                            marginBottom: subHeadSpace + 'px',
+                                        }}
+                                    />
+                                </div> 
+                            </div>                      
+                        );
+                    })}
+                </div>
+            );
+        }else{
+            if ( displayPosts.length === 0 ) {
+                return "Hello";
+            } 
+            return (<div className = {align_class}>  
+                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                        {displayPosts.map((post,index) => {
+                            var second_index = 'uagb-'+index;
+                            if(timelinAlignment == 'center'){
+                                if(index % 2 == '0'){
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                                }else{
+                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                                }  
+                            }       
+                            return (
+                                <div key={index} className = {align_item_class} >
+                                    <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                        <article
+                                            key={ index }
+                                            className={ classnames(
+                                                post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+                                            ) }
+                                        >
+                                        {
+                                            displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                                <div class="ab-block-post-grid-image">
+                                                    <a href={ post.link } target="_blank" rel="bookmark">
+                                                        <img
+                                                            src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                            alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                        />
+                                                    </a>
+                                                </div>
+                                            ) : (
+                                                null
+                                            )
+                                        }
+                                        <div class="uagb-timeline-text">
+                                            <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+
+                                            <div class="uagb-byline">
+                                                { displayPostAuthor && post.author_info.display_name &&
+                                                    <div class="ab-block-post-grid-author"><a class="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                                }
+
+                                                { displayPostDate && post.date_gmt &&
+                                                    <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+                                                        { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                    </time>
+                                                }
+                                            </div>
+
+                                            <div class="uagb-timeline-grid-excerpt">
+                                                { displayPostExcerpt && post.excerpt &&
+                                                    <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                                }
+
+                                                { displayPostLink &&
+                                                    <p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                                }
+                                            </div>
+                                        </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            );
+                        })}                    
+                </div>);   
+        }
+
     }
 }
 
