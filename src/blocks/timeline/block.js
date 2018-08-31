@@ -444,12 +444,13 @@ class UAGBTimeline extends Component {
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(75))/100);            
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
         }else if( arrowlinAlignment == 'bottom' ){
             arrow_align_class = 'uagb-bottom-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(41))/100);
+            //vert_per = 0;
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);
         } 
-        //console.log(vert_per);
+        console.log(vert_per);
 
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
@@ -804,11 +805,11 @@ registerBlockType( 'uagb/timeline', {
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(75))/100);            
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
 
         }else if( arrowlinAlignment == 'bottom' ){
             arrow_align_class = 'uagb-bottom-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(41))/100);            
+            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);            
 
         }      
 
