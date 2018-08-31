@@ -9,12 +9,17 @@ import moment from 'moment';
 import classnames from 'classnames';
 import { stringify } from 'querystringify';
 
+// Import Post Components
+import FeaturedImage from "./post-components/FeaturedImage";
+import Title from "./post-components/Title";
+import Meta from "./post-components/Meta";
+import Excerpt from "./post-components/Excerpt";
+import Button from "./post-components/Button";
+
 const { Component, Fragment } = wp.element;
-
 const { __ } = wp.i18n;
-
 const { decodeEntities } = wp.htmlEntities;
-
+const MAX_POSTS_COLUMNS = 4;
 const {
 	PanelBody,
 	Placeholder,
@@ -36,7 +41,6 @@ const {
 	RichText
 } = wp.editor;
 
-const MAX_POSTS_COLUMNS = 4;
 
 class UAGBPostGrid extends Component {
 	constructor() {
@@ -127,8 +131,6 @@ class UAGBPostGrid extends Component {
 			ctaColor,
 			ctaBgColor
 		} = attributes;
-
-		console.log(this);
 
 		// Thumbnail options
 		const imageCropOptions = [
@@ -410,20 +412,7 @@ class UAGBPostGrid extends Component {
 									className={ 'uagb-post__inner-wrap' }
 									style={{ background: bgColor }}
 								>
-									{
-										displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-											<div className={ 'uagb-post__image' }>
-												<a href={ post.link } target="_blank" rel="bookmark">
-													<img
-														src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-														alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-													/>
-												</a>
-											</div>
-										) : (
-											null
-										)
-									}
+									<FeaturedImage post={post} attributes={attributes} />
 
 									<div
 										className={ 'uagb-post__text' }
@@ -431,54 +420,10 @@ class UAGBPostGrid extends Component {
 											padding: contentPadding
 										}}
 									>
-										<RichText.Content
-											tagName={ titleTag }
-											value={ <a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a> }
-											className={ 'uagb-post__title entry-title' }
-											style={{ 
-												color: titleColor,
-												fontSize: titleFontSize
-											}}
-										/>
-										<div
-											className={ 'uagb-post-grid-byline' }
-											style={{ color: metaColor }}
-										>
-											{ displayPostAuthor && post.author_info.display_name &&
-												<div
-													className={ 'uagb-post__author fa fa-user' }
-													style={{ color: metaColor }}
-												><a className={ 'uagb-text-link' } target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-											}
-
-											{ displayPostDate && post.date_gmt &&
-												<time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-post__date fa fa-clock' } >
-													{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-												</time>
-											}
-
-											{ displayPostComment &&
-												<div className={ 'uagb-post__comment fa fa-comment' } >{ post.author_info.comments }</div>
-											}
-										</div>
-
-										<div
-											className={ 'uagb-post__excerpt' }
-											style={{ color: excerptColor }}
-										>
-											{ displayPostExcerpt && post.excerpt &&
-												<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-											}
-										</div>
-										{ displayPostLink &&
-											<div
-												className={ 'uagb-post__cta' }
-												style={{
-													color: ctaColor,
-													background: ctaBgColor
-												}}
-											><a className={ 'uagb-post__link uagb-text-link' } href={ post.link } target="_blank" rel="bookmark">{ __( 'Read More', 'atomic-blocks' ) }</a></div>
-										}
+										<Title post={post} attributes={attributes} />
+										<Meta post={post} attributes={attributes} />
+										<Excerpt post={post} attributes={attributes} />
+										<Button post={post} attributes={attributes} />
 									</div>
 								</div>
 							</article>

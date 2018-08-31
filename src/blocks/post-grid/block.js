@@ -14,8 +14,6 @@ import edit from './edit';
 import './style.scss'
 import './editor.scss';
 
-console.log(wp);
-
 // Components
 const { __ } = wp.i18n; 
 
