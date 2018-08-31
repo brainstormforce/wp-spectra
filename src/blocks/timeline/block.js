@@ -1,32 +1,36 @@
 /**
- * BLOCK: Timeline
+ * External dependencies
  */
 
-// Import block dependencies and components.
+import get from 'lodash/get';
+import isUndefined from 'lodash/isUndefined';
+import pickBy from 'lodash/pickBy';
+import moment from 'moment';
 import classnames from 'classnames';
+//import { stringify } from 'querystringify';
 
-//  Import CSS.
-import './style.scss'
-import './editor.scss';
+const { Component, Fragment } = wp.element;
 
-// Import __() from wp.i18n
 const { __ } = wp.i18n;
-// Extend component
-const { Component } = wp.element;
-
-const {
-    registerBlockType,
-} = wp.blocks;
 
 const { decodeEntities } = wp.htmlEntities;
+
+const { apiFetch } = wp;
+
+const {
+    registerStore,
+    withSelect,
+} = wp.data;
 
 const {
     PanelBody,
     PanelColor,
-    SelectControl,
-    RangeControl,
+    Placeholder,
     QueryControls,
+    RangeControl,
+    SelectControl,
     Spinner,
+    TextControl,
     ToggleControl,
     Toolbar,
     withAPIData,
@@ -34,52 +38,26 @@ const {
 
 const {
     AlignmentToolbar,
-    BlockControls,
-    ColorPalette,
     InspectorControls,
+    ColorPalette,
     RichText,
     BlockAlignmentToolbar,
+    BlockControls,
 } = wp.editor;
 
-class UAGBTimeline extends Component {  
-
+class UAGBTimeline extends Component {
     constructor() {
         super( ...arguments );
 
-        // Bind so we can use 'this' inside the method.
-        this.getOptions = this.getOptions.bind(this);
-
-        // Get inital post content.
-        this.getOptions();
-
+        // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
 
-        // Bind it.
-        this.onChangeSelectNumberPost = this.onChangeSelectNumberPost.bind(this);
-    }   
-
-    /**
-    * Loading Posts
-    */
-    onChangeSelectNumberPost( value ) {       
-        return ( new wp.api.collections.Posts() ).fetch({ data: { per_page:value } }).then( ( posts ) => {
-            this.props.setAttributes({post_content:posts});
-        });
+        this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
+        this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
+        this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
+        this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
+        this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
     }
-
-    /**
-    * Loading Posts
-    */
-    getOptions() {   
-        var postperpages = this.props.attributes.postNumber;
-        
-        if( (this.props.attributes.post_content).length == '0' ){
-            return(new wp.api.collections.Posts().fetch({ data: { per_page:postperpages } }).then( ( posts ) => {
-               this.props.attributes.post_content = posts;
-            })); 
-        }
-
-    }   
 
     /**
     * Loading Timeline content.
@@ -116,54 +94,127 @@ class UAGBTimeline extends Component {
         return this.props.attributes.tm_content;
     }   
 
+    toggleDisplayPostDate() {
+        const { displayPostDate } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { displayPostDate: ! displayPostDate } );
+    }
+
+    toggleDisplayPostExcerpt() {
+        const { displayPostExcerpt } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
+    }
+
+    toggleDisplayPostAuthor() {
+        const { displayPostAuthor } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { displayPostAuthor: ! displayPostAuthor } );
+    }
+
+    toggleDisplayPostImage() {
+        const { displayPostImage } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { displayPostImage: ! displayPostImage } );
+    }
+
+    toggleDisplayPostLink() {
+        const { displayPostLink } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { displayPostLink: ! displayPostLink } );
+    }
+
+    customizeReadMoreText() {
+        const { readMoreText } = this.props.attributes;
+        const { setAttributes } = this.props;
+
+        setAttributes( { readMoreText: ! readMoreText } );
+    }
 
     render() {
-        //console.log(this);
-        // Get Initial Timeline content
-        this.getTimelinecontent();
-       
-        const {
-            isSelected,
-            className,
-            setAttributes,
-            attributes: { 
-                tm_content,
-                post_content,
-                headingAlign,
-                headingColor,
-                subHeadingColor,
-                backgroundColor,
-                separatorColor,
-                separatorBg,
-                separatorBorder,
-                headingTag,
-                headFontSize,
-                timelineItem,
-                postNumber,
-                timelinAlignment,
-                arrowlinAlignment,
-                subHeadFontSize,
-                verticalSpace,
-                horizontalSpace,
-                headSpace,
-                separatorwidth,
-                subHeadSpace,
-                categories,
-                postType,
-                postsToShow,
-                displayPostDate,
-                postLayout,
-                columns,
-                align,
-                order,
-                orderBy
-            },
-        } = this.props; 
 
-        //function to change heading state. 
-        return [            
-            isSelected && (
-                <InspectorControls>
+         // Get Initial Timeline content
+        this.getTimelinecontent();
+
+        const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
+        const { tm_content, post_content,headingAlign,headingColor,subHeadingColor,backgroundColor,separatorColor,separatorBg,separatorBorder,headingTag,headFontSize,timelineItem,postNumber,timelinAlignment,arrowlinAlignment,subHeadFontSize,verticalSpace,horizontalSpace,headSpace,separatorwidth,subHeadSpace,postType
+,displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
+        
+        console.log(this);
+        // Thumbnail options
+        const imageCropOptions = [
+            { value: 'landscape', label: __( 'Landscape' ) },
+            { value: 'square', label: __( 'Square' ) },
+        ];
+
+        const isLandscape = imageCrop === 'landscape';
+
+      /*  const inspectorControls = (
+            <InspectorControls>
+                <PanelBody title={ __( 'Post Grid Settings' ) }>
+                    <QueryControls
+                        { ...{ order, orderBy } }
+                        numberOfItems={ postsToShow }
+                        categoriesList={ categoriesList }
+                        selectedCategoryId={ categories }
+                        onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+                        onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+                        onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+                    />                   
+                    <ToggleControl
+                        label={ __( 'Display Featured Image' ) }
+                        checked={ displayPostImage }
+                        onChange={ this.toggleDisplayPostImage }
+                    />
+                    { displayPostImage &&
+                        <SelectControl
+                            label={ __( 'Featured Image Style' ) }
+                            options={ imageCropOptions }
+                            value={ imageCrop }
+                            onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+                        />
+                    }
+                    <ToggleControl
+                        label={ __( 'Display Post Author' ) }
+                        checked={ displayPostAuthor }
+                        onChange={ this.toggleDisplayPostAuthor }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Post Date' ) }
+                        checked={ displayPostDate }
+                        onChange={ this.toggleDisplayPostDate }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Post Excerpt' ) }
+                        checked={ displayPostExcerpt }
+                        onChange={ this.toggleDisplayPostExcerpt }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Continue Reading Link' ) }
+                        checked={ displayPostLink }
+                        onChange={ this.toggleDisplayPostLink }
+                    />
+                    { displayPostLink &&
+                    <TextControl
+                        label={ __( 'Customize Read More Link' ) }
+                        type="text"
+                        value={ readMoreText }
+                        onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+                    />
+                    }
+
+                </PanelBody>
+            </InspectorControls>
+        );*/
+
+        const timeline_control = (
+            <InspectorControls>
                 <PanelBody 
                     title={ __( 'General' ) }
                     initialOpen={ false }
@@ -186,23 +237,62 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     /> }
-                    { postType === 'post' && <RangeControl
-                        label={ __( 'Posts per Page' ) }
-                        value={ postNumber }
-                        onChange={ ( value ) => {
-                            this.onChangeSelectNumberPost(value);
-                            setAttributes( { postNumber: value } ) }
-                        }
-                        min={ 1 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"                        
-                    /> } 
+                    { postType === 'post' && <PanelBody title={ __( 'Post Grid Settings' ) }>
+                    <QueryControls
+                        { ...{ order, orderBy } }
+                        numberOfItems={ postsToShow }
+                        categoriesList={ categoriesList }
+                        selectedCategoryId={ categories }
+                        onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+                        onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+                        onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+                    />                   
+                    <ToggleControl
+                        label={ __( 'Display Featured Image' ) }
+                        checked={ displayPostImage }
+                        onChange={ this.toggleDisplayPostImage }
+                    />
+                    { displayPostImage &&
+                        <SelectControl
+                            label={ __( 'Featured Image Style' ) }
+                            options={ imageCropOptions }
+                            value={ imageCrop }
+                            onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+                        />
+                    }
+                    <ToggleControl
+                        label={ __( 'Display Post Author' ) }
+                        checked={ displayPostAuthor }
+                        onChange={ this.toggleDisplayPostAuthor }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Post Date' ) }
+                        checked={ displayPostDate }
+                        onChange={ this.toggleDisplayPostDate }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Post Excerpt' ) }
+                        checked={ displayPostExcerpt }
+                        onChange={ this.toggleDisplayPostExcerpt }
+                    />
+                    <ToggleControl
+                        label={ __( 'Display Continue Reading Link' ) }
+                        checked={ displayPostLink }
+                        onChange={ this.toggleDisplayPostLink }
+                    />
+                    { displayPostLink &&
+                    <TextControl
+                        label={ __( 'Customize Read More Link' ) }
+                        type="text"
+                        value={ readMoreText }
+                        onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+                    />
+                    }
+
+                </PanelBody>}                   
                  </PanelBody>
-                </InspectorControls> 
-            ),           
-            isSelected && (
-                <InspectorControls>
-                <PanelBody 
+                 <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
                 >                      
@@ -226,21 +316,13 @@ class UAGBTimeline extends Component {
                             { value: 'center', label: __( 'Center' ) },
                         ] }
                     />
-            </PanelBody>
-                </InspectorControls> 
-            ),           
-            
-            isSelected && (
-                <BlockControls key='controls'>
-                    <AlignmentToolbar
-                        value={ headingAlign }
-                        onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-                    />
-                </BlockControls>
-            ),
-
-            isSelected && (
-                <InspectorControls>
+                    <BlockControls key='controls'>
+                        <AlignmentToolbar
+                            value={ headingAlign }
+                            onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+                        />
+                    </BlockControls>
+                </PanelBody>
                 <PanelBody 
                     title={ __( 'Typography' ) }
                     initialOpen={ false }
@@ -346,7 +428,7 @@ class UAGBTimeline extends Component {
                         colorValue={ separatorBorder }
                         initialOpen={ false }
                     >
-                        <ColorPalette
+                    <ColorPalette
                             value={ separatorBorder }
                             onChange={ ( colorValue ) => setAttributes( { separatorBorder: colorValue } ) }
                             allowReset
@@ -403,521 +485,134 @@ class UAGBTimeline extends Component {
                         allowReset
                     />
                 </PanelBody>
-                </InspectorControls>
-            ),            
-            <div className={ className } > 
-                <div className = "uagb-timeline-main">
-                    { this.uagb_get_timeline_content() }
-                </div>
-            </div>
-        ];
-    }  
+            </InspectorControls>                
+        );
 
-    //Render output here.
-    uagb_get_timeline_content(){
-
-        var attr              = this.props.attributes,
-            content           = attr.tm_content,
-            post_content      = attr.post_content,
-            headingTag        = attr.headingTag,
-            headingAlign      = attr.headingAlign,
-            headFontSize      = attr.headFontSize,
-            headingColor      = attr.headingColor,
-            headSpace         = attr.headSpace,
-            time_type         = attr.postType,
-            subHeadFontSize   = attr.subHeadFontSize,
-            subHeadingColor   = attr.subHeadingColor,
-            subHeadSpace      = attr.subHeadSpace,
-            backgroundColor   = attr.backgroundColor,
-            separatorColor    = attr.separatorColor,
-            separatorBg       = attr.separatorBg,
-            separatorBorder   = attr.separatorBorder,
-            timelinAlignment  = attr.timelinAlignment,
-            arrowlinAlignment = attr.arrowlinAlignment,
-            postNumber        = attr.postNumber,
-            verticalSpace     = attr.verticalSpace,
-            horizontalSpace   = attr.horizontalSpace,
-            separatorwidth    = attr.separatorwidth,
-            align_class       = '',
-            align_item_class  = '',
-            arrow_align_class = 'uagb-top-arrow',
-            seperator_margin  = parseInt(separatorwidth/2),
-            vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
-
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-center-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-bottom-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);
-        } 
-
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-        }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-        }else{
-            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
-            align_item_class = '';
+        const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+        if ( ! hasPosts ) {
+            return (
+                <Fragment>
+                    { timeline_control }                    
+                    <Placeholder
+                        icon="admin-post"
+                        label={ __( 'Atomic Blocks Post Grid' ) }
+                    >
+                        { ! Array.isArray( latestPosts ) ?
+                            <Spinner /> :
+                            __( 'No posts found.' )
+                        }
+                    </Placeholder>
+                </Fragment>
+            );
         }
 
-        let data_copy     = [ ...this.props.attributes.tm_content ];
+        // Removing posts from display should be instant.
+        const displayPosts = latestPosts.length > postsToShow ?
+            latestPosts.slice( 0, postsToShow ) :
+            latestPosts;
 
-        /* Style for elements */
-        var back_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
-                        '  border-color: transparent transparent transparent '+backgroundColor+
-                        '}'+
-                        '.uagb-timeline::after{'+
-                            'background-color:'+separatorColor+';'+
-                            'width:'+separatorwidth+'px'+';'+
-                            'margin-left:-'+seperator_margin+'px'+
-                        '}'+
-                        '.uagb-timeline-container::after{'+
-                          'background-color:'+separatorBg+';'+
-                          'border-color:'+separatorBorder+
-                        '}'+
-                        '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
-                        '  border-color: transparent '+backgroundColor+' transparent transparent'+
-                        '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-left {'+
-                        ' padding-right:'+horizontalSpace+'px'+
-                        '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-right {'+
-                        ' padding-left:'+horizontalSpace+'px'+
-                        '}'+
-                        '.uagb-timeline-container {'+
-                        ' padding-top:'+verticalSpace+'px'+
-                        '}'+
-                        '.uagb-top-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(20% + '+vert_per+'px)!important'+
-                        '}'+
-                        '.uagb-bottom-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(80% + '+vert_per+'px)!important'+
-                        '}'+ 
-                        '.uagb-center-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(50% + '+vert_per+'px)!important'+
-                        '}' ;
+        const layoutControls = [
+            {
+                icon: 'grid-view',
+                title: __( 'Grid View' ),
+                onClick: () => setAttributes( { postLayout: 'grid' } ),
+                isActive: postLayout === 'grid',
+            },
+            {
+                icon: 'list-view',
+                title: __( 'List View' ),
+                onClick: () => setAttributes( { postLayout: 'list' } ),
+                isActive: postLayout === 'list',
+            },
+        ];
 
-        if( time_type == 'general'){
-            return ( <div className= {align_class} >
-                <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-                {content.map((time_content,index) => {  
-                    var second_index = 'uagb-'+index;
-                    if(timelinAlignment == 'center'){
-                        if(index % 2 == '0'){
-                            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                        }else{
-                            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                        }  
-                    }  
-                    return (<div key={index} className = {align_item_class} >                                
-                                <div  key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
-                                    <RichText
-                                        tagName={ headingTag }
-                                        placeholder={ __( 'Write a Heading' ) }
-                                        value={ time_content.time_heading }
-                                        className='uagb-heading-text'
-                                        onChange={ ( value ) => { 
-                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
-                                            data_copy[index] = p;                                       
-                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                        } }
-                                        style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: headFontSize + 'px',
-                                            color: headingColor,
-                                            marginBottom: headSpace + 'px',
-                                        }}
-                                    />
-                                    <RichText
-                                        tagName="p"
-                                        placeholder={ __( 'Write a Description' ) }
-                                        value={ time_content.time_desc }
-                                        className='uagb-desc-text'
-                                        onChange={ ( value ) => { 
-                                            var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
-                                            data_copy[index] = p;                                       
-                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                         } }
-                                        style={{
-                                            textAlign: headingAlign,
-                                            fontSize: subHeadFontSize + 'px',
-                                            color: subHeadingColor,
-                                            marginBottom: subHeadSpace + 'px',
-                                        }}
-                                    />
-                                </div> 
-                            </div>                      
-                        );
-                    })}
-                </div>
-            );
-        }else{
-            if ( post_content.length === 0 ) {
-                return "Hello";
-            } 
-            return (<div className = {align_class}>  
-                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-                        {post_content.map((post,index) => {
-                            var second_index = 'uagb-'+index;
-                            if(timelinAlignment == 'center'){
-                                if(index % 2 == '0'){
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                                }else{
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                                }  
-                            }       
-                            return (
-                                <div key={index} className = {align_item_class} >
-                                    <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
-                                        <a href={post.link} style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: headFontSize + 'px',
-                                            color: headingColor,
-                                            marginBottom: headSpace + 'px',
-                                        }} >
-                                            {post.title.rendered}
-                                        </a>
-                                        <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
-                                            textAlign: headingAlign,
-                                            fontSize: subHeadFontSize + 'px',
-                                            color: subHeadingColor,
-                                            marginBottom: subHeadSpace + 'px',
-                                        }}>
+        return (
+            <Fragment>
+                { timeline_control }
+                
+                <div
+                    className={ classnames(
+                        this.props.className,
+                        'ab-block-post-grid',
+                    ) }
+                >
+                    <div
+                        className={ classnames( {
+                            'is-grid': postLayout === 'grid',
+                            'is-list': postLayout === 'list',
+                            'ab-post-grid-items' : 'ab-post-grid-items'
+                        } ) }
+                    >
+                        { displayPosts.map( ( post, i ) =>
+                            <article
+                                key={ i }
+                                className={ classnames(
+                                    post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+                                ) }
+                            >
+                                {
+                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                        <div class="ab-block-post-grid-image">
+                                            <a href={ post.link } target="_blank" rel="bookmark">
+                                                <img
+                                                    src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                    alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                />
+                                            </a>
                                         </div>
+                                    ) : (
+                                        null
+                                    )
+                                }
+
+                                <div class="ab-block-post-grid-text">
+                                    <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+
+                                    <div class="ab-block-post-grid-byline">
+                                        { displayPostAuthor && post.author_info.display_name &&
+                                            <div class="ab-block-post-grid-author"><a class="ab-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                        }
+
+                                        { displayPostDate && post.date_gmt &&
+                                            <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                            </time>
+                                        }
+                                    </div>
+
+                                    <div class="ab-block-post-grid-excerpt">
+                                        { displayPostExcerpt && post.excerpt &&
+                                            <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                        }
+
+                                        { displayPostLink &&
+                                            <p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                        }
                                     </div>
                                 </div>
-                            );
-                        })}                    
-                </div>);   
-        }
-        //console.log(attr.tm_content);
-        
-    } 
-}
-
-
-registerBlockType( 'uagb/timeline', {
-    title: 'Timeline - UAGB',
-    icon: 'megaphone',
-    category: 'widgets',
-    attributes: {
-        tm_content: {
-          type: 'array',
-          default: [],
-        },
-        post_content: {
-          type: 'array',
-          default: [],
-        },  
-        headingAlign: {
-            type: 'string',
-            default: 'center',
-        },
-        headingColor: {
-            type: 'string',
-            default: '#000',
-        },
-        subHeadingColor: {
-            type: 'string',
-            default: '#000',
-        },
-        backgroundColor: {
-            type: 'string',
-            default: '#eee',
-        },
-        separatorColor: {
-            type: 'string',
-            default: '#eee',
-        },
-        separatorBg: {
-            type: 'string',
-            default: '#eee',
-        },
-        separatorBorder: {
-            type: 'string',
-            default: '#eee',
-        },
-        headingTag: {
-            type: 'string',
-            default: 'h3'
-        },
-        horizontalSpace: {
-            type: 'number',
-            default: '30',
-        },
-        verticalSpace: {
-            type: 'number',
-            default: '10',
-        },
-        headFontSize: {
-            type: 'number',
-            default: '15',
-        },
-        timelineItem:{
-            type: 'number',
-            default: 5,
-        },
-        postNumber:{           
-            type: 'number',
-            default: 5,
-        },
-        timelinAlignment: {
-            type: 'string',
-            default: 'left',
-        },
-        arrowlinAlignment:{
-            type: 'string',
-            default: 'top',
-        },
-        subHeadFontSize: {
-            type: 'number',
-            default: '12',
-        },
-        headSpace: {
-            type: 'number',
-        },
-        separatorwidth: {
-            type: 'number',
-            default: '6',
-        },
-        subHeadSpace: {
-            type: 'number',
-        },
-        categories: {
-            type: 'string',
-            default: 5,
-        },
-        postType: {
-            type: 'string',
-            default: 'general',
-        },
-        postsToShow: {
-            type: 'number',
-        },
-        displayPostDate: {
-            type: 'boolean',
-            default: false,
-        },
-        postLayout: {
-            type: 'string',
-            default: 'list',
-        },
-        columns: {
-           type: 'number',
-           default: 3,
-        },
-        align: {
-            type: 'string',
-            default: 'center',
-        },
-        order: {
-            type: 'string',
-            default: 'desc'
-        },
-        orderBy: {
-            type: 'string',
-            default: 'desc'
-        }, 
-    },
-
-    edit: UAGBTimeline,
-  
-    save: function(props) {
-        console.log( 'Save props' );
-        var attributes = props.attributes;
-        console.log( attributes);
-        const {
-            tm_content,
-            post_content,
-            headingAlign,
-            headingColor,
-            subHeadingColor,
-            backgroundColor,
-            separatorColor,
-            separatorBg,
-            separatorBorder,
-            headingTag,
-            headFontSize,
-            timelineItem,
-            postNumber,
-            timelinAlignment,
-            arrowlinAlignment,
-            subHeadFontSize,
-            verticalSpace,
-            horizontalSpace,
-            headSpace,
-            separatorwidth,
-            subHeadSpace,
-            categories,
-            postType,
-            postsToShow,
-            displayPostDate,
-            postLayout,
-            columns,
-            align,
-            order,
-            orderBy
-        } = props.attributes;
-
-        var align_class = '',
-            align_item_class = '',
-            arrow_align_class = 'uagb-top-arrow',
-            vert_per          = parseInt((parseInt(verticalSpace) * (75))/100),
-            seperator_margin  = parseInt(separatorwidth/2);
-
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-center-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
-
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-bottom-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);            
-
-        }      
-
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline uagb-tl-left '+ arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-        }else if( timelinAlignment == 'right'){
-            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-        }else{
-            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
-            align_item_class = '';
-        }
-        var front_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
-                            '  border-color: transparent transparent transparent '+backgroundColor+
-                            '}'+
-                            '.uagb-timeline::after{'+
-                                'background-color:'+separatorColor+';'+
-                                'width:'+separatorwidth+'px'+';'+
-                                'margin-left:-'+seperator_margin+'px'+
-                            '}'+
-                            '.uagb-timeline-container::after{'+
-                              'background-color:'+separatorBg+';'+
-                              'border-color:'+separatorBorder+
-                            '}'+
-                            '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
-                            '  border-color: transparent '+backgroundColor+' transparent transparent'+
-                            '}'+
-                            '.uagb-timeline-container.uagb-tl-item-left {'+
-                            ' padding-right:'+horizontalSpace+'px'+
-                            '}'+ 
-                            '.uagb-timeline-container.uagb-tl-item-right {'+
-                            ' padding-left:'+horizontalSpace+'px'+
-                            '}'+
-                            '.uagb-timeline-container {'+
-                            ' padding-top:'+verticalSpace+'px'+
-                            '}'+
-                            '.uagb-top-arrow .uagb-timeline-container:after{'+
-                            ' top:calc(20% + '+vert_per+'px)!important'+
-                            '}'+
-                            '.uagb-bottom-arrow .uagb-timeline-container:after{'+
-                            ' top:calc(80% + '+vert_per+'px)!important'+
-                            '}'+ 
-                            '.uagb-center-arrow .uagb-timeline-container:after{'+
-                            ' top:calc(50% + '+vert_per+'px)!important'+
-                            '}';
-
-        if( postType == 'general'){
-            return (
-                 <div className={ props.className } > 
-                    <div className = "uagb-timeline-main">
-                       <div className= {align_class} >
-                        <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
-                        { tm_content.map((post,index) => {  
-                            var second_index = 'uagb-'+index;
-                            if(timelinAlignment == 'center'){
-                                if(index % 2 == '0'){
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                                }else{
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                                }  
-                            }  
-                            return (
-                                <div key={index} className = {align_item_class} >
-                                    <div key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
-                                        <RichText.Content
-                                            tagName={ headingTag }
-                                            value={ post.time_heading  }
-                                            className='uagb-content-title'
-                                            style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: headFontSize + 'px',
-                                            color: headingColor,
-                                            marginBottom: headSpace + 'px',
-                                        }}
-                                        />
-                                        <RichText.Content
-                                            tagName="p"
-                                            value={ post.time_desc  }
-                                            className='uagb-content-description'
-                                            style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: subHeadFontSize + 'px',
-                                            color: subHeadingColor,
-                                            marginBottom: subHeadSpace + 'px',
-                                        }}
-                                        />
-                                    </div> 
-                                </div>
-                            );
-                        })
-                        }
-                       </div>
+                            </article>
+                        ) }
                     </div>
                 </div>
-            );
-        }else{
-            if ( post_content.length === 0 ) {
-                return "Hello";
-            }else{
-                return (
-                    <div className={ props.className } > 
-                        <div className = "uagb-timeline-main">
-                           <div className= {align_class} >
-                                <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
-                                {  
-                                    post_content.map((post,index) => { 
-                                        if(timelinAlignment == 'center'){
-                                            if(index % 2 == '0'){
-                                                align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                                            }else{
-                                                align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                                            }  
-                                        } 
-                                        return ( 
-                                            <div key={index} className = {align_item_class} >
-                                                <div key={index} className="uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
-                                                    <a href={post.link} style={{ 
-                                                        textAlign: headingAlign,
-                                                        fontSize: headFontSize + 'px',
-                                                        color: headingColor,
-                                                        marginBottom: headSpace + 'px',
-                                                    }} >
-                                                        {post.title.rendered}
-                                                    </a>
-                                                    <div className="uagb-post-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{
-                                                        textAlign: headingAlign,
-                                                        fontSize: subHeadFontSize + 'px',
-                                                        color: subHeadingColor,
-                                                        marginBottom: subHeadSpace + 'px',
-                                                    }}>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                        );  
-                                    })
-                                }
-                           </div>
-                        </div>
-                    </div>
-                );
-            }            
-        }
-    },
-} );
+            </Fragment>
+        );
+    }
+}
 
+export default withSelect( ( select, props ) => {
+    const { postsToShow, order, orderBy, categories } = props.attributes;
+    const { getEntityRecords } = select( 'core' );
+    const latestPostsQuery = pickBy( {
+        categories,
+        order,
+        orderby: orderBy,
+        per_page: postsToShow,
+    }, ( value ) => ! isUndefined( value ) );
+    const categoriesListQuery = {
+        per_page: 100,
+    };
+    return {
+        latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+        categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
+    };
+} )( UAGBTimeline );

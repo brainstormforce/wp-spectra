@@ -10,4 +10,4 @@
  */
 
 import './blocks/advanced-heading/block.js';
-import './blocks/timeline/block.js';
+import './blocks/timeline/index.js';
