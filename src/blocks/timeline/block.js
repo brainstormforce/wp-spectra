@@ -146,7 +146,7 @@ class UAGBTimeline extends Component {
                 verticalSpace,
                 horizontalSpace,
                 headSpace,
-                separatorSpace,
+                separatorwidth,
                 subHeadSpace,
                 categories,
                 postType,
@@ -353,6 +353,15 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <RangeControl
+                        label={ __( 'Line Width' ) }
+                        value={ separatorwidth }
+                        onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
+                        min={ 1 }
+                        max={ 10 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
                         label={ __( 'Horizontal Space' ) }
                         value={ horizontalSpace }
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
@@ -383,16 +392,7 @@ class UAGBTimeline extends Component {
                         max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Separator Spacing' ) }
-                        value={ separatorSpace }
-                        onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
+                    />                    
                     <RangeControl
                         label={ __( 'Sub-Heading Spacing' ) }
                         value={ subHeadSpace }
@@ -416,41 +416,41 @@ class UAGBTimeline extends Component {
     //Render output here.
     uagb_get_timeline_content(){
 
-        var attr              = this.props.attributes;
-        var content           = attr.tm_content;
-        var post_content      = attr.post_content;
-        var headingTag        = attr.headingTag;
-        var headingAlign      = attr.headingAlign;
-        var headFontSize      = attr.headFontSize;
-        var headingColor      = attr.headingColor;
-        var headSpace         = attr.headSpace;
-        var time_type         = attr.postType;
-        var subHeadFontSize   = attr.subHeadFontSize;
-        var subHeadingColor   = attr.subHeadingColor;
-        var subHeadSpace      = attr.subHeadSpace;
-        var backgroundColor   = attr.backgroundColor;
-        var separatorColor    = attr.separatorColor;
-        var separatorBg       = attr.separatorBg;
-        var separatorBorder   = attr.separatorBorder;
-        var timelinAlignment  = attr.timelinAlignment;
-        var arrowlinAlignment = attr.arrowlinAlignment;
-        var postNumber        = attr.postNumber;
-        var verticalSpace     = attr.verticalSpace;
-        var horizontalSpace   = attr.horizontalSpace;
-        var align_class       = '';
-        var align_item_class  = '';
-        var arrow_align_class = 'uagb-top-arrow';
-        var vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
+        var attr              = this.props.attributes,
+            content           = attr.tm_content,
+            post_content      = attr.post_content,
+            headingTag        = attr.headingTag,
+            headingAlign      = attr.headingAlign,
+            headFontSize      = attr.headFontSize,
+            headingColor      = attr.headingColor,
+            headSpace         = attr.headSpace,
+            time_type         = attr.postType,
+            subHeadFontSize   = attr.subHeadFontSize,
+            subHeadingColor   = attr.subHeadingColor,
+            subHeadSpace      = attr.subHeadSpace,
+            backgroundColor   = attr.backgroundColor,
+            separatorColor    = attr.separatorColor,
+            separatorBg       = attr.separatorBg,
+            separatorBorder   = attr.separatorBorder,
+            timelinAlignment  = attr.timelinAlignment,
+            arrowlinAlignment = attr.arrowlinAlignment,
+            postNumber        = attr.postNumber,
+            verticalSpace     = attr.verticalSpace,
+            horizontalSpace   = attr.horizontalSpace,
+            separatorwidth    = attr.separatorwidth,
+            align_class       = '',
+            align_item_class  = '',
+            arrow_align_class = 'uagb-top-arrow',
+            seperator_margin  = parseInt(separatorwidth/2),
+            vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
             vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
         }else if( arrowlinAlignment == 'bottom' ){
             arrow_align_class = 'uagb-bottom-arrow';
-            //vert_per = 0;
             vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);
         } 
-        console.log(vert_per);
 
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
@@ -463,8 +463,8 @@ class UAGBTimeline extends Component {
             align_item_class = '';
         }
 
-
         let data_copy     = [ ...this.props.attributes.tm_content ];
+
         if( time_type == 'general'){
             return ( <div className= {align_class} >
                     <style dangerouslySetInnerHTML={{
@@ -473,7 +473,9 @@ class UAGBTimeline extends Component {
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,
+                                        'background-color:',separatorColor,';',
+                                        'width:',separatorwidth,'px',';',
+                                        'margin-left:-',seperator_margin,'px',
                                     '}',
                                     '.uagb-timeline-container::after{',
                                       'background-color:',separatorBg,';',
@@ -565,7 +567,9 @@ class UAGBTimeline extends Component {
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,
+                                        'background-color:',separatorColor,';',
+                                        'width:',separatorwidth,'px',';',
+                                        'margin-left:-',seperator_margin,'px',
                                     '}',
                                     '.uagb-timeline-container::after{',
                                       'background-color:',separatorBg,';',
@@ -714,8 +718,9 @@ registerBlockType( 'uagb/timeline', {
         headSpace: {
             type: 'number',
         },
-        separatorSpace: {
+        separatorwidth: {
             type: 'number',
+            default: '6',
         },
         subHeadSpace: {
             type: 'number',
@@ -783,7 +788,7 @@ registerBlockType( 'uagb/timeline', {
             verticalSpace,
             horizontalSpace,
             headSpace,
-            separatorSpace,
+            separatorwidth,
             subHeadSpace,
             categories,
             postType,
@@ -796,12 +801,11 @@ registerBlockType( 'uagb/timeline', {
             orderBy
         } = props.attributes;
 
-        var align_class = '';
-        var align_item_class = '';
-
-        var arrow_align_class = 'uagb-top-arrow';
-        var vert_per          = parseInt((parseInt(verticalSpace) * (75))/100);
-
+        var align_class = '',
+            align_item_class = '',
+            arrow_align_class = 'uagb-top-arrow',
+            vert_per          = parseInt((parseInt(verticalSpace) * (75))/100),
+            seperator_margin  = parseInt(separatorwidth/2);
 
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
@@ -823,6 +827,7 @@ registerBlockType( 'uagb/timeline', {
             align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
             align_item_class = '';
         }
+        
         if( postType == 'general'){
             return (
                  <div className={ props.className } > 
@@ -834,7 +839,9 @@ registerBlockType( 'uagb/timeline', {
                             '  border-color: transparent transparent transparent ',backgroundColor,
                             '}',
                             '.uagb-timeline::after{',
-                                'background-color:',separatorColor,
+                                'background-color:',separatorColor,';',
+                                'width:',separatorwidth,'px',';',
+                                'margin-left:-',seperator_margin,'px',
                             '}',
                             '.uagb-timeline-container::after{',
                               'background-color:',separatorBg,';',
@@ -921,7 +928,9 @@ registerBlockType( 'uagb/timeline', {
                                     '  border-color: transparent transparent transparent ',backgroundColor,
                                     '}',
                                     '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,
+                                        'background-color:',separatorColor,';',
+                                        'width:',separatorwidth,'px',';',
+                                        'margin-left:-',seperator_margin,'px',
                                     '}',
                                     '.uagb-timeline-container::after{',
                                       'background-color:',separatorBg,';',
