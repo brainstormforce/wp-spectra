@@ -465,47 +465,45 @@ class UAGBTimeline extends Component {
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
 
+        /* Style for elements */
+        var back_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
+                        '  border-color: transparent transparent transparent '+backgroundColor+
+                        '}'+
+                        '.uagb-timeline::after{'+
+                            'background-color:'+separatorColor+';'+
+                            'width:'+separatorwidth+'px'+';'+
+                            'margin-left:-'+seperator_margin+'px'+
+                        '}'+
+                        '.uagb-timeline-container::after{'+
+                          'background-color:'+separatorBg+';'+
+                          'border-color:'+separatorBorder+
+                        '}'+
+                        '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
+                        '  border-color: transparent '+backgroundColor+' transparent transparent'+
+                        '}'+ 
+                        '.uagb-timeline-container.uagb-tl-item-left {'+
+                        ' padding-right:'+horizontalSpace+'px'+
+                        '}'+ 
+                        '.uagb-timeline-container.uagb-tl-item-right {'+
+                        ' padding-left:'+horizontalSpace+'px'+
+                        '}'+
+                        '.uagb-timeline-container {'+
+                        ' padding-top:'+verticalSpace+'px'+
+                        '}'+
+                        '.uagb-top-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(20% + '+vert_per+'px)!important'+
+                        '}'+
+                        '.uagb-bottom-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(80% + '+vert_per+'px)!important'+
+                        '}'+ 
+                        '.uagb-center-arrow .uagb-timeline-container:after{'+
+                        ' top:calc(50% + '+vert_per+'px)!important'+
+                        '}' ;
+
         if( time_type == 'general'){
             return ( <div className= {align_class} >
-                    <style dangerouslySetInnerHTML={{
-                                  __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
-                                    '  border-color: transparent transparent transparent ',backgroundColor,
-                                    '}',
-                                    '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,';',
-                                        'width:',separatorwidth,'px',';',
-                                        'margin-left:-',seperator_margin,'px',
-                                    '}',
-                                    '.uagb-timeline-container::after{',
-                                      'background-color:',separatorBg,';',
-                                      'border-color:',separatorBorder,
-                                    '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
-                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-left {',
-                                    ' padding-right:',horizontalSpace,'px',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-right {',
-                                    ' padding-left:',horizontalSpace,'px',
-                                    '}',
-                                    '.uagb-timeline-container {',
-                                    ' padding-top:',verticalSpace,'px',
-                                    '}',
-                                    '.uagb-top-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(20% + ',vert_per,'px)!important',
-                                    '}',
-                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(80% + ',vert_per,'px)!important',
-                                    '}', 
-                                    '.uagb-center-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(50% + ',vert_per,'px)!important',
-                                    '}'                                                                        
-                                    ].join('')
-                                  }}>
-                                </style>
-                 {content.map((time_content,index) => {  
+                <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                {content.map((time_content,index) => {  
                     var second_index = 'uagb-'+index;
                     if(timelinAlignment == 'center'){
                         if(index % 2 == '0'){
@@ -561,44 +559,7 @@ class UAGBTimeline extends Component {
                 return "Hello";
             } 
             return (<div className = {align_class}>  
-                    <style dangerouslySetInnerHTML={{
-                                  __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
-                                    '  border-color: transparent transparent transparent ',backgroundColor,
-                                    '}',
-                                    '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,';',
-                                        'width:',separatorwidth,'px',';',
-                                        'margin-left:-',seperator_margin,'px',
-                                    '}',
-                                    '.uagb-timeline-container::after{',
-                                      'background-color:',separatorBg,';',
-                                      'border-color:',separatorBorder,
-                                    '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
-                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-left {',
-                                    ' padding-right:',horizontalSpace,'px',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-right {',
-                                    ' padding-left:',horizontalSpace,'px',
-                                    '}',
-                                    '.uagb-timeline-container {',
-                                    ' padding-top:',verticalSpace,'px',
-                                    '}',
-                                    '.uagb-top-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(20% + ',vert_per,'px)!important',
-                                    '}',
-                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(80% + ',vert_per,'px)!important',
-                                    '}', 
-                                    '.uagb-center-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(50% + ',vert_per,'px)!important',
-                                    '}'                                            
-                                    ].join('')
-                                  }}>
-                                </style>                  
+                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
                         {post_content.map((post,index) => {
                             var second_index = 'uagb-'+index;
                             if(timelinAlignment == 'center'){
@@ -827,50 +788,46 @@ registerBlockType( 'uagb/timeline', {
             align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
             align_item_class = '';
         }
-        
+        var front_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
+                            '  border-color: transparent transparent transparent '+backgroundColor+
+                            '}'+
+                            '.uagb-timeline::after{'+
+                                'background-color:'+separatorColor+';'+
+                                'width:'+separatorwidth+'px'+';'+
+                                'margin-left:-'+seperator_margin+'px'+
+                            '}'+
+                            '.uagb-timeline-container::after{'+
+                              'background-color:'+separatorBg+';'+
+                              'border-color:'+separatorBorder+
+                            '}'+
+                            '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
+                            '  border-color: transparent '+backgroundColor+' transparent transparent'+
+                            '}'+
+                            '.uagb-timeline-container.uagb-tl-item-left {'+
+                            ' padding-right:'+horizontalSpace+'px'+
+                            '}'+ 
+                            '.uagb-timeline-container.uagb-tl-item-right {'+
+                            ' padding-left:'+horizontalSpace+'px'+
+                            '}'+
+                            '.uagb-timeline-container {'+
+                            ' padding-top:'+verticalSpace+'px'+
+                            '}'+
+                            '.uagb-top-arrow .uagb-timeline-container:after{'+
+                            ' top:calc(20% + '+vert_per+'px)!important'+
+                            '}'+
+                            '.uagb-bottom-arrow .uagb-timeline-container:after{'+
+                            ' top:calc(80% + '+vert_per+'px)!important'+
+                            '}'+ 
+                            '.uagb-center-arrow .uagb-timeline-container:after{'+
+                            ' top:calc(50% + '+vert_per+'px)!important'+
+                            '}';
+
         if( postType == 'general'){
             return (
                  <div className={ props.className } > 
                     <div className = "uagb-timeline-main">
                        <div className= {align_class} >
-                        <style dangerouslySetInnerHTML={{
-                          __html: [
-                            '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
-                            '  border-color: transparent transparent transparent ',backgroundColor,
-                            '}',
-                            '.uagb-timeline::after{',
-                                'background-color:',separatorColor,';',
-                                'width:',separatorwidth,'px',';',
-                                'margin-left:-',seperator_margin,'px',
-                            '}',
-                            '.uagb-timeline-container::after{',
-                              'background-color:',separatorBg,';',
-                              'border-color:',separatorBorder,
-                            '}',
-                            '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
-                            '  border-color: transparent ',backgroundColor,' transparent transparent',
-                            '}',
-                            '.uagb-timeline-container.uagb-tl-item-left {',
-                            ' padding-right:',horizontalSpace,'px',
-                            '}', 
-                            '.uagb-timeline-container.uagb-tl-item-right {',
-                            ' padding-left:',horizontalSpace,'px',
-                            '}',
-                            '.uagb-timeline-container {',
-                            ' padding-top:',verticalSpace,'px',
-                            '}',
-                            '.uagb-top-arrow .uagb-timeline-container:after{',
-                            ' top:calc(20% + ',vert_per,'px)!important',
-                            '}',
-                            '.uagb-bottom-arrow .uagb-timeline-container:after{',
-                            ' top:calc(80% + ',vert_per,'px)!important',
-                            '}', 
-                            '.uagb-center-arrow .uagb-timeline-container:after{',
-                            ' top:calc(50% + ',vert_per,'px)!important',
-                            '}',                                               
-                            ].join('')
-                          }}>
-                        </style>
+                        <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
                         { tm_content.map((post,index) => {  
                             var second_index = 'uagb-'+index;
                             if(timelinAlignment == 'center'){
@@ -922,44 +879,7 @@ registerBlockType( 'uagb/timeline', {
                     <div className={ props.className } > 
                         <div className = "uagb-timeline-main">
                            <div className= {align_class} >
-                                <style dangerouslySetInnerHTML={{
-                                  __html: [
-                                    '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {',
-                                    '  border-color: transparent transparent transparent ',backgroundColor,
-                                    '}',
-                                    '.uagb-timeline::after{',
-                                        'background-color:',separatorColor,';',
-                                        'width:',separatorwidth,'px',';',
-                                        'margin-left:-',seperator_margin,'px',
-                                    '}',
-                                    '.uagb-timeline-container::after{',
-                                      'background-color:',separatorBg,';',
-                                      'border-color:',separatorBorder,
-                                    '}',
-                                    '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {',
-                                    '  border-color: transparent ',backgroundColor,' transparent transparent',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-left {',
-                                    ' padding-right:',horizontalSpace,'px',
-                                    '}', 
-                                    '.uagb-timeline-container.uagb-tl-item-right {',
-                                    ' padding-left:',horizontalSpace,'px',
-                                    '}',
-                                    '.uagb-timeline-container {',
-                                    ' padding-top:',verticalSpace,'px',
-                                    '}',
-                                    '.uagb-top-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(20% + ',vert_per,'px)!important',
-                                    '}',
-                                    '.uagb-bottom-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(80% + ',vert_per,'px)!important',
-                                    '}', 
-                                    '.uagb-center-arrow .uagb-timeline-container:after{',
-                                    ' top:calc(50% + ',vert_per,'px)!important',
-                                    '}'                                               
-                                    ].join('')
-                                  }}>
-                                </style>
+                                <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
                                 {  
                                     post_content.map((post,index) => { 
                                         if(timelinAlignment == 'center'){
