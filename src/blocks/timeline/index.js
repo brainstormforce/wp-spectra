@@ -39,6 +39,7 @@ registerBlockType( 'uagb/timeline', {
 
     // Render via PHP
     save() {
+        //console.log(props);
         return null;
     },
 } );
