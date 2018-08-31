@@ -40,7 +40,6 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
     $displayPostDate    = $attributes['displayPostDate'];
     $displayPostExcerpt = $attributes['displayPostExcerpt'];
     $displayPostAuthor  = $attributes['displayPostAuthor'];
-    $displayPostImage   = $attributes['displayPostImage'];
     $displayPostLink    = $attributes['displayPostLink'];
     $order              = $attributes['order'];
     $orderBy            = $attributes['orderBy'];
@@ -111,15 +110,12 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	' top:calc(50% + '.$vert_per.'px)!important'.
 	'}';
 
-//var_dump($front_style);
-//wp-block-uagb-timeline
     // Start the markup for the post
 	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $className ) );
 	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main" >' );
 	$list_items_markup .= '<style class="uagb-timeline-css" type="text/css">'.$front_style.'</style>';
 
 	if( $postType == 'general' ){
-		//$list_items_markup .= sprintf( 'Hello custom');
 		$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
 		foreach ( $content as $index => $content_value ) {
 			$second_index = 'uagb-'.$index;
@@ -147,7 +143,144 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		$list_items_markup .= sprintf( '</div>');
 
 	}else{
+		$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
+		
+		foreach ( $recent_posts as $index => $post ) {
+			
+			// Get the post ID
+			$post_id = $post->ID;	
+			// Get the post thumbnail 
+			$post_thumb_id = get_post_thumbnail_id( $post_id );
 
+			if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
+				$post_thumb_class = 'has-thumb';
+			} else {
+				$post_thumb_class = 'no-thumb';
+			}
+
+			$second_index = 'uagb-'.$index;
+            if( $timelinAlignment == 'center'){
+                if( $index % 2 == '0'){
+                    $align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                }else{
+                    $align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                }  
+            }  
+            $list_items_markup .= sprintf( '<div key = "%1$s" class = "%2$s" >',esc_attr( $index ),esc_attr( $align_item_class ) );
+			$list_items_markup .= sprintf( '<div key = "%1$s" class = "uagb-timeline-content" style= "background-color:%2$s">',esc_attr( $second_index ),esc_attr( $backgroundColor) );
+			
+			// Start the markup for the post
+			$list_items_markup .= sprintf(
+				'<article class="%1$s">',
+				esc_attr( $post_thumb_class )
+			);
+					// Get the featured image
+		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
+			if( $attributes['imageCrop'] === 'landscape' ) {
+				$post_thumb_size = 'ab-block-post-grid-landscape';
+			} else {
+				$post_thumb_size = 'ab-block-post-grid-square';
+			}
+			
+			$list_items_markup .= sprintf( 
+				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+				esc_url( get_permalink( $post_id ) ),
+				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
+			);
+		}
+
+		// Wrap the text content
+		$list_items_markup .= sprintf(
+			'<div class="ab-block-post-grid-text">'
+		);
+
+		// Get the post title 
+		$title = get_the_title( $post_id );
+
+		if ( ! $title ) {
+			$title = __( 'Untitled' );
+		}
+
+		$list_items_markup .= sprintf(
+			'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_html( $title )
+		);
+
+		// Wrap the byline content
+		$list_items_markup .= sprintf(
+			'<div class="ab-block-post-grid-byline">'
+		);
+
+		// Get the post author
+		if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+			$list_items_markup .= sprintf(
+				'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
+				esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+				esc_html( get_author_posts_url( $post->post_author ) )
+			);
+		}
+				
+		// Get the post date
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+			$list_items_markup .= sprintf(
+				'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
+				esc_attr( get_the_date( 'c', $post_id ) ),
+				esc_html( get_the_date( '', $post_id ) )
+			);
+		}
+
+		// Close the byline content
+		$list_items_markup .= sprintf(
+			'</div>'
+		);
+
+		// Wrap the excerpt content
+		$list_items_markup .= sprintf(
+			'<div class="ab-block-post-grid-excerpt">'
+		);
+
+		// Get the excerpt
+		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+
+		if( empty( $excerpt ) ) {
+			$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+		}
+
+		if ( ! $excerpt ) {
+			$excerpt = null;
+		}
+
+		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+			$list_items_markup .=  wp_kses_post( $excerpt );
+		}
+
+		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
+			$list_items_markup .= sprintf(
+				'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+				esc_url( get_permalink( $post_id ) ),
+				esc_html( $attributes['readMoreText'] )
+			);
+		}
+
+		// Close the excerpt content
+		$list_items_markup .= sprintf(
+			'</div>'
+		);
+
+		// Wrap the text content
+		$list_items_markup .= sprintf(
+			'</div>'
+		);
+
+		// Close the markup for the post
+		$list_items_markup .= "</article>\n";
+
+			$list_items_markup .= sprintf( '</div>');            
+			$list_items_markup .= sprintf( '</div>');            
+		}
+
+		$list_items_markup .= sprintf( '</div>');
 	}
 
 	$list_items_markup .= sprintf( '</div>');

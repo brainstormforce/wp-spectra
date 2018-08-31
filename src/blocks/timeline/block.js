@@ -526,6 +526,7 @@ class UAGBTimeline extends Component {
         }
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
+        const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
         var back_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
