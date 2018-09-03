@@ -285,7 +285,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 	$list_items_markup .= sprintf( '</div>');
 	$list_items_markup .= sprintf( '</div>');
-
+$list_items_markup .= sprintf( '</div>');
 	return $list_items_markup;
 }
 
