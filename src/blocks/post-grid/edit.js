@@ -16,6 +16,8 @@ import Meta from "./post-components/Meta";
 import Excerpt from "./post-components/Excerpt";
 import Button from "./post-components/Button";
 
+import Masonry from 'masonry-component';
+
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
 const { decodeEntities } = wp.htmlEntities;
@@ -30,7 +32,6 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
-	withAPIData,
 } = wp.components;
 
 const {
@@ -40,6 +41,14 @@ const {
 	ColorPalette,
 	RichText
 } = wp.editor;
+
+const { withSelect } = wp.data;
+
+const masonryOptions = {
+    transitionDuration: 0
+};
+
+const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 
 class UAGBPostGrid extends Component {
@@ -96,12 +105,23 @@ class UAGBPostGrid extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
+	test() {
+		alert('Function from index.html');
+	}
+
+	componentDidMount() {
+		var $this = $(ReactDOM.findDOMNode(this));
+		console.log(this);
+	}
+
 	render() {
-		const latestPosts = this.props.latestPosts.data;
+
+		{/*const latestPosts = this.props.latestPosts.data;*/}
 		const {
 			attributes,
 			categoriesList,
-			setAttributes
+			setAttributes,
+			latestPosts
 		} = this.props;
 		const {
 			displayPostDate,
@@ -358,6 +378,12 @@ class UAGBPostGrid extends Component {
 				isActive: postLayout === 'grid',
 			},
 			{
+				icon: 'masonry-view',
+				title: __( 'Masonry View' ),
+				onClick: () => setAttributes( { postLayout: 'masonry' } ),
+				isActive: postLayout === 'masonry',
+			},
+			{
 				icon: 'list-view',
 				title: __( 'List View' ),
 				onClick: () => setAttributes( { postLayout: 'list' } ),
@@ -384,11 +410,12 @@ class UAGBPostGrid extends Component {
 						'uagb-post-grid',
 					) }
 				>
-					<div
+					<Masonry
 						className={ classnames( {
 							'is-grid': postLayout === 'grid',
 							'is-list': postLayout === 'list',
-							[ `uagb-post__columns-${ columns }` ]: postLayout === 'grid',
+							'is-masonry': postLayout === 'masonry',
+							[ `uagb-post__columns-${ columns }` ]: postLayout !== 'list',
 							'uagb-post__items' : 'uagb-post__items'
 						} ) }
 						style={{
@@ -428,29 +455,28 @@ class UAGBPostGrid extends Component {
 								</div>
 							</article>
 						) }
-					</div>
+					</Masonry>
+					{ console.log('vrunda') }
+					{/*var iso = new Isotope( '.is-masonry' );*/}
 				</div>
 			</Fragment>
 		);
 	}
 }
 
-export default withAPIData( ( props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes;
-	const latestPostsQuery = stringify( pickBy( {
-		categories,
+export default withSelect( ( select, props ) => {
+	const { postsToShow, order, orderBy } = props.attributes;
+	const { getEntityRecords } = select( 'core' );
+	const latestPostsQuery = pickBy( {
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'featured_image_src', 'featured_image_src_square', 'excerpt', 'author_info' ],
-		_embed: 'embed',
-	}, ( value ) => ! isUndefined( value ) ) );
-	const categoriesListQuery = stringify( {
+	}, ( value ) => ! isUndefined( value ) );
+	const categoriesListQuery = {
 		per_page: 100,
-		_fields: [ 'id', 'name', 'parent' ],
-	} );
+	};
 	return {
-		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
-		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
+		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( UAGBPostGrid );

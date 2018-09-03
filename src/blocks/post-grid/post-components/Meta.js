@@ -2,26 +2,28 @@ class Meta extends React.Component {
 
 	render() {
 
+		const { post, attributes } = this.props;
+
 		return (
 
-			<div className='uagb-post-grid-byline' style={{ color: this.props.attributes.metaColor }}>
-				{ this.props.attributes.displayPostAuthor && this.props.post.author_info.display_name &&
+			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor }}>
+				{ attributes.displayPostAuthor && post.author_info.display_name &&
 					<div
 						className='uagb-post__author fa fa-user'
-						style={{ color: this.props.attributes.metaColor }}
+						style={{ color: attributes.metaColor }}
 					>
-						<a className='uagb-text-link' target="_blank" href={ this.props.post.author_info.author_link }>{ this.props.post.author_info.display_name }</a>
+						<a className='uagb-text-link' target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a>
 					</div>
 				}
 
-				{ this.props.attributes.displayPostDate && this.props.post.date_gmt &&
-					<time dateTime={ moment( this.props.post.date_gmt ).utc().format() } className='uagb-post__date fa fa-clock'>
-						{ moment( this.props.post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+				{ attributes.displayPostDate && post.date_gmt &&
+					<time dateTime={ moment( post.date_gmt ).utc().format() } className='uagb-post__date fa fa-clock'>
+						{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 					</time>
 				}
 
-				{ this.props.attributes.displayPostComment &&
-					<div className='uagb-post__comment fa fa-comment' >{ this.props.post.author_info.comments }</div>
+				{ attributes.displayPostComment &&
+					<div className='uagb-post__comment fa fa-comment' >{ post.author_info.comments }</div>
 				}
 			</div>
 		);

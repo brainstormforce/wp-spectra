@@ -7,7 +7,8 @@
 	margin: 0 0 1.2em 0;
 	position: relative;
 
-	.is-grid {
+	.is-grid,
+	.is-masonry {
 
 		article {
 			float: left;
@@ -27,7 +28,7 @@
 		flex-wrap: wrap;
 	}
 
-	.uagb-post__inner-wrap {
+	.is-grid .uagb-post__inner-wrap {
 		height: 100%;
 	}
 
@@ -37,14 +38,14 @@
 		margin-right: 4px;
 	}
 
-	.is-grid.uagb-post__columns-8 article { width: 12.5%; }
-	.is-grid.uagb-post__columns-7 article { width: 14.28%; }
-	.is-grid.uagb-post__columns-6 article { width: 16.66%; }
-	.is-grid.uagb-post__columns-5 article { width: 20%; }
-	.is-grid.uagb-post__columns-4 article { width: 25%; }
-	.is-grid.uagb-post__columns-3 article { width: 33.2%; }
-	.is-grid.uagb-post__columns-2 article { width: 50%; }
-	.is-grid.uagb-post__columns-1 article { width: 100%; }
+	.uagb-post__columns-8 article { width: 12.5%; }
+	.uagb-post__columns-7 article { width: 14.28%; }
+	.uagb-post__columns-6 article { width: 16.66%; }
+	.uagb-post__columns-5 article { width: 20%; }
+	.uagb-post__columns-4 article { width: 25%; }
+	.uagb-post__columns-3 article { width: 33.2%; }
+	.uagb-post__columns-2 article { width: 50%; }
+	.uagb-post__columns-1 article { width: 100%; }
 
 	div[class*="columns"].is-grid {
 		@media only screen and (max-width: 600px) {

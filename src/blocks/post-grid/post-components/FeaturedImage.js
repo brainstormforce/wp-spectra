@@ -4,18 +4,20 @@ class FeaturedImage extends React.Component {
 
 	render() {
 
+		const { post, attributes } = this.props;
+
 		if (
-			this.props.attributes.displayPostImage &&
-			undefined !== this.props.post.featured_image_src &&
-			this.props.post.featured_image_src
+			attributes.displayPostImage &&
+			undefined !== post.featured_image_src &&
+			post.featured_image_src
 		) {
 
 			return (
 				<div className='uagb-post__image'>
-					<a href={ this.props.post.link } target="_blank" rel="bookmark">
+					<a href={ post.link } target="_blank" rel="bookmark">
 						<img
-							src={ this.props.attributes.isLandscape ? this.props.post.featured_image_src : this.props.post.featured_image_src_square }
-							alt={ decodeEntities( this.props.post.title.rendered.trim() ) || __( '(Untitled)' ) }
+							src={ attributes.isLandscape ? post.featured_image_src : post.featured_image_src_square }
+							alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
 						/>
 					</a>
 				</div>

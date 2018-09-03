@@ -6,16 +6,18 @@ class Title extends React.Component {
 
 		const Tag = this.props.attributes.titleTag;
 
+		const { post, attributes } = this.props;
+
 		return (
 
 			<Tag
 				className={ 'uagb-post__title entry-title' }
 				style={{ 
-					color: this.props.attributes.titleColor,
-					fontSize: this.props.attributes.titleFontSize
+					color: attributes.titleColor,
+					fontSize: attributes.titleFontSize
 				}}
 			>
-				<a href={ this.props.post.link } target="_blank" rel="bookmark">{ decodeEntities( this.props.post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
+				<a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
 			</Tag>
 		);
 	}

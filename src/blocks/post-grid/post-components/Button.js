@@ -4,18 +4,20 @@ class Button extends React.Component {
 
 	render() {
 
-		if ( this.props.attributes.displayPostLink ) {
+		const { post, attributes } = this.props;
+
+		if ( attributes.displayPostLink ) {
 
 			return (
 
 				<div
 					className='uagb-post__cta'
 					style={{
-						color: this.props.attributes.ctaColor,
-						background: this.props.attributes.ctaBgColor
+						color: attributes.ctaColor,
+						background: attributes.ctaBgColor
 					}}
 				>
-					<a className='uagb-post__link uagb-text-link' href={ this.props.post.link } target="_blank" rel="bookmark">{ __( 'Read More' ) }</a>
+					<a className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel="bookmark">{ __( 'Read More' ) }</a>
 				</div>
 			);
 

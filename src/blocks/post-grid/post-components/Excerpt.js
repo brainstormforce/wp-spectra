@@ -2,18 +2,20 @@ class Excerpt extends React.Component {
 
 	render() {
 
+		const { post, attributes } = this.props;
+
 		if (
-			this.props.attributes.displayPostExcerpt &&
-			this.props.post.excerpt
+			attributes.displayPostExcerpt &&
+			post.excerpt
 		) {
 
 			return (
 
 				<div
 					className='uagb-post__excerpt'
-					style={{ color: this.props.attributes.excerptColor }}
+					style={{ color: attributes.excerptColor }}
 				>
-					<div dangerouslySetInnerHTML={ { __html: this.props.post.excerpt.rendered } } />
+					<div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 				</div>
 			);
 
