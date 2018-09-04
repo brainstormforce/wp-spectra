@@ -45,11 +45,14 @@ const {
     BlockControls,
 } = wp.editor;
 
+
+const MAX_POSTS_COLUMNS = 4;
+
 class UAGBTimeline extends Component {
     constructor() {
         super( ...arguments );
 
-        // Get initial timeline content.
+         // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
 
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
@@ -58,41 +61,6 @@ class UAGBTimeline extends Component {
         this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
         this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
     }
-
-    /**
-    * Loading Timeline content.
-    */
-    getTimelinecontent() {   
-        var item_number = this.props.attributes.timelineItem;
-        var item =[];
-        for (var i = 1; i <= item_number; i++) {
-            var title_heading_val = 'Timeline Heading '+i;
-            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-            var temp = [];
-            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            item.push(p);            
-        }
-        // Setup the attribute
-        if( (this.props.attributes.tm_content).length == '0' ){
-           this.props.attributes.tm_content = item;
-        }
-        let data_copy     = [ ...this.props.attributes.tm_content ];
-        let data_length = data_copy.length;
-        
-        if( item_number < data_length ){
-            let data_new = data_copy;
-            data_new.pop();
-            this.props.setAttributes({tm_content:data_new});
-        }if( item_number > data_length ){            
-            var diff = item_number - 1;
-            var title_heading_val = 'Timeline Heading '+item_number;
-            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-            data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            this.props.setAttributes({tm_content:data_copy});  
-        }  
-
-        return this.props.attributes.tm_content;
-    }   
 
     toggleDisplayPostDate() {
         const { displayPostDate } = this.props.attributes;
@@ -136,15 +104,86 @@ class UAGBTimeline extends Component {
         setAttributes( { readMoreText: ! readMoreText } );
     }
 
-    render() {
+    /**
+    * Loading Timeline content.
+    */
+    getTimelinecontent() {   
+        var item_number = this.props.attributes.timelineItem;
+        var item =[];
+        for (var i = 1; i <= item_number; i++) {
+            var title_heading_val = 'Timeline Heading '+i;
+            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            var temp = [];
+            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            item.push(p);            
+        }
+        // Setup the attribute
+        if( (this.props.attributes.tm_content).length == '0' ){
+           this.props.attributes.tm_content = item;
+        }
+        let data_copy     = [ ...this.props.attributes.tm_content ];
+        let data_length = data_copy.length;
+        
+        if( item_number < data_length ){
+            let data_new = data_copy;
+            data_new.pop();
+            this.props.setAttributes({tm_content:data_new});
+        }if( item_number > data_length ){            
+            var diff = item_number - 1;
+            var title_heading_val = 'Timeline Heading '+item_number;
+            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            this.props.setAttributes({tm_content:data_copy});  
+        }  
 
+        return this.props.attributes.tm_content;
+    }
+
+    render() {
          // Get Initial Timeline content
         this.getTimelinecontent();
 
-        const { className, attributes, categoriesList, setAttributes, latestPosts } = this.props;
-        const { tm_content, post_content,headingAlign,headingColor,subHeadingColor,backgroundColor,separatorColor,separatorBg,separatorBorder,headingTag,headFontSize,timelineItem,postNumber,timelinAlignment,arrowlinAlignment,subHeadFontSize,verticalSpace,horizontalSpace,headSpace,separatorwidth,subHeadSpace,postType
-        ,displayPostDate, displayPostExcerpt, displayPostAuthor, displayPostImage,displayPostLink, align, postLayout, order, orderBy, categories, postsToShow, width, imageCrop, readMoreText } = attributes;
-        
+        const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
+        const {
+            className,
+            tm_content,
+            post_content,
+            headingAlign,
+            headingColor,
+            subHeadingColor,
+            backgroundColor,
+            separatorColor,
+            separatorBg,
+            separatorBorder,
+            headingTag,
+            headFontSize,
+            timelineItem,
+            postNumber,
+            timelinAlignment,
+            arrowlinAlignment,
+            subHeadFontSize,
+            verticalSpace,
+            horizontalSpace,
+            headSpace,
+            separatorwidth,
+            subHeadSpace,
+            postType,
+            displayPostDate,
+            displayPostExcerpt,
+            displayPostAuthor,
+            displayPostImage,
+            displayPostLink,
+            align,
+            postLayout,
+            order,
+            orderBy,
+            categories,
+            postsToShow,
+            width,
+            imageCrop,
+            readMoreText, 
+        } = attributes;
+
         // Thumbnail options
         const imageCropOptions = [
             { value: 'landscape', label: __( 'Landscape' ) },
@@ -451,6 +490,21 @@ class UAGBTimeline extends Component {
             latestPosts.slice( 0, postsToShow ) :
             latestPosts;
 
+        const layoutControls = [
+            {
+                icon: 'grid-view',
+                title: __( 'Grid View' ),
+                onClick: () => setAttributes( { postLayout: 'grid' } ),
+                isActive: postLayout === 'grid',
+            },
+            {
+                icon: 'list-view',
+                title: __( 'List View' ),
+                onClick: () => setAttributes( { postLayout: 'list' } ),
+                isActive: postLayout === 'list',
+            },
+        ];
+
         return (
             <Fragment>
             { timeline_control }
@@ -463,8 +517,8 @@ class UAGBTimeline extends Component {
         );
     }
 
-    /* Render output at backend */
-    uagb_get_timeline_content( displayPosts ){
+     /* Render output at backend */
+    uagb_get_timeline_content(displayPosts){
         var attr              = this.props.attributes,
             content            = attr.tm_content,
             headingTag         = attr.headingTag,
@@ -619,75 +673,74 @@ class UAGBTimeline extends Component {
             );
         }else{
             if ( displayPosts.length === 0 ) {
-                return "Hello";
+                return "No Post found";
             } 
             return (<div className = {align_class}>  
-                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-                        {displayPosts.map((post,index) => {
-                            var second_index = 'uagb-'+index;
-                            if(timelinAlignment == 'center'){
-                                if(index % 2 == '0'){
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                                }else{
-                                    align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                                }  
-                            }       
-                            return (
-                                <div key={index} className = {align_item_class} >
-                                    <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
-                                        <article
-                                            key={ index }
-                                            className={ classnames(
-                                                post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
-                                            ) }
-                                        >
-                                        {
-                                            displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                                <div class="ab-block-post-grid-image">
-                                                    <a href={ post.link } target="_blank" rel="bookmark">
-                                                        <img
-                                                            src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-                                                            alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                        />
-                                                    </a>
-                                                </div>
-                                            ) : (
-                                                null
-                                            )
-                                        }
-                                        <div class="uagb-timeline-text">
-                                            <h2 class="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
-
-                                            <div class="uagb-byline">
-                                                { displayPostAuthor && post.author_info.display_name &&
-                                                    <div class="ab-block-post-grid-author"><a class="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-                                                }
-
-                                                { displayPostDate && post.date_gmt &&
-                                                    <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
-                                                        { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-                                                    </time>
-                                                }
+                    <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                    {displayPosts.map((post,index) => {
+                        var second_index = 'uagb-'+index;
+                        if(timelinAlignment == 'center'){
+                            if(index % 2 == '0'){
+                                align_item_class = 'uagb-timeline-container uagb-tl-item-left';
+                            }else{
+                                align_item_class = 'uagb-timeline-container uagb-tl-item-right';
+                            }  
+                        }       
+                        return (
+                            <div key={index} className = {align_item_class} >
+                                <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
+                                    <article
+                                        key={ index }
+                                        className={ classnames(
+                                            post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+                                        ) }
+                                    >
+                                    {
+                                        displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                            <div className="ab-block-post-grid-image">
+                                                <a href={ post.link } target="_blank" rel="bookmark">
+                                                    <img
+                                                        src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                        alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                    />
+                                                </a>
                                             </div>
+                                        ) : (
+                                            null
+                                        )
+                                    }
+                                    <div className="uagb-timeline-text">
+                                        <h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
-                                            <div class="uagb-timeline-grid-excerpt">
-                                                { displayPostExcerpt && post.excerpt &&
-                                                    <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-                                                }
+                                        <div className="uagb-byline">
+                                            { displayPostAuthor && post.author_info.display_name &&
+                                                <div className="ab-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                            }
 
-                                                { displayPostLink &&
-                                                    <p><a class="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-                                                }
-                                            </div>
+                                            { displayPostDate && post.date_gmt &&
+                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                </time>
+                                            }
                                         </div>
-                                        </article>
-                                    </div>
-                                </div>
-                            );
-                        })}                    
-                </div>);   
-        }
 
+                                        <div className="uagb-timeline-grid-excerpt">
+                                            { displayPostExcerpt && post.excerpt &&
+                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                            }
+
+                                            { displayPostLink &&
+                                                <p><a className="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                            }
+                                        </div>
+                                    </div>
+                                    </article>
+                                </div>
+                            </div>
+                        );
+                    })}                    
+            </div>);
+        }
     }
 }
 
