@@ -16,7 +16,7 @@ import Meta from "./post-components/Meta";
 import Excerpt from "./post-components/Excerpt";
 import Button from "./post-components/Button";
 
-import Masonry from 'masonry-component';
+import Masonry from 'react-masonry-component';
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -44,11 +44,6 @@ const {
 
 const { withSelect } = wp.data;
 
-const masonryOptions = {
-    transitionDuration: 0
-};
-
-const imagesLoadedOptions = { background: '.my-bg-image-el' }
 
 
 class UAGBPostGrid extends Component {
@@ -107,11 +102,6 @@ class UAGBPostGrid extends Component {
 
 	test() {
 		alert('Function from index.html');
-	}
-
-	componentDidMount() {
-		var $this = $(ReactDOM.findDOMNode(this));
-		console.log(this);
 	}
 
 	render() {
@@ -391,6 +381,14 @@ class UAGBPostGrid extends Component {
 			},
 		];
 
+		var layoutTag = 'div';
+
+		if( postLayout == 'masonry' ) {
+			layoutTag = 'Masonry';
+		}
+
+		const LayoutTag = layoutTag;
+
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -412,8 +410,6 @@ class UAGBPostGrid extends Component {
 				>
 					<Masonry
 						className={ classnames( {
-							'is-grid': postLayout === 'grid',
-							'is-list': postLayout === 'list',
 							'is-masonry': postLayout === 'masonry',
 							[ `uagb-post__columns-${ columns }` ]: postLayout !== 'list',
 							'uagb-post__items' : 'uagb-post__items'
@@ -456,7 +452,6 @@ class UAGBPostGrid extends Component {
 							</article>
 						) }
 					</Masonry>
-					{ console.log('vrunda') }
 					{/*var iso = new Isotope( '.is-masonry' );*/}
 				</div>
 			</Fragment>

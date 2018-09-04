@@ -19,145 +19,19 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		'category' => $attributes['categories'],
 	), 'OBJECT' );
 
+	//echo '<xmp>'; print_r($recent_posts); echo '</xmp>';
+
 	$list_items_markup = '';
 
 	foreach ( $recent_posts as $post ) {
 		// Get the post ID
 		$post_id = $post->ID;
-
-		// Get the post thumbnail 
-		$post_thumb_id = get_post_thumbnail_id( $post_id );
-
-		if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-			$post_thumb_class = 'has-thumb';
-		} else {
-			$post_thumb_class = 'no-thumb';
-		}
+		ob_start();
+		include( 'single.php' );
+		$list_items_markup .= ob_get_clean();
 
 		// Start the markup for the post
-		$list_items_markup .= sprintf(
-			'<article class="%1$s" style="padding-right: %2$spx;padding-left: %2$spx; margin-bottom: %3$spx"><div class="uagb-post__inner-wrap" style="background: ' . $attributes['bgColor'] . ';">',
-			esc_attr( $post_thumb_class ),
-			$attributes['rowGap'] / 2,
-			$attributes['columnGap']
-		);
 		
-		// Get the featured image
-		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-			if( $attributes['imageCrop'] === 'landscape' ) {
-				$post_thumb_size = 'uagb-post-grid-landscape';
-			} else {
-				$post_thumb_size = 'uagb-post-grid-square';
-			}
-			
-			$list_items_markup .= sprintf( 
-				'<div class="uagb-post__image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
-				esc_url( get_permalink( $post_id ) ),
-				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
-			);
-		}
-
-		// Wrap the text content
-		$list_items_markup .= sprintf(
-			'<div class="uagb-post__text" style="padding: ' . $attributes['contentPadding'] . 'px" >'
-		);
-
-			// Get the post title 
-			$title = get_the_title( $post_id );
-
-			if ( ! $title ) {
-				$title = __( 'Untitled', 'uagb' );
-			}
-
-			$list_items_markup .= sprintf(
-				'<%4$s class="uagb-post__title" style="color: %2$s;font-size: %5$s"><a href="%1$s" rel="bookmark">%3$s</a></%4$s>',
-				esc_url( get_permalink( $post_id ) ),
-				$attributes['titleColor'],
-				esc_html( $title ),
-				$attributes['titleTag'],
-				$attributes['titleFontSize']
-			);
-
-			// Wrap the byline content
-			$list_items_markup .= sprintf(
-				'<div class="uagb-post-grid-byline" style="color: %1$s;">',
-				$attributes['metaColor']
-			);
-
-				// Get the post author
-				if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-					$list_items_markup .= sprintf(
-						'<div class="uagb-post__author fa fa-user"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
-						esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-						esc_html( get_author_posts_url( $post->post_author ) )
-					);
-				}
-				
-				// Get the post date
-				if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-					$list_items_markup .= sprintf(
-						'<time datetime="%1$s" class="uagb-post__date fa fa-clock">%2$s</time>',
-						esc_attr( get_the_date( 'c', $post_id ) ),
-						esc_html( get_the_date( '', $post_id ) )
-					);
-				}
-
-				// Get the post date
-				if ( isset( $attributes['displayPostComment'] ) && $attributes['displayPostComment'] ) {
-					$list_items_markup .= sprintf(
-						'<div class="uagb-post__comment fa fa-comment">%1$s</div>',
-						get_comments_number( $post_id )
-					);
-				}
-
-			// Close the byline content
-			$list_items_markup .= sprintf(
-				'</div>'
-			);
-
-			// Wrap the excerpt content
-			$list_items_markup .= sprintf(
-				'<div class="uagb-post__excerpt" style="color: %1$s;">',
-				$attributes['excerptColor']
-			);
-
-				// Get the excerpt
-				$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-
-				if( empty( $excerpt ) ) {
-					$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
-				}
-
-				if ( ! $excerpt ) {
-					$excerpt = null;
-				}
-
-				if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-					$list_items_markup .=  wp_kses_post( $excerpt );
-				}
-
-			// Close the excerpt content
-			$list_items_markup .= sprintf(
-				'</div>'
-			);
-
-			if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-				$list_items_markup .= sprintf(
-					'<div class="uagb-post__cta" style="color: %3$s; background: %4$s;"><a class="uagb-post__link uagb-text-link" href="%1$s" rel="bookmark">%2$s</a></div>',
-					esc_url( get_permalink( $post_id ) ),
-					esc_html__( 'Read More', 'uagb' ),
-					$attributes['ctaColor'],
-					$attributes['ctaBgColor']
-				);
-			}
-
-		// Wrap the text content
-		$list_items_markup .= sprintf(
-			'</div>'
-		);
-
-		// Close the markup for the post
-		$list_items_markup .= "</div></article>\n";
 	}
 
 	// Build the classes
@@ -169,13 +43,9 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	
 	$grid_class = 'uagb-post__items';
 
-	if ( isset( $attributes['postLayout'] ) && 'list' === $attributes['postLayout'] ) {
-		$grid_class .= ' is-list';
-	} else {
-		$grid_class .= ' is-grid';
-	}
+	$grid_class .= ' is-' . $attributes['postLayout'];
 
-	if ( isset( $attributes['columns'] ) && 'grid' === $attributes['postLayout'] ) {
+	if ( isset( $attributes['columns'] ) && 'list' !== $attributes['postLayout'] ) {
 		$grid_class .= ' uagb-post__columns-' . $attributes['columns'];
 	}
 

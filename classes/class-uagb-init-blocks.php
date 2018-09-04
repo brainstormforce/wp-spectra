@@ -64,13 +64,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		wp_enqueue_script(
-			'uagb-isotope', // Handle.
-			UAGB_URL . 'assets/lib/isotope.min.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'jquery' ), // Dependencies, defined above.
-			UAGB_VER,
-			true // Enqueue the script in the footer.
-		);
 	} // End function editor_assets().
 
 	/**
@@ -95,14 +88,7 @@ class UAGB_Init_Blocks {
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
-
-		wp_enqueue_script(
-			'uagb-isotope', // Handle.
-			UAGB_URL . 'assets/lib/isotope.min.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'jquery' ), // Dependencies, defined above.
-			UAGB_VER,
-			true // Enqueue the script in the footer.
-		);
+		
 	} // End function editor_assets().
 
 }
