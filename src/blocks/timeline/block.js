@@ -153,7 +153,7 @@ class UAGBTimeline extends Component {
     }
 
     getPostcontent(){
-        console.log('getpost');
+        //console.log('getpost');
         var latestPosts = this.props.latestPosts;        
         this.props.setAttributes({tm_post:latestPosts}); 
     }
@@ -791,7 +791,7 @@ class UAGBTimeline extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-    console.log('withSelect');
+    //console.log('withSelect');
     //console.log(props);
     const { postsToShow, order, orderBy, categories, postType } = props.attributes;
     //if( postType == 'post'){ 

@@ -92,7 +92,7 @@ registerBlockType( 'uagb/timeline', {
             tm_block_id,
         } = props.attributes;
 
-        console.log(tm_block_id);
+        //console.log(tm_block_id);
         
         var align_class        = '',
             align_item_class   = '',
