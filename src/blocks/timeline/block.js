@@ -57,13 +57,22 @@ class UAGBTimeline extends Component {
 
          // Get initial timeline content.
         this.getPostcontent = this.getPostcontent.bind(this);
-        //getPostcontent();
 
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
         this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
         this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+        
+        // Get unique id
+        this.uagbGetId = this.uagbGetId.bind(this);
+   }
+
+    uagbGetId(){
+        const id = _.uniqueId("uagb-tl-block-no-");
+        if( this.props.attributes.tm_block_id == '0' ){
+            this.props.setAttributes( { tm_block_id: id } );
+        }
     }
 
     toggleDisplayPostDate() {
@@ -144,12 +153,17 @@ class UAGBTimeline extends Component {
     }
 
     getPostcontent(){
+        console.log('getpost');
         var latestPosts = this.props.latestPosts;        
         this.props.setAttributes({tm_post:latestPosts}); 
     }
 
     render() {
-         // Get Initial Timeline content
+        
+        //Get id
+        this.uagbGetId();
+
+        // Get Initial Timeline content
         this.getTimelinecontent();
 
         // Get post content
@@ -194,7 +208,8 @@ class UAGBTimeline extends Component {
             postsToShow,
             width,
             imageCrop,
-            readMoreText, 
+            readMoreText,
+            tm_block_id,
         } = attributes;
 
         // Thumbnail options
@@ -518,11 +533,12 @@ class UAGBTimeline extends Component {
             },
         ];
 
+        const time_class = 'uagb-timeline-main '+tm_block_id;
         return (
             <Fragment>
             { timeline_control }
                 <div className={ className } > 
-                    <div className = "uagb-timeline-main">
+                    <div className = {time_class}>
                         { this.uagb_get_timeline_content(displayPosts) }
                     </div>
                 </div>
@@ -567,6 +583,7 @@ class UAGBTimeline extends Component {
             width              = attr.width,
             imageCrop          = attr.imageCrop,
             readMoreText       = attr.readMoreText,
+            tm_block_id        = attr.tm_block_id,
             align_class        = '',
             align_item_class   = '',
             arrow_align_class  = 'uagb-top-arrow',
@@ -598,37 +615,37 @@ class UAGBTimeline extends Component {
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
-        var back_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
+        var back_style = '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
                         '  border-color: transparent transparent transparent '+backgroundColor+
                         '}'+
-                        '.uagb-timeline::after{'+
+                        '.'+ tm_block_id +' .uagb-timeline::after{'+
                             'background-color:'+separatorColor+';'+
                             'width:'+separatorwidth+'px'+';'+
                             'margin-left:-'+seperator_margin+'px'+
                         '}'+
-                        '.uagb-timeline-container::after{'+
+                        '.'+ tm_block_id +' .uagb-timeline-container::after{'+
                           'background-color:'+separatorBg+';'+
                           'border-color:'+separatorBorder+
                         '}'+
-                        '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
+                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
                         '  border-color: transparent '+backgroundColor+' transparent transparent'+
                         '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-left {'+
+                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-left {'+
                         ' padding-right:'+horizontalSpace+'px'+
                         '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-right {'+
+                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-right {'+
                         ' padding-left:'+horizontalSpace+'px'+
                         '}'+
-                        '.uagb-timeline-container {'+
+                        '.'+ tm_block_id +' .uagb-timeline-container {'+
                         ' padding-top:'+verticalSpace+'px'+
                         '}'+
-                        '.uagb-top-arrow .uagb-timeline-container:after{'+
+                        '.'+ tm_block_id +' .uagb-top-arrow .uagb-timeline-container:after{'+
                         ' top:calc(20% + '+vert_per+'px)!important'+
                         '}'+
-                        '.uagb-bottom-arrow .uagb-timeline-container:after{'+
+                        '.'+ tm_block_id +' .uagb-bottom-arrow .uagb-timeline-container:after{'+
                         ' top:calc(80% + '+vert_per+'px)!important'+
                         '}'+ 
-                        '.uagb-center-arrow .uagb-timeline-container:after{'+
+                        '.'+ tm_block_id +' .uagb-center-arrow .uagb-timeline-container:after{'+
                         ' top:calc(50% + '+vert_per+'px)!important'+
                         '}' ;
 
@@ -774,19 +791,23 @@ class UAGBTimeline extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-    const { postsToShow, order, orderBy, categories } = props.attributes;
-    const { getEntityRecords } = select( 'core' );
-    const latestPostsQuery = pickBy( {
-        categories,
-        order,
-        orderby: orderBy,
-        per_page: postsToShow,
-    }, ( value ) => ! isUndefined( value ) );
-    const categoriesListQuery = {
-        per_page: 100,
-    };
-    return {
-        latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
-        categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
-    };
+    console.log('withSelect');
+    //console.log(props);
+    const { postsToShow, order, orderBy, categories, postType } = props.attributes;
+    //if( postType == 'post'){ 
+        const { getEntityRecords } = select( 'core' );
+        const latestPostsQuery = pickBy( {
+            categories,
+            order,
+            orderby: orderBy,
+            per_page: postsToShow,
+        }, ( value ) => ! isUndefined( value ) );
+        const categoriesListQuery = {
+            per_page: 100,
+        };
+        return {
+            latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+            categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
+        };
+    //}
 } )( UAGBTimeline );

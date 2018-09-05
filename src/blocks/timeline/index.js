@@ -89,8 +89,11 @@ registerBlockType( 'uagb/timeline', {
             width,
             imageCrop,
             readMoreText, 
+            tm_block_id,
         } = props.attributes;
 
+        console.log(tm_block_id);
+        
         var align_class        = '',
             align_item_class   = '',
             arrow_align_class  = 'uagb-top-arrow',
@@ -119,45 +122,46 @@ registerBlockType( 'uagb/timeline', {
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
-        var front_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
+        var front_style = '.'+tm_block_id+' '+'.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
                         '  border-color: transparent transparent transparent '+backgroundColor+
                         '}'+
-                        '.uagb-timeline::after{'+
+                        '.'+tm_block_id+' '+'.uagb-timeline::after{'+
                             'background-color:'+separatorColor+';'+
                             'width:'+separatorwidth+'px'+';'+
                             'margin-left:-'+seperator_margin+'px'+
                         '}'+
-                        '.uagb-timeline-container::after{'+
+                        '.'+tm_block_id+' '+'.uagb-timeline-container::after{'+
                           'background-color:'+separatorBg+';'+
                           'border-color:'+separatorBorder+
                         '}'+
-                        '.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
+                        '.'+tm_block_id+' '+'.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
                         '  border-color: transparent '+backgroundColor+' transparent transparent'+
                         '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-left {'+
+                        '.'+tm_block_id+' '+'.uagb-timeline-container.uagb-tl-item-left {'+
                         ' padding-right:'+horizontalSpace+'px'+
                         '}'+ 
-                        '.uagb-timeline-container.uagb-tl-item-right {'+
+                        '.'+tm_block_id+' '+'.uagb-timeline-container.uagb-tl-item-right {'+
                         ' padding-left:'+horizontalSpace+'px'+
                         '}'+
-                        '.uagb-timeline-container {'+
+                        '.'+tm_block_id+' '+'.uagb-timeline-container {'+
                         ' padding-top:'+verticalSpace+'px'+
                         '}'+
-                        '.uagb-top-arrow .uagb-timeline-container:after{'+
+                        '.'+tm_block_id+' '+'.uagb-top-arrow .uagb-timeline-container:after{'+
                         ' top:calc(20% + '+vert_per+'px)!important'+
                         '}'+
-                        '.uagb-bottom-arrow .uagb-timeline-container:after{'+
+                        '.'+tm_block_id+' '+'.uagb-bottom-arrow .uagb-timeline-container:after{'+
                         ' top:calc(80% + '+vert_per+'px)!important'+
                         '}'+ 
-                        '.uagb-center-arrow .uagb-timeline-container:after{'+
+                        '.'+tm_block_id+' '+'.uagb-center-arrow .uagb-timeline-container:after{'+
                         ' top:calc(50% + '+vert_per+'px)!important'+
                         '}' ;
 
+        var time_class = "uagb-timeline-main " + tm_block_id;
         //console.log(tm_content);
         if( postType == 'general' ){
             return (
                  <div className={ props.className } > 
-                    <div className = "uagb-timeline-main">
+                    <div className = {time_class} >
                        <div className= {align_class} >
                         <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
                         { tm_content.map((post,index) => {  

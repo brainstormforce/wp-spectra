@@ -532,6 +532,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'Continue Reading',
 			),
+			'tm_block_id'  => array(
+				'type' => 'string',
+				'default' => '0',
+			),
 		),
 		//'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );
