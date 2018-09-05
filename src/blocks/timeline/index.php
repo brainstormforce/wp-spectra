@@ -307,6 +307,13 @@ function uagb_blocks_register_block_core_latest_posts() {
 					'type' => 'object',
 				],
 			),
+			'tm_post' => array(
+				'type' => 'array',
+				'default' => [],
+				'items'   => [
+					'type' => 'object',
+				],
+			),
 			'headingAlign' => array(
 				'type' => 'string',
 				'default' => 'center',
@@ -526,7 +533,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'default' => 'Continue Reading',
 			),
 		),
-		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
+		//'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );
 }
 

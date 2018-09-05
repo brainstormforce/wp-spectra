@@ -55,6 +55,9 @@ class UAGBTimeline extends Component {
          // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
 
+         // Get initial timeline content.
+        this.getPostcontent = this.getPostcontent.bind(this);
+
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
@@ -139,13 +142,22 @@ class UAGBTimeline extends Component {
         return this.props.attributes.tm_content;
     }
 
+    getPostcontent(){
+        var latestPosts = this.props.latestPosts;
+        this.props.setAttributes({tm_post:latestPosts});  
+    }
+
     render() {
          // Get Initial Timeline content
         this.getTimelinecontent();
 
+        // Get post content
+        this.getPostcontent();
+
         const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
         const {
             className,
+            tm_post,
             tm_content,
             post_content,
             headingAlign,
@@ -520,6 +532,7 @@ class UAGBTimeline extends Component {
      /* Render output at backend */
     uagb_get_timeline_content(displayPosts){
         var attr              = this.props.attributes,
+            tm_post            = attr.tm_post,
             content            = attr.tm_content,
             headingTag         = attr.headingTag,
             headingAlign       = attr.headingAlign,
@@ -558,7 +571,6 @@ class UAGBTimeline extends Component {
             arrow_align_class  = 'uagb-top-arrow',
             seperator_margin   = parseInt(separatorwidth/2),
             vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);
-        //console.log(displayPosts);
         
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-center-arrow';
@@ -580,6 +592,8 @@ class UAGBTimeline extends Component {
         }
 
         let data_copy     = [ ...this.props.attributes.tm_content ];
+        //let post_copy     = [ ...displayPosts ];
+        //console.log(post_copy);
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
