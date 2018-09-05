@@ -144,10 +144,8 @@ class UAGBTimeline extends Component {
     }
 
     getPostcontent(){
-        var latestPosts = this.props.latestPosts;
-        if( (this.props.attributes.tm_post).length == '0' ){
-           this.props.setAttributes({tm_post:latestPosts});  
-        }        
+        var latestPosts = this.props.latestPosts;        
+        this.props.setAttributes({tm_post:latestPosts}); 
     }
 
     render() {
@@ -714,7 +712,7 @@ class UAGBTimeline extends Component {
                                     >
                                     {
                                         displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                            <div className="ab-block-post-grid-image">
+                                            <div className="uagb-block-post-grid-image">
                                                 <a href={ post.link } target="_blank" rel="bookmark">
                                                     <img
                                                         src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -740,11 +738,11 @@ class UAGBTimeline extends Component {
 
                                         <div className="uagb-byline">
                                             { displayPostAuthor && post.author_info.display_name &&
-                                                <div className="ab-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                                <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
                                             }
 
                                             { displayPostDate && post.date_gmt &&
-                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-block-post-grid-date' }>
                                                     { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
                                                 </time>
                                             }
@@ -752,11 +750,16 @@ class UAGBTimeline extends Component {
 
                                         <div className="uagb-timeline-grid-excerpt">
                                             { displayPostExcerpt && post.excerpt &&
-                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
+                                                textAlign: headingAlign,
+                                                fontSize: subHeadFontSize + 'px',
+                                                color: subHeadingColor,
+                                                marginBottom: subHeadSpace + 'px',
+                                            }}/>
                                             }
 
                                             { displayPostLink &&
-                                                <p><a className="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                                <p><a className="uagb-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
                                             }
                                         </div>
                                     </div>

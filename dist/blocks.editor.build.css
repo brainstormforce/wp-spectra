@@ -30,3 +30,9 @@
 
 .edit-post-block-sidebar__panel .components-panel__body .components-panel__body-toggle[aria-expanded="true"] {
   background-color: #eee; }
+
+.uagb-timeline-grid-excerpt p {
+  font-size: inherit;
+  color: inherit;
+  margin-bottom: inherit;
+  text-align: inherit; }

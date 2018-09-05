@@ -188,11 +188,11 @@ registerBlockType( 'uagb/timeline', {
                                             value={ post.time_desc  }
                                             className='uagb-content-description'
                                             style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: subHeadFontSize + 'px',
-                                            color: subHeadingColor,
-                                            marginBottom: subHeadSpace + 'px',
-                                        }}
+                                                textAlign: headingAlign,
+                                                fontSize: subHeadFontSize + 'px',
+                                                color: subHeadingColor,
+                                                marginBottom: subHeadSpace + 'px',
+                                            }}
                                         />
                                     </div> 
                                 </div>
@@ -268,7 +268,13 @@ registerBlockType( 'uagb/timeline', {
 
                                                         <div className="uagb-timeline-grid-excerpt">
                                                             { displayPostExcerpt && post.excerpt &&
-                                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+                                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } 
+                                                                style={{ 
+                                                                    textAlign: headingAlign,
+                                                                    fontSize: subHeadFontSize + 'px',
+                                                                    color: subHeadingColor,
+                                                                    marginBottom: subHeadSpace + 'px',
+                                                                }} />
                                                             }
 
                                                             { displayPostLink &&
