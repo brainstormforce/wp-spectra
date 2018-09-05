@@ -177,11 +177,11 @@ registerBlockType( 'uagb/timeline', {
                                             value={ post.time_heading  }
                                             className='uagb-content-title'
                                             style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: headFontSize + 'px',
-                                            color: headingColor,
-                                            marginBottom: headSpace + 'px',
-                                        }}
+                                                textAlign: headingAlign,
+                                                fontSize: headFontSize + 'px',
+                                                color: headingColor,
+                                                marginBottom: headSpace + 'px',
+                                            }}
                                         />
                                         <RichText.Content
                                             tagName="p"
@@ -232,7 +232,7 @@ registerBlockType( 'uagb/timeline', {
                                                     >
                                                     {
                                                         displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                                            <div className="ab-block-post-grid-image">
+                                                            <div className="uagb-block-post-grid-image">
                                                                 <a href={ post.link } target="_blank" rel="bookmark">
                                                                     <img
                                                                         src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
@@ -245,15 +245,22 @@ registerBlockType( 'uagb/timeline', {
                                                         )
                                                     }
                                                     <div className="uagb-timeline-text">
-                                                        <h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+                                                        <h2 className="entry-title">
+                                                        <a href={ post.link } target="_blank" rel="bookmark" style={{ 
+                                                            textAlign: headingAlign,
+                                                            fontSize: headFontSize + 'px',
+                                                            color: headingColor,
+                                                            marginBottom: headSpace + 'px',
+                                                        }}
+                                                        >{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
 
                                                         <div className="uagb-byline">
                                                             { displayPostAuthor && post.author_info.display_name &&
-                                                                <div className="ab-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                                                <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
                                                             }
 
                                                             { displayPostDate && post.date_gmt &&
-                                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'ab-block-post-grid-date' }>
+                                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-block-post-grid-date' }>
                                                                     { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
                                                                 </time>
                                                             }
@@ -265,7 +272,7 @@ registerBlockType( 'uagb/timeline', {
                                                             }
 
                                                             { displayPostLink &&
-                                                                <p><a className="ab-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+                                                                <p><a className="uagb-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
                                                             }
                                                         </div>
                                                     </div>

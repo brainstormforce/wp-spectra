@@ -57,6 +57,7 @@ class UAGBTimeline extends Component {
 
          // Get initial timeline content.
         this.getPostcontent = this.getPostcontent.bind(this);
+        //getPostcontent();
 
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
@@ -144,7 +145,9 @@ class UAGBTimeline extends Component {
 
     getPostcontent(){
         var latestPosts = this.props.latestPosts;
-        this.props.setAttributes({tm_post:latestPosts});  
+        if( (this.props.attributes.tm_post).length == '0' ){
+           this.props.setAttributes({tm_post:latestPosts});  
+        }        
     }
 
     render() {
@@ -724,7 +727,16 @@ class UAGBTimeline extends Component {
                                         )
                                     }
                                     <div className="uagb-timeline-text">
-                                        <h2 className="entry-title"><a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a></h2>
+                                        <h2 className="entry-title">
+                                            <a href={ post.link } target="_blank" rel="bookmark" style={{ 
+                                                            textAlign: headingAlign,
+                                                            fontSize: headFontSize + 'px',
+                                                            color: headingColor,
+                                                            marginBottom: headSpace + 'px',
+                                                        }}>
+                                                { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                            </a>
+                                        </h2>
 
                                         <div className="uagb-byline">
                                             { displayPostAuthor && post.author_info.display_name &&
