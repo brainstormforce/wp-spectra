@@ -213,7 +213,7 @@ registerBlockType( 'uagb/timeline', {
             }else{
                 return (
                     <div className={ props.className } > 
-                        <div className = "uagb-timeline-main">
+                        <div className = {time_class} >
                            <div className= {align_class} >
                                 <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
                                 {  

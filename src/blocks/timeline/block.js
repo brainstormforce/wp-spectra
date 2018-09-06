@@ -54,10 +54,6 @@ class UAGBTimeline extends Component {
 
          // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
-
-         // Get initial timeline content.
-        this.getPostcontent = this.getPostcontent.bind(this);
-
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
@@ -150,24 +146,15 @@ class UAGBTimeline extends Component {
         }  
 
         return this.props.attributes.tm_content;
-    }
-
-    getPostcontent(){
-        //console.log('getpost');
-        var latestPosts = this.props.latestPosts;        
-        this.props.setAttributes({tm_post:latestPosts}); 
-    }
+    }    
 
     render() {
-        
+        console.log(this.props.attributes);
         //Get id
         this.uagbGetId();
 
         // Get Initial Timeline content
         this.getTimelinecontent();
-
-        // Get post content
-        this.getPostcontent();
 
         const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
         const {
@@ -211,6 +198,8 @@ class UAGBTimeline extends Component {
             readMoreText,
             tm_block_id,
         } = attributes;
+
+        //console.log(this.props);
 
         // Thumbnail options
         const imageCropOptions = [
@@ -495,29 +484,6 @@ class UAGBTimeline extends Component {
             </InspectorControls>                
         );
 
-        const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
-        if ( ! hasPosts ) {
-            return (
-                <Fragment>
-                    { timeline_control }                    
-                    <Placeholder
-                        icon="admin-post"
-                        label={ __( 'UAGB timeline' ) }
-                    >
-                        { ! Array.isArray( latestPosts ) ?
-                            <Spinner /> :
-                            __( 'No posts found.' )
-                        }
-                    </Placeholder>
-                </Fragment>
-            );
-        }
-
-        // Removing posts from display should be instant.
-        const displayPosts = latestPosts.length > postsToShow ?
-            latestPosts.slice( 0, postsToShow ) :
-            latestPosts;
-
         const layoutControls = [
             {
                 icon: 'grid-view',
@@ -539,7 +505,7 @@ class UAGBTimeline extends Component {
             { timeline_control }
                 <div className={ className } > 
                     <div className = {time_class}>
-                        { this.uagb_get_timeline_content(displayPosts) }
+                        { this.uagb_get_timeline_content() }
                     </div>
                 </div>
             </Fragment>
@@ -547,7 +513,7 @@ class UAGBTimeline extends Component {
     }
 
      /* Render output at backend */
-    uagb_get_timeline_content(displayPosts){
+    uagb_get_timeline_content(){
         var attr              = this.props.attributes,
             tm_post            = attr.tm_post,
             content            = attr.tm_content,
@@ -704,9 +670,29 @@ class UAGBTimeline extends Component {
                 </div>
             );
         }else{
-            if ( displayPosts.length === 0 ) {
-                return "No Post found";
-            } 
+            const { setAttributes, latestPosts } = this.props;           
+            setAttributes( { 'tm_post': latestPosts } );
+            const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+            if ( ! hasPosts ) {
+                return (
+                    <Fragment>                                            
+                        <Placeholder
+                            icon="admin-post"
+                            label={ __( 'UAGB timeline' ) }
+                        >
+                            { ! Array.isArray( latestPosts ) ?
+                                <Spinner /> :
+                                __( 'No posts found.' )
+                            }
+                        </Placeholder>
+                    </Fragment>
+                );
+            }else{
+                // Removing posts from display should be instant.
+            const displayPosts = latestPosts.length > postsToShow ?
+                latestPosts.slice( 0, postsToShow ) :
+                latestPosts;
+           
             return (<div className = {align_class}>  
                     <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
                     {displayPosts.map((post,index) => {
@@ -786,14 +772,14 @@ class UAGBTimeline extends Component {
                         );
                     })}                    
             </div>);
+            }
+            
         }
     }
 }
 
 export default withSelect( ( select, props ) => {
-    //console.log('withSelect');
-    //console.log(props);
-    const { postsToShow, order, orderBy, categories, postType } = props.attributes;
+    const { postsToShow, order, orderBy, categories, postType } = props.attributes;    
     //if( postType == 'post'){ 
         const { getEntityRecords } = select( 'core' );
         const latestPostsQuery = pickBy( {
@@ -804,7 +790,7 @@ export default withSelect( ( select, props ) => {
         }, ( value ) => ! isUndefined( value ) );
         const categoriesListQuery = {
             per_page: 100,
-        };
+        };        
         return {
             latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
             categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
