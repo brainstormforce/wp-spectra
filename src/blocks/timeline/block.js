@@ -261,11 +261,12 @@ class UAGBTimeline extends Component {
                         max={ 200 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    /> }
-                    { postType === 'post' && <PanelBody title={ __( 'Post Grid Settings' ) }>
+                    /> }                                      
+                 </PanelBody>
+                 { postType === 'post' && <PanelBody title={ __( 'Post Grid Settings' ) }>
                     <QueryControls
-                        { ...{ order, orderBy } }
                         numberOfItems={ postsToShow }
+                        { ...{ order, orderBy } }
                         categoriesList={ categoriesList }
                         selectedCategoryId={ categories }
                         onOrderChange={ ( value ) => { setAttributes( { order: value } ); } }
@@ -315,8 +316,7 @@ class UAGBTimeline extends Component {
                     />                                      
                     }                    
 
-                </PanelBody>}                   
-                 </PanelBody>
+                </PanelBody>} 
                  <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
