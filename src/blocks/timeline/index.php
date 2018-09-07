@@ -48,6 +48,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $readMoreText       = $attributes['readMoreText'];
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
+    $tm_block_id        = $attributes['tm_block_id'];
 
 	$align_class        = '';
     $align_item_class   = '';
@@ -75,43 +76,43 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     }
     
     /*CSS*/
-	$front_style = '.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'.
+	$front_style = '.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'.
 		'  border-color: transparent transparent transparent '.$backgroundColor.
 		'}'.
-		'.uagb-timeline::after{'.
+		'.'.$tm_block_id.' '.'.uagb-timeline::after{'.
 		'background-color:'.$separatorColor.';'.
 		'width:'.$separatorwidth.'px'.';'.
 		'margin-left:-'.$seperator_margin.'px'.
 		'}'.
-		'.uagb-timeline-container::after{'.
+		'.'.$tm_block_id.' '.'.uagb-timeline-container::after{'.
 		'background-color:'.$separatorBg.';'.
 		'border-color:'.$separatorBorder.
 		'}'.
-		'.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'.
+		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'.
 		'  border-color: transparent '.$backgroundColor.' transparent transparent'.
 		'}'.
-		'.uagb-timeline-container.uagb-tl-item-left {'.
+		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-left {'.
 		' padding-right:'.$horizontalSpace.'px'.
 		'}'. 
-		'.uagb-timeline-container.uagb-tl-item-right {'.
+		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-right {'.
 		' padding-left:'.$horizontalSpace.'px'.
 		'}'.
-		'.uagb-timeline-container {'.
+		'.'.$tm_block_id.' '.'.uagb-timeline-container {'.
 		' padding-top:'.$verticalSpace.'px'.
 		'}'.
-		'.uagb-top-arrow .uagb-timeline-container:after{'.
+		'.'.$tm_block_id.' '.'.uagb-top-arrow .uagb-timeline-container:after{'.
 		' top:calc(20% + '.$vert_per.'px)!important'.
 		'}'.
-		'.uagb-bottom-arrow .uagb-timeline-container:after{'.
+		'.'.$tm_block_id.' '.'.uagb-bottom-arrow .uagb-timeline-container:after{'.
 		' top:calc(80% + '.$vert_per.'px)!important'.
 		'}'. 
-		'.uagb-center-arrow .uagb-timeline-container:after{'.
+		'.'.$tm_block_id.' '.'.uagb-center-arrow .uagb-timeline-container:after{'.
 		' top:calc(50% + '.$vert_per.'px)!important'.
 		'}';
 
   	$list_items_markup  = '';	
 	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $className ) );
-	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main" >' );
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main %1$s" >',esc_attr($tm_block_id) );
 	$list_items_markup .= '<style class="uagb-timeline-css" type="text/css">'.$front_style.'</style>';
 
 	if( $postType == 'general' ){
