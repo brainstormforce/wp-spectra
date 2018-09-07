@@ -11,28 +11,35 @@
  */
 function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
-	$recent_posts = wp_get_recent_posts( array(
-		'numberposts' => $attributes['postsToShow'],
+	$query_args = array(
+		'posts_per_page' => $attributes['postsToShow'],
 		'post_status' => 'publish',
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
-		'category' => $attributes['categories'],
-	), 'OBJECT' );
+		'tax_query' => [
+			'taxonomy' => 'category',
+			'field'    => 'slug',
+			'terms'    => $attributes['categories'],
+			'operator' => 'IN',
+		]
+	);
 
-	//echo '<xmp>'; print_r($recent_posts); echo '</xmp>';
+	$query = new \WP_Query( $query_args );
 
 	$list_items_markup = '';
 
-	foreach ( $recent_posts as $post ) {
-		// Get the post ID
-		$post_id = $post->ID;
-		ob_start();
-		include( 'single.php' );
-		$list_items_markup .= ob_get_clean();
+	ob_start();
 
-		// Start the markup for the post
-		
+	while ( $query->have_posts() ) {
+
+		$query->the_post();
+
+		include 'single.php';
 	}
+
+	wp_reset_postdata();
+	
+	$list_items_markup .= ob_get_clean();
 
 	// Build the classes
 	$class = "uagb-post-grid align{$attributes['align']}";
@@ -266,4 +273,57 @@ function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 	
 	// Return the author data
 	return $author_data;
+}
+
+function uagb_render_image( $attributes ) {
+
+	?>
+	<div class='uagb-post__image'>
+		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
+			<?php echo wp_get_attachment_image( get_post_thumbnail_id() ); ?>
+		</a>
+	</div>
+	<?php
+}
+
+function uagb_render_title( $attributes ) {
+	?>
+	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title entry-title" style="<?php echo 'color: ' . $attributes['titleColor'] . ';font-size: ' . $attributes['titleFontSize']; ?>">
+		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php the_title(); ?></a>
+	</<?php echo $attributes['titleTag']; ?>>
+	<?php
+}
+
+function uagb_render_meta( $attributes ) {
+	global $post;
+	?>
+	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor']; ?>">
+		<div class="uagb-post__author fa fa-user" style="color: rgb(119, 119, 119);">
+			<?php the_author_posts_link(); ?>
+		</div>
+		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date fa fa-clock"><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time>
+		<div class="uagb-post__comment fa fa-comment"><?php comments_number(); ?></div>
+	</div>
+	<?php
+}
+
+function uagb_render_excerpt( $attributes ) {
+
+	$excerpt = wp_trim_words( get_the_excerpt() );
+	if ( ! $excerpt ) {
+		$excerpt = null;
+	}
+	?>
+	<div class="uagb-post__excerpt" style="<?php echo $attributes['excerptColor']; ?>">
+		<?php echo $excerpt; ?>
+	</div>
+	<?php
+}
+
+function uagb_render_button( $attributes ) {
+	?>
+	<div class="uagb-post__cta" style="<?php echo 'color: ' . $attributes['ctaColor'] . ' background: ' . $attributes['ctaBgColor']; ?>">
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo esc_html__( 'Read More', 'uagb' ); ?></a>
+	</div>
+	<?php
 }
