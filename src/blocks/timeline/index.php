@@ -9,7 +9,7 @@
 /**
  * Renders the post grid block on server.
  */
-function uagb_blocks_render_block_core_latest_posts( $attributes ) {
+function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$recent_posts = wp_get_recent_posts( array(
 		'numberposts' => $attributes['postsToShow'],
 		'post_status' => 'publish',
@@ -19,7 +19,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	), 'OBJECT' );
 
 	$content            = $attributes['tm_content'];
-	//var_dump($content);
+	//echo '<xmp>'; print_r($content); echo '</xmp>';
 
     $headingTag         = $attributes['headingTag'];
     $headingAlign       = $attributes['headingAlign'];
@@ -47,14 +47,14 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
     $imageCrop          = $attributes['imageCrop'];
     $readMoreText       = $attributes['readMoreText'];
     $verticalSpace      = $attributes['verticalSpace'];
-    $className 			=  $attributes['className'];
+    $className 			= $attributes['className'];
 
 	$align_class        = '';
     $align_item_class   = '';
     $arrow_align_class  = 'uagb-top-arrow';
     $seperator_margin   =  (int)($separatorwidth/2);
     $vert_per           =  (int)($verticalSpace * 75)/100;	
-   
+
    	if( $arrowlinAlignment == 'center' ){
         $arrow_align_class = 'uagb-center-arrow';
         $vert_per = (int)(((int)($verticalSpace) * (int)(40))/100);            
@@ -201,7 +201,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		}
 
 		$list_items_markup .= sprintf(
-			'<h2 class="ab-block-post-grid-title"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+			'<h2 class="ab-block-post-grid-title" style="text-align:'.$headingAlign.';color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 			esc_url( get_permalink( $post_id ) ),
 			esc_html( $title )
 		);
@@ -468,7 +468,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			),
 			'postType' => array(
 				'type' => 'string',
-				'default' => 'general',
+				'default' => 'post',
 			),
 			'categories' => array(
 				'type' => 'string',
@@ -536,8 +536,9 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => '0',
 			),
-		),
-		//'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
+		),				
+		'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
+		
 	) );
 }
 

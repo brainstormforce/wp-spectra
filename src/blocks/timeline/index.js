@@ -32,6 +32,11 @@ const {
     registerBlockType,
 } = wp.blocks;
 
+const {
+    registerStore,
+    withSelect,
+} = wp.data;
+
 export const name = 'core/latest-posts';
 
 // Register the block
@@ -50,6 +55,7 @@ registerBlockType( 'uagb/timeline', {
 
     // Render via PHP
     save(props) {
+        console.log(props);
         const {
             tm_post,
             className,
@@ -91,8 +97,6 @@ registerBlockType( 'uagb/timeline', {
             readMoreText, 
             tm_block_id,
         } = props.attributes;
-
-        //console.log(tm_block_id);
         
         var align_class        = '',
             align_item_class   = '',
@@ -297,6 +301,6 @@ registerBlockType( 'uagb/timeline', {
                     </div>
                 );
             }  
-        }        
+        }      
     },
 } );

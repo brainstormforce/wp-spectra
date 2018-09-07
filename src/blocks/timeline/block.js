@@ -52,7 +52,7 @@ class UAGBTimeline extends Component {
     constructor() {
         super( ...arguments );
 
-         // Get initial timeline content.
+        // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
@@ -148,13 +148,40 @@ class UAGBTimeline extends Component {
         return this.props.attributes.tm_content;
     }    
 
-    render() {
-        console.log(this.props.attributes);
+   
+    /**
+     * Get Post data in attribute.
+     * @return {[type]} [description]
+     */
+    getpostcontent(){
+
+        var post    = this.props.latestPosts
+        var tm_post  = this.props.attributes.tm_post;
+
+        if( post ){   
+
+            if( tm_post.length == 0 ){
+                this.props.attributes.tm_post =  this.props.latestPosts; 
+            }else{
+                if( JSON.stringify( tm_post ) !== JSON.stringify( post ) ){
+                    this.props.attributes.tm_post =  this.props.latestPosts; 
+                }
+            }
+        }
+        return this.props.attributes.tm_post;
+    }
+
+    render() {       
         //Get id
         this.uagbGetId();
 
         // Get Initial Timeline content
         this.getTimelinecontent();
+
+        // Get post content
+        //this.getpostcontent();
+
+        //console.log(this.props);
 
         const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
         const {
@@ -218,7 +245,9 @@ class UAGBTimeline extends Component {
                     <SelectControl
                         label={ __( 'Select Source' ) }
                         value={ postType }
-                        onChange={ ( value ) => setAttributes( { postType: value } ) }
+                        onChange={ ( value ) => {
+                            setAttributes( { postType: value } );                            
+                        } }
                         options={ [
                             { value: 'general', label: __( 'Custom' ) },
                             { value: 'post', label: __( 'Post Type' ) },                            
@@ -239,10 +268,10 @@ class UAGBTimeline extends Component {
                         numberOfItems={ postsToShow }
                         categoriesList={ categoriesList }
                         selectedCategoryId={ categories }
-                        onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-                        onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-                        onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
-                        onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+                        onOrderChange={ ( value ) => { setAttributes( { order: value } ); } }
+                        onOrderByChange={ ( value ) => { setAttributes( { orderBy: value } ); } }
+                        onCategoryChange={ ( value ) => { setAttributes( { categories: '' !== value ? value : undefined } ) ; } }
+                        onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
                     />                   
                     <ToggleControl
                         label={ __( 'Display Featured Image' ) }
@@ -283,8 +312,8 @@ class UAGBTimeline extends Component {
                         type="text"
                         value={ readMoreText }
                         onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                    />
-                    }
+                    />                                      
+                    }                    
 
                 </PanelBody>}                   
                  </PanelBody>
@@ -671,7 +700,7 @@ class UAGBTimeline extends Component {
             );
         }else{
             const { setAttributes, latestPosts } = this.props;           
-            setAttributes( { 'tm_post': latestPosts } );
+            //setAttributes( { 'tm_post': latestPosts } );
             const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
             if ( ! hasPosts ) {
                 return (
@@ -776,11 +805,12 @@ class UAGBTimeline extends Component {
             
         }
     }
+
 }
 
 export default withSelect( ( select, props ) => {
     const { postsToShow, order, orderBy, categories, postType } = props.attributes;    
-    //if( postType == 'post'){ 
+    if( postType == 'post'){ 
         const { getEntityRecords } = select( 'core' );
         const latestPostsQuery = pickBy( {
             categories,
@@ -795,5 +825,5 @@ export default withSelect( ( select, props ) => {
             latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
             categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
         };
-    //}
+    }
 } )( UAGBTimeline );
