@@ -231,7 +231,7 @@ class UAGBTimeline extends Component {
                     initialOpen={ false }
                 >                      
                     <SelectControl
-                        label={ __( 'Alignment' ) }
+                        label={ __( 'Orientation' ) }
                         value={ timelinAlignment }
                         onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
                         options={ [
@@ -640,6 +640,21 @@ class UAGBTimeline extends Component {
                                                                 </div>                                                            
                                                                
                                                             <div className="uagb-content">
+                                                                {
+                                                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                                                        <div className="uagb-block-post-grid-image">
+                                                                            <a href={ post.link } target="_blank" rel="bookmark">
+                                                                                <img
+                                                                                    src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                                                    alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                                                />
+                                                                            </a>
+                                                                        </div>
+                                                                    ) : (
+                                                                        null
+                                                                    )
+                                                                }
+
                                                                 <div className="uagb-timeline-heading-text">
                                                                     <h3 className="uagb-timeline-heading" style={{ 
                                                                         textAlign: headingAlign,
@@ -651,6 +666,10 @@ class UAGBTimeline extends Component {
                                                                     </h3>
                                                                 </div>
 
+                                                                { displayPostAuthor && post.author_info.display_name &&
+                                                                    <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+                                                                }
+                                                                
                                                                 { displayPostExcerpt && post.excerpt &&
                                                                     <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
                                                                     textAlign: headingAlign,
@@ -658,6 +677,10 @@ class UAGBTimeline extends Component {
                                                                     color: subHeadingColor,
                                                                     marginBottom: subHeadSpace + 'px',
                                                                 }}/>
+                                                                }
+
+                                                                { displayPostLink &&
+                                                                    <p><a className="uagb-block-post-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
                                                                 }                                                                
                                                             <div className="uagb-timeline-arrow"></div>
                                                             </div>
