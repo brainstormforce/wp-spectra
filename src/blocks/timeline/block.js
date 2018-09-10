@@ -52,8 +52,7 @@ class UAGBTimeline extends Component {
     constructor() {
         super( ...arguments );
 
-        // Get initial timeline content.
-        this.getTimelinecontent = this.getTimelinecontent.bind(this);
+        // Get initial timeline content.       
         this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
@@ -112,77 +111,11 @@ class UAGBTimeline extends Component {
 
         setAttributes( { readMoreText: ! readMoreText } );
     }
-
-    /**
-    * Loading Timeline content.
-    */
-    getTimelinecontent() {   
-        var item_number = this.props.attributes.timelineItem;
-        var item =[];
-        for (var i = 1; i <= item_number; i++) {
-            var title_heading_val = 'Timeline Heading '+i;
-            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-            var temp = [];
-            var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            item.push(p);            
-        }
-        // Setup the attribute
-        if( (this.props.attributes.tm_content).length == '0' ){
-           this.props.attributes.tm_content = item;
-        }
-        let data_copy     = [ ...this.props.attributes.tm_content ];
-        let data_length = data_copy.length;
-        
-        if( item_number < data_length ){
-            let data_new = data_copy;
-            data_new.pop();
-            this.props.setAttributes({tm_content:data_new});
-        }if( item_number > data_length ){            
-            var diff = item_number - 1;
-            var title_heading_val = 'Timeline Heading '+item_number;
-            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-            data_copy[diff] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-            this.props.setAttributes({tm_content:data_copy});  
-        }  
-
-        return this.props.attributes.tm_content;
-    }    
-
-   
-    /**
-     * Get Post data in attribute.
-     * @return {[type]} [description]
-     */
-    getpostcontent(){
-
-        var post    = this.props.latestPosts
-        var tm_post  = this.props.attributes.tm_post;
-
-        if( post ){   
-
-            if( tm_post.length == 0 ){
-                this.props.attributes.tm_post =  this.props.latestPosts; 
-            }else{
-                if( JSON.stringify( tm_post ) !== JSON.stringify( post ) ){
-                    this.props.attributes.tm_post =  this.props.latestPosts; 
-                }
-            }
-        }
-        return this.props.attributes.tm_post;
-    }
-
+ 
     render() {       
         //Get id
         this.uagbGetId();
-
-        // Get Initial Timeline content
-        this.getTimelinecontent();
-
-        // Get post content
-        //this.getpostcontent();
-
-        //console.log(this.props);
-
+       
         const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
         const {
             className,
@@ -208,7 +141,6 @@ class UAGBTimeline extends Component {
             headSpace,
             separatorwidth,
             subHeadSpace,
-            postType,
             displayPostDate,
             displayPostExcerpt,
             displayPostAuthor,
@@ -238,32 +170,8 @@ class UAGBTimeline extends Component {
 
         const timeline_control = (
             <InspectorControls>
-                <PanelBody 
-                    title={ __( 'General' ) }
-                    initialOpen={ false }
-                >
-                    <SelectControl
-                        label={ __( 'Select Source' ) }
-                        value={ postType }
-                        onChange={ ( value ) => {
-                            setAttributes( { postType: value } );                            
-                        } }
-                        options={ [
-                            { value: 'general', label: __( 'Custom' ) },
-                            { value: 'post', label: __( 'Post Type' ) },                            
-                        ] }
-                    /> 
-                    { postType === 'general' && <RangeControl
-                        label={ __( 'Number of Items' ) }
-                        value={ timelineItem }
-                        onChange={ ( value ) => setAttributes( { timelineItem: value } ) }
-                        min={ 1 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    /> }                                      
-                 </PanelBody>
-                 { postType === 'post' && <PanelBody title={ __( 'Post Grid Settings' ) }>
+                
+                 { <PanelBody title={ __( 'Post Grid Settings' ) }>
                     <QueryControls
                         numberOfItems={ postsToShow }
                         { ...{ order, orderBy } }
@@ -551,7 +459,6 @@ class UAGBTimeline extends Component {
             headFontSize       = attr.headFontSize,
             headingColor       = attr.headingColor,
             headSpace          = attr.headSpace,
-            time_type          = attr.postType,
             subHeadFontSize    = attr.subHeadFontSize,
             subHeadingColor    = attr.subHeadingColor,
             subHeadSpace       = attr.subHeadSpace,
@@ -644,61 +551,6 @@ class UAGBTimeline extends Component {
                         ' top:calc(50% + '+vert_per+'px)!important'+
                         '}' ;
 
-        if( time_type == 'general'){
-            return ( <div className= {align_class} >
-                <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-                {content.map((time_content,index) => {  
-                    var second_index = 'uagb-'+index;
-                    if(timelinAlignment == 'center'){
-                        if(index % 2 == '0'){
-                            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                        }else{
-                            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                        }  
-                    }  
-                    return (<div key={index} className = {align_item_class} >                                
-                                <div  key={second_index} className="uagb-timeline-content"  style={{ backgroundColor: backgroundColor }}>
-                                    <RichText
-                                        tagName={ headingTag }
-                                        placeholder={ __( 'Write a Heading' ) }
-                                        value={ time_content.time_heading }
-                                        className='uagb-heading-text'
-                                        onChange={ ( value ) => { 
-                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
-                                            data_copy[index] = p;                                       
-                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                        } }
-                                        style={{ 
-                                            textAlign: headingAlign,
-                                            fontSize: headFontSize + 'px',
-                                            color: headingColor,
-                                            marginBottom: headSpace + 'px',
-                                        }}
-                                    />
-                                    <RichText
-                                        tagName="p"
-                                        placeholder={ __( 'Write a Description' ) }
-                                        value={ time_content.time_desc }
-                                        className='uagb-desc-text'
-                                        onChange={ ( value ) => { 
-                                            var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };
-                                            data_copy[index] = p;                                       
-                                            this.props.setAttributes( { 'tm_content': data_copy } );                                       
-                                         } }
-                                        style={{
-                                            textAlign: headingAlign,
-                                            fontSize: subHeadFontSize + 'px',
-                                            color: subHeadingColor,
-                                            marginBottom: subHeadSpace + 'px',
-                                        }}
-                                    />
-                                </div> 
-                            </div>                      
-                        );
-                    })}
-                </div>
-            );
-        }else{
             const { setAttributes, latestPosts } = this.props;           
             //setAttributes( { 'tm_post': latestPosts } );
             const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
@@ -803,14 +655,14 @@ class UAGBTimeline extends Component {
             </div>);
             }
             
-        }
+        
     }
 
 }
 
 export default withSelect( ( select, props ) => {
-    const { postsToShow, order, orderBy, categories, postType } = props.attributes;    
-    if( postType == 'post'){ 
+    const { postsToShow, order, orderBy, categories } = props.attributes;    
+    
         const { getEntityRecords } = select( 'core' );
         const latestPostsQuery = pickBy( {
             categories,
@@ -825,5 +677,5 @@ export default withSelect( ( select, props ) => {
             latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
             categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
         };
-    }
+    
 } )( UAGBTimeline );

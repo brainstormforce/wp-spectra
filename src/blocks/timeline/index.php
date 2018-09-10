@@ -26,7 +26,6 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $headFontSize       = $attributes['headFontSize'];
     $headingColor       = $attributes['headingColor'];
     $headSpace          = $attributes['headSpace'];
-    $postType           = $attributes['postType'];
     $subHeadFontSize    = $attributes['subHeadFontSize'];
     $subHeadingColor    = $attributes['subHeadingColor'];
     $subHeadSpace       = $attributes['subHeadSpace'];
@@ -115,35 +114,8 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main %1$s" >',esc_attr($tm_block_id) );
 	$list_items_markup .= '<style class="uagb-timeline-css" type="text/css">'.$front_style.'</style>';
 
-	if( $postType == 'general' ){
-		$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
-		foreach ( $content as $index => $content_value ) {
-			$second_index = 'uagb-'.$index;
-            if( $timelinAlignment == 'center'){
-                if( $index % 2 == '0'){
-                    $align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                }else{
-                    $align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                }  
-            }  
-			$list_items_markup .= sprintf( '<div key = "%1$s" class = "%2$s" >',esc_attr( $index ),esc_attr( $align_item_class ) );
-			$list_items_markup .= sprintf( '<div key = "%1$s" class = "uagb-timeline-content" style= "background-color:%2$s">',esc_attr( $second_index ),esc_attr( $backgroundColor) );
-			$list_items_markup .= '<'.$headingTag .' class = "uagb-content-title" style="text-align:'.$headingAlign.';color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px">';
-			$list_items_markup .= esc_attr( $content_value['time_heading'] ) ;
-			$list_items_markup .= '</'.$headingTag.'>';
-			
-			$list_items_markup .= sprintf( '<p class = "uagb-content-description" style="text-align:'.$headingAlign.';color:'.$subHeadingColor.';font-size:'.$subHeadFontSize.'px;margin-bottom:'.$headSpace.'px">' );
-			$list_items_markup .= esc_attr( $content_value['time_desc'] ) ;
-			$list_items_markup .= sprintf( '</p>');			
 
-			$list_items_markup .= sprintf( '</div>');			
-			$list_items_markup .= sprintf( '</div>');
-		}
-
-		$list_items_markup .= sprintf( '</div>');
-
-	}else{
-		$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
+	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
 		
 		foreach ( $recent_posts as $index => $post ) {
 			
@@ -281,7 +253,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		}
 
 		$list_items_markup .= sprintf( '</div>');
-	}
+	
 
 	$list_items_markup .= sprintf( '</div>');
 	$list_items_markup .= sprintf( '</div>');
@@ -339,10 +311,6 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => '#eee',
 			),
-			'separatorBg' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
 			'separatorBorder' => array(
 				'type' => 'string',
 				'default' => '#eee',
@@ -362,11 +330,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'headFontSize' => array(
 				'type' => 'number',
 				'default' => 15,
-			),
-			'timelineItem' => array(
-				'type' => 'number',
-				'default' => 5,
-			),
+			),			
 			'timelinAlignment' => array(
 				'type' => 'string',
 				'default' => 'center',
@@ -391,85 +355,9 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 5,
 			),
-			'postType' => array(
-				'type' => 'string',
-				'default' => 'general',
-			),
-			'headingAlign' => array(
-				'type' => 'string',
-				'default' => 'center',
-			),
-			'headingColor' => array(
-				'type' => 'string',
-				'default' => '#000',
-			),
-			'subHeadingColor' => array(
-				'type' => 'string',
-				'default' => '#000',
-			),
-			'separatorBg' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
-			'backgroundColor' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
-			'separatorColor' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
-			'separatorBg' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
-			'separatorBorder' => array(
-				'type' => 'string',
-				'default' => '#eee',
-			),
-			'headingTag' => array(
-				'type' => 'string',
-				'default' => 'h3',
-			),
-			'horizontalSpace' => array(
-				'type' => 'number',
-				'default' => 30,
-			),			
 			'headFontSize' => array(
 				'type' => 'number',
 				'default' => 15,
-			),
-			'timelineItem' => array(
-				'type' => 'number',
-				'default' => 5,
-			),
-			'timelinAlignment' => array(
-				'type' => 'string',
-				'default' => 'center',
-			),
-			'arrowlinAlignment' => array(
-				'type' => 'string',
-				'default' => 'center',
-			),
-			'subHeadFontSize' => array(
-				'type' => 'number',
-				'default' => 12,
-			),
-			'headSpace' => array(
-				'type' => 'number',
-				'default' => 5,
-			),
-			'separatorwidth' => array(
-				'type' => 'number',
-				'default' => 6,
-			),
-			'subHeadSpace' => array(
-				'type' => 'number',
-				'default' => 5,
-			),
-			'postType' => array(
-				'type' => 'string',
-				'default' => 'post',
 			),
 			'categories' => array(
 				'type' => 'string',
