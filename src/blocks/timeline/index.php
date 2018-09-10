@@ -319,7 +319,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			),
 			'verticalSpace' => array(
 				'type' => 'number',
-				'default' => 10,
+				'default' => 15,
 			),
 			'headFontSize' => array(
 				'type' => 'number',
@@ -350,6 +350,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'default' => 35,
 			),
 			'subHeadSpace' => array(
+				'type' => 'number',
+				'default' => 5,
+			),
+			'dateBottomspace' => array(
 				'type' => 'number',
 				'default' => 5,
 			),

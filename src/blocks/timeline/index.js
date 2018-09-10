@@ -89,6 +89,7 @@ registerBlockType( 'uagb/timeline', {
             headSpace,
             separatorwidth,
             subHeadSpace,
+            dateBottomspace,
             postType,
             displayPostDate,
             displayPostExcerpt,

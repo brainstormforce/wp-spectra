@@ -53,11 +53,11 @@ class UAGBTimeline extends Component {
         super( ...arguments );
 
         // Get initial timeline content.       
-        this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
+        this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this );
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-        this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
-        this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
-        this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+        this.toggleDisplayPostAuthor  = this.toggleDisplayPostAuthor.bind( this );
+        this.toggleDisplayPostImage   = this.toggleDisplayPostImage.bind( this );
+        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );
         
         // Get unique id
         this.uagbGetId = this.uagbGetId.bind(this);
@@ -141,6 +141,7 @@ class UAGBTimeline extends Component {
             separatorwidth,
             connectorBgsize,
             subHeadSpace,
+            dateBottomspace,
             displayPostDate,
             displayPostExcerpt,
             displayPostAuthor,
@@ -378,7 +379,12 @@ class UAGBTimeline extends Component {
                         max={ 90 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />
+                    />                    
+                </PanelBody>
+                <PanelBody 
+                    title={ __( 'Spacing' ) }
+                    initialOpen={ false }
+                    >
                     <RangeControl
                         label={ __( 'Horizontal Space' ) }
                         value={ horizontalSpace }
@@ -396,14 +402,9 @@ class UAGBTimeline extends Component {
                         max={ 100 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />
-                </PanelBody>
-                <PanelBody 
-                    title={ __( 'Additional Options' ) }
-                    initialOpen={ false }
-                    >                   
+                    />                   
                     <RangeControl
-                        label={ __( 'Heading Spacing' ) }
+                        label={ __( 'Heading Bottom Spacing' ) }
                         value={ headSpace }
                         onChange={ ( value ) => setAttributes( { headSpace: value } ) }
                         min={ 0 }
@@ -412,7 +413,7 @@ class UAGBTimeline extends Component {
                         allowReset
                     />                    
                     <RangeControl
-                        label={ __( 'Sub-Heading Spacing' ) }
+                        label={ __( 'Description Bottom Spacing' ) }
                         value={ subHeadSpace }
                         onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
                         min={ 0 }
@@ -420,6 +421,15 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
+                    { displayPostDate && ( timelinAlignment !=='center' ) && <RangeControl
+                        label={ __( 'Date Bottom Spacing' ) }
+                        value={ dateBottomspace }
+                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    /> }
                 </PanelBody>
             </InspectorControls>                
         );   
@@ -483,6 +493,7 @@ class UAGBTimeline extends Component {
             subHeadFontSize    = attr.subHeadFontSize,
             subHeadingColor    = attr.subHeadingColor,
             subHeadSpace       = attr.subHeadSpace,
+            dateBottomspace    = attr.dateBottomspace,
             backgroundColor    = attr.backgroundColor,
             separatorColor     = attr.separatorColor,
             separatorBg        = attr.separatorBg,
@@ -498,7 +509,6 @@ class UAGBTimeline extends Component {
             displayPostDate    = attr.displayPostDate,
             displayPostExcerpt = attr.displayPostExcerpt,
             displayPostAuthor  = attr.displayPostAuthor,
-            displayPostImage   = attr.displayPostImage,
             displayPostLink    = attr.displayPostLink,
             order              = attr.order,
             orderBy            = attr.orderBy,
@@ -553,17 +563,23 @@ class UAGBTimeline extends Component {
                         '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
                             'height:'+connectorBgsize+'px'+
                         '}'+ 
-                        '.'+ tm_block_id +' .uagb-timeline-marker {'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
                         ' margin-left:'+horizontalSpace+'px;'+
                         ' margin-right:'+horizontalSpace+'px'+
                         '}'+ 
                         '.'+ tm_block_id +' .uagb-timeline-field:not(:last-child){'+
                         ' margin-bottom:'+verticalSpace+'px'+
-                        '}'
-                        /*'.'+ tm_block_id +' .uagb-timeline-container {'+
-                        ' padding-top:'+verticalSpace+'px'+
                         '}'+
-                        '.'+ tm_block_id +' .uagb-top-arrow .uagb-timeline-container:after{'+
+                        '.'+ tm_block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
+                        ' margin-bottom:'+dateBottomspace+'px'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        '}'+ 
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
+                        ' margin-right:'+horizontalSpace+'px;'+
+                        '}'
+                        /*+'.'+ tm_block_id +' .uagb-top-arrow .uagb-timeline-container:after{'+
                         ' top:calc(20% + '+vert_per+'px)!important'+
                         '}'+
                         '.'+ tm_block_id +' .uagb-bottom-arrow .uagb-timeline-container:after{'+
