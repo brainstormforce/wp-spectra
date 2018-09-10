@@ -308,7 +308,7 @@ class UAGBTimeline extends Component {
                     initialOpen={ false }
                     >
                     <SelectControl
-                        label={ __( 'Tag' ) }
+                        label={ __( 'Heading Tag' ) }
                         value={ headingTag }
                         onChange={ ( value ) => setAttributes( { headingTag: value } ) }
                         options={ [
@@ -677,14 +677,18 @@ class UAGBTimeline extends Component {
                                                                     )
                                                                 }
 
-                                                                <div className="uagb-timeline-heading-text">
-                                                                    <h3 className="uagb-timeline-heading" style={{ 
-                                                                        fontSize: headFontSize + 'px',
-                                                                        color: headingColor,
-                                                                        marginBottom: headSpace + 'px',
-                                                                    }}>
-                                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                                    </h3>
+                                                                <div className="uagb-timeline-heading-text">                                                                    
+                                                                    <RichText
+                                                                        tagName={ headingTag }
+                                                                        placeholder={ __( 'Write a Heading' ) }
+                                                                        value={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                                        className='uagb-timeline-heading'
+                                                                        style={{ 
+                                                                            fontSize: headFontSize + 'px',
+                                                                            color: headingColor,
+                                                                            marginBottom: headSpace + 'px',
+                                                                        }}
+                                                                    />
                                                                 </div>
 
                                                                 { displayPostAuthor && post.author_info.display_name &&
