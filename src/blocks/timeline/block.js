@@ -502,9 +502,9 @@ class UAGBTimeline extends Component {
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
-        var back_style = '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'+
-                        '  border-color: transparent transparent transparent '+backgroundColor+
-                        '}'+
+        var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after {'+
+                        '  border-left-color:'+backgroundColor+
+                        '}'/*+
                         '.'+ tm_block_id +' .uagb-timeline::after{'+
                             'background-color:'+separatorColor+';'+
                             'width:'+separatorwidth+'px'+';'+
@@ -534,7 +534,7 @@ class UAGBTimeline extends Component {
                         '}'+ 
                         '.'+ tm_block_id +' .uagb-center-arrow .uagb-timeline-container:after{'+
                         ' top:calc(50% + '+vert_per+'px)!important'+
-                        '}' ;
+                        '}'*/ ;
 
         const { setAttributes, latestPosts } = this.props;           
 
@@ -572,9 +572,9 @@ class UAGBTimeline extends Component {
             }     
             
             var display_inner_date = false;
-            /*<style dangerouslySetInnerHTML={{ __html: back_style }}></style>*/
 
             return (<div className = "uagb-days uagb-timeline-infinite-load">                       
+                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
                             {displayPosts.map((post,index) => {
                                 var second_index = 'uagb-'+index;
                                 if(timelinAlignment == 'center'){
