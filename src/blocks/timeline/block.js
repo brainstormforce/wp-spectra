@@ -320,29 +320,6 @@ class UAGBTimeline extends Component {
                             { value: 'h6', label: __( 'H6' ) },
                         ] }
                     />
-                    <RangeControl
-                        label={ __( 'Heading Font Size' ) }
-                        value={ headFontSize }
-                        onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-                        min={ 10 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Description Font Size' ) }
-                        value={ subHeadFontSize }
-                        onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-                        min={ 10 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                </PanelBody>
-                <PanelBody 
-                    title={ __( 'Timeline Colors' ) }
-                    initialOpen={ false }
-                    >
                     <PanelColor
                         title={ __( 'Heading Color' ) }
                         colorValue={ headingColor }
@@ -376,7 +353,25 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-                </PanelBody>
+                    <RangeControl
+                        label={ __( 'Heading Font Size' ) }
+                        value={ headFontSize }
+                        onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Description Font Size' ) }
+                        value={ subHeadFontSize }
+                        onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+                        min={ 10 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                </PanelBody>                
                 <PanelBody 
                     title={ __( 'Connector' ) }
                     initialOpen={ false }
@@ -646,7 +641,7 @@ class UAGBTimeline extends Component {
                                     <div className = "uagb-timeline-field animate-border in-view">
                                         <div className = {content_align_class}> 
                                             <div className = "uagb-timeline-marker in-view-timeline-icon">
-                                                <i className = "timeline-icon-new out-view-timeline-icon fa fa-calendar"></i>
+                                                <i className = "timeline-icon-new out-view-timeline-icon dashicons dashicons-calendar"></i>
                                             </div>
                                             <div className = {day_align_class}>
                                                 <div className="uagb-events-new" style = {{textAlign:align}}>

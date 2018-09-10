@@ -1143,36 +1143,22 @@
   }
 }
 
-.uagb-timeline-main .uagb-content .uagb-timeline-heading,
-.uagb-timeline-main .uagb-content .uagb-timeline-heading-text{
-  color: #6ec1e4;
-  font-family: "Roboto", Sans-serif;
-  font-weight: 600;
-}
-.uagb-timeline-main .uagb-timeline-desc-content,
+/*.uagb-timeline-main .uagb-timeline-desc-content,
 .uagb-timeline-main .inner-date-new,
 .uagb-timeline-main a .uagb-timeline-desc-content {
   color: #7a7a7a;
 }
 .uagb-timeline-main .uagb-timeline-link-style .uagb-timeline-link {
   color: #61ce70;
-  font-family: "Roboto", Sans-serif;
-  font-weight: 500;
 }
-.uagb-timeline-main .uagb-timeline-desc-content,
-.uagb-timeline-main .inner-date-new {
-  font-family: "Roboto", Sans-serif;
-  font-weight: 400;
-}
+
 .uagb-timeline-main .animate-border .timeline-icon-new {
   color: #7a7a7a;
-}
+}*/
 .uagb-timeline__line__inner {
   background-color: #61ce70;
   width: 100%;
 }
-
-
 
 .uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after {
   border-left: 13px solid #eeeeee;
@@ -1249,6 +1235,9 @@
 .rtl  .uagb-timeline--right .uagb-timeline__line {
   left: calc(3em / 2);
   right: auto;
+}
+.uagb-timeline-desc-content p {
+    font-size: inherit;
 }
 
 @media(max-width:1024px){ .uagb-timeline--center.uagb-timeline-responsive-tablet .uagb-day-right .uagb-timeline-arrow:after {
