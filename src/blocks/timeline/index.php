@@ -37,6 +37,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $arrowlinAlignment  = $attributes['arrowlinAlignment'];
     $horizontalSpace    = $attributes['horizontalSpace'];
     $separatorwidth     = $attributes['separatorwidth'];
+    $connectorBgsize    = $attributes['connectorBgsize'];
     $displayPostImage   = $attributes['displayPostImage'];
     $displayPostDate    = $attributes['displayPostDate'];
     $displayPostExcerpt = $attributes['displayPostExcerpt'];
@@ -349,7 +350,11 @@ function uagb_blocks_register_block_core_latest_posts() {
 			),
 			'separatorwidth' => array(
 				'type' => 'number',
-				'default' => 6,
+				'default' => 5,
+			),
+			'connectorBgsize' => array(
+				'type' => 'number',
+				'default' => 35,
 			),
 			'subHeadSpace' => array(
 				'type' => 'number',

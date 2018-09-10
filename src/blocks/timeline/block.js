@@ -140,6 +140,7 @@ class UAGBTimeline extends Component {
             horizontalSpace,
             headSpace,
             separatorwidth,
+            connectorBgsize,
             subHeadSpace,
             displayPostDate,
             displayPostExcerpt,
@@ -368,7 +369,7 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <RangeControl
-                        label={ __( 'Line Width' ) }
+                        label={ __( 'Connector Width' ) }
                         value={ separatorwidth }
                         onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
                         min={ 1 }
@@ -377,11 +378,20 @@ class UAGBTimeline extends Component {
                         allowReset
                     />
                     <RangeControl
+                        label={ __( 'Connector Background Size' ) }
+                        value={ connectorBgsize }
+                        onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
+                        min={ 25 }
+                        max={ 90 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
                         label={ __( 'Horizontal Space' ) }
                         value={ horizontalSpace }
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
-                        min={ 10 }
-                        max={ 80 }
+                        min={ 1 }
+                        max={ 20 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -389,8 +399,8 @@ class UAGBTimeline extends Component {
                         label={ __( 'Vertical Space' ) }
                         value={ verticalSpace }
                         onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
-                        min={ 0 }
-                        max={ 80 }
+                        min={ 1 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -480,6 +490,7 @@ class UAGBTimeline extends Component {
             verticalSpace      = attr.verticalSpace,
             horizontalSpace    = attr.horizontalSpace,
             separatorwidth     = attr.separatorwidth,
+            connectorBgsize    = attr.connectorBgsize,
             displayPostImage   = attr.displayPostImage,
             displayPostDate    = attr.displayPostDate,
             displayPostExcerpt = attr.displayPostExcerpt,
@@ -502,21 +513,43 @@ class UAGBTimeline extends Component {
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
-        var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after {'+
+        var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
                         '  border-left-color:'+backgroundColor+
-                        '}'/*+
-                        '.'+ tm_block_id +' .uagb-timeline::after{'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{'+
+                        '  border-right-color:'+backgroundColor+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline__line__inner{'+
                             'background-color:'+separatorColor+';'+
-                            'width:'+separatorwidth+'px'+';'+
-                            'margin-left:-'+seperator_margin+'px'+
                         '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-container::after{'+
+                        '.'+ tm_block_id +' .uagb-timeline__line{'+
+                            'background-color:'+separatorColor+';'+
+                            'width:'+separatorwidth+'px'+';'+                            
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline__line{'+
+                            'left: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-marker{'+
                           'background-color:'+separatorBg+';'+
-                          'border-color:'+separatorBorder+
+                          'min-height:'+connectorBgsize+'px;'+
+                          'min-width:'+connectorBgsize+'px;'+
+                          'line-height:'+connectorBgsize+'px;'+
                         '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'+
-                        '  border-color: transparent '+backgroundColor+' transparent transparent'+
-                        '}'+ 
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
+                            'height:'+connectorBgsize+'px'+
+                        '}'
+                        /*+ 
                         '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-left {'+
                         ' padding-right:'+horizontalSpace+'px'+
                         '}'+ 

@@ -45,9 +45,7 @@
 .uagb-timeline__line {
   background-color: #eeeeee;
 }
-.uagb-timeline-main .uagb-days .in-view .in-view-timeline-icon {
-  background: #5cb85c;
-}
+
 .uagb-timeline__line__inner {
   background-color: #5cb85c;
   width: 100%;
@@ -1173,9 +1171,7 @@
   background-color: #61ce70;
   width: 100%;
 }
-.uagb-timeline-main .uagb-days .in-view .in-view-timeline-icon {
-  background: #61ce70;
-}
+
 
 
 .uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after {
@@ -1254,9 +1250,7 @@
   left: calc(3em / 2);
   right: auto;
 }
-  .uagb-timeline-main .uagb-days .in-view .in-view-timeline-icon .timeline-icon-new {
-  color: #ffffff;
-}
+
 @media(max-width:1024px){ .uagb-timeline--center.uagb-timeline-responsive-tablet .uagb-day-right .uagb-timeline-arrow:after {
   border-right: 13px solid #eeeeee;
   border-left: none;
