@@ -315,7 +315,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			),
 			'horizontalSpace' => array(
 				'type' => 'number',
-				'default' => 30,
+				'default' => 10,
 			),
 			'verticalSpace' => array(
 				'type' => 'number',

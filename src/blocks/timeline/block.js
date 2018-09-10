@@ -384,7 +384,7 @@ class UAGBTimeline extends Component {
                         value={ horizontalSpace }
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
                         min={ 1 }
-                        max={ 20 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -393,7 +393,7 @@ class UAGBTimeline extends Component {
                         value={ verticalSpace }
                         onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
                         min={ 1 }
-                        max={ 50 }
+                        max={ 100 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
@@ -443,21 +443,6 @@ class UAGBTimeline extends Component {
 
         var responsive_class = 'uagb-timeline-responsive-tablet';
         var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
-
-        const layoutControls = [
-            {
-                icon: 'grid-view',
-                title: __( 'Left' ),
-                onClick: () => setAttributes( { align: 'left' } ),
-                //isActive: postLayout === 'grid',
-            },
-            {
-                icon: 'list-view',
-                title: __( 'Right' ),
-                onClick: () => setAttributes( { align: 'right' } ),
-                //isActive: postLayout === 'list',
-            },
-        ];
 
         return (
             <Fragment>
@@ -529,7 +514,6 @@ class UAGBTimeline extends Component {
             seperator_margin   = parseInt(separatorwidth/2),
             vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);        
 
-        console.log(align);
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
@@ -568,15 +552,15 @@ class UAGBTimeline extends Component {
                         '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
                         '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
                             'height:'+connectorBgsize+'px'+
-                        '}'
-                        /*+ 
-                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-left {'+
-                        ' padding-right:'+horizontalSpace+'px'+
                         '}'+ 
-                        '.'+ tm_block_id +' .uagb-timeline-container.uagb-tl-item-right {'+
-                        ' padding-left:'+horizontalSpace+'px'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-container {'+
+                        '.'+ tm_block_id +' .uagb-timeline-marker {'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        ' margin-right:'+horizontalSpace+'px'+
+                        '}'+ 
+                        '.'+ tm_block_id +' .uagb-timeline-field:not(:last-child){'+
+                        ' margin-bottom:'+verticalSpace+'px'+
+                        '}'
+                        /*'.'+ tm_block_id +' .uagb-timeline-container {'+
                         ' padding-top:'+verticalSpace+'px'+
                         '}'+
                         '.'+ tm_block_id +' .uagb-top-arrow .uagb-timeline-container:after{'+
