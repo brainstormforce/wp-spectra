@@ -22,7 +22,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	//echo '<xmp>'; print_r($content); echo '</xmp>';
 
     $headingTag         = $attributes['headingTag'];
-    $headingAlign       = $attributes['headingAlign'];
+    $headingAlign       = '';
     $headFontSize       = $attributes['headFontSize'];
     $headingColor       = $attributes['headingColor'];
     $headSpace          = $attributes['headSpace'];
@@ -274,13 +274,6 @@ function uagb_blocks_register_block_core_latest_posts() {
 
 	register_block_type( 'uagb/timeline', array(
 		'attributes' => array(
-			'tm_content' => array(
-				'type' => 'array',
-				'default' => [],
-				'items'   => [
-					'type' => 'object',
-				],
-			),
 			'tm_post' => array(
 				'type' => 'array',
 				'default' => [],
@@ -288,10 +281,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 					'type' => 'object',
 				],
 			),
-			'headingAlign' => array(
+			'align'   => array(
 				'type' => 'string',
 				'default' => 'center',
-			),
+			),			
 			'headingColor' => array(
 				'type' => 'string',
 				'default' => '#000',
@@ -401,11 +394,7 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'columns' => array(
 				'type' => 'number',
 				'default' => 2,
-			),
-			'align' => array(
-				'type' => 'string',
-				'default' => 'center',
-			),
+			),			
 			'width' => array(
 				'type' => 'string',
 				'default' => 'wide',

@@ -116,13 +116,12 @@ class UAGBTimeline extends Component {
         //Get id
         this.uagbGetId();
        
-        const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
+        const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
         const {
             className,
             tm_post,
             tm_content,
             post_content,
-            headingAlign,
             headingColor,
             subHeadingColor,
             backgroundColor,
@@ -249,13 +248,7 @@ class UAGBTimeline extends Component {
                             { value: 'bottom', label: __( 'Bottom' ) },
                             { value: 'center', label: __( 'Center' ) },
                         ] }
-                    />
-                    <BlockControls key='controls'>
-                        <AlignmentToolbar
-                            value={ headingAlign }
-                            onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-                        />
-                    </BlockControls>
+                    />                    
                 </PanelBody>
                 <PanelBody 
                     title={ __( 'Typography' ) }
@@ -429,7 +422,8 @@ class UAGBTimeline extends Component {
                     />
                 </PanelBody>
             </InspectorControls>                
-        );
+        );   
+       
 
         /* Arrow position */
         var arrow_align_class  = 'uagb-timeline-arrow-top';
@@ -450,10 +444,35 @@ class UAGBTimeline extends Component {
         var responsive_class = 'uagb-timeline-responsive-tablet';
         var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
 
+        const layoutControls = [
+            {
+                icon: 'grid-view',
+                title: __( 'Left' ),
+                onClick: () => setAttributes( { align: 'left' } ),
+                //isActive: postLayout === 'grid',
+            },
+            {
+                icon: 'list-view',
+                title: __( 'Right' ),
+                onClick: () => setAttributes( { align: 'right' } ),
+                //isActive: postLayout === 'list',
+            },
+        ];
+
         return (
             <Fragment>
             { timeline_control }
-                <div className={ className } > 
+            <BlockControls>
+                <BlockAlignmentToolbar
+                    value={ align }
+                    onChange={ ( value ) => {
+                        setAttributes( { align: value } );
+                    } }
+                    controls={ [ 'center', 'left','right' ] }
+                />
+                {/*<Toolbar controls={ layoutControls } />*/}
+            </BlockControls>
+                <div className={ className } >                     
                     <div className = { tl_class }>
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline-main">                                
@@ -473,7 +492,6 @@ class UAGBTimeline extends Component {
     uagb_get_timeline_content(){
         var attr               = this.props.attributes,
             headingTag         = attr.headingTag,
-            headingAlign       = attr.headingAlign,
             headFontSize       = attr.headFontSize,
             headingColor       = attr.headingColor,
             headSpace          = attr.headSpace,
@@ -505,11 +523,13 @@ class UAGBTimeline extends Component {
             imageCrop          = attr.imageCrop,
             readMoreText       = attr.readMoreText,
             tm_block_id        = attr.tm_block_id,
+            align              = attr.align,
             align_class        = '',
             align_item_class   = '',            
             seperator_margin   = parseInt(separatorwidth/2),
             vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);        
 
+        console.log(align);
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
@@ -627,7 +647,7 @@ class UAGBTimeline extends Component {
                                                 <i className = "timeline-icon-new out-view-timeline-icon fa fa-calendar"></i>
                                             </div>
                                             <div className = {day_align_class}>
-                                                <div className="uagb-events-new">
+                                                <div className="uagb-events-new" style = {{textAlign:align}}>
                                                     <a href= { post.link } target="_blank">
                                                         <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
                                                                 
@@ -657,7 +677,6 @@ class UAGBTimeline extends Component {
 
                                                                 <div className="uagb-timeline-heading-text">
                                                                     <h3 className="uagb-timeline-heading" style={{ 
-                                                                        textAlign: headingAlign,
                                                                         fontSize: headFontSize + 'px',
                                                                         color: headingColor,
                                                                         marginBottom: headSpace + 'px',
@@ -669,10 +688,9 @@ class UAGBTimeline extends Component {
                                                                 { displayPostAuthor && post.author_info.display_name &&
                                                                     <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
                                                                 }
-                                                                
+
                                                                 { displayPostExcerpt && post.excerpt &&
                                                                     <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
-                                                                    textAlign: headingAlign,
                                                                     fontSize: subHeadFontSize + 'px',
                                                                     color: subHeadingColor,
                                                                     marginBottom: subHeadSpace + 'px',

@@ -39,6 +39,9 @@ const {
 
 export const name = 'core/latest-posts';
 
+// Register alignments
+const validAlignments = [ 'center', 'left', 'right' ];
+
 // Register the block
 registerBlockType( 'uagb/timeline', {
     title: __( 'Timeline' ),
@@ -49,19 +52,25 @@ registerBlockType( 'uagb/timeline', {
         __( 'post' ),
         __( 'grid' ),
         __( 'atomic' ),
-    ],
+    ],   
+
+    getEditWrapperProps( attributes ) {
+        const { align } = attributes;
+        if ( -1 !== validAlignments.indexOf( align ) ) {
+            //return { 'data-align': align };
+        }
+    },
 
     edit,
 
     // Render via PHP
     save(props) {
-        console.log(props);
+        //console.log(props);
         const {
             tm_post,
             className,
             tm_content,
             post_content,
-            headingAlign,
             headingColor,
             subHeadingColor,
             backgroundColor,
@@ -86,9 +95,9 @@ registerBlockType( 'uagb/timeline', {
             displayPostAuthor,
             displayPostImage,
             displayPostLink,
-            align,
             postLayout,
             order,
+            align,
             orderBy,
             categories,
             postsToShow,
