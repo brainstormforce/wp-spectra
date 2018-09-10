@@ -172,7 +172,9 @@ class UAGBTimeline extends Component {
         const timeline_control = (
             <InspectorControls>
                 
-                 { <PanelBody title={ __( 'Post Settings' ) }>
+                 { <PanelBody title={ __( 'Post Settings' ) }
+                    initialOpen={ false }
+                    >
                     <QueryControls
                         numberOfItems={ postsToShow }
                         { ...{ order, orderBy } }
@@ -251,8 +253,58 @@ class UAGBTimeline extends Component {
                         ] }
                     />                    
                 </PanelBody>
+                 <PanelBody 
+                    title={ __( 'Spacing' ) }
+                    initialOpen={ false }
+                    >
+                    <RangeControl
+                        label={ __( 'Horizontal Space' ) }
+                        value={ horizontalSpace }
+                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
+                        min={ 1 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Vertical Space' ) }
+                        value={ verticalSpace }
+                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
+                        min={ 1 }
+                        max={ 100 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />                   
+                    <RangeControl
+                        label={ __( 'Heading Bottom Spacing' ) }
+                        value={ headSpace }
+                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />                    
+                    <RangeControl
+                        label={ __( 'Description Bottom Spacing' ) }
+                        value={ subHeadSpace }
+                        onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    { displayPostDate && ( timelinAlignment !=='center' ) && <RangeControl
+                        label={ __( 'Date Bottom Spacing' ) }
+                        value={ dateBottomspace }
+                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    /> }
+                </PanelBody>
                 <PanelBody 
-                    title={ __( 'Typography' ) }
+                    title={ __( 'Timeline Item' ) }
                     initialOpen={ false }
                     >
                     <SelectControl
@@ -380,57 +432,7 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />                    
-                </PanelBody>
-                <PanelBody 
-                    title={ __( 'Spacing' ) }
-                    initialOpen={ false }
-                    >
-                    <RangeControl
-                        label={ __( 'Horizontal Space' ) }
-                        value={ horizontalSpace }
-                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
-                        min={ 1 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Vertical Space' ) }
-                        value={ verticalSpace }
-                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
-                        min={ 1 }
-                        max={ 100 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />                   
-                    <RangeControl
-                        label={ __( 'Heading Bottom Spacing' ) }
-                        value={ headSpace }
-                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />                    
-                    <RangeControl
-                        label={ __( 'Description Bottom Spacing' ) }
-                        value={ subHeadSpace }
-                        onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    { displayPostDate && ( timelinAlignment !=='center' ) && <RangeControl
-                        label={ __( 'Date Bottom Spacing' ) }
-                        value={ dateBottomspace }
-                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    /> }
-                </PanelBody>
+                </PanelBody>               
             </InspectorControls>                
         );   
        
