@@ -171,7 +171,7 @@ class UAGBTimeline extends Component {
         const timeline_control = (
             <InspectorControls>
                 
-                 { <PanelBody title={ __( 'Post Grid Settings' ) }>
+                 { <PanelBody title={ __( 'Post Settings' ) }>
                     <QueryControls
                         numberOfItems={ postsToShow }
                         { ...{ order, orderBy } }
@@ -421,28 +421,38 @@ class UAGBTimeline extends Component {
             </InspectorControls>                
         );
 
-        const layoutControls = [
-            {
-                icon: 'grid-view',
-                title: __( 'Grid View' ),
-                onClick: () => setAttributes( { postLayout: 'grid' } ),
-                isActive: postLayout === 'grid',
-            },
-            {
-                icon: 'list-view',
-                title: __( 'List View' ),
-                onClick: () => setAttributes( { postLayout: 'list' } ),
-                isActive: postLayout === 'list',
-            },
-        ];
+        /* Arrow position */
+        var arrow_align_class  = 'uagb-timeline-arrow-top';
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-timeline-arrow-center';
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-timeline-arrow-bottom';
+        } 
 
-        const time_class = 'uagb-timeline-main '+tm_block_id;
+        /* Alignmnet */
+        var align_class = 'uagb-timeline--center '+ arrow_align_class;
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline--left ' + arrow_align_class;
+        }else if(timelinAlignment == 'right'){
+            align_class = 'uagb-timeline--right '+ arrow_align_class;
+        }     
+
+        var responsive_class = 'uagb-timeline-responsive-tablet';
+        var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
+
         return (
             <Fragment>
             { timeline_control }
                 <div className={ className } > 
-                    <div className = {time_class}>
-                        { this.uagb_get_timeline_content() }
+                    <div className = { tl_class }>
+                        <div className = "uagb-timeline-wrapper">
+                            <div className = "uagb-timeline-main">                                
+                                { this.uagb_get_timeline_content() }
+                                <div className = "uagb-timeline__line" style = {{ top:0, bottom:'288px' }} >
+                                    <div className = "uagb-timeline__line__inner" style = {{ height:'1000px'}}></div>
+                                </div>                                
+                            </div>
+                        </div>
                     </div>
                 </div>
             </Fragment>
@@ -451,9 +461,7 @@ class UAGBTimeline extends Component {
 
      /* Render output at backend */
     uagb_get_timeline_content(){
-        var attr              = this.props.attributes,
-            tm_post            = attr.tm_post,
-            content            = attr.tm_content,
+        var attr               = this.props.attributes,
             headingTag         = attr.headingTag,
             headingAlign       = attr.headingAlign,
             headFontSize       = attr.headFontSize,
@@ -487,33 +495,10 @@ class UAGBTimeline extends Component {
             readMoreText       = attr.readMoreText,
             tm_block_id        = attr.tm_block_id,
             align_class        = '',
-            align_item_class   = '',
-            arrow_align_class  = 'uagb-top-arrow',
+            align_item_class   = '',            
             seperator_margin   = parseInt(separatorwidth/2),
-            vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);
-        
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-center-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(40))/100);            
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-bottom-arrow';
-            vert_per = parseInt((parseInt(verticalSpace) * parseInt(12))/100);
-        } 
+            vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);        
 
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline uagb-tl-left ' + arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-        }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline uagb-tl-right '+ arrow_align_class;
-            align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-        }else{
-            align_class = 'uagb-timeline uagb-tl-center '+ arrow_align_class;
-            align_item_class = '';
-        }
-
-        let data_copy     = [ ...this.props.attributes.tm_content ];
-        //let post_copy     = [ ...displayPosts ];
-        //console.log(post_copy);
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
@@ -551,9 +536,10 @@ class UAGBTimeline extends Component {
                         ' top:calc(50% + '+vert_per+'px)!important'+
                         '}' ;
 
-            const { setAttributes, latestPosts } = this.props;           
-            //setAttributes( { 'tm_post': latestPosts } );
-            const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+        const { setAttributes, latestPosts } = this.props;           
+
+        const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+
             if ( ! hasPosts ) {
                 return (
                     <Fragment>                                            
@@ -573,87 +559,96 @@ class UAGBTimeline extends Component {
             const displayPosts = latestPosts.length > postsToShow ?
                 latestPosts.slice( 0, postsToShow ) :
                 latestPosts;
-           
-            return (<div className = {align_class}>  
-                    <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-                    {displayPosts.map((post,index) => {
-                        var second_index = 'uagb-'+index;
-                        if(timelinAlignment == 'center'){
-                            if(index % 2 == '0'){
-                                align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                            }else{
-                                align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                            }  
-                        }       
-                        return (
-                            <div key={index} className = {align_item_class} >
-                                <div key={second_index} className = "uagb-timeline-content" style={{ backgroundColor: backgroundColor }}>
-                                    <article
-                                        key={ index }
-                                        className={ classnames(
-                                            post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
-                                        ) }
-                                    >
-                                    {
-                                        displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
-                                            <div className="uagb-block-post-grid-image">
-                                                <a href={ post.link } target="_blank" rel="bookmark">
-                                                    <img
-                                                        src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
-                                                        alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                    />
-                                                </a>
+            
+            var content_align_class = '';
+            var day_align_class = '';
+
+            if( timelinAlignment == 'left' ){
+                content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                day_align_class = 'uagb-day-new uagb-day-left';
+            }else if(timelinAlignment == 'right'){
+                content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                day_align_class = 'uagb-day-new uagb-day-right';
+            }     
+            
+            var display_inner_date = false;
+            /*<style dangerouslySetInnerHTML={{ __html: back_style }}></style>*/
+
+            return (<div className = "uagb-days uagb-timeline-infinite-load">                       
+                            {displayPosts.map((post,index) => {
+                                var second_index = 'uagb-'+index;
+                                if(timelinAlignment == 'center'){
+                                    display_inner_date = true;
+                                    if(index % 2 == '0'){
+                                        content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                                        day_align_class = 'uagb-day-new uagb-day-right';
+                                    }else{
+                                        content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                                        day_align_class = 'uagb-day-new uagb-day-left';
+                                    }  
+                                }       
+                                return (
+                                    <div className = "uagb-timeline-field animate-border in-view">
+                                        <div className = {content_align_class}> 
+                                            <div className = "uagb-timeline-marker in-view-timeline-icon">
+                                                <i className = "timeline-icon-new out-view-timeline-icon fa fa-calendar"></i>
                                             </div>
-                                        ) : (
-                                            null
-                                        )
-                                    }
-                                    <div className="uagb-timeline-text">
-                                        <h2 className="entry-title">
-                                            <a href={ post.link } target="_blank" rel="bookmark" style={{ 
-                                                            textAlign: headingAlign,
-                                                            fontSize: headFontSize + 'px',
-                                                            color: headingColor,
-                                                            marginBottom: headSpace + 'px',
-                                                        }}>
-                                                { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                            </a>
-                                        </h2>
+                                            <div className = {day_align_class}>
+                                                <div className="uagb-events-new">
+                                                    <a href= { post.link } target="_blank">
+                                                        <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+                                                                
+                                                                <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+                                                                    { displayPostDate && post.date_gmt &&
+                                                                        <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
+                                                                            { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                                        </div>
+                                                                    }  
+                                                                </div>                                                            
+                                                               
+                                                            <div className="uagb-content">
+                                                                <div className="uagb-timeline-heading-text">
+                                                                    <h3 className="uagb-timeline-heading" style={{ 
+                                                                        textAlign: headingAlign,
+                                                                        fontSize: headFontSize + 'px',
+                                                                        color: headingColor,
+                                                                        marginBottom: headSpace + 'px',
+                                                                    }}>
+                                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+                                                                    </h3>
+                                                                </div>
 
-                                        <div className="uagb-byline">
-                                            { displayPostAuthor && post.author_info.display_name &&
-                                                <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-                                            }
-
-                                            { displayPostDate && post.date_gmt &&
-                                                <time dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-block-post-grid-date' }>
-                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-                                                </time>
+                                                                { displayPostExcerpt && post.excerpt &&
+                                                                    <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
+                                                                    textAlign: headingAlign,
+                                                                    fontSize: subHeadFontSize + 'px',
+                                                                    color: subHeadingColor,
+                                                                    marginBottom: subHeadSpace + 'px',
+                                                                }}/>
+                                                                }                                                                
+                                                            <div className="uagb-timeline-arrow"></div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            { display_inner_date &&
+                                                <div className = "uagb-timeline-date-new">
+                                                    <div className = "uagb-date-new">                                                    
+                                                        { displayPostDate && post.date_gmt &&
+                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
+                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                            </div>
+                                                        }                                                    
+                                                    </div>
+                                                </div>
                                             }
                                         </div>
-
-                                        <div className="uagb-timeline-grid-excerpt">
-                                            { displayPostExcerpt && post.excerpt &&
-                                                <div dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
-                                                textAlign: headingAlign,
-                                                fontSize: subHeadFontSize + 'px',
-                                                color: subHeadingColor,
-                                                marginBottom: subHeadSpace + 'px',
-                                            }}/>
-                                            }
-
-                                            { displayPostLink &&
-                                                <p><a className="uagb-block-post-grid-link ab-text-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-                                            }
-                                        </div>
-                                    </div>
-                                    </article>
-                                </div>
-                            </div>
-                        );
-                    })}                    
-            </div>);
-            }
+                                    </div> 
+                                );
+                            })}        
+                    </div>);
+                }
             
         
     }
