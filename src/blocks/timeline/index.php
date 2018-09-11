@@ -359,6 +359,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 5,
 			),
+			'authorSpace' => array(
+				'type' => 'number',
+				'default' => 5,
+			),
 			'dateBottomspace' => array(
 				'type' => 'number',
 				'default' => 5,

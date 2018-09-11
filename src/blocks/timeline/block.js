@@ -145,6 +145,7 @@ class UAGBTimeline extends Component {
             borderwidth,
             connectorBgsize,
             subHeadSpace,
+            authorSpace,
             dateBottomspace,
             displayPostDate,
             displayPostExcerpt,
@@ -340,7 +341,7 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />                    
-                    <RangeControl
+                    { displayPostExcerpt && <RangeControl
                         label={ __( 'Description Bottom Spacing' ) }
                         value={ subHeadSpace }
                         onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
@@ -349,6 +350,20 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
+                    }
+
+                    { displayPostAuthor &&
+                    <RangeControl
+                        label={ __( 'Author Bottom Spacing' ) }
+                        value={ authorSpace }
+                        onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    }
+
                     { displayPostDate && ( timelinAlignment !=='center' ) && <RangeControl
                         label={ __( 'Date Bottom Spacing' ) }
                         value={ dateBottomspace }
@@ -387,7 +402,8 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-                    <PanelColor
+
+                    { displayPostExcerpt && <PanelColor
                         title={ __( 'Description Color' ) }
                         colorValue={ subHeadingColor }
                         initialOpen={ false }
@@ -397,7 +413,9 @@ class UAGBTimeline extends Component {
                             onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
                             allowReset
                         />
-                    </PanelColor>
+                    </PanelColor> 
+                    }
+
                     <PanelColor
                         title={ __( 'Background Color' ) }
                         colorValue={ backgroundColor }
@@ -436,6 +454,8 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
+
+                    { displayPostExcerpt &&
                     <RangeControl
                         label={ __( 'Description Font Size' ) }
                         value={ subHeadFontSize }
@@ -445,6 +465,7 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
+                    }
                 </PanelBody>                
                 <PanelBody 
                     title={ __( 'Connector' ) }
@@ -598,6 +619,7 @@ class UAGBTimeline extends Component {
             subHeadFontSize    = attr.subHeadFontSize,
             subHeadingColor    = attr.subHeadingColor,
             subHeadSpace       = attr.subHeadSpace,
+            authorSpace        = attr.authorSpace,
             dateBottomspace    = attr.dateBottomspace,
             backgroundColor    = attr.backgroundColor,
             separatorColor     = attr.separatorColor,
@@ -699,11 +721,10 @@ class UAGBTimeline extends Component {
                         +'.'+ tm_block_id +' .uagb-timeline-main .timeline-icon-new{'+
                         ' font-size:'+iconSize+'px;'+
                         'color:'+iconColor+';'+
-                        '}'
-                       /* + 
-                        '.'+ tm_block_id +' .uagb-center-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(50% + '+vert_per+'px)!important'+
-                        '}'*/ ;
+                        '}'+ 
+                        '.'+ tm_block_id +' .uagb-block-post-grid-author{'+
+                        ' margin-bottom:'+authorSpace+'px'+
+                        '}';
 
         const { setAttributes, latestPosts } = this.props;           
 
