@@ -347,6 +347,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 2,
 			),
+			'iconColor' => array(
+				'type' => 'string',
+				'default' => '#333',
+			),
 			'connectorBgsize' => array(
 				'type' => 'number',
 				'default' => 35,

@@ -161,6 +161,7 @@ class UAGBTimeline extends Component {
             imageCrop,
             readMoreText,
             icon,
+            iconColor,
             iconSize,
             tm_block_id,
             exerptLength,
@@ -465,6 +466,17 @@ class UAGBTimeline extends Component {
                         allowReset
                     />   
                     <PanelColor
+                        title={ __( 'Icon Color' ) }
+                        colorValue={ iconColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconColor }
+                            onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
                         title={ __( 'Line Color' ) }
                         colorValue={ separatorColor }
                         initialOpen={ false }
@@ -615,6 +627,7 @@ class UAGBTimeline extends Component {
             imageCrop          = attr.imageCrop,
             readMoreText       = attr.readMoreText,
             icon               = attr.icon,
+            iconColor          = attr.iconColor,
             iconSize           = attr.iconSize,
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
@@ -684,7 +697,8 @@ class UAGBTimeline extends Component {
                         'padding:'+bgPadding+'px;'+
                         '}'
                         +'.'+ tm_block_id +' .uagb-timeline-main .timeline-icon-new{'+
-                        ' font-size:'+iconSize+'px'+
+                        ' font-size:'+iconSize+'px;'+
+                        'color:'+iconColor+';'+
                         '}'
                        /* + 
                         '.'+ tm_block_id +' .uagb-center-arrow .uagb-timeline-container:after{'+
