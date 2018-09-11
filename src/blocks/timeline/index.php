@@ -47,7 +47,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
     $tm_block_id        = $attributes['tm_block_id'];
-
+    $borderwidth        = $attributes['borderwidth'];
 	$align_class        = '';
     $align_item_class   = '';
     $arrow_align_class  = 'uagb-top-arrow';
@@ -342,6 +342,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'separatorwidth' => array(
 				'type' => 'number',
 				'default' => 5,
+			),
+			'borderwidth' => array(
+				'type' => 'number',
+				'default' => 2,
 			),
 			'connectorBgsize' => array(
 				'type' => 'number',

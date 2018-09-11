@@ -142,6 +142,7 @@ class UAGBTimeline extends Component {
             horizontalSpace,
             headSpace,
             separatorwidth,
+            borderwidth,
             connectorBgsize,
             subHeadSpace,
             dateBottomspace,
@@ -497,6 +498,15 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <RangeControl
+                        label={ __( 'Border Width' ) }
+                        value={ borderwidth }
+                        onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
+                        min={ 1 }
+                        max={ 10 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
                         label={ __( 'Connector Width' ) }
                         value={ separatorwidth }
                         onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
@@ -587,6 +597,7 @@ class UAGBTimeline extends Component {
             verticalSpace      = attr.verticalSpace,
             horizontalSpace    = attr.horizontalSpace,
             separatorwidth     = attr.separatorwidth,
+            borderwidth        = attr.borderwidth,
             connectorBgsize    = attr.connectorBgsize,
             displayPostImage   = attr.displayPostImage,
             displayPostDate    = attr.displayPostDate,
@@ -644,6 +655,7 @@ class UAGBTimeline extends Component {
                           'min-height:'+connectorBgsize+'px;'+
                           'min-width:'+connectorBgsize+'px;'+
                           'line-height:'+connectorBgsize+'px;'+
+                          'border:'+borderwidth+'px solid'+separatorBorder+';'+
                         '}'+
                         '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
                         '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
