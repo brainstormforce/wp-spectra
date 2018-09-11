@@ -437,6 +437,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 20,
 			),
+			'iconSize' =>array(
+				'type' => 'number',
+				'default' => 15,
+			),
 		),				
 		'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
 		

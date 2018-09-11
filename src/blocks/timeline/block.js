@@ -160,6 +160,7 @@ class UAGBTimeline extends Component {
             imageCrop,
             readMoreText,
             icon,
+            iconSize,
             tm_block_id,
             exerptLength,
             borderRadius,
@@ -452,6 +453,15 @@ class UAGBTimeline extends Component {
                         value={ icon }
                         onChange={ ( value ) => setAttributes( { icon: value } ) }
                         options={ MyDashicon }
+                    />
+                    <RangeControl
+                        label={ __( 'Icon Size' ) }
+                        value={ iconSize }
+                        onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+                        min={ 0 }
+                        max={ 30 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
                     />   
                     <PanelColor
                         title={ __( 'Line Color' ) }
@@ -594,6 +604,7 @@ class UAGBTimeline extends Component {
             imageCrop          = attr.imageCrop,
             readMoreText       = attr.readMoreText,
             icon               = attr.icon,
+            iconSize           = attr.iconSize,
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
             align_class        = '',
@@ -660,10 +671,10 @@ class UAGBTimeline extends Component {
                         ' border-radius:'+borderRadius+'px;'+
                         'padding:'+bgPadding+'px;'+
                         '}'
-                        /*+
-                        '.'+ tm_block_id +' .uagb-bottom-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(80% + '+vert_per+'px)!important'+
-                        '}'+ 
+                        +'.'+ tm_block_id +' .uagb-timeline-main .timeline-icon-new{'+
+                        ' font-size:'+iconSize+'px'+
+                        '}'
+                       /* + 
                         '.'+ tm_block_id +' .uagb-center-arrow .uagb-timeline-container:after{'+
                         ' top:calc(50% + '+vert_per+'px)!important'+
                         '}'*/ ;
