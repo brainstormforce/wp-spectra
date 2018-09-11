@@ -162,6 +162,8 @@ class UAGBTimeline extends Component {
             icon,
             tm_block_id,
             exerptLength,
+            borderRadius,
+            bgPadding,
         } = attributes;
 
         // Thumbnail options
@@ -405,6 +407,24 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <RangeControl
+                        label={ __( 'Rounded Corners' ) }
+                        value={ borderRadius }
+                        onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( 'Padding' ) }
+                        value={ bgPadding }
+                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+                        min={ 1 }
+                        max={ 50 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    <RangeControl
                         label={ __( 'Heading Font Size' ) }
                         value={ headFontSize }
                         onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
@@ -564,6 +584,8 @@ class UAGBTimeline extends Component {
             displayPostAuthor  = attr.displayPostAuthor,
             displayPostLink    = attr.displayPostLink,
             exerptLength       = attr.exerptLength,
+            borderRadius       = attr.borderRadius,
+            bgPadding          = attr.bgPadding,
             order              = attr.order,
             orderBy            = attr.orderBy,
             categories         = attr.categories,
@@ -634,9 +656,11 @@ class UAGBTimeline extends Component {
                         '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
                         ' margin-right:'+horizontalSpace+'px;'+
                         '}'
-                        /*+'.'+ tm_block_id +' .uagb-top-arrow .uagb-timeline-container:after{'+
-                        ' top:calc(20% + '+vert_per+'px)!important'+
-                        '}'+
+                        +'.'+ tm_block_id +' .uagb-events-inner-new{'+
+                        ' border-radius:'+borderRadius+'px;'+
+                        'padding:'+bgPadding+'px;'+
+                        '}'
+                        /*+
                         '.'+ tm_block_id +' .uagb-bottom-arrow .uagb-timeline-container:after{'+
                         ' top:calc(80% + '+vert_per+'px)!important'+
                         '}'+ 

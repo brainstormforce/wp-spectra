@@ -429,6 +429,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'calendar'
 			),
+			'borderRadius' =>array(
+				'type' => 'number',
+				'default' => 4,
+			),
+			'bgPadding' =>array(
+				'type' => 'number',
+				'default' => 20,
+			),
 		),				
 		'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
 		
