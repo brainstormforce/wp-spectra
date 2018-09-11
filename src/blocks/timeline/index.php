@@ -351,6 +351,22 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => '#333',
 			),
+			'authorColor' => array(
+				'type' => 'string',
+				'default' => '#333',
+			),
+			'authorFontsize' => array(
+				'type' => 'number',
+				'default' => 12,
+			),
+			'dateColor' => array(
+				'type' => 'string',
+				'default' => '#333',
+			),
+			'dateFontsize' => array(
+				'type' => 'number',
+				'default' => 12,
+			),
 			'connectorBgsize' => array(
 				'type' => 'number',
 				'default' => 35,

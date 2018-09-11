@@ -45,7 +45,8 @@
   align-items: flex-start; }
 
 .uagb-timeline-widget a {
-  text-decoration: none; }
+  text-decoration: none;
+  color: inherit; }
 
 .uagb-timeline-main #infscr-loading {
   left: 0;

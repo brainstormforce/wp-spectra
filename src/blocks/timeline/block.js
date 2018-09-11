@@ -163,6 +163,10 @@ class UAGBTimeline extends Component {
             readMoreText,
             icon,
             iconColor,
+            authorColor,
+            dateColor,
+            dateFontsize,
+            authorFontsize,
             iconSize,
             tm_block_id,
             exerptLength,
@@ -497,6 +501,7 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    
                     <PanelColor
                         title={ __( 'Line Color' ) }
                         colorValue={ separatorColor }
@@ -557,7 +562,60 @@ class UAGBTimeline extends Component {
                         beforeIcon="editor-textcolor"
                         allowReset
                     />                    
-                </PanelBody>               
+                </PanelBody>        
+                { displayPostAuthor && <PanelBody 
+                    title={ __( 'Author' ) }
+                    initialOpen={ false }
+                    >
+                    <PanelColor
+                        title={ __( 'Author Color' ) }
+                        colorValue={ authorColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ authorColor }
+                            onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <RangeControl
+                        label={ __( 'Author Font Size' ) }
+                        value={ authorFontsize }
+                        onChange={ ( value ) => setAttributes( { authorFontsize: value } ) }
+                        min={ 1 }
+                        max={ 10 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    </PanelBody> 
+                } 
+
+                { displayPostDate && <PanelBody 
+                    title={ __( 'Date' ) }
+                    initialOpen={ false }
+                    >
+                    <PanelColor
+                        title={ __( 'Date Color' ) }
+                        colorValue={ dateColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ dateColor }
+                            onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <RangeControl
+                        label={ __( 'Date Font Size' ) }
+                        value={ dateFontsize }
+                        onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+                        min={ 1 }
+                        max={ 10 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />
+                    </PanelBody> 
+                }      
             </InspectorControls>                
         );   
        
@@ -650,6 +708,10 @@ class UAGBTimeline extends Component {
             readMoreText       = attr.readMoreText,
             icon               = attr.icon,
             iconColor          = attr.iconColor,
+            authorColor        = attr.authorColor,
+            authorFontsize     = attr.authorFontsize,                      
+            dateFontsize        = attr.dateFontsize,
+            dateColor           = attr.dateColor,
             iconSize           = attr.iconSize,
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
@@ -706,14 +768,24 @@ class UAGBTimeline extends Component {
                         ' margin-bottom:'+verticalSpace+'px'+
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
-                        ' margin-bottom:'+dateBottomspace+'px'+
+                        ' margin-bottom:'+dateBottomspace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
                         '}'+
                         '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
                         ' margin-left:'+horizontalSpace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
                         '}'+ 
                         '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
                         ' margin-right:'+horizontalSpace+'px;'+
-                        '}'
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'                        
+                        +'.'+ tm_block_id +' .uagb-date-new{'+
+                        ' font-size:'+dateFontsize+'px;'+
+                        'color:'+dateColor+';'+
+                        '}'+
                         +'.'+ tm_block_id +' .uagb-events-inner-new{'+
                         ' border-radius:'+borderRadius+'px;'+
                         'padding:'+bgPadding+'px;'+
@@ -723,7 +795,9 @@ class UAGBTimeline extends Component {
                         'color:'+iconColor+';'+
                         '}'+ 
                         '.'+ tm_block_id +' .uagb-block-post-grid-author{'+
-                        ' margin-bottom:'+authorSpace+'px'+
+                        ' margin-bottom:'+authorSpace+'px;'+
+                        'color:'+authorColor+';'+
+                        'font-size:'+authorFontsize+'px;'+
                         '}';
 
         const { setAttributes, latestPosts } = this.props;           
@@ -855,14 +929,13 @@ class UAGBTimeline extends Component {
                                                 </div>
                                             </div>
                                             { display_inner_date &&
-                                                <div className = "uagb-timeline-date-new">
-                                                    <div className = "uagb-date-new">                                                    
+                                                <div className = "uagb-timeline-date-new">                                                                                                   
                                                         { displayPostDate && post.date_gmt &&
                                                             <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
                                                                 { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
                                                             </div>
-                                                        }                                                    
-                                                    </div>
+                                                        }                                            
+                                                    
                                                 </div>
                                             }
                                         </div>
