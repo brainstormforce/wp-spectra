@@ -34,6 +34,7 @@ const {
     ToggleControl,
     Toolbar,
     withAPIData,
+    Dashicon,
 } = wp.components;
 
 const {
@@ -112,11 +113,13 @@ class UAGBTimeline extends Component {
         setAttributes( { readMoreText: ! readMoreText } );
     }
  
-    render() {       
+    render() {   
+        
         //Get id
         this.uagbGetId();
        
         const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
+       
         const {
             className,
             tm_post,
@@ -156,10 +159,9 @@ class UAGBTimeline extends Component {
             width,
             imageCrop,
             readMoreText,
+            icon,
             tm_block_id,
         } = attributes;
-
-        //console.log(this.props);
 
         // Thumbnail options
         const imageCropOptions = [
@@ -168,10 +170,47 @@ class UAGBTimeline extends Component {
         ];
 
         const isLandscape = imageCrop === 'landscape';
+        
+        const MyDashicon = [
+            { value: 'admin-home', label: __( 'admin-home' ) },
+            { value: 'products', label: __( 'products' ) },
+            { value: 'calendar', label: __( 'calendar' ) },
+            { value: 'admin-appearance', label: __( 'admin-appearance' ) },
+            { value: 'admin-collapse', label: __( 'admin-collapse' ) },
+            { value: 'admin-comments', label: __( 'admin-comments' ) },
+            { value: 'admin-customizer', label: __( 'admin-customizer' ) },
+            { value: 'admin-generic', label: __( 'admin-generic' ) },
+            { value: 'admin-links', label: __( 'admin-links' ) },
+            { value: 'admin-media', label: __( 'admin-media' ) },
+            { value: 'admin-multisite', label: __( 'admin-multisite' ) },
+            { value: 'admin-network', label: __( 'admin-network' ) },
+            { value: 'admin-page', label: __( 'admin-page' ) },
+            { value: 'admin-plugins', label: __( 'admin-plugins' ) },
+            { value: 'admin-post', label: __( 'admin-post' ) },
+            { value: 'admin-settings', label: __( 'admin-settings' ) },
+            { value: 'admin-site-alt', label: __( 'admin-site-alt' ) },
+            { value: 'admin-site-alt2', label: __( 'admin-site-alt2' ) },
+            { value: 'admin-site', label: __( 'admin-site' ) },
+            { value: 'admin-tools', label: __( 'admin-tools' ) },
+            { value: 'admin-users', label: __( 'admin-users' ) },
+            { value: 'album', label: __( 'album' ) },
+            { value: 'analytics', label: __( 'analytics') },
+            { value: 'archive', label: __( 'archive' ) },
+            { value: 'arrow-down-alt', label: __( 'arrow-down-alt' ) },
+            { value: 'arrow-down-alt2', label: __( 'arrow-down-alt2' ) },
+            { value: 'arrow-down', label: __( 'arrow-down' ) },
+            { value: 'arrow-left-alt', label: __( 'arrow-left-alt' ) },
+            { value: 'arrow-left-alt2', label: __( 'arrow-left-alt2' ) },
+            { value: 'arrow-left', label: __( 'arrow-left' ) },
+            { value: 'arrow-right-alt', label: __( 'arrow-right-alt' ) },
+            { value: 'arrow-right-alt2', label: __( 'arrow-right-alt2' ) },
+            { value: 'arrow-right', label: __( 'arrow-right' ) },
+            { value: 'arrow-up-alt', label: __( 'arrow-up-alt' ) }            
+        ];
 
         const timeline_control = (
-            <InspectorControls>
-                
+
+            <InspectorControls>                
                  { <PanelBody title={ __( 'Post Settings' ) }
                     initialOpen={ false }
                     >
@@ -197,7 +236,7 @@ class UAGBTimeline extends Component {
                             value={ imageCrop }
                             onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
                         />
-                    }
+                    }    
                     <ToggleControl
                         label={ __( 'Display Post Author' ) }
                         checked={ displayPostAuthor }
@@ -231,7 +270,13 @@ class UAGBTimeline extends Component {
                  <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
-                >                      
+                >        
+                    <SelectControl
+                        label={ __( 'Featured Icon' ) }
+                        value={ icon }
+                        onChange={ ( value ) => setAttributes( { icon: value } ) }
+                        options={ MyDashicon }
+                    />              
                     <SelectControl
                         label={ __( 'Orientation' ) }
                         value={ timelinAlignment }
@@ -431,7 +476,6 @@ class UAGBTimeline extends Component {
             </InspectorControls>                
         );   
        
-
         /* Arrow position */
         var arrow_align_class  = 'uagb-timeline-arrow-top';
         if( arrowlinAlignment == 'center' ){
@@ -452,8 +496,8 @@ class UAGBTimeline extends Component {
         var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
 
         return (
-            <Fragment>
-            { timeline_control }
+            <Fragment>            
+            { timeline_control }           
             <BlockControls>
                 <BlockAlignmentToolbar
                     value={ align }
@@ -514,6 +558,7 @@ class UAGBTimeline extends Component {
             width              = attr.width,
             imageCrop          = attr.imageCrop,
             readMoreText       = attr.readMoreText,
+            icon               = attr.icon,
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
             align_class        = '',
@@ -636,12 +681,15 @@ class UAGBTimeline extends Component {
                                         content_align_class = 'uagb-timeline-widget uagb-timeline-left';
                                         day_align_class = 'uagb-day-new uagb-day-left';
                                     }  
-                                }       
+                                }     
+
+                                var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
+                                
                                 return (
                                     <div className = "uagb-timeline-field animate-border in-view">
                                         <div className = {content_align_class}> 
                                             <div className = "uagb-timeline-marker in-view-timeline-icon">
-                                                <i className = "timeline-icon-new out-view-timeline-icon dashicons dashicons-calendar"></i>
+                                                <i className = {icon_class}></i>
                                             </div>
                                             <div className = {day_align_class}>
                                                 <div className="uagb-events-new" style = {{textAlign:align}}>

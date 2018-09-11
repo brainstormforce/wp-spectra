@@ -18,8 +18,6 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		'category' => $attributes['categories'],
 	), 'OBJECT' );
 
-	$content            = $attributes['tm_content'];
-	//echo '<xmp>'; print_r($content); echo '</xmp>';
 
     $headingTag         = $attributes['headingTag'];
     $headingAlign       = '';
@@ -422,6 +420,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'tm_block_id'  => array(
 				'type' => 'string',
 				'default' => '0',
+			),
+			'icon' => array(
+				'type' => 'string',
+				'default' => 'calendar'
 			),
 		),				
 		'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
