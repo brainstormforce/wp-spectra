@@ -161,6 +161,7 @@ class UAGBTimeline extends Component {
             readMoreText,
             icon,
             tm_block_id,
+            exerptLength,
         } = attributes;
 
         // Thumbnail options
@@ -252,6 +253,17 @@ class UAGBTimeline extends Component {
                         checked={ displayPostExcerpt }
                         onChange={ this.toggleDisplayPostExcerpt }
                     />
+                    { displayPostExcerpt &&
+                       <RangeControl
+                            label={ __( 'Excerpt Length' ) }
+                            value={ exerptLength }
+                            onChange={ ( value ) => setAttributes( { exerptLength: value } ) }
+                            min={ 1 }
+                            max={ 50 }
+                            beforeIcon="editor-textcolor"
+                            allowReset
+                        />
+                    }
                     <ToggleControl
                         label={ __( 'Display Continue Reading Link' ) }
                         checked={ displayPostLink }
@@ -270,13 +282,7 @@ class UAGBTimeline extends Component {
                  <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
-                >        
-                    <SelectControl
-                        label={ __( 'Featured Icon' ) }
-                        value={ icon }
-                        onChange={ ( value ) => setAttributes( { icon: value } ) }
-                        options={ MyDashicon }
-                    />              
+                >          
                     <SelectControl
                         label={ __( 'Orientation' ) }
                         value={ timelinAlignment }
@@ -421,6 +427,12 @@ class UAGBTimeline extends Component {
                     title={ __( 'Connector' ) }
                     initialOpen={ false }
                     >
+                    <SelectControl
+                        label={ __( 'Featured Icon' ) }
+                        value={ icon }
+                        onChange={ ( value ) => setAttributes( { icon: value } ) }
+                        options={ MyDashicon }
+                    />   
                     <PanelColor
                         title={ __( 'Line Color' ) }
                         colorValue={ separatorColor }
@@ -551,6 +563,7 @@ class UAGBTimeline extends Component {
             displayPostExcerpt = attr.displayPostExcerpt,
             displayPostAuthor  = attr.displayPostAuthor,
             displayPostLink    = attr.displayPostLink,
+            exerptLength       = attr.exerptLength,
             order              = attr.order,
             orderBy            = attr.orderBy,
             categories         = attr.categories,
@@ -685,6 +698,10 @@ class UAGBTimeline extends Component {
 
                                 var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
                                 
+                                if( displayPostExcerpt && post.excerpt ){
+                                    var trimmed_excerpt =  (post.excerpt.rendered).split(/\s+/).slice(0,exerptLength).join(" ");
+                                }
+
                                 return (
                                     <div className = "uagb-timeline-field animate-border in-view">
                                         <div className = {content_align_class}> 
@@ -739,7 +756,7 @@ class UAGBTimeline extends Component {
                                                                 }
 
                                                                 { displayPostExcerpt && post.excerpt &&
-                                                                    <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } style={{ 
+                                                                    <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: trimmed_excerpt } } style={{ 
                                                                     fontSize: subHeadFontSize + 'px',
                                                                     color: subHeadingColor,
                                                                     marginBottom: subHeadSpace + 'px',

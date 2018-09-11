@@ -389,6 +389,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'boolean',
 				'default' => true,
 			),
+			'exerptLength' =>array(
+				'type' => 'number',
+				'default' => 25,
+			),			
 			'postLayout' => array(
 				'type' => 'string',
 				'default' => 'grid',
