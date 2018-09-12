@@ -255,7 +255,6 @@ registerBlockType( 'uagb/advanced-heading', {
 	title: __( 'Advanced Heading - UAGB' ), // Block title.
 	description: __( 'Add Advanced Heading block.' ), // Block description.
 	icon: 'editor-textcolor', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
 	keywords: [
 		__( 'advanced heading' ),
 		__( 'uagb' ),

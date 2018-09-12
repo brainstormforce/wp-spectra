@@ -1,1 +1,166 @@
-.wp-block-uagb-advanced-heading{padding:0;color:#000000;margin:0 auto}.wp-block-uagb-advanced-heading .uagb-heading-text{margin:0}.wp-block-uagb-advanced-heading .uagb-separator-wrap{font-size:0}.wp-block-uagb-advanced-heading .uagb-separator{border-top-style:solid;display:inline-block;border-top-width:2px;width:5%;margin:0px 0px 10px 0px}.wp-block-uagb-advanced-heading .uagb-desc-text{margin:0}
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+.wp-block-uagb-advanced-heading {
+  padding: 0;
+  color: #000000;
+  margin: 0 auto; }
+  .wp-block-uagb-advanced-heading .uagb-heading-text {
+    margin: 0; }
+  .wp-block-uagb-advanced-heading .uagb-separator-wrap {
+    font-size: 0; }
+  .wp-block-uagb-advanced-heading .uagb-separator {
+    border-top-style: solid;
+    display: inline-block;
+    border-top-width: 2px;
+    width: 5%;
+    margin: 0px 0px 10px 0px; }
+  .wp-block-uagb-advanced-heading .uagb-desc-text {
+    margin: 0; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Post grid styles
+ * Loads on front end and back end
+ */
+.uagb-post-grid {
+  margin: 0 0 1.2em 0;
+  position: relative; }
+  .uagb-post-grid .is-grid article,
+  .uagb-post-grid .is-masonry article {
+    float: left;
+    display: inline-block; }
+  .uagb-post-grid .uagb-post__items {
+    -js-display: flex;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap; }
+  .uagb-post-grid .is-grid .uagb-post__inner-wrap {
+    height: 100%; }
+  .uagb-post-grid .uagb-post__comment:before,
+  .uagb-post-grid .uagb-post__author:before,
+  .uagb-post-grid .uagb-post__date:before {
+    margin-right: 4px; }
+  .uagb-post-grid .uagb-post__columns-8 article {
+    width: 12.5%; }
+  .uagb-post-grid .uagb-post__columns-7 article {
+    width: 14.28%; }
+  .uagb-post-grid .uagb-post__columns-6 article {
+    width: 16.66%; }
+  .uagb-post-grid .uagb-post__columns-5 article {
+    width: 20%; }
+  .uagb-post-grid .uagb-post__columns-4 article {
+    width: 25%; }
+  .uagb-post-grid .uagb-post__columns-3 article {
+    width: 33.2%; }
+  .uagb-post-grid .uagb-post__columns-2 article {
+    width: 50%; }
+  .uagb-post-grid .uagb-post__columns-1 article {
+    width: 100%; }
+  @media only screen and (max-width: 600px) {
+    .uagb-post-grid div[class*="columns"].is-grid {
+      grid-template-columns: 1fr; } }
+  .uagb-post-grid .uagb-post__image img {
+    display: block;
+    width: 100%; }
+  .uagb-post-grid .uagb-post__text {
+    text-align: left; }
+  .uagb-post-grid .uagb-post__title {
+    margin-top: 0;
+    margin-bottom: 15px; }
+    .uagb-post-grid .uagb-post__title a {
+      color: inherit;
+      -webkit-box-shadow: none;
+              box-shadow: none;
+      -webkit-transition: .3s ease;
+      -o-transition: .3s ease;
+      transition: .3s ease;
+      text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:hover {
+        text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:focus {
+        text-decoration: none; }
+      .uagb-post-grid .uagb-post__title a:active {
+        text-decoration: none; }
+  .uagb-post-grid .uagb-post-grid-byline {
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: 1px;
+    margin-bottom: 15px; }
+  .uagb-post-grid .uagb-post__author,
+  .uagb-post-grid .uagb-post__date,
+  .uagb-post-grid .uagb-post__author {
+    display: inline-block;
+    word-break: break-all; }
+    .uagb-post-grid .uagb-post__author:not(:last-child):after,
+    .uagb-post-grid .uagb-post__date:not(:last-child):after,
+    .uagb-post-grid .uagb-post__author:not(:last-child):after {
+      content: "\B7";
+      vertical-align: middle;
+      margin: 0 5px;
+      line-height: 1; }
+  .uagb-post-grid .uagb-post__author a {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+    .uagb-post-grid .uagb-post__author a:hover {
+      color: inherit;
+      -webkit-box-shadow: 0 -1px 0 inset;
+              box-shadow: 0 -1px 0 inset; }
+  .uagb-post-grid .uagb-post__excerpt {
+    margin-bottom: 25px; }
+  .uagb-post-grid .uagb-post__text p {
+    margin: 0 0 15px 0; }
+    .uagb-post-grid .uagb-post__text p:last-of-type {
+      margin-bottom: 0; }
+  .uagb-post-grid .uagb-post__cta {
+    border: 1px solid #333333;
+    display: inline-block; }
+  .uagb-post-grid .uagb-post__link {
+    display: inline-block;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    -webkit-transition: .3s ease;
+    -o-transition: .3s ease;
+    transition: .3s ease;
+    font-weight: bold;
+    color: inherit;
+    text-decoration: none;
+    padding: 5px 10px; }
+  .uagb-post-grid .uagb-post__excerpt div + p {
+    margin-top: 15px; }
+  .uagb-post-grid .uagb-post__excerpt p {
+    color: inherit; }
+  .uagb-post-grid .is-list article {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-rows: 1fr;
+    grid-gap: 0 2em; }
+    .uagb-post-grid .is-list article:not(:last-child) {
+      margin-bottom: 5%;
+      padding-bottom: 5%; }
+    @media only screen and (min-width: 600px) {
+      .uagb-post-grid .is-list article:not(:last-child) {
+        border-bottom: solid 1px #eee; } }
+    @media only screen and (max-width: 600px) {
+      .uagb-post-grid .is-list article {
+        grid-template-columns: 1fr; } }
+  .uagb-post-grid .is-list .uagb-post__image {
+    margin-bottom: 0; }
+    @media only screen and (max-width: 600px) {
+      .uagb-post-grid .is-list .uagb-post__image {
+        margin-bottom: 5%; } }
+  .uagb-post-grid .is-list .no-thumb .uagb-post__text {
+    grid-column: span 2; }

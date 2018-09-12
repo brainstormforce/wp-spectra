@@ -10,3 +10,4 @@
  */
 
 import './blocks/advanced-heading/block.js';
+import './blocks/post-grid/block.js';

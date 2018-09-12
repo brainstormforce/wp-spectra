@@ -58,11 +58,21 @@ class UAGB_Init_Blocks {
 	function block_assets() {
 		// Styles.
 		wp_enqueue_style(
-			'uabg-block-css', // Handle.
+			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-masonry', // Handle.
+			UAGB_URL . 'assets/lib/isotope.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 	} // End function editor_assets().
 
 	/**
@@ -73,7 +83,7 @@ class UAGB_Init_Blocks {
 	function editor_assets() {
 		// Scripts.
 		wp_enqueue_script(
-			'uabg-block-editor-js', // Handle.
+			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 			UAGB_VER,
@@ -82,11 +92,12 @@ class UAGB_Init_Blocks {
 
 		// Styles.
 		wp_enqueue_style(
-			'uabg-block-editor-css', // Handle.
+			'uagb-block-editor-css', // Handle.
 			UAGB_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
 	} // End function editor_assets().
 
 }
