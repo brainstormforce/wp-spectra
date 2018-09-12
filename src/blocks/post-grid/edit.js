@@ -92,8 +92,6 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
-
-		console.log(this);
 		const {
 			attributes,
 			categoriesList,
@@ -363,7 +361,7 @@ class UAGBPostGrid extends Component {
 					/>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
 			</Fragment>
 		);
 	}

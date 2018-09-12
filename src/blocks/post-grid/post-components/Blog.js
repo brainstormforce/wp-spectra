@@ -13,7 +13,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts } = this.props;
+		const { attributes, className, latestPosts, blogID } = this.props;
 
 		const {
 			displayPostDate,
@@ -58,6 +58,7 @@ class Blog extends React.Component {
 						className,
 						'uagb-post-grid',
 					) }
+					data-blog-id={blogID}
 				>
 					<Masonry
 						className={ classnames( {

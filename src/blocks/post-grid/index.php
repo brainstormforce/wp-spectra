@@ -9,7 +9,7 @@
 /**
  * Renders the post grid block on server.
  */
-function uagb_blocks_render_block_core_latest_posts( $attributes ) {
+function uagb_blocks_render_block_core_latest_posts( $attributes, $content ) {
 
 	$query_args = array(
 		'posts_per_page' => $attributes['postsToShow'],
@@ -19,6 +19,8 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		'category__in' => $attributes['categories'],
 		'ignore_sticky_posts' => 1
 	);
+
+	var_dump($content);
 
 	//echo '<pre>'; print_r( $attributes ); echo '</pre>';
 
@@ -42,9 +44,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	</div>
 	<script type="text/javascript">
 		( function( $ ) {
-			console.log($( '.is-masonry' ));
 			$( '.is-masonry' ).isotope();
-
 		} )( jQuery );
 	</script>
 
