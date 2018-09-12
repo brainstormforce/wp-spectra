@@ -368,7 +368,7 @@ class UAGBPostGrid extends Component {
 				isActive: postLayout === 'grid',
 			},
 			{
-				icon: 'masonry-view',
+				icon: 'grid-view',
 				title: __( 'Masonry View' ),
 				onClick: () => setAttributes( { postLayout: 'masonry' } ),
 				isActive: postLayout === 'masonry',
@@ -388,6 +388,8 @@ class UAGBPostGrid extends Component {
 		}
 
 		const LayoutTag = layoutTag;
+
+		console.log(LayoutTag);
 
 		return (
 			<Fragment>
