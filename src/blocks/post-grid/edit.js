@@ -104,6 +104,7 @@ class UAGBPostGrid extends Component {
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
+			imgSize,
 			displayPostLink,
 			align,
 			postLayout,
@@ -157,6 +158,17 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
+					<SelectControl
+                        label={ __( 'Image Sizes' ) }
+                        value={ imgSize }
+                        onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+                        options={ [
+                            { value: 'thumbnail', label: __( 'Thumbnail' ) },
+                            { value: 'medium', label: __( 'Medium' ) },
+                            { value: 'medium_large', label: __( 'Medium Large' ) },
+                            { value: 'large', label: __( 'Large' ) },
+                        ] }
+                    />
 				</PanelBody>
 				<PanelBody title={ __( 'Title' ) }>
 					<PanelColor

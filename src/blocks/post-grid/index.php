@@ -9,7 +9,7 @@
 /**
  * Renders the post grid block on server.
  */
-function uagb_blocks_render_block_core_latest_posts( $attributes, $content ) {
+function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 
 	$query_args = array(
 		'posts_per_page' => $attributes['postsToShow'],
@@ -19,8 +19,6 @@ function uagb_blocks_render_block_core_latest_posts( $attributes, $content ) {
 		'category__in' => $attributes['categories'],
 		'ignore_sticky_posts' => 1
 	);
-
-	var_dump($content);
 
 	//echo '<pre>'; print_r( $attributes ); echo '</pre>';
 
@@ -95,6 +93,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'displayPostImage' => array(
 				'type' => 'boolean',
 				'default' => true,
+			),
+			'imgSize' => array(
+				'type' => 'string',
+				'default' => 'large',
 			),
 			'displayPostLink' => array(
 				'type' => 'boolean',
@@ -288,7 +290,7 @@ function uagb_render_image( $attributes ) {
 	?>
 	<div class='uagb-post__image'>
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
-			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), 'full' ); ?>
+			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
