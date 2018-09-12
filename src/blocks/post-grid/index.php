@@ -16,67 +16,54 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		'post_status' => 'publish',
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
-		'tax_query' => [
-			'taxonomy' => 'category',
-			'field'    => 'slug',
-			'terms'    => $attributes['categories'],
-			'operator' => 'IN',
-		]
+		'category__in' => $attributes['categories'],
+		'ignore_sticky_posts' => 1
 	);
+
+	//echo '<pre>'; print_r( $attributes ); echo '</pre>';
 
 	$query = new \WP_Query( $query_args );
 
-	$list_items_markup = '';
-
 	ob_start();
+	?>
 
-	while ( $query->have_posts() ) {
+	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?>">
 
-		$query->the_post();
+		<div class="uagb-post__items uagb-post__columns-<?php echo $attributes['columns']; ?> is-<?php echo $attributes['postLayout']; ?>">
 
-		include 'single.php';
-	}
+		<?php
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				include 'single.php';
+			}
+			wp_reset_postdata();
+		?>
+		</div>
+	</div>
+	<script type="text/javascript">
+		( function( $ ) {
+			console.log($( '.is-masonry' ));
+			$( '.is-masonry' ).isotope();
 
-	wp_reset_postdata();
-	
-	$list_items_markup .= ob_get_clean();
+		} )( jQuery );
+	</script>
 
-	// Build the classes
-	$class = "uagb-post-grid align{$attributes['align']}";
-
-	if ( isset( $attributes['className'] ) ) {
-		$class .= ' ' . $attributes['className'];
-	}
-	
-	$grid_class = 'uagb-post__items';
-
-	$grid_class .= ' is-' . $attributes['postLayout'];
-
-	if ( isset( $attributes['columns'] ) && 'list' !== $attributes['postLayout'] ) {
-		$grid_class .= ' uagb-post__columns-' . $attributes['columns'];
-	}
+	<?php
 
 	// Output the post markup
-	$block_content = sprintf(
-		'<div class="%1$s"><div class="%2$s">%3$s</div></div>',
-		esc_attr( $class ),
-		esc_attr( $grid_class ),
-		$list_items_markup
-	);
-
-	return $block_content;
+	return ob_get_clean();
 }
 
 /**
  * Registers the `core/latest-posts` block on server.
  */
 function uagb_blocks_register_block_core_latest_posts() {
-	
+
 	// Check if the register function exists
-	/*if ( ! function_exists( 'register_block_type' ) ) {
+	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
-	}*/
-	
+	}
+
 	register_block_type( 'uagb/post-grid', array(
 		'attributes' => array(
 			'categories' => array(
@@ -218,13 +205,24 @@ function uagb_blocks_register_rest_fields() {
 			'schema' => null,
 		)
 	);
-	
+
 	// Add author info
 	register_rest_field(
 		'post',
 		'author_info',
 		array(
 			'get_callback' => 'uagb_blocks_get_author_info',
+			'update_callback' => null,
+			'schema' => null,
+		)
+	);
+
+	// Add author info
+	register_rest_field(
+		'post',
+		'comment_info',
+		array(
+			'get_callback' => 'uagb_blocks_get_comment_info',
 			'update_callback' => null,
 			'schema' => null,
 		)
@@ -263,16 +261,26 @@ function uagb_blocks_get_image_src_square( $object, $field_name, $request ) {
 function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 	// Get the author name
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
-	
+
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
 
 	// Get the comments link
 	$comments_count = wp_count_comments( $object['id'] );
 	$author_data['comments'] = $comments_count->total_comments;
-	
+
 	// Return the author data
 	return $author_data;
+}
+
+/**
+ * Get comment info for the rest field
+ */
+function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
+
+	// Get the comments link
+	$comments_count = wp_count_comments( $object['id'] );
+	return $comments_count->total_comments;
 }
 
 function uagb_render_image( $attributes ) {
@@ -280,7 +288,7 @@ function uagb_render_image( $attributes ) {
 	?>
 	<div class='uagb-post__image'>
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
-			<?php echo wp_get_attachment_image( get_post_thumbnail_id() ); ?>
+			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), 'full' ); ?>
 		</a>
 	</div>
 	<?php

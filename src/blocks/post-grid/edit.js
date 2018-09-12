@@ -5,18 +5,9 @@
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
-import moment from 'moment';
-import classnames from 'classnames';
-import { stringify } from 'querystringify';
 
 // Import Post Components
-import FeaturedImage from "./post-components/FeaturedImage";
-import Title from "./post-components/Title";
-import Meta from "./post-components/Meta";
-import Excerpt from "./post-components/Excerpt";
-import Button from "./post-components/Button";
-
-import Masonry from 'react-masonry-component';
+import Blog from "./post-components/Blog";
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -100,13 +91,9 @@ class UAGBPostGrid extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
-	test() {
-		alert('Function from index.html');
-	}
-
 	render() {
 
-		{/*const latestPosts = this.props.latestPosts.data;*/}
+		console.log(this);
 		const {
 			attributes,
 			categoriesList,
@@ -142,21 +129,13 @@ class UAGBPostGrid extends Component {
 			ctaBgColor
 		} = attributes;
 
-		// Thumbnail options
-		const imageCropOptions = [
-			{ value: 'landscape', label: __( 'Landscape' ) },
-			{ value: 'square', label: __( 'Square' ) },
-		];
-
-		const isLandscape = imageCrop === 'landscape';
-
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'Query' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						categoriesList={ get( categoriesList, [ 'data' ], {} ) }
+						categoriesList={ categoriesList }
 						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
@@ -338,6 +317,7 @@ class UAGBPostGrid extends Component {
 		);
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+
 		if ( ! hasPosts ) {
 			return (
 				<Fragment>
@@ -355,11 +335,6 @@ class UAGBPostGrid extends Component {
 			);
 		}
 
-		// Removing posts from display should be instant.
-		const displayPosts = latestPosts.length > postsToShow ?
-			latestPosts.slice( 0, postsToShow ) :
-			latestPosts;
-
 		const layoutControls = [
 			{
 				icon: 'grid-view',
@@ -373,23 +348,7 @@ class UAGBPostGrid extends Component {
 				onClick: () => setAttributes( { postLayout: 'masonry' } ),
 				isActive: postLayout === 'masonry',
 			},
-			{
-				icon: 'list-view',
-				title: __( 'List View' ),
-				onClick: () => setAttributes( { postLayout: 'list' } ),
-				isActive: postLayout === 'list',
-			},
 		];
-
-		var layoutTag = 'div';
-
-		if( postLayout == 'masonry' ) {
-			layoutTag = 'Masonry';
-		}
-
-		const LayoutTag = layoutTag;
-
-		console.log(LayoutTag);
 
 		return (
 			<Fragment>
@@ -404,68 +363,18 @@ class UAGBPostGrid extends Component {
 					/>
 					<Toolbar controls={ layoutControls } />
 				</BlockControls>
-				<div
-					className={ classnames(
-						this.props.className,
-						'uagb-post-grid',
-					) }
-				>
-					<Masonry
-						className={ classnames( {
-							'is-masonry': postLayout === 'masonry',
-							[ `uagb-post__columns-${ columns }` ]: postLayout !== 'list',
-							'uagb-post__items' : 'uagb-post__items'
-						} ) }
-						style={{
-							marginRight: -rowGap/2,
-							marginLeft: -rowGap/2,
-						}}
-					>
-						{ displayPosts.map( ( post, i ) =>
-							<article
-								key={ i }
-								className={ classnames(
-									post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
-								) }
-								style={{
-									paddingRight: rowGap/2,
-									paddingLeft: rowGap/2,
-									marginBottom: columnGap
-								}}
-							>
-								<div
-									className={ 'uagb-post__inner-wrap' }
-									style={{ background: bgColor }}
-								>
-									<FeaturedImage post={post} attributes={attributes} />
-
-									<div
-										className={ 'uagb-post__text' }
-										style={{
-											padding: contentPadding
-										}}
-									>
-										<Title post={post} attributes={attributes} />
-										<Meta post={post} attributes={attributes} />
-										<Excerpt post={post} attributes={attributes} />
-										<Button post={post} attributes={attributes} />
-									</div>
-								</div>
-							</article>
-						) }
-					</Masonry>
-					{/*var iso = new Isotope( '.is-masonry' );*/}
-				</div>
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} />
 			</Fragment>
 		);
 	}
 }
 
 export default withSelect( ( select, props ) => {
-	const { postsToShow, order, orderBy } = props.attributes;
+	const { categories, postsToShow, order, orderBy } = props.attributes;
 	const { getEntityRecords } = select( 'core' );
 	const latestPostsQuery = pickBy( {
-		order,
+		categories: categories,
+		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
 	}, ( value ) => ! isUndefined( value ) );

@@ -64,6 +64,15 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-masonry', // Handle.
+			UAGB_URL . 'assets/lib/isotope.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 	} // End function editor_assets().
 
 	/**
@@ -88,7 +97,7 @@ class UAGB_Init_Blocks {
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
-		
+
 	} // End function editor_assets().
 
 }
