@@ -6,7 +6,7 @@ class Meta extends React.Component {
 
 		return (
 
-			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor }}>
+			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor, marginBottom: attributes.metaBottomSpace }}>
 				{ attributes.displayPostAuthor && post.author_info.display_name &&
 					<div
 						className='uagb-post__author fa fa-user'

@@ -13,41 +13,25 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts } = this.props;
+		const { attributes, className, latestPosts, blogID } = this.props;
 
 		const {
-			displayPostDate,
-			displayPostComment,
-			displayPostExcerpt,
-			displayPostAuthor,
 			displayPostImage,
-			displayPostLink,
-			align,
 			postLayout,
 			columns,
-			order,
-			orderBy,
-			categories,
 			postsToShow,
-			width,
-			imageCrop,
 			rowGap,
 			columnGap,
 			bgColor,
 			contentPadding,
-			titleColor,
-			titleTag,
-			titleFontSize,
-			metaColor,
-			excerptColor,
-			ctaColor,
-			ctaBgColor
 		} = attributes;
 
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
+
+		console.log(displayPosts);
 
 		if( postLayout == 'masonry' ) {
 			{/* Masonry Layout */}
@@ -58,6 +42,7 @@ class Blog extends React.Component {
 						className,
 						'uagb-post-grid',
 					) }
+					data-blog-id={blogID}
 				>
 					<Masonry
 						className={ classnames( {

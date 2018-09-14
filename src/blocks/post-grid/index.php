@@ -42,9 +42,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	</div>
 	<script type="text/javascript">
 		( function( $ ) {
-			console.log($( '.is-masonry' ));
 			$( '.is-masonry' ).isotope();
-
 		} )( jQuery );
 	</script>
 
@@ -96,6 +94,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'boolean',
 				'default' => true,
 			),
+			'imgSize' => array(
+				'type' => 'string',
+				'default' => 'large',
+			),
 			'displayPostLink' => array(
 				'type' => 'boolean',
 				'default' => true,
@@ -123,10 +125,6 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'orderBy'  => array(
 				'type' => 'string',
 				'default' => 'date',
-			),
-			'imageCrop'  => array(
-				'type' => 'string',
-				'default' => 'landscape',
 			),
 			'rowGap' => array(
 				'type' => 'number',
@@ -172,6 +170,18 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 20,
 			),
+			'titleBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'metaBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'excerptBottomSpace' => array(
+				'type' => 'number',
+				'default' => 25,
+			),
 		),
 		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );
@@ -184,23 +194,12 @@ add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
  * Create API fields for additional info
  */
 function uagb_blocks_register_rest_fields() {
-	// Add landscape featured image source
+	// Add featured image source
 	register_rest_field(
 		'post',
 		'featured_image_src',
 		array(
-			'get_callback' => 'uagb_blocks_get_image_src_landscape',
-			'update_callback' => null,
-			'schema' => null,
-		)
-	);
-
-	// Add square featured image source
-	register_rest_field(
-		'post',
-		'featured_image_src_square',
-		array(
-			'get_callback' => 'uagb_blocks_get_image_src_square',
+			'get_callback' => 'uagb_blocks_get_image_src',
 			'update_callback' => null,
 			'schema' => null,
 		)
@@ -217,12 +216,23 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 
-	// Add author info
+	// Add comment info
 	register_rest_field(
 		'post',
 		'comment_info',
 		array(
 			'get_callback' => 'uagb_blocks_get_comment_info',
+			'update_callback' => null,
+			'schema' => null,
+		)
+	);
+
+	// Add comment info
+	register_rest_field(
+		'post',
+		'excerpt',
+		array(
+			'get_callback' => 'uagb_blocks_get_excerpt',
 			'update_callback' => null,
 			'schema' => null,
 		)
@@ -234,25 +244,31 @@ add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 /**
  * Get landscape featured image source for the rest field
  */
-function uagb_blocks_get_image_src_landscape( $object, $field_name, $request ) {
-	$feat_img_array = wp_get_attachment_image_src(
+function uagb_blocks_get_image_src( $object, $field_name, $request ) {
+	$feat_img_array['large'] = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'uagb-post-grid-landscape',
+		'large',
 		false
 	);
-	return $feat_img_array[0];
-}
 
-/**
- * Get square featured image source for the rest field
- */
-function uagb_blocks_get_image_src_square( $object, $field_name, $request ) {
-	$feat_img_array = wp_get_attachment_image_src(
+	$feat_img_array['medium'] = wp_get_attachment_image_src(
 		$object['featured_media'],
-		'uagb-post-grid-square',
+		'medium',
 		false
 	);
-	return $feat_img_array[0];
+
+	$feat_img_array['medium_large'] = wp_get_attachment_image_src(
+		$object['featured_media'],
+		'medium_large',
+		false
+	);
+
+	$feat_img_array['thumbnail'] = wp_get_attachment_image_src(
+		$object['featured_media'],
+		'thumbnail',
+		false
+	);
+	return $feat_img_array;
 }
 
 /**
@@ -264,10 +280,6 @@ function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
-
-	// Get the comments link
-	$comments_count = wp_count_comments( $object['id'] );
-	$author_data['comments'] = $comments_count->total_comments;
 
 	// Return the author data
 	return $author_data;
@@ -283,12 +295,24 @@ function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
 	return $comments_count->total_comments;
 }
 
+/**
+ * Get excerpt for the rest field
+ */
+function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
+
+	$excerpt = wp_trim_words( get_the_excerpt( $object['id'] ) );
+	if ( ! $excerpt ) {
+		$excerpt = null;
+	}
+	return $excerpt;
+}
+
 function uagb_render_image( $attributes ) {
 
 	?>
 	<div class='uagb-post__image'>
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
-			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), 'full' ); ?>
+			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
@@ -296,7 +320,7 @@ function uagb_render_image( $attributes ) {
 
 function uagb_render_title( $attributes ) {
 	?>
-	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title entry-title" style="<?php echo 'color: ' . $attributes['titleColor'] . ';font-size: ' . $attributes['titleFontSize']; ?>">
+	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title entry-title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php the_title(); ?></a>
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
@@ -305,7 +329,7 @@ function uagb_render_title( $attributes ) {
 function uagb_render_meta( $attributes ) {
 	global $post;
 	?>
-	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor']; ?>">
+	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>">
 		<div class="uagb-post__author fa fa-user" style="color: rgb(119, 119, 119);">
 			<?php the_author_posts_link(); ?>
 		</div>
@@ -322,7 +346,7 @@ function uagb_render_excerpt( $attributes ) {
 		$excerpt = null;
 	}
 	?>
-	<div class="uagb-post__excerpt" style="<?php echo $attributes['excerptColor']; ?>">
+	<div class="uagb-post__excerpt" style="<?php echo $attributes['excerptColor'] . '; margin-bottom:' . $attributes['excerptBottomSpace'] . 'px;'; ?>">
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
