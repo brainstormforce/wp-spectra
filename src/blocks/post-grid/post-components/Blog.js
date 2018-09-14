@@ -31,6 +31,8 @@ class Blog extends React.Component {
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
 
+		console.log(displayPosts);
+
 		if( postLayout == 'masonry' ) {
 			{/* Masonry Layout */}
 

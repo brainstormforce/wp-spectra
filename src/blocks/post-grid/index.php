@@ -226,6 +226,17 @@ function uagb_blocks_register_rest_fields() {
 			'schema' => null,
 		)
 	);
+
+	// Add comment info
+	register_rest_field(
+		'post',
+		'excerpt',
+		array(
+			'get_callback' => 'uagb_blocks_get_excerpt',
+			'update_callback' => null,
+			'schema' => null,
+		)
+	);
 }
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
@@ -270,10 +281,6 @@ function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 	// Get the author link
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
 
-	// Get the comments link
-	$comments_count = wp_count_comments( $object['id'] );
-	$author_data['comments'] = $comments_count->total_comments;
-
 	// Return the author data
 	return $author_data;
 }
@@ -286,6 +293,18 @@ function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
 	// Get the comments link
 	$comments_count = wp_count_comments( $object['id'] );
 	return $comments_count->total_comments;
+}
+
+/**
+ * Get excerpt for the rest field
+ */
+function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
+
+	$excerpt = wp_trim_words( get_the_excerpt( $object['id'] ) );
+	if ( ! $excerpt ) {
+		$excerpt = null;
+	}
+	return $excerpt;
 }
 
 function uagb_render_image( $attributes ) {
