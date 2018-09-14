@@ -13,9 +13,10 @@ class Title extends React.Component {
 
 			<Tag
 				className={ 'uagb-post__title entry-title' }
-				style={{ 
+				style={{
 					color: attributes.titleColor,
-					fontSize: attributes.titleFontSize
+					fontSize: attributes.titleFontSize,
+					marginBottom: attributes.titleBottomSpace
 				}}
 			>
 				<a href={ post.link } target="_blank" rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
