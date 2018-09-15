@@ -114,7 +114,7 @@ class UAGBTimeline extends Component {
     }
  
     render() {   
-        
+        console.log(this.props.clientId);
         //Get id
         this.uagbGetId();
        
@@ -716,9 +716,7 @@ class UAGBTimeline extends Component {
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
             align_class        = '',
-            align_item_class   = '',            
-            seperator_margin   = parseInt(separatorwidth/2),
-            vert_per           = parseInt((parseInt(verticalSpace) * (75))/100);        
+            align_item_class   = '';           
 
         const isLandscape = imageCrop === 'landscape';
 

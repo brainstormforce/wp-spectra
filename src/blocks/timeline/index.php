@@ -47,215 +47,289 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
     $tm_block_id        = $attributes['tm_block_id'];
-    $borderwidth        = $attributes['borderwidth'];
+    $borderwidth        = $attributes['borderwidth'];    
+	$headSpace 			= $attributes['headSpace'];   
+	$borderwidth 		= $attributes['borderwidth'];   
+	$connectorBgsize 	= $attributes['connectorBgsize'];   
+	$authorSpace 		= $attributes['authorSpace'];   
+	$dateBottomspace 	= $attributes['dateBottomspace'];   
+	$displayPostDate 	= $attributes['displayPostDate'];   
+	$displayPostExcerpt = $attributes['displayPostExcerpt'];   
+	$displayPostAuthor 	= $attributes['displayPostAuthor'];   
+	$displayPostImage 	= $attributes['displayPostImage'];   
+	$displayPostLink 	= $attributes['displayPostLink'];   
+	$align 				= $attributes['align'];   
+	$icon 				= $attributes['icon'];   
+	$iconColor 			= $attributes['iconColor'];   
+	$authorColor 		= $attributes['authorColor'];   
+	$dateColor 			= $attributes['dateColor'];   
+	$dateFontsize 		= $attributes['dateFontsize'];   
+	$authorFontsize 	= $attributes['authorFontsize'];   
+	$iconSize 			= $attributes['iconSize'];   
+	$exerptLength 		= $attributes['exerptLength'];   
+	$borderRadius 		= $attributes['borderRadius'];   
+	$bgPadding 			= $attributes['bgPadding'];   
 	$align_class        = '';
     $align_item_class   = '';
     $arrow_align_class  = 'uagb-top-arrow';
     $seperator_margin   =  (int)($separatorwidth/2);
     $vert_per           =  (int)($verticalSpace * 75)/100;	
 
-   	if( $arrowlinAlignment == 'center' ){
-        $arrow_align_class = 'uagb-center-arrow';
-        $vert_per = (int)(((int)($verticalSpace) * (int)(40))/100);            
-    }else if( $arrowlinAlignment == 'bottom' ){
-        $arrow_align_class = 'uagb-bottom-arrow';
-        $vert_per = (int)(((int)($verticalSpace) * (int)(12))/100);
-    } 
+   	/* Arrow position */
+        $arrow_align_class  = 'uagb-timeline-arrow-top';
+        if( $arrowlinAlignment == 'center' ){
+            $arrow_align_class = 'uagb-timeline-arrow-center';
+        }else if( $arrowlinAlignment == 'bottom' ){
+            $arrow_align_class = 'uagb-timeline-arrow-bottom';
+        } 
 
-	if( $timelinAlignment == 'left' ){
-        $align_class = 'uagb-timeline uagb-tl-left ' . $arrow_align_class;
-        $align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-    }else if( $timelinAlignment == 'right'){
-        $align_class = 'uagb-timeline uagb-tl-right '. $arrow_align_class;
-        $align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-    }else{
-        $align_class = 'uagb-timeline uagb-tl-center '. $arrow_align_class;
-        $align_item_class = '';
-    }
+        /* Alignmnet */
+        $align_class = 'uagb-timeline--center '. $arrow_align_class;
+        if( $timelinAlignment == 'left' ){
+            $align_class = 'uagb-timeline--left ' . $arrow_align_class;
+        }else if( $timelinAlignment == 'right' ){
+            $align_class = 'uagb-timeline--right '. $arrow_align_class;
+        }     
+
+        $responsive_class = 'uagb-timeline-responsive-tablet';
+        $tl_class = $tm_block_id .' '.$align_class.' '.$responsive_class;
     
-    /*CSS*/
-	$front_style = '.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-left .uagb-timeline-content::before {'.
-		'  border-color: transparent transparent transparent '.$backgroundColor.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-timeline::after{'.
-		'background-color:'.$separatorColor.';'.
-		'width:'.$separatorwidth.'px'.';'.
-		'margin-left:-'.$seperator_margin.'px'.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-timeline-container::after{'.
-		'background-color:'.$separatorBg.';'.
-		'border-color:'.$separatorBorder.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-right .uagb-timeline-content::before {'.
-		'  border-color: transparent '.$backgroundColor.' transparent transparent'.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-left {'.
-		' padding-right:'.$horizontalSpace.'px'.
-		'}'. 
-		'.'.$tm_block_id.' '.'.uagb-timeline-container.uagb-tl-item-right {'.
-		' padding-left:'.$horizontalSpace.'px'.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-timeline-container {'.
-		' padding-top:'.$verticalSpace.'px'.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-top-arrow .uagb-timeline-container:after{'.
-		' top:calc(20% + '.$vert_per.'px)!important'.
-		'}'.
-		'.'.$tm_block_id.' '.'.uagb-bottom-arrow .uagb-timeline-container:after{'.
-		' top:calc(80% + '.$vert_per.'px)!important'.
-		'}'. 
-		'.'.$tm_block_id.' '.'.uagb-center-arrow .uagb-timeline-container:after{'.
-		' top:calc(50% + '.$vert_per.'px)!important'.
-		'}';
+    /* Style for elements */
+    $front_style = '.'. $tm_block_id .'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,    			                
+                    .'. $tm_block_id .'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{
+                    	border-left-color:'.$backgroundColor.
+                    '}
+                    .'. $tm_block_id .'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,
+                    .'. $tm_block_id .'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{
+                    	border-right-color:'.$backgroundColor.
+                    '}
+                    .'. $tm_block_id .' .uagb-timeline__line__inner{
+                        background-color:'.$separatorColor.';'.
+                    '}
+                    .'. $tm_block_id .' .uagb-timeline__line{
+                        background-color:'.$separatorColor.';
+                        width:'.$separatorwidth.'px'.';                     
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--right .uagb-timeline__line{
+                        right: calc( '.$connectorBgsize.'px / 2 );
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--left .uagb-timeline__line{
+                        left: calc( '.$connectorBgsize.'px / 2 );
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--center .uagb-timeline__line{
+                        right: calc( '.$connectorBgsize.'px / 2 );
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-marker{
+                      background-color:'.$separatorBg.';
+                      min-height:'.$connectorBgsize.'px;
+                      min-width:'.$connectorBgsize.'px;
+                      line-height:'.$connectorBgsize.'px;
+                      border:'.$borderwidth.'px solid'.$separatorBorder.';
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,
+                    .'. $tm_block_id .'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,
+                    .'. $tm_block_id .'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,
+                    .'. $tm_block_id .'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{
+                        height:'.$connectorBgsize.'px
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--center .uagb-timeline-marker {
+                    	margin-left:'.$horizontalSpace.'px;
+                    	margin-right:'.$horizontalSpace.'px
+                    } 
+                    .'. $tm_block_id .' .uagb-timeline-field:not(:last-child){
+                    	margin-bottom:'.$verticalSpace.'px;
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-date-hide.uagb-date-inner{
+                    	margin-bottom:'.$dateBottomspace.'px;
+                    	color:'.$dateColor.';
+                    	font-size:'.$dateFontsize.'px;
+                    }
+                    .'. $tm_block_id .'.uagb-timeline--left .uagb-day-new.uagb-day-left{
+                    	margin-left:'.$horizontalSpace.'px;
+                    	color:'.$dateColor.';
+                    	font-size:'.$dateFontsize.'px;
+                    } 
+                    .'. $tm_block_id .'.uagb-timeline--right .uagb-day-new.uagb-day-right{
+                    	 margin-right:'.$horizontalSpace.'px;
+                    	color:'.$dateColor.';
+                    	font-size:'.$dateFontsize.'px;
+                    }                       
+                    .'. $tm_block_id .' .uagb-date-new{
+                    	font-size:'.$dateFontsize.'px;
+                    	color:'.$dateColor.';
+                    }
+                    .'. $tm_block_id .' .uagb-events-inner-new{
+                    	border-radius:'.$borderRadius.'px;
+                    	padding:'.$bgPadding.'px;
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-main .timeline-icon-new{
+                    	font-size:'.$iconSize.'px;
+                    	color:'.$iconColor.';
+                    }
+                    .'. $tm_block_id .' .uagb-block-post-grid-author{
+                    	margin-bottom:'.$authorSpace.'px;
+                    	color:'.$authorColor.';
+                    	font-size:'.$authorFontsize.'px;
+                    }';
+
+    		$content_align_class = '';
+            $day_align_class = '';
+
+            if( $timelinAlignment == 'left' ){
+                $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                $day_align_class = 'uagb-day-new uagb-day-left';
+            }else if( $timelinAlignment == 'right' ){
+                $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                $day_align_class = 'uagb-day-new uagb-day-right';
+            }     
+            
+            $display_inner_date = false;
 
   	$list_items_markup  = '';	
 	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $className ) );
-	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main %1$s" >',esc_attr($tm_block_id) );
+
+	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $tl_class ) );
+	$list_items_markup .= '<div class = "uagb-timeline-wrapper" >';	
 	$list_items_markup .= '<style class="uagb-timeline-css" type="text/css">'.$front_style.'</style>';
-
-
-	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $align_class ) );
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline-main" >');
 		
-		foreach ( $recent_posts as $index => $post ) {
-			
-			// Get the post ID
-			$post_id = $post->ID;	
-			// Get the post thumbnail 
-			$post_thumb_id = get_post_thumbnail_id( $post_id );
-
-			if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-				$post_thumb_class = 'has-thumb';
-			} else {
-				$post_thumb_class = 'no-thumb';
-			}
-
-			$second_index = 'uagb-'.$index;
-            if( $timelinAlignment == 'center'){
-                if( $index % 2 == '0'){
-                    $align_item_class = 'uagb-timeline-container uagb-tl-item-left';
-                }else{
-                    $align_item_class = 'uagb-timeline-container uagb-tl-item-right';
-                }  
-            }  
-            $list_items_markup .= sprintf( '<div key = "%1$s" class = "%2$s" >',esc_attr( $index ),esc_attr( $align_item_class ) );
-			$list_items_markup .= sprintf( '<div key = "%1$s" class = "uagb-timeline-content" style= "background-color:%2$s">',esc_attr( $second_index ),esc_attr( $backgroundColor) );
-			
-			// Start the markup for the post
-			$list_items_markup .= sprintf(
-				'<article class="%1$s">',
-				esc_attr( $post_thumb_class )
-			);
-					// Get the featured image
-		if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-			if( $attributes['imageCrop'] === 'landscape' ) {
-				$post_thumb_size = 'ab-block-post-grid-landscape';
-			} else {
-				$post_thumb_size = 'ab-block-post-grid-square';
-			}
-			
-			$list_items_markup .= sprintf( 
-				'<div class="ab-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
-				esc_url( get_permalink( $post_id ) ),
-				wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
-			);
-		}
-
-		// Wrap the text content
-		$list_items_markup .= sprintf(
-			'<div class="ab-block-post-grid-text">'
-		);
-
-		// Get the post title 
-		$title = get_the_title( $post_id );
-
-		if ( ! $title ) {
-			$title = __( 'Untitled' );
-		}
-
-		$list_items_markup .= sprintf(
-			'<h2 class="ab-block-post-grid-title" style="text-align:'.$headingAlign.';color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
-			esc_url( get_permalink( $post_id ) ),
-			esc_html( $title )
-		);
-
-		// Wrap the byline content
-		$list_items_markup .= sprintf(
-			'<div class="ab-block-post-grid-byline">'
-		);
-
-		// Get the post author
-		if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-			$list_items_markup .= sprintf(
-				'<div class="ab-block-post-grid-author"><a class="ab-text-link" href="%2$s">%1$s</a></div>',
-				esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-				esc_html( get_author_posts_url( $post->post_author ) )
-			);
-		}
+		if( empty($recent_posts) ){
+			$list_items_markup .= __( 'No posts found.' );
+		}else{
+			$list_items_markup .= sprintf( '<div class = "uagb-days uagb-timeline-infinite-load" >');
+			foreach ( $recent_posts as $index => $post ) {
+				// Get the post ID
+            	$post_id = $post->ID; 
+            	$second_index = 'uagb-'.$index;
+                if( $timelinAlignment == 'center'){
+                    $display_inner_date = true;
+                    if( $index % 2 == '0'){
+                        $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                        $day_align_class = 'uagb-day-new uagb-day-right';
+                    }else{
+                        $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                        $day_align_class = 'uagb-day-new uagb-day-left';
+                    }  
+                }
+                
+    	            $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
 				
-		// Get the post date
-		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-			$list_items_markup .= sprintf(
-				'<time datetime="%1$s" class="ab-block-post-grid-date">%2$s</time>',
-				esc_attr( get_the_date( 'c', $post_id ) ),
-				esc_html( get_the_date( '', $post_id ) )
-			);
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-field animate-border in-view" >');
+					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $content_align_class ) );
+					
+					// Icon
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-marker in-view-timeline-icon" >' );
+					$list_items_markup .= sprintf( '<i class = "%1$s" >',esc_attr( $icon_class ) );
+					$list_items_markup .= sprintf( '</i>');
+					$list_items_markup .= sprintf( '</div>'); // End of icon div.
+ 
+					//Day align fo center.
+					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $day_align_class ) );
+					$list_items_markup .= sprintf( '<div class = "uagb-events-new" style = "text-align:%1$s">',esc_attr( $align ));
+					$list_items_markup .= sprintf( '<div class = "uagb-events-inner-new" style= "background-color:%1$s" >',esc_attr( $backgroundColor ) );
+					
+					// Get the post date.
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-date-hide uagb-date-inner" >' );
+					if ( isset( $attributes['displayPostDate'] ) && $displayPostDate ) {
+		                $list_items_markup .= sprintf(
+		                    '<div datetime="%1$s" class="inner-date-new">%2$s</div>',
+		                    esc_attr( get_the_date( 'c', $post_id ) ),
+		                    esc_html( get_the_date( '', $post_id ) )
+		                );
+		            }
+					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-date-hide.	
+
+					// Meta Contnt.
+					$list_items_markup .= sprintf( '<div class = "uagb-content" >' );
+					
+					// Get the post thumbnail 
+					$post_thumb_id = get_post_thumbnail_id( $post_id );
+					if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
+						$post_thumb_class = 'has-thumb';
+					} else {
+						$post_thumb_class = 'no-thumb';
+					}
+
+					// Get the featured image
+					if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
+						if( $attributes['imageCrop'] === 'landscape' ) {
+							$post_thumb_size = 'ab-block-post-grid-landscape';
+						} else {
+							$post_thumb_size = 'ab-block-post-grid-square';
+						}
+						
+						$list_items_markup .= sprintf( 
+							'<div class="uagb-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+							esc_url( get_permalink( $post_id ) ),
+							wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
+						);
+					}
+
+					// Get the post title
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-heading-text" >');					 
+            		$title = get_the_title( $post_id );
+            		if ( ! $title ) {
+		                $title = __( 'Untitled' );
+		            }
+		            $list_items_markup .= sprintf(
+		                '<h2 class="uagb-timeline-heading" style="text-align:'.$headingAlign.';color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+		                esc_url( get_permalink( $post_id ) ),
+		                esc_html( $title )
+		            );
+					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-heading-text.					
+
+					// Get the post author
+		            if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+		                $list_items_markup .= sprintf(
+		                    '<div class="uagb-block-post-grid-author"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
+		                    esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
+		                    esc_html( get_author_posts_url( $post->post_author ) )
+		                );
+		            }
+
+		            // Get the excerpt
+		            $excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+
+		            if( empty( $excerpt ) ) {
+		                $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+		            }
+
+		            if ( ! $excerpt ) {
+		                $excerpt = null;
+		            }
+
+		            if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+						$list_items_markup .= sprintf( '<div class = "uagb-timeline-desc-content" style = "font-size:%1$spx;color:%2$s;margin-bottom:%3$spx" >', $subHeadFontSize, $subHeadingColor, $subHeadSpace);	 
+		                $list_items_markup .=  wp_kses_post( $excerpt );
+						$list_items_markup .= sprintf( '</div>'); // uagb-timeline-heading-text.					
+
+		            }
+
+					$list_items_markup .= sprintf( '</div>'); // End of uagb-content.					
+					
+
+					$list_items_markup .= sprintf( '</div>'); // End of uagb-evnts-inner-new.					
+					$list_items_markup .= sprintf( '</div>'); // End of uagb events new.
+					$list_items_markup .= sprintf( '</div>'); // End of day align class.
+
+					$list_items_markup .= sprintf( '</div>'); // End of content align class.				
+					$list_items_markup .= sprintf( '</div>'); // End of uagb-timline-field.
+			}
+
+			$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-infinite-load.
 		}
 
-		// Close the byline content
-		$list_items_markup .= sprintf(
-			'</div>'
-		);
+	// Line
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line" style = "top:0;bottom:288px;" >');
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line__inner" style = "height:1000px;" >');
+	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline__line__inner.
+	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline__line.
 
-		// Wrap the excerpt content
-		$list_items_markup .= sprintf(
-			'<div class="ab-block-post-grid-excerpt">'
-		);
 
-		// Get the excerpt
-		$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-
-		if( empty( $excerpt ) ) {
-			$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
-		}
-
-		if ( ! $excerpt ) {
-			$excerpt = null;
-		}
-
-		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-			$list_items_markup .=  wp_kses_post( $excerpt );
-		}
-
-		if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-			$list_items_markup .= sprintf(
-				'<p><a class="ab-block-post-grid-link ab-text-link" href="%1$s" rel="bookmark">%2$s</a></p>',
-				esc_url( get_permalink( $post_id ) ),
-				esc_html( $attributes['readMoreText'] )
-			);
-		}
-
-		// Close the excerpt content
-		$list_items_markup .= sprintf(
-			'</div>'
-		);
-
-		// Wrap the text content
-		$list_items_markup .= sprintf(
-			'</div>'
-		);
-
-		// Close the markup for the post
-		$list_items_markup .= "</article>\n";
-
-			$list_items_markup .= sprintf( '</div>');            
-			$list_items_markup .= sprintf( '</div>');            
-		}
-
-		$list_items_markup .= sprintf( '</div>');
-	
-
-	$list_items_markup .= sprintf( '</div>');
-	$list_items_markup .= sprintf( '</div>');
+	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-main.
+	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-wrapper. 
+	$list_items_markup .= sprintf( '</div>'); // En of tlclass.
+	$list_items_markup .= sprintf( '</div>'); // End of className.
 
 	return $list_items_markup;
 }
