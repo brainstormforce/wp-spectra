@@ -291,7 +291,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		            //var_dump($post_id);
 		            if( empty( $excerpt ) ) {
 		            	//var_dump($post->post_content);
-		                $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+		                $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, $exerptLength ) );
 		            }
 
 		            if ( ! $excerpt ) {
