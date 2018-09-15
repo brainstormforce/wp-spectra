@@ -198,7 +198,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		}else{
 			$list_items_markup .= sprintf( '<div class = "uagb-days uagb-timeline-infinite-load" >');
 			foreach ( $recent_posts as $index => $post ) {
-				// Get the post ID
+				// Get the post ID..
             	$post_id = $post->ID; 
             	$second_index = 'uagb-'.$index;
                 if( $timelinAlignment == 'center'){
