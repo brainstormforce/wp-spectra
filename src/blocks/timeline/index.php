@@ -313,7 +313,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 					}
 
 					//Arrow
-					$list_items_markup .= sprintf( '<div class = "uagb-block-post-link" ></div>');		 
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-arrow" ></div>');		 
 
 					$list_items_markup .= sprintf( '</div>'); // End of uagb-content.		
 					$list_items_markup .= sprintf( '</div>'); // End of uagb-evnts-inner-new.					
