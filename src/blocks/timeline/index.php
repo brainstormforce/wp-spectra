@@ -320,17 +320,20 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 					$list_items_markup .= sprintf( '</div>'); // End of uagb events new.
 					$list_items_markup .= sprintf( '</div>'); // End of day align class.
 
-					//Date time for center laout.
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-date-new" >');		 
-					// Get the post date
-					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-						$list_items_markup .= sprintf(
-							'<div datetime="%1$s" class="uagb-date-new">%2$s</div>',
-							esc_attr( get_the_date( 'c', $post_id ) ),
-							esc_html( get_the_date( '', $post_id ) )
-						);
-					}
-					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-date-new.
+                    if( $timelinAlignment == 'center'){
+    					//Date time for center laout.
+    					$list_items_markup .= sprintf( '<div class = "uagb-timeline-date-new" >');		 
+    					// Get the post date
+    					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+    						$list_items_markup .= sprintf(
+    							'<div datetime="%1$s" class="uagb-date-new">%2$s</div>',
+    							esc_attr( get_the_date( 'c', $post_id ) ),
+    							esc_html( get_the_date( '', $post_id ) )
+    						);
+    					}
+    					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-date-new.
+                    }
+
 					$list_items_markup .= sprintf( '</div>'); // End of content align class.				
 					$list_items_markup .= sprintf( '</div>'); // End of uagb-timline-field.
 			}

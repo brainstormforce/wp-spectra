@@ -48,6 +48,9 @@
   text-decoration: none;
   color: inherit; }
 
+.uagb-timeline-main {
+  position: relative; }
+
 .uagb-timeline-main #infscr-loading {
   left: 0;
   text-align: center;

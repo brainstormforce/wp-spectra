@@ -784,7 +784,7 @@ class UAGBTimeline extends Component {
                         ' font-size:'+dateFontsize+'px;'+
                         'color:'+dateColor+';'+
                         '}'+
-                        +'.'+ tm_block_id +' .uagb-events-inner-new{'+
+                        '.'+ tm_block_id +' .uagb-events-inner-new{'+
                         ' border-radius:'+borderRadius+'px;'+
                         'padding:'+bgPadding+'px;'+
                         '}'
