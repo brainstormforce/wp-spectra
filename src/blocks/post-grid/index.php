@@ -27,7 +27,7 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	ob_start();
 	?>
 
-	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?>">
+	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?> uagb-post__arrow-outside">
 
 		<div class="uagb-post__items uagb-post__columns-<?php echo $attributes['columns']; ?> is-<?php echo $attributes['postLayout']; ?>">
 
@@ -43,6 +43,39 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 	<script type="text/javascript">
 		( function( $ ) {
 			$( '.is-masonry' ).isotope();
+
+			var slider_options = {
+				'slidesToShow' : 3,
+				'slidesToScroll' : 1,
+				'autoplaySpeed' : 5000,
+				'autoplay' : false,
+				'infinite' : true,
+				'pauseOnHover' : false,
+				'speed' : 500,
+				'arrows' : true,
+				'dots' : true,
+				'rtl' : false,
+				'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><i class=\"fa fa-angle-left\"><\/i><\/button>',
+				'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><i class=\"fa fa-angle-right\"><\/i><\/button>',
+				'responsive' : [
+					{
+						'breakpoint' : 1024,
+						'settings' : {
+							'slidesToShow' : 2,
+							'slidesToScroll' : 1,
+						}
+					},
+					{
+						'breakpoint' : 767,
+						'settings' : {
+							'slidesToShow' : 1,
+							'slidesToScroll' : 1,
+						}
+					}
+				]
+			};
+
+			$( '.is-carousel' ).slick( slider_options );
 		} )( jQuery );
 	</script>
 

@@ -388,6 +388,12 @@ class UAGBPostGrid extends Component {
 				onClick: () => setAttributes( { postLayout: 'masonry' } ),
 				isActive: postLayout === 'masonry',
 			},
+			{
+				icon: 'grid-view',
+				title: __( 'Carousel View' ),
+				onClick: () => setAttributes( { postLayout: 'carousel' } ),
+				isActive: postLayout === 'carousel',
+			}
 		];
 		return (
 			<Fragment>

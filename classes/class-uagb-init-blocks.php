@@ -73,6 +73,30 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-slick-js', // Handle.
+			UAGB_URL . 'assets/lib/slick.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		// Styles.
+		wp_enqueue_style(
+			'uagb-slick-css', // Handle.
+			UAGB_URL . 'assets/css/slick.css', // Block style CSS.
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
+		wp_enqueue_style(
+			'load-fa',
+			'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 	/**
