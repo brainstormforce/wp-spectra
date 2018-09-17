@@ -271,7 +271,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		                $title = __( 'Untitled' );
 		            }
 		            $list_items_markup .= sprintf(
-		                '<h2 class="uagb-timeline-heading" style="text-align:'.$headingAlign.';color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+		                '<h2 class="uagb-timeline-heading" style="color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
 		                esc_url( get_permalink( $post_id ) ),
 		                esc_html( $title )
 		            );

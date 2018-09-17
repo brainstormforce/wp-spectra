@@ -848,7 +848,8 @@ class UAGBTimeline extends Component {
                                         content_align_class = 'uagb-timeline-widget uagb-timeline-left';
                                         day_align_class = 'uagb-day-new uagb-day-left';
                                     }  
-                                }     
+                                }   
+                                const Tag = this.props.attributes.headingTag;  
 
                                 var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
                                 
@@ -891,17 +892,17 @@ class UAGBTimeline extends Component {
                                                                 }
 
                                                                 <div className="uagb-timeline-heading-text">                                                                    
-                                                                    <tag
-                                                                        tagName={ headingTag }
-                                                                        placeholder={ __( 'Write a Heading' ) }
-                                                                        value={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                                        className='uagb-timeline-heading'
-                                                                        style={{ 
+                                                                    <Tag                                                                        
+                                                                        className='uagb-timeline-heading'                                                                        
+                                                                    >
+                                                                    <a href={ post.link } target="_blank" rel="bookmark" style={{ 
                                                                             fontSize: headFontSize + 'px',
                                                                             color: headingColor,
                                                                             marginBottom: headSpace + 'px',
-                                                                        }}
-                                                                    />
+                                                                        }}>   
+                                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
+                                                                    </a>
+                                                                    </Tag>
                                                                 </div>
 
                                                                 { displayPostAuthor && post.author_info.display_name &&
