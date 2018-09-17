@@ -864,8 +864,7 @@ class UAGBTimeline extends Component {
                                             </div>
                                             <div className = {day_align_class}>
                                                 <div className="uagb-events-new" style = {{textAlign:align}}>
-                                                    <a href= { post.link } target="_blank">
-                                                        <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+                                                    <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
                                                                 
                                                                 <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
                                                                     { displayPostDate && post.date_gmt &&
@@ -892,7 +891,7 @@ class UAGBTimeline extends Component {
                                                                 }
 
                                                                 <div className="uagb-timeline-heading-text">                                                                    
-                                                                    <RichText
+                                                                    <tag
                                                                         tagName={ headingTag }
                                                                         placeholder={ __( 'Write a Heading' ) }
                                                                         value={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
@@ -922,8 +921,7 @@ class UAGBTimeline extends Component {
                                                                 }                                                                
                                                             <div className="uagb-timeline-arrow"></div>
                                                             </div>
-                                                        </div>
-                                                    </a>
+                                                        </div>                                                    
                                                 </div>
                                             </div>
                                             { display_inner_date &&
