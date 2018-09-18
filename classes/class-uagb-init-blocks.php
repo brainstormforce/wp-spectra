@@ -63,6 +63,7 @@ class UAGB_Init_Blocks {
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
 	} // End function editor_assets().
 
 	/**

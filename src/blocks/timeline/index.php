@@ -91,7 +91,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
         }     
 
         $responsive_class = 'uagb-timeline-responsive-tablet';
-        $tl_class = $tm_block_id .' '.$align_class.' '.$responsive_class;
+        $tl_class = 'uagb-timeline '.$tm_block_id .' '.$align_class.' '.$responsive_class;
     
     /* Style for elements */
     $front_style = '.'. $tm_block_id .'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,    			                
@@ -182,8 +182,8 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                 $day_align_class = 'uagb-day-new uagb-day-right';
             }     
             
-            $display_inner_date = false;
-
+    $display_inner_date = false;
+    //$className          = $className.' '.'uagb-timeline';
   	$list_items_markup  = '';	
 	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $className ) );
 
@@ -213,7 +213,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                 
     	            $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
 				
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-field animate-border in-view" >');
+					$list_items_markup .= sprintf( '<div class = "uagb-timeline-field animate-border" >');
 					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $content_align_class ) );
 					
 					// Icon
@@ -342,8 +342,8 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		}
 
 	// Line
-	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line" style = "top:0;bottom:288px;" >');
-	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line__inner" style = "height:1000px;" >');
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line" >');
+	$list_items_markup .= sprintf( '<div class = "uagb-timeline__line__inner" >');
 	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline__line__inner.
 	$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline__line.
 
@@ -365,6 +365,16 @@ function uagb_blocks_register_block_core_latest_posts() {
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
+
+    if( !is_admin() ){     
+        wp_enqueue_script(
+            'uabg-timeline-js', // Handle.
+            UAGB_URL . 'src/blocks/timeline/timeline.js',
+            array( 'jquery' ),
+            UAGB_VER,
+            true // Enqueue the script in the footer.
+        );
+    }
 
 	register_block_type( 'uagb/timeline', array(
 		'attributes' => array(
@@ -577,7 +587,8 @@ add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
 /**
  * Create API fields for additional info
  */
-function uagb_blocks_register_rest_fields() {
+function uagb_blocks_register_rest_fields() {   
+
 	// Add landscape featured image source
 	register_rest_field(
 		'post',

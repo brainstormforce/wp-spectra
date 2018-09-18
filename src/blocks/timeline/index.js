@@ -67,4 +67,5 @@ registerBlockType( 'uagb/timeline', {
     save() {
     return null; 
     },
+    
 } );

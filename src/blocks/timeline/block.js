@@ -114,7 +114,7 @@ class UAGBTimeline extends Component {
     }
  
     render() {   
-        console.log(this.props.clientId);
+        //console.log(this.props.clientId);
         //Get id
         this.uagbGetId();
        
@@ -637,7 +637,6 @@ class UAGBTimeline extends Component {
 
         var responsive_class = 'uagb-timeline-responsive-tablet';
         var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
-
         return (
             <Fragment>            
             { timeline_control }           
@@ -656,8 +655,8 @@ class UAGBTimeline extends Component {
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline-main">                                
                                 { this.uagb_get_timeline_content() }
-                                <div className = "uagb-timeline__line" style = {{ top:0, bottom:'288px' }} >
-                                    <div className = "uagb-timeline__line__inner" style = {{ height:'1000px'}}></div>
+                                <div className = "uagb-timeline__line" >
+                                    <div className = "uagb-timeline__line__inner"></div>
                                 </div>                                
                             </div>
                         </div>
@@ -669,6 +668,7 @@ class UAGBTimeline extends Component {
 
      /* Render output at backend */
     uagb_get_timeline_content(){
+
         var attr               = this.props.attributes,
             headingTag         = attr.headingTag,
             headFontSize       = attr.headFontSize,
@@ -858,7 +858,7 @@ class UAGBTimeline extends Component {
                                 }
 
                                 return (
-                                    <div className = "uagb-timeline-field animate-border in-view">
+                                    <div className = "uagb-timeline-field animate-border">
                                         <div className = {content_align_class}> 
                                             <div className = "uagb-timeline-marker in-view-timeline-icon">
                                                 <i className = {icon_class}></i>
@@ -941,8 +941,7 @@ class UAGBTimeline extends Component {
                             })}        
                     </div>);
                 }
-            
-        
+                   
     }
 
 }
