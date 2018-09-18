@@ -635,7 +635,7 @@ class UAGBTimeline extends Component {
             align_class = 'uagb-timeline--right '+ arrow_align_class;
         }     
 
-        var responsive_class = 'uagb-timeline-responsive-tablet';
+        var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
         var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
         return (
             <Fragment>            
@@ -657,7 +657,8 @@ class UAGBTimeline extends Component {
                                 { this.uagb_get_timeline_content() }
                                 <div className = "uagb-timeline__line" >
                                     <div className = "uagb-timeline__line__inner"></div>
-                                </div>                                
+                                </div> 
+                                { /*this.uagb_get_timeline_content_css()*/ }                               
                             </div>
                         </div>
                     </div>
@@ -665,10 +666,102 @@ class UAGBTimeline extends Component {
             </Fragment>
         );
     }
+    componentDidMount() {
+        var id = this.props.clientId;
+        window.addEventListener("load", this.uagbTimelineFunc_back(id));
+        window.addEventListener("resize", this.uagbTimelineFunc_back(id));
+        $('.edit-post-layout__content').on( 'scroll', this.uagbTimelineFunc_back(id));
+    }
+    componentDidUpdate(){
+        var id = this.props.clientId;
+        window.addEventListener("load", this.uagbTimelineFunc_back(id));
+        window.addEventListener("resize", this.uagbTimelineFunc_back(id));
+        $('.edit-post-layout__content').on( 'scroll', this.uagbTimelineFunc_back(id));
+    }
 
+    uagbTimelineFunc_back(id){
+        console.log("here");
+        var timeline            = $('.uagb-timeline').parents('#block-'+id);
+        var tm_item             = timeline.find('.uagb-timeline');
+        var line_inner          = timeline.find(".uagb-timeline__line__inner");
+        var line_outer          = timeline.find(".uagb-timeline__line");
+        var $icon_class         = timeline.find(".uagb-timeline-marker");
+        if( $icon_class.length > 0){    
+            var $card_last          = timeline.find(".uagb-timeline-field:last-child");
+            var timeline_start_icon = $icon_class.first().position();
+            var timeline_end_icon   = $icon_class.last().position();
+            line_outer.css('top', timeline_start_icon.top );
+
+            var timeline_card_height = $card_last.height();
+            var last_item_top = $card_last.offset().top - tm_item.offset().top;
+            var $last_item, parent_top;
+            var $document           = $('.edit-post-layout__content');
+
+            if( tm_item.hasClass('uagb-timeline-arrow-center')) {
+
+                line_outer.css('bottom', timeline_end_icon.top );
+
+                parent_top = last_item_top - timeline_start_icon.top;
+                $last_item = parent_top + timeline_end_icon.top;
+
+            } else if( tm_item.hasClass('uagb-timeline-arrow-top')) {
+
+                var top_height = timeline_card_height - timeline_end_icon.top;
+                line_outer.css('bottom', top_height );
+
+                $last_item = last_item_top;
+
+            } else if( tm_item.hasClass('uagb-timeline-arrow-bottom')) {
+
+                var bottom_height = timeline_card_height - timeline_end_icon.top;
+                line_outer.css('bottom', bottom_height );
+
+                parent_top = last_item_top - timeline_start_icon.top;
+                $last_item = parent_top + timeline_end_icon.top;
+            }
+
+            var num = 0;
+            var elementEnd = $last_item + 20;
+            var viewportHeight = document.documentElement.clientHeight;
+            var viewportHeightHalf = viewportHeight/2;
+            var elementPos = tm_item.offset().top;
+            var new_elementPos = elementPos + timeline_start_icon.top;
+            var photoViewportOffsetTop = new_elementPos - $document.scrollTop();
+
+            if (photoViewportOffsetTop < 0) {
+                photoViewportOffsetTop = Math.abs(photoViewportOffsetTop);
+            } else {
+                photoViewportOffsetTop = -Math.abs(photoViewportOffsetTop);
+            }
+
+            if ( elementPos < (viewportHeightHalf) ) {
+                if ( (viewportHeightHalf) + Math.abs(photoViewportOffsetTop) < (elementEnd) ) {
+                    line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
+                }else{
+                    if ( (photoViewportOffsetTop + viewportHeightHalf) >= elementEnd ) {
+                        line_inner.height(elementEnd);
+                    }
+                }
+            } else {
+                if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
+                    if (0 > photoViewportOffsetTop) {
+                        line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop));
+                        ++num;
+                    } else {
+                        line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
+                    }
+                }else{
+                    if ( (photoViewportOffsetTop + viewportHeightHalf) >= elementEnd ) {
+                        line_inner.height(elementEnd);
+                    }
+                }
+            }
+
+        }
+    }
+    
      /* Render output at backend */
     uagb_get_timeline_content(){
-
         var attr               = this.props.attributes,
             headingTag         = attr.headingTag,
             headFontSize       = attr.headFontSize,
@@ -940,9 +1033,15 @@ class UAGBTimeline extends Component {
                                 );
                             })}        
                     </div>);
-                }
-                   
+            }                   
     }
+
+    /* Render js */
+    uagb_get_timeline_content_css(){
+        console.log(this.elements);
+        //var timeline            = $('.uagb-timeline');
+        //console.log(timeline);
+    }    
 
 }
 

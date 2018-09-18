@@ -10,19 +10,12 @@ window.addEventListener("scroll", uagbTimelineFunc);
 
 // Callback function for all event listeners.
 function uagbTimelineFunc() {
-
     // Define variables.
     var timeline            = $('.uagb-timeline');
-
+    
     timeline.each(function() {
-        var timeline_main       = $(this).find( '.uagb-timeline-main' );   
-        var uagb_days           = $(this).find(".uagb-days");
-        var timeline_icon       = $(this).find(".uagb-timeline-marker");
-        var uagb_events         = $(this).find(".uagb-events");
-        var events_inner        = $(this).find(".uagb-timeline-widget");
         var line_inner          = $(this).find(".uagb-timeline__line__inner");
         var line_outer          = $(this).find(".uagb-timeline__line");
-        var $main_class         = $(this).find(".elementor-widget-uagb-timeline");
         var $icon_class         = $(this).find(".uagb-timeline-marker");
         var $card_last          = $(this).find(".uagb-timeline-field:last-child");
         var $document           = $(document);
