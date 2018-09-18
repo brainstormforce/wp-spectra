@@ -25,6 +25,9 @@ class Blog extends React.Component {
 			columnGap,
 			bgColor,
 			contentPadding,
+			autoplay,
+			pauseOnHover,
+			infiniteLoop
 		} = attributes;
 
 		// Removing posts from display should be instant.
@@ -44,37 +47,6 @@ class Blog extends React.Component {
 			return (
 				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button"><i className="fa fa-angle-left"></i></button>
 			);
-		}
-
-		const settings = {
-			slidesToShow : 3,
-			slidesToScroll : 1,
-			autoplaySpeed : 5000,
-			autoplay : false,
-			infinite : true,
-			pauseOnHover : false,
-			speed : 500,
-			arrows : true,
-			dots : true,
-			rtl : false,
-			nextArrow: <NextArrow />,
-      		prevArrow: <PrevArrow />,
-			responsive : [
-				{
-					breakpoint : 1024,
-					settings : {
-						slidesToShow : 2,
-						slidesToScroll : 1,
-					}
-				},
-				{
-					breakpoint : 767,
-					settings : {
-						slidesToShow : 1,
-						slidesToScroll : 1,
-					}
-				}
-			]
 		}
 
 		if ( postLayout == 'masonry' ) {
@@ -192,7 +164,38 @@ class Blog extends React.Component {
 				</div>
 			);
 		} else if ( postLayout == 'carousel' ) {
-			{/* Masonry Layout */}
+			{/* Carousel Layout */}
+
+			const settings = {
+				slidesToShow : columns,
+				slidesToScroll : 1,
+				autoplaySpeed : 2000,
+				autoplay : autoplay,
+				infinite : infiniteLoop,
+				pauseOnHover : pauseOnHover,
+				speed : 500,
+				arrows : true,
+				dots : true,
+				rtl : false,
+				nextArrow: <NextArrow />,
+				prevArrow: <PrevArrow />,
+				responsive : [
+					{
+						breakpoint : 1024,
+						settings : {
+							slidesToShow : 2,
+							slidesToScroll : 1,
+						}
+					},
+					{
+						breakpoint : 767,
+						settings : {
+							slidesToShow : 1,
+							slidesToScroll : 1,
+						}
+					}
+				]
+			}
 
 			return (
 

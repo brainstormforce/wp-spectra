@@ -45,6 +45,9 @@ class UAGBPostGrid extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+		this.togglePauseOnHover = this.togglePauseOnHover.bind( this );
+		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this );
+		this.toggleAutoplay = this.toggleAutoplay.bind( this );
 	}
 
 	toggleDisplayPostComment() {
@@ -66,6 +69,27 @@ class UAGBPostGrid extends Component {
 		const { setAttributes } = this.props;
 
 		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
+	}
+
+	togglePauseOnHover() {
+		const { pauseOnHover } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { pauseOnHover: ! pauseOnHover } );
+	}
+
+	toggleInfiniteLoop() {
+		const { infiniteLoop } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { infiniteLoop: ! infiniteLoop } );
+	}
+
+	toggleAutoplay() {
+		const { autoplay } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { autoplay: ! autoplay } );
 	}
 
 	toggleDisplayPostAuthor() {
@@ -125,6 +149,9 @@ class UAGBPostGrid extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
+			autoplay,
+			pauseOnHover,
+			infiniteLoop
 		} = attributes;
 
 		const inspectorControls = (
@@ -140,17 +167,34 @@ class UAGBPostGrid extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
-					{ postLayout === 'grid' &&
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 1 }
-							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-						/>
-					}
+					<RangeControl
+						label={ __( 'Columns' ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
 
 				</PanelBody>
+				{ postLayout == 'carousel' &&
+					<PanelBody title={ __( 'Carousel' ) }>
+						<ToggleControl
+							label={ __( 'Pause On Hover' ) }
+							checked={ pauseOnHover }
+							onChange={ this.togglePauseOnHover }
+						/>
+						<ToggleControl
+							label={ __( 'Autoplay' ) }
+							checked={ autoplay }
+							onChange={ this.toggleAutoplay }
+						/>
+						<ToggleControl
+							label={ __( 'Infinite Loop' ) }
+							checked={ infiniteLoop }
+							onChange={ this.toggleInfiniteLoop }
+						/>
+					</PanelBody>
+				}
 				<PanelBody title={ __( 'Image' ) }>
 					<ToggleControl
 						label={ __( 'Show Featured Image' ) }
@@ -312,19 +356,6 @@ class UAGBPostGrid extends Component {
 						max={ 50 }
 						allowReset
 					/>
-					<PanelColor
-						title={ __( 'Background Color' ) }
-						colorValue={ bgColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
-				</PanelBody>
-				<PanelBody title={ __( 'Spacing' ) }>
 					<RangeControl
 						label={ __( 'Title Bottom Spacing' ) }
 						value={ titleBottomSpace }
@@ -352,6 +383,17 @@ class UAGBPostGrid extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
+					<PanelColor
+						title={ __( 'Background Color' ) }
+						colorValue={ bgColor }
+						initialOpen={ false }
+					>
+						<ColorPalette
+							value={ bgColor }
+							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelColor>
 				</PanelBody>
 			</InspectorControls>
 		);

@@ -215,6 +215,18 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 25,
 			),
+			'pauseOnHover' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'infiniteLoop' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'autoplay' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
 		),
 		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );

@@ -189,6 +189,7 @@
   cursor: pointer;
   color: #aaa;
   border-color: #aaa;
+  border-width: 1px;
   outline: none;
   background: transparent; }
 
