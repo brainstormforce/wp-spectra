@@ -230,6 +230,138 @@ function uagb_blocks_register_block_core_latest_posts() {
 		),
 		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
 	) );
+
+	register_block_type( 'uagb/post-carousel', array(
+		'attributes' => array(
+			'categories' => array(
+				'type' => 'string',
+			),
+			'className' => array(
+				'type' => 'string',
+			),
+			'postsToShow' => array(
+				'type' => 'number',
+				'default' => 6,
+			),
+			'displayPostDate' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostExcerpt' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostAuthor' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostComment' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostImage' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'imgSize' => array(
+				'type' => 'string',
+				'default' => 'large',
+			),
+			'displayPostLink' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'columns' => array(
+				'type' => 'number',
+				'default' => 3,
+			),
+			'align' => array(
+				'type' => 'string',
+				'default' => 'center',
+			),
+			'width' => array(
+				'type' => 'string',
+				'default' => 'wide',
+			),
+			'order' => array(
+				'type' => 'string',
+				'default' => 'desc',
+			),
+			'orderBy'  => array(
+				'type' => 'string',
+				'default' => 'date',
+			),
+			'rowGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'columnGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'bgColor' => array(
+				'type' => 'string',
+				'default' => '#e4e4e4'
+			),
+			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#3b3b3b'
+			),
+			'titleTag' => array(
+				'type' => 'string',
+				'default' => 'h3',
+			),
+			'titleFontSize' => array(
+				'type' => 'number',
+				'default' => '',
+			),
+			'metaColor' => array(
+				'type' => 'string',
+				'default' => '#777777'
+			),
+			'excerptColor' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'ctaColor' => array(
+				'type' => 'string',
+				'default' => '#ffffff'
+			),
+			'ctaBgColor' => array(
+				'type' => 'string',
+				'default' => '#333333'
+			),
+			'contentPadding' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'titleBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'metaBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'excerptBottomSpace' => array(
+				'type' => 'number',
+				'default' => 25,
+			),
+			'pauseOnHover' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'infiniteLoop' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'autoplay' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+		),
+		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
+	) );
 }
 
 add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );

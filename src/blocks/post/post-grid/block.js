@@ -11,17 +11,17 @@ import classnames from 'classnames';
 import edit from './edit';
 
 //  Import CSS.
-import './style.scss'
-import './editor.scss';
+import '.././style.scss'
+import '.././editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
 
 // Register block controls
-const { 
+const {
 	registerBlockType,
 } = wp.blocks;
 
