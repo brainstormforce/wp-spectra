@@ -738,7 +738,7 @@ class UAGBTimeline extends Component {
             var viewportHeight = $document.height();
 
             //var viewportHeight = document.documentElement.clientHeight;
-            var viewportHeightHalf = viewportHeight/4;
+            var viewportHeightHalf = viewportHeight/2;
 
             var elementPos = tm_item.offset().top;
 
