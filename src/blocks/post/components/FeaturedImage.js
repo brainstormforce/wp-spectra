@@ -9,7 +9,8 @@ class FeaturedImage extends React.Component {
 		if (
 			attributes.displayPostImage &&
 			undefined !== post.featured_image_src &&
-			attributes.imgSize
+			attributes.imgSize &&
+			post.featured_image_src[attributes.imgSize]
 		) {
 			var src = post.featured_image_src[attributes.imgSize];
 

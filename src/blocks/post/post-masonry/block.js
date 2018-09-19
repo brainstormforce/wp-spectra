@@ -1,9 +1,9 @@
 /**
- * BLOCK: post-grid
+ * BLOCK: post-masonry
  */
 
 /**
- * BLOCK: Atomic Blocks Page Grid
+ * BLOCK: Atomic Blocks Page Masonry
  */
 
 // Import block dependencies and components
@@ -11,17 +11,17 @@ import classnames from 'classnames';
 import edit from './edit';
 
 //  Import CSS.
-import './style.scss'
-import './editor.scss';
+import '.././style.scss'
+import '.././editor.scss';
 
 // Components
-const { __ } = wp.i18n; 
+const { __ } = wp.i18n;
 
 // Extend component
 const { Component } = wp.element;
 
 // Register block controls
-const { 
+const {
 	registerBlockType,
 } = wp.blocks;
 
@@ -31,14 +31,14 @@ const validAlignments = [ 'center', 'wide' ];
 export const name = 'core/latest-posts';
 
 // Register the block
-registerBlockType( 'uagb/post-grid', {
-	title: __( 'UAGB - Post Grid' ),
+registerBlockType( 'uagb/post-masonry', {
+	title: __( 'UAGB - Post Masonry' ),
 	description: __( 'Add a grid or list of customizable posts to your page.' ),
 	icon: 'grid-view',
 	category: 'formatting',
 	keywords: [
 		__( 'post' ),
-		__( 'grid' ),
+		__( 'masonry' ),
 	],
 
 	getEditWrapperProps( attributes ) {

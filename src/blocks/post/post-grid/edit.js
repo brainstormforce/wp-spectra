@@ -7,7 +7,7 @@ import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 
 // Import Post Components
-import Blog from "./post-components/Blog";
+import Blog from "./blog";
 
 const { Component, Fragment } = wp.element;
 const { __ } = wp.i18n;
@@ -45,6 +45,7 @@ class UAGBPostGrid extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+		this.toggleEqualHeight= this.toggleEqualHeight.bind(this);
 	}
 
 	toggleDisplayPostComment() {
@@ -89,6 +90,13 @@ class UAGBPostGrid extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
+	toggleEqualHeight() {
+		const { equalHeight } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { equalHeight: ! equalHeight } );
+	}
+
 	render() {
 		const {
 			attributes,
@@ -105,7 +113,6 @@ class UAGBPostGrid extends Component {
 			imgSize,
 			displayPostLink,
 			align,
-			postLayout,
 			columns,
 			order,
 			orderBy,
@@ -125,6 +132,7 @@ class UAGBPostGrid extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
+			equalHeight
 		} = attributes;
 
 		const inspectorControls = (
@@ -140,16 +148,18 @@ class UAGBPostGrid extends Component {
 						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
-					{ postLayout === 'grid' &&
-						<RangeControl
-							label={ __( 'Columns' ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 1 }
-							max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-						/>
-					}
-
+					<RangeControl
+						label={ __( 'Columns' ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
+					<ToggleControl
+						label={ __( 'Equal Height' ) }
+						checked={ equalHeight }
+						onChange={ this.toggleEqualHeight }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Image' ) }>
 					<ToggleControl
@@ -171,18 +181,7 @@ class UAGBPostGrid extends Component {
 						/>
                 	}
 				</PanelBody>
-				<PanelBody title={ __( 'Title' ) }>
-					<PanelColor
-						title={ __( 'Color' ) }
-						colorValue={ titleColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ titleColor }
-							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
+				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl
 						label={ __( 'Title Tag' ) }
 						value={ titleTag }
@@ -196,17 +195,6 @@ class UAGBPostGrid extends Component {
 							{ value: 'h6', label: __( 'H6' ) },
 							] }
 					/>
-					<RangeControl
-						label={ __( 'Heading Font Size' ) }
-						value={ titleFontSize }
-						onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-				</PanelBody>
-				<PanelBody title={ __( 'Meta' ) }>
 					<ToggleControl
 						label={ __( 'Show Author' ) }
 						checked={ displayPostAuthor }
@@ -222,6 +210,40 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostComment }
 						onChange={ this.toggleDisplayPostComment }
 					/>
+					<ToggleControl
+						label={ __( 'Show Excerpt' ) }
+						checked={ displayPostExcerpt }
+						onChange={ this.toggleDisplayPostExcerpt }
+					/>
+					<ToggleControl
+						label={ __( 'Show Read More Link' ) }
+						checked={ displayPostLink }
+						onChange={ this.toggleDisplayPostLink }
+					/>
+				</PanelBody>
+				<PanelBody title={ __( 'Colors' ) }>
+					<PanelColor
+						title={ __( 'Blog Background Color' ) }
+						colorValue={ bgColor }
+						initialOpen={ false }
+					>
+						<ColorPalette
+							value={ bgColor }
+							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelColor>
+					<PanelColor
+						title={ __( 'Title Color' ) }
+						colorValue={ titleColor }
+						initialOpen={ false }
+					>
+						<ColorPalette
+							value={ titleColor }
+							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelColor>
 					<PanelColor
 						title={ __( 'Meta Color' ) }
 						colorValue={ metaColor }
@@ -233,44 +255,30 @@ class UAGBPostGrid extends Component {
 							allowReset
 						/>
 					</PanelColor>
-				</PanelBody>
-				<PanelBody title={ __( 'Excerpt' ) }>
-						<ToggleControl
-						label={ __( 'Show Excerpt' ) }
-						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
-					/>
 					{ displayPostExcerpt == true &&
 						<PanelColor
 							title={ __( 'Excerpt Color' ) }
 							colorValue={ excerptColor }
 							initialOpen={ false }
 						>
-						<ColorPalette
-							value={ excerptColor }
-							onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
-							allowReset
-						/>
+							<ColorPalette
+								value={ excerptColor }
+								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
+								allowReset
+							/>
 						</PanelColor>
 					}
-				</PanelBody>
-				<PanelBody title={ __( 'CTA' ) }>
-					<ToggleControl
-						label={ __( 'Show Read More Link' ) }
-						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
-					/>
 					{ displayPostLink == true &&
 						<PanelColor
 							title={ __( 'CTA Color' ) }
 							colorValue={ ctaColor }
 							initialOpen={ false }
 						>
-						<ColorPalette
-							value={ ctaColor }
-							onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-							allowReset
-						/>
+							<ColorPalette
+								value={ ctaColor }
+								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+								allowReset
+							/>
 						</PanelColor>
 					}
 					{ displayPostLink == true &&
@@ -279,15 +287,15 @@ class UAGBPostGrid extends Component {
 							colorValue={ ctaBgColor }
 							initialOpen={ false }
 						>
-						<ColorPalette
-							value={ ctaBgColor }
-							onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-							allowReset
-						/>
+							<ColorPalette
+								value={ ctaBgColor }
+								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+								allowReset
+							/>
 						</PanelColor>
 					}
 				</PanelBody>
-				<PanelBody title={ __( 'Style' ) }>
+				<PanelBody title={ __( 'Spacing' ) }>
 					<RangeControl
 						label={ __( 'Row Gap' ) }
 						value={ rowGap }
@@ -312,26 +320,12 @@ class UAGBPostGrid extends Component {
 						max={ 50 }
 						allowReset
 					/>
-					<PanelColor
-						title={ __( 'Background Color' ) }
-						colorValue={ bgColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
-				</PanelBody>
-				<PanelBody title={ __( 'Spacing' ) }>
 					<RangeControl
 						label={ __( 'Title Bottom Spacing' ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 					<RangeControl
@@ -340,7 +334,6 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => setAttributes( { metaBottomSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 					<RangeControl
@@ -349,7 +342,6 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 				</PanelBody>
@@ -375,20 +367,6 @@ class UAGBPostGrid extends Component {
 			);
 		}
 
-		const layoutControls = [
-			{
-				icon: 'grid-view',
-				title: __( 'Grid View' ),
-				onClick: () => setAttributes( { postLayout: 'grid' } ),
-				isActive: postLayout === 'grid',
-			},
-			{
-				icon: 'grid-view',
-				title: __( 'Masonry View' ),
-				onClick: () => setAttributes( { postLayout: 'masonry' } ),
-				isActive: postLayout === 'masonry',
-			},
-		];
 		return (
 			<Fragment>
 				{ inspectorControls }
@@ -400,7 +378,6 @@ class UAGBPostGrid extends Component {
 						} }
 						controls={ [ 'center', 'wide' ] }
 					/>
-					<Toolbar controls={ layoutControls } />
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
 			</Fragment>

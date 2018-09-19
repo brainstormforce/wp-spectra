@@ -17,13 +17,13 @@ class Meta extends React.Component {
 				}
 
 				{ attributes.displayPostDate && post.date_gmt &&
-					<time dateTime={ moment( post.date_gmt ).utc().format() } className='uagb-post__date fa fa-clock'>
+					<time dateTime={ moment( post.date_gmt ).utc().format() } className='uagb-post__date fa fa-clock-o'>
 						{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 					</time>
 				}
 
 				{ attributes.displayPostComment &&
-					<div className='uagb-post__comment fa fa-comment' >{ post.author_info.comments }</div>
+					<div className='uagb-post__comment fa fa-comment' >{ post.comment_info }</div>
 				}
 			</div>
 		);

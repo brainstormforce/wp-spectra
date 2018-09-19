@@ -9,5 +9,6 @@
  * Webpack is compiling as the input file.
  */
 
-import './blocks/advanced-heading/block.js';
-import './blocks/post/block.js';
+import './post-carousel/block.js';
+import './post-grid/block.js';
+import './post-masonry/block.js';
