@@ -30,21 +30,7 @@
 .uagb-timeline-main{
   position: relative;
 }
-.uagb-timeline-main #infscr-loading {
-  left: 0;
-  text-align: center;
-  margin: 0 auto;
-  z-index: 1;
-  height: 150px;
-}
-.uagb-timeline-main #infscr-loading img {
-  margin-top: 10px;
-  width: 100%;
-  max-width: 150px;
-}
-#infscr-loading div {
-  display: none;
-}
+
 .uagb-timeline-heading {
   margin-bottom: 10px;
 }
@@ -72,9 +58,6 @@
   -webkit-filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.5));
   filter: drop-shadow(0px 1px 4px rgba(0, 0, 0, 0.5));
 }
-/*.uagb-content {
-    word-break: break-word;
-}*/
 
 .uagb-timeline--center .uagb-timeline-date-hide {
   display: none;
