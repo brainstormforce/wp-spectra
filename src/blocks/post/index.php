@@ -9,7 +9,42 @@
 /**
  * Renders the post grid block on server.
  */
-function uagb_blocks_render_block_core_latest_posts( $attributes ) {
+function uagb_block_post_carousel_callback( $attributes ) {
+
+	$query = uagb_get_post_query( $attributes );
+
+	ob_start();
+
+	uagb_get_post_html( $attributes, $query, 'carousel' );
+	uagb_get_carousel_script( $attributes );
+	// Output the post markup
+	return ob_get_clean();
+}
+
+function uagb_block_post_grid_callback( $attributes ) {
+
+	$query = uagb_get_post_query( $attributes );
+
+	ob_start();
+
+	uagb_get_post_html( $attributes, $query, 'grid' );
+	// Output the post markup
+	return ob_get_clean();
+}
+
+function uagb_block_post_masonry_callback( $attributes ) {
+
+	$query = uagb_get_post_query( $attributes );
+
+	ob_start();
+
+	uagb_get_post_html( $attributes, $query, 'masonry' );
+	uagb_get_masonry_script( $attributes );
+	// Output the post markup
+	return ob_get_clean();
+}
+
+function uagb_get_post_query( $attributes ) {
 
 	$query_args = array(
 		'posts_per_page' => $attributes['postsToShow'],
@@ -20,37 +55,30 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 		'ignore_sticky_posts' => 1
 	);
 
-	//echo '<pre>'; print_r( $attributes ); echo '</pre>';
+	return new \WP_Query( $query_args );
+}
 
-	$query = new \WP_Query( $query_args );
-
-	ob_start();
+function uagb_get_masonry_script( $attributes ) {
 	?>
-
-	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?> uagb-post__arrow-outside">
-
-		<div class="uagb-post__items uagb-post__columns-<?php echo $attributes['columns']; ?> is-<?php echo $attributes['postLayout']; ?>">
-
-		<?php
-			while ( $query->have_posts() ) {
-				$query->the_post();
-				include 'single.php';
-			}
-			wp_reset_postdata();
-		?>
-		</div>
-	</div>
 	<script type="text/javascript">
 		( function( $ ) {
 			$( '.is-masonry' ).isotope();
+		} )( jQuery );
+	</script>
+	<?php
+}
 
+function uagb_get_carousel_script( $attributes ) {
+?>
+	<script type="text/javascript">
+		( function( $ ) {
 			var slider_options = {
-				'slidesToShow' : 3,
+				'slidesToShow' : '<?php echo $attributes['columns']; ?>',
 				'slidesToScroll' : 1,
 				'autoplaySpeed' : 5000,
-				'autoplay' : false,
-				'infinite' : true,
-				'pauseOnHover' : false,
+				'autoplay' : Boolean( '<?php echo $attributes['autoplay']; ?>' ),
+				'infinite' : Boolean( '<?php echo $attributes['infiniteLoop']; ?>' ),
+				'pauseOnHover' : Boolean( '<?php echo $attributes['pauseOnHover']; ?>' ),
 				'speed' : 500,
 				'arrows' : true,
 				'dots' : true,
@@ -78,11 +106,25 @@ function uagb_blocks_render_block_core_latest_posts( $attributes ) {
 			$( '.is-carousel' ).slick( slider_options );
 		} )( jQuery );
 	</script>
+<?php
+}
 
-	<?php
+function uagb_get_post_html( $attributes, $query, $layout ) {
+?>
+	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?> uagb-post__arrow-outside">
 
-	// Output the post markup
-	return ob_get_clean();
+		<div class="uagb-post__items uagb-post__columns-<?php echo $attributes['columns']; ?> is-<?php echo $layout; ?>">
+
+		<?php
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				include 'single.php';
+			}
+			wp_reset_postdata();
+		?>
+		</div>
+	</div>
+<?php
 }
 
 /**
@@ -134,10 +176,6 @@ function uagb_blocks_register_block_core_latest_posts() {
 			'displayPostLink' => array(
 				'type' => 'boolean',
 				'default' => true,
-			),
-			'postLayout' => array(
-				'type' => 'string',
-				'default' => 'grid',
 			),
 			'columns' => array(
 				'type' => 'number',
@@ -215,20 +253,12 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'number',
 				'default' => 25,
 			),
-			'pauseOnHover' => array(
+			'equalHeight' => array(
 				'type' => 'boolean',
 				'default' => true,
-			),
-			'infiniteLoop' => array(
-				'type' => 'boolean',
-				'default' => true,
-			),
-			'autoplay' => array(
-				'type' => 'boolean',
-				'default' => true,
-			),
+			)
 		),
-		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
+		'render_callback' => 'uagb_block_post_grid_callback',
 	) );
 
 	register_block_type( 'uagb/post-carousel', array(
@@ -360,7 +390,127 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'default' => true,
 			),
 		),
-		'render_callback' => 'uagb_blocks_render_block_core_latest_posts',
+		'render_callback' => 'uagb_block_post_carousel_callback',
+	) );
+
+	register_block_type( 'uagb/post-masonry', array(
+		'attributes' => array(
+			'categories' => array(
+				'type' => 'string',
+			),
+			'className' => array(
+				'type' => 'string',
+			),
+			'postsToShow' => array(
+				'type' => 'number',
+				'default' => 6,
+			),
+			'displayPostDate' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostExcerpt' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostAuthor' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostComment' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'displayPostImage' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'imgSize' => array(
+				'type' => 'string',
+				'default' => 'large',
+			),
+			'displayPostLink' => array(
+				'type' => 'boolean',
+				'default' => true,
+			),
+			'columns' => array(
+				'type' => 'number',
+				'default' => 3,
+			),
+			'align' => array(
+				'type' => 'string',
+				'default' => 'center',
+			),
+			'width' => array(
+				'type' => 'string',
+				'default' => 'wide',
+			),
+			'order' => array(
+				'type' => 'string',
+				'default' => 'desc',
+			),
+			'orderBy'  => array(
+				'type' => 'string',
+				'default' => 'date',
+			),
+			'rowGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'columnGap' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'bgColor' => array(
+				'type' => 'string',
+				'default' => '#e4e4e4'
+			),
+			'titleColor' => array(
+				'type' => 'string',
+				'default' => '#3b3b3b'
+			),
+			'titleTag' => array(
+				'type' => 'string',
+				'default' => 'h3',
+			),
+			'titleFontSize' => array(
+				'type' => 'number',
+				'default' => '',
+			),
+			'metaColor' => array(
+				'type' => 'string',
+				'default' => '#777777'
+			),
+			'excerptColor' => array(
+				'type' => 'string',
+				'default' => ''
+			),
+			'ctaColor' => array(
+				'type' => 'string',
+				'default' => '#ffffff'
+			),
+			'ctaBgColor' => array(
+				'type' => 'string',
+				'default' => '#333333'
+			),
+			'contentPadding' => array(
+				'type' => 'number',
+				'default' => 20,
+			),
+			'titleBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'metaBottomSpace' => array(
+				'type' => 'number',
+				'default' => 15,
+			),
+			'excerptBottomSpace' => array(
+				'type' => 'number',
+				'default' => 25,
+			),
+		),
+		'render_callback' => 'uagb_block_post_masonry_callback',
 	) );
 }
 
@@ -510,7 +660,7 @@ function uagb_render_meta( $attributes ) {
 		<div class="uagb-post__author fa fa-user" style="color: rgb(119, 119, 119);">
 			<?php the_author_posts_link(); ?>
 		</div>
-		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date fa fa-clock"><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time>
+		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date fa fa-clock-o"><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time>
 		<div class="uagb-post__comment fa fa-comment"><?php comments_number(); ?></div>
 	</div>
 	<?php

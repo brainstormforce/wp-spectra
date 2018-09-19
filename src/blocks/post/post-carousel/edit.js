@@ -35,7 +35,7 @@ const {
 
 const { withSelect } = wp.data;
 
-class UAGBPostGrid extends Component {
+class UAGBPostCarousel extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -433,4 +433,4 @@ export default withSelect( ( select, props ) => {
 		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
 		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
-} )( UAGBPostGrid );
+} )( UAGBPostCarousel );

@@ -1,9 +1,9 @@
 /**
- * BLOCK: post-carousel
+ * BLOCK: post-masonry
  */
 
 /**
- * BLOCK: Atomic Blocks Page Grid
+ * BLOCK: Atomic Blocks Page Masonry
  */
 
 // Import block dependencies and components
@@ -31,14 +31,14 @@ const validAlignments = [ 'center', 'wide' ];
 export const name = 'core/latest-posts';
 
 // Register the block
-registerBlockType( 'uagb/post-carousel', {
-	title: __( 'UAGB - Post Carousel' ),
+registerBlockType( 'uagb/post-masonry', {
+	title: __( 'UAGB - Post Masonry' ),
 	description: __( 'Add a grid or list of customizable posts to your page.' ),
 	icon: 'grid-view',
 	category: 'formatting',
 	keywords: [
 		__( 'post' ),
-		__( 'carousel' ),
+		__( 'masonry' ),
 	],
 
 	getEditWrapperProps( attributes ) {

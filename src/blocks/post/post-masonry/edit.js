@@ -35,7 +35,7 @@ const {
 
 const { withSelect } = wp.data;
 
-class UAGBPostGrid extends Component {
+class UAGBPostMasonry extends Component {
 	constructor() {
 		super( ...arguments );
 
@@ -45,7 +45,6 @@ class UAGBPostGrid extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
-		this.toggleEqualHeight= this.toggleEqualHeight.bind(this);
 	}
 
 	toggleDisplayPostComment() {
@@ -90,13 +89,6 @@ class UAGBPostGrid extends Component {
 		setAttributes( { displayPostLink: ! displayPostLink } );
 	}
 
-	toggleEqualHeight() {
-		const { equalHeight } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { equalHeight: ! equalHeight } );
-	}
-
 	render() {
 		const {
 			attributes,
@@ -132,7 +124,6 @@ class UAGBPostGrid extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			equalHeight
 		} = attributes;
 
 		const inspectorControls = (
@@ -155,11 +146,7 @@ class UAGBPostGrid extends Component {
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 					/>
-					<ToggleControl
-						label={ __( 'Equal Height' ) }
-						checked={ equalHeight }
-						onChange={ this.toggleEqualHeight }
-					/>
+
 				</PanelBody>
 				<PanelBody title={ __( 'Image' ) }>
 					<ToggleControl
@@ -356,7 +343,7 @@ class UAGBPostGrid extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'UAGB - Post Grid' ) }
+						label={ __( 'UAGB - Post Masonry' ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -401,4 +388,4 @@ export default withSelect( ( select, props ) => {
 		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
 		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
-} )( UAGBPostGrid );
+} )( UAGBPostMasonry );
