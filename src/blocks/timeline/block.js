@@ -713,6 +713,7 @@ class UAGBTimeline extends Component {
    
     // Js for timeline line and inner line filler.
     uagbTimelineFunc_back(id){
+        console.log(id);
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
@@ -727,7 +728,8 @@ class UAGBTimeline extends Component {
             var timeline_card_height = $card_last.height();
             var last_item_top = $card_last.offset().top - tm_item.offset().top;
             var $last_item, parent_top;
-            var $document           = $('.edit-post-layout__content');
+            //var $document           = $('.edit-post-layout__content');
+            var $document = $(document);
 
             if( tm_item.hasClass('uagb-timeline-arrow-center')) {
 
@@ -754,16 +756,16 @@ class UAGBTimeline extends Component {
 
             var num = 0;
             var elementEnd = $last_item + 20;
-            var viewportHeight = $document.height();
+            //var viewportHeight = $document.height();
 
-            //var viewportHeight = document.documentElement.clientHeight;
+            var viewportHeight = document.documentElement.clientHeight;
             var viewportHeightHalf = viewportHeight/2;
 
             var elementPos = tm_item.offset().top;
 
             var new_elementPos = elementPos + timeline_start_icon.top;
             
-            var photoViewportOffsetTop = new_elementPos - $document.scrollTop()+200;
+            var photoViewportOffsetTop = new_elementPos - $document.scrollTop();
 
             if (photoViewportOffsetTop < 0) {
                 photoViewportOffsetTop = Math.abs(photoViewportOffsetTop);
