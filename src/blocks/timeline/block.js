@@ -666,21 +666,35 @@ class UAGBTimeline extends Component {
             </Fragment>
         );
     }
-    componentDidMount() {
+
+    componentDidMount() {        
         var id = this.props.clientId;
         window.addEventListener("load", this.uagbTimelineFunc_back(id));
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
-        $('.edit-post-layout__content').on( 'scroll', this.uagbTimelineFunc_back(id));
+        var time = this;
+        $('.edit-post-layout__content').scroll( function(event) {             
+            clearTimeout($.data(this, 'uagb_scrollEvent'));
+            $.data(this, 'uagb_scrollEvent', setTimeout(function() {
+                time.uagbTimelineFunc_back(id);
+            },10));  
+        });
     }
+
     componentDidUpdate(){
         var id = this.props.clientId;
         window.addEventListener("load", this.uagbTimelineFunc_back(id));
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
-        $('.edit-post-layout__content').on( 'scroll', this.uagbTimelineFunc_back(id));
+        var time = this;
+        $('.edit-post-layout__content').scroll( function(event) {             
+            clearTimeout($.data(this, 'uagb_scrollEvent'));
+            $.data(this, 'uagb_scrollEvent', setTimeout(function() {
+                time.uagbTimelineFunc_back(id);
+            },10));  
+        });
     }
 
     uagbTimelineFunc_back(id){
-        console.log("here");
+        console.log("pgg");
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
