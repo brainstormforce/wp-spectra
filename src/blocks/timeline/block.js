@@ -673,10 +673,10 @@ class UAGBTimeline extends Component {
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {             
-            clearTimeout($.data(this, 'uagb_scrollEvent'));
-            $.data(this, 'uagb_scrollEvent', setTimeout(function() {
+            //clearTimeout($.data(this, 'uagb_scrollEvent'));
+           // $.data(this, 'uagb_scrollEvent', setTimeout(function() {
                 time.uagbTimelineFunc_back(id);
-            },10));  
+            //},10));  
         });
     }
 
@@ -686,15 +686,14 @@ class UAGBTimeline extends Component {
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {             
-            clearTimeout($.data(this, 'uagb_scrollEvent'));
-            $.data(this, 'uagb_scrollEvent', setTimeout(function() {
+            //clearTimeout($.data(this, 'uagb_scrollEvent'));
+            //$.data(this, 'uagb_scrollEvent', setTimeout(function() {
                 time.uagbTimelineFunc_back(id);
-            },10));  
+            //},10));  
         });
     }
 
     uagbTimelineFunc_back(id){
-        console.log("pgg");
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
@@ -736,19 +735,26 @@ class UAGBTimeline extends Component {
 
             var num = 0;
             var elementEnd = $last_item + 20;
-            var viewportHeight = document.documentElement.clientHeight;
-            var viewportHeightHalf = viewportHeight/2;
+            var viewportHeight = $document.height();
+
+            //var viewportHeight = document.documentElement.clientHeight;
+            var viewportHeightHalf = viewportHeight/4;
+
             var elementPos = tm_item.offset().top;
+
             var new_elementPos = elementPos + timeline_start_icon.top;
-            var photoViewportOffsetTop = new_elementPos - $document.scrollTop();
+            
+            var photoViewportOffsetTop = new_elementPos - $document.scrollTop()+200;
 
             if (photoViewportOffsetTop < 0) {
                 photoViewportOffsetTop = Math.abs(photoViewportOffsetTop);
             } else {
                 photoViewportOffsetTop = -Math.abs(photoViewportOffsetTop);
             }
+            //console.log(viewportHeightHalf_1 + photoViewportOffsetTop);
 
             if ( elementPos < (viewportHeightHalf) ) {
+                console.log('1');
                 if ( (viewportHeightHalf) + Math.abs(photoViewportOffsetTop) < (elementEnd) ) {
                     line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
                 }else{
@@ -757,6 +763,7 @@ class UAGBTimeline extends Component {
                     }
                 }
             } else {
+                console.log('2');
                 if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
                     if (0 > photoViewportOffsetTop) {
                         line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop));
