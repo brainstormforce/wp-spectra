@@ -82,6 +82,10 @@
 .uagb-timeline-field:not(:last-child) {
   margin-bottom: 20px;
 }
+.uagb-block-post-grid-author a.uagb-text-link {
+    color: inherit;
+    font-size: inherit;
+}
 .uagb-timeline--center .uagb-timeline-widget.uagb-timeline-right {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;

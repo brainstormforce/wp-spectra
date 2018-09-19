@@ -106,6 +106,10 @@
 .uagb-timeline-field:not(:last-child) {
   margin-bottom: 20px; }
 
+.uagb-block-post-grid-author a.uagb-text-link {
+  color: inherit;
+  font-size: inherit; }
+
 .uagb-timeline--center .uagb-timeline-widget.uagb-timeline-right {
   -ms-flex-direction: row-reverse;
   flex-direction: row-reverse; }

@@ -61,13 +61,13 @@ class UAGBTimeline extends Component {
         this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );
         
         // Get unique id
-        this.uagbGetId = this.uagbGetId.bind(this);
+        this.uagbGetId = this.uagbGetId.bind(this);        
    }
 
     uagbGetId(){
-        const id = _.uniqueId("uagb-tl-block-no-");
-        if( this.props.attributes.tm_block_id == '0' ){
-            this.props.setAttributes( { tm_block_id: id } );
+        const block_id = _.uniqueId("uagb-tl-block-no-");        
+        if( this.props.attributes.tm_block_id == 0 ){ 
+            this.props.setAttributes( { tm_block_id: block_id } );
         }
     }
 
@@ -114,10 +114,10 @@ class UAGBTimeline extends Component {
     }
  
     render() {   
-        //console.log(this.props.clientId);
+        
         //Get id
         this.uagbGetId();
-       
+        //console.log(this.props.attributes.tm_client_id);
         const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
        
         const {
@@ -172,6 +172,7 @@ class UAGBTimeline extends Component {
             exerptLength,
             borderRadius,
             bgPadding,
+            tm_client_id,
         } = attributes;
 
         // Thumbnail options
@@ -636,7 +637,8 @@ class UAGBTimeline extends Component {
         }     
 
         var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
-        var tl_class = tm_block_id +' '+align_class+' '+responsive_class;
+        var tm_block_id_new = 'uagb-'+this.props.clientId;
+        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
         return (
             <Fragment>            
             { timeline_control }           
@@ -658,7 +660,6 @@ class UAGBTimeline extends Component {
                                 <div className = "uagb-timeline__line" >
                                     <div className = "uagb-timeline__line__inner"></div>
                                 </div> 
-                                { /*this.uagb_get_timeline_content_css()*/ }                               
                             </div>
                         </div>
                     </div>
@@ -667,7 +668,10 @@ class UAGBTimeline extends Component {
         );
     }
 
-    componentDidMount() {        
+    componentDidMount() {   
+        //Store lient id. 
+        this.props.setAttributes( { tm_client_id: this.props.clientId } );
+
         var id = this.props.clientId;
         window.addEventListener("load", this.uagbTimelineFunc_back(id));
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
@@ -678,7 +682,7 @@ class UAGBTimeline extends Component {
                 time.uagbTimelineFunc_back(id);
             //},10));  
         });
-    }
+    }  
 
     componentDidUpdate(){
         var id = this.props.clientId;
@@ -692,7 +696,8 @@ class UAGBTimeline extends Component {
             //},10));  
         });
     }
-
+   
+    // Js for timeline line and inner line filler.
     uagbTimelineFunc_back(id){
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
@@ -829,6 +834,7 @@ class UAGBTimeline extends Component {
             align_class        = '',
             align_item_class   = '';           
 
+        tm_block_id = 'uagb-'+this.props.clientId;
         const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
@@ -1054,12 +1060,6 @@ class UAGBTimeline extends Component {
             }                   
     }
 
-    /* Render js */
-    uagb_get_timeline_content_css(){
-        console.log(this.elements);
-        //var timeline            = $('.uagb-timeline');
-        //console.log(timeline);
-    }    
 
 }
 

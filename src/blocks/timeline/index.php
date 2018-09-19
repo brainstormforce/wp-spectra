@@ -46,6 +46,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
     $tm_block_id        = $attributes['tm_block_id'];
+    $tm_client_id       = $attributes['tm_client_id'];
     $borderwidth        = $attributes['borderwidth'];    
 	$headSpace 			= $attributes['headSpace'];   
 	$borderwidth 		= $attributes['borderwidth'];   
@@ -73,7 +74,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $arrow_align_class  = 'uagb-top-arrow';
     $seperator_margin   =  (int)($separatorwidth/2);
     $vert_per           =  (int)($verticalSpace * 75)/100;	
-
+    $tm_block_id  = 'uagb-'.$tm_client_id ;
    	/* Arrow position */
         $arrow_align_class  = 'uagb-timeline-arrow-top';
         if( $arrowlinAlignment == 'center' ){
@@ -559,6 +560,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => '0',
 			),
+            'tm_client_id'  => array(
+                'type' => 'string',
+                'default' => 'not_set',
+            ),
 			'icon' => array(
 				'type' => 'string',
 				'default' => 'calendar'
