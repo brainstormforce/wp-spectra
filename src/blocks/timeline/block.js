@@ -129,6 +129,7 @@ class UAGBTimeline extends Component {
             subHeadingColor,
             backgroundColor,
             separatorColor,
+            separatorFillColor,
             separatorBg,
             separatorBorder,
             headingTag,
@@ -514,6 +515,19 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+
+                    <PanelColor
+                        title={ __( 'Line Fill Color' ) }
+                        colorValue={ separatorFillColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorFillColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    
                     <PanelColor
                         title={ __( 'Background Color' ) }
                         colorValue={ separatorBg }
@@ -797,6 +811,7 @@ class UAGBTimeline extends Component {
             dateBottomspace    = attr.dateBottomspace,
             backgroundColor    = attr.backgroundColor,
             separatorColor     = attr.separatorColor,
+            separatorFillColor = attr.separatorFillColor,
             separatorBg        = attr.separatorBg,
             separatorBorder    = attr.separatorBorder,
             timelinAlignment   = attr.timelinAlignment,
@@ -847,7 +862,7 @@ class UAGBTimeline extends Component {
                         '  border-right-color:'+backgroundColor+
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline__line__inner{'+
-                            'background-color:'+separatorColor+';'+
+                            'background-color:'+separatorFillColor+';'+
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline__line{'+
                             'background-color:'+separatorColor+';'+

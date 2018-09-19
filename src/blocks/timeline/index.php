@@ -28,6 +28,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $subHeadSpace       = $attributes['subHeadSpace'];
     $backgroundColor    = $attributes['backgroundColor'];
     $separatorColor     = $attributes['separatorColor'];
+    $separatorFillColor = $attributes['separatorFillColor'];
     $separatorBg        = $attributes['separatorBg'];
     $separatorBorder    = $attributes['separatorBorder'];
     $timelinAlignment   = $attributes['timelinAlignment'];
@@ -104,7 +105,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     	border-right-color:'.$backgroundColor.
                     '}
                     .'. $tm_block_id .' .uagb-timeline__line__inner{
-                        background-color:'.$separatorColor.';'.
+                        background-color:'.$separatorFillColor.';'.
                     '}
                     .'. $tm_block_id .' .uagb-timeline__line{
                         background-color:'.$separatorColor.';
@@ -410,6 +411,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => '#eee',
 			),
+            'separatorFillColor' => array(
+                'type' => 'string',
+                'default' => '#7adcb5',
+            ),
 			'separatorBorder' => array(
 				'type' => 'string',
 				'default' => '#eee',
