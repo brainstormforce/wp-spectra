@@ -751,10 +751,8 @@ class UAGBTimeline extends Component {
             } else {
                 photoViewportOffsetTop = -Math.abs(photoViewportOffsetTop);
             }
-            //console.log(viewportHeightHalf_1 + photoViewportOffsetTop);
 
             if ( elementPos < (viewportHeightHalf) ) {
-                console.log('1');
                 if ( (viewportHeightHalf) + Math.abs(photoViewportOffsetTop) < (elementEnd) ) {
                     line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
                 }else{
@@ -763,7 +761,6 @@ class UAGBTimeline extends Component {
                     }
                 }
             } else {
-                console.log('2');
                 if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
                     if (0 > photoViewportOffsetTop) {
                         line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop));
