@@ -14,6 +14,7 @@ class Blog extends React.Component {
 		const { attributes, className, latestPosts, blogID } = this.props;
 
 		const {
+			block_id,
 			displayPostImage,
 			columns,
 			postsToShow,
@@ -23,6 +24,8 @@ class Blog extends React.Component {
 			contentPadding,
 			equalHeight
 		} = attributes;
+
+		console.log(attributes);
 
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
@@ -38,7 +41,8 @@ class Blog extends React.Component {
 					'uagb-post-grid',
 					'uagb-post__arrow-outside'
 				) }
-				data-blog-id={blogID}
+				data-block-id={block_id}
+				id={ `uagb-post__grid-${ block_id }` }
 			>
 				<div
 					className={ classnames(

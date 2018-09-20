@@ -48,6 +48,13 @@ class UAGBPostGrid extends Component {
 		this.toggleEqualHeight= this.toggleEqualHeight.bind(this);
 	}
 
+	 componentDidMount() {
+
+	 	this.props.setAttributes( { block_id: this.props.block_id } );
+	 	this.setState({ block_id: this.props.block_id });
+        console.log( this.props.block_id );
+    }
+
 	toggleDisplayPostComment() {
 		const { displayPostComment } = this.props.attributes;
 		const { setAttributes } = this.props;
@@ -105,6 +112,7 @@ class UAGBPostGrid extends Component {
 			latestPosts
 		} = this.props;
 		const {
+			block_id,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -379,7 +387,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ 'center', 'wide' ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} />
 			</Fragment>
 		);
 	}

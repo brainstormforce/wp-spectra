@@ -111,7 +111,7 @@ function uagb_get_carousel_script( $attributes ) {
 
 function uagb_get_post_html( $attributes, $query, $layout ) {
 ?>
-	<div class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?> uagb-post__arrow-outside">
+	<div id="<?php echo 'uagb-post__' . $layout . '-' . $attributes['block_id']; ?>" class="uagb-post-grid <?php echo ( isset( $attributes['className'] ) ) ? $attributes['className'] : ''; ?> uagb-post__arrow-outside">
 
 		<div class="uagb-post__items uagb-post__columns-<?php echo $attributes['columns']; ?> is-<?php echo $layout; ?>">
 
@@ -139,6 +139,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 
 	register_block_type( 'uagb/post-grid', array(
 		'attributes' => array(
+			'block_id'  => array(
+                'type' => 'string',
+                'default' => 'not_set',
+            ),
 			'categories' => array(
 				'type' => 'string',
 			),
@@ -263,6 +267,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 
 	register_block_type( 'uagb/post-carousel', array(
 		'attributes' => array(
+			'block_id'  => array(
+                'type' => 'string',
+                'default' => 'not_set',
+            ),
 			'categories' => array(
 				'type' => 'string',
 			),
@@ -395,6 +403,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 
 	register_block_type( 'uagb/post-masonry', array(
 		'attributes' => array(
+			'block_id'  => array(
+                'type' => 'string',
+                'default' => 'not_set',
+            ),
 			'categories' => array(
 				'type' => 'string',
 			),
@@ -657,11 +669,18 @@ function uagb_render_meta( $attributes ) {
 	global $post;
 	?>
 	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>">
-		<div class="uagb-post__author fa fa-user" style="color: rgb(119, 119, 119);">
+		<div class="uagb-post__author" style="color: rgb(119, 119, 119);">
+			<i class="dashicons-admin-users dashicons"></i>
 			<?php the_author_posts_link(); ?>
 		</div>
-		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date fa fa-clock-o"><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time>
-		<div class="uagb-post__comment fa fa-comment"><?php comments_number(); ?></div>
+		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
+			<i class="dashicons-calendar dashicons"></i>
+			<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
+		</time>
+		<div class="uagb-post__comment">
+			<i class="dashicons-admin-comments dashicons"></i>
+			<?php comments_number(); ?>
+		</div>
 	</div>
 	<?php
 }

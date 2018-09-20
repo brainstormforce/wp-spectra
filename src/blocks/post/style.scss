@@ -31,9 +31,13 @@
 		height: 100%;
 	}
 
-	.uagb-post__comment:before,
-	.uagb-post__author:before,
-	.uagb-post__date:before {
+	.uagb-post__author i,
+	.uagb-post__comment i,
+	.uagb-post__date i {
+		font-size: inherit;
+		line-height: inherit;
+		width: inherit;
+		height: inherit;
 		margin-right: 4px;
 	}
 

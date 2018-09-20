@@ -49,9 +49,13 @@
     flex-wrap: wrap; }
   .uagb-post-grid .is-grid.uagb-post__equal-height-true .uagb-post__inner-wrap {
     height: 100%; }
-  .uagb-post-grid .uagb-post__comment:before,
-  .uagb-post-grid .uagb-post__author:before,
-  .uagb-post-grid .uagb-post__date:before {
+  .uagb-post-grid .uagb-post__author i,
+  .uagb-post-grid .uagb-post__comment i,
+  .uagb-post-grid .uagb-post__date i {
+    font-size: inherit;
+    line-height: inherit;
+    width: inherit;
+    height: inherit;
     margin-right: 4px; }
   .uagb-post-grid .uagb-post__columns-8 article {
     width: 12.5%; }
