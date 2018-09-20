@@ -713,7 +713,7 @@ class UAGBTimeline extends Component {
    
     // Js for timeline line and inner line filler.
     uagbTimelineFunc_back(id){
-        console.log(id);
+        //console.log(id);
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
@@ -992,7 +992,7 @@ class UAGBTimeline extends Component {
                                 }
 
                                 return (
-                                    <div className = "uagb-timeline-field animate-border">
+                                    <div className = "uagb-timeline-field animate-border"  key={index}>
                                         <div className = {content_align_class}> 
                                             <div className = "uagb-timeline-marker in-view-timeline-icon">
                                                 <i className = {icon_class}></i>
