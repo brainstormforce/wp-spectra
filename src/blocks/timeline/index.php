@@ -201,72 +201,40 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 				// Get the post ID..
             	$post_id = $post->ID; 
             	$second_index = 'uagb-'.$index;
-                if( $timelinAlignment == 'center'){
-                    $display_inner_date = true;
-                    if( $index % 2 == '0'){
-                        $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-                        $day_align_class = 'uagb-day-new uagb-day-right';
-                    }else{
-                        $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-                        $day_align_class = 'uagb-day-new uagb-day-left';
-                    }  
-                }
                 
-    	            $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
-				
-					$list_items_markup .= sprintf( '<article class = "uagb-timeline-field animate-border" >');
-					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $content_align_class ) );
-					
-					// Icon
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-marker in-view-timeline-icon" >' );
-					$list_items_markup .= sprintf( '<i class = "%1$s" >',esc_attr( $icon_class ) );
-					$list_items_markup .= sprintf( '</i>');
-					$list_items_markup .= sprintf( '</div>'); // End of icon div.
+                    if( $timelinAlignment == 'center'){
+                        $display_inner_date = true;
+                        if( $index % 2 == '0'){
+                            $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                            $day_align_class = 'uagb-day-new uagb-day-right';
+                        }else{
+                            $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                            $day_align_class = 'uagb-day-new uagb-day-left';
+                        }  
+                    }
+                
+                    $list_items_markup .= sprintf( '<article class = "uagb-timeline-field animate-border" >');
+                    $list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $content_align_class ) );
+                    
+                    // Icon.   
+                    $list_items_markup .= uagb_get_timeline_icon($attributes);
  
-					//Day align fo center.
+					// Day align fo center.
 					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $day_align_class ) );
 					$list_items_markup .= sprintf( '<div class = "uagb-events-new" style = "text-align:%1$s">',esc_attr( $align ));
 					$list_items_markup .= sprintf( '<div class = "uagb-events-inner-new" style= "background-color:%1$s" >',esc_attr( $backgroundColor ) );
 					
 					// Get the post date.
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-date-hide uagb-date-inner" >' );
-					if ( isset( $attributes['displayPostDate'] ) && $displayPostDate ) {
-		                $list_items_markup .= sprintf(
-		                    '<div datetime="%1$s" class="inner-date-new">%2$s</div>',
-		                    esc_attr( get_the_date( 'c', $post_id ) ),
-		                    esc_html( get_the_date( '', $post_id ) )
-		                );
-		            }
-					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-date-hide.	
+                    $list_items_markup .= uagb_get_timeline_date( $attributes, $post_id );	
 
 					// Meta Content.
 					$list_items_markup .= sprintf( '<div class = "uagb-content" >' );
 					
-					// Get the post thumbnail 
-					$post_thumb_id = get_post_thumbnail_id( $post_id );
-					
-					// Get the featured image
-					if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {						
-						
-						$list_items_markup .= sprintf( 
-							'<div class="uagb-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
-							esc_url( get_permalink( $post_id ) ),
-							wp_get_attachment_image( $post_thumb_id, $imageSize) 
-						);
-					}
+                    // Image
+                    $list_items_markup .= uagb_get_timeline_image( $attributes, $post_id );
 
-					// Get the post title
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-heading-text" >');					 
-            		$title = get_the_title( $post_id );
-            		if ( ! $title ) {
-		                $title = __( 'Untitled' );
-		            }
-		            $list_items_markup .= sprintf(
-		                '<'.$headingTag.' class="uagb-timeline-heading" style="color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></'.$headingTag.'>',
-		                esc_url( get_permalink( $post_id ) ),
-		                esc_html( $title )
-		            );
-					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-heading-text.					
+                    // Get the post title
+                    $list_items_markup .= uagb_get_timeline_title( $attributes, $post_id );
 
 					// Get the post author
 		            if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
@@ -279,9 +247,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 
 		            // Get the excerpt
 		            $excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-		            //var_dump($post_id);
 		            if( empty( $excerpt ) ) {
-		            	//var_dump($post->post_content);
 		                $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, $exerptLength ) );
 		            }
 
@@ -295,15 +261,9 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 						$list_items_markup .= sprintf( '</div>'); // uagb-timeline-heading-text.					
 		            }
 
-		            if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-						$list_items_markup .= sprintf(
-							'<p><a class="uagb-block-post-link" href="%1$s" rel="bookmark">%2$s</a></p>',
-							esc_url( get_permalink( $post_id ) ),
-							esc_html( $attributes['readMoreText'] )
-						);
-					}
+                    $list_items_markup .= uagb_get_timeline_read_more_data( $attributes, $post_id );
 
-					//Arrow
+					//Arrow.
 					$list_items_markup .= sprintf( '<div class = "uagb-timeline-arrow" ></div>');		 
 
 					$list_items_markup .= sprintf( '</div>'); // End of uagb-content.		
@@ -311,18 +271,9 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 					$list_items_markup .= sprintf( '</div>'); // End of uagb events new.
 					$list_items_markup .= sprintf( '</div>'); // End of day align class.
 
+    				//Date time for center laout.
                     if( $timelinAlignment == 'center'){
-    					//Date time for center laout.
-    					$list_items_markup .= sprintf( '<div class = "uagb-timeline-date-new" >');		 
-    					// Get the post date
-    					if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
-    						$list_items_markup .= sprintf(
-    							'<div datetime="%1$s" class="uagb-date-new">%2$s</div>',
-    							esc_attr( get_the_date( 'c', $post_id ) ),
-    							esc_html( get_the_date( '', $post_id ) )
-    						);
-    					}
-    					$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-date-new.
+                        $list_items_markup .= uagb_get_timeline_central_date( $attributes, $post_id );
                     }
 
 					$list_items_markup .= sprintf( '</div>'); // End of content align class.				
@@ -348,7 +299,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 }
 
 /**
- * Registers the `core/latest-posts` block on server.
+ * Registers the `timeline` block on server.
  */
 function uagb_blocks_register_block_timeline_posts() {
 	
@@ -590,18 +541,7 @@ function uagb_blocks_register_timeline_rest_fields() {
 			'update_callback' => null,
 			'schema' => null,
 		)
-	);
-
-	/*// Add square featured image source
-	register_rest_field(
-		'post',
-		'featured_image_src_square',
-		array(
-			'get_callback' => 'uagb_blocks_get_tm_image_src_square',
-			'update_callback' => null,
-			'schema' => null,
-		)
-	);*/
+	);	
 	
 	// Add author info
 	register_rest_field(
@@ -649,17 +589,7 @@ function uagb_blocks_get_tm_image_src( $object, $field_name, $request ) {
     return $feat_img_array;
 }
 
-/**
- * Get square featured image source for the rest field
- */
-function uagb_blocks_get_tm_image_src_square( $object, $field_name, $request ) {
-	$feat_img_array = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'ab-block-post-grid-square',
-		false
-	);
-	return $feat_img_array[0];
-}
+
 
 /**
  * Get author info for the rest field
@@ -673,4 +603,125 @@ function uagb_blocks_get_timeline_author_info( $object, $field_name, $request ) 
 	
 	// Return the author data
 	return $author_data;
+}
+
+/**
+ * Function Name: uagb_get_timeline_icon.
+ * @param  array $attributes attribute array.
+ * @return string             [description]
+ */
+function uagb_get_timeline_icon($attributes){
+
+    $icon               = $attributes['icon']; 
+    $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
+    $output = '';
+    $output .= sprintf( '<div class = "uagb-timeline-marker in-view-timeline-icon" >' );
+    $output .= sprintf( '<i class = "%1$s" >',esc_attr( $icon_class ) );
+    $output .= sprintf( '</i>');
+    $output .= sprintf( '</div>'); // End of icon div.
+
+    return $output;
+}
+
+/**
+ * Function Name: uagb_get_timeline_image.
+ * @param  array $attributes attribute array.
+ * @return string            HTML.
+ */
+function uagb_get_timeline_image( $attributes, $post_id ){
+    
+    // Get the post thumbnail. 
+    $post_thumb_id = get_post_thumbnail_id($post_id);
+    $output = '';
+    // Get the featured image.
+    if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) { 
+        $output .= sprintf( 
+            '<div class="uagb-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
+            esc_url( get_permalink( $post_id ) ),
+            wp_get_attachment_image( $post_thumb_id, $attributes['imageSize']) 
+        );
+    }
+    return $output;
+}
+
+/**
+ * Function Name: uagb_get_timeline_image.
+ * @param  array $attributes attribute array.
+ * @return string            HTML.
+ */
+function uagb_get_timeline_date( $attributes, $post_id ){
+    
+    $output = '';
+    $output .= sprintf( '<div class = "uagb-timeline-date-hide uagb-date-inner" >' );
+    if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+        $output .= sprintf(
+            '<div datetime="%1$s" class="inner-date-new">%2$s</div>',
+            esc_attr( get_the_date( 'c', $post_id ) ),
+            esc_html( get_the_date( '', $post_id ) )
+        );
+    }
+    $output .= sprintf( '</div>'); // End of uagb-timeline-date-hide.
+    return $output;
+}
+
+/**
+ * Function Name: uagb_get_timeline_title.
+ * @param  array $attributes attribute array.
+ * @return string            HTML.
+ */
+function uagb_get_timeline_title( $attributes, $post_id ){
+    
+    $output = '';
+    $output .= sprintf( '<div class = "uagb-timeline-heading-text" >');                   
+    $title = get_the_title( $post_id );
+    if ( ! $title ) {
+        $title = __( 'Untitled' );
+    }
+    $output .= sprintf(
+        '<'.$attributes['headingTag'].' class="uagb-timeline-heading" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;margin-bottom:'.$attributes['headSpace'].'px"><a href="%1$s" rel="bookmark">%2$s</a></'.$attributes['headingTag'].'>',
+        esc_url( get_permalink( $post_id ) ),
+        esc_html( $title )
+    );
+    $output .= sprintf( '</div>'); // End of uagb-timeline-heading-text. 
+    return $output;
+
+}
+
+/**
+ * Function Name: uagb_get_timeline_central_date.
+ * @param  array $attributes attribute array.
+ * @return string            HTML.
+ */
+function uagb_get_timeline_central_date( $attributes, $post_id ){
+    
+    $output = '';
+    $output .= sprintf( '<div class = "uagb-timeline-date-new" >');       
+    // Get the post date.
+    if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+        $output .= sprintf(
+            '<div datetime="%1$s" class="uagb-date-new">%2$s</div>',
+            esc_attr( get_the_date( 'c', $post_id ) ),
+            esc_html( get_the_date( '', $post_id ) )
+        );
+    }
+    $output .= sprintf( '</div>'); // End of uagb-timeline-date-new.
+    return $output;
+
+}
+
+/**
+ * Function Name: uagb_get_timeline_read_more_data.
+ * @param  array $attributes attribute array.
+ * @return string            HTML.
+ */
+function uagb_get_timeline_read_more_data( $attributes, $post_id ){
+    $output = '';
+    if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
+        $output .= sprintf(
+            '<p><a class="uagb-block-post-link" href="%1$s" rel="bookmark">%2$s</a></p>',
+            esc_url( get_permalink( $post_id ) ),
+            esc_html( $attributes['readMoreText'] )
+        );
+    }
+    return $output;
 }
