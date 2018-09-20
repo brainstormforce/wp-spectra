@@ -58,18 +58,8 @@ class UAGBTimeline extends Component {
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor  = this.toggleDisplayPostAuthor.bind( this );
         this.toggleDisplayPostImage   = this.toggleDisplayPostImage.bind( this );
-        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );
-        
-        // Get unique id
-        this.uagbGetId = this.uagbGetId.bind(this);        
-   }
-
-    uagbGetId(){
-        const block_id = _.uniqueId("uagb-tl-block-no-");        
-        if( this.props.attributes.tm_block_id == 0 ){ 
-            this.props.setAttributes( { tm_block_id: block_id } );
-        }
-    }
+        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );      
+   }    
 
     toggleDisplayPostDate() {
         const { displayPostDate } = this.props.attributes;
@@ -115,9 +105,6 @@ class UAGBTimeline extends Component {
  
     render() {   
         
-        //Get id
-        //this.uagbGetId();
-        //console.log(this.props.attributes.tm_client_id);
         const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
        
         const {
@@ -175,11 +162,7 @@ class UAGBTimeline extends Component {
             tm_client_id,
         } = attributes;
 
-        // Thumbnail options
-        /*const imageCropOptions = [
-            { value: 'landscape', label: __( 'Landscape' ) },
-            { value: 'square', label: __( 'Square' ) },
-        ];*/
+        /* Image size options */
         const imageSizeOptions = [
             { value: 'thumbnail', label: __( 'Thumbnail' ) },
             { value: 'medium', label: __( 'Medium' ) },
@@ -227,7 +210,7 @@ class UAGBTimeline extends Component {
         const timeline_control = (
 
             <InspectorControls>                
-                 { <PanelBody title={ __( 'Post Settings' ) }
+                <PanelBody title={ __( 'Query' ) }
                     initialOpen={ false }
                     >
                     <QueryControls
@@ -239,7 +222,9 @@ class UAGBTimeline extends Component {
                         onOrderByChange={ ( value ) => { setAttributes( { orderBy: value } ); } }
                         onCategoryChange={ ( value ) => { setAttributes( { categories: '' !== value ? value : undefined } ) ; } }
                         onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
-                    />                   
+                    />
+                </PanelBody>
+                 <PanelBody title={ __( 'Image' ) }>
                     <ToggleControl
                         label={ __( 'Display Featured Image' ) }
                         checked={ displayPostImage }
@@ -252,7 +237,9 @@ class UAGBTimeline extends Component {
                             value={ imageSize }
                             onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
                         />
-                    }    
+                    }   
+                </PanelBody>
+                <PanelBody title={ __( 'Content' ) }> 
                     <ToggleControl
                         label={ __( 'Display Post Author' ) }
                         checked={ displayPostAuthor }
@@ -291,10 +278,9 @@ class UAGBTimeline extends Component {
                         value={ readMoreText }
                         onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
                     />                                      
-                    }                    
-
-                </PanelBody>} 
-                 <PanelBody 
+                    }  
+                </PanelBody> 
+                <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
                 >          
@@ -693,11 +679,8 @@ class UAGBTimeline extends Component {
         window.addEventListener("load", this.uagbTimelineFunc_back(id));
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
         var time = this;
-        $('.edit-post-layout__content').scroll( function(event) {             
-            //clearTimeout($.data(this, 'uagb_scrollEvent'));
-           // $.data(this, 'uagb_scrollEvent', setTimeout(function() {
-                time.uagbTimelineFunc_back(id);
-            //},10));  
+        $('.edit-post-layout__content').scroll( function(event) {            
+            time.uagbTimelineFunc_back(id);            
         });
     }  
 
@@ -707,16 +690,12 @@ class UAGBTimeline extends Component {
         window.addEventListener("resize", this.uagbTimelineFunc_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {             
-            //clearTimeout($.data(this, 'uagb_scrollEvent'));
-            //$.data(this, 'uagb_scrollEvent', setTimeout(function() {
-                time.uagbTimelineFunc_back(id);
-            //},10));  
+            time.uagbTimelineFunc_back(id);
         });
     }
    
     // Js for timeline line and inner line filler.
     uagbTimelineFunc_back(id){
-        //console.log(id);
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
