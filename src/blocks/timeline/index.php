@@ -214,7 +214,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                 
     	            $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
 				
-					$list_items_markup .= sprintf( '<div class = "uagb-timeline-field animate-border" >');
+					$list_items_markup .= sprintf( '<article class = "uagb-timeline-field animate-border" >');
 					$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $content_align_class ) );
 					
 					// Icon
@@ -262,7 +262,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		                $title = __( 'Untitled' );
 		            }
 		            $list_items_markup .= sprintf(
-		                '<h2 class="uagb-timeline-heading" style="color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></h2>',
+		                '<'.$headingTag.' class="uagb-timeline-heading" style="color:'.$headingColor.';font-size:'.$headFontSize.'px;margin-bottom:'.$headSpace.'px"><a href="%1$s" rel="bookmark">%2$s</a></'.$headingTag.'>',
 		                esc_url( get_permalink( $post_id ) ),
 		                esc_html( $title )
 		            );
@@ -326,7 +326,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     }
 
 					$list_items_markup .= sprintf( '</div>'); // End of content align class.				
-					$list_items_markup .= sprintf( '</div>'); // End of uagb-timline-field.
+					$list_items_markup .= sprintf( '</article>'); // End of uagb-timline-field.
 			}
 
 			$list_items_markup .= sprintf( '</div>'); // End of uagb-timeline-infinite-load.

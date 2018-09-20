@@ -993,7 +993,7 @@ class UAGBTimeline extends Component {
                                     var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
                                 }
                                 return (
-                                    <div className = "uagb-timeline-field animate-border"  key={index}>
+                                    <article className = "uagb-timeline-field animate-border"  key={index}>
                                         <div className = {content_align_class}> 
                                             <div className = "uagb-timeline-marker in-view-timeline-icon">
                                                 <i className = {icon_class}></i>
@@ -1071,7 +1071,7 @@ class UAGBTimeline extends Component {
                                                 </div>
                                             }
                                         </div>
-                                    </div> 
+                                    </article> 
                                 );
                             })}        
                     </div>);
