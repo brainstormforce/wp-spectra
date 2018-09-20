@@ -42,7 +42,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $displayPostAuthor  = $attributes['displayPostAuthor'];
     $displayPostLink    = $attributes['displayPostLink'];   
     $width              = $attributes['width'];
-    $imageCrop          = $attributes['imageCrop'];
+    $imageSize          = $attributes['imageSize'];
     $readMoreText       = $attributes['readMoreText'];
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
@@ -57,7 +57,6 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$displayPostDate 	= $attributes['displayPostDate'];   
 	$displayPostExcerpt = $attributes['displayPostExcerpt'];   
 	$displayPostAuthor 	= $attributes['displayPostAuthor'];   
-	$displayPostImage 	= $attributes['displayPostImage'];   
 	$displayPostLink 	= $attributes['displayPostLink'];   
 	$align 				= $attributes['align'];   
 	$icon 				= $attributes['icon'];   
@@ -245,24 +244,14 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 					
 					// Get the post thumbnail 
 					$post_thumb_id = get_post_thumbnail_id( $post_id );
-					if ( $post_thumb_id && isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] ) {
-						$post_thumb_class = 'has-thumb';
-					} else {
-						$post_thumb_class = 'no-thumb';
-					}
-
+					
 					// Get the featured image
-					if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-						if( $attributes['imageCrop'] === 'landscape' ) {
-							$post_thumb_size = 'ab-block-post-grid-landscape';
-						} else {
-							$post_thumb_size = 'ab-block-post-grid-square';
-						}
+					if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {						
 						
 						$list_items_markup .= sprintf( 
 							'<div class="uagb-block-post-grid-image"><a href="%1$s" rel="bookmark">%2$s</a></div>',
 							esc_url( get_permalink( $post_id ) ),
-							wp_get_attachment_image( $post_thumb_id, $post_thumb_size ) 
+							wp_get_attachment_image( $post_thumb_id, $imageSize) 
 						);
 					}
 
@@ -361,7 +350,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 /**
  * Registers the `core/latest-posts` block on server.
  */
-function uagb_blocks_register_block_core_latest_posts() {
+function uagb_blocks_register_block_timeline_posts() {
 	
 	// Check if the register function exists
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -379,14 +368,7 @@ function uagb_blocks_register_block_core_latest_posts() {
     }
 
 	register_block_type( 'uagb/timeline', array(
-		'attributes' => array(
-			'tm_post' => array(
-				'type' => 'array',
-				'default' => [],
-				'items'   => [
-					'type' => 'object',
-				],
-			),
+		'attributes' => array(			
 			'align'   => array(
 				'type' => 'string',
 				'default' => 'center',
@@ -553,9 +535,9 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'type' => 'string',
 				'default' => 'date',
 			),
-			'imageCrop'  => array(
+			'imageSize'  => array(
 				'type' => 'string',
-				'default' => 'landscape',
+				'default' => 'medium',
 			),
 			'readMoreText'  => array(
 				'type' => 'string',
@@ -591,66 +573,86 @@ function uagb_blocks_register_block_core_latest_posts() {
 	) );
 }
 
-add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
+add_action( 'init', 'uagb_blocks_register_block_timeline_posts' );
 
 
 /**
  * Create API fields for additional info
  */
-function uagb_blocks_register_rest_fields() {   
+function uagb_blocks_register_timeline_rest_fields() {   
 
 	// Add landscape featured image source
 	register_rest_field(
 		'post',
 		'featured_image_src',
 		array(
-			'get_callback' => 'uagb_blocks_get_image_src_landscape',
+			'get_callback' => 'uagb_blocks_get_tm_image_src',
 			'update_callback' => null,
 			'schema' => null,
 		)
 	);
 
-	// Add square featured image source
+	/*// Add square featured image source
 	register_rest_field(
 		'post',
 		'featured_image_src_square',
 		array(
-			'get_callback' => 'uagb_blocks_get_image_src_square',
+			'get_callback' => 'uagb_blocks_get_tm_image_src_square',
 			'update_callback' => null,
 			'schema' => null,
 		)
-	);
+	);*/
 	
 	// Add author info
 	register_rest_field(
 		'post',
 		'author_info',
 		array(
-			'get_callback' => 'uagb_blocks_get_author_info',
+			'get_callback' => 'uagb_blocks_get_timeline_author_info',
 			'update_callback' => null,
 			'schema' => null,
 		)
 	);
 }
-add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
+add_action( 'rest_api_init', 'uagb_blocks_register_timeline_rest_fields' );
 
 
 /**
  * Get landscape featured image source for the rest field
  */
-function uagb_blocks_get_image_src_landscape( $object, $field_name, $request ) {
-	$feat_img_array = wp_get_attachment_image_src(
+function uagb_blocks_get_tm_image_src( $object, $field_name, $request ) {
+	
+    $feat_img_array['large'] = wp_get_attachment_image_src(
 		$object['featured_media'],
 		'ab-block-post-grid-landscape',
 		false
 	);
-	return $feat_img_array[0];
+
+	$feat_img_array['medium'] = wp_get_attachment_image_src(
+        $object['featured_media'],
+        'medium',
+        false
+    );
+
+    $feat_img_array['medium_large'] = wp_get_attachment_image_src(
+        $object['featured_media'],
+        'medium_large',
+        false
+    );
+
+    $feat_img_array['thumbnail'] = wp_get_attachment_image_src(
+        $object['featured_media'],
+        'thumbnail',
+        false
+    );
+
+    return $feat_img_array;
 }
 
 /**
  * Get square featured image source for the rest field
  */
-function uagb_blocks_get_image_src_square( $object, $field_name, $request ) {
+function uagb_blocks_get_tm_image_src_square( $object, $field_name, $request ) {
 	$feat_img_array = wp_get_attachment_image_src(
 		$object['featured_media'],
 		'ab-block-post-grid-square',
@@ -662,7 +664,7 @@ function uagb_blocks_get_image_src_square( $object, $field_name, $request ) {
 /**
  * Get author info for the rest field
  */
-function uagb_blocks_get_author_info( $object, $field_name, $request ) {
+function uagb_blocks_get_timeline_author_info( $object, $field_name, $request ) {
 	// Get the author name
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
 	

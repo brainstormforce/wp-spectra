@@ -116,13 +116,12 @@ class UAGBTimeline extends Component {
     render() {   
         
         //Get id
-        this.uagbGetId();
+        //this.uagbGetId();
         //console.log(this.props.attributes.tm_client_id);
         const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
        
         const {
             className,
-            tm_post,
             tm_content,
             post_content,
             headingColor,
@@ -160,7 +159,7 @@ class UAGBTimeline extends Component {
             categories,
             postsToShow,
             width,
-            imageCrop,
+            imageSize,
             readMoreText,
             icon,
             iconColor,
@@ -177,13 +176,17 @@ class UAGBTimeline extends Component {
         } = attributes;
 
         // Thumbnail options
-        const imageCropOptions = [
+        /*const imageCropOptions = [
             { value: 'landscape', label: __( 'Landscape' ) },
             { value: 'square', label: __( 'Square' ) },
+        ];*/
+        const imageSizeOptions = [
+            { value: 'thumbnail', label: __( 'Thumbnail' ) },
+            { value: 'medium', label: __( 'Medium' ) },
+            { value: 'medium_large', label: __( 'Medium Large' ) },
+            { value: 'large', label: __( 'Large' ) }
         ];
 
-        const isLandscape = imageCrop === 'landscape';
-        
         const MyDashicon = [
             { value: 'admin-home', label: __( 'admin-home' ) },
             { value: 'products', label: __( 'products' ) },
@@ -245,9 +248,9 @@ class UAGBTimeline extends Component {
                     { displayPostImage &&
                         <SelectControl
                             label={ __( 'Featured Image Style' ) }
-                            options={ imageCropOptions }
-                            value={ imageCrop }
-                            onChange={ ( value ) => this.props.setAttributes( { imageCrop: value } ) }
+                            options={ imageSizeOptions }
+                            value={ imageSize }
+                            onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
                         />
                     }    
                     <ToggleControl
@@ -837,7 +840,7 @@ class UAGBTimeline extends Component {
             categories         = attr.categories,
             postsToShow        = attr.postsToShow,
             width              = attr.width,
-            imageCrop          = attr.imageCrop,
+            imageSize          = attr.imageSize,
             readMoreText       = attr.readMoreText,
             icon               = attr.icon,
             iconColor          = attr.iconColor,
@@ -852,7 +855,6 @@ class UAGBTimeline extends Component {
             align_item_class   = '';           
 
         tm_block_id = 'uagb-'+this.props.clientId;
-        const isLandscape = imageCrop === 'landscape';
 
          /* Style for elements */
         var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
@@ -988,9 +990,8 @@ class UAGBTimeline extends Component {
                                 var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
                                 
                                 if( displayPostExcerpt && post.excerpt ){
-                                    var trimmed_excerpt =  (post.excerpt.rendered).split(/\s+/).slice(0,exerptLength).join(" ");
+                                    var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
                                 }
-
                                 return (
                                     <div className = "uagb-timeline-field animate-border"  key={index}>
                                         <div className = {content_align_class}> 
@@ -1011,11 +1012,11 @@ class UAGBTimeline extends Component {
                                                                
                                                             <div className="uagb-content">
                                                                 {
-                                                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src ? (
+                                                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src && imageSize && post.featured_image_src[imageSize] ? (
                                                                         <div className="uagb-block-post-grid-image">
                                                                             <a href={ post.link } target="_blank" rel="bookmark">
-                                                                                <img
-                                                                                    src={ isLandscape ? post.featured_image_src : post.featured_image_src_square }
+                                                                              <img
+                                                                                    src={ post.featured_image_src[imageSize][0] }
                                                                                     alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
                                                                                 />
                                                                             </a>
