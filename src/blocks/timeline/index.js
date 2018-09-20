@@ -44,7 +44,7 @@ const validAlignments = [ 'center', 'left', 'right' ];
 
 // Register the block
 registerBlockType( 'uagb/timeline', {
-    title: __( 'Timeline' ),
+    title: __( 'Timeline - UAGB' ),
     description: __( 'Add a timeline to your page.' ),
     icon: 'grid-view',
     category: 'common',

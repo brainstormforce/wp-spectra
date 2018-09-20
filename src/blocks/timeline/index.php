@@ -18,14 +18,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		'category' => $attributes['categories'],
 	), 'OBJECT' );
 
-	$headingTag         = $attributes['headingTag'];
     $headingAlign       = '';
-    $headFontSize       = $attributes['headFontSize'];
-    $headingColor       = $attributes['headingColor'];
-    $headSpace          = $attributes['headSpace'];
-    $subHeadFontSize    = $attributes['subHeadFontSize'];
-    $subHeadingColor    = $attributes['subHeadingColor'];
-    $subHeadSpace       = $attributes['subHeadSpace'];
     $backgroundColor    = $attributes['backgroundColor'];
     $separatorColor     = $attributes['separatorColor'];
     $separatorFillColor = $attributes['separatorFillColor'];
@@ -36,63 +29,44 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $horizontalSpace    = $attributes['horizontalSpace'];
     $separatorwidth     = $attributes['separatorwidth'];
     $connectorBgsize    = $attributes['connectorBgsize'];
-    $displayPostImage   = $attributes['displayPostImage'];
-    $displayPostDate    = $attributes['displayPostDate'];
-    $displayPostExcerpt = $attributes['displayPostExcerpt'];
-    $displayPostAuthor  = $attributes['displayPostAuthor'];
-    $displayPostLink    = $attributes['displayPostLink'];   
-    $width              = $attributes['width'];
-    $imageSize          = $attributes['imageSize'];
-    $readMoreText       = $attributes['readMoreText'];
     $verticalSpace      = $attributes['verticalSpace'];
     $className 			= $attributes['className'];
-    $tm_block_id        = $attributes['tm_block_id'];
     $tm_client_id       = $attributes['tm_client_id'];
     $borderwidth        = $attributes['borderwidth'];    
-	$headSpace 			= $attributes['headSpace'];   
 	$borderwidth 		= $attributes['borderwidth'];   
-	$connectorBgsize 	= $attributes['connectorBgsize'];   
 	$authorSpace 		= $attributes['authorSpace'];   
 	$dateBottomspace 	= $attributes['dateBottomspace'];   
-	$displayPostDate 	= $attributes['displayPostDate'];   
-	$displayPostExcerpt = $attributes['displayPostExcerpt'];   
-	$displayPostAuthor 	= $attributes['displayPostAuthor'];   
-	$displayPostLink 	= $attributes['displayPostLink'];   
 	$align 				= $attributes['align'];   
-	$icon 				= $attributes['icon'];   
 	$iconColor 			= $attributes['iconColor'];   
 	$authorColor 		= $attributes['authorColor'];   
 	$dateColor 			= $attributes['dateColor'];   
 	$dateFontsize 		= $attributes['dateFontsize'];   
 	$authorFontsize 	= $attributes['authorFontsize'];   
 	$iconSize 			= $attributes['iconSize'];   
-	$exerptLength 		= $attributes['exerptLength'];   
 	$borderRadius 		= $attributes['borderRadius'];   
 	$bgPadding 			= $attributes['bgPadding'];   
 	$align_class        = '';
     $align_item_class   = '';
-    $arrow_align_class  = 'uagb-top-arrow';
-    $seperator_margin   =  (int)($separatorwidth/2);
-    $vert_per           =  (int)($verticalSpace * 75)/100;	
     $tm_block_id  = 'uagb-'.$tm_client_id ;
+
    	/* Arrow position */
-        $arrow_align_class  = 'uagb-timeline-arrow-top';
-        if( $arrowlinAlignment == 'center' ){
-            $arrow_align_class = 'uagb-timeline-arrow-center';
-        }else if( $arrowlinAlignment == 'bottom' ){
-            $arrow_align_class = 'uagb-timeline-arrow-bottom';
-        } 
+    $arrow_align_class  = 'uagb-timeline-arrow-top';
+    if( $arrowlinAlignment == 'center' ){
+        $arrow_align_class = 'uagb-timeline-arrow-center';
+    }else if( $arrowlinAlignment == 'bottom' ){
+        $arrow_align_class = 'uagb-timeline-arrow-bottom';
+    } 
 
-        /* Alignmnet */
-        $align_class = 'uagb-timeline--center '. $arrow_align_class;
-        if( $timelinAlignment == 'left' ){
-            $align_class = 'uagb-timeline--left ' . $arrow_align_class;
-        }else if( $timelinAlignment == 'right' ){
-            $align_class = 'uagb-timeline--right '. $arrow_align_class;
-        }     
+    /* Alignmnet */
+    $align_class = 'uagb-timeline--center '. $arrow_align_class;
+    if( $timelinAlignment == 'left' ){
+        $align_class = 'uagb-timeline--left ' . $arrow_align_class;
+    }else if( $timelinAlignment == 'right' ){
+        $align_class = 'uagb-timeline--right '. $arrow_align_class;
+    }     
 
-        $responsive_class = 'uagb-timeline-responsive-tablet';
-        $tl_class = 'uagb-timeline '.$tm_block_id .' '.$align_class.' '.$responsive_class;
+    $responsive_class = 'uagb-timeline-responsive-tablet';
+    $tl_class = 'uagb-timeline '.$tm_block_id .' '.$align_class.' '.$responsive_class;
     
     /* Style for elements */
     $front_style = '.'. $tm_block_id .'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,    			                
@@ -172,19 +146,18 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     	font-size:'.$authorFontsize.'px;
                     }';
 
-    		$content_align_class = '';
-            $day_align_class = '';
+	$content_align_class = '';
+    $day_align_class = '';
 
-            if( $timelinAlignment == 'left' ){
-                $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-                $day_align_class = 'uagb-day-new uagb-day-left';
-            }else if( $timelinAlignment == 'right' ){
-                $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-                $day_align_class = 'uagb-day-new uagb-day-right';
-            }     
+    if( $timelinAlignment == 'left' ){
+        $content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+        $day_align_class = 'uagb-day-new uagb-day-left';
+    }else if( $timelinAlignment == 'right' ){
+        $content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+        $day_align_class = 'uagb-day-new uagb-day-right';
+    }     
             
     $display_inner_date = false;
-    //$className          = $className.' '.'uagb-timeline';
   	$list_items_markup  = '';	
 	$list_items_markup .= sprintf( '<div class = "%1$s" >',esc_attr( $className ) );
 
