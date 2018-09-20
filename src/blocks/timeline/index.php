@@ -230,37 +230,18 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 					// Meta Content.
 					$list_items_markup .= sprintf( '<div class = "uagb-content" >' );
 					
-                    // Image
+                    // Image.
                     $list_items_markup .= uagb_get_timeline_image( $attributes, $post_id );
 
-                    // Get the post title
+                    // Get the post title.
                     $list_items_markup .= uagb_get_timeline_title( $attributes, $post_id );
 
-					// Get the post author
-		            if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-		                $list_items_markup .= sprintf(
-		                    '<div class="uagb-block-post-grid-author"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
-		                    esc_html( get_the_author_meta( 'display_name', $post->post_author ) ),
-		                    esc_html( get_author_posts_url( $post->post_author ) )
-		                );
-		            }
+					// Get the post author.
+                    $list_items_markup .= uagb_get_timeline_author( $attributes, $post->post_author );
 
-		            // Get the excerpt
-		            $excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-		            if( empty( $excerpt ) ) {
-		                $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, $exerptLength ) );
-		            }
-
-		            if ( ! $excerpt ) {
-		                $excerpt = null;
-		            }
-
-		            if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-						$list_items_markup .= sprintf( '<div class = "uagb-timeline-desc-content" style = "font-size:%1$spx;color:%2$s;margin-bottom:%3$spx" >', $subHeadFontSize, $subHeadingColor, $subHeadSpace);	 
-		                $list_items_markup .=  wp_kses_post( $excerpt );
-						$list_items_markup .= sprintf( '</div>'); // uagb-timeline-heading-text.					
-		            }
-
+		            // Get the excerpt.
+                    $list_items_markup .= uagb_get_timeline_excerpt( $attributes, $post->post_content, $post_id );
+                    
                     $list_items_markup .= uagb_get_timeline_read_more_data( $attributes, $post_id );
 
 					//Arrow.
@@ -626,6 +607,7 @@ function uagb_get_timeline_icon($attributes){
 /**
  * Function Name: uagb_get_timeline_image.
  * @param  array $attributes attribute array.
+ * @param  string $post_id    string  
  * @return string            HTML.
  */
 function uagb_get_timeline_image( $attributes, $post_id ){
@@ -647,6 +629,7 @@ function uagb_get_timeline_image( $attributes, $post_id ){
 /**
  * Function Name: uagb_get_timeline_image.
  * @param  array $attributes attribute array.
+ * @param  string $post_id    string  
  * @return string            HTML.
  */
 function uagb_get_timeline_date( $attributes, $post_id ){
@@ -667,6 +650,7 @@ function uagb_get_timeline_date( $attributes, $post_id ){
 /**
  * Function Name: uagb_get_timeline_title.
  * @param  array $attributes attribute array.
+ * @param  string $post_id    string  
  * @return string            HTML.
  */
 function uagb_get_timeline_title( $attributes, $post_id ){
@@ -690,6 +674,7 @@ function uagb_get_timeline_title( $attributes, $post_id ){
 /**
  * Function Name: uagb_get_timeline_central_date.
  * @param  array $attributes attribute array.
+ * @param  string $post_id    string
  * @return string            HTML.
  */
 function uagb_get_timeline_central_date( $attributes, $post_id ){
@@ -712,6 +697,7 @@ function uagb_get_timeline_central_date( $attributes, $post_id ){
 /**
  * Function Name: uagb_get_timeline_read_more_data.
  * @param  array $attributes attribute array.
+ * @param  string $post_id    string 
  * @return string            HTML.
  */
 function uagb_get_timeline_read_more_data( $attributes, $post_id ){
@@ -724,4 +710,52 @@ function uagb_get_timeline_read_more_data( $attributes, $post_id ){
         );
     }
     return $output;
+}
+
+/**
+ * Function uagb_get_timeline_author.
+ * @param  array $attributes attribute.
+ * @param  string $author    string.
+ * @return string            HTML
+ */
+function uagb_get_timeline_author( $attributes, $author ){
+    
+    $output = '';
+    if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
+        $output .= sprintf(
+            '<div class="uagb-block-post-grid-author"><a class="uagb-text-link" href="%2$s">%1$s</a></div>',
+            esc_html( get_the_author_meta( 'display_name', $author ) ),
+            esc_html( get_author_posts_url( $author ) )
+        );
+    }
+    return $output;
+}
+
+/**
+ * Function uagb_get_timeline_author.
+ * @param  array $attributes attribute.
+ * @param  string $content    string
+ * @param  string $post_id   string.
+ * @return string            HTML
+ */
+function uagb_get_timeline_excerpt( $attributes, $content, $post_id){
+   
+    $output = '';
+
+    $excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+    if( empty( $excerpt ) ) {
+        $excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $attributes['exerptLength'] ) );
+    }
+
+    if ( ! $excerpt ) {
+        $excerpt = null;
+    }
+
+    if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+        $output .= sprintf( '<div class = "uagb-timeline-desc-content" style = "font-size:%1$spx;color:%2$s;margin-bottom:%3$spx" >', $attributes['subHeadFontSize'], $attributes['subHeadingColor'], $attributes['subHeadSpace']);     
+        $output .=  wp_kses_post( $excerpt );
+        $output .= sprintf( '</div>'); // uagb-timeline-heading-text.                    
+    }
+    return $output;  
+
 }
