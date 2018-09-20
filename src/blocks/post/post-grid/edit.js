@@ -50,9 +50,18 @@ class UAGBPostGrid extends Component {
 
 	 componentDidMount() {
 
-	 	this.props.setAttributes( { block_id: this.props.block_id } );
-	 	this.setState({ block_id: this.props.block_id });
-        console.log( this.props.block_id );
+	 	this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
+    }
+
+    addStyle( property, value ) {
+
+    	$style = document.getElementById( 'uagb-style-' + this.props.clientId );
+    	const randBlue = ~~(Math.random() * 250);
+		$style.innerHTML = `body { background: rgb(10, 10, ${randBlue}); }`;
     }
 
 	toggleDisplayPostComment() {
@@ -387,7 +396,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ 'center', 'wide' ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />
 			</Fragment>
 		);
 	}

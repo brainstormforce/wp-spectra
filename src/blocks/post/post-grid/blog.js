@@ -11,10 +11,9 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, blogID } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props;
 
 		const {
-			block_id,
 			displayPostImage,
 			columns,
 			postsToShow,
@@ -25,12 +24,12 @@ class Blog extends React.Component {
 			equalHeight
 		} = attributes;
 
-		console.log(attributes);
-
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
+
+		addStyle();
 
 
 		return (
