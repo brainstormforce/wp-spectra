@@ -298,6 +298,7 @@ function uagb_blocks_register_block_timeline_posts() {
             UAGB_VER,
             true // Enqueue the script in the footer.
         );
+        wp_enqueue_style( 'dashicons' );
     }
 
 	register_block_type( 'uagb/timeline', array(
