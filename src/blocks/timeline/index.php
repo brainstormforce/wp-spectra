@@ -328,7 +328,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
             'separatorFillColor' => array(
                 'type' => 'string',
-                'default' => '#7adcb5',
+                'default' => '#5cb85c',
             ),
 			'separatorBorder' => array(
 				'type' => 'string',
@@ -336,7 +336,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'borderHover' => array(
 				'type' => 'string',
-				'default' => '#7adcb5',
+				'default' => '#5cb85c',
 			),
 			'headingTag' => array(
 				'type' => 'string',
@@ -372,11 +372,11 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'separatorwidth' => array(
 				'type' => 'number',
-				'default' => 5,
+				'default' => 3,
 			),
 			'borderwidth' => array(
 				'type' => 'number',
-				'default' => 2,
+				'default' => 1,
 			),
 			'iconColor' => array(
 				'type' => 'string',
@@ -388,7 +388,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'iconBgHover' => array(
 				'type' => 'string',
-				'default' => '#7adcb5',
+				'default' => '#5cb85c',
 			),
 			'authorColor' => array(
 				'type' => 'string',
