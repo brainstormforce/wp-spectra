@@ -543,7 +543,7 @@ class UAGBTimeline extends Component {
                         />
                     </PanelColor>
                     <PanelColor
-                        title={ __( 'Icon Background hover Color' ) }
+                        title={ __( 'Icon Background Hover Color' ) }
                         colorValue={ iconBgHover }
                         initialOpen={ false }
                     >
