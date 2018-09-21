@@ -160,6 +160,8 @@ class UAGBTimeline extends Component {
             borderRadius,
             bgPadding,
             tm_client_id,
+            iconHover,
+            iconBgHover
         } = attributes;
 
         /* Image size options */
@@ -492,6 +494,17 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <PanelColor
+                        title={ __( 'Icon Hover Color' ) }
+                        colorValue={ iconHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
                     
                     <PanelColor
                         title={ __( 'Line Color' ) }
@@ -518,13 +531,24 @@ class UAGBTimeline extends Component {
                     </PanelColor>
                     
                     <PanelColor
-                        title={ __( 'Background Color' ) }
+                        title={ __( 'Icon Background Color' ) }
                         colorValue={ separatorBg }
                         initialOpen={ false }
                     >
                         <ColorPalette
                             value={ separatorBg }
                             onChange={ ( colorValue ) => setAttributes( { separatorBg: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                    <PanelColor
+                        title={ __( 'Icon Background hover Color' ) }
+                        colorValue={ iconBgHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconBgHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
                             allowReset
                         />
                     </PanelColor>
@@ -778,6 +802,48 @@ class UAGBTimeline extends Component {
                 }
             }
 
+            //For changing icon background color and icon color.
+            var timeline_icon_pos, timeline_card_pos;
+            var elementPos, elementCardPos;
+            var timeline_icon_top, timeline_card_top;
+            var timeline_icon   = timeline.find(".uagb-timeline-marker"),
+                animate_border  = timeline.find(".animate-border");
+
+            for (var i = 0; i < timeline_icon.length; i++) {
+                timeline_icon_pos = $(timeline_icon[i]).offset().top;
+                timeline_card_pos = $(animate_border[i]).offset().top;
+                elementPos = timeline.offset().top;
+                elementCardPos = timeline.offset().top;
+
+                timeline_icon_top = timeline_icon_pos - $document.scrollTop();
+                timeline_card_top = timeline_card_pos - $document.scrollTop();
+
+                if ( ( timeline_card_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                    animate_border[i].classList.remove("out-view");
+                    animate_border[i].classList.add("in-view");
+
+                } else {
+                    // Remove classes if element is below than half of viewport.
+                    animate_border[i].classList.add("out-view");
+                    animate_border[i].classList.remove("in-view");
+                }
+
+                if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                    // Add classes if element is above than half of viewport.
+                    timeline_icon[i].classList.remove("out-view-timeline-icon");
+                    timeline_icon[i].classList.add("in-view-timeline-icon");
+
+                } else {
+
+                    // Remove classes if element is below than half of viewport.
+                    timeline_icon[i].classList.add("out-view-timeline-icon");
+                    timeline_icon[i].classList.remove("in-view-timeline-icon");
+
+                }
+            }
+
         }
     }
     
@@ -825,11 +891,13 @@ class UAGBTimeline extends Component {
             iconColor          = attr.iconColor,
             authorColor        = attr.authorColor,
             authorFontsize     = attr.authorFontsize,                      
-            dateFontsize        = attr.dateFontsize,
-            dateColor           = attr.dateColor,
+            dateFontsize       = attr.dateFontsize,
+            dateColor          = attr.dateColor,
             iconSize           = attr.iconSize,
             tm_block_id        = attr.tm_block_id,
             align              = attr.align,
+            iconHover          = attr.iconHover,
+            iconBgHover        = attr.iconBgHover,
             align_class        = '',
             align_item_class   = '';           
 
@@ -911,8 +979,20 @@ class UAGBTimeline extends Component {
                         ' margin-bottom:'+authorSpace+'px;'+
                         'color:'+authorColor+';'+
                         'font-size:'+authorFontsize+'px;'+
-                        '}'
-                        +'@media(max-width:768px){'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
+                        'background:'+iconBgHover+';'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+                        
+                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
+                        'background:'+iconBgHover+';'+
+                        '}'+
+                        '.'+ tm_block_id +' uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+
+                        '@media(max-width:768px){'+
                         '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
                         ' margin-left:0px;'+
                         ' margin-right:0px'+
@@ -984,7 +1064,7 @@ class UAGBTimeline extends Component {
                                 return (
                                     <article className = "uagb-timeline-field animate-border"  key={index}>
                                         <div className = {content_align_class}> 
-                                            <div className = "uagb-timeline-marker in-view-timeline-icon">
+                                            <div className = "uagb-timeline-marker out-view-timeline-icon">
                                                 <i className = {icon_class}></i>
                                             </div>
                                             <div className = {day_align_class}>

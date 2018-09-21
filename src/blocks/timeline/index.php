@@ -44,7 +44,9 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$authorFontsize 	= $attributes['authorFontsize'];   
 	$iconSize 			= $attributes['iconSize'];   
 	$borderRadius 		= $attributes['borderRadius'];   
-	$bgPadding 			= $attributes['bgPadding'];   
+	$bgPadding 			= $attributes['bgPadding'];  
+	$iconBgHover 		= $attributes['iconBgHover'];   
+	$iconHover 			= $attributes['iconHover'];    
 	$align_class        = '';
     $align_item_class   = '';
     $tm_block_id  = 'uagb-'.$tm_client_id ;
@@ -144,6 +146,18 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     	margin-bottom:'.$authorSpace.'px;
                     	color:'.$authorColor.';
                     	font-size:'.$authorFontsize.'px;
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{
+                    	background:'.$iconBgHover.';
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-field.animate-border:hover .timeline-icon-new{
+                    	color:'.$iconHover.';
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{
+                    	background:'.$iconBgHover.';
+                    }
+                    .'. $tm_block_id .' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{
+                    	color:'.$iconHover.';
                     }
                     @media(max-width:768px){
                     .'.$tm_block_id.'.uagb-timeline--center .uagb-timeline-marker {
@@ -360,6 +374,14 @@ function uagb_blocks_register_block_timeline_posts() {
 			'iconColor' => array(
 				'type' => 'string',
 				'default' => '#333',
+			),
+			'iconHover' => array(
+				'type' => 'string',
+				'default' => '#fff',
+			),
+			'iconBgHover' => array(
+				'type' => 'string',
+				'default' => '#7adcb5',
 			),
 			'authorColor' => array(
 				'type' => 'string',
@@ -580,7 +602,7 @@ function uagb_get_timeline_icon($attributes){
     $icon               = $attributes['icon']; 
     $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
     $output = '';
-    $output .= sprintf( '<div class = "uagb-timeline-marker in-view-timeline-icon" >' );
+    $output .= sprintf( '<div class = "uagb-timeline-marker out-view-timeline-icon" >' );
     $output .= sprintf( '<i class = "%1$s" >',esc_attr( $icon_class ) );
     $output .= sprintf( '</i>');
     $output .= sprintf( '</div>'); // End of icon div.

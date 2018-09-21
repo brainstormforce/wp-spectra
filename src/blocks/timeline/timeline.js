@@ -89,6 +89,48 @@ function uagbTimelineFunc() {
             }
         }
 
+        //Icon bg color and icon color
+        var timeline_icon_pos, timeline_card_pos;
+        var elementPos, elementCardPos;
+        var timeline_icon_top, timeline_card_top;
+        var timeline_icon = $(this).find(".uagb-timeline-marker"),
+            animate_border  = $(this).find(".animate-border");
+
+        for (var i = 0; i < timeline_icon.length; i++) {
+            timeline_icon_pos = $(timeline_icon[i]).offset().top;
+            timeline_card_pos = $(animate_border[i]).offset().top;
+            elementPos = $(this).offset().top;
+            elementCardPos = $(this).offset().top;
+
+            timeline_icon_top = timeline_icon_pos - $document.scrollTop();
+            timeline_card_top = timeline_card_pos - $document.scrollTop();
+
+            if ( ( timeline_card_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                animate_border[i].classList.remove("out-view");
+                animate_border[i].classList.add("in-view");
+
+            } else {
+                // Remove classes if element is below than half of viewport.
+                animate_border[i].classList.add("out-view");
+                animate_border[i].classList.remove("in-view");
+            }
+
+            if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                // Add classes if element is above than half of viewport.
+                timeline_icon[i].classList.remove("out-view-timeline-icon");
+                timeline_icon[i].classList.add("in-view-timeline-icon");
+
+            } else {
+
+                // Remove classes if element is below than half of viewport.
+                timeline_icon[i].classList.add("out-view-timeline-icon");
+                timeline_icon[i].classList.remove("in-view-timeline-icon");
+
+            }
+        }
+
     })
 }
 
