@@ -114,6 +114,7 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
+		console.log(this);
 		const {
 			attributes,
 			categoriesList,

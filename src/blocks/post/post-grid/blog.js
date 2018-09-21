@@ -11,6 +11,8 @@ class Blog extends React.Component {
 
 	render() {
 
+		console.log(this);
+
 		const { attributes, className, latestPosts, block_id } = this.props;
 
 		const {
@@ -28,9 +30,6 @@ class Blog extends React.Component {
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
-
-		addStyle();
-
 
 		return (
 
