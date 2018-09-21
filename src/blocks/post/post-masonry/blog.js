@@ -17,6 +17,7 @@ class Blog extends React.Component {
 		const {
 			displayPostImage,
 			columns,
+			imgPosition,
 			postsToShow,
 			rowGap,
 			columnGap,
@@ -36,7 +37,8 @@ class Blog extends React.Component {
 				className={ classnames(
 					className,
 					'uagb-post-grid',
-					'uagb-post__arrow-outside'
+					'uagb-post__arrow-outside',
+					`uagb-post__image-position-${ imgPosition }`
 				) }
 				data-blog-id={blogID}
 			>
