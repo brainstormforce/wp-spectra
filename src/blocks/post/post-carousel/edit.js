@@ -127,6 +127,7 @@ class UAGBPostCarousel extends Component {
 			displayPostAuthor,
 			displayPostImage,
 			imgSize,
+			imgPosition,
 			displayPostLink,
 			align,
 			postLayout,
@@ -146,17 +147,21 @@ class UAGBPostCarousel extends Component {
 			excerptColor,
 			ctaColor,
 			ctaBgColor,
+			arrowColor,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
 			autoplay,
+			autoplaySpeed,
 			pauseOnHover,
-			infiniteLoop
+			infiniteLoop,
+			transitionSpeed,
+			arrowSize
 		} = attributes;
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Query' ) }>
+				<PanelBody title={ __( 'General' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -187,10 +192,33 @@ class UAGBPostCarousel extends Component {
 						checked={ autoplay }
 						onChange={ this.toggleAutoplay }
 					/>
+					{ autoplay == true &&
+						<RangeControl
+							label={ __( 'Autoplay Speed (ms)' ) }
+							value={ autoplaySpeed }
+							onChange={ ( value ) => setAttributes( { autoplaySpeed: value } ) }
+							min={ 100 }
+							max={ 10000 }
+						/>
+					}
 					<ToggleControl
 						label={ __( 'Infinite Loop' ) }
 						checked={ infiniteLoop }
 						onChange={ this.toggleInfiniteLoop }
+					/>
+					<RangeControl
+						label={ __( 'Transition Speed (ms)' ) }
+						value={ transitionSpeed }
+						onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
+						min={ 100 }
+						max={ 5000 }
+					/>
+					<RangeControl
+						label={ __( 'Arrow Size' ) }
+						value={ arrowSize }
+						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
+						min={ 10 }
+						max={ 50 }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Image' ) }>
@@ -211,7 +239,18 @@ class UAGBPostCarousel extends Component {
 								{ value: 'large', label: __( 'Large' ) },
 							] }
 						/>
-                	}
+					}
+					{ displayPostImage == true &&
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imgPosition }
+							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'background', label: __( 'Background' ) },
+							] }
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl
@@ -326,6 +365,17 @@ class UAGBPostCarousel extends Component {
 							/>
 						</PanelColor>
 					}
+					<PanelColor
+						title={ __( 'Arrow Color' ) }
+						colorValue={ arrowColor }
+						initialOpen={ false }
+					>
+						<ColorPalette
+							value={ arrowColor }
+							onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelColor>
 				</PanelBody>
 				<PanelBody title={ __( 'Spacing' ) }>
 					<RangeControl

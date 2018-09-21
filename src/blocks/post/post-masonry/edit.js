@@ -103,6 +103,7 @@ class UAGBPostMasonry extends Component {
 			displayPostAuthor,
 			displayPostImage,
 			imgSize,
+			imgPosition,
 			displayPostLink,
 			align,
 			columns,
@@ -128,7 +129,7 @@ class UAGBPostMasonry extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Query' ) }>
+				<PanelBody title={ __( 'General' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -167,6 +168,17 @@ class UAGBPostMasonry extends Component {
 							] }
 						/>
                 	}
+                	{ displayPostImage == true &&
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imgPosition }
+							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'background', label: __( 'Background' ) },
+							] }
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl

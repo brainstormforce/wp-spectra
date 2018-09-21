@@ -36,6 +36,7 @@ const {
 const { withSelect } = wp.data;
 
 class UAGBPostGrid extends Component {
+
 	constructor() {
 		super( ...arguments );
 
@@ -46,7 +47,17 @@ class UAGBPostGrid extends Component {
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 		this.toggleEqualHeight= this.toggleEqualHeight.bind(this);
+
 	}
+
+	 componentDidMount() {
+
+	 	this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
+    }
 
 	toggleDisplayPostComment() {
 		const { displayPostComment } = this.props.attributes;
@@ -98,6 +109,7 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
+		console.log(this);
 		const {
 			attributes,
 			categoriesList,
@@ -105,12 +117,14 @@ class UAGBPostGrid extends Component {
 			latestPosts
 		} = this.props;
 		const {
+			block_id,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
 			imgSize,
+			imgPosition,
 			displayPostLink,
 			align,
 			columns,
@@ -137,7 +151,7 @@ class UAGBPostGrid extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Query' ) }>
+				<PanelBody title={ __( 'General' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -180,6 +194,17 @@ class UAGBPostGrid extends Component {
 							] }
 						/>
                 	}
+                	{ displayPostImage == true &&
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imgPosition }
+							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'background', label: __( 'Background' ) },
+							] }
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl
@@ -379,7 +404,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ 'center', 'wide' ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />
 			</Fragment>
 		);
 	}

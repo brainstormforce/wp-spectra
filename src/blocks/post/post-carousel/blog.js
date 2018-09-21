@@ -17,6 +17,7 @@ class Blog extends React.Component {
 		const {
 			displayPostImage,
 			columns,
+			imgPosition,
 			postsToShow,
 			rowGap,
 			columnGap,
@@ -24,7 +25,10 @@ class Blog extends React.Component {
 			contentPadding,
 			autoplay,
 			pauseOnHover,
-			infiniteLoop
+			transitionSpeed,
+			infiniteLoop,
+			arrowSize,
+			arrowColor
 		} = attributes;
 
 		// Removing posts from display should be instant.
@@ -32,17 +36,17 @@ class Blog extends React.Component {
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
 
-		function NextArrow(props) {
-			const { className, style, onClick } = props;
+		function NextArrow( props ) {
+
 			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button"><i className="fa fa-angle-right"></i></button>
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ 'borderColor' : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ 'fontSize' : props.arrowSize, 'color' : arrowColor }}></i></button>
 			);
 		}
 
-		function PrevArrow(props) {
-			const { className, style, onClick } = props;
+		function PrevArrow( props ) {
+
 			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button"><i className="fa fa-angle-left"></i></button>
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ 'borderColor' : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ 'fontSize' : props.arrowSize, 'color' : arrowColor }}></i></button>
 			);
 		}
 
@@ -53,12 +57,12 @@ class Blog extends React.Component {
 			autoplay : autoplay,
 			infinite : infiniteLoop,
 			pauseOnHover : pauseOnHover,
-			speed : 500,
+			speed : transitionSpeed,
 			arrows : true,
 			dots : true,
 			rtl : false,
-			nextArrow: <NextArrow />,
-			prevArrow: <PrevArrow />,
+			nextArrow: <NextArrow arrowSize={arrowSize}/>,
+			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
 				{
 					breakpoint : 1024,
@@ -83,7 +87,8 @@ class Blog extends React.Component {
 				className={ classnames(
 					className,
 					'uagb-post-grid',
-					'uagb-post__arrow-outside'
+					'uagb-post__arrow-outside',
+					`uagb-post__image-position-${ imgPosition }`
 				) }
 				data-blog-id={blogID}
 			>
@@ -111,7 +116,8 @@ class Blog extends React.Component {
 								style={{
 									paddingRight: rowGap/2,
 									paddingLeft: rowGap/2,
-									marginBottom: columnGap
+									marginBottom: columnGap,
+									background: bgColor,
 								}}
 							>
 								<FeaturedImage post={post} attributes={attributes} />
@@ -119,8 +125,7 @@ class Blog extends React.Component {
 								<div
 									className={ 'uagb-post__text' }
 									style={{
-										padding: contentPadding,
-										background: bgColor,
+										padding: contentPadding
 									}}
 								>
 									<Title post={post} attributes={attributes} />
