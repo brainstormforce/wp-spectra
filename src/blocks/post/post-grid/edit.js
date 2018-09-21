@@ -393,7 +393,7 @@ export default withSelect( ( select, props ) => {
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		sticky:false,
+		sticky:0,
 	}, ( value ) => ! isUndefined( value ) );
 	const categoriesListQuery = {
 		per_page: 100,
