@@ -24,6 +24,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $separatorFillColor = $attributes['separatorFillColor'];
     $separatorBg        = $attributes['separatorBg'];
     $separatorBorder    = $attributes['separatorBorder'];
+    $borderHover 		= $attributes['borderHover'];
     $timelinAlignment   = $attributes['timelinAlignment'];
     $arrowlinAlignment  = $attributes['arrowlinAlignment'];
     $horizontalSpace    = $attributes['horizontalSpace'];
@@ -149,12 +150,14 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     }
                     .'. $tm_block_id .' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{
                     	background:'.$iconBgHover.';
+                    	border-color:'.$borderHover.';
                     }
                     .'. $tm_block_id .' .uagb-timeline-field.animate-border:hover .timeline-icon-new{
                     	color:'.$iconHover.';
                     }
                     .'. $tm_block_id .' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{
                     	background:'.$iconBgHover.';
+                    	border-color:'.$borderHover.';
                     }
                     .'. $tm_block_id .' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{
                     	color:'.$iconHover.';
@@ -330,6 +333,10 @@ function uagb_blocks_register_block_timeline_posts() {
 			'separatorBorder' => array(
 				'type' => 'string',
 				'default' => '#eee',
+			),
+			'borderHover' => array(
+				'type' => 'string',
+				'default' => '#7adcb5',
 			),
 			'headingTag' => array(
 				'type' => 'string',

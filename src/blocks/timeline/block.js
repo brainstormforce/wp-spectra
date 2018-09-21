@@ -118,6 +118,7 @@ class UAGBTimeline extends Component {
             separatorFillColor,
             separatorBg,
             separatorBorder,
+            borderHover,
             headingTag,
             headFontSize,
             timelineItem,
@@ -563,6 +564,17 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <PanelColor
+                        title={ __( 'Border Hover Color' ) }
+                        colorValue={ separatorBorder }
+                        initialOpen={ false }
+                    >
+                    <ColorPalette
+                            value={ borderHover }
+                            onChange={ ( colorValue ) => setAttributes( { borderHover: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
                     <RangeControl
                         label={ __( 'Border Width' ) }
                         value={ borderwidth }
@@ -864,6 +876,7 @@ class UAGBTimeline extends Component {
             separatorFillColor = attr.separatorFillColor,
             separatorBg        = attr.separatorBg,
             separatorBorder    = attr.separatorBorder,
+            borderHover        = attr.borderHover,
             timelinAlignment   = attr.timelinAlignment,
             arrowlinAlignment  = attr.arrowlinAlignment,
             postNumber         = attr.postNumber,
@@ -982,12 +995,14 @@ class UAGBTimeline extends Component {
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
                         'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+                        
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
                         'color:'+iconHover+';'+
                         '}'+                        
                         '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
                         'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+
                         '}'+
                         '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
                         'color:'+iconHover+';'+
