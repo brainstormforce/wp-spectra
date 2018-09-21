@@ -144,7 +144,18 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
                     	margin-bottom:'.$authorSpace.'px;
                     	color:'.$authorColor.';
                     	font-size:'.$authorFontsize.'px;
-                    }';
+                    }
+                    @media(max-width:768px){
+                    .'.$tm_block_id.'.uagb-timeline--center .uagb-timeline-marker {
+                    	margin-left:0px;
+						margin-right:0px;
+                    	}
+                    .'.$tm_block_id.'.uagb-timeline--center .uagb-day-new.uagb-day-left,
+                    .'.$tm_block_id.'.uagb-timeline--center .uagb-day-new.uagb-day-right { 
+                    	margin-left:'.$horizontalSpace.'px;
+                    	}                   	
+                    }
+                    ';
 
 	$content_align_class = '';
     $day_align_class = '';
