@@ -16,6 +16,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
 		'category' => $attributes['categories'],
+		'ignore_sticky_posts'=>1
 	), 'OBJECT' );
 
     $headingAlign       = '';
