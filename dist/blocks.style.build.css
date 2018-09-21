@@ -138,10 +138,6 @@
   max-width: 100%;
   position: relative; }
 
-/*.uagb-timeline--left .uagb-timeline__line {
-    right: 20px;
-    left: auto;
-}*/
 .uagb-timeline--right .uagb-day-new {
   margin-right: 14px; }
 
@@ -208,10 +204,6 @@
   transform: translateY(-50%); }
 
 .uagb-timeline-marker {
-  /*width: 30px;
-    height: 30px;
-    min-width: 10px;
-    min-height: 10px;*/
   background-color: #eeeeee;
   border-radius: 999px;
   position: relative;

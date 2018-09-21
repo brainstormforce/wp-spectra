@@ -989,7 +989,7 @@ class UAGBTimeline extends Component {
                         '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
                         'background:'+iconBgHover+';'+
                         '}'+
-                        '.'+ tm_block_id +' uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
+                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
                         'color:'+iconHover+';'+
                         '}'+
                         '@media(max-width:768px){'+
