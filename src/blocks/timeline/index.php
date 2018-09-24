@@ -16,7 +16,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		'order' => $attributes['order'],
 		'orderby' => $attributes['orderBy'],
 		'category' => $attributes['categories'],
-		'ignore_sticky_posts'=>1
+		'ignore_sticky_posts'=> 1
 	), 'OBJECT' );
 
     $headingAlign       = '';
@@ -677,8 +677,7 @@ function uagb_get_timeline_title( $attributes, $post_id ){
         $title = __( 'Untitled' );
     }
     $output .= sprintf(
-        '<'.$attributes['headingTag'].' class="uagb-timeline-heading" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;margin-bottom:'.$attributes['headSpace'].'px"><a href="%1$s" rel="bookmark">%2$s</a></'.$attributes['headingTag'].'>',
-        esc_url( get_permalink( $post_id ) ),
+        '<'.$attributes['headingTag'].' class="uagb-timeline-heading" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;margin-bottom:'.$attributes['headSpace'].'px">%1$s</'.$attributes['headingTag'].'>',        
         esc_html( $title )
     );
     $output .= sprintf( '</div>'); // End of uagb-timeline-heading-text. 
