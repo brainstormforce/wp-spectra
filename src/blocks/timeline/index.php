@@ -310,11 +310,11 @@ function uagb_blocks_register_block_timeline_posts() {
 			),			
 			'headingColor' => array(
 				'type' => 'string',
-				'default' => '#000',
+				'default' => '#333',
 			),
 			'subHeadingColor' => array(
 				'type' => 'string',
-				'default' => '#000',
+				'default' => '#333',
 			),
 			'separatorBg' => array(
 				'type' => 'string',
