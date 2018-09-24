@@ -158,13 +158,56 @@
 	}
 }
 
-/*.uagb-post__image-position-background {
+.uagb-post__image-position-background {
 
-	.uagb-post__inner-wrap {
-		position:relative;
+	.uagb-post__text {
+		opacity: 1;
+		position: relative;
+		z-index: 10;
+		overflow: hidden;
+		width: 100%;
 	}
 
-	.uagb-post__image a:before {
+	.uagb-post__inner-wrap {
+		position: relative;
+		width: 100%;
+	}
+
+	.uagb-post__image img {
+
+		position: absolute;
+		width: auto;
+		height: auto;
+		min-width: 100%;
+		max-width: none;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%,-50%);
+		-ms-transform: translate(-50%,-50%);
+		transform: translate(-50%,-50%);
+		min-height: 100%;
+	}
+
+	.uagb-post__image {
+		-webkit-background-size: cover;
+		background-size: cover;
+		background-repeat: no-repeat;
+		background-position: center;
+		overflow: hidden;
+		text-align: center;
+		position: relative;
+	}
+
+	.uagb-post__image {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+	}
+
+	.uagb-post__image::before {
 		content: '';
 		position: absolute;
 		left: 0;
@@ -172,18 +215,9 @@
 		width: 100%;
 		height: 100%;
 		z-index: 1;
-		background-color: rgba(246,246,246,0.8);
+		background-color: rgba( 255,255,255,0.5 );
 	}
-
-	.uagb-post__text {
-		position:absolute;
-		top:0;
-		left:0;
-		width:100%;
-		height:100%;
-		z-index: 2;
-	}
-}*/
+}
 
 /**
  * Post grid styles

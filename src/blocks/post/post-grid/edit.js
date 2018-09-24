@@ -251,17 +251,19 @@ class UAGBPostGrid extends Component {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Colors' ) }>
-					<PanelColor
-						title={ __( 'Blog Background Color' ) }
-						colorValue={ bgColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
+					{ imgPosition == 'top' &&
+						<PanelColor
+							title={ __( 'Blog Background Color' ) }
+							colorValue={ bgColor }
+							initialOpen={ false }
+						>
+							<ColorPalette
+								value={ bgColor }
+								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+								allowReset
+							/>
+						</PanelColor>
+					}
 					<PanelColor
 						title={ __( 'Title Color' ) }
 						colorValue={ titleColor }
