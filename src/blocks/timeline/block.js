@@ -1110,14 +1110,15 @@ class UAGBTimeline extends Component {
                                                                     )
                                                                 }
 
-                                                                <div className="uagb-timeline-heading-text">                                                                    
+                                                                <div className="uagb-timeline-heading-text" style={{                                                                            
+                                                                            marginBottom: headSpace + 'px',
+                                                                        }}>                                                                    
                                                                     <Tag                                                                        
                                                                         className='uagb-timeline-heading'                                                                        
                                                                     >
                                                                     <a href={ post.link } target="_blank" rel="bookmark" style={{ 
                                                                             fontSize: headFontSize + 'px',
-                                                                            color: headingColor,
-                                                                            marginBottom: headSpace + 'px',
+                                                                            color: headingColor                                                                           
                                                                         }}>   
                                                                     { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
                                                                     </a>
