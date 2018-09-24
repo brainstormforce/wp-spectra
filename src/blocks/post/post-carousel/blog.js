@@ -116,8 +116,7 @@ class Blog extends React.Component {
 								style={{
 									paddingRight: rowGap/2,
 									paddingLeft: rowGap/2,
-									marginBottom: columnGap,
-									background: bgColor,
+									marginBottom: columnGap
 								}}
 							>
 								<FeaturedImage post={post} attributes={attributes} />
@@ -125,7 +124,8 @@ class Blog extends React.Component {
 								<div
 									className={ 'uagb-post__text' }
 									style={{
-										padding: contentPadding
+										padding: contentPadding,
+										background: bgColor
 									}}
 								>
 									<Title post={post} attributes={attributes} />

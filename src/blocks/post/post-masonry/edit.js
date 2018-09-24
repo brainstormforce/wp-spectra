@@ -36,6 +36,7 @@ const {
 const { withSelect } = wp.data;
 
 class UAGBPostMasonry extends Component {
+
 	constructor() {
 		super( ...arguments );
 
@@ -45,6 +46,15 @@ class UAGBPostMasonry extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+	}
+
+	componentDidMount() {
+
+		this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
 	}
 
 	toggleDisplayPostComment() {
