@@ -50,14 +50,14 @@ class UAGBPostGrid extends Component {
 
 	}
 
-	 componentDidMount() {
+	componentDidMount() {
 
-	 	this.props.setAttributes( { block_id: this.props.clientId } );
+		this.props.setAttributes( { block_id: this.props.clientId } );
 
 		const $style = document.createElement( 'style' );
 		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
 		document.head.appendChild( $style );
-    }
+	}
 
 	toggleDisplayPostComment() {
 		const { displayPostComment } = this.props.attributes;
@@ -109,13 +109,16 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
-		console.log(this);
+
+		// Caching all Props.
 		const {
 			attributes,
 			categoriesList,
 			setAttributes,
 			latestPosts
 		} = this.props;
+
+		// Caching all attributes.
 		const {
 			block_id,
 			displayPostDate,
@@ -149,6 +152,7 @@ class UAGBPostGrid extends Component {
 			equalHeight
 		} = attributes;
 
+		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( 'General' ) }>

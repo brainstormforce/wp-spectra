@@ -36,6 +36,7 @@ const {
 const { withSelect } = wp.data;
 
 class UAGBPostCarousel extends Component {
+
 	constructor() {
 		super( ...arguments );
 
@@ -48,6 +49,15 @@ class UAGBPostCarousel extends Component {
 		this.togglePauseOnHover = this.togglePauseOnHover.bind( this );
 		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this );
 		this.toggleAutoplay = this.toggleAutoplay.bind( this );
+	}
+
+	componentDidMount() {
+
+		this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
 	}
 
 	toggleDisplayPostComment() {
@@ -121,6 +131,7 @@ class UAGBPostCarousel extends Component {
 			latestPosts
 		} = this.props;
 		const {
+			block_id,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -461,7 +472,7 @@ class UAGBPostCarousel extends Component {
 						controls={ [ 'center', 'wide' ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId}/>
 			</Fragment>
 		);
 	}
