@@ -12,7 +12,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, blogID } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props;
 
 		const {
 			displayPostImage,
@@ -40,7 +40,8 @@ class Blog extends React.Component {
 					'uagb-post__arrow-outside',
 					`uagb-post__image-position-${ imgPosition }`
 				) }
-				data-blog-id={blogID}
+				data-blog-id={block_id}
+				id={ `uagb-post__masonry-${ block_id }` }
 			>
 				<Masonry
 					className={ classnames(

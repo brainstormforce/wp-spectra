@@ -12,7 +12,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, blogID } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props;
 
 		const {
 			displayPostImage,
@@ -81,6 +81,8 @@ class Blog extends React.Component {
 			]
 		}
 
+		const article_style = `#uagb-post__carousel-${block_id} .is-carousel article { padding-right: ${rowGap/2}px; padding-left: ${rowGap/2}px; margin-bottom: ${columnGap}px; }`;
+
 		return (
 
 			<div
@@ -90,8 +92,10 @@ class Blog extends React.Component {
 					'uagb-post__arrow-outside',
 					`uagb-post__image-position-${ imgPosition }`
 				) }
-				data-blog-id={blogID}
+				data-blog-id={block_id}
+				id={ `uagb-post__carousel-${ block_id }` }
 			>
+				<style dangerouslySetInnerHTML={{__html: article_style}}></style>
 				<Slider
 					className={ classnames(
 						'is-carousel',
@@ -114,9 +118,7 @@ class Blog extends React.Component {
 							<div
 								className={ 'uagb-post__inner-wrap' }
 								style={{
-									paddingRight: rowGap/2,
-									paddingLeft: rowGap/2,
-									marginBottom: columnGap
+									background: bgColor,
 								}}
 							>
 								<FeaturedImage post={post} attributes={attributes} />
@@ -125,7 +127,6 @@ class Blog extends React.Component {
 									className={ 'uagb-post__text' }
 									style={{
 										padding: contentPadding,
-										background: bgColor
 									}}
 								>
 									<Title post={post} attributes={attributes} />
