@@ -677,7 +677,8 @@ function uagb_get_timeline_title( $attributes, $post_id ){
         $title = __( 'Untitled' );
     }
     $output .= sprintf(
-        '<'.$attributes['headingTag'].' class="uagb-timeline-heading" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;margin-bottom:'.$attributes['headSpace'].'px">%1$s</'.$attributes['headingTag'].'>',        
+        '<'.$attributes['headingTag'].' class="uagb-timeline-heading" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;margin-bottom:'.$attributes['headSpace'].'px"><a href="%1$s" rel="bookmark" style="color:'.$attributes['headingColor'].';font-size:'.$attributes['headFontSize'].'px;">%2$s</a></'.$attributes['headingTag'].'>',
+        esc_url( get_permalink( $post_id ) ),
         esc_html( $title )
     );
     $output .= sprintf( '</div>'); // End of uagb-timeline-heading-text. 
