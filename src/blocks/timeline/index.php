@@ -767,7 +767,7 @@ function uagb_get_timeline_excerpt( $attributes, $content, $post_id){
     }
 
     if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-        $output .= sprintf( '<div class = "uagb-timeline-desc-content" style = "font-size:%1$spx;color:%2$s;margin-bottom:%3$spx" >', $attributes['subHeadFontSize'], $attributes['subHeadingColor'], $attributes['subHeadSpace']);     
+        $output .= sprintf( '<div class = "uagb-timeline-desc-content entry-title" style = "font-size:%1$spx;color:%2$s;margin-bottom:%3$spx" >', $attributes['subHeadFontSize'], $attributes['subHeadingColor'], $attributes['subHeadSpace']);     
         $output .=  wp_kses_post( $excerpt );
         $output .= sprintf( '</div>'); // uagb-timeline-heading-text.                    
     }

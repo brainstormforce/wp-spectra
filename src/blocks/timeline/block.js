@@ -1114,7 +1114,7 @@ class UAGBTimeline extends Component {
                                                                             marginBottom: headSpace + 'px',
                                                                         }}>                                                                    
                                                                     <Tag                                                                        
-                                                                        className='uagb-timeline-heading'                                                                        
+                                                                        className='uagb-timeline-heading entry-title'                                                                        
                                                                     >
                                                                     <a href={ post.link } target="_blank" rel="bookmark" style={{ 
                                                                             fontSize: headFontSize + 'px',
