@@ -12,4 +12,5 @@
 import './blocks/advanced-heading/block.js';
 import './blocks/timeline/index.js';
 import './blocks/post/block.js';
+import './blocks/content-timeline/block.js';
 
