@@ -47,8 +47,57 @@ const {
     Dashicon,
 } = wp.components;
 
+const item =[];
+for (var i = 1; i <= 5; i++) {
+	var title_heading_val = 'Timeline Heading '+i;
+	var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+	var temp = [];
+	var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+	item.push(p);            
+}
+//console.log(item);
 
 class UAGBcontentTimeline extends Component {
+
+	constructor() {
+        super( ...arguments );
+
+        // Get initial timeline content.
+        this.getTimelinecontent = this.getTimelinecontent.bind(this);
+    }
+
+    /**
+    * Loading Timeline content.
+    */
+    getTimelinecontent(value) {  
+    	console.log(value);
+    	const { tm_content, timelineItem } = this.props.attributes;
+    	const { setAttributes } = this.props;    	
+        var item_number = value; 
+        let data_copy     = [ ...tm_content ];
+        let data_length = data_copy.length;
+        if( item_number < data_length ){
+        	var diff = data_length - item_number;
+            let data_new = data_copy;
+            for( var i= 0; i < diff; i++ ){            	
+            	data_new.pop();
+            }           
+            setAttributes({tm_content:data_new});
+
+        }if( item_number > data_length ){
+            var diff = item_number - data_length;
+           
+            for( var i= 0; i < diff; i++ ){
+            	var array_length = data_length+i;
+            	var title_heading_val = 'Timeline Heading '+item_number;
+	            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+	            data_copy[array_length] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+            }
+            setAttributes({tm_content:data_copy});  
+        } 
+        return this.props.attributes.tm_content;
+    }    
+
 	render() {
 
 		// Setup the attributes
@@ -57,13 +106,13 @@ class UAGBcontentTimeline extends Component {
 			className,
 			setAttributes,
 			attributes: { 
+				tm_content,
 				headingTitle,
 				headingDesc,
 				headingAlign,
 				separatorHeight,
 				headSpace,
 				separatorSpace,
-				tm_content,
 				headingColor,
 				subHeadingColor,
 				backgroundColor,
@@ -142,10 +191,28 @@ class UAGBcontentTimeline extends Component {
             { value: 'arrow-up-alt', label: __( 'arrow-up-alt' ) }            
         ];
 
-		return [			
+		return [		
 
 			isSelected && (
 				<InspectorControls>
+				<PanelBody 
+                    title={ __( 'General' ) }
+                    initialOpen={ false }
+                    >
+                     <RangeControl
+                        label={ __( 'Number of Items' ) }
+                        value={ timelineItem }
+                        onChange={ ( value ) => {
+                        	setAttributes( { timelineItem: value } );
+                        	this.getTimelinecontent(value);
+                        	}
+                        }
+                        min={ 1 }
+                        max={ 200 }
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                    />                                  
+                 </PanelBody>
 				<PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
@@ -504,6 +571,10 @@ registerBlockType( 'uagb/content-timeline', {
 	category: 'formatting',
 
 	attributes: {
+		tm_content: {
+			type: 'array',
+			default : item,
+		},
 		headingTitle: {
 			type: 'string',
 		},
@@ -637,6 +708,10 @@ registerBlockType( 'uagb/content-timeline', {
 		tm_block_id  : {
 			type : 'string',
 			default : '0',
+		},
+		timelineItem :{
+			type : 'number',
+			default : 5,
 		},
         tm_client_id  : {
             type : 'string',
