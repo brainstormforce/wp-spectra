@@ -90,13 +90,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		wp_enqueue_style(
-			'load-fa',
-			'https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css',
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
-			UAGB_VER
-		);
-
 	} // End function editor_assets().
 
 	/**

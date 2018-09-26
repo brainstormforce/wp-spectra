@@ -6,6 +6,11 @@
 	h2 a {
 		text-decoration: none;
 	}
+
+	a {
+		pointer-events: none;
+		cursor: default;
+	}
 }
 
 div[data-type="uagb/post-grid"] .editor-block-list__block-edit:before {

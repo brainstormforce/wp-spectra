@@ -36,6 +36,7 @@ const {
 const { withSelect } = wp.data;
 
 class UAGBPostGrid extends Component {
+
 	constructor() {
 		super( ...arguments );
 
@@ -46,6 +47,16 @@ class UAGBPostGrid extends Component {
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
 		this.toggleEqualHeight= this.toggleEqualHeight.bind(this);
+
+	}
+
+	componentDidMount() {
+
+		this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
 	}
 
 	toggleDisplayPostComment() {
@@ -98,19 +109,25 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
+
+		// Caching all Props.
 		const {
 			attributes,
 			categoriesList,
 			setAttributes,
 			latestPosts
 		} = this.props;
+
+		// Caching all attributes.
 		const {
+			block_id,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
 			imgSize,
+			imgPosition,
 			displayPostLink,
 			align,
 			columns,
@@ -135,9 +152,10 @@ class UAGBPostGrid extends Component {
 			equalHeight
 		} = attributes;
 
+		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Query' ) }>
+				<PanelBody title={ __( 'General' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -180,6 +198,17 @@ class UAGBPostGrid extends Component {
 							] }
 						/>
                 	}
+                	{ displayPostImage == true &&
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imgPosition }
+							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'background', label: __( 'Background' ) },
+							] }
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl
@@ -222,17 +251,19 @@ class UAGBPostGrid extends Component {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Colors' ) }>
-					<PanelColor
-						title={ __( 'Blog Background Color' ) }
-						colorValue={ bgColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
+					{ imgPosition == 'top' &&
+						<PanelColor
+							title={ __( 'Blog Background Color' ) }
+							colorValue={ bgColor }
+							initialOpen={ false }
+						>
+							<ColorPalette
+								value={ bgColor }
+								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+								allowReset
+							/>
+						</PanelColor>
+					}
 					<PanelColor
 						title={ __( 'Title Color' ) }
 						colorValue={ titleColor }
@@ -379,7 +410,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ 'center', 'wide' ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />
 			</Fragment>
 		);
 	}

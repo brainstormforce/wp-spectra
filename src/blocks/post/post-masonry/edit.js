@@ -36,6 +36,7 @@ const {
 const { withSelect } = wp.data;
 
 class UAGBPostMasonry extends Component {
+
 	constructor() {
 		super( ...arguments );
 
@@ -45,6 +46,15 @@ class UAGBPostMasonry extends Component {
 		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
 		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
 		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+	}
+
+	componentDidMount() {
+
+		this.props.setAttributes( { block_id: this.props.clientId } );
+
+		const $style = document.createElement( 'style' );
+		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
+		document.head.appendChild( $style );
 	}
 
 	toggleDisplayPostComment() {
@@ -103,6 +113,7 @@ class UAGBPostMasonry extends Component {
 			displayPostAuthor,
 			displayPostImage,
 			imgSize,
+			imgPosition,
 			displayPostLink,
 			align,
 			columns,
@@ -128,7 +139,7 @@ class UAGBPostMasonry extends Component {
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'Query' ) }>
+				<PanelBody title={ __( 'General' ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -167,6 +178,17 @@ class UAGBPostMasonry extends Component {
 							] }
 						/>
                 	}
+                	{ displayPostImage == true &&
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imgPosition }
+							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'background', label: __( 'Background' ) },
+							] }
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( 'Content' ) }>
 					<SelectControl
@@ -209,17 +231,19 @@ class UAGBPostMasonry extends Component {
 					/>
 				</PanelBody>
 				<PanelBody title={ __( 'Colors' ) }>
-					<PanelColor
-						title={ __( 'Blog Background Color' ) }
-						colorValue={ bgColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ bgColor }
-							onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
+					{ imgPosition == 'top' &&
+						<PanelColor
+							title={ __( 'Blog Background Color' ) }
+							colorValue={ bgColor }
+							initialOpen={ false }
+						>
+							<ColorPalette
+								value={ bgColor }
+								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+								allowReset
+							/>
+						</PanelColor>
+					}
 					<PanelColor
 						title={ __( 'Title Color' ) }
 						colorValue={ titleColor }

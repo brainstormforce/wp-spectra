@@ -1,13 +1,8 @@
 /**
- * BLOCK: post-grid
- */
-
-/**
- * BLOCK: Atomic Blocks Page Grid
+ * BLOCK: UAGB - post-grid
  */
 
 // Import block dependencies and components
-import classnames from 'classnames';
 import edit from './edit';
 
 //  Import CSS.
@@ -17,39 +12,23 @@ import '.././editor.scss';
 // Components
 const { __ } = wp.i18n;
 
-// Extend component
-const { Component } = wp.element;
-
 // Register block controls
-const {
-	registerBlockType,
-} = wp.blocks;
-
-// Register alignments
-const validAlignments = [ 'center', 'wide' ];
+const { registerBlockType } = wp.blocks;
 
 export const name = 'core/latest-posts';
 
 // Register the block
 registerBlockType( 'uagb/post-grid', {
 	title: __( 'UAGB - Post Grid' ),
-	description: __( 'Add a grid or list of customizable posts to your page.' ),
+	description: __( 'Add a grid of customizable posts to your page.' ),
 	icon: 'grid-view',
 	category: 'formatting',
 	keywords: [
 		__( 'post' ),
 		__( 'grid' ),
+		__( 'uagb' ),
 	],
-
-	getEditWrapperProps( attributes ) {
-		const { align } = attributes;
-		if ( -1 !== validAlignments.indexOf( align ) ) {
-			return { 'data-align': align };
-		}
-	},
-
 	edit,
-
 	// Render via PHP
 	save() {
 		return null;

@@ -46,6 +46,10 @@
  */
 .uagb-post-grid h2 a {
   text-decoration: none; }
+
+.uagb-post-grid a {
+  pointer-events: none;
+  cursor: default; }
 /**
  * #.# Common SCSS
  *

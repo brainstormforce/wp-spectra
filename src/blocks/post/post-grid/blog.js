@@ -11,11 +11,12 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, blogID } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props;
 
 		const {
 			displayPostImage,
 			columns,
+			imgPosition,
 			postsToShow,
 			rowGap,
 			columnGap,
@@ -24,11 +25,12 @@ class Blog extends React.Component {
 			equalHeight
 		} = attributes;
 
+		const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : '';
+
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts;
-
 
 		return (
 
@@ -36,16 +38,18 @@ class Blog extends React.Component {
 				className={ classnames(
 					className,
 					'uagb-post-grid',
-					'uagb-post__arrow-outside'
+					'uagb-post__arrow-outside',
+					`uagb-post__image-position-${ imgPosition }`
 				) }
-				data-blog-id={blogID}
+				data-block-id={block_id}
+				id={ `uagb-post__grid-${ block_id }` }
 			>
 				<div
 					className={ classnames(
 						'is-grid',
 						`uagb-post__columns-${ columns }`,
 						'uagb-post__items',
-						`uagb-post__equal-height-${ equalHeight }`
+						`${ equalHeightClass }`
 					) }
 					style={{
 						marginRight: -rowGap/2,
