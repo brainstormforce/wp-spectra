@@ -1027,7 +1027,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},			
 		headingColor : {
 			type : 'string',
-			default : '#333',
+			default : '#0693E3',
 		},
 		subHeadingColor : {
 			type : 'string',
