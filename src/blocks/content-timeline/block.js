@@ -10,6 +10,7 @@ import classnames from 'classnames';
 //import { stringify } from 'querystringify';
 
 //  Import CSS.
+import '../timeline/style.scss'
 import './style.scss'
 import './editor.scss';
 
@@ -191,10 +192,8 @@ class UAGBcontentTimeline extends Component {
             { value: 'arrow-up-alt', label: __( 'arrow-up-alt' ) }            
         ];
 
-		return [		
-
-			isSelected && (
-				<InspectorControls>
+        const content_control = (
+        	<InspectorControls>
 				<PanelBody 
                     title={ __( 'General' ) }
                     initialOpen={ false }
@@ -508,42 +507,484 @@ class UAGBcontentTimeline extends Component {
                     />                    
                 </PanelBody>
                 </InspectorControls>
-            ),
+          	);
+		
+		/* Arrow position */
+        var arrow_align_class  = 'uagb-timeline-arrow-top';
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-timeline-arrow-center';
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-timeline-arrow-bottom';
+        } 
 
-			<div className={ className }>
-				<RichText
-					tagName={ headingTag }
-					placeholder={ __( 'Write a Heading' ) }
-					value={ headingTitle }
-					className='uagb-heading-text'
-					onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
-					style={{ 
-						textAlign: headingAlign,
-						fontSize: headFontSize + 'px',
-						color: headingColor,
-						marginBottom: headSpace + 'px',
-					}}
-				/>
-				<div
-					className="uagb-separator-wrap"
-					style={{ textAlign: headingAlign }}
-				><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + 'px', width: separatorwidth + '%', borderColor: separatorColor, marginBottom: separatorSpace + 'px', }}></div></div>
-				<RichText
-					tagName="p"
-					placeholder={ __( 'Write a Description' ) }
-					value={ headingDesc }
-					className='uagb-desc-text'
-					onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
-					style={{
-						textAlign: headingAlign,
-						fontSize: subHeadFontSize + 'px',
-						color: subHeadingColor,
-						marginBottom: subHeadSpace + 'px',
-					}}
-				/>
-			</div>
-		];
+		/* Alignmnet */
+        var align_class = 'uagb-timeline--center '+ arrow_align_class;
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline--left ' + arrow_align_class;
+        }else if(timelinAlignment == 'right'){
+            align_class = 'uagb-timeline--right '+ arrow_align_class;
+        }     
+
+        var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
+        var tm_block_id_new = 'uagb-'+this.props.clientId;
+        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
+
+		return (		
+			<Fragment>   
+			{ content_control } 
+			 <BlockControls>
+                <BlockAlignmentToolbar
+                    value={ align }
+                    onChange={ ( value ) => {
+                        setAttributes( { align: value } );
+                    } }
+                    controls={ [ 'center', 'left','right' ] }
+                />               
+            </BlockControls>
+			 <div className={ className } >                     
+                    <div className = { tl_class }>
+                        <div className = "uagb-timeline-wrapper">
+                            <div className = "uagb-timeline-main">                                
+                                { this.uagb_get_content_timeline_content() }
+                                <div className = "uagb-timeline__line" >
+                                    <div className = "uagb-timeline__line__inner"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+			</Fragment>   
+		);
 	}
+
+	componentDidMount() {   
+        //Store lient id. 
+        this.props.setAttributes( { tm_client_id: this.props.clientId } );
+
+        var id = this.props.clientId;
+        window.addEventListener("load", this.uagbTimelineContent_back(id));
+        window.addEventListener("resize", this.uagbTimelineContent_back(id));
+        var time = this;
+        $('.edit-post-layout__content').scroll( function(event) {            
+            time.uagbTimelineContent_back(id);            
+        });
+    }  
+
+    componentDidUpdate(){
+        var id = this.props.clientId;
+        window.addEventListener("load", this.uagbTimelineContent_back(id));
+        window.addEventListener("resize", this.uagbTimelineContent_back(id));
+        var time = this;
+        $('.edit-post-layout__content').scroll( function(event) {             
+            time.uagbTimelineContent_back(id);
+        });
+    }
+
+	 /* Render output at backend */
+    uagb_get_content_timeline_content(){
+    	console.log("here");
+        var attr               = this.props.attributes,
+            headingTag         = attr.headingTag,
+            headFontSize       = attr.headFontSize,
+            headingColor       = attr.headingColor,
+            headSpace          = attr.headSpace,
+            subHeadFontSize    = attr.subHeadFontSize,
+            subHeadingColor    = attr.subHeadingColor,
+            subHeadSpace       = attr.subHeadSpace,
+            dateBottomspace    = attr.dateBottomspace,
+            backgroundColor    = attr.backgroundColor,
+            separatorColor     = attr.separatorColor,
+            separatorFillColor = attr.separatorFillColor,
+            separatorBg        = attr.separatorBg,
+            separatorBorder    = attr.separatorBorder,
+            borderHover        = attr.borderHover,
+            timelinAlignment   = attr.timelinAlignment,
+            arrowlinAlignment  = attr.arrowlinAlignment,
+            timelineItem       = attr.timelineItem,
+            verticalSpace      = attr.verticalSpace,
+            horizontalSpace    = attr.horizontalSpace,
+            separatorwidth     = attr.separatorwidth,
+            borderwidth        = attr.borderwidth,
+            connectorBgsize    = attr.connectorBgsize,
+            borderRadius       = attr.borderRadius,
+            bgPadding          = attr.bgPadding,
+            icon               = attr.icon,
+            iconColor          = attr.iconColor,
+            dateFontsize       = attr.dateFontsize,
+            dateColor          = attr.dateColor,
+            iconSize           = attr.iconSize,
+            tm_block_id        = attr.tm_block_id,
+            align              = attr.align,
+            iconHover          = attr.iconHover,
+            iconBgHover        = attr.iconBgHover,
+            tm_content         = attr.tm_content,
+            align_class        = '',
+            align_item_class   = '';           
+
+        tm_block_id = 'uagb-'+this.props.clientId;
+
+         /* Style for elements */
+        var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
+                        '  border-left-color:'+backgroundColor+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{'+
+                        '  border-right-color:'+backgroundColor+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline__line__inner{'+
+                            'background-color:'+separatorFillColor+';'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline__line{'+
+                            'background-color:'+separatorColor+';'+
+                            'width:'+separatorwidth+'px'+';'+                            
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline__line{'+
+                            'left: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-marker{'+
+                          'background-color:'+separatorBg+';'+
+                          'min-height:'+connectorBgsize+'px;'+
+                          'min-width:'+connectorBgsize+'px;'+
+                          'line-height:'+connectorBgsize+'px;'+
+                          'border:'+borderwidth+'px solid'+separatorBorder+';'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
+                            'height:'+connectorBgsize+'px'+
+                        '}'+ 
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        ' margin-right:'+horizontalSpace+'px'+
+                        '}'+ 
+                        '.'+ tm_block_id +' .uagb-timeline-field:not(:last-child){'+
+                        ' margin-bottom:'+verticalSpace+'px'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
+                        ' margin-bottom:'+dateBottomspace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'+ 
+                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
+                        ' margin-right:'+horizontalSpace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'                        
+                        +'.'+ tm_block_id +' .uagb-date-new{'+
+                        ' font-size:'+dateFontsize+'px;'+
+                        'color:'+dateColor+';'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-events-inner-new{'+
+                        ' border-radius:'+borderRadius+'px;'+
+                        'padding:'+bgPadding+'px;'+
+                        '}'
+                        +'.'+ tm_block_id +' .uagb-timeline-main .timeline-icon-new{'+
+                        ' font-size:'+iconSize+'px;'+
+                        'color:'+iconColor+';'+
+                        '}'+                         
+                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
+                        'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+                        
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+                        
+                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
+                        'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+
+                        '}'+
+                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+
+                        '@media(max-width:768px){'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
+                        ' margin-left:0px;'+
+                        ' margin-right:0px'+
+                        '}'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-left,'+
+                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-right{'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        '}'+
+                        '}';
+         
+        const { setAttributes } = this.props;
+
+        const hasItems = Array.isArray( tm_content ) && tm_content.length;
+
+        if ( ! hasItems ) {
+            
+            return (
+                <Fragment>                                            
+                    <Placeholder
+                        icon="admin-post"
+                        label={ __( 'UAGB Content Timeline' ) }
+                    >
+                        { ! Array.isArray( tm_content ) ?
+                            <Spinner /> :
+                            __( 'No content found.' )
+                        }
+                    </Placeholder>
+                </Fragment>
+            );
+
+        }else{
+
+        	var content_align_class = '';
+            var day_align_class = '';
+
+            if( timelinAlignment == 'left' ){
+                content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                day_align_class = 'uagb-day-new uagb-day-left';
+            }else if(timelinAlignment == 'right'){
+                content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                day_align_class = 'uagb-day-new uagb-day-right';
+            }     
+            let data_copy     = [ ...tm_content ];
+            var display_inner_date = false;
+            return (
+            	<div className = "uagb-days uagb-timeline-infinite-load">
+            		<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+            		{ 
+            			tm_content.map((post,index) => {
+            				var second_index = 'uagb-'+index;
+                                if(timelinAlignment == 'center'){
+                                    display_inner_date = true;
+                                    if(index % 2 == '0'){
+                                        content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                                        day_align_class = 'uagb-day-new uagb-day-right';
+                                    }else{
+                                        content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                                        day_align_class = 'uagb-day-new uagb-day-left';
+                                    }  
+                                }   
+                                const Tag = this.props.attributes.headingTag;  
+                                var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
+                            
+                            return (
+                            	<article className = "uagb-timeline-field animate-border"  key={index}>
+                            		<div className = {content_align_class}> 
+                            			
+                            			<div className = "uagb-timeline-marker out-view-timeline-icon">
+                                            <i className = {icon_class}></i>
+                                        </div>
+                                        
+                                        <div className = {day_align_class}>
+                                        	<div className="uagb-events-new" style = {{textAlign:align}}>
+                                                <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+                                                	<div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+                                                        { post.date_gmt &&
+                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
+                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                            </div>
+                                                        }  
+                                                    </div>
+
+                                                    <div className="uagb-content">
+                                                    	
+                                                    	<div className="uagb-timeline-heading-text" style={{                                                                            
+                                                                    marginBottom: headSpace + 'px',
+                                                                }}> 
+                                                            <RichText
+						                                        tagName={ headingTag }
+						                                        value={ post.time_heading }
+						                                        className='uagb-timeline-heading entry-title'
+						                                        onChange={ ( value ) => { 
+						                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
+						                                            data_copy[index] = p;                                       
+						                                            setAttributes( { 'tm_content': data_copy } );                                       
+						                                        } }
+						                                        style={{ 						                                           
+						                                            fontSize: headFontSize + 'px',
+						                                            color: headingColor,						                                            
+						                                        }}
+						                                    />
+						                                </div>
+
+					                                    <RichText
+					                                        tagName= "p"
+					                                        value={ post.time_desc }
+					                                        className='uagb-timeline-desc-content'
+					                                        onChange={ ( value ) => { 
+																	var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };						                                            
+																	data_copy[index] = p;                                       
+					                                            setAttributes( { 'tm_content': data_copy } );                                       
+					                                        } }
+					                                        style={{ 						                                           
+					                                            fontSize: subHeadFontSize + 'px',
+					                                            color: subHeadingColor,	
+					                                            marginBottom: subHeadSpace + 'px',					                                            
+					                                        }}
+					                                    />
+
+						                                <div className="uagb-timeline-arrow"></div>	
+
+                                                    </div>
+
+                                                </div>
+                                        	</div>
+                                        </div>
+
+                                        <div className = "uagb-timeline-date-new">                                                                                                   
+	                                        { post.date_gmt &&
+	                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
+	                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+	                                            </div>
+	                                        } 
+		                                </div>
+                            		</div>
+                            	</article>
+                            );
+
+            		 	})
+            		}
+            	</div>
+            ); 
+        }
+    }
+
+    // Js for timeline line and inner line filler.
+    uagbTimelineContent_back(id){
+        var timeline            = $('.uagb-timeline').parents('#block-'+id);
+        var tm_item             = timeline.find('.uagb-timeline');
+        var line_inner          = timeline.find(".uagb-timeline__line__inner");
+        var line_outer          = timeline.find(".uagb-timeline__line");
+        var $icon_class         = timeline.find(".uagb-timeline-marker");
+        if( $icon_class.length > 0){    
+            var $card_last          = timeline.find(".uagb-timeline-field:last-child");
+            var timeline_start_icon = $icon_class.first().position();
+            var timeline_end_icon   = $icon_class.last().position();
+            line_outer.css('top', timeline_start_icon.top );
+
+            var timeline_card_height = $card_last.height();
+            var last_item_top = $card_last.offset().top - tm_item.offset().top;
+            var $last_item, parent_top;
+            //var $document           = $('.edit-post-layout__content');
+            var $document = $(document);
+
+            if( tm_item.hasClass('uagb-timeline-arrow-center')) {
+
+                line_outer.css('bottom', timeline_end_icon.top );
+
+                parent_top = last_item_top - timeline_start_icon.top;
+                $last_item = parent_top + timeline_end_icon.top;
+
+            } else if( tm_item.hasClass('uagb-timeline-arrow-top')) {
+
+                var top_height = timeline_card_height - timeline_end_icon.top;
+                line_outer.css('bottom', top_height );
+
+                $last_item = last_item_top;
+
+            } else if( tm_item.hasClass('uagb-timeline-arrow-bottom')) {
+
+                var bottom_height = timeline_card_height - timeline_end_icon.top;
+                line_outer.css('bottom', bottom_height );
+
+                parent_top = last_item_top - timeline_start_icon.top;
+                $last_item = parent_top + timeline_end_icon.top;
+            }
+
+            var num = 0;
+            var elementEnd = $last_item + 20;
+            //var viewportHeight = $document.height();
+
+            var viewportHeight = document.documentElement.clientHeight;
+            var viewportHeightHalf = viewportHeight/2;
+
+            var elementPos = tm_item.offset().top;
+
+            var new_elementPos = elementPos + timeline_start_icon.top;
+            
+            var photoViewportOffsetTop = new_elementPos - $document.scrollTop();
+
+            if (photoViewportOffsetTop < 0) {
+                photoViewportOffsetTop = Math.abs(photoViewportOffsetTop);
+            } else {
+                photoViewportOffsetTop = -Math.abs(photoViewportOffsetTop);
+            }
+
+            if ( elementPos < (viewportHeightHalf) ) {
+                if ( (viewportHeightHalf) + Math.abs(photoViewportOffsetTop) < (elementEnd) ) {
+                    line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
+                }else{
+                    if ( (photoViewportOffsetTop + viewportHeightHalf) >= elementEnd ) {
+                        line_inner.height(elementEnd);
+                    }
+                }
+            } else {
+                if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
+                    if (0 > photoViewportOffsetTop) {
+                        line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop));
+                        ++num;
+                    } else {
+                        line_inner.height((viewportHeightHalf) + photoViewportOffsetTop);
+                    }
+                }else{
+                    if ( (photoViewportOffsetTop + viewportHeightHalf) >= elementEnd ) {
+                        line_inner.height(elementEnd);
+                    }
+                }
+            }
+
+            //For changing icon background color and icon color.
+            var timeline_icon_pos, timeline_card_pos;
+            var elementPos, elementCardPos;
+            var timeline_icon_top, timeline_card_top;
+            var timeline_icon   = timeline.find(".uagb-timeline-marker"),
+                animate_border  = timeline.find(".animate-border");
+
+            for (var i = 0; i < timeline_icon.length; i++) {
+                timeline_icon_pos = $(timeline_icon[i]).offset().top;
+                timeline_card_pos = $(animate_border[i]).offset().top;
+                elementPos = timeline.offset().top;
+                elementCardPos = timeline.offset().top;
+
+                timeline_icon_top = timeline_icon_pos - $document.scrollTop();
+                timeline_card_top = timeline_card_pos - $document.scrollTop();
+
+                if ( ( timeline_card_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                    animate_border[i].classList.remove("out-view");
+                    animate_border[i].classList.add("in-view");
+
+                } else {
+                    // Remove classes if element is below than half of viewport.
+                    animate_border[i].classList.add("out-view");
+                    animate_border[i].classList.remove("in-view");
+                }
+
+                if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
+
+                    // Add classes if element is above than half of viewport.
+                    timeline_icon[i].classList.remove("out-view-timeline-icon");
+                    timeline_icon[i].classList.add("in-view-timeline-icon");
+
+                } else {
+
+                    // Remove classes if element is below than half of viewport.
+                    timeline_icon[i].classList.add("out-view-timeline-icon");
+                    timeline_icon[i].classList.remove("in-view-timeline-icon");
+
+                }
+            }
+
+        }
+    }
+    
+
 }
 
 /**
