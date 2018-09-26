@@ -805,7 +805,8 @@ class UAGBcontentTimeline extends Component {
 						                                        } }
 						                                        style={{ 						                                           
 						                                            fontSize: headFontSize + 'px',
-						                                            color: headingColor,						                                            
+						                                            color: headingColor,
+						                                            textAlign:align						                                            
 						                                        }}
 						                                    />
 						                                </div>
@@ -822,7 +823,8 @@ class UAGBcontentTimeline extends Component {
 					                                        style={{ 						                                           
 					                                            fontSize: subHeadFontSize + 'px',
 					                                            color: subHeadingColor,	
-					                                            marginBottom: subHeadSpace + 'px',					                                            
+					                                            marginBottom: subHeadSpace + 'px',
+					                                            textAlign:align					                                            
 					                                        }}
 					                                    />
 
@@ -1412,7 +1414,8 @@ registerBlockType( 'uagb/content-timeline', {
 				                                                                className='uagb-timeline-heading entry-title'				                                                               
 				                                                                style={{                                                                   
 				                                                                    fontSize: headFontSize + 'px',
-				                                                                    color: headingColor,                                                                    
+				                                                                    color: headingColor,
+				                                                                    textAlign:align                                                                    
 				                                                                }}
 				                                                            />
 				                                                        </div>
@@ -1424,7 +1427,8 @@ registerBlockType( 'uagb/content-timeline', {
 				                                                            style={{                                                                   
 				                                                                fontSize: subHeadFontSize + 'px',
 				                                                                color: subHeadingColor, 
-				                                                                marginBottom: subHeadSpace + 'px',                                                              
+				                                                                marginBottom: subHeadSpace + 'px', 
+				                                                                textAlign:align                                                             
 				                                                            }}
 				                                                        />
 
