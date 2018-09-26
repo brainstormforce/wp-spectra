@@ -10,6 +10,6 @@ PHPLint:PHPCS:PHP7.1:MySQL:
   script:
   # Install PHPCS and WPCS
   - composer update
-
   - vendor/bin/phpcs
+  - npm install
   - eslint .
