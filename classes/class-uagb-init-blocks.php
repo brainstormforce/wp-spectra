@@ -90,6 +90,14 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Font Awsome
+		wp_enqueue_style(
+			'uagb-fontawesome-css', // Handle.
+			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 	/**

@@ -62,3 +62,18 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+.components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
+.components-panel .rfipdropdown {
+  left: 0 !important;
+  width: 230px; }
+
+.components-panel .rfipicons__ibox {
+  font-size: 15px; }
+
+.components-panel .rfipicons__icon {
+  height: 40px; }
+
+.components-panel .rfipicons__ibox:hover > * {
+  -webkit-transform: scale(1.45);
+  -ms-transform: scale(1.45);
+  transform: scale(1.45); }
