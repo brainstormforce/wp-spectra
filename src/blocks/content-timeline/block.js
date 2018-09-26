@@ -51,7 +51,6 @@ const {
     TextControl,
     ToggleControl,
     Toolbar,
-    Dashicon,
 } = wp.components;
 
 const item =[];
@@ -168,44 +167,7 @@ class UAGBcontentTimeline extends Component {
 				iconHover,
 				iconBgHover
 			},
-		} = this.props;
-
-		const MyDashicon = [
-            { value: 'admin-home', label: __( 'admin-home' ) },
-            { value: 'products', label: __( 'products' ) },
-            { value: 'calendar', label: __( 'calendar' ) },
-            { value: 'admin-appearance', label: __( 'admin-appearance' ) },
-            { value: 'admin-collapse', label: __( 'admin-collapse' ) },
-            { value: 'admin-comments', label: __( 'admin-comments' ) },
-            { value: 'admin-customizer', label: __( 'admin-customizer' ) },
-            { value: 'admin-generic', label: __( 'admin-generic' ) },
-            { value: 'admin-links', label: __( 'admin-links' ) },
-            { value: 'admin-media', label: __( 'admin-media' ) },
-            { value: 'admin-multisite', label: __( 'admin-multisite' ) },
-            { value: 'admin-network', label: __( 'admin-network' ) },
-            { value: 'admin-page', label: __( 'admin-page' ) },
-            { value: 'admin-plugins', label: __( 'admin-plugins' ) },
-            { value: 'admin-post', label: __( 'admin-post' ) },
-            { value: 'admin-settings', label: __( 'admin-settings' ) },
-            { value: 'admin-site-alt', label: __( 'admin-site-alt' ) },
-            { value: 'admin-site-alt2', label: __( 'admin-site-alt2' ) },
-            { value: 'admin-site', label: __( 'admin-site' ) },
-            { value: 'admin-tools', label: __( 'admin-tools' ) },
-            { value: 'admin-users', label: __( 'admin-users' ) },
-            { value: 'album', label: __( 'album' ) },
-            { value: 'analytics', label: __( 'analytics') },
-            { value: 'archive', label: __( 'archive' ) },
-            { value: 'arrow-down-alt', label: __( 'arrow-down-alt' ) },
-            { value: 'arrow-down-alt2', label: __( 'arrow-down-alt2' ) },
-            { value: 'arrow-down', label: __( 'arrow-down' ) },
-            { value: 'arrow-left-alt', label: __( 'arrow-left-alt' ) },
-            { value: 'arrow-left-alt2', label: __( 'arrow-left-alt2' ) },
-            { value: 'arrow-left', label: __( 'arrow-left' ) },
-            { value: 'arrow-right-alt', label: __( 'arrow-right-alt' ) },
-            { value: 'arrow-right-alt2', label: __( 'arrow-right-alt2' ) },
-            { value: 'arrow-right', label: __( 'arrow-right' ) },
-            { value: 'arrow-up-alt', label: __( 'arrow-up-alt' ) }            
-        ];
+		} = this.props;		
 
         const icons = [   
             'fab fa fa-address-book',
@@ -1358,7 +1320,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},
 		iconSize : {
 			type : 'number',
-			default : 15,
+			default : 12,
 		},
 	},
 	
