@@ -12,4 +12,4 @@ PHPLint:PHPCS:PHP7.1:MySQL:
   # - composer update
   #- vendor/bin/phpcs
   - npm install --only=dev
-  - eslint .
+  - node_modules/.bin/eslint .
