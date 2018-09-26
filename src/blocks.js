@@ -11,3 +11,4 @@
 
 import './blocks/advanced-heading/block.js';
 import './blocks/post/block.js';
+import './blocks/section/block.js';
