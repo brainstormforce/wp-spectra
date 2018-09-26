@@ -56,7 +56,6 @@ for (var i = 1; i <= 5; i++) {
 	var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
 	item.push(p);            
 }
-//console.log(item);
 
 class UAGBcontentTimeline extends Component {
 
@@ -71,7 +70,6 @@ class UAGBcontentTimeline extends Component {
     * Loading Timeline content.
     */
     getTimelinecontent(value) {  
-    	console.log(value);
     	const { tm_content, timelineItem } = this.props.attributes;
     	const { setAttributes } = this.props;    	
         var item_number = value; 
@@ -580,9 +578,8 @@ class UAGBcontentTimeline extends Component {
         });
     }
 
-	 /* Render output at backend */
+	/* Render output at backend */
     uagb_get_content_timeline_content(){
-    	console.log("here");
         var attr               = this.props.attributes,
             headingTag         = attr.headingTag,
             headFontSize       = attr.headFontSize,
@@ -855,7 +852,7 @@ class UAGBcontentTimeline extends Component {
         }
     }
 
-    // Js for timeline line and inner line filler.
+    /*  Js for timeline line and inner line filler*/
     uagbTimelineContent_back(id){
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
@@ -1175,42 +1172,13 @@ registerBlockType( 'uagb/content-timeline', {
 			default : 15,
 		},
 	},
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
+	
 	edit: UAGBcontentTimeline,
-
-	/*function( props ) {
-
-		console.log( 'Edit props' );
-		console.log( props );
-
-		const { headingTitle } = props.attributes;
-
-		return (
-			<div className={ props.className }>
-				<p>Ultimate Addons For Gutenberg!</p>
-			</div>
-		);
-	},*/
-
-	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
-	 *
-	 * The "save" property must be specified and must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
+	
 	save: function( props ) {
 		
-		console.log( 'Save props' );
-		console.log( props );
+		//console.log( 'Save props' );
+		//console.log( props );
 
 		const {
 			headingTitle,
