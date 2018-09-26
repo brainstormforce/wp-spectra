@@ -2,17 +2,17 @@
  * External dependencies
  */
 
-import get from 'lodash/get';
-import isUndefined from 'lodash/isUndefined';
-import pickBy from 'lodash/pickBy';
+import get from "lodash/get"
+import isUndefined from "lodash/isUndefined"
+import pickBy from "lodash/pickBy"
 
 // Import Post Components
-import Blog from "./blog";
+import Blog from "./blog"
 
-const { Component, Fragment } = wp.element;
-const { __ } = wp.i18n;
-const { decodeEntities } = wp.htmlEntities;
-const MAX_POSTS_COLUMNS = 4;
+const { Component, Fragment } = wp.element
+const { __ } = wp.i18n
+const { decodeEntities } = wp.htmlEntities
+const MAX_POSTS_COLUMNS = 4
 const {
 	PanelBody,
 	Placeholder,
@@ -23,7 +23,7 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
-} = wp.components;
+} = wp.components
 
 const {
 	InspectorControls,
@@ -31,72 +31,72 @@ const {
 	BlockControls,
 	ColorPalette,
 	RichText
-} = wp.editor;
+} = wp.editor
 
-const { withSelect } = wp.data;
+const { withSelect } = wp.data
 
 class UAGBPostMasonry extends Component {
 
 	constructor() {
-		super( ...arguments );
+		super( ...arguments )
 
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
-		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this );
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this );
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this );
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this );
+		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this )
+		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this )
+		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this )
+		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this )
+		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this )
+		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this )
 	}
 
 	componentDidMount() {
 
-		this.props.setAttributes( { block_id: this.props.clientId } );
+		this.props.setAttributes( { block_id: this.props.clientId } )
 
-		const $style = document.createElement( 'style' );
-		$style.setAttribute( 'id', 'uagb-style-' + this.props.clientId );
-		document.head.appendChild( $style );
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		document.head.appendChild( $style )
 	}
 
 	toggleDisplayPostComment() {
-		const { displayPostComment } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostComment } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostComment: ! displayPostComment } );
+		setAttributes( { displayPostComment: ! displayPostComment } )
 	}
 
 	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostDate } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostDate: ! displayPostDate } );
+		setAttributes( { displayPostDate: ! displayPostDate } )
 	}
 
 	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostExcerpt } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
+		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } )
 	}
 
 	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostAuthor } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } );
+		setAttributes( { displayPostAuthor: ! displayPostAuthor } )
 	}
 
 	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostImage } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostImage: ! displayPostImage } );
+		setAttributes( { displayPostImage: ! displayPostImage } )
 	}
 
 	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { displayPostLink } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { displayPostLink: ! displayPostLink } );
+		setAttributes( { displayPostLink: ! displayPostLink } )
 	}
 
 	render() {
@@ -105,7 +105,7 @@ class UAGBPostMasonry extends Component {
 			categoriesList,
 			setAttributes,
 			latestPosts
-		} = this.props;
+		} = this.props
 		const {
 			displayPostDate,
 			displayPostComment,
@@ -135,11 +135,11 @@ class UAGBPostMasonry extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-		} = attributes;
+		} = attributes
 
 		const inspectorControls = (
 			<InspectorControls>
-				<PanelBody title={ __( 'General' ) }>
+				<PanelBody title={ __( "General" ) }>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -147,11 +147,11 @@ class UAGBPostMasonry extends Component {
 						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: '' !== value ? value : undefined } ) }
+						onCategoryChange={ ( value ) => setAttributes( { categories: "" !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 					<RangeControl
-						label={ __( 'Columns' ) }
+						label={ __( "Columns" ) }
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
 						min={ 1 }
@@ -159,81 +159,81 @@ class UAGBPostMasonry extends Component {
 					/>
 
 				</PanelBody>
-				<PanelBody title={ __( 'Image' ) }>
+				<PanelBody title={ __( "Image" ) }>
 					<ToggleControl
-						label={ __( 'Show Featured Image' ) }
+						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
 						onChange={ this.toggleDisplayPostImage }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
-							label={ __( 'Image Sizes' ) }
+							label={ __( "Image Sizes" ) }
 							value={ imgSize }
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 							options={ [
-								{ value: 'thumbnail', label: __( 'Thumbnail' ) },
-								{ value: 'medium', label: __( 'Medium' ) },
-								{ value: 'medium_large', label: __( 'Medium Large' ) },
-								{ value: 'large', label: __( 'Large' ) },
+								{ value: "thumbnail", label: __( "Thumbnail" ) },
+								{ value: "medium", label: __( "Medium" ) },
+								{ value: "medium_large", label: __( "Medium Large" ) },
+								{ value: "large", label: __( "Large" ) },
 							] }
 						/>
                 	}
                 	{ displayPostImage == true &&
 						<SelectControl
-							label={ __( 'Image Position' ) }
+							label={ __( "Image Position" ) }
 							value={ imgPosition }
 							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
 							options={ [
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'background', label: __( 'Background' ) },
+								{ value: "top", label: __( "Top" ) },
+								{ value: "background", label: __( "Background" ) },
 							] }
 						/>
 					}
 				</PanelBody>
-				<PanelBody title={ __( 'Content' ) }>
+				<PanelBody title={ __( "Content" ) }>
 					<SelectControl
-						label={ __( 'Title Tag' ) }
+						label={ __( "Title Tag" ) }
 						value={ titleTag }
 						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 						options={ [
-							{ value: 'h1', label: __( 'H1' ) },
-							{ value: 'h2', label: __( 'H2' ) },
-							{ value: 'h3', label: __( 'H3' ) },
-							{ value: 'h4', label: __( 'H4' ) },
-							{ value: 'h5', label: __( 'H5' ) },
-							{ value: 'h6', label: __( 'H6' ) },
-							] }
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
 					/>
 					<ToggleControl
-						label={ __( 'Show Author' ) }
+						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
 						onChange={ this.toggleDisplayPostAuthor }
 					/>
 					<ToggleControl
-						label={ __( 'Show Date' ) }
+						label={ __( "Show Date" ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
 					<ToggleControl
-						label={ __( 'Show Comment' ) }
+						label={ __( "Show Comment" ) }
 						checked={ displayPostComment }
 						onChange={ this.toggleDisplayPostComment }
 					/>
 					<ToggleControl
-						label={ __( 'Show Excerpt' ) }
+						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
 						onChange={ this.toggleDisplayPostExcerpt }
 					/>
 					<ToggleControl
-						label={ __( 'Show Read More Link' ) }
+						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Colors' ) }>
-					{ imgPosition == 'top' &&
+				<PanelBody title={ __( "Colors" ) }>
+					{ imgPosition == "top" &&
 						<PanelColor
-							title={ __( 'Blog Background Color' ) }
+							title={ __( "Blog Background Color" ) }
 							colorValue={ bgColor }
 							initialOpen={ false }
 						>
@@ -245,7 +245,7 @@ class UAGBPostMasonry extends Component {
 						</PanelColor>
 					}
 					<PanelColor
-						title={ __( 'Title Color' ) }
+						title={ __( "Title Color" ) }
 						colorValue={ titleColor }
 						initialOpen={ false }
 					>
@@ -256,7 +256,7 @@ class UAGBPostMasonry extends Component {
 						/>
 					</PanelColor>
 					<PanelColor
-						title={ __( 'Meta Color' ) }
+						title={ __( "Meta Color" ) }
 						colorValue={ metaColor }
 						initialOpen={ false }
 					>
@@ -268,7 +268,7 @@ class UAGBPostMasonry extends Component {
 					</PanelColor>
 					{ displayPostExcerpt == true &&
 						<PanelColor
-							title={ __( 'Excerpt Color' ) }
+							title={ __( "Excerpt Color" ) }
 							colorValue={ excerptColor }
 							initialOpen={ false }
 						>
@@ -281,7 +281,7 @@ class UAGBPostMasonry extends Component {
 					}
 					{ displayPostLink == true &&
 						<PanelColor
-							title={ __( 'CTA Color' ) }
+							title={ __( "CTA Color" ) }
 							colorValue={ ctaColor }
 							initialOpen={ false }
 						>
@@ -294,7 +294,7 @@ class UAGBPostMasonry extends Component {
 					}
 					{ displayPostLink == true &&
 						<PanelColor
-							title={ __( 'CTA Background Color' ) }
+							title={ __( "CTA Background Color" ) }
 							colorValue={ ctaBgColor }
 							initialOpen={ false }
 						>
@@ -306,9 +306,9 @@ class UAGBPostMasonry extends Component {
 						</PanelColor>
 					}
 				</PanelBody>
-				<PanelBody title={ __( 'Spacing' ) }>
+				<PanelBody title={ __( "Spacing" ) }>
 					<RangeControl
-						label={ __( 'Row Gap' ) }
+						label={ __( "Row Gap" ) }
 						value={ rowGap }
 						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 						min={ 0 }
@@ -316,7 +316,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( 'Column Gap' ) }
+						label={ __( "Column Gap" ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }
@@ -324,7 +324,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( 'Content Padding' ) }
+						label={ __( "Content Padding" ) }
 						value={ contentPadding }
 						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
 						min={ 0 }
@@ -332,7 +332,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( 'Title Bottom Spacing' ) }
+						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
 						min={ 0 }
@@ -340,7 +340,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( 'Meta Bottom Spacing' ) }
+						label={ __( "Meta Bottom Spacing" ) }
 						value={ metaBottomSpace }
 						onChange={ ( value ) => setAttributes( { metaBottomSpace: value } ) }
 						min={ 0 }
@@ -348,7 +348,7 @@ class UAGBPostMasonry extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( 'Excerpt Bottom Spacing' ) }
+						label={ __( "Excerpt Bottom Spacing" ) }
 						value={ excerptBottomSpace }
 						onChange={ ( value ) => setAttributes( { excerptBottomSpace: value } ) }
 						min={ 0 }
@@ -357,9 +357,9 @@ class UAGBPostMasonry extends Component {
 					/>
 				</PanelBody>
 			</InspectorControls>
-		);
+		)
 
-		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
+		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
 			return (
@@ -367,15 +367,15 @@ class UAGBPostMasonry extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( 'UAGB - Post Masonry' ) }
+						label={ __( "UAGB - Post Masonry" ) }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( 'No posts found.' )
+							__( "No posts found." )
 						}
 					</Placeholder>
 				</Fragment>
-			);
+			)
 		}
 
 		return (
@@ -385,31 +385,31 @@ class UAGBPostMasonry extends Component {
 					<BlockAlignmentToolbar
 						value={ align }
 						onChange={ ( value ) => {
-							setAttributes( { align: value } );
+							setAttributes( { align: value } )
 						} }
-						controls={ [ 'center', 'wide' ] }
+						controls={ [ "center", "wide" ] }
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
 			</Fragment>
-		);
+		)
 	}
 }
 
 export default withSelect( ( select, props ) => {
-	const { categories, postsToShow, order, orderBy } = props.attributes;
-	const { getEntityRecords } = select( 'core' );
+	const { categories, postsToShow, order, orderBy } = props.attributes
+	const { getEntityRecords } = select( "core" )
 	const latestPostsQuery = pickBy( {
 		categories: categories,
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
-	}, ( value ) => ! isUndefined( value ) );
+	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
-	};
+	}
 	return {
-		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
-		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
-	};
-} )( UAGBPostMasonry );
+		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
+		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
+	}
+} )( UAGBPostMasonry )

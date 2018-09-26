@@ -1,10 +1,10 @@
-const { decodeEntities } = wp.htmlEntities;
+const { decodeEntities } = wp.htmlEntities
 
 class FeaturedImage extends React.Component {
 
 	render() {
 
-		const { post, attributes } = this.props;
+		const { post, attributes } = this.props
 
 		if (
 			attributes.displayPostImage &&
@@ -12,23 +12,23 @@ class FeaturedImage extends React.Component {
 			attributes.imgSize &&
 			post.featured_image_src[attributes.imgSize]
 		) {
-			var src = post.featured_image_src[attributes.imgSize];
+			var src = post.featured_image_src[attributes.imgSize]
 
 			return (
 				<div className='uagb-post__image'>
 					<a href={ post.link } target="_blank" rel="bookmark">
 						<img
 							src={ src[0] }
-							alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+							alt={ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }
 						/>
 					</a>
 				</div>
-			);
+			)
 		} else {
 
-			return null;
+			return null
 		}
 	}
 }
 
-export default FeaturedImage;
+export default FeaturedImage

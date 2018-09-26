@@ -1,10 +1,10 @@
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 class Button extends React.Component {
 
 	render() {
 
-		const { post, attributes } = this.props;
+		const { post, attributes } = this.props
 
 		if ( attributes.displayPostLink ) {
 
@@ -17,14 +17,14 @@ class Button extends React.Component {
 						background: attributes.ctaBgColor
 					}}
 				>
-					<a className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel="bookmark">{ __( 'Read More' ) }</a>
+					<a className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel="bookmark">{ __( "Read More" ) }</a>
 				</div>
-			);
+			)
 
 		} else {
-			return null;
+			return null
 		}
 	}
 }
 
-export default Button;
+export default Button
