@@ -1,6 +1,6 @@
 <?php
 $_thumb_class = 'no-thumb';
-$_thumb_id = get_post_thumbnail_id();
+$_thumb_id    = get_post_thumbnail_id();
 
 $_thumb_class = (
 
@@ -13,11 +13,11 @@ $_thumb_class = (
 $article_style = array(
 	'padding-right: ' . ( $attributes['rowGap'] / 2 ) . 'px',
 	'padding-left: ' . ( $attributes['rowGap'] / 2 ) . 'px',
-	'margin-bottom: ' . ( $attributes['columnGap'] ) . 'px'
+	'margin-bottom: ' . ( $attributes['columnGap'] ) . 'px',
 );
 
 $inner_wrap_style = array(
-	'background: ' . $attributes['bgColor']
+	'background: ' . $attributes['bgColor'],
 );
 ?>
 <article class="<?php esc_attr( $_thumb_class ); ?>" style="<?php echo implode( ';', $article_style ); ?>">
