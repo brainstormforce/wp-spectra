@@ -1,4 +1,8 @@
+**/*.min.js
 **/node_modules/**
 **/vendor/**
-**/block.build.js
-**/*.min.js
+build
+coverage
+cypress
+node_modules
+vendor
