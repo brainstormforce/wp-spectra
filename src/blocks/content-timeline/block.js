@@ -1222,9 +1222,241 @@ registerBlockType( 'uagb/content-timeline', {
 			bgPadding,
 			tm_client_id,
 			iconHover,
-			iconBgHover
+			iconBgHover,
+			className
 		} = props.attributes;
 
-		return null; 
+		/* Arrow position */
+        var arrow_align_class  = 'uagb-timeline-arrow-top';
+        if( arrowlinAlignment == 'center' ){
+            arrow_align_class = 'uagb-timeline-arrow-center';
+        }else if( arrowlinAlignment == 'bottom' ){
+            arrow_align_class = 'uagb-timeline-arrow-bottom';
+        } 
+
+		/* Alignmnet */
+        var align_class = 'uagb-timeline--center '+ arrow_align_class;
+        if( timelinAlignment == 'left' ){
+            align_class = 'uagb-timeline--left ' + arrow_align_class;
+        }else if(timelinAlignment == 'right'){
+            align_class = 'uagb-timeline--right '+ arrow_align_class;
+        }     
+
+        var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
+        var tm_block_id_new = 'uagb-'+tm_client_id;
+        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
+        var block_id = 'uagb-'+tm_client_id;
+
+        /* Style for elements */
+        var front_style = '.'+ block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
+                        '.'+ block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
+                        '  border-left-color:'+backgroundColor+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,'+
+                        '.'+ block_id +'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{'+
+                        '  border-right-color:'+backgroundColor+
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline__line__inner{'+
+                            'background-color:'+separatorFillColor+';'+
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline__line{'+
+                            'background-color:'+separatorColor+';'+
+                            'width:'+separatorwidth+'px'+';'+                            
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--right .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--left .uagb-timeline__line{'+
+                            'left: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline__line{'+
+                            'right: calc( '+connectorBgsize+'px / 2 );'+
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline-marker{'+
+                          'background-color:'+separatorBg+';'+
+                          'min-height:'+connectorBgsize+'px;'+
+                          'min-width:'+connectorBgsize+'px;'+
+                          'line-height:'+connectorBgsize+'px;'+
+                          'border:'+borderwidth+'px solid'+separatorBorder+';'+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
+                            'height:'+connectorBgsize+'px'+
+                        '}'+ 
+                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        ' margin-right:'+horizontalSpace+'px'+
+                        '}'+ 
+                        '.'+ block_id +' .uagb-timeline-field:not(:last-child){'+
+                        ' margin-bottom:'+verticalSpace+'px'+
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
+                        ' margin-bottom:'+dateBottomspace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'+ 
+                        '.'+ block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
+                        ' margin-right:'+horizontalSpace+'px;'+
+                        'color:'+dateColor+';'+
+                        'font-size:'+dateFontsize+'px;'+
+                        '}'                        
+                        +'.'+ block_id +' .uagb-date-new{'+
+                        ' font-size:'+dateFontsize+'px;'+
+                        'color:'+dateColor+';'+
+                        '}'+
+                        '.'+ block_id +' .uagb-events-inner-new{'+
+                        ' border-radius:'+borderRadius+'px;'+
+                        'padding:'+bgPadding+'px;'+
+                        '}'
+                        +'.'+ block_id +' .uagb-timeline-main .timeline-icon-new{'+
+                        ' font-size:'+iconSize+'px;'+
+                        'color:'+iconColor+';'+
+                        '}'+                         
+                        '.'+ block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
+                        'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+                        
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+                        
+                        '.'+ block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
+                        'background:'+iconBgHover+';'+
+                        'border-color:'+borderHover+';'+
+                        '}'+
+                        '.'+ block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
+                        'color:'+iconHover+';'+
+                        '}'+
+                        '@media(max-width:768px){'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
+                        ' margin-left:0px;'+
+                        ' margin-right:0px'+
+                        '}'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-left,'+
+                        '.'+ block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-right{'+
+                        ' margin-left:'+horizontalSpace+'px;'+
+                        '}'+
+                        '}';
+         
+        const hasItems = Array.isArray( tm_content ) && tm_content.length;
+
+        var content_align_class = '';
+        var day_align_class = '';
+
+        if( timelinAlignment == 'left' ){
+            content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+            day_align_class = 'uagb-day-new uagb-day-left';
+        }else if(timelinAlignment == 'right'){
+            content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+            day_align_class = 'uagb-day-new uagb-day-right';
+        }     
+        let data_copy     = [ ...tm_content ];
+        var display_inner_date = false;
+
+		return (            
+                <div className={ className } >                     
+                    <div className = { tl_class }>
+                        <div className = "uagb-timeline-wrapper">
+                            <div className = "uagb-timeline-main">   
+                                <div className = "uagb-days uagb-timeline-infinite-load">
+                                	<style dangerouslySetInnerHTML={{ __html: front_style }}></style>
+                                	{ 
+                        				tm_content.map((post,index) => { 
+                        					var second_index = 'uagb-'+index;
+			                                if(timelinAlignment == 'center'){
+			                                    display_inner_date = true;
+			                                    if(index % 2 == '0'){
+			                                        content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+			                                        day_align_class = 'uagb-day-new uagb-day-right';
+			                                    }else{
+			                                        content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+			                                        day_align_class = 'uagb-day-new uagb-day-left';
+			                                    }  
+			                                }   
+			                                const Tag = headingTag;  
+			                                var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
+                            					
+			                                return (
+				                                <article className = "uagb-timeline-field animate-border"  key={index}>
+				                                    <div className = {content_align_class}> 
+				                                        
+				                                        <div className = "uagb-timeline-marker out-view-timeline-icon">
+				                                            <i className = {icon_class}></i>
+				                                        </div>
+				                                        
+				                                        <div className = {day_align_class}>
+				                                            <div className="uagb-events-new" style = {{textAlign:align}}>
+				                                                <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+				                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+				                                                        { post.date_gmt &&
+				                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
+				                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+				                                                            </div>
+				                                                        }  
+				                                                    </div>
+
+				                                                    <div className="uagb-content">
+				                                                        
+				                                                        <div className="uagb-timeline-heading-text" style={{                                                                            
+				                                                                    marginBottom: headSpace + 'px',
+				                                                                }}> 
+				                                                            <RichText.Content
+				                                                                tagName={ headingTag }
+				                                                                value={ post.time_heading }
+				                                                                className='uagb-timeline-heading entry-title'				                                                               
+				                                                                style={{                                                                   
+				                                                                    fontSize: headFontSize + 'px',
+				                                                                    color: headingColor,                                                                    
+				                                                                }}
+				                                                            />
+				                                                        </div>
+
+				                                                        <RichText.Content
+				                                                            tagName= "p"
+				                                                            value={ post.time_desc }
+				                                                            className='uagb-timeline-desc-content'				                                                            
+				                                                            style={{                                                                   
+				                                                                fontSize: subHeadFontSize + 'px',
+				                                                                color: subHeadingColor, 
+				                                                                marginBottom: subHeadSpace + 'px',                                                              
+				                                                            }}
+				                                                        />
+
+				                                                        <div className="uagb-timeline-arrow"></div> 
+
+				                                                    </div>
+
+				                                                </div>
+				                                            </div>
+				                                        </div>
+
+				                                        <div className = "uagb-timeline-date-new">                                                                                                   
+				                                            { post.date_gmt &&
+				                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
+				                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+				                                                </div>
+				                                            } 
+				                                        </div>
+				                                    </div>
+				                                </article>
+				                            );
+
+                        				})
+                        			}
+                                </div>
+                                <div className = "uagb-timeline__line" >
+                                    <div className = "uagb-timeline__line__inner"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        );
 	}
 } );
