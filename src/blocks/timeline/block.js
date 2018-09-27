@@ -211,7 +211,9 @@ class UAGBTimeline extends Component {
                         onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
                     />
                 </PanelBody>
-                 <PanelBody title={ __( 'Image' ) }>
+                 <PanelBody title={ __( 'Image' ) }
+                    initialOpen={ false }
+                 >
                     <ToggleControl
                         label={ __( 'Display Featured Image' ) }
                         checked={ displayPostImage }
@@ -226,7 +228,9 @@ class UAGBTimeline extends Component {
                         />
                     }   
                 </PanelBody>
-                <PanelBody title={ __( 'Content' ) }> 
+                <PanelBody title={ __( 'Content' ) }
+                    initialOpen={ false }
+                > 
                     <ToggleControl
                         label={ __( 'Display Post Author' ) }
                         checked={ displayPostAuthor }
