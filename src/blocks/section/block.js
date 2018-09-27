@@ -7,38 +7,39 @@ import classnames from "classnames"
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
-
-// Import all of our Background Options requirements.
-import BackgroundOptions,
-	{
-		BackgroundOptionsAttributes,
-		BackgroundOptionsClasses,
-		BackgroundOptionsInlineStyles,
-		BackgroundOptionsVideoOutput
-	} from '../../components/background-options';
+import BackgroundOptionsClasses from './classes'
+import BackgroundOptionsVideoOutput from './video'
+import BackgroundOptions from './index'
 
 // Components
 const { __ } = wp.i18n
 
 // Register block controls
-const { registerBlockType } = wp.blocks
+const {
+	registerBlockType,
+	description,
+	MediaUpload
+} = wp.blocks
 
 const {
 	AlignmentToolbar,
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
 	InnerBlocks
 } = wp.editor
 
 const {
 	PanelBody,
 	PanelColor,
+	PanelRow,
 	SelectControl,
 	RangeControl,
-	FormFileUpload
+	Button,
+	Dashicon,
 } = wp.components
+
+
 
 console.log(wp.components);
 
@@ -108,7 +109,18 @@ registerBlockType( "uagb/section", {
 			type: "string",
 			default: "section"
 		},
-		...BackgroundOptionsAttributes
+		backgroundType: {
+			type: 'string',
+		},
+		backgroundImage: {
+			type: 'object',
+		},
+		backgroundVideo: {
+			type: 'object',
+		},
+		backgroundColor: {
+			type: 'string',
+		}
 	},
 	edit: function( props ) {
 
@@ -127,8 +139,10 @@ registerBlockType( "uagb/section", {
 			rightMargin,
 			topMargin,
 			bottomMargin,
-			bgColor,
-			bgType
+			backgroundType,
+			backgroundImage,
+			backgroundVideo,
+			backgroundColor
 		} = attributes;
 
 		var section_width = width;
@@ -246,50 +260,13 @@ registerBlockType( "uagb/section", {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Background' ) }>
-						<SelectControl
-							label={ __( "Background Type" ) }
-							value={ bgType }
-							onChange={ ( value ) => setAttributes( { bgType: value } ) }
-							options={ [
-								{ value: "color", label: __( "Color" ) },
-								{ value: "image", label: __( "Image" ) },
-								{ value: "video", label: __( "Video" ) },
-							] }
-						/>
-						<PanelRow>
-							{ imageBackgroundSelect() }
-							{ videoBackgroundSelect() }
-							{ colorPanelSelect() }
-						</PanelRow>
-						{ "color" == bgType &&
-
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ bgColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ bgColor }
-									onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						}
-						{ "image" == bgType &&
-							<FormFileUpload
-								accept="image/*"
-								onChange={ () => console.log('new image') }
-								>
-								{ __( "Upload" ) }
-							</FormFileUpload>
-						}
-					</PanelBody>
+					<BackgroundOptions attributes={attributes} />
 				</InspectorControls>
 				<CustomTag
 					className={ classnames(
 						className,
-						"uagb-section__wrap"
+						"uagb-section__wrap",
+						...BackgroundOptionsClasses( props ),
 					) }
 					style={{
 						paddingTop: topPadding + 'px',
@@ -300,7 +277,7 @@ registerBlockType( "uagb/section", {
 						marginBottom: bottomMargin + 'px',
 						marginLeft: leftMargin + 'px',
 						marginRight: rightMargin + 'px',
-						background : bgColor,
+						background : backgroundColor,
 						width: section_width
 					}}>
 					<div className="uagb-section__inner-wrap">
@@ -336,7 +313,7 @@ registerBlockType( "uagb/section", {
 			rightMargin,
 			topMargin,
 			bottomMargin,
-			bgColor,
+			backgroundColor,
 			bgType
 		} = attributes;
 
@@ -358,7 +335,8 @@ registerBlockType( "uagb/section", {
 			<CustomTag
 				className={ classnames(
 					className,
-					"uagb-section__wrap"
+					"uagb-section__wrap",
+					...BackgroundOptionsClasses( props ),
 				) }
 				style={{
 					paddingTop: topPadding + 'px',
@@ -369,9 +347,10 @@ registerBlockType( "uagb/section", {
 					marginBottom: bottomMargin + 'px',
 					marginLeft: leftMargin + 'px',
 					marginRight: rightMargin + 'px',
-					background : bgColor,
+					background : backgroundColor,
 					width: section_width
 				}}>
+				{ BackgroundOptionsVideoOutput( props ) }
 				<div className="uagb-section__inner-wrap">
 					<InnerBlocks.Content />
 				</div>

@@ -18,10 +18,11 @@ const {
 	SelectControl,
 } = wp.components;
 
+const { Component, Fragment } = wp.element
+
 /**
  * Internal dependencies
  */
-import BackgroundOptionsAttributes from './attributes';
 import BackgroundOptionsClasses from './classes';
 import BackgroundOptionsInlineStyles from './inline-styles';
 import BackgroundOptionsVideoOutput from './video';
@@ -29,69 +30,45 @@ import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
-	BackgroundOptionsAttributes,
 	BackgroundOptionsClasses,
 	BackgroundOptionsInlineStyles,
 	BackgroundOptionsVideoOutput,
 };
 
-function BackgroundOptions( props ) {
-	const setBackgroundType = value => props.setAttributes( { backgroundType: value } );
-	const setBackgroundImage = value => props.setAttributes( { backgroundImage: value } );
-	const removeBackgroundImage = () => props.setAttributes( { backgroundImage: null } );
-	const setBackgroundVideo = value => props.setAttributes( { backgroundVideo: value } );
-	const removeBackgroundVideo = () => props.setAttributes( { backgroundVideo: null } );
-	const setBackgroundColor = value => props.setAttributes( { backgroundColor: value } );
+class BackgroundOptions extends Component {
 
-	const imageBackgroundSelect = () => {
-		if ( 'image' !== props.attributes.backgroundType ) {
-			return '';
-		}
+	render() {
+		const { attributes } = this.props
 
-		if ( ! props.attributes.backgroundImage ) {
-			return (
-				<div className="media-upload-wrapper">
-					<p>
-						<MediaUpload
-							buttonProps={ {
-								className: 'components-button button button-large',
-							} }
-							onSelect={ setBackgroundImage }
-							type="image"
-							value=""
-							render={ ( { open } ) => (
-								<Button className="button button-large" onClick={ open }>
-									<Dashicon icon="format-image" /> { __( 'Upload Image' ) }
-								</Button>
-							) }
-						/>
-					</p>
-					<p>
-						<description>
-							{ __( 'Add/Upload an image file. (1920x1080px .jpg, .png)' ) }
-						</description>
-					</p>
-				</div>
-			);
-		}
+		const setBackgroundType = value => this.props.setAttributes( { backgroundType: value } );
+		const setBackgroundImage = value => this.props.setAttributes( { backgroundImage: value } );
+		const removeBackgroundImage = () => this.props.setAttributes( { backgroundImage: null } );
+		const setBackgroundVideo = value => this.props.setAttributes( { backgroundVideo: value } );
+		const removeBackgroundVideo = () => this.props.setAttributes( { backgroundVideo: null } );
+		const setBackgroundColor = value => this.props.setAttributes( { backgroundColor: value } );
 
-		return (
-			<div className="image-wrapper">
-				<p>
-					<img
-						src={ props.attributes.backgroundImage.url }
-						alt={ props.attributes.backgroundImage.alt }
-					/>
-				</p>
-				{ props.focus ? (
-					<div className="media-button-wrapper">
+		const imageBackgroundSelect = () => {
+			if ( 'image' !== attributes.backgroundType ) {
+				return '';
+			}
+
+			if ( ! attributes.backgroundImage ) {
+				return (
+					<div className="media-upload-wrapper">
 						<p>
-							<Button
-								className="remove-image button button-large"
-								onClick={ removeBackgroundImage }
-							>
-								<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
-							</Button>
+							<MediaUpload
+								buttonProps={ {
+									className: 'components-button button button-large',
+								} }
+								onSelect={ setBackgroundImage }
+								type="image"
+								value=""
+								render={ ( { open } ) => (
+									<Button className="button button-large" onClick={ open }>
+										<Dashicon icon="format-image" /> { __( 'Upload Image' ) }
+									</Button>
+								) }
+							/>
 						</p>
 						<p>
 							<description>
@@ -99,132 +76,160 @@ function BackgroundOptions( props ) {
 							</description>
 						</p>
 					</div>
-				) : null }
-			</div>
-		);
-	};
+				);
+			}
 
-	const videoBackgroundSelect = () => {
-		if ( 'video' !== props.attributes.backgroundType ) {
-			return '';
-		}
-
-		if ( ! props.attributes.backgroundVideo ) {
 			return (
-				<div className="media-upload-wrapper">
+				<div className="image-wrapper">
 					<p>
-						<MediaUpload
-							buttonProps={ {
-								className: 'components-button button button-large',
-							} }
-							onSelect={ setBackgroundVideo }
-							type="video"
-							value=""
-							render={ ( { open } ) => (
-								<Button className="button button-large" onClick={ open }>
-									<Dashicon icon="format-video" /> { __( 'Upload Video' ) }
-								</Button>
-							) }
+						<img
+							src={ attributes.backgroundImage.url }
+							alt={ attributes.backgroundImage.alt }
 						/>
 					</p>
-					<p>
-						<description>
-							{ __( 'Add/Upload a 1920x1080 .mp4 video file. Note: background videos are only supported on heroes.' ) }
-						</description>
-					</p>
+					{ this.props.focus ? (
+						<div className="media-button-wrapper">
+							<p>
+								<Button
+									className="remove-image button button-large"
+									onClick={ removeBackgroundImage }
+								>
+									<Dashicon icon="no-alt" /> { __( 'Remove Image' ) }
+								</Button>
+							</p>
+							<p>
+								<description>
+									{ __( 'Add/Upload an image file. (1920x1080px .jpg, .png)' ) }
+								</description>
+							</p>
+						</div>
+					) : null }
 				</div>
 			);
-		}
+		};
 
-		return (
-			<div className="video-wrapper">
-				<p>
-					<video className="video-container video-container-overlay">
-						<source
-							type="video/mp4"
-							src={ props.attributes.backgroundVideo.url }
-						/>
-					</video>
-				</p>
-				{ props.focus ? (
-					<div className="media-button-wrapper">
+		const videoBackgroundSelect = () => {
+			if ( 'video' !== attributes.backgroundType ) {
+				return '';
+			}
+
+			if ( ! attributes.backgroundVideo ) {
+				return (
+					<div className="media-upload-wrapper">
 						<p>
-							<Button
-								className="remove-video button button-large"
-								onClick={ removeBackgroundVideo }
-							>
-								<Dashicon icon="no-alt" /> { __( 'Remove Video' ) }
-							</Button>
+							<MediaUpload
+								buttonProps={ {
+									className: 'components-button button button-large',
+								} }
+								onSelect={ setBackgroundVideo }
+								type="video"
+								value=""
+								render={ ( { open } ) => (
+									<Button className="button button-large" onClick={ open }>
+										<Dashicon icon="format-video" /> { __( 'Upload Video' ) }
+									</Button>
+								) }
+							/>
 						</p>
-
 						<p>
 							<description>
 								{ __( 'Add/Upload a 1920x1080 .mp4 video file. Note: background videos are only supported on heroes.' ) }
 							</description>
 						</p>
 					</div>
-				) : null }
-			</div>
-		);
-	};
+				);
+			}
 
-	const colorPanelSelect = () => {
-		if ( 'color' !== props.attributes.backgroundType ) {
-			return '';
-		}
+			return (
+				<div className="video-wrapper">
+					<p>
+						<video className="video-container video-container-overlay">
+							<source
+								type="video/mp4"
+								src={ attributes.backgroundVideo.url }
+							/>
+						</video>
+					</p>
+					{ this.props.focus ? (
+						<div className="media-button-wrapper">
+							<p>
+								<Button
+									className="remove-video button button-large"
+									onClick={ removeBackgroundVideo }
+								>
+									<Dashicon icon="no-alt" /> { __( 'Remove Video' ) }
+								</Button>
+							</p>
+
+							<p>
+								<description>
+									{ __( 'Add/Upload a 1920x1080 .mp4 video file. Note: background videos are only supported on heroes.' ) }
+								</description>
+							</p>
+						</div>
+					) : null }
+				</div>
+			);
+		};
+
+		const colorPanelSelect = () => {
+			if ( 'color' !== attributes.backgroundType ) {
+				return '';
+			}
+
+			return (
+				<PanelColor
+					title={ __( 'Background Color' ) }
+					colorValue={ attributes.backgroundColor }
+				>
+					<ColorPalette
+						value={ attributes.backgroundColor }
+						onChange={ setBackgroundColor }
+					/>
+				</PanelColor>
+			);
+		};
 
 		return (
-			<PanelColor
-				title={ __( 'Background Color' ) }
-				colorValue={ props.attributes.backgroundColor }
+			<PanelBody
+				title={ __( 'Background Options' ) }
+				className="wds-background-options"
+				initialOpen={ false }
 			>
-				<ColorPalette
-					value={ props.attributes.backgroundColor }
-					onChange={ setBackgroundColor }
-				/>
-			</PanelColor>
+				<PanelRow>
+					<SelectControl
+						key="background-type"
+						label={ __( 'Background Type' ) }
+						value={ attributes.backgroundType ? attributes.backgroundType : '' }
+						options={ [
+							{
+								label: __( 'None' ),
+								value: '',
+							},
+							{
+								label: __( 'Image' ),
+								value: 'image',
+							},
+							{
+								label: __( 'Video' ),
+								value: 'video',
+							},
+							{
+								label: __( 'Color' ),
+								value: 'color',
+							},
+						] }
+						onChange={ setBackgroundType }
+					/>
+				</PanelRow>
+				<PanelRow>
+					{ imageBackgroundSelect() }
+					{ videoBackgroundSelect() }
+					{ colorPanelSelect() }
+				</PanelRow>
+			</PanelBody>
 		);
-	};
-
-	return (
-		<PanelBody
-			title={ __( 'Background Options' ) }
-			className="wds-background-options"
-			initialOpen={ false }
-		>
-			<PanelRow>
-				<SelectControl
-					key="background-type"
-					label={ __( 'Background Type' ) }
-					value={ props.attributes.backgroundType ? props.attributes.backgroundType : '' }
-					options={ [
-						{
-							label: __( 'None' ),
-							value: '',
-						},
-						{
-							label: __( 'Image' ),
-							value: 'image',
-						},
-						{
-							label: __( 'Video' ),
-							value: 'video',
-						},
-						{
-							label: __( 'Color' ),
-							value: 'color',
-						},
-					] }
-					onChange={ setBackgroundType }
-				/>
-			</PanelRow>
-			<PanelRow>
-				{ imageBackgroundSelect() }
-				{ videoBackgroundSelect() }
-				{ colorPanelSelect() }
-			</PanelRow>
-		</PanelBody>
-	);
+	}
 }
 
 export default BackgroundOptions;

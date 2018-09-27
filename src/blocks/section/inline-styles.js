@@ -5,8 +5,8 @@
  */
 function BackgroundOptionsInlineStyles( props ) {
     return {
-        backgroundColor: 'color' === props.attributes.bgType ? props.attributes.bgColor : null,
-        backgroundImage: 'image' === props.attributes.bgType && props.attributes.bgImage ? `url(${ props.attributes.bgImage.url })` : null,
+        backgroundColor: 'color' === props.attributes.backgroundType ? props.attributes.backgroundColor : null,
+        backgroundImage: 'image' === props.attributes.backgroundType && props.attributes.backgroundImage ? `url(${ props.attributes.backgroundImage.url })` : null,
     };
 }
 
