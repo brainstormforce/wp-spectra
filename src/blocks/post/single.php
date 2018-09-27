@@ -1,4 +1,11 @@
 <?php
+/**
+ * Single template for post block.
+ *
+ * @since   0.0.1
+ * @package UAGB
+ */
+
 $_thumb_class = 'no-thumb';
 $_thumb_id    = get_post_thumbnail_id();
 

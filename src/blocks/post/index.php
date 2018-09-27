@@ -1,6 +1,6 @@
 <?php
 /**
- * Server-side rendering for the post grid block
+ * Server-side rendering for the post block.
  *
  * @since   0.0.1
  * @package UAGB
@@ -9,7 +9,11 @@
 global $uagb_post_settings;
 
 /**
- * Renders the post grid block on server.
+ * Renders the post carousel block on server.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
  */
 function uagb_block_post_carousel_callback( $attributes ) {
 
@@ -21,10 +25,17 @@ function uagb_block_post_carousel_callback( $attributes ) {
 	ob_start();
 
 	uagb_get_post_html( $attributes, $query, 'carousel' );
-	// Output the post markup
+	// Output the post markup.
 	return ob_get_clean();
 }
 
+/**
+ * Renders the post grid block on server.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_block_post_grid_callback( $attributes ) {
 
 	$query = uagb_get_post_query( $attributes );
@@ -35,10 +46,17 @@ function uagb_block_post_grid_callback( $attributes ) {
 	ob_start();
 
 	uagb_get_post_html( $attributes, $query, 'grid' );
-	// Output the post markup
+	// Output the post markup.
 	return ob_get_clean();
 }
 
+/**
+ * Renders the post masonry block on server.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_block_post_masonry_callback( $attributes ) {
 
 	$query = uagb_get_post_query( $attributes );
@@ -49,12 +67,17 @@ function uagb_block_post_masonry_callback( $attributes ) {
 	ob_start();
 	uagb_get_post_html( $attributes, $query, 'masonry' );
 
-	// Output the post markup
+	// Output the post markup.
 	return ob_get_clean();
 }
 
 add_action( 'wp_footer', 'uagb_post_masonry_add_script' );
 
+/**
+ * Renders the post masonry related script.
+ *
+ * @since 0.0.1
+ */
 function uagb_post_masonry_add_script() {
 
 	global $uagb_post_settings;
@@ -120,6 +143,14 @@ function uagb_post_masonry_add_script() {
 
 }
 
+/**
+ * Renders the post block query object.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @return WP_Query object Object.
+ * @since 0.0.1
+ */
 function uagb_get_post_query( $attributes ) {
 
 	$query_args = array(
@@ -131,9 +162,18 @@ function uagb_get_post_query( $attributes ) {
 		'ignore_sticky_posts' => 1,
 	);
 
-	return new \WP_Query( $query_args );
+	return new WP_Query( $query_args );
 }
 
+/**
+ * Renders the post grid block on server.
+ *
+ * @param array  $attributes Array of block attributes.
+ *
+ * @param object $query WP_Query object.
+ * @param string $layout post grid/masonry/carousel layout.
+ * @since 0.0.1
+ */
 function uagb_get_post_html( $attributes, $query, $layout ) {
 
 	$wrap = array(
@@ -187,10 +227,12 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 /**
  * Registers the `core/latest-posts` block on server.
+ *
+ * @since 0.0.1
  */
 function uagb_blocks_register_block_core_latest_posts() {
 
-	// Check if the register function exists
+	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
 	}
@@ -623,12 +665,13 @@ function uagb_blocks_register_block_core_latest_posts() {
 
 add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
 
-
 /**
  * Create API fields for additional info
+ *
+ * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-	// Add featured image source
+	// Add featured image source.
 	register_rest_field(
 		'post',
 		'featured_image_src',
@@ -639,7 +682,7 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 
-	// Add author info
+	// Add author info.
 	register_rest_field(
 		'post',
 		'author_info',
@@ -650,7 +693,7 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 
-	// Add comment info
+	// Add comment info.
 	register_rest_field(
 		'post',
 		'comment_info',
@@ -661,7 +704,7 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 
-	// Add comment info
+	// Add excerpt info.
 	register_rest_field(
 		'post',
 		'excerpt',
@@ -674,9 +717,13 @@ function uagb_blocks_register_rest_fields() {
 }
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
-
 /**
- * Get landscape featured image source for the rest field
+ * Get featured image source for the rest field as per size
+ *
+ * @param object $object Post Object.
+ * @param string $field_name Field name.
+ * @param object $request Request Object.
+ * @since 0.0.1
  */
 function uagb_blocks_get_image_src( $object, $field_name, $request ) {
 	$feat_img_array['large'] = wp_get_attachment_image_src(
@@ -707,30 +754,45 @@ function uagb_blocks_get_image_src( $object, $field_name, $request ) {
 
 /**
  * Get author info for the rest field
+ *
+ * @param object $object Post Object.
+ * @param string $field_name Field name.
+ * @param object $request Request Object.
+ * @since 0.0.1
  */
 function uagb_blocks_get_author_info( $object, $field_name, $request ) {
-	// Get the author name
+	// Get the author name.
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
 
-	// Get the author link
+	// Get the author link.
 	$author_data['author_link'] = get_author_posts_url( $object['author'] );
 
-	// Return the author data
+	// Return the author data.
 	return $author_data;
 }
 
 /**
  * Get comment info for the rest field
+ *
+ * @param object $object Post Object.
+ * @param string $field_name Field name.
+ * @param object $request Request Object.
+ * @since 0.0.1
  */
 function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
 
-	// Get the comments link
+	// Get the comments link.
 	$comments_count = wp_count_comments( $object['id'] );
 	return $comments_count->total_comments;
 }
 
 /**
  * Get excerpt for the rest field
+ *
+ * @param object $object Post Object.
+ * @param string $field_name Field name.
+ * @param object $request Request Object.
+ * @since 0.0.1
  */
 function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
 
@@ -741,6 +803,13 @@ function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
 	return $excerpt;
 }
 
+/**
+ * Render Image HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_render_image( $attributes ) {
 
 	if ( ! $attributes['displayPostImage'] ) {
@@ -755,6 +824,13 @@ function uagb_render_image( $attributes ) {
 	<?php
 }
 
+/**
+ * Render Post Title HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_render_title( $attributes ) {
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title entry-title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
@@ -763,6 +839,13 @@ function uagb_render_title( $attributes ) {
 	<?php
 }
 
+/**
+ * Render Post Meta HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_render_meta( $attributes ) {
 	global $post;
 	?>
@@ -789,6 +872,13 @@ function uagb_render_meta( $attributes ) {
 	<?php
 }
 
+/**
+ * Render Post Excerpt HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_render_excerpt( $attributes ) {
 
 	if ( ! $attributes['displayPostExcerpt'] ) {
@@ -806,6 +896,13 @@ function uagb_render_excerpt( $attributes ) {
 	<?php
 }
 
+/**
+ * Render Post CTA button HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 0.0.1
+ */
 function uagb_render_button( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
