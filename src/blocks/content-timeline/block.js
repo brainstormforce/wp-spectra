@@ -101,8 +101,8 @@ class UAGBcontentTimeline extends Component {
            
             for( var i= 0; i < diff; i++ ){
             	var array_length = data_length+i;
-            	var title_heading_val = 'Timeline Heading '+item_number;
-	            var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+            	var title_heading_val = 'My Heading '+item_number;
+	            var title_desc_val    = 'I am timeline card content. You can change me anytime. Click here to edit this text.';
 	            data_copy[array_length] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
             }
             setAttributes({tm_content:data_copy});  
@@ -388,31 +388,6 @@ class UAGBcontentTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
-                    
-                    <PanelColor
-                        title={ __( 'Line Color' ) }
-                        colorValue={ separatorColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorColor }
-                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-
-                    <PanelColor
-                        title={ __( 'Line Fill Color' ) }
-                        colorValue={ separatorFillColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorFillColor }
-                            onChange={ ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    
                     <PanelColor
                         title={ __( 'Icon Background Color' ) }
                         colorValue={ separatorBg }
@@ -435,6 +410,30 @@ class UAGBcontentTimeline extends Component {
                             allowReset
                         />
                     </PanelColor>
+                    <PanelColor
+                        title={ __( 'Line Color' ) }
+                        colorValue={ separatorColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+
+                    <PanelColor
+                        title={ __( 'Line Fill Color' ) }
+                        colorValue={ separatorFillColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorFillColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>                    
+                    
                     <PanelColor
                         title={ __( 'Border Color' ) }
                         colorValue={ separatorBorder }
@@ -1028,7 +1027,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},
         separatorFillColor : {
             type : 'string',
-            default : '#5cb85c',
+            default : '#61ce70',
         },
 		separatorBorder : {
 			type : 'string',
@@ -1076,7 +1075,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},
 		borderwidth : {
 			type : 'number',
-			default : 1,
+			default : 0,
 		},
 		iconColor : {
 			type : 'string',
@@ -1088,7 +1087,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},
 		iconBgHover : {
 			type : 'string',
-			default : '#5cb85c',
+			default : '#61ce70',
 		},
 		authorColor : {
 			type : 'string',

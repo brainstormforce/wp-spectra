@@ -35,7 +35,6 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
     $className 			= $attributes['className'];
     $tm_client_id       = $attributes['tm_client_id'];
     $borderwidth        = $attributes['borderwidth'];    
-	$borderwidth 		= $attributes['borderwidth'];   
 	$authorSpace 		= $attributes['authorSpace'];   
 	$dateBottomspace 	= $attributes['dateBottomspace'];   
 	$align 				= $attributes['align'];   
@@ -309,7 +308,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),			
 			'headingColor' => array(
 				'type' => 'string',
-				'default' => '#333',
+				'default' => '#0693E3',
 			),
 			'subHeadingColor' => array(
 				'type' => 'string',
@@ -329,7 +328,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
             'separatorFillColor' => array(
                 'type' => 'string',
-                'default' => '#5cb85c',
+                'default' => '#61ce70',
             ),
 			'separatorBorder' => array(
 				'type' => 'string',
@@ -377,7 +376,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'borderwidth' => array(
 				'type' => 'number',
-				'default' => 1,
+				'default' => 0,
 			),
 			'iconColor' => array(
 				'type' => 'string',
@@ -389,7 +388,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'iconBgHover' => array(
 				'type' => 'string',
-				'default' => '#5cb85c',
+				'default' => '#61ce70',
 			),
 			'authorColor' => array(
 				'type' => 'string',
@@ -671,7 +670,7 @@ function uagb_get_timeline_title( $attributes, $post_id ){
     
     $output = '';
     $output .= sprintf( '<div class = "uagb-timeline-heading-text" >');                   
-    $title = get_the_title( $post_id );
+    $title = ucfirst(get_the_title( $post_id ));
     if ( ! $title ) {
         $title = __( 'Untitled' );
     }
