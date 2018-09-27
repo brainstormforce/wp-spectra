@@ -12,7 +12,6 @@ const UAGBIcon = [
   'fab fa fa-allergies',
   'fab fa fa-ambulance',
   'fab fa fa-american-sign-language-interpreting',
-  'fab fa fa-angellist',
   'fab fa fa-angle-double-down',
   'fab fa fa-angle-double-left',
   'fab fa fa-angle-double-right',
