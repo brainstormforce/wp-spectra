@@ -299,7 +299,6 @@ function uagb_blocks_register_block_timeline_posts() {
             UAGB_VER,
             true // Enqueue the script in the footer.
         );
-        wp_enqueue_style( 'dashicons' );
     }
 
 	register_block_type( 'uagb/timeline', array(
@@ -500,7 +499,7 @@ function uagb_blocks_register_block_timeline_posts() {
             ),
 			'icon' => array(
 				'type' => 'string',
-				'default' => 'calendar'
+				'default' => 'fab fa fa-calendar-alt'
 			),
 			'borderRadius' =>array(
 				'type' => 'number',
@@ -609,7 +608,7 @@ function uagb_blocks_get_timeline_author_info( $object, $field_name, $request ) 
 function uagb_get_timeline_icon($attributes){
 
     $icon               = $attributes['icon']; 
-    $icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'.$icon;  
+    $icon_class = 'timeline-icon-new out-view-timeline-icon '.$icon;  
     $output = '';
     $output .= sprintf( '<div class = "uagb-timeline-marker out-view-timeline-icon" >' );
     $output .= sprintf( '<i class = "%1$s" >',esc_attr( $icon_class ) );

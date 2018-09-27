@@ -8,6 +8,8 @@ import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
 //import { stringify } from 'querystringify';
+import UAGBIcon from "../uagb-controlls/UAGBIcon";
+import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 
 const { Component, Fragment } = wp.element;
 
@@ -58,8 +60,18 @@ class UAGBTimeline extends Component {
         this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
         this.toggleDisplayPostAuthor  = this.toggleDisplayPostAuthor.bind( this );
         this.toggleDisplayPostImage   = this.toggleDisplayPostImage.bind( this );
-        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );      
+        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );  
+        this.getTimelineicon          = this.getTimelineicon.bind(this);    
    }    
+
+    /**
+     * [getTimelineicon description]
+     * @param  {[type]} value [description]
+     * @return {[type]}       [description]
+     */
+    getTimelineicon(value) { 
+        this.props.setAttributes( { icon: value } );
+    }
 
     toggleDisplayPostDate() {
         const { displayPostDate } = this.props.attributes;
@@ -173,7 +185,7 @@ class UAGBTimeline extends Component {
             { value: 'large', label: __( 'Large' ) }
         ];
 
-        const MyDashicon = [
+        /*const MyDashicon = [
             { value: 'admin-home', label: __( 'admin-home' ) },
             { value: 'products', label: __( 'products' ) },
             { value: 'calendar', label: __( 'calendar' ) },
@@ -208,7 +220,17 @@ class UAGBTimeline extends Component {
             { value: 'arrow-right-alt2', label: __( 'arrow-right-alt2' ) },
             { value: 'arrow-right', label: __( 'arrow-right' ) },
             { value: 'arrow-up-alt', label: __( 'arrow-up-alt' ) }            
-        ];
+        ];*/
+
+         // Parameters for FontIconPicker
+        const icon_props = {
+          icons: UAGBIcon,
+          renderUsing: 'class',
+          theme: 'default',
+          value: icon,
+          onChange: this.getTimelineicon,
+          isMulti: false,
+        };
 
         const timeline_control = (
 
@@ -469,12 +491,7 @@ class UAGBTimeline extends Component {
                     title={ __( 'Connector' ) }
                     initialOpen={ false }
                     >
-                    <SelectControl
-                        label={ __( 'Featured Icon' ) }
-                        value={ icon }
-                        onChange={ ( value ) => setAttributes( { icon: value } ) }
-                        options={ MyDashicon }
-                    />
+                    <FontIconPicker {...icon_props} />
                     <RangeControl
                         label={ __( 'Icon Size' ) }
                         value={ iconSize }
@@ -1071,7 +1088,7 @@ class UAGBTimeline extends Component {
                                 }   
                                 const Tag = this.props.attributes.headingTag;  
 
-                                var icon_class = 'timeline-icon-new out-view-timeline-icon dashicons dashicons-'+icon;  
+                                var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
                                 
                                 if( displayPostExcerpt && post.excerpt ){
                                     var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
