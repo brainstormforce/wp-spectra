@@ -1143,7 +1143,7 @@ registerBlockType( 'uagb/content-timeline', {
 		},
 		borderRadius : {
 			type : 'number',
-			default : 4,
+			default : 2,
 		},
 		bgPadding : {
 			type : 'number',

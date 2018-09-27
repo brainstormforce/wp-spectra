@@ -502,7 +502,7 @@ function uagb_blocks_register_block_timeline_posts() {
 			),
 			'borderRadius' =>array(
 				'type' => 'number',
-				'default' => 4,
+				'default' => 2,
 			),
 			'bgPadding' =>array(
 				'type' => 'number',
