@@ -1,17 +1,17 @@
-const { decodeEntities } = wp.htmlEntities;
+const { decodeEntities } = wp.htmlEntities
 
-import classnames from 'classnames';
-import FeaturedImage from ".././components/FeaturedImage";
-import Title from ".././components/Title";
-import Meta from ".././components/Meta";
-import Excerpt from ".././components/Excerpt";
-import Button from ".././components/Button";
+import classnames from "classnames"
+import FeaturedImage from ".././components/FeaturedImage"
+import Title from ".././components/Title"
+import Meta from ".././components/Meta"
+import Excerpt from ".././components/Excerpt"
+import Button from ".././components/Button"
 
 class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props
 
 		const {
 			displayPostImage,
@@ -23,22 +23,22 @@ class Blog extends React.Component {
 			bgColor,
 			contentPadding,
 			equalHeight
-		} = attributes;
+		} = attributes
 
-		const equalHeightClass = equalHeight ? 'uagb-post__equal-height' : '';
+		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
 
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
-			latestPosts;
+			latestPosts
 
 		return (
 
 			<div
 				className={ classnames(
 					className,
-					'uagb-post-grid',
-					'uagb-post__arrow-outside',
+					"uagb-post-grid",
+					"uagb-post__arrow-outside",
 					`uagb-post__image-position-${ imgPosition }`
 				) }
 				data-block-id={block_id}
@@ -46,9 +46,9 @@ class Blog extends React.Component {
 			>
 				<div
 					className={ classnames(
-						'is-grid',
+						"is-grid",
 						`uagb-post__columns-${ columns }`,
-						'uagb-post__items',
+						"uagb-post__items",
 						`${ equalHeightClass }`
 					) }
 					style={{
@@ -60,7 +60,7 @@ class Blog extends React.Component {
 						<article
 							key={ i }
 							className={ classnames(
-								post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+								post.featured_image_src && displayPostImage ? "has-thumb" : "no-thumb"
 							) }
 							style={{
 								paddingRight: rowGap/2,
@@ -77,7 +77,7 @@ class Blog extends React.Component {
 								<FeaturedImage post={post} attributes={attributes} />
 
 								<div
-									className={ 'uagb-post__text' }
+									className={ "uagb-post__text" }
 									style={{
 										padding: contentPadding,
 									}}
@@ -92,8 +92,8 @@ class Blog extends React.Component {
 					) }
 				</div>
 			</div>
-		);
+		)
 	}
 }
 
-export default Blog;
+export default Blog

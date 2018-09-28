@@ -1,18 +1,18 @@
-const { decodeEntities } = wp.htmlEntities;
+const { decodeEntities } = wp.htmlEntities
 
-import classnames from 'classnames';
-import Slider from 'react-slick';
-import FeaturedImage from ".././components/FeaturedImage";
-import Title from ".././components/Title";
-import Meta from ".././components/Meta";
-import Excerpt from ".././components/Excerpt";
-import Button from ".././components/Button";
+import classnames from "classnames"
+import Slider from "react-slick"
+import FeaturedImage from ".././components/FeaturedImage"
+import Title from ".././components/Title"
+import Meta from ".././components/Meta"
+import Excerpt from ".././components/Excerpt"
+import Button from ".././components/Button"
 
 class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id } = this.props;
+		const { attributes, className, latestPosts, block_id } = this.props
 
 		const {
 			displayPostImage,
@@ -29,25 +29,25 @@ class Blog extends React.Component {
 			infiniteLoop,
 			arrowSize,
 			arrowColor
-		} = attributes;
+		} = attributes
 
 		// Removing posts from display should be instant.
 		const displayPosts = latestPosts.length > postsToShow ?
 			latestPosts.slice( 0, postsToShow ) :
-			latestPosts;
+			latestPosts
 
 		function NextArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ 'borderColor' : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ 'fontSize' : props.arrowSize, 'color' : arrowColor }}></i></button>
-			);
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>
+			)
 		}
 
 		function PrevArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ 'borderColor' : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ 'fontSize' : props.arrowSize, 'color' : arrowColor }}></i></button>
-			);
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>
+			)
 		}
 
 		const settings = {
@@ -81,15 +81,15 @@ class Blog extends React.Component {
 			]
 		}
 
-		const article_style = `#uagb-post__carousel-${block_id} .is-carousel article { padding-right: ${rowGap/2}px; padding-left: ${rowGap/2}px; margin-bottom: ${columnGap}px; }`;
+		const article_style = `#uagb-post__carousel-${block_id} .is-carousel article { padding-right: ${rowGap/2}px; padding-left: ${rowGap/2}px; margin-bottom: ${columnGap}px; }`
 
 		return (
 
 			<div
 				className={ classnames(
 					className,
-					'uagb-post-grid',
-					'uagb-post__arrow-outside',
+					"uagb-post-grid",
+					"uagb-post__arrow-outside",
 					`uagb-post__image-position-${ imgPosition }`
 				) }
 				data-blog-id={block_id}
@@ -98,9 +98,9 @@ class Blog extends React.Component {
 				<style dangerouslySetInnerHTML={{__html: article_style}}></style>
 				<Slider
 					className={ classnames(
-						'is-carousel',
+						"is-carousel",
 						`uagb-post__columns-${ columns }`,
-						'uagb-post__items'
+						"uagb-post__items"
 					) }
 					style={{
 						marginRight: -rowGap/2,
@@ -112,11 +112,11 @@ class Blog extends React.Component {
 						<article
 							key={ i }
 							className={ classnames(
-								post.featured_image_src && displayPostImage ? 'has-thumb' : 'no-thumb'
+								post.featured_image_src && displayPostImage ? "has-thumb" : "no-thumb"
 							) }
 						>
 							<div
-								className={ 'uagb-post__inner-wrap' }
+								className={ "uagb-post__inner-wrap" }
 								style={{
 									background: bgColor,
 								}}
@@ -124,7 +124,7 @@ class Blog extends React.Component {
 								<FeaturedImage post={post} attributes={attributes} />
 
 								<div
-									className={ 'uagb-post__text' }
+									className={ "uagb-post__text" }
 									style={{
 										padding: contentPadding,
 									}}
@@ -139,8 +139,8 @@ class Blog extends React.Component {
 					) }
 				</Slider>
 			</div>
-		);
+		)
 	}
 }
 
-export default Blog;
+export default Blog

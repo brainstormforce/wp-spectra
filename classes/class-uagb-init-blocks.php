@@ -8,8 +8,6 @@
  * @package UAGB
  */
 
-namespace UltimateGutenberg;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }

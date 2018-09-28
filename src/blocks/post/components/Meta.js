@@ -2,7 +2,7 @@ class Meta extends React.Component {
 
 	render() {
 
-		const { post, attributes } = this.props;
+		const { post, attributes } = this.props
 
 		return (
 
@@ -20,7 +20,7 @@ class Meta extends React.Component {
 				{ attributes.displayPostDate && post.date_gmt &&
 					<time dateTime={ moment( post.date_gmt ).utc().format() } className='uagb-post__date'>
 						<i className="dashicons-calendar dashicons"></i>
-						{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+						{ moment( post.date_gmt ).local().format( "MMMM DD, Y" ) }
 					</time>
 				}
 
@@ -31,8 +31,8 @@ class Meta extends React.Component {
 					</div>
 				}
 			</div>
-		);
+		)
 	}
 }
 
-export default Meta;
+export default Meta

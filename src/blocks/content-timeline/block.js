@@ -50,6 +50,8 @@ const {
     Toolbar,
 } = wp.components;
 
+const el = wp.element.createElement;
+
 const item =[];
 for (var i = 1; i <= 5; i++) {
 	var title_heading_val = 'Timeline Heading '+i;
@@ -58,6 +60,11 @@ for (var i = 1; i <= 5; i++) {
 	var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
 	item.push(p);            
 }
+
+//Icon
+const iconEl = el('svg', { width: 20, height: 20 },
+  el('path', { d: "M1.661 5.463v3.706h13.448l1.16-1.159c0.365-0.365 0.962-0.365 1.327 0l1.16 1.159h1.245v1.661h-1.246l-1.158 1.158c-0.365 0.365-0.962 0.365-1.327 0l-1.159-1.158h-13.449v3.706h1.18l1.16-1.16c0.365-0.365 0.962-0.365 1.327 0l1.16 1.16h13.512v1.661h-13.514l-1.159 1.158c-0.365 0.365-0.961 0.365-1.326 0l-1.159-1.158h-1.181v3.77h-1.661v-19.936h1.661v3.77h5.78l1.16-1.16c0.365-0.365 0.962-0.365 1.327 0l1.16 1.16h8.912v1.661h-8.913l-1.159 1.158c-0.365 0.365-0.961 0.365-1.326 0l-1.16-1.158h-5.781z" } )
+);
 
 class UAGBcontentTimeline extends Component {
 
@@ -983,7 +990,7 @@ registerBlockType( 'uagb/content-timeline', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Content Timeline - UAGB' ), // Block title.
 	description: __( 'Add Content Timeline block.' ), // Block description.
-	icon: 'grid-view', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	icon: iconEl, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
 		__( 'timeline' ),
 		__( 'uagb' ),

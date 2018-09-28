@@ -2,7 +2,7 @@ class Excerpt extends React.Component {
 
 	render() {
 
-		const { post, attributes } = this.props;
+		const { post, attributes } = this.props
 
 		if (
 			attributes.displayPostExcerpt &&
@@ -17,12 +17,12 @@ class Excerpt extends React.Component {
 				>
 					<div dangerouslySetInnerHTML={ { __html: post.excerpt } } />
 				</div>
-			);
+			)
 
 		} else {
-			return null;
+			return null
 		}
 	}
 }
 
-export default Excerpt;
+export default Excerpt
