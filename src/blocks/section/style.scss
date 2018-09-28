@@ -15,4 +15,37 @@
 		position: relative;
 		z-index: 2;
 	}
+
+	.uagb-section__overlay {
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		background-color: #fff;
+	}
+
+	.uagb-section__video-wrap {
+		height: 100%;
+		width: 100%;
+		top: 0;
+		left: 0;
+		position: absolute;
+		overflow: hidden;
+		z-index: 0;
+		-webkit-transition: opacity 1s;
+		-o-transition: opacity 1s;
+		transition: opacity 1s;
+	}
+
+	.uagb-section__video-wrap video {
+		object-fit: cover;
+		max-width: 100%;
+		width: 100%;
+		margin: 0;
+		line-height: 1;
+		border: none;
+		display: inline-block;
+		vertical-align: baseline;
+	}
 }

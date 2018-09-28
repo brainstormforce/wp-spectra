@@ -197,8 +197,10 @@ registerBlockType( "uagb/section", {
 			gradientLocation2,
 			gradientType,
 			gradientAngle,
-			backgroundOpacity
+			backgroundOpacity,
 		} = attributes;
+
+		console.log(backgroundVideo);
 
 		var section_width = width;
 
@@ -222,6 +224,18 @@ registerBlockType( "uagb/section", {
 
 		const onRemoveImage = ( media ) => {
 			setAttributes( { backgroundImage: null } );
+		};
+
+		const onSelectVideo = ( media ) => {
+			if ( ! media || ! media.url ) {
+				setAttributes( { backgroundVideo: null } );
+				return;
+			}
+			setAttributes( { backgroundVideo: media } );
+		};
+
+		const onRemoveVideo = ( media ) => {
+			setAttributes( { backgroundVideo: null } );
 		};
 
 		return (
@@ -334,9 +348,10 @@ registerBlockType( "uagb/section", {
 							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
 							options={ [
 								{ value: "", label: __( "None" ) },
-								{ value: "image", label: __( "Image" ) },
-								{ value: "gradient", label: __( "Gradient" ) },
 								{ value: "color", label: __( "Color" ) },
+								{ value: "gradient", label: __( "Gradient" ) },
+								{ value: "image", label: __( "Image" ) },
+								{ value: "video", label: __( "Video" ) },
 							] }
 						/>
 						{ "color" == backgroundType &&
@@ -354,7 +369,7 @@ registerBlockType( "uagb/section", {
 						}
 						{ "image" == backgroundType &&
 							<BaseControl
-								className="editor-video-poster-control"
+								className="editor-bg-image-control"
 								label={ __( 'Background Image' ) }
 							>
 								<MediaUpload
@@ -370,7 +385,7 @@ registerBlockType( "uagb/section", {
 								/>
 								{ !! backgroundImage &&
 									<Button onClick={ onRemoveImage } isLink isDestructive>
-										{ __( 'Remove Poster Image' ) }
+										{ __( 'Remove Image' ) }
 									</Button>
 								}
 							</BaseControl>
@@ -496,6 +511,29 @@ registerBlockType( "uagb/section", {
 								allowReset
 							/>
 						}
+						{ "video" == backgroundType &&
+							<BaseControl
+								className="editor-bg-video-control"
+								label={ __( 'Background Video' ) }
+							>
+								<MediaUpload
+									title={ __( 'Select Background Video' ) }
+									onSelect={ onSelectVideo }
+									type="video"
+									value={ backgroundVideo }
+									render={ ( { open } ) => (
+										<Button isDefault onClick={ open }>
+											{ ! backgroundVideo ? __( 'Select Background Video' ) : __( 'Replace image' ) }
+										</Button>
+									) }
+								/>
+								{ !! backgroundVideo &&
+									<Button onClick={ onRemoveVideo } isLink isDestructive>
+										{ __( 'Remove Video' ) }
+									</Button>
+								}
+							</BaseControl>
+						}
 						<RangeControl
 							label={ __( "Opacity" ) }
 							value={ backgroundOpacity }
@@ -512,7 +550,17 @@ registerBlockType( "uagb/section", {
 						"uagb-section__wrap",
 						...backgroundOptionsClasses( props ),
 					) }
-					style={{ ...inlineStyles( props ) }}>
+					style={{ ...inlineStyles( props ) }}
+				>
+					<div className="uagb-section__overlay" style={{ opacity: backgroundOpacity/100 }}></div>
+					{ "video" == backgroundType &&
+						<div className="uagb-section__video-wrap" style={{ opacity: attributes.backgroundOpacity/100 }}>
+						{  backgroundVideo &&
+							<video src={ backgroundVideo.url } autoPlay loop muted></video>
+						}
+
+						</div>
+					}
 					<div className="uagb-section__inner-wrap">
 						<InnerBlocks />
 					</div>
@@ -542,8 +590,17 @@ registerBlockType( "uagb/section", {
 					"uagb-section__wrap",
 					...backgroundOptionsClasses( props ),
 				) }
-				style={{ ...inlineStyles( props ) }}>
-				{ BackgroundOptionsVideoOutput( props ) }
+				style={{ ...inlineStyles( props ) }}
+			>
+				<div className="uagb-section__overlay" style={{ opacity: attributes.backgroundOpacity/100 }}></div>
+				{ "video" == attributes.backgroundType &&
+					<div className="uagb-section__video-wrap" style={{ opacity: attributes.backgroundOpacity/100 }}>
+					{  attributes.backgroundVideo &&
+						<video src={ attributes.backgroundVideo.url } autoPlay loop muted></video>
+					}
+
+					</div>
+				}
 				<div className="uagb-section__inner-wrap">
 					<InnerBlocks.Content />
 				</div>

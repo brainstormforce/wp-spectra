@@ -4,11 +4,12 @@
  * @return {array} The inline CSS class.
  */
 function BackgroundOptionsClasses( props ) {
-    return [
-        { 'has-image-background has-custom-background': 'image' === props.attributes.backgroundType },
-        { 'has-color-background has-custom-background': 'color' === props.attributes.backgroundType },
-        { 'has-video-background has-custom-background': 'video' === props.attributes.backgroundType },
-    ];
+	return [
+		{ 'has-image-background has-custom-background': 'image' === props.attributes.backgroundType },
+		{ 'has-color-background has-custom-background': 'color' === props.attributes.backgroundType },
+		{ 'has-video-background has-custom-background': 'video' === props.attributes.backgroundType },
+		{ 'has-gradient-background has-custom-background': 'gradient' === props.attributes.backgroundType },
+	];
 }
 
 export default BackgroundOptionsClasses;
