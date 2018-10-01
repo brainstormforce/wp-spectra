@@ -29,7 +29,9 @@ function inlineStyles( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity
+		backgroundOpacity,
+		backgroundVideoColor,
+		backgroundVideoOpacity
 	} = props.attributes
 
 	var style = {

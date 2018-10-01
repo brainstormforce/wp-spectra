@@ -163,8 +163,15 @@ registerBlockType( "uagb/section", {
 		},
 		backgroundOpacity: {
 			type: 'number',
-			default: '100'
-		}
+			default: '0'
+		},
+		backgroundVideoOpacity: {
+			type: 'number',
+			default: '50'
+		},
+		backgroundVideoColor: {
+			type: 'string',
+		},
 	},
 	edit: function( props ) {
 
@@ -198,9 +205,9 @@ registerBlockType( "uagb/section", {
 			gradientType,
 			gradientAngle,
 			backgroundOpacity,
+			backgroundVideoColor,
+			backgroundVideoOpacity
 		} = attributes;
-
-		console.log(backgroundVideo);
 
 		var section_width = width;
 
@@ -552,9 +559,9 @@ registerBlockType( "uagb/section", {
 					) }
 					style={{ ...inlineStyles( props ) }}
 				>
-					<div className="uagb-section__overlay" style={{ opacity: backgroundOpacity/100 }}></div>
+					<div className="uagb-section__overlay" style={{ opacity: attributes.backgroundOpacity/100 }}></div>
 					{ "video" == backgroundType &&
-						<div className="uagb-section__video-wrap" style={{ opacity: attributes.backgroundOpacity/100 }}>
+						<div className="uagb-section__video-wrap">
 						{  backgroundVideo &&
 							<video src={ backgroundVideo.url } autoPlay loop muted></video>
 						}
@@ -594,7 +601,7 @@ registerBlockType( "uagb/section", {
 			>
 				<div className="uagb-section__overlay" style={{ opacity: attributes.backgroundOpacity/100 }}></div>
 				{ "video" == attributes.backgroundType &&
-					<div className="uagb-section__video-wrap" style={{ opacity: attributes.backgroundOpacity/100 }}>
+					<div className="uagb-section__video-wrap">
 					{  attributes.backgroundVideo &&
 						<video src={ attributes.backgroundVideo.url } autoPlay loop muted></video>
 					}
