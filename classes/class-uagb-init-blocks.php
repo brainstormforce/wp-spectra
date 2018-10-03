@@ -88,7 +88,7 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		// Font Awsome
+		// Font Awsome.
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.
 			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
