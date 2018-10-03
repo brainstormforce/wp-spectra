@@ -11,7 +11,6 @@ import classnames from 'classnames';
 
 //  Import CSS.
 import '../timeline/style.scss';
-import './style.scss';
 import './editor.scss';
 
 import UAGBIcon from "../uagb-controlls/UAGBIcon";
