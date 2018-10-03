@@ -2519,3 +2519,24 @@ i.fipicon-angle-right:before {
 i.fipicon-angle-left:before {
   content: "\f341";
   font-family: dashicons; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.uagb-section__wrap:before {
+  content: '';
+  position: absolute;
+  border: 2px dashed #03ddff;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  z-index: 0; }
