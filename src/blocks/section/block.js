@@ -41,10 +41,6 @@ const {
 	BaseControl
 } = wp.components
 
-
-
-console.log(wp.components);
-
 // Extend component
 const { Component, Fragment } = wp.element
 
@@ -541,14 +537,39 @@ registerBlockType( "uagb/section", {
 								}
 							</BaseControl>
 						}
-						<RangeControl
-							label={ __( "Opacity" ) }
-							value={ backgroundOpacity }
-							onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
+						{ "video" != backgroundType &&
+							<RangeControl
+								label={ __( "Opacity" ) }
+								value={ backgroundOpacity }
+								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						}
+						{ "video" == backgroundType &&
+							<PanelColor
+									title={ __( "Video Overlay Color" ) }
+									colorValue={ backgroundVideoColor }
+									initialOpen={ false }
+								>
+									<ColorPalette
+										value={ backgroundVideoColor }
+										onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
+										allowReset
+									/>
+							</PanelColor>
+						}
+						{ "video" == backgroundType &&
+							<RangeControl
+								label={ __( "Opacity" ) }
+								value={ backgroundVideoOpacity }
+								onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						}
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag
@@ -559,9 +580,16 @@ registerBlockType( "uagb/section", {
 					) }
 					style={{ ...inlineStyles( props ) }}
 				>
-					<div className="uagb-section__overlay" style={{ opacity: attributes.backgroundOpacity/100 }}></div>
 					{ "video" == backgroundType &&
-						<div className="uagb-section__video-wrap">
+
+						<div className="uagb-section__overlay" style={{ opacity: 1, backgroundColor: backgroundVideoColor }}></div>
+					}
+					{ "video" != backgroundType &&
+
+						<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != 'undefined' ) ? backgroundOpacity/100 : 0 }}></div>
+					}
+					{ "video" == backgroundType &&
+						<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != 'undefined' ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
 						{  backgroundVideo &&
 							<video src={ backgroundVideo.url } autoPlay loop muted></video>
 						}
@@ -588,22 +616,38 @@ registerBlockType( "uagb/section", {
 
 		const { attributes } = props;
 
+		const {
+			backgroundType,
+			backgroundVideoColor,
+			backgroundOpacity,
+			backgroundVideoOpacity,
+			backgroundVideo,
+			className
+		} = props.attributes
+
 		const CustomTag = `${attributes.tag}`;
 
 		return (
 			<CustomTag
 				className={ classnames(
-					attributes.className,
+					className,
 					"uagb-section__wrap",
 					...backgroundOptionsClasses( props ),
 				) }
 				style={{ ...inlineStyles( props ) }}
 			>
-				<div className="uagb-section__overlay" style={{ opacity: attributes.backgroundOpacity/100 }}></div>
-				{ "video" == attributes.backgroundType &&
-					<div className="uagb-section__video-wrap">
-					{  attributes.backgroundVideo &&
-						<video src={ attributes.backgroundVideo.url } autoPlay loop muted></video>
+				{ "video" == backgroundType &&
+
+					<div className="uagb-section__overlay" style={{ opacity: 1, backgroundColor: backgroundVideoColor }}></div>
+				}
+				{ "video" != backgroundType &&
+
+					<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != 'undefined' ) ? backgroundOpacity/100 : 0 }}></div>
+				}
+				{ "video" == backgroundType &&
+					<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != 'undefined' ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
+					{  backgroundVideo &&
+						<video src={ backgroundVideo.url } autoPlay loop muted></video>
 					}
 
 					</div>
