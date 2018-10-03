@@ -1,0 +1,17 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.uagb-section__wrap:before {
+	content: '';
+	position: absolute;
+	border: 2px dashed rgb(3, 221, 255);
+	top: -1px;
+	right: -1px;
+	bottom: -1px;
+	left: -1px;
+	z-index: 0;
+ }

@@ -1,1 +1,2 @@
 .uagb-post-grid h2 a{text-decoration:none}.uagb-post-grid a{pointer-events:none;cursor:default}
+.uagb-section__wrap:before{content:'';position:absolute;border:2px dashed #03ddff;top:-1px;right:-1px;bottom:-1px;left:-1px;z-index:0}
