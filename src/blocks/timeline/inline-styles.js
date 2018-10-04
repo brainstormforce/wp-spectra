@@ -58,7 +58,7 @@ function timelineInlineStyles( props ) {
                     'border-right-color' : backgroundColor
                 };
 
-            selectors['.uagb-timeline__line__inne'] = {
+            selectors['.uagb-timeline__line__inner'] = {
                     'background-color' : separatorFillColor
                 };
 
@@ -198,11 +198,22 @@ function timelineInlineStyles( props ) {
         };
 
         var styling_css = '';
+        var skip_space_for = ['uagb-timeline--center', 'uagb-timeline--right', 'uagb-timeline--left'];
 
         for( var i in selectors ) {
 
-            styling_css += '.'+clientId+' '+i + ' { ';
+            var cond1 = i.includes('uagb-timeline--center');
+            var cond2 = i.includes('uagb-timeline--right');
+            var cond3 = i.includes('uagb-timeline--left');
 
+            var cond = (cond1 || cond2 || cond3 );
+
+            if( !cond ){
+                styling_css += '.'+clientId+' '+i + ' { ';
+            }else{
+                styling_css += '.'+clientId+i + ' { ';
+            }
+            
             var sel = selectors[i];
             var css = '';
 

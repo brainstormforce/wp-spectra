@@ -872,7 +872,6 @@ class UAGBTimeline extends Component {
             icon,
             iconSize,
             align
-
         } = attributes;
 
         var align_class        = '',
