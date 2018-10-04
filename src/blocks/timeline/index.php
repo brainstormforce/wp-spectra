@@ -77,108 +77,8 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$tl_class         = 'uagb-timeline ' . $tm_block_id . ' ' . $align_class . ' ' . $responsive_class;
 
 	/* Style for elements */
-	$front_style = '.' . $tm_block_id . '.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,    			                
-                    .' . $tm_block_id . '.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{
-                    	border-left-color:' . $background_color .
-					'}
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,
-                    .' . $tm_block_id . '.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{
-                    	border-right-color:' . $background_color .
-					'}
-                    .' . $tm_block_id . ' .uagb-timeline__line__inner{
-                        background-color:' . $separator_fill_color . ';' .
-					'}
-                    .' . $tm_block_id . ' .uagb-timeline__line{
-                        background-color:' . $separator_color . ';
-                        width:' . $separatorwidth . 'px' . ';                     
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--right .uagb-timeline__line{
-                        right: calc( ' . $connector_bgsize . 'px / 2 );
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--left .uagb-timeline__line{
-                        left: calc( ' . $connector_bgsize . 'px / 2 );
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-timeline__line{
-                        right: calc( ' . $connector_bgsize . 'px / 2 );
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-marker{
-                      background-color:' . $separator_bg . ';
-                      min-height:' . $connector_bgsize . 'px;
-                      min-width:' . $connector_bgsize . 'px;
-                      line-height:' . $connector_bgsize . 'px;
-                      border:' . $borderwidth . 'px solid' . $separator_border . ';
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,
-                    .' . $tm_block_id . '.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{
-                        height:' . $connector_bgsize . 'px
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-timeline-marker {
-                    	margin-left:' . $horizontal_space . 'px;
-                    	margin-right:' . $horizontal_space . 'px
-                    } 
-                    .' . $tm_block_id . ' .uagb-timeline-field:not(:last-child){
-                    	margin-bottom:' . $vertical_space . 'px;
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-date-hide.uagb-date-inner{
-                    	margin-bottom:' . $date_bottomspace . 'px;
-                    	color:' . $date_color . ';
-                    	font-size:' . $date_fontsize . 'px;
-                    }
-                    .' . $tm_block_id . '.uagb-timeline--left .uagb-day-new.uagb-day-left{
-                    	margin-left:' . $horizontal_space . 'px;
-                    	color:' . $date_color . ';
-                    	font-size:' . $date_fontsize . 'px;
-                    } 
-                    .' . $tm_block_id . '.uagb-timeline--right .uagb-day-new.uagb-day-right{
-                    	 margin-right:' . $horizontal_space . 'px;
-                    	color:' . $date_color . ';
-                    	font-size:' . $date_fontsize . 'px;
-                    }                       
-                    .' . $tm_block_id . ' .uagb-date-new{
-                    	font-size:' . $date_fontsize . 'px;
-                    	color:' . $date_color . ';
-                    }
-                    .' . $tm_block_id . ' .uagb-events-inner-new{
-                    	border-radius:' . $border_radius . 'px;
-                    	padding:' . $bg_padding . 'px;
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-main .timeline-icon-new{
-                    	font-size:' . $icon_size . 'px;
-                    	color:' . $icon_color . ';
-                    }
-                    .' . $tm_block_id . ' .uagb-block-post-grid-author{
-                    	margin-bottom:' . $author_space . 'px;
-                    	color:' . $author_color . ';
-                    	font-size:' . $author_fontsize . 'px;
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{
-                    	background:' . $icon_bg_hover . ';
-                    	border-color:' . $border_hover . ';
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-field.animate-border:hover .timeline-icon-new{
-                    	color:' . $icon_hover . ';
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{
-                    	background:' . $icon_bg_hover . ';
-                    	border-color:' . $border_hover . ';
-                    }
-                    .' . $tm_block_id . ' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{
-                    	color:' . $icon_hover . ';
-                    }
-                    @media(max-width:768px){
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-timeline-marker {
-                    	margin-left:0px;
-						margin-right:0px;
-                    	}
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-day-new.uagb-day-left,
-                    .' . $tm_block_id . '.uagb-timeline--center .uagb-day-new.uagb-day-right { 
-                    	margin-left:' . $horizontal_space . 'px;
-                    	}                   	
-                    }
-                    ';
-
+	$front_style = uagb_timeline_css( $attributes );
+	
 	$content_align_class = '';
 	$day_align_class     = '';
 
@@ -793,4 +693,225 @@ function uagb_get_timeline_excerpt( $attributes, $content, $post_id ) {
 	}
 	return $output;
 
+}
+
+/**
+ * Function Name: uagb_timeline_css Generate CSS..
+ * @param  array $attributes array of parameter.
+ * @return string             string of CSS.
+ */
+function uagb_timeline_css( $attributes ){
+
+	$background_color     = $attributes['backgroundColor'];
+	$separator_color      = $attributes['separatorColor'];
+	$separator_fill_color = $attributes['separatorFillColor'];
+	$separator_bg         = $attributes['separatorBg'];
+	$separator_border     = $attributes['separatorBorder'];
+	$border_hover         = $attributes['borderHover'];
+	$horizontal_space     = $attributes['horizontalSpace'];
+	$separatorwidth       = $attributes['separatorwidth'];
+	$connector_bgsize     = $attributes['connectorBgsize'];
+	$vertical_space       = $attributes['verticalSpace'];
+	$tm_client_id         = $attributes['tm_client_id'];
+	$borderwidth          = $attributes['borderwidth'];
+	$author_space         = $attributes['authorSpace'];
+	$date_bottomspace     = $attributes['dateBottomspace'];
+	$icon_color           = $attributes['iconColor'];
+	$author_color         = $attributes['authorColor'];
+	$date_color           = $attributes['dateColor'];
+	$date_fontsize        = $attributes['dateFontsize'];
+	$author_fontsize      = $attributes['authorFontsize'];
+	$icon_size            = $attributes['iconSize'];
+	$border_radius        = $attributes['borderRadius'];
+	$bg_padding           = $attributes['bgPadding'];
+	$icon_bg_hover        = $attributes['iconBgHover'];
+	$icon_hover           = $attributes['iconHover'];
+	$tm_block_id          = 'uagb-' . $tm_client_id;
+
+	$selectors = array();
+
+	$selectors['.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after'] = array(
+		'border-left-color' => $background_color
+	);
+
+	$selectors['.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after'] = array(
+		'border-left-color' => $background_color
+	);		
+
+	$selectors['.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after'] = array(
+		'border-right-color'=> $background_color,	
+	);
+
+	//var_dump($selectors);
+	$selectors['.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after'] = array(
+		'border-right-color'=> $background_color,	
+	);
+
+	$selectors['.uagb-timeline__line__inner'] = array(
+		'background-color' => $separator_fill_color,	
+	);
+
+	$selectors['.uagb-timeline__line'] = array(
+		'background-color' => $separator_color,	
+		'width' => $separatorwidth . 'px',   
+	);
+
+	$selectors['.uagb-timeline--right .uagb-timeline__line'] = array(
+		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+	);
+
+	$selectors['.uagb-timeline--left .uagb-timeline__line'] = array(
+		'left' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+	);
+
+	$selectors['.uagb-timeline--right .uagb-timeline__line'] = array(
+		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+	);
+
+	$selectors['.uagb-timeline-marker'] = array(
+		'background-color' => $separator_bg,	
+		'min-height' => $connector_bgsize . 'px',   
+		'min-width' => $connector_bgsize . 'px',   
+		'line-height' => $connector_bgsize . 'px',   
+		'border'  => $borderwidth . 'px solid' . $separator_border ,
+	);
+
+	$selectors['.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow'] = array(
+		'height' => $connector_bgsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow'] = array(
+		'height' => $connector_bgsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow'] = array(
+		'height' => $connector_bgsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow'] = array(
+		'height' => $connector_bgsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--center .uagb-timeline-marker'] = array(
+		'margin-left' =>  $horizontal_space . 'px',  
+		'margin-right' =>  $horizontal_space . 'px',  
+	);
+
+	$selectors['.uagb-timeline-field:not(:last-child)'] = array(
+		'margin-bottom' => $vertical_space . 'px',  
+	);
+
+	$selectors['.uagb-timeline-date-hide.uagb-date-inner'] = array(
+		'color' => $date_color,	
+		'margin-bottom' => $date_bottomspace . 'px',   
+		'font-size' => $date_fontsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--left .uagb-day-new.uagb-day-left'] = array(
+		'color' => $date_color,	
+		'margin-left' => $horizontal_space . 'px',   
+		'font-size' => $date_fontsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline--right .uagb-day-new.uagb-day-right'] = array(
+		'color' => $date_color,	
+		'margin-right' => $horizontal_space . 'px',   
+		'font-size' => $date_fontsize . 'px',   
+	);
+
+	$selectors['.uagb-date-new'] = array(
+		'color' => $date_color,	
+		'font-size' => $date_fontsize . 'px',   
+	);
+
+	$selectors['.uagb-events-inner-new'] = array(
+		'border-radius' => $border_radius . 'px',   
+		'padding' => $bg_padding . 'px',   
+	);
+
+	$selectors['.uagb-timeline-main .timeline-icon-new'] = array(
+		'color' => $icon_color,	
+		'font-size' => $icon_size . 'px',   
+	);
+
+	$selectors['.uagb-block-post-grid-author'] = array(
+		'margin-bottom'  => $author_space . 'px',
+		'color' => $author_color,	
+		'font-size' => $author_fontsize . 'px',   
+	);
+
+	$selectors['.uagb-timeline-field.animate-border:hover .uagb-timeline-marker'] = array(
+		'background' =>  $icon_bg_hover,	
+		'border-color' =>  $border_hover,	
+	);
+
+	$selectors['.uagb-timeline-field.animate-border:hover .timeline-icon-new'] = array(
+		'color'=> $icon_hover,	
+	);
+
+	$selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon'] = array(
+		'background' => $icon_bg_hover,	
+		'border-color' => $border_hover,	
+	);
+
+	$selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new'] = array(
+		'color' => $icon_hover,	
+	);
+
+	// Responsive css.
+	$response_selector = array();
+	$response_selector['.uagb-timeline--center .uagb-timeline-marker'] = array(
+		'margin-left' => '0px',
+		'margin-right' => '0px',	
+	);
+
+	$response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-left'] = array(
+		'margin-left' => $horizontal_space . 'px',
+	);
+	$response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-right'] = array(
+		'margin-left' => $horizontal_space . 'px',
+	);
+	
+	$styling_css = '';
+	
+	foreach ( $selectors as $i => $selector ) {
+
+		if ( ( strpos( $i, 'uagb-timeline--center') !== false ) || ( strpos( $i, 'uagb-timeline--right') !== false ) ||  ( strpos( $i, 'uagb-timeline--left') !== false ) ) {
+		   $styling_css .= '.'.$tm_block_id.$i . ' { ';
+		}else{
+			$styling_css .= '.'.$tm_block_id.' '.$i . ' { ';
+		}
+		
+		$sel = $selectors[$i];
+        $css = '';
+        
+        foreach ( $sel as $j => $selector ) {
+        	$css .= $j . ': ' . $sel[$j] . ';';
+        }
+
+        $styling_css .= $css . ' } ';
+	}
+
+	// Responsive css.
+    $styling_css .= '@media(max-width:768px){'; 
+	
+    foreach ( $response_selector as $index => $response ) {
+    	
+    	$styling_css .= '.'.$tm_block_id.' '.$index . ' { ';	
+
+		$sel = $response_selector[$index];
+        
+        $css = '';
+        
+        foreach ( $sel as $j => $response ) {
+        	$css .= $j . ': ' . $sel[$j] . ';';
+        }
+
+        $styling_css .= $css . ' } ';
+	}
+
+	$styling_css .= ' } ';
+
+	return $styling_css;
+	
 }
