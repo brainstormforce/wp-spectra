@@ -846,165 +846,40 @@ class UAGBTimeline extends Component {
     
      /* Render output at backend */
     uagb_get_timeline_content(){
-        var attr               = this.props.attributes,
-            headingTag         = attr.headingTag,
-            headFontSize       = attr.headFontSize,
-            headingColor       = attr.headingColor,
-            headSpace          = attr.headSpace,
-            subHeadFontSize    = attr.subHeadFontSize,
-            subHeadingColor    = attr.subHeadingColor,
-            subHeadSpace       = attr.subHeadSpace,
-            authorSpace        = attr.authorSpace,
-            dateBottomspace    = attr.dateBottomspace,
-            backgroundColor    = attr.backgroundColor,
-            separatorColor     = attr.separatorColor,
-            separatorFillColor = attr.separatorFillColor,
-            separatorBg        = attr.separatorBg,
-            separatorBorder    = attr.separatorBorder,
-            borderHover        = attr.borderHover,
-            timelinAlignment   = attr.timelinAlignment,
-            arrowlinAlignment  = attr.arrowlinAlignment,
-            postNumber         = attr.postNumber,
-            verticalSpace      = attr.verticalSpace,
-            horizontalSpace    = attr.horizontalSpace,
-            separatorwidth     = attr.separatorwidth,
-            borderwidth        = attr.borderwidth,
-            connectorBgsize    = attr.connectorBgsize,
-            displayPostImage   = attr.displayPostImage,
-            displayPostDate    = attr.displayPostDate,
-            displayPostExcerpt = attr.displayPostExcerpt,
-            displayPostAuthor  = attr.displayPostAuthor,
-            displayPostLink    = attr.displayPostLink,
-            exerptLength       = attr.exerptLength,
-            borderRadius       = attr.borderRadius,
-            bgPadding          = attr.bgPadding,
-            order              = attr.order,
-            orderBy            = attr.orderBy,
-            categories         = attr.categories,
-            postsToShow        = attr.postsToShow,
-            width              = attr.width,
-            imageSize          = attr.imageSize,
-            readMoreText       = attr.readMoreText,
-            icon               = attr.icon,
-            iconColor          = attr.iconColor,
-            authorColor        = attr.authorColor,
-            authorFontsize     = attr.authorFontsize,                      
-            dateFontsize       = attr.dateFontsize,
-            dateColor          = attr.dateColor,
-            iconSize           = attr.iconSize,
-            tm_block_id        = attr.tm_block_id,
-            align              = attr.align,
-            iconHover          = attr.iconHover,
-            iconBgHover        = attr.iconBgHover,
-            align_class        = '',
-            align_item_class   = '';           
+        
+        const { attributes, setAttributes, latestPosts } = this.props;  
 
-        var selector = timelineInlineStyles( this.props );
-        tm_block_id = 'uagb-'+this.props.clientId;
-        console.log(selector);
-         /* Style for elements */
-        //var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
-                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
-                        '  border-left-color:'+backgroundColor+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,'+
-                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{'+
-                        '  border-right-color:'+backgroundColor+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline__line__inner{'+
-                            'background-color:'+separatorFillColor+';'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline__line{'+
-                            'background-color:'+separatorColor+';'+
-                            'width:'+separatorwidth+'px'+';'+                            
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline__line{'+
-                            'right: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline__line{'+
-                            'left: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline__line{'+
-                            'right: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-marker{'+
-                          'background-color:'+separatorBg+';'+
-                          'min-height:'+connectorBgsize+'px;'+
-                          'min-width:'+connectorBgsize+'px;'+
-                          'line-height:'+connectorBgsize+'px;'+
-                          'border:'+borderwidth+'px solid'+separatorBorder+';'+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
-                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
-                            'height:'+connectorBgsize+'px'+
-                        '}'+ 
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        ' margin-right:'+horizontalSpace+'px'+
-                        '}'+ 
-                        '.'+ tm_block_id +' .uagb-timeline-field:not(:last-child){'+
-                        ' margin-bottom:'+verticalSpace+'px'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
-                        ' margin-bottom:'+dateBottomspace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'+ 
-                        '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
-                        ' margin-right:'+horizontalSpace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'                        
-                        +'.'+ tm_block_id +' .uagb-date-new{'+
-                        ' font-size:'+dateFontsize+'px;'+
-                        'color:'+dateColor+';'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-events-inner-new{'+
-                        ' border-radius:'+borderRadius+'px;'+
-                        'padding:'+bgPadding+'px;'+
-                        '}'
-                        +'.'+ tm_block_id +' .uagb-timeline-main .timeline-icon-new{'+
-                        ' font-size:'+iconSize+'px;'+
-                        'color:'+iconColor+';'+
-                        '}'+ 
-                        '.'+ tm_block_id +' .uagb-block-post-grid-author{'+
-                        ' margin-bottom:'+authorSpace+'px;'+
-                        'color:'+authorColor+';'+
-                        'font-size:'+authorFontsize+'px;'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
-                        'background:'+iconBgHover+';'+
-                        'border-color:'+borderHover+';'+                        
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
-                        'color:'+iconHover+';'+
-                        '}'+                        
-                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
-                        'background:'+iconBgHover+';'+
-                        'border-color:'+borderHover+';'+
-                        '}'+
-                        '.'+ tm_block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
-                        'color:'+iconHover+';'+
-                        '}'+
-                        '@media(max-width:768px){'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
-                        ' margin-left:0px;'+
-                        ' margin-right:0px'+
-                        '}'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-left,'+
-                        '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-right{'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        '}'+
-                        '}';
+        const {
+            headingTag,
+            headFontSize,
+            headingColor,
+            headSpace,
+            subHeadFontSize,
+            subHeadingColor,
+            subHeadSpace,
+            backgroundColor,
+            timelinAlignment,
+            arrowlinAlignment,
+            displayPostImage,
+            displayPostDate,
+            displayPostExcerpt,
+            displayPostAuthor,
+            displayPostLink,
+            exerptLength,
+            postsToShow,
+            imageSize,
+            readMoreText,
+            icon,
+            iconSize,
+            align
 
-        const { setAttributes, latestPosts } = this.props;           
+        } = attributes;
+
+        var align_class        = '',
+            align_item_class   = '';          
+        
+        /* Style for elements */
+        var selector = timelineInlineStyles( this.props ); 
 
         const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 

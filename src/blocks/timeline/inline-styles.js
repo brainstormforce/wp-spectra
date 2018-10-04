@@ -183,6 +183,20 @@ function timelineInlineStyles( props ) {
                     'font-size' : authorFontsize+'px',     
                 };
 
+        /* Generate Responsive CSS for timeline */
+        var response_selector = {};
+        response_selector['.uagb-timeline--center .uagb-timeline-marker'] = {
+            'margin-left' : '0px',
+            'margin-right' : '0px',
+        };
+
+        response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-left'] = {
+            'margin-left' : horizontalSpace+'px',
+        };
+        response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-right'] = {
+            'margin-left' : horizontalSpace+'px',
+        };
+
         var styling_css = '';
 
         for( var i in selectors ) {
