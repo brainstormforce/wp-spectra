@@ -11,6 +11,9 @@ import classnames from 'classnames';
 import UAGBIcon from "../uagb-controlls/UAGBIcon";
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 
+// Import css for timeline.
+import timelineInlineStyles from './inline-styles'
+
 const { Component, Fragment } = wp.element;
 
 const { __ } = wp.i18n;
@@ -896,10 +899,11 @@ class UAGBTimeline extends Component {
             align_class        = '',
             align_item_class   = '';           
 
+        var selector = timelineInlineStyles( this.props );
         tm_block_id = 'uagb-'+this.props.clientId;
-
+        console.log(selector);
          /* Style for elements */
-        var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
+        //var back_style = '.'+ tm_block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
                         '.'+ tm_block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
                         '  border-left-color:'+backgroundColor+
                         '}'+
@@ -1038,7 +1042,7 @@ class UAGBTimeline extends Component {
             var display_inner_date = false;
 
             return (<div className = "uagb-days uagb-timeline-infinite-load">                       
-                        <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                        <style className= "uagb-timeline-css" dangerouslySetInnerHTML={{ __html: selector }}></style>
                             {displayPosts.map((post,index) => {
                                 var second_index = 'uagb-'+index;
                                 if(timelinAlignment == 'center'){
