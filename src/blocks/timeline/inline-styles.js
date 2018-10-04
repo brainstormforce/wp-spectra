@@ -198,7 +198,6 @@ function timelineInlineStyles( props ) {
         };
 
         var styling_css = '';
-        var skip_space_for = ['uagb-timeline--center', 'uagb-timeline--right', 'uagb-timeline--left'];
 
         for( var i in selectors ) {
 
@@ -224,6 +223,25 @@ function timelineInlineStyles( props ) {
 
             styling_css += css + ' } ';
         }
+
+        // Responsive css.
+        styling_css += '@media(max-width:768px){'; 
+        for( var i in response_selector ) {
+
+           
+            styling_css += '.'+clientId+i + ' { ';           
+            
+            var sel = response_selector[i];
+            var css = '';
+
+            for( var j in sel ) {
+
+                css += j + ': ' + sel[j] + ';';
+            }
+
+            styling_css += css + ' } ';
+        }        
+        styling_css += '}';
 
         return styling_css;
 
