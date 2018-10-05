@@ -50,6 +50,7 @@ const {
     TextControl,
     ToggleControl,
     Toolbar,
+    TabPanel,
 } = wp.components;
 
 const el = wp.element.createElement;
@@ -184,6 +185,136 @@ class UAGBcontentTimeline extends Component {
           onChange: this.getTimelineicon,
           isMulti: false,
         };
+
+        const iconColorSettings = (
+            <Fragment>
+                <PanelColor
+                    title={ __( 'Line Color' ) }
+                    colorValue={ separatorColor }
+                    initialOpen={ false }
+                    >
+                    <ColorPalette
+                        value={ separatorColor }
+                        onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+                        allowReset
+                    />
+                </PanelColor>
+                <PanelColor
+                    title={ __( 'Icon Color' ) }
+                    colorValue={ iconColor }
+                    initialOpen={ false }
+                    >
+                    <ColorPalette
+                        value={ iconColor }
+                        onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
+                        allowReset
+                    />
+                </PanelColor>
+                <PanelColor
+                        title={ __( 'Icon Background Color' ) }
+                        colorValue={ separatorBg }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorBg }
+                            onChange={ ( colorValue ) => setAttributes( { separatorBg: colorValue } ) }
+                            allowReset
+                        />
+                </PanelColor>
+                <PanelColor
+                        title={ __( 'Border Color' ) }
+                        colorValue={ separatorBorder }
+                        initialOpen={ false }
+                    >
+                    <ColorPalette
+                            value={ separatorBorder }
+                            onChange={ ( colorValue ) => setAttributes( { separatorBorder: colorValue } ) }
+                            allowReset
+                        />
+                </PanelColor>               
+            </Fragment>
+        );    
+
+        const iconHoverSettings = (
+            <Fragment>
+                <PanelColor
+                        title={ __( 'Line Fill Color' ) }
+                        colorValue={ separatorFillColor }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ separatorFillColor }
+                            onChange={ ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ) }
+                            allowReset
+                        />
+                </PanelColor>   
+                <PanelColor
+                        title={ __( 'Icon Hover Color' ) }
+                        colorValue={ iconHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                <PanelColor
+                        title={ __( 'Icon Background Hover Color' ) }
+                        colorValue={ iconBgHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconBgHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
+                            allowReset
+                        />
+                </PanelColor>
+                <PanelColor
+                        title={ __( 'Border Hover Color' ) }
+                        colorValue={ separatorBorder }
+                        initialOpen={ false }
+                    >
+                    <ColorPalette
+                            value={ borderHover }
+                            onChange={ ( colorValue ) => setAttributes( { borderHover: colorValue } ) }
+                            allowReset
+                        />  
+                </PanelColor>       
+            </Fragment>
+        );           
+
+        const iconControls = (
+                <Fragment>               
+                    <TabPanel className="uagb-inspect-tabs uagb-no-ho-ac-tabs uagb-hover-tabs"
+                        activeClass="active-tab"
+                        tabs={ [
+                            {
+                                name: 'normal',
+                                title: __( 'Normal' ),
+                                className: 'uagb-normal-tab',
+                            },
+                            {
+                                name: 'hover',
+                                title: __( 'Hover' ),
+                                className: 'uagb-hover-tab',
+                            },                                  
+                        ] }>
+                        {
+                            ( tabName ) => {
+                                console.log(tabName.name);
+                                let tabout;
+                                if( 'hover' === tabName.name ) {
+                                    tabout = iconHoverSettings;
+                                }else {
+                                    tabout = iconColorSettings;
+                                }
+                                return <div>{ tabout }</div>;
+                            }
+                        }
+                    </TabPanel>                
+                </Fragment>
+                );
 
         const content_control = (
         	<InspectorControls>               
@@ -374,97 +505,8 @@ class UAGBcontentTimeline extends Component {
                         max={ 30 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />   
-                    <PanelColor
-                        title={ __( 'Icon Color' ) }
-                        colorValue={ iconColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ iconColor }
-                            onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'Icon Hover Color' ) }
-                        colorValue={ iconHover }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ iconHover }
-                            onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'Icon Background Color' ) }
-                        colorValue={ separatorBg }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorBg }
-                            onChange={ ( colorValue ) => setAttributes( { separatorBg: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'Icon Background Hover Color' ) }
-                        colorValue={ iconBgHover }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ iconBgHover }
-                            onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'Line Color' ) }
-                        colorValue={ separatorColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorColor }
-                            onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-
-                    <PanelColor
-                        title={ __( 'Line Fill Color' ) }
-                        colorValue={ separatorFillColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ separatorFillColor }
-                            onChange={ ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>                    
-                    
-                    <PanelColor
-                        title={ __( 'Border Color' ) }
-                        colorValue={ separatorBorder }
-                        initialOpen={ false }
-                    >
-                    <ColorPalette
-                            value={ separatorBorder }
-                            onChange={ ( colorValue ) => setAttributes( { separatorBorder: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <PanelColor
-                        title={ __( 'Border Hover Color' ) }
-                        colorValue={ separatorBorder }
-                        initialOpen={ false }
-                    >
-                    <ColorPalette
-                            value={ borderHover }
-                            onChange={ ( colorValue ) => setAttributes( { borderHover: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
+                    />                       
+                    { iconControls }
                     <RangeControl
                         label={ __( 'Border Width' ) }
                         value={ borderwidth }
@@ -1046,7 +1088,7 @@ registerBlockType( 'uagb/content-timeline', {
 		iconSize : {
 			type : 'number',
 			default : 12,
-		},
+		},        
 	},
 	
 	edit: UAGBcontentTimeline,
@@ -1054,7 +1096,7 @@ registerBlockType( 'uagb/content-timeline', {
 	save: function( props ) {
 		
 		//console.log( 'Save props' );
-		console.log( props );
+		//console.log( props );
 
 		const {
 			headingTitle,
@@ -1099,7 +1141,7 @@ registerBlockType( 'uagb/content-timeline', {
 			tm_client_id,
 			iconHover,
 			iconBgHover,
-			className
+			className,
 		} = props.attributes;
 
 		/* Arrow position */
@@ -1123,104 +1165,9 @@ registerBlockType( 'uagb/content-timeline', {
         var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
         var block_id = 'uagb-'+tm_client_id;
 
-        var front_style = contentTimelineStyle( props );
         /* Style for elements */
-        /*var front_style = '.'+ block_id +'.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after,'+                       
-                        '.'+ block_id +'.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after{'+
-                        '  border-left-color:'+backgroundColor+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after,'+
-                        '.'+ block_id +'.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after{'+
-                        '  border-right-color:'+backgroundColor+
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline__line__inner{'+
-                            'background-color:'+separatorFillColor+';'+
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline__line{'+
-                            'background-color:'+separatorColor+';'+
-                            'width:'+separatorwidth+'px'+';'+                            
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--right .uagb-timeline__line{'+
-                            'right: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--left .uagb-timeline__line{'+
-                            'left: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline__line{'+
-                            'right: calc( '+connectorBgsize+'px / 2 );'+
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline-marker{'+
-                          'background-color:'+separatorBg+';'+
-                          'min-height:'+connectorBgsize+'px;'+
-                          'min-width:'+connectorBgsize+'px;'+
-                          'line-height:'+connectorBgsize+'px;'+
-                          'border:'+borderwidth+'px solid'+separatorBorder+';'+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow,'+
-                        '.'+ block_id +'.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow,'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow,'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow{'+
-                            'height:'+connectorBgsize+'px'+
-                        '}'+ 
-                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        ' margin-right:'+horizontalSpace+'px'+
-                        '}'+ 
-                        '.'+ block_id +' .uagb-timeline-field:not(:last-child){'+
-                        ' margin-bottom:'+verticalSpace+'px'+
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline-date-hide.uagb-date-inner{'+
-                        ' margin-bottom:'+dateBottomspace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--left .uagb-day-new.uagb-day-left{'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'+ 
-                        '.'+ block_id +'.uagb-timeline--right .uagb-day-new.uagb-day-right{'+
-                        ' margin-right:'+horizontalSpace+'px;'+
-                        'color:'+dateColor+';'+
-                        'font-size:'+dateFontsize+'px;'+
-                        '}'                        
-                        +'.'+ block_id +' .uagb-date-new{'+
-                        ' font-size:'+dateFontsize+'px;'+
-                        'color:'+dateColor+';'+
-                        '}'+
-                        '.'+ block_id +' .uagb-events-inner-new{'+
-                        ' border-radius:'+borderRadius+'px;'+
-                        'padding:'+bgPadding+'px;'+
-                        '}'
-                        +'.'+ block_id +' .uagb-timeline-main .timeline-icon-new{'+
-                        ' font-size:'+iconSize+'px;'+
-                        'color:'+iconColor+';'+
-                        '}'+                         
-                        '.'+ block_id +' .uagb-timeline-field.animate-border:hover .uagb-timeline-marker{'+
-                        'background:'+iconBgHover+';'+
-                        'border-color:'+borderHover+';'+                        
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline-field.animate-border:hover .timeline-icon-new{'+
-                        'color:'+iconHover+';'+
-                        '}'+                        
-                        '.'+ block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon{'+
-                        'background:'+iconBgHover+';'+
-                        'border-color:'+borderHover+';'+
-                        '}'+
-                        '.'+ block_id +' .uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new{'+
-                        'color:'+iconHover+';'+
-                        '}'+
-                        '@media(max-width:768px){'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-timeline-marker {'+
-                        ' margin-left:0px;'+
-                        ' margin-right:0px'+
-                        '}'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-left,'+
-                        '.'+ block_id +'.uagb-timeline--center .uagb-day-new.uagb-day-right{'+
-                        ' margin-left:'+horizontalSpace+'px;'+
-                        '}'+
-                        '}';*/
-         
+        var front_style = contentTimelineStyle( props );        
+        
         const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
         var content_align_class = '';

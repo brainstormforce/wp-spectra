@@ -4,6 +4,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 0px;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 0px solid #a4afb7;
+  border-style: initial;
+  outline: none; }
+
 /**
  * #.# Editor Styles
  *
@@ -16,6 +30,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 0px;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 0px solid #a4afb7;
+  border-style: initial;
+  outline: none; }
+
 /**
  * #.# Editor Styles
  *
@@ -41,6 +69,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 0px;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 0px solid #a4afb7;
+  border-style: initial;
+  outline: none; }
+
 /**
  * Editor styles for the admin
  */
@@ -56,6 +98,20 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 0px;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 0px solid #a4afb7;
+  border-style: initial;
+  outline: none; }
+
 /**
  * #.# Editor Styles
  *
@@ -103,7 +159,7 @@
 .rfip {
   position: relative;
   display: inline-block;
-  margin: 8px;
+  margin: 8px 0;
   vertical-align: middle; }
 
 .rfipbtn {
@@ -2525,6 +2581,20 @@ i.fipicon-angle-left:before {
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 0px;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 0px solid #a4afb7;
+  border-style: initial;
+  outline: none; }
+
 /**
  * #.# Editor Styles
  *
