@@ -7,9 +7,9 @@ import classnames from "classnames"
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
-import backgroundOptionsClasses from './classes'
-import BackgroundOptionsVideoOutput from './video'
-import inlineStyles from './inline-styles'
+import backgroundOptionsClasses from "./classes"
+import BackgroundOptionsVideoOutput from "./video"
+import inlineStyles from "./inline-styles"
 
 
 // Components
@@ -86,15 +86,19 @@ registerBlockType( "uagb/section", {
 		},
 		topMargin: {
 			type: "string",
+			default: "0"
 		},
 		bottomMargin: {
 			type: "string",
+			default: "0"
 		},
 		leftMargin: {
 			type: "string",
+			default: "0"
 		},
 		rightMargin: {
 			type: "string",
+			default: "0"
 		},
 		content_width: {
 			type: "string",
@@ -108,70 +112,71 @@ registerBlockType( "uagb/section", {
 			default: "section"
 		},
 		backgroundType: {
-			type: 'string',
+			type: "string",
 		},
 		backgroundImage: {
-			type: 'object',
+			type: "object",
 		},
 		backgroundPosition: {
-			type: 'string',
-			default: 'center-center'
+			type: "string",
+			default: "center-center"
 		},
 		backgroundSize: {
-			type: 'string',
-			default: 'cover'
+			type: "string",
+			default: "cover"
 		},
 		backgroundRepeat: {
-			type: 'string',
-			default: 'no-repeat'
+			type: "string",
+			default: "no-repeat"
 		},
 		backgroundAttachment: {
-			type: 'string',
-			default: 'scroll'
+			type: "string",
+			default: "scroll"
 		},
 		backgroundVideo: {
-			type: 'object',
+			type: "object",
 		},
 		backgroundColor: {
-			type: 'string',
+			type: "string",
 		},
 		gradientColor1: {
-			type: 'string',
+			type: "string",
 		},
 		gradientColor2: {
-			type: 'string',
+			type: "string",
 		},
 		gradientType: {
-			type: 'string',
-			default: 'linear'
+			type: "string",
+			default: "linear"
 		},
 		gradientLocation1: {
-			type: 'number',
-			default: '0'
+			type: "number",
+			default: "0"
 		},
 		gradientLocation2: {
-			type: 'number',
-			default: '100'
+			type: "number",
+			default: "100"
 		},
 		gradientAngle: {
-			type: 'number',
-			default: '0'
+			type: "number",
+			default: "0"
 		},
 		backgroundOpacity: {
-			type: 'number',
-			default: '0'
+			type: "number",
+			default: "0"
 		},
 		backgroundVideoOpacity: {
-			type: 'number',
-			default: '50'
+			type: "number",
+			default: "50"
 		},
 		backgroundVideoColor: {
-			type: 'string',
+			type: "string",
 		},
 	},
 	edit: function( props ) {
 
-		const { attributes, setAttributes } = props;
+		const { attributes, setAttributes } = props
+
 		const {
 			className,
 			padding,
@@ -203,48 +208,48 @@ registerBlockType( "uagb/section", {
 			backgroundOpacity,
 			backgroundVideoColor,
 			backgroundVideoOpacity
-		} = attributes;
+		} = attributes
 
-		var section_width = width;
+		var section_width = width
 
 		if ( "boxed" == content_width ) {
 			if ( "" != width ) {
-				section_width = width;
+				section_width = width
 			}
 		} else {
-			section_width = "100%";
+			section_width = "100%"
 		}
 
-		const CustomTag = `${tag}`;
+		const CustomTag = `${tag}`
 
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
-				setAttributes( { backgroundImage: null } );
-				return;
+				setAttributes( { backgroundImage: null } )
+				return
 			}
-			setAttributes( { backgroundImage: media } );
-		};
+			setAttributes( { backgroundImage: media } )
+		}
 
 		const onRemoveImage = ( media ) => {
-			setAttributes( { backgroundImage: null } );
-		};
+			setAttributes( { backgroundImage: null } )
+		}
 
 		const onSelectVideo = ( media ) => {
 			if ( ! media || ! media.url ) {
-				setAttributes( { backgroundVideo: null } );
-				return;
+				setAttributes( { backgroundVideo: null } )
+				return
 			}
-			setAttributes( { backgroundVideo: media } );
-		};
+			setAttributes( { backgroundVideo: media } )
+		}
 
 		const onRemoveVideo = ( media ) => {
-			setAttributes( { backgroundVideo: null } );
-		};
+			setAttributes( { backgroundVideo: null } )
+		}
 
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( 'Layout' ) }>
+					<PanelBody title={ __( "Layout" ) }>
 						<SelectControl
 							label={ __( "Content Width" ) }
 							value={ content_width }
@@ -255,7 +260,7 @@ registerBlockType( "uagb/section", {
 							] }
 						/>
 						{
-							content_width == 'boxed' &&
+							content_width == "boxed" &&
 							<RangeControl
 								label={ __( "Width" ) }
 								value={ width }
@@ -278,7 +283,7 @@ registerBlockType( "uagb/section", {
 							] }
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Spacing' ) }>
+					<PanelBody title={ __( "Spacing" ) }>
 						<RangeControl
 							label={ __( "Left Padding" ) }
 							value={ leftPadding }
@@ -344,7 +349,7 @@ registerBlockType( "uagb/section", {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( 'Background' ) }>
+					<PanelBody title={ __( "Background" ) }>
 						<SelectControl
 							label={ __( "Background Type" ) }
 							value={ backgroundType }
@@ -359,36 +364,36 @@ registerBlockType( "uagb/section", {
 						/>
 						{ "color" == backgroundType &&
 							<PanelColor
-									title={ __( "Background Color" ) }
-									colorValue={ backgroundColor }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ backgroundColor }
-										onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-										allowReset
-									/>
+								title={ __( "Background Color" ) }
+								colorValue={ backgroundColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ backgroundColor }
+									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+									allowReset
+								/>
 							</PanelColor>
 						}
 						{ "image" == backgroundType &&
 							<BaseControl
 								className="editor-bg-image-control"
-								label={ __( 'Background Image' ) }
+								label={ __( "Background Image" ) }
 							>
 								<MediaUpload
-									title={ __( 'Select Background Image' ) }
+									title={ __( "Select Background Image" ) }
 									onSelect={ onSelectImage }
 									type="image"
 									value={ backgroundImage }
 									render={ ( { open } ) => (
 										<Button isDefault onClick={ open }>
-											{ ! backgroundImage ? __( 'Select Background Image' ) : __( 'Replace image' ) }
+											{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
 										</Button>
 									) }
 								/>
 								{ !! backgroundImage &&
 									<Button onClick={ onRemoveImage } isLink isDestructive>
-										{ __( 'Remove Image' ) }
+										{ __( "Remove Image" ) }
 									</Button>
 								}
 							</BaseControl>
@@ -449,28 +454,28 @@ registerBlockType( "uagb/section", {
 						}
 						{ "gradient" == backgroundType &&
 							<PanelColor
-									title={ __( "Color 1" ) }
-									colorValue={ gradientColor1 }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ gradientColor1 }
-										onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
-										allowReset
-									/>
+								title={ __( "Color 1" ) }
+								colorValue={ gradientColor1 }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ gradientColor1 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
+									allowReset
+								/>
 							</PanelColor>
 						}
 						{ "gradient" == backgroundType &&
 							<PanelColor
-									title={ __( "Color 2" ) }
-									colorValue={ gradientColor2 }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ gradientColor2 }
-										onChange={ ( colorValue ) => setAttributes( { gradientColor2: colorValue } ) }
-										allowReset
-									/>
+								title={ __( "Color 2" ) }
+								colorValue={ gradientColor2 }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ gradientColor2 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor2: colorValue } ) }
+									allowReset
+								/>
 							</PanelColor>
 						}
 						{ "gradient" == backgroundType &&
@@ -517,22 +522,22 @@ registerBlockType( "uagb/section", {
 						{ "video" == backgroundType &&
 							<BaseControl
 								className="editor-bg-video-control"
-								label={ __( 'Background Video' ) }
+								label={ __( "Background Video" ) }
 							>
 								<MediaUpload
-									title={ __( 'Select Background Video' ) }
+									title={ __( "Select Background Video" ) }
 									onSelect={ onSelectVideo }
 									type="video"
 									value={ backgroundVideo }
 									render={ ( { open } ) => (
 										<Button isDefault onClick={ open }>
-											{ ! backgroundVideo ? __( 'Select Background Video' ) : __( 'Replace image' ) }
+											{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace image" ) }
 										</Button>
 									) }
 								/>
 								{ !! backgroundVideo &&
 									<Button onClick={ onRemoveVideo } isLink isDestructive>
-										{ __( 'Remove Video' ) }
+										{ __( "Remove Video" ) }
 									</Button>
 								}
 							</BaseControl>
@@ -549,15 +554,15 @@ registerBlockType( "uagb/section", {
 						}
 						{ "video" == backgroundType &&
 							<PanelColor
-									title={ __( "Video Overlay Color" ) }
-									colorValue={ backgroundVideoColor }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ backgroundVideoColor }
-										onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
-										allowReset
-									/>
+								title={ __( "Video Overlay Color" ) }
+								colorValue={ backgroundVideoColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ backgroundVideoColor }
+									onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
+									allowReset
+								/>
 							</PanelColor>
 						}
 						{ "video" == backgroundType &&
@@ -586,13 +591,13 @@ registerBlockType( "uagb/section", {
 					}
 					{ "video" != backgroundType &&
 
-						<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != 'undefined' ) ? backgroundOpacity/100 : 0 }}></div>
+						<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0 }}></div>
 					}
 					{ "video" == backgroundType &&
-						<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != 'undefined' ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
-						{  backgroundVideo &&
+						<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
+							{  backgroundVideo &&
 							<video src={ backgroundVideo.url } autoPlay loop muted></video>
-						}
+							}
 
 						</div>
 					}
@@ -602,7 +607,7 @@ registerBlockType( "uagb/section", {
 
 				</CustomTag>
 			</Fragment>
-		);
+		)
 	},
 	/**
 	* The save function defines the way in which the different attributes should be combined
@@ -614,7 +619,7 @@ registerBlockType( "uagb/section", {
 	*/
 	save: function( props ) {
 
-		const { attributes } = props;
+		const { attributes } = props
 
 		const {
 			backgroundType,
@@ -625,7 +630,7 @@ registerBlockType( "uagb/section", {
 			className
 		} = props.attributes
 
-		const CustomTag = `${attributes.tag}`;
+		const CustomTag = `${attributes.tag}`
 
 		return (
 			<CustomTag
@@ -642,13 +647,13 @@ registerBlockType( "uagb/section", {
 				}
 				{ "video" != backgroundType &&
 
-					<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != 'undefined' ) ? backgroundOpacity/100 : 0 }}></div>
+					<div className="uagb-section__overlay" style={{ opacity: ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0 }}></div>
 				}
 				{ "video" == backgroundType &&
-					<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != 'undefined' ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
-					{  backgroundVideo &&
+					<div className="uagb-section__video-wrap" style={{ opacity: ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5 }}>
+						{  backgroundVideo &&
 						<video src={ backgroundVideo.url } autoPlay loop muted></video>
-					}
+						}
 
 					</div>
 				}
@@ -656,6 +661,6 @@ registerBlockType( "uagb/section", {
 					<InnerBlocks.Content />
 				</div>
 			</CustomTag>
-		);
+		)
 	}
 } )
