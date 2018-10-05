@@ -6,7 +6,7 @@
 */
 
 .uagb-inspect-tabs .components-tab-panel__tabs button{
-	border: 0px;
+	border: 1px solid #a4afb7;
     padding: 10px;
 }
 
@@ -16,9 +16,8 @@
     outline:none;
 }
 
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus{
-    border: 0px solid #a4afb7;
-    border-style: initial;
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus{   
+    border: 1px solid #a4afb7;
     outline: none;
 }
 

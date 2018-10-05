@@ -5,7 +5,7 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button {
-  border: 0px;
+  border: 1px solid #a4afb7;
   padding: 10px; }
 
 .uagb-inspect-tabs .active-tab {
@@ -14,8 +14,7 @@
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs button:focus {
-  border: 0px solid #a4afb7;
-  border-style: initial;
+  border: 1px solid #a4afb7;
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs {
@@ -49,7 +48,7 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button {
-  border: 0px;
+  border: 1px solid #a4afb7;
   padding: 10px; }
 
 .uagb-inspect-tabs .active-tab {
@@ -58,8 +57,7 @@
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs button:focus {
-  border: 0px solid #a4afb7;
-  border-style: initial;
+  border: 1px solid #a4afb7;
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs {
@@ -1088,7 +1086,7 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button {
-  border: 0px;
+  border: 1px solid #a4afb7;
   padding: 10px; }
 
 .uagb-inspect-tabs .active-tab {
@@ -1097,8 +1095,7 @@
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs button:focus {
-  border: 0px solid #a4afb7;
-  border-style: initial;
+  border: 1px solid #a4afb7;
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs {
@@ -1456,7 +1453,7 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button {
-  border: 0px;
+  border: 1px solid #a4afb7;
   padding: 10px; }
 
 .uagb-inspect-tabs .active-tab {
@@ -1465,8 +1462,7 @@
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs button:focus {
-  border: 0px solid #a4afb7;
-  border-style: initial;
+  border: 1px solid #a4afb7;
   outline: none; }
 
 .uagb-inspect-tabs .components-tab-panel__tabs {

@@ -331,7 +331,7 @@ class UAGBcontentTimeline extends Component {
                     title={ __( 'Connector Color Settings' ) }
                     initialOpen={ true }
                     >               
-                    <TabPanel className="uagb-inspect-tabs uagb-no-ho-ac-tabs uagb-hover-tabs"
+                    <TabPanel className="uagb-inspect-tabs"
                         activeClass="active-tab"
                         tabs={ [
                             {
