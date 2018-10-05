@@ -295,8 +295,8 @@ class UAGBcontentTimeline extends Component {
                         initialOpen={ false }
                     >
                         <ColorPalette
-                            value={ iconFocus }
-                            onChange={ ( colorValue ) => setAttributes( { iconFocus: colorValue } ) }
+                            value={ iconHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
                             allowReset
                         />
                     </PanelColor>
@@ -306,8 +306,8 @@ class UAGBcontentTimeline extends Component {
                         initialOpen={ false }
                     >
                         <ColorPalette
-                            value={ iconBgFocus }
-                            onChange={ ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ) }
+                            value={ iconBgHover }
+                            onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
                             allowReset
                         />
                 </PanelColor>

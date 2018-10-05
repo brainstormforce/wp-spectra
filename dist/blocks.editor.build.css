@@ -27,35 +27,6 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-.uagb-inspect-tabs .components-tab-panel__tabs button {
-  border: 0px;
-  padding: 10px; }
-
-.uagb-inspect-tabs .active-tab {
-  background-color: #a4afb7;
-  color: #fff;
-  outline: none; }
-
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
-  border: 0px solid #a4afb7;
-  border-style: initial;
-  outline: none; }
-
-.uagb-inspect-tabs .components-tab-panel__tabs {
-  margin-top: 15px; }
-
-/**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
- */
 .edit-post-block-sidebar__panel .components-panel__body .components-panel__body-toggle[aria-expanded="true"] {
   background-color: #eee; }
 
