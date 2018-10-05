@@ -7,7 +7,6 @@ import classnames from "classnames"
 
 //  Import CSS.
 import "./style.scss"
-import "./editor.scss"
 
 /* eslint-disable */
 // Import __() from wp.i18n
@@ -66,141 +65,141 @@ class UAGBAdvancedHeading extends Component {
 		return (
 			<Fragment>
 				isSelected && (
-					<BlockControls key='controls'>
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-						/>
-					</BlockControls>
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ headingAlign }
+						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+					/>
+				</BlockControls>
 				)
 
 				isSelected && (
-					<InspectorControls>
-						<PanelBody
-							title={ __( "Typography" ) }
+				<InspectorControls>
+					<PanelBody
+						title={ __( "Typography" ) }
+						initialOpen={ false }
+					>
+						<SelectControl
+							label={ __( "Tag" ) }
+							value={ headingTag }
+							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>
+						<RangeControl
+							label={ __( "Heading Font Size" ) }
+							value={ headFontSize }
+							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Sub-Heading Font Size" ) }
+							value={ subHeadFontSize }
+							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					</PanelBody>
+					<PanelBody
+						title={ __( "Colors" ) }
+						initialOpen={ false }
+					>
+						<PanelColor
+							title={ __( "Heading Color" ) }
+							colorValue={ headingColor }
 							initialOpen={ false }
 						>
-							<SelectControl
-								label={ __( "Tag" ) }
-								value={ headingTag }
-								onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-								options={ [
-									{ value: "h1", label: __( "H1" ) },
-									{ value: "h2", label: __( "H2" ) },
-									{ value: "h3", label: __( "H3" ) },
-									{ value: "h4", label: __( "H4" ) },
-									{ value: "h5", label: __( "H5" ) },
-									{ value: "h6", label: __( "H6" ) },
-								] }
-							/>
-							<RangeControl
-								label={ __( "Heading Font Size" ) }
-								value={ headFontSize }
-								onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-								min={ 10 }
-								max={ 200 }
-								beforeIcon="editor-textcolor"
+							<ColorPalette
+								value={ headingColor }
+								onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 								allowReset
 							/>
-							<RangeControl
-								label={ __( "Sub-Heading Font Size" ) }
-								value={ subHeadFontSize }
-								onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-								min={ 10 }
-								max={ 200 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-						</PanelBody>
-						<PanelBody
-							title={ __( "Colors" ) }
+						</PanelColor>
+						<PanelColor
+							title={ __( "Sub-Heading Color" ) }
+							colorValue={ subHeadingColor }
 							initialOpen={ false }
 						>
-							<PanelColor
-								title={ __( "Heading Color" ) }
-								colorValue={ headingColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ headingColor }
-									onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-							<PanelColor
-								title={ __( "Sub-Heading Color" ) }
-								colorValue={ subHeadingColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ subHeadingColor }
-									onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-							<PanelColor
-								title={ __( "Separator Color" ) }
-								colorValue={ separatorColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ separatorColor }
-									onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						</PanelBody>
-						<PanelBody
-							title={ __( "Additional Options" ) }
+							<ColorPalette
+								value={ subHeadingColor }
+								onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+								allowReset
+							/>
+						</PanelColor>
+						<PanelColor
+							title={ __( "Separator Color" ) }
+							colorValue={ separatorColor }
 							initialOpen={ false }
 						>
-							<RangeControl
-								label={ __( "Separator Height" ) }
-								value={ separatorHeight }
-								onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
+							<ColorPalette
+								value={ separatorColor }
+								onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
 								allowReset
 							/>
-							<RangeControl
-								label={ __( "Separator Width" ) }
-								value={ separatorWidth }
-								onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
-								min={ 0 }
-								max={ 100 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Heading Spacing" ) }
-								value={ headSpace }
-								onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Separator Spacing" ) }
-								value={ separatorSpace }
-								onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Sub-Heading Spacing" ) }
-								value={ subHeadSpace }
-								onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-						</PanelBody>
-					</InspectorControls>
+						</PanelColor>
+					</PanelBody>
+					<PanelBody
+						title={ __( "Additional Options" ) }
+						initialOpen={ false }
+					>
+						<RangeControl
+							label={ __( "Separator Height" ) }
+							value={ separatorHeight }
+							onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Separator Width" ) }
+							value={ separatorWidth }
+							onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Heading Spacing" ) }
+							value={ headSpace }
+							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Separator Spacing" ) }
+							value={ separatorSpace }
+							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Sub-Heading Spacing" ) }
+							value={ subHeadSpace }
+							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					</PanelBody>
+				</InspectorControls>
 				)
 
 				<div className={ className }>
@@ -320,20 +319,6 @@ registerBlockType( "uagb/advanced-heading", {
 	 */
 	edit: UAGBAdvancedHeading,
 
-	/*function( props ) {
-
-		console.log( 'Edit props' );
-		console.log( props );
-
-		const { headingTitle } = props.attributes;
-
-		return (
-			<div className={ props.className }>
-				<p>Ultimate Addons For Gutenberg!</p>
-			</div>
-		);
-	},*/
-
 	/**
 	 * The save function defines the way in which the different attributes should be combined
 	 * into the final markup, which is then serialized by Gutenberg into post_content.
@@ -343,9 +328,6 @@ registerBlockType( "uagb/advanced-heading", {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 */
 	save: function( props ) {
-
-		console.log( "Save props" )
-		console.log( props )
 
 		const {
 			headingTitle,
