@@ -10,7 +10,7 @@ import classnames from 'classnames';
 //import { stringify } from 'querystringify';
 
 //  Import CSS.
-import '../timeline/style.scss';
+import '../post-timeline/style.scss';
 import './editor.scss';
 
 import UAGBIcon from "../uagb-controlls/UAGBIcon";
@@ -366,7 +366,7 @@ class UAGBcontentTimeline extends Component {
                     </TabPanel> 
                 </PanelBody>               
                 </Fragment>
-                );
+            );
 
         const content_control = (
             <InspectorControls>               
