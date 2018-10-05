@@ -172,6 +172,7 @@ registerBlockType( "uagb/section", {
 	edit: function( props ) {
 
 		const { attributes, setAttributes } = props;
+
 		const {
 			className,
 			padding,
