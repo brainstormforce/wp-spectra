@@ -5,12 +5,6 @@
  */
 function timelineInlineStyles( props ) {
     const {
-            headFontSize,
-            headingColor,
-            headSpace,
-            subHeadFontSize,
-            subHeadingColor,
-            subHeadSpace,
             authorSpace,
             dateBottomspace,
             backgroundColor,
