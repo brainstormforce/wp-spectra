@@ -4,7 +4,7 @@
  * @return {string} The video output container.
  */
 function BackgroundOptionsVideoOutput( props ) {
-	if ( 'video' === props.attributes.backgroundType && props.attributes.backgroundVideo ) {
+	if ( "video" === props.attributes.backgroundType && props.attributes.backgroundVideo ) {
 		return (
 			<video
 				className="video-container video-container-overlay"
@@ -17,8 +17,8 @@ function BackgroundOptionsVideoOutput( props ) {
 					src={ props.attributes.backgroundVideo.url }
 				/>
 			</video>
-		);
+		)
 	}
 }
 
-export default BackgroundOptionsVideoOutput;
+export default BackgroundOptionsVideoOutput
