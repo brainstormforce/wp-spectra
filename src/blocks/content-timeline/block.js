@@ -27,15 +27,15 @@ const { decodeEntities } = wp.htmlEntities;
 
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
+    registerBlockType,
 } = wp.blocks;
 
 const {
-	AlignmentToolbar,
-	BlockControls,
-	ColorPalette,
-	InspectorControls,
-	RichText,
+    AlignmentToolbar,
+    BlockControls,
+    ColorPalette,
+    InspectorControls,
+    RichText,
     BlockAlignmentToolbar,
 } = wp.editor
 
@@ -57,11 +57,11 @@ const el = wp.element.createElement;
 
 const item =[];
 for (var i = 1; i <= 5; i++) {
-	var title_heading_val = 'Timeline Heading '+i;
-	var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
-	var temp = [];
-	var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-	item.push(p);            
+    var title_heading_val = 'Timeline Heading '+i;
+    var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
+    var temp = [];
+    var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+    item.push(p);            
 }
 
 //Icon
@@ -71,7 +71,7 @@ const iconEl = el('svg', { width: 20, height: 20 },
 
 class UAGBcontentTimeline extends Component {
 
-	constructor() {
+    constructor() {
         super( ...arguments );
 
         // Get initial timeline content.
@@ -93,16 +93,16 @@ class UAGBcontentTimeline extends Component {
     * Loading Timeline content.
     */
     getTimelinecontent(value) {  
-    	const { tm_content, timelineItem } = this.props.attributes;
-    	const { setAttributes } = this.props;    	
+        const { tm_content, timelineItem } = this.props.attributes;
+        const { setAttributes } = this.props;       
         var item_number = value; 
         let data_copy     = [ ...tm_content ];
         let data_length = data_copy.length;
         if( item_number < data_length ){
-        	var diff = data_length - item_number;
+            var diff = data_length - item_number;
             let data_new = data_copy;
-            for( var i= 0; i < diff; i++ ){            	
-            	data_new.pop();
+            for( var i= 0; i < diff; i++ ){             
+                data_new.pop();
             }           
             setAttributes({tm_content:data_new});
 
@@ -110,74 +110,74 @@ class UAGBcontentTimeline extends Component {
             var diff = item_number - data_length;
            
             for( var i= 0; i < diff; i++ ){
-            	var array_length = data_length+i;
-            	var title_heading_val = 'My Heading '+item_number;
-	            var title_desc_val    = 'I am timeline card content. You can change me anytime. Click here to edit this text.';
-	            data_copy[array_length] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
+                var array_length = data_length+i;
+                var title_heading_val = 'My Heading '+item_number;
+                var title_desc_val    = 'I am timeline card content. You can change me anytime. Click here to edit this text.';
+                data_copy[array_length] = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
             }
             setAttributes({tm_content:data_copy});  
         } 
         return this.props.attributes.tm_content;
     }    
 
-	render() {
+    render() {
 
-		// Setup the attributes
-		const {
-			isSelected,
-			className,
-			setAttributes,
-			attributes: { 
-				tm_content,
-				headingTitle,
-				headingDesc,
-				headingAlign,
-				separatorHeight,
-				headSpace,
-				separatorSpace,
-				headingColor,
-				subHeadingColor,
-				backgroundColor,
-				separatorColor,
-				separatorFillColor,
-				separatorBg,
-				separatorBorder,
-				borderFocus,
-				headingTag,
-				headFontSize,
-				timelineItem,
-				timelinAlignment,
-				arrowlinAlignment,
-				subHeadFontSize,
-				verticalSpace,
-				horizontalSpace,
-				separatorwidth,
-				borderwidth,
-				connectorBgsize,
-				subHeadSpace,
-				dateBottomspace,
-				align,
-				order,
-				orderBy,
-				width,
-				icon,
-				iconColor,
-				authorColor,
-				dateColor,
-				dateFontsize,
-				authorFontsize,
-				iconSize,
-				tm_block_id,
-				borderRadius,
-				bgPadding,
-				tm_client_id,
-				iconFocus,
-				iconBgFocus,
+        // Setup the attributes
+        const {
+            isSelected,
+            className,
+            setAttributes,
+            attributes: { 
+                tm_content,
+                headingTitle,
+                headingDesc,
+                headingAlign,
+                separatorHeight,
+                headSpace,
+                separatorSpace,
+                headingColor,
+                subHeadingColor,
+                backgroundColor,
+                separatorColor,
+                separatorFillColor,
+                separatorBg,
+                separatorBorder,
+                borderFocus,
+                headingTag,
+                headFontSize,
+                timelineItem,
+                timelinAlignment,
+                arrowlinAlignment,
+                subHeadFontSize,
+                verticalSpace,
+                horizontalSpace,
+                separatorwidth,
+                borderwidth,
+                connectorBgsize,
+                subHeadSpace,
+                dateBottomspace,
+                align,
+                order,
+                orderBy,
+                width,
+                icon,
+                iconColor,
+                authorColor,
+                dateColor,
+                dateFontsize,
+                authorFontsize,
+                iconSize,
+                tm_block_id,
+                borderRadius,
+                bgPadding,
+                tm_client_id,
+                iconFocus,
+                iconBgFocus,
                 iconHover,
                 iconBgHover,
                 borderHover
-			},
-		} = this.props;		
+            },
+        } = this.props;     
 
         // Parameters for FontIconPicker
         const icon_props = {
@@ -369,8 +369,8 @@ class UAGBcontentTimeline extends Component {
                 );
 
         const content_control = (
-        	<InspectorControls>               
-				<PanelBody 
+            <InspectorControls>               
+                <PanelBody 
                     title={ __( 'General' ) }
                     initialOpen={ false }
                     >
@@ -378,9 +378,9 @@ class UAGBcontentTimeline extends Component {
                         label={ __( 'Number of Items' ) }
                         value={ timelineItem }
                         onChange={ ( value ) => {
-                        	setAttributes( { timelineItem: value } );
-                        	this.getTimelinecontent(value);
-                        	}
+                            setAttributes( { timelineItem: value } );
+                            this.getTimelinecontent(value);
+                            }
                         }
                         min={ 1 }
                         max={ 200 }
@@ -388,7 +388,7 @@ class UAGBcontentTimeline extends Component {
                         allowReset
                     />                                  
                  </PanelBody>
-				<PanelBody 
+                <PanelBody 
                     title={ __( 'Layout' ) }
                     initialOpen={ false }
                 >          
@@ -454,7 +454,7 @@ class UAGBcontentTimeline extends Component {
                         allowReset
                     />                    
                 </PanelBody>
-				<PanelBody 
+                <PanelBody 
                     title={ __( 'Timeline Item' ) }
                     initialOpen={ false }
                     >
@@ -588,9 +588,9 @@ class UAGBcontentTimeline extends Component {
                     />                    
                 </PanelBody>
                 </InspectorControls>
-          	);
-		
-		/* Arrow position */
+            );
+        
+        /* Arrow position */
         var arrow_align_class  = 'uagb-timeline-arrow-top';
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-timeline-arrow-center';
@@ -598,7 +598,7 @@ class UAGBcontentTimeline extends Component {
             arrow_align_class = 'uagb-timeline-arrow-bottom';
         } 
 
-		/* Alignmnet */
+        /* Alignmnet */
         var align_class = 'uagb-timeline--center '+ arrow_align_class;
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline--left ' + arrow_align_class;
@@ -610,10 +610,10 @@ class UAGBcontentTimeline extends Component {
         var tm_block_id_new = 'uagb-'+this.props.clientId;
         var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
 
-		return (		
-			<Fragment>   
-			{ content_control } 
-			 <BlockControls>
+        return (        
+            <Fragment>   
+            { content_control } 
+             <BlockControls>
                 <BlockAlignmentToolbar
                     value={ align }
                     onChange={ ( value ) => {
@@ -622,7 +622,7 @@ class UAGBcontentTimeline extends Component {
                     controls={ [ 'center', 'left','right' ] }
                 />               
             </BlockControls>
-			 <div className={ className } >                     
+             <div className={ className } >                     
                     <div className = { tl_class }>
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline-main">                                
@@ -634,11 +634,11 @@ class UAGBcontentTimeline extends Component {
                         </div>
                     </div>
                 </div>
-			</Fragment>   
-		);
-	}
+            </Fragment>   
+        );
+    }
 
-	componentDidMount() {   
+    componentDidMount() {   
         //Store client id. 
         this.props.setAttributes( { tm_client_id: this.props.clientId } );
 
@@ -661,7 +661,7 @@ class UAGBcontentTimeline extends Component {
         });
     }
 
-	/* Render output at backend */
+    /* Render output at backend */
     uagb_get_content_timeline_content(){
         const { attributes, setAttributes } = this.props;
 
@@ -707,7 +707,7 @@ class UAGBcontentTimeline extends Component {
 
         }else{
 
-        	var content_align_class = '';
+            var content_align_class = '';
             var day_align_class = '';
 
             if( timelinAlignment == 'left' ){
@@ -720,11 +720,11 @@ class UAGBcontentTimeline extends Component {
             let data_copy     = [ ...tm_content ];
             var display_inner_date = false;
             return (
-            	<div className = "uagb-days uagb-timeline-infinite-load">
-            		<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-            		{ 
-            			tm_content.map((post,index) => {
-            				var second_index = 'uagb-'+index;
+                <div className = "uagb-days uagb-timeline-infinite-load">
+                    <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+                    { 
+                        tm_content.map((post,index) => {
+                            var second_index = 'uagb-'+index;
                                 if(timelinAlignment == 'center'){
                                     display_inner_date = true;
                                     if(index % 2 == '0'){
@@ -739,17 +739,17 @@ class UAGBcontentTimeline extends Component {
                                 var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
                             
                             return (
-                            	<article className = "uagb-timeline-field animate-border"  key={index}>
-                            		<div className = {content_align_class}> 
-                            			
-                            			<div className = "uagb-timeline-marker out-view-timeline-icon">
+                                <article className = "uagb-timeline-field animate-border"  key={index}>
+                                    <div className = {content_align_class}> 
+                                        
+                                        <div className = "uagb-timeline-marker out-view-timeline-icon">
                                             <i className = {icon_class}></i>
                                         </div>
                                         
                                         <div className = {day_align_class}>
-                                        	<div className="uagb-events-new" style = {{textAlign:align}}>
+                                            <div className="uagb-events-new" style = {{textAlign:align}}>
                                                 <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                	<div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
                                                         { post.date_gmt &&
                                                             <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
                                                                 { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
@@ -758,66 +758,66 @@ class UAGBcontentTimeline extends Component {
                                                     </div>
 
                                                     <div className="uagb-content">
-                                                    	
-                                                    	<div className="uagb-timeline-heading-text" style={{                                                                            
+                                                        
+                                                        <div className="uagb-timeline-heading-text" style={{                                                                            
                                                                     marginBottom: headSpace + 'px',
                                                                 }}> 
                                                             <RichText
-						                                        tagName={ headingTag }
-						                                        value={ post.time_heading }
-						                                        className='uagb-timeline-heading entry-title'
-						                                        onChange={ ( value ) => { 
-						                                            var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
-						                                            data_copy[index] = p;                                       
-						                                            setAttributes( { 'tm_content': data_copy } );                                       
-						                                        } }
-						                                        style={{ 						                                           
-						                                            fontSize: headFontSize + 'px',
-						                                            color: headingColor,
-						                                            textAlign:align						                                            
-						                                        }}
-						                                    />
-						                                </div>
+                                                                tagName={ headingTag }
+                                                                value={ post.time_heading }
+                                                                className='uagb-timeline-heading entry-title'
+                                                                onChange={ ( value ) => { 
+                                                                    var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
+                                                                    data_copy[index] = p;                                       
+                                                                    setAttributes( { 'tm_content': data_copy } );                                       
+                                                                } }
+                                                                style={{                                                                   
+                                                                    fontSize: headFontSize + 'px',
+                                                                    color: headingColor,
+                                                                    textAlign:align                                                                 
+                                                                }}
+                                                            />
+                                                        </div>
 
-					                                    <RichText
-					                                        tagName= "p"
-					                                        value={ post.time_desc }
-					                                        className='uagb-timeline-desc-content'
-					                                        onChange={ ( value ) => { 
-																	var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };						                                            
-																	data_copy[index] = p;                                       
-					                                            setAttributes( { 'tm_content': data_copy } );                                       
-					                                        } }
-					                                        style={{ 						                                           
-					                                            fontSize: subHeadFontSize + 'px',
-					                                            color: subHeadingColor,	
-					                                            marginBottom: subHeadSpace + 'px',
-					                                            textAlign:align					                                            
-					                                        }}
-					                                    />
+                                                        <RichText
+                                                            tagName= "p"
+                                                            value={ post.time_desc }
+                                                            className='uagb-timeline-desc-content'
+                                                            onChange={ ( value ) => { 
+                                                                    var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };                                                                    
+                                                                    data_copy[index] = p;                                       
+                                                                setAttributes( { 'tm_content': data_copy } );                                       
+                                                            } }
+                                                            style={{                                                                   
+                                                                fontSize: subHeadFontSize + 'px',
+                                                                color: subHeadingColor, 
+                                                                marginBottom: subHeadSpace + 'px',
+                                                                textAlign:align                                                             
+                                                            }}
+                                                        />
 
-						                                <div className="uagb-timeline-arrow"></div>	
+                                                        <div className="uagb-timeline-arrow"></div> 
 
                                                     </div>
 
                                                 </div>
-                                        	</div>
+                                            </div>
                                         </div>
 
                                         <div className = "uagb-timeline-date-new">                                                                                                   
-	                                        { post.date_gmt &&
-	                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
-	                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-	                                            </div>
-	                                        } 
-		                                </div>
-                            		</div>
-                            	</article>
+                                            { post.date_gmt &&
+                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
+                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                </div>
+                                            } 
+                                        </div>
+                                    </div>
+                                </article>
                             );
 
-            		 	})
-            		}
-            	</div>
+                        })
+                    }
+                </div>
             ); 
         }
     }
@@ -968,175 +968,175 @@ class UAGBcontentTimeline extends Component {
  */
 registerBlockType( 'uagb/content-timeline', {
 
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Content Timeline - UAGB' ), // Block title.
-	description: __( 'Add Content Timeline block.' ), // Block description.
-	icon: iconEl, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	keywords: [
-		__( 'timeline' ),
-		__( 'uagb' ),
-	],
-	category: 'formatting',
+    // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
+    title: __( 'Content Timeline - UAGB' ), // Block title.
+    description: __( 'Add Content Timeline block.' ), // Block description.
+    icon: iconEl, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+    keywords: [
+        __( 'timeline' ),
+        __( 'uagb' ),
+    ],
+    category: 'formatting',
 
-	attributes: {
-		tm_content: {
-			type: 'array',
-			default : item,
-		},
-		headingTitle: {
-			type: 'string',
-		},
-		headingDesc: {
-			type: 'string',
-		},
-		align : {
-			type : 'string',
-			default : 'center',
-		},			
-		headingColor : {
-			type : 'string',
-			default : '#0693E3',
-		},
-		subHeadingColor : {
-			type : 'string',
-			default : '#333',
-		},
-		separatorBg : {
-			type : 'string',
-			default : '#eee',
-		},
-		backgroundColor : {
-			type : 'string',
-			default : '#eee',
-		},
-		separatorColor : {
-			type : 'string',
-			default : '#eee',
-		},
+    attributes: {
+        tm_content: {
+            type: 'array',
+            default : item,
+        },
+        headingTitle: {
+            type: 'string',
+        },
+        headingDesc: {
+            type: 'string',
+        },
+        align : {
+            type : 'string',
+            default : 'center',
+        },          
+        headingColor : {
+            type : 'string',
+            default : '#0693E3',
+        },
+        subHeadingColor : {
+            type : 'string',
+            default : '#333',
+        },
+        separatorBg : {
+            type : 'string',
+            default : '#eee',
+        },
+        backgroundColor : {
+            type : 'string',
+            default : '#eee',
+        },
+        separatorColor : {
+            type : 'string',
+            default : '#eee',
+        },
         separatorFillColor : {
             type : 'string',
             default : '#61ce70',
         },
-		separatorBorder : {
-			type : 'string',
-			default : '#eee',
-		},
-		borderFocus : {
-			type : 'string',
-			default : '#5cb85c',
-		},
-		headingTag : {
-			type : 'string',
-			default : 'h3',
-		},
-		horizontalSpace : {
-			type : 'number',
-			default : 10,
-		},
-		verticalSpace : {
-			type : 'number',
-			default : 15,
-		},
-		headFontSize : {
-			type : 'number',
-			default : 15,
-		},			
-		timelinAlignment : {
-			type : 'string',
-			default : 'center',
-		},
-		arrowlinAlignment : {
-			type : 'string',
-			default : 'center',
-		},
-		subHeadFontSize : {
-			type : 'number',
-			default : 12,
-		},
-		headSpace : {
-			type : 'number',
-			default : 5,
-		},
-		separatorwidth : {
-			type : 'number',
-			default : 3,
-		},
-		borderwidth : {
-			type : 'number',
-			default : 0,
-		},
-		iconColor : {
-			type : 'string',
-			default : '#333',
-		},
-		iconFocus : {
-			type : 'string',
-			default : '#fff',
-		},
-		iconBgFocus : {
-			type : 'string',
-			default : '#61ce70',
-		},
-		authorColor : {
-			type : 'string',
-			default : '#333',
-		},
-		authorFontsize : {
-			type : 'number',
-			default : 12,
-		},
-		dateColor : {
-			type : 'string',
-			default : '#333',
-		},
-		dateFontsize : {
-			type : 'number',
-			default : 12,
-		},
-		connectorBgsize : {
-			type : 'number',
-			default : 35,
-		},
-		subHeadSpace : {
-			type : 'number',
-			default : 5,
-		},
-		authorSpace : {
-			type : 'number',
-			default : 5,
-		},
-		dateBottomspace : {
-			type : 'number',
-			default : 5,
-		},
-		headFontSize : {
-			type : 'number',
-			default : 15,
-		},	
-		tm_block_id  : {
-			type : 'string',
-			default : '0',
-		},
-		timelineItem :{
-			type : 'number',
-			default : 5,
-		},
+        separatorBorder : {
+            type : 'string',
+            default : '#eee',
+        },
+        borderFocus : {
+            type : 'string',
+            default : '#5cb85c',
+        },
+        headingTag : {
+            type : 'string',
+            default : 'h3',
+        },
+        horizontalSpace : {
+            type : 'number',
+            default : 10,
+        },
+        verticalSpace : {
+            type : 'number',
+            default : 15,
+        },
+        headFontSize : {
+            type : 'number',
+            default : 15,
+        },          
+        timelinAlignment : {
+            type : 'string',
+            default : 'center',
+        },
+        arrowlinAlignment : {
+            type : 'string',
+            default : 'center',
+        },
+        subHeadFontSize : {
+            type : 'number',
+            default : 12,
+        },
+        headSpace : {
+            type : 'number',
+            default : 5,
+        },
+        separatorwidth : {
+            type : 'number',
+            default : 3,
+        },
+        borderwidth : {
+            type : 'number',
+            default : 0,
+        },
+        iconColor : {
+            type : 'string',
+            default : '#333',
+        },
+        iconFocus : {
+            type : 'string',
+            default : '#fff',
+        },
+        iconBgFocus : {
+            type : 'string',
+            default : '#61ce70',
+        },
+        authorColor : {
+            type : 'string',
+            default : '#333',
+        },
+        authorFontsize : {
+            type : 'number',
+            default : 12,
+        },
+        dateColor : {
+            type : 'string',
+            default : '#333',
+        },
+        dateFontsize : {
+            type : 'number',
+            default : 12,
+        },
+        connectorBgsize : {
+            type : 'number',
+            default : 35,
+        },
+        subHeadSpace : {
+            type : 'number',
+            default : 5,
+        },
+        authorSpace : {
+            type : 'number',
+            default : 5,
+        },
+        dateBottomspace : {
+            type : 'number',
+            default : 5,
+        },
+        headFontSize : {
+            type : 'number',
+            default : 15,
+        },  
+        tm_block_id  : {
+            type : 'string',
+            default : '0',
+        },
+        timelineItem :{
+            type : 'number',
+            default : 5,
+        },
         tm_client_id  : {
             type : 'string',
             default : 'not_set',
-        },		
-		borderRadius : {
-			type : 'number',
-			default : 2,
-		},
-		bgPadding : {
-			type : 'number',
-			default : 20,
-		},
-		iconSize : {
-			type : 'number',
-			default : 12,
-		}, 
+        },      
+        borderRadius : {
+            type : 'number',
+            default : 2,
+        },
+        bgPadding : {
+            type : 'number',
+            default : 20,
+        },
+        iconSize : {
+            type : 'number',
+            default : 12,
+        }, 
         icon : {
             type : 'string',
             default : 'fab fa fa-calendar-alt'
@@ -1153,65 +1153,65 @@ registerBlockType( 'uagb/content-timeline', {
             type : 'string',
             default : ''
         },         
-	},
-	
-	edit: UAGBcontentTimeline,
-	
-	save: function( props ) {
-		
-		//console.log( 'Save props' );
-		//console.log( props );
+    },
+    
+    edit: UAGBcontentTimeline,
+    
+    save: function( props ) {
+        
+        //console.log( 'Save props' );
+        //console.log( props );
 
-		const {
-			headingTitle,
-			headingDesc,
-			tm_content,
-			headingColor,
-			subHeadingColor,
-			backgroundColor,
-			separatorColor,
-			separatorFillColor,
-			separatorBg,
-			separatorBorder,
-			borderFocus,
-			headingTag,
-			headFontSize,
-			timelineItem,
-			timelinAlignment,
-			arrowlinAlignment,
-			subHeadFontSize,
-			verticalSpace,
-			horizontalSpace,
-			headSpace,
-			separatorwidth,
-			borderwidth,
-			connectorBgsize,
-			subHeadSpace,
-			dateBottomspace,
-			align,
-			order,
-			orderBy,
-			width,			
-			authorColor,
-			dateColor,
-			dateFontsize,
-			authorFontsize,
-			tm_block_id,
-			borderRadius,
-			bgPadding,
-			tm_client_id,
+        const {
+            headingTitle,
+            headingDesc,
+            tm_content,
+            headingColor,
+            subHeadingColor,
+            backgroundColor,
+            separatorColor,
+            separatorFillColor,
+            separatorBg,
+            separatorBorder,
+            borderFocus,
+            headingTag,
+            headFontSize,
+            timelineItem,
+            timelinAlignment,
+            arrowlinAlignment,
+            subHeadFontSize,
+            verticalSpace,
+            horizontalSpace,
+            headSpace,
+            separatorwidth,
+            borderwidth,
+            connectorBgsize,
+            subHeadSpace,
+            dateBottomspace,
+            align,
+            order,
+            orderBy,
+            width,          
+            authorColor,
+            dateColor,
+            dateFontsize,
+            authorFontsize,
+            tm_block_id,
+            borderRadius,
+            bgPadding,
+            tm_client_id,
             iconSize,  
             icon,
             iconColor,          
-			iconFocus,
+            iconFocus,
             borderHover,
             iconBgHover,
             iconHover,
-			iconBgFocus,
-			className,            
-		} = props.attributes;
+            iconBgFocus,
+            className,            
+        } = props.attributes;
 
-		/* Arrow position */
+        /* Arrow position */
         var arrow_align_class  = 'uagb-timeline-arrow-top';
         if( arrowlinAlignment == 'center' ){
             arrow_align_class = 'uagb-timeline-arrow-center';
@@ -1219,7 +1219,7 @@ registerBlockType( 'uagb/content-timeline', {
             arrow_align_class = 'uagb-timeline-arrow-bottom';
         } 
 
-		/* Alignmnet */
+        /* Alignmnet */
         var align_class = 'uagb-timeline--center '+ arrow_align_class;
         if( timelinAlignment == 'left' ){
             align_class = 'uagb-timeline--left ' + arrow_align_class;
@@ -1250,98 +1250,98 @@ registerBlockType( 'uagb/content-timeline', {
         let data_copy     = [ ...tm_content ];
         var display_inner_date = false;
 
-		return (            
+        return (            
                 <div className={ className } >                     
                     <div className = { tl_class }>
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline-main">   
                                 <div className = "uagb-days uagb-timeline-infinite-load">
-                                	<style dangerouslySetInnerHTML={{ __html: front_style }}></style>
-                                	{ 
-                        				tm_content.map((post,index) => { 
-                        					var second_index = 'uagb-'+index;
-			                                if(timelinAlignment == 'center'){
-			                                    display_inner_date = true;
-			                                    if(index % 2 == '0'){
-			                                        content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-			                                        day_align_class = 'uagb-day-new uagb-day-right';
-			                                    }else{
-			                                        content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-			                                        day_align_class = 'uagb-day-new uagb-day-left';
-			                                    }  
-			                                }   
-			                                const Tag = headingTag;  
-			                                var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
-                            					
-			                                return (
-				                                <article className = "uagb-timeline-field animate-border"  key={index}>
-				                                    <div className = {content_align_class}> 
-				                                        
-				                                        <div className = "uagb-timeline-marker out-view-timeline-icon">
-				                                            <i className = {icon_class}></i>
-				                                        </div>
-				                                        
-				                                        <div className = {day_align_class}>
-				                                            <div className="uagb-events-new" style = {{textAlign:align}}>
-				                                                <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-				                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
-				                                                        { post.date_gmt &&
-				                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
-				                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-				                                                            </div>
-				                                                        }  
-				                                                    </div>
+                                    <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
+                                    { 
+                                        tm_content.map((post,index) => { 
+                                            var second_index = 'uagb-'+index;
+                                            if(timelinAlignment == 'center'){
+                                                display_inner_date = true;
+                                                if(index % 2 == '0'){
+                                                    content_align_class = 'uagb-timeline-widget uagb-timeline-right';
+                                                    day_align_class = 'uagb-day-new uagb-day-right';
+                                                }else{
+                                                    content_align_class = 'uagb-timeline-widget uagb-timeline-left';
+                                                    day_align_class = 'uagb-day-new uagb-day-left';
+                                                }  
+                                            }   
+                                            const Tag = headingTag;  
+                                            var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
+                                                
+                                            return (
+                                                <article className = "uagb-timeline-field animate-border"  key={index}>
+                                                    <div className = {content_align_class}> 
+                                                        
+                                                        <div className = "uagb-timeline-marker out-view-timeline-icon">
+                                                            <i className = {icon_class}></i>
+                                                        </div>
+                                                        
+                                                        <div className = {day_align_class}>
+                                                            <div className="uagb-events-new" style = {{textAlign:align}}>
+                                                                <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+                                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+                                                                        { post.date_gmt &&
+                                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
+                                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                                            </div>
+                                                                        }  
+                                                                    </div>
 
-				                                                    <div className="uagb-content">
-				                                                        
-				                                                        <div className="uagb-timeline-heading-text" style={{                                                                            
-				                                                                    marginBottom: headSpace + 'px',
-				                                                                }}> 
-				                                                            <RichText.Content
-				                                                                tagName={ headingTag }
-				                                                                value={ post.time_heading }
-				                                                                className='uagb-timeline-heading entry-title'				                                                               
-				                                                                style={{                                                                   
-				                                                                    fontSize: headFontSize + 'px',
-				                                                                    color: headingColor,
-				                                                                    textAlign:align                                                                    
-				                                                                }}
-				                                                            />
-				                                                        </div>
+                                                                    <div className="uagb-content">
+                                                                        
+                                                                        <div className="uagb-timeline-heading-text" style={{                                                                            
+                                                                                    marginBottom: headSpace + 'px',
+                                                                                }}> 
+                                                                            <RichText.Content
+                                                                                tagName={ headingTag }
+                                                                                value={ post.time_heading }
+                                                                                className='uagb-timeline-heading entry-title'                                                                              
+                                                                                style={{                                                                   
+                                                                                    fontSize: headFontSize + 'px',
+                                                                                    color: headingColor,
+                                                                                    textAlign:align                                                                    
+                                                                                }}
+                                                                            />
+                                                                        </div>
 
-				                                                        <RichText.Content
-				                                                            tagName= "p"
-				                                                            value={ post.time_desc }
-				                                                            className='uagb-timeline-desc-content'				                                                            
-				                                                            style={{                                                                   
-				                                                                fontSize: subHeadFontSize + 'px',
-				                                                                color: subHeadingColor, 
-				                                                                marginBottom: subHeadSpace + 'px', 
-				                                                                textAlign:align                                                             
-				                                                            }}
-				                                                        />
+                                                                        <RichText.Content
+                                                                            tagName= "p"
+                                                                            value={ post.time_desc }
+                                                                            className='uagb-timeline-desc-content'                                                                          
+                                                                            style={{                                                                   
+                                                                                fontSize: subHeadFontSize + 'px',
+                                                                                color: subHeadingColor, 
+                                                                                marginBottom: subHeadSpace + 'px', 
+                                                                                textAlign:align                                                             
+                                                                            }}
+                                                                        />
 
-				                                                        <div className="uagb-timeline-arrow"></div> 
+                                                                        <div className="uagb-timeline-arrow"></div> 
 
-				                                                    </div>
+                                                                    </div>
 
-				                                                </div>
-				                                            </div>
-				                                        </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
 
-				                                        <div className = "uagb-timeline-date-new">                                                                                                   
-				                                            { post.date_gmt &&
-				                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
-				                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-				                                                </div>
-				                                            } 
-				                                        </div>
-				                                    </div>
-				                                </article>
-				                            );
+                                                        <div className = "uagb-timeline-date-new">                                                                                                   
+                                                            { post.date_gmt &&
+                                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
+                                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                                </div>
+                                                            } 
+                                                        </div>
+                                                    </div>
+                                                </article>
+                                            );
 
-                        				})
-                        			}
+                                        })
+                                    }
                                 </div>
                                 <div className = "uagb-timeline__line" >
                                     <div className = "uagb-timeline__line__inner"></div>
@@ -1351,5 +1351,5 @@ registerBlockType( 'uagb/content-timeline', {
                     </div>
                 </div>
         );
-	}
+    }
 } );
