@@ -25,15 +25,15 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 		'OBJECT'
 	);
 
-	$background_color     = $attributes['backgroundColor'];
-	$timelin_alignment    = $attributes['timelinAlignment'];
-	$arrowlin_alignment   = $attributes['arrowlinAlignment'];
-	$class_name           = $attributes['className'];
-	$tm_client_id         = $attributes['tm_client_id'];
-	$align                = $attributes['align'];
-	$align_class          = '';
-	$align_item_class     = '';
-	$tm_block_id          = 'uagb-' . $tm_client_id;
+	$background_color   = $attributes['backgroundColor'];
+	$timelin_alignment  = $attributes['timelinAlignment'];
+	$arrowlin_alignment = $attributes['arrowlinAlignment'];
+	$class_name         = $attributes['className'];
+	$tm_client_id       = $attributes['tm_client_id'];
+	$align              = $attributes['align'];
+	$align_class        = '';
+	$align_item_class   = '';
+	$tm_block_id        = 'uagb-' . $tm_client_id;
 
 	/* Arrow position */
 	$arrow_align_class = 'uagb-timeline-arrow-top';
@@ -56,7 +56,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 
 	/* Style for elements */
 	$front_style = uagb_timeline_css( $attributes );
-	
+
 	$content_align_class = '';
 	$day_align_class     = '';
 
@@ -396,15 +396,15 @@ function uagb_blocks_register_block_timeline_posts() {
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'iconHover'   => array(
+				'iconHover'          => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'iconBgHover'   => array(
+				'iconBgHover'        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'borderHover'   => array(
+				'borderHover'        => array(
 					'type'    => 'string',
 					'default' => '',
 				),
@@ -686,17 +686,18 @@ function uagb_get_timeline_excerpt( $attributes, $content, $post_id ) {
 
 /**
  * Function Name: uagb_timeline_css Generate CSS..
+ *
  * @param  array $attributes array of parameter.
  * @return string             string of CSS.
  */
-function uagb_timeline_css( $attributes ){
+function uagb_timeline_css( $attributes ) {
 
 	$background_color     = $attributes['backgroundColor'];
 	$separator_color      = $attributes['separatorColor'];
 	$separator_fill_color = $attributes['separatorFillColor'];
 	$separator_bg         = $attributes['separatorBg'];
 	$separator_border     = $attributes['separatorBorder'];
-	$border_Focus         = $attributes['borderFocus'];
+	$border_focus         = $attributes['borderFocus'];
 	$horizontal_space     = $attributes['horizontalSpace'];
 	$separatorwidth       = $attributes['separatorwidth'];
 	$connector_bgsize     = $attributes['connectorBgsize'];
@@ -713,8 +714,8 @@ function uagb_timeline_css( $attributes ){
 	$icon_size            = $attributes['iconSize'];
 	$border_radius        = $attributes['borderRadius'];
 	$bg_padding           = $attributes['bgPadding'];
-	$icon_bg_Focus        = $attributes['iconBgFocus'];
-	$icon_Focus           = $attributes['iconFocus'];
+	$icon_bg_focus        = $attributes['iconBgFocus'];
+	$icon_focus           = $attributes['iconFocus'];
 	$icon_bg_hover        = $attributes['iconBgHover'];
 	$icon_hover           = $attributes['iconHover'];
 	$border_hover         = $attributes['borderHover'];
@@ -723,187 +724,186 @@ function uagb_timeline_css( $attributes ){
 	$selectors = array();
 
 	$selectors['.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after'] = array(
-		'border-left-color' => $background_color
+		'border-left-color' => $background_color,
 	);
 
 	$selectors['.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after'] = array(
-		'border-left-color' => $background_color
-	);		
-
-	$selectors['.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after'] = array(
-		'border-right-color'=> $background_color,	
+		'border-left-color' => $background_color,
 	);
 
-	//var_dump($selectors);
+	$selectors['.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after'] = array(
+		'border-right-color' => $background_color,
+	);
+
 	$selectors['.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after'] = array(
-		'border-right-color'=> $background_color,	
+		'border-right-color' => $background_color,
 	);
 
 	$selectors['.uagb-timeline__line__inner'] = array(
-		'background-color' => $separator_fill_color,	
+		'background-color' => $separator_fill_color,
 	);
 
 	$selectors['.uagb-timeline__line'] = array(
-		'background-color' => $separator_color,	
-		'width' => $separatorwidth . 'px',   
+		'background-color' => $separator_color,
+		'width'            => $separatorwidth . 'px',
 	);
 
 	$selectors['.uagb-timeline--right .uagb-timeline__line'] = array(
-		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',
 	);
 
 	$selectors['.uagb-timeline--left .uagb-timeline__line'] = array(
-		'left' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+		'left' => 'calc( ' . $connector_bgsize . 'px / 2 )',
 	);
 
 	$selectors['.uagb-timeline--right .uagb-timeline__line'] = array(
-		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',	
+		'right' => 'calc( ' . $connector_bgsize . 'px / 2 )',
 	);
 
 	$selectors['.uagb-timeline-marker'] = array(
-		'background-color' => $separator_bg,	
-		'min-height' => $connector_bgsize . 'px',   
-		'min-width' => $connector_bgsize . 'px',   
-		'line-height' => $connector_bgsize . 'px',   
-		'border'  => $borderwidth . 'px solid' . $separator_border ,
+		'background-color' => $separator_bg,
+		'min-height'       => $connector_bgsize . 'px',
+		'min-width'        => $connector_bgsize . 'px',
+		'line-height'      => $connector_bgsize . 'px',
+		'border'           => $borderwidth . 'px solid' . $separator_border,
 	);
 
 	$selectors['.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow'] = array(
-		'height' => $connector_bgsize . 'px',   
+		'height' => $connector_bgsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow'] = array(
-		'height' => $connector_bgsize . 'px',   
+		'height' => $connector_bgsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow'] = array(
-		'height' => $connector_bgsize . 'px',   
+		'height' => $connector_bgsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow'] = array(
-		'height' => $connector_bgsize . 'px',   
+		'height' => $connector_bgsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--center .uagb-timeline-marker'] = array(
-		'margin-left' =>  $horizontal_space . 'px',  
-		'margin-right' =>  $horizontal_space . 'px',  
+		'margin-left'  => $horizontal_space . 'px',
+		'margin-right' => $horizontal_space . 'px',
 	);
 
 	$selectors['.uagb-timeline-field:not(:last-child)'] = array(
-		'margin-bottom' => $vertical_space . 'px',  
+		'margin-bottom' => $vertical_space . 'px',
 	);
 
 	$selectors['.uagb-timeline-date-hide.uagb-date-inner'] = array(
-		'color' => $date_color,	
-		'margin-bottom' => $date_bottomspace . 'px',   
-		'font-size' => $date_fontsize . 'px',   
+		'color'         => $date_color,
+		'margin-bottom' => $date_bottomspace . 'px',
+		'font-size'     => $date_fontsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--left .uagb-day-new.uagb-day-left'] = array(
-		'color' => $date_color,	
-		'margin-left' => $horizontal_space . 'px',   
-		'font-size' => $date_fontsize . 'px',   
+		'color'       => $date_color,
+		'margin-left' => $horizontal_space . 'px',
+		'font-size'   => $date_fontsize . 'px',
 	);
 
 	$selectors['.uagb-timeline--right .uagb-day-new.uagb-day-right'] = array(
-		'color' => $date_color,	
-		'margin-right' => $horizontal_space . 'px',   
-		'font-size' => $date_fontsize . 'px',   
+		'color'        => $date_color,
+		'margin-right' => $horizontal_space . 'px',
+		'font-size'    => $date_fontsize . 'px',
 	);
 
 	$selectors['.uagb-date-new'] = array(
-		'color' => $date_color,	
-		'font-size' => $date_fontsize . 'px',   
+		'color'     => $date_color,
+		'font-size' => $date_fontsize . 'px',
 	);
 
 	$selectors['.uagb-events-inner-new'] = array(
-		'border-radius' => $border_radius . 'px',   
-		'padding' => $bg_padding . 'px',   
+		'border-radius' => $border_radius . 'px',
+		'padding'       => $bg_padding . 'px',
 	);
 
 	$selectors['.uagb-timeline-main .timeline-icon-new'] = array(
-		'color' => $icon_color,	
-		'font-size' => $icon_size . 'px',   
+		'color'     => $icon_color,
+		'font-size' => $icon_size . 'px',
 	);
 
 	$selectors['.uagb-block-post-grid-author'] = array(
-		'margin-bottom'  => $author_space . 'px',
-		'color' => $author_color,	
-		'font-size' => $author_fontsize . 'px',   
+		'margin-bottom' => $author_space . 'px',
+		'color'         => $author_color,
+		'font-size'     => $author_fontsize . 'px',
 	);
 
 	$selectors['.uagb-timeline-field.animate-border:hover .uagb-timeline-marker'] = array(
-		'background' =>  $icon_bg_hover,	
-		'border-color' =>  $border_hover,	
+		'background'   => $icon_bg_hover,
+		'border-color' => $border_hover,
 	);
 
 	$selectors['.uagb-timeline-field.animate-border:hover .timeline-icon-new'] = array(
-		'color'=> $icon_hover,	
+		'color' => $icon_hover,
 	);
 
 	$selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon'] = array(
-		'background' => $icon_bg_Focus,	
-		'border-color' => $border_Focus,	
+		'background'   => $icon_bg_focus,
+		'border-color' => $border_focus,
 	);
 
 	$selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new'] = array(
-		'color' => $icon_Focus,	
+		'color' => $icon_focus,
 	);
 
 	// Responsive css.
 	$response_selector = array();
 	$response_selector['.uagb-timeline--center .uagb-timeline-marker'] = array(
-		'margin-left' => '0px',
-		'margin-right' => '0px',	
+		'margin-left'  => '0px',
+		'margin-right' => '0px',
 	);
 
-	$response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-left'] = array(
+	$response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-left']  = array(
 		'margin-left' => $horizontal_space . 'px',
 	);
 	$response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-right'] = array(
 		'margin-left' => $horizontal_space . 'px',
 	);
-	
+
 	$styling_css = '';
-	
+
 	foreach ( $selectors as $i => $selector ) {
 
-		if ( ( strpos( $i, 'uagb-timeline--center') !== false ) || ( strpos( $i, 'uagb-timeline--right') !== false ) ||  ( strpos( $i, 'uagb-timeline--left') !== false ) ) {
-		   $styling_css .= '.'.$tm_block_id.$i . ' { ';
-		}else{
-			$styling_css .= '.'.$tm_block_id.' '.$i . ' { ';
+		if ( ( strpos( $i, 'uagb-timeline--center' ) !== false ) || ( strpos( $i, 'uagb-timeline--right' ) !== false ) || ( strpos( $i, 'uagb-timeline--left' ) !== false ) ) {
+			$styling_css .= '.' . $tm_block_id . $i . ' { ';
+		} else {
+			$styling_css .= '.' . $tm_block_id . ' ' . $i . ' { ';
 		}
-		
-		$sel = $selectors[$i];
-        $css = '';
-        
-        foreach ( $sel as $j => $selector ) {
-        	$css .= $j . ': ' . $sel[$j] . ';';
-        }
 
-        $styling_css .= $css . ' } ';
+		$sel = $selectors[ $i ];
+		$css = '';
+
+		foreach ( $sel as $j => $selector ) {
+			$css .= $j . ': ' . $sel[ $j ] . ';';
+		}
+
+		$styling_css .= $css . ' } ';
 	}
 
 	// Responsive css.
-    $styling_css .= '@media(max-width:768px){'; 
-	
-    foreach ( $response_selector as $index => $response ) {
-    	
-    	$styling_css .= '.'.$tm_block_id.' '.$index . ' { ';	
+	$styling_css .= '@media(max-width:768px){';
 
-		$sel = $response_selector[$index];
-        
-        $css = '';
-        
-        foreach ( $sel as $j => $response ) {
-        	$css .= $j . ': ' . $sel[$j] . ';';
-        }
+	foreach ( $response_selector as $index => $response ) {
 
-        $styling_css .= $css . ' } ';
+		$styling_css .= '.' . $tm_block_id . ' ' . $index . ' { ';
+
+		$sel = $response_selector[ $index ];
+
+		$css = '';
+
+		foreach ( $sel as $j => $response ) {
+			$css .= $j . ': ' . $sel[ $j ] . ';';
+		}
+
+		$styling_css .= $css . ' } ';
 	}
 
 	$styling_css .= ' } ';
 
 	return $styling_css;
-	
+
 }
