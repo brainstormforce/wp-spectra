@@ -142,7 +142,7 @@ class UAGBcontentTimeline extends Component {
 				separatorFillColor,
 				separatorBg,
 				separatorBorder,
-				borderHover,
+				borderFocus,
 				headingTag,
 				headFontSize,
 				timelineItem,
@@ -171,8 +171,11 @@ class UAGBcontentTimeline extends Component {
 				borderRadius,
 				bgPadding,
 				tm_client_id,
-				iconHover,
-				iconBgHover
+				iconFocus,
+				iconBgFocus,
+                iconHover,
+                iconBgHover,
+                borderHover
 			},
 		} = this.props;		
 
@@ -211,7 +214,7 @@ class UAGBcontentTimeline extends Component {
                     />
                 </PanelColor>
                 <PanelColor
-                        title={ __( 'Icon Background Color' ) }
+                        title={ __( 'Background Color' ) }
                         colorValue={ separatorBg }
                         initialOpen={ false }
                     >
@@ -235,10 +238,10 @@ class UAGBcontentTimeline extends Component {
             </Fragment>
         );    
 
-        const iconHoverSettings = (
+        const iconFocusSettings = (
             <Fragment>
                 <PanelColor
-                        title={ __( 'Line Fill Color' ) }
+                        title={ __( 'Line Color' ) }
                         colorValue={ separatorFillColor }
                         initialOpen={ false }
                     >
@@ -249,30 +252,68 @@ class UAGBcontentTimeline extends Component {
                         />
                 </PanelColor>   
                 <PanelColor
-                        title={ __( 'Icon Hover Color' ) }
-                        colorValue={ iconHover }
+                        title={ __( 'Icon Color' ) }
+                        colorValue={ iconFocus }
                         initialOpen={ false }
                     >
                         <ColorPalette
-                            value={ iconHover }
-                            onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
+                            value={ iconFocus }
+                            onChange={ ( colorValue ) => setAttributes( { iconFocus: colorValue } ) }
                             allowReset
                         />
                     </PanelColor>
                 <PanelColor
-                        title={ __( 'Icon Background Hover Color' ) }
-                        colorValue={ iconBgHover }
+                        title={ __( 'Background Color' ) }
+                        colorValue={ iconBgFocus }
                         initialOpen={ false }
                     >
                         <ColorPalette
-                            value={ iconBgHover }
-                            onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
+                            value={ iconBgFocus }
+                            onChange={ ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ) }
                             allowReset
                         />
                 </PanelColor>
                 <PanelColor
-                        title={ __( 'Border Hover Color' ) }
-                        colorValue={ separatorBorder }
+                        title={ __( 'Border Color' ) }
+                        colorValue={ borderFocus }
+                        initialOpen={ false }
+                    >
+                    <ColorPalette
+                            value={ borderFocus }
+                            onChange={ ( colorValue ) => setAttributes( { borderFocus: colorValue } ) }
+                            allowReset
+                        />  
+                </PanelColor>       
+            </Fragment>
+        );   
+
+        const iconHoverSettings = (
+            <Fragment>                  
+                <PanelColor
+                        title={ __( 'Icon Color' ) }
+                        colorValue={ iconHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconFocus }
+                            onChange={ ( colorValue ) => setAttributes( { iconFocus: colorValue } ) }
+                            allowReset
+                        />
+                    </PanelColor>
+                <PanelColor
+                        title={ __( 'Background Color' ) }
+                        colorValue={ iconBgHover }
+                        initialOpen={ false }
+                    >
+                        <ColorPalette
+                            value={ iconBgFocus }
+                            onChange={ ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ) }
+                            allowReset
+                        />
+                </PanelColor>
+                <PanelColor
+                        title={ __( 'Border Color' ) }
+                        colorValue={ borderHover }
                         initialOpen={ false }
                     >
                     <ColorPalette
@@ -282,10 +323,14 @@ class UAGBcontentTimeline extends Component {
                         />  
                 </PanelColor>       
             </Fragment>
-        );           
+        );          
 
         const iconControls = (
-                <Fragment>               
+                <Fragment>
+                <PanelBody 
+                    title={ __( 'Connector Color Settings' ) }
+                    initialOpen={ true }
+                    >               
                     <TabPanel className="uagb-inspect-tabs uagb-no-ho-ac-tabs uagb-hover-tabs"
                         activeClass="active-tab"
                         tabs={ [
@@ -295,6 +340,11 @@ class UAGBcontentTimeline extends Component {
                                 className: 'uagb-normal-tab',
                             },
                             {
+                                name: 'focus',
+                                title: __( 'Focus' ),
+                                className: 'uagb-focus-tab',
+                            }, 
+                            {
                                 name: 'hover',
                                 title: __( 'Hover' ),
                                 className: 'uagb-hover-tab',
@@ -302,9 +352,10 @@ class UAGBcontentTimeline extends Component {
                         ] }>
                         {
                             ( tabName ) => {
-                                console.log(tabName.name);
                                 let tabout;
-                                if( 'hover' === tabName.name ) {
+                                if( 'focus' === tabName.name ) {
+                                    tabout = iconFocusSettings;
+                                }else if( 'hover' === tabName.name ){
                                     tabout = iconHoverSettings;
                                 }else {
                                     tabout = iconColorSettings;
@@ -312,7 +363,8 @@ class UAGBcontentTimeline extends Component {
                                 return <div>{ tabout }</div>;
                             }
                         }
-                    </TabPanel>                
+                    </TabPanel> 
+                </PanelBody>               
                 </Fragment>
                 );
 
@@ -526,7 +578,7 @@ class UAGBcontentTimeline extends Component {
                         allowReset
                     />
                     <RangeControl
-                        label={ __( 'Connector Background Size' ) }
+                        label={ __( 'Icon Background Size' ) }
                         value={ connectorBgsize }
                         onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
                         min={ 25 }
@@ -969,7 +1021,7 @@ registerBlockType( 'uagb/content-timeline', {
 			type : 'string',
 			default : '#eee',
 		},
-		borderHover : {
+		borderFocus : {
 			type : 'string',
 			default : '#5cb85c',
 		},
@@ -1017,11 +1069,11 @@ registerBlockType( 'uagb/content-timeline', {
 			type : 'string',
 			default : '#333',
 		},
-		iconHover : {
+		iconFocus : {
 			type : 'string',
 			default : '#fff',
 		},
-		iconBgHover : {
+		iconBgFocus : {
 			type : 'string',
 			default : '#61ce70',
 		},
@@ -1072,11 +1124,7 @@ registerBlockType( 'uagb/content-timeline', {
         tm_client_id  : {
             type : 'string',
             default : 'not_set',
-        },
-		icon : {
-			type : 'string',
-			default : 'fab fa fa-calendar-alt'
-		},
+        },		
 		borderRadius : {
 			type : 'number',
 			default : 2,
@@ -1088,7 +1136,23 @@ registerBlockType( 'uagb/content-timeline', {
 		iconSize : {
 			type : 'number',
 			default : 12,
-		},        
+		}, 
+        icon : {
+            type : 'string',
+            default : 'fab fa fa-calendar-alt'
+        },
+        iconHover : {
+            type : 'string',
+            default : ''
+        },
+        iconBgHover : {
+            type : 'string',
+            default : ''
+        },  
+        borderHover : {
+            type : 'string',
+            default : ''
+        },         
 	},
 	
 	edit: UAGBcontentTimeline,
@@ -1109,7 +1173,7 @@ registerBlockType( 'uagb/content-timeline', {
 			separatorFillColor,
 			separatorBg,
 			separatorBorder,
-			borderHover,
+			borderFocus,
 			headingTag,
 			headFontSize,
 			timelineItem,
@@ -1127,21 +1191,24 @@ registerBlockType( 'uagb/content-timeline', {
 			align,
 			order,
 			orderBy,
-			width,
-			icon,
-			iconColor,
+			width,			
 			authorColor,
 			dateColor,
 			dateFontsize,
 			authorFontsize,
-			iconSize,
 			tm_block_id,
 			borderRadius,
 			bgPadding,
 			tm_client_id,
-			iconHover,
-			iconBgHover,
-			className,
+            iconSize,  
+            icon,
+            iconColor,          
+			iconFocus,
+            borderHover,
+            iconBgHover,
+            iconHover,
+			iconBgFocus,
+			className,            
 		} = props.attributes;
 
 		/* Arrow position */

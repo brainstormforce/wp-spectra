@@ -18,6 +18,9 @@
   border-style: initial;
   outline: none; }
 
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * #.# Styles
  *
@@ -58,6 +61,9 @@
   border: 0px solid #a4afb7;
   border-style: initial;
   outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
 
 /**
  * #.# Styles
@@ -1095,6 +1101,9 @@
   border-style: initial;
   outline: none; }
 
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * Post grid styles
  * Loads on front end and back end
@@ -1459,6 +1468,9 @@
   border: 0px solid #a4afb7;
   border-style: initial;
   outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
 
 /**
  * #.# Styles

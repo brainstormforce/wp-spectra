@@ -18,6 +18,9 @@
   border-style: initial;
   outline: none; }
 
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * #.# Editor Styles
  *
@@ -43,6 +46,9 @@
   border: 0px solid #a4afb7;
   border-style: initial;
   outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
 
 /**
  * #.# Editor Styles
@@ -83,6 +89,9 @@
   border-style: initial;
   outline: none; }
 
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * Editor styles for the admin
  */
@@ -111,6 +120,9 @@
   border: 0px solid #a4afb7;
   border-style: initial;
   outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
 
 /**
  * #.# Editor Styles
@@ -2594,6 +2606,9 @@ i.fipicon-angle-left:before {
   border: 0px solid #a4afb7;
   border-style: initial;
   outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
 
 /**
  * #.# Editor Styles
