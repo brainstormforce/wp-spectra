@@ -7,7 +7,7 @@ import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
-//import { stringify } from 'querystringify';
+import times from 'lodash/times';
 
 //  Import CSS.
 import '../post-timeline/style.scss';
@@ -55,13 +55,32 @@ const {
 
 const el = wp.element.createElement;
 
-const item =[];
+const item = [];
+const date_arr = [];
+
 for (var i = 1; i <= 5; i++) {
     var title_heading_val = 'Timeline Heading '+i;
     var title_desc_val    = 'This is Timeline description, you can change me anytime click here ';
     var temp = [];
     var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
-    item.push(p);            
+    item.push(p);     
+
+    var today = new Date();
+    var dd = today.getDate();
+    var mm = today.getMonth()+1; //January is 0!
+    var yyyy = today.getFullYear();
+
+    if(dd<10) {
+        dd = '0'+dd
+    } 
+
+    if(mm<10) {
+        mm = '0'+mm
+    } 
+
+    today = mm + '/' + dd + '/' + yyyy;   
+    var p = { 'title' : today };
+    date_arr.push(p)
 }
 
 //Icon
@@ -78,6 +97,8 @@ class UAGBcontentTimeline extends Component {
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
 
         this.getTimelineicon = this.getTimelineicon.bind(this);
+
+        this.uagb_saveArrayUpdate = this.uagb_saveArrayUpdate.bind(this);
     }
 
     /**
@@ -119,6 +140,23 @@ class UAGBcontentTimeline extends Component {
         } 
         return this.props.attributes.tm_content;
     }    
+
+    uagb_saveArrayUpdate( value, index ) {
+        const { attributes, setAttributes } = this.props;
+        const { t_date } = attributes;
+
+        const newItems = t_date.map( ( item, thisIndex ) => {
+            if ( index === thisIndex ) {
+                item = { ...item, ...value };
+            }
+
+            return item;
+        } );
+
+        setAttributes( {
+            t_date: newItems,
+        } );
+    }
 
     render() {
 
@@ -175,7 +213,8 @@ class UAGBcontentTimeline extends Component {
                 iconBgFocus,
                 iconHover,
                 iconBgHover,
-                borderHover
+                borderHover,
+                t_date
             },
         } = this.props;     
 
@@ -368,6 +407,30 @@ class UAGBcontentTimeline extends Component {
                 </Fragment>
             );
 
+
+        const renderDateSettings = ( index ) => {
+            return (
+                <PanelBody
+                    title={ __( 'Date' ) + ' ' + ( index + 1 ) + ' ' + __( 'Settings' ) }
+                    initialOpen={ ( 1 === timelineItem ? true : false ) }
+                >                               
+                <TextControl
+                    label={ __( 'Date' ) }
+                    value= { t_date[ index ].title }
+                    onChange={ value => {
+                        this.uagb_saveArrayUpdate( { title: value }, index );
+                    } }
+                />
+                </PanelBody>
+            );
+        };
+
+        const renderSettings = (
+            <div>
+                { times( timelineItem, n => renderDateSettings( n ) ) }
+            </div>
+        );
+
         const content_control = (
             <InspectorControls>               
                 <PanelBody 
@@ -386,7 +449,8 @@ class UAGBcontentTimeline extends Component {
                         max={ 200 }
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />                                  
+                    /> 
+                    { renderSettings }                                 
                  </PanelBody>
                 <PanelBody 
                     title={ __( 'Layout' ) }
@@ -588,8 +652,10 @@ class UAGBcontentTimeline extends Component {
                     />                    
                 </PanelBody>
                 </InspectorControls>
-            );
+            );        
+
         
+
         /* Arrow position */
         var arrow_align_class  = 'uagb-timeline-arrow-top';
         if( arrowlinAlignment == 'center' ){
@@ -612,7 +678,7 @@ class UAGBcontentTimeline extends Component {
 
         return (        
             <Fragment>   
-            { content_control } 
+            { content_control }            
              <BlockControls>
                 <BlockAlignmentToolbar
                     value={ align }
@@ -1152,7 +1218,11 @@ registerBlockType( 'uagb/content-timeline', {
         borderHover : {
             type : 'string',
             default : ''
-        },         
+        },  
+        t_date : {
+            type: 'array',
+            default: date_arr,
+        }       
     },
     
     edit: UAGBcontentTimeline,
@@ -1208,7 +1278,8 @@ registerBlockType( 'uagb/content-timeline', {
             iconBgHover,
             iconHover,
             iconBgFocus,
-            className,            
+            className,
+            t_date,            
         } = props.attributes;
 
         /* Arrow position */
