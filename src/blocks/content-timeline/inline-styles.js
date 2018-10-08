@@ -11,7 +11,7 @@ function contentTimelineStyle( props ) {
             separatorFillColor,
             separatorBg,
             separatorBorder,
-            borderHover,            
+            borderFocus,            
             verticalSpace,
             horizontalSpace,
             separatorwidth,
@@ -27,9 +27,12 @@ function contentTimelineStyle( props ) {
             dateFontsize,
             dateColor,
             iconSize,
+            iconFocus,
+            iconBgFocus,
+            tm_client_id,
             iconHover,
             iconBgHover,
-            tm_client_id,
+            borderHover
         } = props.attributes;        
 
         if( props.clientId ){
@@ -149,8 +152,8 @@ function contentTimelineStyle( props ) {
                 };
 
             selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon'] = {
-                    'background' : iconBgHover,  
-                    'border-color': borderHover,    
+                    'background' : iconBgFocus,  
+                    'border-color': borderFocus,    
                 };
 
 
@@ -159,7 +162,7 @@ function contentTimelineStyle( props ) {
                 };
 
             selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new'] = {
-                    'color': iconHover,
+                    'color': iconFocus,
                 };
 
 

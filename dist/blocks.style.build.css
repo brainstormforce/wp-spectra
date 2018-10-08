@@ -4,6 +4,22 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 1px solid #a4afb7;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 1px solid #a4afb7;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * #.# Styles
  *
@@ -31,6 +47,22 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 1px solid #a4afb7;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 1px solid #a4afb7;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * #.# Styles
  *
@@ -1053,6 +1085,22 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 1px solid #a4afb7;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 1px solid #a4afb7;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * Post grid styles
  * Loads on front end and back end
@@ -1404,6 +1452,22 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-inspect-tabs .components-tab-panel__tabs button {
+  border: 1px solid #a4afb7;
+  padding: 10px; }
+
+.uagb-inspect-tabs .active-tab {
+  background-color: #a4afb7;
+  color: #fff;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+  border: 1px solid #a4afb7;
+  outline: none; }
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+  margin-top: 15px; }
+
 /**
  * #.# Styles
  *

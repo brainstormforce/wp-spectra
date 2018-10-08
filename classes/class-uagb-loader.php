@@ -80,7 +80,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			require( UAGB_DIR . 'classes/class-uagb-core-plugin.php' );
 
-			require_once UAGB_DIR . 'dist/blocks/timeline/index.php';
+			require_once UAGB_DIR . 'dist/blocks/post-timeline/index.php';
 
 			require_once UAGB_DIR . 'dist/blocks/post/index.php';
 
