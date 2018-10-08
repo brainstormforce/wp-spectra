@@ -64,11 +64,11 @@ for (var i = 1; i <= 5; i++) {
     var temp = [];
     var p = { 'time_heading' : title_heading_val,'time_desc':title_desc_val };
     item.push(p);     
-
+    var j = i - 1;
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
-    var yyyy = today.getFullYear();
+    var yyyy = today.getFullYear()+j;
 
     if(dd<10) {
         dd = '0'+dd
@@ -426,9 +426,9 @@ class UAGBcontentTimeline extends Component {
         };
 
         const renderSettings = (
-            <div>
+            <Fragment>
                 { times( timelineItem, n => renderDateSettings( n ) ) }
-            </div>
+            </Fragment>
         );
 
         const content_control = (
