@@ -64,16 +64,12 @@ class UAGBAdvancedHeading extends Component {
 
 		return (
 			<Fragment>
-				isSelected && (
 				<BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
 				</BlockControls>
-				)
-
-				isSelected && (
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Typography" ) }
@@ -200,8 +196,6 @@ class UAGBAdvancedHeading extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				)
-
 				<div className={ className }>
 					<RichText
 						tagName={ headingTag }
