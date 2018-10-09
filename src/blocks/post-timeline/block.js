@@ -731,7 +731,7 @@ class UAGBTimeline extends Component {
                         value={ dateFontsize }
                         onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
                         min={ 1 }
-                        max={ 10 }
+                        max={ 50 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />
