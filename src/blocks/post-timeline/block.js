@@ -7,8 +7,7 @@ import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
-//import { stringify } from 'querystringify';
-import UAGBIcon from "../uagb-controlls/UAGBIcon";
+import UAGBIcon from "../uagb-controls/UAGBIcon";
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 
 // Import css for timeline.
@@ -769,8 +768,7 @@ class UAGBTimeline extends Component {
                         setAttributes( { align: value } );
                     } }
                     controls={ [ 'center', 'left','right' ] }
-                />
-                {/*<Toolbar controls={ layoutControls } />*/}
+                />                
             </BlockControls>
                 <div className={ className } >                     
                     <div className = { tl_class }>

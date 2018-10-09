@@ -4,7 +4,6 @@
 
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
-import pickBy from 'lodash/pickBy';
 import moment from 'moment';
 import classnames from 'classnames';
 import times from 'lodash/times';
@@ -13,7 +12,7 @@ import times from 'lodash/times';
 import '../post-timeline/style.scss';
 import './editor.scss';
 
-import UAGBIcon from "../uagb-controlls/UAGBIcon";
+import UAGBIcon from "../uagb-controls/UAGBIcon";
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker';
 
 // Import css for timeline.
@@ -44,7 +43,6 @@ const {
     PanelColor,
     SelectControl,
     Placeholder,
-    QueryControls,
     RangeControl,
     Spinner,
     TextControl,
@@ -98,7 +96,7 @@ class UAGBcontentTimeline extends Component {
 
         this.getTimelineicon = this.getTimelineicon.bind(this);
 
-        this.uagb_saveArrayUpdate = this.uagb_saveArrayUpdate.bind(this);
+        this.savedateArray = this.savedateArray.bind(this);
 
         this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this );
     }
@@ -153,7 +151,7 @@ class UAGBcontentTimeline extends Component {
         return this.props.attributes.tm_content;
     }    
 
-    uagb_saveArrayUpdate( value, index ) {
+    savedateArray( value, index ) {
         const { attributes, setAttributes } = this.props;
         const { t_date } = attributes;
 
@@ -172,7 +170,7 @@ class UAGBcontentTimeline extends Component {
 
     render() {
 
-        // Setup the attributes
+        // Setup the attributes.
         const {
             isSelected,
             className,
@@ -428,7 +426,7 @@ class UAGBcontentTimeline extends Component {
                     label= { __( 'Date' ) + ' ' + ( index + 1 ) + ' ' + __( 'Settings' ) }
                     value= { t_date[ index ].title }
                     onChange={ value => {
-                        this.uagb_saveArrayUpdate( { title: value }, index );
+                        this.savedateArray( { title: value }, index );
                     } }
                 />
                 </Fragment>
@@ -766,21 +764,21 @@ class UAGBcontentTimeline extends Component {
         this.props.setAttributes( { tm_client_id: this.props.clientId } );
 
         var id = this.props.clientId;
-        window.addEventListener("load", this.uagbTimelineContent_back(id));
-        window.addEventListener("resize", this.uagbTimelineContent_back(id));
+        window.addEventListener("load", this.timelineContent_back(id));
+        window.addEventListener("resize", this.timelineContent_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {            
-            time.uagbTimelineContent_back(id);            
+            time.timelineContent_back(id);            
         });
     }  
 
     componentDidUpdate(){
         var id = this.props.clientId;
-        window.addEventListener("load", this.uagbTimelineContent_back(id));
-        window.addEventListener("resize", this.uagbTimelineContent_back(id));
+        window.addEventListener("load", this.timelineContent_back(id));
+        window.addEventListener("resize", this.timelineContent_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {             
-            time.uagbTimelineContent_back(id);
+            time.timelineContent_back(id);
         });
     }
 
@@ -950,7 +948,7 @@ class UAGBcontentTimeline extends Component {
     }
 
     /*  Js for timeline line and inner line filler*/
-    uagbTimelineContent_back(id){
+    timelineContent_back(id){
         var timeline            = $('.uagb-timeline').parents('#block-'+id);
         var tm_item             = timeline.find('.uagb-timeline');
         var line_inner          = timeline.find(".uagb-timeline__line__inner");
