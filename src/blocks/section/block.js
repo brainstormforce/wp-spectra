@@ -178,6 +178,7 @@ registerBlockType( "uagb/section", {
 		const { attributes, setAttributes } = props
 
 		const {
+			align,
 			className,
 			padding,
 			content_width,
@@ -248,6 +249,12 @@ registerBlockType( "uagb/section", {
 
 		return (
 			<Fragment>
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => setAttributes( { align: value } ) }
+					/>
+				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
 						<SelectControl

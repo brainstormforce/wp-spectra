@@ -64,16 +64,12 @@ class UAGBAdvancedHeading extends Component {
 
 		return (
 			<Fragment>
-				isSelected && (
 				<BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
 				</BlockControls>
-				)
-
-				isSelected && (
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Typography" ) }
@@ -200,8 +196,6 @@ class UAGBAdvancedHeading extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				)
-
 				<div className={ className }>
 					<RichText
 						tagName={ headingTag }
@@ -254,7 +248,7 @@ class UAGBAdvancedHeading extends Component {
 registerBlockType( "uagb/advanced-heading", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "Advanced Heading - UAGB" ), // Block title.
+	title: __( "UAGB - Advanced Heading" ), // Block title.
 	description: __( "Add Advanced Heading block." ), // Block description.
 	icon: "editor-textcolor", // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
