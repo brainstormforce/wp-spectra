@@ -873,10 +873,10 @@ class UAGBcontentTimeline extends Component {
                                             <i className = {icon_class}></i>
                                         </div>
                                         
-                                        <div className = {day_align_class}>
+                                        <div className = {day_align_class} >
                                             <div className="uagb-events-new" style = {{textAlign:align}}>
                                                 <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
+                                                    <div className="uagb-timeline-date-hide uagb-date-inner" style = {{textAlign:align}}>                                                                
                                                         { displayPostDate && t_date[index].title &&
                                                             <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'inner-date-new' }>
                                                                 { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
@@ -931,13 +931,14 @@ class UAGBcontentTimeline extends Component {
                                             </div>
                                         </div>
 
-                                        <div className = "uagb-timeline-date-new">                                                                                                   
+                                        { display_inner_date && <div className = "uagb-timeline-date-new">                                                                                                   
                                             { t_date[index].title &&
                                                 <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-date-new' }>
                                                     { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
                                                 </div>
                                             } 
                                         </div>
+                                        }
                                     </div>
                                 </article>
                             );
@@ -1335,7 +1336,7 @@ registerBlockType( 'uagb/content-timeline', {
             borderRadius,
             bgPadding,
             tm_client_id,
-            iconSize,  
+            iconSize,
             icon,
             iconColor,          
             iconFocus,
@@ -1420,10 +1421,10 @@ registerBlockType( 'uagb/content-timeline', {
                                                         <div className = {day_align_class}>
                                                             <div className="uagb-events-new" style = {{textAlign:align}}>
                                                                 <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                                    <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
-                                                                        { post.date_gmt &&
-                                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
-                                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                                    <div className="uagb-timeline-date-hide uagb-date-inner" style = {{textAlign:align}}>                                                                
+                                                                        { t_date[index].title &&
+                                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'inner-date-new' }>
+                                                                                { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
                                                                             </div>
                                                                         }  
                                                                     </div>
@@ -1465,13 +1466,14 @@ registerBlockType( 'uagb/content-timeline', {
                                                             </div>
                                                         </div>
 
-                                                        <div className = "uagb-timeline-date-new">                                                                                                   
-                                                            { post.date_gmt &&
-                                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
-                                                                    { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+                                                        { display_inner_date && <div className = "uagb-timeline-date-new">                                                                                                   
+                                                            { t_date[index].title &&
+                                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-date-new' }>
+                                                                    { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
                                                                 </div>
                                                             } 
-                                                        </div>
+                                                            </div>
+                                                        }
                                                     </div>
                                                 </article>
                                             );
