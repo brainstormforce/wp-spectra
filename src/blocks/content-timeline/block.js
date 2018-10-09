@@ -93,6 +93,8 @@ class UAGBcontentTimeline extends Component {
 
         // Get initial timeline content.
         this.getTimelinecontent = this.getTimelinecontent.bind(this);
+        
+        this.getDatecontent = this.getDatecontent.bind(this);
 
         this.getTimelineicon = this.getTimelineicon.bind(this);
 
@@ -149,6 +151,52 @@ class UAGBcontentTimeline extends Component {
             setAttributes({tm_content:data_copy});  
         } 
         return this.props.attributes.tm_content;
+    }  
+
+    getDatecontent(value) {  
+             
+        const { timelineItem, t_date } = this.props.attributes;
+        const { setAttributes } = this.props;       
+       
+        var item_number = value; 
+        let data_copy     = [ ...t_date ];
+        let data_length = data_copy.length;
+
+        if( item_number < data_length ){
+            var diff = data_length - item_number;
+            let data_new = data_copy;
+            
+            for( var i= 0; i < diff; i++ ){             
+                data_new.pop();
+            }           
+            setAttributes({t_date:data_new});
+
+        }
+
+        if( item_number > data_length ){
+            var diff = item_number - data_length;
+            
+            var today = new Date();
+            var dd = today.getDate();
+            var mm = today.getMonth()+1;
+            
+            if(dd<10) {
+                dd = '0'+dd
+            } 
+            if(mm<10) {
+                mm = '0'+mm
+            } 
+                         
+            for( var i= 0; i < diff; i++ ){
+                var array_length = data_length + i;               
+                var yyyy = today.getFullYear() - array_length;
+                today = mm + '/' + dd + '/' + yyyy; 
+                data_copy[array_length] = { 'title' : today };
+            }
+            setAttributes({t_date:data_copy});    
+        }
+
+        return this.props.attributes.t_date;
     }    
 
     savedateArray( value, index ) {
@@ -496,6 +544,7 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => {
                             setAttributes( { timelineItem: value } );
                             this.getTimelinecontent(value);
+                            this.getDatecontent(value);
                             }
                         }
                         min={ 1 }
