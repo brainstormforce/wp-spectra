@@ -6,6 +6,7 @@
 function inlineStyles( props ) {
 
 	const {
+		align,
 		content_width,
 		leftPadding,
 		rightPadding,
@@ -42,20 +43,31 @@ function inlineStyles( props ) {
 		marginTop: topMargin + "px",
 		marginBottom: bottomMargin + "px",
 		marginLeft: leftMargin + "px",
-		marginRight: rightMargin + "px"
+		marginRight: rightMargin + "px",
+	}
+
+	if ( 'right' == align ) {
+		style["marginLeft"] = "auto"
+	} else if ( 'left' == align ) {
+		style["marginRight"] = "auto"
+	} else if ( 'center' == align ) {
+		style["marginRight"] = "auto"
+		style["marginLeft"] = "auto"
 	}
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	var section_width = width
+	var section_width = width + "px"
 
 	if ( "boxed" == content_width ) {
 		if ( "" != width ) {
-			section_width = width
+			section_width = width + "px"
 		}
 	} else {
 		section_width = "100%"
 	}
+
+	style["width"] = section_width
 
 	if ( "color" === backgroundType ) {
 
