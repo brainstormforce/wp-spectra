@@ -211,16 +211,6 @@ registerBlockType( "uagb/section", {
 			backgroundVideoOpacity
 		} = attributes
 
-		var section_width = width
-
-		if ( "boxed" == content_width ) {
-			if ( "" != width ) {
-				section_width = width
-			}
-		} else {
-			section_width = "100%"
-		}
-
 		const CustomTag = `${tag}`
 
 		const onSelectImage = ( media ) => {
@@ -590,7 +580,7 @@ registerBlockType( "uagb/section", {
 						"uagb-section__wrap",
 						...backgroundOptionsClasses( props ),
 					) }
-					style={{ ...inlineStyles( props ) }}
+					style={{ ...inlineStyles( props, true ) }}
 				>
 					{ "video" == backgroundType &&
 
@@ -646,7 +636,7 @@ registerBlockType( "uagb/section", {
 					"uagb-section__wrap",
 					...backgroundOptionsClasses( props ),
 				) }
-				style={{ ...inlineStyles( props ) }}
+				style={{ ...inlineStyles( props, false ) }}
 			>
 				{ "video" == backgroundType &&
 

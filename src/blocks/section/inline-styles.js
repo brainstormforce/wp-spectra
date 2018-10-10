@@ -3,7 +3,7 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
-function inlineStyles( props ) {
+function inlineStyles( props, isEditor ) {
 
 	const {
 		align,
@@ -67,7 +67,14 @@ function inlineStyles( props ) {
 		section_width = "100%"
 	}
 
-	style["width"] = section_width
+	if ( isEditor ) {
+
+		style["maxWidth"] = section_width
+	} else {
+
+		style["width"] = section_width
+	}
+
 
 	if ( "color" === backgroundType ) {
 
