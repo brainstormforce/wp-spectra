@@ -7,7 +7,7 @@ function inlineStyles( props, isEditor ) {
 
 	const {
 		align,
-		content_width,
+		contentWidth,
 		leftPadding,
 		rightPadding,
 		topPadding,
@@ -36,30 +36,34 @@ function inlineStyles( props, isEditor ) {
 	} = props.attributes
 
 	var style = {
-		paddingTop: topPadding + "px",
-		paddingBottom: bottomPadding + "px",
-		paddingLeft: leftPadding + "px",
-		paddingRight: rightPadding + "px",
-		marginTop: topMargin + "px",
-		marginBottom: bottomMargin + "px",
-		marginLeft: leftMargin + "px",
-		marginRight: rightMargin + "px",
+		'padding-top': topPadding + 'px',
+		'padding-bottom': bottomPadding + 'px',
+		'padding-left': leftPadding + 'px',
+		'padding-right': rightPadding + 'px',
 	}
 
 	if ( 'right' == align ) {
-		style["marginLeft"] = "auto"
+		style["margin-left"] = "auto"
+		style["margin-top:"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-right"] =  rightMargin + "px"
 	} else if ( 'left' == align ) {
-		style["marginRight"] = "auto"
+		style["margin-right"] = "auto"
+		style["margin-top:"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-left"] =  leftMargin + "px"
 	} else if ( 'center' == align ) {
-		style["marginRight"] = "auto"
-		style["marginLeft"] = "auto"
+		style["margin-right"] = "auto"
+		style["margin-left"] = "auto"
+		style["margin-top:"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
 	}
 
 	var position = backgroundPosition.replace( "-", " " )
 
 	var section_width = width + "px"
 
-	if ( "boxed" == content_width ) {
+	if ( "boxed" == contentWidth ) {
 		if ( "" != width ) {
 			section_width = width + "px"
 		}
@@ -69,7 +73,7 @@ function inlineStyles( props, isEditor ) {
 
 	if ( isEditor ) {
 
-		style["maxWidth"] = section_width
+		style["max-width"] = section_width
 	} else {
 
 		style["width"] = section_width
@@ -78,25 +82,25 @@ function inlineStyles( props, isEditor ) {
 
 	if ( "color" === backgroundType ) {
 
-		style["backgroundColor"] = backgroundColor
+		style["background-color"] = backgroundColor
 
 	} else if ( "image" === backgroundType ) {
 
-		style["backgroundImage"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
-		style["backgroundPosition"] = position
-		style["backgroundAttachment"] = backgroundAttachment
-		style["backgroundRepeat"] = backgroundRepeat
-		style["backgroundSize"] = backgroundSize
+		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
+		style["background-position"] = position
+		style["background-attachment"] = backgroundAttachment
+		style["background-repeat"] = backgroundRepeat
+		style["background-size"] = backgroundSize
 
 	} else if ( "gradient" === backgroundType ) {
-		style["backgroundColor"] = "transparent"
+		style["background-color"] = "transparent"
 
 		if ( "linear" === gradientType ) {
 
-			style["backgroundImage"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		} else {
 
-			style["backgroundImage"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 	}
 
