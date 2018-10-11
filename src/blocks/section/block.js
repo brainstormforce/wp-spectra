@@ -8,7 +8,6 @@ import classnames from "classnames"
 import "./style.scss"
 import "./editor.scss"
 import attributes from './attributes';
-import save from './save';
 import edit from './edit';
 import inlineStyles from "./inline-styles"
 
@@ -61,9 +60,6 @@ registerBlockType( "uagb/section", {
 			block_id,
 			tag,
 			backgroundType,
-			backgroundVideoColor,
-			backgroundOpacity,
-			backgroundVideoOpacity,
 			backgroundVideo,
 			className
 		} = props.attributes
