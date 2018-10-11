@@ -42,7 +42,20 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$this->define_constants();
 
+			$this->loader();
+
 			add_action( 'plugins_loaded', array( $this, 'load_plugin' ) );
+		}
+
+		/**
+		 * Loads Other files.
+		 *
+		 * @since 1.0.0
+		 *
+		 * @return void
+		 */
+		public function loader() {
+			require( UAGB_DIR . 'classes/class-uagb-helper.php' );
 		}
 
 		/**
@@ -139,6 +152,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 				load_plugin_textdomain( 'ultimate-addons-for-gutenberg', false, $lang_dir );
 			}
 		}
+
 		/**
 		 * Fires admin notice when Gutenberg is not installed and activated.
 		 *
