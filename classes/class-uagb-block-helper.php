@@ -80,7 +80,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'image' === $bg_type ) {
 
-				$style['background-image']      = ( isset( $attr->backgroundImage ) ) ? "url('" . $attr->backgroundImage->url . "' })" : null;
+				$style['background-image']      = ( isset( $attr->backgroundImage ) ) ? "url('" . $attr->backgroundImage->url . "' )" : null;
 				$style['background-position']   = $position;
 				$style['background-attachment'] = $attr->backgroundAttachment;
 				$style['background-repeat']     = $attr->backgroundRepeat;
