@@ -17,6 +17,7 @@ const { __ } = wp.i18n
 // Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
+	createBlock
 } = wp.blocks
 
 const {
@@ -39,6 +40,12 @@ const { Component, Fragment } = wp.element
 
 class UAGBAdvancedHeading extends Component {
 
+	constructor() {
+		super( ...arguments );
+
+		this.splitBlock = this.splitBlock.bind( this );
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -50,6 +57,36 @@ class UAGBAdvancedHeading extends Component {
 		document.head.appendChild( $style )
 	}
 
+	splitBlock( before, after, ...blocks ) {
+		const {
+			attributes,
+			insertBlocksAfter,
+			setAttributes,
+			onReplace,
+		} = this.props;
+
+		if ( after ) {
+			// Append "After" content as a new paragraph block to the end of
+			// any other blocks being inserted after the current paragraph.
+			blocks.push( createBlock( 'core/paragraph', { content: after } ) );
+		}
+
+		if ( blocks.length && insertBlocksAfter ) {
+			insertBlocksAfter( blocks );
+		}
+
+		const { content } = attributes;
+		if ( ! before ) {
+			// If before content is omitted, treat as intent to delete block.
+			onReplace( [] );
+		} else if ( content !== before ) {
+			// Only update content if it has in-fact changed. In case that user
+			// has created a new paragraph at end of an existing one, the value
+			// of before will be strictly equal to the current content.
+			setAttributes( { content: before } );
+		}
+	}
+
 	render() {
 
 		// Setup the attributes
@@ -57,6 +94,9 @@ class UAGBAdvancedHeading extends Component {
 			isSelected,
 			className,
 			setAttributes,
+			insertBlocksAfter,
+			mergeBlocks,
+			onReplace,
 			attributes: {
 				headingTitle,
 				headingDesc,
@@ -222,7 +262,21 @@ class UAGBAdvancedHeading extends Component {
 						placeholder={ __( "Write a Heading" ) }
 						value={ headingTitle }
 						className='uagb-heading-text'
+						multiline={ false }
 						onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
+						onMerge={ mergeBlocks }
+						onSplit={
+							insertBlocksAfter ?
+								( before, after, ...blocks ) => {
+									setAttributes( { content: before } );
+									insertBlocksAfter( [
+										...blocks,
+										createBlock( 'core/paragraph', { content: after } ),
+									] );
+								} :
+								undefined
+						}
+						onRemove={ () => onReplace( [] ) }
 					/>
 					<div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
 					<RichText
@@ -231,6 +285,9 @@ class UAGBAdvancedHeading extends Component {
 						value={ headingDesc }
 						className='uagb-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
+						onMerge={ mergeBlocks }
+						onSplit={ this.splitBlock }
+						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>
 			</Fragment>
@@ -338,13 +395,11 @@ registerBlockType( "uagb/advanced-heading", {
 			headingTag,
 		} = props.attributes
 
+		const CustomTag = `${headingTag}`
+
 		return (
 			<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
-				<RichText.Content
-					tagName={ headingTag }
-					value={ headingTitle }
-					className='uagb-heading-text'
-				/>
+				<CustomTag className='uagb-heading-text'>{ headingTitle }</CustomTag>
 				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
 				<p className="uagb-desc-text">{ headingDesc }</p>
 			</div>
