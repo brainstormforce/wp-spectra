@@ -111,6 +111,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/advanced-heading':
+					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

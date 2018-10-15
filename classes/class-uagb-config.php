@@ -31,9 +31,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 			if ( null === self::$block_attributes ) {
 
 				self::$block_attributes = array(
-					'uagb/section' => array(
+					'uagb/section'          => array(
 						'slug'       => '',
-						'title'      => __( 'Advanced Heading', 'uagb' ),
+						'title'      => __( 'Section', 'uagb' ),
 						'attributes' => array(
 							'topPadding'             => '20',
 							'bottomPadding'          => '20',
@@ -63,6 +63,26 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'backgroundOpacity'      => '0',
 							'backgroundVideoOpacity' => '50',
 							'align'                  => '',
+						),
+					),
+					'uagb/advanced-heading' => array(
+						'slug'       => '',
+						'title'      => __( 'Advanced Heading', 'uagb' ),
+						'attributes' => array(
+							'headingTitle'    => '',
+							'headingDesc'     => '',
+							'headingAlign'    => 'center',
+							'headingColor'    => '',
+							'subHeadingColor' => '',
+							'separatorColor'  => '',
+							'headingTag'      => 'h1',
+							'separatorHeight' => '',
+							'separatorWidth'  => '',
+							'headFontSize'    => '',
+							'subHeadFontSize' => '',
+							'headSpace'       => '',
+							'separatorSpace'  => '',
+							'subHeadSpace'    => '',
 						),
 					),
 				);

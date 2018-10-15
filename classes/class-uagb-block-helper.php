@@ -133,5 +133,52 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return UAGB_Helper::generate_css( $selectors, '#uagb-section-' . $id );
 		}
+
+		/**
+		 * Get Advanced Heading Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_adv_heading_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				' .uagb-heading-text'        => array(
+					'text-align' => $attr->headingAlign,
+					'font-size' => $attr->headFontSize . "px",
+					'color' => $attr->headingColor,
+					'margin-bottom' => $attr->headSpace . "px",
+				),
+				' .uagb-separator-wrap' => array(
+					'text-align' => $attr->headingAlign,
+				),
+				' .uagb-separator' => array(
+					'border-top-width' => $attr->separatorHeight . "px",
+					'width' => $attr->separatorWidth . "%",
+					'border-color' => $attr->separatorColor,
+					'margin-bottom' => $attr->separatorSpace . "px",
+				),
+				' .uagb-desc-text' => array(
+					'text-align' => $attr->headingAlign,
+					'font-size' => $attr->subHeadFontSize . "px",
+					'color' => $attr->subHeadingColor,
+					'margin-bottom' => $attr->subHeadSpace . "px",
+				)
+
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
+		}
+
 	}
 }

@@ -4,6 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
+import styling from "./styling"
 
 //  Import CSS.
 import "./style.scss"
@@ -37,6 +38,18 @@ const {
 const { Component, Fragment } = wp.element
 
 class UAGBAdvancedHeading extends Component {
+
+	componentDidMount() {
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId )
+		document.head.appendChild( $style )
+	}
+
 	render() {
 
 		// Setup the attributes
@@ -61,6 +74,13 @@ class UAGBAdvancedHeading extends Component {
 				subHeadSpace,
 			},
 		} = this.props
+
+		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId )
+
+		if( null != element && 'undefined' != typeof element ) {
+			element.innerHTML = styling( this.props );
+		}
+
 
 		return (
 			<Fragment>
@@ -196,36 +216,21 @@ class UAGBAdvancedHeading extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ className }>
+				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
 					<RichText
 						tagName={ headingTag }
 						placeholder={ __( "Write a Heading" ) }
 						value={ headingTitle }
 						className='uagb-heading-text'
 						onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
-						style={{
-							textAlign: headingAlign,
-							fontSize: headFontSize + "px",
-							color: headingColor,
-							marginBottom: headSpace + "px",
-						}}
 					/>
-					<div
-						className="uagb-separator-wrap"
-						style={{ textAlign: headingAlign }}
-					><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + "px", width: separatorWidth + "%", borderColor: separatorColor, marginBottom: separatorSpace + "px", }}></div></div>
+					<div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
 					<RichText
 						tagName="p"
 						placeholder={ __( "Write a Description" ) }
 						value={ headingDesc }
 						className='uagb-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
-						style={{
-							textAlign: headingAlign,
-							fontSize: subHeadFontSize + "px",
-							color: subHeadingColor,
-							marginBottom: subHeadSpace + "px",
-						}}
 					/>
 				</div>
 			</Fragment>
@@ -258,6 +263,9 @@ registerBlockType( "uagb/advanced-heading", {
 	category: "formatting",
 
 	attributes: {
+		block_id: {
+			type: "string"
+		},
 		headingTitle: {
 			type: "string",
 		},
@@ -324,37 +332,21 @@ registerBlockType( "uagb/advanced-heading", {
 	save: function( props ) {
 
 		const {
+			block_id,
 			headingTitle,
 			headingDesc,
-			headingAlign,
-			headingColor,
-			subHeadingColor,
-			separatorColor,
 			headingTag,
-			separatorWidth,
-			separatorHeight,
-			headFontSize,
-			subHeadFontSize,
-			headSpace,
-			separatorSpace,
-			subHeadSpace,
 		} = props.attributes
 
 		return (
-			<div className={ props.className }>
+			<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
 				<RichText.Content
 					tagName={ headingTag }
 					value={ headingTitle }
 					className='uagb-heading-text'
-					style={{
-						textAlign: headingAlign,
-						fontSize: headFontSize + "px",
-						color: headingColor,
-						marginBottom: headSpace + "px",
-					}}
 				/>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + "px", width: separatorWidth + "%", borderColor: separatorColor, marginBottom: separatorSpace + "px", }}></div></div>
-				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + "px", color: subHeadingColor, marginBottom: subHeadSpace + "px", }}>{ headingDesc }</p>
+				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
+				<p className="uagb-desc-text">{ headingDesc }</p>
 			</div>
 		)
 	}
