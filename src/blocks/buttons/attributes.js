@@ -30,10 +30,10 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 }
 
 const attributes = {
-	"block_id": {
+	block_id: {
 		type: "string"
 	},
-	"align": {
+	align: {
 		type: "string",
 		default: "center"
 	},
