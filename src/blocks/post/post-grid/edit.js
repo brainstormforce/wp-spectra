@@ -424,7 +424,7 @@ export default withSelect( ( select, props ) => {
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,		
-	}, ( value ) => ! isUndefined( value ) );
+	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
 	}

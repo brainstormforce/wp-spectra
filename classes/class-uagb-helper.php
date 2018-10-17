@@ -64,6 +64,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$styling_css = '';
 
+			if ( empty( $selectors ) ) {
+				return;
+			}
+
 			foreach ( $selectors as $key => $value ) {
 
 				$styling_css .= $id;
@@ -80,6 +84,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $styling_css;
+		}
+
+		/**
+		 * Parse CSS into correct CSS syntax.
+		 *
+		 * @param string $query Media Query string.
+		 * @param array  $selectors The block selectors.
+		 * @param string $id The selector ID.
+		 * @since 0.0.1
+		 */
+		public static function generate_responsive_css( $query, $selectors, $id ) {
+
+			$css  = $query . ' { ';
+			$css .= self::generate_css( $selectors, $id );
+			$css .= ' } ';
+
+			return $css;
 		}
 
 		/**
@@ -113,6 +134,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/advanced-heading':
 					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/buttons':
+					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
 				default:
@@ -165,6 +190,41 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				</style>
 				<?php
 			}
+		}
+
+		/**
+		 * Get Buttons default array.
+		 *
+		 * @since 0.0.1
+		 */
+		public static function get_button_defaults() {
+
+			$default = array();
+
+			for ( $i = 1; $i <= 2; $i++ ) {
+				array_push(
+					$default,
+					array(
+						'label'        => '#' . $i . ' Click Here',
+						'link'         => '#',
+						'target'       => '_blank',
+						'size'         => '',
+						'vPadding'     => 10,
+						'hPadding'     => 10,
+						'borderWidth'  => 1,
+						'borderRadius' => 2,
+						'borderStyle'  => 'solid',
+						'borderColor'  => '#333',
+						'borderHColor' => '#333',
+						'color'        => '#333',
+						'background'   => '',
+						'hColor'       => '#333',
+						'hBackground'  => '',
+					)
+				);
+			}
+
+			return $default;
 		}
 	}
 

@@ -36,23 +36,23 @@ function inlineStyles( props, isEditor ) {
 	} = props.attributes
 
 	var style = {
-		'padding-top': topPadding + 'px',
-		'padding-bottom': bottomPadding + 'px',
-		'padding-left': leftPadding + 'px',
-		'padding-right': rightPadding + 'px',
+		"padding-top": topPadding + "px",
+		"padding-bottom": bottomPadding + "px",
+		"padding-left": leftPadding + "px",
+		"padding-right": rightPadding + "px",
 	}
 
-	if ( 'right' == align ) {
+	if ( "right" == align ) {
 		style["margin-left"] = "auto"
 		style["margin-top"] = topMargin + "px"
 		style["margin-bottom"] =  bottomMargin + "px"
 		style["margin-right"] =  rightMargin + "px"
-	} else if ( 'left' == align ) {
+	} else if ( "left" == align ) {
 		style["margin-right"] = "auto"
 		style["margin-top"] = topMargin + "px"
 		style["margin-bottom"] =  bottomMargin + "px"
 		style["margin-left"] =  leftMargin + "px"
-	} else if ( 'center' == align ) {
+	} else if ( "center" == align ) {
 		style["margin-right"] = "auto"
 		style["margin-left"] = "auto"
 		style["margin-top"] = topMargin + "px"

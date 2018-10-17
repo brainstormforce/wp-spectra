@@ -85,6 +85,18 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'subHeadSpace'    => '',
 						),
 					),
+					'uagb/buttons'          => array(
+						'slug'       => '',
+						'title'      => __( 'Multi Buttons', 'uagb' ),
+						'attributes' => array(
+							'block_id'  => '',
+							'align'     => 'center',
+							'btn_count' => '',
+							'buttons'   => UAGB_Helper::get_button_defaults(),
+							'gap'       => 10,
+							'stack'     => 'none',
+						),
+					),
 				);
 			}
 
