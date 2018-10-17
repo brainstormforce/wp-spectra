@@ -115,6 +115,6 @@ const attributes = {
 	backgroundVideoColor: {
 		type: "string",
 	},
-};
+}
 
-export default attributes;
+export default attributes

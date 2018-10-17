@@ -41,9 +41,9 @@ const { Component, Fragment } = wp.element
 class UAGBAdvancedHeading extends Component {
 
 	constructor() {
-		super( ...arguments );
+		super( ...arguments )
 
-		this.splitBlock = this.splitBlock.bind( this );
+		this.splitBlock = this.splitBlock.bind( this )
 	}
 
 	componentDidMount() {
@@ -63,27 +63,27 @@ class UAGBAdvancedHeading extends Component {
 			insertBlocksAfter,
 			setAttributes,
 			onReplace,
-		} = this.props;
+		} = this.props
 
 		if ( after ) {
 			// Append "After" content as a new paragraph block to the end of
 			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( 'core/paragraph', { content: after } ) );
+			blocks.push( createBlock( "core/paragraph", { content: after } ) )
 		}
 
 		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks );
+			insertBlocksAfter( blocks )
 		}
 
-		const { content } = attributes;
+		const { content } = attributes
 		if ( ! before ) {
 			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] );
+			onReplace( [] )
 		} else if ( content !== before ) {
 			// Only update content if it has in-fact changed. In case that user
 			// has created a new paragraph at end of an existing one, the value
 			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } );
+			setAttributes( { content: before } )
 		}
 	}
 
@@ -117,8 +117,8 @@ class UAGBAdvancedHeading extends Component {
 
 		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId )
 
-		if( null != element && 'undefined' != typeof element ) {
-			element.innerHTML = styling( this.props );
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
 		}
 
 
@@ -268,11 +268,11 @@ class UAGBAdvancedHeading extends Component {
 						onSplit={
 							insertBlocksAfter ?
 								( before, after, ...blocks ) => {
-									setAttributes( { content: before } );
+									setAttributes( { content: before } )
 									insertBlocksAfter( [
 										...blocks,
-										createBlock( 'core/paragraph', { content: after } ),
-									] );
+										createBlock( "core/paragraph", { content: after } ),
+									] )
 								} :
 								undefined
 						}

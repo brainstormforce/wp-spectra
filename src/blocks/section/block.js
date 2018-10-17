@@ -7,8 +7,8 @@ import classnames from "classnames"
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
-import attributes from './attributes';
-import edit from './edit';
+import attributes from "./attributes"
+import edit from "./edit"
 import inlineStyles from "./inline-styles"
 
 
@@ -47,8 +47,8 @@ registerBlockType( "uagb/section", {
 	],
 	attributes,
 	getEditWrapperProps( { blockAlignment } ) {
-		if ( 'full' === blockAlignment || 'wide' === blockAlignment || 'center' === blockAlignment ) {
-			return { 'data-align': blockAlignment };
+		if ( "full" === blockAlignment || "wide" === blockAlignment || "center" === blockAlignment ) {
+			return { "data-align": blockAlignment }
 		}
 	},
 	edit,

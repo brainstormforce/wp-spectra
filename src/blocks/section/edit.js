@@ -3,7 +3,7 @@
  */
 
 // Import classes
-import classnames from 'classnames';
+import classnames from "classnames"
 import styling from "./styling"
 
 const { __ } = wp.i18n
@@ -11,7 +11,7 @@ const { __ } = wp.i18n
 const {
 	Component,
 	Fragment,
-} = wp.element;
+} = wp.element
 
 const {
 	AlignmentToolbar,
@@ -63,7 +63,7 @@ class UAGBSectionEdit extends Component {
 		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
-		setAttributes( { backgroundImage: null } );
+		setAttributes( { backgroundImage: null } )
 	}
 
 	/*
@@ -74,10 +74,10 @@ class UAGBSectionEdit extends Component {
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundImage: null } );
-			return;
+			setAttributes( { backgroundImage: null } )
+			return
 		}
-		setAttributes( { backgroundImage: media } );
+		setAttributes( { backgroundImage: media } )
 	}
 
 	/*
@@ -87,7 +87,7 @@ class UAGBSectionEdit extends Component {
 		const { backgroundVideo } = this.props.attributes
 		const { setAttributes } = this.props
 
-		setAttributes( { backgroundVideo: null } );
+		setAttributes( { backgroundVideo: null } )
 	}
 
 	/*
@@ -98,10 +98,10 @@ class UAGBSectionEdit extends Component {
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundVideo: null } );
-			return;
+			setAttributes( { backgroundVideo: null } )
+			return
 		}
-		setAttributes( { backgroundVideo: media } );
+		setAttributes( { backgroundVideo: media } )
 	}
 
 	render() {
@@ -147,8 +147,8 @@ class UAGBSectionEdit extends Component {
 
 		var element = document.getElementById( "uagb-style-" + this.props.clientId )
 
-		if( null != element && 'undefined' != typeof element ) {
-			element.innerHTML = styling( this.props );
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
 		}
 
 
@@ -158,9 +158,9 @@ class UAGBSectionEdit extends Component {
 					<BlockAlignmentToolbar
 						value={ align }
 						onChange={ ( value ) => {
-							setAttributes( { align: value } );
+							setAttributes( { align: value } )
 						} }
-						controls={ [ 'left','center','right' ] }
+						controls={ [ "left","center","right" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
@@ -527,4 +527,4 @@ class UAGBSectionEdit extends Component {
 	}
 }
 
-export default UAGBSectionEdit;
+export default UAGBSectionEdit
