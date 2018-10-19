@@ -8,6 +8,7 @@ function styling( props ) {
 
 	const {
 		headingAlign,
+		headingTag,
 		headFontSize,
 		headingColor,
 		headSpace,
@@ -21,12 +22,6 @@ function styling( props ) {
 	} = props.attributes
 
 	var selectors = {
-		" .uagb-heading-text" : {
-			"text-align": headingAlign,
-			"font-size": headFontSize + "px",
-			"color": headingColor,
-			"margin-bottom": headSpace + "px",
-		},
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,
 		},
@@ -42,6 +37,13 @@ function styling( props ) {
 			"color": subHeadingColor,
 			"margin-bottom": subHeadSpace + "px",
 		}
+	}
+
+	selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+		"text-align": headingAlign,
+		"font-size": headFontSize + "px",
+		"color": headingColor,
+		"margin-bottom": headSpace + "px",
 	}
 
 	var styling_css = ""

@@ -324,13 +324,13 @@ registerBlockType( "uagb/advanced-heading", {
 			type: "string"
 		},
 		headingTitle: {
-			source: 'html',
-			selector: 'h1,h2,h3,h4,h5,h6',
+			source: "html",
+			selector: "h1,h2,h3,h4,h5,h6",
 		},
 		headingDesc: {
-			source: 'html',
-			selector: 'p',
-			default: '',
+			source: "html",
+			selector: "p",
+			default: "",
 		},
 		headingAlign: {
 			type: "string",
@@ -374,46 +374,46 @@ registerBlockType( "uagb/advanced-heading", {
 	transforms: {
 		from: [
 			{
-				type: 'block',
-				blocks: [ 'core/paragraph' ],
+				type: "block",
+				blocks: [ "core/paragraph" ],
 				transform: ( { content } ) => {
-					console.log(content);
-					return createBlock( 'uagb/advanced-heading', {
+					console.log(content)
+					return createBlock( "uagb/advanced-heading", {
 						headingDesc: content,
-					} );
+					} )
 				},
 			},
 			{
-				type: 'block',
-				blocks: [ 'core/heading' ],
+				type: "block",
+				blocks: [ "core/heading" ],
 				transform: ( { content } ) => {
-					console.log(content);
-					return createBlock( 'uagb/advanced-heading', {
+					console.log(content)
+					return createBlock( "uagb/advanced-heading", {
 						headingTitle: content,
-						headingTag: 'h3',
-					} );
+						headingTag: "h3",
+					} )
 				},
 			},
 		],
 		to: [
 			{
-				type: 'block',
-				blocks: [ 'core/paragraph' ],
+				type: "block",
+				blocks: [ "core/paragraph" ],
 				transform: ( { content } ) => {
-					console.log(content);
-					return createBlock( 'core/paragraph', {
+					console.log(content)
+					return createBlock( "core/paragraph", {
 						content,
-					} );
+					} )
 				},
 			},
 			{
-				type: 'block',
-				blocks: [ 'core/heading' ],
+				type: "block",
+				blocks: [ "core/heading" ],
 				transform: ( { content } ) => {
-					console.log(content);
-					return createBlock( 'core/heading', {
+					console.log(content)
+					return createBlock( "core/heading", {
 						content: content,
-					} );
+					} )
 				},
 			},
 		],
