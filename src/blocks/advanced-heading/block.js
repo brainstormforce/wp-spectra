@@ -324,10 +324,15 @@ registerBlockType( "uagb/advanced-heading", {
 			type: "string"
 		},
 		headingTitle: {
-			type: "string",
+			type: "array",
+			source: "children",
+			selector: "h1,h2,h3,h4,h5,h6",
 		},
 		headingDesc: {
-			type: "string",
+			type: "array",
+			source: "children",
+			selector: "p",
+			default: [],
 		},
 		headingAlign: {
 			type: "string",
@@ -368,6 +373,53 @@ registerBlockType( "uagb/advanced-heading", {
 			type: "number",
 		},
 	},
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					console.log(content);
+					return createBlock( 'uagb/advanced-heading', {
+						headingDesc: content,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/heading' ],
+				transform: ( { content } ) => {
+					console.log(content);
+					return createBlock( 'uagb/advanced-heading', {
+						headingTitle: content,
+						headingTag: 'h3',
+					} );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					console.log(content);
+					return createBlock( 'core/paragraph', {
+						content,
+					} );
+				},
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/heading' ],
+				transform: ( { content } ) => {
+					console.log(content);
+					return createBlock( 'core/heading', {
+						content: content,
+					} );
+				},
+			},
+		],
+	},
 	/**
 	 * The edit function describes the structure of your block in the context of the editor.
 	 * This represents what the editor will render when the block is used.
@@ -395,13 +447,19 @@ registerBlockType( "uagb/advanced-heading", {
 			headingTag,
 		} = props.attributes
 
-		const CustomTag = `${headingTag}`
-
 		return (
 			<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
-				<CustomTag className='uagb-heading-text'>{ headingTitle }</CustomTag>
-				<div className="uagb-separator-wrap"><div className="uagb-separator"></div></div>
-				<p className="uagb-desc-text">{ headingDesc }</p>
+				<RichText.Content
+					tagName={ headingTag }
+					value={ headingTitle }
+					className='uagb-heading-text'
+				/>
+				<div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
+				<RichText.Content
+					tagName="p"
+					value={ headingDesc }
+					className='uagb-desc-text'
+				/>
 			</div>
 		)
 	}
