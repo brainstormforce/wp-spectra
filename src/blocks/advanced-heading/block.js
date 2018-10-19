@@ -324,15 +324,13 @@ registerBlockType( "uagb/advanced-heading", {
 			type: "string"
 		},
 		headingTitle: {
-			type: "array",
-			source: "children",
-			selector: "h1,h2,h3,h4,h5,h6",
+			source: 'html',
+			selector: 'h1,h2,h3,h4,h5,h6',
 		},
 		headingDesc: {
-			type: "array",
-			source: "children",
-			selector: "p",
-			default: [],
+			source: 'html',
+			selector: 'p',
+			default: '',
 		},
 		headingAlign: {
 			type: "string",

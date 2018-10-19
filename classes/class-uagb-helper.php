@@ -113,17 +113,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// @codingStandardsIgnoreStart
 
-			$name = $block->blockName;
+			$block = ( array ) $block;
+
+			$name = $block['blockName'];
 			$css  = '';
 
 			if( ! isset( $name ) ) {
 				return;
 			}
 
-			if ( isset( $block->attrs ) && is_object( $block->attrs ) ) {
-				$blockattr = $block->attrs;
-				if ( isset( $blockattr->block_id ) ) {
-					$block_id = $blockattr->block_id;
+			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
+				$blockattr = $block['attrs'];
+				if ( isset( $blockattr['block_id'] ) ) {
+					$block_id = $blockattr['block_id'];
 				}
 			}
 
@@ -145,8 +147,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					break;
 			}
 
-			if ( isset( $block->innerBlocks ) && ! empty( $block->innerBlocks ) && is_array( $block->innerBlocks ) ) {
-				foreach ( $block->innerBlocks as $j => $inner_block ) {
+			if ( isset( $block['innerBlocks'] ) ) {
+				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 					$css .= $this->get_block_css( $inner_block );
 				}
 			}
@@ -181,7 +183,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				<style type="text/css" media="all" id="uagb-style-frontend">
 				<?php
 				foreach ( $blocks as $i => $block ) {
-					if ( is_object( $block ) ) {
+					if ( is_array( $block ) ) {
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}

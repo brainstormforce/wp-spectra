@@ -26,48 +26,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/section']['attributes'];
 
-			$attr = (object) array_merge( $defaults, (array) $attr );
+			$attr = array_merge( $defaults, $attr );
 
-			$bg_type = ( isset( $attr->backgroundType ) ) ? $attr->backgroundType : 'none';
+			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
 			$style = array(
-				'padding-top'    => $attr->topPadding . 'px',
-				'padding-bottom' => $attr->bottomPadding . 'px',
-				'padding-left'   => $attr->leftPadding . 'px',
-				'padding-right'  => $attr->rightPadding . 'px',
+				'padding-top'    => $attr['topPadding'] . 'px',
+				'padding-bottom' => $attr['bottomPadding'] . 'px',
+				'padding-left'   => $attr['leftPadding'] . 'px',
+				'padding-right'  => $attr['rightPadding'] . 'px',
 			);
 
-			if ( 'right' == $attr->align ) {
-				$style['margin-right']  = $attr->rightMargin . 'px';
+			if ( 'right' == $attr['align'] ) {
+				$style['margin-right']  = $attr['rightMargin'] . 'px';
 				$style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr->topMargin . 'px';
-				$style['margin-bottom'] = $attr->bottomMargin . 'px';
-			} elseif ( 'left' == $attr->align ) {
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'left' == $attr['align'] ) {
 				$style['margin-right']  = 'auto';
-				$style['margin-left']   = $attr->leftMargin . 'px';
-				$style['margin-top']    = $attr->topMargin . 'px';
-				$style['margin-bottom'] = $attr->bottomMargin . 'px';
-			} elseif ( 'center' == $attr->align ) {
+				$style['margin-left']   = $attr['leftMargin'] . 'px';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'center' == $attr['align'] ) {
 				$style['margin-right']  = 'auto';
 				$style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr->topMargin . 'px';
-				$style['margin-bottom'] = $attr->bottomMargin . 'px';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			} else {
-				$style['margin-right']  = $attr->rightMargin . 'px';
-				$style['margin-left']   = $attr->leftMargin . 'px';
-				$style['margin-top']    = $attr->topMargin . 'px';
-				$style['margin-bottom'] = $attr->bottomMargin . 'px';
+				$style['margin-right']  = $attr['rightMargin'] . 'px';
+				$style['margin-left']   = $attr['leftMargin'] . 'px';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			}
 
-			$position = str_replace( '-', ' ', $attr->backgroundPosition );
+			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 			$section_width = '100%';
 
-			if ( isset( $attr->contentWidth ) ) {
+			if ( isset( $attr['contentWidth'] ) ) {
 
-				if ( 'boxed' == $attr->contentWidth ) {
-					if ( isset( $attr->width ) ) {
-						$section_width = $attr->width . 'px';
+				if ( 'boxed' == $attr['contentWidth'] ) {
+					if ( isset( $attr['width'] ) ) {
+						$section_width = $attr['width'] . 'px';
 					}
 				}
 			}
@@ -76,34 +76,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'color' === $bg_type ) {
 
-				$style['background-color'] = $attr->backgroundColor;
+				$style['background-color'] = $attr['backgroundColor'];
 
 			} elseif ( 'image' === $bg_type ) {
 
-				$style['background-image']      = ( isset( $attr->backgroundImage ) ) ? "url('" . $attr->backgroundImage->url . "' )" : null;
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
 				$style['background-position']   = $position;
-				$style['background-attachment'] = $attr->backgroundAttachment;
-				$style['background-repeat']     = $attr->backgroundRepeat;
-				$style['background-size']       = $attr->backgroundSize;
+				$style['background-attachment'] = $attr['backgroundAttachment'];
+				$style['background-repeat']     = $attr['backgroundRepeat'];
+				$style['background-size']       = $attr['backgroundSize'];
 
 			} elseif ( 'gradient' === $bg_type ) {
 				$style['background-color'] = 'transparent';
 
-				if ( 'linear' === $attr->gradientType ) {
+				if ( 'linear' === $attr['gradientType'] ) {
 
-					$style['background-image'] = 'linear-gradient(' . $attr->gradientAngle . 'deg, ' . $attr->gradientColor1 . ' ' . $attr->gradientLocation1 . '%, ' . $attr->gradientColor2 . ' ' . $attr->gradientLocation2 . '%)';
+					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 				} else {
 
-					$style['background-image'] = 'radial-gradient( at center center, ' . $attr->gradientColor1 . ' ' . $attr->gradientLocation1 . '%, ' . $attr->gradientColor2 . ' ' . $attr->gradientLocation2 . '%)';
+					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 				}
 			}
 
 			$inner_width = '100%';
 
-			if ( isset( $attr->contentWidth ) ) {
-				if ( 'boxed' != $attr->contentWidth ) {
-					if ( isset( $attr->innerWidth ) ) {
-						$inner_width = $attr->innerWidth . 'px';
+			if ( isset( $attr['contentWidth'] ) ) {
+				if ( 'boxed' != $attr['contentWidth'] ) {
+					if ( isset( $attr['innerWidth'] ) ) {
+						$inner_width = $attr['innerWidth'] . 'px';
 					}
 				}
 			}
@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				'.uagb-section__wrap'        => $style,
 				' .uagb-section__video-wrap' => array(
-					'opacity' => ( isset( $attr->backgroundVideoOpacity ) && '' != $attr->backgroundVideoOpacity ) ? ( ( 100 - $attr->backgroundVideoOpacity ) / 100 ) : 0.5,
+					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
 				' .uagb-section__inner-wrap' => array(
 					'width' => $inner_width,
@@ -121,11 +121,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'video' == $bg_type ) {
 				$selectors[' .uagb-section__overlay'] = array(
 					'opacity'          => 1,
-					'background-color' => $attr->backgroundVideoColor,
+					'background-color' => $attr['backgroundVideoColor'],
 				);
 			} else {
 				$selectors[' .uagb-section__overlay'] = array(
-					'opacity' => ( isset( $attr->backgroundOpacity ) && '' != $attr->backgroundOpacity ) ? $attr->backgroundOpacity / 100 : 0,
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 				);
 			}
 
@@ -148,29 +148,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
 
-			$attr = (object) array_merge( $defaults, (array) $attr );
+			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = array(
 				' .uagb-heading-text'        => array(
-					'text-align' => $attr->headingAlign,
-					'font-size' => $attr->headFontSize . "px",
-					'color' => $attr->headingColor,
-					'margin-bottom' => $attr->headSpace . "px",
+					'text-align' => $attr['headingAlign'],
+					'font-size' => $attr['headFontSize'] . "px",
+					'color' => $attr['headingColor'],
+					'margin-bottom' => $attr['headSpace'] . "px",
 				),
 				' .uagb-separator-wrap' => array(
-					'text-align' => $attr->headingAlign,
+					'text-align' => $attr['headingAlign'],
 				),
 				' .uagb-separator' => array(
-					'border-top-width' => $attr->separatorHeight . "px",
-					'width' => $attr->separatorWidth . "%",
-					'border-color' => $attr->separatorColor,
-					'margin-bottom' => $attr->separatorSpace . "px",
+					'border-top-width' => $attr['separatorHeight'] . "px",
+					'width' => $attr['separatorWidth'] . "%",
+					'border-color' => $attr['separatorColor'],
+					'margin-bottom' => $attr['separatorSpace'] . "px",
 				),
 				' .uagb-desc-text' => array(
-					'text-align' => $attr->headingAlign,
-					'font-size' => $attr->subHeadFontSize . "px",
-					'color' => $attr->subHeadingColor,
-					'margin-bottom' => $attr->subHeadSpace . "px",
+					'text-align' => $attr['headingAlign'],
+					'font-size' => $attr['subHeadFontSize'] . "px",
+					'color' => $attr['subHeadingColor'],
+					'margin-bottom' => $attr['subHeadSpace'] . "px",
 				)
 
 			);
@@ -194,17 +194,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
 
-			$attr = (object) array_merge( $defaults, (array) $attr );
+			$attr = array_merge( $defaults, (array) $attr );
 
-			$alignment = ( $attr->align == 'left' ) ? 'flex-start' : ( ( $attr->align == 'right' ) ? 'flex-end' : 'center' );
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
 
 			$m_selectors = array();
 			$t_selectors = array();
 
 			$selectors = array(
 				' .uagb-button__wrapper' => array(
-					'margin-left' => (  $attr->gap/2 ) . 'px',
-					'margin-right' => (  $attr->gap/2 ) . 'px'
+					'margin-left' => (  $attr['gap']/2 ) . 'px',
+					'margin-right' => (  $attr['gap']/2 ) . 'px'
 				),
 				' .uagb-button__wrapper:first-child' => array (
 					'margin-left' => 0
@@ -220,40 +220,40 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
-			foreach ( $attr->buttons as $key => $button ) {
+			foreach ( $attr['buttons'] as $key => $button ) {
 
-				if ( $attr->btn_count <= $key ) {
+				if ( $attr['btn_count'] <= $key ) {
 					break;
 				}
 
 				$selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button->size . 'px',
-					'border' => $button->borderWidth . 'px ' . $button->borderStyle . ' ' . $button->borderColor,
-					'border-radius'  => $button->borderRadius . 'px',
-					'background' => $button->background
+					'font-size'  => $button['size'] . 'px',
+					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderColor'],
+					'border-radius'  => $button['borderRadius'] . 'px',
+					'background' => $button['background']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover'] = array (
-					'background' => $button->hBackground,
-					'border' => $button->borderWidth . 'px ' . $button->borderStyle . ' ' . $button->borderHColor,
+					'background' => $button['hBackground'],
+					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderHColor'],
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ' a.uagb-button__link'] = array (
-					'padding'  => $button->vPadding . 'px ' . $button->hPadding . 'px',
-					'color' => $button->color
+					'padding'  => $button['vPadding'] . 'px ' . $button['hPadding'] . 'px',
+					'color' => $button['color']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover a.uagb-button__link'] = array (
-					'color' => $button->hColor
+					'color' => $button['hColor']
 				);
 			}
 
-			if ( "desktop" == $attr->stack ) {
+			if ( "desktop" == $attr['stack'] ) {
 
 				$selectors[" .uagb-button__wrapper"] = array (
 					'margin-left' => 0,
 					'margin-right' => 0,
-					"margin-bottom" => $attr->gap . "px"
+					"margin-bottom" => $attr['gap'] . "px"
 				);
 
 				$selectors[" .uagb-buttons__wrap"] = array (
@@ -264,12 +264,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => 0
 				);
 
-			} else if ( "tablet" == $attr->stack ) {
+			} else if ( "tablet" == $attr['stack'] ) {
 
 				$t_selectors[" .uagb-button__wrapper"] = array (
 					'margin-left' => 0,
 					'margin-right' => 0,
-					"margin-bottom" => $attr->gap . "px"
+					"margin-bottom" => $attr['gap'] . "px"
 				);
 
 				$t_selectors[" .uagb-buttons__wrap"] = array (
@@ -280,12 +280,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => 0
 				);
 
-			} else if ( "mobile" == $attr->stack ) {
+			} else if ( "mobile" == $attr['stack'] ) {
 
 				$m_selectors[" .uagb-button__wrapper"] = array (
 					'margin-left' => 0,
 					'margin-right' => 0,
-					"margin-bottom" => $attr->gap . "px"
+					"margin-bottom" => $attr['gap'] . "px"
 				);
 
 				$m_selectors[" .uagb-buttons__wrap"] = array (
