@@ -100,11 +100,11 @@
     ]
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.0",
-    "eslint": "^5.6.1",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.7.0",
     "eslint-config-wordpress": "^2.0.0",
-    "eslint-plugin-jest": "^21.24.1",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-jest": "^21.25.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-wordpress": "^0.1.0",
     "react-masonry-component": "^6.2.1",

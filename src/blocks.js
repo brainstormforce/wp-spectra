@@ -10,10 +10,10 @@
  */
 
 import "./blocks/advanced-heading/block.js"
-//import './blocks/post-timeline/index.js';
 import "./blocks/post/block.js"
-//import './blocks/content-timeline/block.js';
 import "./blocks/section/block.js"
 import "./blocks/buttons/block.js"
+import "./blocks/info-box/block.js"
 import "./blocks/google-map/block.js"
-
+//import './blocks/post-timeline/index.js';
+//import './blocks/content-timeline/block.js';

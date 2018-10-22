@@ -146,6 +146,14 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Common Editor style.
+		wp_enqueue_style(
+			'uagb-block-common-editor-css', // Handle.
+			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
+			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 }
