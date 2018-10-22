@@ -15,5 +15,6 @@ import "./blocks/section/block.js"
 import "./blocks/buttons/block.js"
 import "./blocks/info-box/block.js"
 import "./blocks/google-map/block.js"
+import "./blocks/team/block.js"
 //import './blocks/post-timeline/index.js';
 //import './blocks/content-timeline/block.js';
