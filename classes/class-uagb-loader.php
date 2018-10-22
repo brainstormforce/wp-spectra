@@ -97,6 +97,8 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			require_once UAGB_DIR . 'dist/blocks/post/index.php';
 
+			require_once UAGB_DIR . 'dist/blocks/google-map/index.php';
+
 		}
 
 		/**
