@@ -138,6 +138,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/info-box':
+					$css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/buttons':
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;

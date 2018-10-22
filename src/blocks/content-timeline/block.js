@@ -4,16 +4,15 @@
 
 import get from "lodash/get"
 import isUndefined from "lodash/isUndefined"
-import pickBy from "lodash/pickBy"
 import moment from "moment"
 import classnames from "classnames"
-//import { stringify } from 'querystringify';
+import times from "lodash/times"
 
 //  Import CSS.
 import "../post-timeline/style.scss"
 import "./editor.scss"
 
-import UAGBIcon from "../uagb-controlls/UAGBIcon"
+import UAGBIcon from "../uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 
 // Import css for timeline.
@@ -44,7 +43,6 @@ const {
 	PanelColor,
 	SelectControl,
 	Placeholder,
-	QueryControls,
 	RangeControl,
 	Spinner,
 	TextControl,
@@ -55,13 +53,32 @@ const {
 
 const el = wp.element.createElement
 
-const item =[]
+const item = []
+const date_arr = []
+
 for (var i = 1; i <= 5; i++) {
 	var title_heading_val = "Timeline Heading "+i
 	var title_desc_val    = "This is Timeline description, you can change me anytime click here "
 	var temp = []
 	var p = { "time_heading" : title_heading_val,"time_desc":title_desc_val }
-	item.push(p)            
+	item.push(p)     
+	var j = i - 1
+	var today = new Date()
+	var dd = today.getDate()
+	var mm = today.getMonth()+1 //January is 0!
+	var yyyy = today.getFullYear()-j
+
+	if(dd<10) {
+		dd = "0"+dd
+	} 
+
+	if(mm<10) {
+		mm = "0"+mm
+	} 
+
+	today = mm + "/" + dd + "/" + yyyy   
+	var p = { "title" : today }
+	date_arr.push(p)
 }
 
 //Icon
@@ -78,6 +95,20 @@ class UAGBcontentTimeline extends Component {
 		this.getTimelinecontent = this.getTimelinecontent.bind(this)
 
 		this.getTimelineicon = this.getTimelineicon.bind(this)
+
+		this.savedateArray = this.savedateArray.bind(this)
+
+		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
+	}
+
+	/**
+     * Function Name: toggleDisplayPostDate.
+     */
+	toggleDisplayPostDate() {
+		const { displayPostDate } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { displayPostDate: ! displayPostDate } )
 	}
 
 	/**
@@ -120,9 +151,26 @@ class UAGBcontentTimeline extends Component {
 		return this.props.attributes.tm_content
 	}    
 
+	savedateArray( value, index ) {
+		const { attributes, setAttributes } = this.props
+		const { t_date } = attributes
+
+		const newItems = t_date.map( ( item, thisIndex ) => {
+			if ( index === thisIndex ) {
+				item = { ...item, ...value }
+			}
+
+			return item
+		} )
+
+		setAttributes( {
+			t_date: newItems,
+		} )
+	}
+
 	render() {
 
-		// Setup the attributes
+		// Setup the attributes.
 		const {
 			isSelected,
 			className,
@@ -175,7 +223,9 @@ class UAGBcontentTimeline extends Component {
 				iconBgFocus,
 				iconHover,
 				iconBgHover,
-				borderHover
+				borderHover,
+				t_date,
+				displayPostDate
 			},
 		} = this.props     
 
@@ -368,6 +418,72 @@ class UAGBcontentTimeline extends Component {
 			</Fragment>
 		)
 
+
+		const renderDateSettings = ( index ) => {
+			return (
+				<Fragment key = {index} >                            
+					<TextControl
+						label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+						value= { t_date[ index ].title }
+						onChange={ value => {
+							this.savedateArray( { title: value }, index )
+						} }
+					/>
+				</Fragment>
+			)
+		}
+
+		const renderSettings = (
+			<Fragment>
+				<PanelBody 
+					title={ __( "Date Settings" ) }
+					initialOpen={ false }
+				>
+					<ToggleControl
+						label={ __( "Display Post Date" ) }
+						checked={ displayPostDate }
+						onChange={ this.toggleDisplayPostDate }
+					/>
+                
+					{ displayPostDate && times( timelineItem, n => renderDateSettings( n ) ) }
+
+					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
+						label={ __( "Date Bottom Spacing" ) }
+						value={ dateBottomspace }
+						onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					}
+
+					{ displayPostDate &&  <Fragment><PanelColor
+						title={ __( "Date Color" ) }
+						colorValue={ dateColor }
+						initialOpen={ false }
+					>
+						<ColorPalette
+							value={ dateColor }
+							onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelColor> 
+					<RangeControl
+						label={ __( "Date Font Size" ) }
+						value={ dateFontsize }
+						onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+						min={ 1 }
+						max={ 100 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>  
+					</Fragment>                 
+					}                
+				</PanelBody>     
+			</Fragment>
+		)
+
 		const content_control = (
 			<InspectorControls>               
 				<PanelBody 
@@ -386,8 +502,11 @@ class UAGBcontentTimeline extends Component {
 						max={ 200 }
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>                                  
+					/>                                                     
 				</PanelBody>
+
+				{ renderSettings } 
+
 				<PanelBody 
 					title={ __( "Layout" ) }
 					initialOpen={ false }
@@ -588,8 +707,10 @@ class UAGBcontentTimeline extends Component {
 					/>                    
 				</PanelBody>
 			</InspectorControls>
-		)
+		)        
+
         
+
 		/* Arrow position */
 		var arrow_align_class  = "uagb-timeline-arrow-top"
 		if( arrowlinAlignment == "center" ){
@@ -612,7 +733,7 @@ class UAGBcontentTimeline extends Component {
 
 		return (        
 			<Fragment>   
-				{ content_control } 
+				{ content_control }            
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -643,21 +764,21 @@ class UAGBcontentTimeline extends Component {
 		this.props.setAttributes( { tm_client_id: this.props.clientId } )
 
 		var id = this.props.clientId
-		window.addEventListener("load", this.uagbTimelineContent_back(id))
-		window.addEventListener("resize", this.uagbTimelineContent_back(id))
+		window.addEventListener("load", this.timelineContent_back(id))
+		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
 		$(".edit-post-layout__content").scroll( function(event) {            
-			time.uagbTimelineContent_back(id)            
+			time.timelineContent_back(id)            
 		})
 	}  
 
 	componentDidUpdate(){
 		var id = this.props.clientId
-		window.addEventListener("load", this.uagbTimelineContent_back(id))
-		window.addEventListener("resize", this.uagbTimelineContent_back(id))
+		window.addEventListener("load", this.timelineContent_back(id))
+		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
 		$(".edit-post-layout__content").scroll( function(event) {             
-			time.uagbTimelineContent_back(id)
+			time.timelineContent_back(id)
 		})
 	}
 
@@ -676,9 +797,11 @@ class UAGBcontentTimeline extends Component {
 			backgroundColor,
 			timelinAlignment,
 			arrowlinAlignment,
+			displayPostDate,
 			icon,
 			align,
-			tm_content
+			tm_content,
+			t_date
 		} = attributes
 
 		var align_class        = "",
@@ -688,6 +811,7 @@ class UAGBcontentTimeline extends Component {
 		var back_style = contentTimelineStyle( this.props )         
          
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
+		const hasDate = Array.isArray( t_date ) && t_date.length
 
 		if ( ! hasItems ) {
             
@@ -737,7 +861,7 @@ class UAGBcontentTimeline extends Component {
 							}   
 							const Tag = this.props.attributes.headingTag  
 							var icon_class = "timeline-icon-new out-view-timeline-icon "+icon  
-                            
+
 							return (
 								<article className = "uagb-timeline-field animate-border"  key={index}>
 									<div className = {content_align_class}> 
@@ -746,13 +870,13 @@ class UAGBcontentTimeline extends Component {
 											<i className = {icon_class}></i>
 										</div>
                                         
-										<div className = {day_align_class}>
+										<div className = {day_align_class} >
 											<div className="uagb-events-new" style = {{textAlign:align}}>
 												<div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-													<div className="uagb-timeline-date-hide uagb-date-inner">                                                                
-														{ post.date_gmt &&
-                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ "inner-date-new" }>
-                                                            	{ moment( post.date_gmt ).local().format( "MMMM DD, Y" ) }
+													<div className="uagb-timeline-date-hide uagb-date-inner" style = {{textAlign:align}}>                                                                
+														{ displayPostDate && t_date[index].title &&
+                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "inner-date-new" }>
+                                                            	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
                                                             </div>
 														}  
 													</div>
@@ -804,13 +928,14 @@ class UAGBcontentTimeline extends Component {
 											</div>
 										</div>
 
-										<div className = "uagb-timeline-date-new">                                                                                                   
-											{ post.date_gmt &&
-                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ "uagb-date-new" }>
-                                                	{ moment( post.date_gmt ).local().format( "MMMM DD, Y" ) }
+										{ display_inner_date && <div className = "uagb-timeline-date-new">                                                                                                   
+											{ displayPostDate && t_date[index].title &&
+                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-date-new" }>
+                                                	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
                                                 </div>
 											} 
 										</div>
+										}
 									</div>
 								</article>
 							)
@@ -823,7 +948,7 @@ class UAGBcontentTimeline extends Component {
 	}
 
 	/*  Js for timeline line and inner line filler*/
-	uagbTimelineContent_back(id){
+	timelineContent_back(id){
 		var timeline            = $(".uagb-timeline").parents("#block-"+id)
 		var tm_item             = timeline.find(".uagb-timeline")
 		var line_inner          = timeline.find(".uagb-timeline__line__inner")
@@ -1152,7 +1277,15 @@ registerBlockType( "uagb/content-timeline", {
 		borderHover : {
 			type : "string",
 			default : ""
-		},         
+		},  
+		t_date : {
+			type: "array",
+			default: date_arr,
+		},
+		displayPostDate:{
+			type: "boolean",
+			default: true,            
+		}, 
 	},
     
 	edit: UAGBcontentTimeline,
@@ -1160,7 +1293,7 @@ registerBlockType( "uagb/content-timeline", {
 	save: function( props ) {
         
 		//console.log( 'Save props' );
-		//console.log( props );
+		console.log( props )
 
 		const {
 			headingTitle,
@@ -1200,7 +1333,7 @@ registerBlockType( "uagb/content-timeline", {
 			borderRadius,
 			bgPadding,
 			tm_client_id,
-			iconSize,  
+			iconSize,
 			icon,
 			iconColor,          
 			iconFocus,
@@ -1208,7 +1341,9 @@ registerBlockType( "uagb/content-timeline", {
 			iconBgHover,
 			iconHover,
 			iconBgFocus,
-			className,            
+			className,
+			t_date, 
+			displayPostDate           
 		} = props.attributes
 
 		/* Arrow position */
@@ -1284,10 +1419,10 @@ registerBlockType( "uagb/content-timeline", {
 													<div className = {day_align_class}>
 														<div className="uagb-events-new" style = {{textAlign:align}}>
 															<div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-																<div className="uagb-timeline-date-hide uagb-date-inner">                                                                
-																	{ post.date_gmt &&
-                                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ "inner-date-new" }>
-                                                                            	{ moment( post.date_gmt ).local().format( "MMMM DD, Y" ) }
+																<div className="uagb-timeline-date-hide uagb-date-inner" style = {{textAlign:align}}>                                                                
+																	{ displayPostDate && t_date[index].title &&
+                                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "inner-date-new" }>
+                                                                            	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
                                                                             </div>
 																	}  
 																</div>
@@ -1329,13 +1464,14 @@ registerBlockType( "uagb/content-timeline", {
 														</div>
 													</div>
 
-													<div className = "uagb-timeline-date-new">                                                                                                   
-														{ post.date_gmt &&
-                                                                <div dateTime={ moment( post.date_gmt ).utc().format() } className={ "uagb-date-new" }>
-                                                                	{ moment( post.date_gmt ).local().format( "MMMM DD, Y" ) }
+													{ display_inner_date && <div className = "uagb-timeline-date-new">                                                                                                   
+														{ displayPostDate && t_date[index].title &&
+                                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-date-new" }>
+                                                                	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
                                                                 </div>
 														} 
 													</div>
+													}
 												</div>
 											</article>
 										)
