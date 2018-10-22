@@ -96,6 +96,31 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Google Map Script.
+		wp_enqueue_script(
+			'uagb-google-map', // Handle.
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyDBEoty6odpRzDD7dcvxdCKz6KOilnTiec',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		wp_enqueue_script(
+			'uagb-google-map-cluster', // Handle.
+			'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		wp_enqueue_script(
+			'uagb-google-map-handler', // Handle.
+			UAGB_URL . 'assets/js/google-map.js',
+			array( 'jquery', 'uagb-google-map', 'uagb-google-map-cluster' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 	} // End function editor_assets().
 
 	/**

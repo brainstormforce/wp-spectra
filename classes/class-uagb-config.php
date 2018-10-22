@@ -97,6 +97,35 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'     => 'none',
 						),
 					),
+					'uagb/google-map'       => array(
+						'slug'       => '',
+						'title'      => __( 'Google Map', 'uagb' ),
+						'attributes' => array(
+							'markers'           => array(
+								array(
+									'lat'         => '51.503333',
+									'lon'         => '-0.119562',
+									'title'       => 'Coca-Cola London Eye',
+									'desc'        => '',
+									'infoTrigger' => 'none',
+								),
+							),
+							'block_id'          => '',
+							'align'             => 'center',
+							'marker_count'      => 1,
+							'mapType'           => 'roadmap',
+							'mapSkin'           => 'standard',
+							'customStyle'       => '',
+							'zoom'              => 12,
+							'height'            => 500,
+							'fullscreenControl' => 'true',
+							'gestureHandling'   => 'true',
+							'streetViewControl' => 'true',
+							'mapTypeControl'    => 'true',
+							'zoomControl'       => 'true',
+							'cluster'           => 'false',
+						),
+					),
 				);
 			}
 
