@@ -28,9 +28,9 @@ a.uagb-infobox-cta-link {
     flex-shrink: 0;
 }
 
-.uagb-module-content .components-button,
-.uagb-module-content .components-button:hover,
-.uagb-module-content .components-button:focus:enabled{
+.uagb-infobox__content-wrap .components-button,
+.uagb-infobox__content-wrap .components-button:hover,
+.uagb-infobox__content-wrap .components-button:focus:enabled{
     background-color: transparent;
     color:#333;
     box-shadow: none;

@@ -1285,7 +1285,7 @@ class UAGBinfoBox extends Component {
 				<div className={ ClassNamesId }>
 					{/*<style dangerouslySetInnerHTML={{ __html: back_style }}></style>*/}
 					<div className = { classnames(
-						"uagb-module-content",
+						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses( attributes ),
 					) }>
 						<div className = "uagb-infobox-overlay"></div>

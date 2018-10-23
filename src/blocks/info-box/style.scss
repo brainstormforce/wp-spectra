@@ -14,10 +14,10 @@
     border-radius: 100%;
 }
 
-.uagb-infobox-photo-left-title .uagb-module-content.uagb-imgicon-wrap,
-.uagb-infobox-photo-right-title .uagb-module-content.uagb-imgicon-wrap,
-.uagb-infobox-photo-left .uagb-module-content.uagb-imgicon-wrap,
-.uagb-infobox-photo-right .uagb-module-content.uagb-imgicon-wrap {
+.uagb-infobox-photo-left-title .uagb-image-icon-content.uagb-imgicon-wrap,
+.uagb-infobox-photo-right-title .uagb-image-icon-content.uagb-imgicon-wrap,
+.uagb-infobox-photo-left .uagb-image-icon-content.uagb-imgicon-wrap,
+.uagb-infobox-photo-right .uagb-image-icon-content.uagb-imgicon-wrap {
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;
@@ -655,7 +655,7 @@
   display:block;
 }
 
-.uagb-module-content.uagb-infobox{
+.uagb-infobox__content-wrap.uagb-infobox{
   position: relative
 }
 .uagb-icon span {
@@ -665,7 +665,7 @@
     width: 40px;
   }
 
-.uagb-module-content.uagb-infobox,
+.uagb-infobox__content-wrap.uagb-infobox,
 .uagb-infobox-content,
 .uagb-infobox-title-wrap,
 .uagb-infobox-title-prefix *,

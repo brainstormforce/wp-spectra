@@ -377,7 +377,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-module-content .uagb-imgicon-wrap' => array(
+	            ' .uagb-infobox__content-wrap .uagb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
 	                    'margin-top'    => $attr->iconTopMargin.'px',
@@ -534,13 +534,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 						
 			if( 'above-title' === $attr->iconimgPosition ||  'below-title' === $attr->iconimgPosition ){
-               	$selectors[' .uagb-module-content'] = array(                   
+               	$selectors[' .uagb-infobox__content-wrap'] = array(                   
 	                'text-align' => $attr->headingAlign,                   
 	            );
             }
 
             if( 'gradient' !== $attr->backgroundType || 'image' === $attr->backgroundType ){
-                $selectors[' .uagb-module-content.uagb-infobox'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
                     'background-color' => $attr->backgroundColor,
                     'opacity'=> $opacity,
                     'margin'=>   isset( $attr->blockMargin ) && ( '' !== $attr->blockMargin ) ? $attr->blockMargin.'px': 'inherit',
@@ -550,7 +550,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             if( 'image' === $attr->backgroundType ){
             	$position = '';
             	$position = str_replace( "-"," ",$attr->backgroundPosition );
-                $selectors[' .uagb-module-content.uagb-infobox'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
                     'background-image'    => ( $attr->backgroundImage ) ? 'url('.$attr->backgroundImage['url'].')' : 'null',
                     'background-size'     => $attr->backgroundSize,
                     'background-repeat'   => $attr->backgroundRepeat,
@@ -578,7 +578,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 	$grad_bg_color = 'radial-gradient( at '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
                 }
 
-                $selectors[' .uagb-module-content.uagb-infobox'] =  array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] =  array(
                     'background' =>$grad_bg_color,
                     'margin'=>  ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin+'px': 'inherit',                   
                 );
@@ -594,14 +594,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	        // Border for block.
             if( $attr->enableBorder ){   
-                $selectors[' .uagb-module-content.uagb-infobox-enable-border'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border'] = array(
                     'border-color' => ( isset( $attr->borderColor ) && '' !== $attr->borderColor  ) ?  $attr->borderColor: 'inherit',
                     'border-style' => ( isset( $attr->borderstyle ) && '' !== $attr->borderstyle ) ?  $attr->borderstyle: 'inherit',
                     'border-width' => ( isset( $attr->borderWidth ) && '' !== $attr->borderWidth ) ?  $attr->borderWidth.'px': 'inherit',
                     'border-radius' => ( isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
                 );           
             }else{
-                $selectors[' .uagb-module-content.uagb-infobox-enable-border-radius'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border-radius'] = array(
                     'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',                    
                 );
             }

@@ -134,7 +134,7 @@ registerBlockType( "uagb/info-box", {
 			<Fragment>
 				<div className={ ClassNamesId }>
 					<div className = { classnames(
-						"uagb-module-content",
+						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses(  props.attributes  ),
 					) }>
 						<div className = "uagb-infobox-overlay"></div>

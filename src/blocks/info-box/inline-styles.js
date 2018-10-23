@@ -143,7 +143,7 @@ function InfoBoxStyle( props ) {
 		"border-color" : iconimgBorderHover,                                 
 	}
 
-	selectors[".uagb-module-content .uagb-imgicon-wrap"] = {
+	selectors[".uagb-infobox__content-wrap .uagb-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
 		"margin-right" : iconRightMargin+"px",                                
 		"margin-top" : iconTopMargin+"px",
@@ -238,7 +238,7 @@ function InfoBoxStyle( props ) {
             
 
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
-		selectors[".uagb-module-content"] = {                    
+		selectors[".uagb-infobox__content-wrap"] = {                    
 			"text-align" : headingAlign,                   
 		}
 	}
@@ -302,7 +302,7 @@ function InfoBoxStyle( props ) {
 	var opacity = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
 	// Background           
 	if( backgroundType !== "gradient" || backgroundType === "image" ){
-		selectors[".uagb-module-content.uagb-infobox"] = {
+		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
 			"background-color": backgroundColor,
 			"opacity":opacity,
 			"margin":  ( typeof blockMargin != "undefined" ) ? blockMargin+"px": "inherit",
@@ -311,7 +311,7 @@ function InfoBoxStyle( props ) {
 
 	if( backgroundType === "image" ){
 		var position = backgroundPosition.replace( "-", " " )
-		selectors[".uagb-module-content.uagb-infobox"] = {
+		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
 			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
 			"background-size" : backgroundSize,
 			"background-repeat" : backgroundRepeat,                    
@@ -337,7 +337,7 @@ function InfoBoxStyle( props ) {
 			grad_bg_color = `radial-gradient( at ${ gd_position }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 
-		selectors[".uagb-module-content.uagb-infobox"] = {
+		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
 			"background" :grad_bg_color,
 			"margin":  ( typeof blockMargin != "undefined" ) ? blockMargin+"px": "inherit",
 		}
@@ -347,14 +347,14 @@ function InfoBoxStyle( props ) {
 	}
 
 	if( enableBorder ){
-		selectors[".uagb-module-content.uagb-infobox-enable-border"] = {
+		selectors[".uagb-infobox__content-wrap.uagb-infobox-enable-border"] = {
 			"border-color" : ( typeof borderColor != "undefined" ) ? borderColor: "inherit",
 			"border-style" : ( typeof borderstyle != "undefined" ) ? borderstyle: "inherit",
 			"border-width" : ( typeof borderWidth != "undefined" ) ? borderWidth+"px": "inherit",
 			"border-radius" : ( typeof borderRadius != "undefined" ) ? borderRadius+"px": "inherit",
 		}           
 	}else{
-		selectors[".uagb-module-content.uagb-infobox-enable-border-radius"] = {
+		selectors[".uagb-infobox__content-wrap.uagb-infobox-enable-border-radius"] = {
 			"border-radius" : ( typeof borderRadius != "undefined" ) ? borderRadius+"px": "inherit",                    
 		}
 	}
