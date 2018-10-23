@@ -271,21 +271,21 @@ function InfoBoxStyle( props ) {
 	}
 
 	// Prefix Style
-	selectors[".uagb-infobox-title-prefix"] = {
+	selectors[".editor-rich-text .uagb-infobox-title-prefix"] = {
 		"font-size" : prefixFontSize+"px",
 		"color": prefixColor,
 		"margin-bottom": prefixSpace+"px",
 	}
 
 	// Title Style
-	selectors[".uagb-infobox-title"] = {
+	selectors[".editor-rich-text .uagb-infobox-title"] = {
 		"font-size" : headFontSize+"px",
 		"color": headingColor,
 		"margin-bottom": headSpace+"px",
 	}
 
 	// Description Style
-	selectors[".uagb-infobox-desc"] = {
+	selectors[".editor-rich-text .uagb-infobox-desc"] = {
 		"font-size" : subHeadFontSize+"px",
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",
