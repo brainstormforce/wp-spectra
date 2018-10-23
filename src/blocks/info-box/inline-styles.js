@@ -367,7 +367,7 @@ function InfoBoxStyle( props ) {
 
 	for( var i in selectors ) {
            
-		styling_css += "."+clientId+" "+i + " { "
+		styling_css += " .gutenberg-editor-page #wpwrap ."+clientId+" "+i + " { "
             
             
 		var sel = selectors[i]
