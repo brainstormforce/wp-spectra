@@ -859,75 +859,53 @@ class UAGBinfoBox extends Component {
 					title={ __( "Typography" ) }
 					initialOpen={ false }
 				>
+					<RangeControl
+						label={ __( "Prefix Font Size" ) }
+						value={ prefixFontSize }
+						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Heading Font Size" ) }
+						value={ headFontSize }
+						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					
+					<RangeControl
+						label={ __( "Description Font Size" ) }
+						value={ subHeadFontSize }
+						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>					
 
-					<PanelBody
-						title={ __( "Title Prefix" ) }
-						initialOpen={ true }
-					>
+					{ ( ctaType === "text" || ctaType === "button" ) &&	( 				
 						
 						<RangeControl
-							label={ __( "Prefix Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-
-					</PanelBody>
-
-					<PanelBody
-						title={ __( "Title" ) }
-						initialOpen={ true }
-					>
-						<SelectControl
-							label={ __( "Title Tag" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Heading Font Size" ) }
-							value={ headFontSize }
-							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
-
-					<PanelBody
-						title={ __( "Description" ) }
-						initialOpen={ true }
-					>
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&
-					( <PanelBody
-						title={ __( "CTA" ) }
-						initialOpen={ true }
-					>						
-						
-						<RangeControl
-							label={ __( "Font Size" ) }
+							label={ __( "CTA Font Size" ) }
 							value={ ctaFontSize }
 							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 							min={ 0 }
@@ -935,7 +913,7 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>						
-					</PanelBody>
+					
 					)
 					}
 					
@@ -1052,15 +1030,6 @@ class UAGBinfoBox extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Description Bottom Margin" ) }
-						value={ subHeadSpace }
-						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
 						label={ __( "Seperator Bottom Margin" ) }
 						value={ seperatorSpace }
 						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
@@ -1069,7 +1038,15 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-
+					<RangeControl
+						label={ __( "Description Bottom Margin" ) }
+						value={ subHeadSpace }
+						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>	
 					<PanelBody
 						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }

@@ -171,11 +171,11 @@ const attributes = {
 	},
 	ctaLinkColor :{
 		type: "string",
-		default: "#61ce70",
+		default: "#333",
 	},
 	ctaFontSize :{
 		type: "number",
-		default : 12
+		default : ''
 	},	
 	ctaBtnSize: {
 		type: "string",
