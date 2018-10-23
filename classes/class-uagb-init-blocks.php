@@ -88,6 +88,39 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Font Awsome.
+		wp_enqueue_style(
+			'uagb-fontawesome-css', // Handle.
+			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
+		// Google Map Script.
+		wp_enqueue_script(
+			'uagb-google-map', // Handle.
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyDBEoty6odpRzDD7dcvxdCKz6KOilnTiec',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		wp_enqueue_script(
+			'uagb-google-map-cluster', // Handle.
+			'https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		wp_enqueue_script(
+			'uagb-google-map-handler', // Handle.
+			UAGB_URL . 'assets/js/google-map.js',
+			array( 'jquery', 'uagb-google-map', 'uagb-google-map-cluster' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 	} // End function editor_assets().
 
 	/**
@@ -109,6 +142,14 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-block-editor-css', // Handle.
 			UAGB_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
+			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
+		// Common Editor style.
+		wp_enqueue_style(
+			'uagb-block-common-editor-css', // Handle.
+			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
