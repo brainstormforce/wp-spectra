@@ -494,8 +494,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             if( 'gradient' !== $attr->backgroundType || 'image' === $attr->backgroundType ){
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
                     'background-color' => $attr->backgroundColor,
-                    'opacity'=> $opacity,
-                    'margin'=>   isset( $attr->blockMargin ) && ( '' !== $attr->blockMargin ) ? $attr->blockMargin.'px': 'inherit',
+                    'opacity'=> $opacity,                    
                 );                
             }
 
@@ -506,8 +505,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'background-image'    => ( $attr->backgroundImage ) ? 'url('.$attr->backgroundImage['url'].')' : 'null',
                     'background-size'     => $attr->backgroundSize,
                     'background-repeat'   => $attr->backgroundRepeat,
-                    'background-position' => $position,
-                    'margin'              => ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin.'px': 'inherit',
+                    'background-position' => $position,                    
                 );
 
                 $selectors[' .uagb-infobox-overlay'] = array(
@@ -531,18 +529,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 }
 
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] =  array(
-                    'background' =>$grad_bg_color,
-                    'margin'=>  ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin+'px': 'inherit',                   
+                    'background' =>$grad_bg_color,                                     
                 );
 
                 $selectors[' .uagb-infobox-overlay'] =  array(
                     'opacity'=> $opacity,
                 ); 
-            }
-
-	        $selectors[' .uagb-infobox-content'] =  array(
-                'padding'=> ( isset( $attr->blockPadding ) && '' !== $attr->blockPadding ) ? $attr->blockPadding.'px': 'inherit',
-            );        
+            }	             
 
 	        // Border for block.	       
             if( $attr->enableBorder == 'true' ){   

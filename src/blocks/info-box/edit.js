@@ -204,8 +204,6 @@ class UAGBinfoBox extends Component {
 			gradientLocation2,
 			gradientAngle,
 			gradientDirection,
-			blockPadding,
-			blockMargin,
 			enableBorder,
 			borderstyle,
 			borderWidth,
@@ -992,25 +990,7 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>
-					<RangeControl
-						label={ __( "Block Margin" ) }
-						value={ blockMargin }
-						onChange={ ( value ) => setAttributes( { blockMargin: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Block Padding" ) }
-						value={ blockPadding }
-						onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+				>	
 					<RangeControl
 						label={ __( "Prefix Bottom Margin" ) }
 						value={ prefixSpace }

@@ -147,7 +147,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: "string",
-		default: "#61ce70",
+		default: "#333",
 	},
 	seperatorWidth :{
 		type: "number",
@@ -291,14 +291,7 @@ const attributes = {
 	gradientDirection:{
 		type: "string",
 		default: "center_center"
-	},
-	blockPadding:{
-		type: "number",
-		default: 10,
-	},
-	blockMargin:{
-		type: "number",
-	},
+	},	
 	enableBorder: {
 		type: "boolean",
 		default: false,
