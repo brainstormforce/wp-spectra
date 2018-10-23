@@ -93,6 +93,10 @@ const attributes = {
 	subHeadSpace: {
 		type: "number",
 	},
+	seperatorSpace:{
+		type: "number",
+		default : 10,
+	},
 	iconimgBg : {
 		type : "string",
 		default : "#eee",

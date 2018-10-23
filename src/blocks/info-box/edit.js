@@ -142,6 +142,7 @@ class UAGBinfoBox extends Component {
 			subHeadFontSize,
 			separatorWidth,
 			separatorHeight,
+			seperatorSpace,
 			headSpace,
 			separatorSpace,
 			subHeadSpace,
@@ -1054,6 +1055,15 @@ class UAGBinfoBox extends Component {
 						label={ __( "Description Bottom Margin" ) }
 						value={ subHeadSpace }
 						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Seperator Bottom Margin" ) }
+						value={ seperatorSpace }
+						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						beforeIcon="editor-textcolor"

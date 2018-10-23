@@ -36,6 +36,7 @@ function InfoBoxStyle( props ) {
 		seperatorWidth,
 		seperatorColor,
 		seperatorThickness,
+		seperatorSpace,
 		ctaLinkColor,
 		ctaFontSize,   
 		ctaBtnSize,
@@ -297,6 +298,7 @@ function InfoBoxStyle( props ) {
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
+		"margin-bottom":seperatorSpace+"px"
 	}
 
 	var opacity = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
