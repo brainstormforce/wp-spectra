@@ -38,7 +38,6 @@ function InfoBoxStyle( props ) {
 		seperatorThickness,
 		ctaLinkColor,
 		ctaFontSize,   
-		ctaLineHeight, 
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
@@ -248,25 +247,21 @@ function InfoBoxStyle( props ) {
 	selectors[".uagb-infobox-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
-		"line-height": ctaLineHeight+"px",
 	}
 
 	selectors[".uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
-		"line-height": ctaLineHeight+"px",
 	}
 
 	selectors[".uagb-button-wrapper .uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
-		"line-height": ctaLineHeight+"px",
 	}
 
 	selectors[".uagb-button-wrapper .uagb-infobox-cta-link"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
-		"line-height": ctaLineHeight+"px",
 		"background-color": ctaBgColor,
 		"border-style": ctaBorderStyle,
 		"border-color": ctaBorderColor,

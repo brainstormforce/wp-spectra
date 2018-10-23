@@ -490,12 +490,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ' .uagb-infobox-cta-link' => array(
 	                'font-size'   => $attr->ctaFontSize.'px',
 	                'color'       => $attr->ctaLinkColor,
-	                'line-height' => $attr->ctaLineHeight.'px',
 	            ),
 	            ' .uagb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
-	                'line-height'      => $attr->ctaLineHeight.'px',
 	                'background-color' => $attr->ctaBgColor,
 	                'border-style'     => $attr->ctaBorderStyle,
 	                'border-color'     => $attr->ctaBorderColor,

@@ -172,11 +172,7 @@ const attributes = {
 	ctaFontSize :{
 		type: "number",
 		default : 12
-	},
-	ctaLineHeight :{
-		type: "number",
-		default : 12
-	},
+	},	
 	ctaBtnSize: {
 		type: "string",
 		default: "sm",

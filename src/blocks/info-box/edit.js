@@ -172,7 +172,6 @@ class UAGBinfoBox extends Component {
 			ctaLink,
 			ctaLinkColor,
 			ctaFontSize,
-			ctaLineHeight,
 			ctaBtnSize,
 			ctaBtnLinkColor,
 			ctaBgColor,
@@ -796,16 +795,7 @@ class UAGBinfoBox extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>
-						<RangeControl
-							label={ __( "Line Height" ) }
-							value={ ctaLineHeight }
-							onChange={ ( value ) => setAttributes( { ctaLineHeight: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
+						/>						
 					</Fragment>
 					)
 					}
@@ -919,19 +909,7 @@ class UAGBinfoBox extends Component {
 						title={ __( "Title Prefix" ) }
 						initialOpen={ true }
 					>
-						{/*<SelectControl
-							label={ __( "Title Prefix Tag" ) }
-							value={ prefixTag }
-							onChange={ ( value ) => setAttributes( { prefixTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>*/}
+						
 						<RangeControl
 							label={ __( "Prefix Font Size" ) }
 							value={ prefixFontSize }
