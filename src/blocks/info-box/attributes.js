@@ -70,7 +70,7 @@ const attributes = {
 	},
 	headingTag: {
 		type: "string",
-		default: "h1"
+		default: "h3"
 	},
 	separatorHeight: {
 		type: "number"
