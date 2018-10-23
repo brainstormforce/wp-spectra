@@ -1,242 +1,100 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: UAGB Team Block Attributes
  */
 
 const attributes = {
-	prefixTitle: {
-		selector: "span.uagb-infobox-title-prefix",
-		default: "Hello",
+	block_id :{
+		type : "string"
 	},
-	infoBoxTitle: {
-		selector: "h1,h2,h3,h4,h5,h6",
-		default: "Info Box",
-	},
-	headingDesc: {
-		source: "html",
-		selector: "p",
-		default: "Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo",
-	},
-	headingAlign: {
+	align: {
 		type: "string",
 		default: "center",
 	},
-	headingColor: {
+	tag :{
 		type: "string",
+		default: "h3"
 	},
-	subHeadingColor: {
+	title: {
+		selector: "h1,h2,h3,h4,h5,h6",
+		default: "John Doe",
+	},
+	prefix: {
+		selector: "span.uagb-team__prefix",
+		default: "Designation",
+	},
+	description_text: {
+		selector: "p",
+		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
+	},
+	titleColor: {
 		type: "string",
 	},
 	prefixColor: {
 		type: "string",
+		default: "#888888"
 	},
-	icon : {
-		type : "string",
-		default : "fab fa fa-calendar-alt"
+	descColor: {
+		type: "string",
+	},
+	titleFontSize: {
+		type: "number",
+	},
+	prefixFontSize: {
+		type: "number",
+		default: 15
+	},
+	descFontSize: {
+		type: "number",
+	},
+	image: {
+		type: "object",
+	},
+	imgStyle: {
+		type: "string",
+		default: "normal"
 	},
 	imgPosition: {
 		type: "string",
 		default: "above-title"
 	},
-	iconimgStyle: {
-		type: "string",
-		default: "normal"
-	},
-	iconRotate : {
-		type: "number",
-		default: 0,
-	},
-	iconSize : {
-		type: "number",
-		default: 40,
-	},
-	iconHover : {
-		type : "string",
-		default : ""
-	},
-	iconBgHover : {
-		type : "string",
-		default : ""
-	},
-	iconColor : {
-		type : "string",
-		default : "#333",
-	},
-	prefixTag :{
-		type: "string",
-		default: "h3"
-	},
-	prefixFontSize: {
-		type: "number",
-	},
-	headingTag: {
-		type: "string",
-		default: "h1"
-	},
-	headFontSize: {
-		type: "number",
-	},
-	subHeadFontSize: {
-		type: "number",
-	},
-	headSpace: {
-		type: "number",
-	},
-	subHeadSpace: {
-		type: "number",
-	},
-	iconimgBg : {
-		type : "string",
-		default : "#eee",
-	},
-	iconimgBorder : {
-		type : "string",
-		default : "#eee",
-	},
-	iconimgBorderHover : {
-		type : "string",
-		default : ""
-	},
-	iconimgBorderstyle :{
-		type : "string",
-		default : "solid"
-	},
-	iconimgBorderWidth: {
-		type: "number",
-		default : 1
-	},
-	iconimgBorderRadius: {
-		type: "number",
-		default : 0
-	},
-	iconimgbgSize :{
-		type: "number",
-		default : 15
-	},
-	block_id :{
-		type : "string",
-		default : "not_set"
-	},
-	sourceAlign:{
+	imgAlign:{
 		type : "string",
 		default : "top"
 	},
-	enableSeperator: {
-		type: "boolean",
-		default: true,
-	},
-	prefixSpace :{
-		type: "number",
-		default: 10,
-	},
-	iconLeftMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconRightMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconTopMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconBottomMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconImage: {
-		type: "object",
-		default:{
-			"url": "",
-			"alt": "InfoBox placeholder img",
-		}
-	},
-	imageSize:{
+	imgSize:{
 		type: "string",
 		default: "thumbnail",
 	},
-	imageWidth :{
+	imgWidth :{
 		type: "number",
 		default: 120,
 	},
-	backgroundType: {
-		type: "string",
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundOpacity: {
+	titleSpace: {
 		type: "number",
-		default: "100"
 	},
-	backgroundColor: {
-		type: "string",
-	},
-	gradientColor1: {
-		type: "string",
-	},
-	gradientColor2: {
-		type: "string",
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
+	prefixSpace: {
 		type: "number",
-		default: "0"
 	},
-	gradientLocation2: {
-		type: "number",
-		default: "100"
-	},
-	gradientAngle: {
-		type: "number",
-		default: "0"
-	},
-	gradientDirection:{
-		type: "string",
-		default: "center_center"
-	},
-	blockPadding:{
+	descSpace :{
 		type: "number",
 		default: 10,
 	},
-	blockMargin:{
+	imgLeftMargin :{
 		type: "number",
+		default: 5,
 	},
-	enableBorder: {
-		type: "boolean",
-		default: false,
-	},
-	borderstyle :{
-		type : "string",
-		default : "solid"
-	},
-	borderWidth: {
+	imgRightMargin :{
 		type: "number",
-		default : 1
+		default: 5,
 	},
-	borderRadius: {
+	imgTopMargin :{
 		type: "number",
-		default : 0
+		default: 5,
 	},
-	borderColor: {
-		type: "string",
-		default : ""
-	},
+	imgBottomMargin :{
+		type: "number",
+		default: 5,
+	}
 }
 
 export default attributes

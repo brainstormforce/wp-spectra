@@ -8,15 +8,6 @@ import classnames from "classnames"
 // Import icon.
 import UAGBIcon from "../uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import Prefix from "./components/Prefix"
-import Title from "./components/Title"
-import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
-import InfoBoxPositionClasses from "./classes"
-import InfoBoxSeperator from "./components/InfoBoxSeperator"
-import InfoBoxCta from "./components/InfoBoxCta"
-import InfoBoxStyle from "./inline-styles"
-import InfoBoxIconImage from "./components/InfoBoxIconImage"
 import edit from "./edit"
 import attributes from "./attributes"
 import "./editor.scss"
@@ -31,14 +22,6 @@ const {
 const {
 	RichText
 } = wp.editor
-
-const {
-	compose
-} = wp.compose
-
-const {
-	withViewportMatch
-} = wp.viewport
 
 // Extend component
 const { Fragment } = wp.element
@@ -79,100 +62,88 @@ registerBlockType( "uagb/team", {
 	attributes,
 	edit,
 	save: function( props ) {
+		return null;
 		const {
 			imgPosition,
 			block_id,
-			backgroundType,
-			className
+			align,
+			image,
+			className,
+			tag,
+			title,
+			prefix,
+			description
 		} = props.attributes
 
-		const my_block_id = "uagb-"+ block_id
-		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
+		console.log(props.attributes);
 
-		ClassNamesId = ClassNamesId +" "+ my_block_id
+		let team_image = '';
 
-		var back_style = InfoBoxStyle( props )
+		if ( image ) {
 
-		// Get icon/Image components.
-		let team_image = <InfoBoxIconImage attributes={ props.attributes } />
-
-		// Get description and seperator components.
-		const desc = (
-			<Fragment>
-				<div className = "uagb-infobox-text-wrap">
-					<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
+			team_image = (
+				<div
+					className={ classnames(
+						className,
+						"uagb-team__imag-wrap",
+						`uagb-team__image-crop-${imgStyle}`,
+					) }>
+					<img
+						className =""
+						src = { image.url }
+						alt = { image.alt }
+					/>
 				</div>
-			</Fragment>
-		)
-
-		// Get Title and Prefix components.
-		const title_text = (
-			<Fragment>
-				<div className = "uagb-infobox-title-wrap">
-					<Title attributes={ props.attributes} setAttributes = "not_set"/>
-					<Prefix attributes={ props.attributes } setAttributes = "not_set"/>
-				</div>
-			</Fragment>
-		)
+			)
+		}
 
 		return (
-			<Fragment>
-				<div className={ ClassNamesId }>
-					<div className = { classnames(
-						"uagb-module-content",
-						...InfoBoxPositionClasses(  props.attributes  ),
-					) }>
-						<div className = "uagb-infobox-overlay"></div>
-						<div className = "uagb-infobox-left-right-wrap">
+			<div
+				className = { classnames(
+						className,
+						"uagb-team",
+						"uagb-team__outer-wrap",
+						`uagb-team__image-position-${imgPosition}`,
+						`uagb-team__align-${align}`
+					) }
+				id={ `uagb-team-${ block_id }` }>
+				<div className = "uagb-team__wrap">
 
-							{ ( imgPosition == "left") && team_image }
+					{ ( imgPosition == "left") &&
+						team_image
+					}
 
-							<div className = "uagb-infobox-content">
+					<div className = "uagb-team__content">
 
-								{  imgPosition == "above-title" && team_image }
+						{  imgPosition == "above" && team_image }
 
-								{ ( imgPosition == "above-title" || imgPosition == "below-title") && title_text }
-
-								{ imgPosition == "below-title"  && team_image }
-
-								{ ( imgPosition == "above-title" || imgPosition == "below-title") && desc }
-
-								{ ( imgPosition === "left-title") &&
-									<Fragment>
-										<div className = "left-title-image">
-											{ team_image }
-											{ title_text }
-										</div>
-										{ desc }
-									</Fragment>
-								}
-
-								{ ( imgPosition === "right-title") &&
-									<Fragment>
-										<div className = "right-title-image">
-											{ title_text }
-											{ team_image }
-										</div>
-										{ desc }
-									</Fragment>
-								}
-
-								{ ( imgPosition == "left" || imgPosition == "right") &&
-									<Fragment>
-										{ title_text }
-										{ desc }
-									</Fragment>
-								}
-
-							</div>
-
-							{ ( imgPosition == "right") &&
-								team_image
-							}
+						<div className = "uagb-team__title-wrap">
+							<RichText
+								tagName= { tag }
+								value={ title }
+								className = 'uagb-team__title'
+							/>
+							<RichText
+								tagName="span"
+								value={ prefix }
+								className='uagb-team__prefix'
+							/>
 						</div>
+						<div className = "uagb-team__desc-wrap">
+							<RichText
+								tagName='p'
+								value={ description }
+								className='uagb-team__desc'
+							/>
+						</div>
+
 					</div>
+
+					{ ( imgPosition == "right") &&
+						team_image
+					}
 				</div>
-			</Fragment>
+			</div>
 		)
 	}
 } )
