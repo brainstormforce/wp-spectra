@@ -399,7 +399,7 @@ class UAGBinfoBox extends Component {
 					<Fragment>
 
 						<PanelColorSettings
-							title={ __( "GradientColor Color Settings" ) }
+							title={ __( "Gradient Color Settings" ) }
 							colorSettings={ [
 								 {
 									value: gradientColor1,
