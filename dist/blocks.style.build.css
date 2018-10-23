@@ -513,7 +513,8 @@
   flex-shrink: 0; }
 
 .infobox-icon-above-title .uagb-infobox-left-right-wrap {
-  text-align: center; }
+  text-align: center;
+  word-break: break-word; }
 
 .uagb-infobox-photo-left-title .uagb-infobox-title-wrap,
 .uagb-infobox-photo-right-title .uagb-infobox-title-wrap,
