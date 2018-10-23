@@ -54,7 +54,7 @@ function styling( props ) {
 		"font-size": titleFontSize + "px",
 		"color": titleColor,
 		"margin-bottom": titleSpace + "px",
-	};
+	}
 
 	var styling_css = ""
 

@@ -62,7 +62,7 @@ registerBlockType( "uagb/team", {
 	attributes,
 	edit,
 	save: function( props ) {
-		return null;
+		return null
 		const {
 			imgPosition,
 			block_id,
@@ -75,9 +75,9 @@ registerBlockType( "uagb/team", {
 			description
 		} = props.attributes
 
-		console.log(props.attributes);
+		console.log(props.attributes)
 
-		let team_image = '';
+		let team_image = ""
 
 		if ( image ) {
 
@@ -100,12 +100,12 @@ registerBlockType( "uagb/team", {
 		return (
 			<div
 				className = { classnames(
-						className,
-						"uagb-team",
-						"uagb-team__outer-wrap",
-						`uagb-team__image-position-${imgPosition}`,
-						`uagb-team__align-${align}`
-					) }
+					className,
+					"uagb-team",
+					"uagb-team__outer-wrap",
+					`uagb-team__image-position-${imgPosition}`,
+					`uagb-team__align-${align}`
+				) }
 				id={ `uagb-team-${ block_id }` }>
 				<div className = "uagb-team__wrap">
 

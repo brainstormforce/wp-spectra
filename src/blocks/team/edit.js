@@ -113,8 +113,8 @@ class UAGBTeam extends Component {
 			setAttributes( { image: media } )
 		}
 
-		let size = ''
-		let img_url = ''
+		let size = ""
+		let img_url = ""
 
 		if ( image ) {
 			size = image.sizes
@@ -163,14 +163,14 @@ class UAGBTeam extends Component {
 					onMerge = { mergeBlocks }
 					onSplit = {
 						insertBlocksAfter ?
-						( before, after, ...blocks ) => {
-							setAttributes( { content: before } )
-							insertBlocksAfter( [
-								...blocks,
-								createBlock( "core/paragraph", { content: after } ),
-							] )
-						} :
-						undefined
+							( before, after, ...blocks ) => {
+								setAttributes( { content: before } )
+								insertBlocksAfter( [
+									...blocks,
+									createBlock( "core/paragraph", { content: after } ),
+								] )
+							} :
+							undefined
 					}
 					onRemove={ () => onReplace( [] ) }
 				/>
@@ -190,14 +190,14 @@ class UAGBTeam extends Component {
 					onMerge = { mergeBlocks }
 					onSplit = {
 						insertBlocksAfter ?
-						( before, after, ...blocks ) => {
-							setAttributes( { content: before } )
-							insertBlocksAfter( [
-								...blocks,
-								createBlock( "core/paragraph", { content: after } ),
-							] )
-						} :
-						undefined
+							( before, after, ...blocks ) => {
+								setAttributes( { content: before } )
+								insertBlocksAfter( [
+									...blocks,
+									createBlock( "core/paragraph", { content: after } ),
+								] )
+							} :
+							undefined
 					}
 					onRemove={ () => onReplace( [] ) }
 				/>
@@ -209,19 +209,19 @@ class UAGBTeam extends Component {
 					onMerge = { mergeBlocks }
 					onSplit = {
 						insertBlocksAfter ?
-						( before, after, ...blocks ) => {
-							setAttributes( { content: before } )
-							insertBlocksAfter( [
-								...blocks,
-								createBlock( "core/paragraph", { content: after } ),
-							] )
-						} :
-						undefined
+							( before, after, ...blocks ) => {
+								setAttributes( { content: before } )
+								insertBlocksAfter( [
+									...blocks,
+									createBlock( "core/paragraph", { content: after } ),
+								] )
+							} :
+							undefined
 					}
 					onRemove={ () => onReplace( [] ) }
 				/>
 			</div>
-		);
+		)
 
 		return (
 			<Fragment>
@@ -430,12 +430,12 @@ class UAGBTeam extends Component {
 				</InspectorControls>
 				<div
 					className = { classnames(
-							className,
-							"uagb-team",
-							"uagb-team__outer-wrap",
-							`uagb-team__image-position-${imgPosition}`,
-							`uagb-team__align-${align}`
-						) }
+						className,
+						"uagb-team",
+						"uagb-team__outer-wrap",
+						`uagb-team__image-position-${imgPosition}`,
+						`uagb-team__align-${align}`
+					) }
 					id={ `uagb-team-${ this.props.clientId }` }>
 					<div className = "uagb-team__wrap">
 
