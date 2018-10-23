@@ -152,8 +152,8 @@ function InfoBoxStyle( props ) {
 	} 
 
 	// Image
-	selectors[".uagb-image-content > img"] = {
-		"max-width": imageWidth+"px",
+	selectors[".uagb-image-content img"] = {
+		"width": imageWidth+"px",
 	} 
 
 	selectors[".uagb-imgicon-style-circle .uagb-image-content img"] = {                    

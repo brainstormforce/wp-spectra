@@ -513,8 +513,7 @@
   flex-shrink: 0; }
 
 .infobox-icon-above-title .uagb-infobox-left-right-wrap {
-  text-align: center;
-  word-break: break-word; }
+  text-align: center; }
 
 .uagb-infobox-photo-left-title .uagb-infobox-title-wrap,
 .uagb-infobox-photo-right-title .uagb-infobox-title-wrap,
@@ -551,7 +550,8 @@
   justify-content: flex-end; }
 
 .uagb-infobox-left-right-wrap {
-  width: 100%; }
+  width: 100%;
+  word-break: break-word; }
 
 .uagb-infobox-icon-above-title .uagb-infobox-left-right-wrap,
 .uagb-infobox-icon-below-title .uagb-infobox-left-right-wrap,

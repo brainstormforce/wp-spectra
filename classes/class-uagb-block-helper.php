@@ -386,6 +386,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	            // Image.
 	            ' .uagb-image-content > img' => array(
+	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
 
