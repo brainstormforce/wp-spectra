@@ -156,8 +156,8 @@ function InfoBoxStyle( props ) {
 	} 
 
 	selectors[".uagb-imgicon-style-circle .uagb-image-content img"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
@@ -167,19 +167,19 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-square .uagb-image-content img"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
 	selectors[".uagb-imgicon-style-square .uagb-image-content img:hover"] = {
-		"background" : iconBgHover,                                       
+		//"background" : iconBgHover,                                       
 	}
 
 	selectors[".uagb-imgicon-style-custom .uagb-image-content img"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -190,7 +190,7 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-custom .uagb-image-content img:hover"] = {
-		"background" : iconBgHover,  
+		//"background" : iconBgHover,  
 		"border-color" : iconimgBorderHover,                                     
 	}
 
@@ -199,8 +199,8 @@ function InfoBoxStyle( props ) {
 	} 
 
 	selectors[".uagb-imgicon-style-circle .components-button svg"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",  
 		"margin-left" : iconLeftMargin+"px",
@@ -210,8 +210,8 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-square .components-button svg"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",    
 		"margin-left" : iconLeftMargin+"px",
@@ -221,8 +221,8 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-custom .components-button svg"] = {                    
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
+		//"padding" : iconimgbgSize+"px",
+		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,

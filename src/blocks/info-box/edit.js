@@ -475,7 +475,7 @@ class UAGBinfoBox extends Component {
 					/>
 				</PanelColor>
 				}
-				{ ( iconimgStyle && iconimgStyle != "normal" )  &&
+				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" )  &&
 					<PanelColor
 						title={ __( "Background Color" ) }
 						colorValue={ iconimgBg }
@@ -566,7 +566,7 @@ class UAGBinfoBox extends Component {
 				</PanelColor>
 				}
 
-				{ ( iconimgStyle && iconimgStyle != "normal" ) &&
+				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) &&
 					<PanelColor
 						title={ __( "Background Color" ) }
 						colorValue={ iconBgHover }
@@ -1192,7 +1192,7 @@ class UAGBinfoBox extends Component {
 
 						{ ( source_type && source_type == "image" ) && imageControls }
 
-						{ ( iconimgStyle && iconimgStyle != "normal" ) && <RangeControl
+						{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) && <RangeControl
 							label={ __( "Background Size" ) }
 							value={ iconimgbgSize }
 							onChange={ ( value ) => setAttributes( { iconimgbgSize: value } ) }
@@ -1200,11 +1200,13 @@ class UAGBinfoBox extends Component {
 							max={ 300 }
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>
+						/>		
+
 						}
 
+						{ ( source_type && source_type == "icon" ) && iconImageSettings }
 
-						{ iconImageSettings }
+						{ ( source_type && source_type == "image" ) && ( iconimgStyle && iconimgStyle == "custom" ) && iconImageSettings }
 					</PanelBody>
 
 					{ seperatorSettings }

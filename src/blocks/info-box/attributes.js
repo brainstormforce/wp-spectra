@@ -5,7 +5,7 @@
 const attributes = {
 	prefixTitle: {
 		selector: "span.uagb-infobox-title-prefix",
-		default: "Hello",
+		default: "Prefix",
 	},
 	infoBoxTitle: {
 		selector: "h1,h2,h3,h4,h5,h6",
@@ -14,7 +14,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: "Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo",
+		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
 	headingAlign: {
 		type: "string",

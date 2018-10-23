@@ -84,12 +84,11 @@ registerBlockType( "uagb/info-box", {
 			iconimgPosition,
 			block_id,
 			source_type,
-			enableSeperator,
+			seperatorStyle,
 			backgroundType,
 			className
 		} = props.attributes
 
-		//console.log(enableSeperator);
 
 		const my_block_id = "uagb-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
@@ -110,7 +109,7 @@ registerBlockType( "uagb/info-box", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ enableSeperator && <InfoBoxSeperator attributes={props.attributes} /> }
+				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
 					<InfoBoxCta attributes={props.attributes} />
