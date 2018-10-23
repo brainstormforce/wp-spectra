@@ -245,9 +245,21 @@ function InfoBoxStyle( props ) {
 	}
 
 	// CTA style 
-	selectors[".uagb-infobox-cta-link"] = {
+	selectors[".uagb-infobox-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
+		"line-height": ctaLineHeight+"px",
+	}
+
+	selectors[".uagb-infobox-cta-link span"] = {
+		"font-size" : ctaFontSize+"px",
+		"color": ctaLinkColor,
+		"line-height": ctaLineHeight+"px",
+	}
+
+	selectors[".uagb-button-wrapper .uagb-infobox-cta-link span"] = {
+		"font-size" : ctaFontSize+"px",
+		"color": ctaBtnLinkColor,
 		"line-height": ctaLineHeight+"px",
 	}
 
