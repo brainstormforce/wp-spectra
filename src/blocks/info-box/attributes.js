@@ -133,10 +133,10 @@ const attributes = {
 		type : "string",
 		default : "top"
 	},
-	enableSeperator: {
+	ctaTarget: {
 		type: "boolean",
-		default: true,
-	},
+		default: false,
+	},	
 	seperatorStyle: {
 		type: "string",
 		default: "solid",

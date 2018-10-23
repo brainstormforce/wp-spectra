@@ -86,6 +86,9 @@ registerBlockType( "uagb/info-box", {
 			source_type,
 			seperatorStyle,
 			backgroundType,
+			ctaType,
+			ctaLink,
+			ctaTarget,
 			className
 		} = props.attributes
 
@@ -127,12 +130,9 @@ registerBlockType( "uagb/info-box", {
 			</Fragment>
 		)
 
-		//return null;
-
-		return (
+		const output = (
 			<Fragment>
-				<div className={ ClassNamesId }>
-					<div className = { classnames(
+				<div className = { classnames(
 						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses(  props.attributes  ),
 					) }>
@@ -186,6 +186,23 @@ registerBlockType( "uagb/info-box", {
 							}
 						</div>
 					</div>
+			</Fragment>
+			)
+
+		let target ='';
+		if( ctaTarget ){
+			target ='_blank';
+		}
+
+		return (
+			<Fragment>
+				<div className={ ClassNamesId }>
+					{ ( ctaType == "all") &&
+						<Fragment>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
+						</Fragment>
+					}						
+					{ ( ctaType !== "all") && output }
 				</div>
 			</Fragment>
 		)

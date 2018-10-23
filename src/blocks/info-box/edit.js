@@ -65,6 +65,7 @@ class UAGBinfoBox extends Component {
 		super( ...arguments )
 		this.getTimelineicon = this.getTimelineicon.bind(this)
 		this.toggleBorder    = this.toggleBorder.bind( this )
+		this.toggleTarget    = this.toggleTarget.bind( this )
 	}
 
 	getTimelineicon(value) {
@@ -80,6 +81,17 @@ class UAGBinfoBox extends Component {
 
 		setAttributes( { enableBorder: ! enableBorder } )
 	}
+
+	/**
+	 * Function Name: toggleTarget.
+	 */
+	toggleTarget() {
+		const { ctaTarget } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { ctaTarget: ! ctaTarget } );
+	}
+	
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -158,6 +170,7 @@ class UAGBinfoBox extends Component {
 			ctaType,
 			ctaText,
 			ctaLink,
+			ctaTarget,
 			ctaLinkColor,
 			ctaFontSize,
 			ctaBtnSize,
@@ -734,6 +747,7 @@ class UAGBinfoBox extends Component {
 							{ value: "none", label: __( "None" ) },
 							{ value: "text", label: __( "Text" ) },
 							{ value: "button", label: __( "Button" ) },
+							{ value: "all", label: __( "Complete Box" ) },
 						] }
 					/>		
 					{ ( ctaType === "text" || ctaType === "button" ) &&			
@@ -744,11 +758,18 @@ class UAGBinfoBox extends Component {
 						/>
 					}		
 					{ ( ctaType !== "none" ) &&
+						<Fragment>
 						<TextControl
 							label= { __( "Link" ) }
 							value= { ctaLink }
 							onChange={ value => setAttributes( { ctaLink: value } ) }
 						/>
+						<ToggleControl
+							label={ __( 'Open in new Window' ) }
+							checked={ ctaTarget }
+							onChange={ this.toggleTarget }
+						/>						
+						</Fragment>
 					}
 
 					{ ( ctaType == "button" ) && (
@@ -1272,21 +1293,11 @@ class UAGBinfoBox extends Component {
 				</div>
 			</Fragment>
 		)
+		
 
-		return (
+		const output = (
 			<Fragment>
-				{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") &&
-					<BlockControls key='controls'>
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-						/>
-					</BlockControls>
-				}
-				{inspect_control}
-				<div className={ ClassNamesId }>
-					{/*<style dangerouslySetInnerHTML={{ __html: back_style }}></style>*/}
-					<div className = { classnames(
+				<div className = { classnames(
 						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses( attributes ),
 					) }>
@@ -1340,6 +1351,27 @@ class UAGBinfoBox extends Component {
 							}
 						</div>
 					</div>
+			</Fragment>
+			)
+
+		return (
+			<Fragment>
+				{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") &&
+					<BlockControls key='controls'>
+						<AlignmentToolbar
+							value={ headingAlign }
+							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+						/>
+					</BlockControls>
+				}
+				{inspect_control}
+				<div className={ ClassNamesId }>
+					{ ( ctaType == "all") &&
+						<Fragment>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" > {output}</a>
+						</Fragment>
+					}						
+					{ ( ctaType !== "all") && output }
 				</div>
 			</Fragment>
 		)
