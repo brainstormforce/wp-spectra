@@ -1027,7 +1027,7 @@ class UAGBinfoBox extends Component {
 					/>
 
 					<PanelBody
-						title={ __( "Icon Margins" ) }
+						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }
 					>
 						<RangeControl
