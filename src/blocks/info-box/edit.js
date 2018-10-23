@@ -735,54 +735,14 @@ class UAGBinfoBox extends Component {
 							{ value: "text", label: __( "Text" ) },
 							{ value: "button", label: __( "Button" ) },
 						] }
-					/>
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&
-					( <Fragment>
-						<TextControl
+					/>		
+					{ ( ctaType === "text" || ctaType === "button" ) &&			
+					<TextControl
 							label= { __( "Text" ) }
 							value= { ctaText }
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
-						{ ( ctaType === "text") &&
-							<PanelColor
-								title={ __( "Color" ) }
-								colorValue={ ctaLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						}
-						{ ( ctaType === "button") &&
-							<PanelColor
-								title={ __( "Color" ) }
-								colorValue={ ctaBtnLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBtnLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						}
-						<RangeControl
-							label={ __( "Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>						
-					</Fragment>
-					)
-					}
-
+					}		
 					{ ( ctaType !== "none" ) &&
 						<TextControl
 							label= { __( "Link" ) }
@@ -804,18 +764,7 @@ class UAGBinfoBox extends Component {
 									{ value: "lg", label: __( "Large" ) },
 									{ value: "xl", label: __( "Extra Large" ) },
 								] }
-							/>
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ ctaBgColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBgColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							/>							
 
 							<RangeControl
 								label={ __( "Padding" ) }
@@ -880,6 +829,7 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
+		
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -947,12 +897,32 @@ class UAGBinfoBox extends Component {
 							allowReset
 						/>
 					</PanelBody>
+
+					{ ( ctaType === "text" || ctaType === "button" ) &&
+					( <PanelBody
+						title={ __( "CTA" ) }
+						initialOpen={ true }
+					>						
+						
+						<RangeControl
+							label={ __( "Font Size" ) }
+							value={ ctaFontSize }
+							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>						
+					</PanelBody>
+					)
+					}
+					
 				</PanelBody>
 
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					colorSettings={ [
-								 {
+						{
 							value: prefixColor,
 							onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
 							label: __( "Prefix Title Color" ),
@@ -966,10 +936,53 @@ class UAGBinfoBox extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Description Color" ),
-						},
+						},														
+											
 					] }
 				>
+				{ ( ctaType === "text") &&
+							<PanelColor
+								title={ __( "CTA Color" ) }
+								colorValue={ ctaLinkColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaLinkColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+						}
+						{ ( ctaType === "button") &&
+							<Fragment>
+							<PanelColor
+								title={ __( "CTA Color" ) }
+								colorValue={ ctaBtnLinkColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaBtnLinkColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+
+							<PanelColor
+								title={ __( "Background Color" ) }
+								colorValue={ ctaBgColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaBgColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+							</Fragment>
+						}
 				</PanelColorSettings>
+
+
 			</Fragment>
 		)
 
