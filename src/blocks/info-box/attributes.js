@@ -240,78 +240,7 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 120,
-	},
-	backgroundType: {
-		type: "string",
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundOpacity: {
-		type: "number",
-		default: "100"
-	},
-	backgroundColor: {
-		type: "string",
-	},
-	gradientColor1: {
-		type: "string",
-	},
-	gradientColor2: {
-		type: "string",
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
-		type: "number",
-		default: "0"
-	},
-	gradientLocation2: {
-		type: "number",
-		default: "100"
-	},
-	gradientAngle: {
-		type: "number",
-		default: "0"
-	},
-	gradientDirection:{
-		type: "string",
-		default: "center_center"
 	},	
-	enableBorder: {
-		type: "boolean",
-		default: false,
-	},
-	borderstyle :{
-		type : "string",
-		default : "solid"
-	},
-	borderWidth: {
-		type: "number",
-		default : 1
-	},
-	borderRadius: {
-		type: "number",
-		default : 0
-	},
-	borderColor: {
-		type: "string",
-		default : ""
-	},
 }
 
 export default attributes

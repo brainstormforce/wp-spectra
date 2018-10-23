@@ -489,73 +489,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                	$selectors[' .uagb-infobox__content-wrap'] = array(                   
 	                'text-align' => $attr->headingAlign,                   
 	            );
-            }
-
-            if( 'gradient' !== $attr->backgroundType || 'image' === $attr->backgroundType ){
-                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
-                    'background-color' => $attr->backgroundColor,
-                    'opacity'=> $opacity,                    
-                );                
-            }
-
-            if( 'image' === $attr->backgroundType ){
-            	$position = '';
-            	$position = str_replace( "-"," ",$attr->backgroundPosition );
-                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
-                    'background-image'    => ( $attr->backgroundImage ) ? 'url('.$attr->backgroundImage['url'].')' : 'null',
-                    'background-size'     => $attr->backgroundSize,
-                    'background-repeat'   => $attr->backgroundRepeat,
-                    'background-position' => $position,                    
-                );
-
-                $selectors[' .uagb-infobox-overlay'] = array(
-                    'background-color'=> $attr->backgroundColor,
-                    'opacity'=>$opacity,
-                ); 
-            }else if ( "gradient" === $attr->backgroundType ) {  
-                $grad_bg_color ='';                
-                $gd_position = str_replace( "_"," ",$attr->gradientDirection );
-                
-                if ( "linear" === $attr->gradientType ) {  
-                	$gd_position = str_replace( " center","",$gd_position );
-                    if( 'center' === $gd_position ){
-                        $gd_position = 'top';
-                    }  
-
-                  $grad_bg_color = 'linear-gradient( to '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
-                 
-                } else {
-                	$grad_bg_color = 'radial-gradient( at '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
-                }
-
-                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] =  array(
-                    'background' =>$grad_bg_color,                                     
-                );
-
-                $selectors[' .uagb-infobox-overlay'] =  array(
-                    'opacity'=> $opacity,
-                ); 
-            }	             
-
-	        // Border for block.	       
-            if( $attr->enableBorder == 'true' ){   
-                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border'] = array(
-                    'border-color' => ( isset( $attr->borderColor ) && '' !== $attr->borderColor  ) ?  $attr->borderColor: 'inherit',
-                    'border-style' => ( isset( $attr->borderstyle ) && '' !== $attr->borderstyle ) ?  $attr->borderstyle: 'inherit',
-                    'border-width' => ( isset( $attr->borderWidth ) && '' !== $attr->borderWidth ) ?  $attr->borderWidth.'px': 'inherit',
-                    'border-radius' => ( isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
-                );           
-            }else{            	
-	        	var_dump('here');
-                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border-radius'] = array(
-                    'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',                    
-                );
-            }
-      
+            }            
+            
 			// @codingStandardsIgnoreEnd.
 				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
 		}
-
 
 	}
 }
