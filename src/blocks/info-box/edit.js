@@ -64,23 +64,13 @@ class UAGBinfoBox extends Component {
 
 		super( ...arguments )
 		this.getTimelineicon = this.getTimelineicon.bind(this)
-		this.toggleSeperator = this.toggleSeperator.bind( this )
 		this.toggleBorder    = this.toggleBorder.bind( this )
+		this.toggleTarget    = this.toggleTarget.bind( this )
 	}
 
 	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
-	}	
-
-	/**
-	 * Function Name: toggleSeperator.
-	 */
-	toggleSeperator() {
-		const { enableSeperator } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { enableSeperator: ! enableSeperator } )
-	}
+	}		
 
 	/**
 	 * Function Name: toggleBorder.
@@ -91,6 +81,17 @@ class UAGBinfoBox extends Component {
 
 		setAttributes( { enableBorder: ! enableBorder } )
 	}
+
+	/**
+	 * Function Name: toggleTarget.
+	 */
+	toggleTarget() {
+		const { ctaTarget } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { ctaTarget: ! ctaTarget } );
+	}
+	
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -141,6 +142,7 @@ class UAGBinfoBox extends Component {
 			subHeadFontSize,
 			separatorWidth,
 			separatorHeight,
+			seperatorSpace,
 			headSpace,
 			separatorSpace,
 			subHeadSpace,
@@ -162,7 +164,6 @@ class UAGBinfoBox extends Component {
 			source_type,
 			iconimgbgSize,
 			sourceAlign,
-			enableSeperator,
 			seperatorStyle,
 			seperatorWidth,
 			seperatorColor,
@@ -170,9 +171,9 @@ class UAGBinfoBox extends Component {
 			ctaType,
 			ctaText,
 			ctaLink,
+			ctaTarget,
 			ctaLinkColor,
 			ctaFontSize,
-			ctaLineHeight,
 			ctaBtnSize,
 			ctaBtnLinkColor,
 			ctaBgColor,
@@ -399,7 +400,7 @@ class UAGBinfoBox extends Component {
 					<Fragment>
 
 						<PanelColorSettings
-							title={ __( "GradientColor Color Settings" ) }
+							title={ __( "Gradient Color Settings" ) }
 							colorSettings={ [
 								 {
 									value: gradientColor1,
@@ -457,14 +458,16 @@ class UAGBinfoBox extends Component {
 						/>
 					</Fragment>
 					}
-					<RangeControl
-						label={ __( "Opacity" ) }
-						value={ backgroundOpacity }
-						onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>
+					{ "gradient" !== backgroundType &&
+						<RangeControl
+							label={ __( "Opacity" ) }
+							value={ backgroundOpacity }
+							onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+					}
 					{ block_settings }
 				</PanelBody>
 			</Fragment>
@@ -486,7 +489,7 @@ class UAGBinfoBox extends Component {
 					/>
 				</PanelColor>
 				}
-				{ ( iconimgStyle && iconimgStyle != "normal" )  &&
+				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" )  &&
 					<PanelColor
 						title={ __( "Background Color" ) }
 						colorValue={ iconimgBg }
@@ -577,7 +580,7 @@ class UAGBinfoBox extends Component {
 				</PanelColor>
 				}
 
-				{ ( iconimgStyle && iconimgStyle != "normal" ) &&
+				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) &&
 					<PanelColor
 						title={ __( "Background Color" ) }
 						colorValue={ iconBgHover }
@@ -676,27 +679,22 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				<PanelBody
 					title={ __( "Seperator" ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( "Seperator" ) }
-						checked={ enableSeperator }
-						onChange={ this.toggleSeperator }
-					/>
-
-					{ enableSeperator &&
-					( <Fragment>
+					initialOpen={ false } >					
+					 
 						<SelectControl
 							label={ __( "Style" ) }
 							value={ seperatorStyle }
 							onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 							options={ [
+								{ value: "none", label: __( "None" ) },								
 								{ value: "solid", label: __( "Solid" ) },
 								{ value: "double", label: __( "Double" ) },
 								{ value: "dashed", label: __( "Dashed" ) },
 								{ value: "dotted", label: __( "Dotted" ) },
 							] }
 						/>
+					{ 'none' !== seperatorStyle &&
+					( <Fragment>
 						<PanelColor
 							title={ __( "Color" ) }
 							colorValue={ seperatorColor }
@@ -714,7 +712,7 @@ class UAGBinfoBox extends Component {
 							value={ seperatorThickness }
 							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 10 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
@@ -750,70 +748,29 @@ class UAGBinfoBox extends Component {
 							{ value: "none", label: __( "None" ) },
 							{ value: "text", label: __( "Text" ) },
 							{ value: "button", label: __( "Button" ) },
+							{ value: "all", label: __( "Complete Box" ) },
 						] }
-					/>
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&
-					( <Fragment>
-						<TextControl
+					/>		
+					{ ( ctaType === "text" || ctaType === "button" ) &&			
+					<TextControl
 							label= { __( "Text" ) }
 							value= { ctaText }
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
-						{ ( ctaType === "text") &&
-							<PanelColor
-								title={ __( "Color" ) }
-								colorValue={ ctaLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						}
-						{ ( ctaType === "button") &&
-							<PanelColor
-								title={ __( "Color" ) }
-								colorValue={ ctaBtnLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBtnLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
-						}
-						<RangeControl
-							label={ __( "Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Line Height" ) }
-							value={ ctaLineHeight }
-							onChange={ ( value ) => setAttributes( { ctaLineHeight: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</Fragment>
-					)
-					}
-
+					}		
 					{ ( ctaType !== "none" ) &&
+						<Fragment>
 						<TextControl
 							label= { __( "Link" ) }
 							value= { ctaLink }
 							onChange={ value => setAttributes( { ctaLink: value } ) }
 						/>
+						<ToggleControl
+							label={ __( 'Open in new Window' ) }
+							checked={ ctaTarget }
+							onChange={ this.toggleTarget }
+						/>						
+						</Fragment>
 					}
 
 					{ ( ctaType == "button" ) && (
@@ -829,18 +786,7 @@ class UAGBinfoBox extends Component {
 									{ value: "lg", label: __( "Large" ) },
 									{ value: "xl", label: __( "Extra Large" ) },
 								] }
-							/>
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ ctaBgColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBgColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							/>							
 
 							<RangeControl
 								label={ __( "Padding" ) }
@@ -905,6 +851,7 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
+		
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -917,19 +864,7 @@ class UAGBinfoBox extends Component {
 						title={ __( "Title Prefix" ) }
 						initialOpen={ true }
 					>
-						{/*<SelectControl
-							label={ __( "Title Prefix Tag" ) }
-							value={ prefixTag }
-							onChange={ ( value ) => setAttributes( { prefixTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>*/}
+						
 						<RangeControl
 							label={ __( "Prefix Font Size" ) }
 							value={ prefixFontSize }
@@ -984,12 +919,32 @@ class UAGBinfoBox extends Component {
 							allowReset
 						/>
 					</PanelBody>
+
+					{ ( ctaType === "text" || ctaType === "button" ) &&
+					( <PanelBody
+						title={ __( "CTA" ) }
+						initialOpen={ true }
+					>						
+						
+						<RangeControl
+							label={ __( "Font Size" ) }
+							value={ ctaFontSize }
+							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>						
+					</PanelBody>
+					)
+					}
+					
 				</PanelBody>
 
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					colorSettings={ [
-								 {
+						{
 							value: prefixColor,
 							onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
 							label: __( "Prefix Title Color" ),
@@ -1003,10 +958,53 @@ class UAGBinfoBox extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Description Color" ),
-						},
+						},														
+											
 					] }
 				>
+				{ ( ctaType === "text") &&
+							<PanelColor
+								title={ __( "CTA Color" ) }
+								colorValue={ ctaLinkColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaLinkColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+						}
+						{ ( ctaType === "button") &&
+							<Fragment>
+							<PanelColor
+								title={ __( "CTA Color" ) }
+								colorValue={ ctaBtnLinkColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaBtnLinkColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+
+							<PanelColor
+								title={ __( "Background Color" ) }
+								colorValue={ ctaBgColor }
+								initialOpen={ false }
+							>
+								<ColorPalette
+									value={ ctaBgColor }
+									onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+							</Fragment>
+						}
 				</PanelColorSettings>
+
+
 			</Fragment>
 		)
 
@@ -1062,9 +1060,18 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
+					<RangeControl
+						label={ __( "Seperator Bottom Margin" ) }
+						value={ seperatorSpace }
+						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
 
 					<PanelBody
-						title={ __( "Icon Margins" ) }
+						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }
 					>
 						<RangeControl
@@ -1216,7 +1223,7 @@ class UAGBinfoBox extends Component {
 
 						{ ( source_type && source_type == "image" ) && imageControls }
 
-						{ ( iconimgStyle && iconimgStyle != "normal" ) && <RangeControl
+						{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) && <RangeControl
 							label={ __( "Background Size" ) }
 							value={ iconimgbgSize }
 							onChange={ ( value ) => setAttributes( { iconimgbgSize: value } ) }
@@ -1224,11 +1231,13 @@ class UAGBinfoBox extends Component {
 							max={ 300 }
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>
+						/>		
+
 						}
 
+						{ ( source_type && source_type == "icon" ) && iconImageSettings }
 
-						{ iconImageSettings }
+						{ ( source_type && source_type == "image" ) && ( iconimgStyle && iconimgStyle == "custom" ) && iconImageSettings }
 					</PanelBody>
 
 					{ seperatorSettings }
@@ -1277,7 +1286,7 @@ class UAGBinfoBox extends Component {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ enableSeperator && <InfoBoxSeperator attributes={attributes} /> }
+				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<InfoBoxCta attributes={attributes} />
@@ -1294,22 +1303,12 @@ class UAGBinfoBox extends Component {
 				</div>
 			</Fragment>
 		)
+		
 
-		return (
+		const output = (
 			<Fragment>
-				{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") &&
-					<BlockControls key='controls'>
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-						/>
-					</BlockControls>
-				}
-				{inspect_control}
-				<div className={ ClassNamesId }>
-					{/*<style dangerouslySetInnerHTML={{ __html: back_style }}></style>*/}
-					<div className = { classnames(
-						"uagb-module-content",
+				<div className = { classnames(
+						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses( attributes ),
 					) }>
 						<div className = "uagb-infobox-overlay"></div>
@@ -1362,6 +1361,27 @@ class UAGBinfoBox extends Component {
 							}
 						</div>
 					</div>
+			</Fragment>
+			)
+
+		return (
+			<Fragment>
+				{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") &&
+					<BlockControls key='controls'>
+						<AlignmentToolbar
+							value={ headingAlign }
+							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+						/>
+					</BlockControls>
+				}
+				{inspect_control}
+				<div className={ ClassNamesId }>
+					{ ( ctaType == "all") &&
+						<Fragment>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" > {output}</a>
+						</Fragment>
+					}						
+					{ ( ctaType !== "all") && output }
 				</div>
 			</Fragment>
 		)

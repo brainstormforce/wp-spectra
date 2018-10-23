@@ -84,12 +84,14 @@ registerBlockType( "uagb/info-box", {
 			iconimgPosition,
 			block_id,
 			source_type,
-			enableSeperator,
+			seperatorStyle,
 			backgroundType,
+			ctaType,
+			ctaLink,
+			ctaTarget,
 			className
 		} = props.attributes
 
-		//console.log(enableSeperator);
 
 		const my_block_id = "uagb-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
@@ -110,7 +112,7 @@ registerBlockType( "uagb/info-box", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ enableSeperator && <InfoBoxSeperator attributes={props.attributes} /> }
+				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
 					<InfoBoxCta attributes={props.attributes} />
@@ -128,13 +130,10 @@ registerBlockType( "uagb/info-box", {
 			</Fragment>
 		)
 
-		//return null;
-
-		return (
+		const output = (
 			<Fragment>
-				<div className={ ClassNamesId }>
-					<div className = { classnames(
-						"uagb-module-content",
+				<div className = { classnames(
+						"uagb-infobox__content-wrap",
 						...InfoBoxPositionClasses(  props.attributes  ),
 					) }>
 						<div className = "uagb-infobox-overlay"></div>
@@ -187,6 +186,23 @@ registerBlockType( "uagb/info-box", {
 							}
 						</div>
 					</div>
+			</Fragment>
+			)
+
+		let target ='';
+		if( ctaTarget ){
+			target ='_blank';
+		}
+
+		return (
+			<Fragment>
+				<div className={ ClassNamesId }>
+					{ ( ctaType == "all") &&
+						<Fragment>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
+						</Fragment>
+					}						
+					{ ( ctaType !== "all") && output }
 				</div>
 			</Fragment>
 		)

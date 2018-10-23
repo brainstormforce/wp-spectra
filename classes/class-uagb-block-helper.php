@@ -377,7 +377,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-module-content .uagb-imgicon-wrap' => array(
+	            ' .uagb-infobox__content-wrap .uagb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
 	                    'margin-top'    => $attr->iconTopMargin.'px',
@@ -386,12 +386,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	            // Image.
 	            ' .uagb-image-content > img' => array(
+	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
 
 	            ' .uagb-imgicon-style-circle .uagb-image-content img' => array(                    
-	                    'padding'    => $attr->iconimgbgSize.'px',
-	                    'background' => $attr->iconimgBg,
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
@@ -399,8 +398,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background' => $attr->iconBgHover,                                       
 	            ),
 	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
-	                    'padding'    => $attr->iconimgbgSize.'px',
-	                    'background' => $attr->iconimgBg,
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
@@ -408,8 +405,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background' => $attr->iconBgHover,                                       
 	            ),
 	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
-	                    'padding'       => $attr->iconimgbgSize.'px',
-	                    'background'    => $attr->iconimgBg,
 	                    'display'       => 'inline-block',
 	                    'box-sizing'    => 'content-box',
 	                    'border-style'  => $attr->iconimgBorderstyle,
@@ -423,8 +418,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
 	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
-	                'padding'    => $attr->iconimgbgSize.'px',
-	                'background' => $attr->iconimgBg,
 	                'display'    => 'inline-block',
 	                'box-sizing' => 'content-box',
 	            ),
@@ -432,8 +425,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'background' =>  $attr->iconBgHover,                                       
 	            ),
 	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
-	                'padding'       => $attr->iconimgbgSize.'px',
-	                'background'    => $attr->iconimgBg,
 	                'display'       => 'inline-block',
 	                'box-sizing'    => 'content-box',
 	                'border-style'  => $attr->iconimgBorderstyle,
@@ -449,52 +440,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ' .uagb-image-content .components-button svg' => array(
 	                    'width'=>  $attr->imageWidth.'px',
 	            ),
-	            ' .uagb-imgicon-style-circle .components-button svg' => array(                    
-	                'padding'       => $attr->iconimgbgSize.'px',
-	                'background'    => $attr->iconimgBg,
-	                'display'       => 'inline-block',
-	                'box-sizing'    => 'content-box',
-	                'margin-left'   => $attr->iconLeftMargin.'px',
-	                'margin-right'  => $attr->iconRightMargin.'px',
-	                'margin-top'    => $attr->iconTopMargin.'px',
-	                'margin-bottom' => $attr->iconBottomMargin.'px',
-	            ),
-	            ' .uagb-imgicon-style-square .components-button svg' => array(                    
-	                'padding'       => $attr->iconimgbgSize.'px',
-	                'background'    => $attr->iconimgBg,
-	                'display'       => 'inline-block',
-	                'box-sizing'    => 'content-box',
-	                'margin-left'   => $attr->iconLeftMargin.'px',
-	                'margin-right'  => $attr->iconRightMargin.'px',
-	                'margin-top'    => $attr->iconTopMargin.'px',
-	                'margin-bottom' => $attr->iconBottomMargin.'px',
-	            ),
-	            ' .uagb-imgicon-style-custom .components-button svg' => array(                    
-	                'padding'       => $attr->iconimgbgSize.'px',
-	                'background'    => $attr->iconimgBg,
-	                'display'       => 'inline-block',
-	                'box-sizing'    => 'content-box',
-	                'border-style'  => $attr->iconimgBorderstyle,
-	                'border-width'  => $attr->iconimgBorderWidth.'px',
-	                'border-radius' => $attr->iconimgBorderRadius.'px',
-	                'border-color'  => $attr->iconimgBorder,
-	                'box-sizing'    => 'content-box',
-	                'margin-left'   => $attr->iconLeftMargin.'px',
-	                'margin-right'  => $attr->iconRightMargin.'px',
-	                'margin-top'    => $attr->iconTopMargin.'px',
-	                'margin-bottom' => $attr->iconBottomMargin.'px',
-	            ),            
 
 	            // CTA style .
 	            ' .uagb-infobox-cta-link' => array(
 	                'font-size'   => $attr->ctaFontSize.'px',
 	                'color'       => $attr->ctaLinkColor,
-	                'line-height' => $attr->ctaLineHeight.'px',
 	            ),
 	            ' .uagb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
-	                'line-height'      => $attr->ctaLineHeight.'px',
 	                'background-color' => $attr->ctaBgColor,
 	                'border-style'     => $attr->ctaBorderStyle,
 	                'border-color'     => $attr->ctaBorderColor,
@@ -530,18 +484,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-top-width' => $attr->seperatorThickness.'px',
 	                'border-top-color' => $attr->seperatorColor,
 	                'border-top-style' => $attr->seperatorStyle,
+	                'margin-bottom' => $attr->seperatorSpace.'px',	                
 	            ),	          
                
 			);
 						
 			if( 'above-title' === $attr->iconimgPosition ||  'below-title' === $attr->iconimgPosition ){
-               	$selectors[' .uagb-module-content'] = array(                   
+               	$selectors[' .uagb-infobox__content-wrap'] = array(                   
 	                'text-align' => $attr->headingAlign,                   
 	            );
             }
 
             if( 'gradient' !== $attr->backgroundType || 'image' === $attr->backgroundType ){
-                $selectors[' .uagb-module-content.uagb-infobox'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
                     'background-color' => $attr->backgroundColor,
                     'opacity'=> $opacity,
                     'margin'=>   isset( $attr->blockMargin ) && ( '' !== $attr->blockMargin ) ? $attr->blockMargin.'px': 'inherit',
@@ -551,7 +506,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             if( 'image' === $attr->backgroundType ){
             	$position = '';
             	$position = str_replace( "-"," ",$attr->backgroundPosition );
-                $selectors[' .uagb-module-content.uagb-infobox'] = array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] = array(
                     'background-image'    => ( $attr->backgroundImage ) ? 'url('.$attr->backgroundImage['url'].')' : 'null',
                     'background-size'     => $attr->backgroundSize,
                     'background-repeat'   => $attr->backgroundRepeat,
@@ -579,7 +534,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 	$grad_bg_color = 'radial-gradient( at '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
                 }
 
-                $selectors[' .uagb-module-content.uagb-infobox'] =  array(
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] =  array(
                     'background' =>$grad_bg_color,
                     'margin'=>  ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin+'px': 'inherit',                   
                 );
@@ -593,16 +548,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 'padding'=> ( isset( $attr->blockPadding ) && '' !== $attr->blockPadding ) ? $attr->blockPadding.'px': 'inherit',
             );        
 
-	        // Border for block.
-            if( $attr->enableBorder ){   
-                $selectors[' .uagb-module-content.uagb-infobox-enable-border'] = array(
+	        // Border for block.	       
+            if( $attr->enableBorder == 'true' ){   
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border'] = array(
                     'border-color' => ( isset( $attr->borderColor ) && '' !== $attr->borderColor  ) ?  $attr->borderColor: 'inherit',
                     'border-style' => ( isset( $attr->borderstyle ) && '' !== $attr->borderstyle ) ?  $attr->borderstyle: 'inherit',
                     'border-width' => ( isset( $attr->borderWidth ) && '' !== $attr->borderWidth ) ?  $attr->borderWidth.'px': 'inherit',
                     'border-radius' => ( isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
                 );           
-            }else{
-                $selectors[' .uagb-module-content.uagb-infobox-enable-border-radius'] = array(
+            }else{            	
+	        	var_dump('here');
+                $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border-radius'] = array(
                     'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',                    
                 );
             }

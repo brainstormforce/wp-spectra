@@ -5,7 +5,7 @@
 const attributes = {
 	prefixTitle: {
 		selector: "span.uagb-infobox-title-prefix",
-		default: "Hello",
+		default: "Prefix",
 	},
 	infoBoxTitle: {
 		selector: "h1,h2,h3,h4,h5,h6",
@@ -14,7 +14,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: "Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo",
+		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
 	headingAlign: {
 		type: "string",
@@ -70,7 +70,7 @@ const attributes = {
 	},
 	headingTag: {
 		type: "string",
-		default: "h1"
+		default: "h3"
 	},
 	separatorHeight: {
 		type: "number"
@@ -92,6 +92,10 @@ const attributes = {
 	},
 	subHeadSpace: {
 		type: "number",
+	},
+	seperatorSpace:{
+		type: "number",
+		default : 10,
 	},
 	iconimgBg : {
 		type : "string",
@@ -133,10 +137,10 @@ const attributes = {
 		type : "string",
 		default : "top"
 	},
-	enableSeperator: {
+	ctaTarget: {
 		type: "boolean",
-		default: true,
-	},
+		default: false,
+	},	
 	seperatorStyle: {
 		type: "string",
 		default: "solid",
@@ -172,11 +176,7 @@ const attributes = {
 	ctaFontSize :{
 		type: "number",
 		default : 12
-	},
-	ctaLineHeight :{
-		type: "number",
-		default : 12
-	},
+	},	
 	ctaBtnSize: {
 		type: "string",
 		default: "sm",
