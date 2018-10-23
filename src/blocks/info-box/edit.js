@@ -64,23 +64,12 @@ class UAGBinfoBox extends Component {
 
 		super( ...arguments )
 		this.getTimelineicon = this.getTimelineicon.bind(this)
-		this.toggleSeperator = this.toggleSeperator.bind( this )
 		this.toggleBorder    = this.toggleBorder.bind( this )
 	}
 
 	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
-	}	
-
-	/**
-	 * Function Name: toggleSeperator.
-	 */
-	toggleSeperator() {
-		const { enableSeperator } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { enableSeperator: ! enableSeperator } )
-	}
+	}		
 
 	/**
 	 * Function Name: toggleBorder.
@@ -162,7 +151,6 @@ class UAGBinfoBox extends Component {
 			source_type,
 			iconimgbgSize,
 			sourceAlign,
-			enableSeperator,
 			seperatorStyle,
 			seperatorWidth,
 			seperatorColor,
@@ -677,27 +665,22 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				<PanelBody
 					title={ __( "Seperator" ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( "Seperator" ) }
-						checked={ enableSeperator }
-						onChange={ this.toggleSeperator }
-					/>
-
-					{ enableSeperator &&
-					( <Fragment>
+					initialOpen={ false } >					
+					 
 						<SelectControl
 							label={ __( "Style" ) }
 							value={ seperatorStyle }
 							onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 							options={ [
+								{ value: "none", label: __( "None" ) },								
 								{ value: "solid", label: __( "Solid" ) },
 								{ value: "double", label: __( "Double" ) },
 								{ value: "dashed", label: __( "Dashed" ) },
 								{ value: "dotted", label: __( "Dotted" ) },
 							] }
 						/>
+					{ 'none' !== seperatorStyle &&
+					( <Fragment>
 						<PanelColor
 							title={ __( "Color" ) }
 							colorValue={ seperatorColor }
@@ -1257,7 +1240,7 @@ class UAGBinfoBox extends Component {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ enableSeperator && <InfoBoxSeperator attributes={attributes} /> }
+				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<InfoBoxCta attributes={attributes} />
