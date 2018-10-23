@@ -157,8 +157,6 @@ function InfoBoxStyle( props ) {
 	} 
 
 	selectors[".uagb-imgicon-style-circle .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
@@ -168,19 +166,11 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-square .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-image-content img:hover"] = {
-		//"background" : iconBgHover,                                       
-	}
-
 	selectors[".uagb-imgicon-style-custom .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -191,7 +181,6 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-custom .uagb-image-content img:hover"] = {
-		//"background" : iconBgHover,  
 		"border-color" : iconimgBorderHover,                                     
 	}
 
@@ -200,8 +189,6 @@ function InfoBoxStyle( props ) {
 	} 
 
 	selectors[".uagb-imgicon-style-circle .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",  
 		"margin-left" : iconLeftMargin+"px",
@@ -211,8 +198,6 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-square .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",    
 		"margin-left" : iconLeftMargin+"px",
@@ -222,8 +207,6 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-imgicon-style-custom .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -382,26 +365,7 @@ function InfoBoxStyle( props ) {
 
 		styling_css += css + " } "
 	}
-
-	/*// Responsive css.
-        styling_css += '@media(max-width:768px){'; 
-        for( var i in response_selector ) {
-
-           
-            styling_css += '.'+clientId+i + ' { ';           
-            
-            var sel = response_selector[i];
-            var css = '';
-
-            for( var j in sel ) {
-
-                css += j + ': ' + sel[j] + ';';
-            }
-
-            styling_css += css + ' } ';
-        }        
-        styling_css += '}';*/
-
+	
 	return styling_css
 
 }

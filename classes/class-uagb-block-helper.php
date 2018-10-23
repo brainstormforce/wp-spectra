@@ -389,14 +389,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
-
 	            ' .uagb-imgicon-style-circle .uagb-image-content img' => array(                    
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
-	                ),
-	            ' .uagb-imgicon-style-circle .uagb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,                                       
-	            ),
+	                ),	            
 	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
