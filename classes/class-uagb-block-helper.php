@@ -547,15 +547,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 'padding'=> ( isset( $attr->blockPadding ) && '' !== $attr->blockPadding ) ? $attr->blockPadding.'px': 'inherit',
             );        
 
-	        // Border for block.
-            if( $attr->enableBorder ){   
+	        // Border for block.	       
+            if( $attr->enableBorder == 'true' ){   
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border'] = array(
                     'border-color' => ( isset( $attr->borderColor ) && '' !== $attr->borderColor  ) ?  $attr->borderColor: 'inherit',
                     'border-style' => ( isset( $attr->borderstyle ) && '' !== $attr->borderstyle ) ?  $attr->borderstyle: 'inherit',
                     'border-width' => ( isset( $attr->borderWidth ) && '' !== $attr->borderWidth ) ?  $attr->borderWidth.'px': 'inherit',
                     'border-radius' => ( isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
                 );           
-            }else{
+            }else{            	
+	        	var_dump('here');
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border-radius'] = array(
                     'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',                    
                 );
