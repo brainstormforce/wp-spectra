@@ -457,14 +457,16 @@ class UAGBinfoBox extends Component {
 						/>
 					</Fragment>
 					}
-					<RangeControl
-						label={ __( "Opacity" ) }
-						value={ backgroundOpacity }
-						onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>
+					{ "gradient" !== backgroundType &&
+						<RangeControl
+							label={ __( "Opacity" ) }
+							value={ backgroundOpacity }
+							onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+					}
 					{ block_settings }
 				</PanelBody>
 			</Fragment>
