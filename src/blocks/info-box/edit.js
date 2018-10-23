@@ -716,7 +716,7 @@ class UAGBinfoBox extends Component {
 							value={ seperatorThickness }
 							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 10 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
