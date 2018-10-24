@@ -320,12 +320,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_info_box_css( $attr, $id ) {
 
 			// @codingStandardsIgnoreStart.
-
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
-			$attr = (object) array_merge( $defaults, (array) $attr );
-
-			$opacity = ( isset( $attr->backgroundOpacity )  && ($attr->backgroundOpacity !== '') ) ?  $attr->backgroundOpacity/100 : 0;
+			$attr = (object) array_merge( $defaults, (array) $attr );			
 
 			$selectors = array(
 				' .uagb-icon'  => array(

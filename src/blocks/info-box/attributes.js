@@ -183,25 +183,26 @@ const attributes = {
 	},
 	ctaBtnLinkColor :{
 		type: "string",
-		default: "#fff",
+		default: "#333",
 	},
 	ctaBgColor :{
 		type: "string",
-		default: "#61ce70",
+		default:"transparent",
 	},
 	ctaBorderColor: {
 		type: "string",
-		default: "",
+		default: "#333",
 	},
 	ctaBorderStyle: {
 		type: "string",
-		default: "none",
+		default: "solid",
 	},
 	ctaBtnPadding :{
 		type: "number",
 	},
 	ctaBorderWidth :{
 		type: "number",
+		default: 1,
 	},
 	ctaBorderRadius :{
 		type: "number",
