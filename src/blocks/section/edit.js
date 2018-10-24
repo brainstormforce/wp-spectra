@@ -206,7 +206,7 @@ class UAGBSectionEdit extends Component {
 							] }
 						/>
 					</PanelBody>
-					<PanelBody title={ __( "Spacing" ) }>
+					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Left Padding" ) }
 							value={ leftPadding }
@@ -272,7 +272,7 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody title={ __( "Background" ) }>
+					<PanelBody title={ __( "Background" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Background Type" ) }
 							value={ backgroundType }
@@ -315,7 +315,7 @@ class UAGBSectionEdit extends Component {
 									) }
 								/>
 								{ !! backgroundImage &&
-									<Button onClick={ this.onRemoveImage } isLink isDestructive>
+									<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 										{ __( "Remove Image" ) }
 									</Button>
 								}
@@ -454,7 +454,7 @@ class UAGBSectionEdit extends Component {
 									value={ backgroundVideo }
 									render={ ( { open } ) => (
 										<Button isDefault onClick={ open }>
-											{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace image" ) }
+											{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
 										</Button>
 									) }
 								/>
@@ -465,7 +465,7 @@ class UAGBSectionEdit extends Component {
 								}
 							</BaseControl>
 						}
-						{ "video" != backgroundType &&
+						{ "video" != backgroundType && "none" != backgroundType &&
 							<RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }

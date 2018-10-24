@@ -363,9 +363,11 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headSpace: {
 			type: "number",
+			default: 15
 		},
 		separatorSpace: {
 			type: "number",
+			default: 15
 		},
 		subHeadSpace: {
 			type: "number",
