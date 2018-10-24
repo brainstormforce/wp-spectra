@@ -260,6 +260,8 @@ function InfoBoxStyle( props ) {
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
+	}	
+	selectors[".uagb-ifb-separator-parent"] = {		
 		"margin-bottom":seperatorSpace+"px"
 	}	
 

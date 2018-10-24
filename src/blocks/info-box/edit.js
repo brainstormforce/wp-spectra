@@ -996,7 +996,7 @@ class UAGBinfoBox extends Component {
 		const desc = (
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
-				<div className = "uagb-infobox-text-wrap">
+				<div className = "uagb-ifb-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<InfoBoxCta attributes={attributes} />
 				</div>
@@ -1006,7 +1006,7 @@ class UAGBinfoBox extends Component {
 		// Get Title and Prefix components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-infobox-title-wrap">
+				<div className = "uagb-ifb-title-wrap">
 					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 				</div>

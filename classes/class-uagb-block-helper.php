@@ -477,8 +477,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-top-width' => $attr->seperatorThickness.'px',
 	                'border-top-color' => $attr->seperatorColor,
 	                'border-top-style' => $attr->seperatorStyle,
+	            ),	  
+	            ' .uagb-ifb-separator-parent' => array(	                
 	                'margin-bottom' => $attr->seperatorSpace.'px',	                
-	            ),	          
+	            ),	         
                
 			);
 						

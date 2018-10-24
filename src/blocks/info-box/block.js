@@ -123,7 +123,7 @@ registerBlockType( "uagb/info-box", {
 		// Get Title and Prefix components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-infobox-title-wrap">
+				<div className = "uagb-ifb-title-wrap">
 					<Prefix attributes={ props.attributes } setAttributes = "not_set"/>
 					<Title attributes={ props.attributes} setAttributes = "not_set"/>
 				</div>

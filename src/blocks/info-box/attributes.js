@@ -86,12 +86,11 @@ const attributes = {
 	},
 	headSpace: {
 		type: "number",
-	},
-	separatorSpace: {
-		type: "number",
-	},
+		default : 10,
+	},	
 	subHeadSpace: {
 		type: "number",
+		default : 10,
 	},
 	seperatorSpace:{
 		type: "number",
@@ -209,7 +208,7 @@ const attributes = {
 	},
 	prefixSpace :{
 		type: "number",
-		default: 10,
+		default: 5,
 	},
 	iconLeftMargin :{
 		type: "number",
