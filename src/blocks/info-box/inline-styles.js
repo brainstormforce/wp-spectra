@@ -248,7 +248,7 @@ function InfoBoxStyle( props ) {
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-infobox-desc"] = {
+	selectors[".editor-rich-text .uagb-ifb-desc"] = {
 		"font-size" : subHeadFontSize+"px",
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",

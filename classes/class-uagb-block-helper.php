@@ -465,7 +465,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ),
 
 	            // Description Style.
-	            ' .uagb-infobox-desc' => array(
+	            ' .uagb-ifb-desc' => array(
 	                'font-size'     => $attr->subHeadFontSize.'px',
 	                'color'         => $attr->subHeadingColor,
 	                'margin-bottom' => $attr->subHeadSpace.'px',
