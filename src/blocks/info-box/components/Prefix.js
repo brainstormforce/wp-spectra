@@ -25,7 +25,7 @@ class Prefix extends React.Component {
 				<RichText
 	                tagName="span"
 	                value={ attributes.prefixTitle }
-	                className='uagb-infobox-title-prefix'
+	                className='uagb-ifb-title-prefix'
 	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
 	                onMerge = { props.mergeBlocks }
 	                onSplit = {
@@ -47,7 +47,7 @@ class Prefix extends React.Component {
 				<RichText.Content
 	                tagName="span"
 	                value={ attributes.prefixTitle }
-	                className='uagb-infobox-title-prefix'
+	                className='uagb-ifb-title-prefix'
 	            />
 			)
 		}

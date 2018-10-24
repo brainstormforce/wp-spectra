@@ -64,23 +64,15 @@ class UAGBinfoBox extends Component {
 
 		super( ...arguments )
 		this.getTimelineicon = this.getTimelineicon.bind(this)
-		this.toggleBorder    = this.toggleBorder.bind( this )
 		this.toggleTarget    = this.toggleTarget.bind( this )
+		this.toggleResponsive    = this.toggleResponsive.bind( this )
+
 	}
 
 	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
-	}		
-
-	/**
-	 * Function Name: toggleBorder.
-	 */
-	toggleBorder() {
-		const { enableBorder } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { enableBorder: ! enableBorder } )
 	}
+
 
 	/**
 	 * Function Name: toggleTarget.
@@ -91,7 +83,16 @@ class UAGBinfoBox extends Component {
 
 		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
-	
+
+	/**
+	 * Function Name: toggleResponsive.
+	 */
+	toggleResponsive() {
+		const { responsiveDesign } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { responsiveDesign: ! responsiveDesign } );
+	}
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -190,27 +191,7 @@ class UAGBinfoBox extends Component {
 			iconImage,
 			imageSize,
 			imageWidth,
-			backgroundType,
-			backgroundColor,
-			backgroundImage,
-			backgroundPosition,
-			backgroundSize,
-			backgroundRepeat,
-			backgroundOpacity,
-			gradientColor1,
-			gradientColor2,
-			gradientType,
-			gradientLocation1,
-			gradientLocation2,
-			gradientAngle,
-			gradientDirection,
-			blockPadding,
-			blockMargin,
-			enableBorder,
-			borderstyle,
-			borderWidth,
-			borderRadius,
-			borderColor
+			stack
 		} = attributes
 
 		// Add CSS.
@@ -230,248 +211,7 @@ class UAGBinfoBox extends Component {
 		}
 
 		const my_block_id = "uagb-"+this.props.clientId
-
-		const onSelectBGImage = ( media ) => {
-			if ( ! media || ! media.url ) {
-				setAttributes( { backgroundImage: null } )
-				return
-			}
-			setAttributes( { backgroundImage: media } )
-		}
-
-		const onRemoveBGImage = ( media ) => {
-			setAttributes( { backgroundImage: null } )
-		}
-
-		// Block border settings.
-		const block_settings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Block Border" ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( "Border" ) }
-						checked={ enableBorder }
-						onChange={ this.toggleBorder }
-					/>
-
-					{ enableBorder && <Fragment>
-						<PanelColor
-							title={ __( "Border Color" ) }
-							colorValue={ borderColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ borderColor }
-								onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-					 <SelectControl
-							label={ __( "Border Style" ) }
-							value={ borderstyle }
-							onChange={ ( value ) => setAttributes( { borderstyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-							] }
-						/>
-						<RangeControl
-							label = { __( "Border Width" ) }
-							value = { borderWidth }
-							onChange = { ( value ) => setAttributes( { borderWidth: value } ) }
-							min = { 0 }
-							max = { 30 }
-							beforeIcon = "editor-textcolor"
-							allowReset
-						/>
-					</Fragment>
-					}
-					<RangeControl
-						label = { __( "Rounded Corners" ) }
-						value = { borderRadius }
-						onChange = { ( value ) => setAttributes( { borderRadius: value } ) }
-						min = { 0 }
-						max = { 300 }
-						beforeIcon = "editor-textcolor"
-						allowReset
-					/>
-				</PanelBody>
-			</Fragment>
-		)
-		// Setting for block
-		const background_settings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Background" ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={ __( "Background Type" ) }
-						value={ backgroundType }
-						onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
-						options={ [
-							{ value: "color", label: __( "Color" ) },
-							{ value: "image", label: __( "Image" ) },
-							{ value: "gradient", label: __( "Gradient" ) },
-						] }
-					/>
-					{ "gradient" !== backgroundType &&
-					<PanelColor
-						title={ __( "Background Color" ) }
-						colorValue={ backgroundColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ backgroundColor }
-							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
-					}
-
-					{ backgroundType && backgroundType == "image" &&
-					(<Fragment>
-						<BaseControl
-							className="editor-bg-image-control"
-							label={ __( "Background Image" ) }
-						>
-							<MediaUpload
-								title={ __( "Select Background Image" ) }
-								onSelect={ onSelectBGImage }
-								type="image"
-								value={ backgroundImage }
-								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
-										{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
-									</Button>
-								) }
-							/>
-							{ !! backgroundImage &&
-								<Button onClick={ onRemoveBGImage } isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-						</BaseControl>
-						<SelectControl
-							label={ __( "Image Position" ) }
-							value={ backgroundPosition }
-							onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
-							options={ [
-								{ value: "top-left", label: __( "Top Left" ) },
-								{ value: "top-center", label: __( "Top Center" ) },
-								{ value: "top-right", label: __( "Top Right" ) },
-								{ value: "center-left", label: __( "Center Left" ) },
-								{ value: "center-center", label: __( "Center Center" ) },
-								{ value: "center-right", label: __( "Center Right" ) },
-								{ value: "bottom-left", label: __( "Bottom Left" ) },
-								{ value: "bottom-center", label: __( "Bottom Center" ) },
-								{ value: "bottom-right", label: __( "Bottom Right" ) },
-							] }
-						/>
-						<SelectControl
-							label={ __( "Repeat" ) }
-							value={ backgroundRepeat }
-							onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
-							options={ [
-								{ value: "no-repeat", label: __( "No Repeat" ) },
-								{ value: "repeat", label: __( "Repeat" ) },
-								{ value: "repeat-x", label: __( "Repeat-x" ) },
-								{ value: "repeat-y", label: __( "Repeat-y" ) }
-							] }
-						/>
-						<SelectControl
-							label={ __( "Size" ) }
-							value={ backgroundSize }
-							onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
-							options={ [
-								{ value: "auto", label: __( "Auto" ) },
-								{ value: "cover", label: __( "Cover" ) },
-								{ value: "contain", label: __( "Contain" ) }
-							] }
-						/>
-					</Fragment>)
-					}
-					{ "gradient" == backgroundType &&
-					<Fragment>
-
-						<PanelColorSettings
-							title={ __( "Gradient Color Settings" ) }
-							colorSettings={ [
-								 {
-									value: gradientColor1,
-									onChange: ( colorValue ) => setAttributes( { gradientColor1: colorValue } ),
-									label: __( "Color 1" ),
-								},
-								{
-									value: gradientColor2,
-									onChange: ( colorValue ) => setAttributes( { gradientColor2: colorValue } ),
-									label: __( "Color 2" ),
-								},
-							] }
-						>
-						</PanelColorSettings>
-						<SelectControl
-							label={ __( "Type" ) }
-							value={ gradientType }
-							onChange={ ( value ) => setAttributes( { gradientType: value } ) }
-							options={ [
-								{ value: "linear", label: __( "Linear" ) },
-								{ value: "radial", label: __( "Radial" ) },
-							] }
-						/>
-						<SelectControl
-							label={ __( "Type" ) }
-							value={ gradientDirection }
-							onChange={ ( value ) => setAttributes( { gradientDirection: value } ) }
-							options={ [
-								{ value: "top_center", label: __( "Top Center" ) },
-								{ value: "top_left", label: __( "Top Left" ) },
-								{ value: "top_right", label: __( "Top Right" ) },
-								{ value: "center_center", label: __( "Center Center" ) },
-								{ value: "center_left", label: __( "Center Left" ) },
-								{ value: "center_Right", label: __( "Center Right " ) },
-								{ value: "bottom_center", label: __( "Bottom Center " ) },
-								{ value: "bottom_left", label: __( "Bottom Left " ) },
-								{ value: "bottom_right", label: __( "Bottom Right " ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Location 1" ) }
-							value={ gradientLocation1 }
-							onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Location 2" ) }
-							value={ gradientLocation2 }
-							onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					</Fragment>
-					}
-					{ "gradient" !== backgroundType &&
-						<RangeControl
-							label={ __( "Opacity" ) }
-							value={ backgroundOpacity }
-							onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-					}
-					{ block_settings }
-				</PanelBody>
-			</Fragment>
-		)
+				
 
 		// Common setting for icon and images.
 		const icon_imagenormalSettings = (
@@ -859,75 +599,53 @@ class UAGBinfoBox extends Component {
 					title={ __( "Typography" ) }
 					initialOpen={ false }
 				>
+					<RangeControl
+						label={ __( "Prefix Font Size" ) }
+						value={ prefixFontSize }
+						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Heading Font Size" ) }
+						value={ headFontSize }
+						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					
+					<RangeControl
+						label={ __( "Description Font Size" ) }
+						value={ subHeadFontSize }
+						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>					
 
-					<PanelBody
-						title={ __( "Title Prefix" ) }
-						initialOpen={ true }
-					>
+					{ ( ctaType === "text" || ctaType === "button" ) &&	( 				
 						
 						<RangeControl
-							label={ __( "Prefix Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-
-					</PanelBody>
-
-					<PanelBody
-						title={ __( "Title" ) }
-						initialOpen={ true }
-					>
-						<SelectControl
-							label={ __( "Title Tag" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Heading Font Size" ) }
-							value={ headFontSize }
-							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
-
-					<PanelBody
-						title={ __( "Description" ) }
-						initialOpen={ true }
-					>
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&
-					( <PanelBody
-						title={ __( "CTA" ) }
-						initialOpen={ true }
-					>						
-						
-						<RangeControl
-							label={ __( "Font Size" ) }
+							label={ __( "CTA Font Size" ) }
 							value={ ctaFontSize }
 							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 							min={ 0 }
@@ -935,7 +653,7 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>						
-					</PanelBody>
+					
 					)
 					}
 					
@@ -1014,25 +732,7 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>
-					<RangeControl
-						label={ __( "Block Margin" ) }
-						value={ blockMargin }
-						onChange={ ( value ) => setAttributes( { blockMargin: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Block Padding" ) }
-						value={ blockPadding }
-						onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+				>	
 					<RangeControl
 						label={ __( "Prefix Bottom Margin" ) }
 						value={ prefixSpace }
@@ -1052,15 +752,6 @@ class UAGBinfoBox extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Description Bottom Margin" ) }
-						value={ subHeadSpace }
-						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
 						label={ __( "Seperator Bottom Margin" ) }
 						value={ seperatorSpace }
 						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
@@ -1069,7 +760,15 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-
+					<RangeControl
+						label={ __( "Description Bottom Margin" ) }
+						value={ subHeadSpace }
+						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>	
 					<PanelBody
 						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }
@@ -1110,6 +809,18 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+						{ ( iconimgPosition == 'left' || iconimgPosition == 'right' ) &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 					</PanelBody>
 				</PanelBody>
 			</Fragment>
@@ -1165,9 +876,7 @@ class UAGBinfoBox extends Component {
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-				 <InspectorControls>
-
-					{ background_settings }
+				 <InspectorControls>				
 
 					<PanelBody
 						title={ __( "Image/Icon" ) }
@@ -1287,7 +996,7 @@ class UAGBinfoBox extends Component {
 		const desc = (
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
-				<div className = "uagb-infobox-text-wrap">
+				<div className = "uagb-ifb-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<InfoBoxCta attributes={attributes} />
 				</div>
@@ -1297,7 +1006,7 @@ class UAGBinfoBox extends Component {
 		// Get Title and Prefix components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-infobox-title-wrap">
+				<div className = "uagb-ifb-title-wrap">
 					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 				</div>
@@ -1311,13 +1020,12 @@ class UAGBinfoBox extends Component {
 					"uagb-infobox__content-wrap",
 					...InfoBoxPositionClasses( attributes ),
 				) }>
-					<div className = "uagb-infobox-overlay"></div>
-					<div className = "uagb-infobox-left-right-wrap">
+					<div className = "uagb-ifb-left-right-wrap">
 
 						{ ( iconimgPosition == "left") &&
 								is_image
 						}
-						<div className = "uagb-infobox-content">
+						<div className = "uagb-ifb-content">
 
 							{  iconimgPosition == "above-title" && is_image }
 
