@@ -242,6 +242,10 @@ const attributes = {
 		type: "number",
 		default: 120,
 	},		
+	stack: {
+		type: "string",
+		default: "none"
+	}	
 }
 
 export default attributes

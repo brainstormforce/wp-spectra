@@ -439,7 +439,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'font-size'   => $attr->ctaFontSize.'px',
 	                'color'       => $attr->ctaLinkColor,
 	            ),
-	            ' .uagb-button-wrapper .uagb-infobox-cta-link' => array(
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
 	                'background-color' => $attr->ctaBgColor,

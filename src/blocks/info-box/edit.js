@@ -64,23 +64,15 @@ class UAGBinfoBox extends Component {
 
 		super( ...arguments )
 		this.getTimelineicon = this.getTimelineicon.bind(this)
-		this.toggleBorder    = this.toggleBorder.bind( this )
 		this.toggleTarget    = this.toggleTarget.bind( this )
+		this.toggleResponsive    = this.toggleResponsive.bind( this )
+
 	}
 
 	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
-	}		
-
-	/**
-	 * Function Name: toggleBorder.
-	 */
-	toggleBorder() {
-		const { enableBorder } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { enableBorder: ! enableBorder } )
 	}
+
 
 	/**
 	 * Function Name: toggleTarget.
@@ -91,7 +83,16 @@ class UAGBinfoBox extends Component {
 
 		setAttributes( { ctaTarget: ! ctaTarget } );
 	}
-	
+
+	/**
+	 * Function Name: toggleResponsive.
+	 */
+	toggleResponsive() {
+		const { responsiveDesign } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { responsiveDesign: ! responsiveDesign } );
+	}
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -190,10 +191,7 @@ class UAGBinfoBox extends Component {
 			iconImage,
 			imageSize,
 			imageWidth,
-			borderstyle,
-			borderWidth,
-			borderRadius,
-			borderColor
+			stack
 		} = attributes
 
 		// Add CSS.
@@ -811,6 +809,18 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+						{ ( iconimgPosition == 'left' || iconimgPosition == 'right' ) &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 					</PanelBody>
 				</PanelBody>
 			</Fragment>

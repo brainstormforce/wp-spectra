@@ -217,12 +217,12 @@ function InfoBoxStyle( props ) {
 		"color": ctaLinkColor,
 	}
 
-	selectors[".uagb-button-wrapper .uagb-infobox-cta-link span"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
 
-	selectors[".uagb-button-wrapper .uagb-infobox-cta-link"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
