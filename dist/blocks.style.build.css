@@ -1049,3 +1049,8 @@ a.uagb-infobox-link-wrap {
 .uagb-testimonial-imgicon-style-square .uagb-testinomial-image-content img {
   border-radius: 0%;
   -webkit-border-radius: 0%; }
+
+.uagb-testinomial-image-content img {
+  display: inline-block;
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; }
