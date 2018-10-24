@@ -96,6 +96,10 @@ class UAGBTeam extends Component {
 			imgRightMargin,
 			imgTopMargin,
 			imgBottomMargin,
+			twitterIcon,
+			fbIcon,
+			linkedinIcon,
+			pinIcon
 		} = attributes
 
 		// Add CSS.
@@ -174,6 +178,17 @@ class UAGBTeam extends Component {
 					}
 					onRemove={ () => onReplace( [] ) }
 				/>
+			</div>
+		)
+
+		const social_links = (
+			<div className="uagb-team__social-icon-wrap">
+				<ul className="uagb-team__social-list">
+					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
+					<li className="uagb-team__social-icon"><a href="http://facebbok.com" target="_blank" title="FaceBook"><span className="dashicons-facebook dashicons"></span></a></li>
+					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
+					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
+				</ul>
 			</div>
 		)
 
@@ -334,6 +349,40 @@ class UAGBTeam extends Component {
 							allowReset
 						/>
 					</PanelBody>
+					<PanelBody>
+						<FontIconPicker
+							icons={UAGBIcon}
+							renderUsing="class"
+							theme="default"
+							value={twitterIcon}
+							onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
+							isMulti={false}
+						/>
+						<FontIconPicker
+							icons={UAGBIcon}
+							renderUsing="class"
+							theme="default"
+							value={fbIcon}
+							onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
+							isMulti={false}
+						/>
+						<FontIconPicker
+							icons={UAGBIcon}
+							renderUsing="class"
+							theme="default"
+							value={linkedinIcon}
+							onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
+							isMulti={false}
+						/>
+						<FontIconPicker
+							icons={UAGBIcon}
+							renderUsing="class"
+							theme="default"
+							value={pinIcon}
+							onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
+							isMulti={false}
+						/>
+					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
 						colorSettings={ [
@@ -450,6 +499,8 @@ class UAGBTeam extends Component {
 							{ title_html }
 
 							{ desc_html }
+
+							{ social_links }
 
 						</div>
 

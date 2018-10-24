@@ -4,3 +4,8 @@
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
+
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
+	list-style: none;
+	display: flex;
+}

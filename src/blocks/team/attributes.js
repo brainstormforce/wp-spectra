@@ -94,7 +94,23 @@ const attributes = {
 	imgBottomMargin :{
 		type: "number",
 		default: 5,
-	}
+	},
+	twitterIcon : {
+		type : "string",
+		default : "fab fa fa-calendar-alt"
+	},
+	fbIcon : {
+		type : "string",
+		default : "fab fa fa-calendar-alt"
+	},
+	linkedinIcon : {
+		type : "string",
+		default : "fab fa fa-calendar-alt"
+	},
+	pinIcon : {
+		type : "string",
+		default : "fab fa fa-calendar-alt"
+	},
 }
 
 export default attributes

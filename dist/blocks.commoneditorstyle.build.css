@@ -11,11 +11,11 @@
 
 .uagb-inspect-tabs .active-tab {
     background-color: #a4afb7;
-    color: #fff;   
+    color: #fff;
     outline:none;
 }
 
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus{   
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus{
     border: 1px solid #a4afb7;
     outline: none;
 }
@@ -73,7 +73,8 @@
 	position: relative;
 	display: inline-block;
 	margin: 8px 0;
-	vertical-align: middle
+	vertical-align: middle;
+	width: 100%;
 }
 
 .rfipbtn {
@@ -473,7 +474,7 @@
 	display: block;
 	padding: 16px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 14px;
 	width: 100%;
 	line-height: 1
 }
@@ -1446,7 +1447,8 @@
 
 .rfipbtn--default {
 	background-color: #fff;
-	border: 1px solid #e0e0e0
+	border: 1px solid #e0e0e0;
+	width: 100%;
 }
 
 .rfipbtn--default:active,
