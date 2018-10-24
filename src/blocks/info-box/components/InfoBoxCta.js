@@ -12,9 +12,9 @@ class InfoBoxCta extends React.Component {
 
 		let ctaBtnClass = "uagb-infobox-cta-link uagb-cta-button uagb-cta-size-"+ attributes.ctaBtnSize
 
-		let target ='';
+		let target =""
 		if( attributes.ctaTarget ){
-			target ='_blank';
+			target ="_blank"
 		}
 		
 		return (			

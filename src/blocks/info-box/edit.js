@@ -86,10 +86,10 @@ class UAGBinfoBox extends Component {
 	 * Function Name: toggleTarget.
 	 */
 	toggleTarget() {
-		const { ctaTarget } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { ctaTarget } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { ctaTarget: ! ctaTarget } );
+		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
 	
 
@@ -423,19 +423,19 @@ class UAGBinfoBox extends Component {
 					title={ __( "Seperator" ) }
 					initialOpen={ false } >					
 					 
-						<SelectControl
-							label={ __( "Style" ) }
-							value={ seperatorStyle }
-							onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },								
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-							] }
-						/>
-					{ 'none' !== seperatorStyle &&
+					<SelectControl
+						label={ __( "Style" ) }
+						value={ seperatorStyle }
+						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },								
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+						] }
+					/>
+					{ "none" !== seperatorStyle &&
 					( <Fragment>
 						<PanelColor
 							title={ __( "Color" ) }
@@ -495,23 +495,23 @@ class UAGBinfoBox extends Component {
 					/>		
 					{ ( ctaType === "text" || ctaType === "button" ) &&			
 					<TextControl
-							label= { __( "Text" ) }
-							value= { ctaText }
-							onChange={ value => setAttributes( { ctaText: value } ) }
-						/>
+						label= { __( "Text" ) }
+						value= { ctaText }
+						onChange={ value => setAttributes( { ctaText: value } ) }
+					/>
 					}		
 					{ ( ctaType !== "none" ) &&
 						<Fragment>
-						<TextControl
-							label= { __( "Link" ) }
-							value= { ctaLink }
-							onChange={ value => setAttributes( { ctaLink: value } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Open in new Window' ) }
-							checked={ ctaTarget }
-							onChange={ this.toggleTarget }
-						/>						
+							<TextControl
+								label= { __( "Link" ) }
+								value= { ctaLink }
+								onChange={ value => setAttributes( { ctaLink: value } ) }
+							/>
+							<ToggleControl
+								label={ __( "Open in new Window" ) }
+								checked={ ctaTarget }
+								onChange={ this.toggleTarget }
+							/>						
 						</Fragment>
 					}
 
@@ -682,7 +682,7 @@ class UAGBinfoBox extends Component {
 											
 					] }
 				>
-				{ ( ctaType === "text") &&
+					{ ( ctaType === "text") &&
 							<PanelColor
 								title={ __( "CTA Color" ) }
 								colorValue={ ctaLinkColor }
@@ -694,34 +694,34 @@ class UAGBinfoBox extends Component {
 									allowReset
 								/>
 							</PanelColor>
-						}
-						{ ( ctaType === "button") &&
+					}
+					{ ( ctaType === "button") &&
 							<Fragment>
-							<PanelColor
-								title={ __( "CTA Color" ) }
-								colorValue={ ctaBtnLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBtnLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+								<PanelColor
+									title={ __( "CTA Color" ) }
+									colorValue={ ctaBtnLinkColor }
+									initialOpen={ false }
+								>
+									<ColorPalette
+										value={ ctaBtnLinkColor }
+										onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+										allowReset
+									/>
+								</PanelColor>
 
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ ctaBgColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaBgColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+								<PanelColor
+									title={ __( "Background Color" ) }
+									colorValue={ ctaBgColor }
+									initialOpen={ false }
+								>
+									<ColorPalette
+										value={ ctaBgColor }
+										onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+										allowReset
+									/>
+								</PanelColor>
 							</Fragment>
-						}
+					}
 				</PanelColorSettings>
 
 
@@ -985,7 +985,7 @@ class UAGBinfoBox extends Component {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
+				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<InfoBoxCta attributes={attributes} />
@@ -1007,26 +1007,26 @@ class UAGBinfoBox extends Component {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-						"uagb-infobox__content-wrap",
-						...InfoBoxPositionClasses( attributes ),
-					) }>
-						<div className = "uagb-infobox-overlay"></div>
-						<div className = "uagb-infobox-left-right-wrap">
+					"uagb-infobox__content-wrap",
+					...InfoBoxPositionClasses( attributes ),
+				) }>
+					<div className = "uagb-infobox-overlay"></div>
+					<div className = "uagb-infobox-left-right-wrap">
 
-							{ ( iconimgPosition == "left") &&
+						{ ( iconimgPosition == "left") &&
 								is_image
-							}
-							<div className = "uagb-infobox-content">
+						}
+						<div className = "uagb-infobox-content">
 
-								{  iconimgPosition == "above-title" && is_image }
+							{  iconimgPosition == "above-title" && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-								{ iconimgPosition == "below-title"  && is_image }
+							{ iconimgPosition == "below-title"  && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-								{ ( iconimgPosition === "left-title") &&
+							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
 										<div className = "left-title-image">
 											{ is_image }
@@ -1034,9 +1034,9 @@ class UAGBinfoBox extends Component {
 										</div>
 										{ desc }
 									</Fragment>
-								}
+							}
 
-								{ ( iconimgPosition === "right-title") &&
+							{ ( iconimgPosition === "right-title") &&
 									<Fragment>
 										<div className = "right-title-image">
 											{ title_text }
@@ -1044,24 +1044,24 @@ class UAGBinfoBox extends Component {
 										</div>
 										{ desc }
 									</Fragment>
-								}
+							}
 
-								{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
 									<Fragment>
 										{ title_text }
 										{ desc }
 									</Fragment>
-								}
-
-							</div>
-
-							{ ( iconimgPosition == "right") &&
-								is_image
 							}
+
 						</div>
+
+						{ ( iconimgPosition == "right") &&
+								is_image
+						}
 					</div>
+				</div>
 			</Fragment>
-			)
+		)
 
 		return (
 			<Fragment>
