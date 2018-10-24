@@ -84,29 +84,29 @@ function InfoBoxStyle( props ) {
 		"color" : iconHover,                                       
 	}
                     
-	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
@@ -118,7 +118,7 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,      
 		"border-color" : iconimgBorderHover,                                 
 	}
@@ -135,21 +135,21 @@ function InfoBoxStyle( props ) {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-image-content img:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-image-content img"] = {                    
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img"] = {                    
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -159,7 +159,7 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
 		"border-color" : iconimgBorderHover,                                     
 	}
 
@@ -167,7 +167,7 @@ function InfoBoxStyle( props ) {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-ifb-imgicon-style-circle .components-button svg"] = {                    
+	selectors[".uagb-infobox-imgicon-style-circle .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",  
 		"margin-left" : iconLeftMargin+"px",
@@ -176,7 +176,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                  
 	}
 
-	selectors[".uagb-ifb-imgicon-style-square .components-button svg"] = {                    
+	selectors[".uagb-infobox-imgicon-style-square .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",    
 		"margin-left" : iconLeftMargin+"px",
@@ -185,7 +185,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                
 	}
 
-	selectors[".uagb-ifb-imgicon-style-custom .components-button svg"] = {                    
+	selectors[".uagb-infobox-imgicon-style-custom .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -265,7 +265,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom":seperatorSpace+"px"
 	}	
 
-	selectors[".uagb-infobox-content"] = {
+	selectors[".uagb-ifb-content"] = {
 		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
 	}           
 
