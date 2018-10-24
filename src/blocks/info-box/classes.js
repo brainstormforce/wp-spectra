@@ -25,6 +25,13 @@ function InfoBoxPositionClasses( attributes ) {
 		iconimgStyle_class +="uagb-infobox-right"+ " "
 	}
 
+	if( ( attributes.iconimgPosition === "left" || attributes.iconimgPosition === "right" ) && attributes.stack !== "none"  ){
+		iconimgStyle_class +="uagb-infobox-stacked-"+attributes.stack+ " "
+		if( attributes.iconimgPosition === "right" ){
+			iconimgStyle_class += "uagb-infobox-reverse-order-"+attributes.stack+ " "
+		}
+	}
+
 	if( attributes.iconimgPosition !== "above-title" || attributes.iconimgPosition !== "below-title"  ){
 		iconimgStyle_class += "uagb-infobox-image-valign-"+attributes.sourceAlign+ " "
 	}

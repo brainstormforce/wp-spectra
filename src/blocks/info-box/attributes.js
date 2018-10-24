@@ -243,7 +243,7 @@ const attributes = {
 	},		
 	stack: {
 		type: "string",
-		default: "none"
+		default: "tablet"
 	}	
 }
 
