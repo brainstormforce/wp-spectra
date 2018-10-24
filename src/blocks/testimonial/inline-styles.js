@@ -73,7 +73,13 @@ function TestimonialStyle( props ) {
                     'max-width': imageWidth+'px',
                 }; 
 
-            selectors['.uagb-testimonial-imgicon-style-circle .components-button svg'] = {                    
+            selectors['.uagb-testinomial-image-wrap'] = {
+                'margin-left' : iconLeftMargin+'px',
+                'margin-right' : iconRightMargin+'px',                                
+                'margin-top' : iconTopMargin+'px',
+                'margin-bottom' : iconBottomMargin+'px',   
+            };
+            /*selectors['.uagb-testimonial-imgicon-style-circle .components-button svg'] = {                    
                         'margin-left' : iconLeftMargin+'px',
                         'margin-right' : iconRightMargin+'px',                                
                         'margin-top' : iconTopMargin+'px',
@@ -86,10 +92,8 @@ function TestimonialStyle( props ) {
                         'margin-top' : iconTopMargin+'px',
                         'margin-bottom' : iconBottomMargin+'px',                
                     };
-
+*/
             selectors['.uagb-testimonial-imgicon-style-custom .components-button svg'] = {                    
-                        'padding' : iconimgbgSize+'px',
-                        'background' : iconimgBg,
                         'border-style' : iconimgBorderstyle,
                         'border-width' : iconimgBorderWidth+'px',
                         'border-radius' : iconimgBorderRadius+'px',
@@ -115,7 +119,6 @@ function TestimonialStyle( props ) {
             selectors['.uagb-testinomial-designation'] = {
                     'font-size' : headFontSize+'px',
                     'color': headingColor,
-                    'margin-bottom': headSpace+'px',
                 };
 
             // Description Style

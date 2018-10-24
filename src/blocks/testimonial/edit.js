@@ -123,7 +123,6 @@ class UAGBtestimonial extends Component {
 			headFontSize,
 			subHeadFontSize,
 			separatorWidth,
-			headSpace,
 			separatorSpace,
 			subHeadSpace,
 			iconimgStyle,
@@ -357,16 +356,7 @@ class UAGBtestimonial extends Component {
 						max={ 50 }
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>
-					<RangeControl
-						label={ __( "Designation Bottom Margin" ) }
-						value={ headSpace }
-						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>					
+					/>								
 
 					<PanelBody
 						title={ __( "Image Margins" ) }

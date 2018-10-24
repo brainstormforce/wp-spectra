@@ -18,7 +18,13 @@
     -webkit-border-radius: 0%;
 }
 
- .uagb-testinomial-image-content img{
+ .uagb-testinomial-image-content img,
+ .uagb-testimonial-imgicon-style-circle .components-button svg{
   display : inline-block;
   box-sizing : content-box;
+}
+
+.uagb-testinomial-author-name,
+.uagb-testinomial-designation{
+  display: inline-block;;
 }
