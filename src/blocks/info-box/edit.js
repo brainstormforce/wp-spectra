@@ -1020,13 +1020,12 @@ class UAGBinfoBox extends Component {
 					"uagb-infobox__content-wrap",
 					...InfoBoxPositionClasses( attributes ),
 				) }>
-					<div className = "uagb-infobox-overlay"></div>
-					<div className = "uagb-infobox-left-right-wrap">
+					<div className = "uagb-ifb-left-right-wrap">
 
 						{ ( iconimgPosition == "left") &&
 								is_image
 						}
-						<div className = "uagb-infobox-content">
+						<div className = "uagb-ifb-content">
 
 							{  iconimgPosition == "above-title" && is_image }
 

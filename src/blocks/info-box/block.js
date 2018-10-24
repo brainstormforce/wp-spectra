@@ -136,7 +136,6 @@ registerBlockType( "uagb/info-box", {
 					"uagb-infobox__content-wrap",
 					...InfoBoxPositionClasses(  props.attributes  ),
 				) }>
-					<div className = "uagb-infobox-overlay"></div>
 					<div className = "uagb-ifb-left-right-wrap">
 
 						{ ( iconimgPosition == "left") &&
