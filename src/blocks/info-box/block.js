@@ -113,7 +113,7 @@ registerBlockType( "uagb/info-box", {
 		const desc = (
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
-				<div className = "uagb-infobox-text-wrap">
+				<div className = "uagb-ifb-text-wrap">
 					<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
 					<InfoBoxCta attributes={props.attributes} />
 				</div>
@@ -123,7 +123,7 @@ registerBlockType( "uagb/info-box", {
 		// Get Title and Prefix components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-infobox-title-wrap">
+				<div className = "uagb-ifb-title-wrap">
 					<Prefix attributes={ props.attributes } setAttributes = "not_set"/>
 					<Title attributes={ props.attributes} setAttributes = "not_set"/>
 				</div>
@@ -136,13 +136,12 @@ registerBlockType( "uagb/info-box", {
 					"uagb-infobox__content-wrap",
 					...InfoBoxPositionClasses(  props.attributes  ),
 				) }>
-					<div className = "uagb-infobox-overlay"></div>
-					<div className = "uagb-infobox-left-right-wrap">
+					<div className = "uagb-ifb-left-right-wrap">
 
 						{ ( iconimgPosition == "left") &&
 								is_image
 						}
-						<div className = "uagb-infobox-content">
+						<div className = "uagb-ifb-content">
 
 							{  iconimgPosition == "above-title" && is_image }
 

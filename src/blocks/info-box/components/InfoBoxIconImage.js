@@ -17,9 +17,9 @@ class InfoBoxIconImage extends React.Component {
 			url = size[imageSize].url 
 
 			return (
-				<div className="uagb-image-icon-content uagb-imgicon-wrap" >
-					<div className="uagb-image">
-						<div className="uagb-image-content">
+				<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap" >
+					<div className="uagb-ifb-image">
+						<div className="uagb-ifb-image-content">
 							<img
 								className =""
 								src = { url }                        

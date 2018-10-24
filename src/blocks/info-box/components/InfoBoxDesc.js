@@ -24,7 +24,7 @@ class InfoBoxDesc extends React.Component {
 				<RichText
 	                tagName='p'
 	                value={ attributes.headingDesc }
-	                className='uagb-infobox-desc'
+	                className='uagb-ifb-desc'
 	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }     
 	                onMerge = { props.mergeBlocks }		
 	                onSplit = {
@@ -46,7 +46,7 @@ class InfoBoxDesc extends React.Component {
 				<RichText.Content
 	                tagName='p'
 	                value={ attributes.headingDesc }
-	                className='uagb-infobox-desc'
+	                className='uagb-ifb-desc'
 	            />			
 			)
 		}

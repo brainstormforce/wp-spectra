@@ -4,7 +4,7 @@
 
 const attributes = {
 	prefixTitle: {
-		selector: "span.uagb-infobox-title-prefix",
+		selector: "span.uagb-ifb-title-prefix",
 		default: "Prefix",
 	},
 	infoBoxTitle: {
@@ -86,12 +86,11 @@ const attributes = {
 	},
 	headSpace: {
 		type: "number",
-	},
-	separatorSpace: {
-		type: "number",
-	},
+		default : 10,
+	},	
 	subHeadSpace: {
 		type: "number",
+		default : 10,
 	},
 	seperatorSpace:{
 		type: "number",
@@ -147,7 +146,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: "string",
-		default: "#61ce70",
+		default: "#333",
 	},
 	seperatorWidth :{
 		type: "number",
@@ -171,11 +170,11 @@ const attributes = {
 	},
 	ctaLinkColor :{
 		type: "string",
-		default: "#61ce70",
+		default: "#333",
 	},
 	ctaFontSize :{
 		type: "number",
-		default : 12
+		default : ""
 	},	
 	ctaBtnSize: {
 		type: "string",
@@ -183,32 +182,33 @@ const attributes = {
 	},
 	ctaBtnLinkColor :{
 		type: "string",
-		default: "#fff",
+		default: "#333",
 	},
 	ctaBgColor :{
 		type: "string",
-		default: "#61ce70",
+		default:"transparent",
 	},
 	ctaBorderColor: {
 		type: "string",
-		default: "",
+		default: "#333",
 	},
 	ctaBorderStyle: {
 		type: "string",
-		default: "none",
+		default: "solid",
 	},
 	ctaBtnPadding :{
 		type: "number",
 	},
 	ctaBorderWidth :{
 		type: "number",
+		default: 1,
 	},
 	ctaBorderRadius :{
 		type: "number",
 	},
 	prefixSpace :{
 		type: "number",
-		default: 10,
+		default: 5,
 	},
 	iconLeftMargin :{
 		type: "number",
@@ -240,85 +240,11 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 120,
-	},
-	backgroundType: {
+	},		
+	stack: {
 		type: "string",
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundOpacity: {
-		type: "number",
-		default: "100"
-	},
-	backgroundColor: {
-		type: "string",
-	},
-	gradientColor1: {
-		type: "string",
-	},
-	gradientColor2: {
-		type: "string",
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
-		type: "number",
-		default: "0"
-	},
-	gradientLocation2: {
-		type: "number",
-		default: "100"
-	},
-	gradientAngle: {
-		type: "number",
-		default: "0"
-	},
-	gradientDirection:{
-		type: "string",
-		default: "center_center"
-	},
-	blockPadding:{
-		type: "number",
-		default: 10,
-	},
-	blockMargin:{
-		type: "number",
-	},
-	enableBorder: {
-		type: "boolean",
-		default: false,
-	},
-	borderstyle :{
-		type : "string",
-		default : "solid"
-	},
-	borderWidth: {
-		type: "number",
-		default : 1
-	},
-	borderRadius: {
-		type: "number",
-		default : 0
-	},
-	borderColor: {
-		type: "string",
-		default : ""
-	},
+		default: "none"
+	}	
 }
 
 export default attributes

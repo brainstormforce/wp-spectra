@@ -53,28 +53,7 @@ function InfoBoxStyle( props ) {
 		iconTopMargin,
 		iconBottomMargin,            
 		imageSize,  
-		imageWidth,
-		backgroundType,
-		backgroundColor,
-		backgroundImage,
-		backgroundPosition,
-		backgroundSize,
-		backgroundRepeat,
-		backgroundOpacity,
-		gradientColor1,
-		gradientColor2,
-		gradientType,
-		gradientLocation1,
-		gradientLocation2,
-		gradientDirection,
-		gradientAngle,
-		blockPadding,
-		blockMargin,
-		enableBorder,
-		borderstyle,
-		borderWidth,
-		borderRadius,
-		borderColor
+		imageWidth,		
 	} = props.attributes        
 
 	if( props.clientId ){
@@ -86,13 +65,13 @@ function InfoBoxStyle( props ) {
 	var selectors = {}
 
 	// Icon css
-	selectors[".uagb-icon"] = {
+	selectors[".uagb-ifb-icon"] = {
 		"height" : iconSize+"px",
 		"width" : iconSize+"px",
 		"line-height" : iconSize+"px",                    
 	}
 
-	selectors[".uagb-icon > span"] = {
+	selectors[".uagb-ifb-icon > span"] = {
 		"font-size" : iconSize+"px",
 		"height": iconSize+"px",
 		"color": iconColor,
@@ -101,33 +80,33 @@ function InfoBoxStyle( props ) {
 		"transform": "rotate("+iconRotate +"deg)",                                       
 	}
 
-	selectors[".uagb-icon:hover > span"] = {
+	selectors[".uagb-ifb-icon:hover > span"] = {
 		"color" : iconHover,                                       
 	}
                     
-	selectors[".uagb-imgicon-style-circle .uagb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-circle .uagb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-icon"] = {                   
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
@@ -139,12 +118,12 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-icon:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,      
 		"border-color" : iconimgBorderHover,                                 
 	}
 
-	selectors[".uagb-infobox__content-wrap .uagb-imgicon-wrap"] = {
+	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
 		"margin-right" : iconRightMargin+"px",                                
 		"margin-top" : iconTopMargin+"px",
@@ -152,35 +131,25 @@ function InfoBoxStyle( props ) {
 	} 
 
 	// Image
-	selectors[".uagb-image-content img"] = {
+	selectors[".uagb-ifb-image-content img"] = {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-imgicon-style-circle .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-circle .uagb-image-content img:hover"] = {
+	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-image-content img:hover"] = {
-		//"background" : iconBgHover,                                       
-	}
-
-	selectors[".uagb-imgicon-style-custom .uagb-image-content img"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -190,18 +159,15 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-image-content img:hover"] = {
-		//"background" : iconBgHover,  
+	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
 		"border-color" : iconimgBorderHover,                                     
 	}
 
-	selectors[".uagb-image-content .components-button svg"] = {
+	selectors[".uagb-ifb-image-content .components-button svg"] = {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-imgicon-style-circle .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-circle .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",  
 		"margin-left" : iconLeftMargin+"px",
@@ -210,9 +176,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                  
 	}
 
-	selectors[".uagb-imgicon-style-square .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-square .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",    
 		"margin-left" : iconLeftMargin+"px",
@@ -221,9 +185,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                
 	}
 
-	selectors[".uagb-imgicon-style-custom .components-button svg"] = {                    
-		//"padding" : iconimgbgSize+"px",
-		//"background" : iconimgBg,
+	selectors[".uagb-infobox-imgicon-style-custom .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -255,12 +217,12 @@ function InfoBoxStyle( props ) {
 		"color": ctaLinkColor,
 	}
 
-	selectors[".uagb-button-wrapper .uagb-infobox-cta-link span"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
 
-	selectors[".uagb-button-wrapper .uagb-infobox-cta-link"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -272,96 +234,38 @@ function InfoBoxStyle( props ) {
 	}
 
 	// Prefix Style
-	selectors[".editor-rich-text .uagb-infobox-title-prefix"] = {
+	selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
 		"font-size" : prefixFontSize+"px",
 		"color": prefixColor,
 		"margin-bottom": prefixSpace+"px",
 	}
 
 	// Title Style
-	selectors[".editor-rich-text .uagb-infobox-title"] = {
+	selectors[".editor-rich-text .uagb-ifb-title"] = {
 		"font-size" : headFontSize+"px",
 		"color": headingColor,
 		"margin-bottom": headSpace+"px",
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-infobox-desc"] = {
+	selectors[".editor-rich-text .uagb-ifb-desc"] = {
 		"font-size" : subHeadFontSize+"px",
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",
 	}
 
 	// Seperator
-	selectors[".uagb-separator"] = {
+	selectors[".uagb-ifb-separator"] = {
 		"width" : seperatorWidth+"%",
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
+	}	
+	selectors[".uagb-ifb-separator-parent"] = {		
 		"margin-bottom":seperatorSpace+"px"
-	}
+	}	
 
-	var opacity = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
-	// Background           
-	if( backgroundType !== "gradient" || backgroundType === "image" ){
-		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
-			"background-color": backgroundColor,
-			"opacity":opacity,
-			"margin":  ( typeof blockMargin != "undefined" ) ? blockMargin+"px": "inherit",
-		}                
-	}
-
-	if( backgroundType === "image" ){
-		var position = backgroundPosition.replace( "-", " " )
-		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
-			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
-			"background-size" : backgroundSize,
-			"background-repeat" : backgroundRepeat,                    
-			"background-position" : position,
-			"margin":  ( typeof blockMargin != "undefined" ) ? blockMargin+"px": "inherit",
-		}
-
-		selectors[".uagb-infobox-overlay"] = {
-			"background-color": backgroundColor,
-			"opacity":opacity,
-		}  
-	}else if ( "gradient" === backgroundType ) {  
-		let grad_bg_color =""
-		let gd_position = gradientDirection.replace( "_", " " )
-		if ( "linear" === gradientType ) {  
-			gd_position = gd_position.replace( "center", "" )  
-
-			if( gd_position === " center" ){
-				gd_position = "top"
-			}
-			grad_bg_color = `linear-gradient( to ${ gd_position }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		} else {
-			grad_bg_color = `radial-gradient( at ${ gd_position }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		}
-
-		selectors[".uagb-infobox__content-wrap.uagb-infobox"] = {
-			"background" :grad_bg_color,
-			"margin":  ( typeof blockMargin != "undefined" ) ? blockMargin+"px": "inherit",
-		}
-		selectors[".uagb-infobox-overlay"] = {
-			"opacity":opacity,
-		}   
-	}
-
-	if( enableBorder ){
-		selectors[".uagb-infobox__content-wrap.uagb-infobox-enable-border"] = {
-			"border-color" : ( typeof borderColor != "undefined" ) ? borderColor: "inherit",
-			"border-style" : ( typeof borderstyle != "undefined" ) ? borderstyle: "inherit",
-			"border-width" : ( typeof borderWidth != "undefined" ) ? borderWidth+"px": "inherit",
-			"border-radius" : ( typeof borderRadius != "undefined" ) ? borderRadius+"px": "inherit",
-		}           
-	}else{
-		selectors[".uagb-infobox__content-wrap.uagb-infobox-enable-border-radius"] = {
-			"border-radius" : ( typeof borderRadius != "undefined" ) ? borderRadius+"px": "inherit",                    
-		}
-	}
-
-	selectors[".uagb-infobox-content"] = {
+	selectors[".uagb-ifb-content"] = {
 		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
 	}           
 
@@ -382,26 +286,7 @@ function InfoBoxStyle( props ) {
 
 		styling_css += css + " } "
 	}
-
-	/*// Responsive css.
-        styling_css += '@media(max-width:768px){'; 
-        for( var i in response_selector ) {
-
-           
-            styling_css += '.'+clientId+i + ' { ';           
-            
-            var sel = response_selector[i];
-            var css = '';
-
-            for( var j in sel ) {
-
-                css += j + ': ' + sel[j] + ';';
-            }
-
-            styling_css += css + ' } ';
-        }        
-        styling_css += '}';*/
-
+	
 	return styling_css
 
 }

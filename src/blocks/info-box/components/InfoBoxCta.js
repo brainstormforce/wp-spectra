@@ -10,7 +10,7 @@ class InfoBoxCta extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-infobox-cta-link uagb-cta-button uagb-cta-size-"+ attributes.ctaBtnSize
+		let ctaBtnClass = "uagb-infobox-cta-link uagb-ifb-cta-button uagb-ifb-size-"+ attributes.ctaBtnSize
 
 		let target =""
 		if( attributes.ctaTarget ){
@@ -18,7 +18,7 @@ class InfoBoxCta extends React.Component {
 		}
 		
 		return (			
-			<div className = "uagb-cta uagb-infobox-cta-link-style">
+			<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
 				{  attributes.ctaType === "text" && ( 
 					<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" >
 						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
@@ -26,10 +26,10 @@ class InfoBoxCta extends React.Component {
 				}
 
 				{  attributes.ctaType === "button" && ( 
-					<div className = "uagb-button-wrapper">
+					<div className = "uagb-ifb-button-wrapper">
 						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} >
                         
-							<span className = "uagb-cta-content-wrapper">    
+							<span className = "uagb-ifb-cta-content-wrapper">    
 								<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
 							</span>
 						</a>
