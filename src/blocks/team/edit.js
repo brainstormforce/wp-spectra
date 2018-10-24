@@ -15,7 +15,8 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	MediaUpload
+	MediaUpload,
+	URLInput
 } = wp.editor
 
 const {
@@ -24,6 +25,7 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
+	TextControl
 } = wp.components
 
 // Extend component
@@ -65,6 +67,13 @@ class UAGBTeam extends Component {
 		}
 	}
 
+	social_html( icon, link ) {
+
+		return (
+			<li className="uagb-team__social-icon"><a href={link} target="_blank" title=""><span className={icon}></span></a></li>
+		)
+	}
+
 	render() {
 
 		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
@@ -83,6 +92,7 @@ class UAGBTeam extends Component {
 			titleFontSize,
 			prefixFontSize,
 			descFontSize,
+			socialFontSize,
 			image,
 			imgStyle,
 			imgAlign,
@@ -99,7 +109,14 @@ class UAGBTeam extends Component {
 			twitterIcon,
 			fbIcon,
 			linkedinIcon,
-			pinIcon
+			pinIcon,
+			twitterLink,
+			fbLink,
+			linkedinLink,
+			pinLink,
+			socialColor,
+			socialHoverColor,
+			socialSpace
 		} = attributes
 
 		// Add CSS.
@@ -184,10 +201,10 @@ class UAGBTeam extends Component {
 		const social_links = (
 			<div className="uagb-team__social-icon-wrap">
 				<ul className="uagb-team__social-list">
-					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
-					<li className="uagb-team__social-icon"><a href="http://facebbok.com" target="_blank" title="FaceBook"><span className="dashicons-facebook dashicons"></span></a></li>
-					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
-					<li className="uagb-team__social-icon"><a href="http://twitter.com" target="_blank" title="Twitter"><span className="dashicons-twitter dashicons"></span></a></li>
+					{ "" != twitterIcon && this.social_html( twitterIcon, twitterLink ) }
+					{ "" != fbIcon && this.social_html( fbIcon, fbLink ) }
+					{ "" != linkedinIcon && this.social_html( linkedinIcon, linkedinLink ) }
+					{ "" != pinIcon && this.social_html( pinIcon, pinLink ) }
 				</ul>
 			</div>
 		)
@@ -348,43 +365,90 @@ class UAGBTeam extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+						<RangeControl
+							label={ __( "Social Icon Font Size" ) }
+							value={ socialFontSize }
+							onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
 					</PanelBody>
-					<PanelBody>
-						<FontIconPicker
-							icons={UAGBIcon}
-							renderUsing="class"
-							theme="default"
-							value={twitterIcon}
-							onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
-							isMulti={false}
-						/>
-						<FontIconPicker
-							icons={UAGBIcon}
-							renderUsing="class"
-							theme="default"
-							value={fbIcon}
-							onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
-							isMulti={false}
-						/>
-						<FontIconPicker
-							icons={UAGBIcon}
-							renderUsing="class"
-							theme="default"
-							value={linkedinIcon}
-							onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
-							isMulti={false}
-						/>
-						<FontIconPicker
-							icons={UAGBIcon}
-							renderUsing="class"
-							theme="default"
-							value={pinIcon}
-							onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
-							isMulti={false}
-						/>
+					<PanelBody title={ __( "Social Links" ) }
+						initialOpen={ false }>
+						<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={UAGBIcon}
+								renderUsing="class"
+								theme="default"
+								value={twitterIcon}
+								onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
+								isMulti={false}
+							/>
+							<p className="components-base-control__label">{__( "URL" )}</p>
+							<TextControl
+								value={ twitterLink }
+								onChange={ ( value ) => setAttributes( { twitterLink: value } ) }
+								placeholder={__( "Enter Twitter URL" )}
+							/>
+						</PanelBody>
+						<PanelBody title={ __( "FaceBook" ) } initialOpen={ false }>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={UAGBIcon}
+								renderUsing="class"
+								theme="default"
+								value={fbIcon}
+								onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
+								isMulti={false}
+							/>
+							<p className="components-base-control__label">{__( "URL" )}</p>
+							<TextControl
+								value={ fbLink }
+								onChange={ ( value ) => setAttributes( { fbLink: value } ) }
+								placeholder={__( "Enter FaceBook URL" )}
+							/>
+						</PanelBody>
+						<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={UAGBIcon}
+								renderUsing="class"
+								theme="default"
+								value={linkedinIcon}
+								onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
+								isMulti={false}
+							/>
+							<p className="components-base-control__label">{__( "URL" )}</p>
+							<TextControl
+								value={ linkedinLink }
+								onChange={ ( value ) => setAttributes( { linkedinLink: value } ) }
+								placeholder={__( "Enter LinkedIn URL" )}
+							/>
+						</PanelBody>
+						<PanelBody title={ __( "Pinterest" ) } initialOpen={ false }>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={UAGBIcon}
+								renderUsing="class"
+								theme="default"
+								value={pinIcon}
+								onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
+								isMulti={false}
+							/>
+							<p className="components-base-control__label">{__( "URL" )}</p>
+							<TextControl
+								value={ pinLink }
+								onChange={ ( value ) => setAttributes( { pinLink: value } ) }
+								placeholder={__( "Enter Pinterest URL" )}
+							/>
+						</PanelBody>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
+						initialOpen={ false }
 						colorSettings={ [
 							{
 								value: titleColor,
@@ -400,6 +464,16 @@ class UAGBTeam extends Component {
 								value: descColor,
 								onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
 								label: __( "Description" ),
+							},
+							{
+								value: socialColor,
+								onChange: ( colorValue ) => setAttributes( { socialColor: colorValue } ),
+								label: __( "Social Icon" ),
+							},
+							{
+								value: socialHoverColor,
+								onChange: ( colorValue ) => setAttributes( { socialHoverColor: colorValue } ),
+								label: __( "Social Icon Hover" ),
 							},
 						] }
 					>
@@ -430,6 +504,14 @@ class UAGBTeam extends Component {
 							label={ __( "Description Bottom Spacing" ) }
 							value={ descSpace }
 							onChange={ ( value ) => setAttributes( { descSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Inter Social Icon Spacing" ) }
+							value={ socialSpace }
+							onChange={ ( value ) => setAttributes( { socialSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							allowReset

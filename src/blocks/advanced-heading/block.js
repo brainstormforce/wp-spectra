@@ -35,6 +35,15 @@ const {
 	RangeControl,
 } = wp.components
 
+const el = wp.element.createElement
+
+
+//Icon
+const icon = el("svg", { width: 20, height: 20 },
+	el("path", { d: "M0 18h20v2h-20v-2z" } ),
+	el("path", { d: "M11 0h-2l-7.25 16h2.25l2.21-5h7.59l2.2 5h2.25l-7.25-16zM7.090 9l2.91-6.59 2.91 6.59h-5.82z" } )
+)
+
 // Extend component
 const { Component, Fragment } = wp.element
 

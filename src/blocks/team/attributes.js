@@ -36,6 +36,13 @@ const attributes = {
 	descColor: {
 		type: "string",
 	},
+	socialColor: {
+		type: "string",
+		default: "#333"
+	},
+	socialHoverColor: {
+		type: "string"
+	},
 	titleFontSize: {
 		type: "number",
 	},
@@ -46,6 +53,10 @@ const attributes = {
 	descFontSize: {
 		type: "number",
 	},
+	socialFontSize: {
+		type: "number",
+		default: 30
+	},
 	image: {
 		type: "object",
 	},
@@ -55,7 +66,7 @@ const attributes = {
 	},
 	imgPosition: {
 		type: "string",
-		default: "above-title"
+		default: "above"
 	},
 	imgAlign:{
 		type : "string",
@@ -95,21 +106,37 @@ const attributes = {
 		type: "number",
 		default: 5,
 	},
+	socialSpace :{
+		type: "number",
+		default: 10,
+	},
 	twitterIcon : {
 		type : "string",
-		default : "fab fa fa-calendar-alt"
+		default : "fab fa fa-twitter-square"
 	},
 	fbIcon : {
 		type : "string",
-		default : "fab fa fa-calendar-alt"
+		default : "fab fa fa-facebook-official"
 	},
 	linkedinIcon : {
 		type : "string",
-		default : "fab fa fa-calendar-alt"
+		default : "fab fa fa-linkedin-square"
 	},
 	pinIcon : {
 		type : "string",
-		default : "fab fa fa-calendar-alt"
+		default : "fab fa fa-pinterest-square"
+	},
+	twitterLink: {
+		type: "string",
+	},
+	fbLink: {
+		type: "string",
+	},
+	linkedinLink: {
+		type: "string",
+	},
+	pinLink: {
+		type: "string",
 	},
 }
 

@@ -337,13 +337,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => $attr->iconSize. "px",
 					'height'      => $attr->iconSize. "px",
 					'width'       => $attr->iconSize. "px",
-					'line-height' => $attr->iconSize. "px",					
+					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
 					'transform'   => 'rotate('.$attr->iconRotate .'deg)',
 				),
 				' .uagb-icon:hover > span' => array(
-					'color' => $attr->iconHover ,					
-				),				
+					'color' => $attr->iconHover ,
+				),
 				' .uagb-imgicon-style-circle .uagb-icon' => array(
 					'background' => $attr->iconimgBg,
 					'padding'    => $attr->iconimgbgSize . 'px',
@@ -351,18 +351,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'box-sizing' => 'content-box',
 				),
 				' .uagb-imgicon-style-circle .uagb-icon:hover' => array(
-                    'background'  => $attr->iconBgHover,                                       
+                    'background'  => $attr->iconBgHover,
                 ),
-                ' .uagb-imgicon-style-square .uagb-icon' => array(                 
+                ' .uagb-imgicon-style-square .uagb-icon' => array(
                     'padding' => $attr->iconimgbgSize.'px',
                     'background' => $attr->iconimgBg,
                     'display' => 'inline-block',
                     'box-sizing' => 'content-box',
                 ),
                 ' .uagb-imgicon-style-square .uagb-icon:hover' => array(
-                    'background' => $attr->iconBgHover,                                       
+                    'background' => $attr->iconBgHover,
                 ),
-                ' .uagb-imgicon-style-custom .uagb-icon' => array(                   
+                ' .uagb-imgicon-style-custom .uagb-icon' => array(
                     'padding'       => $attr->iconimgbgSize.'px',
                     'background'    => $attr->iconimgBg,
                     'display'       => 'inline-block',
@@ -390,21 +390,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
 
-	            ' .uagb-imgicon-style-circle .uagb-image-content img' => array(                    
+	            ' .uagb-imgicon-style-circle .uagb-image-content img' => array(
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
 	            ' .uagb-imgicon-style-circle .uagb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,                                       
+	                    'background' => $attr->iconBgHover,
 	            ),
-	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
+	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
 	            ' .uagb-imgicon-style-square .uagb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,                                       
+	                    'background' => $attr->iconBgHover,
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
+	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(
 	                    'display'       => 'inline-block',
 	                    'box-sizing'    => 'content-box',
 	                    'border-style'  => $attr->iconimgBorderstyle,
@@ -417,14 +417,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
+	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(
 	                'display'    => 'inline-block',
 	                'box-sizing' => 'content-box',
 	            ),
 	            ' .uagb-imgicon-style-square .uagb-image-content img:hover' => array(
-	                'background' =>  $attr->iconBgHover,                                       
+	                'background' =>  $attr->iconBgHover,
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
+	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(
 	                'display'       => 'inline-block',
 	                'box-sizing'    => 'content-box',
 	                'border-style'  => $attr->iconimgBorderstyle,
@@ -484,14 +484,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-top-width' => $attr->seperatorThickness.'px',
 	                'border-top-color' => $attr->seperatorColor,
 	                'border-top-style' => $attr->seperatorStyle,
-	                'margin-bottom' => $attr->seperatorSpace.'px',	                
-	            ),	          
-               
+	                'margin-bottom' => $attr->seperatorSpace.'px',
+	            ),
+
 			);
-						
+
 			if( 'above-title' === $attr->iconimgPosition ||  'below-title' === $attr->iconimgPosition ){
-               	$selectors[' .uagb-infobox__content-wrap'] = array(                   
-	                'text-align' => $attr->headingAlign,                   
+               	$selectors[' .uagb-infobox__content-wrap'] = array(
+	                'text-align' => $attr->headingAlign,
 	            );
             }
 
@@ -500,7 +500,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'background-color' => $attr->backgroundColor,
                     'opacity'=> $opacity,
                     'margin'=>   isset( $attr->blockMargin ) && ( '' !== $attr->blockMargin ) ? $attr->blockMargin.'px': 'inherit',
-                );                
+                );
             }
 
             if( 'image' === $attr->backgroundType ){
@@ -517,56 +517,129 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 $selectors[' .uagb-infobox-overlay'] = array(
                     'background-color'=> $attr->backgroundColor,
                     'opacity'=>$opacity,
-                ); 
-            }else if ( "gradient" === $attr->backgroundType ) {  
-                $grad_bg_color ='';                
+                );
+            }else if ( "gradient" === $attr->backgroundType ) {
+                $grad_bg_color ='';
                 $gd_position = str_replace( "_"," ",$attr->gradientDirection );
-                
-                if ( "linear" === $attr->gradientType ) {  
+
+                if ( "linear" === $attr->gradientType ) {
                 	$gd_position = str_replace( " center","",$gd_position );
                     if( 'center' === $gd_position ){
                         $gd_position = 'top';
-                    }  
+                    }
 
                   $grad_bg_color = 'linear-gradient( to '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
-                 
+
                 } else {
                 	$grad_bg_color = 'radial-gradient( at '.$gd_position .', '. $attr->gradientColor1.' '.$attr->gradientLocation1.'%, '.$attr->gradientColor2.' '.$attr->gradientLocation2 .'%)';
                 }
 
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox'] =  array(
                     'background' =>$grad_bg_color,
-                    'margin'=>  ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin+'px': 'inherit',                   
+                    'margin'=>  ( isset( $attr->blockMargin ) && '' !== $attr->blockMargin ) ? $attr->blockMargin+'px': 'inherit',
                 );
 
                 $selectors[' .uagb-infobox-overlay'] =  array(
                     'opacity'=> $opacity,
-                ); 
+                );
             }
 
 	        $selectors[' .uagb-infobox-content'] =  array(
                 'padding'=> ( isset( $attr->blockPadding ) && '' !== $attr->blockPadding ) ? $attr->blockPadding.'px': 'inherit',
-            );        
+            );
 
-	        // Border for block.	       
-            if( $attr->enableBorder == 'true' ){   
+	        // Border for block.
+            if( $attr->enableBorder == 'true' ){
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border'] = array(
                     'border-color' => ( isset( $attr->borderColor ) && '' !== $attr->borderColor  ) ?  $attr->borderColor: 'inherit',
                     'border-style' => ( isset( $attr->borderstyle ) && '' !== $attr->borderstyle ) ?  $attr->borderstyle: 'inherit',
                     'border-width' => ( isset( $attr->borderWidth ) && '' !== $attr->borderWidth ) ?  $attr->borderWidth.'px': 'inherit',
                     'border-radius' => ( isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
-                );           
-            }else{            	
+                );
+            }else{
 	        	var_dump('here');
                 $selectors[' .uagb-infobox__content-wrap.uagb-infobox-enable-border-radius'] = array(
-                    'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',                    
+                    'border-radius' => (  isset( $attr->borderRadius ) && '' !== $attr->borderRadius ) ?  $attr->borderRadius.'px': 'inherit',
                 );
             }
-      
+
 			// @codingStandardsIgnoreEnd.
 				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
 		}
 
+		/**
+		 * Get Team Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_team_css( $attr, $id ) {
 
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSize'] . "px",
+					"color" => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSize'] . "px",
+					"color" => $attr['prefixColor'],
+				),
+				" .uagb-team__desc-wrap" => array(
+					"margin-top" => $attr['prefixSpace'] . "px",
+				),
+				" .uagb-team__imag-wrap" => array(
+					"margin-top" => $attr['imgTopMargin'] . "px",
+					"margin-bottom" => $attr['imgBottomMargin'] . "px",
+					"margin-left" => $attr['imgLeftMargin'] . "px",
+					"margin-right" => $attr['imgRightMargin'] . "px",
+					"width" => $attr['imgWidth'] . "px"
+				),
+				" .uagb-team__social-icon a" => array(
+					"color" => $attr['socialColor'],
+					"font-size" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
+				),
+				" .uagb-team__social-icon:hover a" => array(
+					"color" => $attr['socialHoverColor'],
+				),
+				".uagb-team__image-position-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+				),
+				".uagb-team__image-position-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+				)
+			);
+
+			if( 'above' == $attr['imgPosition'] ) {
+				if ( 'center' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'left' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'right' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+				}
+			}
+
+			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSize'] . "px",
+				"color" => $attr['titleColor'],
+				"margin-bottom" => $attr['titleSpace'] . "px",
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+		}
 	}
 }

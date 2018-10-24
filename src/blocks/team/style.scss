@@ -90,3 +90,34 @@
 .uagb-team__image-position-right li {
 	margin-left: 5px;
 }
+
+.uagb-team__social-icon a span,
+.uagb-team__social-icon a span:before {
+	color: inherit;
+	font-size: inherit;
+	height: inherit;
+	width: inherit;
+}
+
+.uagb-team__social-icon a {
+	font-size: 30px;
+    width: 30px;
+    height: 30px;
+    color: #333;
+}
+
+.uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon-wrap {
+	display: inline-block;
+}
+
+.uagb-team__image-position-above.uagb-team__align-center .uagb-team__content {
+	text-align: center;
+}
+
+.uagb-team__image-position-above.uagb-team__align-left .uagb-team__content {
+	text-align: left;
+}
+
+.uagb-team__image-position-above.uagb-team__align-right .uagb-team__content {
+	text-align: right;
+}

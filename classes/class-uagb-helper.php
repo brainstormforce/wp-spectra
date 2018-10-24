@@ -146,6 +146,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/team':
+					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

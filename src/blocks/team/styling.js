@@ -26,6 +26,10 @@ function styling( props ) {
 		imgRightMargin,
 		imgTopMargin,
 		imgBottomMargin,
+		socialColor,
+		socialHoverColor,
+		socialSpace,
+		socialFontSize
 	} = props.attributes
 
 	var selectors = {
@@ -47,6 +51,21 @@ function styling( props ) {
 			"margin-left": imgLeftMargin + "px",
 			"margin-right": imgRightMargin + "px",
 			"width": imgWidth + "px"
+		},
+		" .uagb-team__social-icon a": {
+			"color": socialColor + " !important",
+			"font-size": socialFontSize + "px !important",
+			"width": socialFontSize + "px !important",
+			"height": socialFontSize + "px !important",
+		},
+		" .uagb-team__social-icon:hover a": {
+			"color": socialHoverColor + " !important",
+		},
+		".uagb-team__image-position-left .uagb-team__social-icon" : {
+			"margin-right": socialSpace + "px !important",
+		},
+		".uagb-team__image-position-right .uagb-team__social-icon" : {
+			"margin-left": socialSpace + "px !important",
 		}
 	}
 
