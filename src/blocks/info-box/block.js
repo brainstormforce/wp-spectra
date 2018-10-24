@@ -112,7 +112,7 @@ registerBlockType( "uagb/info-box", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ 'none' !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 				<div className = "uagb-infobox-text-wrap">
 					<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
 					<InfoBoxCta attributes={props.attributes} />
@@ -133,26 +133,26 @@ registerBlockType( "uagb/info-box", {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-						"uagb-infobox__content-wrap",
-						...InfoBoxPositionClasses(  props.attributes  ),
-					) }>
-						<div className = "uagb-infobox-overlay"></div>
-						<div className = "uagb-infobox-left-right-wrap">
+					"uagb-infobox__content-wrap",
+					...InfoBoxPositionClasses(  props.attributes  ),
+				) }>
+					<div className = "uagb-infobox-overlay"></div>
+					<div className = "uagb-infobox-left-right-wrap">
 
-							{ ( iconimgPosition == "left") &&
+						{ ( iconimgPosition == "left") &&
 								is_image
-							}
-							<div className = "uagb-infobox-content">
+						}
+						<div className = "uagb-infobox-content">
 
-								{  iconimgPosition == "above-title" && is_image }
+							{  iconimgPosition == "above-title" && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-								{ iconimgPosition == "below-title"  && is_image }
+							{ iconimgPosition == "below-title"  && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-								{ ( iconimgPosition === "left-title") &&
+							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
 										<div className = "left-title-image">
 											{ is_image }
@@ -160,9 +160,9 @@ registerBlockType( "uagb/info-box", {
 										</div>
 										{ desc }
 									</Fragment>
-								}
+							}
 
-								{ ( iconimgPosition === "right-title") &&
+							{ ( iconimgPosition === "right-title") &&
 									<Fragment>
 										<div className = "right-title-image">
 											{ title_text }
@@ -170,28 +170,28 @@ registerBlockType( "uagb/info-box", {
 										</div>
 										{ desc }
 									</Fragment>
-								}
+							}
 
-								{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
 									<Fragment>
 										{ title_text }
 										{ desc }
 									</Fragment>
-								}
-
-							</div>
-
-							{ ( iconimgPosition == "right") &&
-								is_image
 							}
-						</div>
-					</div>
-			</Fragment>
-			)
 
-		let target ='';
+						</div>
+
+						{ ( iconimgPosition == "right") &&
+								is_image
+						}
+					</div>
+				</div>
+			</Fragment>
+		)
+
+		let target =""
 		if( ctaTarget ){
-			target ='_blank';
+			target ="_blank"
 		}
 
 		return (
