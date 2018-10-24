@@ -1,0 +1,40 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.uagb-separator {
+    display: inline-block;   
+    width: 30%;
+    margin: 20px 0px 20px 0px;
+}
+
+a.uagb-infobox-cta-link {
+    pointer-events: none;
+}
+
+.uagb-infobox-icon-right .uagb-infobox-left-right-wrap button.components-button,
+.uagb-infobox-icon-left .uagb-infobox-left-right-wrap button.components-button {
+    -js-display: flex;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-shrink: 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+}
+
+.uagb-testinomial-wrap .components-button,
+.uagb-testinomial-wrap .components-button:hover,
+.uagb-testinomial-wrap .components-button:focus:enabled{
+    background-color: transparent;
+    color:#333;
+    box-shadow: none;
+    border:none;
+    outline: none;
+    outline-offset: -2px;
+}

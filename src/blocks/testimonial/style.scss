@@ -1,0 +1,19 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.uagb-icon-wrap .uagb-icon {
+    display: inline-block;
+}
+
+.uagb-testimonial-imgicon-style-circle .uagb-testinomial-image-content img {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+}
+
+.uagb-testimonial-imgicon-style-square .uagb-testinomial-image-content img {
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+}
