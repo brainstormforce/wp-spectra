@@ -138,7 +138,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconBottomMargin'    => '5',
 							'imageSize'           => 'thumbnail',
 							'imageWidth'          => '120',
-							'seperatorSpace' 	  => '10'
+							'seperatorSpace'      => '10',
 						),
 					),
 					'uagb/buttons'          => array(

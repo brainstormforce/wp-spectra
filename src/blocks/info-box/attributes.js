@@ -241,7 +241,7 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 120,
-	},	
+	},		
 }
 
 export default attributes
