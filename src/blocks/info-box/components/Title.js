@@ -24,7 +24,7 @@ class Title extends React.Component {
 				<RichText
 	                tagName= { attributes.headingTag }
 	                value={ attributes.infoBoxTitle }
-	                className = 'uagb-infobox-title entry-title'
+	                className = 'uagb-ifb-title entry-title'
 	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }
 	                multiline={ false }
 	                placeholder={ __( "Write a Heading" ) }
@@ -48,7 +48,7 @@ class Title extends React.Component {
 				<RichText.Content
 	                tagName= { attributes.headingTag }
 	                value={ attributes.infoBoxTitle }
-	                className='uagb-infobox-title entry-title'
+	                className='uagb-ifb-title entry-title'
 	            />			
 			)
 		}

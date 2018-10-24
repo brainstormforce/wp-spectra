@@ -325,12 +325,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = (object) array_merge( $defaults, (array) $attr );			
 
 			$selectors = array(
-				' .uagb-icon'  => array(
+				' .uagb-ifb-icon'  => array(
 					'height'      => $attr->iconSize. "px",
 					'width'       => $attr->iconSize. "px",
 					'line-height' => $attr->iconSize. "px",
 				),
-				' .uagb-icon > span' => array(
+				' .uagb-ifb-icon > span' => array(
 					'font-size'   => $attr->iconSize. "px",
 					'height'      => $attr->iconSize. "px",
 					'width'       => $attr->iconSize. "px",
@@ -338,28 +338,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'       => $attr->iconColor,
 					'transform'   => 'rotate('.$attr->iconRotate .'deg)',
 				),
-				' .uagb-icon:hover > span' => array(
+				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,					
 				),				
-				' .uagb-imgicon-style-circle .uagb-icon' => array(
+				' .uagb-ifb-imgicon-style-circle .uagb-ifb-icon' => array(
 					'background' => $attr->iconimgBg,
 					'padding'    => $attr->iconimgbgSize . 'px',
 					'display'    => 'inline-block',
 					'box-sizing' => 'content-box',
 				),
-				' .uagb-imgicon-style-circle .uagb-icon:hover' => array(
+				' .uagb-ifb-imgicon-style-circle .uagb-ifb-icon:hover' => array(
                     'background'  => $attr->iconBgHover,                                       
                 ),
-                ' .uagb-imgicon-style-square .uagb-icon' => array(                 
+                ' .uagb-ifb-imgicon-style-square .uagb-ifb-icon' => array(                 
                     'padding' => $attr->iconimgbgSize.'px',
                     'background' => $attr->iconimgBg,
                     'display' => 'inline-block',
                     'box-sizing' => 'content-box',
                 ),
-                ' .uagb-imgicon-style-square .uagb-icon:hover' => array(
+                ' .uagb-ifb-imgicon-style-square .uagb-ifb-icon:hover' => array(
                     'background' => $attr->iconBgHover,                                       
                 ),
-                ' .uagb-imgicon-style-custom .uagb-icon' => array(                   
+                ' .uagb-ifb-imgicon-style-custom .uagb-ifb-icon' => array(                   
                     'padding'       => $attr->iconimgbgSize.'px',
                     'background'    => $attr->iconimgBg,
                     'display'       => 'inline-block',
@@ -370,11 +370,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'border-color'  => $attr->iconimgBorder,
                     'box-sizing'    => 'content-box',
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-icon:hover' => array(
+	            ' .uagb-ifb-imgicon-style-custom .uagb-ifb-icon:hover' => array(
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-infobox__content-wrap .uagb-imgicon-wrap' => array(
+	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
 	                    'margin-top'    => $attr->iconTopMargin.'px',
@@ -382,22 +382,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ),
 
 	            // Image.
-	            ' .uagb-image-content > img' => array(
+	            ' .uagb-ifb-image-content > img' => array(
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
-	            ' .uagb-imgicon-style-circle .uagb-image-content img' => array(                    
+	            ' .uagb-ifb-imgicon-style-circle .uagb-ifb-image-content img' => array(                    
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),	            
-	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
+	            ' .uagb-ifb-imgicon-style-square .uagb-ifb-image-content img' => array(                    
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
-	            ' .uagb-imgicon-style-square .uagb-image-content img:hover' => array(
+	            ' .uagb-ifb-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
 	                    'background' => $attr->iconBgHover,                                       
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
+	            ' .uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img' => array(
 	                    'display'       => 'inline-block',
 	                    'box-sizing'    => 'content-box',
 	                    'border-style'  => $attr->iconimgBorderstyle,
@@ -406,18 +406,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'border-color'  => $attr->iconimgBorder,
 	                    'box-sizing'    => 'content-box',
 	                ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img:hover' => array(
+	            ' .uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-imgicon-style-square .uagb-image-content img' => array(                    
+	            ' .uagb-ifb-imgicon-style-square .uagb-ifb-image-content img' => array(                    
 	                'display'    => 'inline-block',
 	                'box-sizing' => 'content-box',
 	            ),
-	            ' .uagb-imgicon-style-square .uagb-image-content img:hover' => array(
+	            ' .uagb-ifb-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
 	                'background' =>  $attr->iconBgHover,                                       
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img' => array(                    
+	            ' .uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img' => array(                    
 	                'display'       => 'inline-block',
 	                'box-sizing'    => 'content-box',
 	                'border-style'  => $attr->iconimgBorderstyle,
@@ -426,11 +426,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-color'  => $attr->iconimgBorder,
 	                'box-sizing'    => 'content-box',
 	            ),
-	            ' .uagb-imgicon-style-custom .uagb-image-content img:hover' => array(
+	            ' .uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
 	                'background'   => $attr->iconBgHover,
 	                'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-image-content .components-button svg' => array(
+	            ' .uagb-ifb-image-content .components-button svg' => array(
 	                    'width'=>  $attr->imageWidth.'px',
 	            ),
 
@@ -451,14 +451,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ),
 
 	           // Prefix Style.
-	            ' .uagb-infobox-title-prefix' => array(
+	            ' .uagb-ifb-title-prefix' => array(
 	                'font-size'     => $attr->prefixFontSize.'px',
 	                'color'         => $attr->prefixColor,
 	                'margin-bottom' => $attr->prefixSpace.'px',
 	            ),
 
 	            // Title Style.
-	            ' .uagb-infobox-title' => array(
+	            ' .uagb-ifb-title' => array(
 	                'font-size'     => $attr->headFontSize.'px',
 	                'color'         => $attr->headingColor,
 	                'margin-bottom' => $attr->headSpace.'px',
@@ -472,7 +472,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ),
 
 	            // Seperator.
-	            ' .uagb-separator' => array(
+	            ' .uagb-ifb-separator' => array(
 	                'width'            => $attr->seperatorWidth.'%',
 	                'border-top-width' => $attr->seperatorThickness.'px',
 	                'border-top-color' => $attr->seperatorColor,

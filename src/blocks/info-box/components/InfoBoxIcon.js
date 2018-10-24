@@ -11,9 +11,9 @@ class InfoBoxIcon extends React.Component {
 		const { attributes } = this.props     
         
 		return (
-			<div className="uagb-ifb-image-icon-content uagb-imgicon-wrap " >
-				<div className="uagb-icon-wrap">
-					<span className="uagb-icon">
+			<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap" >
+				<div className="uagb-ifb-icon-wrap">
+					<span className="uagb-ifb-icon">
 						<span className={attributes.icon} ></span>
 					</span>
 				</div>

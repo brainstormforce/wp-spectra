@@ -4,7 +4,7 @@
 
 const attributes = {
 	prefixTitle: {
-		selector: "span.uagb-infobox-title-prefix",
+		selector: "span.uagb-ifb-title-prefix",
 		default: "Prefix",
 	},
 	infoBoxTitle: {

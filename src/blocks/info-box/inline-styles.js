@@ -65,13 +65,13 @@ function InfoBoxStyle( props ) {
 	var selectors = {}
 
 	// Icon css
-	selectors[".uagb-icon"] = {
+	selectors[".uagb-ifb-icon"] = {
 		"height" : iconSize+"px",
 		"width" : iconSize+"px",
 		"line-height" : iconSize+"px",                    
 	}
 
-	selectors[".uagb-icon > span"] = {
+	selectors[".uagb-ifb-icon > span"] = {
 		"font-size" : iconSize+"px",
 		"height": iconSize+"px",
 		"color": iconColor,
@@ -80,33 +80,33 @@ function InfoBoxStyle( props ) {
 		"transform": "rotate("+iconRotate +"deg)",                                       
 	}
 
-	selectors[".uagb-icon:hover > span"] = {
+	selectors[".uagb-ifb-icon:hover > span"] = {
 		"color" : iconHover,                                       
 	}
                     
-	selectors[".uagb-imgicon-style-circle .uagb-icon"] = {                   
+	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-circle .uagb-icon:hover"] = {
+	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-icon"] = {                   
+	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-icon:hover"] = {
+	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-icon"] = {                   
+	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-icon"] = {                   
 		"padding" : iconimgbgSize+"px",
 		"background" : iconimgBg,
 		"display" : "inline-block",
@@ -118,12 +118,12 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-icon:hover"] = {
+	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-icon:hover"] = {
 		"background" : iconBgHover,      
 		"border-color" : iconimgBorderHover,                                 
 	}
 
-	selectors[".uagb-infobox__content-wrap .uagb-imgicon-wrap"] = {
+	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
 		"margin-right" : iconRightMargin+"px",                                
 		"margin-top" : iconTopMargin+"px",
@@ -131,25 +131,25 @@ function InfoBoxStyle( props ) {
 	} 
 
 	// Image
-	selectors[".uagb-image-content img"] = {
+	selectors[".uagb-ifb-image-content img"] = {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-imgicon-style-circle .uagb-image-content img"] = {                    
+	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-circle .uagb-image-content img:hover"] = {
+	selectors[".uagb-ifb-imgicon-style-circle .uagb-ifb-image-content img:hover"] = {
 		"background" : iconBgHover,                                       
 	}
 
-	selectors[".uagb-imgicon-style-square .uagb-image-content img"] = {                    
+	selectors[".uagb-ifb-imgicon-style-square .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-image-content img"] = {                    
+	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -159,15 +159,15 @@ function InfoBoxStyle( props ) {
 		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-imgicon-style-custom .uagb-image-content img:hover"] = {
+	selectors[".uagb-ifb-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
 		"border-color" : iconimgBorderHover,                                     
 	}
 
-	selectors[".uagb-image-content .components-button svg"] = {
+	selectors[".uagb-ifb-image-content .components-button svg"] = {
 		"width": imageWidth+"px",
 	} 
 
-	selectors[".uagb-imgicon-style-circle .components-button svg"] = {                    
+	selectors[".uagb-ifb-imgicon-style-circle .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",  
 		"margin-left" : iconLeftMargin+"px",
@@ -176,7 +176,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                  
 	}
 
-	selectors[".uagb-imgicon-style-square .components-button svg"] = {                    
+	selectors[".uagb-ifb-imgicon-style-square .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",    
 		"margin-left" : iconLeftMargin+"px",
@@ -185,7 +185,7 @@ function InfoBoxStyle( props ) {
 		"margin-bottom" : iconBottomMargin+"px",                
 	}
 
-	selectors[".uagb-imgicon-style-custom .components-button svg"] = {                    
+	selectors[".uagb-ifb-imgicon-style-custom .components-button svg"] = {                    
 		"display" : "inline-block",
 		"box-sizing" : "content-box",
 		"border-style" : iconimgBorderstyle,
@@ -234,14 +234,14 @@ function InfoBoxStyle( props ) {
 	}
 
 	// Prefix Style
-	selectors[".editor-rich-text .uagb-infobox-title-prefix"] = {
+	selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
 		"font-size" : prefixFontSize+"px",
 		"color": prefixColor,
 		"margin-bottom": prefixSpace+"px",
 	}
 
 	// Title Style
-	selectors[".editor-rich-text .uagb-infobox-title"] = {
+	selectors[".editor-rich-text .uagb-ifb-title"] = {
 		"font-size" : headFontSize+"px",
 		"color": headingColor,
 		"margin-bottom": headSpace+"px",
@@ -255,7 +255,7 @@ function InfoBoxStyle( props ) {
 	}
 
 	// Seperator
-	selectors[".uagb-separator"] = {
+	selectors[".uagb-ifb-separator"] = {
 		"width" : seperatorWidth+"%",
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
