@@ -175,7 +175,7 @@ const attributes = {
 	},
 	ctaFontSize :{
 		type: "number",
-		default : ''
+		default : ""
 	},	
 	ctaBtnSize: {
 		type: "string",
