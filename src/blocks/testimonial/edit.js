@@ -232,7 +232,7 @@ class UAGBtestimonial extends Component {
 		// Icon image settings.
 		const iconImageSettings = (
 			<Fragment>
-				<TabPanel className="uagb-inspect-tabs"
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 					activeClass="active-tab"
 					tabs={ [
 						{
