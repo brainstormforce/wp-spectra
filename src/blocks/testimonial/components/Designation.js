@@ -24,7 +24,7 @@ class Designation extends React.Component {
 				<RichText
 	                tagName= 'span'
 	                value={ attributes.headingTitle }
-	                className = 'uagb-testinomial-designation entry-title'
+	                className = 'uagb-testinomial-designation'
 	                onChange = { ( value ) => setAttributes( { headingTitle: value } ) }
 	                multiline={ false }
 	                placeholder={ __( "Write a Heading" ) }
@@ -46,9 +46,9 @@ class Designation extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName= { attributes.headingTag }
+	                tagName= 'span'
 	                value={ attributes.headingTitle }
-	                className='uagb-testinomial-designation entry-title'
+	                className='uagb-testinomial-designation'
 	            />			
 			)
 		}

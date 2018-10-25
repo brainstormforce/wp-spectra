@@ -146,6 +146,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/testimonial':
+					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

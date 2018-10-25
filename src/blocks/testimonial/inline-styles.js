@@ -54,8 +54,7 @@ function TestimonialStyle( props ) {
             selectors['.uagb-testinomial-image img'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
-                }; 
-          
+                };           
 
             selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img'] = {                    
                         'border-style' : iconimgBorderstyle,
@@ -68,7 +67,7 @@ function TestimonialStyle( props ) {
                     'border-color' : iconimgBorderHover,                                     
                 };
 
-            selectors['.uagb-testinomial-image .components-button svg'] = {
+            selectors['.uagb-testimonial-image-contnet .components-button svg'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
                 }; 

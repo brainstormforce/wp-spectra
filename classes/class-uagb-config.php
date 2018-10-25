@@ -182,6 +182,39 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'cluster'           => 'false',
 						),
 					),
+
+					'uagb/testimonial'          => array(
+						'slug'       => '',
+						'title'      => __( 'Testimonial', 'uagb' ),
+						'attributes' => array(
+							'block_id'            => '',
+							'headingAlign'        => 'center',
+							'designationColor'    => '#333',
+							'authorNameColor'     => '#333',
+							'iconimgStyle'        => 'circle',
+							'authorFontSize'      => '',
+							'nameFontSize'        => '',
+							'designationFontSize' => '',
+							'nameFontSize'		  => '',
+							'descFontSize'        => '',
+							'authorSpace'         => '10',
+							'nameSpace'           => '10',
+							'descSpace'           => '',
+							'iconimgBorder' 	  => '#333',
+							'iconimgBorderHover'  => '',
+							'iconimgBorderstyle'  => 'solid',
+							'iconimgBorderWidth'  => 1,
+							'iconimgBorderRadius' => 0,
+							'imgLeftPadding'      => 5,
+							'imgRightPadding'     => 5,
+							'imgTopPadding'       => 5,
+							'imgBottomPadding'    => 5,
+							'imageSize'           => 'thumbnail',
+							'imageWidth'          => 60,
+							'authorColor'         => '#333',
+							'descColor'			  => '#333'
+						),
+					),
 				);
 			}
 			return self::$block_attributes;

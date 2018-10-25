@@ -4,11 +4,11 @@
 
 const attributes = {
 	prefixTitle: {
-		selector: 'span.uagb-infobox-title-prefix',
+		selector: 'span.uagb-testinomial-author-name',
 		default: "John Doe",
 	},
     headingTitle: {
-		selector: 'span.uagb-infobox-title entry-title',
+		selector: 'span.uagb-testinomial-designation',
 		default: "Designer",
 	},
 	headingDesc: {
@@ -20,14 +20,17 @@ const attributes = {
 		type: "string",
 		default: "center",
 	},
-	designationColor: {
+	descColor: {
 		type: "string",
+		default: "#333"
 	},
 	designationColor: {
 		type: "string",
-	},
-	authorNameColor: {
+		default: "#333"		
+	},	
+	authorColor: {
 		type: "string",
+		default: "#333"		
 	},		
 	iconimgStyle: {
 		type: "string",
@@ -36,46 +39,30 @@ const attributes = {
 	imagePosition:{
 		type: "string",
 		default: "aside"
-	},
-	prefixTag :{
-		type: "string",
-		default: "h3"
-	},
+	},	
 	authorFontSize: {
 		type: "number",
-	},
-	separatorHeight: {
-		type: "number"
-	},
-	separatorWidth: {
-		type: "number"
-	},
+	},	
 	designationFontSize: {
 		type: "number",
 	},
 	descFontSize: {
 		type: "number",
 	},
-	headSpace: {
+	nameSpace: {
 		type: "number",
-	},
-	separatorSpace: {
-		type: "number",
-	},
+		default : '10'
+	},	
 	descSpace: {
 		type: "number",
-	},
-	iconimgBg : {
-		type : 'string',
-		default : '#eee',
-	},
-	iconimgBorder : {
-		type : 'string',
-		default : '#eee',
-	},
+	},		
 	iconimgBorderHover : {
 		type : 'string',
 		default : ''
+	},
+	iconimgBorder:{
+		type : 'string',
+		default : '#333'
 	},
 	iconimgBorderstyle :{
 		type : 'string',
@@ -88,11 +75,7 @@ const attributes = {
 	iconimgBorderRadius: {
 		type: "number",
 		default : 0
-	},	
-	iconimgbgSize :{
-		type: "number",
-		default : 15
-	},
+	},		
 	block_id :{
 		type : 'string',
 		default : 'not_set'
@@ -131,85 +114,7 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 60,
-	},
-	backgroundType: {
-		type: "string",
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundOpacity: {
-		type: "number",
-		default: "100"
-	},
-	backgroundColor: {
-		type: "string",
-	},
-	gradientColor1: {
-		type: "string",
-	},
-	gradientColor2: {
-		type: "string",
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
-		type: "number",
-		default: "0"
-	},
-	gradientLocation2: {
-		type: "number",
-		default: "100"
-	},
-	gradientAngle: {
-		type: "number",
-		default: "0"
-	},
-	gradientDirection:{
-		type: "string",
-		default: "center_center"
-	},
-	blockPadding:{
-		type: "number",
-		default: 10,
-	},
-	blockMargin:{
-		type: "number",
-	},
-	enableBorder: {
-		type: 'boolean',
-		default: false,
-	},
-	borderstyle :{
-		type : 'string',
-		default : 'solid'
-	},
-	borderWidth: {
-		type: "number",
-		default : 1
-	},
-	borderRadius: {
-		type: "number",
-		default : 0
-	},
-	borderColor: {
-		type: "string",
-		default : ""
-	},
+	},		
 }
 
 export default attributes

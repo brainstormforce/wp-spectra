@@ -1079,3 +1079,7 @@ a.uagb-infobox-link-wrap {
 
 .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet {
   padding-right: 10px; }
+
+.uagb-testinomial-author-name,
+.uagb-testinomial-designation {
+  display: block; }

@@ -71,10 +71,8 @@ registerBlockType( "uagb/testimonial", {
 			className
 		} = props.attributes;
 
-		const my_block_id = 'uagb-'+ block_id;
+		const my_block_id = 'uagb-testimonial-'+ block_id;
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : '';
-
-		ClassNamesId = ClassNamesId +' '+ my_block_id;
 
 		var back_style = TestimonialStyle( props );
 
@@ -86,7 +84,7 @@ registerBlockType( "uagb/testimonial", {
 		const desc = (
 			<Fragment>				
 				<div className = "uagb-testimonial-text-wrap">
-					<Description attributes={props.attributes} setAttributes = "not_set"/>
+					<Description attributes={props.attributes} setAttributes = "not_set" props = { props }/>
 				</div>
 			</Fragment>
 		);
@@ -94,9 +92,9 @@ registerBlockType( "uagb/testimonial", {
 		// Get Title and AuthorName components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-testimonial-title-wrap">
-					<AuthorName attributes={ props.attributes } setAttributes = "not_set"/>
-					<Designation attributes={ props.attributes} setAttributes = "not_set"/>
+				<div className = "uagb-testimonial-details">
+					<AuthorName attributes={ props.attributes } setAttributes = "not_set" props = { props }/>
+					<Designation attributes={ props.attributes} setAttributes = "not_set" props = { props }/>
 				</div>
 			</Fragment>
 		);
@@ -105,16 +103,24 @@ registerBlockType( "uagb/testimonial", {
 
 		return (
 			<Fragment>
-				<div className={ ClassNamesId }>
+				<div className={ className }
+					id = { my_block_id }
+				>
 					<div className = { classnames(
-						"uagb-testinomial-wrapper",
-						...PositionClasses(  props.attributes  ),
+						"uagb-testinomial-content-wrap",
+						...PositionClasses( props.attributes ),
 					) }>
-						<div className = "uagb-testimonial-content">
+						<div className = "uagb-testinomial-content">
 							{ desc }
-							{ is_image }
-							{ title_text }												
-						</div>
+							<div className ="uagb-testimonial-meta">
+								<div className ="uagb-testimonial-meta-inner">
+									<div className ="uagb-testimonial-image-contnet">
+										{ is_image }	
+									</div>							
+									{ title_text }								
+								</div>
+							</div>
+						</div>						
 					</div>
 				</div>
 			</Fragment>

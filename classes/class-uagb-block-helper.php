@@ -494,5 +494,63 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
 		}
 
+
+		/**
+		 * Get Testimonial CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_testimonial_css( $attr, $id ){
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );			
+
+			$selectors = array(
+				' .uagb-testinomial-content-wrap .uagb-testimonial-image-contnet'  => array(
+					'padding-left'   => $attr->imgLeftPadding. "px",
+					'padding-right'  => $attr->imgRightPadding. "px",
+					'padding-top'    => $attr->imgTopPadding. "px",
+					'padding-bottom' => $attr->imgBottomPadding. "px",
+				),
+				' .uagb-testinomial-image img'  => array(
+					'width'      => $attr->imageWidth. "px",
+					'max-width'  => $attr->imageWidth. "px",
+				),
+				' .uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img'  => array(
+					'border-style'   => $attr->iconimgBorderstyle,
+					'border-color'  => $attr->iconimgBorder,
+					'border-width'    => $attr->iconimgBorderWidth. "px",
+					'border-radius' => $attr->iconimgBorderRadius. "px",
+				),
+				' .uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img:hover'  => array(
+					'border-color'  => $attr->iconimgBorderHover,
+				),
+				' .uagb-testinomial-content'  => array(
+					'text-align'  => $attr->headingAlign,
+				),	
+				' .uagb-testinomial-author-name'  => array(
+					'color'  => $attr->authorColor,
+					'font-size'    => $attr->nameFontSize. "px",
+					'margin-bottom' => $attr->nameSpace. "px",
+				),	
+				' .uagb-testinomial-designation'  => array(
+					'color'  => $attr->designationColor,
+					'font-size'    => $attr->nameFontSize. "px",
+				),	
+				' .uagb-testinomial-desc'  => array(
+					'color'  => $attr->descColor,
+					'font-size'    => $attr->descFontSize. "px",
+					'margin-bottom' => $attr->descSpace. "px",
+				),			
+			);
+
+			// @codingStandardsIgnoreEnd.
+			return UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
+		}
+
 	}
 }
