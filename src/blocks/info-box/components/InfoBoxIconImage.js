@@ -14,10 +14,10 @@ class InfoBoxIconImage extends React.Component {
 		if( url_chk !== "" ){
 			let size = attributes.iconImage.sizes
 			let imageSize = attributes.imageSize
-			if ( typeof size[imageSize] !== 'undefined') {
-			  url = size[imageSize].url ;
+			if ( typeof size[imageSize] !== "undefined") {
+			  url = size[imageSize].url 
 			}else{
-			  url = url_chk ;
+			  url = url_chk 
 			}
 
 			return (

@@ -211,7 +211,7 @@ class UAGBinfoBox extends Component {
 		}
 
 		const my_block_id = "uagb-"+this.props.clientId
-				
+
 
 		// Common setting for icon and images.
 		const icon_imagenormalSettings = (
@@ -419,14 +419,14 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				<PanelBody
 					title={ __( "Seperator" ) }
-					initialOpen={ false } >					
-					 
+					initialOpen={ false } >
+
 					<SelectControl
 						label={ __( "Style" ) }
 						value={ seperatorStyle }
 						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 						options={ [
-							{ value: "none", label: __( "None" ) },								
+							{ value: "none", label: __( "None" ) },
 							{ value: "solid", label: __( "Solid" ) },
 							{ value: "double", label: __( "Double" ) },
 							{ value: "dashed", label: __( "Dashed" ) },
@@ -490,14 +490,14 @@ class UAGBinfoBox extends Component {
 							{ value: "button", label: __( "Button" ) },
 							{ value: "all", label: __( "Complete Box" ) },
 						] }
-					/>		
-					{ ( ctaType === "text" || ctaType === "button" ) &&			
+					/>
+					{ ( ctaType === "text" || ctaType === "button" ) &&
 					<TextControl
 						label= { __( "Text" ) }
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					}		
+					}
 					{ ( ctaType !== "none" ) &&
 						<Fragment>
 							<TextControl
@@ -509,7 +509,7 @@ class UAGBinfoBox extends Component {
 								label={ __( "Open in new Window" ) }
 								checked={ ctaTarget }
 								onChange={ this.toggleTarget }
-							/>						
+							/>
 						</Fragment>
 					}
 
@@ -526,7 +526,7 @@ class UAGBinfoBox extends Component {
 									{ value: "lg", label: __( "Large" ) },
 									{ value: "xl", label: __( "Extra Large" ) },
 								] }
-							/>							
+							/>
 
 							<RangeControl
 								label={ __( "Padding" ) }
@@ -591,7 +591,7 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
-		
+
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -608,7 +608,7 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-					
+
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ headingTag }
@@ -631,7 +631,7 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-					
+
 					<RangeControl
 						label={ __( "Description Font Size" ) }
 						value={ subHeadFontSize }
@@ -640,10 +640,10 @@ class UAGBinfoBox extends Component {
 						max={ 200 }
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>					
+					/>
 
-					{ ( ctaType === "text" || ctaType === "button" ) &&	( 				
-						
+					{ ( ctaType === "text" || ctaType === "button" ) &&	(
+
 						<RangeControl
 							label={ __( "CTA Font Size" ) }
 							value={ ctaFontSize }
@@ -652,15 +652,16 @@ class UAGBinfoBox extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>						
-					
+						/>
+
 					)
 					}
-					
+
 				</PanelBody>
 
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
+					initialOpen={ false }
 					colorSettings={ [
 						{
 							value: prefixColor,
@@ -676,8 +677,8 @@ class UAGBinfoBox extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Description Color" ),
-						},														
-											
+						},
+
 					] }
 				>
 					{ ( ctaType === "text") &&
@@ -732,7 +733,7 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>	
+				>
 					<RangeControl
 						label={ __( "Prefix Bottom Margin" ) }
 						value={ prefixSpace }
@@ -768,7 +769,7 @@ class UAGBinfoBox extends Component {
 						max={ 50 }
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>	
+					/>
 					<PanelBody
 						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }
@@ -809,18 +810,6 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						}
 					</PanelBody>
 				</PanelBody>
 			</Fragment>
@@ -876,11 +865,10 @@ class UAGBinfoBox extends Component {
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-				 <InspectorControls>				
+				 <InspectorControls>
 
 					<PanelBody
 						title={ __( "Image/Icon" ) }
-						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( "Select Position" ) }
@@ -896,6 +884,19 @@ class UAGBinfoBox extends Component {
 
 							] }
 						/>
+						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 						<SelectControl
 							label={ __( "Select Source" ) }
 							value={ source_type }
@@ -940,7 +941,7 @@ class UAGBinfoBox extends Component {
 							max={ 300 }
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>		
+						/>
 
 						}
 
@@ -980,14 +981,14 @@ class UAGBinfoBox extends Component {
 				) }
 			>
 			</MediaUpload>
-		) 
+		)
 
 
 		// Get icon/Image components.
 		let is_image = ""
 
 		if( source_type === "icon" ) {
-			is_image = <InfoBoxIcon attributes={attributes}/> 
+			is_image = <InfoBoxIcon attributes={attributes}/>
 		}else{
 			is_image = image_option
 		}
@@ -1012,7 +1013,7 @@ class UAGBinfoBox extends Component {
 				</div>
 			</Fragment>
 		)
-		
+
 
 		const output = (
 			<Fragment>
@@ -1088,7 +1089,7 @@ class UAGBinfoBox extends Component {
 						<Fragment>
 							<a href= {ctaLink} className = "uagb-infobox-link-wrap" > {output}</a>
 						</Fragment>
-					}						
+					}
 					{ ( ctaType !== "all") && output }
 				</div>
 			</Fragment>

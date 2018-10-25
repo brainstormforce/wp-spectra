@@ -32,7 +32,11 @@ function inlineStyles( props, isEditor ) {
 		gradientAngle,
 		backgroundOpacity,
 		backgroundVideoColor,
-		backgroundVideoOpacity
+		backgroundVideoOpacity,
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor
 	} = props.attributes
 
 	var style = {
@@ -57,6 +61,13 @@ function inlineStyles( props, isEditor ) {
 		style["margin-left"] = "auto"
 		style["margin-top"] = topMargin + "px"
 		style["margin-bottom"] =  bottomMargin + "px"
+	}
+
+	if ( borderStyle != "none" ) {
+		style["border-style"] = borderStyle
+		style["border-width"] = borderWidth + "px"
+		style["border-radius"] = borderRadius + "px"
+		style["border-color"] =  borderColor
 	}
 
 	var position = backgroundPosition.replace( "-", " " )

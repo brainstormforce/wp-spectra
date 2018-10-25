@@ -211,12 +211,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'label'        => '#' . $i . ' Click Here',
+						'label'        => 'Click Here ' . '#' . $i,
 						'link'         => '#',
-						'target'       => '_blank',
+						'target'       => '_self',
 						'size'         => '',
 						'vPadding'     => 10,
-						'hPadding'     => 10,
+						'hPadding'     => 14,
 						'borderWidth'  => 1,
 						'borderRadius' => 2,
 						'borderStyle'  => 'solid',
