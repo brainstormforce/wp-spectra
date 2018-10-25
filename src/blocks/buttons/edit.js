@@ -269,7 +269,7 @@ class UAGBMultiButtonEdit extends Component {
 									{ times( incAmount, n => {
 
 										cloneButtons.push( {
-											label: "#" + ( cloneButtons.length + 1 ) +" Click Here",
+											label: "Click Here " + "#" + ( cloneButtons.length + 1 ),
 											link: cloneButtons[ 0 ].link,
 											target: cloneButtons[ 0 ].target,
 											size: cloneButtons[ 0 ].size,
