@@ -143,6 +143,8 @@ class UAGBPostCarousel extends Component {
 			align,
 			postLayout,
 			columns,
+			tcolumns,
+			mcolumns,
 			order,
 			orderBy,
 			categories,
@@ -190,9 +192,22 @@ class UAGBPostCarousel extends Component {
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 					/>
-
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
 				</PanelBody>
-				<PanelBody title={ __( "Carousel" ) }>
+				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Pause On Hover" ) }
 						checked={ pauseOnHover }
@@ -232,7 +247,7 @@ class UAGBPostCarousel extends Component {
 						max={ 50 }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Image" ) }>
+				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
@@ -263,7 +278,7 @@ class UAGBPostCarousel extends Component {
 						/>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) }>
+				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ titleTag }
@@ -303,7 +318,7 @@ class UAGBPostCarousel extends Component {
 						onChange={ this.toggleDisplayPostLink }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Colors" ) }>
+				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
 						<PanelColor
 							title={ __( "Blog Background Color" ) }
@@ -390,7 +405,7 @@ class UAGBPostCarousel extends Component {
 						/>
 					</PanelColor>
 				</PanelBody>
-				<PanelBody title={ __( "Spacing" ) }>
+				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
 						label={ __( "Row Gap" ) }
 						value={ rowGap }

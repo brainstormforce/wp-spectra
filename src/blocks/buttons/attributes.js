@@ -6,16 +6,16 @@ const ITEM_COUNT = 2
 const buttons = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var label = "#" + i +" Click Here"
+	var label = "Click Here " + "#" + i
 	var link    = "#"
 	buttons.push(
 		{
 			"label": label,
 			"link": link,
-			"target": "_blank",
+			"target": "_self",
 			"size": "",
 			"vPadding": 10,
-			"hPadding": 10,
+			"hPadding": 14,
 			"borderWidth": 1,
 			"borderRadius": 2,
 			"borderStyle": "solid",

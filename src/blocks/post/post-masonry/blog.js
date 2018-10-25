@@ -17,6 +17,8 @@ class Blog extends React.Component {
 		const {
 			displayPostImage,
 			columns,
+			tcolumns,
+			mcolumns,
 			imgPosition,
 			postsToShow,
 			rowGap,
@@ -47,6 +49,8 @@ class Blog extends React.Component {
 					className={ classnames(
 						"is-masonry",
 						`uagb-post__columns-${ columns }`,
+						`uagb-post__columns-tablet-${ tcolumns }`,
+						`uagb-post__columns-mobile-${ mcolumns }`,
 						"uagb-post__items"
 					) }
 					style={{

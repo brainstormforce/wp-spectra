@@ -179,7 +179,6 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 	$wrap = array(
 		'uagb-post__items uagb-post__columns-' . $attributes['columns'],
 		'is-' . $layout,
-
 	);
 
 	$outerwrap = array(
@@ -192,12 +191,16 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 	switch ( $layout ) {
 		case 'masonry':
+			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
+			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'grid':
 			if ( $attributes['equalHeight'] ) {
 				array_push( $wrap, 'uagb-post__equal-height' );
 			}
+			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
+			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'carousel':
@@ -290,6 +293,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',
@@ -425,6 +436,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',
@@ -584,6 +603,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',

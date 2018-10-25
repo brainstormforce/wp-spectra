@@ -72,7 +72,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
-			$style['width'] = $section_width;
+			$style['max-width'] = $section_width;
 
 			if ( 'color' === $bg_type ) {
 
@@ -114,7 +114,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
 				' .uagb-section__inner-wrap' => array(
-					'width' => $inner_width,
+					'max-width' => $inner_width,
 				),
 			);
 
