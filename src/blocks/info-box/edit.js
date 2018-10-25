@@ -893,7 +893,7 @@ class UAGBinfoBox extends Component {
 									{ value: "tablet", label: __( "Tablet" ) },
 									{ value: "mobile", label: __( "Mobile" ) },
 								] }
-								help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+								help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
 						}

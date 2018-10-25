@@ -216,7 +216,7 @@ const attributes = {
 	},
 	iconRightMargin :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	iconTopMargin :{
 		type: "number",

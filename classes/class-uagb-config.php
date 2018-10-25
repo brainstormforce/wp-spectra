@@ -137,7 +137,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaBorderRadius'     => '',
 							'prefixSpace'         => '5',
 							'iconLeftMargin'      => '5',
-							'iconRightMargin'     => '5',
+							'iconRightMargin'     => '10',
 							'iconTopMargin'       => '5',
 							'iconBottomMargin'    => '5',
 							'imageSize'           => 'thumbnail',
