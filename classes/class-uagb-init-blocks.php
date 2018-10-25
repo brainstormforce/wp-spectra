@@ -46,6 +46,27 @@ class UAGB_Init_Blocks {
 
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
+
+		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+	}
+
+	/**
+	 * Gutenberg block category for UAGB.
+	 *
+	 * @param array  $categories Block categories.
+	 * @param object $post Post object.
+	 * @since 1.0.0
+	 */
+	function register_block_category( $categories, $post ) {
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'uagb',
+					'title' => __( 'UAGB Blocks', 'uagb' ),
+				),
+			)
+		);
 	}
 
 	/**

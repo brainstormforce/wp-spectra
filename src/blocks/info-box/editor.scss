@@ -5,18 +5,18 @@
  * which makes it higher in priority.
  */
 
-.uagb-separator {
+.uagb-ifb-separator {
     display: inline-block;   
     width: 30%;
-    margin: 20px 0px 20px 0px;
+    margin: 0;
 }
 
 a.uagb-infobox-cta-link {
     pointer-events: none;
 }
 
-.uagb-infobox-icon-right .uagb-infobox-left-right-wrap button.components-button,
-.uagb-infobox-icon-left .uagb-infobox-left-right-wrap button.components-button {
+.uagb-infobox-icon-right .uagb-ifb-left-right-wrap button.components-button,
+.uagb-infobox-icon-left .uagb-ifb-left-right-wrap button.components-button {
     -js-display: flex;
     display: -webkit-box;
     display: -webkit-flex;

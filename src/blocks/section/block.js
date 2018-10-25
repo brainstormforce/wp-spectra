@@ -3,6 +3,7 @@
  */
 
 import classnames from "classnames"
+import UAGB_Block_Icons from "../uagb-controls/block-icons"
 
 //  Import CSS.
 import "./style.scss"
@@ -24,17 +25,6 @@ const {
 	InnerBlocks,
 } = wp.editor
 
-const el = wp.element.createElement
-
-
-//Icon
-const icon = el("svg", { width: 20, height: 20 },
-	el("path", { d: "M16.632 2.695h-5.888c-0.265 0-0.48 0.215-0.48 0.48v13.65c0 0.265 0.215 0.48 0.48 0.48h5.888c0.265 0 0.48-0.215 0.48-0.48v-13.65c0-0.265-0.215-0.48-0.48-0.48v0zM16.152 16.345h-4.928v-12.69h4.928v12.69z" } ),
-	el("path", { d: "M8.816 2.695h-5.448c-0.265 0-0.48 0.215-0.48 0.48v3.272c0 0.265 0.215 0.48 0.48 0.48h5.448c0.265 0 0.48-0.215 0.48-0.48v-3.272c0-0.265-0.215-0.48-0.48-0.48v0zM8.336 5.967h-4.488v-2.312h4.488v2.312z" } ),
-	el("path", { d: "M8.816 13.073h-5.448c-0.265 0-0.48 0.215-0.48 0.48v3.272c0 0.265 0.215 0.48 0.48 0.48h5.448c0.265 0 0.48-0.215 0.48-0.48v-3.272c0-0.265-0.215-0.48-0.48-0.48v0zM8.336 16.345h-4.488v-2.312h4.488v2.312z" } ),
-	el("path", { d: "M8.816 7.884h-5.448c-0.265 0-0.48 0.215-0.48 0.48v3.272c0 0.265 0.215 0.48 0.48 0.48h5.448c0.265 0 0.48-0.215 0.48-0.48v-3.272c0-0.265-0.215-0.48-0.48-0.48v0zM8.336 11.156h-4.488v-2.312h4.488v2.312z" } )
-)
-
 /**
  * Register: as Gutenberg Block.
  *
@@ -50,29 +40,28 @@ const icon = el("svg", { width: 20, height: 20 },
 registerBlockType( "uagb/section", {
 	title: __( "UAGB - Section" ),
 	description: __( "Add a outer wrap section" ),
-	icon: icon,
-	category: "formatting",
+	icon: UAGB_Block_Icons.section,
+	category: "uagb",
 	keywords: [
 		__( "section" ),
 		__( "uagb" ),
 	],
 	attributes,
 	getEditWrapperProps( { blockAlignment } ) {
-		if ( "full" === blockAlignment || "wide" === blockAlignment || "center" === blockAlignment ) {
+		if ( "left" === blockAlignment || "right" === blockAlignment || "center" === blockAlignment ) {
 			return { "data-align": blockAlignment }
 		}
 	},
 	edit,
 	save : function( props ) {
 
-		const { attributes } = props
+		const { attributes, className } = props
 
 		const {
 			block_id,
 			tag,
 			backgroundType,
-			backgroundVideo,
-			className
+			backgroundVideo
 		} = props.attributes
 
 		const CustomTag = `${tag}`

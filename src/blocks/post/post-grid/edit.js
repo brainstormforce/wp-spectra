@@ -131,6 +131,8 @@ class UAGBPostGrid extends Component {
 			displayPostLink,
 			align,
 			columns,
+			tcolumns,
+			mcolumns,
 			order,
 			orderBy,
 			categories,
@@ -173,13 +175,27 @@ class UAGBPostGrid extends Component {
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 					/>
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
 					<ToggleControl
 						label={ __( "Equal Height" ) }
 						checked={ equalHeight }
 						onChange={ this.toggleEqualHeight }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Image" ) }>
+				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
@@ -210,7 +226,7 @@ class UAGBPostGrid extends Component {
 						/>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) }>
+				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ titleTag }
@@ -250,7 +266,7 @@ class UAGBPostGrid extends Component {
 						onChange={ this.toggleDisplayPostLink }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Colors" ) }>
+				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
 						<PanelColor
 							title={ __( "Blog Background Color" ) }
@@ -326,7 +342,7 @@ class UAGBPostGrid extends Component {
 						</PanelColor>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Spacing" ) }>
+				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
 						label={ __( "Row Gap" ) }
 						value={ rowGap }
@@ -423,7 +439,7 @@ export default withSelect( ( select, props ) => {
 		categories: categories,
 		order: order,
 		orderby: orderBy,
-		per_page: postsToShow,		
+		per_page: postsToShow,
 	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
