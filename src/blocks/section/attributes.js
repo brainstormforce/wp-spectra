@@ -118,6 +118,20 @@ const attributes = {
 	backgroundVideoColor: {
 		type: "string",
 	},
+	borderStyle : {
+		type: "string",
+		default: "none"
+	},
+	borderWidth : {
+		type: "number",
+		default: "1"
+	},
+	borderRadius : {
+		type: "number"
+	},
+	borderColor : {
+		type: "string"
+	}
 }
 
 export default attributes

@@ -59,6 +59,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			}
 
+			if ( "none" != $attr['borderStyle'] ) {
+				$style["border-style"] = $attr['borderStyle'];
+				$style["border-width"] = $attr['borderWidth'] . "px";
+				$style["border-radius"] = $attr['borderRadius'] . "px";
+				$style["border-color"] =  $attr['borderColor'];
+			}
+
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
 			$section_width = '100%';

@@ -140,7 +140,11 @@ class UAGBSectionEdit extends Component {
 			gradientAngle,
 			backgroundOpacity,
 			backgroundVideoColor,
-			backgroundVideoOpacity
+			backgroundVideoOpacity,
+			borderStyle,
+			borderWidth,
+			borderRadius,
+			borderColor
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -495,6 +499,53 @@ class UAGBSectionEdit extends Component {
 								max={ 100 }
 								allowReset
 							/>
+						}
+					</PanelBody>
+					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Border Style" ) }
+							value={ borderStyle }
+							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "groove", label: __( "Groove" ) },
+								{ value: "inset", label: __( "Inset" ) },
+								{ value: "outset", label: __( "Outset" ) },
+								{ value: "ridge", label: __( "Ridge" ) },
+							] }
+						/>
+						{ 'none' != borderStyle &&
+							<Fragment>
+								<RangeControl
+									label={ __( "Border Width" ) }
+									value={ borderWidth }
+									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Border Radius" ) }
+									value={ borderRadius }
+									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 1000 }
+									allowReset
+								/>
+								<PanelColor
+									title={ __( "Border Color" ) }
+									colorValue={ borderColor } >
+									<ColorPalette
+										value={ borderColor }
+										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+										allowReset
+									/>
+								</PanelColor>
+							</Fragment>
 						}
 					</PanelBody>
 				</InspectorControls>

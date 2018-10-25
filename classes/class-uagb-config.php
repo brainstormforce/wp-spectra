@@ -63,6 +63,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'backgroundOpacity'      => '0',
 							'backgroundVideoOpacity' => '50',
 							'align'                  => 'center',
+							'borderStyle'            => 'none',
+							'borderWidth'            => '1',
+							'borderRadius'           => '',
+							'borderColor'            => '',
 						),
 					),
 					'uagb/advanced-heading' => array(
