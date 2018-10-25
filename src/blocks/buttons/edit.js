@@ -143,6 +143,7 @@ class UAGBMultiButtonEdit extends Component {
 						} }
 						min={ 10 }
 						max={ 100 }
+						initialPosition={16}
 					/>
 					<RangeControl
 						label={ __( "Top and Bottom Padding" ) }
@@ -269,7 +270,7 @@ class UAGBMultiButtonEdit extends Component {
 									{ times( incAmount, n => {
 
 										cloneButtons.push( {
-											label: "#" + ( cloneButtons.length + 1 ) +" Click Here",
+											label: "Click Here " + "#" + ( cloneButtons.length + 1 ),
 											link: cloneButtons[ 0 ].link,
 											target: cloneButtons[ 0 ].target,
 											size: cloneButtons[ 0 ].size,
@@ -317,6 +318,7 @@ class UAGBMultiButtonEdit extends Component {
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 						/>
+						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(

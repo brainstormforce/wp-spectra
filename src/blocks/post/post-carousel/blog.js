@@ -17,6 +17,8 @@ class Blog extends React.Component {
 		const {
 			displayPostImage,
 			columns,
+			tcolumns,
+			mcolumns,
 			imgPosition,
 			postsToShow,
 			rowGap,
@@ -67,14 +69,14 @@ class Blog extends React.Component {
 				{
 					breakpoint : 1024,
 					settings : {
-						slidesToShow : 2,
+						slidesToShow : tcolumns,
 						slidesToScroll : 1,
 					}
 				},
 				{
 					breakpoint : 767,
 					settings : {
-						slidesToShow : 1,
+						slidesToShow : mcolumns,
 						slidesToScroll : 1,
 					}
 				}

@@ -117,6 +117,8 @@ class UAGBPostMasonry extends Component {
 			displayPostLink,
 			align,
 			columns,
+			tcolumns,
+			mcolumns,
 			order,
 			orderBy,
 			categories,
@@ -157,9 +159,22 @@ class UAGBPostMasonry extends Component {
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 					/>
-
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
+					/>
 				</PanelBody>
-				<PanelBody title={ __( "Image" ) }>
+				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
@@ -190,7 +205,7 @@ class UAGBPostMasonry extends Component {
 						/>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) }>
+				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ titleTag }
@@ -230,7 +245,7 @@ class UAGBPostMasonry extends Component {
 						onChange={ this.toggleDisplayPostLink }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Colors" ) }>
+				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
 						<PanelColor
 							title={ __( "Blog Background Color" ) }
@@ -306,7 +321,7 @@ class UAGBPostMasonry extends Component {
 						</PanelColor>
 					}
 				</PanelBody>
-				<PanelBody title={ __( "Spacing" ) }>
+				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
 						label={ __( "Row Gap" ) }
 						value={ rowGap }
