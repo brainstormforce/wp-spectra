@@ -40,10 +40,10 @@
 .uagb-infobox-center {
     text-align: center;
     -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            -webkit-justify-content: center;
-            -moz-box-pack: center;
-            justify-content: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    -moz-box-pack: center;
+    justify-content: center;
 }
 
 .uagb-infobox-right {
@@ -62,9 +62,9 @@
 
 .uagb-infobox-icon-above-title .uagb-ifb-left-right-wrap,
 .uagb-infobox-icon-below-title .uagb-ifb-left-right-wrap {
-  display: block;
-  min-width: 100%;
-  width: 100%;
+    display: block;
+    min-width: 100%;
+    width: 100%;
 }
 
 /* Left/Right of Title */
@@ -93,11 +93,11 @@
 
 .uagb-infobox-icon-right .uagb-ifb-left-right-wrap,
 .uagb-infobox-icon-right-title .right-title-image {
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  -webkit-justify-content: flex-end;
-  -moz-box-pack: end;
-  justify-content: flex-end;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    -webkit-justify-content: flex-end;
+    -moz-box-pack: end;
+    justify-content: flex-end;
 }
 
 /* Above/Below Title */
@@ -180,10 +180,10 @@
     margin: 0;
 }
 .uagb-ifb-separator-parent{
-  line-height:0em;
-  margin-left:0;
-  margin-right:0;
-  margin-bottom:10px;
+    line-height:0em;
+    margin-left:0;
+    margin-right:0;
+    margin-bottom:10px;
 }
 
 .uagb-ifb-cta-button {
@@ -245,7 +245,7 @@
 }
 
 .uagb-infobox__content-wrap.uagb-infobox{
-  position: relative
+    position: relative
 }
 .uagb-ifb-icon span {
     font-size: 40px;
@@ -321,6 +321,7 @@ a.uagb-infobox-link-wrap {
         margin: 10px 0;
     }
 }
+
 @media screen and (max-width: 767px) {
     .uagb-infobox-stacked-mobile .uagb-ifb-left-right-wrap .uagb-ifb-imgicon-wrap {
         padding: 0;
