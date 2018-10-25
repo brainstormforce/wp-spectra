@@ -525,6 +525,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_testimonial_css( $attr, $id ) {
 
+			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
