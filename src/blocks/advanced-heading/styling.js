@@ -31,7 +31,7 @@ function styling( props ) {
 			"border-color": separatorColor,
 			"margin-bottom": separatorSpace + "px",
 		},
-		" .uagb-desc-text": {
+		" .editor-rich-text .uagb-desc-text": {
 			"text-align": headingAlign,
 			"font-size": subHeadFontSize + "px",
 			"color": subHeadingColor,
@@ -50,7 +50,7 @@ function styling( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += `#uagb-adv-heading-${ props.clientId }`
+		styling_css += `.gutenberg-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
 
 		styling_css += i + " { "
 

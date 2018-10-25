@@ -518,7 +518,7 @@ class UAGBSectionEdit extends Component {
 								{ value: "ridge", label: __( "Ridge" ) },
 							] }
 						/>
-						{ 'none' != borderStyle &&
+						{ "none" != borderStyle &&
 							<Fragment>
 								<RangeControl
 									label={ __( "Border Width" ) }

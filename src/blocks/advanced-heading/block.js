@@ -134,7 +134,6 @@ class UAGBAdvancedHeading extends Component {
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Typography" ) }
-						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( "Tag" ) }
@@ -175,7 +174,7 @@ class UAGBAdvancedHeading extends Component {
 						<PanelColor
 							title={ __( "Heading Color" ) }
 							colorValue={ headingColor }
-							initialOpen={ false }
+							initialOpen={ true }
 						>
 							<ColorPalette
 								value={ headingColor }
