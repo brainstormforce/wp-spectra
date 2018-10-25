@@ -58,3 +58,11 @@
   .uagb-testinomial-designation{
     display: block;
   }
+
+  @media(max-width:768px){
+    .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet,
+    .uagb-testimonial-image-position-aside .uagb-testimonial-details {
+        display: block;
+        vertical-align: middle;
+    }
+  }

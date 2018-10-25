@@ -183,7 +183,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 
-					'uagb/testimonial'          => array(
+					'uagb/testimonial'      => array(
 						'slug'       => '',
 						'title'      => __( 'Testimonial', 'uagb' ),
 						'attributes' => array(
@@ -195,12 +195,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'authorFontSize'      => '',
 							'nameFontSize'        => '',
 							'designationFontSize' => '',
-							'nameFontSize'		  => '',
+							'nameFontSize'        => '',
 							'descFontSize'        => '',
 							'authorSpace'         => '10',
 							'nameSpace'           => '10',
 							'descSpace'           => '',
-							'iconimgBorder' 	  => '#333',
+							'iconimgBorder'       => '#333',
 							'iconimgBorderHover'  => '',
 							'iconimgBorderstyle'  => 'solid',
 							'iconimgBorderWidth'  => 1,
@@ -212,7 +212,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'imageSize'           => 'thumbnail',
 							'imageWidth'          => 60,
 							'authorColor'         => '#333',
-							'descColor'			  => '#333'
+							'descColor'           => '#333',
 						),
 					),
 				);
