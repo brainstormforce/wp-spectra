@@ -162,18 +162,20 @@ class UAGBAdvancedHeading extends Component {
 							value={ headFontSize }
 							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={30}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Font Size" ) }
 							value={ subHeadFontSize }
 							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={10}
 						/>
 					</PanelBody>
 					<PanelBody
@@ -223,9 +225,10 @@ class UAGBAdvancedHeading extends Component {
 							value={ separatorHeight }
 							onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 20 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={3}
 						/>
 						<RangeControl
 							label={ __( "Separator Width" ) }
@@ -235,6 +238,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={20}
 						/>
 						<RangeControl
 							label={ __( "Heading Spacing" ) }
@@ -244,6 +248,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Separator Spacing" ) }
@@ -253,6 +258,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Spacing" ) }
@@ -262,6 +268,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 					</PanelBody>
 				</InspectorControls>
@@ -354,7 +361,7 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headingTag: {
 			type: "string",
-			default: "h1"
+			default: "h2"
 		},
 		separatorHeight: {
 			type: "number"

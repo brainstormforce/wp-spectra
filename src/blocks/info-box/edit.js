@@ -385,7 +385,7 @@ class UAGBinfoBox extends Component {
 		// Icon image settings.
 		const iconImageSettings = (
 			<Fragment>
-				<TabPanel className="uagb-inspect-tabs"
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 					activeClass="active-tab"
 					tabs={ [
 						{
@@ -810,18 +810,6 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						}
 					</PanelBody>
 				</PanelBody>
 			</Fragment>
@@ -896,6 +884,19 @@ class UAGBinfoBox extends Component {
 
 							] }
 						/>
+						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 						<SelectControl
 							label={ __( "Select Source" ) }
 							value={ source_type }

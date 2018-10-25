@@ -143,6 +143,7 @@ class UAGBMultiButtonEdit extends Component {
 						} }
 						min={ 10 }
 						max={ 100 }
+						initialPosition={16}
 					/>
 					<RangeControl
 						label={ __( "Top and Bottom Padding" ) }
@@ -317,6 +318,7 @@ class UAGBMultiButtonEdit extends Component {
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 						/>
+						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
