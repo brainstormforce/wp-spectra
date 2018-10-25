@@ -53,7 +53,7 @@ const attributes = {
 	designationFontSize: {
 		type: "number",
 	},
-	subdesignationFontSize: {
+	descFontSize: {
 		type: "number",
 	},
 	headSpace: {
@@ -101,19 +101,19 @@ const attributes = {
 		type: "number",
 		default: 10,
 	},
-	imgLeftMargin :{
+	imgLeftPadding :{
 		type: "number",
 		default: 5,
 	},
-	imgRightMargin :{
+	imgRightPadding :{
 		type: "number",
 		default: 5,
 	},
-	imgTopMargin :{
+	imgTopPadding :{
 		type: "number",
 		default: 5,
 	},
-	imgBottomMargin :{
+	imgBottomPadding :{
 		type: "number",
 		default: 5,
 	},

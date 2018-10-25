@@ -135,10 +135,10 @@ class UAGBtestimonial extends Component {
 			iconimgBorderRadius,
 			source_type,
 			nameSpace,
-			imgLeftMargin,
-			imgRightMargin,
-			imgTopMargin,
-			imgBottomMargin,
+			imgLeftPadding,
+			imgRightPadding,
+			imgTopPadding,
+			imgBottomPadding,
 			iconImage,
 			imageSize,
 			imageWidth,			
@@ -150,7 +150,7 @@ class UAGBtestimonial extends Component {
 			element.innerHTML = TestimonialStyle( this.props );
 		}		
 
-		const my_block_id = 'uagb-'+this.props.clientId;
+		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
 
 		
 		// Common setting for icon and images.
@@ -181,15 +181,17 @@ class UAGBtestimonial extends Component {
 									{ value: 'dotted', label: __( 'Dotted' ) },
 								] }
 						/>
-						<RangeControl
-							label = { __( "Border Width" ) }
-							value = { iconimgBorderWidth }
-							onChange = { ( value ) => setAttributes( { iconimgBorderWidth: value } ) }
-							min = { 0 }
-							max = { 30 }
-							beforeIcon = "editor-textcolor"
-							allowReset
-						/>
+						{ 'none' !== iconimgBorderstyle &&
+							<RangeControl
+								label = { __( "Border Width" ) }
+								value = { iconimgBorderWidth }
+								onChange = { ( value ) => setAttributes( { iconimgBorderWidth: value } ) }
+								min = { 0 }
+								max = { 30 }
+								beforeIcon = "editor-textcolor"
+								allowReset
+							/>
+						}
 						<RangeControl
 							label = { __( "Rounded Corners" ) }
 							value = { iconimgBorderRadius }
@@ -266,14 +268,13 @@ class UAGBtestimonial extends Component {
 				<PanelBody
 						title={ __( "Typography" ) }
 						initialOpen={ false }
-					>
-						
+					>						
 						<RangeControl
 							label={ __( "Content Font Size" ) }
 							value={ descFontSize }
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>											
@@ -282,7 +283,7 @@ class UAGBtestimonial extends Component {
 							value={ nameFontSize }
 							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>	
@@ -291,7 +292,7 @@ class UAGBtestimonial extends Component {
 							value={ designationFontSize }
 							onChange={ ( value ) => setAttributes( { designationFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
@@ -349,40 +350,40 @@ class UAGBtestimonial extends Component {
 					/>								
 
 					<PanelBody
-						title={ __( "Image Margins" ) }
+						title={ __( "Image Padding" ) }
 						initialOpen={ true }
 					>
 						<RangeControl
-							label={ __( "Left Margin" ) }
-							value={ imgLeftMargin }
-							onChange={ ( value ) => setAttributes( { imgLeftMargin: value } ) }
+							label={ __( "Left Padding" ) }
+							value={ imgLeftPadding }
+							onChange={ ( value ) => setAttributes( { imgLeftPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Margin" ) }
-							value={ imgRightMargin }
-							onChange={ ( value ) => setAttributes( { imgRightMargin: value } ) }
+							label={ __( "Right Padding" ) }
+							value={ imgRightPadding }
+							onChange={ ( value ) => setAttributes( { imgRightPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Margin" ) }
-							value={ imgTopMargin }
-							onChange={ ( value ) => setAttributes( { imgTopMargin: value } ) }
+							label={ __( "Top Padding" ) }
+							value={ imgTopPadding }
+							onChange={ ( value ) => setAttributes( { imgTopPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Margin" ) }
-							value={ imgBottomMargin }
-							onChange={ ( value ) => setAttributes( { imgBottomMargin: value } ) }
+							label={ __( "Bottom Padding" ) }
+							value={ imgBottomPadding }
+							onChange={ ( value ) => setAttributes( { imgBottomPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
@@ -469,8 +470,6 @@ class UAGBtestimonial extends Component {
 				</Fragment>
 			);
 
-		var ClassNamesId = className+' '+ my_block_id;
-
 		//Get image components.
 		const image_option = (
 			<MediaUpload
@@ -521,7 +520,9 @@ class UAGBtestimonial extends Component {
 					/>
 				</BlockControls>				
 				{inspect_control}
-				<div className={ ClassNamesId }>
+				<div className={ className }
+					id = { my_block_id }
+				>
 					<div className = { classnames(
 						"uagb-testinomial-content-wrap",
 						...PositionClasses( attributes ),
