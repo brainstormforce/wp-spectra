@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import styling from "./styling"
+import UAGB_Block_Icons from "../uagb-controls/block-icons"
 
 //  Import CSS.
 import "./style.scss"
@@ -309,16 +310,14 @@ class UAGBAdvancedHeading extends Component {
  */
 registerBlockType( "uagb/advanced-heading", {
 
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Advanced Heading" ), // Block title.
-	description: __( "Add Advanced Heading block." ), // Block description.
-	icon: "editor-textcolor", // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( "UAGB - Advanced Heading" ),
+	description: __( "Add Advanced Heading block." ),
+	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
-
+	category: "uagb",
 	attributes: {
 		block_id: {
 			type: "string"
@@ -420,24 +419,7 @@ registerBlockType( "uagb/advanced-heading", {
 			},
 		],
 	},
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
 	edit: UAGBAdvancedHeading,
-
-	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
-	 *
-	 * The "save" property must be specified and must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
 	save: function( props ) {
 
 		const {

@@ -88,10 +88,10 @@ class UAGBinfoBox extends Component {
 	 * Function Name: toggleResponsive.
 	 */
 	toggleResponsive() {
-		const { responsiveDesign } = this.props.attributes;
-		const { setAttributes } = this.props;
+		const { responsiveDesign } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { responsiveDesign: ! responsiveDesign } );
+		setAttributes( { responsiveDesign: ! responsiveDesign } )
 	}
 
 	splitBlock( before, after, ...blocks ) {
@@ -809,7 +809,7 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-						{ ( iconimgPosition == 'left' || iconimgPosition == 'right' ) &&
+						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
 							<SelectControl
 								label={ __( "Stack on" ) }
 								value={ stack }

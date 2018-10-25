@@ -3,7 +3,8 @@
  */
 const attributes = {
 	align: {
-		type: "string"
+		type: "string",
+		default: "center"
 	},
 	block_id: {
 		type: "string",
@@ -45,10 +46,12 @@ const attributes = {
 		default: "boxed"
 	},
 	width: {
-		type: "number"
+		type: "number",
+		default: 900
 	},
 	innerWidth: {
-		type: "number"
+		type: "number",
+		default: 1140
 	},
 	tag: {
 		type: "string",
