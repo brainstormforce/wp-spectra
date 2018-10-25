@@ -7,7 +7,8 @@
 function PositionClasses( attributes ) {    
 
     var iconimgStyle_class = '';
-    iconimgStyle_class += " uagb-testimonial-imgicon-style-"+attributes.iconimgStyle+ " "
+    iconimgStyle_class += " uagb-testimonial-imgicon-style-"+attributes.iconimgStyle+ " ";   
+    iconimgStyle_class += "uagb-testimonial-image-position-"+attributes.imagePosition+ " ";
     return [
          iconimgStyle_class        
     ]

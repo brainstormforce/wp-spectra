@@ -43,7 +43,7 @@ function TestimonialStyle( props ) {
 
         var selectors = {};
             
-            selectors['.uagb-testinomial-wrapper .uagb-testinomial-image-wrap'] = {
+            selectors['.uagb-testinomial-wrapper .uagb-testinomial-image'] = {
                     'margin-left' : iconLeftMargin+'px',
                     'margin-right' : iconRightMargin+'px',                                
                     'margin-top' : iconTopMargin+'px',
@@ -51,48 +51,28 @@ function TestimonialStyle( props ) {
                 }; 
 
             // Image
-            selectors['.uagb-testinomial-image-content img'] = {
+            selectors['.uagb-testinomial-image img'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
                 }; 
           
 
-            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image-content img'] = {                    
+            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img'] = {                    
                         'border-style' : iconimgBorderstyle,
                         'border-width' : iconimgBorderWidth+'px',
                         'border-radius' : iconimgBorderRadius+'px',
                         'border-color' : iconimgBorder,
                     };
 
-            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image-content img:hover'] = {
+            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img:hover'] = {
                     'border-color' : iconimgBorderHover,                                     
                 };
 
-            selectors['.uagb-testinomial-image-content .components-button svg'] = {
+            selectors['.uagb-testinomial-image .components-button svg'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
                 }; 
-
-            selectors['.uagb-testinomial-image-wrap'] = {
-                'margin-left' : iconLeftMargin+'px',
-                'margin-right' : iconRightMargin+'px',                                
-                'margin-top' : iconTopMargin+'px',
-                'margin-bottom' : iconBottomMargin+'px',   
-            };
-            /*selectors['.uagb-testimonial-imgicon-style-circle .components-button svg'] = {                    
-                        'margin-left' : iconLeftMargin+'px',
-                        'margin-right' : iconRightMargin+'px',                                
-                        'margin-top' : iconTopMargin+'px',
-                        'margin-bottom' : iconBottomMargin+'px',                  
-                    };
-
-            selectors['.uagb-testimonial-imgicon-style-square .components-button svg'] = {                    
-                        'margin-left' : iconLeftMargin+'px',
-                        'margin-right' : iconRightMargin+'px',                                
-                        'margin-top' : iconTopMargin+'px',
-                        'margin-bottom' : iconBottomMargin+'px',                
-                    };
-*/
+                    
             selectors['.uagb-testimonial-imgicon-style-custom .components-button svg'] = {                    
                         'border-style' : iconimgBorderstyle,
                         'border-width' : iconimgBorderWidth+'px',
@@ -104,7 +84,7 @@ function TestimonialStyle( props ) {
                         'margin-bottom' : iconBottomMargin+'px',                 
                     };          
             
-           selectors['.uagb-testinomial-wrapper'] = {                    
+            selectors['.uagb-testinomial-content'] = {                    
                     'text-align' : headingAlign,                   
                 };                       
 

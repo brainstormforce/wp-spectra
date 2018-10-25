@@ -9,12 +9,12 @@ const attributes = {
 	},
     headingTitle: {
 		selector: 'span.uagb-infobox-title entry-title',
-		default: "Designer123",
+		default: "Designer",
 	},
 	headingDesc: {
 		source: 'html',
 		selector: 'p',
-		default: "Enter description text here.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo",
+		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
 	headingAlign: {
 		type: "string",
@@ -28,15 +28,15 @@ const attributes = {
 	},
 	prefixColor: {
 		type: "string",
-	},	
-	iconimgPosition: {
-		type: "string",
-		default: "above-title"
-	},
+	},		
 	iconimgStyle: {
 		type: "string",
 		default: "normal"
 	},	
+	imagePosition:{
+		type: "string",
+		default: "aside"
+	},
 	prefixTag :{
 		type: "string",
 		default: "h3"

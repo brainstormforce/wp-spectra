@@ -8,17 +8,17 @@
     display: inline-block;
 }
 
-.uagb-testimonial-imgicon-style-circle .uagb-testinomial-image-content img {
+.uagb-testimonial-imgicon-style-circle .uagb-testinomial-image img {
     border-radius: 100%;
     -webkit-border-radius: 100%;
 }
 
-.uagb-testimonial-imgicon-style-square .uagb-testinomial-image-content img {
+.uagb-testimonial-imgicon-style-square .uagb-testinomial-image img {
     border-radius: 0%;
     -webkit-border-radius: 0%;
 }
 
- .uagb-testinomial-image-content img,
+ .uagb-testinomial-image img,
  .uagb-testimonial-imgicon-style-circle .components-button svg{
   display : inline-block;
   box-sizing : content-box;
@@ -26,5 +26,26 @@
 
 .uagb-testinomial-author-name,
 .uagb-testinomial-designation{
-  display: inline-block;;
+  display: inline-block;
+}
+
+.uagb-testinomial-content{
+  overflow: hidden;
+  text-align: center;
+  word-break: break-word;  
+}
+
+.uagb-testimonial-meta-inner {
+    display: inline-block;
+}
+
+.uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet,
+.uagb-testimonial-image-position-aside .uagb-testimonial-details {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.uagb-testimonial-meta {
+    width: 100%;
+    line-height: 1;
 }

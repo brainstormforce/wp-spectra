@@ -16,18 +16,14 @@ class TestimonialImage extends React.Component {
             let imageSize = attributes.imageSize;
             url = size[imageSize].url; 
 
-            return (
-                <div className="uagb-testinomial-image-wrap" >
-                    <div className="uagb-testinomial-image">
-                        <div className="uagb-testinomial-image-content">
-                           <img
-                                className =""
-                                src = { url }                        
-                                alt = { attributes.iconImage.alt }                    
-                            />
-                        </div>
-                    </div>
-                </div>                      
+            return (                
+                <div className="uagb-testinomial-image">                        
+                   <img
+                        className =""
+                        src = { url }                        
+                        alt = { attributes.iconImage.alt }                    
+                    />                        
+                </div>                                  
             )
         }else{
             return null;

@@ -126,6 +126,7 @@ class UAGBtestimonial extends Component {
 			separatorSpace,
 			subHeadSpace,
 			iconimgStyle,
+			imagePosition,
 			block_id,
 			iconimgBorderstyle,
 			iconimgBorderHover,
@@ -167,18 +168,7 @@ class UAGBtestimonial extends Component {
 									onChange={ ( colorValue ) => setAttributes( { iconimgBorder: colorValue } ) }
 									allowReset
 								/>
-						</PanelColor>
-						<PanelColor
-								title={ __( 'Border Color' ) }
-								colorValue={ iconimgBorderHover }
-								initialOpen={ false }
-							>
-							<ColorPalette
-									value={ iconimgBorderHover }
-									onChange={ ( colorValue ) => setAttributes( { iconimgBorderHover: colorValue } ) }
-									allowReset
-								/>
-						</PanelColor>
+						</PanelColor>						
 						 <SelectControl
 							label={ __( 'Border Style' ) }
 							value={ iconimgBorderstyle }
@@ -433,6 +423,15 @@ class UAGBtestimonial extends Component {
 					initialOpen={ false }
 					>							
 					<SelectControl
+						label={ __( 'Image Position' ) }
+						value={ imagePosition }
+						onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+						options={ [
+							{ value: 'top', label: __( 'Top' ) },
+							{ value: 'aside', label: __( 'Aside' ) },
+						] }
+					/>	
+					<SelectControl
 						label={ __( 'Image Style' ) }
 						value={ iconimgStyle }
 						onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
@@ -442,8 +441,7 @@ class UAGBtestimonial extends Component {
 							{ value: 'square', label: __( 'Square' ) },
 							{ value: 'custom', label: __( 'custom' ) },
 						] }
-					/>					
-
+					/>
 					<SelectControl
 							label={ __( 'Image Size' ) }
 							options={ imageSizeOptions }
@@ -507,7 +505,7 @@ class UAGBtestimonial extends Component {
 		// Get Title and Prefix components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-testinomial-author-wrap">
+				<div className = "uagb-testimonial-details">
 					<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 					<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 				</div>
@@ -530,8 +528,14 @@ class UAGBtestimonial extends Component {
 					) }>
 						<div className = "uagb-testinomial-content">
 							{ desc }
-							{ is_image }
-							{ title_text }
+							<div className ="uagb-testimonial-meta">
+								<div className ="uagb-testimonial-meta-inner">
+									<div className ="uagb-testimonial-image-contnet">
+										{ is_image }	
+									</div>							
+									{ title_text }								
+								</div>
+							</div>
 						</div>						
 					</div>
 				</div>
