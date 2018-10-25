@@ -6,16 +6,16 @@
 function TestimonialStyle( props ) {
     const {
             headingAlign,
-            headingColor,
-            subHeadingColor,
-            prefixColor,
-            prefixFontSize,
-            headFontSize,
-            subHeadFontSize,
+            designationColor,
+            descColor,
+            authorColor,
+            nameFontSize,
+            designationFontSize,
+            descFontSize,
             separatorWidth,
             headSpace,
             separatorSpace,
-            subHeadSpace,
+            descSpace,
             block_id,
             iconHover,
             iconBgHover,
@@ -26,11 +26,11 @@ function TestimonialStyle( props ) {
             iconimgBorderWidth,
             iconimgBorderRadius, 
             iconimgbgSize,  
-            prefixSpace,
-            iconLeftMargin,
-            iconRightMargin,
-            iconTopMargin,
-            iconBottomMargin,            
+            nameSpace,
+            imgLeftMargin,
+            imgRightMargin,
+            imgTopMargin,
+            imgBottomMargin,            
             imageSize,  
             imageWidth,            
         } = props.attributes;        
@@ -44,10 +44,10 @@ function TestimonialStyle( props ) {
         var selectors = {};
             
             selectors['.uagb-testinomial-wrapper .uagb-testinomial-image'] = {
-                    'margin-left' : iconLeftMargin+'px',
-                    'margin-right' : iconRightMargin+'px',                                
-                    'margin-top' : iconTopMargin+'px',
-                    'margin-bottom' : iconBottomMargin+'px',
+                    'margin-left' : imgLeftMargin+'px',
+                    'margin-right' : imgRightMargin+'px',                                
+                    'margin-top' : imgTopMargin+'px',
+                    'margin-bottom' : imgBottomMargin+'px',
                 }; 
 
             // Image
@@ -78,10 +78,10 @@ function TestimonialStyle( props ) {
                         'border-width' : iconimgBorderWidth+'px',
                         'border-radius' : iconimgBorderRadius+'px',
                         'border-color' : iconimgBorder,
-                        'margin-left' : iconLeftMargin+'px',
-                        'margin-right' : iconRightMargin+'px',                                
-                        'margin-top' : iconTopMargin+'px',
-                        'margin-bottom' : iconBottomMargin+'px',                 
+                        'margin-left' : imgLeftMargin+'px',
+                        'margin-right' : imgRightMargin+'px',                                
+                        'margin-top' : imgTopMargin+'px',
+                        'margin-bottom' : imgBottomMargin+'px',                 
                     };          
             
             selectors['.uagb-testinomial-content'] = {                    
@@ -90,22 +90,22 @@ function TestimonialStyle( props ) {
 
             // Prefix Style
             selectors['.uagb-testinomial-author-name'] = {
-                    'font-size' : prefixFontSize+'px',
-                    'color': prefixColor,
-                    'margin-bottom': prefixSpace+'px',
+                    'font-size' : nameFontSize+'px',
+                    'color': authorColor,
+                    'margin-bottom': nameSpace+'px',
                 };
 
             // Title Style
             selectors['.uagb-testinomial-designation'] = {
-                    'font-size' : headFontSize+'px',
-                    'color': headingColor,
+                    'font-size' : designationFontSize+'px',
+                    'color': designationColor,
                 };
 
             // Description Style
             selectors['p.uagb-testinomial-desc'] = {
-                    'font-size' : subHeadFontSize+'px',
-                    'color': subHeadingColor,
-                    'margin-bottom': subHeadSpace+'px',
+                    'font-size' : descFontSize+'px',
+                    'color': descColor,
+                    'margin-bottom': descSpace+'px',
                 };                     
                
 

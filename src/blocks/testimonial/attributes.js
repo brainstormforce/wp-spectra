@@ -20,18 +20,18 @@ const attributes = {
 		type: "string",
 		default: "center",
 	},
-	headingColor: {
+	designationColor: {
 		type: "string",
 	},
-	subHeadingColor: {
+	designationColor: {
 		type: "string",
 	},
-	prefixColor: {
+	authorNameColor: {
 		type: "string",
 	},		
 	iconimgStyle: {
 		type: "string",
-		default: "normal"
+		default: "circle"
 	},	
 	imagePosition:{
 		type: "string",
@@ -41,7 +41,7 @@ const attributes = {
 		type: "string",
 		default: "h3"
 	},
-	prefixFontSize: {
+	authorFontSize: {
 		type: "number",
 	},
 	separatorHeight: {
@@ -50,10 +50,10 @@ const attributes = {
 	separatorWidth: {
 		type: "number"
 	},
-	headFontSize: {
+	designationFontSize: {
 		type: "number",
 	},
-	subHeadFontSize: {
+	subdesignationFontSize: {
 		type: "number",
 	},
 	headSpace: {
@@ -62,7 +62,7 @@ const attributes = {
 	separatorSpace: {
 		type: "number",
 	},
-	subHeadSpace: {
+	descSpace: {
 		type: "number",
 	},
 	iconimgBg : {
@@ -97,23 +97,23 @@ const attributes = {
 		type : 'string',
 		default : 'not_set'
 	},	
-	prefixSpace :{
+	authorSpace :{
 		type: "number",
 		default: 10,
 	},
-	iconLeftMargin :{
+	imgLeftMargin :{
 		type: "number",
 		default: 5,
 	},
-	iconRightMargin :{
+	imgRightMargin :{
 		type: "number",
 		default: 5,
 	},
-	iconTopMargin :{
+	imgTopMargin :{
 		type: "number",
 		default: 5,
 	},
-	iconBottomMargin :{
+	imgBottomMargin :{
 		type: "number",
 		default: 5,
 	},
@@ -130,7 +130,7 @@ const attributes = {
 	},
 	imageWidth :{
 		type: "number",
-		default: 120,
+		default: 60,
 	},
 	backgroundType: {
 		type: "string",

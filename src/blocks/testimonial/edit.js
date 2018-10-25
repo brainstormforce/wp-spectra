@@ -115,16 +115,16 @@ class UAGBtestimonial extends Component {
 			headingTitle,
 			headingDesc,
 			headingAlign,
-			headingColor,
-			subHeadingColor,
-			prefixColor,
+			designationColor,
+			descColor,
+			authorColor,
 			prefixTag,
-			prefixFontSize,
-			headFontSize,
-			subHeadFontSize,
+			nameFontSize,
+			designationFontSize,
+			descFontSize,
 			separatorWidth,
 			separatorSpace,
-			subHeadSpace,
+			descSpace,
 			iconimgStyle,
 			imagePosition,
 			block_id,
@@ -134,11 +134,11 @@ class UAGBtestimonial extends Component {
 			iconimgBorderWidth,
 			iconimgBorderRadius,
 			source_type,
-			prefixSpace,
-			iconLeftMargin,
-			iconRightMargin,
-			iconTopMargin,
-			iconBottomMargin,
+			nameSpace,
+			imgLeftMargin,
+			imgRightMargin,
+			imgTopMargin,
+			imgBottomMargin,
 			iconImage,
 			imageSize,
 			imageWidth,			
@@ -270,8 +270,8 @@ class UAGBtestimonial extends Component {
 						
 						<RangeControl
 							label={ __( "Content Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							value={ descFontSize }
+							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
 							max={ 200 }
 							beforeIcon="editor-textcolor"
@@ -279,8 +279,8 @@ class UAGBtestimonial extends Component {
 						/>											
 						<RangeControl
 							label={ __( "Name Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+							value={ nameFontSize }
+							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
 							min={ 10 }
 							max={ 200 }
 							beforeIcon="editor-textcolor"
@@ -288,8 +288,8 @@ class UAGBtestimonial extends Component {
 						/>	
 						<RangeControl
 							label={ __( "Designation Font Size" ) }
-							value={ headFontSize }
-							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+							value={ designationFontSize }
+							onChange={ ( value ) => setAttributes( { designationFontSize: value } ) }
 							min={ 10 }
 							max={ 200 }
 							beforeIcon="editor-textcolor"
@@ -302,18 +302,18 @@ class UAGBtestimonial extends Component {
 							title={ __( 'Color Settings' ) }
 							colorSettings={ [
 								{
-									value: subHeadingColor,
-									onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+									value: descColor,
+									onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
 									label: __( 'Content Color' ),
 								},
 								{
-									value: prefixColor,
-									onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
+									value: authorColor,
+									onChange: ( colorValue ) => setAttributes( { authorColor: colorValue } ),
 									label: __( 'Name Color' ),
 								},
 								{
-									value: headingColor,
-									onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+									value: designationColor,
+									onChange: ( colorValue ) => setAttributes( { designationColor: colorValue } ),
 									label: __( 'Designation Color' ),
 								},								
 							] }
@@ -331,8 +331,8 @@ class UAGBtestimonial extends Component {
 					>					
 					<RangeControl
 						label={ __( "Content Bottom Margin" ) }
-						value={ subHeadSpace }
-						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						value={ descSpace }
+						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						beforeIcon="editor-textcolor"
@@ -340,8 +340,8 @@ class UAGBtestimonial extends Component {
 					/>
 					<RangeControl
 						label={ __( "Name Bottom Margin" ) }
-						value={ prefixSpace }
-						onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
+						value={ nameSpace }
+						onChange={ ( value ) => setAttributes( { nameSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						beforeIcon="editor-textcolor"
@@ -354,8 +354,8 @@ class UAGBtestimonial extends Component {
 					>
 						<RangeControl
 							label={ __( "Left Margin" ) }
-							value={ iconLeftMargin }
-							onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
+							value={ imgLeftMargin }
+							onChange={ ( value ) => setAttributes( { imgLeftMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
@@ -363,8 +363,8 @@ class UAGBtestimonial extends Component {
 						/>
 						<RangeControl
 							label={ __( "Right Margin" ) }
-							value={ iconRightMargin }
-							onChange={ ( value ) => setAttributes( { iconRightMargin: value } ) }
+							value={ imgRightMargin }
+							onChange={ ( value ) => setAttributes( { imgRightMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
@@ -372,8 +372,8 @@ class UAGBtestimonial extends Component {
 						/>
 						<RangeControl
 							label={ __( "Top Margin" ) }
-							value={ iconTopMargin }
-							onChange={ ( value ) => setAttributes( { iconTopMargin: value } ) }
+							value={ imgTopMargin }
+							onChange={ ( value ) => setAttributes( { imgTopMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
@@ -381,8 +381,8 @@ class UAGBtestimonial extends Component {
 						/>
 						<RangeControl
 							label={ __( "Bottom Margin" ) }
-							value={ iconBottomMargin }
-							onChange={ ( value ) => setAttributes( { iconBottomMargin: value } ) }
+							value={ imgBottomMargin }
+							onChange={ ( value ) => setAttributes( { imgBottomMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
