@@ -79,7 +79,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingColor'    => '',
 							'subHeadingColor' => '',
 							'separatorColor'  => '',
-							'headingTag'      => 'h1',
+							'headingTag'      => 'h2',
 							'separatorHeight' => '',
 							'separatorWidth'  => '',
 							'headFontSize'    => '',
