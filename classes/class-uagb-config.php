@@ -210,7 +210,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconimgBorderWidth'  => 1,
 							'iconimgBorderRadius' => 0,
 							'imgLeftPadding'      => 5,
-							'imgRightPadding'     => 5,
+							'imgRightPadding'     => 10,
 							'imgTopPadding'       => 5,
 							'imgBottomPadding'    => 5,
 							'imageSize'           => 'thumbnail',

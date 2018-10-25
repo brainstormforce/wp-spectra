@@ -90,7 +90,7 @@ const attributes = {
 	},
 	imgRightPadding :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	imgTopPadding :{
 		type: "number",
