@@ -8,13 +8,17 @@ class InfoBoxIconImage extends React.Component {
 
 	render() {
 
-		const { attributes } = this.props     
+		const { attributes } = this.props 
 		let url_chk = attributes.iconImage.url
 		let url = ""
 		if( url_chk !== "" ){
 			let size = attributes.iconImage.sizes
 			let imageSize = attributes.imageSize
-			url = size[imageSize].url 
+			if ( typeof size[imageSize] !== "undefined") {
+			  url = size[imageSize].url 
+			}else{
+			  url = url_chk 
+			}
 
 			return (
 				<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap" >
