@@ -288,9 +288,7 @@ class UAGBSectionEdit extends Component {
 						{ "color" == backgroundType &&
 							<PanelColor
 								title={ __( "Background Color" ) }
-								colorValue={ backgroundColor }
-								initialOpen={ false }
-							>
+								colorValue={ backgroundColor } >
 								<ColorPalette
 									value={ backgroundColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }

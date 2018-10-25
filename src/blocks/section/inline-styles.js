@@ -61,23 +61,15 @@ function inlineStyles( props, isEditor ) {
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	var section_width = width + "px"
+	var section_width = "100%"
 
 	if ( "boxed" == contentWidth ) {
 		if ( "" != width ) {
 			section_width = width + "px"
 		}
-	} else {
-		section_width = "100%"
 	}
 
-	if ( isEditor ) {
-
-		style["max-width"] = section_width
-	} else {
-
-		style["width"] = section_width
-	}
+	style["max-width"] = section_width
 
 
 	if ( "color" === backgroundType ) {

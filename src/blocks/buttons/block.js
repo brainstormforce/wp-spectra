@@ -4,6 +4,7 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
+import UAGB_Block_Icons from "../uagb-controls/block-icons"
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
@@ -23,15 +24,6 @@ const {
 	RichText
 } = wp.editor
 
-const el = wp.element.createElement
-
-
-//Icon
-const icon = el("svg", { width: 20, height: 20 },
-	el("path", { d: "M10.833 6.667h-6.667v6.667l11.667 0.001v-6.667h-5zM5.833 11.667v-3.333h3.333v3.333h-3.333zM14.167 11.667h-3.333v-3.333h3.333v3.333z" } ),
-	el("path", { d: "M0 1.667v16.667h20v-16.667h-20zM18.333 3.333v13.333h-16.667v-13.333h16.667z" } )
-)
-
 
 /**
  * Register: as Gutenberg Block.
@@ -48,8 +40,8 @@ const icon = el("svg", { width: 20, height: 20 },
 registerBlockType( "uagb/buttons", {
 	title: __( "UAGB - Multi Buttons" ),
 	description: __( "Add Multiple Buttons" ),
-	icon: icon,
-	category: "formatting",
+	icon: UAGB_Block_Icons.buttons,
+	category: "uagb",
 	keywords: [
 		__( "buttons" ),
 		__( "multi buttons" ),
