@@ -222,6 +222,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			foreach ( $attr['buttons'] as $key => $button ) {
 
+				$button['size'] = ( isset( $button['size'] ) ) ? $button['size'] : '';
+				$button['borderWidth'] = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
+				$button['borderStyle'] = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
+				$button['borderColor'] = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
+				$button['borderRadius'] = ( isset( $button['borderRadius'] ) ) ? $button['borderRadius'] : '';
+				$button['background'] = ( isset( $button['background'] ) ) ? $button['background'] : '';
+				$button['hBackground'] = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
+				$button['borderHColor'] = ( isset( $button['borderHColor'] ) ) ? $button['borderHColor'] : '';
+				$button['vPadding'] = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
+				$button['hPadding'] = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
+				$button['color'] = ( isset( $button['color'] ) ) ? $button['color'] : '';
+				$button['hColor'] = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
+
 				if ( $attr['btn_count'] <= $key ) {
 					break;
 				}
@@ -322,7 +335,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
-			$attr = (object) array_merge( $defaults, (array) $attr );			
+			$attr = (object) array_merge( $defaults, (array) $attr );
 
 			$selectors = array(
 				' .uagb-ifb-icon'  => array(
@@ -334,13 +347,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'   => $attr->iconSize. "px",
 					'height'      => $attr->iconSize. "px",
 					'width'       => $attr->iconSize. "px",
-					'line-height' => $attr->iconSize. "px",					
+					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
 					'transform'   => 'rotate('.$attr->iconRotate .'deg)',
 				),
 				' .uagb-ifb-icon:hover > span' => array(
-					'color' => $attr->iconHover ,					
-				),				
+					'color' => $attr->iconHover ,
+				),
 				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon' => array(
 					'background' => $attr->iconimgBg,
 					'padding'    => $attr->iconimgbgSize . 'px',
@@ -348,18 +361,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'box-sizing' => 'content-box',
 				),
 				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover' => array(
-                    'background'  => $attr->iconBgHover,                                       
+                    'background'  => $attr->iconBgHover,
                 ),
-                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon' => array(                 
+                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon' => array(
                     'padding' => $attr->iconimgbgSize.'px',
                     'background' => $attr->iconimgBg,
                     'display' => 'inline-block',
                     'box-sizing' => 'content-box',
                 ),
                 ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover' => array(
-                    'background' => $attr->iconBgHover,                                       
+                    'background' => $attr->iconBgHover,
                 ),
-                ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon' => array(                   
+                ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon' => array(
                     'padding'       => $attr->iconimgbgSize.'px',
                     'background'    => $attr->iconimgBg,
                     'display'       => 'inline-block',
@@ -386,16 +399,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
-	            ' .uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img' => array(                    
+	            ' .uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img' => array(
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
-	                ),	            
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(                    
+	                ),
+	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
 	                    'display'    => 'inline-block',
 	                    'box-sizing' => 'content-box',
 	                ),
 	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,                                       
+	                    'background' => $attr->iconBgHover,
 	            ),
 	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
 	                    'display'       => 'inline-block',
@@ -410,14 +423,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                    'background'   => $attr->iconBgHover,
 	                    'border-color' => $attr->iconimgBorderHover,
 	            ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(                    
+	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
 	                'display'    => 'inline-block',
 	                'box-sizing' => 'content-box',
 	            ),
 	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                'background' =>  $attr->iconBgHover,                                       
+	                'background' =>  $attr->iconBgHover,
 	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(                    
+	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
 	                'display'       => 'inline-block',
 	                'box-sizing'    => 'content-box',
 	                'border-style'  => $attr->iconimgBorderstyle,
@@ -477,19 +490,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-top-width' => $attr->seperatorThickness.'px',
 	                'border-top-color' => $attr->seperatorColor,
 	                'border-top-style' => $attr->seperatorStyle,
-	            ),	  
-	            ' .uagb-ifb-separator-parent' => array(	                
-	                'margin-bottom' => $attr->seperatorSpace.'px',	                
-	            ),	         
-               
+	            ),
+	            ' .uagb-ifb-separator-parent' => array(
+	                'margin-bottom' => $attr->seperatorSpace.'px',
+	            ),
+
 			);
-						
+
 			if( 'above-title' === $attr->iconimgPosition ||  'below-title' === $attr->iconimgPosition ){
-               	$selectors[' .uagb-infobox__content-wrap'] = array(                   
-	                'text-align' => $attr->headingAlign,                   
+               	$selectors[' .uagb-infobox__content-wrap'] = array(
+	                'text-align' => $attr->headingAlign,
 	            );
-            }            
-            
+            }
+
 			// @codingStandardsIgnoreEnd.
 				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
 		}

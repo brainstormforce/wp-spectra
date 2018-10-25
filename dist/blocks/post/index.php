@@ -817,8 +817,7 @@ function uagb_render_image( $attributes ) {
 	}
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
-			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
@@ -848,28 +847,18 @@ function uagb_render_title( $attributes ) {
  */
 function uagb_render_meta( $attributes ) {
 	global $post;
+	// @codingStandardsIgnoreStart
 	?>
-	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>">
-		<?php if ( $attributes['displayPostAuthor'] ) { ?>
-		<div class="uagb-post__author" style="color: rgb(119, 119, 119);">
-			<i class="dashicons-admin-users dashicons"></i>
-			<?php the_author_posts_link(); ?>
-		</div>
-		<?php } ?>
-		<?php if ( $attributes['displayPostDate'] ) { ?>
-		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
-			<i class="dashicons-calendar dashicons"></i>
-			<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
-		</time>
-		<?php } ?>
-		<?php if ( $attributes['displayPostComment'] ) { ?>
-		<div class="uagb-post__comment">
-			<i class="dashicons-admin-comments dashicons"></i>
-			<?php comments_number(); ?>
-		</div>
-		<?php } ?>
-	</div>
+	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>"><?php if ( $attributes['displayPostAuthor'] ) {
+		?><div class="uagb-post__author" style="color: rgb(119, 119, 119);"><i class="dashicons-admin-users dashicons"></i><?php the_author_posts_link(); ?></div><?php }
+		if ( $attributes['displayPostDate'] ) {
+?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><i class="dashicons-calendar dashicons"></i><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+		if ( $attributes['displayPostComment'] ) {
+?><div class="uagb-post__comment"><i class="dashicons-admin-comments dashicons"></i><?php comments_number();
+?></div><?php }
+		?></div>
 	<?php
+	// @codingStandardsIgnoreEnd
 }
 
 /**
