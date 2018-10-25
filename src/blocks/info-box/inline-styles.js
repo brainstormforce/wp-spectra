@@ -133,6 +133,7 @@ function InfoBoxStyle( props ) {
 	// Image
 	selectors[".uagb-ifb-image-content img"] = {
 		"width": imageWidth+"px",
+		"max-width": imageWidth+"px",
 	} 
 
 	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
@@ -161,44 +162,7 @@ function InfoBoxStyle( props ) {
 
 	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
 		"border-color" : iconimgBorderHover,                                     
-	}
-
-	selectors[".uagb-ifb-image-content .components-button svg"] = {
-		"width": imageWidth+"px",
 	} 
-
-	selectors[".uagb-infobox-imgicon-style-circle .components-button svg"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",  
-		"margin-left" : iconLeftMargin+"px",
-		"margin-right" : iconRightMargin+"px",                                
-		"margin-top" : iconTopMargin+"px",
-		"margin-bottom" : iconBottomMargin+"px",                  
-	}
-
-	selectors[".uagb-infobox-imgicon-style-square .components-button svg"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",    
-		"margin-left" : iconLeftMargin+"px",
-		"margin-right" : iconRightMargin+"px",                                
-		"margin-top" : iconTopMargin+"px",
-		"margin-bottom" : iconBottomMargin+"px",                
-	}
-
-	selectors[".uagb-infobox-imgicon-style-custom .components-button svg"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",
-		"border-style" : iconimgBorderstyle,
-		"border-width" : iconimgBorderWidth+"px",
-		"border-radius" : iconimgBorderRadius+"px",
-		"border-color" : iconimgBorder,
-		"box-sizing" : "content-box",   
-		"margin-left" : iconLeftMargin+"px",
-		"margin-right" : iconRightMargin+"px",                                
-		"margin-top" : iconTopMargin+"px",
-		"margin-bottom" : iconBottomMargin+"px",                 
-	}
-            
 
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
 		selectors[".uagb-infobox__content-wrap"] = {                    
