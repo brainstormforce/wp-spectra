@@ -4,11 +4,9 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import UAGB_Block_Icons from "../uagb-controls/block-icons"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import icon.
-import UAGBIcon from "../uagb-controls/UAGBIcon"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import InfoBoxDesc from "./components/InfoBoxDesc"
