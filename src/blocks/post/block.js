@@ -10,3 +10,4 @@
  */
 
 import "./post-grid/block.js"
+import "./post-carousel/block.js"
