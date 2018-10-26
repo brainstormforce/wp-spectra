@@ -48,10 +48,6 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
-const set_icons = {};
-
-set_icons.upload = <svg aria-hidden="true" role="img" focusable="false" className ="dashicon dashicons-upload" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 20 20"><path d="M8 14V8H5l5-6 5 6h-3v6H8zm-2 2v-6H4v8h12.01v-8H14v6H6z"></path></svg>;
-
 class UAGBtestimonial extends Component {
 
 	constructor() {
@@ -59,13 +55,38 @@ class UAGBtestimonial extends Component {
 		super( ...arguments );
 		this.getTimelineicon = this.getTimelineicon.bind(this);
 		this.toggleBorder    = this.toggleBorder.bind( this );
+		this.onSelectImage    = this.onSelectImage.bind( this )
+		this.onRemoveImage    = this.onRemoveImage.bind( this )
 	}
 
 	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } );
 	}	
 
-	
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+		const { iconImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+		setAttributes( { iconImage: media } )
+	}	
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { iconImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { iconImage: null } )
+	}
+
 	/**
 	 * Function Name: toggleBorder.
 	 */
@@ -415,6 +436,7 @@ class UAGBtestimonial extends Component {
 			{ value: 'full', label: __( 'Large' ) }
 		];		
 
+		console.log(iconImage.url);
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
@@ -422,42 +444,67 @@ class UAGBtestimonial extends Component {
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }
-					>							
-					<SelectControl
-						label={ __( 'Image Position' ) }
-						value={ imagePosition }
-						onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
-						options={ [
-							{ value: 'top', label: __( 'Top' ) },
-							{ value: 'aside', label: __( 'Aside' ) },
-						] }
-					/>	
-					<SelectControl
-						label={ __( 'Image Style' ) }
-						value={ iconimgStyle }
-						onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
-						options={ [
-							{ value: 'normal', label: __( 'Normal' ) },
-							{ value: 'circle', label: __( 'Circle' ) },
-							{ value: 'square', label: __( 'Square' ) },
-							{ value: 'custom', label: __( 'custom' ) },
-						] }
-					/>
-					<SelectControl
-							label={ __( 'Image Size' ) }
-							options={ imageSizeOptions }
-							value={ imageSize }
-							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+					>		
+					<BaseControl
+						className="editor-bg-image-control"
+						label={ __( "Image" ) }
+					>
+						<MediaUpload
+							title={ __( "Select Image" ) }
+							onSelect={ this.onSelectImage }
+							type="image"
+							value={ iconImage }
+							render={ ( { open } ) => (
+								<Button isDefault onClick={ open }>
+									{ ! iconImage ? __( "Select Image" ) : __( "Replace image" ) }
+								</Button>
+							) }
 						/>
-					 <RangeControl
-							label={ __( 'Width' ) }
-							value={ imageWidth }
-							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							beforeIcon="editor-textcolor"
-							allowReset
+						{ !! iconImage &&
+							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+								{ __( "Remove Image" ) }
+							</Button>
+						}
+					</BaseControl>
+
+					{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) && <Fragment>
+						<SelectControl
+							label={ __( 'Image Position' ) }
+							value={ imagePosition }
+							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'aside', label: __( 'Aside' ) },
+							] }
+						/>	
+						<SelectControl
+							label={ __( 'Image Style' ) }
+							value={ iconimgStyle }
+							onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
+							options={ [
+								{ value: 'normal', label: __( 'Normal' ) },
+								{ value: 'circle', label: __( 'Circle' ) },
+								{ value: 'square', label: __( 'Square' ) },
+								{ value: 'custom', label: __( 'custom' ) },
+							] }
 						/>
+						<SelectControl
+								label={ __( 'Image Size' ) }
+								options={ imageSizeOptions }
+								value={ imageSize }
+								onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+							/>
+						 <RangeControl
+								label={ __( 'Width' ) }
+								value={ imageWidth }
+								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+								min={ 0 }
+								max={ 500 }
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+						</Fragment> 
+					}
 					
 				    { ( iconimgStyle && iconimgStyle == "custom" )  && iconImageSettings }
 					</PanelBody>	
@@ -470,27 +517,8 @@ class UAGBtestimonial extends Component {
 				</Fragment>
 			);
 
-		//Get image components.
-		const image_option = (
-			<MediaUpload
-				buttonProps={ {
-					className: 'change-image'
-				} }
-				onSelect= { onSelectIconImage }
-				type="image"
-				value={ iconImage }
-				render={ ( { open } ) => (
-					<Button onClick={ open }  >
-						{ ! iconImage.url ? set_icons.upload : <TestimonialImage attributes={attributes} />  }
-					</Button>
-				) }
-			>
-			</MediaUpload>
-			) ;
-
-
 		// Get icon/Image components.
-		let is_image = image_option;
+		let is_image = <TestimonialImage attributes={attributes} />
 		
 		// Get description.
 		const desc = (
