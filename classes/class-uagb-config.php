@@ -62,6 +62,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'backgroundColor'        => '',
 							'backgroundOpacity'      => '0',
 							'backgroundVideoOpacity' => '50',
+							'backgroundImageColor'   => '',
 							'align'                  => 'center',
 							'borderStyle'            => 'none',
 							'borderWidth'            => '1',
