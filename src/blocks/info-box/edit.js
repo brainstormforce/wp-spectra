@@ -865,7 +865,7 @@ class UAGBinfoBox extends Component {
 							value={ iconImage }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{ ! iconImage ? __( "Select Background Image" ) : __( "Replace image" ) }
+									{ ! iconImage ? __( "Select Image" ) : __( "Replace image" ) }
 								</Button>
 							) }
 						/>
