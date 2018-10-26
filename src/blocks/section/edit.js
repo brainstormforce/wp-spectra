@@ -20,7 +20,8 @@ const {
 	ColorPalette,
 	InspectorControls,
 	InnerBlocks,
-	MediaUpload
+	MediaUpload,
+	PanelColorSettings
 } = wp.editor
 
 const {
@@ -141,6 +142,7 @@ class UAGBSectionEdit extends Component {
 			backgroundOpacity,
 			backgroundVideoColor,
 			backgroundVideoOpacity,
+			backgroundImageColor,
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -301,148 +303,140 @@ class UAGBSectionEdit extends Component {
 							</PanelColor>
 						}
 						{ "image" == backgroundType &&
-							<BaseControl
-								className="editor-bg-image-control"
-								label={ __( "Background Image" ) }
-							>
-								<MediaUpload
-									title={ __( "Select Background Image" ) }
-									onSelect={ this.onSelectImage }
-									type="image"
-									value={ backgroundImage }
-									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
-											{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
+							<Fragment>
+								<BaseControl
+									className="editor-bg-image-control"
+									label={ __( "Background Image" ) }>
+									<MediaUpload
+										title={ __( "Select Background Image" ) }
+										onSelect={ this.onSelectImage }
+										type="image"
+										value={ backgroundImage }
+										render={ ( { open } ) => (
+											<Button isDefault onClick={ open }>
+												{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
+											</Button>
+										) }
+									/>
+									{ backgroundImage &&
+										<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+											{ __( "Remove Image" ) }
 										</Button>
-									) }
-								/>
-								{ !! backgroundImage &&
-									<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
-										{ __( "Remove Image" ) }
-									</Button>
+									}
+								</BaseControl>
+								{ backgroundImage &&
+									<Fragment>
+										<SelectControl
+											label={ __( "Image Position" ) }
+											value={ backgroundPosition }
+											onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
+											options={ [
+												{ value: "top-left", label: __( "Top Left" ) },
+												{ value: "top-center", label: __( "Top Center" ) },
+												{ value: "top-right", label: __( "Top Right" ) },
+												{ value: "center-left", label: __( "Center Left" ) },
+												{ value: "center-center", label: __( "Center Center" ) },
+												{ value: "center-right", label: __( "Center Right" ) },
+												{ value: "bottom-left", label: __( "Bottom Left" ) },
+												{ value: "bottom-center", label: __( "Bottom Center" ) },
+												{ value: "bottom-right", label: __( "Bottom Right" ) },
+											] }
+										/>
+										<SelectControl
+											label={ __( "Attachment" ) }
+											value={ backgroundAttachment }
+											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
+											options={ [
+												{ value: "fixed", label: __( "Fixed" ) },
+												{ value: "scroll", label: __( "Scroll" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Repeat" ) }
+											value={ backgroundRepeat }
+											onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
+											options={ [
+												{ value: "no-repeat", label: __( "No Repeat" ) },
+												{ value: "repeat", label: __( "Repeat" ) },
+												{ value: "repeat-x", label: __( "Repeat-x" ) },
+												{ value: "repeat-y", label: __( "Repeat-y" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Size" ) }
+											value={ backgroundSize }
+											onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
+											options={ [
+												{ value: "auto", label: __( "Auto" ) },
+												{ value: "cover", label: __( "Cover" ) },
+												{ value: "contain", label: __( "Contain" ) }
+											] }
+										/>
+										<PanelColor
+											title={ __( "Image Overlay Color" ) }
+											colorValue={ backgroundImageColor }>
+											<ColorPalette
+												value={ backgroundImageColor }
+												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+												allowReset
+											/>
+										</PanelColor>
+									</Fragment>
 								}
-							</BaseControl>
-						}
-						{ "image" == backgroundType &&
-							<SelectControl
-								label={ __( "Image Position" ) }
-								value={ backgroundPosition }
-								onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
-								options={ [
-									{ value: "top-left", label: __( "Top Left" ) },
-									{ value: "top-center", label: __( "Top Center" ) },
-									{ value: "top-right", label: __( "Top Right" ) },
-									{ value: "center-left", label: __( "Center Left" ) },
-									{ value: "center-center", label: __( "Center Center" ) },
-									{ value: "center-right", label: __( "Center Right" ) },
-									{ value: "bottom-left", label: __( "Bottom Left" ) },
-									{ value: "bottom-center", label: __( "Bottom Center" ) },
-									{ value: "bottom-right", label: __( "Bottom Right" ) },
-								] }
-							/>
-						}
-						{ "image" == backgroundType &&
-							<SelectControl
-								label={ __( "Attachment" ) }
-								value={ backgroundAttachment }
-								onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
-								options={ [
-									{ value: "fixed", label: __( "Fixed" ) },
-									{ value: "scroll", label: __( "Scroll" ) }
-								] }
-							/>
-						}
-						{ "image" == backgroundType &&
-							<SelectControl
-								label={ __( "Repeat" ) }
-								value={ backgroundRepeat }
-								onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
-								options={ [
-									{ value: "no-repeat", label: __( "No Repeat" ) },
-									{ value: "repeat", label: __( "Repeat" ) },
-									{ value: "repeat-x", label: __( "Repeat-x" ) },
-									{ value: "repeat-y", label: __( "Repeat-y" ) }
-								] }
-							/>
-						}
-						{ "image" == backgroundType &&
-							<SelectControl
-								label={ __( "Size" ) }
-								value={ backgroundSize }
-								onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
-								options={ [
-									{ value: "auto", label: __( "Auto" ) },
-									{ value: "cover", label: __( "Cover" ) },
-									{ value: "contain", label: __( "Contain" ) }
-								] }
-							/>
+							</Fragment>
 						}
 						{ "gradient" == backgroundType &&
-							<PanelColor
-								title={ __( "Color 1" ) }
-								colorValue={ gradientColor1 }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ gradientColor1 }
-									onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
+							<Fragment>
+								<PanelColorSettings
+									title={ __( "Color Settings" ) }
+									colorSettings={ [
+										{
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											label: __( "Color 1" ),
+										},
+										{
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											label: __( "Color 2" ),
+										}
+									] }
+								>
+								</PanelColorSettings>
+								<SelectControl
+									label={ __( "Type" ) }
+									value={ gradientType }
+									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
+									options={ [
+										{ value: "linear", label: __( "Linear" ) },
+										{ value: "radial", label: __( "Radial" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Location 1" ) }
+									value={ gradientLocation1 }
+									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
+									min={ 0 }
+									max={ 100 }
 									allowReset
 								/>
-							</PanelColor>
-						}
-						{ "gradient" == backgroundType &&
-							<PanelColor
-								title={ __( "Color 2" ) }
-								colorValue={ gradientColor2 }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ gradientColor2 }
-									onChange={ ( colorValue ) => setAttributes( { gradientColor2: colorValue } ) }
+								<RangeControl
+									label={ __( "Location 2" ) }
+									value={ gradientLocation2 }
+									onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
+									min={ 0 }
+									max={ 100 }
 									allowReset
 								/>
-							</PanelColor>
-						}
-						{ "gradient" == backgroundType &&
-							<SelectControl
-								label={ __( "Type" ) }
-								value={ gradientType }
-								onChange={ ( value ) => setAttributes( { gradientType: value } ) }
-								options={ [
-									{ value: "linear", label: __( "Linear" ) },
-									{ value: "radial", label: __( "Radial" ) },
-								] }
-							/>
-						}
-						{ "gradient" == backgroundType &&
-							<RangeControl
-								label={ __( "Location 1" ) }
-								value={ gradientLocation1 }
-								onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						}
-						{ "gradient" == backgroundType &&
-							<RangeControl
-								label={ __( "Location 2" ) }
-								value={ gradientLocation2 }
-								onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						}
-						{ "gradient" == backgroundType &&
-							<RangeControl
-								label={ __( "Angle" ) }
-								value={ gradientAngle }
-								onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
-								min={ 0 }
-								max={ 360 }
-								allowReset
-							/>
+								<RangeControl
+									label={ __( "Angle" ) }
+									value={ gradientAngle }
+									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
+									min={ 0 }
+									max={ 360 }
+									allowReset
+								/>
+							</Fragment>
 						}
 						{ "video" == backgroundType &&
 							<BaseControl
@@ -460,14 +454,14 @@ class UAGBSectionEdit extends Component {
 										</Button>
 									) }
 								/>
-								{ !! backgroundVideo &&
+								{ backgroundVideo &&
 									<Button onClick={ this.onRemoveVideo } isLink isDestructive>
 										{ __( "Remove Video" ) }
 									</Button>
 								}
 							</BaseControl>
 						}
-						{ "video" != backgroundType && "none" != backgroundType &&
+						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
 							<RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }
@@ -475,30 +469,30 @@ class UAGBSectionEdit extends Component {
 								min={ 0 }
 								max={ 100 }
 								allowReset
+								initialValue={0}
 							/>
 						}
-						{ "video" == backgroundType &&
-							<PanelColor
-								title={ __( "Video Overlay Color" ) }
-								colorValue={ backgroundVideoColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ backgroundVideoColor }
-									onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
+						{ "video" == backgroundType && backgroundVideo &&
+							<Fragment>
+								<PanelColor
+									title={ __( "Video Overlay Color" ) }
+									colorValue={ backgroundVideoColor }>
+									<ColorPalette
+										value={ backgroundVideoColor }
+										onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
+										allowReset
+									/>
+								</PanelColor>
+								<RangeControl
+									label={ __( "Opacity" ) }
+									value={ backgroundVideoOpacity }
+									onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
+									min={ 0 }
+									max={ 100 }
 									allowReset
+									initialValue={50}
 								/>
-							</PanelColor>
-						}
-						{ "video" == backgroundType &&
-							<RangeControl
-								label={ __( "Opacity" ) }
-								value={ backgroundVideoOpacity }
-								onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
+							</Fragment>
 						}
 					</PanelBody>
 					<PanelBody title={ __( "Border" ) } initialOpen={ false }>

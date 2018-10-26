@@ -118,6 +118,9 @@ const attributes = {
 	backgroundVideoColor: {
 		type: "string",
 	},
+	backgroundImageColor: {
+		type: "string"
+	},
 	borderStyle : {
 		type: "string",
 		default: "none"

@@ -130,6 +130,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity'          => 1,
 					'background-color' => $attr['backgroundVideoColor'],
 				);
+			} else if ( 'image' == $bg_type ) {
+				$selectors[' .uagb-section__overlay'] = array(
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+					'background-color' => $attr['backgroundImageColor'],
+				);
 			} else {
 				$selectors[' .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
