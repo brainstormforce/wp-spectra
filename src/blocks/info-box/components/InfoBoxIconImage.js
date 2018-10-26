@@ -9,7 +9,12 @@ class InfoBoxIconImage extends React.Component {
 	render() {
 
 		const { attributes } = this.props 
-		let url_chk = attributes.iconImage.url
+
+		let url_chk = '';
+		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=='' ){
+			url_chk = attributes.iconImage.url
+		}
+		
 		let url = ""
 		if( url_chk !== "" ){
 			let size = attributes.iconImage.sizes
@@ -34,7 +39,7 @@ class InfoBoxIconImage extends React.Component {
 				</div>                      
 			)
 		}else{
-			return null
+			return null;
 		}       
 		
 	}

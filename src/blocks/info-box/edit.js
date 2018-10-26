@@ -2,7 +2,7 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
@@ -54,18 +54,16 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
-const set_icons = {}
-
-set_icons.upload = <svg aria-hidden="true" role="img" focusable="false" className ="dashicon dashicons-upload" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 20 20"><path d="M8 14V8H5l5-6 5 6h-3v6H8zm-2 2v-6H4v8h12.01v-8H14v6H6z"></path></svg>
-
 class UAGBinfoBox extends Component {
 
 	constructor() {
 
 		super( ...arguments )
-		this.getTimelineicon = this.getTimelineicon.bind(this)
-		this.toggleTarget    = this.toggleTarget.bind( this )
-		this.toggleResponsive    = this.toggleResponsive.bind( this )
+		this.getTimelineicon  = this.getTimelineicon.bind(this)
+		this.toggleTarget     = this.toggleTarget.bind( this )
+		this.toggleResponsive = this.toggleResponsive.bind( this )
+		this.onSelectImage    = this.onSelectImage.bind( this )
+		this.onRemoveImage    = this.onRemoveImage.bind( this )
 
 	}
 
@@ -73,6 +71,29 @@ class UAGBinfoBox extends Component {
 		this.props.setAttributes( { icon: value } )
 	}
 
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+		const { iconImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+		setAttributes( { iconImage: media } )
+	}	
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { iconImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { iconImage: null } )
+	}
 
 	/**
 	 * Function Name: toggleTarget.
@@ -815,20 +836,6 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
-		// Set icon iamge.
-		const onSelectIconImage = ( media ) => {
-			if ( ! media || ! media.url ) {
-				setAttributes( { iconImage: null } )
-				return
-			}
-			setAttributes( { iconImage: media } )
-		}
-
-		// Remove icon image.
-		const onRemoveIconImage = ( media ) => {
-			setAttributes( { iconImage: null } )
-		}
-
 		// Image sizes.
 		const imageSizeOptions = [
 			{ value: "thumbnail", label: __( "Thumbnail" ) },
@@ -842,7 +849,28 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Image" ) }
 					initialOpen={ true }
-				>
+				>	
+					<BaseControl
+						className="editor-bg-image-control"
+						label={ __( "Image" ) }
+					>
+						<MediaUpload
+							title={ __( "Select Image" ) }
+							onSelect={ this.onSelectImage }
+							type="image"
+							value={ iconImage }
+							render={ ( { open } ) => (
+								<Button isDefault onClick={ open }>
+									{ ! iconImage ? __( "Select Image" ) : __( "Replace image" ) }
+								</Button>
+							) }
+						/>
+						{ !! iconImage &&
+							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+								{ __( "Remove Image" ) }
+							</Button>
+						}
+					</BaseControl>
 					<SelectControl
 						label={ __( "Image Size" ) }
 						options={ imageSizeOptions }
@@ -893,7 +921,7 @@ class UAGBinfoBox extends Component {
 									{ value: "tablet", label: __( "Tablet" ) },
 									{ value: "mobile", label: __( "Mobile" ) },
 								] }
-								help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+								help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
 						}
@@ -963,34 +991,14 @@ class UAGBinfoBox extends Component {
 		)
 
 		var ClassNamesId = className+" "+ my_block_id
-		//var back_style = InfoBoxStyle( this.props );
-
-		//Get image components.
-		const image_option = (
-			<MediaUpload
-				buttonProps={ {
-					className: "change-image"
-				} }
-				onSelect= { onSelectIconImage }
-				type="image"
-				value={ iconImage }
-				render={ ( { open } ) => (
-					<Button onClick={ open }  >
-						{ ! iconImage.url ? set_icons.upload : <InfoBoxIconImage attributes={attributes} />  }
-					</Button>
-				) }
-			>
-			</MediaUpload>
-		)
-
-
+		
 		// Get icon/Image components.
 		let is_image = ""
 
 		if( source_type === "icon" ) {
 			is_image = <InfoBoxIcon attributes={attributes}/>
 		}else{
-			is_image = image_option
+			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
 
 		// Get description and seperator components.
