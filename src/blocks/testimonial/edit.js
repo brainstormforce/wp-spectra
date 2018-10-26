@@ -415,20 +415,6 @@ class UAGBtestimonial extends Component {
 			</Fragment>
 		);
 
-		// Set icon iamge.
-		const onSelectIconImage = ( media ) => {
-			if ( ! media || ! media.url ) {
-				setAttributes( { iconImage: null } )
-				return
-			}
-			setAttributes( { iconImage: media } )
-		}
-
-		// Remove icon image.
-		const onRemoveIconImage = ( media ) => {
-			setAttributes( { iconImage: null } )
-		}
-
 		// Image sizes.
 		const imageSizeOptions = [
 			{ value: 'thumbnail', label: __( 'Thumbnail' ) },
@@ -436,7 +422,6 @@ class UAGBtestimonial extends Component {
 			{ value: 'full', label: __( 'Large' ) }
 		];		
 
-		console.log(iconImage.url);
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
