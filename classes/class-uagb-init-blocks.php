@@ -63,7 +63,7 @@ class UAGB_Init_Blocks {
 			array(
 				array(
 					'slug'  => 'uagb',
-					'title' => __( 'UAGB Blocks', 'uagb' ),
+					'title' => __( 'UAGB Blocks', 'ultimate-addons-for-gutenberg' ),
 				),
 			)
 		);
