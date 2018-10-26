@@ -133,7 +133,7 @@ registerBlockType( "uagb/info-box", {
 
 							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
-										<div className = "left-title-image">
+										<div className = "uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
@@ -143,7 +143,7 @@ registerBlockType( "uagb/info-box", {
 
 							{ ( iconimgPosition === "right-title") &&
 									<Fragment>
-										<div className = "right-title-image">
+										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
