@@ -91,6 +91,23 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-slick-js', // Handle.
+			UAGB_URL . 'assets/js/slick.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		// Styles.
+		wp_enqueue_style(
+			'uagb-slick-css', // Handle.
+			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 	/**
