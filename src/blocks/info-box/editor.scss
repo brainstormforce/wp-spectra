@@ -1,0 +1,40 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.uagb-ifb-separator {
+    display: inline-block;   
+    width: 30%;
+    margin: 0;
+}
+
+a.uagb-infobox-cta-link {
+    pointer-events: none;
+}
+
+.uagb-infobox__content-wrap.uagb-infobox-icon-above-title{
+    text-align:center;
+}
+
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap {
+    color: inherit;
+}
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix {
+    margin-bottom: 5px;
+}
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title {
+    margin-bottom: 10px;
+}
+
+.gutenberg-editor-page #wpwrap .uagb-ifb-separator-parent {
+    margin-bottom: 10px;
+}
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc {
+    margin-bottom: 10px;
+}

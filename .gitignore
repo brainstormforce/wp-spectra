@@ -1,10 +1,31 @@
-# Ignore node.js Modules #
+# ignore PHPStorm extra directories
+.idea/
+
+# Leave node_modules from git
 node_modules/
-u.sh
-ultimate-elementor.zip
-bcore.sh
-push.sh
-Optimization.txt
+
+# sass cache
+.sass-cache
+
+# map files
+*.map
+
+# Skip package file from versoning
+*.zip
+
+# ignore git inside subproject
 admin/bsf-core/.git
+
+# ignore PHPCS report files
+phpcs-summary.log
+phpcs-full.log
+
+# NPM log/lock files
+package-lock.json
+
+# Exclude OS specific files
 .DS_Store
+
+# Exclude composer's directories
 vendor/
+ultimate-addons-for-gutenberg.zip
