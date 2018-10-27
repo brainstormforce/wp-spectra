@@ -24,6 +24,15 @@
     margin-top: 15px;
 }
 
+.uagb-inspect-tabs-col-2 button,
+.uagb-inspect-tabs button {
+	width: 50%;
+}
+
+.uagb-inspect-tabs-col-3 button {
+	width: 33.33%;
+}
+
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
 	left: 0!important;
@@ -80,7 +89,8 @@
 	position: relative;
 	display: inline-block;
 	margin: 8px 0;
-	vertical-align: middle
+	vertical-align: middle;
+	width: 100%;
 }
 
 .rfipbtn {
@@ -480,7 +490,7 @@
 	display: block;
 	padding: 16px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 14px;
 	width: 100%;
 	line-height: 1
 }
@@ -1453,7 +1463,8 @@
 
 .rfipbtn--default {
 	background-color: #fff;
-	border: 1px solid #e0e0e0
+	border: 1px solid #e0e0e0;
+	width: 100%;
 }
 
 .rfipbtn--default:active,

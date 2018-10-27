@@ -444,8 +444,102 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
 			// @codingStandardsIgnoreEnd.
-				return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
+			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
+		/**
+		 * Get Team Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_team_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSize'] . "px",
+					"color" => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSize'] . "px",
+					"color" => $attr['prefixColor'],
+				),
+				" .uagb-team__desc-wrap" => array(
+					"margin-top" => $attr['prefixSpace'] . "px",
+				),
+				" .uagb-team__social-icon a" => array(
+					"color" => $attr['socialColor'],
+					"font-size" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
+				),
+				" .uagb-team__social-icon:hover a" => array(
+					"color" => $attr['socialHoverColor'],
+				),
+				".uagb-team__image-position-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
+					"margin-right" => ( $attr['socialSpace'] / 2 ) . "px",
+					"margin-left" => ( $attr['socialSpace'] / 2 ) . "px",
+				),
+				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				" .uagb-team__imag-wrap" => array(
+					"margin-top" => $attr['imgTopMargin'] . "px",
+					"margin-bottom" => $attr['imgBottomMargin'] . "px",
+					"margin-left" => $attr['imgLeftMargin'] . "px",
+					"margin-right" => $attr['imgRightMargin'] . "px",
+					"width" => $attr['imgWidth'] . "px"
+				),
+			);
+
+			if( 'above' == $attr['imgPosition'] ) {
+				if ( 'center' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'left' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'right' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+				}
+			}
+
+			if ( "above" != $attr['imgPosition'] ) {
+				if ( "middle" == $attr['imgAlign'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
+				}
+			}
+
+			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSize'] . "px",
+				"color" => $attr['titleColor'],
+				"margin-bottom" => $attr['titleSpace'] . "px",
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+		}
 	}
 }
