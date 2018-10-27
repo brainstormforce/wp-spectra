@@ -25,17 +25,31 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
-	TextControl
+	TextControl,
+	BaseControl,
+	ToggleControl
 } = wp.components
 
 // Extend component
 const { Component, Fragment } = wp.element
 
-const set_icons = {}
-
-set_icons.upload = <svg aria-hidden="true" role="img" focusable="false" className ="dashicon dashicons-upload" xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 20 20"><path d="M8 14V8H5l5-6 5 6h-3v6H8zm-2 2v-6H4v8h12.01v-8H14v6H6z"></path></svg>
-
 class UAGBTeam extends Component {
+
+	constructor() {
+
+		super( ...arguments )
+		this.toggleTarget     = this.toggleTarget.bind( this )
+	}
+
+	/**
+	 * Function Name: toggleTarget.
+	 */
+	toggleTarget() {
+		const { socialTarget } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { socialTarget: ! socialTarget } )
+	}
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -67,10 +81,12 @@ class UAGBTeam extends Component {
 		}
 	}
 
-	social_html( icon, link ) {
+	social_html( icon, link, target ) {
+
+		let target_value =  ( target ) ? "_blank" : "_self"
 
 		return (
-			<li className="uagb-team__social-icon"><a href={link} target="_blank" title=""><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} target={target_value} title=""><span className={icon}></span></a></li>
 		)
 	}
 
@@ -116,7 +132,8 @@ class UAGBTeam extends Component {
 			pinLink,
 			socialColor,
 			socialHoverColor,
-			socialSpace
+			socialSpace,
+			socialTarget
 		} = attributes
 
 		// Add CSS.
@@ -125,7 +142,7 @@ class UAGBTeam extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		// Set icon iamge.
+		// Set image.
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( { image: null } )
@@ -134,44 +151,42 @@ class UAGBTeam extends Component {
 			setAttributes( { image: media } )
 		}
 
+		// Remove image.
+		const onRemoveImage = ( media ) => {
+			setAttributes( { image: null } )
+		}
+
 		let size = ""
 		let img_url = ""
 
 		if ( image ) {
 			size = image.sizes
-			img_url = size[imgSize].url
+			if ( image.sizes ) {
+				img_url = ( size[imgSize] ) ? size[imgSize].url : image.url
+			} else {
+				img_url = image.url
+			}
 		}
 
-		//Get image components.
-		const team_image = (
-			<MediaUpload
-				buttonProps={ {
-					className: "change-image"
-				} }
-				onSelect= { onSelectImage }
-				type="image"
-				value={ image }
-				render={ ( { open } ) => (
-					<Button onClick={ open }  >
-						{ ! image
-							? set_icons.upload :
-							<div
-								className={ classnames(
-									"uagb-team__imag-wrap",
-									`uagb-team__image-crop-${imgStyle}`,
-								) }>
-								<img
-									className =""
-									src = { img_url }
-									alt = { image.alt }
-								/>
-							</div>
-						}
-					</Button>
-				) }
-			>
-			</MediaUpload>
-		)
+		let image_html = ""
+
+		if ( "" != img_url ) {
+			image_html = (
+				<div
+					className={ classnames(
+						"uagb-team__imag-wrap",
+						`uagb-team__image-crop-${imgStyle}`,
+					) }>
+					<img
+						className =""
+						src = { img_url }
+						alt = { ( image.alt ) ? image.alt : "" }
+					/>
+				</div>
+			)
+		}
+
+		const team_image = ""
 
 		// Get description and seperator components.
 		const desc_html = (
@@ -201,10 +216,10 @@ class UAGBTeam extends Component {
 		const social_links = (
 			<div className="uagb-team__social-icon-wrap">
 				<ul className="uagb-team__social-list">
-					{ "" != twitterIcon && this.social_html( twitterIcon, twitterLink ) }
-					{ "" != fbIcon && this.social_html( fbIcon, fbLink ) }
-					{ "" != linkedinIcon && this.social_html( linkedinIcon, linkedinLink ) }
-					{ "" != pinIcon && this.social_html( pinIcon, pinLink ) }
+					{ "" != twitterIcon && this.social_html( twitterIcon, twitterLink, socialTarget ) }
+					{ "" != fbIcon && this.social_html( fbIcon, fbLink, socialTarget ) }
+					{ "" != linkedinIcon && this.social_html( linkedinIcon, linkedinLink, socialTarget ) }
+					{ "" != pinIcon && this.social_html( pinIcon, pinLink, socialTarget ) }
 				</ul>
 			</div>
 		)
@@ -268,8 +283,27 @@ class UAGBTeam extends Component {
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Image" ) }
-						initialOpen={ false }
 					>
+						<BaseControl
+							className="editor-bg-image-control"
+							label={ __( "Team Member Image" ) }>
+							<MediaUpload
+								title={ __( "Select Image" ) }
+								onSelect={ onSelectImage }
+								type="image"
+								value={ image }
+								render={ ( { open } ) => (
+									<Button isDefault onClick={ open }>
+										{ ! image ? __( "Select Image" ) : __( "Replace image" ) }
+									</Button>
+								) }
+							/>
+							{ image &&
+								<Button className="uagb-rm-btn" onClick={ onRemoveImage } isLink isDestructive>
+									{ __( "Remove Image" ) }
+								</Button>
+							}
+						</BaseControl>
 						<SelectControl
 							label={ __( "Position" ) }
 							value={ imgPosition }
@@ -321,62 +355,13 @@ class UAGBTeam extends Component {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody
-						title={ __( "Typography" ) }
-						initialOpen={ false }
-					>
-						<SelectControl
-							label={ __( "Title Tag" ) }
-							value={ tag }
-							onChange={ ( value ) => setAttributes( { tag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>
-						<RangeControl
-							label={ __( "Title Font Size" ) }
-							value={ titleFontSize }
-							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Prefix Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ descFontSize }
-							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Social Icon Font Size" ) }
-							value={ socialFontSize }
-							onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
 					<PanelBody title={ __( "Social Links" ) }
 						initialOpen={ false }>
+						<ToggleControl
+							label={ __( "Open Links in New Window" ) }
+							checked={ socialTarget }
+							onChange={ this.toggleTarget }
+						/>
 						<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
 							<p className="components-base-control__label">{__( "Icon" )}</p>
 							<FontIconPicker
@@ -446,6 +431,62 @@ class UAGBTeam extends Component {
 							/>
 						</PanelBody>
 					</PanelBody>
+					<PanelBody
+						title={ __( "Typography" ) }
+						initialOpen={ false }>
+						<SelectControl
+							label={ __( "Title Tag" ) }
+							value={ tag }
+							onChange={ ( value ) => setAttributes( { tag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>
+						<RangeControl
+							label={ __( "Title Font Size" ) }
+							value={ titleFontSize }
+							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={30}
+						/>
+						<RangeControl
+							label={ __( "Prefix Font Size" ) }
+							value={ prefixFontSize }
+							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={16}
+						/>
+						<RangeControl
+							label={ __( "Description Font Size" ) }
+							value={ descFontSize }
+							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={16}
+						/>
+						<RangeControl
+							label={ __( "Social Icon Font Size" ) }
+							value={ socialFontSize }
+							onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
 						initialOpen={ false }
@@ -481,16 +522,15 @@ class UAGBTeam extends Component {
 
 					<PanelBody
 						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
+						initialOpen={ false }>
 						<RangeControl
 							label={ __( "Title Bottom Spacing" ) }
 							value={ titleSpace }
 							onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Prefix Bottom Spacing" ) }
@@ -499,6 +539,7 @@ class UAGBTeam extends Component {
 							min={ 0 }
 							max={ 50 }
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Description Bottom Spacing" ) }
@@ -520,6 +561,7 @@ class UAGBTeam extends Component {
 							title={ __( "Image Margins" ) }
 							initialOpen={ true }
 						>
+							{  imgPosition != "above" &&
 							<RangeControl
 								label={ __( "Left Margin" ) }
 								value={ imgLeftMargin }
@@ -529,6 +571,8 @@ class UAGBTeam extends Component {
 								beforeIcon="editor-textcolor"
 								allowReset
 							/>
+							}
+							{  imgPosition != "above" &&
 							<RangeControl
 								label={ __( "Right Margin" ) }
 								value={ imgRightMargin }
@@ -538,6 +582,7 @@ class UAGBTeam extends Component {
 								beforeIcon="editor-textcolor"
 								allowReset
 							/>
+							}
 							<RangeControl
 								label={ __( "Top Margin" ) }
 								value={ imgTopMargin }
@@ -570,13 +615,11 @@ class UAGBTeam extends Component {
 					id={ `uagb-team-${ this.props.clientId }` }>
 					<div className = "uagb-team__wrap">
 
-						{ ( imgPosition == "left") &&
-							team_image
-						}
+						{ ( imgPosition == "left") && image_html }
 
 						<div className = "uagb-team__content">
 
-							{  imgPosition == "above" && team_image }
+							{  imgPosition == "above" && image_html }
 
 							{ title_html }
 
@@ -586,9 +629,7 @@ class UAGBTeam extends Component {
 
 						</div>
 
-						{ ( imgPosition == "right") &&
-							team_image
-						}
+						{ ( imgPosition == "right") && image_html }
 					</div>
 				</div>
 			</Fragment>

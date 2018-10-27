@@ -8,6 +8,7 @@ function styling( props ) {
 
 	const {
 		tag,
+		align,
 		titleColor,
 		prefixColor,
 		descColor,
@@ -45,13 +46,6 @@ function styling( props ) {
 		" .uagb-team__desc-wrap": {
 			"margin-top": prefixSpace + "px",
 		},
-		" .uagb-team__imag-wrap": {
-			"margin-top": imgTopMargin + "px",
-			"margin-bottom": imgBottomMargin + "px",
-			"margin-left": imgLeftMargin + "px",
-			"margin-right": imgRightMargin + "px",
-			"width": imgWidth + "px"
-		},
 		" .uagb-team__social-icon a": {
 			"color": socialColor + " !important",
 			"font-size": socialFontSize + "px !important",
@@ -63,9 +57,47 @@ function styling( props ) {
 		},
 		".uagb-team__image-position-left .uagb-team__social-icon" : {
 			"margin-right": socialSpace + "px !important",
+			"margin-left": "0",
 		},
 		".uagb-team__image-position-right .uagb-team__social-icon" : {
 			"margin-left": socialSpace + "px !important",
+			"margin-right": "0",
+		},
+		".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" : {
+			"margin-right": ( socialSpace / 2 ) + "px !important",
+			"margin-left": ( socialSpace / 2 ) + "px !important",
+		},
+		".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" : {
+			"margin-right": socialSpace + "px !important",
+			"margin-left": "0",
+		},
+		".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" : {
+			"margin-left": socialSpace + "px !important",
+			"margin-right": "0",
+		},
+		" .uagb-team__imag-wrap" : {
+			"margin-top": imgTopMargin + "px",
+			"margin-bottom": imgBottomMargin + "px",
+			"margin-left": imgLeftMargin + "px",
+			"margin-right": imgRightMargin + "px",
+			"width": imgWidth + "px"
+		}
+	}
+
+	if ( "above" == imgPosition ) {
+		if ( "center" == align ) {
+			selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto"
+			selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto"
+		} else if ( "left" == align ) {
+			selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto"
+		} else if ( "right" == align ) {
+			selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto"
+		}
+	}
+
+	if ( "above" != imgPosition ) {
+		if ( "middle" == imgAlign ) {
+			selectors[" .uagb-team__imag-wrap"]["align-self"] = "center"
 		}
 	}
 

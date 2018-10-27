@@ -55,7 +55,7 @@ const attributes = {
 	},
 	socialFontSize: {
 		type: "number",
-		default: 30
+		default: 20
 	},
 	image: {
 		type: "object",
@@ -92,11 +92,11 @@ const attributes = {
 	},
 	imgLeftMargin :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	imgRightMargin :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	imgTopMargin :{
 		type: "number",
@@ -108,35 +108,43 @@ const attributes = {
 	},
 	socialSpace :{
 		type: "number",
-		default: 10,
+		default: 20,
+	},
+	socialTarget: {
+		type: "boolean",
+		default: false,
 	},
 	twitterIcon : {
 		type : "string",
-		default : "fab fa fa-twitter-square"
+		default : "fab fa-twitter"
 	},
 	fbIcon : {
 		type : "string",
-		default : "fab fa fa-facebook-official"
+		default : "fab fa-facebook"
 	},
 	linkedinIcon : {
 		type : "string",
-		default : "fab fa fa-linkedin-square"
+		default : "fab fa-linkedin"
 	},
 	pinIcon : {
 		type : "string",
-		default : "fab fa fa-pinterest-square"
+		default : "fab fa-pinterest"
 	},
 	twitterLink: {
 		type: "string",
+		default : "#"
 	},
 	fbLink: {
 		type: "string",
+		default : "#"
 	},
 	linkedinLink: {
 		type: "string",
+		default : "#"
 	},
 	pinLink: {
 		type: "string",
+		default : "#"
 	},
 }
 
