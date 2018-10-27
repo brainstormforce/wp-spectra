@@ -8,8 +8,6 @@
  * @package UAGB
  */
 
-namespace UltimateGutenberg;
-
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
@@ -48,6 +46,27 @@ class UAGB_Init_Blocks {
 
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
+
+		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
+	}
+
+	/**
+	 * Gutenberg block category for UAGB.
+	 *
+	 * @param array  $categories Block categories.
+	 * @param object $post Post object.
+	 * @since 1.0.0
+	 */
+	function register_block_category( $categories, $post ) {
+		return array_merge(
+			$categories,
+			array(
+				array(
+					'slug'  => 'uagb',
+					'title' => __( 'UAGB Blocks', 'ultimate-addons-for-gutenberg' ),
+				),
+			)
+		);
 	}
 
 	/**
@@ -58,11 +77,20 @@ class UAGB_Init_Blocks {
 	function block_assets() {
 		// Styles.
 		wp_enqueue_style(
-			'uabg-block-css', // Handle.
+			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
+		// Font Awsome.
+		wp_enqueue_style(
+			'uagb-fontawesome-css', // Handle.
+			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
+			array( 'wp-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 	/**
@@ -73,7 +101,7 @@ class UAGB_Init_Blocks {
 	function editor_assets() {
 		// Scripts.
 		wp_enqueue_script(
-			'uabg-block-editor-js', // Handle.
+			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/blocks.build.js',
 			array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
 			UAGB_VER,
@@ -82,11 +110,20 @@ class UAGB_Init_Blocks {
 
 		// Styles.
 		wp_enqueue_style(
-			'uabg-block-editor-css', // Handle.
+			'uagb-block-editor-css', // Handle.
 			UAGB_URL . 'dist/blocks.editor.build.css', // Block editor CSS.
 			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
+
+		// Common Editor style.
+		wp_enqueue_style(
+			'uagb-block-common-editor-css', // Handle.
+			UAGB_URL . 'dist/blocks.commoneditorstyle.build.css', // Block editor CSS.
+			array( 'wp-edit-blocks' ), // Dependency to include the CSS after it.
+			UAGB_VER
+		);
+
 	} // End function editor_assets().
 
 }
