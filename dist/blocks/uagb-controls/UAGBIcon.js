@@ -338,6 +338,7 @@ const UAGBIcon = [
 	"far fa-star-half",
 	"fas fa-star",
 	"far fa-star",
+	"fa fa-star",
 	"fab fa-stack-overflow",
 	"fab fa-stack-exchange",
 	"fas fa-square-full",

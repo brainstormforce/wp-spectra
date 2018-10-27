@@ -10,7 +10,7 @@ class InfoBoxCta extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-infobox-cta-link uagb-ifb-cta-button uagb-ifb-size-"+ attributes.ctaBtnSize
+		let ctaBtnClass = "uagb-infobox-cta-link uagb-ifb-cta-button"
 
 		let target =""
 		if( attributes.ctaTarget ){
