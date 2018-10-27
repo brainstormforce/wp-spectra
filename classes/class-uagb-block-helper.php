@@ -476,13 +476,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-team__desc-wrap" => array(
 					"margin-top" => $attr['prefixSpace'] . "px",
 				),
-				" .uagb-team__imag-wrap" => array(
-					"margin-top" => $attr['imgTopMargin'] . "px",
-					"margin-bottom" => $attr['imgBottomMargin'] . "px",
-					"margin-left" => $attr['imgLeftMargin'] . "px",
-					"margin-right" => $attr['imgRightMargin'] . "px",
-					"width" => $attr['imgWidth'] . "px"
-				),
 				" .uagb-team__social-icon a" => array(
 					"color" => $attr['socialColor'],
 					"font-size" => $attr['socialFontSize'] . "px",
@@ -494,10 +487,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-left .uagb-team__social-icon" => array(
 					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
 				),
 				".uagb-team__image-position-right .uagb-team__social-icon" => array(
 					"margin-left" => $attr['socialSpace'] . "px",
-				)
+					"margin-right" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
+					"margin-right" => ( $attr['socialSpace'] / 2 ) . "px",
+					"margin-left" => ( $attr['socialSpace'] / 2 ) . "px",
+				),
+				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				" .uagb-team__imag-wrap" => array(
+					"margin-top" => $attr['imgTopMargin'] . "px",
+					"margin-bottom" => $attr['imgBottomMargin'] . "px",
+					"margin-left" => $attr['imgLeftMargin'] . "px",
+					"margin-right" => $attr['imgRightMargin'] . "px",
+					"width" => $attr['imgWidth'] . "px"
+				),
 			);
 
 			if( 'above' == $attr['imgPosition'] ) {
@@ -508,6 +522,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
 				} else if ( 'right' == $attr['align'] ) {
 					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+				}
+			}
+
+			if ( "above" != $attr['imgPosition'] ) {
+				if ( "middle" == $attr['imgAlign'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
 				}
 			}
 

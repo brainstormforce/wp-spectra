@@ -458,7 +458,7 @@ class UAGBTeam extends Component {
 							initialPosition={30}
 						/>
 						<RangeControl
-							label={ __( "Prefix Font Size" ) }
+							label={ __( "Designation Font Size" ) }
 							value={ prefixFontSize }
 							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
 							min={ 1 }
@@ -499,7 +499,7 @@ class UAGBTeam extends Component {
 							{
 								value: prefixColor,
 								onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
-								label: __( "Prefix" ),
+								label: __( "Designation" ),
 							},
 							{
 								value: descColor,
@@ -533,7 +533,7 @@ class UAGBTeam extends Component {
 							initialPosition={0}
 						/>
 						<RangeControl
-							label={ __( "Prefix Bottom Spacing" ) }
+							label={ __( "Designation Bottom Spacing" ) }
 							value={ prefixSpace }
 							onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
 							min={ 0 }

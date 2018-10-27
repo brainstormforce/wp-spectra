@@ -186,19 +186,44 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
 				}
+
 				ob_start();
 				?>
-				<style type="text/css" media="all" id="uagb-style-frontend">
+				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
 				<?php
-				foreach ( $blocks as $i => $block ) {
-					if ( is_array( $block ) ) {
+			}
+		}
+
+		/**
+		 * Generates stylesheet for reusable blocks.
+		 *
+		 * @param array $blocks Blocks array.
+		 * @since 1.1.0
+		 */
+		public function get_stylesheet( $blocks ) {
+
+			foreach ( $blocks as $i => $block ) {
+
+				if ( is_array( $block ) ) {
+
+					if ( 'core/block' == $block['blockName'] ) {
+
+						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = gutenberg_parse_blocks( $content );
+
+							$this->get_stylesheet( $reusable_blocks );
+						}
+					} else {
+
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}
 				}
-				?>
-				</style>
-				<?php
 			}
 		}
 

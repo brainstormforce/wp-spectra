@@ -4,6 +4,66 @@
  * CSS for both Frontend+Backend.
  */
 
+ .uagb-team__outer-wrap {
+
+	.uagb-team__prefix {
+		font-size: 15px;
+		font-style: italic;
+		color: #888;
+	}
+
+	.uagb-team__imag-wrap img {
+		display: inline;
+		height: auto !important;
+		max-width: 100%;
+		width: auto;
+		-webkit-box-sizing: content-box;
+		-moz-box-sizing: content-box;
+		box-sizing: content-box;
+		-webkit-border-radius: inherit;
+		border-radius: inherit;
+	}
+
+	.uagb-team__imag-wrap.uagb-team__image-crop-circle img {
+		-webkit-border-radius: 100%;
+		border-radius: 100%;
+	}
+
+	.uagb-team__imag-wrap.uagb-team__image-crop-square img {
+		-webkit-border-radius: 0;
+		border-radius: 0;
+	}
+
+	.uagb-team__social-icon-wrap ul {
+		list-style: none;
+		display: flex;
+	}
+
+	.uagb-team__social-icon a span,
+	.uagb-team__social-icon a span:before {
+		color: inherit;
+		font-size: inherit;
+		height: inherit;
+		width: inherit;
+	}
+
+	.uagb-team__social-icon a {
+		font-size: 20px;
+		width: 20px;
+		height: 20px;
+		color: #333;
+	}
+	.uagb-team__social-icon {
+		margin-right: 20px;
+		margin-left: 0;
+	}
+	.uagb-team__social-list {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+
 .uagb-team__image-position-above.uagb-team__align-center {
 	text-align: center;
 }
@@ -38,39 +98,6 @@
 	text-align: right;
 }
 
-.uagb-team__prefix {
-	font-size: 15px;
-	font-style: italic;
-	color: #888;
-}
-
-.uagb-team__imag-wrap img {
-	display: inline;
-	height: auto !important;
-	max-width: 100%;
-	width: auto;
-	-webkit-box-sizing: content-box;
-	-moz-box-sizing: content-box;
-	box-sizing: content-box;
-	-webkit-border-radius: inherit;
-	border-radius: inherit;
-}
-
-.uagb-team__imag-wrap.uagb-team__image-crop-circle img {
-	-webkit-border-radius: 100%;
-	border-radius: 100%;
-}
-
-.uagb-team__imag-wrap.uagb-team__image-crop-square img {
-	-webkit-border-radius: 0;
-	border-radius: 0;
-}
-
-.uagb-team__social-icon-wrap ul {
-	list-style: none;
-	display: flex;
-}
-
 .uagb-team__image-position-left .uagb-team__social-icon-wrap ul {
 	justify-content: flex-start;
 	margin: 0;
@@ -91,21 +118,6 @@
 	margin-left: 5px;
 }
 
-.uagb-team__social-icon a span,
-.uagb-team__social-icon a span:before {
-	color: inherit;
-	font-size: inherit;
-	height: inherit;
-	width: inherit;
-}
-
-.uagb-team__social-icon a {
-	font-size: 20px;
-    width: 20px;
-    height: 20px;
-    color: #333;
-}
-
 .uagb-team__image-position-above .uagb-team__social-icon-wrap {
 	display: inline-block;
 }
@@ -120,9 +132,4 @@
 
 .uagb-team__image-position-above.uagb-team__align-right .uagb-team__content {
 	text-align: right;
-}
-
-.uagb-team__social-icon {
-	margin-right: 20px;
-	margin-left: 0;
 }
