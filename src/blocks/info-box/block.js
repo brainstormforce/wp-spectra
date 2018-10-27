@@ -4,11 +4,9 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import UAGB_Block_Icons from "../uagb-controls/block-icons"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import icon.
-import UAGBIcon from "../uagb-controls/UAGBIcon"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import InfoBoxDesc from "./components/InfoBoxDesc"
@@ -75,7 +73,7 @@ registerBlockType( "uagb/info-box", {
 		} = props.attributes
 
 
-		const my_block_id = "uagb-"+ block_id
+		const my_block_id = "uagb-infobox-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
@@ -135,7 +133,7 @@ registerBlockType( "uagb/info-box", {
 
 							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
-										<div className = "left-title-image">
+										<div className = "uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
@@ -145,7 +143,7 @@ registerBlockType( "uagb/info-box", {
 
 							{ ( iconimgPosition === "right-title") &&
 									<Fragment>
-										<div className = "right-title-image">
+										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
@@ -177,13 +175,19 @@ registerBlockType( "uagb/info-box", {
 
 		return (
 			<Fragment>
-				<div className={ ClassNamesId }>
+				<div className={ classnames(
+					className,
+					"uagb-infobox__outer-wrap"
+				) } 
+				id = { my_block_id } >
+
 					{ ( ctaType == "all") &&
 						<Fragment>
 							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
+
 				</div>
 			</Fragment>
 		)

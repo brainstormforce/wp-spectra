@@ -2,7 +2,7 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 

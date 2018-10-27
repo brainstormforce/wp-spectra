@@ -99,6 +99,20 @@
 		margin-bottom: 15px;
 	}
 
+	.uagb-post-grid-byline a,
+	.uagb-post-grid-byline a:focus,
+	.uagb-post-grid-byline a:active {
+		color: inherit;
+		font-size: inherit;
+	}
+
+	.uagb-post__title a,
+	.uagb-post__title a:focus,
+	.uagb-post__title a:active {
+		color: inherit;
+		font-size: inherit;
+	}
+
 	.uagb-post__author,
 	.uagb-post__date,
 	.uagb-post__author {
@@ -135,7 +149,7 @@
 	}
 
 	.uagb-post__cta {
-		border: 1px solid #333333;
+		border: none;
 		display: inline-block;
 	}
 

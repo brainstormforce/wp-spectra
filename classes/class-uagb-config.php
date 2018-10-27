@@ -33,7 +33,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				self::$block_attributes = array(
 					'uagb/section'          => array(
 						'slug'       => '',
-						'title'      => __( 'Section', 'uagb' ),
+						'title'      => __( 'Section', 'ultimate-addons-for-gutenberg' ),
 						'attributes' => array(
 							'topPadding'             => '20',
 							'bottomPadding'          => '20',
@@ -62,6 +62,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'backgroundColor'        => '',
 							'backgroundOpacity'      => '0',
 							'backgroundVideoOpacity' => '50',
+							'backgroundImageColor'   => '',
 							'align'                  => 'center',
 							'borderStyle'            => 'none',
 							'borderWidth'            => '1',
@@ -71,7 +72,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/advanced-heading' => array(
 						'slug'       => '',
-						'title'      => __( 'Advanced Heading', 'uagb' ),
+						'title'      => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
 						'attributes' => array(
 							'headingTitle'    => '',
 							'headingDesc'     => '',
@@ -91,7 +92,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/info-box'         => array(
 						'slug'       => '',
-						'title'      => __( 'InfoBox', 'uagb' ),
+						'title'      => __( 'InfoBox', 'ultimate-addons-for-gutenberg' ),
 						'attributes' => array(
 							'headingAlign'        => 'center',
 							'headingColor'        => '',
@@ -108,18 +109,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'icon'                => '',
 							'iconColor'           => '#333',
 							'iconSize'            => '40',
-							'iconRotate'          => '0',
 							'iconimgPosition'     => 'above-title',
 							'block_id'            => '',
 							'iconHover'           => '',
-							'iconBgHover'         => '',
-							'iconimgBorderHover'  => '',
-							'iconimgBorder'       => '#eee',
-							'iconimgBg'           => '',
-							'iconimgBorderstyle'  => 'solid',
-							'iconimgBorderWidth'  => '1',
 							'iconimgBorderRadius' => '0',
-							'iconimgbgSize'       => '15',
 							'seperatorStyle'      => 'solid',
 							'seperatorWidth'      => '30',
 							'seperatorColor'      => '#333',
@@ -127,17 +120,17 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaLinkColor'        => '#333',
 							'ctaFontSize'         => '12',
 							'ctaLineHeight'       => '12',
-							'ctaBtnSize'          => 'sm',
 							'ctaBtnLinkColor'     => '#333',
 							'ctaBgColor'          => 'transparent',
-							'ctaBtnPadding'       => '',
+							'ctaBtnVertPadding'   => '10',
+							'ctaBtnHrPadding'     => '14',
 							'ctaBorderStyle'      => 'solid',
 							'ctaBorderColor'      => '#333',
 							'ctaBorderWidth'      => '1',
-							'ctaBorderRadius'     => '',
+							'ctaBorderRadius'     => '0',
 							'prefixSpace'         => '5',
 							'iconLeftMargin'      => '5',
-							'iconRightMargin'     => '5',
+							'iconRightMargin'     => '10',
 							'iconTopMargin'       => '5',
 							'iconBottomMargin'    => '5',
 							'imageSize'           => 'thumbnail',
@@ -147,7 +140,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/buttons'          => array(
 						'slug'       => '',
-						'title'      => __( 'Multi Buttons', 'uagb' ),
+						'title'      => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
 						'attributes' => array(
 							'block_id'  => '',
 							'align'     => 'center',
@@ -159,7 +152,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/google-map'       => array(
 						'slug'       => '',
-						'title'      => __( 'Google Map', 'uagb' ),
+						'title'      => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
 						'attributes' => array(
 							'markers'           => array(
 								array(

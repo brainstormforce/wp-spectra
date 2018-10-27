@@ -5,7 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import styling from "./styling"
-import UAGB_Block_Icons from "../uagb-controls/block-icons"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
 import "./style.scss"

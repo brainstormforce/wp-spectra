@@ -14,7 +14,7 @@ function InfoBoxPositionClasses( attributes ) {
 	var iconimgStyle_class = ""
 
 	iconimgStyle_class += "uagb-infobox"+ " "
-	iconimgStyle_class += sourceClass+" uagb-infobox-imgicon-style-"+attributes.iconimgStyle+ " "
+	iconimgStyle_class += sourceClass+ " "
 	iconimgStyle_class += "uagb-infobox-icon-"+attributes.iconimgPosition+ " "
 
 	if( attributes.iconimgPosition === "left" || attributes.iconimgPosition === "left-title"  ){

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, gutenberg free blocks, gutenberg addons, gutenberg addon, gutenberg addons, beaver builder lite, gutenberg blocks
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 4.9.6
-Stable tag: 0.0.1
+Tested up to: 4.9.8
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,13 @@ The Ultimate Addons for Gutenberg is an addon for Gutenberg. You need Gutenberg 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.0.0 =
+* New: Info Box
+* New: Section
+* New: Multi Buttons
+* New: Post Grid
+* Improvement: Advanced Heading - Compatibility to Gutenberg v.4.1.1
 
 = 0.0.1 =
 * Initial release
