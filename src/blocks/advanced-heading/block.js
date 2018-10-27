@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
 import "./style.scss"
@@ -133,7 +134,6 @@ class UAGBAdvancedHeading extends Component {
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Typography" ) }
-						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( "Tag" ) }
@@ -153,18 +153,20 @@ class UAGBAdvancedHeading extends Component {
 							value={ headFontSize }
 							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={30}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Font Size" ) }
 							value={ subHeadFontSize }
 							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={10}
 						/>
 					</PanelBody>
 					<PanelBody
@@ -174,7 +176,7 @@ class UAGBAdvancedHeading extends Component {
 						<PanelColor
 							title={ __( "Heading Color" ) }
 							colorValue={ headingColor }
-							initialOpen={ false }
+							initialOpen={ true }
 						>
 							<ColorPalette
 								value={ headingColor }
@@ -214,9 +216,10 @@ class UAGBAdvancedHeading extends Component {
 							value={ separatorHeight }
 							onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 20 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={3}
 						/>
 						<RangeControl
 							label={ __( "Separator Width" ) }
@@ -226,6 +229,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={20}
 						/>
 						<RangeControl
 							label={ __( "Heading Spacing" ) }
@@ -235,6 +239,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Separator Spacing" ) }
@@ -244,6 +249,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Spacing" ) }
@@ -253,6 +259,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 					</PanelBody>
 				</InspectorControls>
@@ -309,16 +316,14 @@ class UAGBAdvancedHeading extends Component {
  */
 registerBlockType( "uagb/advanced-heading", {
 
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Advanced Heading" ), // Block title.
-	description: __( "Add Advanced Heading block." ), // Block description.
-	icon: "editor-textcolor", // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( "UAGB - Advanced Heading" ),
+	description: __( "Add Advanced Heading block." ),
+	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
-
+	category: "uagb",
 	attributes: {
 		block_id: {
 			type: "string"
@@ -347,7 +352,7 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headingTag: {
 			type: "string",
-			default: "h1"
+			default: "h2"
 		},
 		separatorHeight: {
 			type: "number"
@@ -363,9 +368,11 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headSpace: {
 			type: "number",
+			default: 15
 		},
 		separatorSpace: {
 			type: "number",
+			default: 15
 		},
 		subHeadSpace: {
 			type: "number",
@@ -418,24 +425,7 @@ registerBlockType( "uagb/advanced-heading", {
 			},
 		],
 	},
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
 	edit: UAGBAdvancedHeading,
-
-	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
-	 *
-	 * The "save" property must be specified and must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
 	save: function( props ) {
 
 		const {

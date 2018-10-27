@@ -179,7 +179,6 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 	$wrap = array(
 		'uagb-post__items uagb-post__columns-' . $attributes['columns'],
 		'is-' . $layout,
-
 	);
 
 	$outerwrap = array(
@@ -192,12 +191,16 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 	switch ( $layout ) {
 		case 'masonry':
+			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
+			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'grid':
 			if ( $attributes['equalHeight'] ) {
 				array_push( $wrap, 'uagb-post__equal-height' );
 			}
+			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
+			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'carousel':
@@ -290,6 +293,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',
@@ -425,6 +436,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',
@@ -584,6 +603,14 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
+				),
+				'tcolumns'           => array(
+					'type'    => 'number',
+					'default' => 2,
+				),
+				'mcolumns'           => array(
+					'type'    => 'number',
+					'default' => 1,
 				),
 				'align'              => array(
 					'type'    => 'string',
@@ -817,8 +844,7 @@ function uagb_render_image( $attributes ) {
 	}
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark">
-			<?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
@@ -833,7 +859,7 @@ function uagb_render_image( $attributes ) {
  */
 function uagb_render_title( $attributes ) {
 	?>
-	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title entry-title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
+	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php the_title(); ?></a>
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
@@ -848,28 +874,18 @@ function uagb_render_title( $attributes ) {
  */
 function uagb_render_meta( $attributes ) {
 	global $post;
+	// @codingStandardsIgnoreStart
 	?>
-	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>">
-		<?php if ( $attributes['displayPostAuthor'] ) { ?>
-		<div class="uagb-post__author" style="color: rgb(119, 119, 119);">
-			<i class="dashicons-admin-users dashicons"></i>
-			<?php the_author_posts_link(); ?>
-		</div>
-		<?php } ?>
-		<?php if ( $attributes['displayPostDate'] ) { ?>
-		<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
-			<i class="dashicons-calendar dashicons"></i>
-			<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
-		</time>
-		<?php } ?>
-		<?php if ( $attributes['displayPostComment'] ) { ?>
-		<div class="uagb-post__comment">
-			<i class="dashicons-admin-comments dashicons"></i>
-			<?php comments_number(); ?>
-		</div>
-		<?php } ?>
-	</div>
+	<div class="uagb-post-grid-byline" style="<?php echo 'color: ' . $attributes['metaColor'] . '; margin-bottom:' . $attributes['metaBottomSpace'] . 'px;'; ?>"><?php if ( $attributes['displayPostAuthor'] ) {
+		?><div class="uagb-post__author" style="<?php echo 'color: ' . $attributes['metaColor'] . ';'; ?>"><i class="dashicons-admin-users dashicons"></i><?php the_author_posts_link(); ?></div><?php }
+		if ( $attributes['displayPostDate'] ) {
+?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><i class="dashicons-calendar dashicons"></i><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+		if ( $attributes['displayPostComment'] ) {
+?><div class="uagb-post__comment"><i class="dashicons-admin-comments dashicons"></i><?php comments_number();
+?></div><?php }
+		?></div>
 	<?php
+	// @codingStandardsIgnoreEnd
 }
 
 /**
@@ -890,7 +906,7 @@ function uagb_render_excerpt( $attributes ) {
 		$excerpt = null;
 	}
 	?>
-	<div class="uagb-post__excerpt" style="<?php echo $attributes['excerptColor'] . '; margin-bottom:' . $attributes['excerptBottomSpace'] . 'px;'; ?>">
+	<div class="uagb-post__excerpt" style="<?php echo 'color: ' . $attributes['excerptColor'] . '; margin-bottom:' . $attributes['excerptBottomSpace'] . 'px;'; ?>">
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
@@ -909,7 +925,7 @@ function uagb_render_button( $attributes ) {
 	}
 	?>
 	<div class="uagb-post__cta" style="<?php echo 'color: ' . $attributes['ctaColor'] . '; background: ' . $attributes['ctaBgColor']; ?>">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo esc_html__( 'Read More', 'uagb' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
 	</div>
 	<?php
 }

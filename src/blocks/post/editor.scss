@@ -13,6 +13,20 @@
 	}
 }
 
-div[data-type="uagb/post-grid"] .editor-block-list__block-edit:before {
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
+	color: transparent;
+}
 
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image img {
+	position: absolute;
+	width: auto;
+	height: auto;
+	min-width: 100%;
+	max-width: none;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	transform: translate(-50%,-50%);
+	min-height: 100%;
 }

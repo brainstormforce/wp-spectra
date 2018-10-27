@@ -138,8 +138,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/info-box':
+					$css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/buttons':
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/team':
+					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
 					break;
 
 				default:
@@ -178,19 +186,44 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
 				}
+
 				ob_start();
 				?>
-				<style type="text/css" media="all" id="uagb-style-frontend">
+				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
 				<?php
-				foreach ( $blocks as $i => $block ) {
-					if ( is_array( $block ) ) {
+			}
+		}
+
+		/**
+		 * Generates stylesheet for reusable blocks.
+		 *
+		 * @param array $blocks Blocks array.
+		 * @since 1.1.0
+		 */
+		public function get_stylesheet( $blocks ) {
+
+			foreach ( $blocks as $i => $block ) {
+
+				if ( is_array( $block ) ) {
+
+					if ( 'core/block' == $block['blockName'] ) {
+
+						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = gutenberg_parse_blocks( $content );
+
+							$this->get_stylesheet( $reusable_blocks );
+						}
+					} else {
+
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}
 				}
-				?>
-				</style>
-				<?php
 			}
 		}
 
@@ -207,12 +240,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'label'        => '#' . $i . ' Click Here',
+						'label'        => 'Click Here ' . '#' . $i,
 						'link'         => '#',
-						'target'       => '_blank',
+						'target'       => '_self',
 						'size'         => '',
 						'vPadding'     => 10,
-						'hPadding'     => 10,
+						'hPadding'     => 14,
 						'borderWidth'  => 1,
 						'borderRadius' => 2,
 						'borderStyle'  => 'solid',

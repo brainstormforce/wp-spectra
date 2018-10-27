@@ -30,9 +30,10 @@ function inlineStyles( props, isEditor ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity,
-		backgroundVideoColor,
-		backgroundVideoOpacity
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor
 	} = props.attributes
 
 	var style = {
@@ -59,25 +60,24 @@ function inlineStyles( props, isEditor ) {
 		style["margin-bottom"] =  bottomMargin + "px"
 	}
 
+	if ( borderStyle != "none" ) {
+		style["border-style"] = borderStyle
+		style["border-width"] = borderWidth + "px"
+		style["border-radius"] = borderRadius + "px"
+		style["border-color"] =  borderColor
+	}
+
 	var position = backgroundPosition.replace( "-", " " )
 
-	var section_width = width + "px"
+	var section_width = "100%"
 
 	if ( "boxed" == contentWidth ) {
 		if ( "" != width ) {
 			section_width = width + "px"
 		}
-	} else {
-		section_width = "100%"
 	}
 
-	if ( isEditor ) {
-
-		style["max-width"] = section_width
-	} else {
-
-		style["width"] = section_width
-	}
+	style["max-width"] = section_width
 
 
 	if ( "color" === backgroundType ) {
