@@ -441,11 +441,11 @@ class UAGBtestimonial extends Component {
 							value={ iconImage }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{ ! iconImage ? __( "Select Image" ) : __( "Replace image" ) }
+									{  ( iconImage.url == null && iconImage.url =='' ) ? __( "Select Image" ) : __( "Replace image" ) }
 								</Button>
 							) }
 						/>
-						{ !! iconImage &&
+						{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) &&
 							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 								{ __( "Remove Image" ) }
 							</Button>
