@@ -126,17 +126,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'video' == $bg_type ) {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity'          => 1,
 					'background-color' => $attr['backgroundVideoColor'],
 				);
 			} else if ( 'image' == $bg_type ) {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 					'background-color' => $attr['backgroundImageColor'],
 				);
 			} else {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 				);
 			}
@@ -364,7 +364,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,
-				),                          
+				),
 	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
@@ -376,13 +376,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ' .uagb-ifb-image-content > img' => array(
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
-	            ),	           
-	           
+	            ),
+
 	            ' .uagb-infobox .uagb-ifb-image-content img' => array(
 	            		'border-radius' => $attr->iconimgBorderRadius.'px',
 	                ),
-	           	
-	            
+
+
 	            // CTA style .
 	            ' .uagb-infobox-cta-link' => array(
 	                'font-size'   => $attr->ctaFontSize.'px',
