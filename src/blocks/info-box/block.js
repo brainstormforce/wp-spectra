@@ -73,7 +73,7 @@ registerBlockType( "uagb/info-box", {
 		} = props.attributes
 
 
-		const my_block_id = "uagb-"+ block_id
+		const my_block_id = "uagb-infobox-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
@@ -175,13 +175,19 @@ registerBlockType( "uagb/info-box", {
 
 		return (
 			<Fragment>
-				<div className={ ClassNamesId }>
+				<div className={ classnames(
+					className,
+					"uagb-infobox__outer-wrap"
+				) } 
+				id = { my_block_id } >
+
 					{ ( ctaType == "all") &&
 						<Fragment>
 							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
+
 				</div>
 			</Fragment>
 		)

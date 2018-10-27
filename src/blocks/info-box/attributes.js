@@ -31,19 +31,11 @@ const attributes = {
 	},
 	icon : {
 		type : "string",
-		default : "fab fa fa-calendar-alt"
+		default : "fa fa-star"
 	},
 	iconimgPosition: {
 		type: "string",
 		default: "above-title"
-	},
-	iconimgStyle: {
-		type: "string",
-		default: "normal"
-	},
-	iconRotate : {
-		type: "number",
-		default: 0,
 	},
 	iconSize : {
 		type: "number",
@@ -87,7 +79,7 @@ const attributes = {
 	headSpace: {
 		type: "number",
 		default : 10,
-	},	
+	},
 	subHeadSpace: {
 		type: "number",
 		default : 10,
@@ -96,26 +88,6 @@ const attributes = {
 		type: "number",
 		default : 10,
 	},
-	iconimgBg : {
-		type : "string",
-		default : "#eee",
-	},
-	iconimgBorder : {
-		type : "string",
-		default : "#eee",
-	},
-	iconimgBorderHover : {
-		type : "string",
-		default : ""
-	},
-	iconimgBorderstyle :{
-		type : "string",
-		default : "solid"
-	},
-	iconimgBorderWidth: {
-		type: "number",
-		default : 1
-	},
 	iconimgBorderRadius: {
 		type: "number",
 		default : 0
@@ -123,10 +95,6 @@ const attributes = {
 	source_type :{
 		type: "string",
 		default: "icon",
-	},
-	iconimgbgSize :{
-		type: "number",
-		default : 15
 	},
 	block_id :{
 		type : "string",
@@ -139,7 +107,7 @@ const attributes = {
 	ctaTarget: {
 		type: "boolean",
 		default: false,
-	},	
+	},
 	seperatorStyle: {
 		type: "string",
 		default: "solid",
@@ -175,10 +143,6 @@ const attributes = {
 	ctaFontSize :{
 		type: "number",
 		default : ""
-	},	
-	ctaBtnSize: {
-		type: "string",
-		default: "sm",
 	},
 	ctaBtnLinkColor :{
 		type: "string",
@@ -196,8 +160,13 @@ const attributes = {
 		type: "string",
 		default: "solid",
 	},
-	ctaBtnPadding :{
+	ctaBtnVertPadding :{
 		type: "number",
+		default: 10,
+	},
+	ctaBtnHrPadding :{
+		type: "number",
+		default: 14,
 	},
 	ctaBorderWidth :{
 		type: "number",
@@ -205,6 +174,7 @@ const attributes = {
 	},
 	ctaBorderRadius :{
 		type: "number",
+		default: 0,
 	},
 	prefixSpace :{
 		type: "number",
@@ -212,7 +182,7 @@ const attributes = {
 	},
 	iconLeftMargin :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	iconRightMargin :{
 		type: "number",
@@ -240,11 +210,11 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 120,
-	},		
+	},
 	stack: {
 		type: "string",
 		default: "tablet"
-	}	
+	}
 }
 
 export default attributes

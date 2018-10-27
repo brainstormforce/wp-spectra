@@ -361,44 +361,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $attr->iconSize. "px",
 					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
-					'transform'   => 'rotate('.$attr->iconRotate .'deg)',
 				),
 				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,
-				),
-				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon' => array(
-					'background' => $attr->iconimgBg,
-					'padding'    => $attr->iconimgbgSize . 'px',
-					'display'    => 'inline-block',
-					'box-sizing' => 'content-box',
-				),
-				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover' => array(
-                    'background'  => $attr->iconBgHover,
-                ),
-                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon' => array(
-                    'padding' => $attr->iconimgbgSize.'px',
-                    'background' => $attr->iconimgBg,
-                    'display' => 'inline-block',
-                    'box-sizing' => 'content-box',
-                ),
-                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover' => array(
-                    'background' => $attr->iconBgHover,
-                ),
-                ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon' => array(
-                    'padding'       => $attr->iconimgbgSize.'px',
-                    'background'    => $attr->iconimgBg,
-                    'display'       => 'inline-block',
-                    'box-sizing'    => 'content-box',
-                    'border-style'  => $attr->iconimgBorderstyle,
-                    'border-width'  => $attr->iconimgBorderWidth.'px',
-                    'border-radius' => $attr->iconimgBorderRadius.'px',
-                    'border-color'  => $attr->iconimgBorder,
-                    'box-sizing'    => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon:hover' => array(
-	                    'background'   => $attr->iconBgHover,
-	                    'border-color' => $attr->iconimgBorderHover,
-	            ),
+				),                          
 	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
@@ -410,55 +376,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ' .uagb-ifb-image-content > img' => array(
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
-	            ),
-	            ' .uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img' => array(
-	                    'display'    => 'inline-block',
-	                    'box-sizing' => 'content-box',
+	            ),	           
+	           
+	            ' .uagb-infobox .uagb-ifb-image-content img' => array(
+	            		'border-radius' => $attr->iconimgBorderRadius.'px',
 	                ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
-	                    'display'    => 'inline-block',
-	                    'box-sizing' => 'content-box',
-	                ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
-	                    'display'       => 'inline-block',
-	                    'box-sizing'    => 'content-box',
-	                    'border-style'  => $attr->iconimgBorderstyle,
-	                    'border-width'  => $attr->iconimgBorderWidth.'px',
-	                    'border-radius' => $attr->iconimgBorderRadius.'px',
-	                    'border-color'  => $attr->iconimgBorder,
-	                    'box-sizing'    => 'content-box',
-	                ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
-	                    'background'   => $attr->iconBgHover,
-	                    'border-color' => $attr->iconimgBorderHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
-	                'display'    => 'inline-block',
-	                'box-sizing' => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                'background' =>  $attr->iconBgHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
-	                'display'       => 'inline-block',
-	                'box-sizing'    => 'content-box',
-	                'border-style'  => $attr->iconimgBorderstyle,
-	                'border-width'  => $attr->iconimgBorderWidth.'px',
-	                'border-radius' => $attr->iconimgBorderRadius.'px',
-	                'border-color'  => $attr->iconimgBorder,
-	                'box-sizing'    => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
-	                'background'   => $attr->iconBgHover,
-	                'border-color' => $attr->iconimgBorderHover,
-	            ),
-	            ' .uagb-ifb-image-content .components-button svg' => array(
-	                    'width'=>  $attr->imageWidth.'px',
-	            ),
-
+	           	
+	            
 	            // CTA style .
 	            ' .uagb-infobox-cta-link' => array(
 	                'font-size'   => $attr->ctaFontSize.'px',
@@ -472,7 +396,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-color'     => $attr->ctaBorderColor,
 	                'border-radius'    => $attr->ctaBorderRadius . "px",
 	                'border-width'     => $attr->ctaBorderWidth . "px",
-	                'padding'          => $attr->ctaBtnPadding . "px",
+	                'padding-top'      => $attr->ctaBtnVertPadding . "px",
+	                'padding-bottom'   => $attr->ctaBtnVertPadding . "px",
+	                'padding-left'     => $attr->ctaBtnHrPadding . "px",
+	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
+
 	            ),
 
 	           // Prefix Style.
@@ -516,7 +444,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
 			// @codingStandardsIgnoreEnd.
-				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
+				return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
 	}
