@@ -17,7 +17,7 @@ class Button extends React.Component {
 						background: attributes.ctaBgColor
 					}}
 				>
-					<a className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel="bookmark">{ __( "Read More" ) }</a>
+					<a style={{	color: attributes.ctaColor }} className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel="bookmark">{ __( "Read More" ) }</a>
 				</div>
 			)
 

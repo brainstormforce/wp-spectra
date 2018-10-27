@@ -14,6 +14,8 @@ module.exports = function(grunt) {
 					"!node_modules/**",
 					"!.git/**",
 					"!*.sh",
+					"!eslintrc.json",
+					"!README.md",
 					"!Gruntfile.js",
 					"!package.json",
 					"!package-lock.json",
@@ -23,7 +25,8 @@ module.exports = function(grunt) {
 					"!composer.json",
 					"!composer.lock",
 					"!phpcs.xml.dist",
-					"!vendor/",
+					"!vendor/**",
+					"!src/**",
 					"!scripts/**",
 					"!config/**"
 				],
@@ -34,7 +37,6 @@ module.exports = function(grunt) {
 			main: {
 				options: {
 					archive: "ultimate-addons-for-gutenberg.zip",
-
 					mode: "zip"
 				},
 				files: [
