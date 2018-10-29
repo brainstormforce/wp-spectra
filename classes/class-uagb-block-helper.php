@@ -126,17 +126,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'video' == $bg_type ) {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity'          => 1,
 					'background-color' => $attr['backgroundVideoColor'],
 				);
 			} else if ( 'image' == $bg_type ) {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 					'background-color' => $attr['backgroundImageColor'],
 				);
 			} else {
-				$selectors[' .uagb-section__overlay'] = array(
+				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 				);
 			}
@@ -361,44 +361,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $attr->iconSize. "px",
 					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
-					'transform'   => 'rotate('.$attr->iconRotate .'deg)',
 				),
 				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,
 				),
-				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon' => array(
-					'background' => $attr->iconimgBg,
-					'padding'    => $attr->iconimgbgSize . 'px',
-					'display'    => 'inline-block',
-					'box-sizing' => 'content-box',
-				),
-				' .uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover' => array(
-                    'background'  => $attr->iconBgHover,
-                ),
-                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon' => array(
-                    'padding' => $attr->iconimgbgSize.'px',
-                    'background' => $attr->iconimgBg,
-                    'display' => 'inline-block',
-                    'box-sizing' => 'content-box',
-                ),
-                ' .uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover' => array(
-                    'background' => $attr->iconBgHover,
-                ),
-                ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon' => array(
-                    'padding'       => $attr->iconimgbgSize.'px',
-                    'background'    => $attr->iconimgBg,
-                    'display'       => 'inline-block',
-                    'box-sizing'    => 'content-box',
-                    'border-style'  => $attr->iconimgBorderstyle,
-                    'border-width'  => $attr->iconimgBorderWidth.'px',
-                    'border-radius' => $attr->iconimgBorderRadius.'px',
-                    'border-color'  => $attr->iconimgBorder,
-                    'box-sizing'    => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-icon:hover' => array(
-	                    'background'   => $attr->iconBgHover,
-	                    'border-color' => $attr->iconimgBorderHover,
-	            ),
 	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
 	                    'margin-right'  => $attr->iconRightMargin.'px',
@@ -411,53 +377,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            		'width'=> $attr->imageWidth.'px',
 	                    'max-width'=> $attr->imageWidth.'px',
 	            ),
-	            ' .uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img' => array(
-	                    'display'    => 'inline-block',
-	                    'box-sizing' => 'content-box',
+
+	            ' .uagb-infobox .uagb-ifb-image-content img' => array(
+	            		'border-radius' => $attr->iconimgBorderRadius.'px',
 	                ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
-	                    'display'    => 'inline-block',
-	                    'box-sizing' => 'content-box',
-	                ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                    'background' => $attr->iconBgHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
-	                    'display'       => 'inline-block',
-	                    'box-sizing'    => 'content-box',
-	                    'border-style'  => $attr->iconimgBorderstyle,
-	                    'border-width'  => $attr->iconimgBorderWidth.'px',
-	                    'border-radius' => $attr->iconimgBorderRadius.'px',
-	                    'border-color'  => $attr->iconimgBorder,
-	                    'box-sizing'    => 'content-box',
-	                ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
-	                    'background'   => $attr->iconBgHover,
-	                    'border-color' => $attr->iconimgBorderHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img' => array(
-	                'display'    => 'inline-block',
-	                'box-sizing' => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-square .uagb-ifb-image-content img:hover' => array(
-	                'background' =>  $attr->iconBgHover,
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img' => array(
-	                'display'       => 'inline-block',
-	                'box-sizing'    => 'content-box',
-	                'border-style'  => $attr->iconimgBorderstyle,
-	                'border-width'  => $attr->iconimgBorderWidth.'px',
-	                'border-radius' => $attr->iconimgBorderRadius.'px',
-	                'border-color'  => $attr->iconimgBorder,
-	                'box-sizing'    => 'content-box',
-	            ),
-	            ' .uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover' => array(
-	                'background'   => $attr->iconBgHover,
-	                'border-color' => $attr->iconimgBorderHover,
-	            ),
-	            ' .uagb-ifb-image-content .components-button svg' => array(
-	                    'width'=>  $attr->imageWidth.'px',
-	            ),
+
 
 	            // CTA style .
 	            ' .uagb-infobox-cta-link' => array(
@@ -472,7 +396,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'border-color'     => $attr->ctaBorderColor,
 	                'border-radius'    => $attr->ctaBorderRadius . "px",
 	                'border-width'     => $attr->ctaBorderWidth . "px",
-	                'padding'          => $attr->ctaBtnPadding . "px",
+	                'padding-top'      => $attr->ctaBtnVertPadding . "px",
+	                'padding-bottom'   => $attr->ctaBtnVertPadding . "px",
+	                'padding-left'     => $attr->ctaBtnHrPadding . "px",
+	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
+
 	            ),
 
 	           // Prefix Style.
@@ -516,9 +444,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
 			// @codingStandardsIgnoreEnd.
-				return UAGB_Helper::generate_css( $selectors, '.uagb-' . $id );
+			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
-
 
 		/**
 		 * Get Testimonial CSS
@@ -528,6 +455,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
+
 		public static function get_testimonial_css( $attr, $id ) {
 
 			// @codingStandardsIgnoreStart.
@@ -589,5 +517,99 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		}
 
+		/**
+		 * Get Team Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_team_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSize'] . "px",
+					"color" => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSize'] . "px",
+					"color" => $attr['prefixColor'],
+				),
+				" .uagb-team__desc-wrap" => array(
+					"margin-top" => $attr['prefixSpace'] . "px",
+				),
+				" .uagb-team__social-icon a" => array(
+					"color" => $attr['socialColor'],
+					"font-size" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
+				),
+				" .uagb-team__social-icon:hover a" => array(
+					"color" => $attr['socialHoverColor'],
+				),
+				".uagb-team__image-position-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
+					"margin-right" => ( $attr['socialSpace'] / 2 ) . "px",
+					"margin-left" => ( $attr['socialSpace'] / 2 ) . "px",
+				),
+				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				" .uagb-team__imag-wrap" => array(
+					"margin-top" => $attr['imgTopMargin'] . "px",
+					"margin-bottom" => $attr['imgBottomMargin'] . "px",
+					"margin-left" => $attr['imgLeftMargin'] . "px",
+					"margin-right" => $attr['imgRightMargin'] . "px",
+					"width" => $attr['imgWidth'] . "px"
+				),
+			);
+
+			if( 'above' == $attr['imgPosition'] ) {
+				if ( 'center' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'left' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'right' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+				}
+			}
+
+			if ( "above" != $attr['imgPosition'] ) {
+				if ( "middle" == $attr['imgAlign'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
+				}
+			}
+
+			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSize'] . "px",
+				"color" => $attr['titleColor'],
+				"margin-bottom" => $attr['titleSpace'] . "px",
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+		}
 	}
 }

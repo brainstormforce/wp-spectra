@@ -16,6 +16,19 @@
 
 .gutenberg-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
   color: transparent; }
+
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  max-width: none;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  min-height: 100%; }
 /**
  * #.# Common SCSS
  *
@@ -80,30 +93,23 @@
 a.uagb-infobox-cta-link {
   pointer-events: none; }
 
-.uagb-infobox-icon-right .uagb-ifb-left-right-wrap button.components-button,
-.uagb-infobox-icon-left .uagb-ifb-left-right-wrap button.components-button {
-  -js-display: flex;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-negative: 0;
-  flex-shrink: 0; }
-
-.uagb-infobox__content-wrap .components-button,
-.uagb-infobox__content-wrap .components-button:hover,
-.uagb-infobox__content-wrap .components-button:focus:enabled {
-  background-color: transparent;
-  color: #333;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: none;
-  outline: none;
-  outline-offset: -2px; }
-
 .uagb-infobox__content-wrap.uagb-infobox-icon-above-title {
   text-align: center; }
 
 .gutenberg-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap {
   color: inherit; }
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix {
+  margin-bottom: 5px; }
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title {
+  margin-bottom: 10px; }
+
+.gutenberg-editor-page #wpwrap .uagb-ifb-separator-parent {
+  margin-bottom: 10px; }
+
+.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc {
+  margin-bottom: 10px; }
 /**
  * #.# Common SCSS
  *
@@ -126,3 +132,34 @@ a.uagb-infobox-cta-link {
   border: none;
   outline: none;
   outline-offset: -2px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0; }
+
+.gutenberg-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
+  color: #333; }
+
+.wp-block-uagb-team .components-button:focus:enabled,
+.wp-block-uagb-team .components-button {
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce {
+  margin-bottom: 10px; }
