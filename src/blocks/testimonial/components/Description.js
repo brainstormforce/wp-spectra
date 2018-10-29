@@ -12,7 +12,6 @@ class Description extends React.Component {
 
 	render() {
 
-		//const { attributes, setAttributes } = this.props;
 		const {	
 			attributes, 
 			setAttributes , 

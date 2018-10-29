@@ -99,8 +99,6 @@ registerBlockType( "uagb/testimonial", {
 			</Fragment>
 		);
 
-		//return null;
-
 		return (
 			<Fragment>
 				<div className={ className }
