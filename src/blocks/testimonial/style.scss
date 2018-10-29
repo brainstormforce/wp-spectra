@@ -4,65 +4,52 @@
  * CSS for both Frontend+Backend.
  */
 
-  .uagb-icon-wrap .uagb-icon {
-      display: inline-block;
-  }
-
-  .uagb-testimonial-imgicon-style-circle .uagb-testinomial-image img {
-      border-radius: 100%;
-      -webkit-border-radius: 100%;
-  }
-
-  .uagb-testimonial-imgicon-style-square .uagb-testinomial-image img {
-      border-radius: 0%;
-      -webkit-border-radius: 0%;
-  }
-
-   .uagb-testinomial-image img,
-   .uagb-testimonial-imgicon-style-circle .components-button svg{
-    display : inline-block;
-    box-sizing : content-box;
-  }
-
-  .uagb-testinomial-author-name,
-  .uagb-testinomial-designation{
+.uagb-icon-wrap .uagb-icon {
     display: inline-block;
-  }
-
-  .uagb-testinomial-content{
+}
+.uagb-testimonial-imgicon-style-circle .uagb-testinomial-image img {
+    border-radius: 100%;
+    -webkit-border-radius: 100%;
+}
+.uagb-testimonial-imgicon-style-square .uagb-testinomial-image img {
+    border-radius: 0%;
+    -webkit-border-radius: 0%;
+}
+.uagb-testinomial-image img {
+    display: inline-block;
+    box-sizing: content-box;
+}
+.uagb-testinomial-author-name,
+.uagb-testinomial-designation {
+    display: inline-block;
+}
+.uagb-testinomial-content {
     overflow: hidden;
     text-align: center;
-    word-break: break-word;  
-  }
-
-  .uagb-testimonial-meta-inner {
-      display: inline-block;
-  }
-
-  .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet,
-  .uagb-testimonial-image-position-aside .uagb-testimonial-details {
-      display: table-cell;
-      vertical-align: middle;
-  }
-
-  .uagb-testimonial-meta {
-      width: 100%;
-      line-height: 1;
-  }
-
-  .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet {
-      padding-right: 10px;
-  }
-
-  .uagb-testinomial-author-name,
-  .uagb-testinomial-designation{
+    word-break: break-word;
+}
+.uagb-testimonial-meta-inner {
+    display: inline-block;
+}
+.uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet,
+.uagb-testimonial-image-position-aside .uagb-testimonial-details {
+    display: table-cell;
+    vertical-align: middle;
+}
+.uagb-testimonial-meta {
+    width: 100%;
+    line-height: 1;
+}
+.uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet {
+    padding-right: 10px;
+}
+.uagb-testinomial-author-name, .uagb-testinomial-designation {
     display: block;
-  }
-
-  @media(max-width:768px){
-    .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet,
+}
+@media(max-width:768px) {
+    .uagb-testimonial-image-position-aside .uagb-testimonial-image-contnet, 
     .uagb-testimonial-image-position-aside .uagb-testimonial-details {
         display: block;
         vertical-align: middle;
     }
-  }
+}

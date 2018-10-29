@@ -15,7 +15,6 @@ import TestimonialStyle from "./inline-styles";
 import TestimonialImage from "./components/TestimonialImage";
 import edit from "./edit";
 import attributes from "./attributes";
-import "./editor.scss"
 import "./style.scss"
 const { __ } = wp.i18n
 
