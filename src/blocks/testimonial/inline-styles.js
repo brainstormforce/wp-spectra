@@ -18,14 +18,7 @@ function TestimonialStyle( props ) {
             descSpace,
             block_id,
             iconHover,
-            iconBgHover,
-            iconimgBorderHover,
-            iconimgBorder,
             iconimgBg,
-            iconimgBorderstyle,
-            iconimgBorderWidth,
-            iconimgBorderRadius, 
-            iconimgbgSize,  
             nameSpace,
             imgLeftPadding,
             imgRightPadding,
@@ -54,34 +47,7 @@ function TestimonialStyle( props ) {
             selectors['.uagb-testinomial-image img'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
-                };           
-
-            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img'] = {                    
-                        'border-style' : iconimgBorderstyle,
-                        'border-width' : iconimgBorderWidth+'px',
-                        'border-radius' : iconimgBorderRadius+'px',
-                        'border-color' : iconimgBorder,
-                    };
-
-            selectors['.uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img:hover'] = {
-                    'border-color' : iconimgBorderHover,                                     
-                };
-
-            selectors['.uagb-testimonial-image-contnet .components-button svg'] = {
-                    'width': imageWidth+'px',
-                    'max-width': imageWidth+'px',
                 }; 
-                    
-            selectors['.uagb-testimonial-imgicon-style-custom .components-button svg'] = {                    
-                        'border-style' : iconimgBorderstyle,
-                        'border-width' : iconimgBorderWidth+'px',
-                        'border-radius' : iconimgBorderRadius+'px',
-                        'border-color' : iconimgBorder,
-                        'padding-left' : imgLeftPadding+'px',
-                        'padding-right' : imgRightPadding+'px',                                
-                        'padding-top' : imgTopPadding+'px',
-                        'padding-bottom' : imgBottomPadding+'px',                 
-                    };          
             
             selectors['.uagb-testinomial-content'] = {                    
                     'text-align' : headingAlign,                   

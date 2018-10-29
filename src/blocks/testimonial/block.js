@@ -61,7 +61,7 @@ registerBlockType( "uagb/testimonial", {
 		__( "testimonial" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
+	category: "uagb",
 
 	attributes,
 	edit,

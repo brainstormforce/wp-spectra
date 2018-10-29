@@ -455,10 +455,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-
 		public static function get_testimonial_css( $attr, $id ) {
 
 			// @codingStandardsIgnoreStart.
+			
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
@@ -473,16 +473,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-testinomial-image img'   => array(
 					'width'     => $attr->imageWidth . 'px',
 					'max-width' => $attr->imageWidth . 'px',
-				),
-				' .uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img' => array(
-					'border-style'  => $attr->iconimgBorderstyle,
-					'border-color'  => $attr->iconimgBorder,
-					'border-width'  => $attr->iconimgBorderWidth . 'px',
-					'border-radius' => $attr->iconimgBorderRadius . 'px',
-				),
-				' .uagb-testimonial-imgicon-style-custom .uagb-testinomial-image img:hover' => array(
-					'border-color' => $attr->iconimgBorderHover,
-				),
+				),				
 				' .uagb-testinomial-content'     => array(
 					'text-align' => $attr->headingAlign,
 				),
