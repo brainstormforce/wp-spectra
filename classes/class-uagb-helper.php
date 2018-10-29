@@ -240,9 +240,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'label'        => 'Click Here ' . '#' . $i,
-						'link'         => '#',
-						'target'       => '_self',
 						'size'         => '',
 						'vPadding'     => 10,
 						'hPadding'     => 14,
