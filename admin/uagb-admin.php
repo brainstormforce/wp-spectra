@@ -5,7 +5,7 @@
  * @package UAGB
  */
 
-// $uagb_icon = false;
+$uagb_icon = false;
 ?>
 <div class="uagb-menu-page-wrapper">
 	<div id="uagb-menu-page">
