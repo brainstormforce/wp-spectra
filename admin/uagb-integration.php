@@ -44,7 +44,7 @@ $languages = UAGB_Helper::get_google_map_languages();
 									<div class="form-wrap">
 										<div class="form-field">
 											<label for="uagb-integration-google-language"><?php _e( 'Google Map Localization Language', 'ultimate-addons-for-gutenberg' ); ?></label>
-											<p class="install-help uagb-p"><strong><?php _e( 'Note:', 'uagb' ); ?></strong>  <?php _e( 'This setting sets localization language to google map. The language affects the names of controls, copyright notices, driving directions, and control labels.', 'ultimate-addons-for-gutenberg' ); ?></p>
+											<p class="install-help uagb-p"><strong><?php _e( 'Note:', 'ultimate-addons-for-gutenberg' ); ?></strong>  <?php _e( 'This setting sets localization language to google map. The language affects the names of controls, copyright notices, driving directions, and control labels.', 'ultimate-addons-for-gutenberg' ); ?></p>
 											<p class="uagb-p">
 											<?php
 												$a_tag_open  = '<a href="' . esc_url( 'http://uagb.sharkz.in/docs/docs/how-to-display-uagbs-google-maps-widget-in-your-local-language/?utm_source=uagb-pro-dashboard&utm_medium=uagb-menu-page&utm_campaign=uagb-pro-plugin' ) . '" target="_blank" rel="noopener">';

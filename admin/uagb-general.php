@@ -20,12 +20,12 @@ $support_url    = $support_data['support_url'];
 	<div id="post-body" class="columns-2">
 		<div id="post-body-content">
 			<!-- All WordPress Notices below header -->
-			<h1 class="screen-reader-text"> <?php _e( 'General', 'uagb' ); ?> </h1>
+			<h1 class="screen-reader-text"> <?php _e( 'General', 'ultimate-addons-for-gutenberg' ); ?> </h1>
 				<div class="widgets postbox">
-					<h2 class="hndle uagb-flex uagb-widgets-heading"><span><?php esc_html_e( 'Blocks', 'uagb' ); ?></span>
+					<h2 class="hndle uagb-flex uagb-widgets-heading"><span><?php esc_html_e( 'Blocks', 'ultimate-addons-for-gutenberg' ); ?></span>
 						<div class="uagb-bulk-actions-wrap">
-							<a class="bulk-action uagb-activate-all button"> <?php esc_html_e( 'Activate All', 'uagb' ); ?> </a>
-							<a class="bulk-action uagb-deactivate-all button"> <?php esc_html_e( 'Deactivate All', 'uagb' ); ?> </a>
+							<a class="bulk-action uagb-activate-all button"> <?php esc_html_e( 'Activate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
+							<a class="bulk-action uagb-deactivate-all button"> <?php esc_html_e( 'Deactivate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
 						</div>
 					</h2>
 						<div class="uagb-list-section">
@@ -44,14 +44,14 @@ $support_url    = $support_data['support_url'];
 										$class = 'deactivate';
 										$link  = array(
 											'link_class' => 'uagb-activate-widget',
-											'link_text'  => __( 'Activate', 'uagb' ),
+											'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
 										);
 
 										if ( $info['is_activate'] ) {
 											$class = 'activate';
 											$link  = array(
 												'link_class' => 'uagb-deactivate-widget',
-												'link_text'  => __( 'Deactivate', 'uagb' ),
+												'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
 											);
 										}
 
@@ -87,33 +87,33 @@ $support_url    = $support_data['support_url'];
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
-						<span><?php esc_html_e( 'Knowledge Base', 'uagb' ); ?></span>
+						<span><?php esc_html_e( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ); ?></span>
 					</h2>
 					<div class="inside">
 						<p>
-							<?php esc_html_e( 'Not sure how something works? Take a peek at the knowledge base and learn.', 'uagb' ); ?>
+							<?php esc_html_e( 'Not sure how something works? Take a peek at the knowledge base and learn.', 'ultimate-addons-for-gutenberg' ); ?>
 						</p>
-						<a href='<?php echo esc_url( $kb_url ); ?> ' target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'uagb' ); ?></a>
+						<a href='<?php echo esc_url( $kb_url ); ?> ' target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'ultimate-addons-for-gutenberg' ); ?></a>
 					</div>
 				</div>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-sos"></span>
-						<span><?php esc_html_e( 'Five Star Support', 'uagb' ); ?></span>
+						<span><?php esc_html_e( 'Five Star Support', 'ultimate-addons-for-gutenberg' ); ?></span>
 					</h2>
 					<div class="inside">
 						<p>
 							<?php
 							printf(
 								/* translators: %1$s: uagb name. */
-								esc_html__( 'Got a question? Get in touch with %1$s developers. We\'re happy to help!', 'uagb' ),
+								esc_html__( 'Got a question? Get in touch with %1$s developers. We\'re happy to help!', 'ultimate-addons-for-gutenberg' ),
 								UAGB_PLUGIN_NAME
 							);
 							?>
 						</p>
 						<?php
 							$uagb_support_link      = apply_filters( 'uagb_support_link', $support_url );
-							$uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a Ticket »', 'uagb' ) );
+							$uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a Ticket »', 'ultimate-addons-for-gutenberg' ) );
 
 							printf(
 								/* translators: %1$s: uagb support link. */
