@@ -22,53 +22,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			self::initialize_ajax();
 			self::initialise_plugin();
 			add_action( 'after_setup_theme', __CLASS__ . '::init_hooks' );
-			add_action( 'admin_init', __CLASS__ . '::load_admin', 0 );
-		}
-
-		/**
-		 * Defines all constants
-		 *
-		 * @since 0.0.1
-		 */
-		public static function load_admin() {
-			add_action( 'wp_enqueue_styles', __CLASS__ . '::uael_admin_enqueue_scripts' );
-		}
-
-		/**
-		 * Enqueue admin scripts
-		 *
-		 * @since 0.0.1
-		 * @param string $hook Current page hook.
-		 * @access public
-		 */
-		public static function uael_admin_enqueue_scripts( $hook ) {
-
-			// Register styles.
-			wp_register_style(
-				'uael-style',
-				UAGB_URL . 'editor-assets/css/style.css',
-				[],
-				UAGB_VER
-			);
-
-			wp_enqueue_style( 'uael-style' );
-
-			$branding = UAGB_Helper::get_white_labels();
-
-			if ( isset( $branding['plugin']['short_name'] ) && '' != $branding['plugin']['short_name'] ) {
-				$short_name  = $branding['plugin']['short_name'];
-				$custom_css  = '.elementor-element [class*="uael-icon-"]:after {';
-				$custom_css .= 'content: "' . $short_name . '"; }';
-				wp_add_inline_style( 'uael-style', $custom_css );
-			}
-
-			$uael_localize = apply_filters(
-				'uael_admin_js_localize',
-				array(
-					'ajax_url' => admin_url( 'admin-ajax.php' ),
-				)
-			);
-			wp_localize_script( 'jquery', 'uael_admin', $uael_localize );
 		}
 
 		/**
@@ -87,10 +40,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'network_admin_menu', __CLASS__ . '::menu' );
 			add_action( 'admin_menu', __CLASS__ . '::menu' );
 
-			// Filter to White labled options.
-			add_filter( 'all_plugins', __CLASS__ . '::plugins_page' );
-
-			add_action( 'uael_render_admin_content', __CLASS__ . '::render_content' );
+			add_action( 'uagb_render_admin_content', __CLASS__ . '::render_content' );
 
 			// Enqueue admin scripts.
 			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG == $_REQUEST['page'] ) {
@@ -109,28 +59,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function initialise_plugin() {
 
-			$branding_settings = UAGB_Helper::get_white_labels();
-
-			if (
-				isset( $branding_settings['plugin']['name'] ) &&
-				'' != $branding_settings['plugin']['name']
-			) {
-				$name = $branding_settings['plugin']['name'];
-			} else {
-				$name = 'Ultimate Addons for Elementor';
-			}
-
-			if (
-				isset( $branding_settings['plugin']['short_name'] ) &&
-				'' != $branding_settings['plugin']['short_name']
-			) {
-				$short_name = $branding_settings['plugin']['short_name'];
-			} else {
-				$short_name = 'UAGB';
-			}
-
-			define( 'UAGB_PLUGIN_NAME', $name );
-			define( 'UAGB_PLUGIN_SHORT_NAME', $short_name );
+			define( 'UAGB_PLUGIN_NAME', 'Ultimate Addons for Gutenberg' );
+			define( 'UAGB_PLUGIN_SHORT_NAME', 'UAGB' );
 		}
 
 		/**
@@ -167,11 +97,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$action = str_replace( '_', '-', $action );
 
 			// Enable header icon filter below.
-			$uagb_icon                 = apply_filters( 'uael_header_top_icon', true );
-			$uagb_visit_site_url       = apply_filters( 'uael_site_url', 'https://uaelementor.com' );
+			$uagb_icon                 = apply_filters( 'uagb_header_top_icon', true );
+			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'http://uagb.sharkz.in/' );
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
-			include_once UAGB_DIR . 'includes/admin/uagb-admin.php';
+			include_once UAGB_DIR . 'admin/uagb-admin.php';
 		}
 
 		/**
@@ -188,7 +118,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
-			include_once UAGB_DIR . 'includes/admin/uael-' . $action . '.php';
+			include_once UAGB_DIR . 'admin/uagb-' . $action . '.php';
 		}
 
 		/**
@@ -198,15 +128,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function save_integration_option() {
 
-			if ( isset( $_POST['uael-integration-nonce'] ) && wp_verify_nonce( $_POST['uael-integration-nonce'], 'uael-integration' ) ) {
+			if ( isset( $_POST['uagb-integration-nonce'] ) && wp_verify_nonce( $_POST['uagb-integration-nonce'], 'uagb-integration' ) ) {
 
 				$url            = $_SERVER['REQUEST_URI'];
 				$input_settings = array();
 				$new_settings   = array();
 
-				if ( isset( $_POST['uael_integration'] ) ) {
+				if ( isset( $_POST['uagb_integration'] ) ) {
 
-					$input_settings = $_POST['uael_integration'];
+					$input_settings = $_POST['uagb_integration'];
 
 					// Loop through the input and sanitize each of the values.
 					foreach ( $input_settings as $key => $val ) {
@@ -221,7 +151,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					}
 				}
 
-				UAGB_Helper::update_admin_settings_option( '_uael_integration', $new_settings, true );
+				UAGB_Helper::update_admin_settings_option( '_uagb_integration', $new_settings, true );
 
 				$query = array(
 					'message' => 'saved',
@@ -235,113 +165,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		}
 
 		/**
-		 * Save White Label options.
-		 *
-		 * @since 0.0.1
-		 */
-		static public function save_branding_option() {
-
-			if ( isset( $_POST['uael-white-label-nonce'] ) && wp_verify_nonce( $_POST['uael-white-label-nonce'], 'white-label' ) ) {
-
-				$url             = $_SERVER['REQUEST_URI'];
-				$stored_settings = UAGB_Helper::get_white_labels();
-				$input_settings  = array();
-				$new_settings    = array();
-
-				if ( isset( $_POST['uael_white_label'] ) ) {
-
-					$input_settings = $_POST['uael_white_label'];
-
-					// Loop through the input and sanitize each of the values.
-					foreach ( $input_settings as $key => $val ) {
-
-						if ( is_array( $val ) ) {
-							foreach ( $val as $k => $v ) {
-								$new_settings[ $key ][ $k ] = ( isset( $val[ $k ] ) ) ? sanitize_text_field( $v ) : '';
-							}
-						} else {
-							$new_settings[ $key ] = ( isset( $input_settings[ $key ] ) ) ? sanitize_text_field( $val ) : '';
-						}
-					}
-				}
-
-				if ( ! isset( $new_settings['agency']['hide_branding'] ) ) {
-					$new_settings['agency']['hide_branding'] = false;
-				} else {
-					$url = str_replace( 'branding', 'general', $url );
-				}
-
-				$checkbox_var = array(
-					'replace_logo',
-					'enable_knowledgebase',
-					'enable_support',
-					'enable_beta_box',
-					'internal_help_links',
-				);
-
-				foreach ( $checkbox_var as $key => $value ) {
-					if ( ! isset( $new_settings[ $value ] ) ) {
-						$new_settings[ $value ] = 'disable';
-					}
-				}
-
-				$new_settings = wp_parse_args( $new_settings, $stored_settings );
-
-				UAGB_Helper::update_admin_settings_option( '_uael_white_label', $new_settings, true );
-
-				$query = array(
-					'message' => 'saved',
-				);
-
-				$redirect_to = add_query_arg( $query, $url );
-
-				wp_redirect( $redirect_to );
-				exit;
-			}
-		}
-
-		/**
-		 * Branding addon on the plugins page.
-		 *
-		 * @since 0.0.1
-		 * @param array $plugins An array data for each plugin.
-		 * @return array
-		 */
-		static public function plugins_page( $plugins ) {
-
-			$branding = UAGB_Helper::get_white_labels();
-			$basename = plugin_basename( UAGB_DIR . 'ultimate-elementor.php' );
-
-			if ( isset( $plugins[ $basename ] ) && is_array( $branding ) ) {
-
-				$plugin_name = ( isset( $branding['plugin']['name'] ) && '' != $branding['plugin']['name'] ) ? $branding['plugin']['name'] : '';
-				$plugin_desc = ( isset( $branding['plugin']['description'] ) && '' != $branding['plugin']['description'] ) ? $branding['plugin']['description'] : '';
-				$author_name = ( isset( $branding['agency']['author'] ) && '' != $branding['agency']['author'] ) ? $branding['agency']['author'] : '';
-				$author_url  = ( isset( $branding['agency']['author_url'] ) && '' != $branding['agency']['author_url'] ) ? $branding['agency']['author_url'] : '';
-
-				if ( '' != $plugin_name ) {
-					$plugins[ $basename ]['Name']  = $plugin_name;
-					$plugins[ $basename ]['Title'] = $plugin_name;
-				}
-
-				if ( '' != $plugin_desc ) {
-					$plugins[ $basename ]['Description'] = $plugin_desc;
-				}
-
-				if ( '' != $author_name ) {
-					$plugins[ $basename ]['Author']     = $author_name;
-					$plugins[ $basename ]['AuthorName'] = $author_name;
-				}
-
-				if ( '' != $author_url ) {
-					$plugins[ $basename ]['AuthorURI'] = $author_url;
-					$plugins[ $basename ]['PluginURI'] = $author_url;
-				}
-			}
-			return $plugins;
-		}
-
-		/**
 		 * Enqueues the needed CSS/JS for the builder's admin settings page.
 		 *
 		 * @since 1.0
@@ -349,19 +172,19 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		static public function styles_scripts() {
 
 			// Styles.
-			wp_enqueue_style( 'uael-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.css', array(), UAGB_VER );
+			wp_enqueue_style( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.css', array(), UAGB_VER );
 			// Script.
-			wp_enqueue_script( 'uael-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER );
+			wp_enqueue_script( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER );
 
 			$localize = array(
-				'ajax_nonce'   => wp_create_nonce( 'uael-widget-nonce' ),
-				'activate'     => __( 'Activate', 'uael' ),
-				'deactivate'   => __( 'Deactivate', 'uael' ),
-				'enable_beta'  => __( 'Enable Beta Updates', 'uael' ),
-				'disable_beta' => __( 'Disable Beta Updates', 'uael' ),
+				'ajax_nonce'   => wp_create_nonce( 'uagb-block-nonce' ),
+				'activate'     => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+				'deactivate'   => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
+				'enable_beta'  => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+				'disable_beta' => __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' ),
 			);
 
-			wp_localize_script( 'uael-admin-settings', 'uael', apply_filters( 'uael_js_localize', $localize ) );
+			wp_localize_script( 'uagb-admin-settings', 'uagb', apply_filters( 'uagb_js_localize', $localize ) );
 		}
 
 		/**
@@ -375,10 +198,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			self::save_integration_option();
-			self::save_branding_option();
 
 			// Let extensions hook into saving.
-			do_action( 'uael_admin_settings_save' );
+			do_action( 'uagb_admin_settings_save' );
 		}
 
 		/**
@@ -386,13 +208,13 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function initialize_ajax() {
 			// Ajax requests.
-			add_action( 'wp_ajax_uael_activate_widget', __CLASS__ . '::activate_widget' );
-			add_action( 'wp_ajax_uael_deactivate_widget', __CLASS__ . '::deactivate_widget' );
+			add_action( 'wp_ajax_uagb_activate_widget', __CLASS__ . '::activate_widget' );
+			add_action( 'wp_ajax_uagb_deactivate_widget', __CLASS__ . '::deactivate_widget' );
 
-			add_action( 'wp_ajax_uael_bulk_activate_widgets', __CLASS__ . '::bulk_activate_widgets' );
-			add_action( 'wp_ajax_uael_bulk_deactivate_widgets', __CLASS__ . '::bulk_deactivate_widgets' );
+			add_action( 'wp_ajax_uagb_bulk_activate_widgets', __CLASS__ . '::bulk_activate_widgets' );
+			add_action( 'wp_ajax_uagb_bulk_deactivate_widgets', __CLASS__ . '::bulk_deactivate_widgets' );
 
-			add_action( 'wp_ajax_uael_allow_beta_updates', __CLASS__ . '::allow_beta_updates' );
+			add_action( 'wp_ajax_uagb_allow_beta_updates', __CLASS__ . '::allow_beta_updates' );
 		}
 
 		/**
@@ -400,17 +222,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function activate_widget() {
 
-			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
-			$module_id             = sanitize_text_field( $_POST['module_id'] );
-			$widgets               = UAGB_Helper::get_admin_settings_option( '_uael_widgets', array() );
-			$widgets[ $module_id ] = $module_id;
-			$widgets               = array_map( 'esc_attr', $widgets );
+			$block_id            = sanitize_text_field( $_POST['block_id'] );
+			$blocks              = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+			$blocks[ $block_id ] = $block_id;
+			$blocks              = array_map( 'esc_attr', $blocks );
 
-			// Update widgets.
-			UAGB_Helper::update_admin_settings_option( '_uael_widgets', $widgets );
+			// Update blocks.
+			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 
-			echo $module_id;
+			echo $block_id;
 
 			die();
 		}
@@ -420,17 +242,17 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function deactivate_widget() {
 
-			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
-			$module_id             = sanitize_text_field( $_POST['module_id'] );
-			$widgets               = UAGB_Helper::get_admin_settings_option( '_uael_widgets', array() );
-			$widgets[ $module_id ] = 'disabled';
-			$widgets               = array_map( 'esc_attr', $widgets );
+			$block_id            = sanitize_text_field( $_POST['block_id'] );
+			$blocks              = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+			$blocks[ $block_id ] = 'disabled';
+			$blocks              = array_map( 'esc_attr', $blocks );
 
-			// Update widgets.
-			UAGB_Helper::update_admin_settings_option( '_uael_widgets', $widgets );
+			// Update blocks.
+			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 
-			echo $module_id;
+			echo $block_id;
 
 			die();
 		}
@@ -440,22 +262,23 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function bulk_activate_widgets() {
 
-			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			// Get all widgets.
-			$all_widgets = UAGB_Helper::get_widget_list();
-			$new_widgets = array();
+			$all_blocks = UAGB_Helper::$block_list;
+			$new_blocks = array();
 
 			// Set all extension to enabled.
-			foreach ( $all_widgets  as $slug => $value ) {
-				$new_widgets[ $slug ] = $slug;
+			foreach ( $all_blocks  as $slug => $value ) {
+				$_slug                = str_replace( 'uagb/', '', $slug );
+				$new_blocks[ $_slug ] = $_slug;
 			}
 
 			// Escape attrs.
-			$new_widgets = array_map( 'esc_attr', $new_widgets );
+			$new_blocks = array_map( 'esc_attr', $new_blocks );
 
 			// Update new_extensions.
-			UAGB_Helper::update_admin_settings_option( '_uael_widgets', $new_widgets );
+			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
 
 			echo 'success';
 
@@ -467,22 +290,23 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function bulk_deactivate_widgets() {
 
-			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			// Get all extensions.
-			$old_widgets = UAGB_Helper::get_widget_list();
-			$new_widgets = array();
+			$old_blocks = UAGB_Helper::$block_list;
+			$new_blocks = array();
 
 			// Set all extension to enabled.
-			foreach ( $old_widgets  as $slug => $value ) {
-				$new_widgets[ $slug ] = 'disabled';
+			foreach ( $old_blocks  as $slug => $value ) {
+				$_slug                = str_replace( 'uagb/', '', $slug );
+				$new_blocks[ $_slug ] = 'disabled';
 			}
 
 			// Escape attrs.
-			$new_widgets = array_map( 'esc_attr', $new_widgets );
+			$new_blocks = array_map( 'esc_attr', $new_blocks );
 
 			// Update new_extensions.
-			UAGB_Helper::update_admin_settings_option( '_uael_widgets', $new_widgets );
+			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
 
 			echo 'success';
 
@@ -494,12 +318,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function allow_beta_updates() {
 
-			check_ajax_referer( 'uael-widget-nonce', 'nonce' );
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
 			$beta_update = sanitize_text_field( $_POST['allow_beta'] );
 
 			// Update new_extensions.
-			UAGB_Helper::update_admin_settings_option( '_uael_beta', $beta_update );
+			UAGB_Helper::update_admin_settings_option( '_uagb_beta', $beta_update );
 
 			echo 'success';
 

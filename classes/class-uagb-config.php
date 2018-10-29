@@ -34,6 +34,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/section'          => array(
 						'slug'       => '',
 						'title'      => __( 'Section', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
 						'attributes' => array(
 							'topPadding'             => '20',
 							'bottomPadding'          => '20',
@@ -73,6 +74,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/advanced-heading' => array(
 						'slug'       => '',
 						'title'      => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
 						'attributes' => array(
 							'headingAlign'    => 'center',
 							'headingColor'    => '',
@@ -90,6 +92,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/info-box'         => array(
 						'slug'       => '',
 						'title'      => __( 'InfoBox', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
 						'attributes' => array(
 							'headingAlign'        => 'center',
 							'headingColor'        => '',
@@ -138,6 +141,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/buttons'          => array(
 						'slug'       => '',
 						'title'      => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
 						'attributes' => array(
 							'block_id'  => '',
 							'align'     => 'center',
@@ -148,9 +152,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/google-map'       => array(
-						'slug'       => '',
-						'title'      => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
-						'attributes' => array(
+						'slug'         => '',
+						'title'        => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
+						'default'      => true,
+						'setting_url'  => admin_url( 'options-general.php?page=' . UAGB_SLUG . '&action=integration' ),
+						'setting_text' => __( 'Settings', 'ultimate-addons-for-gutenberg' ),
+						'attributes'   => array(
 							'markers'           => array(
 								array(
 									'lat'         => '51.503333',
@@ -179,6 +186,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/team'             => array(
 						'slug'       => '',
 						'title'      => __( 'Team', 'uagb' ),
+						'default'    => true,
 						'attributes' => array(
 							'block_id'         => '',
 							'align'            => 'center',
