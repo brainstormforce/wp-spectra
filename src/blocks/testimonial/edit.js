@@ -7,6 +7,8 @@ import Description from "./components/Description";
 import PositionClasses from "./classes";
 import TestimonialStyle from "./inline-styles";
 import TestimonialImage from "./components/TestimonialImage";
+import times from "lodash/times"
+import Slider from "react-slick"
 
 const { __ } = wp.i18n
 
@@ -132,6 +134,8 @@ class UAGBtestimonial extends Component {
 
 		// Setup the attributes.
 		const {
+			test_item_count,
+			test_block,
 			prefixTitle,
 			headingTitle,
 			headingDesc,
@@ -317,10 +321,51 @@ class UAGBtestimonial extends Component {
 			}
 		}
 
+		const tmControls = ( index ) => {
+			return (
+				<PanelBody key={index}
+					title={ __( "Testimonial" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+					initialOpen={ false }
+				>
+				
+					<BaseControl
+						className="editor-bg-image-control"
+						label={ __( "Testimonial Image" ) }
+					>
+						<MediaUpload
+							title={ __( "Select Image" ) }
+							onSelect={ this.onSelectImage }
+							type="image"
+							value={ iconImage }
+							render={ ( { open } ) => (
+								<Button isDefault onClick={ open }>
+									{  image_name }
+								</Button>
+							) }
+						/>
+						{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) &&
+							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+								{ __( "Remove Image" ) }
+							</Button>
+						}
+					</BaseControl>
+				</PanelBody>
+			)
+		}
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
 				 <InspectorControls>
+				 	<RangeControl
+						label={ __( 'Number of Testimonials' ) }
+						value={ test_item_count }
+						onChange={ ( value ) => setAttributes( { test_item_count: value } ) }
+						min={ 0 }
+						max={ 10 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+				 	{ times( test_item_count, n => tmControls( n ) ) }
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }

@@ -2,7 +2,34 @@
  * BLOCK: UAGB Section Attributes
  */
 
+const ITEM_COUNT = 2
+
+const testimonial_block = []
+
+for (var i = 1; i <= ITEM_COUNT; i++) {
+	var desc_text = "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + i
+	var author_text    = "John Doe "
+	var company_text    = "John Doe "
+	var image    = ""
+	testimonial_block.push(
+		{
+			"description": desc_text,
+			"name": author_text,
+			"company": company_text,
+			"image": image,			
+		}
+	)
+}
+
 const attributes = {
+	test_item_count: {
+		type: "number",
+		default: ITEM_COUNT
+	},
+	test_block: {
+		type: "array",
+		default : testimonial_block,
+	},
 	prefixTitle: {
 		selector: 'span.uagb-testinomial-author-name',
 		default: "John Doe",
