@@ -56,26 +56,6 @@ const attributes = {
 	descSpace: {
 		type: "number",
 	},		
-	iconimgBorderHover : {
-		type : 'string',
-		default : ''
-	},
-	iconimgBorder:{
-		type : 'string',
-		default : '#333'
-	},
-	iconimgBorderstyle :{
-		type : 'string',
-		default : 'solid'
-	},
-	iconimgBorderWidth: {
-		type: "number",
-		default : 1
-	},
-	iconimgBorderRadius: {
-		type: "number",
-		default : 0
-	},		
 	block_id :{
 		type : 'string',
 		default : 'not_set'

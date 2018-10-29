@@ -149,11 +149,6 @@ class UAGBtestimonial extends Component {
 			iconimgStyle,
 			imagePosition,
 			block_id,
-			iconimgBorderstyle,
-			iconimgBorderHover,
-			iconimgBorder,
-			iconimgBorderWidth,
-			iconimgBorderRadius,
 			source_type,
 			nameSpace,
 			imgLeftPadding,
@@ -172,117 +167,8 @@ class UAGBtestimonial extends Component {
 		}		
 
 		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
-
 		
-		// Common setting for icon and images.
-		const icon_imagenormalSettings = (
-			<Fragment>
-				{ ( iconimgStyle && iconimgStyle == "custom" )  &&
-					<Fragment>
-						<PanelColor
-								title={ __( 'Border Color' ) }
-								colorValue={ iconimgBorder }
-								initialOpen={ false }
-							>
-							<ColorPalette
-									value={ iconimgBorder }
-									onChange={ ( colorValue ) => setAttributes( { iconimgBorder: colorValue } ) }
-									allowReset
-								/>
-						</PanelColor>						
-						 <SelectControl
-							label={ __( 'Border Style' ) }
-							value={ iconimgBorderstyle }
-							onChange={ ( value ) => setAttributes( { iconimgBorderstyle: value } ) }
-							options={ [
-									{ value: 'none', label: __( 'None' ) },
-									{ value: 'solid', label: __( 'Solid' ) },
-									{ value: 'double', label: __( 'Double' ) },
-									{ value: 'dashed', label: __( 'Dashed' ) },
-									{ value: 'dotted', label: __( 'Dotted' ) },
-								] }
-						/>
-						{ 'none' !== iconimgBorderstyle &&
-							<RangeControl
-								label = { __( "Border Width" ) }
-								value = { iconimgBorderWidth }
-								onChange = { ( value ) => setAttributes( { iconimgBorderWidth: value } ) }
-								min = { 0 }
-								max = { 30 }
-								beforeIcon = "editor-textcolor"
-								allowReset
-							/>
-						}
-						<RangeControl
-							label = { __( "Rounded Corners" ) }
-							value = { iconimgBorderRadius }
-							onChange = { ( value ) => setAttributes( { iconimgBorderRadius: value } ) }
-							min = { 0 }
-							max = { 300 }
-							beforeIcon = "editor-textcolor"
-							allowReset
-						/>
-				</Fragment>
-			}
-			</Fragment>
-		);
-
-
-		// Common setting for icon hover and image hover.
-		const icon_imageHoverSettings = (
-			<Fragment>					
-				{ ( iconimgStyle && iconimgStyle == "custom" )  &&
-					<Fragment>
-						<PanelColor
-								title={ __( 'Border Color' ) }
-								colorValue={ iconimgBorderHover }
-								initialOpen={ false }
-							>
-							<ColorPalette
-									value={ iconimgBorderHover }
-									onChange={ ( colorValue ) => setAttributes( { iconimgBorderHover: colorValue } ) }
-									allowReset
-								/>
-						</PanelColor>
-					</Fragment>
-				}
-			</Fragment>
-		);
-
-		
-		// Icon image settings.
-		const iconImageSettings = (
-			<Fragment>
-				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
-						{
-							name: 'normal',
-							title: __( 'Normal' ),
-							className: 'uagb-normal-tab',
-						},
-						{
-							name: 'hover',
-							title: __( 'Hover' ),
-							className: 'uagb-hover-tab',
-						},
-					] }>
-					{
-						( tabName ) => {
-							let tabout_settings;
-							if( 'hover' === tabName.name ){
-								tabout_settings = icon_imageHoverSettings;
-							}else {
-								tabout_settings = icon_imagenormalSettings;
-							}
-							return <div>{ tabout_settings }</div>;
-						}
-					}
-				</TabPanel>
-			</Fragment>
-		);
-		
-		
+				
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -422,6 +308,15 @@ class UAGBtestimonial extends Component {
 			{ value: 'full', label: __( 'Large' ) }
 		];		
 
+		let image_name = "Select Image"
+		if(iconImage){
+			if(iconImage.url == null || iconImage.url == "" ){
+				image_name = "Select Image"
+			}else{
+				image_name = "Replace Image"
+			}
+		}
+
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
@@ -432,7 +327,7 @@ class UAGBtestimonial extends Component {
 					>		
 					<BaseControl
 						className="editor-bg-image-control"
-						label={ __( "Image" ) }
+						label={ __( "Testimonial Image" ) }
 					>
 						<MediaUpload
 							title={ __( "Select Image" ) }
@@ -441,7 +336,7 @@ class UAGBtestimonial extends Component {
 							value={ iconImage }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  ( iconImage.url == null && iconImage.url =='' ) ? __( "Select Image" ) : __( "Replace image" ) }
+									{  image_name }
 								</Button>
 							) }
 						/>
@@ -470,7 +365,6 @@ class UAGBtestimonial extends Component {
 								{ value: 'normal', label: __( 'Normal' ) },
 								{ value: 'circle', label: __( 'Circle' ) },
 								{ value: 'square', label: __( 'Square' ) },
-								{ value: 'custom', label: __( 'custom' ) },
 							] }
 						/>
 						<SelectControl
@@ -491,7 +385,6 @@ class UAGBtestimonial extends Component {
 						</Fragment> 
 					}
 					
-				    { ( iconimgStyle && iconimgStyle == "custom" )  && iconImageSettings }
 					</PanelBody>	
 
 					{ TypographySettings }
