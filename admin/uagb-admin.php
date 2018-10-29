@@ -5,8 +5,7 @@
  * @package UAGB
  */
 
-$uagb_icon = false;
-
+// $uagb_icon = false;
 ?>
 <div class="uagb-menu-page-wrapper">
 	<div id="uagb-menu-page">
@@ -18,8 +17,7 @@ $uagb_icon = false;
 						<img src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/uagb_logo.svg' ); ?>" class="uagb-header-icon" alt="<?php echo UAGB_PLUGIN_NAME; ?> " >
 						<?php
 } else {
-	echo '<h4>' . UAGB_PLUGIN_NAME . ' \(`_`)/</h4>';
-}
+	echo '<h4>' . UAGB_PLUGIN_NAME . ' \(`_`)/</h4>'; }
 ?>
 					</a>
 				</div>

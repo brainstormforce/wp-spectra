@@ -25,7 +25,7 @@
 	margin: 1em 0;
 }
 
-.uagb-container{
+.uagb-container {
 	max-width: 1200px;
 	margin: 0 auto;
 	padding: 0 20px;
@@ -39,10 +39,6 @@
 
 .uagb-menu-page-wrapper a {
 	text-decoration: none;
-}
-
-.uagb-general-form-wrap {
-	width: 680px;
 }
 
 .uagb-bulk-actions-wrap {
@@ -144,10 +140,6 @@
 	box-shadow: none;
 }
 
-.uagb-branding-list{
-	margin:0;
-}
-
 /* Update icon. */
 .uagb-widget-link-wrapper a.updating-message:before {
 	color: #f56e28;
@@ -166,17 +158,17 @@
 
 /* Header */
 .uagb-menu-page-header.general .uagb-container,
-.uagb-menu-page-header.branding .uagb-container,
-.uagb-container.uagb-general,
-.uagb-container.uagb-branding-wrapper {
+.uagb-container.uagb-general {
 	max-width: 930px;
 }
+
 .uagb-title {
 	flex: auto;
 	align-content: flex-start;
 	text-align: left;
 	margin: 15px 0;
 }
+
 .uagb-title a,
 .uagb-title span {
 	display: block;
@@ -191,11 +183,13 @@
 	width: 200px;
 	vertical-align: bottom;
 }
+
 .uagb-top-links {
 	flex: auto;
 	text-align: right;
 	font-weight: bold;
 }
+
 .uagb-menu-page-header {
 	background-color: #fff;
 	text-align: center;
@@ -210,11 +204,6 @@
 	padding-left: 12px;
 }
 
-.uagb-hide-branding #poststuff #post-body.columns-2 {
-	margin: 0 auto;
-	max-width: 590px;
-}
-
 /* Integration */
 .uagb-integration-wrapper #poststuff {
 	width: 640px;
@@ -227,7 +216,6 @@
     border-width: 1px;
     width: 95%;
 }
-
 
 /* Spinner */
 .uagb-button-spinner:before {
