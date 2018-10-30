@@ -23,7 +23,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='p'
 	                value={ attributes.headingDesc }
-	                className='uagb-testinomial-desc'
+	                className='uagb-tm__desc'
 	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }     
 	                onMerge = { props.mergeBlocks }		
 	                onSplit = {
@@ -45,7 +45,7 @@ class Description extends React.Component {
 				<RichText.Content
 	                tagName='p'
 	                value={ attributes.headingDesc }
-	                className='uagb-testinomial-desc'
+	                className='uagb-tm__desc'
 	            />			
 			)
 		}

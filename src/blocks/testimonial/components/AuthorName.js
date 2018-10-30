@@ -23,7 +23,7 @@ class AuthorName extends React.Component {
 				<RichText
 	                tagName="span"
 	                value={ attributes.prefixTitle }
-	                className='uagb-testinomial-author-name'
+	                className='uagb-tm__author-name'
 	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
 	                onMerge = { props.mergeBlocks }
 	                onSplit = {
@@ -45,7 +45,7 @@ class AuthorName extends React.Component {
 				<RichText.Content
 	                tagName="span"
 	                value={ attributes.prefixTitle }
-	                className='uagb-testinomial-author-name'
+	                className='uagb-tm__author-name'
 	            />
 			)
 		}

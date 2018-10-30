@@ -464,20 +464,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
 			$selectors = array(
-				' .uagb-testinomial-content-wrap .uagb-testimonial-image-contnet' => array(
+				' .uagb-testinomial__wrap .uagb-tm__image-content' => array(
 					'padding-left'   => $attr->imgLeftPadding . 'px',
 					'padding-right'  => $attr->imgRightPadding . 'px',
 					'padding-top'    => $attr->imgTopPadding . 'px',
 					'padding-bottom' => $attr->imgBottomPadding . 'px',
 				),
-				' .uagb-testinomial-image img'   => array(
+				' .uagb-tm__image img'   => array(
 					'width'     => $attr->imageWidth . 'px',
 					'max-width' => $attr->imageWidth . 'px',
 				),				
-				' .uagb-testinomial-content'     => array(
+				' .uagb-tm__content'     => array(
 					'text-align' => $attr->headingAlign,
 				),
-				' .uagb-testinomial-author-name' => array(
+				' .uagb-tm__author-name' => array(
 					'color'         => $attr->authorColor,
 					'font-size'     => $attr->nameFontSize . 'px',
 					'margin-bottom' => $attr->nameSpace . 'px',
@@ -494,7 +494,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$r_selectors = array(
-				' .uagb-testinomial-content' => array(
+				' .uagb-tm__content' => array(
 					'text-align' => 'center',
 				),
 			);

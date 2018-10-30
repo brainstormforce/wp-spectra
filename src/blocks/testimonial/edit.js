@@ -403,7 +403,7 @@ class UAGBtestimonial extends Component {
 							let cloneTest_block = [ ...test_block ]
 							if ( cloneTest_block.length < newCount ) {
 								const incAmount = Math.abs( newCount - cloneTest_block.length )
-								
+
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
@@ -435,7 +435,9 @@ class UAGBtestimonial extends Component {
 							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
 							options={ [
 								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'aside', label: __( 'Aside' ) },
+								{ value: 'bottom', label: __( 'Bottom' ) },
+								{ value: 'left', label: __( 'Left' ) },
+								{ value: 'right', label: __( 'Right' ) },
 							] }
 						/>	
 						<SelectControl
@@ -511,14 +513,14 @@ class UAGBtestimonial extends Component {
 					id = { my_block_id }
 				>
 					<div className = { classnames(
-						"uagb-testinomial-content-wrap",
+						"uagb-testomonial__wrap",
 						...PositionClasses( attributes ),
 					) }>
-						<div className = "uagb-testinomial-content">
+						<div className = "uagb-tm__content">
 							{ desc }
-							<div className ="uagb-testimonial-meta">
-								<div className ="uagb-testimonial-meta-inner">
-									<div className ="uagb-testimonial-image-contnet">
+							<div className ="uagb-tm__meta">
+								<div className ="uagb-tm__meta-inner">
+									<div className ="uagb-tm__image-content">
 										{ is_image }	
 									</div>							
 									{ title_text }								

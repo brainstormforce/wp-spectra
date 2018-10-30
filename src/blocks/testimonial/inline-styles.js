@@ -36,7 +36,7 @@ function TestimonialStyle( props ) {
 
         var selectors = {};
             
-            selectors['.uagb-testinomial-content-wrap .uagb-testimonial-image-contnet'] = {
+            selectors['.uagb-testinomial__wrap .uagb-tm__image-content'] = {
                     'padding-left' : imgLeftPadding+'px',
                     'padding-right' : imgRightPadding+'px',                                
                     'padding-top' : imgTopPadding+'px',
@@ -44,17 +44,17 @@ function TestimonialStyle( props ) {
                 }; 
 
             // Image
-            selectors['.uagb-testinomial-image img'] = {
+            selectors['.uagb-tm__image img'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
                 }; 
             
-            selectors['.uagb-testinomial-content'] = {                    
+            selectors['.uagb-tm__content'] = {                    
                     'text-align' : headingAlign,                   
                 };                       
 
             // Prefix Style
-            selectors['.uagb-testinomial-author-name'] = {
+            selectors['.uagb-tm__author-name'] = {
                     'font-size' : nameFontSize+'px',
                     'color': authorColor,
                     'margin-bottom': nameSpace+'px',

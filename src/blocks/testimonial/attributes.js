@@ -64,7 +64,7 @@ const attributes = {
 	},	
 	imagePosition:{
 		type: "string",
-		default: "aside"
+		default: "bottom"
 	},	
 	authorFontSize: {
 		type: "number",

@@ -25,7 +25,7 @@ class TestimonialImage extends React.Component {
             }
 
             return (                
-                <div className="uagb-testinomial-image">                        
+                <div className="uagb-tm__image">                        
                    <img
                         className =""
                         src = { url }                        
