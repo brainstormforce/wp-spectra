@@ -362,7 +362,7 @@ class UAGBtestimonial extends Component {
 				
 					<BaseControl
 						className="editor-bg-image-control"
-						label={ __( "Testimonial Image" ) }
+						label={ __( "" ) }
 					>
 						<MediaUpload
 							title={ __( "Select Image" ) }
@@ -399,7 +399,24 @@ class UAGBtestimonial extends Component {
 				 	<RangeControl
 						label={ __( 'Number of Testimonials' ) }
 						value={ test_item_count }
-						onChange={ ( value ) => setAttributes( { test_item_count: value } ) }
+						onChange={ ( newCount ) => {
+							let cloneTest_block = [ ...test_block ]
+							if ( cloneTest_block.length < newCount ) {
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
+								
+								{ times( incAmount, n => {
+
+									cloneTest_block.push( {
+										description: "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + ( cloneTest_block.length + 1 ),
+										name: cloneTest_block[ 0 ].name,
+										company: cloneTest_block[ 0 ].company,
+										image: cloneTest_block[ 0 ].image,
+										} )
+								} ) }
+								setAttributes( { test_block: cloneTest_block } )
+							}
+							setAttributes( { test_item_count: newCount } )
+						} }
 						min={ 0 }
 						max={ 10 }
 						beforeIcon="editor-textcolor"
