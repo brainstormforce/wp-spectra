@@ -15,16 +15,33 @@ class AuthorName extends React.Component {
 		const {
 			attributes,
 			setAttributes ,
-			props
+			props,
+			index_value
 		} = this.props;
+
+		const test_arr = attributes.test_block[index_value];
+		let author_name = '';
+		if( test_arr && typeof test_arr !== 'undefined'){
+			author_name = test_arr['name']			
+		}
 
 		if( setAttributes !== 'not_set' ){
 			return (
 				<RichText
 	                tagName="span"
-	                value={ attributes.prefixTitle }
+	                value={ author_name }
 	                className='uagb-tm__author-name'
-	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
+	                onChange={ ( value ) => { 
+	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
+							if ( thisIndex === index_value ) {
+								item['name'] = value				
+							}
+							return item			
+						} )
+	                	setAttributes( {
+							test_block: newItems,
+						} )	
+	                } }     
 	                onMerge = { props.mergeBlocks }
 	                onSplit = {
 							props.insertBlocksAfter ?
@@ -44,7 +61,7 @@ class AuthorName extends React.Component {
 			return (
 				<RichText.Content
 	                tagName="span"
-	                value={ attributes.prefixTitle }
+	                value={ author_name }
 	                className='uagb-tm__author-name'
 	            />
 			)

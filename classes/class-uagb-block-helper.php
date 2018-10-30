@@ -482,11 +482,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'     => $attr->nameFontSize . 'px',
 					'margin-bottom' => $attr->nameSpace . 'px',
 				),
-				' .uagb-testinomial-designation' => array(
+				' .uagb-tm__desc-designation' => array(
 					'color'     => $attr->designationColor,
 					'font-size' => $attr->nameFontSize . 'px',
 				),
-				' .uagb-testinomial-desc'        => array(
+				' .uagb-tm__desc'        => array(
 					'color'         => $attr->descColor,
 					'font-size'     => $attr->descFontSize . 'px',
 					'margin-bottom' => $attr->descSpace . 'px',

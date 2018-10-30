@@ -7,6 +7,7 @@ import Description from "./components/Description";
 import PositionClasses from "./classes";
 import TestimonialStyle from "./inline-styles";
 import TestimonialImage from "./components/TestimonialImage";
+
 import times from "lodash/times"
 import Slider from "react-slick"
 
@@ -90,8 +91,8 @@ class UAGBtestimonial extends Component {
 
 		setAttributes( {
 			test_block: newItems,
-		} )
-		
+		} )		
+
 	}	
 
 	/*
@@ -414,6 +415,14 @@ class UAGBtestimonial extends Component {
 										} )
 								} ) }
 								setAttributes( { test_block: cloneTest_block } )
+							}else{
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
+								let data_new = cloneTest_block;
+					            for( var i= 0; i < diff; i++ ){             
+					                data_new.pop();
+					            }           
+					            setAttributes({test_block:data_new});
+
 							}
 							setAttributes( { test_item_count: newCount } )
 						} }
@@ -478,28 +487,6 @@ class UAGBtestimonial extends Component {
 				</Fragment>
 			);
 
-		// Get icon/Image components.
-		let is_image = <TestimonialImage attributes={attributes} />
-		
-		// Get description.
-		const desc = (
-				<Fragment>
-					<div className = "uagb-testinomial-text-wrap">
-						<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					</div>
-				</Fragment>
-			);
-
-		// Get Title and Prefix components.
-		const title_text = (
-			<Fragment>
-				<div className = "uagb-testimonial-details">
-					<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-				</div>
-			</Fragment>
-			);
-
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
@@ -509,25 +496,46 @@ class UAGBtestimonial extends Component {
 					/>
 				</BlockControls>				
 				{inspect_control}
-				<div className={ className }
+				<div className={ classnames(
+					className,
+					"uagb-testomonial__outer-wrap"
+				) }
 					id = { my_block_id }
 				>
-					<div className = { classnames(
+
+					{ test_block.map( ( test, index ) => 
+
+						<div className = { classnames(
 						"uagb-testomonial__wrap",
 						...PositionClasses( attributes ),
-					) }>
-						<div className = "uagb-tm__content">
-							{ desc }
-							<div className ="uagb-tm__meta">
-								<div className ="uagb-tm__meta-inner">
-									<div className ="uagb-tm__image-content">
-										{ is_image }	
-									</div>							
-									{ title_text }								
+						) } key ={ "wrap-"+index } >
+							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
+								{  // Get description.
+									<Fragment>
+										<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+											<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+										</div>
+									</Fragment>
+								}
+								<div className ="uagb-tm__meta">
+									<div className ="uagb-tm__meta-inner">
+										
+										<TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} />	
+															
+										{ //title_text
+											<Fragment>
+												<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
+													<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+													<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+												</div>
+											</Fragment>
+										}								
+									</div>
 								</div>
-							</div>
+							</div>						
 						</div>						
-					</div>
+					)}
+					
 				</div>
 			</Fragment>
 		)

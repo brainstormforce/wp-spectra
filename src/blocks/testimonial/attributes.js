@@ -9,7 +9,7 @@ const testimonial_block = []
 for (var i = 1; i <= ITEM_COUNT; i++) {
 	var desc_text = "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + i
 	var author_text    = "John Doe "
-	var company_text    = "John Doe "
+	var company_text    = "BrainstormForce "
 	testimonial_block.push(
 		{
 			"description": desc_text,
@@ -30,11 +30,11 @@ const attributes = {
 		default : testimonial_block,
 	},
 	prefixTitle: {
-		selector: 'span.uagb-testinomial-author-name',
+		selector: 'span.uagb-tm__author-name',
 		default: "John Doe",
 	},
     headingTitle: {
-		selector: 'span.uagb-testinomial-designation',
+		selector: 'span.uagb-tm__desc-designation',
 		default: "Designer",
 	},
 	headingDesc: {

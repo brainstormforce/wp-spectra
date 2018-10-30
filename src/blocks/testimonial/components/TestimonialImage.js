@@ -8,35 +8,46 @@ class TestimonialImage extends React.Component {
 
 	render() {
 
-		const { attributes } = this.props;     
-        let url_chk = '';
-        if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=='' ){
-            url_chk = attributes.iconImage.url
-        }        
-        let url = ""
-
-        if( url_chk !== '' ){
-            let size = attributes.iconImage.sizes;
-            let imageSize = attributes.imageSize;
-            if ( typeof size[imageSize] !== 'undefined') {
-              url = size[imageSize].url ;
+        const { attributes , index_value } = this.props
+        let url_check = ''
+        
+        const image_arr = attributes.test_block[index_value];
+        
+        if( image_arr && typeof image_arr !== 'undefined'){
+            const image = image_arr['image']
+            let url = ""
+           
+            if( typeof image !== "undefined" && image !== null && image !=='' ){
+                url_check = image.url
+            }       
+            
+            if( url_check !== '' ){
+                let size = image.sizes;
+                let imageSize = attributes.imageSize;
+                if ( typeof size[imageSize] !== 'undefined') {
+                  url = size[imageSize].url 
+                }else{
+                  url = url_check 
+                }
+                
+                return (     
+                <div className ="uagb-tm__image-content" key={"tm_img-wrap-"+index_value}>           
+                    <div className="uagb-tm__image" key={"tm_img-"+index_value}>                        
+                       <img
+                            className =""
+                            src = { url }                        
+                            alt = { image.alt }                    
+                        />                        
+                    </div>  
+                </div>                                 
+                )
             }else{
-              url = url_chk ;
-            }
+                return null
+            }     
 
-            return (                
-                <div className="uagb-tm__image">                        
-                   <img
-                        className =""
-                        src = { url }                        
-                        alt = { attributes.iconImage.alt }                    
-                    />                        
-                </div>                                  
-            )
         }else{
-            return null;
-        }       
-		
+            return null
+        }
 	}
 }
 

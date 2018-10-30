@@ -61,7 +61,7 @@ function TestimonialStyle( props ) {
                 };
 
             // Title Style
-            selectors['.uagb-testinomial-designation'] = {
+            selectors['.uagb-tm__company'] = {
                     'font-size' : designationFontSize+'px',
                     'color': designationColor,
                 };
