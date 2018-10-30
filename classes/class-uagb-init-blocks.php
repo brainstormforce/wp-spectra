@@ -141,6 +141,33 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'dist/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
+
+		$blocks       = array();
+		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
+		if ( is_array( $saved_blocks ) ) {
+
+			foreach ( $saved_blocks as $slug => $data ) {
+
+				$_slug = 'uagb/' . $slug;
+
+				if ( isset( $saved_blocks[ $slug ] ) ) {
+
+					if ( 'disabled' === $saved_blocks[ $slug ] ) {
+						array_push( $blocks, $_slug );
+					}
+				}
+			}
+		}
+
+		wp_localize_script(
+			'uagb-deactivate-block-js',
+			'uagb_deactivate_blocks',
+			array(
+				'deactivated_blocks' => $blocks,
+			)
+		);
+
 	} // End function editor_assets().
 
 }

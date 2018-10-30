@@ -83,7 +83,7 @@ class UAGBinfoBox extends Component {
 			return
 		}
 		setAttributes( { iconImage: media } )
-	}	
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -223,11 +223,11 @@ class UAGBinfoBox extends Component {
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
-		
+
 
 		// Settings for icon.
 		const iconControls = (
-			<Fragment>				
+			<Fragment>
 				<FontIconPicker {...icon_props} />
 				<RangeControl
 					label = { __( "Icon Size" ) }
@@ -254,7 +254,7 @@ class UAGBinfoBox extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>				
+				</PanelColorSettings>
 			</Fragment>
 		)
 
@@ -358,7 +358,7 @@ class UAGBinfoBox extends Component {
 					}
 
 					{ ( ctaType == "button" ) && (
-						<Fragment>							
+						<Fragment>
 
 							<RangeControl
 								label={ __( "Vertical Padding" ) }
@@ -521,7 +521,7 @@ class UAGBinfoBox extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Description Color" ),
-						},						
+						},
 
 					] }
 				>
@@ -677,7 +677,7 @@ class UAGBinfoBox extends Component {
 
 		// Image controls.
 		const imageControls = (
-			<Fragment>				
+			<Fragment>
 				<BaseControl
 					className="editor-bg-image-control"
 					label={ __( "Image" ) }
@@ -724,9 +724,9 @@ class UAGBinfoBox extends Component {
 							max = { 500 }
 							beforeIcon = ""
 							allowReset
-						/>	
+						/>
 					</Fragment>
-				}				
+				}
 			</Fragment>
 		)
 
@@ -773,7 +773,7 @@ class UAGBinfoBox extends Component {
 								{ value: "icon", label: __( "Icon" ) },
 								{ value: "image", label: __( "Image" ) },
 							] }
-						/>					
+						/>
 
 						{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
 							label={ __( "Vertical ALignment" ) }
@@ -788,8 +788,8 @@ class UAGBinfoBox extends Component {
 
 						{ ( source_type && source_type == "icon" ) && iconControls }
 
-						{ ( source_type && source_type == "image" ) && imageControls }						
-					
+						{ ( source_type && source_type == "image" ) && imageControls }
+
 					</PanelBody>
 
 					{ seperatorSettings }
@@ -907,7 +907,7 @@ class UAGBinfoBox extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-infobox__outer-wrap"
-				) } 
+				) }
 				id = { my_block_id }
 				>
 					{ ( ctaType == "all") &&
