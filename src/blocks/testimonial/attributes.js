@@ -10,13 +10,12 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 	var desc_text = "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + i
 	var author_text    = "John Doe "
 	var company_text    = "John Doe "
-	var image    = ""
 	testimonial_block.push(
 		{
 			"description": desc_text,
 			"name": author_text,
 			"company": company_text,
-			"image": image,			
+			"image": "",
 		}
 	)
 }

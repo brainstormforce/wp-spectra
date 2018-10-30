@@ -56,9 +56,11 @@ class UAGBtestimonial extends Component {
 
 		super( ...arguments );
 		this.getTimelineicon = this.getTimelineicon.bind(this);
-		this.toggleBorder    = this.toggleBorder.bind( this );
-		this.onSelectImage    = this.onSelectImage.bind( this )
-		this.onRemoveImage    = this.onRemoveImage.bind( this )
+		this.toggleBorder    = this.toggleBorder.bind( this );		
+
+		this.onSelectTestImage    = this.onSelectTestImage.bind( this )
+		this.onRemoveTestImage   = this.onRemoveTestImage.bind(this)
+		this.getImageName   = this.getImageName.bind(this)
 	}
 
 	getTimelineicon(value) {
@@ -68,27 +70,66 @@ class UAGBtestimonial extends Component {
 	/*
 	 * Event to set Image as while adding.
 	 */
-	onSelectImage( media ) {
-		const { iconImage } = this.props.attributes
+	onSelectTestImage( media, index ) {
+		const { test_block } = this.props.attributes
 		const { setAttributes } = this.props
 
-		if ( ! media || ! media.url ) {
-			setAttributes( { iconImage: null } )
-			return
+		let imag_url = null
+		if ( ! media || ! media.url ) {			
+			imag_url = null
+		}else{
+			imag_url = media
 		}
-		setAttributes( { iconImage: media } )
+
+		const newItems = test_block.map( ( item, thisIndex ) => {
+			if ( index === thisIndex ) {
+				item['image'] = imag_url				
+			}
+			return item			
+		} )
+
+		setAttributes( {
+			test_block: newItems,
+		} )
+		
 	}	
 
 	/*
 	 * Event to set Image as null while removing.
 	 */
-	onRemoveImage() {
-		const { iconImage } = this.props.attributes
+	onRemoveTestImage( index ) {
+		const { test_block } = this.props.attributes
 		const { setAttributes } = this.props
+		
+		const newItems = test_block.map( ( item, thisIndex ) => {
+			if ( index === thisIndex ) {
+				item['image'] = null				
+			}
+			return item			
+		} )
 
-		setAttributes( { iconImage: null } )
+		setAttributes( {
+			test_block: newItems,
+		} )
 	}
+	
+	/*
+	 * Event to set Image selectot label.
+	 */
+	getImageName( image ){
+		const { test_block } = this.props.attributes
 
+		let image_name = "Select Image"
+		if(image){
+			if(image.url == null || image.url == "" ){
+				image_name = "Select Image"
+			}else{
+				image_name = "Replace Image"
+			}
+		}
+		return image_name;
+	}
+		
 	/**
 	 * Function Name: toggleBorder.
 	 */
@@ -311,16 +352,7 @@ class UAGBtestimonial extends Component {
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'full', label: __( 'Large' ) }
 		];		
-
-		let image_name = "Select Image"
-		if(iconImage){
-			if(iconImage.url == null || iconImage.url == "" ){
-				image_name = "Select Image"
-			}else{
-				image_name = "Replace Image"
-			}
-		}
-
+	
 		const tmControls = ( index ) => {
 			return (
 				<PanelBody key={index}
@@ -334,17 +366,21 @@ class UAGBtestimonial extends Component {
 					>
 						<MediaUpload
 							title={ __( "Select Image" ) }
-							onSelect={ this.onSelectImage }
+							onSelect={ ( media ) => { 
+								this.onSelectTestImage( media, index )								
+							} }
 							type="image"
-							value={ iconImage }
+							value={ test_block[index]['image'] }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  image_name }
+									{  this.getImageName( test_block[index]['image'] ) }
 								</Button>
 							) }
-						/>
-						{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) &&
-							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+						/>						
+						{ ( test_block[index]['image'] && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
+							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
+								this.onRemoveTestImage(index)
+							} } isLink isDestructive>
 								{ __( "Remove Image" ) }
 							</Button>
 						}
@@ -356,6 +392,10 @@ class UAGBtestimonial extends Component {
 		const inspect_control = (
 				<Fragment>
 				 <InspectorControls>
+				 	<PanelBody
+					title={ __( 'Image' ) }
+					initialOpen={ false }
+					>	
 				 	<RangeControl
 						label={ __( 'Number of Testimonials' ) }
 						value={ test_item_count }
@@ -369,30 +409,9 @@ class UAGBtestimonial extends Component {
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }
-					>		
-					<BaseControl
-						className="editor-bg-image-control"
-						label={ __( "Testimonial Image" ) }
 					>
-						<MediaUpload
-							title={ __( "Select Image" ) }
-							onSelect={ this.onSelectImage }
-							type="image"
-							value={ iconImage }
-							render={ ( { open } ) => (
-								<Button isDefault onClick={ open }>
-									{  image_name }
-								</Button>
-							) }
-						/>
-						{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) &&
-							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
-								{ __( "Remove Image" ) }
-							</Button>
-						}
-					</BaseControl>
 
-					{ ( iconImage && iconImage.url !== null && iconImage.url !=='' ) && <Fragment>
+					{  <Fragment>
 						<SelectControl
 							label={ __( 'Image Position' ) }
 							value={ imagePosition }
@@ -430,8 +449,8 @@ class UAGBtestimonial extends Component {
 						</Fragment> 
 					}
 					
-					</PanelBody>	
-
+					</PanelBody>
+				</PanelBody>
 					{ TypographySettings }
 
 					{ marginSettings }
