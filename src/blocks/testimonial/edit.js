@@ -368,8 +368,58 @@ class UAGBtestimonial extends Component {
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'full', label: __( 'Large' ) }
 		];		
-	
+		
+		function NextArrow( props ) {
+
+			return (
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>
+			)
+		}
+
+		function PrevArrow( props ) {
+
+			return (
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>
+			)
+		}
+
+		const settings = {
+			slidesToShow : columns,
+			slidesToScroll : 1,
+			autoplaySpeed : 2000,
+			autoplay : autoplay,
+			infinite : infiniteLoop,
+			pauseOnHover : pauseOnHover,
+			speed : transitionSpeed,
+			arrows : true,
+			dots : true,
+			rtl : false,
+			nextArrow: <NextArrow arrowSize={arrowSize}/>,
+			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
+			responsive : [
+				{
+					breakpoint : 1024,
+					settings : {
+						slidesToShow : tcolumns,
+						slidesToScroll : 1,
+					}
+				},
+				{
+					breakpoint : 767,
+					settings : {
+						slidesToShow : mcolumns,
+						slidesToScroll : 1,
+					}
+				}
+			]
+		}
+
+		// Set testinomial image panel
 		const tmControls = ( index ) => {
+			let image_val = null;
+			if( test_block[index] && typeof test_block[index] !== 'undefined'){
+				image_val = test_block[index]['image']
+			}
 			return (
 				<PanelBody key={index}
 					title={ __( "Testimonial" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
@@ -386,14 +436,14 @@ class UAGBtestimonial extends Component {
 								this.onSelectTestImage( media, index )								
 							} }
 							type="image"
-							value={ test_block[index]['image'] }
+							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
 									{  this.getImageName( test_block[index]['image'] ) }
 								</Button>
 							) }
 						/>						
-						{ ( test_block[index]['image'] && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
+						{ ( image_val && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveTestImage(index)
 							} } isLink isDestructive>
@@ -478,7 +528,7 @@ class UAGBtestimonial extends Component {
 							}else{
 								const incAmount = Math.abs( newCount - cloneTest_block.length )
 								let data_new = cloneTest_block;
-					            for( var i= 0; i < diff; i++ ){             
+					            for( var i= 0; i < incAmount; i++ ){             
 					                data_new.pop();
 					            }           
 					            setAttributes({test_block:data_new});
@@ -587,6 +637,15 @@ class UAGBtestimonial extends Component {
 					id = { my_block_id }
 				>
 
+				<Slider
+					className={ classnames(
+						"is-carousel",
+						`uagb-tm__columns-${ columns }`,
+						"uagb-tm__items"
+					) }					
+					{...settings}
+				>
+
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
@@ -617,9 +676,9 @@ class UAGBtestimonial extends Component {
 									</div>
 								</div>
 							</div>						
-						</div>						
+						</div>												
 					)}
-					
+				</Slider>
 				</div>
 			</Fragment>
 		)

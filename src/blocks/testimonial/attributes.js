@@ -2,7 +2,7 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const ITEM_COUNT = 2
+const ITEM_COUNT = 3
 
 const testimonial_block = []
 
