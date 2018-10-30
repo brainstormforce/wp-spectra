@@ -28,20 +28,7 @@ const attributes = {
 	test_block: {
 		type: "array",
 		default : testimonial_block,
-	},
-	prefixTitle: {
-		selector: 'span.uagb-tm__author-name',
-		default: "John Doe",
-	},
-    headingTitle: {
-		selector: 'span.uagb-tm__desc-designation',
-		default: "Designer",
-	},
-	headingDesc: {
-		source: 'html',
-		selector: 'p',
-		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
-	},
+	},	
 	headingAlign: {
 		type: "string",
 		default: "center",
@@ -120,6 +107,46 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 60,
+	},	
+	columns :{
+		type: "number",
+		default: 1,
+	},	
+	tcolumns :{
+		type: "number",
+		default: 1,
+	},	
+	mcolumns :{
+		type: "number",
+		default: 1,
+	},
+	pauseOnHover: {
+		type: "boolean",
+		default: true,
+	},	
+	infiniteLoop: {
+		type: "boolean",
+		default: true,
+	},
+	transitionSpeed :{
+		type: "number",
+		default: 500,
+	},
+	autoplay: {
+		type: "boolean",
+		default: true,
+	},
+	autoplaySpeed :{
+		type: "number",
+		default: 2000,
+	},
+	arrowSize :{
+		type: "number",
+		default: 20,
+	},
+	arrowColor :{
+		type: "string",
+		default: "#aaaaaa",
 	},		
 }
 

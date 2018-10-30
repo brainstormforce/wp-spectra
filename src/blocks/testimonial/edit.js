@@ -56,17 +56,14 @@ class UAGBtestimonial extends Component {
 	constructor() {
 
 		super( ...arguments );
-		this.getTimelineicon = this.getTimelineicon.bind(this);
-		this.toggleBorder    = this.toggleBorder.bind( this );		
+		this.onSelectTestImage  = this.onSelectTestImage.bind( this )
+		this.onRemoveTestImage  = this.onRemoveTestImage.bind(this)
+		this.getImageName       = this.getImageName.bind(this)
+		this.togglePauseOnHover = this.togglePauseOnHover.bind( this )
+		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this )
+		this.toggleAutoplay     = this.toggleAutoplay.bind( this )
 
-		this.onSelectTestImage    = this.onSelectTestImage.bind( this )
-		this.onRemoveTestImage   = this.onRemoveTestImage.bind(this)
-		this.getImageName   = this.getImageName.bind(this)
 	}
-
-	getTimelineicon(value) {
-		this.props.setAttributes( { icon: value } );
-	}	
 
 	/*
 	 * Event to set Image as while adding.
@@ -131,14 +128,25 @@ class UAGBtestimonial extends Component {
 		return image_name;
 	}
 		
-	/**
-	 * Function Name: toggleBorder.
-	 */
-	toggleBorder() {
-		const { enableBorder } = this.props.attributes;
-		const { setAttributes } = this.props;
+	togglePauseOnHover() {
+		const { pauseOnHover } = this.props.attributes
+		const { setAttributes } = this.props
 
-		setAttributes( { enableBorder: ! enableBorder } );
+		setAttributes( { pauseOnHover: ! pauseOnHover } )
+	}
+
+	toggleInfiniteLoop() {
+		const { infiniteLoop } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { infiniteLoop: ! infiniteLoop } )
+	}
+
+	toggleAutoplay() {
+		const { autoplay } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { autoplay: ! autoplay } )
 	}
 
 	splitBlock( before, after, ...blocks ) {
@@ -178,9 +186,6 @@ class UAGBtestimonial extends Component {
 		const {
 			test_item_count,
 			test_block,
-			prefixTitle,
-			headingTitle,
-			headingDesc,
 			headingAlign,
 			designationColor,
 			descColor,
@@ -203,7 +208,17 @@ class UAGBtestimonial extends Component {
 			imgBottomPadding,
 			iconImage,
 			imageSize,
-			imageWidth,			
+			imageWidth,
+			columns,
+			tcolumns,
+			mcolumns,
+			pauseOnHover,
+			infiniteLoop,
+			transitionSpeed,
+			autoplay,
+			autoplaySpeed,
+			arrowSize,
+			arrowColor,			
 		} = attributes;
 
 		// Add CSS.
@@ -358,7 +373,7 @@ class UAGBtestimonial extends Component {
 			return (
 				<PanelBody key={index}
 					title={ __( "Testimonial" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-					initialOpen={ false }
+					initialOpen={ true }
 				>
 				
 					<BaseControl
@@ -366,7 +381,7 @@ class UAGBtestimonial extends Component {
 						label={ __( "" ) }
 					>
 						<MediaUpload
-							title={ __( "Select Image" ) }
+							title={ __( "Select Image"+ ( index + 1 ) ) }
 							onSelect={ ( media ) => { 
 								this.onSelectTestImage( media, index )								
 							} }
@@ -389,12 +404,57 @@ class UAGBtestimonial extends Component {
 				</PanelBody>
 			)
 		}
+
+		const carousal_settings = (
+			<Fragment>
+				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( "Pause On Hover" ) }
+						checked={ pauseOnHover }
+						onChange={ this.togglePauseOnHover }
+					/>
+					<ToggleControl
+						label={ __( "Autoplay" ) }
+						checked={ autoplay }
+						onChange={ this.toggleAutoplay }
+					/>
+					{ autoplay == true &&
+						<RangeControl
+							label={ __( "Autoplay Speed (ms)" ) }
+							value={ autoplaySpeed }
+							onChange={ ( value ) => setAttributes( { autoplaySpeed: value } ) }
+							min={ 100 }
+							max={ 10000 }
+						/>
+					}
+					<ToggleControl
+						label={ __( "Infinite Loop" ) }
+						checked={ infiniteLoop }
+						onChange={ this.toggleInfiniteLoop }
+					/>
+					<RangeControl
+						label={ __( "Transition Speed (ms)" ) }
+						value={ transitionSpeed }
+						onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
+						min={ 100 }
+						max={ 5000 }
+					/>
+					<RangeControl
+						label={ __( "Arrow Size" ) }
+						value={ arrowSize }
+						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
+						min={ 10 }
+						max={ 50 }
+					/>
+				</PanelBody>
+			</Fragment>			
+		)
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
 				 <InspectorControls>
 				 	<PanelBody
-					title={ __( 'Image' ) }
+					title={ __( 'General' ) }
 					initialOpen={ false }
 					>	
 				 	<RangeControl
@@ -431,11 +491,35 @@ class UAGBtestimonial extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-				 	{ times( test_item_count, n => tmControls( n ) ) }
+					<RangeControl
+						label={ __( "Columns" ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ 5 }
+					/>
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ 3 }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ 3 }
+					/>
+					</PanelBody>
+					{ carousal_settings }
+				 	
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }
 					>
+					{ times( test_item_count, n => tmControls( n ) ) }
 
 					{  <Fragment>
 						<SelectControl
@@ -477,7 +561,7 @@ class UAGBtestimonial extends Component {
 						</Fragment> 
 					}
 					
-					</PanelBody>
+					
 				</PanelBody>
 					{ TypographySettings }
 

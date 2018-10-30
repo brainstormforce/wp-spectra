@@ -104,14 +104,14 @@ registerBlockType( "uagb/testimonial", {
 					id = { my_block_id }
 				>
 					<div className = { classnames(
-						"uagb-testinomial-content-wrap",
+						"uagb-testinomial__wrap",
 						...PositionClasses( props.attributes ),
 					) }>
-						<div className = "uagb-testinomial-content">
+						<div className = "uagb-tm__content">
 							{ desc }
-							<div className ="uagb-testimonial-meta">
-								<div className ="uagb-testimonial-meta-inner">
-									<div className ="uagb-testimonial-image-contnet">
+							<div className ="uagb-tm__meta">
+								<div className ="uagb-tm__meta-inner">
+									<div className ="uagb-tm__image-content">
 										{ is_image }	
 									</div>							
 									{ title_text }								

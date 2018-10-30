@@ -67,7 +67,7 @@ function TestimonialStyle( props ) {
                 };
 
             // Description Style
-            selectors['.uagb-testinomial-desc'] = {
+            selectors['.uagb-tm__desc'] = {
                     'font-size' : descFontSize+'px',
                     'color': descColor,
                     'margin-bottom': descSpace+'px',
