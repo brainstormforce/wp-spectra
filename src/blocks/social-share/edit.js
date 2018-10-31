@@ -298,7 +298,7 @@ class UAGBSocialShare extends Component {
 					className,
 					"uagb-buttons__outer-wrap"
 				) }
-				id={ `uagb-buttons-${ this.props.clientId }` }
+				id={ `uagb-ss-${ this.props.clientId }` }
 				>
 					<div className="uagb-buttons__wrap">
 						{
@@ -311,12 +311,13 @@ class UAGBSocialShare extends Component {
 								return (
 									<div
 										className={ classnames(
-											`uagb-buttons-repeater-${index}`,
+											`uagb-ss-repeater-${index}`,
 											"uagb-button__wrapper",
 											( isSelected && ( ( false !== this.state.isFocused && index === this.state.isFocused ) ) ) ? "uagb-button__active" : ""
 										) }
 										key={ index }
 									>
+									<a className=""></a>
 									{social.type}
 									</div>
 								)
