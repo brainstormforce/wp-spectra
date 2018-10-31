@@ -551,21 +551,21 @@ class UAGBtestimonial extends Component {
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
 						min={ 1 }
-						max={ 5 }
+						max={ test_item_count }
 					/>
 					<RangeControl
 						label={ __( "Columns (Tablet)" ) }
 						value={ tcolumns }
 						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 						min={ 1 }
-						max={ 3 }
+						max={ test_item_count }
 					/>
 					<RangeControl
 						label={ __( "Columns (Mobile)" ) }
 						value={ mcolumns }
 						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 						min={ 1 }
-						max={ 3 }
+						max={ test_item_count }
 					/>
 					</PanelBody>
 					{ carousal_settings }

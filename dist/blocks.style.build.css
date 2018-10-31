@@ -882,6 +882,10 @@ a.uagb-infobox-link-wrap {
   font-style: italic;
   line-height: 1em; }
 
+.is-carousel .uagb-testomonial__outer-wrap {
+  padding-left: 10px;
+  padding-right: 10px; }
+
 @media (max-width: 768px) {
   .uagb-tm__image-position-bottom .uagb-tm__image-content,
   .uagb-tm__image-position-bottom .uagb-testimonial-details {
