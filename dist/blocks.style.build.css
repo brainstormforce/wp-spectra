@@ -875,6 +875,7 @@ a.uagb-infobox-link-wrap {
 .uagb-tm__author-name,
 .editor-block-list__layout .uagb-tm__author-name.editor-rich-text__tinymce {
   margin-bottom: 5px;
+  font-size: 30px;
   line-height: 1em; }
 
 .uagb-tm__company {

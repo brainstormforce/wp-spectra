@@ -2,12 +2,12 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const ITEM_COUNT = 1
+const ITEM_COUNT = 3
 
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Testinomial" + i
+	var desc_text = "Click here to change this Testimonial-"+ i+ " text. With Ultimate add-ons new Testimonial Carousel block, you can make sure your customer testimonial's are presented in the most aesthetic and well-designed way.Testimonials offer a great way for gaining customer trust and getting more conversions."
 	var author_text    = "John Doe "
 	var company_text    = "Designation"
 	testimonial_block.push(
