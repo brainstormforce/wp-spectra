@@ -7,15 +7,16 @@
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
 }
-.uagb-testimonial-imgicon-style-circle .uagb-tm__image img {
+.uagb-tm__imgicon-style-circle .uagb-tm__image img {
     border-radius: 100%;
     -webkit-border-radius: 100%;
 }
-.uagb-testimonial-imgicon-style-square .uagb-tm__image img {
+.uagb-tm__imgicon-style-square .uagb-tm__image img {
     border-radius: 0%;
     -webkit-border-radius: 0%;
 }
-.uagb-tm__image img {
+.uagb-tm__image img,
+.slick-slide .uagb-tm__image img {
     display: inline-block;
     box-sizing: content-box;
 }
@@ -31,8 +32,8 @@
 .uagb-tm__meta-inner {
     display: inline-block;
 }
-.uagb-testimonial-image-position-aside .uagb-tm__image-content,
-.uagb-testimonial-image-position-aside .uagb-testimonial-details {
+.uagb-tm__image-position-bottom .uagb-tm__image-content,
+.uagb-tm__image-position-bottom .uagb-testimonial-details {
     display: table-cell;
     vertical-align: middle;
 }
@@ -40,7 +41,7 @@
     width: 100%;
     line-height: 1;
 }
-.uagb-testimonial-image-position-aside .uagb-tm__image-content {
+.uagb-tm__image-position-bottom .uagb-tm__image-content {
     padding-right: 10px;
 }
 .uagb-tm__author-name, .uagb-tm__company {
@@ -51,8 +52,8 @@
 }
 
 @media(max-width:768px) {
-    .uagb-testimonial-image-position-aside .uagb-tm__image-content, 
-    .uagb-testimonial-image-position-aside .uagb-testimonial-details {
+    .uagb-tm__image-position-bottom .uagb-tm__image-content, 
+    .uagb-tm__image-position-bottom .uagb-testimonial-details {
         display: block;
         vertical-align: middle;
     }

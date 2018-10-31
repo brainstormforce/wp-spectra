@@ -414,6 +414,7 @@ class UAGBtestimonial extends Component {
 			]
 		}
 
+		let image_enable = false;
 		// Set testinomial image panel
 		const tmControls = ( index ) => {
 			let image_val = null;
@@ -653,6 +654,8 @@ class UAGBtestimonial extends Component {
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
+								{ (imagePosition == 'top' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+
 								{  // Get description.
 									<Fragment>
 										<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
@@ -663,7 +666,7 @@ class UAGBtestimonial extends Component {
 								<div className ="uagb-tm__meta">
 									<div className ="uagb-tm__meta-inner">
 										
-										<TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} />	
+										{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
 															
 										{ //title_text
 											<Fragment>
