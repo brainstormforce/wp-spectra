@@ -2,14 +2,14 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const ITEM_COUNT = 3
+const ITEM_COUNT = 1
 
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + i
+	var desc_text = "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo. Testinomial" + i
 	var author_text    = "John Doe "
-	var company_text    = "BrainstormForce "
+	var company_text    = "Designation"
 	testimonial_block.push(
 		{
 			"description": desc_text,
@@ -72,7 +72,7 @@ const attributes = {
 	},	
 	descSpace: {
 		type: "number",
-		default : 10
+		default : 15
 	},		
 	block_id :{
 		type : 'string',
@@ -84,7 +84,7 @@ const attributes = {
 	},
 	imgLeftPadding :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	imgRightPadding :{
 		type: "number",
@@ -92,11 +92,11 @@ const attributes = {
 	},
 	imgTopPadding :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	imgBottomPadding :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},
 	iconImage: {
 		type: "object",

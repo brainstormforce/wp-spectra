@@ -69,24 +69,20 @@
 -ms-flex-item-align: center;
     align-self: center;
 }
-.uagb-tm__desc{
-    margin:0;
-    margin-bottom: 10px;
-    line-height: 1em;    
+.uagb-tm__desc,
+.editor-block-list__layout .uagb-tm__desc.editor-rich-text__tinymce{
+    margin-bottom: 15px;
 }
-.uagb-tm__author-name{
-    margin:0;    
+.uagb-tm__author-name,
+.editor-block-list__layout .uagb-tm__author-name.editor-rich-text__tinymce{ 
     margin-bottom: 5px;
-    font-style: italic;
     line-height: 1em;    
 }
 .uagb-tm__company{
     font-style: italic;
     line-height: 1em;
 }
-.uagb-tm__author-name.editor-rich-text__tinymce{
-    line-height: 1em;
-}
+
 @media(max-width:768px) {
     .uagb-tm__image-position-bottom .uagb-tm__image-content, 
     .uagb-tm__image-position-bottom .uagb-testimonial-details {

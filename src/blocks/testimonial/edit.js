@@ -244,6 +244,7 @@ class UAGBtestimonial extends Component {
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
+							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>											
@@ -253,6 +254,7 @@ class UAGBtestimonial extends Component {
 							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
+							initialPosition={30}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>	
@@ -262,6 +264,7 @@ class UAGBtestimonial extends Component {
 							onChange={ ( value ) => setAttributes( { designationFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
+							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
@@ -424,7 +427,7 @@ class UAGBtestimonial extends Component {
 			}
 			return (
 				<PanelBody key={index}
-					title={ __( "Testimonial" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
 				>
 				
