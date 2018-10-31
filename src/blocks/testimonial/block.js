@@ -16,6 +16,7 @@ import TestimonialImage from "./components/TestimonialImage";
 import edit from "./edit";
 import attributes from "./attributes";
 import "./style.scss"
+import "./editor.scss"
 const { __ } = wp.i18n
 
 // Import registerBlockType() from wp.blocks

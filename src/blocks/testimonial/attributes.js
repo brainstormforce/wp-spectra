@@ -155,16 +155,65 @@ const attributes = {
 	},	
 	rowGap: {
 		type: "number",
-		default : 30
+		default : 10
 	},
 	columnGap: {
 		type: "number",
-		default : 15
+		default : 10
 	},	
 	contentPadding: {
 		type: "number",
-		default : 15
-	},		
+		default : 5
+	},	
+	backgroundType: {
+		type: "string",
+	},
+	backgroundImage: {
+		type: "object",
+	},
+	backgroundPosition: {
+		type: "string",
+		default: "center-center"
+	},
+	backgroundSize: {
+		type: "string",
+		default: "cover"
+	},
+	backgroundRepeat: {
+		type: "string",
+		default: "no-repeat"
+	},
+	backgroundAttachment: {
+		type: "string",
+		default: "scroll"
+	},
+	backgroundColor:{
+		type: "string"
+	},
+	backgroundImageColor: {
+		type: "string"
+	},
+	borderStyle : {
+		type: "string",
+		default: "none"
+	},
+	borderWidth : {
+		type: "number",
+		default: "1"
+	},
+	borderRadius : {
+		type: "number"
+	},
+	borderColor : {
+		type: "string"
+	},	
+	backgroundOpacity:{
+		type: "number",
+	},
+	arrowColor:{
+		type: "string",
+		default: "#333"
+	}
 }
 
 export default attributes

@@ -62,7 +62,8 @@ class UAGBtestimonial extends Component {
 		this.togglePauseOnHover = this.togglePauseOnHover.bind( this )
 		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this )
 		this.toggleAutoplay     = this.toggleAutoplay.bind( this )
-
+		this.onRemoveImage 		= this.onRemoveImage.bind( this )
+		this.onSelectImage 		= this.onSelectImage.bind( this )
 	}
 
 	/*
@@ -178,6 +179,31 @@ class UAGBtestimonial extends Component {
 			setAttributes( { content: before } );
 		}
 	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { backgroundImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { backgroundImage: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+		const { backgroundImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { backgroundImage: null } )
+			return
+		}
+		setAttributes( { backgroundImage: media } )
+	}
+
 	render() {
 
 		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props;
@@ -220,7 +246,20 @@ class UAGBtestimonial extends Component {
 			arrowColor,	
 			rowGap,
 			columnGap,
-			contentPadding		
+			contentPadding,
+			backgroundType,
+			backgroundColor,
+			backgroundImage,
+			backgroundPosition,
+			backgroundSize,
+			backgroundRepeat,
+			backgroundAttachment,
+			backgroundImageColor,
+			backgroundOpacity,
+			borderStyle,
+			borderWidth ,
+			borderRadius,
+			borderColor,
 		} = attributes;
 
 		// Add CSS.
@@ -289,6 +328,11 @@ class UAGBtestimonial extends Component {
 									value: designationColor,
 									onChange: ( colorValue ) => setAttributes( { designationColor: colorValue } ),
 									label: __( 'Designation Color' ),
+								},
+								{
+									value: arrowColor,
+									onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
+									label: __( 'Arrow Color' ),
 								},								
 							] }
 						>
@@ -367,6 +411,175 @@ class UAGBtestimonial extends Component {
 				</PanelBody>
 			</Fragment>
 		);
+
+		const background_settings = (
+			<Fragment>
+				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Background Type" ) }
+							value={ backgroundType }
+							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "color", label: __( "Color" ) },
+								{ value: "image", label: __( "Image" ) },
+							] }
+						/>
+						{ "color" == backgroundType &&
+							<PanelColor
+								title={ __( "Background Color" ) }
+								colorValue={ backgroundColor } >
+								<ColorPalette
+									value={ backgroundColor }
+									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+						}
+						{ "image" == backgroundType &&
+							<Fragment>
+								<BaseControl
+									className="editor-bg-image-control"
+									label={ __( "Background Image" ) }>
+									<MediaUpload
+										title={ __( "Select Background Image" ) }
+										onSelect={ this.onSelectImage }
+										type="image"
+										value={ backgroundImage }
+										render={ ( { open } ) => (
+											<Button isDefault onClick={ open }>
+												{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
+											</Button>
+										) }
+									/>
+									{ backgroundImage &&
+										<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+											{ __( "Remove Image" ) }
+										</Button>
+									}
+								</BaseControl>
+								{ backgroundImage &&
+									<Fragment>
+										<SelectControl
+											label={ __( "Image Position" ) }
+											value={ backgroundPosition }
+											onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
+											options={ [
+												{ value: "top-left", label: __( "Top Left" ) },
+												{ value: "top-center", label: __( "Top Center" ) },
+												{ value: "top-right", label: __( "Top Right" ) },
+												{ value: "center-left", label: __( "Center Left" ) },
+												{ value: "center-center", label: __( "Center Center" ) },
+												{ value: "center-right", label: __( "Center Right" ) },
+												{ value: "bottom-left", label: __( "Bottom Left" ) },
+												{ value: "bottom-center", label: __( "Bottom Center" ) },
+												{ value: "bottom-right", label: __( "Bottom Right" ) },
+											] }
+										/>
+										<SelectControl
+											label={ __( "Attachment" ) }
+											value={ backgroundAttachment }
+											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
+											options={ [
+												{ value: "fixed", label: __( "Fixed" ) },
+												{ value: "scroll", label: __( "Scroll" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Repeat" ) }
+											value={ backgroundRepeat }
+											onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
+											options={ [
+												{ value: "no-repeat", label: __( "No Repeat" ) },
+												{ value: "repeat", label: __( "Repeat" ) },
+												{ value: "repeat-x", label: __( "Repeat-x" ) },
+												{ value: "repeat-y", label: __( "Repeat-y" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Size" ) }
+											value={ backgroundSize }
+											onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
+											options={ [
+												{ value: "auto", label: __( "Auto" ) },
+												{ value: "cover", label: __( "Cover" ) },
+												{ value: "contain", label: __( "Contain" ) }
+											] }
+										/>
+										<PanelColor
+											title={ __( "Image Overlay Color" ) }
+											colorValue={ backgroundImageColor }>
+											<ColorPalette
+												value={ backgroundImageColor }
+												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+												allowReset
+											/>
+										</PanelColor>
+									</Fragment>
+								}
+							</Fragment>
+						}						
+						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
+							<RangeControl
+								label={ __( "Opacity" ) }
+								value={ backgroundOpacity }
+								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+								initialPosition={0}
+							/>
+						}						
+					</PanelBody>
+					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Border Style" ) }
+							value={ borderStyle }
+							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "groove", label: __( "Groove" ) },
+								{ value: "inset", label: __( "Inset" ) },
+								{ value: "outset", label: __( "Outset" ) },
+								{ value: "ridge", label: __( "Ridge" ) },
+							] }
+						/>
+						{ "none" != borderStyle &&
+							<Fragment>
+								<RangeControl
+									label={ __( "Border Width" ) }
+									value={ borderWidth }
+									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Border Radius" ) }
+									value={ borderRadius }
+									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+									min={ 0 }
+									max={ 1000 }
+									allowReset
+								/>
+								<PanelColor
+									title={ __( "Border Color" ) }
+									colorValue={ borderColor } >
+									<ColorPalette
+										value={ borderColor }
+										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+										allowReset
+									/>
+								</PanelColor>
+							</Fragment>
+						}
+					</PanelBody>
+			</Fragment>
+			);
 
 		// Image sizes.
 		const imageSizeOptions = [
@@ -526,8 +739,8 @@ class UAGBtestimonial extends Component {
 
 									cloneTest_block.push( {
 										description: "Click here to change this Testimonial-"+ ( cloneTest_block.length + 1 )+ " text. With Ultimate add-ons new Testimonial Carousel block, you can make sure your customer testimonial's are presented in the most aesthetic and well-designed way.Testimonials offer a great way for gaining customer trust and getting more conversions." ,
-										name: cloneTest_block[ 0 ].name,
-										company: cloneTest_block[ 0 ].company,
+										name: "John Doe",
+										company: "Designation",
 										image: "",
 										} )
 								} ) }
@@ -634,7 +847,7 @@ class UAGBtestimonial extends Component {
 					{ TypographySettings }
 
 					{ marginSettings }
-
+					{ background_settings }
 				</InspectorControls>
 				</Fragment>
 			);
