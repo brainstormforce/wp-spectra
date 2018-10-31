@@ -199,6 +199,7 @@ class UAGBtestimonial extends Component {
 			descSpace,
 			iconimgStyle,
 			imagePosition,
+			imageAlignment,
 			block_id,
 			source_type,
 			nameSpace,
@@ -584,6 +585,17 @@ class UAGBtestimonial extends Component {
 								{ value: 'right', label: __( 'Right' ) },
 							] }
 						/>	
+						{ (imagePosition == 'left' || imagePosition == 'right') && 
+							<SelectControl
+							label={ __( 'Vertical ALignment' ) }
+							value={ imageAlignment }
+							onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
+							options={ [
+								{ value: 'top', label: __( 'Top' ) },
+								{ value: 'middle', label: __( 'Middle' ) },
+							] }
+							/>	
+						}
 						<SelectControl
 							label={ __( 'Image Style' ) }
 							value={ iconimgStyle }
@@ -654,30 +666,33 @@ class UAGBtestimonial extends Component {
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
-								{ (imagePosition == 'top' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
 
-								{  // Get description.
-									<Fragment>
-										<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
-											<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+								<div className ="uagb-tm__text-wrap">
+									{  // Get description.
+										<Fragment>
+											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+												<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+											</div>
+										</Fragment>
+									}
+									<div className ="uagb-tm__meta">
+										<div className ="uagb-tm__meta-inner">
+											
+											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+																
+											{ //title_text
+												<Fragment>
+													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
+														<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+														<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+													</div>
+												</Fragment>
+											}								
 										</div>
-									</Fragment>
-								}
-								<div className ="uagb-tm__meta">
-									<div className ="uagb-tm__meta-inner">
-										
-										{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
-															
-										{ //title_text
-											<Fragment>
-												<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-													<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-													<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-												</div>
-											</Fragment>
-										}								
 									</div>
 								</div>
+								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
 							</div>						
 						</div>												
 					)}

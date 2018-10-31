@@ -4,6 +4,12 @@
  * CSS for both Frontend+Backend.
  */
 
+.uagb-testomonial__wrap,
+.uagb-testomonial__wrap *{
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;    
+}
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
 }
@@ -24,10 +30,19 @@
 .uagb-tm__company {
     display: inline-block;
 }
+.uagb-tm__desc{
+    margin-bottom: 10px;
+}
 .uagb-tm__content {
     overflow: hidden;
     text-align: center;
     word-break: break-word;
+}
+.uagb-tm__image-position-left .uagb-tm__content,
+.uagb-tm__image-position-right .uagb-tm__content{
+    display: -ms-flexbox;
+    -js-display: flex;
+    display: flex;
 }
 .uagb-tm__meta-inner {
     display: inline-block;
@@ -50,7 +65,28 @@
 .uagb-testomonial__outer-wrap {
     border: 1px solid #aaa;
 }
-
+.uagb-tm__image-aligned-middle .uagb-tm__image-content{
+-ms-flex-item-align: center;
+    align-self: center;
+}
+.uagb-tm__desc{
+    margin:0;
+    margin-bottom: 10px;
+    line-height: 1em;    
+}
+.uagb-tm__author-name{
+    margin:0;    
+    margin-bottom: 5px;
+    font-style: italic;
+    line-height: 1em;    
+}
+.uagb-tm__company{
+    font-style: italic;
+    line-height: 1em;
+}
+.uagb-tm__author-name.editor-rich-text__tinymce{
+    line-height: 1em;
+}
 @media(max-width:768px) {
     .uagb-tm__image-position-bottom .uagb-tm__image-content, 
     .uagb-tm__image-position-bottom .uagb-testimonial-details {

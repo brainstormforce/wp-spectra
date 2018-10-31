@@ -36,7 +36,7 @@ function TestimonialStyle( props ) {
 
         var selectors = {};
             
-            selectors['.uagb-testinomial__wrap .uagb-tm__image-content'] = {
+            selectors['.uagb-testomonial__wrap .uagb-tm__image-content'] = {
                     'padding-left' : imgLeftPadding+'px',
                     'padding-right' : imgRightPadding+'px',                                
                     'padding-top' : imgTopPadding+'px',

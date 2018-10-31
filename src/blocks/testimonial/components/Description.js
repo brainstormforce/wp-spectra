@@ -28,7 +28,7 @@ class Description extends React.Component {
 		if( setAttributes !== 'not_set' ){
 			return (
 				<RichText
-	                tagName='p'
+	                tagName='div'
 	                value={ description }
 	                className='uagb-tm__desc'
 	                onChange={ ( value ) => { 
@@ -61,7 +61,7 @@ class Description extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName='p'
+	                tagName='div'
 	                value={ description }
 	                className='uagb-tm__desc'
 	            />			

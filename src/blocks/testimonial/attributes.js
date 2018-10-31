@@ -53,6 +53,10 @@ const attributes = {
 		type: "string",
 		default: "bottom"
 	},	
+	imageAlignment:{
+		type: "string",
+		default: "top"
+	},
 	authorFontSize: {
 		type: "number",
 	},	
@@ -64,10 +68,11 @@ const attributes = {
 	},
 	nameSpace: {
 		type: "number",
-		default : '10'
+		default : 5
 	},	
 	descSpace: {
 		type: "number",
+		default : 10
 	},		
 	block_id :{
 		type : 'string',
@@ -75,7 +80,7 @@ const attributes = {
 	},	
 	authorSpace :{
 		type: "number",
-		default: 10,
+		default: 5,
 	},
 	imgLeftPadding :{
 		type: "number",
