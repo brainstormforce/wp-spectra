@@ -632,7 +632,7 @@ class UAGBtestimonial extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap"
+					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
 				) }
 					id = { my_block_id }
 				>
