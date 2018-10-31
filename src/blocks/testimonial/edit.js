@@ -238,7 +238,7 @@ class UAGBtestimonial extends Component {
 						initialOpen={ false }
 					>						
 						<RangeControl
-							label={ __( "Content Font Size" ) }
+							label={ __( "Testimonial Font Size" ) }
 							value={ descFontSize }
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
@@ -247,7 +247,7 @@ class UAGBtestimonial extends Component {
 							allowReset
 						/>											
 						<RangeControl
-							label={ __( "Name Font Size" ) }
+							label={ __( "Author Font Size" ) }
 							value={ nameFontSize }
 							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
 							min={ 10 }
@@ -386,7 +386,7 @@ class UAGBtestimonial extends Component {
 		const settings = {
 			slidesToShow : columns,
 			slidesToScroll : 1,
-			autoplaySpeed : 2000,
+			autoplaySpeed : autoplaySpeed,
 			autoplay : autoplay,
 			infinite : infiniteLoop,
 			pauseOnHover : pauseOnHover,
