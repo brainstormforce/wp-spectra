@@ -39,7 +39,7 @@ const attributes = {
 	},
 	designationColor: {
 		type: "string",
-		default: "#333"		
+		default: "#888888"		
 	},	
 	authorColor: {
 		type: "string",
