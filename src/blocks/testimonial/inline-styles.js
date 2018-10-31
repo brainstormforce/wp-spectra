@@ -20,12 +20,13 @@ function TestimonialStyle( props ) {
             iconHover,
             iconimgBg,
             nameSpace,
-            imgLeftPadding,
-            imgRightPadding,
-            imgTopPadding,
-            imgBottomPadding,            
+            imgVrPadding,
+            imgHrPadding,
             imageSize,  
-            imageWidth,            
+            imageWidth,  
+            rowGap,
+            columnGap,
+            contentPadding          
         } = props.attributes;        
 
         if( props.clientId ){
@@ -35,12 +36,18 @@ function TestimonialStyle( props ) {
         }
 
         var selectors = {};
+
+            selectors['.uagb-testomonial__wrap'] = {
+                    'padding-left' : rowGap/2+'px',
+                    'padding-right' : rowGap/2+'px',                                
+                    'margin-bottom' : columnGap+'px',
+                }; 
             
             selectors['.uagb-testomonial__wrap .uagb-tm__image-content'] = {
-                    'padding-left' : imgLeftPadding+'px',
-                    'padding-right' : imgRightPadding+'px',                                
-                    'padding-top' : imgTopPadding+'px',
-                    'padding-bottom' : imgBottomPadding+'px',
+                    'padding-left' : imgHrPadding+'px',
+                    'padding-right' : imgHrPadding+'px',                                
+                    'padding-top' : imgVrPadding+'px',
+                    'padding-bottom' : imgVrPadding+'px',
                 }; 
 
             // Image
@@ -50,7 +57,8 @@ function TestimonialStyle( props ) {
                 }; 
             
             selectors['.uagb-tm__content'] = {                    
-                    'text-align' : headingAlign,                   
+                    'text-align' : headingAlign, 
+                    'padding-right' : contentPadding+'px',                  
                 };                       
 
             // Prefix Style

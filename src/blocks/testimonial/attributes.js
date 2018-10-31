@@ -82,11 +82,11 @@ const attributes = {
 		type: "number",
 		default: 5,
 	},
-	imgLeftPadding :{
+	imgVrPadding :{
 		type: "number",
 		default: 10,
 	},
-	imgRightPadding :{
+	imgHrPadding :{
 		type: "number",
 		default: 10,
 	},
@@ -152,6 +152,18 @@ const attributes = {
 	arrowColor :{
 		type: "string",
 		default: "#aaaaaa",
+	},	
+	rowGap: {
+		type: "number",
+		default : 30
+	},
+	columnGap: {
+		type: "number",
+		default : 15
+	},	
+	contentPadding: {
+		type: "number",
+		default : 15
 	},		
 }
 

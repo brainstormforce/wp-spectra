@@ -203,10 +203,8 @@ class UAGBtestimonial extends Component {
 			block_id,
 			source_type,
 			nameSpace,
-			imgLeftPadding,
-			imgRightPadding,
-			imgTopPadding,
-			imgBottomPadding,
+			imgHrPadding,
+			imgVrPadding,
 			iconImage,
 			imageSize,
 			imageWidth,
@@ -219,7 +217,10 @@ class UAGBtestimonial extends Component {
 			autoplay,
 			autoplaySpeed,
 			arrowSize,
-			arrowColor,			
+			arrowColor,	
+			rowGap,
+			columnGap,
+			contentPadding		
 		} = attributes;
 
 		// Add CSS.
@@ -301,9 +302,33 @@ class UAGBtestimonial extends Component {
 				<PanelBody
 						title={ __( "Spacing" ) }
 						initialOpen={ false }
-					>					
+					>
 					<RangeControl
-						label={ __( "Content Bottom Margin" ) }
+						label={ __( "Row Gap" ) }
+						value={ rowGap }
+						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Column Gap" ) }
+						value={ columnGap }
+						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Content Padding" ) }
+						value={ contentPadding }
+						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>					
+					<RangeControl
+						label={ __( "Testimonial Bottom Margin" ) }
 						value={ descSpace }
 						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 						min={ 0 }
@@ -319,49 +344,26 @@ class UAGBtestimonial extends Component {
 						max={ 50 }
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>								
-
-					<PanelBody
-						title={ __( "Image Padding" ) }
-						initialOpen={ true }
-					>
-						<RangeControl
-							label={ __( "Left Padding" ) }
-							value={ imgLeftPadding }
-							onChange={ ( value ) => setAttributes( { imgLeftPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Right Padding" ) }
-							value={ imgRightPadding }
-							onChange={ ( value ) => setAttributes( { imgRightPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Top Padding" ) }
-							value={ imgTopPadding }
-							onChange={ ( value ) => setAttributes( { imgTopPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Bottom Padding" ) }
-							value={ imgBottomPadding }
-							onChange={ ( value ) => setAttributes( { imgBottomPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					</PanelBody>
+					/>						
+					<RangeControl
+						label={ __( "Image Horizontal Padding" ) }
+						value={ imgHrPadding }
+						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Image Vertical Padding" ) }
+						value={ imgVrPadding }
+						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>						
+					
 				</PanelBody>
 			</Fragment>
 		);
@@ -523,10 +525,10 @@ class UAGBtestimonial extends Component {
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
-										description: "Take a look at these gorgeous testimonial slider examples, and see just how flexible this widget is. Testinomial test-" + ( cloneTest_block.length + 1 ),
+										description: "Click here to change this Testimonial-"+ ( cloneTest_block.length + 1 )+ " text. With Ultimate add-ons new Testimonial Carousel block, you can make sure your customer testimonial's are presented in the most aesthetic and well-designed way.Testimonials offer a great way for gaining customer trust and getting more conversions." ,
 										name: cloneTest_block[ 0 ].name,
 										company: cloneTest_block[ 0 ].company,
-										image: cloneTest_block[ 0 ].image,
+										image: "",
 										} )
 								} ) }
 								setAttributes( { test_block: cloneTest_block } )
