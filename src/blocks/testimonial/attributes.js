@@ -59,6 +59,9 @@ const attributes = {
 	},
 	authorFontSize: {
 		type: "number",
+	},
+	nameFontSize:{
+		type: "number",
 	},	
 	designationFontSize: {
 		type: "number",

@@ -7,14 +7,15 @@ import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import icon.
-import AuthorName from "./components/AuthorName";
-import Designation from "./components/Designation";
-import Description from "./components/Description";
-import PositionClasses from "./classes";
-import TestimonialStyle from "./inline-styles";
-import TestimonialImage from "./components/TestimonialImage";
+import AuthorName from "./components/AuthorName"
+import Designation from "./components/Designation"
+import Description from "./components/Description"
+import PositionClasses from "./classes"
+import TestimonialStyle from "./inline-styles"
+import TestimonialImage from "./components/TestimonialImage"
+import Slider from "react-slick"
 import edit from "./edit";
-import attributes from "./attributes";
+import attributes from "./attributes"
 import "./style.scss"
 import "./editor.scss"
 const { __ } = wp.i18n
@@ -68,60 +69,115 @@ registerBlockType( "uagb/testimonial", {
 	save: function( props ) {
 		const {
 			block_id,
-			className
+			className,
+			columns,
+			autoplaySpeed,
+			autoplay,
+			infiniteLoop,
+			pauseOnHover,
+			transitionSpeed,
+			tcolumns,
+			arrowSize,
+			mcolumns,
+			imagePosition,
+			test_block
 		} = props.attributes;
 
 		const my_block_id = 'uagb-testimonial-'+ block_id;
-		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : '';
 
-		var back_style = TestimonialStyle( props );
+		const NextArrow = '<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>';
+		const PrevArrow = '<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>';
 
-		// Get icon/Image components.
-		let is_image = <TestimonialImage attributes={ props.attributes } />;
+		const settings = {
+			slidesToShow : columns,
+			slidesToScroll : 1,
+			autoplaySpeed : autoplaySpeed,
+			autoplay : autoplay,
+			infinite : infiniteLoop,
+			pauseOnHover : pauseOnHover,
+			speed : transitionSpeed,
+			arrows : true,
+			dots : true,
+			rtl : false,
+			nextArrow: <NextArrow arrowSize={arrowSize}/>,
+			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
+			responsive : [
+				{
+					breakpoint : 1024,
+					settings : {
+						slidesToShow : tcolumns,
+						slidesToScroll : 1,
+					}
+				},
+				{
+					breakpoint : 767,
+					settings : {
+						slidesToShow : mcolumns,
+						slidesToScroll : 1,
+					}
+				}
+			]
+		}
 		
-
-		// Get description.
-		const desc = (
-			<Fragment>				
-				<div className = "uagb-testimonial-text-wrap">
-					<Description attributes={props.attributes} setAttributes = "not_set" props = { props }/>
-				</div>
-			</Fragment>
-		);
-
-		// Get Title and AuthorName components.
-		const title_text = (
-			<Fragment>
-				<div className = "uagb-testimonial-details">
-					<AuthorName attributes={ props.attributes } setAttributes = "not_set" props = { props }/>
-					<Designation attributes={ props.attributes} setAttributes = "not_set" props = { props }/>
-				</div>
-			</Fragment>
-		);
 
 		return (
 			<Fragment>
-				<div className={ className }
+				<div className={ classnames(
+					className,
+					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
+				) }
 					id = { my_block_id }
 				>
-					<div className = { classnames(
-						"uagb-testinomial__wrap",
+					{/*<Slider
+					className={ classnames(
+						"is-carousel",
+						`uagb-tm__columns-${ columns }`,
+						"uagb-tm__items"
+					) }					
+					{...settings}
+					>*/}
+
+					{ test_block.map( ( test, index ) => 
+
+						<div className = { classnames(
+						"uagb-testomonial__wrap",
 						...PositionClasses( props.attributes ),
-					) }>
-						<div className = "uagb-tm__content">
-							{ desc }
-							<div className ="uagb-tm__meta">
-								<div className ="uagb-tm__meta-inner">
-									<div className ="uagb-tm__image-content">
-										{ is_image }	
-									</div>							
-									{ title_text }								
+						) } key ={ "wrap-"+index } >
+							<div className = "uagb-tm__overlay"></div>
+							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
+
+								<div className ="uagb-tm__text-wrap">
+									{  // Get description.
+										<Fragment>
+											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+												<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
+											</div>
+										</Fragment>
+									}
+									<div className ="uagb-tm__meta">
+										<div className ="uagb-tm__meta-inner">
+											
+											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={props.attributes}  index_value = {index} /> }	
+																
+											{ //title_text
+												<Fragment>
+													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
+														<AuthorName attributes={props.attributes} setAttributes = "not_set"  props = { props } index_value = {index}/>
+														<Designation attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
+													</div>
+												</Fragment>
+											}								
+										</div>
+									</div>
 								</div>
-							</div>
-						</div>						
-					</div>
-				</div>
-			</Fragment>
+								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
+							</div>						
+						</div>												
+					)}
+				{/*</Slider>*/}
+			</div>
+		</Fragment>
 		)
 	}
 } )

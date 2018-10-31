@@ -885,7 +885,7 @@ class UAGBtestimonial extends Component {
 						) } key ={ "wrap-"+index } >
 							<div className = "uagb-tm__overlay"></div>
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
 
 								<div className ="uagb-tm__text-wrap">
 									{  // Get description.
@@ -898,7 +898,7 @@ class UAGBtestimonial extends Component {
 									<div className ="uagb-tm__meta">
 										<div className ="uagb-tm__meta-inner">
 											
-											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }	
 																
 											{ //title_text
 												<Fragment>
@@ -911,7 +911,7 @@ class UAGBtestimonial extends Component {
 										</div>
 									</div>
 								</div>
-								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
+								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
 							</div>						
 						</div>												
 					)}
