@@ -86,6 +86,14 @@
     padding-right: 10px;
 }
 
+.uagb-tm__overlay{
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background:transparent;
+}
 @media(max-width:768px) {
     .uagb-tm__image-position-bottom .uagb-tm__image-content, 
     .uagb-tm__image-position-bottom .uagb-testimonial-details {

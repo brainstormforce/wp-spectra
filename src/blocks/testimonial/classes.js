@@ -15,7 +15,6 @@ function PositionClasses( attributes ) {
     }
 
     iconimgStyle_class += "uagb-tm__bg-type-"+attributes.backgroundType+ " ";
-    //iconimgStyle_class += "uagb-tm__border";
 
     return [
         iconimgStyle_class        

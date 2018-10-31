@@ -209,6 +209,7 @@ const attributes = {
 	},	
 	backgroundOpacity:{
 		type: "number",
+		default: 0
 	},
 	arrowColor:{
 		type: "string",

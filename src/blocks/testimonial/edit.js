@@ -519,7 +519,7 @@ class UAGBtestimonial extends Component {
 								}
 							</Fragment>
 						}						
-						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
+						{ ( "image" == backgroundType && backgroundImage )  &&
 							<RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }
@@ -883,6 +883,7 @@ class UAGBtestimonial extends Component {
 						"uagb-testomonial__wrap",
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >
+							<div className = "uagb-tm__overlay"></div>
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
 								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes} testimonial={test} index_value = {index} /> }	
 

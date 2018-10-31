@@ -96,7 +96,6 @@ function TestimonialStyle( props ) {
 
             selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = {
                     'background-color': backgroundColor,
-                    'opacity':backgroundOpacity,
                 };  
 
             var position = backgroundPosition.replace( "-", " " )
@@ -106,7 +105,12 @@ function TestimonialStyle( props ) {
                     'background-attachment':backgroundAttachment,
                     'background-repeat':backgroundRepeat,
                     'background-size':backgroundSize,
-                };               
+                }; 
+
+            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay'] = {
+                    'background-color':backgroundImageColor,
+                    'opacity':'0.'+backgroundOpacity,
+                };                              
                
             if ( borderStyle != "none" ) {
                 selectors['.uagb-testomonial__wrap .uagb-tm__content'] = {
