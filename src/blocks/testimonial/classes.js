@@ -12,6 +12,12 @@ function PositionClasses( attributes ) {
 
     if( attributes.imagePosition == 'left' || attributes.imagePosition == 'right'){
     	iconimgStyle_class += "uagb-tm__image-aligned-"+attributes.imageAlignment+ " ";
+        if( attributes.stack !== "none" ){
+            iconimgStyle_class +="uagb-tm-stacked-"+attributes.stack+ " "
+            if( attributes.imagePosition === "right" ){
+                iconimgStyle_class += "uagb-tm-reverse-order-"+attributes.stack+ " "
+            }
+        }
     }
 
     iconimgStyle_class += "uagb-tm__bg-type-"+attributes.backgroundType+ " ";

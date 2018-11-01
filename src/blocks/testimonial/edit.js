@@ -213,6 +213,7 @@ class UAGBtestimonial extends Component {
 			borderWidth ,
 			borderRadius,
 			borderColor,
+			stack
 		} = attributes;
 
 		// Add CSS.
@@ -756,15 +757,28 @@ class UAGBtestimonial extends Component {
 							] }
 						/>	
 						{ (imagePosition == 'left' || imagePosition == 'right') && 
-							<SelectControl
-							label={ __( 'Vertical ALignment' ) }
-							value={ imageAlignment }
-							onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-							options={ [
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'middle', label: __( 'Middle' ) },
-							] }
-							/>	
+							<Fragment>
+								<SelectControl
+								label={ __( 'Vertical ALignment' ) }
+								value={ imageAlignment }
+								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
+								options={ [
+									{ value: 'top', label: __( 'Top' ) },
+									{ value: 'middle', label: __( 'Middle' ) },
+								] }
+								/>	
+								<SelectControl
+									label={ __( "Stack on" ) }
+									value={ stack }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "tablet", label: __( "Tablet" ) },
+										{ value: "mobile", label: __( "Mobile" ) },
+									] }
+									help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+									onChange={ ( value ) => setAttributes( { stack: value } ) }
+								/>
+							</Fragment>
 						}
 						<SelectControl
 							label={ __( 'Image Style' ) }

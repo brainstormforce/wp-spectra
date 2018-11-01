@@ -217,6 +217,10 @@ const attributes = {
 	arrowColor:{
 		type: "string",
 		default: "#333"
+	},
+	stack: {
+		type: "string",
+		default: "tablet"
 	}
 }
 

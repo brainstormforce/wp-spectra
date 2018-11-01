@@ -97,11 +97,64 @@
     position: absolute;
     background:transparent;
 }
+
+@media(max-width:976px) {
+    .uagb-tm__image-position-bottom .uagb-tm__image-content, 
+    .uagb-tm__image-position-bottom .uagb-testimonial-details {
+        display: block;
+        vertical-align: middle;
+    }
+    .uagb-tm__image-position-left .uagb-tm__content,
+    .uagb-tm__image-position-right .uagb-tm__content{
+        display: block;
+        -js-display: block;
+        display: block;
+    }
+
+    .uagb-tm__image-position-right.uagb-tm-stacked-tablet.uagb-tm-reverse-order-tablet .uagb-tm__content{
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        -js-display: inline-flex;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: inline-flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        -webkit-flex-direction: column-reverse;
+        -moz-box-orient: vertical;
+        -moz-box-direction: reverse;
+        flex-direction: column-reverse;
+    }
+}
+
 @media(max-width:768px) {
     .uagb-tm__image-position-bottom .uagb-tm__image-content, 
     .uagb-tm__image-position-bottom .uagb-testimonial-details {
         display: block;
         vertical-align: middle;
+    }
+    .uagb-tm__image-position-left .uagb-tm__content,
+    .uagb-tm__image-position-right .uagb-tm__content{
+        display: block;
+        -js-display: block;
+        display: block;
+    }
+
+    .uagb-tm__image-position-right.uagb-tm-stacked-mobile.uagb-tm-reverse-order-mobile .uagb-tm__content{
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        -js-display: inline-flex;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: inline-flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
+        -webkit-flex-direction: column-reverse;
+        -moz-box-orient: vertical;
+        -moz-box-direction: reverse;
+        flex-direction: column-reverse;
     }
 }
 
