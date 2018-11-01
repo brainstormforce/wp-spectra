@@ -7,7 +7,7 @@
 	// Callback function for all event listeners.
 	function uagbTmFunc() {
 		
-		if( $('.wp-block-uagb-testimonial').length > 0){
+		if( $('.wp-block-uagb-testimonial').length > 0){			
 			return true;
 		}else{
 			var testimonial            = $('.uagb-testomonial__outer-wrap');
@@ -37,8 +37,8 @@
 						arrows : true,
 						dots : true,
 						rtl : false,
-						nextArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="dashicons-arrow-left-alt2 dashicons" style= "font-size:'+arrowSize+';color: '+arrowColor+'"></span></button>',
-						prevArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="dashicons-arrow-right-alt2 dashicons" style= "font-size:'+arrowSize+';color: '+arrowColor+'" ></span></button>',
+						nextArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-left" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'"></span></button>',
+						prevArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-right" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'" ></span></button>',
 						responsive : [
 							{
 								breakpoint : 1024,
@@ -56,6 +56,10 @@
 							}
 						]
 					}
+				$( '#uagb-testimonial-'+block_id ).find( '.is-carousel' ).on('init', function(event, slick){
+				   var $items = slick.$dots.find('button');
+				   $items.addClass('far fa-circle');
+				});
 				$( '#uagb-testimonial-'+block_id ).find( '.is-carousel' ).slick( settings );
 			})
 		}

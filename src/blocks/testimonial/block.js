@@ -27,14 +27,6 @@ const {
 	RichText
 } = wp.editor
 
-const {
-	compose
-} = wp.compose;
-
-const {
-	withViewportMatch
-} = wp.viewport
-
 // Extend component
 const { Fragment } = wp.element
 

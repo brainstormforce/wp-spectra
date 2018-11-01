@@ -186,7 +186,6 @@
 
 .uagb-slick-carousal .slick-prev:before,
 .uagb-slick-carousal .slick-next:before {
-    font-family: dashicons;
     font-size: 35px;
     line-height: 1;
     opacity: .75;
@@ -198,6 +197,7 @@
 .uagb-slick-carousal .slick-prev {
     left: -45px;
     z-index: 1;
+    padding: 5px 10px;
 }
 
 [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-prev {
@@ -219,11 +219,13 @@
 
 .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
     right: -45px;
+    padding: 5px 10px;
 }
 
 [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
     left: -45px;
     right: auto;
+    padding: 5px 10px;
 }
 .uagb-slick-carousal .slick-next:before {
     content: '';
@@ -292,20 +294,19 @@
 }
 
 .uagb-slick-carousal ul.slick-dots li button:before {
-    font-family: dashicons;
-    font-size: 10px;
+    font-size: 8px;
     line-height: 20px;
     position: absolute;
     top: 0;
     left: 0;
     width: 20px;
-    height: 20px;
-    content: '\f159';
+    height: 20px;    
     text-align: center;
     opacity: .25;
     color: black;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    font-weight:900;
 }
 
 .uagb-slick-carousal ul.slick-dots li.slick-active button:before {

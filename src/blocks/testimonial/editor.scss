@@ -19,3 +19,20 @@
     font-size: 30px;
     line-height: 1em;    
 }
+
+.uagb-slick-carousal ul.slick-dots li button:before {
+    font-family: dashicons;
+    font-size: 10px;
+    line-height: 20px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    content: '\f159';
+    text-align: center;
+    opacity: .25;
+    color: black;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
