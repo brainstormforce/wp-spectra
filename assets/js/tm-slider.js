@@ -23,6 +23,7 @@
 					transitionSpeed = data.transitionSpeed,
 					tcolumns        = data.tcolumns,
 					arrowSize       = data.arrowSize,
+					arrowColor 	    = data.arrowColor,
 					mcolumns        = data.mcolumns;
 
 					var settings = {
@@ -36,8 +37,8 @@
 						arrows : true,
 						dots : true,
 						rtl : false,
-						nextArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style=""><i class="dashicons-arrow-left-alt2 dashicons"></i></button>',
-						prevArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button"><i class="dashicons-arrow-right-alt2 dashicons" ></i></button>',
+						nextArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="dashicons-arrow-left-alt2 dashicons" style= "font-size:'+arrowSize+';color: '+arrowColor+'"></span></button>',
+						prevArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="dashicons-arrow-right-alt2 dashicons" style= "font-size:'+arrowSize+';color: '+arrowColor+'" ></span></button>',
 						responsive : [
 							{
 								breakpoint : 1024,
