@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - Section Edit Class
+ * BLOCK: UAGB - Social Share Edit Class
  */
 
 // Import classes
@@ -7,7 +7,8 @@ import classnames from "classnames"
 import times from "lodash/times"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-//import styling from "./styling"
+import styling from "./styling"
+import links from "./links"
 
 const { __ } = wp.i18n
 
@@ -17,13 +18,10 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
-	URLInput,
 	MediaUpload
 } = wp.editor
 
@@ -37,32 +35,16 @@ const {
 
 class UAGBSocialShare extends Component {
 
-	constructor() {
-		super( ...arguments )
-		this.state = {
-			isHovered: "false",
-			isFocused: "false",
-		}
-	}
-
-
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-social-share-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}
-
-	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.isFocused ) {
-			this.setState( {
-				isFocused: "false",
-			} )
-		}
 	}
 
 	saveSocials( value, index ) {
@@ -91,28 +73,11 @@ class UAGBSocialShare extends Component {
 			social_count,
 			socials,
 			gap,
-			stack
+			stack,
+			current_url,
+			layout,
+			size
 		} = attributes
-
-		const onMouseOut = () => {
-			if ( "false" !== this.state.isHovered ) {
-				this.setState( {
-					isHovered: "false",
-				} )
-			}
-		}
-
-		const updateFocusState = ( index ) => {
-			this.setState( {
-				isFocused: index,
-			} )
-		}
-
-		const updateHoverState = ( index ) => {
-			this.setState( {
-				isHovered: index,
-			} )
-		}
 
 		const socialControls = ( index ) => {
 			return (
@@ -126,7 +91,7 @@ class UAGBSocialShare extends Component {
 						options={ [
 							{ value: "facebook", label: __( "Facebook" ) },
 							{ value: "twitter", label: __( "Twitter" ) },
-							{ value: "google", label: __( 'Google"Plu"' ) },
+							{ value: "google", label: __( "Google\"Plu\"" ) },
 							{ value: "pinterest", label: __( "Pinterest" ) },
 							{ value: "linkedin", label: __( "LinkedIn" ) },
 							{ value: "digg", label: __( "Digg" ) },
@@ -152,7 +117,7 @@ class UAGBSocialShare extends Component {
 							this.saveSocials( { image_icon: value }, index )
 						} }
 					/>
-					{ 'icon' == socials[ index ].image_icon &&
+					{ "icon" == socials[ index ].image_icon &&
 						<Fragment>
 							<p className="components-base-control__label">{__( "Icon" )}</p>
 							<FontIconPicker
@@ -167,7 +132,7 @@ class UAGBSocialShare extends Component {
 							/>
 						</Fragment>
 					}
-					{ 'image' == socials[ index ].image_icon &&
+					{ "image" == socials[ index ].image_icon &&
 						<Fragment>
 							<MediaUpload
 								title={ __( "Select Image" ) }
@@ -194,7 +159,7 @@ class UAGBSocialShare extends Component {
 							}
 						</Fragment>
 					}
-					{ 'icon' == socials[ index ].image_icon &&
+					{ "icon" == socials[ index ].image_icon &&
 						<PanelColorSettings
 							title={ __( "Color Settings" ) }
 							colorSettings={ [
@@ -218,7 +183,7 @@ class UAGBSocialShare extends Component {
 		var element = document.getElementById( "uagb-style-social-share-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			//element.innerHTML = styling( this.props )
+			element.innerHTML = styling( this.props )
 		}
 
 		return (
@@ -234,11 +199,11 @@ class UAGBSocialShare extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody
-						title={ __( "Button Count" ) }
+						title={ __( "Social Icon Count" ) }
 						initialOpen={ true }
 					>
 						<RangeControl
-							label={ __( "Number of Buttons" ) }
+							label={ __( "Number of Social Icons" ) }
 							value={ social_count }
 							onChange={ newCount => {
 
@@ -265,42 +230,63 @@ class UAGBSocialShare extends Component {
 								setAttributes( { social_count: newCount } )
 							} }
 							min={ 1 }
-							max={ 5 }
+							max={ 12 }
 						/>
 					</PanelBody>
 					{ times( social_count, n => socialControls( n ) ) }
 					<PanelBody
-						title={ __( "Spacing" ) }
+						title={ __( "General" ) }
 						initialOpen={ false }
 					>
+						<SelectControl
+							label={ __( "Layout" ) }
+							value={ layout }
+							options={ [
+								{ value: "horizontal", label: __( "Horizontal" ) },
+								{ value: "vertical", label: __( "Vertical" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { layout: value } ) }
+						/>
+						{ "horizontal" == layout &&
+							<Fragment>
+								<SelectControl
+									label={ __( "Stack on" ) }
+									value={ stack }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "desktop", label: __( "Desktop" ) },
+										{ value: "tablet", label: __( "Tablet" ) },
+										{ value: "mobile", label: __( "Mobile" ) },
+									] }
+									onChange={ ( value ) => setAttributes( { stack: value } ) }
+								/>
+								<p className="uagb-note">{ __( "Note: Choose on what breakpoint the Icons will stack." ) }</p>
+							</Fragment>
+						}
 						<RangeControl
-							label={ __( "Gap between Buttons" ) }
+							label={ __( "Size" ) }
+							value={ size }
+							onChange={ ( value ) => setAttributes( { size: value } ) }
+							min={ 0 }
+							max={ 500 }
+							initialPosition={40}
+						/>
+						<RangeControl
+							label={ __( "Gap between Icon / Image" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 100 }
 						/>
-						<SelectControl
-							label={ __( "Stack on" ) }
-							value={ stack }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "desktop", label: __( "Desktop" ) },
-								{ value: "tablet", label: __( "Tablet" ) },
-								{ value: "mobile", label: __( "Mobile" ) },
-							] }
-							onChange={ ( value ) => setAttributes( { stack: value } ) }
-						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
 					className,
-					"uagb-buttons__outer-wrap"
+					"uagb-social-share__outer-wrap",
+					`uagb-social-share__layout-${layout}`
 				) }
-				id={ `uagb-ss-${ this.props.clientId }` }
-				>
-					<div className="uagb-buttons__wrap">
+				id={ `uagb-social-share-${ this.props.clientId }` }>
+					<div className="uagb-social-share__wrap">
 						{
 							socials.map( ( social, index ) => {
 
@@ -308,17 +294,33 @@ class UAGBSocialShare extends Component {
 									return
 								}
 
+								let url = ""
+
+								if( null != current_url ) {
+									url = links[social.type] + encodeURI( current_url )
+								}
+
+								let image_icon_html = ""
+
+								if ( social.image_icon == "icon" ) {
+									if ( social.icon ) {
+										image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+									}
+								} else {
+									if ( social.image ) {
+										image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
+									}
+								}
+
 								return (
 									<div
 										className={ classnames(
 											`uagb-ss-repeater-${index}`,
-											"uagb-button__wrapper",
-											( isSelected && ( ( false !== this.state.isFocused && index === this.state.isFocused ) ) ) ? "uagb-button__active" : ""
+											"uagb-ss__wrapper"
 										) }
 										key={ index }
 									>
-									<a className=""></a>
-									{social.type}
+										<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 									</div>
 								)
 							})

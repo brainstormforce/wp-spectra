@@ -1,15 +1,15 @@
 /**
- * BLOCK: Multi Buttons
+ * BLOCK: Social Share
  */
 
 import classnames from "classnames"
-import times from "lodash/times"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
+import links from "./links"
 
 
 // Components
@@ -40,7 +40,7 @@ const {
 registerBlockType( "uagb/social-share", {
 	title: __( "Social Share" ),
 	description: __( "Add Social Sharing Icon / Image" ),
-	icon: UAGB_Block_Icons.buttons,
+	icon: UAGB_Block_Icons.social_share,
 	category: "uagb",
 	keywords: [
 		__( "social share" ),
@@ -51,8 +51,6 @@ registerBlockType( "uagb/social-share", {
 	edit,
 	save: props => {
 
-		return null
-
 		const { attributes, className } = props
 
 		const {
@@ -61,42 +59,56 @@ registerBlockType( "uagb/social-share", {
 			items,
 			socials,
 			social_count,
+			layout,
+			current_url
 		} = props.attributes
-
-		const renderButtons = ( index ) => {
-
-			if ( "undefined" != typeof socials[index] ) {
-
-				return (
-					<div
-						className={ classnames(
-							`uagb-ss-repeater-${index}`,
-							"uagb-ss__wrapper"
-						) }
-						key={index}
-					>
-						<RichText.Content
-							placeholder={ __( "Click Here" ) }
-							value={ socials[index].label }
-							tagName='a'
-							className='uagb-ss__link'
-							href={ socials[index].link }
-							target={ socials[index].target }
-						/>
-					</div>
-				)
-			}
-		}
 
 		return (
 			<div className={ classnames(
 				className,
-				"uagb-buttons__outer-wrap"
+				"uagb-social-share__outer-wrap",
+				`uagb-social-share__layout-${layout}`
 			) }
-			id={ `uagb-ss-${ block_id }` }
-			>
-				<div className="uagb-buttons__wrap">
-					{ times( social_count, n => renderButtons( n ) ) }
+			id={ `uagb-social-share-${ block_id}` }>
+				<div className="uagb-social-share__wrap">
+					{
+						socials.map( ( social, index ) => {
+
+							if ( social_count <= index ) {
+								return
+							}
+
+							let url = ""
+
+							if( null != current_url ) {
+								url = links[social.type] + encodeURI( current_url )
+							}
+
+							let image_icon_html = ""
+
+							if ( social.image_icon == "icon" ) {
+								if ( social.icon ) {
+									image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+								}
+							} else {
+								if ( social.image ) {
+									image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
+								}
+							}
+
+							return (
+								<div
+									className={ classnames(
+										`uagb-ss-repeater-${index}`,
+										"uagb-ss__wrapper"
+									) }
+									key={ index }
+								>
+									<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+								</div>
+							)
+						})
+					}
 				</div>
 			</div>
 		)

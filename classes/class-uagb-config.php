@@ -157,6 +157,29 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderColor'            => '',
 						),
 					),
+					'uagb/social-share'     => array(
+						'slug'       => '',
+						'title'      => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
+						'attributes' => array(
+							'align'        => 'center',
+							'social_count' => '1',
+							'socials'      => array(
+								array(
+									'type'             => 'facebook',
+									'image_icon'       => 'icon',
+									'icon'             => 'fab fa-facebook',
+									'image'            => '',
+									'icon_color'       => '#3a3a3a',
+									'icon_hover_color' => '#3a3a3a',
+								),
+							),
+							'gap'          => '10',
+							'size'         => '40',
+							'layout'       => 'horizontal',
+							'stack'        => 'none',
+						),
+					),
 					'uagb/team'             => array(
 						'slug'       => '',
 						'title'      => __( 'Team', 'ultimate-addons-for-gutenberg' ),

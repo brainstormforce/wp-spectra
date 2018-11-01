@@ -4,9 +4,9 @@
  * CSS for both Frontend+Backend.
  */
 
-.uagb-buttons__outer-wrap {
+.uagb-social-share__outer-wrap {
 
-	.uagb-buttons__wrap {
+	.uagb-social-share__wrap {
 		-js-display: flex;
 		display: -webkit-box;
 		display: -webkit-flex;
@@ -25,44 +25,47 @@
 		justify-content: center;
 	}
 
-	.uagb-button__active,
-	.uagb-button__active:focus {
-		box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, .8);
-	}
-
 	a.uagb-button__link:focus {
 		box-shadow: none;
 	}
 
-	.uagb-button__wrapper {
+	.uagb-ss__wrapper {
 		padding: 0;
-	    border: 1px solid #333;
-    	border-radius: 2px;
 	    margin-left: 5px;
 		margin-right: 5px;
 		-webkit-transition: all 0.5s;
 		-o-transition: all 0.5s;
 		transition: all 0.5s;
 		display: inline-flex;
+		width: 40px;
+		text-align: center;
 	}
 
-	.uagb-button__wrapper:first-child {
+	.uagb-ss__link,
+	.uagb-ss__source-wrap {
+		width: inherit;
+	}
+
+	.uagb-ss__link {
+		color: #3a3a3a;
+	}
+
+	.uagb-ss__source-icon,
+	.uagb-ss__source-icon:before {
+		font-size: 40px;
+		width: 40px;
+		height: 40px;
+	}
+
+	.uagb-ss__source-image {
+		width: 40px;
+	}
+
+	.uagb-ss__wrapper:first-child {
 		margin-left: 0;
 	}
 
-	.uagb-button__wrapper:last-child {
+	.uagb-ss__wrapper:last-child {
 		margin-right: 0;
-	}
-
-	.uagb-button__wrapper a.uagb-button__link {
-	    padding: 10px 14px;
-		width: 100%;
-		height: 100%;
-		color: #333;
-	}
-
-	.uagb-button__wrapper a.uagb-button__link,
-	.uagb-button__wrapper:hover a.uagb-button__link {
-		color: #333;
 	}
 }

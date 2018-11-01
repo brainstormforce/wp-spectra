@@ -157,6 +157,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/social-share':
+					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

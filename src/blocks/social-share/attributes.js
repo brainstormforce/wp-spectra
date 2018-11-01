@@ -10,9 +10,9 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 		{
 			"type": "facebook",
 			"image_icon": "icon",
-			"icon": "",
+			"icon": "fab fa-facebook",
 			"image": "",
-			"icon_color": "",
+			"icon_color": "#3a3a3a",
 			"icon_hover_color": "",
 		}
 	)
@@ -20,6 +20,9 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 
 const attributes = {
 	block_id: {
+		type: "string"
+	},
+	current_url: {
 		type: "string"
 	},
 	align: {
