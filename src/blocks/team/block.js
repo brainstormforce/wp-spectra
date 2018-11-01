@@ -80,7 +80,8 @@ registerBlockType( "uagb/team", {
 			fbLink,
 			linkedinLink,
 			pinLink,
-			socialTarget
+			socialTarget,
+			socialEnable
 		} = props.attributes
 
 		let size = ""
@@ -151,15 +152,16 @@ registerBlockType( "uagb/team", {
 								className='uagb-team__desc'
 							/>
 						</div>
-
-						<div className="uagb-team__social-icon-wrap">
-							<ul className="uagb-team__social-list">
-								{ "" != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
-								{ "" != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
-								{ "" != linkedinIcon && social_html( linkedinIcon, linkedinLink, socialTarget ) }
-								{ "" != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
-							</ul>
-						</div>
+						{ socialEnable &&
+							<div className="uagb-team__social-icon-wrap">
+								<ul className="uagb-team__social-list">
+									{ "" != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
+									{ "" != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
+									{ "" != linkedinIcon && social_html( linkedinIcon, linkedinLink, socialTarget ) }
+									{ "" != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
+								</ul>
+							</div>
+						}
 
 					</div>
 

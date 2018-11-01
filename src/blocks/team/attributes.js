@@ -92,19 +92,23 @@ const attributes = {
 	},
 	imgLeftMargin :{
 		type: "number",
-		default: 10,
+		default: 20,
 	},
 	imgRightMargin :{
 		type: "number",
-		default: 10,
+		default: 20,
 	},
 	imgTopMargin :{
 		type: "number",
-		default: 5,
+		default: 15,
 	},
 	imgBottomMargin :{
 		type: "number",
-		default: 5,
+		default: 15,
+	},
+	socialEnable: {
+		type: "boolean",
+		default: true
 	},
 	socialSpace :{
 		type: "number",
