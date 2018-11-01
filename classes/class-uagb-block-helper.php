@@ -502,7 +502,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color'   => $attr->backgroundColor,
 				),
 				' .uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
-					'background-image'   => ( isset( $attr->backgroundImage ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
+					'background-image'   => ( isset( $attr->backgroundImage['url'] ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
 					'background-position'=> $position,
                     'background-attachment'=> $attr->backgroundAttachment,
                     'background-repeat'=> $attr->backgroundRepeat,
