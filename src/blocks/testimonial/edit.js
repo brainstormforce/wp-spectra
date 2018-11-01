@@ -672,6 +672,18 @@ class UAGBtestimonial extends Component {
 				</PanelBody>
 			</Fragment>			
 		)
+
+		let cnt = 0;
+		test_block.map( ( item, thisIndex ) => {
+			let image_arr = test_block[thisIndex]			
+			if( image_arr && typeof image_arr !== 'undefined'){
+	            const image = image_arr['image']
+	            if( typeof image !== "undefined" && image !== null && image !=='' ){
+	            	cnt++;
+	            }
+	        }
+		} )	    
+
 		// Global Controls.
 		const inspect_control = (
 				<Fragment>
@@ -744,7 +756,7 @@ class UAGBtestimonial extends Component {
 					>
 					{ times( test_item_count, n => tmControls( n ) ) }
 
-					{  <Fragment>
+					{  cnt > 0 && <Fragment>
 						<SelectControl
 							label={ __( 'Image Position' ) }
 							value={ imagePosition }
