@@ -1,13 +1,11 @@
 // Import block dependencies and components.
 import classnames from "classnames"
-
-import AuthorName from "./components/AuthorName";
-import Designation from "./components/Designation";
-import Description from "./components/Description";
-import PositionClasses from "./classes";
-import TestimonialStyle from "./inline-styles";
-import TestimonialImage from "./components/TestimonialImage";
-
+import AuthorName from "./components/AuthorName"
+import Company from "./components/Company"
+import Description from "./components/Description"
+import PositionClasses from "./classes"
+import TestimonialStyle from "./inline-styles"
+import TestimonialImage from "./components/TestimonialImage"
 import times from "lodash/times"
 import Slider from "react-slick"
 
@@ -28,25 +26,10 @@ const {
 	PanelColor,
 	SelectControl,
 	RangeControl,
-	TabPanel,
 	ToggleControl,
-	TextControl,
 	BaseControl,
 	Button,
-	withNotices
 } = wp.components
-
-const {
-	compose
-} = wp.compose;
-
-const {
-	withSelect
-} = wp.data
-
-const {
-	withViewportMatch
-} = wp.viewport
 
 // Extend component
 const { Component, Fragment } = wp.element
@@ -150,36 +133,6 @@ class UAGBtestimonial extends Component {
 		setAttributes( { autoplay: ! autoplay } )
 	}
 
-	splitBlock( before, after, ...blocks ) {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props;
-
-		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
-			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( 'core/paragraph', { content: after } ) );
-		}
-
-		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks );
-		}
-
-		const { content } = attributes;
-		if ( ! before ) {
-			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] );
-		} else if ( content !== before ) {
-			// Only update content if it has in-fact changed. In case that user
-			// has created a new paragraph at end of an existing one, the value
-			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } );
-		}
-	}
-
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -213,12 +166,12 @@ class UAGBtestimonial extends Component {
 			test_item_count,
 			test_block,
 			headingAlign,
-			designationColor,
+			companyColor,
 			descColor,
 			authorColor,
 			prefixTag,
 			nameFontSize,
-			designationFontSize,
+			companyFontSize,
 			descFontSize,
 			separatorWidth,
 			separatorSpace,
@@ -298,9 +251,9 @@ class UAGBtestimonial extends Component {
 							allowReset
 						/>	
 						<RangeControl
-							label={ __( "Designation Font Size" ) }
-							value={ designationFontSize }
-							onChange={ ( value ) => setAttributes( { designationFontSize: value } ) }
+							label={ __( "Company Font Size" ) }
+							value={ companyFontSize }
+							onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
 							initialPosition={16}
@@ -324,9 +277,9 @@ class UAGBtestimonial extends Component {
 									label: __( 'Name Color' ),
 								},
 								{
-									value: designationColor,
-									onChange: ( colorValue ) => setAttributes( { designationColor: colorValue } ),
-									label: __( 'Designation Color' ),
+									value: companyColor,
+									onChange: ( colorValue ) => setAttributes( { companyColor: colorValue } ),
+									label: __( 'Company Color' ),
 								},
 								{
 									value: arrowColor,
@@ -737,9 +690,9 @@ class UAGBtestimonial extends Component {
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
-										description: "Click here to change this Testimonial-"+ ( cloneTest_block.length + 1 )+ " text. With Ultimate add-ons new Testimonial Carousel block, you can make sure your customer testimonial's are presented in the most aesthetic and well-designed way.Testimonials offer a great way for gaining customer trust and getting more conversions." ,
+										description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!" ,
 										name: "John Doe",
-										company: "Designation",
+										company: "Company"+ ( cloneTest_block.length + 1 ),
 										image: "",
 										} )
 								} ) }
@@ -903,7 +856,7 @@ class UAGBtestimonial extends Component {
 												<Fragment>
 													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
 														<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-														<Designation attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+														<Company attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
 													</div>
 												</Fragment>
 											}								

@@ -6,11 +6,11 @@
 function TestimonialStyle( props ) {
     const {
             headingAlign,
-            designationColor,
+            companyColor,
             descColor,
             authorColor,
             nameFontSize,
-            designationFontSize,
+            companyFontSize,
             descFontSize,
             descSpace,
             block_id,
@@ -76,8 +76,8 @@ function TestimonialStyle( props ) {
 
             // Title Style
             selectors['.uagb-tm__company'] = {
-                    'font-size' : designationFontSize+'px',
-                    'color': designationColor,
+                    'font-size' : companyFontSize+'px',
+                    'color': companyColor,
                 };
 
             // Description Style

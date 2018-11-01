@@ -7,9 +7,9 @@ const ITEM_COUNT = 3
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "Click here to change this Testimonial-"+ i+ " text. With Ultimate add-ons new Testimonial Carousel block, you can make sure your customer testimonial's are presented in the most aesthetic and well-designed way.Testimonials offer a great way for gaining customer trust and getting more conversions."
+	var desc_text = "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!"
 	var author_text    = "John Doe "
-	var company_text    = "Designation"
+	var company_text    = "Company"+i
 	testimonial_block.push(
 		{
 			"description": desc_text,
@@ -37,7 +37,7 @@ const attributes = {
 		type: "string",
 		default: "#333"
 	},
-	designationColor: {
+	companyColor: {
 		type: "string",
 		default: "#888888"		
 	},	
@@ -63,7 +63,7 @@ const attributes = {
 	nameFontSize:{
 		type: "number",
 	},	
-	designationFontSize: {
+	companyFontSize: {
 		type: "number",
 	},
 	descFontSize: {

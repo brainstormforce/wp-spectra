@@ -1,5 +1,5 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: Testimonial
  */
 
 // Import block dependencies and components.
@@ -8,10 +8,9 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import icon.
 import AuthorName from "./components/AuthorName"
-import Designation from "./components/Designation"
+import Company from "./components/Company"
 import Description from "./components/Description"
 import PositionClasses from "./classes"
-import TestimonialStyle from "./inline-styles"
 import TestimonialImage from "./components/TestimonialImage"
 import edit from "./edit";
 import attributes from "./attributes"
@@ -144,7 +143,7 @@ registerBlockType( "uagb/testimonial", {
 												<Fragment>
 													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
 														<AuthorName attributes={props.attributes} setAttributes = "not_set"  props = { props } index_value = {index}/>
-														<Designation attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
+														<Company attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
 													</div>
 												</Fragment>
 											}								

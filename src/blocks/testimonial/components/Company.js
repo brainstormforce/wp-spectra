@@ -8,7 +8,7 @@ const {
 
 const { __ } = wp.i18n;
 
-class Designation extends React.Component {
+class Company extends React.Component {
 
 	render() {
 
@@ -72,4 +72,4 @@ class Designation extends React.Component {
 	}
 }
 
-export default Designation
+export default Company

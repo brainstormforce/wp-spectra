@@ -490,8 +490,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom'  => $attr->nameSpace . 'px',					
 				),
 				' .uagb-tm__company' => array(
-					'color'   => $attr->designationColor,
-					'font-size'  => $attr->designationFontSize . 'px',
+					'color'   => $attr->companyColor,
+					'font-size'  => $attr->companyFontSize . 'px',
 				),
 				' .uagb-tm__desc' => array(
 					'color'   => $attr->descColor,
