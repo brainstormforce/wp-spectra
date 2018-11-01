@@ -106,7 +106,7 @@ class UAGB_Init_Blocks {
 			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
-		);
+		);		
 
 	} // End function editor_assets().
 

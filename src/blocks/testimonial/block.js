@@ -16,6 +16,7 @@ import TestimonialImage from "./components/TestimonialImage"
 import Slider from "react-slick"
 import edit from "./edit";
 import attributes from "./attributes"
+import SliderJs from "./slider"
 import "./style.scss"
 import "./editor.scss"
 const { __ } = wp.i18n
@@ -79,46 +80,11 @@ registerBlockType( "uagb/testimonial", {
 			tcolumns,
 			arrowSize,
 			mcolumns,
-			imagePosition,
-			test_block
+			test_block,
+			imagePosition
 		} = props.attributes;
 
 		const my_block_id = 'uagb-testimonial-'+ block_id;
-
-		const NextArrow = '<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-right-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>';
-		const PrevArrow = '<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><i className="dashicons-arrow-left-alt2 dashicons" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></i></button>';
-
-		const settings = {
-			slidesToShow : columns,
-			slidesToScroll : 1,
-			autoplaySpeed : autoplaySpeed,
-			autoplay : autoplay,
-			infinite : infiniteLoop,
-			pauseOnHover : pauseOnHover,
-			speed : transitionSpeed,
-			arrows : true,
-			dots : true,
-			rtl : false,
-			nextArrow: <NextArrow arrowSize={arrowSize}/>,
-			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
-			responsive : [
-				{
-					breakpoint : 1024,
-					settings : {
-						slidesToShow : tcolumns,
-						slidesToScroll : 1,
-					}
-				},
-				{
-					breakpoint : 767,
-					settings : {
-						slidesToShow : mcolumns,
-						slidesToScroll : 1,
-					}
-				}
-			]
-		}
-		
 
 		return (
 			<Fragment>
@@ -128,15 +94,7 @@ registerBlockType( "uagb/testimonial", {
 				) }
 					id = { my_block_id }
 				>
-					{/*<Slider
-					className={ classnames(
-						"is-carousel",
-						`uagb-tm__columns-${ columns }`,
-						"uagb-tm__items"
-					) }					
-					{...settings}
-					>*/}
-
+					
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
@@ -174,8 +132,7 @@ registerBlockType( "uagb/testimonial", {
 								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
 							</div>						
 						</div>												
-					)}
-				{/*</Slider>*/}
+					)}				
 			</div>
 		</Fragment>
 		)
