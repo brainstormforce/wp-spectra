@@ -13,10 +13,8 @@ import Description from "./components/Description"
 import PositionClasses from "./classes"
 import TestimonialStyle from "./inline-styles"
 import TestimonialImage from "./components/TestimonialImage"
-import Slider from "react-slick"
 import edit from "./edit";
 import attributes from "./attributes"
-import SliderJs from "./slider"
 import "./style.scss"
 import "./editor.scss"
 const { __ } = wp.i18n
@@ -84,8 +82,24 @@ registerBlockType( "uagb/testimonial", {
 			imagePosition
 		} = props.attributes;
 
-		const my_block_id = 'uagb-testimonial-'+ block_id;
+		const my_block_id = 'uagb-testimonial-'+ block_id
 
+		const sldier_data = []
+		sldier_data.push(
+			{
+				'block_id' : block_id,
+				'columns' : columns,
+				'autoplaySpeed' : autoplaySpeed,
+				'autoplay' : autoplay,
+				'infiniteLoop' : infiniteLoop,
+				'pauseOnHover' : pauseOnHover,
+				'transitionSpeed' : transitionSpeed,
+				'tcolumns' : tcolumns,
+				'arrowSize' : arrowSize,
+				'mcolumns' : mcolumns,
+			}
+		)
+	
 		return (
 			<Fragment>
 				<div className={ classnames(
@@ -93,8 +107,16 @@ registerBlockType( "uagb/testimonial", {
 					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
 				) }
 					id = { my_block_id }
+					data-slider = {JSON.stringify(sldier_data)}
 				>
-					
+		
+				<div
+					className={ classnames(
+						"is-carousel",
+						`uagb-tm__columns-${ columns }`,
+						"uagb-tm__items"
+					) }					
+					>
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
@@ -132,7 +154,8 @@ registerBlockType( "uagb/testimonial", {
 								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
 							</div>						
 						</div>												
-					)}				
+					)}	
+				</div>			
 			</div>
 		</Fragment>
 		)

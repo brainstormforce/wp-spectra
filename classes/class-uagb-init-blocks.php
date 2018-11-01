@@ -106,7 +106,16 @@ class UAGB_Init_Blocks {
 			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
 			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
-		);		
+		);	
+
+		// Testimonial Scripts.
+		wp_enqueue_script(
+			'uagb-tm-slider-js', // Handle.
+			UAGB_URL . 'assets/js/tm-slider.js',
+			array( 'jquery','uagb-slick-js' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);	
 
 	} // End function editor_assets().
 

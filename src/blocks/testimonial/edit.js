@@ -269,8 +269,7 @@ class UAGBtestimonial extends Component {
 		}		
 
 		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
-		
-				
+			
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
