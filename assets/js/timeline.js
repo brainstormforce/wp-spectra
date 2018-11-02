@@ -16,11 +16,11 @@ function uagbTimelineFunc() {
     timeline.each(function() {
         var line_inner          = $(this).find(".uagb-timeline__line__inner");
         var line_outer          = $(this).find(".uagb-timeline__line");
-        var $icon_class         = $(this).find(".uagb-timeline-marker");
-        var $card_last          = $(this).find(".uagb-timeline-field:last-child");
+        var $icon_class         = $(this).find(".uagb-timeline__arrow-center");
+        var $card_last          = $(this).find(".uagb-timeline__field:last-child");
         var $document           = $(document);
         // Set top and bottom for line.
-        var timeline_start_icon = $icon_class.first().position();
+        var timeline_start_icon = $icon_class.first().position();    
         var timeline_end_icon   = $icon_class.last().position();
         line_outer.css('top', timeline_start_icon.top );
 
@@ -28,14 +28,14 @@ function uagbTimelineFunc() {
         var last_item_top = $card_last.offset().top - $(this).offset().top;
         var $last_item, parent_top;
 
-        if( $(this).hasClass('uagb-timeline-arrow-center')) {
+        if( $(this).hasClass('uagb-timeline__arrow-center')) {
 
             line_outer.css('bottom', timeline_end_icon.top );
 
             parent_top = last_item_top - timeline_start_icon.top;
             $last_item = parent_top + timeline_end_icon.top;
 
-        } else if( $(this).hasClass('uagb-timeline-arrow-top')) {
+        } else if( $(this).hasClass('uagb-timeline__arrow-top')) {
 
             var top_height = timeline_card_height - timeline_end_icon.top;
             line_outer.css('bottom', top_height );
@@ -93,7 +93,7 @@ function uagbTimelineFunc() {
         var timeline_icon_pos, timeline_card_pos;
         var elementPos, elementCardPos;
         var timeline_icon_top, timeline_card_top;
-        var timeline_icon = $(this).find(".uagb-timeline-marker"),
+        var timeline_icon = $(this).find(".uagb-timeline__marker"),
             animate_border  = $(this).find(".animate-border");
 
         for (var i = 0; i < timeline_icon.length; i++) {
@@ -119,14 +119,14 @@ function uagbTimelineFunc() {
             if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
 
                 // Add classes if element is above than half of viewport.
-                timeline_icon[i].classList.remove("out-view-timeline-icon");
-                timeline_icon[i].classList.add("in-view-timeline-icon");
+                timeline_icon[i].classList.remove("out-view-uagb-timeline__icon");
+                timeline_icon[i].classList.add("uagb-timeline__in-view_icon");
 
             } else {
 
                 // Remove classes if element is below than half of viewport.
-                timeline_icon[i].classList.add("out-view-timeline-icon");
-                timeline_icon[i].classList.remove("in-view-timeline-icon");
+                timeline_icon[i].classList.add("out-view-uagb-timeline__icon");
+                timeline_icon[i].classList.remove("uagb-timeline__in-view_icon");
 
             }
         }

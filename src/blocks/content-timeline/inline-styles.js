@@ -43,19 +43,19 @@ function contentTimelineStyle( props ) {
 
             var selectors = {};
 
-            selectors['.uagb-timeline--center .uagb-day-right .uagb-timeline-arrow:after'] = {
+            selectors['.uagb-timeline__center .uagb-tmimeline__day-right .uagb-timeline__arrow:after'] = {
                     'border-left-color' : backgroundColor,
                 };
 
-            selectors['.uagb-timeline--right .uagb-day-right .uagb-timeline-arrow:after'] = {
+            selectors['.uagb-timeline__right .uagb-tmimeline__day-right .uagb-timeline__arrow:after'] = {
                     'border-left-color' : backgroundColor
                 };
 
-            selectors['.uagb-timeline--center .uagb-day-left .uagb-timeline-arrow:after'] = {
+            selectors['.uagb-timeline__center .uagb-timeline__day-left .uagb-timeline__arrow:after'] = {
                     'border-right-color' : backgroundColor
                 };
 
-            selectors['.uagb-timeline--left .uagb-day-left .uagb-timeline-arrow:after'] = {
+            selectors['.uagb-timeline__left .uagb-timeline__day-left .uagb-timeline__arrow:after'] = {
                     'border-right-color' : backgroundColor
                 };
 
@@ -68,19 +68,19 @@ function contentTimelineStyle( props ) {
                     'width' : separatorwidth+'px',
                 };
 
-            selectors['.uagb-timeline--right .uagb-timeline__line'] = {
+            selectors['.uagb-timeline__right .uagb-timeline__line'] = {
                     'right' : 'calc( '+connectorBgsize+'px / 2 )',
                 };
 
-            selectors['.uagb-timeline--left .uagb-timeline__line'] = {
+            selectors['.uagb-timeline__left .uagb-timeline__line'] = {
                     'left' : 'calc( '+connectorBgsize+'px / 2 )',
                 };
 
-            selectors['.uagb-timeline--center .uagb-timeline__line'] = {
+            selectors['.uagb-timeline__center .uagb-timeline__line'] = {
                     'right' : 'calc( '+connectorBgsize+'px / 2 )',
                 };
 
-            selectors['.uagb-timeline-marker'] = {
+            selectors['.uagb-timeline__marker'] = {
                     'background-color' : separatorBg,
                     'min-height': connectorBgsize+'px',
                     'min-width' : connectorBgsize+'px',
@@ -88,95 +88,95 @@ function contentTimelineStyle( props ) {
                     'border': borderwidth+'px solid'+separatorBorder,
                 };
 
-            selectors['.uagb-timeline--left .uagb-timeline-left .uagb-timeline-arrow'] = {
+            selectors['.uagb-timeline__left .uagb-timeline__left .uagb-timeline__arrow'] = {
                     'height' : connectorBgsize+'px',
                 };
 
-            selectors['.uagb-timeline--right .uagb-timeline-right .uagb-timeline-arrow'] = {
+            selectors['.uagb-timeline__right .uagb-timeline__right .uagb-timeline__arrow'] = {
                     'height' : connectorBgsize+'px',
                 };
 
-            selectors['.uagb-timeline--center .uagb-timeline-left .uagb-timeline-arrow'] = {
+            selectors['.uagb-timeline__center .uagb-timeline__left .uagb-timeline__arrow'] = {
                     'height' : connectorBgsize+'px',
                 };
 
-            selectors['.uagb-timeline--center .uagb-timeline-right .uagb-timeline-arrow'] = {
+            selectors['.uagb-timeline__center .uagb-timeline__right .uagb-timeline__arrow'] = {
                     'height' : connectorBgsize+'px',
                 };
 
-            selectors['.uagb-timeline--center .uagb-timeline-marker'] = {
+            selectors['.uagb-timeline__center .uagb-timeline__marker'] = {
                     'margin-left' : horizontalSpace+'px',
                     'margin-right': horizontalSpace+'px',
                 };
 
-            selectors['.uagb-timeline-field:not(:last-child)'] = {
+            selectors['.uagb-timeline__field:not(:last-child)'] = {
                     'margin-bottom' : verticalSpace+'px',
                 };
 
-            selectors['.uagb-timeline-date-hide.uagb-date-inner'] = {
+            selectors['.uagb-timeline__date-hide.uagb-timeline__date-inner'] = {
                     'margin-bottom' : dateBottomspace+'px',
                     'color': dateColor,
                     'font-size' : dateFontsize+'px',        
                 };
 
-            selectors['.uagb-timeline--left .uagb-day-new.uagb-day-left'] = {
+            selectors['.uagb-timeline__left .uagb-timeline__day-new.uagb-timeline__day-left'] = {
                     'margin-left' : horizontalSpace+'px',
                     'color': dateColor,
                     'font-size' : dateFontsize+'px',     
                 };
 
-            selectors['.uagb-timeline--right .uagb-day-new.uagb-day-right'] = {
+            selectors['.uagb-timeline__right .uagb-timeline__day-new.uagb-tmimeline__day-right'] = {
                     'margin-right' : horizontalSpace+'px',
                     'color': dateColor,
                     'font-size' : dateFontsize+'px',     
                 };
 
-            selectors['.uagb-date-new'] = {
+            selectors['.uagb-timeline__date-new'] = {
                     'color': dateColor,
                     'font-size' : dateFontsize+'px',     
                 };
 
-            selectors['.uagb-events-inner-new'] = {
+            selectors['.uagb-timeline__events-inner-new'] = {
                     'border-radius' : borderRadius+'px',
                     'padding': bgPadding+'px',
                 };
 
-            selectors['.uagb-timeline-main .timeline-icon-new'] = {
+            selectors['.uagb-timeline__main .uagb-timeline__icon-new'] = {
                     'color': iconColor,
                     'font-size' : iconSize+'px',     
                 };
        
-            selectors['.uagb-timeline-field.animate-border:hover .uagb-timeline-marker'] = {
+            selectors['.uagb-timeline__field.animate-border:hover .uagb-timeline__marker'] = {
                     'background' : iconBgHover,  
                     'border-color': borderHover,
                 };
 
-            selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon'] = {
+            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-t`imeline__in-view_icon`'] = {
                     'background' : iconBgFocus,  
                     'border-color': borderFocus,    
                 };
 
 
-            selectors['.uagb-timeline-field.animate-border:hover .timeline-icon-new'] = {
+            selectors['.uagb-timeline__field.animate-border:hover .uagb-timeline__icon-new'] = {
                     'color': iconHover,
                 };
 
-            selectors['.uagb-timeline-main .uagb-timeline-marker.in-view-timeline-icon .timeline-icon-new'] = {
+            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-t`imeline__in-view_icon` .uagb-timeline__icon-new'] = {
                     'color': iconFocus,
                 };
 
 
              /* Generate Responsive CSS for timeline */
         var response_selector = {};
-        response_selector['.uagb-timeline--center .uagb-timeline-marker'] = {
+        response_selector['.uagb-timeline__center .uagb-timeline__marker'] = {
             'margin-left' : '0px',
             'margin-right' : '0px',
         };
 
-        response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-left'] = {
+        response_selector['.uagb-timeline__center .uagb-timeline__day-new.uagb-timeline__day-left'] = {
             'margin-left' : horizontalSpace+'px',
         };
-        response_selector['.uagb-timeline--center .uagb-day-new.uagb-day-right'] = {
+        response_selector['.uagb-timeline__center .uagb-timeline__day-new.uagb-tmimeline__day-right'] = {
             'margin-left' : horizontalSpace+'px',
         };
 
@@ -184,9 +184,9 @@ function contentTimelineStyle( props ) {
 
         for( var i in selectors ) {
 
-            var cond1 = i.includes('uagb-timeline--center');
-            var cond2 = i.includes('uagb-timeline--right');
-            var cond3 = i.includes('uagb-timeline--left');
+            /*var cond1 = i.includes('uagb-timeline__center');
+            var cond2 = i.includes('uagb-timeline__right');
+            var cond3 = i.includes('uagb-timeline__left');
 
             var cond = (cond1 || cond2 || cond3 );
 
@@ -194,7 +194,9 @@ function contentTimelineStyle( props ) {
                 styling_css += '.'+clientId+' '+i + ' { ';
             }else{
                 styling_css += '.'+clientId+i + ' { ';
-            }
+            }*/
+
+             styling_css += '#uagb-ctm-'+clientId+' '+i + ' { ';           
             
             var sel = selectors[i];
             var css = '';
@@ -212,7 +214,7 @@ function contentTimelineStyle( props ) {
         for( var i in response_selector ) {
 
            
-            styling_css += '.'+clientId+i + ' { ';           
+            styling_css += '#uagb-ctm-'+clientId+' '+i + ' { ';           
             
             var sel = response_selector[i];
             var css = '';

@@ -18,7 +18,7 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
-import contentTimelineStyle from './inline-styles'
+//import contentTimelineStyle from './inline-styles'
 // Components
 const { __ } = wp.i18n
 
@@ -99,28 +99,28 @@ registerBlockType( 'uagb/content-timeline', {
         } = props.attributes;
 
         /* Arrow position */
-        var arrow_align_class  = 'uagb-timeline-arrow-top';
+        var arrow_align_class  = 'uagb-timeline__arrow-top';
         if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-timeline-arrow-center';
+            arrow_align_class = 'uagb-timeline__arrow-center';
         }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-timeline-arrow-bottom';
+            arrow_align_class = 'uagb-timeline__arrow-bottom';
         } 
 
         /* Alignmnet */
-        var align_class = 'uagb-timeline--center '+ arrow_align_class;
+        var align_class = 'uagb-timeline__center '+ arrow_align_class;
         if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline--left ' + arrow_align_class;
+            align_class = 'uagb-timeline__left ' + arrow_align_class;
         }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline--right '+ arrow_align_class;
+            align_class = 'uagb-timeline__right '+ arrow_align_class;
         }     
 
-        var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
+        var responsive_class = 'uagb-timeline__responsive-tablet uagb-timeline';
         var tm_block_id_new = 'uagb-'+tm_client_id;
         var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
         var block_id = 'uagb-'+tm_client_id;
 
         /* Style for elements */
-        var front_style = contentTimelineStyle( props );        
+        //var front_style = contentTimelineStyle( props );        
         
         const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -128,11 +128,11 @@ registerBlockType( 'uagb/content-timeline', {
         var day_align_class = '';
 
         if( timelinAlignment == 'left' ){
-            content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-            day_align_class = 'uagb-day-new uagb-day-left';
+            content_align_class = 'uagb-timeline__widget uagb-timeline__left';
+            day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
         }else if(timelinAlignment == 'right'){
-            content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-            day_align_class = 'uagb-day-new uagb-day-right';
+            content_align_class = 'uagb-timeline__widget uagb-timeline__right';
+            day_align_class = 'uagb-timeline__day-new uagb-tmimeline__day-right';
         }     
         let data_copy     = [ ...tm_content ];
         var display_inner_date = false;
@@ -141,39 +141,39 @@ registerBlockType( 'uagb/content-timeline', {
                 <div className={ className } >                     
                     <div className = { tl_class }>
                         <div className = "uagb-timeline-wrapper">
-                            <div className = "uagb-timeline-main">   
-                                <div className = "uagb-days uagb-timeline-infinite-load">
-                                    <style dangerouslySetInnerHTML={{ __html: front_style }}></style>
+                            <div className = "uagb-timeline__main">   
+                                <div className = "uagb-timeline__days uagb-timeline-infinite-load">
+                                    {/*<style dangerouslySetInnerHTML={{ __html: front_style }}></style>*/}
                                     { 
                                         tm_content.map((post,index) => { 
                                             var second_index = 'uagb-'+index;
                                             if(timelinAlignment == 'center'){
                                                 display_inner_date = true;
                                                 if(index % 2 == '0'){
-                                                    content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-                                                    day_align_class = 'uagb-day-new uagb-day-right';
+                                                    content_align_class = 'uagb-timeline__widget uagb-timeline__right';
+                                                    day_align_class = 'uagb-timeline__day-new uagb-tmimeline__day-right';
                                                 }else{
-                                                    content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-                                                    day_align_class = 'uagb-day-new uagb-day-left';
+                                                    content_align_class = 'uagb-timeline__widget uagb-timeline__left';
+                                                    day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
                                                 }  
                                             }   
                                             const Tag = headingTag;  
-                                            var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
+                                            var icon_class = 'uagb-timeline__icon-new out-view-uagb-timeline__icon '+icon;  
                                                 
                                             return (
-                                                <article className = "uagb-timeline-field animate-border"  key={index}>
+                                                <article className = "uagb-timeline__field animate-border"  key={index}>
                                                     <div className = {content_align_class}> 
                                                         
-                                                        <div className = "uagb-timeline-marker out-view-timeline-icon">
+                                                        <div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
                                                             <i className = {icon_class}></i>
                                                         </div>
                                                         
                                                         <div className = {day_align_class}>
                                                             <div className="uagb-events-new" style = {{textAlign:align}}>
-                                                                <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                                    <div className="uagb-timeline-date-hide uagb-date-inner" style = {{textAlign:align}}>                                                                
+                                                                <div className="uagb-timeline__events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
+                                                                    <div className="uagb-timeline__date-hide uagb-timeline__date-inner" style = {{textAlign:align}}>                                                                
                                                                         { displayPostDate && t_date[index].title &&
-                                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'inner-date-new' }>
+                                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-timeline__inner-date-new' }>
                                                                                 { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
                                                                             </div>
                                                                         }  
@@ -181,13 +181,13 @@ registerBlockType( 'uagb/content-timeline', {
 
                                                                     <div className="uagb-content">
                                                                         
-                                                                        <div className="uagb-timeline-heading-text" style={{                                                                            
+                                                                        <div className="uagb-timeline__heading-text" style={{                                                                            
                                                                                     marginBottom: headSpace + 'px',
                                                                                 }}> 
                                                                             <RichText.Content
                                                                                 tagName={ headingTag }
                                                                                 value={ post.time_heading }
-                                                                                className='uagb-timeline-heading entry-title'                                                                              
+                                                                                className='uagb-timeline__heading entry-title'                                                                              
                                                                                 style={{                                                                   
                                                                                     fontSize: headFontSize + 'px',
                                                                                     color: headingColor,
@@ -208,7 +208,7 @@ registerBlockType( 'uagb/content-timeline', {
                                                                             }}
                                                                         />
 
-                                                                        <div className="uagb-timeline-arrow"></div> 
+                                                                        <div className="uagb-timeline__arrow"></div> 
 
                                                                     </div>
 
@@ -216,9 +216,9 @@ registerBlockType( 'uagb/content-timeline', {
                                                             </div>
                                                         </div>
 
-                                                        { display_inner_date && <div className = "uagb-timeline-date-new">                                                                                                   
+                                                        { display_inner_date && <div className = "uagb-timeline__date-new">                                                                                                   
                                                             { displayPostDate && t_date[index].title &&
-                                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-date-new' }>
+                                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-timeline__date-new' }>
                                                                     { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
                                                                 </div>
                                                             } 
