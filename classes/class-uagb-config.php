@@ -49,6 +49,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'subHeadSpace'    => '',
 						),
 					),
+					'uagb/google-map'       => array(
+						'slug'       => '',
+						'title'      => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
+						'default'    => true,
+						'attributes' => array(
+							'block_id' => '',
+							'height'   => '300',
+						),
+					),
 					'uagb/info-box'         => array(
 						'slug'       => '',
 						'title'      => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
