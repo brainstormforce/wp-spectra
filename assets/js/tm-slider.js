@@ -61,6 +61,7 @@
 				   $items.addClass('far fa-circle');
 				});
 				$( '#uagb-testimonial-'+block_id ).find( '.is-carousel' ).slick( settings );
+				$(".uagb-section__inner-wrap").find('#uagb-testimonial-'+block_id).addClass("uagb-tm-parent");
 			})
 		}
 	}
