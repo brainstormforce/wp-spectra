@@ -20,10 +20,6 @@ const {
 	registerBlockType
 } = wp.blocks
 
-const {
-	RichText
-} = wp.editor
-
 
 /**
  * Register: as Gutenberg Block.
