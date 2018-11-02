@@ -469,6 +469,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'   => ($attr->columnGap)/2 . 'px',
 					'padding-right'  => ($attr->columnGap)/2 . 'px',
 					'margin-bottom' => $attr->rowGap . 'px',
+					'border-color'   => $attr->borderColor,
+					'border-style'   => $attr->borderStyle,
+					'border-width'  => $attr->borderWidth . 'px',
+					'border-radius'  => $attr->borderRadius . 'px',
 				),
 				' .uagb-testomonial__wrap .uagb-tm__image-content' => array(
 					'padding-left'   => $attr->imgHrPadding . 'px',
@@ -501,7 +505,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-testomonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
 					'background-color'   => $attr->backgroundColor,
 				),
-				' .uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
+				' .uagb-testomonial__wrap.uagb-tm__bg-type-image' => array(
 					'background-image'   => ( isset( $attr->backgroundImage['url'] ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
 					'background-position'=> $position,
                     'background-attachment'=> $attr->backgroundAttachment,
@@ -511,13 +515,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
 					'background-color'   => $attr->backgroundImageColor,
 					'opacity'   => '0.'.$attr->backgroundOpacity,					
-				),
-				' .uagb-testomonial__wrap .uagb-tm__content' => array(
-					'border-color'   => $attr->borderColor,
-					'border-style'   => $attr->borderStyle,
-					'border-width'  => $attr->borderWidth . 'px',
-					'border-radius'  => $attr->borderRadius . 'px',					
-				),
+				),				
 			);
 
 			$r_selectors = array(

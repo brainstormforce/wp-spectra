@@ -41,6 +41,7 @@
     text-align: center;
     word-break: break-word;
     padding:15px;
+    border-radius:inherit;
 }
 .uagb-tm__image-position-left .uagb-tm__content,
 .uagb-tm__image-position-right .uagb-tm__content{
@@ -96,6 +97,7 @@
     left: 0;
     position: absolute;
     background:transparent;
+    border-radius:inherit;
 }
 
 @media(max-width:976px) {

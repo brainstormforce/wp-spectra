@@ -47,6 +47,10 @@ function TestimonialStyle( props ) {
                     'padding-left' : columnGap/2+'px',
                     'padding-right' : columnGap/2+'px',                                
                     'margin-bottom' : rowGap+'px',
+                    'border-color': borderColor,
+                    'border-style':borderStyle,
+                    'border-width':borderWidth + "px",
+                    'border-radius':borderRadius + "px",    
                 }; 
             
             selectors['.uagb-testomonial__wrap .uagb-tm__image-content'] = {
@@ -92,7 +96,7 @@ function TestimonialStyle( props ) {
                 };  
 
             var position = backgroundPosition.replace( "-", " " )
-            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = {
+            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image'] = {
                     'background-image': ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
                     'background-position':position,
                     'background-attachment':backgroundAttachment,
@@ -103,16 +107,7 @@ function TestimonialStyle( props ) {
             selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay'] = {
                     'background-color':backgroundImageColor,
                     'opacity':'0.'+backgroundOpacity,
-                };                              
-               
-            if ( borderStyle != "none" ) {
-                selectors['.uagb-testomonial__wrap .uagb-tm__content'] = {
-                    'border-color': borderColor,
-                    'border-style':borderStyle,
-                    'border-width':borderWidth + "px",
-                    'border-radius':borderRadius + "px",                    
-                };                 
-            }
+                };   
 
         var styling_css = '';
 

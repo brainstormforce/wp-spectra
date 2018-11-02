@@ -258,8 +258,8 @@ class UAGBtestimonial extends Component {
 							min={ 10 }
 							max={ 100 }
 							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
+							beforeIcon="editor-textcolor"							
+							llowReset
 						/>
 						
 					</PanelBody>
@@ -330,7 +330,6 @@ class UAGBtestimonial extends Component {
 						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 					<RangeControl
@@ -339,7 +338,6 @@ class UAGBtestimonial extends Component {
 						onChange={ ( value ) => setAttributes( { nameSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>						
 					<RangeControl
@@ -348,7 +346,6 @@ class UAGBtestimonial extends Component {
 						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 					<RangeControl
@@ -357,7 +354,6 @@ class UAGBtestimonial extends Component {
 						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>						
 					
@@ -723,7 +719,6 @@ class UAGBtestimonial extends Component {
 						} }
 						min={ 0 }
 						max={ 10 }
-						beforeIcon="editor-textcolor"
 						allowReset
 					/>
 					<RangeControl
@@ -813,8 +808,7 @@ class UAGBtestimonial extends Component {
 								value={ imageWidth }
 								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
 								min={ 0 }
-								max={ 500 }
-								beforeIcon="editor-textcolor"
+								max={ 500 }								
 								allowReset
 							/>
 						</Fragment> 
