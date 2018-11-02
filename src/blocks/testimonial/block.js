@@ -116,8 +116,8 @@ registerBlockType( "uagb/testimonial", {
 						"uagb-testomonial__wrap",
 						...PositionClasses( props.attributes ),
 						) } key ={ "wrap-"+index } >
-							<div className = "uagb-tm__overlay"></div>
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
+								<div className = "uagb-tm__overlay"></div>
 								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
 
 								<div className ="uagb-tm__text-wrap">
