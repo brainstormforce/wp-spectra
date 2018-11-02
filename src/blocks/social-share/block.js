@@ -1,0 +1,116 @@
+/**
+ * BLOCK: Social Share
+ */
+
+import classnames from "classnames"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+//  Import CSS.
+import "./style.scss"
+import "./editor.scss"
+import attributes from "./attributes"
+import edit from "./edit"
+import links from "./links"
+
+
+// Components
+const { __ } = wp.i18n
+
+// Register block controls
+const {
+	registerBlockType
+} = wp.blocks
+
+const {
+	RichText
+} = wp.editor
+
+
+/**
+ * Register: as Gutenberg Block.
+ *
+ * Registers a new block provided a unique name and an object defining its
+ * behavior.
+ *
+ * @link https://wordpress.org/gutenberg/handbook/block-api/
+ * @param  {string}   name     Block name.
+ * @param  {Object}   settings Block settings.
+ * @return {?WPBlock}          The block, if it has been successfully
+ *                             registered; otherwise `undefined`.
+ */
+registerBlockType( "uagb/social-share", {
+	title: __( "Social Share" ),
+	description: __( "Add Social Sharing Icon / Image" ),
+	icon: UAGB_Block_Icons.social_share,
+	category: "uagb",
+	keywords: [
+		__( "social share" ),
+		__( "icon" ),
+		__( "uagb" ),
+	],
+	attributes,
+	edit,
+	save: props => {
+
+		const { attributes, className } = props
+
+		const {
+			block_id,
+			align,
+			items,
+			socials,
+			social_count,
+			layout,
+			current_url
+		} = props.attributes
+
+		return (
+			<div className={ classnames(
+				className,
+				"uagb-social-share__outer-wrap",
+				`uagb-social-share__layout-${layout}`
+			) }
+			id={ `uagb-social-share-${ block_id}` }>
+				<div className="uagb-social-share__wrap">
+					{
+						socials.map( ( social, index ) => {
+
+							if ( social_count <= index ) {
+								return
+							}
+
+							let url = ""
+
+							if( null != current_url ) {
+								url = links[social.type] + encodeURI( current_url )
+							}
+
+							let image_icon_html = ""
+
+							if ( social.image_icon == "icon" ) {
+								if ( social.icon ) {
+									image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+								}
+							} else {
+								if ( social.image ) {
+									image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
+								}
+							}
+
+							return (
+								<div
+									className={ classnames(
+										`uagb-ss-repeater-${index}`,
+										"uagb-ss__wrapper"
+									) }
+									key={ index }
+								>
+									<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+								</div>
+							)
+						})
+					}
+				</div>
+			</div>
+		)
+	}
+} )
