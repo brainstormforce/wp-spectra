@@ -66,8 +66,11 @@ async function build( webpackConfig ) {
 
 		var stats_json = stats.toJson( {}, true )
 
+		//console.log( '============================================' );
 		console.log( stats_json.errors )
+		//console.log( '============================================' );
 		console.log( stats_json.warnings )
+		//console.log( '============================================' );
 		// return;
 
 		// if ( err ) {

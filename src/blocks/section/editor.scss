@@ -15,3 +15,13 @@
 	left: -1px;
 	z-index: 0;
  }
+
+.editor-bg-image-control .components-button,
+.editor-bg-video-control .components-button {
+	vertical-align: middle;
+}
+
+.editor-bg-image-control .components-button:last-child,
+.editor-bg-video-control .components-button:last-child {
+	margin-left: 10px;
+}

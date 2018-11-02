@@ -3,11 +3,11 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
-function inlineStyles( props ) {
+function inlineStyles( props, isEditor ) {
 
 	const {
 		align,
-		content_width,
+		contentWidth,
 		leftPadding,
 		rightPadding,
 		topPadding,
@@ -30,66 +30,77 @@ function inlineStyles( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		backgroundOpacity,
-		backgroundVideoColor,
-		backgroundVideoOpacity
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor
 	} = props.attributes
 
 	var style = {
-		paddingTop: topPadding + "px",
-		paddingBottom: bottomPadding + "px",
-		paddingLeft: leftPadding + "px",
-		paddingRight: rightPadding + "px",
-		marginTop: topMargin + "px",
-		marginBottom: bottomMargin + "px",
-		marginLeft: leftMargin + "px",
-		marginRight: rightMargin + "px",
+		"padding-top": topPadding + "px",
+		"padding-bottom": bottomPadding + "px",
+		"padding-left": leftPadding + "px",
+		"padding-right": rightPadding + "px",
 	}
 
-	if ( 'right' == align ) {
-		style["marginLeft"] = "auto"
-	} else if ( 'left' == align ) {
-		style["marginRight"] = "auto"
-	} else if ( 'center' == align ) {
-		style["marginRight"] = "auto"
-		style["marginLeft"] = "auto"
+	if ( "right" == align ) {
+		style["margin-left"] = "auto"
+		style["margin-top"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-right"] =  rightMargin + "px"
+	} else if ( "left" == align ) {
+		style["margin-right"] = "auto"
+		style["margin-top"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-left"] =  leftMargin + "px"
+	} else if ( "center" == align ) {
+		style["margin-right"] = "auto"
+		style["margin-left"] = "auto"
+		style["margin-top"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
+	}
+
+	if ( borderStyle != "none" ) {
+		style["border-style"] = borderStyle
+		style["border-width"] = borderWidth + "px"
+		style["border-radius"] = borderRadius + "px"
+		style["border-color"] =  borderColor
 	}
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	var section_width = width + "px"
+	var section_width = "100%"
 
-	if ( "boxed" == content_width ) {
+	if ( "boxed" == contentWidth ) {
 		if ( "" != width ) {
 			section_width = width + "px"
 		}
-	} else {
-		section_width = "100%"
 	}
 
-	style["width"] = section_width
+	style["max-width"] = section_width
+
 
 	if ( "color" === backgroundType ) {
 
-		style["backgroundColor"] = backgroundColor
+		style["background-color"] = backgroundColor
 
 	} else if ( "image" === backgroundType ) {
 
-		style["backgroundImage"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
-		style["backgroundPosition"] = position
-		style["backgroundAttachment"] = backgroundAttachment
-		style["backgroundRepeat"] = backgroundRepeat
-		style["backgroundSize"] = backgroundSize
+		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
+		style["background-position"] = position
+		style["background-attachment"] = backgroundAttachment
+		style["background-repeat"] = backgroundRepeat
+		style["background-size"] = backgroundSize
 
 	} else if ( "gradient" === backgroundType ) {
-		style["backgroundColor"] = "transparent"
+		style["background-color"] = "transparent"
 
 		if ( "linear" === gradientType ) {
 
-			style["backgroundImage"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		} else {
 
-			style["backgroundImage"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 	}
 

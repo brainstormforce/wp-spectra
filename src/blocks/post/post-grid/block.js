@@ -4,6 +4,7 @@
 
 // Import block dependencies and components
 import edit from "./edit"
+import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
 import ".././style.scss"
@@ -15,14 +16,12 @@ const { __ } = wp.i18n
 // Register block controls
 const { registerBlockType } = wp.blocks
 
-export const name = "core/latest-posts"
-
 // Register the block
 registerBlockType( "uagb/post-grid", {
 	title: __( "UAGB - Post Grid" ),
 	description: __( "Add a grid of customizable posts to your page." ),
-	icon: "grid-view",
-	category: "formatting",
+	icon: UAGB_Block_Icons.post_grid,
+	category: "uagb",
 	keywords: [
 		__( "post" ),
 		__( "grid" ),

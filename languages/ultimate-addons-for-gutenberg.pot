@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 0.0.1\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.0.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2018-08-30 13:15:14+00:00\n"
+"POT-Creation-Date: 2018-10-29 12:01:22+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,27 +25,379 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n1.0.2\n"
 
-#: classes/class-uagb-loader.php:147
+#: admin/uagb-admin.php:26
+msgid "Take Gutenberg to The Next Level!"
+msgstr ""
+
+#: admin/uagb-admin.php:36
+msgid "Settings saved successfully."
+msgstr ""
+
+#: admin/uagb-general.php:23
+msgid "General"
+msgstr ""
+
+#: admin/uagb-general.php:25
+msgid "Blocks"
+msgstr ""
+
+#: admin/uagb-general.php:27
+msgid "Activate All"
+msgstr ""
+
+#: admin/uagb-general.php:28
+msgid "Deactivate All"
+msgstr ""
+
+#: admin/uagb-general.php:47 classes/class-uagb-admin.php:181
+msgid "Activate"
+msgstr ""
+
+#: admin/uagb-general.php:54 classes/class-uagb-admin.php:182
+msgid "Deactivate"
+msgstr ""
+
+#: admin/uagb-general.php:90
+msgid "Knowledge Base"
+msgstr ""
+
+#: admin/uagb-general.php:94
+msgid "Not sure how something works? Take a peek at the knowledge base and learn."
+msgstr ""
+
+#: admin/uagb-general.php:96
+msgid "Visit Knowledge Base »"
+msgstr ""
+
+#: admin/uagb-general.php:102
+msgid "Five Star Support"
+msgstr ""
+
+#: admin/uagb-general.php:109
+#. translators: %1$s: uagb name.
+msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
+msgstr ""
+
+#: admin/uagb-general.php:116
+msgid "Submit a Ticket »"
+msgstr ""
+
+#: admin/uagb-integration.php:14
+msgid "Integrations"
+msgstr ""
+
+#: admin/uagb-integration.php:23
+msgid "Google Map API Key"
+msgstr ""
+
+#: admin/uagb-integration.php:24 admin/uagb-integration.php:47
+msgid "Note:"
+msgstr ""
+
+#: admin/uagb-integration.php:31
+#. translators: %1$s: a tag open.
+msgid ""
+"This setting is required if you wish to use Google Map module in your "
+"website. Need help to get Google map API key? Read %1$s this article %2$s."
+msgstr ""
+
+#: admin/uagb-integration.php:46
+msgid "Google Map Localization Language"
+msgstr ""
+
+#: admin/uagb-integration.php:47
+msgid ""
+"This setting sets localization language to google map. The language affects "
+"the names of controls, copyright notices, driving directions, and control "
+"labels."
+msgstr ""
+
+#: admin/uagb-integration.php:54
+#. translators: %1$s: a tag open.
+msgid "Need help to understand this feature? Read %1$s this article %2$s."
+msgstr ""
+
+#: admin/uagb-integration.php:61
+msgid "Default"
+msgstr ""
+
+#: admin/uagb-integration.php:77
+msgid "Save Changes"
+msgstr ""
+
+#: classes/class-uagb-admin.php:183
+msgid "Enable Beta Updates"
+msgstr ""
+
+#: classes/class-uagb-admin.php:184
+msgid "Disable Beta Updates"
+msgstr ""
+
+#: classes/class-uagb-config.php:36
+msgid "Advanced Heading"
+msgstr ""
+
+#: classes/class-uagb-config.php:54
+msgid "Info Box"
+msgstr ""
+
+#: classes/class-uagb-config.php:103
+msgid "Multi Buttons"
+msgstr ""
+
+#: classes/class-uagb-config.php:116
+msgid "Post Grid"
+msgstr ""
+
+#: classes/class-uagb-config.php:122
+msgid "Section"
+msgstr ""
+
+#: classes/class-uagb-config.php:162
+msgid "Team"
+msgstr ""
+
+#: classes/class-uagb-helper.php:413
+msgid "ARABIC"
+msgstr ""
+
+#: classes/class-uagb-helper.php:414
+msgid "BASQUE"
+msgstr ""
+
+#: classes/class-uagb-helper.php:415
+msgid "BULGARIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:416
+msgid "BENGALI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:417
+msgid "CATALAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:418
+msgid "CZECH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:419
+msgid "DANISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:420
+msgid "GERMAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:421
+msgid "GREEK"
+msgstr ""
+
+#: classes/class-uagb-helper.php:422
+msgid "ENGLISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:423
+msgid "ENGLISH (AUSTRALIAN)"
+msgstr ""
+
+#: classes/class-uagb-helper.php:424
+msgid "ENGLISH (GREAT BRITAIN)"
+msgstr ""
+
+#: classes/class-uagb-helper.php:425
+msgid "SPANISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:426
+msgid "FARSI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:427
+msgid "FINNISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:428
+msgid "FILIPINO"
+msgstr ""
+
+#: classes/class-uagb-helper.php:429
+msgid "FRENCH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:430
+msgid "GALICIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:431
+msgid "GUJARATI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:432
+msgid "HINDI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:433
+msgid "CROATIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:434
+msgid "HUNGARIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:435
+msgid "INDONESIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:436
+msgid "ITALIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:437
+msgid "HEBREW"
+msgstr ""
+
+#: classes/class-uagb-helper.php:438
+msgid "JAPANESE"
+msgstr ""
+
+#: classes/class-uagb-helper.php:439
+msgid "KANNADA"
+msgstr ""
+
+#: classes/class-uagb-helper.php:440
+msgid "KOREAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:441
+msgid "LITHUANIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:442
+msgid "LATVIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:443
+msgid "MALAYALAM"
+msgstr ""
+
+#: classes/class-uagb-helper.php:444
+msgid "MARATHI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:445
+msgid "DUTCH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:446
+msgid "NORWEGIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:447
+msgid "POLISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:448
+msgid "PORTUGUESE"
+msgstr ""
+
+#: classes/class-uagb-helper.php:449
+msgid "PORTUGUESE (BRAZIL)"
+msgstr ""
+
+#: classes/class-uagb-helper.php:450
+msgid "PORTUGUESE (PORTUGAL)"
+msgstr ""
+
+#: classes/class-uagb-helper.php:451
+msgid "ROMANIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:452
+msgid "RUSSIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:453
+msgid "SLOVAK"
+msgstr ""
+
+#: classes/class-uagb-helper.php:454
+msgid "SLOVENIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:455
+msgid "SERBIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:456
+msgid "SWEDISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:457
+msgid "TAGALOG"
+msgstr ""
+
+#: classes/class-uagb-helper.php:458
+msgid "TAMIL"
+msgstr ""
+
+#: classes/class-uagb-helper.php:459
+msgid "TELUGU"
+msgstr ""
+
+#: classes/class-uagb-helper.php:460
+msgid "THAI"
+msgstr ""
+
+#: classes/class-uagb-helper.php:461
+msgid "TURKISH"
+msgstr ""
+
+#: classes/class-uagb-helper.php:462
+msgid "UKRAINIAN"
+msgstr ""
+
+#: classes/class-uagb-helper.php:463
+msgid "VIETNAMESE"
+msgstr ""
+
+#: classes/class-uagb-helper.php:464
+msgid "CHINESE (SIMPLIFIED)"
+msgstr ""
+
+#: classes/class-uagb-helper.php:465
+msgid "CHINESE (TRADITIONAL)"
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:66
+msgid "UAGB Blocks"
+msgstr ""
+
+#: classes/class-uagb-loader.php:163
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:157
+#: classes/class-uagb-loader.php:173
 msgid "Activate Gutenberg"
 msgstr ""
 
-#: classes/class-uagb-loader.php:165
+#: classes/class-uagb-loader.php:181
 msgid "Install Gutenberg"
+msgstr ""
+
+#: dist/blocks/post/index.php:928
+msgid "Read More"
 msgstr ""
 
 #. Plugin Name of the plugin/theme
 msgid "Ultimate Addons for Gutenberg"
 msgstr ""
 
-#. Plugin URI of the plugin/theme
-msgid "https://ultimategutenberg.com/"
+#. Author URI of the plugin/theme
+msgid "https://www.brainstormforce.com"
 msgstr ""
 
 #. Description of the plugin/theme
@@ -56,8 +408,4 @@ msgstr ""
 
 #. Author of the plugin/theme
 msgid "Brainstorm Force"
-msgstr ""
-
-#. Author URI of the plugin/theme
-msgid "https://www.brainstormforce.com"
 msgstr ""

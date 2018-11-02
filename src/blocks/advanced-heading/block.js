@@ -4,6 +4,8 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
+import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
 import "./style.scss"
@@ -16,6 +18,7 @@ const { __ } = wp.i18n
 // Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
+	createBlock
 } = wp.blocks
 
 const {
@@ -37,6 +40,54 @@ const {
 const { Component, Fragment } = wp.element
 
 class UAGBAdvancedHeading extends Component {
+
+	constructor() {
+		super( ...arguments )
+
+		this.splitBlock = this.splitBlock.bind( this )
+	}
+
+	componentDidMount() {
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId )
+		document.head.appendChild( $style )
+	}
+
+	splitBlock( before, after, ...blocks ) {
+		const {
+			attributes,
+			insertBlocksAfter,
+			setAttributes,
+			onReplace,
+		} = this.props
+
+		if ( after ) {
+			// Append "After" content as a new paragraph block to the end of
+			// any other blocks being inserted after the current paragraph.
+			blocks.push( createBlock( "core/paragraph", { content: after } ) )
+		}
+
+		if ( blocks.length && insertBlocksAfter ) {
+			insertBlocksAfter( blocks )
+		}
+
+		const { content } = attributes
+		if ( ! before ) {
+			// If before content is omitted, treat as intent to delete block.
+			onReplace( [] )
+		} else if ( content !== before ) {
+			// Only update content if it has in-fact changed. In case that user
+			// has created a new paragraph at end of an existing one, the value
+			// of before will be strictly equal to the current content.
+			setAttributes( { content: before } )
+		}
+	}
+
 	render() {
 
 		// Setup the attributes
@@ -44,6 +95,9 @@ class UAGBAdvancedHeading extends Component {
 			isSelected,
 			className,
 			setAttributes,
+			insertBlocksAfter,
+			mergeBlocks,
+			onReplace,
 			attributes: {
 				headingTitle,
 				headingDesc,
@@ -62,6 +116,13 @@ class UAGBAdvancedHeading extends Component {
 			},
 		} = this.props
 
+		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
+		}
+
+
 		return (
 			<Fragment>
 				<BlockControls key='controls'>
@@ -73,7 +134,6 @@ class UAGBAdvancedHeading extends Component {
 				<InspectorControls>
 					<PanelBody
 						title={ __( "Typography" ) }
-						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( "Tag" ) }
@@ -93,18 +153,20 @@ class UAGBAdvancedHeading extends Component {
 							value={ headFontSize }
 							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={30}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Font Size" ) }
 							value={ subHeadFontSize }
 							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 							min={ 10 }
-							max={ 200 }
+							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={10}
 						/>
 					</PanelBody>
 					<PanelBody
@@ -114,7 +176,7 @@ class UAGBAdvancedHeading extends Component {
 						<PanelColor
 							title={ __( "Heading Color" ) }
 							colorValue={ headingColor }
-							initialOpen={ false }
+							initialOpen={ true }
 						>
 							<ColorPalette
 								value={ headingColor }
@@ -154,9 +216,10 @@ class UAGBAdvancedHeading extends Component {
 							value={ separatorHeight }
 							onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 20 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={3}
 						/>
 						<RangeControl
 							label={ __( "Separator Width" ) }
@@ -166,6 +229,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={20}
 						/>
 						<RangeControl
 							label={ __( "Heading Spacing" ) }
@@ -175,6 +239,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Separator Spacing" ) }
@@ -184,6 +249,7 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 						<RangeControl
 							label={ __( "Sub-Heading Spacing" ) }
@@ -193,39 +259,42 @@ class UAGBAdvancedHeading extends Component {
 							max={ 50 }
 							beforeIcon="editor-textcolor"
 							allowReset
+							initialPosition={0}
 						/>
 					</PanelBody>
 				</InspectorControls>
-				<div className={ className }>
+				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
 					<RichText
 						tagName={ headingTag }
 						placeholder={ __( "Write a Heading" ) }
 						value={ headingTitle }
 						className='uagb-heading-text'
+						multiline={ false }
 						onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
-						style={{
-							textAlign: headingAlign,
-							fontSize: headFontSize + "px",
-							color: headingColor,
-							marginBottom: headSpace + "px",
-						}}
+						onMerge={ mergeBlocks }
+						onSplit={
+							insertBlocksAfter ?
+								( before, after, ...blocks ) => {
+									setAttributes( { content: before } )
+									insertBlocksAfter( [
+										...blocks,
+										createBlock( "core/paragraph", { content: after } ),
+									] )
+								} :
+								undefined
+						}
+						onRemove={ () => onReplace( [] ) }
 					/>
-					<div
-						className="uagb-separator-wrap"
-						style={{ textAlign: headingAlign }}
-					><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + "px", width: separatorWidth + "%", borderColor: separatorColor, marginBottom: separatorSpace + "px", }}></div></div>
+					<div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
 					<RichText
 						tagName="p"
 						placeholder={ __( "Write a Description" ) }
 						value={ headingDesc }
 						className='uagb-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
-						style={{
-							textAlign: headingAlign,
-							fontSize: subHeadFontSize + "px",
-							color: subHeadingColor,
-							marginBottom: subHeadSpace + "px",
-						}}
+						onMerge={ mergeBlocks }
+						onSplit={ this.splitBlock }
+						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>
 			</Fragment>
@@ -247,22 +316,26 @@ class UAGBAdvancedHeading extends Component {
  */
 registerBlockType( "uagb/advanced-heading", {
 
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Advanced Heading" ), // Block title.
-	description: __( "Add Advanced Heading block." ), // Block description.
-	icon: "editor-textcolor", // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( "UAGB - Advanced Heading" ),
+	description: __( "Add Advanced Heading block." ),
+	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
-
+	category: "uagb",
 	attributes: {
+		block_id: {
+			type: "string"
+		},
 		headingTitle: {
-			type: "string",
+			source: "html",
+			selector: "h1,h2,h3,h4,h5,h6",
 		},
 		headingDesc: {
-			type: "string",
+			source: "html",
+			selector: "p",
+			default: "",
 		},
 		headingAlign: {
 			type: "string",
@@ -279,7 +352,7 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headingTag: {
 			type: "string",
-			default: "h1"
+			default: "h2"
 		},
 		separatorHeight: {
 			type: "number"
@@ -295,66 +368,86 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headSpace: {
 			type: "number",
+			default: 15
 		},
 		separatorSpace: {
 			type: "number",
+			default: 15
 		},
 		subHeadSpace: {
 			type: "number",
 		},
 	},
-	/**
-	 * The edit function describes the structure of your block in the context of the editor.
-	 * This represents what the editor will render when the block is used.
-	 *
-	 * The "edit" property must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
+	transforms: {
+		from: [
+			{
+				type: "block",
+				blocks: [ "core/paragraph" ],
+				transform: ( { content } ) => {
+					console.log(content)
+					return createBlock( "uagb/advanced-heading", {
+						headingDesc: content,
+					} )
+				},
+			},
+			{
+				type: "block",
+				blocks: [ "core/heading" ],
+				transform: ( { content } ) => {
+					console.log(content)
+					return createBlock( "uagb/advanced-heading", {
+						headingTitle: content,
+						headingTag: "h3",
+					} )
+				},
+			},
+		],
+		to: [
+			{
+				type: "block",
+				blocks: [ "core/paragraph" ],
+				transform: ( { content } ) => {
+					console.log(content)
+					return createBlock( "core/paragraph", {
+						content,
+					} )
+				},
+			},
+			{
+				type: "block",
+				blocks: [ "core/heading" ],
+				transform: ( { content } ) => {
+					console.log(content)
+					return createBlock( "core/heading", {
+						content: content,
+					} )
+				},
+			},
+		],
+	},
 	edit: UAGBAdvancedHeading,
-
-	/**
-	 * The save function defines the way in which the different attributes should be combined
-	 * into the final markup, which is then serialized by Gutenberg into post_content.
-	 *
-	 * The "save" property must be specified and must be a valid function.
-	 *
-	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
-	 */
 	save: function( props ) {
 
 		const {
+			block_id,
 			headingTitle,
 			headingDesc,
-			headingAlign,
-			headingColor,
-			subHeadingColor,
-			separatorColor,
 			headingTag,
-			separatorWidth,
-			separatorHeight,
-			headFontSize,
-			subHeadFontSize,
-			headSpace,
-			separatorSpace,
-			subHeadSpace,
 		} = props.attributes
 
 		return (
-			<div className={ props.className }>
+			<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
 				<RichText.Content
 					tagName={ headingTag }
 					value={ headingTitle }
 					className='uagb-heading-text'
-					style={{
-						textAlign: headingAlign,
-						fontSize: headFontSize + "px",
-						color: headingColor,
-						marginBottom: headSpace + "px",
-					}}
 				/>
-				<div className="uagb-separator-wrap" style={{ textAlign: headingAlign }}><div className="uagb-separator" style={{ borderTopWidth: separatorHeight + "px", width: separatorWidth + "%", borderColor: separatorColor, marginBottom: separatorSpace + "px", }}></div></div>
-				<p className="uagb-desc-text" style={{ textAlign: headingAlign, fontSize: subHeadFontSize + "px", color: subHeadingColor, marginBottom: subHeadSpace + "px", }}>{ headingDesc }</p>
+				<div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
+				<RichText.Content
+					tagName="p"
+					value={ headingDesc }
+					className='uagb-desc-text'
+				/>
 			</div>
 		)
 	}
