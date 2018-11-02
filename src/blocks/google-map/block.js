@@ -32,6 +32,8 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
+const api_key = "AIzaSyAsd_d46higiozY-zNqtr7zdA81Soswje4"
+
 class UAGBGoogleMap extends Component {
 
 	constructor() {
@@ -60,7 +62,7 @@ class UAGBGoogleMap extends Component {
 
 		let encoded_address = encodeURI( address )
 
-		let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD09zQ9PNDNNy9TadMuzRV_UsPUoWKntt8&q=${encoded_address}&zoom=${zoom}`
+		let url = `https://www.google.com/maps/embed/v1/place?key=${api_key}&q=${encoded_address}&zoom=${zoom}`
 
 
 		return (
@@ -155,7 +157,7 @@ registerBlockType( "uagb/google-map", {
 
 		let encoded_address = encodeURI( address )
 
-		let url = `https://www.google.com/maps/embed/v1/place?key=AIzaSyD09zQ9PNDNNy9TadMuzRV_UsPUoWKntt8&q=${encoded_address}&zoom=${zoom}`
+		let url = `https://www.google.com/maps/embed/v1/place?key=${api_key}&q=${encoded_address}&zoom=${zoom}`
 
 		return (
 			<div className={ classnames( props.className, "uagb-google-map__wrap" ) } id={ `uagb-google-map-${block_id}`}>
