@@ -45,7 +45,7 @@ const attributes = {
 		type: "number",
 		default: 40
 	},
-	layout: {
+	social_layout: {
 		type: "string",
 		default: "horizontal"
 	},

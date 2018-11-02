@@ -75,7 +75,7 @@ class UAGBSocialShare extends Component {
 			gap,
 			stack,
 			current_url,
-			layout,
+			social_layout,
 			size
 		} = attributes
 
@@ -240,14 +240,14 @@ class UAGBSocialShare extends Component {
 					>
 						<SelectControl
 							label={ __( "Layout" ) }
-							value={ layout }
+							value={ social_layout }
 							options={ [
 								{ value: "horizontal", label: __( "Horizontal" ) },
 								{ value: "vertical", label: __( "Vertical" ) },
 							] }
-							onChange={ ( value ) => setAttributes( { layout: value } ) }
+							onChange={ ( value ) => setAttributes( { social_layout: value } ) }
 						/>
-						{ "horizontal" == layout &&
+						{ "horizontal" == social_layout &&
 							<Fragment>
 								<SelectControl
 									label={ __( "Stack on" ) }
@@ -283,7 +283,7 @@ class UAGBSocialShare extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-social-share__outer-wrap",
-					`uagb-social-share__layout-${layout}`
+					`uagb-social-share__layout-${social_layout}`
 				) }
 				id={ `uagb-social-share-${ this.props.clientId }` }>
 					<div className="uagb-social-share__wrap">

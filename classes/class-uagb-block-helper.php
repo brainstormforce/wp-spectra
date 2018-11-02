@@ -227,8 +227,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-buttons__wrap' => array (
 					'justify-content' => $alignment,
 					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack'=> $alignment,
-					'justify-content'=> $alignment
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
 				)
 			);
 

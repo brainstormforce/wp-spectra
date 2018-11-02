@@ -84,6 +84,9 @@ function styling( props ) {
 		"-webkit-box-pack": alignment,
 		"-ms-flex-pack": alignment,
 		"justify-content": alignment,
+		"-webkit-box-align": alignment,
+		"-ms-flex-align": alignment,
+		"align-items": alignment,
 	}
 
 	if ( "horizontal" == layout ) {
