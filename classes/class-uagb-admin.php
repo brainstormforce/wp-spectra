@@ -122,49 +122,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		}
 
 		/**
-		 * Save General Setting options.
-		 *
-		 * @since 0.0.1
-		 */
-		static public function save_integration_option() {
-
-			if ( isset( $_POST['uagb-integration-nonce'] ) && wp_verify_nonce( $_POST['uagb-integration-nonce'], 'uagb-integration' ) ) {
-
-				$url            = $_SERVER['REQUEST_URI'];
-				$input_settings = array();
-				$new_settings   = array();
-
-				if ( isset( $_POST['uagb_integration'] ) ) {
-
-					$input_settings = $_POST['uagb_integration'];
-
-					// Loop through the input and sanitize each of the values.
-					foreach ( $input_settings as $key => $val ) {
-
-						if ( is_array( $val ) ) {
-							foreach ( $val as $k => $v ) {
-								$new_settings[ $key ][ $k ] = ( isset( $val[ $k ] ) ) ? sanitize_text_field( $v ) : '';
-							}
-						} else {
-							$new_settings[ $key ] = ( isset( $input_settings[ $key ] ) ) ? sanitize_text_field( $val ) : '';
-						}
-					}
-				}
-
-				UAGB_Helper::update_admin_settings_option( '_uagb_integration', $new_settings, true );
-
-				$query = array(
-					'message' => 'saved',
-				);
-
-				$redirect_to = add_query_arg( $query, $url );
-
-				wp_redirect( $redirect_to );
-				exit;
-			} // End if statement.
-		}
-
-		/**
 		 * Enqueues the needed CSS/JS for the builder's admin settings page.
 		 *
 		 * @since 1.0
@@ -196,8 +153,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
 			}
-
-			self::save_integration_option();
 
 			// Let extensions hook into saving.
 			do_action( 'uagb_admin_settings_save' );

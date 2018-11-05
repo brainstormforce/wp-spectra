@@ -91,7 +91,7 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		// Timeline js
+		// Timeline js.
 		wp_enqueue_script(
 			'uabg-timeline-js', // Handle.
 			UAGB_URL . 'assets/js/timeline.js',
