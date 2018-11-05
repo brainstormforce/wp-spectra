@@ -177,7 +177,7 @@ registerBlockType( 'uagb/content-timeline', {
                                                                             <RichText.Content
                                                                                 tagName={ headingTag }
                                                                                 value={ post.time_heading }
-                                                                                className='uagb-timeline__heading entry-title'                                                                              
+                                                                                className='uagb-timeline__heading'                                                                              
                                                                                 style={{                                                                   
                                                                                     fontSize: headFontSize + 'px',
                                                                                     color: headingColor,
