@@ -146,7 +146,8 @@ function contentTimelineStyle( props ) {
             selectors['.uagb-timeline__date-hide.uagb-timeline__date-inner'] = {
                     'margin-bottom' : dateBottomspace+'px',
                     'color': dateColor,
-                    'font-size' : dateFontsize+'px',        
+                    'font-size' : dateFontsize+'px',  
+                    'text-align': align,      
                 };
 
             selectors['.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = {

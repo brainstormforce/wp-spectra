@@ -220,7 +220,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'imgTopMargin'     => 15,
 							'imgBottomMargin'  => 15,
 							'socialSpace'      => 20,
-							'headingTag'	   => 'h3',
+							'headingTag'       => 'h3',
 						),
 					),
 					'uagb/content-timeline' => array(

@@ -212,6 +212,10 @@ const attributes = {
         type: 'boolean',
         default: true,            
     }, 
+    stack: {
+        type: "string",
+        default: "tablet"
+    }
 }
 
 export default attributes

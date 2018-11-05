@@ -217,9 +217,6 @@ class UAGBcontentTimeline extends Component {
                 subHeadSpace,
                 dateBottomspace,
                 align,
-                order,
-                orderBy,
-                width,
                 icon,
                 iconColor,
                 authorColor,
@@ -236,7 +233,8 @@ class UAGBcontentTimeline extends Component {
                 iconBgHover,
                 borderHover,
                 t_date,
-                displayPostDate
+                displayPostDate,
+                stack
             },
         } = this.props;     
 
@@ -497,7 +495,18 @@ class UAGBcontentTimeline extends Component {
                             { value: 'bottom', label: __( 'Bottom' ) },
                             { value: 'center', label: __( 'Center' ) },
                         ] }
-                    />                    
+                    />    
+                    <SelectControl
+                        label={ __( "Stack on" ) }
+                        value={ stack }
+                        options={ [
+                            { value: "none", label: __( "None" ) },
+                            { value: "tablet", label: __( "Tablet" ) },
+                            { value: "mobile", label: __( "Mobile" ) },
+                        ] }
+                        help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+                        onChange={ ( value ) => setAttributes( { stack: value } ) }
+                    />                
                 </PanelBody>
                 <PanelBody 
                     title={ __( 'Spacing' ) }

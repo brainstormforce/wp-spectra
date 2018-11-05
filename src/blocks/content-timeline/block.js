@@ -57,7 +57,9 @@ registerBlockType( 'uagb/content-timeline', {
             displayPostDate,
             icon,
             tm_content,
-            t_date           
+            t_date,
+            stack,
+            className          
         } = props.attributes;
        
 
@@ -123,9 +125,7 @@ registerBlockType( 'uagb/content-timeline', {
 
                                                                     <div className="uagb-timeline-content">
                                                                         
-                                                                        <div className="uagb-timeline__heading-text" style={{                                                                            
-                                                                                    marginBottom: headSpace + 'px',
-                                                                                }}> 
+                                                                        <div className="uagb-timeline__heading-text" > 
                                                                             <RichText.Content
                                                                                 tagName={ headingTag }
                                                                                 value={ post.time_heading }

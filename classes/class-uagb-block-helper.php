@@ -815,7 +815,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
                     'margin-bottom' => $attr['dateBottomspace'].'px',
                     'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',        
+                    'font-size' => $attr['dateFontsize'].'px',  
+                    'text-align'=> $attr['align'],      
                 );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
@@ -866,22 +867,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
 
             $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
-	            'margin-left' => '0px',
-	            'margin-right' => '0px',
+	            'margin-left' => 0,
+	            'margin-right' => 0,
+	        );
+	       
+
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
+	            'margin-left' => 0,
+	            'margin-right' => 0,
 	        );
 
-	        $t_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
-	            'margin-left' => $attr['horizontalSpace']+'px',
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
+	            'margin-left' => $attr['horizontalSpace'].'px',
 	        );
-	        $t_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
-	            'margin-left' => $attr['horizontalSpace']+'px',
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
+	            'margin-left' => $attr['horizontalSpace'].'px',
 	        );
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-ctm-' . $id );
-		
-			return $desktop.$tablet;
+			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-ctm-' . $id );
+			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+
+			return $desktop . $tablet;
 		}
 	}
 }

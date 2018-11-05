@@ -22,7 +22,7 @@ function ContentTmClasses( attributes ) {
             align_class = 'uagb-timeline__right-block'+' '
         }     
         align_class+= arrow_align_class+''
-        align_class += 'uagb-timeline__responsive-tablet uagb-timeline'
+        align_class += 'uagb-timeline__responsive-'+attributes.stack+' uagb-timeline'
 
 	return [
 		align_class        
