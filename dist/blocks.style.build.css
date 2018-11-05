@@ -1218,7 +1218,7 @@ a.uagb-infobox-link-wrap {
   -o-transition: border-color .2s ease-in-out;
   transition: border-color .2s ease-in-out; }
 
-/*.uagb-content,*/
+/*.uagb-timeline-content,*/
 .uagb-timeline__date-new {
   -webkit-transition: color .2s ease-in-out;
   -o-transition: color .2s ease-in-out;

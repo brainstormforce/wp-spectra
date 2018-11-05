@@ -98,28 +98,7 @@ registerBlockType( 'uagb/content-timeline', {
             className,
             t_date, 
             displayPostDate           
-        } = props.attributes;
-
-        /* Arrow position 
-        var arrow_align_class  = 'uagb-timeline__arrow-top'
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-timeline__arrow-center'
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-timeline__arrow-bottom'
-        } 
-
-        /* Alignmnet 
-        var align_class = 'uagb-timeline__center-block '+ arrow_align_class
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline__left-block ' + arrow_align_class
-        }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline__right-block '+ arrow_align_class
-        }     
-
-        var responsive_class = 'uagb-timeline__responsive-tablet uagb-timeline';
-        var tm_block_id_new = 'uagb-'+tm_client_id;
-        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class
-        var block_id = 'uagb-'+tm_client_id*/
+        } = props.attributes;       
 
         var my_block_id = 'uagb-ctm-'+tm_client_id
 
@@ -176,7 +155,7 @@ registerBlockType( 'uagb/content-timeline', {
                                                     <div className = {content_align_class}> 
                                                         
                                                         <div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
-                                                            <i className = {icon_class}></i>
+                                                            <span className = {icon_class}></span>
                                                         </div>
                                                         
                                                         <div className = {day_align_class}>

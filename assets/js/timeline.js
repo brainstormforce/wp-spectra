@@ -2,7 +2,6 @@
  * Common js file for timeline.
  */
 ( function( $ ) {
-    console.log("here");
 
 // Listen for events.
 window.addEventListener("load", uagbTimelineFunc);
@@ -12,16 +11,16 @@ window.addEventListener("scroll", uagbTimelineFunc);
 // Callback function for all event listeners.
 function uagbTimelineFunc() {
     // Define variables.
-    var timeline            = $('.uagb-timeline__outer-wrap');
+    var timeline            = $('.uagb-timeline');
     
     timeline.each(function() {
         var line_inner          = $(this).find(".uagb-timeline__line__inner");
         var line_outer          = $(this).find(".uagb-timeline__line");
-        var $icon_class         = $(this).find(".uagb-timeline__arrow-center");
+        var $icon_class         = $(this).find(".uagb-timeline__marker");
         var $card_last          = $(this).find(".uagb-timeline__field:last-child");
         var $document           = $(document);
         // Set top and bottom for line.
-        var timeline_start_icon = $icon_class.first().position();    
+        var timeline_start_icon = $icon_class.first().position();
         var timeline_end_icon   = $icon_class.last().position();
         line_outer.css('top', timeline_start_icon.top );
 
@@ -29,21 +28,21 @@ function uagbTimelineFunc() {
         var last_item_top = $card_last.offset().top - $(this).offset().top;
         var $last_item, parent_top;
 
-        if( $(this).find(".uagb-timeline__content-wrap").hasClass('uagb-timeline__arrow-center')) {
-            console.log(timeline_end_icon);
+        if( $(this).hasClass('uagb-timeline__arrow-center')) {
+
             line_outer.css('bottom', timeline_end_icon.top );
 
             parent_top = last_item_top - timeline_start_icon.top;
             $last_item = parent_top + timeline_end_icon.top;
 
-        } else if( $(this).find(".uagb-timeline__content-wrap").hasClass('uagb-timeline__arrow-top')) {
+        } else if( $(this).hasClass('uagb-timeline__arrow-top')) {
 
             var top_height = timeline_card_height - timeline_end_icon.top;
             line_outer.css('bottom', top_height );
 
             $last_item = last_item_top;
 
-        } else if( $(this).find(".uagb-timeline__content-wrap").hasClass('uagb-timeline-arrow-bottom')) {
+        } else if( $(this).hasClass('uagb-timeline__arrow-bottom')) {
 
             var bottom_height = timeline_card_height - timeline_end_icon.top;
             line_outer.css('bottom', bottom_height );
