@@ -152,7 +152,7 @@ class UAGBcontentTimeline extends Component {
                 var array_length = data_length + i;               
                 var yyyy = today.getFullYear() - array_length;
                 today = mm + '/' + dd + '/' + yyyy; 
-                
+
                 data_copy[array_length] = { 'title' : today };
             }
             setAttributes({t_date:data_copy});    
@@ -253,7 +253,7 @@ class UAGBcontentTimeline extends Component {
             <Fragment>
                 <PanelColorSettings
                     title={ __( "Color Settings" ) }
-                    initialOpen={ false }
+                    initialOpen={ true }
                     colorSettings={ [
                         {
                             value: separatorColor,
@@ -285,7 +285,7 @@ class UAGBcontentTimeline extends Component {
             <Fragment>
                 <PanelColorSettings
                     title={ __( "Color Settings" ) }
-                    initialOpen={ false }
+                    initialOpen={ true }
                     colorSettings={ [
                         {
                             value: separatorFillColor,
@@ -317,7 +317,7 @@ class UAGBcontentTimeline extends Component {
             <Fragment>                  
                 <PanelColorSettings
                     title={ __( "Color Settings" ) }
-                    initialOpen={ false }
+                    initialOpen={ true }
                     colorSettings={ [       
                         {
                             value: iconHover,

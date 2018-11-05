@@ -18,7 +18,9 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
-//import contentTimelineStyle from './inline-styles'
+import contentTimelineStyle from './inline-styles'
+import ContentTmClasses from './classes'
+
 // Components
 const { __ } = wp.i18n
 
@@ -98,29 +100,31 @@ registerBlockType( 'uagb/content-timeline', {
             displayPostDate           
         } = props.attributes;
 
-        /* Arrow position */
-        var arrow_align_class  = 'uagb-timeline__arrow-top';
+        /* Arrow position 
+        var arrow_align_class  = 'uagb-timeline__arrow-top'
         if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-timeline__arrow-center';
+            arrow_align_class = 'uagb-timeline__arrow-center'
         }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-timeline__arrow-bottom';
+            arrow_align_class = 'uagb-timeline__arrow-bottom'
         } 
 
-        /* Alignmnet */
-        var align_class = 'uagb-timeline__center '+ arrow_align_class;
+        /* Alignmnet 
+        var align_class = 'uagb-timeline__center-block '+ arrow_align_class
         if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline__left ' + arrow_align_class;
+            align_class = 'uagb-timeline__left-block ' + arrow_align_class
         }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline__right '+ arrow_align_class;
+            align_class = 'uagb-timeline__right-block '+ arrow_align_class
         }     
 
         var responsive_class = 'uagb-timeline__responsive-tablet uagb-timeline';
         var tm_block_id_new = 'uagb-'+tm_client_id;
-        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
-        var block_id = 'uagb-'+tm_client_id;
+        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class
+        var block_id = 'uagb-'+tm_client_id*/
+
+        var my_block_id = 'uagb-ctm-'+tm_client_id
 
         /* Style for elements */
-        //var front_style = contentTimelineStyle( props );        
+        var front_style = contentTimelineStyle( props );        
         
         const hasItems = Array.isArray( tm_content ) && tm_content.length;
 
@@ -138,12 +142,19 @@ registerBlockType( 'uagb/content-timeline', {
         var display_inner_date = false;
 
         return (            
-                <div className={ className } >                     
-                    <div className = { tl_class }>
+                <div  className={ classnames(
+                    className,
+                    "uagb-timeline__outer-wrap"
+                ) }
+                id = { my_block_id } >                          
+                     <div  className = { classnames(
+                        "uagb-timeline__content-wrap",
+                        ...ContentTmClasses( props.attributes ),
+                    ) }>
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline__main">   
                                 <div className = "uagb-timeline__days uagb-timeline-infinite-load">
-                                    {/*<style dangerouslySetInnerHTML={{ __html: front_style }}></style>*/}
+                                    {<style dangerouslySetInnerHTML={{ __html: front_style }}></style>}
                                     { 
                                         tm_content.map((post,index) => { 
                                             var second_index = 'uagb-'+index;
@@ -179,7 +190,7 @@ registerBlockType( 'uagb/content-timeline', {
                                                                         }  
                                                                     </div>
 
-                                                                    <div className="uagb-content">
+                                                                    <div className="uagb-timeline-content">
                                                                         
                                                                         <div className="uagb-timeline__heading-text" style={{                                                                            
                                                                                     marginBottom: headSpace + 'px',
