@@ -6,7 +6,6 @@
 
 function ContentTmClasses( attributes ) {
 
-		var cTmStyle_class = ''
 		/* Arrow position */
         var arrow_align_class  = 'uagb-timeline__arrow-top'+' '
         if( attributes.arrowlinAlignment == 'center' ){

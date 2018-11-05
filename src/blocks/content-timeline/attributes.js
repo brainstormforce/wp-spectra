@@ -164,7 +164,7 @@ const attributes = {
         type : 'number',
         default : 15,
     },  
-    tm_block_id  : {
+    block_id  : {
         type : 'string',
         default : '0',
     },

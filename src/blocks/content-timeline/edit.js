@@ -12,6 +12,8 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker'
 import contentTimelineStyle from './inline-styles'
 import ContentTmClasses from './classes'
+import AlignClass from './align-classes'
+import DayAlignClass from './day-align-classes'
 
 const { Component, Fragment } = wp.element
 
@@ -225,10 +227,9 @@ class UAGBcontentTimeline extends Component {
                 dateFontsize,
                 authorFontsize,
                 iconSize,
-                tm_block_id,
                 borderRadius,
                 bgPadding,
-                tm_client_id,
+                block_id,
                 iconFocus,
                 iconBgFocus,
                 iconHover,
@@ -662,28 +663,8 @@ class UAGBcontentTimeline extends Component {
                 </PanelBody>
                 </InspectorControls>
             );        
-
-        
-        /* Arrow position */
-        /*var arrow_align_class  = 'uagb-timeline__arrow-top';
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-timeline__arrow-center';
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-timeline__arrow-bottom';
-        } 
-
-        /* Alignmnet */
-       /* var align_class = 'uagb-timeline__center '+ arrow_align_class;
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline__left ' + arrow_align_class;
-        }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline__right '+ arrow_align_class;
-        }     
-
-        var responsive_class = 'uagb-timeline__responsive-tablet uagb-timeline';
-        var tm_block_id_new = 'uagb-'+this.props.clientId;*/
+      
         var my_block_id = 'uagb-ctm-'+this.props.clientId
-        //var tl_class = 'uagb-ctm-'+this.props.clientId
 
         return (        
             <Fragment>   
@@ -722,7 +703,7 @@ class UAGBcontentTimeline extends Component {
 
     componentDidMount() {   
         //Store client id. 
-        this.props.setAttributes( { tm_client_id: this.props.clientId } );
+        this.props.setAttributes( { block_id: this.props.clientId } );
 
         var id = this.props.clientId;
         window.addEventListener("load", this.timelineContent_back(id));
@@ -749,24 +730,12 @@ class UAGBcontentTimeline extends Component {
 
         const{
             headingTag,
-            headFontSize,
-            headingColor,
-            headSpace,
-            subHeadFontSize,
-            subHeadingColor,
-            subHeadSpace,
-            backgroundColor,
             timelinAlignment,
-            arrowlinAlignment,
             displayPostDate,
             icon,
-            align,
             tm_content,
             t_date
         } = attributes;
-
-        var align_class        = '',
-            align_item_class   = '';
 
         /* Style for elements */
         var back_style = contentTimelineStyle( this.props );         
@@ -790,20 +759,13 @@ class UAGBcontentTimeline extends Component {
                 </Fragment>
             );
 
-        }else{
+        }else{         
 
-            var content_align_class = '';
-            var day_align_class = '';
+            var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
+            var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
+            let data_copy           = [ ...tm_content ];
+            var display_inner_date  = false;
 
-            if( timelinAlignment == 'left' ){
-                content_align_class = 'uagb-timeline__widget uagb-timeline__left';
-                day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
-            }else if(timelinAlignment == 'right'){
-                content_align_class = 'uagb-timeline__widget uagb-timeline__right';
-                day_align_class = 'uagb-timeline__day-new uagb-tmimeline__day-right';
-            }     
-            let data_copy     = [ ...tm_content ];
-            var display_inner_date = false;
             return (
                 <div className = "uagb-timeline__days uagb-timeline-infinite-load">
                     <style dangerouslySetInnerHTML={{ __html: back_style }}></style>
@@ -812,13 +774,8 @@ class UAGBcontentTimeline extends Component {
                             var second_index = 'uagb-'+index;
                                 if(timelinAlignment == 'center'){
                                     display_inner_date = true;
-                                    if(index % 2 == '0'){
-                                        content_align_class = 'uagb-timeline__widget uagb-timeline__right';
-                                        day_align_class = 'uagb-timeline__day-new uagb-tmimeline__day-right';
-                                    }else{
-                                        content_align_class = 'uagb-timeline__widget uagb-timeline__left';
-                                        day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
-                                    }  
+                                    content_align_class = AlignClass( this.props.attributes, index )
+                                    day_align_class = DayAlignClass( this.props.attributes, index )
                                 }   
                                 const Tag = this.props.attributes.headingTag;  
                                 var icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon '+icon;  
@@ -832,9 +789,9 @@ class UAGBcontentTimeline extends Component {
                                         </div>
                                         
                                         <div className = {day_align_class} >
-                                            <div className="uagb-timeline__events-new" style = {{textAlign:align}}>
-                                                <div className="uagb-timeline__events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                    <div className="uagb-timeline__date-hide uagb-timeline__date-inner" style = {{textAlign:align}}>                                                                
+                                            <div className="uagb-timeline__events-new">
+                                                <div className="uagb-timeline__events-inner-new">                                                                
+                                                    <div className="uagb-timeline__date-hide uagb-timeline__date-inner">                                                                
                                                         { displayPostDate && t_date[index].title &&
                                                             <div dateTime={ moment( t_date[index].title ).utc().format() } className={ 'uagb-timeline__inner-date-new' }>
                                                                 { moment( t_date[index].title ).local().format( 'MMMM DD, Y' ) }
@@ -844,9 +801,7 @@ class UAGBcontentTimeline extends Component {
 
                                                     <div className="uagb-content">
                                                         
-                                                        <div className="uagb-timeline__heading-text" style={{                                                                            
-                                                                    marginBottom: headSpace + 'px',
-                                                                }}> 
+                                                        <div className="uagb-timeline__heading-text"> 
                                                             <RichText
                                                                 tagName={ headingTag }
                                                                 value={ post.time_heading }
@@ -855,12 +810,7 @@ class UAGBcontentTimeline extends Component {
                                                                     var p = { 'time_heading' : value,'time_desc':data_copy[index]['time_desc'] };
                                                                     data_copy[index] = p;                                       
                                                                     setAttributes( { 'tm_content': data_copy } );                                       
-                                                                } }
-                                                                style={{                                                                   
-                                                                    fontSize: headFontSize + 'px',
-                                                                    color: headingColor,
-                                                                    textAlign:align                                                                 
-                                                                }}
+                                                                } }                                                               
                                                             />
                                                         </div>
 
@@ -872,16 +822,10 @@ class UAGBcontentTimeline extends Component {
                                                                     var p = { 'time_heading' : data_copy[index]['time_heading'],'time_desc':value };                                                                    
                                                                     data_copy[index] = p;                                       
                                                                 setAttributes( { 'tm_content': data_copy } );                                       
-                                                            } }
-                                                            style={{                                                                   
-                                                                fontSize: subHeadFontSize + 'px',
-                                                                color: subHeadingColor, 
-                                                                marginBottom: subHeadSpace + 'px',
-                                                                textAlign:align                                                             
-                                                            }}
+                                                            } }                                                           
                                                         />
 
-                                                        <div className="uagb-timeline__arrow"></div> 
+                                                        <div className="uagb-timeline__arrow"></div>
 
                                                     </div>
 
@@ -924,7 +868,6 @@ class UAGBcontentTimeline extends Component {
             var timeline_card_height = $card_last.height();
             var last_item_top = $card_last.offset().top - tm_item.offset().top;
             var $last_item, parent_top;
-            //var $document           = $('.edit-post-layout__content');
             var $document = $(document);
 
             if( tm_item.hasClass('uagb-timeline__arrow-center')) {
@@ -952,7 +895,6 @@ class UAGBcontentTimeline extends Component {
 
             var num = 0;
             var elementEnd = $last_item + 20;
-            //var viewportHeight = $document.height();
 
             var viewportHeight = document.documentElement.clientHeight;
             var viewportHeightHalf = viewportHeight/2;
