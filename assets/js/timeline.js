@@ -94,7 +94,7 @@ function uagbTimelineFunc() {
         var elementPos, elementCardPos;
         var timeline_icon_top, timeline_card_top;
         var timeline_icon = $(this).find(".uagb-timeline__marker"),
-            animate_border  = $(this).find(".animate-border");
+            animate_border  = $(this).find(".uagb-timeline__animate-border");
 
         for (var i = 0; i < timeline_icon.length; i++) {
             timeline_icon_pos = $(timeline_icon[i]).offset().top;
@@ -119,14 +119,14 @@ function uagbTimelineFunc() {
             if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
 
                 // Add classes if element is above than half of viewport.
-                timeline_icon[i].classList.remove("out-view-uagb-timeline__icon");
-                timeline_icon[i].classList.add("uagb-timeline__in-view_icon");
+                timeline_icon[i].classList.remove("uagb-timeline__out-view-icon");
+                timeline_icon[i].classList.add("uagb-timeline__in-view-icon");
 
             } else {
 
                 // Remove classes if element is below than half of viewport.
-                timeline_icon[i].classList.add("out-view-uagb-timeline__icon");
-                timeline_icon[i].classList.remove("uagb-timeline__in-view_icon");
+                timeline_icon[i].classList.add("uagb-timeline__out-view-icon");
+                timeline_icon[i].classList.remove("uagb-timeline__in-view-icon");
 
             }
         }

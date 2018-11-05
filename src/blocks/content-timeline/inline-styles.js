@@ -146,22 +146,22 @@ function contentTimelineStyle( props ) {
                     'font-size' : iconSize+'px',     
                 };
        
-            selectors['.uagb-timeline__field.animate-border:hover .uagb-timeline__marker'] = {
+            selectors['.uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker'] = {
                     'background' : iconBgHover,  
                     'border-color': borderHover,
                 };
 
-            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view_icon'] = {
+            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = {
                     'background' : iconBgFocus,  
                     'border-color': borderFocus,    
                 };
 
 
-            selectors['.uagb-timeline__field.animate-border:hover .uagb-timeline__icon-new'] = {
+            selectors['.uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new'] = {
                     'color': iconHover,
                 };
 
-            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view_icon .uagb-timeline__icon-new'] = {
+            selectors['.uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = {
                     'color': iconFocus,
                 };
 

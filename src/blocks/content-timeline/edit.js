@@ -821,18 +821,18 @@ class UAGBcontentTimeline extends Component {
                                     }  
                                 }   
                                 const Tag = this.props.attributes.headingTag;  
-                                var icon_class = 'uagb-timeline__icon-new out-view-uagb-timeline__icon '+icon;  
+                                var icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon '+icon;  
 
                             return (
-                                <article className = "uagb-timeline__field animate-border"  key={index}>
+                                <article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
                                     <div className = {content_align_class}> 
                                         
-                                        <div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
+                                        <div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
                                             <span className = {icon_class}></span>
                                         </div>
                                         
                                         <div className = {day_align_class} >
-                                            <div className="uagb-events-new" style = {{textAlign:align}}>
+                                            <div className="uagb-timeline__events-new" style = {{textAlign:align}}>
                                                 <div className="uagb-timeline__events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
                                                     <div className="uagb-timeline__date-hide uagb-timeline__date-inner" style = {{textAlign:align}}>                                                                
                                                         { displayPostDate && t_date[index].title &&
@@ -997,7 +997,7 @@ class UAGBcontentTimeline extends Component {
             var elementPos, elementCardPos;
             var timeline_icon_top, timeline_card_top;
             var timeline_icon   = timeline.find(".uagb-timeline__marker"),
-                animate_border  = timeline.find(".animate-border");
+                animate_border  = timeline.find(".uagb-timeline__animate-border");
 
             for (var i = 0; i < timeline_icon.length; i++) {
                 timeline_icon_pos = $(timeline_icon[i]).offset().top;
@@ -1022,14 +1022,14 @@ class UAGBcontentTimeline extends Component {
                 if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
 
                     // Add classes if element is above than half of viewport.
-                    timeline_icon[i].classList.remove("out-view-uagb-timeline__icon");
-                    timeline_icon[i].classList.add("uagb-timeline__in-view_icon");
+                    timeline_icon[i].classList.remove("uagb-timeline__out-view-icon");
+                    timeline_icon[i].classList.add("uagb-timeline__in-view-icon");
 
                 } else {
 
                     // Remove classes if element is below than half of viewport.
-                    timeline_icon[i].classList.add("out-view-uagb-timeline__icon");
-                    timeline_icon[i].classList.remove("uagb-timeline__in-view_icon");
+                    timeline_icon[i].classList.add("uagb-timeline__out-view-icon");
+                    timeline_icon[i].classList.remove("uagb-timeline__in-view-icon");
 
                 }
             }
