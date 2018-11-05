@@ -11,7 +11,7 @@ window.addEventListener("scroll", uagbTimelineFunc);
 // Callback function for all event listeners.
 function uagbTimelineFunc() {
     // Define variables.
-    var timeline            = $('.uagb-timeline');
+    var timeline            = $('.uagb-timeline__outer-wrap');
     
     timeline.each(function() {
         var line_inner          = $(this).find(".uagb-timeline__line__inner");

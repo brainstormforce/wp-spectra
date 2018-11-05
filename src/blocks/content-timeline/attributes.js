@@ -25,7 +25,7 @@ for (var i = 1; i <= 5; i++) {
     } 
 
     today = mm + '/' + dd + '/' + yyyy;   
-    var p = { 'title' : today };
+    var p = { 'title' : today };    
     date_arr.push(p);
 }
 

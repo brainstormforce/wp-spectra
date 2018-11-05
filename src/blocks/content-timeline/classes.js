@@ -16,11 +16,11 @@ function ContentTmClasses( attributes ) {
         } 
 
         /* Alignmnet */
-        var align_class = 'uagb-timeline__center '+' '
+        var align_class = 'uagb-timeline__center-block '+' '
         if( attributes.timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline__left'+' '
+            align_class = 'uagb-timeline__left-block'+' '
         }else if( attributes.timelinAlignment == 'right'){
-            align_class = 'uagb-timeline__right'+' '
+            align_class = 'uagb-timeline__right-block'+' '
         }     
         align_class+= arrow_align_class+''
         align_class += 'uagb-timeline__responsive-tablet uagb-timeline'

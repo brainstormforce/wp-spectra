@@ -152,6 +152,7 @@ class UAGBcontentTimeline extends Component {
                 var array_length = data_length + i;               
                 var yyyy = today.getFullYear() - array_length;
                 today = mm + '/' + dd + '/' + yyyy; 
+                
                 data_copy[array_length] = { 'title' : today };
             }
             setAttributes({t_date:data_copy});    
@@ -464,7 +465,7 @@ class UAGBcontentTimeline extends Component {
                             }
                         }
                         min={ 1 }
-                        max={ 200 }
+                        max={ 20 }
                         beforeIcon="editor-textcolor"
                         allowReset
                     />                                                     
@@ -827,7 +828,7 @@ class UAGBcontentTimeline extends Component {
                                     <div className = {content_align_class}> 
                                         
                                         <div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
-                                            <i className = {icon_class}></i>
+                                            <span className = {icon_class}></span>
                                         </div>
                                         
                                         <div className = {day_align_class} >
