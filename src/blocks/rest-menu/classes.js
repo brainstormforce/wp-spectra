@@ -21,6 +21,9 @@ function PositionClasses( attributes ) {
     }
 
     iconimgStyle_class += "uagb-rm__bg-type-"+attributes.backgroundType+ " ";
+    iconimgStyle_class += "uagb-rm__desk-column-"+attributes.columns+ " ";
+    iconimgStyle_class += "uagb-rm__mobile-column-"+attributes.mcolumns+ " ";
+    iconimgStyle_class += "uagb-rm__tablet-column-"+attributes.tcolumns+ " ";    
 
     return [
         iconimgStyle_class        

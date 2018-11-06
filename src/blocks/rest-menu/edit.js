@@ -175,7 +175,6 @@ class UAGBrestMenu extends Component {
 			separatorWidth,
 			separatorSpace,
 			descSpace,
-			iconimgStyle,
 			imagePosition,
 			imageAlignment,
 			block_id,
@@ -668,21 +667,21 @@ class UAGBrestMenu extends Component {
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
 						min={ 1 }
-						max={ menu_item_count }
+						max={ 3 }
 					/>
 					<RangeControl
 						label={ __( "Columns (Tablet)" ) }
 						value={ tcolumns }
 						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 						min={ 1 }
-						max={ menu_item_count }
+						max={ 3 }
 					/>
 					<RangeControl
 						label={ __( "Columns (Mobile)" ) }
 						value={ mcolumns }
 						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 						min={ 1 }
-						max={ menu_item_count }
+						max={ 3 }
 					/>
 					</PanelBody>
 					{ /*carousal_settings*/ }
@@ -728,17 +727,7 @@ class UAGBrestMenu extends Component {
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
 								/>
 							</Fragment>
-						}
-						<SelectControl
-							label={ __( 'Image Style' ) }
-							value={ iconimgStyle }
-							onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
-							options={ [
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'circle', label: __( 'Circle' ) },
-								{ value: 'square', label: __( 'Square' ) },
-							] }
-						/>
+						}						
 						<SelectControl
 								label={ __( 'Image Size' ) }
 								options={ imageSizeOptions }

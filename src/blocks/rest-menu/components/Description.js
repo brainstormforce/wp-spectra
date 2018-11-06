@@ -30,7 +30,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ description }
-	                className='uagb-tm__desc'
+	                className='uagb-rm__desc'
 	                onChange={ ( value ) => { 
 
 	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
@@ -63,7 +63,7 @@ class Description extends React.Component {
 				<RichText.Content
 	                tagName='div'
 	                value={ description }
-	                className='uagb-tm__desc'
+	                className='uagb-rm__desc'
 	            />			
 			)
 		}

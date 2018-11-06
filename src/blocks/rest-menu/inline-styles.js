@@ -6,15 +6,15 @@
 function RestMenuStyle( props ) {
     const {
             headingAlign,
-            companyColor,
+            priceColor,
             descColor,
-            authorColor,
-            nameFontSize,
-            companyFontSize,
+            titleColor,
+            titleFontSize,
+            priceFontSize,
             descFontSize,
             descSpace,
             block_id,
-            nameSpace,
+            titleSpace,
             imgVrPadding,
             imgHrPadding,
             imageWidth,  
@@ -58,8 +58,7 @@ function RestMenuStyle( props ) {
 
             // Image
             selectors['.uagb-rm__image img'] = {
-                    'width': imageWidth+'px',
-                    'max-width': imageWidth+'px',
+                    'width': imageWidth+'px',                    
                 }; 
             
             selectors['.uagb-rm__content'] = {                    
@@ -68,16 +67,16 @@ function RestMenuStyle( props ) {
                 };                       
 
             // Prefix Style
-            selectors['.uagb-rm__author-name'] = {
-                    'font-size' : nameFontSize+'px',
-                    'color': authorColor,
-                    'margin-bottom': nameSpace+'px',
+            selectors['.uagb-rm__title'] = {
+                    'font-size' : titleFontSize+'px',
+                    'color': titleColor,
+                    'margin-bottom': titleSpace+'px',
                 };
 
             // Title Style
-            selectors['.uagb-rm__company'] = {
-                    'font-size' : companyFontSize+'px',
-                    'color': companyColor,
+            selectors['.uagb-rm__price'] = {
+                    'font-size' : priceFontSize+'px',
+                    'color': priceColor,
                 };
 
             // Description Style

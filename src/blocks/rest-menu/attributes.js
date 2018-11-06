@@ -31,7 +31,7 @@ const attributes = {
 	},	
 	headingAlign: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},
 	descColor: {
 		type: "string",
@@ -44,14 +44,10 @@ const attributes = {
 	titleColor: {
 		type: "string",
 		default: "#333"		
-	},		
-	iconimgStyle: {
-		type: "string",
-		default: "circle"
-	},	
+	},
 	imagePosition:{
 		type: "string",
-		default: "bottom"
+		default: "top"
 	},	
 	imageAlignment:{
 		type: "string",
@@ -84,19 +80,19 @@ const attributes = {
 	},	
 	imgVrPadding :{
 		type: "number",
-		default: 10,
+		default: 0,
 	},
 	imgHrPadding :{
 		type: "number",
-		default: 10,
+		default: 0,
 	},
 	imgTopPadding :{
 		type: "number",
-		default: 10,
+		default: 0,
 	},
 	imgBottomPadding :{
 		type: "number",
-		default: 10,
+		default: 0,
 	},
 	iconImage: {
 		type: "object",
@@ -107,19 +103,19 @@ const attributes = {
 	},
 	imageSize:{
 		type: 'string',
-		default: 'thumbnail',
+		default: 'medium',
 	},
 	imageWidth :{
 		type: "number",
-		default: 60,
+		default: 200,
 	},	
 	columns :{
 		type: "number",
-		default: 1,
+		default: 3,
 	},	
 	tcolumns :{
 		type: "number",
-		default: 1,
+		default: 3,
 	},	
 	mcolumns :{
 		type: "number",
