@@ -7,21 +7,21 @@ const ITEM_COUNT = 3
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!"
-	var author_text    = "John Doe "
-	var company_text    = "Company"+i
+	var desc_text = "Lorem Ipsum is simply dummy text"
+	var title_text    = "Manu Item "+i
+	var price_text    = "$19"
 	testimonial_block.push(
 		{
 			"description": desc_text,
-			"name": author_text,
-			"company": company_text,
+			"title": title_text,
+			"price": price_text,
 			"image": "",
 		}
 	)
 }
 
 const attributes = {
-	test_item_count: {
+	menu_item_count: {
 		type: "number",
 		default: ITEM_COUNT
 	},
@@ -37,11 +37,11 @@ const attributes = {
 		type: "string",
 		default: "#333"
 	},
-	companyColor: {
+	priceColor: {
 		type: "string",
 		default: "#888888"		
 	},	
-	authorColor: {
+	titleColor: {
 		type: "string",
 		default: "#333"		
 	},		
@@ -57,34 +57,31 @@ const attributes = {
 		type: "string",
 		default: "top"
 	},
-	authorFontSize: {
-		type: "number",
-	},
-	nameFontSize:{
+	titleFontSize: {
 		type: "number",
 	},	
-	companyFontSize: {
+	priceFontSize: {
 		type: "number",
 	},
 	descFontSize: {
 		type: "number",
 	},
-	nameSpace: {
+	priceSpace: {
 		type: "number",
 		default : 5
 	},	
 	descSpace: {
 		type: "number",
 		default : 15
+	},
+	titleSpace :{
+		type: "number",
+		default: 5,
 	},		
 	block_id :{
 		type : 'string',
 		default : 'not_set'
 	},	
-	authorSpace :{
-		type: "number",
-		default: 5,
-	},
 	imgVrPadding :{
 		type: "number",
 		default: 10,
@@ -105,7 +102,7 @@ const attributes = {
 		type: "object",
 		default:{
 			'url': '',
-			'alt': 'InfoBox placeholder img',
+			'alt': 'Menu placeholder img',
 		}
 	},
 	imageSize:{
@@ -127,34 +124,6 @@ const attributes = {
 	mcolumns :{
 		type: "number",
 		default: 1,
-	},
-	pauseOnHover: {
-		type: "boolean",
-		default: true,
-	},	
-	infiniteLoop: {
-		type: "boolean",
-		default: true,
-	},
-	transitionSpeed :{
-		type: "number",
-		default: 500,
-	},
-	autoplay: {
-		type: "boolean",
-		default: true,
-	},
-	autoplaySpeed :{
-		type: "number",
-		default: 2000,
-	},
-	arrowSize :{
-		type: "number",
-		default: 20,
-	},
-	arrowColor :{
-		type: "string",
-		default: "#aaaaaa",
 	},	
 	rowGap: {
 		type: "number",

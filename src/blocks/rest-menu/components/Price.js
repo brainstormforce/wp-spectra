@@ -8,7 +8,7 @@ const {
 
 const { __ } = wp.i18n;
 
-class Company extends React.Component {
+class Price extends React.Component {
 
 	render() {
 
@@ -20,22 +20,22 @@ class Company extends React.Component {
 		} = this.props;
 
 		const test_arr = attributes.test_block[index_value];
-		let company = '';
+		let price = '';
 		if( test_arr && typeof test_arr !== 'undefined'){
-			company = test_arr['company']			
+			price = test_arr['price']			
 		}
 
 		if( setAttributes !== 'not_set' ){
 			return (
 				<RichText
 	                tagName= 'span'
-	                value={ company }
-	                className = 'uagb-tm__company'
+	                value={ price }
+	                className = 'uagb-rm__price'
 	                onChange={ ( value ) => { 
 
 	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
-								item['company'] = value				
+								item['price'] = value				
 							}
 							return item			
 						} )
@@ -64,12 +64,12 @@ class Company extends React.Component {
 			return (
 				<RichText.Content
 	                tagName= 'span'
-	                value={ company }
-	                className='uagb-tm__company'
+	                value={ price }
+	                className='uagb-rm__price'
 	            />			
 			)
 		}
 	}
 }
 
-export default Company
+export default Price

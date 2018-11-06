@@ -4,7 +4,7 @@ const {
 
 const { __ } = wp.i18n;
 
-class TestimonialImage extends React.Component {
+class RestMenuImage extends React.Component {
 
 	render() {
 
@@ -51,4 +51,4 @@ class TestimonialImage extends React.Component {
 	}
 }
 
-export default TestimonialImage
+export default RestMenuImage

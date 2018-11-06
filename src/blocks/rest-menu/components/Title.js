@@ -8,7 +8,7 @@ const {
 	createBlock
 } = wp.blocks
 
-class AuthorName extends React.Component {
+class Title extends React.Component {
 
 	render() {
 
@@ -20,21 +20,21 @@ class AuthorName extends React.Component {
 		} = this.props;
 
 		const test_arr = attributes.test_block[index_value];
-		let author_name = '';
+		let author_title = '';
 		if( test_arr && typeof test_arr !== 'undefined'){
-			author_name = test_arr['name']			
+			author_title = test_arr['title']			
 		}
 
 		if( setAttributes !== 'not_set' ){
 			return (
 				<RichText
 	                tagName="span"
-	                value={ author_name }
-	                className='uagb-tm__author-name'
+	                value={ author_title }
+	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
 	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
-								item['name'] = value				
+								item['title'] = value				
 							}
 							return item			
 						} )
@@ -61,12 +61,12 @@ class AuthorName extends React.Component {
 			return (
 				<RichText.Content
 	                tagName="span"
-	                value={ author_name }
-	                className='uagb-tm__author-name'
+	                value={ author_title }
+	                className='uagb-rm__title'
 	            />
 			)
 		}
 	}
 }
 
-export default AuthorName
+export default Title

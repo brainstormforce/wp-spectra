@@ -7,11 +7,11 @@ import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import icon.
-import AuthorName from "./components/AuthorName"
-import Company from "./components/Company"
+import Title from "./components/Title"
+import Price from "./components/Price"
 import Description from "./components/Description"
 import PositionClasses from "./classes"
-import TestimonialImage from "./components/TestimonialImage"
+import RestMenuImage from "./components/RestMenuImage"
 import edit from "./edit";
 import attributes from "./attributes"
 import "./style.scss"
@@ -45,16 +45,15 @@ const { Fragment } = wp.element
 registerBlockType( "uagb/rest-menu", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Restaurent Menu" ), // Block title.
-	description: __( "Add Restaurent Menu." ), // Block description.
+	title: __( "UAGB - Restaurant Menu" ), // Block title.
+	description: __( "Add Restaurant Menu." ), // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
-		__( "restaurent" ),
-		__( "menu" ),
+		__( "restaurant" ),
+		__( "menu" ),		
 		__( "uagb" ),
 	],
 	category: "uagb",
-
 	attributes,
 	edit,
 	save: function( props ) {
@@ -98,7 +97,7 @@ registerBlockType( "uagb/rest-menu", {
 			<Fragment>
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
+					"uagb-rest_menu__outer-wrap uagb-slick-carousal uagb-rm__arrow-outside"
 				) }
 					id = { my_block_id }
 					data-slider = {JSON.stringify(sldier_data)}
@@ -107,21 +106,21 @@ registerBlockType( "uagb/rest-menu", {
 				<div
 					className={ classnames(
 						"is-carousel",
-						`uagb-tm__columns-${ columns }`,
-						"uagb-tm__items"
+						`uagb-rm__columns-${ columns }`,
+						"uagb-rm__items"
 					) }					
 					>
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-testomonial__wrap",
+						"uagb-rest_menu__wrap",
 						...PositionClasses( props.attributes ),
 						) } key ={ "wrap-"+index } >
-							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
-								<div className = "uagb-tm__overlay"></div>
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
+							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
+								<div className = "uagb-rm__overlay"></div>
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={props.attributes} index_value = {index} /> }	
 
-								<div className ="uagb-tm__text-wrap">
+								<div className ="uagb-rm__text-wrap">
 									{  // Get description.
 										<Fragment>
 											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
@@ -129,23 +128,23 @@ registerBlockType( "uagb/rest-menu", {
 											</div>
 										</Fragment>
 									}
-									<div className ="uagb-tm__meta">
-										<div className ="uagb-tm__meta-inner">
+									<div className ="uagb-rm__meta">
+										<div className ="uagb-rm__meta-inner">
 											
-											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={props.attributes}  index_value = {index} /> }	
+											{ (imagePosition == 'bottom' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }	
 																
 											{ //title_text
 												<Fragment>
 													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-														<AuthorName attributes={props.attributes} setAttributes = "not_set"  props = { props } index_value = {index}/>
-														<Company attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
+														<Title attributes={props.attributes} setAttributes = "not_set"  props = { props } index_value = {index}/>
+														<Price attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
 													</div>
 												</Fragment>
 											}								
 										</div>
 									</div>
 								</div>
-								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
+								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={props.attributes} index_value = {index} /> }	
 							</div>						
 						</div>												
 					)}	

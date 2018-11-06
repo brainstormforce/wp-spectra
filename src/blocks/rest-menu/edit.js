@@ -1,13 +1,12 @@
 // Import block dependencies and components.
 import classnames from "classnames"
-import AuthorName from "./components/AuthorName"
-import Company from "./components/Company"
+import Title from "./components/Title"
+import Price from "./components/Price"
 import Description from "./components/Description"
 import PositionClasses from "./classes"
-import TestimonialStyle from "./inline-styles"
-import TestimonialImage from "./components/TestimonialImage"
+import RestMenuStyle from "./inline-styles"
+import RestMenuImage from "./components/RestMenuImage"
 import times from "lodash/times"
-import Slider from "react-slick"
 
 const { __ } = wp.i18n
 
@@ -101,15 +100,15 @@ class UAGBrestMenu extends Component {
 	getImageName( image ){
 		const { test_block } = this.props.attributes
 
-		let image_name = "Select Image"
+		let image_title = "Select Image"
 		if(image){
 			if(image.url == null || image.url == "" ){
-				image_name = "Select Image"
+				image_title = "Select Image"
 			}else{
-				image_name = "Replace Image"
+				image_title = "Replace Image"
 			}
 		}
-		return image_name;
+		return image_title;
 	}
 		
 	togglePauseOnHover() {
@@ -163,15 +162,15 @@ class UAGBrestMenu extends Component {
 
 		// Setup the attributes.
 		const {
-			test_item_count,
+			menu_item_count,
 			test_block,
 			headingAlign,
-			companyColor,
+			priceColor,
 			descColor,
-			authorColor,
+			titleColor,
 			prefixTag,
-			nameFontSize,
-			companyFontSize,
+			titleFontSize,
+			priceFontSize,
 			descFontSize,
 			separatorWidth,
 			separatorSpace,
@@ -181,7 +180,7 @@ class UAGBrestMenu extends Component {
 			imageAlignment,
 			block_id,
 			source_type,
-			nameSpace,
+			titleSpace,
 			imgHrPadding,
 			imgVrPadding,
 			iconImage,
@@ -189,14 +188,7 @@ class UAGBrestMenu extends Component {
 			imageWidth,
 			columns,
 			tcolumns,
-			mcolumns,
-			pauseOnHover,
-			infiniteLoop,
-			transitionSpeed,
-			autoplay,
-			autoplaySpeed,
-			arrowSize,
-			arrowColor,	
+			mcolumns,			
 			rowGap,
 			columnGap,
 			contentPadding,
@@ -219,7 +211,7 @@ class UAGBrestMenu extends Component {
 		// Add CSS.
 		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
 		if( null != element && 'undefined' != typeof element ) {
-			element.innerHTML = TestimonialStyle( this.props );
+			element.innerHTML = RestMenuStyle( this.props );
 		}		
 
 		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
@@ -232,7 +224,7 @@ class UAGBrestMenu extends Component {
 						initialOpen={ false }
 					>						
 						<RangeControl
-							label={ __( "Testimonial Font Size" ) }
+							label={ __( "Description Font Size" ) }
 							value={ descFontSize }
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
@@ -242,9 +234,9 @@ class UAGBrestMenu extends Component {
 							allowReset
 						/>											
 						<RangeControl
-							label={ __( "Author Font Size" ) }
-							value={ nameFontSize }
-							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
+							label={ __( "Title Font Size" ) }
+							value={ titleFontSize }
+							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
 							initialPosition={30}
@@ -252,9 +244,9 @@ class UAGBrestMenu extends Component {
 							allowReset
 						/>	
 						<RangeControl
-							label={ __( "Company Font Size" ) }
-							value={ companyFontSize }
-							onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
+							label={ __( "Price Font Size" ) }
+							value={ priceFontSize }
+							onChange={ ( value ) => setAttributes( { priceFontSize: value } ) }
 							min={ 10 }
 							max={ 100 }
 							initialPosition={16}
@@ -273,20 +265,15 @@ class UAGBrestMenu extends Component {
 									label: __( 'Content Color' ),
 								},
 								{
-									value: authorColor,
-									onChange: ( colorValue ) => setAttributes( { authorColor: colorValue } ),
+									value: titleColor,
+									onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
 									label: __( 'Name Color' ),
 								},
 								{
-									value: companyColor,
-									onChange: ( colorValue ) => setAttributes( { companyColor: colorValue } ),
-									label: __( 'Company Color' ),
-								},
-								{
-									value: arrowColor,
-									onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
-									label: __( 'Arrow Color' ),
-								},								
+									value: priceColor,
+									onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
+									label: __( 'Price Color' ),
+								},															
 							] }
 						>
 					</PanelColorSettings>
@@ -325,7 +312,7 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>					
 					<RangeControl
-						label={ __( "Testimonial Bottom Margin" ) }
+						label={ __( "Description Bottom Margin" ) }
 						value={ descSpace }
 						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 						min={ 0 }
@@ -333,9 +320,9 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Name Bottom Margin" ) }
-						value={ nameSpace }
-						onChange={ ( value ) => setAttributes( { nameSpace: value } ) }
+						label={ __( "Title Bottom Margin" ) }
+						value={ titleSpace }
+						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
@@ -536,52 +523,7 @@ class UAGBrestMenu extends Component {
 			{ value: 'medium', label: __( 'Medium' ) },
 			{ value: 'full', label: __( 'Large' ) }
 		];		
-		
-		function NextArrow( props ) {
-
-			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><span className="fas fa-angle-right" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></span></button>
-			)
-		}
-
-		function PrevArrow( props ) {
-
-			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><span className="fas fa-angle-left" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></span></button>
-			)
-		}
-
-		const settings = {
-			slidesToShow : columns,
-			slidesToScroll : 1,
-			autoplaySpeed : autoplaySpeed,
-			autoplay : autoplay,
-			infinite : infiniteLoop,
-			pauseOnHover : pauseOnHover,
-			speed : transitionSpeed,
-			arrows : true,
-			dots : true,
-			rtl : false,
-			nextArrow: <NextArrow arrowSize={arrowSize}/>,
-			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
-			responsive : [
-				{
-					breakpoint : 1024,
-					settings : {
-						slidesToShow : tcolumns,
-						slidesToScroll : 1,
-					}
-				},
-				{
-					breakpoint : 767,
-					settings : {
-						slidesToShow : mcolumns,
-						slidesToScroll : 1,
-					}
-				}
-			]
-		}
-
+				
 		let image_enable = false;
 		// Set testinomial image panel
 		const tmControls = ( index ) => {
@@ -624,7 +566,7 @@ class UAGBrestMenu extends Component {
 			)
 		}
 
-		const carousal_settings = (
+		/*const carousal_settings = (
 			<Fragment>
 				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 					<ToggleControl
@@ -668,7 +610,7 @@ class UAGBrestMenu extends Component {
 				</PanelBody>
 			</Fragment>			
 		)
-
+*/
 		let cnt = 0;
 		test_block.map( ( item, thisIndex ) => {
 			let image_arr = test_block[thisIndex]			
@@ -689,8 +631,8 @@ class UAGBrestMenu extends Component {
 					initialOpen={ false }
 					>	
 				 	<RangeControl
-						label={ __( 'Number of Testimonials' ) }
-						value={ test_item_count }
+						label={ __( 'Number of Menu' ) }
+						value={ menu_item_count }
 						onChange={ ( newCount ) => {
 							let cloneTest_block = [ ...test_block ]
 							if ( cloneTest_block.length < newCount ) {
@@ -699,9 +641,9 @@ class UAGBrestMenu extends Component {
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
-										description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!" ,
-										name: "John Doe",
-										company: "Company"+ ( cloneTest_block.length + 1 ),
+										description: "Lorem Ipsum is simply dummy text" ,
+										title: "Manu Item"+ ( cloneTest_block.length + 1 ),
+										price: "$19",
 										image: "",
 										} )
 								} ) }
@@ -715,7 +657,7 @@ class UAGBrestMenu extends Component {
 					            setAttributes({test_block:data_new});
 
 							}
-							setAttributes( { test_item_count: newCount } )
+							setAttributes( { menu_item_count: newCount } )
 						} }
 						min={ 0 }
 						max={ 10 }
@@ -726,30 +668,30 @@ class UAGBrestMenu extends Component {
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
 						min={ 1 }
-						max={ test_item_count }
+						max={ menu_item_count }
 					/>
 					<RangeControl
 						label={ __( "Columns (Tablet)" ) }
 						value={ tcolumns }
 						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 						min={ 1 }
-						max={ test_item_count }
+						max={ menu_item_count }
 					/>
 					<RangeControl
 						label={ __( "Columns (Mobile)" ) }
 						value={ mcolumns }
 						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 						min={ 1 }
-						max={ test_item_count }
+						max={ menu_item_count }
 					/>
 					</PanelBody>
-					{ carousal_settings }
+					{ /*carousal_settings*/ }
 				 	
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }
 					>
-					{ times( test_item_count, n => tmControls( n ) ) }
+					{ times( menu_item_count, n => tmControls( n ) ) }
 
 					{  cnt > 0 && <Fragment>
 						<SelectControl
@@ -835,31 +777,23 @@ class UAGBrestMenu extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
+					"uagb-rest_menu__outer-wrap uagb-slick-carousal uagb-rm__arrow-outside"
 				) }
 					id = { my_block_id }
 				>
 
-				<Slider
-					className={ classnames(
-						"is-carousel",
-						`uagb-tm__columns-${ columns }`,
-						"uagb-tm__items"
-					) }					
-					{...settings}
-				>
-
+				
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-testomonial__wrap",
+						"uagb-rest_menu__wrap",
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >							
-							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
-								<div className = "uagb-tm__overlay"></div>
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
+							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
+								<div className = "uagb-rm__overlay"></div>
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 
-								<div className ="uagb-tm__text-wrap">
+								<div className ="uagb-rm__text-wrap">
 									{  // Get description.
 										<Fragment>
 											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
@@ -867,27 +801,26 @@ class UAGBrestMenu extends Component {
 											</div>
 										</Fragment>
 									}
-									<div className ="uagb-tm__meta">
-										<div className ="uagb-tm__meta-inner">
+									<div className ="uagb-rm__meta">
+										<div className ="uagb-rm__meta-inner">
 											
-											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }	
+											{ (imagePosition == 'bottom' ) && <RestMenuImage  attributes={attributes} index_value = {index} /> }	
 																
 											{ //title_text
 												<Fragment>
 													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-														<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-														<Company attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+														<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+														<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
 													</div>
 												</Fragment>
 											}								
 										</div>
 									</div>
 								</div>
-								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
+								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 							</div>						
 						</div>												
-					)}
-				</Slider>
+					)}				
 				</div>
 			</Fragment>
 		)

@@ -3,7 +3,7 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
-function TestimonialStyle( props ) {
+function RestMenuStyle( props ) {
     const {
             headingAlign,
             companyColor,
@@ -43,13 +43,13 @@ function TestimonialStyle( props ) {
 
         var selectors = {};
 
-            selectors['.uagb-testomonial__wrap'] = {
+            selectors['.uagb-rest_menu__wrap'] = {
                     'padding-left' : rowGap/2+'px',
                     'padding-right' : rowGap/2+'px',                                
                     'margin-bottom' : columnGap+'px',
                 }; 
             
-            selectors['.uagb-testomonial__wrap .uagb-tm__image-content'] = {
+            selectors['.uagb-rest_menu__wrap .uagb-rm__image-content'] = {
                     'padding-left' : imgHrPadding+'px',
                     'padding-right' : imgHrPadding+'px',                                
                     'padding-top' : imgVrPadding+'px',
@@ -57,42 +57,42 @@ function TestimonialStyle( props ) {
                 }; 
 
             // Image
-            selectors['.uagb-tm__image img'] = {
+            selectors['.uagb-rm__image img'] = {
                     'width': imageWidth+'px',
                     'max-width': imageWidth+'px',
                 }; 
             
-            selectors['.uagb-tm__content'] = {                    
+            selectors['.uagb-rm__content'] = {                    
                     'text-align' : headingAlign, 
                     'padding' : contentPadding+'px',                  
                 };                       
 
             // Prefix Style
-            selectors['.uagb-tm__author-name'] = {
+            selectors['.uagb-rm__author-name'] = {
                     'font-size' : nameFontSize+'px',
                     'color': authorColor,
                     'margin-bottom': nameSpace+'px',
                 };
 
             // Title Style
-            selectors['.uagb-tm__company'] = {
+            selectors['.uagb-rm__company'] = {
                     'font-size' : companyFontSize+'px',
                     'color': companyColor,
                 };
 
             // Description Style
-            selectors['.uagb-tm__desc'] = {
+            selectors['.uagb-rm__desc'] = {
                     'font-size' : descFontSize+'px',
                     'color': descColor,
                     'margin-bottom': descSpace+'px',
                 };     
 
-            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-color .uagb-tm__content'] = {
+            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-color .uagb-rm__content'] = {
                     'background-color': backgroundColor,
                 };  
 
             var position = backgroundPosition.replace( "-", " " )
-            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__content'] = {
+            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-image .uagb-rm__content'] = {
                     'background-image': ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
                     'background-position':position,
                     'background-attachment':backgroundAttachment,
@@ -100,13 +100,13 @@ function TestimonialStyle( props ) {
                     'background-size':backgroundSize,
                 }; 
 
-            selectors['.uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay'] = {
+            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-image .uagb-rm__overlay'] = {
                     'background-color':backgroundImageColor,
                     'opacity':'0.'+backgroundOpacity,
                 };                              
                
             if ( borderStyle != "none" ) {
-                selectors['.uagb-testomonial__wrap .uagb-tm__content'] = {
+                selectors['.uagb-rest_menu__wrap .uagb-rm__content'] = {
                     'border-color': borderColor,
                     'border-style':borderStyle,
                     'border-width':borderWidth + "px",
@@ -136,4 +136,4 @@ function TestimonialStyle( props ) {
 
 }
 
-export default TestimonialStyle;
+export default RestMenuStyle;
