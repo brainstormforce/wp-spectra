@@ -213,7 +213,7 @@ class UAGBrestMenu extends Component {
 			element.innerHTML = RestMenuStyle( this.props );
 		}		
 
-		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
+		const my_block_id = 'uagb-rm-'+this.props.clientId;
 			
 		// Typography settings.
 		const TypographySettings = (
@@ -640,8 +640,8 @@ class UAGBrestMenu extends Component {
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
-										description: "Lorem Ipsum is simply dummy text" ,
-										title: "Manu Item"+ ( cloneTest_block.length + 1 ),
+										description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor." ,
+										title: "Menu Item"+ ( cloneTest_block.length + 1 ),
 										price: "$19",
 										image: "",
 										} )
@@ -699,7 +699,6 @@ class UAGBrestMenu extends Component {
 							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
 							options={ [
 								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'bottom', label: __( 'Bottom' ) },
 								{ value: 'left', label: __( 'Left' ) },
 								{ value: 'right', label: __( 'Right' ) },
 							] }
@@ -783,28 +782,24 @@ class UAGBrestMenu extends Component {
 								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 
 								<div className ="uagb-rm__text-wrap">
-									{  // Get description.
-										<Fragment>
-											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
-												<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-											</div>
-										</Fragment>
-									}
-									<div className ="uagb-rm__meta">
-										<div className ="uagb-rm__meta-inner">
-											
-											{ (imagePosition == 'bottom' ) && <RestMenuImage  attributes={attributes} index_value = {index} /> }	
-																
+									
+									<div className ="uagb-rm__meta">															
 											{ //title_text
 												<Fragment>
-													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-														<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-														<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+													<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
+														<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
+															<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+															<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+																<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+															</div>
+														</div>
+														<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
+															<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+														</div>	
 													</div>
 												</Fragment>
-											}								
-										</div>
-									</div>
+											}
+									</div>									
 								</div>
 								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 							</div>						

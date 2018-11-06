@@ -7,8 +7,8 @@ const ITEM_COUNT = 3
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "Lorem Ipsum is simply dummy text"
-	var title_text    = "Manu Item "+i
+	var desc_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor."
+	var title_text    = "Menu Item "+i
 	var price_text    = "$19"
 	testimonial_block.push(
 		{
@@ -107,11 +107,11 @@ const attributes = {
 	},
 	imageWidth :{
 		type: "number",
-		default: 200,
+		default: 220,
 	},	
 	columns :{
 		type: "number",
-		default: 3,
+		default: 2,
 	},	
 	tcolumns :{
 		type: "number",

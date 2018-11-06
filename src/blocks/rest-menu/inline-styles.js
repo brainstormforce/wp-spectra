@@ -36,9 +36,9 @@ function RestMenuStyle( props ) {
         } = props.attributes;        
 
         if( props.clientId ){
-            var clientId = 'uagb-testimonial-'+props.clientId;
+            var clientId = 'uagb-rm-'+props.clientId;
         }else{
-            var clientId = 'uagb-testimonial-'+block_id;
+            var clientId = 'uagb-rm-'+block_id;
         }
 
         var selectors = {};
@@ -58,7 +58,8 @@ function RestMenuStyle( props ) {
 
             // Image
             selectors['.uagb-rm__image img'] = {
-                    'width': imageWidth+'px',                    
+                    'width': imageWidth+'px',
+                    'max-width': imageWidth+'px',                         
                 }; 
             
             selectors['.uagb-rm__content'] = {                    
