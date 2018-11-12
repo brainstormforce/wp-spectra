@@ -6,6 +6,8 @@
 
 .uagb-rest_menu__wrap{
     position:relative;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .uagb-rest_menu__wrap,
 .uagb-rest_menu__wrap *{
@@ -24,7 +26,7 @@
     display: inline-block;
 }
 .uagb-rm__desc{
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     font-style:italic;
 }
 .uagb-rm__content {
@@ -34,6 +36,7 @@
     padding:15px;
     border-radius:inherit;
     position: relative;
+    padding:5px;
 }
 .uagb-rm__image-position-left .uagb-rm__content,
 .uagb-rm__image-position-right .uagb-rm__content{

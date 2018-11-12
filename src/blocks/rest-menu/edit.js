@@ -204,7 +204,7 @@ class UAGBrestMenu extends Component {
 			borderWidth ,
 			borderRadius,
 			borderColor,
-			stack
+			stack,			
 		} = attributes;
 
 		// Add CSS.
@@ -276,6 +276,50 @@ class UAGBrestMenu extends Component {
 							] }
 						>
 					</PanelColorSettings>
+			</Fragment>
+		);
+
+		const separatorSettings =(
+			<Fragment>
+				<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( "Seperator Style" ) }
+						value={ borderStyle }
+						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "groove", label: __( "Groove" ) },
+							{ value: "inset", label: __( "Inset" ) },
+							{ value: "outset", label: __( "Outset" ) },
+							{ value: "ridge", label: __( "Ridge" ) },
+						] }
+					/>
+					{ "none" != borderStyle &&
+						<Fragment>
+							<RangeControl
+								label={ __( "Seperator Width" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>							
+							<PanelColor
+								title={ __( "Seperator Color" ) }
+								colorValue={ borderColor } >
+								<ColorPalette
+									value={ borderColor }
+									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+									allowReset
+								/>
+							</PanelColor>
+						</Fragment>
+					}
+				</PanelBody>
 			</Fragment>
 		);
 
@@ -464,55 +508,17 @@ class UAGBrestMenu extends Component {
 								allowReset
 								initialPosition={0}
 							/>
-						}						
+						}	
+						<RangeControl
+							label={ __( "Border Radius" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 1000 }
+							allowReset
+						/>					
 					</PanelBody>
-					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( "Border Style" ) }
-							value={ borderStyle }
-							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
-							] }
-						/>
-						{ "none" != borderStyle &&
-							<Fragment>
-								<RangeControl
-									label={ __( "Border Width" ) }
-									value={ borderWidth }
-									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-									min={ 0 }
-									max={ 50 }
-									allowReset
-								/>
-								<RangeControl
-									label={ __( "Border Radius" ) }
-									value={ borderRadius }
-									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-									min={ 0 }
-									max={ 1000 }
-									allowReset
-								/>
-								<PanelColor
-									title={ __( "Border Color" ) }
-									colorValue={ borderColor } >
-									<ColorPalette
-										value={ borderColor }
-										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
-							</Fragment>
-						}
-					</PanelBody>
+										
 			</Fragment>
 			);
 
@@ -746,8 +752,8 @@ class UAGBrestMenu extends Component {
 					
 					
 				</PanelBody>
+					{ separatorSettings }
 					{ TypographySettings }
-
 					{ marginSettings }
 					{ background_settings }
 				</InspectorControls>
@@ -765,7 +771,7 @@ class UAGBrestMenu extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-rest_menu__outer-wrap uagb-slick-carousal uagb-rm__arrow-outside"
+					"uagb-rest_menu__outer-wrap"
 				) }
 					id = { my_block_id }
 				>

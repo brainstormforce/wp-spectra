@@ -32,7 +32,7 @@ function RestMenuStyle( props ) {
             borderStyle,
             borderWidth ,
             borderRadius,
-            borderColor         
+            borderColor,                  
         } = props.attributes;        
 
         if( props.clientId ){
@@ -107,9 +107,9 @@ function RestMenuStyle( props ) {
                
             if ( borderStyle != "none" ) {
                 selectors['.uagb-rest_menu__wrap .uagb-rm__content'] = {
-                    'border-color': borderColor,
-                    'border-style':borderStyle,
-                    'border-width':borderWidth + "px",
+                    'border-bottom-color': borderColor,
+                    'border-bottom-style':borderStyle,
+                    'border-bottom-width':borderWidth + "px",
                     'border-radius':borderRadius + "px",                    
                 };                 
             }
