@@ -191,12 +191,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( has_blocks( get_the_ID() ) ) {
 
 				global $post;
+				global $wp_version;
 
 				if ( ! is_object( $post ) ) {
 					return;
 				}
 
-				$blocks = gutenberg_parse_blocks( $post->post_content );
+				if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
+					$blocks = parse_blocks( $post->post_content );
+				} else {
+
+					$blocks = gutenberg_parse_blocks( $post->post_content );
+				}
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -217,6 +223,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_stylesheet( $blocks ) {
 
+			global $wp_version;
+
 			foreach ( $blocks as $i => $block ) {
 
 				if ( is_array( $block ) ) {
@@ -229,7 +237,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$content = get_post_field( 'post_content', $id );
 
-							$reusable_blocks = gutenberg_parse_blocks( $content );
+							if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
+								$reusable_blocks = parse_blocks( $content );
+							} else {
+
+								$reusable_blocks = gutenberg_parse_blocks( $content );
+							}
 
 							$this->get_stylesheet( $reusable_blocks );
 						}
