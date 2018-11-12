@@ -221,17 +221,7 @@ class UAGBrestMenu extends Component {
 				<PanelBody
 						title={ __( "Typography" ) }
 						initialOpen={ false }
-					>						
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ descFontSize }
-							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>											
+					>				
 						<RangeControl
 							label={ __( "Title Font Size" ) }
 							value={ titleFontSize }
@@ -239,6 +229,16 @@ class UAGBrestMenu extends Component {
 							min={ 10 }
 							max={ 100 }
 							initialPosition={30}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>									
+						<RangeControl
+							label={ __( "Description Font Size" ) }
+							value={ descFontSize }
+							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+							min={ 10 }
+							max={ 100 }
+							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>	
@@ -251,7 +251,7 @@ class UAGBrestMenu extends Component {
 							initialPosition={16}
 							beforeIcon="editor-textcolor"							
 							llowReset
-						/>
+						/>			
 						
 					</PanelBody>
 
@@ -259,15 +259,15 @@ class UAGBrestMenu extends Component {
 							title={ __( 'Color Settings' ) }
 							colorSettings={ [
 								{
+									value: titleColor,
+									onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
+									label: __( 'Title Color' ),
+								},
+								{
 									value: descColor,
 									onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
 									label: __( 'Content Color' ),
-								},
-								{
-									value: titleColor,
-									onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
-									label: __( 'Name Color' ),
-								},
+								},								
 								{
 									value: priceColor,
 									onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
@@ -309,15 +309,7 @@ class UAGBrestMenu extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>					
-					<RangeControl
-						label={ __( "Description Bottom Margin" ) }
-						value={ descSpace }
-						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
+					/>		
 					<RangeControl
 						label={ __( "Title Bottom Margin" ) }
 						value={ titleSpace }
@@ -325,7 +317,15 @@ class UAGBrestMenu extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>						
+					/>				
+					<RangeControl
+						label={ __( "Description Bottom Margin" ) }
+						value={ descSpace }
+						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>										
 					<RangeControl
 						label={ __( "Image Horizontal Padding" ) }
 						value={ imgHrPadding }

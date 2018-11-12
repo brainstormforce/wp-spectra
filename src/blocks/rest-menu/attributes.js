@@ -135,6 +135,7 @@ const attributes = {
 	},	
 	backgroundType: {
 		type: "string",
+		default: "none"
 	},
 	backgroundImage: {
 		type: "object",

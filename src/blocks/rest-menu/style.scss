@@ -78,12 +78,7 @@
 }
 
 .uagb-rest_menu__outer-wrap{
-    /*position: relative;
-    display: block;
-    width:100%;
-    height: 100%;
-    float: left;
-    text-align: center;*/
+    position: relative;   
 }
 
 .uagb-rm__overlay{
@@ -103,10 +98,16 @@
 .uagb-rest_menu__wrap{
     position: relative;
 }
+.uagb-rest_menu__outer-wrap:after{
+    content: "";
+    display: block;
+    clear: both;
+}
 .uagb-rest_menu__wrap.uagb-rm__desk-column-3{
     display: block;
     width: 33%;
     float: left;
+    width: calc(100% / 3);
     padding-left: 10px;
     padding-right: 10px;
 }
