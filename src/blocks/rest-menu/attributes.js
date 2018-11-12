@@ -2,7 +2,7 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const ITEM_COUNT = 3
+const ITEM_COUNT = 2
 
 const testimonial_block = []
 
@@ -84,7 +84,7 @@ const attributes = {
 	},
 	imgHrPadding :{
 		type: "number",
-		default: 0,
+		default: 10,
 	},
 	imgTopPadding :{
 		type: "number",
@@ -107,7 +107,7 @@ const attributes = {
 	},
 	imageWidth :{
 		type: "number",
-		default: 220,
+		default:150 ,
 	},	
 	columns :{
 		type: "number",
@@ -115,7 +115,7 @@ const attributes = {
 	},	
 	tcolumns :{
 		type: "number",
-		default: 3,
+		default: 2,
 	},	
 	mcolumns :{
 		type: "number",

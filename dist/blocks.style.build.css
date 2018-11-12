@@ -1025,6 +1025,9 @@ a.uagb-infobox-link-wrap {
   -ms-flex-item-align: center;
   align-self: center; }
 
+.uagb-rm__image {
+  overflow: hidden; }
+
 .uagb-rm__title {
   margin-bottom: 5px;
   font-size: 20px;
