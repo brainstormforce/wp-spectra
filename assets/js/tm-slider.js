@@ -45,8 +45,8 @@
 						arrows : true,
 						dots : true,
 						rtl : false,
-						nextArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-left" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'"></span></button>',
-						prevArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-right" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'" ></span></button>',
+						prevArrow: '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-left" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'"></span></button>',
+						nextArrow: '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '+arrowColor+'"><span class="fas fa-angle-right" style= "font-size:'+arrowSize+'px;color: '+arrowColor+'" ></span></button>',
 						responsive : [
 							{
 								breakpoint : 1024,
