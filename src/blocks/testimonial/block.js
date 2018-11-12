@@ -113,7 +113,7 @@ registerBlockType( "uagb/testimonial", {
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-testomonial__wrap",
+						"uagb-testimonial__wrap",
 						...PositionClasses( props.attributes ),
 						) } key ={ "wrap-"+index } >
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>

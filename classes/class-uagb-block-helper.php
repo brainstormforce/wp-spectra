@@ -468,12 +468,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$position = str_replace( '-', ' ', $attr->backgroundPosition );
 			$selectors = array(
-				' .uagb-testomonial__wrap' => array(
+				' .uagb-testimonial__wrap' => array(
 					'padding-left'   => ($attr->columnGap)/2 . 'px',
 					'padding-right'  => ($attr->columnGap)/2 . 'px',
 					'margin-bottom' => $attr->rowGap . 'px',
 				),
-				' .uagb-testomonial__wrap .uagb-tm__image-content' => array(
+				' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 					'padding-left'   => $attr->imgHrPadding . 'px',
 					'padding-right'  => $attr->imgHrPadding . 'px',
 					'padding-top'   => $attr->imgVrPadding . 'px',
@@ -501,21 +501,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'  => $attr->descFontSize . 'px',
 					'margin-bottom'  => $attr->descSpace . 'px',					
 				),
-				' .uagb-testomonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
 					'background-color'   => $attr->backgroundColor,
 				),
-				' .uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
 					'background-image'   => ( isset( $attr->backgroundImage['url'] ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
 					'background-position'=> $position,
-                    'background-attachment'=> $attr->backgroundAttachment,
                     'background-repeat'=> $attr->backgroundRepeat,
                     'background-size'=> $attr->backgroundSize,
 				),
-				' .uagb-testomonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
 					'background-color'   => $attr->backgroundImageColor,
 					'opacity'   => '0.'.$attr->backgroundOpacity,					
 				),
-				' .uagb-testomonial__wrap .uagb-tm__content' => array(
+				' .uagb-testimonial__wrap .uagb-tm__content' => array(
 					'border-color'   => $attr->borderColor,
 					'border-style'   => $attr->borderStyle,
 					'border-width'  => $attr->borderWidth . 'px',

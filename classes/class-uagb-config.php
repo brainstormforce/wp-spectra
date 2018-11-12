@@ -248,7 +248,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'backgroundPosition'   => 'center-center',
 							'backgroundSize'       => 'cover',
 							'backgroundRepeat'     => 'no-repeat',
-							'backgroundAttachment' => 'scroll',
 							'backgroundImageColor' => '',
 							'backgroundOpacity'    => 0,
 							'borderStyle'          => 'none',

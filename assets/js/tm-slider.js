@@ -2,7 +2,15 @@
     "use strict";
 
 	// Listen for events.
-	window.addEventListener("load", uagbTmFunc);
+	//window.addEventListener("load", uagbTmFunc);
+	// in case the document is already rendered
+	if (document.readyState!='loading') uagbTmFunc();
+	// modern browsers
+	else if (document.addEventListener) document.addEventListener('DOMContentLoaded', uagbTmFunc);
+	// IE <= 8
+	else document.attachEvent('onreadystatechange', function(){
+	    if (document.readyState=='complete') uagbTmFunc();
+	});
 
 	// Callback function for all event listeners.
 	function uagbTmFunc() {

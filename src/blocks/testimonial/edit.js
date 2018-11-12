@@ -206,7 +206,6 @@ class UAGBtestimonial extends Component {
 			backgroundPosition,
 			backgroundSize,
 			backgroundRepeat,
-			backgroundAttachment,
 			backgroundImageColor,
 			backgroundOpacity,
 			borderStyle,
@@ -424,16 +423,7 @@ class UAGBtestimonial extends Component {
 												{ value: "bottom-center", label: __( "Bottom Center" ) },
 												{ value: "bottom-right", label: __( "Bottom Right" ) },
 											] }
-										/>
-										<SelectControl
-											label={ __( "Attachment" ) }
-											value={ backgroundAttachment }
-											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
-											options={ [
-												{ value: "fixed", label: __( "Fixed" ) },
-												{ value: "scroll", label: __( "Scroll" ) }
-											] }
-										/>
+										/>										
 										<SelectControl
 											label={ __( "Repeat" ) }
 											value={ backgroundRepeat }
@@ -852,7 +842,7 @@ class UAGBtestimonial extends Component {
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-testomonial__wrap",
+						"uagb-testimonial__wrap",
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >							
 							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>

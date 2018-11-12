@@ -185,11 +185,7 @@ const attributes = {
 	backgroundRepeat: {
 		type: "string",
 		default: "no-repeat"
-	},
-	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
-	},
+	},	
 	backgroundColor:{
 		type: "string"
 	},
