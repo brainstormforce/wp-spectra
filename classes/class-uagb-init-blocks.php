@@ -110,7 +110,7 @@ class UAGB_Init_Blocks {
 
 		// Testimonial Scripts.
 		wp_enqueue_script(
-			'uagb-tm-slider-js', // Handle.
+			'uagb-timeline-js', // Handle.
 			UAGB_URL . 'assets/js/timeline.js',
 			array( 'jquery', 'uagb-slick-js' ), // Dependencies, defined above.
 			UAGB_VER,

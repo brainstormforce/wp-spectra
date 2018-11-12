@@ -2,14 +2,13 @@
     "use strict";
 
 	// Listen for events.
-	//window.addEventListener("load", uagb_content_timeline_init);
 	// in case the document is already rendered
 	if (document.readyState!='loading') uagb_content_timeline_init();
 	// modern browsers
 	else if (document.addEventListener) document.addEventListener('DOMContentLoaded', uagb_content_timeline_init);
 	// IE <= 8
 	else document.attachEvent('onreadystatechange', function(){
-	    if ( document.readyState == 'complete') uagb_content_timeline_init();
+	    if (document.readyState=='complete') uagb_content_timeline_init();
 	});
 
 	// Callback function for all event listeners.
