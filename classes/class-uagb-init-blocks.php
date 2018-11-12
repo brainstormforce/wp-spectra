@@ -111,7 +111,7 @@ class UAGB_Init_Blocks {
 		// Testimonial Scripts.
 		wp_enqueue_script(
 			'uagb-tm-slider-js', // Handle.
-			UAGB_URL . 'assets/js/tm-slider.js',
+			UAGB_URL . 'assets/js/timeline.js',
 			array( 'jquery', 'uagb-slick-js' ), // Dependencies, defined above.
 			UAGB_VER,
 			false // Enqueue the script in the footer.
