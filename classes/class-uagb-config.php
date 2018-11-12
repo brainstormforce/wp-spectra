@@ -34,6 +34,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/advanced-heading' => array(
 						'slug'       => '',
 						'title'      => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Advanced Heading block.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'headingAlign'    => 'center',
@@ -52,6 +53,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/google-map'       => array(
 						'slug'       => '',
 						'title'      => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Google Map block.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'block_id' => '',
@@ -61,6 +63,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/info-box'         => array(
 						'slug'       => '',
 						'title'      => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Info Box block.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'headingAlign'        => 'center',
@@ -110,6 +113,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/buttons'          => array(
 						'slug'       => '',
 						'title'      => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Multiple Buttons.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'block_id'  => '',
@@ -123,12 +127,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/post-grid'        => array(
 						'slug'       => '',
 						'title'      => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add a grid of customizable posts to your page.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(),
 					),
 					'uagb/section'          => array(
 						'slug'       => '',
 						'title'      => __( 'Section', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add an outer wrap section', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'topPadding'             => '20',
@@ -169,6 +175,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/social-share'     => array(
 						'slug'       => '',
 						'title'      => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Social Sharing Icon / Image', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'align'        => 'center',
@@ -192,6 +199,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/team'             => array(
 						'slug'       => '',
 						'title'      => __( 'Team', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'Add Team block.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'block_id'         => '',
