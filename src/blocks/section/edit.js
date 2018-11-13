@@ -296,7 +296,7 @@ class UAGBSectionEdit extends Component {
 						/>
 						{ "color" == backgroundType && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }</p>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
 								<ColorPalette
 									value={ backgroundColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
@@ -375,7 +375,7 @@ class UAGBSectionEdit extends Component {
 											] }
 										/>
 										<Fragment>
-											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }</p>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
@@ -475,7 +475,7 @@ class UAGBSectionEdit extends Component {
 						}
 						{ "video" == backgroundType && backgroundVideo && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }</p>
+								<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
 								<ColorPalette
 									value={ backgroundVideoColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
@@ -534,7 +534,7 @@ class UAGBSectionEdit extends Component {
 						) }
 						{ "none" != borderStyle && (
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Border Color" ) }</p>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 								<ColorPalette
 									value={ borderColor }
 									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
