@@ -23,7 +23,6 @@ function contentTimelineStyle( props ) {
             readMoreText,
             icon,
             iconColor,
-            authorColor,
             dateFontsize,
             dateColor,
             iconSize,
@@ -39,7 +38,6 @@ function contentTimelineStyle( props ) {
             headSpace,
             subHeadFontSize,
             subHeadingColor,
-            subHeadSpace,
         } = props.attributes;        
 
         if( props.clientId ){
@@ -64,7 +62,6 @@ function contentTimelineStyle( props ) {
                     'font-size' : subHeadFontSize+'px',
                     'text-align': align,
                     'color': subHeadingColor,   
-                    'margin-bottom' : subHeadSpace+'px',                                     
                 };               
             selectors['.uagb-timeline__events-new'] = {
                     'text-align': align,

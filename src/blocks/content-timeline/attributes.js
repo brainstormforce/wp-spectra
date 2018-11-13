@@ -124,11 +124,7 @@ const attributes = {
     iconBgFocus : {
         type : 'string',
         default : '#61ce70',
-    },
-    authorColor : {
-        type : 'string',
-        default : '#333',
-    },
+    },   
     authorFontsize : {
         type : 'number',
         default : 12,
@@ -148,11 +144,7 @@ const attributes = {
     subHeadSpace : {
         type : 'number',
         default : 5,
-    },
-    authorSpace : {
-        type : 'number',
-        default : 5,
-    },
+    },  
     dateBottomspace : {
         type : 'number',
         default : 5,

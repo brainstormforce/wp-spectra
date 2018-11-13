@@ -210,12 +210,10 @@ class UAGBcontentTimeline extends Component {
                 separatorwidth,
                 borderwidth,
                 connectorBgsize,
-                subHeadSpace,
                 dateBottomspace,
                 align,
                 icon,
                 iconColor,
-                authorColor,
                 dateColor,
                 dateFontsize,
                 authorFontsize,
@@ -529,15 +527,7 @@ class UAGBcontentTimeline extends Component {
                         min={ 0 }
                         max={ 50 }
                         allowReset
-                    />                    
-                   <RangeControl
-                        label={ __( 'Content Bottom Spacing' ) }
-                        value={ subHeadSpace }
-                        onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        allowReset
-                    />                    
+                    />           
                 </PanelBody>
                 <PanelBody 
                     title={ __( 'Timeline Item' ) }
