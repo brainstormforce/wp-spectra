@@ -27,6 +27,7 @@ const {
 	ColorPalette,
 	InspectorControls,
 	RichText,
+	PanelColorSettings,
 } = wp.editor
 
 const {
@@ -169,44 +170,28 @@ export default class UAGBAdvancedHeading extends Component {
 							initialPosition={10}
 						/>
 					</PanelBody>
-					<PanelBody
-						title={ __( "Colors" ) }
-						initialOpen={ false }
+					<PanelColorSettings
+						title={ __( "Color Settings" ) }
+						initialOpen={ true }
+						colorSettings={ [
+							{
+								value: headingColor,
+								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+								label: __( "Heading Color" ),
+							},
+							{
+								value: subHeadingColor,
+								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+								label: __( "Sub-Heading Color" ),
+							},
+							{
+								value: separatorColor,
+								onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
+								label: __( "Separator Color" ),
+							},
+						] }
 					>
-						<PanelColor
-							title={ __( "Heading Color" ) }
-							colorValue={ headingColor }
-							initialOpen={ true }
-						>
-							<ColorPalette
-								value={ headingColor }
-								onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( "Sub-Heading Color" ) }
-							colorValue={ subHeadingColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ subHeadingColor }
-								onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( "Separator Color" ) }
-							colorValue={ separatorColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ separatorColor }
-								onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-					</PanelBody>
+					</PanelColorSettings>
 					<PanelBody
 						title={ __( "Additional Options" ) }
 						initialOpen={ false }
