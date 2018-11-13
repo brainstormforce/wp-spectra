@@ -2,12 +2,9 @@
  * BLOCK: Content Timeline.
  */
 
-import get from 'lodash/get'
-import isUndefined from 'lodash/isUndefined'
 import moment from 'moment'
 import classnames from 'classnames'
 import times from 'lodash/times'
-
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker'
 import contentTimelineStyle from './inline-styles'
@@ -27,7 +24,6 @@ const {
 } = wp.blocks;
 
 const {
-    AlignmentToolbar,
     BlockControls,
     ColorPalette,
     InspectorControls,
@@ -416,7 +412,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                 }
@@ -465,7 +460,6 @@ class UAGBcontentTimeline extends Component {
                         }
                         min={ 1 }
                         max={ 20 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                                                     
                 </PanelBody>
@@ -504,7 +498,7 @@ class UAGBcontentTimeline extends Component {
                             { value: "tablet", label: __( "Tablet" ) },
                             { value: "mobile", label: __( "Mobile" ) },
                         ] }
-                        help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+                        help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
                         onChange={ ( value ) => setAttributes( { stack: value } ) }
                     />                
                 </PanelBody>
@@ -518,7 +512,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
                         min={ 1 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                     <RangeControl
@@ -527,7 +520,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
                         min={ 1 }
                         max={ 100 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                   
                     <RangeControl
@@ -536,7 +528,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { headSpace: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                    
                    <RangeControl
@@ -545,7 +536,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
                         min={ 0 }
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                    
                 </PanelBody>
@@ -593,8 +583,8 @@ class UAGBcontentTimeline extends Component {
                         value={ borderRadius }
                         onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
                         min={ 0 }
+                        initialPosition={10} 
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                     <RangeControl
@@ -602,8 +592,8 @@ class UAGBcontentTimeline extends Component {
                         value={ bgPadding }
                         onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
                         min={ 1 }
+                        initialPosition={10} 
                         max={ 50 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                     <RangeControl
@@ -636,9 +626,8 @@ class UAGBcontentTimeline extends Component {
                         label={ __( 'Icon Size' ) }
                         value={ iconSize }
                         onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-                        min={ 0 }
+                        min={ 0 }                        
                         max={ 30 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                       
                     { iconControls }
@@ -648,7 +637,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
                         min={ 1 }
                         max={ 10 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                     <RangeControl
@@ -657,7 +645,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
                         min={ 1 }
                         max={ 10 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />
                     <RangeControl
@@ -666,7 +653,6 @@ class UAGBcontentTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
                         min={ 25 }
                         max={ 90 }
-                        beforeIcon="editor-textcolor"
                         allowReset
                     />                    
                 </PanelBody>

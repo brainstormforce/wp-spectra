@@ -4,13 +4,13 @@
 ( function( $ ) {
 
 // Listen for events.
-window.addEventListener("load", uagbTimelineFunc);
-window.addEventListener("resize", uagbTimelineFunc);
-window.addEventListener("scroll", uagbTimelineFunc);
+window.addEventListener("load", uagbTimelineInit);
+window.addEventListener("resize", uagbTimelineInit);
+window.addEventListener("scroll", uagbTimelineInit);
 
 // Callback function for all event listeners.
-function uagbTimelineFunc() {
-    // Define variables.
+function uagbTimelineInit() {
+
     var timeline            = $('.uagb-timeline');
     
     timeline.each(function() {

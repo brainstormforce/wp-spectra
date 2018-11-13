@@ -46,11 +46,9 @@ const attributes = {
     },          
     headingColor : {
         type : 'string',
-        default : '#0693E3',
     },
     subHeadingColor : {
         type : 'string',
-        default : '#333',
     },
     separatorBg : {
         type : 'string',
@@ -78,7 +76,7 @@ const attributes = {
     },
     headingTag : {
         type : 'string',
-        default : 'h3',
+        default : 'h4',
     },
     horizontalSpace : {
         type : 'number',
@@ -90,7 +88,6 @@ const attributes = {
     },
     headFontSize : {
         type : 'number',
-        default : 15,
     },          
     timelinAlignment : {
         type : 'string',
@@ -159,11 +156,7 @@ const attributes = {
     dateBottomspace : {
         type : 'number',
         default : 5,
-    },
-    headFontSize : {
-        type : 'number',
-        default : 15,
-    },  
+    },     
     block_id  : {
         type : 'string',
         default : '0',

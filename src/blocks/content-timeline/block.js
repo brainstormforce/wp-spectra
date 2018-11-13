@@ -62,7 +62,6 @@ registerBlockType( 'uagb/content-timeline', {
             className          
         } = props.attributes;
        
-
         var my_block_id = 'uagb-ctm-'+block_id
 
         /* Style for elements */
