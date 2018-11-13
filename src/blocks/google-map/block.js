@@ -6,6 +6,8 @@
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+//  Import CSS.
+import "./style.scss"
 
 /* eslint-disable */
 // Import __() from wp.i18n
