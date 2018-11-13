@@ -32,7 +32,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 } = wp.components

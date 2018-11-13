@@ -28,7 +28,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	TabPanel,
