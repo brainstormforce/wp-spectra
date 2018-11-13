@@ -26,12 +26,12 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	Button,
 	Dashicon,
-	BaseControl
+	BaseControl,
+	withNotices
 } = wp.components
 
 
@@ -157,6 +157,9 @@ class UAGBSectionEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
+		const onColorChange = ( colorValue ) => {
+			setAttributes( { backgroundColor: colorValue } )
+		}
 
 		return (
 			<Fragment>
@@ -182,19 +185,19 @@ class UAGBSectionEdit extends Component {
 						/>
 						{
 							contentWidth == "boxed" &&
-							<RangeControl
+							( <RangeControl
 								label={ __( "Width" ) }
 								value={ width }
 								onChange={ ( value ) => setAttributes( { width: value } ) }
-							/>
+							/> )
 						}
 						{
 							contentWidth != "boxed" &&
-							<RangeControl
+							( <RangeControl
 								label={ __( "Inner Width" ) }
 								value={ innerWidth }
 								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
-							/>
+							/> )
 						}
 						<SelectControl
 							label={ __( "HTML Tag" ) }
@@ -291,26 +294,25 @@ class UAGBSectionEdit extends Component {
 								{ value: "video", label: __( "Video" ) },
 							] }
 						/>
-						{ "color" == backgroundType &&
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ backgroundColor } >
+						{ "color" == backgroundType && (
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }</p>
 								<ColorPalette
 									value={ backgroundColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 									allowReset
 								/>
-							</PanelColor>
-						}
+							</Fragment>
+						) }
 						{ "image" == backgroundType &&
-							<Fragment>
+							( <Fragment>
 								<BaseControl
 									className="editor-bg-image-control"
 									label={ __( "Background Image" ) }>
 									<MediaUpload
 										title={ __( "Select Background Image" ) }
 										onSelect={ this.onSelectImage }
-										type="image"
+										allowedTypes={ [ "image" ] }
 										value={ backgroundImage }
 										render={ ( { open } ) => (
 											<Button isDefault onClick={ open }>
@@ -319,13 +321,13 @@ class UAGBSectionEdit extends Component {
 										) }
 									/>
 									{ backgroundImage &&
-										<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+										( <Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 											{ __( "Remove Image" ) }
-										</Button>
+										</Button> )
 									}
 								</BaseControl>
 								{ backgroundImage &&
-									<Fragment>
+									( <Fragment>
 										<SelectControl
 											label={ __( "Image Position" ) }
 											value={ backgroundPosition }
@@ -372,21 +374,20 @@ class UAGBSectionEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<PanelColor
-											title={ __( "Image Overlay Color" ) }
-											colorValue={ backgroundImageColor }>
+										<Fragment>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }</p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</PanelColor>
-									</Fragment>
+										</Fragment>
+									</Fragment> )
 								}
-							</Fragment>
+							</Fragment> )
 						}
 						{ "gradient" == backgroundType &&
-							<Fragment>
+							( <Fragment>
 								<PanelColorSettings
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
@@ -436,9 +437,9 @@ class UAGBSectionEdit extends Component {
 									max={ 360 }
 									allowReset
 								/>
-							</Fragment>
+							</Fragment> )
 						}
-						{ "video" == backgroundType &&
+						{ "video" == backgroundType && (
 							<BaseControl
 								className="editor-bg-video-control"
 								label={ __( "Background Video" ) }
@@ -446,7 +447,7 @@ class UAGBSectionEdit extends Component {
 								<MediaUpload
 									title={ __( "Select Background Video" ) }
 									onSelect={ this.onSelectVideo }
-									type="video"
+									allowedTypes={ [ "video" ] }
 									value={ backgroundVideo }
 									render={ ( { open } ) => (
 										<Button isDefault onClick={ open }>
@@ -455,45 +456,44 @@ class UAGBSectionEdit extends Component {
 									) }
 								/>
 								{ backgroundVideo &&
-									<Button onClick={ this.onRemoveVideo } isLink isDestructive>
+									( <Button onClick={ this.onRemoveVideo } isLink isDestructive>
 										{ __( "Remove Video" ) }
-									</Button>
+									</Button> )
 								}
-							</BaseControl>
+							</BaseControl> )
 						}
 						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
-							<RangeControl
+							( <RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }
 								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
 								min={ 0 }
 								max={ 100 }
 								allowReset
-								initialValue={0}
-							/>
+								initialPosition={0}
+							/> )
 						}
-						{ "video" == backgroundType && backgroundVideo &&
+						{ "video" == backgroundType && backgroundVideo && (
 							<Fragment>
-								<PanelColor
-									title={ __( "Video Overlay Color" ) }
-									colorValue={ backgroundVideoColor }>
-									<ColorPalette
-										value={ backgroundVideoColor }
-										onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
-								<RangeControl
-									label={ __( "Opacity" ) }
-									value={ backgroundVideoOpacity }
-									onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
-									min={ 0 }
-									max={ 100 }
+								<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }</p>
+								<ColorPalette
+									value={ backgroundVideoColor }
+									onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
 									allowReset
-									initialValue={50}
 								/>
 							</Fragment>
-						}
+						) }
+						{ "video" == backgroundType && backgroundVideo && (
+							<RangeControl
+								label={ __( "Opacity" ) }
+								value={ backgroundVideoOpacity }
+								onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+								initialPosition={50}
+							/>
+						)}
 					</PanelBody>
 					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
 						<SelectControl
@@ -512,35 +512,36 @@ class UAGBSectionEdit extends Component {
 								{ value: "ridge", label: __( "Ridge" ) },
 							] }
 						/>
-						{ "none" != borderStyle &&
+						{ "none" != borderStyle && (
+							<RangeControl
+								label={ __( "Border Width" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+						) }
+						{ "none" != borderStyle && (
+							<RangeControl
+								label={ __( "Border Radius" ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 1000 }
+								allowReset
+							/>
+						) }
+						{ "none" != borderStyle && (
 							<Fragment>
-								<RangeControl
-									label={ __( "Border Width" ) }
-									value={ borderWidth }
-									onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-									min={ 0 }
-									max={ 50 }
+								<p className="uagb-setting-label">{ __( "Border Color" ) }</p>
+								<ColorPalette
+									value={ borderColor }
+									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 									allowReset
 								/>
-								<RangeControl
-									label={ __( "Border Radius" ) }
-									value={ borderRadius }
-									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-									min={ 0 }
-									max={ 1000 }
-									allowReset
-								/>
-								<PanelColor
-									title={ __( "Border Color" ) }
-									colorValue={ borderColor } >
-									<ColorPalette
-										value={ borderColor }
-										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
 							</Fragment>
-						}
+						) }
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag
@@ -570,4 +571,4 @@ class UAGBSectionEdit extends Component {
 	}
 }
 
-export default UAGBSectionEdit
+export default withNotices( UAGBSectionEdit )

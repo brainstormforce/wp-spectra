@@ -39,7 +39,7 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
-class UAGBAdvancedHeading extends Component {
+export default class UAGBAdvancedHeading extends Component {
 
 	constructor() {
 		super( ...arguments )
