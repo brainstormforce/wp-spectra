@@ -60,22 +60,13 @@ h6.uagb-timeline__heading{
   vertical-align: middle;
   font-style: normal;
 }
-
 .uagb-timeline__center-block .uagb-timeline__date-hide {
   display: none;
 }
 .uagb-timeline__field:not(:last-child) {
   margin-bottom: 20px;
 }
-.uagb-timeline__center-block .uagb-timeline__widget.uagb-timeline__right {
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  -webkit-flex-direction: row-reverse;
-  -moz-box-orient: horizontal;
-  -moz-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
-}
+.uagb-timeline__center-block .uagb-timeline__widget.uagb-timeline__right,
 .uagb-timeline__right-block .uagb-timeline__widget {
   -webkit-box-orient: horizontal;
   -webkit-box-direction: reverse;
@@ -123,7 +114,6 @@ h6.uagb-timeline__heading{
   max-width: 100%;
   position: relative;
 }
-
 .uagb-timeline__right-block .uagb-timeline__day-new {
   margin-right: 14px;
 }
@@ -383,9 +373,7 @@ h6.uagb-timeline__heading{
   transform: translateY(-100%);
 }
 
-
 /* By default content alignment - alternate */
-
 .uagb-tmimeline__day-right .uagb-timeline__events-inner {
   text-align: right;
 }
@@ -397,8 +385,6 @@ h6.uagb-timeline__heading{
   padding-top: 8px;
   padding-bottom: 8px;
 }
-/* Card animation css */
-
 .uagb-timeline__events-inner-new,
 .uagb-timeline__arrow {
   -webkit-transition: background .2s ease-in-out;
@@ -408,8 +394,6 @@ h6.uagb-timeline__heading{
   -webkit-transition: border-color .2s ease-in-out;
   transition: border-color .2s ease-in-out;
 }
-/*.uagb-timeline-content,*/
-
 .uagb-timeline__date-new {
   -webkit-transition: color .2s ease-in-out;
   transition: color .2s ease-in-out;
@@ -422,21 +406,7 @@ h6.uagb-timeline__heading{
 .uagb-timeline__widget.uagb-timeline__right.hide-events .uagb-timeline__date-new {
   visibility: hidden;
 }
-/*.............................CSS..................................*/
 
-.uagb-timeline__main .uagb-timeline__year {
-  -js-display: flex;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-}
-.uagb-timeline__main .uagb-timeline__year span {
-  display: inline-block;
-  padding-bottom: 6px;
-}
 .uagb-timeline__day-left .uagb-timeline__arrow:after {
   content: '';
   left: 0px;
@@ -489,22 +459,19 @@ h6.uagb-timeline__heading{
 }
 
 /* RESPONSIVE ALIGNMENT OF VERTICAL SEPARATOR. */
-
-/* DESKTOP */
-
 .uagb-timeline__center-block .uagb-timeline__line {
   left: 50%;
   right: auto;
 }
-/* Icon transition animation */
 
+/* Icon transition animation */
 .uagb-timeline__main .in-view i.uagb-timeline__in-view-icon {
   -webkit-transition: background 0.25s ease-out 0.25s, width 0.25s ease-in-out, height 0.25s ease-in-out, color 0.25s ease-in-out, font-size 0.25s ease-in-out;
   -webkit-transition: background 0.25s ease-out 0.25s, width 0.25s ease-in-out, height 0.25s ease-in-out, color 0.25s ease-in-out, font-size 0.25s ease-out;
   transition: background 0.25s ease-out 0.25s, width 0.25s ease-in-out, height 0.25s ease-in-out, color 0.25s ease-in-out, font-size 0.25s ease-out;
 }
-/* LEFT CSS STARTS */
 
+/* LEFT CSS STARTS */
 .uagb-timeline__left-block .uagb-timeline__days {
   text-align: left;
 }
@@ -517,11 +484,10 @@ h6.uagb-timeline__heading{
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
 }
-
 /* LEFT CSS ENDS */
 
-/* CENTER CSS STARTS */
 
+/* CENTER CSS STARTS */
 .uagb-timeline__center-block .uagb-timeline__days {
   text-align: center;
 }
@@ -539,15 +505,12 @@ h6.uagb-timeline__heading{
   border-top: 12px solid transparent;
   border-bottom: 12px solid transparent;
 }
-
 /* CENTER CSS ENDS */
 
 /* RIGHT CSS STARTS */
-
 .uagb-timeline__right .uagb-timeline__days {
   text-align: right;
 }
-
 /* RIGHT CSS ENDS */
 
 @media screen and (max-width: 1023px) {
@@ -613,7 +576,6 @@ h6.uagb-timeline__heading{
   }
   .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__right .uagb-timeline__arrow,
   .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__left .uagb-timeline__arrow {
-    /*top: 0;*/
     width: 10px;
     height: 40px;
     position: absolute;
@@ -1152,9 +1114,7 @@ h6.uagb-timeline__heading{
 .uagb-timeline-desc-content p {
     font-size: inherit;
 }
-.uagb-block-post-grid-image {
-    margin-bottom: 15px;
-}
+
 
 @media(max-width:1024px){ 
   .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-tmimeline__day-right .uagb-timeline__arrow:after {
