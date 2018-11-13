@@ -259,6 +259,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconHover'          => '',
 							'iconBgHover'        => '',
 							'borderHover'        => '',
+							'stack'              => 'tablet',
 						),
 					),
 				);

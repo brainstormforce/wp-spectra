@@ -870,7 +870,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            'margin-left' => 0,
 	            'margin-right' => 0,
 	        );
-	       
+	       	
+	       	$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading"] = array(
+				"text-align"  => 'left',
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content"] = array(
+				"text-align"  => 'left',
+			);
+
+			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
+			        'text-align' => 'left'
+			    );              
+			$t_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner'] = array(
+			        'text-align' => 'left'
+			    );
+			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
+					'text-align'=> 'left',      
+			);
 
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
 	            'margin-left' => 0,
@@ -883,13 +899,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
 	            'margin-left' => $attr['horizontalSpace'].'px',
 	        );
+
+	        $m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading"] = array(
+				"text-align"  => 'left',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content"] = array(
+				"text-align"  => 'left',
+			);
+
+			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new'] = array(
+			        'text-align' => 'left'
+			    );              
+			$m_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner'] = array(
+			        'text-align' => 'left'
+			    );
+			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
+					'text-align'=> 'left',      
+			);
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-ctm-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
 			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
 
-			return $desktop . $tablet;
+			return $desktop . $tablet . $mobile;
 		}
 	}
 }
