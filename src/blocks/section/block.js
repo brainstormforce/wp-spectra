@@ -38,10 +38,10 @@ const {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/section", {
-	title: __( "UAGB - Section" ),
-	description: __( "Add a outer wrap section" ),
+	title: uagb_blocks_info.blocks["uagb/section"]["title"],
+	description: uagb_blocks_info.blocks["uagb/section"]["description"],
 	icon: UAGB_Block_Icons.section,
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( "section" ),
 		__( "uagb" ),

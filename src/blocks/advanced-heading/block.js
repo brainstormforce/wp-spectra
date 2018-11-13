@@ -316,14 +316,14 @@ class UAGBAdvancedHeading extends Component {
  */
 registerBlockType( "uagb/advanced-heading", {
 
-	title: __( "UAGB - Advanced Heading" ),
-	description: __( "Add Advanced Heading block." ),
+	title: uagb_blocks_info.blocks["uagb/advanced-heading"]["title"],
+	description: uagb_blocks_info.blocks["uagb/advanced-heading"]["description"],
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	attributes: {
 		block_id: {
 			type: "string"

@@ -36,10 +36,10 @@ const {
 registerBlockType( 'uagb/content-timeline', {
 
     // Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-    title: __( 'Content Timeline - UAGB' ), // Block title.
-    description: __( 'Add Content Timeline block.' ), // Block description.
+    title:uagb_blocks_info.blocks["uagb/content-timeline"]["title"], // Block title.
+    description: uagb_blocks_info.blocks["uagb/content-timeline"]["description"], // Block description.
     icon: UAGB_Block_Icons.content_timeline, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-    category: "uagb",
+    category: uagb_blocks_info.category,
     keywords: [
         __( "Content Timeline" ),
         __( "Timeline" ),

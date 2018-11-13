@@ -47,16 +47,15 @@ function social_html( icon, link, target ) {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/team", {
-
-	title: __( "UAGB - Team" ), // Block title.
-	description: __( "Add Team." ), // Block description.
+	title: uagb_blocks_info.blocks["uagb/team"]["title"],
+	description: uagb_blocks_info.blocks["uagb/team"]["description"],
 	icon: UAGB_Block_Icons.team,
 	keywords: [
 		__( "team" ),
 		__( "members" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
+	category: uagb_blocks_info.category,
 	attributes,
 	edit,
 	save: function( props ) {
