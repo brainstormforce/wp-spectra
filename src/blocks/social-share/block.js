@@ -36,8 +36,6 @@ const {
 registerBlockType( "uagb/social-share", {
 	title: uagb_blocks_info.blocks["uagb/social-share"]["title"],
 	description: uagb_blocks_info.blocks["uagb/social-share"]["description"],
-	title: __( "Social Share" ),
-	description: __( "Add Social Sharing Icon / Image" ),
 	icon: UAGB_Block_Icons.social_share,
 	category: uagb_blocks_info.category,
 	keywords: [
