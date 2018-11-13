@@ -24,7 +24,6 @@ const {
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
