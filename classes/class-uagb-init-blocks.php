@@ -151,6 +151,15 @@ class UAGB_Init_Blocks {
 			)
 		);
 
+		wp_localize_script(
+			'uagb-block-editor-js',
+			'uagb_blocks_info',
+			array(
+				'blocks'   => UAGB_Config::get_block_attributes(),
+				'category' => 'uagb',
+			)
+		);
+
 	} // End function editor_assets().
 
 }

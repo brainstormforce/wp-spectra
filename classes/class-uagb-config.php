@@ -32,10 +32,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 				self::$block_attributes = array(
 					'uagb/advanced-heading' => array(
-						'slug'       => '',
-						'title'      => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block lets you add a combination of a heading and a sub-heading with a separator in between.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'headingAlign'    => 'center',
 							'headingColor'    => '',
 							'subHeadingColor' => '',
@@ -50,19 +51,21 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/google-map'       => array(
-						'slug'       => '',
-						'title'      => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'block_id' => '',
 							'height'   => '300',
 						),
 					),
 					'uagb/info-box'         => array(
-						'slug'       => '',
-						'title'      => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'headingAlign'        => 'center',
 							'headingColor'        => '',
 							'subHeadingColor'     => '',
@@ -108,10 +111,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/buttons'          => array(
-						'slug'       => '',
-						'title'      => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'block_id'  => '',
 							'align'     => 'center',
 							'btn_count' => '2',
@@ -121,16 +125,18 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/post-grid'        => array(
-						'slug'       => '',
-						'title'      => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(),
+						'slug'        => '',
+						'title'       => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
 					),
 					'uagb/section'          => array(
-						'slug'       => '',
-						'title'      => __( 'Section', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Section', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'topPadding'             => '20',
 							'bottomPadding'          => '20',
 							'leftPadding'            => '20',
@@ -167,10 +173,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/social-share'     => array(
-						'slug'       => '',
-						'title'      => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place a list of Social Sharing icons/images in horizontal/vertical layout.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'align'        => 'center',
 							'social_count' => '1',
 							'socials'      => array(
@@ -190,10 +197,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/team'             => array(
-						'slug'       => '',
-						'title'      => __( 'Team', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'slug'        => '',
+						'title'       => __( 'Team', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place a descriptive block of a team member with some attractive layouts.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
 							'block_id'         => '',
 							'align'            => 'center',
 							'tag'              => 'h3',
