@@ -187,18 +187,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( has_blocks( get_the_ID() ) ) {
 
 				global $post;
-				global $wp_version;
 
 				if ( ! is_object( $post ) ) {
 					return;
 				}
 
-				if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
-					$blocks = parse_blocks( $post->post_content );
-				} else {
-
-					$blocks = gutenberg_parse_blocks( $post->post_content );
-				}
+				$blocks = $this->parse( $post->post_content );
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -212,14 +206,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * Parse Guten Block.
+		 *
+		 * @param string $content the content string.
+		 * @since 1.1.0
+		 */
+		public function parse( $content ) {
+
+			global $wp_version;
+
+			return ( version_compare( $wp_version, '5.0', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+		}
+
+		/**
 		 * Generates stylesheet for reusable blocks.
 		 *
 		 * @param array $blocks Blocks array.
 		 * @since 1.1.0
 		 */
 		public function get_stylesheet( $blocks ) {
-
-			global $wp_version;
 
 			foreach ( $blocks as $i => $block ) {
 
@@ -233,12 +238,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$content = get_post_field( 'post_content', $id );
 
-							if ( version_compare( $wp_version, '5.0.0', '>=' ) ) {
-								$reusable_blocks = parse_blocks( $content );
-							} else {
-
-								$reusable_blocks = gutenberg_parse_blocks( $content );
-							}
+							$reusable_blocks = $this->parse( $content );
 
 							$this->get_stylesheet( $reusable_blocks );
 						}

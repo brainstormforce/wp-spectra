@@ -79,7 +79,6 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
@@ -87,7 +86,6 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.
 			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
