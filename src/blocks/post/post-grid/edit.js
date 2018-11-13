@@ -18,19 +18,16 @@ const {
 	Placeholder,
 	QueryControls,
 	RangeControl,
-	PanelColor,
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	Toolbar,
 } = wp.components
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette,
-	RichText
+	ColorPalette
 } = wp.editor
 
 const { withSelect } = wp.data
@@ -268,78 +265,59 @@ class UAGBPostGrid extends Component {
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
-						<PanelColor
-							title={ __( "Blog Background Color" ) }
-							colorValue={ bgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Blog Background Color" ) }</p>
 							<ColorPalette
 								value={ bgColor }
 								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
-					<PanelColor
-						title={ __( "Title Color" ) }
-						colorValue={ titleColor }
-						initialOpen={ false }
-					>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Title Color" ) }</p>
 						<ColorPalette
 							value={ titleColor }
 							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 							allowReset
 						/>
-					</PanelColor>
-					<PanelColor
-						title={ __( "Meta Color" ) }
-						colorValue={ metaColor }
-						initialOpen={ false }
-					>
+					</Fragment>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Meta Color" ) }</p>
 						<ColorPalette
 							value={ metaColor }
 							onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
-							allowReset
 						/>
-					</PanelColor>
+					</Fragment>
 					{ displayPostExcerpt == true &&
-						<PanelColor
-							title={ __( "Excerpt Color" ) }
-							colorValue={ excerptColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Excerpt Color" ) }</p>
 							<ColorPalette
 								value={ excerptColor }
 								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Color" ) }
-							colorValue={ ctaColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Color" ) }</p>
 							<ColorPalette
 								value={ ctaColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Background Color" ) }
-							colorValue={ ctaBgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Background Color" ) }</p>
 							<ColorPalette
 								value={ ctaBgColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
