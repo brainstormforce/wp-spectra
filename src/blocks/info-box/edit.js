@@ -279,17 +279,14 @@ class UAGBinfoBox extends Component {
 					/>
 					{ "none" !== seperatorStyle &&
 					( <Fragment>
-						<PanelColor
-							title={ __( "Color" ) }
-							colorValue={ seperatorColor }
-							initialOpen={ true }
-						>
-							<ColorPalette
-								value={ seperatorColor }
-								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
+						<Fragment>
+						    <p className="some-class">{ __( 'Seperator Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ seperatorColor }
+						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
 
 						<RangeControl
 							label={ __( "Thickness" ) }
@@ -393,17 +390,14 @@ class UAGBinfoBox extends Component {
 
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
-									<PanelColor
-										title={ __( "Border Color" ) }
-										colorValue={ ctaBorderColor }
-										initialOpen={ true }
-									>
-										<ColorPalette
-											value={ ctaBorderColor }
-											onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-											allowReset
-										/>
-									</PanelColor>
+									<Fragment>
+									    <p className="some-class">{ __( 'Border Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+									    <ColorPalette
+									        value={ ctaBorderColor }
+									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+									        allowReset
+									    />
+									</Fragment>									
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -526,43 +520,33 @@ class UAGBinfoBox extends Component {
 					] }
 				>
 					{ ( ctaType === "text") &&
-							<PanelColor
-								title={ __( "CTA Color" ) }
-								colorValue={ ctaLinkColor }
-								initialOpen={ true }
-							>
-								<ColorPalette
-									value={ ctaLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							<Fragment>
+							    <p className="some-class">{ __( 'CTA Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaLinkColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+							        allowReset
+							    />
+							</Fragment>							
 					}
 					{ ( ctaType === "button") &&
 							<Fragment>
-								<PanelColor
-									title={ __( "CTA Color" ) }
-									colorValue={ ctaBtnLinkColor }
-									initialOpen={ true }
-								>
-									<ColorPalette
-										value={ ctaBtnLinkColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
-
-								<PanelColor
-									title={ __( "CTA Background Color" ) }
-									colorValue={ ctaBgColor }
-									initialOpen={ true }
-								>
-									<ColorPalette
-										value={ ctaBgColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
+								<Fragment>
+								    <p className="some-class">{ __( 'CTA Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBtnLinkColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>	
+								<Fragment>
+								    <p className="some-class">{ __( 'CTA Background Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBgColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>
 							</Fragment>
 					}
 				</PanelColorSettings>
