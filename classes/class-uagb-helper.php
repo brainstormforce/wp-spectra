@@ -215,7 +215,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			global $wp_version;
 
-			return ( version_compare( $wp_version, '5.0', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+			return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 		}
 
 		/**
