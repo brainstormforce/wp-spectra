@@ -209,7 +209,7 @@ function contentTimelineStyle( props ) {
 
         for( var i in selectors ) {
             
-            styling_css += '.gutenberg-editor-page #wpwrap #uagb-ctm-'+clientId+' '+i + ' { ';           
+            styling_css += '.block-editor-page #wpwrap #uagb-ctm-'+clientId+' '+i + ' { ';           
             
             var sel = selectors[i];
             var css = '';
@@ -227,7 +227,7 @@ function contentTimelineStyle( props ) {
         for( var i in response_selector ) {
 
            
-            styling_css += '.gutenberg-editor-page #wpwrap #uagb-ctm-'+clientId+' '+i + ' { ';           
+            styling_css += '.block-editor-page #wpwrap #uagb-ctm-'+clientId+' '+i + ' { ';           
             
             var sel = response_selector[i];
             var css = '';
