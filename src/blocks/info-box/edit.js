@@ -81,6 +81,12 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+
 		setAttributes( { iconImage: media } )
 	}
 
@@ -279,7 +285,7 @@ class UAGBinfoBox extends Component {
 					{ "none" !== seperatorStyle &&
 					( <Fragment>
 						<Fragment>
-						    <p className="uagb-setting-label">{ __( 'Seperator Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ seperatorColor }
 						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
@@ -390,7 +396,7 @@ class UAGBinfoBox extends Component {
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
 									<Fragment>
-									    <p className="uagb-setting-label">{ __( 'Border Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 									    <ColorPalette
 									        value={ ctaBorderColor }
 									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
@@ -520,7 +526,7 @@ class UAGBinfoBox extends Component {
 				>
 					{ ( ctaType === "text") &&
 							<Fragment>
-							    <p className="uagb-setting-label">{ __( 'CTA Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 							    <ColorPalette
 							        value={ ctaLinkColor }
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
@@ -531,7 +537,7 @@ class UAGBinfoBox extends Component {
 					{ ( ctaType === "button") &&
 							<Fragment>
 								<Fragment>
-								    <p className="uagb-setting-label">{ __( 'CTA Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 								    <ColorPalette
 								        value={ ctaBtnLinkColor }
 								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
@@ -539,7 +545,7 @@ class UAGBinfoBox extends Component {
 								    />
 								</Fragment>	
 								<Fragment>
-								    <p className="uagb-setting-label">{ __( 'CTA Background Color' ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 								    <ColorPalette
 								        value={ ctaBgColor }
 								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
@@ -668,7 +674,7 @@ class UAGBinfoBox extends Component {
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
-						type="image"
+						allowedTypes= { [ "image" ] }
 						value={ iconImage }
 						render={ ( { open } ) => (
 							<Button isDefault onClick={ open }>
