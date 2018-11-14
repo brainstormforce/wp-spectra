@@ -1,5 +1,3 @@
-const { decodeEntities } = wp.htmlEntities
-
 class Excerpt extends React.Component {
 
 	render() {
@@ -17,7 +15,7 @@ class Excerpt extends React.Component {
 					className='uagb-post__excerpt'
 					style={{ color: attributes.excerptColor, marginBottom: attributes.excerptBottomSpace }}
 				>
-					<div dangerouslySetInnerHTML={ { __html: decodeEntities( post.excerpt.rendered.trim() ) } } />
+					<div dangerouslySetInnerHTML={ { __html: post.excerpt } } />
 				</div>
 			)
 
