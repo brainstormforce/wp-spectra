@@ -139,7 +139,7 @@ class UAGBSocialShare extends Component {
 								onSelect={ value => {
 									this.saveSocials( { image: value }, index )
 								} }
-								type="image"
+								allowedTypes={ [ "image" ] }
 								value={ socials[ index ].image }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>

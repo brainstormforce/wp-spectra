@@ -11,17 +11,14 @@ const { __ } = wp.i18n
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
 	MediaUpload,
-	URLInput
 } = wp.editor
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	Button,
@@ -99,6 +96,9 @@ class UAGBTeam extends Component {
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( { image: null } )
+				return
+			}
+			if ( ! media.type || "image" != media.type ) {
 				return
 			}
 			setAttributes( { image: media } )
@@ -243,7 +243,7 @@ class UAGBTeam extends Component {
 							<MediaUpload
 								title={ __( "Select Image" ) }
 								onSelect={ onSelectImage }
-								type="image"
+								allowedTypes={ [ "image" ] }
 								value={ image }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
