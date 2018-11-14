@@ -23,7 +23,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
@@ -154,6 +153,12 @@ class UAGBtestimonial extends Component {
 			setAttributes( { backgroundImage: null } )
 			return
 		}
+
+		if ( ! media.type || "image" !== media.type ) {
+			setAttributes( { backgroundImage: null } )
+			return
+		}
+		
 		setAttributes( { backgroundImage: media } )
 	}
 
@@ -374,15 +379,14 @@ class UAGBtestimonial extends Component {
 							] }
 						/>
 						{ "color" == backgroundType &&
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ backgroundColor } >
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
 								<ColorPalette
 									value={ backgroundColor }
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 									allowReset
 								/>
-							</PanelColor>
+							</Fragment>								
 						}
 						{ "image" == backgroundType &&
 							<Fragment>
@@ -392,7 +396,7 @@ class UAGBtestimonial extends Component {
 									<MediaUpload
 										title={ __( "Select Background Image" ) }
 										onSelect={ this.onSelectImage }
-										type="image"
+										allowedTypes= { [ "image" ] }
 										value={ backgroundImage }
 										render={ ( { open } ) => (
 											<Button isDefault onClick={ open }>
@@ -445,15 +449,14 @@ class UAGBtestimonial extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<PanelColor
-											title={ __( "Image Overlay Color" ) }
-											colorValue={ backgroundImageColor }>
+										<Fragment>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</PanelColor>
+										</Fragment>	
 									</Fragment>
 								}
 							</Fragment>
@@ -505,15 +508,14 @@ class UAGBtestimonial extends Component {
 									max={ 1000 }
 									allowReset
 								/>
-								<PanelColor
-									title={ __( "Border Color" ) }
-									colorValue={ borderColor } >
+								<Fragment>
+									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 									<ColorPalette
 										value={ borderColor }
 										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 										allowReset
 									/>
-								</PanelColor>
+								</Fragment>									
 							</Fragment>
 						}
 					</PanelBody>

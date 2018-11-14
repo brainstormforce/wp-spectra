@@ -14,10 +14,10 @@
   pointer-events: none;
   cursor: default; }
 
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
+.block-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
   color: transparent; }
 
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img {
+.block-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img {
   position: absolute;
   width: auto;
   height: auto;
@@ -96,19 +96,19 @@ a.uagb-infobox-cta-link {
 .uagb-infobox__content-wrap.uagb-infobox-icon-above-title {
   text-align: center; }
 
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap {
+.block-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap {
   color: inherit; }
 
-.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix {
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix {
   margin-bottom: 5px; }
 
-.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-title {
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title {
   margin-bottom: 10px; }
 
-.gutenberg-editor-page #wpwrap .uagb-ifb-separator-parent {
+.block-editor-page #wpwrap .uagb-ifb-separator-parent {
   margin-bottom: 10px; }
 
-.gutenberg-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc {
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc {
   margin-bottom: 10px; }
 /**
  * #.# Common SCSS
@@ -162,14 +162,14 @@ a.uagb-infobox-cta-link {
  * CSS for just Backend enqueued after style.scss
  * which makes it higher in priority.
  */
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
+.block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
   list-style: none;
   display: -ms-flexbox;
   display: flex;
   margin: 0;
   padding: 0; }
 
-.gutenberg-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
+.block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
   color: #333; }
 
 .wp-block-uagb-team .components-button:focus:enabled,

@@ -6,6 +6,8 @@
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+//  Import CSS.
+import "./style.scss"
 
 /* eslint-disable */
 // Import __() from wp.i18n
@@ -116,15 +118,14 @@ class UAGBGoogleMap extends Component {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/google-map", {
-
-	title: __( "Google Map" ),
-	description: __( "Add Google Map block." ),
+	title: uagb_blocks_info.blocks["uagb/google-map"]["title"],
+	description: uagb_blocks_info.blocks["uagb/google-map"]["description"],
 	icon: UAGB_Block_Icons.google_map,
 	keywords: [
 		__( "google map" ),
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	attributes: {
 		block_id: {
 			type: "string"

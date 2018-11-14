@@ -13,7 +13,7 @@ class Meta extends React.Component {
 						style={{ color: attributes.metaColor }}
 					>
 						<i className="dashicons-admin-users dashicons"></i>
-						<a style={{ color: attributes.metaColor }} target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a>
+						<a style={{ color: attributes.metaColor }} target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
 					</div>
 				}
 
