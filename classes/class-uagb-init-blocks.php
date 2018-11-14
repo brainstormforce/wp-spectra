@@ -102,7 +102,6 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-slick-css', // Handle.
 			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
