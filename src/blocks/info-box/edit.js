@@ -82,7 +82,7 @@ class UAGBinfoBox extends Component {
 			return
 		}
 
-		if ( ! media.type || 'image' !== media.type ) {
+		if ( ! media.type || "image" !== media.type ) {
 			setAttributes( { iconImage: null } )
 			return
 		}
