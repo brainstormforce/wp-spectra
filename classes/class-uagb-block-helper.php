@@ -227,8 +227,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-buttons__wrap' => array (
 					'justify-content' => $alignment,
 					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack'=> $alignment,
-					'justify-content'=> $alignment
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
 				)
 			);
 
@@ -444,8 +447,258 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
 			// @codingStandardsIgnoreEnd.
-				return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
+			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
+		/**
+		 * Get Team Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_team_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSize'] . "px",
+					"color" => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSize'] . "px",
+					"color" => $attr['prefixColor'],
+				),
+				" .uagb-team__desc-wrap" => array(
+					"margin-top" => $attr['prefixSpace'] . "px",
+				),
+				" .uagb-team__social-icon a" => array(
+					"color" => $attr['socialColor'],
+					"font-size" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
+				),
+				" .uagb-team__social-icon:hover a" => array(
+					"color" => $attr['socialHoverColor'],
+				),
+				".uagb-team__image-position-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
+					"margin-right" => ( $attr['socialSpace'] / 2 ) . "px",
+					"margin-left" => ( $attr['socialSpace'] / 2 ) . "px",
+				),
+				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
+					"margin-right" => $attr['socialSpace'] . "px",
+					"margin-left" => "0",
+				),
+				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
+					"margin-left" => $attr['socialSpace'] . "px",
+					"margin-right" => "0",
+				),
+				" .uagb-team__imag-wrap" => array(
+					"margin-top" => $attr['imgTopMargin'] . "px",
+					"margin-bottom" => $attr['imgBottomMargin'] . "px",
+					"margin-left" => $attr['imgLeftMargin'] . "px",
+					"margin-right" => $attr['imgRightMargin'] . "px",
+					"width" => $attr['imgWidth'] . "px"
+				),
+			);
+
+			if( 'above' == $attr['imgPosition'] ) {
+				if ( 'center' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'left' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+				} else if ( 'right' == $attr['align'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+				}
+			}
+
+			if ( "above" != $attr['imgPosition'] ) {
+				if ( "middle" == $attr['imgAlign'] ) {
+					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
+				}
+			}
+
+			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSize'] . "px",
+				"color" => $attr['titleColor'],
+				"margin-bottom" => $attr['titleSpace'] . "px",
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+		}
+
+		/**
+		 * Get Social Share Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_social_share_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0,
+				"margin-bottom"  => $attr['gap'] . "px"
+			);
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-social-share__wrap"] = array(
+				 "flex-direction" => "column"
+			);
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
+				"margin-bottom"  => 0
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
+				"margin-left"  => ( $attr['gap']/2 ) . "px",
+				"margin-right"  => ( $attr['gap']/2 ) . "px"
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
+				"margin-left"  => 0
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
+				"margin-right"  => 0
+			);
+
+			$selectors[" .uagb-ss__wrapper"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-icon:before"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			foreach ( $attr['socials'] as $key => $social ) {
+
+				$social['icon_color'] = ( isset( $social['icon_color'] ) ) ? $social['icon_color'] : '';
+				$social['icon_hover_color'] = ( isset( $social['icon_hover_color'] ) ) ? $social['icon_hover_color'] : '';
+
+				if ( $attr['social_count'] <= $key ) {
+					break;
+				}
+
+				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"color" => $social['icon_color']
+				);
+
+				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
+					"color" => $social['icon_hover_color']
+				);
+			}
+
+			$selectors[" .uagb-social-share__wrap"] = array(
+				"justify-content"  => $alignment,
+				"-webkit-box-pack" => $alignment,
+				"-ms-flex-pack" => $alignment,
+				"justify-content" => $alignment,
+			);
+
+			if ( 'horizontal' == $attr['layout'] ) {
+
+				if ( "desktop" == $attr['stack'] ) {
+
+					$selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left"  => 0,
+						"margin-right"  => 0,
+						"margin-bottom"  => $attr['gap'] . "px"
+					);
+
+					$selectors[" .uagb-social-share__wrap"] = array (
+						 "flex-direction" => "column"
+					);
+
+					$selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "tablet" == $attr['stack'] ) {
+
+					$t_selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$t_selectors[" .uagb-social-share__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$t_selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "mobile" == $attr['stack'] ) {
+
+					$m_selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$m_selectors[" .uagb-social-share__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$m_selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+				}
+			}
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-social-share-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+
+			return $desktop . $tablet . $mobile;
+		}
 	}
 }

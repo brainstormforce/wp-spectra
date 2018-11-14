@@ -28,7 +28,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	TabPanel,
@@ -82,8 +81,14 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
+
+		if ( ! media.type || "image" !== media.type ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+
 		setAttributes( { iconImage: media } )
-	}	
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -223,11 +228,11 @@ class UAGBinfoBox extends Component {
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
-		
+
 
 		// Settings for icon.
 		const iconControls = (
-			<Fragment>				
+			<Fragment>
 				<FontIconPicker {...icon_props} />
 				<RangeControl
 					label = { __( "Icon Size" ) }
@@ -254,7 +259,7 @@ class UAGBinfoBox extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>				
+				</PanelColorSettings>
 			</Fragment>
 		)
 
@@ -279,17 +284,14 @@ class UAGBinfoBox extends Component {
 					/>
 					{ "none" !== seperatorStyle &&
 					( <Fragment>
-						<PanelColor
-							title={ __( "Color" ) }
-							colorValue={ seperatorColor }
-							initialOpen={ true }
-						>
-							<ColorPalette
-								value={ seperatorColor }
-								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
+						<Fragment>
+						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ seperatorColor }
+						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
 
 						<RangeControl
 							label={ __( "Thickness" ) }
@@ -358,7 +360,7 @@ class UAGBinfoBox extends Component {
 					}
 
 					{ ( ctaType == "button" ) && (
-						<Fragment>							
+						<Fragment>
 
 							<RangeControl
 								label={ __( "Vertical Padding" ) }
@@ -393,17 +395,14 @@ class UAGBinfoBox extends Component {
 
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
-									<PanelColor
-										title={ __( "Border Color" ) }
-										colorValue={ ctaBorderColor }
-										initialOpen={ true }
-									>
-										<ColorPalette
-											value={ ctaBorderColor }
-											onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-											allowReset
-										/>
-									</PanelColor>
+									<Fragment>
+									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+									    <ColorPalette
+									        value={ ctaBorderColor }
+									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+									        allowReset
+									    />
+									</Fragment>									
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -521,48 +520,38 @@ class UAGBinfoBox extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Description Color" ),
-						},						
+						},
 
 					] }
 				>
 					{ ( ctaType === "text") &&
-							<PanelColor
-								title={ __( "CTA Color" ) }
-								colorValue={ ctaLinkColor }
-								initialOpen={ true }
-							>
-								<ColorPalette
-									value={ ctaLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							<Fragment>
+							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaLinkColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+							        allowReset
+							    />
+							</Fragment>							
 					}
 					{ ( ctaType === "button") &&
 							<Fragment>
-								<PanelColor
-									title={ __( "CTA Color" ) }
-									colorValue={ ctaBtnLinkColor }
-									initialOpen={ true }
-								>
-									<ColorPalette
-										value={ ctaBtnLinkColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
-
-								<PanelColor
-									title={ __( "CTA Background Color" ) }
-									colorValue={ ctaBgColor }
-									initialOpen={ true }
-								>
-									<ColorPalette
-										value={ ctaBgColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
+								<Fragment>
+								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBtnLinkColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>	
+								<Fragment>
+								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBgColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>
 							</Fragment>
 					}
 				</PanelColorSettings>
@@ -677,7 +666,7 @@ class UAGBinfoBox extends Component {
 
 		// Image controls.
 		const imageControls = (
-			<Fragment>				
+			<Fragment>
 				<BaseControl
 					className="editor-bg-image-control"
 					label={ __( "Image" ) }
@@ -685,7 +674,7 @@ class UAGBinfoBox extends Component {
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
-						type="image"
+						allowedTypes= { [ "image" ] }
 						value={ iconImage }
 						render={ ( { open } ) => (
 							<Button isDefault onClick={ open }>
@@ -724,9 +713,9 @@ class UAGBinfoBox extends Component {
 							max = { 500 }
 							beforeIcon = ""
 							allowReset
-						/>	
+						/>
 					</Fragment>
-				}				
+				}
 			</Fragment>
 		)
 
@@ -773,7 +762,7 @@ class UAGBinfoBox extends Component {
 								{ value: "icon", label: __( "Icon" ) },
 								{ value: "image", label: __( "Image" ) },
 							] }
-						/>					
+						/>
 
 						{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
 							label={ __( "Vertical ALignment" ) }
@@ -788,8 +777,8 @@ class UAGBinfoBox extends Component {
 
 						{ ( source_type && source_type == "icon" ) && iconControls }
 
-						{ ( source_type && source_type == "image" ) && imageControls }						
-					
+						{ ( source_type && source_type == "image" ) && imageControls }
+
 					</PanelBody>
 
 					{ seperatorSettings }
@@ -907,7 +896,7 @@ class UAGBinfoBox extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-infobox__outer-wrap"
-				) } 
+				) }
 				id = { my_block_id }
 				>
 					{ ( ctaType == "all") &&

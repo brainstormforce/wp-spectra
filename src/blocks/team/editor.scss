@@ -1,0 +1,28 @@
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+
+.block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
+	list-style: none;
+	display: flex;
+	margin: 0;
+	padding: 0;
+}
+
+.block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
+	color: #333;
+}
+
+.wp-block-uagb-team .components-button:focus:enabled,
+.wp-block-uagb-team .components-button {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+.editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce {
+	margin-bottom: 10px;
+}

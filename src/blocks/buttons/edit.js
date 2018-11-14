@@ -203,24 +203,24 @@ class UAGBMultiButtonEdit extends Component {
 								label: __( "Color" ),
 							},
 							{
-								value: buttons[ index ].hColor,
-								onChange:( value ) => this.saveButton( { hColor: value }, index ),
-								label: __( "Hover Color" ),
-							},
-							{
 								value: buttons[ index ].background,
 								onChange:( value ) => this.saveButton( { background: value }, index ),
 								label: __( "Background Color" ),
 							},
 							{
-								value: buttons[ index ].hBackground,
-								onChange:( value ) => this.saveButton( { hBackground: value }, index ),
-								label: __( "Background Hover Color" ),
-							},
-							{
 								value: buttons[ index ].borderColor,
 								onChange: ( value ) => this.saveButton( { borderColor: value }, index ),
 								label: __( "Border Color" ),
+							},
+							{
+								value: buttons[ index ].hColor,
+								onChange:( value ) => this.saveButton( { hColor: value }, index ),
+								label: __( "Hover Color" ),
+							},
+							{
+								value: buttons[ index ].hBackground,
+								onChange:( value ) => this.saveButton( { hBackground: value }, index ),
+								label: __( "Background Hover Color" ),
 							},
 							{
 								value: buttons[ index ].borderHColor,

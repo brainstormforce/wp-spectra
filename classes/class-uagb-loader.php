@@ -40,6 +40,12 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			// deActivation hook.
 			register_deactivation_hook( UAGB_FILE, array( $this, 'deactivation_reset' ) );
 
+			if ( ! $this->is_gutenberg_active() ) {
+				/* TO DO */
+				add_action( 'admin_notices', array( $this, 'uagb_fails_to_load' ) );
+				return;
+			}
+
 			$this->define_constants();
 
 			$this->loader();
@@ -67,7 +73,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.0.0' );
+			define( 'UAGB_VER', '1.1.0' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uagb' );
@@ -83,17 +89,22 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 */
 		function load_plugin() {
 
-			if ( ! function_exists( 'gutenberg_init' ) ) {
-				/* TO DO */
-				add_action( 'admin_notices', array( $this, 'uagb_fails_to_load' ) );
-				return;
-			}
-
 			$this->load_textdomain();
 
 			require( UAGB_DIR . 'classes/class-uagb-core-plugin.php' );
 			require_once UAGB_DIR . 'dist/blocks/post/index.php';
 
+		}
+
+		/**
+		 * Check if Gutenberg is active
+		 *
+		 * @since 1.1.0
+		 *
+		 * @return boolean
+		 */
+		public function is_gutenberg_active() {
+			return function_exists( 'register_block_type' );
 		}
 
 		/**
