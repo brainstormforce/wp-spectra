@@ -142,7 +142,6 @@ const attributes = {
 	},
 	ctaFontSize :{
 		type: "number",
-		default : "12"
 	},
 	ctaBtnLinkColor :{
 		type: "string",
