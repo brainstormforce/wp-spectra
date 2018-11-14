@@ -38,7 +38,7 @@ class UAGBTeam extends Component {
 	social_html( icon, link, target ) {
 
 		return (
-			<li className="uagb-team__social-icon"><a href={link} title=""><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
 		)
 	}
 

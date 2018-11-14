@@ -50,7 +50,7 @@ function styling( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += `.gutenberg-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
+		styling_css += `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
 
 		styling_css += i + " { "
 

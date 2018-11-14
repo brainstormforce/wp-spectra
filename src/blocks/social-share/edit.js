@@ -320,7 +320,7 @@ class UAGBSocialShare extends Component {
 										) }
 										key={ index }
 									>
-										<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+										<a className="uagb-ss__link" href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 									</div>
 								)
 							})

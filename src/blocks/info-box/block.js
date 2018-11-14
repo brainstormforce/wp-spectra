@@ -182,7 +182,7 @@ registerBlockType( "uagb/info-box", {
 
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
