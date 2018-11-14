@@ -469,9 +469,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$position = str_replace( '-', ' ', $attr->backgroundPosition );
 			$selectors = array(
 				' .uagb-testimonial__wrap' => array(
-					'padding-left'   => ( ($attr->rowGap) /2 ) . 'px',
-					'padding-right'  => ( ($attr->rowGap) /2 ) . 'px',
-					'margin-bottom' => $attr->columnGap . 'px',
+					'padding-left'   => ( ($attr->columnGap) /2 ) . 'px',
+					'padding-right'  => ( ($attr->columnGap) /2 ) . 'px',
+					'margin-bottom' => $attr->rowGap . 'px',
 				),
 				' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
 					'padding-left'   => $attr->imgHrPadding . 'px',

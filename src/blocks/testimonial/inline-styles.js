@@ -43,9 +43,9 @@ function TestimonialStyle( props ) {
         var selectors = {};
 
             selectors['.uagb-testimonial__wrap'] = {
-                    'padding-left' : rowGap/2+'px',
-                    'padding-right' : rowGap/2+'px',                                
-                    'margin-bottom' : columnGap+'px',
+                    'padding-left' : columnGap/2+'px',
+                    'padding-right' : columnGap/2+'px',                                
+                    'margin-bottom' : rowGap+'px',
                 }; 
             
             selectors['.uagb-testimonial__wrap .uagb-tm__image-content'] = {
