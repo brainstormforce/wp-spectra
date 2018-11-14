@@ -668,7 +668,7 @@ class UAGBinfoBox extends Component {
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
-						allowedTypes={ "image" }
+						allowedTypes={ "image"}
 						type="image"
 						value={ iconImage }
 						render={ ( { open } ) => (
