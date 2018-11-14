@@ -820,14 +820,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
                     'margin-left' => $attr['horizontalSpace'].'px',
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',     
                 );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
                     'margin-right' => $attr['horizontalSpace'].'px',
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',     
                 );
 
              $selectors[' .uagb-timeline__date-new'] = array(

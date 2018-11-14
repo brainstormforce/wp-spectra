@@ -149,14 +149,10 @@ function contentTimelineStyle( props ) {
 
             selectors['.uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = {
                     'margin-left' : horizontalSpace+'px',
-                    'color': dateColor,
-                    'font-size' : dateFontsize+'px',     
                 };
 
             selectors['.uagb-timeline__right-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = {
                     'margin-right' : horizontalSpace+'px',
-                    'color': dateColor,
-                    'font-size' : dateFontsize+'px',     
                 };
 
             selectors['.uagb-timeline__date-new'] = {
