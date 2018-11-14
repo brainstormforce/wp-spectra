@@ -396,7 +396,7 @@ class UAGBinfoBox extends Component {
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
 									<Fragment>
-									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
 									    <ColorPalette
 									        value={ ctaBorderColor }
 									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
@@ -526,7 +526,7 @@ class UAGBinfoBox extends Component {
 				>
 					{ ( ctaType === "text") &&
 							<Fragment>
-							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
 							    <ColorPalette
 							        value={ ctaLinkColor }
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
@@ -537,7 +537,7 @@ class UAGBinfoBox extends Component {
 					{ ( ctaType === "button") &&
 							<Fragment>
 								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
 								    <ColorPalette
 								        value={ ctaBtnLinkColor }
 								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
@@ -545,7 +545,7 @@ class UAGBinfoBox extends Component {
 								    />
 								</Fragment>	
 								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 								    <ColorPalette
 								        value={ ctaBgColor }
 								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }

@@ -165,6 +165,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/content-timeline':
+					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

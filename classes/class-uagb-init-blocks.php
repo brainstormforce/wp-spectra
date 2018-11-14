@@ -108,11 +108,20 @@ class UAGB_Init_Blocks {
 
 		// Testimonial Scripts.
 		wp_enqueue_script(
-			'uagb-timeline-js', // Handle.
-			UAGB_URL . 'assets/js/timeline.js',
-			array( 'jquery', 'uagb-slick-js' ), // Dependencies, defined above.
+			'uabg-testimonial-js', // Handle.
+			UAGB_URL . 'assets/js/testimonial.js',
+			array( 'jquery' ),
 			UAGB_VER,
-			false // Enqueue the script in the footer.
+			true // Enqueue the script in the footer.
+		);
+
+		// Timeline js.
+		wp_enqueue_script(
+			'uabg-timeline-js', // Handle.
+			UAGB_URL . 'assets/js/timeline.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
 		);
 
 	} // End function editor_assets().

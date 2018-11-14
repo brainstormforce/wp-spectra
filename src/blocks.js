@@ -8,7 +8,6 @@
  * All blocks should be included here since this is the file that
  * Webpack is compiling as the input file.
  */
-
 import "./blocks/advanced-heading/block.js"
 import "./blocks/post/block.js"
 import "./blocks/section/block.js"
@@ -18,3 +17,4 @@ import "./blocks/testimonial/block.js"
 import "./blocks/team/block.js"
 import "./blocks/social-share/block.js"
 import "./blocks/google-map/block.js"
+import "./blocks/content-timeline/block.js"
