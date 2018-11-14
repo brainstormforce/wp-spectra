@@ -698,6 +698,12 @@ add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
+
+	$schema = array(
+		'description' => 'Post Data',
+		'type'        => 'object',
+		'context'     => array( 'post' ),
+	);
 	// Add featured image source.
 	register_rest_field(
 		'post',
@@ -716,7 +722,7 @@ function uagb_blocks_register_rest_fields() {
 		array(
 			'get_callback'    => 'uagb_blocks_get_author_info',
 			'update_callback' => null,
-			'schema'          => null,
+			'schema'          => $schema,
 		)
 	);
 

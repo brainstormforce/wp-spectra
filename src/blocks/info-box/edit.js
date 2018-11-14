@@ -901,7 +901,7 @@ class UAGBinfoBox extends Component {
 				>
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" > {output}</a>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
