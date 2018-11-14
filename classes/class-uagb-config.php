@@ -230,11 +230,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						),
 					),
 					'uagb/testimonial'      => array(
-						'slug'       => '',
+						'slug'        => '',
 						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block lets you add a Testimonial with some attractive layouts.', 'ultimate-addons-for-gutenberg' ),
-						'default'    => true,
-						'attributes' => array(
+						'default'     => true,
+						'attributes'  => array(
 							'headingAlign'         => 'center',
 							'companyColor'         => '#888888',
 							'descColor'            => '#333',
