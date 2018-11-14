@@ -267,7 +267,7 @@ class UAGBtestimonial extends Component {
 							max={ 100 }
 							initialPosition={16}
 							beforeIcon="editor-textcolor"							
-							llowReset
+							allowReset
 						/>
 						
 					</PanelBody>
