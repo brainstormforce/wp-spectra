@@ -675,7 +675,6 @@ class UAGBinfoBox extends Component {
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
 						allowedTypes= { [ "image" ] }
-						type="image"
 						value={ iconImage }
 						render={ ( { open } ) => (
 							<Button isDefault onClick={ open }>
