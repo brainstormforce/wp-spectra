@@ -699,11 +699,6 @@ add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
  */
 function uagb_blocks_register_rest_fields() {
 
-	$schema = array(
-		'description' => 'Post Data',
-		'type'        => 'object',
-		'context'     => array( 'post' ),
-	);
 	// Add featured image source.
 	register_rest_field(
 		'post',
@@ -722,7 +717,7 @@ function uagb_blocks_register_rest_fields() {
 		array(
 			'get_callback'    => 'uagb_blocks_get_author_info',
 			'update_callback' => null,
-			'schema'          => $schema,
+			'schema'          => null,
 		)
 	);
 
@@ -748,7 +743,7 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 }
-add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
+//add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
 /**
  * Get featured image source for the rest field as per size
