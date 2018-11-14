@@ -209,6 +209,7 @@
     left: -45px;
     z-index: 1;
     padding: 5px 10px;
+    border-radius:0;
 }
 
 [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-prev {
@@ -231,6 +232,7 @@
 .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
     right: -45px;
     padding: 5px 10px;
+    border-radius:0;
 }
 
 [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
