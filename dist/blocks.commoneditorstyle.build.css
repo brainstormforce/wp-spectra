@@ -24,6 +24,20 @@
     margin-top: 15px;
 }
 
+.uagb-inspect-tabs-col-2 button,
+.uagb-inspect-tabs button {
+	width: 50%;
+}
+
+.uagb-inspect-tabs-col-3 button {
+	width: 33.33%;
+}
+
+.uagb-setting-label .component-color-indicator {
+	vertical-align: middle;
+	background-color: transparent;
+}
+
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
 	left: 0!important;
@@ -43,6 +57,11 @@
 	-ms-transform: scale(1.45);
 	transform: scale(1.45);
 }
+
+.uagb-google-map-notice {
+	color: #478a3b; background-color: #e5fce3; padding: 15px; border-left: 5px solid #c3f9c5; font-size: 12px; line-height: 1.5; text-align: left;
+}
+
 
 .rfipbtn,
 .rfipdropdown {
@@ -80,7 +99,8 @@
 	position: relative;
 	display: inline-block;
 	margin: 8px 0;
-	vertical-align: middle
+	vertical-align: middle;
+	width: 100%;
 }
 
 .rfipbtn {
@@ -480,7 +500,7 @@
 	display: block;
 	padding: 16px;
 	text-align: center;
-	font-size: 24px;
+	font-size: 14px;
 	width: 100%;
 	line-height: 1
 }
@@ -1453,7 +1473,8 @@
 
 .rfipbtn--default {
 	background-color: #fff;
-	border: 1px solid #e0e0e0
+	border: 1px solid #e0e0e0;
+	width: 100%;
 }
 
 .rfipbtn--default:active,

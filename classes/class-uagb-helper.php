@@ -29,6 +29,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $block_list;
 
 		/**
+		 * Google Map Language List
+		 *
+		 * @var google_map_languages
+		 */
+		private static $google_map_languages = null;
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -146,6 +153,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/team':
+					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/social-share':
+					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -177,24 +192,62 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks = gutenberg_parse_blocks( $post->post_content );
+				$blocks = $this->parse( $post->post_content );
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
 				}
+
 				ob_start();
 				?>
-				<style type="text/css" media="all" id="uagb-style-frontend">
+				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
 				<?php
-				foreach ( $blocks as $i => $block ) {
-					if ( is_array( $block ) ) {
+			}
+		}
+
+		/**
+		 * Parse Guten Block.
+		 *
+		 * @param string $content the content string.
+		 * @since 1.1.0
+		 */
+		public function parse( $content ) {
+
+			global $wp_version;
+
+			return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
+		}
+
+		/**
+		 * Generates stylesheet for reusable blocks.
+		 *
+		 * @param array $blocks Blocks array.
+		 * @since 1.1.0
+		 */
+		public function get_stylesheet( $blocks ) {
+
+			foreach ( $blocks as $i => $block ) {
+
+				if ( is_array( $block ) ) {
+
+					if ( 'core/block' == $block['blockName'] ) {
+
+						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = $this->parse( $content );
+
+							$this->get_stylesheet( $reusable_blocks );
+						}
+					} else {
+
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}
 				}
-				?>
-				</style>
-				<?php
 			}
 		}
 
@@ -211,9 +264,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'label'        => 'Click Here ' . '#' . $i,
-						'link'         => '#',
-						'target'       => '_self',
 						'size'         => '',
 						'vPadding'     => 10,
 						'hPadding'     => 14,
@@ -231,6 +281,112 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $default;
+		}
+
+		/**
+		 * Returns an option from the database for
+		 * the admin settings page.
+		 *
+		 * @param  string  $key     The option key.
+		 * @param  mixed   $default Option default value if option is not available.
+		 * @param  boolean $network_override Whether to allow the network admin setting to be overridden on subsites.
+		 * @return string           Return the option value
+		 */
+		public static function get_admin_settings_option( $key, $default = false, $network_override = false ) {
+
+			// Get the site-wide option if we're in the network admin.
+			if ( $network_override && is_multisite() ) {
+				$value = get_site_option( $key, $default );
+			} else {
+				$value = get_option( $key, $default );
+			}
+
+			return $value;
+		}
+
+		/**
+		 * Updates an option from the admin settings page.
+		 *
+		 * @param string $key       The option key.
+		 * @param mixed  $value     The value to update.
+		 * @param bool   $network   Whether to allow the network admin setting to be overridden on subsites.
+		 * @return mixed
+		 */
+		static public function update_admin_settings_option( $key, $value, $network = false ) {
+
+			// Update the site-wide option since we're in the network admin.
+			if ( $network && is_multisite() ) {
+				update_site_option( $key, $value );
+			} else {
+				update_option( $key, $value );
+			}
+
+		}
+
+		/**
+		 * Is Knowledgebase.
+		 *
+		 * @return string
+		 * @since 0.0.1
+		 */
+		static public function knowledgebase_data() {
+
+			$knowledgebase = array(
+				'enable_knowledgebase' => true,
+				'knowledgebase_url'    => 'http://uagb.sharkz.in/docs/',
+			);
+
+			return $knowledgebase;
+		}
+
+		/**
+		 * Is Knowledgebase.
+		 *
+		 * @return string
+		 * @since 0.0.1
+		 */
+		static public function support_data() {
+
+			$support = array(
+				'enable_support' => true,
+				'support_url'    => 'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg',
+			);
+
+			return $support;
+		}
+
+		/**
+		 * Provide Widget settings.
+		 *
+		 * @return array()
+		 * @since 0.0.1
+		 */
+		static public function get_block_options() {
+
+			$blocks       = self::$block_list;
+			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
+			if ( is_array( $blocks ) ) {
+
+				foreach ( $blocks as $slug => $data ) {
+
+					$_slug = str_replace( 'uagb/', '', $slug );
+
+					if ( isset( $saved_blocks[ $_slug ] ) ) {
+
+						if ( 'disabled' === $saved_blocks[ $_slug ] ) {
+							$blocks[ $slug ]['is_activate'] = false;
+						} else {
+							$blocks[ $slug ]['is_activate'] = true;
+						}
+					} else {
+						$blocks[ $slug ]['is_activate'] = ( isset( $data['default'] ) ) ? $data['default'] : false;
+					}
+				}
+			}
+
+			self::$block_list = $blocks;
+
+			return apply_filters( 'uagb_enabled_blocks', self::$block_list );
 		}
 	}
 
