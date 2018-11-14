@@ -71,6 +71,7 @@ class UAGBSectionEdit extends Component {
 	 * Event to set Image as while adding.
 	 */
 	onSelectImage( media ) {
+
 		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
@@ -78,6 +79,11 @@ class UAGBSectionEdit extends Component {
 			setAttributes( { backgroundImage: null } )
 			return
 		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
 		setAttributes( { backgroundImage: media } )
 	}
 
@@ -100,6 +106,9 @@ class UAGBSectionEdit extends Component {
 
 		if ( ! media || ! media.url ) {
 			setAttributes( { backgroundVideo: null } )
+			return
+		}
+		if ( ! media.type || "video" != media.type ) {
 			return
 		}
 		setAttributes( { backgroundVideo: media } )
