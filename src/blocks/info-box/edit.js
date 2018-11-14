@@ -81,6 +81,12 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
+
+		if ( ! media.type || 'image' !== media.type ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+
 		setAttributes( { iconImage: media } )
 	}
 
@@ -668,6 +674,7 @@ class UAGBinfoBox extends Component {
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
+						allowedTypes= { [ "image" ] }
 						type="image"
 						value={ iconImage }
 						render={ ( { open } ) => (
