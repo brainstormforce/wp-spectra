@@ -281,7 +281,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'descColor'            => '#333',
 							'authorColor'          => '#333',
 							'nameFontSize'         => '',
-							'companyFontSize'      => '',
+							'companyFontSize'      => 15,
 							'descFontSize'         => '',
 							'descSpace'            => 15,
 							'block_id'             => '',

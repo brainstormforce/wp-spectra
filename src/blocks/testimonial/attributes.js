@@ -65,6 +65,7 @@ const attributes = {
 	},	
 	companyFontSize: {
 		type: "number",
+		default: 15
 	},
 	descFontSize: {
 		type: "number",

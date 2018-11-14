@@ -274,6 +274,7 @@ class UAGBtestimonial extends Component {
 
 					<PanelColorSettings
 							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
 							colorSettings={ [
 								{
 									value: descColor,
@@ -682,7 +683,7 @@ class UAGBtestimonial extends Component {
 				 <InspectorControls>
 				 	<PanelBody
 					title={ __( 'General' ) }
-					initialOpen={ false }
+					initialOpen={ true }
 					>	
 				 	<RangeControl
 						label={ __( 'Number of Testimonials' ) }

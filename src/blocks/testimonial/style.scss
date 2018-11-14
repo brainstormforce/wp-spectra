@@ -16,6 +16,9 @@
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
 }
+.uagb-tm__image{
+    position:relative;
+}
 .uagb-tm__imgicon-style-circle .uagb-tm__image img {
     border-radius: 100%;
     -webkit-border-radius: 100%;
@@ -80,6 +83,7 @@
     line-height: 1em;    
 }
 .uagb-tm__company{
+    font-size:15px;
     font-style: italic;
     line-height: 1em;
     color: #888888;
