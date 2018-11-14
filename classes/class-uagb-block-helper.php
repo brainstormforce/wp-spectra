@@ -733,7 +733,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"text-align"  => $attr['align'],
 				"color"  => $attr['subHeadingColor'],
 				"font-size"  => $attr['subHeadFontSize'] . "px",
-				"margin-bottom"  => $attr['subHeadSpace'] . "px"				
 			);
 			$selectors[' .uagb-timeline__events-new'] = array(
                     'text-align' => $attr['align']

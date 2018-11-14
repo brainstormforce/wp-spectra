@@ -34,7 +34,6 @@ const {
 
 const {
     PanelBody,
-    PanelColor,
     SelectControl,
     Placeholder,
     RangeControl,
@@ -414,17 +413,15 @@ class UAGBcontentTimeline extends Component {
                     />
                 }
 
-                { displayPostDate &&  <Fragment><PanelColor
-                        title={ __( 'Date Color' ) }
-                        colorValue={ dateColor }
-                        initialOpen={ false }
-                    >
+                { displayPostDate &&  <Fragment>
+                    <Fragment>
+                        <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
                         <ColorPalette
                             value={ dateColor }
                             onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
                             allowReset
                         />
-                    </PanelColor> 
+                    </Fragment> 
                     <RangeControl
                         label={ __( 'Date Font Size' ) }
                         value={ dateFontsize }

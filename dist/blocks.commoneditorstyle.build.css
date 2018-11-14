@@ -53,6 +53,11 @@
  * which makes it higher in priority.
  */
 
+.uagb-setting-label .component-color-indicator {
+	vertical-align: middle;
+	background-color: transparent;
+}
+
 .components-panel .rfipdropdown.rfipdropdown--default.fipappear-enter-done,
 .components-panel .rfipdropdown {
   left: 0!important;

@@ -110,7 +110,7 @@ class UAGB_Init_Blocks {
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor' ), // Dependencies, defined above.
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
