@@ -250,7 +250,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headFontSize'       => '',
 							'timelinAlignment'   => 'center',
 							'arrowlinAlignment'  => 'center',
-							'subHeadFontSize'    => 12,
+							'subHeadFontSize'    => '',
 							'headSpace'          => 5,
 							'separatorwidth'     => 3,
 							'borderwidth'        => 0,

@@ -671,7 +671,7 @@ class UAGBcontentTimeline extends Component {
                     ) }>
                         <div className = "uagb-timeline-wrapper">
                             <div className = "uagb-timeline__main">                                
-                                { this.uagb_get_content_timeline_content() }
+                                { this.get_content() }
                                 <div className = "uagb-timeline__line" >
                                     <div className = "uagb-timeline__line__inner"></div>
                                 </div> 
@@ -707,7 +707,7 @@ class UAGBcontentTimeline extends Component {
     }
 
     /* Render output at backend */
-    uagb_get_content_timeline_content(){
+    get_content(){
         const { attributes, setAttributes } = this.props;
 
         const{

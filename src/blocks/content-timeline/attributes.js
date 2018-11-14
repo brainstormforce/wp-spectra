@@ -99,7 +99,6 @@ const attributes = {
     },
     subHeadFontSize : {
         type : 'number',
-        default : 12,
     },
     headSpace : {
         type : 'number',
