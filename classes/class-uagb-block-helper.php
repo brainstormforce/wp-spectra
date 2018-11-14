@@ -702,7 +702,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Social Share Block CSS
+		 * Get Content Timeline Block CSS
 		 *
 		 * @since 0.0.1
 		 * @param array  $attr The block attributes.
@@ -716,7 +716,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-			
+
 			$t_selectors = array();
 
 			$selectors[" .uagb-timeline__heading"] = array(
@@ -736,11 +736,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[' .uagb-timeline__events-new'] = array(
                     'text-align' => $attr['align']
-                );              
+                );
             $selectors['.uagb-timeline__date-inner'] = array(
                     'text-align' => $attr['align']
                 );
-         
+
             $selectors[' .uagb-timeline__center-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after'] = array(
                     'border-left-color'  => $attr['backgroundColor']
                 );
@@ -814,8 +814,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
                     'margin-bottom' => $attr['dateBottomspace'].'px',
                     'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',  
-                    'text-align'=> $attr['align'],      
+                    'font-size' => $attr['dateFontsize'].'px',
+                    'text-align'=> $attr['align'],
                 );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
@@ -828,7 +828,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
              $selectors[' .uagb-timeline__date-new'] = array(
                     'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',     
+                    'font-size' => $attr['dateFontsize'].'px',
                 );
 
             $selectors[' .uagb-timeline__events-inner-new'] = array(
@@ -839,17 +839,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconColor'],
-                    'font-size' => $attr['iconSize'].'px',     
+                    'font-size' => $attr['iconSize'].'px',
                 );
-       
+
             $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker'] = array(
-                    'background' => $attr['iconBgHover'],  
+                    'background' => $attr['iconBgHover'],
                     'border-color'=> $attr['borderHover'],
                 );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
-                    'background' => $attr['iconBgFocus'],  
-                    'border-color'=> $attr['borderFocus'],    
+                    'background' => $attr['iconBgFocus'],
+                    'border-color'=> $attr['borderFocus'],
                 );
 
 
@@ -865,7 +865,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            'margin-left' => 0,
 	            'margin-right' => 0,
 	        );
-	       	
+
 	       	$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading"] = array(
 				"text-align"  => 'left',
 			);
@@ -875,12 +875,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
 			        'text-align' => 'left'
-			    );              
+			    );
 			$t_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner'] = array(
 			        'text-align' => 'left'
 			    );
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-					'text-align'=> 'left',      
+					'text-align'=> 'left',
 			);
 
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
@@ -904,12 +904,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new'] = array(
 			        'text-align' => 'left'
-			    );              
+			    );
 			$m_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner'] = array(
 			        'text-align' => 'left'
 			    );
 			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-					'text-align'=> 'left',      
+					'text-align'=> 'left',
 			);
 			// @codingStandardsIgnoreEnd
 
