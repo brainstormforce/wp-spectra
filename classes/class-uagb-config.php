@@ -231,7 +231,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/testimonial'      => array(
 						'slug'       => '',
-						'title'      => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block lets you add a Testimonial with some attractive layouts.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(
 							'headingAlign'         => 'center',

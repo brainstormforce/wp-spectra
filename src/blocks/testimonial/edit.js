@@ -62,6 +62,10 @@ class UAGBtestimonial extends Component {
 			imag_url = media
 		}
 
+		if ( ! media.type || "image" !== media.type ) {
+			imag_url = null
+		}
+
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item['image'] = imag_url				
@@ -158,7 +162,7 @@ class UAGBtestimonial extends Component {
 			setAttributes( { backgroundImage: null } )
 			return
 		}
-		
+
 		setAttributes( { backgroundImage: media } )
 	}
 
@@ -596,7 +600,7 @@ class UAGBtestimonial extends Component {
 							onSelect={ ( media ) => { 
 								this.onSelectTestImage( media, index )								
 							} }
-							type="image"
+							allowedTypes= { [ "image" ] }
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>

@@ -850,9 +850,6 @@ a.uagb-infobox-link-wrap {
 .uagb-tm__company {
   display: inline-block; }
 
-.uagb-tm__desc {
-  margin-bottom: 10px; }
-
 .uagb-tm__content {
   overflow: hidden;
   text-align: center;
@@ -890,6 +887,7 @@ a.uagb-infobox-link-wrap {
   align-self: center; }
 
 .uagb-tm__desc {
+  font-size: 15px;
   margin-bottom: 15px; }
 
 .uagb-tm__author-name {

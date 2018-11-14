@@ -45,14 +45,14 @@ const { Fragment } = wp.element
 registerBlockType( "uagb/testimonial", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Testimonial" ), // Block title.
-	description: __( "Add Testimonial." ), // Block description.
+	title: uagb_blocks_info.blocks["uagb/testimonial"]["title"], // Block title.
+	description: uagb_blocks_info.blocks["uagb/testimonial"]["description"], // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
 		__( "testimonial" ),
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 
 	attributes,
 	edit,
