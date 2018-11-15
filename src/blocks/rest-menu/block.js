@@ -45,112 +45,70 @@ const { Fragment } = wp.element
 registerBlockType( "uagb/rest-menu", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( "UAGB - Restaurant Menu" ), // Block title.
-	description: __( "Add Restaurant Menu." ), // Block description.
+	title: uagb_blocks_info.blocks["uagb/rest-menu"]["title"], // Block title.
+	description:uagb_blocks_info.blocks["uagb/rest-menu"]["description"], // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
 		__( "restaurant" ),
 		__( "menu" ),		
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	attributes,
 	edit,
 	save: function( props ) {
 		const {
 			block_id,
 			className,
-			columns,
-			autoplaySpeed,
-			autoplay,
-			infiniteLoop,
-			pauseOnHover,
-			transitionSpeed,
-			tcolumns,
-			arrowSize,
-			mcolumns,
 			test_block,
 			imagePosition,
-			arrowColor
-		} = props.attributes;
+		} = props.attributes
 
-		const my_block_id = 'uagb-testimonial-'+ block_id
-
-		const sldier_data = []
-		sldier_data.push(
-			{
-				'block_id' : block_id,
-				'columns' : columns,
-				'autoplaySpeed' : autoplaySpeed,
-				'autoplay' : autoplay,
-				'infiniteLoop' : infiniteLoop,
-				'pauseOnHover' : pauseOnHover,
-				'transitionSpeed' : transitionSpeed,
-				'tcolumns' : tcolumns,
-				'arrowSize' : arrowSize,
-				'mcolumns' : mcolumns,
-				'arrowColor':arrowColor,
-			}
-		)
-	
+		const my_block_id = 'uagb-rm-'+ block_id
+			
 		return (
-			<Fragment>
+			<Fragment>	
 				<div className={ classnames(
 					className,
-					"uagb-rest_menu__outer-wrap uagb-slick-carousal uagb-rm__arrow-outside"
+					"uagb-rest_menu__outer-wrap"
 				) }
 					id = { my_block_id }
-					data-slider = {JSON.stringify(sldier_data)}
 				>
-		
-				<div
-					className={ classnames(
-						"is-carousel",
-						`uagb-rm__columns-${ columns }`,
-						"uagb-rm__items"
-					) }					
-					>
+
+				
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
 						"uagb-rest_menu__wrap",
 						...PositionClasses( props.attributes ),
-						) } key ={ "wrap-"+index } >
-							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
-								<div className = "uagb-rm__overlay"></div>
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={props.attributes} index_value = {index} /> }	
+						) } key ={ "wrap-"+index } >							
+							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>								
+								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }	
 
-								<div className ="uagb-rm__text-wrap">
-									{  // Get description.
+								<div className ="uagb-rm__text-wrap">																								
+									{ 
 										<Fragment>
-											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
-												<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
+											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
+												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
+													<Title attributes={props.attributes} setAttributes = "not_set" props = { props } index_value = {index}/>
+													<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+														<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
+													</div>
+												</div>
+												<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
+													<Price attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
+												</div>	
 											</div>
 										</Fragment>
-									}
-									<div className ="uagb-rm__meta">
-										<div className ="uagb-rm__meta-inner">
-											
-											{ (imagePosition == 'bottom' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }	
-																
-											{ //title_text
-												<Fragment>
-													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-														<Title attributes={props.attributes} setAttributes = "not_set"  props = { props } index_value = {index}/>
-														<Price attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
-													</div>
-												</Fragment>
-											}								
-										</div>
-									</div>
+									}																		
 								</div>
-								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={props.attributes} index_value = {index} /> }	
-							</div>						
+								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
+							</div>
+							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
 						</div>												
-					)}	
-				</div>			
-			</div>
-		</Fragment>
+					)}				
+				</div>
+			</Fragment>
 		)
 	}
 } )

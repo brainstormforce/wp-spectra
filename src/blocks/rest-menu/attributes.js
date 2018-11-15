@@ -73,7 +73,7 @@ const attributes = {
 	},
 	titleSpace :{
 		type: "number",
-		default: 5,
+		default: 10,
 	},		
 	block_id :{
 		type : 'string',
@@ -108,7 +108,7 @@ const attributes = {
 	},
 	imageWidth :{
 		type: "number",	
-		default: '100',	
+		default: '',	
 	},	
 	columns :{
 		type: "number",
@@ -149,11 +149,7 @@ const attributes = {
 	seperatorColor : {
 		type: "string",
 		default: "#b2b4b5",
-	},		
-	arrowColor:{
-		type: "string",
-		default: "#333"
-	},
+	},	
 	stack: {
 		type: "string",
 		default: "tablet"

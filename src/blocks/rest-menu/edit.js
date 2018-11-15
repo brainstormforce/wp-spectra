@@ -332,66 +332,6 @@ class UAGBrestMenu extends Component {
 			</Fragment>
 		);
 
-		// Margin Settings.
-		const marginSettings = (
-			<Fragment>
-				<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
-					<RangeControl
-						label={ __( "Row Gap" ) }
-						value={ rowGap }
-						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Column Gap" ) }
-						value={ columnGap }
-						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Content Padding" ) }
-						value={ contentPadding }
-						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>		
-					<RangeControl
-						label={ __( "Title Bottom Margin" ) }
-						value={ titleSpace }
-						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>								
-					<RangeControl
-						label={ __( "Image Horizontal Padding" ) }
-						value={ imgHrPadding }
-						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Image Vertical Padding" ) }
-						value={ imgVrPadding }
-						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>						
-					
-				</PanelBody>
-			</Fragment>
-		);
-
 		// Image sizes.
 		const imageSizeOptions = [
 			{ value: 'thumbnail', label: __( 'Thumbnail' ) },
@@ -399,7 +339,6 @@ class UAGBrestMenu extends Component {
 			{ value: 'full', label: __( 'Large' ) }
 		];		
 				
-		let image_enable = false;
 		// Set testinomial image panel
 		const tmControls = ( index ) => {
 			let image_val = null;
@@ -440,52 +379,7 @@ class UAGBrestMenu extends Component {
 				</PanelBody>
 			)
 		}
-
-		/*const carousal_settings = (
-			<Fragment>
-				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
-					<ToggleControl
-						label={ __( "Pause On Hover" ) }
-						checked={ pauseOnHover }
-						onChange={ this.togglePauseOnHover }
-					/>
-					<ToggleControl
-						label={ __( "Autoplay" ) }
-						checked={ autoplay }
-						onChange={ this.toggleAutoplay }
-					/>
-					{ autoplay == true &&
-						<RangeControl
-							label={ __( "Autoplay Speed (ms)" ) }
-							value={ autoplaySpeed }
-							onChange={ ( value ) => setAttributes( { autoplaySpeed: value } ) }
-							min={ 100 }
-							max={ 10000 }
-						/>
-					}
-					<ToggleControl
-						label={ __( "Infinite Loop" ) }
-						checked={ infiniteLoop }
-						onChange={ this.toggleInfiniteLoop }
-					/>
-					<RangeControl
-						label={ __( "Transition Speed (ms)" ) }
-						value={ transitionSpeed }
-						onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
-						min={ 100 }
-						max={ 5000 }
-					/>
-					<RangeControl
-						label={ __( "Arrow Size" ) }
-						value={ arrowSize }
-						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-					/>
-				</PanelBody>
-			</Fragment>			
-		)
-*/
+		
 		let cnt = 0;
 		test_block.map( ( item, thisIndex ) => {
 			let image_arr = test_block[thisIndex]			
@@ -496,6 +390,69 @@ class UAGBrestMenu extends Component {
 	            }
 	        }
 		} )	    
+
+		// Margin Settings.
+		const marginSettings = (
+			<Fragment>
+				<PanelBody
+						title={ __( "Spacing" ) }
+						initialOpen={ false }
+					>
+					<RangeControl
+						label={ __( "Row Gap" ) }
+						value={ rowGap }
+						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Column Gap" ) }
+						value={ columnGap }
+						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Content Padding" ) }
+						value={ contentPadding }
+						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>		
+					<RangeControl
+						label={ __( "Title Bottom Margin" ) }
+						value={ titleSpace }
+						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>								
+					{  cnt > 0 && <Fragment>
+						<RangeControl
+							label={ __( "Image Horizontal Padding" ) }
+							value={ imgHrPadding }
+							onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Image Vertical Padding" ) }
+							value={ imgVrPadding }
+							onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>	
+					</Fragment>
+					}					
+					
+				</PanelBody>
+			</Fragment>
+		);
 
 		// Global Controls.
 		const inspect_control = (
