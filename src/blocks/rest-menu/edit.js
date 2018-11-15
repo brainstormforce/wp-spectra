@@ -555,7 +555,7 @@ class UAGBrestMenu extends Component {
 										{ value: "tablet", label: __( "Tablet" ) },
 										{ value: "mobile", label: __( "Mobile" ) },
 									] }
-									help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+									help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
 								/>
 							</Fragment>
