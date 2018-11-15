@@ -40,11 +40,8 @@ class UAGBrestMenu extends Component {
 
 		super( ...arguments );
 		this.onSelectRestImage  = this.onSelectRestImage.bind( this )
-		this.onRemoveTestImage  = this.onRemoveTestImage.bind(this)
+		this.onRemoveRestImage  = this.onRemoveRestImage.bind(this)
 		this.getImageName       = this.getImageName.bind(this)
-		this.togglePauseOnHover = this.togglePauseOnHover.bind( this )
-		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this )
-		this.toggleAutoplay     = this.toggleAutoplay.bind( this )
 		this.onRemoveImage 		= this.onRemoveImage.bind( this )
 		this.onSelectImage 		= this.onSelectImage.bind( this )
 	}
@@ -83,7 +80,7 @@ class UAGBrestMenu extends Component {
 	/*
 	 * Event to set Image as null while removing.
 	 */
-	onRemoveTestImage( index ) {
+	onRemoveRestImage( index ) {
 		const { test_block } = this.props.attributes
 		const { setAttributes } = this.props
 		
@@ -116,26 +113,6 @@ class UAGBrestMenu extends Component {
 		return image_title;
 	}
 		
-	togglePauseOnHover() {
-		const { pauseOnHover } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { pauseOnHover: ! pauseOnHover } )
-	}
-
-	toggleInfiniteLoop() {
-		const { infiniteLoop } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { infiniteLoop: ! infiniteLoop } )
-	}
-
-	toggleAutoplay() {
-		const { autoplay } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { autoplay: ! autoplay } )
-	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -371,7 +348,7 @@ class UAGBrestMenu extends Component {
 						/>						
 						{ ( image_val && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
-								this.onRemoveTestImage(index)
+								this.onRemoveRestImage(index)
 							} } isLink isDestructive>
 								{ __( "Remove Image" ) }
 							</Button>
