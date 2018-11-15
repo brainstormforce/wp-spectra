@@ -70,11 +70,11 @@ function contentTimelineStyle( props ) {
 		"text-align": align,
 	}
          
-	selectors[".uagb-timeline__center-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after"] = {
+	selectors[".uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after"] = {
 		"border-left-color" : backgroundColor,
 	}
 
-	selectors[".uagb-timeline__right-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after"] = {
+	selectors[".uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after"] = {
 		"border-left-color" : backgroundColor
 	}
 
@@ -151,7 +151,7 @@ function contentTimelineStyle( props ) {
 		"margin-left" : horizontalSpace+"px",
 	}
 
-	selectors[".uagb-timeline__right-block .uagb-timeline__day-new.uagb-tmimeline__day-right"] = {
+	selectors[".uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right"] = {
 		"margin-right" : horizontalSpace+"px",
 	}
 
@@ -201,7 +201,7 @@ function contentTimelineStyle( props ) {
 	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left"] = {
 		"margin-left" : horizontalSpace+"px",
 	}
-	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right"] = {
+	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right"] = {
 		"margin-left" : horizontalSpace+"px",
 	}
 

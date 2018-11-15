@@ -150,6 +150,10 @@ const attributes = {
 		type: "string",
 		default : "#"
 	},
+	stack: {
+		type: "string",
+		default: "tablet"
+	}
 }
 
 export default attributes

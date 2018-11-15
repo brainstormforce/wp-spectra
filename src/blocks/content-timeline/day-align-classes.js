@@ -10,10 +10,10 @@ function DayAlignClass( attributes, index_val ) {
 	if( "left" == attributes.timelinAlignment ){
 		day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
 	}else if( "right" == attributes.timelinAlignment ){
-		day_align_class = "uagb-timeline__day-new uagb-tmimeline__day-right"
+		day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
 	}else if( "center" == attributes.timelinAlignment ){
 		if( index_val % 2 == "0" ){
-			day_align_class = "uagb-timeline__day-new uagb-tmimeline__day-right"
+			day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
 		}else{
 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
 		}  
