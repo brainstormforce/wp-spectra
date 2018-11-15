@@ -1,15 +1,16 @@
 /**
  * BLOCK: UAGB Section Attributes
  */
+const { __ } = wp.i18n
 
 const ITEM_COUNT = 2
 
 const testimonial_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var desc_text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor."
-	var title_text    = "Menu Item "+i
-	var price_text    = "$19"
+	var desc_text = __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
+	var title_text    = __("Menu Item "+i)
+	var price_text    = __("$9")
 	testimonial_block.push(
 		{
 			"description": desc_text,
@@ -106,7 +107,8 @@ const attributes = {
 		default: 'medium',
 	},
 	imageWidth :{
-		type: "number",		
+		type: "number",	
+		default: '100',	
 	},	
 	columns :{
 		type: "number",
@@ -131,55 +133,23 @@ const attributes = {
 	contentPadding: {
 		type: "number",
 		default : 5
-	},	
-	/*backgroundType: {
-		type: "string",
-		default: "none"
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
-	},
-	backgroundColor:{
-		type: "string"
-	},
-	backgroundImageColor: {
-		type: "string"
-	},*/
+	},		
 	seperatorStyle : {
 		type: "string",
 		default: "dashed"
 	},
 	seperatorWidth : {
 		type: "number",
+		default: "100"
+	},
+	seperatorThickness : {
+		type: "number",
 		default: "1"
-	},
-	borderRadius : {
-		type: "number"
-	},
+	},		
 	seperatorColor : {
 		type: "string",
 		default: "#b2b4b5",
-	},	
-	/*backgroundOpacity:{
-		type: "number",
-		default: 0
-	},*/
+	},		
 	arrowColor:{
 		type: "string",
 		default: "#333"

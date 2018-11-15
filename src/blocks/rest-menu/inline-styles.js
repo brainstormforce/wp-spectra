@@ -22,8 +22,8 @@ function RestMenuStyle( props ) {
             columnGap,
             contentPadding,
             seperatorStyle,
-            seperatorWidth ,
-            borderRadius,
+            seperatorWidth,
+            seperatorThickness,
             seperatorColor,                  
         } = props.attributes;        
 
@@ -36,9 +36,9 @@ function RestMenuStyle( props ) {
         var selectors = {};
 
             selectors['.uagb-rest_menu__wrap'] = {
-                    'padding-left' : rowGap/2+'px',
-                    'padding-right' : rowGap/2+'px',                                
-                    'margin-bottom' : columnGap+'px',
+                    'padding-left' : columnGap/2+'px',
+                    'padding-right' : columnGap/2+'px',                                
+                    'margin-bottom' : rowGap+'px',
                 }; 
             
             selectors['.uagb-rest_menu__wrap .uagb-rm__image-content'] = {
@@ -80,11 +80,11 @@ function RestMenuStyle( props ) {
                 };    
                      
             if ( seperatorStyle != "none" ) {
-                selectors['.uagb-rest_menu__wrap .uagb-rm__content'] = {
-                    'border-bottom-color': seperatorColor,
-                    'border-bottom-style':seperatorStyle,
-                    'border-bottom-width':seperatorWidth + "px",
-                    'border-radius':borderRadius + "px",                    
+                selectors['.uagb-rest_menu__wrap .uagb-rm__separator'] = {
+                    'border-top-color': seperatorColor,
+                    'border-top-style':seperatorStyle,
+                    'border-top-width':seperatorThickness + "px",    
+                    'width':seperatorWidth + "%",
                 };                 
             }
 

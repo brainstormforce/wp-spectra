@@ -201,19 +201,10 @@ class UAGBrestMenu extends Component {
 			mcolumns,			
 			rowGap,
 			columnGap,
-			contentPadding,
-			backgroundType,
-			backgroundColor,
-			backgroundImage,
-			backgroundPosition,
-			backgroundSize,
-			backgroundRepeat,
-			backgroundAttachment,
-			backgroundImageColor,
-			backgroundOpacity,
+			contentPadding,			
 			seperatorStyle,
-			seperatorWidth ,
-			borderRadius,
+			seperatorWidth,
+			seperatorThickness,
 			seperatorColor,
 			stack,			
 		} = attributes;
@@ -316,9 +307,17 @@ class UAGBrestMenu extends Component {
 								value={ seperatorWidth }
 								onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 								min={ 0 }
-								max={ 50 }
+								max={ 100 }
 								allowReset
-							/>		
+							/>
+							<RangeControl
+								label={ __( "Seperator Thickness" ) }
+								value={ seperatorThickness }
+								onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+								min={ 0 }
+								max={ 20 }
+								allowReset
+							/>	
 							<Fragment>
 								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 								<ColorPalette
@@ -525,9 +524,9 @@ class UAGBrestMenu extends Component {
 								{ times( incAmount, n => {
 
 									cloneTest_block.push( {
-										description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur arcu erat, accumsan id imperdiet et, porttitor." ,
-										title: "Menu Item"+ ( cloneTest_block.length + 1 ),
-										price: "$19",
+										description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
+										title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
+										price: __("$19"),
 										image: "",
 										} )
 								} ) }
@@ -661,32 +660,29 @@ class UAGBrestMenu extends Component {
 						"uagb-rest_menu__wrap",
 						...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >							
-							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
-								<div className = "uagb-rm__overlay"></div>
+							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>								
 								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 
-								<div className ="uagb-rm__text-wrap">
-									
-									<div className ="uagb-rm__meta">															
-											{ //title_text
-												<Fragment>
-													<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
-														<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
-															<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-															<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
-																<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-															</div>
-														</div>
-														<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
-															<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-														</div>	
+								<div className ="uagb-rm__text-wrap">																								
+									{ //title_text
+										<Fragment>
+											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
+												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
+													<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+													<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+														<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
 													</div>
-												</Fragment>
-											}
-									</div>									
+												</div>
+												<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
+													<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+												</div>	
+											</div>
+										</Fragment>
+									}																		
 								</div>
-								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
-							</div>						
+								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
+							</div>
+							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
 						</div>												
 					)}				
 				</div>
