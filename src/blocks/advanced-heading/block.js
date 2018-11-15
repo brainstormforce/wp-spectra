@@ -24,14 +24,13 @@ const {
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
+	PanelColorSettings,
 } = wp.editor
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 } = wp.components
@@ -39,7 +38,7 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
-class UAGBAdvancedHeading extends Component {
+export default class UAGBAdvancedHeading extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -169,44 +168,28 @@ class UAGBAdvancedHeading extends Component {
 							initialPosition={10}
 						/>
 					</PanelBody>
-					<PanelBody
-						title={ __( "Colors" ) }
-						initialOpen={ false }
+					<PanelColorSettings
+						title={ __( "Color Settings" ) }
+						initialOpen={ true }
+						colorSettings={ [
+							{
+								value: headingColor,
+								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+								label: __( "Heading Color" ),
+							},
+							{
+								value: subHeadingColor,
+								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+								label: __( "Sub-Heading Color" ),
+							},
+							{
+								value: separatorColor,
+								onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
+								label: __( "Separator Color" ),
+							},
+						] }
 					>
-						<PanelColor
-							title={ __( "Heading Color" ) }
-							colorValue={ headingColor }
-							initialOpen={ true }
-						>
-							<ColorPalette
-								value={ headingColor }
-								onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( "Sub-Heading Color" ) }
-							colorValue={ subHeadingColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ subHeadingColor }
-								onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( "Separator Color" ) }
-							colorValue={ separatorColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ separatorColor }
-								onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-					</PanelBody>
+					</PanelColorSettings>
 					<PanelBody
 						title={ __( "Additional Options" ) }
 						initialOpen={ false }
@@ -316,14 +299,14 @@ class UAGBAdvancedHeading extends Component {
  */
 registerBlockType( "uagb/advanced-heading", {
 
-	title: __( "UAGB - Advanced Heading" ),
-	description: __( "Add Advanced Heading block." ),
+	title: uagb_blocks_info.blocks["uagb/advanced-heading"]["title"],
+	description: uagb_blocks_info.blocks["uagb/advanced-heading"]["description"],
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	attributes: {
 		block_id: {
 			type: "string"

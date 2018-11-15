@@ -698,6 +698,7 @@ add_action( 'init', 'uagb_blocks_register_block_core_latest_posts' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
+
 	// Add featured image source.
 	register_rest_field(
 		'post',

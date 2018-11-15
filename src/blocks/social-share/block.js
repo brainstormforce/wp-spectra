@@ -34,10 +34,10 @@ const {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/social-share", {
-	title: __( "Social Share" ),
-	description: __( "Add Social Sharing Icon / Image" ),
+	title: uagb_blocks_info.blocks["uagb/social-share"]["title"],
+	description: uagb_blocks_info.blocks["uagb/social-share"]["description"],
 	icon: UAGB_Block_Icons.social_share,
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( "social share" ),
 		__( "icon" ),
@@ -100,7 +100,7 @@ registerBlockType( "uagb/social-share", {
 									) }
 									key={ index }
 								>
-									<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+									<a className="uagb-ss__link" href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 								</div>
 							)
 						})

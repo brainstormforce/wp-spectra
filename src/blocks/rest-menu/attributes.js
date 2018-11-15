@@ -2,7 +2,7 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const ITEM_COUNT = 3
+const ITEM_COUNT = 2
 
 const testimonial_block = []
 
@@ -110,7 +110,7 @@ const attributes = {
 	},	
 	columns :{
 		type: "number",
-		default: 3,
+		default: 2,
 	},	
 	tcolumns :{
 		type: "number",

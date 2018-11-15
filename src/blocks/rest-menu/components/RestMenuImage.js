@@ -24,7 +24,7 @@ class RestMenuImage extends React.Component {
             if( url_check !== '' ){
                 let size = image.sizes;
                 let imageSize = attributes.imageSize;
-                if ( typeof size[imageSize] !== 'undefined') {
+                if ( typeof size !== "undefined" && typeof size[imageSize] !== 'undefined') {
                   url = size[imageSize].url 
                 }else{
                   url = url_check 

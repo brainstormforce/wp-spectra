@@ -161,6 +161,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/content-timeline':
+					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -192,7 +196,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks = gutenberg_parse_blocks( $post->post_content );
+				$blocks = $this->parse( $post->post_content );
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -203,6 +207,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
 				<?php
 			}
+		}
+
+		/**
+		 * Parse Guten Block.
+		 *
+		 * @param string $content the content string.
+		 * @since 1.1.0
+		 */
+		public function parse( $content ) {
+
+			global $wp_version;
+
+			return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 		}
 
 		/**
@@ -225,7 +242,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$content = get_post_field( 'post_content', $id );
 
-							$reusable_blocks = gutenberg_parse_blocks( $content );
+							$reusable_blocks = $this->parse( $content );
 
 							$this->get_stylesheet( $reusable_blocks );
 						}

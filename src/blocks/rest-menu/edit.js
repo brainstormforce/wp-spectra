@@ -22,7 +22,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	ToggleControl,
@@ -33,12 +32,14 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
+const MAX_COLUMNS = 3
+
 class UAGBrestMenu extends Component {
 
 	constructor() {
 
 		super( ...arguments );
-		this.onSelectTestImage  = this.onSelectTestImage.bind( this )
+		this.onSelectRestImage  = this.onSelectRestImage.bind( this )
 		this.onRemoveTestImage  = this.onRemoveTestImage.bind(this)
 		this.getImageName       = this.getImageName.bind(this)
 		this.togglePauseOnHover = this.togglePauseOnHover.bind( this )
@@ -51,7 +52,7 @@ class UAGBrestMenu extends Component {
 	/*
 	 * Event to set Image as while adding.
 	 */
-	onSelectTestImage( media, index ) {
+	onSelectRestImage( media, index ) {
 		const { test_block } = this.props.attributes
 		const { setAttributes } = this.props
 
@@ -60,6 +61,10 @@ class UAGBrestMenu extends Component {
 			imag_url = null
 		}else{
 			imag_url = media
+		}
+
+		if ( ! media.type || "image" !== media.type ) {
+			imag_url = null
 		}
 
 		const newItems = test_block.map( ( item, thisIndex ) => {
@@ -153,6 +158,12 @@ class UAGBrestMenu extends Component {
 			setAttributes( { backgroundImage: null } )
 			return
 		}
+
+		if ( ! media.type || "image" !== media.type ) {
+			setAttributes( { backgroundImage: null } )
+			return
+		}
+
 		setAttributes( { backgroundImage: media } )
 	}
 
@@ -307,16 +318,15 @@ class UAGBrestMenu extends Component {
 								min={ 0 }
 								max={ 50 }
 								allowReset
-							/>							
-							<PanelColor
-								title={ __( "Seperator Color" ) }
-								colorValue={ borderColor } >
+							/>		
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 								<ColorPalette
 									value={ borderColor }
 									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 									allowReset
 								/>
-							</PanelColor>
+							</Fragment>	
 						</Fragment>
 					}
 				</PanelBody>
@@ -405,15 +415,16 @@ class UAGBrestMenu extends Component {
 							] }
 						/>
 						{ "color" == backgroundType &&
-							<PanelColor
-								title={ __( "Background Color" ) }
-								colorValue={ backgroundColor } >
-								<ColorPalette
-									value={ backgroundColor }
-									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }
+									<span className="components-base-control__label">
+										<span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+										<ColorPalette
+											value={ backgroundColor }
+											onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+											allowReset
+										/>
+							</Fragment>								
 						}
 						{ "image" == backgroundType &&
 							<Fragment>
@@ -423,7 +434,7 @@ class UAGBrestMenu extends Component {
 									<MediaUpload
 										title={ __( "Select Background Image" ) }
 										onSelect={ this.onSelectImage }
-										type="image"
+										allowedTypes= { [ "image" ] }
 										value={ backgroundImage }
 										render={ ( { open } ) => (
 											<Button isDefault onClick={ open }>
@@ -485,15 +496,20 @@ class UAGBrestMenu extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<PanelColor
-											title={ __( "Image Overlay Color" ) }
-											colorValue={ backgroundImageColor }>
+										<Fragment>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }
+												<span className="components-base-control__label">
+													<span className="component-color-indicator" 
+														style={{ backgroundColor: backgroundImageColor }} >
+													</span>
+												</span>
+											</p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</PanelColor>
+										</Fragment>	
 									</Fragment>
 								}
 							</Fragment>
@@ -549,9 +565,9 @@ class UAGBrestMenu extends Component {
 						<MediaUpload
 							title={ __( "Select Image"+ ( index + 1 ) ) }
 							onSelect={ ( media ) => { 
-								this.onSelectTestImage( media, index )								
+								this.onSelectRestImage( media, index )								
 							} }
-							type="image"
+							allowedTypes= { [ "image" ] }							
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
@@ -673,21 +689,21 @@ class UAGBrestMenu extends Component {
 						value={ columns }
 						onChange={ ( value ) => setAttributes( { columns: value } ) }
 						min={ 1 }
-						max={ 3 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
 					/>
 					<RangeControl
 						label={ __( "Columns (Tablet)" ) }
 						value={ tcolumns }
 						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
 						min={ 1 }
-						max={ 3 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
 					/>
 					<RangeControl
 						label={ __( "Columns (Mobile)" ) }
 						value={ mcolumns }
 						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 						min={ 1 }
-						max={ 3 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
 					/>
 					</PanelBody>
 					{ /*carousal_settings*/ }
