@@ -79,8 +79,8 @@ const attributes = {
 		default : 15
 	},		
 	block_id :{
-		type : 'string',
-		default : 'not_set'
+		type : "string",
+		default : "not_set"
 	},	
 	authorSpace :{
 		type: "number",
@@ -105,13 +105,13 @@ const attributes = {
 	iconImage: {
 		type: "object",
 		default:{
-			'url': '',
-			'alt': 'InfoBox placeholder img',
+			"url": "",
+			"alt": "InfoBox placeholder img",
 		}
 	},
 	imageSize:{
-		type: 'string',
-		default: 'thumbnail',
+		type: "string",
+		default: "thumbnail",
 	},
 	imageWidth :{
 		type: "number",

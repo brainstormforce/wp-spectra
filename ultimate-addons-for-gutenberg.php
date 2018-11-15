@@ -5,7 +5,7 @@
  * Author: Brainstorm Force
  * Author URI: https://www.brainstormforce.com
  * Version: 1.2.0
- * Description: Ultimate Addons is a premium extension for Gutenberg that adds 5 modules and works on top of Gutenberg. You can use it with any WordPress theme.
+ * Description: Ultimate Addons is a premium extension for Gutenberg that adds 10+ blocks and works on top of Gutenberg. You can use it with any WordPress theme.
  * Text Domain: ultimate-addons-for-gutenberg
  *
  * @package UAGB

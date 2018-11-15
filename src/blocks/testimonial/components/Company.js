@@ -1,12 +1,12 @@
 const {
-    RichText,
-} = wp.editor;
+	RichText,
+} = wp.editor
 
 const {
 	createBlock
 } = wp.blocks
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 class Company extends React.Component {
 
@@ -17,15 +17,15 @@ class Company extends React.Component {
 			setAttributes , 
 			props,
 			index_value	
-		} = this.props;
+		} = this.props
 
-		const test_arr = attributes.test_block[index_value];
-		let company = '';
-		if( test_arr && typeof test_arr !== 'undefined'){
-			company = test_arr['company']			
+		const test_arr = attributes.test_block[index_value]
+		let company = ""
+		if( test_arr && typeof test_arr !== "undefined"){
+			company = test_arr["company"]			
 		}
 
-		if( setAttributes !== 'not_set' ){
+		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
 	                tagName= 'span'
@@ -35,7 +35,7 @@ class Company extends React.Component {
 
 	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
-								item['company'] = value				
+								item["company"] = value				
 							}
 							return item			
 						} )
@@ -47,16 +47,16 @@ class Company extends React.Component {
 	                placeholder={ __( "Write a Heading" ) }
 	                onMerge = { props.mergeBlocks }		
 	                onSplit = {
-							props.insertBlocksAfter ?
-								( before, after, ...blocks ) => {
-									setAttributes( { content: before } );
-									props.insertBlocksAfter( [
-										...blocks,
-										createBlock( 'core/paragraph', { content: after } ),
-									] );
-								} :
-								undefined
-						}			
+						props.insertBlocksAfter ?
+							( before, after, ...blocks ) => {
+								setAttributes( { content: before } )
+								props.insertBlocksAfter( [
+									...blocks,
+									createBlock( "core/paragraph", { content: after } ),
+								] )
+							} :
+							undefined
+					}			
 					onRemove={ () => props.onReplace( [] ) }              
 	            />			
 			)

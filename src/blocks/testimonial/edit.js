@@ -37,7 +37,7 @@ class UAGBtestimonial extends Component {
 
 	constructor() {
 
-		super( ...arguments );
+		super( ...arguments )
 		this.onSelectTestImage  = this.onSelectTestImage.bind( this )
 		this.onRemoveTestImage  = this.onRemoveTestImage.bind(this)
 		this.getImageName       = this.getImageName.bind(this)
@@ -68,7 +68,7 @@ class UAGBtestimonial extends Component {
 
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item['image'] = imag_url				
+				item["image"] = imag_url				
 			}
 			return item			
 		} )
@@ -88,7 +88,7 @@ class UAGBtestimonial extends Component {
 		
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item['image'] = null				
+				item["image"] = null				
 			}
 			return item			
 		} )
@@ -112,7 +112,7 @@ class UAGBtestimonial extends Component {
 				image_name = "Replace Image"
 			}
 		}
-		return image_name;
+		return image_name
 	}
 		
 	togglePauseOnHover() {
@@ -168,7 +168,7 @@ class UAGBtestimonial extends Component {
 
 	render() {
 
-		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props;
+		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
 
 		// Setup the attributes.
 		const {
@@ -222,93 +222,93 @@ class UAGBtestimonial extends Component {
 			borderRadius,
 			borderColor,
 			stack
-		} = attributes;
+		} = attributes
 
 		// Add CSS.
 		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
-		if( null != element && 'undefined' != typeof element ) {
-			element.innerHTML = TestimonialStyle( this.props );
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = TestimonialStyle( this.props )
 		}		
 
-		const my_block_id = 'uagb-testimonial-'+this.props.clientId;
+		const my_block_id = "uagb-testimonial-"+this.props.clientId
 			
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
-						title={ __( "Typography" ) }
-						initialOpen={ false }
-					>						
-						<RangeControl
-							label={ __( "Testimonial Font Size" ) }
-							value={ descFontSize }
-							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>											
-						<RangeControl
-							label={ __( "Author Font Size" ) }
-							value={ nameFontSize }
-							onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={30}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>	
-						<RangeControl
-							label={ __( "Company Font Size" ) }
-							value={ companyFontSize }
-							onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"							
-							allowReset
-						/>
+					title={ __( "Typography" ) }
+					initialOpen={ false }
+				>						
+					<RangeControl
+						label={ __( "Testimonial Font Size" ) }
+						value={ descFontSize }
+						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>											
+					<RangeControl
+						label={ __( "Author Font Size" ) }
+						value={ nameFontSize }
+						onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={30}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>	
+					<RangeControl
+						label={ __( "Company Font Size" ) }
+						value={ companyFontSize }
+						onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"							
+						allowReset
+					/>
 						
-					</PanelBody>
+				</PanelBody>
 
-					<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: descColor,
-									onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
-									label: __( 'Content Color' ),
-								},
-								{
-									value: authorColor,
-									onChange: ( colorValue ) => setAttributes( { authorColor: colorValue } ),
-									label: __( 'Name Color' ),
-								},
-								{
-									value: companyColor,
-									onChange: ( colorValue ) => setAttributes( { companyColor: colorValue } ),
-									label: __( 'Company Color' ),
-								},
-								{
-									value: arrowColor,
-									onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
-									label: __( 'Arrow Color' ),
-								},								
-							] }
-						>
-					</PanelColorSettings>
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: descColor,
+							onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
+							label: __( "Content Color" ),
+						},
+						{
+							value: authorColor,
+							onChange: ( colorValue ) => setAttributes( { authorColor: colorValue } ),
+							label: __( "Name Color" ),
+						},
+						{
+							value: companyColor,
+							onChange: ( colorValue ) => setAttributes( { companyColor: colorValue } ),
+							label: __( "Company Color" ),
+						},
+						{
+							value: arrowColor,
+							onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
+							label: __( "Arrow Color" ),
+						},								
+					] }
+				>
+				</PanelColorSettings>
 			</Fragment>
-		);
+		)
 
 		// Margin Settings.
 		const marginSettings = (
 			<Fragment>
 				<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
+					title={ __( "Spacing" ) }
+					initialOpen={ false }
+				>
 					<RangeControl
 						label={ __( "Row Gap" ) }
 						value={ rowGap }
@@ -368,22 +368,22 @@ class UAGBtestimonial extends Component {
 					
 				</PanelBody>
 			</Fragment>
-		);
+		)
 
 		const background_settings = (
 			<Fragment>
 				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( "Background Type" ) }
-							value={ backgroundType }
-							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "color", label: __( "Color" ) },
-								{ value: "image", label: __( "Image" ) },
-							] }
-						/>
-						{ "color" == backgroundType &&
+					<SelectControl
+						label={ __( "Background Type" ) }
+						value={ backgroundType }
+						onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "color", label: __( "Color" ) },
+							{ value: "image", label: __( "Image" ) },
+						] }
+					/>
+					{ "color" == backgroundType &&
 							<Fragment>
 								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
 								<ColorPalette
@@ -392,8 +392,8 @@ class UAGBtestimonial extends Component {
 									allowReset
 								/>
 							</Fragment>								
-						}
-						{ "image" == backgroundType &&
+					}
+					{ "image" == backgroundType &&
 							<Fragment>
 								<BaseControl
 									className="editor-bg-image-control"
@@ -465,8 +465,8 @@ class UAGBtestimonial extends Component {
 									</Fragment>
 								}
 							</Fragment>
-						}						
-						{ ( "image" == backgroundType && backgroundImage )  &&
+					}						
+					{ ( "image" == backgroundType && backgroundImage )  &&
 							<RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }
@@ -476,26 +476,26 @@ class UAGBtestimonial extends Component {
 								allowReset
 								initialPosition={0}
 							/>
-						}						
-					</PanelBody>
-					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( "Border Style" ) }
-							value={ borderStyle }
-							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
-							] }
-						/>
-						{ "none" != borderStyle &&
+					}						
+				</PanelBody>
+				<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( "Border Style" ) }
+						value={ borderStyle }
+						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "groove", label: __( "Groove" ) },
+							{ value: "inset", label: __( "Inset" ) },
+							{ value: "outset", label: __( "Outset" ) },
+							{ value: "ridge", label: __( "Ridge" ) },
+						] }
+					/>
+					{ "none" != borderStyle &&
 							<Fragment>
 								<RangeControl
 									label={ __( "Border Width" ) }
@@ -522,17 +522,17 @@ class UAGBtestimonial extends Component {
 									/>
 								</Fragment>									
 							</Fragment>
-						}
-					</PanelBody>
+					}
+				</PanelBody>
 			</Fragment>
-			);
+		)
 
 		// Image sizes.
 		const imageSizeOptions = [
-			{ value: 'thumbnail', label: __( 'Thumbnail' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'full', label: __( 'Large' ) }
-		];		
+			{ value: "thumbnail", label: __( "Thumbnail" ) },
+			{ value: "medium", label: __( "Medium" ) },
+			{ value: "full", label: __( "Large" ) }
+		]		
 		
 		function NextArrow( props ) {
 
@@ -579,12 +579,12 @@ class UAGBtestimonial extends Component {
 			]
 		}
 
-		let image_enable = false;
+		let image_enable = false
 		// Set testinomial image panel
 		const tmControls = ( index ) => {
-			let image_val = null;
-			if( test_block[index] && typeof test_block[index] !== 'undefined'){
-				image_val = test_block[index]['image']
+			let image_val = null
+			if( test_block[index] && typeof test_block[index] !== "undefined"){
+				image_val = test_block[index]["image"]
 			}
 			return (
 				<PanelBody key={index}
@@ -605,11 +605,11 @@ class UAGBtestimonial extends Component {
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  this.getImageName( test_block[index]['image'] ) }
+									{  this.getImageName( test_block[index]["image"] ) }
 								</Button>
 							) }
 						/>						
-						{ ( image_val && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
+						{ ( image_val && test_block[index]["image"].url !== null && test_block[index]["image"].url !=="" ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveTestImage(index)
 							} } isLink isDestructive>
@@ -666,110 +666,110 @@ class UAGBtestimonial extends Component {
 			</Fragment>			
 		)
 
-		let cnt = 0;
+		let cnt = 0
 		test_block.map( ( item, thisIndex ) => {
 			let image_arr = test_block[thisIndex]			
-			if( image_arr && typeof image_arr !== 'undefined'){
-	            const image = image_arr['image']
-	            if( typeof image !== "undefined" && image !== null && image !=='' ){
-	            	cnt++;
+			if( image_arr && typeof image_arr !== "undefined"){
+	            const image = image_arr["image"]
+	            if( typeof image !== "undefined" && image !== null && image !=="" ){
+	            	cnt++
 	            }
 	        }
 		} )	    
 
 		// Global Controls.
 		const inspect_control = (
-				<Fragment>
+			<Fragment>
 				 <InspectorControls>
 				 	<PanelBody
-					title={ __( 'General' ) }
-					initialOpen={ true }
+						title={ __( "General" ) }
+						initialOpen={ true }
 					>	
 				 	<RangeControl
-						label={ __( 'Number of Testimonials' ) }
-						value={ test_item_count }
-						onChange={ ( newCount ) => {
-							let cloneTest_block = [ ...test_block ]
-							if ( cloneTest_block.length < newCount ) {
-								const incAmount = Math.abs( newCount - cloneTest_block.length )
+							label={ __( "Number of Testimonials" ) }
+							value={ test_item_count }
+							onChange={ ( newCount ) => {
+								let cloneTest_block = [ ...test_block ]
+								if ( cloneTest_block.length < newCount ) {
+									const incAmount = Math.abs( newCount - cloneTest_block.length )
 
-								{ times( incAmount, n => {
+									{ times( incAmount, n => {
 
-									cloneTest_block.push( {
-										description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!" ,
-										name: "John Doe",
-										company: "Company"+ ( cloneTest_block.length + 1 ),
-										image: "",
+										cloneTest_block.push( {
+											description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!" ,
+											name: "John Doe",
+											company: "Company"+ ( cloneTest_block.length + 1 ),
+											image: "",
 										} )
-								} ) }
-								setAttributes( { test_block: cloneTest_block } )
-							}else{
-								const incAmount = Math.abs( newCount - cloneTest_block.length )
-								let data_new = cloneTest_block;
+									} ) }
+									setAttributes( { test_block: cloneTest_block } )
+								}else{
+									const incAmount = Math.abs( newCount - cloneTest_block.length )
+									let data_new = cloneTest_block
 					            for( var i= 0; i < incAmount; i++ ){             
-					                data_new.pop();
+					                data_new.pop()
 					            }           
-					            setAttributes({test_block:data_new});
+					            setAttributes({test_block:data_new})
 
-							}
-							setAttributes( { test_item_count: newCount } )
-						} }
-						min={ 0 }
-						max={ 10 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Columns" ) }
-						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
-					<RangeControl
-						label={ __( "Columns (Tablet)" ) }
-						value={ tcolumns }
-						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
-					<RangeControl
-						label={ __( "Columns (Mobile)" ) }
-						value={ mcolumns }
-						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
+								}
+								setAttributes( { test_item_count: newCount } )
+							} }
+							min={ 0 }
+							max={ 10 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 1 }
+							max={ test_item_count }
+						/>
+						<RangeControl
+							label={ __( "Columns (Tablet)" ) }
+							value={ tcolumns }
+							onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+							min={ 1 }
+							max={ test_item_count }
+						/>
+						<RangeControl
+							label={ __( "Columns (Mobile)" ) }
+							value={ mcolumns }
+							onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+							min={ 1 }
+							max={ test_item_count }
+						/>
 					</PanelBody>
 					{ carousal_settings }
 				 	
 					<PanelBody
-					title={ __( 'Image' ) }
-					initialOpen={ false }
+						title={ __( "Image" ) }
+						initialOpen={ false }
 					>
-					{ times( test_item_count, n => tmControls( n ) ) }
+						{ times( test_item_count, n => tmControls( n ) ) }
 
-					{  cnt > 0 && <Fragment>
-						<SelectControl
-							label={ __( 'Image Position' ) }
-							value={ imagePosition }
-							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
-							options={ [
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'bottom', label: __( 'Bottom' ) },
-								{ value: 'left', label: __( 'Left' ) },
-								{ value: 'right', label: __( 'Right' ) },
-							] }
-						/>	
-						{ (imagePosition == 'left' || imagePosition == 'right') && 
+						{  cnt > 0 && <Fragment>
+							<SelectControl
+								label={ __( "Image Position" ) }
+								value={ imagePosition }
+								onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+								options={ [
+									{ value: "top", label: __( "Top" ) },
+									{ value: "bottom", label: __( "Bottom" ) },
+									{ value: "left", label: __( "Left" ) },
+									{ value: "right", label: __( "Right" ) },
+								] }
+							/>	
+							{ (imagePosition == "left" || imagePosition == "right") && 
 							<Fragment>
 								<SelectControl
-								label={ __( 'Vertical ALignment' ) }
-								value={ imageAlignment }
-								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-								options={ [
-									{ value: 'top', label: __( 'Top' ) },
-									{ value: 'middle', label: __( 'Middle' ) },
-								] }
+									label={ __( "Vertical ALignment" ) }
+									value={ imageAlignment }
+									onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
+									options={ [
+										{ value: "top", label: __( "Top" ) },
+										{ value: "middle", label: __( "Middle" ) },
+									] }
 								/>	
 								<SelectControl
 									label={ __( "Stack on" ) }
@@ -783,25 +783,25 @@ class UAGBtestimonial extends Component {
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
 								/>
 							</Fragment>
-						}
-						<SelectControl
-							label={ __( 'Image Style' ) }
-							value={ iconimgStyle }
-							onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
-							options={ [
-								{ value: 'normal', label: __( 'Normal' ) },
-								{ value: 'circle', label: __( 'Circle' ) },
-								{ value: 'square', label: __( 'Square' ) },
-							] }
-						/>
-						<SelectControl
-								label={ __( 'Image Size' ) }
+							}
+							<SelectControl
+								label={ __( "Image Style" ) }
+								value={ iconimgStyle }
+								onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
+								options={ [
+									{ value: "normal", label: __( "Normal" ) },
+									{ value: "circle", label: __( "Circle" ) },
+									{ value: "square", label: __( "Square" ) },
+								] }
+							/>
+							<SelectControl
+								label={ __( "Image Size" ) }
 								options={ imageSizeOptions }
 								value={ imageSize }
 								onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 							/>
 						 <RangeControl
-								label={ __( 'Width' ) }
+								label={ __( "Width" ) }
 								value={ imageWidth }
 								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
 								min={ 0 }
@@ -809,17 +809,17 @@ class UAGBtestimonial extends Component {
 								allowReset
 							/>
 						</Fragment> 
-					}
+						}
 					
 					
-				</PanelBody>
+					</PanelBody>
 					{ TypographySettings }
 
 					{ marginSettings }
 					{ background_settings }
 				</InspectorControls>
-				</Fragment>
-			);
+			</Fragment>
+		)
 
 		return (
 			<Fragment>				
@@ -834,57 +834,57 @@ class UAGBtestimonial extends Component {
 					className,
 					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
 				) }
-					id = { my_block_id }
+				id = { my_block_id }
 				>
 
-				<Slider
-					className={ classnames(
-						"is-carousel",
-						`uagb-tm__columns-${ columns }`,
-						"uagb-tm__items"
-					) }					
-					{...settings}
-				>
+					<Slider
+						className={ classnames(
+							"is-carousel",
+							`uagb-tm__columns-${ columns }`,
+							"uagb-tm__items"
+						) }					
+						{...settings}
+					>
 
-					{ test_block.map( ( test, index ) => 
+						{ test_block.map( ( test, index ) => 
 
-						<div className = { classnames(
-						"uagb-testimonial__wrap",
-						...PositionClasses( attributes ),
-						) } key ={ "wrap-"+index } >							
-							<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
-								<div className = "uagb-tm__overlay"></div>
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
+							<div className = { classnames(
+								"uagb-testimonial__wrap",
+								...PositionClasses( attributes ),
+							) } key ={ "wrap-"+index } >							
+								<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
+									<div className = "uagb-tm__overlay"></div>
+									{ (imagePosition == "top" || imagePosition == "left" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
 
-								<div className ="uagb-tm__text-wrap">
-									{  // Get description.
-										<Fragment>
-											<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
-												<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-											</div>
-										</Fragment>
-									}
-									<div className ="uagb-tm__meta">
-										<div className ="uagb-tm__meta-inner">
+									<div className ="uagb-tm__text-wrap">
+										{  // Get description.
+											<Fragment>
+												<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+													<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+												</div>
+											</Fragment>
+										}
+										<div className ="uagb-tm__meta">
+											<div className ="uagb-tm__meta-inner">
 											
-											{ (imagePosition == 'bottom' ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }	
+												{ (imagePosition == "bottom" ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }	
 																
-											{ //title_text
-												<Fragment>
-													<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
-														<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-														<Company attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-													</div>
-												</Fragment>
-											}								
+												{ //title_text
+													<Fragment>
+														<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
+															<AuthorName attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
+															<Company attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
+														</div>
+													</Fragment>
+												}								
+											</div>
 										</div>
 									</div>
-								</div>
-								{ ( imagePosition == 'right' ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
-							</div>						
-						</div>												
-					)}
-				</Slider>
+									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
+								</div>						
+							</div>												
+						)}
+					</Slider>
 				</div>
 			</Fragment>
 		)
@@ -893,7 +893,7 @@ class UAGBtestimonial extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } );
+		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

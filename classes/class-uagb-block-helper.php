@@ -595,7 +595,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-left" => $attr['socialSpace'] . "px",
 					"margin-right" => "0",
 				),
-				" .uagb-team__imag-wrap" => array(
+				" .uagb-team__image-wrap" => array(
 					"margin-top" => $attr['imgTopMargin'] . "px",
 					"margin-bottom" => $attr['imgBottomMargin'] . "px",
 					"margin-left" => $attr['imgLeftMargin'] . "px",
@@ -606,18 +606,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if( 'above' == $attr['imgPosition'] ) {
 				if ( 'center' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
-					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto";
 				} else if ( 'left' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto";
 				} else if ( 'right' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto";
 				}
 			}
 
 			if ( "above" != $attr['imgPosition'] ) {
 				if ( "middle" == $attr['imgAlign'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
+					$selectors[" .uagb-team__image-wrap"]["align-self"] = "center";
 				}
 			}
 
