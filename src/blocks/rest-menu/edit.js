@@ -259,6 +259,7 @@ class UAGBrestMenu extends Component {
 
 					<PanelColorSettings
 							title={ __( 'Color Settings' ) }
+							initialOpen={ false }
 							colorSettings={ [
 								{
 									value: titleColor,
@@ -460,7 +461,7 @@ class UAGBrestMenu extends Component {
 				 <InspectorControls>
 				 	<PanelBody
 					title={ __( 'General' ) }
-					initialOpen={ false }
+					initialOpen={ true }
 					>	
 				 	<RangeControl
 						label={ __( 'Number of Menu' ) }
