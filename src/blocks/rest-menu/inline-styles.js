@@ -20,6 +20,9 @@ function RestMenuStyle( props ) {
             imageWidth,  
             rowGap,
             columnGap,
+            columns,
+            tcolumns,
+            mcolumns,
             contentPadding,
             seperatorStyle,
             seperatorWidth,
@@ -88,6 +91,11 @@ function RestMenuStyle( props ) {
                 };                 
             }
 
+        selectors['.uagb-rest_menu__wrap.uagb-rm__desk-column-'+columns+':nth-child('+columns+'n+1)'] = {
+                    'margin-left': '0%',
+                    'clear':'left',
+                };   
+
         var styling_css = '';
 
         for( var i in selectors ) {
@@ -104,8 +112,8 @@ function RestMenuStyle( props ) {
             }
 
             styling_css += css + ' } ';
-        }       
-
+        }      
+        
         return styling_css;
 
 }
