@@ -1008,9 +1008,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Social Share Block CSS
+		 * Get Restaurant Menu Block CSS
 		 *
-		 * @since 0.0.1
+		 * @since 1.0.2
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
