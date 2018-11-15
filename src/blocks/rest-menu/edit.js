@@ -157,6 +157,7 @@ class UAGBrestMenu extends Component {
 			descColor,
 			titleColor,
 			prefixTag,
+			headingTag,
 			titleFontSize,
 			priceFontSize,
 			descFontSize,
@@ -200,7 +201,20 @@ class UAGBrestMenu extends Component {
 				<PanelBody
 						title={ __( "Typography" ) }
 						initialOpen={ false }
-					>				
+					>	
+						<SelectControl
+							label={ __( "Title Tag" ) }
+							value={ headingTag }
+							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>			
 						<RangeControl
 							label={ __( "Title Font Size" ) }
 							value={ titleFontSize }

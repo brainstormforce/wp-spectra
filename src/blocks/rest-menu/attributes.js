@@ -54,6 +54,10 @@ const attributes = {
 		type: "string",
 		default: "top"
 	},
+	headingTag: {
+		type: "string",
+		default: "h4"
+	},
 	titleFontSize: {
 		type: "number",
 	},	

@@ -28,7 +28,7 @@ class Title extends React.Component {
 		if( setAttributes !== 'not_set' ){
 			return (
 				<RichText
-	                tagName="span"
+	                tagName= {attributes.headingTag}
 	                value={ author_title }
 	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
@@ -60,7 +60,7 @@ class Title extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName="span"
+	                tagName={attributes.headingTag}
 	                value={ author_title }
 	                className='uagb-rm__title'
 	            />
