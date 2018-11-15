@@ -21,18 +21,10 @@ function RestMenuStyle( props ) {
             rowGap,
             columnGap,
             contentPadding,
-            backgroundColor,
-            backgroundImage,
-            backgroundPosition,
-            backgroundSize,
-            backgroundRepeat,
-            backgroundAttachment,
-            backgroundImageColor,
-            backgroundOpacity,
-            borderStyle,
-            borderWidth ,
+            seperatorStyle,
+            seperatorWidth ,
             borderRadius,
-            borderColor,                  
+            seperatorColor,                  
         } = props.attributes;        
 
         if( props.clientId ){
@@ -85,31 +77,13 @@ function RestMenuStyle( props ) {
                     'font-size' : descFontSize+'px',
                     'color': descColor,
                     'margin-bottom': descSpace+'px',
-                };     
-
-            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-color .uagb-rm__content'] = {
-                    'background-color': backgroundColor,
-                };  
-
-            var position = backgroundPosition.replace( "-", " " )
-            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-image .uagb-rm__content'] = {
-                    'background-image': ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
-                    'background-position':position,
-                    'background-attachment':backgroundAttachment,
-                    'background-repeat':backgroundRepeat,
-                    'background-size':backgroundSize,
-                }; 
-
-            selectors['.uagb-rest_menu__wrap.uagb-rm__bg-type-image .uagb-rm__overlay'] = {
-                    'background-color':backgroundImageColor,
-                    'opacity':'0.'+backgroundOpacity,
-                };                              
-               
-            if ( borderStyle != "none" ) {
+                };    
+                     
+            if ( seperatorStyle != "none" ) {
                 selectors['.uagb-rest_menu__wrap .uagb-rm__content'] = {
-                    'border-bottom-color': borderColor,
-                    'border-bottom-style':borderStyle,
-                    'border-bottom-width':borderWidth + "px",
+                    'border-bottom-color': seperatorColor,
+                    'border-bottom-style':seperatorStyle,
+                    'border-bottom-width':seperatorWidth + "px",
                     'border-radius':borderRadius + "px",                    
                 };                 
             }

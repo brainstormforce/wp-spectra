@@ -211,10 +211,10 @@ class UAGBrestMenu extends Component {
 			backgroundAttachment,
 			backgroundImageColor,
 			backgroundOpacity,
-			borderStyle,
-			borderWidth ,
+			seperatorStyle,
+			seperatorWidth ,
 			borderRadius,
-			borderColor,
+			seperatorColor,
 			stack,			
 		} = attributes;
 
@@ -295,8 +295,8 @@ class UAGBrestMenu extends Component {
 				<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Seperator Style" ) }
-						value={ borderStyle }
-						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+						value={ seperatorStyle }
+						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 						options={ [
 							{ value: "none", label: __( "None" ) },
 							{ value: "solid", label: __( "Solid" ) },
@@ -309,21 +309,21 @@ class UAGBrestMenu extends Component {
 							{ value: "ridge", label: __( "Ridge" ) },
 						] }
 					/>
-					{ "none" != borderStyle &&
+					{ "none" != seperatorStyle &&
 						<Fragment>
 							<RangeControl
 								label={ __( "Seperator Width" ) }
-								value={ borderWidth }
-								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								value={ seperatorWidth }
+								onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 								min={ 0 }
 								max={ 50 }
 								allowReset
 							/>		
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 								<ColorPalette
-									value={ borderColor }
-									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+									value={ seperatorColor }
+									onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
 									allowReset
 								/>
 							</Fragment>	
@@ -400,143 +400,6 @@ class UAGBrestMenu extends Component {
 				</PanelBody>
 			</Fragment>
 		);
-
-		const background_settings = (
-			<Fragment>
-				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( "Background Type" ) }
-							value={ backgroundType }
-							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "color", label: __( "Color" ) },
-								{ value: "image", label: __( "Image" ) },
-							] }
-						/>
-						{ "color" == backgroundType &&
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }
-									<span className="components-base-control__label">
-										<span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
-										<ColorPalette
-											value={ backgroundColor }
-											onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-											allowReset
-										/>
-							</Fragment>								
-						}
-						{ "image" == backgroundType &&
-							<Fragment>
-								<BaseControl
-									className="editor-bg-image-control"
-									label={ __( "Background Image" ) }>
-									<MediaUpload
-										title={ __( "Select Background Image" ) }
-										onSelect={ this.onSelectImage }
-										allowedTypes= { [ "image" ] }
-										value={ backgroundImage }
-										render={ ( { open } ) => (
-											<Button isDefault onClick={ open }>
-												{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
-											</Button>
-										) }
-									/>
-									{ backgroundImage &&
-										<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
-											{ __( "Remove Image" ) }
-										</Button>
-									}
-								</BaseControl>
-								{ backgroundImage &&
-									<Fragment>
-										<SelectControl
-											label={ __( "Image Position" ) }
-											value={ backgroundPosition }
-											onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
-											options={ [
-												{ value: "top-left", label: __( "Top Left" ) },
-												{ value: "top-center", label: __( "Top Center" ) },
-												{ value: "top-right", label: __( "Top Right" ) },
-												{ value: "center-left", label: __( "Center Left" ) },
-												{ value: "center-center", label: __( "Center Center" ) },
-												{ value: "center-right", label: __( "Center Right" ) },
-												{ value: "bottom-left", label: __( "Bottom Left" ) },
-												{ value: "bottom-center", label: __( "Bottom Center" ) },
-												{ value: "bottom-right", label: __( "Bottom Right" ) },
-											] }
-										/>
-										<SelectControl
-											label={ __( "Attachment" ) }
-											value={ backgroundAttachment }
-											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
-											options={ [
-												{ value: "fixed", label: __( "Fixed" ) },
-												{ value: "scroll", label: __( "Scroll" ) }
-											] }
-										/>
-										<SelectControl
-											label={ __( "Repeat" ) }
-											value={ backgroundRepeat }
-											onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
-											options={ [
-												{ value: "no-repeat", label: __( "No Repeat" ) },
-												{ value: "repeat", label: __( "Repeat" ) },
-												{ value: "repeat-x", label: __( "Repeat-x" ) },
-												{ value: "repeat-y", label: __( "Repeat-y" ) }
-											] }
-										/>
-										<SelectControl
-											label={ __( "Size" ) }
-											value={ backgroundSize }
-											onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
-											options={ [
-												{ value: "auto", label: __( "Auto" ) },
-												{ value: "cover", label: __( "Cover" ) },
-												{ value: "contain", label: __( "Contain" ) }
-											] }
-										/>
-										<Fragment>
-											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }
-												<span className="components-base-control__label">
-													<span className="component-color-indicator" 
-														style={{ backgroundColor: backgroundImageColor }} >
-													</span>
-												</span>
-											</p>
-											<ColorPalette
-												value={ backgroundImageColor }
-												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
-												allowReset
-											/>
-										</Fragment>	
-									</Fragment>
-								}
-							</Fragment>
-						}						
-						{ ( "image" == backgroundType && backgroundImage )  &&
-							<RangeControl
-								label={ __( "Opacity" ) }
-								value={ backgroundOpacity }
-								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-								initialPosition={0}
-							/>
-						}	
-						<RangeControl
-							label={ __( "Border Radius" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							max={ 1000 }
-							allowReset
-						/>					
-					</PanelBody>
-										
-			</Fragment>
-			);
 
 		// Image sizes.
 		const imageSizeOptions = [
@@ -770,8 +633,7 @@ class UAGBrestMenu extends Component {
 				</PanelBody>
 					{ separatorSettings }
 					{ TypographySettings }
-					{ marginSettings }
-					{ background_settings }
+					{ marginSettings }					
 				</InspectorControls>
 				</Fragment>
 			);

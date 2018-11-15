@@ -132,7 +132,7 @@ const attributes = {
 		type: "number",
 		default : 5
 	},	
-	backgroundType: {
+	/*backgroundType: {
 		type: "string",
 		default: "none"
 	},
@@ -160,25 +160,26 @@ const attributes = {
 	},
 	backgroundImageColor: {
 		type: "string"
-	},
-	borderStyle : {
+	},*/
+	seperatorStyle : {
 		type: "string",
-		default: "none"
+		default: "dashed"
 	},
-	borderWidth : {
+	seperatorWidth : {
 		type: "number",
 		default: "1"
 	},
 	borderRadius : {
 		type: "number"
 	},
-	borderColor : {
-		type: "string"
+	seperatorColor : {
+		type: "string",
+		default: "#b2b4b5",
 	},	
-	backgroundOpacity:{
+	/*backgroundOpacity:{
 		type: "number",
 		default: 0
-	},
+	},*/
 	arrowColor:{
 		type: "string",
 		default: "#333"
