@@ -179,7 +179,8 @@ class UAGBrestMenu extends Component {
 			mcolumns,			
 			rowGap,
 			columnGap,
-			contentPadding,			
+			contentHrPadding,
+			contentVrPadding,			
 			seperatorStyle,
 			seperatorWidth,
 			seperatorThickness,
@@ -407,13 +408,21 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Content Padding" ) }
-						value={ contentPadding }
-						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+						label={ __( "Block Horizontal Padding" ) }
+						value={ contentHrPadding }
+						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>		
+					/>
+					<RangeControl
+						label={ __( "Block Vertical Padding" ) }
+						value={ contentVrPadding }
+						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>			
 					<RangeControl
 						label={ __( "Title Bottom Margin" ) }
 						value={ titleSpace }

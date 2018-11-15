@@ -23,7 +23,8 @@ function RestMenuStyle( props ) {
             columns,
             tcolumns,
             mcolumns,
-            contentPadding,
+            contentVrPadding,
+            contentHrPadding,
             seperatorStyle,
             seperatorWidth,
             seperatorThickness,
@@ -59,7 +60,10 @@ function RestMenuStyle( props ) {
             
             selectors['.uagb-rm__content'] = {                    
                     'text-align' : headingAlign, 
-                    'padding' : contentPadding+'px',                  
+                    'padding-left' : contentHrPadding+'px', 
+                    'padding-right' : contentHrPadding+'px',      
+                    'padding-top' : contentVrPadding+'px',      
+                    'padding-bottom' : contentVrPadding+'px',                       
                 };                       
 
             // Prefix Style

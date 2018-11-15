@@ -1046,7 +1046,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             
             $selectors[' .uagb-rm__content'] = array(                    
                     'text-align' =>  $attr['headingAlign'] , 
-                    'padding' =>  $attr['contentPadding'] .'px',                  
+                    'padding-left'  => $attr['contentHrPadding'] . 'px',
+					'padding-right' => $attr['contentHrPadding'] . 'px',
+					'padding-top'   => $attr['contentVrPadding'] . 'px',
+					'padding-top'  => $attr['contentVrPadding'] . 'px',                 
                 );                      
 
             $selectors[' .uagb-rm__title'] = array(

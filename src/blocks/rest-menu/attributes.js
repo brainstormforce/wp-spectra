@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n
 
-const ITEM_COUNT = 2
+const ITEM_COUNT = 4
 
 const testimonial_block = []
 
@@ -134,10 +134,14 @@ const attributes = {
 		type: "number",
 		default : 10
 	},	
-	contentPadding: {
+	contentVrPadding: {
 		type: "number",
 		default : 5
-	},		
+	},	
+	contentHrPadding: {
+		type: "number",
+		default : 5
+	},	
 	seperatorStyle : {
 		type: "string",
 		default: "dashed"
