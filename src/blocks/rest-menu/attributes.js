@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: UAGB Restaurent Menu Attributes
  */
 const { __ } = wp.i18n
 
