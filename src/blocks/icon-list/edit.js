@@ -322,7 +322,7 @@ class UAGBIconList extends Component {
 				id={ `uagb-icon-list-${ this.props.clientId }` }>
 					<div className="uagb-icon-list__wrap">
 						{
-							icons.map( ( social, index ) => {
+							icons.map( ( icon, index ) => {
 
 								if ( icon_count <= index ) {
 									return
@@ -332,17 +332,17 @@ class UAGBIconList extends Component {
 
 								let image_icon_html = ""
 
-								if ( social.image_icon == "icon" ) {
-									if ( social.icon ) {
-										image_icon_html = <span className={ classnames( social.icon , "uagb-icon-list__source-icon" ) }></span>
+								if ( icon.image_icon == "icon" ) {
+									if ( icon.icon ) {
+										image_icon_html = <span className={ classnames( icon.icon , "uagb-icon-list__source-icon" ) }></span>
 									}
 								} else {
-									if ( social.image ) {
-										image_icon_html = <img className="uagb-icon-list__source-image" src={social.image.url} />
+									if ( icon.image ) {
+										image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
 									}
 								}
 
-								let target = ( icons[ index ].target ) ? "_blank" : "_self"
+								let target = ( icon.target ) ? "_blank" : "_self"
 
 								return (
 									<a
@@ -351,7 +351,7 @@ class UAGBIconList extends Component {
 											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
-										href={ icons[ index ].link }
+										href={ icon.link }
 										target={ target }
 										rel="noopener noreferrer"
 									>
