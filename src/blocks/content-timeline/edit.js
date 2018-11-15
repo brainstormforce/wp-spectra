@@ -616,8 +616,7 @@ class UAGBcontentTimeline extends Component {
 						min={ 0 }                        
 						max={ 30 }
 						allowReset
-					/>                       
-					{ iconControls }
+					/>  
 					<RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderwidth }
@@ -641,7 +640,8 @@ class UAGBcontentTimeline extends Component {
 						min={ 25 }
 						max={ 90 }
 						allowReset
-					/>                    
+					/>  
+					{ iconControls }                  
 				</PanelBody>
 			</InspectorControls>
 		)        
