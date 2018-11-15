@@ -173,6 +173,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/icon-list':
+					$css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
