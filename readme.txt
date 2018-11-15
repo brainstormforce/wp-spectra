@@ -37,6 +37,7 @@ Feel free to contribute to the Gutenberg development.
  	<li><a href="#" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
  	<li><a href="#" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="#" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
+ 	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
