@@ -8,6 +8,7 @@ function styling( props ) {
 		inner_gap,
 		icon_layout,
 		size,
+		fontSize,
 		stack
 	} = props.attributes
 
@@ -30,7 +31,8 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"color" : icon.label_color
+			"color" : icon.label_color,
+			"font-size" : fontSize + "px"
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
