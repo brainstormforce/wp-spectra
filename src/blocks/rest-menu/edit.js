@@ -370,15 +370,7 @@ class UAGBrestMenu extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>				
-					<RangeControl
-						label={ __( "Description Bottom Margin" ) }
-						value={ descSpace }
-						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>										
+					/>								
 					<RangeControl
 						label={ __( "Image Horizontal Padding" ) }
 						value={ imgHrPadding }
