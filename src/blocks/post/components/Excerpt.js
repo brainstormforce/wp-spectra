@@ -6,7 +6,7 @@ class Excerpt extends React.Component {
 
 		if (
 			attributes.displayPostExcerpt &&
-			post.excerpt
+			undefined !== post.excerpt
 		) {
 
 			return (

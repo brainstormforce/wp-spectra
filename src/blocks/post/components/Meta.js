@@ -7,13 +7,13 @@ class Meta extends React.Component {
 		return (
 
 			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor, marginBottom: attributes.metaBottomSpace }}>
-				{ attributes.displayPostAuthor && post.author_info.display_name &&
+				{ attributes.displayPostAuthor && undefined !== post.author_info &&
 					<div
 						className='uagb-post__author'
 						style={{ color: attributes.metaColor }}
 					>
 						<i className="dashicons-admin-users dashicons"></i>
-						<a className='uagb-text-link' target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a>
+						<a style={{ color: attributes.metaColor }} target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
 					</div>
 				}
 
@@ -24,7 +24,7 @@ class Meta extends React.Component {
 					</time>
 				}
 
-				{ attributes.displayPostComment &&
+				{ attributes.displayPostComment && undefined !== post.comment_info &&
 					<div className='uagb-post__comment' >
 						<i className="dashicons-admin-comments dashicons"></i>
 						{ post.comment_info }

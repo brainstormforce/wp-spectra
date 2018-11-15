@@ -13,10 +13,10 @@ class Title extends React.Component {
 	render() {
 
 		//const { attributes, setAttributes , props } = this.props;
-		const {	
-			attributes, 
-			setAttributes , 
-			props		
+		const {
+			attributes,
+			setAttributes ,
+			props
 		} = this.props
 
 		if( setAttributes !== "not_set" ){
@@ -24,11 +24,11 @@ class Title extends React.Component {
 				<RichText
 	                tagName= { attributes.headingTag }
 	                value={ attributes.infoBoxTitle }
-	                className = 'uagb-ifb-title entry-title'
+	                className = 'uagb-ifb-title'
 	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }
 	                multiline={ false }
 	                placeholder={ __( "Write a Heading" ) }
-	                onMerge = { props.mergeBlocks }		
+	                onMerge = { props.mergeBlocks }
 	                onSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
@@ -39,17 +39,17 @@ class Title extends React.Component {
 								] )
 							} :
 							undefined
-					}			
-					onRemove={ () => props.onReplace( [] ) }              
-	            />			
+					}
+					onRemove={ () => props.onReplace( [] ) }
+	            />
 			)
 		}else{
 			return (
 				<RichText.Content
 	                tagName= { attributes.headingTag }
 	                value={ attributes.infoBoxTitle }
-	                className='uagb-ifb-title entry-title'
-	            />			
+	                className='uagb-ifb-title'
+	            />
 			)
 		}
 	}

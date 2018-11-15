@@ -41,17 +41,17 @@ function styling( props ) {
 	}
 
 	if ( "video" == backgroundType ) {
-		selectors[" .uagb-section__overlay"] = {
+		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : 1,
 			"background-color": backgroundVideoColor
 		}
 	} else if( "image" == backgroundType ) {
-		selectors[" .uagb-section__overlay"] = {
+		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
 			"background-color": backgroundImageColor
 		}
 	} else {
-		selectors[" .uagb-section__overlay"] = {
+		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
 		}
 	}

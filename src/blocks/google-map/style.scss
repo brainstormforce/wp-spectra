@@ -5,11 +5,11 @@
  */
 
 .uagb-google-map__wrap {
-
-	width: 100%;
-
-	.uagb-google-map {
-		height: inherit;
-		width: inherit;
+	.uagb-google-map__iframe {
+		width: 100%;
+		box-shadow: none;
+		border: none;
+		padding: 0;
+		margin: 0;
 	}
 }

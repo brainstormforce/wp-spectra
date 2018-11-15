@@ -28,7 +28,6 @@ const {
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	TabPanel,
@@ -82,8 +81,14 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
+
+		if ( ! media.type || "image" !== media.type ) {
+			setAttributes( { iconImage: null } )
+			return
+		}
+
 		setAttributes( { iconImage: media } )
-	}	
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -171,20 +176,11 @@ class UAGBinfoBox extends Component {
 			icon,
 			iconColor,
 			iconSize,
-			iconRotate,
 			iconimgPosition,
-			iconimgStyle,
 			block_id,
 			iconHover,
-			iconBgHover,
-			iconimgBorderstyle,
-			iconimgBorderHover,
-			iconimgBorder,
-			iconimgBg,
-			iconimgBorderWidth,
 			iconimgBorderRadius,
 			source_type,
-			iconimgbgSize,
 			sourceAlign,
 			seperatorStyle,
 			seperatorWidth,
@@ -196,10 +192,10 @@ class UAGBinfoBox extends Component {
 			ctaTarget,
 			ctaLinkColor,
 			ctaFontSize,
-			ctaBtnSize,
 			ctaBtnLinkColor,
 			ctaBgColor,
-			ctaBtnPadding,
+			ctaBtnVertPadding,
+			ctaBtnHrPadding,
 			ctaBorderStyle,
 			ctaBorderColor,
 			ctaBorderWidth,
@@ -231,207 +227,39 @@ class UAGBinfoBox extends Component {
 		  isMulti: false,
 		}
 
-		const my_block_id = "uagb-"+this.props.clientId
+		const my_block_id = "uagb-infobox-"+this.props.clientId
 
-
-		// Common setting for icon and images.
-		const icon_imagenormalSettings = (
-			<Fragment>
-				{ ( source_type && source_type == "icon" ) &&
-				<PanelColor
-					title={ __( "Icon Color" ) }
-					colorValue={ iconColor }
-					initialOpen={ false }
-				>
-					<ColorPalette
-						value={ iconColor }
-						onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
-						allowReset
-					/>
-				</PanelColor>
-				}
-				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" )  &&
-					<PanelColor
-						title={ __( "Background Color" ) }
-						colorValue={ iconimgBg }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ iconimgBg }
-							onChange={ ( colorValue ) => setAttributes( { iconimgBg: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
-				}
-
-				{ ( iconimgStyle && iconimgStyle == "custom" )  &&
-					<Fragment>
-						<PanelColor
-							title={ __( "Border Color" ) }
-							colorValue={ iconimgBorder }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ iconimgBorder }
-								onChange={ ( colorValue ) => setAttributes( { iconimgBorder: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( "Border Color" ) }
-							colorValue={ iconimgBorderHover }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ iconimgBorderHover }
-								onChange={ ( colorValue ) => setAttributes( { iconimgBorderHover: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-						 <SelectControl
-							label={ __( "Border Style" ) }
-							value={ iconimgBorderstyle }
-							onChange={ ( value ) => setAttributes( { iconimgBorderstyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-							] }
-						/>
-						<RangeControl
-							label = { __( "Border Width" ) }
-							value = { iconimgBorderWidth }
-							onChange = { ( value ) => setAttributes( { iconimgBorderWidth: value } ) }
-							min = { 0 }
-							max = { 30 }
-							beforeIcon = "editor-textcolor"
-							allowReset
-						/>
-						<RangeControl
-							label = { __( "Rounded Corners" ) }
-							value = { iconimgBorderRadius }
-							onChange = { ( value ) => setAttributes( { iconimgBorderRadius: value } ) }
-							min = { 0 }
-							max = { 300 }
-							beforeIcon = "editor-textcolor"
-							allowReset
-						/>
-					</Fragment>
-				}
-			</Fragment>
-		)
-
-
-		// Common setting for icon hover and image hover.
-		const icon_imageHoverSettings = (
-			<Fragment>
-				{ ( source_type && source_type == "icon" ) &&
-				<PanelColor
-					title={ __( "Icon Color" ) }
-					colorValue={ iconHover }
-					initialOpen={ false }
-				>
-					<ColorPalette
-						value={ iconHover }
-						onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
-						allowReset
-					/>
-				</PanelColor>
-				}
-
-				{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) &&
-					<PanelColor
-						title={ __( "Background Color" ) }
-						colorValue={ iconBgHover }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ iconBgHover }
-							onChange={ ( colorValue ) => setAttributes( { iconBgHover: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
-				}
-
-				{ ( iconimgStyle && iconimgStyle == "custom" )  &&
-					<Fragment>
-						<PanelColor
-							title={ __( "Border Color" ) }
-							colorValue={ iconimgBorderHover }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ iconimgBorderHover }
-								onChange={ ( colorValue ) => setAttributes( { iconimgBorderHover: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
-					</Fragment>
-				}
-			</Fragment>
-		)
 
 		// Settings for icon.
 		const iconControls = (
 			<Fragment>
-				<PanelBody
-					title={ __( "Icon" ) }
+				<FontIconPicker {...icon_props} />
+				<RangeControl
+					label = { __( "Icon Size" ) }
+					value = { iconSize }
+					onChange = { ( value ) => setAttributes( { iconSize: value } ) }
+					min = { 10 }
+					max = { 300 }
+					beforeIcon = ""
+					allowReset
+				/>
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
 					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: iconColor,
+							onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
+							label: __( "Icon Color" ),
+						},
+						{
+							value: iconHover,
+							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
+							label: __( "Icon Hover Color" ),
+						},
+					] }
 				>
-					<FontIconPicker {...icon_props} />
-					<RangeControl
-						label = { __( "Icon Size" ) }
-						value = { iconSize }
-						onChange = { ( value ) => setAttributes( { iconSize: value } ) }
-						min = { 10 }
-						max = { 300 }
-						beforeIcon = "editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label = { __( "Icon Rotate" ) }
-						value = { iconRotate }
-						onChange = { ( value ) => setAttributes( { iconRotate: value } ) }
-						min = { 0 }
-						max = { 360 }
-						beforeIcon = "editor-textcolor"
-						allowReset
-					/>
-				</PanelBody>
-			</Fragment>
-		)
-
-		// Icon image settings.
-		const iconImageSettings = (
-			<Fragment>
-				<TabPanel className="uagb-inspect-tabs"
-					activeClass="active-tab"
-					tabs={ [
-						{
-							name: "normal",
-							title: __( "Normal" ),
-							className: "uagb-normal-tab",
-						},
-						{
-							name: "hover",
-							title: __( "Hover" ),
-							className: "uagb-hover-tab",
-						},
-					] }>
-					{
-						( tabName ) => {
-							let tabout_settings
-							if( "hover" === tabName.name ){
-								tabout_settings = icon_imageHoverSettings
-							}else {
-								tabout_settings = icon_imagenormalSettings
-							}
-							return <div>{ tabout_settings }</div>
-						}
-					}
-				</TabPanel>
+				</PanelColorSettings>
 			</Fragment>
 		)
 
@@ -456,17 +284,14 @@ class UAGBinfoBox extends Component {
 					/>
 					{ "none" !== seperatorStyle &&
 					( <Fragment>
-						<PanelColor
-							title={ __( "Color" ) }
-							colorValue={ seperatorColor }
-							initialOpen={ false }
-						>
-							<ColorPalette
-								value={ seperatorColor }
-								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-								allowReset
-							/>
-						</PanelColor>
+						<Fragment>
+						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ seperatorColor }
+						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
 
 						<RangeControl
 							label={ __( "Thickness" ) }
@@ -474,7 +299,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
 							min={ 0 }
 							max={ 10 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 						<RangeControl
@@ -483,7 +308,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 							min={ 0 }
 							max={ 100 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 					</Fragment>
@@ -536,26 +361,23 @@ class UAGBinfoBox extends Component {
 
 					{ ( ctaType == "button" ) && (
 						<Fragment>
-							<SelectControl
-								label={ __( "Size" ) }
-								value={ ctaBtnSize }
-								onChange={ ( value ) => setAttributes( { ctaBtnSize: value } ) }
-								options={ [
-									{ value: "xs", label: __( "Extra Small" ) },
-									{ value: "sm", label: __( "Small" ) },
-									{ value: "md", label: __( "Medium") },
-									{ value: "lg", label: __( "Large" ) },
-									{ value: "xl", label: __( "Extra Large" ) },
-								] }
-							/>
 
 							<RangeControl
-								label={ __( "Padding" ) }
-								value={ ctaBtnPadding }
-								onChange={ ( value ) => setAttributes( { ctaBtnPadding: value } ) }
+								label={ __( "Vertical Padding" ) }
+								value={ ctaBtnVertPadding }
+								onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
 								min={ 0 }
 								max={ 50 }
-								beforeIcon="editor-textcolor"
+								beforeIcon=""
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "HorizontalPadding" ) }
+								value={ ctaBtnHrPadding }
+								onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
 								allowReset
 							/>
 							<SelectControl
@@ -573,24 +395,21 @@ class UAGBinfoBox extends Component {
 
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
-									<PanelColor
-										title={ __( "Border Color" ) }
-										colorValue={ ctaBorderColor }
-										initialOpen={ false }
-									>
-										<ColorPalette
-											value={ ctaBorderColor }
-											onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-											allowReset
-										/>
-									</PanelColor>
+									<Fragment>
+									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+									    <ColorPalette
+									        value={ ctaBorderColor }
+									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+									        allowReset
+									    />
+									</Fragment>									
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
 										onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
 										min={ 0 }
-										max={ 100 }
-										beforeIcon="editor-textcolor"
+										max={ 10 }
+										beforeIcon=""
 										allowReset
 									/>
 								</Fragment>
@@ -602,7 +421,7 @@ class UAGBinfoBox extends Component {
 								onChange={ ( value ) => setAttributes( { ctaBorderRadius: value } ) }
 								min={ 0 }
 								max={ 100 }
-								beforeIcon="editor-textcolor"
+								beforeIcon=""
 								allowReset
 							/>
 						</Fragment>
@@ -626,6 +445,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
 						min={ 10 }
 						max={ 200 }
+						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
@@ -649,6 +469,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 						min={ 10 }
 						max={ 200 }
+						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
@@ -659,6 +480,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 						min={ 10 }
 						max={ 200 }
+						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
@@ -671,10 +493,10 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 							min={ 0 }
 							max={ 50 }
+							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-
 					)
 					}
 
@@ -703,43 +525,33 @@ class UAGBinfoBox extends Component {
 					] }
 				>
 					{ ( ctaType === "text") &&
-							<PanelColor
-								title={ __( "CTA Color" ) }
-								colorValue={ ctaLinkColor }
-								initialOpen={ false }
-							>
-								<ColorPalette
-									value={ ctaLinkColor }
-									onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-									allowReset
-								/>
-							</PanelColor>
+							<Fragment>
+							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaLinkColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+							        allowReset
+							    />
+							</Fragment>							
 					}
 					{ ( ctaType === "button") &&
 							<Fragment>
-								<PanelColor
-									title={ __( "CTA Color" ) }
-									colorValue={ ctaBtnLinkColor }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ ctaBtnLinkColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
-
-								<PanelColor
-									title={ __( "Background Color" ) }
-									colorValue={ ctaBgColor }
-									initialOpen={ false }
-								>
-									<ColorPalette
-										value={ ctaBgColor }
-										onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-										allowReset
-									/>
-								</PanelColor>
+								<Fragment>
+								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBtnLinkColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>	
+								<Fragment>
+								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBgColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>
 							</Fragment>
 					}
 				</PanelColorSettings>
@@ -761,7 +573,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
+						beforeIcon=""
 						allowReset
 					/>
 					<RangeControl
@@ -770,7 +582,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
+						beforeIcon=""
 						allowReset
 					/>
 					<RangeControl
@@ -779,7 +591,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
+						beforeIcon=""
 						allowReset
 					/>
 					<RangeControl
@@ -788,7 +600,7 @@ class UAGBinfoBox extends Component {
 						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						beforeIcon="editor-textcolor"
+						beforeIcon=""
 						allowReset
 					/>
 					<PanelBody
@@ -801,7 +613,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 						<RangeControl
@@ -810,7 +622,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { iconRightMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 						<RangeControl
@@ -819,7 +631,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { iconTopMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 						<RangeControl
@@ -828,7 +640,7 @@ class UAGBinfoBox extends Component {
 							onChange={ ( value ) => setAttributes( { iconBottomMargin: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 						/>
 					</PanelBody>
@@ -843,50 +655,67 @@ class UAGBinfoBox extends Component {
 			{ value: "full", label: __( "Large" ) }
 		]
 
+		let image_name = "Select Image"
+		if(iconImage){
+			if(iconImage.url == null || iconImage.url == "" ){
+				image_name = "Select Image"
+			}else{
+				image_name = "Replace Image"
+			}
+		}
+
 		// Image controls.
 		const imageControls = (
 			<Fragment>
-				<PanelBody
-					title={ __( "Image" ) }
-					initialOpen={ true }
-				>	
-					<BaseControl
-						className="editor-bg-image-control"
-						label={ __( "Image" ) }
-					>
-						<MediaUpload
-							title={ __( "Select Image" ) }
-							onSelect={ this.onSelectImage }
-							type="image"
-							value={ iconImage }
-							render={ ( { open } ) => (
-								<Button isDefault onClick={ open }>
-									{ ! iconImage ? __( "Select Image" ) : __( "Replace image" ) }
-								</Button>
-							) }
-						/>
-						{ !! iconImage &&
-							<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
-								{ __( "Remove Image" ) }
+				<BaseControl
+					className="editor-bg-image-control"
+					label={ __( "Image" ) }
+				>
+					<MediaUpload
+						title={ __( "Select Image" ) }
+						onSelect={ this.onSelectImage }
+						allowedTypes= { [ "image" ] }
+						value={ iconImage }
+						render={ ( { open } ) => (
+							<Button isDefault onClick={ open }>
+								{ image_name }
 							</Button>
-						}
-					</BaseControl>
-					<SelectControl
-						label={ __( "Image Size" ) }
-						options={ imageSizeOptions }
-						value={ imageSize }
-						onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+						) }
 					/>
-					 <RangeControl
-						label={ __( "Width" ) }
-						value={ imageWidth }
-						onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-						min={ 0 }
-						max={ 500 }
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-				</PanelBody>
+					{ ( iconImage && iconImage.url !=="null" && iconImage.url !== "" ) &&
+						<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+							{ __( "Remove Image" ) }
+						</Button>
+					}
+				</BaseControl>
+				{ ( iconImage && iconImage.url !=="null" && iconImage.url !== "" ) &&
+					<Fragment>
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ imageSize }
+							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+						/>
+						<RangeControl
+							label={ __( "Width" ) }
+							value={ imageWidth }
+							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+							min={ 0 }
+							max={ 500 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label = { __( "Rounded Corners" ) }
+							value = { iconimgBorderRadius }
+							onChange = { ( value ) => setAttributes( { iconimgBorderRadius: value } ) }
+							min = { 0 }
+							max = { 500 }
+							beforeIcon = ""
+							allowReset
+						/>
+					</Fragment>
+				}
 			</Fragment>
 		)
 
@@ -934,17 +763,6 @@ class UAGBinfoBox extends Component {
 								{ value: "image", label: __( "Image" ) },
 							] }
 						/>
-						<SelectControl
-							label={ __( "Image/Icon Style" ) }
-							value={ iconimgStyle }
-							onChange={ ( value ) => setAttributes( { iconimgStyle: value } ) }
-							options={ [
-								{ value: "normal", label: __( "Normal" ) },
-								{ value: "circle", label: __( "Circle" ) },
-								{ value: "square", label: __( "Square" ) },
-								{ value: "custom", label: __( "custom" ) },
-							] }
-						/>
 
 						{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
 							label={ __( "Vertical ALignment" ) }
@@ -961,21 +779,6 @@ class UAGBinfoBox extends Component {
 
 						{ ( source_type && source_type == "image" ) && imageControls }
 
-						{ ( source_type && source_type == "icon" ) && ( iconimgStyle && iconimgStyle != "normal" ) && <RangeControl
-							label={ __( "Background Size" ) }
-							value={ iconimgbgSize }
-							onChange={ ( value ) => setAttributes( { iconimgbgSize: value } ) }
-							min={ 0 }
-							max={ 300 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-
-						}
-
-						{ ( source_type && source_type == "icon" ) && iconImageSettings }
-
-						{ ( source_type && source_type == "image" ) && ( iconimgStyle && iconimgStyle == "custom" ) && iconImageSettings }
 					</PanelBody>
 
 					{ seperatorSettings }
@@ -990,8 +793,6 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
-		var ClassNamesId = className+" "+ my_block_id
-		
 		// Get icon/Image components.
 		let is_image = ""
 
@@ -1046,7 +847,7 @@ class UAGBinfoBox extends Component {
 
 							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
-										<div className = "left-title-image">
+										<div className = "uagb-ifb-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
@@ -1056,7 +857,7 @@ class UAGBinfoBox extends Component {
 
 							{ ( iconimgPosition === "right-title") &&
 									<Fragment>
-										<div className = "right-title-image">
+										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>
@@ -1092,10 +893,15 @@ class UAGBinfoBox extends Component {
 					</BlockControls>
 				}
 				{inspect_control}
-				<div className={ ClassNamesId }>
+				<div className={ classnames(
+					className,
+					"uagb-infobox__outer-wrap"
+				) }
+				id = { my_block_id }
+				>
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" > {output}</a>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

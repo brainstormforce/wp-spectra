@@ -20,29 +20,22 @@ function InfoBoxStyle( props ) {
 		icon,
 		iconColor,
 		iconSize,
-		iconRotate,
 		iconimgPosition,
 		block_id,
 		iconHover,
-		iconBgHover,
-		iconimgBorderHover,
-		iconimgBorder,
-		iconimgBg,
-		iconimgBorderstyle,
-		iconimgBorderWidth,
-		iconimgBorderRadius, 
-		iconimgbgSize,
+		iconimgBorderRadius,
 		seperatorStyle,
 		seperatorWidth,
 		seperatorColor,
 		seperatorThickness,
 		seperatorSpace,
 		ctaLinkColor,
-		ctaFontSize,   
+		ctaFontSize,
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
-		ctaBtnPadding,
+		ctaBtnVertPadding,
+		ctaBtnHrPadding,
 		ctaBorderStyle,
 		ctaBorderColor,
 		ctaBorderWidth,
@@ -51,15 +44,15 @@ function InfoBoxStyle( props ) {
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
-		iconBottomMargin,            
-		imageSize,  
-		imageWidth,		
-	} = props.attributes        
+		iconBottomMargin,
+		imageSize,
+		imageWidth,
+	} = props.attributes
 
 	if( props.clientId ){
-		var clientId = "uagb-"+props.clientId
+		var clientId = "uagb-infobox-"+props.clientId
 	}else{
-		var clientId = "uagb-"+block_id
+		var clientId = "uagb-infobox-"+block_id
 	}
 
 	var selectors = {}
@@ -68,7 +61,7 @@ function InfoBoxStyle( props ) {
 	selectors[".uagb-ifb-icon"] = {
 		"height" : iconSize+"px",
 		"width" : iconSize+"px",
-		"line-height" : iconSize+"px",                    
+		"line-height" : iconSize+"px",
 	}
 
 	selectors[".uagb-ifb-icon > span"] = {
@@ -76,101 +69,38 @@ function InfoBoxStyle( props ) {
 		"height": iconSize+"px",
 		"color": iconColor,
 		"width": iconSize+"px",
-		"line-height": iconSize + "px",                    
-		"transform": "rotate("+iconRotate +"deg)",                                       
+		"line-height": iconSize + "px",
 	}
 
 	selectors[".uagb-ifb-icon:hover > span"] = {
-		"color" : iconHover,                                       
-	}
-                    
-	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon"] = {                   
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
-		"display" : "inline-block",
-		"box-sizing" : "content-box",
-	}
-
-	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-icon:hover"] = {
-		"background" : iconBgHover,                                       
-	}
-
-	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon"] = {                   
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
-		"display" : "inline-block",
-		"box-sizing" : "content-box",
-	}
-
-	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-icon:hover"] = {
-		"background" : iconBgHover,                                       
-	}
-
-	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon"] = {                   
-		"padding" : iconimgbgSize+"px",
-		"background" : iconimgBg,
-		"display" : "inline-block",
-		"box-sizing" : "content-box",
-		"border-style" : iconimgBorderstyle,
-		"border-width" : iconimgBorderWidth+"px",
-		"border-radius" : iconimgBorderRadius+"px",
-		"border-color" : iconimgBorder,
-		"box-sizing" : "content-box",
-	}
-
-	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-icon:hover"] = {
-		"background" : iconBgHover,      
-		"border-color" : iconimgBorderHover,                                 
+		"color" : iconHover,
 	}
 
 	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
-		"margin-right" : iconRightMargin+"px",                                
+		"margin-right" : iconRightMargin+"px",
 		"margin-top" : iconTopMargin+"px",
 		"margin-bottom" : iconBottomMargin+"px",
-	} 
+	}
 
 	// Image
 	selectors[".uagb-ifb-image-content img"] = {
 		"width": imageWidth+"px",
 		"max-width": imageWidth+"px",
-	} 
-
-	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-infobox-imgicon-style-circle .uagb-ifb-image-content img:hover"] = {
-		"background" : iconBgHover,                                       
-	}
-
-	selectors[".uagb-infobox-imgicon-style-square .uagb-ifb-image-content img"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",                    
-	}
-
-	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img"] = {                    
-		"display" : "inline-block",
-		"box-sizing" : "content-box",
-		"border-style" : iconimgBorderstyle,
-		"border-width" : iconimgBorderWidth+"px",
+	selectors[".uagb-infobox .uagb-ifb-image-content img"] = {
 		"border-radius" : iconimgBorderRadius+"px",
-		"border-color" : iconimgBorder,
-		"box-sizing" : "content-box",                    
 	}
 
-	selectors[".uagb-infobox-imgicon-style-custom .uagb-ifb-image-content img:hover"] = {
-		"border-color" : iconimgBorderHover,                                     
-	} 
 
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
-		selectors[".uagb-infobox__content-wrap"] = {                    
-			"text-align" : headingAlign,                   
+		selectors[".uagb-infobox__content-wrap"] = {
+			"text-align" : headingAlign,
 		}
 	}
 
-	// CTA style 
+	// CTA style
 	selectors[".uagb-infobox-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
@@ -194,7 +124,10 @@ function InfoBoxStyle( props ) {
 		"border-color": ctaBorderColor,
 		"border-radius": ctaBorderRadius + "px",
 		"border-width": ctaBorderWidth + "px",
-		"padding": ctaBtnPadding + "px",
+		"padding-top": ctaBtnVertPadding + "px",
+		"padding-bottom": ctaBtnVertPadding + "px",
+		"padding-left": ctaBtnHrPadding + "px",
+		"padding-right": ctaBtnHrPadding + "px",
 	}
 
 	// Prefix Style
@@ -224,22 +157,22 @@ function InfoBoxStyle( props ) {
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
-	}	
-	selectors[".uagb-ifb-separator-parent"] = {		
+	}
+	selectors[".uagb-ifb-separator-parent"] = {
 		"margin-bottom":seperatorSpace+"px"
-	}	
+	}
 
 	selectors[".uagb-ifb-content"] = {
 		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
-	}           
+	}
 
 	var styling_css = ""
 
 	for( var i in selectors ) {
-           
-		styling_css += " .gutenberg-editor-page #wpwrap ."+clientId+" "+i + " { "
-            
-            
+
+		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
+
+
 		var sel = selectors[i]
 		var css = ""
 
@@ -250,7 +183,7 @@ function InfoBoxStyle( props ) {
 
 		styling_css += css + " } "
 	}
-	
+
 	return styling_css
 
 }
