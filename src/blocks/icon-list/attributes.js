@@ -1,30 +1,23 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: UAGB Icon List Attributes
  */
-const ITEM_COUNT = 2
+const ITEM_COUNT = 1
 
-const buttons = []
+const icons = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
-	var label = "Click Here " + "#" + i
-	var link    = "#"
-	buttons.push(
+	icons.push(
 		{
-			"label": label,
-			"link": link,
-			"target": "_self",
-			"size": "",
-			"vPadding": 10,
-			"hPadding": 14,
-			"borderWidth": 1,
-			"borderRadius": 2,
-			"borderStyle": "solid",
-			"borderColor": "#333",
-			"borderHColor": "#333",
-			"color": "#333",
-			"background": "",
-			"hColor": "#333",
-			"hBackground": ""
+			"label": "Label #" + i,
+			"image_icon": "icon",
+			"icon": "fab fa-facebook",
+			"image": "",
+			"icon_color": "#3a3a3a",
+			"label_color": "",
+			"icon_hover_color": "",
+			"label_hover_color": "",
+			"link": "#",
+			"target": false
 		}
 	)
 }
@@ -35,19 +28,31 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center"
+		default: "left"
 	},
-	btn_count: {
+	icon_count: {
 		type: "number",
 		default: ITEM_COUNT
 	},
-	buttons: {
+	icons: {
 		type: "array",
-		default : buttons,
+		default : icons,
 	},
 	gap: {
 		type: "number",
 		default: 10
+	},
+	inner_gap: {
+		type: "number",
+		default: 15
+	},
+	size: {
+		type: "number",
+		default: 40
+	},
+	icon_layout: {
+		type: "string",
+		default: "vertical"
 	},
 	stack: {
 		type: "string",

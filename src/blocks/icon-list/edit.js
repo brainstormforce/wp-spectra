@@ -1,10 +1,12 @@
 /**
- * BLOCK: UAGB - Section Edit Class
+ * BLOCK: UAGB - Social Share Edit Class
  */
 
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 
 const { __ } = wp.i18n
@@ -15,31 +17,25 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
-	URLInput
+	MediaUpload,
+	RichText
 } = wp.editor
 
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl
+	RangeControl,
+	Button,
+	TextControl,
+	ToggleControl
 } = wp.components
 
 
-class UAGBIconListEdit extends Component {
-
-	constructor() {
-		super( ...arguments )
-		this.state = {
-			isHovered: "false",
-			isFocused: "false",
-		}
-	}
+class UAGBIconList extends Component {
 
 	componentDidMount() {
 
@@ -48,23 +44,15 @@ class UAGBIconListEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
-	componentDidUpdate( prevProps ) {
-		if ( ! this.props.isSelected && prevProps.isSelected && this.state.isFocused ) {
-			this.setState( {
-				isFocused: "false",
-			} )
-		}
-	}
-
-	saveButton( value, index ) {
+	saveIcons( value, index ) {
 		const { attributes, setAttributes } = this.props
-		const { buttons } = attributes
+		const { icons } = attributes
 
-		const newItems = buttons.map( ( item, thisIndex ) => {
+		const newItems = icons.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item = { ...item, ...value }
 			}
@@ -72,7 +60,7 @@ class UAGBIconListEdit extends Component {
 			return item
 		} )
 		setAttributes( {
-			buttons: newItems,
+			icons: newItems,
 		} )
 	}
 
@@ -83,158 +71,142 @@ class UAGBIconListEdit extends Component {
 		const {
 			align,
 			className,
-			btn_count,
-			buttons,
+			icon_count,
+			icons,
 			gap,
-			stack
+			inner_gap,
+			stack,
+			icon_layout,
+			size
 		} = attributes
 
-		const onMouseOut = () => {
-			if ( "false" !== this.state.isHovered ) {
-				this.setState( {
-					isHovered: "false",
-				} )
+		const iconControls = ( index ) => {
+
+			let color_control = ""
+
+			if ( "image" == icons[ index ].image_icon ) {
+
+				color_control = [
+					{
+						value: icons[ index ].label_color,
+						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
+						label: __( "Label Color" ),
+					},
+					{
+						value: icons[ index ].label_hover_color,
+						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
+						label: __( "Label Hover Color" ),
+					}
+				]
+			} else {
+
+				color_control = [
+					{
+						value: icons[ index ].icon_color,
+						onChange:( value ) => this.saveIcons( { icon_color: value }, index ),
+						label: __( "Icon Color" ),
+					},
+					{
+						value: icons[ index ].icon_hover_color,
+						onChange:( value ) => this.saveIcons( { icon_hover_color: value }, index ),
+						label: __( "Hover Color" ),
+					},
+					{
+						value: icons[ index ].label_color,
+						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
+						label: __( "Label Color" ),
+					},
+					{
+						value: icons[ index ].label_hover_color,
+						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
+						label: __( "Label Hover Color" ),
+					}
+				]
 			}
-		}
 
-		const updateFocusState = ( index ) => {
-			this.setState( {
-				isFocused: index,
-			} )
-		}
-
-		const updateHoverState = ( index ) => {
-			this.setState( {
-				isHovered: index,
-			} )
-		}
-
-		const buttonControls = ( index ) => {
 			return (
 				<PanelBody key={index}
-					title={ __( "Button" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+					title={ __( "Icon" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ false }
 				>
-					<p className="components-base-control__label">{ __( "Link" ) }</p>
-					<URLInput
-						value={ buttons[ index ].link }
-						onChange={ value => {
-							this.saveButton( { link: value }, index )
-						} }
-					/>
 					<SelectControl
-						label={ __( "Link Target" ) }
-						value={ buttons[ index ].target }
+						label={ __( "Image / Icon" ) }
+						value={ icons[ index ].image_icon }
 						options={ [
-							{ value: "_self", label: __( "Same Window" ) },
-							{ value: "_blank", label: __( "New Window" ) },
+							{ value: "icon", label: __( "Icon" ) },
+							{ value: "image", label: __( "Image" ) },
 						] }
 						onChange={ value => {
-							this.saveButton( { target: value }, index )
+							this.saveIcons( { image_icon: value }, index )
 						} }
 					/>
-					<RangeControl
-						beforeIcon="editor-textcolor"
-						afterIcon="editor-textcolor"
-						label={ __( "Button Text Size" ) }
-						value={ buttons[ index ].size }
+					{ "icon" == icons[ index ].image_icon &&
+						<Fragment>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={UAGBIcon}
+								renderUsing="class"
+								theme="default"
+								value={icons[ index ].icon}
+								onChange={ value => {
+									this.saveIcons( { icon: value }, index )
+								} }
+								isMulti={false}
+							/>
+						</Fragment>
+					}
+					<p className="components-base-control__label">{__( "URL" )}</p>
+					<TextControl
+						value={ icons[ index ].link }
 						onChange={ value => {
-							this.saveButton( { size: value }, index )
+							this.saveIcons( { link: value }, index )
 						} }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
+						placeholder={__( "Enter URL" )}
 					/>
-					<RangeControl
-						label={ __( "Top and Bottom Padding" ) }
-						value={ buttons[ index ].vPadding }
+					<ToggleControl
+						label={ __( "Open in New Tab" ) }
+						checked={ icons[ index ].target }
 						onChange={ value => {
-							this.saveButton( { vPadding: value }, index )
-						} }
-						min={ 0 }
-						max={ 100 }
-					/>
-					<RangeControl
-						label={ __( "Left and Right Padding" ) }
-						value={ buttons[ index ].hPadding }
-						onChange={ value => {
-							this.saveButton( { hPadding: value }, index )
-						} }
-						min={ 0 }
-						max={ 100 }
-					/>
-					<RangeControl
-						label={ __( "Border Thickness" ) }
-						value={ buttons[ index ].borderWidth }
-						onChange={ value => {
-							this.saveButton( { borderWidth: value }, index )
-						} }
-						min={ 0 }
-						max={ 20 }
-					/>
-					<SelectControl
-						label={ __( "Border Style" ) }
-						value={ buttons[ index ].borderStyle }
-						options={ [
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
-						] }
-						onChange={ value => {
-							this.saveButton( { borderStyle: value }, index )
+							this.saveIcons( { target: value }, index )
 						} }
 					/>
-					<RangeControl
-						label={ __( "Border Radius" ) }
-						value={ buttons[ index ].borderRadius }
-						onChange={ value => {
-							this.saveButton( { borderRadius: value }, index )
-						} }
-						min={ 0 }
-						max={ 50 }
-					/>
+
+					{ "image" == icons[ index ].image_icon &&
+						<Fragment>
+							<MediaUpload
+								title={ __( "Select Image" ) }
+								onSelect={ value => {
+									this.saveIcons( { image: value }, index )
+								} }
+								allowedTypes={ [ "image" ] }
+								value={ icons[ index ].image }
+								render={ ( { open } ) => (
+									<Button isDefault onClick={ open }>
+										{ ! icons[ index ].image ? __( "Select Image" ) : __( "Replace image" ) }
+									</Button>
+								) }
+							/>
+							{ icons[ index ].image &&
+								<Button
+									className="uagb-rm-btn"
+									onClick={ value => {
+										this.saveIcons( { image: null }, index )
+									} }
+									isLink isDestructive>
+									{ __( "Remove Image" ) }
+								</Button>
+							}
+						</Fragment>
+					}
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
-						colorSettings={ [
-							{
-								value: buttons[ index ].color,
-								onChange:( value ) => this.saveButton( { color: value }, index ),
-								label: __( "Color" ),
-							},
-							{
-								value: buttons[ index ].hColor,
-								onChange:( value ) => this.saveButton( { hColor: value }, index ),
-								label: __( "Hover Color" ),
-							},
-							{
-								value: buttons[ index ].background,
-								onChange:( value ) => this.saveButton( { background: value }, index ),
-								label: __( "Background Color" ),
-							},
-							{
-								value: buttons[ index ].hBackground,
-								onChange:( value ) => this.saveButton( { hBackground: value }, index ),
-								label: __( "Background Hover Color" ),
-							},
-							{
-								value: buttons[ index ].borderColor,
-								onChange: ( value ) => this.saveButton( { borderColor: value }, index ),
-								label: __( "Border Color" ),
-							},
-							{
-								value: buttons[ index ].borderHColor,
-								onChange: ( value ) => this.saveButton( { borderHColor: value }, index ),
-								label: __( "Border Hover Color" ),
-							},
-						] }
-					>
+						colorSettings={ color_control }>
 					</PanelColorSettings>
 				</PanelBody>
 			)
 		}
 
-		var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
+		var element = document.getElementById( "uagb-style-icon-list-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
@@ -253,114 +225,150 @@ class UAGBIconListEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody
-						title={ __( "Button Count" ) }
+						title={ __( "Icon Count" ) }
 						initialOpen={ true }
 					>
 						<RangeControl
-							label={ __( "Number of Buttons" ) }
-							value={ btn_count }
+							label={ __( "Number of Icons" ) }
+							value={ icon_count }
 							onChange={ newCount => {
 
-								let cloneButtons = [ ...buttons ]
+								let cloneIcons = [ ...icons ]
 
-								if ( cloneButtons.length < newCount ) {
+								if ( cloneIcons.length < newCount ) {
 
-									const incAmount = Math.abs( newCount - cloneButtons.length )
+									const incAmount = Math.abs( newCount - cloneIcons.length )
 
 									{ times( incAmount, n => {
 
-										cloneButtons.push( {
-											label: "Click Here " + "#" + ( cloneButtons.length + 1 ),
-											link: cloneButtons[ 0 ].link,
-											target: cloneButtons[ 0 ].target,
-											size: cloneButtons[ 0 ].size,
-											vPadding: cloneButtons[ 0 ].vPadding,
-											hPadding: cloneButtons[ 0 ].hPadding,
-											borderRadius: cloneButtons[ 0 ].borderRadius,
-											borderWidth: cloneButtons[ 0 ].borderWidth,
-											borderColor: cloneButtons[ 0 ].borderColor,
-											borderHColor: cloneButtons[ 0 ].borderHColor,
-											borderStyle: cloneButtons[ 0 ].borderStyle,
-											color: cloneButtons[ 0 ].color,
-											background: cloneButtons[ 0 ].background,
-											hColor: cloneButtons[ 0 ].hColor,
-											hBackground: cloneButtons[ 0 ].hBackground										} )
+										cloneIcons.push( {
+											"label": "Label #" + ( cloneIcons.length + 1 ),
+											"image_icon": cloneIcons[ 0 ].image_icon,
+											"icon": cloneIcons[ 0 ].icon,
+											"image": cloneIcons[ 0 ].image,
+											"icon_color": cloneIcons[ 0 ].icon_color,
+											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
+											"link": cloneIcons[ 0 ].link,
+											"target": cloneIcons[ 0 ].target
+										} )
 									} ) }
 
-									setAttributes( { buttons: cloneButtons } )
+									setAttributes( { icons: cloneIcons } )
 								}
-								setAttributes( { btn_count: newCount } )
+								setAttributes( { icon_count: newCount } )
 							} }
 							min={ 1 }
-							max={ 5 }
+							max={ 12 }
 						/>
 					</PanelBody>
-					{ times( btn_count, n => buttonControls( n ) ) }
+					{ times( icon_count, n => iconControls( n ) ) }
 					<PanelBody
-						title={ __( "Spacing" ) }
+						title={ __( "General" ) }
 						initialOpen={ false }
 					>
+						<SelectControl
+							label={ __( "Layout" ) }
+							value={ icon_layout }
+							options={ [
+								{ value: "horizontal", label: __( "Horizontal" ) },
+								{ value: "vertical", label: __( "Vertical" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { icon_layout: value } ) }
+						/>
+						{ "horizontal" == icon_layout &&
+							<Fragment>
+								<SelectControl
+									label={ __( "Stack on" ) }
+									value={ stack }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "tablet", label: __( "Tablet" ) },
+										{ value: "mobile", label: __( "Mobile" ) },
+									] }
+									onChange={ ( value ) => setAttributes( { stack: value } ) }
+								/>
+								<p className="uagb-note">{ __( "Note: Choose on what breakpoint the Icons will stack." ) }</p>
+							</Fragment>
+						}
 						<RangeControl
-							label={ __( "Gap between Buttons" ) }
+							label={ __( "Size" ) }
+							value={ size }
+							onChange={ ( value ) => setAttributes( { size: value } ) }
+							min={ 0 }
+							max={ 500 }
+							initialPosition={40}
+						/>
+						<RangeControl
+							label={ __( "Gap between Items" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 100 }
 						/>
-						<SelectControl
-							label={ __( "Stack on" ) }
-							value={ stack }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "desktop", label: __( "Desktop" ) },
-								{ value: "tablet", label: __( "Tablet" ) },
-								{ value: "mobile", label: __( "Mobile" ) },
-							] }
-							onChange={ ( value ) => setAttributes( { stack: value } ) }
+						<RangeControl
+							label={ __( "Inner Gap" ) }
+							value={ inner_gap }
+							onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
+							min={ 0 }
+							max={ 100 }
 						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
 					className,
-					"uagb-buttons__outer-wrap"
+					"uagb-icon-list__outer-wrap",
+					`uagb-icon-list__layout-${icon_layout}`
 				) }
-				id={ `uagb-buttons-${ this.props.clientId }` }
-				>
-					<div className="uagb-buttons__wrap">
+				id={ `uagb-icon-list-${ this.props.clientId }` }>
+					<div className="uagb-icon-list__wrap">
 						{
-							buttons.map( ( button, index ) => {
+							icons.map( ( social, index ) => {
 
-								if ( btn_count <= index ) {
+								if ( icon_count <= index ) {
 									return
 								}
 
+								let url = ""
+
+								let image_icon_html = ""
+
+								if ( social.image_icon == "icon" ) {
+									if ( social.icon ) {
+										image_icon_html = <span className={ classnames( social.icon , "uagb-icon-list__source-icon" ) }></span>
+									}
+								} else {
+									if ( social.image ) {
+										image_icon_html = <img className="uagb-icon-list__source-image" src={social.image.url} />
+									}
+								}
+
+								let target = ( icons[ index ].target ) ? "_blank" : "_self"
+
 								return (
-									<div
+									<a
 										className={ classnames(
-											`uagb-buttons-repeater-${index}`,
-											"uagb-button__wrapper",
-											( isSelected && ( ( false !== this.state.isFocused && index === this.state.isFocused ) ) ) ? "uagb-button__active" : ""
+											`uagb-icon-list-repeater-${index}`,
+											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
+										href={ icons[ index ].link }
+										target={ target }
+										rel="noopener noreferrer"
 									>
-										<RichText
-											placeholder={ __( "Click Here" ) }
-											value={ button.label }
-											tagName='a'
-											onChange={ value => {
-												this.saveButton( { label: value }, index )
-											} }
-											onMouseOut={ onMouseOut }
-											onMouseOver={ () => {
-												updateHoverState( index )
-											} }
-											formattingControls={ [ "bold", "italic", "strikethrough" ] }
-											className='uagb-button__link'
-											unstableOnFocus={ () => { updateFocusState( index )
-											} }
-										/>
-									</div>
+										<div className="uagb-icon-list__content-wrap">
+											<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+											<div className="uagb-icon-list__label-wrap">
+												<RichText
+													tagName="span"
+													value={ icons[ index ].label }
+													className='uagb-icon-list__label'
+													onChange={ value => {
+														this.saveIcons( { label: value }, index )
+													} }
+												/>
+											</div>
+										</div>
+									</a>
 								)
 							})
 						}
@@ -371,4 +379,4 @@ class UAGBIconListEdit extends Component {
 	}
 }
 
-export default UAGBIconListEdit
+export default UAGBIconList

@@ -2,10 +2,12 @@ function styling( props ) {
 
 	const {
 		align,
-		className,
-		btn_count,
-		buttons,
+		icon_count,
+		icons,
 		gap,
+		inner_gap,
+		icon_layout,
+		size,
 		stack
 	} = props.attributes
 
@@ -13,108 +15,137 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	buttons.map( ( button, index ) => {
+	icons.map( ( icon, index ) => {
 
-		if ( btn_count <= index ) {
+		if ( icon_count <= index ) {
 			return
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.size + "px",
-			"border": button.borderWidth + "px " + button.borderStyle + " " + button.borderColor,
-			"border-radius" : button.borderRadius + "px",
-			"background": button.background
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon"] = {
+			"color" : icon.icon_color
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + ":hover"] = {
-			"background": button.hBackground,
-			"border": button.borderWidth + "px " + button.borderStyle + " " + button.borderHColor,
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon"] = {
+			"color" : icon.icon_hover_color
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + " a.uagb-button__link"] = {
-			"padding" : button.vPadding + "px " + button.hPadding + "px",
-			"color": button.color
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"color" : icon.label_color
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + ":hover a.uagb-button__link"] = {
-			"color": button.hColor
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
+			"color" : icon.label_hover_color
 		}
-
 	})
 
-	selectors[" .uagb-button__wrapper"] = {
+	if ( "right" == align ) {
+		selectors[" .uagb-icon-list__source-wrap"] = {
+			"margin-left" : inner_gap + "px"
+		}
+		selectors[" .uagb-icon-list__content-wrap"] = {
+			"flex-direction" : "row-reverse"
+		}
+	} else {
+		selectors[" .uagb-icon-list__source-wrap"] = {
+			"margin-right" : inner_gap + "px"
+		}
+	}
+
+
+	selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper"] = {
+		"margin-left" : 0,
+		"margin-right" : 0,
+		"margin-bottom" : gap + "px"
+	}
+
+	selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrap"] = {
+		 "flex-direction": "column"
+	}
+
+	selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child"] = {
+		"margin-bottom" : 0
+	}
+
+	selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper"] = {
 		"margin-left" : ( gap/2 ) + "px",
 		"margin-right" : ( gap/2 ) + "px"
 	}
 
-	selectors[" .uagb-button__wrapper:first-child"] = {
+	selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child"] = {
 		"margin-left" : 0
 	}
 
-	selectors[" .uagb-button__wrapper:last-child"] = {
+	selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child"] = {
 		"margin-right" : 0
+	}
+
+	selectors[" .uagb-icon-list__source-image"] = {
+		"width": size + "px"
+	}
+
+	selectors[" .uagb-icon-list__source-icon"] = {
+		"width": size + "px",
+		"height": size + "px",
+		"font-size": size + "px"
+	}
+
+	selectors[" .uagb-icon-list__source-icon:before"] = {
+		"width": size + "px",
+		"height": size + "px",
+		"font-size": size + "px"
 	}
 
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
-	selectors[" .uagb-buttons__wrap"] = {
+	selectors[" .uagb-icon-list__wrap"] = {
 		"justify-content" : alignment,
 		"-webkit-box-pack": alignment,
 		"-ms-flex-pack": alignment,
 		"justify-content": alignment,
+		"-webkit-box-align": alignment,
+		"-ms-flex-align": alignment,
+		"align-items": alignment,
 	}
 
-	if ( "desktop" == stack ) {
+	if ( "horizontal" == icon_layout ) {
 
-		selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
-		}
+		if ( "tablet" == stack ) {
 
-		selectors[" .uagb-buttons__wrap"] = {
-			 "flex-direction": "column"
-		}
+			tablet_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = {
+				"margin-left" : 0,
+				"margin-right" : 0,
+				"margin-bottom" : gap + "px"
+			}
 
-		selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
-		}
+			tablet_selectors[" .uagb-icon-list__wrap"] = {
+				"flex-direction": "column"
+			}
 
-	} else if ( "tablet" == stack ) {
+			tablet_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = {
+				"margin-bottom" : 0
+			}
 
-		tablet_selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
-		}
+		} else if ( "mobile" == stack ) {
 
-		tablet_selectors[" .uagb-buttons__wrap"] = {
-			"flex-direction": "column"
-		}
+			mobile_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = {
+				"margin-left" : 0,
+				"margin-right" : 0,
+				"margin-bottom" : gap + "px"
+			}
 
-		tablet_selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
-		}
+			mobile_selectors[" .uagb-icon-list__wrap"] = {
+				"flex-direction": "column"
+			}
 
-	} else if ( "mobile" == stack ) {
-
-		mobile_selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
-		}
-
-		mobile_selectors[" .uagb-buttons__wrap"] = {
-			"flex-direction": "column"
-		}
-
-		mobile_selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
+			mobile_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = {
+				"margin-bottom" : 0
+			}
 		}
 	}
+
 
 	var styling_css = ""
-	var id = `#uagb-buttons-${ props.clientId }`
+	var id = `#uagb-icon-list-${ props.clientId }`
 
 	for( var i in selectors ) {
 

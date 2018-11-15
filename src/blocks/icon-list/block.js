@@ -1,9 +1,8 @@
 /**
- * BLOCK: Multi Buttons
+ * BLOCK: Icon List
  */
 
 import classnames from "classnames"
-import times from "lodash/times"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import "./style.scss"
@@ -38,13 +37,13 @@ const {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/icon-list", {
-	title: __( "UAGB - Icon List" ),
-	description: __( "Add Icon List" ),
-	icon: UAGB_Block_Icons.buttons,
-	category: "uagb",
+	title: uagb_blocks_info.blocks["uagb/icon-list"]["title"],
+	description: uagb_blocks_info.blocks["uagb/icon-list"]["description"],
+	icon: UAGB_Block_Icons.icon_list,
+	category: uagb_blocks_info.category,
 	keywords: [
-		__( "icons" ),
-		__( "list" ),
+		__( "icon list" ),
+		__( "image list" ),
 		__( "uagb" ),
 	],
 	attributes,
@@ -55,46 +54,65 @@ registerBlockType( "uagb/icon-list", {
 
 		const {
 			block_id,
-			align,
-			items,
-			buttons,
-			btn_count,
+			icons,
+			icon_count,
+			icon_layout
 		} = props.attributes
-
-		const renderButtons = ( index ) => {
-
-			if ( "undefined" != typeof buttons[index] ) {
-
-				return (
-					<div
-						className={ classnames(
-							`uagb-buttons-repeater-${index}`,
-							"uagb-button__wrapper"
-						) }
-						key={index}
-					>
-						<RichText.Content
-							placeholder={ __( "Click Here" ) }
-							value={ buttons[index].label }
-							tagName='a'
-							className='uagb-button__link'
-							href={ buttons[index].link }
-							target={ buttons[index].target }
-						/>
-					</div>
-				)
-			}
-		}
 
 		return (
 			<div className={ classnames(
 				className,
-				"uagb-buttons__outer-wrap"
+				"uagb-icon-list__outer-wrap",
+				`uagb-icon-list__layout-${icon_layout}`
 			) }
-			id={ `uagb-buttons-${ block_id }` }
-			>
-				<div className="uagb-buttons__wrap">
-					{ times( btn_count, n => renderButtons( n ) ) }
+			id={ `uagb-icon-list-${ block_id}` }>
+				<div className="uagb-icon-list__wrap">
+					{
+						icons.map( ( icon, index ) => {
+
+							if ( icon_count <= index ) {
+								return
+							}
+
+							let url = ""
+							let image_icon_html = ""
+
+							if ( icon.image_icon == "icon" ) {
+								if ( icon.icon ) {
+									image_icon_html = <span className={ classnames( icon.icon , "uagb-icon-list__source-icon" ) }></span>
+								}
+							} else {
+								if ( icon.image ) {
+									image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
+								}
+							}
+
+							let target = ( icon.target ) ? "_blank" : "_self"
+
+							return (
+								<a
+									className={ classnames(
+										`uagb-icon-list-repeater-${index}`,
+										"uagb-icon-list__wrapper"
+									) }
+									key={ index }
+									target={ target }
+									rel="noopener noreferrer"
+									href={ icon.link }
+								>
+									<div className="uagb-icon-list__content-wrap">
+										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+										<div className="uagb-icon-list__label-wrap">
+											<RichText.Content
+												tagName="span"
+												value={ icons[ index ].label }
+												className='uagb-icon-list__label' />
+										</div>
+									</div>
+								</a>
+							)
+						})
+					}
 				</div>
 			</div>
 		)
