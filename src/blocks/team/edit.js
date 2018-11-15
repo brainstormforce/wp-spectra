@@ -83,7 +83,8 @@ class UAGBTeam extends Component {
 			socialHoverColor,
 			socialSpace,
 			socialTarget,
-			socialEnable
+			socialEnable,
+			stack
 		} = attributes
 
 		// Add CSS.
@@ -127,7 +128,7 @@ class UAGBTeam extends Component {
 			image_html = (
 				<div
 					className={ classnames(
-						"uagb-team__imag-wrap",
+						"uagb-team__image-wrap",
 						`uagb-team__image-crop-${imgStyle}`,
 					) }>
 					<img
@@ -268,6 +269,19 @@ class UAGBTeam extends Component {
 
 							] }
 						/>
+						{ imgPosition != "above" &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Team will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 						<SelectControl
 							label={ __( "Image Style" ) }
 							value={ imgStyle }
@@ -572,7 +586,8 @@ class UAGBTeam extends Component {
 						"uagb-team",
 						"uagb-team__outer-wrap",
 						`uagb-team__image-position-${imgPosition}`,
-						`uagb-team__align-${align}`
+						`uagb-team__align-${align}`,
+						`uagb-team__stack-${stack}`
 					) }
 					id={ `uagb-team-${ this.props.clientId }` }>
 					<div className = "uagb-team__wrap">

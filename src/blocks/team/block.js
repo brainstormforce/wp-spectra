@@ -80,7 +80,8 @@ registerBlockType( "uagb/team", {
 			linkedinLink,
 			pinLink,
 			socialTarget,
-			socialEnable
+			socialEnable,
+			stack
 		} = props.attributes
 
 		let size = ""
@@ -101,7 +102,7 @@ registerBlockType( "uagb/team", {
 			image_html = (
 				<div
 					className={ classnames(
-						"uagb-team__imag-wrap",
+						"uagb-team__image-wrap",
 						`uagb-team__image-crop-${imgStyle}`,
 					) }>
 					<img
@@ -120,7 +121,8 @@ registerBlockType( "uagb/team", {
 					"uagb-team",
 					"uagb-team__outer-wrap",
 					`uagb-team__image-position-${imgPosition}`,
-					`uagb-team__align-${align}`
+					`uagb-team__align-${align}`,
+					`uagb-team__stack-${stack}`
 				) }
 				id={ `uagb-team-${ block_id }` }>
 				<div className = "uagb-team__wrap">
