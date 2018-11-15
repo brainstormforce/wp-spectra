@@ -50,6 +50,9 @@ const attributes = {
 		type: "number",
 		default: 40
 	},
+	fontSize: {
+		type: "number"
+	},
 	icon_layout: {
 		type: "string",
 		default: "vertical"

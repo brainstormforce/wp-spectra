@@ -885,7 +885,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"color" => $icon['label_color']
+					"color" => $icon['label_color'],
+					"font-size" => $attr['fontSize'] . 'px'
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
