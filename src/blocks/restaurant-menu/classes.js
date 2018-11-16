@@ -7,7 +7,6 @@
 function PositionClasses( attributes ) {    
 
     var iconimgStyle_class = '';
-    iconimgStyle_class += " uagb-rm__img-style-"+attributes.iconimgStyle+ " " 
 
     let imge_cnt = 0;
     attributes.test_block.map( ( item, thisIndex ) => {
