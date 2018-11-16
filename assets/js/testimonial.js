@@ -13,8 +13,8 @@
 
 	// Callback function for all event listeners.
 	function uagb_content_timeline_init() {
-		
-		if( $(".wp-block-uagb-testimonial").length > 0){			
+
+		if( $(".wp-block-uagb-testimonial").length > 0){
 			return true
 		}else{
 			var testimonial            = $(".uagb-testomonial__outer-wrap")
@@ -70,7 +70,6 @@
 					}
 				})
 				$( "#uagb-testimonial-"+block_id ).find( ".is-carousel" ).slick( settings )
-				$(".uagb-section__inner-wrap").find("#uagb-testimonial-"+block_id).addClass("uagb-tm-parent")
 			})
 		}
 	}

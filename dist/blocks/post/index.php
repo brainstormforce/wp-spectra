@@ -113,8 +113,8 @@ function uagb_post_masonry_add_script() {
 						'arrows' : true,
 						'dots' : true,
 						'rtl' : false,
-						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + ';"><span class=\"dashicons-arrow-left-alt2 dashicons\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
-						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + '"><span class=\"dashicons-arrow-right-alt2 dashicons\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
+						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + ';"><span class=\"fas fa-angle-left\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
+						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + '"><span class=\"fas fa-angle-right\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
 						'responsive' : [
 							{
 								'breakpoint' : 1024,
@@ -205,6 +205,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
+			array_push( $outerwrap, 'uagb-slick-carousel' );
 			break;
 
 		default:

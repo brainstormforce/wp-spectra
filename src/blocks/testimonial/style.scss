@@ -4,6 +4,10 @@
  * CSS for both Frontend+Backend.
  */
 
+ .uagb-slick-carousel {
+ 	padding: 45px;
+ }
+
 .uagb-testimonial__wrap{
     position:relative;
 }
@@ -101,9 +105,6 @@
     left: 0;
     position: absolute;
     background:transparent;
-}
-.uagb-tm-parent{
-    padding:30px;
 }
 .uagb-tm__text-wrap{
     position: relative;
