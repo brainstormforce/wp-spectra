@@ -42,11 +42,11 @@ const { Fragment } = wp.element
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( "uagb/rest-menu", {
+registerBlockType( "uagb/restaurant-menu", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: uagb_blocks_info.blocks["uagb/rest-menu"]["title"], // Block title.
-	description:uagb_blocks_info.blocks["uagb/rest-menu"]["description"], // Block description.
+	title: uagb_blocks_info.blocks["uagb/restaurant-menu"]["title"], // Block title.
+	description:uagb_blocks_info.blocks["uagb/restaurant-menu"]["description"], // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
 		__( "restaurant" ),

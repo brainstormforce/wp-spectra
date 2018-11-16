@@ -199,7 +199,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
-					'uagb/rest-menu'        => array(
+					'uagb/restaurant-menu'  => array(
 						'slug'        => '',
 						'title'       => __( 'Restaurant Menu', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add attractive Restaurant Menu.', 'ultimate-addons-for-gutenberg' ),

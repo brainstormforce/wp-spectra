@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreStart
 
-			$defaults = UAGB_Helper::$block_list['uagb/rest-menu']['attributes'];
+			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
 
