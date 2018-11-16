@@ -120,35 +120,6 @@ class UAGBinfoBox extends Component {
 		setAttributes( { responsiveDesign: ! responsiveDesign } )
 	}
 
-	splitBlock( before, after, ...blocks ) {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props
-
-		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
-			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( "core/paragraph", { content: after } ) )
-		}
-
-		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks )
-		}
-
-		const { content } = attributes
-		if ( ! before ) {
-			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] )
-		} else if ( content !== before ) {
-			// Only update content if it has in-fact changed. In case that user
-			// has created a new paragraph at end of an existing one, the value
-			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } )
-		}
-	}
 	render() {
 
 		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
@@ -402,7 +373,7 @@ class UAGBinfoBox extends Component {
 									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
 									        allowReset
 									    />
-									</Fragment>									
+									</Fragment>
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -532,7 +503,7 @@ class UAGBinfoBox extends Component {
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
 							        allowReset
 							    />
-							</Fragment>							
+							</Fragment>
 					}
 					{ ( ctaType === "button") &&
 							<Fragment>
@@ -543,7 +514,7 @@ class UAGBinfoBox extends Component {
 								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
 								        allowReset
 								    />
-								</Fragment>	
+								</Fragment>
 								<Fragment>
 								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 								    <ColorPalette

@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-import get from "lodash/get"
 import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 
@@ -11,7 +10,6 @@ import Blog from "./blog"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
-const { decodeEntities } = wp.htmlEntities
 const MAX_POSTS_COLUMNS = 4
 const {
 	PanelBody,
@@ -34,19 +32,6 @@ const { withSelect } = wp.data
 
 class UAGBPostGrid extends Component {
 
-	constructor() {
-		super( ...arguments )
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this )
-		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this )
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this )
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this )
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this )
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this )
-		this.toggleEqualHeight= this.toggleEqualHeight.bind(this)
-
-	}
-
 	componentDidMount() {
 
 		this.props.setAttributes( { block_id: this.props.clientId } )
@@ -54,55 +39,6 @@ class UAGBPostGrid extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}
-
-	toggleDisplayPostComment() {
-		const { displayPostComment } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostComment: ! displayPostComment } )
-	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostDate: ! displayPostDate } )
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } )
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } )
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostImage: ! displayPostImage } )
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostLink: ! displayPostLink } )
-	}
-
-	toggleEqualHeight() {
-		const { equalHeight } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { equalHeight: ! equalHeight } )
 	}
 
 	render() {
@@ -189,14 +125,14 @@ class UAGBPostGrid extends Component {
 					<ToggleControl
 						label={ __( "Equal Height" ) }
 						checked={ equalHeight }
-						onChange={ this.toggleEqualHeight }
+						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
-						onChange={ this.toggleDisplayPostImage }
+						onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
@@ -240,27 +176,27 @@ class UAGBPostGrid extends Component {
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
+						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Date" ) }
 						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
+						onChange={ ( value ) => setAttributes( { displayPostDate : ! displayPostDate } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Comment" ) }
 						checked={ displayPostComment }
-						onChange={ this.toggleDisplayPostComment }
+						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
+						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
+						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>

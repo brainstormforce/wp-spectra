@@ -11,7 +11,7 @@ function contentTimelineStyle( props ) {
 		separatorFillColor,
 		separatorBg,
 		separatorBorder,
-		borderFocus,            
+		borderFocus,
 		verticalSpace,
 		horizontalSpace,
 		separatorwidth,
@@ -38,7 +38,7 @@ function contentTimelineStyle( props ) {
 		headSpace,
 		subHeadFontSize,
 		subHeadingColor,
-	} = props.attributes        
+	} = props.attributes
 
 	if( props.clientId ){
 		var clientId = props.clientId
@@ -47,11 +47,11 @@ function contentTimelineStyle( props ) {
 	}
 
 	var selectors = {}
-            
+
 	selectors[".uagb-timeline__heading"] = {
 		"font-size" : headFontSize+"px",
 		"text-align": align,
-		"color": headingColor,                    
+		"color": headingColor,
 	}
 
 	selectors[".uagb-timeline__heading-text"] = {
@@ -61,20 +61,20 @@ function contentTimelineStyle( props ) {
 	selectors[".uagb-timeline-desc-content"] = {
 		"font-size" : subHeadFontSize+"px",
 		"text-align": align,
-		"color": subHeadingColor,   
-	}               
+		"color": subHeadingColor,
+	}
 	selectors[".uagb-timeline__events-new"] = {
 		"text-align": align,
-	}              
+	}
 	selectors[".uagb-timeline__date-inner"] = {
 		"text-align": align,
 	}
-         
-	selectors[".uagb-timeline__center-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after"] = {
+
+	selectors[".uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after"] = {
 		"border-left-color" : backgroundColor,
 	}
 
-	selectors[".uagb-timeline__right-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after"] = {
+	selectors[".uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after"] = {
 		"border-left-color" : backgroundColor
 	}
 
@@ -143,21 +143,21 @@ function contentTimelineStyle( props ) {
 	selectors[".uagb-timeline__date-hide.uagb-timeline__date-inner"] = {
 		"margin-bottom" : dateBottomspace+"px",
 		"color": dateColor,
-		"font-size" : dateFontsize+"px",  
-		"text-align": align,      
+		"font-size" : dateFontsize+"px",
+		"text-align": align,
 	}
 
 	selectors[".uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left"] = {
 		"margin-left" : horizontalSpace+"px",
 	}
 
-	selectors[".uagb-timeline__right-block .uagb-timeline__day-new.uagb-tmimeline__day-right"] = {
+	selectors[".uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right"] = {
 		"margin-right" : horizontalSpace+"px",
 	}
 
 	selectors[".uagb-timeline__date-new"] = {
 		"color": dateColor,
-		"font-size" : dateFontsize+"px",     
+		"font-size" : dateFontsize+"px",
 	}
 
 	selectors[".uagb-timeline__events-inner-new"] = {
@@ -168,17 +168,17 @@ function contentTimelineStyle( props ) {
 
 	selectors[".uagb-timeline__main .uagb-timeline__icon-new"] = {
 		"color": iconColor,
-		"font-size" : iconSize+"px",     
+		"font-size" : iconSize+"px",
 	}
-       
+
 	selectors[".uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker"] = {
-		"background" : iconBgHover,  
+		"background" : iconBgHover,
 		"border-color": borderHover,
 	}
 
 	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon"] = {
-		"background" : iconBgFocus,  
-		"border-color": borderFocus,    
+		"background" : iconBgFocus,
+		"border-color": borderFocus,
 	}
 
 
@@ -201,16 +201,16 @@ function contentTimelineStyle( props ) {
 	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left"] = {
 		"margin-left" : horizontalSpace+"px",
 	}
-	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right"] = {
+	response_selector[".uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right"] = {
 		"margin-left" : horizontalSpace+"px",
 	}
 
 	var styling_css = ""
 
 	for( var i in selectors ) {
-            
-		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+" "+i + " { "           
-            
+
+		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+" "+i + " { "
+
 		var sel = selectors[i]
 		var css = ""
 
@@ -223,12 +223,12 @@ function contentTimelineStyle( props ) {
 	}
 
 	// Responsive css.
-	styling_css += "@media(max-width:768px){" 
+	styling_css += "@media(max-width:768px){"
 	for( var i in response_selector ) {
 
-           
-		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+" "+i + " { "           
-            
+
+		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+" "+i + " { "
+
 		var sel = response_selector[i]
 		var css = ""
 
@@ -238,7 +238,7 @@ function contentTimelineStyle( props ) {
 		}
 
 		styling_css += css + " } "
-	}        
+	}
 	styling_css += "}"
 
 	return styling_css

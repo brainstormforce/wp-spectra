@@ -573,7 +573,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[".uagb-social-share__layout-vertical .uagb-social-share__wrap"] = array(
-				 "flex-direction" => "column"
+				"flex-direction" => "column"
 			);
 
 			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
@@ -638,7 +638,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"justify-content" => $alignment,
 			);
 
-			if ( 'horizontal' == $attr['layout'] ) {
+			if ( 'horizontal' == $attr['social_layout'] ) {
 
 				if ( "desktop" == $attr['stack'] ) {
 
@@ -741,11 +741,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'text-align' => $attr['align']
                 );
 
-            $selectors[' .uagb-timeline__center-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after'] = array(
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
                     'border-left-color'  => $attr['backgroundColor']
                 );
 
-           	$selectors[' .uagb-timeline__right-block .uagb-tmimeline__day-right .uagb-timeline__arrow:after'] = array(
+           	$selectors[' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
                     'border-left-color'  => $attr['backgroundColor']
                 );
 
@@ -822,7 +822,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'margin-left' => $attr['horizontalSpace'].'px',
                 );
 
-            $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
+            $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
                     'margin-right' => $attr['horizontalSpace'].'px',
                 );
 
@@ -891,7 +891,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
 	            'margin-left' => $attr['horizontalSpace'].'px',
 	        );
-	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-tmimeline__day-right'] = array(
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
 	            'margin-left' => $attr['horizontalSpace'].'px',
 	        );
 
