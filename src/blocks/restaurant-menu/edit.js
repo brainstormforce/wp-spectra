@@ -332,7 +332,6 @@ class UAGBrestMenu extends Component {
 			{ value: 'full', label: __( 'Large' ) }
 		];		
 				
-		// Set testinomial image panel
 		const tmControls = ( index ) => {
 			let image_val = null;
 			if( test_block[index] && typeof test_block[index] !== 'undefined'){
@@ -455,7 +454,6 @@ class UAGBrestMenu extends Component {
 			</Fragment>
 		);
 
-		// Global Controls.
 		const inspect_control = (
 				<Fragment>
 				 <InspectorControls>
@@ -518,8 +516,7 @@ class UAGBrestMenu extends Component {
 						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
 					/>
 					</PanelBody>
-					{ /*carousal_settings*/ }
-				 	
+									 	
 					<PanelBody
 					title={ __( 'Image' ) }
 					initialOpen={ false }
@@ -602,7 +599,6 @@ class UAGBrestMenu extends Component {
 				) }
 					id = { my_block_id }
 				>
-
 				
 					{ test_block.map( ( test, index ) => 
 
@@ -614,7 +610,7 @@ class UAGBrestMenu extends Component {
 								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 
 								<div className ="uagb-rm__text-wrap">																								
-									{ //title_text
+									{ 
 										<Fragment>
 											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
 												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>

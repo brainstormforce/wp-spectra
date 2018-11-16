@@ -73,9 +73,7 @@ registerBlockType( "uagb/restaurant-menu", {
 					"uagb-rest_menu__outer-wrap"
 				) }
 					id = { my_block_id }
-				>
-
-				
+				>				
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
