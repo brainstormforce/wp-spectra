@@ -18,7 +18,6 @@ const {
 	Placeholder,
 	QueryControls,
 	RangeControl,
-	PanelColor,
 	SelectControl,
 	Spinner,
 	ToggleControl,
@@ -37,20 +36,6 @@ const { withSelect } = wp.data
 
 class UAGBPostCarousel extends Component {
 
-	constructor() {
-		super( ...arguments )
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this )
-		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this )
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this )
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this )
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this )
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this )
-		this.togglePauseOnHover = this.togglePauseOnHover.bind( this )
-		this.toggleInfiniteLoop = this.toggleInfiniteLoop.bind( this )
-		this.toggleAutoplay = this.toggleAutoplay.bind( this )
-	}
-
 	componentDidMount() {
 
 		this.props.setAttributes( { block_id: this.props.clientId } )
@@ -58,69 +43,6 @@ class UAGBPostCarousel extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}
-
-	toggleDisplayPostComment() {
-		const { displayPostComment } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostComment: ! displayPostComment } )
-	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostDate: ! displayPostDate } )
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } )
-	}
-
-	togglePauseOnHover() {
-		const { pauseOnHover } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { pauseOnHover: ! pauseOnHover } )
-	}
-
-	toggleInfiniteLoop() {
-		const { infiniteLoop } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { infiniteLoop: ! infiniteLoop } )
-	}
-
-	toggleAutoplay() {
-		const { autoplay } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { autoplay: ! autoplay } )
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } )
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostImage: ! displayPostImage } )
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostLink: ! displayPostLink } )
 	}
 
 	render() {
@@ -211,12 +133,12 @@ class UAGBPostCarousel extends Component {
 					<ToggleControl
 						label={ __( "Pause On Hover" ) }
 						checked={ pauseOnHover }
-						onChange={ this.togglePauseOnHover }
+						onChange={ ( value ) => setAttributes( { pauseOnHover: ! pauseOnHover } ) }
 					/>
 					<ToggleControl
 						label={ __( "Autoplay" ) }
 						checked={ autoplay }
-						onChange={ this.toggleAutoplay }
+						onChange={ ( value ) => setAttributes( { autoplay: ! autoplay } ) }
 					/>
 					{ autoplay == true &&
 						<RangeControl
@@ -230,7 +152,7 @@ class UAGBPostCarousel extends Component {
 					<ToggleControl
 						label={ __( "Infinite Loop" ) }
 						checked={ infiniteLoop }
-						onChange={ this.toggleInfiniteLoop }
+						onChange={ ( value ) => setAttributes( { infiniteLoop: ! infiniteLoop } ) }
 					/>
 					<RangeControl
 						label={ __( "Transition Speed (ms)" ) }
@@ -251,7 +173,7 @@ class UAGBPostCarousel extends Component {
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
-						onChange={ this.toggleDisplayPostImage }
+						onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
@@ -295,115 +217,91 @@ class UAGBPostCarousel extends Component {
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
+						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Date" ) }
 						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
+						onChange={ ( value ) => setAttributes( { displayPostDate : ! displayPostDate } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Comment" ) }
 						checked={ displayPostComment }
-						onChange={ this.toggleDisplayPostComment }
+						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
+						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
+						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
-						<PanelColor
-							title={ __( "Blog Background Color" ) }
-							colorValue={ bgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
 							<ColorPalette
 								value={ bgColor }
 								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
-					<PanelColor
-						title={ __( "Title Color" ) }
-						colorValue={ titleColor }
-						initialOpen={ false }
-					>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 						<ColorPalette
 							value={ titleColor }
 							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 							allowReset
 						/>
-					</PanelColor>
-					<PanelColor
-						title={ __( "Meta Color" ) }
-						colorValue={ metaColor }
-						initialOpen={ false }
-					>
+					</Fragment>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
 						<ColorPalette
 							value={ metaColor }
 							onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
-							allowReset
 						/>
-					</PanelColor>
+					</Fragment>
 					{ displayPostExcerpt == true &&
-						<PanelColor
-							title={ __( "Excerpt Color" ) }
-							colorValue={ excerptColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
 							<ColorPalette
 								value={ excerptColor }
 								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Color" ) }
-							colorValue={ ctaColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
 							<ColorPalette
 								value={ ctaColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Background Color" ) }
-							colorValue={ ctaBgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 							<ColorPalette
 								value={ ctaBgColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
-					<PanelColor
-						title={ __( "Arrow Color" ) }
-						colorValue={ arrowColor }
-						initialOpen={ false }
-					>
-						<ColorPalette
-							value={ arrowColor }
-							onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
-							allowReset
-						/>
-					</PanelColor>
+					<p className="uagb-setting-label">{ __( "Arrow Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
+					<ColorPalette
+						value={ arrowColor }
+						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
+						allowReset
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl

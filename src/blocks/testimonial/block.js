@@ -92,25 +92,25 @@ registerBlockType( "uagb/testimonial", {
 				"arrowColor":arrowColor,
 			}
 		)
-	
+
 		return (
 			<Fragment>
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
+					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
 				id = { my_block_id }
 				data-slider = {JSON.stringify(sldier_data)}
 				>
-		
+
 					<div
 						className={ classnames(
 							"is-carousel",
 							`uagb-tm__columns-${ columns }`,
 							"uagb-tm__items"
-						) }					
+						) }
 					>
-						{ test_block.map( ( test, index ) => 
+						{ test_block.map( ( test, index ) =>
 
 							<div className = { classnames(
 								"uagb-testimonial__wrap",
@@ -118,7 +118,7 @@ registerBlockType( "uagb/testimonial", {
 							) } key ={ "wrap-"+index } >
 								<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
 									<div className = "uagb-tm__overlay"></div>
-									{ (imagePosition == "top" || imagePosition == "left" ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
+									{ (imagePosition == "top" || imagePosition == "left" ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }
 
 									<div className ="uagb-tm__text-wrap">
 										{  // Get description.
@@ -130,9 +130,9 @@ registerBlockType( "uagb/testimonial", {
 										}
 										<div className ="uagb-tm__meta">
 											<div className ="uagb-tm__meta-inner">
-											
-												{ (imagePosition == "bottom" ) && <TestimonialImage  attributes={props.attributes}  index_value = {index} /> }	
-																
+
+												{ (imagePosition == "bottom" ) && <TestimonialImage  attributes={props.attributes}  index_value = {index} /> }
+
 												{ //title_text
 													<Fragment>
 														<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
@@ -140,15 +140,15 @@ registerBlockType( "uagb/testimonial", {
 															<Company attributes={props.attributes} setAttributes = "not_set"  props = { props }  index_value = {index}/>
 														</div>
 													</Fragment>
-												}								
+												}
 											</div>
 										</div>
 									</div>
-									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }	
-								</div>						
-							</div>												
-						)}	
-					</div>			
+									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }
+								</div>
+							</div>
+						)}
+					</div>
 				</div>
 			</Fragment>
 		)

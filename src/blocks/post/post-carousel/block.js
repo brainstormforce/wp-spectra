@@ -18,10 +18,10 @@ const { registerBlockType } = wp.blocks
 
 // Register the block
 registerBlockType( "uagb/post-carousel", {
-	title: __( "UAGB - Post Carousel" ),
-	description: __( "Add a carousel layout of customizable posts to your page." ),
+	title: uagb_blocks_info.blocks["uagb/post-carousel"]["title"],
+	description: uagb_blocks_info.blocks["uagb/post-carousel"]["description"],
 	icon: UAGB_Block_Icons.post_carousel,
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( "post" ),
 		__( "carousel" ),

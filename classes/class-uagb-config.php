@@ -195,6 +195,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/post-carousel'    => array(
 						'slug'       => '',
 						'title'      => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'    => true,
 						'attributes' => array(),
 					),
