@@ -55,7 +55,7 @@ registerBlockType( "uagb/social-share", {
 			items,
 			socials,
 			social_count,
-			layout,
+			social_layout,
 			current_url
 		} = props.attributes
 
@@ -63,7 +63,7 @@ registerBlockType( "uagb/social-share", {
 			<div className={ classnames(
 				className,
 				"uagb-social-share__outer-wrap",
-				`uagb-social-share__layout-${layout}`
+				`uagb-social-share__layout-${social_layout}`
 			) }
 			id={ `uagb-social-share-${ block_id}` }>
 				<div className="uagb-social-share__wrap">
