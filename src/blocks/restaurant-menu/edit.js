@@ -408,7 +408,7 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Block Horizontal Padding" ) }
+						label={ __( "Item Horizontal Padding" ) }
 						value={ contentHrPadding }
 						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
 						min={ 0 }
@@ -416,7 +416,7 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Block Vertical Padding" ) }
+						label={ __( "Item Vertical Padding" ) }
 						value={ contentVrPadding }
 						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
 						min={ 0 }
@@ -464,7 +464,7 @@ class UAGBrestMenu extends Component {
 					initialOpen={ true }
 					>	
 				 	<RangeControl
-						label={ __( 'Number of Menu' ) }
+						label={ __( 'Number of Menu Items' ) }
 						value={ menu_item_count }
 						onChange={ ( newCount ) => {
 							let cloneTest_block = [ ...test_block ]
