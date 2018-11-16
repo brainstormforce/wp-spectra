@@ -28,7 +28,7 @@ class Prefix extends React.Component {
 	                className='uagb-ifb-title-prefix'
 	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
 	                onMerge = { props.mergeBlocks }
-	                onSplit = {
+	                unstableOnSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )

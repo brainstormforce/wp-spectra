@@ -44,7 +44,7 @@ class Description extends React.Component {
 						} )	
 	                } }     
 	                onMerge = { props.mergeBlocks }		
-	                onSplit = {
+	                unstableOnSplit = {
 							props.insertBlocksAfter ?
 								( before, after, ...blocks ) => {
 									setAttributes( { content: before } );

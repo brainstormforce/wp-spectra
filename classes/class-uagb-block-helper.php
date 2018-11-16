@@ -725,7 +725,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"justify-content" => $alignment,
 			);
 
-			if ( 'horizontal' == $attr['layout'] ) {
+			if ( 'horizontal' == $attr['social_layout'] ) {
 
 				if ( "desktop" == $attr['stack'] ) {
 
@@ -736,7 +736,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$selectors[" .uagb-social-share__wrap"] = array (
-						 "flex-direction" => "column"
+						"flex-direction" => "column"
 					);
 
 					$selectors[" .uagb-ss__wrapper:last-child"] = array (

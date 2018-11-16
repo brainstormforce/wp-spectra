@@ -21,6 +21,7 @@ const { decodeEntities } = wp.htmlEntities
 // Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
+	createBlock
 } = wp.blocks
 
 const {
@@ -49,6 +50,8 @@ class UAGBcontentTimeline extends Component {
 	constructor() {
 		super( ...arguments )
 
+		this.splitBlock = this.splitBlock.bind( this )
+
 		// Get initial timeline content.
 		this.getTimelinecontent = this.getTimelinecontent.bind(this)
         
@@ -61,6 +64,35 @@ class UAGBcontentTimeline extends Component {
 		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 	}
 
+	splitBlock( before, after, ...blocks ) {
+		const {
+			attributes,
+			insertBlocksAfter,
+			setAttributes,
+			onReplace,
+		} = this.props
+
+		if ( after ) {
+			// Append "After" content as a new paragraph block to the end of
+			// any other blocks being inserted after the current paragraph.
+			blocks.push( createBlock( "core/paragraph", { content: after } ) )
+		}
+
+		if ( blocks.length && insertBlocksAfter ) {
+			insertBlocksAfter( blocks )
+		}
+
+		const { content } = attributes
+		if ( ! before ) {
+			// If before content is omitted, treat as intent to delete block.
+			onReplace( [] )
+		} else if ( content !== before ) {
+			// Only update content if it has in-fact changed. In case that user
+			// has created a new paragraph at end of an existing one, the value
+			// of before will be strictly equal to the current content.
+			setAttributes( { content: before } )
+		}
+	}
 	/**
      * Function Name: toggleDisplayPostDate.
      */
@@ -182,6 +214,9 @@ class UAGBcontentTimeline extends Component {
 			isSelected,
 			className,
 			setAttributes,
+			insertBlocksAfter,
+			mergeBlocks,
+			onReplace,
 			attributes: { 
 				tm_content,
 				headingTitle,
@@ -708,7 +743,7 @@ class UAGBcontentTimeline extends Component {
 
 	/* Render output at backend */
 	get_content(){
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes,mergeBlocks,insertBlocksAfter,onReplace } = this.props
 
 		const{
 			headingTag,
@@ -792,7 +827,20 @@ class UAGBcontentTimeline extends Component {
 																	var p = { "time_heading" : value,"time_desc":data_copy[index]["time_desc"] }
 																	data_copy[index] = p                                       
 																	setAttributes( { "tm_content": data_copy } )                                       
-																} }                                                               
+																} } 
+																onMerge={ mergeBlocks }
+																unstableOnSplit={
+																	insertBlocksAfter ?
+																		( before, after, ...blocks ) => {
+																			setAttributes( { content: before } )
+																			insertBlocksAfter( [
+																				...blocks,
+																				createBlock( "core/paragraph", { content: after } ),
+																			] )
+																		} :
+																		undefined
+																}
+																onRemove={ () => onReplace( [] ) }                                                              
 															/>
 														</div>
 
@@ -804,7 +852,10 @@ class UAGBcontentTimeline extends Component {
 																var p = { "time_heading" : data_copy[index]["time_heading"],"time_desc":value }                                                                    
 																data_copy[index] = p                                       
 																setAttributes( { "tm_content": data_copy } )                                       
-															} }                                                           
+															} }  
+															onMerge={ mergeBlocks }
+															unstableOnSplit={ this.splitBlock }
+															onRemove={ () => onReplace( [] ) }                                                         
 														/>
 
 														<div className="uagb-timeline__arrow"></div>
