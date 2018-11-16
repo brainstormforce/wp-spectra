@@ -77,7 +77,8 @@ class UAGBIconList extends Component {
 			inner_gap,
 			stack,
 			icon_layout,
-			size
+			size,
+			fontSize
 		} = attributes
 
 		const iconControls = ( index ) => {
@@ -297,6 +298,16 @@ class UAGBIconList extends Component {
 							min={ 0 }
 							max={ 500 }
 							initialPosition={40}
+						/>
+						<RangeControl
+							label={ __( "Lable Font Size" ) }
+							value={ fontSize }
+							onChange={ ( value ) => setAttributes( { fontSize: value } ) }
+							min={ 1 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={15}
 						/>
 						<RangeControl
 							label={ __( "Gap between Items" ) }
