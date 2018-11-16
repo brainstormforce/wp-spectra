@@ -5,12 +5,12 @@
 import moment from "moment"
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import contentTimelineStyle from "./inline-styles"
-import ContentTmClasses from "./classes"
-import AlignClass from "./align-classes"
-import DayAlignClass from "./day-align-classes"
+import contentTimelineStyle from ".././inline-styles"
+import ContentTmClasses from ".././classes"
+import AlignClass from ".././align-classes"
+import DayAlignClass from ".././day-align-classes"
 
 const { Component, Fragment } = wp.element
 
