@@ -11,7 +11,7 @@
 .uagb-testimonial__wrap *{
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
-    transition: all 0.5s;    
+    transition: all 0.5s;
 }
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
@@ -77,10 +77,10 @@
 .uagb-tm__desc{
     margin-bottom: 15px;
 }
-.uagb-tm__author-name{ 
+.uagb-tm__author-name{
     margin-bottom: 5px;
     font-size: 30px;
-    line-height: 1em;    
+    line-height: 1em;
 }
 .uagb-tm__company{
     font-size:15px;
@@ -102,8 +102,8 @@
     position: absolute;
     background:transparent;
 }
-.uagb-tm-parent{
-    padding:30px;
+.uagb-slick-carousel{
+    padding:45px;
 }
 .uagb-tm__text-wrap{
     position: relative;
@@ -111,12 +111,12 @@
 .uagb-tm__items{
     visibility:hidden;
 }
-.uagb-tm__items.slick-initialized { 
+.uagb-tm__items.slick-initialized {
     visibility: visible;
 }
 
 @media(max-width:976px) {
-    .uagb-tm__image-position-bottom .uagb-tm__image-content, 
+    .uagb-tm__image-position-bottom .uagb-tm__image-content,
     .uagb-tm__image-position-bottom .uagb-testimonial-details {
         display: block;
         vertical-align: middle;
@@ -146,7 +146,7 @@
 }
 
 @media(max-width:768px) {
-    .uagb-tm__image-position-bottom .uagb-tm__image-content, 
+    .uagb-tm__image-position-bottom .uagb-tm__image-content,
     .uagb-tm__image-position-bottom .uagb-testimonial-details {
         display: block;
         vertical-align: middle;
@@ -177,19 +177,19 @@
 
 /* -------- Slick CSS */
 
-.uagb-slick-carousal .slick-prev,
-.uagb-slick-carousal .slick-next,
-.uagb-slick-carousal .slick-prev:hover,
-.uagb-slick-carousal .slick-next:hover,
-.uagb-slick-carousal .slick-prev:focus,
-.uagb-slick-carousal .slick-next:focus {
+.uagb-slick-carousel .slick-prev,
+.uagb-slick-carousel .slick-next,
+.uagb-slick-carousel .slick-prev:hover,
+.uagb-slick-carousel .slick-next:hover,
+.uagb-slick-carousel .slick-prev:focus,
+.uagb-slick-carousel .slick-next:focus {
     font-size: 0;
     line-height: 0;
     position: absolute;
     top: 50%;
     display: block;
     width: auto;
-    height: auto;   
+    height: auto;
     -webkit-transform: translate(0, -50%);
     -ms-transform: translate(0, -50%);
     transform: translate(0, -50%);
@@ -200,8 +200,8 @@
     background: transparent;
 }
 
-.uagb-slick-carousal .slick-prev:before,
-.uagb-slick-carousal .slick-next:before {
+.uagb-slick-carousel .slick-prev:before,
+.uagb-slick-carousel .slick-next:before {
     font-size: 35px;
     line-height: 1;
     opacity: .75;
@@ -210,59 +210,59 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
-.uagb-slick-carousal .slick-prev {
+.uagb-slick-carousel .slick-prev {
     left: -45px;
     z-index: 1;
     padding: 5px 10px;
     border-radius:0;
 }
 
-[dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-prev {
+[dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-prev {
     left: auto;
     right: -45px;
 }
 
-.uagb-slick-carousal .slick-prev:before {
+.uagb-slick-carousel .slick-prev:before {
     content: '';
     font-size: 0;
     line-height: 0;
 }
 
-[dir="rtl"] .uagb-slick-carousal .slick-prev:before {
+[dir="rtl"] .uagb-slick-carousel .slick-prev:before {
     content: '';
     font-size: 0;
     line-height: 0;
 }
 
-.uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
+.uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
     right: -45px;
     padding: 5px 10px;
     border-radius:0;
 }
 
-[dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
+[dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
     left: -45px;
     right: auto;
     padding: 5px 10px;
 }
-.uagb-slick-carousal .slick-next:before {
+.uagb-slick-carousel .slick-next:before {
     content: '';
     font-size: 0;
     line-height: 0;
 }
 
-[dir="rtl"] .uagb-slick-carousal .slick-next:before {
+[dir="rtl"] .uagb-slick-carousel .slick-next:before {
     content: '';
     font-size: 0;
     line-height: 0;
 }
 
-.uagb-slick-carousal .slick-prev i,
-.uagb-slick-carousal .slick-next i,
-.uagb-slick-carousal .slick-prev i:hover,
-.uagb-slick-carousal .slick-next i:hover,
-.uagb-slick-carousal .slick-prev i:focus,
-.uagb-slick-carousal .slick-next i:focus {
+.uagb-slick-carousel .slick-prev i,
+.uagb-slick-carousel .slick-next i,
+.uagb-slick-carousel .slick-prev i:hover,
+.uagb-slick-carousel .slick-next i:hover,
+.uagb-slick-carousel .slick-prev i:focus,
+.uagb-slick-carousel .slick-next i:focus {
     font-size: 20px;
     width: 1.5em;
     height: 1.5em;
@@ -273,7 +273,7 @@
     box-sizing: content-box;
 }
 
-.uagb-slick-carousal ul.slick-dots {
+.uagb-slick-carousel ul.slick-dots {
     padding-top: 0;
     display: block;
     position: absolute;
@@ -287,7 +287,7 @@
     text-align: center;
 }
 
-.uagb-slick-carousal ul.slick-dots li {
+.uagb-slick-carousel ul.slick-dots li {
     position: relative;
     display: inline-block;
     width: 20px;
@@ -297,7 +297,7 @@
     cursor: pointer;
 }
 
-.uagb-slick-carousal ul.slick-dots li button {
+.uagb-slick-carousel ul.slick-dots li button {
     font-size: 0;
     line-height: 0;
     display: block;
@@ -311,14 +311,16 @@
     background: transparent;
 }
 
-.uagb-slick-carousal ul.slick-dots li button:before {
+.uagb-slick-carousel ul.slick-dots li button:before {
+	font-family: Font Awesome\ 5 Free;
+	content: '\f111';
     font-size: 8px;
     line-height: 20px;
     position: absolute;
     top: 0;
     left: 0;
     width: 20px;
-    height: 20px;    
+    height: 20px;
     text-align: center;
     opacity: .25;
     color: black;
@@ -327,47 +329,47 @@
     font-weight:900;
 }
 
-.uagb-slick-carousal ul.slick-dots li.slick-active button:before {
+.uagb-slick-carousel ul.slick-dots li.slick-active button:before {
     opacity: .75;
     color: black;
 }
 
-.uagb-tm__arrow-inside.uagb-slick-carousal .slick-prev {
+.uagb-tm__arrow-inside.uagb-slick-carousel .slick-prev {
     left: 25px;
     z-index: 1;
 }
 
-[dir="rtl"] .uagb-tm__arrow-inside.uagb-slick-carousal .slick-prev {
+[dir="rtl"] .uagb-tm__arrow-inside.uagb-slick-carousel .slick-prev {
     left: auto;
     right: 25px;
 }
 
-.uagb-tm__arrow-inside.uagb-slick-carousal .slick-next {
+.uagb-tm__arrow-inside.uagb-slick-carousel .slick-next {
     right: 25px;
 }
 
-[dir="rtl"] .uagb-tm__arrow-inside.uagb-slick-carousal .slick-next {
+[dir="rtl"] .uagb-tm__arrow-inside.uagb-slick-carousel .slick-next {
     left: 25px;
     right: auto;
 }
 
 @media (max-width: 1024px) {
 
-    .uagb-tm__arrow-outside.uagb-slick-carousal .slick-prev {
+    .uagb-tm__arrow-outside.uagb-slick-carousel .slick-prev {
         left: 15px;
         z-index: 1;
     }
 
-    [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-prev {
+    [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-prev {
         left: auto;
         right: 15px;
     }
 
-    .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
+    .uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
         right: 15px;
     }
 
-    [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousal .slick-next {
+    [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
         left: 15px;
         right: auto;
     }
