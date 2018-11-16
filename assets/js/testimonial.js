@@ -63,12 +63,6 @@
 						}
 					]
 				}
-				$( "#uagb-testimonial-"+block_id ).find( ".is-carousel" ).on("init", function(event, slick){
-				   	if( slick.$dots !== null ){
-					   var $items = slick.$dots.find("button")
-					   $items.addClass("far fa-circle")
-					}
-				})
 				$( "#uagb-testimonial-"+block_id ).find( ".is-carousel" ).slick( settings )
 			})
 		}
