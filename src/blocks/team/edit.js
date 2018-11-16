@@ -151,7 +151,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__desc'
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -208,7 +208,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
