@@ -227,8 +227,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-buttons__wrap' => array (
 					'justify-content' => $alignment,
 					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack'=> $alignment,
-					'justify-content'=> $alignment
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
 				)
 			);
 
@@ -448,6 +451,93 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
+		 * Get Testimonial CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_testimonial_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );
+
+			$position = str_replace( '-', ' ', $attr->backgroundPosition );
+			$selectors = array(
+				' .uagb-testimonial__wrap' => array(
+					'padding-left'   => ( ($attr->columnGap) /2 ) . 'px',
+					'padding-right'  => ( ($attr->columnGap) /2 ) . 'px',
+					'margin-bottom' => $attr->rowGap . 'px',
+				),
+				' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+					'padding-left'   => $attr->imgHrPadding . 'px',
+					'padding-right'  => $attr->imgHrPadding . 'px',
+					'padding-top'   => $attr->imgVrPadding . 'px',
+					'padding-bottom'  => $attr->imgVrPadding . 'px',
+				),
+				' .uagb-tm__image img' => array(
+					'width'   => $attr->imageWidth . 'px',
+					'max-width'  => $attr->imageWidth . 'px',
+				),
+				' .uagb-tm__content' => array(
+					'text-align'   => $attr->headingAlign,
+					'padding'  => $attr->contentPadding . 'px',
+				),
+				' .uagb-tm__author-name' => array(
+					'color'   => $attr->authorColor,
+					'font-size'  => $attr->nameFontSize . 'px',
+					'margin-bottom'  => $attr->nameSpace . 'px',
+				),
+				' .uagb-tm__company' => array(
+					'color'   => $attr->companyColor,
+					'font-size'  => $attr->companyFontSize . 'px',
+				),
+				' .uagb-tm__desc' => array(
+					'color'   => $attr->descColor,
+					'font-size'  => $attr->descFontSize . 'px',
+					'margin-bottom'  => $attr->descSpace . 'px',
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
+					'background-color'   => $attr->backgroundColor,
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
+					'background-image'   => ( isset( $attr->backgroundImage['url'] ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
+					'background-position'=> $position,
+                    'background-repeat'=> $attr->backgroundRepeat,
+                    'background-size'=> $attr->backgroundSize,
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
+					'background-color'   => $attr->backgroundImageColor,
+					'opacity'   => '0.'.$attr->backgroundOpacity,
+				),
+				' .uagb-testimonial__wrap .uagb-tm__content' => array(
+					'border-color'   => $attr->borderColor,
+					'border-style'   => $attr->borderStyle,
+					'border-width'  => $attr->borderWidth . 'px',
+					'border-radius'  => $attr->borderRadius . 'px',
+				),
+			);
+
+			$r_selectors = array(
+				' .uagb-tm__content' => array(
+					'text-align' => 'center',
+				),
+			);
+
+			// @codingStandardsIgnoreEnd.
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
+
+			return $desktop . $mobile;
+
+		}
+
+		/**
 		 * Get Team Block CSS
 		 *
 		 * @since 0.0.1
@@ -505,7 +595,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-left" => $attr['socialSpace'] . "px",
 					"margin-right" => "0",
 				),
-				" .uagb-team__imag-wrap" => array(
+				" .uagb-team__image-wrap" => array(
 					"margin-top" => $attr['imgTopMargin'] . "px",
 					"margin-bottom" => $attr['imgBottomMargin'] . "px",
 					"margin-left" => $attr['imgLeftMargin'] . "px",
@@ -516,18 +606,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if( 'above' == $attr['imgPosition'] ) {
 				if ( 'center' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
-					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto";
 				} else if ( 'left' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto";
 				} else if ( 'right' == $attr['align'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto";
+					$selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto";
 				}
 			}
 
 			if ( "above" != $attr['imgPosition'] ) {
 				if ( "middle" == $attr['imgAlign'] ) {
-					$selectors[" .uagb-team__imag-wrap"]["align-self"] = "center";
+					$selectors[" .uagb-team__image-wrap"]["align-self"] = "center";
 				}
 			}
 
@@ -540,6 +630,544 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd
 
 			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+		}
+
+		/**
+		 * Get Social Share Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_social_share_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0,
+				"margin-bottom"  => $attr['gap'] . "px"
+			);
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-social-share__wrap"] = array(
+				"flex-direction" => "column"
+			);
+
+			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
+				"margin-bottom"  => 0
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
+				"margin-left"  => ( $attr['gap']/2 ) . "px",
+				"margin-right"  => ( $attr['gap']/2 ) . "px"
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
+				"margin-left"  => 0
+			);
+
+			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
+				"margin-right"  => 0
+			);
+
+			$selectors[" .uagb-ss__wrapper"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-icon:before"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			foreach ( $attr['socials'] as $key => $social ) {
+
+				$social['icon_color'] = ( isset( $social['icon_color'] ) ) ? $social['icon_color'] : '';
+				$social['icon_hover_color'] = ( isset( $social['icon_hover_color'] ) ) ? $social['icon_hover_color'] : '';
+
+				if ( $attr['social_count'] <= $key ) {
+					break;
+				}
+
+				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"color" => $social['icon_color']
+				);
+
+				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
+					"color" => $social['icon_hover_color']
+				);
+			}
+
+			$selectors[" .uagb-social-share__wrap"] = array(
+				"justify-content"  => $alignment,
+				"-webkit-box-pack" => $alignment,
+				"-ms-flex-pack" => $alignment,
+				"justify-content" => $alignment,
+			);
+
+			if ( 'horizontal' == $attr['social_layout'] ) {
+
+				if ( "desktop" == $attr['stack'] ) {
+
+					$selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left"  => 0,
+						"margin-right"  => 0,
+						"margin-bottom"  => $attr['gap'] . "px"
+					);
+
+					$selectors[" .uagb-social-share__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "tablet" == $attr['stack'] ) {
+
+					$t_selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$t_selectors[" .uagb-social-share__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$t_selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "mobile" == $attr['stack'] ) {
+
+					$m_selectors[" .uagb-ss__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$m_selectors[" .uagb-social-share__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$m_selectors[" .uagb-ss__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+				}
+			}
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-social-share-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+
+			return $desktop . $tablet . $mobile;
+		}
+
+		/**
+		 * Get Icon List Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_icon_list_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0,
+				"margin-bottom"  => $attr['gap'] . "px"
+			);
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrap"] = array(
+				 "flex-direction" => "column"
+			);
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child"] = array(
+				"margin-bottom"  => 0
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper"] = array(
+				"margin-left"  => ( $attr['gap']/2 ) . "px",
+				"margin-right"  => ( $attr['gap']/2 ) . "px"
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child"] = array(
+				"margin-left"  => 0
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child"] = array(
+				"margin-right"  => 0
+			);
+
+			$selectors[" .uagb-icon-list__source-image"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-icon-list__source-icon"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-icon-list__source-icon:before"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			if ( 'right' == $attr['align'] ) {
+				$selectors[" .uagb-icon-list__source-wrap"] = array(
+					"margin-left" => $attr['inner_gap'] . "px"
+				);
+				$selectors[" .uagb-icon-list__content-wrap"] = array(
+					"flex-direction" => "row-reverse"
+				);
+			} else {
+				$selectors[" .uagb-icon-list__source-wrap"] = array(
+					"margin-right" => $attr['inner_gap'] . "px"
+				);
+			}
+
+			foreach ( $attr['icons'] as $key => $icon ) {
+
+				$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
+				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
+				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
+				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+
+				if ( $attr['icon_count'] <= $key ) {
+					break;
+				}
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon"] = array (
+					"color" => $icon['icon_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
+					"color" => $icon['icon_hover_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
+					"color" => $icon['label_color'],
+					"font-size" => $attr['fontSize'] . 'px'
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
+					"color" => $icon['label_hover_color']
+				);
+			}
+
+			$selectors[" .uagb-icon-list__wrap"] = array(
+				"justify-content"  => $alignment,
+				"-webkit-box-pack" => $alignment,
+				"-ms-flex-pack" => $alignment,
+				"justify-content" => $alignment,
+				"-webkit-box-align" => $alignment,
+				"-ms-flex-align" => $alignment,
+				"align-items" => $alignment,
+			);
+
+			if ( 'horizontal' == $attr['icon_layout'] ) {
+
+				if ( "tablet" == $attr['stack'] ) {
+
+					$t_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$t_selectors[" .uagb-icon-list__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$t_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "mobile" == $attr['stack'] ) {
+
+					$m_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$m_selectors[" .uagb-icon-list__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$m_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+				}
+			}
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-icon-list-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id );
+
+			return $desktop . $tablet . $mobile;
+		}
+
+		/**
+		 * Get Content Timeline Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_content_timeline_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$t_selectors = array();
+
+			$selectors[" .uagb-timeline__heading"] = array(
+				"text-align"  => $attr['align'],
+				"color"  => $attr['headingColor'],
+				"font-size"  => $attr['headFontSize'] . "px"
+			);
+
+			$selectors[" .uagb-timeline__heading-text"] = array(
+				"margin-bottom"  => $attr['headSpace'] . "px"
+			);
+
+			$selectors[" .uagb-timeline-desc-content"] = array(
+				"text-align"  => $attr['align'],
+				"color"  => $attr['subHeadingColor'],
+				"font-size"  => $attr['subHeadFontSize'] . "px",
+			);
+			$selectors[' .uagb-timeline__events-new'] = array(
+                    'text-align' => $attr['align']
+                );
+            $selectors['.uagb-timeline__date-inner'] = array(
+                    'text-align' => $attr['align']
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
+                    'border-left-color'  => $attr['backgroundColor']
+                );
+
+           	$selectors[' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
+                    'border-left-color'  => $attr['backgroundColor']
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
+                    'border-right-color'  => $attr['backgroundColor']
+                );
+
+            $selectors[' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
+                    'border-right-color'  => $attr['backgroundColor']
+                );
+
+            $selectors[' .uagb-timeline__line__inner'] = array(
+                    'background-color'  => $attr['separatorFillColor']
+                );
+
+            $selectors[' .uagb-timeline__line'] = array(
+                    'background-color'  => $attr['separatorColor'],
+                    'width'  => $attr['separatorwidth'].'px'
+                );
+
+            $selectors[' .uagb-timeline__right-block .uagb-timeline__line'] = array(
+                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+                );
+
+            $selectors[' .uagb-timeline__left-block .uagb-timeline__line'] = array(
+                    'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__line'] = array(
+                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+                );
+
+            $selectors[' .uagb-timeline__marker'] = array(
+                    'background-color' => $attr['separatorBg'],
+                    'min-height'=> $attr['connectorBgsize'].'px',
+                    'min-width' => $attr['connectorBgsize'].'px',
+                    'line-height' => $attr['connectorBgsize'].'px',
+                    'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
+                );
+
+            $selectors[' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
+                    'height' => $attr['connectorBgsize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
+                    'height' => $attr['connectorBgsize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
+                    'height' => $attr['connectorBgsize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
+                    'height' => $attr['connectorBgsize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
+                    'margin-left' => $attr['horizontalSpace'].'px',
+                    'margin-right'=> $attr['horizontalSpace'].'px',
+                );
+
+            $selectors[' .uagb-timeline__field:not(:last-child)'] = array(
+                    'margin-bottom' => $attr['verticalSpace'].'px',
+                );
+
+            $selectors[' .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
+                    'margin-bottom' => $attr['dateBottomspace'].'px',
+                    'color'=> $attr['dateColor'],
+                    'font-size' => $attr['dateFontsize'].'px',
+                    'text-align'=> $attr['align'],
+                );
+
+            $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
+                    'margin-left' => $attr['horizontalSpace'].'px',
+                );
+
+            $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
+                    'margin-right' => $attr['horizontalSpace'].'px',
+                );
+
+             $selectors[' .uagb-timeline__date-new'] = array(
+                    'color'=> $attr['dateColor'],
+                    'font-size' => $attr['dateFontsize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__events-inner-new'] = array(
+                    'background-color' => $attr['backgroundColor'],
+                    'border-radius' => $attr['borderRadius'].'px',
+                    'padding'=> $attr['bgPadding'].'px',
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
+                    'color'=> $attr['iconColor'],
+                    'font-size' => $attr['iconSize'].'px',
+                );
+
+            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker'] = array(
+                    'background' => $attr['iconBgHover'],
+                    'border-color'=> $attr['borderHover'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
+                    'background' => $attr['iconBgFocus'],
+                    'border-color'=> $attr['borderFocus'],
+                );
+
+
+            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new'] = array(
+                    'color'=> $attr['iconHover'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
+                    'color'=> $attr['iconFocus'],
+                );
+
+            $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
+	            'margin-left' => 0,
+	            'margin-right' => 0,
+	        );
+
+	       	$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading"] = array(
+				"text-align"  => 'left',
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content"] = array(
+				"text-align"  => 'left',
+			);
+
+			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
+			        'text-align' => 'left'
+			    );
+			$t_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner'] = array(
+			        'text-align' => 'left'
+			    );
+			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
+					'text-align'=> 'left',
+			);
+
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
+	            'margin-left' => 0,
+	            'margin-right' => 0,
+	        );
+
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
+	            'margin-left' => $attr['horizontalSpace'].'px',
+	        );
+	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
+	            'margin-left' => $attr['horizontalSpace'].'px',
+	        );
+
+	        $m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading"] = array(
+				"text-align"  => 'left',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content"] = array(
+				"text-align"  => 'left',
+			);
+
+			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new'] = array(
+			        'text-align' => 'left'
+			    );
+			$m_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner'] = array(
+			        'text-align' => 'left'
+			    );
+			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
+					'text-align'=> 'left',
+			);
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
+			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+
+			return $desktop . $tablet . $mobile;
 		}
 	}
 }

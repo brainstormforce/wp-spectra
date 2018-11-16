@@ -28,7 +28,7 @@ const { Fragment } = wp.element
 function social_html( icon, link, target ) {
 	let target_value =  ( target ) ? "_blank" : "_self"
 	return (
-		<li className="uagb-team__social-icon"><a href={link} target={target_value} title=""><span className={icon}></span></a></li>
+		<li className="uagb-team__social-icon"><a href={link} target={target_value} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
 	)
 }
 
@@ -47,16 +47,15 @@ function social_html( icon, link, target ) {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/team", {
-
-	title: __( "UAGB - Team" ), // Block title.
-	description: __( "Add Team." ), // Block description.
+	title: uagb_blocks_info.blocks["uagb/team"]["title"],
+	description: uagb_blocks_info.blocks["uagb/team"]["description"],
 	icon: UAGB_Block_Icons.team,
 	keywords: [
 		__( "team" ),
 		__( "members" ),
 		__( "uagb" ),
 	],
-	category: "formatting",
+	category: uagb_blocks_info.category,
 	attributes,
 	edit,
 	save: function( props ) {
@@ -80,7 +79,9 @@ registerBlockType( "uagb/team", {
 			fbLink,
 			linkedinLink,
 			pinLink,
-			socialTarget
+			socialTarget,
+			socialEnable,
+			stack
 		} = props.attributes
 
 		let size = ""
@@ -101,7 +102,7 @@ registerBlockType( "uagb/team", {
 			image_html = (
 				<div
 					className={ classnames(
-						"uagb-team__imag-wrap",
+						"uagb-team__image-wrap",
 						`uagb-team__image-crop-${imgStyle}`,
 					) }>
 					<img
@@ -120,7 +121,8 @@ registerBlockType( "uagb/team", {
 					"uagb-team",
 					"uagb-team__outer-wrap",
 					`uagb-team__image-position-${imgPosition}`,
-					`uagb-team__align-${align}`
+					`uagb-team__align-${align}`,
+					`uagb-team__stack-${stack}`
 				) }
 				id={ `uagb-team-${ block_id }` }>
 				<div className = "uagb-team__wrap">
@@ -151,15 +153,16 @@ registerBlockType( "uagb/team", {
 								className='uagb-team__desc'
 							/>
 						</div>
-
-						<div className="uagb-team__social-icon-wrap">
-							<ul className="uagb-team__social-list">
-								{ "" != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
-								{ "" != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
-								{ "" != linkedinIcon && social_html( linkedinIcon, linkedinLink, socialTarget ) }
-								{ "" != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
-							</ul>
-						</div>
+						{ socialEnable &&
+							<div className="uagb-team__social-icon-wrap">
+								<ul className="uagb-team__social-list">
+									{ "" != twitterIcon && social_html( twitterIcon, twitterLink, socialTarget ) }
+									{ "" != fbIcon && social_html( fbIcon, fbLink, socialTarget ) }
+									{ "" != linkedinIcon && social_html( linkedinIcon, linkedinLink, socialTarget ) }
+									{ "" != pinIcon && social_html( pinIcon, pinLink, socialTarget ) }
+								</ul>
+							</div>
+						}
 
 					</div>
 

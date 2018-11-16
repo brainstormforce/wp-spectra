@@ -37,11 +37,12 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
+
 registerBlockType( "uagb/buttons", {
-	title: __( "UAGB - Multi Buttons" ),
-	description: __( "Add Multiple Buttons" ),
+	title: uagb_blocks_info.blocks["uagb/buttons"]["title"],
+	description: uagb_blocks_info.blocks["uagb/buttons"]["description"],
 	icon: UAGB_Block_Icons.buttons,
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( "buttons" ),
 		__( "multi buttons" ),
@@ -79,6 +80,7 @@ registerBlockType( "uagb/buttons", {
 							tagName='a'
 							className='uagb-button__link'
 							href={ buttons[index].link }
+							rel ="noopener noreferrer"
 							target={ buttons[index].target }
 						/>
 					</div>

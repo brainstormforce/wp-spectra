@@ -79,7 +79,6 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
@@ -87,7 +86,6 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.
 			'https://use.fontawesome.com/releases/v5.0.9/css/all.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
@@ -104,10 +102,26 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-slick-css', // Handle.
 			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
-			array( 'wp-blocks' ), // Dependency to include the CSS after it.
 			UAGB_VER
 		);
 
+		// Testimonial Scripts.
+		wp_enqueue_script(
+			'uabg-testimonial-js', // Handle.
+			UAGB_URL . 'assets/js/testimonial.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
+
+		// Timeline js.
+		wp_enqueue_script(
+			'uabg-timeline-js', // Handle.
+			UAGB_URL . 'assets/js/timeline.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
 	} // End function editor_assets().
 
 	/**
@@ -120,7 +134,7 @@ class UAGB_Init_Blocks {
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element' ), // Dependencies, defined above.
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor' ), // Dependencies, defined above.
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
@@ -165,6 +179,15 @@ class UAGB_Init_Blocks {
 			'uagb_deactivate_blocks',
 			array(
 				'deactivated_blocks' => $blocks,
+			)
+		);
+
+		wp_localize_script(
+			'uagb-block-editor-js',
+			'uagb_blocks_info',
+			array(
+				'blocks'   => UAGB_Config::get_block_attributes(),
+				'category' => 'uagb',
 			)
 		);
 
