@@ -13,20 +13,20 @@ class InfoBoxDesc extends React.Component {
 	render() {
 
 		//const { attributes, setAttributes } = this.props;
-		const {	
-			attributes, 
-			setAttributes , 
-			props		
+		const {
+			attributes,
+			setAttributes ,
+			props
 		} = this.props
-			
+
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
 	                tagName='p'
 	                value={ attributes.headingDesc }
 	                className='uagb-ifb-desc'
-	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }     
-	                onMerge = { props.mergeBlocks }		
+	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
+	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
@@ -37,9 +37,9 @@ class InfoBoxDesc extends React.Component {
 								] )
 							} :
 							undefined
-					}			
-					onRemove={ () => props.onReplace( [] ) }              
-	            />			
+					}
+					onRemove={ () => props.onReplace( [] ) }
+	            />
 			)
 		}else{
 			return (
@@ -47,7 +47,7 @@ class InfoBoxDesc extends React.Component {
 	                tagName='p'
 	                value={ attributes.headingDesc }
 	                className='uagb-ifb-desc'
-	            />			
+	            />
 			)
 		}
 	}

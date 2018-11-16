@@ -373,7 +373,7 @@ class UAGBinfoBox extends Component {
 									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
 									        allowReset
 									    />
-									</Fragment>									
+									</Fragment>
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -503,7 +503,7 @@ class UAGBinfoBox extends Component {
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
 							        allowReset
 							    />
-							</Fragment>							
+							</Fragment>
 					}
 					{ ( ctaType === "button") &&
 							<Fragment>
@@ -514,7 +514,7 @@ class UAGBinfoBox extends Component {
 								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
 								        allowReset
 								    />
-								</Fragment>	
+								</Fragment>
 								<Fragment>
 								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 								    <ColorPalette

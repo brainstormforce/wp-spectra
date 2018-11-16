@@ -660,7 +660,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[".uagb-social-share__layout-vertical .uagb-social-share__wrap"] = array(
-				 "flex-direction" => "column"
+				"flex-direction" => "column"
 			);
 
 			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(

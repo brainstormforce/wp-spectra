@@ -4,7 +4,7 @@
  * @param int index_val  index values.
  */
 function DayAlignClass( attributes, index_val ) {
-   
+
 	let day_align_class = ""
 
 	if( "left" == attributes.timelinAlignment ){
@@ -16,11 +16,11 @@ function DayAlignClass( attributes, index_val ) {
 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-right"
 		}else{
 			day_align_class = "uagb-timeline__day-new uagb-timeline__day-left"
-		}  
-	}     
+		}
+	}
 
 	return [
-		day_align_class        
+		day_align_class
 	]
 }
 

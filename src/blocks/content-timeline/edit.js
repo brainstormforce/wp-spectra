@@ -2,7 +2,6 @@
  * BLOCK: Content Timeline.
  */
 
-import moment from "moment"
 import classnames from "classnames"
 import times from "lodash/times"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
@@ -11,6 +10,8 @@ import contentTimelineStyle from "./inline-styles"
 import ContentTmClasses from "./classes"
 import AlignClass from "./align-classes"
 import DayAlignClass from "./day-align-classes"
+
+const { dateI18n, __experimentalGetSettings } = wp.date
 
 const { Component, Fragment } = wp.element
 
@@ -54,7 +55,7 @@ class UAGBcontentTimeline extends Component {
 
 		// Get initial timeline content.
 		this.getTimelinecontent = this.getTimelinecontent.bind(this)
-        
+
 		this.getDatecontent = this.getDatecontent.bind(this)
 
 		this.getTimelineicon = this.getTimelineicon.bind(this)
@@ -108,87 +109,87 @@ class UAGBcontentTimeline extends Component {
      * @param  {[type]} value [description]
      * @return {[type]}       [description]
      */
-	getTimelineicon(value) { 
+	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
 	}
 
 	/**
     * Loading Timeline content.
     */
-	getTimelinecontent(value) {  
+	getTimelinecontent(value) {
 		const { tm_content, timelineItem } = this.props.attributes
-		const { setAttributes } = this.props       
-		var item_number = value 
+		const { setAttributes } = this.props
+		var item_number = value
 		let data_copy     = [ ...tm_content ]
 		let data_length = data_copy.length
 		if( item_number < data_length ){
 			var diff = data_length - item_number
 			let data_new = data_copy
-			for( var i= 0; i < diff; i++ ){             
+			for( var i= 0; i < diff; i++ ){
 				data_new.pop()
-			}           
+			}
 			setAttributes({tm_content:data_new})
 
 		}if( item_number > data_length ){
 			var diff = item_number - data_length
-           
+
 			for( var i= 0; i < diff; i++ ){
 				var array_length = data_length+i
 				var title_heading_val = "My Heading "+item_number
 				var title_desc_val    = "I am timeline card content. You can change me anytime. Click here to edit this text."
 				data_copy[array_length] = { "time_heading" : title_heading_val,"time_desc":title_desc_val }
 			}
-			setAttributes({tm_content:data_copy})  
-		} 
+			setAttributes({tm_content:data_copy})
+		}
 		return this.props.attributes.tm_content
-	}  
+	}
 
-	getDatecontent(value) {  
-             
+	getDatecontent(value) {
+
 		const { timelineItem, t_date } = this.props.attributes
-		const { setAttributes } = this.props       
-       
-		var item_number = value 
+		const { setAttributes } = this.props
+
+		var item_number = value
 		let data_copy     = [ ...t_date ]
 		let data_length = data_copy.length
 
 		if( item_number < data_length ){
 			var diff = data_length - item_number
 			let data_new = data_copy
-            
-			for( var i= 0; i < diff; i++ ){             
+
+			for( var i= 0; i < diff; i++ ){
 				data_new.pop()
-			}           
+			}
 			setAttributes({t_date:data_new})
 
 		}
 
 		if( item_number > data_length ){
 			var diff = item_number - data_length
-            
+
 			var today = new Date()
 			var dd = today.getDate()
 			var mm = today.getMonth()+1
-            
+
 			if(dd<10) {
 				dd = "0"+dd
-			} 
+			}
 			if(mm<10) {
 				mm = "0"+mm
-			} 
-                         
+			}
+
 			for( var i= 0; i < diff; i++ ){
-				var array_length = data_length + i               
+				var array_length = data_length + i
 				var yyyy = today.getFullYear() - array_length
-				today = mm + "/" + dd + "/" + yyyy 
+				today = mm + "/" + dd + "/" + yyyy
 
 				data_copy[array_length] = { "title" : today }
 			}
-			setAttributes({t_date:data_copy})    
+			setAttributes({t_date:data_copy})
 		}
 
 		return this.props.attributes.t_date
-	}    
+	}
 
 	savedateArray( value, index ) {
 		const { attributes, setAttributes } = this.props
@@ -217,7 +218,7 @@ class UAGBcontentTimeline extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
-			attributes: { 
+			attributes: {
 				tm_content,
 				headingTitle,
 				headingDesc,
@@ -264,7 +265,7 @@ class UAGBcontentTimeline extends Component {
 				displayPostDate,
 				stack
 			},
-		} = this.props     
+		} = this.props
 
 		// Parameters for FontIconPicker
 		const icon_props = {
@@ -304,9 +305,9 @@ class UAGBcontentTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>         
+				</PanelColorSettings>
 			</Fragment>
-		)    
+		)
 
 		const iconFocusSettings = (
 			<Fragment>
@@ -336,16 +337,16 @@ class UAGBcontentTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings> 
+				</PanelColorSettings>
 			</Fragment>
-		)   
+		)
 
 		const iconHoverSettings = (
-			<Fragment>                  
+			<Fragment>
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					initialOpen={ true }
-					colorSettings={ [       
+					colorSettings={ [
 						{
 							value: iconHover,
 							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
@@ -363,16 +364,16 @@ class UAGBcontentTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>      
+				</PanelColorSettings>
 			</Fragment>
-		)          
+		)
 
 		const iconControls = (
 			<Fragment>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Connector Color Settings" ) }
 					initialOpen={ true }
-				>               
+				>
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-3"
 						activeClass="active-tab"
 						tabs={ [
@@ -385,12 +386,12 @@ class UAGBcontentTimeline extends Component {
 								name: "focus",
 								title: __( "Focus" ),
 								className: "uagb-focus-tab",
-							}, 
+							},
 							{
 								name: "hover",
 								title: __( "Hover" ),
 								className: "uagb-hover-tab",
-							},                                  
+							},
 						] }>
 						{
 							( tabName ) => {
@@ -405,14 +406,14 @@ class UAGBcontentTimeline extends Component {
 								return <div>{ tabout }</div>
 							}
 						}
-					</TabPanel> 
-				</PanelBody>               
+					</TabPanel>
+				</PanelBody>
 			</Fragment>
 		)
 
 		const renderDateSettings = ( index ) => {
 			return (
-				<Fragment key = {index} >                            
+				<Fragment key = {index} >
 					<TextControl
 						label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 						value= { t_date[ index ].title }
@@ -426,7 +427,7 @@ class UAGBcontentTimeline extends Component {
 
 		const renderSettings = (
 			<Fragment>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Date Settings" ) }
 					initialOpen={ false }
 				>
@@ -435,7 +436,7 @@ class UAGBcontentTimeline extends Component {
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
-                
+
 					{ displayPostDate && times( timelineItem, n => renderDateSettings( n ) ) }
 
 					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
@@ -456,7 +457,7 @@ class UAGBcontentTimeline extends Component {
 								onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
 								allowReset
 							/>
-						</Fragment> 
+						</Fragment>
 						<RangeControl
 							label={ __( "Date Font Size" ) }
 							value={ dateFontsize }
@@ -466,16 +467,16 @@ class UAGBcontentTimeline extends Component {
 							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
-						/>  
-					</Fragment>                 
-					}                
-				</PanelBody>     
+						/>
+					</Fragment>
+					}
+				</PanelBody>
 			</Fragment>
 		)
 
 		const content_control = (
-			<InspectorControls>               
-				<PanelBody 
+			<InspectorControls>
+				<PanelBody
 					title={ __( "General" ) }
 					initialOpen={ false }
 				>
@@ -491,15 +492,15 @@ class UAGBcontentTimeline extends Component {
 						min={ 1 }
 						max={ 20 }
 						allowReset
-					/>                                                     
+					/>
 				</PanelBody>
 
-				{ renderSettings } 
+				{ renderSettings }
 
-				<PanelBody 
+				<PanelBody
 					title={ __( "Layout" ) }
 					initialOpen={ false }
-				>          
+				>
 					<SelectControl
 						label={ __( "Orientation" ) }
 						value={ timelinAlignment }
@@ -519,7 +520,7 @@ class UAGBcontentTimeline extends Component {
 							{ value: "bottom", label: __( "Bottom" ) },
 							{ value: "center", label: __( "Center" ) },
 						] }
-					/>    
+					/>
 					<SelectControl
 						label={ __( "Stack on" ) }
 						value={ stack }
@@ -530,9 +531,9 @@ class UAGBcontentTimeline extends Component {
 						] }
 						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
 						onChange={ ( value ) => setAttributes( { stack: value } ) }
-					/>                
+					/>
 				</PanelBody>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
 				>
@@ -551,7 +552,7 @@ class UAGBcontentTimeline extends Component {
 						min={ 1 }
 						max={ 100 }
 						allowReset
-					/>                   
+					/>
 					<RangeControl
 						label={ __( "Heading Bottom Spacing" ) }
 						value={ headSpace }
@@ -559,9 +560,9 @@ class UAGBcontentTimeline extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>           
+					/>
 				</PanelBody>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Timeline Item" ) }
 					initialOpen={ false }
 				>
@@ -581,7 +582,7 @@ class UAGBcontentTimeline extends Component {
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
 						initialOpen={ true }
-						colorSettings={ [       
+						colorSettings={ [
 							{
 								value: headingColor,
 								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
@@ -605,7 +606,7 @@ class UAGBcontentTimeline extends Component {
 						value={ borderRadius }
 						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 						min={ 0 }
-						initialPosition={10} 
+						initialPosition={10}
 						max={ 50 }
 						allowReset
 					/>
@@ -614,7 +615,7 @@ class UAGBcontentTimeline extends Component {
 						value={ bgPadding }
 						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
 						min={ 1 }
-						initialPosition={10} 
+						initialPosition={10}
 						max={ 50 }
 						allowReset
 					/>
@@ -624,34 +625,34 @@ class UAGBcontentTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={30}                        
+						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>                    
+					/>
 					<RangeControl
 						label={ __( "Content Font Size" ) }
 						value={ subHeadFontSize }
 						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={16}   
+						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>                   
-				</PanelBody> 
-				<PanelBody 
+					/>
+				</PanelBody>
+				<PanelBody
 					title={ __( "Connector" ) }
 					initialOpen={ false }
-				>                    
+				>
 					<FontIconPicker {...icon_props} />
 					<RangeControl
 						label={ __( "Icon Size" ) }
 						value={ iconSize }
 						onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-						min={ 0 }                        
+						min={ 0 }
 						max={ 30 }
 						allowReset
-					/>  
+					/>
 					<RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderwidth }
@@ -675,17 +676,17 @@ class UAGBcontentTimeline extends Component {
 						min={ 25 }
 						max={ 90 }
 						allowReset
-					/>  
-					{ iconControls }                  
+					/>
+					{ iconControls }
 				</PanelBody>
 			</InspectorControls>
-		)        
-      
+		)
+
 		var my_block_id = "uagb-ctm-"+this.props.clientId
 
-		return (        
-			<Fragment>   
-				{ content_control }            
+		return (
+			<Fragment>
+				{ content_control }
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -693,50 +694,50 @@ class UAGBcontentTimeline extends Component {
 							setAttributes( { align: value } )
 						} }
 						controls={ [ "center", "left","right" ] }
-					/>               
+					/>
 				</BlockControls>
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap"
 				) }
-				id = { my_block_id } >                     
+				id = { my_block_id } >
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						...ContentTmClasses( this.props.attributes ),
 					) }>
 						<div className = "uagb-timeline-wrapper">
-							<div className = "uagb-timeline__main">                                
+							<div className = "uagb-timeline__main">
 								{ this.get_content() }
 								<div className = "uagb-timeline__line" >
 									<div className = "uagb-timeline__line__inner"></div>
-								</div> 
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</Fragment>   
+			</Fragment>
 		)
 	}
 
-	componentDidMount() {   
-		//Store client id. 
+	componentDidMount() {
+		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {            
-			time.timelineContent_back(id)            
+		$(".edit-post-layout__content").scroll( function(event) {
+			time.timelineContent_back(id)
 		})
-	}  
+	}
 
 	componentDidUpdate(){
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {             
+		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
 	}
@@ -744,6 +745,8 @@ class UAGBcontentTimeline extends Component {
 	/* Render output at backend */
 	get_content(){
 		const { attributes, setAttributes,mergeBlocks,insertBlocksAfter,onReplace } = this.props
+
+		const dateFormat = __experimentalGetSettings().formats.date
 
 		const{
 			headingTag,
@@ -755,15 +758,15 @@ class UAGBcontentTimeline extends Component {
 		} = attributes
 
 		/* Style for elements */
-		var back_style = contentTimelineStyle( this.props )         
-         
+		var back_style = contentTimelineStyle( this.props )
+
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 		const hasDate = Array.isArray( t_date ) && t_date.length
 
 		if ( ! hasItems ) {
-            
+
 			return (
-				<Fragment>                                            
+				<Fragment>
 					<Placeholder
 						icon="admin-post"
 						label={ __( "UAGB Content Timeline" ) }
@@ -776,7 +779,7 @@ class UAGBcontentTimeline extends Component {
 				</Fragment>
 			)
 
-		}else{         
+		}else{
 
 			var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
 			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
@@ -786,48 +789,48 @@ class UAGBcontentTimeline extends Component {
 			return (
 				<div className = "uagb-timeline__days uagb-timeline-infinite-load">
 					<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
-					{ 
+					{
 						tm_content.map((post,index) => {
 							var second_index = "uagb-"+index
 							if(timelinAlignment == "center"){
 								display_inner_date = true
 								content_align_class = AlignClass( this.props.attributes, index )
 								day_align_class = DayAlignClass( this.props.attributes, index )
-							}   
-							const Tag = this.props.attributes.headingTag  
-							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon  
+							}
+							const Tag = this.props.attributes.headingTag
+							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon
 
 							return (
 								<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
-									<div className = {content_align_class}> 
-                                        
+									<div className = {content_align_class}>
+
 										<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
 											<span className = {icon_class}></span>
 										</div>
-                                        
+
 										<div className = {day_align_class} >
 											<div className="uagb-timeline__events-new">
-												<div className="uagb-timeline__events-inner-new">                                                                
-													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">                                                                
+												<div className="uagb-timeline__events-inner-new">
+													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
 														{ displayPostDate && t_date[index].title &&
-                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-timeline__inner-date-new" }>
-                                                            	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
+                                                            <div className={ "uagb-timeline__inner-date-new" }>
+                                                            	{ dateI18n( dateFormat, t_date[index].title ) }
                                                             </div>
-														}  
+														}
 													</div>
 
 													<div className="uagb-content">
-                                                        
-														<div className="uagb-timeline__heading-text"> 
+
+														<div className="uagb-timeline__heading-text">
 															<RichText
 																tagName={ headingTag }
 																value={ post.time_heading }
 																className='uagb-timeline__heading'
-																onChange={ ( value ) => { 
+																onChange={ ( value ) => {
 																	var p = { "time_heading" : value,"time_desc":data_copy[index]["time_desc"] }
-																	data_copy[index] = p                                       
-																	setAttributes( { "tm_content": data_copy } )                                       
-																} } 
+																	data_copy[index] = p
+																	setAttributes( { "tm_content": data_copy } )
+																} }
 																onMerge={ mergeBlocks }
 																unstableOnSplit={
 																	insertBlocksAfter ?
@@ -840,7 +843,7 @@ class UAGBcontentTimeline extends Component {
 																		} :
 																		undefined
 																}
-																onRemove={ () => onReplace( [] ) }                                                              
+																onRemove={ () => onReplace( [] ) }
 															/>
 														</div>
 
@@ -848,14 +851,14 @@ class UAGBcontentTimeline extends Component {
 															tagName= "p"
 															value={ post.time_desc }
 															className='uagb-timeline-desc-content'
-															onChange={ ( value ) => { 
-																var p = { "time_heading" : data_copy[index]["time_heading"],"time_desc":value }                                                                    
-																data_copy[index] = p                                       
-																setAttributes( { "tm_content": data_copy } )                                       
-															} }  
+															onChange={ ( value ) => {
+																var p = { "time_heading" : data_copy[index]["time_heading"],"time_desc":value }
+																data_copy[index] = p
+																setAttributes( { "tm_content": data_copy } )
+															} }
 															onMerge={ mergeBlocks }
 															unstableOnSplit={ this.splitBlock }
-															onRemove={ () => onReplace( [] ) }                                                         
+															onRemove={ () => onReplace( [] ) }
 														/>
 
 														<div className="uagb-timeline__arrow"></div>
@@ -866,12 +869,12 @@ class UAGBcontentTimeline extends Component {
 											</div>
 										</div>
 
-										{ display_inner_date && <div className = "uagb-timeline__date-new">                                                                                                   
+										{ display_inner_date && <div className = "uagb-timeline__date-new">
 											{ displayPostDate && t_date[index].title &&
-                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-timeline__date-new" }>
-                                                	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
+                                                <div className={ "uagb-timeline__date-new" }>
+                                                	{ dateI18n( dateFormat, t_date[index].title ) }
                                                 </div>
-											} 
+											}
 										</div>
 										}
 									</div>
@@ -881,7 +884,7 @@ class UAGBcontentTimeline extends Component {
 						})
 					}
 				</div>
-			) 
+			)
 		}
 	}
 
@@ -892,7 +895,7 @@ class UAGBcontentTimeline extends Component {
 		var line_inner          = timeline.find(".uagb-timeline__line__inner")
 		var line_outer          = timeline.find(".uagb-timeline__line")
 		var $icon_class         = timeline.find(".uagb-timeline__marker")
-		if( $icon_class.length > 0){    
+		if( $icon_class.length > 0){
 			var $card_last          = timeline.find(".uagb-timeline__field:last-child")
 			var timeline_start_icon = $icon_class.first().position()
 			var timeline_end_icon   = $icon_class.last().position()
@@ -935,7 +938,7 @@ class UAGBcontentTimeline extends Component {
 			var elementPos = tm_item.offset().top
 
 			var new_elementPos = elementPos + timeline_start_icon.top
-            
+
 			var photoViewportOffsetTop = new_elementPos - $document.scrollTop()
 
 			if (photoViewportOffsetTop < 0) {
