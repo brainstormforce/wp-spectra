@@ -246,9 +246,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'align'        => 'center',
-							'social_count' => '1',
-							'socials'      => array(
+							'align'         => 'center',
+							'social_count'  => '1',
+							'socials'       => array(
 								array(
 									'type'             => 'facebook',
 									'image_icon'       => 'icon',
@@ -258,10 +258,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 									'icon_hover_color' => '#3a3a3a',
 								),
 							),
-							'gap'          => '10',
-							'size'         => '40',
-							'layout'       => 'horizontal',
-							'stack'        => 'none',
+							'gap'           => '10',
+							'size'          => '40',
+							'social_layout' => 'horizontal',
+							'stack'         => 'none',
 						),
 					),
 					'uagb/team'             => array(
