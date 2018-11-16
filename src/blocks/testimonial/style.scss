@@ -102,8 +102,8 @@
     position: absolute;
     background:transparent;
 }
-.uagb-tm-parent{
-    padding:30px;
+.uagb-slick-carousel{
+    padding:45px;
 }
 .uagb-tm__text-wrap{
     position: relative;
@@ -312,6 +312,8 @@
 }
 
 .uagb-slick-carousel ul.slick-dots li button:before {
+	font-family: Font Awesome\ 5 Free;
+	content: '\f111';
     font-size: 8px;
     line-height: 20px;
     position: absolute;
