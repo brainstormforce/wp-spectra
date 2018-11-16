@@ -863,7 +863,11 @@ function uagb_render_image( $attributes ) {
 function uagb_render_title( $attributes ) {
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
+<<<<<<< HEAD
 		<a href="<?php the_permalink(); ?>" target="_blank" rel="noopener noreferrer"><?php the_title(); ?></a>
+=======
+		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+>>>>>>> ba8e8f6b2170dcf612a810bc46642823b9c69203
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
 }
@@ -928,7 +932,7 @@ function uagb_render_button( $attributes ) {
 	}
 	?>
 	<div class="uagb-post__cta" style="<?php echo 'color: ' . $attributes['ctaColor'] . '; background: ' . $attributes['ctaBgColor']; ?>">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
 	</div>
 	<?php
 }
