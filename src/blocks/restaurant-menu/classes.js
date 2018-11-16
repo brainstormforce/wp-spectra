@@ -13,9 +13,9 @@ function PositionClasses( attributes ) {
     if( 'left' == attributes.imagePosition  || 'right' == attributes.imagePosition ){
     	iconimgStyle_class += "uagb-rm__image-aligned-"+attributes.imageAlignment+ " "
         if( attributes.stack !== "none" ){
-            iconimgStyle_class +="uagb-tm-stacked-"+attributes.stack+ " "
+            iconimgStyle_class +="uagb-rm-stacked-"+attributes.stack+ " "
             if( attributes.imagePosition === "right" ){
-                iconimgStyle_class += "uagb-tm-reverse-order-"+attributes.stack+ " "
+                iconimgStyle_class += "uagb-rm-reverse-order-"+attributes.stack+ " "
             }
         }
     }
