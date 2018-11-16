@@ -743,7 +743,7 @@ class UAGBcontentTimeline extends Component {
 
 	/* Render output at backend */
 	get_content(){
-		const { attributes, setAttributes,mergeBlocks,insertBlocksAfter,onReplace } = this.props
+		const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
 
 		const{
 			headingTag,

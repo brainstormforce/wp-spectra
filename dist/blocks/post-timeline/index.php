@@ -170,12 +170,12 @@ function uagb_blocks_register_block_timeline_posts() {
 	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
-	}	
+	}
 
 	register_block_type(
 		'uagb/post-timeline',
 		array(
-			'attributes'      => array(
+			'attributes' => array(
 				'align'              => array(
 					'type'    => 'string',
 					'default' => 'center',
@@ -399,7 +399,7 @@ function uagb_blocks_register_block_timeline_posts() {
 					'default' => '',
 				),
 			),
-			//'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
+			// 'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
 		)
 	);
 }

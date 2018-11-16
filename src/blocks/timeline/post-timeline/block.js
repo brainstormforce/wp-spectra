@@ -47,7 +47,7 @@ const validAlignments = [ 'center', 'left', 'right' ];
 
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
-    title: __( 'Post Timeline - UAGB' ),
+    title: __( 'Post Timeline' ),
     description: __( 'Add a post timeline to your page.' ),
     icon: UAGB_Block_Icons.content_timeline,
     category: uagb_blocks_info.category,

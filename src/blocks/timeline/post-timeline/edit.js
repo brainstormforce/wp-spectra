@@ -11,9 +11,11 @@ import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker'
 import times from "lodash/times"
 
-
 // Import css for timeline.
-import contentTimelineStyle from '.././inline-styles'
+import contentTimelineStyle from ".././inline-styles"
+import ContentTmClasses from ".././classes"
+import AlignClass from ".././align-classes"
+import DayAlignClass from ".././day-align-classes"
 
 const { Component, Fragment } = wp.element;
 
@@ -126,8 +128,6 @@ class UAGBTimeline extends Component {
        
         const {
             className,
-            tm_content,
-            post_content,
             headingColor,
             subHeadingColor,
             backgroundColor,
@@ -183,7 +183,7 @@ class UAGBTimeline extends Component {
             iconHover,
             iconBgHover,
             borderHover,
-            stack
+            stack,
         } = attributes;
 
         /* Image size options */
@@ -204,7 +204,7 @@ class UAGBTimeline extends Component {
           isMulti: false,
         };
 
-      const iconColorSettings = (
+      	const iconColorSettings = (
 			<Fragment>
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
@@ -236,7 +236,7 @@ class UAGBTimeline extends Component {
 			</Fragment>
 		)   
 
-       const iconFocusSettings = (
+        const iconFocusSettings = (
 			<Fragment>
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
@@ -295,7 +295,7 @@ class UAGBTimeline extends Component {
 			</Fragment>
 		)  
 
-       const iconControls = (
+        const iconControls = (
 			<Fragment>
 				<PanelBody 
 					title={ __( "Connector Color Settings" ) }
@@ -337,10 +337,58 @@ class UAGBTimeline extends Component {
 				</PanelBody>               
 			</Fragment>
 		)
+      
+        const renderSettings = (
+			<Fragment>
+				<PanelBody 
+					title={ __( "Date Settings" ) }
+					initialOpen={ false }
+				>
+					<ToggleControl
+						label={ __( "Display Post Date" ) }
+						checked={ displayPostDate }
+						onChange={ this.toggleDisplayPostDate }
+					/>
+                
+					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
+						label={ __( "Date Bottom Spacing" ) }
+						value={ dateBottomspace }
+						onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					}
 
-       /* const timeline_control = (
+					{ displayPostDate &&  <Fragment>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+							<ColorPalette
+								value={ dateColor }
+								onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment> 
+						<RangeControl
+							label={ __( "Date Font Size" ) }
+							value={ dateFontsize }
+							onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							initialPosition={16}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>  
+					</Fragment>                 
+					}                
+				</PanelBody>     
+			</Fragment>
+		)
 
-            <InspectorControls>                
+
+        const content_control = (
+            <InspectorControls>               
+                
                 <PanelBody title={ __( 'Query' ) }
                     initialOpen={ false }
                     >
@@ -355,7 +403,7 @@ class UAGBTimeline extends Component {
                         onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
                     />
                 </PanelBody>
-                 <PanelBody title={ __( 'Image' ) }
+                <PanelBody title={ __( 'Image' ) }
                     initialOpen={ false }
                  >
                     <ToggleControl
@@ -415,421 +463,6 @@ class UAGBTimeline extends Component {
                     />                                      
                     }  
                 </PanelBody> 
-                <PanelBody 
-                    title={ __( 'Layout' ) }
-                    initialOpen={ false }
-                >          
-                    <SelectControl
-                        label={ __( 'Orientation' ) }
-                        value={ timelinAlignment }
-                        onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
-                        options={ [
-                            { value: 'left', label: __( 'Left' ) },
-                            { value: 'right', label: __( 'Right' ) },
-                            { value: 'center', label: __( 'Center' ) },
-                        ] }
-                    />
-                    <SelectControl
-                        label={ __( 'Arrow Alignment' ) }
-                        value={ arrowlinAlignment }
-                        onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
-                        options={ [
-                            { value: 'top', label: __( 'Top' ) },
-                            { value: 'bottom', label: __( 'Bottom' ) },
-                            { value: 'center', label: __( 'Center' ) },
-                        ] }
-                    />                    
-                </PanelBody>
-                 <PanelBody 
-                    title={ __( 'Spacing' ) }
-                    initialOpen={ false }
-                    >
-                    <RangeControl
-                        label={ __( 'Horizontal Space' ) }
-                        value={ horizontalSpace }
-                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
-                        min={ 1 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Vertical Space' ) }
-                        value={ verticalSpace }
-                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
-                        min={ 1 }
-                        max={ 100 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />                   
-                    <RangeControl
-                        label={ __( 'Heading Bottom Spacing' ) }
-                        value={ headSpace }
-                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />                    
-                    { displayPostExcerpt && <RangeControl
-                        label={ __( 'Description Bottom Spacing' ) }
-                        value={ subHeadSpace }
-                        onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    }
-
-                    { displayPostAuthor &&
-                    <RangeControl
-                        label={ __( 'Author Bottom Spacing' ) }
-                        value={ authorSpace }
-                        onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    }
-
-                    { displayPostDate && ( timelinAlignment !=='center' ) && <RangeControl
-                        label={ __( 'Date Bottom Spacing' ) }
-                        value={ dateBottomspace }
-                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    /> }
-                </PanelBody>
-                <PanelBody 
-                    title={ __( 'Timeline Item' ) }
-                    initialOpen={ false }
-                    >
-                    <SelectControl
-                        label={ __( 'Heading Tag' ) }
-                        value={ headingTag }
-                        onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-                        options={ [
-                            { value: 'h1', label: __( 'H1' ) },
-                            { value: 'h2', label: __( 'H2' ) },
-                            { value: 'h3', label: __( 'H3' ) },
-                            { value: 'h4', label: __( 'H4' ) },
-                            { value: 'h5', label: __( 'H5' ) },
-                            { value: 'h6', label: __( 'H6' ) },
-                        ] }
-                    />
-                    <PanelColor
-                        title={ __( 'Heading Color' ) }
-                        colorValue={ headingColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ headingColor }
-                            onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-
-                    { displayPostExcerpt && <PanelColor
-                        title={ __( 'Description Color' ) }
-                        colorValue={ subHeadingColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ subHeadingColor }
-                            onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor> 
-                    }
-
-                    <PanelColor
-                        title={ __( 'Background Color' ) }
-                        colorValue={ backgroundColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ subHeadingColor }
-                            onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <RangeControl
-                        label={ __( 'Rounded Corners' ) }
-                        value={ borderRadius }
-                        onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Padding' ) }
-                        value={ bgPadding }
-                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-                        min={ 1 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Heading Font Size' ) }
-                        value={ headFontSize }
-                        onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-                        min={ 10 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-
-                    { displayPostExcerpt &&
-                    <RangeControl
-                        label={ __( 'Description Font Size' ) }
-                        value={ subHeadFontSize }
-                        onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-                        min={ 10 }
-                        max={ 200 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    }
-                </PanelBody>                
-                <PanelBody 
-                    title={ __( 'Connector' ) }
-                    initialOpen={ false }
-                    >
-                    <FontIconPicker {...icon_props} />
-                    <RangeControl
-                        label={ __( 'Icon Size' ) }
-                        value={ iconSize }
-                        onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-                        min={ 0 }
-                        max={ 30 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    /> 
-
-                    { iconControls }
-
-                    <RangeControl
-                        label={ __( 'Border Width' ) }
-                        value={ borderwidth }
-                        onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
-                        min={ 1 }
-                        max={ 10 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Connector Width' ) }
-                        value={ separatorwidth }
-                        onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
-                        min={ 1 }
-                        max={ 10 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( 'Connector Background Size' ) }
-                        value={ connectorBgsize }
-                        onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
-                        min={ 25 }
-                        max={ 90 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />                    
-                </PanelBody>        
-                { displayPostAuthor && <PanelBody 
-                    title={ __( 'Author' ) }
-                    initialOpen={ false }
-                    >
-                    <PanelColor
-                        title={ __( 'Author Color' ) }
-                        colorValue={ authorColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ authorColor }
-                            onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <RangeControl
-                        label={ __( 'Author Font Size' ) }
-                        value={ authorFontsize }
-                        onChange={ ( value ) => setAttributes( { authorFontsize: value } ) }
-                        min={ 1 }
-                        max={ 10 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    </PanelBody> 
-                } 
-
-                { displayPostDate && <PanelBody 
-                    title={ __( 'Date' ) }
-                    initialOpen={ false }
-                    >
-                    <PanelColor
-                        title={ __( 'Date Color' ) }
-                        colorValue={ dateColor }
-                        initialOpen={ false }
-                    >
-                        <ColorPalette
-                            value={ dateColor }
-                            onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-                            allowReset
-                        />
-                    </PanelColor>
-                    <RangeControl
-                        label={ __( 'Date Font Size' ) }
-                        value={ dateFontsize }
-                        onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-                        min={ 1 }
-                        max={ 50 }
-                        beforeIcon="editor-textcolor"
-                        allowReset
-                    />
-                    </PanelBody> 
-                }      
-            </InspectorControls>                
-        );   */
-
-        const renderSettings = (
-			<Fragment>
-				<PanelBody 
-					title={ __( "Date Settings" ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( "Display Post Date" ) }
-						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
-					/>
-                
-					{ displayPostDate && times( timelineItem, n => renderDateSettings( n ) ) }
-
-					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
-						label={ __( "Date Bottom Spacing" ) }
-						value={ dateBottomspace }
-						onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					}
-
-					{ displayPostDate &&  <Fragment>
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-							<ColorPalette
-								value={ dateColor }
-								onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment> 
-						<RangeControl
-							label={ __( "Date Font Size" ) }
-							value={ dateFontsize }
-							onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-							min={ 1 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>  
-					</Fragment>                 
-					}                
-				</PanelBody>     
-			</Fragment>
-		)
-
-
-        const content_control = (
-            <InspectorControls>               
-                <PanelBody 
-                    title={ __( "General" ) }
-                    initialOpen={ false }
-                >
-                    <PanelBody title={ __( 'Query' ) }
-                    initialOpen={ false }
-                    >
-                    <QueryControls
-                        numberOfItems={ postsToShow }
-                        { ...{ order, orderBy } }
-                        categoriesList={ categoriesList }
-                        selectedCategoryId={ categories }
-                        onOrderChange={ ( value ) => { setAttributes( { order: value } ); } }
-                        onOrderByChange={ ( value ) => { setAttributes( { orderBy: value } ); } }
-                        onCategoryChange={ ( value ) => { setAttributes( { categories: '' !== value ? value : undefined } ) ; } }
-                        onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
-                    />
-                </PanelBody>
-                 <PanelBody title={ __( 'Image' ) }
-                    initialOpen={ false }
-                 >
-                    <ToggleControl
-                        label={ __( 'Display Featured Image' ) }
-                        checked={ displayPostImage }
-                        onChange={ this.toggleDisplayPostImage }
-                    />
-                    { displayPostImage &&
-                        <SelectControl
-                            label={ __( 'Featured Image Style' ) }
-                            options={ imageSizeOptions }
-                            value={ imageSize }
-                            onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
-                        />
-                    }   
-                </PanelBody>
-                <PanelBody title={ __( 'Content' ) }
-                    initialOpen={ false }
-                > 
-                    <ToggleControl
-                        label={ __( 'Display Post Author' ) }
-                        checked={ displayPostAuthor }
-                        onChange={ this.toggleDisplayPostAuthor }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Post Date' ) }
-                        checked={ displayPostDate }
-                        onChange={ this.toggleDisplayPostDate }
-                    />
-                    <ToggleControl
-                        label={ __( 'Display Post Excerpt' ) }
-                        checked={ displayPostExcerpt }
-                        onChange={ this.toggleDisplayPostExcerpt }
-                    />
-                    { displayPostExcerpt &&
-                       <RangeControl
-                            label={ __( 'Excerpt Length' ) }
-                            value={ exerptLength }
-                            onChange={ ( value ) => setAttributes( { exerptLength: value } ) }
-                            min={ 1 }
-                            max={ 50 }
-                            beforeIcon="editor-textcolor"
-                            allowReset
-                        />
-                    }
-                    <ToggleControl
-                        label={ __( 'Display Continue Reading Link' ) }
-                        checked={ displayPostLink }
-                        onChange={ this.toggleDisplayPostLink }
-                    />
-                    { displayPostLink &&
-                    <TextControl
-                        label={ __( 'Customize Read More Link' ) }
-                        type="text"
-                        value={ readMoreText }
-                        onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                    />                                      
-                    }  
-                </PanelBody>                                       
-                </PanelBody>
-
                 { renderSettings } 
 
                 <PanelBody 
@@ -1025,41 +658,40 @@ class UAGBTimeline extends Component {
             arrow_align_class = 'uagb-timeline-arrow-bottom';
         } 
 
-        /* Alignmnet */
-        var align_class = 'uagb-timeline--center '+ arrow_align_class;
-        if( timelinAlignment == 'left' ){
-            align_class = 'uagb-timeline--left ' + arrow_align_class;
-        }else if(timelinAlignment == 'right'){
-            align_class = 'uagb-timeline--right '+ arrow_align_class;
-        }     
+        var my_block_id = "uagb-ctm-"+this.props.clientId
 
-        var responsive_class = 'uagb-timeline-responsive-tablet uagb-timeline';
-        var tm_block_id_new = 'uagb-'+this.props.clientId;
-        var tl_class = tm_block_id_new +' '+align_class+' '+responsive_class;
+       
         return (
             <Fragment>            
             { content_control }           
             <BlockControls>
-                <BlockAlignmentToolbar
-                    value={ align }
-                    onChange={ ( value ) => {
-                        setAttributes( { align: value } );
-                    } }
-                    controls={ [ 'center', 'left','right' ] }
-                />                
-            </BlockControls>
-                <div className={ className } >                     
-                    <div className = { tl_class }>
-                        <div className = "uagb-timeline-wrapper">
-                            <div className = "uagb-timeline-main">                                
-                                { this.uagb_get_timeline_content() }
-                                <div className = "uagb-timeline__line" >
-                                    <div className = "uagb-timeline__line__inner"></div>
-                                </div> 
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				<BlockAlignmentToolbar
+					value={ align }
+					onChange={ ( value ) => {
+						setAttributes( { align: value } )
+					} }
+					controls={ [ "center", "left","right" ] }
+				/>               
+			</BlockControls>
+                <div  className={ classnames(
+					className,
+					"uagb-timeline__outer-wrap"
+				) }
+				id = { my_block_id } >                     
+					<div  className = { classnames(
+						"uagb-timeline__content-wrap",
+						...ContentTmClasses( this.props.attributes ),
+					) }>
+						<div className = "uagb-timeline-wrapper">
+							<div className = "uagb-timeline__main">                                
+								{ this.get_content() }
+								<div className = "uagb-timeline__line" >
+									<div className = "uagb-timeline__line__inner"></div>
+								</div> 
+							</div>
+						</div>
+					</div>
+				</div>
             </Fragment>
         );
     }
@@ -1217,19 +849,12 @@ class UAGBTimeline extends Component {
     }
     
      /* Render output at backend */
-    uagb_get_timeline_content(){
+    get_content(){
         
-        const { attributes, setAttributes, latestPosts } = this.props;  
+        const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = this.props;  
 
         const {
             headingTag,
-            headFontSize,
-            headingColor,
-            headSpace,
-            subHeadFontSize,
-            subHeadingColor,
-            subHeadSpace,
-            backgroundColor,
             timelinAlignment,
             arrowlinAlignment,
             displayPostImage,
@@ -1242,15 +867,15 @@ class UAGBTimeline extends Component {
             imageSize,
             readMoreText,
             icon,
-            iconSize,
-            align
+            align,
         } = attributes;
+       
 
         var align_class        = '',
             align_item_class   = '';          
         
         /* Style for elements */
-        var selector = contentTimelineStyle( this.props ); 
+		var back_style = contentTimelineStyle( this.props )          
 
         const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
@@ -1274,127 +899,107 @@ class UAGBTimeline extends Component {
                 latestPosts.slice( 0, postsToShow ) :
                 latestPosts;
             
-            var content_align_class = '';
-            var day_align_class = '';
+           	var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
+			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
+			let data_copy           = [ ...latestPosts ]
+			var display_inner_date  = false
 
-            if( timelinAlignment == 'left' ){
-                content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-                day_align_class = 'uagb-day-new uagb-day-left';
-            }else if(timelinAlignment == 'right'){
-                content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-                day_align_class = 'uagb-day-new uagb-day-right';
-            }     
-            
-            var display_inner_date = false;
+             return (
+				<div className = "uagb-timeline__days uagb-timeline-infinite-load">
+					<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+					{
+						displayPosts.map((post,index) => {
 
-            return (<div className = "uagb-days uagb-timeline-infinite-load">                       
-                        <style className= "uagb-timeline-css" dangerouslySetInnerHTML={{ __html: selector }}></style>
-                            {displayPosts.map((post,index) => {
-                                var second_index = 'uagb-'+index;
-                                if(timelinAlignment == 'center'){
-                                    display_inner_date = true;
-                                    if(index % 2 == '0'){
-                                        content_align_class = 'uagb-timeline-widget uagb-timeline-right';
-                                        day_align_class = 'uagb-day-new uagb-day-right';
-                                    }else{
-                                        content_align_class = 'uagb-timeline-widget uagb-timeline-left';
-                                        day_align_class = 'uagb-day-new uagb-day-left';
-                                    }  
-                                }   
-                                const Tag = this.props.attributes.headingTag;  
+							if(timelinAlignment == "center"){
+								display_inner_date = true
+								content_align_class = AlignClass( this.props.attributes, index )
+								day_align_class = DayAlignClass( this.props.attributes, index )
+							} 
 
-                                var icon_class = 'timeline-icon-new out-view-timeline-icon '+icon;  
-                                
-                                if( displayPostExcerpt && post.excerpt ){
-                                    var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
-                                }
-                                return (
-                                    <article className = "uagb-timeline-field animate-border"  key={index}>
-                                        <div className = {content_align_class}> 
-                                            <div className = "uagb-timeline-marker out-view-timeline-icon">
-                                                <i className = {icon_class}></i>
-                                            </div>
-                                            <div className = {day_align_class}>
-                                                <div className="uagb-events-new" style = {{textAlign:align}}>
-                                                    <div className="uagb-events-inner-new" style={{ backgroundColor: backgroundColor }}>                                                                
-                                                                
-                                                                <div className="uagb-timeline-date-hide uagb-date-inner">                                                                
-                                                                    { displayPostDate && post.date_gmt &&
-                                                                        <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'inner-date-new' }>
-                                                                            { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-                                                                        </div>
-                                                                    }  
-                                                                </div>                                                            
-                                                               
-                                                            <div className="uagb-content">
-                                                                {
-                                                                    displayPostImage && post.featured_image_src !== undefined && post.featured_image_src && imageSize && post.featured_image_src[imageSize] ? (
-                                                                        <div className="uagb-block-post-grid-image">
-                                                                            <a href={ post.link } target="_blank" rel="bookmark">
-                                                                              <img
-                                                                                    src={ post.featured_image_src[imageSize][0] }
-                                                                                    alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-                                                                                />
-                                                                            </a>
-                                                                        </div>
-                                                                    ) : (
-                                                                        null
-                                                                    )
-                                                                }
+							const Tag = this.props.attributes.headingTag  
+							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon  
 
-                                                                <div className="uagb-timeline-heading-text" style={{                                                                            
-                                                                            marginBottom: headSpace + 'px',
-                                                                        }}>                                                                    
-                                                                    <Tag                                                                        
-                                                                        className='uagb-timeline-heading entry-title'                                                                        
-                                                                    >
-                                                                    <a href={ post.link } target="_blank" rel="bookmark" style={{ 
-                                                                            fontSize: headFontSize + 'px',
-                                                                            color: headingColor                                                                           
-                                                                        }}>   
-                                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
-                                                                    </a>
-                                                                    </Tag>
-                                                                </div>
+							if( displayPostExcerpt && post.excerpt ){
+			                    var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
+			                }
 
-                                                                { displayPostAuthor && post.author_info.display_name &&
-                                                                    <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-                                                                }
+			                return (
+			                	<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
+			                		<div className = {content_align_class}> 
+			                			<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
+											<span className = {icon_class}></span>
+										</div>
+										
+										<div className = {day_align_class} >
+											<div className="uagb-timeline__events-new">
+												<div className="uagb-timeline__events-inner-new"> 
+													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">                                                                
+														{ displayPostDate && post.date_gmt && 			                                                <div className={ "uagb-timeline__inner-date-new" }>
+			                                                	{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+			                                                </div>
+														}  
+													</div>
 
-                                                                { displayPostExcerpt && post.excerpt &&
-                                                                    <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: trimmed_excerpt } } style={{ 
-                                                                    fontSize: subHeadFontSize + 'px',
-                                                                    color: subHeadingColor,
-                                                                    marginBottom: subHeadSpace + 'px',
-                                                                }}/>
-                                                                }
+													<div className="uagb-content">
+														{
+			                                                displayPostImage && post.featured_image_src !== undefined && post.featured_image_src && imageSize && post.featured_image_src[imageSize] ? (
+			                                                    <div className="uagb-block-post-grid-image">
+			                                                        <a href={ post.link } target="_blank" rel="bookmark">
+			                                                          <img
+			                                                                src={ post.featured_image_src[imageSize][0] }
+			                                                                alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
+			                                                            />
+			                                                        </a>
+			                                                    </div>
+			                                                ) : (
+			                                                    null
+			                                                )
+			                                            }
 
-                                                                { displayPostLink &&
-                                                                    <p><a className="uagb-block-post-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-                                                                }                                                                
-                                                            <div className="uagb-timeline-arrow"></div>
-                                                            </div>
-                                                        </div>                                                    
-                                                </div>
-                                            </div>
-                                            { display_inner_date &&
-                                                <div className = "uagb-timeline-date-new">                                                                                                   
-                                                        { displayPostDate && post.date_gmt &&
-                                                            <div dateTime={ moment( post.date_gmt ).utc().format() } className={ 'uagb-date-new' }>
-                                                                { moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-                                                            </div>
-                                                        }                                            
-                                                    
-                                                </div>
-                                            }
-                                        </div>
-                                    </article> 
-                                );
-                            })}        
-                    </div>);
-            }                   
+			                                            <div className="uagb-timeline__heading-text"> 
+															<Tag  className='uagb-timeline__heading'>
+			                                                    <a href={ post.link } target="_blank" rel="bookmark" >   
+			                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
+			                                                    </a>
+			                                                </Tag>
+														</div>
+
+														{ displayPostAuthor && undefined !== post.author_info && post.author_info.display_name &&
+			                                                <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
+			                                            }
+
+			                                            { displayPostExcerpt && post.excerpt &&
+			                                                <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: trimmed_excerpt } } />
+			                                            }
+
+			                                            { displayPostLink &&
+			                                                <p><a className="uagb-block-post-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
+			                                            } 
+
+			                                            <div className="uagb-timeline__arrow"></div>  
+
+													</div>
+
+												</div>
+											</div>
+										</div>
+										{ display_inner_date && <div className = "uagb-timeline__date-new">                                                                                                   
+											{  displayPostDate && post.date_gmt &&
+			                                    <div className={ "uagb-timeline__date-new" }>
+			                                    	{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+			                                    </div>
+											} 
+										</div>
+										}
+			                		</div>
+			                	</article>
+			                );
+						})
+					}
+				</div>
+			);
+         }                   
     }
-
 
 }
 
