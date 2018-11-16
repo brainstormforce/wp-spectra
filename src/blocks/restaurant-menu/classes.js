@@ -8,7 +8,22 @@ function PositionClasses( attributes ) {
 
     var iconimgStyle_class = '';
     iconimgStyle_class += " uagb-rm__img-style-"+attributes.iconimgStyle+ " " 
-    iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
+
+    let imge_cnt = 0;
+    attributes.test_block.map( ( item, thisIndex ) => {
+        let image_arr = attributes.test_block[thisIndex]           
+        if( image_arr && typeof image_arr !== 'undefined'){
+            const image = image_arr['image']
+            if( typeof image !== "undefined" && image !== null && image !=='' ){
+                imge_cnt++;
+            }
+        }
+    } )     
+
+    if( imge_cnt > 0 ){
+        iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
+    }
+
     iconimgStyle_class += " uagb-rm__align-"+attributes.headingAlign+ " " 
 
     if( 'left' == attributes.imagePosition  || 'right' == attributes.imagePosition ){

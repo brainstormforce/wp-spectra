@@ -586,12 +586,13 @@ class UAGBrestMenu extends Component {
 
 		return (
 			<Fragment>				
-				<BlockControls key='controls'>
+				{  ( (cnt == 0) || (cnt > 0 && imagePosition =='top' ) ) && <BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
-				</BlockControls>				
+				</BlockControls>
+				}				
 				{inspect_control}
 				<div className={ classnames(
 					className,

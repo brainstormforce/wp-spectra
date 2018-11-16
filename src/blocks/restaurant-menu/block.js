@@ -100,7 +100,7 @@ registerBlockType( "uagb/restaurant-menu", {
 										</Fragment>
 									}																		
 								</div>
-								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
+								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
 							</div>
 							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
 						</div>												

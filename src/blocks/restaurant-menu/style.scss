@@ -63,6 +63,15 @@
     display: block;
 }
 
+/*center aligned block without image*/
+.uagb-rm__align-center .uagb-rm-details,
+.uagb-rm__align-center .uagb-rm__title-wrap,
+.uagb-rm__align-center .uagb-rm__price-wrap {
+    display: block;
+    width: 100%;
+}
+/*end*/
+
 .uagb-rm__image-aligned-middle .uagb-rm__image-content{
 -ms-flex-item-align: center;
     align-self: center;
@@ -79,9 +88,10 @@
     font-style: italic;
     text-align:right;
 }
-.uagb-rm__align-center .uagb-rm-details,
-.uagb-rm__align-center .uagb-rm__title-wrap,
-.uagb-rm__align-center .uagb-rm__price-wrap{
+
+.uagb-rm__image-position-center.uagb-rm__align-center .uagb-rm-details,
+.uagb-rm__image-position-center.uagb-rm__align-center .uagb-rm__title-wrap,
+.uagb-rm__image-position-center.uagb-rm__align-center .uagb-rm__price-wrap{
     display: block;
     width: 100%;
     text-align:center;
@@ -127,12 +137,13 @@
     text-align: left;
 }
 
+
 /*CSS for image position right with all alignment*/
 .uagb-rm__image-position-right.uagb-rm__align-left .uagb-rm-details,
 .uagb-rm__image-position-right.uagb-rm__align-right .uagb-rm-details,
 .uagb-rm__image-position-right.uagb-rm__align-center .uagb-rm-details {
     display: flex;
-    flex-direction: unset;
+    flex-direction: row-reverse;
     text-align: right;
 }
 
