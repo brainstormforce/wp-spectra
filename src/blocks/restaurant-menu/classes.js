@@ -7,7 +7,7 @@
 function PositionClasses( attributes ) {    
 
     var iconimgStyle_class = '';
-    iconimgStyle_class += " uagb-rm__imgicon-style-"+attributes.iconimgStyle+ " " 
+    iconimgStyle_class += " uagb-rm__img-style-"+attributes.iconimgStyle+ " " 
     iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
 
     if( 'left' == attributes.imagePosition  || 'right' == attributes.imagePosition ){
