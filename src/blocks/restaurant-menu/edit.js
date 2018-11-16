@@ -619,7 +619,7 @@ class UAGBrestMenu extends Component {
 											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
 												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
 													<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } index_value = {index}/>
-													<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+													<div className = "uagb-rest-menu-text-wrap" key={"text-wrap-"+index}>
 														<Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
 													</div>
 												</div>

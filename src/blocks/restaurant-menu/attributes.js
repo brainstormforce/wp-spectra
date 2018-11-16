@@ -5,13 +5,13 @@ const { __ } = wp.i18n
 
 const ITEM_COUNT = 4
 
-const testimonial_block = []
+const rest_menu_block = []
 
 for (var i = 1; i <= ITEM_COUNT; i++) {
 	var desc_text = __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 	var title_text    = __("Menu Item "+i)
 	var price_text    = __("$9")
-	testimonial_block.push(
+	rest_menu_block.push(
 		{
 			"description": desc_text,
 			"title": title_text,
@@ -28,7 +28,7 @@ const attributes = {
 	},
 	test_block: {
 		type: "array",
-		default : testimonial_block,
+		default : rest_menu_block,
 	},	
 	headingAlign: {
 		type: "string",

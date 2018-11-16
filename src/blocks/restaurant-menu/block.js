@@ -91,7 +91,7 @@ registerBlockType( "uagb/restaurant-menu", {
 											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
 												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
 													<Title attributes={props.attributes} setAttributes = "not_set" props = { props } index_value = {index}/>
-													<div className = "uagb-testinomial-text-wrap" key={"text-wrap-"+index}>
+													<div className = "uagb-rest-menu-text-wrap" key={"text-wrap-"+index}>
 														<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
 													</div>
 												</div>
