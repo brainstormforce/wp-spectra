@@ -16,6 +16,12 @@ import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
+import Title from "./components/Title"
+import FeaturedImage from "./components/FeaturedImage"
+import Excerpt from "./components/Excerpt"
+import CtaLink from "./components/CtaLink"
+import Author from "./components/Author"
+import PostDate from "./components/PostDate"
 
 const { Component, Fragment } = wp.element;
 
@@ -659,7 +665,6 @@ class UAGBTimeline extends Component {
         } 
 
         var my_block_id = "uagb-ctm-"+this.props.clientId
-
        
         return (
             <Fragment>            
@@ -701,26 +706,18 @@ class UAGBTimeline extends Component {
         this.props.setAttributes( { block_id: this.props.clientId } );
 
         var id = this.props.clientId;
-        window.addEventListener("load", this.uagbTimelineFunc_back(id));
-        window.addEventListener("resize", this.uagbTimelineFunc_back(id));
+        window.addEventListener("load", this.timelineContent_back(id));
+        window.addEventListener("resize", this.timelineContent_back(id));
         var time = this;
         $('.edit-post-layout__content').scroll( function(event) {            
-            time.uagbTimelineFunc_back(id);            
+            time.timelineContent_back(id);            
         });
-    }  
 
-    componentDidMount() {
-        //Store client id.
-        this.props.setAttributes( { block_id: this.props.clientId } )
-
-        var id = this.props.clientId
-        window.addEventListener("load", this.timelineContent_back(id))
-        window.addEventListener("resize", this.timelineContent_back(id))
-        var time = this
-        $(".edit-post-layout__content").scroll( function(event) {
-            time.timelineContent_back(id)
-        })
-    }
+        // Pushing Style tag for this block css.
+        const $style = document.createElement( "style" )
+        $style.setAttribute( "id", "uagb-timeline-style-" + this.props.clientId )
+        document.head.appendChild( $style )
+    }    
 
     componentDidUpdate(){
         var id = this.props.clientId
@@ -865,28 +862,20 @@ class UAGBTimeline extends Component {
         const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = this.props;  
 
         const {
-            headingTag,
             timelinAlignment,
             arrowlinAlignment,
-            displayPostImage,
             displayPostDate,
-            displayPostExcerpt,
-            displayPostAuthor,
-            displayPostLink,
-            exerptLength,
             postsToShow,
-            imageSize,
-            readMoreText,
             icon,
             align,
         } = attributes;
        
-
-        var align_class        = '',
-            align_item_class   = '';          
-        
-        /* Style for elements */
-		var back_style = contentTimelineStyle( this.props )          
+       
+        // Add CSS.
+        var element = document.getElementById( "uagb-timeline-style-" + this.props.clientId )
+        if( null != element && "undefined" != typeof element ) {
+            element.innerHTML = contentTimelineStyle( this.props )
+        }   
 
         const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
@@ -917,7 +906,6 @@ class UAGBTimeline extends Component {
 
              return (
 				<div className = "uagb-timeline__days uagb-timeline-infinite-load">
-					<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
 					{
 						displayPosts.map((post,index) => {
 
@@ -927,12 +915,7 @@ class UAGBTimeline extends Component {
 								day_align_class = DayAlignClass( this.props.attributes, index )
 							} 
 
-							const Tag = this.props.attributes.headingTag  
 							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon  
-
-							if( displayPostExcerpt && post.excerpt ){
-			                    var trimmed_excerpt =  (post.excerpt).split(/\s+/).slice(0,exerptLength).join(" ");
-			                }
 
 			                return (
 			                	<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
@@ -944,48 +927,17 @@ class UAGBTimeline extends Component {
 										<div className = {day_align_class} >
 											<div className="uagb-timeline__events-new">
 												<div className="uagb-timeline__events-inner-new"> 
-													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">                                                                
-														{ displayPostDate && post.date_gmt && 			                                                <div className={ "uagb-timeline__inner-date-new" }>
-			                                                	{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-			                                                </div>
-														}  
+													<div className="uagb-timeline__date-hide uagb-timeline__date-inner"> 
+                                                        { <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__inner-date-new"/> } 
 													</div>
 
 													<div className="uagb-content">
-														{
-			                                                displayPostImage && post.featured_image_src !== undefined && post.featured_image_src && imageSize && post.featured_image_src[imageSize] ? (
-			                                                    <div className="uagb-block-post-grid-image">
-			                                                        <a href={ post.link } target="_blank" rel="bookmark">
-			                                                          <img
-			                                                                src={ post.featured_image_src[imageSize][0] }
-			                                                                alt={ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }
-			                                                            />
-			                                                        </a>
-			                                                    </div>
-			                                                ) : (
-			                                                    null
-			                                                )
-			                                            }
 
-			                                            <div className="uagb-timeline__heading-text"> 
-															<Tag  className='uagb-timeline__heading'>
-			                                                    <a href={ post.link } target="_blank" rel="bookmark" >   
-			                                                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
-			                                                    </a>
-			                                                </Tag>
-														</div>
-
-														{ displayPostAuthor && undefined !== post.author_info && post.author_info.display_name &&
-			                                                <div className="uagb-block-post-grid-author"><a className="uagb-text-link" target="_blank" href={ post.author_info.author_link }>{ post.author_info.display_name }</a></div>
-			                                            }
-
-			                                            { displayPostExcerpt && post.excerpt &&
-			                                                <div className = "uagb-timeline-desc-content" dangerouslySetInnerHTML={ { __html: trimmed_excerpt } } />
-			                                            }
-
-			                                            { displayPostLink &&
-			                                                <p><a className="uagb-block-post-link" href={ post.link } target="_blank" rel="bookmark">{ readMoreText }</a></p>
-			                                            } 
+                                                        { <FeaturedImage post={post} attributes={attributes} /> }
+                                                        { <Title post={post} attributes={attributes} /> }                                                        
+                                                        { <Author post={post} attributes={attributes} /> }
+                                                        { <Excerpt post={post} attributes={attributes} /> }			                                             
+                                                        { <CtaLink post={post} attributes={attributes} /> }                                                    
 
 			                                            <div className="uagb-timeline__arrow"></div>  
 
@@ -994,12 +946,8 @@ class UAGBTimeline extends Component {
 												</div>
 											</div>
 										</div>
-										{ display_inner_date && <div className = "uagb-timeline__date-new">                                                                                                   
-											{  displayPostDate && post.date_gmt &&
-			                                    <div className={ "uagb-timeline__date-new" }>
-			                                    	{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-			                                    </div>
-											} 
+										{ display_inner_date && <div className = "uagb-timeline__date-new"> 
+                                            { <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__date-new"/> } 
 										</div>
 										}
 			                		</div>

@@ -7,6 +7,7 @@ import times from "lodash/times"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
 import ".././style.scss"
+import ".././editor.scss"
 import edit from "./edit"
 import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
@@ -49,7 +50,7 @@ const validAlignments = [ 'center', 'left', 'right' ];
 registerBlockType( 'uagb/post-timeline', {
     title: __( 'Post Timeline' ),
     description: __( 'Add a post timeline to your page.' ),
-    icon: UAGB_Block_Icons.content_timeline,
+    icon: UAGB_Block_Icons.post_timeline,
     category: uagb_blocks_info.category,
     keywords: [
         __( 'post' ),

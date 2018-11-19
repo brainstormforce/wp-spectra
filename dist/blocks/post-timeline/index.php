@@ -182,7 +182,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				),
 				'headingColor'       => array(
 					'type'    => 'string',
-					'default' => '#0693E3',
+					'default' => '#333',
 				),
 				'subHeadingColor'    => array(
 					'type'    => 'string',
@@ -223,11 +223,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				'verticalSpace'      => array(
 					'type'    => 'number',
 					'default' => 15,
-				),
-				'headFontSize'       => array(
-					'type'    => 'number',
-					'default' => 15,
-				),
+				),				
 				'timelinAlignment'   => array(
 					'type'    => 'string',
 					'default' => 'center',
@@ -238,7 +234,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				),
 				'subHeadFontSize'    => array(
 					'type'    => 'number',
-					'default' => 12,
+					'default' => '',
 				),
 				'headSpace'          => array(
 					'type'    => 'number',
@@ -298,7 +294,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				),
 				'headFontSize'       => array(
 					'type'    => 'number',
-					'default' => 15,
+					'default' => '',
 				),
 				'categories'         => array(
 					'type' => 'string',
