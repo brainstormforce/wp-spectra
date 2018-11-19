@@ -1,11 +1,11 @@
 === Ultimate Addons for Gutenberg ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
-Tags: gutenberg, gutenberg free blocks, gutenberg addons, gutenberg addon, gutenberg addons, beaver builder lite, gutenberg blocks
+Tags: gutenberg, gutenberg free blocks, gutenberg addons, gutenberg addon, ultimate addon, gutenberg blocks, blocks
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 4.9.8
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -33,7 +33,10 @@ Feel free to contribute to the Gutenberg development.
  	<li><a href="#" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="#" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
  	<li><a href="#" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
- 	<li><a href="#" target="_blank">Google Map </a>: The Google Maps module allows you to display locations with zooming options you’ll love to try.</li>
+ 	<li><a href="#" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
+ 	<li><a href="#" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
+ 	<li><a href="#" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
+ 	<li><a href="#" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -52,7 +55,7 @@ The Ultimate Addons for Gutenberg come from a dedicated team that has made a mar
 
 == Installation ==
 
-1. Install Ultimate Addon for Gutenberg either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
+1. Install Ultimate Addons for Gutenberg either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
 
 == Frequently Asked Questions ==
 
@@ -77,6 +80,12 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.2.0 =
+* New: Content Timeline
+* New: Team
+* New: Social Share
+* Improvement: Compatibility to WordPress 5.0
 
 = 1.1.0 =
 * New: Google Map

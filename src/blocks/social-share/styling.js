@@ -6,7 +6,7 @@ function styling( props ) {
 		social_count,
 		socials,
 		gap,
-		layout,
+		social_layout,
 		size,
 		stack
 	} = props.attributes
@@ -89,7 +89,7 @@ function styling( props ) {
 		"align-items": alignment,
 	}
 
-	if ( "horizontal" == layout ) {
+	if ( "horizontal" == social_layout ) {
 
 		if ( "desktop" == stack ) {
 

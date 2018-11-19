@@ -26,7 +26,7 @@ class Title extends React.Component {
 					}}
 					href={ post.link }
 					target="_blank"
-					rel="bookmark">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
+					rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
 			</Tag>
 		)
 	}

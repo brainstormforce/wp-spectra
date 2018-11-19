@@ -357,6 +357,7 @@ class UAGBMultiButtonEdit extends Component {
 											} }
 											formattingControls={ [ "bold", "italic", "strikethrough" ] }
 											className='uagb-button__link'
+											rel ="noopener noreferrer"
 											unstableOnFocus={ () => { updateFocusState( index )
 											} }
 										/>

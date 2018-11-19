@@ -91,7 +91,7 @@ class UAGBSocialShare extends Component {
 						options={ [
 							{ value: "facebook", label: __( "Facebook" ) },
 							{ value: "twitter", label: __( "Twitter" ) },
-							{ value: "google", label: __( "Google\"Plu\"" ) },
+							{ value: "google", label: __( "Google Plus" ) },
 							{ value: "pinterest", label: __( "Pinterest" ) },
 							{ value: "linkedin", label: __( "LinkedIn" ) },
 							{ value: "digg", label: __( "Digg" ) },
@@ -139,7 +139,7 @@ class UAGBSocialShare extends Component {
 								onSelect={ value => {
 									this.saveSocials( { image: value }, index )
 								} }
-								type="image"
+								allowedTypes={ [ "image" ] }
 								value={ socials[ index ].image }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
@@ -320,7 +320,7 @@ class UAGBSocialShare extends Component {
 										) }
 										key={ index }
 									>
-										<a className="uagb-ss__link" href={url}><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+										<a className="uagb-ss__link" href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 									</div>
 								)
 							})

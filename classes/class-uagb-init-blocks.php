@@ -89,6 +89,15 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Timeline js.
+		wp_enqueue_script(
+			'uabg-timeline-js', // Handle.
+			UAGB_URL . 'assets/js/timeline.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
+
 	} // End function editor_assets().
 
 	/**

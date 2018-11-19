@@ -11,17 +11,14 @@ const { __ } = wp.i18n
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
 	MediaUpload,
-	URLInput
 } = wp.editor
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	Button,
@@ -38,7 +35,7 @@ class UAGBTeam extends Component {
 	social_html( icon, link, target ) {
 
 		return (
-			<li className="uagb-team__social-icon"><a href={link} title=""><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
 		)
 	}
 
@@ -86,7 +83,8 @@ class UAGBTeam extends Component {
 			socialHoverColor,
 			socialSpace,
 			socialTarget,
-			socialEnable
+			socialEnable,
+			stack
 		} = attributes
 
 		// Add CSS.
@@ -99,6 +97,9 @@ class UAGBTeam extends Component {
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( { image: null } )
+				return
+			}
+			if ( ! media.type || "image" != media.type ) {
 				return
 			}
 			setAttributes( { image: media } )
@@ -127,7 +128,7 @@ class UAGBTeam extends Component {
 			image_html = (
 				<div
 					className={ classnames(
-						"uagb-team__imag-wrap",
+						"uagb-team__image-wrap",
 						`uagb-team__image-crop-${imgStyle}`,
 					) }>
 					<img
@@ -150,7 +151,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__desc'
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -188,7 +189,7 @@ class UAGBTeam extends Component {
 					multiline={ false }
 					placeholder={ __( "Write a Title" ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -207,7 +208,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -243,7 +244,7 @@ class UAGBTeam extends Component {
 							<MediaUpload
 								title={ __( "Select Image" ) }
 								onSelect={ onSelectImage }
-								type="image"
+								allowedTypes={ [ "image" ] }
 								value={ image }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
@@ -268,6 +269,19 @@ class UAGBTeam extends Component {
 
 							] }
 						/>
+						{ imgPosition != "above" &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Team will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 						<SelectControl
 							label={ __( "Image Style" ) }
 							value={ imgStyle }
@@ -572,7 +586,8 @@ class UAGBTeam extends Component {
 						"uagb-team",
 						"uagb-team__outer-wrap",
 						`uagb-team__image-position-${imgPosition}`,
-						`uagb-team__align-${align}`
+						`uagb-team__align-${align}`,
+						`uagb-team__stack-${stack}`
 					) }
 					id={ `uagb-team-${ this.props.clientId }` }>
 					<div className = "uagb-team__wrap">

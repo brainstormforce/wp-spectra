@@ -29,7 +29,7 @@ class Title extends React.Component {
 	                multiline={ false }
 	                placeholder={ __( "Write a Heading" ) }
 	                onMerge = { props.mergeBlocks }
-	                onSplit = {
+	                unstableOnSplit = {
 						props.insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
