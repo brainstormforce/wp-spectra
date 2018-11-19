@@ -1169,5 +1169,101 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $desktop . $tablet . $mobile;
 		}
+
+		/**
+		 * Get Restaurant Menu Block CSS
+		 *
+		 * @since 1.0.2
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_restaurant_menu_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[" .uagb-rest_menu__wrap"] = array(
+				'padding-left'  => ($attr['columnGap']/2) . "px",
+				'padding-right'  => ($attr['columnGap']/2). "px",
+				'margin-bottom'  => $attr['rowGap'] . "px"
+			);
+
+			 $selectors[' .uagb-rest_menu__wrap .uagb-rm__image-content'] = array(
+                    'padding-left' =>  $attr['imgHrPadding'] .'px',
+                    'padding-right' =>  $attr['imgHrPadding'] .'px',                                
+                    'padding-top' =>  $attr['imgVrPadding'] .'px',
+                    'padding-bottom' =>  $attr['imgVrPadding'] .'px',
+                ); 
+
+            $selectors[' .uagb-rm__image img'] = array(
+                    'width'=>  $attr['imageWidth'] .'px',
+                    'max-width'=>  $attr['imageWidth'] .'px',                         
+                ); 
+            
+            $selectors[' .uagb-rm__content'] = array(                    
+                    'text-align' =>  $attr['headingAlign'] , 
+                    'padding-left'  => $attr['contentHrPadding'] . 'px',
+					'padding-right' => $attr['contentHrPadding'] . 'px',
+					'padding-top'   => $attr['contentVrPadding'] . 'px',
+					'padding-top'  => $attr['contentVrPadding'] . 'px',                 
+                );                      
+
+            $selectors[' .uagb-rm__title'] = array(
+                    'font-size' =>  $attr['titleFontSize'] .'px',
+                    'color'=>  $attr['titleColor'] ,
+                    'margin-bottom'=>  $attr['titleSpace'] .'px',
+                );
+
+            $selectors[' .uagb-rm__price'] = array(
+                    'font-size' =>  $attr['priceFontSize'].'px',
+                    'color'=>  $attr['priceColor'],
+                );
+
+            $selectors[' .uagb-rm__desc'] = array(
+                    'font-size' =>  $attr['descFontSize'].'px',
+                    'color'=>  $attr['descColor'],
+                    'margin-bottom'=>  $attr['descSpace'].'px',
+                );    
+                     
+            if ( $attr['seperatorStyle'] != "none" ) {
+                $selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+                    'border-top-color'=>  $attr['seperatorColor'],
+                    'border-top-style'=> $attr['seperatorStyle'],
+                    'border-top-width'=> $attr['seperatorThickness'] . "px",    
+                    'width'=> $attr['seperatorWidth'] . "%",
+                );                 
+            }
+			
+			$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
+			        'margin-left'=>  '0%',
+			        'clear'=> 'left',
+			    );    
+
+			$t_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)'] = array(
+			        'margin-left'=>  '0%',
+			        'clear'=> 'left',
+			    );   
+
+			$m_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)'] = array(
+			        'margin-left'=> '0%',
+			        'clear'=> 'left',
+			    );   
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop   = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
+			$r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
+			$tablet    = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id );
+			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
+
+			return $desktop . $r_desktop . $tablet . $mobile;
+		}
 	}
 }
