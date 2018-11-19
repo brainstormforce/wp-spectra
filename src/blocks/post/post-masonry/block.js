@@ -18,10 +18,10 @@ const { registerBlockType } = wp.blocks
 
 // Register the block
 registerBlockType( "uagb/post-masonry", {
-	title: __( "UAGB - Post Masonry" ),
-	description: __( "Add a masonry layout of customizable posts to your page." ),
+	title: uagb_blocks_info.blocks["uagb/post-masonry"]["title"],
+	description: uagb_blocks_info.blocks["uagb/post-masonry"]["description"],
 	icon: UAGB_Block_Icons.post_masonry,
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	keywords: [
 		__( "post" ),
 		__( "masonry" ),

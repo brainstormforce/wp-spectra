@@ -1,5 +1,3 @@
-const { decodeEntities } = wp.htmlEntities
-
 import classnames from "classnames"
 import Masonry from "react-masonry-component"
 import FeaturedImage from ".././components/FeaturedImage"
@@ -61,9 +59,6 @@ class Blog extends React.Component {
 					{ displayPosts.map( ( post, i ) =>
 						<article
 							key={ i }
-							className={ classnames(
-								post.featured_image_src && displayPostImage ? "has-thumb" : "no-thumb"
-							) }
 							style={{
 								paddingRight: rowGap/2,
 								paddingLeft: rowGap/2,

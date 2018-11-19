@@ -48,15 +48,14 @@ const { Fragment } = wp.element
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/info-box", {
-
-	title: __( "UAGB - InfoBox" ),
-	description: __( "Add Info Box." ),
+	title: uagb_blocks_info.blocks["uagb/info-box"]["title"],
+	description: uagb_blocks_info.blocks["uagb/info-box"]["description"],
 	icon: UAGB_Block_Icons.info_box,
 	keywords: [
 		__( "info-box" ),
 		__( "uagb" ),
 	],
-	category: "uagb",
+	category: uagb_blocks_info.category,
 	attributes,
 	edit,
 	save: function( props ) {
@@ -178,12 +177,12 @@ registerBlockType( "uagb/info-box", {
 				<div className={ classnames(
 					className,
 					"uagb-infobox__outer-wrap"
-				) } 
+				) }
 				id = { my_block_id } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target}> {output}</a>
+							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

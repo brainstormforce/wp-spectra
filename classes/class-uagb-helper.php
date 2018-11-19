@@ -153,8 +153,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/testimonial':
+					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/team':
 					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/social-share':
+					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/content-timeline':
+					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/restaurant-menu':
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/icon-list':
+					$css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
 					break;
 
 				default:
@@ -188,7 +208,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks = gutenberg_parse_blocks( $post->post_content );
+				$blocks = $this->parse( $post->post_content );
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -199,6 +219,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
 				<?php
 			}
+		}
+
+		/**
+		 * Parse Guten Block.
+		 *
+		 * @param string $content the content string.
+		 * @since 1.1.0
+		 */
+		public function parse( $content ) {
+
+			global $wp_version;
+
+			return ( version_compare( $wp_version, '5', '>=' ) ) ? parse_blocks( $content ) : gutenberg_parse_blocks( $content );
 		}
 
 		/**
@@ -221,7 +254,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$content = get_post_field( 'post_content', $id );
 
-							$reusable_blocks = gutenberg_parse_blocks( $content );
+							$reusable_blocks = $this->parse( $content );
 
 							$this->get_stylesheet( $reusable_blocks );
 						}
@@ -307,32 +340,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
-		 * Provide Integrations settings array().
-		 *
-		 * @param string $name Module slug.
-		 * @return array()
-		 * @since 0.0.1
-		 */
-		static public function get_integrations_options( $name = '' ) {
-
-			$integrations_default = array(
-				'google_api'     => '',
-				'developer_mode' => false,
-				'language'       => '',
-			);
-
-			$integrations = self::get_admin_settings_option( '_uagb_integration', array(), true );
-			$integrations = wp_parse_args( $integrations, $integrations_default );
-			$integrations = apply_filters( 'uagb_integration_options', $integrations );
-
-			if ( '' !== $name && isset( $integrations[ $name ] ) && '' !== $integrations[ $name ] ) {
-				return $integrations[ $name ];
-			} else {
-				return $integrations;
-			}
-		}
-
-		/**
 		 * Is Knowledgebase.
 		 *
 		 * @return string
@@ -396,77 +403,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = $blocks;
 
 			return apply_filters( 'uagb_enabled_blocks', self::$block_list );
-		}
-
-		/**
-		 * Returns Google Map languages List.
-		 *
-		 * @since 0.0.1
-		 *
-		 * @return array Google Map languages List.
-		 */
-		public static function get_google_map_languages() {
-
-			if ( null === self::$google_map_languages ) {
-
-				self::$google_map_languages = array(
-					'ar'    => __( 'ARABIC', 'ultimate-addons-for-gutenberg' ),
-					'eu'    => __( 'BASQUE', 'ultimate-addons-for-gutenberg' ),
-					'bg'    => __( 'BULGARIAN', 'ultimate-addons-for-gutenberg' ),
-					'bn'    => __( 'BENGALI', 'ultimate-addons-for-gutenberg' ),
-					'ca'    => __( 'CATALAN', 'ultimate-addons-for-gutenberg' ),
-					'cs'    => __( 'CZECH', 'ultimate-addons-for-gutenberg' ),
-					'da'    => __( 'DANISH', 'ultimate-addons-for-gutenberg' ),
-					'de'    => __( 'GERMAN', 'ultimate-addons-for-gutenberg' ),
-					'el'    => __( 'GREEK', 'ultimate-addons-for-gutenberg' ),
-					'en'    => __( 'ENGLISH', 'ultimate-addons-for-gutenberg' ),
-					'en-AU' => __( 'ENGLISH (AUSTRALIAN)', 'ultimate-addons-for-gutenberg' ),
-					'en-GB' => __( 'ENGLISH (GREAT BRITAIN)', 'ultimate-addons-for-gutenberg' ),
-					'es'    => __( 'SPANISH', 'ultimate-addons-for-gutenberg' ),
-					'fa'    => __( 'FARSI', 'ultimate-addons-for-gutenberg' ),
-					'fi'    => __( 'FINNISH', 'ultimate-addons-for-gutenberg' ),
-					'fil'   => __( 'FILIPINO', 'ultimate-addons-for-gutenberg' ),
-					'fr'    => __( 'FRENCH', 'ultimate-addons-for-gutenberg' ),
-					'gl'    => __( 'GALICIAN', 'ultimate-addons-for-gutenberg' ),
-					'gu'    => __( 'GUJARATI', 'ultimate-addons-for-gutenberg' ),
-					'hi'    => __( 'HINDI', 'ultimate-addons-for-gutenberg' ),
-					'hr'    => __( 'CROATIAN', 'ultimate-addons-for-gutenberg' ),
-					'hu'    => __( 'HUNGARIAN', 'ultimate-addons-for-gutenberg' ),
-					'id'    => __( 'INDONESIAN', 'ultimate-addons-for-gutenberg' ),
-					'it'    => __( 'ITALIAN', 'ultimate-addons-for-gutenberg' ),
-					'iw'    => __( 'HEBREW', 'ultimate-addons-for-gutenberg' ),
-					'ja'    => __( 'JAPANESE', 'ultimate-addons-for-gutenberg' ),
-					'kn'    => __( 'KANNADA', 'ultimate-addons-for-gutenberg' ),
-					'ko'    => __( 'KOREAN', 'ultimate-addons-for-gutenberg' ),
-					'lt'    => __( 'LITHUANIAN', 'ultimate-addons-for-gutenberg' ),
-					'lv'    => __( 'LATVIAN', 'ultimate-addons-for-gutenberg' ),
-					'ml'    => __( 'MALAYALAM', 'ultimate-addons-for-gutenberg' ),
-					'mr'    => __( 'MARATHI', 'ultimate-addons-for-gutenberg' ),
-					'nl'    => __( 'DUTCH', 'ultimate-addons-for-gutenberg' ),
-					'no'    => __( 'NORWEGIAN', 'ultimate-addons-for-gutenberg' ),
-					'pl'    => __( 'POLISH', 'ultimate-addons-for-gutenberg' ),
-					'pt'    => __( 'PORTUGUESE', 'ultimate-addons-for-gutenberg' ),
-					'pt-BR' => __( 'PORTUGUESE (BRAZIL)', 'ultimate-addons-for-gutenberg' ),
-					'pt-PT' => __( 'PORTUGUESE (PORTUGAL)', 'ultimate-addons-for-gutenberg' ),
-					'ro'    => __( 'ROMANIAN', 'ultimate-addons-for-gutenberg' ),
-					'ru'    => __( 'RUSSIAN', 'ultimate-addons-for-gutenberg' ),
-					'sk'    => __( 'SLOVAK', 'ultimate-addons-for-gutenberg' ),
-					'sl'    => __( 'SLOVENIAN', 'ultimate-addons-for-gutenberg' ),
-					'sr'    => __( 'SERBIAN', 'ultimate-addons-for-gutenberg' ),
-					'sv'    => __( 'SWEDISH', 'ultimate-addons-for-gutenberg' ),
-					'tl'    => __( 'TAGALOG', 'ultimate-addons-for-gutenberg' ),
-					'ta'    => __( 'TAMIL', 'ultimate-addons-for-gutenberg' ),
-					'te'    => __( 'TELUGU', 'ultimate-addons-for-gutenberg' ),
-					'th'    => __( 'THAI', 'ultimate-addons-for-gutenberg' ),
-					'tr'    => __( 'TURKISH', 'ultimate-addons-for-gutenberg' ),
-					'uk'    => __( 'UKRAINIAN', 'ultimate-addons-for-gutenberg' ),
-					'vi'    => __( 'VIETNAMESE', 'ultimate-addons-for-gutenberg' ),
-					'zh-CN' => __( 'CHINESE (SIMPLIFIED)', 'ultimate-addons-for-gutenberg' ),
-					'zh-TW' => __( 'CHINESE (TRADITIONAL)', 'ultimate-addons-for-gutenberg' ),
-				);
-			}
-
-			return self::$google_map_languages;
 		}
 	}
 

@@ -11,17 +11,14 @@ const { __ } = wp.i18n
 const {
 	AlignmentToolbar,
 	BlockControls,
-	ColorPalette,
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
 	MediaUpload,
-	URLInput
 } = wp.editor
 
 const {
 	PanelBody,
-	PanelColor,
 	SelectControl,
 	RangeControl,
 	Button,
@@ -35,58 +32,10 @@ const { Component, Fragment } = wp.element
 
 class UAGBTeam extends Component {
 
-	constructor() {
-
-		super( ...arguments )
-		this.toggleTarget     = this.toggleTarget.bind( this )
-	}
-
-	/**
-	 * Function Name: toggleTarget.
-	 */
-	toggleTarget() {
-		const { socialTarget } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { socialTarget: ! socialTarget } )
-	}
-
-	splitBlock( before, after, ...blocks ) {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props
-
-		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
-			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( "core/paragraph", { content: after } ) )
-		}
-
-		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks )
-		}
-
-		const { content } = attributes
-		if ( ! before ) {
-			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] )
-		} else if ( content !== before ) {
-			// Only update content if it has in-fact changed. In case that user
-			// has created a new paragraph at end of an existing one, the value
-			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } )
-		}
-	}
-
 	social_html( icon, link, target ) {
 
-		let target_value =  ( target ) ? "_blank" : "_self"
-
 		return (
-			<li className="uagb-team__social-icon"><a href={link} target={target_value} title=""><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
 		)
 	}
 
@@ -133,7 +82,9 @@ class UAGBTeam extends Component {
 			socialColor,
 			socialHoverColor,
 			socialSpace,
-			socialTarget
+			socialTarget,
+			socialEnable,
+			stack
 		} = attributes
 
 		// Add CSS.
@@ -146,6 +97,9 @@ class UAGBTeam extends Component {
 		const onSelectImage = ( media ) => {
 			if ( ! media || ! media.url ) {
 				setAttributes( { image: null } )
+				return
+			}
+			if ( ! media.type || "image" != media.type ) {
 				return
 			}
 			setAttributes( { image: media } )
@@ -174,7 +128,7 @@ class UAGBTeam extends Component {
 			image_html = (
 				<div
 					className={ classnames(
-						"uagb-team__imag-wrap",
+						"uagb-team__image-wrap",
 						`uagb-team__image-crop-${imgStyle}`,
 					) }>
 					<img
@@ -197,7 +151,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__desc'
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -235,7 +189,7 @@ class UAGBTeam extends Component {
 					multiline={ false }
 					placeholder={ __( "Write a Title" ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -254,7 +208,7 @@ class UAGBTeam extends Component {
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }
-					onSplit = {
+					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
 								setAttributes( { content: before } )
@@ -290,7 +244,7 @@ class UAGBTeam extends Component {
 							<MediaUpload
 								title={ __( "Select Image" ) }
 								onSelect={ onSelectImage }
-								type="image"
+								allowedTypes={ [ "image" ] }
 								value={ image }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
@@ -315,6 +269,19 @@ class UAGBTeam extends Component {
 
 							] }
 						/>
+						{ imgPosition != "above" &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Team will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}
 						<SelectControl
 							label={ __( "Image Style" ) }
 							value={ imgStyle }
@@ -358,78 +325,87 @@ class UAGBTeam extends Component {
 					<PanelBody title={ __( "Social Links" ) }
 						initialOpen={ false }>
 						<ToggleControl
-							label={ __( "Open Links in New Window" ) }
-							checked={ socialTarget }
-							onChange={ this.toggleTarget }
+							label={ __( "Enable Social Links" ) }
+							checked={ socialEnable }
+							onChange={ ( value ) => setAttributes( { socialEnable: ! socialEnable } ) }
 						/>
-						<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
-								theme="default"
-								value={twitterIcon}
-								onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
-								isMulti={false}
-							/>
-							<p className="components-base-control__label">{__( "URL" )}</p>
-							<TextControl
-								value={ twitterLink }
-								onChange={ ( value ) => setAttributes( { twitterLink: value } ) }
-								placeholder={__( "Enter Twitter URL" )}
-							/>
-						</PanelBody>
-						<PanelBody title={ __( "FaceBook" ) } initialOpen={ false }>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
-								theme="default"
-								value={fbIcon}
-								onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
-								isMulti={false}
-							/>
-							<p className="components-base-control__label">{__( "URL" )}</p>
-							<TextControl
-								value={ fbLink }
-								onChange={ ( value ) => setAttributes( { fbLink: value } ) }
-								placeholder={__( "Enter FaceBook URL" )}
-							/>
-						</PanelBody>
-						<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
-								theme="default"
-								value={linkedinIcon}
-								onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
-								isMulti={false}
-							/>
-							<p className="components-base-control__label">{__( "URL" )}</p>
-							<TextControl
-								value={ linkedinLink }
-								onChange={ ( value ) => setAttributes( { linkedinLink: value } ) }
-								placeholder={__( "Enter LinkedIn URL" )}
-							/>
-						</PanelBody>
-						<PanelBody title={ __( "Pinterest" ) } initialOpen={ false }>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
-								theme="default"
-								value={pinIcon}
-								onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
-								isMulti={false}
-							/>
-							<p className="components-base-control__label">{__( "URL" )}</p>
-							<TextControl
-								value={ pinLink }
-								onChange={ ( value ) => setAttributes( { pinLink: value } ) }
-								placeholder={__( "Enter Pinterest URL" )}
-							/>
-						</PanelBody>
+						{ socialEnable &&
+							<Fragment>
+								<ToggleControl
+									label={ __( "Open Links in New Window" ) }
+									checked={ socialTarget }
+									onChange={ ( value ) => setAttributes( { socialTarget: ! socialTarget } ) }
+								/>
+								<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
+									<p className="components-base-control__label">{__( "Icon" )}</p>
+									<FontIconPicker
+										icons={UAGBIcon}
+										renderUsing="class"
+										theme="default"
+										value={twitterIcon}
+										onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
+										isMulti={false}
+									/>
+									<p className="components-base-control__label">{__( "URL" )}</p>
+									<TextControl
+										value={ twitterLink }
+										onChange={ ( value ) => setAttributes( { twitterLink: value } ) }
+										placeholder={__( "Enter Twitter URL" )}
+									/>
+								</PanelBody>
+								<PanelBody title={ __( "FaceBook" ) } initialOpen={ false }>
+									<p className="components-base-control__label">{__( "Icon" )}</p>
+									<FontIconPicker
+										icons={UAGBIcon}
+										renderUsing="class"
+										theme="default"
+										value={fbIcon}
+										onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
+										isMulti={false}
+									/>
+									<p className="components-base-control__label">{__( "URL" )}</p>
+									<TextControl
+										value={ fbLink }
+										onChange={ ( value ) => setAttributes( { fbLink: value } ) }
+										placeholder={__( "Enter FaceBook URL" )}
+									/>
+								</PanelBody>
+								<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
+									<p className="components-base-control__label">{__( "Icon" )}</p>
+									<FontIconPicker
+										icons={UAGBIcon}
+										renderUsing="class"
+										theme="default"
+										value={linkedinIcon}
+										onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
+										isMulti={false}
+									/>
+									<p className="components-base-control__label">{__( "URL" )}</p>
+									<TextControl
+										value={ linkedinLink }
+										onChange={ ( value ) => setAttributes( { linkedinLink: value } ) }
+										placeholder={__( "Enter LinkedIn URL" )}
+									/>
+								</PanelBody>
+								<PanelBody title={ __( "Pinterest" ) } initialOpen={ false }>
+									<p className="components-base-control__label">{__( "Icon" )}</p>
+									<FontIconPicker
+										icons={UAGBIcon}
+										renderUsing="class"
+										theme="default"
+										value={pinIcon}
+										onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
+										isMulti={false}
+									/>
+									<p className="components-base-control__label">{__( "URL" )}</p>
+									<TextControl
+										value={ pinLink }
+										onChange={ ( value ) => setAttributes( { pinLink: value } ) }
+										placeholder={__( "Enter Pinterest URL" )}
+									/>
+								</PanelBody>
+							</Fragment>
+						}
 					</PanelBody>
 					<PanelBody
 						title={ __( "Typography" ) }
@@ -610,7 +586,8 @@ class UAGBTeam extends Component {
 						"uagb-team",
 						"uagb-team__outer-wrap",
 						`uagb-team__image-position-${imgPosition}`,
-						`uagb-team__align-${align}`
+						`uagb-team__align-${align}`,
+						`uagb-team__stack-${stack}`
 					) }
 					id={ `uagb-team-${ this.props.clientId }` }>
 					<div className = "uagb-team__wrap">
@@ -625,7 +602,7 @@ class UAGBTeam extends Component {
 
 							{ desc_html }
 
-							{ social_links }
+							{ socialEnable && social_links }
 
 						</div>
 

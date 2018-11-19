@@ -2,7 +2,6 @@
  * External dependencies
  */
 
-import get from "lodash/get"
 import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 
@@ -11,44 +10,27 @@ import Blog from "./blog"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
-const { decodeEntities } = wp.htmlEntities
 const MAX_POSTS_COLUMNS = 4
 const {
 	PanelBody,
 	Placeholder,
 	QueryControls,
 	RangeControl,
-	PanelColor,
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	Toolbar,
 } = wp.components
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette,
-	RichText
+	ColorPalette
 } = wp.editor
 
 const { withSelect } = wp.data
 
 class UAGBPostGrid extends Component {
-
-	constructor() {
-		super( ...arguments )
-
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this )
-		this.toggleDisplayPostComment = this.toggleDisplayPostComment.bind( this )
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this )
-		this.toggleDisplayPostAuthor = this.toggleDisplayPostAuthor.bind( this )
-		this.toggleDisplayPostImage = this.toggleDisplayPostImage.bind( this )
-		this.toggleDisplayPostLink = this.toggleDisplayPostLink.bind( this )
-		this.toggleEqualHeight= this.toggleEqualHeight.bind(this)
-
-	}
 
 	componentDidMount() {
 
@@ -57,55 +39,6 @@ class UAGBPostGrid extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}
-
-	toggleDisplayPostComment() {
-		const { displayPostComment } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostComment: ! displayPostComment } )
-	}
-
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostDate: ! displayPostDate } )
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } )
-	}
-
-	toggleDisplayPostAuthor() {
-		const { displayPostAuthor } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostAuthor: ! displayPostAuthor } )
-	}
-
-	toggleDisplayPostImage() {
-		const { displayPostImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostImage: ! displayPostImage } )
-	}
-
-	toggleDisplayPostLink() {
-		const { displayPostLink } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { displayPostLink: ! displayPostLink } )
-	}
-
-	toggleEqualHeight() {
-		const { equalHeight } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { equalHeight: ! equalHeight } )
 	}
 
 	render() {
@@ -192,14 +125,14 @@ class UAGBPostGrid extends Component {
 					<ToggleControl
 						label={ __( "Equal Height" ) }
 						checked={ equalHeight }
-						onChange={ this.toggleEqualHeight }
+						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
 						checked={ displayPostImage }
-						onChange={ this.toggleDisplayPostImage }
+						onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
 					/>
 					{ displayPostImage == true &&
 						<SelectControl
@@ -243,103 +176,84 @@ class UAGBPostGrid extends Component {
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
-						onChange={ this.toggleDisplayPostAuthor }
+						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Date" ) }
 						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
+						onChange={ ( value ) => setAttributes( { displayPostDate : ! displayPostDate } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Comment" ) }
 						checked={ displayPostComment }
-						onChange={ this.toggleDisplayPostComment }
+						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
+						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
-						onChange={ this.toggleDisplayPostLink }
+						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
-						<PanelColor
-							title={ __( "Blog Background Color" ) }
-							colorValue={ bgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
 							<ColorPalette
 								value={ bgColor }
 								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
-					<PanelColor
-						title={ __( "Title Color" ) }
-						colorValue={ titleColor }
-						initialOpen={ false }
-					>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 						<ColorPalette
 							value={ titleColor }
 							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 							allowReset
 						/>
-					</PanelColor>
-					<PanelColor
-						title={ __( "Meta Color" ) }
-						colorValue={ metaColor }
-						initialOpen={ false }
-					>
+					</Fragment>
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
 						<ColorPalette
 							value={ metaColor }
 							onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
-							allowReset
 						/>
-					</PanelColor>
+					</Fragment>
 					{ displayPostExcerpt == true &&
-						<PanelColor
-							title={ __( "Excerpt Color" ) }
-							colorValue={ excerptColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
 							<ColorPalette
 								value={ excerptColor }
 								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Color" ) }
-							colorValue={ ctaColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
 							<ColorPalette
 								value={ ctaColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 					{ displayPostLink == true &&
-						<PanelColor
-							title={ __( "CTA Background Color" ) }
-							colorValue={ ctaBgColor }
-							initialOpen={ false }
-						>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
 							<ColorPalette
 								value={ ctaBgColor }
 								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
 								allowReset
 							/>
-						</PanelColor>
+						</Fragment>
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
@@ -403,7 +317,7 @@ class UAGBPostGrid extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( "UAGB - Post Grid" ) }
+						label={ uagb_blocks_info.blocks["uagb/post-masonry"]["title"] }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
