@@ -110,8 +110,7 @@ class UAGBrestMenu extends Component {
 			}
 		}
 		return image_title
-	}
-		
+	}		
 
 	/*
 	 * Event to set Image as null while removing.
