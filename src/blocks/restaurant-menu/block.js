@@ -12,7 +12,7 @@ import Price from "./components/Price"
 import Description from "./components/Description"
 import PositionClasses from "./classes"
 import RestMenuImage from "./components/RestMenuImage"
-import edit from "./edit";
+import edit from "./edit"
 import attributes from "./attributes"
 import "./style.scss"
 import "./editor.scss"
@@ -64,7 +64,7 @@ registerBlockType( "uagb/restaurant-menu", {
 			imagePosition,
 		} = props.attributes
 
-		const my_block_id = 'uagb-rm-'+ block_id
+		const my_block_id = "uagb-rm-"+ block_id
 			
 		return (
 			<Fragment>	
@@ -72,16 +72,16 @@ registerBlockType( "uagb/restaurant-menu", {
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-					id = { my_block_id }
+				id = { my_block_id }
 				>				
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-rest_menu__wrap",
-						...PositionClasses( props.attributes ),
+							"uagb-rest_menu__wrap",
+							...PositionClasses( props.attributes ),
 						) } key ={ "wrap-"+index } >							
 							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>								
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }	
+								{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }	
 
 								<div className ="uagb-rm__text-wrap">																								
 									{ 
@@ -100,7 +100,7 @@ registerBlockType( "uagb/restaurant-menu", {
 										</Fragment>
 									}																		
 								</div>
-								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
+								{ ( imagePosition == "right" ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
 							</div>
 							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
 						</div>												

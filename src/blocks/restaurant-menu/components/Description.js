@@ -1,8 +1,8 @@
 const {
-    RichText,
-} = wp.editor;
+	RichText,
+} = wp.editor
 
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 const {
 	createBlock
@@ -17,15 +17,15 @@ class Description extends React.Component {
 			setAttributes , 
 			props,
 			index_value		
-		} = this.props;
+		} = this.props
 			
-		const test_arr = attributes.test_block[index_value];
-		let description = '';
-		if( test_arr && typeof test_arr !== 'undefined'){
-			description = test_arr['description']			
+		const test_arr = attributes.test_block[index_value]
+		let description = ""
+		if( test_arr && typeof test_arr !== "undefined"){
+			description = test_arr["description"]			
 		}
 		
-		if( setAttributes !== 'not_set' ){
+		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
 	                tagName='div'
@@ -35,7 +35,7 @@ class Description extends React.Component {
 
 	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
-								item['description'] = value				
+								item["description"] = value				
 							}
 							return item			
 						} )
@@ -45,16 +45,16 @@ class Description extends React.Component {
 	                } }     
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
-							props.insertBlocksAfter ?
-								( before, after, ...blocks ) => {
-									setAttributes( { content: before } );
-									props.insertBlocksAfter( [
-										...blocks,
-										createBlock( 'core/paragraph', { content: after } ),
-									] );
-								} :
-								undefined
-						}			
+						props.insertBlocksAfter ?
+							( before, after, ...blocks ) => {
+								setAttributes( { content: before } )
+								props.insertBlocksAfter( [
+									...blocks,
+									createBlock( "core/paragraph", { content: after } ),
+								] )
+							} :
+							undefined
+					}			
 					onRemove={ () => props.onReplace( [] ) }              
 	            />			
 			)

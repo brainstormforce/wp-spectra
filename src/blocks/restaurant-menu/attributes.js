@@ -80,8 +80,8 @@ const attributes = {
 		default: 10,
 	},		
 	block_id :{
-		type : 'string',
-		default : 'not_set'
+		type : "string",
+		default : "not_set"
 	},	
 	imgVrPadding :{
 		type: "number",
@@ -102,17 +102,17 @@ const attributes = {
 	iconImage: {
 		type: "object",
 		default:{
-			'url': '',
-			'alt': 'Menu placeholder img',
+			"url": "",
+			"alt": "Menu placeholder img",
 		}
 	},
 	imageSize:{
-		type: 'string',
-		default: 'medium',
+		type: "string",
+		default: "medium",
 	},
 	imageWidth :{
 		type: "number",	
-		default: '',	
+		default: "",	
 	},	
 	columns :{
 		type: "number",

@@ -38,7 +38,7 @@ class UAGBrestMenu extends Component {
 
 	constructor() {
 
-		super( ...arguments );
+		super( ...arguments )
 		this.onSelectRestImage  = this.onSelectRestImage.bind( this )
 		this.onRemoveRestImage  = this.onRemoveRestImage.bind(this)
 		this.getImageName       = this.getImageName.bind(this)
@@ -66,7 +66,7 @@ class UAGBrestMenu extends Component {
 
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item['image'] = imag_url				
+				item["image"] = imag_url				
 			}
 			return item			
 		} )
@@ -86,7 +86,7 @@ class UAGBrestMenu extends Component {
 		
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item['image'] = null				
+				item["image"] = null				
 			}
 			return item			
 		} )
@@ -110,7 +110,7 @@ class UAGBrestMenu extends Component {
 				image_title = "Replace Image"
 			}
 		}
-		return image_title;
+		return image_title
 	}
 		
 
@@ -146,7 +146,7 @@ class UAGBrestMenu extends Component {
 
 	render() {
 
-		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props;
+		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
 
 		// Setup the attributes.
 		const {
@@ -186,93 +186,93 @@ class UAGBrestMenu extends Component {
 			seperatorThickness,
 			seperatorColor,
 			stack,			
-		} = attributes;
+		} = attributes
 
 		// Add CSS.
 		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
-		if( null != element && 'undefined' != typeof element ) {
-			element.innerHTML = RestMenuStyle( this.props );
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = RestMenuStyle( this.props )
 		}		
 
-		const my_block_id = 'uagb-rm-'+this.props.clientId;
+		const my_block_id = "uagb-rm-"+this.props.clientId
 			
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
-						title={ __( "Typography" ) }
-						initialOpen={ false }
-					>	
-						<SelectControl
-							label={ __( "Title Tag" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>			
-						<RangeControl
-							label={ __( "Title Font Size" ) }
-							value={ titleFontSize }
-							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={30}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>									
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ descFontSize }
-							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>	
-						<RangeControl
-							label={ __( "Price Font Size" ) }
-							value={ priceFontSize }
-							onChange={ ( value ) => setAttributes( { priceFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"							
-							llowReset
-						/>			
+					title={ __( "Typography" ) }
+					initialOpen={ false }
+				>	
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>			
+					<RangeControl
+						label={ __( "Title Font Size" ) }
+						value={ titleFontSize }
+						onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={30}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>									
+					<RangeControl
+						label={ __( "Description Font Size" ) }
+						value={ descFontSize }
+						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>	
+					<RangeControl
+						label={ __( "Price Font Size" ) }
+						value={ priceFontSize }
+						onChange={ ( value ) => setAttributes( { priceFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"							
+						llowReset
+					/>			
 						
-					</PanelBody>
+				</PanelBody>
 
-					<PanelColorSettings
-							title={ __( 'Color Settings' ) }
-							initialOpen={ false }
-							colorSettings={ [
-								{
-									value: titleColor,
-									onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
-									label: __( 'Title Color' ),
-								},
-								{
-									value: descColor,
-									onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
-									label: __( 'Content Color' ),
-								},								
-								{
-									value: priceColor,
-									onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
-									label: __( 'Price Color' ),
-								},															
-							] }
-						>
-					</PanelColorSettings>
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: titleColor,
+							onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
+							label: __( "Title Color" ),
+						},
+						{
+							value: descColor,
+							onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
+							label: __( "Content Color" ),
+						},								
+						{
+							value: priceColor,
+							onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
+							label: __( "Price Color" ),
+						},															
+					] }
+				>
+				</PanelColorSettings>
 			</Fragment>
-		);
+		)
 
 		const separatorSettings =(
 			<Fragment>
@@ -323,19 +323,19 @@ class UAGBrestMenu extends Component {
 					}
 				</PanelBody>
 			</Fragment>
-		);
+		)
 
 		// Image sizes.
 		const imageSizeOptions = [
-			{ value: 'thumbnail', label: __( 'Thumbnail' ) },
-			{ value: 'medium', label: __( 'Medium' ) },
-			{ value: 'full', label: __( 'Large' ) }
-		];		
+			{ value: "thumbnail", label: __( "Thumbnail" ) },
+			{ value: "medium", label: __( "Medium" ) },
+			{ value: "full", label: __( "Large" ) }
+		]		
 				
 		const tmControls = ( index ) => {
-			let image_val = null;
-			if( test_block[index] && typeof test_block[index] !== 'undefined'){
-				image_val = test_block[index]['image']
+			let image_val = null
+			if( test_block[index] && typeof test_block[index] !== "undefined"){
+				image_val = test_block[index]["image"]
 			}
 			return (
 				<PanelBody key={index}
@@ -356,11 +356,11 @@ class UAGBrestMenu extends Component {
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  this.getImageName( test_block[index]['image'] ) }
+									{  this.getImageName( test_block[index]["image"] ) }
 								</Button>
 							) }
 						/>						
-						{ ( image_val && test_block[index]['image'].url !== null && test_block[index]['image'].url !=='' ) &&
+						{ ( image_val && test_block[index]["image"].url !== null && test_block[index]["image"].url !=="" ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveRestImage(index)
 							} } isLink isDestructive>
@@ -372,13 +372,13 @@ class UAGBrestMenu extends Component {
 			)
 		}
 		
-		let cnt = 0;
+		let cnt = 0
 		test_block.map( ( item, thisIndex ) => {
 			let image_arr = test_block[thisIndex]			
-			if( image_arr && typeof image_arr !== 'undefined'){
-	            const image = image_arr['image']
-	            if( typeof image !== "undefined" && image !== null && image !=='' ){
-	            	cnt++;
+			if( image_arr && typeof image_arr !== "undefined"){
+	            const image = image_arr["image"]
+	            if( typeof image !== "undefined" && image !== null && image !=="" ){
+	            	cnt++
 	            }
 	        }
 		} )	    
@@ -387,9 +387,9 @@ class UAGBrestMenu extends Component {
 		const marginSettings = (
 			<Fragment>
 				<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
+					title={ __( "Spacing" ) }
+					initialOpen={ false }
+				>
 					<RangeControl
 						label={ __( "Row Gap" ) }
 						value={ rowGap }
@@ -452,98 +452,98 @@ class UAGBrestMenu extends Component {
 					
 				</PanelBody>
 			</Fragment>
-		);
+		)
 
 		const inspect_control = (
-				<Fragment>
+			<Fragment>
 				 <InspectorControls>
 				 	<PanelBody
-					title={ __( 'General' ) }
-					initialOpen={ true }
+						title={ __( "General" ) }
+						initialOpen={ true }
 					>	
 				 	<RangeControl
-						label={ __( 'Number of Menu Items' ) }
-						value={ menu_item_count }
-						onChange={ ( newCount ) => {
-							let cloneTest_block = [ ...test_block ]
-							if ( cloneTest_block.length < newCount ) {
-								const incAmount = Math.abs( newCount - cloneTest_block.length )
+							label={ __( "Number of Menu Items" ) }
+							value={ menu_item_count }
+							onChange={ ( newCount ) => {
+								let cloneTest_block = [ ...test_block ]
+								if ( cloneTest_block.length < newCount ) {
+									const incAmount = Math.abs( newCount - cloneTest_block.length )
 
-								{ times( incAmount, n => {
+									{ times( incAmount, n => {
 
-									cloneTest_block.push( {
-										description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
-										title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
-										price: __("$19"),
-										image: "",
+										cloneTest_block.push( {
+											description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
+											title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
+											price: __("$19"),
+											image: "",
 										} )
-								} ) }
-								setAttributes( { test_block: cloneTest_block } )
-							}else{
-								const incAmount = Math.abs( newCount - cloneTest_block.length )
-								let data_new = cloneTest_block;
+									} ) }
+									setAttributes( { test_block: cloneTest_block } )
+								}else{
+									const incAmount = Math.abs( newCount - cloneTest_block.length )
+									let data_new = cloneTest_block
 					            for( var i= 0; i < incAmount; i++ ){             
-					                data_new.pop();
+					                data_new.pop()
 					            }           
-					            setAttributes({test_block:data_new});
+					            setAttributes({test_block:data_new})
 
-							}
-							setAttributes( { menu_item_count: newCount } )
-						} }
-						min={ 0 }
-						max={ 10 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Columns" ) }
-						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
-					<RangeControl
-						label={ __( "Columns (Tablet)" ) }
-						value={ tcolumns }
-						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
-					<RangeControl
-						label={ __( "Columns (Mobile)" ) }
-						value={ mcolumns }
-						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
+								}
+								setAttributes( { menu_item_count: newCount } )
+							} }
+							min={ 0 }
+							max={ 10 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ columns }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+							min={ 1 }
+							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+						/>
+						<RangeControl
+							label={ __( "Columns (Tablet)" ) }
+							value={ tcolumns }
+							onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+							min={ 1 }
+							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+						/>
+						<RangeControl
+							label={ __( "Columns (Mobile)" ) }
+							value={ mcolumns }
+							onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+							min={ 1 }
+							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+						/>
 					</PanelBody>
 									 	
 					<PanelBody
-					title={ __( 'Image' ) }
-					initialOpen={ false }
+						title={ __( "Image" ) }
+						initialOpen={ false }
 					>
-					{ times( menu_item_count, n => tmControls( n ) ) }
+						{ times( menu_item_count, n => tmControls( n ) ) }
 
-					{  cnt > 0 && <Fragment>
-						<SelectControl
-							label={ __( 'Image Position' ) }
-							value={ imagePosition }
-							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
-							options={ [
-								{ value: 'top', label: __( 'Top' ) },
-								{ value: 'left', label: __( 'Left' ) },
-								{ value: 'right', label: __( 'Right' ) },
-							] }
-						/>	
-						{ (imagePosition == 'left' || imagePosition == 'right') && 
+						{  cnt > 0 && <Fragment>
+							<SelectControl
+								label={ __( "Image Position" ) }
+								value={ imagePosition }
+								onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+								options={ [
+									{ value: "top", label: __( "Top" ) },
+									{ value: "left", label: __( "Left" ) },
+									{ value: "right", label: __( "Right" ) },
+								] }
+							/>	
+							{ (imagePosition == "left" || imagePosition == "right") && 
 							<Fragment>
 								<SelectControl
-								label={ __( 'Vertical ALignment' ) }
-								value={ imageAlignment }
-								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-								options={ [
-									{ value: 'top', label: __( 'Top' ) },
-									{ value: 'middle', label: __( 'Middle' ) },
-								] }
+									label={ __( "Vertical ALignment" ) }
+									value={ imageAlignment }
+									onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
+									options={ [
+										{ value: "top", label: __( "Top" ) },
+										{ value: "middle", label: __( "Middle" ) },
+									] }
 								/>	
 								<SelectControl
 									label={ __( "Stack on" ) }
@@ -557,15 +557,15 @@ class UAGBrestMenu extends Component {
 									onChange={ ( value ) => setAttributes( { stack: value } ) }
 								/>
 							</Fragment>
-						}						
-						<SelectControl
-								label={ __( 'Image Size' ) }
+							}						
+							<SelectControl
+								label={ __( "Image Size" ) }
 								options={ imageSizeOptions }
 								value={ imageSize }
 								onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 							/>
 						 <RangeControl
-								label={ __( 'Width' ) }
+								label={ __( "Width" ) }
 								value={ imageWidth }
 								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
 								min={ 0 }
@@ -573,20 +573,20 @@ class UAGBrestMenu extends Component {
 								allowReset
 							/>
 						</Fragment> 
-					}
+						}
 					
 					
-				</PanelBody>
+					</PanelBody>
 					{ separatorSettings }
 					{ TypographySettings }
 					{ marginSettings }					
 				</InspectorControls>
-				</Fragment>
-			);
+			</Fragment>
+		)
 
 		return (
 			<Fragment>				
-				{  ( (cnt == 0) || (cnt > 0 && imagePosition =='top' ) ) && <BlockControls key='controls'>
+				{  ( (cnt == 0) || (cnt > 0 && imagePosition =="top" ) ) && <BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
@@ -598,17 +598,17 @@ class UAGBrestMenu extends Component {
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-					id = { my_block_id }
+				id = { my_block_id }
 				>
 				
 					{ test_block.map( ( test, index ) => 
 
 						<div className = { classnames(
-						"uagb-rest_menu__wrap",
-						...PositionClasses( attributes ),
+							"uagb-rest_menu__wrap",
+							...PositionClasses( attributes ),
 						) } key ={ "wrap-"+index } >							
 							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>								
-								{ (imagePosition == 'top' || imagePosition == 'left' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
+								{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
 
 								<div className ="uagb-rm__text-wrap">																								
 									{ 
@@ -627,7 +627,7 @@ class UAGBrestMenu extends Component {
 										</Fragment>
 									}																		
 								</div>
-								{ ( imagePosition == 'right' ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
+								{ ( imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
 							</div>
 							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
 						</div>												
@@ -640,7 +640,7 @@ class UAGBrestMenu extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } );
+		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
