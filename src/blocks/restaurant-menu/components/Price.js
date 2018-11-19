@@ -19,7 +19,7 @@ class Price extends React.Component {
 			index_value	
 		} = this.props
 
-		const test_arr = attributes.test_block[index_value]
+		const test_arr = attributes.rest_menu_item_arr[index_value]
 		let price = ""
 		if( test_arr && typeof test_arr !== "undefined"){
 			price = test_arr["price"]			
@@ -33,14 +33,14 @@ class Price extends React.Component {
 	                className = 'uagb-rm__price'
 	                onChange={ ( value ) => { 
 
-	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
+	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
 								item["price"] = value				
 							}
 							return item			
 						} )
 	                	setAttributes( {
-							test_block: newItems,
+							rest_menu_item_arr: newItems,
 						} )	
 	                } }     
 	                multiline={ false }

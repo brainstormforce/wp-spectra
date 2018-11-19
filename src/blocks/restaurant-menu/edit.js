@@ -24,7 +24,6 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	ToggleControl,
 	BaseControl,
 	Button,
 } = wp.components
@@ -50,7 +49,7 @@ class UAGBrestMenu extends Component {
 	 * Event to set Image as while adding.
 	 */
 	onSelectRestImage( media, index ) {
-		const { test_block } = this.props.attributes
+		const { rest_menu_item_arr } = this.props.attributes
 		const { setAttributes } = this.props
 
 		let imag_url = null
@@ -64,7 +63,7 @@ class UAGBrestMenu extends Component {
 			imag_url = null
 		}
 
-		const newItems = test_block.map( ( item, thisIndex ) => {
+		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item["image"] = imag_url				
 			}
@@ -72,7 +71,7 @@ class UAGBrestMenu extends Component {
 		} )
 
 		setAttributes( {
-			test_block: newItems,
+			rest_menu_item_arr: newItems,
 		} )		
 
 	}	
@@ -81,10 +80,10 @@ class UAGBrestMenu extends Component {
 	 * Event to set Image as null while removing.
 	 */
 	onRemoveRestImage( index ) {
-		const { test_block } = this.props.attributes
+		const { rest_menu_item_arr } = this.props.attributes
 		const { setAttributes } = this.props
 		
-		const newItems = test_block.map( ( item, thisIndex ) => {
+		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item["image"] = null				
 			}
@@ -92,7 +91,7 @@ class UAGBrestMenu extends Component {
 		} )
 
 		setAttributes( {
-			test_block: newItems,
+			rest_menu_item_arr: newItems,
 		} )
 	}
 	
@@ -100,7 +99,7 @@ class UAGBrestMenu extends Component {
 	 * Event to set Image selectot label.
 	 */
 	getImageName( image ){
-		const { test_block } = this.props.attributes
+		const { rest_menu_item_arr } = this.props.attributes
 
 		let image_title = "Select Image"
 		if(image){
@@ -151,7 +150,7 @@ class UAGBrestMenu extends Component {
 		// Setup the attributes.
 		const {
 			menu_item_count,
-			test_block,
+			rest_menu_item_arr,
 			headingAlign,
 			priceColor,
 			descColor,
@@ -334,15 +333,14 @@ class UAGBrestMenu extends Component {
 				
 		const tmControls = ( index ) => {
 			let image_val = null
-			if( test_block[index] && typeof test_block[index] !== "undefined"){
-				image_val = test_block[index]["image"]
+			if( rest_menu_item_arr[index] && typeof rest_menu_item_arr[index] !== "undefined"){
+				image_val = rest_menu_item_arr[index]["image"]
 			}
 			return (
 				<PanelBody key={index}
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
-				>
-				
+				>				
 					<BaseControl
 						className="editor-bg-image-control"
 						label={ __( "" ) }
@@ -356,11 +354,11 @@ class UAGBrestMenu extends Component {
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  this.getImageName( test_block[index]["image"] ) }
+									{  this.getImageName( rest_menu_item_arr[index]["image"] ) }
 								</Button>
 							) }
 						/>						
-						{ ( image_val && test_block[index]["image"].url !== null && test_block[index]["image"].url !=="" ) &&
+						{ ( image_val && rest_menu_item_arr[index]["image"].url !== null && rest_menu_item_arr[index]["image"].url !=="" ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveRestImage(index)
 							} } isLink isDestructive>
@@ -373,8 +371,8 @@ class UAGBrestMenu extends Component {
 		}
 		
 		let cnt = 0
-		test_block.map( ( item, thisIndex ) => {
-			let image_arr = test_block[thisIndex]			
+		rest_menu_item_arr.map( ( item, thisIndex ) => {
+			let image_arr = rest_menu_item_arr[thisIndex]			
 			if( image_arr && typeof image_arr !== "undefined"){
 	            const image = image_arr["image"]
 	            if( typeof image !== "undefined" && image !== null && image !=="" ){
@@ -465,7 +463,7 @@ class UAGBrestMenu extends Component {
 							label={ __( "Number of Menu Items" ) }
 							value={ menu_item_count }
 							onChange={ ( newCount ) => {
-								let cloneTest_block = [ ...test_block ]
+								let cloneTest_block = [ ...rest_menu_item_arr ]
 								if ( cloneTest_block.length < newCount ) {
 									const incAmount = Math.abs( newCount - cloneTest_block.length )
 
@@ -478,14 +476,14 @@ class UAGBrestMenu extends Component {
 											image: "",
 										} )
 									} ) }
-									setAttributes( { test_block: cloneTest_block } )
+									setAttributes( { rest_menu_item_arr: cloneTest_block } )
 								}else{
 									const incAmount = Math.abs( newCount - cloneTest_block.length )
 									let data_new = cloneTest_block
 					            for( var i= 0; i < incAmount; i++ ){             
 					                data_new.pop()
 					            }           
-					            setAttributes({test_block:data_new})
+					            setAttributes({rest_menu_item_arr:data_new})
 
 								}
 								setAttributes( { menu_item_count: newCount } )
@@ -601,7 +599,7 @@ class UAGBrestMenu extends Component {
 				id = { my_block_id }
 				>
 				
-					{ test_block.map( ( test, index ) => 
+					{ rest_menu_item_arr.map( ( test, index ) => 
 
 						<div className = { classnames(
 							"uagb-rest_menu__wrap",

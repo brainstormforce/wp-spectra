@@ -1,12 +1,11 @@
 /**
- * BLOCK: Testimonial
+ * BLOCK: Restaurant Menu
  */
 
 // Import block dependencies and components.
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
-// Import icon.
 import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
@@ -60,7 +59,7 @@ registerBlockType( "uagb/restaurant-menu", {
 		const {
 			block_id,
 			className,
-			test_block,
+			rest_menu_item_arr,
 			imagePosition,
 		} = props.attributes
 
@@ -74,7 +73,7 @@ registerBlockType( "uagb/restaurant-menu", {
 				) }
 				id = { my_block_id }
 				>				
-					{ test_block.map( ( test, index ) => 
+					{ rest_menu_item_arr.map( ( test, index ) => 
 
 						<div className = { classnames(
 							"uagb-rest_menu__wrap",
