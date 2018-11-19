@@ -665,21 +665,22 @@ function uagb_get_post_content( $attributes, $recent_posts ) {
 				<div class = "<?php echo $content_align_class; ?>">
 					<?php echo uagb_get_timeline_icon( $attributes ); ?> 
 					<div class = "<?php echo $day_align_class; ?>" >
-						<div class = "uagb-timeline__events-new">							
-							<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
-								<?php echo uagb_get_timeline_date( $attributes, $post_id, 'uagb-timeline__inner-date-new' ); ?>
+						<div class = "uagb-timeline__events-new">
+							<div class ="uagb-timeline__events-inner-new"> 							
+								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
+									<?php echo uagb_get_timeline_date( $attributes, $post_id, 'uagb-timeline__inner-date-new' ); ?>
+								</div>
+								<div class = "uagb-content" >
+									<?php
+										echo uagb_get_timeline_image( $attributes, $post_id );
+										echo uagb_get_timeline_title( $attributes, $post_id );
+										echo uagb_get_timeline_author( $attributes, $post->post_author );
+										echo uagb_get_timeline_excerpt( $attributes, $post->post_content, $post_id );
+										echo uagb_get_timeline_cta( $attributes, $post_id );
+									?>
+									<div class = "uagb-timeline__arrow"></div>
+								</div>
 							</div>
-							<div class = "uagb-content" >
-								<?php
-									echo uagb_get_timeline_image( $attributes, $post_id );
-									echo uagb_get_timeline_title( $attributes, $post_id );
-									echo uagb_get_timeline_author( $attributes, $post->post_author );
-									echo uagb_get_timeline_excerpt( $attributes, $post->post_content, $post_id );
-									echo uagb_get_timeline_cta( $attributes, $post_id );
-								?>
-								<div class = "uagb-timeline__arrow"></div>
-							</div>
-
 						</div>
 					</div>
 					<div class = "uagb-timeline__date-new" >
