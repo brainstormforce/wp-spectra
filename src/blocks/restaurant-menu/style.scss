@@ -52,10 +52,15 @@
 .uagb-rm__price-wrap{
     display: table-cell;
 }
-.uagb-rm__title-wrap{
+
+.uagb-rm__title-wrap,
+.uagb-rm__image-position-left.uagb-rm__align-center .uagb-rm__price-wrap,
+.uagb-rm__image-position-right.uagb-rm__align-center .uagb-rm__price-wrap{
     width:85%;
 }
-.uagb-rm__price-wrap{
+.uagb-rm__price-wrap,
+.uagb-rm__image-position-left.uagb-rm__align-center .uagb-rm__price-wrap,
+.uagb-rm__image-position-right.uagb-rm__align-center .uagb-rm__price-wrap{
     width:15%;
 }
 

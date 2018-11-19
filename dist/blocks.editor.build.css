@@ -1,9 +1,223 @@
-.uagb-post-grid h2 a{text-decoration:none}.uagb-post-grid a{pointer-events:none;cursor:default}.block-editor-page #wpwrap .edit-post-visual-editor .slick-dots button{color:transparent}.block-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img{position:absolute;width:auto;height:auto;min-width:100%;max-width:none;left:50%;top:50%;-webkit-transform:translate(-50%, -50%);-ms-transform:translate(-50%, -50%);transform:translate(-50%, -50%);min-height:100%}
-.uagb-section__wrap:before{content:'';position:absolute;border:2px dashed #03ddff;top:-1px;right:-1px;bottom:-1px;left:-1px;z-index:0}.editor-bg-image-control .components-button,.editor-bg-video-control .components-button{vertical-align:middle}.editor-bg-image-control .components-button:last-child,.editor-bg-video-control .components-button:last-child{margin-left:10px}
-.uagb-buttons__outer-wrap .uagb-button__wrapper div{display:-ms-inline-flexbox;display:inline-flex}.editor-url-input input[type=text]{width:100%}
-.uagb-ifb-separator{display:inline-block;width:30%;margin:0}a.uagb-infobox-cta-link{pointer-events:none}.uagb-infobox__content-wrap.uagb-infobox-icon-above-title{text-align:center}.block-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap{color:inherit}.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix{margin-bottom:5px}.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title{margin-bottom:10px}.block-editor-page #wpwrap .uagb-ifb-separator-parent{margin-bottom:10px}.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc{margin-bottom:10px}
-.gutenberg-editor-page #wpwrap .uagb-testomonial__outer-wrap ul.slick-dots{margin:0 auto}.uagb-tm__desc,.editor-block-list__layout .uagb-tm__desc.editor-rich-text__tinymce{margin-bottom:15px}.uagb-tm__author-name,.editor-block-list__layout .uagb-tm__author-name.editor-rich-text__tinymce{margin-bottom:5px;font-size:30px;line-height:1em}.uagb-slick-carousel ul.slick-dots li button:before{font-family:dashicons;font-size:10px;line-height:20px;position:absolute;top:0;left:0;width:20px;height:20px;content:'\f159';text-align:center;opacity:.25;color:black;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-.block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list{list-style:none;display:-ms-flexbox;display:flex;margin:0;padding:0}.block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a{color:#333}.wp-block-uagb-team .components-button:focus:enabled,.wp-block-uagb-team .components-button{background:transparent;border:none;-webkit-box-shadow:none;box-shadow:none}.editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce{margin-bottom:10px}
-#wpwrap .edit-post-visual-editor a.uagb-ss__link{color:#3a3a3a}
-.uagb-rm__desc,.editor-block-list__layout .uagb-rm__desc.editor-rich-text__tinymce{margin-bottom:15px}.block-editor-page #wpwrap .uagb-rm__separator-parent{margin-bottom:10px}
-#wpwrap .edit-post-visual-editor a.uagb-icon-list__link{color:#3a3a3a}
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Editor styles for the admin
+ */
+.uagb-post-grid h2 a {
+  text-decoration: none; }
+
+.uagb-post-grid a {
+  pointer-events: none;
+  cursor: default; }
+
+.block-editor-page #wpwrap .edit-post-visual-editor .slick-dots button {
+  color: transparent; }
+
+.block-editor-page #wpwrap .edit-post-visual-editor .uagb-post__image-position-background .uagb-post__image img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  min-width: 100%;
+  max-width: none;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  min-height: 100%; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.uagb-section__wrap:before {
+  content: '';
+  position: absolute;
+  border: 2px dashed #03ddff;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  left: -1px;
+  z-index: 0; }
+
+.editor-bg-image-control .components-button,
+.editor-bg-video-control .components-button {
+  vertical-align: middle; }
+
+.editor-bg-image-control .components-button:last-child,
+.editor-bg-video-control .components-button:last-child {
+  margin-left: 10px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Editor styles for the admin
+ */
+.uagb-buttons__outer-wrap .uagb-button__wrapper div {
+  display: -ms-inline-flexbox;
+  display: inline-flex; }
+
+.editor-url-input input[type=text] {
+  width: 100%; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.uagb-ifb-separator {
+  display: inline-block;
+  width: 30%;
+  margin: 0; }
+
+a.uagb-infobox-cta-link {
+  pointer-events: none; }
+
+.uagb-infobox__content-wrap.uagb-infobox-icon-above-title {
+  text-align: center; }
+
+.block-editor-page #wpwrap .edit-post-visual-editor a.uagb-infobox-link-wrap {
+  color: inherit; }
+
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title-prefix {
+  margin-bottom: 5px; }
+
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-title {
+  margin-bottom: 10px; }
+
+.block-editor-page #wpwrap .uagb-ifb-separator-parent {
+  margin-bottom: 10px; }
+
+.block-editor-page #wpwrap .editor-rich-text .uagb-ifb-desc {
+  margin-bottom: 10px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.gutenberg-editor-page #wpwrap .uagb-testomonial__outer-wrap ul.slick-dots {
+  margin: 0 auto; }
+
+.uagb-tm__desc,
+.editor-block-list__layout .uagb-tm__desc.editor-rich-text__tinymce {
+  margin-bottom: 15px; }
+
+.uagb-tm__author-name,
+.editor-block-list__layout .uagb-tm__author-name.editor-rich-text__tinymce {
+  margin-bottom: 5px;
+  font-size: 30px;
+  line-height: 1em; }
+
+.uagb-slick-carousel ul.slick-dots li button:before {
+  font-family: dashicons;
+  font-size: 10px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: '\f159';
+  text-align: center;
+  opacity: .25;
+  color: black;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.block-editor-page #wpwrap .edit-post-visual-editor ul.uagb-team__social-list {
+  list-style: none;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0;
+  padding: 0; }
+
+.block-editor-page #wpwrap .edit-post-visual-editor .uagb-team__social-icon a {
+  color: #333; }
+
+.wp-block-uagb-team .components-button:focus:enabled,
+.wp-block-uagb-team .components-button {
+  background: transparent;
+  border: none;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce {
+  margin-bottom: 10px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Editor styles for the admin
+ */
+#wpwrap .edit-post-visual-editor a.uagb-ss__link {
+  color: #3a3a3a; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * #.# Editor Styles
+ *
+ * CSS for just Backend enqueued after style.scss
+ * which makes it higher in priority.
+ */
+.uagb-rm__desc,
+.editor-block-list__layout .uagb-rm__desc.editor-rich-text__tinymce {
+  margin-bottom: 15px; }
+
+.block-editor-page #wpwrap .uagb-rm__separator-parent {
+  margin-bottom: 10px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+/**
+ * Editor styles for the admin
+ */
+#wpwrap .edit-post-visual-editor a.uagb-icon-list__link {
+  color: #3a3a3a; }
