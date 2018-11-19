@@ -80,6 +80,7 @@ registerBlockType( "uagb/buttons", {
 							tagName='a'
 							className='uagb-button__link'
 							href={ buttons[index].link }
+							rel ="noopener noreferrer"
 							target={ buttons[index].target }
 						/>
 					</div>

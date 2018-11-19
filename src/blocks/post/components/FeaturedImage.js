@@ -16,7 +16,7 @@ class FeaturedImage extends React.Component {
 
 			return (
 				<div className='uagb-post__image'>
-					<a href={ post.link } target="_blank" rel="bookmark">
+					<a href={ post.link } target="_blank" rel ="noopener noreferrer">
 						<img
 							src={ src[0] }
 							alt={ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }
