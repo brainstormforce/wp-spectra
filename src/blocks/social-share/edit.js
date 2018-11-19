@@ -91,7 +91,7 @@ class UAGBSocialShare extends Component {
 						options={ [
 							{ value: "facebook", label: __( "Facebook" ) },
 							{ value: "twitter", label: __( "Twitter" ) },
-							{ value: "google", label: __( "Google\"Plu\"" ) },
+							{ value: "google", label: __( "Google Plus" ) },
 							{ value: "pinterest", label: __( "Pinterest" ) },
 							{ value: "linkedin", label: __( "LinkedIn" ) },
 							{ value: "digg", label: __( "Digg" ) },
