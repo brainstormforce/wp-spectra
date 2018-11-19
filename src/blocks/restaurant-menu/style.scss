@@ -249,11 +249,11 @@
     }
 
     .uagb-rm__image-position-right.uagb-rm-stacked-tablet.uagb-rm-reverse-order-tablet .uagb-rm__content{
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
+        display: -webkit-box;
+        display: -ms-flexbox;
         -js-display: flex;
         display: -webkit-flex;
-        display: -moz-inline-box;
+        display: -moz-flexbox;
         display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
@@ -301,12 +301,12 @@
     }
 
     .uagb-rm__image-position-right.uagb-rm-stacked-mobile.uagb-rm-reverse-order-mobile .uagb-rm__content{
-        display: -webkit-inline-box;
-        display: -ms-inline-flexbox;
-        -js-display: inline-flex;
-        display: -webkit-inline-flex;
-        display: -moz-inline-box;
-        display: inline-flex;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        -js-display: flex;
+        display: -webkit-flex;
+        display: -moz-flexbox;
+        display: flex;
         -webkit-box-orient: vertical;
         -webkit-box-direction: reverse;
         -ms-flex-direction: column-reverse;
