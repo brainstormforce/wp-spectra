@@ -57,6 +57,7 @@ class UAGBPostMasonry extends Component {
 			imgSize,
 			imgPosition,
 			displayPostLink,
+			newTab,
 			align,
 			columns,
 			tcolumns,
@@ -185,6 +186,11 @@ class UAGBPostMasonry extends Component {
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
 						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
+					/>
+					<ToggleControl
+						label={ __( "Open links in New Tab" ) }
+						checked={ newTab }
+						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>

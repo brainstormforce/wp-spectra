@@ -6,6 +6,8 @@ class Button extends React.Component {
 
 		const { post, attributes } = this.props
 
+		let target = ( attributes.newTab ) ? "_blank" : "_self"
+
 		if ( attributes.displayPostLink ) {
 
 			return (
@@ -17,7 +19,7 @@ class Button extends React.Component {
 						background: attributes.ctaBgColor
 					}}
 				>
-					<a style={{	color: attributes.ctaColor }} className='uagb-post__link uagb-text-link' href={ post.link } target="_blank" rel ="noopener noreferrer">{ __( "Read More" ) }</a>
+					<a style={{	color: attributes.ctaColor }} className='uagb-post__link uagb-text-link' href={ post.link } target={ target } rel ="noopener noreferrer">{ __( "Read More" ) }</a>
 				</div>
 			)
 

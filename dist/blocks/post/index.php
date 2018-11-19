@@ -113,8 +113,8 @@ function uagb_post_masonry_add_script() {
 						'arrows' : true,
 						'dots' : true,
 						'rtl' : false,
-						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + ';"><i class=\"dashicons-arrow-left-alt2 dashicons\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/i><\/button>',
-						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + '"><i class=\"dashicons-arrow-right-alt2 dashicons\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/i><\/button>',
+						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + ';"><span class=\"fas fa-angle-left\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
+						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style="border-color:' + '<?php echo $value['arrowColor']; ?>' + '"><span class=\"fas fa-angle-right\" style="font-size:' + '<?php echo $value['arrowSize']; ?>' + 'px; color:' + '<?php echo $value['arrowColor']; ?>' + ';"><\/span><\/button>',
 						'responsive' : [
 							{
 								'breakpoint' : 1024,
@@ -205,6 +205,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
+			array_push( $outerwrap, 'uagb-slick-carousel' );
 			break;
 
 		default:
@@ -289,6 +290,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'newTab'             => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -432,6 +437,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'newTab'             => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -599,6 +608,10 @@ function uagb_blocks_register_block_core_latest_posts() {
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'newTab'             => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -845,9 +858,10 @@ function uagb_render_image( $attributes ) {
 	if ( ! $attributes['displayPostImage'] ) {
 		return;
 	}
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
@@ -861,9 +875,10 @@ function uagb_render_image( $attributes ) {
  * @since 0.0.1
  */
 function uagb_render_title( $attributes ) {
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title" style="<?php echo 'color: ' . $attributes['titleColor'] . '; font-size: ' . $attributes['titleFontSize'] . 'px; margin-bottom:' . $attributes['titleBottomSpace'] . 'px;'; ?>">
-		<a href="<?php the_permalink(); ?>" target="_blank" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
 }
@@ -926,9 +941,10 @@ function uagb_render_button( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
 	}
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	?>
 	<div class="uagb-post__cta" style="<?php echo 'color: ' . $attributes['ctaColor'] . '; background: ' . $attributes['ctaBgColor']; ?>">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="_blank" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
 	</div>
 	<?php
 }

@@ -5,9 +5,11 @@ class Title extends React.Component {
 
 	render() {
 
-		const Tag = this.props.attributes.titleTag
-
 		const { post, attributes } = this.props
+
+		const Tag = attributes.titleTag
+
+		let target = ( attributes.newTab ) ? "_blank" : "_self"
 
 		return (
 
@@ -25,7 +27,7 @@ class Title extends React.Component {
 						fontSize: attributes.titleFontSize
 					}}
 					href={ post.link }
-					target="_blank"
+					target={ target }
 					rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
 			</Tag>
 		)

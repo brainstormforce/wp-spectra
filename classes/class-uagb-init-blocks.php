@@ -131,7 +131,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
-
 	} // End function editor_assets().
 
 	/**
