@@ -22,6 +22,7 @@ import Excerpt from "./components/Excerpt"
 import CtaLink from "./components/CtaLink"
 import Author from "./components/Author"
 import PostDate from "./components/PostDate"
+import TmIcon from "./components/TmIcon"
 
 const { Component, Fragment } = wp.element;
 
@@ -866,7 +867,6 @@ class UAGBTimeline extends Component {
             arrowlinAlignment,
             displayPostDate,
             postsToShow,
-            icon,
             align,
         } = attributes;
        
@@ -915,14 +915,11 @@ class UAGBTimeline extends Component {
 								day_align_class = DayAlignClass( this.props.attributes, index )
 							} 
 
-							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon  
-
 			                return (
 			                	<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
 			                		<div className = {content_align_class}> 
-			                			<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
-											<span className = {icon_class}></span>
-										</div>
+
+                                        { <TmIcon attributes={attributes} /> } 
 										
 										<div className = {day_align_class} >
 											<div className="uagb-timeline__events-new">
