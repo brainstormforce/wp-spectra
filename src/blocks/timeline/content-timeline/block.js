@@ -21,6 +21,8 @@ import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
+const { dateI18n, __experimentalGetSettings } = wp.date
+
 // Components
 const { __ } = wp.i18n
 
@@ -45,11 +47,11 @@ registerBlockType( "uagb/content-timeline", {
 		__( "Timeline" ),
 		__( "uagb" ),
 	],
-	attributes,    
-	edit,    
+	attributes,
+	edit,
 	save: function( props ) {
-        
-		const {            
+
+		const {
 			block_id,
 			headingTag,
 			timelinAlignment,
@@ -58,86 +60,88 @@ registerBlockType( "uagb/content-timeline", {
 			tm_content,
 			t_date,
 			stack,
-			className          
+			className
 		} = props.attributes
-       
+
 		var my_block_id = "uagb-ctm-"+block_id
 
 		/* Style for elements */
-		var front_style = contentTimelineStyle( props )        
-        
+		var front_style = contentTimelineStyle( props )
+
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 
+		const dateFormat = __experimentalGetSettings().formats.date
+
 		var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
-		var day_align_class     = DayAlignClass( props.attributes, 0 ) // 
+		var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 
 		let data_copy     = [ ...tm_content ]
 		var display_inner_date = false
 
-		return (            
+		return (
 			<div  className={ classnames(
 				className,
 				"uagb-timeline__outer-wrap"
 			) }
-			id = { my_block_id } >                          
+			id = { my_block_id } >
 				<div  className = { classnames(
 					"uagb-timeline__content-wrap",
 					...ContentTmClasses( props.attributes ),
 				) }>
 					<div className = "uagb-timeline-wrapper">
-						<div className = "uagb-timeline__main">   
-							<div className = "uagb-timeline__days uagb-timeline-infinite-load">                                   
-								{ 
-									tm_content.map((post,index) => { 
+						<div className = "uagb-timeline__main">
+							<div className = "uagb-timeline__days uagb-timeline-infinite-load">
+								{
+									tm_content.map((post,index) => {
 										var second_index = "uagb-"+index
 										if(timelinAlignment == "center"){
 											display_inner_date = true
 											content_align_class = AlignClass( props.attributes, index ) // Get classname for layout alignment
-											day_align_class     = DayAlignClass( props.attributes, index ) // 
-										}   
-										const Tag = headingTag  
-										var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "+icon  
-                                                
+											day_align_class     = DayAlignClass( props.attributes, index ) //
+										}
+										const Tag = headingTag
+										var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "+icon
+
 										return (
 											<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
-												<div className = { classnames(                                                       
+												<div className = { classnames(
 													...content_align_class,
-												) }> 
-                                                        
+												) }>
+
 													<div className = "uagb-timeline__marker out-view-uagb-timeline__icon">
 														<span className = {icon_class}></span>
 													</div>
-                                                        
-													<div className = { classnames(                                                       
+
+													<div className = { classnames(
 														...day_align_class,
 													) }>
 														<div className="uagb-events-new" >
-															<div className="uagb-timeline__events-inner-new" >                                                                
-																<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >                                                                
+															<div className="uagb-timeline__events-inner-new" >
+																<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
 																	{ displayPostDate && t_date[index].title &&
-                                                                            <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-timeline__inner-date-new" }>
-                                                                            	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
+                                                                            <div className={ "uagb-timeline__inner-date-new" }>
+                                                                            	{ dateI18n( dateFormat, t_date[index].title ) }
                                                                             </div>
-																	}  
+																	}
 																</div>
 
 																<div className="uagb-timeline-content">
-                                                                        
-																	<div className="uagb-timeline__heading-text" > 
+
+																	<div className="uagb-timeline__heading-text" >
 																		<RichText.Content
 																			tagName={ headingTag }
 																			value={ post.time_heading }
-																			className='uagb-timeline__heading'  
+																			className='uagb-timeline__heading'
 																		/>
 																	</div>
 
 																	<RichText.Content
 																		tagName= "p"
 																		value={ post.time_desc }
-																		className='uagb-timeline-desc-content'  
+																		className='uagb-timeline-desc-content'
 																	/>
 
-																	<div className="uagb-timeline__arrow"></div> 
+																	<div className="uagb-timeline__arrow"></div>
 
 																</div>
 
@@ -145,12 +149,12 @@ registerBlockType( "uagb/content-timeline", {
 														</div>
 													</div>
 
-													{ display_inner_date && <div className = "uagb-timeline__date-new">                                                                                                   
+													{ display_inner_date && <div className = "uagb-timeline__date-new">
 														{ displayPostDate && t_date[index].title &&
-                                                                <div dateTime={ moment( t_date[index].title ).utc().format() } className={ "uagb-timeline__date-new" }>
-                                                                	{ moment( t_date[index].title ).local().format( "MMMM DD, Y" ) }
+                                                                <div className={ "uagb-timeline__date-new" }>
+                                                                	{ dateI18n( dateFormat, t_date[index].title ) }
                                                                 </div>
-														} 
+														}
 													</div>
 													}
 												</div>
@@ -162,7 +166,7 @@ registerBlockType( "uagb/content-timeline", {
 							</div>
 							<div className = "uagb-timeline__line" >
 								<div className = "uagb-timeline__line__inner"></div>
-							</div> 
+							</div>
 						</div>
 					</div>
 				</div>

@@ -56,7 +56,7 @@ class UAGBtestimonial extends Component {
 		const { setAttributes } = this.props
 
 		let imag_url = null
-		if ( ! media || ! media.url ) {			
+		if ( ! media || ! media.url ) {
 			imag_url = null
 		}else{
 			imag_url = media
@@ -68,16 +68,16 @@ class UAGBtestimonial extends Component {
 
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = imag_url				
+				item["image"] = imag_url
 			}
-			return item			
+			return item
 		} )
 
 		setAttributes( {
 			test_block: newItems,
-		} )		
+		} )
 
-	}	
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -85,19 +85,19 @@ class UAGBtestimonial extends Component {
 	onRemoveTestImage( index ) {
 		const { test_block } = this.props.attributes
 		const { setAttributes } = this.props
-		
+
 		const newItems = test_block.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = null				
+				item["image"] = null
 			}
-			return item			
+			return item
 		} )
 
 		setAttributes( {
 			test_block: newItems,
 		} )
 	}
-	
+
 	/*
 	 * Event to set Image selectot label.
 	 */
@@ -114,7 +114,7 @@ class UAGBtestimonial extends Component {
 		}
 		return image_name
 	}
-		
+
 	togglePauseOnHover() {
 		const { pauseOnHover } = this.props.attributes
 		const { setAttributes } = this.props
@@ -205,7 +205,7 @@ class UAGBtestimonial extends Component {
 			autoplay,
 			autoplaySpeed,
 			arrowSize,
-			arrowColor,	
+			arrowColor,
 			rowGap,
 			columnGap,
 			contentPadding,
@@ -228,17 +228,17 @@ class UAGBtestimonial extends Component {
 		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = TestimonialStyle( this.props )
-		}		
+		}
 
 		const my_block_id = "uagb-testimonial-"+this.props.clientId
-			
+
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
 					title={ __( "Typography" ) }
 					initialOpen={ false }
-				>						
+				>
 					<RangeControl
 						label={ __( "Testimonial Font Size" ) }
 						value={ descFontSize }
@@ -248,7 +248,7 @@ class UAGBtestimonial extends Component {
 						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>											
+					/>
 					<RangeControl
 						label={ __( "Author Font Size" ) }
 						value={ nameFontSize }
@@ -258,7 +258,7 @@ class UAGBtestimonial extends Component {
 						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>	
+					/>
 					<RangeControl
 						label={ __( "Company Font Size" ) }
 						value={ companyFontSize }
@@ -266,10 +266,10 @@ class UAGBtestimonial extends Component {
 						min={ 10 }
 						max={ 100 }
 						initialPosition={16}
-						beforeIcon="editor-textcolor"							
+						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-						
+
 				</PanelBody>
 
 				<PanelColorSettings
@@ -295,7 +295,7 @@ class UAGBtestimonial extends Component {
 							value: arrowColor,
 							onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
 							label: __( "Arrow Color" ),
-						},								
+						},
 					] }
 				>
 				</PanelColorSettings>
@@ -332,7 +332,7 @@ class UAGBtestimonial extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>					
+					/>
 					<RangeControl
 						label={ __( "Testimonial Bottom Margin" ) }
 						value={ descSpace }
@@ -348,7 +348,7 @@ class UAGBtestimonial extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>						
+					/>
 					<RangeControl
 						label={ __( "Image Horizontal Padding" ) }
 						value={ imgHrPadding }
@@ -364,8 +364,8 @@ class UAGBtestimonial extends Component {
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>						
-					
+					/>
+
 				</PanelBody>
 			</Fragment>
 		)
@@ -391,7 +391,7 @@ class UAGBtestimonial extends Component {
 									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 									allowReset
 								/>
-							</Fragment>								
+							</Fragment>
 					}
 					{ "image" == backgroundType &&
 							<Fragment>
@@ -432,7 +432,7 @@ class UAGBtestimonial extends Component {
 												{ value: "bottom-center", label: __( "Bottom Center" ) },
 												{ value: "bottom-right", label: __( "Bottom Right" ) },
 											] }
-										/>										
+										/>
 										<SelectControl
 											label={ __( "Repeat" ) }
 											value={ backgroundRepeat }
@@ -461,11 +461,11 @@ class UAGBtestimonial extends Component {
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</Fragment>	
+										</Fragment>
 									</Fragment>
 								}
 							</Fragment>
-					}						
+					}
 					{ ( "image" == backgroundType && backgroundImage )  &&
 							<RangeControl
 								label={ __( "Opacity" ) }
@@ -476,7 +476,7 @@ class UAGBtestimonial extends Component {
 								allowReset
 								initialPosition={0}
 							/>
-					}						
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Border" ) } initialOpen={ false }>
 					<SelectControl
@@ -520,7 +520,7 @@ class UAGBtestimonial extends Component {
 										onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 										allowReset
 									/>
-								</Fragment>									
+								</Fragment>
 							</Fragment>
 					}
 				</PanelBody>
@@ -532,8 +532,8 @@ class UAGBtestimonial extends Component {
 			{ value: "thumbnail", label: __( "Thumbnail" ) },
 			{ value: "medium", label: __( "Medium" ) },
 			{ value: "full", label: __( "Large" ) }
-		]		
-		
+		]
+
 		function NextArrow( props ) {
 
 			return (
@@ -591,15 +591,15 @@ class UAGBtestimonial extends Component {
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
 				>
-				
+
 					<BaseControl
 						className="editor-bg-image-control"
 						label={ __( "" ) }
 					>
 						<MediaUpload
 							title={ __( "Select Image"+ ( index + 1 ) ) }
-							onSelect={ ( media ) => { 
-								this.onSelectTestImage( media, index )								
+							onSelect={ ( media ) => {
+								this.onSelectTestImage( media, index )
 							} }
 							allowedTypes= { [ "image" ] }
 							value={ image_val }
@@ -608,7 +608,7 @@ class UAGBtestimonial extends Component {
 									{  this.getImageName( test_block[index]["image"] ) }
 								</Button>
 							) }
-						/>						
+						/>
 						{ ( image_val && test_block[index]["image"].url !== null && test_block[index]["image"].url !=="" ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveTestImage(index)
@@ -663,19 +663,19 @@ class UAGBtestimonial extends Component {
 						max={ 50 }
 					/>
 				</PanelBody>
-			</Fragment>			
+			</Fragment>
 		)
 
 		let cnt = 0
 		test_block.map( ( item, thisIndex ) => {
-			let image_arr = test_block[thisIndex]			
+			let image_arr = test_block[thisIndex]
 			if( image_arr && typeof image_arr !== "undefined"){
 	            const image = image_arr["image"]
 	            if( typeof image !== "undefined" && image !== null && image !=="" ){
 	            	cnt++
 	            }
 	        }
-		} )	    
+		} )
 
 		// Global Controls.
 		const inspect_control = (
@@ -684,7 +684,7 @@ class UAGBtestimonial extends Component {
 				 	<PanelBody
 						title={ __( "General" ) }
 						initialOpen={ true }
-					>	
+					>
 				 	<RangeControl
 							label={ __( "Number of Testimonials" ) }
 							value={ test_item_count }
@@ -706,9 +706,9 @@ class UAGBtestimonial extends Component {
 								}else{
 									const incAmount = Math.abs( newCount - cloneTest_block.length )
 									let data_new = cloneTest_block
-					            for( var i= 0; i < incAmount; i++ ){             
+					            for( var i= 0; i < incAmount; i++ ){
 					                data_new.pop()
-					            }           
+					            }
 					            setAttributes({test_block:data_new})
 
 								}
@@ -741,7 +741,7 @@ class UAGBtestimonial extends Component {
 						/>
 					</PanelBody>
 					{ carousal_settings }
-				 	
+
 					<PanelBody
 						title={ __( "Image" ) }
 						initialOpen={ false }
@@ -759,8 +759,8 @@ class UAGBtestimonial extends Component {
 									{ value: "left", label: __( "Left" ) },
 									{ value: "right", label: __( "Right" ) },
 								] }
-							/>	
-							{ (imagePosition == "left" || imagePosition == "right") && 
+							/>
+							{ (imagePosition == "left" || imagePosition == "right") &&
 							<Fragment>
 								<SelectControl
 									label={ __( "Vertical ALignment" ) }
@@ -770,7 +770,7 @@ class UAGBtestimonial extends Component {
 										{ value: "top", label: __( "Top" ) },
 										{ value: "middle", label: __( "Middle" ) },
 									] }
-								/>	
+								/>
 								<SelectControl
 									label={ __( "Stack on" ) }
 									value={ stack }
@@ -805,13 +805,13 @@ class UAGBtestimonial extends Component {
 								value={ imageWidth }
 								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
 								min={ 0 }
-								max={ 500 }								
+								max={ 500 }
 								allowReset
 							/>
-						</Fragment> 
+						</Fragment>
 						}
-					
-					
+
+
 					</PanelBody>
 					{ TypographySettings }
 
@@ -822,17 +822,17 @@ class UAGBtestimonial extends Component {
 		)
 
 		return (
-			<Fragment>				
+			<Fragment>
 				<BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
-				</BlockControls>				
+				</BlockControls>
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousal uagb-tm__arrow-outside"
+					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
 				id = { my_block_id }
 				>
@@ -842,19 +842,19 @@ class UAGBtestimonial extends Component {
 							"is-carousel",
 							`uagb-tm__columns-${ columns }`,
 							"uagb-tm__items"
-						) }					
+						) }
 						{...settings}
 					>
 
-						{ test_block.map( ( test, index ) => 
+						{ test_block.map( ( test, index ) =>
 
 							<div className = { classnames(
 								"uagb-testimonial__wrap",
 								...PositionClasses( attributes ),
-							) } key ={ "wrap-"+index } >							
+							) } key ={ "wrap-"+index } >
 								<div className = "uagb-tm__content" key ={ "tm_content-"+index }>
 									<div className = "uagb-tm__overlay"></div>
-									{ (imagePosition == "top" || imagePosition == "left" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
+									{ (imagePosition == "top" || imagePosition == "left" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }
 
 									<div className ="uagb-tm__text-wrap">
 										{  // Get description.
@@ -866,9 +866,9 @@ class UAGBtestimonial extends Component {
 										}
 										<div className ="uagb-tm__meta">
 											<div className ="uagb-tm__meta-inner">
-											
-												{ (imagePosition == "bottom" ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }	
-																
+
+												{ (imagePosition == "bottom" ) && <TestimonialImage  attributes={attributes} index_value = {index} /> }
+
 												{ //title_text
 													<Fragment>
 														<div className = "uagb-testimonial-details" key={"tm_wraps-"+index}>
@@ -876,13 +876,13 @@ class UAGBtestimonial extends Component {
 															<Company attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
 														</div>
 													</Fragment>
-												}								
+												}
 											</div>
 										</div>
 									</div>
-									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }	
-								</div>						
-							</div>												
+									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={attributes}  index_value = {index} /> }
+								</div>
+							</div>
 						)}
 					</Slider>
 				</div>

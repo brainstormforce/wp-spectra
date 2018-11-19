@@ -29,11 +29,11 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$timelin_alignment  = $attributes['timelinAlignment'];
 	$arrowlin_alignment = $attributes['arrowlinAlignment'];
 	$class_name         = $attributes['className'];
-	$tm_client_id       = $attributes['tm_client_id'];
+	$block_id       = $attributes['block_id'];
 	$align              = $attributes['align'];
 	$align_class        = '';
 	$align_item_class   = '';
-	$tm_block_id        = 'uagb-' . $tm_client_id;
+	$tm_block_id        = 'uagb-' . $block_id;
 
 	/* Arrow position */
 	$arrow_align_class = 'uagb-timeline-arrow-top';
@@ -366,7 +366,7 @@ function uagb_blocks_register_block_timeline_posts() {
 					'type'    => 'string',
 					'default' => '0',
 				),
-				'tm_client_id'       => array(
+				'block_id'       => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
@@ -692,7 +692,7 @@ function uagb_timeline_css( $attributes ) {
 	$separatorwidth       = $attributes['separatorwidth'];
 	$connector_bgsize     = $attributes['connectorBgsize'];
 	$vertical_space       = $attributes['verticalSpace'];
-	$tm_client_id         = $attributes['tm_client_id'];
+	$block_id         = $attributes['block_id'];
 	$borderwidth          = $attributes['borderwidth'];
 	$author_space         = $attributes['authorSpace'];
 	$date_bottomspace     = $attributes['dateBottomspace'];
@@ -709,7 +709,7 @@ function uagb_timeline_css( $attributes ) {
 	$icon_bg_hover        = $attributes['iconBgHover'];
 	$icon_hover           = $attributes['iconHover'];
 	$border_hover         = $attributes['borderHover'];
-	$tm_block_id          = 'uagb-' . $tm_client_id;
+	$tm_block_id          = 'uagb-' . $block_id;
 
 	$selectors = array();
 

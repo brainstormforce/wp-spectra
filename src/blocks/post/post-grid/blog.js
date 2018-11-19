@@ -40,10 +40,8 @@ class Blog extends React.Component {
 				className={ classnames(
 					className,
 					"uagb-post-grid",
-					"uagb-post__arrow-outside",
 					`uagb-post__image-position-${ imgPosition }`
 				) }
-				data-block-id={block_id}
 				id={ `uagb-post__grid-${ block_id }` }
 			>
 				<div
@@ -63,9 +61,6 @@ class Blog extends React.Component {
 					{ displayPosts.map( ( post, i ) =>
 						<article
 							key={ i }
-							className={ classnames(
-								post.featured_image_src && displayPostImage ? "has-thumb" : "no-thumb"
-							) }
 							style={{
 								paddingRight: rowGap/2,
 								paddingLeft: rowGap/2,

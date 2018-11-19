@@ -12,8 +12,8 @@
 	function uagbTimelineInit() {
 
 		var timeline            = $(".uagb-timeline")
-    
-		timeline.each(function() {
+    	if(timeline.parent(".wp-block").length == 0 ){
+    		timeline.each(function() {
 			var line_inner          = $(this).find(".uagb-timeline__line__inner")
 			var line_outer          = $(this).find(".uagb-timeline__line")
 			var $icon_class         = $(this).find(".uagb-timeline__marker")
@@ -131,7 +131,8 @@
 				}
 			}
 
-		})
+		})	
+    	}		
 	}
 
 } )( jQuery )
