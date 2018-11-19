@@ -8,10 +8,14 @@ class Author extends React.Component {
 		return (
 			<Fragment>
 				{ attributes.displayPostAuthor && undefined !== post.author_info &&
-					<div
-						className='uagb-timaline__author'
-					>
-						<a class="uagb-timaline__author-link" target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
+					<div className='uagb-timaline__author' >
+						<a class="uagb-timaline__author-link" target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer" 
+							style= {{
+								color: attributes.authorColor
+							}}
+						>
+						{ post.author_info.display_name }
+						</a>
 					</div>
 				}				
 			</Fragment>

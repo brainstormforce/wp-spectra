@@ -11,7 +11,9 @@ class PostDate extends React.Component {
 		return (
 			<Fragment>				
 				{ attributes.displayPostDate && post.date_gmt &&
-					<time dateTime={ format( "c", post.date_gmt ) } className={dateClass}>						
+					<time dateTime={ format( "c", post.date_gmt ) } className={dateClass} style= {{
+							color: attributes.dateColor
+						}}>						
 						{ dateI18n( dateFormat, post.date_gmt ) }
 					</time>
 				}				

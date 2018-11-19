@@ -158,6 +158,7 @@ class UAGBTimeline extends Component {
             connectorBgsize,
             subHeadSpace,
             authorSpace,
+            authorColor,
             dateBottomspace,
             displayPostDate,
             displayPostExcerpt,
@@ -175,8 +176,8 @@ class UAGBTimeline extends Component {
             readMoreText,
             icon,
             iconColor,
-            authorColor,
             dateColor,
+            ctaColor,
             dateFontsize,
             authorFontsize,
             iconSize,
@@ -567,7 +568,7 @@ class UAGBTimeline extends Component {
                                 value: subHeadingColor,
                                 onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
                                 label: __( "Content Color" ),
-                            },
+                            },                            
                             {
                                 value: backgroundColor,
                                 onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
@@ -575,6 +576,33 @@ class UAGBTimeline extends Component {
                             },
                         ] }
                     >
+                    { displayPostAuthor && <Fragment>
+                            <p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+                            <ColorPalette
+                                value={ authorColor }
+                                onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+                                allowReset
+                            />
+                        </Fragment>
+                    }
+                    { displayPostDate && <Fragment>
+                            <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+                            <ColorPalette
+                                value={ dateColor }
+                                onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+                                allowReset
+                            />
+                        </Fragment>
+                    }
+                    { displayPostLink && <Fragment>
+                            <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+                            <ColorPalette
+                                value={ ctaColor }
+                                onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+                                allowReset
+                            />
+                        </Fragment>
+                    }
                     </PanelColorSettings>
                     <RangeControl
                         label={ __( "Rounded Corners" ) }

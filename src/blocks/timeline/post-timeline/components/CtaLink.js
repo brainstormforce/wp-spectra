@@ -13,7 +13,11 @@ class CtaLink extends React.Component {
 				<div
 					className='uagb-timeline__link_parent'					
 				>
-				<a className='uagb-timeline__link' href={ post.link } target="_blank" rel ="noopener noreferrer">{ attributes.readMoreText }</a>
+					<a className='uagb-timeline__link' href={ post.link } target="_blank" rel ="noopener noreferrer" 
+						style= {{
+							color: attributes.ctaColor
+						}}
+					>{ attributes.readMoreText }</a>
 				</div>
 			)
 

@@ -29,7 +29,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	$timelin_alignment  = $attributes['timelinAlignment'];
 	$arrowlin_alignment = $attributes['arrowlinAlignment'];
 	$class_name         = $attributes['className'];
-	$block_id       = $attributes['block_id'];
+	$block_id           = $attributes['block_id'];
 	$align              = $attributes['align'];
 	$align_class        = '';
 	$align_item_class   = '';
@@ -223,7 +223,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				'verticalSpace'      => array(
 					'type'    => 'number',
 					'default' => 15,
-				),				
+				),
 				'timelinAlignment'   => array(
 					'type'    => 'string',
 					'default' => 'center',
@@ -362,7 +362,7 @@ function uagb_blocks_register_block_timeline_posts() {
 					'type'    => 'string',
 					'default' => '0',
 				),
-				'block_id'       => array(
+				'block_id'           => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
@@ -393,6 +393,10 @@ function uagb_blocks_register_block_timeline_posts() {
 				'borderHover'        => array(
 					'type'    => 'string',
 					'default' => '',
+				),
+				'ctaColor'           => array(
+					'type'    => 'string',
+					'default' => '#333',
 				),
 			),
 			// 'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
@@ -688,7 +692,7 @@ function uagb_timeline_css( $attributes ) {
 	$separatorwidth       = $attributes['separatorwidth'];
 	$connector_bgsize     = $attributes['connectorBgsize'];
 	$vertical_space       = $attributes['verticalSpace'];
-	$block_id         = $attributes['block_id'];
+	$block_id             = $attributes['block_id'];
 	$borderwidth          = $attributes['borderwidth'];
 	$author_space         = $attributes['authorSpace'];
 	$date_bottomspace     = $attributes['dateBottomspace'];
