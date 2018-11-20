@@ -540,6 +540,8 @@ function uagb_tm_get_excerpt( $attributes, $content, $post_id ) {
 	$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 	if ( empty( $excerpt ) ) {
 		$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $attributes['exerptLength'] ) );
+	}else{
+		$excerpt = wp_trim_words( $excerpt, $attributes['exerptLength']);
 	}
 
 	if ( ! $excerpt ) {
