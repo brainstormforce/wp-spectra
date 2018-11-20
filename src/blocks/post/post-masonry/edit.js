@@ -30,7 +30,7 @@ const {
 
 const { withSelect } = wp.data
 
-class UAGBPostGrid extends Component {
+class UAGBPostMasonry extends Component {
 
 	componentDidMount() {
 
@@ -42,18 +42,13 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
-
-		// Caching all Props.
 		const {
 			attributes,
 			categoriesList,
 			setAttributes,
 			latestPosts
 		} = this.props
-
-		// Caching all attributes.
 		const {
-			block_id,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -85,10 +80,8 @@ class UAGBPostGrid extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			equalHeight
 		} = attributes
 
-		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
@@ -122,11 +115,6 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
-					/>
-					<ToggleControl
-						label={ __( "Equal Height" ) }
-						checked={ equalHeight }
-						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
@@ -323,7 +311,7 @@ class UAGBPostGrid extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }
+						label={ uagb_blocks_info.blocks["uagb/post-masonry"]["title"] }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -346,7 +334,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ "center", "wide" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
 			</Fragment>
 		)
 	}
@@ -368,4 +356,4 @@ export default withSelect( ( select, props ) => {
 		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
-} )( UAGBPostGrid )
+} )( UAGBPostMasonry )

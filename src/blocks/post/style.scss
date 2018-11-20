@@ -4,7 +4,7 @@
  */
 
  .uagb-post-grid {
-	margin: 0 0 30px 0;
+	margin: 0;
 	position: relative;
 
 	.is-grid {
@@ -238,23 +238,10 @@
  * Loads on front end and back end
  */
 
-.uagb-post-grid {
-	.slick-slide img {
-		width: 100%;
-	}
-}
-
 /* -------- Slick CSS */
-.uagb-post-grid .slick-slide img {
-	width: 100%;
-}
 
 .uagb-post-grid .slick-prev,
-.uagb-post-grid .slick-next,
-.uagb-post-grid .slick-prev:hover,
-.uagb-post-grid .slick-next:hover,
-.uagb-post-grid .slick-prev:focus,
-.uagb-post-grid .slick-next:focus {
+.uagb-post-grid .slick-next {
 	font-size: 0;
 	line-height: 0;
 	position: absolute;
@@ -386,7 +373,7 @@
 }
 
 .uagb-post-grid ul.slick-dots li button:before {
-	font-family: dashicons;
+	font-family: Font Awesome\ 5 Free;
 	font-size: 10px;
 	line-height: 20px;
 	position: absolute;
@@ -394,7 +381,7 @@
 	left: 0;
 	width: 20px;
 	height: 20px;
-	content: '\f159';
+	content: '\f111';
 	text-align: center;
 	opacity: .25;
 	color: black;
@@ -410,6 +397,10 @@
 .uagb-post__arrow-inside.uagb-post-grid .slick-prev {
 	left: 25px;
 	z-index: 1;
+}
+
+.uagb-post-grid button.slick-arrow {
+	padding: 5px 10px;
 }
 
 [dir="rtl"] .uagb-post__arrow-inside.uagb-post-grid .slick-prev {

@@ -45,7 +45,6 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 						echo uagb_tm_get_post_content( $attributes, $recent_posts );
 					}
 					?>
-							
 					<div class = "uagb-timeline__line" >
 						<div class = "uagb-timeline__line__inner"></div>
 					</div> 
