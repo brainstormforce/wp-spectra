@@ -27,6 +27,11 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 
 	$post_tm_class = uagb_tm_get_classes( $attributes );
 	$my_block_id   = 'uagb-ctm-' . $attributes['block_id'];
+
+	if( $attributes['displayPostLink'] ){
+        $post_tm_class .= ' uagb_timeline__cta-enable';
+    }
+
 	ob_start();
 	?>
 	<div class = "<?php echo $attributes['className']; ?> uagb-timeline__outer-wrap" id = "<?php echo $my_block_id; ?>" >
@@ -35,13 +40,11 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 				<div class = "uagb-timeline__main"> 					
 					<?php
 					if ( empty( $recent_posts ) ) {
-						$list_items_markup .= __( 'No posts found.' );
+						echo __( 'No posts found.' );
 					} else {
 						echo uagb_tm_get_post_content( $attributes, $recent_posts );
-					}
-					?>
-																							
-					<div class = "uagb-timeline__line" >				
+					}?>		
+					<div class = "uagb-timeline__line" >
 						<div class = "uagb-timeline__line__inner"></div>
 					</div> 
 				</div>

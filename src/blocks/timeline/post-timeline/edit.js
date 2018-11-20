@@ -723,7 +723,11 @@ class UAGBTimeline extends Component {
         )
        
         var my_block_id = "uagb-ctm-"+this.props.clientId
-       
+        
+        var cta_enable = ''
+        if(displayPostLink){
+            cta_enable = 'uagb_timeline__cta-enable'
+        }
         return (
             <Fragment>            
             { content_control }           
@@ -743,6 +747,7 @@ class UAGBTimeline extends Component {
 				id = { my_block_id } >                     
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
+                        cta_enable,
 						...ContentTmClasses( this.props.attributes ),
 					) }>
 						<div className = "uagb-timeline-wrapper">

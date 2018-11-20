@@ -1193,6 +1193,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[" .uagb-timaline__author"] = array(
 				"text-align"  => $attr['align'],
+				"margin-bottom"  => $attr['authorSpace'] . "px"
 			);
 			$selectors[" .uagb-timeline__link_parent"] = array(
 				"text-align"  => $attr['align'],
@@ -1221,8 +1222,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-timeline-desc-content"] = array(
 				"text-align"  => $attr['align'],
 				"color"  => $attr['subHeadingColor'],
-				"font-size"  => $attr['subHeadFontSize'] . "px",
+				"font-size"  => $attr['subHeadFontSize'] . "px",				
 			);
+			$selectors[" .uagb_timeline__cta-enable .uagb-timeline-desc-content"] = array(
+				"margin-bottom"  => $attr['contentSpace'] . "px",				
+			);
+
 			$selectors[' .uagb-timeline__events-new'] = array(
                     'text-align' => $attr['align']
                 );
