@@ -12,7 +12,7 @@
 	function uagbTimelineInit() {
 
 		var timeline            = $(".uagb-timeline")
-    	if(timeline.parent(".wp-block").length == 0 ){
+    	if(timeline.parents(".wp-block").length == 0 ){
     		timeline.each(function() {
 			var line_inner          = $(this).find(".uagb-timeline__line__inner")
 			var line_outer          = $(this).find(".uagb-timeline__line")

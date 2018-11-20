@@ -12,7 +12,7 @@ class FeaturedImage extends React.Component {
 			attributes.imageSize &&
 			post.featured_image_src[attributes.imageSize]
 		) {
-			var src = post.featured_image_src[attributes.imageSize][0]
+			var src = post.featured_image_src[attributes.imageSize]
 
 			return (
 				<div className='uagb-timeline__image'>
