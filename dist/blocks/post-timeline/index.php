@@ -7,12 +7,12 @@
  */
 
 /**
- * Function Name: uagb_blocks_render_tl_block_core_latest_posts.
+ * Function Name: uagb_tm_render_core_latest_posts.
  *
  * @param  array $attributes attributes.
  * @return html             HTML.
  */
-function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
+function uagb_tm_render_core_latest_posts( $attributes ) {
 	$recent_posts = wp_get_recent_posts(
 		array(
 			'numberposts'         => $attributes['postsToShow'],
@@ -59,7 +59,7 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 /**
  * Registers the `timeline` block on server.
  */
-function uagb_blocks_register_block_timeline_posts() {
+function uagb_blocks_register_timeline_posts() {
 
 	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
@@ -301,98 +301,12 @@ function uagb_blocks_register_block_timeline_posts() {
 					'default' => 'tablet',
 				),
 			),
-			'render_callback' => 'uagb_blocks_render_tl_block_core_latest_posts',
+			'render_callback' => 'uagb_tm_render_core_latest_posts',
 		)
 	);
 }
 
-add_action( 'init', 'uagb_blocks_register_block_timeline_posts' );
-
-
-/**
- * Create API fields for additional info.
- */
-function uagb_blocks_register_timeline_rest_fields() {
-
-	// Add landscape featured image source.
-	register_rest_field(
-		'post',
-		'featured_image_src',
-		array(
-			'get_callback'    => 'uagb_blocks_get_tm_image_src',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-
-	// Add author info.
-	register_rest_field(
-		'post',
-		'author_info',
-		array(
-			'get_callback'    => 'uagb_blocks_get_timeline_author_info',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
-}
-add_action( 'rest_api_init', 'uagb_blocks_register_timeline_rest_fields' );
-
-/**
- * Get landscape featured image source for the rest field.
- *
- * @param  array  $object     array var.
- * @param  string $field_name string var.
- * @param  string $request    string var.
- * @return array             array var.
- */
-function uagb_blocks_get_tm_image_src( $object, $field_name, $request ) {
-
-	$feat_img_array['large'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'ab-block-post-grid-landscape',
-		false
-	);
-
-	$feat_img_array['medium'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'medium',
-		false
-	);
-
-	$feat_img_array['medium_large'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'medium_large',
-		false
-	);
-
-	$feat_img_array['thumbnail'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'thumbnail',
-		false
-	);
-
-	return $feat_img_array;
-}
-
-/**
- * Get author info for the rest field.
- *
- * @param  array  $object     array of object.
- * @param  string $field_name string.
- * @param  string $request    string.
- * @return array             array.
- */
-function uagb_blocks_get_timeline_author_info( $object, $field_name, $request ) {
-	// Get the author name.
-	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
-
-	// Get the author link.
-	$author_data['author_link'] = get_author_posts_url( $object['author'] );
-
-	// Return the author data.
-	return $author_data;
-}
+add_action( 'init', 'uagb_blocks_register_timeline_posts' );
 
 /**
  * Function Name: uagb_tm_get_icon.
