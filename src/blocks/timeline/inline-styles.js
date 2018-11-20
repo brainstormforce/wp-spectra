@@ -54,6 +54,12 @@ function contentTimelineStyle( props ) {
 		"color": headingColor,
 	}
 
+	selectors[".uagb-timeline__heading a"] = {
+		"font-size" : headFontSize+"px",
+		"text-align": align,
+		"color": headingColor,
+	}
+
 	selectors[".uagb-timeline__heading-text"] = {
 		"margin-bottom" : headSpace+"px",
 	}

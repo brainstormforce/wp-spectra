@@ -9,7 +9,8 @@
      text-decoration: none;
      color:inherit;
 }
- #wpwrap .edit-post-visual-editor .uagb-timeline__heading a {
+ #wpwrap .edit-post-visual-editor .uagb-timeline__heading a,
+ .gutenberg-editor-page #wpwrap .edit-post-visual-editor a {
      font-size: inherit;
      color: inherit;
      margin: 0;

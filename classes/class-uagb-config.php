@@ -90,7 +90,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'              => 'tablet',
 						),
 					),
-					'uagb/post-timeline' => array(
+					'uagb/post-timeline'    => array(
 						'slug'        => '',
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
@@ -112,6 +112,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'arrowlinAlignment'  => 'center',
 							'subHeadFontSize'    => '',
 							'headSpace'          => 5,
+							'contentSpace'       => 5,
+							'authorSpace'        => 5,
 							'separatorwidth'     => 3,
 							'borderwidth'        => 0,
 							'iconColor'          => '#333',
@@ -128,6 +130,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconBgHover'        => '',
 							'borderHover'        => '',
 							'stack'              => 'tablet',
+							'ctaColor'           => '#333',
+							'authorColor'        => '#333',
+							'ctaFontSize'        => 12,
+							'authorFontSize'     => 12,
 						),
 					),
 					'uagb/google-map'       => array(

@@ -32,16 +32,15 @@ function uagb_blocks_render_tl_block_core_latest_posts( $attributes ) {
 	<div class = "<?php echo $attributes['className']; ?> uagb-timeline__outer-wrap" id = "<?php echo $my_block_id; ?>" >
 		<div  class = "uagb-timeline__content-wrap <?php echo $post_tm_class; ?>" >
 			<div class = "uagb-timeline-wrapper">
-				<div class = "uagb-timeline__main"> 
-					
-						<?php
-						if ( empty( $recent_posts ) ) {
-							$list_items_markup .= __( 'No posts found.' );
-						} else {
-							echo uagb_get_post_content( $attributes, $recent_posts );
-						}
-						?>
-								
+				<div class = "uagb-timeline__main"> 					
+					<?php
+					if ( empty( $recent_posts ) ) {
+						$list_items_markup .= __( 'No posts found.' );
+					} else {
+						echo uagb_get_post_content( $attributes, $recent_posts );
+					}
+					?>
+																							
 					<div class = "uagb-timeline__line" >				
 						<div class = "uagb-timeline__line__inner"></div>
 					</div> 
@@ -131,6 +130,14 @@ function uagb_blocks_register_block_timeline_posts() {
 					'type'    => 'number',
 					'default' => 5,
 				),
+				'authorSpace'        => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'contentSpace'       => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
 				'separatorwidth'     => array(
 					'type'    => 'number',
 					'default' => 3,
@@ -155,7 +162,11 @@ function uagb_blocks_register_block_timeline_posts() {
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'authorFontsize'     => array(
+				'authorFontSize'     => array(
+					'type'    => 'number',
+					'default' => 12,
+				),
+				'ctaFontSize'        => array(
 					'type'    => 'number',
 					'default' => 12,
 				),
@@ -170,14 +181,6 @@ function uagb_blocks_register_block_timeline_posts() {
 				'connectorBgsize'    => array(
 					'type'    => 'number',
 					'default' => 35,
-				),
-				'subHeadSpace'       => array(
-					'type'    => 'number',
-					'default' => 5,
-				),
-				'authorSpace'        => array(
-					'type'    => 'number',
-					'default' => 5,
 				),
 				'dateBottomspace'    => array(
 					'type'    => 'number',
@@ -248,10 +251,6 @@ function uagb_blocks_register_block_timeline_posts() {
 				'readMoreText'       => array(
 					'type'    => 'string',
 					'default' => 'Continue Reading',
-				),
-				'tm_block_id'        => array(
-					'type'    => 'string',
-					'default' => '0',
 				),
 				'block_id'           => array(
 					'type'    => 'string',
@@ -434,12 +433,12 @@ function uagb_get_timeline_image( $attributes, $post_id ) {
  *
  * @param  array  $attributes attribute array.
  * @param  string $post_id    string.
+ * @param  string $classname  string.
  * @return string            HTML.
  */
 function uagb_get_timeline_date( $attributes, $post_id, $classname ) {
 
 	$output = '';
-
 	if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
 		$output .= sprintf(
 			'<div datetime="%1$s" class="%2$s">%3$s</div>',
@@ -548,18 +547,18 @@ function uagb_get_timeline_excerpt( $attributes, $content, $post_id ) {
 }
 
 /**
- * Function Name: getTmClasses description]
+ * Function Name: uagb_get_timeline_classes .
  *
- * @param  [type] $attributes [description]
- * @return [type]             [description]
+ * @param  array $attributes array of setting.
+ * @return string             class name.
  */
 function uagb_get_timeline_classes( $attributes ) {
 
 	// Arrow position.
 	$arrow_align_class = 'uagb-timeline__arrow-top' . ' ';
-	if ( $attributes['arrowlinAlignment'] == 'center' ) {
+	if ( 'center' === $attributes['arrowlinAlignment'] ) {
 		$arrow_align_class = 'uagb-timeline__arrow-center' . ' ';
-	} elseif ( $attributes['arrowlinAlignment'] == 'bottom' ) {
+	} elseif ( 'bottom' === $attributes['arrowlinAlignment'] ) {
 		$arrow_align_class = 'uagb-timeline__arrow-bottom' . ' ';
 	}
 
@@ -582,19 +581,19 @@ function uagb_get_timeline_classes( $attributes ) {
 /**
  * Function Name: uagb_tm_align_class description.
  *
- * @param array  $attributes attribute array
+ * @param array  $attributes attribute array.
  * @param string $index_val  post index.
  * @return string            output HTML/String.
  */
 function uagb_tm_align_class( $attributes, $index_val ) {
 
 	$align_class = '';
-	if ( 'left' == $attributes['timelinAlignment'] ) {
+	if ( 'left' === $attributes['timelinAlignment'] ) {
 		$align_class = 'uagb-timeline__widget uagb-timeline__left';
-	} elseif ( 'right' == $attributes['timelinAlignment'] ) {
+	} elseif ( 'right' === $attributes['timelinAlignment'] ) {
 		$align_class = 'uagb-timeline__widget uagb-timeline__right';
 	} elseif ( 'center' == $attributes['timelinAlignment'] ) {
-		if ( $index_val % 2 == '0' ) {
+		if ( '0' == $index_val % 2 ) {
 			$align_class = 'uagb-timeline__widget uagb-timeline__right';
 		} else {
 			$align_class = 'uagb-timeline__widget uagb-timeline__left';
@@ -607,7 +606,7 @@ function uagb_tm_align_class( $attributes, $index_val ) {
 /**
  * Function Name: uagb_day_align_class description.
  *
- * @param array  $attributes attribute array
+ * @param array  $attributes attribute array.
  * @param string $index_val  post index.
  * @return string            output HTML/String.
  */
@@ -615,12 +614,12 @@ function uagb_day_align_class( $attributes, $index_val ) {
 
 	$day_align_class = '';
 
-	if ( 'left' == $attributes['timelinAlignment'] ) {
+	if ( 'left' === $attributes['timelinAlignment'] ) {
 		$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
-	} elseif ( 'right' == $attributes['timelinAlignment'] ) {
+	} elseif ( 'right' === $attributes['timelinAlignment'] ) {
 		$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-right';
-	} elseif ( 'center' == $attributes['timelinAlignment'] ) {
-		if ( $index_val % 2 == '0' ) {
+	} elseif ( 'center' === $attributes['timelinAlignment'] ) {
+		if ( '0' == $index_val % 2 ) {
 			$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-right';
 		} else {
 			$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';
@@ -633,29 +632,30 @@ function uagb_day_align_class( $attributes, $index_val ) {
 /**
  * Function Name: uagb_get_post_content.
  *
- * @param  array $attributes attribute array
- * @return string            output HTML/String.
+ * @param  array $attributes attribute array.
+ * @param  array $recent_posts post array.
  */
 function uagb_get_post_content( $attributes, $recent_posts ) {
 
-	$timelinAlignment  = $attributes['timelinAlignment'];
-	$arrowlinAlignment = $attributes['arrowlinAlignment'];
-	$displayPostDate   = $attributes['displayPostDate'];
-	$postsToShow       = $attributes['postsToShow'];
-	$align             = $attributes['align'];
+	$timelin_alignment  = $attributes['timelinAlignment'];
+	$arrowlin_alignment = $attributes['arrowlinAlignment'];
+	$display_post_date  = $attributes['displayPostDate'];
+	$posts_to_show      = $attributes['postsToShow'];
+	$align              = $attributes['align'];
 
-	$content_align_class = uagb_tm_align_class( $attributes, 0 ); // Get classname for layout alignment
+	$content_align_class = uagb_tm_align_class( $attributes, 0 ); // Get classname for layout alignment.
 	$day_align_class     = uagb_day_align_class( $attributes, 0 ); // Get classname for day alignment.
 	$display_inner_date  = false;
+	ob_start();
 	?>
 	<div class = "uagb-timeline__days uagb-timeline-infinite-load">
 		<?php
 		foreach ( $recent_posts as $index => $post ) {
-			// Get the post ID..
+			// Get the post ID.
 			$post_id      = $post->ID;
 			$second_index = 'uagb-' . $index;
 
-			if ( $timelinAlignment == 'center' ) {
+			if ( 'center' === $timelin_alignment ) {
 				$display_inner_date  = true;
 				$content_align_class = uagb_tm_align_class( $attributes, $index );
 				$day_align_class     = uagb_day_align_class( $attributes, $index );
@@ -683,13 +683,15 @@ function uagb_get_post_content( $attributes, $recent_posts ) {
 							</div>
 						</div>
 					</div>
-					<div class = "uagb-timeline__date-new" >
+					<?php if ( $display_inner_date ) { ?>
+						<div class = "uagb-timeline__date-new" >
 						<?php echo uagb_get_timeline_date( $attributes, $post_id, 'uagb-timeline__date-new' ); ?>
-					</div>
+						</div>
+					<?php } ?>
 				</div>
 			</article>
 		<?php } ?>
 	</div>
 	<?php
+	return ob_get_clean();
 }
-

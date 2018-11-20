@@ -1188,6 +1188,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = array();
 
+			$selectors[" .uagb-timeline__heading"] = array(
+				"text-align"  => $attr['align'],
+			);
+			$selectors[" .uagb-timaline__author"] = array(
+				"text-align"  => $attr['align'],
+			);
+			$selectors[" .uagb-timeline__link_parent"] = array(
+				"text-align"  => $attr['align'],
+			);
+
+			$selectors[" .uagb-timaline__author-link"] = array(
+				"color"  => $attr['authorColor'],
+				"font-size"  => $attr['authorFontSize'] . "px"
+			);
+
+			$selectors[" .uagb-timeline__link"] = array(
+				"color"  => $attr['ctaColor'],
+				"font-size"  => $attr['ctaFontSize'] . "px"
+			);
+
 			$selectors[" .uagb-timeline__heading a"] = array(
 				"text-align"  => $attr['align'],
 				"color"  => $attr['headingColor'],
@@ -1342,6 +1362,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"text-align"  => 'left',
 			);
 
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timaline__author"] = array(
+				"text-align"  => 'left',
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent"] = array(
+				"text-align"  => 'left',
+			);
+
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
 			        'text-align' => 'left'
 			    );
@@ -1379,6 +1406,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    );
 			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
 					'text-align'=> 'left',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timaline__author"] = array(
+				"text-align"  => 'left',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent"] = array(
+				"text-align"  => 'left',
 			);
 			// @codingStandardsIgnoreEnd
 

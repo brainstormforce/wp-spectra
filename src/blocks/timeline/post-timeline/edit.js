@@ -156,8 +156,8 @@ class UAGBTimeline extends Component {
             separatorwidth,
             borderwidth,
             connectorBgsize,
-            subHeadSpace,
             authorSpace,
+            contentSpace,
             authorColor,
             dateBottomspace,
             displayPostDate,
@@ -179,9 +179,9 @@ class UAGBTimeline extends Component {
             dateColor,
             ctaColor,
             dateFontsize,
-            authorFontsize,
+            authorFontSize,
+            ctaFontSize,
             iconSize,
-            tm_block_id,
             exerptLength,
             borderRadius,
             bgPadding,
@@ -346,59 +346,74 @@ class UAGBTimeline extends Component {
 			</Fragment>
 		)
       
-        const renderSettings = (
-			<Fragment>
-				<PanelBody 
-					title={ __( "Date Settings" ) }
-					initialOpen={ false }
-				>
-					<ToggleControl
-						label={ __( "Display Post Date" ) }
-						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
-					/>
-                
-					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
-						label={ __( "Date Bottom Spacing" ) }
-						value={ dateBottomspace }
-						onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					}
-
-					{ displayPostDate &&  <Fragment>
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-							<ColorPalette
-								value={ dateColor }
-								onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment> 
-						<RangeControl
-							label={ __( "Date Font Size" ) }
-							value={ dateFontsize }
-							onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-							min={ 1 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>  
-					</Fragment>                 
-					}                
-				</PanelBody>     
-			</Fragment>
-		)
-
+        const colorSetting = (
+            <Fragment>
+            <PanelColorSettings
+                title={ __( "Color Settings" ) }
+                initialOpen={ false }
+                colorSettings={ [       
+                    {
+                        value: headingColor,
+                        onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+                        label: __( "Heading Color" ),
+                    },
+                    {
+                        value: subHeadingColor,
+                        onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+                        label: __( "Content Color" ),
+                    },                            
+                    {
+                        value: backgroundColor,
+                        onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+                        label: __( "Background Color" ),
+                    },
+                ] }
+            >
+                { displayPostAuthor && <Fragment>
+                        <p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ authorColor }
+                            onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                }
+                { displayPostDate && <Fragment>
+                        <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ dateColor }
+                            onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                }
+                { displayPostLink && <Fragment>
+                        <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ ctaColor }
+                            onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                }
+                { displayPostDate &&
+                    <Fragment>
+                        <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ dateColor }
+                            onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                 } 
+                </PanelColorSettings>
+            </Fragment>
+        )
 
         const content_control = (
-            <InspectorControls>               
-                
+            <InspectorControls>  
                 <PanelBody title={ __( 'Query' ) }
-                    initialOpen={ false }
+                    initialOpen={ true }
                     >
                     <QueryControls
                         numberOfItems={ postsToShow }
@@ -437,10 +452,10 @@ class UAGBTimeline extends Component {
                         onChange={ this.toggleDisplayPostAuthor }
                     />
                     <ToggleControl
-                        label={ __( 'Display Post Date' ) }
+                        label={ __( "Display Post Date" ) }
                         checked={ displayPostDate }
                         onChange={ this.toggleDisplayPostDate }
-                    />
+                    />                   
                     <ToggleControl
                         label={ __( 'Display Post Excerpt' ) }
                         checked={ displayPostExcerpt }
@@ -471,8 +486,7 @@ class UAGBTimeline extends Component {
                     />                                      
                     }  
                 </PanelBody> 
-                { renderSettings } 
-
+               
                 <PanelBody 
                     title={ __( "Layout" ) }
                     initialOpen={ false }
@@ -509,16 +523,27 @@ class UAGBTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { stack: value } ) }
                     />                
                 </PanelBody>
+                { colorSetting }
                 <PanelBody 
                     title={ __( "Spacing" ) }
                     initialOpen={ false }
-                >
+                >   
+                    <RangeControl
+                        label={ __( "Padding" ) }
+                        value={ bgPadding }
+                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+                        min={ 1 }
+                        initialPosition={10} 
+                        max={ 50 }
+                        allowReset
+                    />
                     <RangeControl
                         label={ __( "Horizontal Space" ) }
                         value={ horizontalSpace }
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
                         min={ 1 }
                         max={ 50 }
+                        initialPosition={10} 
                         allowReset
                     />
                     <RangeControl
@@ -527,6 +552,7 @@ class UAGBTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
                         min={ 1 }
                         max={ 100 }
+                        initialPosition={10} 
                         allowReset
                     />                   
                     <RangeControl
@@ -535,8 +561,41 @@ class UAGBTimeline extends Component {
                         onChange={ ( value ) => setAttributes( { headSpace: value } ) }
                         min={ 0 }
                         max={ 50 }
+                        initialPosition={10} 
                         allowReset
-                    />           
+                    />  
+
+                    { displayPostAuthor && <RangeControl
+                        label={ __( "Author Bottom Spacing" ) }
+                        value={ authorSpace }
+                        onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />  
+                    }
+                    { displayPostExcerpt && displayPostLink && <RangeControl
+                        label={ __( "Content Bottom Spacing" ) }
+                        value={ contentSpace }
+                        onChange={ ( value ) => setAttributes( { contentSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />  
+                    }
+
+                    { displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
+                        label={ __( "Date Bottom Spacing" ) }
+                        value={ dateBottomspace }
+                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />
+                    }       
                 </PanelBody>
                 <PanelBody 
                     title={ __( "Timeline Item" ) }
@@ -554,74 +613,7 @@ class UAGBTimeline extends Component {
                             { value: "h5", label: __( "H5" ) },
                             { value: "h6", label: __( "H6" ) },
                         ] }
-                    />
-                    <PanelColorSettings
-                        title={ __( "Color Settings" ) }
-                        initialOpen={ true }
-                        colorSettings={ [       
-                            {
-                                value: headingColor,
-                                onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-                                label: __( "Heading Color" ),
-                            },
-                            {
-                                value: subHeadingColor,
-                                onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-                                label: __( "Content Color" ),
-                            },                            
-                            {
-                                value: backgroundColor,
-                                onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-                                label: __( "Background Color" ),
-                            },
-                        ] }
-                    >
-                    { displayPostAuthor && <Fragment>
-                            <p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ authorColor }
-                                onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
-                                allowReset
-                            />
-                        </Fragment>
-                    }
-                    { displayPostDate && <Fragment>
-                            <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ dateColor }
-                                onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-                                allowReset
-                            />
-                        </Fragment>
-                    }
-                    { displayPostLink && <Fragment>
-                            <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ ctaColor }
-                                onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-                                allowReset
-                            />
-                        </Fragment>
-                    }
-                    </PanelColorSettings>
-                    <RangeControl
-                        label={ __( "Rounded Corners" ) }
-                        value={ borderRadius }
-                        onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-                        min={ 0 }
-                        initialPosition={10} 
-                        max={ 50 }
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( "Padding" ) }
-                        value={ bgPadding }
-                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-                        min={ 1 }
-                        initialPosition={10} 
-                        max={ 50 }
-                        allowReset
-                    />
+                    />  
                     <RangeControl
                         label={ __( "Heading Font Size" ) }
                         value={ headFontSize }
@@ -641,7 +633,52 @@ class UAGBTimeline extends Component {
                         initialPosition={16}   
                         beforeIcon="editor-textcolor"
                         allowReset
-                    />                   
+                    />  
+
+                    { displayPostDate &&
+                        <RangeControl
+                            label={ __( "Date Font Size" ) }
+                            value={ dateFontsize }
+                            onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+                            min={ 1 }
+                            max={ 50 }
+                            initialPosition={16}
+                            beforeIcon="editor-textcolor"
+                            allowReset
+                        />                                       
+                    } 
+
+                    { displayPostAuthor && <RangeControl
+                            label={ __( "Author Font Size" ) }
+                            value={ authorFontSize }
+                            onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
+                            min={ 10 }
+                            max={ 50 }
+                            initialPosition={30}                        
+                            beforeIcon="editor-textcolor"
+                            allowReset
+                        /> 
+                    }
+                    { displayPostLink && <RangeControl
+                        label={ __( "CTA Font Size" ) }
+                        value={ ctaFontSize }
+                        onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+                        min={ 10 }
+                        max={ 50 }
+                        initialPosition={30}                        
+                        beforeIcon="editor-textcolor"
+                        allowReset
+                        /> 
+                    }
+                    <RangeControl
+                        label={ __( "Rounded Corners" ) }
+                        value={ borderRadius }
+                        onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+                        min={ 0 }
+                        initialPosition={10} 
+                        max={ 50 }
+                        allowReset
+                    />                 
                 </PanelBody> 
                 <PanelBody 
                     title={ __( "Connector" ) }
@@ -685,14 +722,6 @@ class UAGBTimeline extends Component {
             </InspectorControls>
         )
        
-        /* Arrow position */
-        var arrow_align_class  = 'uagb-timeline-arrow-top';
-        if( arrowlinAlignment == 'center' ){
-            arrow_align_class = 'uagb-timeline-arrow-center';
-        }else if( arrowlinAlignment == 'bottom' ){
-            arrow_align_class = 'uagb-timeline-arrow-bottom';
-        } 
-
         var my_block_id = "uagb-ctm-"+this.props.clientId
        
         return (
