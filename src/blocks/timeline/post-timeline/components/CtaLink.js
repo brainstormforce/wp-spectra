@@ -20,6 +20,7 @@ class CtaLink extends React.Component {
 						style= {{
 							color: attributes.ctaColor,
 							fontSize: attributes.ctaFontSize+"px",
+							background: attributes.ctaBackground,
 						}}
 					>{ attributes.readMoreText }</a>
 				</div>

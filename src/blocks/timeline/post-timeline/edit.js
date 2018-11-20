@@ -59,7 +59,8 @@ const {
     RichText,
     BlockAlignmentToolbar,
     BlockControls,
-    PanelColorSettings
+    PanelColorSettings,
+    URLInput
 } = wp.editor;
 
 
@@ -174,6 +175,7 @@ class UAGBTimeline extends Component {
             width,
             imageSize,
             readMoreText,
+            ctaBackground,
             icon,
             iconColor,
             dateColor,
@@ -393,19 +395,15 @@ class UAGBTimeline extends Component {
                             value={ ctaColor }
                             onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
                             allowReset
-                        />
-                    </Fragment>
-                }
-                { displayPostDate &&
-                    <Fragment>
-                        <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+                        />                   
+                        <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBackground }} ></span></span></p>
                         <ColorPalette
-                            value={ dateColor }
-                            onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+                            value={ ctaBackground }
+                            onChange={ ( colorValue ) => setAttributes( { ctaBackground: colorValue } ) }
                             allowReset
                         />
                     </Fragment>
-                 } 
+                }                
                 </PanelColorSettings>
             </Fragment>
         )
@@ -472,18 +470,19 @@ class UAGBTimeline extends Component {
                             allowReset
                         />
                     }
+
                     <ToggleControl
                         label={ __( 'Display Continue Reading Link' ) }
                         checked={ displayPostLink }
                         onChange={ this.toggleDisplayPostLink }
                     />
-                    { displayPostLink &&
-                    <TextControl
-                        label={ __( 'Customize Read More Link' ) }
-                        type="text"
-                        value={ readMoreText }
-                        onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                    />                                      
+                    { displayPostLink && <Fragment>                       
+                        <p className="components-base-control__label">{ __( "CTA Link" ) }</p>
+                        <URLInput
+                            value={ readMoreText }
+                            onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
+                        /> 
+                        </Fragment>                                   
                     }  
                 </PanelBody> 
                

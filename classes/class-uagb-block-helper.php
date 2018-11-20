@@ -1206,7 +1206,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .uagb-timeline__link"] = array(
 				"color"  => $attr['ctaColor'],
-				"font-size"  => $attr['ctaFontSize'] . "px"
+				"font-size"  => $attr['ctaFontSize'] . "px",
+				"background-color"  => $attr['ctaBackground'],				
 			);
 
 			$selectors[" .uagb-timeline__heading a"] = array(

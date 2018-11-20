@@ -134,6 +134,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'authorColor'        => '#333',
 							'ctaFontSize'        => 12,
 							'authorFontSize'     => 12,
+							'ctaBackground'      => '',
 						),
 					),
 					'uagb/google-map'       => array(
