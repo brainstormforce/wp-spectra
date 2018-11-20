@@ -1,55 +1,25 @@
 /**
- * BLOCK: Timeline Js.
+ * BLOCK: Post Timeline Js.
  */
-
-import classnames from "classnames"
-import times from "lodash/times"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
-//  Import CSS.
 import ".././style.scss"
 import ".././editor.scss"
 import edit from "./edit"
-import contentTimelineStyle from ".././inline-styles"
-import ContentTmClasses from ".././classes"
-import AlignClass from ".././align-classes"
-import DayAlignClass from ".././day-align-classes"
 
 // Components.
 const { __ } = wp.i18n; 
-
-// Extend component.
-const { Component } = wp.element;
-
-const {
-    AlignmentToolbar,
-    InspectorControls,
-    ColorPalette,
-    RichText,
-    BlockAlignmentToolbar,
-    BlockControls,
-} = wp.editor;
-
-const { decodeEntities } = wp.htmlEntities;
 
 // Register block controls.
 const { 
     registerBlockType,
 } = wp.blocks;
 
-const {
-    registerStore,
-    withSelect,
-} = wp.data;
-
 export const name = 'core/latest-posts';
-
-// Register alignments.
-const validAlignments = [ 'center', 'left', 'right' ];
 
 // Register the block.
 registerBlockType( 'uagb/post-timeline', {
-    title: __( 'Post Timeline' ),
-    description: __( 'Add a post timeline to your page.' ),
+    title: uagb_blocks_info.blocks["uagb/post-timeline"]["title"],
+    description: uagb_blocks_info.blocks["uagb/post-timeline"]["description"],
     icon: UAGB_Block_Icons.post_timeline,
     category: uagb_blocks_info.category,
     keywords: [
@@ -60,9 +30,7 @@ registerBlockType( 'uagb/post-timeline', {
 
     getEditWrapperProps( attributes ) {
         const { align } = attributes;
-        if ( -1 !== validAlignments.indexOf( align ) ) {
-            //return { 'data-align': align };
-        }
+
     },
 
     edit,

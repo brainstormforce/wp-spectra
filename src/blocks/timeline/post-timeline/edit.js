@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
@@ -30,30 +29,25 @@ const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
 
-const { apiFetch } = wp;
+//const { apiFetch } = wp;
 
 const {
-    registerStore,
+    //registerStore,
     withSelect,
 } = wp.data;
 
 const {
     PanelBody,
-    PanelColor,
     Placeholder,
     QueryControls,
     RangeControl,
     SelectControl,
     Spinner,
-    TextControl,
     ToggleControl,
-    Toolbar,
-    withAPIData,
     TabPanel
 } = wp.components;
 
 const {
-    AlignmentToolbar,
     InspectorControls,
     ColorPalette,
     RichText,
@@ -62,9 +56,6 @@ const {
     PanelColorSettings,
     URLInput
 } = wp.editor;
-
-
-const MAX_POSTS_COLUMNS = 4;
 
 class UAGBTimeline extends Component {
     constructor() {
@@ -79,11 +70,6 @@ class UAGBTimeline extends Component {
         this.getTimelineicon          = this.getTimelineicon.bind(this);    
    }    
 
-    /**
-     * [getTimelineicon description]
-     * @param  {[type]} value [description]
-     * @return {[type]}       [description]
-     */
     getTimelineicon(value) { 
         this.props.setAttributes( { icon: value } );
     }
@@ -204,7 +190,7 @@ class UAGBTimeline extends Component {
             { value: 'large', label: __( 'Large' ) }
         ];      
 
-        // Parameters for FontIconPicker
+        // Parameters for FontIconPicker.
         const icon_props = {
           icons: UAGBIcon,
           renderUsing: 'class',
@@ -721,12 +707,13 @@ class UAGBTimeline extends Component {
             </InspectorControls>
         )
        
-        var my_block_id = "uagb-ctm-"+this.props.clientId
-        
+        var my_block_id = "uagb-ctm-"+this.props.clientId        
         var cta_enable = ''
+
         if(displayPostLink){
             cta_enable = 'uagb_timeline__cta-enable'
         }
+
         return (
             <Fragment>            
             { content_control }           

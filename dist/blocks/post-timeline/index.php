@@ -2,7 +2,7 @@
 /**
  * Server-side rendering for the Timeline.
  *
- * @since   1.0.0.
+ * @since   1.3.0.
  * @package UAGB Block.
  */
 
@@ -227,7 +227,7 @@ function uagb_blocks_register_block_timeline_posts() {
 				),
 				'exerptLength'       => array(
 					'type'    => 'number',
-					'default' => 25,
+					'default' => 15,
 				),
 				'postLayout'         => array(
 					'type'    => 'string',
@@ -540,8 +540,8 @@ function uagb_tm_get_excerpt( $attributes, $content, $post_id ) {
 	$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
 	if ( empty( $excerpt ) ) {
 		$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $attributes['exerptLength'] ) );
-	}else{
-		$excerpt = wp_trim_words( $excerpt, $attributes['exerptLength']);
+	} else {
+		$excerpt = wp_trim_words( $excerpt, $attributes['exerptLength'] );
 	}
 
 	if ( ! $excerpt ) {
