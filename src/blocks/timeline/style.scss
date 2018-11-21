@@ -25,6 +25,12 @@
  .uagb-timeline__main{
      position: relative;
 }
+.uagb-content{
+     word-break: break-word;
+}
+a.uagb-timeline__link {
+    padding: 10px;
+}
  h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading, h4.uagb-timeline__heading, h5.uagb-timeline__heading, h6.uagb-timeline__heading{
      margin-bottom: 0px;
 }

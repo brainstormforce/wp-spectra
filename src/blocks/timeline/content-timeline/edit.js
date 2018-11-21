@@ -4,12 +4,12 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import contentTimelineStyle from "./inline-styles"
-import ContentTmClasses from "./classes"
-import AlignClass from "./align-classes"
-import DayAlignClass from "./day-align-classes"
+import contentTimelineStyle from ".././inline-styles"
+import ContentTmClasses from ".././classes"
+import AlignClass from ".././align-classes"
+import DayAlignClass from ".././day-align-classes"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
 
@@ -744,7 +744,7 @@ class UAGBcontentTimeline extends Component {
 
 	/* Render output at backend */
 	get_content(){
-		const { attributes, setAttributes,mergeBlocks,insertBlocksAfter,onReplace } = this.props
+		const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
 
 		const dateFormat = __experimentalGetSettings().formats.date
 
