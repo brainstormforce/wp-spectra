@@ -44,7 +44,8 @@ const {
     SelectControl,
     Spinner,
     ToggleControl,
-    TabPanel
+    TabPanel,
+    TextControl,
 } = wp.components;
 
 const {
@@ -54,7 +55,6 @@ const {
     BlockAlignmentToolbar,
     BlockControls,
     PanelColorSettings,
-    URLInput
 } = wp.editor;
 
 class UAGBTimeline extends Component {
@@ -462,12 +462,12 @@ class UAGBTimeline extends Component {
                         checked={ displayPostLink }
                         onChange={ this.toggleDisplayPostLink }
                     />
-                    { displayPostLink && <Fragment>                       
-                        <p className="components-base-control__label">{ __( "CTA Link" ) }</p>
-                        <URLInput
-                            value={ readMoreText }
-                            onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-                        /> 
+                    { displayPostLink && <Fragment> 
+                        <TextControl
+                            label= { __( "CTA Text" ) }
+                            value= { readMoreText }
+                            onChange={ value => setAttributes( { readMoreText: value } ) }
+                        />
                         </Fragment>                                   
                     }  
                 </PanelBody> 
@@ -504,7 +504,7 @@ class UAGBTimeline extends Component {
                             { value: "tablet", label: __( "Tablet" ) },
                             { value: "mobile", label: __( "Mobile" ) },
                         ] }
-                        help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
+                        help={ __( "Note: Choose on what breakpoint the Post Timeline will stack." ) }
                         onChange={ ( value ) => setAttributes( { stack: value } ) }
                     />                
                 </PanelBody>
