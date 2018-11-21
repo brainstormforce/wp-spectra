@@ -84,8 +84,6 @@ function styling( props ) {
 		}
 	}
 
-	console.log(selectors)
-
 	if ( "above" == imgPosition ) {
 		if ( "center" == align ) {
 			selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto"
