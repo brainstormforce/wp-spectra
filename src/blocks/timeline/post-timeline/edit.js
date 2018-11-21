@@ -410,6 +410,42 @@ class UAGBTimeline extends Component {
                         onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ); } }
                     />
                 </PanelBody>
+                <PanelBody 
+                    title={ __( "Layout" ) }
+                    initialOpen={ false }
+                >          
+                    <SelectControl
+                        label={ __( "Orientation" ) }
+                        value={ timelinAlignment }
+                        onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
+                        options={ [
+                            { value: "left", label: __( "Left" ) },
+                            { value: "right", label: __( "Right" ) },
+                            { value: "center", label: __( "Center" ) },
+                        ] }
+                    />
+                    <SelectControl
+                        label={ __( "Arrow Alignment" ) }
+                        value={ arrowlinAlignment }
+                        onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
+                        options={ [
+                            { value: "top", label: __( "Top" ) },
+                            { value: "bottom", label: __( "Bottom" ) },
+                            { value: "center", label: __( "Center" ) },
+                        ] }
+                    />    
+                    <SelectControl
+                        label={ __( "Stack on" ) }
+                        value={ stack }
+                        options={ [
+                            { value: "none", label: __( "None" ) },
+                            { value: "tablet", label: __( "Tablet" ) },
+                            { value: "mobile", label: __( "Mobile" ) },
+                        ] }
+                        help={ __( "Note: Choose on what breakpoint the Post Timeline will stack." ) }
+                        onChange={ ( value ) => setAttributes( { stack: value } ) }
+                    />                
+                </PanelBody>
                 <PanelBody title={ __( 'Image' ) }
                     initialOpen={ false }
                  >
@@ -471,117 +507,6 @@ class UAGBTimeline extends Component {
                         </Fragment>                                   
                     }  
                 </PanelBody> 
-               
-                <PanelBody 
-                    title={ __( "Layout" ) }
-                    initialOpen={ false }
-                >          
-                    <SelectControl
-                        label={ __( "Orientation" ) }
-                        value={ timelinAlignment }
-                        onChange={ ( value ) => setAttributes( { timelinAlignment: value } ) }
-                        options={ [
-                            { value: "left", label: __( "Left" ) },
-                            { value: "right", label: __( "Right" ) },
-                            { value: "center", label: __( "Center" ) },
-                        ] }
-                    />
-                    <SelectControl
-                        label={ __( "Arrow Alignment" ) }
-                        value={ arrowlinAlignment }
-                        onChange={ ( value ) => setAttributes( { arrowlinAlignment: value } ) }
-                        options={ [
-                            { value: "top", label: __( "Top" ) },
-                            { value: "bottom", label: __( "Bottom" ) },
-                            { value: "center", label: __( "Center" ) },
-                        ] }
-                    />    
-                    <SelectControl
-                        label={ __( "Stack on" ) }
-                        value={ stack }
-                        options={ [
-                            { value: "none", label: __( "None" ) },
-                            { value: "tablet", label: __( "Tablet" ) },
-                            { value: "mobile", label: __( "Mobile" ) },
-                        ] }
-                        help={ __( "Note: Choose on what breakpoint the Post Timeline will stack." ) }
-                        onChange={ ( value ) => setAttributes( { stack: value } ) }
-                    />                
-                </PanelBody>
-                { colorSetting }
-                <PanelBody 
-                    title={ __( "Spacing" ) }
-                    initialOpen={ false }
-                >   
-                    <RangeControl
-                        label={ __( "Padding" ) }
-                        value={ bgPadding }
-                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-                        min={ 1 }
-                        initialPosition={10} 
-                        max={ 50 }
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( "Horizontal Space" ) }
-                        value={ horizontalSpace }
-                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
-                        min={ 1 }
-                        max={ 50 }
-                        initialPosition={10} 
-                        allowReset
-                    />
-                    <RangeControl
-                        label={ __( "Vertical Space" ) }
-                        value={ verticalSpace }
-                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
-                        min={ 1 }
-                        max={ 100 }
-                        initialPosition={10} 
-                        allowReset
-                    />                   
-                    <RangeControl
-                        label={ __( "Heading Bottom Spacing" ) }
-                        value={ headSpace }
-                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        initialPosition={10} 
-                        allowReset
-                    />  
-
-                    { displayPostAuthor && <RangeControl
-                        label={ __( "Author Bottom Spacing" ) }
-                        value={ authorSpace }
-                        onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        initialPosition={10} 
-                        allowReset
-                    />  
-                    }
-                    { displayPostExcerpt && displayPostLink && <RangeControl
-                        label={ __( "Content Bottom Spacing" ) }
-                        value={ contentSpace }
-                        onChange={ ( value ) => setAttributes( { contentSpace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        initialPosition={10} 
-                        allowReset
-                    />  
-                    }
-
-                    { displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
-                        label={ __( "Date Bottom Spacing" ) }
-                        value={ dateBottomspace }
-                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
-                        min={ 0 }
-                        max={ 50 }
-                        initialPosition={10} 
-                        allowReset
-                    />
-                    }       
-                </PanelBody>
                 <PanelBody 
                     title={ __( "Timeline Item" ) }
                     initialOpen={ false }
@@ -664,8 +589,8 @@ class UAGBTimeline extends Component {
                         max={ 50 }
                         allowReset
                     />                 
-                </PanelBody> 
-                <PanelBody 
+                </PanelBody>
+                 <PanelBody 
                     title={ __( "Connector" ) }
                     initialOpen={ false }
                 >                    
@@ -704,6 +629,82 @@ class UAGBTimeline extends Component {
                     />  
                     { iconControls }                  
                 </PanelBody>
+                { colorSetting }
+                <PanelBody 
+                    title={ __( "Spacing" ) }
+                    initialOpen={ false }
+                >   
+                    <RangeControl
+                        label={ __( "Padding" ) }
+                        value={ bgPadding }
+                        onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
+                        min={ 1 }
+                        initialPosition={10} 
+                        max={ 50 }
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( "Horizontal Space" ) }
+                        value={ horizontalSpace }
+                        onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
+                        min={ 1 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( "Vertical Space" ) }
+                        value={ verticalSpace }
+                        onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
+                        min={ 1 }
+                        max={ 100 }
+                        initialPosition={10} 
+                        allowReset
+                    />                   
+                    <RangeControl
+                        label={ __( "Heading Bottom Spacing" ) }
+                        value={ headSpace }
+                        onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />  
+
+                    { displayPostAuthor && <RangeControl
+                        label={ __( "Author Bottom Spacing" ) }
+                        value={ authorSpace }
+                        onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />  
+                    }
+                    { displayPostExcerpt && displayPostLink && <RangeControl
+                        label={ __( "Content Bottom Spacing" ) }
+                        value={ contentSpace }
+                        onChange={ ( value ) => setAttributes( { contentSpace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />  
+                    }
+
+                    { displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
+                        label={ __( "Date Bottom Spacing" ) }
+                        value={ dateBottomspace }
+                        onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
+                        min={ 0 }
+                        max={ 50 }
+                        initialPosition={10} 
+                        allowReset
+                    />
+                    }       
+                </PanelBody>
+                 
+               
             </InspectorControls>
         )
        
