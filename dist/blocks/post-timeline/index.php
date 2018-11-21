@@ -431,7 +431,7 @@ function uagb_tm_get_author( $attributes, $author ) {
 	$output = '';
 	if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 		$output .= sprintf(
-			'<div class="uagb-timaline__author"><a class="uagb-timaline__author-link" href="%2$s">%1$s</a></div>',
+			'<div class="uagb-timaline__author"><span class="dashicons-admin-users dashicons"><a class="uagb-timaline__author-link" href="%2$s">%1$s</a></div>',
 			esc_html( get_the_author_meta( 'display_name', $author ) ),
 			esc_html( get_author_posts_url( $author ) )
 		);

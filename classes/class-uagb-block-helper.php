@@ -1204,6 +1204,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size"  => $attr['authorFontSize'] . "px"
 			);
 
+			$selectors[" .dashicons-admin-users"] = array(
+				"color"  => $attr['authorColor'],
+				"font-size"  => $attr['authorFontSize'] . "px"
+			);
+
 			$selectors[" .uagb-timeline__link"] = array(
 				"color"  => $attr['ctaColor'],
 				"font-size"  => $attr['ctaFontSize'] . "px",

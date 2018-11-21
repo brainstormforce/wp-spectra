@@ -12,6 +12,10 @@ class Author extends React.Component {
 							textAlign: attributes.align,
 							marginBottom: attributes.authorSpace+"px"
 						}}		>
+						<span class="dashicons-admin-users dashicons" style= {{
+								color: attributes.authorColor,
+								fontSize: attributes.authorFontSize+"px",								
+							}}></span>
 						<a className="uagb-timaline__author-link" target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer" 
 							style= {{
 								color: attributes.authorColor,
