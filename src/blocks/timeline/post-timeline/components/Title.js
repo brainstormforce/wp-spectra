@@ -12,10 +12,10 @@ class Title extends React.Component {
 		return (			
 			<div className="uagb-timeline__heading-text"> 
 				<Tag  className='uagb-timeline__heading'>
-                    <a href={ post.link } target="_blank"rel ="noopener noreferrer" >   
-                    { decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }                                                                    
-                    </a>
-                </Tag>
+					<a href={ post.link } target="_blank"rel ="noopener noreferrer" >   
+						{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }                                                                    
+					</a>
+				</Tag>
 			</div>
 		)
 	}
