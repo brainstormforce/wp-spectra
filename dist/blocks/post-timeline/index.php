@@ -40,7 +40,7 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
 				<div class = "uagb-timeline__main"> 					
 					<?php
 					if ( empty( $recent_posts ) ) {
-						echo __( 'No posts found.' );
+						_e( 'No posts found', 'ultimate-addons-for-gutenberg' )
 					} else {
 						echo uagb_tm_get_post_content( $attributes, $recent_posts );
 					}

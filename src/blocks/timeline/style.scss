@@ -22,6 +22,17 @@
      color: inherit;
      margin-bottom: inherit;
 }
+.uagb-timeline__image a{
+    display: block;
+    position: relative;
+    max-width: 100%;
+}
+.uagb-timeline__image img{
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -mz-box-sizing: content-box;
+    box-sizing: content-box;
+}
  .uagb-timeline__main{
      position: relative;
 }
@@ -742,6 +753,7 @@ a.uagb-timeline__link {
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-res-right .uagb-timeline__right .uagb-timeline__date-new {
          display: none;
     }
+    
 }
  @media screen and (max-width: 767px) {
      .uagb-timeline-responsive-none .uagb-timeline__events-inner-new {

@@ -1209,8 +1209,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[" .uagb-timeline__link_parent"] = array(
 				"text-align"  => $attr['align'],
+			);			
+			$selectors[" .uagb-timeline__image a"] = array(
+				"text-align"  => $attr['align'],
 			);
-
 			$selectors[" .uagb-timeline__author-link"] = array(
 				"color"  => $attr['authorColor'],
 				"font-size"  => $attr['authorFontSize'] . "px"
@@ -1409,6 +1411,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line"] = array(
 				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
 			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a"] = array(
+				'text-align' => 'left',
+			);
 
 			// Mobile responsive CSS.
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
@@ -1450,6 +1455,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line"] = array(
 				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a"] = array(
+				'text-align' => 'left',
 			);
 
 			// @codingStandardsIgnoreEnd
