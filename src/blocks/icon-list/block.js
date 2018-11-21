@@ -102,12 +102,14 @@ registerBlockType( "uagb/icon-list", {
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-										<div className="uagb-icon-list__label-wrap">
-											<RichText.Content
-												tagName="span"
-												value={ icons[ index ].label }
-												className='uagb-icon-list__label' />
-										</div>
+										{ "" != icons[ index ].label &&
+											<div className="uagb-icon-list__label-wrap">
+												<RichText.Content
+													tagName="span"
+													value={ icons[ index ].label }
+													className='uagb-icon-list__label' />
+											</div>
+										}
 									</div>
 								</a>
 							)
