@@ -198,7 +198,7 @@ function uagb_blocks_register_timeline_posts() {
 					'type' => 'string',
 				),
 				'className'          => array(
-					'type' => 'string',
+					'type'    => 'string',
 					'default' => '',
 				),
 				'postsToShow'        => array(
