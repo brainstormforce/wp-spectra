@@ -15,11 +15,11 @@
 function uagb_tm_render_core_latest_posts( $attributes ) {
 	$recent_posts = wp_get_recent_posts(
 		array(
-			'numberposts'         => $attributes['postsToShow'],
+			'numberposts'         => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : '6',
 			'post_status'         => 'publish',
-			'order'               => $attributes['order'],
-			'orderby'             => $attributes['orderBy'],
-			'category'            => $attributes['categories'],
+			'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : '',
+			'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : '',
+			'category'            => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
 			'ignore_sticky_posts' => 1,
 		),
 		'OBJECT'
@@ -199,6 +199,7 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'className'          => array(
 					'type' => 'string',
+					'default' => '',
 				),
 				'postsToShow'        => array(
 					'type'    => 'number',
