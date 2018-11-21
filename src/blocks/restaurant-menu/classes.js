@@ -9,8 +9,8 @@ function PositionClasses( attributes ) {
 	var iconimgStyle_class = ""
 
 	let imge_cnt = 0
-	attributes.test_block.map( ( item, thisIndex ) => {
-		let image_arr = attributes.test_block[thisIndex]           
+	attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
+		let image_arr = attributes.rest_menu_item_arr[thisIndex]           
 		if( image_arr && typeof image_arr !== "undefined"){
 			const image = image_arr["image"]
 			if( typeof image !== "undefined" && image !== null && image !=="" ){

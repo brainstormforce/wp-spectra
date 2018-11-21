@@ -19,7 +19,7 @@ class Title extends React.Component {
 			index_value
 		} = this.props
 
-		const test_arr = attributes.test_block[index_value]
+		const test_arr = attributes.rest_menu_item_arr[index_value]
 		let author_title = ""
 		if( test_arr && typeof test_arr !== "undefined"){
 			author_title = test_arr["title"]			
@@ -32,14 +32,14 @@ class Title extends React.Component {
 	                value={ author_title }
 	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
-	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
+	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
 								item["title"] = value				
 							}
 							return item			
 						} )
 	                	setAttributes( {
-							test_block: newItems,
+							rest_menu_item_arr: newItems,
 						} )	
 	                } }     
 	                onMerge = { props.mergeBlocks }

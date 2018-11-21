@@ -125,6 +125,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gap'         => '10',
 							'inner_gap'   => '15',
 							'size'        => '40',
+							'fontSize'    => '',
 							'icon_layout' => 'vertical',
 							'stack'       => 'none',
 						),

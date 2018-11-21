@@ -26,7 +26,7 @@ const attributes = {
 		type: "number",
 		default: ITEM_COUNT
 	},
-	test_block: {
+	rest_menu_item_arr: {
 		type: "array",
 		default : rest_menu_block,
 	},	

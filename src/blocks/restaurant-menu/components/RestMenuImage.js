@@ -11,7 +11,7 @@ class RestMenuImage extends React.Component {
 		const { attributes , index_value } = this.props
 		let url_check = ""
         
-		const image_arr = attributes.test_block[index_value]
+		const image_arr = attributes.rest_menu_item_arr[index_value]
         
 		if( image_arr && typeof image_arr !== "undefined"){
 			const image = image_arr["image"]
