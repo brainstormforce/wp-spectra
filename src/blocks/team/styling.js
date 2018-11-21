@@ -75,7 +75,7 @@ function styling( props ) {
 			"margin-left": socialSpace + "px !important",
 			"margin-right": "0",
 		},
-		" .uagb-team__imag-wrap" : {
+		" .uagb-team__image-wrap" : {
 			"margin-top": imgTopMargin + "px",
 			"margin-bottom": imgBottomMargin + "px",
 			"margin-left": imgLeftMargin + "px",
@@ -84,20 +84,22 @@ function styling( props ) {
 		}
 	}
 
+	console.log(selectors)
+
 	if ( "above" == imgPosition ) {
 		if ( "center" == align ) {
-			selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto"
-			selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto"
+			selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto"
+			selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto"
 		} else if ( "left" == align ) {
-			selectors[" .uagb-team__imag-wrap"]["margin-right"] = "auto"
+			selectors[" .uagb-team__image-wrap"]["margin-right"] = "auto"
 		} else if ( "right" == align ) {
-			selectors[" .uagb-team__imag-wrap"]["margin-left"] = "auto"
+			selectors[" .uagb-team__image-wrap"]["margin-left"] = "auto"
 		}
 	}
 
 	if ( "above" != imgPosition ) {
 		if ( "middle" == imgAlign ) {
-			selectors[" .uagb-team__imag-wrap"]["align-self"] = "center"
+			selectors[" .uagb-team__image-wrap"]["align-self"] = "center"
 		}
 	}
 
