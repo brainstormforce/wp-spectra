@@ -61,16 +61,16 @@ class UAGBTimeline extends Component {
 	constructor() {
 		super( ...arguments )
 
-		// Get initial timeline content.       
+		// Get initial timeline content.
 		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this )
 		this.toggleDisplayPostAuthor  = this.toggleDisplayPostAuthor.bind( this )
 		this.toggleDisplayPostImage   = this.toggleDisplayPostImage.bind( this )
-		this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this )  
-		this.getTimelineicon          = this.getTimelineicon.bind(this)    
-	}    
+		this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this )
+		this.getTimelineicon          = this.getTimelineicon.bind(this)
+	}
 
-	getTimelineicon(value) { 
+	getTimelineicon(value) {
 		this.props.setAttributes( { icon: value } )
 	}
 
@@ -115,11 +115,11 @@ class UAGBTimeline extends Component {
 
 		setAttributes( { readMoreText: ! readMoreText } )
 	}
- 
-	render() {   
-        
+
+	render() {
+
 		const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props
-       
+
 		const {
 			className,
 			headingColor,
@@ -188,7 +188,7 @@ class UAGBTimeline extends Component {
 			{ value: "medium", label: __( "Medium" ) },
 			{ value: "medium_large", label: __( "Medium Large" ) },
 			{ value: "large", label: __( "Large" ) }
-		]      
+		]
 
 		// Parameters for FontIconPicker.
 		const icon_props = {
@@ -228,9 +228,9 @@ class UAGBTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>         
+				</PanelColorSettings>
 			</Fragment>
-		)   
+		)
 
 		const iconFocusSettings = (
 			<Fragment>
@@ -260,16 +260,16 @@ class UAGBTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings> 
+				</PanelColorSettings>
 			</Fragment>
-		)   
+		)
 
 		const iconHoverSettings = (
-			<Fragment>                  
+			<Fragment>
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					initialOpen={ true }
-					colorSettings={ [       
+					colorSettings={ [
 						{
 							value: iconHover,
 							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
@@ -287,16 +287,16 @@ class UAGBTimeline extends Component {
 						},
 					] }
 				>
-				</PanelColorSettings>      
+				</PanelColorSettings>
 			</Fragment>
-		)  
+		)
 
 		const iconControls = (
 			<Fragment>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Connector Color Settings" ) }
 					initialOpen={ true }
-				>               
+				>
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-3"
 						activeClass="active-tab"
 						tabs={ [
@@ -309,12 +309,12 @@ class UAGBTimeline extends Component {
 								name: "focus",
 								title: __( "Focus" ),
 								className: "uagb-focus-tab",
-							}, 
+							},
 							{
 								name: "hover",
 								title: __( "Hover" ),
 								className: "uagb-hover-tab",
-							},                                  
+							},
 						] }>
 						{
 							( tabName ) => {
@@ -329,17 +329,17 @@ class UAGBTimeline extends Component {
 								return <div>{ tabout }</div>
 							}
 						}
-					</TabPanel> 
-				</PanelBody>               
+					</TabPanel>
+				</PanelBody>
 			</Fragment>
 		)
-      
+
 		const colorSetting = (
 			<Fragment>
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					initialOpen={ false }
-					colorSettings={ [       
+					colorSettings={ [
 						{
 							value: headingColor,
 							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
@@ -349,7 +349,7 @@ class UAGBTimeline extends Component {
 							value: subHeadingColor,
 							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 							label: __( "Content Color" ),
-						},                            
+						},
 						{
 							value: backgroundColor,
 							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
@@ -381,7 +381,7 @@ class UAGBTimeline extends Component {
 							value={ ctaColor }
 							onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
 							allowReset
-						/>                   
+						/>
 						<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBackground }} ></span></span></p>
 						<ColorPalette
 							value={ ctaBackground }
@@ -389,13 +389,13 @@ class UAGBTimeline extends Component {
 							allowReset
 						/>
 					</Fragment>
-					}                
+					}
 				</PanelColorSettings>
 			</Fragment>
 		)
 
 		const content_control = (
-			<InspectorControls>  
+			<InspectorControls>
 				<PanelBody title={ __( "Query" ) }
 					initialOpen={ true }
 				>
@@ -425,11 +425,11 @@ class UAGBTimeline extends Component {
                         	value={ imageSize }
                         	onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
                         />
-					}   
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) }
 					initialOpen={ false }
-				> 
+				>
 					<ToggleControl
 						label={ __( "Display Post Author" ) }
 						checked={ displayPostAuthor }
@@ -439,7 +439,7 @@ class UAGBTimeline extends Component {
 						label={ __( "Display Post Date" ) }
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
-					/>                   
+					/>
 					<ToggleControl
 						label={ __( "Display Post Excerpt" ) }
 						checked={ displayPostExcerpt }
@@ -462,20 +462,20 @@ class UAGBTimeline extends Component {
 						checked={ displayPostLink }
 						onChange={ this.toggleDisplayPostLink }
 					/>
-					{ displayPostLink && <Fragment>                       
+					{ displayPostLink && <Fragment>
 						<p className="components-base-control__label">{ __( "CTA Link" ) }</p>
 						<URLInput
 							value={ readMoreText }
 							onChange={ ( value ) => this.props.setAttributes( { readMoreText: value } ) }
-						/> 
-					</Fragment>                                   
-					}  
-				</PanelBody> 
-               
-				<PanelBody 
+						/>
+					</Fragment>
+					}
+				</PanelBody>
+
+				<PanelBody
 					title={ __( "Layout" ) }
 					initialOpen={ false }
-				>          
+				>
 					<SelectControl
 						label={ __( "Orientation" ) }
 						value={ timelinAlignment }
@@ -495,7 +495,7 @@ class UAGBTimeline extends Component {
 							{ value: "bottom", label: __( "Bottom" ) },
 							{ value: "center", label: __( "Center" ) },
 						] }
-					/>    
+					/>
 					<SelectControl
 						label={ __( "Stack on" ) }
 						value={ stack }
@@ -506,19 +506,19 @@ class UAGBTimeline extends Component {
 						] }
 						help={ __( "Note: Choose on what breakpoint the Content Timeline will stack." ) }
 						onChange={ ( value ) => setAttributes( { stack: value } ) }
-					/>                
+					/>
 				</PanelBody>
 				{ colorSetting }
-				<PanelBody 
+				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>   
+				>
 					<RangeControl
 						label={ __( "Padding" ) }
 						value={ bgPadding }
 						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
 						min={ 1 }
-						initialPosition={10} 
+						initialPosition={10}
 						max={ 50 }
 						allowReset
 					/>
@@ -528,7 +528,7 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
 						min={ 1 }
 						max={ 50 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
 					/>
 					<RangeControl
@@ -537,18 +537,18 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
 						min={ 1 }
 						max={ 100 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
-					/>                   
+					/>
 					<RangeControl
 						label={ __( "Heading Bottom Spacing" ) }
 						value={ headSpace }
 						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
-					/>  
+					/>
 
 					{ displayPostAuthor && <RangeControl
 						label={ __( "Author Bottom Spacing" ) }
@@ -556,9 +556,9 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
-					/>  
+					/>
 					}
 					{ displayPostExcerpt && displayPostLink && <RangeControl
 						label={ __( "Content Bottom Spacing" ) }
@@ -566,9 +566,9 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { contentSpace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
-					/>  
+					/>
 					}
 
 					{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
@@ -577,12 +577,12 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
 						min={ 0 }
 						max={ 50 }
-						initialPosition={10} 
+						initialPosition={10}
 						allowReset
 					/>
-					}       
+					}
 				</PanelBody>
-				<PanelBody 
+				<PanelBody
 					title={ __( "Timeline Item" ) }
 					initialOpen={ false }
 				>
@@ -598,27 +598,27 @@ class UAGBTimeline extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>  
+					/>
 					<RangeControl
 						label={ __( "Heading Font Size" ) }
 						value={ headFontSize }
 						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={30}                        
+						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>                    
+					/>
 					<RangeControl
 						label={ __( "Content Font Size" ) }
 						value={ subHeadFontSize }
 						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={16}   
+						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/>  
+					/>
 
 					{ displayPostDate &&
                         <RangeControl
@@ -630,8 +630,8 @@ class UAGBTimeline extends Component {
                         	initialPosition={16}
                         	beforeIcon="editor-textcolor"
                         	allowReset
-                        />                                       
-					} 
+                        />
+					}
 
 					{ displayPostAuthor && <RangeControl
 						label={ __( "Author Font Size" ) }
@@ -639,10 +639,10 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={30}                        
+						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/> 
+					/>
 					}
 					{ displayPostLink && <RangeControl
 						label={ __( "CTA Font Size" ) }
@@ -650,34 +650,34 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 						min={ 10 }
 						max={ 50 }
-						initialPosition={30}                        
+						initialPosition={30}
 						beforeIcon="editor-textcolor"
 						allowReset
-					/> 
+					/>
 					}
 					<RangeControl
 						label={ __( "Rounded Corners" ) }
 						value={ borderRadius }
 						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
 						min={ 0 }
-						initialPosition={10} 
+						initialPosition={10}
 						max={ 50 }
 						allowReset
-					/>                 
-				</PanelBody> 
-				<PanelBody 
+					/>
+				</PanelBody>
+				<PanelBody
 					title={ __( "Connector" ) }
 					initialOpen={ false }
-				>                    
+				>
 					<FontIconPicker {...icon_props} />
 					<RangeControl
 						label={ __( "Icon Size" ) }
 						value={ iconSize }
 						onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-						min={ 0 }                        
+						min={ 0 }
 						max={ 30 }
 						allowReset
-					/>  
+					/>
 					<RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderwidth }
@@ -701,13 +701,13 @@ class UAGBTimeline extends Component {
 						min={ 25 }
 						max={ 90 }
 						allowReset
-					/>  
-					{ iconControls }                  
+					/>
+					{ iconControls }
 				</PanelBody>
 			</InspectorControls>
 		)
-       
-		var my_block_id = "uagb-ctm-"+this.props.clientId        
+
+		var my_block_id = "uagb-ctm-"+this.props.clientId
 		var cta_enable = ""
 
 		if(displayPostLink){
@@ -715,8 +715,8 @@ class UAGBTimeline extends Component {
 		}
 
 		return (
-			<Fragment>            
-				{ content_control }           
+			<Fragment>
+				{ content_control }
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -724,24 +724,24 @@ class UAGBTimeline extends Component {
 							setAttributes( { align: value } )
 						} }
 						controls={ [ "center", "left","right" ] }
-					/>               
+					/>
 				</BlockControls>
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap"
 				) }
-				id = { my_block_id } >                     
+				id = { my_block_id } >
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						cta_enable,
 						...ContentTmClasses( this.props.attributes ),
 					) }>
 						<div className = "uagb-timeline-wrapper">
-							<div className = "uagb-timeline__main">                                
+							<div className = "uagb-timeline__main">
 								{ this.get_content() }
 								<div className = "uagb-timeline__line" >
 									<div className = "uagb-timeline__line__inner"></div>
-								</div> 
+								</div>
 							</div>
 						</div>
 					</div>
@@ -750,23 +750,23 @@ class UAGBTimeline extends Component {
 		)
 	}
 
-	componentDidMount() {   
-		//Store lient id. 
+	componentDidMount() {
+		//Store lient id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
-		$(".edit-post-layout__content").scroll( function(event) {            
-			time.timelineContent_back(id)            
+		$(".edit-post-layout__content").scroll( function(event) {
+			time.timelineContent_back(id)
 		})
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-timeline-style-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}    
+	}
 
 	componentDidUpdate(){
 		var id = this.props.clientId
@@ -777,7 +777,7 @@ class UAGBTimeline extends Component {
 			time.timelineContent_back(id)
 		})
 	}
-   
+
 	/*  Js for timeline line and inner line filler*/
 	timelineContent_back(id){
 		var timeline            = $(".uagb-timeline").parents("#block-"+id)
@@ -904,11 +904,11 @@ class UAGBTimeline extends Component {
 
 		}
 	}
-    
+
 	/* Render output at backend */
 	get_content(){
-        
-		const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = this.props  
+
+		const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = this.props
 
 		const {
 			timelinAlignment,
@@ -917,19 +917,19 @@ class UAGBTimeline extends Component {
 			postsToShow,
 			align,
 		} = attributes
-       
-       
+
+
 		// Add CSS.
 		var element = document.getElementById( "uagb-timeline-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = contentTimelineStyle( this.props )
-		}   
+		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
 			return (
-				<Fragment>                                            
+				<Fragment>
 					<Placeholder
 						icon="admin-post"
 						label={ __( "UAGB timeline" ) }
@@ -946,7 +946,7 @@ class UAGBTimeline extends Component {
 			const displayPosts = latestPosts.length > postsToShow ?
 				latestPosts.slice( 0, postsToShow ) :
 				latestPosts
-            
+
            	var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
 			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
 			let data_copy           = [ ...latestPosts ]
@@ -961,38 +961,38 @@ class UAGBTimeline extends Component {
 								display_inner_date = true
 								content_align_class = AlignClass( this.props.attributes, index )
 								day_align_class = DayAlignClass( this.props.attributes, index )
-							} 
+							}
 
 			                return (
 			                	<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
-			                		<div className = {content_align_class}> 
+			                		<div className = {content_align_class}>
 
-										{ <TmIcon attributes={attributes} /> } 
-										
+										{ <TmIcon attributes={attributes} /> }
+
 										<div className = {day_align_class} >
 											<div className="uagb-timeline__events-new">
-												<div className="uagb-timeline__events-inner-new"> 
-													<div className="uagb-timeline__date-hide uagb-timeline__date-inner"> 
-														{ <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__inner-date-new"/> } 
+												<div className="uagb-timeline__events-inner-new">
+													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
+														{ <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__inner-date-new"/> }
 													</div>
 
 													<div className="uagb-content">
 
 														{ <FeaturedImage post={post} attributes={attributes} /> }
-														{ <Title post={post} attributes={attributes} /> }                                                        
+														{ <Title post={post} attributes={attributes} /> }
 														{ <Author post={post} attributes={attributes} /> }
-														{ <Excerpt post={post} attributes={attributes} /> }			                                             
-														{ <CtaLink post={post} attributes={attributes} /> }                                                    
+														{ <Excerpt post={post} attributes={attributes} /> }
+														{ <CtaLink post={post} attributes={attributes} /> }
 
-			                                            <div className="uagb-timeline__arrow"></div>  
+			                                            <div className="uagb-timeline__arrow"></div>
 
 													</div>
 
 												</div>
 											</div>
 										</div>
-										{ display_inner_date && <div className = "uagb-timeline__date-new"> 
-											{ <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__date-new"/> } 
+										{ display_inner_date && <div className = "uagb-timeline__date-new">
+											{ <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__date-new"/> }
 										</div>
 										}
 			                		</div>
@@ -1002,14 +1002,14 @@ class UAGBTimeline extends Component {
 					}
 				</div>
 			)
-		}                   
+		}
 	}
 
 }
 
 export default withSelect( ( select, props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes    
-    
+	const { postsToShow, order, orderBy, categories } = props.attributes
+
 	const { getEntityRecords } = select( "core" )
 	const latestPostsQuery = pickBy( {
 		categories,
@@ -1020,10 +1020,10 @@ export default withSelect( ( select, props ) => {
 	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
-	}        
+	}
 	return {
 		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
-    
+
 } )( UAGBTimeline )
