@@ -249,7 +249,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'dateBottomspace'    => 5,
 							'borderRadius'       => 2,
 							'bgPadding'          => 20,
-							'contentPadding'     => 0,
+							'contentPadding'     => 10,
 							'iconSize'           => 12,
 							'iconHover'          => '',
 							'iconBgHover'        => '',

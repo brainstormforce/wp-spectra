@@ -250,7 +250,7 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'imageSize'          => array(
 					'type'    => 'string',
-					'default' => 'medium',
+					'default' => 'large',
 				),
 				'readMoreText'       => array(
 					'type'    => 'string',
@@ -274,7 +274,7 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'contentPadding'     => array(
 					'type'    => 'number',
-					'default' => 0,
+					'default' => 10,
 				),
 				'iconSize'           => array(
 					'type'    => 'number',
