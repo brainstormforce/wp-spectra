@@ -1,5 +1,3 @@
-const { __ } = wp.i18n
-
 class CtaLink extends React.Component {
 
 	render() {

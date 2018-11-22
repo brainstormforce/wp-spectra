@@ -168,11 +168,11 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'authorFontSize'     => array(
 					'type'    => 'number',
-					'default' => 12,
+					'default' => 11,
 				),
 				'ctaFontSize'        => array(
 					'type'    => 'number',
-					'default' => 12,
+					'default' => '',
 				),
 				'dateColor'          => array(
 					'type'    => 'string',
@@ -255,7 +255,7 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'readMoreText'       => array(
 					'type'    => 'string',
-					'default' => 'Continue Reading',
+					'default' => 'Read More',
 				),
 				'block_id'           => array(
 					'type'    => 'string',
@@ -291,11 +291,11 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'ctaColor'           => array(
 					'type'    => 'string',
-					'default' => '#333',
+					'default' => '#fff',
 				),
 				'ctaBackground'      => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#333',
 				),
 				'stack'              => array(
 					'type'    => 'string',

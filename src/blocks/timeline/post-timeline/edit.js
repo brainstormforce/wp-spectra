@@ -4,7 +4,6 @@
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
-import moment from 'moment';
 import classnames from 'classnames';
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker'
@@ -441,7 +440,6 @@ class UAGBTimeline extends Component {
                             onChange={ ( value ) => setAttributes( { exerptLength: value } ) }
                             min={ 1 }
                             max={ 50 }
-                            beforeIcon="editor-textcolor"
                             allowReset
                         />
                     }
