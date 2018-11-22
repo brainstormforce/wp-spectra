@@ -207,6 +207,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
+					'uagb/post-masonry'     => array(
+						'slug'        => '',
+						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(),
+					),
 					'uagb/post-timeline'    => array(
 						'slug'        => '',
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
@@ -242,6 +249,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'dateBottomspace'    => 5,
 							'borderRadius'       => 2,
 							'bgPadding'          => 20,
+							'contentPadding'     => 0,
 							'iconSize'           => 12,
 							'iconHover'          => '',
 							'iconBgHover'        => '',
@@ -253,13 +261,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'authorFontSize'     => 11,
 							'ctaBackground'      => '#333',
 						),
-					),
-					'uagb/post-masonry'     => array(
-						'slug'        => '',
-						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'attributes'  => array(),
 					),
 					'uagb/restaurant-menu'  => array(
 						'slug'        => '',

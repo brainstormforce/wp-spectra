@@ -273,6 +273,10 @@ function uagb_blocks_register_timeline_posts() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'contentPadding'     => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
 				'iconSize'           => array(
 					'type'    => 'number',
 					'default' => 15,
@@ -607,9 +611,11 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
 									<?php echo uagb_tm_get_date( $attributes, $post_id, 'uagb-timeline__inner-date-new' ); ?>
 								</div>
+								<?php echo uagb_tm_get_image( $attributes, $post_id ); ?>
+
 								<div class = "uagb-content" >
 									<?php
-										echo uagb_tm_get_image( $attributes, $post_id );
+										// echo uagb_tm_get_image( $attributes, $post_id );
 										echo uagb_tm_get_title( $attributes, $post_id );
 										echo uagb_tm_get_author( $attributes, $post->post_author );
 										echo uagb_tm_get_excerpt( $attributes, $post->post_content, $post_id );

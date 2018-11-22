@@ -124,6 +124,7 @@ class UAGBTimeline extends Component {
             exerptLength,
             borderRadius,
             bgPadding,
+            contentPadding,
             block_id,
             iconFocus,
             iconBgFocus,
@@ -591,10 +592,19 @@ class UAGBTimeline extends Component {
                     initialOpen={ false }
                 >   
                     <RangeControl
-                        label={ __( "Padding" ) }
+                        label={ __( "Block Padding" ) }
                         value={ bgPadding }
                         onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-                        min={ 1 }
+                        min={ 0 }
+                        initialPosition={10} 
+                        max={ 50 }
+                        allowReset
+                    />
+                    <RangeControl
+                        label={ __( "Content Padding" ) }
+                        value={ contentPadding }
+                        onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+                        min={ 0 }
                         initialPosition={10} 
                         max={ 50 }
                         allowReset
@@ -603,7 +613,7 @@ class UAGBTimeline extends Component {
                         label={ __( "Horizontal Space" ) }
                         value={ horizontalSpace }
                         onChange={ ( value ) => setAttributes( { horizontalSpace: value } ) }
-                        min={ 1 }
+                        min={ 0 }
                         max={ 50 }
                         initialPosition={10} 
                         allowReset
@@ -612,7 +622,7 @@ class UAGBTimeline extends Component {
                         label={ __( "Vertical Space" ) }
                         value={ verticalSpace }
                         onChange={ ( value ) => setAttributes( { verticalSpace: value } ) }
-                        min={ 1 }
+                        min={ 0 }
                         max={ 100 }
                         initialPosition={10} 
                         allowReset
@@ -872,6 +882,7 @@ class UAGBTimeline extends Component {
             arrowlinAlignment,
             displayPostDate,
             postsToShow,
+            contentPadding,
             align,
         } = attributes;
        
@@ -932,10 +943,8 @@ class UAGBTimeline extends Component {
                                                     <div className="uagb-timeline__date-hide uagb-timeline__date-inner"> 
                                                         { <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__inner-date-new"/> } 
                                                     </div>
-
-                                                    <div className="uagb-content">
-
-                                                        { <FeaturedImage post={post} attributes={attributes} /> }
+                                                    { <FeaturedImage post={post} attributes={attributes} /> }
+                                                    <div className="uagb-content" style = {{ padding: contentPadding+"px"}}>
                                                         { <Title post={post} attributes={attributes} /> }                                                        
                                                         { <Author post={post} attributes={attributes} /> }
                                                         { <Excerpt post={post} attributes={attributes} /> }                                                      

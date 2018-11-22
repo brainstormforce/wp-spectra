@@ -1350,6 +1350,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'border-radius' => $attr['borderRadius'].'px',
                     'padding'=> $attr['bgPadding'].'px',
                 );
+            
+            $selectors[' .uagb-content'] = array(
+                    'padding'=> $attr['contentPadding'].'px',
+                );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconColor'],

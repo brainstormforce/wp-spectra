@@ -43,8 +43,10 @@
      word-break: break-word;
 }
 a.uagb-timeline__link {
-    padding: 10px;
+    padding: 5px 10px;
+    display: inline-block;
 }
+
  h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading, h4.uagb-timeline__heading, h5.uagb-timeline__heading, h6.uagb-timeline__heading{
      margin-bottom: 0px;
 }
@@ -462,6 +464,7 @@ a.uagb-timeline__link {
      -ms-transform: translateX(50%);
      transform: translateX(50%);
 }
+
 /* RESPONSIVE ALIGNMENT OF VERTICAL SEPARATOR. */
  .uagb-timeline__center-block .uagb-timeline__line {
      left: 50%;
