@@ -14,6 +14,20 @@
  */
 function uagb_tm_render_core_latest_posts( $attributes ) {
 
+	$query_args = array(
+		'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+		'post_status'         => 'publish',
+		'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+		'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+		'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
+		'ignore_sticky_posts' => 1,
+	);
+
+	$recent_posts = new WP_Query( $query_args );
+
+	// var_dump($query);
+	/*
+	var_dump('----');
 	$recent_posts = wp_get_recent_posts(
 		array(
 			'numberposts'         => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : '6',
@@ -25,6 +39,7 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
 		),
 		'OBJECT'
 	);
+	var_dump($recent_posts);*/
 
 	$post_tm_class = uagb_tm_get_classes( $attributes );
 	$my_block_id   = 'uagb-ctm-' . $attributes['block_id'];
@@ -592,16 +607,18 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 	?>
 	<div class = "uagb-timeline__days uagb-timeline-infinite-load">
 		<?php
-		foreach ( $recent_posts as $index => $post ) {
-			// Get the post ID.
-			$post_id      = $post->ID;
-			$second_index = 'uagb-' . $index;
+		$index = 0;
+		while ( $recent_posts->have_posts() ) {
+			$recent_posts->the_post();
+			global $post;
+			$post_id = $post->Id;
 
 			if ( 'center' === $timelin_alignment ) {
 				$display_inner_date  = true;
 				$content_align_class = uagb_tm_get_align_classes( $attributes, $index );
 				$day_align_class     = uagb_tm_get_day_align_classes( $attributes, $index );
 			}
+
 			?>
 			<article class = "uagb-timeline__field uagb-timeline__animate-border" key= "<?php echo $index; ?>">
 				<div class = "<?php echo $content_align_class; ?>">
@@ -616,7 +633,6 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 
 								<div class = "uagb-content" >
 									<?php
-										// echo uagb_tm_get_image( $attributes, $post_id );
 										echo uagb_tm_get_title( $attributes, $post_id );
 										echo uagb_tm_get_author( $attributes, $post->post_author );
 										echo uagb_tm_get_excerpt( $attributes, $post->post_content, $post_id );
@@ -634,7 +650,11 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 					<?php } ?>
 				</div>
 			</article>
-		<?php } ?>
+			<?php
+			$index++;
+		}
+		wp_reset_postdata();
+		?>
 	</div>
 	<?php
 	return ob_get_clean();
