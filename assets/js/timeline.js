@@ -94,7 +94,7 @@
 				var elementPos, elementCardPos
 				var timeline_icon_top, timeline_card_top
 				var timeline_icon = $(this).find(".uagb-timeline__marker"),
-					animate_border  = $(this).find(".uagb-timeline__animate-border")
+					animate_border  = $(this).find(".uagb-timeline__field-wrap")
 
 				for (var i = 0; i < timeline_icon.length; i++) {
 					timeline_icon_pos = $(timeline_icon[i]).offset().top

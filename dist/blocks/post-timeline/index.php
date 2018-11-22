@@ -572,7 +572,7 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 			}
 
 			?>
-			<article class = "uagb-timeline__field uagb-timeline__animate-border" key= "<?php echo $index; ?>">
+			<article class = "uagb-timeline__field uagb-timeline__field-wrap" key= "<?php echo $index; ?>">
 				<div class = "<?php echo $content_align_class; ?>">
 					<?php echo uagb_tm_get_icon( $attributes ); ?> 
 					<div class = "<?php echo $day_align_class; ?>" >

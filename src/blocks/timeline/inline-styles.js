@@ -177,7 +177,7 @@ function contentTimelineStyle( props ) {
 		"font-size" : iconSize+"px",
 	}
 
-	selectors[".uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker"] = {
+	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker"] = {
 		"background" : iconBgHover,
 		"border-color": borderHover,
 	}
@@ -188,7 +188,7 @@ function contentTimelineStyle( props ) {
 	}
 
 
-	selectors[".uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new"] = {
+	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new"] = {
 		"color": iconHover,
 	}
 

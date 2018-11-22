@@ -808,7 +808,7 @@ class UAGBcontentTimeline extends Component {
 							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon
 
 							return (
-								<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
+								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
 									<div className = {content_align_class}>
 
 										<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
@@ -982,7 +982,7 @@ class UAGBcontentTimeline extends Component {
 			var elementPos, elementCardPos
 			var timeline_icon_top, timeline_card_top
 			var timeline_icon   = timeline.find(".uagb-timeline__marker"),
-				animate_border  = timeline.find(".uagb-timeline__animate-border")
+				animate_border  = timeline.find(".uagb-timeline__field-wrap")
 
 			for (var i = 0; i < timeline_icon.length; i++) {
 				timeline_icon_pos = $(timeline_icon[i]).offset().top
