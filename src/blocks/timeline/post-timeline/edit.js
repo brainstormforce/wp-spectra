@@ -1,13 +1,11 @@
 /**
  * External dependencies
  */
-import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 import classnames from 'classnames';
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from '@fonticonpicker/react-fonticonpicker'
-import times from "lodash/times"
 
 // Import css for timeline.
 import contentTimelineStyle from ".././inline-styles"
@@ -28,10 +26,7 @@ const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
 
-//const { apiFetch } = wp;
-
 const {
-    //registerStore,
     withSelect,
 } = wp.data;
 
@@ -50,7 +45,6 @@ const {
 const {
     InspectorControls,
     ColorPalette,
-    RichText,
     BlockAlignmentToolbar,
     BlockControls,
     PanelColorSettings,

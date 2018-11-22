@@ -13,6 +13,7 @@
  * @return html             HTML.
  */
 function uagb_tm_render_core_latest_posts( $attributes ) {
+
 	$recent_posts = wp_get_recent_posts(
 		array(
 			'numberposts'         => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : '6',
