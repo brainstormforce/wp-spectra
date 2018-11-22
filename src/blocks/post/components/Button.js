@@ -16,10 +16,11 @@ class Button extends React.Component {
 					className='uagb-post__cta'
 					style={{
 						color: attributes.ctaColor,
-						background: attributes.ctaBgColor
+						background: attributes.ctaBgColor,
+						fontSize: attributes.ctaFontSize
 					}}
 				>
-					<a style={{	color: attributes.ctaColor }} className='uagb-post__link uagb-text-link' href={ post.link } target={ target } rel ="noopener noreferrer">{ __( "Read More" ) }</a>
+					<a style={{	color: attributes.ctaColor, fontSize: attributes.ctaFontSize }} className='uagb-post__link uagb-text-link' href={ post.link } target={ target } rel ="noopener noreferrer">{ __( "Read More" ) }</a>
 				</div>
 			)
 
