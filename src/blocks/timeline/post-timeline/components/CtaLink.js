@@ -5,6 +5,10 @@ class CtaLink extends React.Component {
 	render() {
 
 		const { post, attributes } = this.props
+		let target ="_self"
+		if( attributes.linkTarget ){
+			target ="_blank"
+		}
 
 		if ( attributes.displayPostLink ) {
 
@@ -16,7 +20,7 @@ class CtaLink extends React.Component {
 						textAlign: attributes.align
 					}}					
 				>
-					<a className='uagb-timeline__link' href={ post.link } target="_blank" rel ="noopener noreferrer" 
+					<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer" 
 						style= {{
 							color: attributes.ctaColor,
 							fontSize: attributes.ctaFontSize+"px",

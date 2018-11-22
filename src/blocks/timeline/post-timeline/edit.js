@@ -58,64 +58,16 @@ const {
 } = wp.editor;
 
 class UAGBTimeline extends Component {
+   
     constructor() {
         super( ...arguments );
-
-        // Get initial timeline content.       
-        this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this );
-        this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-        this.toggleDisplayPostAuthor  = this.toggleDisplayPostAuthor.bind( this );
-        this.toggleDisplayPostImage   = this.toggleDisplayPostImage.bind( this );
-        this.toggleDisplayPostLink    = this.toggleDisplayPostLink.bind( this );  
-        this.getTimelineicon          = this.getTimelineicon.bind(this);    
-   }    
+        this.getTimelineicon          = this.getTimelineicon.bind(this);  
+    }    
 
     getTimelineicon(value) { 
         this.props.setAttributes( { icon: value } );
     }
 
-    toggleDisplayPostDate() {
-        const { displayPostDate } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { displayPostDate: ! displayPostDate } );
-    }
-
-    toggleDisplayPostExcerpt() {
-        const { displayPostExcerpt } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
-    }
-
-    toggleDisplayPostAuthor() {
-        const { displayPostAuthor } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { displayPostAuthor: ! displayPostAuthor } );
-    }
-
-    toggleDisplayPostImage() {
-        const { displayPostImage } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { displayPostImage: ! displayPostImage } );
-    }
-
-    toggleDisplayPostLink() {
-        const { displayPostLink } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { displayPostLink: ! displayPostLink } );
-    }
-
-    customizeReadMoreText() {
-        const { readMoreText } = this.props.attributes;
-        const { setAttributes } = this.props;
-
-        setAttributes( { readMoreText: ! readMoreText } );
-    }
- 
     render() {   
         
         const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props;
@@ -180,6 +132,7 @@ class UAGBTimeline extends Component {
             iconBgHover,
             borderHover,
             stack,
+            linkTarget,
         } = attributes;
 
         /* Image size options */
@@ -452,7 +405,7 @@ class UAGBTimeline extends Component {
                     <ToggleControl
                         label={ __( 'Display Featured Image' ) }
                         checked={ displayPostImage }
-                        onChange={ this.toggleDisplayPostImage }
+                        onChange={ ( value ) => setAttributes( { displayPostImage: ! displayPostImage } ) }
                     />
                     { displayPostImage &&
                         <SelectControl
@@ -469,17 +422,17 @@ class UAGBTimeline extends Component {
                     <ToggleControl
                         label={ __( 'Display Post Author' ) }
                         checked={ displayPostAuthor }
-                        onChange={ this.toggleDisplayPostAuthor }
+                       onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
                     />
                     <ToggleControl
                         label={ __( "Display Post Date" ) }
                         checked={ displayPostDate }
-                        onChange={ this.toggleDisplayPostDate }
+                        onChange={ ( value ) => setAttributes( { displayPostDate: ! displayPostDate } ) }
                     />                   
                     <ToggleControl
                         label={ __( 'Display Post Excerpt' ) }
                         checked={ displayPostExcerpt }
-                        onChange={ this.toggleDisplayPostExcerpt }
+                        onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
                     />
                     { displayPostExcerpt &&
                        <RangeControl
@@ -496,7 +449,7 @@ class UAGBTimeline extends Component {
                     <ToggleControl
                         label={ __( 'Display Continue Reading Link' ) }
                         checked={ displayPostLink }
-                        onChange={ this.toggleDisplayPostLink }
+                        onChange={ ( value ) => setAttributes( { displayPostLink: ! displayPostLink } ) }
                     />
                     { displayPostLink && <Fragment> 
                         <TextControl
@@ -506,6 +459,11 @@ class UAGBTimeline extends Component {
                         />
                         </Fragment>                                   
                     }  
+                    <ToggleControl
+                        label={ __( 'Open links in New Tab' ) }
+                        checked={ linkTarget }
+                        onChange={ ( value ) => setAttributes( { linkTarget: ! linkTarget } ) }
+                    />
                 </PanelBody> 
                 <PanelBody 
                     title={ __( "Timeline Item" ) }

@@ -13,10 +13,13 @@ class FeaturedImage extends React.Component {
 			post.featured_image_src[attributes.imageSize]
 		) {
 			var src = post.featured_image_src[attributes.imageSize]
-
+			let target ="_self"
+			if( attributes.linkTarget ){
+				target ="_blank"
+			}
 			return (
 				<div className='uagb-timeline__image'>
-					<a href={ post.link } target="_blank" rel ="noopener noreferrer" style= {{
+					<a href={ post.link } target={target} rel ="noopener noreferrer" style= {{
 							textAlign: attributes.align
 						}}	>
 						<img

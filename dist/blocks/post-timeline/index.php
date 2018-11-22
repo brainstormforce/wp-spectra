@@ -301,6 +301,10 @@ function uagb_blocks_register_timeline_posts() {
 					'type'    => 'string',
 					'default' => 'tablet',
 				),
+				'linkTarget'         => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			),
 			'render_callback' => 'uagb_tm_render_core_latest_posts',
 		)
@@ -340,11 +344,12 @@ function uagb_tm_get_image( $attributes, $post_id ) {
 	// Get the post thumbnail.
 	$post_thumb_id = get_post_thumbnail_id( $post_id );
 	$output        = '';
-	// Get the featured image.
+	$target        = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 	if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
 		$output .= sprintf(
-			'<div class="uagb-timeline__image"><a href="%1$s" rel="noopener noreferrer">%2$s</a></div>',
+			'<div class="uagb-timeline__image"><a href="%1$s" rel="noopener noreferrer" target="%2$s" >%3$s</a></div>',
 			esc_url( get_permalink( $post_id ) ),
+			$target,
 			wp_get_attachment_image( $post_thumb_id, $attributes['imageSize'] )
 		);
 	}
@@ -389,9 +394,12 @@ function uagb_tm_get_title( $attributes, $post_id ) {
 	if ( ! $title ) {
 		$title = __( 'Untitled' );
 	}
+
+	$target  = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 	$output .= sprintf(
-		'<' . $attributes['headingTag'] . ' class="uagb-timeline__heading" ><a href="%1$s" rel="noopener noreferrer" >%2$s</a></' . $attributes['headingTag'] . '>',
+		'<' . $attributes['headingTag'] . ' class="uagb-timeline__heading" ><a href="%1$s" rel="noopener noreferrer" target ="%2$s" >%3$s</a></' . $attributes['headingTag'] . '>',
 		esc_url( get_permalink( $post_id ) ),
+		$target,
 		esc_html( $title )
 	);
 	$output .= sprintf( '</div>' ); // End of uagb-timeline-heading-text.
@@ -407,12 +415,16 @@ function uagb_tm_get_title( $attributes, $post_id ) {
  * @return string            HTML.
  */
 function uagb_tm_get_cta( $attributes, $post_id ) {
+
 	$output = '';
+	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+
 	if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
 		$output .= sprintf(
 			'<div class="uagb-timeline__link_parent">
-			<a class="uagb-timeline__link" href="%1$s" rel="noopener noreferrer">%2$s</a></div>',
+			<a class="uagb-timeline__link" href="%1$s" rel="noopener noreferrer" target= "%2$s">%3$s</a></div>',
 			esc_url( get_permalink( $post_id ) ),
+			$target,
 			esc_html( $attributes['readMoreText'] )
 		);
 	}
