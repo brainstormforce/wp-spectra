@@ -558,7 +558,7 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 	$display_inner_date  = false;
 	ob_start();
 	?>
-	<div class = "uagb-timeline__days uagb-timeline-infinite-load">
+	<div class = "uagb-timeline__days">
 		<?php
 		$index = 0;
 		while ( $recent_posts->have_posts() ) {
