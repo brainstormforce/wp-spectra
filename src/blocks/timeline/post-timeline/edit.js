@@ -200,139 +200,139 @@ class UAGBTimeline extends Component {
           isMulti: false,
         };
 
-      	const iconColorSettings = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: separatorColor,
-							onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-							label: __( "Line Color" ),
-						},
-						{
-							value: iconColor,
-							onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: separatorBg,
-							onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: separatorBorder,
-							onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>         
-			</Fragment>
-		)   
+        const iconColorSettings = (
+            <Fragment>
+                <PanelColorSettings
+                    title={ __( "Color Settings" ) }
+                    initialOpen={ true }
+                    colorSettings={ [
+                        {
+                            value: separatorColor,
+                            onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
+                            label: __( "Line Color" ),
+                        },
+                        {
+                            value: iconColor,
+                            onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
+                            label: __( "Icon Color" ),
+                        },
+                        {
+                            value: separatorBg,
+                            onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
+                            label: __( "Background Color" ),
+                        },
+                        {
+                            value: separatorBorder,
+                            onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
+                            label: __( "Border Color" ),
+                        },
+                    ] }
+                >
+                </PanelColorSettings>         
+            </Fragment>
+        )   
 
         const iconFocusSettings = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: separatorFillColor,
-							onChange: ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ),
-							label: __( "Line Color" ),
-						},
-						{
-							value: iconFocus,
-							onChange: ( colorValue ) => setAttributes( { iconFocus: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: iconBgFocus,
-							onChange: ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: borderFocus,
-							onChange: ( colorValue ) => setAttributes( { borderFocus: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings> 
-			</Fragment>
-		)   
+            <Fragment>
+                <PanelColorSettings
+                    title={ __( "Color Settings" ) }
+                    initialOpen={ true }
+                    colorSettings={ [
+                        {
+                            value: separatorFillColor,
+                            onChange: ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ),
+                            label: __( "Line Color" ),
+                        },
+                        {
+                            value: iconFocus,
+                            onChange: ( colorValue ) => setAttributes( { iconFocus: colorValue } ),
+                            label: __( "Icon Color" ),
+                        },
+                        {
+                            value: iconBgFocus,
+                            onChange: ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ),
+                            label: __( "Background Color" ),
+                        },
+                        {
+                            value: borderFocus,
+                            onChange: ( colorValue ) => setAttributes( { borderFocus: colorValue } ),
+                            label: __( "Border Color" ),
+                        },
+                    ] }
+                >
+                </PanelColorSettings> 
+            </Fragment>
+        )   
 
-		const iconHoverSettings = (
-			<Fragment>                  
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [       
-						{
-							value: iconHover,
-							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: iconBgHover,
-							onChange: ( colorValue ) => setAttributes( { iconBgHover: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: borderHover,
-							onChange: ( colorValue ) => setAttributes( { borderHover: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>      
-			</Fragment>
-		)  
+        const iconHoverSettings = (
+            <Fragment>                  
+                <PanelColorSettings
+                    title={ __( "Color Settings" ) }
+                    initialOpen={ true }
+                    colorSettings={ [       
+                        {
+                            value: iconHover,
+                            onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
+                            label: __( "Icon Color" ),
+                        },
+                        {
+                            value: iconBgHover,
+                            onChange: ( colorValue ) => setAttributes( { iconBgHover: colorValue } ),
+                            label: __( "Background Color" ),
+                        },
+                        {
+                            value: borderHover,
+                            onChange: ( colorValue ) => setAttributes( { borderHover: colorValue } ),
+                            label: __( "Border Color" ),
+                        },
+                    ] }
+                >
+                </PanelColorSettings>      
+            </Fragment>
+        )  
 
         const iconControls = (
-			<Fragment>
-				<PanelBody 
-					title={ __( "Connector Color Settings" ) }
-					initialOpen={ true }
-				>               
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-3"
-						activeClass="active-tab"
-						tabs={ [
-							{
-								name: "normal",
-								title: __( "Normal" ),
-								className: "uagb-normal-tab",
-							},
-							{
-								name: "focus",
-								title: __( "Focus" ),
-								className: "uagb-focus-tab",
-							}, 
-							{
-								name: "hover",
-								title: __( "Hover" ),
-								className: "uagb-hover-tab",
-							},                                  
-						] }>
-						{
-							( tabName ) => {
-								let tabout
-								if( "focus" === tabName.name ) {
-									tabout = iconFocusSettings
-								}else if( "hover" === tabName.name ){
-									tabout = iconHoverSettings
-								}else {
-									tabout = iconColorSettings
-								}
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel> 
-				</PanelBody>               
-			</Fragment>
-		)
+            <Fragment>
+                <PanelBody 
+                    title={ __( "Connector Color Settings" ) }
+                    initialOpen={ true }
+                >               
+                    <TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-3"
+                        activeClass="active-tab"
+                        tabs={ [
+                            {
+                                name: "normal",
+                                title: __( "Normal" ),
+                                className: "uagb-normal-tab",
+                            },
+                            {
+                                name: "focus",
+                                title: __( "Focus" ),
+                                className: "uagb-focus-tab",
+                            }, 
+                            {
+                                name: "hover",
+                                title: __( "Hover" ),
+                                className: "uagb-hover-tab",
+                            },                                  
+                        ] }>
+                        {
+                            ( tabName ) => {
+                                let tabout
+                                if( "focus" === tabName.name ) {
+                                    tabout = iconFocusSettings
+                                }else if( "hover" === tabName.name ){
+                                    tabout = iconHoverSettings
+                                }else {
+                                    tabout = iconColorSettings
+                                }
+                                return <div>{ tabout }</div>
+                            }
+                        }
+                    </TabPanel> 
+                </PanelBody>               
+            </Fragment>
+        )
       
         const colorSetting = (
             <Fragment>
@@ -719,34 +719,34 @@ class UAGBTimeline extends Component {
             <Fragment>            
             { content_control }           
             <BlockControls>
-				<BlockAlignmentToolbar
-					value={ align }
-					onChange={ ( value ) => {
-						setAttributes( { align: value } )
-					} }
-					controls={ [ "center", "left","right" ] }
-				/>               
-			</BlockControls>
+                <BlockAlignmentToolbar
+                    value={ align }
+                    onChange={ ( value ) => {
+                        setAttributes( { align: value } )
+                    } }
+                    controls={ [ "center", "left","right" ] }
+                />               
+            </BlockControls>
                 <div  className={ classnames(
-					className,
-					"uagb-timeline__outer-wrap"
-				) }
-				id = { my_block_id } >                     
-					<div  className = { classnames(
-						"uagb-timeline__content-wrap",
+                    className,
+                    "uagb-timeline__outer-wrap"
+                ) }
+                id = { my_block_id } >                     
+                    <div  className = { classnames(
+                        "uagb-timeline__content-wrap",
                         cta_enable,
-						...ContentTmClasses( this.props.attributes ),
-					) }>
-						<div className = "uagb-timeline-wrapper">
-							<div className = "uagb-timeline__main">                                
-								{ this.get_content() }
-								<div className = "uagb-timeline__line" >
-									<div className = "uagb-timeline__line__inner"></div>
-								</div> 
-							</div>
-						</div>
-					</div>
-				</div>
+                        ...ContentTmClasses( this.props.attributes ),
+                    ) }>
+                        <div className = "uagb-timeline-wrapper">
+                            <div className = "uagb-timeline__main">                                
+                                { this.get_content() }
+                                <div className = "uagb-timeline__line" >
+                                    <div className = "uagb-timeline__line__inner"></div>
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </Fragment>
         );
     }
@@ -948,61 +948,61 @@ class UAGBTimeline extends Component {
                 latestPosts.slice( 0, postsToShow ) :
                 latestPosts;
             
-           	var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
-			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
-			let data_copy           = [ ...latestPosts ]
-			var display_inner_date  = false
+            var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
+            var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
+            let data_copy           = [ ...latestPosts ]
+            var display_inner_date  = false
 
              return (
-				<div className = "uagb-timeline__days uagb-timeline-infinite-load">
-					{
-						displayPosts.map((post,index) => {
+                <div className = "uagb-timeline__days uagb-timeline-infinite-load">
+                    {
+                        displayPosts.map((post,index) => {
 
-							if(timelinAlignment == "center"){
-								display_inner_date = true
-								content_align_class = AlignClass( this.props.attributes, index )
-								day_align_class = DayAlignClass( this.props.attributes, index )
-							} 
+                            if(timelinAlignment == "center"){
+                                display_inner_date = true
+                                content_align_class = AlignClass( this.props.attributes, index )
+                                day_align_class = DayAlignClass( this.props.attributes, index )
+                            } 
 
-			                return (
-			                	<article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
-			                		<div className = {content_align_class}> 
+                            return (
+                                <article className = "uagb-timeline__field uagb-timeline__animate-border"  key={index}>
+                                    <div className = {content_align_class}> 
 
                                         { <TmIcon attributes={attributes} /> } 
-										
-										<div className = {day_align_class} >
-											<div className="uagb-timeline__events-new">
-												<div className="uagb-timeline__events-inner-new"> 
-													<div className="uagb-timeline__date-hide uagb-timeline__date-inner"> 
+                                        
+                                        <div className = {day_align_class} >
+                                            <div className="uagb-timeline__events-new">
+                                                <div className="uagb-timeline__events-inner-new"> 
+                                                    <div className="uagb-timeline__date-hide uagb-timeline__date-inner"> 
                                                         { <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__inner-date-new"/> } 
-													</div>
+                                                    </div>
 
-													<div className="uagb-content">
+                                                    <div className="uagb-content">
 
                                                         { <FeaturedImage post={post} attributes={attributes} /> }
                                                         { <Title post={post} attributes={attributes} /> }                                                        
                                                         { <Author post={post} attributes={attributes} /> }
-                                                        { <Excerpt post={post} attributes={attributes} /> }			                                             
+                                                        { <Excerpt post={post} attributes={attributes} /> }                                                      
                                                         { <CtaLink post={post} attributes={attributes} /> }                                                    
 
-			                                            <div className="uagb-timeline__arrow"></div>  
+                                                        <div className="uagb-timeline__arrow"></div>  
 
-													</div>
+                                                    </div>
 
-												</div>
-											</div>
-										</div>
-										{ display_inner_date && <div className = "uagb-timeline__date-new"> 
+                                                </div>
+                                            </div>
+                                        </div>
+                                        { display_inner_date && <div className = "uagb-timeline__date-new"> 
                                             { <PostDate post={post} attributes={attributes} dateClass = "uagb-timeline__date-new"/> } 
-										</div>
-										}
-			                		</div>
-			                	</article>
-			                );
-						})
-					}
-				</div>
-			);
+                                        </div>
+                                        }
+                                    </div>
+                                </article>
+                            );
+                        })
+                    }
+                </div>
+            );
          }                   
     }
 

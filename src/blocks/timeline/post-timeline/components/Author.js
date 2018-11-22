@@ -1,4 +1,4 @@
-const { Fragment } = wp.element;
+const { Fragment } = wp.element
 class Author extends React.Component {
 
 	render() {
@@ -22,7 +22,7 @@ class Author extends React.Component {
 								fontSize: attributes.authorFontSize+"px",								
 							}}
 						>
-						{ post.author_info.display_name }
+							{ post.author_info.display_name }
 						</a>
 					</div>
 				}				
