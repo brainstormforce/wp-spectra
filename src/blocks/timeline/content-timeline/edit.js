@@ -730,6 +730,11 @@ class UAGBcontentTimeline extends Component {
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
+
+		// Pushing Style tag for this block css.
+        const $style = document.createElement( "style" )
+        $style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId )
+        document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
@@ -757,8 +762,11 @@ class UAGBcontentTimeline extends Component {
 			t_date
 		} = attributes
 
-		/* Style for elements */
-		var back_style = contentTimelineStyle( this.props )
+		// Add CSS.
+        var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
+        if( null != element && "undefined" != typeof element ) {
+            element.innerHTML = contentTimelineStyle( this.props )
+        }   
 
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 		const hasDate = Array.isArray( t_date ) && t_date.length
@@ -787,8 +795,7 @@ class UAGBcontentTimeline extends Component {
 			var display_inner_date  = false
 
 			return (
-				<div className = "uagb-timeline__days uagb-timeline-infinite-load">
-					<style dangerouslySetInnerHTML={{ __html: back_style }}></style>
+				<div className = "uagb-timeline__days">
 					{
 						tm_content.map((post,index) => {
 							var second_index = "uagb-"+index

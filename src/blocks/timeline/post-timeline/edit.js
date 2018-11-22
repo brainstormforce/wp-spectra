@@ -923,7 +923,7 @@ class UAGBTimeline extends Component {
             var display_inner_date  = false
 
              return (
-                <div className = "uagb-timeline__days uagb-timeline-infinite-load">
+                <div className = "uagb-timeline__days">
                     {
                         displayPosts.map((post,index) => {
 

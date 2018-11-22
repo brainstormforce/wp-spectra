@@ -90,7 +90,7 @@ registerBlockType( "uagb/content-timeline", {
 				) }>
 					<div className = "uagb-timeline-wrapper">
 						<div className = "uagb-timeline__main">
-							<div className = "uagb-timeline__days uagb-timeline-infinite-load">
+							<div className = "uagb-timeline__days">
 								{
 									tm_content.map((post,index) => {
 										var second_index = "uagb-"+index
