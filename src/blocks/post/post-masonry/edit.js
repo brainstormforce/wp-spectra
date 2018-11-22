@@ -73,6 +73,9 @@ class UAGBPostMasonry extends Component {
 			titleColor,
 			titleTag,
 			titleFontSize,
+			metaFontSize,
+			excerptFontSize,
+			ctaFontSize,
 			metaColor,
 			excerptColor,
 			ctaColor,
@@ -80,6 +83,7 @@ class UAGBPostMasonry extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
+			excerptLength
 		} = attributes
 
 		const inspectorControls = (
@@ -149,19 +153,6 @@ class UAGBPostMasonry extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( "Title Tag" ) }
-						value={ titleTag }
-						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-						] }
-					/>
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
@@ -182,6 +173,16 @@ class UAGBPostMasonry extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
+					{ displayPostExcerpt &&
+						<RangeControl
+							label={ __( "Excerpt Length" ) }
+							value={ excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 1 }
+							max={ 50 }
+							allowReset
+						/>
+					}
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
@@ -192,6 +193,63 @@ class UAGBPostMasonry extends Component {
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
+				</PanelBody>
+				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ titleTag }
+						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Title Font Size" ) }
+						value={ titleFontSize }
+						onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+						min={ 1 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					{ ( displayPostAuthor || displayPostDate || displayPostComment ) &&
+						<RangeControl
+							label={ __( "Meta Font Size" ) }
+							value={ metaFontSize }
+							onChange={ ( value ) => setAttributes( { metaFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
+					{ displayPostExcerpt &&
+						<RangeControl
+							label={ __( "Excerpt Font Size" ) }
+							value={ excerptFontSize }
+							onChange={ ( value ) => setAttributes( { excerptFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
+					{ displayPostLink &&
+						<RangeControl
+							label={ __( "CTA Font Size" ) }
+							value={ ctaFontSize }
+							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
