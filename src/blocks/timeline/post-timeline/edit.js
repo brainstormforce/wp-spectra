@@ -288,31 +288,12 @@ class UAGBTimeline extends Component {
                 initialOpen={ false }
                 colorSettings={ [       
                     {
-                        value: headingColor,
-                        onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-                        label: __( "Heading Color" ),
-                    },
-                    {
-                        value: subHeadingColor,
-                        onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-                        label: __( "Content Color" ),
-                    },                            
-                    {
                         value: backgroundColor,
                         onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
                         label: __( "Background Color" ),
                     },
                 ] }
-            >
-                { displayPostAuthor && <Fragment>
-                        <p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
-                        <ColorPalette
-                            value={ authorColor }
-                            onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
-                            allowReset
-                        />
-                    </Fragment>
-                }
+                >
                 { displayPostDate && <Fragment>
                         <p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
                         <ColorPalette
@@ -322,6 +303,33 @@ class UAGBTimeline extends Component {
                         />
                     </Fragment>
                 }
+                <Fragment>
+                    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+                    <ColorPalette
+                        value={ headingColor }
+                        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+                        allowReset
+                    />
+                </Fragment>
+                { displayPostAuthor && <Fragment>
+                        <p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ authorColor }
+                            onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                }
+                { displayPostExcerpt && <Fragment>
+                        <p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ subHeadingColor }
+                            onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+                            allowReset
+                        />
+                    </Fragment>
+                }
+                               
                 { displayPostLink && <Fragment>
                         <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
                         <ColorPalette
