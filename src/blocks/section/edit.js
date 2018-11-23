@@ -571,7 +571,7 @@ class UAGBSectionEdit extends Component {
 						</div>
 					}
 					<div className="uagb-section__inner-wrap">
-						<InnerBlocks />
+						<InnerBlocks templateLock={false} />
 					</div>
 
 				</CustomTag>
