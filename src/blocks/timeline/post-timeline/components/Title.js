@@ -9,10 +9,14 @@ class Title extends React.Component {
 
 		const { post, attributes } = this.props
 
+		let target ="_self"
+			if( attributes.linkTarget ){
+				target ="_blank"
+			}
 		return (			
 			<div className="uagb-timeline__heading-text"> 
 				<Tag  className='uagb-timeline__heading'>
-					<a href={ post.link } target="_blank"rel ="noopener noreferrer" >   
+					<a href={ post.link } target= { target} rel ="noopener noreferrer" >   
 						{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }                                                                    
 					</a>
 				</Tag>

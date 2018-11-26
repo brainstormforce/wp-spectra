@@ -18,3 +18,7 @@
 #wpwrap .edit-post-visual-editor .uagb-timeline__heading {
      margin: 0;
 }
+
+#wpwrap .edit-post-visual-editor .uagb-timeline-wrapper a{
+	pointer-events: none;
+}

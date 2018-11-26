@@ -1092,7 +1092,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'font-size' => $attr['iconSize'].'px',
                 );
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker'] = array(
+            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker'] = array(
                     'background' => $attr['iconBgHover'],
                     'border-color'=> $attr['borderHover'],
                 );
@@ -1103,7 +1103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
 
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new'] = array(
+            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconHover'],
                 );
 
@@ -1131,6 +1131,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    );
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
 					'text-align'=> 'left',
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
+				"border-right-color"  => $attr['backgroundColor'],
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line"] = array(
+				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
 			);
 
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
@@ -1160,6 +1166,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    );
 			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
 					'text-align'=> 'left',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
+				"border-right-color"  => $attr['backgroundColor'],
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line"] = array(
+				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
 			);
 			// @codingStandardsIgnoreEnd
 
@@ -1191,15 +1203,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-timeline__heading"] = array(
 				"text-align"  => $attr['align'],
 			);
-			$selectors[" .uagb-timaline__author"] = array(
+			$selectors[" .uagb-timeline__author"] = array(
 				"text-align"  => $attr['align'],
 				"margin-bottom"  => $attr['authorSpace'] . "px"
 			);
 			$selectors[" .uagb-timeline__link_parent"] = array(
 				"text-align"  => $attr['align'],
+			);			
+			$selectors[" .uagb-timeline__image a"] = array(
+				"text-align"  => $attr['align'],
+			);
+			$selectors[" .uagb-timeline__author-link"] = array(
+				"color"  => $attr['authorColor'],
+				"font-size"  => $attr['authorFontSize'] . "px"
 			);
 
-			$selectors[" .uagb-timaline__author-link"] = array(
+			$selectors[" .dashicons-admin-users"] = array(
 				"color"  => $attr['authorColor'],
 				"font-size"  => $attr['authorFontSize'] . "px"
 			);
@@ -1331,13 +1350,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'border-radius' => $attr['borderRadius'].'px',
                     'padding'=> $attr['bgPadding'].'px',
                 );
+            
+            $selectors[' .uagb-content'] = array(
+                    'padding'=> $attr['contentPadding'].'px',
+                );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconColor'],
                     'font-size' => $attr['iconSize'].'px',
                 );
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker'] = array(
+            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker'] = array(
                     'background' => $attr['iconBgHover'],
                     'border-color'=> $attr['borderHover'],
                 );
@@ -1348,7 +1371,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
 
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new'] = array(
+            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconHover'],
                 );
 
@@ -1368,7 +1391,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"text-align"  => 'left',
 			);
 
-			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timaline__author"] = array(
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author"] = array(
 				"text-align"  => 'left',
 			);
 			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent"] = array(
@@ -1385,6 +1408,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align'=> 'left',
 			);
 
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
+				"border-right-color"  => $attr['backgroundColor'],
+			);
+
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line"] = array(
+				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+			);
+			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a"] = array(
+				'text-align' => 'left',
+			);
+
+			// Mobile responsive CSS.
 	        $m_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
 	            'margin-left' => 0,
 	            'margin-right' => 0,
@@ -1413,12 +1448,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
 					'text-align'=> 'left',
 			);
-			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timaline__author"] = array(
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author"] = array(
 				"text-align"  => 'left',
 			);
 			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent"] = array(
 				"text-align"  => 'left',
+			);			
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
+				"border-right-color"  => $attr['backgroundColor'],
 			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line"] = array(
+				'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+			);
+			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a"] = array(
+				'text-align' => 'left',
+			);
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );

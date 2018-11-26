@@ -13,18 +13,17 @@
  * @return html             HTML.
  */
 function uagb_tm_render_core_latest_posts( $attributes ) {
-	$recent_posts = wp_get_recent_posts(
-		array(
-			'numberposts'         => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : '6',
-			'post_status'         => 'publish',
-			'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : '',
-			'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : '',
-			'category'            => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
-			'ignore_sticky_posts' => 1,
-		),
-		'OBJECT'
+
+	$query_args = array(
+		'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+		'post_status'         => 'publish',
+		'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+		'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+		'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
+		'ignore_sticky_posts' => 1,
 	);
 
+	$recent_posts  = new WP_Query( $query_args );
 	$post_tm_class = uagb_tm_get_classes( $attributes );
 	$my_block_id   = 'uagb-ctm-' . $attributes['block_id'];
 
@@ -40,7 +39,7 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
 				<div class = "uagb-timeline__main"> 					
 					<?php
 					if ( empty( $recent_posts ) ) {
-						echo __( 'No posts found.' );
+						_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
 					} else {
 						echo uagb_tm_get_post_content( $attributes, $recent_posts );
 					}
@@ -168,11 +167,11 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'authorFontSize'     => array(
 					'type'    => 'number',
-					'default' => 12,
+					'default' => 11,
 				),
 				'ctaFontSize'        => array(
 					'type'    => 'number',
-					'default' => 12,
+					'default' => '',
 				),
 				'dateColor'          => array(
 					'type'    => 'string',
@@ -251,11 +250,11 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'imageSize'          => array(
 					'type'    => 'string',
-					'default' => 'medium',
+					'default' => 'large',
 				),
 				'readMoreText'       => array(
 					'type'    => 'string',
-					'default' => 'Continue Reading',
+					'default' => 'Read More',
 				),
 				'block_id'           => array(
 					'type'    => 'string',
@@ -272,6 +271,10 @@ function uagb_blocks_register_timeline_posts() {
 				'bgPadding'          => array(
 					'type'    => 'number',
 					'default' => 20,
+				),
+				'contentPadding'     => array(
+					'type'    => 'number',
+					'default' => 10,
 				),
 				'iconSize'           => array(
 					'type'    => 'number',
@@ -291,15 +294,19 @@ function uagb_blocks_register_timeline_posts() {
 				),
 				'ctaColor'           => array(
 					'type'    => 'string',
-					'default' => '#333',
+					'default' => '#fff',
 				),
 				'ctaBackground'      => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#333',
 				),
 				'stack'              => array(
 					'type'    => 'string',
 					'default' => 'tablet',
+				),
+				'linkTarget'         => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 			),
 			'render_callback' => 'uagb_tm_render_core_latest_posts',
@@ -331,35 +338,29 @@ function uagb_tm_get_icon( $attributes ) {
 /**
  * Function Name: uagb_tm_get_image.
  *
- * @param  array  $attributes attribute array.
- * @param  string $post_id    string.
- * @return string            HTML.
+ * @param  array $attributes attribute array.
  */
-function uagb_tm_get_image( $attributes, $post_id ) {
+function uagb_tm_get_image( $attributes ) {
 
-	// Get the post thumbnail.
-	$post_thumb_id = get_post_thumbnail_id( $post_id );
-	$output        = '';
-	// Get the featured image.
-	if ( isset( $attributes['displayPostImage'] ) && $attributes['displayPostImage'] && $post_thumb_id ) {
-		$output .= sprintf(
-			'<div class="uagb-timeline__image"><a href="%1$s" rel="noopener noreferrer">%2$s</a></div>',
-			esc_url( get_permalink( $post_id ) ),
-			wp_get_attachment_image( $post_thumb_id, $attributes['imageSize'] )
-		);
-	}
-	return $output;
+	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	?>
+	<div class='uagb-timeline__image'>
+		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
+		</a>
+	</div>
+	<?php
 }
 
 /**
  * Function Name: uagb_tm_get_date.
  *
  * @param  array  $attributes attribute array.
- * @param  string $post_id    string.
- * @param  string $classname  string.
- * @return string            HTML.
+ * @param  string $classname attribute string.
  */
-function uagb_tm_get_date( $attributes, $post_id, $classname ) {
+function uagb_tm_get_date( $attributes, $classname ) {
+
+	global $post;
+	$post_id = $post->ID;
 
 	$output = '';
 	if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
@@ -371,103 +372,87 @@ function uagb_tm_get_date( $attributes, $post_id, $classname ) {
 		);
 	}
 
-	return $output;
+	echo $output;
 }
 
 /**
  * Function Name: uagb_tm_get_title.
  *
- * @param  array  $attributes attribute array.
- * @param  string $post_id    string.
- * @return string            HTML.
+ * @param  array $attributes attribute array.
  */
-function uagb_tm_get_title( $attributes, $post_id ) {
+function uagb_tm_get_title( $attributes ) {
 
-	$output  = '';
-	$output .= sprintf( '<div class = "uagb-timeline__heading-text" >' );
-	$title   = ucfirst( get_the_title( $post_id ) );
-	if ( ! $title ) {
-		$title = __( 'Untitled' );
-	}
-	$output .= sprintf(
-		'<' . $attributes['headingTag'] . ' class="uagb-timeline__heading" ><a href="%1$s" rel="noopener noreferrer" >%2$s</a></' . $attributes['headingTag'] . '>',
-		esc_url( get_permalink( $post_id ) ),
-		esc_html( $title )
-	);
-	$output .= sprintf( '</div>' ); // End of uagb-timeline-heading-text.
-	return $output;
+	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 
+	$tag = $attributes['headingTag'];
+	global $post;
+	?>
+	<div class = "uagb-timeline__heading-text" >
+		<<?php echo $tag; ?> class="uagb-timeline__heading" >
+			<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : _e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
+		</<?php echo $tag; ?>>
+	</div>
+	<?php
 }
 
 /**
  * Function Name: uagb_tm_get_cta.
  *
- * @param  array  $attributes attribute array.
- * @param  string $post_id    string.
- * @return string            HTML.
+ * @param  array $attributes attribute array.
  */
-function uagb_tm_get_cta( $attributes, $post_id ) {
-	$output = '';
-	if ( isset( $attributes['displayPostLink'] ) && $attributes['displayPostLink'] ) {
-		$output .= sprintf(
-			'<div class="uagb-timeline__link_parent">
-			<a class="uagb-timeline__link" href="%1$s" rel="noopener noreferrer">%2$s</a></div>',
-			esc_url( get_permalink( $post_id ) ),
-			esc_html( $attributes['readMoreText'] )
-		);
+function uagb_tm_get_cta( $attributes ) {
+
+	if ( ! $attributes['displayPostLink'] ) {
+		return;
 	}
-	return $output;
+	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	?>
+	<div class="uagb-timeline__link_parent">
+		<a class="uagb-timeline__link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
+	</div>
+	<?php
+
 }
 
 /**
  * Function uagb_tm_get_author.
  *
- * @param  array  $attributes attribute.
- * @param  string $author    string.
- * @return string            HTML
+ * @param  array $attributes attribute.
+ * @param  array $author attribute.
  */
 function uagb_tm_get_author( $attributes, $author ) {
 
 	$output = '';
 	if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 		$output .= sprintf(
-			'<div class="uagb-timaline__author"><a class="uagb-timaline__author-link" href="%2$s">%1$s</a></div>',
+			'<div class="uagb-timeline__author"><span class="dashicons-admin-users dashicons"></span><a class="uagb-timeline__author-link" href="%2$s">%1$s</a></div>',
 			esc_html( get_the_author_meta( 'display_name', $author ) ),
 			esc_html( get_author_posts_url( $author ) )
 		);
 	}
-	return $output;
+	echo $output;
 }
 
 /**
- * Function uagb_tm_get_author.
+ * Function uagb_tm_get_excerpt.
  *
- * @param  array  $attributes attribute.
- * @param  string $content    string.
- * @param  string $post_id   string.
- * @return string            HTML.
+ * @param  array $attributes attribute.
  */
-function uagb_tm_get_excerpt( $attributes, $content, $post_id ) {
+function uagb_tm_get_excerpt( $attributes ) {
 
-	$output = '';
-
-	$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
-	if ( empty( $excerpt ) ) {
-		$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $content, $attributes['exerptLength'] ) );
-	} else {
-		$excerpt = wp_trim_words( $excerpt, $attributes['exerptLength'] );
+	if ( ! $attributes['displayPostExcerpt'] ) {
+		return;
 	}
 
+	$excerpt = wp_trim_words( get_the_excerpt(), $attributes['exerptLength'] );
 	if ( ! $excerpt ) {
 		$excerpt = null;
 	}
-
-	if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-		$output .= sprintf( '<div class = "uagb-timeline-desc-content">' );
-		$output .= wp_kses_post( $excerpt );
-		$output .= sprintf( '</div>' ); // uagb-timeline-heading-text.
-	}
-	return $output;
+	?>
+	<div class="uagb-timeline-desc-content">
+		<?php echo $excerpt; ?>
+	</div>
+	<?php
 
 }
 
@@ -573,35 +558,37 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 	$display_inner_date  = false;
 	ob_start();
 	?>
-	<div class = "uagb-timeline__days uagb-timeline-infinite-load">
+	<div class = "uagb-timeline__days">
 		<?php
-		foreach ( $recent_posts as $index => $post ) {
-			// Get the post ID.
-			$post_id      = $post->ID;
-			$second_index = 'uagb-' . $index;
+		$index = 0;
+		while ( $recent_posts->have_posts() ) {
+			$recent_posts->the_post();
+			global $post;
 
 			if ( 'center' === $timelin_alignment ) {
 				$display_inner_date  = true;
 				$content_align_class = uagb_tm_get_align_classes( $attributes, $index );
 				$day_align_class     = uagb_tm_get_day_align_classes( $attributes, $index );
 			}
+
 			?>
-			<article class = "uagb-timeline__field uagb-timeline__animate-border" key= "<?php echo $index; ?>">
+			<article class = "uagb-timeline__field uagb-timeline__field-wrap" key= "<?php echo $index; ?>">
 				<div class = "<?php echo $content_align_class; ?>">
 					<?php echo uagb_tm_get_icon( $attributes ); ?> 
 					<div class = "<?php echo $day_align_class; ?>" >
 						<div class = "uagb-timeline__events-new">
 							<div class ="uagb-timeline__events-inner-new"> 							
 								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
-									<?php echo uagb_tm_get_date( $attributes, $post_id, 'uagb-timeline__inner-date-new' ); ?>
+									<?php echo uagb_tm_get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
 								</div>
+								<?php echo uagb_tm_get_image( $attributes ); ?>
+
 								<div class = "uagb-content" >
 									<?php
-										echo uagb_tm_get_image( $attributes, $post_id );
-										echo uagb_tm_get_title( $attributes, $post_id );
-										echo uagb_tm_get_author( $attributes, $post->post_author );
-										echo uagb_tm_get_excerpt( $attributes, $post->post_content, $post_id );
-										echo uagb_tm_get_cta( $attributes, $post_id );
+										uagb_tm_get_title( $attributes );
+										uagb_tm_get_author( $attributes, $post->post_author );
+										uagb_tm_get_excerpt( $attributes );
+										uagb_tm_get_cta( $attributes );
 									?>
 									<div class = "uagb-timeline__arrow"></div>
 								</div>
@@ -610,12 +597,16 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 					</div>
 					<?php if ( $display_inner_date ) { ?>
 						<div class = "uagb-timeline__date-new" >
-						<?php echo uagb_tm_get_date( $attributes, $post_id, 'uagb-timeline__date-new' ); ?>
+						<?php echo uagb_tm_get_date( $attributes, 'uagb-timeline__date-new' ); ?>
 						</div>
 					<?php } ?>
 				</div>
 			</article>
-		<?php } ?>
+			<?php
+			$index++;
+		}
+		wp_reset_postdata();
+		?>
 	</div>
 	<?php
 	return ob_get_clean();
