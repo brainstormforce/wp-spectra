@@ -10,9 +10,9 @@ class Title extends React.Component {
 		const { post, attributes } = this.props
 
 		let target ="_self"
-			if( attributes.linkTarget ){
-				target ="_blank"
-			}
+		if( attributes.linkTarget ){
+			target ="_blank"
+		}
 		return (			
 			<div className="uagb-timeline__heading-text"> 
 				<Tag  className='uagb-timeline__heading'>

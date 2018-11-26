@@ -20,8 +20,8 @@ class FeaturedImage extends React.Component {
 			return (
 				<div className='uagb-timeline__image'>
 					<a href={ post.link } target={target} rel ="noopener noreferrer" style= {{
-							textAlign: attributes.align
-						}}	>
+						textAlign: attributes.align
+					}}	>
 						<img
 							src={ src[0] }
 							alt={ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }

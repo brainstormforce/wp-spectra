@@ -732,9 +732,9 @@ class UAGBcontentTimeline extends Component {
 		})
 
 		// Pushing Style tag for this block css.
-        const $style = document.createElement( "style" )
-        $style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId )
-        document.head.appendChild( $style )
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId )
+		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
@@ -763,10 +763,10 @@ class UAGBcontentTimeline extends Component {
 		} = attributes
 
 		// Add CSS.
-        var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
-        if( null != element && "undefined" != typeof element ) {
-            element.innerHTML = contentTimelineStyle( this.props )
-        }   
+		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = contentTimelineStyle( this.props )
+		}   
 
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 		const hasDate = Array.isArray( t_date ) && t_date.length
