@@ -512,7 +512,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
 					'background-color'   => $attr->backgroundImageColor,
-					'opacity'   => '0.'.$attr->backgroundOpacity,
+					'opacity'   => ( isset( $attr->backgroundOpacity ) && '' != $attr->backgroundOpacity ) ? ( ( 100 - $attr->backgroundOpacity ) / 100 ) : '0.5',
 				),
 				' .uagb-testimonial__wrap .uagb-tm__content' => array(
 					'border-color'   => $attr->borderColor,

@@ -100,7 +100,7 @@ function TestimonialStyle( props ) {
 
 	selectors[".uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay"] = {
 		"background-color":backgroundImageColor,
-		"opacity":"0."+backgroundOpacity,
+		"opacity":( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5,
 	}                              
                
 	if ( borderStyle != "none" ) {
