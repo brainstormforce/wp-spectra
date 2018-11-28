@@ -250,7 +250,7 @@ class UAGBtestimonial extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Author Font Size" ) }
+						label={ __( "Name Font Size" ) }
 						value={ nameFontSize }
 						onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
 						min={ 10 }
@@ -279,7 +279,7 @@ class UAGBtestimonial extends Component {
 						{
 							value: descColor,
 							onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
-							label: __( "Content Color" ),
+							label: __( "Testimonial Color" ),
 						},
 						{
 							value: authorColor,
