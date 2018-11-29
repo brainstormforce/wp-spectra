@@ -654,6 +654,14 @@ class UAGBcontentTimeline extends Component {
 						allowReset
 					/>
 					<RangeControl
+						label={ __( "Icon Background Size" ) }
+						value={ connectorBgsize }
+						onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
+						min={ 25 }
+						max={ 90 }
+						allowReset
+					/>
+					<RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderwidth }
 						onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
@@ -668,15 +676,7 @@ class UAGBcontentTimeline extends Component {
 						min={ 1 }
 						max={ 10 }
 						allowReset
-					/>
-					<RangeControl
-						label={ __( "Icon Background Size" ) }
-						value={ connectorBgsize }
-						onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
-						min={ 25 }
-						max={ 90 }
-						allowReset
-					/>
+					/>					
 					{ iconControls }
 				</PanelBody>
 			</InspectorControls>
