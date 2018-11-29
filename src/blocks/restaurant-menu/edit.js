@@ -225,7 +225,7 @@ class UAGBrestMenu extends Component {
 						allowReset
 					/>									
 					<RangeControl
-						label={ __( "Description Font Size" ) }
+						label={ __( "Content Font Size" ) }
 						value={ descFontSize }
 						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 						min={ 10 }
@@ -534,7 +534,7 @@ class UAGBrestMenu extends Component {
 							{ (imagePosition == "left" || imagePosition == "right") && 
 							<Fragment>
 								<SelectControl
-									label={ __( "Vertical ALignment" ) }
+									label={ __( "Vertical Alignment" ) }
 									value={ imageAlignment }
 									onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
 									options={ [
