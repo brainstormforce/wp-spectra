@@ -89,6 +89,31 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-slick-js', // Handle.
+			UAGB_URL . 'assets/js/slick.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
+		// Styles.
+		wp_enqueue_style(
+			'uagb-slick-css', // Handle.
+			UAGB_URL . 'assets/css/slick.min.css', // Block style CSS.
+			UAGB_VER
+		);
+
+		// Testimonial Scripts.
+		wp_enqueue_script(
+			'uabg-testimonial-js', // Handle.
+			UAGB_URL . 'assets/js/testimonial.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
+
 		// Timeline js.
 		wp_enqueue_script(
 			'uabg-timeline-js', // Handle.
