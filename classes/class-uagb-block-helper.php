@@ -853,14 +853,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'right' == $attr['align'] ) {
-				$selectors[" .uagb-icon-list__source-wrap"] = array(
+				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
 					"margin-left" => $attr['inner_gap'] . "px"
 				);
 				$selectors[" .uagb-icon-list__content-wrap"] = array(
 					"flex-direction" => "row-reverse"
 				);
 			} else {
-				$selectors[" .uagb-icon-list__source-wrap"] = array(
+				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
 					"margin-right" => $attr['inner_gap'] . "px"
 				);
 			}
@@ -1197,23 +1197,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			 $selectors[' .uagb-rest_menu__wrap .uagb-rm__image-content'] = array(
                     'padding-left' =>  $attr['imgHrPadding'] .'px',
-                    'padding-right' =>  $attr['imgHrPadding'] .'px',                                
+                    'padding-right' =>  $attr['imgHrPadding'] .'px',
                     'padding-top' =>  $attr['imgVrPadding'] .'px',
                     'padding-bottom' =>  $attr['imgVrPadding'] .'px',
-                ); 
+                );
 
             $selectors[' .uagb-rm__image img'] = array(
                     'width'=>  $attr['imageWidth'] .'px',
-                    'max-width'=>  $attr['imageWidth'] .'px',                         
-                ); 
-            
-            $selectors[' .uagb-rm__content'] = array(                    
-                    'text-align' =>  $attr['headingAlign'] , 
+                    'max-width'=>  $attr['imageWidth'] .'px',
+                );
+
+            $selectors[' .uagb-rm__content'] = array(
+                    'text-align' =>  $attr['headingAlign'] ,
                     'padding-left'  => $attr['contentHrPadding'] . 'px',
 					'padding-right' => $attr['contentHrPadding'] . 'px',
 					'padding-top'   => $attr['contentVrPadding'] . 'px',
-					'padding-top'  => $attr['contentVrPadding'] . 'px',                 
-                );                      
+					'padding-top'  => $attr['contentVrPadding'] . 'px',
+                );
 
             $selectors[' .uagb-rm__title'] = array(
                     'font-size' =>  $attr['titleFontSize'] .'px',
@@ -1230,31 +1230,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'font-size' =>  $attr['descFontSize'].'px',
                     'color'=>  $attr['descColor'],
                     'margin-bottom'=>  $attr['descSpace'].'px',
-                );    
-                     
+                );
+
             if ( $attr['seperatorStyle'] != "none" ) {
                 $selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
                     'border-top-color'=>  $attr['seperatorColor'],
                     'border-top-style'=> $attr['seperatorStyle'],
-                    'border-top-width'=> $attr['seperatorThickness'] . "px",    
+                    'border-top-width'=> $attr['seperatorThickness'] . "px",
                     'width'=> $attr['seperatorWidth'] . "%",
-                );                 
+                );
             }
-			
+
 			$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
 			        'margin-left'=>  '0%',
 			        'clear'=> 'left',
-			    );    
+			    );
 
 			$t_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)'] = array(
 			        'margin-left'=>  '0%',
 			        'clear'=> 'left',
-			    );   
+			    );
 
 			$m_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)'] = array(
 			        'margin-left'=> '0%',
 			        'clear'=> 'left',
-			    );   
+			    );
 
 			// @codingStandardsIgnoreEnd
 
