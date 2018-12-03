@@ -451,6 +451,93 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
+		 * Get Testimonial CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_testimonial_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );
+
+			$position = str_replace( '-', ' ', $attr->backgroundPosition );
+			$selectors = array(
+				' .uagb-testimonial__wrap' => array(
+					'padding-left'   => ( ($attr->columnGap) /2 ) . 'px',
+					'padding-right'  => ( ($attr->columnGap) /2 ) . 'px',
+					'margin-bottom' => $attr->rowGap . 'px',
+				),
+				' .uagb-testimonial__wrap .uagb-tm__image-content' => array(
+					'padding-left'   => $attr->imgHrPadding . 'px',
+					'padding-right'  => $attr->imgHrPadding . 'px',
+					'padding-top'   => $attr->imgVrPadding . 'px',
+					'padding-bottom'  => $attr->imgVrPadding . 'px',
+				),
+				' .uagb-tm__image img' => array(
+					'width'   => $attr->imageWidth . 'px',
+					'max-width'  => $attr->imageWidth . 'px',
+				),
+				' .uagb-tm__content' => array(
+					'text-align'   => $attr->headingAlign,
+					'padding'  => $attr->contentPadding . 'px',
+				),
+				' .uagb-tm__author-name' => array(
+					'color'   => $attr->authorColor,
+					'font-size'  => $attr->nameFontSize . 'px',
+					'margin-bottom'  => $attr->nameSpace . 'px',
+				),
+				' .uagb-tm__company' => array(
+					'color'   => $attr->companyColor,
+					'font-size'  => $attr->companyFontSize . 'px',
+				),
+				' .uagb-tm__desc' => array(
+					'color'   => $attr->descColor,
+					'font-size'  => $attr->descFontSize . 'px',
+					'margin-bottom'  => $attr->descSpace . 'px',
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
+					'background-color'   => $attr->backgroundColor,
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
+					'background-image'   => ( isset( $attr->backgroundImage['url'] ) ) ? 'url("'.$attr->backgroundImage['url'].'")' : null,
+					'background-position'=> $position,
+                    'background-repeat'=> $attr->backgroundRepeat,
+                    'background-size'=> $attr->backgroundSize,
+				),
+				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__overlay' => array(
+					'background-color'   => $attr->backgroundImageColor,
+					'opacity'   => ( isset( $attr->backgroundOpacity ) && '' != $attr->backgroundOpacity ) ? ( ( 100 - $attr->backgroundOpacity ) / 100 ) : '0.5',
+				),
+				' .uagb-testimonial__wrap .uagb-tm__content' => array(
+					'border-color'   => $attr->borderColor,
+					'border-style'   => $attr->borderStyle,
+					'border-width'  => $attr->borderWidth . 'px',
+					'border-radius'  => $attr->borderRadius . 'px',
+				),
+			);
+
+			$r_selectors = array(
+				' .uagb-tm__content' => array(
+					'text-align' => 'center',
+				),
+			);
+
+			// @codingStandardsIgnoreEnd.
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
+
+			return $desktop . $mobile;
+
+		}
+
+		/**
 		 * Get Team Block CSS
 		 *
 		 * @since 0.0.1
@@ -649,7 +736,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$selectors[" .uagb-social-share__wrap"] = array (
-						 "flex-direction" => "column"
+						"flex-direction" => "column"
 					);
 
 					$selectors[" .uagb-ss__wrapper:last-child"] = array (
@@ -697,6 +784,169 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
 
 			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+
+			return $desktop . $tablet . $mobile;
+		}
+
+		/**
+		 * Get Icon List Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_icon_list_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0,
+				"margin-bottom"  => $attr['gap'] . "px"
+			);
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrap"] = array(
+				 "flex-direction" => "column"
+			);
+
+			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child"] = array(
+				"margin-bottom"  => 0
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper"] = array(
+				"margin-left"  => ( $attr['gap']/2 ) . "px",
+				"margin-right"  => ( $attr['gap']/2 ) . "px"
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child"] = array(
+				"margin-left"  => 0
+			);
+
+			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child"] = array(
+				"margin-right"  => 0
+			);
+
+			$selectors[" .uagb-icon-list__source-image"] = array(
+				"width" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-icon-list__source-icon"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			$selectors[" .uagb-icon-list__source-icon:before"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"font-size" => $attr['size'] . "px"
+			);
+
+			if ( 'right' == $attr['align'] ) {
+				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
+					"margin-left" => $attr['inner_gap'] . "px"
+				);
+				$selectors[" .uagb-icon-list__content-wrap"] = array(
+					"flex-direction" => "row-reverse"
+				);
+			} else {
+				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
+					"margin-right" => $attr['inner_gap'] . "px"
+				);
+			}
+
+			foreach ( $attr['icons'] as $key => $icon ) {
+
+				$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
+				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
+				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
+				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+
+				if ( $attr['icon_count'] <= $key ) {
+					break;
+				}
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon"] = array (
+					"color" => $icon['icon_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
+					"color" => $icon['icon_hover_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
+					"color" => $icon['label_color'],
+					"font-size" => $attr['fontSize'] . 'px'
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
+					"color" => $icon['label_hover_color']
+				);
+			}
+
+			$selectors[" .uagb-icon-list__wrap"] = array(
+				"justify-content"  => $alignment,
+				"-webkit-box-pack" => $alignment,
+				"-ms-flex-pack" => $alignment,
+				"justify-content" => $alignment,
+				"-webkit-box-align" => $alignment,
+				"-ms-flex-align" => $alignment,
+				"align-items" => $alignment,
+			);
+
+			if ( 'horizontal' == $attr['icon_layout'] ) {
+
+				if ( "tablet" == $attr['stack'] ) {
+
+					$t_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$t_selectors[" .uagb-icon-list__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$t_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+
+				} else if ( "mobile" == $attr['stack'] ) {
+
+					$m_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = array (
+						"margin-left" => 0,
+						"margin-right" => 0,
+						"margin-bottom" => $attr['gap'] . "px"
+					);
+
+					$m_selectors[" .uagb-icon-list__wrap"] = array (
+						"flex-direction" => "column"
+					);
+
+					$m_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = array (
+						"margin-bottom" => 0
+					);
+				}
+			}
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-icon-list-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -918,6 +1168,102 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
 
 			return $desktop . $tablet . $mobile;
+		}
+
+		/**
+		 * Get Restaurant Menu Block CSS
+		 *
+		 * @since 1.0.2
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_restaurant_menu_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors[" .uagb-rest_menu__wrap"] = array(
+				'padding-left'  => ($attr['columnGap']/2) . "px",
+				'padding-right'  => ($attr['columnGap']/2). "px",
+				'margin-bottom'  => $attr['rowGap'] . "px"
+			);
+
+			 $selectors[' .uagb-rest_menu__wrap .uagb-rm__image-content'] = array(
+                    'padding-left' =>  $attr['imgHrPadding'] .'px',
+                    'padding-right' =>  $attr['imgHrPadding'] .'px',
+                    'padding-top' =>  $attr['imgVrPadding'] .'px',
+                    'padding-bottom' =>  $attr['imgVrPadding'] .'px',
+                );
+
+            $selectors[' .uagb-rm__image img'] = array(
+                    'width'=>  $attr['imageWidth'] .'px',
+                    'max-width'=>  $attr['imageWidth'] .'px',
+                );
+
+            $selectors[' .uagb-rm__content'] = array(
+                    'text-align' =>  $attr['headingAlign'] ,
+                    'padding-left'  => $attr['contentHrPadding'] . 'px',
+					'padding-right' => $attr['contentHrPadding'] . 'px',
+					'padding-top'   => $attr['contentVrPadding'] . 'px',
+					'padding-top'  => $attr['contentVrPadding'] . 'px',
+                );
+
+            $selectors[' .uagb-rm__title'] = array(
+                    'font-size' =>  $attr['titleFontSize'] .'px',
+                    'color'=>  $attr['titleColor'] ,
+                    'margin-bottom'=>  $attr['titleSpace'] .'px',
+                );
+
+            $selectors[' .uagb-rm__price'] = array(
+                    'font-size' =>  $attr['priceFontSize'].'px',
+                    'color'=>  $attr['priceColor'],
+                );
+
+            $selectors[' .uagb-rm__desc'] = array(
+                    'font-size' =>  $attr['descFontSize'].'px',
+                    'color'=>  $attr['descColor'],
+                    'margin-bottom'=>  $attr['descSpace'].'px',
+                );
+
+            if ( $attr['seperatorStyle'] != "none" ) {
+                $selectors[' .uagb-rest_menu__wrap .uagb-rm__separator'] = array(
+                    'border-top-color'=>  $attr['seperatorColor'],
+                    'border-top-style'=> $attr['seperatorStyle'],
+                    'border-top-width'=> $attr['seperatorThickness'] . "px",
+                    'width'=> $attr['seperatorWidth'] . "%",
+                );
+            }
+
+			$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
+			        'margin-left'=>  '0%',
+			        'clear'=> 'left',
+			    );
+
+			$t_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)'] = array(
+			        'margin-left'=>  '0%',
+			        'clear'=> 'left',
+			    );
+
+			$m_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)'] = array(
+			        'margin-left'=> '0%',
+			        'clear'=> 'left',
+			    );
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop   = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
+			$r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
+			$tablet    = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id );
+			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
+
+			return $desktop . $r_desktop . $tablet . $mobile;
 		}
 	}
 }

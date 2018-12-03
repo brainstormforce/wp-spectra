@@ -154,11 +154,11 @@ function uagb_post_masonry_add_script() {
 function uagb_get_post_query( $attributes ) {
 
 	$query_args = array(
-		'posts_per_page'      => $attributes['postsToShow'],
+		'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 		'post_status'         => 'publish',
-		'order'               => $attributes['order'],
-		'orderby'             => $attributes['orderBy'],
-		'category__in'        => $attributes['categories'],
+		'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+		'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+		'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
 		'ignore_sticky_posts' => 1,
 	);
 
@@ -743,7 +743,9 @@ function uagb_blocks_register_rest_fields() {
 		)
 	);
 }
+
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
+
 
 /**
  * Get featured image source for the rest field as per size

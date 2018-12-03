@@ -1,4 +1,5 @@
 const { dateI18n, format, __experimentalGetSettings } = wp.date
+
 class Meta extends React.Component {
 
 	render() {

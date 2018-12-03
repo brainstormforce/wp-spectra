@@ -153,6 +153,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/testimonial':
+					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/team':
 					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
 					break;
@@ -163,6 +167,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/content-timeline':
 					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/restaurant-menu':
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/icon-list':
+					$css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
 					break;
 
 				default:
