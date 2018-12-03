@@ -37,8 +37,9 @@ Feel free to contribute to the Gutenberg development.
  	<li><a href="#" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
  	<li><a href="#" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="#" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
- 	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website.</li>
+ 	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="#" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
+ 	<li><a href="#" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -82,6 +83,12 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.3.0 =
+* New: Icon List
+* New: Restaurant Menu
+* New: Testimonial
+* Improvement: Compatibility to latest Gutenberg
 
 = 1.2.0 =
 * New: Content Timeline

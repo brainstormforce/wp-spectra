@@ -50,6 +50,10 @@ const attributes = {
 		type: "number",
 		default: 40
 	},
+	hideLabel: {
+		type: "boolean",
+		default: false
+	},
 	fontSize: {
 		type: "number"
 	},

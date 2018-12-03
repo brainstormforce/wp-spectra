@@ -56,14 +56,18 @@ registerBlockType( "uagb/icon-list", {
 			block_id,
 			icons,
 			icon_count,
-			icon_layout
+			icon_layout,
+			hideLabel
 		} = props.attributes
+
+		const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
 
 		return (
 			<div className={ classnames(
 				className,
 				"uagb-icon-list__outer-wrap",
-				`uagb-icon-list__layout-${icon_layout}`
+				`uagb-icon-list__layout-${icon_layout}`,
+				labelClass
 			) }
 			id={ `uagb-icon-list-${ block_id}` }>
 				<div className="uagb-icon-list__wrap">
@@ -102,7 +106,7 @@ registerBlockType( "uagb/icon-list", {
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-										{ "" != icons[ index ].label &&
+										{ ! hideLabel && "" != icons[ index ].label &&
 											<div className="uagb-icon-list__label-wrap">
 												<RichText.Content
 													tagName="span"
