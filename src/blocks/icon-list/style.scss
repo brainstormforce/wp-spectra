@@ -25,9 +25,10 @@
 		justify-content: flex-start;
 	}
 
-	.uagb-icon-list__wrapper:focus,
-	.uagb-icon-list__wrapper:active,
-	.uagb-icon-list__wrapper:visited {
+	a.uagb-icon-list__wrapper,
+	a.uagb-icon-list__wrapper:focus,
+	a.uagb-icon-list__wrapper:active,
+	a.uagb-icon-list__wrapper:visited {
 		text-decoration: none;
 	}
 
