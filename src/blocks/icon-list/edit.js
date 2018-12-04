@@ -388,6 +388,7 @@ class UAGBIconList extends Component {
 															this.saveIcons( { label: value }, index )
 														} }
 														placeholder={ __( "Description" ) }
+														multiline={false}
 													/>
 												</div>
 											}

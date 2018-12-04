@@ -97,6 +97,10 @@ function styling( props ) {
 		"font-size": size + "px"
 	}
 
+	selectors[" .uagb-icon-list__label-wrap"] = {
+		"text-align": align
+	}
+
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
 	selectors[" .uagb-icon-list__wrap"] = {

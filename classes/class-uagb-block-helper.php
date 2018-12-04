@@ -852,6 +852,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size" => $attr['size'] . "px"
 			);
 
+			$selectors[" .uagb-icon-list__label-wrap"] = array(
+				"text-align" => $attr['align']
+			);
+
 			if ( 'right' == $attr['align'] ) {
 				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
 					"margin-left" => $attr['inner_gap'] . "px"
