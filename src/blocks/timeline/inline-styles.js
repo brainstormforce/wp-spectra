@@ -54,6 +54,12 @@ function contentTimelineStyle( props ) {
 		"color": headingColor,
 	}
 
+	selectors[".uagb-timeline__heading a"] = {
+		"font-size" : headFontSize+"px",
+		"text-align": align,
+		"color": headingColor,
+	}
+
 	selectors[".uagb-timeline__heading-text"] = {
 		"margin-bottom" : headSpace+"px",
 	}
@@ -171,7 +177,7 @@ function contentTimelineStyle( props ) {
 		"font-size" : iconSize+"px",
 	}
 
-	selectors[".uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__marker"] = {
+	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker"] = {
 		"background" : iconBgHover,
 		"border-color": borderHover,
 	}
@@ -182,7 +188,7 @@ function contentTimelineStyle( props ) {
 	}
 
 
-	selectors[".uagb-timeline__field.uagb-timeline__animate-border:hover .uagb-timeline__icon-new"] = {
+	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new"] = {
 		"color": iconHover,
 	}
 

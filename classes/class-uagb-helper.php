@@ -169,6 +169,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/post-timeline':
+					$css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/restaurant-menu':
 					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					break;

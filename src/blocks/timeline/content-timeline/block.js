@@ -12,16 +12,17 @@
  */
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 //  Import CSS.
-import "./style.scss"
+import ".././style.scss"
 import attributes from "./attributes"
 import edit from "./edit"
-import contentTimelineStyle from "./inline-styles"
-import ContentTmClasses from "./classes"
-import AlignClass from "./align-classes"
-import DayAlignClass from "./day-align-classes"
+import contentTimelineStyle from ".././inline-styles"
+import ContentTmClasses from ".././classes"
+import AlignClass from ".././align-classes"
+import DayAlignClass from ".././day-align-classes"
 const { dateI18n, __experimentalGetSettings } = wp.date
+
 // Components
 const { __ } = wp.i18n
 
@@ -89,7 +90,7 @@ registerBlockType( "uagb/content-timeline", {
 				) }>
 					<div className = "uagb-timeline-wrapper">
 						<div className = "uagb-timeline__main">
-							<div className = "uagb-timeline__days uagb-timeline-infinite-load">
+							<div className = "uagb-timeline__days">
 								{
 									tm_content.map((post,index) => {
 										var second_index = "uagb-"+index

@@ -10,14 +10,14 @@ class Meta extends React.Component {
 
 		return (
 
-			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor, marginBottom: attributes.metaBottomSpace }}>
+			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor, marginBottom: attributes.metaBottomSpace, fontSize: attributes.metaFontSize }}>
 				{ attributes.displayPostAuthor && undefined !== post.author_info &&
 					<div
 						className='uagb-post__author'
-						style={{ color: attributes.metaColor }}
+						style={{ color: attributes.metaColor, fontSize: attributes.metaFontSize }}
 					>
 						<span className="dashicons-admin-users dashicons"></span>
-						<a style={{ color: attributes.metaColor }} target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
+						<a style={{ color: attributes.metaColor, fontSize: attributes.metaFontSize }} target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
 					</div>
 				}
 

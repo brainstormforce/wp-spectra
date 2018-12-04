@@ -82,6 +82,15 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
+		// Scripts.
+		wp_enqueue_script(
+			'uagb-masonry', // Handle.
+			UAGB_URL . 'assets/js/isotope.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 		// Font Awsome.
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.
@@ -122,7 +131,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
-
 	} // End function editor_assets().
 
 	/**

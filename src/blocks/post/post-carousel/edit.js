@@ -2,6 +2,7 @@
  * External dependencies
  */
 
+import get from "lodash/get"
 import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 
@@ -10,6 +11,7 @@ import Blog from "./blog"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
+const { decodeEntities } = wp.htmlEntities
 const MAX_POSTS_COLUMNS = 4
 const {
 	PanelBody,
@@ -19,18 +21,20 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
+	Toolbar,
 } = wp.components
 
 const {
 	InspectorControls,
 	BlockAlignmentToolbar,
 	BlockControls,
-	ColorPalette
+	ColorPalette,
+	RichText
 } = wp.editor
 
 const { withSelect } = wp.data
 
-class UAGBPostGrid extends Component {
+class UAGBPostCarousel extends Component {
 
 	componentDidMount() {
 
@@ -42,16 +46,12 @@ class UAGBPostGrid extends Component {
 	}
 
 	render() {
-
-		// Caching all Props.
 		const {
 			attributes,
 			categoriesList,
 			setAttributes,
 			latestPosts
 		} = this.props
-
-		// Caching all attributes.
 		const {
 			block_id,
 			displayPostDate,
@@ -64,6 +64,7 @@ class UAGBPostGrid extends Component {
 			displayPostLink,
 			newTab,
 			align,
+			postLayout,
 			columns,
 			tcolumns,
 			mcolumns,
@@ -85,14 +86,19 @@ class UAGBPostGrid extends Component {
 			excerptColor,
 			ctaColor,
 			ctaBgColor,
+			arrowColor,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			equalHeight,
+			autoplay,
+			autoplaySpeed,
+			pauseOnHover,
+			infiniteLoop,
+			transitionSpeed,
+			arrowSize,
 			excerptLength
 		} = attributes
 
-		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
@@ -127,10 +133,45 @@ class UAGBPostGrid extends Component {
 						min={ 1 }
 						max={ ! hasPosts ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, latestPosts.length ) }
 					/>
+				</PanelBody>
+				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Equal Height" ) }
-						checked={ equalHeight }
-						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
+						label={ __( "Pause On Hover" ) }
+						checked={ pauseOnHover }
+						onChange={ ( value ) => setAttributes( { pauseOnHover: ! pauseOnHover } ) }
+					/>
+					<ToggleControl
+						label={ __( "Autoplay" ) }
+						checked={ autoplay }
+						onChange={ ( value ) => setAttributes( { autoplay: ! autoplay } ) }
+					/>
+					{ autoplay == true &&
+						<RangeControl
+							label={ __( "Autoplay Speed (ms)" ) }
+							value={ autoplaySpeed }
+							onChange={ ( value ) => setAttributes( { autoplaySpeed: value } ) }
+							min={ 100 }
+							max={ 10000 }
+						/>
+					}
+					<ToggleControl
+						label={ __( "Infinite Loop" ) }
+						checked={ infiniteLoop }
+						onChange={ ( value ) => setAttributes( { infiniteLoop: ! infiniteLoop } ) }
+					/>
+					<RangeControl
+						label={ __( "Transition Speed (ms)" ) }
+						value={ transitionSpeed }
+						onChange={ ( value ) => setAttributes( { transitionSpeed: value } ) }
+						min={ 100 }
+						max={ 5000 }
+					/>
+					<RangeControl
+						label={ __( "Arrow Size" ) }
+						value={ arrowSize }
+						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
+						min={ 10 }
+						max={ 50 }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
@@ -151,8 +192,8 @@ class UAGBPostGrid extends Component {
 								{ value: "large", label: __( "Large" ) },
 							] }
 						/>
-                	}
-                	{ displayPostImage == true &&
+					}
+					{ displayPostImage == true &&
 						<SelectControl
 							label={ __( "Image Position" ) }
 							value={ imgPosition }
@@ -319,6 +360,12 @@ class UAGBPostGrid extends Component {
 							/>
 						</Fragment>
 					}
+					<p className="uagb-setting-label">{ __( "Arrow Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
+					<ColorPalette
+						value={ arrowColor }
+						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
+						allowReset
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
@@ -381,7 +428,7 @@ class UAGBPostGrid extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }
+						label={ uagb_blocks_info.blocks["uagb/post-carousel"]["title"] }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
@@ -404,7 +451,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ "center", "wide" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId}/>
 			</Fragment>
 		)
 	}
@@ -426,4 +473,4 @@ export default withSelect( ( select, props ) => {
 		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
-} )( UAGBPostGrid )
+} )( UAGBPostCarousel )
