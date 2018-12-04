@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, gutenberg free blocks, gutenberg addons, gutenberg addon, ultimate addon, gutenberg blocks, blocks
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 4.9.8
-Stable tag: 1.2.0
+Tested up to: 5.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
