@@ -12,6 +12,7 @@ function styling( props ) {
 		headFontSize,
 		headingColor,
 		headSpace,
+		seperatorStyle,
 		separatorHeight,
 		separatorWidth,
 		separatorColor,
@@ -26,6 +27,7 @@ function styling( props ) {
 			"text-align": headingAlign,
 		},
 		" .uagb-separator": {
+			"border-top-style": seperatorStyle,
 			"border-top-width": separatorHeight + "px",
 			"width": separatorWidth + "%",
 			"border-color": separatorColor,

@@ -108,6 +108,7 @@ export default class UAGBAdvancedHeading extends Component {
 				headFontSize,
 				subHeadFontSize,
 				separatorWidth,
+				seperatorStyle,
 				separatorHeight,
 				headSpace,
 				separatorSpace,
@@ -193,7 +194,19 @@ export default class UAGBAdvancedHeading extends Component {
 					<PanelBody
 						title={ __( "Additional Options" ) }
 						initialOpen={ false }
-					>
+					>	
+						<SelectControl
+							label={ __( "Separator Style" ) }
+							value={ seperatorStyle }
+							onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+							] }
+						/>
 						<RangeControl
 							label={ __( "Separator Height" ) }
 							value={ separatorHeight }
@@ -336,6 +349,10 @@ registerBlockType( "uagb/advanced-heading", {
 		headingTag: {
 			type: "string",
 			default: "h2"
+		},
+		seperatorStyle: {
+			type: "string",
+			default: "solid",
 		},
 		separatorHeight: {
 			type: "number"

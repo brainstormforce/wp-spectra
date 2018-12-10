@@ -173,6 +173,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 				),
 				' .uagb-separator' => array(
+					'border-top-style' => $attr['seperatorStyle'] ,
 					'border-top-width' => $attr['separatorHeight'] . "px",
 					'width' => $attr['separatorWidth'] . "%",
 					'border-color' => $attr['separatorColor'],

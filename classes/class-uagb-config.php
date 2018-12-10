@@ -41,6 +41,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingColor'    => '',
 							'subHeadingColor' => '',
 							'separatorColor'  => '',
+							'seperatorStyle'  => 'solid',
 							'separatorHeight' => '',
 							'separatorWidth'  => '',
 							'headFontSize'    => '',
