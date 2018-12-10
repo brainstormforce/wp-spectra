@@ -82,6 +82,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 = 1.3.0.1 =
 * Fix: Section - Spacing values update issue.
+* Improvement: Advanced Heading - Added seperator style option.
 
 = 1.3.0 =
 * New: Icon List
