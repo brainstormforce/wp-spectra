@@ -21,10 +21,6 @@ Simply pick your favorite blocks from the Ultimate Addons that speed up the proc
 
 With the Ultimate Addons for Gutenberg, we took the hassle out of the website building process. It gives you a number of unique and creative blocks for Gutenberg that help you build and design pages or posts without a single line of code. The blocks provided in the Ultimate Addons are easy-to-use and can easily be customized with a user friendly interface. Thus, you can stay away from custom code and build easily with advanced blocks.
 
-Note: Gutenberg is in an early stage of development so the Ultimate Addons for Gutenberg is also in early stage and may not be suitable for production sites until WordPress 5.0. The breaking changes could be expected.
-
-Feel free to contribute to the Gutenberg development.
-
 <strong>Ultimate Addons for Gutenberg - Features</strong>
 
 <ul>
@@ -83,6 +79,9 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.3.0.1 =
+* Fix: Section - Spacing values update issue.
 
 = 1.3.0 =
 * New: Icon List
