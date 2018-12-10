@@ -8,6 +8,7 @@ import pickBy from "lodash/pickBy"
 
 // Import Post Components
 import Blog from "./blog"
+import styling from ".././styling"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
@@ -22,6 +23,7 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
+	TabPanel
 } = wp.components
 
 const {
@@ -41,7 +43,7 @@ class UAGBPostCarousel extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -86,6 +88,8 @@ class UAGBPostCarousel extends Component {
 			excerptColor,
 			ctaColor,
 			ctaBgColor,
+			ctaHColor,
+			ctaBgHColor,
 			arrowColor,
 			titleBottomSpace,
 			metaBottomSpace,
@@ -98,6 +102,40 @@ class UAGBPostCarousel extends Component {
 			arrowSize,
 			excerptLength
 		} = attributes
+
+		const hoverSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaHColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaHColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgHColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
+					allowReset
+				/>
+			</Fragment>
+		)
+
+		const normalSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+			</Fragment>
+		)
 
 		const inspectorControls = (
 			<InspectorControls>
@@ -340,32 +378,43 @@ class UAGBPostCarousel extends Component {
 							/>
 						</Fragment>
 					}
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
-							<ColorPalette
-								value={ ctaColor }
-								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					}
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
-							<ColorPalette
-								value={ ctaBgColor }
-								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					}
 					<p className="uagb-setting-label">{ __( "Arrow Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
 					<ColorPalette
 						value={ arrowColor }
 						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
 						allowReset
 					/>
+					{ displayPostLink == true &&
+						<Fragment>
+							<p className="uagb-inspect-tab-title"><strong>{ __( "CTA Colors" ) }</strong></p>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if ( "hover" === tabName.name ){
+											tabout = hoverSettings
+										} else {
+											tabout = normalSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
@@ -419,6 +468,12 @@ class UAGBPostCarousel extends Component {
 				</PanelBody>
 			</InspectorControls>
 		)
+
+		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props, 'uagb-post__carousel' )
+		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 

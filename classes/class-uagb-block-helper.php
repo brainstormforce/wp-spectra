@@ -1213,7 +1213,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[" .uagb-timeline__link_parent"] = array(
 				"text-align"  => $attr['align'],
-			);			
+			);
 			$selectors[" .uagb-timeline__image a"] = array(
 				"text-align"  => $attr['align'],
 			);
@@ -1230,7 +1230,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-timeline__link"] = array(
 				"color"  => $attr['ctaColor'],
 				"font-size"  => $attr['ctaFontSize'] . "px",
-				"background-color"  => $attr['ctaBackground'],				
+				"background-color"  => $attr['ctaBackground'],
 			);
 
 			$selectors[" .uagb-timeline__heading a"] = array(
@@ -1246,10 +1246,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-timeline-desc-content"] = array(
 				"text-align"  => $attr['align'],
 				"color"  => $attr['subHeadingColor'],
-				"font-size"  => $attr['subHeadFontSize'] . "px",				
+				"font-size"  => $attr['subHeadFontSize'] . "px",
 			);
 			$selectors[" .uagb_timeline__cta-enable .uagb-timeline-desc-content"] = array(
-				"margin-bottom"  => $attr['contentSpace'] . "px",				
+				"margin-bottom"  => $attr['contentSpace'] . "px",
 			);
 
 			$selectors[' .uagb-timeline__events-new'] = array(
@@ -1354,7 +1354,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'border-radius' => $attr['borderRadius'].'px',
                     'padding'=> $attr['bgPadding'].'px',
                 );
-            
+
             $selectors[' .uagb-content'] = array(
                     'padding'=> $attr['contentPadding'].'px',
                 );
@@ -1457,7 +1457,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent"] = array(
 				"text-align"  => 'left',
-			);			
+			);
 			$m_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
 				"border-right-color"  => $attr['backgroundColor'],
 			);
@@ -1583,6 +1583,137 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
 
 			return $desktop . $r_desktop . $tablet . $mobile;
+		}
+
+		/**
+		 * Get Post Grid Block CSS
+		 *
+		 * @since 1.4.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_post_grid_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = self::get_post_selectors( $attr );
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
+
+			return $desktop;
+		}
+
+		/**
+		 * Get Post Carousel Block CSS
+		 *
+		 * @since 1.4.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_post_carousel_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = self::get_post_selectors( $attr );
+
+			$selectors[" .slick-arrow"] = array(
+				"border-color" => $attr['arrowColor']
+			);
+
+			$selectors[" .slick-arrow span"] = array(
+				"color" => $attr['arrowColor'],
+				"font-size" => $attr['arrowSize'] . "px"
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
+
+			return $desktop;
+		}
+
+		/**
+		 * Get Post Block Selectors CSS
+		 *
+		 * @param array $attr The block attributes.
+		 * @since 1.4.0
+		 */
+		public static function get_post_selectors( $attr ) {
+
+			// @codingStandardsIgnoreStart
+			return array(
+				" .uagb-post__items" => array(
+					"margin-right" =>  ( -$attr['rowGap']/2 ) . "px",
+					"margin-left" =>  ( -$attr['rowGap']/2 ) . "px",
+				),
+				" .uagb-post__items article" => array(
+					"padding-right" => ( $attr['rowGap']/2 ) . "px",
+					"padding-left" => ( $attr['rowGap']/2 ) . "px",
+					"margin-bottom" => ( $attr['columnGap'] ) . "px"
+				),
+				" .uagb-post__inner-wrap" => array(
+					"background" => $attr['bgColor']
+				),
+				" .uagb-post__text" => array(
+					"padding" => ( $attr['contentPadding'] ) . "px"
+				),
+				" .uagb-post__text .uagb-post__title" => array(
+					"color"=> $attr['titleColor'],
+					"font-size"=> $attr['titleFontSize']  . "px",
+					"margin-bottom"=> $attr['titleBottomSpace']  . "px"
+				),
+				" .uagb-post__text .uagb-post__title a" => array(
+					"color"=> $attr['titleColor'],
+					"font-size"=> $attr['titleFontSize']  . "px"
+				),
+				" .uagb-post__text .uagb-post-grid-byline" => array(
+					"color"=> $attr['metaColor'],
+					"font-size"=> $attr['metaFontSize']  . "px",
+					"margin-bottom"=> $attr['metaBottomSpace']  . "px"
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
+					"color"=> $attr['metaColor'],
+					"font-size"=> $attr['metaFontSize']  . "px",
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
+					"color"=> $attr['metaColor'],
+					"font-size"=> $attr['metaFontSize']  . "px",
+				),
+				" .uagb-post__text .uagb-post__excerpt" => array(
+					"color"=> $attr['excerptColor'],
+					"font-size"=> $attr['excerptFontSize']  . "px",
+					"margin-bottom"=> $attr['excerptBottomSpace']  . "px"
+				),
+				" .uagb-post__text .uagb-post__cta" => array(
+					"color"=> $attr['ctaColor'],
+					"font-size"=> $attr['ctaFontSize']  . "px",
+					"background"=> $attr['ctaBgColor']
+				),
+				" .uagb-post__text .uagb-post__cta a" => array(
+					"color"=> $attr['ctaColor'],
+					"font-size"=> $attr['ctaFontSize']  . "px"
+				),
+				" .uagb-post__text .uagb-post__cta:hover" => array(
+					"color"=> $attr['ctaHColor'],
+					"background"=> $attr['ctaBgHColor']
+				),
+				" .uagb-post__text .uagb-post__cta:hover a" => array(
+					"color"=> $attr['ctaHColor']
+				)
+			);
+			// @codingStandardsIgnoreEnd
 		}
 	}
 }

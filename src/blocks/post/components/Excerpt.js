@@ -27,10 +27,7 @@ class Excerpt extends React.Component {
 
 			return (
 
-				<div
-					className='uagb-post__excerpt'
-					style={{ color: attributes.excerptColor, marginBottom: attributes.excerptBottomSpace, fontSize: attributes.excerptFontSize }}
-				>
+				<div className='uagb-post__excerpt'>
 					<div dangerouslySetInnerHTML={ { __html: excerpt } } />
 				</div>
 			)
