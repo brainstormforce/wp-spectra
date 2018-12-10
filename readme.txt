@@ -81,8 +81,8 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 == Changelog ==
 = 1.3.0.1 =
 * Fix: Section - Spacing values update issue.
-* Fix: Restaurant menu seperator alignement issue.
-* Fix: Restaurant menu Content padding issue.
+* Fix: Restaurant menu - Seperator alignement issue.
+* Fix: Restaurant menu - Content padding issue.
 * Improvement: Updated Font Awesome CSS.
 
 = 1.3.0 =
