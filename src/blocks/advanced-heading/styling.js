@@ -25,14 +25,7 @@ function styling( props ) {
 	var selectors = {
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,
-		},
-		" .uagb-separator": {
-			"border-top-style": seperatorStyle,
-			"border-top-width": separatorHeight + "px",
-			"width": separatorWidth + "%",
-			"border-color": separatorColor,
-			"margin-bottom": separatorSpace + "px",
-		},
+		},		
 		" .editor-rich-text .uagb-desc-text": {
 			"text-align": headingAlign,
 			"font-size": subHeadFontSize + "px",
@@ -48,6 +41,15 @@ function styling( props ) {
 		"margin-bottom": headSpace + "px",
 	}
 
+	if( seperatorStyle !== 'none' ){
+		selectors[" .uagb-separator"] = {
+			"border-top-style": seperatorStyle,
+			"border-top-width": separatorHeight + "px",
+			"width": separatorWidth + "%",
+			"border-color": separatorColor,
+			"margin-bottom": separatorSpace + "px",
+		}
+	}
 	var styling_css = ""
 
 	for( var i in selectors ) {
