@@ -224,6 +224,10 @@
     margin-left: 0;
     margin-right: 0;
     margin-bottom: 10px;
+    -js-display: flex;
+    display: -webkit-flex;
+    display: -moz-flexbox;
+    display: flex;
 }
 .uagb-rm__separator {
     width: 100%;
