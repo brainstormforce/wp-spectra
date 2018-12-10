@@ -1227,7 +1227,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'padding-left'  => $attr['contentHrPadding'] . 'px',
 					'padding-right' => $attr['contentHrPadding'] . 'px',
 					'padding-top'   => $attr['contentVrPadding'] . 'px',
-					'padding-top'  => $attr['contentVrPadding'] . 'px',
+					'padding-bottom'  => $attr['contentVrPadding'] . 'px',
                 );
 
             $selectors[' .uagb-rm__title'] = array(
