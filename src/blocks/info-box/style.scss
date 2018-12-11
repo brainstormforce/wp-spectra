@@ -6,7 +6,7 @@
 
 /* Info Box */
 
-.uagb-infobox__content-wrap, .uagb-infobox__content-wrap * {
+.uagb-ifb-icon-wrap, .uagb-ifb-icon-wrap * {
     -webkit-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
@@ -20,7 +20,7 @@
 }
 
 a.uagb-infobox-cta-link span {
-    font-size: inherit;    
+    font-size: inherit;      
 }
 
 a.uagb-infobox-cta-link,
@@ -210,11 +210,7 @@ a.uagb-infobox-link-wrap:hover,
     background-color: #818a91;
     color: #fff;
     text-align: center;
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
 }
-
 
 .uagb-ifb-cta a {
     -webkit-box-shadow: none;

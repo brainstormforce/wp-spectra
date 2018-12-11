@@ -175,6 +175,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'imageSize'           => 'thumbnail',
 							'imageWidth'          => '120',
 							'seperatorSpace'      => '15',
+							'ctaLinkHoverColor'   => '',
+							'ctaBgHoverColor'     => '',
+							'ctaBorderhoverColor' => '',
 						),
 					),
 					'uagb/buttons'          => array(
