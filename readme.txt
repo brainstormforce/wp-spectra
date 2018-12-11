@@ -86,6 +86,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Improvement: Updated Font Awesome CSS to v5.6.0.
 * Improvement: Advanced Heading - Added seperator style option.
 * Improvement: Post Grid - Added hover color options for CTA button.
+* Improvement: Testimonial - Set slick dots color same as arrow color.
 * Deprecated: Content Timeline - Connector Hover properties removed.
 
 = 1.3.0 =

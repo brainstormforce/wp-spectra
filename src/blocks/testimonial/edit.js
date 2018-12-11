@@ -294,7 +294,7 @@ class UAGBtestimonial extends Component {
 						{
 							value: arrowColor,
 							onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
-							label: __( "Arrow Color" ),
+							label: __( "Arrow & Dots Color" ),
 						},
 					] }
 				>
