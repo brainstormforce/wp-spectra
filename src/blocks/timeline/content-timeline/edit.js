@@ -258,9 +258,6 @@ class UAGBcontentTimeline extends Component {
 				block_id,
 				iconFocus,
 				iconBgFocus,
-				iconHover,
-				iconBgHover,
-				borderHover,
 				t_date,
 				displayPostDate,
 				stack
@@ -341,40 +338,13 @@ class UAGBcontentTimeline extends Component {
 			</Fragment>
 		)
 
-		const iconHoverSettings = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: iconHover,
-							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: iconBgHover,
-							onChange: ( colorValue ) => setAttributes( { iconBgHover: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: borderHover,
-							onChange: ( colorValue ) => setAttributes( { borderHover: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
-			</Fragment>
-		)
-
 		const iconControls = (
 			<Fragment>
 				<PanelBody
 					title={ __( "Connector Color Settings" ) }
 					initialOpen={ true }
 				>
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-3"
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 						activeClass="active-tab"
 						tabs={ [
 							{
@@ -386,20 +356,13 @@ class UAGBcontentTimeline extends Component {
 								name: "focus",
 								title: __( "Focus" ),
 								className: "uagb-focus-tab",
-							},
-							{
-								name: "hover",
-								title: __( "Hover" ),
-								className: "uagb-hover-tab",
-							},
+							},							
 						] }>
 						{
 							( tabName ) => {
 								let tabout
 								if( "focus" === tabName.name ) {
 									tabout = iconFocusSettings
-								}else if( "hover" === tabName.name ){
-									tabout = iconHoverSettings
 								}else {
 									tabout = iconColorSettings
 								}
