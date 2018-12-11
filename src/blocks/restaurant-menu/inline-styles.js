@@ -58,12 +58,12 @@ function RestMenuStyle( props ) {
 		"max-width": imageWidth+"px",                         
 	} 
 
-	var align = headingAlign;
-    if( 'left' === align ){
-    	align = 'flex-start';
-    }else if( 'right' === align ){
-    	align = 'flex-end';
-    }
+	var align = headingAlign
+	if( "left" === align ){
+    	align = "flex-start"
+	}else if( "right" === align ){
+    	align = "flex-end"
+	}
 
 	selectors[".uagb-rm__separator-parent"] ={
 		"justify-content" : align, 

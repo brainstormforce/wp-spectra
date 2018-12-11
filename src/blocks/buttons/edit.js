@@ -345,21 +345,16 @@ class UAGBMultiButtonEdit extends Component {
 										key={ index }
 									>
 										<RichText
-											placeholder={ __( "Click Here" ) }
+											placeholder={ __( "Add text…" ) }
 											value={ button.label }
 											tagName='a'
 											onChange={ value => {
 												this.saveButton( { label: value }, index )
 											} }
-											onMouseOut={ onMouseOut }
-											onMouseOver={ () => {
-												updateHoverState( index )
-											} }
 											formattingControls={ [ "bold", "italic", "strikethrough" ] }
 											className='uagb-button__link'
 											rel ="noopener noreferrer"
-											unstableOnFocus={ () => { updateFocusState( index )
-											} }
+											keepPlaceholderOnFocus
 										/>
 									</div>
 								)

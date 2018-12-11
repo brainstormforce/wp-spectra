@@ -81,8 +81,6 @@ class Blog extends React.Component {
 			]
 		}
 
-		const article_style = `#uagb-post__carousel-${block_id} .is-carousel article { padding-right: ${rowGap/2}px; padding-left: ${rowGap/2}px; margin-bottom: ${columnGap}px; }`
-
 		return (
 
 			<div
@@ -96,40 +94,19 @@ class Blog extends React.Component {
 				data-blog-id={block_id}
 				id={ `uagb-post__carousel-${ block_id }` }
 			>
-				<style dangerouslySetInnerHTML={{__html: article_style}}></style>
 				<Slider
 					className={ classnames(
 						"is-carousel",
 						`uagb-post__columns-${ columns }`,
 						"uagb-post__items"
 					) }
-					style={{
-						marginRight: -rowGap/2,
-						marginLeft: -rowGap/2,
-					}}
 					{...settings}
 				>
 					{ displayPosts.map( ( post, i ) =>
-						<article
-							key={ i }
-							className={ classnames(
-								post.featured_image_src && displayPostImage ? "has-thumb" : "no-thumb"
-							) }
-						>
-							<div
-								className={ "uagb-post__inner-wrap" }
-								style={{
-									background: bgColor,
-								}}
-							>
+						<article key={ i }>
+							<div className="uagb-post__inner-wrap">
 								<FeaturedImage post={post} attributes={attributes} />
-
-								<div
-									className={ "uagb-post__text" }
-									style={{
-										padding: contentPadding,
-									}}
-								>
+								<div className="uagb-post__text">
 									<Title post={post} attributes={attributes} />
 									<Meta post={post} attributes={attributes} />
 									<Excerpt post={post} attributes={attributes} />
