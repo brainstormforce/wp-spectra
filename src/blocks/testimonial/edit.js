@@ -559,6 +559,7 @@ class UAGBtestimonial extends Component {
 			arrows : true,
 			dots : true,
 			rtl : false,
+			draggable: false,
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
