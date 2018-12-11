@@ -171,7 +171,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
-				),				
+				),
 				' .uagb-desc-text' => array(
 					'text-align' => $attr['headingAlign'],
 					'font-size' => $attr['subHeadFontSize'] . "px",
@@ -1621,6 +1621,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .slick-arrow span"] = array(
 				"color" => $attr['arrowColor'],
 				"font-size" => $attr['arrowSize'] . "px"
+			);
+
+			$selectors[" .slick-arrow"] = array(
+				"border-color" => $attr['arrowColor']
+			);
+
+			$selectors[".uagb-post-grid ul.slick-dots li.slick-active button:before"] = array(
+				"color" => $attr['arrowColor']
+			);
+
+			$selectors[".uagb-slick-carousel ul.slick-dots li button:before"] = array(
+				"color" => $attr['arrowColor']
 			);
 
 			// @codingStandardsIgnoreEnd
