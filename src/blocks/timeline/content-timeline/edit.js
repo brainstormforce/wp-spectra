@@ -578,29 +578,7 @@ class UAGBcontentTimeline extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ true }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Content Color" ),
-							},
-							{
-								value: backgroundColor,
-								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-								label: __( "Background Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
+					/>					
 					<RangeControl
 						label={ __( "Rounded Corners" ) }
 						value={ borderRadius }
@@ -679,6 +657,28 @@ class UAGBcontentTimeline extends Component {
 					/>
 					{ iconControls }
 				</PanelBody>
+					<PanelColorSettings
+						title={ __( "Color Settings" ) }
+						initialOpen={ false }
+						colorSettings={ [
+							{
+								value: headingColor,
+								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+								label: __( "Heading Color" ),
+							},
+							{
+								value: subHeadingColor,
+								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+								label: __( "Content Color" ),
+							},
+							{
+								value: backgroundColor,
+								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+								label: __( "Background Color" ),
+							},
+						] }
+					>
+					</PanelColorSettings>
 			</InspectorControls>
 		)
 
