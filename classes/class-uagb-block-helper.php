@@ -171,13 +171,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
-				),
-				' .uagb-separator' => array(
-					'border-top-width' => $attr['separatorHeight'] . "px",
-					'width' => $attr['separatorWidth'] . "%",
-					'border-color' => $attr['separatorColor'],
-					'margin-bottom' => $attr['separatorSpace'] . "px",
-				),
+				),				
 				' .uagb-desc-text' => array(
 					'text-align' => $attr['headingAlign'],
 					'font-size' => $attr['subHeadFontSize'] . "px",
@@ -187,6 +181,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
+			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
+			if( 'none' !== $seperatorStyle ){
+				$selectors[' .uagb-separator'] = array (
+					'border-top-style' => $attr['seperatorStyle'] ,
+					'border-top-width' => $attr['separatorHeight'] . "px",
+					'width' => $attr['separatorWidth'] . "%",
+					'border-color' => $attr['separatorColor'],
+					'margin-bottom' => $attr['separatorSpace'] . "px",
+				);
+
+			}
 			// @codingStandardsIgnoreEnd
 
 			return UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
