@@ -193,7 +193,7 @@ export default class UAGBAdvancedHeading extends Component {
 								onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 								min={ 0 }
 								max={ 20 }
-								beforeIcon="editor-textcolor"
+								beforeIcon=""
 								allowReset
 								initialPosition={3}
 							/>
@@ -203,7 +203,7 @@ export default class UAGBAdvancedHeading extends Component {
 								onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
 								min={ 0 }
 								max={ 100 }
-								beforeIcon="editor-textcolor"
+								beforeIcon=""
 								allowReset
 								initialPosition={20}
 							/>							
@@ -246,7 +246,7 @@ export default class UAGBAdvancedHeading extends Component {
 							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 							initialPosition={0}
 						/>
@@ -258,7 +258,7 @@ export default class UAGBAdvancedHeading extends Component {
 									onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
 									min={ 0 }
 									max={ 50 }
-									beforeIcon="editor-textcolor"
+									beforeIcon=""
 									allowReset
 									initialPosition={0}
 								/>
@@ -270,7 +270,7 @@ export default class UAGBAdvancedHeading extends Component {
 							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon="editor-textcolor"
+							beforeIcon=""
 							allowReset
 							initialPosition={0}
 						/>
