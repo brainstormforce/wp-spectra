@@ -472,7 +472,7 @@ class UAGBPostCarousel extends Component {
 		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props, 'uagb-post__carousel' )
+			element.innerHTML = styling( this.props, "uagb-post__carousel" )
 		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length

@@ -189,6 +189,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/post-masonry':
+					$css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

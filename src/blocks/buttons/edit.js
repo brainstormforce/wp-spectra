@@ -345,7 +345,7 @@ class UAGBMultiButtonEdit extends Component {
 										key={ index }
 									>
 										<RichText
-											placeholder={ __( 'Add text…' ) }
+											placeholder={ __( "Add text…" ) }
 											value={ button.label }
 											tagName='a'
 											onChange={ value => {

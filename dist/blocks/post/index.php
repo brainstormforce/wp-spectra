@@ -71,7 +71,7 @@ function uagb_post_masonry_callback( $attributes ) {
 	return ob_get_clean();
 }
 
-add_action( 'wp_footer', 'uagb_post_masonry_add_script' );
+add_action( 'wp_footer', 'uagb_post_masonry_add_script', 1000 );
 
 /**
  * Renders the post masonry related script.
@@ -89,6 +89,10 @@ function uagb_post_masonry_add_script() {
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
 					$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+
+					$( window ).resize( function() {
+						$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+					} );
 				} )( jQuery );
 			</script>
 			<?php
