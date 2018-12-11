@@ -186,7 +186,7 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "dotted", label: __( "Dotted" ) },
 							] }
 						/>
-						{ seperatorStyle !== 'none' && <Fragment>
+						{ seperatorStyle !== "none" && <Fragment>
 							<RangeControl
 								label={ __( "Thickness" ) }
 								value={ separatorHeight }
@@ -207,7 +207,7 @@ export default class UAGBAdvancedHeading extends Component {
 								allowReset
 								initialPosition={20}
 							/>							
-							</Fragment>
+						</Fragment>
 						}
 					</PanelBody>
 					<PanelColorSettings
@@ -226,15 +226,15 @@ export default class UAGBAdvancedHeading extends Component {
 							},							
 						] }
 					>
-					{ seperatorStyle !== 'none' && <Fragment>
+						{ seperatorStyle !== "none" && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ separatorColor }
 						        onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
 						        allowReset
-						/>
+							/>
 						</Fragment>
-					}
+						}
 					</PanelColorSettings>
 					<PanelBody
 						title={ __( "Spacing" ) }
@@ -250,7 +250,7 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-						{ seperatorStyle !== 'none' && 
+						{ seperatorStyle !== "none" && 
 							<Fragment> 
 								<RangeControl
 									label={ __( "Separator Spacing" ) }
@@ -298,7 +298,7 @@ export default class UAGBAdvancedHeading extends Component {
 						}
 						onRemove={ () => onReplace( [] ) }
 					/>
-					{ seperatorStyle !== 'none' && <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div> }
+					{ seperatorStyle !== "none" && <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div> }
 					<RichText
 						tagName="p"
 						placeholder={ __( "Write a Description" ) }
@@ -454,7 +454,7 @@ registerBlockType( "uagb/advanced-heading", {
 		} = props.attributes
 
 		var seprator_output =  ""
-		if( seperatorStyle !== 'none' ){
+		if( seperatorStyle !== "none" ){
 			seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
 		}
 		return (

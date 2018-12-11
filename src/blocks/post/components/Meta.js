@@ -10,15 +10,12 @@ class Meta extends React.Component {
 
 		return (
 
-			<div className='uagb-post-grid-byline' style={{ color: attributes.metaColor, marginBottom: attributes.metaBottomSpace, fontSize: attributes.metaFontSize }}>
+			<div className='uagb-post-grid-byline'>
 				{ attributes.displayPostAuthor && undefined !== post.author_info &&
-					<div
-						className='uagb-post__author'
-						style={{ color: attributes.metaColor, fontSize: attributes.metaFontSize }}
-					>
+					<span className='uagb-post__author'>
 						<span className="dashicons-admin-users dashicons"></span>
-						<a style={{ color: attributes.metaColor, fontSize: attributes.metaFontSize }} target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
-					</div>
+						<a target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
+					</span>
 				}
 
 				{ attributes.displayPostDate && post.date_gmt &&
@@ -29,10 +26,10 @@ class Meta extends React.Component {
 				}
 
 				{ attributes.displayPostComment && undefined !== post.comment_info &&
-					<div className='uagb-post__comment' >
+					<span className='uagb-post__comment' >
 						<span className="dashicons-admin-comments dashicons"></span>
 						{ post.comment_info }
-					</div>
+					</span>
 				}
 			</div>
 		)

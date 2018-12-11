@@ -676,7 +676,7 @@ class UAGBcontentTimeline extends Component {
 						min={ 1 }
 						max={ 10 }
 						allowReset
-					/>					
+					/>
 					{ iconControls }
 				</PanelBody>
 			</InspectorControls>
@@ -766,7 +766,7 @@ class UAGBcontentTimeline extends Component {
 		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = contentTimelineStyle( this.props )
-		}   
+		}
 
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 		const hasDate = Array.isArray( t_date ) && t_date.length
