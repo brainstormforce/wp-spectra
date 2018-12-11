@@ -37,13 +37,12 @@
 		-o-transition: all 0.5s;
 		transition: all 0.5s;
 		display: inline-flex;
-		width: 40px;
 		text-align: center;
 	}
 
 	.uagb-ss__link,
 	.uagb-ss__source-wrap {
-		width: inherit;
+		width: 40px;
 	}
 
 	.uagb-ss__link {
