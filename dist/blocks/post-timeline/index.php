@@ -280,18 +280,6 @@ function uagb_blocks_register_timeline_posts() {
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'iconHover'          => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'iconBgHover'        => array(
-					'type'    => 'string',
-					'default' => '',
-				),
-				'borderHover'        => array(
-					'type'    => 'string',
-					'default' => '',
-				),
 				'ctaColor'           => array(
 					'type'    => 'string',
 					'default' => '#fff',

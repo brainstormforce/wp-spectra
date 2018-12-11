@@ -1101,20 +1101,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'font-size' => $attr['iconSize'].'px',
                 );
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker'] = array(
-                    'background' => $attr['iconBgHover'],
-                    'border-color'=> $attr['borderHover'],
-                );
-
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
                     'background' => $attr['iconBgFocus'],
                     'border-color'=> $attr['borderFocus'],
                 );
 
-
-            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new'] = array(
-                    'color'=> $attr['iconHover'],
-                );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
@@ -1369,19 +1360,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'font-size' => $attr['iconSize'].'px',
                 );
 
-            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker'] = array(
-                    'background' => $attr['iconBgHover'],
-                    'border-color'=> $attr['borderHover'],
-                );
-
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
                     'background' => $attr['iconBgFocus'],
                     'border-color'=> $attr['borderFocus'],
-                );
-
-
-            $selectors[' .uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new'] = array(
-                    'color'=> $attr['iconHover'],
                 );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(

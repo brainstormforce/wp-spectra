@@ -29,9 +29,6 @@ function contentTimelineStyle( props ) {
 		iconFocus,
 		iconBgFocus,
 		block_id,
-		iconHover,
-		iconBgHover,
-		borderHover,
 		headFontSize,
 		align,
 		headingColor,
@@ -177,25 +174,14 @@ function contentTimelineStyle( props ) {
 		"font-size" : iconSize+"px",
 	}
 
-	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__marker"] = {
-		"background" : iconBgHover,
-		"border-color": borderHover,
-	}
-
 	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon"] = {
 		"background" : iconBgFocus,
 		"border-color": borderFocus,
 	}
 
-
-	selectors[".uagb-timeline__field.uagb-timeline__field-wrap:hover .uagb-timeline__icon-new"] = {
-		"color": iconHover,
-	}
-
 	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new"] = {
 		"color": iconFocus,
 	}
-
 
 	/* Generate Responsive CSS for timeline */
 	var response_selector = {}
