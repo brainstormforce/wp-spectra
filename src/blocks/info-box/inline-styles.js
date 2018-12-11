@@ -47,6 +47,9 @@ function InfoBoxStyle( props ) {
 		iconBottomMargin,
 		imageSize,
 		imageWidth,
+		ctaLinkHoverColor,
+		ctaBgHoverColor,
+		ctaBorderhoverColor
 	} = props.attributes
 
 	if( props.clientId ){
@@ -106,14 +109,24 @@ function InfoBoxStyle( props ) {
 		"color": ctaLinkColor,
 	}
 
+	selectors[".uagb-infobox-cta-link a:hover"] = {
+		"color": ctaLinkHoverColor,
+	}
+
 	selectors[".uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
+	}
+	selectors[".uagb-infobox-cta-link:hover span"] = {
+		"color": ctaLinkHoverColor,
 	}
 
 	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
+	}
+	selectors[".uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link span"] = {
+		"color": ctaLinkHoverColor,
 	}
 
 	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link"] = {
@@ -128,6 +141,12 @@ function InfoBoxStyle( props ) {
 		"padding-bottom": ctaBtnVertPadding + "px",
 		"padding-left": ctaBtnHrPadding + "px",
 		"padding-right": ctaBtnHrPadding + "px",
+	}
+
+	selectors[".uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link"] = {
+		"color": ctaLinkHoverColor,
+		"background-color": ctaBgHoverColor,
+		"border-color": ctaBorderhoverColor,
 	}
 
 	// Prefix Style

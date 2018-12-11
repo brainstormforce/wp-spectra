@@ -396,6 +396,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'font-size'   => $attr->ctaFontSize.'px',
 	                'color'       => $attr->ctaLinkColor,
 	            ),
+	            ' .uagb-infobox-cta-link:hover' => array(
+	                'color'       => $attr->ctaLinkHoverColor,
+	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
@@ -409,6 +412,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'padding-left'     => $attr->ctaBtnHrPadding . "px",
 	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
 
+	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
+	                'color'       => $attr->ctaLinkHoverColor,
+	                'background-color' => $attr->ctaBgHoverColor,
+	                'border-color'     => $attr->ctaBorderhoverColor,
 	            ),
 
 	           // Prefix Style.
