@@ -35,7 +35,7 @@ const {
 	TextControl,
 	BaseControl,
 	Button,
-	withNotices
+	withNotices,
 } = wp.components
 
 const {
@@ -164,11 +164,14 @@ class UAGBinfoBox extends Component {
 			ctaLinkColor,
 			ctaFontSize,
 			ctaBtnLinkColor,
+			ctaLinkHoverColor,
+			ctaBgHoverColor,
 			ctaBgColor,
 			ctaBtnVertPadding,
 			ctaBtnHrPadding,
 			ctaBorderStyle,
 			ctaBorderColor,
+			ctaBorderhoverColor,
 			ctaBorderWidth,
 			ctaBorderRadius,
 			prefixSpace,
@@ -374,6 +377,14 @@ class UAGBinfoBox extends Component {
 									        allowReset
 									    />
 									</Fragment>
+									<Fragment>
+									    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+									    <ColorPalette
+									        value={ ctaBorderhoverColor }
+									        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+									        allowReset
+									    />
+									</Fragment>
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -402,6 +413,49 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
+		const ctaNormalSettings = (
+			<Fragment>
+				<PanelColorSettings
+					title={ __( "CTA Color Settings" ) }
+					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: ctaBtnLinkColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ),
+							label: __( "Color" ),
+						},
+						{
+							value: ctaBgColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ),
+							label: __( "Background Color" ),
+						},						
+					] }
+				>
+				</PanelColorSettings>
+			</Fragment>
+		)
+
+		const ctaHoverSettings = (
+			<Fragment>
+				<PanelColorSettings
+					title={ __( "CTA Hover Color Settings" ) }
+					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: ctaLinkHoverColor,
+							onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
+							label: __( "Hover Color" ),
+						},
+						{
+							value: ctaBgHoverColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBgHoverColor: colorValue } ),
+							label: __( "Background Hover Color" ),
+						},						
+					] }
+				>
+				</PanelColorSettings>
+			</Fragment>
+		)
 
 		// Typography settings.
 		const TypographySettings = (
@@ -502,28 +556,42 @@ class UAGBinfoBox extends Component {
 							        value={ ctaLinkColor }
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
 							        allowReset
+							    />							
+							    <p className="uagb-setting-label">{ __( "CTA Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaLinkHoverColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+							        allowReset
 							    />
 							</Fragment>
 					}
 					{ ( ctaType === "button") &&
-							<Fragment>
-								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBtnLinkColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBgColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-							</Fragment>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+									activeClass="active-tab"
+									tabs={ [
+										{
+											name: "normal",
+											title: __( "Normal" ),
+											className: "uagb-normal-tab",
+										},
+										{
+											name: "hover",
+											title: __( "Hover" ),
+											className: "uagb-focus-tab",
+										},							
+									] }>
+									{
+										( tabName ) => {
+											let tabout
+											if( "normal" === tabName.name ) {
+												tabout = ctaNormalSettings
+											}else {
+												tabout = ctaHoverSettings
+											}
+											return <div>{ tabout }</div>
+										}
+									}
+								</TabPanel>
 					}
 				</PanelColorSettings>
 

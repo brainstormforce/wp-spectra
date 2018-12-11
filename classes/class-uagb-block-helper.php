@@ -396,6 +396,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'font-size'   => $attr->ctaFontSize.'px',
 	                'color'       => $attr->ctaLinkColor,
 	            ),
+	            ' .uagb-infobox-cta-link:hover' => array(
+	                'color'       => $attr->ctaLinkHoverColor,
+	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
@@ -409,6 +412,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'padding-left'     => $attr->ctaBtnHrPadding . "px",
 	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
 
+	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
+	                'color'       => $attr->ctaLinkHoverColor,
+	                'background-color' => $attr->ctaBgHoverColor,
+	                'border-color'     => $attr->ctaBorderhoverColor,
 	            ),
 
 	           // Prefix Style.
@@ -692,6 +700,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[" .uagb-ss__wrapper"] = array(
+				"padding" => $attr['bgSize'] . "px",
+				"border-radius" => $attr['borderRadius'] . "px"
+			);
+
+			$selectors[" .uagb-ss__wrapper .uagb-ss__link"] = array(
 				"width" => $attr['size'] . "px"
 			);
 
@@ -726,6 +739,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
 					"color" => $social['icon_hover_color']
+				);
+
+				$selectors[" .uagb-ss-repeater-" . $key] = array (
+					"background" => $social['icon_bg_color']
+				);
+
+				$selectors[" .uagb-ss-repeater-" . $key . ":hover"] = array (
+					"background" => $social['icon_bg_hover_color']
 				);
 			}
 

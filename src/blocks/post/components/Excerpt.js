@@ -6,7 +6,8 @@ class Excerpt extends React.Component {
 
 		const { post, attributes } = this.props
 
-		const words = post.excerpt.split(" ")
+		//const words = post.excerpt.split(" ")
+		const words = ""
 
 		let excerpt = post.excerpt
 

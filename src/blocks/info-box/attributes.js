@@ -147,13 +147,25 @@ const attributes = {
 		type: "string",
 		default: "#333",
 	},
+	ctaLinkHoverColor:{
+		type: "string",
+		default: "",
+	},
 	ctaBgColor :{
+		type: "string",
+		default:"transparent",
+	},
+	ctaBgHoverColor :{
 		type: "string",
 		default:"transparent",
 	},
 	ctaBorderColor: {
 		type: "string",
 		default: "#333",
+	},
+	ctaBorderhoverColor:{
+		type: "string",
+		default: "",
 	},
 	ctaBorderStyle: {
 		type: "string",
