@@ -657,28 +657,28 @@ class UAGBcontentTimeline extends Component {
 					/>
 					{ iconControls }
 				</PanelBody>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Content Color" ),
-							},
-							{
-								value: backgroundColor,
-								onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-								label: __( "Background Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: headingColor,
+							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
+							label: __( "Heading Color" ),
+						},
+						{
+							value: subHeadingColor,
+							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
+							label: __( "Content Color" ),
+						},
+						{
+							value: backgroundColor,
+							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+							label: __( "Background Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
 			</InspectorControls>
 		)
 

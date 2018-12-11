@@ -471,8 +471,12 @@ class UAGBPostCarousel extends Component {
 
 		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
 
+		let css = ""
+
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props, "uagb-post__carousel" )
+			css = styling( this.props, "uagb-post__carousel" )
+			css += "#uagb-post__carousel-" + this.props.clientId + ".uagb-post-grid ul.slick-dots li.slick-active button:before, #uagb-post__carousel-" + this.props.clientId + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + arrowColor + "; }"
+			element.innerHTML = css
 		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
