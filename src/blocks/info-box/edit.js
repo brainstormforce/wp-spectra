@@ -847,7 +847,7 @@ class UAGBinfoBox extends Component {
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<InfoBoxCta attributes={attributes} />
+					{ attributes.ctaType !=='none' && <InfoBoxCta attributes={attributes} /> }
 				</div>
 			</Fragment>
 		)
