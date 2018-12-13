@@ -44,6 +44,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/?u
  	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="#" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="#" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
+ 	<li><a href="#" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -89,15 +90,22 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.3.0.1 =
+= 1.4.0 =
+* New: Post Timeline
 * Fix: Section - Spacing values update issue.
 * Fix: Restaurant Menu - Seperator alignement issue.
 * Fix: Restaurant Menu - Content padding issue.
+<<<<<<< HEAD
 * Fix: Post-Masonary- Space shows even if row and column space is set to zero.
+=======
+* Fix: Testimonial - Set slick dots color same as arrow color.
+* Fix: Info Box - Spacing issue below Info Box Description.
+>>>>>>> bafb3bdfc9a39855dd3cf846f0aeb0e86d7ae8a6
 * Improvement: Updated Font Awesome CSS to v5.6.0.
 * Improvement: Advanced Heading - Added seperator style option.
 * Improvement: Post Grid - Added hover color options for CTA button.
 * Improvement: Info Box - Added hover color options for CTA button.
+* Improvement: Info Box - Added before/after icon CTA button.
 * Deprecated: Content Timeline - Connector Hover properties removed.
 
 = 1.3.0 =

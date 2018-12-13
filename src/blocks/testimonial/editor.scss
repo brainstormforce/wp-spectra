@@ -8,7 +8,9 @@
 .gutenberg-editor-page #wpwrap .uagb-testomonial__outer-wrap ul.slick-dots{
     margin: 0 auto;
 }
-
+#wpwrap .edit-post-visual-editor button.slick-arrow{
+    line-height:1em;
+}
 .uagb-tm__desc,
 .editor-block-list__layout .uagb-tm__desc.editor-rich-text__tinymce{
     margin-bottom: 15px;
@@ -35,4 +37,7 @@
     color: black;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+#wpwrap .edit-post-visual-editor ul.slick-dots {
+    margin: 0;
 }

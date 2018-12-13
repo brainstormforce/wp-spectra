@@ -27,7 +27,6 @@ class Title extends React.Component {
 	                className = 'uagb-ifb-title'
 	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }
 	                multiline={ false }
-	                placeholder={ __( "Write a Heading" ) }
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

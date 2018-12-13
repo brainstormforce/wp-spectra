@@ -31,7 +31,8 @@ function TestimonialStyle( props ) {
 		borderStyle,
 		borderWidth ,
 		borderRadius,
-		borderColor         
+		borderColor,
+		arrowColor        
 	} = props.attributes        
 
 	if( props.clientId ){
@@ -111,6 +112,13 @@ function TestimonialStyle( props ) {
 			"border-radius":borderRadius + "px",                    
 		}                 
 	}
+
+	selectors["ul.slick-dots li button:before"] = {
+		"color" : arrowColor,
+	} 
+	selectors["ul.slick-dots li.slick-active button:before"] = {
+		"color" : arrowColor,
+	} 
 
 	var styling_css = ""
 
