@@ -294,7 +294,7 @@ class UAGBtestimonial extends Component {
 						{
 							value: arrowColor,
 							onChange: ( colorValue ) => setAttributes( { arrowColor: colorValue } ),
-							label: __( "Arrow Color" ),
+							label: __( "Arrow & Dots Color" ),
 						},
 					] }
 				>
@@ -559,6 +559,7 @@ class UAGBtestimonial extends Component {
 			arrows : true,
 			dots : true,
 			rtl : false,
+			draggable: false,
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
