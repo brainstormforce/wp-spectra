@@ -273,6 +273,11 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
     float: right;
 }
 
+.block-editor-page #wpwrap .uagb-ifb-text-icon i,
+.uagb-ifb-text-icon i {
+    font-style: normal;
+}
+
 @media only screen and (max-width: 976px) {
     .uagb-infobox-stacked-tablet .uagb-ifb-left-right-wrap .uagb-ifb-imgicon-wrap {
         padding: 0;
