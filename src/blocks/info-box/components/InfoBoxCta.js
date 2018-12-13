@@ -18,27 +18,31 @@ class InfoBoxCta extends React.Component {
 			target ="_blank"
 		}
 		
-		return (			
-			<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
-				{  attributes.ctaType === "text" && ( 
-					<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
-						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
-					</a>)
-				}
+		if( attributes.ctaType !== "none" ){ 
+			return (			
+				<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
+					{  attributes.ctaType === "text" && ( 
+						<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
+							<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
+						</a>)
+					}
 
-				{  attributes.ctaType === "button" && ( 
-					<div className = "uagb-ifb-button-wrapper">
-						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
-                        
-							<span className = "uagb-ifb-cta-content-wrapper">    
-								<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
-							</span>
-						</a>
-					</div>
-				)
-				}
-			</div>            
-		)
+					{  attributes.ctaType === "button" && ( 
+						<div className = "uagb-ifb-button-wrapper">
+							<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
+	                        
+								<span className = "uagb-ifb-cta-content-wrapper">    
+									<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
+								</span>
+							</a>
+						</div>
+					)
+					}
+				</div>            
+			)
+		}else{
+			return null
+		}
 	}
 }
 
