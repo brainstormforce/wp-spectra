@@ -108,6 +108,18 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	ctaIcon : {
+		type : "string",
+		default : "fa fa-arrow-right"
+	},
+	ctaIconPosition: {
+		type: "string",
+		default: "after"
+	},
+	ctaIconSpace :{
+		type: "number",
+		default : 5
+	},
 	seperatorStyle: {
 		type: "string",
 		default: "solid",

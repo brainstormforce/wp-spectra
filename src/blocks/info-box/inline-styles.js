@@ -49,7 +49,8 @@ function InfoBoxStyle( props ) {
 		imageWidth,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
-		ctaBorderhoverColor
+		ctaBorderhoverColor,
+		ctaIconSpace
 	} = props.attributes
 
 	if( props.clientId ){
@@ -183,6 +184,14 @@ function InfoBoxStyle( props ) {
 
 	selectors[".uagb-ifb-content"] = {
 		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+	}
+
+	selectors[".uagb-ifb-align-icon-after"] = {
+		"margin-left" : ctaIconSpace+"px",
+	}
+
+	selectors[".uagb-ifb-align-icon-before"] = {
+		"margin-right" : ctaIconSpace+"px",
 	}
 
 	var styling_css = ""

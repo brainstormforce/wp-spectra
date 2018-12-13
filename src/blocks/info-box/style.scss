@@ -263,6 +263,15 @@ a.uagb-infobox-link-wrap {
     display:inline-block;
     box-sizing:content-box;
 }
+.uagb-ifb-align-icon-after {
+    margin-left: 5px;
+}
+.uagb-ifb-align-icon-before {
+    margin-right: 5px;
+}
+span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
+    float: right;
+}
 
 @media only screen and (max-width: 976px) {
     .uagb-infobox-stacked-tablet .uagb-ifb-left-right-wrap .uagb-ifb-imgicon-wrap {

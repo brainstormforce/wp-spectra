@@ -58,16 +58,20 @@ class UAGBinfoBox extends Component {
 	constructor() {
 
 		super( ...arguments )
-		this.getTimelineicon  = this.getTimelineicon.bind(this)
+		this.getIfbIcon  	  = this.getIfbIcon.bind(this)
 		this.toggleTarget     = this.toggleTarget.bind( this )
 		this.toggleResponsive = this.toggleResponsive.bind( this )
 		this.onSelectImage    = this.onSelectImage.bind( this )
 		this.onRemoveImage    = this.onRemoveImage.bind( this )
-
+		this.getCtaicon  	  = this.getCtaicon.bind(this)
 	}
 
-	getTimelineicon(value) {
+	getIfbIcon(value) {
 		this.props.setAttributes( { icon: value } )
+	}
+
+	getCtaicon(value) {
+		this.props.setAttributes( { ctaIcon: value } )
 	}
 
 	/*
@@ -161,6 +165,9 @@ class UAGBinfoBox extends Component {
 			ctaText,
 			ctaLink,
 			ctaTarget,
+			ctaIcon,
+			ctaIconPosition,
+			ctaIconSpace,
 			ctaLinkColor,
 			ctaFontSize,
 			ctaBtnLinkColor,
@@ -197,7 +204,17 @@ class UAGBinfoBox extends Component {
 		  renderUsing: "class",
 		  theme: "default",
 		  value: icon,
-		  onChange: this.getTimelineicon,
+		  onChange: this.getIfbIcon,
+		  isMulti: false,
+		}
+
+		// Icon properties.
+		const cta_icon_props = {
+		  icons: UAGBIcon,
+		  renderUsing: "class",
+		  theme: "default",
+		  value: ctaIcon,
+		  onChange: this.getCtaicon,
 		  isMulti: false,
 		}
 
@@ -329,6 +346,30 @@ class UAGBinfoBox extends Component {
 								label={ __( "Open in new Window" ) }
 								checked={ ctaTarget }
 								onChange={ this.toggleTarget }
+							/>
+						</Fragment>
+					}
+
+					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) && 
+						<Fragment>
+							<FontIconPicker {...cta_icon_props} /> 
+							<SelectControl
+								label={ __( "Icon Position" ) }
+								value={ ctaIconPosition }
+								onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
+								options={ [
+									{ value: "before", label: __( "Before Text" ) },
+									{ value: "after", label: __( "After Text" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Icon Spacing" ) }
+								value={ ctaIconSpace }
+								onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
 							/>
 						</Fragment>
 					}
@@ -850,7 +891,7 @@ class UAGBinfoBox extends Component {
 					{ attributes.ctaType !=='none' && <InfoBoxCta attributes={attributes} /> }
 				</div>
 			</Fragment>
-		)
+		) 
 
 		// Get Title and Prefix components.
 		const title_text = (
