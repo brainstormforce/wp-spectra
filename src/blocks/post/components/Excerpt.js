@@ -6,8 +6,11 @@ class Excerpt extends React.Component {
 
 		const { post, attributes } = this.props
 
-		//const words = post.excerpt.split(" ")
-		const words = ""
+		if ( post.excerpt == undefined ) {
+			return null
+		}
+
+		const words = post.excerpt.split(" ")
 
 		let excerpt = post.excerpt
 
@@ -21,10 +24,7 @@ class Excerpt extends React.Component {
 			excerpt += " ..."
 		}
 
-		if (
-			attributes.displayPostExcerpt &&
-			undefined !== post.excerpt
-		) {
+		if ( attributes.displayPostExcerpt ) {
 
 			return (
 

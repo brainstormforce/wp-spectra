@@ -608,31 +608,31 @@ class UAGBinfoBox extends Component {
 					}
 					{ ( ctaType === "button") &&
 							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-									activeClass="active-tab"
-									tabs={ [
-										{
-											name: "normal",
-											title: __( "Normal" ),
-											className: "uagb-normal-tab",
-										},
-										{
-											name: "hover",
-											title: __( "Hover" ),
-											className: "uagb-focus-tab",
-										},							
-									] }>
+								activeClass="active-tab"
+								tabs={ [
 									{
-										( tabName ) => {
-											let tabout
-											if( "normal" === tabName.name ) {
-												tabout = ctaNormalSettings
-											}else {
-												tabout = ctaHoverSettings
-											}
-											return <div>{ tabout }</div>
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-focus-tab",
+									},							
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if( "normal" === tabName.name ) {
+											tabout = ctaNormalSettings
+										}else {
+											tabout = ctaHoverSettings
 										}
+										return <div>{ tabout }</div>
 									}
-								</TabPanel>
+								}
+							</TabPanel>
 					}
 				</PanelColorSettings>
 

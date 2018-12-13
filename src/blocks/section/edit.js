@@ -170,7 +170,7 @@ class UAGBSectionEdit extends Component {
 			setAttributes( { backgroundColor: colorValue } )
 		}
 
-		let active = ( isSelected ) ? 'active' : 'not-active'
+		let active = ( isSelected ) ? "active" : "not-active"
 
 		return (
 			<Fragment>
