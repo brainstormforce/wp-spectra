@@ -876,8 +876,8 @@ class UAGBinfoBox extends Component {
 		// Get icon/Image components.
 		let is_image = ""
 
-		if( source_type === "icon" ) {
-			is_image = <InfoBoxIcon attributes={attributes}/>
+		if( source_type === "icon" && icon !== '' ) {
+			is_image =  <InfoBoxIcon attributes={attributes}/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
@@ -887,7 +887,7 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ attributes.headingDesc !=='' && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 					{ attributes.ctaType !=='none' && <InfoBoxCta attributes={attributes} /> }
 				</div>
 			</Fragment>
@@ -897,8 +897,8 @@ class UAGBinfoBox extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ "" !== attributes.prefixTitle && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ "" !== attributes.infoBoxTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)
