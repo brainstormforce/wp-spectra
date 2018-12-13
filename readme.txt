@@ -90,6 +90,9 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.4.0.1 =
+* Fix: Post-Masonary- Space shows even if row and column space is set to zero.
+
 = 1.4.0 =
 * New: Post Timeline
 * Fix: Section - Spacing values update issue.
