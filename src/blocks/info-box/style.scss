@@ -23,7 +23,9 @@
 a.uagb-infobox-cta-link span {
     font-size: inherit;
 }
-
+.uagb-ifb-cta.uagb-infobox-cta-link-style:empty {
+    display: none;
+}
 a.uagb-infobox-cta-link,
 .entry .entry-content a.uagb-infobox-cta-link,
 a.uagb-infobox-link-wrap,
