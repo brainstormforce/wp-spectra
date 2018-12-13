@@ -194,7 +194,7 @@ registerBlockType( "uagb/info-box", {
 			</Fragment>
 		)
 	},
-	/*deprecated: [
+	deprecated: [
 		{
 			attributes,
 			save: function( props ) {
@@ -331,5 +331,5 @@ registerBlockType( "uagb/info-box", {
 				)
 			},
 		}
-	]*/
+	]
 } )
