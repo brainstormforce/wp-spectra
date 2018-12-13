@@ -71,7 +71,8 @@ registerBlockType( "uagb/info-box", {
 			className,
 			prefixTitle,
 			infoBoxTitle,
-			headingDesc
+			headingDesc,
+			icon
 		} = props.attributes
 
 
@@ -85,7 +86,7 @@ registerBlockType( "uagb/info-box", {
 		// Get icon/Image components.
 		let is_image = ""
 
-		if( source_type === "icon" ) {
+		if( source_type === "icon" && icon !=='' ) {
 			is_image = <InfoBoxIcon attributes={ props.attributes }/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={ props.attributes } />
