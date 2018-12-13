@@ -95,6 +95,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Section - Spacing values update issue.
 * Fix: Restaurant Menu - Seperator alignement issue.
 * Fix: Restaurant Menu - Content padding issue.
+* Fix: Testimonial - Set slick dots color same as arrow color.
 * Improvement: Updated Font Awesome CSS to v5.6.0.
 * Improvement: Advanced Heading - Added seperator style option.
 * Improvement: Post Grid - Added hover color options for CTA button.

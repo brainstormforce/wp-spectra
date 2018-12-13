@@ -533,6 +533,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-width'  => $attr->borderWidth . 'px',
 					'border-radius'  => $attr->borderRadius . 'px',
 				),
+				' ul.slick-dots li button:before' => array(
+					'color' => $attr->arrowColor,
+				),
+				' ul.slick-dots li.slick-active button:before' => array(
+					'color' => $attr->arrowColor,
+				),
 			);
 
 			$r_selectors = array(
