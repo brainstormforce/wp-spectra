@@ -248,7 +248,9 @@ class UAGBSocialShare extends Component {
 											"icon": cloneSocials[ 0 ].icon,
 											"image": cloneSocials[ 0 ].image,
 											"icon_color": cloneSocials[ 0 ].icon_color,
-											"icon_hover_color": cloneSocials[ 0 ].icon_hover_color
+											"icon_hover_color": cloneSocials[ 0 ].icon_hover_color,
+											"icon_bg_color": cloneSocials[ 0 ].icon_bg_color,
+											"icon_bg_hover_color": cloneSocials[ 0 ].icon_bg_hover_color
 										} )
 									} ) }
 

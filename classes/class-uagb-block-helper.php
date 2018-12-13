@@ -901,10 +901,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
+			$selectors[" .uagb-icon-list__source-wrap"] = array(
+				"padding" => $attr['bgSize'] . "px",
+				"border-radius" => $attr['borderRadius'] . "px"
+			);
+
 			foreach ( $attr['icons'] as $key => $icon ) {
 
 				$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
 				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
+				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
+				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
 				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
 				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
 
@@ -927,6 +934,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
 					"color" => $icon['label_hover_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
+					"background" => $icon['icon_bg_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
+					"background" => $icon['icon_bg_hover_color']
 				);
 			}
 

@@ -11,7 +11,8 @@
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.uagb-ifb-icon-wrap .uagb-ifb-icon {
+.uagb-ifb-icon-wrap .uagb-ifb-icon,
+.uagb-ifb-content {
     display: inline-block;
 }
 
@@ -20,7 +21,7 @@
 }
 
 a.uagb-infobox-cta-link span {
-    font-size: inherit;      
+    font-size: inherit;
 }
 
 a.uagb-infobox-cta-link,

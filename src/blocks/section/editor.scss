@@ -8,13 +8,17 @@
 .uagb-section__wrap:before {
 	content: '';
 	position: absolute;
-	border: 2px dashed rgb(3, 221, 255);
+	border: 2px dashed #03ddff;
 	top: -1px;
 	right: -1px;
 	bottom: -1px;
 	left: -1px;
 	z-index: 0;
  }
+
+.uagb-section__edit-active.uagb-section__wrap:before {
+	border-color: #035cff;
+}
 
 .editor-bg-image-control .components-button,
 .editor-bg-video-control .components-button {
