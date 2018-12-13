@@ -169,12 +169,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/post-timeline':
+					$css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/restaurant-menu':
 					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/icon-list':
 					$css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/post-grid':
+					$css .= UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/post-carousel':
+					$css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/post-masonry':
+					$css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
 					break;
 
 				default:

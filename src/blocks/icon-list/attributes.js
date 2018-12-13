@@ -16,6 +16,8 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 			"label_color": "",
 			"icon_hover_color": "",
 			"label_hover_color": "",
+			"icon_bg_color": "",
+			"icon_bg_hover_color": "",
 			"link": "#",
 			"target": false
 		}
@@ -49,6 +51,14 @@ const attributes = {
 	size: {
 		type: "number",
 		default: 40
+	},
+	bgSize: {
+		type: "number",
+		default: 0
+	},
+	borderRadius: {
+		type: "number",
+		default: 0
 	},
 	hideLabel: {
 		type: "boolean",

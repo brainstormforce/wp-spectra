@@ -8,6 +8,8 @@ function styling( props ) {
 		gap,
 		social_layout,
 		size,
+		borderRadius,
+		bgSize,
 		stack
 	} = props.attributes
 
@@ -27,6 +29,14 @@ function styling( props ) {
 
 		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link"] = {
 			"color" : social.icon_hover_color
+		}
+
+		selectors[" .uagb-ss-repeater-" + index] = {
+			"background" : social.icon_bg_color
+		}
+
+		selectors[" .uagb-ss-repeater-" + index + ":hover"] = {
+			"background" : social.icon_bg_hover_color
 		}
 	})
 
@@ -58,6 +68,11 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-ss__wrapper"] = {
+		"padding": bgSize + "px",
+		"border-radius": borderRadius + "px"
+	}
+
+	selectors[" .uagb-ss__wrapper .uagb-ss__link"] = {
 		"width": size + "px"
 	}
 

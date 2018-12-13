@@ -76,7 +76,9 @@ class UAGBSocialShare extends Component {
 			stack,
 			current_url,
 			social_layout,
-			size
+			size,
+			borderRadius,
+			bgSize
 		} = attributes
 
 		const socialControls = ( index ) => {
@@ -157,6 +159,21 @@ class UAGBSocialShare extends Component {
 									{ __( "Remove Image" ) }
 								</Button>
 							}
+							<PanelColorSettings
+								title={ __( "Color Settings" ) }
+								colorSettings={ [
+									{
+										value: socials[ index ].icon_bg_color,
+										onChange:( value ) => this.saveSocials( { icon_bg_color: value }, index ),
+										label: __( "Background Color" ),
+									},
+									{
+										value: socials[ index ].icon_bg_hover_color,
+										onChange:( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ),
+										label: __( "Background Hover Color" ),
+									}
+								] }>
+							</PanelColorSettings>
 						</Fragment>
 					}
 					{ "icon" == socials[ index ].image_icon &&
@@ -169,9 +186,19 @@ class UAGBSocialShare extends Component {
 									label: __( "Color" ),
 								},
 								{
+									value: socials[ index ].icon_bg_color,
+									onChange:( value ) => this.saveSocials( { icon_bg_color: value }, index ),
+									label: __( "Background Color" ),
+								},
+								{
 									value: socials[ index ].icon_hover_color,
 									onChange:( value ) => this.saveSocials( { icon_hover_color: value }, index ),
 									label: __( "Hover Color" ),
+								},
+								{
+									value: socials[ index ].icon_bg_hover_color,
+									onChange:( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ),
+									label: __( "Background Hover Color" ),
 								}
 							] }>
 						</PanelColorSettings>
@@ -221,7 +248,9 @@ class UAGBSocialShare extends Component {
 											"icon": cloneSocials[ 0 ].icon,
 											"image": cloneSocials[ 0 ].image,
 											"icon_color": cloneSocials[ 0 ].icon_color,
-											"icon_hover_color": cloneSocials[ 0 ].icon_hover_color
+											"icon_hover_color": cloneSocials[ 0 ].icon_hover_color,
+											"icon_bg_color": cloneSocials[ 0 ].icon_bg_color,
+											"icon_bg_hover_color": cloneSocials[ 0 ].icon_bg_hover_color
 										} )
 									} ) }
 
@@ -271,6 +300,22 @@ class UAGBSocialShare extends Component {
 							max={ 500 }
 							initialPosition={40}
 						/>
+						<RangeControl
+							label={ __( "Background Size" ) }
+							value={ bgSize }
+							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+							min={ 0 }
+							max={ 500 }
+						/>
+						<p className="uagb-note">{ __( "Note: Background Size option is useful when one adds background color to the icons." ) }</p>
+						<RangeControl
+							label={ __( "Circular Size" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 500 }
+						/>
+						<p className="uagb-note">{ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Gap between Icon / Image" ) }
 							value={ gap }

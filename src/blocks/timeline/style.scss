@@ -22,9 +22,31 @@
      color: inherit;
      margin-bottom: inherit;
 }
+.uagb-timeline__image a{
+    display: block;
+    position: relative;
+    max-width: 100%;
+}
+.uagb-timeline__image img{
+    display: inline-block;
+    -webkit-box-sizing: content-box;
+    -mz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+.uagb-timeline__author{
+     text-transform: uppercase;
+}
  .uagb-timeline__main{
      position: relative;
 }
+.uagb-content{
+     word-break: break-word;
+}
+a.uagb-timeline__link {
+    padding: 5px 10px;
+    display: inline-block;
+}
+
  h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading, h4.uagb-timeline__heading, h5.uagb-timeline__heading, h6.uagb-timeline__heading{
      margin-bottom: 0px;
 }
@@ -208,7 +230,7 @@
      -webkit-transition: all .2s ease-in-out;
      transition: all .2s ease-in-out;
 }
- .uagb-timeline__main .uagb-timeline__days .uagb-timeline__animate-border:hover .uagb-timeline__marker {
+ .uagb-timeline__main .uagb-timeline__days .uagb-timeline__field-wrap:hover .uagb-timeline__marker {
      -webkit-transition: all .2s ease-in-out;
      transition: all .2s ease-in-out;
 }
@@ -436,12 +458,13 @@
      -ms-transform: translateX(-50%);
      transform: translateX(-50%);
 }
- .uagb-timeline__right .uagb-timeline__line {
+ .uagb-timeline__right-block .uagb-timeline__main .uagb-timeline__line {
      position: absolute;
      -webkit-transform: translateX(50%);
      -ms-transform: translateX(50%);
      transform: translateX(50%);
 }
+
 /* RESPONSIVE ALIGNMENT OF VERTICAL SEPARATOR. */
  .uagb-timeline__center-block .uagb-timeline__line {
      left: 50%;
@@ -487,6 +510,11 @@
 /* RIGHT CSS STARTS */
  .uagb-timeline__right .uagb-timeline__days {
      text-align: right;
+}
+.uagb-timeline__outer-wrap span.dashicons-admin-users.dashicons {
+    display:inline;
+    vertical-align: baseline;
+    margin-right: 4px;
 }
  @media screen and (max-width: 1023px) {
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-res-right .uagb-timeline__line {
@@ -728,6 +756,7 @@
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-res-right .uagb-timeline__right .uagb-timeline__date-new {
          display: none;
     }
+    
 }
  @media screen and (max-width: 767px) {
      .uagb-timeline-responsive-none .uagb-timeline__events-inner-new {

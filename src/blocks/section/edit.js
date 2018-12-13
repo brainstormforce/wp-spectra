@@ -116,7 +116,7 @@ class UAGBSectionEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, isSelected } = this.props
 
 		const {
 			align,
@@ -169,6 +169,8 @@ class UAGBSectionEdit extends Component {
 		const onColorChange = ( colorValue ) => {
 			setAttributes( { backgroundColor: colorValue } )
 		}
+
+		let active = ( isSelected ) ? "active" : "not-active"
 
 		return (
 			<Fragment>
@@ -558,6 +560,7 @@ class UAGBSectionEdit extends Component {
 						className,
 						"uagb-section__wrap",
 						`uagb-section__background-${backgroundType}`,
+						`uagb-section__edit-${ active }`
 					) }
 					id={ `uagb-section-${this.props.clientId}` }
 				>

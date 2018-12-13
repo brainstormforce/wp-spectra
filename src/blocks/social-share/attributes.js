@@ -14,6 +14,8 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 			"image": "",
 			"icon_color": "#3a3a3a",
 			"icon_hover_color": "",
+			"icon_bg_color": "",
+			"icon_bg_hover_color": "",
 		}
 	)
 }
@@ -44,6 +46,14 @@ const attributes = {
 	size: {
 		type: "number",
 		default: 40
+	},
+	bgSize: {
+		type: "number",
+		default: 0
+	},
+	borderRadius: {
+		type: "number",
+		default: 0
 	},
 	social_layout: {
 		type: "string",
