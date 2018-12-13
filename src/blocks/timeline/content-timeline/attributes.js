@@ -176,18 +176,6 @@ const attributes = {
 		type : "string",
 		default : "fab fa fa-calendar-alt"
 	},
-	iconHover : {
-		type : "string",
-		default : ""
-	},
-	iconBgHover : {
-		type : "string",
-		default : ""
-	},  
-	borderHover : {
-		type : "string",
-		default : ""
-	},  
 	t_date : {
 		type: "array",
 		default: date_arr,

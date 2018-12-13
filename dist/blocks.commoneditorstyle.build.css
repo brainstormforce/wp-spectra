@@ -22,6 +22,11 @@
 
 .uagb-inspect-tabs .components-tab-panel__tabs {
 		margin-top: 15px;
+		margin-bottom: 15px;
+}
+
+.uagb-inspect-tab-title {
+	margin-top: 20px;
 }
 
 .uagb-inspect-tabs-col-2 .components-tab-panel__tabs button,

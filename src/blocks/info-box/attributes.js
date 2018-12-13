@@ -108,6 +108,18 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	ctaIcon : {
+		type : "string",
+		default : ""
+	},
+	ctaIconPosition: {
+		type: "string",
+		default: "after"
+	},
+	ctaIconSpace :{
+		type: "number",
+		default : 5
+	},
 	seperatorStyle: {
 		type: "string",
 		default: "solid",
@@ -147,13 +159,25 @@ const attributes = {
 		type: "string",
 		default: "#333",
 	},
+	ctaLinkHoverColor:{
+		type: "string",
+		default: "",
+	},
 	ctaBgColor :{
+		type: "string",
+		default:"transparent",
+	},
+	ctaBgHoverColor :{
 		type: "string",
 		default:"transparent",
 	},
 	ctaBorderColor: {
 		type: "string",
 		default: "#333",
+	},
+	ctaBorderhoverColor:{
+		type: "string",
+		default: "",
 	},
 	ctaBorderStyle: {
 		type: "string",

@@ -7,6 +7,7 @@ import pickBy from "lodash/pickBy"
 
 // Import Post Components
 import Blog from "./blog"
+import styling from ".././styling"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
@@ -19,6 +20,7 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
+	TabPanel
 } = wp.components
 
 const {
@@ -37,7 +39,7 @@ class UAGBPostGrid extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -62,6 +64,7 @@ class UAGBPostGrid extends Component {
 			imgSize,
 			imgPosition,
 			displayPostLink,
+			newTab,
 			align,
 			columns,
 			tcolumns,
@@ -77,15 +80,55 @@ class UAGBPostGrid extends Component {
 			titleColor,
 			titleTag,
 			titleFontSize,
+			metaFontSize,
+			excerptFontSize,
+			ctaFontSize,
 			metaColor,
 			excerptColor,
 			ctaColor,
 			ctaBgColor,
+			ctaHColor,
+			ctaBgHColor,
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			equalHeight
+			equalHeight,
+			excerptLength
 		} = attributes
+
+		const hoverSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaHColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaHColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgHColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
+					allowReset
+				/>
+			</Fragment>
+		)
+
+		const normalSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+			</Fragment>
+		)
 
 		// All Controls.
 		const inspectorControls = (
@@ -160,19 +203,6 @@ class UAGBPostGrid extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( "Title Tag" ) }
-						value={ titleTag }
-						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-						] }
-					/>
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
@@ -193,11 +223,83 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
+					{ displayPostExcerpt &&
+						<RangeControl
+							label={ __( "Excerpt Length" ) }
+							value={ excerptLength }
+							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
+							min={ 1 }
+							max={ 50 }
+							allowReset
+						/>
+					}
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
 						onChange={ ( value ) => setAttributes( { displayPostLink : ! displayPostLink } ) }
 					/>
+					<ToggleControl
+						label={ __( "Open links in New Tab" ) }
+						checked={ newTab }
+						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
+					/>
+				</PanelBody>
+				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ titleTag }
+						onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Title Font Size" ) }
+						value={ titleFontSize }
+						onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+						min={ 1 }
+						max={ 50 }
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					{ ( displayPostAuthor || displayPostDate || displayPostComment ) &&
+						<RangeControl
+							label={ __( "Meta Font Size" ) }
+							value={ metaFontSize }
+							onChange={ ( value ) => setAttributes( { metaFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
+					{ displayPostExcerpt &&
+						<RangeControl
+							label={ __( "Excerpt Font Size" ) }
+							value={ excerptFontSize }
+							onChange={ ( value ) => setAttributes( { excerptFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
+					{ displayPostLink &&
+						<RangeControl
+							label={ __( "CTA Font Size" ) }
+							value={ ctaFontSize }
+							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+							min={ 1 }
+							max={ 50 }
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
@@ -237,22 +339,33 @@ class UAGBPostGrid extends Component {
 					}
 					{ displayPostLink == true &&
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
-							<ColorPalette
-								value={ ctaColor }
-								onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					}
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
-							<ColorPalette
-								value={ ctaBgColor }
-								onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-								allowReset
-							/>
+							<p className="uagb-inspect-tab-title"><strong>{ __( "CTA Colors" ) }</strong></p>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if ( "hover" === tabName.name ){
+											tabout = hoverSettings
+										} else {
+											tabout = normalSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
 						</Fragment>
 					}
 				</PanelBody>
@@ -309,6 +422,12 @@ class UAGBPostGrid extends Component {
 			</InspectorControls>
 		)
 
+		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props, "uagb-post__grid" )
+		}
+
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -317,7 +436,7 @@ class UAGBPostGrid extends Component {
 					{ inspectorControls }
 					<Placeholder
 						icon="admin-post"
-						label={ __( "UAGB - Post Grid" ) }
+						label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :

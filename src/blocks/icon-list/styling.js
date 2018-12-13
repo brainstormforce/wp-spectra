@@ -9,7 +9,9 @@ function styling( props ) {
 		icon_layout,
 		size,
 		fontSize,
-		stack
+		stack,
+		bgSize,
+		borderRadius
 	} = props.attributes
 
 	var selectors = {}
@@ -38,6 +40,14 @@ function styling( props ) {
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
 			"color" : icon.label_hover_color
 		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-wrap"] = {
+			"background" : icon.icon_bg_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-wrap"] = {
+			"background" : icon.icon_bg_hover_color
+		}
 	})
 
 	if ( "right" == align ) {
@@ -51,6 +61,11 @@ function styling( props ) {
 		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
 			"margin-right" : inner_gap + "px"
 		}
+	}
+
+	selectors[" .uagb-icon-list__source-wrap"] = {
+		"padding": bgSize + "px",
+		"border-radius": borderRadius + "px"
 	}
 
 

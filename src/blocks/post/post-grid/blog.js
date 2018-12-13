@@ -53,34 +53,13 @@ class Blog extends React.Component {
 						"uagb-post__items",
 						`${ equalHeightClass }`
 					) }
-					style={{
-						marginRight: -rowGap/2,
-						marginLeft: -rowGap/2,
-					}}
 				>
 					{ displayPosts.map( ( post, i ) =>
-						<article
-							key={ i }
-							style={{
-								paddingRight: rowGap/2,
-								paddingLeft: rowGap/2,
-								marginBottom: columnGap
-							}}
-						>
-							<div
-								className="uagb-post__inner-wrap"
-								style={{
-									background: bgColor,
-								}}
-							>
+						<article key={ i } >
+							<div className="uagb-post__inner-wrap" >
 								<FeaturedImage post={post} attributes={attributes} />
 
-								<div
-									className={ "uagb-post__text" }
-									style={{
-										padding: contentPadding,
-									}}
-								>
+								<div className="uagb-post__text">
 									<Title post={post} attributes={attributes} />
 									<Meta post={post} attributes={attributes} />
 									<Excerpt post={post} attributes={attributes} />

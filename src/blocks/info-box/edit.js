@@ -35,7 +35,7 @@ const {
 	TextControl,
 	BaseControl,
 	Button,
-	withNotices
+	withNotices,
 } = wp.components
 
 const {
@@ -58,16 +58,20 @@ class UAGBinfoBox extends Component {
 	constructor() {
 
 		super( ...arguments )
-		this.getTimelineicon  = this.getTimelineicon.bind(this)
+		this.getIfbIcon  	  = this.getIfbIcon.bind(this)
 		this.toggleTarget     = this.toggleTarget.bind( this )
 		this.toggleResponsive = this.toggleResponsive.bind( this )
 		this.onSelectImage    = this.onSelectImage.bind( this )
 		this.onRemoveImage    = this.onRemoveImage.bind( this )
-
+		this.getCtaicon  	  = this.getCtaicon.bind(this)
 	}
 
-	getTimelineicon(value) {
+	getIfbIcon(value) {
 		this.props.setAttributes( { icon: value } )
+	}
+
+	getCtaicon(value) {
+		this.props.setAttributes( { ctaIcon: value } )
 	}
 
 	/*
@@ -161,14 +165,20 @@ class UAGBinfoBox extends Component {
 			ctaText,
 			ctaLink,
 			ctaTarget,
+			ctaIcon,
+			ctaIconPosition,
+			ctaIconSpace,
 			ctaLinkColor,
 			ctaFontSize,
 			ctaBtnLinkColor,
+			ctaLinkHoverColor,
+			ctaBgHoverColor,
 			ctaBgColor,
 			ctaBtnVertPadding,
 			ctaBtnHrPadding,
 			ctaBorderStyle,
 			ctaBorderColor,
+			ctaBorderhoverColor,
 			ctaBorderWidth,
 			ctaBorderRadius,
 			prefixSpace,
@@ -194,7 +204,17 @@ class UAGBinfoBox extends Component {
 		  renderUsing: "class",
 		  theme: "default",
 		  value: icon,
-		  onChange: this.getTimelineicon,
+		  onChange: this.getIfbIcon,
+		  isMulti: false,
+		}
+
+		// Icon properties.
+		const cta_icon_props = {
+		  icons: UAGBIcon,
+		  renderUsing: "class",
+		  theme: "default",
+		  value: ctaIcon,
+		  onChange: this.getCtaicon,
 		  isMulti: false,
 		}
 
@@ -330,6 +350,30 @@ class UAGBinfoBox extends Component {
 						</Fragment>
 					}
 
+					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
+						<Fragment>
+							<FontIconPicker {...cta_icon_props} />
+							<SelectControl
+								label={ __( "Icon Position" ) }
+								value={ ctaIconPosition }
+								onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
+								options={ [
+									{ value: "before", label: __( "Before Text" ) },
+									{ value: "after", label: __( "After Text" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Icon Spacing" ) }
+								value={ ctaIconSpace }
+								onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+						</Fragment>
+					}
+
 					{ ( ctaType == "button" ) && (
 						<Fragment>
 
@@ -366,14 +410,6 @@ class UAGBinfoBox extends Component {
 
 							{ ( ctaBorderStyle !== "none" ) && (
 								<Fragment>
-									<Fragment>
-									    <p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-									    <ColorPalette
-									        value={ ctaBorderColor }
-									        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-									        allowReset
-									    />
-									</Fragment>
 									<RangeControl
 										label={ __( "Border Width" ) }
 										value={ ctaBorderWidth }
@@ -383,6 +419,18 @@ class UAGBinfoBox extends Component {
 										beforeIcon=""
 										allowReset
 									/>
+									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBorderColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+								        allowReset
+								    />
+								    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBorderhoverColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+								        allowReset
+								    />
 								</Fragment>
 							)
 							}
@@ -402,6 +450,49 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
+		const ctaNormalSettings = (
+			<Fragment>
+				<PanelColorSettings
+					title={ __( "CTA Color Settings" ) }
+					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: ctaBtnLinkColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ),
+							label: __( "Color" ),
+						},
+						{
+							value: ctaBgColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ),
+							label: __( "Background Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
+			</Fragment>
+		)
+
+		const ctaHoverSettings = (
+			<Fragment>
+				<PanelColorSettings
+					title={ __( "CTA Hover Color Settings" ) }
+					initialOpen={ true }
+					colorSettings={ [
+						{
+							value: ctaLinkHoverColor,
+							onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
+							label: __( "Hover Color" ),
+						},
+						{
+							value: ctaBgHoverColor,
+							onChange: ( colorValue ) => setAttributes( { ctaBgHoverColor: colorValue } ),
+							label: __( "Background Hover Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
+			</Fragment>
+		)
 
 		// Typography settings.
 		const TypographySettings = (
@@ -503,27 +594,41 @@ class UAGBinfoBox extends Component {
 							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
 							        allowReset
 							    />
+							    <p className="uagb-setting-label">{ __( "CTA Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaLinkHoverColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+							        allowReset
+							    />
 							</Fragment>
 					}
 					{ ( ctaType === "button") &&
-							<Fragment>
-								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBtnLinkColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBgColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-							</Fragment>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-focus-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if( "normal" === tabName.name ) {
+											tabout = ctaNormalSettings
+										}else {
+											tabout = ctaHoverSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
 					}
 				</PanelColorSettings>
 
@@ -767,8 +872,8 @@ class UAGBinfoBox extends Component {
 		// Get icon/Image components.
 		let is_image = ""
 
-		if( source_type === "icon" ) {
-			is_image = <InfoBoxIcon attributes={attributes}/>
+		if( source_type === "icon" && icon !== "" ) {
+			is_image =  <InfoBoxIcon attributes={attributes}/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
@@ -778,8 +883,8 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<InfoBoxCta attributes={attributes} />
+					{ attributes.headingDesc !=="" && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ attributes.ctaType !=="none" && <InfoBoxCta attributes={attributes} /> }
 				</div>
 			</Fragment>
 		)
@@ -788,8 +893,8 @@ class UAGBinfoBox extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ "" !== attributes.prefixTitle && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ "" !== attributes.infoBoxTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)
