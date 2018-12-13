@@ -44,6 +44,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/?u
  	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="#" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="#" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
+ 	<li><a href="#" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -89,7 +90,8 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.3.0.1 =
+= 1.4.0 =
+* New: Post Timeline
 * Fix: Section - Spacing values update issue.
 * Fix: Restaurant Menu - Seperator alignement issue.
 * Fix: Restaurant Menu - Content padding issue.
