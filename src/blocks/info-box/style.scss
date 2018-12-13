@@ -23,7 +23,9 @@
 a.uagb-infobox-cta-link span {
     font-size: inherit;
 }
-
+.uagb-ifb-cta.uagb-infobox-cta-link-style:empty {
+    display: none;
+}
 a.uagb-infobox-cta-link,
 .entry .entry-content a.uagb-infobox-cta-link,
 a.uagb-infobox-link-wrap,
@@ -260,6 +262,20 @@ a.uagb-infobox-link-wrap {
 .uagb-infobox .uagb-ifb-image-content img{
     display:inline-block;
     box-sizing:content-box;
+}
+.uagb-ifb-align-icon-after {
+    margin-left: 5px;
+}
+.uagb-ifb-align-icon-before {
+    margin-right: 5px;
+}
+span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
+    float: right;
+}
+
+.block-editor-page #wpwrap .uagb-infobox-cta-link i,
+.uagb-infobox-cta-link i {
+    font-style: normal;
 }
 
 @media only screen and (max-width: 976px) {

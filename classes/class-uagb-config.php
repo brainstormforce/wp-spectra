@@ -182,6 +182,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaLinkHoverColor'   => '',
 							'ctaBgHoverColor'     => '',
 							'ctaBorderhoverColor' => '',
+							'ctaIconSpace'        => '5',
 						),
 					),
 					'uagb/buttons'          => array(

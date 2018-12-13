@@ -451,6 +451,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'margin-bottom' => $attr->seperatorSpace.'px',
 	            ),
 
+	            // CTA icon space.
+	            ' .uagb-ifb-align-icon-after' => array(
+	                'margin-left' => $attr->ctaIconSpace.'px',
+	            ),
+	            ' .uagb-ifb-align-icon-before' => array(
+	                'margin-right' => $attr->ctaIconSpace.'px',
+	            ),
+
 			);
 
 			if( 'above-title' === $attr->iconimgPosition ||  'below-title' === $attr->iconimgPosition ){
