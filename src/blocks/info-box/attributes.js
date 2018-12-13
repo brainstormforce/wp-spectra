@@ -110,7 +110,7 @@ const attributes = {
 	},
 	ctaIcon : {
 		type : "string",
-		default : "fa fa-arrow-right"
+		default : ""
 	},
 	ctaIconPosition: {
 		type: "string",
