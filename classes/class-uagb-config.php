@@ -227,6 +227,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'excerptBottomSpace' => '25',
 							'arrowSize'          => '20',
 							'arrowColor'         => '#aaaaaa',
+							'arrowDots'          => '',
+							'arrowBorderSize'    => '1',
+							'arrowBorderRadius'  => '0',
+							'overlayOpacity'     => '50',
+							'bgOverlayColor'     => '#ffffff',
 						),
 					),
 					'uagb/post-grid'        => array(
@@ -255,6 +260,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleBottomSpace'   => '15',
 							'metaBottomSpace'    => '15',
 							'excerptBottomSpace' => '25',
+							'overlayOpacity'     => '50',
+							'bgOverlayColor'     => '#ffffff',
 						),
 					),
 					'uagb/post-masonry'     => array(
@@ -283,6 +290,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleBottomSpace'   => '15',
 							'metaBottomSpace'    => '15',
 							'excerptBottomSpace' => '25',
+							'overlayOpacity'     => '50',
+							'bgOverlayColor'     => '#ffffff',
 						),
 					),
 					'uagb/post-timeline'    => array(

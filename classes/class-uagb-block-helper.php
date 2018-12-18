@@ -1798,7 +1798,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta:hover a" => array(
 					"color"=> $attr['ctaHColor']
-				)
+				),
+				" .uagb-post__image:before" => array(
+					"background-color" => $attr['bgOverlayColor'],
+					"opacity" => ( $attr['overlayOpacity'] / 100 )
+				),
 			);
 			// @codingStandardsIgnoreEnd
 		}

@@ -29,7 +29,9 @@ function styling( props, id ) {
 		metaBottomSpace,
 		excerptBottomSpace,
 		equalHeight,
-		excerptLength
+		excerptLength,
+		overlayOpacity,
+		bgOverlayColor
 	} = props.attributes
 
 	var selectors = {
@@ -91,6 +93,10 @@ function styling( props, id ) {
 		" .uagb-post__text .uagb-post__cta:hover a": {
 			"color": ctaHColor
 		},
+		" .uagb-post__image:before" : {
+			"background-color" : bgOverlayColor,
+			"opacity" : ( overlayOpacity / 100 )
+		}
 	}
 
 	var styling_css = ""

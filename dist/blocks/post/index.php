@@ -297,6 +297,14 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => 'top',
 				),
+				'bgOverlayColor'     => array(
+					'type'    => 'string',
+					'default' => '#ffffff',
+				),
+				'overlayOpacity'     => array(
+					'type'    => 'number',
+					'default' => '50',
+				),
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -465,6 +473,14 @@ function uagb_register_blocks() {
 				'imgPosition'        => array(
 					'type'    => 'string',
 					'default' => 'top',
+				),
+				'bgOverlayColor'     => array(
+					'type'    => 'string',
+					'default' => '#ffffff',
+				),
+				'overlayOpacity'     => array(
+					'type'    => 'number',
+					'default' => '50',
 				),
 				'displayPostLink'    => array(
 					'type'    => 'boolean',
@@ -670,6 +686,14 @@ function uagb_register_blocks() {
 				'imgPosition'        => array(
 					'type'    => 'string',
 					'default' => 'top',
+				),
+				'bgOverlayColor'     => array(
+					'type'    => 'string',
+					'default' => '#ffffff',
+				),
+				'overlayOpacity'     => array(
+					'type'    => 'number',
+					'default' => '50',
 				),
 				'displayPostLink'    => array(
 					'type'    => 'boolean',

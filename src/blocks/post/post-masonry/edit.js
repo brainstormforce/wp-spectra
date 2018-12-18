@@ -87,7 +87,9 @@ class UAGBPostMasonry extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			excerptLength
+			excerptLength,
+			overlayOpacity,
+			bgOverlayColor
 		} = attributes
 
 		const hoverSettings = (
@@ -188,6 +190,24 @@ class UAGBPostMasonry extends Component {
 								{ value: "background", label: __( "Background" ) },
 							] }
 						/>
+					}
+					{ displayPostImage == true && imgPosition == 'background' &&
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
+							<ColorPalette
+								value={ bgOverlayColor }
+								onChange={ ( colorValue ) => setAttributes( { bgOverlayColor: colorValue } ) }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Overlay Opacity" ) }
+								value={ overlayOpacity }
+								onChange={ ( value ) => setAttributes( { overlayOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>

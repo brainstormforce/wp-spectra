@@ -90,18 +90,23 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
 = 1.4.0.1 =
-* Fix: Post-Masonary- Space shows even if row and column space is set to zero.
+* New: Post Carousel
+* Fix: Icon List - Image height issue fixed.
+* Fix: Multi Buttons - Border not applying in few cases in editor issue fixed.
+* Fix: Post Grid - Background Overlay Options added when Image is set to background.
+* Fix: Social Share - Icon with background CSS issue fixed.
 
 = 1.4.0 =
 * New: Post Timeline
 * Fix: Section - Spacing values update issue.
-* Fix: Restaurant Menu - Seperator alignement issue.
+* Fix: Restaurant Menu - Separator alignment issue.
 * Fix: Restaurant Menu - Content padding issue.
 * Fix: Testimonial - Set slick dots color same as arrow color.
 * Fix: Info Box - Spacing issue below Info Box Description.
 * Improvement: Updated Font Awesome CSS to v5.6.0.
-* Improvement: Advanced Heading - Added seperator style option.
+* Improvement: Advanced Heading - Added separator style option.
 * Improvement: Post Grid - Added hover color options for CTA button.
 * Improvement: Info Box - Added hover color options for CTA button.
 * Improvement: Info Box - Added before/after icon CTA button.
