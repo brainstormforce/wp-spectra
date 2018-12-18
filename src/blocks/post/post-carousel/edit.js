@@ -409,7 +409,7 @@ class UAGBPostCarousel extends Component {
 							/>
 						</Fragment>
 					}
-					<p className="uagb-setting-label">{ __( "Arrow Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Arrows & Dots Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
 					<ColorPalette
 						value={ arrowColor }
 						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
