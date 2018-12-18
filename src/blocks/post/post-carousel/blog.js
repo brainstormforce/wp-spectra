@@ -28,7 +28,10 @@ class Blog extends React.Component {
 			transitionSpeed,
 			infiniteLoop,
 			arrowSize,
-			arrowColor
+			arrowBorderSize,
+			arrowBorderRadius,
+			arrowColor,
+			arrowDots
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -39,16 +42,19 @@ class Blog extends React.Component {
 		function NextArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><span className="fas fa-angle-right" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></span></button>
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-right" style={{ "fontSize" : props.arrowSize, "width" : props.arrowSize, "height" : props.arrowSize, "color" : arrowColor }}></span></button>
 			)
 		}
 
 		function PrevArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor }}><span className="fas fa-angle-left" style={{ "fontSize" : props.arrowSize, "color" : arrowColor }}></span></button>
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-left" style={{ "fontSize" : props.arrowSize, "width" : props.arrowSize, "height" : props.arrowSize, "color" : arrowColor }}></span></button>
 			)
 		}
+
+		let dots = ( 'dots' == arrowDots || 'arrows_dots' == arrowDots ) ? true : false;
+		let arrows = ( 'arrows' == arrowDots || 'arrows_dots' == arrowDots ) ? true : false;
 
 		const settings = {
 			slidesToShow : columns,
@@ -58,8 +64,8 @@ class Blog extends React.Component {
 			infinite : infiniteLoop,
 			pauseOnHover : pauseOnHover,
 			speed : transitionSpeed,
-			arrows : true,
-			dots : true,
+			arrows : arrows,
+			dots : dots,
 			rtl : false,
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
