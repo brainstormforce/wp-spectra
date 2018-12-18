@@ -261,14 +261,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-buttons-repeater-' . $key] = array (
 					'font-size'  => $button['size'] . 'px',
-					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderColor'],
+					'border-width' => $button['borderWidth'] . 'px',
+					'border-color' => $button['borderColor'],
+					'border-style' => $button['borderStyle'],
 					'border-radius'  => $button['borderRadius'] . 'px',
 					'background' => $button['background']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover'] = array (
 					'background' => $button['hBackground'],
-					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderHColor'],
+					'border-width' => $button['borderWidth'] . 'px',
+					'border-color' => $button['borderHColor'],
+					'border-style' => $button['borderStyle'],
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ' a.uagb-button__link'] = array (
