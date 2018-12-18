@@ -99,7 +99,10 @@ class UAGBPostCarousel extends Component {
 			pauseOnHover,
 			infiniteLoop,
 			transitionSpeed,
+			arrowDots,
 			arrowSize,
+			arrowBorderSize,
+			arrowBorderRadius,
 			excerptLength
 		} = attributes
 
@@ -204,13 +207,41 @@ class UAGBPostCarousel extends Component {
 						min={ 100 }
 						max={ 5000 }
 					/>
-					<RangeControl
-						label={ __( "Arrow Size" ) }
-						value={ arrowSize }
-						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
-						min={ 10 }
-						max={ 50 }
+					<SelectControl
+						label={ __( "Show Arrows & Dots" ) }
+						value={ arrowDots }
+						onChange={ ( value ) => setAttributes( { arrowDots: value } ) }
+						options={ [
+							{ value: "arrows", label: __( "Only Arrows" ) },
+							{ value: "dots", label: __( "Only Dots" ) },
+							{ value: "arrows_dots", label: __( "Both Arrows & Dots" ) },
+						] }
 					/>
+					{ 'dots' != arrowDots &&
+						<Fragment>
+							<RangeControl
+								label={ __( "Arrow Size" ) }
+								value={ arrowSize }
+								onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+							<RangeControl
+								label={ __( "Arrow Border Size" ) }
+								value={ arrowBorderSize }
+								onChange={ ( value ) => setAttributes( { arrowBorderSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+							<RangeControl
+								label={ __( "Arrow Border Radius" ) }
+								value={ arrowBorderRadius }
+								onChange={ ( value ) => setAttributes( { arrowBorderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
@@ -426,7 +457,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
+						label={ __( "Gap Between Posts & Dots" ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }

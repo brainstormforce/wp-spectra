@@ -102,6 +102,8 @@ function uagb_post_masonry_add_script() {
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
+			$dots   = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$arrows = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
 			?>
 			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
 				( function( $ ) {
@@ -114,8 +116,8 @@ function uagb_post_masonry_add_script() {
 						'infinite' : Boolean( '<?php echo $value['infiniteLoop']; ?>' ),
 						'pauseOnHover' : Boolean( '<?php echo $value['pauseOnHover']; ?>' ),
 						'speed' : <?php echo $value['transitionSpeed']; ?>,
-						'arrows' : true,
-						'dots' : true,
+						'arrows' : Boolean( '<?php echo $arrows; ?>' ),
+						'dots' : Boolean( '<?php echo $dots; ?>' ),
 						'rtl' : false,
 						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-left\"><\/span><\/button>',
 						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-right\"><\/span><\/button>',
@@ -586,6 +588,10 @@ function uagb_register_blocks() {
 					'type'    => 'number',
 					'default' => 500,
 				),
+				'arrowDots'          => array(
+					'type'    => 'string',
+					'default' => 'arrows_dots',
+				),
 				'autoplay'           => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -597,6 +603,14 @@ function uagb_register_blocks() {
 				'arrowSize'          => array(
 					'type'    => 'number',
 					'default' => 20,
+				),
+				'arrowBorderSize'    => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'arrowBorderRadius'  => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'arrowColor'         => array(
 					'type'    => 'string',
