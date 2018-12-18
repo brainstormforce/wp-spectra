@@ -1,4 +1,4 @@
-=== Ultimate Addons for Gutenberg ===
+=== Ultimate Addons for Gutenberg - A Gutenberg Blocks Library ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
@@ -27,23 +27,23 @@ See the Ultimate Addons for Gutenberg in action! - <a href="https://www.ultimate
 
 <strong>Learn from Tutorials</strong>
 
-Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative block in the Ultimate Addons, we are here to make things easy for you and help you at every step. Ultimate Addons Knowledge Base
+Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">detailed knowledge base articles</a> about every creative block in the Ultimate Addons, we are here to make things easy for you and help you at every step. Ultimate Addons Knowledge Base
 
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
  	<li><a href="#" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
- 	<li><a href="#" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
- 	<li><a href="#" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
- 	<li><a href="#" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
- 	<li><a href="#" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="#" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
- 	<li><a href="#" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
- 	<li><a href="#" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
- 	<li><a href="#" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
- 	<li><a href="#" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
- 	<li><a href="#" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
- 	<li><a href="#" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
  	<li><a href="#" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
 </ul>
 
@@ -58,14 +58,14 @@ Built by a team behind the fastest and lightweight WordPress theme Astra, you ca
 
 The Ultimate Addons for Gutenberg come from a dedicated team that has made a mark with popular WordPress products like the Astra theme, Ultimate Addons for Beaver Builder and Elementor and a lot more. We understand the importance of customer service and go out of our way to deliver timely help our product users. Our efficient support team is friendly and always  ready to help.
 
-<a href="https://support.brainstormforce.com/" target="_blank" rel="">Need help? We are just a click away!</a>
+<a href="https://www.ultimategutenberg.com/support/" target="_blank" rel="">Need help? We are just a click away!</a>
 
 
 == Installation ==
 
 1. Install the Ultimate Addons for Gutenberg either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
 
-For more information, please visit our <a href="https://www.ultimategutenberg.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Knowledge Base.</a>
+For more information, please visit our <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Knowledge Base.</a>
 
 == Frequently Asked Questions ==
 
