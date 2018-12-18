@@ -712,12 +712,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[" .uagb-ss__wrapper"] = array(
-				"padding" => $attr['bgSize'] . "px",
 				"border-radius" => $attr['borderRadius'] . "px"
 			);
 
 			$selectors[" .uagb-ss__wrapper .uagb-ss__link"] = array(
-				"width" => $attr['size'] . "px"
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"padding" => $attr['bgSize'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px"
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(

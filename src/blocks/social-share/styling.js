@@ -68,16 +68,22 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-ss__wrapper"] = {
-		"padding": bgSize + "px",
 		"border-radius": borderRadius + "px"
 	}
 
 	selectors[" .uagb-ss__wrapper .uagb-ss__link"] = {
-		"width": size + "px"
+		"width": size + "px",
+		"height": size + "px",
+		"padding": bgSize + "px"
 	}
 
 	selectors[" .uagb-ss__source-image"] = {
 		"width": size + "px"
+	}
+
+	selectors[" .uagb-ss__source-wrap"] = {
+		"width": size + "px",
+		"height": size + "px"
 	}
 
 	selectors[" .uagb-ss__source-icon"] = {
