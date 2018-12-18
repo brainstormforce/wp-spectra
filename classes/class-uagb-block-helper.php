@@ -1680,11 +1680,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .slick-arrow span"] = array(
 				"color" => $attr['arrowColor'],
-				"font-size" => $attr['arrowSize'] . "px"
+				"font-size" => $attr['arrowSize'] . "px",
+				"width" => $attr['arrowSize'] . "px",
+				"height" => $attr['arrowSize'] . "px"
 			);
 
 			$selectors[" .slick-arrow"] = array(
-				"border-color" => $attr['arrowColor']
+				"border-color" => $attr['arrowColor'],
+				"border-width" => $attr['arrowBorderSize'] . "px",
+				"border-radius" => $attr['arrowBorderRadius'] . "px"
 			);
 
 			$selectors[".uagb-post-grid ul.slick-dots li.slick-active button:before"] = array(

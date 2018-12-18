@@ -217,7 +217,7 @@ class UAGBPostCarousel extends Component {
 							{ value: "arrows_dots", label: __( "Both Arrows & Dots" ) },
 						] }
 					/>
-					{ 'dots' != arrowDots &&
+					{ "dots" != arrowDots &&
 						<Fragment>
 							<RangeControl
 								label={ __( "Arrow Size" ) }
