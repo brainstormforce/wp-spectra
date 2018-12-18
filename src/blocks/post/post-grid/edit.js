@@ -204,7 +204,7 @@ class UAGBPostGrid extends Component {
 							] }
 						/>
 					}
-					{ displayPostImage == true && imgPosition == 'background' &&
+					{ displayPostImage == true && imgPosition == "background" &&
 						<Fragment>
 							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
 							<ColorPalette
