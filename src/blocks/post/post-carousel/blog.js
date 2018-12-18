@@ -53,8 +53,8 @@ class Blog extends React.Component {
 			)
 		}
 
-		let dots = ( 'dots' == arrowDots || 'arrows_dots' == arrowDots ) ? true : false;
-		let arrows = ( 'arrows' == arrowDots || 'arrows_dots' == arrowDots ) ? true : false;
+		let dots = ( "dots" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
+		let arrows = ( "arrows" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 
 		const settings = {
 			slidesToShow : columns,

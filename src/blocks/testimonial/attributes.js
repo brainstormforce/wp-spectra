@@ -150,18 +150,18 @@ const attributes = {
 		default: 2000,
 	},
 	arrowDots : {
-		type : 'string',
-		default : 'arrows_dots'
+		type : "string",
+		default : "arrows_dots"
 	},
 	arrowSize :{
 		type: "number",
 		default: 20,
 	},
-	'arrowBorderSize' : {
+	"arrowBorderSize" : {
 		type: "number",
 		default : 1,
 	},
-	'arrowBorderRadius' : {
+	"arrowBorderRadius" : {
 		type: "number",
 		default : 0,
 	},
