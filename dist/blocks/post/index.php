@@ -313,6 +313,29 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
@@ -489,6 +512,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -702,6 +748,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -1051,10 +1120,11 @@ function uagb_render_button( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
 	}
-	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
 	<?php
 }

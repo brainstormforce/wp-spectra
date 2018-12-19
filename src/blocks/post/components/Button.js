@@ -10,10 +10,12 @@ class Button extends React.Component {
 
 		if ( attributes.displayPostLink ) {
 
+			let cta_text = ( attributes.ctaText ) ? attributes.ctaText : __( "Read More" )
+
 			return (
 
 				<div className='uagb-post__cta'>
-					<a className='uagb-post__link uagb-text-link' href={ post.link } target={ target } rel ="noopener noreferrer">{ __( "Read More" ) }</a>
+					<a className='uagb-post__link uagb-text-link' href={ post.link } target={ target } rel ="noopener noreferrer">{ cta_text }</a>
 				</div>
 			)
 
