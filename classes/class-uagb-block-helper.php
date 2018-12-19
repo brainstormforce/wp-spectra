@@ -1786,7 +1786,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-post__text .uagb-post__cta" => array(
 					"color"=> $attr['ctaColor'],
 					"font-size"=> $attr['ctaFontSize']  . "px",
-					"background"=> $attr['ctaBgColor']
+					"background"=> $attr['ctaBgColor'],
+					"border-color"=> $attr['borderColor'],
+					"border-width"=> $attr['borderWidth']  . "px",
+					"border-radius"=> $attr['borderRadius']  . "px",
+					"border-style"=> $attr['borderStyle'],
+				),
+				" .uagb-post__text .uagb-post__cta:hover" => array(
+					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],

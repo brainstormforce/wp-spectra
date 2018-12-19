@@ -313,6 +313,29 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
+				),
 				'columns'            => array(
 					'type'    => 'number',
 					'default' => 3,
@@ -489,6 +512,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -702,6 +748,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',

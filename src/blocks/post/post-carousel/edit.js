@@ -23,7 +23,8 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
-	TabPanel
+	TabPanel,
+	TextControl
 } = wp.components
 
 const {
@@ -65,6 +66,12 @@ class UAGBPostCarousel extends Component {
 			imgPosition,
 			displayPostLink,
 			newTab,
+			ctaText,
+			borderWidth,
+			borderStyle,
+			borderColor,
+			borderHColor,
+			borderRadius,
 			align,
 			postLayout,
 			columns,
@@ -122,6 +129,12 @@ class UAGBPostCarousel extends Component {
 					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
 					allowReset
 				/>
+				<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderHColor }
+					onChange={ ( colorValue ) => setAttributes( { borderHColor: colorValue } ) }
+					allowReset
+				/>
 			</Fragment>
 		)
 
@@ -137,6 +150,12 @@ class UAGBPostCarousel extends Component {
 				<ColorPalette
 					value={ ctaBgColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderColor }
+					onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 					allowReset
 				/>
 			</Fragment>
@@ -325,6 +344,8 @@ class UAGBPostCarousel extends Component {
 							allowReset
 						/>
 					}
+				</PanelBody>
+				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
@@ -335,6 +356,79 @@ class UAGBPostCarousel extends Component {
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
+					{ displayPostLink &&
+						<Fragment>
+							<TextControl
+								label= { __( "Text" ) }
+								value= { ctaText }
+								onChange={ value => setAttributes( { ctaText: value } ) }
+							/>
+							<RangeControl
+								label={ __( "Button Text Font Size" ) }
+								value={ ctaFontSize }
+								onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+								min={ 1 }
+								max={ 50 }
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+							<SelectControl
+								label={ __( "Border Style" ) }
+								value={ borderStyle }
+								onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "solid", label: __( "Solid" ) },
+									{ value: "dashed", label: __( "Dashed" ) },
+									{ value: "dotted", label: __( "Dotted" ) },
+									{ value: "double", label: __( "Double" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Button Border" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 10 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Border Radius" ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<p className="uagb-inspect-tab-title"><strong>{ __( "Colors" ) }</strong></p>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if ( "hover" === tabName.name ){
+											tabout = hoverSettings
+										} else {
+											tabout = normalSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<SelectControl
@@ -375,17 +469,6 @@ class UAGBPostCarousel extends Component {
 							label={ __( "Excerpt Font Size" ) }
 							value={ excerptFontSize }
 							onChange={ ( value ) => setAttributes( { excerptFontSize: value } ) }
-							min={ 1 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					}
-					{ displayPostLink &&
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 							min={ 1 }
 							max={ 50 }
 							beforeIcon="editor-textcolor"
@@ -435,37 +518,6 @@ class UAGBPostCarousel extends Component {
 						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
 						allowReset
 					/>
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-inspect-tab-title"><strong>{ __( "CTA Colors" ) }</strong></p>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-hover-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if ( "hover" === tabName.name ){
-											tabout = hoverSettings
-										} else {
-											tabout = normalSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-						</Fragment>
-					}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
