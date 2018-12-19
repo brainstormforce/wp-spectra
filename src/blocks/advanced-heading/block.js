@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import styling from "./styling"
+import map from 'lodash/map';
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
@@ -34,6 +35,8 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
+	ButtonGroup,
+	Button
 } = wp.components
 
 // Extend component
@@ -114,6 +117,7 @@ export default class UAGBAdvancedHeading extends Component {
 				headSpace,
 				separatorSpace,
 				subHeadSpace,
+				sizeType
 			},
 		} = this.props
 
@@ -122,6 +126,11 @@ export default class UAGBAdvancedHeading extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const sizeTypes = [
+			{ key: 'px', name: __( 'px' ) },
+			{ key: 'em', name: __( 'em' ) },
+		];
 
 
 		return (
@@ -149,6 +158,20 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
+						<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+							{ map( sizeTypes, ( { name, key } ) => (
+								<Button
+									key={ key }
+									className="uagb-size-btn"
+									isSmall
+									isPrimary={ sizeType === key }
+									aria-pressed={ sizeType === key }
+									onClick={ () => setAttributes( { sizeType: key } ) }
+								>
+									{ name }
+								</Button>
+							) ) }
+						</ButtonGroup>
 						<RangeControl
 							label={ __( "Heading Font Size" ) }
 							value={ headFontSize }
@@ -173,7 +196,7 @@ export default class UAGBAdvancedHeading extends Component {
 					<PanelBody
 						title={ __( "Separator" ) }
 						initialOpen={ false }
-					>	
+					>
 						<SelectControl
 							label={ __( "Style" ) }
 							value={ seperatorStyle }
@@ -206,7 +229,7 @@ export default class UAGBAdvancedHeading extends Component {
 								beforeIcon=""
 								allowReset
 								initialPosition={20}
-							/>							
+							/>
 						</Fragment>
 						}
 					</PanelBody>
@@ -223,7 +246,7 @@ export default class UAGBAdvancedHeading extends Component {
 								value: subHeadingColor,
 								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
 								label: __( "Sub-Heading Color" ),
-							},							
+							},
 						] }
 					>
 						{ seperatorStyle !== "none" && <Fragment>
@@ -250,8 +273,8 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-						{ seperatorStyle !== "none" && 
-							<Fragment> 
+						{ seperatorStyle !== "none" &&
+							<Fragment>
 								<RangeControl
 									label={ __( "Separator Spacing" ) }
 									value={ separatorSpace }

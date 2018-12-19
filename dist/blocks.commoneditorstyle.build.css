@@ -47,6 +47,45 @@
 	color: #a4afb7;
 }
 
+.components-button-group.uagb-size-type-field {
+    margin: 0;
+    text-align: right;
+    display: block;
+    margin-bottom: -18px
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn {
+    background: transparent;
+    color: #777;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 4px
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary,.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled=true]) {
+    color: #000;
+    text-decoration: underline;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    outline: none
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:hover,.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled=true]) {
+    color: #000;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    outline: none
+}
+
+
 /*
  Fonticon picker css
  */
