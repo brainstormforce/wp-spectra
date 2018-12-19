@@ -87,43 +87,72 @@ class Blog extends React.Component {
 			]
 		}
 
-		return (
-
-			<div
-				className={ classnames(
-					className,
-					"uagb-post-grid",
-					"uagb-post__arrow-outside",
-					"uagb-slick-carousel",
-					`uagb-post__image-position-${ imgPosition }`
-				) }
-				data-blog-id={block_id}
-				id={ `uagb-post__carousel-${ block_id }` }
-			>
-				<Slider
-					className={ classnames(
-						"is-carousel",
-						`uagb-post__columns-${ columns }`,
-						"uagb-post__items"
-					) }
-					{...settings}
-				>
-					{ displayPosts.map( ( post, i ) =>
-						<article key={ i }>
-							<div className="uagb-post__inner-wrap">
-								<FeaturedImage post={post} attributes={attributes} />
-								<div className="uagb-post__text">
-									<Title post={post} attributes={attributes} />
-									<Meta post={post} attributes={attributes} />
-									<Excerpt post={post} attributes={attributes} />
-									<Button post={post} attributes={attributes} />
-								</div>
-							</div>
-						</article>
-					) }
-				</Slider>
-			</div>
+		const all_posts = displayPosts.map( ( post, i ) =>
+			<article key={ i }>
+				<div className="uagb-post__inner-wrap">
+					<FeaturedImage post={post} attributes={attributes} />
+					<div className="uagb-post__text">
+						<Title post={post} attributes={attributes} />
+						<Meta post={post} attributes={attributes} />
+						<Excerpt post={post} attributes={attributes} />
+						<Button post={post} attributes={attributes} />
+					</div>
+				</div>
+			</article>
 		)
+
+		if ( columns >= displayPosts.length ) {
+			return (
+				<div
+					className={ classnames(
+						className,
+						"uagb-post-grid",
+						"uagb-post__arrow-outside",
+						`uagb-post__image-position-${ imgPosition }`
+					) }
+					data-blog-id={block_id}
+					id={ `uagb-post__carousel-${ block_id }` }
+				>
+					<div
+						className={ classnames(
+							"is-carousel",
+							`uagb-post__columns-${ columns }`,
+							"uagb-post__items"
+						) }
+					>
+						{ all_posts }
+					</div>
+				</div>
+			)
+		} else {
+
+			return (
+
+				<div
+					className={ classnames(
+						className,
+						"uagb-post-grid",
+						"uagb-post__arrow-outside",
+						"uagb-slick-carousel",
+						`uagb-post__image-position-${ imgPosition }`
+					) }
+					data-blog-id={block_id}
+					id={ `uagb-post__carousel-${ block_id }` }
+				>
+					<Slider
+						className={ classnames(
+							"is-carousel",
+							`uagb-post__columns-${ columns }`,
+							"uagb-post__items"
+						) }
+						{...settings}
+					>
+						{ all_posts }
+					</Slider>
+				</div>
+			)
+		}
+
 	}
 }
 
