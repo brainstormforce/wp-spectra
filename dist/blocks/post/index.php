@@ -107,9 +107,15 @@ function uagb_post_masonry_add_script() {
 			?>
 			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
 				( function( $ ) {
+					var cols = parseInt( '<?php echo $value['columns']; ?>' );
+					var scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
+
+					if ( cols >= scope.children().length ) {
+						return;
+					}
 
 					var slider_options = {
-						'slidesToShow' : '<?php echo $value['columns']; ?>',
+						'slidesToShow' : cols,
 						'slidesToScroll' : 1,
 						'autoplaySpeed' : <?php echo $value['autoplaySpeed']; ?>,
 						'autoplay' : Boolean( '<?php echo $value['autoplay']; ?>' ),
@@ -139,7 +145,7 @@ function uagb_post_masonry_add_script() {
 						]
 					};
 
-					$( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' ).slick( slider_options );
+					scope.slick( slider_options );
 
 				} )( jQuery );
 			</script>
@@ -211,7 +217,9 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
-			array_push( $outerwrap, 'uagb-slick-carousel' );
+			if ( $query->post_count > $attributes['columns'] ) {
+				array_push( $outerwrap, 'uagb-slick-carousel' );
+			}
 			break;
 
 		default:
