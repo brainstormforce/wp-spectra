@@ -35,6 +35,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom' => $attr['bottomPadding'] . 'px',
 				'padding-left'   => $attr['leftPadding'] . 'px',
 				'padding-right'  => $attr['rightPadding'] . 'px',
+				'border-radius'  => $attr['borderRadius'] . "px"
 			);
 
 			if ( 'right' == $attr['align'] ) {
@@ -62,7 +63,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( "none" != $attr['borderStyle'] ) {
 				$style["border-style"] = $attr['borderStyle'];
 				$style["border-width"] = $attr['borderWidth'] . "px";
-				$style["border-radius"] = $attr['borderRadius'] . "px";
 				$style["border-color"] =  $attr['borderColor'];
 			}
 
