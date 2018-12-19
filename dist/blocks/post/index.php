@@ -1120,10 +1120,11 @@ function uagb_render_button( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
 	}
-	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
 	<?php
 }
