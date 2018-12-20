@@ -491,7 +491,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
+			$img_align = 'center';
+			if( 'left' === $attr->headingAlign){
+				$img_align = 'flex-start';
+			}else if( 'right' === $attr->headingAlign){
+				$img_align = 'flex-end';
+			}
+
 			$position = str_replace( '-', ' ', $attr->backgroundPosition );
+
 			$selectors = array(
 				' .uagb-testimonial__wrap' => array(
 					'padding-left'   => ( ($attr->columnGap) /2 ) . 'px',
@@ -550,6 +558,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' ul.slick-dots li.slick-active button:before' => array(
 					'color' => $attr->arrowColor,
+				),
+				' .uagb-tm__image-position-top .uagb-tm__image-content' => array(
+					'justify-content' => $img_align,
 				),
 			);
 
