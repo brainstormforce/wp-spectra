@@ -28,7 +28,7 @@ const attributes = {
 	test_block: {
 		type: "array",
 		default : testimonial_block,
-	},	
+	},
 	headingAlign: {
 		type: "string",
 		default: "center",
@@ -39,20 +39,20 @@ const attributes = {
 	},
 	companyColor: {
 		type: "string",
-		default: "#888888"		
-	},	
+		default: "#888888"
+	},
 	authorColor: {
 		type: "string",
-		default: "#333"		
-	},		
+		default: "#333"
+	},
 	iconimgStyle: {
 		type: "string",
 		default: "circle"
-	},	
+	},
 	imagePosition:{
 		type: "string",
 		default: "bottom"
-	},	
+	},
 	imageAlignment:{
 		type: "string",
 		default: "top"
@@ -62,7 +62,7 @@ const attributes = {
 	},
 	nameFontSize:{
 		type: "number",
-	},	
+	},
 	companyFontSize: {
 		type: "number",
 		default: 15
@@ -73,15 +73,15 @@ const attributes = {
 	nameSpace: {
 		type: "number",
 		default : 5
-	},	
+	},
 	descSpace: {
 		type: "number",
 		default : 15
-	},		
+	},
 	block_id :{
 		type : "string",
 		default : "not_set"
-	},	
+	},
 	authorSpace :{
 		type: "number",
 		default: 5,
@@ -116,15 +116,15 @@ const attributes = {
 	imageWidth :{
 		type: "number",
 		default: 60,
-	},	
+	},
 	columns :{
 		type: "number",
 		default: 1,
-	},	
+	},
 	tcolumns :{
 		type: "number",
 		default: 1,
-	},	
+	},
 	mcolumns :{
 		type: "number",
 		default: 1,
@@ -132,7 +132,7 @@ const attributes = {
 	pauseOnHover: {
 		type: "boolean",
 		default: true,
-	},	
+	},
 	infiniteLoop: {
 		type: "boolean",
 		default: true,
@@ -149,14 +149,26 @@ const attributes = {
 		type: "number",
 		default: 2000,
 	},
+	arrowDots : {
+		type : "string",
+		default : "arrows_dots"
+	},
 	arrowSize :{
 		type: "number",
 		default: 20,
 	},
+	"arrowBorderSize" : {
+		type: "number",
+		default : 1,
+	},
+	"arrowBorderRadius" : {
+		type: "number",
+		default : 0,
+	},
 	arrowColor :{
 		type: "string",
 		default: "#aaaaaa",
-	},	
+	},
 	rowGap: {
 		type: "number",
 		default : 10
@@ -164,11 +176,11 @@ const attributes = {
 	columnGap: {
 		type: "number",
 		default : 10
-	},	
+	},
 	contentPadding: {
 		type: "number",
 		default : 5
-	},	
+	},
 	backgroundType: {
 		type: "string",
 	},
@@ -186,7 +198,7 @@ const attributes = {
 	backgroundRepeat: {
 		type: "string",
 		default: "no-repeat"
-	},	
+	},
 	backgroundColor:{
 		type: "string"
 	},
@@ -206,7 +218,7 @@ const attributes = {
 	},
 	borderColor : {
 		type: "string"
-	},	
+	},
 	backgroundOpacity:{
 		type: "number",
 		default: 50

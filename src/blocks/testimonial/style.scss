@@ -4,10 +4,6 @@
  * CSS for both Frontend+Backend.
  */
 
- .uagb-slick-carousel {
- 	padding: 45px;
- }
-
 .uagb-testimonial__wrap{
     position:relative;
 }
@@ -106,9 +102,7 @@
     position: absolute;
     background:transparent;
 }
-.uagb-slick-carousel{
-    padding:45px;
-}
+
 .uagb-tm__text-wrap{
     position: relative;
 }
@@ -118,7 +112,14 @@
 .uagb-tm__items.slick-initialized {
     visibility: visible;
 }
-
+.uagb-tm__image-position-top .uagb-tm__image-content{
+    display: -webkit-box; 
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex; 
+    display: flex;
+    justify-content:center;
+}
 @media(max-width:976px) {
     .uagb-tm__image-position-bottom .uagb-tm__image-content,
     .uagb-tm__image-position-bottom .uagb-testimonial-details {
@@ -181,161 +182,14 @@
 
 /* -------- Slick CSS */
 
-.uagb-slick-carousel .slick-prev,
-.uagb-slick-carousel .slick-next,
-.uagb-slick-carousel .slick-prev:hover,
-.uagb-slick-carousel .slick-next:hover,
-.uagb-slick-carousel .slick-prev:focus,
-.uagb-slick-carousel .slick-next:focus {
-    font-size: 0;
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: auto;
-    height: auto;
-    -webkit-transform: translate(0, -50%);
-    -ms-transform: translate(0, -50%);
-    transform: translate(0, -50%);
-    cursor: pointer;
-    color: #aaa;
-    border: 1px solid #aaa;
-    outline: none;
-    background: transparent;
-}
-
-.uagb-slick-carousel .slick-prev:before,
-.uagb-slick-carousel .slick-next:before {
-    font-size: 35px;
-    line-height: 1;
-    opacity: .75;
-    color: #000;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-.uagb-slick-carousel .slick-prev {
-    left: -45px;
-    z-index: 1;
-    padding: 5px 10px;
-    border-radius:0;
-}
-
-[dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-prev {
-    left: auto;
-    right: -45px;
-}
-
-.uagb-slick-carousel .slick-prev:before {
-    content: '';
-    font-size: 0;
-    line-height: 0;
-}
-
-[dir="rtl"] .uagb-slick-carousel .slick-prev:before {
-    content: '';
-    font-size: 0;
-    line-height: 0;
-}
 
 .uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
     right: -45px;
-    padding: 5px 10px;
-    border-radius:0;
 }
 
 [dir="rtl"] .uagb-tm__arrow-outside.uagb-slick-carousel .slick-next {
     left: -45px;
     right: auto;
-    padding: 5px 10px;
-}
-.uagb-slick-carousel .slick-next:before {
-    content: '';
-    font-size: 0;
-    line-height: 0;
-}
-
-[dir="rtl"] .uagb-slick-carousel .slick-next:before {
-    content: '';
-    font-size: 0;
-    line-height: 0;
-}
-
-.uagb-slick-carousel .slick-prev i,
-.uagb-slick-carousel .slick-next i,
-.uagb-slick-carousel .slick-prev i:hover,
-.uagb-slick-carousel .slick-next i:hover,
-.uagb-slick-carousel .slick-prev i:focus,
-.uagb-slick-carousel .slick-next i:focus {
-    font-size: 20px;
-    width: 1.5em;
-    height: 1.5em;
-    line-height: 1.6em;
-    text-align: center;
-    -webkit-box-sizing: content-box;
-    -moz-box-sizing: content-box;
-    box-sizing: content-box;
-}
-
-.uagb-slick-carousel ul.slick-dots {
-    padding-top: 0;
-    display: block;
-    position: absolute;
-    margin: 0;
-    left: 0;
-    width: 100%;
-    bottom: 0px;
-    -webkit-transform: translateY(100%);
-    -ms-transform: translateY(100%);
-    transform: translateY(100%);
-    text-align: center;
-}
-
-.uagb-slick-carousel ul.slick-dots li {
-    position: relative;
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin: 0;
-    padding: 0;
-    cursor: pointer;
-}
-
-.uagb-slick-carousel ul.slick-dots li button {
-    font-size: 0;
-    line-height: 0;
-    display: block;
-    width: 20px;
-    height: 20px;
-    padding: 5px;
-    cursor: pointer;
-    color: transparent;
-    border: 0;
-    outline: none;
-    background: transparent;
-}
-
-.uagb-slick-carousel ul.slick-dots li button:before {
-	font-family: Font Awesome\ 5 Free;
-	content: '\f111';
-    font-size: 8px;
-    line-height: 20px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 20px;
-    height: 20px;
-    text-align: center;
-    opacity: .25;
-    color: black;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight:900;
-}
-
-.uagb-slick-carousel ul.slick-dots li.slick-active button:before {
-    opacity: .75;
-    color: black;
 }
 
 .uagb-tm__arrow-inside.uagb-slick-carousel .slick-prev {

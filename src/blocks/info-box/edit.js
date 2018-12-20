@@ -883,8 +883,8 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					{ attributes.headingDesc !=="" && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
-					{ attributes.ctaType !=="none" && <InfoBoxCta attributes={attributes} /> }
+					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					<InfoBoxCta attributes={attributes} /> 
 				</div>
 			</Fragment>
 		)
@@ -893,8 +893,8 @@ class UAGBinfoBox extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					{ "" !== attributes.prefixTitle && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
-					{ "" !== attributes.infoBoxTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> 
+					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
 				</div>
 			</Fragment>
 		)

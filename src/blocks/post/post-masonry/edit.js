@@ -20,7 +20,8 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	TabPanel
+	TabPanel,
+	TextControl
 } = wp.components
 
 const {
@@ -60,6 +61,12 @@ class UAGBPostMasonry extends Component {
 			imgPosition,
 			displayPostLink,
 			newTab,
+			ctaText,
+			borderWidth,
+			borderStyle,
+			borderColor,
+			borderHColor,
+			borderRadius,
 			align,
 			columns,
 			tcolumns,
@@ -87,7 +94,9 @@ class UAGBPostMasonry extends Component {
 			titleBottomSpace,
 			metaBottomSpace,
 			excerptBottomSpace,
-			excerptLength
+			excerptLength,
+			overlayOpacity,
+			bgOverlayColor
 		} = attributes
 
 		const hoverSettings = (
@@ -102,6 +111,12 @@ class UAGBPostMasonry extends Component {
 				<ColorPalette
 					value={ ctaBgHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderHColor }
+					onChange={ ( colorValue ) => setAttributes( { borderHColor: colorValue } ) }
 					allowReset
 				/>
 			</Fragment>
@@ -119,6 +134,12 @@ class UAGBPostMasonry extends Component {
 				<ColorPalette
 					value={ ctaBgColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderColor }
+					onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 					allowReset
 				/>
 			</Fragment>
@@ -189,6 +210,24 @@ class UAGBPostMasonry extends Component {
 							] }
 						/>
 					}
+					{ displayPostImage == true && imgPosition == "background" &&
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
+							<ColorPalette
+								value={ bgOverlayColor }
+								onChange={ ( colorValue ) => setAttributes( { bgOverlayColor: colorValue } ) }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Overlay Opacity" ) }
+								value={ overlayOpacity }
+								onChange={ ( value ) => setAttributes( { overlayOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<ToggleControl
@@ -221,6 +260,8 @@ class UAGBPostMasonry extends Component {
 							allowReset
 						/>
 					}
+				</PanelBody>
+				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
@@ -231,6 +272,79 @@ class UAGBPostMasonry extends Component {
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
+					{ displayPostLink &&
+						<Fragment>
+							<TextControl
+								label= { __( "Text" ) }
+								value= { ctaText }
+								onChange={ value => setAttributes( { ctaText: value } ) }
+							/>
+							<RangeControl
+								label={ __( "Button Text Font Size" ) }
+								value={ ctaFontSize }
+								onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+								min={ 1 }
+								max={ 50 }
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+							<SelectControl
+								label={ __( "Border Style" ) }
+								value={ borderStyle }
+								onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "solid", label: __( "Solid" ) },
+									{ value: "dashed", label: __( "Dashed" ) },
+									{ value: "dotted", label: __( "Dotted" ) },
+									{ value: "double", label: __( "Double" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Button Border" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 10 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Border Radius" ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<p className="uagb-inspect-tab-title"><strong>{ __( "Colors" ) }</strong></p>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if ( "hover" === tabName.name ){
+											tabout = hoverSettings
+										} else {
+											tabout = normalSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<SelectControl
@@ -277,17 +391,6 @@ class UAGBPostMasonry extends Component {
 							allowReset
 						/>
 					}
-					{ displayPostLink &&
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 1 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
@@ -323,37 +426,6 @@ class UAGBPostMasonry extends Component {
 								onChange={ ( colorValue ) => setAttributes( { excerptColor: colorValue } ) }
 								allowReset
 							/>
-						</Fragment>
-					}
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-inspect-tab-title"><strong>{ __( "CTA Colors" ) }</strong></p>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-hover-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if ( "hover" === tabName.name ){
-											tabout = hoverSettings
-										} else {
-											tabout = normalSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
 						</Fragment>
 					}
 				</PanelBody>

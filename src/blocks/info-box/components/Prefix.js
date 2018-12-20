@@ -25,6 +25,7 @@ class Prefix extends React.Component {
 				<RichText
 	                tagName="span"
 	                value={ attributes.prefixTitle }
+	                placeholder={ __( "Write a Prefix" ) }
 	                className='uagb-ifb-title-prefix'
 	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
 	                onMerge = { props.mergeBlocks }
