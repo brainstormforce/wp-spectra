@@ -967,9 +967,9 @@ function uagb_render_meta( $attributes ) {
 	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
 		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
 		if ( $attributes['displayPostDate'] ) {
-?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+																?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
 		if ( $attributes['displayPostComment'] ) {
-?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
+																?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
 ?></span><?php }
 		?></div>
 	<?php

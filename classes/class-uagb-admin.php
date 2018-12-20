@@ -290,4 +290,3 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 	UAGB_Admin::init();
 
 }
-
