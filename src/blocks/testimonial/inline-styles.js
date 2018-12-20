@@ -41,6 +41,14 @@ function TestimonialStyle( props ) {
 		var clientId = "uagb-testimonial-"+block_id
 	}
 
+	var img_align = "center"
+
+	if( headingAlign == "left" ){
+		img_align = "flex-start"
+	}else if( headingAlign == "right" ){
+		img_align = "flex-end"
+	}
+
 	var selectors = {}
 
 	selectors[".uagb-testimonial__wrap"] = {
@@ -54,6 +62,10 @@ function TestimonialStyle( props ) {
 		"padding-right" : imgHrPadding+"px",                                
 		"padding-top" : imgVrPadding+"px",
 		"padding-bottom" : imgVrPadding+"px",
+	} 
+
+	selectors[".uagb-tm__image-position-top .uagb-tm__image-content"] = {
+		"justify-content" : img_align,
 	} 
 
 	// Image

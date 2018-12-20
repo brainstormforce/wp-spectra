@@ -41,6 +41,7 @@ function inlineStyles( props, isEditor ) {
 		"padding-bottom": bottomPadding + "px",
 		"padding-left": leftPadding + "px",
 		"padding-right": rightPadding + "px",
+		"border-radius": borderRadius + "px"
 	}
 
 	if ( "right" == align ) {
@@ -63,7 +64,6 @@ function inlineStyles( props, isEditor ) {
 	if ( borderStyle != "none" ) {
 		style["border-style"] = borderStyle
 		style["border-width"] = borderWidth + "px"
-		style["border-radius"] = borderRadius + "px"
 		style["border-color"] =  borderColor
 	}
 

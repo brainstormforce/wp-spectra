@@ -18,6 +18,7 @@ function styling( props ) {
 		className,
 		innerWidth,
 		contentWidth,
+		borderRadius
 	} = props.attributes
 
 	var inner_width = "100%"
@@ -55,6 +56,8 @@ function styling( props ) {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
 		}
 	}
+
+	selectors[" > .uagb-section__overlay"]["border-radius"] = borderRadius + "px"
 
 	var styling_css = ""
 

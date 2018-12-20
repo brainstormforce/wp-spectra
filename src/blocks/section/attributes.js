@@ -53,6 +53,10 @@ const attributes = {
 		type: "number",
 		default: 1140
 	},
+	themeWidth: {
+		type: "boolean",
+		default: false
+	},
 	tag: {
 		type: "string",
 		default: "section"

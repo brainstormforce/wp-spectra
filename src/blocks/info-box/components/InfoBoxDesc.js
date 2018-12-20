@@ -24,6 +24,7 @@ class InfoBoxDesc extends React.Component {
 				<RichText
 	                tagName='p'
 	                value={ attributes.headingDesc }
+	                placeholder={ __( "Write a Description" ) }
 	                className='uagb-ifb-desc'
 	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
 	                onMerge = { props.mergeBlocks }
