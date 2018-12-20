@@ -98,7 +98,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Enable header icon filter below.
 			$uagb_icon                 = apply_filters( 'uagb_header_top_icon', true );
-			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'http://uagb.sharkz.in/' );
+			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'https://www.ultimategutenberg.com/' );
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
 			include_once UAGB_DIR . 'admin/uagb-admin.php';
@@ -290,4 +290,3 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 	UAGB_Admin::init();
 
 }
-

@@ -24,6 +24,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreStart
 
+			global $content_width;
+
 			$defaults = UAGB_Helper::$block_list['uagb/section']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
@@ -109,8 +111,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
-					if ( isset( $attr['innerWidth'] ) ) {
-						$inner_width = $attr['innerWidth'] . 'px';
+					if ( $attr['themeWidth'] == true ) {
+						$inner_width = $content_width . 'px';
+					} else {
+						if ( isset( $attr['innerWidth'] ) ) {
+							$inner_width = $attr['innerWidth'] . 'px';
+						}
 					}
 				}
 			}
@@ -140,6 +146,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 				);
 			}
+
+			$selectors[' > .uagb-section__overlay']["border-radius"] = $attr['borderRadius'] . "px";
 
 			// @codingStandardsIgnoreEnd
 
