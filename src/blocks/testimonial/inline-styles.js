@@ -41,12 +41,12 @@ function TestimonialStyle( props ) {
 		var clientId = "uagb-testimonial-"+block_id
 	}
 
-	var img_align = 'center'
+	var img_align = "center"
 
-	if( headingAlign == 'left' ){
-		img_align = 'flex-start'
-	}else if( headingAlign == 'right' ){
-		img_align = 'flex-end'
+	if( headingAlign == "left" ){
+		img_align = "flex-start"
+	}else if( headingAlign == "right" ){
+		img_align = "flex-end"
 	}
 
 	var selectors = {}

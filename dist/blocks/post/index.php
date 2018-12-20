@@ -321,7 +321,7 @@ function uagb_register_blocks() {
 				),
 				'ctaText'            => array(
 					'type'    => 'string',
-					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
 				'borderWidth'        => array(
 					'type'    => 'number',
@@ -521,7 +521,7 @@ function uagb_register_blocks() {
 				),
 				'ctaText'            => array(
 					'type'    => 'string',
-					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
 				'borderWidth'        => array(
 					'type'    => 'number',
@@ -757,7 +757,7 @@ function uagb_register_blocks() {
 				),
 				'ctaText'            => array(
 					'type'    => 'string',
-					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
 				'borderWidth'        => array(
 					'type'    => 'number',
