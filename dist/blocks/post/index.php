@@ -191,6 +191,8 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 	$wrap = array(
 		'uagb-post__items uagb-post__columns-' . $attributes['columns'],
 		'is-' . $layout,
+		'uagb-post__columns-tablet-' . $attributes['tcolumns'],
+		'uagb-post__columns-mobile-' . $attributes['mcolumns'],
 	);
 
 	$outerwrap = array(
@@ -203,16 +205,12 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 	switch ( $layout ) {
 		case 'masonry':
-			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
-			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'grid':
 			if ( $attributes['equalHeight'] ) {
 				array_push( $wrap, 'uagb-post__equal-height' );
 			}
-			array_push( $wrap, 'uagb-post__columns-tablet-' . $attributes['tcolumns'] );
-			array_push( $wrap, 'uagb-post__columns-mobile-' . $attributes['mcolumns'] );
 			break;
 
 		case 'carousel':
