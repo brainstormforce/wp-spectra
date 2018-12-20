@@ -24,6 +24,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreStart
 
+			global $content_width;
+
 			$defaults = UAGB_Helper::$block_list['uagb/section']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
@@ -35,6 +37,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom' => $attr['bottomPadding'] . 'px',
 				'padding-left'   => $attr['leftPadding'] . 'px',
 				'padding-right'  => $attr['rightPadding'] . 'px',
+				'border-radius'  => $attr['borderRadius'] . "px"
 			);
 
 			if ( 'right' == $attr['align'] ) {
@@ -62,7 +65,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( "none" != $attr['borderStyle'] ) {
 				$style["border-style"] = $attr['borderStyle'];
 				$style["border-width"] = $attr['borderWidth'] . "px";
-				$style["border-radius"] = $attr['borderRadius'] . "px";
 				$style["border-color"] =  $attr['borderColor'];
 			}
 
@@ -109,8 +111,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
-					if ( isset( $attr['innerWidth'] ) ) {
-						$inner_width = $attr['innerWidth'] . 'px';
+					if ( $attr['themeWidth'] == true ) {
+						$inner_width = $content_width . 'px';
+					} else {
+						if ( isset( $attr['innerWidth'] ) ) {
+							$inner_width = $attr['innerWidth'] . 'px';
+						}
 					}
 				}
 			}
@@ -261,14 +267,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-buttons-repeater-' . $key] = array (
 					'font-size'  => $button['size'] . 'px',
-					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderColor'],
+					'border-width' => $button['borderWidth'] . 'px',
+					'border-color' => $button['borderColor'],
+					'border-style' => $button['borderStyle'],
 					'border-radius'  => $button['borderRadius'] . 'px',
 					'background' => $button['background']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover'] = array (
 					'background' => $button['hBackground'],
-					'border' => $button['borderWidth'] . 'px ' . $button['borderStyle'] . ' ' . $button['borderHColor'],
+					'border-width' => $button['borderWidth'] . 'px',
+					'border-color' => $button['borderHColor'],
+					'border-style' => $button['borderStyle'],
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ' a.uagb-button__link'] = array (
@@ -708,12 +718,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[" .uagb-ss__wrapper"] = array(
-				"padding" => $attr['bgSize'] . "px",
 				"border-radius" => $attr['borderRadius'] . "px"
 			);
 
 			$selectors[" .uagb-ss__wrapper .uagb-ss__link"] = array(
-				"width" => $attr['size'] . "px"
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+				"padding" => $attr['bgSize'] . "px"
+			);
+
+			$selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px"
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(
@@ -1670,11 +1686,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .slick-arrow span"] = array(
 				"color" => $attr['arrowColor'],
-				"font-size" => $attr['arrowSize'] . "px"
+				"font-size" => $attr['arrowSize'] . "px",
+				"width" => $attr['arrowSize'] . "px",
+				"height" => $attr['arrowSize'] . "px"
 			);
 
 			$selectors[" .slick-arrow"] = array(
-				"border-color" => $attr['arrowColor']
+				"border-color" => $attr['arrowColor'],
+				"border-width" => $attr['arrowBorderSize'] . "px",
+				"border-radius" => $attr['arrowBorderRadius'] . "px"
 			);
 
 			$selectors[".uagb-post-grid ul.slick-dots li.slick-active button:before"] = array(
@@ -1772,7 +1792,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-post__text .uagb-post__cta" => array(
 					"color"=> $attr['ctaColor'],
 					"font-size"=> $attr['ctaFontSize']  . "px",
-					"background"=> $attr['ctaBgColor']
+					"background"=> $attr['ctaBgColor'],
+					"border-color"=> $attr['borderColor'],
+					"border-width"=> $attr['borderWidth']  . "px",
+					"border-radius"=> $attr['borderRadius']  . "px",
+					"border-style"=> $attr['borderStyle'],
+				),
+				" .uagb-post__text .uagb-post__cta:hover" => array(
+					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
@@ -1784,7 +1811,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta:hover a" => array(
 					"color"=> $attr['ctaHColor']
-				)
+				),
+				" .uagb-post__image:before" => array(
+					"background-color" => $attr['bgOverlayColor'],
+					"opacity" => ( $attr['overlayOpacity'] / 100 )
+				),
 			);
 			// @codingStandardsIgnoreEnd
 		}

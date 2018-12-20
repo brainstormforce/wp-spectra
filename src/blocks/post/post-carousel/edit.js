@@ -23,7 +23,8 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
-	TabPanel
+	TabPanel,
+	TextControl
 } = wp.components
 
 const {
@@ -65,6 +66,12 @@ class UAGBPostCarousel extends Component {
 			imgPosition,
 			displayPostLink,
 			newTab,
+			ctaText,
+			borderWidth,
+			borderStyle,
+			borderColor,
+			borderHColor,
+			borderRadius,
 			align,
 			postLayout,
 			columns,
@@ -99,8 +106,13 @@ class UAGBPostCarousel extends Component {
 			pauseOnHover,
 			infiniteLoop,
 			transitionSpeed,
+			arrowDots,
 			arrowSize,
-			excerptLength
+			arrowBorderSize,
+			arrowBorderRadius,
+			excerptLength,
+			overlayOpacity,
+			bgOverlayColor
 		} = attributes
 
 		const hoverSettings = (
@@ -115,6 +127,12 @@ class UAGBPostCarousel extends Component {
 				<ColorPalette
 					value={ ctaBgHColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgHColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderHColor }
+					onChange={ ( colorValue ) => setAttributes( { borderHColor: colorValue } ) }
 					allowReset
 				/>
 			</Fragment>
@@ -132,6 +150,12 @@ class UAGBPostCarousel extends Component {
 				<ColorPalette
 					value={ ctaBgColor }
 					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+				<ColorPalette
+					value={ borderColor }
+					onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
 					allowReset
 				/>
 			</Fragment>
@@ -204,13 +228,41 @@ class UAGBPostCarousel extends Component {
 						min={ 100 }
 						max={ 5000 }
 					/>
-					<RangeControl
-						label={ __( "Arrow Size" ) }
-						value={ arrowSize }
-						onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
-						min={ 10 }
-						max={ 50 }
+					<SelectControl
+						label={ __( "Show Arrows & Dots" ) }
+						value={ arrowDots }
+						onChange={ ( value ) => setAttributes( { arrowDots: value } ) }
+						options={ [
+							{ value: "arrows", label: __( "Only Arrows" ) },
+							{ value: "dots", label: __( "Only Dots" ) },
+							{ value: "arrows_dots", label: __( "Both Arrows & Dots" ) },
+						] }
 					/>
+					{ "dots" != arrowDots &&
+						<Fragment>
+							<RangeControl
+								label={ __( "Arrow Size" ) }
+								value={ arrowSize }
+								onChange={ ( value ) => setAttributes( { arrowSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+							<RangeControl
+								label={ __( "Arrow Border Size" ) }
+								value={ arrowBorderSize }
+								onChange={ ( value ) => setAttributes( { arrowBorderSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+							<RangeControl
+								label={ __( "Arrow Border Radius" ) }
+								value={ arrowBorderRadius }
+								onChange={ ( value ) => setAttributes( { arrowBorderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+							/>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
@@ -241,6 +293,24 @@ class UAGBPostCarousel extends Component {
 								{ value: "background", label: __( "Background" ) },
 							] }
 						/>
+					}
+					{ displayPostImage == true && imgPosition == "background" &&
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Background Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgOverlayColor }} ></span></span></p>
+							<ColorPalette
+								value={ bgOverlayColor }
+								onChange={ ( colorValue ) => setAttributes( { bgOverlayColor: colorValue } ) }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Overlay Opacity" ) }
+								value={ overlayOpacity }
+								onChange={ ( value ) => setAttributes( { overlayOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
@@ -274,6 +344,8 @@ class UAGBPostCarousel extends Component {
 							allowReset
 						/>
 					}
+				</PanelBody>
+				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
 						checked={ displayPostLink }
@@ -284,6 +356,79 @@ class UAGBPostCarousel extends Component {
 						checked={ newTab }
 						onChange={ ( value ) => setAttributes( { newTab : ! newTab } ) }
 					/>
+					{ displayPostLink &&
+						<Fragment>
+							<TextControl
+								label= { __( "Text" ) }
+								value= { ctaText }
+								onChange={ value => setAttributes( { ctaText: value } ) }
+							/>
+							<RangeControl
+								label={ __( "Button Text Font Size" ) }
+								value={ ctaFontSize }
+								onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+								min={ 1 }
+								max={ 50 }
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+							<SelectControl
+								label={ __( "Border Style" ) }
+								value={ borderStyle }
+								onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "solid", label: __( "Solid" ) },
+									{ value: "dashed", label: __( "Dashed" ) },
+									{ value: "dotted", label: __( "Dotted" ) },
+									{ value: "double", label: __( "Double" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Button Border" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 10 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Border Radius" ) }
+								value={ borderRadius }
+								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<p className="uagb-inspect-tab-title"><strong>{ __( "Colors" ) }</strong></p>
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if ( "hover" === tabName.name ){
+											tabout = hoverSettings
+										} else {
+											tabout = normalSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
+						</Fragment>
+					}
 				</PanelBody>
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<SelectControl
@@ -330,17 +475,6 @@ class UAGBPostCarousel extends Component {
 							allowReset
 						/>
 					}
-					{ displayPostLink &&
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 1 }
-							max={ 50 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
 					{ imgPosition == "top" &&
@@ -378,43 +512,12 @@ class UAGBPostCarousel extends Component {
 							/>
 						</Fragment>
 					}
-					<p className="uagb-setting-label">{ __( "Arrow Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Arrows & Dots Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: arrowColor }} ></span></span></p>
 					<ColorPalette
 						value={ arrowColor }
 						onChange={ ( colorValue ) => setAttributes( { arrowColor: colorValue } ) }
 						allowReset
 					/>
-					{ displayPostLink == true &&
-						<Fragment>
-							<p className="uagb-inspect-tab-title"><strong>{ __( "CTA Colors" ) }</strong></p>
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-hover-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if ( "hover" === tabName.name ){
-											tabout = hoverSettings
-										} else {
-											tabout = normalSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-						</Fragment>
-					}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
@@ -426,7 +529,7 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
+						label={ __( "Gap Between Posts & Dots" ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }
