@@ -16,6 +16,8 @@ import edit from "./edit"
 import attributes from "./attributes"
 import "./style.scss"
 import "./editor.scss"
+import Slider from "react-slick"
+
 const { __ } = wp.i18n
 
 // Import registerBlockType() from wp.blocks
@@ -71,46 +73,56 @@ registerBlockType( "uagb/testimonial", {
 			mcolumns,
 			test_block,
 			imagePosition,
-			arrowColor
+			arrowColor,
+			arrowDots,
+			arrowBorderSize,
+			arrowBorderRadius
 		} = props.attributes
 
 		const my_block_id = "uagb-testimonial-"+ block_id
 
-		const sldier_data = []
-		sldier_data.push(
-			{
-				"block_id" : block_id,
-				"columns" : columns,
-				"autoplaySpeed" : autoplaySpeed,
-				"autoplay" : autoplay,
-				"infiniteLoop" : infiniteLoop,
-				"pauseOnHover" : pauseOnHover,
-				"transitionSpeed" : transitionSpeed,
-				"tcolumns" : tcolumns,
-				"arrowSize" : arrowSize,
-				"mcolumns" : mcolumns,
-				"arrowColor":arrowColor,
-			}
-		)
+		var settings = {
+			dots: true,
+			infinite: true,
+			speed: 500,
+			slidesToShow : columns,
+			slidesToScroll : 1,
+			autoplaySpeed : autoplaySpeed,
+			autoplay : autoplay,
+			infinite : infiniteLoop,
+			pauseOnHover : pauseOnHover,
+			speed : transitionSpeed,
+			arrows : true,
+			dots : true,
+			rtl : false,
+			prevArrow: "<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style=\"border-color: "+arrowColor+"\"><span class=\"fas fa-angle-left\" style= \"font-size:"+arrowSize+"px;color: "+arrowColor+"\"></span></button>",
+			nextArrow: "<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style=\"border-color: "+arrowColor+"\"><span class=\"fas fa-angle-right\" style= \"font-size:"+arrowSize+"px;color: "+arrowColor+"\" ></span></button>",
+			responsive : [
+						{
+							breakpoint : 1024,
+							settings : {
+								slidesToShow : tcolumns,
+								slidesToScroll : 1,
+							}
+						},
+						{
+							breakpoint : 767,
+							settings : {
+								slidesToShow : mcolumns,
+								slidesToScroll : 1,
+							}
+						}
+					]
+		};
 
-		return (
-			<Fragment>
-				<div className={ classnames(
-					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
-				) }
-				id = { my_block_id }
-				data-slider = {JSON.stringify(sldier_data)}
-				>
-
-					<div
-						className={ classnames(
+    	var block_content = <Slider className={ classnames(
 							"is-carousel",
 							`uagb-tm__columns-${ columns }`,
 							"uagb-tm__items"
 						) }
-					>
-						{ test_block.map( ( test, index ) =>
+    	{...settings}
+    	>
+	        { test_block.map( ( test, index ) =>
 
 							<div className = { classnames(
 								"uagb-testimonial__wrap",
@@ -147,8 +159,37 @@ registerBlockType( "uagb/testimonial", {
 									{ ( imagePosition == "right" ) && <TestimonialImage  attributes={props.attributes} index_value = {index} /> }
 								</div>
 							</div>
-						)}
-					</div>
+						)}        
+	   </Slider>
+
+		const sldier_data = []
+		sldier_data.push(
+			{
+				"block_id" : block_id,
+				"columns" : columns,
+				"autoplaySpeed" : autoplaySpeed,
+				"autoplay" : autoplay,
+				"infiniteLoop" : infiniteLoop,
+				"pauseOnHover" : pauseOnHover,
+				"transitionSpeed" : transitionSpeed,
+				"tcolumns" : tcolumns,
+				"arrowSize" : arrowSize,
+				"mcolumns" : mcolumns,
+				"arrowColor":arrowColor,				
+			}
+		)
+
+		return (
+			<Fragment>
+				<div className={ classnames(
+					className,
+					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
+				) }
+				id = { my_block_id }
+				data-slider = {JSON.stringify(sldier_data)}
+				>
+
+				return ( block_content )
 				</div>
 			</Fragment>
 		)
