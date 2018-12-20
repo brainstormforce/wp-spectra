@@ -3,16 +3,16 @@
 
 	// Listen for events.
 	// in case the document is already rendered
-	if (document.readyState!="loading") uagb_content_timeline_init()
+	if (document.readyState!="loading") uagb_testimonial_init()
 	// modern browsers
-	else if (document.addEventListener) document.addEventListener("DOMContentLoaded", uagb_content_timeline_init)
+	else if (document.addEventListener) document.addEventListener("DOMContentLoaded", uagb_testimonial_init)
 	// IE <= 8
 	else document.attachEvent("onreadystatechange", function(){
-	    if (document.readyState=="complete") uagb_content_timeline_init()
+	    if (document.readyState=="complete") uagb_testimonial_init()
 	})
 
 	// Callback function for all event listeners.
-	function uagb_content_timeline_init() {
+	function uagb_testimonial_init() {
 
 		if( $(".wp-block-uagb-testimonial").length > 0){
 			return true
