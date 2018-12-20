@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.0.2
-Stable tag: 1.5.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,6 +37,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Carousel </a>: Wish to create a post slider in which your blog posts appear within a carousel? The Post Carousel block allows you to display posts in a carousel and manage their settings and the content you wish to display within them.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Masonry </a>: The Post Masonry block fetches the blog posts on your website and displays them in a masonry layout. You can customize the way your posts look and manage settings like the featured image, the content you want to display, etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="#" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
@@ -91,6 +92,9 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.6.0 =
+* New: Post Masonry
 
 = 1.5.0 =
 * New: Post Carousel
