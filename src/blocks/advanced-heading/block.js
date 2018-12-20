@@ -36,7 +36,9 @@ const {
 	SelectControl,
 	RangeControl,
 	ButtonGroup,
-	Button
+	Button,
+	TabPanel,
+	Dashicon
 } = wp.components
 
 // Extend component
@@ -158,6 +160,49 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
+						<TabPanel className="kt-size-tabs"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: 'desk',
+									title: <Dashicon icon="desktop" />,
+									className: 'kt-desk-tab',
+								},
+								{
+									name: 'tablet',
+									title: <Dashicon icon="tablet" />,
+									className: 'kt-tablet-tab',
+								},
+								{
+									name: 'mobile',
+									title: <Dashicon icon="smartphone" />,
+									className: 'kt-mobile-tab',
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout;
+									if ( tab.name ) {
+										if ( 'mobile' === tab.name ) {
+											tabout = '';
+										} else if ( 'tablet' === tab.name ) {
+											tabout = '';
+										} else {
+											tabout = '';
+										}
+									} else {
+										if ( 'mobile' === tab ) {
+											tabout = mobileControls;
+										} else if ( 'tablet' === tab ) {
+											tabout = '';
+										} else {
+											tabout = '';
+										}
+									}
+									return <div>{ tabout }</div>;
+								}
+							}
+						</TabPanel>
 						<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
 							{ map( sizeTypes, ( { name, key } ) => (
 								<Button
