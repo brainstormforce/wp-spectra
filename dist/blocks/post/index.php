@@ -107,9 +107,15 @@ function uagb_post_masonry_add_script() {
 			?>
 			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
 				( function( $ ) {
+					var cols = parseInt( '<?php echo $value['columns']; ?>' );
+					var scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
+
+					if ( cols >= scope.children().length ) {
+						return;
+					}
 
 					var slider_options = {
-						'slidesToShow' : '<?php echo $value['columns']; ?>',
+						'slidesToShow' : cols,
 						'slidesToScroll' : 1,
 						'autoplaySpeed' : <?php echo $value['autoplaySpeed']; ?>,
 						'autoplay' : Boolean( '<?php echo $value['autoplay']; ?>' ),
@@ -139,7 +145,7 @@ function uagb_post_masonry_add_script() {
 						]
 					};
 
-					$( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' ).slick( slider_options );
+					scope.slick( slider_options );
 
 				} )( jQuery );
 			</script>
@@ -211,7 +217,9 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
-			array_push( $outerwrap, 'uagb-slick-carousel' );
+			if ( $query->post_count > $attributes['columns'] ) {
+				array_push( $outerwrap, 'uagb-slick-carousel' );
+			}
 			break;
 
 		default:
@@ -312,6 +320,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -489,6 +520,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -702,6 +756,29 @@ function uagb_register_blocks() {
 				'newTab'             => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'ctaText'            => array(
+					'type'    => 'string',
+					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg ' ),
+				),
+				'borderWidth'        => array(
+					'type'    => 'number',
+					'default' => 1,
+				),
+				'borderStyle'        => array(
+					'type'    => 'string',
+					'default' => 'none',
+				),
+				'borderColor'        => array(
+					'type'    => 'string',
+					'default' => '#3b3b3b',
+				),
+				'borderHColor'       => array(
+					'type' => 'string',
+				),
+				'borderRadius'       => array(
+					'type'    => 'number',
+					'default' => 0,
 				),
 				'columns'            => array(
 					'type'    => 'number',
@@ -1051,10 +1128,11 @@ function uagb_render_button( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
 	}
-	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo esc_html__( 'Read More', 'ultimate-addons-for-gutenberg' ); ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
 	<?php
 }

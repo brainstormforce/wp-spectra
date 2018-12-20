@@ -122,8 +122,7 @@
 	}
 
 	.uagb-post__author,
-	.uagb-post__date,
-	.uagb-post__author {
+	.uagb-post__date {
 		display: inline-block;
 		word-break: break-all;
 
@@ -133,6 +132,10 @@
 			margin: 0 5px;
 			line-height: 1;
 		}
+	}
+
+	.uagb-post__comment {
+		display: inline-block;
 	}
 
 	.uagb-post__author a {

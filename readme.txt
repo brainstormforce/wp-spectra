@@ -97,6 +97,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Multi Buttons - Border not applying in few cases in editor issue fixed.
 * Fix: Post Grid - Background Overlay Options added when Image is set to background.
 * Fix: Social Share - Icon with background CSS issue fixed.
+* Improvement: Post Grid - Added Border options for CTA button.
 
 = 1.4.0 =
 * New: Post Timeline

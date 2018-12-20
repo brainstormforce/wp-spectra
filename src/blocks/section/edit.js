@@ -533,16 +533,14 @@ class UAGBSectionEdit extends Component {
 								allowReset
 							/>
 						) }
-						{ "none" != borderStyle && (
-							<RangeControl
-								label={ __( "Border Radius" ) }
-								value={ borderRadius }
-								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-								min={ 0 }
-								max={ 1000 }
-								allowReset
-							/>
-						) }
+						<RangeControl
+							label={ __( "Border Radius" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 1000 }
+							allowReset
+						/>
 						{ "none" != borderStyle && (
 							<Fragment>
 								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>

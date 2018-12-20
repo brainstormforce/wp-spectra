@@ -31,7 +31,12 @@ function styling( props, id ) {
 		equalHeight,
 		excerptLength,
 		overlayOpacity,
-		bgOverlayColor
+		bgOverlayColor,
+		borderWidth,
+		borderStyle,
+		borderColor,
+		borderHColor,
+		borderRadius,
 	} = props.attributes
 
 	var selectors = {
@@ -80,7 +85,14 @@ function styling( props, id ) {
 		" .uagb-post__text .uagb-post__cta": {
 			"color": ctaColor,
 			"font-size": ctaFontSize  + "px",
-			"background": ctaBgColor
+			"background": ctaBgColor,
+			"border-width": borderWidth  + "px",
+			"border-radius": borderRadius  + "px",
+			"border-color": borderColor,
+			"border-style": borderStyle,
+		},
+		" .uagb-post__text .uagb-post__cta:hover": {
+			"border-color": borderHColor,
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"color": ctaColor,
