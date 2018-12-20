@@ -15,9 +15,9 @@
 					<?php if ( $uagb_icon ) { ?>
 						<img src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/uagb_logo.svg' ); ?>" class="uagb-header-icon" alt="<?php echo UAGB_PLUGIN_NAME; ?> " >
 						<?php
-} else {
-	echo '<h4>' . UAGB_PLUGIN_NAME . '</h4>'; }
-?>
+					} else {
+						echo '<h4>' . UAGB_PLUGIN_NAME . '</h4>'; }
+					?>
 					</a>
 				</div>
 				<div class="uagb-top-links">
