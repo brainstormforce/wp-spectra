@@ -147,6 +147,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
+			$selectors[' > .uagb-section__overlay']["border-radius"] = $attr['borderRadius'] . "px";
+
 			// @codingStandardsIgnoreEnd
 
 			return UAGB_Helper::generate_css( $selectors, '#uagb-section-' . $id );
