@@ -1832,5 +1832,93 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// @codingStandardsIgnoreEnd
 		}
+
+		/**
+		 * Get Testimonial Js
+		 *
+		 * @since 1.5.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_testimonial_js( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+			$remove = ['headingAlign', 'companyColor', 'descColor', 'authorColor', 'nameFontSize', 'companyFontSize', 'descFontSize', 'descSpace', 'nameSpace', 'imgVrPadding', 'imgHrPadding', 'imageWidth', 'rowGap', 'columnGap', 'contentPadding', 'backgroundColor', 'backgroundImage', 'backgroundPosition', 'backgroundSize', 'backgroundRepeat', 'backgroundImageColor', 'backgroundOpacity', 'borderStyle', 'borderWidth', 'borderRadius', 'borderColor'];
+
+			$attr = array_diff_key($attr, array_flip($remove));
+
+			$json = json_encode($attr);				
+			?>
+				( function( $ ) {
+					if (document.readyState!="loading") uagb_testimonial_init( <?php echo $json ?>);
+					// modern browsers
+					else if (document.addEventListener) document.addEventListener("DOMContentLoaded", uagb_testimonial_init( <?php echo $json ?> ))
+					// IE <= 8
+					else document.attachEvent("onreadystatechange", function(){
+					    if (document.readyState=="complete") uagb_testimonial_init( <?php echo $json?> );
+					})
+					
+					function uagb_testimonial_init( attr ){
+						var block_id       	  = attr['block_id'],
+							columns           = attr['columns'],
+							autoplaySpeed     = attr['autoplaySpeed'],
+							autoplay          = attr['autoplay'],
+							infiniteLoop      = attr['infiniteLoop'],
+							pauseOnHover      = attr['pauseOnHover'],
+							transitionSpeed   = attr['transitionSpeed'],
+							tcolumns          = attr['tcolumns'],
+							mcolumns          = attr['mcolumns'],
+							arrowSize         = attr['arrowSize'],
+							arrowColor        = attr['arrowColor'],
+							arrowDots         = attr['arrowDots'],
+							arrowBorderSize   = attr['arrowBorderSize'],
+							arrowBorderRadius = attr['arrowBorderRadius'];
+
+							var dots = ( "dots" == arrowDots || "arrowDots" == arrowDots ) ? true : false;
+							var arrows = ( "arrows" == arrowDots || "arrowDots" == arrowDots ) ? true : false;
+							
+							var slider_options = {
+								'slidesToShow' : columns,
+								'slidesToScroll' : 1,
+								'autoplaySpeed' : autoplaySpeed,
+								'autoplay' :  autoplay,
+								'infinite' :  infiniteLoop,
+								'pauseOnHover' : pauseOnHover,
+								'speed' : transitionSpeed,
+								'arrows' :  arrows,
+								'dots' :  dots,
+								'rtl' : false,
+								prevArrow: "<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\" style=\"border-color: "+arrowColor+";border-radius:"+arrowBorderRadius+"px;border-width:"+arrowBorderSize+"px\"><span class=\"fas fa-angle-left\" style= \"font-size:"+arrowSize+"px;color: "+arrowColor+";height:"+arrowSize+"px;width:"+arrowSize+"px\"></span></button>",
+								nextArrow: "<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\" style=\"border-color: "+arrowColor+";border-radius:"+arrowBorderRadius+"px;border-width:"+arrowBorderSize+"px\"><span class=\"fas fa-angle-right\" style= \"font-size:"+arrowSize+"px;color: "+arrowColor+";height:"+arrowSize+"px;width:"+arrowSize+"px\" ></span></button>",
+								'responsive' : [
+									{
+										'breakpoint' : 1024,
+										'settings' : {
+											'slidesToShow' : 2,
+											'slidesToScroll' : 1,
+										}
+									},
+									{
+										'breakpoint' : 767,
+										'settings' : {
+											'slidesToShow' : 1,
+											'slidesToScroll' : 1,
+										}
+									}
+								]
+							};
+						$( "#uagb-testimonial-"+block_id ).find( ".is-carousel" ).slick( slider_options );
+					}
+					
+				} )( jQuery );
+			<?php
+			// @codingStandardsIgnoreEnd.
+		}
+
 	}
 }
