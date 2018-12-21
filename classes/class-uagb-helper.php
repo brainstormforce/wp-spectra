@@ -65,9 +65,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list = UAGB_Config::get_block_attributes();
 
-			// self::$block_page = self::$block_list;
 			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
-			add_action( 'wp_footer', array( $this, 'generate_script' ), 80 );
+			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
 		}
 
 
@@ -304,25 +303,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_script() {
 
-			if ( has_blocks( get_the_ID() ) ) {
+			$blocks = self::$block_page;
 
-				global $post;
-
-				if ( ! is_object( $post ) ) {
-					return;
-				}
-
-				$blocks = self::$block_page;
-
-				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-					return;
-				}
-
-				ob_start();
-				?>
-				<script type="text/javascript" id="uagb-script-frontend"><?php $this->get_scripts( $blocks ); ?></script>
-				<?php
+			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+				return;
 			}
+
+			ob_start();
+			?>
+			<script type="text/javascript" id="uagb-script-frontend">
+				( function( $ ) {
+					<?php $this->get_scripts( $blocks ); ?>
+				})(jQuery)
+			</script>
+			<?php
+
 		}
 
 		/**
