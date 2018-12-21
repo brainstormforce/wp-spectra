@@ -1886,7 +1886,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selector =	'#uagb-testimonial-'. $id;
 
 			?>
-			uagb_testimonial_init( "<?php echo $selector;?>", <?php echo $settings;?> );
+			if( jQuery(".wp-block-uagb-testimonial").length > 0 ){
+				return true
+			}else{
+				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
+			}
 			<?php
 			// @codingStandardsIgnoreEnd.
 		}
