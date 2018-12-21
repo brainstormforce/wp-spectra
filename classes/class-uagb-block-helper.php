@@ -572,10 +572,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
+			if( '1' === $attr->test_item_count || $attr->test_item_count === $attr->columns ||  'dots' === $attr->arrowDots ){
+				$selectors['.uagb-slick-carousel'] = array(				
+						'padding' => '0px',
+					);
+			}
+
 			$r_selectors = array(
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
-				),
+				)
 			);
 
 			// @codingStandardsIgnoreEnd.
@@ -1852,7 +1858,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
 
 			$slick_options = [
-				'columns'   => $attr['columns'],
+				'slidesToShow'   => $attr['columns'],
 				'slidesToScroll' => 1,
 				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
 				'autoplay'       => $attr['autoplay'],
@@ -1883,15 +1889,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			];			
 			
 			$settings = json_encode($slick_options);
-			$selector =	'#uagb-testimonial-'. $id;
-
+			$selector =	'#uagb-testimonial-'. $id;			
 			?>
 			if( jQuery(".wp-block-uagb-testimonial").length > 0 ){
 				return true
 			}else{
 				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
 			}
-			<?php
+			<?php			
 			// @codingStandardsIgnoreEnd.
 		}
 

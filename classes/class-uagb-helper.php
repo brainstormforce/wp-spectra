@@ -317,7 +317,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				})(jQuery)
 			</script>
 			<?php
-
 		}
 
 		/**

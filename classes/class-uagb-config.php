@@ -546,6 +546,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tcolumns'             => 1,
 							'mcolumns'             => 1,
 							'arrowSize'            => 20,
+							'test_item_count'      => 3,
 						),
 					),
 				);
