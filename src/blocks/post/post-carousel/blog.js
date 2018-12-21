@@ -117,6 +117,8 @@ class Blog extends React.Component {
 						className={ classnames(
 							"is-carousel",
 							`uagb-post__columns-${ columns }`,
+							`uagb-post__columns-tablet-${ tcolumns }`,
+							`uagb-post__columns-mobile-${ mcolumns }`,
 							"uagb-post__items"
 						) }
 					>

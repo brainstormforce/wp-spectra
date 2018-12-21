@@ -365,7 +365,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$knowledgebase = array(
 				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => 'http://uagb.sharkz.in/docs/',
+				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/',
 			);
 
 			return $knowledgebase;
@@ -381,7 +381,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$support = array(
 				'enable_support' => true,
-				'support_url'    => 'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg',
+				'support_url'    => 'https://www.ultimategutenberg.com/support/',
 			);
 
 			return $support;

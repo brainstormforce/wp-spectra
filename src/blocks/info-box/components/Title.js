@@ -23,6 +23,7 @@ class Title extends React.Component {
 			return (
 				<RichText
 	                tagName= { attributes.headingTag }
+	                placeholder={ __( "Write a Heading" ) }
 	                value={ attributes.infoBoxTitle }
 	                className = 'uagb-ifb-title'
 	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }

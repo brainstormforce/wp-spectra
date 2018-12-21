@@ -31,7 +31,8 @@ const {
 	Button,
 	Dashicon,
 	BaseControl,
-	withNotices
+	withNotices,
+	ToggleControl,
 } = wp.components
 
 
@@ -126,6 +127,7 @@ class UAGBSectionEdit extends Component {
 			width,
 			innerWidth,
 			tag,
+			themeWidth,
 			leftPadding,
 			rightPadding,
 			topPadding,
@@ -202,8 +204,15 @@ class UAGBSectionEdit extends Component {
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
+						{ contentWidth != "boxed" &&
+							<ToggleControl
+								label={ __( "Inherit Inner Width from Theme" ) }
+								checked={ themeWidth }
+								onChange={ ( value ) => setAttributes( { themeWidth: ! themeWidth } ) }
+							/>
+						}
 						{
-							contentWidth != "boxed" &&
+							contentWidth != "boxed" && ! themeWidth &&
 							( <RangeControl
 								label={ __( "Inner Width" ) }
 								value={ innerWidth }
