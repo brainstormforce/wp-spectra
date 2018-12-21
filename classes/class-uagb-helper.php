@@ -65,8 +65,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list = UAGB_Config::get_block_attributes();
 
-			self::$block_page = self::$block_list;
-
+			// self::$block_page = self::$block_list;
 			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'generate_script' ), 80 );
 		}
@@ -284,7 +283,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks = $this->parse( $post->post_content );
+				$blocks           = $this->parse( $post->post_content );
+				self::$block_page = $blocks;
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -312,7 +312,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks = $this->parse( $post->post_content );
+				$blocks = self::$block_page;
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;

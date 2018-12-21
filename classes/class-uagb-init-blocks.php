@@ -113,7 +113,7 @@ class UAGB_Init_Blocks {
 			UAGB_URL . 'assets/css/slick.css', // Block style CSS.
 			UAGB_VER
 		);
-		
+
 		// Timeline js.
 		wp_enqueue_script(
 			'uabg-timeline-js', // Handle.
