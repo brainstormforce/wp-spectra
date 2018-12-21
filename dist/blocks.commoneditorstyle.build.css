@@ -54,6 +54,52 @@
     margin-bottom: -18px
 }
 
+.edit-post-sidebar h2.uagb-size-type-field-title {
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #555d66;
+    margin-top: 30px
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+    border-bottom: 0;
+    text-align: right;
+    margin-top: -20px;
+    margin-bottom: 10px;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
+    width: 15px;
+    height: 15px
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+    border-bottom: 0;
+    text-align: right;
+    margin-top: -20px;
+    margin-bottom: 0
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button {
+    background: transparent;
+    border: 0;
+    border-bottom: 0;
+    padding: 2px 4px;
+    margin-bottom: 0;
+    outline: 0;
+    width: auto;
+    font-size: 10px
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab {
+    color: #fff;
+    background-color: #71d7f7;
+    display: inline-block;
+    border-radius: 50%;
+    height: 23px;
+    width: 23px;
+}
+
 .uagb-size-type-field button.components-button.uagb-size-btn {
     background: transparent;
     color: #777;
@@ -66,7 +112,8 @@
     padding: 0 4px
 }
 
-.uagb-size-type-field button.components-button.uagb-size-btn.is-primary,.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled=true]) {
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled=true]) {
     color: #000;
     text-decoration: underline;
     background: transparent;

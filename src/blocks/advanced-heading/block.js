@@ -113,13 +113,17 @@ export default class UAGBAdvancedHeading extends Component {
 				headingTag,
 				headFontSize,
 				subHeadFontSize,
+				headFontSizeMobile,
+				subHeadFontSizeMobile,
+				headFontSizeTablet,
+				subHeadFontSizeTablet,
 				separatorWidth,
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
 				separatorSpace,
 				subHeadSpace,
-				sizeType
+				headFontSizeType
 			},
 		} = this.props
 
@@ -134,6 +138,137 @@ export default class UAGBAdvancedHeading extends Component {
 			{ key: 'em', name: __( 'em' ) },
 		];
 
+		const sizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ headFontSizeType === key }
+						aria-pressed={ headFontSizeType === key }
+						onClick={ () => setAttributes( { headFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const desktopControls = (
+			<Fragment>
+				{sizeTypesControls}
+				<RangeControl
+					label={ __( "Heading Font Size" ) }
+					value={ headFontSize }
+					onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={30}
+				/>
+				<RangeControl
+					label={ __( "Sub-Heading Font Size" ) }
+					value={ subHeadFontSize }
+					onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={10}
+				/>
+			</Fragment>
+		)
+
+		const tabletControls = (
+			<Fragment>
+				{sizeTypesControls}
+				<RangeControl
+					label={ __( "THeading Font Size" ) }
+					value={ headFontSizeTablet }
+					onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={30}
+				/>
+				<RangeControl
+					label={ __( "Sub-Heading Font Size" ) }
+					value={ subHeadFontSizeTablet }
+					onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={10}
+				/>
+			</Fragment>
+		)
+
+		const mobileControls = (
+			<Fragment>
+				{sizeTypesControls}
+				<RangeControl
+					label={ __( "MHeading Font Size" ) }
+					value={ headFontSizeMobile }
+					onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={30}
+				/>
+				<RangeControl
+					label={ __( "Sub-Heading Font Size" ) }
+					value={ subHeadFontSizeMobile }
+					onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
+					min={ 10 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={10}
+				/>
+			</Fragment>
+		)
+
+		const tabControls = (
+			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+				tabs={ [
+					{
+						name: 'desktop',
+						title: <Dashicon icon="desktop" />,
+						className: 'uagb-desktop-tab',
+					},
+					{
+						name: 'tablet',
+						title: <Dashicon icon="tablet" />,
+						className: 'uagb-tablet-tab',
+					},
+					{
+						name: 'mobile',
+						title: <Dashicon icon="smartphone" />,
+						className: 'uagb-mobile-tab',
+					},
+				] }>
+				{
+					( tab ) => {
+						let tabout;
+
+						if ( 'mobile' === tab.name ) {
+							tabout = mobileControls
+						} else if ( 'tablet' === tab.name ) {
+							tabout = tabletControls;
+						} else {
+							tabout = desktopControls
+						}
+
+						return <div>{ tabout }</div>;
+					}
+				}
+			</TabPanel>
+		)
 
 		return (
 			<Fragment>
@@ -160,83 +295,8 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<TabPanel className="kt-size-tabs"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: 'desk',
-									title: <Dashicon icon="desktop" />,
-									className: 'kt-desk-tab',
-								},
-								{
-									name: 'tablet',
-									title: <Dashicon icon="tablet" />,
-									className: 'kt-tablet-tab',
-								},
-								{
-									name: 'mobile',
-									title: <Dashicon icon="smartphone" />,
-									className: 'kt-mobile-tab',
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout;
-									if ( tab.name ) {
-										if ( 'mobile' === tab.name ) {
-											tabout = '';
-										} else if ( 'tablet' === tab.name ) {
-											tabout = '';
-										} else {
-											tabout = '';
-										}
-									} else {
-										if ( 'mobile' === tab ) {
-											tabout = mobileControls;
-										} else if ( 'tablet' === tab ) {
-											tabout = '';
-										} else {
-											tabout = '';
-										}
-									}
-									return <div>{ tabout }</div>;
-								}
-							}
-						</TabPanel>
-						<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
-							{ map( sizeTypes, ( { name, key } ) => (
-								<Button
-									key={ key }
-									className="uagb-size-btn"
-									isSmall
-									isPrimary={ sizeType === key }
-									aria-pressed={ sizeType === key }
-									onClick={ () => setAttributes( { sizeType: key } ) }
-								>
-									{ name }
-								</Button>
-							) ) }
-						</ButtonGroup>
-						<RangeControl
-							label={ __( "Heading Font Size" ) }
-							value={ headFontSize }
-							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={30}
-						/>
-						<RangeControl
-							label={ __( "Sub-Heading Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={10}
-						/>
+						<h2 className="uagb-size-type-field-title">{ __( 'Font Size' ) }</h2>
+						{ tabControls }
 					</PanelBody>
 					<PanelBody
 						title={ __( "Separator" ) }
@@ -449,6 +509,18 @@ registerBlockType( "uagb/advanced-heading", {
 			type: "number",
 		},
 		subHeadFontSize: {
+			type: "number",
+		},
+		headFontSizeTablet: {
+			type: "number",
+		},
+		subHeadFontSizeTablet: {
+			type: "number",
+		},
+		headFontSizeMobile: {
+			type: "number",
+		},
+		subHeadFontSizeMobile: {
 			type: "number",
 		},
 		headSpace: {
