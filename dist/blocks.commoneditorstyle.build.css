@@ -73,31 +73,26 @@
     height: 15px
 }
 
-.uagb-size-type-field-tabs .components-tab-panel__tabs {
-    border-bottom: 0;
-    text-align: right;
-    margin-top: -20px;
-    margin-bottom: 0
-}
-
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
-    background: transparent;
     border: 0;
     border-bottom: 0;
     padding: 2px 4px;
     margin-bottom: 0;
     outline: 0;
     width: auto;
-    font-size: 10px
+    font-size: 10px;
+    background: #a4afb7;
+    color: #fff;
+    display: inline-block;
+    border-radius: 50%;
+    height: 23px;
+    width: 23px;
+    margin-right: 3px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab {
     color: #fff;
     background-color: #71d7f7;
-    display: inline-block;
-    border-radius: 50%;
-    height: 23px;
-    width: 23px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
@@ -109,7 +104,7 @@
     text-shadow: none;
     height: 18px;
     line-height: 18px;
-    padding: 0 4px
+    padding: 0 4px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,

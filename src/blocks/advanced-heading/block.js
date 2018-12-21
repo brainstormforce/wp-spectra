@@ -123,7 +123,8 @@ export default class UAGBAdvancedHeading extends Component {
 				headSpace,
 				separatorSpace,
 				subHeadSpace,
-				headFontSizeType
+				headFontSizeType,
+				subHeadFontSizeType
 			},
 		} = this.props
 
@@ -138,7 +139,7 @@ export default class UAGBAdvancedHeading extends Component {
 			{ key: 'em', name: __( 'em' ) },
 		];
 
-		const sizeTypesControls = (
+		const headsizeTypesControls = (
 			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
@@ -155,11 +156,28 @@ export default class UAGBAdvancedHeading extends Component {
 			</ButtonGroup>
 		)
 
+		const subheadsizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ subHeadFontSizeType === key }
+						aria-pressed={ subHeadFontSizeType === key }
+						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
 		const desktopControls = (
 			<Fragment>
-				{sizeTypesControls}
+				{headsizeTypesControls}
 				<RangeControl
-					label={ __( "Heading Font Size" ) }
+					label={ __( "Heading" ) }
 					value={ headFontSize }
 					onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 					min={ 10 }
@@ -168,8 +186,9 @@ export default class UAGBAdvancedHeading extends Component {
 					allowReset
 					initialPosition={30}
 				/>
+				{subheadsizeTypesControls}
 				<RangeControl
-					label={ __( "Sub-Heading Font Size" ) }
+					label={ __( "Sub-Heading" ) }
 					value={ subHeadFontSize }
 					onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
 					min={ 10 }
@@ -183,9 +202,9 @@ export default class UAGBAdvancedHeading extends Component {
 
 		const tabletControls = (
 			<Fragment>
-				{sizeTypesControls}
+				{headsizeTypesControls}
 				<RangeControl
-					label={ __( "THeading Font Size" ) }
+					label={ __( "Heading" ) }
 					value={ headFontSizeTablet }
 					onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
 					min={ 10 }
@@ -194,8 +213,9 @@ export default class UAGBAdvancedHeading extends Component {
 					allowReset
 					initialPosition={30}
 				/>
+				{subheadsizeTypesControls}
 				<RangeControl
-					label={ __( "Sub-Heading Font Size" ) }
+					label={ __( "Sub-Heading" ) }
 					value={ subHeadFontSizeTablet }
 					onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
 					min={ 10 }
@@ -209,9 +229,9 @@ export default class UAGBAdvancedHeading extends Component {
 
 		const mobileControls = (
 			<Fragment>
-				{sizeTypesControls}
+				{headsizeTypesControls}
 				<RangeControl
-					label={ __( "MHeading Font Size" ) }
+					label={ __( "Heading" ) }
 					value={ headFontSizeMobile }
 					onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
 					min={ 10 }
@@ -220,8 +240,9 @@ export default class UAGBAdvancedHeading extends Component {
 					allowReset
 					initialPosition={30}
 				/>
+				{subheadsizeTypesControls}
 				<RangeControl
-					label={ __( "Sub-Heading Font Size" ) }
+					label={ __( "Sub-Heading" ) }
 					value={ subHeadFontSizeMobile }
 					onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
 					min={ 10 }
@@ -534,6 +555,14 @@ registerBlockType( "uagb/advanced-heading", {
 		subHeadSpace: {
 			type: "number",
 		},
+		headFontSizeType: {
+			type: "string",
+			default: "px"
+		},
+		subHeadFontSizeType: {
+			type: "string",
+			default: "px"
+		}
 	},
 	transforms: {
 		from: [
