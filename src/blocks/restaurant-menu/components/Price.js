@@ -34,8 +34,8 @@ class Price extends React.Component {
 	                value={ price }
 	                className = 'uagb-rm__price'
 	                onChange={ ( value ) => { 
-	                	var new_title = { "description" : data_copy[index_value]["description"], "title":data_copy[index_value]["title"], "price" : value, "image" : data_copy[index_value]["image"]  }
-						data_copy[index_value] = new_title
+	                	var new_content = { "description" : data_copy[index_value]["description"], "title":data_copy[index_value]["title"], "price" : value, "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
 						setAttributes( { "rest_menu_item_arr": data_copy } )
 
 	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {

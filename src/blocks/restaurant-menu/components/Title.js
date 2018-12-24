@@ -32,8 +32,8 @@ class Title extends React.Component {
 	                value={ author_title }
 	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
-	                	var new_title = { "description" : data_copy[index_value]["description"], "title":value, "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }
-						data_copy[index_value] = new_title
+	                	var new_content = { "description" : data_copy[index_value]["description"], "title":value, "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
 						setAttributes( { "rest_menu_item_arr": data_copy } )	                	
 	                } }     
 	                onMerge = { props.mergeBlocks }

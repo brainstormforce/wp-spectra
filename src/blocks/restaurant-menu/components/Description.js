@@ -33,8 +33,8 @@ class Description extends React.Component {
 	                value={ description }
 	                className='uagb-rm__desc'
 	                onChange={ ( value ) => { 
-	                	var new_title = { "description" : value, "title":data_copy[index_value]["title"], "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }
-						data_copy[index_value] = new_title
+	                	var new_content = { "description" : value, "title":data_copy[index_value]["title"], "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
 						setAttributes( { "rest_menu_item_arr": data_copy } )
 	                } }     
 	                onMerge = { props.mergeBlocks }		
