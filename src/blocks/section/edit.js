@@ -212,6 +212,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Width" ) }
 								value={ width }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
@@ -227,6 +229,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Inner Width" ) }
 								value={ innerWidth }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
 							/> )
 						}
@@ -251,7 +255,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Padding" ) }
 							value={ leftPadding }
 							onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -259,7 +263,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Padding" ) }
 							value={ rightPadding }
 							onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -267,7 +271,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Padding" ) }
 							value={ topPadding }
 							onChange={ ( value ) => setAttributes( { topPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -275,7 +279,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Padding" ) }
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -283,7 +287,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Margin" ) }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -291,7 +295,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Margin" ) }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -299,7 +303,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Margin" ) }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -307,7 +311,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Margin" ) }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
