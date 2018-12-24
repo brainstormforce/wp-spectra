@@ -114,15 +114,6 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		// Testimonial Scripts.
-		wp_enqueue_script(
-			'uabg-testimonial-js', // Handle.
-			UAGB_URL . 'assets/js/testimonial.js',
-			array( 'jquery' ),
-			UAGB_VER,
-			true // Enqueue the script in the footer.
-		);
-
 		// Timeline js.
 		wp_enqueue_script(
 			'uabg-timeline-js', // Handle.
