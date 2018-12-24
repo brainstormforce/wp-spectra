@@ -29,19 +29,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $block_list;
 
 		/**
-		 * Black Page Variable
+		 * Page Blocks Variable
 		 *
 		 * @since 1.5.1
 		 * @var instance
 		 */
-		public static $block_page;
-
-		/**
-		 * Google Map Language List
-		 *
-		 * @var google_map_languages
-		 */
-		private static $google_map_languages = null;
+		public static $page_blocks;
 
 		/**
 		 *  Initiator
@@ -245,11 +238,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			switch ( $name ) {				
+			switch ( $name ) {
 
 				case 'uagb/testimonial':
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
-					break;				
+					break;
 
 				default:
 					// Nothing to do here.
@@ -282,8 +275,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$blocks           = $this->parse( $post->post_content );
-				self::$block_page = $blocks;
+				$blocks            = $this->parse( $post->post_content );
+				self::$page_blocks = $blocks;
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 					return;
@@ -303,7 +296,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_script() {
 
-			$blocks = self::$block_page;
+			$blocks = self::$page_blocks;
 
 			if ( ! is_array( $blocks ) || empty( $blocks ) ) {
 				return;

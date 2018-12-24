@@ -135,7 +135,7 @@ function TestimonialStyle( props ) {
 		"color" : arrowColor,
 	} 
 
-	if( test_item_count === 1 || test_item_count === columns || arrowDots === 'dots'){
+	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
 		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
 			"padding" : 0,
 		} 
@@ -145,11 +145,11 @@ function TestimonialStyle( props ) {
 
 	for( var i in selectors ) {
        
-        if( i === '.uagb-slick-carousel.uagb-tm__arrow-outside'){
+		if( i === ".uagb-slick-carousel.uagb-tm__arrow-outside"){
         	styling_css += "#wpwrap #"+clientId+i + " { "     
-        }else{
+		}else{
         	styling_css += "#wpwrap #"+clientId+" "+i + " { " 
-        }		       
+		}		       
             
 		var sel = selectors[i]
 		var css = ""

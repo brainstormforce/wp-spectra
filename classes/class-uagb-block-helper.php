@@ -573,7 +573,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if( '1' === $attr->test_item_count || $attr->test_item_count === $attr->columns ||  'dots' === $attr->arrowDots ){
-				$selectors['.uagb-slick-carousel'] = array(				
+				$selectors['.uagb-slick-carousel'] = array(
 						'padding' => '0px',
 					);
 			}
@@ -1852,7 +1852,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
-			$attr = array_merge( $defaults, (array) $attr );			
+			$attr = array_merge( $defaults, (array) $attr );
 
 			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
 			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
@@ -1869,7 +1869,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'dots'           => $dots,
 				'rtl'            => false,
 				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
-				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',	
+				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
 				'responsive'		=> [
 					[
 						'breakpoint' => 1024,
@@ -1886,17 +1886,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						],
 					]
 				]
-			];			
-			
+			];
+
 			$settings = json_encode($slick_options);
-			$selector =	'#uagb-testimonial-'. $id;			
+			$selector =	'#uagb-testimonial-'. $id;
 			?>
-			if( jQuery(".wp-block-uagb-testimonial").length > 0 ){
+			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
 				return true
-			}else{
+			} else {
 				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
 			}
-			<?php			
+			<?php
 			// @codingStandardsIgnoreEnd.
 		}
 
