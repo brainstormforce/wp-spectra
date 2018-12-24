@@ -24,6 +24,8 @@ class Description extends React.Component {
 		if( test_arr && typeof test_arr !== "undefined"){
 			description = test_arr["description"]			
 		}
+
+		var data_copy = [...attributes.test_block]
 		
 		if( setAttributes !== "not_set" ){
 			return (
@@ -33,15 +35,10 @@ class Description extends React.Component {
 	                className='uagb-tm__desc'
 	                onChange={ ( value ) => { 
 
-	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
-							if ( thisIndex === index_value ) {
-								item["description"] = value				
-							}
-							return item			
-						} )
-	                	setAttributes( {
-							test_block: newItems,
-						} )	
+	                	var new_content = { "description" : value, "name":data_copy[index_value]["name"], "company" : data_copy[index_value]["company"], "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
+						setAttributes( { "test_block": data_copy } )
+	                	
 	                } }     
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {

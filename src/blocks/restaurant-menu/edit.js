@@ -15,7 +15,6 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
 	MediaUpload
 } = wp.editor
@@ -33,7 +32,7 @@ const { Component, Fragment } = wp.element
 
 const MAX_COLUMNS = 3
 
-class UAGBrestMenu extends Component {
+class UAGBRestaurantMenu extends Component {
 
 	constructor() {
 
@@ -52,20 +51,20 @@ class UAGBrestMenu extends Component {
 		const { rest_menu_item_arr } = this.props.attributes
 		const { setAttributes } = this.props
 
-		let imag_url = null
+		let image_url = null
 		if ( ! media || ! media.url ) {			
-			imag_url = null
+			image_url = null
 		}else{
-			imag_url = media
+			image_url = media
 		}
 
 		if ( ! media.type || "image" !== media.type ) {
-			imag_url = null
+			image_url = null
 		}
 
 		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = imag_url				
+				item["image"] = image_url				
 			}
 			return item			
 		} )
@@ -169,7 +168,6 @@ class UAGBrestMenu extends Component {
 			titleSpace,
 			imgHrPadding,
 			imgVrPadding,
-			iconImage,
 			imageSize,
 			imageWidth,
 			columns,
@@ -187,7 +185,7 @@ class UAGBrestMenu extends Component {
 		} = attributes
 
 		// Add CSS.
-		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-restaurant-menu-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = RestMenuStyle( this.props )
 		}		
@@ -330,7 +328,7 @@ class UAGBrestMenu extends Component {
 			{ value: "full", label: __( "Large" ) }
 		]		
 				
-		const tmControls = ( index ) => {
+		const imageControls = ( index ) => {
 			let image_val = null
 			if( rest_menu_item_arr[index] && typeof rest_menu_item_arr[index] !== "undefined"){
 				image_val = rest_menu_item_arr[index]["image"]
@@ -518,7 +516,7 @@ class UAGBrestMenu extends Component {
 						title={ __( "Image" ) }
 						initialOpen={ false }
 					>
-						{ times( menu_item_count, n => tmControls( n ) ) }
+						{ times( menu_item_count, n => imageControls( n ) ) }
 
 						{  cnt > 0 && <Fragment>
 							<SelectControl
@@ -641,9 +639,9 @@ class UAGBrestMenu extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-testinomial-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-restaurant-menu-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 }
 
-export default UAGBrestMenu
+export default UAGBRestaurantMenu

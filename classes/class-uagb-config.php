@@ -205,7 +205,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'align'              => 'center',
+							'align'              => 'left',
 							'rowGap'             => '20',
 							'columnGap'          => '20',
 							'bgColor'            => '#e4e4e4',
@@ -246,7 +246,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'align'              => 'center',
+							'align'              => 'left',
 							'rowGap'             => '20',
 							'columnGap'          => '20',
 							'bgColor'            => '#e4e4e4',
@@ -282,7 +282,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'align'              => 'center',
+							'align'              => 'left',
 							'rowGap'             => '20',
 							'columnGap'          => '20',
 							'bgColor'            => '#e4e4e4',
