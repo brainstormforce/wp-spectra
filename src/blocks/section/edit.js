@@ -174,6 +174,17 @@ class UAGBSectionEdit extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
+		let block_controls = [ "left","center","right" ]
+		let block_controls_class = ""
+
+		if ( "full_width" == contentWidth ) {
+			block_controls = [ "wide","full" ]
+
+			if ( align == "wide" || align == "full" ) {
+				block_controls_class = "align" + align
+			}
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -182,7 +193,7 @@ class UAGBSectionEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left","center","right" ] }
+						controls={ block_controls }
 					/>
 				</BlockControls>
 				<InspectorControls>
@@ -567,7 +578,8 @@ class UAGBSectionEdit extends Component {
 						className,
 						"uagb-section__wrap",
 						`uagb-section__background-${backgroundType}`,
-						`uagb-section__edit-${ active }`
+						`uagb-section__edit-${ active }`,
+						block_controls_class
 					) }
 					id={ `uagb-section-${this.props.clientId}` }
 				>
