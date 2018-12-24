@@ -6,8 +6,6 @@ const {
 	createBlock
 } = wp.blocks
 
-const { __ } = wp.i18n
-
 class Price extends React.Component {
 
 	render() {
@@ -19,10 +17,10 @@ class Price extends React.Component {
 			index_value	
 		} = this.props
 
-		const test_arr = attributes.rest_menu_item_arr[index_value]
+		const rest_arr = attributes.rest_menu_item_arr[index_value]
 		let price = ""
-		if( test_arr && typeof test_arr !== "undefined"){
-			price = test_arr["price"]			
+		if( rest_arr && typeof rest_arr !== "undefined"){
+			price = rest_arr["price"]			
 		}
 
 		if( setAttributes !== "not_set" ){

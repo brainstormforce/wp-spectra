@@ -2,8 +2,6 @@ const {
 	RichText,
 } = wp.editor
 
-const { __ } = wp.i18n
-
 const {
 	createBlock
 } = wp.blocks
@@ -19,10 +17,10 @@ class Description extends React.Component {
 			index_value		
 		} = this.props
 			
-		const test_arr = attributes.rest_menu_item_arr[index_value]
+		const rest_arr = attributes.rest_menu_item_arr[index_value]
 		let description = ""
-		if( test_arr && typeof test_arr !== "undefined"){
-			description = test_arr["description"]			
+		if( rest_arr && typeof rest_arr !== "undefined"){
+			description = rest_arr["description"]			
 		}
 		
 		if( setAttributes !== "not_set" ){
