@@ -24,7 +24,8 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"color" : social.icon_color
+			"color" : social.icon_color,
+			"padding": bgSize + "px"
 		}
 
 		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link"] = {
@@ -71,33 +72,23 @@ function styling( props ) {
 		"border-radius": borderRadius + "px"
 	}
 
-	selectors[" .uagb-ss__wrapper .uagb-ss__link"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"padding": bgSize + "px"
-	}
-
 	selectors[" .uagb-ss__source-image"] = {
 		"width": size + "px"
 	}
 
 	selectors[" .uagb-ss__source-wrap"] = {
 		"width": size + "px",
-		"height": size + "px"
+		"height": size + "px",
+		"line-height": size + "px"
 	}
 
 	selectors[" .uagb-ss__source-icon"] = {
 		"width": size + "px",
 		"height": size + "px",
-		"font-size": size + "px"
+		"font-size": size + "px",
+		"line-height": size + "px"
 	}
-
-	selectors[" .uagb-ss__source-icon:before"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"font-size": size + "px"
-	}
-
+	
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
 	selectors[" .uagb-social-share__wrap"] = {
