@@ -128,6 +128,10 @@ class Blog extends React.Component {
 			)
 		} else {
 
+			let style_str = ''
+
+			if ( "dots" == arrowDots ) { style_str = {padding:0} }
+
 			return (
 
 				<div
@@ -140,6 +144,7 @@ class Blog extends React.Component {
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
+					style={ ( "dots" == arrowDots ) ? { padding: 0 } : {} }
 				>
 					<Slider
 						className={ classnames(

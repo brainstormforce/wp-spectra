@@ -1725,6 +1725,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"color" => $attr['arrowColor']
 			);
 
+			if ( isset( $attr['arrowDots'] ) && 'dots' == $attr['arrowDots'] ) {
+
+				$selectors[".uagb-slick-carousel"] = array(
+					"padding" => "0"
+				);
+			}
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
