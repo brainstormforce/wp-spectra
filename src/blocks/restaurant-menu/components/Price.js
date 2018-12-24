@@ -25,6 +25,8 @@ class Price extends React.Component {
 			price = rest_arr["price"]			
 		}
 
+		var data_copy = [...attributes.rest_menu_item_arr]
+		
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
@@ -32,6 +34,9 @@ class Price extends React.Component {
 	                value={ price }
 	                className = 'uagb-rm__price'
 	                onChange={ ( value ) => { 
+	                	var new_title = { "description" : data_copy[index_value]["description"], "title":data_copy[index_value]["title"], "price" : value, "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_title
+						setAttributes( { "rest_menu_item_arr": data_copy } )
 
 	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
 							if ( thisIndex === index_value ) {
