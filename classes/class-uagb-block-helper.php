@@ -56,8 +56,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['margin-top']    = $attr['topMargin'] . 'px';
 				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			} else {
-				$style['margin-right']  = $attr['rightMargin'] . 'px';
-				$style['margin-left']   = $attr['leftMargin'] . 'px';
 				$style['margin-top']    = $attr['topMargin'] . 'px';
 				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			}
@@ -81,7 +79,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
-			$style['max-width'] = $section_width;
+			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
+				$style['max-width'] = $section_width;
+			}
+
 
 			if ( 'color' === $bg_type ) {
 
@@ -111,7 +112,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
-					if ( $attr['themeWidth'] == true ) {
+					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
 						$inner_width = $content_width . 'px';
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {

@@ -435,6 +435,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderWidth'            => '1',
 							'borderRadius'           => '',
 							'borderColor'            => '',
+							'themeWidth'             => false,
 						),
 					),
 					'uagb/social-share'     => array(

@@ -48,6 +48,14 @@ registerBlockType( "uagb/section", {
 	],
 	attributes,
 	edit,
+	getEditWrapperProps( attributes ) {
+		const { align, contentWidth } = attributes
+		if ( "left" === align || "right" === align || "wide" === align || "full" === align ) {
+			if ( "full_width" == contentWidth ) {
+				return { "data-align": align }
+			}
+		}
+	},
 	save : function( props ) {
 
 		const { attributes, className } = props
