@@ -2,6 +2,8 @@ const {
 	RichText,
 } = wp.editor
 
+const { __ } = wp.i18n
+
 const {
 	createBlock
 } = wp.blocks
