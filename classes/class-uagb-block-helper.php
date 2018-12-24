@@ -740,16 +740,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-ss__wrapper"] = array(
 				"border-radius" => $attr['borderRadius'] . "px"
 			);
-
-			$selectors[" .uagb-ss__wrapper .uagb-ss__link"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"padding" => $attr['bgSize'] . "px"
-			);
-
+			
 			$selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px"
+				"height" => $attr['size'] . "px",
+				"line-height" => $attr['size'] . "px"
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(
@@ -759,14 +754,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-ss__source-icon"] = array(
 				"width" => $attr['size'] . "px",
 				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px"
-			);
-
-			$selectors[" .uagb-ss__source-icon:before"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px"
-			);
+				"font-size" => $attr['size'] . "px",
+				"line-height" => $attr['size'] . "px"
+			);			
 
 			foreach ( $attr['socials'] as $key => $social ) {
 
@@ -778,7 +768,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
-					"color" => $social['icon_color']
+					"color" => $social['icon_color'],
+					"padding" => $attr['bgSize'] . "px"
 				);
 
 				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (

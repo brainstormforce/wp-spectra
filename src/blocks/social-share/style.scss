@@ -40,11 +40,6 @@
 		text-align: center;
 	}
 
-	.uagb-ss__link,
-	.uagb-ss__source-wrap {
-		width: 40px;
-	}
-
 	.uagb-ss__source-wrap {
 		display: inline-block;
 	}
@@ -52,10 +47,10 @@
 	.uagb-ss__link {
 		color: #3a3a3a;
 		display: inline-table;
+		line-height: 0;
 	}
 
-	.uagb-ss__source-icon,
-	.uagb-ss__source-icon:before {
+	.uagb-ss__source-icon {
 		font-size: 40px;
 		width: 40px;
 		height: 40px;
