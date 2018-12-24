@@ -99,6 +99,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Testimonial - Arrow and Dots design options added for Carousel.
 * Fix: Testimonial - Duplicate block content error.
 * Fix: Restaurant Menu - Duplicate block content error.
+* Fix: Post Grid - Twenty Nineteen theme related issues fixed.
 
 = 1.5.0 =
 * New: Post Carousel
