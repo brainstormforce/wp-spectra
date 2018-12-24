@@ -572,10 +572,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
+			if( '1' === $attr->test_item_count || $attr->test_item_count === $attr->columns ||  'dots' === $attr->arrowDots ){
+				$selectors['.uagb-slick-carousel'] = array(
+						'padding' => '0px',
+					);
+			}
+
 			$r_selectors = array(
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
-				),
+				)
 			);
 
 			// @codingStandardsIgnoreEnd.
@@ -1832,5 +1838,67 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// @codingStandardsIgnoreEnd
 		}
+
+		/**
+		 * Get Testimonial Js
+		 *
+		 * @since 1.5.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_testimonial_js( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+
+			$slick_options = [
+				'slidesToShow'   => $attr['columns'],
+				'slidesToScroll' => 1,
+				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
+				'autoplay'       => $attr['autoplay'],
+				'infinite'       => $attr['infiniteLoop'],
+				'pauseOnHover'   => $attr['pauseOnHover'],
+				'speed'          => $attr['transitionSpeed'],
+				'arrows'         => $arrows,
+				'dots'           => $dots,
+				'rtl'            => false,
+				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'responsive'		=> [
+					[
+						'breakpoint' => 1024,
+						'settings' => [
+							'slidesToShow'   => $attr['tcolumns'],
+							'slidesToScroll' => 1,
+						],
+					],
+					[
+						'breakpoint' => 767,
+						'settings' => [
+							'slidesToShow'   => $attr['mcolumns'],
+							'slidesToScroll' => 1,
+						],
+					]
+				]
+			];
+
+			$settings = json_encode($slick_options);
+			$selector =	'#uagb-testimonial-'. $id;
+			?>
+			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
+				return true
+			} else {
+				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
+			}
+			<?php
+			// @codingStandardsIgnoreEnd.
+		}
+
 	}
 }

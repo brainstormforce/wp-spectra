@@ -96,6 +96,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 = 1.6.0 =
 * New: Post Masonry
 * Fix: Icon List - Gap between items not being applied on editor issue fixed.
+* Fix: Testimonial - Arrow and Dots design options added for Carousel.
 
 = 1.5.0 =
 * New: Post Carousel
