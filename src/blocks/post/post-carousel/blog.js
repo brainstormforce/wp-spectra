@@ -128,7 +128,7 @@ class Blog extends React.Component {
 			)
 		} else {
 
-			let style_str = ''
+			let style_str = ""
 
 			if ( "dots" == arrowDots ) { style_str = {padding:0} }
 

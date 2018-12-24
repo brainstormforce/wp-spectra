@@ -1787,7 +1787,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"background" => $attr['bgColor']
 				),
 				" .uagb-post__text" => array(
-					"padding" => ( $attr['contentPadding'] ) . "px"
+					"padding" => ( $attr['contentPadding'] ) . "px",
+					"text-align" => $attr['align']
 				),
 				" .uagb-post__text .uagb-post__title" => array(
 					"color"=> $attr['titleColor'],

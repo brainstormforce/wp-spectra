@@ -356,7 +356,7 @@ function uagb_register_blocks() {
 				),
 				'align'              => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
 				'width'              => array(
 					'type'    => 'string',
@@ -556,7 +556,7 @@ function uagb_register_blocks() {
 				),
 				'align'              => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
 				'width'              => array(
 					'type'    => 'string',
@@ -792,7 +792,7 @@ function uagb_register_blocks() {
 				),
 				'align'              => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
 				'width'              => array(
 					'type'    => 'string',

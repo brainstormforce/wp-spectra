@@ -610,7 +610,7 @@ class UAGBPostCarousel extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "center", "wide" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId}/>
