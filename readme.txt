@@ -97,6 +97,8 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * New: Post Masonry
 * Fix: Icon List - Gap between items not being applied on editor issue fixed.
 * Fix: Testimonial - Arrow and Dots design options added for Carousel.
+* Fix: Testimonial - Duplicate block content error.
+* Fix: Restaurant Menu - Duplicate block content error.
 
 = 1.5.0 =
 * New: Post Carousel
