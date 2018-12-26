@@ -138,11 +138,7 @@ const attributes = {
 	},
 	borderColor : {
 		type: "string"
-	},
-	columns : {
-		type: "number",
-		default: 1
-	},
+	}
 }
 
 export default attributes
