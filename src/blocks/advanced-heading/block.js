@@ -284,8 +284,6 @@ export default class UAGBAdvancedHeading extends Component {
 						className='uagb-heading-text'
 						multiline={ false }
 						onChange={ ( value ) => {
-							console.log('here')
-							console.log(value)
 							setAttributes( { headingTitle: value } ) }
 						}
 						onMerge={ mergeBlocks }
