@@ -740,7 +740,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-ss__wrapper"] = array(
 				"border-radius" => $attr['borderRadius'] . "px"
 			);
-			
+
 			$selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['size'] . "px",
 				"height" => $attr['size'] . "px",
@@ -756,7 +756,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"height" => $attr['size'] . "px",
 				"font-size" => $attr['size'] . "px",
 				"line-height" => $attr['size'] . "px"
-			);			
+			);
 
 			foreach ( $attr['socials'] as $key => $social ) {
 
@@ -790,6 +790,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"-webkit-box-pack" => $alignment,
 				"-ms-flex-pack" => $alignment,
 				"justify-content" => $alignment,
+				"-webkit-box-align" => $alignment,
+				"-ms-flex-align" => $alignment,
+				"align-items" => $alignment,
 			);
 
 			if ( 'horizontal' == $attr['social_layout'] ) {
