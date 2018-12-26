@@ -5,6 +5,9 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
+import memoize from 'memize';
+
+const ALLOWED_BLOCKS = [ 'uagb/column' ];
 
 const { __ } = wp.i18n
 
@@ -34,6 +37,10 @@ const {
 	withNotices,
 	ToggleControl,
 } = wp.components
+
+const getColumnsTemplate = memoize( ( columns ) => {
+	return times( columns, n => [ 'kadence/column', { id: n + 1 } ] );
+} );
 
 
 class UAGBSectionEdit extends Component {
