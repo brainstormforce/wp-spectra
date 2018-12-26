@@ -50,4 +50,25 @@
 		object-fit: cover;
 		background-size: cover;
 	}
+
+	.uagb-section__columns-1,
+	.uagb-section__columns-2,
+	.uagb-section__columns-3,
+	.uagb-section__columns-4,
+	.uagb-section__columns-5,
+	.uagb-section__columns-6 {
+		-js-display: flex;
+		display: -webkit-box;
+		display: -webkit-flex;
+		display: -moz-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.uagb-section__columns-1 > .uagb-column__wrap { width: 100%; }
+	.uagb-section__columns-2 > .uagb-column__wrap { width: 50%; }
+	.uagb-section__columns-3 > .uagb-column__wrap { width: 33.33%; }
+	.uagb-section__columns-4 > .uagb-column__wrap { width: 25%; }
+	.uagb-section__columns-5 > .uagb-column__wrap { width: 20%; }
+	.uagb-section__columns-6 > .uagb-column__wrap { width: 16.66%; }
 }

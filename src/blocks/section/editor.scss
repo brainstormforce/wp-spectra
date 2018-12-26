@@ -14,7 +14,24 @@
 	bottom: -1px;
 	left: -1px;
 	z-index: 0;
- }
+}
+
+.uagb-section__inner-wrap .editor-inner-blocks {
+	width: 100%;
+}
+
+.uagb-section__inner-wrap > .editor-inner-blocks > .editor-block-list__layout {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+
+.uagb-section__columns-1 .editor-block-list__block { width: 100%; }
+.uagb-section__columns-2 .editor-block-list__block { width: 50%; }
+.uagb-section__columns-3 .editor-block-list__block { width: 33.33%; }
+.uagb-section__columns-4 .editor-block-list__block { width: 25%; }
+.uagb-section__columns-5 .editor-block-list__block { width: 20%; }
+.uagb-section__columns-6 .editor-block-list__block { width: 16.66%; }
 
 .uagb-section__edit-active.uagb-section__wrap:before {
 	border-color: #035cff;

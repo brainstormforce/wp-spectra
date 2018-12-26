@@ -66,7 +66,8 @@ registerBlockType( "uagb/section", {
 			backgroundType,
 			backgroundVideo,
 			contentWidth,
-			align
+			align,
+			columns
 		} = props.attributes
 
 		let block_controls_class = ""
@@ -99,10 +100,53 @@ registerBlockType( "uagb/section", {
 
 					</div>
 				}
-				<div className="uagb-section__inner-wrap">
+				<div className={ classnames(
+							"uagb-section__inner-wrap",
+							`uagb-section__columns-${columns}`
+						) }>
 					<InnerBlocks.Content />
 				</div>
 			</CustomTag>
 		)
-	}
+	},
+	deprecated: [
+		{
+			save: function( props ) {
+				const { attributes, className } = props
+
+				const {
+					block_id,
+					tag,
+					backgroundType,
+					backgroundVideo
+				} = props.attributes
+
+				const CustomTag = `${tag}`
+
+				return (
+					<CustomTag
+						className={ classnames(
+							className,
+							"uagb-section__wrap",
+							`uagb-section__background-${backgroundType}`
+						) }
+						id={ `uagb-section-${block_id}` }
+					>
+						<div className="uagb-section__overlay"></div>
+						{ "video" == backgroundType &&
+							<div className="uagb-section__video-wrap">
+								{  backgroundVideo &&
+								<video src={ backgroundVideo.url } autoPlay loop muted></video>
+								}
+
+							</div>
+						}
+						<div className="uagb-section__inner-wrap">
+							<InnerBlocks.Content />
+						</div>
+					</CustomTag>
+				)
+			},
+		}
+	]
 } )

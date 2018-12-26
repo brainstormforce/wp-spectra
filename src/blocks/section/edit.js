@@ -6,6 +6,8 @@
 import classnames from "classnames"
 import styling from "./styling"
 import memoize from 'memize';
+import times from 'lodash/times';
+import map from 'lodash/map';
 
 const ALLOWED_BLOCKS = [ 'uagb/column' ];
 
@@ -39,7 +41,7 @@ const {
 } = wp.components
 
 const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ 'kadence/column', { id: n + 1 } ] );
+	return times( columns, n => [ 'uagb/column', { id: n + 1 } ] );
 } );
 
 
@@ -124,11 +126,10 @@ class UAGBSectionEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes, isSelected } = this.props
+		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
 			align,
-			className,
 			padding,
 			contentWidth,
 			width,
@@ -164,7 +165,8 @@ class UAGBSectionEdit extends Component {
 			borderStyle,
 			borderWidth,
 			borderRadius,
-			borderColor
+			borderColor,
+			columns
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -205,6 +207,13 @@ class UAGBSectionEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ columns }
+							min={ 0 }
+							max={ 6 }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+						/>
 						<SelectControl
 							label={ __( "Content Width" ) }
 							value={ contentWidth }
@@ -294,7 +303,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Margin" ) }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -302,7 +311,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Margin" ) }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -310,7 +319,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Margin" ) }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -318,7 +327,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Margin" ) }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -603,8 +612,15 @@ class UAGBSectionEdit extends Component {
 
 						</div>
 					}
-					<div className="uagb-section__inner-wrap">
-						<InnerBlocks templateLock={false} />
+					<div className={ classnames(
+							"uagb-section__inner-wrap",
+							`uagb-section__columns-${columns}`
+						) }>
+						<InnerBlocks
+							template={ getColumnsTemplate( columns ) }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS }
+						/>
 					</div>
 
 				</CustomTag>
