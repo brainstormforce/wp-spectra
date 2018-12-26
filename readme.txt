@@ -101,6 +101,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Restaurant Menu - Duplicate block content error.
 * Fix: Post Grid - Twenty Nineteen theme related issues fixed.
 * Fix: Post Grid - Alignment issue fixed.
+* Improvement: InfoBox - Added option to Enable/Disable Prefix, Heading and Description .
 
 = 1.5.0 =
 * New: Post Carousel
