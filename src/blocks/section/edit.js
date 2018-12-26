@@ -5,11 +5,6 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
-import memoize from 'memize';
-import times from 'lodash/times';
-import map from 'lodash/map';
-
-const ALLOWED_BLOCKS = [ 'uagb/column' ];
 
 const { __ } = wp.i18n
 
@@ -40,10 +35,6 @@ const {
 	ToggleControl,
 } = wp.components
 
-const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ 'uagb/column', { id: n + 1 } ] );
-} );
-
 
 class UAGBSectionEdit extends Component {
 
@@ -63,7 +54,7 @@ class UAGBSectionEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-section-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -165,13 +156,12 @@ class UAGBSectionEdit extends Component {
 			borderStyle,
 			borderWidth,
 			borderRadius,
-			borderColor,
-			columns
+			borderColor
 		} = attributes
 
 		const CustomTag = `${tag}`
 
-		var element = document.getElementById( "uagb-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-section-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
@@ -207,13 +197,6 @@ class UAGBSectionEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
-						<RangeControl
-							label={ __( "Columns" ) }
-							value={ columns }
-							min={ 0 }
-							max={ 6 }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-						/>
 						<SelectControl
 							label={ __( "Content Width" ) }
 							value={ contentWidth }
@@ -612,15 +595,8 @@ class UAGBSectionEdit extends Component {
 
 						</div>
 					}
-					<div className={ classnames(
-							"uagb-section__inner-wrap",
-							`uagb-section__columns-${columns}`
-						) }>
-						<InnerBlocks
-							template={ getColumnsTemplate( columns ) }
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS }
-						/>
+					<div className="uagb-section__inner-wrap">
+						<InnerBlocks templateLock={false} />
 					</div>
 
 				</CustomTag>
