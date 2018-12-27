@@ -4,7 +4,7 @@ const {
 
 const { __ } = wp.i18n
 
-class InfoBoxIcon extends React.Component {
+class CtaIcon extends React.Component {
 
 	render() {
 
@@ -22,4 +22,4 @@ class InfoBoxIcon extends React.Component {
 	}
 }
 
-export default InfoBoxIcon
+export default CtaIcon

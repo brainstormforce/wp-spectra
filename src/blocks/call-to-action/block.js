@@ -11,8 +11,8 @@ import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaIcon from "./components/CtaIcon"
-import InfoBoxPositionClasses from "./classes"
-import InfoBoxSeperator from "./components/InfoBoxSeperator"
+import CtaPositionClasses from "./classes"
+import CtaSeperator from "./components/CtaSeperator"
 import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 import edit from "./edit"
@@ -95,7 +95,7 @@ registerBlockType( "uagb/call-to-action", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+				{ "none" !== seperatorStyle && <CtaSeperator attributes={props.attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && "" !== headingDesc && <Description attributes={props.attributes} setAttributes = "not_set"/> }
 					{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
@@ -117,7 +117,7 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				<div className = { classnames(
 					"uagb-infobox__content-wrap",
-					...InfoBoxPositionClasses(  props.attributes  ),
+					...CtaPositionClasses(  props.attributes  ),
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
 
@@ -229,7 +229,7 @@ registerBlockType( "uagb/call-to-action", {
 				// Get description and seperator components.
 				const desc = (
 					<Fragment>
-						{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+						{ "none" !== seperatorStyle && <CtaSeperator attributes={props.attributes} /> }
 						<div className = "uagb-ifb-text-wrap">
 							<Description attributes={props.attributes} setAttributes = "not_set"/>
 							<CallToAction attributes={props.attributes} />
@@ -251,7 +251,7 @@ registerBlockType( "uagb/call-to-action", {
 					<Fragment>
 						<div className = { classnames(
 							"uagb-infobox__content-wrap",
-							...InfoBoxPositionClasses(  props.attributes  ),
+							...CtaPositionClasses(  props.attributes  ),
 						) }>
 							<div className = "uagb-ifb-left-right-wrap">
 

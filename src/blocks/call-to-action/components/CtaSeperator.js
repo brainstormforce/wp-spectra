@@ -1,4 +1,4 @@
-class InfoBoxSeperator extends React.Component {
+class CtaSeperator extends React.Component {
 
 	render() {
 
@@ -12,4 +12,4 @@ class InfoBoxSeperator extends React.Component {
 	}
 }
 
-export default InfoBoxSeperator
+export default CtaSeperator

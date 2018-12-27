@@ -4,7 +4,7 @@
  * @return {array} The inline CSS class.
  */
 
-function InfoBoxPositionClasses( attributes ) {
+function CtaPositionClasses( attributes ) {
 
 	var sourceClass = "uagb-infobox-has-image"
 	if( attributes.source_type == "icon" ){
@@ -47,4 +47,4 @@ function InfoBoxPositionClasses( attributes ) {
 	]
 }
 
-export default InfoBoxPositionClasses
+export default CtaPositionClasses

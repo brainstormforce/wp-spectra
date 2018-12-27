@@ -8,8 +8,8 @@ import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaIcon from "./components/CtaIcon"
-import InfoBoxPositionClasses from "./classes"
-import InfoBoxSeperator from "./components/InfoBoxSeperator"
+import CtaPositionClasses from "./classes"
+import CtaSeperator from "./components/CtaSeperator"
 import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 
@@ -912,7 +912,7 @@ class UAGBcallToAction extends Component {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
+				{ "none" !== seperatorStyle && <CtaSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
 					<CallToAction attributes={attributes} /> 
@@ -935,7 +935,7 @@ class UAGBcallToAction extends Component {
 			<Fragment>
 				<div className = { classnames(
 					"uagb-infobox__content-wrap",
-					...InfoBoxPositionClasses( attributes ),
+					...CtaPositionClasses( attributes ),
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
 
