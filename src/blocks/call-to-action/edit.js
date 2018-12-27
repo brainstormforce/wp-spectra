@@ -8,7 +8,7 @@ import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaPositionClasses from "./classes"
 import CallToAction from "./components/CallToAction"
-import InfoBoxStyle from "./inline-styles"
+import CtaStyle from "./inline-styles"
 
 const { __ } = wp.i18n
 
@@ -170,7 +170,7 @@ class UAGBcallToAction extends Component {
 		// Add CSS.
 		var element = document.getElementById( "uagb-info-box-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = InfoBoxStyle( this.props )
+			element.innerHTML = CtaStyle( this.props )
 		}
 		
 		// Icon properties.
@@ -188,11 +188,7 @@ class UAGBcallToAction extends Component {
 	
 		// CTA settings.
 		const ctaSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Call To Action" ) }
-					initialOpen={ false }
-				>
+			<Fragment>				
 					<SelectControl
 						label={ __( "Type" ) }
 						value={ ctaType }
@@ -321,8 +317,7 @@ class UAGBcallToAction extends Component {
 							/>
 						</Fragment>
 					)
-					}
-				</PanelBody>
+					}				
 			</Fragment>
 		)
 
@@ -564,10 +559,10 @@ class UAGBcallToAction extends Component {
 				 <InspectorControls>
 
 					<PanelBody
-						title={ __( "Image/Icon" ) }
+						title={ __( "Call To Action" ) }
 					>
 						<SelectControl
-							label={ __( "Select Position" ) }
+							label={ __( "Select CTA Position" ) }
 							value={ ctaPosition }
 							onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
 							options={ [
@@ -602,10 +597,11 @@ class UAGBcallToAction extends Component {
 							] }
 						/>
 						}
-						
+						{ ctaSettings }
 					</PanelBody>
+					
 					{ TypographySettings }
-					{ ctaSettings }	
+						
 					{ marginSettings }
 
 				</InspectorControls>

@@ -11,7 +11,7 @@ import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaPositionClasses from "./classes"
 import CallToAction from "./components/CallToAction"
-import InfoBoxStyle from "./inline-styles"
+import CtaStyle from "./inline-styles"
 import edit from "./edit"
 import attributes from "./attributes"
 import "./editor.scss"
@@ -48,7 +48,8 @@ registerBlockType( "uagb/call-to-action", {
 	description: uagb_blocks_info.blocks["uagb/call-to-action"]["description"],
 	icon: UAGB_Block_Icons.info_box,
 	keywords: [
-		__( "info-box" ),
+		__( "cta" ),
+		__( "call to action" ),
 		__( "uagb" ),
 	],
 	category: uagb_blocks_info.category,
@@ -78,7 +79,7 @@ registerBlockType( "uagb/call-to-action", {
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
 
-		var back_style = InfoBoxStyle( props )
+		var back_style = CtaStyle( props )
 
 		// Get icon/Image components.
 		let is_image = ""

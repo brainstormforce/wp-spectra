@@ -25,7 +25,7 @@ const attributes = {
 	},		
 	ctaPosition: {
 		type: "string",
-		default: "above-title"
+		default: "below-title"
 	},	
 	headingTag: {
 		type: "string",
