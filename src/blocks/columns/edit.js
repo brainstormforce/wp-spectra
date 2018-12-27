@@ -4,7 +4,7 @@
 
 // Import classes
 import classnames from "classnames"
-import styling from "./styling"
+//import styling from "./styling"
 import memoize from 'memize';
 import times from 'lodash/times';
 import map from 'lodash/map';
@@ -174,7 +174,7 @@ class UAGBColumns extends Component {
 		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
+			//element.innerHTML = styling( this.props )
 		}
 
 		const onColorChange = ( colorValue ) => {

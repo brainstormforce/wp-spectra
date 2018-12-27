@@ -36,9 +36,9 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( "uagb/Columns", {
-	title: uagb_blocks_info.blocks["uagb/Columns"]["title"],
-	description: uagb_blocks_info.blocks["uagb/Columns"]["description"],
+registerBlockType( "uagb/columns", {
+	title: uagb_blocks_info.blocks["uagb/columns"]["title"],
+	description: uagb_blocks_info.blocks["uagb/columns"]["description"],
 	icon: UAGB_Block_Icons.section,
 	category: uagb_blocks_info.category,
 	keywords: [
