@@ -6,13 +6,12 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
-import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
+import Description from "./components/Description"
+import CtaIcon from "./components/CtaIcon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeperator from "./components/InfoBoxSeperator"
-import InfoBoxCta from "./components/InfoBoxCta"
+import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
-import InfoBoxIconImage from "./components/InfoBoxIconImage"
 
 const { __ } = wp.i18n
 
@@ -907,9 +906,7 @@ class UAGBcallToAction extends Component {
 		let is_image = ""
 
 		if( source_type === "icon" && icon !== "" ) {
-			is_image =  <InfoBoxIcon attributes={attributes}/>
-		}else{
-			is_image = <InfoBoxIconImage attributes={attributes} />
+			is_image =  <CtaIcon attributes={attributes}/>
 		}
 
 		// Get description and seperator components.
@@ -917,8 +914,8 @@ class UAGBcallToAction extends Component {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<InfoBoxCta attributes={attributes} /> 
+					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
+					<CallToAction attributes={attributes} /> 
 				</div>
 			</Fragment>
 		)

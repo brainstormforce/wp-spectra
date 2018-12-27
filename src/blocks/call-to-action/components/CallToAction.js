@@ -6,7 +6,7 @@ const { __ } = wp.i18n
 
 import classnames from "classnames"
 
-class InfoBoxCta extends React.Component {
+class CallToAction extends React.Component {
 
 	render() {
 
@@ -53,4 +53,4 @@ class InfoBoxCta extends React.Component {
 	}
 }
 
-export default InfoBoxCta
+export default CallToAction

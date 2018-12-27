@@ -9,13 +9,12 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 // Import icon.
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
-import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
+import Description from "./components/Description"
+import CtaIcon from "./components/CtaIcon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeperator from "./components/InfoBoxSeperator"
-import InfoBoxCta from "./components/InfoBoxCta"
+import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
-import InfoBoxIconImage from "./components/InfoBoxIconImage"
 import edit from "./edit"
 import attributes from "./attributes"
 import "./editor.scss"
@@ -90,9 +89,7 @@ registerBlockType( "uagb/call-to-action", {
 		let is_image = ""
 
 		if( source_type === "icon" && icon !=="" ) {
-			is_image = <InfoBoxIcon attributes={ props.attributes }/>
-		}else{
-			is_image = <InfoBoxIconImage attributes={ props.attributes } />
+			is_image = <CtaIcon attributes={ props.attributes }/>
 		}
 
 		// Get description and seperator components.
@@ -100,8 +97,8 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
-					{ ctaType !== "none" && <InfoBoxCta attributes={props.attributes} />}
+					{ showDesc && "" !== headingDesc && <Description attributes={props.attributes} setAttributes = "not_set"/> }
+					{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
 				</div>
 			</Fragment>
 		)
@@ -226,9 +223,7 @@ registerBlockType( "uagb/call-to-action", {
 				let is_image = ""
 
 				if( source_type === "icon" ) {
-					is_image = <InfoBoxIcon attributes={ props.attributes }/>
-				}else{
-					is_image = <InfoBoxIconImage attributes={ props.attributes } />
+					is_image = <CtaIcon attributes={ props.attributes }/>
 				}
 
 				// Get description and seperator components.
@@ -236,8 +231,8 @@ registerBlockType( "uagb/call-to-action", {
 					<Fragment>
 						{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 						<div className = "uagb-ifb-text-wrap">
-							<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
-							<InfoBoxCta attributes={props.attributes} />
+							<Description attributes={props.attributes} setAttributes = "not_set"/>
+							<CallToAction attributes={props.attributes} />
 						</div>
 					</Fragment>
 				)

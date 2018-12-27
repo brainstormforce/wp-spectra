@@ -8,7 +8,7 @@ const {
 	createBlock
 } = wp.blocks
 
-class InfoBoxDesc extends React.Component {
+class Description extends React.Component {
 
 	render() {
 
@@ -54,4 +54,4 @@ class InfoBoxDesc extends React.Component {
 	}
 }
 
-export default InfoBoxDesc
+export default Description
