@@ -156,6 +156,287 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
+		 * Get Section Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_columns_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			global $content_width;
+
+			$defaults = UAGB_Helper::$block_list['uagb/columns']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+
+			$style = array(
+				'padding-top'    => $attr['topPadding'] . 'px',
+				'padding-bottom' => $attr['bottomPadding'] . 'px',
+				'padding-left'   => $attr['leftPadding'] . 'px',
+				'padding-right'  => $attr['rightPadding'] . 'px',
+				'border-radius'  => $attr['borderRadius'] . "px"
+			);
+
+			if ( 'right' == $attr['align'] ) {
+				$style['margin-right']  = $attr['rightMargin'] . 'px';
+				$style['margin-left']   = 'auto';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'left' == $attr['align'] ) {
+				$style['margin-right']  = 'auto';
+				$style['margin-left']   = $attr['leftMargin'] . 'px';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'center' == $attr['align'] ) {
+				$style['margin-right']  = 'auto';
+				$style['margin-left']   = 'auto';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} else {
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			}
+
+			if ( "none" != $attr['borderStyle'] ) {
+				$style["border-style"] = $attr['borderStyle'];
+				$style["border-width"] = $attr['borderWidth'] . "px";
+				$style["border-color"] =  $attr['borderColor'];
+			}
+
+			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
+
+			$columns_width = '100%';
+
+			if ( isset( $attr['contentWidth'] ) ) {
+
+				if ( 'boxed' == $attr['contentWidth'] ) {
+					if ( isset( $attr['width'] ) ) {
+						$columns_width = $attr['width'] . 'px';
+					}
+				}
+			}
+
+			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
+				$style['max-width'] = $columns_width;
+			}
+
+
+			if ( 'color' === $bg_type ) {
+
+				$style['background-color'] = $attr['backgroundColor'];
+
+			} elseif ( 'image' === $bg_type ) {
+
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
+				$style['background-position']   = $position;
+				$style['background-attachment'] = $attr['backgroundAttachment'];
+				$style['background-repeat']     = $attr['backgroundRepeat'];
+				$style['background-size']       = $attr['backgroundSize'];
+
+			} elseif ( 'gradient' === $bg_type ) {
+				$style['background-color'] = 'transparent';
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
+			}
+
+			$inner_width = '100%';
+
+			if ( isset( $attr['contentWidth'] ) ) {
+				if ( 'custom' == $attr['contentWidth'] ) {
+					if ( "" != $attr['width'] ) {
+						$inner_width = $attr['width'] . "px";
+					}
+				}
+			}
+
+			$selectors = array(
+				'.uagb-columns__wrap'        => $style,
+				' .uagb-columns__video-wrap' => array(
+					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
+				),
+				' .uagb-columns__inner-wrap' => array(
+					'max-width' => $inner_width,
+				),
+			);
+
+			if ( 'video' == $bg_type ) {
+				$selectors[' > .uagb-columns__overlay'] = array(
+					'opacity'          => 1,
+					'background-color' => $attr['backgroundVideoColor'],
+				);
+			} else if ( 'image' == $bg_type ) {
+				$selectors[' > .uagb-columns__overlay'] = array(
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+					'background-color' => $attr['backgroundImageColor'],
+				);
+			} else {
+				$selectors[' > .uagb-columns__overlay'] = array(
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+				);
+			}
+
+			$selectors[' > .uagb-columns__overlay']["border-radius"] = $attr['borderRadius'] . "px";
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-columns-' . $id );
+		}
+
+		/**
+		 * Get Section Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_column_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart
+
+			global $content_width;
+
+			$defaults = UAGB_Helper::$block_list['uagb/column']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			//$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+
+			$style = array(
+				'padding-top'    => $attr['topPadding'] . 'px',
+				'padding-bottom' => $attr['bottomPadding'] . 'px',
+				'padding-left'   => $attr['leftPadding'] . 'px',
+				'padding-right'  => $attr['rightPadding'] . 'px'
+			);
+
+			if ( 'right' == $attr['align'] ) {
+				// $style['margin-right']  = $attr['rightMargin'] . 'px';
+				// $style['margin-left']   = 'auto';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'left' == $attr['align'] ) {
+				// $style['margin-right']  = 'auto';
+				// $style['margin-left']   = $attr['leftMargin'] . 'px';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} elseif ( 'center' == $attr['align'] ) {
+				// $style['margin-right']  = 'auto';
+				// $style['margin-left']   = 'auto';
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			} else {
+				$style['margin-top']    = $attr['topMargin'] . 'px';
+				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
+			}
+
+			$selectors = array(
+				'.uagb-column__wrap' => $style
+			);
+
+			/*if ( "none" != $attr['borderStyle'] ) {
+				$style["border-style"] = $attr['borderStyle'];
+				$style["border-width"] = $attr['borderWidth'] . "px";
+				$style["border-color"] =  $attr['borderColor'];
+			}
+
+			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
+
+			$column_width = '100%';
+
+			if ( isset( $attr['contentWidth'] ) ) {
+
+				if ( 'boxed' == $attr['contentWidth'] ) {
+					if ( isset( $attr['width'] ) ) {
+						$column_width = $attr['width'] . 'px';
+					}
+				}
+			}
+
+			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
+				$style['max-width'] = $column_width;
+			}
+
+
+			if ( 'color' === $bg_type ) {
+
+				$style['background-color'] = $attr['backgroundColor'];
+
+			} elseif ( 'image' === $bg_type ) {
+
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
+				$style['background-position']   = $position;
+				$style['background-attachment'] = $attr['backgroundAttachment'];
+				$style['background-repeat']     = $attr['backgroundRepeat'];
+				$style['background-size']       = $attr['backgroundSize'];
+
+			} elseif ( 'gradient' === $bg_type ) {
+				$style['background-color'] = 'transparent';
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
+			}
+
+			$inner_width = '100%';
+
+			if ( isset( $attr['contentWidth'] ) ) {
+				if ( 'custom' == $attr['contentWidth'] ) {
+					if ( "" != $attr['width'] ) {
+						$inner_width = $attr['width'] + "px"
+					}
+				}
+			}
+
+			$selectors = array(
+				'.uagb-column__wrap'        => $style,
+				' .uagb-column__video-wrap' => array(
+					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
+				),
+				' .uagb-column__inner-wrap' => array(
+					'max-width' => $inner_width,
+				),
+			);
+
+			if ( 'video' == $bg_type ) {
+				$selectors[' > .uagb-column__overlay'] = array(
+					'opacity'          => 1,
+					'background-color' => $attr['backgroundVideoColor'],
+				);
+			} else if ( 'image' == $bg_type ) {
+				$selectors[' > .uagb-column__overlay'] = array(
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+					'background-color' => $attr['backgroundImageColor'],
+				);
+			} else {
+				$selectors[' > .uagb-column__overlay'] = array(
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+				);
+			}
+
+			$selectors[' > .uagb-column__overlay']["border-radius"] = $attr['borderRadius'] . "px";*/
+
+			// @codingStandardsIgnoreEnd
+
+			return UAGB_Helper::generate_css( $selectors, '#uagb-column-' . $id );
+		}
+
+		/**
 		 * Get Advanced Heading Block CSS
 		 *
 		 * @since 0.0.1

@@ -1,5 +1,5 @@
 /**
- * BLOCK: Section
+ * BLOCK: Columns
  */
 
 import classnames from "classnames"
@@ -24,18 +24,6 @@ const {
 	InnerBlocks,
 } = wp.editor
 
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( "uagb/columns", {
 	title: uagb_blocks_info.blocks["uagb/columns"]["title"],
 	description: uagb_blocks_info.blocks["uagb/columns"]["description"],
@@ -54,7 +42,6 @@ registerBlockType( "uagb/columns", {
 		}
 	},
 	save : function( props ) {
-		return null
 
 		const { attributes, className } = props
 
@@ -64,17 +51,9 @@ registerBlockType( "uagb/columns", {
 			backgroundType,
 			backgroundVideo,
 			contentWidth,
-			align
+			align,
+			columns
 		} = props.attributes
-
-		let block_controls_class = ""
-
-		if ( "full_width" == contentWidth ) {
-
-			if ( align == "wide" || align == "full" ) {
-				block_controls_class = "align" + align
-			}
-		}
 
 		const CustomTag = `${tag}`
 
@@ -82,24 +61,28 @@ registerBlockType( "uagb/columns", {
 			<CustomTag
 				className={ classnames(
 					className,
-					"uagb-section__wrap",
-					`uagb-section__background-${backgroundType}`,
-					block_controls_class
+					"uagb-columns__wrap",
+					`uagb-columns__background-${backgroundType}`,
+					`align${ align }`
 				) }
-				id={ `uagb-section-${block_id}` }
+				id={ `uagb-columns-${block_id}` }
 			>
-				<div className="uagb-section__overlay"></div>
+				<div className="uagb-columns__overlay"></div>
 				{ "video" == backgroundType &&
-					<div className="uagb-section__video-wrap">
+					<div className="uagb-columns__video-wrap">
 						{  backgroundVideo &&
-						<video src={ backgroundVideo.url } autoPlay loop muted></video>
+							<video src={ backgroundVideo.url } autoPlay loop muted></video>
 						}
 
 					</div>
 				}
-				<div className="uagb-section__inner-wrap">
+				<div className={ classnames(
+						"uagb-columns__inner-wrap",
+						`uagb-columns__columns-${columns}`
+					) }>
 					<InnerBlocks.Content />
 				</div>
+
 			</CustomTag>
 		)
 	}

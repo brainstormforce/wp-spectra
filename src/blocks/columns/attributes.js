@@ -2,12 +2,15 @@
  * BLOCK: UAGB Section Attributes
  */
 const attributes = {
-	align: {
-		type: "string",
-		default: "center"
-	},
 	block_id: {
 		type: "string",
+	},
+	columns: {
+		type: "number",
+		default: 2
+	},
+	align: {
+		type: "string"
 	},
 	topPadding: {
 		type: "number",
@@ -43,19 +46,11 @@ const attributes = {
 	},
 	contentWidth: {
 		type: "string",
-		default: "boxed"
+		default: "theme"
 	},
 	width: {
 		type: "number",
 		default: 900
-	},
-	innerWidth: {
-		type: "number",
-		default: 1140
-	},
-	themeWidth: {
-		type: "boolean",
-		default: false
 	},
 	tag: {
 		type: "string",

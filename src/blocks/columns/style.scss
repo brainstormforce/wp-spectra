@@ -4,18 +4,18 @@
  * CSS for both Frontend+Backend.
  */
 
-.uagb-column__wrap {
+.uagb-columns__wrap {
 
 	position: relative;
 
-	.uagb-column__inner-wrap {
+	.uagb-columns__inner-wrap {
 		margin-left: auto;
 		margin-right: auto;
 		position: relative;
 		z-index: 2;
 	}
 
-	.uagb-column__overlay {
+	.uagb-columns__overlay {
 		height: 100%;
 		width: 100%;
 		top: 0;
@@ -24,7 +24,7 @@
 		background-color: #fff;
 	}
 
-	.uagb-column__video-wrap {
+	.uagb-columns__video-wrap {
 		height: 100%;
 		width: 100%;
 		top: 0;
@@ -37,7 +37,7 @@
 		transition: opacity 1s;
 	}
 
-	.uagb-column__video-wrap video {
+	.uagb-columns__video-wrap video {
 		max-width: 100%;
 		width: 100%;
 		height: 100%;
@@ -51,3 +51,15 @@
 		background-size: cover;
 	}
 }
+
+.uagb-columns__inner-wrap {
+	display: flex;
+	flex-wrap: nowrap;
+}
+
+.uagb-columns__columns-1 .uagb-column__wrap { width: 100%; }
+.uagb-columns__columns-2 .uagb-column__wrap { width: 50%; }
+.uagb-columns__columns-3 .uagb-column__wrap { width: 33.33%; }
+.uagb-columns__columns-4 .uagb-column__wrap { width: 25%; }
+.uagb-columns__columns-5 .uagb-column__wrap { width: 20%; }
+.uagb-columns__columns-6 .uagb-column__wrap { width: 16.66%; }

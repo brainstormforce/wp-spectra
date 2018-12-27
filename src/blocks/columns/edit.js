@@ -1,10 +1,10 @@
 /**
- * BLOCK: UAGB - Section Edit Class
+ * BLOCK: UAGB - Columns Edit Class
  */
 
 // Import classes
 import classnames from "classnames"
-//import styling from "./styling"
+import styling from "./styling"
 import memoize from 'memize';
 import times from 'lodash/times';
 import map from 'lodash/map';
@@ -174,7 +174,7 @@ class UAGBColumns extends Component {
 		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			//element.innerHTML = styling( this.props )
+			element.innerHTML = styling( this.props )
 		}
 
 		const onColorChange = ( colorValue ) => {
@@ -182,17 +182,6 @@ class UAGBColumns extends Component {
 		}
 
 		let active = ( isSelected ) ? "active" : "not-active"
-
-		let block_controls = [ "left","center","right" ]
-		let block_controls_class = ""
-
-		if ( "full_width" == contentWidth ) {
-			block_controls = [ "wide","full" ]
-
-			if ( align == "wide" || align == "full" ) {
-				block_controls_class = "align" + align
-			}
-		}
 
 		return (
 			<Fragment>
