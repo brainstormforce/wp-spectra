@@ -646,39 +646,27 @@ class UAGBcallToAction extends Component {
 						}
 						<div className = "uagb-ifb-content">
 
-							{  ctaPosition == "above-title" && is_cta }
-
-							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && title_text }
-
-							{ ctaPosition == "below-title"  && is_cta }
-
-							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && desc }
-
-							{ ( ctaPosition === "left-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-left-title-image">
-											{ is_cta }
-											{ title_text }
-										</div>
-										{ desc }
-									</Fragment>
+							{  ctaPosition == "above-title" && 
+								<Fragment>
+							     { is_cta }
+							     { title_text }
+							     { desc }
+							    </Fragment>
 							}
-
-							{ ( ctaPosition === "right-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-right-title-image">
-											{ title_text }
-											{ is_cta }
-										</div>
-										{ desc }
-									</Fragment>
+							
+							{ ctaPosition == "below-title"  && 
+								<Fragment>
+							     { title_text }
+							     { desc }
+							     { is_cta }
+							    </Fragment>
 							}
-
+							
 							{ ( ctaPosition == "left" || ctaPosition == "right") &&
-									<Fragment>
-										{ title_text }
-										{ desc }
-									</Fragment>
+								<Fragment>
+									{ title_text }
+									{ desc }
+								</Fragment>
 							}
 
 						</div>
