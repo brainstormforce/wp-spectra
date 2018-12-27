@@ -238,7 +238,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaIconSpace'        => '5',
 						),
 					),
-					'uagb/cta'         => array(
+					'uagb/cta'              => array(
 						'slug'        => '',
 						'title'       => __( 'CTA', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an Call To Action along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),

@@ -2,12 +2,7 @@
  * BLOCK: UAGB Section Attributes
  */
 
-const attributes = {
-	prefixTitle: {
-		source: "html",
-		selector: "span.uagb-ifb-title-prefix",
-		default: "Prefix",
-	},
+const attributes = {	
 	infoBoxTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
@@ -27,10 +22,7 @@ const attributes = {
 	},
 	subHeadingColor: {
 		type: "string",
-	},
-	prefixColor: {
-		type: "string",
-	},
+	},	
 	icon : {
 		type : "string",
 		default : "fa fa-star"
@@ -54,14 +46,7 @@ const attributes = {
 	iconColor : {
 		type : "string",
 		default : "#333",
-	},
-	prefixTag :{
-		type: "string",
-		default: "h3"
-	},
-	prefixFontSize: {
-		type: "number",
-	},
+	},	
 	headingTag: {
 		type: "string",
 		default: "h3"
@@ -121,26 +106,10 @@ const attributes = {
 	ctaIconSpace :{
 		type: "number",
 		default : 5
-	},
-	seperatorStyle: {
-		type: "string",
-		default: "solid",
-	},
-	seperatorColor: {
-		type: "string",
-		default: "#333",
-	},
-	seperatorWidth :{
-		type: "number",
-		default : 30
-	},
-	seperatorThickness :{
-		type: "number",
-		default : 2
-	},
+	},	
 	ctaType: {
 		type: "string",
-		default: "none",
+		default: "button",
 	},
 	ctaText: {
 		type: "string",
@@ -200,11 +169,7 @@ const attributes = {
 	ctaBorderRadius :{
 		type: "number",
 		default: 0,
-	},
-	prefixSpace :{
-		type: "number",
-		default: 5,
-	},
+	},	
 	iconLeftMargin :{
 		type: "number",
 		default: 10,
@@ -239,11 +204,7 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	},
-	showPrefix: {
-		type: "boolean",
-		default: true,
-	},
+	},	
 	showTitle: {
 		type: "boolean",
 		default: true,

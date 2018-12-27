@@ -4,12 +4,9 @@ import classnames from "classnames"
 // Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import Description from "./components/Description"
-import CtaIcon from "./components/CtaIcon"
 import CtaPositionClasses from "./classes"
-import CtaSeperator from "./components/CtaSeperator"
 import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 
@@ -129,21 +126,16 @@ class UAGBcallToAction extends Component {
 
 		// Setup the attributes.
 		const {
-			prefixTitle,
 			infoBoxTitle,
 			headingDesc,
 			headingAlign,
 			headingColor,
 			subHeadingColor,
-			prefixColor,
-			prefixTag,
-			prefixFontSize,
 			headingTag,
 			headFontSize,
 			subHeadFontSize,
 			separatorWidth,
 			separatorHeight,
-			seperatorSpace,
 			headSpace,
 			separatorSpace,
 			subHeadSpace,
@@ -156,10 +148,6 @@ class UAGBcallToAction extends Component {
 			iconimgBorderRadius,
 			source_type,
 			sourceAlign,
-			seperatorStyle,
-			seperatorWidth,
-			seperatorColor,
-			seperatorThickness,
 			ctaType,
 			ctaText,
 			ctaLink,
@@ -180,7 +168,6 @@ class UAGBcallToAction extends Component {
 			ctaBorderhoverColor,
 			ctaBorderWidth,
 			ctaBorderRadius,
-			prefixSpace,
 			iconLeftMargin,
 			iconRightMargin,
 			iconTopMargin,
@@ -189,7 +176,6 @@ class UAGBcallToAction extends Component {
 			imageSize,
 			imageWidth,
 			stack,
-			showPrefix,
 			showTitle,
 			showDesc,
 		} = attributes
@@ -256,62 +242,7 @@ class UAGBcallToAction extends Component {
 			</Fragment>
 		)
 
-		// Seperator settings.
-		const seperatorSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Seperator" ) }
-					initialOpen={ false } >
-
-					<SelectControl
-						label={ __( "Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
-					/>
-					{ "none" !== seperatorStyle &&
-					( <Fragment>
-						<Fragment>
-						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ seperatorColor }
-						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-						        allowReset
-						    />
-						</Fragment>
-
-						<RangeControl
-							label={ __( "Thickness" ) }
-							value={ seperatorThickness }
-							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-							min={ 0 }
-							max={ 10 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ seperatorWidth }
-							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon=""
-							allowReset
-						/>
-					</Fragment>
-					)
-					}
-
-				</PanelBody>
-			</Fragment>
-		)
-
+	
 		// CTA settings.
 		const ctaSettings = (
 			<Fragment>
@@ -503,24 +434,7 @@ class UAGBcallToAction extends Component {
 					title={ __( "Typography" ) }
 					initialOpen={ false }
 				>	
-					<ToggleControl
-						label={ __( "Enable Prefix" ) }
-						checked={ showPrefix }
-						onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
-					/>
-					{ showPrefix &&
-						<RangeControl
-							label={ __( "Prefix Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					}
-
+					
 					<ToggleControl
 						label={ __( "Enable Heading" ) }
 						checked={ showTitle }
@@ -590,15 +504,7 @@ class UAGBcallToAction extends Component {
 					title={ __( "Color Settings" ) }
 					initialOpen={ true }
 					>					
-						{ showPrefix && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ prefixColor }
-						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
-						        allowReset
-						    />
-						    </Fragment>	
-						}
+						
 						{ showTitle && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Headingading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						    <ColorPalette
@@ -673,17 +579,7 @@ class UAGBcallToAction extends Component {
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
 				>
-					{ showPrefix && 
-						<RangeControl
-							label={ __( "Prefix Bottom Margin" ) }
-							value={ prefixSpace }
-							onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					}
+					
 					{ showTitle && 
 						<RangeControl
 							label={ __( "Heading Bottom Margin" ) }
@@ -694,16 +590,8 @@ class UAGBcallToAction extends Component {
 							beforeIcon=""
 							allowReset
 						/>
-					}					
-					<RangeControl
-						label={ __( "Seperator Bottom Margin" ) }
-						value={ seperatorSpace }
-						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
+					}				
+					
 					{ showDesc && 
 						<RangeControl
 							label={ __( "Description Bottom Margin" ) }
@@ -893,7 +781,6 @@ class UAGBcallToAction extends Component {
 
 					</PanelBody>
 					{ TypographySettings }
-					{ seperatorSettings }
 					{ ctaSettings }				
 
 					{ marginSettings }
@@ -903,28 +790,24 @@ class UAGBcallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_image = ""
+		let is_cta = ""
+		
+		is_cta =  <CallToAction attributes={attributes} />
+		
 
-		if( source_type === "icon" && icon !== "" ) {
-			is_image =  <CtaIcon attributes={attributes}/>
-		}
-
-		// Get description and seperator components.
+		// Get description components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <CtaSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<CallToAction attributes={attributes} /> 
 				</div>
 			</Fragment>
 		)
 
-		// Get Title and Prefix components.
+		// Get Title components.
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					{ showPrefix && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
@@ -940,22 +823,22 @@ class UAGBcallToAction extends Component {
 					<div className = "uagb-ifb-left-right-wrap">
 
 						{ ( iconimgPosition == "left") &&
-								is_image
+								is_cta
 						}
 						<div className = "uagb-ifb-content">
 
-							{  iconimgPosition == "above-title" && is_image }
+							{  iconimgPosition == "above-title" && is_cta }
 
 							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-							{ iconimgPosition == "below-title"  && is_image }
+							{ iconimgPosition == "below-title"  && is_cta }
 
 							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
 							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-left-title-image">
-											{ is_image }
+											{ is_cta }
 											{ title_text }
 										</div>
 										{ desc }
@@ -966,7 +849,7 @@ class UAGBcallToAction extends Component {
 									<Fragment>
 										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
-											{ is_image }
+											{ is_cta }
 										</div>
 										{ desc }
 									</Fragment>
@@ -982,7 +865,7 @@ class UAGBcallToAction extends Component {
 						</div>
 
 						{ ( iconimgPosition == "right") &&
-								is_image
+								is_cta
 						}
 					</div>
 				</div>
