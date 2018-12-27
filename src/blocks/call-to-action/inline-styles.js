@@ -3,7 +3,7 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
-function InfoBoxStyle( props ) {
+function CtaStyle( props ) {
 	const {
 		headingAlign,
 		headingColor,
@@ -20,7 +20,7 @@ function InfoBoxStyle( props ) {
 		icon,
 		iconColor,
 		iconSize,
-		iconimgPosition,
+		ctaPosition,
 		block_id,
 		iconHover,
 		iconimgBorderRadius,
@@ -98,7 +98,7 @@ function InfoBoxStyle( props ) {
 	}
 
 
-	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
+	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
 		selectors[".uagb-infobox__content-wrap"] = {
 			"text-align" : headingAlign,
 		}
@@ -216,4 +216,4 @@ function InfoBoxStyle( props ) {
 
 }
 
-export default InfoBoxStyle
+export default CtaStyle

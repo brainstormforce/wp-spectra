@@ -24,9 +24,9 @@ class Title extends React.Component {
 				<RichText
 	                tagName= { attributes.headingTag }
 	                placeholder={ __( "Write a Heading" ) }
-	                value={ attributes.infoBoxTitle }
+	                value={ attributes.ctaTitle }
 	                className = 'uagb-ifb-title'
-	                onChange = { ( value ) => setAttributes( { infoBoxTitle: value } ) }
+	                onChange = { ( value ) => setAttributes( { ctaTitle: value } ) }
 	                multiline={ false }
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
@@ -47,7 +47,7 @@ class Title extends React.Component {
 			return (
 				<RichText.Content
 	                tagName= { attributes.headingTag }
-	                value={ attributes.infoBoxTitle }
+	                value={ attributes.ctaTitle }
 	                className='uagb-ifb-title'
 	            />
 			)

@@ -15,24 +15,24 @@ function CtaPositionClasses( attributes ) {
 
 	iconimgStyle_class += "uagb-infobox"+ " "
 	iconimgStyle_class += sourceClass+ " "
-	iconimgStyle_class += "uagb-infobox-icon-"+attributes.iconimgPosition+ " "
+	iconimgStyle_class += "uagb-infobox-icon-"+attributes.ctaPosition+ " "
 
-	if( attributes.iconimgPosition === "left" || attributes.iconimgPosition === "left-title"  ){
+	if( attributes.ctaPosition === "left" || attributes.ctaPosition === "left-title"  ){
 		iconimgStyle_class +="uagb-infobox-left"+ " "
 	}
 
-	if( attributes.iconimgPosition === "right" || attributes.iconimgPosition === "right-title"  ){
+	if( attributes.ctaPosition === "right" || attributes.ctaPosition === "right-title"  ){
 		iconimgStyle_class +="uagb-infobox-right"+ " "
 	}
 
-	if( ( attributes.iconimgPosition === "left" || attributes.iconimgPosition === "right" ) && attributes.stack !== "none"  ){
+	if( ( attributes.ctaPosition === "left" || attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
 		iconimgStyle_class +="uagb-infobox-stacked-"+attributes.stack+ " "
-		if( attributes.iconimgPosition === "right" ){
+		if( attributes.ctaPosition === "right" ){
 			iconimgStyle_class += "uagb-infobox-reverse-order-"+attributes.stack+ " "
 		}
 	}
 
-	if( attributes.iconimgPosition !== "above-title" || attributes.iconimgPosition !== "below-title"  ){
+	if( attributes.ctaPosition !== "above-title" || attributes.ctaPosition !== "below-title"  ){
 		iconimgStyle_class += "uagb-infobox-image-valign-"+attributes.sourceAlign+ " "
 	}
 

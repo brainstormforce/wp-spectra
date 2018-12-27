@@ -56,7 +56,7 @@ registerBlockType( "uagb/call-to-action", {
 	edit,
 	save: function( props ) {
 		const {
-			iconimgPosition,
+			ctaPosition,
 			block_id,
 			source_type,
 			backgroundType,
@@ -65,7 +65,7 @@ registerBlockType( "uagb/call-to-action", {
 			ctaTarget,
 			className,
 			prefixTitle,
-			infoBoxTitle,
+			ctaTitle,
 			headingDesc,
 			showTitle,
 			showDesc,
@@ -100,7 +100,7 @@ registerBlockType( "uagb/call-to-action", {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
+					{ showTitle && "" !== ctaTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
 		)
@@ -113,20 +113,20 @@ registerBlockType( "uagb/call-to-action", {
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
 
-						{ ( iconimgPosition == "left") &&
+						{ ( ctaPosition == "left") &&
 								is_image
 						}
 						<div className = "uagb-ifb-content">
 
-							{  iconimgPosition == "above-title" && is_image }
+							{  ctaPosition == "above-title" && is_image }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && title_text }
 
-							{ iconimgPosition == "below-title"  && is_image }
+							{ ctaPosition == "below-title"  && is_image }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && desc }
 
-							{ ( iconimgPosition === "left-title") &&
+							{ ( ctaPosition === "left-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-left-title-image">
 											{ is_image }
@@ -136,7 +136,7 @@ registerBlockType( "uagb/call-to-action", {
 									</Fragment>
 							}
 
-							{ ( iconimgPosition === "right-title") &&
+							{ ( ctaPosition === "right-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
@@ -146,7 +146,7 @@ registerBlockType( "uagb/call-to-action", {
 									</Fragment>
 							}
 
-							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+							{ ( ctaPosition == "left" || ctaPosition == "right") &&
 									<Fragment>
 										{ title_text }
 										{ desc }
@@ -155,7 +155,7 @@ registerBlockType( "uagb/call-to-action", {
 
 						</div>
 
-						{ ( iconimgPosition == "right") &&
+						{ ( ctaPosition == "right") &&
 								is_image
 						}
 					</div>

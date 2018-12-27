@@ -3,10 +3,10 @@
  */
 
 const attributes = {	
-	infoBoxTitle: {
+	ctaTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
-		default: "Info Box",
+		default: "Call To Action",
 	},
 	headingDesc: {
 		source: "html",
@@ -22,30 +22,10 @@ const attributes = {
 	},
 	subHeadingColor: {
 		type: "string",
-	},	
-	icon : {
-		type : "string",
-		default : "fa fa-star"
-	},
-	iconimgPosition: {
+	},		
+	ctaPosition: {
 		type: "string",
 		default: "above-title"
-	},
-	iconSize : {
-		type: "number",
-		default: 40,
-	},
-	iconHover : {
-		type : "string",
-		default : ""
-	},
-	iconBgHover : {
-		type : "string",
-		default : ""
-	},
-	iconColor : {
-		type : "string",
-		default : "#333",
 	},	
 	headingTag: {
 		type: "string",
@@ -70,19 +50,11 @@ const attributes = {
 	subHeadSpace: {
 		type: "number",
 		default : 10,
-	},
-	seperatorSpace:{
-		type: "number",
-		default : 10,
-	},
+	},	
 	iconimgBorderRadius: {
 		type: "number",
 		default : 0
-	},
-	source_type :{
-		type: "string",
-		default: "icon",
-	},
+	},	
 	block_id :{
 		type : "string",
 		default : "not_set"
@@ -169,38 +141,8 @@ const attributes = {
 	ctaBorderRadius :{
 		type: "number",
 		default: 0,
-	},	
-	iconLeftMargin :{
-		type: "number",
-		default: 10,
-	},
-	iconRightMargin :{
-		type: "number",
-		default: 10,
-	},
-	iconTopMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconBottomMargin :{
-		type: "number",
-		default: 5,
-	},
-	iconImage: {
-		type: "object",
-		default:{
-			"url": "",
-			"alt": "InfoBox placeholder img",
-		}
-	},
-	imageSize:{
-		type: "string",
-		default: "thumbnail",
-	},
-	imageWidth :{
-		type: "number",
-		default: 120,
-	},
+	},		
+	
 	stack: {
 		type: "string",
 		default: "tablet"

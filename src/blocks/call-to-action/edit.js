@@ -126,7 +126,7 @@ class UAGBcallToAction extends Component {
 
 		// Setup the attributes.
 		const {
-			infoBoxTitle,
+			ctaTitle,
 			headingDesc,
 			headingAlign,
 			headingColor,
@@ -138,15 +138,9 @@ class UAGBcallToAction extends Component {
 			separatorHeight,
 			headSpace,
 			separatorSpace,
-			subHeadSpace,
-			icon,
-			iconColor,
-			iconSize,
-			iconimgPosition,
+			subHeadSpace,			
+			ctaPosition,
 			block_id,
-			iconHover,
-			iconimgBorderRadius,
-			source_type,
 			sourceAlign,
 			ctaType,
 			ctaText,
@@ -168,13 +162,6 @@ class UAGBcallToAction extends Component {
 			ctaBorderhoverColor,
 			ctaBorderWidth,
 			ctaBorderRadius,
-			iconLeftMargin,
-			iconRightMargin,
-			iconTopMargin,
-			iconBottomMargin,
-			iconImage,
-			imageSize,
-			imageWidth,
 			stack,
 			showTitle,
 			showDesc,
@@ -185,17 +172,7 @@ class UAGBcallToAction extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = InfoBoxStyle( this.props )
 		}
-
-		// Icon properties.
-		const icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: icon,
-		  onChange: this.getIfbIcon,
-		  isMulti: false,
-		}
-
+		
 		// Icon properties.
 		const cta_icon_props = {
 		  icons: UAGBIcon,
@@ -207,40 +184,6 @@ class UAGBcallToAction extends Component {
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
-
-
-		// Settings for icon.
-		const iconControls = (
-			<Fragment>
-				<FontIconPicker {...icon_props} />
-				<RangeControl
-					label = { __( "Icon Size" ) }
-					value = { iconSize }
-					onChange = { ( value ) => setAttributes( { iconSize: value } ) }
-					min = { 10 }
-					max = { 300 }
-					beforeIcon = ""
-					allowReset
-				/>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: iconColor,
-							onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: iconHover,
-							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
-							label: __( "Icon Hover Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
-			</Fragment>
-		)
 
 	
 		// CTA settings.
@@ -602,48 +545,7 @@ class UAGBcallToAction extends Component {
 							beforeIcon=""
 							allowReset
 						/>
-					}
-					<PanelBody
-						title={ __( "Image/Icon Margins" ) }
-						initialOpen={ true }
-					>
-						<RangeControl
-							label={ __( "Left Margin" ) }
-							value={ iconLeftMargin }
-							onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Right Margin" ) }
-							value={ iconRightMargin }
-							onChange={ ( value ) => setAttributes( { iconRightMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Top Margin" ) }
-							value={ iconTopMargin }
-							onChange={ ( value ) => setAttributes( { iconTopMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Bottom Margin" ) }
-							value={ iconBottomMargin }
-							onChange={ ( value ) => setAttributes( { iconBottomMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					</PanelBody>
+					}					
 				</PanelBody>
 			</Fragment>
 		)
@@ -655,70 +557,7 @@ class UAGBcallToAction extends Component {
 			{ value: "full", label: __( "Large" ) }
 		]
 
-		let image_name = "Select Image"
-		if(iconImage){
-			if(iconImage.url == null || iconImage.url == "" ){
-				image_name = "Select Image"
-			}else{
-				image_name = "Replace Image"
-			}
-		}
-
-		// Image controls.
-		const imageControls = (
-			<Fragment>
-				<BaseControl
-					className="editor-bg-image-control"
-					label={ __( "Image" ) }
-				>
-					<MediaUpload
-						title={ __( "Select Image" ) }
-						onSelect={ this.onSelectImage }
-						allowedTypes= { [ "image" ] }
-						value={ iconImage }
-						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
-								{ image_name }
-							</Button>
-						) }
-					/>
-					{ ( iconImage && iconImage.url !=="null" && iconImage.url !== "" ) &&
-						<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
-							{ __( "Remove Image" ) }
-						</Button>
-					}
-				</BaseControl>
-				{ ( iconImage && iconImage.url !=="null" && iconImage.url !== "" ) &&
-					<Fragment>
-						<SelectControl
-							label={ __( "Image Size" ) }
-							options={ imageSizeOptions }
-							value={ imageSize }
-							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
-						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ imageWidth }
-							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label = { __( "Rounded Corners" ) }
-							value = { iconimgBorderRadius }
-							onChange = { ( value ) => setAttributes( { iconimgBorderRadius: value } ) }
-							min = { 0 }
-							max = { 500 }
-							beforeIcon = ""
-							allowReset
-						/>
-					</Fragment>
-				}
-			</Fragment>
-		)
-
+	
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
@@ -729,19 +568,17 @@ class UAGBcallToAction extends Component {
 					>
 						<SelectControl
 							label={ __( "Select Position" ) }
-							value={ iconimgPosition }
-							onChange={ ( value ) => setAttributes( { iconimgPosition: value } ) }
+							value={ ctaPosition }
+							onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
 							options={ [
-								{ value: "above-title", label: __( "Above Heading" ) },
-								{ value: "below-title", label: __( "Below Heading" ) },
-								{ value: "left-title", label: __( "Left of Heading" ) },
-								{ value: "right-title", label: __( "Right of Heading" ) },
+								{ value: "above-title", label: __( "Top" ) },
+								{ value: "below-title", label: __( "Bottom" ) },
 								{ value: "left", label: __( "Left of Text and Heading" ) },
 								{ value: "right", label: __( "Right of Text and Heading" ) },
 
 							] }
 						/>
-						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
+						{ ( ctaPosition == "left" || ctaPosition == "right" ) &&
 							<SelectControl
 								label={ __( "Stack on" ) }
 								value={ stack }
@@ -753,18 +590,9 @@ class UAGBcallToAction extends Component {
 								help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
-						}
-						<SelectControl
-							label={ __( "Select Source" ) }
-							value={ source_type }
-							onChange={ ( value ) => setAttributes( { source_type: value } ) }
-							options={ [
-								{ value: "icon", label: __( "Icon" ) },
-								{ value: "image", label: __( "Image" ) },
-							] }
-						/>
+						}						
 
-						{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
+						{ ( ctaPosition && (ctaPosition !== "above-title" && ctaPosition !== "below-title" )  ) && <SelectControl
 							label={ __( "Vertical ALignment" ) }
 							value={ sourceAlign }
 							onChange={ ( value ) => setAttributes( { sourceAlign: value } ) }
@@ -774,15 +602,10 @@ class UAGBcallToAction extends Component {
 							] }
 						/>
 						}
-
-						{ ( source_type && source_type == "icon" ) && iconControls }
-
-						{ ( source_type && source_type == "image" ) && imageControls }
-
+						
 					</PanelBody>
 					{ TypographySettings }
-					{ ctaSettings }				
-
+					{ ctaSettings }	
 					{ marginSettings }
 
 				</InspectorControls>
@@ -822,20 +645,20 @@ class UAGBcallToAction extends Component {
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
 
-						{ ( iconimgPosition == "left") &&
+						{ ( ctaPosition == "left") &&
 								is_cta
 						}
 						<div className = "uagb-ifb-content">
 
-							{  iconimgPosition == "above-title" && is_cta }
+							{  ctaPosition == "above-title" && is_cta }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && title_text }
 
-							{ iconimgPosition == "below-title"  && is_cta }
+							{ ctaPosition == "below-title"  && is_cta }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && desc }
 
-							{ ( iconimgPosition === "left-title") &&
+							{ ( ctaPosition === "left-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-left-title-image">
 											{ is_cta }
@@ -845,7 +668,7 @@ class UAGBcallToAction extends Component {
 									</Fragment>
 							}
 
-							{ ( iconimgPosition === "right-title") &&
+							{ ( ctaPosition === "right-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
@@ -855,7 +678,7 @@ class UAGBcallToAction extends Component {
 									</Fragment>
 							}
 
-							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+							{ ( ctaPosition == "left" || ctaPosition == "right") &&
 									<Fragment>
 										{ title_text }
 										{ desc }
@@ -864,7 +687,7 @@ class UAGBcallToAction extends Component {
 
 						</div>
 
-						{ ( iconimgPosition == "right") &&
+						{ ( ctaPosition == "right") &&
 								is_cta
 						}
 					</div>
@@ -874,7 +697,7 @@ class UAGBcallToAction extends Component {
 
 		return (
 			<Fragment>
-				{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") &&
+				{ ( ctaPosition == "above-title" || ctaPosition == "below-title") &&
 					<BlockControls key='controls'>
 						<AlignmentToolbar
 							value={ headingAlign }
