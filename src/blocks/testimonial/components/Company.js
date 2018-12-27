@@ -40,7 +40,7 @@ class Company extends React.Component {
 	                	
 	                } }     
 	                multiline={ false }
-	                placeholder={ __( "Write a Heading" ) }
+	                placeholder={ __( "Company Name" ) }
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

@@ -32,6 +32,7 @@ class AuthorName extends React.Component {
 				<RichText
 	                tagName="span"
 	                value={ author_name }
+	                placeholder={ __( "Author Name" ) }
 	                className='uagb-tm__author-name'
 	                onChange={ ( value ) => { 
 	                	var new_content = { "description" : data_copy[index_value]["description"], "name":value, "company" : data_copy[index_value]["company"], "image" : data_copy[index_value]["image"]  }

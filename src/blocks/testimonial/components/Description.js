@@ -32,6 +32,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ description }
+	                placeholder={ __( "Write Description" ) }
 	                className='uagb-tm__desc'
 	                onChange={ ( value ) => { 
 

@@ -72,6 +72,9 @@ registerBlockType( "uagb/info-box", {
 			prefixTitle,
 			infoBoxTitle,
 			headingDesc,
+			showPrefix,
+			showTitle,
+			showDesc,
 			icon
 		} = props.attributes
 
@@ -97,7 +100,7 @@ registerBlockType( "uagb/info-box", {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					{ "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
+					{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
 					{ ctaType !== "none" && <InfoBoxCta attributes={props.attributes} />}
 				</div>
 			</Fragment>
@@ -107,8 +110,8 @@ registerBlockType( "uagb/info-box", {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					{ "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
-					{ "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
+					{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
+					{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
 		)
