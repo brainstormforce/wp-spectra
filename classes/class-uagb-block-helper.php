@@ -1669,11 +1669,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = self::get_post_selectors( $attr );
 
+			$m_selectors = self::get_post_mobile_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
 
-			return $desktop;
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__grid-' . $id );
+
+			return $desktop . $mobile;
 		}
 
 		/**
@@ -1693,6 +1697,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
+
+			$m_selectors = self::get_post_mobile_selectors( $attr );
 
 			$selectors[" .slick-arrow"] = array(
 				"border-color" => $attr['arrowColor']
@@ -1730,7 +1736,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
 
-			return $desktop;
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__carousel-' . $id );
+
+			return $desktop . $mobile;
 		}
 
 		/**
@@ -1751,11 +1759,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = self::get_post_selectors( $attr );
 
+			$m_selectors = self::get_post_mobile_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__masonry-' . $id );
 
-			return $desktop;
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__masonry-' . $id );
+
+			return $desktop . $mobile;
 		}
 
 		/**
@@ -1825,7 +1837,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . "px"
+					"font-size"=> $attr['ctaFontSize']  . "px",
+					"padding" => ( $attr['btnVPadding'] ) . "px " . ( $attr['btnHPadding'] ) . "px",
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
 					"color"=> $attr['ctaHColor'],
@@ -1838,6 +1851,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"background-color" => $attr['bgOverlayColor'],
 					"opacity" => ( $attr['overlayOpacity'] / 100 )
 				),
+			);
+			// @codingStandardsIgnoreEnd
+		}
+
+		/**
+		 * Get Post Block Selectors CSS for Mobile devices
+		 *
+		 * @param array $attr The block attributes.
+		 * @since 1.6.1
+		 */
+		public static function get_post_mobile_selectors( $attr ) {
+
+			// @codingStandardsIgnoreStart
+			return array(
+				" .uagb-post__text" => array(
+					"padding" => ( $attr['contentPaddingMobile'] ) . "px",
+				)
 			);
 			// @codingStandardsIgnoreEnd
 		}

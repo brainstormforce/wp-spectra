@@ -93,6 +93,10 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.6.1 =
+* Improvement: Post - Added an option for Content Padding on Mobile devices.
+* Improvement: Post - Added an option for padding to Read More link button.
+
 = 1.6.0 =
 * New: Post Masonry
 * Fix: Icon List - Gap between items not being applied on editor issue fixed.
