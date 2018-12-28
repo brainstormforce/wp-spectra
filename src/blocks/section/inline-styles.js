@@ -59,6 +59,9 @@ function inlineStyles( props, isEditor ) {
 		style["margin-left"] = "auto"
 		style["margin-top"] = topMargin + "px"
 		style["margin-bottom"] =  bottomMargin + "px"
+	} else {
+		style["margin-top"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
 	}
 
 	if ( borderStyle != "none" ) {

@@ -189,7 +189,10 @@ class UAGBinfoBox extends Component {
 			iconImage,
 			imageSize,
 			imageWidth,
-			stack
+			stack,
+			showPrefix,
+			showTitle,
+			showDesc,
 		} = attributes
 
 		// Add CSS.
@@ -500,52 +503,73 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Typography" ) }
 					initialOpen={ false }
-				>
-					<RangeControl
-						label={ __( "Prefix Font Size" ) }
-						value={ prefixFontSize }
-						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
+				>	
+					<ToggleControl
+						label={ __( "Enable Prefix" ) }
+						checked={ showPrefix }
+						onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
 					/>
+					{ showPrefix &&
+						<RangeControl
+							label={ __( "Prefix Font Size" ) }
+							value={ prefixFontSize }
+							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							initialPosition={16}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
 
-					<SelectControl
-						label={ __( "Title Tag" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-						] }
+					<ToggleControl
+						label={ __( "Enable Heading" ) }
+						checked={ showTitle }
+						onChange={ ( value ) => setAttributes( { showTitle: ! showTitle } ) }
 					/>
-					<RangeControl
-						label={ __( "Heading Font Size" ) }
-						value={ headFontSize }
-						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
+					{ showTitle && <Fragment>
+							<SelectControl
+								label={ __( "Title Tag" ) }
+								value={ headingTag }
+								onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+								options={ [
+									{ value: "h1", label: __( "H1" ) },
+									{ value: "h2", label: __( "H2" ) },
+									{ value: "h3", label: __( "H3" ) },
+									{ value: "h4", label: __( "H4" ) },
+									{ value: "h5", label: __( "H5" ) },
+									{ value: "h6", label: __( "H6" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Heading Font Size" ) }
+								value={ headFontSize }
+								onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+								min={ 10 }
+								max={ 200 }
+								initialPosition={30}
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+						</Fragment>
+					}
+					<ToggleControl
+						label={ __( "Enable Description" ) }
+						checked={ showDesc }
+						onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
 					/>
-
-					<RangeControl
-						label={ __( "Description Font Size" ) }
-						value={ subHeadFontSize }
-						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					{ showDesc &&
+						<RangeControl
+							label={ __( "Description Font Size" ) }
+							value={ subHeadFontSize }
+							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							initialPosition={16}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+					}
 
 					{ ( ctaType === "text" || ctaType === "button" ) &&	(
 
@@ -563,29 +587,36 @@ class UAGBinfoBox extends Component {
 					}
 
 				</PanelBody>
-
-				<PanelColorSettings
+				<PanelBody
 					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: prefixColor,
-							onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
-							label: __( "Prefix Title Color" ),
-						},
-						{
-							value: headingColor,
-							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-							label: __( "Title Color" ),
-						},
-						{
-							value: subHeadingColor,
-							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-							label: __( "Description Color" ),
-						},
-
-					] }
-				>
+					initialOpen={ true }
+					>					
+						{ showPrefix && <Fragment>
+						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ prefixColor }
+						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
+						        allowReset
+						    />
+						    </Fragment>	
+						}
+						{ showTitle && <Fragment>
+						    <p className="uagb-setting-label">{ __( "Headingading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ headingColor }
+						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+						        allowReset
+						    /> </Fragment>	
+						}
+						{ showDesc && <Fragment>
+						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ subHeadingColor }
+						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+						        allowReset
+						    /> </Fragment>	
+						}									
+			
 					{ ( ctaType === "text") &&
 							<Fragment>
 							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
@@ -630,7 +661,7 @@ class UAGBinfoBox extends Component {
 								}
 							</TabPanel>
 					}
-				</PanelColorSettings>
+				</PanelBody>
 
 
 			</Fragment>
@@ -643,24 +674,28 @@ class UAGBinfoBox extends Component {
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
 				>
-					<RangeControl
-						label={ __( "Prefix Bottom Margin" ) }
-						value={ prefixSpace }
-						onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Title Bottom Margin" ) }
-						value={ headSpace }
-						onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
+					{ showPrefix && 
+						<RangeControl
+							label={ __( "Prefix Bottom Margin" ) }
+							value={ prefixSpace }
+							onChange={ ( value ) => setAttributes( { prefixSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+					}
+					{ showTitle && 
+						<RangeControl
+							label={ __( "Heading Bottom Margin" ) }
+							value={ headSpace }
+							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+					}					
 					<RangeControl
 						label={ __( "Seperator Bottom Margin" ) }
 						value={ seperatorSpace }
@@ -670,15 +705,17 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Description Bottom Margin" ) }
-						value={ subHeadSpace }
-						onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
+					{ showDesc && 
+						<RangeControl
+							label={ __( "Description Bottom Margin" ) }
+							value={ subHeadSpace }
+							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+					}
 					<PanelBody
 						title={ __( "Image/Icon Margins" ) }
 						initialOpen={ true }
@@ -856,12 +893,9 @@ class UAGBinfoBox extends Component {
 						{ ( source_type && source_type == "image" ) && imageControls }
 
 					</PanelBody>
-
-					{ seperatorSettings }
-
-					{ ctaSettings }
-
 					{ TypographySettings }
+					{ seperatorSettings }
+					{ ctaSettings }				
 
 					{ marginSettings }
 
@@ -883,7 +917,7 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
 					<InfoBoxCta attributes={attributes} /> 
 				</div>
 			</Fragment>
@@ -893,8 +927,8 @@ class UAGBinfoBox extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> 
-					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ showPrefix && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)

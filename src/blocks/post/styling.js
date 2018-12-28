@@ -53,7 +53,8 @@ function styling( props, id ) {
 			"background" : bgColor
 		},
 		" .uagb-post__text": {
-			"padding" : ( contentPadding ) + "px"
+			"padding" : ( contentPadding ) + "px",
+			"text-align" : align
 		},
 		" .uagb-post__text .uagb-post__title": {
 			"color": titleColor,

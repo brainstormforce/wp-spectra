@@ -174,6 +174,17 @@ class UAGBSectionEdit extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
+		let block_controls = [ "left","center","right" ]
+		let block_controls_class = ""
+
+		if ( "full_width" == contentWidth ) {
+			block_controls = [ "wide","full" ]
+
+			if ( align == "wide" || align == "full" ) {
+				block_controls_class = "align" + align
+			}
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -182,7 +193,7 @@ class UAGBSectionEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left","center","right" ] }
+						controls={ block_controls }
 					/>
 				</BlockControls>
 				<InspectorControls>
@@ -201,6 +212,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Width" ) }
 								value={ width }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
@@ -216,6 +229,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Inner Width" ) }
 								value={ innerWidth }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
 							/> )
 						}
@@ -240,7 +255,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Padding" ) }
 							value={ leftPadding }
 							onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -248,7 +263,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Padding" ) }
 							value={ rightPadding }
 							onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -256,7 +271,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Padding" ) }
 							value={ topPadding }
 							onChange={ ( value ) => setAttributes( { topPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -264,7 +279,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Padding" ) }
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -272,7 +287,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Margin" ) }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -280,7 +295,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Margin" ) }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -288,7 +303,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Margin" ) }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -296,7 +311,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Margin" ) }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
@@ -567,7 +582,8 @@ class UAGBSectionEdit extends Component {
 						className,
 						"uagb-section__wrap",
 						`uagb-section__background-${backgroundType}`,
-						`uagb-section__edit-${ active }`
+						`uagb-section__edit-${ active }`,
+						block_controls_class
 					) }
 					id={ `uagb-section-${this.props.clientId}` }
 				>

@@ -283,7 +283,9 @@ export default class UAGBAdvancedHeading extends Component {
 						value={ headingTitle }
 						className='uagb-heading-text'
 						multiline={ false }
-						onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
+						onChange={ ( value ) => {
+							setAttributes( { headingTitle: value } ) }
+						}
 						onMerge={ mergeBlocks }
 						unstableOnSplit={
 							insertBlocksAfter ?

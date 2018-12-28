@@ -75,6 +75,7 @@
 	.uagb-post__title {
 		margin-top: 0;
 		margin-bottom: 15px;
+		word-break: break-word;
 
 		a {
 			color: inherit;
@@ -149,6 +150,7 @@
 
 	.uagb-post__excerpt {
 		margin-bottom: 25px;
+		word-break: break-word;
 	}
 
 	.uagb-post__text p {

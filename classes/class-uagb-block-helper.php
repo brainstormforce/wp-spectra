@@ -56,8 +56,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['margin-top']    = $attr['topMargin'] . 'px';
 				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			} else {
-				$style['margin-right']  = $attr['rightMargin'] . 'px';
-				$style['margin-left']   = $attr['leftMargin'] . 'px';
 				$style['margin-top']    = $attr['topMargin'] . 'px';
 				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
 			}
@@ -81,7 +79,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
-			$style['max-width'] = $section_width;
+			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
+				$style['max-width'] = $section_width;
+			}
+
 
 			if ( 'color' === $bg_type ) {
 
@@ -111,7 +112,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
-					if ( $attr['themeWidth'] == true ) {
+					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
 						$inner_width = $content_width . 'px';
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
@@ -572,10 +573,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
+			if( '1' === $attr->test_item_count || $attr->test_item_count === $attr->columns ||  'dots' === $attr->arrowDots ){
+				$selectors['.uagb-slick-carousel'] = array(
+						'padding' => '0px',
+					);
+			}
+
 			$r_selectors = array(
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
-				),
+				)
 			);
 
 			// @codingStandardsIgnoreEnd.
@@ -734,15 +741,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"border-radius" => $attr['borderRadius'] . "px"
 			);
 
-			$selectors[" .uagb-ss__wrapper .uagb-ss__link"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"padding" => $attr['bgSize'] . "px"
-			);
-
 			$selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px"
+				"height" => $attr['size'] . "px",
+				"line-height" => $attr['size'] . "px"
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(
@@ -752,13 +754,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-ss__source-icon"] = array(
 				"width" => $attr['size'] . "px",
 				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px"
-			);
-
-			$selectors[" .uagb-ss__source-icon:before"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px"
+				"font-size" => $attr['size'] . "px",
+				"line-height" => $attr['size'] . "px"
 			);
 
 			foreach ( $attr['socials'] as $key => $social ) {
@@ -771,7 +768,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
-					"color" => $social['icon_color']
+					"color" => $social['icon_color'],
+					"padding" => $attr['bgSize'] . "px"
 				);
 
 				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
@@ -792,6 +790,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"-webkit-box-pack" => $alignment,
 				"-ms-flex-pack" => $alignment,
 				"justify-content" => $alignment,
+				"-webkit-box-align" => $alignment,
+				"-ms-flex-align" => $alignment,
+				"align-items" => $alignment,
 			);
 
 			if ( 'horizontal' == $attr['social_layout'] ) {
@@ -1718,6 +1719,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"color" => $attr['arrowColor']
 			);
 
+			if ( isset( $attr['arrowDots'] ) && 'dots' == $attr['arrowDots'] ) {
+
+				$selectors[".uagb-slick-carousel"] = array(
+					"padding" => "0"
+				);
+			}
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
@@ -1773,7 +1781,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"background" => $attr['bgColor']
 				),
 				" .uagb-post__text" => array(
-					"padding" => ( $attr['contentPadding'] ) . "px"
+					"padding" => ( $attr['contentPadding'] ) . "px",
+					"text-align" => $attr['align']
 				),
 				" .uagb-post__text .uagb-post__title" => array(
 					"color"=> $attr['titleColor'],
@@ -1832,5 +1841,67 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// @codingStandardsIgnoreEnd
 		}
+
+		/**
+		 * Get Testimonial Js
+		 *
+		 * @since 1.6.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_testimonial_js( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+
+			$slick_options = [
+				'slidesToShow'   => $attr['columns'],
+				'slidesToScroll' => 1,
+				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
+				'autoplay'       => $attr['autoplay'],
+				'infinite'       => $attr['infiniteLoop'],
+				'pauseOnHover'   => $attr['pauseOnHover'],
+				'speed'          => $attr['transitionSpeed'],
+				'arrows'         => $arrows,
+				'dots'           => $dots,
+				'rtl'            => false,
+				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'responsive'		=> [
+					[
+						'breakpoint' => 1024,
+						'settings' => [
+							'slidesToShow'   => $attr['tcolumns'],
+							'slidesToScroll' => 1,
+						],
+					],
+					[
+						'breakpoint' => 767,
+						'settings' => [
+							'slidesToShow'   => $attr['mcolumns'],
+							'slidesToScroll' => 1,
+						],
+					]
+				]
+			];
+
+			$settings = json_encode($slick_options);
+			$selector =	'#uagb-testimonial-'. $id;
+			?>
+			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
+				return true
+			} else {
+				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
+			}
+			<?php
+			// @codingStandardsIgnoreEnd.
+		}
+
 	}
 }

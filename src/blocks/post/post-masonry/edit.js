@@ -516,7 +516,7 @@ class UAGBPostMasonry extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "center", "wide" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />

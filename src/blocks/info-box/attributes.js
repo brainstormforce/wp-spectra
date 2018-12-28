@@ -4,10 +4,12 @@
 
 const attributes = {
 	prefixTitle: {
+		source: "html",
 		selector: "span.uagb-ifb-title-prefix",
 		default: "Prefix",
 	},
 	infoBoxTitle: {
+		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "Info Box",
 	},
@@ -237,7 +239,19 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	}
+	},
+	showPrefix: {
+		type: "boolean",
+		default: true,
+	},
+	showTitle: {
+		type: "boolean",
+		default: true,
+	},
+	showDesc: {
+		type: "boolean",
+		default: true,
+	},
 }
 
 export default attributes

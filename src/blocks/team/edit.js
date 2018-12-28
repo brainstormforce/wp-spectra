@@ -260,18 +260,20 @@ class UAGBTeam extends Component {
 								</Button>
 							}
 						</BaseControl>
-						<SelectControl
-							label={ __( "Position" ) }
-							value={ imgPosition }
-							onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
-							options={ [
-								{ value: "above", label: __( "Above" ) },
-								{ value: "left", label: __( "Left" ) },
-								{ value: "right", label: __( "Right" ) },
+						{ image &&
+							<SelectControl
+								label={ __( "Position" ) }
+								value={ imgPosition }
+								onChange={ ( value ) => setAttributes( { imgPosition: value } ) }
+								options={ [
+									{ value: "above", label: __( "Above" ) },
+									{ value: "left", label: __( "Left" ) },
+									{ value: "right", label: __( "Right" ) },
 
-							] }
-						/>
-						{ imgPosition != "above" &&
+								] }
+							/>
+						}
+						{ imgPosition != "above" && image &&
 							<SelectControl
 								label={ __( "Stack on" ) }
 								value={ stack }
@@ -284,18 +286,20 @@ class UAGBTeam extends Component {
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
 						}
-						<SelectControl
-							label={ __( "Image Style" ) }
-							value={ imgStyle }
-							onChange={ ( value ) => setAttributes( { imgStyle: value } ) }
-							options={ [
-								{ value: "normal", label: __( "Normal" ) },
-								{ value: "circle", label: __( "Circle" ) },
-								{ value: "square", label: __( "Square" ) },
-							] }
-						/>
+						{ image &&
+							<SelectControl
+								label={ __( "Image Style" ) }
+								value={ imgStyle }
+								onChange={ ( value ) => setAttributes( { imgStyle: value } ) }
+								options={ [
+									{ value: "normal", label: __( "Normal" ) },
+									{ value: "circle", label: __( "Circle" ) },
+									{ value: "square", label: __( "Square" ) },
+								] }
+							/>
+						}
 
-						{ ( imgPosition && ( imgPosition !== "above" )  ) && <SelectControl
+						{ ( imgPosition && ( imgPosition !== "above" )  ) && image && <SelectControl
 							label={ __( "Vertical Alignment" ) }
 							value={ imgAlign }
 							onChange={ ( value ) => setAttributes( { imgAlign: value } ) }
@@ -305,24 +309,28 @@ class UAGBTeam extends Component {
 							] }
 						/>
 						}
-						<SelectControl
-							label={ __( "Size" ) }
-							options={[
-								{ value: "thumbnail", label: __( "Thumbnail" ) },
-								{ value: "medium", label: __( "Medium" ) },
-								{ value: "full", label: __( "Large" ) }
-							] }
-							value={ imgSize }
-							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ imgWidth }
-							onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
+						{ image &&
+							<Fragment>
+								<SelectControl
+									label={ __( "Size" ) }
+									options={[
+										{ value: "thumbnail", label: __( "Thumbnail" ) },
+										{ value: "medium", label: __( "Medium" ) },
+										{ value: "full", label: __( "Large" ) }
+									] }
+									value={ imgSize }
+									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+								/>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ imgWidth }
+									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+							</Fragment>
+						}
 					</PanelBody>
 					<PanelBody title={ __( "Social Links" ) }
 						initialOpen={ false }>

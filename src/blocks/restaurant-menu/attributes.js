@@ -99,13 +99,6 @@ const attributes = {
 		type: "number",
 		default: 0,
 	},
-	iconImage: {
-		type: "object",
-		default:{
-			"url": "",
-			"alt": "Menu placeholder img",
-		}
-	},
 	imageSize:{
 		type: "string",
 		default: "medium",
