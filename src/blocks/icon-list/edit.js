@@ -94,22 +94,22 @@ class UAGBIconList extends Component {
 					{
 						value: icons[ index ].label_color,
 						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
-						label: __( "Label Color" ),
-					},
-					{
-						value: icons[ index ].label_hover_color,
-						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
-						label: __( "Label Hover Color" ),
+						label: __( "Text Color" ),
 					},
 					{
 						value: icons[ index ].icon_bg_color,
 						onChange:( value ) => this.saveIcons( { icon_bg_color: value }, index ),
-						label: __( "Background Color" ),
+						label: __( "Image Background Color" ),
+					},
+					{
+						value: icons[ index ].label_hover_color,
+						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
+						label: __( "Text Hover Color" ),
 					},
 					{
 						value: icons[ index ].icon_bg_hover_color,
 						onChange:( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ),
-						label: __( "Background Hover Color" ),
+						label: __( "Image Background Hover Color" ),
 					},
 				]
 			} else {
@@ -121,29 +121,29 @@ class UAGBIconList extends Component {
 						label: __( "Icon Color" ),
 					},
 					{
-						value: icons[ index ].label_color,
-						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
-						label: __( "Label Color" ),
-					},
-					{
 						value: icons[ index ].icon_bg_color,
 						onChange:( value ) => this.saveIcons( { icon_bg_color: value }, index ),
 						label: __( "Background Color" ),
 					},
 					{
-						value: icons[ index ].icon_hover_color,
-						onChange:( value ) => this.saveIcons( { icon_hover_color: value }, index ),
-						label: __( "Hover Color" ),
+						value: icons[ index ].label_color,
+						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
+						label: __( "Text Color" ),
 					},
 					{
-						value: icons[ index ].label_hover_color,
-						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
-						label: __( "Label Hover Color" ),
+						value: icons[ index ].icon_hover_color,
+						onChange:( value ) => this.saveIcons( { icon_hover_color: value }, index ),
+						label: __( "Icon Hover Color" ),
 					},
 					{
 						value: icons[ index ].icon_bg_hover_color,
 						onChange:( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ),
 						label: __( "Background Hover Color" ),
+					},
+					{
+						value: icons[ index ].label_hover_color,
+						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
+						label: __( "Text Hover Color" ),
 					},
 				]
 			}
