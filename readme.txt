@@ -101,7 +101,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Restaurant Menu - Duplicate block content error.
 * Fix: Testimonial - Arrow and Dots design options added for Carousel.
 * Fix: Testimonial - Duplicate block content error.
-* Improvement: InfoBox - Added option to Enable/Disable Prefix, Heading and Description.
+* Improvement: Info Box - Added option to Enable/Disable Prefix, Heading and Description.
 
 = 1.5.0 =
 * New: Post Carousel
