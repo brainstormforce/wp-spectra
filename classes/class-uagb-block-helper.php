@@ -318,31 +318,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-top'    => $attr['topPadding'] . 'px',
 				'padding-bottom' => $attr['bottomPadding'] . 'px',
 				'padding-left'   => $attr['leftPadding'] . 'px',
-				'padding-right'  => $attr['rightPadding'] . 'px'
-			);
-
-			if ( 'right' == $attr['align'] ) {
-				// $style['margin-right']  = $attr['rightMargin'] . 'px';
-				// $style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} elseif ( 'left' == $attr['align'] ) {
-				// $style['margin-right']  = 'auto';
-				// $style['margin-left']   = $attr['leftMargin'] . 'px';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} elseif ( 'center' == $attr['align'] ) {
-				// $style['margin-right']  = 'auto';
-				// $style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} else {
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			}
-
-			$selectors = array(
-				'.uagb-column__wrap' => $style
+				'padding-right'  => $attr['rightPadding'] . 'px',
+				'margin-top'    => $attr['topMargin'] . 'px',
+				'margin-bottom' => $attr['bottomMargin'] . 'px',
 			);
 
 			// if ( "none" != $attr['borderStyle'] ) {
