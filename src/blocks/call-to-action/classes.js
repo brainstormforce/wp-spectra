@@ -37,6 +37,10 @@ function CtaPositionClasses( attributes ) {
 
 	iconimgStyle_class += "uagb-cta-block-enable-border-radius"+ " "
 
+	if( attributes.ctaType !== "text" && attributes.ctaType !== "button"  ){
+		iconimgStyle_class += "cta-type-none"+ " "
+	}
+
 	return [
 		iconimgStyle_class        
 	]

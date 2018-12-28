@@ -155,6 +155,22 @@ const attributes = {
 		type: "boolean",
 		default: true,
 	},
+	ctaTopSpace :{
+		type: "number",
+		default: 0,
+	},
+	ctaBottomSpace :{
+		type: "number",
+		default: 0,
+	},
+	ctaLeftSpace :{
+		type: "number",
+		default: 5,
+	},
+	ctaRightSpace :{
+		type: "number",
+		default: 5,
+	},
 }
 
 export default attributes

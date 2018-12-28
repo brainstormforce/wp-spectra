@@ -165,10 +165,14 @@ class UAGBcallToAction extends Component {
 			stack,
 			showTitle,
 			showDesc,
+			ctaTopSpace,
+			ctaBottomSpace,
+			ctaLeftSpace,
+			ctaRightSpace
 		} = attributes
 
 		// Add CSS.
-		var element = document.getElementById( "uagb-info-box-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-cta-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = CtaStyle( this.props )
 		}
@@ -545,7 +549,51 @@ class UAGBcallToAction extends Component {
 							beforeIcon=""
 							allowReset
 						/>
-					}					
+					}		
+					{ ( ctaPosition && (ctaPosition == "above-title" || ctaPosition == "below-title" )  ) && <Fragment>
+						<RangeControl
+								label={ __( "CTA Top Margin" ) }
+								value={ ctaTopSpace }
+								onChange={ ( value ) => setAttributes( { ctaTopSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+
+						<RangeControl
+								label={ __( "CTA Bottom Margin" ) }
+								value={ ctaBottomSpace }
+								onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+						</Fragment>
+					}
+					{ ( ctaPosition === "left" || ctaPosition === "right" ) && <Fragment>
+						<RangeControl
+								label={ __( "CTA Left Margin" ) }
+								value={ ctaLeftSpace }
+								onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+
+						<RangeControl
+								label={ __( "CTA Right Margin" ) }
+								value={ ctaRightSpace }
+								onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>		
+						</Fragment>
+					}	
 				</PanelBody>
 			</Fragment>
 		)
@@ -713,7 +761,7 @@ class UAGBcallToAction extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-info-box-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-cta-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 }

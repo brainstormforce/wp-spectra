@@ -17,18 +17,10 @@ function CtaStyle( props ) {
 		headSpace,
 		separatorSpace,
 		subHeadSpace,
-		icon,
-		iconColor,
-		iconSize,
 		ctaPosition,
 		block_id,
 		iconHover,
-		iconimgBorderRadius,
-		seperatorStyle,
-		seperatorWidth,
-		seperatorColor,
-		seperatorThickness,
-		seperatorSpace,
+		iconimgBorderRadius,		
 		ctaLinkColor,
 		ctaFontSize,
 		ctaBtnSize,
@@ -40,17 +32,18 @@ function CtaStyle( props ) {
 		ctaBorderColor,
 		ctaBorderWidth,
 		ctaBorderRadius,
-		prefixSpace,
 		iconLeftMargin,
 		iconRightMargin,
 		iconTopMargin,
 		iconBottomMargin,
-		imageSize,
-		imageWidth,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
-		ctaIconSpace
+		ctaIconSpace,
+		ctaTopSpace,
+		ctaBottomSpace,
+		ctaLeftSpace,
+		ctaRightSpace,
 	} = props.attributes
 
 	if( props.clientId ){
@@ -61,47 +54,24 @@ function CtaStyle( props ) {
 
 	var selectors = {}
 
-	// Icon css
-	selectors[".uagb-cta-icon"] = {
-		"height" : iconSize+"px",
-		"width" : iconSize+"px",
-		"line-height" : iconSize+"px",
-	}
-
-	selectors[".uagb-cta-icon > span"] = {
-		"font-size" : iconSize+"px",
-		"height": iconSize+"px",
-		"color": iconColor,
-		"width": iconSize+"px",
-		"line-height": iconSize + "px",
-	}
-
-	selectors[".uagb-cta-icon:hover > span"] = {
-		"color" : iconHover,
-	}
-
-	selectors[".uagb-cta-block__content-wrap .uagb-cta-imgicon-wrap"] = {
-		"margin-left" : iconLeftMargin+"px",
-		"margin-right" : iconRightMargin+"px",
-		"margin-top" : iconTopMargin+"px",
-		"margin-bottom" : iconBottomMargin+"px",
-	}
-
-	// Image
-	selectors[".uagb-cta-image-content img"] = {
-		"width": imageWidth+"px",
-		"max-width": imageWidth+"px",
-	}
-
-	selectors[".uagb-cta-block .uagb-cta-image-content img"] = {
-		"border-radius" : iconimgBorderRadius+"px",
-	}
-
-
 	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
 		selectors[".uagb-cta-block__content-wrap"] = {
 			"text-align" : headingAlign,
 		}
+		selectors[".uagb-cta-left-right-wrap .uagb-cta-block-link-style"] = {
+			"margin-top" : ctaTopSpace+"px",
+			"margin-bottom" : ctaBottomSpace+"px",
+			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+		}
+		
+	}
+
+	if( ctaPosition == "left" ||  ctaPosition == "right" ){		
+		selectors[".uagb-cta-left-right-wrap .uagb-cta-content"] = {
+			"margin-left" : ctaLeftSpace+"px",
+			"margin-right" : ctaRightSpace+"px",
+			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+		}		
 	}
 
 	// CTA style
@@ -150,13 +120,6 @@ function CtaStyle( props ) {
 		"border-color": ctaBorderhoverColor,
 	}
 
-	// Prefix Style
-	selectors[".editor-rich-text .uagb-cta-title-prefix"] = {
-		"font-size" : prefixFontSize+"px",
-		"color": prefixColor,
-		"margin-bottom": prefixSpace+"px",
-	}
-
 	// Title Style
 	selectors[".editor-rich-text .uagb-cta-title"] = {
 		"font-size" : headFontSize+"px",
@@ -170,22 +133,7 @@ function CtaStyle( props ) {
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",
 	}
-
-	// Seperator
-	selectors[".uagb-cta-separator"] = {
-		"width" : seperatorWidth+"%",
-		"border-top-width" : seperatorThickness+"px",
-		"border-top-color": seperatorColor,
-		"border-top-style": seperatorStyle,
-	}
-	selectors[".uagb-cta-separator-parent"] = {
-		"margin-bottom":seperatorSpace+"px"
-	}
-
-	selectors[".uagb-cta-content"] = {
-		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
-	}
-
+	
 	selectors[".uagb-cta-align-icon-after"] = {
 		"margin-left" : ctaIconSpace+"px",
 	}
