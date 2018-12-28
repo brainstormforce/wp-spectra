@@ -312,7 +312,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, $attr );
 
-			//$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
 			$style = array(
 				'padding-top'    => $attr['topPadding'] . 'px',
@@ -345,28 +345,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-column__wrap' => $style
 			);
 
-			/*if ( "none" != $attr['borderStyle'] ) {
-				$style["border-style"] = $attr['borderStyle'];
-				$style["border-width"] = $attr['borderWidth'] . "px";
-				$style["border-color"] =  $attr['borderColor'];
-			}
+			// if ( "none" != $attr['borderStyle'] ) {
+			// 	$style["border-style"] = $attr['borderStyle'];
+			// 	$style["border-width"] = $attr['borderWidth'] . "px";
+			// 	$style["border-color"] =  $attr['borderColor'];
+			// }
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
-			$column_width = '100%';
+			// $column_width = '100%';
 
-			if ( isset( $attr['contentWidth'] ) ) {
+			// if ( isset( $attr['contentWidth'] ) ) {
 
-				if ( 'boxed' == $attr['contentWidth'] ) {
-					if ( isset( $attr['width'] ) ) {
-						$column_width = $attr['width'] . 'px';
-					}
-				}
-			}
+			// 	if ( 'boxed' == $attr['contentWidth'] ) {
+			// 		if ( isset( $attr['width'] ) ) {
+			// 			$column_width = $attr['width'] . 'px';
+			// 		}
+			// 	}
+			// }
 
-			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
-				$style['max-width'] = $column_width;
-			}
+			// if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
+			// 	$style['max-width'] = $column_width;
+			// }
 
 
 			if ( 'color' === $bg_type ) {
@@ -393,23 +393,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
-			$inner_width = '100%';
+			// $inner_width = '100%';
 
-			if ( isset( $attr['contentWidth'] ) ) {
-				if ( 'custom' == $attr['contentWidth'] ) {
-					if ( "" != $attr['width'] ) {
-						$inner_width = $attr['width'] + "px"
-					}
-				}
-			}
+			// if ( isset( $attr['contentWidth'] ) ) {
+			// 	if ( 'custom' == $attr['contentWidth'] ) {
+			// 		if ( "" != $attr['width'] ) {
+			// 			$inner_width = $attr['width'] + "px"
+			// 		}
+			// 	}
+			// }
 
 			$selectors = array(
 				'.uagb-column__wrap'        => $style,
 				' .uagb-column__video-wrap' => array(
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
-				),
-				' .uagb-column__inner-wrap' => array(
-					'max-width' => $inner_width,
 				),
 			);
 
@@ -429,7 +426,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
-			$selectors[' > .uagb-column__overlay']["border-radius"] = $attr['borderRadius'] . "px";*/
+			// $selectors[' > .uagb-column__overlay']["border-radius"] = $attr['borderRadius'] . "px";
 
 			// @codingStandardsIgnoreEnd
 

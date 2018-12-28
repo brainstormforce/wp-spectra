@@ -14,7 +14,7 @@
 	bottom: 0;
 	left: 0;
 	z-index: 0;
- }
+}
 
 .uagb-column__edit-active.uagb-column__wrap:before {
 	border-color: #59646C;
@@ -28,4 +28,10 @@
 .editor-bg-image-control .components-button:last-child,
 .editor-bg-video-control .components-button:last-child {
 	margin-left: 10px;
+}
+
+.uagb-column__inner-wrap .editor-block-list__block {
+	margin-left: 0;
+	margin-right: 0;
+	width: 100%;
 }
