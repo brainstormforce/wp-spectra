@@ -22,7 +22,7 @@ class CallToAction extends React.Component {
 
 		var cta_icon_output = ""
 		if( attributes.ctaIcon !== "" ){
-			cta_icon_output = <span className= { classnames(`uagb-ifb-${ attributes.ctaType }-icon`, `uagb-ifb-align-icon-${ attributes.ctaIconPosition }`) }>
+			cta_icon_output = <span className= { classnames(`uagb-cta-${ attributes.ctaType }-icon`, `uagb-cta-align-icon-${ attributes.ctaIconPosition }`) }>
 				<i className= {attributes.ctaIcon} ></i>
 			</span>
 		}
@@ -40,10 +40,11 @@ class CallToAction extends React.Component {
 				{  attributes.ctaType === "button" && ( 
 					<div className = "uagb-cta-button-wrapper">
 						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
-                        	{ cta_icon_output }
+                        	{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
 							<span className = "uagb-cta-link-content-wrapper">    
 								<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
 							</span>
+							{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
 						</a>
 					</div>
 				)

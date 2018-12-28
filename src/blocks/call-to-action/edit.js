@@ -188,7 +188,11 @@ class UAGBcallToAction extends Component {
 	
 		// CTA settings.
 		const ctaSettings = (
-			<Fragment>				
+			<Fragment>	
+				<PanelBody
+					title={ __( "CTA Settings" ) }
+					initialOpen={ true }
+				>				
 					<SelectControl
 						label={ __( "Type" ) }
 						value={ ctaType }
@@ -314,10 +318,11 @@ class UAGBcallToAction extends Component {
 								max={ 100 }
 								beforeIcon=""
 								allowReset
-							/>
+							/>						
 						</Fragment>
 					)
-					}				
+					}	
+				</PanelBody>			
 			</Fragment>
 		)
 
@@ -440,11 +445,11 @@ class UAGBcallToAction extends Component {
 				</PanelBody>
 				<PanelBody
 					title={ __( "Color Settings" ) }
-					initialOpen={ true }
+					initialOpen={ false }
 					>					
 						
 						{ showTitle && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Headingading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ headingColor }
 						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
@@ -544,22 +549,17 @@ class UAGBcallToAction extends Component {
 				</PanelBody>
 			</Fragment>
 		)
-
-		// Image sizes.
-		const imageSizeOptions = [
-			{ value: "thumbnail", label: __( "Thumbnail" ) },
-			{ value: "medium", label: __( "Medium" ) },
-			{ value: "full", label: __( "Large" ) }
-		]
+	
 
 	
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
 				 <InspectorControls>
-
+				 	{ ctaSettings }
 					<PanelBody
-						title={ __( "Call To Action" ) }
+						title={ __( "Position & Responsive" ) }
+						initialOpen={ false }
 					>
 						<SelectControl
 							label={ __( "Select CTA Position" ) }
@@ -582,7 +582,7 @@ class UAGBcallToAction extends Component {
 									{ value: "tablet", label: __( "Tablet" ) },
 									{ value: "mobile", label: __( "Mobile" ) },
 								] }
-								help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+								help={ __( "Note: Choose on what breakpoint the CTA button will stack." ) }
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
 						}						
@@ -596,8 +596,7 @@ class UAGBcallToAction extends Component {
 								{ value: "middle", label: __( "Middle" ) },
 							] }
 						/>
-						}
-						{ ctaSettings }
+						}						
 					</PanelBody>
 					
 					{ TypographySettings }
@@ -617,7 +616,7 @@ class UAGBcallToAction extends Component {
 		// Get description components.
 		const desc = (
 			<Fragment>
-				<div className = "uagb-ifb-text-wrap">
+				<div className = "uagb-cta-text-wrap">
 					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
 				</div>
 			</Fragment>
@@ -626,7 +625,7 @@ class UAGBcallToAction extends Component {
 		// Get Title components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-ifb-title-wrap">
+				<div className = "uagb-cta-title-wrap">
 					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
@@ -639,12 +638,12 @@ class UAGBcallToAction extends Component {
 					"uagb-cta-block__content-wrap",
 					...CtaPositionClasses( attributes ),
 				) }>
-					<div className = "uagb-ifb-left-right-wrap">
+					<div className = "uagb-cta-left-right-wrap">
 
 						{ ( ctaPosition == "left") &&
 								is_cta
 						}
-						<div className = "uagb-ifb-content">
+						<div className = "uagb-cta-content">
 
 							{  ctaPosition == "above-title" && 
 								<Fragment>

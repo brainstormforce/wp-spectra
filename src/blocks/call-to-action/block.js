@@ -91,7 +91,7 @@ registerBlockType( "uagb/call-to-action", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				<div className = "uagb-ifb-text-wrap">
+				<div className = "uagb-cta-text-wrap">
 					{ showDesc && "" !== headingDesc && <Description attributes={props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
@@ -100,7 +100,7 @@ registerBlockType( "uagb/call-to-action", {
 		// Get Title components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-ifb-title-wrap">
+				<div className = "uagb-cta-title-wrap">
 					{ showTitle && "" !== ctaTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
@@ -112,12 +112,12 @@ registerBlockType( "uagb/call-to-action", {
 					"uagb-cta-block__content-wrap",
 					...CtaPositionClasses(  props.attributes  ),
 				) }>
-					<div className = "uagb-ifb-left-right-wrap">
+					<div className = "uagb-cta-left-right-wrap">
 
 						{ ( ctaPosition == "left") &&
 								is_image
 						}
-						<div className = "uagb-ifb-content">
+						<div className = "uagb-cta-content">
 
 							{  ctaPosition == "above-title" && is_image }
 
@@ -129,7 +129,7 @@ registerBlockType( "uagb/call-to-action", {
 
 							{ ( ctaPosition === "left-title") &&
 									<Fragment>
-										<div className = "uagb-ifb-left-title-image">
+										<div className = "uagb-cta-left-title-image">
 											{ is_image }
 											{ title_text }
 										</div>
@@ -139,7 +139,7 @@ registerBlockType( "uagb/call-to-action", {
 
 							{ ( ctaPosition === "right-title") &&
 									<Fragment>
-										<div className = "uagb-ifb-right-title-image">
+										<div className = "uagb-cta-right-title-image">
 											{ title_text }
 											{ is_image }
 										</div>

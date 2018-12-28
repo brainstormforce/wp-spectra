@@ -62,13 +62,13 @@ function CtaStyle( props ) {
 	var selectors = {}
 
 	// Icon css
-	selectors[".uagb-ifb-icon"] = {
+	selectors[".uagb-cta-icon"] = {
 		"height" : iconSize+"px",
 		"width" : iconSize+"px",
 		"line-height" : iconSize+"px",
 	}
 
-	selectors[".uagb-ifb-icon > span"] = {
+	selectors[".uagb-cta-icon > span"] = {
 		"font-size" : iconSize+"px",
 		"height": iconSize+"px",
 		"color": iconColor,
@@ -76,11 +76,11 @@ function CtaStyle( props ) {
 		"line-height": iconSize + "px",
 	}
 
-	selectors[".uagb-ifb-icon:hover > span"] = {
+	selectors[".uagb-cta-icon:hover > span"] = {
 		"color" : iconHover,
 	}
 
-	selectors[".uagb-cta-block__content-wrap .uagb-ifb-imgicon-wrap"] = {
+	selectors[".uagb-cta-block__content-wrap .uagb-cta-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
 		"margin-right" : iconRightMargin+"px",
 		"margin-top" : iconTopMargin+"px",
@@ -88,12 +88,12 @@ function CtaStyle( props ) {
 	}
 
 	// Image
-	selectors[".uagb-ifb-image-content img"] = {
+	selectors[".uagb-cta-image-content img"] = {
 		"width": imageWidth+"px",
 		"max-width": imageWidth+"px",
 	}
 
-	selectors[".uagb-cta-block .uagb-ifb-image-content img"] = {
+	selectors[".uagb-cta-block .uagb-cta-image-content img"] = {
 		"border-radius" : iconimgBorderRadius+"px",
 	}
 
@@ -151,46 +151,46 @@ function CtaStyle( props ) {
 	}
 
 	// Prefix Style
-	selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
+	selectors[".editor-rich-text .uagb-cta-title-prefix"] = {
 		"font-size" : prefixFontSize+"px",
 		"color": prefixColor,
 		"margin-bottom": prefixSpace+"px",
 	}
 
 	// Title Style
-	selectors[".editor-rich-text .uagb-ifb-title"] = {
+	selectors[".editor-rich-text .uagb-cta-title"] = {
 		"font-size" : headFontSize+"px",
 		"color": headingColor,
 		"margin-bottom": headSpace+"px",
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-ifb-desc"] = {
+	selectors[".editor-rich-text .uagb-cta-desc"] = {
 		"font-size" : subHeadFontSize+"px",
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",
 	}
 
 	// Seperator
-	selectors[".uagb-ifb-separator"] = {
+	selectors[".uagb-cta-separator"] = {
 		"width" : seperatorWidth+"%",
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
 	}
-	selectors[".uagb-ifb-separator-parent"] = {
+	selectors[".uagb-cta-separator-parent"] = {
 		"margin-bottom":seperatorSpace+"px"
 	}
 
-	selectors[".uagb-ifb-content"] = {
+	selectors[".uagb-cta-content"] = {
 		"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
 	}
 
-	selectors[".uagb-ifb-align-icon-after"] = {
+	selectors[".uagb-cta-align-icon-after"] = {
 		"margin-left" : ctaIconSpace+"px",
 	}
 
-	selectors[".uagb-ifb-align-icon-before"] = {
+	selectors[".uagb-cta-align-icon-before"] = {
 		"margin-right" : ctaIconSpace+"px",
 	}
 
