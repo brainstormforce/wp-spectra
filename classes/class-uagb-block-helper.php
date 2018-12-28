@@ -500,26 +500,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
-			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
-               	$selectors[' .uagb-cta-block__content-wrap'] = array(
-	                'text-align' => $attr->headingAlign,
-	            );
-	            
-	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
-	                'margin-top' => $attr->ctaTopSpace. "px",
-	                'margin-top' => $attr->ctaBottomSpace. "px",
-	                'padding' => $attr->blockPadding. "px",
-	            );
-            }
-
-            if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
-	            
-	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
-	                'margin-left' => $attr->ctaLeftSpace. "px",
-	                'margin-right' => $attr->ctaRightSpace. "px",
-	                'padding' => $attr->blockPadding. "px",
-	            );
-            }
+			
 
 			$selectors = array(
 				' .uagb-cta-block-link a'  => array(
@@ -555,9 +536,50 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-bottom'   => $attr->ctaBtnVertPadding. "px",
 					'padding-left'     => $attr->ctaBtnHrPadding. "px",
 					'padding-right'    => $attr->ctaBtnHrPadding. "px",
-				),							
+				),	
+				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link'  => array(
+					'color'            => $attr->ctaLinkHoverColor,
+					'background-color' => $attr->ctaBgHoverColor,
+					'border-color'     => $attr->ctaBorderhoverColor,
+				),	
+				' .uagb-cta-title'  => array(
+					'font-size'        => $attr->headFontSize. "px",
+					'color'            => $attr->headingColor,
+					'margin-bottom'    => $attr->headSpace. "px",					
+				),
+				' .uagb-cta-desc'  => array(
+					'font-size'        => $attr->subHeadFontSize. "px",
+					'color'            => $attr->subHeadingColor,
+					'margin-bottom'    => $attr->subHeadSpace. "px",					
+				),	
+				' .uagb-cta-align-icon-after'  => array(
+					'margin-left'    => $attr->ctaIconSpace. "px",					
+				),
+				' .uagb-cta-align-icon-before'  => array(
+					'margin-right'    => $attr->ctaIconSpace. "px",					
+				),								
 			);
 
+			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
+               	$selectors[' .uagb-cta-block__content-wrap'] = array(
+	                'text-align' => $attr->headingAlign,
+	            );
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
+	                'margin-top' => $attr->ctaTopSpace. "px",
+	                'margin-top' => $attr->ctaBottomSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+            }
+
+            if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'margin-left' => $attr->ctaLeftSpace. "px",
+	                'margin-right' => $attr->ctaRightSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+            }
 			
 
 			// @codingStandardsIgnoreEnd.
