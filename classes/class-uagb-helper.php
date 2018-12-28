@@ -31,7 +31,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Page Blocks Variable
 		 *
-		 * @since 1.5.1
+		 * @since 1.6.0
 		 * @var instance
 		 */
 		public static $page_blocks;
@@ -216,7 +216,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Generates Js recurrsively.
 		 *
 		 * @param object $block The block object.
-		 * @since 1.5.1
+		 * @since 1.6.0
 		 */
 		public function get_block_js( $block ) {
 
@@ -363,7 +363,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Generates scripts for reusable blocks.
 		 *
 		 * @param array $blocks Blocks array.
-		 * @since 1.5.1
+		 * @since 1.6.0
 		 */
 		public function get_scripts( $blocks ) {
 
