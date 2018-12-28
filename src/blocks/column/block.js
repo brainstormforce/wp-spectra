@@ -10,14 +10,14 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import "./style.scss"
 import "./editor.scss"
 
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { __ } = wp.i18n
+const { registerBlockType } = wp.blocks
 
 const {
 	InnerBlocks,
 	ColorPalette,
 	InspectorControls,
-} = wp.editor;
+} = wp.editor
 
 const {
 	TabPanel,
@@ -25,7 +25,7 @@ const {
 	PanelBody,
 	RangeControl,
 	SelectControl
-} = wp.components;
+} = wp.components
 
 const {
 	Component,
@@ -47,18 +47,18 @@ export default class UAGBColumnEdit extends Component {
 
 	render() {
 
-		const { attributes: { topPadding, bottomPadding, leftPadding, rightPadding, topMargin, bottomMargin, colWidth, contentPosition }, setAttributes, className, isSelected } = this.props;
+		const { attributes: { topPadding, bottomPadding, leftPadding, rightPadding, topMargin, bottomMargin, colWidth, contentPosition }, setAttributes, className, isSelected } = this.props
 
 		const inspector_controls = (
 			<Fragment>
-				<PanelBody title={ __( 'Spacing' ) }>
+				<PanelBody title={ __( "Spacing" ) }>
 					<RangeControl
 						label={ __( "Top Padding" ) }
 						value={ topPadding }
 						onChange={ ( value ) => {
 							setAttributes( {
 								topPadding: value,
-							} );
+							} )
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -69,7 +69,7 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								rightPadding: value,
-							} );
+							} )
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -80,7 +80,7 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								bottomPadding: value,
-							} );
+							} )
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -91,7 +91,7 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								leftPadding: value,
-							} );
+							} )
 						} }
 						min={ 0 }
 						max={ 500 }
@@ -102,7 +102,7 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								topMargin: value,
-							} );
+							} )
 						} }
 						min={ -200 }
 						max={ 200 }
@@ -113,20 +113,20 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								bottomMargin: value,
-							} );
+							} )
 						} }
 						min={ -200 }
 						max={ 200 }
 					/>
 				</PanelBody>
-				<PanelBody title={ __( 'Layout' ) } initialOpen={ false }>
+				<PanelBody title={ __( "Layout" ) } initialOpen={ false }>
 					<RangeControl
 						label={ __( "Content Width (%)" ) }
 						value={ colWidth }
 						onChange={ ( value ) => {
 							setAttributes( {
 								colWidth: value,
-							} );
+							} )
 						} }
 						min={ 0 }
 						max={ 100 }
@@ -144,7 +144,7 @@ export default class UAGBColumnEdit extends Component {
 					/>
 				</PanelBody>
 			</Fragment>
-		);
+		)
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
@@ -157,7 +157,7 @@ export default class UAGBColumnEdit extends Component {
 					className={ classnames(
 						className,
 						"uagb-column__wrap",
-						`uagb-column__background-`,
+						"uagb-column__background-",
 						`uagb-column__edit-${ active }`,
 						`uagb-column__content-position-${ contentPosition }`,
 					) }
@@ -169,7 +169,7 @@ export default class UAGBColumnEdit extends Component {
 					</div>
 				</div>
 			</Fragment>
-		);
+		)
 	}
 }
 
@@ -182,11 +182,11 @@ export default class UAGBColumnEdit extends Component {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'uagb/column', {
-	title: __( 'Column' ),
+registerBlockType( "uagb/column", {
+	title: __( "Column" ),
 	icon: UAGB_Block_Icons.section,
 	category: uagb_blocks_info.category,
-	parent: [ 'uagb/section' ],
+	parent: [ "uagb/section" ],
 	supports: {
 		inserter: false,
 		reusable: false,
@@ -194,52 +194,52 @@ registerBlockType( 'uagb/column', {
 	},
 	attributes: {
 		block_id: {
-			type: 'string',
+			type: "string",
 		},
 		topPadding: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		bottomPadding: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		leftPadding: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		rightPadding: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		topMargin: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		bottomMargin: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		colWidth: {
-			type: 'number',
-			default: '',
+			type: "number",
+			default: "",
 		},
 		contentPosition: {
-			type: 'string',
-			default: 'default'
+			type: "string",
+			default: "default"
 		}
 	},
 
 	edit: UAGBColumnEdit,
 
 	save( { attributes, className } ) {
-		const { block_id, contentPosition } = attributes;
+		const { block_id, contentPosition } = attributes
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
-					`uagb-column__background-`,
+					"uagb-column__background-",
 					`uagb-column__content-position-${ contentPosition }`,
 				) }
 				id={ `uagb-column-${block_id}` }
@@ -249,6 +249,6 @@ registerBlockType( 'uagb/column', {
 					<InnerBlocks.Content />
 				</div>
 			</div>
-		);
+		)
 	},
-} );
+} )

@@ -77,9 +77,9 @@ registerBlockType( "uagb/columns", {
 					</div>
 				}
 				<div className={ classnames(
-						"uagb-columns__inner-wrap",
-						`uagb-columns__columns-${columns}`
-					) }>
+					"uagb-columns__inner-wrap",
+					`uagb-columns__columns-${columns}`
+				) }>
 					<InnerBlocks.Content />
 				</div>
 

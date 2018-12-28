@@ -5,11 +5,11 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
-import memoize from 'memize';
-import times from 'lodash/times';
-import map from 'lodash/map';
+import memoize from "memize"
+import times from "lodash/times"
+import map from "lodash/map"
 
-const ALLOWED_BLOCKS = [ 'uagb/column' ];
+const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
 
@@ -41,8 +41,8 @@ const {
 } = wp.components
 
 const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ 'uagb/column', { id: n + 1 } ] );
-} );
+	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
+} )
 
 
 class UAGBColumns extends Component {
@@ -586,9 +586,9 @@ class UAGBColumns extends Component {
 						</div>
 					}
 					<div className={ classnames(
-							"uagb-columns__inner-wrap",
-							`uagb-columns__columns-${columns}`
-						) }>
+						"uagb-columns__inner-wrap",
+						`uagb-columns__columns-${columns}`
+					) }>
 						<InnerBlocks
 							template={ getColumnsTemplate( columns ) }
 							templateLock="all"

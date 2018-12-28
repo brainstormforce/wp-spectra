@@ -2126,7 +2126,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Testimonial Js
 		 *
-		 * @since 1.5.1
+		 * @since 1.6.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
