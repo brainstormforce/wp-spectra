@@ -71,7 +71,7 @@ registerBlockType( "uagb/testimonial", {
 			mcolumns,
 			test_block,
 			imagePosition,
-			arrowColor
+			arrowColor,
 		} = props.attributes
 
 		const my_block_id = "uagb-testimonial-"+ block_id
@@ -152,5 +152,5 @@ registerBlockType( "uagb/testimonial", {
 				</div>
 			</Fragment>
 		)
-	}
+	}	
 } )
