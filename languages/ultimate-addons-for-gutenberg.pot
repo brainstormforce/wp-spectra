@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.5.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.6.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2018-12-20 12:34:06+00:00\n"
+"POT-Creation-Date: 2018-12-28 06:02:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -161,8 +161,9 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-config.php:235 classes/class-uagb-config.php:271
-#: dist/blocks/post/index.php:324 dist/blocks/post/index.php:524
-#: dist/blocks/post/index.php:760 dist/blocks/post/index.php:1130
+#: classes/class-uagb-config.php:307 dist/blocks/post/index.php:324
+#: dist/blocks/post/index.php:524 dist/blocks/post/index.php:760
+#: dist/blocks/post/index.php:1130
 msgid "Read More"
 msgstr ""
 
@@ -177,58 +178,68 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-config.php:281
-msgid "Post Timeline"
+msgid "Post Masonry"
 msgstr ""
 
 #: classes/class-uagb-config.php:282
+msgid ""
+"This block fetches the blog posts you may have on your website and displays "
+"them in a masonry layout."
+msgstr ""
+
+#: classes/class-uagb-config.php:317
+msgid "Post Timeline"
+msgstr ""
+
+#: classes/class-uagb-config.php:318
 msgid ""
 "The Timeline block lets you create beautiful timelines of Posts on your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:326
+#: classes/class-uagb-config.php:362
 msgid "Restaurant Menu"
 msgstr ""
 
-#: classes/class-uagb-config.php:327
+#: classes/class-uagb-config.php:363
 msgid "This block allows you to add attractive Restaurant Menu."
 msgstr ""
 
-#: classes/class-uagb-config.php:365
+#: classes/class-uagb-config.php:401
 msgid "Section"
 msgstr ""
 
-#: classes/class-uagb-config.php:366
+#: classes/class-uagb-config.php:402
 msgid ""
 "This block is an outer wrap section that allows you to add other blocks "
 "within it."
 msgstr ""
 
-#: classes/class-uagb-config.php:406
+#: classes/class-uagb-config.php:443
 msgid "Social Share"
 msgstr ""
 
-#: classes/class-uagb-config.php:407
+#: classes/class-uagb-config.php:444
 msgid ""
 "This block allows you to let users share your content across various social "
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:434
+#: classes/class-uagb-config.php:471
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:435
+#: classes/class-uagb-config.php:472
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:469
+#: classes/class-uagb-config.php:506
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:470
+#: classes/class-uagb-config.php:507
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
