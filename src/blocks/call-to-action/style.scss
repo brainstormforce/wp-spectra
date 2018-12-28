@@ -23,7 +23,7 @@
 a.uagb-cta-block-cta-link span {
     font-size: inherit;
 }
-.uagb-ifb-cta.uagb-cta-block-cta-link-style:empty {
+.uagb-cta-link-wrapper.uagb-cta-block-link-style:empty {
     display: none;
 }
 a.uagb-cta-block-cta-link,
@@ -207,7 +207,7 @@ a.uagb-cta-block-link-wrap:hover,
     margin-bottom:10px;
 }
 
-.uagb-ifb-cta-button {
+.uagb-cta-link-wrapper-button {
     display: inline-block;
     line-height: 1;
     background-color: #818a91;
@@ -215,7 +215,7 @@ a.uagb-cta-block-link-wrap:hover,
     text-align: center;
 }
 
-.uagb-ifb-cta a {
+.uagb-cta-link-wrapper a {
     -webkit-box-shadow: none;
     box-shadow: none;
     text-decoration: none;
