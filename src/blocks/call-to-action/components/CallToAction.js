@@ -12,7 +12,7 @@ class CallToAction extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-cta-block-link uagb-cta-link-wrapper-button"
+		let ctaBtnClass = "uagb-cta-block-link uagb-cta-link-button-wrapper"
 
 		let target ="_self"
 		let rel ="noopener noreferrer"
