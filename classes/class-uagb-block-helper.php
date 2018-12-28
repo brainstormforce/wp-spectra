@@ -484,6 +484,86 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
+
+		/**
+		 * Get CTA CSS
+		 *
+		 * @since 1.7.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_call_to_action_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );
+
+			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
+               	$selectors[' .uagb-cta-block__content-wrap'] = array(
+	                'text-align' => $attr->headingAlign,
+	            );
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
+	                'margin-top' => $attr->ctaTopSpace. "px",
+	                'margin-top' => $attr->ctaBottomSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+            }
+
+            if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'margin-left' => $attr->ctaLeftSpace. "px",
+	                'margin-right' => $attr->ctaRightSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+            }
+
+			$selectors = array(
+				' .uagb-cta-block-link a'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaLinkColor,
+				),	
+				' .uagb-cta-block-link a:hover'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-block-link span'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaLinkColor,
+				),
+				' .uagb-cta-block-link:hover span'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-button-wrapper .uagb-cta-block-link span'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaBtnLinkColor,
+				),
+				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link span'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-button-wrapper .uagb-cta-block-link'  => array(
+					'font-size'        => $attr->ctaFontSize. "px",
+					'color'            => $attr->ctaBtnLinkColor,
+					'background-color' => $attr->ctaBgColor,
+					'border-style'     => $attr->ctaBorderStyle,
+					'border-color'     => $attr->ctaBorderColor,
+					'border-radius'    => $attr->ctaFontSize. "px",
+					'border-width'     => $attr->ctaBorderWidth. "px",
+					'padding-top'      => $attr->ctaBtnVertPadding. "px",
+					'padding-bottom'   => $attr->ctaBtnVertPadding. "px",
+					'padding-left'     => $attr->ctaBtnHrPadding. "px",
+					'padding-right'    => $attr->ctaBtnHrPadding. "px",
+				),							
+			);
+
+			
+
+			// @codingStandardsIgnoreEnd.
+			return UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
+		}
+
 		/**
 		 * Get Testimonial CSS
 		 *

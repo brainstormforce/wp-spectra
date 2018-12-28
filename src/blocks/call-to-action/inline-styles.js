@@ -33,6 +33,7 @@ function CtaStyle( props ) {
 		ctaBottomSpace,
 		ctaLeftSpace,
 		ctaRightSpace,
+		blockPadding,
 	} = props.attributes
 
 	if( props.clientId ){

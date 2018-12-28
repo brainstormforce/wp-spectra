@@ -40,6 +40,10 @@ const attributes = {
 	headFontSize: {
 		type: "number",
 	},
+	blockPadding:{
+		type: "number",
+		default : 5,
+	},
 	subHeadFontSize: {
 		type: "number",
 	},

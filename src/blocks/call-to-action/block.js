@@ -59,18 +59,14 @@ registerBlockType( "uagb/call-to-action", {
 		const {
 			ctaPosition,
 			block_id,
-			source_type,
-			backgroundType,
 			ctaType,
 			ctaLink,
 			ctaTarget,
 			className,
-			prefixTitle,
 			ctaTitle,
 			headingDesc,
 			showTitle,
 			showDesc,
-			icon
 		} = props.attributes
 
 
@@ -79,14 +75,9 @@ registerBlockType( "uagb/call-to-action", {
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
 
-		var back_style = CtaStyle( props )
-
-		// Get icon/Image components.
-		let is_image = ""
-
-		if( source_type === "icon" && icon !=="" ) {
-			is_image = <CallToAction attributes={ props.attributes }/>
-		}
+		let is_cta = ""
+		
+		is_cta =  <CallToAction attributes={props.attributes} />
 
 		// Get description and seperator components.
 		const desc = (
@@ -115,49 +106,37 @@ registerBlockType( "uagb/call-to-action", {
 					<div className = "uagb-cta-left-right-wrap">
 
 						{ ( ctaPosition == "left") &&
-								is_image
+								is_cta
 						}
 						<div className = "uagb-cta-content">
 
-							{  ctaPosition == "above-title" && is_image }
-
-							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && title_text }
-
-							{ ctaPosition == "below-title"  && is_image }
-
-							{ ( ctaPosition == "above-title" || ctaPosition == "below-title") && desc }
-
-							{ ( ctaPosition === "left-title") &&
-									<Fragment>
-										<div className = "uagb-cta-left-title-image">
-											{ is_image }
-											{ title_text }
-										</div>
-										{ desc }
-									</Fragment>
+							{  ctaPosition == "above-title" && 
+								<Fragment>
+							     { is_cta }
+							     { title_text }
+							     { desc }
+							    </Fragment>
 							}
-
-							{ ( ctaPosition === "right-title") &&
-									<Fragment>
-										<div className = "uagb-cta-right-title-image">
-											{ title_text }
-											{ is_image }
-										</div>
-										{ desc }
-									</Fragment>
+							
+							{ ctaPosition == "below-title"  && 
+								<Fragment>
+							     { title_text }
+							     { desc }
+							     { is_cta }
+							    </Fragment>
 							}
-
+							
 							{ ( ctaPosition == "left" || ctaPosition == "right") &&
-									<Fragment>
-										{ title_text }
-										{ desc }
-									</Fragment>
+								<Fragment>
+									{ title_text }
+									{ desc }
+								</Fragment>
 							}
 
 						</div>
 
 						{ ( ctaPosition == "right") &&
-								is_image
+								is_cta
 						}
 					</div>
 				</div>
