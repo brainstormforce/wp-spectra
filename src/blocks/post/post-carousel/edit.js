@@ -72,6 +72,8 @@ class UAGBPostCarousel extends Component {
 			borderColor,
 			borderHColor,
 			borderRadius,
+			btnVPadding,
+			btnHPadding,
 			align,
 			postLayout,
 			columns,
@@ -85,6 +87,7 @@ class UAGBPostCarousel extends Component {
 			columnGap,
 			bgColor,
 			contentPadding,
+			contentPaddingMobile,
 			titleColor,
 			titleTag,
 			titleFontSize,
@@ -400,6 +403,22 @@ class UAGBPostCarousel extends Component {
 								max={ 50 }
 								allowReset
 							/>
+							<RangeControl
+								label={ __( "Button Vertical Padding" ) }
+								value={ btnVPadding }
+								onChange={ ( value ) => setAttributes( { btnVPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Horizontal Padding" ) }
+								value={ btnHPadding }
+								onChange={ ( value ) => setAttributes( { btnHPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
 							<p className="uagb-inspect-tab-title"><strong>{ __( "Colors" ) }</strong></p>
 							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 								activeClass="active-tab"
@@ -540,6 +559,14 @@ class UAGBPostCarousel extends Component {
 						label={ __( "Content Padding" ) }
 						value={ contentPadding }
 						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Content Padding (Mobile)" ) }
+						value={ contentPaddingMobile }
+						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
