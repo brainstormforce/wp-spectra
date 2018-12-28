@@ -21,10 +21,7 @@ function CtaPositionClasses( attributes ) {
 	}
 
 	if( ( attributes.ctaPosition === "left" || attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
-		iconimgStyle_class +="uagb-cta-block-stacked-"+attributes.stack+ " "
-		if( attributes.ctaPosition === "right" ){
-			iconimgStyle_class += "uagb-cta-block-reverse-order-"+attributes.stack+ " "
-		}
+		iconimgStyle_class +="uagb-cta-block-stacked-"+attributes.stack+ " "		
 	}
 
 	if( attributes.ctaPosition !== "above-title" || attributes.ctaPosition !== "below-title"  ){
