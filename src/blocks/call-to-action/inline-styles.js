@@ -54,9 +54,9 @@ function CtaStyle( props ) {
 	} = props.attributes
 
 	if( props.clientId ){
-		var clientId = "uagb-infobox-"+props.clientId
+		var clientId = "uagb-cta-block-"+props.clientId
 	}else{
-		var clientId = "uagb-infobox-"+block_id
+		var clientId = "uagb-cta-block-"+block_id
 	}
 
 	var selectors = {}
@@ -80,7 +80,7 @@ function CtaStyle( props ) {
 		"color" : iconHover,
 	}
 
-	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {
+	selectors[".uagb-cta-block__content-wrap .uagb-ifb-imgicon-wrap"] = {
 		"margin-left" : iconLeftMargin+"px",
 		"margin-right" : iconRightMargin+"px",
 		"margin-top" : iconTopMargin+"px",
@@ -93,44 +93,44 @@ function CtaStyle( props ) {
 		"max-width": imageWidth+"px",
 	}
 
-	selectors[".uagb-infobox .uagb-ifb-image-content img"] = {
+	selectors[".uagb-cta-block .uagb-ifb-image-content img"] = {
 		"border-radius" : iconimgBorderRadius+"px",
 	}
 
 
 	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
-		selectors[".uagb-infobox__content-wrap"] = {
+		selectors[".uagb-cta-block__content-wrap"] = {
 			"text-align" : headingAlign,
 		}
 	}
 
 	// CTA style
-	selectors[".uagb-infobox-cta-link a"] = {
+	selectors[".uagb-cta-block-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
 
-	selectors[".uagb-infobox-cta-link a:hover"] = {
+	selectors[".uagb-cta-block-cta-link a:hover"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-infobox-cta-link span"] = {
+	selectors[".uagb-cta-block-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
-	selectors[".uagb-infobox-cta-link:hover span"] = {
+	selectors[".uagb-cta-block-cta-link:hover span"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-cta-block-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
-	selectors[".uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link span"] = {
+	selectors[".uagb-ifb-button-wrapper:hover .uagb-cta-block-cta-link span"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link"] = {
+	selectors[".uagb-ifb-button-wrapper .uagb-cta-block-cta-link"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -144,7 +144,7 @@ function CtaStyle( props ) {
 		"padding-right": ctaBtnHrPadding + "px",
 	}
 
-	selectors[".uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link"] = {
+	selectors[".uagb-ifb-button-wrapper:hover .uagb-cta-block-cta-link"] = {
 		"color": ctaLinkHoverColor,
 		"background-color": ctaBgHoverColor,
 		"border-color": ctaBorderhoverColor,

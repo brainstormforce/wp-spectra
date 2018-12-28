@@ -74,7 +74,7 @@ registerBlockType( "uagb/call-to-action", {
 		} = props.attributes
 
 
-		const my_block_id = "uagb-infobox-"+ block_id
+		const my_block_id = "uagb-cta-block-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
@@ -109,7 +109,7 @@ registerBlockType( "uagb/call-to-action", {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-					"uagb-infobox__content-wrap",
+					"uagb-cta-block__content-wrap",
 					...CtaPositionClasses(  props.attributes  ),
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
@@ -173,13 +173,13 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				<div className={ classnames(
 					className,
-					"uagb-infobox__outer-wrap"
+					"uagb-cta-block__outer-wrap"
 				) }
 				id = { my_block_id } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
+							<a href= {ctaLink} className = "uagb-cta-block-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

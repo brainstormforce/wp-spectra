@@ -6,41 +6,36 @@
 
 function CtaPositionClasses( attributes ) {
 
-	var sourceClass = "uagb-infobox-has-image"
-	if( attributes.source_type == "icon" ){
-		sourceClass = "uagb-infobox-has-icon"
-	}
-
+	
 	var iconimgStyle_class = ""
 
-	iconimgStyle_class += "uagb-infobox"+ " "
-	iconimgStyle_class += sourceClass+ " "
-	iconimgStyle_class += "uagb-infobox-icon-"+attributes.ctaPosition+ " "
+	iconimgStyle_class += "uagb-cta-block"+ " "
+	iconimgStyle_class += "uagb-cta-block-icon-"+attributes.ctaPosition+ " "
 
 	if( attributes.ctaPosition === "left" || attributes.ctaPosition === "left-title"  ){
-		iconimgStyle_class +="uagb-infobox-left"+ " "
+		iconimgStyle_class +="uagb-cta-block-left"+ " "
 	}
 
 	if( attributes.ctaPosition === "right" || attributes.ctaPosition === "right-title"  ){
-		iconimgStyle_class +="uagb-infobox-right"+ " "
+		iconimgStyle_class +="uagb-cta-block-right"+ " "
 	}
 
 	if( ( attributes.ctaPosition === "left" || attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
-		iconimgStyle_class +="uagb-infobox-stacked-"+attributes.stack+ " "
+		iconimgStyle_class +="uagb-cta-block-stacked-"+attributes.stack+ " "
 		if( attributes.ctaPosition === "right" ){
-			iconimgStyle_class += "uagb-infobox-reverse-order-"+attributes.stack+ " "
+			iconimgStyle_class += "uagb-cta-block-reverse-order-"+attributes.stack+ " "
 		}
 	}
 
 	if( attributes.ctaPosition !== "above-title" || attributes.ctaPosition !== "below-title"  ){
-		iconimgStyle_class += "uagb-infobox-image-valign-"+attributes.sourceAlign+ " "
+		iconimgStyle_class += "uagb-cta-block-image-valign-"+attributes.sourceAlign+ " "
 	}
 
 	if( attributes.enableBorder ){
-		iconimgStyle_class += "uagb-infobox-enable-border"+ " "
+		iconimgStyle_class += "uagb-cta-block-enable-border"+ " "
 	}
 
-	iconimgStyle_class += "uagb-infobox-enable-border-radius"+ " "
+	iconimgStyle_class += "uagb-cta-block-enable-border-radius"+ " "
 
 	return [
 		iconimgStyle_class        

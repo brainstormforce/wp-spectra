@@ -183,7 +183,7 @@ class UAGBcallToAction extends Component {
 		  isMulti: false,
 		}
 
-		const my_block_id = "uagb-infobox-"+this.props.clientId
+		const my_block_id = "uagb-cta-block-"+this.props.clientId
 
 	
 		// CTA settings.
@@ -636,7 +636,7 @@ class UAGBcallToAction extends Component {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-					"uagb-infobox__content-wrap",
+					"uagb-cta-block__content-wrap",
 					...CtaPositionClasses( attributes ),
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
@@ -692,13 +692,13 @@ class UAGBcallToAction extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-infobox__outer-wrap"
+					"uagb-cta-block__outer-wrap"
 				) }
 				id = { my_block_id }
 				>
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
+							<a href= {ctaLink} className = "uagb-cta-block-link-wrap" rel ="noopener noreferrer" > {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

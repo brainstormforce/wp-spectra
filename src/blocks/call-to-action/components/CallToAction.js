@@ -12,7 +12,7 @@ class CallToAction extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-infobox-cta-link uagb-ifb-cta-button"
+		let ctaBtnClass = "uagb-cta-block-cta-link uagb-ifb-cta-button"
 
 		let target ="_self"
 		let rel ="noopener noreferrer"
@@ -27,9 +27,9 @@ class CallToAction extends React.Component {
 			</span>
 		}
 		return (			
-			<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
+			<div className = "uagb-ifb-cta uagb-cta-block-cta-link-style">
 				{  attributes.ctaType === "text" && ( 
-					<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
+					<a href = {attributes.ctaLink} target= {target} className = "uagb-cta-block-cta-link" rel= {rel} >
 						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
 						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
 						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
