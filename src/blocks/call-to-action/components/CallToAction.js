@@ -12,7 +12,7 @@ class CallToAction extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-cta-block-cta-link uagb-cta-link-wrapper-button"
+		let ctaBtnClass = "uagb-cta-block-link uagb-cta-link-wrapper-button"
 
 		let target ="_self"
 		let rel ="noopener noreferrer"
@@ -29,7 +29,7 @@ class CallToAction extends React.Component {
 		return (			
 			<div className = "uagb-cta-link-wrapper uagb-cta-block-link-style">
 				{  attributes.ctaType === "text" && ( 
-					<a href = {attributes.ctaLink} target= {target} className = "uagb-cta-block-cta-link" rel= {rel} >
+					<a href = {attributes.ctaLink} target= {target} className = "uagb-cta-block-link" rel= {rel} >
 						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
 						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
 						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
@@ -38,10 +38,10 @@ class CallToAction extends React.Component {
 				}
 
 				{  attributes.ctaType === "button" && ( 
-					<div className = "uagb-ifb-button-wrapper">
+					<div className = "uagb-cta-button-wrapper">
 						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
                         	{ cta_icon_output }
-							<span className = "uagb-cta-link-wrapper-content-wrapper">    
+							<span className = "uagb-cta-link-content-wrapper">    
 								<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
 							</span>
 						</a>

@@ -20,23 +20,23 @@
     text-align: center;
 }
 
-a.uagb-cta-block-cta-link span {
+a.uagb-cta-block-link span {
     font-size: inherit;
 }
 .uagb-cta-link-wrapper.uagb-cta-block-link-style:empty {
     display: none;
 }
-a.uagb-cta-block-cta-link,
-.entry .entry-content a.uagb-cta-block-cta-link,
+a.uagb-cta-block-link,
+.entry .entry-content a.uagb-cta-block-link,
 a.uagb-cta-block-link-wrap,
 .entry .entry-content a.uagb-cta-block-link-wrap{
     text-decoration:none;
 }
-a.uagb-cta-block-cta-link:hover,
-.entry .entry-content a.uagb-cta-block-cta-link:hover,
+a.uagb-cta-block-link:hover,
+.entry .entry-content a.uagb-cta-block-link:hover,
 a.uagb-cta-block-link-wrap:hover,
 .entry .entry-content a.uagb-cta-block-link-wrap:hover
-.entry .entry-content a.uagb-cta-block-cta-link:hover{
+.entry .entry-content a.uagb-cta-block-link:hover{
     color:inherit;
 }
 .uagb-cta-block-icon-left-title.uagb-cta-block-image-valign-middle .uagb-ifb-title-wrap,
@@ -249,7 +249,7 @@ svg.dashicon.dashicons-upload {
 button.components-button {
     z-index: 1;
 }
-.uagb-cta-block-cta-link {
+.uagb-cta-block-link {
     cursor: pointer;
 }
 a.uagb-cta-block-link-wrap {
@@ -273,8 +273,8 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
     float: right;
 }
 
-.block-editor-page #wpwrap .uagb-cta-block-cta-link i,
-.uagb-cta-block-cta-link i {
+.block-editor-page #wpwrap .uagb-cta-block-link i,
+.uagb-cta-block-link i {
     font-style: normal;
 }
 
