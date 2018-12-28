@@ -5,11 +5,6 @@
  * which makes it higher in priority.
  */
 
-.uagb-cta-separator {
-    display: inline-block;
-    width: 30%;
-    margin: 0;
-}
 
 .uagb-cta-block__content-wrap.uagb-cta-block-icon-above-title{
     text-align:center;
@@ -17,10 +12,6 @@
 
 .block-editor-page #wpwrap .edit-post-visual-editor a.uagb-cta-block-link-wrap {
     color: inherit;
-}
-
-.block-editor-page #wpwrap .editor-rich-text .uagb-cta-title-prefix {
-    margin-bottom: 5px;
 }
 
 .block-editor-page #wpwrap .editor-rich-text .uagb-cta-title {

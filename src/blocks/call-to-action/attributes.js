@@ -50,11 +50,7 @@ const attributes = {
 	subHeadSpace: {
 		type: "number",
 		default : 10,
-	},	
-	iconimgBorderRadius: {
-		type: "number",
-		default : 0
-	},	
+	},		
 	block_id :{
 		type : "string",
 		default : "not_set"
@@ -142,7 +138,6 @@ const attributes = {
 		type: "number",
 		default: 0,
 	},		
-	
 	stack: {
 		type: "string",
 		default: "tablet"
