@@ -30,7 +30,7 @@ class AuthorName extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName="span"
+	                tagName="div"
 	                value={ author_name }
 	                placeholder={ __( "Author Name" ) }
 	                className='uagb-tm__author-name'
