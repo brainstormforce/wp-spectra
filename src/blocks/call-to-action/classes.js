@@ -25,7 +25,7 @@ function CtaPositionClasses( attributes ) {
 	}
 
 	if( attributes.ctaPosition !== "above-title" || attributes.ctaPosition !== "below-title"  ){
-		iconimgStyle_class += "uagb-cta-block-valign-"+attributes.sourceAlign+ " "
+		iconimgStyle_class += "uagb-cta-block-valign-"+attributes.buttonAlign+ " "
 	}
 
 	if( attributes.enableBorder ){

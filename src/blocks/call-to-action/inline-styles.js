@@ -5,13 +5,13 @@
  */
 function CtaStyle( props ) {
 	const {
-		headingAlign,
-		headingColor,
-		subHeadingColor,
-		headFontSize,
-		subHeadFontSize,
-		headSpace,
-		subHeadSpace,
+		textAlign,
+		titleColor,
+		descColor,
+		titleFontSize,
+		descFontSize,
+		titleSpace,
+		descSpace,
 		ctaPosition,
 		block_id,
 		ctaLinkColor,
@@ -45,7 +45,7 @@ function CtaStyle( props ) {
 	var selectors = {}
 
 	selectors[".uagb-cta-block__content-wrap"] = {
-		"text-align" : headingAlign,
+		"text-align" : textAlign,
 	}
 		
 	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
@@ -114,16 +114,16 @@ function CtaStyle( props ) {
 
 	// Title Style
 	selectors[".editor-rich-text .uagb-cta-title"] = {
-		"font-size" : headFontSize+"px",
-		"color": headingColor,
-		"margin-bottom": headSpace+"px",
+		"font-size" : titleFontSize+"px",
+		"color": titleColor,
+		"margin-bottom": titleSpace+"px",
 	}
 
 	// Description Style
 	selectors[".editor-rich-text .uagb-cta-desc"] = {
-		"font-size" : subHeadFontSize+"px",
-		"color": subHeadingColor,
-		"margin-bottom": subHeadSpace+"px",
+		"font-size" : descFontSize+"px",
+		"color": descColor,
+		"margin-bottom": descSpace+"px",
 	}
 	
 	selectors[".uagb-cta-align-icon-after"] = {

@@ -541,14 +541,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr->ctaBorderhoverColor,
 				),	
 				' .uagb-cta-title'  => array(
-					'font-size'        => $attr->headFontSize. "px",
-					'color'            => $attr->headingColor,
-					'margin-bottom'    => $attr->headSpace. "px",					
+					'font-size'        => $attr->titleFontSize. "px",
+					'color'            => $attr->titleColor,
+					'margin-bottom'    => $attr->titleSpace. "px",					
 				),
 				' .uagb-cta-desc'  => array(
-					'font-size'        => $attr->subHeadFontSize. "px",
-					'color'            => $attr->subHeadingColor,
-					'margin-bottom'    => $attr->subHeadSpace. "px",					
+					'font-size'        => $attr->descFontSize. "px",
+					'color'            => $attr->descColor,
+					'margin-bottom'    => $attr->descSpace. "px",					
 				),	
 				' .uagb-cta-align-icon-after'  => array(
 					'margin-left'    => $attr->ctaIconSpace. "px",					
@@ -559,7 +559,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[' .uagb-cta-block__content-wrap'] = array(
-                'text-align' => $attr->headingAlign,
+                'text-align' => $attr->textAlign,
             );
 
 			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){

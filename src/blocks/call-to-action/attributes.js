@@ -8,50 +8,44 @@ const attributes = {
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "Call To Action",
 	},
-	headingDesc: {
+	description: {
 		source: "html",
 		selector: "p",
 		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
-	headingAlign: {
+	textAlign: {
 		type: "string",
 		default: "center",
 	},
-	headingColor: {
+	titleColor: {
 		type: "string",
 	},
-	subHeadingColor: {
+	descColor: {
 		type: "string",
 	},		
 	ctaPosition: {
 		type: "string",
 		default: "below-title"
 	},	
-	headingTag: {
+	titleTag: {
 		type: "string",
 		default: "h3"
-	},
-	separatorHeight: {
-		type: "number"
-	},
-	separatorWidth: {
-		type: "number"
-	},
-	headFontSize: {
+	},	
+	titleFontSize: {
 		type: "number",
 	},
 	blockPadding:{
 		type: "number",
 		default : 5,
 	},
-	subHeadFontSize: {
+	descFontSize: {
 		type: "number",
 	},
-	headSpace: {
+	titleSpace: {
 		type: "number",
 		default : 10,
 	},
-	subHeadSpace: {
+	descSpace: {
 		type: "number",
 		default : 10,
 	},		
@@ -59,7 +53,7 @@ const attributes = {
 		type : "string",
 		default : "not_set"
 	},
-	sourceAlign:{
+	buttonAlign:{
 		type : "string",
 		default : "middle"
 	},

@@ -65,21 +65,21 @@ class UAGBcallToAction extends Component {
 		// Setup the attributes.
 		const {
 			ctaTitle,
-			headingDesc,
-			headingAlign,
-			headingColor,
-			subHeadingColor,
-			headingTag,
-			headFontSize,
-			subHeadFontSize,
+			description,
+			textAlign,
+			titleColor,
+			descColor,
+			titleTag,
+			titleFontSize,
+			descFontSize,
 			separatorWidth,
 			separatorHeight,
-			headSpace,
+			titleSpace,
 			separatorSpace,
-			subHeadSpace,			
+			descSpace,			
 			ctaPosition,
 			block_id,
-			sourceAlign,
+			buttonAlign,
 			ctaType,
 			ctaText,
 			ctaLink,
@@ -127,7 +127,6 @@ class UAGBcallToAction extends Component {
 		}
 
 		const my_block_id = "uagb-cta-block-"+this.props.clientId
-
 	
 		// CTA settings.
 		const ctaSettings = (
@@ -329,8 +328,8 @@ class UAGBcallToAction extends Component {
 					{ showTitle && <Fragment>
 							<SelectControl
 								label={ __( "Title Tag" ) }
-								value={ headingTag }
-								onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+								value={ titleTag }
+								onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 								options={ [
 									{ value: "h1", label: __( "H1" ) },
 									{ value: "h2", label: __( "H2" ) },
@@ -342,8 +341,8 @@ class UAGBcallToAction extends Component {
 							/>
 							<RangeControl
 								label={ __( "Heading Font Size" ) }
-								value={ headFontSize }
-								onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+								value={ titleFontSize }
+								onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
 								min={ 10 }
 								max={ 200 }
 								initialPosition={30}
@@ -360,8 +359,8 @@ class UAGBcallToAction extends Component {
 					{ showDesc &&
 						<RangeControl
 							label={ __( "Description Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							value={ descFontSize }
+							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
 							max={ 200 }
 							initialPosition={16}
@@ -392,18 +391,18 @@ class UAGBcallToAction extends Component {
 					>					
 						
 						{ showTitle && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 						    <ColorPalette
-						        value={ headingColor }
-						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+						        value={ titleColor }
+						        onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 						        allowReset
 						    /> </Fragment>	
 						}
 						{ showDesc && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 						    <ColorPalette
-						        value={ subHeadingColor }
-						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+						        value={ descColor }
+						        onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
 						        allowReset
 						    /> </Fragment>	
 						}									
@@ -479,8 +478,8 @@ class UAGBcallToAction extends Component {
 					{ showTitle && 
 						<RangeControl
 							label={ __( "Heading Bottom Margin" ) }
-							value={ headSpace }
-							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
+							value={ titleSpace }
+							onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon=""
@@ -491,8 +490,8 @@ class UAGBcallToAction extends Component {
 					{ showDesc && 
 						<RangeControl
 							label={ __( "Description Bottom Margin" ) }
-							value={ subHeadSpace }
-							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+							value={ descSpace }
+							onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon=""
@@ -586,8 +585,8 @@ class UAGBcallToAction extends Component {
 
 						{ ( ctaPosition && (ctaPosition !== "above-title" && ctaPosition !== "below-title" )  ) && <SelectControl
 							label={ __( "Vertical ALignment" ) }
-							value={ sourceAlign }
-							onChange={ ( value ) => setAttributes( { sourceAlign: value } ) }
+							value={ buttonAlign }
+							onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
 							options={ [
 								{ value: "top", label: __( "Top" ) },
 								{ value: "middle", label: __( "Middle" ) },
@@ -680,8 +679,8 @@ class UAGBcallToAction extends Component {
 				
 				<BlockControls key='controls'>
 					<AlignmentToolbar
-						value={ headingAlign }
-						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+						value={ textAlign }
+						onChange={ ( value ) => setAttributes( { textAlign: value } ) }
 					/>
 				</BlockControls>
 				

@@ -21,7 +21,7 @@ class Title extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= { attributes.headingTag }
+	                tagName= { attributes.titleTag }
 	                placeholder={ __( "Write a Heading" ) }
 	                value={ attributes.ctaTitle }
 	                className = 'uagb-cta-title'
@@ -45,7 +45,7 @@ class Title extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName= { attributes.headingTag }
+	                tagName= { attributes.titleTag }
 	                value={ attributes.ctaTitle }
 	                className='uagb-cta-title'
 	            />
