@@ -484,6 +484,143 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
+
+		/**
+		 * Get CTA CSS
+		 *
+		 * @since 1.7.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_call_to_action_css( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
+
+			$attr = (object) array_merge( $defaults, (array) $attr );
+
+			
+
+			$selectors = array(
+				' .uagb-cta-block-link a'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaLinkColor,
+				),	
+				' .uagb-cta-block-link a:hover'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-block-link span'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaLinkColor,
+				),
+				' .uagb-cta-block-link:hover span'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-button-wrapper .uagb-cta-block-link span'  => array(
+					'font-size'      => $attr->ctaFontSize. "px",
+					'color'       => $attr->ctaBtnLinkColor,
+				),
+				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link span'  => array(
+					'color'       => $attr->ctaLinkHoverColor,
+				),
+				' .uagb-cta-button-wrapper .uagb-cta-block-link'  => array(
+					'font-size'        => $attr->ctaFontSize. "px",
+					'color'            => $attr->ctaBtnLinkColor,
+					'background-color' => $attr->ctaBgColor,
+					'border-style'     => $attr->ctaBorderStyle,
+					'border-color'     => $attr->ctaBorderColor,
+					'border-radius'    => $attr->ctaFontSize. "px",
+					'border-width'     => $attr->ctaBorderWidth. "px",
+					'padding-top'      => $attr->ctaBtnVertPadding. "px",
+					'padding-bottom'   => $attr->ctaBtnVertPadding. "px",
+					'padding-left'     => $attr->ctaBtnHrPadding. "px",
+					'padding-right'    => $attr->ctaBtnHrPadding. "px",
+				),	
+				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link'  => array(
+					'color'            => $attr->ctaLinkHoverColor,
+					'background-color' => $attr->ctaBgHoverColor,
+					'border-color'     => $attr->ctaBorderhoverColor,
+				),	
+				' .uagb-cta-title'  => array(
+					'font-size'        => $attr->headFontSize. "px",
+					'color'            => $attr->headingColor,
+					'margin-bottom'    => $attr->headSpace. "px",					
+				),
+				' .uagb-cta-desc'  => array(
+					'font-size'        => $attr->subHeadFontSize. "px",
+					'color'            => $attr->subHeadingColor,
+					'margin-bottom'    => $attr->subHeadSpace. "px",					
+				),	
+				' .uagb-cta-align-icon-after'  => array(
+					'margin-left'    => $attr->ctaIconSpace. "px",					
+				),
+				' .uagb-cta-align-icon-before'  => array(
+					'margin-right'    => $attr->ctaIconSpace. "px",					
+				),								
+			);
+
+			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
+               	$selectors[' .uagb-cta-block__content-wrap'] = array(
+	                'text-align' => $attr->headingAlign,
+	            );
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
+	                'margin-top' => $attr->ctaTopSpace. "px",
+	                'margin-bottom' => $attr->ctaBottomSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );	
+
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'padding' => $attr->blockPadding. "px",
+	            );          
+            }
+
+            if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
+	            
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'margin-left' => $attr->ctaLeftSpace. "px",
+	                'margin-right' => $attr->ctaRightSpace. "px",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+            }
+
+            // Tablet.
+            $t_selectors[' .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'margin-left' => "0",
+	                'margin-right' => "0",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+
+            if( 'above-title' !== $attr->ctaPosition ||  'below-title' !== $attr->ctaPosition ){	            
+	            $t_selectors[' .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
+	                'margin-top' => $attr->ctaTopSpace. "px",
+	                'margin-bottom' => $attr->ctaBottomSpace. "px",
+	            );
+            }
+
+             // mobile.
+            $m_selectors[' .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	                'margin-left' => "0",
+	                'margin-right' => "0",
+	                'padding' => $attr->blockPadding. "px",
+	            );
+
+            if( 'above-title' !== $attr->ctaPosition ||  'below-title' !== $attr->ctaPosition ){	            
+	            $m_selectors[' .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
+	                'margin-top' => $attr->ctaTopSpace. "px",
+	                'margin-bottom' => $attr->ctaBottomSpace. "px",
+	            );
+            }
+            
+			// @codingStandardsIgnoreEnd.
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );
+			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-cta-block-' . $id );
+
+			return $desktop . $tablet . $mobile;
+		}
+
 		/**
 		 * Get Testimonial CSS
 		 *
