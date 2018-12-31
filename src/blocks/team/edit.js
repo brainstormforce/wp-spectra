@@ -150,9 +150,11 @@ class UAGBTeam extends Component {
 				<RichText
 					tagName='p'
 					value={ description_text }
+					placeholder={ __( "Write a Description" ) }
 					className='uagb-team__desc'
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
+					placeholder={ __( "Write a Description" ) }
 					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
@@ -205,11 +207,13 @@ class UAGBTeam extends Component {
 					onRemove={ () => onReplace( [] ) }
 				/>
 				<RichText
-					tagName="span"
+					tagName="div"
 					value={ prefix }
+					placeholder={ __( "Enter Prefix" ) }
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }
+					placeholder={ __( "Write a Designation" ) }
 					unstableOnSplit = {
 						insertBlocksAfter ?
 							( before, after, ...blocks ) => {
