@@ -19,7 +19,6 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	MediaUpload
 } = wp.editor
 
 const {
@@ -29,22 +28,7 @@ const {
 	TabPanel,
 	ToggleControl,
 	TextControl,
-	BaseControl,
-	Button,
-	withNotices,
 } = wp.components
-
-const {
-	compose
-} = wp.compose
-
-const {
-	withSelect
-} = wp.data
-
-const {
-	withViewportMatch
-} = wp.viewport
 
 // Extend component
 const { Component, Fragment } = wp.element
@@ -54,51 +38,14 @@ class UAGBcallToAction extends Component {
 	constructor() {
 
 		super( ...arguments )
-		this.getIfbIcon  	  = this.getIfbIcon.bind(this)
 		this.toggleTarget     = this.toggleTarget.bind( this )
-		this.toggleResponsive = this.toggleResponsive.bind( this )
-		this.onSelectImage    = this.onSelectImage.bind( this )
-		this.onRemoveImage    = this.onRemoveImage.bind( this )
-		this.getCtaicon  	  = this.getCtaicon.bind(this)
+		this.getCtaIcon  	  = this.getCtaIcon.bind(this)
 	}
 
-	getIfbIcon(value) {
-		this.props.setAttributes( { icon: value } )
-	}
-
-	getCtaicon(value) {
+	getCtaIcon(value) {
 		this.props.setAttributes( { ctaIcon: value } )
 	}
 
-	/*
-	 * Event to set Image as while adding.
-	 */
-	onSelectImage( media ) {
-		const { iconImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		if ( ! media || ! media.url ) {
-			setAttributes( { iconImage: null } )
-			return
-		}
-
-		if ( ! media.type || "image" !== media.type ) {
-			setAttributes( { iconImage: null } )
-			return
-		}
-
-		setAttributes( { iconImage: media } )
-	}
-
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	onRemoveImage() {
-		const { iconImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { iconImage: null } )
-	}
 
 	/**
 	 * Function Name: toggleTarget.
@@ -110,15 +57,6 @@ class UAGBcallToAction extends Component {
 		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
 
-	/**
-	 * Function Name: toggleResponsive.
-	 */
-	toggleResponsive() {
-		const { responsiveDesign } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { responsiveDesign: ! responsiveDesign } )
-	}
 
 	render() {
 
@@ -184,7 +122,7 @@ class UAGBcallToAction extends Component {
 		  renderUsing: "class",
 		  theme: "default",
 		  value: ctaIcon,
-		  onChange: this.getCtaicon,
+		  onChange: this.getCtaIcon,
 		  isMulti: false,
 		}
 

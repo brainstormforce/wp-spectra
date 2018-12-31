@@ -12,7 +12,6 @@ class Title extends React.Component {
 
 	render() {
 
-		//const { attributes, setAttributes , props } = this.props;
 		const {
 			attributes,
 			setAttributes ,

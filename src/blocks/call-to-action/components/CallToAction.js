@@ -1,7 +1,3 @@
-const {
-	RichText,
-} = wp.editor
-
 const { __ } = wp.i18n
 
 import classnames from "classnames"
