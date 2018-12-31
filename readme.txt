@@ -92,6 +92,8 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.6.1.1 =
+* Fix: Info Box - Prefix not deleted issue.
 
 = 1.6.1 =
 * Improvement: Post - Added an option for Content Padding on Mobile devices.
