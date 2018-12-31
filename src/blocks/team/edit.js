@@ -205,7 +205,7 @@ class UAGBTeam extends Component {
 					onRemove={ () => onReplace( [] ) }
 				/>
 				<RichText
-					tagName="span"
+					tagName="div"
 					value={ prefix }
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
