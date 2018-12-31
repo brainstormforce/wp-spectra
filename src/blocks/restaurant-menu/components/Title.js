@@ -30,6 +30,7 @@ class Title extends React.Component {
 				<RichText
 	                tagName= {attributes.headingTag}
 	                value={ author_title }
+	                 placeholder={ __( "Write a Title" ) }
 	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
 	                	var new_content = { "description" : data_copy[index_value]["description"], "title":value, "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }

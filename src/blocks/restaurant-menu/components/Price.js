@@ -30,16 +30,16 @@ class Price extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= 'span'
+	                tagName= 'div'
 	                value={ price }
 	                className = 'uagb-rm__price'
+	                placeholder={ __( "Price" ) }
 	                onChange={ ( value ) => { 
 	                	var new_content = { "description" : data_copy[index_value]["description"], "title":data_copy[index_value]["title"], "price" : value, "image" : data_copy[index_value]["image"]  }
 						data_copy[index_value] = new_content
 						setAttributes( { "rest_menu_item_arr": data_copy } )	                	
 	                } }     
 	                multiline={ false }
-	                placeholder={ __( "Write a Heading" ) }
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

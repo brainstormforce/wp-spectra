@@ -44,6 +44,15 @@ function styling( props ) {
 			"color": button.hColor
 		}
 
+		selectors[" .uagb-buttons-repeater-" + index + " .uagb-button__link"] = {
+			"padding" : button.vPadding + "px " + button.hPadding + "px",
+			"color": button.color
+		}
+
+		selectors[" .uagb-buttons-repeater-" + index + ":hover .uagb-button__link"] = {
+			"color": button.hColor
+		}
+
 	})
 
 	selectors[" .uagb-button__wrapper"] = {

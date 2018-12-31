@@ -101,7 +101,10 @@ registerBlockType( "uagb/content-timeline", {
 										}
 										const Tag = headingTag
 										var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "+icon
-
+										var post_date = dateI18n( dateFormat, t_date[index].title )
+										if( post_date === "Invalid date" ){
+											post_date = t_date[index].title
+										}
 										return (
 											<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
 												<div className = { classnames(
@@ -120,7 +123,7 @@ registerBlockType( "uagb/content-timeline", {
 																<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
 																	{ displayPostDate && t_date[index].title &&
                                                                             <div className={ "uagb-timeline__inner-date-new" }>
-                                                                            	{ dateI18n( dateFormat, t_date[index].title ) }
+                                                                            	{ post_date }
                                                                             </div>
 																	}
 																</div>
@@ -152,7 +155,7 @@ registerBlockType( "uagb/content-timeline", {
 													{ display_inner_date && <div className = "uagb-timeline__date-new">
 														{ displayPostDate && t_date[index].title &&
                                                                 <div className={ "uagb-timeline__date-new" }>
-                                                                	{ dateI18n( dateFormat, t_date[index].title ) }
+                                                                	{ post_date }
                                                                 </div>
 														}
 													</div>
