@@ -347,7 +347,7 @@ class UAGBMultiButtonEdit extends Component {
 										<RichText
 											placeholder={ __( "Add text…" ) }
 											value={ button.label }
-											tagName='a'
+											tagName='div'
 											onChange={ value => {
 												this.saveButton( { label: value }, index )
 											} }
