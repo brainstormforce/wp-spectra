@@ -150,6 +150,7 @@ class UAGBTeam extends Component {
 				<RichText
 					tagName='p'
 					value={ description_text }
+					placeholder={ __( "Write a Description" ) }
 					className='uagb-team__desc'
 					onChange={ ( value ) => setAttributes( { description_text: value } ) }
 					onMerge = { mergeBlocks }
@@ -208,6 +209,7 @@ class UAGBTeam extends Component {
 				<RichText
 					tagName="div"
 					value={ prefix }
+					placeholder={ __( "Enter Prefix" ) }
 					className='uagb-team__prefix'
 					onChange={ ( value ) => setAttributes( { prefix: value } ) }
 					onMerge = { mergeBlocks }

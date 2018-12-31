@@ -422,6 +422,7 @@ class UAGBIconList extends Component {
 												<div className="uagb-icon-list__label-wrap">
 													<RichText
 														tagName="div"
+														placeholder={ __( "Label Name" ) }
 														value={ icons[ index ].label }
 														className='uagb-icon-list__label'
 														onChange={ value => {
