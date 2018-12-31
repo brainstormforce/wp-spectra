@@ -61,7 +61,7 @@ const attributes = {
 	},
 	sourceAlign:{
 		type : "string",
-		default : "top"
+		default : "middle"
 	},
 	ctaTarget: {
 		type: "boolean",

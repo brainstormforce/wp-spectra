@@ -44,10 +44,12 @@ function CtaStyle( props ) {
 
 	var selectors = {}
 
+	selectors[".uagb-cta-block__content-wrap"] = {
+		"text-align" : headingAlign,
+	}
+		
 	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
-		selectors[".uagb-cta-block__content-wrap"] = {
-			"text-align" : headingAlign,
-		}
+		
 		selectors[".uagb-cta-left-right-wrap .uagb-cta-block-link-style"] = {
 			"margin-top" : ctaTopSpace+"px",
 			"margin-bottom" : ctaBottomSpace+"px",

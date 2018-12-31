@@ -500,8 +500,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
-			
-
 			$selectors = array(
 				' .uagb-cta-block-link a'  => array(
 					'font-size'      => $attr->ctaFontSize. "px",
@@ -560,10 +558,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),								
 			);
 
+			$selectors[' .uagb-cta-block__content-wrap'] = array(
+                'text-align' => $attr->headingAlign,
+            );
+
 			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
-               	$selectors[' .uagb-cta-block__content-wrap'] = array(
-	                'text-align' => $attr->headingAlign,
-	            );
 	            
 	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
 	                'margin-top' => $attr->ctaTopSpace. "px",

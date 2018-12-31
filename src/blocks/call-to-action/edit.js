@@ -739,14 +739,14 @@ class UAGBcallToAction extends Component {
 
 		return (
 			<Fragment>
-				{ ( ctaPosition == "above-title" || ctaPosition == "below-title") &&
-					<BlockControls key='controls'>
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-						/>
-					</BlockControls>
-				}
+				
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ headingAlign }
+						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
+					/>
+				</BlockControls>
+				
 				{inspect_control}
 				<div className={ classnames(
 					className,
