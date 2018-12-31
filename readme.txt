@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.0.2
-Stable tag: 1.6.0
+Stable tag: 1.6.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,16 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.6.2 =
+* Fix: Info Box - Editable RichText issue with Prefix.
+* Fix: Icon List - Editable RichText issue with List Label.
+* Fix: Multi Buttons- Editable RichText issue with Button Text.
+* Improvement: Content Timeline - Date value can be both Dates and Arbitrary Text values.
+
+= 1.6.1 =
+* Improvement: Post - Added an option for Content Padding on Mobile devices.
+* Improvement: Post - Added an option for padding to Read More link button.
 
 = 1.6.0 =
 * New: Post Masonry

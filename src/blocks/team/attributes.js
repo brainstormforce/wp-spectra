@@ -19,7 +19,7 @@ const attributes = {
 		default: "John Doe",
 	},
 	prefix: {
-		selector: "span.uagb-team__prefix",
+		selector: "div.uagb-team__prefix",
 		default: "Designation",
 	},
 	description_text: {

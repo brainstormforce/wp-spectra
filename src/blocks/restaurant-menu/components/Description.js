@@ -31,6 +31,7 @@ class Description extends React.Component {
 				<RichText
 	                tagName='div'
 	                value={ description }
+	                placeholder={ __( "Write a Description" ) }
 	                className='uagb-rm__desc'
 	                onChange={ ( value ) => { 
 	                	var new_content = { "description" : value, "title":data_copy[index_value]["title"], "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }

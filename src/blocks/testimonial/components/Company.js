@@ -30,7 +30,7 @@ class Company extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= 'span'
+	                tagName= 'div'
 	                value={ company }
 	                className = 'uagb-tm__company'
 	                onChange={ ( value ) => { 

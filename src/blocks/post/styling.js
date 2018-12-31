@@ -13,6 +13,7 @@ function styling( props, id ) {
 		columnGap,
 		bgColor,
 		contentPadding,
+		contentPaddingMobile,
 		titleColor,
 		titleTag,
 		titleFontSize,
@@ -37,7 +38,11 @@ function styling( props, id ) {
 		borderColor,
 		borderHColor,
 		borderRadius,
+		btnVPadding,
+		btnHPadding,
 	} = props.attributes
+
+	var mobile_selectors = {}
 
 	var selectors = {
 		" .uagb-post__items": {
@@ -97,7 +102,8 @@ function styling( props, id ) {
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"color": ctaColor,
-			"font-size": ctaFontSize  + "px"
+			"font-size": ctaFontSize  + "px",
+			"padding": btnVPadding + "px " + btnHPadding + "px"
 		},
 		" .uagb-post__text .uagb-post__cta:hover": {
 			"color": ctaHColor,
@@ -110,6 +116,12 @@ function styling( props, id ) {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
 		}
+	}
+
+	mobile_selectors = {
+		" .uagb-post__text": {
+			"padding" : ( contentPaddingMobile ) + "px",
+		},
 	}
 
 	var styling_css = ""
@@ -130,6 +142,27 @@ function styling( props, id ) {
 
 		styling_css += css + " } "
 	}
+
+	styling_css += "@media only screen and (max-width: 767px) {"
+
+	for( var i in mobile_selectors ) {
+
+		styling_css += `#${id}-${ props.clientId }`
+
+		styling_css += i + " { "
+
+		var sel = mobile_selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	styling_css += " }"
 
 	return styling_css
 }
