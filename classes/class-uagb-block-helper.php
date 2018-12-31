@@ -528,7 +528,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr->ctaBgColor,
 					'border-style'     => $attr->ctaBorderStyle,
 					'border-color'     => $attr->ctaBorderColor,
-					'border-radius'    => $attr->ctaFontSize. "px",
+					'border-radius'    => $attr->ctaBorderRadius. "px",
 					'border-width'     => $attr->ctaBorderWidth. "px",
 					'padding-top'      => $attr->ctaBtnVertPadding. "px",
 					'padding-bottom'   => $attr->ctaBtnVertPadding. "px",

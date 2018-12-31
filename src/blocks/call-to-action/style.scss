@@ -240,7 +240,7 @@
     }
 
 @media only screen and (max-width: 976px) {   
-     .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap {
+    .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap {
         -webkit-box-orient: vertical;
         -webkit-box-direction: column;
         -ms-flex-direction: column;
@@ -250,10 +250,29 @@
         flex-direction: column;
         text-align: center;
     }   
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-link-wrapper,
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-link-wrapper{
+        width:100%;    
+    }
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-content,
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-content{
+        width:100%;    
+    }
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-button-wrapper {
+        display: inline-block;
+        float: none;
+        margin:0 auto;
+    }
+
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-button-wrapper {
+        display: inline-block;
+        float: none;
+        margin:0 auto;
+    }
 }
 
 @media screen and (max-width: 767px) {
-     .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap {
+    .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap {
         -webkit-box-orient: vertical;
         -webkit-box-direction: column;
         -ms-flex-direction: column;
@@ -263,4 +282,23 @@
         flex-direction: column;
         text-align: center;
     }  
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-link-wrapper,
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-link-wrapper{
+        width:100%;    
+    }
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-content,
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-content{
+        width:100%;    
+    }
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-button-wrapper {
+        display: inline-block;
+        float: none;
+        margin:0 auto;
+    }
+
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-button-wrapper {
+        display: inline-block;
+        float: none;
+        margin:0 auto;
+    }
 }
