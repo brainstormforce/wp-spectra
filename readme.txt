@@ -93,6 +93,12 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.6.1.1 =
+* Fix: Info Box - Prefix not deleted error.
+* Fix: Icon List - Text not editable error.
+* Fix: Social Share - Pointer event issue.
+* Fix: Multi Buttons- Text not getting empty error.
+
 = 1.6.1 =
 * Improvement: Post - Added an option for Content Padding on Mobile devices.
 * Improvement: Post - Added an option for padding to Read More link button.

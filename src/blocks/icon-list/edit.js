@@ -412,7 +412,7 @@ class UAGBIconList extends Component {
 											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
-										href={ icon.link }
+										href="javascript:void(0)"
 										target={ target }
 										rel="noopener noreferrer"
 									>
@@ -421,7 +421,7 @@ class UAGBIconList extends Component {
 											{ ! hideLabel &&
 												<div className="uagb-icon-list__label-wrap">
 													<RichText
-														tagName="span"
+														tagName="div"
 														value={ icons[ index ].label }
 														className='uagb-icon-list__label'
 														onChange={ value => {

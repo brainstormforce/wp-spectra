@@ -30,7 +30,7 @@ class Price extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= 'span'
+	                tagName= 'div'
 	                value={ price }
 	                className = 'uagb-rm__price'
 	                onChange={ ( value ) => { 
