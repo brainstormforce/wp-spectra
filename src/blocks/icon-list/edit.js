@@ -412,7 +412,7 @@ class UAGBIconList extends Component {
 											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
-										href={ icon.link }
+										href="javascript:void(0)"
 										target={ target }
 										rel="noopener noreferrer"
 									>
