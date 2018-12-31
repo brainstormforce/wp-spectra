@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: UAGB CTA Attributes
  */
 
 const attributes = {	
