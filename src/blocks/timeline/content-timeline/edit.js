@@ -795,6 +795,7 @@ class UAGBcontentTimeline extends Component {
 															<RichText
 																tagName={ headingTag }
 																value={ post.time_heading }
+																placeholder={ __( "Write a Heading" ) }
 																className='uagb-timeline__heading'
 																onChange={ ( value ) => {
 																	var p = { "time_heading" : value,"time_desc":data_copy[index]["time_desc"] }
@@ -820,6 +821,7 @@ class UAGBcontentTimeline extends Component {
 														<RichText
 															tagName= "p"
 															value={ post.time_desc }
+															placeholder={ __( "Write a Description" ) }
 															className='uagb-timeline-desc-content'
 															onChange={ ( value ) => {
 																var p = { "time_heading" : data_copy[index]["time_heading"],"time_desc":value }
