@@ -46,15 +46,6 @@
         color:inherit;
     }
 
-    .uagb-cta-block-center {
-        text-align: center;
-        -webkit-box-pack: center;
-        -ms-flex-pack: center;
-        -webkit-justify-content: center;
-        -moz-box-pack: center;
-        justify-content: center;
-    }
-
     .uagb-cta__content-right {
         text-align: right;
         -webkit-box-pack: end;
@@ -76,11 +67,8 @@
         width: 100%;
     }
 
-    /* Left/Right */
     .uagb-cta__icon-position-left .uagb-cta__left-right-wrap,
-    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap,
-    .uagb-cta__icon-position-left-title .uagb-cta-left-title-image,
-    .uagb-cta__icon-position-right-title .uagb-cta-right-title-image {
+    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
         display: -webkit-box;
         display: -ms-flexbox;
         -js-display: flex;
@@ -89,29 +77,12 @@
         display: flex;
     }
 
-    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap,
-    .uagb-cta__icon-position-right-title .uagb-cta-right-title-image {
+    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
         -webkit-box-pack: end;
         -ms-flex-pack: end;
         -webkit-justify-content: flex-end;
         -moz-box-pack: end;
         justify-content: flex-end;
-    }
-
-    /* Complete box link css */
-    .uagb-cta-block-module-link {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        z-index: 4;
-    }
-
-    .uagb-edit-mode .uagb-cta-block-module-link {
-        z-index: 2;
     }
 
     .uagb-cta__block-link-icon-after {
@@ -129,7 +100,7 @@
         transition: all 200ms linear;
     }
 
-    .uagb-cta-block {
+    .uagb-cta__block {
         position: relative;
     }
 
@@ -173,11 +144,7 @@
       display:block;
     }
 
-    .uagb-cta-block{
-        position: relative
-    }
-
-    .uagb-cta-block,
+    .uagb-cta__block,
     .uagb-cta__content,
     svg.dashicon.dashicons-upload {
         z-index: 1;
@@ -188,6 +155,9 @@
     }
     .uagb-cta__block-link {
         cursor: pointer;
+        display: inline-block;
+        float: right;
+        padding:10px 14px;
     }
     a.uagb-cta__block-link-wrap {
         color: inherit;

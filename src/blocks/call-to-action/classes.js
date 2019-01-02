@@ -9,7 +9,7 @@ function CtaPositionClasses( attributes ) {
 	
 	var iconimgStyle_class = ""
 
-	iconimgStyle_class += "uagb-cta-block"+ " "
+	iconimgStyle_class += "uagb-cta__block"+ " "
 	iconimgStyle_class += "uagb-cta__icon-position-"+attributes.ctaPosition+ " "
 	
 	if( attributes.ctaPosition === "right" ){
