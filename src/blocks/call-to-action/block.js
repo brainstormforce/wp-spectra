@@ -98,12 +98,12 @@ registerBlockType( "uagb/call-to-action", {
 					"uagb-cta__content-wrap",
 					...CtaPositionClasses(  props.attributes  ),
 				) }>
-					<div className = "uagb-cta-left-right-wrap">
+					<div className = "uagb-cta__left-right-wrap">
 
 						{ ( ctaPosition == "left") &&
 								is_cta
 						}
-						<div className = "uagb-cta-content">
+						<div className = "uagb-cta__content">
 
 							{  ctaPosition == "above-title" && 
 								<Fragment>
@@ -147,7 +147,7 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				<div className={ classnames(
 					className,
-					"uagb-cta-block__outer-wrap"
+					"uagb-cta__outer-wrap"
 				) }
 				id = { my_block_id } >
 

@@ -32,7 +32,7 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
-class UAGBcallToAction extends Component {
+class UAGBCallToAction extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -503,9 +503,8 @@ class UAGBcallToAction extends Component {
 								value={ ctaPosition }
 								onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
 								options={ [
-									{ value: "below-title", label: __( "Stack" ) },
 									{ value: "right", label: __( "Normal" ) },
-
+									{ value: "below-title", label: __( "Stack" ) },
 								] }
 							/>
 							{ ( ctaPosition == "right" ) &&
@@ -557,7 +556,7 @@ class UAGBcallToAction extends Component {
 			// Get Title components.
 			const title_text = (
 				<Fragment>
-					<div className = "uagb-cta-title-wrap">
+					<div className = "uagb-cta__title-wrap">
 						{ <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 					</div>
 				</Fragment>
@@ -569,9 +568,9 @@ class UAGBcallToAction extends Component {
 						"uagb-cta__content-wrap",
 						...CtaPositionClasses( attributes ),
 					) }>
-						<div className = "uagb-cta-left-right-wrap">
+						<div className = "uagb-cta__left-right-wrap">
 							
-							<div className = "uagb-cta-content">
+							<div className = "uagb-cta__content">
 
 								{ ctaPosition == "below-title"  && 
 									<Fragment>
@@ -611,7 +610,7 @@ class UAGBcallToAction extends Component {
 					{inspect_control}
 					<div className={ classnames(
 						className,
-						"uagb-cta-block__outer-wrap"
+						"uagb-cta__outer-wrap"
 					) }
 					id = { my_block_id }
 					>
@@ -638,4 +637,4 @@ class UAGBcallToAction extends Component {
 	}
 }
 
-export default UAGBcallToAction
+export default UAGBCallToAction

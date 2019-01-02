@@ -560,28 +560,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             );			
 
             if( 'left' === $attr->textAlign && "right" === $attr->ctaPosition ){        
-	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	            $selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-left'  => $attr->ctaLeftSpace. "px",
 	                'margin-right' => '0px',
 	            );
             }
 
             if( 'right' === $attr->textAlign && 'right' === $attr->ctaPosition ){    
-	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+	            $selectors[' .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-right' => $attr->ctaRightSpace. "px",
 	                'margin-left' => '0px',
 	            );
             }
 
             // Tablet.
-            $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+            $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-left'  => "0",
 	                'margin-right' => "0",
 	            );
 
           
              // mobile.
-            $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+            $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-left' => "0",
 	                'margin-right' => "0",
 	            );

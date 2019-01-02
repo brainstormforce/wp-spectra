@@ -47,14 +47,14 @@ function CtaStyle( props ) {
 	
 
 	if( textAlign === "left" && ctaPosition === "right" ){		
-		selectors[".uagb-cta-left-right-wrap .uagb-cta-content"] = {
+		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-left" : ctaLeftSpace+"px",
 			"margin-right" : "0px",
 		}		
 	}
 
 	if( textAlign === "right" && ctaPosition === "right" ){		
-		selectors[".uagb-cta-left-right-wrap .uagb-cta-content"] = {
+		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-right" : ctaRightSpace+"px",	
 			"margin-left" : "0px",		
 		}		

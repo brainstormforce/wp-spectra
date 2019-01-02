@@ -27,7 +27,7 @@ class CallToAction extends React.Component {
 				{  attributes.ctaType === "text" && ( 
 					<a href = "javascript:void(0)" target= {target} className = "uagb-cta__block-link" rel= {rel} >
 						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
-						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
+						<span>{attributes.ctaText}</span>
 						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
 					</a>
 				)
@@ -35,10 +35,10 @@ class CallToAction extends React.Component {
 
 				{  attributes.ctaType === "button" && ( 
 					<div className = "uagb-cta__button-wrapper">
-						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
+						<a href = "javascript:void(0)" className = { ctaBtnClass } target= {target} rel= {rel} >
                         	{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
 							<span className = "uagb-cta__link-content-inner">    
-								<span className  = "uagb-inline-editing " >{attributes.ctaText}</span>
+								<span >{attributes.ctaText}</span>
 							</span>
 							{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
 						</a>

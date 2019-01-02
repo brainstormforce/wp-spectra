@@ -4,13 +4,13 @@
  * CSS for both Frontend+Backend.
  */
 
-.uagb-cta-block__outer-wrap{
+.uagb-cta__outer-wrap{
 
-    .uagb-cta-content {
+    .uagb-cta__content {
         display: inline-block;
     }
 
-    .cta-block-icon-above-title .uagb-cta-left-right-wrap {
+    .cta-block-icon-above-title .uagb-cta__left-right-wrap {
         text-align: center;
     }
 
@@ -20,7 +20,7 @@
     .uagb-cta__content-right .uagb-cta__link-wrapper{
         width:30%;    
     }
-    .uagb-cta__content-right .uagb-cta-content{
+    .uagb-cta__content-right .uagb-cta__content{
         width:70%;    
     }
 
@@ -64,23 +64,23 @@
         justify-content: flex-end;
     }
 
-    .uagb-cta-left-right-wrap {
+    .uagb-cta__left-right-wrap {
         width: 100%;
         word-break: break-word;
     }
 
-    .uagb-cta__button-position-above-title .uagb-cta-left-right-wrap,
-    .uagb-cta__button-position-below-title .uagb-cta-left-right-wrap {
+    .uagb-cta__icon-position-above-title .uagb-cta__left-right-wrap,
+    .uagb-cta__icon-position-below-title .uagb-cta__left-right-wrap {
         display: block;
         min-width: 100%;
         width: 100%;
     }
 
     /* Left/Right */
-    .uagb-cta__button-position-left .uagb-cta-left-right-wrap,
-    .uagb-cta__button-position-right .uagb-cta-left-right-wrap,
-    .uagb-cta__button-position-left-title .uagb-cta-left-title-image,
-    .uagb-cta__button-position-right-title .uagb-cta-right-title-image {
+    .uagb-cta__icon-position-left .uagb-cta__left-right-wrap,
+    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap,
+    .uagb-cta__icon-position-left-title .uagb-cta-left-title-image,
+    .uagb-cta__icon-position-right-title .uagb-cta-right-title-image {
         display: -webkit-box;
         display: -ms-flexbox;
         -js-display: flex;
@@ -89,8 +89,8 @@
         display: flex;
     }
 
-    .uagb-cta__button-position-right .uagb-cta-left-right-wrap,
-    .uagb-cta__button-position-right-title .uagb-cta-right-title-image {
+    .uagb-cta__icon-position-right .uagb-cta__left-right-wrap,
+    .uagb-cta__icon-position-right-title .uagb-cta-right-title-image {
         -webkit-box-pack: end;
         -ms-flex-pack: end;
         -webkit-justify-content: flex-end;
@@ -151,7 +151,7 @@
         align-items: center;
         justify-content:center;
     }
-    .uagb-cta__content-right.uagb-cta__button-valign-middle .uagb-cta-left-right-wrap{
+    .uagb-cta__content-right.uagb-cta__button-valign-middle .uagb-cta__left-right-wrap{
         display: -webkit-box;
         display: -ms-flexbox;
         -js-display: flex;
@@ -178,11 +178,11 @@
     }
 
     .uagb-cta-block,
-    .uagb-cta-content,
+    .uagb-cta__content,
     svg.dashicon.dashicons-upload {
         z-index: 1;
     }
-    .uagb-cta-left-right-wrap,
+    .uagb-cta__left-right-wrap,
     button.components-button {
         z-index: 1;
     }
@@ -192,10 +192,10 @@
     a.uagb-cta__block-link-wrap {
         color: inherit;
     }
-    .uagb-cta-content p:empty {
+    .uagb-cta__content p:empty {
        display: none;
     }
-    .uagb-cta__button-type-none .uagb-cta-content {
+    .uagb-cta__button-type-none .uagb-cta__content {
         width: 100%;
     }
 
@@ -211,7 +211,7 @@
 }
 
 @media only screen and (max-width: 976px) {   
-    .uagb-cta__content-stacked-tablet .uagb-cta-left-right-wrap {
+    .uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap {
         -webkit-box-orient: vertical;
         -webkit-box-direction: column;
         -ms-flex-direction: column;
@@ -222,7 +222,7 @@
         text-align: center;
     }   
     .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__link-wrapper,
-    .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta-content{
+    .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__content{
         width:100%;    
     }
     .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__button-wrapper {
@@ -233,7 +233,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .uagb-cta__content-stacked-mobile .uagb-cta-left-right-wrap {
+    .uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap {
         -webkit-box-orient: vertical;
         -webkit-box-direction: column;
         -ms-flex-direction: column;
@@ -244,7 +244,7 @@
         text-align: center;
     }  
     .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__link-wrapper,
-    .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta-content{
+    .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__content{
         width:100%;    
     }
     .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__button-wrapper {
