@@ -37,10 +37,10 @@ class UAGBcallToAction extends Component {
 	constructor() {
 		super( ...arguments )
 		this.toggleTarget     = this.toggleTarget.bind( this )
-		this.getCtaIcon  	  = this.getCtaIcon.bind(this)
+		this.setCtaIcon  	  = this.setCtaIcon.bind(this)
 	}
 
-	getCtaIcon(value) {
+	setCtaIcon(value) {
 		this.props.setAttributes( { ctaIcon: value } )
 	}
 
@@ -114,7 +114,7 @@ class UAGBcallToAction extends Component {
 		  renderUsing: "class",
 		  theme: "default",
 		  value: ctaIcon,
-		  onChange: this.getCtaIcon,
+		  onChange: this.setCtaIcon,
 		  isMulti: false,
 		}
 
@@ -463,18 +463,19 @@ class UAGBcallToAction extends Component {
 							allowReset
 						/>						
 						
-						{ ( ctaPosition === "left" || ctaPosition === "right" ) && <Fragment>
-							<RangeControl
-									label={ __( "Content Left Margin" ) }
-									value={ ctaLeftSpace }
-									onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
-									min={ 0 }
-									max={ 50 }
-									beforeIcon=""
-									allowReset
-								/>
-
-							<RangeControl
+						{ ( textAlign === "left" && ctaPosition === "right" ) && <Fragment>
+						 	<RangeControl
+								label={ __( "Content Left Margin" ) }
+								value={ ctaLeftSpace }
+								onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+							</Fragment>
+						}
+						{ ( textAlign === "right" && ctaPosition === "right" ) && <Fragment><RangeControl
 									label={ __( "Content Right Margin" ) }
 									value={ ctaRightSpace }
 									onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
@@ -484,7 +485,7 @@ class UAGBcallToAction extends Component {
 									allowReset
 								/>		
 							</Fragment>
-						}	
+						}							
 					</PanelBody>
 				</Fragment>
 			)
@@ -502,14 +503,12 @@ class UAGBcallToAction extends Component {
 								value={ ctaPosition }
 								onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
 								options={ [
-									{ value: "above-title", label: __( "Top" ) },
-									{ value: "below-title", label: __( "Bottom" ) },
-									{ value: "left", label: __( "Left" ) },
-									{ value: "right", label: __( "Right" ) },
+									{ value: "below-title", label: __( "Stack" ) },
+									{ value: "right", label: __( "Normal" ) },
 
 								] }
 							/>
-							{ ( ctaPosition == "left" || ctaPosition == "right" ) &&
+							{ ( ctaPosition == "right" ) &&
 								<SelectControl
 									label={ __( "Stack on" ) }
 									value={ stack }
@@ -523,7 +522,7 @@ class UAGBcallToAction extends Component {
 								/>
 							}						
 
-							{ ( ctaPosition && (ctaPosition !== "above-title" && ctaPosition !== "below-title" )  ) && <SelectControl
+							{ ( ctaPosition && ctaPosition === "right"  ) && <SelectControl
 								label={ __( "Verticle Alignment" ) }
 								value={ buttonAlign }
 								onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
@@ -571,20 +570,9 @@ class UAGBcallToAction extends Component {
 						...CtaPositionClasses( attributes ),
 					) }>
 						<div className = "uagb-cta-left-right-wrap">
-
-							{ ( ctaPosition == "left") &&
-									is_cta
-							}
+							
 							<div className = "uagb-cta-content">
 
-								{  ctaPosition == "above-title" && 
-									<Fragment>
-								     { is_cta }
-								     { title_text }
-								     { desc }
-								    </Fragment>
-								}
-								
 								{ ctaPosition == "below-title"  && 
 									<Fragment>
 								     { title_text }
@@ -593,7 +581,7 @@ class UAGBcallToAction extends Component {
 								    </Fragment>
 								}
 								
-								{ ( ctaPosition == "left" || ctaPosition == "right") &&
+								{ ( ctaPosition == "right") &&
 									<Fragment>
 										{ title_text }
 										{ desc }

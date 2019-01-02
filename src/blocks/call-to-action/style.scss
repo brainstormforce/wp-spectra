@@ -17,17 +17,11 @@
     a.uagb-cta-block-link span {
         font-size: inherit;
     }
-    .uagb-cta-block-left .uagb-cta-link-wrapper,
     .uagb-cta-block-right .uagb-cta-link-wrapper{
         width:30%;    
     }
-    .uagb-cta-block-left .uagb-cta-content,
     .uagb-cta-block-right .uagb-cta-content{
         width:70%;    
-    }
-    .uagb-cta-block-left .uagb-cta-button-wrapper {
-        display: inline-block;
-        float: left;
     }
 
     .uagb-cta-block-right .uagb-cta-button-wrapper {
@@ -50,15 +44,6 @@
     .entry .entry-content a.uagb-cta-block-link-wrap:hover
     .entry .entry-content a.uagb-cta-block-link:hover{
         color:inherit;
-    }
-
-    .uagb-cta-block-left {
-      text-align: left;
-      -webkit-box-pack: start;
-      -ms-flex-pack: start;
-      -webkit-justify-content: flex-start;
-      -moz-box-pack: start;
-      justify-content: flex-start;
     }
 
     .uagb-cta-block-center {
@@ -113,7 +98,7 @@
         justify-content: flex-end;
     }
 
-    /* Info box complete box link css */
+    /* Complete box link css */
     .uagb-cta-block-module-link {
         position: absolute;
         width: 100%;
@@ -155,9 +140,7 @@
         color: #fff;
         text-align: center;   
     }
-    .uagb-cta-block-left .uagb-cta-link-button-wrapper,
     .uagb-cta-block-right .uagb-cta-link-button-wrapper,
-    .uagb-cta-block-left .uagb-cta-block-link,
     .uagb-cta-block-right .uagb-cta-block-link{
         display: -webkit-box;
         display: -ms-flexbox;
@@ -168,7 +151,6 @@
         align-items: center;
         justify-content:center;
     }
-    .uagb-cta-block-left.uagb-cta-block-valign-middle .uagb-cta-left-right-wrap,
     .uagb-cta-block-right.uagb-cta-block-valign-middle .uagb-cta-left-right-wrap{
         display: -webkit-box;
         display: -ms-flexbox;
@@ -191,14 +173,12 @@
       display:block;
     }
 
-    .uagb-cta-block__content-wrap.uagb-cta-block{
+    .uagb-cta-block{
         position: relative
     }
 
-    .uagb-cta-block__content-wrap.uagb-cta-block,
+    .uagb-cta-block,
     .uagb-cta-content,
-    .uagb-cta-title-wrap,
-    .uagb-cta-title-prefix *,
     svg.dashicon.dashicons-upload {
         z-index: 1;
     }
@@ -225,13 +205,10 @@
     .uagb-cta-align-icon-before {
         margin-right: 5px;
     }
-    
-}
-
-.block-editor-page #wpwrap .uagb-cta-block-link i,
     .uagb-cta-block-link i {
         font-style: normal;
     }
+}
 
 @media only screen and (max-width: 976px) {   
     .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap {
@@ -244,20 +221,10 @@
         flex-direction: column;
         text-align: center;
     }   
-    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-link-wrapper,
-    .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-link-wrapper{
-        width:100%;    
-    }
-    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-content,
+    .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-link-wrapper,
     .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-content{
         width:100%;    
     }
-    .uagb-cta-block-stacked-tablet.uagb-cta-block-left .uagb-cta-button-wrapper {
-        display: inline-block;
-        float: none;
-        margin:0 auto;
-    }
-
     .uagb-cta-block-stacked-tablet.uagb-cta-block-right .uagb-cta-button-wrapper {
         display: inline-block;
         float: none;
@@ -276,20 +243,10 @@
         flex-direction: column;
         text-align: center;
     }  
-    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-link-wrapper,
-    .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-link-wrapper{
-        width:100%;    
-    }
-    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-content,
+    .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-link-wrapper,
     .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-content{
         width:100%;    
     }
-    .uagb-cta-block-stacked-mobile.uagb-cta-block-left .uagb-cta-button-wrapper {
-        display: inline-block;
-        float: none;
-        margin:0 auto;
-    }
-
     .uagb-cta-block-stacked-mobile.uagb-cta-block-right .uagb-cta-button-wrapper {
         display: inline-block;
         float: none;

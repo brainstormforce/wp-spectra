@@ -562,11 +562,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 'text-align' => $attr->textAlign,
             );			
 
-            if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
-	            
+			var_dump('praj');
+			var_dump( $attr->textAlign);
+			var_dump($attr);
+            if( 'left' === $attr->textAlign && "right" === $attr->ctaPosition ){        
 	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-left'  => $attr->ctaLeftSpace. "px",
+	                'margin-right' => '0px',
+	            );
+            }
+
+            if( 'right' === $attr->textAlign && 'right' === $attr->ctaPosition ){    
+	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-right' => $attr->ctaRightSpace. "px",
+	                'margin-left' => '0px',
 	            );
             }
 
