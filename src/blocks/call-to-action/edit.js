@@ -105,7 +105,6 @@ class UAGBcallToAction extends Component {
 			ctaBottomSpace,
 			ctaLeftSpace,
 			ctaRightSpace,
-			blockPadding
 		} = attributes
 
 		// Add CSS.
@@ -446,16 +445,7 @@ class UAGBcallToAction extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>					
-					<RangeControl
-						label={ __( "Content Padding" ) }
-						value={ blockPadding }
-						onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>					
+				>				
 					<RangeControl
 						label={ __( "Heading Bottom Margin" ) }
 						value={ titleSpace }

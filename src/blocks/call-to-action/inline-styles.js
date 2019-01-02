@@ -33,7 +33,6 @@ function CtaStyle( props ) {
 		ctaBottomSpace,
 		ctaLeftSpace,
 		ctaRightSpace,
-		blockPadding,
 	} = props.attributes
 
 	if( props.clientId ){
@@ -52,8 +51,7 @@ function CtaStyle( props ) {
 		
 		selectors[".uagb-cta-left-right-wrap .uagb-cta-block-link-style"] = {
 			"margin-top" : ctaTopSpace+"px",
-			"margin-bottom" : ctaBottomSpace+"px",
-			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+			"margin-bottom" : ctaBottomSpace+"px",			
 		}
 		
 	}
@@ -61,8 +59,7 @@ function CtaStyle( props ) {
 	if( ctaPosition == "left" ||  ctaPosition == "right" ){		
 		selectors[".uagb-cta-left-right-wrap .uagb-cta-content"] = {
 			"margin-left" : ctaLeftSpace+"px",
-			"margin-right" : ctaRightSpace+"px",
-			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+			"margin-right" : ctaRightSpace+"px",			
 		}		
 	}
 

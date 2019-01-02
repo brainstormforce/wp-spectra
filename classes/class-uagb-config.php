@@ -225,7 +225,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaBottomSpace'      => 0,
 							'ctaLeftSpace'        => 5,
 							'ctaRightSpace'       => 5,
-							'blockPadding'        => 5,
 						),
 					),
 					'uagb/buttons'          => array(

@@ -33,11 +33,7 @@ const attributes = {
 	},	
 	titleFontSize: {
 		type: "number",
-	},
-	blockPadding:{
-		type: "number",
-		default : 5,
-	},
+	},	
 	descFontSize: {
 		type: "number",
 	},

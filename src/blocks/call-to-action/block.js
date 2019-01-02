@@ -1,5 +1,5 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: Call To Action.
  */
 
 // Import block dependencies and components.
@@ -46,7 +46,7 @@ const { Fragment } = wp.element
 registerBlockType( "uagb/call-to-action", {
 	title: uagb_blocks_info.blocks["uagb/call-to-action"]["title"],
 	description: uagb_blocks_info.blocks["uagb/call-to-action"]["description"],
-	icon: UAGB_Block_Icons.info_box,
+	icon: UAGB_Block_Icons.call_to_action,
 	keywords: [
 		__( "cta" ),
 		__( "call to action" ),
