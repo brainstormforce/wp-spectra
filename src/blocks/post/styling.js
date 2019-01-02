@@ -40,6 +40,7 @@ function styling( props, id ) {
 		borderRadius,
 		btnVPadding,
 		btnHPadding,
+		linkBox
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -55,7 +56,7 @@ function styling( props, id ) {
 			"margin-bottom" : ( columnGap ) + "px"
 		},
 		" .uagb-post__inner-wrap": {
-			"background" : bgColor
+			"background" : bgColor,
 		},
 		" .uagb-post__text": {
 			"padding" : ( contentPadding ) + "px",
@@ -116,6 +117,10 @@ function styling( props, id ) {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
 		}
+	}
+
+	if ( linkBox ) {
+		selectors[" .uagb-post__inner-wrap"]["cursor"] = "pointer"
 	}
 
 	mobile_selectors = {

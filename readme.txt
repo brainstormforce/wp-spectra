@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.0.2
-Stable tag: 1.6.2
+Stable tag: 1.6.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,10 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.6.2.1 =
+* Fix: Section - Background Opacity issue fix.
+* Improvement: Post - Added an option for Complete Box Link.
 
 = 1.6.2 =
 * Fix: Info Box - Editable RichText issue with Prefix.

@@ -9,6 +9,7 @@
 ?>
 <article>
 	<div class="uagb-post__inner-wrap">
+		<?php uagb_render_complete_box_link( $attributes ); ?>
 		<?php uagb_render_image( $attributes ); ?>
 		<div class="uagb-post__text">
 			<?php uagb_render_title( $attributes ); ?>

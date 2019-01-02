@@ -83,11 +83,7 @@ function inlineStyles( props, isEditor ) {
 	style["max-width"] = section_width
 
 
-	if ( "color" === backgroundType ) {
-
-		style["background-color"] = backgroundColor
-
-	} else if ( "image" === backgroundType ) {
+	if ( "image" === backgroundType ) {
 
 		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
 		style["background-position"] = position
