@@ -127,7 +127,7 @@ class UAGBcallToAction extends Component {
 		const ctaSettings = (
 			<Fragment>	
 				<PanelBody
-					title={ __( "CTA Settings" ) }
+					title={ __( "Button" ) }
 					initialOpen={ true }
 				>				
 					<SelectControl
@@ -311,7 +311,7 @@ class UAGBcallToAction extends Component {
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
-					title={ __( "Typography" ) }
+					title={ __( "Content" ) }
 					initialOpen={ false }
 				>	
 					<Fragment>
@@ -494,10 +494,9 @@ class UAGBcallToAction extends Component {
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-				 <InspectorControls>
-				 	{ ctaSettings }
+				 <InspectorControls>				 	
 					<PanelBody
-						title={ __( "Position & Responsive" ) }
+						title={ __( "Layout" ) }
 						initialOpen={ false }
 					>
 						<SelectControl
@@ -537,9 +536,8 @@ class UAGBcallToAction extends Component {
 						/>
 						}						
 					</PanelBody>
-					
 					{ TypographySettings }
-						
+					{ ctaSettings }		
 					{ marginSettings }
 
 				</InspectorControls>
@@ -551,7 +549,6 @@ class UAGBcallToAction extends Component {
 		
 		is_cta =  <CallToAction attributes={attributes} />
 		
-
 		// Get description components.
 		const desc = (
 			<Fragment>
@@ -569,7 +566,6 @@ class UAGBcallToAction extends Component {
 				</div>
 			</Fragment>
 		)
-
 
 		const output = (
 			<Fragment>
