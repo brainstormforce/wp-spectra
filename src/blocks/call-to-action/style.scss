@@ -145,16 +145,16 @@
     }
 
     .uagb-cta__block,
-    .uagb-cta__content,
-    svg.dashicon.dashicons-upload {
+    .uagb-cta__content {
         z-index: 1;
     }
-    .uagb-cta__left-right-wrap,
-    button.components-button {
+    .uagb-cta__left-right-wrap {
         z-index: 1;
     }
     .uagb-cta__block-link {
         cursor: pointer;
+    }
+    .uagb-cta__content-right .uagb-cta__block-link {
         display: inline-block;
         float: right;
         padding:10px 14px;
