@@ -67,15 +67,12 @@ registerBlockType( "uagb/call-to-action", {
 			description,
 		} = props.attributes
 
-
 		const my_block_id = "uagb-cta-block-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
 
-		let is_cta = ""
-		
-		is_cta =  <CallToAction attributes={props.attributes} />
+		let is_cta =  <CallToAction attributes={props.attributes} />
 
 		// Get description and seperator components.
 		const desc = (

@@ -17,7 +17,6 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
 } = wp.editor
 
@@ -36,7 +35,6 @@ const { Component, Fragment } = wp.element
 class UAGBcallToAction extends Component {
 
 	constructor() {
-
 		super( ...arguments )
 		this.toggleTarget     = this.toggleTarget.bind( this )
 		this.getCtaIcon  	  = this.getCtaIcon.bind(this)
@@ -57,10 +55,9 @@ class UAGBcallToAction extends Component {
 		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
 
-
 	render() {
 
-		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
+		const { className, setAttributes, attributes } = this.props
 
 		// Setup the attributes.
 		const {
@@ -547,9 +544,7 @@ class UAGBcallToAction extends Component {
 			)
 
 			// Get icon/Image components.
-			let is_cta = ""
-			
-			is_cta =  <CallToAction attributes={attributes} />
+			let is_cta =  <CallToAction attributes={attributes} />
 			
 			// Get description components.
 			const desc = (
