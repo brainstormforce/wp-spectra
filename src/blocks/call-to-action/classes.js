@@ -25,7 +25,7 @@ function CtaPositionClasses( attributes ) {
 	}
 
 	if( attributes.ctaType !== "text" && attributes.ctaType !== "button"  ){
-		iconimgStyle_class += "cta-type-none"+ " "
+		iconimgStyle_class += "uagb-cta__btn-type-none"+ " "
 	}
 
 	return [
