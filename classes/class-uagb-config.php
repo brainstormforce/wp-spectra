@@ -436,7 +436,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientLocation2'      => '100',
 							'gradientAngle'          => '0',
 							'backgroundColor'        => '',
-							'backgroundOpacity'      => '0',
+							'backgroundOpacity'      => '',
 							'backgroundVideoOpacity' => '50',
 							'backgroundImageColor'   => '',
 							'align'                  => 'center',
