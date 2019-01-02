@@ -524,7 +524,7 @@ class UAGBcallToAction extends Component {
 							}						
 
 							{ ( ctaPosition && (ctaPosition !== "above-title" && ctaPosition !== "below-title" )  ) && <SelectControl
-								label={ __( "Vertical ALignment" ) }
+								label={ __( "Verticle Alignment" ) }
 								value={ buttonAlign }
 								onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
 								options={ [

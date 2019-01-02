@@ -25,7 +25,7 @@ class CallToAction extends React.Component {
 		return (			
 			<div className = "uagb-cta-link-wrapper uagb-cta-block-link-style">
 				{  attributes.ctaType === "text" && ( 
-					<a href = {attributes.ctaLink} target= {target} className = "uagb-cta-block-link" rel= {rel} >
+					<a href = "javascript:void(0)" target= {target} className = "uagb-cta-block-link" rel= {rel} >
 						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
 						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
 						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }

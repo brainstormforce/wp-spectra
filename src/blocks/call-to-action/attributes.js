@@ -15,7 +15,7 @@ const attributes = {
 	},
 	textAlign: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},
 	titleColor: {
 		type: "string",
@@ -25,7 +25,7 @@ const attributes = {
 	},		
 	ctaPosition: {
 		type: "string",
-		default: "below-title"
+		default: "right"
 	},	
 	titleTag: {
 		type: "string",
