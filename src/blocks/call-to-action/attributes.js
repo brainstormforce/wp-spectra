@@ -139,15 +139,7 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	},	
-	showTitle: {
-		type: "boolean",
-		default: true,
-	},
-	showDesc: {
-		type: "boolean",
-		default: true,
-	},
+	},		
 	ctaTopSpace :{
 		type: "number",
 		default: 0,

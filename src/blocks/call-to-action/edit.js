@@ -101,8 +101,6 @@ class UAGBcallToAction extends Component {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			stack,
-			showTitle,
-			showDesc,
 			ctaTopSpace,
 			ctaBottomSpace,
 			ctaLeftSpace,
@@ -319,44 +317,31 @@ class UAGBcallToAction extends Component {
 					title={ __( "Typography" ) }
 					initialOpen={ false }
 				>	
+					<Fragment>
+						<SelectControl
+							label={ __( "Title Tag" ) }
+							value={ titleTag }
+							onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>
+						<RangeControl
+							label={ __( "Heading Font Size" ) }
+							value={ titleFontSize }
+							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							initialPosition={30}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>				
 					
-					<ToggleControl
-						label={ __( "Enable Heading" ) }
-						checked={ showTitle }
-						onChange={ ( value ) => setAttributes( { showTitle: ! showTitle } ) }
-					/>
-					{ showTitle && <Fragment>
-							<SelectControl
-								label={ __( "Title Tag" ) }
-								value={ titleTag }
-								onChange={ ( value ) => setAttributes( { titleTag: value } ) }
-								options={ [
-									{ value: "h1", label: __( "H1" ) },
-									{ value: "h2", label: __( "H2" ) },
-									{ value: "h3", label: __( "H3" ) },
-									{ value: "h4", label: __( "H4" ) },
-									{ value: "h5", label: __( "H5" ) },
-									{ value: "h6", label: __( "H6" ) },
-								] }
-							/>
-							<RangeControl
-								label={ __( "Heading Font Size" ) }
-								value={ titleFontSize }
-								onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-								min={ 10 }
-								max={ 200 }
-								initialPosition={30}
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-						</Fragment>
-					}
-					<ToggleControl
-						label={ __( "Enable Description" ) }
-						checked={ showDesc }
-						onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
-					/>
-					{ showDesc &&
 						<RangeControl
 							label={ __( "Description Font Size" ) }
 							value={ descFontSize }
@@ -367,7 +352,7 @@ class UAGBcallToAction extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-					}
+					</Fragment>
 
 					{ ( ctaType === "text" || ctaType === "button" ) &&	(
 
@@ -390,23 +375,21 @@ class UAGBcallToAction extends Component {
 					initialOpen={ false }
 					>					
 						
-						{ showTitle && <Fragment>
+						<Fragment>
 						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ titleColor }
 						        onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 						        allowReset
 						    /> </Fragment>	
-						}
-						{ showDesc && <Fragment>
+						<Fragment>
 						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ descColor }
 						        onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
 						        allowReset
-						    /> </Fragment>	
-						}									
-			
+						    /> </Fragment>
+
 					{ ( ctaType === "text") &&
 							<Fragment>
 							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
@@ -463,41 +446,34 @@ class UAGBcallToAction extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>
-					
+				>					
 					<RangeControl
-							label={ __( "Content Padding" ) }
-							value={ blockPadding }
-							onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-
-					{ showTitle && 
-						<RangeControl
-							label={ __( "Heading Bottom Margin" ) }
-							value={ titleSpace }
-							onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					}				
-					
-					{ showDesc && 
-						<RangeControl
-							label={ __( "Description Bottom Margin" ) }
-							value={ descSpace }
-							onChange={ ( value ) => setAttributes( { descSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					}		
+						label={ __( "Content Padding" ) }
+						value={ blockPadding }
+						onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>					
+					<RangeControl
+						label={ __( "Heading Bottom Margin" ) }
+						value={ titleSpace }
+						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Description Bottom Margin" ) }
+						value={ descSpace }
+						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>							
 					{ ( ctaPosition && (ctaPosition == "above-title" || ctaPosition == "below-title" )  ) && <Fragment>
 						<RangeControl
 								label={ __( "CTA Top Margin" ) }
@@ -613,7 +589,7 @@ class UAGBcallToAction extends Component {
 		const desc = (
 			<Fragment>
 				<div className = "uagb-cta-text-wrap">
-					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
+					{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
 				</div>
 			</Fragment>
 		)
@@ -622,7 +598,7 @@ class UAGBcallToAction extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-cta-title-wrap">
-					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)
