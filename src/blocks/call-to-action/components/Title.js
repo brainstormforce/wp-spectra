@@ -24,7 +24,7 @@ class Title extends React.Component {
 	                tagName= { attributes.titleTag }
 	                placeholder={ __( "Write a Heading" ) }
 	                value={ attributes.ctaTitle }
-	                className = 'uagb-cta-title'
+	                className = 'uagb-cta__title'
 	                onChange = { ( value ) => setAttributes( { ctaTitle: value } ) }
 	                multiline={ false }
 	                onMerge = { props.mergeBlocks }
@@ -47,7 +47,7 @@ class Title extends React.Component {
 				<RichText.Content
 	                tagName= { attributes.titleTag }
 	                value={ attributes.ctaTitle }
-	                className='uagb-cta-title'
+	                className='uagb-cta__title'
 	            />
 			)
 		}

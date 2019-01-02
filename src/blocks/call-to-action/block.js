@@ -86,7 +86,7 @@ registerBlockType( "uagb/call-to-action", {
 		// Get Title components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-cta-title-wrap">
+				<div className = "uagb-cta__title-wrap">
 					{ "" !== ctaTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
@@ -153,7 +153,7 @@ registerBlockType( "uagb/call-to-action", {
 
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-cta-block-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
+							<a href= {ctaLink} className = "uagb-cta__block-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

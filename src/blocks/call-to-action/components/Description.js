@@ -24,7 +24,7 @@ class Description extends React.Component {
 	                tagName='p'
 	                value={ attributes.description }
 	                placeholder={ __( "Write a Description" ) }
-	                className='uagb-cta-desc'
+	                className='uagb-cta__desc'
 	                onChange={ ( value ) => setAttributes( { description: value } ) }
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
@@ -46,7 +46,7 @@ class Description extends React.Component {
 				<RichText.Content
 	                tagName='p'
 	                value={ attributes.description }
-	                className='uagb-cta-desc'
+	                className='uagb-cta__desc'
 	            />
 			)
 		}

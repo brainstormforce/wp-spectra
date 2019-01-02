@@ -498,28 +498,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
 			$selectors = array(
-				' .uagb-cta-block-link a'  => array(
+				' .uagb-cta__block-link a'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'color'       => $attr->ctaLinkColor,
 				),	
-				' .uagb-cta-block-link a:hover'  => array(
+				' .uagb-cta__block-link a:hover'  => array(
 					'color'       => $attr->ctaLinkHoverColor,
 				),
-				' .uagb-cta-block-link span'  => array(
+				' .uagb-cta__block-link span'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'color'       => $attr->ctaLinkColor,
 				),
-				' .uagb-cta-block-link:hover span'  => array(
+				' .uagb-cta__block-link:hover span'  => array(
 					'color'       => $attr->ctaLinkHoverColor,
 				),
-				' .uagb-cta-button-wrapper .uagb-cta-block-link span'  => array(
+				' .uagb-cta__button-wrapper .uagb-cta__block-link span'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'color'       => $attr->ctaBtnLinkColor,
 				),
-				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link span'  => array(
+				' .uagb-cta__button-wrapper:hover .uagb-cta__block-link span'  => array(
 					'color'       => $attr->ctaLinkHoverColor,
 				),
-				' .uagb-cta-button-wrapper .uagb-cta-block-link'  => array(
+				' .uagb-cta__button-wrapper .uagb-cta__block-link'  => array(
 					'font-size'        => $attr->ctaFontSize. "px",
 					'color'            => $attr->ctaBtnLinkColor,
 					'background-color' => $attr->ctaBgColor,
@@ -532,25 +532,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'     => $attr->ctaBtnHrPadding. "px",
 					'padding-right'    => $attr->ctaBtnHrPadding. "px",
 				),	
-				' .uagb-cta-button-wrapper:hover .uagb-cta-block-link'  => array(
+				' .uagb-cta__button-wrapper:hover .uagb-cta__block-link'  => array(
 					'color'            => $attr->ctaLinkHoverColor,
 					'background-color' => $attr->ctaBgHoverColor,
 					'border-color'     => $attr->ctaBorderhoverColor,
 				),	
-				' .uagb-cta-title'  => array(
+				' .uagb-cta__title'  => array(
 					'font-size'        => $attr->titleFontSize. "px",
 					'color'            => $attr->titleColor,
 					'margin-bottom'    => $attr->titleSpace. "px",					
 				),
-				' .uagb-cta-desc'  => array(
+				' .uagb-cta__desc'  => array(
 					'font-size'        => $attr->descFontSize. "px",
 					'color'            => $attr->descColor,
 					'margin-bottom'    => $attr->descSpace. "px",					
 				),	
-				' .uagb-cta-align-icon-after'  => array(
+				' .uagb-cta__align-button-after'  => array(
 					'margin-left'    => $attr->ctaIconSpace. "px",					
 				),
-				' .uagb-cta-align-icon-before'  => array(
+				' .uagb-cta__align-button-before'  => array(
 					'margin-right'   => $attr->ctaIconSpace. "px",					
 				),								
 			);

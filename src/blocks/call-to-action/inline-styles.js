@@ -61,32 +61,32 @@ function CtaStyle( props ) {
 	}
 
 	// CTA style
-	selectors[".uagb-cta-block-link a"] = {
+	selectors[".uagb-cta__block-link a"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
 
-	selectors[".uagb-cta-block-link a:hover"] = {
+	selectors[".uagb-cta__block-link a:hover"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta-block-link span"] = {
+	selectors[".uagb-cta__block-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
-	selectors[".uagb-cta-block-link:hover span"] = {
+	selectors[".uagb-cta__block-link:hover span"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta-button-wrapper .uagb-cta-block-link span"] = {
+	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
-	selectors[".uagb-cta-button-wrapper:hover .uagb-cta-block-link span"] = {
+	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link span"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta-button-wrapper .uagb-cta-block-link"] = {
+	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -100,31 +100,31 @@ function CtaStyle( props ) {
 		"padding-right": ctaBtnHrPadding + "px",
 	}
 
-	selectors[".uagb-cta-button-wrapper:hover .uagb-cta-block-link"] = {
+	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link"] = {
 		"color": ctaLinkHoverColor,
 		"background-color": ctaBgHoverColor,
 		"border-color": ctaBorderhoverColor,
 	}
 
 	// Title Style
-	selectors[".editor-rich-text .uagb-cta-title"] = {
+	selectors[".editor-rich-text .uagb-cta__title"] = {
 		"font-size" : titleFontSize+"px",
 		"color": titleColor,
 		"margin-bottom": titleSpace+"px",
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-cta-desc"] = {
+	selectors[".editor-rich-text .uagb-cta__desc"] = {
 		"font-size" : descFontSize+"px",
 		"color": descColor,
 		"margin-bottom": descSpace+"px",
 	}
 	
-	selectors[".uagb-cta-align-icon-after"] = {
+	selectors[".uagb-cta__align-button-after"] = {
 		"margin-left" : ctaIconSpace+"px",
 	}
 
-	selectors[".uagb-cta-align-icon-before"] = {
+	selectors[".uagb-cta__align-button-before"] = {
 		"margin-right" : ctaIconSpace+"px",
 	}
 
