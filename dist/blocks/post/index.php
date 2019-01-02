@@ -303,6 +303,9 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => 'top',
 				),
+				'linkBox'              => array(
+					'type' => 'boolean',
+				),
 				'bgOverlayColor'       => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
@@ -513,6 +516,9 @@ function uagb_register_blocks() {
 				'imgPosition'          => array(
 					'type'    => 'string',
 					'default' => 'top',
+				),
+				'linkBox'              => array(
+					'type' => 'boolean',
 				),
 				'bgOverlayColor'       => array(
 					'type'    => 'string',
@@ -760,6 +766,9 @@ function uagb_register_blocks() {
 				'imgPosition'          => array(
 					'type'    => 'string',
 					'default' => 'top',
+				),
+				'linkBox'              => array(
+					'type' => 'boolean',
 				),
 				'bgOverlayColor'       => array(
 					'type'    => 'string',
@@ -1165,5 +1174,22 @@ function uagb_render_button( $attributes ) {
 	<div class="uagb-post__cta">
 		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
+	<?php
+}
+
+/**
+ * Render Complete Box Link HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since x.x.x
+ */
+function uagb_render_complete_box_link( $attributes ) {
+	if ( ! $attributes['linkBox'] ) {
+		return;
+	}
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	?>
+	<a class="uagb-post__link-complete-box" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"></a>
 	<?php
 }

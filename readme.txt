@@ -95,6 +95,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 = 1.6.2.1 =
 * Fix: Section - Background Opacity issue fix.
+* Improvement: Post - Added an option for Complete Box Link.
 
 = 1.6.2 =
 * Fix: Info Box - Editable RichText issue with Prefix.
