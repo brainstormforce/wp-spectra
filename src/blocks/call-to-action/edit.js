@@ -313,7 +313,7 @@ class UAGBcallToAction extends Component {
 				>	
 					<Fragment>
 						<SelectControl
-							label={ __( "Title Tag" ) }
+							label={ __( "Heading Tag" ) }
 							value={ titleTag }
 							onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 							options={ [

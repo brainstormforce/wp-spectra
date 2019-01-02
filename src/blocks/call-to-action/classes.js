@@ -28,12 +28,6 @@ function CtaPositionClasses( attributes ) {
 		iconimgStyle_class += "uagb-cta-block-valign-"+attributes.buttonAlign+ " "
 	}
 
-	if( attributes.enableBorder ){
-		iconimgStyle_class += "uagb-cta-block-enable-border"+ " "
-	}
-
-	iconimgStyle_class += "uagb-cta-block-enable-border-radius"+ " "
-
 	if( attributes.ctaType !== "text" && attributes.ctaType !== "button"  ){
 		iconimgStyle_class += "cta-type-none"+ " "
 	}
