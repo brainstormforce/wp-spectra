@@ -125,7 +125,7 @@ class UAGBcallToAction extends Component {
 			<Fragment>	
 				<PanelBody
 					title={ __( "Button" ) }
-					initialOpen={ true }
+					initialOpen={ false }
 				>				
 					<SelectControl
 						label={ __( "Type" ) }
@@ -495,7 +495,7 @@ class UAGBcallToAction extends Component {
 					 <InspectorControls>				 	
 						<PanelBody
 							title={ __( "Layout" ) }
-							initialOpen={ false }
+							initialOpen={ true }
 						>
 							<SelectControl
 								label={ __( "Button Position" ) }

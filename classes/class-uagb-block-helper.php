@@ -582,7 +582,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'margin-left' => "0",
 	                'margin-right' => "0",
 	            );
-                        
+
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
 			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );
