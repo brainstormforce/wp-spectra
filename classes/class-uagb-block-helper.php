@@ -497,29 +497,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = (object) array_merge( $defaults, (array) $attr );
 
-			$selectors = array(
-				' .uagb-cta__block-link a'  => array(
-					'font-size'   => $attr->ctaFontSize. "px",
-					'color'       => $attr->ctaLinkColor,
-				),	
-				' .uagb-cta__block-link a:hover'  => array(
-					'color'       => $attr->ctaLinkHoverColor,
-				),
-				' .uagb-cta__block-link span'  => array(
-					'font-size'   => $attr->ctaFontSize. "px",
-					'color'       => $attr->ctaLinkColor,
-				),
-				' .uagb-cta__block-link:hover span'  => array(
-					'color'       => $attr->ctaLinkHoverColor,
-				),
-				' .uagb-cta__button-wrapper .uagb-cta__block-link span'  => array(
+			$selectors = array(		
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'color'       => $attr->ctaBtnLinkColor,
 				),
-				' .uagb-cta__button-wrapper:hover .uagb-cta__block-link span'  => array(
+				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text '  => array(
 					'color'       => $attr->ctaLinkHoverColor,
 				),
-				' .uagb-cta__button-wrapper .uagb-cta__block-link'  => array(
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
 					'font-size'        => $attr->ctaFontSize. "px",
 					'color'            => $attr->ctaBtnLinkColor,
 					'background-color' => $attr->ctaBgColor,
@@ -532,7 +518,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-left'     => $attr->ctaBtnHrPadding. "px",
 					'padding-right'    => $attr->ctaBtnHrPadding. "px",
 				),	
-				' .uagb-cta__button-wrapper:hover .uagb-cta__block-link'  => array(
+				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button'  => array(
 					'color'            => $attr->ctaLinkHoverColor,
 					'background-color' => $attr->ctaBgHoverColor,
 					'border-color'     => $attr->ctaBorderhoverColor,

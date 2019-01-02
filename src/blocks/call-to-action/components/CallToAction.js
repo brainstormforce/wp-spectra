@@ -8,7 +8,7 @@ class CallToAction extends React.Component {
 
 		const { attributes } = this.props
 
-		let ctaBtnClass = "uagb-cta__block-link uagb-cta__button-link-wrapper"
+		let ctaBtnClass = "uagb-cta__block-link uagb-cta__button-link-wrapper uagb-cta-typeof-"+ attributes.ctaType
 
 		let target ="_self"
 		let rel ="noopener noreferrer"
@@ -24,16 +24,8 @@ class CallToAction extends React.Component {
 		}
 		return (			
 			<div className = "uagb-cta__link-wrapper uagb-cta__block-link-style">
-				{  attributes.ctaType === "text" && ( 
-					<a href = "javascript:void(0)" target= {target} className = "uagb-cta__block-link" rel= {rel} >
-						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
-						<span>{attributes.ctaText}</span>
-						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
-					</a>
-				)
-				}
-
-				{  attributes.ctaType === "button" && ( 
+				
+				{  (attributes.ctaType === "button" || attributes.ctaType === "text") && ( 
 					<div className = "uagb-cta__button-wrapper">
 						<a href = "javascript:void(0)" className = { ctaBtnClass } target= {target} rel= {rel} >
                         	{  attributes.ctaIconPosition === "before" &&  cta_icon_output }

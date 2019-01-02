@@ -84,10 +84,8 @@ class UAGBCallToAction extends Component {
 			ctaIcon,
 			ctaIconPosition,
 			ctaIconSpace,
-			ctaLinkColor,
 			ctaFontSize,
 			ctaBtnLinkColor,
-			ctaLinkHoverColor,
 			ctaBgHoverColor,
 			ctaBgColor,
 			ctaBtnVertPadding,
@@ -100,6 +98,7 @@ class UAGBCallToAction extends Component {
 			stack,
 			ctaLeftSpace,
 			ctaRightSpace,
+			ctaLinkHoverColor
 		} = attributes
 
 		// Add CSS.
@@ -389,15 +388,15 @@ class UAGBCallToAction extends Component {
 							        allowReset
 							    /> </Fragment>
 
-						{ ( ctaType === "text") &&
+						{ ( ctaType === "text" ) &&
 								<Fragment>
-								    <p className="uagb-setting-label">{ __( "Button Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
 								    <ColorPalette
-								        value={ ctaLinkColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+								        value={ ctaBtnLinkColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
 								        allowReset
 								    />
-								    <p className="uagb-setting-label">{ __( "Button Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+								    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
 								    <ColorPalette
 								        value={ ctaLinkHoverColor }
 								        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }

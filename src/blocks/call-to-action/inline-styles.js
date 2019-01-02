@@ -14,7 +14,6 @@ function CtaStyle( props ) {
 		descSpace,
 		ctaPosition,
 		block_id,
-		ctaLinkColor,
 		ctaFontSize,
 		ctaBtnSize,
 		ctaBtnLinkColor,
@@ -61,32 +60,16 @@ function CtaStyle( props ) {
 	}
 
 	// CTA style
-	selectors[".uagb-cta__block-link a"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaLinkColor,
-	}
 
-	selectors[".uagb-cta__block-link a:hover"] = {
-		"color": ctaLinkHoverColor,
-	}
-
-	selectors[".uagb-cta__block-link span"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaLinkColor,
-	}
-	selectors[".uagb-cta__block-link:hover span"] = {
-		"color": ctaLinkHoverColor,
-	}
-
-	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link span"] = {
+	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-text"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
-	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link span"] = {
+	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link"] = {
+	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-button"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -100,7 +83,7 @@ function CtaStyle( props ) {
 		"padding-right": ctaBtnHrPadding + "px",
 	}
 
-	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link"] = {
+	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button"] = {
 		"color": ctaLinkHoverColor,
 		"background-color": ctaBgHoverColor,
 		"border-color": ctaBorderhoverColor,

@@ -80,11 +80,7 @@ const attributes = {
 	ctaLink: {
 		type: "string",
 		default: "#",
-	},
-	ctaLinkColor :{
-		type: "string",
-		default: "#333",
-	},
+	},	
 	ctaFontSize :{
 		type: "number",
 	},
