@@ -197,7 +197,7 @@ class UAGBcallToAction extends Component {
 								allowReset
 							/>
 							<RangeControl
-								label={ __( "HorizontalPadding" ) }
+								label={ __( "Horizontal Padding" ) }
 								value={ ctaBtnHrPadding }
 								onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
 								min={ 0 }
@@ -566,7 +566,7 @@ class UAGBcallToAction extends Component {
 			const output = (
 				<Fragment>
 					<div className = { classnames(
-						"uagb-cta-block__content-wrap",
+						"uagb-cta__content-wrap",
 						...CtaPositionClasses( attributes ),
 					) }>
 						<div className = "uagb-cta-left-right-wrap">

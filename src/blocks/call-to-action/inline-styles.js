@@ -41,7 +41,7 @@ function CtaStyle( props ) {
 
 	var selectors = {}
 
-	selectors[".uagb-cta-block__content-wrap"] = {
+	selectors[".uagb-cta__content-wrap"] = {
 		"text-align" : textAlign,
 	}		
 	

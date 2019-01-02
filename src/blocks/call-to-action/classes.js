@@ -10,22 +10,22 @@ function CtaPositionClasses( attributes ) {
 	var iconimgStyle_class = ""
 
 	iconimgStyle_class += "uagb-cta-block"+ " "
-	iconimgStyle_class += "uagb-cta-block-icon-"+attributes.ctaPosition+ " "
+	iconimgStyle_class += "uagb-cta__button-position-"+attributes.ctaPosition+ " "
 	
 	if( attributes.ctaPosition === "right" ){
-		iconimgStyle_class +="uagb-cta-block-right"+ " "
+		iconimgStyle_class +="uagb-cta__content-right"+ " "
 	}
 
 	if( ( attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
-		iconimgStyle_class +="uagb-cta-block-stacked-"+attributes.stack+ " "		
+		iconimgStyle_class +="uagb-cta__content-stacked-"+attributes.stack+ " "		
 	}
 
 	if( attributes.ctaPosition !== "below-title"  ){
-		iconimgStyle_class += "uagb-cta-block-valign-"+attributes.buttonAlign+ " "
+		iconimgStyle_class += "uagb-cta__button-valign-"+attributes.buttonAlign+ " "
 	}
 
 	if( attributes.ctaType !== "text" && attributes.ctaType !== "button"  ){
-		iconimgStyle_class += "uagb-cta__btn-type-none"+ " "
+		iconimgStyle_class += "uagb-cta__button-type-none"+ " "
 	}
 
 	return [

@@ -95,7 +95,7 @@ registerBlockType( "uagb/call-to-action", {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-					"uagb-cta-block__content-wrap",
+					"uagb-cta__content-wrap",
 					...CtaPositionClasses(  props.attributes  ),
 				) }>
 					<div className = "uagb-cta-left-right-wrap">

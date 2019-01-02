@@ -555,13 +555,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),								
 			);
 
-			$selectors[' .uagb-cta-block__content-wrap'] = array(
+			$selectors[' .uagb-cta__content-wrap'] = array(
                 'text-align' => $attr->textAlign,
             );			
 
-			var_dump('praj');
-			var_dump( $attr->textAlign);
-			var_dump($attr);
             if( 'left' === $attr->textAlign && "right" === $attr->ctaPosition ){        
 	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-left'  => $attr->ctaLeftSpace. "px",
@@ -577,14 +574,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
             // Tablet.
-            $t_selectors[' .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+            $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-left'  => "0",
 	                'margin-right' => "0",
 	            );
 
           
              // mobile.
-            $m_selectors[' .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
+            $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-left' => "0",
 	                'margin-right' => "0",
 	            );
