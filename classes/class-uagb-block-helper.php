@@ -560,15 +560,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[' .uagb-cta-block__content-wrap'] = array(
                 'text-align' => $attr->textAlign,
-            );
-
-			if( 'above-title' === $attr->ctaPosition ||  'below-title' === $attr->ctaPosition ){
-	            
-	            $selectors[' .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
-	                'margin-top' => $attr->ctaTopSpace. "px",
-	                'margin-bottom' => $attr->ctaBottomSpace. "px",
-	            );	       
-            }
+            );			
 
             if( 'left' === $attr->ctaPosition ||  'right' === $attr->ctaPosition ){               
 	            
@@ -584,26 +576,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'margin-right' => "0",
 	            );
 
-            if( 'above-title' !== $attr->ctaPosition ||  'below-title' !== $attr->ctaPosition ){	            
-	            $t_selectors[' .uagb-cta-block-stacked-tablet .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
-	                'margin-top'    => $attr->ctaTopSpace. "px",
-	                'margin-bottom' => $attr->ctaBottomSpace. "px",
-	            );
-            }
-
+          
              // mobile.
             $m_selectors[' .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-content'] = array(
 	                'margin-left' => "0",
 	                'margin-right' => "0",
 	            );
-
-            if( 'above-title' !== $attr->ctaPosition ||  'below-title' !== $attr->ctaPosition ){	            
-	            $m_selectors[' .uagb-cta-block-stacked-mobile .uagb-cta-left-right-wrap .uagb-cta-block-link-style'] = array(
-	                'margin-top' => $attr->ctaTopSpace. "px",
-	                'margin-bottom' => $attr->ctaBottomSpace. "px",
-	            );
-            }
-            
+                        
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
 			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );

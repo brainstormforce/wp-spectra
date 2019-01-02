@@ -101,8 +101,6 @@ class UAGBcallToAction extends Component {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			stack,
-			ctaTopSpace,
-			ctaBottomSpace,
 			ctaLeftSpace,
 			ctaRightSpace,
 		} = attributes
@@ -463,29 +461,8 @@ class UAGBcallToAction extends Component {
 						max={ 50 }
 						beforeIcon=""
 						allowReset
-					/>							
-					{ ( ctaPosition && (ctaPosition == "above-title" || ctaPosition == "below-title" )  ) && <Fragment>
-						<RangeControl
-								label={ __( "CTA Top Margin" ) }
-								value={ ctaTopSpace }
-								onChange={ ( value ) => setAttributes( { ctaTopSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-
-						<RangeControl
-								label={ __( "CTA Bottom Margin" ) }
-								value={ ctaBottomSpace }
-								onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-						</Fragment>
-					}
+					/>						
+					
 					{ ( ctaPosition === "left" || ctaPosition === "right" ) && <Fragment>
 						<RangeControl
 								label={ __( "CTA Left Margin" ) }

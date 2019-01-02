@@ -221,8 +221,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'               => 'tablet',
 							'showTitle'           => true,
 							'showDesc'            => true,
-							'ctaTopSpace'         => 0,
-							'ctaBottomSpace'      => 0,
 							'ctaLeftSpace'        => 5,
 							'ctaRightSpace'       => 5,
 						),

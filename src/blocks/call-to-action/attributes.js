@@ -135,14 +135,6 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	},		
-	ctaTopSpace :{
-		type: "number",
-		default: 0,
-	},
-	ctaBottomSpace :{
-		type: "number",
-		default: 0,
 	},
 	ctaLeftSpace :{
 		type: "number",
