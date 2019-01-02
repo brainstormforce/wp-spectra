@@ -465,7 +465,7 @@ class UAGBcallToAction extends Component {
 						
 						{ ( ctaPosition === "left" || ctaPosition === "right" ) && <Fragment>
 							<RangeControl
-									label={ __( "Button Left Margin" ) }
+									label={ __( "Content Left Margin" ) }
 									value={ ctaLeftSpace }
 									onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
 									min={ 0 }
@@ -475,7 +475,7 @@ class UAGBcallToAction extends Component {
 								/>
 
 							<RangeControl
-									label={ __( "Button Right Margin" ) }
+									label={ __( "Content Right Margin" ) }
 									value={ ctaRightSpace }
 									onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
 									min={ 0 }
