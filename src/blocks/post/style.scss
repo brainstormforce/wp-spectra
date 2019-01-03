@@ -35,6 +35,10 @@
 	    height: 100%;
 	}
 
+	.uagb-post__inner-wrap > p {
+		display: none;
+	}
+
 	.uagb-post__author span,
 	.uagb-post__comment span,
 	.uagb-post__date span {
@@ -182,6 +186,15 @@
 
 	.uagb-post__excerpt p {
 		color: inherit;
+	}
+
+	.uagb-post__link-complete-box {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 11;
 	}
 }
 

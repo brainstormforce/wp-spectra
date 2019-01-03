@@ -115,7 +115,8 @@ class UAGBPostCarousel extends Component {
 			arrowBorderRadius,
 			excerptLength,
 			overlayOpacity,
-			bgOverlayColor
+			bgOverlayColor,
+			linkBox
 		} = attributes
 
 		const hoverSettings = (
@@ -312,6 +313,11 @@ class UAGBPostCarousel extends Component {
 								min={ 0 }
 								max={ 100 }
 								allowReset
+							/>
+							<ToggleControl
+								label={ __( "Link Complete Box" ) }
+								checked={ linkBox }
+								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
 							/>
 						</Fragment>
 					}

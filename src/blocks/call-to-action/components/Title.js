@@ -12,7 +12,6 @@ class Title extends React.Component {
 
 	render() {
 
-		//const { attributes, setAttributes , props } = this.props;
 		const {
 			attributes,
 			setAttributes ,
@@ -22,10 +21,10 @@ class Title extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= { attributes.headingTag }
+	                tagName= { attributes.titleTag }
 	                placeholder={ __( "Write a Heading" ) }
 	                value={ attributes.ctaTitle }
-	                className = 'uagb-cta-title'
+	                className = 'uagb-cta__title'
 	                onChange = { ( value ) => setAttributes( { ctaTitle: value } ) }
 	                multiline={ false }
 	                onMerge = { props.mergeBlocks }
@@ -46,9 +45,9 @@ class Title extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName= { attributes.headingTag }
+	                tagName= { attributes.titleTag }
 	                value={ attributes.ctaTitle }
-	                className='uagb-cta-title'
+	                className='uagb-cta__title'
 	            />
 			)
 		}

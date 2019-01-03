@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: UAGB CTA Attributes
  */
 
 const attributes = {	
@@ -8,50 +8,40 @@ const attributes = {
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "Call To Action",
 	},
-	headingDesc: {
+	description: {
 		source: "html",
 		selector: "p",
 		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
-	headingAlign: {
+	textAlign: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},
-	headingColor: {
+	titleColor: {
 		type: "string",
 	},
-	subHeadingColor: {
+	descColor: {
 		type: "string",
 	},		
 	ctaPosition: {
 		type: "string",
-		default: "below-title"
+		default: "right"
 	},	
-	headingTag: {
+	titleTag: {
 		type: "string",
 		default: "h3"
-	},
-	separatorHeight: {
-		type: "number"
-	},
-	separatorWidth: {
-		type: "number"
-	},
-	headFontSize: {
+	},	
+	titleFontSize: {
+		type: "number",
+	},	
+	descFontSize: {
 		type: "number",
 	},
-	blockPadding:{
-		type: "number",
-		default : 5,
-	},
-	subHeadFontSize: {
-		type: "number",
-	},
-	headSpace: {
+	titleSpace: {
 		type: "number",
 		default : 10,
 	},
-	subHeadSpace: {
+	descSpace: {
 		type: "number",
 		default : 10,
 	},		
@@ -59,9 +49,9 @@ const attributes = {
 		type : "string",
 		default : "not_set"
 	},
-	sourceAlign:{
+	buttonAlign:{
 		type : "string",
-		default : "top"
+		default : "middle"
 	},
 	ctaTarget: {
 		type: "boolean",
@@ -90,13 +80,13 @@ const attributes = {
 	ctaLink: {
 		type: "string",
 		default: "#",
-	},
-	ctaLinkColor :{
-		type: "string",
-		default: "#333",
-	},
+	},	
 	ctaFontSize :{
 		type: "number",
+	},
+	contentWidth :{
+		type: "number",
+		default: "70",
 	},
 	ctaBtnLinkColor :{
 		type: "string",
@@ -145,22 +135,6 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	},	
-	showTitle: {
-		type: "boolean",
-		default: true,
-	},
-	showDesc: {
-		type: "boolean",
-		default: true,
-	},
-	ctaTopSpace :{
-		type: "number",
-		default: 0,
-	},
-	ctaBottomSpace :{
-		type: "number",
-		default: 0,
 	},
 	ctaLeftSpace :{
 		type: "number",

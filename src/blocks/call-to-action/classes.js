@@ -9,33 +9,23 @@ function CtaPositionClasses( attributes ) {
 	
 	var iconimgStyle_class = ""
 
-	iconimgStyle_class += "uagb-cta-block"+ " "
-	iconimgStyle_class += "uagb-cta-block-icon-"+attributes.ctaPosition+ " "
-
-	if( attributes.ctaPosition === "left" || attributes.ctaPosition === "left-title"  ){
-		iconimgStyle_class +="uagb-cta-block-left"+ " "
+	iconimgStyle_class += "uagb-cta__block"+ " "
+	iconimgStyle_class += "uagb-cta__icon-position-"+attributes.ctaPosition+ " "
+	
+	if( attributes.ctaPosition === "right" ){
+		iconimgStyle_class +="uagb-cta__content-right"+ " "
 	}
 
-	if( attributes.ctaPosition === "right" || attributes.ctaPosition === "right-title"  ){
-		iconimgStyle_class +="uagb-cta-block-right"+ " "
+	if( ( attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
+		iconimgStyle_class +="uagb-cta__content-stacked-"+attributes.stack+ " "		
 	}
 
-	if( ( attributes.ctaPosition === "left" || attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
-		iconimgStyle_class +="uagb-cta-block-stacked-"+attributes.stack+ " "		
+	if( attributes.ctaPosition !== "below-title"  ){
+		iconimgStyle_class += "uagb-cta__button-valign-"+attributes.buttonAlign+ " "
 	}
-
-	if( attributes.ctaPosition !== "above-title" || attributes.ctaPosition !== "below-title"  ){
-		iconimgStyle_class += "uagb-cta-block-valign-"+attributes.sourceAlign+ " "
-	}
-
-	if( attributes.enableBorder ){
-		iconimgStyle_class += "uagb-cta-block-enable-border"+ " "
-	}
-
-	iconimgStyle_class += "uagb-cta-block-enable-border-radius"+ " "
 
 	if( attributes.ctaType !== "text" && attributes.ctaType !== "button"  ){
-		iconimgStyle_class += "cta-type-none"+ " "
+		iconimgStyle_class += "uagb-cta__button-type-none"+ " "
 	}
 
 	return [

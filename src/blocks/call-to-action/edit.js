@@ -17,9 +17,7 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
-	MediaUpload
 } = wp.editor
 
 const {
@@ -29,76 +27,23 @@ const {
 	TabPanel,
 	ToggleControl,
 	TextControl,
-	BaseControl,
-	Button,
-	withNotices,
 } = wp.components
-
-const {
-	compose
-} = wp.compose
-
-const {
-	withSelect
-} = wp.data
-
-const {
-	withViewportMatch
-} = wp.viewport
 
 // Extend component
 const { Component, Fragment } = wp.element
 
-class UAGBcallToAction extends Component {
+class UAGBCallToAction extends Component {
 
 	constructor() {
-
 		super( ...arguments )
-		this.getIfbIcon  	  = this.getIfbIcon.bind(this)
 		this.toggleTarget     = this.toggleTarget.bind( this )
-		this.toggleResponsive = this.toggleResponsive.bind( this )
-		this.onSelectImage    = this.onSelectImage.bind( this )
-		this.onRemoveImage    = this.onRemoveImage.bind( this )
-		this.getCtaicon  	  = this.getCtaicon.bind(this)
+		this.setCtaIcon  	  = this.setCtaIcon.bind(this)
 	}
 
-	getIfbIcon(value) {
-		this.props.setAttributes( { icon: value } )
-	}
-
-	getCtaicon(value) {
+	setCtaIcon(value) {
 		this.props.setAttributes( { ctaIcon: value } )
 	}
 
-	/*
-	 * Event to set Image as while adding.
-	 */
-	onSelectImage( media ) {
-		const { iconImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		if ( ! media || ! media.url ) {
-			setAttributes( { iconImage: null } )
-			return
-		}
-
-		if ( ! media.type || "image" !== media.type ) {
-			setAttributes( { iconImage: null } )
-			return
-		}
-
-		setAttributes( { iconImage: media } )
-	}
-
-	/*
-	 * Event to set Image as null while removing.
-	 */
-	onRemoveImage() {
-		const { iconImage } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { iconImage: null } )
-	}
 
 	/**
 	 * Function Name: toggleTarget.
@@ -110,38 +55,28 @@ class UAGBcallToAction extends Component {
 		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
 
-	/**
-	 * Function Name: toggleResponsive.
-	 */
-	toggleResponsive() {
-		const { responsiveDesign } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { responsiveDesign: ! responsiveDesign } )
-	}
-
 	render() {
 
-		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
+		const { className, setAttributes, attributes } = this.props
 
 		// Setup the attributes.
 		const {
 			ctaTitle,
-			headingDesc,
-			headingAlign,
-			headingColor,
-			subHeadingColor,
-			headingTag,
-			headFontSize,
-			subHeadFontSize,
+			description,
+			textAlign,
+			titleColor,
+			descColor,
+			titleTag,
+			titleFontSize,
+			descFontSize,
 			separatorWidth,
 			separatorHeight,
-			headSpace,
+			titleSpace,
 			separatorSpace,
-			subHeadSpace,			
+			descSpace,			
 			ctaPosition,
 			block_id,
-			sourceAlign,
+			buttonAlign,
 			ctaType,
 			ctaText,
 			ctaLink,
@@ -149,10 +84,9 @@ class UAGBcallToAction extends Component {
 			ctaIcon,
 			ctaIconPosition,
 			ctaIconSpace,
-			ctaLinkColor,
 			ctaFontSize,
+			contentWidth,
 			ctaBtnLinkColor,
-			ctaLinkHoverColor,
 			ctaBgHoverColor,
 			ctaBgColor,
 			ctaBtnVertPadding,
@@ -163,13 +97,9 @@ class UAGBcallToAction extends Component {
 			ctaBorderWidth,
 			ctaBorderRadius,
 			stack,
-			showTitle,
-			showDesc,
-			ctaTopSpace,
-			ctaBottomSpace,
 			ctaLeftSpace,
 			ctaRightSpace,
-			blockPadding
+			ctaLinkHoverColor
 		} = attributes
 
 		// Add CSS.
@@ -184,19 +114,18 @@ class UAGBcallToAction extends Component {
 		  renderUsing: "class",
 		  theme: "default",
 		  value: ctaIcon,
-		  onChange: this.getCtaicon,
+		  onChange: this.setCtaIcon,
 		  isMulti: false,
 		}
 
 		const my_block_id = "uagb-cta-block-"+this.props.clientId
-
 	
 		// CTA settings.
 		const ctaSettings = (
 			<Fragment>	
 				<PanelBody
-					title={ __( "CTA Settings" ) }
-					initialOpen={ true }
+					title={ __( "Button" ) }
+					initialOpen={ false }
 				>				
 					<SelectControl
 						label={ __( "Type" ) }
@@ -268,7 +197,7 @@ class UAGBcallToAction extends Component {
 								allowReset
 							/>
 							<RangeControl
-								label={ __( "HorizontalPadding" ) }
+								label={ __( "Horizontal Padding" ) }
 								value={ ctaBtnHrPadding }
 								onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
 								min={ 0 }
@@ -334,7 +263,7 @@ class UAGBcallToAction extends Component {
 		const ctaNormalSettings = (
 			<Fragment>
 				<PanelColorSettings
-					title={ __( "CTA Color Settings" ) }
+					title={ __( "Button Color" ) }
 					initialOpen={ true }
 					colorSettings={ [
 						{
@@ -356,7 +285,7 @@ class UAGBcallToAction extends Component {
 		const ctaHoverSettings = (
 			<Fragment>
 				<PanelColorSettings
-					title={ __( "CTA Hover Color Settings" ) }
+					title={ __( "Button Hover Color" ) }
 					initialOpen={ true }
 					colorSettings={ [
 						{
@@ -379,144 +308,145 @@ class UAGBcallToAction extends Component {
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
-					title={ __( "Typography" ) }
+					title={ __( "Content" ) }
 					initialOpen={ false }
 				>	
+					<Fragment>
+						<SelectControl
+							label={ __( "Heading Tag" ) }
+							value={ titleTag }
+							onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>
+						<RangeControl
+							label={ __( "Heading Font Size" ) }
+							value={ titleFontSize }
+							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+							min={ 10 }
+							max={ 200 }
+							initialPosition={30}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>				
 					
-					<ToggleControl
-						label={ __( "Enable Heading" ) }
-						checked={ showTitle }
-						onChange={ ( value ) => setAttributes( { showTitle: ! showTitle } ) }
-					/>
-					{ showTitle && <Fragment>
-							<SelectControl
-								label={ __( "Title Tag" ) }
-								value={ headingTag }
-								onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-								options={ [
-									{ value: "h1", label: __( "H1" ) },
-									{ value: "h2", label: __( "H2" ) },
-									{ value: "h3", label: __( "H3" ) },
-									{ value: "h4", label: __( "H4" ) },
-									{ value: "h5", label: __( "H5" ) },
-									{ value: "h6", label: __( "H6" ) },
-								] }
-							/>
-							<RangeControl
-								label={ __( "Heading Font Size" ) }
-								value={ headFontSize }
-								onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-								min={ 10 }
-								max={ 200 }
-								initialPosition={30}
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-						</Fragment>
-					}
-					<ToggleControl
-						label={ __( "Enable Description" ) }
-						checked={ showDesc }
-						onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
-					/>
-					{ showDesc &&
 						<RangeControl
 							label={ __( "Description Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							value={ descFontSize }
+							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 10 }
 							max={ 200 }
 							initialPosition={16}
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
-					}
+					</Fragment>
 
 					{ ( ctaType === "text" || ctaType === "button" ) &&	(
+						<Fragment>
+							<RangeControl
+								label={ __( "Button Font Size" ) }
+								value={ ctaFontSize }
+								onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+								initialPosition={16}
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
 
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
+							{ ctaPosition === "right" &&
+								<RangeControl
+									label={ __( "Content Width" ) }
+									value={ contentWidth }
+									onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
+									min={ 0 }
+									max={ 100 }
+									initialPosition={70}
+									allowReset
+								/>
+							}
+						</Fragment>
 					)
 					}
 
 				</PanelBody>
+			</Fragment>
+		)
+
+		const color_settings = (
+			<Fragment>
 				<PanelBody
 					title={ __( "Color Settings" ) }
 					initialOpen={ false }
-					>					
-						
-						{ showTitle && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ headingColor }
-						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-						        allowReset
-						    /> </Fragment>	
-						}
-						{ showDesc && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ subHeadingColor }
-						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-						        allowReset
-						    /> </Fragment>	
-						}									
-			
-					{ ( ctaType === "text") &&
-							<Fragment>
-							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
+				>					
+							
+					<Fragment>
+							    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 							    <ColorPalette
-							        value={ ctaLinkColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+							        value={ titleColor }
+							        onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
 							        allowReset
-							    />
-							    <p className="uagb-setting-label">{ __( "CTA Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+							    /> </Fragment>	
+					<Fragment>
+							    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 							    <ColorPalette
-							        value={ ctaLinkHoverColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+							        value={ descColor }
+							        onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
 							        allowReset
-							    />
-							</Fragment>
+							    /> </Fragment>
+
+					{ ( ctaType === "text" ) &&
+								<Fragment>
+								    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaBtnLinkColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+								        allowReset
+								    />
+								    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+								    <ColorPalette
+								        value={ ctaLinkHoverColor }
+								        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+								        allowReset
+								    />
+								</Fragment>
 					}
 					{ ( ctaType === "button") &&
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
+								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+									activeClass="active-tab"
+									tabs={ [
+										{
+											name: "normal",
+											title: __( "Normal" ),
+											className: "uagb-normal-tab",
+										},
+										{
+											name: "hover",
+											title: __( "Hover" ),
+											className: "uagb-focus-tab",
+										},
+									] }>
 									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "normal" === tabName.name ) {
-											tabout = ctaNormalSettings
-										}else {
-											tabout = ctaHoverSettings
+										( tabName ) => {
+											let tabout
+											if( "normal" === tabName.name ) {
+												tabout = ctaNormalSettings
+											}else {
+												tabout = ctaHoverSettings
+											}
+											return <div>{ tabout }</div>
 										}
-										return <div>{ tabout }</div>
 									}
-								}
-							</TabPanel>
+								</TabPanel>
 					}
 				</PanelBody>
-
-
 			</Fragment>
 		)
 
@@ -526,130 +456,88 @@ class UAGBcallToAction extends Component {
 				<PanelBody
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
-				>
-					
+				>				
 					<RangeControl
-							label={ __( "Content Padding" ) }
-							value={ blockPadding }
-							onChange={ ( value ) => setAttributes( { blockPadding: value } ) }
+						label={ __( "Heading Bottom Margin" ) }
+						value={ titleSpace }
+						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Description Bottom Margin" ) }
+						value={ descSpace }
+						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>						
+						
+					{ ( textAlign === "left" && ctaPosition === "right" ) && <Fragment>
+						 	<RangeControl
+							label={ __( "Content Left Margin" ) }
+							value={ ctaLeftSpace }
+							onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon=""
 							allowReset
 						/>
-
-					{ showTitle && 
-						<RangeControl
-							label={ __( "Heading Bottom Margin" ) }
-							value={ headSpace }
-							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					}				
-					
-					{ showDesc && 
-						<RangeControl
-							label={ __( "Description Bottom Margin" ) }
-							value={ subHeadSpace }
-							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					}		
-					{ ( ctaPosition && (ctaPosition == "above-title" || ctaPosition == "below-title" )  ) && <Fragment>
-						<RangeControl
-								label={ __( "CTA Top Margin" ) }
-								value={ ctaTopSpace }
-								onChange={ ( value ) => setAttributes( { ctaTopSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-
-						<RangeControl
-								label={ __( "CTA Bottom Margin" ) }
-								value={ ctaBottomSpace }
-								onChange={ ( value ) => setAttributes( { ctaBottomSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-						</Fragment>
+					</Fragment>
 					}
-					{ ( ctaPosition === "left" || ctaPosition === "right" ) && <Fragment>
-						<RangeControl
-								label={ __( "CTA Left Margin" ) }
-								value={ ctaLeftSpace }
-								onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-
-						<RangeControl
-								label={ __( "CTA Right Margin" ) }
-								value={ ctaRightSpace }
-								onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>		
-						</Fragment>
-					}	
+					{ ( textAlign === "right" && ctaPosition === "right" ) && <Fragment><RangeControl
+						label={ __( "Content Right Margin" ) }
+						value={ ctaRightSpace }
+						onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						beforeIcon=""
+						allowReset
+					/>		
+					</Fragment>
+					}							
 				</PanelBody>
 			</Fragment>
 		)
-	
-
-	
+		
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-				 <InspectorControls>
-				 	{ ctaSettings }
+					 <InspectorControls>				 	
 					<PanelBody
-						title={ __( "Position & Responsive" ) }
-						initialOpen={ false }
+						title={ __( "Layout" ) }
+						initialOpen={ true }
 					>
 						<SelectControl
-							label={ __( "Select CTA Position" ) }
+							label={ __( "Button Position" ) }
 							value={ ctaPosition }
 							onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
 							options={ [
-								{ value: "above-title", label: __( "Top" ) },
-								{ value: "below-title", label: __( "Bottom" ) },
-								{ value: "left", label: __( "Left of Text and Heading" ) },
-								{ value: "right", label: __( "Right of Text and Heading" ) },
-
+								{ value: "right", label: __( "Normal" ) },
+								{ value: "below-title", label: __( "Stack" ) },
 							] }
 						/>
-						{ ( ctaPosition == "left" || ctaPosition == "right" ) &&
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								help={ __( "Note: Choose on what breakpoint the CTA button will stack." ) }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
+						{ ( ctaPosition == "right" ) &&
+								<SelectControl
+									label={ __( "Stack on" ) }
+									value={ stack }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "tablet", label: __( "Tablet" ) },
+										{ value: "mobile", label: __( "Mobile" ) },
+									] }
+									help={ __( "Note: Choose on what breakpoint the CTA button will stack." ) }
+									onChange={ ( value ) => setAttributes( { stack: value } ) }
+								/>
 						}						
 
-						{ ( ctaPosition && (ctaPosition !== "above-title" && ctaPosition !== "below-title" )  ) && <SelectControl
-							label={ __( "Vertical ALignment" ) }
-							value={ sourceAlign }
-							onChange={ ( value ) => setAttributes( { sourceAlign: value } ) }
+						{ ( ctaPosition && ctaPosition === "right"  ) && <SelectControl
+							label={ __( "Verticle Alignment" ) }
+							value={ buttonAlign }
+							onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
 							options={ [
 								{ value: "top", label: __( "Top" ) },
 								{ value: "middle", label: __( "Middle" ) },
@@ -657,9 +545,9 @@ class UAGBcallToAction extends Component {
 						/>
 						}						
 					</PanelBody>
-					
 					{ TypographySettings }
-						
+					{ ctaSettings }		
+					{ color_settings }
 					{ marginSettings }
 
 				</InspectorControls>
@@ -667,16 +555,13 @@ class UAGBcallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_cta = ""
-		
-		is_cta =  <CallToAction attributes={attributes} />
-		
-
+		let is_cta =  <CallToAction attributes={attributes} />
+			
 		// Get description components.
 		const desc = (
 			<Fragment>
 				<div className = "uagb-cta-text-wrap">
-					{ showDesc && <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
+					{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
 				</div>
 			</Fragment>
 		)
@@ -684,53 +569,41 @@ class UAGBcallToAction extends Component {
 		// Get Title components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-cta-title-wrap">
-					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+				<div className = "uagb-cta__title-wrap">
+					{ <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)
 
-
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-					"uagb-cta-block__content-wrap",
+					"uagb-cta__content-wrap",
 					...CtaPositionClasses( attributes ),
 				) }>
-					<div className = "uagb-cta-left-right-wrap">
-
-						{ ( ctaPosition == "left") &&
-								is_cta
-						}
-						<div className = "uagb-cta-content">
-
-							{  ctaPosition == "above-title" && 
-								<Fragment>
-							     { is_cta }
-							     { title_text }
-							     { desc }
-							    </Fragment>
-							}
+					<div className = "uagb-cta__left-right-wrap">
 							
+						<div className = "uagb-cta__content">
+
 							{ ctaPosition == "below-title"  && 
-								<Fragment>
-							     { title_text }
-							     { desc }
-							     { is_cta }
-							    </Fragment>
+									<Fragment>
+								     { title_text }
+								     { desc }
+								     { is_cta }
+								    </Fragment>
 							}
-							
-							{ ( ctaPosition == "left" || ctaPosition == "right") &&
-								<Fragment>
-									{ title_text }
-									{ desc }
-								</Fragment>
+								
+							{ ( ctaPosition == "right") &&
+									<Fragment>
+										{ title_text }
+										{ desc }
+									</Fragment>
 							}
 
 						</div>
 
 						{ ( ctaPosition == "right") &&
-								is_cta
+									is_cta
 						}
 					</div>
 				</div>
@@ -739,25 +612,25 @@ class UAGBcallToAction extends Component {
 
 		return (
 			<Fragment>
-				{ ( ctaPosition == "above-title" || ctaPosition == "below-title") &&
-					<BlockControls key='controls'>
-						<AlignmentToolbar
-							value={ headingAlign }
-							onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-						/>
-					</BlockControls>
-				}
+					
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ textAlign }
+						onChange={ ( value ) => setAttributes( { textAlign: value } ) }
+					/>
+				</BlockControls>
+					
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-cta-block__outer-wrap"
+					"uagb-cta__outer-wrap"
 				) }
 				id = { my_block_id }
 				>
 					{ ( ctaType == "all") &&
-						<Fragment>
-							<a href= {ctaLink} className = "uagb-cta-block-link-wrap" rel ="noopener noreferrer" > {output}</a>
-						</Fragment>
+							<Fragment>
+								<a href= "javascript:void(0)" className = "uagb-cta__block-link-wrap" rel ="noopener noreferrer" > {output}</a>
+							</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
 				</div>
@@ -777,4 +650,4 @@ class UAGBcallToAction extends Component {
 	}
 }
 
-export default UAGBcallToAction
+export default UAGBCallToAction

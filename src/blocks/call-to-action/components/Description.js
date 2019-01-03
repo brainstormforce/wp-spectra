@@ -12,7 +12,6 @@ class Description extends React.Component {
 
 	render() {
 
-		//const { attributes, setAttributes } = this.props;
 		const {
 			attributes,
 			setAttributes ,
@@ -23,10 +22,10 @@ class Description extends React.Component {
 			return (
 				<RichText
 	                tagName='p'
-	                value={ attributes.headingDesc }
+	                value={ attributes.description }
 	                placeholder={ __( "Write a Description" ) }
-	                className='uagb-cta-desc'
-	                onChange={ ( value ) => setAttributes( { headingDesc: value } ) }
+	                className='uagb-cta__desc'
+	                onChange={ ( value ) => setAttributes( { description: value } ) }
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?
@@ -46,8 +45,8 @@ class Description extends React.Component {
 			return (
 				<RichText.Content
 	                tagName='p'
-	                value={ attributes.headingDesc }
-	                className='uagb-cta-desc'
+	                value={ attributes.description }
+	                className='uagb-cta__desc'
 	            />
 			)
 		}

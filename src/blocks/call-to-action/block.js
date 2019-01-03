@@ -1,5 +1,5 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: Call To Action.
  */
 
 // Import block dependencies and components.
@@ -46,7 +46,7 @@ const { Fragment } = wp.element
 registerBlockType( "uagb/call-to-action", {
 	title: uagb_blocks_info.blocks["uagb/call-to-action"]["title"],
 	description: uagb_blocks_info.blocks["uagb/call-to-action"]["description"],
-	icon: UAGB_Block_Icons.info_box,
+	icon: UAGB_Block_Icons.call_to_action,
 	keywords: [
 		__( "cta" ),
 		__( "call to action" ),
@@ -64,26 +64,21 @@ registerBlockType( "uagb/call-to-action", {
 			ctaTarget,
 			className,
 			ctaTitle,
-			headingDesc,
-			showTitle,
-			showDesc,
+			description,
 		} = props.attributes
-
 
 		const my_block_id = "uagb-cta-block-"+ block_id
 		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
 
-		let is_cta = ""
-		
-		is_cta =  <CallToAction attributes={props.attributes} />
+		let is_cta =  <CallToAction attributes={props.attributes} />
 
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
 				<div className = "uagb-cta-text-wrap">
-					{ showDesc && "" !== headingDesc && <Description attributes={props.attributes} setAttributes = "not_set"/> }
+					{ "" !== description && <Description attributes={props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
 		)
@@ -91,8 +86,8 @@ registerBlockType( "uagb/call-to-action", {
 		// Get Title components.
 		const title_text = (
 			<Fragment>
-				<div className = "uagb-cta-title-wrap">
-					{ showTitle && "" !== ctaTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
+				<div className = "uagb-cta__title-wrap">
+					{ "" !== ctaTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
 		)
@@ -100,15 +95,15 @@ registerBlockType( "uagb/call-to-action", {
 		const output = (
 			<Fragment>
 				<div className = { classnames(
-					"uagb-cta-block__content-wrap",
+					"uagb-cta__content-wrap",
 					...CtaPositionClasses(  props.attributes  ),
 				) }>
-					<div className = "uagb-cta-left-right-wrap">
+					<div className = "uagb-cta__left-right-wrap">
 
 						{ ( ctaPosition == "left") &&
 								is_cta
 						}
-						<div className = "uagb-cta-content">
+						<div className = "uagb-cta__content">
 
 							{  ctaPosition == "above-title" && 
 								<Fragment>
@@ -152,13 +147,13 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				<div className={ classnames(
 					className,
-					"uagb-cta-block__outer-wrap"
+					"uagb-cta__outer-wrap"
 				) }
 				id = { my_block_id } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
-							<a href= {ctaLink} className = "uagb-cta-block-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
+							<a href= {ctaLink} className = "uagb-cta__block-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }

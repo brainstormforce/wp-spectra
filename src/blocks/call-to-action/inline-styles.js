@@ -5,16 +5,15 @@
  */
 function CtaStyle( props ) {
 	const {
-		headingAlign,
-		headingColor,
-		subHeadingColor,
-		headFontSize,
-		subHeadFontSize,
-		headSpace,
-		subHeadSpace,
+		textAlign,
+		titleColor,
+		descColor,
+		titleFontSize,
+		descFontSize,
+		titleSpace,
+		descSpace,
 		ctaPosition,
 		block_id,
-		ctaLinkColor,
 		ctaFontSize,
 		ctaBtnSize,
 		ctaBtnLinkColor,
@@ -29,11 +28,10 @@ function CtaStyle( props ) {
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
 		ctaIconSpace,
-		ctaTopSpace,
-		ctaBottomSpace,
 		ctaLeftSpace,
 		ctaRightSpace,
-		blockPadding,
+		contentWidth,
+		ctaType
 	} = props.attributes
 
 	if( props.clientId ){
@@ -44,53 +42,45 @@ function CtaStyle( props ) {
 
 	var selectors = {}
 
-	if( ctaPosition == "above-title" ||  ctaPosition == "below-title" ){
-		selectors[".uagb-cta-block__content-wrap"] = {
-			"text-align" : headingAlign,
-		}
-		selectors[".uagb-cta-left-right-wrap .uagb-cta-block-link-style"] = {
-			"margin-top" : ctaTopSpace+"px",
-			"margin-bottom" : ctaBottomSpace+"px",
-			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
-		}
-		
-	}
+	selectors[".uagb-cta__content-wrap"] = {
+		"text-align" : textAlign,
+	}		
+	
 
-	if( ctaPosition == "left" ||  ctaPosition == "right" ){		
-		selectors[".uagb-cta-left-right-wrap .uagb-cta-content"] = {
+	if( textAlign === "left" && ctaPosition === "right" ){		
+		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-left" : ctaLeftSpace+"px",
-			"margin-right" : ctaRightSpace+"px",
-			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
+			"margin-right" : "0px",
 		}		
 	}
 
+	if( textAlign === "right" && ctaPosition === "right" ){		
+		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
+			"margin-right" : ctaRightSpace+"px",	
+			"margin-left" : "0px",	
+		}		
+	}
+
+	if( ctaPosition === "right" && ( ctaType === "text" || ctaType === "button" ) ){		
+		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
+			"width" : contentWidth+"%",	
+		}	
+		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
+			"width" : ( 100 - contentWidth )+"%",	
+		}
+	}
+
 	// CTA style
-	selectors[".uagb-cta-block-link a"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaLinkColor,
-	}
 
-	selectors[".uagb-cta-block-link a:hover"] = {
-		"color": ctaLinkHoverColor,
-	}
-
-	selectors[".uagb-cta-block-link span"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaLinkColor,
-	}
-	selectors[".uagb-cta-block-link:hover span"] = {
-		"color": ctaLinkHoverColor,
-	}
-
-	selectors[".uagb-cta-button-wrapper .uagb-cta-block-link span"] = {
+	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-text"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
-	selectors[".uagb-cta-button-wrapper:hover .uagb-cta-block-link span"] = {
+	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta-button-wrapper .uagb-cta-block-link"] = {
+	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-button"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -104,31 +94,31 @@ function CtaStyle( props ) {
 		"padding-right": ctaBtnHrPadding + "px",
 	}
 
-	selectors[".uagb-cta-button-wrapper:hover .uagb-cta-block-link"] = {
+	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button"] = {
 		"color": ctaLinkHoverColor,
 		"background-color": ctaBgHoverColor,
 		"border-color": ctaBorderhoverColor,
 	}
 
 	// Title Style
-	selectors[".editor-rich-text .uagb-cta-title"] = {
-		"font-size" : headFontSize+"px",
-		"color": headingColor,
-		"margin-bottom": headSpace+"px",
+	selectors[".editor-rich-text .uagb-cta__title"] = {
+		"font-size" : titleFontSize+"px",
+		"color": titleColor,
+		"margin-bottom": titleSpace+"px",
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-cta-desc"] = {
-		"font-size" : subHeadFontSize+"px",
-		"color": subHeadingColor,
-		"margin-bottom": subHeadSpace+"px",
+	selectors[".editor-rich-text .uagb-cta__desc"] = {
+		"font-size" : descFontSize+"px",
+		"color": descColor,
+		"margin-bottom": descSpace+"px",
 	}
 	
-	selectors[".uagb-cta-align-icon-after"] = {
+	selectors[".uagb-cta__align-button-after"] = {
 		"margin-left" : ctaIconSpace+"px",
 	}
 
-	selectors[".uagb-cta-align-icon-before"] = {
+	selectors[".uagb-cta__align-button-before"] = {
 		"margin-right" : ctaIconSpace+"px",
 	}
 

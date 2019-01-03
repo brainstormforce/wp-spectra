@@ -599,15 +599,9 @@ class UAGBinfoBox extends Component {
 						        allowReset
 						    />
 						    </Fragment>	
-<<<<<<< HEAD
 					}
 					{ showTitle && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Headingading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-=======
-						}
-						{ showTitle && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
->>>>>>> 21f16583da6ad9877560205e0fa3d6eaaaeb95bd
 						    <ColorPalette
 						        value={ headingColor }
 						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
@@ -621,8 +615,8 @@ class UAGBinfoBox extends Component {
 						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
 						        allowReset
 						    /> </Fragment>	
-					}									
-			
+					}
+					
 					{ ( ctaType === "text") &&
 							<Fragment>
 							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
