@@ -555,7 +555,7 @@ class UAGBCallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_cta =  <CallToAction attributes={attributes} />
+		let is_cta =  <CallToAction attributes={attributes} setAttributes = { setAttributes }/>
 			
 		// Get description components.
 		const desc = (

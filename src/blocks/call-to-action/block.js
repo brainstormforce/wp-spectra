@@ -72,7 +72,7 @@ registerBlockType( "uagb/call-to-action", {
 
 		ClassNamesId = ClassNamesId +" "+ my_block_id
 
-		let is_cta =  <CallToAction attributes={props.attributes} />
+		let is_cta =  <CallToAction attributes={props.attributes} setAttributes = "not_set" />
 
 		// Get description and seperator components.
 		const desc = (
