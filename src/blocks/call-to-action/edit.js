@@ -615,7 +615,7 @@ class UAGBCallToAction extends Component {
 					>
 						{ ( ctaType == "all") &&
 							<Fragment>
-								<a href= {ctaLink} className = "uagb-cta__block-link-wrap" rel ="noopener noreferrer" > {output}</a>
+								<a href= "javascript:void(0)" className = "uagb-cta__block-link-wrap" rel ="noopener noreferrer" > {output}</a>
 							</Fragment>
 						}
 						{ ( ctaType !== "all") && output }
