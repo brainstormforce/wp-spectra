@@ -555,7 +555,7 @@ class UAGBCallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_cta =  <CallToAction attributes={attributes} />
+		let is_cta =  <CallToAction attributes={attributes} setAttributes = { setAttributes }/>
 			
 		// Get description components.
 		const desc = (
@@ -629,7 +629,8 @@ class UAGBCallToAction extends Component {
 				>
 					{ ( ctaType == "all") &&
 							<Fragment>
-								<a href= "javascript:void(0)" className = "uagb-cta__block-link-wrap" rel ="noopener noreferrer" > {output}</a>
+								<a href= "javascript:void(0)" className = "uagb-cta__block-link-wrap uagb-cta__link-to-all" rel ="noopener noreferrer" > </a>
+								{output}
 							</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
