@@ -559,18 +559,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            );
             }
 
+            if( $attr->ctaPosition === "right" && ( $attr->ctaType === 'text' || $attr->ctaType === 'button' ) ){		
+				$selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
+					"width" => $attr->contentWidth."%",	
+				);	
+				$selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
+					"width" => (100 - $attr->contentWidth )."%",	
+				);
+			}
+
             // Tablet.
             $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-left'  => "0",
 	                'margin-right' => "0",
 	            );
 
+            if( $attr->ctaPosition === "right" && ( $attr->ctaType === 'text' || $attr->ctaType === 'button' ) ){		
+				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
+					"width" => "100%",	
+				);	
+				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
+					"width" => "100%",	
+				);
+			}
           
              // mobile.
             $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
 	                'margin-left' => "0",
 	                'margin-right' => "0",
 	            );
+
+            if( $attr->ctaPosition === "right" && ( $attr->ctaType === 'text' || $attr->ctaType === 'button' ) ){		
+				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
+					"width" => "100%",	
+				);	
+				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
+					"width" => "100%",	
+				);
+			}
 
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );

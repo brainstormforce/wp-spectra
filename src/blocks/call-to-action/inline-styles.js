@@ -30,6 +30,8 @@ function CtaStyle( props ) {
 		ctaIconSpace,
 		ctaLeftSpace,
 		ctaRightSpace,
+		contentWidth,
+		ctaType
 	} = props.attributes
 
 	if( props.clientId ){
@@ -55,8 +57,17 @@ function CtaStyle( props ) {
 	if( textAlign === "right" && ctaPosition === "right" ){		
 		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-right" : ctaRightSpace+"px",	
-			"margin-left" : "0px",		
+			"margin-left" : "0px",	
 		}		
+	}
+
+	if( ctaPosition === "right" && ( ctaType === 'text' || ctaType === 'button' ) ){		
+		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
+			"width" : contentWidth+"%",	
+		}	
+		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
+			"width" : ( 100 - contentWidth )+"%",	
+		}
 	}
 
 	// CTA style

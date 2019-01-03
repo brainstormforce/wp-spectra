@@ -85,6 +85,7 @@ class UAGBCallToAction extends Component {
 			ctaIconPosition,
 			ctaIconSpace,
 			ctaFontSize,
+			contentWidth,
 			ctaBtnLinkColor,
 			ctaBgHoverColor,
 			ctaBgColor,
@@ -348,17 +349,27 @@ class UAGBCallToAction extends Component {
 					</Fragment>
 
 					{ ( ctaType === "text" || ctaType === "button" ) &&	(
-
-						<RangeControl
-							label={ __( "Button Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
+						<Fragment>
+							<RangeControl
+								label={ __( "Button Font Size" ) }
+								value={ ctaFontSize }
+								onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+								min={ 0 }
+								max={ 50 }
+								initialPosition={16}
+								beforeIcon="editor-textcolor"
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Content Width" ) }
+								value={ contentWidth }
+								onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
+								min={ 0 }
+								max={ 100 }
+								initialPosition={70}
+								allowReset
+							/>
+						</Fragment>
 					)
 					}
 

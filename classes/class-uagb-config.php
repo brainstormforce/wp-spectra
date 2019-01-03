@@ -222,6 +222,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'showDesc'            => true,
 							'ctaLeftSpace'        => 5,
 							'ctaRightSpace'       => 5,
+							'contentWidth'        => 70,
+							'ctaLinkHoverColor'   => '',
 						),
 					),
 					'uagb/buttons'          => array(

@@ -84,6 +84,10 @@ const attributes = {
 	ctaFontSize :{
 		type: "number",
 	},
+	contentWidth :{
+		type: "number",
+		default: "70",
+	},
 	ctaBtnLinkColor :{
 		type: "string",
 		default: "#333",
