@@ -61,7 +61,7 @@ function CtaStyle( props ) {
 		}		
 	}
 
-	if( ctaPosition === "right" && ( ctaType === 'text' || ctaType === 'button' ) ){		
+	if( ctaPosition === "right" && ( ctaType === "text" || ctaType === "button" ) ){		
 		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"width" : contentWidth+"%",	
 		}	
