@@ -563,6 +563,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
 					"width" => $attr->contentWidth."%",	
 				);	
+				
 				$selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
 					"width" => (100 - $attr->contentWidth )."%",	
 				);

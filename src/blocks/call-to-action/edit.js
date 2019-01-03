@@ -360,15 +360,18 @@ class UAGBCallToAction extends Component {
 								beforeIcon="editor-textcolor"
 								allowReset
 							/>
-							<RangeControl
-								label={ __( "Content Width" ) }
-								value={ contentWidth }
-								onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
-								min={ 0 }
-								max={ 100 }
-								initialPosition={70}
-								allowReset
-							/>
+
+							{ ctaPosition === "right" &&
+								<RangeControl
+									label={ __( "Content Width" ) }
+									value={ contentWidth }
+									onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
+									min={ 0 }
+									max={ 100 }
+									initialPosition={70}
+									allowReset
+								/>
+							}
 						</Fragment>
 					)
 					}
