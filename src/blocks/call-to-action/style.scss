@@ -5,6 +5,7 @@
  */
 
 .uagb-cta__outer-wrap{
+    position:relative;
 
     .uagb-cta__content {
         display: inline-block;
@@ -178,6 +179,14 @@
     }
     .uagb-cta__block-link i {
         font-style: normal;
+    }
+    a.uagb-cta__link-to-all {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
     }
 }
 
