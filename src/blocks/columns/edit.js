@@ -178,23 +178,21 @@ class UAGBColumns extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		const onColorChange = ( colorValue ) => {
-			setAttributes( { backgroundColor: colorValue } )
-		}
-
 		let active = ( isSelected ) ? "active" : "not-active"
 
 		return (
 			<Fragment>
-				<BlockControls>
-					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ ( value ) => {
-							setAttributes( { align: value } )
-						} }
-						controls={ [ "center","wide","full" ] }
-					/>
-				</BlockControls>
+				{ contentWidth == 'full' &&
+					<BlockControls>
+						<BlockAlignmentToolbar
+							value={ align }
+							onChange={ ( value ) => {
+								setAttributes( { align: value } )
+							} }
+							controls={ [ "wide","full" ] }
+						/>
+					</BlockControls>
+				}
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
 						<RangeControl

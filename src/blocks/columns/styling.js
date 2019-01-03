@@ -13,6 +13,7 @@ function styling( props ) {
 		backgroundVideoColor,
 		backgroundImageColor,
 		backgroundOpacity,
+		backgroundColor,
 		backgroundVideoOpacity,
 		backgroundVideo,
 		className,
@@ -46,12 +47,13 @@ function styling( props ) {
 		}
 	} else if( "image" == backgroundType ) {
 		selectors[" > .uagb-columns__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color": backgroundImageColor
 		}
 	} else {
 		selectors[" > .uagb-columns__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
+			"background-color" : backgroundColor
 		}
 	}
 

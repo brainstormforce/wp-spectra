@@ -108,7 +108,6 @@ const attributes = {
 	},
 	backgroundOpacity: {
 		type: "number",
-		default: 0
 	},
 	backgroundVideoOpacity: {
 		type: "number",
