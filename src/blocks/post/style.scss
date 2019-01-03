@@ -35,6 +35,10 @@
 	    height: 100%;
 	}
 
+	.uagb-post__inner-wrap > p {
+		display: none;
+	}
+
 	.uagb-post__author span,
 	.uagb-post__comment span,
 	.uagb-post__date span {

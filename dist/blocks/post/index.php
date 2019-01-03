@@ -1185,7 +1185,7 @@ function uagb_render_button( $attributes ) {
  * @since x.x.x
  */
 function uagb_render_complete_box_link( $attributes ) {
-	if ( ! $attributes['linkBox'] ) {
+	if ( ! ( isset( $attributes['linkBox'] ) && $attributes['linkBox'] ) ) {
 		return;
 	}
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
