@@ -6,17 +6,12 @@
 function inlineStyles( props, isEditor ) {
 
 	const {
-		align,
-		contentWidth,
 		leftPadding,
 		rightPadding,
 		topPadding,
 		bottomPadding,
-		leftMargin,
-		rightMargin,
 		topMargin,
 		bottomMargin,
-		width,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,

@@ -40,6 +40,8 @@ function styling( props ) {
 		}
 	}
 
+	selectors[" > .uagb-columns__overlay"] = {}
+
 	if ( "video" == backgroundType ) {
 		selectors[" > .uagb-columns__overlay"] = {
 			"opacity" : 1,
@@ -50,7 +52,7 @@ function styling( props ) {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color": backgroundImageColor
 		}
-	} else {
+	} else if( "color" == backgroundType ) {
 		selectors[" > .uagb-columns__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color" : backgroundColor
