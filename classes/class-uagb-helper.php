@@ -172,6 +172,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/call-to-action':
+					$css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/post-timeline':
 					$css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
 					break;
