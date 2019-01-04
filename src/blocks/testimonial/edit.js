@@ -313,7 +313,7 @@ class UAGBtestimonial extends Component {
 					initialOpen={ false }
 				>
 					<RangeControl
-						label={ __( "Row Gap" ) }
+						label={ __( "Gap Between Content & Dots" ) }
 						value={ rowGap }
 						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
 						min={ 0 }
@@ -321,7 +321,7 @@ class UAGBtestimonial extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
+						label={ __( "Row Gap" ) }
 						value={ columnGap }
 						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
 						min={ 0 }
