@@ -62892,14 +62892,18 @@ var UAGBBlockQuote = function (_Component) {
 										return onReplace([]);
 									}
 								}),
-								wp.element.createElement(
-									"a",
-									{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
-									wp.element.createElement("i", { className: "fa fa-twitter" }),
+								enableTweet && wp.element.createElement(
+									Fragment,
+									null,
 									wp.element.createElement(
-										"span",
-										{ className: "uagb-blockquote__tweet-label" },
-										"Twitter"
+										"a",
+										{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
+										wp.element.createElement("i", { className: "fab fa-twitter" }),
+										wp.element.createElement(
+											"span",
+											{ className: "uagb-blockquote__tweet-label" },
+											"Twitter"
+										)
 									)
 								)
 							)
@@ -63053,7 +63057,7 @@ var attributes = {
 	},
 	author: {
 		selector: "div.uagb-blockquote__author",
-		default: "Designation"
+		default: "Author"
 	},
 	authorColor: {
 		type: "string",

@@ -20,7 +20,7 @@ const attributes = {
 	},
 	author: {
 		selector: "div.uagb-blockquote__author",
-		default: "Designation",
+		default: "Author",
 	},		
 	authorColor: {
 		type: "string",

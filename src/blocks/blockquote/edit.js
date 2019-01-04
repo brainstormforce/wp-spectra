@@ -336,10 +336,13 @@ class UAGBBlockQuote extends Component {
 								}
 								onRemove={ () => onReplace( [] ) }
 							/>
-					      <a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank">
-					      	<i className="fa fa-twitter"></i>
-					      	<span className="uagb-blockquote__tweet-label">Twitter</span>
-					      </a>
+					      	{ enableTweet && <Fragment>
+							      <a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank">
+							      	<i className="fab fa-twitter"></i>
+							      	<span className="uagb-blockquote__tweet-label">Twitter</span>
+							      </a>
+					      		</Fragment>
+					        }
 					   </footer>
 					</blockquote>
 					</div>
