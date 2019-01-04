@@ -138,7 +138,7 @@ class UAGBBlockQuote extends Component {
 					value={ quoteSize }
 					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
 					min={ 0 }
-					max={ 200 }
+					max={ 2 }
 					allowReset
 				/>	
 				<RangeControl

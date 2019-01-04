@@ -52,7 +52,7 @@ function styling( props ) {
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote:before":{
 			"color": quoteColor,
-			"font-size": quoteSize+"px",
+			"font-size": "calc("+quoteSize+"px*100)",
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__content":{
 			"margin-top": quoteGap + "px",

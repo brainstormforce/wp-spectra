@@ -62669,7 +62669,7 @@ var UAGBBlockQuote = function (_Component) {
 						return setAttributes({ quoteSize: value });
 					},
 					min: 0,
-					max: 200,
+					max: 2,
 					allowReset: true
 				}),
 				wp.element.createElement(RangeControl, {
@@ -62990,7 +62990,7 @@ function styling(props) {
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote:before": {
 			"color": quoteColor,
-			"font-size": quoteSize + "px"
+			"font-size": "calc(" + quoteSize + "px*100)"
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__content": {
 			"margin-top": quoteGap + "px"
@@ -63119,7 +63119,7 @@ var attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 100
+		default: 1
 	},
 	quoteGap: {
 		type: "number"
