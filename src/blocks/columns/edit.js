@@ -8,7 +8,6 @@ import styling from "./styling"
 import memoize from "memize"
 import times from "lodash/times"
 import map from "lodash/map"
-import Resizable from 're-resizable';
 
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 

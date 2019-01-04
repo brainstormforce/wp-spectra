@@ -22,6 +22,7 @@ function inlineStyles( props, isEditor ) {
 		backgroundAttachment,
 		backgroundImage,
 		backgroundColor,
+		backgroundOpacity,
 		backgroundRepeat,
 		backgroundType,
 		gradientColor1,
@@ -93,6 +94,7 @@ function inlineStyles( props, isEditor ) {
 
 	} else if ( "gradient" === backgroundType ) {
 		style["background-color"] = "transparent"
+		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 
 		if ( "linear" === gradientType ) {
 

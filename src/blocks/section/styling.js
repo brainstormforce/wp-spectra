@@ -42,6 +42,8 @@ function styling( props ) {
 		}
 	}
 
+	selectors[" > .uagb-section__overlay"] = {}
+
 	if ( "video" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : 1,
@@ -49,10 +51,10 @@ function styling( props ) {
 		}
 	} else if( "image" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
 			"background-color": backgroundImageColor
 		}
-	} else {
+	} else if( "color" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color" : backgroundColor
