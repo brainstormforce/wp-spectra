@@ -600,7 +600,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'test_item_count'      => 3,
 						),
 					),
-					'uagb/blockquote'             => array(
+					'uagb/blockquote'       => array(
 						'slug'        => '',
 						'title'       => __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),

@@ -187,8 +187,61 @@ class UAGBBlockQuote extends Component {
 					) }
 					id={ `uagb-quote-${ this.props.clientId }` }>
 					<div className = "uagb-quote__wrap">
-						<div className = "uagb-quote__content">
-						</div>
+						<blockquote className="uagb-blockquote">					  
+						   	<RichText
+								tagName="p"
+								placeholder={ __( "Write Content" ) }
+								value={ description_text }
+								className='uagb-blockquote__content'
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { description_text: value } ) }
+								}
+								onMerge={ mergeBlocks }
+								unstableOnSplit={
+									insertBlocksAfter ?
+										( before, after, ...blocks ) => {
+											setAttributes( { content: before } )
+											insertBlocksAfter( [
+												...blocks,
+												createBlock( "core/paragraph", { content: after } ),
+											] )
+										} :
+										undefined
+								}
+								onRemove={ () => onReplace( [] ) }
+							/>
+					   <footer>
+
+					      <RichText
+								tagName="cite"
+								placeholder={ __( "Write Content" ) }
+								value={ author }
+								className='uagb-blockquote__author'
+								multiline={ false }
+								onChange={ ( value ) => {
+									setAttributes( { author: value } ) }
+								}
+								onMerge={ mergeBlocks }
+								unstableOnSplit={
+									insertBlocksAfter ?
+										( before, after, ...blocks ) => {
+											setAttributes( { content: before } )
+											insertBlocksAfter( [
+												...blocks,
+												createBlock( "core/paragraph", { content: after } ),
+											] )
+										} :
+										undefined
+								}
+								onRemove={ () => onReplace( [] ) }
+							/>
+					      <a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank">
+					      	<i className="fa fa-twitter"></i>
+					      	<span className="uagb-blockquote__tweet-label">Twitter</span>
+					      </a>
+					   </footer>
+					</blockquote>
 					</div>
 				</div>
 			</Fragment>
