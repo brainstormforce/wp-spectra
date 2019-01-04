@@ -10,7 +10,19 @@
 
 	.uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
 	.uagb-blockquote__skin-clean blockquote.uagb-blockquote{
-		border:none;
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: 0;
+		font-size: 100%;
+		vertical-align: baseline;
+		background: transparent;
+		quotes: none;
+		border-left: 0 none;
+		border-right: 0 none;
+		border-top: 0 none;
+		border-bottom: 0 none;
+		font-style: normal;
 	}
 
 	.uagb-blockquote__skin-quotation .uagb-blockquote:before{
@@ -27,6 +39,11 @@
 	blockquote.uagb-blockquote {
 	    margin: 0;
 	    padding: 0;
+	}
+
+	.uagb-blockquote__wrap, .uagb-blockquote__wrap * {
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
 	}
 		
 }

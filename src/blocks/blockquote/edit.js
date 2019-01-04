@@ -75,15 +75,15 @@ class UAGBBlockQuote extends Component {
 						title={ __( "Skin" ) }
 					>
 						<SelectControl
-									label={ __( "Style" ) }
-									options={[
-										{ value: "border", label: __( "Border" ) },
-										{ value: "quotation", label: __( "Quotation" ) },
-										{ value: "clean", label: __( "Clean" ) }
-									] }
-									value={ skinStyle }
-									onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
-								/>
+							label={ __( "Style" ) }
+							options={[
+								{ value: "border", label: __( "Border" ) },
+								{ value: "quotation", label: __( "Quotation" ) },
+								{ value: "clean", label: __( "Clean" ) }
+							] }
+							value={ skinStyle }
+							onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
+						/>
 					</PanelBody>
 					<PanelBody title={ __( "Social Icon" ) }
 						initialOpen={ false }>
