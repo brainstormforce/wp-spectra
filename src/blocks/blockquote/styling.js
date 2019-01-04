@@ -1,0 +1,86 @@
+/**
+ * Set inline styles.
+ * @param  {object} props - The block object.
+ * @return {object} The inline background type CSS.
+ */
+
+function styling( props ) {
+
+	const {
+		block_id,
+		skinStyle,
+		align,	
+		authorColor,
+		descColor,
+		enableTweet,
+		tweetBtnColor,
+		tweetBtnHoverColor,
+		descFontSize,
+		authorFontSize,
+		tweetBtnFontSize,	
+		descSpace,
+		authorSpace,	
+		stack,
+		borderColor,
+		borderStyle,
+		borderWidth,
+		borderGap,
+		verticalPadding,
+		quoteColor,
+		quoteSize,
+		quoteGap,
+	} = props.attributes
+
+	var selectors = {
+		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
+			"font-size": descFontSize + "px",
+			"color": descColor,
+			"margin-bottom": descSpace + "px",
+		},
+		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+			"font-size": authorFontSize + "px",
+			"color": authorColor,
+			"margin-bottom": authorSpace + "px",
+		},
+		" .uagb-blockquote__skin-border blockquote.uagb-blockquote":{
+			"border-color": borderColor,
+			"border-left-style": borderStyle,
+			"border-left-width": borderWidth + "px",
+			"padding-left": borderGap + "px",
+			"padding-top": verticalPadding + "px",
+			"padding-bottom": verticalPadding + "px",
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote:before":{
+			"color": quoteColor,
+			"font-size": quoteSize+"px",
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__content":{
+			"margin-top": quoteGap + "px",
+		}
+	}
+
+	
+
+	var styling_css = ""
+
+	for( var i in selectors ) {
+
+		styling_css += `#wpwrap .edit-post-visual-editor #uagb-quote-${ props.clientId }`
+
+		styling_css += i + " { "
+
+		var sel = selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	return styling_css
+}
+
+export default styling

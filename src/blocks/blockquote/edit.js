@@ -4,7 +4,7 @@ import classnames from "classnames"
 // Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-//import styling from "./styling"
+import styling from "./styling"
 
 const { __ } = wp.i18n
 
@@ -14,7 +14,7 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	MediaUpload,
+	ColorPalette
 } = wp.editor
 
 const {
@@ -53,15 +53,126 @@ class UAGBBlockQuote extends Component {
 			tweetBtnFontSize,	
 			descSpace,
 			authorSpace,	
-			stack
+			stack,
+			borderColor,
+			borderStyle,
+			borderWidth,
+			borderGap,
+			verticalPadding,
+			quoteColor,
+			quoteSize,
+			quoteGap,
 		} = attributes
 
 		// Add CSS.
 		var element = document.getElementById( "uagb-blockquote-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
-		}
-	
+		}	
+
+		const border_settings =(
+			<Fragment>
+				<SelectControl
+					label={ __( "Border Style" ) }
+					value={ borderStyle }
+					onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "groove", label: __( "Groove" ) },
+						{ value: "inset", label: __( "Inset" ) },
+						{ value: "outset", label: __( "Outset" ) },
+						{ value: "ridge", label: __( "Ridge" ) },
+					] }
+				/>
+				{ "none" != borderStyle &&  <Fragment>					
+					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+					<ColorPalette
+						value={ borderColor }
+						onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Border Width" ) }
+						value={ borderWidth }
+						onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>	
+					<RangeControl
+						label={ __( "Gap Beetween Border and Content" ) }
+						value={ borderGap }
+						onChange={ ( value ) => setAttributes( { borderGap: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Vertical Padding" ) }
+						value={ verticalPadding }
+						onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>	
+					</Fragment>
+				 }
+				</Fragment>		
+			)
+		const quote_settings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Quote Color" ) }
+				<span className="components-base-control__label">
+				<span className="component-color-indicator" style={{ backgroundColor: quoteColor }} ></span></span></p>
+				<ColorPalette
+					value={ quoteColor }
+					onChange={ ( colorValue ) => setAttributes( { quoteColor: colorValue } ) }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Quote Size" ) }
+					value={ quoteSize }
+					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
+					min={ 0 }
+					max={ 200 }
+					allowReset
+				/>	
+				<RangeControl
+					label={ __( "Gap Beetween Quote and Content" ) }
+					value={ quoteGap }
+					onChange={ ( value ) => setAttributes( { quoteGap: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>
+			</Fragment>
+		)
+
+		const skin_settings =(
+			<Fragment>
+				<PanelBody
+						title={ __( "Skin" ) }
+					>
+					<SelectControl
+						label={ __( "Style" ) }
+						options={[
+							{ value: "border", label: __( "Border" ) },
+							{ value: "quotation", label: __( "Quotation" ) },
+							{ value: "clean", label: __( "Clean" ) }
+						] }
+						value={ skinStyle }
+						onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
+					/>
+					{ skinStyle === "border" && border_settings	}
+					{ skinStyle === "quotation" && quote_settings }					
+				</PanelBody>
+			</Fragment>
+		)
+
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
@@ -71,20 +182,7 @@ class UAGBBlockQuote extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Skin" ) }
-					>
-						<SelectControl
-							label={ __( "Style" ) }
-							options={[
-								{ value: "border", label: __( "Border" ) },
-								{ value: "quotation", label: __( "Quotation" ) },
-								{ value: "clean", label: __( "Clean" ) }
-							] }
-							value={ skinStyle }
-							onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
-						/>
-					</PanelBody>
+					{ skin_settings }
 					<PanelBody title={ __( "Social Icon" ) }
 						initialOpen={ false }>
 						<ToggleControl
@@ -257,7 +355,7 @@ class UAGBBlockQuote extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-blockquote-style-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-blockquote-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 }

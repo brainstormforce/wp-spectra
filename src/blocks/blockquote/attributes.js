@@ -60,7 +60,37 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
-	}
+	},
+	borderColor: {
+		type: "string",
+		default: "#abb8c3"
+	},
+	borderStyle: {
+		type: "string",
+		default: "solid"
+	},
+	borderWidth : {
+		type: "number",
+		default: 4,
+	},
+	borderGap : {
+		type: "number",
+		default: 15,
+	},
+	verticalPadding:{
+		type: "number",
+	},
+	quoteColor: {
+		type: "string",
+		default: "#abb8c3"
+	},
+	quoteSize: {
+		type: "number",
+		default: 100,
+	},
+	quoteGap : {
+		type: "number",
+	},
 }
 
 export default attributes
