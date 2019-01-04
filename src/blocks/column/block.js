@@ -508,9 +508,9 @@ export default class UAGBColumnEdit extends Component {
  */
 registerBlockType( "uagb/column", {
 	title: __( "Column" ),
-	icon: UAGB_Block_Icons.section,
+	icon: UAGB_Block_Icons.columns,
 	category: uagb_blocks_info.category,
-	parent: [ "uagb/section" ],
+	parent: [ "uagb/columns" ],
 	supports: {
 		inserter: false,
 		reusable: false,

@@ -27,17 +27,18 @@ const {
 registerBlockType( "uagb/columns", {
 	title: uagb_blocks_info.blocks["uagb/columns"]["title"],
 	description: uagb_blocks_info.blocks["uagb/columns"]["description"],
-	icon: UAGB_Block_Icons.section,
+	icon: UAGB_Block_Icons.columns,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "columns" ),
+		__( "rows" ),
 		__( "uagb" ),
 	],
 	attributes,
 	edit,
 	getEditWrapperProps( attributes ) {
-		const { align } = attributes
-		if ( "center" === align ||"wide" === align || "full" === align ) {
+		const { align, contentWidth } = attributes
+		if ( 'full' == contentWidth ) {
 			return { "data-align": align }
 		}
 	},
@@ -57,13 +58,19 @@ registerBlockType( "uagb/columns", {
 
 		const CustomTag = `${tag}`
 
+		let alignclass = ""
+
+		if ( 'full' == contentWidth ) {
+			alignclass = `align${ align }`
+		}
+
 		return (
 			<CustomTag
 				className={ classnames(
 					className,
 					"uagb-columns__wrap",
 					`uagb-columns__background-${backgroundType}`,
-					`align${ align }`
+					alignclass
 				) }
 				id={ `uagb-columns-${block_id}` }
 			>

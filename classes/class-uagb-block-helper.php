@@ -178,28 +178,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom' => $attr['bottomPadding'] . 'px',
 				'padding-left'   => $attr['leftPadding'] . 'px',
 				'padding-right'  => $attr['rightPadding'] . 'px',
+				'margin-top'    => $attr['topMargin'] . 'px',
+				'margin-bottom' => $attr['bottomMargin'] . 'px',
+				'margin-left'   => $attr['leftMargin'] . 'px',
+				'margin-right'  => $attr['rightMargin'] . 'px',
 				'border-radius'  => $attr['borderRadius'] . "px"
 			);
-
-			if ( 'right' == $attr['align'] ) {
-				$style['margin-right']  = $attr['rightMargin'] . 'px';
-				$style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} elseif ( 'left' == $attr['align'] ) {
-				$style['margin-right']  = 'auto';
-				$style['margin-left']   = $attr['leftMargin'] . 'px';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} elseif ( 'center' == $attr['align'] ) {
-				$style['margin-right']  = 'auto';
-				$style['margin-left']   = 'auto';
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			} else {
-				$style['margin-top']    = $attr['topMargin'] . 'px';
-				$style['margin-bottom'] = $attr['bottomMargin'] . 'px';
-			}
 
 			if ( "none" != $attr['borderStyle'] ) {
 				$style["border-style"] = $attr['borderStyle'];
@@ -209,21 +193,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
-			$columns_width = '100%';
-
 			if ( isset( $attr['contentWidth'] ) ) {
-
-				if ( 'boxed' == $attr['contentWidth'] ) {
+				if ( 'custom' == $attr['contentWidth'] ) {
 					if ( isset( $attr['width'] ) ) {
-						$columns_width = $attr['width'] . 'px';
+						$style['max-width'] = $attr['width'] . 'px';
+						$style['margin-left'] = "auto";
+						$style['margin-right'] = "auto";
 					}
 				}
 			}
-
-			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
-				$style['max-width'] = $columns_width;
-			}
-
 
 			if ( 'image' === $bg_type ) {
 
@@ -249,10 +227,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$inner_width = '100%';
 
 			if ( isset( $attr['contentWidth'] ) ) {
-				if ( 'custom' == $attr['contentWidth'] ) {
-					if ( "" != $attr['width'] ) {
-						$inner_width = $attr['width'] . "px";
-					}
+				if ( 'theme' == $attr['contentWidth'] ) {
+					$inner_width = $content_width . 'px';
+				} else if ( 'full' == $attr['contentWidth'] ) {
+					unset( $style['margin-left'] );
+					unset( $style['margin-right'] );
 				}
 			}
 

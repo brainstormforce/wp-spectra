@@ -179,6 +179,12 @@ class UAGBColumns extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
+		let alignclass = ""
+
+		if ( 'full' == contentWidth ) {
+			alignclass = `align${ align }`
+		}
+
 		return (
 			<Fragment>
 				{ contentWidth == 'full' &&
@@ -570,7 +576,7 @@ class UAGBColumns extends Component {
 						"uagb-columns__wrap",
 						`uagb-columns__background-${backgroundType}`,
 						`uagb-columns__edit-${ active }`,
-						`align${ align }`
+						alignclass
 					) }
 					id={ `uagb-columns-${this.props.clientId}` }
 				>

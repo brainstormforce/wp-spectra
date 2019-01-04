@@ -6,8 +6,8 @@
 function inlineStyles( props, isEditor ) {
 
 	const {
-		align,
 		contentWidth,
+		width,
 		leftPadding,
 		rightPadding,
 		topPadding,
@@ -16,7 +16,6 @@ function inlineStyles( props, isEditor ) {
 		rightMargin,
 		topMargin,
 		bottomMargin,
-		width,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
@@ -42,27 +41,11 @@ function inlineStyles( props, isEditor ) {
 		"padding-bottom": bottomPadding + "px",
 		"padding-left": leftPadding + "px",
 		"padding-right": rightPadding + "px",
+		"margin-top": topMargin + "px",
+		"margin-bottom": bottomMargin + "px",
+		"margin-left": leftMargin + "px",
+		"margin-right": rightMargin + "px",
 		"border-radius": borderRadius + "px"
-	}
-
-	if ( "right" == align ) {
-		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-right"] =  rightMargin + "px"
-	} else if ( "left" == align ) {
-		style["margin-right"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-left"] =  leftMargin + "px"
-	} else if ( "center" == align ) {
-		style["margin-right"] = "auto"
-		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-	} else {
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
 	}
 
 	if ( borderStyle != "none" ) {
@@ -74,6 +57,14 @@ function inlineStyles( props, isEditor ) {
 	var position = backgroundPosition.replace( "-", " " )
 
 	style["max-width"] = "100%"
+
+	if ( 'custom' == contentWidth ) {
+		if ( '' != width ) {
+			style["max-width"] = width + "px"
+			style["margin-left"] = "auto"
+			style["margin-right"] = "auto"
+		}
+	}
 
 	if ( "image" === backgroundType ) {
 

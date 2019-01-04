@@ -22,21 +22,13 @@ function styling( props ) {
 		width
 	} = props.attributes
 
-	var inner_width = "100%"
-
-	if ( "custom" == contentWidth ) {
-		if ( "" != width ) {
-			inner_width = width + "px"
-		}
-	}
-
 	var selectors = {
 		".uagb-columns__wrap" : inlineStyles( props ),
 		" .uagb-columns__video-wrap": {
 			"opacity" : ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5
 		},
-		" .uagb-columns__inner-wrap": {
-			"max-width" : inner_width
+		" > .uagb-columns__inner-wrap": {
+			"max-width" : "100%"
 		}
 	}
 
