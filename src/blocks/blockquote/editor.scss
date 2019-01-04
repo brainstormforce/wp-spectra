@@ -1,0 +1,28 @@
+/**
+ * Editor styles for the admin
+ */
+
+#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
+#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-clean blockquote.uagb-blockquote{
+	border:none;
+}
+
+#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-quotation .uagb-blockquote:before{
+	content: "“";
+    font-size: 100px;
+    color: rgb(230, 233, 236);
+    font-family: "Times New Roman", Times, serif;
+    font-weight: 900;
+    line-height: 1;
+    display: block;
+    height: 0.6em;
+}
+
+#wpwrap .edit-post-visual-editor  blockquote.uagb-blockquote {
+    margin: 0;
+    padding: 0;
+}
+
+#wpwrap .edit-post-visual-editor blockquote.uagb-blockquote__skin-border{
+	padding-left: 10px;
+}

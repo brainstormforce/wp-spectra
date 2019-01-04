@@ -181,12 +181,14 @@ class UAGBBlockQuote extends Component {
 				</InspectorControls>
 				<div
 					className = { classnames(
-						className,
-						"uagb-blockquote",
-						"uagb-quote__outer-wrap",
+						className,						
+						"uagb-blockquote__outer-wrap",
 					) }
 					id={ `uagb-quote-${ this.props.clientId }` }>
-					<div className = "uagb-quote__wrap">
+					<div className = { classnames(
+						"uagb-blockquote__wrap",
+						`uagb-blockquote__skin-${skinStyle}`,
+					) } >
 						<blockquote className="uagb-blockquote">					  
 						   	<RichText
 								tagName="p"

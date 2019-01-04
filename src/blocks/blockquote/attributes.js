@@ -8,7 +8,7 @@ const attributes = {
 	},
 	skinStyle: {
 		type: "string",
-		default: "quotation"
+		default: "border"
 	},
 	align: {
 		type: "string",
