@@ -131,6 +131,7 @@ class UAGBColumns extends Component {
 		const {
 			stack,
 			align,
+			vAlign,
 			contentWidth,
 			width,
 			innerWidth,
@@ -196,6 +197,48 @@ class UAGBColumns extends Component {
 							} }
 							controls={ [ "wide","full" ] }
 						/>
+						<Toolbar>
+							<Tooltip text={ __( 'Vertically Top' ) }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': vAlign === 'top' },
+									) }
+									onClick={ () => setAttributes( { vAlign: 'top' } ) }
+								>
+									{ icons.aligntop }
+								</Button>
+							</Tooltip>
+						</Toolbar>
+						<Toolbar>
+							<Tooltip text={ __( 'Vertically Middle' ) }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': vAlign === 'middle' },
+									) }
+									onClick={ () => setAttributes( { vAlign: 'middle' } ) }
+								>
+									{ icons.alignmiddle }
+								</Button>
+							</Tooltip>
+						</Toolbar>
+						<Toolbar>
+							<Tooltip text={ __( 'Vertically Bottom' ) }>
+								<Button
+									className={ classnames(
+										'components-icon-button',
+										'components-toolbar__control',
+										{ 'is-active': vAlign === 'bottom' },
+									) }
+									onClick={ () => setAttributes( { vAlign: 'bottom' } ) }
+								>
+									{ icons.alignbottom }
+								</Button>
+							</Tooltip>
+						</Toolbar>
 					</BlockControls>
 				}
 				<InspectorControls>

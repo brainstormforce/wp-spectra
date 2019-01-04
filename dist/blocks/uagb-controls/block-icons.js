@@ -105,6 +105,9 @@ const UAGB_Block_Icons = {
 		el("path", { d: "M8.24 3.464h3.521v13.072h-3.521v-13.072z" } ),
 		el("path", { d: "M13.018 3.464h3.518v13.072h-3.518v-13.072z" } ),
 	),
+	"top_align": el("svg", { width: 20, height: 20 },
+		el("path", { d: "M1.5 0.438v2.125h17v-2.125h-17zM5.75 8.938h3.188v10.625h2.125v-10.625h3.187l-4.25-4.25-4.25 4.25z" } )
+	),
 }
 
 export default UAGB_Block_Icons

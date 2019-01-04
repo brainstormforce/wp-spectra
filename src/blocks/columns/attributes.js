@@ -12,6 +12,9 @@ const attributes = {
 	align: {
 		type: "string"
 	},
+	vAlign: {
+		type: "string"
+	},
 	stack: {
 		type: "string",
 		default: "mobile"
