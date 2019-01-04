@@ -36,7 +36,7 @@ function styling( props ) {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color": backgroundImageColor
 		}
-	} else {
+	} else if( "color" == backgroundType ) {
 		selectors[" > .uagb-column__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color" : backgroundColor

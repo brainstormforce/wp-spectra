@@ -129,8 +129,8 @@ class UAGBColumns extends Component {
 		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
+			stack,
 			align,
-			padding,
 			contentWidth,
 			width,
 			innerWidth,
@@ -207,6 +207,17 @@ class UAGBColumns extends Component {
 							max={ 6 }
 							onChange={ ( value ) => setAttributes( { columns: value } ) }
 						/>
+						<SelectControl
+							label={ __( "Stack on" ) }
+							value={ stack }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "tablet", label: __( "Tablet" ) },
+								{ value: "mobile", label: __( "Mobile" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { stack: value } ) }
+						/>
+						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
 						<SelectControl
 							label={ __( "Content Width" ) }
 							value={ contentWidth }
@@ -576,6 +587,7 @@ class UAGBColumns extends Component {
 						"uagb-columns__wrap",
 						`uagb-columns__background-${backgroundType}`,
 						`uagb-columns__edit-${ active }`,
+						`uagb-columns__stack-${stack}`,
 						alignclass
 					) }
 					id={ `uagb-columns-${this.props.clientId}` }

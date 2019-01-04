@@ -474,7 +474,7 @@ export default class UAGBColumnEdit extends Component {
 					className={ classnames(
 						className,
 						"uagb-column__wrap",
-						"uagb-column__background-",
+						`uagb-column__background-${backgroundType}`,
 						`uagb-column__edit-${ active }`,
 					) }
 					id={ `uagb-column-${this.props.clientId}` }
@@ -616,13 +616,19 @@ registerBlockType( "uagb/column", {
 	edit: UAGBColumnEdit,
 
 	save( { attributes, className } ) {
-		const { block_id, backgroundVideo, backgroundType } = attributes
+		const { block_id, backgroundVideo, backgroundType, contentWidth  } = attributes
+		let alignclass = ""
+
+		if ( 'full' == contentWidth ) {
+			alignclass = `align${ align }`
+		}
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
-					"uagb-column__background-"
+					`uagb-column__background-${backgroundType}`,
+					alignclass
 				) }
 				id={ `uagb-column-${block_id}` }
 			>

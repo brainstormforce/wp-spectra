@@ -298,29 +298,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
 			);
 
-			// if ( "none" != $attr['borderStyle'] ) {
-			// 	$style["border-style"] = $attr['borderStyle'];
-			// 	$style["border-width"] = $attr['borderWidth'] . "px";
-			// 	$style["border-color"] =  $attr['borderColor'];
-			// }
-
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
-
-			// $column_width = '100%';
-
-			// if ( isset( $attr['contentWidth'] ) ) {
-
-			// 	if ( 'boxed' == $attr['contentWidth'] ) {
-			// 		if ( isset( $attr['width'] ) ) {
-			// 			$column_width = $attr['width'] . 'px';
-			// 		}
-			// 	}
-			// }
-
-			// if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
-			// 	$style['max-width'] = $column_width;
-			// }
-
 
 			if ( 'image' === $bg_type ) {
 
@@ -332,6 +310,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'gradient' === $bg_type ) {
 				$style['background-color'] = 'transparent';
+				$style['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
 
 				if ( 'linear' === $attr['gradientType'] ) {
 
@@ -341,16 +320,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 				}
 			}
-
-			// $inner_width = '100%';
-
-			// if ( isset( $attr['contentWidth'] ) ) {
-			// 	if ( 'custom' == $attr['contentWidth'] ) {
-			// 		if ( "" != $attr['width'] ) {
-			// 			$inner_width = $attr['width'] + "px"
-			// 		}
-			// 	}
-			// }
 
 			$selectors = array(
 				'.uagb-column__wrap'        => $style,
@@ -369,7 +338,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 					'background-color' => $attr['backgroundImageColor'],
 				);
-			} else {
+			} else if ( 'color' == $bg_type ) {
 				$selectors[' > .uagb-column__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
 					'background-color' => $attr['backgroundColor'],
@@ -382,9 +351,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => $attr['colWidth'] . "%"
 				);
 			}
-
-
-			// $selectors[' > .uagb-column__overlay']["border-radius"] = $attr['borderRadius'] . "px";
 
 			// @codingStandardsIgnoreEnd
 

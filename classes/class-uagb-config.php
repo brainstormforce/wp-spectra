@@ -57,6 +57,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
+							'stack'                  => 'mobile',
 							'topPadding'             => '20',
 							'bottomPadding'          => '20',
 							'leftPadding'            => '20',
@@ -99,6 +100,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'topPadding'             => '',
 							'bottomPadding'          => '',
+							'leftPadding'            => '',
+							'rightPadding'           => '',
 							'topMargin'              => '',
 							'bottomMargin'           => '',
 							'colWidth'               => '',
@@ -115,7 +118,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientLocation2'      => '100',
 							'gradientAngle'          => '0',
 							'backgroundColor'        => '',
-							'backgroundOpacity'      => '0',
+							'backgroundOpacity'      => '',
 							'backgroundVideoOpacity' => '50',
 							'backgroundImageColor'   => '',
 						),

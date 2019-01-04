@@ -12,6 +12,10 @@ const attributes = {
 	align: {
 		type: "string"
 	},
+	stack: {
+		type: "string",
+		default: "mobile"
+	},
 	topPadding: {
 		type: "number",
 		default: 20

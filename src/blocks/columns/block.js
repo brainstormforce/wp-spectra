@@ -53,7 +53,8 @@ registerBlockType( "uagb/columns", {
 			backgroundVideo,
 			contentWidth,
 			align,
-			columns
+			columns,
+			stack
 		} = props.attributes
 
 		const CustomTag = `${tag}`
@@ -70,6 +71,7 @@ registerBlockType( "uagb/columns", {
 					className,
 					"uagb-columns__wrap",
 					`uagb-columns__background-${backgroundType}`,
+					`uagb-columns__stack-${stack}`,
 					alignclass
 				) }
 				id={ `uagb-columns-${block_id}` }
