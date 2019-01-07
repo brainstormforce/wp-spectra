@@ -58,14 +58,17 @@ function styling( props ) {
 			"color": quoteColor,
 			"font-size": quoteSize+"px",
 		},
-		" .uagb-blockquote__skin-quotation .uagb-blockquote__content":{
+		" .uagb-quote__style-style_1.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
+			"margin-top": quoteGap + "px",
+		},		
+		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
 			"margin-top": quoteGap + "px",
 		},
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
 		},
 		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"width":quoteSize+"px",
+			"margin-right": quoteGap + "px",
 			"height":quoteSize+"px",
 			"line-height": quoteSize+"px",
 		},
@@ -76,6 +79,9 @@ function styling( props ) {
 			"background": quoteBgColor,
 			"padding": quoteBgSize+"px",
 		},		
+		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content-wrap":{
+			"margin-top": "-"+(quoteSize/2)+"px",
+		},	
 	}
 	
 
