@@ -94,6 +94,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			} elseif ( 'gradient' === $bg_type ) {
 				$style['background-color'] = 'transparent';
+				$style['opacity'] =  ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
 
 				if ( 'linear' === $attr['gradientType'] ) {
 
@@ -135,10 +136,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			} else if ( 'image' == $bg_type ) {
 				$selectors[' > .uagb-section__overlay'] = array(
-					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
+					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 					'background-color' => $attr['backgroundImageColor'],
 				);
-			} else {
+			} else if ( 'color' == $bg_type ) {
 				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
 					'background-color' => $attr['backgroundColor'],

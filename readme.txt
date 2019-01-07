@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.0.2
-Stable tag: 1.6.2.1
+Stable tag: 1.7.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-actions with a trendy title, description and a catchy button that boosts conversions on your website.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -93,7 +94,8 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.6.2.1 =
+= 1.7.0 =
+* New: Call to Action
 * Fix: Section - Background Opacity issue fix.
 * Improvement: Post - Added an option for Complete Box Link.
 
