@@ -94,5 +94,41 @@
 		-moz-box-pack: start;
 		justify-content: flex-start;
 	}
-		
+	.uagb-blockquote footer{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-box-pack: justify;
+	    -webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	    justify-content: space-between;
+	}
+	.uagb-blockquote a {
+	    -webkit-box-shadow: none;
+	    box-shadow: none;
+	    text-decoration: none;
+	}
+
+	.uagb-blockquote a.uagb-blockquote__tweet-button{
+		display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+	    -webkit-transition: 0.3s;
+	    -o-transition: 0.3s;
+	    transition: 0.3s;
+	    -webkit-align-self: flex-end;
+	    -ms-flex-item-align: end;
+	    align-self: flex-end;
+	    line-height: 1;
+	    position: relative;
+	    width: -webkit-max-content;
+	    width: -moz-max-content;
+	    width: max-content;
+	    padding: 10px 14px;
+	    border-radius: 100em;
+	    background-color: #1DA1F2;
+	    color: #fff;
+	}
 }

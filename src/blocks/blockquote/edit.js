@@ -435,10 +435,10 @@ class UAGBBlockQuote extends Component {
 								}
 								onRemove={ () => onReplace( [] ) }
 							/>
+
+						{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
+						
 					   <footer>
-
-					   		{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
-
 					      	<RichText
 								tagName="cite"
 								placeholder={ __( "Write Content" ) }
