@@ -99,7 +99,8 @@ class UAGBPostMasonry extends Component {
 			excerptBottomSpace,
 			excerptLength,
 			overlayOpacity,
-			bgOverlayColor
+			bgOverlayColor,
+			linkBox
 		} = attributes
 
 		const hoverSettings = (
@@ -228,6 +229,11 @@ class UAGBPostMasonry extends Component {
 								min={ 0 }
 								max={ 100 }
 								allowReset
+							/>
+							<ToggleControl
+								label={ __( "Link Complete Box" ) }
+								checked={ linkBox }
+								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
 							/>
 						</Fragment>
 					}

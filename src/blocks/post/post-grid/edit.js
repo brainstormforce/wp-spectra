@@ -105,7 +105,8 @@ class UAGBPostGrid extends Component {
 			equalHeight,
 			excerptLength,
 			overlayOpacity,
-			bgOverlayColor
+			bgOverlayColor,
+			linkBox
 		} = attributes
 
 		const hoverSettings = (
@@ -241,6 +242,11 @@ class UAGBPostGrid extends Component {
 								min={ 0 }
 								max={ 100 }
 								allowReset
+							/>
+							<ToggleControl
+								label={ __( "Link Complete Box" ) }
+								checked={ linkBox }
+								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
 							/>
 						</Fragment>
 					}
