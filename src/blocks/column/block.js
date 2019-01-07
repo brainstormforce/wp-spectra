@@ -248,28 +248,28 @@ export default class UAGBColumnEdit extends Component {
 				</PanelBody>
 				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
 					<SelectControl
-							label={ __( "Background Type" ) }
-							value={ backgroundType }
-							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "color", label: __( "Color" ) },
-								{ value: "gradient", label: __( "Gradient" ) },
-								{ value: "image", label: __( "Image" ) },
-								{ value: "video", label: __( "Video" ) },
-							] }
-						/>
-						{ "color" == backgroundType && (
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
-								<ColorPalette
-									value={ backgroundColor }
-									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-									allowReset
-								/>
-							</Fragment>
-						) }
-						{ "image" == backgroundType &&
+						label={ __( "Background Type" ) }
+						value={ backgroundType }
+						onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "color", label: __( "Color" ) },
+							{ value: "gradient", label: __( "Gradient" ) },
+							{ value: "image", label: __( "Image" ) },
+							{ value: "video", label: __( "Video" ) },
+						] }
+					/>
+					{ "color" == backgroundType && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+							<ColorPalette
+								value={ backgroundColor }
+								onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+					) }
+					{ "image" == backgroundType &&
 							( <Fragment>
 								<BaseControl
 									className="editor-bg-image-control"
@@ -350,8 +350,8 @@ export default class UAGBColumnEdit extends Component {
 									</Fragment> )
 								}
 							</Fragment> )
-						}
-						{ "gradient" == backgroundType &&
+					}
+					{ "gradient" == backgroundType &&
 							( <Fragment>
 								<PanelColorSettings
 									title={ __( "Color Settings" ) }
@@ -403,31 +403,31 @@ export default class UAGBColumnEdit extends Component {
 									allowReset
 								/>
 							</Fragment> )
-						}
-						{ "video" == backgroundType && (
-							<BaseControl
-								className="editor-bg-video-control"
-								label={ __( "Background Video" ) }
-							>
-								<MediaUpload
-									title={ __( "Select Background Video" ) }
-									onSelect={ this.onSelectVideo }
-									allowedTypes={ [ "video" ] }
-									value={ backgroundVideo }
-									render={ ( { open } ) => (
-										<Button isDefault onClick={ open }>
-											{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
-										</Button>
-									) }
-								/>
-								{ backgroundVideo &&
+					}
+					{ "video" == backgroundType && (
+						<BaseControl
+							className="editor-bg-video-control"
+							label={ __( "Background Video" ) }
+						>
+							<MediaUpload
+								title={ __( "Select Background Video" ) }
+								onSelect={ this.onSelectVideo }
+								allowedTypes={ [ "video" ] }
+								value={ backgroundVideo }
+								render={ ( { open } ) => (
+									<Button isDefault onClick={ open }>
+										{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
+									</Button>
+								) }
+							/>
+							{ backgroundVideo &&
 									( <Button onClick={ this.onRemoveVideo } isLink isDestructive>
 										{ __( "Remove Video" ) }
 									</Button> )
-								}
-							</BaseControl> )
-						}
-						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
+							}
+						</BaseControl> )
+					}
+					{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
 							( <RangeControl
 								label={ __( "Opacity" ) }
 								value={ backgroundOpacity }
@@ -437,28 +437,28 @@ export default class UAGBColumnEdit extends Component {
 								allowReset
 								initialPosition={0}
 							/> )
-						}
-						{ "video" == backgroundType && backgroundVideo && (
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
-								<ColorPalette
-									value={ backgroundVideoColor }
-									onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
-									allowReset
-								/>
-							</Fragment>
-						) }
-						{ "video" == backgroundType && backgroundVideo && (
-							<RangeControl
-								label={ __( "Opacity" ) }
-								value={ backgroundVideoOpacity }
-								onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
-								min={ 0 }
-								max={ 100 }
+					}
+					{ "video" == backgroundType && backgroundVideo && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+							<ColorPalette
+								value={ backgroundVideoColor }
+								onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
 								allowReset
-								initialPosition={50}
 							/>
-						)}
+						</Fragment>
+					) }
+					{ "video" == backgroundType && backgroundVideo && (
+						<RangeControl
+							label={ __( "Opacity" ) }
+							value={ backgroundVideoOpacity }
+							onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+							initialPosition={50}
+						/>
+					)}
 				</PanelBody>
 			</Fragment>
 		)
@@ -619,7 +619,7 @@ registerBlockType( "uagb/column", {
 		const { block_id, backgroundVideo, backgroundType, contentWidth  } = attributes
 		let alignclass = ""
 
-		if ( 'full' == contentWidth ) {
+		if ( "full" == contentWidth ) {
 			alignclass = `align${ align }`
 		}
 		return (

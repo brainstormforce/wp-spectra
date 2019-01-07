@@ -62,7 +62,7 @@ function styling( props ) {
 		styling_css += css + " } "
 	}
 
-	if ( colWidth != '' && colWidth != 0 ) {
+	if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
 

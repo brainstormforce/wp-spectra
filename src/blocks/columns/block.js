@@ -38,7 +38,7 @@ registerBlockType( "uagb/columns", {
 	edit,
 	getEditWrapperProps( attributes ) {
 		const { align, contentWidth } = attributes
-		if ( 'full' == contentWidth ) {
+		if ( "full" == contentWidth ) {
 			return { "data-align": align }
 		}
 	},
@@ -61,7 +61,7 @@ registerBlockType( "uagb/columns", {
 
 		let alignclass = ""
 
-		if ( 'full' == contentWidth ) {
+		if ( "full" == contentWidth ) {
 			alignclass = `align${ align }`
 		}
 

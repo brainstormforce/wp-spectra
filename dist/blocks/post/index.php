@@ -1182,7 +1182,7 @@ function uagb_render_button( $attributes ) {
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.7.0
  */
 function uagb_render_complete_box_link( $attributes ) {
 	if ( ! ( isset( $attributes['linkBox'] ) && $attributes['linkBox'] ) ) {

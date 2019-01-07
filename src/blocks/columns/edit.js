@@ -182,13 +182,13 @@ class UAGBColumns extends Component {
 
 		let alignclass = ""
 
-		if ( 'full' == contentWidth ) {
+		if ( "full" == contentWidth ) {
 			alignclass = `align${ align }`
 		}
 
 		return (
 			<Fragment>
-				{ contentWidth == 'full' &&
+				{ contentWidth == "full" &&
 					<BlockControls>
 						<BlockAlignmentToolbar
 							value={ align }
@@ -198,42 +198,42 @@ class UAGBColumns extends Component {
 							controls={ [ "wide","full" ] }
 						/>
 						<Toolbar>
-							<Tooltip text={ __( 'Vertically Top' ) }>
+							<Tooltip text={ __( "Vertically Top" ) }>
 								<Button
 									className={ classnames(
-										'components-icon-button',
-										'components-toolbar__control',
-										{ 'is-active': vAlign === 'top' },
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": vAlign === "top" },
 									) }
-									onClick={ () => setAttributes( { vAlign: 'top' } ) }
+									onClick={ () => setAttributes( { vAlign: "top" } ) }
 								>
 									{ icons.aligntop }
 								</Button>
 							</Tooltip>
 						</Toolbar>
 						<Toolbar>
-							<Tooltip text={ __( 'Vertically Middle' ) }>
+							<Tooltip text={ __( "Vertically Middle" ) }>
 								<Button
 									className={ classnames(
-										'components-icon-button',
-										'components-toolbar__control',
-										{ 'is-active': vAlign === 'middle' },
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": vAlign === "middle" },
 									) }
-									onClick={ () => setAttributes( { vAlign: 'middle' } ) }
+									onClick={ () => setAttributes( { vAlign: "middle" } ) }
 								>
 									{ icons.alignmiddle }
 								</Button>
 							</Tooltip>
 						</Toolbar>
 						<Toolbar>
-							<Tooltip text={ __( 'Vertically Bottom' ) }>
+							<Tooltip text={ __( "Vertically Bottom" ) }>
 								<Button
 									className={ classnames(
-										'components-icon-button',
-										'components-toolbar__control',
-										{ 'is-active': vAlign === 'bottom' },
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": vAlign === "bottom" },
 									) }
-									onClick={ () => setAttributes( { vAlign: 'bottom' } ) }
+									onClick={ () => setAttributes( { vAlign: "bottom" } ) }
 								>
 									{ icons.alignbottom }
 								</Button>

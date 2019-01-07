@@ -58,8 +58,8 @@ function inlineStyles( props, isEditor ) {
 
 	style["max-width"] = "100%"
 
-	if ( 'custom' == contentWidth ) {
-		if ( '' != width ) {
+	if ( "custom" == contentWidth ) {
+		if ( "" != width ) {
 			style["max-width"] = width + "px"
 			style["margin-left"] = "auto"
 			style["margin-right"] = "auto"

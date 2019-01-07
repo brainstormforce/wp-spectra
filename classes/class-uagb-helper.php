@@ -279,15 +279,40 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_stylesheet() {
 
-			if ( has_blocks( get_the_ID() ) ) {
+			$this_post = array();
 
+			if ( is_single() || is_page() || is_404() ) {
 				global $post;
-
+				$this_post = $post;
+				$this->_generate_stylesheet( $this_post );
 				if ( ! is_object( $post ) ) {
 					return;
 				}
+			} elseif ( is_archive() || is_home() || is_search() ) {
+				global $wp_query;
 
-				$blocks            = $this->parse( $post->post_content );
+				if ( $wp_query->have_posts() ) {
+					while ( $wp_query->have_posts() ) {
+						$wp_query->the_post();
+						global $post;
+						$this_post = $post;
+						$this->_generate_stylesheet( $this_post );
+					}
+				}
+			}
+		}
+
+		/**
+		 * Generates stylesheet in loop.
+		 *
+		 * @param object $this_post Current Post Object.
+		 * @since 1.7.0
+		 */
+		public function _generate_stylesheet( $this_post ) {
+
+			if ( has_blocks( get_the_ID() ) ) {
+
+				$blocks            = $this->parse( $this_post->post_content );
 				self::$page_blocks = $blocks;
 
 				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
