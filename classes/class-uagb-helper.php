@@ -286,6 +286,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
+				foreach ( $blocks as $i => $block ) {
+					echo '<xmp>'; print_r($block); echo '</xmp>';
+				}
+
 				ob_start();
 				?>
 				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
