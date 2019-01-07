@@ -13,6 +13,7 @@ function styling( props ) {
 		backgroundVideoColor,
 		backgroundImageColor,
 		backgroundOpacity,
+		backgroundColor,
 		backgroundVideoOpacity,
 		backgroundVideo,
 		className,
@@ -41,6 +42,8 @@ function styling( props ) {
 		}
 	}
 
+	selectors[" > .uagb-section__overlay"] = {}
+
 	if ( "video" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
 			"opacity" : 1,
@@ -51,9 +54,10 @@ function styling( props ) {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
 			"background-color": backgroundImageColor
 		}
-	} else {
+	} else if( "color" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
+			"background-color" : backgroundColor
 		}
 	}
 
