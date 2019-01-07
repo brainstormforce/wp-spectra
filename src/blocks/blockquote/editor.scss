@@ -44,7 +44,14 @@
 	cite.uagb-blockquote__author {
 	    font-style: normal;
 	}
-
+	.uagb-quote__style-style_2 .uagb-blockquote:before {
+		display: inline-block;
+	    width: calc(1px*60);
+	    height: calc(1px*60);
+	    line-height: calc(1px*100);
+	    float: left;
+	    text-align: left;
+	}
 	.uagb-quote__style-style_3 .uagb-blockquote:before {
 	    color: #0693e3;
 	    font-size: calc(1px*100);
@@ -60,14 +67,6 @@
 	    transform: translate(-50%, -50%);
 	    border-radius: 50%;
 	    text-align:center;
-	}
-
-	.uagb-quote__style-style_2 .uagb-blockquote:before {
-		display: inline-block;
-	    width: calc(1px*60);
-	    height: calc(1px*60);
-	    line-height: calc(1px*100);
-	    float: left;
-	    text-align: left;
-	}
+	    display: inline-block;
+	}	
 }
