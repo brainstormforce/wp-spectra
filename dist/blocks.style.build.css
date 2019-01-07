@@ -2647,7 +2647,8 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
   margin: 0 auto; }
   .wp-block-uagb-blockquote .uagb-blockquote__content,
   .wp-block-uagb-blockquote cite.uagb-blockquote__author {
-    font-style: normal; }
+    font-style: normal;
+    display: block; }
   .wp-block-uagb-blockquote .uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
   .wp-block-uagb-blockquote .uagb-blockquote__skin-clean blockquote.uagb-blockquote {
     margin: 0;

@@ -62,6 +62,7 @@ class UAGBBlockQuote extends Component {
 			quoteColor,
 			quoteSize,
 			quoteGap,
+			quoteStyle,
 		} = attributes
 
 		// Add CSS.
@@ -125,6 +126,16 @@ class UAGBBlockQuote extends Component {
 			)
 		const quote_settings = (
 			<Fragment>
+				<SelectControl
+					label={ __( "Quote Style" ) }
+					value={ quoteStyle }
+					onChange={ ( value ) => setAttributes( { quoteStyle: value } ) }
+					options={ [
+						{ value: "style_1", label: __( "Style 1" ) },
+						{ value: "style_2", label: __( "Style 2" ) },
+						{ value: "style_3", label: __( "Style 3" ) },
+					] }
+				/>
 				<p className="uagb-setting-label">{ __( "Quote Color" ) }
 				<span className="components-base-control__label">
 				<span className="component-color-indicator" style={{ backgroundColor: quoteColor }} ></span></span></p>
@@ -286,6 +297,7 @@ class UAGBBlockQuote extends Component {
 					<div className = { classnames(
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
+						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
 					) } >
 						<blockquote className="uagb-blockquote">					  
 						   	<RichText

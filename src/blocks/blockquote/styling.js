@@ -36,11 +36,13 @@ function styling( props ) {
 			"font-size": descFontSize + "px",
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
+			"text-align": align,
 		},
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + "px",
 			"color": authorColor,
 			"margin-bottom": authorSpace + "px",
+			"text-align": align,			
 		},
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote":{
 			"border-color": borderColor,
@@ -56,6 +58,9 @@ function styling( props ) {
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__content":{
 			"margin-top": quoteGap + "px",
+		},
+		" .uagb-quote__style-style_1 .uagb-blockquote":{
+			"text-align": align,
 		}
 	}
 

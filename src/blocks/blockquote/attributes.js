@@ -12,7 +12,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},	
 	description_text: {
 		selector: "p",
@@ -99,6 +99,10 @@ const attributes = {
 	},
 	verticalPadding:{
 		type: "number",
+	},
+	quoteStyle: {
+		type: "string",
+		default: "style_1"
 	},
 	quoteColor: {
 		type: "string",
