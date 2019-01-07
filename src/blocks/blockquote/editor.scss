@@ -20,7 +20,7 @@
 		font-style: normal;
 	}
 
-	.uagb-blockquote__skin-quotation .uagb-blockquote:before{
+	/*.uagb-blockquote__skin-quotation .uagb-quote__icon:before{
 		content: "“";
 	    font-size: 100px;
 	    color: rgb(230, 233, 236);
@@ -30,7 +30,7 @@
 	    display: block;
 	    height: 0.6em;
 	}
-
+*/
 	 blockquote.uagb-blockquote {
 	    margin: 0;
 	    padding: 0;
@@ -44,29 +44,9 @@
 	cite.uagb-blockquote__author {
 	    font-style: normal;
 	}
-	.uagb-quote__style-style_2 .uagb-blockquote:before {
-		display: inline-block;
-	    width: calc(1px*60);
-	    height: calc(1px*60);
-	    line-height: calc(1px*100);
-	    float: left;
-	    text-align: left;
-	}
-	.uagb-quote__style-style_3 .uagb-blockquote:before {
-	    color: #0693e3;
-	    font-size: calc(1px*100);
-	    display: block;
-	    position: relative;
-	    height: calc(1px*65);
-	    width: calc(1px*65);
-	    max-width: calc(1px*65);
-	    overflow: hidden;
-	    margin: 0;
-	    background: #00800047;
-	    left: 50%;
-	    transform: translate(-50%, -50%);
-	    border-radius: 50%;
-	    text-align:center;
+	.uagb-quote__style-style_3 .uagb-quote__icon {
+		-webkit-box-sizing: content-box;
+	    box-sizing: content-box;
 	    display: inline-block;
-	}	
+	}
 }

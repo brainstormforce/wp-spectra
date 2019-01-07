@@ -52,9 +52,9 @@ function styling( props ) {
 			"padding-top": verticalPadding + "px",
 			"padding-bottom": verticalPadding + "px",
 		},
-		" .uagb-blockquote__skin-quotation .uagb-blockquote:before":{
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
 			"color": quoteColor,
-			"font-size": "calc("+quoteSize+"px*100)",
+			"font-size": quoteSize+"px",
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__content":{
 			"margin-top": quoteGap + "px",
@@ -62,7 +62,17 @@ function styling( props ) {
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
 		},
-		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-blockquote:before":{
+		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon":{
+			"width":quoteSize+"px",
+			"height":quoteSize+"px",
+			"line-height": quoteSize+"px",
+		},
+		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-quote__icon":{
+			"width":quoteSize+"px",
+			"height":quoteSize+"px",
+			"line-height": quoteSize+"px",
+		},
+		/*" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon:before":{
 			"width": "calc("+quoteSize+"px*60)",
 			"height": "calc("+quoteSize+"px*60)",
 			"line-height": "calc("+quoteSize+"px*100)",
@@ -74,7 +84,7 @@ function styling( props ) {
 			"line-height": "calc("+quoteSize+"px*100)",
 			"max-width": "calc("+quoteSize+"px*100)",
 			"margin-bottom": "calc(-"+quoteSize+"px*25)",
-		}
+		}*/
 	}
 	
 

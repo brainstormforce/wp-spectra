@@ -30,15 +30,20 @@
 		font-style: normal;
 	}
 
-	.uagb-blockquote__skin-quotation .uagb-blockquote:before{
-		content: "“";
+	.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon{
 	    font-size: 100px;
 	    color: rgb(230, 233, 236);
 	    font-family: "Times New Roman", Times, serif;
 	    font-weight: 900;
 	    line-height: 1;
 	    display: block;
-	    height: 0.6em;
+	    height: 0.6em;	    
+	}
+
+	.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon:before{
+		content: "“";
+	    color: inherit;	 
+	    vertical-align: middle;
 	}
 
 	blockquote.uagb-blockquote {
@@ -50,5 +55,54 @@
 	    -webkit-box-sizing: border-box;
 	    box-sizing: border-box;
 	}
+
+	.uagb-quote__style-style_2 .uagb-quote__icon{
+		display: inline-block;
+	    float: left;
+	    text-align: left;
+	}	
+	.uagb-quote__style-style_2 .uagb-quote__icon:before {		
+	    width: 50px;
+	    height: 50px;
+	    line-height: 50px;	    
+	}
+	.uagb-quote__style-style_3 .uagb-quote__icon {
+	    display: block;
+	    position: relative;
+	    height: 50px;
+	    width: 50px;
+	    margin: 0;
+	    background: #00800047;
+	    left: 50%;	  
+	    -webkit-box-sizing: content-box;
+	    box-sizing: content-box;
+	    transform: translate(-50%, -50%);
+	    border-radius: 50%;
+	    text-align:center;
+	    display: inline-block;
+	}
+	/*.uagb-quote__style-style_2 .uagb-quote__icon:before {		
+	    width: calc(1px*60);
+	    height: calc(1px*60);
+	    line-height: calc(1px*100);
+	    
+	}
+	.uagb-quote__style-style_3 .uagb-quote__icon:before {
+	    color: #0693e3;
+	    font-size: calc(1px*100);
+	    display: block;
+	    position: relative;
+	    height: calc(1px*65);
+	    width: calc(1px*65);
+	    max-width: calc(1px*65);
+	    overflow: hidden;
+	    margin: 0;
+	    background: #00800047;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    border-radius: 50%;
+	    text-align:center;
+	    display: inline-block;
+	}	*/
 		
 }

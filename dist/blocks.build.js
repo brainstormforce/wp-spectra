@@ -62678,7 +62678,7 @@ var UAGBBlockQuote = function (_Component) {
 						return setAttributes({ quoteSize: value });
 					},
 					min: 0,
-					max: 2,
+					max: 200,
 					allowReset: true
 				}),
 				wp.element.createElement(RangeControl, {
@@ -62854,6 +62854,7 @@ var UAGBBlockQuote = function (_Component) {
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
+							skinStyle === "quotation" && wp.element.createElement("span", { className: "uagb-quote__icon" }),
 							wp.element.createElement(RichText, {
 								tagName: "p",
 								placeholder: __("Write Content"),
@@ -63003,9 +63004,9 @@ function styling(props) {
 			"padding-top": verticalPadding + "px",
 			"padding-bottom": verticalPadding + "px"
 		},
-		" .uagb-blockquote__skin-quotation .uagb-blockquote:before": {
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon": {
 			"color": quoteColor,
-			"font-size": "calc(" + quoteSize + "px*100)"
+			"font-size": quoteSize + "px"
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__content": {
 			"margin-top": quoteGap + "px"
@@ -63013,19 +63014,29 @@ function styling(props) {
 		" .uagb-quote__style-style_1 .uagb-blockquote": {
 			"text-align": align
 		},
-		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-blockquote:before": {
-			"width": "calc(" + quoteSize + "px*60)",
-			"height": "calc(" + quoteSize + "px*60)",
-			"line-height": "calc(" + quoteSize + "px*100)",
-			"max-width": "calc(" + quoteSize + "px*100)"
+		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon": {
+			"width": quoteSize + "px",
+			"height": quoteSize + "px",
+			"line-height": quoteSize + "px"
 		},
-		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote:before": {
-			"width": "calc(" + quoteSize + "px*60)",
-			"height": "calc(" + quoteSize + "px*60)",
-			"line-height": "calc(" + quoteSize + "px*100)",
-			"max-width": "calc(" + quoteSize + "px*100)",
-			"margin-bottom": "calc(-" + quoteSize + "px*25)"
+		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-quote__icon": {
+			"width": quoteSize + "px",
+			"height": quoteSize + "px",
+			"line-height": quoteSize + "px"
 		}
+		/*" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon:before":{
+  	"width": "calc("+quoteSize+"px*60)",
+  	"height": "calc("+quoteSize+"px*60)",
+  	"line-height": "calc("+quoteSize+"px*100)",
+  	"max-width": "calc("+quoteSize+"px*100)",
+  },
+  " .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote:before":{
+  	"width": "calc("+quoteSize+"px*60)",
+  	"height": "calc("+quoteSize+"px*60)",
+  	"line-height": "calc("+quoteSize+"px*100)",
+  	"max-width": "calc("+quoteSize+"px*100)",
+  	"margin-bottom": "calc(-"+quoteSize+"px*25)",
+  }*/
 	};
 
 	var styling_css = "";
@@ -63174,7 +63185,7 @@ var attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 1
+		default: 50
 	},
 	quoteGap: {
 		type: "number"

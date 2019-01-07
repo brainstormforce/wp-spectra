@@ -149,7 +149,7 @@ class UAGBBlockQuote extends Component {
 					value={ quoteSize }
 					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
 					min={ 0 }
-					max={ 2 }
+					max={ 200 }
 					allowReset
 				/>	
 				<RangeControl
@@ -300,6 +300,7 @@ class UAGBBlockQuote extends Component {
 						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
 					) } >
 						<blockquote className="uagb-blockquote">					  
+						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
 						   	<RichText
 								tagName="p"
 								placeholder={ __( "Write Content" ) }
