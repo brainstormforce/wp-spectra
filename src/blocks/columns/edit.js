@@ -8,6 +8,7 @@ import styling from "./styling"
 import memoize from "memize"
 import times from "lodash/times"
 import map from "lodash/map"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
@@ -38,6 +39,8 @@ const {
 	BaseControl,
 	withNotices,
 	ToggleControl,
+	Toolbar,
+	Tooltip
 } = wp.components
 
 const getColumnsTemplate = memoize( ( columns ) => {
@@ -134,15 +137,11 @@ class UAGBColumns extends Component {
 			vAlign,
 			contentWidth,
 			width,
-			innerWidth,
 			tag,
-			themeWidth,
 			leftPadding,
 			rightPadding,
 			topPadding,
 			bottomPadding,
-			leftMargin,
-			rightMargin,
 			topMargin,
 			bottomMargin,
 			backgroundType,
@@ -180,67 +179,59 @@ class UAGBColumns extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
-		let alignclass = ""
-
-		if ( "full" == contentWidth ) {
-			alignclass = `align${ align }`
-		}
-
 		return (
 			<Fragment>
-				{ contentWidth == "full" &&
-					<BlockControls>
-						<BlockAlignmentToolbar
-							value={ align }
-							onChange={ ( value ) => {
-								setAttributes( { align: value } )
-							} }
-							controls={ [ "wide","full" ] }
-						/>
-						<Toolbar>
-							<Tooltip text={ __( "Vertically Top" ) }>
-								<Button
-									className={ classnames(
-										"components-icon-button",
-										"components-toolbar__control",
-										{ "is-active": vAlign === "top" },
-									) }
-									onClick={ () => setAttributes( { vAlign: "top" } ) }
-								>
-									{ icons.aligntop }
-								</Button>
-							</Tooltip>
-						</Toolbar>
-						<Toolbar>
-							<Tooltip text={ __( "Vertically Middle" ) }>
-								<Button
-									className={ classnames(
-										"components-icon-button",
-										"components-toolbar__control",
-										{ "is-active": vAlign === "middle" },
-									) }
-									onClick={ () => setAttributes( { vAlign: "middle" } ) }
-								>
-									{ icons.alignmiddle }
-								</Button>
-							</Tooltip>
-						</Toolbar>
-						<Toolbar>
-							<Tooltip text={ __( "Vertically Bottom" ) }>
-								<Button
-									className={ classnames(
-										"components-icon-button",
-										"components-toolbar__control",
-										{ "is-active": vAlign === "bottom" },
-									) }
-									onClick={ () => setAttributes( { vAlign: "bottom" } ) }
-								>
-									{ icons.alignbottom }
-								</Button>
-							</Tooltip>
-						</Toolbar>
-					</BlockControls>
-				}
+				<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => {
+							setAttributes( { align: value } )
+						} }
+						controls={ [ "wide","full" ] }
+					/>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Top" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "top" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "top" } ) }
+							>
+								{ UAGB_Block_Icons.top_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Middle" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "middle" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "middle" } ) }
+							>
+								{ UAGB_Block_Icons.top_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Bottom" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "bottom" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "bottom" } ) }
+							>
+								{ UAGB_Block_Icons.top_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
+				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
 						<RangeControl
@@ -262,11 +253,10 @@ class UAGBColumns extends Component {
 						/>
 						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
 						<SelectControl
-							label={ __( "Content Width" ) }
+							label={ __( "Content Inner Width" ) }
 							value={ contentWidth }
 							onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
 							options={ [
-								{ value: "full", label: __( "Edge to Edge" ) },
 								{ value: "theme", label: __( "Theme Container Width" ) },
 								{ value: "custom", label: __( "Custom" ) },
 							] }
@@ -274,7 +264,7 @@ class UAGBColumns extends Component {
 						{
 							contentWidth == "custom" &&
 							( <RangeControl
-								label={ __( "Width" ) }
+								label={ __( "Inner Width" ) }
 								value={ width }
 								min={ 0 }
 								max={ 2000 }
@@ -327,22 +317,6 @@ class UAGBColumns extends Component {
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
 							min={ 0 }
-							max={ 200 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Left Margin" ) }
-							value={ leftMargin }
-							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ -200 }
-							max={ 200 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Right Margin" ) }
-							value={ rightMargin }
-							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -631,7 +605,8 @@ class UAGBColumns extends Component {
 						`uagb-columns__background-${backgroundType}`,
 						`uagb-columns__edit-${ active }`,
 						`uagb-columns__stack-${stack}`,
-						alignclass
+						`uagb-columns__vAlign-${vAlign}`,
+						`align${ align }`
 					) }
 					id={ `uagb-columns-${this.props.clientId}` }
 				>

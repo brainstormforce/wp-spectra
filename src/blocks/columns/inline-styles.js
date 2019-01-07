@@ -6,14 +6,10 @@
 function inlineStyles( props, isEditor ) {
 
 	const {
-		contentWidth,
-		width,
 		leftPadding,
 		rightPadding,
 		topPadding,
 		bottomPadding,
-		leftMargin,
-		rightMargin,
 		topMargin,
 		bottomMargin,
 		backgroundPosition,
@@ -43,9 +39,7 @@ function inlineStyles( props, isEditor ) {
 		"padding-right": rightPadding + "px",
 		"margin-top": topMargin + "px",
 		"margin-bottom": bottomMargin + "px",
-		"margin-left": leftMargin + "px",
-		"margin-right": rightMargin + "px",
-		"border-radius": borderRadius + "px"
+		"border-radius": borderRadius + "px",
 	}
 
 	if ( borderStyle != "none" ) {
@@ -56,16 +50,6 @@ function inlineStyles( props, isEditor ) {
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	style["max-width"] = "100%"
-
-	if ( "custom" == contentWidth ) {
-		if ( "" != width ) {
-			style["max-width"] = width + "px"
-			style["margin-left"] = "auto"
-			style["margin-right"] = "auto"
-		}
-	}
-
 	if ( "image" === backgroundType ) {
 
 		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
@@ -75,6 +59,7 @@ function inlineStyles( props, isEditor ) {
 		style["background-size"] = backgroundSize
 
 	} else if ( "gradient" === backgroundType ) {
+
 		style["background-color"] = "transparent"
 		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 

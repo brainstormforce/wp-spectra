@@ -16,11 +16,18 @@ function styling( props ) {
 		backgroundColor,
 		backgroundVideoOpacity,
 		backgroundVideo,
-		className,
-		contentWidth,
 		borderRadius,
+		contentWidth,
 		width
 	} = props.attributes
+
+	let max_width = "100%"
+
+	if ( 'custom' == contentWidth ) {
+		if ( '' != width ) {
+			max_width = width + "px"
+		}
+	}
 
 	var selectors = {
 		".uagb-columns__wrap" : inlineStyles( props ),
@@ -28,7 +35,7 @@ function styling( props ) {
 			"opacity" : ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5
 		},
 		" > .uagb-columns__inner-wrap": {
-			"max-width" : "100%"
+			"max-width" : max_width
 		}
 	}
 

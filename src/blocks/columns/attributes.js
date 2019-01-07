@@ -43,14 +43,6 @@ const attributes = {
 		type: "number",
 		default: 0
 	},
-	leftMargin: {
-		type: "number",
-		default: 0
-	},
-	rightMargin: {
-		type: "number",
-		default: 0
-	},
 	contentWidth: {
 		type: "string",
 		default: "theme"

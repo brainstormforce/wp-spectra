@@ -37,10 +37,8 @@ registerBlockType( "uagb/columns", {
 	attributes,
 	edit,
 	getEditWrapperProps( attributes ) {
-		const { align, contentWidth } = attributes
-		if ( "full" == contentWidth ) {
-			return { "data-align": align }
-		}
+		return { "data-align": attributes.align }
+		return { "data-valign": attributes.vAlign }
 	},
 	save : function( props ) {
 
@@ -54,16 +52,11 @@ registerBlockType( "uagb/columns", {
 			contentWidth,
 			align,
 			columns,
-			stack
+			stack,
+			vAlign
 		} = props.attributes
 
 		const CustomTag = `${tag}`
-
-		let alignclass = ""
-
-		if ( "full" == contentWidth ) {
-			alignclass = `align${ align }`
-		}
 
 		return (
 			<CustomTag
@@ -72,7 +65,8 @@ registerBlockType( "uagb/columns", {
 					"uagb-columns__wrap",
 					`uagb-columns__background-${backgroundType}`,
 					`uagb-columns__stack-${stack}`,
-					alignclass
+					`uagb-columns__vAlign-${vAlign}`,
+					`align${ align }`
 				) }
 				id={ `uagb-columns-${block_id}` }
 			>

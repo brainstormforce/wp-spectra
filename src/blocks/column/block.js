@@ -132,6 +132,8 @@ export default class UAGBColumnEdit extends Component {
 				rightPadding,
 				topMargin,
 				bottomMargin,
+				leftMargin,
+				rightMargin,
 				colWidth,
 				backgroundType,
 				backgroundImage,
@@ -240,6 +242,28 @@ export default class UAGBColumnEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( {
 								bottomMargin: value,
+							} )
+						} }
+						min={ -200 }
+						max={ 200 }
+					/>
+					<RangeControl
+						label={ __( "Left Margin" ) }
+						value={ leftMargin }
+						onChange={ ( value ) => {
+							setAttributes( {
+								leftMargin: value,
+							} )
+						} }
+						min={ -200 }
+						max={ 200 }
+					/>
+					<RangeControl
+						label={ __( "Right Margin" ) }
+						value={ rightMargin }
+						onChange={ ( value ) => {
+							setAttributes( {
+								rightMargin: value,
 							} )
 						} }
 						min={ -200 }
@@ -544,6 +568,14 @@ registerBlockType( "uagb/column", {
 			type: "number",
 			default: "",
 		},
+		leftMargin: {
+			type: "number",
+			default: "",
+		},
+		rightMargin: {
+			type: "number",
+			default: "",
+		},
 		colWidth: {
 			type: "number",
 			default: "",
@@ -617,18 +649,12 @@ registerBlockType( "uagb/column", {
 
 	save( { attributes, className } ) {
 		const { block_id, backgroundVideo, backgroundType, contentWidth  } = attributes
-		let alignclass = ""
-
-		if ( "full" == contentWidth ) {
-			alignclass = `align${ align }`
-		}
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
-					`uagb-column__background-${backgroundType}`,
-					alignclass
+					`uagb-column__background-${backgroundType}`
 				) }
 				id={ `uagb-column-${block_id}` }
 			>

@@ -180,9 +180,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => $attr['rightPadding'] . 'px',
 				'margin-top'    => $attr['topMargin'] . 'px',
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
-				'margin-left'   => $attr['leftMargin'] . 'px',
-				'margin-right'  => $attr['rightMargin'] . 'px',
-				'border-radius'  => $attr['borderRadius'] . "px"
+				'border-radius'  => $attr['borderRadius'] . "px",
 			);
 
 			if ( "none" != $attr['borderStyle'] ) {
@@ -229,9 +227,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
 					$inner_width = $content_width . 'px';
-				} else if ( 'full' == $attr['contentWidth'] ) {
-					unset( $style['margin-left'] );
-					unset( $style['margin-right'] );
+				} else if ( 'custom' == $attr['contentWidth'] ) {
+					$inner_width = $attr['width'] . 'px';
 				}
 			}
 

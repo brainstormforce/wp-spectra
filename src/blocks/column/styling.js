@@ -20,7 +20,7 @@ function styling( props ) {
 	} = props.attributes
 
 	var selectors = {
-		".uagb-column__wrap" : inlineStyles( props ),
+		" " : inlineStyles( props ),
 		" .uagb-column__video-wrap": {
 			"opacity" : ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5
 		}
@@ -47,7 +47,7 @@ function styling( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += `#uagb-column-${ props.clientId }`
+		styling_css += `#block-${ props.clientId }`
 
 		styling_css += i + " { "
 

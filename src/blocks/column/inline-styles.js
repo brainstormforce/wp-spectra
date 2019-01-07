@@ -12,6 +12,8 @@ function inlineStyles( props, isEditor ) {
 		bottomPadding,
 		topMargin,
 		bottomMargin,
+		leftMargin,
+		rightMargin,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
@@ -39,6 +41,8 @@ function inlineStyles( props, isEditor ) {
 		"padding-right": rightPadding + "px",
 		"margin-top": topMargin + "px",
 		"margin-bottom": bottomMargin + "px",
+		"margin-left": leftMargin + "px",
+		"margin-right": rightMargin + "px",
 	}
 
 	var position = backgroundPosition.replace( "-", " " )
