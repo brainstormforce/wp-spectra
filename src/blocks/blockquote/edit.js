@@ -45,10 +45,7 @@ class UAGBBlockQuote extends Component {
 			description_text,
 			author,		
 			authorColor,
-			descColor,
-			enableTweet,
-			tweetBtnColor,
-			tweetBtnHoverColor,
+			descColor,			
 			descFontSize,
 			authorFontSize,
 			tweetBtnFontSize,	
@@ -71,6 +68,14 @@ class UAGBBlockQuote extends Component {
 			seperatorColor,
 			seperatorStyle,
 			seperatorSpace,
+			enableTweet,
+			tweetBtnColor,
+			tweetBtnHoverColor,
+			iconView,
+			iconSkin,
+			iconLabel,
+			iconSahreVia,
+			iconTargetUrl,
 		} = attributes
 
 		// Add CSS.
@@ -378,7 +383,50 @@ class UAGBBlockQuote extends Component {
 						label={ __( "Enable Twitter Icon" ) }
 						checked={ enableTweet }
 						onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
-					/>						
+					/>	
+					{ enableTweet && <Fragment>
+						<SelectControl
+							label={ __( "Icon View" ) }
+							value={ iconView }
+							onChange={ ( value ) => setAttributes( { iconView: value } ) }
+							options={ [
+								{ value: "icon_text", label: __( "Icon & Text" ) },
+								{ value: "icon", label: __( "Icon" ) },
+								{ value: "text", label: __( "Text" ) },
+							] }
+						/>
+						<SelectControl
+							label={ __( "Icon Style" ) }
+							value={ iconSkin }
+							onChange={ ( value ) => setAttributes( { iconSkin: value } ) }
+							options={ [
+								{ value: "classic", label: __( "Classic" ) },
+								{ value: "bubble", label: __( "Bubble" ) },
+								{ value: "link", label: __( "Link" ) },
+							] }
+						/>
+					</Fragment>}	
+					{ iconView == "icon_text" && <Fragment>
+						<TextControl
+							label= { __( "Label" ) }
+							value= { iconLabel }
+							onChange={ value => setAttributes( { iconLabel: value } ) }
+						/>
+						</Fragment>
+					}	
+					{ enableTweet && <Fragment>
+						<TextControl
+							label= { __( "Share Via" ) }
+							value= { iconSahreVia }
+							onChange={ value => setAttributes( { iconSahreVia: value } ) }
+						/>						
+						<TextControl
+							label= { __( "Target URL" ) }
+							value= { iconTargetUrl }
+							onChange={ value => setAttributes( { iconTargetUrl: value } ) }
+						/>		
+						</Fragment>
+					}	
 				</PanelBody>	
 			</Fragment>
 			)
@@ -437,7 +485,7 @@ class UAGBBlockQuote extends Component {
 							/>
 
 						{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
-						
+
 					   <footer>
 					      	<RichText
 								tagName="cite"

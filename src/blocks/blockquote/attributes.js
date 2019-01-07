@@ -51,7 +51,7 @@ const attributes = {
 	},
 	iconTargetUrl: {
 		type: "string",
-		default: "current_page"
+		default: ""
 	},
 	tweetBtnColor: {
 		type: "string",
@@ -60,15 +60,15 @@ const attributes = {
 	tweetBtnHoverColor: {
 		type: "string"
 	},
+	tweetBtnFontSize: {
+		type: "number",
+		default: 15
+	},	
 	descFontSize: {
 		type: "number",
 	},
 	authorFontSize: {
 		type: "number",
-	},
-	tweetBtnFontSize: {
-		type: "number",
-		default: 15
 	},	
 	descSpace :{
 		type: "number",
