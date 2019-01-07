@@ -8,6 +8,10 @@
 	padding: 0;
 	margin: 0 auto;
 
+	.uagb-blockquote__content,
+	cite.uagb-blockquote__author {
+	    font-style: normal;
+	}
 	.uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
 	.uagb-blockquote__skin-clean blockquote.uagb-blockquote{
 		margin: 0;

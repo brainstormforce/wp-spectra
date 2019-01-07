@@ -33,6 +33,26 @@ const attributes = {
 		type: "boolean",
 		default: false,
 	},
+	iconView: {
+		type: "string",
+		default: "text_with_icon"
+	},
+	iconSkin: {
+		type: "string",
+		default: "classic"
+	},
+	iconLabel: {
+		type: "string",
+		default: "Tweet"
+	},
+	iconSahreVia: {
+		type: "string",
+		default: ""
+	},
+	iconTargetUrl: {
+		type: "string",
+		default: "current_page"
+	},
 	tweetBtnColor: {
 		type: "string",
 		default: "#333"
