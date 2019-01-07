@@ -2,61 +2,72 @@
  * Editor styles for the admin
  */
 
-#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
-#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-clean blockquote.uagb-blockquote{
-	margin: 0;
-	padding: 0;
-	border: 0;
-	outline: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-	background: transparent;
-	quotes: none;
-	border-left: 0 none;
-	border-right: 0 none;
-	border-top: 0 none;
-	border-bottom: 0 none;
-	font-style: normal;
-}
+#wpwrap .edit-post-visual-editor{
+	.uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
+	.uagb-blockquote__skin-clean blockquote.uagb-blockquote{
+		margin: 0;
+		padding: 0;
+		border: 0;
+		outline: 0;
+		font-size: 100%;
+		vertical-align: baseline;
+		background: transparent;
+		quotes: none;
+		border-left: 0 none;
+		border-right: 0 none;
+		border-top: 0 none;
+		border-bottom: 0 none;
+		font-style: normal;
+	}
 
-#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-quotation .uagb-blockquote:before{
-	content: "“";
-    font-size: 100px;
-    color: rgb(230, 233, 236);
-    font-family: "Times New Roman", Times, serif;
-    font-weight: 900;
-    line-height: 1;
-    display: block;
-    height: 0.6em;
-}
+	.uagb-blockquote__skin-quotation .uagb-blockquote:before{
+		content: "“";
+	    font-size: 100px;
+	    color: rgb(230, 233, 236);
+	    font-family: "Times New Roman", Times, serif;
+	    font-weight: 900;
+	    line-height: 1;
+	    display: block;
+	    height: 0.6em;
+	}
 
-#wpwrap .edit-post-visual-editor  blockquote.uagb-blockquote {
-    margin: 0;
-    padding: 0;
-}
+	 blockquote.uagb-blockquote {
+	    margin: 0;
+	    padding: 0;
+	}
 
-#wpwrap .edit-post-visual-editor .uagb-blockquote__skin-border blockquote{
-	padding-left: 10px;
-}
+	.uagb-blockquote__skin-border blockquote{
+		padding-left: 10px;
+	}
 
-#wpwrap .edit-post-visual-editor .uagb-blockquote__content,
-#wpwrap .edit-post-visual-editor cite.uagb-blockquote__author {
-    font-style: normal;
-}
+	.uagb-blockquote__content,
+	cite.uagb-blockquote__author {
+	    font-style: normal;
+	}
 
-/*#wpwrap .edit-post-visual-editor .uagb-quote__style-style_2 blockquote.uagb-blockquote:before {
-    color: #0693e3;
-    font-size: calc(1px*100);
-    display: block;
-    position: relative;
-    height: calc(1px*65);
-    width: calc(1px*65);
-    max-width: calc(1px*65);
-    overflow: hidden;
-    margin: 0;
-    background: #00800047;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    text-align:center;
-}*/
+	.uagb-quote__style-style_3 .uagb-blockquote:before {
+	    color: #0693e3;
+	    font-size: calc(1px*100);
+	    display: block;
+	    position: relative;
+	    height: calc(1px*65);
+	    width: calc(1px*65);
+	    max-width: calc(1px*65);
+	    overflow: hidden;
+	    margin: 0;
+	    background: #00800047;
+	    left: 50%;
+	    transform: translate(-50%, -50%);
+	    border-radius: 50%;
+	    text-align:center;
+	}
+
+	.uagb-quote__style-style_2 .uagb-blockquote:before {
+		display: inline-block;
+	    width: calc(1px*60);
+	    height: calc(1px*60);
+	    line-height: calc(1px*100);
+	    float: left;
+	    text-align: left;
+	}
+}

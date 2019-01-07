@@ -63012,6 +63012,11 @@ function styling(props) {
 		},
 		" .uagb-quote__style-style_1 .uagb-blockquote": {
 			"text-align": align
+		},
+		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-blockquote:before": {
+			"width": "calc(" + quoteSize + "px*60)",
+			"height": "calc(" + quoteSize + "px*60)",
+			"line-height": "calc(" + quoteSize + "px*100)"
 		}
 	};
 
