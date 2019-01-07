@@ -66,9 +66,16 @@ function styling( props ) {
 			"width": "calc("+quoteSize+"px*60)",
 			"height": "calc("+quoteSize+"px*60)",
 			"line-height": "calc("+quoteSize+"px*100)",
+			"max-width": "calc("+quoteSize+"px*100)",
+		},
+		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote:before":{
+			"width": "calc("+quoteSize+"px*60)",
+			"height": "calc("+quoteSize+"px*60)",
+			"line-height": "calc("+quoteSize+"px*100)",
+			"max-width": "calc("+quoteSize+"px*100)",
+			"margin-bottom": "calc(-"+quoteSize+"px*25)",
 		}
 	}
-
 	
 
 	var styling_css = ""
