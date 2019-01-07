@@ -29,6 +29,8 @@ function styling( props ) {
 		quoteColor,
 		quoteSize,
 		quoteGap,
+		quoteBgSize,
+		quoteBgColor,
 	} = props.attributes
 
 	var selectors = {
@@ -71,20 +73,9 @@ function styling( props ) {
 			"width":quoteSize+"px",
 			"height":quoteSize+"px",
 			"line-height": quoteSize+"px",
-		},
-		/*" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon:before":{
-			"width": "calc("+quoteSize+"px*60)",
-			"height": "calc("+quoteSize+"px*60)",
-			"line-height": "calc("+quoteSize+"px*100)",
-			"max-width": "calc("+quoteSize+"px*100)",
-		},
-		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote:before":{
-			"width": "calc("+quoteSize+"px*60)",
-			"height": "calc("+quoteSize+"px*60)",
-			"line-height": "calc("+quoteSize+"px*100)",
-			"max-width": "calc("+quoteSize+"px*100)",
-			"margin-bottom": "calc(-"+quoteSize+"px*25)",
-		}*/
+			"background": quoteBgColor,
+			"padding": quoteBgSize+"px",
+		},		
 	}
 	
 

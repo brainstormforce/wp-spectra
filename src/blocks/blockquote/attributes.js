@@ -115,6 +115,13 @@ const attributes = {
 	quoteGap : {
 		type: "number",
 	},
+	quoteBgSize: {
+		type: "number",
+	},
+	quoteBgColor: {
+		type: "string",
+		default: "#4c4f4c26"
+	},
 }
 
 export default attributes

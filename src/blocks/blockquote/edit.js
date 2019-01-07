@@ -60,7 +60,9 @@ class UAGBBlockQuote extends Component {
 			borderGap,
 			verticalPadding,
 			quoteColor,
+			quoteBgColor,
 			quoteSize,
+			quoteBgSize,
 			quoteGap,
 			quoteStyle,
 		} = attributes
@@ -144,6 +146,16 @@ class UAGBBlockQuote extends Component {
 					onChange={ ( colorValue ) => setAttributes( { quoteColor: colorValue } ) }
 					allowReset
 				/>
+				{ quoteStyle =="style_3" && <Fragment><p className="uagb-setting-label">{ __( "Quote Background Color" ) }
+					<span className="components-base-control__label">
+					<span className="component-color-indicator" style={{ backgroundColor: quoteBgColor }} ></span></span></p>
+					<ColorPalette
+						value={ quoteBgColor }
+						onChange={ ( colorValue ) => setAttributes( { quoteBgColor: colorValue } ) }
+						allowReset
+					/>
+					</Fragment>
+				}
 				<RangeControl
 					label={ __( "Quote Size" ) }
 					value={ quoteSize }
@@ -152,6 +164,15 @@ class UAGBBlockQuote extends Component {
 					max={ 200 }
 					allowReset
 				/>	
+				{ quoteStyle =="style_3" && <RangeControl
+						label={ __( "Quote Background Size" ) }
+						value={ quoteBgSize }
+						onChange={ ( value ) => setAttributes( { quoteBgSize: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>	
+				}
 				<RangeControl
 					label={ __( "Gap Beetween Quote and Content" ) }
 					value={ quoteGap }
@@ -301,6 +322,7 @@ class UAGBBlockQuote extends Component {
 					) } >
 						<blockquote className="uagb-blockquote">					  
 						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
+						<div className="uagb-blockquote__content-wrap">
 						   	<RichText
 								tagName="p"
 								placeholder={ __( "Write Content" ) }
@@ -357,6 +379,7 @@ class UAGBBlockQuote extends Component {
 					      		</Fragment>
 					        }
 					   </footer>
+					</div>
 					</blockquote>
 					</div>
 				</div>

@@ -62569,7 +62569,9 @@ var UAGBBlockQuote = function (_Component) {
 			    borderGap = attributes.borderGap,
 			    verticalPadding = attributes.verticalPadding,
 			    quoteColor = attributes.quoteColor,
+			    quoteBgColor = attributes.quoteBgColor,
 			    quoteSize = attributes.quoteSize,
+			    quoteBgSize = attributes.quoteBgSize,
 			    quoteGap = attributes.quoteGap,
 			    quoteStyle = attributes.quoteStyle;
 
@@ -62671,6 +62673,27 @@ var UAGBBlockQuote = function (_Component) {
 					},
 					allowReset: true
 				}),
+				quoteStyle == "style_3" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Quote Background Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: quoteBgColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: quoteBgColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ quoteBgColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
 				wp.element.createElement(RangeControl, {
 					label: __("Quote Size"),
 					value: quoteSize,
@@ -62679,6 +62702,16 @@ var UAGBBlockQuote = function (_Component) {
 					},
 					min: 0,
 					max: 200,
+					allowReset: true
+				}),
+				quoteStyle == "style_3" && wp.element.createElement(RangeControl, {
+					label: __("Quote Background Size"),
+					value: quoteBgSize,
+					onChange: function onChange(value) {
+						return setAttributes({ quoteBgSize: value });
+					},
+					min: 0,
+					max: 50,
 					allowReset: true
 				}),
 				wp.element.createElement(RangeControl, {
@@ -62855,44 +62888,22 @@ var UAGBBlockQuote = function (_Component) {
 							"blockquote",
 							{ className: "uagb-blockquote" },
 							skinStyle === "quotation" && wp.element.createElement("span", { className: "uagb-quote__icon" }),
-							wp.element.createElement(RichText, {
-								tagName: "p",
-								placeholder: __("Write Content"),
-								value: description_text,
-								className: "uagb-blockquote__content",
-								multiline: false,
-								onChange: function onChange(value) {
-									setAttributes({ description_text: value });
-								},
-								onMerge: mergeBlocks,
-								unstableOnSplit: insertBlocksAfter ? function (before, after) {
-									for (var _len = arguments.length, blocks = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-										blocks[_key - 2] = arguments[_key];
-									}
-
-									setAttributes({ content: before });
-									insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
-								} : undefined,
-								onRemove: function onRemove() {
-									return onReplace([]);
-								}
-							}),
 							wp.element.createElement(
-								"footer",
-								null,
+								"div",
+								{ className: "uagb-blockquote__content-wrap" },
 								wp.element.createElement(RichText, {
-									tagName: "cite",
+									tagName: "p",
 									placeholder: __("Write Content"),
-									value: author,
-									className: "uagb-blockquote__author",
+									value: description_text,
+									className: "uagb-blockquote__content",
 									multiline: false,
 									onChange: function onChange(value) {
-										setAttributes({ author: value });
+										setAttributes({ description_text: value });
 									},
 									onMerge: mergeBlocks,
 									unstableOnSplit: insertBlocksAfter ? function (before, after) {
-										for (var _len2 = arguments.length, blocks = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-											blocks[_key2 - 2] = arguments[_key2];
+										for (var _len = arguments.length, blocks = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+											blocks[_key - 2] = arguments[_key];
 										}
 
 										setAttributes({ content: before });
@@ -62902,17 +62913,43 @@ var UAGBBlockQuote = function (_Component) {
 										return onReplace([]);
 									}
 								}),
-								enableTweet && wp.element.createElement(
-									Fragment,
+								wp.element.createElement(
+									"footer",
 									null,
-									wp.element.createElement(
-										"a",
-										{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
-										wp.element.createElement("i", { className: "fab fa-twitter" }),
+									wp.element.createElement(RichText, {
+										tagName: "cite",
+										placeholder: __("Write Content"),
+										value: author,
+										className: "uagb-blockquote__author",
+										multiline: false,
+										onChange: function onChange(value) {
+											setAttributes({ author: value });
+										},
+										onMerge: mergeBlocks,
+										unstableOnSplit: insertBlocksAfter ? function (before, after) {
+											for (var _len2 = arguments.length, blocks = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+												blocks[_key2 - 2] = arguments[_key2];
+											}
+
+											setAttributes({ content: before });
+											insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
+										} : undefined,
+										onRemove: function onRemove() {
+											return onReplace([]);
+										}
+									}),
+									enableTweet && wp.element.createElement(
+										Fragment,
+										null,
 										wp.element.createElement(
-											"span",
-											{ className: "uagb-blockquote__tweet-label" },
-											"Twitter"
+											"a",
+											{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
+											wp.element.createElement("i", { className: "fab fa-twitter" }),
+											wp.element.createElement(
+												"span",
+												{ className: "uagb-blockquote__tweet-label" },
+												"Twitter"
+											)
 										)
 									)
 								)
@@ -62980,7 +63017,9 @@ function styling(props) {
 	    verticalPadding = _props$attributes.verticalPadding,
 	    quoteColor = _props$attributes.quoteColor,
 	    quoteSize = _props$attributes.quoteSize,
-	    quoteGap = _props$attributes.quoteGap;
+	    quoteGap = _props$attributes.quoteGap,
+	    quoteBgSize = _props$attributes.quoteBgSize,
+	    quoteBgColor = _props$attributes.quoteBgColor;
 
 
 	var selectors = {
@@ -63022,21 +63061,10 @@ function styling(props) {
 		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-quote__icon": {
 			"width": quoteSize + "px",
 			"height": quoteSize + "px",
-			"line-height": quoteSize + "px"
+			"line-height": quoteSize + "px",
+			"background": quoteBgColor,
+			"padding": quoteBgSize + "px"
 		}
-		/*" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon:before":{
-  	"width": "calc("+quoteSize+"px*60)",
-  	"height": "calc("+quoteSize+"px*60)",
-  	"line-height": "calc("+quoteSize+"px*100)",
-  	"max-width": "calc("+quoteSize+"px*100)",
-  },
-  " .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote:before":{
-  	"width": "calc("+quoteSize+"px*60)",
-  	"height": "calc("+quoteSize+"px*60)",
-  	"line-height": "calc("+quoteSize+"px*100)",
-  	"max-width": "calc("+quoteSize+"px*100)",
-  	"margin-bottom": "calc(-"+quoteSize+"px*25)",
-  }*/
 	};
 
 	var styling_css = "";
@@ -63189,6 +63217,13 @@ var attributes = {
 	},
 	quoteGap: {
 		type: "number"
+	},
+	quoteBgSize: {
+		type: "number"
+	},
+	quoteBgColor: {
+		type: "string",
+		default: "#4c4f4c26"
 	}
 };
 
