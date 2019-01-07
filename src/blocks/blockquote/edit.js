@@ -275,27 +275,11 @@ class UAGBBlockQuote extends Component {
 				</PanelBody>
 			</Fragment>
 		)
-		return (
-			<Fragment>				
-				<BlockControls key='controls'>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( value ) => setAttributes( { align: value } ) }
-					/>
-				</BlockControls>
-				<InspectorControls>
-					{ skin_settings }
-					{ seperatorSettings }
-					<PanelBody title={ __( "Social Icon" ) }
-						initialOpen={ false }>
-						<ToggleControl
-							label={ __( "Enable Twitter Icon" ) }
-							checked={ enableTweet }
-							onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
-						/>						
-					</PanelBody>
-					<PanelBody
-						title={ __( "Typography" ) }
+
+		const Typography =(
+			<Fragment>
+				<PanelBody
+						title={ __( "Content" ) }
 						initialOpen={ false }>						
 						<RangeControl
 							label={ __( "Content Font Size" ) }
@@ -355,8 +339,12 @@ class UAGBBlockQuote extends Component {
 						] }
 					>
 					</PanelColorSettings>
+			</Fragment>
+		)
 
-					<PanelBody
+		const spacing_settings =(
+			<Fragment>
+				<PanelBody
 						title={ __( "Spacing" ) }
 						initialOpen={ false }>
 						<RangeControl
@@ -379,6 +367,36 @@ class UAGBBlockQuote extends Component {
 						/>			
 						
 					</PanelBody>
+			</Fragment>
+		)
+
+		const twitter_settings =(
+			<Fragment>
+				<PanelBody title={ __( "Social Icon" ) }
+					initialOpen={ false }>
+					<ToggleControl
+						label={ __( "Enable Twitter Icon" ) }
+						checked={ enableTweet }
+						onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
+					/>						
+				</PanelBody>	
+			</Fragment>
+			)
+
+		return (
+			<Fragment>				
+				<BlockControls key='controls'>
+					<AlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => setAttributes( { align: value } ) }
+					/>
+				</BlockControls>
+				<InspectorControls>
+					{ skin_settings }
+					{ Typography }
+					{ seperatorSettings }
+					{ twitter_settings }					
+					{ spacing_settings }					
 				</InspectorControls>
 				<div
 					className = { classnames(
@@ -420,7 +438,7 @@ class UAGBBlockQuote extends Component {
 					   <footer>
 
 					   		{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
-					   		
+
 					      	<RichText
 								tagName="cite"
 								placeholder={ __( "Write Content" ) }

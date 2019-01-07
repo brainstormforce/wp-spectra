@@ -81,28 +81,18 @@
 	    text-align:center;
 	    display: inline-block;
 	}
-	/*.uagb-quote__style-style_2 .uagb-quote__icon:before {		
-	    width: calc(1px*60);
-	    height: calc(1px*60);
-	    line-height: calc(1px*100);
-	    
+	.uagb-quote__separator-parent{
+		display: -webkit-box;
+	    display: -ms-flexbox;
+	    -js-display: flex;
+	    display: -webkit-flex;
+	    display: -moz-box;
+	    display: flex;
+	    -webkit-box-pack: start;
+		-ms-flex-pack: start;
+		-webkit-justify-content: flex-start;
+		-moz-box-pack: start;
+		justify-content: flex-start;
 	}
-	.uagb-quote__style-style_3 .uagb-quote__icon:before {
-	    color: #0693e3;
-	    font-size: calc(1px*100);
-	    display: block;
-	    position: relative;
-	    height: calc(1px*65);
-	    width: calc(1px*65);
-	    max-width: calc(1px*65);
-	    overflow: hidden;
-	    margin: 0;
-	    background: #00800047;
-	    left: 50%;
-	    transform: translate(-50%, -50%);
-	    border-radius: 50%;
-	    text-align:center;
-	    display: inline-block;
-	}	*/
 		
 }

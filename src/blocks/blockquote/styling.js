@@ -38,6 +38,15 @@ function styling( props ) {
 		seperatorSpace,
 	} = props.attributes
 
+	var content_align ="center"
+
+	if( align == 'left' ){
+		content_align =" flex-start"
+	}
+	if( align == 'right' ){
+		content_align =" flex-end"
+	}
+
 	var selectors = {
 		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSize + "px",
@@ -96,6 +105,9 @@ function styling( props ) {
 		" .uagb-quote__separator-parent":{
 			"margin-bottom":seperatorSpace+"px"
 		},	
+		" .uagb-quote__separator-parent":{
+			"justify-content":content_align
+		}
 	}
 	
 
