@@ -122,6 +122,26 @@ const attributes = {
 		type: "string",
 		default: "#4c4f4c26"
 	},
+	seperatorStyle: {
+		type: "string",
+		default: "solid",
+	},
+	seperatorColor: {
+		type: "string",
+		default: "#333",
+	},
+	seperatorWidth :{
+		type: "number",
+		default : 100
+	},
+	seperatorThickness :{
+		type: "number",
+		default : 2
+	},
+	seperatorSpace:{
+		type: "number",
+		default : 10
+	}
 }
 
 export default attributes

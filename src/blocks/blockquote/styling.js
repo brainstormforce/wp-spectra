@@ -31,6 +31,11 @@ function styling( props ) {
 		quoteGap,
 		quoteBgSize,
 		quoteBgColor,
+		seperatorWidth,
+		seperatorThickness,
+		seperatorColor,
+		seperatorStyle,
+		seperatorSpace,
 	} = props.attributes
 
 	var selectors = {
@@ -81,6 +86,15 @@ function styling( props ) {
 		},		
 		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content-wrap":{
 			"margin-top": "-"+(quoteSize/2)+"px",
+		},
+		" .uagb-quote__separator":{
+			"width" : seperatorWidth+"%",
+			"border-top-width" : seperatorThickness+"px",
+			"border-top-color": seperatorColor,
+			"border-top-style": seperatorStyle,
+		},	
+		" .uagb-quote__separator-parent":{
+			"margin-bottom":seperatorSpace+"px"
 		},	
 	}
 	

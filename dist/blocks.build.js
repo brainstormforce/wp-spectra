@@ -62395,10 +62395,10 @@ var attributes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_blocks_uagb_controls_block_icons__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/block-icons */ 1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(/*! ./edit */ 396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 400);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__editor_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__style_scss__);
 /**
  * BLOCK: Quote
@@ -62484,7 +62484,8 @@ registerBlockType("uagb/blockquote", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__dist_blocks_uagb_controls_UAGBIcon__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/UAGBIcon */ 9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__styling__ = __webpack_require__(/*! ./styling */ 397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Seperator__ = __webpack_require__(/*! ./components/Seperator */ 397);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styling__ = __webpack_require__(/*! ./styling */ 398);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62497,6 +62498,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 // Import icon.
+
 
 
 
@@ -62573,13 +62575,18 @@ var UAGBBlockQuote = function (_Component) {
 			    quoteSize = attributes.quoteSize,
 			    quoteBgSize = attributes.quoteBgSize,
 			    quoteGap = attributes.quoteGap,
-			    quoteStyle = attributes.quoteStyle;
+			    quoteStyle = attributes.quoteStyle,
+			    seperatorWidth = attributes.seperatorWidth,
+			    seperatorThickness = attributes.seperatorThickness,
+			    seperatorColor = attributes.seperatorColor,
+			    seperatorStyle = attributes.seperatorStyle,
+			    seperatorSpace = attributes.seperatorSpace;
 
 			// Add CSS.
 
 			var element = document.getElementById("uagb-blockquote-style-" + this.props.clientId);
 			if (null != element && "undefined" != typeof element) {
-				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_3__styling__["a" /* default */])(this.props);
+				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_4__styling__["a" /* default */])(this.props);
 			}
 
 			var border_settings = wp.element.createElement(
@@ -62747,6 +62754,83 @@ var UAGBBlockQuote = function (_Component) {
 				)
 			);
 
+			// Seperator settings.
+			var seperatorSettings = wp.element.createElement(
+				Fragment,
+				null,
+				wp.element.createElement(
+					PanelBody,
+					{
+						title: __("Seperator"),
+						initialOpen: false },
+					wp.element.createElement(SelectControl, {
+						label: __("Style"),
+						value: seperatorStyle,
+						onChange: function onChange(value) {
+							return setAttributes({ seperatorStyle: value });
+						},
+						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
+					}),
+					"none" !== seperatorStyle && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							Fragment,
+							null,
+							wp.element.createElement(
+								"p",
+								{ className: "uagb-setting-label" },
+								__("Seperator Color"),
+								wp.element.createElement(
+									"span",
+									{ className: "components-base-control__label" },
+									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: seperatorColor } })
+								)
+							),
+							wp.element.createElement(ColorPalette, {
+								value: seperatorColor,
+								onChange: function onChange(colorValue) {
+									return setAttributes({ seperatorColor: colorValue });
+								},
+								allowReset: true
+							})
+						),
+						wp.element.createElement(RangeControl, {
+							label: __("Thickness"),
+							value: seperatorThickness,
+							onChange: function onChange(value) {
+								return setAttributes({ seperatorThickness: value });
+							},
+							min: 0,
+							max: 10,
+							beforeIcon: "",
+							allowReset: true
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Width"),
+							value: seperatorWidth,
+							onChange: function onChange(value) {
+								return setAttributes({ seperatorWidth: value });
+							},
+							min: 0,
+							max: 100,
+							beforeIcon: "",
+							allowReset: true
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Gap between Author and Seperator"),
+							value: seperatorSpace,
+							onChange: function onChange(value) {
+								return setAttributes({ seperatorSpace: value });
+							},
+							min: 0,
+							max: 100,
+							beforeIcon: "",
+							allowReset: true
+						})
+					)
+				)
+			);
 			return wp.element.createElement(
 				Fragment,
 				null,
@@ -62764,6 +62848,7 @@ var UAGBBlockQuote = function (_Component) {
 					InspectorControls,
 					null,
 					skin_settings,
+					seperatorSettings,
 					wp.element.createElement(
 						PanelBody,
 						{ title: __("Social Icon"),
@@ -62916,6 +63001,7 @@ var UAGBBlockQuote = function (_Component) {
 								wp.element.createElement(
 									"footer",
 									null,
+									"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Seperator__["a" /* default */], { attributes: attributes }),
 									wp.element.createElement(RichText, {
 										tagName: "cite",
 										placeholder: __("Write Content"),
@@ -62980,6 +63066,52 @@ var UAGBBlockQuote = function (_Component) {
 
 /***/ }),
 /* 397 */
+/*!*******************************************************!*\
+  !*** ./src/blocks/blockquote/components/Seperator.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Seperator = function (_React$Component) {
+	_inherits(Seperator, _React$Component);
+
+	function Seperator() {
+		_classCallCheck(this, Seperator);
+
+		return _possibleConstructorReturn(this, (Seperator.__proto__ || Object.getPrototypeOf(Seperator)).apply(this, arguments));
+	}
+
+	_createClass(Seperator, [{
+		key: "render",
+		value: function render() {
+			var attributes = this.props.attributes;
+
+
+			return wp.element.createElement(
+				"div",
+				{ className: "uagb-quote__separator-parent" },
+				wp.element.createElement("div", { className: "uagb-quote__separator" })
+			);
+		}
+	}]);
+
+	return Seperator;
+}(React.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Seperator);
+
+/***/ }),
+/* 398 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/styling.js ***!
   \******************************************/
@@ -63019,7 +63151,12 @@ function styling(props) {
 	    quoteSize = _props$attributes.quoteSize,
 	    quoteGap = _props$attributes.quoteGap,
 	    quoteBgSize = _props$attributes.quoteBgSize,
-	    quoteBgColor = _props$attributes.quoteBgColor;
+	    quoteBgColor = _props$attributes.quoteBgColor,
+	    seperatorWidth = _props$attributes.seperatorWidth,
+	    seperatorThickness = _props$attributes.seperatorThickness,
+	    seperatorColor = _props$attributes.seperatorColor,
+	    seperatorStyle = _props$attributes.seperatorStyle,
+	    seperatorSpace = _props$attributes.seperatorSpace;
 
 
 	var selectors = {
@@ -63070,6 +63207,15 @@ function styling(props) {
 		},
 		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content-wrap": {
 			"margin-top": "-" + quoteSize / 2 + "px"
+		},
+		" .uagb-quote__separator": {
+			"width": seperatorWidth + "%",
+			"border-top-width": seperatorThickness + "px",
+			"border-top-color": seperatorColor,
+			"border-top-style": seperatorStyle
+		},
+		" .uagb-quote__separator-parent": {
+			"margin-bottom": seperatorSpace + "px"
 		}
 	};
 
@@ -63098,7 +63244,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 398 */
+/* 399 */
 /*!*********************************************!*\
   !*** ./src/blocks/blockquote/attributes.js ***!
   \*********************************************/
@@ -63230,13 +63376,33 @@ var attributes = {
 	quoteBgColor: {
 		type: "string",
 		default: "#4c4f4c26"
+	},
+	seperatorStyle: {
+		type: "string",
+		default: "solid"
+	},
+	seperatorColor: {
+		type: "string",
+		default: "#333"
+	},
+	seperatorWidth: {
+		type: "number",
+		default: 100
+	},
+	seperatorThickness: {
+		type: "number",
+		default: 2
+	},
+	seperatorSpace: {
+		type: "number",
+		default: 10
 	}
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (attributes);
 
 /***/ }),
-/* 399 */
+/* 400 */
 /*!*******************************************!*\
   !*** ./src/blocks/blockquote/editor.scss ***!
   \*******************************************/
@@ -63246,7 +63412,7 @@ var attributes = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 400 */
+/* 401 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/style.scss ***!
   \******************************************/

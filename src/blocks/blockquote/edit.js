@@ -4,6 +4,7 @@ import classnames from "classnames"
 // Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import Seperator from "./components/Seperator"
 import styling from "./styling"
 
 const { __ } = wp.i18n
@@ -65,6 +66,11 @@ class UAGBBlockQuote extends Component {
 			quoteBgSize,
 			quoteGap,
 			quoteStyle,
+			seperatorWidth,
+			seperatorThickness,
+			seperatorColor,
+			seperatorStyle,
+			seperatorSpace,
 		} = attributes
 
 		// Add CSS.
@@ -205,6 +211,70 @@ class UAGBBlockQuote extends Component {
 			</Fragment>
 		)
 
+		// Seperator settings.
+		const seperatorSettings = (
+			<Fragment>
+				<PanelBody
+					title={ __( "Seperator" ) }
+					initialOpen={ false } >
+
+					<SelectControl
+						label={ __( "Style" ) }
+						value={ seperatorStyle }
+						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+						] }
+					/>
+					{ "none" !== seperatorStyle &&
+					( <Fragment>
+						<Fragment>
+						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ seperatorColor }
+						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
+
+						<RangeControl
+							label={ __( "Thickness" ) }
+							value={ seperatorThickness }
+							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+							min={ 0 }
+							max={ 10 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Width" ) }
+							value={ seperatorWidth }
+							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Gap between Author and Seperator" ) }
+							value={ seperatorSpace }
+							onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon=""
+							allowReset
+						/>
+					</Fragment>
+					)
+					}
+
+				</PanelBody>
+			</Fragment>
+		)
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
@@ -215,6 +285,7 @@ class UAGBBlockQuote extends Component {
 				</BlockControls>
 				<InspectorControls>
 					{ skin_settings }
+					{ seperatorSettings }
 					<PanelBody title={ __( "Social Icon" ) }
 						initialOpen={ false }>
 						<ToggleControl
@@ -348,7 +419,9 @@ class UAGBBlockQuote extends Component {
 							/>
 					   <footer>
 
-					      <RichText
+					   		{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
+					   		
+					      	<RichText
 								tagName="cite"
 								placeholder={ __( "Write Content" ) }
 								value={ author }
@@ -371,6 +444,7 @@ class UAGBBlockQuote extends Component {
 								}
 								onRemove={ () => onReplace( [] ) }
 							/>
+							
 					      	{ enableTweet && <Fragment>
 							      <a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank">
 							      	<i className="fab fa-twitter"></i>
