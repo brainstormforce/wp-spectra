@@ -6,6 +6,10 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
+import Description from "./components/Description"
+import AuthorText from "./components/AuthorText"
+
+
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
@@ -897,56 +901,12 @@ class UAGBBlockQuote extends Component {
 						<blockquote className="uagb-blockquote">					  
 						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
 						<div className="uagb-blockquote__content-wrap">
-						   	<RichText
-								tagName="p"
-								placeholder={ __( "Write Content" ) }
-								value={ description_text }
-								className='uagb-blockquote__content'
-								multiline={ false }
-								onChange={ ( value ) => {
-									setAttributes( { description_text: value } ) }
-								}
-								onMerge={ mergeBlocks }
-								unstableOnSplit={
-									insertBlocksAfter ?
-										( before, after, ...blocks ) => {
-											setAttributes( { content: before } )
-											insertBlocksAfter( [
-												...blocks,
-												createBlock( "core/paragraph", { content: after } ),
-											] )
-										} :
-										undefined
-								}
-								onRemove={ () => onReplace( [] ) }
-							/>
+						   	{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  /> }
 
 						{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
 
 					   <footer>
-					      	<RichText
-								tagName="cite"
-								placeholder={ __( "Write Content" ) }
-								value={ author }
-								className='uagb-blockquote__author'
-								multiline={ false }
-								onChange={ ( value ) => {
-									setAttributes( { author: value } ) }
-								}
-								onMerge={ mergeBlocks }
-								unstableOnSplit={
-									insertBlocksAfter ?
-										( before, after, ...blocks ) => {
-											setAttributes( { content: before } )
-											insertBlocksAfter( [
-												...blocks,
-												createBlock( "core/paragraph", { content: after } ),
-											] )
-										} :
-										undefined
-								}
-								onRemove={ () => onReplace( [] ) }
-							/>
+					      	{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 							
 					      	{ enableTweet &&  <TweetButton attributes={attributes} /> }
 					   </footer>

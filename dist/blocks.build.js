@@ -62399,10 +62399,10 @@ var attributes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_blocks_uagb_controls_block_icons__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/block-icons */ 1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(/*! ./edit */ 396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 400);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 403);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__editor_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 402);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 404);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__style_scss__);
 /**
  * BLOCK: Quote
@@ -62490,8 +62490,10 @@ registerBlockType("uagb/blockquote", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Seperator__ = __webpack_require__(/*! ./components/Seperator */ 397);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TweetButton__ = __webpack_require__(/*! ./components/TweetButton */ 398);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styling__ = __webpack_require__(/*! ./styling */ 399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__dist_blocks_uagb_controls_block_icons__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/block-icons */ 1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_Description__ = __webpack_require__(/*! ./components/Description */ 399);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_AuthorText__ = __webpack_require__(/*! ./components/AuthorText */ 400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__styling__ = __webpack_require__(/*! ./styling */ 401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__dist_blocks_uagb_controls_block_icons__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/block-icons */ 1);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62504,6 +62506,9 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 // Import icon.
+
+
+
 
 
 
@@ -62668,7 +62673,7 @@ var UAGBBlockQuote = function (_Component) {
 
 			var element = document.getElementById("uagb-blockquote-style-" + this.props.clientId);
 			if (null != element && "undefined" != typeof element) {
-				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_5__styling__["a" /* default */])(this.props);
+				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_7__styling__["a" /* default */])(this.props);
 			}
 
 			var border_settings = wp.element.createElement(
@@ -63519,7 +63524,7 @@ var UAGBBlockQuote = function (_Component) {
 											return setAttributes({ quoteStyle: "style_1" });
 										}
 									},
-									__WEBPACK_IMPORTED_MODULE_6__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_1
+									__WEBPACK_IMPORTED_MODULE_8__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_1
 								)
 							)
 						),
@@ -63537,7 +63542,7 @@ var UAGBBlockQuote = function (_Component) {
 											return setAttributes({ quoteStyle: "style_2" });
 										}
 									},
-									__WEBPACK_IMPORTED_MODULE_6__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_2
+									__WEBPACK_IMPORTED_MODULE_8__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_2
 								)
 							)
 						),
@@ -63555,7 +63560,7 @@ var UAGBBlockQuote = function (_Component) {
 											return setAttributes({ quoteStyle: "style_3" });
 										}
 									},
-									__WEBPACK_IMPORTED_MODULE_6__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_3
+									__WEBPACK_IMPORTED_MODULE_8__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_3
 								)
 							)
 						)
@@ -63588,54 +63593,12 @@ var UAGBBlockQuote = function (_Component) {
 							wp.element.createElement(
 								"div",
 								{ className: "uagb-blockquote__content-wrap" },
-								wp.element.createElement(RichText, {
-									tagName: "p",
-									placeholder: __("Write Content"),
-									value: description_text,
-									className: "uagb-blockquote__content",
-									multiline: false,
-									onChange: function onChange(value) {
-										setAttributes({ description_text: value });
-									},
-									onMerge: mergeBlocks,
-									unstableOnSplit: insertBlocksAfter ? function (before, after) {
-										for (var _len = arguments.length, blocks = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
-											blocks[_key - 2] = arguments[_key];
-										}
-
-										setAttributes({ content: before });
-										insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
-									} : undefined,
-									onRemove: function onRemove() {
-										return onReplace([]);
-									}
-								}),
+								wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_Description__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props }),
 								"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Seperator__["a" /* default */], { attributes: attributes }),
 								wp.element.createElement(
 									"footer",
 									null,
-									wp.element.createElement(RichText, {
-										tagName: "cite",
-										placeholder: __("Write Content"),
-										value: author,
-										className: "uagb-blockquote__author",
-										multiline: false,
-										onChange: function onChange(value) {
-											setAttributes({ author: value });
-										},
-										onMerge: mergeBlocks,
-										unstableOnSplit: insertBlocksAfter ? function (before, after) {
-											for (var _len2 = arguments.length, blocks = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-												blocks[_key2 - 2] = arguments[_key2];
-											}
-
-											setAttributes({ content: before });
-											insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
-										} : undefined,
-										onRemove: function onRemove() {
-											return onReplace([]);
-										}
-									}),
+									wp.element.createElement(__WEBPACK_IMPORTED_MODULE_6__components_AuthorText__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props }),
 									enableTweet && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_TweetButton__["a" /* default */], { attributes: attributes })
 								)
 							)
@@ -63783,6 +63746,160 @@ var TweetButton = function (_React$Component) {
 
 /***/ }),
 /* 399 */
+/*!*********************************************************!*\
+  !*** ./src/blocks/blockquote/components/Description.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RichText = wp.editor.RichText;
+var __ = wp.i18n.__;
+var createBlock = wp.blocks.createBlock;
+
+var Description = function (_React$Component) {
+	_inherits(Description, _React$Component);
+
+	function Description() {
+		_classCallCheck(this, Description);
+
+		return _possibleConstructorReturn(this, (Description.__proto__ || Object.getPrototypeOf(Description)).apply(this, arguments));
+	}
+
+	_createClass(Description, [{
+		key: "render",
+		value: function render() {
+			var _props = this.props,
+			    attributes = _props.attributes,
+			    setAttributes = _props.setAttributes,
+			    props = _props.props;
+
+
+			if (setAttributes !== "not_set") {
+				return wp.element.createElement(RichText, {
+					tagName: "p",
+					value: attributes.description_text,
+					placeholder: __("Write a Description"),
+					className: "uagb-blockquote__content",
+					onChange: function onChange(value) {
+						return setAttributes({ description_text: value });
+					},
+					onMerge: props.mergeBlocks,
+					unstableOnSplit: props.insertBlocksAfter ? function (before, after) {
+						for (var _len = arguments.length, blocks = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+							blocks[_key - 2] = arguments[_key];
+						}
+
+						setAttributes({ content: before });
+						props.insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
+					} : undefined,
+					onRemove: function onRemove() {
+						return props.onReplace([]);
+					}
+				});
+			} else {
+				return wp.element.createElement(RichText.Content, {
+					tagName: "p",
+					value: attributes.description_text,
+					className: "uagb-blockquote__content"
+				});
+			}
+		}
+	}]);
+
+	return Description;
+}(React.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (Description);
+
+/***/ }),
+/* 400 */
+/*!********************************************************!*\
+  !*** ./src/blocks/blockquote/components/AuthorText.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var RichText = wp.editor.RichText;
+var __ = wp.i18n.__;
+var createBlock = wp.blocks.createBlock;
+
+var AuthorText = function (_React$Component) {
+	_inherits(AuthorText, _React$Component);
+
+	function AuthorText() {
+		_classCallCheck(this, AuthorText);
+
+		return _possibleConstructorReturn(this, (AuthorText.__proto__ || Object.getPrototypeOf(AuthorText)).apply(this, arguments));
+	}
+
+	_createClass(AuthorText, [{
+		key: "render",
+		value: function render() {
+			var _props = this.props,
+			    attributes = _props.attributes,
+			    setAttributes = _props.setAttributes,
+			    props = _props.props;
+
+
+			if (setAttributes !== "not_set") {
+				return wp.element.createElement(RichText, {
+					tagName: "cite",
+					value: attributes.author,
+					placeholder: __("Author Name"),
+					className: "uagb-blockquote__author",
+					onChange: function onChange(value) {
+						return setAttributes({ author: value });
+					},
+					onMerge: props.mergeBlocks,
+					unstableOnSplit: props.insertBlocksAfter ? function (before, after) {
+						for (var _len = arguments.length, blocks = Array(_len > 2 ? _len - 2 : 0), _key = 2; _key < _len; _key++) {
+							blocks[_key - 2] = arguments[_key];
+						}
+
+						setAttributes({ content: before });
+						props.insertBlocksAfter([].concat(blocks, [createBlock("core/paragraph", { content: after })]));
+					} : undefined,
+					onRemove: function onRemove() {
+						return props.onReplace([]);
+					}
+				});
+			} else {
+				return wp.element.createElement(RichText.Content, {
+					tagName: "cite",
+					value: attributes.author,
+					className: "uagb-blockquote__author"
+				});
+			}
+		}
+	}]);
+
+	return AuthorText;
+}(React.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (AuthorText);
+
+/***/ }),
+/* 401 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/styling.js ***!
   \******************************************/
@@ -64059,7 +64176,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 400 */
+/* 402 */
 /*!*********************************************!*\
   !*** ./src/blocks/blockquote/attributes.js ***!
   \*********************************************/
@@ -64316,7 +64433,7 @@ var attributes = {
 /* harmony default export */ __webpack_exports__["a"] = (attributes);
 
 /***/ }),
-/* 401 */
+/* 403 */
 /*!*******************************************!*\
   !*** ./src/blocks/blockquote/editor.scss ***!
   \*******************************************/
@@ -64326,7 +64443,7 @@ var attributes = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 402 */
+/* 404 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/style.scss ***!
   \******************************************/

@@ -30,7 +30,8 @@
 	}
 
 	.uagb-blockquote__content,
-	cite.uagb-blockquote__author {
+	cite.uagb-blockquote__author,
+	.uagb-blockquote i.fab.fa-twitter {
 	    font-style: normal;
 	}
 	.uagb-quote__style-style_3 .uagb-quote__icon {
@@ -43,10 +44,7 @@
 	    -webkit-box-shadow: none;
 	    box-shadow: none;
 	    text-decoration: none;
-	}
-	.uagb-blockquote i.fab.fa-twitter {
-	    font-style:normal;
-	}
+	}	
 	.uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button,
 	.uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button{
 		color: #fff;	
