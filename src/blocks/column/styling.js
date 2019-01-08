@@ -9,11 +9,31 @@ import inlineStyles from "./inline-styles"
 function styling( props ) {
 
 	const {
-		colWidth
+		colWidth,
+		topPadding,
+		bottomPadding,
+		leftPadding,
+		rightPadding,
+		topMargin,
+		bottomMargin,
+		leftMargin,
+		rightMargin
 	} = props.attributes
 
+	var style = {
+		"padding-top": topPadding + "px",
+		"padding-bottom": bottomPadding + "px",
+		"padding-left": leftPadding + "px",
+		"padding-right": rightPadding + "px",
+		"margin-top": topMargin + "px",
+		"margin-bottom": bottomMargin + "px",
+		"margin-left": leftMargin + "px",
+		"margin-right": rightMargin + "px",
+	}
+
 	var selectors = {
-		":before" : inlineStyles( props )
+		":before" : inlineStyles( props ),
+		" .uagb-column__inner-wrap" : style
 	}
 
 	var styling_css = ""

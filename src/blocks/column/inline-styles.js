@@ -6,14 +6,6 @@
 function inlineStyles( props, isEditor ) {
 
 	const {
-		leftPadding,
-		rightPadding,
-		topPadding,
-		bottomPadding,
-		topMargin,
-		bottomMargin,
-		leftMargin,
-		rightMargin,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
@@ -35,16 +27,7 @@ function inlineStyles( props, isEditor ) {
 		backgroundImageColor
 	} = props.attributes
 
-	var style = {
-		"padding-top": topPadding + "px",
-		"padding-bottom": bottomPadding + "px",
-		"padding-left": leftPadding + "px",
-		"padding-right": rightPadding + "px",
-		"margin-top": topMargin + "px",
-		"margin-bottom": bottomMargin + "px",
-		"margin-left": leftMargin + "px",
-		"margin-right": rightMargin + "px",
-	}
+	var style = {}
 
 	var position = backgroundPosition.replace( "-", " " )
 

@@ -138,6 +138,7 @@ class UAGBColumns extends Component {
 			contentWidth,
 			width,
 			tag,
+			columnGap,
 			leftPadding,
 			rightPadding,
 			topPadding,
@@ -271,6 +272,19 @@ class UAGBColumns extends Component {
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
+						<SelectControl
+							label={ __( "Column Gap" ) }
+							value={ columnGap }
+							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+							options={ [
+								{ value: "default", label: __( "Default (10px)" ) },
+								{ value: "nogap", label: __( "No Gap (0px)" ) },
+								{ value: "narrow", label: __( "Narrow (5px)" ) },
+								{ value: "extended", label: __( "Extended (15px)" ) },
+								{ value: "wide", label: __( "Wide (20px)" ) },
+								{ value: "wider", label: __( "Wider (30px)" ) }
+							] }
+						/>
 						<SelectControl
 							label={ __( "HTML Tag" ) }
 							value={ tag }
@@ -605,7 +619,8 @@ class UAGBColumns extends Component {
 						`uagb-columns__background-${backgroundType}`,
 						`uagb-columns__edit-${ active }`,
 						`uagb-columns__stack-${stack}`,
-						`uagb-columns__vAlign-${vAlign}`,
+						`uagb-columns__valign-${vAlign}`,
+						`uagb-columns__gap-${columnGap}`,
 						`align${ align }`
 					) }
 					id={ `uagb-columns-${this.props.clientId}` }

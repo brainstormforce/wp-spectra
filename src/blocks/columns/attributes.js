@@ -19,6 +19,10 @@ const attributes = {
 		type: "string",
 		default: "mobile"
 	},
+	columnGap: {
+		type: "string",
+		default: "default"
+	},
 	topPadding: {
 		type: "number",
 		default: 20

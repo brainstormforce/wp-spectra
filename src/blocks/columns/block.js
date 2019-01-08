@@ -53,7 +53,8 @@ registerBlockType( "uagb/columns", {
 			align,
 			columns,
 			stack,
-			vAlign
+			vAlign,
+			columnGap
 		} = props.attributes
 
 		const CustomTag = `${tag}`
@@ -65,7 +66,8 @@ registerBlockType( "uagb/columns", {
 					"uagb-columns__wrap",
 					`uagb-columns__background-${backgroundType}`,
 					`uagb-columns__stack-${stack}`,
-					`uagb-columns__vAlign-${vAlign}`,
+					`uagb-columns__valign-${vAlign}`,
+					`uagb-columns__gap-${columnGap}`,
 					`align${ align }`
 				) }
 				id={ `uagb-columns-${block_id}` }
