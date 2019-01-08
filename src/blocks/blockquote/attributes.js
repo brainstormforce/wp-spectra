@@ -145,7 +145,7 @@ const attributes = {
 	},
 	quoteBgColor: {
 		type: "string",
-		default: "#4c4f4c26"
+		default: "#333"
 	},
 	seperatorStyle: {
 		type: "string",
@@ -169,7 +169,7 @@ const attributes = {
 	},
 	backgroundType: {
 		type: "string",
-		default : "color"
+		default : "none"
 	},
 	backgroundImage: {
 		type: "object",
@@ -224,8 +224,23 @@ const attributes = {
 	},
 	contentPadding: {
 		type: "number",
-		default: 0
+		default: 10
 	},
+	blockBorderStyle : {
+		type: "string",
+		default: "none"
+	},
+	blockBorderWidth : {
+		type: "number",
+		default: 1
+	},
+	blockBorderRadius : {
+		type: "number"
+	},
+	blockBorderColor : {
+		type: "string",
+		default: "#abb8c3"
+	}
 }
 
 export default attributes

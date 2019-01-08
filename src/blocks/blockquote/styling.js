@@ -58,6 +58,10 @@ function styling( props ) {
 		gradientType,
 		gradientAngle,
 		contentPadding,
+		blockBorderStyle,
+		blockBorderWidth,
+		blockBorderRadius,
+		blockBorderColor,
 	} = props.attributes
 
 	var content_align ="center"
@@ -216,6 +220,7 @@ function styling( props ) {
 			"background-color" : backgroundColor,
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5
 		}	
+			
 	} else if ( "gradient" === backgroundType ) {
 
 		var style = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
@@ -225,11 +230,19 @@ function styling( props ) {
 
 		selectors[" .uagb-blockquote__wrap"] = {
 			"background-color" : 'transparent',
-			"background-image" : style
-		}		
-
+			"background-image" : style,
+			"border-radius" : blockBorderRadius + "px",
+		}	
 	} 
 
+	// Border css
+	if ( blockBorderStyle != "none" ) {
+		selectors[" .uagb-quote__border"] = {
+			"border-style" : blockBorderStyle,
+			"border-width" : blockBorderWidth+ "px",
+			"border-color" : blockBorderColor
+		}	
+	}
 
 	var styling_css = ""
 

@@ -12,7 +12,6 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 const { __ } = wp.i18n
 
 const {
-	BlockAlignmentToolbar,
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
@@ -139,7 +138,11 @@ class UAGBBlockQuote extends Component {
 			gradientAngle,
 			backgroundOpacity,
 			backgroundImageColor,
-			contentPadding
+			contentPadding,
+			blockBorderStyle,
+			blockBorderWidth,
+			blockBorderRadius,
+			blockBorderColor,
 		} = attributes
 
 		// Add CSS.
@@ -756,6 +759,56 @@ class UAGBBlockQuote extends Component {
 			</Fragment>
 		)
 
+		const block_border = (<Fragment>
+					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Border Style" ) }
+							value={ blockBorderStyle }
+							onChange={ ( value ) => setAttributes( { blockBorderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "groove", label: __( "Groove" ) },
+								{ value: "inset", label: __( "Inset" ) },
+								{ value: "outset", label: __( "Outset" ) },
+								{ value: "ridge", label: __( "Ridge" ) },
+							] }
+						/>
+						{ "none" != blockBorderStyle && (
+							<RangeControl
+								label={ __( "Border Width" ) }
+								value={ blockBorderWidth }
+								onChange={ ( value ) => setAttributes( { blockBorderWidth: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+						) }
+						<RangeControl
+							label={ __( "Border Radius" ) }
+							value={ blockBorderRadius }
+							onChange={ ( value ) => setAttributes( { blockBorderRadius: value } ) }
+							min={ 0 }
+							max={ 1000 }
+							allowReset
+						/>
+						{ "none" != blockBorderStyle && (
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: blockBorderColor }} ></span></span></p>
+								<ColorPalette
+									value={ blockBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { blockBorderColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						) }
+					</PanelBody>
+				</Fragment>
+			)
+
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
@@ -820,7 +873,8 @@ class UAGBBlockQuote extends Component {
 					{ Typography }
 					{ seperatorSettings }
 					{ twitter_settings }	
-					{ background_settings }				
+					{ background_settings }	
+					{ skinStyle === "quotation" && block_border }			
 					{ spacing_settings }					
 				</InspectorControls>
 				<div
@@ -832,9 +886,10 @@ class UAGBBlockQuote extends Component {
 					<div className = { classnames(
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
-						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
+						( skinStyle === "quotation" ) ? ` uagb-quote__style-${quoteStyle}` : "",
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin}` : "",
 						( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
+						( skinStyle !== "border" ) ? `uagb-quote__border` : "",
 					) } >
 						
 						{ backgroundType !== 'none' && <div className= "uagb-quote__overlay"></div> }
