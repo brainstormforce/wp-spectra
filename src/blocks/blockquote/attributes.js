@@ -96,7 +96,7 @@ const attributes = {
 	},	
 	descSpace :{
 		type: "number",
-		default: 10,
+		default: 20,
 	},
 	authorSpace: {
 		type: "number",
@@ -134,10 +134,11 @@ const attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 50,
+		default: 60,
 	},
 	quoteGap : {
 		type: "number",
+		default: 15,
 	},
 	quoteBgSize: {
 		type: "number",
@@ -152,7 +153,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: "string",
-		default: "#333",
+		default: "#abb8c3",
 	},
 	seperatorWidth :{
 		type: "number",
@@ -164,7 +165,7 @@ const attributes = {
 	},
 	seperatorSpace:{
 		type: "number",
-		default : 10
+		default : 20
 	}
 }
 

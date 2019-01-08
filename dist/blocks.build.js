@@ -63086,7 +63086,7 @@ var UAGBBlockQuote = function (_Component) {
 						Fragment,
 						null,
 						wp.element.createElement(RangeControl, {
-							label: __("Space between Icon and Text"),
+							label: __("Space between Tweet Icon and Text"),
 							value: tweetIconSpacing,
 							onChange: function onChange(value) {
 								return setAttributes({ tweetIconSpacing: value });
@@ -63406,8 +63406,6 @@ var TweetButton = function (_React$Component) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 /**
  * Set inline styles.
  * @param  {object} props - The block object.
@@ -63462,7 +63460,7 @@ function styling(props) {
 		content_align = " flex-end";
 	}
 
-	var selectors = _defineProperty({
+	var selectors = {
 		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSize + "px",
 			"color": descColor,
@@ -63518,11 +63516,10 @@ function styling(props) {
 			"border-top-style": seperatorStyle
 		},
 		" .uagb-quote__separator-parent": {
+			"justify-content": content_align,
 			"margin-bottom": seperatorSpace + "px"
 		}
-	}, " .uagb-quote__separator-parent", {
-		"justify-content": content_align
-	});
+	};
 
 	if (enableTweet) {
 		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
@@ -63691,7 +63688,7 @@ var attributes = {
 	},
 	descSpace: {
 		type: "number",
-		default: 10
+		default: 20
 	},
 	authorSpace: {
 		type: "number"
@@ -63729,10 +63726,11 @@ var attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 50
+		default: 60
 	},
 	quoteGap: {
-		type: "number"
+		type: "number",
+		default: 15
 	},
 	quoteBgSize: {
 		type: "number"
@@ -63747,7 +63745,7 @@ var attributes = {
 	},
 	seperatorColor: {
 		type: "string",
-		default: "#333"
+		default: "#abb8c3"
 	},
 	seperatorWidth: {
 		type: "number",
@@ -63759,7 +63757,7 @@ var attributes = {
 	},
 	seperatorSpace: {
 		type: "number",
-		default: 10
+		default: 20
 	}
 };
 

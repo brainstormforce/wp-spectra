@@ -107,12 +107,10 @@ function styling( props ) {
 			"border-top-width" : seperatorThickness+"px",
 			"border-top-color": seperatorColor,
 			"border-top-style": seperatorStyle,
-		},	
+		},				
 		" .uagb-quote__separator-parent":{
+			"justify-content":content_align,
 			"margin-bottom":seperatorSpace+"px"
-		},	
-		" .uagb-quote__separator-parent":{
-			"justify-content":content_align
 		}
 	}
 	

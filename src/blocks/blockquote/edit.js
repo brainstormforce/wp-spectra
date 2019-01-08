@@ -453,7 +453,7 @@ class UAGBBlockQuote extends Component {
 					}	
 					{ (enableTweet && iconView == 'icon_text') && <Fragment>
 						<RangeControl
-							label={ __( "Space between Icon and Text" ) }
+							label={ __( "Space between Tweet Icon and Text" ) }
 							value={ tweetIconSpacing }
 							onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
 							min={ 0 }
