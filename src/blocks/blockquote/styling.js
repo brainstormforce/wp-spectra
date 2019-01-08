@@ -12,12 +12,8 @@ function styling( props ) {
 		align,	
 		authorColor,
 		descColor,
-		enableTweet,
-		tweetBtnColor,
-		tweetBtnHoverColor,
 		descFontSize,
 		authorFontSize,
-		tweetBtnFontSize,	
 		descSpace,
 		authorSpace,	
 		stack,
@@ -36,6 +32,16 @@ function styling( props ) {
 		seperatorColor,
 		seperatorStyle,
 		seperatorSpace,
+		enableTweet,
+		tweetBtnFontSize,
+		tweetLinkColor,
+		tweetBtnColor,
+		tweetBtnBgColor,
+		tweetBtnHoverColor,
+		tweetBtnBgHoverColor,
+		tweetBtnHrPadding,
+		tweetBtnVrPadding,
+		tweetIconSpacing,
 	} = props.attributes
 
 	var content_align ="center"
@@ -110,6 +116,41 @@ function styling( props ) {
 		}
 	}
 	
+	if( enableTweet ){
+		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetLinkColor,		
+		}
+
+		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetBtnColor,		
+			"background-color": tweetBtnBgColor,	
+			"padding-left": tweetBtnHrPadding + "px",
+			"padding-right": tweetBtnHrPadding + "px",
+			"padding-top": tweetBtnVrPadding + "px",
+			"padding-bottom": tweetBtnVrPadding + "px",	
+		}
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetBtnColor,		
+			"background-color": tweetBtnBgColor,	
+			"padding-left": tweetBtnHrPadding + "px",
+			"padding-right": tweetBtnHrPadding + "px",
+			"padding-top": tweetBtnVrPadding + "px",
+			"padding-bottom": tweetBtnVrPadding + "px",	
+		}	
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = {
+			"border-right-color": tweetBtnBgColor,		
+		}	
+
+		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button i"] = {
+			"margin-right": tweetIconSpacing + "px",
+		}	
+
+	}
 
 	var styling_css = ""
 

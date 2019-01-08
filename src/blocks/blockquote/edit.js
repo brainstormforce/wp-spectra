@@ -49,7 +49,6 @@ class UAGBBlockQuote extends Component {
 			descColor,			
 			descFontSize,
 			authorFontSize,
-			tweetBtnFontSize,	
 			descSpace,
 			authorSpace,	
 			stack,
@@ -70,8 +69,15 @@ class UAGBBlockQuote extends Component {
 			seperatorStyle,
 			seperatorSpace,
 			enableTweet,
+			tweetLinkColor,
 			tweetBtnColor,
 			tweetBtnHoverColor,
+			tweetBtnBgColor,
+			tweetBtnBgHoverColor,
+			tweetBtnFontSize,
+			tweetBtnHrPadding,
+			tweetBtnVrPadding,
+			tweetIconSpacing,
 			iconView,
 			iconSkin,
 			iconLabel,
@@ -291,7 +297,7 @@ class UAGBBlockQuote extends Component {
 							label={ __( "Content Font Size" ) }
 							value={ descFontSize }
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 1 }
+							min={ 0 }
 							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
@@ -301,22 +307,25 @@ class UAGBBlockQuote extends Component {
 							label={ __( "Author Font Size" ) }
 							value={ authorFontSize }
 							onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
-							min={ 1 }
+							min={ 0 }
 							max={ 100 }
 							beforeIcon="editor-textcolor"
 							allowReset
 							initialPosition={16}
 						/>
-						<RangeControl
-							label={ __( "Tweet Font Size" ) }
-							value={ tweetBtnFontSize }
-							onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={16}
-						/>						
+						{ enableTweet && <Fragment>
+							<RangeControl
+								label={ __( "Button Font Size" ) }
+								value={ tweetBtnFontSize }
+								onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
+								min={ 0 }
+								max={ 100 }
+								beforeIcon="editor-textcolor"
+								allowReset
+								initialPosition={16}
+							/>
+							</Fragment>
+						}					
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
@@ -331,19 +340,69 @@ class UAGBBlockQuote extends Component {
 								value: authorColor,
 								onChange: ( colorValue ) => setAttributes( { authorColor: colorValue } ),
 								label: __( "Author" ),
-							},
-							{
-								value: tweetBtnColor,
-								onChange: ( colorValue ) => setAttributes( { tweetBtnColor: colorValue } ),
-								label: __( "Tweet Button Color" ),
 							},							
-							{
-								value: tweetBtnHoverColor,
-								onChange: ( colorValue ) => setAttributes( { tweetBtnHoverColor: colorValue } ),
-								label: __( "Tweet Button Hover" ),
-							},
 						] }
 					>
+					{ enableTweet && iconSkin == 'link' && <Fragment>
+							<p className="uagb-setting-label">{ __( "Tweet Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetLinkColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetLinkColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetLinkColor: colorValue } ) }
+						        allowReset
+						    />
+
+						    <p className="uagb-setting-label">{ __( "Tweet Hover Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnHoverColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetBtnHoverColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetBtnHoverColor: colorValue } ) }
+						        allowReset
+						    />
+
+						  </Fragment>
+					}
+					{ (enableTweet && iconSkin !== 'link') && <Fragment>
+							<p className="uagb-setting-label">{ __( "Button Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetBtnColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetBtnColor: colorValue } ) }
+						        allowReset
+						    />
+
+						    <p className="uagb-setting-label">{ __( "Button Background Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnBgColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetBtnBgColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetBtnBgColor: colorValue } ) }
+						        allowReset
+						    />
+
+						    <p className="uagb-setting-label">{ __( "Button Hover Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnHoverColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetBtnHoverColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetBtnHoverColor: colorValue } ) }
+						        allowReset
+						    />
+
+						    <p className="uagb-setting-label">{ __( "Button Background Hover Color" ) }
+							<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnBgHoverColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ tweetBtnBgHoverColor }
+						        onChange={ ( colorValue ) => setAttributes( { tweetBtnBgHoverColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
+					}
+					
 					</PanelColorSettings>
 			</Fragment>
 		)
@@ -371,7 +430,39 @@ class UAGBBlockQuote extends Component {
 							allowReset
 							initialPosition={0}
 						/>			
-						
+					{ enableTweet && iconSkin !== 'link' && <Fragment>
+						<RangeControl
+							label={ __( "Button Horizontal Padding" ) }
+							value={ tweetBtnHrPadding }
+							onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+							initialPosition={5}
+						/>	
+						<RangeControl
+							label={ __( "Button Vertical Padding" ) }
+							value={ tweetBtnVrPadding }
+							onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+							initialPosition={5}
+						/>	
+						</Fragment>
+					}	
+					{ (enableTweet && iconView == 'icon_text') && <Fragment>
+						<RangeControl
+							label={ __( "Space between Icon and Text" ) }
+							value={ tweetIconSpacing }
+							onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
+							min={ 0 }
+							max={ 20 }
+							allowReset
+							initialPosition={5}
+						/>	
+						</Fragment>
+					}
 					</PanelBody>
 			</Fragment>
 		)

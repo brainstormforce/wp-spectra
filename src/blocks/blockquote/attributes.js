@@ -31,7 +31,7 @@ const attributes = {
 	},
 	enableTweet:{
 		type: "boolean",
-		default: false,
+		default: true,
 	},
 	iconView: {
 		type: "string",
@@ -53,17 +53,41 @@ const attributes = {
 		type: "string",
 		default: ""
 	},
+	tweetLinkColor: {
+		type: "string",
+		default: "#1DA1F2"
+	},
 	tweetBtnColor: {
 		type: "string",
-		default: "#333"
+		default: "#fff"
+	},
+	tweetBtnBgColor: {
+		type: "string",
+		default: "#1DA1F2"
 	},
 	tweetBtnHoverColor: {
 		type: "string"
+	},
+	tweetBtnBgHoverColor: {
+		type: "string",
+		default: "#1DA1F2"
 	},
 	tweetBtnFontSize: {
 		type: "number",
 		default: 15
 	},	
+	tweetBtnHrPadding: {
+		type: "number",
+		default: 14
+	},
+	tweetBtnVrPadding: {
+		type: "number",
+		default: 10
+	},
+	tweetIconSpacing: {
+		type: "number",
+		default: 10
+	},
 	descFontSize: {
 		type: "number",
 	},

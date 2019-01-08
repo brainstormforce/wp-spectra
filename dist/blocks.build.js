@@ -62560,7 +62560,6 @@ var UAGBBlockQuote = function (_Component) {
 			    descColor = attributes.descColor,
 			    descFontSize = attributes.descFontSize,
 			    authorFontSize = attributes.authorFontSize,
-			    tweetBtnFontSize = attributes.tweetBtnFontSize,
 			    descSpace = attributes.descSpace,
 			    authorSpace = attributes.authorSpace,
 			    stack = attributes.stack,
@@ -62581,8 +62580,15 @@ var UAGBBlockQuote = function (_Component) {
 			    seperatorStyle = attributes.seperatorStyle,
 			    seperatorSpace = attributes.seperatorSpace,
 			    enableTweet = attributes.enableTweet,
+			    tweetLinkColor = attributes.tweetLinkColor,
 			    tweetBtnColor = attributes.tweetBtnColor,
 			    tweetBtnHoverColor = attributes.tweetBtnHoverColor,
+			    tweetBtnBgColor = attributes.tweetBtnBgColor,
+			    tweetBtnBgHoverColor = attributes.tweetBtnBgHoverColor,
+			    tweetBtnFontSize = attributes.tweetBtnFontSize,
+			    tweetBtnHrPadding = attributes.tweetBtnHrPadding,
+			    tweetBtnVrPadding = attributes.tweetBtnVrPadding,
+			    tweetIconSpacing = attributes.tweetIconSpacing,
 			    iconView = attributes.iconView,
 			    iconSkin = attributes.iconSkin,
 			    iconLabel = attributes.iconLabel,
@@ -62853,7 +62859,7 @@ var UAGBBlockQuote = function (_Component) {
 						onChange: function onChange(value) {
 							return setAttributes({ descFontSize: value });
 						},
-						min: 1,
+						min: 0,
 						max: 100,
 						beforeIcon: "editor-textcolor",
 						allowReset: true,
@@ -62865,54 +62871,159 @@ var UAGBBlockQuote = function (_Component) {
 						onChange: function onChange(value) {
 							return setAttributes({ authorFontSize: value });
 						},
-						min: 1,
+						min: 0,
 						max: 100,
 						beforeIcon: "editor-textcolor",
 						allowReset: true,
 						initialPosition: 16
 					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Tweet Font Size"),
-						value: tweetBtnFontSize,
-						onChange: function onChange(value) {
-							return setAttributes({ tweetBtnFontSize: value });
-						},
-						min: 1,
-						max: 100,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: 16
-					})
+					enableTweet && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Button Font Size"),
+							value: tweetBtnFontSize,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetBtnFontSize: value });
+							},
+							min: 0,
+							max: 100,
+							beforeIcon: "editor-textcolor",
+							allowReset: true,
+							initialPosition: 16
+						})
+					)
 				),
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: false,
-					colorSettings: [{
-						value: descColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ descColor: colorValue });
-						},
-						label: __("Content Color")
-					}, {
-						value: authorColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ authorColor: colorValue });
-						},
-						label: __("Author")
-					}, {
-						value: tweetBtnColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ tweetBtnColor: colorValue });
-						},
-						label: __("Tweet Button Color")
-					}, {
-						value: tweetBtnHoverColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ tweetBtnHoverColor: colorValue });
-						},
-						label: __("Tweet Button Hover")
-					}]
-				})
+				wp.element.createElement(
+					PanelColorSettings,
+					{
+						title: __("Color Settings"),
+						initialOpen: false,
+						colorSettings: [{
+							value: descColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ descColor: colorValue });
+							},
+							label: __("Content Color")
+						}, {
+							value: authorColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ authorColor: colorValue });
+							},
+							label: __("Author")
+						}]
+					},
+					enableTweet && iconSkin == 'link' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Tweet Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetLinkColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetLinkColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetLinkColor: colorValue });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Tweet Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnHoverColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetBtnHoverColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetBtnHoverColor: colorValue });
+							},
+							allowReset: true
+						})
+					),
+					enableTweet && iconSkin !== 'link' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Button Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetBtnColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetBtnColor: colorValue });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Button Background Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnBgColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetBtnBgColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetBtnBgColor: colorValue });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Button Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnHoverColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetBtnHoverColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetBtnHoverColor: colorValue });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Button Background Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnBgHoverColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: tweetBtnBgHoverColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ tweetBtnBgHoverColor: colorValue });
+							},
+							allowReset: true
+						})
+					)
+				)
 			);
 
 			var spacing_settings = wp.element.createElement(
@@ -62944,7 +63055,48 @@ var UAGBBlockQuote = function (_Component) {
 						max: 50,
 						allowReset: true,
 						initialPosition: 0
-					})
+					}),
+					enableTweet && iconSkin !== 'link' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Button Horizontal Padding"),
+							value: tweetBtnHrPadding,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetBtnHrPadding: value });
+							},
+							min: 0,
+							max: 50,
+							allowReset: true,
+							initialPosition: 5
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Button Vertical Padding"),
+							value: tweetBtnVrPadding,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetBtnVrPadding: value });
+							},
+							min: 0,
+							max: 50,
+							allowReset: true,
+							initialPosition: 5
+						})
+					),
+					enableTweet && iconView == 'icon_text' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Space between Icon and Text"),
+							value: tweetIconSpacing,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetIconSpacing: value });
+							},
+							min: 0,
+							max: 20,
+							allowReset: true,
+							initialPosition: 5
+						})
+					)
 				)
 			);
 
@@ -63269,12 +63421,8 @@ function styling(props) {
 	    align = _props$attributes.align,
 	    authorColor = _props$attributes.authorColor,
 	    descColor = _props$attributes.descColor,
-	    enableTweet = _props$attributes.enableTweet,
-	    tweetBtnColor = _props$attributes.tweetBtnColor,
-	    tweetBtnHoverColor = _props$attributes.tweetBtnHoverColor,
 	    descFontSize = _props$attributes.descFontSize,
 	    authorFontSize = _props$attributes.authorFontSize,
-	    tweetBtnFontSize = _props$attributes.tweetBtnFontSize,
 	    descSpace = _props$attributes.descSpace,
 	    authorSpace = _props$attributes.authorSpace,
 	    stack = _props$attributes.stack,
@@ -63292,7 +63440,17 @@ function styling(props) {
 	    seperatorThickness = _props$attributes.seperatorThickness,
 	    seperatorColor = _props$attributes.seperatorColor,
 	    seperatorStyle = _props$attributes.seperatorStyle,
-	    seperatorSpace = _props$attributes.seperatorSpace;
+	    seperatorSpace = _props$attributes.seperatorSpace,
+	    enableTweet = _props$attributes.enableTweet,
+	    tweetBtnFontSize = _props$attributes.tweetBtnFontSize,
+	    tweetLinkColor = _props$attributes.tweetLinkColor,
+	    tweetBtnColor = _props$attributes.tweetBtnColor,
+	    tweetBtnBgColor = _props$attributes.tweetBtnBgColor,
+	    tweetBtnHoverColor = _props$attributes.tweetBtnHoverColor,
+	    tweetBtnBgHoverColor = _props$attributes.tweetBtnBgHoverColor,
+	    tweetBtnHrPadding = _props$attributes.tweetBtnHrPadding,
+	    tweetBtnVrPadding = _props$attributes.tweetBtnVrPadding,
+	    tweetIconSpacing = _props$attributes.tweetIconSpacing;
 
 
 	var content_align = "center";
@@ -63366,6 +63524,41 @@ function styling(props) {
 		"justify-content": content_align
 	});
 
+	if (enableTweet) {
+		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetLinkColor
+		};
+
+		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetBtnColor,
+			"background-color": tweetBtnBgColor,
+			"padding-left": tweetBtnHrPadding + "px",
+			"padding-right": tweetBtnHrPadding + "px",
+			"padding-top": tweetBtnVrPadding + "px",
+			"padding-bottom": tweetBtnVrPadding + "px"
+		};
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + "px",
+			"color": tweetBtnColor,
+			"background-color": tweetBtnBgColor,
+			"padding-left": tweetBtnHrPadding + "px",
+			"padding-right": tweetBtnHrPadding + "px",
+			"padding-top": tweetBtnVrPadding + "px",
+			"padding-bottom": tweetBtnVrPadding + "px"
+		};
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = {
+			"border-right-color": tweetBtnBgColor
+		};
+
+		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button i"] = {
+			"margin-right": tweetIconSpacing + "px"
+		};
+	}
+
 	var styling_css = "";
 
 	for (var i in selectors) {
@@ -63433,7 +63626,7 @@ var attributes = {
 	},
 	enableTweet: {
 		type: "boolean",
-		default: false
+		default: true
 	},
 	iconView: {
 		type: "string",
@@ -63455,16 +63648,40 @@ var attributes = {
 		type: "string",
 		default: ""
 	},
+	tweetLinkColor: {
+		type: "string",
+		default: "#1DA1F2"
+	},
 	tweetBtnColor: {
 		type: "string",
-		default: "#333"
+		default: "#fff"
+	},
+	tweetBtnBgColor: {
+		type: "string",
+		default: "#1DA1F2"
 	},
 	tweetBtnHoverColor: {
 		type: "string"
 	},
+	tweetBtnBgHoverColor: {
+		type: "string",
+		default: "#1DA1F2"
+	},
 	tweetBtnFontSize: {
 		type: "number",
 		default: 15
+	},
+	tweetBtnHrPadding: {
+		type: "number",
+		default: 14
+	},
+	tweetBtnVrPadding: {
+		type: "number",
+		default: 10
+	},
+	tweetIconSpacing: {
+		type: "number",
+		default: 10
 	},
 	descFontSize: {
 		type: "number"
