@@ -31,7 +31,7 @@ const attributes = {
 	},
 	enableTweet:{
 		type: "boolean",
-		default: true,
+		default: false,
 	},
 	iconView: {
 		type: "string",
@@ -166,7 +166,60 @@ const attributes = {
 	seperatorSpace:{
 		type: "number",
 		default : 20
-	}
+	},
+	backgroundType: {
+		type: "string",
+	},
+	backgroundImage: {
+		type: "object",
+	},
+	backgroundPosition: {
+		type: "string",
+		default: "center-center"
+	},
+	backgroundSize: {
+		type: "string",
+		default: "cover"
+	},
+	backgroundRepeat: {
+		type: "string",
+		default: "no-repeat"
+	},
+	backgroundAttachment: {
+		type: "string",
+		default: "scroll"
+	},	
+	backgroundColor: {
+		type: "string",
+	},
+	gradientColor1: {
+		type: "string",
+	},
+	gradientColor2: {
+		type: "string",
+	},
+	gradientType: {
+		type: "string",
+		default: "linear"
+	},
+	gradientLocation1: {
+		type: "number",
+		default: 0
+	},
+	gradientLocation2: {
+		type: "number",
+		default: 100
+	},
+	gradientAngle: {
+		type: "number",
+		default: 0
+	},
+	backgroundOpacity: {
+		type: "number"
+	},	
+	backgroundImageColor: {
+		type: "string"
+	},
 }
 
 export default attributes

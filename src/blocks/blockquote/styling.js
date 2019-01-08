@@ -9,6 +9,7 @@ function styling( props ) {
 	const {
 		block_id,
 		skinStyle,
+		quoteStyle,
 		align,	
 		authorColor,
 		descColor,
@@ -53,18 +54,25 @@ function styling( props ) {
 		content_align =" flex-end"
 	}
 
+	//Set align to left for border style
+	var text_align = align
+
+	if( skinStyle == 'border' || enableTweet || quoteStyle == 'style_2' ){
+		text_align = 'left'
+	}
+
 	var selectors = {
 		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSize + "px",
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
-			"text-align": align,
+			"text-align": text_align,
 		},
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + "px",
 			"color": authorColor,
 			"margin-bottom": authorSpace + "px",
-			"text-align": align,			
+			"text-align": text_align,			
 		},
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote":{
 			"border-color": borderColor,

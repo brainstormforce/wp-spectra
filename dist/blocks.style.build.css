@@ -2713,7 +2713,7 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
     display: flex;
     -ms-flex-pack: start;
     justify-content: flex-start; }
-  .wp-block-uagb-blockquote .uagb-blockquote footer {
+  .wp-block-uagb-blockquote .uagb-quote__with-tweet .uagb-blockquote footer {
     display: -ms-flexbox;
     display: flex;
     -ms-flex-pack: justify;

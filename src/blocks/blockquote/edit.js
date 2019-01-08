@@ -18,7 +18,8 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	ColorPalette
+	ColorPalette,
+	MediaUpload
 } = wp.editor
 
 const {
@@ -37,6 +38,42 @@ const {
 const { Component, Fragment } = wp.element
 
 class UAGBBlockQuote extends Component {
+
+	constructor() {
+		super( ...arguments )
+
+		this.onRemoveImage = this.onRemoveImage.bind( this )
+		this.onSelectImage = this.onSelectImage.bind( this )
+	}
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { backgroundImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { backgroundImage: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+
+		const { backgroundImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { backgroundImage: null } )
+			return
+		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
+		setAttributes( { backgroundImage: media } )
+	}	
 
 	render() {
 
@@ -87,6 +124,21 @@ class UAGBBlockQuote extends Component {
 			iconLabel,
 			iconSahreVia,
 			iconTargetUrl,
+			backgroundType,
+			backgroundImage,
+			backgroundColor,
+			backgroundPosition,
+			backgroundAttachment,
+			backgroundRepeat,
+			backgroundSize,
+			gradientColor1,
+			gradientColor2,
+			gradientLocation1,
+			gradientLocation2,
+			gradientType,
+			gradientAngle,
+			backgroundOpacity,
+			backgroundImageColor,
 		} = attributes
 
 		// Add CSS.
@@ -147,7 +199,8 @@ class UAGBBlockQuote extends Component {
 					</Fragment>
 				 }
 				</Fragment>		
-			)
+		)
+
 		const quote_settings = (
 			<Fragment>
 				
@@ -516,15 +569,191 @@ class UAGBBlockQuote extends Component {
 					}	
 				</PanelBody>	
 			</Fragment>
-			)
+		)
+
+		const background_settings =(
+			<Fragment>
+				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Background Type" ) }
+							value={ backgroundType }
+							onChange={ ( value ) => setAttributes( { backgroundType: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "color", label: __( "Color" ) },
+								{ value: "gradient", label: __( "Gradient" ) },
+								{ value: "image", label: __( "Image" ) },
+							] }
+						/>
+						{ "color" == backgroundType && (
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+								<ColorPalette
+									value={ backgroundColor }
+									onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						) }
+						{ "image" == backgroundType &&
+							( <Fragment>
+								<BaseControl
+									className="editor-bg-image-control"
+									label={ __( "Background Image" ) }>
+									<MediaUpload
+										title={ __( "Select Background Image" ) }
+										onSelect={ this.onSelectImage }
+										allowedTypes={ [ "image" ] }
+										value={ backgroundImage }
+										render={ ( { open } ) => (
+											<Button isDefault onClick={ open }>
+												{ ! backgroundImage ? __( "Select Background Image" ) : __( "Replace image" ) }
+											</Button>
+										) }
+									/>
+									{ backgroundImage &&
+										( <Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
+											{ __( "Remove Image" ) }
+										</Button> )
+									}
+								</BaseControl>
+								{ backgroundImage &&
+									( <Fragment>
+										<SelectControl
+											label={ __( "Image Position" ) }
+											value={ backgroundPosition }
+											onChange={ ( value ) => setAttributes( { backgroundPosition: value } ) }
+											options={ [
+												{ value: "top-left", label: __( "Top Left" ) },
+												{ value: "top-center", label: __( "Top Center" ) },
+												{ value: "top-right", label: __( "Top Right" ) },
+												{ value: "center-left", label: __( "Center Left" ) },
+												{ value: "center-center", label: __( "Center Center" ) },
+												{ value: "center-right", label: __( "Center Right" ) },
+												{ value: "bottom-left", label: __( "Bottom Left" ) },
+												{ value: "bottom-center", label: __( "Bottom Center" ) },
+												{ value: "bottom-right", label: __( "Bottom Right" ) },
+											] }
+										/>
+										<SelectControl
+											label={ __( "Attachment" ) }
+											value={ backgroundAttachment }
+											onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
+											options={ [
+												{ value: "fixed", label: __( "Fixed" ) },
+												{ value: "scroll", label: __( "Scroll" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Repeat" ) }
+											value={ backgroundRepeat }
+											onChange={ ( value ) => setAttributes( { backgroundRepeat: value } ) }
+											options={ [
+												{ value: "no-repeat", label: __( "No Repeat" ) },
+												{ value: "repeat", label: __( "Repeat" ) },
+												{ value: "repeat-x", label: __( "Repeat-x" ) },
+												{ value: "repeat-y", label: __( "Repeat-y" ) }
+											] }
+										/>
+										<SelectControl
+											label={ __( "Size" ) }
+											value={ backgroundSize }
+											onChange={ ( value ) => setAttributes( { backgroundSize: value } ) }
+											options={ [
+												{ value: "auto", label: __( "Auto" ) },
+												{ value: "cover", label: __( "Cover" ) },
+												{ value: "contain", label: __( "Contain" ) }
+											] }
+										/>
+										<Fragment>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
+											<ColorPalette
+												value={ backgroundImageColor }
+												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+												allowReset
+											/>
+										</Fragment>
+									</Fragment> )
+								}
+							</Fragment> )
+						}
+						{ "gradient" == backgroundType &&
+							( <Fragment>
+								<PanelColorSettings
+									title={ __( "Color Settings" ) }
+									colorSettings={ [
+										{
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											label: __( "Color 1" ),
+										},
+										{
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											label: __( "Color 2" ),
+										}
+									] }
+								>
+								</PanelColorSettings>
+								<SelectControl
+									label={ __( "Type" ) }
+									value={ gradientType }
+									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
+									options={ [
+										{ value: "linear", label: __( "Linear" ) },
+										{ value: "radial", label: __( "Radial" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Location 1" ) }
+									value={ gradientLocation1 }
+									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Location 2" ) }
+									value={ gradientLocation2 }
+									onChange={ ( value ) => setAttributes( { gradientLocation2: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Angle" ) }
+									value={ gradientAngle }
+									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
+									min={ 0 }
+									max={ 360 }
+									allowReset
+								/>
+							</Fragment> )
+						}
+						
+						{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
+							( <RangeControl
+								label={ __( "Opacity" ) }
+								value={ backgroundOpacity }
+								onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+								initialPosition={0}
+							/> )
+						}						
+					</PanelBody>
+			</Fragment>
+		)
 
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
-					<AlignmentToolbar
-						value={ align }
-						onChange={ ( value ) => setAttributes( { align: value } ) }
-					/>
+					{ ( skinStyle === "quotation" && !enableTweet && quoteStyle !==' style_2' ) && <AlignmentToolbar
+							value={ align }
+							onChange={ ( value ) => setAttributes( { align: value } ) }
+						/>
+					}
 					{ skinStyle === "quotation" && <Fragment>
 						
 						<Toolbar>
@@ -580,7 +809,8 @@ class UAGBBlockQuote extends Component {
 					{ skin_settings }
 					{ Typography }
 					{ seperatorSettings }
-					{ twitter_settings }					
+					{ twitter_settings }	
+					{ background_settings }				
 					{ spacing_settings }					
 				</InspectorControls>
 				<div
@@ -593,7 +823,7 @@ class UAGBBlockQuote extends Component {
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
 						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
-						( enableTweet ) ? `uagb-quote__tweet-style-${iconSkin}` : "",
+						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin}` : "",
 						( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
 					) } >
 						<blockquote className="uagb-blockquote">					  
