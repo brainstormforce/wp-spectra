@@ -191,16 +191,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
-			if ( isset( $attr['contentWidth'] ) ) {
-				if ( 'custom' == $attr['contentWidth'] ) {
-					if ( isset( $attr['width'] ) ) {
-						$style['max-width'] = $attr['width'] . 'px';
-						$style['margin-left'] = "auto";
-						$style['margin-right'] = "auto";
-					}
-				}
-			}
-
 			if ( 'image' === $bg_type ) {
 
 				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
@@ -319,18 +309,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				'.uagb-column__wrap'        => $style,
-				' .uagb-column__video-wrap' => array(
-					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
-				),
+				'.uagb-column__wrap'        => $style
 			);
 
-			if ( 'video' == $bg_type ) {
-				$selectors[' > .uagb-column__overlay'] = array(
-					'opacity'          => 1,
-					'background-color' => $attr['backgroundVideoColor'],
-				);
-			} else if ( 'image' == $bg_type ) {
+			if ( 'image' == $bg_type ) {
 				$selectors[' > .uagb-column__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
 					'background-color' => $attr['backgroundImageColor'],

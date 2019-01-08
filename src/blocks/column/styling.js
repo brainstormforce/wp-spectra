@@ -9,43 +9,11 @@ import inlineStyles from "./inline-styles"
 function styling( props ) {
 
 	const {
-		colWidth,
-		backgroundType,
-		backgroundVideoColor,
-		backgroundImageColor,
-		backgroundOpacity,
-		backgroundColor,
-		backgroundVideoOpacity,
-		backgroundVideo
+		colWidth
 	} = props.attributes
 
 	var selectors = {
-		" " : inlineStyles( props ),
-		" .uagb-column__video-wrap": {
-			"opacity" : ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5
-		}
-	}
-
-	selectors[" div[data-block='" + props.clientId + "']"] ={
-		"display" : "flex",
-		"height" : "inherit"
-	}
-
-	if ( "video" == backgroundType ) {
-		/*selectors[" .uagb-column__overlay"] = {
-			"opacity" : 1,
-			"background-color": backgroundVideoColor
-		}*/
-	} else if( "image" == backgroundType ) {
-		/*selectors[" .uagb-column__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
-			"background-color": backgroundImageColor
-		}*/
-	} else if( "color" == backgroundType ) {
-		/*selectors[" .uagb-column__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
-			"background-color" : backgroundColor
-		}*/
+		":before" : inlineStyles( props )
 	}
 
 	var styling_css = ""

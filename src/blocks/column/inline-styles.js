@@ -31,7 +31,8 @@ function inlineStyles( props, isEditor ) {
 		borderStyle,
 		borderWidth,
 		borderRadius,
-		borderColor
+		borderColor,
+		backgroundImageColor
 	} = props.attributes
 
 	var style = {
@@ -69,10 +70,6 @@ function inlineStyles( props, isEditor ) {
 
 			style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
-	} else if ( "video" == backgroundType ) {
-
-		style["opacity"] = 1
-		style["background-color"] = backgroundVideoColor
 	} else if ( "color" == backgroundType ) {
 
 		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""

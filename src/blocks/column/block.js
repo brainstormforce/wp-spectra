@@ -48,10 +48,8 @@ export default class UAGBColumnEdit extends Component {
 	constructor() {
 		super( ...arguments )
 
-		this.onRemoveVideo = this.onRemoveVideo.bind( this )
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
-		this.onSelectVideo = this.onSelectVideo.bind( this )
 	}
 
 	componentDidMount() {
@@ -95,33 +93,6 @@ export default class UAGBColumnEdit extends Component {
 		setAttributes( { backgroundImage: media } )
 	}
 
-	/*
-	 * Event to set Video as null while removing.
-	 */
-	onRemoveVideo() {
-		const { backgroundVideo } = this.props.attributes
-		const { setAttributes } = this.props
-
-		setAttributes( { backgroundVideo: null } )
-	}
-
-	/*
-	 * Event to set Video while adding.
-	 */
-	onSelectVideo( media ) {
-		const { backgroundVideo } = this.props.attributes
-		const { setAttributes } = this.props
-
-		if ( ! media || ! media.url ) {
-			setAttributes( { backgroundVideo: null } )
-			return
-		}
-		if ( ! media.type || "video" != media.type ) {
-			return
-		}
-		setAttributes( { backgroundVideo: media } )
-	}
-
 	render() {
 
 		const {
@@ -137,7 +108,6 @@ export default class UAGBColumnEdit extends Component {
 				colWidth,
 				backgroundType,
 				backgroundImage,
-				backgroundVideo,
 				backgroundColor,
 				backgroundPosition,
 				backgroundAttachment,
@@ -150,8 +120,6 @@ export default class UAGBColumnEdit extends Component {
 				gradientType,
 				gradientAngle,
 				backgroundOpacity,
-				backgroundVideoColor,
-				backgroundVideoOpacity,
 				backgroundImageColor,
 			},
 			setAttributes,
@@ -279,8 +247,7 @@ export default class UAGBColumnEdit extends Component {
 							{ value: "none", label: __( "None" ) },
 							{ value: "color", label: __( "Color" ) },
 							{ value: "gradient", label: __( "Gradient" ) },
-							{ value: "image", label: __( "Image" ) },
-							{ value: "video", label: __( "Video" ) },
+							{ value: "image", label: __( "Image" ) }
 						] }
 					/>
 					{ "color" == backgroundType && (
@@ -428,29 +395,6 @@ export default class UAGBColumnEdit extends Component {
 								/>
 							</Fragment> )
 					}
-					{ "video" == backgroundType && (
-						<BaseControl
-							className="editor-bg-video-control"
-							label={ __( "Background Video" ) }
-						>
-							<MediaUpload
-								title={ __( "Select Background Video" ) }
-								onSelect={ this.onSelectVideo }
-								allowedTypes={ [ "video" ] }
-								value={ backgroundVideo }
-								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
-										{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
-									</Button>
-								) }
-							/>
-							{ backgroundVideo &&
-									( <Button onClick={ this.onRemoveVideo } isLink isDestructive>
-										{ __( "Remove Video" ) }
-									</Button> )
-							}
-						</BaseControl> )
-					}
 					{ ( "color" == backgroundType || ( "image" == backgroundType && backgroundImage ) || "gradient" == backgroundType ) &&
 							( <RangeControl
 								label={ __( "Opacity" ) }
@@ -462,27 +406,6 @@ export default class UAGBColumnEdit extends Component {
 								initialPosition={0}
 							/> )
 					}
-					{ "video" == backgroundType && backgroundVideo && (
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Video Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
-							<ColorPalette
-								value={ backgroundVideoColor }
-								onChange={ ( colorValue ) => setAttributes( { backgroundVideoColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					) }
-					{ "video" == backgroundType && backgroundVideo && (
-						<RangeControl
-							label={ __( "Opacity" ) }
-							value={ backgroundVideoOpacity }
-							onChange={ ( value ) => setAttributes( { backgroundVideoOpacity: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-							initialPosition={50}
-						/>
-					)}
 				</PanelBody>
 			</Fragment>
 		)
@@ -504,14 +427,6 @@ export default class UAGBColumnEdit extends Component {
 					id={ `uagb-column-${this.props.clientId}` }
 				>
 					<div className="uagb-column__overlay"></div>
-					{ "video" == backgroundType &&
-						<div className="uagb-column__video-wrap">
-							{  backgroundVideo &&
-								<video src={ backgroundVideo.url } autoPlay loop muted></video>
-							}
-
-						</div>
-					}
 					<div className="uagb-column__inner-wrap">
 						<InnerBlocks templateLock={ false } />
 					</div>
@@ -602,9 +517,6 @@ registerBlockType( "uagb/column", {
 			type: "string",
 			default: "scroll"
 		},
-		backgroundVideo: {
-			type: "object",
-		},
 		backgroundColor: {
 			type: "string",
 		},
@@ -633,13 +545,6 @@ registerBlockType( "uagb/column", {
 		backgroundOpacity: {
 			type: "number"
 		},
-		backgroundVideoOpacity: {
-			type: "number",
-			default: 50
-		},
-		backgroundVideoColor: {
-			type: "string",
-		},
 		backgroundImageColor: {
 			type: "string"
 		},
@@ -648,7 +553,7 @@ registerBlockType( "uagb/column", {
 	edit: UAGBColumnEdit,
 
 	save( { attributes, className } ) {
-		const { block_id, backgroundVideo, backgroundType, contentWidth  } = attributes
+		const { block_id, backgroundType  } = attributes
 		return (
 			<div
 				className={ classnames(
@@ -659,14 +564,6 @@ registerBlockType( "uagb/column", {
 				id={ `uagb-column-${block_id}` }
 			>
 				<div className="uagb-column__overlay"></div>
-				{ "video" == backgroundType &&
-					<div className="uagb-column__video-wrap">
-						{  backgroundVideo &&
-							<video src={ backgroundVideo.url } autoPlay loop muted></video>
-						}
-
-					</div>
-				}
 				<div className="uagb-column__inner-wrap">
 					<InnerBlocks.Content />
 				</div>
