@@ -46,6 +46,7 @@ function styling( props ) {
 		backgroundType,
 		backgroundPosition,
 		backgroundSize,
+		backgroundOpacity,
 		backgroundAttachment,
 		backgroundImage,
 		backgroundColor,
@@ -218,7 +219,7 @@ function styling( props ) {
 
 		selectors[" .uagb-quote__overlay"] = {
 			"background-color" : backgroundColor,
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5,
 		}	
 			
 	} else if ( "gradient" === backgroundType ) {
