@@ -12,7 +12,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "left",
+		default: "center",
 	},	
 	description_text: {
 		selector: "p",
@@ -153,7 +153,7 @@ const attributes = {
 	},
 	seperatorColor: {
 		type: "string",
-		default: "#abb8c3",
+		default: "#eeeeee",
 	},
 	seperatorWidth :{
 		type: "number",

@@ -749,7 +749,7 @@ class UAGBBlockQuote extends Component {
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
-					{ ( skinStyle === "quotation" && !enableTweet && quoteStyle !==' style_2' ) && <AlignmentToolbar
+					{  ( ( skinStyle === "quotation" && quoteStyle !== 'style_2' ) && !enableTweet )  && <AlignmentToolbar
 							value={ align }
 							onChange={ ( value ) => setAttributes( { align: value } ) }
 						/>
