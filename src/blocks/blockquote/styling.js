@@ -43,6 +43,21 @@ function styling( props ) {
 		tweetBtnHrPadding,
 		tweetBtnVrPadding,
 		tweetIconSpacing,
+		backgroundType,
+		backgroundPosition,
+		backgroundSize,
+		backgroundAttachment,
+		backgroundImage,
+		backgroundColor,
+		backgroundImageColor,
+		backgroundRepeat,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
+		contentPadding,
 	} = props.attributes
 
 	var content_align ="center"
@@ -60,6 +75,8 @@ function styling( props ) {
 	if( skinStyle == 'border' || enableTweet || quoteStyle == 'style_2' ){
 		text_align = 'left'
 	}
+
+	var position = backgroundPosition.replace( "-", " " )
 
 	var selectors = {
 		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
@@ -119,6 +136,9 @@ function styling( props ) {
 		" .uagb-quote__separator-parent":{
 			"justify-content":content_align,
 			"margin-bottom":seperatorSpace+"px"
+		},
+		" .uagb-blockquote__content-wrap":{
+			"padding":contentPadding+"px"
 		}
 	}
 	
@@ -175,6 +195,41 @@ function styling( props ) {
 			"border-right-color": tweetBtnBgHoverColor,	
 		}
 	}
+
+
+	if ( "image" === backgroundType ) {
+
+		selectors[" .uagb-blockquote__wrap"] = {
+			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
+			"background-position" : position,
+			"background-attachment" : backgroundAttachment,
+			"background-repeat" : backgroundRepeat,
+			"background-size" : backgroundSize	,
+		}	
+		selectors[" .uagb-quote__overlay"] = {
+			"background-color" : backgroundImageColor,
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5
+		}	
+	} else if ( "color" === backgroundType ) {
+
+		selectors[" .uagb-quote__overlay"] = {
+			"background-color" : backgroundColor,
+			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? ( 100 - backgroundOpacity )/100 : 0.5
+		}	
+	} else if ( "gradient" === backgroundType ) {
+
+		var style = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+		if ( "linear" === gradientType ) {
+			style = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+		} 
+
+		selectors[" .uagb-blockquote__wrap"] = {
+			"background-color" : 'transparent',
+			"background-image" : style
+		}		
+
+	} 
+
 
 	var styling_css = ""
 

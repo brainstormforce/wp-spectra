@@ -139,6 +139,7 @@ class UAGBBlockQuote extends Component {
 			gradientAngle,
 			backgroundOpacity,
 			backgroundImageColor,
+			contentPadding
 		} = attributes
 
 		// Add CSS.
@@ -510,7 +511,16 @@ class UAGBBlockQuote extends Component {
 							initialPosition={5}
 						/>	
 						</Fragment>
-					}
+					}					
+					<RangeControl
+						label={ __( "Content Padding" ) }
+						value={ contentPadding }
+						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
+						min={ 0 }
+						max={ 20 }
+						allowReset
+						initialPosition={5}
+					/>	
 					</PanelBody>
 			</Fragment>
 		)
@@ -826,6 +836,9 @@ class UAGBBlockQuote extends Component {
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin}` : "",
 						( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
 					) } >
+						
+						{ backgroundType !== 'none' && <div className= "uagb-quote__overlay"></div> }
+
 						<blockquote className="uagb-blockquote">					  
 						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
 						<div className="uagb-blockquote__content-wrap">

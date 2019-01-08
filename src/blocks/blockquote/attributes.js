@@ -169,6 +169,7 @@ const attributes = {
 	},
 	backgroundType: {
 		type: "string",
+		default : "color"
 	},
 	backgroundImage: {
 		type: "object",
@@ -191,6 +192,7 @@ const attributes = {
 	},	
 	backgroundColor: {
 		type: "string",
+		default:"#eeeeee"
 	},
 	gradientColor1: {
 		type: "string",
@@ -219,6 +221,10 @@ const attributes = {
 	},	
 	backgroundImageColor: {
 		type: "string"
+	},
+	contentPadding: {
+		type: "number",
+		default: 0
 	},
 }
 
