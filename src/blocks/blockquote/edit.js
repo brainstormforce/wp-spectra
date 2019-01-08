@@ -5,6 +5,7 @@ import classnames from "classnames"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Seperator from "./components/Seperator"
+import TweetButton from "./components/TweetButton"
 import styling from "./styling"
 
 const { __ } = wp.i18n
@@ -406,7 +407,7 @@ class UAGBBlockQuote extends Component {
 							] }
 						/>
 					</Fragment>}	
-					{ iconView == "icon_text" && <Fragment>
+					{ enableTweet && iconView !== "icon" && <Fragment>
 						<TextControl
 							label= { __( "Label" ) }
 							value= { iconLabel }
@@ -456,6 +457,8 @@ class UAGBBlockQuote extends Component {
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
 						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
+						( enableTweet ) ? `uagb-quote__tweet-style-${iconSkin}` : "",
+						( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
 					) } >
 						<blockquote className="uagb-blockquote">					  
 						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
@@ -511,13 +514,7 @@ class UAGBBlockQuote extends Component {
 								onRemove={ () => onReplace( [] ) }
 							/>
 							
-					      	{ enableTweet && <Fragment>
-							      <a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank">
-							      	<i className="fab fa-twitter"></i>
-							      	<span className="uagb-blockquote__tweet-label">Twitter</span>
-							      </a>
-					      		</Fragment>
-					        }
+					      	{ enableTweet &&  <TweetButton attributes={attributes} /> }
 					   </footer>
 					</div>
 					</blockquote>

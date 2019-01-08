@@ -62395,10 +62395,10 @@ var attributes = {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__dist_blocks_uagb_controls_block_icons__ = __webpack_require__(/*! ../../../dist/blocks/uagb-controls/block-icons */ 1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__edit__ = __webpack_require__(/*! ./edit */ 396);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 399);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__attributes__ = __webpack_require__(/*! ./attributes */ 400);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss__ = __webpack_require__(/*! ./editor.scss */ 401);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__editor_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__editor_scss__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 401);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss__ = __webpack_require__(/*! ./style.scss */ 402);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__style_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__style_scss__);
 /**
  * BLOCK: Quote
@@ -62485,7 +62485,8 @@ registerBlockType("uagb/blockquote", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__ = __webpack_require__(/*! @fonticonpicker/react-fonticonpicker */ 10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_Seperator__ = __webpack_require__(/*! ./components/Seperator */ 397);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__styling__ = __webpack_require__(/*! ./styling */ 398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_TweetButton__ = __webpack_require__(/*! ./components/TweetButton */ 398);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__styling__ = __webpack_require__(/*! ./styling */ 399);
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -62498,6 +62499,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 
 // Import icon.
+
 
 
 
@@ -62591,7 +62593,7 @@ var UAGBBlockQuote = function (_Component) {
 
 			var element = document.getElementById("uagb-blockquote-style-" + this.props.clientId);
 			if (null != element && "undefined" != typeof element) {
-				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_4__styling__["a" /* default */])(this.props);
+				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_5__styling__["a" /* default */])(this.props);
 			}
 
 			var border_settings = wp.element.createElement(
@@ -62980,7 +62982,7 @@ var UAGBBlockQuote = function (_Component) {
 							options: [{ value: "classic", label: __("Classic") }, { value: "bubble", label: __("Bubble") }, { value: "link", label: __("Link") }]
 						})
 					),
-					iconView == "icon_text" && wp.element.createElement(
+					enableTweet && iconView !== "icon" && wp.element.createElement(
 						Fragment,
 						null,
 						wp.element.createElement(TextControl, {
@@ -63041,7 +63043,7 @@ var UAGBBlockQuote = function (_Component) {
 						id: "uagb-quote-" + this.props.clientId },
 					wp.element.createElement(
 						"div",
-						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "") },
+						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__tweet-style-" + iconSkin : "", enableTweet ? "uagb-quote__tweet-" + iconView : "") },
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
@@ -63097,20 +63099,7 @@ var UAGBBlockQuote = function (_Component) {
 											return onReplace([]);
 										}
 									}),
-									enableTweet && wp.element.createElement(
-										Fragment,
-										null,
-										wp.element.createElement(
-											"a",
-											{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
-											wp.element.createElement("i", { className: "fab fa-twitter" }),
-											wp.element.createElement(
-												"span",
-												{ className: "uagb-blockquote__tweet-label" },
-												"Twitter"
-											)
-										)
-									)
+									enableTweet && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_TweetButton__["a" /* default */], { attributes: attributes })
 								)
 							)
 						)
@@ -63185,6 +63174,78 @@ var Seperator = function (_React$Component) {
 
 /***/ }),
 /* 398 */
+/*!*********************************************************!*\
+  !*** ./src/blocks/blockquote/components/TweetButton.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/*! exports used: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Fragment = wp.element.Fragment;
+
+var TweetButton = function (_React$Component) {
+	_inherits(TweetButton, _React$Component);
+
+	function TweetButton() {
+		_classCallCheck(this, TweetButton);
+
+		return _possibleConstructorReturn(this, (TweetButton.__proto__ || Object.getPrototypeOf(TweetButton)).apply(this, arguments));
+	}
+
+	_createClass(TweetButton, [{
+		key: "render",
+		value: function render() {
+			var attributes = this.props.attributes;
+
+			var tweet_html = '';
+
+			return wp.element.createElement(
+				"a",
+				{ href: "javascript:void(0)", className: "uagb-blockquote__tweet-button", target: "_blank" },
+				attributes.iconView === 'icon_text' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement("i", { className: "fab fa-twitter" }),
+					wp.element.createElement(
+						"span",
+						{ className: "uagb-blockquote__tweet-label" },
+						attributes.iconLabel
+					)
+				),
+				attributes.iconView === 'icon' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement("i", { className: "fab fa-twitter" })
+				),
+				attributes.iconView === 'text' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"span",
+						{ className: "uagb-blockquote__tweet-label" },
+						attributes.iconLabel
+					)
+				)
+			);
+		}
+	}]);
+
+	return TweetButton;
+}(React.Component);
+
+/* harmony default export */ __webpack_exports__["a"] = (TweetButton);
+
+/***/ }),
+/* 399 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/styling.js ***!
   \******************************************/
@@ -63330,7 +63391,7 @@ function styling(props) {
 /* harmony default export */ __webpack_exports__["a"] = (styling);
 
 /***/ }),
-/* 399 */
+/* 400 */
 /*!*********************************************!*\
   !*** ./src/blocks/blockquote/attributes.js ***!
   \*********************************************/
@@ -63376,7 +63437,7 @@ var attributes = {
 	},
 	iconView: {
 		type: "string",
-		default: "text_with_icon"
+		default: "icon_text"
 	},
 	iconSkin: {
 		type: "string",
@@ -63465,7 +63526,7 @@ var attributes = {
 	},
 	seperatorStyle: {
 		type: "string",
-		default: "solid"
+		default: "none"
 	},
 	seperatorColor: {
 		type: "string",
@@ -63488,7 +63549,7 @@ var attributes = {
 /* harmony default export */ __webpack_exports__["a"] = (attributes);
 
 /***/ }),
-/* 400 */
+/* 401 */
 /*!*******************************************!*\
   !*** ./src/blocks/blockquote/editor.scss ***!
   \*******************************************/
@@ -63498,7 +63559,7 @@ var attributes = {
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 401 */
+/* 402 */
 /*!******************************************!*\
   !*** ./src/blocks/blockquote/style.scss ***!
   \******************************************/

@@ -35,7 +35,7 @@ const attributes = {
 	},
 	iconView: {
 		type: "string",
-		default: "text_with_icon"
+		default: "icon_text"
 	},
 	iconSkin: {
 		type: "string",
@@ -124,7 +124,7 @@ const attributes = {
 	},
 	seperatorStyle: {
 		type: "string",
-		default: "solid",
+		default: "none",
 	},
 	seperatorColor: {
 		type: "string",

@@ -110,6 +110,7 @@
 	    text-decoration: none;
 	}
 
+	/*Twitter icon CSS.*/
 	.uagb-blockquote a.uagb-blockquote__tweet-button{
 		display: -webkit-box;
 	    display: -webkit-flex;
@@ -126,9 +127,43 @@
 	    width: -webkit-max-content;
 	    width: -moz-max-content;
 	    width: max-content;
+	    padding: 0;	   	    
+	    color: #1DA1F2;	
+	    background-color: transparent;   
+	}
+
+	a.uagb-blockquote__tweet-button,
+	a.uagb-blockquote__tweet-button i{
+		font-style:normal;
+	}
+	.uagb-quote__tweet-icon_text i.fab.fa-twitter {
+	    margin-right: 10px;
+	}
+	.uagb-quote__tweet-icon a.uagb-blockquote__tweet-button {
+	    padding: 8px;
+	}
+	.uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button,
+	.uagb-quote__tweet-text a.uagb-blockquote__tweet-button {
 	    padding: 10px 14px;
-	    border-radius: 100em;
-	    background-color: #1DA1F2;
-	    color: #fff;
+	}
+	.uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button,
+	.uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button{
+		background-color: #1DA1F2;
+		border-radius: 100em;
+		color: #fff;	
+	}
+	.uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before {
+	    content: '';
+	    border: solid 0.5em transparent;
+	    border-right-color: #1DA1F2;
+	    position: absolute;
+	    left: -0.8em;
+	    top: 50%;
+	    -webkit-transform: translateY(-50%) scale(1, 0.65);
+	    -ms-transform: translateY(-50%) scale(1, 0.65);
+	    transform: translateY(-50%) scale(1, 0.65);
+	    -webkit-transition: 0.3s;
+	    -o-transition: 0.3s;
+	    transition: 0.3s;
 	}
 }
