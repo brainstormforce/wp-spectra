@@ -176,4 +176,21 @@
 	    background-color: transparent;
 	    opacity: 1;
 	}
+
+	.uagb-quote__with-tweet.uagb-quote__align-center .uagb-blockquote footer,
+	.uagb-quote__align-center .uagb-blockquote footer{
+		display: block;
+		text-align: center;
+	}
+
+	.uagb-quote__align-center a.uagb-blockquote__tweet-button{
+		display: block;
+		text-align: center;
+		margin: 0 auto;
+	}
+
+	.uagb-quote__with-tweet.uagb-quote__align-right .uagb-blockquote footer,
+	.uagb-quote__align-right .uagb-blockquote footer{
+		flex-direction: row-reverse;
+	}
 }

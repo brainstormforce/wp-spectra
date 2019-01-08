@@ -63102,21 +63102,21 @@ var UAGBBlockQuote = function (_Component) {
 						title: __("Spacing"),
 						initialOpen: false },
 					wp.element.createElement(RangeControl, {
-						label: __("Author Bottom Spacing"),
-						value: authorSpace,
+						label: __("Description Bottom Spacing"),
+						value: descSpace,
 						onChange: function onChange(value) {
-							return setAttributes({ authorSpace: value });
+							return setAttributes({ descSpace: value });
 						},
 						min: 0,
 						max: 50,
 						allowReset: true,
 						initialPosition: 0
 					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Description Bottom Spacing"),
-						value: descSpace,
+					align == "center" && wp.element.createElement(RangeControl, {
+						label: __("Author Bottom Spacing"),
+						value: authorSpace,
 						onChange: function onChange(value) {
-							return setAttributes({ descSpace: value });
+							return setAttributes({ authorSpace: value });
 						},
 						min: 0,
 						max: 50,
@@ -63501,7 +63501,7 @@ var UAGBBlockQuote = function (_Component) {
 				wp.element.createElement(
 					BlockControls,
 					{ key: "controls" },
-					skinStyle === "quotation" && quoteStyle !== 'style_2' && !enableTweet && wp.element.createElement(AlignmentToolbar, {
+					skinStyle === "quotation" && wp.element.createElement(AlignmentToolbar, {
 						value: align,
 						onChange: function onChange(value) {
 							return setAttributes({ align: value });
@@ -63584,7 +63584,7 @@ var UAGBBlockQuote = function (_Component) {
 						id: "uagb-quote-" + this.props.clientId },
 					wp.element.createElement(
 						"div",
-						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle === "quotation" ? " uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin : "", enableTweet ? "uagb-quote__tweet-" + iconView : "", skinStyle !== "border" ? "uagb-quote__border" : "") },
+						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle === "quotation" ? "uagb-quote__align-" + align + " uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin : "", enableTweet ? "uagb-quote__tweet-" + iconView : "", skinStyle !== "border" ? "uagb-quote__border" : "") },
 						backgroundType !== 'none' && wp.element.createElement("div", { className: "uagb-quote__overlay" }),
 						wp.element.createElement(
 							"blockquote",
@@ -63983,10 +63983,15 @@ function styling(props) {
 		content_align = " flex-end";
 	}
 
+	var author_space = authorSpace;
+
+	if (align !== 'center') {
+		author_space = 0;
+	}
 	//Set align to left for border style
 	var text_align = align;
 
-	if (skinStyle == 'border' || enableTweet || quoteStyle == 'style_2') {
+	if (skinStyle == 'border') {
 		text_align = 'left';
 	}
 
@@ -64002,7 +64007,7 @@ function styling(props) {
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + "px",
 			"color": authorColor,
-			"margin-bottom": authorSpace + "px",
+			"margin-bottom": author_space + "px",
 			"text-align": text_align
 		},
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote": {
@@ -64265,7 +64270,7 @@ var attributes = {
 	},
 	tweetBtnHrPadding: {
 		type: "number",
-		default: 14
+		default: 10
 	},
 	tweetBtnVrPadding: {
 		type: "number",
@@ -64286,7 +64291,8 @@ var attributes = {
 		default: 20
 	},
 	authorSpace: {
-		type: "number"
+		type: "number",
+		default: 15
 	},
 	stack: {
 		type: "string",

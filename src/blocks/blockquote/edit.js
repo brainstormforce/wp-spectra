@@ -468,15 +468,7 @@ class UAGBBlockQuote extends Component {
 				<PanelBody
 						title={ __( "Spacing" ) }
 						initialOpen={ false }>
-						<RangeControl
-							label={ __( "Author Bottom Spacing" ) }
-							value={ authorSpace }
-							onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={0}
-						/>
+
 						<RangeControl
 							label={ __( "Description Bottom Spacing" ) }
 							value={ descSpace }
@@ -485,7 +477,17 @@ class UAGBBlockQuote extends Component {
 							max={ 50 }
 							allowReset
 							initialPosition={0}
-						/>			
+						/>	
+						{ align == "center" && <RangeControl
+								label={ __( "Author Bottom Spacing" ) }
+								value={ authorSpace }
+								onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+								initialPosition={0}
+							/>
+						}		
 					{ enableTweet && iconSkin !== 'link' && <Fragment>
 						<RangeControl
 							label={ __( "Button Horizontal Padding" ) }
@@ -816,7 +818,7 @@ class UAGBBlockQuote extends Component {
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
-					{  ( ( skinStyle === "quotation" && quoteStyle !== 'style_2' ) && !enableTweet )  && <AlignmentToolbar
+					{  ( skinStyle === "quotation" )  && <AlignmentToolbar
 							value={ align }
 							onChange={ ( value ) => setAttributes( { align: value } ) }
 						/>
@@ -890,7 +892,7 @@ class UAGBBlockQuote extends Component {
 					<div className = { classnames(
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
-						( skinStyle === "quotation" ) ? ` uagb-quote__style-${quoteStyle}` : "",
+						( skinStyle === "quotation" ) ? `uagb-quote__align-${align} uagb-quote__style-${quoteStyle}` : "",
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin}` : "",
 						( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
 						( skinStyle !== "border" ) ? `uagb-quote__border` : "",

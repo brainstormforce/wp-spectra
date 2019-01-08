@@ -74,10 +74,15 @@ function styling( props ) {
 		content_align =" flex-end"
 	}
 
+	var author_space = authorSpace;
+
+	if( align !== 'center' ){
+		author_space = 0
+	}
 	//Set align to left for border style
 	var text_align = align
 
-	if( skinStyle == 'border' || enableTweet || quoteStyle == 'style_2' ){
+	if( skinStyle == 'border' ){
 		text_align = 'left'
 	}
 
@@ -93,7 +98,7 @@ function styling( props ) {
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + "px",
 			"color": authorColor,
-			"margin-bottom": authorSpace + "px",
+			"margin-bottom": author_space + "px",
 			"text-align": text_align,			
 		},
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote":{

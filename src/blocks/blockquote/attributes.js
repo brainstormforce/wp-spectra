@@ -78,7 +78,7 @@ const attributes = {
 	},	
 	tweetBtnHrPadding: {
 		type: "number",
-		default: 14
+		default: 10
 	},
 	tweetBtnVrPadding: {
 		type: "number",
@@ -100,6 +100,7 @@ const attributes = {
 	},
 	authorSpace: {
 		type: "number",
+		default: 15,
 	},	
 	stack: {
 		type: "string",
