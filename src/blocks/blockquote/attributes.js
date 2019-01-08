@@ -134,7 +134,7 @@ const attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 100,
+		default: 60,
 	},
 	quoteGap : {
 		type: "number",

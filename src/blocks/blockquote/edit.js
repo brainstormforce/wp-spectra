@@ -7,10 +7,12 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
 const {
+	BlockAlignmentToolbar,
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
@@ -26,7 +28,9 @@ const {
 	Button,
 	TextControl,
 	BaseControl,
-	ToggleControl
+	ToggleControl,
+	Toolbar,
+	Tooltip
 } = wp.components
 
 // Extend component
@@ -146,16 +150,7 @@ class UAGBBlockQuote extends Component {
 			)
 		const quote_settings = (
 			<Fragment>
-				<SelectControl
-					label={ __( "Quote Style" ) }
-					value={ quoteStyle }
-					onChange={ ( value ) => setAttributes( { quoteStyle: value } ) }
-					options={ [
-						{ value: "style_1", label: __( "Style 1" ) },
-						{ value: "style_2", label: __( "Style 2" ) },
-						{ value: "style_3", label: __( "Style 3" ) },
-					] }
-				/>
+				
 				<p className="uagb-setting-label">{ __( "Quote Color" ) }
 				<span className="components-base-control__label">
 				<span className="component-color-indicator" style={{ backgroundColor: quoteColor }} ></span></span></p>
@@ -530,6 +525,56 @@ class UAGBBlockQuote extends Component {
 						value={ align }
 						onChange={ ( value ) => setAttributes( { align: value } ) }
 					/>
+					{ skinStyle === "quotation" && <Fragment>
+						
+						<Toolbar>
+							<Tooltip text={ __( "Normal Quote" ) }>
+								<Button
+									className={ classnames(
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": quoteStyle === "style_1" },
+									) }
+									onClick={ () => setAttributes( { quoteStyle: "style_1" } ) }
+								>
+									{ UAGB_Block_Icons.style_1 }
+								</Button>
+							</Tooltip>
+						</Toolbar>
+
+						<Toolbar>
+							<Tooltip text={ __( "Inline Quote" ) }>
+								<Button
+									className={ classnames(
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": quoteStyle === "style_2" },
+									) }
+									onClick={ () => setAttributes( { quoteStyle: "style_2" } ) }
+								>
+									{ UAGB_Block_Icons.style_2 }
+								</Button>
+							</Tooltip>
+						</Toolbar>
+
+						<Toolbar>
+							<Tooltip text={ __( "Quote On Top" ) }>
+								<Button
+									className={ classnames(
+										"components-icon-button",
+										"components-toolbar__control",
+										{ "is-active": quoteStyle === "style_3" },
+									) }
+									onClick={ () => setAttributes( { quoteStyle: "style_3" } ) }
+								>
+									{ UAGB_Block_Icons.style_3 }
+								</Button>
+							</Tooltip>
+						</Toolbar>
+
+						</Fragment>
+					}
+					
 				</BlockControls>
 				<InspectorControls>
 					{ skin_settings }
