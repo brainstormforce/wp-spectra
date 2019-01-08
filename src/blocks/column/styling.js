@@ -26,21 +26,26 @@ function styling( props ) {
 		}
 	}
 
+	selectors[" div[data-block='" + props.clientId + "']"] ={
+		"display" : "flex",
+		"height" : "inherit"
+	}
+
 	if ( "video" == backgroundType ) {
-		selectors[" > .uagb-column__overlay"] = {
+		/*selectors[" .uagb-column__overlay"] = {
 			"opacity" : 1,
 			"background-color": backgroundVideoColor
-		}
+		}*/
 	} else if( "image" == backgroundType ) {
-		selectors[" > .uagb-column__overlay"] = {
+		/*selectors[" .uagb-column__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color": backgroundImageColor
-		}
+		}*/
 	} else if( "color" == backgroundType ) {
-		selectors[" > .uagb-column__overlay"] = {
+		/*selectors[" .uagb-column__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color" : backgroundColor
-		}
+		}*/
 	}
 
 	var styling_css = ""

@@ -213,7 +213,7 @@ class UAGBColumns extends Component {
 								) }
 								onClick={ () => setAttributes( { vAlign: "middle" } ) }
 							>
-								{ UAGB_Block_Icons.top_align }
+								{ UAGB_Block_Icons.middle_align }
 							</Button>
 						</Tooltip>
 					</Toolbar>
@@ -227,7 +227,7 @@ class UAGBColumns extends Component {
 								) }
 								onClick={ () => setAttributes( { vAlign: "bottom" } ) }
 							>
-								{ UAGB_Block_Icons.top_align }
+								{ UAGB_Block_Icons.bottom_align }
 							</Button>
 						</Tooltip>
 					</Toolbar>

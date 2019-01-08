@@ -108,6 +108,14 @@ const UAGB_Block_Icons = {
 	"top_align": el("svg", { width: 20, height: 20 },
 		el("path", { d: "M1.5 0.438v2.125h17v-2.125h-17zM5.75 8.938h3.188v10.625h2.125v-10.625h3.187l-4.25-4.25-4.25 4.25z" } )
 	),
+	"middle_align": el("svg", { width: 20, height: 20 },
+		el("path", { d: "M18.5 11.063v-2.125h-17v2.125h17z" } ),
+		el("path", { d: "M12.707 3.519l-2.707-2.707-2.707 2.707h2.030v4.368h1.354v-4.368h2.030z" } ),
+		el("path", { d: "M7.293 16.48l2.707 2.707 2.707-2.707h-2.030v-4.368h-1.354v4.368h-2.030z" } ),
+	),
+	"bottom_align": el("svg", { width: 20, height: 20 },
+		el("path", { d: "M18.5 20v-2.125h-17v2.125h17zM14.25 11.5h-3.187v-10.625h-2.125v10.625h-3.188l4.25 4.25 4.25-4.25z" } )
+	),
 }
 
 export default UAGB_Block_Icons
