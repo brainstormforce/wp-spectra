@@ -148,6 +148,24 @@ function styling( props ) {
 			"margin-right": tweetIconSpacing + "px",
 		}	
 
+		// Hover CSS
+		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = {
+			"color": tweetBtnHoverColor,		
+		}
+
+		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = {
+			"color": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover"] = {
+			"color": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover a.uagb-blockquote__tweet-button:before"] = {
+			"border-right-color": tweetBtnBgHoverColor,	
+		}
 	}
 
 	var styling_css = ""
