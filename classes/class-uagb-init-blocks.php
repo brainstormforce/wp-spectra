@@ -91,6 +91,14 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
+		wp_enqueue_script(
+			'uagb-imagesloaded', // Handle.
+			UAGB_URL . 'assets/js/imagesloaded.min.js',
+			array( 'jquery' ), // Dependencies, defined above.
+			UAGB_VER,
+			false // Enqueue the script in the footer.
+		);
+
 		// Font Awsome.
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.

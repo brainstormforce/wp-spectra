@@ -38,7 +38,8 @@
 	.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon{
 	    font-size: 60px;
 	    color: rgb(230, 233, 236);
-	    font-family: "Times New Roman", Times, serif;
+	    /*font-family: "Times New Roman", Times, serif;*/
+	    font-family:"Font Awesome 5 Free";
 	    font-weight: 900;
 	    line-height: 60px;
 	    display: block;
@@ -103,9 +104,7 @@
 		-moz-box-pack: start;
 		justify-content: flex-start;
 	}
-	.uagb-blockquote footer{
-	    padding: 0 10px;
-	}
+	
 	.uagb-quote__with-tweet .uagb-blockquote footer{
 		display: -webkit-box;
 	    display: -webkit-flex;

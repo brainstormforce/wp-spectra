@@ -76,7 +76,7 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				{ "" !== description && <div className = "uagb-cta-text-wrap">
 					<Description attributes={props.attributes} setAttributes = "not_set"/> 
-					</div>
+				</div>
 				}
 			</Fragment>
 		)
@@ -86,7 +86,7 @@ registerBlockType( "uagb/call-to-action", {
 			<Fragment>
 				{ "" !== ctaTitle && <div className = "uagb-cta__title-wrap">
 					<Title attributes={ props.attributes} setAttributes = "not_set"/>
-					</div>
+				</div>
 				}	
 			</Fragment>
 		)

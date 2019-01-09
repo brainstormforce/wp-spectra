@@ -86,7 +86,7 @@ registerBlockType( "uagb/blockquote", {
 				) } >
 					
 					<blockquote className="uagb-blockquote">					  
-					{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
+					{ skinStyle === "quotation" && <span className="fas uagb-quote__icon"></span> }
 					<div className="uagb-blockquote__content-wrap">
 					   	{ <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
 

@@ -104,7 +104,6 @@ class UAGBBlockQuote extends Component {
 			quoteSize,
 			quoteBgSize,
 			quoteBorderRadius,
-			quoteGap,
 			quoteStyle,
 			seperatorWidth,
 			seperatorThickness,
@@ -130,7 +129,11 @@ class UAGBBlockQuote extends Component {
 			authorImageWidth,
 			authorImageSize,
 			authorImgBorderRadius,
-			authorImgPosition
+			authorImgPosition,
+			quoteTopMargin,
+			quoteBottomMargin,
+			quoteLeftMargin,
+			quoteRightMargin,
 		} = attributes
 
 		// Add CSS.
@@ -555,15 +558,40 @@ class UAGBBlockQuote extends Component {
 						title={ __( "Spacing" ) }
 						initialOpen={ false }>
 
-					{ skinStyle === "quotation" && 
+					{ skinStyle === "quotation" && <Fragment>						
 						<RangeControl
-							label={ __( "Gap Beetween Quote and Content" ) }
-							value={ quoteGap }
-							onChange={ ( value ) => setAttributes( { quoteGap: value } ) }
+							label={ __( "Quote Top Margin" ) }
+							value={ quoteTopMargin }
+							onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
 							min={ 0 }
 							max={ 100 }
 							allowReset
 						/>
+						<RangeControl
+							label={ __( "Quote Bottom Margin" ) }
+							value={ quoteBottomMargin }
+							onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Quote Left Margin" ) }
+							value={ quoteLeftMargin }
+							onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Quote Right Margin" ) }
+							value={ quoteRightMargin }
+							onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						</Fragment>
 					}
 
 					{ skinStyle === "border" && <Fragment>
@@ -727,7 +755,7 @@ class UAGBBlockQuote extends Component {
 									) }
 									onClick={ () => setAttributes( { quoteStyle: "style_1" } ) }
 								>
-									{ UAGB_Block_Icons.style_1 }
+									{ UAGB_Block_Icons.quote_1 }
 								</Button>
 							</Tooltip>
 						</Toolbar>
@@ -742,7 +770,7 @@ class UAGBBlockQuote extends Component {
 									) }
 									onClick={ () => setAttributes( { quoteStyle: "style_2" } ) }
 								>
-									{ UAGB_Block_Icons.style_2 }
+									{ UAGB_Block_Icons.quote_2 }
 								</Button>
 							</Tooltip>
 						</Toolbar>
@@ -772,7 +800,7 @@ class UAGBBlockQuote extends Component {
 					) } >
 						
 						<blockquote className="uagb-blockquote">					  
-						{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
+						{ skinStyle === "quotation" && <span className="fas uagb-quote__icon"></span> }
 						<div className="uagb-blockquote__content-wrap">
 						   	{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  /> }
 

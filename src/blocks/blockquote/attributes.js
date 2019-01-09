@@ -159,11 +159,7 @@ const attributes = {
 	quoteSize: {
 		type: "number",
 		default: 60,
-	},
-	quoteGap : {
-		type: "number",
-		default: 15,
-	},
+	},	
 	quoteBgSize: {
 		type: "number",
 	},
@@ -196,12 +192,16 @@ const attributes = {
 	},	
 	quoteTopMargin :{
 		type: "number",
-		default : -10
 	},
 	quoteBottomMargin:{
 		type: "number",
-		default : 20
-	},			
+	},
+	quoteLeftMargin :{
+		type: "number",
+	},
+	quoteRightMargin:{
+		type: "number",
+	},				
 }
 
 export default attributes

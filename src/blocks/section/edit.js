@@ -54,7 +54,7 @@ class UAGBSectionEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-section-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -117,11 +117,10 @@ class UAGBSectionEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes, isSelected } = this.props
+		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
 			align,
-			className,
 			padding,
 			contentWidth,
 			width,
@@ -162,7 +161,7 @@ class UAGBSectionEdit extends Component {
 
 		const CustomTag = `${tag}`
 
-		var element = document.getElementById( "uagb-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-section-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
@@ -287,7 +286,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Left Margin" ) }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -295,7 +294,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Right Margin" ) }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -303,7 +302,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Top Margin" ) }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -311,7 +310,7 @@ class UAGBSectionEdit extends Component {
 							label={ __( "Bottom Margin" ) }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-							min={ 0 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>

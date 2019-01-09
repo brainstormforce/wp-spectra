@@ -47,7 +47,11 @@ function styling( props ) {
 		authorImageWidth,
 		authorImageSize,
 		authorImgBorderRadius,
-		quoteBorderRadius	
+		quoteBorderRadius,
+		quoteTopMargin,
+		quoteBottomMargin,
+		quoteLeftMargin,
+		quoteRightMargin,	
 	} = props.attributes
 
 	var content_align ="center"
@@ -92,25 +96,22 @@ function styling( props ) {
 			"padding-bottom": verticalPadding + "px",
 		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"color": quoteColor,
-			"font-size": quoteSize+"px",
-			"width":quoteSize+"px",
-			"height":quoteSize+"px",
-			"line-height": quoteSize+"px",
-			"background": quoteBgColor,
-			"padding": quoteBgSize+"px",
-			"border-radius": quoteBorderRadius+"%",
-		},
-		" .uagb-quote__style-style_1.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
-			"margin-top": quoteGap + "px",
-		},	
-		
+			"color"         : quoteColor,
+			"font-size"     : quoteSize+"px",
+			"width"         : quoteSize+"px",
+			"height"        : quoteSize+"px",
+			"line-height"   : quoteSize+"px",
+			"background"    : quoteBgColor,
+			"padding"       : quoteBgSize+"px",
+			"border-radius" : quoteBorderRadius+"%",
+			"margin-top"    : quoteTopMargin + "px",
+			"margin-bottom" : quoteBottomMargin + "px",
+			"margin-left"   : quoteLeftMargin + "px",
+			"margin-right"  : quoteRightMargin + "px",
+		},					
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
-		},
-		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"margin-right": quoteGap + "px",
-		},		
+		},				
 		" .uagb-quote__separator":{
 			"width" : seperatorWidth+"%",
 			"border-top-width" : seperatorThickness+"px",
