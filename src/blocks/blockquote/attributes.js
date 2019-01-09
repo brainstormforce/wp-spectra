@@ -190,80 +190,10 @@ const attributes = {
 	seperatorSpace:{
 		type: "number",
 		default : 20
-	},
-	backgroundType: {
-		type: "string",
-		default : "none"
-	},
-	backgroundImage: {
-		type: "object",
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
 	},	
-	backgroundColor: {
-		type: "string",
-		default:"#eeeeee"
-	},
-	gradientColor1: {
-		type: "string",
-	},
-	gradientColor2: {
-		type: "string",
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
-		type: "number",
-		default: 0
-	},
-	gradientLocation2: {
-		type: "number",
-		default: 100
-	},
-	gradientAngle: {
-		type: "number",
-		default: 0
-	},
-	backgroundOpacity: {
-		type: "number"
-	},	
-	backgroundImageColor: {
-		type: "string"
-	},
 	contentPadding: {
 		type: "number",
-	},
-	blockBorderStyle : {
-		type: "string",
-		default: "none"
-	},
-	blockBorderWidth : {
-		type: "number",
-		default: 1
-	},
-	blockBorderRadius : {
-		type: "number"
-	},
-	blockBorderColor : {
-		type: "string",
-		default: "#abb8c3"
-	}
+	},	
 }
 
 export default attributes

@@ -62692,26 +62692,7 @@ var UAGBBlockQuote = function (_Component) {
 			    iconLabel = attributes.iconLabel,
 			    iconSahreVia = attributes.iconSahreVia,
 			    iconTargetUrl = attributes.iconTargetUrl,
-			    backgroundType = attributes.backgroundType,
-			    backgroundImage = attributes.backgroundImage,
-			    backgroundColor = attributes.backgroundColor,
-			    backgroundPosition = attributes.backgroundPosition,
-			    backgroundAttachment = attributes.backgroundAttachment,
-			    backgroundRepeat = attributes.backgroundRepeat,
-			    backgroundSize = attributes.backgroundSize,
-			    gradientColor1 = attributes.gradientColor1,
-			    gradientColor2 = attributes.gradientColor2,
-			    gradientLocation1 = attributes.gradientLocation1,
-			    gradientLocation2 = attributes.gradientLocation2,
-			    gradientType = attributes.gradientType,
-			    gradientAngle = attributes.gradientAngle,
-			    backgroundOpacity = attributes.backgroundOpacity,
-			    backgroundImageColor = attributes.backgroundImageColor,
 			    contentPadding = attributes.contentPadding,
-			    blockBorderStyle = attributes.blockBorderStyle,
-			    blockBorderWidth = attributes.blockBorderWidth,
-			    blockBorderRadius = attributes.blockBorderRadius,
-			    blockBorderColor = attributes.blockBorderColor,
 			    authorImage = attributes.authorImage,
 			    authorImageWidth = attributes.authorImageWidth,
 			    authorImageSize = attributes.authorImageSize,
@@ -62777,26 +62758,6 @@ var UAGBBlockQuote = function (_Component) {
 						min: 0,
 						max: 50,
 						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Gap Beetween Border and Content"),
-						value: borderGap,
-						onChange: function onChange(value) {
-							return setAttributes({ borderGap: value });
-						},
-						min: 0,
-						max: 100,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Vertical Padding"),
-						value: verticalPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ verticalPadding: value });
-						},
-						min: 0,
-						max: 100,
-						allowReset: true
 					})
 				)
 			);
@@ -62804,44 +62765,6 @@ var UAGBBlockQuote = function (_Component) {
 			var quote_settings = wp.element.createElement(
 				Fragment,
 				null,
-				wp.element.createElement(
-					"p",
-					{ className: "uagb-setting-label" },
-					__("Quote Color"),
-					wp.element.createElement(
-						"span",
-						{ className: "components-base-control__label" },
-						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: quoteColor } })
-					)
-				),
-				wp.element.createElement(ColorPalette, {
-					value: quoteColor,
-					onChange: function onChange(colorValue) {
-						return setAttributes({ quoteColor: colorValue });
-					},
-					allowReset: true
-				}),
-				quoteStyle == "style_3" && wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(
-						"p",
-						{ className: "uagb-setting-label" },
-						__("Quote Background Color"),
-						wp.element.createElement(
-							"span",
-							{ className: "components-base-control__label" },
-							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: quoteBgColor } })
-						)
-					),
-					wp.element.createElement(ColorPalette, {
-						value: quoteBgColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ quoteBgColor: colorValue });
-						},
-						allowReset: true
-					})
-				),
 				wp.element.createElement(RangeControl, {
 					label: __("Quote Size"),
 					value: quoteSize,
@@ -62852,7 +62775,7 @@ var UAGBBlockQuote = function (_Component) {
 					max: 200,
 					allowReset: true
 				}),
-				quoteStyle == "style_3" && wp.element.createElement(RangeControl, {
+				wp.element.createElement(RangeControl, {
 					label: __("Quote Background Size"),
 					value: quoteBgSize,
 					onChange: function onChange(value) {
@@ -63005,7 +62928,7 @@ var UAGBBlockQuote = function (_Component) {
 						}
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Iamge Width"),
+						label: __("Image Width"),
 						value: authorImageWidth,
 						onChange: function onChange(value) {
 							return setAttributes({ authorImageWidth: value });
@@ -63103,9 +63026,47 @@ var UAGBBlockQuote = function (_Component) {
 							onChange: function onChange(colorValue) {
 								return setAttributes({ authorColor: colorValue });
 							},
-							label: __("Author")
+							label: __("Author Color")
 						}]
 					},
+					skinStyle == "quotation" && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Quote Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: quoteColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: quoteColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ quoteColor: colorValue });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Quote Background Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: quoteBgColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: quoteBgColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ quoteBgColor: colorValue });
+							},
+							allowReset: true
+						})
+					),
 					enableTweet && iconSkin == 'link' && wp.element.createElement(
 						Fragment,
 						null,
@@ -63301,7 +63262,7 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true,
 						initialPosition: 5
 					}),
-					wp.element.createElement(RangeControl, {
+					skinStyle === "quotation" && wp.element.createElement(RangeControl, {
 						label: __("Gap Beetween Quote and Content"),
 						value: quoteGap,
 						onChange: function onChange(value) {
@@ -63310,7 +63271,31 @@ var UAGBBlockQuote = function (_Component) {
 						min: 0,
 						max: 100,
 						allowReset: true
-					})
+					}),
+					skinStyle === "border" && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Gap Beetween Border and Content"),
+							value: borderGap,
+							onChange: function onChange(value) {
+								return setAttributes({ borderGap: value });
+							},
+							min: 0,
+							max: 100,
+							allowReset: true
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Vertical Padding"),
+							value: verticalPadding,
+							onChange: function onChange(value) {
+								return setAttributes({ verticalPadding: value });
+							},
+							min: 0,
+							max: 100,
+							allowReset: true
+						})
+					)
 				)
 			);
 
@@ -63380,264 +63365,13 @@ var UAGBBlockQuote = function (_Component) {
 				)
 			);
 
-			var background_settings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Background"), initialOpen: false },
-					wp.element.createElement(SelectControl, {
-						label: __("Background Type"),
-						value: backgroundType,
-						onChange: function onChange(value) {
-							return setAttributes({ backgroundType: value });
-						},
-						options: [{ value: "none", label: __("None") }, { value: "color", label: __("Color") }, { value: "gradient", label: __("Gradient") }, { value: "image", label: __("Image") }]
-					}),
-					"color" == backgroundType && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Background Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: backgroundColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: backgroundColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ backgroundColor: colorValue });
-							},
-							allowReset: true
-						})
-					),
-					"image" == backgroundType && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							BaseControl,
-							{
-								className: "editor-bg-image-control",
-								label: __("Background Image") },
-							wp.element.createElement(MediaUpload, {
-								title: __("Select Background Image"),
-								onSelect: this.onSelectImage,
-								allowedTypes: ["image"],
-								value: backgroundImage,
-								render: function render(_ref2) {
-									var open = _ref2.open;
-									return wp.element.createElement(
-										Button,
-										{ isDefault: true, onClick: open },
-										!backgroundImage ? __("Select Background Image") : __("Replace image")
-									);
-								}
-							}),
-							backgroundImage && wp.element.createElement(
-								Button,
-								{ className: "uagb-rm-btn", onClick: this.onRemoveImage, isLink: true, isDestructive: true },
-								__("Remove Image")
-							)
-						),
-						backgroundImage && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(SelectControl, {
-								label: __("Image Position"),
-								value: backgroundPosition,
-								onChange: function onChange(value) {
-									return setAttributes({ backgroundPosition: value });
-								},
-								options: [{ value: "top-left", label: __("Top Left") }, { value: "top-center", label: __("Top Center") }, { value: "top-right", label: __("Top Right") }, { value: "center-left", label: __("Center Left") }, { value: "center-center", label: __("Center Center") }, { value: "center-right", label: __("Center Right") }, { value: "bottom-left", label: __("Bottom Left") }, { value: "bottom-center", label: __("Bottom Center") }, { value: "bottom-right", label: __("Bottom Right") }]
-							}),
-							wp.element.createElement(SelectControl, {
-								label: __("Attachment"),
-								value: backgroundAttachment,
-								onChange: function onChange(value) {
-									return setAttributes({ backgroundAttachment: value });
-								},
-								options: [{ value: "fixed", label: __("Fixed") }, { value: "scroll", label: __("Scroll") }]
-							}),
-							wp.element.createElement(SelectControl, {
-								label: __("Repeat"),
-								value: backgroundRepeat,
-								onChange: function onChange(value) {
-									return setAttributes({ backgroundRepeat: value });
-								},
-								options: [{ value: "no-repeat", label: __("No Repeat") }, { value: "repeat", label: __("Repeat") }, { value: "repeat-x", label: __("Repeat-x") }, { value: "repeat-y", label: __("Repeat-y") }]
-							}),
-							wp.element.createElement(SelectControl, {
-								label: __("Size"),
-								value: backgroundSize,
-								onChange: function onChange(value) {
-									return setAttributes({ backgroundSize: value });
-								},
-								options: [{ value: "auto", label: __("Auto") }, { value: "cover", label: __("Cover") }, { value: "contain", label: __("Contain") }]
-							}),
-							wp.element.createElement(
-								Fragment,
-								null,
-								wp.element.createElement(
-									"p",
-									{ className: "uagb-setting-label" },
-									__("Image Overlay Color"),
-									wp.element.createElement(
-										"span",
-										{ className: "components-base-control__label" },
-										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: backgroundImageColor } })
-									)
-								),
-								wp.element.createElement(ColorPalette, {
-									value: backgroundImageColor,
-									onChange: function onChange(colorValue) {
-										return setAttributes({ backgroundImageColor: colorValue });
-									},
-									allowReset: true
-								})
-							)
-						)
-					),
-					"gradient" == backgroundType && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(PanelColorSettings, {
-							title: __("Color Settings"),
-							colorSettings: [{
-								value: gradientColor1,
-								onChange: function onChange(value) {
-									return setAttributes({ gradientColor1: value });
-								},
-								label: __("Color 1")
-							}, {
-								value: gradientColor2,
-								onChange: function onChange(value) {
-									return setAttributes({ gradientColor2: value });
-								},
-								label: __("Color 2")
-							}]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Type"),
-							value: gradientType,
-							onChange: function onChange(value) {
-								return setAttributes({ gradientType: value });
-							},
-							options: [{ value: "linear", label: __("Linear") }, { value: "radial", label: __("Radial") }]
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Location 1"),
-							value: gradientLocation1,
-							onChange: function onChange(value) {
-								return setAttributes({ gradientLocation1: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Location 2"),
-							value: gradientLocation2,
-							onChange: function onChange(value) {
-								return setAttributes({ gradientLocation2: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Angle"),
-							value: gradientAngle,
-							onChange: function onChange(value) {
-								return setAttributes({ gradientAngle: value });
-							},
-							min: 0,
-							max: 360,
-							allowReset: true
-						})
-					),
-					("color" == backgroundType || "image" == backgroundType && backgroundImage || "gradient" == backgroundType) && wp.element.createElement(RangeControl, {
-						label: __("Opacity"),
-						value: backgroundOpacity,
-						onChange: function onChange(value) {
-							return setAttributes({ backgroundOpacity: value });
-						},
-						min: 0,
-						max: 100,
-						allowReset: true,
-						initialPosition: 0
-					})
-				)
-			);
-
-			var block_border = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Border"), initialOpen: false },
-					wp.element.createElement(SelectControl, {
-						label: __("Border Style"),
-						value: blockBorderStyle,
-						onChange: function onChange(value) {
-							return setAttributes({ blockBorderStyle: value });
-						},
-						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }, { value: "groove", label: __("Groove") }, { value: "inset", label: __("Inset") }, { value: "outset", label: __("Outset") }, { value: "ridge", label: __("Ridge") }]
-					}),
-					"none" != blockBorderStyle && wp.element.createElement(RangeControl, {
-						label: __("Border Width"),
-						value: blockBorderWidth,
-						onChange: function onChange(value) {
-							return setAttributes({ blockBorderWidth: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Border Radius"),
-						value: blockBorderRadius,
-						onChange: function onChange(value) {
-							return setAttributes({ blockBorderRadius: value });
-						},
-						min: 0,
-						max: 1000,
-						allowReset: true
-					}),
-					"none" != blockBorderStyle && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Border Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: blockBorderColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: blockBorderColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ blockBorderColor: colorValue });
-							},
-							allowReset: true
-						})
-					)
-				)
-			);
-
 			return wp.element.createElement(
 				Fragment,
 				null,
 				wp.element.createElement(
 					BlockControls,
 					{ key: "controls" },
-					skinStyle === "quotation" && wp.element.createElement(AlignmentToolbar, {
+					skinStyle !== "border" && wp.element.createElement(AlignmentToolbar, {
 						value: align,
 						onChange: function onChange(value) {
 							return setAttributes({ align: value });
@@ -63681,24 +63415,6 @@ var UAGBBlockQuote = function (_Component) {
 									__WEBPACK_IMPORTED_MODULE_9__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_2
 								)
 							)
-						),
-						wp.element.createElement(
-							Toolbar,
-							null,
-							wp.element.createElement(
-								Tooltip,
-								{ text: __("Quote On Top") },
-								wp.element.createElement(
-									Button,
-									{
-										className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("components-icon-button", "components-toolbar__control", { "is-active": quoteStyle === "style_3" }),
-										onClick: function onClick() {
-											return setAttributes({ quoteStyle: "style_3" });
-										}
-									},
-									__WEBPACK_IMPORTED_MODULE_9__dist_blocks_uagb_controls_block_icons__["a" /* default */].style_3
-								)
-							)
 						)
 					)
 				),
@@ -63709,8 +63425,6 @@ var UAGBBlockQuote = function (_Component) {
 					Typography,
 					seperatorSettings,
 					twitter_settings,
-					background_settings,
-					skinStyle === "quotation" && block_border,
 					spacing_settings
 				),
 				wp.element.createElement(
@@ -63721,7 +63435,6 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"div",
 						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle === "quotation" ? "uagb-quote__align-" + align + " uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin : "", enableTweet ? "uagb-quote__tweet-" + iconView : "", skinStyle !== "border" ? "uagb-quote__border" : "") },
-						backgroundType !== 'none' && wp.element.createElement("div", { className: "uagb-quote__overlay" }),
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
@@ -64162,26 +63875,7 @@ function styling(props) {
 	    tweetBtnHrPadding = _props$attributes.tweetBtnHrPadding,
 	    tweetBtnVrPadding = _props$attributes.tweetBtnVrPadding,
 	    tweetIconSpacing = _props$attributes.tweetIconSpacing,
-	    backgroundType = _props$attributes.backgroundType,
-	    backgroundPosition = _props$attributes.backgroundPosition,
-	    backgroundSize = _props$attributes.backgroundSize,
-	    backgroundOpacity = _props$attributes.backgroundOpacity,
-	    backgroundAttachment = _props$attributes.backgroundAttachment,
-	    backgroundImage = _props$attributes.backgroundImage,
-	    backgroundColor = _props$attributes.backgroundColor,
-	    backgroundImageColor = _props$attributes.backgroundImageColor,
-	    backgroundRepeat = _props$attributes.backgroundRepeat,
-	    gradientColor1 = _props$attributes.gradientColor1,
-	    gradientColor2 = _props$attributes.gradientColor2,
-	    gradientLocation1 = _props$attributes.gradientLocation1,
-	    gradientLocation2 = _props$attributes.gradientLocation2,
-	    gradientType = _props$attributes.gradientType,
-	    gradientAngle = _props$attributes.gradientAngle,
 	    contentPadding = _props$attributes.contentPadding,
-	    blockBorderStyle = _props$attributes.blockBorderStyle,
-	    blockBorderWidth = _props$attributes.blockBorderWidth,
-	    blockBorderRadius = _props$attributes.blockBorderRadius,
-	    blockBorderColor = _props$attributes.blockBorderColor,
 	    authorImage = _props$attributes.authorImage,
 	    authorImageWidth = _props$attributes.authorImageWidth,
 	    authorImageSize = _props$attributes.authorImageSize,
@@ -64208,8 +63902,6 @@ function styling(props) {
 	if (skinStyle == 'border') {
 		text_align = 'left';
 	}
-
-	var position = backgroundPosition.replace("-", " ");
 
 	var selectors = {
 		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
@@ -64332,48 +64024,6 @@ function styling(props) {
 
 		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover a.uagb-blockquote__tweet-button:before"] = {
 			"border-right-color": tweetBtnBgHoverColor
-		};
-	}
-
-	if ("image" === backgroundType) {
-
-		selectors[" .uagb-blockquote__wrap"] = {
-			"background-image": backgroundImage ? "url(" + backgroundImage.url + ")" : null,
-			"background-position": position,
-			"background-attachment": backgroundAttachment,
-			"background-repeat": backgroundRepeat,
-			"background-size": backgroundSize
-		};
-		selectors[" .uagb-quote__overlay"] = {
-			"background-color": backgroundImageColor,
-			"opacity": typeof backgroundOpacity != "undefined" ? (100 - backgroundOpacity) / 100 : 0.5
-		};
-	} else if ("color" === backgroundType) {
-
-		selectors[" .uagb-quote__overlay"] = {
-			"background-color": backgroundColor,
-			"opacity": typeof backgroundOpacity != "undefined" ? (100 - backgroundOpacity) / 100 : 0.5
-		};
-	} else if ("gradient" === backgroundType) {
-
-		var style = "radial-gradient( at center center, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		if ("linear" === gradientType) {
-			style = "linear-gradient(" + gradientAngle + "deg, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		}
-
-		selectors[" .uagb-blockquote__wrap"] = {
-			"background-color": 'transparent',
-			"background-image": style,
-			"border-radius": blockBorderRadius + "px"
-		};
-	}
-
-	// Border css
-	if (blockBorderStyle != "none") {
-		selectors[" .uagb-quote__border"] = {
-			"border-style": blockBorderStyle,
-			"border-width": blockBorderWidth + "px",
-			"border-color": blockBorderColor
 		};
 	}
 
@@ -64604,78 +64254,8 @@ var attributes = {
 		type: "number",
 		default: 20
 	},
-	backgroundType: {
-		type: "string",
-		default: "none"
-	},
-	backgroundImage: {
-		type: "object"
-	},
-	backgroundPosition: {
-		type: "string",
-		default: "center-center"
-	},
-	backgroundSize: {
-		type: "string",
-		default: "cover"
-	},
-	backgroundRepeat: {
-		type: "string",
-		default: "no-repeat"
-	},
-	backgroundAttachment: {
-		type: "string",
-		default: "scroll"
-	},
-	backgroundColor: {
-		type: "string",
-		default: "#eeeeee"
-	},
-	gradientColor1: {
-		type: "string"
-	},
-	gradientColor2: {
-		type: "string"
-	},
-	gradientType: {
-		type: "string",
-		default: "linear"
-	},
-	gradientLocation1: {
-		type: "number",
-		default: 0
-	},
-	gradientLocation2: {
-		type: "number",
-		default: 100
-	},
-	gradientAngle: {
-		type: "number",
-		default: 0
-	},
-	backgroundOpacity: {
-		type: "number"
-	},
-	backgroundImageColor: {
-		type: "string"
-	},
 	contentPadding: {
 		type: "number"
-	},
-	blockBorderStyle: {
-		type: "string",
-		default: "none"
-	},
-	blockBorderWidth: {
-		type: "number",
-		default: 1
-	},
-	blockBorderRadius: {
-		type: "number"
-	},
-	blockBorderColor: {
-		type: "string",
-		default: "#abb8c3"
 	}
 };
 

@@ -168,17 +168,7 @@
 	    -o-transition: 0.3s;
 	    transition: 0.3s;
 	}
-
-	.uagb-quote__overlay{
-		position: absolute;
-	    top: 0;
-	    bottom: 0;
-	    width: 100%;
-	    height: 100%;
-	    background-color: transparent;
-	    opacity: 1;
-	}
-
+	
 	.uagb-quote__with-tweet.uagb-quote__align-center .uagb-blockquote footer,
 	.uagb-quote__align-center .uagb-blockquote footer{
 		display: block;
