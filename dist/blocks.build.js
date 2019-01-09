@@ -6115,6 +6115,7 @@ function inlineStyles(props, isEditor) {
 	    backgroundAttachment = _props$attributes.backgroundAttachment,
 	    backgroundImage = _props$attributes.backgroundImage,
 	    backgroundColor = _props$attributes.backgroundColor,
+	    backgroundOpacity = _props$attributes.backgroundOpacity,
 	    backgroundRepeat = _props$attributes.backgroundRepeat,
 	    backgroundType = _props$attributes.backgroundType,
 	    gradientColor1 = _props$attributes.gradientColor1,
@@ -6184,6 +6185,7 @@ function inlineStyles(props, isEditor) {
 		style["background-size"] = backgroundSize;
 	} else if ("gradient" === backgroundType) {
 		style["background-color"] = "transparent";
+		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
 
 		if ("linear" === gradientType) {
 
@@ -48052,6 +48054,8 @@ function styling(props) {
 		}
 	};
 
+	selectors[" > .uagb-section__overlay"] = {};
+
 	if ("video" == backgroundType) {
 		selectors[" > .uagb-section__overlay"] = {
 			"opacity": 1,
@@ -48059,10 +48063,10 @@ function styling(props) {
 		};
 	} else if ("image" == backgroundType) {
 		selectors[" > .uagb-section__overlay"] = {
-			"opacity": typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "",
+			"opacity": typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : 0,
 			"background-color": backgroundImageColor
 		};
-	} else {
+	} else if ("color" == backgroundType) {
 		selectors[" > .uagb-section__overlay"] = {
 			"opacity": typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "",
 			"background-color": backgroundColor
@@ -61331,9 +61335,6 @@ registerBlockType("uagb/call-to-action", {
 
 
 		var my_block_id = "uagb-cta-block-" + block_id;
-		var ClassNamesId = typeof className != "undefined" ? className : "";
-
-		ClassNamesId = ClassNamesId + " " + my_block_id;
 
 		var is_cta = wp.element.createElement(__WEBPACK_IMPORTED_MODULE_5__components_CallToAction__["a" /* default */], { attributes: props.attributes, setAttributes: "not_set" });
 
@@ -61341,10 +61342,10 @@ registerBlockType("uagb/call-to-action", {
 		var desc = wp.element.createElement(
 			Fragment,
 			null,
-			wp.element.createElement(
+			"" !== description && wp.element.createElement(
 				"div",
 				{ className: "uagb-cta-text-wrap" },
-				"" !== description && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Description__["a" /* default */], { attributes: props.attributes, setAttributes: "not_set" })
+				wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Description__["a" /* default */], { attributes: props.attributes, setAttributes: "not_set" })
 			)
 		);
 
@@ -61352,10 +61353,10 @@ registerBlockType("uagb/call-to-action", {
 		var title_text = wp.element.createElement(
 			Fragment,
 			null,
-			wp.element.createElement(
+			"" !== ctaTitle && wp.element.createElement(
 				"div",
 				{ className: "uagb-cta__title-wrap" },
-				"" !== ctaTitle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Title__["a" /* default */], { attributes: props.attributes, setAttributes: "not_set" })
+				wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__components_Title__["a" /* default */], { attributes: props.attributes, setAttributes: "not_set" })
 			)
 		);
 
