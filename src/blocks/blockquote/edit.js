@@ -16,8 +16,6 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	RichText,
-	PanelColorSettings,
 	ColorPalette,
 	MediaUpload
 } = wp.editor
@@ -42,14 +40,14 @@ class UAGBBlockQuote extends Component {
 
 	constructor() {
 		super( ...arguments )
-		this.onSelectAuthorImage    = this.onSelectAuthorImage.bind( this )
-		this.onRemoveAuthorImage    = this.onRemoveAuthorImage.bind( this )
+		this.onSelectImage    = this.onSelectImage.bind( this )
+		this.onRemoveImage    = this.onRemoveImage.bind( this )
 	}
 	
 	/*
 	 * Event to set Image as null while removing.
 	 */
-	onRemoveAuthorImage() {
+	onRemoveImage() {
 		const { authorImage } = this.props.attributes
 		const { setAttributes } = this.props
 
@@ -59,7 +57,7 @@ class UAGBBlockQuote extends Component {
 	/*
 	 * Event to set Image as while adding.
 	 */
-	onSelectAuthorImage( media ) {
+	onSelectImage( media ) {
 
 		const { authorImage } = this.props.attributes
 		const { setAttributes } = this.props
@@ -307,7 +305,7 @@ class UAGBBlockQuote extends Component {
 				>
 					<MediaUpload
 						title={ __( "Select Image" ) }
-						onSelect={ this.onSelectAuthorImage }
+						onSelect={ this.onSelectImage }
 						allowedTypes= { [ "image" ] }
 						value={ authorImage }
 						render={ ( { open } ) => (
@@ -317,7 +315,7 @@ class UAGBBlockQuote extends Component {
 						) }
 					/>
 					{ ( authorImage && authorImage.url !=="null" && authorImage.url !== "" ) &&
-						<Button className="uagb-rm-btn" onClick={ this.onRemoveAuthorImage } isLink isDestructive>
+						<Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 							{ __( "Remove Image" ) }
 						</Button>
 					}

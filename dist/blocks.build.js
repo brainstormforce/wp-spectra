@@ -65578,8 +65578,6 @@ var _wp$editor = wp.editor,
     AlignmentToolbar = _wp$editor.AlignmentToolbar,
     BlockControls = _wp$editor.BlockControls,
     InspectorControls = _wp$editor.InspectorControls,
-    RichText = _wp$editor.RichText,
-    PanelColorSettings = _wp$editor.PanelColorSettings,
     ColorPalette = _wp$editor.ColorPalette,
     MediaUpload = _wp$editor.MediaUpload;
 var _wp$components = wp.components,
@@ -65608,8 +65606,8 @@ var UAGBBlockQuote = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (UAGBBlockQuote.__proto__ || Object.getPrototypeOf(UAGBBlockQuote)).apply(this, arguments));
 
-		_this.onSelectAuthorImage = _this.onSelectAuthorImage.bind(_this);
-		_this.onRemoveAuthorImage = _this.onRemoveAuthorImage.bind(_this);
+		_this.onSelectImage = _this.onSelectImage.bind(_this);
+		_this.onRemoveImage = _this.onRemoveImage.bind(_this);
 		return _this;
 	}
 
@@ -65619,8 +65617,8 @@ var UAGBBlockQuote = function (_Component) {
 
 
 	_createClass(UAGBBlockQuote, [{
-		key: "onRemoveAuthorImage",
-		value: function onRemoveAuthorImage() {
+		key: "onRemoveImage",
+		value: function onRemoveImage() {
 			var authorImage = this.props.attributes.authorImage;
 			var setAttributes = this.props.setAttributes;
 
@@ -65633,8 +65631,8 @@ var UAGBBlockQuote = function (_Component) {
    */
 
 	}, {
-		key: "onSelectAuthorImage",
-		value: function onSelectAuthorImage(media) {
+		key: "onSelectImage",
+		value: function onSelectImage(media) {
 			var authorImage = this.props.attributes.authorImage;
 			var setAttributes = this.props.setAttributes;
 
@@ -65907,7 +65905,7 @@ var UAGBBlockQuote = function (_Component) {
 					},
 					wp.element.createElement(MediaUpload, {
 						title: __("Select Image"),
-						onSelect: this.onSelectAuthorImage,
+						onSelect: this.onSelectImage,
 						allowedTypes: ["image"],
 						value: authorImage,
 						render: function render(_ref) {
@@ -65921,7 +65919,7 @@ var UAGBBlockQuote = function (_Component) {
 					}),
 					authorImage && authorImage.url !== "null" && authorImage.url !== "" && wp.element.createElement(
 						Button,
-						{ className: "uagb-rm-btn", onClick: this.onRemoveAuthorImage, isLink: true, isDestructive: true },
+						{ className: "uagb-rm-btn", onClick: this.onRemoveImage, isLink: true, isDestructive: true },
 						__("Remove Image")
 					)
 				),
