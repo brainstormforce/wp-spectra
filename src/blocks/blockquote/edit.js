@@ -102,7 +102,6 @@ class UAGBBlockQuote extends Component {
 			quoteColor,
 			quoteBgColor,
 			quoteSize,
-			quoteBgSize,
 			quoteBorderRadius,
 			quoteStyle,
 			seperatorWidth,
@@ -134,6 +133,9 @@ class UAGBBlockQuote extends Component {
 			quoteBottomMargin,
 			quoteLeftMargin,
 			quoteRightMargin,
+			quoteHoverColor,
+			quoteBgHoverColor,
+			borderHoverColor,
 		} = attributes
 
 		// Add CSS.
@@ -206,15 +208,7 @@ class UAGBBlockQuote extends Component {
 					min={ 0 }
 					max={ 200 }
 					allowReset
-				/>	
-				<RangeControl
-					label={ __( "Quote Background Size" ) }
-					value={ quoteBgSize }
-					onChange={ ( value ) => setAttributes( { quoteBgSize: value } ) }
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>			
+				/>					
 				<RangeControl
 					label={ __( "Quote Border Radius" ) }
 					value={ quoteBorderRadius }
@@ -443,7 +437,38 @@ class UAGBBlockQuote extends Component {
 		)
 
 		const hoverSettings = (
-			<Fragment>
+			<Fragment>			 
+				
+				{ skinStyle == "border" && <Fragment>
+					<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
+					<span className="components-base-control__label">
+					<span className="component-color-indicator" style={{ backgroundColor: borderHoverColor }} ></span></span></p>
+					<ColorPalette
+						value={ borderHoverColor }
+						onChange={ ( colorValue ) => setAttributes( { borderHoverColor: colorValue } ) }
+						allowReset
+					/>					
+					</Fragment>
+				}
+				{ skinStyle == "quotation" && <Fragment>
+					<p className="uagb-setting-label">{ __( "Quote Hover Color" ) }
+					<span className="components-base-control__label">
+					<span className="component-color-indicator" style={{ backgroundColor: quoteHoverColor }} ></span></span></p>
+					<ColorPalette
+						value={ quoteHoverColor }
+						onChange={ ( colorValue ) => setAttributes( { quoteHoverColor: colorValue } ) }
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Quote Background Hover Color" ) }
+						<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: quoteBgHoverColor }} ></span></span></p>
+						<ColorPalette
+							value={ quoteBgHoverColor }
+							onChange={ ( colorValue ) => setAttributes( { quoteBgHoverColor: colorValue } ) }
+							allowReset
+					/>		
+					</Fragment>
+				}
 				{ enableTweet && iconSkin == 'link' && <Fragment>							
 					    <p className="uagb-setting-label">{ __( "Tweet Hover Color" ) }
 						<span className="components-base-control__label">

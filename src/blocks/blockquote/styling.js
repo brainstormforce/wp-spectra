@@ -26,7 +26,6 @@ function styling( props ) {
 		quoteColor,
 		quoteSize,
 		quoteGap,
-		quoteBgSize,
 		quoteBgColor,
 		seperatorWidth,
 		seperatorThickness,
@@ -51,7 +50,10 @@ function styling( props ) {
 		quoteTopMargin,
 		quoteBottomMargin,
 		quoteLeftMargin,
-		quoteRightMargin,	
+		quoteRightMargin,
+		quoteHoverColor,
+		quoteBgHoverColor,
+		borderHoverColor,	
 	} = props.attributes
 
 	var content_align ="center"
@@ -95,6 +97,9 @@ function styling( props ) {
 			"padding-top": verticalPadding + "px",
 			"padding-bottom": verticalPadding + "px",
 		},
+		" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover":{
+			"border-left-color": borderHoverColor,
+		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
 			"color"         : quoteColor,
 			"font-size"     : quoteSize+"px",
@@ -102,13 +107,16 @@ function styling( props ) {
 			"height"        : quoteSize+"px",
 			"line-height"   : quoteSize+"px",
 			"background"    : quoteBgColor,
-			"padding"       : quoteBgSize+"px",
 			"border-radius" : quoteBorderRadius+"%",
 			"margin-top"    : quoteTopMargin + "px",
 			"margin-bottom" : quoteBottomMargin + "px",
 			"margin-left"   : quoteLeftMargin + "px",
 			"margin-right"  : quoteRightMargin + "px",
-		},					
+		},	
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover":{
+			"color"         : quoteHoverColor,
+			"background"    : quoteBgHoverColor,
+		},				
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
 		},				
@@ -177,12 +185,12 @@ function styling( props ) {
 			"background-color": tweetBtnBgHoverColor,	
 		}
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover"] = {
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover "] = {
 			"color": tweetBtnHoverColor,		
 			"background-color": tweetBtnBgHoverColor,	
 		}
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover a.uagb-blockquote__tweet-button:before"] = {
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = {
 			"border-right-color": tweetBtnBgHoverColor,	
 		}
 	}

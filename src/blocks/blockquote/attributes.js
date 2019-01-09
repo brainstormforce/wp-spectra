@@ -159,10 +159,7 @@ const attributes = {
 	quoteSize: {
 		type: "number",
 		default: 60,
-	},	
-	quoteBgSize: {
-		type: "number",
-	},
+	},		
 	quoteBorderRadius: {
 		type: "number",
 		default: 100,
@@ -201,7 +198,16 @@ const attributes = {
 	},
 	quoteRightMargin:{
 		type: "number",
-	},				
+	},	
+	quoteHoverColor: {
+		type: "string",
+	},
+	quoteBgHoverColor: {
+		type: "string",
+	},
+	borderHoverColor: {
+		type: "string",
+	},			
 }
 
 export default attributes

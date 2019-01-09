@@ -2326,7 +2326,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"height"            => $attr['quoteSize']."px",
 				"line-height"       => $attr['quoteSize']."px",
 				"background"        => $attr['quoteBgColor'],
-				"padding"           => $attr['quoteBgSize']."px",
 				"border-radius"     => $attr['quoteBorderRadius']."%",
 				"margin-top"        => $attr['quoteTopMargin'] . "px",
 				"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
@@ -2356,6 +2355,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"width"             => $attr['authorImageWidth']."px",
 				"height"            => $attr['authorImageWidth']."px",
 				"border-radius"     => $attr['authorImgBorderRadius']."%"
+			);	
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover"] = array(
+				"color"         => $attr['quoteHoverColor'],
+				"background"    => $attr['quoteBgHoverColor'],
+			);	
+
+			$selectors[" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover"] = array(
+				"border-left-color"         => $attr['borderHoverColor'],
 			);	
 
 			if( $attr['enableTweet'] ){
@@ -2407,7 +2415,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"background-color"   => $attr['tweetBtnBgHoverColor'],	
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover a.uagb-blockquote__tweet-button:before"] = array(
+				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = array(
 					"border-right-color" => $attr['tweetBtnBgHoverColor'],	
 				);
 			}

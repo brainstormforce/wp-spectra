@@ -731,7 +731,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quoteBottomMargin'     => '',
 							'quoteLeftMargin'       => '',
 							'quoteRightMargin'      => '',
-							'quoteBgSize'           => '',
 							'quoteBorderRadius'     => 100,
 							'quoteBgColor'          => '',
 							'seperatorStyle'        => 'none',
@@ -739,6 +738,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorWidth'        => 100,
 							'seperatorThickness'    => 2,
 							'seperatorSpace'        => 20,
+							'quoteHoverColor'       => '',
+							'quoteBgHoverColor'     => '',
+							'borderHoverColor'      => '',
 						),
 					),
 				);
