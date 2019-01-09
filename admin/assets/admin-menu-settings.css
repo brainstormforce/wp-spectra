@@ -25,6 +25,24 @@
 	margin: 1em 0;
 }
 
+.uagb-container img.uagb-ast-img {
+    width: 100%;
+}
+
+.uagb-intro-section {
+	padding: 20px;
+}
+
+.uagb-title .uagb-plugin-version {
+	background-color: #e5e5e5;
+    border-radius: 3px;
+    font-size: 0.5em;
+    font-weight: 400;
+    margin-left: 10px;
+    padding: 2px 7px;
+    color: #333;
+}
+
 .uagb-container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -177,6 +195,11 @@
 	font-size: 1.5rem;
 	color: #333333;
 	font-weight: 500;
+}
+
+.uagb-title > a {
+	display: flex;
+    align-items: center;
 }
 
 .uagb-header-icon {

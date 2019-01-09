@@ -18,6 +18,7 @@
 					} else {
 						echo '<h4>' . UAGB_PLUGIN_NAME . '</h4>'; }
 					?>
+						<span class="uagb-plugin-version"><?php echo UAGB_VER; ?></span>
 					</a>
 				</div>
 				<div class="uagb-top-links">

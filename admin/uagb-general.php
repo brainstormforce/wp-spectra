@@ -22,6 +22,22 @@ $support_url    = $support_data['support_url'];
 			<!-- All WordPress Notices below header -->
 			<h1 class="screen-reader-text"> <?php _e( 'General', 'ultimate-addons-for-gutenberg' ); ?> </h1>
 				<div class="widgets postbox">
+					<div class="uagb-intro-section">
+						<div class="s-intro-col1">
+							<h2><img draggable="false" class="emoji" alt="👋" src="https://s.w.org/images/core/emoji/11/svg/1f44b.svg"> Hello!</h2>
+							<p>Stackable supercharges the new Block Editor to give you the capability to build awesome front pages and landing pages. <img draggable="false" class="emoji" alt="⚡️" src="https://s.w.org/images/core/emoji/11/svg/26a1.svg"><img draggable="false" class="emoji" alt="🚀" src="https://s.w.org/images/core/emoji/11/svg/1f680.svg"></p>
+							<p>We've come up with a collection of cool blocks that will make website building a breeze. We made sure our blocks look great, fresh and responsive.</p>
+						</div>
+						<div class="s-intro-col">
+							<h2><img draggable="false" class="emoji" alt="📖" src="https://s.w.org/images/core/emoji/11/svg/1f4d6.svg"> How to Use</h2>
+							<ol>
+								<li>Edit your page and click on the <img src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgcm9sZT0iaW1nIiBmb2N1c2FibGU9ImZhbHNlIiBjbGFzcz0iZGFzaGljb24gZGFzaGljb25zLWluc2VydCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZD0iTTEwIDFjLTUgMC05IDQtOSA5czQgOSA5IDkgOS00IDktOS00LTktOS05em0wIDE2Yy0zLjkgMC03LTMuMS03LTdzMy4xLTcgNy03IDcgMy4xIDcgNy0zLjEgNy03IDd6bTEtMTFIOXYzSDZ2MmgzdjNoMnYtM2gzVjloLTNWNnoiPjwvcGF0aD48L3N2Zz4=" class="s-plus-button"> button to add a block</li>
+								<li>Scroll down and pick a Stackable block and customize it!</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+				<div class="widgets postbox">
 					<h2 class="hndle uagb-flex uagb-widgets-heading"><span><?php esc_html_e( 'Blocks', 'ultimate-addons-for-gutenberg' ); ?></span>
 						<div class="uagb-bulk-actions-wrap">
 							<a class="bulk-action uagb-activate-all button"> <?php esc_html_e( 'Activate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
@@ -87,6 +103,21 @@ $support_url    = $support_data['support_url'];
 		</div>
 		<div class="postbox-container uagb-sidebar" id="postbox-container-1">
 			<div id="side-sortables">
+				<div class="postbox">
+					<h2 class="hndle uagb-normal-cusror">
+						<span class="dashicons dashicons-admin-customizer"></span>
+						<span><?php esc_html_e( 'Free Theme Download', 'ultimate-addons-for-gutenberg' ); ?></span>
+					</h2>
+					<img class="uagb-ast-img" src="http://localhost/projects/local/wp-content/themes/astra/assets/images/astra-starter-sites.jpg">
+					<div class="inside">
+						<p>
+							Did you know Astra offers a free library of <a href="https://wpastra.com/ready-websites/installing-importing-astra-sites/?utm_source=astra-dashboard&amp;utm_medium=how-astra-sites-works&amp;utm_campaign=welcome-page" target="_blank" rel="noopener">Starter Site Templates?</a> 					</p>
+						<p>
+							Import your favorite site one click and start your project in style!					</p>
+							<a class="button ast-sites-inactive" data-slug="astra-sites" data-init="/astra-sites/astra-sites.php"> Activate Importer Plugin </a>					<div>
+						</div>
+					</div>
+				</div>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
