@@ -25,6 +25,12 @@
 	margin: 1em 0;
 }
 
+#poststuff .uagb-intro-col h2 {
+	margin: 1em 0;
+    padding: 0;
+    font-size: 1.5em;
+}
+
 .uagb-container img.uagb-ast-img {
     width: 100%;
 }

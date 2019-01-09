@@ -23,17 +23,10 @@ $support_url    = $support_data['support_url'];
 			<h1 class="screen-reader-text"> <?php _e( 'General', 'ultimate-addons-for-gutenberg' ); ?> </h1>
 				<div class="widgets postbox">
 					<div class="uagb-intro-section">
-						<div class="s-intro-col1">
-							<h2><img draggable="false" class="emoji" alt="👋" src="https://s.w.org/images/core/emoji/11/svg/1f44b.svg"> Hello!</h2>
-							<p>Stackable supercharges the new Block Editor to give you the capability to build awesome front pages and landing pages. <img draggable="false" class="emoji" alt="⚡️" src="https://s.w.org/images/core/emoji/11/svg/26a1.svg"><img draggable="false" class="emoji" alt="🚀" src="https://s.w.org/images/core/emoji/11/svg/1f680.svg"></p>
-							<p>We've come up with a collection of cool blocks that will make website building a breeze. We made sure our blocks look great, fresh and responsive.</p>
-						</div>
-						<div class="s-intro-col">
-							<h2><img draggable="false" class="emoji" alt="📖" src="https://s.w.org/images/core/emoji/11/svg/1f4d6.svg"> How to Use</h2>
-							<ol>
-								<li>Edit your page and click on the <img src="data:image/svg+xml;base64,PHN2ZyBhcmlhLWhpZGRlbj0idHJ1ZSIgcm9sZT0iaW1nIiBmb2N1c2FibGU9ImZhbHNlIiBjbGFzcz0iZGFzaGljb24gZGFzaGljb25zLWluc2VydCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHZpZXdCb3g9IjAgMCAyMCAyMCI+PHBhdGggZD0iTTEwIDFjLTUgMC05IDQtOSA5czQgOSA5IDkgOS00IDktOS00LTktOS05em0wIDE2Yy0zLjkgMC03LTMuMS03LTdzMy4xLTcgNy03IDcgMy4xIDcgNy0zLjEgNy03IDd6bTEtMTFIOXYzSDZ2MmgzdjNoMnYtM2gzVjloLTNWNnoiPjwvcGF0aD48L3N2Zz4=" class="s-plus-button"> button to add a block</li>
-								<li>Scroll down and pick a Stackable block and customize it!</li>
-							</ol>
+						<div class="uagb-intro-col">
+							<h2><?php esc_html_e( 'Welcome to the Ultimate Addons for Gutenberg!', 'ultimate-addons-for-gutenberg' ); ?></h2>
+							<p><?php esc_html_e( 'Supercharge the Gutenberg editor with advanced and creative blocks that let you build awesome websites in minutes.', 'ultimate-addons-for-gutenberg' ); ?></p>
+							<p><?php esc_html_e( 'Welcome an ever-growing library of advanced Gutenberg blocks with lots of customizations and settings that ease the process of website building.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						</div>
 					</div>
 				</div>
@@ -108,13 +101,13 @@ $support_url    = $support_data['support_url'];
 						<span class="dashicons dashicons-admin-customizer"></span>
 						<span><?php esc_html_e( 'Free Theme Download', 'ultimate-addons-for-gutenberg' ); ?></span>
 					</h2>
-					<img class="uagb-ast-img" src="http://localhost/projects/local/wp-content/themes/astra/assets/images/astra-starter-sites.jpg">
+					<img class="uagb-ast-img" src="https://i0.wp.com/themes.svn.wordpress.org/astra/1.6.2/screenshot.jpg">
 					<div class="inside">
-						<p>
-							Did you know Astra offers a free library of <a href="https://wpastra.com/ready-websites/installing-importing-astra-sites/?utm_source=astra-dashboard&amp;utm_medium=how-astra-sites-works&amp;utm_campaign=welcome-page" target="_blank" rel="noopener">Starter Site Templates?</a> 					</p>
-						<p>
-							Import your favorite site one click and start your project in style!					</p>
-							<a class="button ast-sites-inactive" data-slug="astra-sites" data-init="/astra-sites/astra-sites.php"> Activate Importer Plugin </a>					<div>
+						<p><?php esc_html_e( 'Looking out for a theme that is easy, fast and compatible with Gutenberg?', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<p><?php esc_html_e( 'Try Astra! Our FREE WordPress theme that can be used to build all kinds of websites with numerous customizations and options present in the customizer itself.', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<h4><?php esc_html_e( 'What\'s more?', 'ultimate-addons-for-gutenberg' ); ?></h4>
+						<p><?php esc_html_e( 'The theme is fully compatible with Gutenberg and gives you ready-to-use full website demos built with the Astra theme, Gutenberg and the Ultimate Addons for Gutenberg!', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<a class="button ast-sites-inactive" href="https://wordpress.org/themes/astra/" target="_blank"><?php esc_html_e( 'Try Now!', 'ultimate-addons-for-gutenberg' ); ?></a>					<div>
 						</div>
 					</div>
 				</div>

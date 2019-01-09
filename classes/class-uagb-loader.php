@@ -201,12 +201,14 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Activation Reset
 		 */
 		function activation_reset() {
+			update_option( '__uagb_do_redirect', true );
 		}
 
 		/**
 		 * Deactivation Reset
 		 */
 		function deactivation_reset() {
+			update_option( '__uagb_do_redirect', false );
 		}
 	}
 

@@ -22,6 +22,21 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			self::initialize_ajax();
 			self::initialise_plugin();
 			add_action( 'after_setup_theme', __CLASS__ . '::init_hooks' );
+			// Activation hook.
+			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
+		}
+
+		/**
+		 * Activation Reset
+		 */
+		public static function activation_redirect() {
+			if ( get_option( '__uagb_do_redirect' ) ) {
+				update_option( '__uagb_do_redirect', false );
+				if ( ! is_multisite() ) {
+					exit( wp_redirect( admin_url( 'options-general.php?page=uagb' ) ) );
+				}
+				exit();
+			}
 		}
 
 		/**
