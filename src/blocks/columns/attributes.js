@@ -21,7 +21,7 @@ const attributes = {
 	},
 	columnGap: {
 		type: "string",
-		default: "default"
+		default: "10"
 	},
 	topPadding: {
 		type: "number",
@@ -135,7 +135,41 @@ const attributes = {
 	},
 	borderColor : {
 		type: "string"
-	}
+	},
+	bottomType : {
+		type: "string",
+		default : "none"
+	},
+	bottomColor : {
+		type: "string"
+	},
+	bottomHeight : {
+		type: "number"
+	},
+	bottomWidth : {
+		type: "number"
+	},
+	topType : {
+		type: "string",
+		default : "none"
+	},
+	topColor : {
+		type: "string"
+	},
+	topHeight : {
+		type: "number"
+	},
+	topWidth : {
+		type: "number"
+	},
+	topFlip: {
+		type: "boolean",
+		default: false
+	},
+	bottomFlip: {
+		type: "boolean",
+		default: false
+	},
 }
 
 export default attributes

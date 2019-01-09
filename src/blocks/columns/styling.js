@@ -18,7 +18,14 @@ function styling( props ) {
 		backgroundVideo,
 		borderRadius,
 		contentWidth,
-		width
+		width,
+		columnGap,
+		topColor,
+		topHeight,
+		topWidth,
+		bottomColor,
+		bottomHeight,
+		bottomWidth,
 	} = props.attributes
 
 	let max_width = "100%"
@@ -36,7 +43,24 @@ function styling( props ) {
 		},
 		" > .uagb-columns__inner-wrap": {
 			"max-width" : max_width
-		}
+		},
+		" .uagb-column__inner-wrap" : {
+			"padding" : columnGap + "px"
+		},
+		" .uagb-columns__shape-top svg" : {
+			width: "calc( " + topWidth + "% + 1.3px )",
+			height: topHeight + "px"
+		},
+		" .uagb-columns__shape-top .uagb-columns__shape-fill" : {
+			fill: topColor
+		},
+		" .uagb-columns__shape-bottom svg" : {
+			width: "calc( " + bottomWidth + "% + 1.3px )",
+			height: bottomHeight + "px"
+		},
+		" .uagb-columns__shape-bottom .uagb-columns__shape-fill" : {
+			fill: bottomColor
+		},
 	}
 
 	selectors[" > .uagb-columns__overlay"] = {}

@@ -10,6 +10,7 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
+import shapes from "./shapes"
 
 
 // Components
@@ -54,10 +55,24 @@ registerBlockType( "uagb/columns", {
 			columns,
 			stack,
 			vAlign,
-			columnGap
+			columnGap,
+			topType,
+			bottomType
 		} = props.attributes
 
 		const CustomTag = `${tag}`
+
+		const top_divider_html = (
+			topType != "none" && (
+				<div className="uagb-columns__shape uagb-columns__shape-top">{shapes[topType]}</div>
+			)
+		)
+
+		const bottom_divider_html = (
+			bottomType != "none" && (
+				<div className="uagb-columns__shape uagb-columns__shape-bottom" data-negative="false">{shapes[bottomType]}</div>
+			)
+		)
 
 		return (
 			<CustomTag
@@ -73,6 +88,7 @@ registerBlockType( "uagb/columns", {
 				id={ `uagb-columns-${block_id}` }
 			>
 				<div className="uagb-columns__overlay"></div>
+				{ top_divider_html }
 				{ "video" == backgroundType &&
 					<div className="uagb-columns__video-wrap">
 						{  backgroundVideo &&
@@ -87,7 +103,7 @@ registerBlockType( "uagb/columns", {
 				) }>
 					<InnerBlocks.Content />
 				</div>
-
+				{ bottom_divider_html }
 			</CustomTag>
 		)
 	}

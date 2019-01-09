@@ -230,6 +230,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' > .uagb-columns__inner-wrap' => array(
 					'max-width' => $inner_width,
 				),
+				' .uagb-column__inner-wrap' => array(
+					'padding' => $attr['columnGap'] . 'px'
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'width' => "calc( " . $attr['topWidth'] . "% + 1.3px )",
+					'height' => $attr['topHeight'] . "px"
+				),
+				' .uagb-columns__shape-top .uagb-columns__shape-fill' => array(
+					'fill' => $attr['topColor']
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'width' => "calc( " . $attr['bottomWidth'] . "% + 1.3px )",
+					'height' => $attr['bottomHeight'] . "px"
+				),
+				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
+					'fill' => $attr['bottomColor']
+				),
 			);
 
 			if ( 'video' == $bg_type ) {
