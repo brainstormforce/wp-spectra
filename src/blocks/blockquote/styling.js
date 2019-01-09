@@ -43,7 +43,6 @@ function styling( props ) {
 		tweetBtnHrPadding,
 		tweetBtnVrPadding,
 		tweetIconSpacing,		
-		contentPadding,		
 		authorImage,
 		authorImageWidth,
 		authorImageSize,
@@ -128,10 +127,7 @@ function styling( props ) {
 		" .uagb-quote__separator-parent":{
 			"justify-content":content_align,
 			"margin-bottom":seperatorSpace+"px"
-		},
-		" .uagb-blockquote__content-wrap":{
-			"padding":contentPadding+"px"
-		},
+		},		
 		" .uagb-quote__author-wrap":{
 			"margin-bottom": author_space + "px",
 		},

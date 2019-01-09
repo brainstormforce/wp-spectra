@@ -80,7 +80,7 @@ const attributes = {
 	},
 	iconSkin: {
 		type: "string",
-		default: "classic"
+		default: "link"
 	},
 	iconLabel: {
 		type: "string",
@@ -190,10 +190,7 @@ const attributes = {
 	seperatorSpace:{
 		type: "number",
 		default : 20
-	},	
-	contentPadding: {
-		type: "number",
-	},	
+	},			
 }
 
 export default attributes
