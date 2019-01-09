@@ -200,6 +200,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/columns':
+					$css .= UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/column':
+					$css .= UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
