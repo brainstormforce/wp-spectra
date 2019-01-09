@@ -88,10 +88,14 @@ function uagb_post_masonry_add_script() {
 			?>
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
-					$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+
+					var $scope = $( '#uagb-post__masonry-<?php echo $key; ?>' );
+					$scope.imagesLoaded( function() {
+						$scope.find( '.is-masonry' ).isotope();
+					});
 
 					$( window ).resize( function() {
-						$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+						$scope.find( '.is-masonry' ).isotope();
 					} );
 				} )( jQuery );
 			</script>
