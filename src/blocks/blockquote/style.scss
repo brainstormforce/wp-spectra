@@ -129,7 +129,9 @@
 	    width: max-content;
 	    padding: 0;	   	    
 	    color: #1DA1F2;	
-	    background-color: transparent;   
+	    background-color: transparent;  
+	    -ms-flex-item-align: center;
+    	align-self: center; 
 	}
 
 	a.uagb-blockquote__tweet-button,
@@ -187,10 +189,61 @@
 		display: block;
 		text-align: center;
 		margin: 0 auto;
+		-ms-flex-item-align: center;
+    	align-self: center;
 	}
 
 	.uagb-quote__with-tweet.uagb-quote__align-right .uagb-blockquote footer,
 	.uagb-quote__align-right .uagb-blockquote footer{
 		flex-direction: row-reverse;
+	}
+
+	/* image */
+	.uagb-quote__author-image img{
+		width: 50px;
+   		height: 50px;
+    	border-radius: 100%;
+    	margin-right:10px;
+	}
+
+	.uagb-quote__author-wrap{
+	   	display: -webkit-box;
+	    display: -webkit-flex;
+	    display: -ms-flexbox;
+	    display: flex;
+    	flex-direction: row;
+	}
+
+	.uagb-quote__align-center .uagb-quote__author-wrap{
+		justify-content: center;
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		-webkit-justify-content: center;
+		-moz-box-pack: center;
+	}
+
+	.uagb-quote__author-wrap .editor-rich-text{
+		-ms-flex-item-align: center;
+    	align-self: center;
+	}
+
+
+	/* Left Image */
+	.uagb-quote__author-wrap.uagb-quote__author-at-left {
+		-webkit-flex-direction: row-reverse;
+		-ms-flex-direction: row-reverse;
+	    flex-direction: row-reverse;
+	}
+
+	.uagb-quote__author-wrap.uagb-quote__author-at-left .uagb-quote__author-image img{
+    	margin-left:10px;
+    	margin-right:0px;
+	}
+
+	/* Top Image */
+	.uagb-quote__author-wrap.uagb-quote__author-at-top {
+		-webkit-flex-direction: column;
+		-ms-flex-direction: column;
+	    flex-direction: column;
 	}
 }

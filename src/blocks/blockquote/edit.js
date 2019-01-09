@@ -8,8 +8,7 @@ import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
 import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
-
-
+import AuthorImage from "./components/AuthorImage"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
@@ -34,7 +33,8 @@ const {
 	BaseControl,
 	ToggleControl,
 	Toolbar,
-	Tooltip
+	Tooltip,
+	withNotices,
 } = wp.components
 
 // Extend component
@@ -47,7 +47,11 @@ class UAGBBlockQuote extends Component {
 
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
+
+		this.onSelectAuthorImage    = this.onSelectAuthorImage.bind( this )
+		this.onRemoveAuthorImage    = this.onRemoveAuthorImage.bind( this )
 	}
+	
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -76,6 +80,36 @@ class UAGBBlockQuote extends Component {
 		}
 
 		setAttributes( { backgroundImage: media } )
+	}	
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveAuthorImage() {
+		const { authorImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { authorImage: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectAuthorImage( media ) {
+
+		const { authorImage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { authorImage: null } )
+			return
+		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
+		setAttributes( { authorImage: media } )
 	}	
 
 	render() {
@@ -147,6 +181,11 @@ class UAGBBlockQuote extends Component {
 			blockBorderWidth,
 			blockBorderRadius,
 			blockBorderColor,
+			authorImage,
+			authorImageWidth,
+			authorImageSize,
+			authorImgBorderRadius,
+			authorImgPosition
 		} = attributes
 
 		// Add CSS.
@@ -154,6 +193,22 @@ class UAGBBlockQuote extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}	
+
+		let image_name = "Select Image"
+		if(authorImage){
+			if(authorImage.url == null || authorImage.url == "" ){
+				image_name = "Select Image"
+			}else{
+				image_name = "Replace Image"
+			}
+		}
+
+		// Image sizes.
+		const imageSizeOptions = [
+			{ value: "thumbnail", label: __( "Thumbnail" ) },
+			{ value: "medium", label: __( "Medium" ) },
+			{ value: "full", label: __( "Large" ) }
+		]
 
 		const border_settings =(
 			<Fragment>
@@ -247,14 +302,7 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>	
 				}
-				<RangeControl
-					label={ __( "Gap Beetween Quote and Content" ) }
-					value={ quoteGap }
-					onChange={ ( value ) => setAttributes( { quoteGap: value } ) }
-					min={ 0 }
-					max={ 100 }
-					allowReset
-				/>
+				
 			</Fragment>
 		)
 
@@ -344,6 +392,72 @@ class UAGBBlockQuote extends Component {
 			</Fragment>
 		)
 
+		// Image controls.
+		const imageControls = (
+			<Fragment>
+				<BaseControl
+					className="editor-bg-image-control"
+					label={ __( "Author Image" ) }
+				>
+					<MediaUpload
+						title={ __( "Select Image" ) }
+						onSelect={ this.onSelectAuthorImage }
+						allowedTypes= { [ "image" ] }
+						value={ authorImage }
+						render={ ( { open } ) => (
+							<Button isDefault onClick={ open }>
+								{ image_name }
+							</Button>
+						) }
+					/>
+					{ ( authorImage && authorImage.url !=="null" && authorImage.url !== "" ) &&
+						<Button className="uagb-rm-btn" onClick={ this.onRemoveAuthorImage } isLink isDestructive>
+							{ __( "Remove Image" ) }
+						</Button>
+					}
+				</BaseControl>
+				{ ( authorImage && authorImage.url !=="null" && authorImage.url !== "" ) &&
+					<Fragment>
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ authorImageSize }
+							onChange={ ( value ) => setAttributes( { authorImageSize: value } ) }
+						/>
+						<RangeControl
+							label={ __( "Iamge Width" ) }
+							value={ authorImageWidth }
+							onChange={ ( value ) => setAttributes( { authorImageWidth: value } ) }
+							min={ 0 }
+							max={ 200 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label = { __( "Image Rounded Corners" ) }
+							value = { authorImgBorderRadius }
+							onChange = { ( value ) => setAttributes( { authorImgBorderRadius: value } ) }
+							min = { 0 }
+							max = { 100 }
+							beforeIcon = ""
+							allowReset
+						/>
+						<SelectControl
+							label={ __( "Image Position" ) }
+							value={ authorImgPosition }
+							onChange={ ( value ) => setAttributes( { authorImgPosition: value } ) }
+							options={ [
+								{ value: "left", label: __( "Left" ) },
+								{ value: "right", label: __( "Right" ) },
+								{ value: "top", label: __( "Top" ) },
+							] }
+						/>
+					</Fragment>
+				}
+			</Fragment>
+		)
+
+
 		const Typography =(
 			<Fragment>
 				<PanelBody
@@ -368,7 +482,8 @@ class UAGBBlockQuote extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 							initialPosition={16}
-						/>
+						/>					
+						{ imageControls } 
 						{ enableTweet && <Fragment>
 							<RangeControl
 								label={ __( "Button Font Size" ) }
@@ -530,6 +645,14 @@ class UAGBBlockQuote extends Component {
 						allowReset
 						initialPosition={5}
 					/>	
+					<RangeControl
+						label={ __( "Gap Beetween Quote and Content" ) }
+						value={ quoteGap }
+						onChange={ ( value ) => setAttributes( { quoteGap: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
 					</PanelBody>
 			</Fragment>
 		)
@@ -813,8 +936,9 @@ class UAGBBlockQuote extends Component {
 						) }
 					</PanelBody>
 				</Fragment>
-			)
+		)
 
+		
 		return (
 			<Fragment>				
 				<BlockControls key='controls'>
@@ -875,7 +999,7 @@ class UAGBBlockQuote extends Component {
 					
 				</BlockControls>
 				<InspectorControls>
-					{ skin_settings }
+					{ skin_settings }					
 					{ Typography }
 					{ seperatorSettings }
 					{ twitter_settings }	
@@ -908,8 +1032,13 @@ class UAGBBlockQuote extends Component {
 						{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
 
 					   <footer>
-					      	{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
-							
+					   		<div className={ classnames(
+								"uagb-quote__author-wrap",
+								( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
+							) }	>					   		
+					      		{ <AuthorImage attributes={attributes} /> }
+					      		{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+							</div>
 					      	{ enableTweet &&  <TweetButton attributes={attributes} /> }
 					   </footer>
 					</div>

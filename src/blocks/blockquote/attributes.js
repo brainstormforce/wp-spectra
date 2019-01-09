@@ -18,6 +18,16 @@ const attributes = {
 		selector: "p",
 		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},
+	descColor: {
+		type: "string",
+	},
+	descFontSize: {
+		type: "number",
+	},		
+	descSpace :{
+		type: "number",
+		default: 20,
+	},	
 	author: {
 		selector: "div.uagb-blockquote__author",
 		default: "Author",
@@ -26,8 +36,39 @@ const attributes = {
 		type: "string",
 		default: "#888888"
 	},
-	descColor: {
+	authorFontSize: {
+		type: "number",
+	},
+	authorSpace: {
+		type: "number",
+		default: 15,
+	},	
+	authorImage: {
+		type: "object",	
+		default:{
+			"url": "",
+			"alt": "Author Image",
+		}	
+	},
+	authorImageSize:{
 		type: "string",
+		default: "thumbnail",
+	},
+	authorImageWidth :{
+		type: "number",
+		default: 40,
+	},	
+	authorImgBorderRadius: {
+		type: "number",
+		default : 100
+	},
+	authorImgPosition: {
+		type: "string",
+		default: "right",
+	},
+	stack: {
+		type: "string",
+		default: "tablet"
 	},
 	enableTweet:{
 		type: "boolean",
@@ -87,25 +128,7 @@ const attributes = {
 	tweetIconSpacing: {
 		type: "number",
 		default: 10
-	},
-	descFontSize: {
-		type: "number",
-	},
-	authorFontSize: {
-		type: "number",
-	},	
-	descSpace :{
-		type: "number",
-		default: 20,
-	},
-	authorSpace: {
-		type: "number",
-		default: 15,
-	},	
-	stack: {
-		type: "string",
-		default: "tablet"
-	},
+	},		
 	borderColor: {
 		type: "string",
 		default: "#abb8c3"
@@ -225,7 +248,6 @@ const attributes = {
 	},
 	contentPadding: {
 		type: "number",
-		default: 10
 	},
 	blockBorderStyle : {
 		type: "string",

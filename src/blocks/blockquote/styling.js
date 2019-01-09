@@ -63,6 +63,10 @@ function styling( props ) {
 		blockBorderWidth,
 		blockBorderRadius,
 		blockBorderColor,
+		authorImage,
+		authorImageWidth,
+		authorImageSize,
+		authorImgBorderRadius	
 	} = props.attributes
 
 	var content_align ="center"
@@ -97,8 +101,7 @@ function styling( props ) {
 		},
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + "px",
-			"color": authorColor,
-			"margin-bottom": author_space + "px",
+			"color": authorColor,			
 			"text-align": text_align,			
 		},
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote":{
@@ -149,6 +152,14 @@ function styling( props ) {
 		},
 		" .uagb-blockquote__content-wrap":{
 			"padding":contentPadding+"px"
+		},
+		" .uagb-quote__author-wrap":{
+			"margin-bottom": author_space + "px",
+		},
+		" .uagb-quote__author-image img":{
+			"width": authorImageWidth+"px",
+			"height": authorImageWidth+"px",
+			"border-radius": authorImgBorderRadius+"%"
 		}
 	}
 	
