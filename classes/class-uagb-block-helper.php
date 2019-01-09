@@ -154,9 +154,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Section Block CSS
+		 * Get Columns Block CSS
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -274,9 +274,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Section Block CSS
+		 * Get Single Column Block CSS
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
