@@ -2,8 +2,6 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
 import Description from "./components/Description"
@@ -105,6 +103,7 @@ class UAGBBlockQuote extends Component {
 			quoteBgColor,
 			quoteSize,
 			quoteBgSize,
+			quoteBorderRadius,
 			quoteGap,
 			quoteStyle,
 			seperatorWidth,
@@ -213,7 +212,14 @@ class UAGBBlockQuote extends Component {
 					max={ 50 }
 					allowReset
 				/>			
-								
+				<RangeControl
+					label={ __( "Quote Border Radius" ) }
+					value={ quoteBorderRadius }
+					onChange={ ( value ) => setAttributes( { quoteBorderRadius: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>				
 			</Fragment>
 		)
 
@@ -763,8 +769,6 @@ class UAGBBlockQuote extends Component {
 						( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
 						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
-						//( enableTweet ) ? `uagb-quote__tweet-${iconView}` : "",
-						//( skinStyle !== "border" ) ? `uagb-quote__border` : "",
 					) } >
 						
 						<blockquote className="uagb-blockquote">					  

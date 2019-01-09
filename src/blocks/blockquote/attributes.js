@@ -41,7 +41,7 @@ const attributes = {
 	},
 	authorSpace: {
 		type: "number",
-		default: 15,
+		default: 10,
 	},	
 	authorImage: {
 		type: "object",	
@@ -167,9 +167,12 @@ const attributes = {
 	quoteBgSize: {
 		type: "number",
 	},
+	quoteBorderRadius: {
+		type: "number",
+		default: 100,
+	},
 	quoteBgColor: {
 		type: "string",
-		default: "#333"
 	},
 	seperatorStyle: {
 		type: "string",

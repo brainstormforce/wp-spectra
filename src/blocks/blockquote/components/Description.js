@@ -21,7 +21,7 @@ class Description extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName='p'
+	                tagName='div'
 	                value={ attributes.description_text }
 	                placeholder={ __( "Write a Description" ) }
 	                className='uagb-blockquote__content'
@@ -44,7 +44,7 @@ class Description extends React.Component {
 		}else{
 			return (
 				<RichText.Content
-	                tagName='p'
+	                tagName='div'
 	                value={ attributes.description_text }
 	                className='uagb-blockquote__content'
 	            />

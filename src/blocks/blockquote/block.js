@@ -3,8 +3,13 @@
  */
 
 // Import block dependencies and components.
-//import classnames from "classnames"
+import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import Seperator from "./components/Seperator"
+import TweetButton from "./components/TweetButton"
+import Description from "./components/Description"
+import AuthorText from "./components/AuthorText"
+import AuthorImage from "./components/AuthorImage"
 
 // Import icon.
 import edit from "./edit"
@@ -55,23 +60,52 @@ registerBlockType( "uagb/blockquote", {
 			block_id,
 			skinStyle,
 			align,	
-			description_text,
-			author,		
-			authorColor,
-			descColor,
+			quoteStyle,
+			iconSkin,
+			seperatorStyle,
+			authorImage,
 			enableTweet,
-			tweetBtnColor,
-			tweetBtnHoverColor,
-			descFontSize,
-			authorFontSize,
-			tweetBtnFontSize,	
-			descSpace,
-			authorSpace,	
-			stack,
+			className,
+			iconView,
+			authorImgPosition,
 		} = props.attributes
 
 		return (
-			null
+			<div
+				className = { classnames(
+					className,						
+					"uagb-blockquote__outer-wrap",
+				) }
+				id={ `uagb-quote-${ block_id }` }>
+				<div className = { classnames(
+					"uagb-blockquote__wrap",
+					`uagb-blockquote__skin-${skinStyle}`,
+					( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
+					( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
+					( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
+				) } >
+					
+					<blockquote className="uagb-blockquote">					  
+					{ skinStyle === "quotation" && <span className="uagb-quote__icon"></span> }
+					<div className="uagb-blockquote__content-wrap">
+					   	{ <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
+
+					{ "none" !== seperatorStyle && <Seperator attributes={props.attributes} /> }
+
+				   <footer>
+				   		<div className={ classnames(
+							"uagb-quote__author-wrap",
+							( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
+						) }	>					   		
+				      		{ <AuthorImage attributes={props.attributes} /> }
+				      		{ <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
+						</div>
+				      	{ enableTweet &&  <TweetButton attributes={props.attributes} /> }
+				   </footer>
+				</div>
+				</blockquote>
+				</div>
+			</div>
 		)
 	}
 } )

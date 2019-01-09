@@ -2653,6 +2653,9 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
   .wp-block-uagb-blockquote cite.uagb-blockquote__author {
     font-style: normal;
     display: block; }
+  .wp-block-uagb-blockquote cite.uagb-blockquote__author {
+    -ms-flex-item-align: center;
+    align-self: center; }
   .wp-block-uagb-blockquote .uagb-blockquote__skin-quotation blockquote.uagb-blockquote,
   .wp-block-uagb-blockquote .uagb-blockquote__skin-clean blockquote.uagb-blockquote {
     margin: 0;
@@ -2669,13 +2672,17 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
     border-bottom: 0 none;
     font-style: normal; }
   .wp-block-uagb-blockquote .uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon {
-    font-size: 100px;
+    font-size: 60px;
     color: #e6e9ec;
     font-family: "Times New Roman", Times, serif;
     font-weight: 900;
-    line-height: 1;
+    line-height: 60px;
     display: block;
-    height: 0.6em; }
+    height: 100%;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    text-align: center; }
   .wp-block-uagb-blockquote .uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon:before {
     content: "“";
     color: inherit;
@@ -2716,6 +2723,8 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
     display: flex;
     -ms-flex-pack: start;
     justify-content: flex-start; }
+  .wp-block-uagb-blockquote .uagb-blockquote footer {
+    padding: 0 10px; }
   .wp-block-uagb-blockquote .uagb-quote__with-tweet .uagb-blockquote footer {
     display: -ms-flexbox;
     display: flex;

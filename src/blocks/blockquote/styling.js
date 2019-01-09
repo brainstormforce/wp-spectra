@@ -46,7 +46,8 @@ function styling( props ) {
 		authorImage,
 		authorImageWidth,
 		authorImageSize,
-		authorImgBorderRadius	
+		authorImgBorderRadius,
+		quoteBorderRadius	
 	} = props.attributes
 
 	var content_align ="center"
@@ -71,7 +72,7 @@ function styling( props ) {
 	}
 
 	var selectors = {
-		" .editor-rich-text p.uagb-blockquote__content.editor-rich-text__tinymce": {
+		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSize + "px",
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
@@ -93,31 +94,23 @@ function styling( props ) {
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
 			"color": quoteColor,
 			"font-size": quoteSize+"px",
-		},
-		" .uagb-quote__style-style_1.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
-			"margin-top": quoteGap + "px",
-		},		
-		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
-			"margin-top": quoteGap + "px",
-		},
-		" .uagb-quote__style-style_1 .uagb-blockquote":{
-			"text-align": align,
-		},
-		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"margin-right": quoteGap + "px",
-			"height":quoteSize+"px",
-			"line-height": quoteSize+"px",
-		},
-		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-quote__icon":{
 			"width":quoteSize+"px",
 			"height":quoteSize+"px",
 			"line-height": quoteSize+"px",
 			"background": quoteBgColor,
 			"padding": quoteBgSize+"px",
-		},		
-		" .uagb-quote__style-style_3.uagb-blockquote__skin-quotation .uagb-blockquote__content-wrap":{
-			"margin-top": "-"+(quoteSize/2)+"px",
+			"border-radius": quoteBorderRadius+"%",
 		},
+		" .uagb-quote__style-style_1.uagb-blockquote__skin-quotation .uagb-blockquote__content":{
+			"margin-top": quoteGap + "px",
+		},	
+		
+		" .uagb-quote__style-style_1 .uagb-blockquote":{
+			"text-align": align,
+		},
+		" .uagb-quote__style-style_2.uagb-blockquote__skin-quotation .uagb-quote__icon":{
+			"margin-right": quoteGap + "px",
+		},		
 		" .uagb-quote__separator":{
 			"width" : seperatorWidth+"%",
 			"border-top-width" : seperatorThickness+"px",
@@ -127,7 +120,8 @@ function styling( props ) {
 		" .uagb-quote__separator-parent":{
 			"justify-content":content_align,
 			"margin-bottom":seperatorSpace+"px"
-		},		
+		},
+		
 		" .uagb-quote__author-wrap":{
 			"margin-bottom": author_space + "px",
 		},
