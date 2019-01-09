@@ -19,23 +19,16 @@ const {
 	InnerBlocks,
 	ColorPalette,
 	InspectorControls,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 	MediaUpload,
 	PanelColorSettings
 } = wp.editor
 
 const {
-	TabPanel,
-	Dashicon,
 	PanelBody,
 	RangeControl,
 	SelectControl,
 	Button,
 	BaseControl,
-	withNotices,
-	ToggleControl,
 } = wp.components
 
 const {

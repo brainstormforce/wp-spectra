@@ -36,7 +36,6 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
-	Dashicon,
 	BaseControl,
 	withNotices,
 	ToggleControl,
