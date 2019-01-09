@@ -102,6 +102,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'topColor'               => '#333',
 							'topHeight'              => '',
 							'topWidth'               => '',
+							'bottomFlip'             => '',
+							'topFlip'                => '',
 						),
 					),
 					'uagb/column'           => array(

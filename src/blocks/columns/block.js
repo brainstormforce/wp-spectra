@@ -57,20 +57,37 @@ registerBlockType( "uagb/columns", {
 			vAlign,
 			columnGap,
 			topType,
-			bottomType
+			bottomType,
+			bottomFlip,
+			topFlip
 		} = props.attributes
 
 		const CustomTag = `${tag}`
 
 		const top_divider_html = (
 			topType != "none" && (
-				<div className="uagb-columns__shape uagb-columns__shape-top">{shapes[topType]}</div>
+				<div
+					className={ classnames(
+						"uagb-columns__shape",
+						"uagb-columns__shape-top",
+						{ "uagb-columns__shape-flip": topFlip === true }
+					) }>
+					{shapes[topType]}
+				</div>
 			)
 		)
 
 		const bottom_divider_html = (
 			bottomType != "none" && (
-				<div className="uagb-columns__shape uagb-columns__shape-bottom" data-negative="false">{shapes[bottomType]}</div>
+				<div
+					className={ classnames(
+						"uagb-columns__shape",
+						"uagb-columns__shape-bottom",
+						{ "uagb-columns__shape-flip": bottomFlip === true }
+					) }
+					data-negative="false">
+					{shapes[bottomType]}
+				</div>
 			)
 		)
 

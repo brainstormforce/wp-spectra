@@ -290,7 +290,7 @@ class UAGBColumns extends Component {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-top",
-						{ 'uagb-columns__shape-flip': topFlip === true }
+						{ "uagb-columns__shape-flip": topFlip === true }
 					) }>
 					{shapes[topType]}
 				</div>
@@ -303,7 +303,7 @@ class UAGBColumns extends Component {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-bottom",
-						{ 'uagb-columns__shape-flip': bottomFlip === true }
+						{ "uagb-columns__shape-flip": bottomFlip === true }
 					) }
 					data-negative="false">
 					{shapes[bottomType]}

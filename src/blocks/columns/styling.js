@@ -30,8 +30,8 @@ function styling( props ) {
 
 	let max_width = "100%"
 
-	if ( 'custom' == contentWidth ) {
-		if ( '' != width ) {
+	if ( "custom" == contentWidth ) {
+		if ( "" != width ) {
 			max_width = width + "px"
 		}
 	}
