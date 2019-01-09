@@ -64123,8 +64123,8 @@ var attributes = {
 		default: "center"
 	},
 	description_text: {
-		selector: "p",
-		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
+		selector: "div.uagb-blockquote__content",
+		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo."
 	},
 	descColor: {
 		type: "string"
@@ -64299,6 +64299,14 @@ var attributes = {
 		default: 2
 	},
 	seperatorSpace: {
+		type: "number",
+		default: 20
+	},
+	quoteTopMargin: {
+		type: "number",
+		default: -10
+	},
+	quoteBottomMargin: {
 		type: "number",
 		default: 20
 	}
