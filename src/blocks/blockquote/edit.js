@@ -230,7 +230,18 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
 					/>
 					{ skinStyle === "border" && border_settings	}
-					{ skinStyle === "quotation" && quote_settings }					
+					{ skinStyle === "quotation" && quote_settings }						
+					<SelectControl
+						label={ __( "Stack on" ) }
+						value={ stack }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "tablet", label: __( "Tablet" ) },
+							{ value: "mobile", label: __( "Mobile" ) },
+						] }
+						help={ __( "Note: Choose on what breakpoint the elements will stack." ) }
+						onChange={ ( value ) => setAttributes( { stack: value } ) }
+					/>										
 				</PanelBody>
 			</Fragment>
 		)
@@ -294,20 +305,7 @@ class UAGBBlockQuote extends Component {
 							max = { 100 }
 							beforeIcon = ""
 							allowReset
-						/>								
-						{ ( authorImgPosition !== "top" ) &&
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								help={ __( "Note: Choose on what breakpoint the Image will stack." ) }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						}				
+						/>		
 					</Fragment>
 				}
 			</Fragment>
@@ -364,7 +362,7 @@ class UAGBBlockQuote extends Component {
 					  </Fragment>
 				}
 				{ ( enableTweet && iconSkin !== 'link' ) && <Fragment>
-						<p className="uagb-setting-label">{ __( "Button Color" ) }
+						<p className="uagb-setting-label">{ __( "Tweet Button Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: tweetBtnColor }} ></span></span></p>
 					    <ColorPalette
@@ -373,7 +371,7 @@ class UAGBBlockQuote extends Component {
 					        allowReset
 					    />
 
-					    <p className="uagb-setting-label">{ __( "Button Background Color" ) }
+					    <p className="uagb-setting-label">{ __( "Tweet Button Background Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: tweetBtnBgColor }} ></span></span></p>
 					    <ColorPalette
@@ -771,7 +769,7 @@ class UAGBBlockQuote extends Component {
 						( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
 						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
-						( authorImage && authorImgPosition !=='top' ) ? `uagb-quote-stack-img-${stack}` : "",
+						`uagb-quote-stack-img-${stack}`
 					) } >
 						
 						<blockquote className="uagb-blockquote">					  

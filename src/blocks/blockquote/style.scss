@@ -143,6 +143,9 @@
 	.uagb-quote__tweet-text a.uagb-blockquote__tweet-button {
 	    padding: 10px 14px;
 	}
+	.uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button{
+		padding: 10px 0;
+	}
 	.uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button,
 	.uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button{
 		background-color: #1DA1F2;
@@ -251,6 +254,29 @@
 	    	margin-right:0;
 	    	margin-bottom: 10px;
 		}
+
+		/* Left alignment */
+		.uagb-quote-stack-img-tablet.uagb-quote__with-tweet .uagb-blockquote footer{
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+		    flex-direction: column;
+		    -ms-flex-item-align: flex-start;
+    		align-self: flex-start;
+		}
+		.uagb-quote-stack-img-tablet .uagb-quote__author-wrap.uagb-quote__author-at-left,
+		.uagb-quote-stack-img-tablet a.uagb-blockquote__tweet-button{
+			 -ms-flex-item-align: flex-start;
+    		align-self: flex-start;
+		}
+
+		/* Right ALignment */
+		.uagb-quote-stack-img-tablet.uagb-quote__align-right.uagb-quote__with-tweet .uagb-blockquote footer,
+		.uagb-quote-stack-img-tablet.uagb-quote__align-right .uagb-quote__author-wrap.uagb-quote__author-at-left,
+		.uagb-quote-stack-img-tablet.uagb-quote__align-right a.uagb-blockquote__tweet-button{
+			-ms-flex-item-align: flex-end;
+    		align-self: flex-end;
+		}
+		
 	}
 }
 
@@ -267,6 +293,28 @@
 	    	margin-left:0;
 	    	margin-right:0;
 	    	margin-bottom: 10px;
+		}
+
+		/* Left alignment */
+		.uagb-quote-stack-img-mobile.uagb-quote__with-tweet .uagb-blockquote footer{
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+		    flex-direction: column;
+		    -ms-flex-item-align: flex-start;
+    		align-self: flex-start;
+		}
+		.uagb-quote-stack-img-mobile .uagb-quote__author-wrap.uagb-quote__author-at-left,
+		.uagb-quote-stack-img-mobile a.uagb-blockquote__tweet-button{
+			 -ms-flex-item-align: flex-start;
+    		align-self: flex-start;
+		}
+
+		/* Right ALignment */
+		.uagb-quote-stack-img-mobile.uagb-quote__align-right.uagb-quote__with-tweet .uagb-blockquote footer,
+		.uagb-quote-stack-img-mobile.uagb-quote__align-right .uagb-quote__author-wrap.uagb-quote__author-at-left,
+		.uagb-quote-stack-img-mobile.uagb-quote__align-right a.uagb-blockquote__tweet-button{
+			-ms-flex-item-align: flex-end;
+    		align-self: flex-end;
 		}
 	}
 }

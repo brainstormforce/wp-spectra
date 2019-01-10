@@ -65460,7 +65460,7 @@ registerBlockType("uagb/blockquote", {
 				id: "uagb-quote-" + block_id },
 			wp.element.createElement(
 				"div",
-				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", authorImage && authorImgPosition !== 'top' ? "uagb-quote-stack-img-" + stack : "") },
+				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", "uagb-quote-stack-img-" + stack) },
 				wp.element.createElement(
 					"blockquote",
 					{ className: "uagb-blockquote" },
@@ -65769,7 +65769,16 @@ var UAGBBlockQuote = function (_Component) {
 						}
 					}),
 					skinStyle === "border" && border_settings,
-					skinStyle === "quotation" && quote_settings
+					skinStyle === "quotation" && quote_settings,
+					wp.element.createElement(SelectControl, {
+						label: __("Stack on"),
+						value: stack,
+						options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+						help: __("Note: Choose on what breakpoint the elements will stack."),
+						onChange: function onChange(value) {
+							return setAttributes({ stack: value });
+						}
+					})
 				)
 			);
 
@@ -65843,15 +65852,6 @@ var UAGBBlockQuote = function (_Component) {
 						max: 100,
 						beforeIcon: "",
 						allowReset: true
-					}),
-					authorImgPosition !== "top" && wp.element.createElement(SelectControl, {
-						label: __("Stack on"),
-						value: stack,
-						options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-						help: __("Note: Choose on what breakpoint the Image will stack."),
-						onChange: function onChange(value) {
-							return setAttributes({ stack: value });
-						}
 					})
 				)
 			);
@@ -65958,7 +65958,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Button Color"),
+						__("Tweet Button Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -65975,7 +65975,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Button Background Color"),
+						__("Tweet Button Background Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66484,7 +66484,7 @@ var UAGBBlockQuote = function (_Component) {
 						id: "uagb-quote-" + this.props.clientId },
 					wp.element.createElement(
 						"div",
-						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", authorImage && authorImgPosition !== 'top' ? "uagb-quote-stack-img-" + stack : "") },
+						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", "uagb-quote-stack-img-" + stack) },
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
