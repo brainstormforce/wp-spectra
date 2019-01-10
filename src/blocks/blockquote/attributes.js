@@ -12,7 +12,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},	
 	description_text: {
 		selector: "div.uagb-blockquote__content",
@@ -80,13 +80,13 @@ const attributes = {
 	},
 	iconSkin: {
 		type: "string",
-		default: "link"
+		default: "classic"
 	},
 	iconLabel: {
 		type: "string",
 		default: "Tweet"
 	},
-	iconSahreVia: {
+	iconShareVia: {
 		type: "string",
 		default: ""
 	},
@@ -153,7 +153,7 @@ const attributes = {
 	},
 	quoteStyle: {
 		type: "string",
-		default: "style_1"
+		default: "style_2"
 	},
 	quoteColor: {
 		type: "string",
@@ -169,6 +169,7 @@ const attributes = {
 	},
 	quoteBgColor: {
 		type: "string",
+		default: "#333"
 	},	
 	quoteTopMargin :{
 		type: "number",
@@ -181,6 +182,7 @@ const attributes = {
 	},
 	quoteRightMargin:{
 		type: "number",
+		default: 20
 	},	
 	quoteHoverColor: {
 		type: "string",

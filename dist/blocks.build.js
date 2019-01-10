@@ -66766,7 +66766,7 @@ var attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center"
+		default: "left"
 	},
 	description_text: {
 		selector: "div.uagb-blockquote__content",
@@ -66834,13 +66834,13 @@ var attributes = {
 	},
 	iconSkin: {
 		type: "string",
-		default: "link"
+		default: "classic"
 	},
 	iconLabel: {
 		type: "string",
 		default: "Tweet"
 	},
-	iconSahreVia: {
+	iconShareVia: {
 		type: "string",
 		default: ""
 	},
@@ -66907,7 +66907,7 @@ var attributes = {
 	},
 	quoteStyle: {
 		type: "string",
-		default: "style_1"
+		default: "style_2"
 	},
 	quoteColor: {
 		type: "string",
@@ -66922,7 +66922,8 @@ var attributes = {
 		default: 100
 	},
 	quoteBgColor: {
-		type: "string"
+		type: "string",
+		default: "#333"
 	},
 	quoteTopMargin: {
 		type: "number"
@@ -66934,7 +66935,8 @@ var attributes = {
 		type: "number"
 	},
 	quoteRightMargin: {
-		type: "number"
+		type: "number",
+		default: 20
 	},
 	quoteHoverColor: {
 		type: "string"
