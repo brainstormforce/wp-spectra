@@ -2,17 +2,17 @@
 /**
  * UAGB Admin Notices
  *
- * Closing notice on click on `astra-notice-close` class.
+ * Closing notice on click on `uagb-notice-close` class.
  *
  * If notice has the data attribute `data-repeat-notice-after="%2$s"` then notice close for that SPECIFIC TIME.
  * If notice has NO data attribute `data-repeat-notice-after="%2$s"` then notice close for the CURRENT USER FOREVER.
  *
  * > Create custom close notice link in the notice markup. E.g.
- * `<a href="#" data-repeat-notice-after="<?php echo MONTH_IN_SECONDS; ?>" class="astra-notice-close">`
+ * `<a href="#" data-repeat-notice-after="<?php echo MONTH_IN_SECONDS; ?>" class="uagb-notice-close">`
  * It close the notice for 30 days.
  *
- * @package Astra Sites
- * @since 1.4.0
+ * @package UAGB
+ * @since x.x.x
  */
 
 if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 	/**
 	 * UAGB_Admin_Notices
 	 *
-	 * @since 1.4.0
+	 * @since x.x.x
 	 */
 	class UAGB_Admin_Notices {
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var array Notices.
-		 * @since 1.4.0
+		 * @since x.x.x
 		 */
 		private static $version = '1.0.0';
 
@@ -38,7 +38,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var array Notices.
-		 * @since 1.4.0
+		 * @since x.x.x
 		 */
 		private static $notices = array();
 
@@ -47,14 +47,14 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var object Class object.
-		 * @since 1.4.0
+		 * @since x.x.x
 		 */
 		private static $instance;
 
 		/**
 		 * Initiator
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 * @return object initialized object of class.
 		 */
 		public static function get_instance() {
@@ -67,7 +67,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Constructor
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 */
 		public function __construct() {
 			add_action( 'admin_notices', array( $this, 'show_notices' ), 30 );
@@ -77,7 +77,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Add Notice.
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 * @param array $args Notice arguments.
 		 * @return void
 		 */
@@ -88,7 +88,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Dismiss Notice.
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 * @return void
 		 */
 		function dismiss_notice() {
@@ -113,7 +113,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Rating priority sort
 		 *
-		 * @since 1.5.2
+		 * @since x.x.x
 		 * @param array $array1 array one.
 		 * @param array $array2 array two.
 		 * @return array
@@ -132,13 +132,13 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Notice Types
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 * @return void
 		 */
 		function show_notices() {
 
 			$defaults = array(
-				'id'                         => '',      // Optional, Notice ID. If empty it set `astra-notices-id-<$array-index>`.
+				'id'                         => '',      // Optional, Notice ID. If empty it set `uagb-notices-id-<$array-index>`.
 				'type'                       => 'info',  // Optional, Notice type. Default `info`. Expected [info, warning, notice, error].
 				'message'                    => '',      // Optional, Message.
 				'show_if'                    => true,    // Optional, Show notice on custom condition. E.g. 'show_if' => if( is_admin() ) ? true, false, .
@@ -183,7 +183,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Markup Notice.
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 * @param  array $notice Notice markup.
 		 * @return void
 		 */
@@ -203,7 +203,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Notice classes.
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return array       Notice wrapper classes.
@@ -221,7 +221,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Get Notice ID.
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @param  int   $key     Notice array index.
@@ -238,7 +238,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Is notice expired?
 		 *
-		 * @since 1.4.0
+		 * @since x.x.x
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return boolean

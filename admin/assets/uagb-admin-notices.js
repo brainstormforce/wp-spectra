@@ -9,7 +9,7 @@
 	/**
 	 * Helper class for the main Customizer interface.
 	 *
-	 * @since 1.0.0
+	 * @since x.x.x
 	 * @class ASTCustomizer
 	 */
 	UAGBNotices = {
@@ -17,7 +17,7 @@
 		/**
 		 * Initializes our custom logic for the Customizer.
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @method init
 		 */
 		init: function()
@@ -26,9 +26,9 @@
 		},
 
 		/**
-		 * Binds events for the Astra Portfolio.
+		 * Binds events for the UAGB.
 		 *
-		 * @since 1.0.0
+		 * @since x.x.x
 		 * @access private
 		 * @method _bind
 		 */

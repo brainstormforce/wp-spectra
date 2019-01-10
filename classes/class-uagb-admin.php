@@ -96,7 +96,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( false === get_option( 'uagb-old-setup' ) ) {
 
-				set_transient( 'uagb-first-rating', true, 30 );
+				set_transient( 'uagb-first-rating', true, MONTH_IN_SECONDS );
 				update_option( 'uagb-old-setup', true );
 
 			} elseif ( false === get_transient( 'uagb-first-rating' ) ) {
@@ -134,11 +134,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This will boost our motivation and help other users make a comfortable decision while choosing this plugin.', 'ultimate-addons-for-gutenberg' ),
 							'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 							__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
-							30,
+							MONTH_IN_SECONDS,
 							__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
 							__( 'I already did', 'ultimate-addons-for-gutenberg' )
 						),
-						'repeat-notice-after'        => 30,
+						'repeat-notice-after'        => MONTH_IN_SECONDS,
 						'priority'                   => 10,
 						'display-with-other-notices' => false,
 					)
