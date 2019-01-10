@@ -114,7 +114,7 @@ class UAGBBlockQuote extends Component {
 			iconView,
 			iconSkin,
 			iconLabel,
-			iconSahreVia,
+			iconShareVia,
 			iconTargetUrl,	
 			customUrl,		
 			authorImage,
@@ -201,15 +201,17 @@ class UAGBBlockQuote extends Component {
 					min={ 0 }
 					max={ 200 }
 					allowReset
-				/>					
-				<RangeControl
-					label={ __( "Quote Border Radius" ) }
-					value={ quoteBorderRadius }
-					onChange={ ( value ) => setAttributes( { quoteBorderRadius: value } ) }
-					min={ 0 }
-					max={ 100 }
-					allowReset
-				/>				
+				/>	
+				{ quoteBgColor &&				
+					<RangeControl
+						label={ __( "Quote Border Radius" ) }
+						value={ quoteBorderRadius }
+						onChange={ ( value ) => setAttributes( { quoteBorderRadius: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>	
+				}			
 			</Fragment>
 		)
 
@@ -362,7 +364,7 @@ class UAGBBlockQuote extends Component {
 					    />
 					  </Fragment>
 				}
-				{ (enableTweet && iconSkin !== 'link') && <Fragment>
+				{ ( enableTweet && iconSkin !== 'link' ) && <Fragment>
 						<p className="uagb-setting-label">{ __( "Button Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: tweetBtnColor }} ></span></span></p>
@@ -386,8 +388,7 @@ class UAGBBlockQuote extends Component {
 		)
 
 		const hoverSettings = (
-			<Fragment>			 
-				
+			<Fragment>	
 				{ skinStyle == "border" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
 					<span className="components-base-control__label">
@@ -430,7 +431,7 @@ class UAGBBlockQuote extends Component {
 
 					  </Fragment>
 				}
-				{ (enableTweet && iconSkin !== 'link') && <Fragment>
+				{ ( enableTweet && iconSkin !== 'link' ) && <Fragment>
 						<p className="uagb-setting-label">{ __( "Button Hover Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: tweetBtnHoverColor }} ></span></span></p>
@@ -686,8 +687,8 @@ class UAGBBlockQuote extends Component {
 					{ enableTweet && <Fragment>
 						<TextControl
 							label= { __( "Share Via" ) }
-							value= { iconSahreVia }
-							onChange={ value => setAttributes( { iconSahreVia: value } ) }
+							value= { iconShareVia }
+							onChange={ value => setAttributes( { iconShareVia: value } ) }
 						/>		
 						<SelectControl
 							label={ __( "Target URL" ) }

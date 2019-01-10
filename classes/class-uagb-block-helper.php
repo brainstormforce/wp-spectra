@@ -2447,7 +2447,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$slug = basename(get_permalink());
 
-			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconSahreVia'];
+			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconShareVia'];
 				
 			$selector =	'#uagb-quote-'. $id;
 

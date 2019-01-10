@@ -738,7 +738,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderHoverColor'      => '',
 							'iconTargetUrl'         => 'current',
 							'customUrl'             => '',
-							'iconSahreVia'          => '',
+							'iconShareVia'          => '',
 						),
 					),
 				);
