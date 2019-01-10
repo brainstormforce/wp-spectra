@@ -65762,7 +65762,7 @@ var UAGBBlockQuote = function (_Component) {
 					},
 					wp.element.createElement(SelectControl, {
 						label: __("Style"),
-						options: [{ value: "border", label: __("Border") }, { value: "quotation", label: __("Quotation") }, { value: "clean", label: __("Clean") }],
+						options: [{ value: "border", label: __("Border") }, { value: "quotation", label: __("Quotation") }],
 						value: skinStyle,
 						onChange: function onChange(value) {
 							return setAttributes({ skinStyle: value });

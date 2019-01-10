@@ -225,7 +225,6 @@ class UAGBBlockQuote extends Component {
 						options={[
 							{ value: "border", label: __( "Border" ) },
 							{ value: "quotation", label: __( "Quotation" ) },
-							{ value: "clean", label: __( "Clean" ) }
 						] }
 						value={ skinStyle }
 						onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
