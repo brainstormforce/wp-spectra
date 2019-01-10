@@ -92,7 +92,10 @@ const attributes = {
 	},
 	iconTargetUrl: {
 		type: "string",
-		default: ""
+		default: "current"
+	},
+	customUrl:{
+		type: "string",
 	},
 	tweetLinkColor: {
 		type: "string",

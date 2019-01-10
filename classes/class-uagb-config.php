@@ -736,6 +736,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quoteHoverColor'       => '',
 							'quoteBgHoverColor'     => '',
 							'borderHoverColor'      => '',
+							'iconTargetUrl'         => 'current',
+							'customUrl'             => '',
+							'iconSahreVia'          => '',
 						),
 					),
 				);

@@ -3,11 +3,10 @@ class TweetButton extends React.Component {
 
 	render() {
 
-		const { attributes } = this.props
-		var tweet_html = ''
-
+		const { attributes} = this.props
+	
 		return (			
-			<a href="javascript:void(0)" className="uagb-blockquote__tweet-button" target="_blank" rel ="noopener noreferrer">
+			<a href= "javascript:void(0)" className='uagb-blockquote__tweet-button' target='_blank' rel ='noopener noreferrer'>
 	      		{ ( attributes.iconView === 'icon_text' ) && <Fragment>
 	      			<i className="fab fa-twitter"></i>
 		      			<span className="uagb-blockquote__tweet-label">{attributes.iconLabel}</span>

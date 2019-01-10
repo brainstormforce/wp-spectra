@@ -260,6 +260,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/blockquote':
+					$js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;

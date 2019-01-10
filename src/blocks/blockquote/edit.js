@@ -115,7 +115,8 @@ class UAGBBlockQuote extends Component {
 			iconSkin,
 			iconLabel,
 			iconSahreVia,
-			iconTargetUrl,			
+			iconTargetUrl,	
+			customUrl,		
 			authorImage,
 			authorImageWidth,
 			authorImageSize,
@@ -687,12 +688,23 @@ class UAGBBlockQuote extends Component {
 							label= { __( "Share Via" ) }
 							value= { iconSahreVia }
 							onChange={ value => setAttributes( { iconSahreVia: value } ) }
-						/>						
-						<TextControl
-							label= { __( "Target URL" ) }
-							value= { iconTargetUrl }
-							onChange={ value => setAttributes( { iconTargetUrl: value } ) }
-						/>								
+						/>		
+						<SelectControl
+							label={ __( "Target URL" ) }
+							value={ iconTargetUrl }
+							onChange={ ( value ) => setAttributes( { iconTargetUrl: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "current", label: __( "Current Page" ) },
+								{ value: "custom", label: __( "Custom URL" ) },
+							] }
+						/>				
+						{ iconTargetUrl == "custom" && <TextControl
+							label= { __( "URL" ) }
+							value= { customUrl }
+							onChange={ value => setAttributes( { customUrl: value } ) }
+						/>	
+						}							
 						</Fragment>
 					}	
 				</PanelBody>	

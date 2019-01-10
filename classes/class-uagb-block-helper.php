@@ -2197,67 +2197,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Testimonial Js
-		 *
-		 * @since 1.6.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_testimonial_js( $attr, $id ) {
-
-			// @codingStandardsIgnoreStart.
-
-			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
-
-			$attr = array_merge( $defaults, (array) $attr );
-
-			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
-			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
-
-			$slick_options = [
-				'slidesToShow'   => $attr['columns'],
-				'slidesToScroll' => 1,
-				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
-				'autoplay'       => $attr['autoplay'],
-				'infinite'       => $attr['infiniteLoop'],
-				'pauseOnHover'   => $attr['pauseOnHover'],
-				'speed'          => $attr['transitionSpeed'],
-				'arrows'         => $arrows,
-				'dots'           => $dots,
-				'rtl'            => false,
-				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
-				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
-				'responsive'		=> [
-					[
-						'breakpoint' => 1024,
-						'settings' => [
-							'slidesToShow'   => $attr['tcolumns'],
-							'slidesToScroll' => 1,
-						],
-					],
-					[
-						'breakpoint' => 767,
-						'settings' => [
-							'slidesToShow'   => $attr['mcolumns'],
-							'slidesToScroll' => 1,
-						],
-					]
-				]
-			];
-
-			$settings = json_encode($slick_options);
-			$selector =	'#uagb-testimonial-'. $id;
-			?>
-			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
-				return true
-			} else {
-				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
-			}
-			<?php
-			// @codingStandardsIgnoreEnd.
-		}
-
-		/**
 		 * Get Blockquote CSS
 		 *
 		 * @since 1.7.1
@@ -2414,6 +2353,114 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-quote-' . $id );
 
 			return $desktop;
+		}
+
+		/**
+		 * Get Testimonial Js
+		 *
+		 * @since 1.6.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_testimonial_js( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
+
+			$slick_options = [
+				'slidesToShow'   => $attr['columns'],
+				'slidesToScroll' => 1,
+				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
+				'autoplay'       => $attr['autoplay'],
+				'infinite'       => $attr['infiniteLoop'],
+				'pauseOnHover'   => $attr['pauseOnHover'],
+				'speed'          => $attr['transitionSpeed'],
+				'arrows'         => $arrows,
+				'dots'           => $dots,
+				'rtl'            => false,
+				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'responsive'		=> [
+					[
+						'breakpoint' => 1024,
+						'settings' => [
+							'slidesToShow'   => $attr['tcolumns'],
+							'slidesToScroll' => 1,
+						],
+					],
+					[
+						'breakpoint' => 767,
+						'settings' => [
+							'slidesToShow'   => $attr['mcolumns'],
+							'slidesToScroll' => 1,
+						],
+					]
+				]
+			];
+
+			$settings = json_encode($slick_options);
+			$selector =	'#uagb-testimonial-'. $id;
+			?>
+			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
+				return true
+			} else {
+				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
+			}
+			<?php
+			// @codingStandardsIgnoreEnd.
+		}
+
+
+
+		/**
+		 * Get Blockquote Js
+		 *
+		 * @since 1.7.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_blockquote_js( $attr, $id ) {
+
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$target = $attr['iconTargetUrl'];
+
+			$url = " " ;
+			if( $target !== 'none' ){
+				if( $target == 'current' ){
+					global $wp;  
+					$url = home_url(add_query_arg(array(),$wp->request));
+				}else{
+					$url = $attr['customUrl'];
+				}
+			
+
+			$slug = basename(get_permalink());
+
+			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconSahreVia'];
+				
+			$selector =	'#uagb-quote-'. $id;
+
+			?>
+				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
+				  console.log("here");
+				  window.open( "<?php echo $request_url ?>" );
+				});
+			<?php 
+
+			}
+			// @codingStandardsIgnoreEnd.
+
 		}
 
 	}
