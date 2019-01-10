@@ -65671,12 +65671,12 @@ var UAGBBlockQuote = function (_Component) {
 				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_5__styling__["a" /* default */])(this.props);
 			}
 
-			var image_name = "Select Image";
+			var image_name = __("Select Image");
 			if (authorImage) {
 				if (authorImage.url == null || authorImage.url == "") {
-					image_name = "Select Image";
+					image_name = __("Select Image");
 				} else {
-					image_name = "Replace Image";
+					image_name = __("Replace Image");
 				}
 			}
 

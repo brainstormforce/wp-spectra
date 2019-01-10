@@ -137,12 +137,12 @@ class UAGBBlockQuote extends Component {
 			element.innerHTML = styling( this.props )
 		}	
 
-		let image_name = "Select Image"
+		let image_name = __( "Select Image" )
 		if(authorImage){
 			if(authorImage.url == null || authorImage.url == "" ){
-				image_name = "Select Image"
+				image_name = __( "Select Image" )
 			}else{
-				image_name = "Replace Image"
+				image_name = __( "Replace Image" )
 			}
 		}
 
