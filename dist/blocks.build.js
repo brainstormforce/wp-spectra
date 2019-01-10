@@ -65758,7 +65758,7 @@ var UAGBBlockQuote = function (_Component) {
 				wp.element.createElement(
 					PanelBody,
 					{
-						title: __("Skin")
+						title: __("Style")
 					},
 					wp.element.createElement(SelectControl, {
 						label: __("Style"),
@@ -66297,48 +66297,7 @@ var UAGBBlockQuote = function (_Component) {
 						max: 50,
 						allowReset: true,
 						initialPosition: 0
-					}),
-					enableTweet && iconSkin !== 'link' && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Button Horizontal Padding"),
-							value: tweetBtnHrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetBtnHrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true,
-							initialPosition: 5
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Button Vertical Padding"),
-							value: tweetBtnVrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetBtnVrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true,
-							initialPosition: 5
-						})
-					),
-					enableTweet && iconView == 'icon_text' && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Space between Tweet Icon and Text"),
-							value: tweetIconSpacing,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetIconSpacing: value });
-							},
-							min: 0,
-							max: 20,
-							allowReset: true,
-							initialPosition: 5
-						})
-					)
+					})
 				)
 			);
 
@@ -66347,7 +66306,7 @@ var UAGBBlockQuote = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{ title: __("Social Icon"),
+					{ title: __("Twitter Icon"),
 						initialOpen: false },
 					wp.element.createElement(ToggleControl, {
 						label: __("Enable Twitter Icon"),
@@ -66411,6 +66370,47 @@ var UAGBBlockQuote = function (_Component) {
 							onChange: function onChange(value) {
 								return setAttributes({ customUrl: value });
 							}
+						})
+					),
+					enableTweet && iconSkin !== 'link' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Button Horizontal Padding"),
+							value: tweetBtnHrPadding,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetBtnHrPadding: value });
+							},
+							min: 0,
+							max: 50,
+							allowReset: true,
+							initialPosition: 5
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Button Vertical Padding"),
+							value: tweetBtnVrPadding,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetBtnVrPadding: value });
+							},
+							min: 0,
+							max: 50,
+							allowReset: true,
+							initialPosition: 5
+						})
+					),
+					enableTweet && iconView == 'icon_text' && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(RangeControl, {
+							label: __("Space between Tweet Icon and Text"),
+							value: tweetIconSpacing,
+							onChange: function onChange(value) {
+								return setAttributes({ tweetIconSpacing: value });
+							},
+							min: 0,
+							max: 20,
+							allowReset: true,
+							initialPosition: 5
 						})
 					)
 				)

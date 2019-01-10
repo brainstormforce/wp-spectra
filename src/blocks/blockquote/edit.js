@@ -218,7 +218,7 @@ class UAGBBlockQuote extends Component {
 		const skin_settings =(
 			<Fragment>
 				<PanelBody
-						title={ __( "Skin" ) }
+						title={ __( "Style" ) }
 					>
 					<SelectControl
 						label={ __( "Style" ) }
@@ -606,48 +606,15 @@ class UAGBBlockQuote extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-					}
-									
-					{ enableTweet && iconSkin !== 'link' && <Fragment>
-						<RangeControl
-							label={ __( "Button Horizontal Padding" ) }
-							value={ tweetBtnHrPadding }
-							onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={5}
-						/>	
-						<RangeControl
-							label={ __( "Button Vertical Padding" ) }
-							value={ tweetBtnVrPadding }
-							onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={5}
-						/>	
-						</Fragment>
-					}	
-					{ (enableTweet && iconView == 'icon_text') && <Fragment>
-						<RangeControl
-							label={ __( "Space between Tweet Icon and Text" ) }
-							value={ tweetIconSpacing }
-							onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
-							min={ 0 }
-							max={ 20 }
-							allowReset
-							initialPosition={5}
-						/>	
-						</Fragment>
-					}	
+					}									
+						
 					</PanelBody>
 			</Fragment>
 		)
 
 		const twitter_settings =(
 			<Fragment>
-				<PanelBody title={ __( "Social Icon" ) }
+				<PanelBody title={ __( "Twitter Icon" ) }
 					initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Enable Twitter Icon" ) }
@@ -708,6 +675,39 @@ class UAGBBlockQuote extends Component {
 						}							
 						</Fragment>
 					}	
+					{ enableTweet && iconSkin !== 'link' && <Fragment>
+						<RangeControl
+							label={ __( "Button Horizontal Padding" ) }
+							value={ tweetBtnHrPadding }
+							onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+							initialPosition={5}
+						/>	
+						<RangeControl
+							label={ __( "Button Vertical Padding" ) }
+							value={ tweetBtnVrPadding }
+							onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+							initialPosition={5}
+						/>	
+						</Fragment>
+					}	
+					{ (enableTweet && iconView == 'icon_text') && <Fragment>
+						<RangeControl
+							label={ __( "Space between Tweet Icon and Text" ) }
+							value={ tweetIconSpacing }
+							onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
+							min={ 0 }
+							max={ 20 }
+							allowReset
+							initialPosition={5}
+						/>	
+						</Fragment>
+					}
 				</PanelBody>	
 			</Fragment>
 		)	
