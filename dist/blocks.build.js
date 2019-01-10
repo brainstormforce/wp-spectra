@@ -66362,7 +66362,7 @@ var UAGBBlockQuote = function (_Component) {
 							onChange: function onChange(value) {
 								return setAttributes({ iconTargetUrl: value });
 							},
-							options: [{ value: "none", label: __("None") }, { value: "current", label: __("Current Page") }, { value: "custom", label: __("Custom URL") }]
+							options: [{ value: "current", label: __("Current Page") }, { value: "custom", label: __("Custom URL") }]
 						}),
 						iconTargetUrl == "custom" && wp.element.createElement(TextControl, {
 							label: __("URL"),

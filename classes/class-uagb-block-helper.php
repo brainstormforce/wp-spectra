@@ -2436,14 +2436,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$target = $attr['iconTargetUrl'];
 
 			$url = " " ;
-			if( $target !== 'none' ){
-				if( $target == 'current' ){
-					global $wp;  
-					$url = home_url(add_query_arg(array(),$wp->request));
-				}else{
-					$url = $attr['customUrl'];
-				}
 			
+			if( $target == 'current' ){
+				global $wp;  
+				$url = home_url(add_query_arg(array(),$wp->request));
+			}else{
+				$url = $attr['customUrl'];
+			}			
 
 			$slug = basename(get_permalink());
 
@@ -2457,8 +2456,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				  window.open( "<?php echo $request_url ?>" );
 				});
 			<?php 
-
-			}
+			
 			// @codingStandardsIgnoreEnd.
 
 		}

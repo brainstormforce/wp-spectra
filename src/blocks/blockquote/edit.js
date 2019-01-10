@@ -662,7 +662,6 @@ class UAGBBlockQuote extends Component {
 							value={ iconTargetUrl }
 							onChange={ ( value ) => setAttributes( { iconTargetUrl: value } ) }
 							options={ [
-								{ value: "none", label: __( "None" ) },
 								{ value: "current", label: __( "Current Page" ) },
 								{ value: "custom", label: __( "Custom URL" ) },
 							] }
