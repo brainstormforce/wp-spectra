@@ -65731,7 +65731,7 @@ var UAGBBlockQuote = function (_Component) {
 				Fragment,
 				null,
 				wp.element.createElement(RangeControl, {
-					label: __("Quote Size"),
+					label: __("Quote Icon Size"),
 					value: quoteSize,
 					onChange: function onChange(value) {
 						return setAttributes({ quoteSize: value });
@@ -65741,7 +65741,7 @@ var UAGBBlockQuote = function (_Component) {
 					allowReset: true
 				}),
 				quoteBgColor && wp.element.createElement(RangeControl, {
-					label: __("Quote Border Radius"),
+					label: __("Quote Icon Border Radius"),
 					value: quoteBorderRadius,
 					onChange: function onChange(value) {
 						return setAttributes({ quoteBorderRadius: value });
@@ -65862,7 +65862,7 @@ var UAGBBlockQuote = function (_Component) {
 				wp.element.createElement(
 					"p",
 					{ className: "uagb-setting-label" },
-					__("Content Color"),
+					__("Quote Color"),
 					wp.element.createElement(
 						"span",
 						{ className: "components-base-control__label" },
@@ -65899,7 +65899,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Quote Color"),
+						__("Quote Icon Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -65916,7 +65916,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Quote Background Color"),
+						__("Quote Icon Background Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66022,7 +66022,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Quote Hover Color"),
+						__("Quote Icon Hover Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66039,7 +66039,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Quote Background Hover Color"),
+						__("Quote Icon Background Hover Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66124,7 +66124,7 @@ var UAGBBlockQuote = function (_Component) {
 						title: __("Content"),
 						initialOpen: false },
 					wp.element.createElement(RangeControl, {
-						label: __("Content Font Size"),
+						label: __("Quote Font Size"),
 						value: descFontSize,
 						onChange: function onChange(value) {
 							return setAttributes({ descFontSize: value });
@@ -66212,7 +66212,7 @@ var UAGBBlockQuote = function (_Component) {
 						Fragment,
 						null,
 						wp.element.createElement(RangeControl, {
-							label: __("Quote Top Margin"),
+							label: __("Quote Icon Top Margin"),
 							value: quoteTopMargin,
 							onChange: function onChange(value) {
 								return setAttributes({ quoteTopMargin: value });
@@ -66222,7 +66222,7 @@ var UAGBBlockQuote = function (_Component) {
 							allowReset: true
 						}),
 						wp.element.createElement(RangeControl, {
-							label: __("Quote Bottom Margin"),
+							label: __("Quote Icon Bottom Margin"),
 							value: quoteBottomMargin,
 							onChange: function onChange(value) {
 								return setAttributes({ quoteBottomMargin: value });
@@ -66232,7 +66232,7 @@ var UAGBBlockQuote = function (_Component) {
 							allowReset: true
 						}),
 						wp.element.createElement(RangeControl, {
-							label: __("Quote Left Margin"),
+							label: __("Quote Icon Left Margin"),
 							value: quoteLeftMargin,
 							onChange: function onChange(value) {
 								return setAttributes({ quoteLeftMargin: value });
@@ -66242,7 +66242,7 @@ var UAGBBlockQuote = function (_Component) {
 							allowReset: true
 						}),
 						wp.element.createElement(RangeControl, {
-							label: __("Quote Right Margin"),
+							label: __("Quote Icon Right Margin"),
 							value: quoteRightMargin,
 							onChange: function onChange(value) {
 								return setAttributes({ quoteRightMargin: value });
@@ -66256,7 +66256,7 @@ var UAGBBlockQuote = function (_Component) {
 						Fragment,
 						null,
 						wp.element.createElement(RangeControl, {
-							label: __("Gap Beetween Border and Content"),
+							label: __("Gap Beetween Border and Quote"),
 							value: borderGap,
 							onChange: function onChange(value) {
 								return setAttributes({ borderGap: value });
@@ -66277,7 +66277,7 @@ var UAGBBlockQuote = function (_Component) {
 						})
 					),
 					wp.element.createElement(RangeControl, {
-						label: __("Description Bottom Spacing"),
+						label: __("Quote Bottom Spacing"),
 						value: descSpace,
 						onChange: function onChange(value) {
 							return setAttributes({ descSpace: value });

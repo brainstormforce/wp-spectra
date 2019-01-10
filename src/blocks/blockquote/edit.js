@@ -195,7 +195,7 @@ class UAGBBlockQuote extends Component {
 		const quote_settings = (
 			<Fragment>
 				<RangeControl
-					label={ __( "Quote Size" ) }
+					label={ __( "Quote Icon Size" ) }
 					value={ quoteSize }
 					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
 					min={ 0 }
@@ -204,7 +204,7 @@ class UAGBBlockQuote extends Component {
 				/>	
 				{ quoteBgColor &&				
 					<RangeControl
-						label={ __( "Quote Border Radius" ) }
+						label={ __( "Quote Icon Border Radius" ) }
 						value={ quoteBorderRadius }
 						onChange={ ( value ) => setAttributes( { quoteBorderRadius: value } ) }
 						min={ 0 }
@@ -315,7 +315,7 @@ class UAGBBlockQuote extends Component {
 
 		const colorSettings = (
 			<Fragment>
-				<p className="uagb-setting-label">{ __( "Content Color" ) }
+				<p className="uagb-setting-label">{ __( "Quote Color" ) }
 					<span className="components-base-control__label">
 					<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 					<ColorPalette
@@ -334,7 +334,7 @@ class UAGBBlockQuote extends Component {
 					/>
 
 				{ skinStyle == "quotation" && <Fragment>
-					<p className="uagb-setting-label">{ __( "Quote Color" ) }
+					<p className="uagb-setting-label">{ __( "Quote Icon Color" ) }
 					<span className="components-base-control__label">
 					<span className="component-color-indicator" style={{ backgroundColor: quoteColor }} ></span></span></p>
 					<ColorPalette
@@ -342,7 +342,7 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( colorValue ) => setAttributes( { quoteColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Quote Background Color" ) }
+					<p className="uagb-setting-label">{ __( "Quote Icon Background Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: quoteBgColor }} ></span></span></p>
 						<ColorPalette
@@ -400,7 +400,7 @@ class UAGBBlockQuote extends Component {
 					</Fragment>
 				}
 				{ skinStyle == "quotation" && <Fragment>
-					<p className="uagb-setting-label">{ __( "Quote Hover Color" ) }
+					<p className="uagb-setting-label">{ __( "Quote Icon Hover Color" ) }
 					<span className="components-base-control__label">
 					<span className="component-color-indicator" style={{ backgroundColor: quoteHoverColor }} ></span></span></p>
 					<ColorPalette
@@ -408,7 +408,7 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( colorValue ) => setAttributes( { quoteHoverColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Quote Background Hover Color" ) }
+					<p className="uagb-setting-label">{ __( "Quote Icon Background Hover Color" ) }
 						<span className="components-base-control__label">
 						<span className="component-color-indicator" style={{ backgroundColor: quoteBgHoverColor }} ></span></span></p>
 						<ColorPalette
@@ -459,7 +459,7 @@ class UAGBBlockQuote extends Component {
 						title={ __( "Content" ) }
 						initialOpen={ false }>						
 						<RangeControl
-							label={ __( "Content Font Size" ) }
+							label={ __( "Quote Font Size" ) }
 							value={ descFontSize }
 							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
 							min={ 0 }
@@ -534,7 +534,7 @@ class UAGBBlockQuote extends Component {
 
 					{ skinStyle === "quotation" && <Fragment>						
 						<RangeControl
-							label={ __( "Quote Top Margin" ) }
+							label={ __( "Quote Icon Top Margin" ) }
 							value={ quoteTopMargin }
 							onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
 							min={ 0 }
@@ -542,7 +542,7 @@ class UAGBBlockQuote extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Quote Bottom Margin" ) }
+							label={ __( "Quote Icon Bottom Margin" ) }
 							value={ quoteBottomMargin }
 							onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
 							min={ 0 }
@@ -550,7 +550,7 @@ class UAGBBlockQuote extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Quote Left Margin" ) }
+							label={ __( "Quote Icon Left Margin" ) }
 							value={ quoteLeftMargin }
 							onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
 							min={ 0 }
@@ -558,7 +558,7 @@ class UAGBBlockQuote extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Quote Right Margin" ) }
+							label={ __( "Quote Icon Right Margin" ) }
 							value={ quoteRightMargin }
 							onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
 							min={ 0 }
@@ -570,7 +570,7 @@ class UAGBBlockQuote extends Component {
 
 					{ skinStyle === "border" && <Fragment>
 						<RangeControl
-							label={ __( "Gap Beetween Border and Content" ) }
+							label={ __( "Gap Beetween Border and Quote" ) }
 							value={ borderGap }
 							onChange={ ( value ) => setAttributes( { borderGap: value } ) }
 							min={ 0 }
@@ -588,7 +588,7 @@ class UAGBBlockQuote extends Component {
 						</Fragment>
 					}
 						<RangeControl
-							label={ __( "Description Bottom Spacing" ) }
+							label={ __( "Quote Bottom Spacing" ) }
 							value={ descSpace }
 							onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 							min={ 0 }
