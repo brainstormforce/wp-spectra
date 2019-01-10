@@ -2335,19 +2335,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			
 			$selectors[" .uagb-quote__style-style_1 .uagb-blockquote"] = array(
 				"text-align"        => $attr['align'],
-			);
-				
-			$selectors[" .uagb-quote__separator"] = array(
-				"width"             => $attr['seperatorWidth']."%",
-				"border-top-width"  => $attr['seperatorThickness']."px",
-				"border-top-color"  => $attr['seperatorColor'],
-				"border-top-style"  => $attr['seperatorStyle'],
-			);				
-			$selectors[" .uagb-quote__separator-parent"] = array(
-				"justify-content"   => $content_align,
-				"margin-bottom"     => $attr['seperatorSpace']."px"
-			);
-			
+			);		
+		
 			$selectors[" .uagb-quote__author-wrap"] = array(
 				"margin-bottom"     => $author_space . "px",
 			);

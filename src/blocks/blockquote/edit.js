@@ -2,7 +2,6 @@
 import classnames from "classnames"
 
 // Import icon.
-import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
 import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
@@ -101,12 +100,7 @@ class UAGBBlockQuote extends Component {
 			quoteBgColor,
 			quoteSize,
 			quoteBorderRadius,
-			quoteStyle,
-			seperatorWidth,
-			seperatorThickness,
-			seperatorColor,
-			seperatorStyle,
-			seperatorSpace,
+			quoteStyle,			
 			enableTweet,
 			tweetLinkColor,
 			tweetBtnColor,
@@ -235,63 +229,6 @@ class UAGBBlockQuote extends Component {
 					/>
 					{ skinStyle === "border" && border_settings	}
 					{ skinStyle === "quotation" && quote_settings }					
-				</PanelBody>
-			</Fragment>
-		)
-
-		// Seperator settings.
-		const seperatorSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Seperator" ) }
-					initialOpen={ false } >
-
-					<SelectControl
-						label={ __( "Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
-					/>
-					{ "none" !== seperatorStyle &&
-					( <Fragment>
-						<Fragment>
-						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ seperatorColor }
-						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-						        allowReset
-						    />
-						</Fragment>
-
-						<RangeControl
-							label={ __( "Thickness" ) }
-							value={ seperatorThickness }
-							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-							min={ 0 }
-							max={ 10 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ seperatorWidth }
-							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon=""
-							allowReset
-						/>
-						
-					</Fragment>
-					)
-					}
-
 				</PanelBody>
 			</Fragment>
 		)
@@ -654,17 +591,8 @@ class UAGBBlockQuote extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-					}	
-					{ "none" !== seperatorStyle && <RangeControl
-							label={ __( "Gap between Author and Seperator" ) }
-							value={ seperatorSpace }
-							onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon=""
-							allowReset
-						/>
-					}						
+					}
+									
 					{ enableTweet && iconSkin !== 'link' && <Fragment>
 						<RangeControl
 							label={ __( "Button Horizontal Padding" ) }
@@ -804,7 +732,6 @@ class UAGBBlockQuote extends Component {
 				<InspectorControls>
 					{ skin_settings }					
 					{ Typography }
-					{ seperatorSettings }
 					{ twitter_settings }
 					{ spacing_settings }					
 				</InspectorControls>
@@ -826,8 +753,6 @@ class UAGBBlockQuote extends Component {
 						{ skinStyle === "quotation" && <span className="fas uagb-quote__icon"></span> }
 						<div className="uagb-blockquote__content-wrap">
 						   	{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  /> }
-
-						{ "none" !== seperatorStyle && <Seperator attributes={attributes} /> }
 
 					   <footer>
 					   		<div className={ classnames(

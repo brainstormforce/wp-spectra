@@ -27,11 +27,6 @@ function styling( props ) {
 		quoteSize,
 		quoteGap,
 		quoteBgColor,
-		seperatorWidth,
-		seperatorThickness,
-		seperatorColor,
-		seperatorStyle,
-		seperatorSpace,
 		enableTweet,
 		tweetBtnFontSize,
 		tweetLinkColor,
@@ -119,18 +114,7 @@ function styling( props ) {
 		},				
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
-		},				
-		" .uagb-quote__separator":{
-			"width" : seperatorWidth+"%",
-			"border-top-width" : seperatorThickness+"px",
-			"border-top-color": seperatorColor,
-			"border-top-style": seperatorStyle,
-		},				
-		" .uagb-quote__separator-parent":{
-			"justify-content":content_align,
-			"margin-bottom":seperatorSpace+"px"
-		},
-		
+		},			
 		" .uagb-quote__author-wrap":{
 			"margin-bottom": author_space + "px",
 		},

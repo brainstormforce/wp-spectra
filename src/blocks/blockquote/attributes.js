@@ -166,26 +166,6 @@ const attributes = {
 	},
 	quoteBgColor: {
 		type: "string",
-	},
-	seperatorStyle: {
-		type: "string",
-		default: "none",
-	},
-	seperatorColor: {
-		type: "string",
-		default: "#eeeeee",
-	},
-	seperatorWidth :{
-		type: "number",
-		default : 100
-	},
-	seperatorThickness :{
-		type: "number",
-		default : 2
-	},
-	seperatorSpace:{
-		type: "number",
-		default : 20
 	},	
 	quoteTopMargin :{
 		type: "number",

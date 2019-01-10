@@ -5,7 +5,6 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import Seperator from "./components/Seperator"
 import TweetButton from "./components/TweetButton"
 import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
@@ -62,11 +61,12 @@ registerBlockType( "uagb/blockquote", {
 			align,	
 			quoteStyle,
 			iconSkin,
-			seperatorStyle,
 			authorImage,
 			enableTweet,
 			className,
 			iconView,
+			author,
+			description_text,
 			authorImgPosition,
 		} = props.attributes
 
@@ -88,20 +88,18 @@ registerBlockType( "uagb/blockquote", {
 					<blockquote className="uagb-blockquote">					  
 					{ skinStyle === "quotation" && <span className="fas uagb-quote__icon"></span> }
 					<div className="uagb-blockquote__content-wrap">
-					   	{ <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
+					   	{ description_text !=="" && <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
 
-					{ "none" !== seperatorStyle && <Seperator attributes={props.attributes} /> }
-
-				   <footer>
+				   	<footer>
 				   		<div className={ classnames(
 							"uagb-quote__author-wrap",
 							( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
 						) }	>					   		
 				      		{ <AuthorImage attributes={props.attributes} /> }
-				      		{ <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
+				      		{ author !== "" && <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
 						</div>
 				      	{ enableTweet &&  <TweetButton attributes={props.attributes} /> }
-				   </footer>
+				   	</footer>
 				</div>
 				</blockquote>
 				</div>
