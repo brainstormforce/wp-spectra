@@ -68,8 +68,8 @@ const attributes = {
 	},
 	stack: {
 		type: "string",
-		default: "tablet"
-	},
+		default: "none"
+	},	
 	enableTweet:{
 		type: "boolean",
 		default: true,

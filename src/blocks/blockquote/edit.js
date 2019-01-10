@@ -692,7 +692,7 @@ class UAGBBlockQuote extends Component {
 							label= { __( "Target URL" ) }
 							value= { iconTargetUrl }
 							onChange={ value => setAttributes( { iconTargetUrl: value } ) }
-						/>		
+						/>								
 						</Fragment>
 					}	
 				</PanelBody>	
