@@ -260,6 +260,16 @@ class UAGBBlockQuote extends Component {
 				{ ( authorImage && authorImage.url !=="null" && authorImage.url !== "" ) &&
 					<Fragment>
 						<SelectControl
+							label={ __( "Image Position" ) }
+							value={ authorImgPosition }
+							onChange={ ( value ) => setAttributes( { authorImgPosition: value } ) }
+							options={ [
+								{ value: "left", label: __( "Left" ) },
+								{ value: "right", label: __( "Right" ) },
+								{ value: "top", label: __( "Top" ) },
+							] }
+						/>
+						<SelectControl
 							label={ __( "Image Size" ) }
 							options={ imageSizeOptions }
 							value={ authorImageSize }
@@ -282,17 +292,20 @@ class UAGBBlockQuote extends Component {
 							max = { 100 }
 							beforeIcon = ""
 							allowReset
-						/>
-						<SelectControl
-							label={ __( "Image Position" ) }
-							value={ authorImgPosition }
-							onChange={ ( value ) => setAttributes( { authorImgPosition: value } ) }
-							options={ [
-								{ value: "left", label: __( "Left" ) },
-								{ value: "right", label: __( "Right" ) },
-								{ value: "top", label: __( "Top" ) },
-							] }
-						/>
+						/>								
+						{ ( authorImgPosition == "left" || authorImgPosition == "right" ) &&
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Image will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						}				
 					</Fragment>
 				}
 			</Fragment>

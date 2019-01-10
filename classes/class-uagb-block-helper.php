@@ -2389,7 +2389,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-right"       => $attr['tweetIconSpacing'] . "px",
 				);	
 
-				// Hover CSS
+				// Hover CSS.
 				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = array(
 					"color"              => $attr['tweetBtnHoverColor'],		
 				);
