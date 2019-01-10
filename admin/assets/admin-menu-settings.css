@@ -26,9 +26,8 @@
 }
 
 #poststuff .uagb-intro-col h2 {
-	margin: 1em 0;
-    padding: 0;
-    font-size: 1.5em;
+	font-size: 18px;
+    padding-left: 0;
 }
 
 .uagb-container img.uagb-ast-img {
@@ -37,6 +36,13 @@
 
 .uagb-intro-section {
 	padding: 20px;
+}
+
+.uagb-intro-section .uagb-intro-icon {
+	margin-right: 8px;
+	width: 25px;
+	height: 25px;
+	font-size: 25px;
 }
 
 .uagb-title .uagb-plugin-version {
