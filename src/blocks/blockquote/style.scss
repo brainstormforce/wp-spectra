@@ -230,15 +230,15 @@
 
 
 	/* Left Image */
-	.uagb-quote__author-wrap.uagb-quote__author-at-left {
+	.uagb-quote__author-wrap.uagb-quote__author-at-right {
 		-webkit-flex-direction: row-reverse;
 		-ms-flex-direction: row-reverse;
 	    flex-direction: row-reverse;
 	}
 
-	.uagb-quote__author-wrap.uagb-quote__author-at-left .uagb-quote__author-image img{
+	.uagb-quote__author-wrap.uagb-quote__author-at-right .uagb-quote__author-image img{
     	margin-left:10px;
-    	margin-right:0px;
+    	margin-right:0;
 	}
 
 	/* Top Image */
@@ -246,5 +246,39 @@
 		-webkit-flex-direction: column;
 		-ms-flex-direction: column;
 	    flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 976px) {
+	.wp-block-uagb-blockquote {
+		.uagb-quote-stack-img-tablet .uagb-quote__author-wrap.uagb-quote__author-at-right,
+		.uagb-quote-stack-img-tablet .uagb-quote__author-wrap.uagb-quote__author-at-left{
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+		    flex-direction: column;
+		}
+		.uagb-quote-stack-img-tablet .uagb-quote__author-wrap.uagb-quote__author-at-right .uagb-quote__author-image img,
+		.uagb-quote-stack-img-tablet .uagb-quote__author-wrap.uagb-quote__author-at-left .uagb-quote__author-image img{
+	    	margin-left:0;
+	    	margin-right:0;
+	    	margin-bottom: 10px;
+		}
+	}
+}
+
+@media screen and (max-width: 767px) {
+	.wp-block-uagb-blockquote {
+		.uagb-quote-stack-img-mobile .uagb-quote__author-wrap.uagb-quote__author-at-right,
+		.uagb-quote-stack-img-mobile .uagb-quote__author-wrap.uagb-quote__author-at-left{
+			-webkit-flex-direction: column;
+			-ms-flex-direction: column;
+		    flex-direction: column;
+		}
+		.uagb-quote-stack-img-mobile .uagb-quote__author-wrap.uagb-quote__author-at-right .uagb-quote__author-image img,
+		.uagb-quote-stack-img-mobile .uagb-quote__author-wrap.uagb-quote__author-at-left .uagb-quote__author-image img{
+	    	margin-left:0;
+	    	margin-right:0;
+	    	margin-bottom: 10px;
+		}
 	}
 }

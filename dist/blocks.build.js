@@ -65450,7 +65450,8 @@ registerBlockType("uagb/blockquote", {
 		    iconView = _props$attributes.iconView,
 		    author = _props$attributes.author,
 		    description_text = _props$attributes.description_text,
-		    authorImgPosition = _props$attributes.authorImgPosition;
+		    authorImgPosition = _props$attributes.authorImgPosition,
+		    stack = _props$attributes.stack;
 
 
 		return wp.element.createElement(
@@ -65460,7 +65461,7 @@ registerBlockType("uagb/blockquote", {
 				id: "uagb-quote-" + block_id },
 			wp.element.createElement(
 				"div",
-				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "") },
+				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", authorImage && authorImgPosition !== 'top' ? "uagb-quote-stack-img-" + stack : "") },
 				wp.element.createElement(
 					"blockquote",
 					{ className: "uagb-blockquote" },
@@ -65843,7 +65844,7 @@ var UAGBBlockQuote = function (_Component) {
 						beforeIcon: "",
 						allowReset: true
 					}),
-					(authorImgPosition == "left" || authorImgPosition == "right") && wp.element.createElement(SelectControl, {
+					authorImgPosition !== "top" && wp.element.createElement(SelectControl, {
 						label: __("Stack on"),
 						value: stack,
 						options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
@@ -66475,7 +66476,7 @@ var UAGBBlockQuote = function (_Component) {
 						id: "uagb-quote-" + this.props.clientId },
 					wp.element.createElement(
 						"div",
-						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "") },
+						{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default()("uagb-blockquote__wrap", "uagb-blockquote__skin-" + skinStyle, skinStyle !== "border" ? "uagb-quote__align-" + align : "", skinStyle === "quotation" ? "uagb-quote__style-" + quoteStyle : "", enableTweet ? "uagb-quote__with-tweet uagb-quote__tweet-style-" + iconSkin + " uagb-quote__tweet-" + iconView : "", authorImage && authorImgPosition !== 'top' ? "uagb-quote-stack-img-" + stack : "") },
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
@@ -66809,7 +66810,7 @@ var attributes = {
 	},
 	authorImgPosition: {
 		type: "string",
-		default: "right"
+		default: "left"
 	},
 	stack: {
 		type: "string",

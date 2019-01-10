@@ -64,7 +64,7 @@ const attributes = {
 	},
 	authorImgPosition: {
 		type: "string",
-		default: "right",
+		default: "left",
 	},
 	stack: {
 		type: "string",

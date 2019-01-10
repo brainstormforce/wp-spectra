@@ -68,6 +68,7 @@ registerBlockType( "uagb/blockquote", {
 			author,
 			description_text,
 			authorImgPosition,
+			stack,
 		} = props.attributes
 
 		return (
@@ -83,6 +84,7 @@ registerBlockType( "uagb/blockquote", {
 					( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
 					( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
 					( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
+					( authorImage && authorImgPosition !=='top' ) ? `uagb-quote-stack-img-${stack}` : "",
 				) } >
 					
 					<blockquote className="uagb-blockquote">					  
