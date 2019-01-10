@@ -2225,7 +2225,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$author_space = $attr['authorSpace'];
 
-			if( 'center' !== $attr['align'] ){
+			if( 'center' !== $attr['align'] ||  $attr['skinStyle'] == "border" ){
 				$author_space = 0;
 			}
 

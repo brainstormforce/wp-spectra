@@ -596,7 +596,7 @@ class UAGBBlockQuote extends Component {
 							allowReset
 							initialPosition={0}
 						/>	
-					{ align == "center" && <RangeControl
+					{ align == "center" && skinStyle !== "border" && <RangeControl
 							label={ __( "Author Bottom Spacing" ) }
 							value={ authorSpace }
 							onChange={ ( value ) => setAttributes( { authorSpace: value } ) }

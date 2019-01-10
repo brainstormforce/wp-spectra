@@ -66287,7 +66287,7 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true,
 						initialPosition: 0
 					}),
-					align == "center" && wp.element.createElement(RangeControl, {
+					align == "center" && skinStyle !== "border" && wp.element.createElement(RangeControl, {
 						label: __("Author Bottom Spacing"),
 						value: authorSpace,
 						onChange: function onChange(value) {
@@ -66602,7 +66602,7 @@ function styling(props) {
 
 	var author_space = authorSpace;
 
-	if (align !== 'center') {
+	if (align !== 'center' || skinStyle == "border") {
 		author_space = 0;
 	}
 	//Set align to left for border style

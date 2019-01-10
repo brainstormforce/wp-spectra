@@ -62,7 +62,7 @@ function styling( props ) {
 
 	var author_space = authorSpace;
 
-	if( align !== 'center' ){
+	if( align !== 'center' || skinStyle == "border" ){
 		author_space = 0
 	}
 	//Set align to left for border style
