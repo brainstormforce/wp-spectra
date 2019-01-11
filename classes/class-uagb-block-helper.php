@@ -2258,19 +2258,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"padding-top"       => $attr['verticalPadding'] . "px",
 				"padding-bottom"    => $attr['verticalPadding'] . "px",
 			);
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon"] = array(
-				"color"             => $attr['quoteColor'],
-				"font-size"         => $attr['quoteSize']."px",
-				"width"             => $attr['quoteSize']."px",
-				"height"            => $attr['quoteSize']."px",
-				"line-height"       => $attr['quoteSize']."px",
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap"] = array(
 				"background"        => $attr['quoteBgColor'],
 				"border-radius"     => $attr['quoteBorderRadius']."%",
 				"margin-top"        => $attr['quoteTopMargin'] . "px",
 				"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
 				"margin-left"       => $attr['quoteLeftMargin'] . "px",
 				"margin-right"      => $attr['quoteRightMargin'] . "px",
-			);				
+			);			
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon"] = array(
+				"color"             => $attr['quoteColor'],
+				"font-size"         => $attr['quoteSize']."px",
+				"width"             => $attr['quoteSize']."px",
+				"height"            => $attr['quoteSize']."px",
+				"line-height"       => $attr['quoteSize']."px",
+			);		
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-main"] = array(
+				"font-size"         => $attr['quoteSize']."px",
+				"width"             => $attr['quoteSize']."px",
+				"height"            => $attr['quoteSize']."px",
+			);			
 			
 			$selectors[" .uagb-quote__style-style_1 .uagb-blockquote"] = array(
 				"text-align"        => $attr['align'],

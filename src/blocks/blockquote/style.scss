@@ -34,10 +34,39 @@
 		font-style: normal;
 	}
 
-	.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon{
+	.uagb-blockquote__skin-quotation .uagb-quote__icon-wrap{
+		display: inline-block;
+		background: #333;
+    	padding: 0px;	   
+	}
+	.uagb-blockquote__skin-quotation span.uagb-quote__icon {
+	    width: 45px;
+	    height: 45px;
+	    line-height: 45px;
+	    display: block;
+	    text-align: center;
+	    border-radius: inherit;
+	}
+
+	.uagb-blockquote__skin-quotation span.fa.fa-quote {
+	    font-size: 45px;
+	    width: 45px;
+	    height: 45px;
+	}	
+	
+	.uagb-blockquote__skin-quotation .fa-quote:before{
+		content: "“";
+	    color: inherit;	 	
+	    display: inline-block; 
+	    vertical-align: middle;  
+	}
+	.uagb-blockquote__skin-quotation.uagb-quote__style-style_2 .uagb-quote__icon-wrap{
+		display: inline-block;
+	    float: left;
+	}
+	/*.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon{
 	    font-size: 60px;
 	    color: rgb(230, 233, 236);
-	    /*font-family: "Times New Roman", Times, serif;*/
 	    font-family:"Font Awesome 5 Free";
 	    font-weight: 900;
 	    line-height: 60px;
@@ -48,12 +77,21 @@
 	    height: 60px;   
 	    text-align: center; 
 	}
-
 	.uagb-blockquote__skin-quotation .uagb-blockquote .uagb-quote__icon:before{
 		content: "“";
 	    color: inherit;	 
 	    vertical-align: middle;
 	}
+	.uagb-quote__style-style_2 .uagb-quote__icon{
+		display: inline-block;
+	    float: left;
+	    text-align: left;
+	}
+	.uagb-quote__style-style_2 .uagb-quote__icon:before {		
+	    width: auto;
+	    height: auto;
+	    line-height: 1em;	    
+	}	*/
 
 	blockquote.uagb-blockquote {
 	    margin: 0;
@@ -64,17 +102,13 @@
 	    -webkit-box-sizing: border-box;
 	    box-sizing: border-box;
 	}
-
-	.uagb-quote__style-style_2 .uagb-quote__icon{
+	
+	.uagb-quote__style-style_2 .uagb-quote-icon-wrap{
 		display: inline-block;
 	    float: left;
 	    text-align: left;
-	}	
-	.uagb-quote__style-style_2 .uagb-quote__icon:before {		
-	    width: auto;
-	    height: auto;
-	    line-height: 1em;	    
-	}	
+	}
+	
 	.uagb-quote__separator-parent{
 		display: -webkit-box;
 	    display: -ms-flexbox;
@@ -214,7 +248,6 @@
 		-ms-flex-item-align: center;
     	align-self: center;
 	}
-
 
 	/* Left Image */
 	.uagb-quote__author-wrap.uagb-quote__author-at-right {

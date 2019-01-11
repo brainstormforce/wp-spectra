@@ -773,7 +773,7 @@ class UAGBBlockQuote extends Component {
 					) } >
 						
 						<blockquote className="uagb-blockquote">					  
-						{ skinStyle === "quotation" && <span className="fas uagb-quote__icon"></span> }
+						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon"><span className="uagb-quote__icon-main fa fa-quote"></span></span></div> }
 						<div className="uagb-blockquote__content-wrap">
 						   	{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  /> }
 

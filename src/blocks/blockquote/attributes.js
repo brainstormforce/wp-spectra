@@ -161,7 +161,7 @@ const attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 60,
+		default: 45,
 	},		
 	quoteBorderRadius: {
 		type: "number",

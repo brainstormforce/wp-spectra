@@ -95,18 +95,25 @@ function styling( props ) {
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover":{
 			"border-left-color": borderHoverColor,
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"color"         : quoteColor,
-			"font-size"     : quoteSize+"px",
-			"width"         : quoteSize+"px",
-			"height"        : quoteSize+"px",
-			"line-height"   : quoteSize+"px",
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap":{
 			"background"    : quoteBgColor,
 			"border-radius" : quoteBorderRadius+"%",
 			"margin-top"    : quoteTopMargin + "px",
 			"margin-bottom" : quoteBottomMargin + "px",
 			"margin-left"   : quoteLeftMargin + "px",
 			"margin-right"  : quoteRightMargin + "px",
+		},	
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
+			"color"         : quoteColor,
+			"font-size"     : quoteSize+"px",
+			"width"         : quoteSize+"px",
+			"height"        : quoteSize+"px",
+			"line-height"   : quoteSize+"px",
+		},	
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-main":{
+			"font-size"     : quoteSize+"px",
+			"width"         : quoteSize+"px",
+			"height"        : quoteSize+"px",
 		},	
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover":{
 			"color"         : quoteHoverColor,

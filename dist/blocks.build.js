@@ -65464,7 +65464,15 @@ registerBlockType("uagb/blockquote", {
 				wp.element.createElement(
 					"blockquote",
 					{ className: "uagb-blockquote" },
-					skinStyle === "quotation" && wp.element.createElement("span", { className: "fas uagb-quote__icon" }),
+					skinStyle === "quotation" && wp.element.createElement(
+						"div",
+						{ className: "uagb-quote__icon-wrap" },
+						wp.element.createElement(
+							"span",
+							{ className: "uagb-quote__icon" },
+							wp.element.createElement("span", { className: "uagb-quote__icon-main fa fa-quote" })
+						)
+					),
 					wp.element.createElement(
 						"div",
 						{ className: "uagb-blockquote__content-wrap" },
@@ -66488,7 +66496,15 @@ var UAGBBlockQuote = function (_Component) {
 						wp.element.createElement(
 							"blockquote",
 							{ className: "uagb-blockquote" },
-							skinStyle === "quotation" && wp.element.createElement("span", { className: "fas uagb-quote__icon" }),
+							skinStyle === "quotation" && wp.element.createElement(
+								"div",
+								{ className: "uagb-quote__icon-wrap" },
+								wp.element.createElement(
+									"span",
+									{ className: "uagb-quote__icon" },
+									wp.element.createElement("span", { className: "uagb-quote__icon-main fa fa-quote" })
+								)
+							),
 							wp.element.createElement(
 								"div",
 								{ className: "uagb-blockquote__content-wrap" },
@@ -66635,18 +66651,25 @@ function styling(props) {
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover": {
 			"border-left-color": borderHoverColor
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon": {
-			"color": quoteColor,
-			"font-size": quoteSize + "px",
-			"width": quoteSize + "px",
-			"height": quoteSize + "px",
-			"line-height": quoteSize + "px",
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap": {
 			"background": quoteBgColor,
 			"border-radius": quoteBorderRadius + "%",
 			"margin-top": quoteTopMargin + "px",
 			"margin-bottom": quoteBottomMargin + "px",
 			"margin-left": quoteLeftMargin + "px",
 			"margin-right": quoteRightMargin + "px"
+		},
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon": {
+			"color": quoteColor,
+			"font-size": quoteSize + "px",
+			"width": quoteSize + "px",
+			"height": quoteSize + "px",
+			"line-height": quoteSize + "px"
+		},
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-main": {
+			"font-size": quoteSize + "px",
+			"width": quoteSize + "px",
+			"height": quoteSize + "px"
 		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover": {
 			"color": quoteHoverColor,
@@ -66915,7 +66938,7 @@ var attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 60
+		default: 45
 	},
 	quoteBorderRadius: {
 		type: "number",

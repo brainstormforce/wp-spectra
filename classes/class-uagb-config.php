@@ -696,7 +696,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'block_id '             => '',
 							'skinStyle'             => 'border',
-							'align'                 => 'center',
+							'align'                 => 'left',
 							'descColor'             => '',
 							'descFontSize'          => '',
 							'descSpace'             => 20,
@@ -726,7 +726,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'verticalPadding'       => '',
 							'quoteStyle'            => 'style_1',
 							'quoteColor'            => '#abb8c3',
-							'quoteSize'             => 60,
+							'quoteSize'             => 45,
 							'quoteTopMargin'        => '',
 							'quoteBottomMargin'     => '',
 							'quoteLeftMargin'       => '',
