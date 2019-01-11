@@ -2297,6 +2297,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover"] = array(
 				"color"         => $attr['quoteHoverColor'],
+			);	
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover"] = array(
 				"background"    => $attr['quoteBgHoverColor'],
 			);	
 
