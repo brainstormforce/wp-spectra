@@ -94,6 +94,11 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.7.0.1 =
+* New: Columns
+* Fix: Post Masonry - Messed view on first load issue fixed.
+* Improvement: Post - Added Action/Filter hooks.
+
 = 1.7.0 =
 * New: Call to Action
 * Fix: Section - Background Opacity issue fix.
