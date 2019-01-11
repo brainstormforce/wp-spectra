@@ -66671,10 +66671,8 @@ function styling(props) {
 			"width": quoteSize + "px",
 			"height": quoteSize + "px"
 		},
-		//" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover":{
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon": {
-			"color": quoteHoverColor,
-			"background": quoteBgHoverColor
+			"color": quoteHoverColor
 		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover": {
 			"background": quoteBgHoverColor
