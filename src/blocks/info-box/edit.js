@@ -14,6 +14,8 @@ import InfoBoxCta from "./components/InfoBoxCta"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
 
+import IconPicker from "../../../dist/blocks/uagb-controls/font-icon-picker/IconPicker"
+
 const { __ } = wp.i18n
 
 const {
@@ -228,6 +230,8 @@ class UAGBinfoBox extends Component {
 		const iconControls = (
 			<Fragment>
 				<FontIconPicker {...icon_props} />
+				<p>Ruva Kansara</p>
+				<IconPicker name="Vrunda Kansara"/>
 				<RangeControl
 					label = { __( "Icon Size" ) }
 					value = { iconSize }
@@ -503,7 +507,7 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Typography" ) }
 					initialOpen={ false }
-				>	
+				>
 					<ToggleControl
 						label={ __( "Enable Prefix" ) }
 						checked={ showPrefix }
@@ -590,7 +594,7 @@ class UAGBinfoBox extends Component {
 				<PanelBody
 					title={ __( "Color Settings" ) }
 					initialOpen={ true }
-				>					
+				>
 					{ showPrefix && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 						    <ColorPalette
@@ -598,7 +602,7 @@ class UAGBinfoBox extends Component {
 						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
 						        allowReset
 						    />
-						    </Fragment>	
+						    </Fragment>
 					}
 					{ showTitle && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
@@ -606,7 +610,7 @@ class UAGBinfoBox extends Component {
 						        value={ headingColor }
 						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 						        allowReset
-						    /> </Fragment>	
+						    /> </Fragment>
 					}
 					{ showDesc && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
@@ -614,9 +618,9 @@ class UAGBinfoBox extends Component {
 						        value={ subHeadingColor }
 						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
 						        allowReset
-						    /> </Fragment>	
+						    /> </Fragment>
 					}
-					
+
 					{ ( ctaType === "text") &&
 							<Fragment>
 							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
@@ -674,7 +678,7 @@ class UAGBinfoBox extends Component {
 					title={ __( "Spacing" ) }
 					initialOpen={ false }
 				>
-					{ showPrefix && 
+					{ showPrefix &&
 						<RangeControl
 							label={ __( "Prefix Bottom Margin" ) }
 							value={ prefixSpace }
@@ -685,7 +689,7 @@ class UAGBinfoBox extends Component {
 							allowReset
 						/>
 					}
-					{ showTitle && 
+					{ showTitle &&
 						<RangeControl
 							label={ __( "Heading Bottom Margin" ) }
 							value={ headSpace }
@@ -695,7 +699,7 @@ class UAGBinfoBox extends Component {
 							beforeIcon=""
 							allowReset
 						/>
-					}					
+					}
 					<RangeControl
 						label={ __( "Seperator Bottom Margin" ) }
 						value={ seperatorSpace }
@@ -705,7 +709,7 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
-					{ showDesc && 
+					{ showDesc &&
 						<RangeControl
 							label={ __( "Description Bottom Margin" ) }
 							value={ subHeadSpace }
@@ -895,7 +899,7 @@ class UAGBinfoBox extends Component {
 					</PanelBody>
 					{ TypographySettings }
 					{ seperatorSettings }
-					{ ctaSettings }				
+					{ ctaSettings }
 
 					{ marginSettings }
 
@@ -918,7 +922,7 @@ class UAGBinfoBox extends Component {
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<InfoBoxCta attributes={attributes} /> 
+					<InfoBoxCta attributes={attributes} />
 				</div>
 			</Fragment>
 		)
