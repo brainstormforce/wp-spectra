@@ -2465,7 +2465,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			?>
 				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
-				  console.log("here");
 				  window.open( "<?php echo $request_url ?>" );
 				});
 			<?php 
