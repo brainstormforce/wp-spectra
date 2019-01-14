@@ -319,7 +319,11 @@
 .rfipbtn__elm img,
 .rfipbtn__elm svg {
 	height: 18px;
-	width: auto
+	width: 18px;
+}
+
+.rfipbtn__elm svg {
+	fill : #333;
 }
 
 .rfipbtn__del {
@@ -525,7 +529,12 @@
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
 	max-height: 24px;
-	width: auto
+	height: 18px;
+	width: 18px;
+}
+
+.rfipicons__ibox svg {
+	fill: #333;
 }
 
 .rfipicons__ibox>* {

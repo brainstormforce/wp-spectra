@@ -13,8 +13,10 @@ import InfoBoxSeperator from "./components/InfoBoxSeperator"
 import InfoBoxCta from "./components/InfoBoxCta"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
+//import UAGB_SVG_Icon from "../../../dist/blocks/uagb-controls/font-icon-picker/svg"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
-import IconPicker from "../../../dist/blocks/uagb-controls/font-icon-picker/IconPicker"
+let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
 
@@ -203,24 +205,26 @@ class UAGBinfoBox extends Component {
 			element.innerHTML = InfoBoxStyle( this.props )
 		}
 
+		let iconSelected = renderSVG( icon )
+
 		// Icon properties.
 		const icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: icon,
-		  onChange: this.getIfbIcon,
-		  isMulti: false,
+			icons: svg_icons,
+			value: icon,
+			onChange: this.getIfbIcon,
+			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( 'Select Icon' )
 		}
 
 		// Icon properties.
 		const cta_icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: ctaIcon,
-		  onChange: this.getCtaicon,
-		  isMulti: false,
+			icons: UAGBIcon,
+			renderUsing: "class",
+			theme: "default",
+			value: ctaIcon,
+			onChange: this.getCtaicon,
+			isMulti: false,
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
@@ -230,8 +234,6 @@ class UAGBinfoBox extends Component {
 		const iconControls = (
 			<Fragment>
 				<FontIconPicker {...icon_props} />
-				<p>Ruva Kansara</p>
-				<IconPicker name="Vrunda Kansara"/>
 				<RangeControl
 					label = { __( "Icon Size" ) }
 					value = { iconSize }

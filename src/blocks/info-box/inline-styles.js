@@ -72,6 +72,7 @@ function InfoBoxStyle( props ) {
 		"font-size" : iconSize+"px",
 		"height": iconSize+"px",
 		"color": iconColor,
+		"fill": iconColor,
 		"width": iconSize+"px",
 		"line-height": iconSize + "px",
 	}

@@ -236,7 +236,11 @@ a.uagb-infobox-link-wrap:hover,
     height: 40px;
     color: #333;
     width: 40px;
-  }
+}
+
+.uagb-ifb-icon svg {
+	fill: #333;
+}
 
 .uagb-infobox__content-wrap.uagb-infobox,
 .uagb-ifb-content,

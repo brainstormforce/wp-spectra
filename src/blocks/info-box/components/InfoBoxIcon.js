@@ -1,3 +1,5 @@
+import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
+
 const {
 	RichText,
 } = wp.editor
@@ -8,16 +10,16 @@ class InfoBoxIcon extends React.Component {
 
 	render() {
 
-		const { attributes } = this.props     
-        
+		const { attributes } = this.props
+
 		return (
 			<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap" >
 				<div className="uagb-ifb-icon-wrap">
 					<span className="uagb-ifb-icon">
-						<span className={attributes.icon} ></span>
+						{ renderSVG(attributes.icon) }
 					</span>
 				</div>
-			</div>            			
+			</div>
 		)
 	}
 }
