@@ -26,6 +26,12 @@ function styling( props ) {
 		bottomColor,
 		bottomHeight,
 		bottomWidth,
+		gradientColor1,
+		gradientColor2,
+		gradientLocation1,
+		gradientLocation2,
+		gradientType,
+		gradientAngle,
 	} = props.attributes
 
 	let max_width = "100%"
@@ -79,6 +85,18 @@ function styling( props ) {
 		selectors[" > .uagb-columns__overlay"] = {
 			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : "",
 			"background-color" : backgroundColor
+		}
+	} else if ( "gradient" === backgroundType ) {
+
+		selectors[" > .uagb-columns__overlay"]["background-color"] = "transparent"
+		selectors[" > .uagb-columns__overlay"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
+
+		if ( "linear" === gradientType ) {
+
+			selectors[" > .uagb-columns__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+		} else {
+
+			selectors[" > .uagb-columns__overlay"]["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 	}
 
