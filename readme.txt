@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.0
+Stable tag: 1.8.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,8 +95,11 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.8.0.1 =
+* Fix: Advanced Columns - Editor end width issue fixed.
+
 = 1.8.0 =
-* New: Columns
+* New: Advanced Columns
 * Fix: Post Masonry - Messed view on first load issue fixed.
 * Improvement: Post - Added Action/Filter hooks.
 
