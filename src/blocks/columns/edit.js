@@ -196,6 +196,7 @@ class UAGBColumns extends Component {
 			{ value: "tilt", label: __( "Tilt" ) },
 			{ value: "mountains", label: __( "Mountains" ) },
 			{ value: "wave_brush", label: __( "Wave Brush" ) },
+			{ value: "waves", label: __( "Waves" ) },
 			{ value: "triangle", label: __( "Triangle" ) },
 		]
 
