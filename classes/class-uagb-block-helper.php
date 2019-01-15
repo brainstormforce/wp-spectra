@@ -300,6 +300,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => $attr['rightPadding'] . 'px',
 				'margin-top'    => $attr['topMargin'] . 'px',
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
+				'margin-left'    => $attr['leftMargin'] . 'px',
+				'margin-right' => $attr['rightMargin'] . 'px',
 			);
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );

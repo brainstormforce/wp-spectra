@@ -440,7 +440,7 @@ export default class UAGBColumnEdit extends Component {
  */
 registerBlockType( "uagb/column", {
 	title: __( "Column" ),
-	icon: UAGB_Block_Icons.columns,
+	icon: UAGB_Block_Icons.column,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/columns" ],
 	supports: {
