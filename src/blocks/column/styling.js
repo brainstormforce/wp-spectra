@@ -39,22 +39,19 @@ function styling( props ) {
 		"margin-right": rightMargin + "px",
 	}
 
-	var p_style = {}
-
 	if ( "image" === backgroundType ) {
 
-		p_style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
-		p_style["background-position"] = position
-		p_style["background-attachment"] = backgroundAttachment
-		p_style["background-repeat"] = backgroundRepeat
-		p_style["background-size"] = backgroundSize
+		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
+		style["background-position"] = position
+		style["background-attachment"] = backgroundAttachment
+		style["background-repeat"] = backgroundRepeat
+		style["background-size"] = backgroundSize
 
 	}
 
 	var selectors = {
 		":before" : inlineStyles( props ),
-		"" : p_style,
-		" .uagb-column__inner-wrap" : style
+		"" : style
 	}
 
 	var styling_css = ""

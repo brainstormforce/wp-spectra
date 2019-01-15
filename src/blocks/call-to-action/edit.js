@@ -542,12 +542,12 @@ class UAGBCallToAction extends Component {
 				/>
 				}						
 			</PanelBody>
-			)
+		)
 
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-					<InspectorControls>				 	
+				<InspectorControls>				 	
 					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) && layouts }
 					{ TypographySettings }
 					{ ctaSettings }		
