@@ -439,7 +439,8 @@ export default class UAGBColumnEdit extends Component {
  *                             registered; otherwise `undefined`.
  */
 registerBlockType( "uagb/column", {
-	title: __( "Column" ),
+	title: uagb_blocks_info.blocks["uagb/column"]["title"],
+	description: uagb_blocks_info.blocks["uagb/column"]["description"],
 	icon: UAGB_Block_Icons.column,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/columns" ],

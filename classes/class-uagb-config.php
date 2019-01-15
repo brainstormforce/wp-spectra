@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/columns'          => array(
 						'slug'        => '',
 						'title'       => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'               => '',
@@ -109,7 +109,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/column'           => array(
 						'slug'        => '',
 						'title'       => __( 'Column', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block is an immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'             => '',
