@@ -38,7 +38,7 @@
     "grunt-wp-i18n": "^1.0.1",
     "gzip-size": "^4.1.0",
     "jquery": "^3.3.1",
-    "node-sass": "^4.9.3",
+    "node-sass": "^4.11.0",
     "ora": "^1.3.0",
     "postcss-loader": "^2.0.10",
     "prop-types": "^15.6.2",
@@ -107,8 +107,10 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "eslint-plugin-wordpress": "^0.1.0",
+    "memize": "^1.0.5",
     "react-masonry-component": "^6.2.1",
     "react-masonry-css": "^1.0.11",
+    "react-memoize": "^1.0.1",
     "webpack-config": "^7.5.0"
   }
 }

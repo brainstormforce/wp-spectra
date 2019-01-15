@@ -6,17 +6,12 @@
 function inlineStyles( props, isEditor ) {
 
 	const {
-		align,
-		contentWidth,
 		leftPadding,
 		rightPadding,
 		topPadding,
 		bottomPadding,
-		leftMargin,
-		rightMargin,
 		topMargin,
 		bottomMargin,
-		width,
 		backgroundPosition,
 		backgroundSize,
 		backgroundAttachment,
@@ -25,12 +20,6 @@ function inlineStyles( props, isEditor ) {
 		backgroundOpacity,
 		backgroundRepeat,
 		backgroundType,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -42,27 +31,9 @@ function inlineStyles( props, isEditor ) {
 		"padding-bottom": bottomPadding + "px",
 		"padding-left": leftPadding + "px",
 		"padding-right": rightPadding + "px",
-		"border-radius": borderRadius + "px"
-	}
-
-	if ( "right" == align ) {
-		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-right"] =  rightMargin + "px"
-	} else if ( "left" == align ) {
-		style["margin-right"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-left"] =  leftMargin + "px"
-	} else if ( "center" == align ) {
-		style["margin-right"] = "auto"
-		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-	} else {
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
+		"margin-top": topMargin + "px",
+		"margin-bottom": bottomMargin + "px",
+		"border-radius": borderRadius + "px",
 	}
 
 	if ( borderStyle != "none" ) {
@@ -72,17 +43,6 @@ function inlineStyles( props, isEditor ) {
 	}
 
 	var position = backgroundPosition.replace( "-", " " )
-
-	var section_width = "100%"
-
-	if ( "boxed" == contentWidth ) {
-		if ( "" != width ) {
-			section_width = width + "px"
-		}
-	}
-
-	style["max-width"] = section_width
-
 
 	if ( "image" === backgroundType ) {
 

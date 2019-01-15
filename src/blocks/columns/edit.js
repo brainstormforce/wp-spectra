@@ -1,10 +1,17 @@
 /**
- * BLOCK: UAGB - Section Edit Class
+ * BLOCK: UAGB - Columns Edit Class
  */
 
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
+import memoize from "memize"
+import times from "lodash/times"
+import map from "lodash/map"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import shapes from "./shapes"
+
+const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
 
@@ -29,14 +36,20 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
-	Dashicon,
 	BaseControl,
 	withNotices,
 	ToggleControl,
+	Toolbar,
+	Tooltip,
+	TabPanel
 } = wp.components
 
+const getColumnsTemplate = memoize( ( columns ) => {
+	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
+} )
 
-class UAGBSectionEdit extends Component {
+
+class UAGBColumns extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -54,7 +67,7 @@ class UAGBSectionEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-section-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -120,19 +133,17 @@ class UAGBSectionEdit extends Component {
 		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
+			stack,
 			align,
-			padding,
+			vAlign,
 			contentWidth,
 			width,
-			innerWidth,
 			tag,
-			themeWidth,
+			columnGap,
 			leftPadding,
 			rightPadding,
 			topPadding,
 			bottomPadding,
-			leftMargin,
-			rightMargin,
 			topMargin,
 			bottomMargin,
 			backgroundType,
@@ -156,33 +167,149 @@ class UAGBSectionEdit extends Component {
 			borderStyle,
 			borderWidth,
 			borderRadius,
-			borderColor
+			borderColor,
+			columns,
+			bottomType,
+			bottomColor,
+			bottomHeight,
+			bottomWidth,
+			topType,
+			topColor,
+			topHeight,
+			topWidth,
+			bottomFlip,
+			topFlip
 		} = attributes
 
 		const CustomTag = `${tag}`
 
-		var element = document.getElementById( "uagb-section-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
 
-		const onColorChange = ( colorValue ) => {
-			setAttributes( { backgroundColor: colorValue } )
-		}
-
 		let active = ( isSelected ) ? "active" : "not-active"
 
-		let block_controls = [ "left","center","right" ]
-		let block_controls_class = ""
+		const dividers = [
+			{ value: "none", label: __( "None" ) },
+			{ value: "tilt", label: __( "Tilt" ) },
+			{ value: "mountains", label: __( "Mountains" ) },
+			{ value: "wave_brush", label: __( "Wave Brush" ) },
+			{ value: "waves", label: __( "Waves" ) },
+			{ value: "triangle", label: __( "Triangle" ) },
+		]
 
-		if ( "full_width" == contentWidth ) {
-			block_controls = [ "wide","full" ]
+		const bottomSettings = (
+			<Fragment>
+				<SelectControl
+					label={ __( "Type" ) }
+					value={ bottomType }
+					onChange={ ( value ) => setAttributes( { bottomType: value } ) }
+					options={ dividers }
+				/>
+				{ bottomType != "none" &&
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ bottomColor: bottomColor }} ></span></span></p>
+						<ColorPalette
+							value={ bottomColor }
+							onChange={ ( colorValue ) => setAttributes( { bottomColor: colorValue } ) }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Width" ) }
+							value={ bottomWidth }
+							onChange={ ( value ) => setAttributes( { bottomWidth: value } ) }
+							min={ 100 }
+							max={ 300 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Height" ) }
+							value={ bottomHeight }
+							onChange={ ( value ) => setAttributes( { bottomHeight: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+						/>
+						<ToggleControl
+							label={ __( "Flip" ) }
+							checked={ bottomFlip }
+							onChange={ ( value ) => setAttributes( { bottomFlip: ! bottomFlip } ) }
+						/>
+					</Fragment>
+				}
+			</Fragment>
+		)
 
-			if ( align == "wide" || align == "full" ) {
-				block_controls_class = "align" + align
-			}
-		}
+		const topSettings = (
+			<Fragment>
+				<SelectControl
+					label={ __( "Type" ) }
+					value={ topType }
+					onChange={ ( value ) => setAttributes( { topType: value } ) }
+					options={ dividers }
+				/>
+				{ topType != "none" &&
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ topColor: topColor }} ></span></span></p>
+						<ColorPalette
+							value={ topColor }
+							onChange={ ( colorValue ) => setAttributes( { topColor: colorValue } ) }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Width" ) }
+							value={ topWidth }
+							onChange={ ( value ) => setAttributes( { topWidth: value } ) }
+							min={ 100 }
+							max={ 300 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Height" ) }
+							value={ topHeight }
+							onChange={ ( value ) => setAttributes( { topHeight: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+						/>
+						<ToggleControl
+							label={ __( "Flip" ) }
+							checked={ topFlip }
+							onChange={ ( value ) => setAttributes( { topFlip: ! topFlip } ) }
+						/>
+					</Fragment>
+				}
+			</Fragment>
+		)
+
+		const top_divider_html = (
+			topType != "none" && (
+				<div
+					className={ classnames(
+						"uagb-columns__shape",
+						"uagb-columns__shape-top",
+						{ "uagb-columns__shape-flip": topFlip === true }
+					) }>
+					{shapes[topType]}
+				</div>
+			)
+		)
+
+		const bottom_divider_html = (
+			bottomType != "none" && (
+				<div
+					className={ classnames(
+						"uagb-columns__shape",
+						"uagb-columns__shape-bottom",
+						{ "uagb-columns__shape-flip": bottomFlip === true }
+					) }
+					data-negative="false">
+					{shapes[bottomType]}
+				</div>
+			)
+		)
 
 		return (
 			<Fragment>
@@ -192,47 +319,104 @@ class UAGBSectionEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ block_controls }
+						controls={ [ "wide","full" ] }
 					/>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Top" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "top" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "top" } ) }
+							>
+								{ UAGB_Block_Icons.top_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Middle" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "middle" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "middle" } ) }
+							>
+								{ UAGB_Block_Icons.middle_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
+					<Toolbar>
+						<Tooltip text={ __( "Vertically Bottom" ) }>
+							<Button
+								className={ classnames(
+									"components-icon-button",
+									"components-toolbar__control",
+									{ "is-active": vAlign === "bottom" },
+								) }
+								onClick={ () => setAttributes( { vAlign: "bottom" } ) }
+							>
+								{ UAGB_Block_Icons.bottom_align }
+							</Button>
+						</Tooltip>
+					</Toolbar>
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ columns }
+							min={ 0 }
+							max={ 6 }
+							onChange={ ( value ) => setAttributes( { columns: value } ) }
+						/>
 						<SelectControl
-							label={ __( "Content Width" ) }
+							label={ __( "Stack on" ) }
+							value={ stack }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "tablet", label: __( "Tablet" ) },
+								{ value: "mobile", label: __( "Mobile" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { stack: value } ) }
+						/>
+						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
+						<SelectControl
+							label={ __( "Container Width" ) }
 							value={ contentWidth }
 							onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
 							options={ [
-								{ value: "boxed", label: __( "Boxed" ) },
-								{ value: "full_width", label: __( "Full Width" ) },
+								{ value: "theme", label: __( "Theme Container Width" ) },
+								{ value: "custom", label: __( "Custom" ) },
 							] }
 						/>
 						{
-							contentWidth == "boxed" &&
+							contentWidth == "custom" &&
 							( <RangeControl
-								label={ __( "Width" ) }
+								label={ __( "Inner Width" ) }
 								value={ width }
 								min={ 0 }
 								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
-						{ contentWidth != "boxed" &&
-							<ToggleControl
-								label={ __( "Inherit Inner Width from Theme" ) }
-								checked={ themeWidth }
-								onChange={ ( value ) => setAttributes( { themeWidth: ! themeWidth } ) }
-							/>
-						}
-						{
-							contentWidth != "boxed" && ! themeWidth &&
-							( <RangeControl
-								label={ __( "Inner Width" ) }
-								value={ innerWidth }
-								min={ 0 }
-								max={ 2000 }
-								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
-							/> )
-						}
+						<SelectControl
+							label={ __( "Column Gap" ) }
+							value={ columnGap }
+							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+							options={ [
+								{ value: "10", label: __( "Default (10px)" ) },
+								{ value: "0", label: __( "No Gap (0px)" ) },
+								{ value: "5", label: __( "Narrow (5px)" ) },
+								{ value: "15", label: __( "Extended (15px)" ) },
+								{ value: "20", label: __( "Wide (20px)" ) },
+								{ value: "30", label: __( "Wider (30px)" ) }
+							] }
+						/>
+						<p className="uagb-note">{ __( "Note: The individual Column Gap can be managed from Column Settings." ) }</p>
 						<SelectControl
 							label={ __( "HTML Tag" ) }
 							value={ tag }
@@ -279,22 +463,6 @@ class UAGBSectionEdit extends Component {
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
 							min={ 0 }
-							max={ 200 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Left Margin" ) }
-							value={ leftMargin }
-							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ -200 }
-							max={ 200 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Right Margin" ) }
-							value={ rightMargin }
-							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -529,6 +697,34 @@ class UAGBSectionEdit extends Component {
 							/>
 						)}
 					</PanelBody>
+					<PanelBody title={ __( "Shape Dividers" ) } initialOpen={ false }>
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: "top",
+									title: __( "Top" ),
+									className: "uagb-top-tab",
+								},
+								{
+									name: "bottom",
+									title: __( "Bottom" ),
+									className: "uagb-bottom-tab",
+								},
+							] }>
+							{
+								( tabName ) => {
+									let tabout
+									if ( "bottom" === tabName.name ){
+										tabout = bottomSettings
+									} else {
+										tabout = topSettings
+									}
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+					</PanelBody>
 					<PanelBody title={ __( "Border" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Border Style" ) }
@@ -579,30 +775,41 @@ class UAGBSectionEdit extends Component {
 				<CustomTag
 					className={ classnames(
 						className,
-						"uagb-section__wrap",
-						`uagb-section__background-${backgroundType}`,
-						`uagb-section__edit-${ active }`,
-						block_controls_class
+						"uagb-columns__wrap",
+						`uagb-columns__background-${backgroundType}`,
+						`uagb-columns__edit-${ active }`,
+						`uagb-columns__stack-${stack}`,
+						`uagb-columns__valign-${vAlign}`,
+						`uagb-columns__gap-${columnGap}`,
+						`align${ align }`
 					) }
-					id={ `uagb-section-${this.props.clientId}` }
+					id={ `uagb-columns-${this.props.clientId}` }
 				>
-					<div className="uagb-section__overlay"></div>
+					<div className="uagb-columns__overlay"></div>
+					{ top_divider_html }
 					{ "video" == backgroundType &&
-						<div className="uagb-section__video-wrap">
+						<div className="uagb-columns__video-wrap">
 							{  backgroundVideo &&
 								<video src={ backgroundVideo.url } autoPlay loop muted></video>
 							}
 
 						</div>
 					}
-					<div className="uagb-section__inner-wrap">
-						<InnerBlocks templateLock={false} />
+					<div className={ classnames(
+						"uagb-columns__inner-wrap",
+						`uagb-columns__columns-${columns}`
+					) }>
+						<InnerBlocks
+							template={ getColumnsTemplate( columns ) }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS }
+						/>
 					</div>
-
+					{ bottom_divider_html }
 				</CustomTag>
 			</Fragment>
 		)
 	}
 }
 
-export default withNotices( UAGBSectionEdit )
+export default withNotices( UAGBColumns )

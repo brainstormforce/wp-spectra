@@ -88,10 +88,14 @@ function uagb_post_masonry_add_script() {
 			?>
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
-					$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+
+					var $scope = $( '#uagb-post__masonry-<?php echo $key; ?>' );
+					$scope.imagesLoaded( function() {
+						$scope.find( '.is-masonry' ).isotope();
+					});
 
 					$( window ).resize( function() {
-						$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+						$scope.find( '.is-masonry' ).isotope();
 					} );
 				} )( jQuery );
 			</script>
@@ -187,6 +191,8 @@ function uagb_get_post_query( $attributes ) {
  * @since 0.0.1
  */
 function uagb_get_post_html( $attributes, $query, $layout ) {
+
+	$attributes['post_type'] = $layout;
 
 	$wrap = array(
 		'uagb-post__items uagb-post__columns-' . $attributes['columns'],
@@ -1084,12 +1090,14 @@ function uagb_render_image( $attributes ) {
 		return;
 	}
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1101,11 +1109,13 @@ function uagb_render_image( $attributes ) {
  */
 function uagb_render_title( $attributes ) {
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title">
-		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
+	do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1118,6 +1128,7 @@ function uagb_render_title( $attributes ) {
 function uagb_render_meta( $attributes ) {
 	global $post;
 	// @codingStandardsIgnoreStart
+	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
 		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
@@ -1128,6 +1139,7 @@ function uagb_render_meta( $attributes ) {
 ?></span><?php }
 		?></div>
 	<?php
+	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	// @codingStandardsIgnoreEnd
 }
 
@@ -1150,11 +1162,14 @@ function uagb_render_excerpt( $attributes ) {
 	if ( ! $excerpt ) {
 		$excerpt = null;
 	}
+	$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
+	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__excerpt">
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1170,11 +1185,13 @@ function uagb_render_button( $attributes ) {
 	}
 	$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
+	do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1190,6 +1207,6 @@ function uagb_render_complete_box_link( $attributes ) {
 	}
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	?>
-	<a class="uagb-post__link-complete-box" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"></a>
+	<a class="uagb-post__link-complete-box" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"></a>
 	<?php
 }
