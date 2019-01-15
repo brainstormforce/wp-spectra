@@ -104,12 +104,12 @@ class UAGBtestimonial extends Component {
 	getImageName( image ){
 		const { test_block } = this.props.attributes
 
-		let image_name = "Select Image"
+		let image_name = __( "Select Image" )
 		if(image){
 			if(image.url == null || image.url == "" ){
-				image_name = "Select Image"
+				image_name = __( "Select Image" )
 			}else{
-				image_name = "Replace Image"
+				image_name = __( "Replace Image" )
 			}
 		}
 		return image_name
