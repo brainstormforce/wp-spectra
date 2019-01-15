@@ -53,7 +53,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/columns'          => array(
 						'slug'        => '',
-						'title'       => __( 'Columns', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(

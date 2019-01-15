@@ -17,8 +17,16 @@ function styling( props ) {
 		topMargin,
 		bottomMargin,
 		leftMargin,
-		rightMargin
+		rightMargin,
+		backgroundType,
+		backgroundImage,
+		backgroundPosition,
+		backgroundAttachment,
+		backgroundRepeat,
+		backgroundSize
 	} = props.attributes
+
+	var position = backgroundPosition.replace( "-", " " )
 
 	var style = {
 		"padding-top": topPadding + "px",
@@ -31,8 +39,21 @@ function styling( props ) {
 		"margin-right": rightMargin + "px",
 	}
 
+	var p_style = {}
+
+	if ( "image" === backgroundType ) {
+
+		p_style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
+		p_style["background-position"] = position
+		p_style["background-attachment"] = backgroundAttachment
+		p_style["background-repeat"] = backgroundRepeat
+		p_style["background-size"] = backgroundSize
+
+	}
+
 	var selectors = {
 		":before" : inlineStyles( props ),
+		"" : p_style,
 		" .uagb-column__inner-wrap" : style
 	}
 
@@ -40,7 +61,7 @@ function styling( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += `#block-${ props.clientId }`
+		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
 
 		styling_css += i + " { "
 

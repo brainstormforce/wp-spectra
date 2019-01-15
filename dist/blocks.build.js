@@ -6228,17 +6228,6 @@ function inlineStyles(props, isEditor) {
 		style["background-attachment"] = backgroundAttachment;
 		style["background-repeat"] = backgroundRepeat;
 		style["background-size"] = backgroundSize;
-	} else if ("gradient" === backgroundType) {
-		style["background-color"] = "transparent";
-		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
-
-		if ("linear" === gradientType) {
-
-			style["background-image"] = "linear-gradient(" + gradientAngle + "deg, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		} else {
-
-			style["background-image"] = "radial-gradient( at center center, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		}
 	}
 
 	return style;
@@ -48353,6 +48342,12 @@ function styling(props) {
 	    className = _props$attributes.className,
 	    innerWidth = _props$attributes.innerWidth,
 	    contentWidth = _props$attributes.contentWidth,
+	    gradientColor1 = _props$attributes.gradientColor1,
+	    gradientColor2 = _props$attributes.gradientColor2,
+	    gradientLocation1 = _props$attributes.gradientLocation1,
+	    gradientLocation2 = _props$attributes.gradientLocation2,
+	    gradientType = _props$attributes.gradientType,
+	    gradientAngle = _props$attributes.gradientAngle,
 	    borderRadius = _props$attributes.borderRadius;
 
 
@@ -48393,6 +48388,17 @@ function styling(props) {
 			"opacity": typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "",
 			"background-color": backgroundColor
 		};
+	} else if ("gradient" === backgroundType) {
+		selectors[" > .uagb-section__overlay"]["background-color"] = "transparent";
+		selectors[" > .uagb-section__overlay"]["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
+
+		if ("linear" === gradientType) {
+
+			selectors[" > .uagb-section__overlay"]["background-image"] = "linear-gradient(" + gradientAngle + "deg, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
+		} else {
+
+			selectors[" > .uagb-section__overlay"]["background-image"] = "radial-gradient( at center center, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
+		}
 	}
 
 	selectors[" > .uagb-section__overlay"]["border-radius"] = borderRadius + "px";
@@ -63390,8 +63396,16 @@ function styling(props) {
 	    topMargin = _props$attributes.topMargin,
 	    bottomMargin = _props$attributes.bottomMargin,
 	    leftMargin = _props$attributes.leftMargin,
-	    rightMargin = _props$attributes.rightMargin;
+	    rightMargin = _props$attributes.rightMargin,
+	    backgroundType = _props$attributes.backgroundType,
+	    backgroundImage = _props$attributes.backgroundImage,
+	    backgroundPosition = _props$attributes.backgroundPosition,
+	    backgroundAttachment = _props$attributes.backgroundAttachment,
+	    backgroundRepeat = _props$attributes.backgroundRepeat,
+	    backgroundSize = _props$attributes.backgroundSize;
 
+
+	var position = backgroundPosition.replace("-", " ");
 
 	var style = {
 		"padding-top": topPadding + "px",
@@ -63404,8 +63418,20 @@ function styling(props) {
 		"margin-right": rightMargin + "px"
 	};
 
+	var p_style = {};
+
+	if ("image" === backgroundType) {
+
+		p_style["background-image"] = backgroundImage ? "url(" + backgroundImage.url + ")" : null;
+		p_style["background-position"] = position;
+		p_style["background-attachment"] = backgroundAttachment;
+		p_style["background-repeat"] = backgroundRepeat;
+		p_style["background-size"] = backgroundSize;
+	}
+
 	var selectors = {
 		":before": Object(__WEBPACK_IMPORTED_MODULE_0__inline_styles__["a" /* default */])(props),
+		"": p_style,
 		" .uagb-column__inner-wrap": style
 	};
 
@@ -63413,7 +63439,7 @@ function styling(props) {
 
 	for (var i in selectors) {
 
-		styling_css += "#block-" + props.clientId;
+		styling_css += "#wpwrap .edit-post-visual-editor #block-" + props.clientId;
 
 		styling_css += i + " { ";
 
@@ -63455,9 +63481,6 @@ function styling(props) {
 function inlineStyles(props, isEditor) {
 	var _props$attributes = props.attributes,
 	    backgroundPosition = _props$attributes.backgroundPosition,
-	    backgroundSize = _props$attributes.backgroundSize,
-	    backgroundAttachment = _props$attributes.backgroundAttachment,
-	    backgroundImage = _props$attributes.backgroundImage,
 	    backgroundColor = _props$attributes.backgroundColor,
 	    backgroundOpacity = _props$attributes.backgroundOpacity,
 	    backgroundRepeat = _props$attributes.backgroundRepeat,
@@ -63483,12 +63506,6 @@ function inlineStyles(props, isEditor) {
 
 		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
 		style["background-color"] = backgroundImageColor;
-
-		style["background-image"] = backgroundImage ? "url(" + backgroundImage.url + ")" : null;
-		style["background-position"] = position;
-		style["background-attachment"] = backgroundAttachment;
-		style["background-repeat"] = backgroundRepeat;
-		style["background-size"] = backgroundSize;
 	} else if ("gradient" === backgroundType) {
 		style["background-color"] = "transparent";
 		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
@@ -64812,7 +64829,13 @@ function styling(props) {
 	    topWidth = _props$attributes.topWidth,
 	    bottomColor = _props$attributes.bottomColor,
 	    bottomHeight = _props$attributes.bottomHeight,
-	    bottomWidth = _props$attributes.bottomWidth;
+	    bottomWidth = _props$attributes.bottomWidth,
+	    gradientColor1 = _props$attributes.gradientColor1,
+	    gradientColor2 = _props$attributes.gradientColor2,
+	    gradientLocation1 = _props$attributes.gradientLocation1,
+	    gradientLocation2 = _props$attributes.gradientLocation2,
+	    gradientType = _props$attributes.gradientType,
+	    gradientAngle = _props$attributes.gradientAngle;
 
 
 	var max_width = "100%";
@@ -64867,6 +64890,18 @@ function styling(props) {
 			"opacity": typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "",
 			"background-color": backgroundColor
 		};
+	} else if ("gradient" === backgroundType) {
+
+		selectors[" > .uagb-columns__overlay"]["background-color"] = "transparent";
+		selectors[" > .uagb-columns__overlay"]["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
+
+		if ("linear" === gradientType) {
+
+			selectors[" > .uagb-columns__overlay"]["background-image"] = "linear-gradient(" + gradientAngle + "deg, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
+		} else {
+
+			selectors[" > .uagb-columns__overlay"]["background-image"] = "radial-gradient( at center center, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
+		}
 	}
 
 	selectors[" > .uagb-columns__overlay"]["border-radius"] = borderRadius + "px";
@@ -64926,12 +64961,6 @@ function inlineStyles(props, isEditor) {
 	    backgroundOpacity = _props$attributes.backgroundOpacity,
 	    backgroundRepeat = _props$attributes.backgroundRepeat,
 	    backgroundType = _props$attributes.backgroundType,
-	    gradientColor1 = _props$attributes.gradientColor1,
-	    gradientColor2 = _props$attributes.gradientColor2,
-	    gradientLocation1 = _props$attributes.gradientLocation1,
-	    gradientLocation2 = _props$attributes.gradientLocation2,
-	    gradientType = _props$attributes.gradientType,
-	    gradientAngle = _props$attributes.gradientAngle,
 	    borderStyle = _props$attributes.borderStyle,
 	    borderWidth = _props$attributes.borderWidth,
 	    borderRadius = _props$attributes.borderRadius,
@@ -64963,18 +64992,6 @@ function inlineStyles(props, isEditor) {
 		style["background-attachment"] = backgroundAttachment;
 		style["background-repeat"] = backgroundRepeat;
 		style["background-size"] = backgroundSize;
-	} else if ("gradient" === backgroundType) {
-
-		style["background-color"] = "transparent";
-		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
-
-		if ("linear" === gradientType) {
-
-			style["background-image"] = "linear-gradient(" + gradientAngle + "deg, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		} else {
-
-			style["background-image"] = "radial-gradient( at center center, " + gradientColor1 + " " + gradientLocation1 + "%, " + gradientColor2 + " " + gradientLocation2 + "%)";
-		}
 	}
 
 	return style;
