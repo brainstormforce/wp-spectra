@@ -19,9 +19,9 @@ $support_url    = $support_data['support_url'];
 <div id="poststuff">
 	<div id="post-body" class="columns-2">
 		<div id="post-body-content">
+			<!-- All WordPress Notices below header -->
+			<h1 class="screen-reader-text"> <?php esc_html_e( 'Ultimate Addons for Gutenberg', 'ultimate-addons-for-gutenberg' ); ?> </h1>
 			<div class="widgets postbox">
-				<!-- All WordPress Notices below header -->
-				<h1 class="screen-reader-text"> <?php esc_html_e( 'Ultimate Addons for Gutenberg', 'ultimate-addons-for-gutenberg' ); ?> </h1>
 				<div class="uagb-intro-section">
 					<div class="uagb-intro-col">
 						<h2>

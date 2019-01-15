@@ -31,15 +31,6 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 * @var array Notices.
 		 * @since x.x.x
 		 */
-		private static $version = '1.0.0';
-
-		/**
-		 * Notices
-		 *
-		 * @access private
-		 * @var array Notices.
-		 * @since x.x.x
-		 */
 		private static $notices = array();
 
 		/**

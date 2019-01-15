@@ -6,7 +6,7 @@
  */
 
 ?>
-<div class="uagb-menu-page-wrapper">
+<div class="uagb-menu-page-wrapper wrap uagb-clear general">
 	<div id="uagb-menu-page">
 		<div class="uagb-menu-page-header <?php echo esc_attr( implode( ' ', $uagb_header_wrapper_class ) ); ?>">
 			<div class="uagb-container uagb-flex">

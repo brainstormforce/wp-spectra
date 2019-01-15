@@ -1,6 +1,20 @@
 .notice:not(.uagb-notice) {
 	display: none;
 }
+
+.uagb-clear:before, .uagb-clear:after {
+	content: " ";
+	display: table;
+}
+
+.uagb-clear:after {
+	clear: both;
+}
+
+.uagb-menu-page-wrapper.wrap {
+    margin: 0;
+}
+
 .uagb-flex {
 	-js-display: flex;
 	display: -webkit-box;
@@ -55,6 +69,10 @@
     color: #333;
 }
 
+.uagb-container div.notice, .uagb-container div.updated, .uagb-container div.error {
+    margin-top: 0;
+}
+
 .uagb-container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -65,6 +83,8 @@
 #uagb-menu-page .uagb-notice {
     max-width: 860px;
     margin: 0 auto;
+    line-height: initial;
+    margin-bottom: 15px;
 }
 
 .uagb-menu-page-wrapper a {
