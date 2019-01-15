@@ -9,15 +9,15 @@
 	/**
 	 * Helper class for the main Customizer interface.
 	 *
-	 * @since x.x.x
-	 * @class ASTCustomizer
+	 * @since 1.8.0
+	 * @class UAGBNotices
 	 */
 	UAGBNotices = {
 
 		/**
 		 * Initializes our custom logic for the Customizer.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @method init
 		 */
 		init: function()
@@ -28,7 +28,7 @@
 		/**
 		 * Binds events for the UAGB.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @access private
 		 * @method _bind
 		 */

@@ -156,7 +156,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Columns Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -276,7 +276,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Single Column Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
