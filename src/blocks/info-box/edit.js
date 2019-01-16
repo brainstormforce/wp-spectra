@@ -338,7 +338,7 @@ class UAGBinfoBox extends Component {
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
 						<RangeControl
-							label={ __( "CTA Font Size" ) }
+							label={ __( "Text Font Size" ) }
 							value={ ctaFontSize }
 							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
 							min={ 0 }
@@ -433,18 +433,6 @@ class UAGBinfoBox extends Component {
 										beforeIcon=""
 										allowReset
 									/>
-									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-								        allowReset
-								    />
-								    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderhoverColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
-								        allowReset
-								    />
 								</Fragment>
 							)
 							}
@@ -562,6 +550,15 @@ class UAGBinfoBox extends Component {
 						},
 					] }
 				>
+				{ ( ctaBorderStyle !== "none" ) && <Fragment>
+					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+				        allowReset
+				    />
+				    </Fragment>
+				}
 				</PanelColorSettings>
 			</Fragment>
 		)
@@ -584,6 +581,15 @@ class UAGBinfoBox extends Component {
 						},
 					] }
 				>
+				{ ( ctaBorderStyle !== "none" ) && <Fragment>
+					<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderhoverColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+				        allowReset
+				    />
+				    </Fragment>
+				}
 				</PanelColorSettings>
 			</Fragment>
 		)
