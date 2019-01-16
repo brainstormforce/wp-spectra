@@ -195,12 +195,12 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 50 }
 					/>
 					<PanelColorSettings
-						title={ __( "Color Settings" ) }
+						title={ __( "Color Settings" ) + " " + ( index + 1 ) }
 						colorSettings={ [
 							{
 								value: buttons[ index ].color,
 								onChange:( value ) => this.saveButton( { color: value }, index ),
-								label: __( "Color" ),
+								label: __( "Text Color" ),
 							},
 							{
 								value: buttons[ index ].background,
@@ -215,7 +215,7 @@ class UAGBMultiButtonEdit extends Component {
 							{
 								value: buttons[ index ].hColor,
 								onChange:( value ) => this.saveButton( { hColor: value }, index ),
-								label: __( "Hover Color" ),
+								label: __( "Text Hover Color" ),
 							},
 							{
 								value: buttons[ index ].hBackground,
