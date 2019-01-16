@@ -42,7 +42,6 @@ function styling( props ) {
 		"margin-left": leftMargin + "px",
 		"margin-right": rightMargin + "px",
 		"border-radius": borderRadius + "%",
-		"overflow":"hidden",
 	}
 
 	if ( borderStyle != "none" ) {
