@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -303,7 +304,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
 				'margin-left'    => $attr['leftMargin'] . 'px',
 				'margin-right' => $attr['rightMargin'] . 'px',
-				'border-radius' => $attr['borderRadius'] . 'px',
+				'border-radius' => $attr['borderRadius'] . '%',
 			);
 
 			if ( "none" != $attr['borderStyle'] ) {
