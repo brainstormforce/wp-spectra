@@ -237,40 +237,32 @@ class UAGBCallToAction extends Component {
 						</Fragment>
 					)
 					}	
-					{ ( ctaType === "text" ) &&
-						<Fragment>
-						    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ ctaBtnLinkColor }
-						        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-						        allowReset
-						    />
-						    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ ctaLinkHoverColor }
-						        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
-						        allowReset
-						    />
-						</Fragment>							
-					}
-
-					{ ( ctaType === "text" ) && ( ctaBorderStyle !== "none" ) && (
-						<Fragment>
-							
-							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ ctaBorderColor }
-						        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-						        allowReset
-						    />
-						    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ ctaBorderhoverColor }
-						        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
-						        allowReset
-						    />
-						</Fragment>
-						)							
+					{ ( ctaType === "text" ) && <TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-hover-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let cta_text_tab
+										if( "normal" === tabName.name ) {
+											cta_text_tab = cta_txt_color
+										}else {
+											cta_text_tab = cta_txt_hover_color
+										}
+										return <div>{ cta_text_tab }</div>
+									}
+								}
+							</TabPanel>				
 					}
 
 					{ ( ctaType === "button") &&
@@ -369,6 +361,46 @@ class UAGBCallToAction extends Component {
 				}
 				</PanelColorSettings>
 			</Fragment>
+		)
+
+		const cta_txt_color = (
+			<Fragment>
+			    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
+			    <ColorPalette
+			        value={ ctaBtnLinkColor }
+			        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+			        allowReset
+			    />		
+			    { ( ctaBorderStyle !== "none" ) && <Fragment>							
+					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+				        allowReset
+				    />
+					</Fragment>
+			    }
+			</Fragment>	
+		)
+
+		const cta_txt_hover_color = (
+			<Fragment>
+			    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+			    <ColorPalette
+			        value={ ctaLinkHoverColor }
+			        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+			        allowReset
+			    />	
+			    { ( ctaBorderStyle !== "none" ) && <Fragment>
+			    	<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderhoverColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+				        allowReset
+				    />			
+			     </Fragment>			    
+			}   
+			</Fragment>	
 		)
 
 		// Typography settings.
