@@ -12,7 +12,7 @@
  * It close the notice for 30 days.
  *
  * @package UAGB
- * @since x.x.x
+ * @since 1.8.0
  */
 
 if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
@@ -20,7 +20,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 	/**
 	 * UAGB_Admin_Notices
 	 *
-	 * @since x.x.x
+	 * @since 1.8.0
 	 */
 	class UAGB_Admin_Notices {
 
@@ -29,7 +29,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var array Notices.
-		 * @since x.x.x
+		 * @since 1.8.0
 		 */
 		private static $notices = array();
 
@@ -38,14 +38,14 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		 *
 		 * @access private
 		 * @var object Class object.
-		 * @since x.x.x
+		 * @since 1.8.0
 		 */
 		private static $instance;
 
 		/**
 		 * Initiator
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @return object initialized object of class.
 		 */
 		public static function get_instance() {
@@ -58,7 +58,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Constructor
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 */
 		public function __construct() {
 			add_action( 'admin_notices', array( $this, 'show_notices' ), 30 );
@@ -68,7 +68,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Add Notice.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array $args Notice arguments.
 		 * @return void
 		 */
@@ -79,7 +79,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Dismiss Notice.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @return void
 		 */
 		function dismiss_notice() {
@@ -104,7 +104,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Rating priority sort
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array $array1 array one.
 		 * @param array $array2 array two.
 		 * @return array
@@ -123,7 +123,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Notice Types
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @return void
 		 */
 		function show_notices() {
@@ -174,7 +174,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Markup Notice.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param  array $notice Notice markup.
 		 * @return void
 		 */
@@ -194,7 +194,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Notice classes.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return array       Notice wrapper classes.
@@ -212,7 +212,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Get Notice ID.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @param  int   $key     Notice array index.
@@ -229,7 +229,7 @@ if ( ! class_exists( 'UAGB_Admin_Notices' ) ) :
 		/**
 		 * Is notice expired?
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 *
 		 * @param  array $notice Notice arguments.
 		 * @return boolean

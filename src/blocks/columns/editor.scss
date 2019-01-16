@@ -92,23 +92,23 @@
 	}
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-middle {
+.wp-block-uagb-columns.uagb-columns__valign-middle {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-middle>.uagb-columns__inner-wrap {
+.wp-block-uagb-columns.uagb-columns__valign-middle>.uagb-columns__inner-wrap {
 	width:100%;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-bottom {
+.wp-block-uagb-columns.uagb-columns__valign-bottom {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-bottom>.uagb-columns__inner-wrap {
+.wp-block-uagb-columns.uagb-columns__valign-bottom>.uagb-columns__inner-wrap {
 	width:100%;
 }
 
@@ -163,20 +163,20 @@
 	}
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-middle > .uagb-columns__inner-wrap {
+.wp-block-uagb-columns.uagb-columns__valign-middle > .uagb-columns__inner-wrap {
 	justify-content: center;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-bottom > .uagb-columns__inner-wrap {
+.wp-block-uagb-columns.uagb-columns__valign-bottom > .uagb-columns__inner-wrap {
 	justify-content: flex-end;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-middle > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] > .editor-block-list__block-edit {
+.wp-block-uagb-columns.uagb-columns__valign-middle > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] > .editor-block-list__block-edit {
     align-items: center;
     display: flex;
 }
 
-.wp-block-uagb-columns.uagb-columns__vAlign-bottom > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] > .editor-block-list__block-edit {
+.wp-block-uagb-columns.uagb-columns__valign-bottom > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] > .editor-block-list__block-edit {
     align-items: flex-end;
     display: flex;
 }

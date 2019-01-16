@@ -100,12 +100,12 @@ class UAGBRestaurantMenu extends Component {
 	getImageName( image ){
 		const { rest_menu_item_arr } = this.props.attributes
 
-		let image_title = "Select Image"
+		let image_title = __( "Select Image" )
 		if(image){
 			if(image.url == null || image.url == "" ){
-				image_title = "Select Image"
+				image_title = __( "Select Image" )
 			}else{
-				image_title = "Replace Image"
+				image_title = __( "Replace Image" )
 			}
 		}
 		return image_title

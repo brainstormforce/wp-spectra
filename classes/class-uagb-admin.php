@@ -78,7 +78,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * @param Array  $allowedposttags Array of allowed tags.
 		 * @param String $context Context type (explicit).
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @return Array
 		 */
 		public static function add_data_attributes( $allowedposttags, $context ) {
@@ -90,7 +90,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Ask Plugin Rating
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 */
 		public static function register_notices() {
 
@@ -219,7 +219,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Enqueues the needed CSS/JS for the builder's admin settings page.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 */
 		static public function notice_styles_scripts() {
 

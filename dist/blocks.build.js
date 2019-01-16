@@ -164,7 +164,8 @@ var UAGB_Block_Icons = {
 	"blockquote": el("svg", { width: 20, height: 20 }, el("path", { d: "M13.856 10.75c0.473 0.137 0.945 0.205 1.405 0.205 0.71 0 1.303-0.162 1.763-0.361-0.443 1.623-1.508 4.42-3.627 4.734-0.196 0.029-0.357 0.172-0.411 0.363l-0.463 1.656c-0.039 0.141-0.017 0.291 0.063 0.412s0.209 0.203 0.353 0.223c0.156 0.021 0.316 0.033 0.474 0.033 2.545 0 5.064-2.656 6.128-6.459 0.624-2.231 0.808-5.585-0.73-7.696-0.86-1.181-2.115-1.812-3.73-1.875-0.007 0-0.013 0-0.020 0-1.993 0-3.761 1.342-4.298 3.264-0.321 1.148-0.176 2.353 0.409 3.393 0.578 1.027 1.532 1.776 2.684 2.108z" }), el("path", { d: "M0.576 8.641c0.579 1.028 1.532 1.777 2.685 2.109 0.473 0.137 0.945 0.205 1.405 0.205 0.71 0 1.303-0.162 1.763-0.361-0.443 1.623-1.508 4.42-3.627 4.734-0.197 0.029-0.357 0.172-0.411 0.363l-0.464 1.656c-0.038 0.141-0.016 0.291 0.064 0.412s0.208 0.203 0.353 0.223c0.156 0.021 0.315 0.033 0.474 0.033 2.545 0 5.064-2.656 6.128-6.459 0.624-2.231 0.807-5.585-0.73-7.697-0.86-1.181-2.115-1.812-3.73-1.875-0.007 0-0.014 0-0.021 0-1.992 0-3.76 1.342-4.297 3.264-0.323 1.149-0.177 2.354 0.408 3.393z" })),
 	"quote_1": el("svg", { width: 20, height: 20 }, el("path", { d: "M15.581 10.226h-15.162c-0.233 0-0.419 0.37-0.419 0.826 0 0.458 0.186 0.828 0.419 0.828h15.161c0.233 0 0.419-0.37 0.419-0.828 0.001-0.455-0.186-0.826-0.418-0.826v0z" }), el("path", { d: "M15.581 14.285h-15.162c-0.233 0-0.419 0.373-0.419 0.827 0 0.458 0.186 0.826 0.419 0.826h15.161c0.233 0 0.419-0.369 0.419-0.826 0.001-0.454-0.186-0.827-0.418-0.827v0z" }), el("path", { d: "M15.581 18.346h-15.162c-0.233 0-0.419 0.37-0.419 0.826 0 0.459 0.186 0.828 0.419 0.828h15.161c0.233 0 0.419-0.369 0.419-0.828 0.001-0.455-0.186-0.826-0.418-0.826v0z" }), el("path", { d: "M9.126 0.595c-0.46 0.465-0.974 1.35-0.835 3.042 0.081 1.319 0.666 3.29 3.048 5.216 0.112 0.090 0.241 0.136 0.38 0.136 0.183 0 0.362-0.086 0.487-0.251 0.214-0.283 0.164-0.683-0.113-0.902-1.935-1.566-2.458-3.105-2.551-4.154 0.274 0.156 0.582 0.258 0.913 0.258 1.045 0 1.89-0.886 1.89-1.972 0-1.088-0.846-1.966-1.89-1.966-0.233 0-0.451 0.062-0.657 0.143l0.004-0.011-0.218 0.101-0.018 0.011-0.007 0.006-0.299 0.214-0.134 0.131z" }), el("path", { d: "M4.517 0.595c-0.465 0.465-0.974 1.35-0.841 3.042 0.085 1.319 0.671 3.29 3.049 5.216 0.116 0.090 0.245 0.136 0.383 0.136 0.178 0 0.366-0.086 0.487-0.251 0.214-0.283 0.165-0.683-0.108-0.902-1.939-1.566-2.467-3.105-2.56-4.154 0.278 0.156 0.584 0.258 0.92 0.258 1.046 0 1.885-0.886 1.885-1.972 0-1.088-0.845-1.966-1.885-1.966-0.236 0-0.447 0.062-0.657 0.143l0.010-0.011-0.218 0.101-0.022 0.011-0.009 0.006-0.305 0.214-0.129 0.13z" })),
 	"quote_2": el("svg", { width: 20, height: 20 }, el("path", { d: "M4.599 6.686c-0.39 0.397-0.822 1.149-0.705 2.586 0.068 1.123 0.561 2.799 2.561 4.434 0.096 0.080 0.205 0.115 0.321 0.115 0.153 0 0.306-0.071 0.409-0.214 0.181-0.239 0.135-0.58-0.095-0.766-1.626-1.332-2.066-2.639-2.144-3.531 0.231 0.132 0.488 0.218 0.769 0.218 0.874 0 1.587-0.753 1.587-1.677s-0.711-1.672-1.587-1.672c-0.196 0-0.38 0.054-0.552 0.121l0.003-0.010-0.184 0.085-0.016 0.010-0.006 0.006-0.252 0.181-0.109 0.114z" }), el("path", { d: "M0.725 6.686c-0.389 0.397-0.821 1.149-0.706 2.586 0.068 1.123 0.562 2.799 2.56 4.434 0.094 0.077 0.204 0.114 0.322 0.114 0.151 0 0.31-0.073 0.409-0.213 0.177-0.239 0.136-0.582-0.090-0.767-1.63-1.332-2.072-2.639-2.149-3.531 0.23 0.132 0.486 0.218 0.772 0.218 0.879 0 1.583-0.753 1.583-1.677s-0.71-1.672-1.583-1.672c-0.199 0-0.378 0.054-0.554 0.121l0.008-0.010-0.184 0.085-0.018 0.010-0.009 0.006-0.253 0.182-0.108 0.114z" }), el("path", { d: "M19.25 6.929h-10.041c-0.414 0-0.75-0.336-0.75-0.75s0.336-0.75 0.75-0.75h10.041c0.414 0 0.75 0.336 0.75 0.75s-0.336 0.75-0.75 0.75z" }), el("path", { d: "M19.25 10.75h-10.041c-0.414 0-0.75-0.336-0.75-0.75s0.336-0.75 0.75-0.75h10.041c0.414 0 0.75 0.336 0.75 0.75s-0.336 0.75-0.75 0.75z" }), el("path", { d: "M19.25 14.571h-10.041c-0.414 0-0.75-0.336-0.75-0.75s0.336-0.75 0.75-0.75h10.041c0.414 0 0.75 0.336 0.75 0.75s-0.336 0.75-0.75 0.75z" })),
-	"columns": el("svg", { width: 20, height: 20 }, el("path", { d: "M1.2 1.2v17.6h17.6v-17.6h-17.6zM17.793 17.794h-15.586v-15.587h15.586v15.587z" }), el("path", { d: "M3.464 3.464h3.519v13.072h-3.519v-13.072z" }), el("path", { d: "M8.24 3.464h3.521v13.072h-3.521v-13.072z" }), el("path", { d: "M13.018 3.464h3.518v13.072h-3.518v-13.072z" })),
+	"columns": el("svg", { width: 20, height: 20 }, el("path", { d: "M19.091 0.301h-18.182c-0.503 0-0.909 0.408-0.909 0.908v17.576c0 0.504 0.406 0.913 0.909 0.913h18.182c0.504 0 0.909-0.409 0.909-0.913v-17.576c0-0.5-0.405-0.908-0.909-0.908v0zM9.091 17.877h-7.275v-14.343h7.275v14.343zM18.183 17.877h-7.273v-14.343h7.273v14.343z" })),
+	"column": el("svg", { width: 20, height: 20 }, el("path", { d: "M19.091 0.301h-18.182c-0.503 0-0.909 0.408-0.909 0.908v17.576c0 0.504 0.406 0.913 0.909 0.913h18.182c0.504 0 0.909-0.409 0.909-0.913v-17.576c0-0.5-0.405-0.908-0.909-0.908zM18.304 17.21h-16.608v-14.343h16.608v14.343z" }), el("path", { d: "M15.667 8.5h-11.333c-0.553 0-1-0.447-1-1s0.447-1 1-1h11.333c0.552 0 1 0.447 1 1s-0.448 1-1 1z" }), el("path", { d: "M15.667 13.5h-11.333c-0.553 0-1-0.448-1-1s0.447-1 1-1h11.333c0.552 0 1 0.448 1 1s-0.448 1-1 1z" })),
 	"top_align": el("svg", { width: 20, height: 20 }, el("path", { d: "M1.5 0.438v2.125h17v-2.125h-17zM5.75 8.938h3.188v10.625h2.125v-10.625h3.187l-4.25-4.25-4.25 4.25z" })),
 	"middle_align": el("svg", { width: 20, height: 20 }, el("path", { d: "M18.5 11.063v-2.125h-17v2.125h17z" }), el("path", { d: "M12.707 3.519l-2.707-2.707-2.707 2.707h2.030v4.368h1.354v-4.368h2.030z" }), el("path", { d: "M7.293 16.48l2.707 2.707 2.707-2.707h-2.030v-4.368h-1.354v4.368h-2.030z" })),
 	"bottom_align": el("svg", { width: 20, height: 20 }, el("path", { d: "M18.5 20v-2.125h-17v2.125h17zM14.25 11.5h-3.187v-10.625h-2.125v10.625h-3.188l4.25 4.25 4.25-4.25z" }))
@@ -9404,7 +9405,8 @@ var shapes = {
 	"triangle": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", d: "M500,98.9L0,6.1V0h1000v6.1L500,98.9z" })),
 	"wave_brush": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 283.5 27.8", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", d: "M283.5,9.7c0,0-7.3,4.3-14,4.6c-6.8,0.3-12.6,0-20.9-1.5c-11.3-2-33.1-10.1-44.7-5.7	s-12.1,4.6-18,7.4c-6.6,3.2-20,9.6-36.6,9.3C131.6,23.5,99.5,7.2,86.3,8c-1.4,0.1-6.6,0.8-10.5,2c-3.8,1.2-9.4,3.8-17,4.7	c-3.2,0.4-8.3,1.1-14.2,0.9c-1.5-0.1-6.3-0.4-12-1.6c-5.7-1.2-11-3.1-15.8-3.7C6.5,9.2,0,10.8,0,10.8V0h283.5V9.7z M260.8,11.3	c-0.7-1-2-0.4-4.3-0.4c-2.3,0-6.1-1.2-5.8-1.1c0.3,0.1,3.1,1.5,6,1.9C259.7,12.2,261.4,12.3,260.8,11.3z M242.4,8.6	c0,0-2.4-0.2-5.6-0.9c-3.2-0.8-10.3-2.8-15.1-3.5c-8.2-1.1-15.8,0-15.1,0.1c0.8,0.1,9.6-0.6,17.6,1.1c3.3,0.7,9.3,2.2,12.4,2.7	C239.9,8.7,242.4,8.6,242.4,8.6z M185.2,8.5c1.7-0.7-13.3,4.7-18.5,6.1c-2.1,0.6-6.2,1.6-10,2c-3.9,0.4-8.9,0.4-8.8,0.5	c0,0.2,5.8,0.8,11.2,0c5.4-0.8,5.2-1.1,7.6-1.6C170.5,14.7,183.5,9.2,185.2,8.5z M199.1,6.9c0.2,0-0.8-0.4-4.8,1.1	c-4,1.5-6.7,3.5-6.9,3.7c-0.2,0.1,3.5-1.8,6.6-3C197,7.5,199,6.9,199.1,6.9z M283,6c-0.1,0.1-1.9,1.1-4.8,2.5s-6.9,2.8-6.7,2.7	c0.2,0,3.5-0.6,7.4-2.5C282.8,6.8,283.1,5.9,283,6z M31.3,11.6c0.1-0.2-1.9-0.2-4.5-1.2s-5.4-1.6-7.8-2C15,7.6,7.3,8.5,7.7,8.6	C8,8.7,15.9,8.3,20.2,9.3c2.2,0.5,2.4,0.5,5.7,1.6S31.2,11.9,31.3,11.6z M73,9.2c0.4-0.1,3.5-1.6,8.4-2.6c4.9-1.1,8.9-0.5,8.9-0.8	c0-0.3-1-0.9-6.2-0.3S72.6,9.3,73,9.2z M71.6,6.7C71.8,6.8,75,5.4,77.3,5c2.3-0.3,1.9-0.5,1.9-0.6c0-0.1-1.1-0.2-2.7,0.2	C74.8,5.1,71.4,6.6,71.6,6.7z M93.6,4.4c0.1,0.2,3.5,0.8,5.6,1.8c2.1,1,1.8,0.6,1.9,0.5c0.1-0.1-0.8-0.8-2.4-1.3	C97.1,4.8,93.5,4.2,93.6,4.4z M65.4,11.1c-0.1,0.3,0.3,0.5,1.9-0.2s2.6-1.3,2.2-1.2s-0.9,0.4-2.5,0.8C65.3,10.9,65.5,10.8,65.4,11.1	z M34.5,12.4c-0.2,0,2.1,0.8,3.3,0.9c1.2,0.1,2,0.1,2-0.2c0-0.3-0.1-0.5-1.6-0.4C36.6,12.8,34.7,12.4,34.5,12.4z M152.2,21.1	c-0.1,0.1-2.4-0.3-7.5-0.3c-5,0-13.6-2.4-17.2-3.5c-3.6-1.1,10,3.9,16.5,4.1C150.5,21.6,152.3,21,152.2,21.1z" }), el("path", { className: "uagb-columns__shape-fill", d: "M269.6,18c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C267.7,18.8,269.7,18,269.6,18z" }), el("path", { className: "uagb-columns__shape-fill", d: "M227.4,9.8c-0.2-0.1-4.5-1-9.5-1.2c-5-0.2-12.7,0.6-12.3,0.5c0.3-0.1,5.9-1.8,13.3-1.2	S227.6,9.9,227.4,9.8z" }), el("path", { className: "uagb-columns__shape-fill", d: "M204.5,13.4c-0.1-0.1,2-1,3.2-1.1c1.2-0.1,2,0,2,0.3c0,0.3-0.1,0.5-1.6,0.4	C206.4,12.9,204.6,13.5,204.5,13.4z" }), el("path", { className: "uagb-columns__shape-fill", d: "M201,10.6c0-0.1-4.4,1.2-6.3,2.2c-1.9,0.9-6.2,3.1-6.1,3.1c0.1,0.1,4.2-1.6,6.3-2.6	S201,10.7,201,10.6z" }), el("path", { className: "uagb-columns__shape-fill", d: "M154.5,26.7c-0.1-0.1-4.6,0.3-7.2,0c-7.3-0.7-17-3.2-16.6-2.9c0.4,0.3,13.7,3.1,17,3.3	C152.6,27.5,154.6,26.8,154.5,26.7z" }), el("path", { className: "uagb-columns__shape-fill", d: "M41.9,19.3c0,0,1.2-0.3,2.9-0.1c1.7,0.2,5.8,0.9,8.2,0.7c4.2-0.4,7.4-2.7,7-2.6	c-0.4,0-4.3,2.2-8.6,1.9c-1.8-0.1-5.1-0.5-6.7-0.4S41.9,19.3,41.9,19.3z" }), el("path", { className: "uagb-columns__shape-fill", d: "M75.5,12.6c0.2,0.1,2-0.8,4.3-1.1c2.3-0.2,2.1-0.3,2.1-0.5c0-0.1-1.8-0.4-3.4,0	C76.9,11.5,75.3,12.5,75.5,12.6z" }), el("path", { className: "uagb-columns__shape-fill", d: "M15.6,13.2c0-0.1,4.3,0,6.7,0.5c2.4,0.5,5,1.9,5,2c0,0.1-2.7-0.8-5.1-1.4	C19.9,13.7,15.7,13.3,15.6,13.2z" })),
 	"tilt": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", d: "M0,6V0h1000v100L0,6z" })),
-	"mountains": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", opacity: "0.33", d: "M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" }), el("path", { className: "uagb-columns__shape-fill", opacity: "0.66", d: "M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" }), el("path", { className: "uagb-columns__shape-fill", d: "M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" }))
+	"mountains": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", opacity: "0.33", d: "M473,67.3c-203.9,88.3-263.1-34-320.3,0C66,119.1,0,59.7,0,59.7V0h1000v59.7 c0,0-62.1,26.1-94.9,29.3c-32.8,3.3-62.8-12.3-75.8-22.1C806,49.6,745.3,8.7,694.9,4.7S492.4,59,473,67.3z" }), el("path", { className: "uagb-columns__shape-fill", opacity: "0.66", d: "M734,67.3c-45.5,0-77.2-23.2-129.1-39.1c-28.6-8.7-150.3-10.1-254,39.1 s-91.7-34.4-149.2,0C115.7,118.3,0,39.8,0,39.8V0h1000v36.5c0,0-28.2-18.5-92.1-18.5C810.2,18.1,775.7,67.3,734,67.3z" }), el("path", { className: "uagb-columns__shape-fill", d: "M766.1,28.9c-200-57.5-266,65.5-395.1,19.5C242,1.8,242,5.4,184.8,20.6C128,35.8,132.3,44.9,89.9,52.5C28.6,63.7,0,0,0,0 h1000c0,0-9.9,40.9-83.6,48.1S829.6,47,766.1,28.9z" })),
+	"waves": el("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 1000 100", preserveAspectRatio: "none" }, el("path", { className: "uagb-columns__shape-fill", d: "M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7  c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4  c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" }))
 };
 
 /* harmony default export */ __webpack_exports__["a"] = (shapes);
@@ -50557,12 +50559,12 @@ var UAGBinfoBox = function (_Component) {
 			// Image sizes.
 			var imageSizeOptions = [{ value: "thumbnail", label: __("Thumbnail") }, { value: "medium", label: __("Medium") }, { value: "full", label: __("Large") }];
 
-			var image_name = "Select Image";
+			var image_name = __("Select Image");
 			if (iconImage) {
 				if (iconImage.url == null || iconImage.url == "") {
-					image_name = "Select Image";
+					image_name = __("Select Image");
 				} else {
-					image_name = "Replace Image";
+					image_name = __("Replace Image");
 				}
 			}
 
@@ -52179,12 +52181,12 @@ var UAGBtestimonial = function (_Component) {
 			var test_block = this.props.attributes.test_block;
 
 
-			var image_name = "Select Image";
+			var image_name = __("Select Image");
 			if (image) {
 				if (image.url == null || image.url == "") {
-					image_name = "Select Image";
+					image_name = __("Select Image");
 				} else {
-					image_name = "Replace Image";
+					image_name = __("Replace Image");
 				}
 			}
 			return image_name;
@@ -57269,12 +57271,12 @@ var UAGBRestaurantMenu = function (_Component) {
 			var rest_menu_item_arr = this.props.attributes.rest_menu_item_arr;
 
 
-			var image_title = "Select Image";
+			var image_title = __("Select Image");
 			if (image) {
 				if (image.url == null || image.url == "") {
-					image_title = "Select Image";
+					image_title = __("Select Image");
 				} else {
-					image_title = "Replace Image";
+					image_title = __("Replace Image");
 				}
 			}
 			return image_title;
@@ -62383,6 +62385,39 @@ var UAGBCallToAction = function (_Component) {
 				)
 			);
 
+			var layouts = wp.element.createElement(
+				PanelBody,
+				{
+					title: __("Layout"),
+					initialOpen: true
+				},
+				wp.element.createElement(SelectControl, {
+					label: __("Button Position"),
+					value: ctaPosition,
+					onChange: function onChange(value) {
+						return setAttributes({ ctaPosition: value });
+					},
+					options: [{ value: "right", label: __("Normal") }, { value: "below-title", label: __("Stack") }]
+				}),
+				ctaPosition == "right" && wp.element.createElement(SelectControl, {
+					label: __("Stack on"),
+					value: stack,
+					options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+					help: __("Note: Choose on what breakpoint the CTA button will stack."),
+					onChange: function onChange(value) {
+						return setAttributes({ stack: value });
+					}
+				}),
+				ctaPosition && ctaPosition === "right" && wp.element.createElement(SelectControl, {
+					label: __("Verticle Alignment"),
+					value: buttonAlign,
+					onChange: function onChange(value) {
+						return setAttributes({ buttonAlign: value });
+					},
+					options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
+				})
+			);
+
 			// Global Controls.
 			var inspect_control = wp.element.createElement(
 				Fragment,
@@ -62390,38 +62425,7 @@ var UAGBCallToAction = function (_Component) {
 				wp.element.createElement(
 					InspectorControls,
 					null,
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("Layout"),
-							initialOpen: true
-						},
-						wp.element.createElement(SelectControl, {
-							label: __("Button Position"),
-							value: ctaPosition,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaPosition: value });
-							},
-							options: [{ value: "right", label: __("Normal") }, { value: "below-title", label: __("Stack") }]
-						}),
-						ctaPosition == "right" && wp.element.createElement(SelectControl, {
-							label: __("Stack on"),
-							value: stack,
-							options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-							help: __("Note: Choose on what breakpoint the CTA button will stack."),
-							onChange: function onChange(value) {
-								return setAttributes({ stack: value });
-							}
-						}),
-						ctaPosition && ctaPosition === "right" && wp.element.createElement(SelectControl, {
-							label: __("Verticle Alignment"),
-							value: buttonAlign,
-							onChange: function onChange(value) {
-								return setAttributes({ buttonAlign: value });
-							},
-							options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
-						})
-					),
+					ctaType !== "all" && ctaType !== "none" && layouts,
 					TypographySettings,
 					ctaSettings,
 					color_settings,
@@ -63219,8 +63223,9 @@ var UAGBColumnEdit = function (_Component) {
 
 /* unused harmony default export */ var _unused_webpack_default_export = (UAGBColumnEdit);
 registerBlockType("uagb/column", {
-	title: __("Column"),
-	icon: __WEBPACK_IMPORTED_MODULE_1__dist_blocks_uagb_controls_block_icons__["a" /* default */].columns,
+	title: uagb_blocks_info.blocks["uagb/column"]["title"],
+	description: uagb_blocks_info.blocks["uagb/column"]["description"],
+	icon: __WEBPACK_IMPORTED_MODULE_1__dist_blocks_uagb_controls_block_icons__["a" /* default */].column,
 	category: uagb_blocks_info.category,
 	parent: ["uagb/columns"],
 	supports: {
@@ -63418,21 +63423,18 @@ function styling(props) {
 		"margin-right": rightMargin + "px"
 	};
 
-	var p_style = {};
-
 	if ("image" === backgroundType) {
 
-		p_style["background-image"] = backgroundImage ? "url(" + backgroundImage.url + ")" : null;
-		p_style["background-position"] = position;
-		p_style["background-attachment"] = backgroundAttachment;
-		p_style["background-repeat"] = backgroundRepeat;
-		p_style["background-size"] = backgroundSize;
+		style["background-image"] = backgroundImage ? "url(" + backgroundImage.url + ")" : null;
+		style["background-position"] = position;
+		style["background-attachment"] = backgroundAttachment;
+		style["background-repeat"] = backgroundRepeat;
+		style["background-size"] = backgroundSize;
 	}
 
 	var selectors = {
 		":before": Object(__WEBPACK_IMPORTED_MODULE_0__inline_styles__["a" /* default */])(props),
-		"": p_style,
-		" .uagb-column__inner-wrap": style
+		"": style
 	};
 
 	var styling_css = "";
@@ -64090,7 +64092,7 @@ var UAGBColumns = function (_Component) {
 
 			var active = isSelected ? "active" : "not-active";
 
-			var dividers = [{ value: "none", label: __("None") }, { value: "tilt", label: __("Tilt") }, { value: "mountains", label: __("Mountains") }, { value: "wave_brush", label: __("Wave Brush") }, { value: "triangle", label: __("Triangle") }];
+			var dividers = [{ value: "none", label: __("None") }, { value: "tilt", label: __("Tilt") }, { value: "mountains", label: __("Mountains") }, { value: "wave_brush", label: __("Wave Brush") }, { value: "waves", label: __("Waves") }, { value: "triangle", label: __("Triangle") }];
 
 			var bottomSettings = wp.element.createElement(
 				Fragment,
@@ -64326,7 +64328,7 @@ var UAGBColumns = function (_Component) {
 							__("Note: Choose on what breakpoint the columns will stack.")
 						),
 						wp.element.createElement(SelectControl, {
-							label: __("Content Inner Width"),
+							label: __("Container Width"),
 							value: contentWidth,
 							onChange: function onChange(value) {
 								return setAttributes({ contentWidth: value });
