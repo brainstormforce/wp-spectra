@@ -370,16 +370,7 @@ class UAGBCallToAction extends Component {
 			        value={ ctaBtnLinkColor }
 			        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
 			        allowReset
-			    />		
-			    { ( ctaBorderStyle !== "none" ) && <Fragment>							
-					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-				    <ColorPalette
-				        value={ ctaBorderColor }
-				        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-				        allowReset
-				    />
-					</Fragment>
-			    }
+			    />	
 			</Fragment>	
 		)
 
@@ -391,15 +382,6 @@ class UAGBCallToAction extends Component {
 			        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
 			        allowReset
 			    />	
-			    { ( ctaBorderStyle !== "none" ) && <Fragment>
-			    	<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
-				    <ColorPalette
-				        value={ ctaBorderhoverColor }
-				        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
-				        allowReset
-				    />			
-			     </Fragment>			    
-			}   
 			</Fragment>	
 		)
 
