@@ -367,7 +367,7 @@ class UAGBTeam extends Component {
 										placeholder={__( "Enter Twitter URL" )}
 									/>
 								</PanelBody>
-								<PanelBody title={ __( "FaceBook" ) } initialOpen={ false }>
+								<PanelBody title={ __( "Facebook" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
 										icons={UAGBIcon}
@@ -381,7 +381,7 @@ class UAGBTeam extends Component {
 									<TextControl
 										value={ fbLink }
 										onChange={ ( value ) => setAttributes( { fbLink: value } ) }
-										placeholder={__( "Enter FaceBook URL" )}
+										placeholder={__( "Enter Facebook URL" )}
 									/>
 								</PanelBody>
 								<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
