@@ -16,11 +16,7 @@ function inlineStyles( props, isEditor ) {
 		gradientLocation1,
 		gradientLocation2,
 		gradientType,
-		gradientAngle,
-		borderStyle,
-		borderWidth,
-		borderRadius,
-		borderColor,
+		gradientAngle,		
 		backgroundImageColor
 	} = props.attributes
 
