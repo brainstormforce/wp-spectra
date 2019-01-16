@@ -10,7 +10,7 @@ import InfoBoxDesc from "./components/InfoBoxDesc"
 import Icon from "./components/Icon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeperator from "./components/InfoBoxSeperator"
-import InfoBoxCta from "./components/InfoBoxCta"
+import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
 //import UAGB_SVG_Icon from "../../../dist/blocks/uagb-controls/font-icon-picker/svg"
@@ -205,8 +205,6 @@ class UAGBinfoBox extends Component {
 			element.innerHTML = InfoBoxStyle( this.props )
 		}
 
-		let iconSelected = renderSVG( icon )
-
 		// Icon properties.
 		const icon_props = {
 			icons: svg_icons,
@@ -219,12 +217,12 @@ class UAGBinfoBox extends Component {
 
 		// Icon properties.
 		const cta_icon_props = {
-			icons: UAGBIcon,
-			renderUsing: "class",
-			theme: "default",
+			icons: svg_icons,
+			renderFunc: renderSVG,
 			value: ctaIcon,
 			onChange: this.getCtaicon,
 			isMulti: false,
+			noSelectedPlaceholder: __( 'Select Icon' )
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
@@ -924,7 +922,7 @@ class UAGBinfoBox extends Component {
 				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<InfoBoxCta attributes={attributes} />
+					<CallToAction attributes={attributes} />
 				</div>
 			</Fragment>
 		)
