@@ -126,6 +126,10 @@ function TestimonialStyle( props ) {
 			"border-width":borderWidth + "px",
 			"border-radius":borderRadius + "px",                    
 		}                 
+	}else{
+		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
+			"border-radius":borderRadius + "px",                    
+		}
 	}
 
 	selectors["ul.slick-dots li button:before"] = {
