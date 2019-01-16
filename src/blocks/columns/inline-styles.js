@@ -20,12 +20,6 @@ function inlineStyles( props, isEditor ) {
 		backgroundOpacity,
 		backgroundRepeat,
 		backgroundType,
-		gradientColor1,
-		gradientColor2,
-		gradientLocation1,
-		gradientLocation2,
-		gradientType,
-		gradientAngle,
 		borderStyle,
 		borderWidth,
 		borderRadius,
@@ -58,18 +52,6 @@ function inlineStyles( props, isEditor ) {
 		style["background-repeat"] = backgroundRepeat
 		style["background-size"] = backgroundSize
 
-	} else if ( "gradient" === backgroundType ) {
-
-		style["background-color"] = "transparent"
-		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-
-		if ( "linear" === gradientType ) {
-
-			style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		} else {
-
-			style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		}
 	}
 
 	return style

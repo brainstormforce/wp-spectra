@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.6
 Requires PHP: 5.6
-Tested up to: 5.0.2
-Stable tag: 1.7.0
+Tested up to: 5.0.3
+Stable tag: 1.8.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -48,6 +48,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-actions with a trendy title, description and a catchy button that boosts conversions on your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -94,8 +95,11 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.7.0.1 =
-* New: Columns
+= 1.8.0.1 =
+* Fix: Advanced Columns - Editor end width issue fixed.
+
+= 1.8.0 =
+* New: Advanced Columns
 * Fix: Post Masonry - Messed view on first load issue fixed.
 * Improvement: Post - Added Action/Filter hooks.
 

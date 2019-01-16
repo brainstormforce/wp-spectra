@@ -774,12 +774,12 @@ class UAGBinfoBox extends Component {
 			{ value: "full", label: __( "Large" ) }
 		]
 
-		let image_name = "Select Image"
+		let image_name = __( "Select Image" )
 		if(iconImage){
 			if(iconImage.url == null || iconImage.url == "" ){
-				image_name = "Select Image"
+				image_name = __( "Select Image" )
 			}else{
-				image_name = "Replace Image"
+				image_name = __( "Replace Image" )
 			}
 		}
 

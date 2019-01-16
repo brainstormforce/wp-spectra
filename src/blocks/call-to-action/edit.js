@@ -503,48 +503,52 @@ class UAGBCallToAction extends Component {
 			</Fragment>
 		)
 		
+		const layouts = (
+			<PanelBody
+				title={ __( "Layout" ) }
+				initialOpen={ true }
+			>
+				<SelectControl
+					label={ __( "Button Position" ) }
+					value={ ctaPosition }
+					onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
+					options={ [
+						{ value: "right", label: __( "Normal" ) },
+						{ value: "below-title", label: __( "Stack" ) },
+					] }
+				/>
+				{ ( ctaPosition == "right" ) &&
+						<SelectControl
+							label={ __( "Stack on" ) }
+							value={ stack }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "tablet", label: __( "Tablet" ) },
+								{ value: "mobile", label: __( "Mobile" ) },
+							] }
+							help={ __( "Note: Choose on what breakpoint the CTA button will stack." ) }
+							onChange={ ( value ) => setAttributes( { stack: value } ) }
+						/>
+				}						
+
+				{ ( ctaPosition && ctaPosition === "right"  ) && <SelectControl
+					label={ __( "Verticle Alignment" ) }
+					value={ buttonAlign }
+					onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
+					options={ [
+						{ value: "top", label: __( "Top" ) },
+						{ value: "middle", label: __( "Middle" ) },
+					] }
+				/>
+				}						
+			</PanelBody>
+		)
+
 		// Global Controls.
 		const inspect_control = (
 			<Fragment>
-					 <InspectorControls>				 	
-					<PanelBody
-						title={ __( "Layout" ) }
-						initialOpen={ true }
-					>
-						<SelectControl
-							label={ __( "Button Position" ) }
-							value={ ctaPosition }
-							onChange={ ( value ) => setAttributes( { ctaPosition: value } ) }
-							options={ [
-								{ value: "right", label: __( "Normal" ) },
-								{ value: "below-title", label: __( "Stack" ) },
-							] }
-						/>
-						{ ( ctaPosition == "right" ) &&
-								<SelectControl
-									label={ __( "Stack on" ) }
-									value={ stack }
-									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
-									] }
-									help={ __( "Note: Choose on what breakpoint the CTA button will stack." ) }
-									onChange={ ( value ) => setAttributes( { stack: value } ) }
-								/>
-						}						
-
-						{ ( ctaPosition && ctaPosition === "right"  ) && <SelectControl
-							label={ __( "Verticle Alignment" ) }
-							value={ buttonAlign }
-							onChange={ ( value ) => setAttributes( { buttonAlign: value } ) }
-							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "middle", label: __( "Middle" ) },
-							] }
-						/>
-						}						
-					</PanelBody>
+				<InspectorControls>				 	
+					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) && layouts }
 					{ TypographySettings }
 					{ ctaSettings }		
 					{ color_settings }

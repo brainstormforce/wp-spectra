@@ -196,6 +196,7 @@ class UAGBColumns extends Component {
 			{ value: "tilt", label: __( "Tilt" ) },
 			{ value: "mountains", label: __( "Mountains" ) },
 			{ value: "wave_brush", label: __( "Wave Brush" ) },
+			{ value: "waves", label: __( "Waves" ) },
 			{ value: "triangle", label: __( "Triangle" ) },
 		]
 
@@ -384,7 +385,7 @@ class UAGBColumns extends Component {
 						/>
 						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
 						<SelectControl
-							label={ __( "Content Inner Width" ) }
+							label={ __( "Container Width" ) }
 							value={ contentWidth }
 							onChange={ ( value ) => setAttributes( { contentWidth: value } ) }
 							options={ [

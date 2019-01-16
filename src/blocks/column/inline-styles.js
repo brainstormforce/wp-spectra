@@ -7,9 +7,6 @@ function inlineStyles( props, isEditor ) {
 
 	const {
 		backgroundPosition,
-		backgroundSize,
-		backgroundAttachment,
-		backgroundImage,
 		backgroundColor,
 		backgroundOpacity,
 		backgroundRepeat,
@@ -35,12 +32,6 @@ function inlineStyles( props, isEditor ) {
 
 		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 		style["background-color"] = backgroundImageColor
-
-		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
-		style["background-position"] = position
-		style["background-attachment"] = backgroundAttachment
-		style["background-repeat"] = backgroundRepeat
-		style["background-size"] = backgroundSize
 
 	} else if ( "gradient" === backgroundType ) {
 		style["background-color"] = "transparent"

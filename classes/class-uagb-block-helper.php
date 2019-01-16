@@ -92,17 +92,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['background-repeat']     = $attr['backgroundRepeat'];
 				$style['background-size']       = $attr['backgroundSize'];
 
-			} elseif ( 'gradient' === $bg_type ) {
-				$style['background-color'] = 'transparent';
-				$style['opacity'] =  ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
-
-				if ( 'linear' === $attr['gradientType'] ) {
-
-					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				} else {
-
-					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				}
 			}
 
 			$inner_width = '100%';
@@ -144,6 +133,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
 					'background-color' => $attr['backgroundColor'],
 				);
+			} else if ( 'gradient' === $bg_type ) {
+				$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
+				$selectors[' > .uagb-section__overlay']['opacity'] =  ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
 			}
 
 			$selectors[' > .uagb-section__overlay']["border-radius"] = $attr['borderRadius'] . "px";
@@ -156,7 +156,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Columns Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -199,17 +199,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['background-repeat']     = $attr['backgroundRepeat'];
 				$style['background-size']       = $attr['backgroundSize'];
 
-			} elseif ( 'gradient' === $bg_type ) {
-				$style['background-color'] = 'transparent';
-				$style['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
-
-				if ( 'linear' === $attr['gradientType'] ) {
-
-					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				} else {
-
-					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				}
 			}
 
 			$inner_width = '100%';
@@ -264,6 +253,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
 					'background-color' => $attr['backgroundColor'],
 				);
+			} elseif ( 'gradient' === $bg_type ) {
+				$selectors[' > .uagb-columns__overlay']['background-color'] = 'transparent';
+				$selectors[' > .uagb-columns__overlay']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$selectors[' > .uagb-columns__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$selectors[' > .uagb-columns__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
 			}
 
 			$selectors[' > .uagb-columns__overlay']["border-radius"] = $attr['borderRadius'] . "px";
@@ -276,7 +276,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Single Column Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -300,6 +300,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-right'  => $attr['rightPadding'] . 'px',
 				'margin-top'    => $attr['topMargin'] . 'px',
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
+				'margin-left'    => $attr['leftMargin'] . 'px',
+				'margin-right' => $attr['rightMargin'] . 'px',
 			);
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
@@ -312,17 +314,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$style['background-repeat']     = $attr['backgroundRepeat'];
 				$style['background-size']       = $attr['backgroundSize'];
 
-			} elseif ( 'gradient' === $bg_type ) {
-				$style['background-color'] = 'transparent';
-				$style['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
-
-				if ( 'linear' === $attr['gradientType'] ) {
-
-					$style['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				} else {
-
-					$style['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-				}
 			}
 
 			$selectors = array(
@@ -339,6 +330,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
 					'background-color' => $attr['backgroundColor'],
 				);
+			} elseif ( 'gradient' === $bg_type ) {
+				$selectors[' > .uagb-column__overlay']['background-color'] = 'transparent';
+				$selectors[' > .uagb-column__overlay']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$selectors[' > .uagb-column__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$selectors[' > .uagb-column__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
 			}
 
 			if ( '' != $attr['colWidth'] && 0 != $attr['colWidth'] ) {
