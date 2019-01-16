@@ -192,7 +192,8 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none
+	user-select: none;
+	height: 40px;
 }
 
 .rfipbtn--open {
@@ -219,11 +220,16 @@
 }
 
 .rfipbtn__button i {
-	font-size: 32px;
+	font-size: 26px;
+    line-height: 26px;
+    height: 26px;
+    width: 26px;
 	-webkit-transition: -webkit-transform .25s;
 	transition: -webkit-transform .25s;
 	transition: transform .25s;
-	transition: transform .25s, -webkit-transform .25s
+	transition: transform .25s, -webkit-transform .25s;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 .rfipbtn__button--open i {
