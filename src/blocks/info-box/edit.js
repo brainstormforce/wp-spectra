@@ -589,7 +589,7 @@ class UAGBinfoBox extends Component {
 				</PanelBody>
 				<PanelBody
 					title={ __( "Color Settings" ) }
-					initialOpen={ true }
+					initialOpen={ false }
 				>					
 					{ showPrefix && <Fragment>
 						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
