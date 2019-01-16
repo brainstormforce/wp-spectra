@@ -186,7 +186,6 @@ class UAGBCallToAction extends Component {
 
 					{ ( ctaType == "button" ) && (
 						<Fragment>
-
 							<RangeControl
 								label={ __( "Vertical Padding" ) }
 								value={ ctaBtnVertPadding }
@@ -217,33 +216,15 @@ class UAGBCallToAction extends Component {
 									{ value: "dotted", label: __( "Dotted" ) },
 								] }
 							/>
-
-							{ ( ctaBorderStyle !== "none" ) && (
-								<Fragment>
-									<RangeControl
-										label={ __( "Border Width" ) }
-										value={ ctaBorderWidth }
-										onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
-										min={ 0 }
-										max={ 10 }
-										beforeIcon=""
-										allowReset
-									/>
-									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-								        allowReset
-								    />
-								    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderhoverColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-							)
-							}
+							<RangeControl
+								label={ __( "Border Width" ) }
+								value={ ctaBorderWidth }
+								onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
+								min={ 0 }
+								max={ 10 }
+								beforeIcon=""
+								allowReset
+							/>							
 							<RangeControl
 								label={ __( "Rounded Corner" ) }
 								value={ ctaBorderRadius }
@@ -256,6 +237,70 @@ class UAGBCallToAction extends Component {
 						</Fragment>
 					)
 					}	
+					{ ( ctaType === "text" ) &&
+						<Fragment>
+						    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ ctaBtnLinkColor }
+						        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+						        allowReset
+						    />
+						    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ ctaLinkHoverColor }
+						        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>							
+					}
+
+					{ ( ctaType === "text" ) && ( ctaBorderStyle !== "none" ) && (
+						<Fragment>
+							
+							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ ctaBorderColor }
+						        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+						        allowReset
+						    />
+						    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ ctaBorderhoverColor }
+						        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
+						)							
+					}
+
+					{ ( ctaType === "button") &&
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: "normal",
+									title: __( "Normal" ),
+									className: "uagb-normal-tab",
+								},
+								{
+									name: "hover",
+									title: __( "Hover" ),
+									className: "uagb-focus-tab",
+								},
+							] }>
+							{
+								( tabName ) => {
+									let tabout
+									if( "normal" === tabName.name ) {
+										tabout = ctaNormalSettings
+									}else {
+										tabout = ctaHoverSettings
+									}
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+					}
 				</PanelBody>			
 			</Fragment>
 		)
@@ -278,6 +323,17 @@ class UAGBCallToAction extends Component {
 						},
 					] }
 				>
+				{ ( ctaBorderStyle !== "none" ) && (
+						<Fragment>									
+							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ ctaBorderColor }
+						        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+						        allowReset
+						    />								   
+						</Fragment>
+					)
+				}
 				</PanelColorSettings>
 			</Fragment>
 		)
@@ -300,6 +356,17 @@ class UAGBCallToAction extends Component {
 						},
 					] }
 				>
+				{ ( ctaBorderStyle !== "none" ) && (
+						<Fragment>									
+							<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+							    <ColorPalette
+							        value={ ctaBorderhoverColor }
+							        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+							        allowReset
+							    />							   
+						</Fragment>
+					)
+				}
 				</PanelColorSettings>
 			</Fragment>
 		)
@@ -402,50 +469,7 @@ class UAGBCallToAction extends Component {
 							        allowReset
 							    /> </Fragment>
 
-					{ ( ctaType === "text" ) &&
-								<Fragment>
-								    <p className="uagb-setting-label">{ __( "CTA Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBtnLinkColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
-								        allowReset
-								    />
-								    <p className="uagb-setting-label">{ __( "CTA Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaLinkHoverColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-					}
-					{ ( ctaType === "button") &&
-								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-									activeClass="active-tab"
-									tabs={ [
-										{
-											name: "normal",
-											title: __( "Normal" ),
-											className: "uagb-normal-tab",
-										},
-										{
-											name: "hover",
-											title: __( "Hover" ),
-											className: "uagb-focus-tab",
-										},
-									] }>
-									{
-										( tabName ) => {
-											let tabout
-											if( "normal" === tabName.name ) {
-												tabout = ctaNormalSettings
-											}else {
-												tabout = ctaHoverSettings
-											}
-											return <div>{ tabout }</div>
-										}
-									}
-								</TabPanel>
-					}
+					
 				</PanelBody>
 			</Fragment>
 		)
