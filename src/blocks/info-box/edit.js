@@ -449,6 +449,86 @@ class UAGBinfoBox extends Component {
 						</Fragment>
 					)
 					}
+
+					{ ( ctaType === "text") &&
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: "normal",
+									title: __( "Normal" ),
+									className: "uagb-normal-tab",
+								},
+								{
+									name: "hover",
+									title: __( "Hover" ),
+									className: "uagb-focus-tab",
+								},
+							] }>
+							{
+								( tabName ) => {
+									let tabout_1
+									if( "normal" === tabName.name ) {
+										tabout_1 = <PanelColorSettings
+											title={ __( "CTA Color Settings" ) }
+											initialOpen={ true }
+											colorSettings={ [
+												{
+													value: ctaLinkColor,
+													onChange: ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ),
+													label: __( "Text Color" ),
+												},						
+											] }
+										>
+										</PanelColorSettings>
+									}else {
+										tabout_1 = <PanelColorSettings
+											title={ __( "CTA Hover Color Settings" ) }
+											initialOpen={ true }
+											colorSettings={ [
+												{
+													value: ctaLinkHoverColor,
+													onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
+													label: __( "Text Hover Color" ),
+												},						
+											] }
+										>
+										</PanelColorSettings>
+									}
+									return <div>{ tabout_1 }</div>
+								}
+							}
+						</TabPanel>
+					}
+					
+					{ ( ctaType === "button") &&
+							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+								activeClass="active-tab"
+								tabs={ [
+									{
+										name: "normal",
+										title: __( "Normal" ),
+										className: "uagb-normal-tab",
+									},
+									{
+										name: "hover",
+										title: __( "Hover" ),
+										className: "uagb-focus-tab",
+									},
+								] }>
+								{
+									( tabName ) => {
+										let tabout
+										if( "normal" === tabName.name ) {
+											tabout = ctaNormalSettings
+										}else {
+											tabout = ctaHoverSettings
+										}
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
+					}
 				</PanelBody>
 			</Fragment>
 		)
@@ -462,7 +542,7 @@ class UAGBinfoBox extends Component {
 						{
 							value: ctaBtnLinkColor,
 							onChange: ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ),
-							label: __( "Color" ),
+							label: __( "Text Color" ),
 						},
 						{
 							value: ctaBgColor,
@@ -484,7 +564,7 @@ class UAGBinfoBox extends Component {
 						{
 							value: ctaLinkHoverColor,
 							onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
-							label: __( "Hover Color" ),
+							label: __( "Text Hover Color" ),
 						},
 						{
 							value: ctaBgHoverColor,
@@ -509,7 +589,7 @@ class UAGBinfoBox extends Component {
 						checked={ showPrefix }
 						onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
 					/>
-					{ showPrefix &&
+					{ showPrefix && <Fragment>
 						<RangeControl
 							label={ __( "Prefix Font Size" ) }
 							value={ prefixFontSize }
@@ -520,6 +600,13 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+						<p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ prefixColor }
+						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
 					}
 
 					<ToggleControl
@@ -551,6 +638,12 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+					    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+					    <ColorPalette
+					        value={ headingColor }
+					        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+					        allowReset
+					    />	
 					</Fragment>
 					}
 					<ToggleControl
@@ -558,7 +651,7 @@ class UAGBinfoBox extends Component {
 						checked={ showDesc }
 						onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
 					/>
-					{ showDesc &&
+					{ showDesc && <Fragment>
 						<RangeControl
 							label={ __( "Description Font Size" ) }
 							value={ subHeadFontSize }
@@ -569,6 +662,13 @@ class UAGBinfoBox extends Component {
 							beforeIcon="editor-textcolor"
 							allowReset
 						/>
+						<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						    <ColorPalette
+						        value={ subHeadingColor }
+						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+						        allowReset
+						    />
+						</Fragment>
 					}
 
 					{ ( ctaType === "text" || ctaType === "button" ) &&	(
@@ -587,83 +687,6 @@ class UAGBinfoBox extends Component {
 					}
 
 				</PanelBody>
-				<PanelBody
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-				>					
-					{ showPrefix && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ prefixColor }
-						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
-						        allowReset
-						    />
-						    </Fragment>	
-					}
-					{ showTitle && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ headingColor }
-						        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-						        allowReset
-						    /> </Fragment>	
-					}
-					{ showDesc && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ subHeadingColor }
-						        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-						        allowReset
-						    /> </Fragment>	
-					}
-					
-					{ ( ctaType === "text") &&
-							<Fragment>
-							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
-							    <ColorPalette
-							        value={ ctaLinkColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-							        allowReset
-							    />
-							    <p className="uagb-setting-label">{ __( "CTA Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
-							    <ColorPalette
-							        value={ ctaLinkHoverColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
-							        allowReset
-							    />
-							</Fragment>
-					}
-					{ ( ctaType === "button") &&
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "normal" === tabName.name ) {
-											tabout = ctaNormalSettings
-										}else {
-											tabout = ctaHoverSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-					}
-				</PanelBody>
-
-
 			</Fragment>
 		)
 
