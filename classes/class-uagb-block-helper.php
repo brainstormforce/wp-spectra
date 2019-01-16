@@ -15,6 +15,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -359,8 +360,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => $attr['colWidth'] . "%"
 				);
 			}
-
-			$selectors[' > .uagb-column__overlay']['border-radius'] = $attr['borderRadius']. "%";
 
 			// @codingStandardsIgnoreEnd
 
