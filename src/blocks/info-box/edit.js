@@ -331,13 +331,24 @@ class UAGBinfoBox extends Component {
 							{ value: "all", label: __( "Complete Box" ) },
 						] }
 					/>
-					{ ( ctaType === "text" || ctaType === "button" ) &&
-					<TextControl
-						label= { __( "Text" ) }
-						value= { ctaText }
-						onChange={ value => setAttributes( { ctaText: value } ) }
-					/>
-					}
+					{ ( ctaType === "text" || ctaType === "button" ) && <Fragment>
+						<TextControl
+							label= { __( "Text" ) }
+							value= { ctaText }
+							onChange={ value => setAttributes( { ctaText: value } ) }
+						/>
+						<RangeControl
+							label={ __( "CTA Font Size" ) }
+							value={ ctaFontSize }
+							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+							min={ 0 }
+							max={ 50 }
+							initialPosition={16}
+							beforeIcon="editor-textcolor"
+							allowReset
+						/>
+						</Fragment>
+					}					
 					{ ( ctaType !== "none" ) &&
 						<Fragment>
 							<TextControl
@@ -581,7 +592,7 @@ class UAGBinfoBox extends Component {
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody
-					title={ __( "Typography" ) }
+					title={ __( "Content" ) }
 					initialOpen={ false }
 				>	
 					<ToggleControl
@@ -670,22 +681,6 @@ class UAGBinfoBox extends Component {
 						    />
 						</Fragment>
 					}
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&	(
-
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					)
-					}
-
 				</PanelBody>
 			</Fragment>
 		)
@@ -918,8 +913,7 @@ class UAGBinfoBox extends Component {
 					</PanelBody>
 					{ TypographySettings }
 					{ seperatorSettings }
-					{ ctaSettings }				
-
+					{ ctaSettings }	
 					{ marginSettings }
 
 				</InspectorControls>
