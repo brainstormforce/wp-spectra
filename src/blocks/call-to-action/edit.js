@@ -306,7 +306,7 @@ class UAGBCallToAction extends Component {
 						{
 							value: ctaBtnLinkColor,
 							onChange: ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ),
-							label: __( "Color" ),
+							label: __( "CTA Text Color" ),
 						},
 						{
 							value: ctaBgColor,
@@ -339,7 +339,7 @@ class UAGBCallToAction extends Component {
 						{
 							value: ctaLinkHoverColor,
 							onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
-							label: __( "Hover Color" ),
+							label: __( "CTA Text Hover Color" ),
 						},
 						{
 							value: ctaBgHoverColor,
