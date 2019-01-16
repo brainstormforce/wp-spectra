@@ -77,8 +77,16 @@ function InfoBoxStyle( props ) {
 		"line-height": iconSize + "px",
 	}
 
+	selectors[".uagb-ifb-icon > svg"] = {
+		"fill": iconColor,
+	}
+
 	selectors[".uagb-ifb-icon:hover > span"] = {
 		"color" : iconHover,
+	}
+
+	selectors[".uagb-ifb-icon:hover > svg"] = {
+		"fill" : iconHover,
 	}
 
 	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {

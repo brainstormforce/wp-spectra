@@ -583,8 +583,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
 				),
+				' .uagb-ifb-icon svg' => array(
+					'fill'       => $attr->iconColor,
+				),
 				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,
+				),
+				' .uagb-ifb-icon:hover svg' => array(
+					'fill' => $attr->iconHover ,
 				),
 	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',

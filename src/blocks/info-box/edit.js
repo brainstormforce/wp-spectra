@@ -7,7 +7,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
 import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
+import Icon from "./components/Icon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeperator from "./components/InfoBoxSeperator"
 import InfoBoxCta from "./components/InfoBoxCta"
@@ -913,7 +913,7 @@ class UAGBinfoBox extends Component {
 		let is_image = ""
 
 		if( source_type === "icon" && icon !== "" ) {
-			is_image =  <InfoBoxIcon attributes={attributes}/>
+			is_image =  <Icon attributes={attributes}/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
