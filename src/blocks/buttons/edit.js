@@ -27,7 +27,8 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl
+	RangeControl,
+	TabPanel
 } = wp.components
 
 
@@ -194,42 +195,72 @@ class UAGBMultiButtonEdit extends Component {
 						min={ 0 }
 						max={ 50 }
 					/>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) + " " + ( index + 1 ) }
-						colorSettings={ [
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
 							{
-								value: buttons[ index ].color,
-								onChange:( value ) => this.saveButton( { color: value }, index ),
-								label: __( "Text Color" ),
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
 							},
 							{
-								value: buttons[ index ].background,
-								onChange:( value ) => this.saveButton( { background: value }, index ),
-								label: __( "Background Color" ),
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-hover-tab",
 							},
-							{
-								value: buttons[ index ].borderColor,
-								onChange: ( value ) => this.saveButton( { borderColor: value }, index ),
-								label: __( "Border Color" ),
-							},
-							{
-								value: buttons[ index ].hColor,
-								onChange:( value ) => this.saveButton( { hColor: value }, index ),
-								label: __( "Text Hover Color" ),
-							},
-							{
-								value: buttons[ index ].hBackground,
-								onChange:( value ) => this.saveButton( { hBackground: value }, index ),
-								label: __( "Background Hover Color" ),
-							},
-							{
-								value: buttons[ index ].borderHColor,
-								onChange: ( value ) => this.saveButton( { borderHColor: value }, index ),
-								label: __( "Border Hover Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
+						] }>
+						{
+							( tabName ) => {
+								let btn_color_tab
+								if( "normal" === tabName.name ) {
+									btn_color_tab = <PanelColorSettings
+										title={ __( "Button" ) + " " + ( index + 1 ) + " " + __( " Color Settings" ) }
+										colorSettings={ [
+											{
+												value: buttons[ index ].color,
+												onChange:( value ) => this.saveButton( { color: value }, index ),
+												label: __( "Text Color" ),
+											},
+											{
+												value: buttons[ index ].background,
+												onChange:( value ) => this.saveButton( { background: value }, index ),
+												label: __( "Background Color" ),
+											},
+											{
+												value: buttons[ index ].borderColor,
+												onChange: ( value ) => this.saveButton( { borderColor: value }, index ),
+												label: __( "Border Color" ),
+											},				
+										] }
+									>
+									</PanelColorSettings>
+								}else {
+									btn_color_tab = <PanelColorSettings
+										title={  __( "Button" ) + " " + ( index + 1 ) + " " + __( "Hover Color Settings" ) }
+										colorSettings={ [	
+											{
+												value: buttons[ index ].hColor,
+												onChange:( value ) => this.saveButton( { hColor: value }, index ),
+												label: __( "Text Hover Color" ),
+											},
+											{
+												value: buttons[ index ].hBackground,
+												onChange:( value ) => this.saveButton( { hBackground: value }, index ),
+												label: __( "Background Hover Color" ),
+											},
+											{
+												value: buttons[ index ].borderHColor,
+												onChange: ( value ) => this.saveButton( { borderHColor: value }, index ),
+												label: __( "Border Hover Color" ),
+											},
+										] }
+									>
+									</PanelColorSettings>
+								}
+								return <div>{ btn_color_tab }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 			)
 		}
