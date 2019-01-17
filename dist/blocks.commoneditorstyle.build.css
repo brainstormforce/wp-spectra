@@ -5,24 +5,25 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button{
-	border: 1px solid #a4afb7;
-		padding: 10px;
+	padding: 10px;
+    background: transparent;
+    color: #333;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid #eee;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
-.uagb-inspect-tabs .active-tab {
-		background-color: #a4afb7;
-		color: #fff;
-		outline:none;
-}
-
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus{
-		border: 1px solid #a4afb7;
-		outline: none;
-}
-
-.uagb-inspect-tabs .components-tab-panel__tabs {
-		margin-top: 15px;
-		margin-bottom: 15px;
+.uagb-inspect-tabs .components-tab-panel__tabs button.active-tab,
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+	border-bottom: 5px solid #333;
+	outline:none;
+	font-weight:500;
 }
 
 .uagb-inspect-tab-title {
