@@ -57,7 +57,8 @@ registerBlockType( "uagb/icon-list", {
 			icons,
 			icon_count,
 			icon_layout,
-			hideLabel
+			hideLabel,
+			disableLink
 		} = props.attributes
 
 		const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
@@ -92,6 +93,7 @@ registerBlockType( "uagb/icon-list", {
 							}
 
 							let target = ( icon.target ) ? "_blank" : "_self"
+							let link_url = ( !disableLink ) ? icon.link : 'javascript:void(0);'
 
 							return (
 								<a
@@ -102,7 +104,7 @@ registerBlockType( "uagb/icon-list", {
 									key={ index }
 									target={ target }
 									rel="noopener noreferrer"
-									href={ icon.link }
+									href={ link_url }
 								>
 									<div className="uagb-icon-list__content-wrap">
 										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>

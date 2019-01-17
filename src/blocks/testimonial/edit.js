@@ -508,14 +508,6 @@ class UAGBtestimonial extends Component {
 									max={ 50 }
 									allowReset
 								/>
-								<RangeControl
-									label={ __( "Border Radius" ) }
-									value={ borderRadius }
-									onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-									min={ 0 }
-									max={ 1000 }
-									allowReset
-								/>
 								<Fragment>
 									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 									<ColorPalette
@@ -526,6 +518,14 @@ class UAGBtestimonial extends Component {
 								</Fragment>
 							</Fragment>
 					}
+					<RangeControl
+							label={ __( "Border Radius" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 1000 }
+							allowReset
+						/>
 				</PanelBody>
 			</Fragment>
 		)
