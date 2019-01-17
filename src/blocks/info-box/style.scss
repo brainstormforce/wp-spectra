@@ -16,6 +16,11 @@
     display: inline-block;
 }
 
+.uagb-ifb-icon svg {
+	width: inherit;
+	height: inherit;
+}
+
 .infobox-icon-above-title .uagb-ifb-left-right-wrap {
     text-align: center;
 }
@@ -278,6 +283,18 @@ a.uagb-infobox-link-wrap {
 }
 span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
     float: right;
+}
+
+.uagb-ifb-button-icon {
+	height: 15px;
+    width: 15px;
+    font-size: 15px;
+}
+
+.uagb-ifb-button-icon svg {
+	height: inherit;
+	width: inherit;
+	display: inline-block;
 }
 
 .block-editor-page #wpwrap .uagb-infobox-cta-link svg,

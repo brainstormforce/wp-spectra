@@ -113,6 +113,8 @@ function InfoBoxStyle( props ) {
 		}
 	}
 
+	console.log(ctaLinkColor)
+
 	// CTA style
 	selectors[".uagb-infobox-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
@@ -125,10 +127,19 @@ function InfoBoxStyle( props ) {
 
 	selectors[".uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
+		"width" : ctaFontSize+"px",
+		"height" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
 	selectors[".uagb-infobox-cta-link:hover span"] = {
 		"color": ctaLinkHoverColor,
+	}
+
+	selectors[".uagb-infobox-cta-link svg"] = {
+		"fill": ctaBtnLinkColor,
+	}
+	selectors[".uagb-infobox-cta-link:hover svg"] = {
+		"fill": ctaLinkHoverColor,
 	}
 
 	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
