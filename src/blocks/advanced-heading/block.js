@@ -26,7 +26,6 @@ const {
 	BlockControls,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 	ColorPalette
 } = wp.editor
 
