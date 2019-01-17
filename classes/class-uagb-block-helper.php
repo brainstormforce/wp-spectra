@@ -12,11 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1534,6 +1529,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconColor'],
                     'font-size' => $attr['iconSize'].'px',
+                    'width' => $attr['iconSize'].'px',
                 );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
@@ -1544,6 +1540,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['iconColor'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['iconFocus'],
                 );
 
             $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
@@ -1684,121 +1688,122 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[' .uagb-timeline__events-new'] = array(
-                    'text-align' => $attr['align']
-                );
+                'text-align' => $attr['align']
+            );
             $selectors['.uagb-timeline__date-inner'] = array(
-                    'text-align' => $attr['align']
-                );
+                'text-align' => $attr['align']
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
-                    'border-left-color'  => $attr['backgroundColor']
-                );
+                'border-left-color'  => $attr['backgroundColor']
+            );
 
            	$selectors[' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
-                    'border-left-color'  => $attr['backgroundColor']
-                );
+                'border-left-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
-                    'border-right-color'  => $attr['backgroundColor']
-                );
+                'border-right-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
-                    'border-right-color'  => $attr['backgroundColor']
-                );
+                'border-right-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__line__inner'] = array(
-                    'background-color'  => $attr['separatorFillColor']
-                );
+                'background-color'  => $attr['separatorFillColor']
+            );
 
             $selectors[' .uagb-timeline__line'] = array(
-                    'background-color'  => $attr['separatorColor'],
-                    'width'  => $attr['separatorwidth'].'px'
-                );
+                'background-color'  => $attr['separatorColor'],
+                'width'  => $attr['separatorwidth'].'px'
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__line'] = array(
-                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__line'] = array(
-                    'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__line'] = array(
-                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__marker'] = array(
-                    'background-color' => $attr['separatorBg'],
-                    'min-height'=> $attr['connectorBgsize'].'px',
-                    'min-width' => $attr['connectorBgsize'].'px',
-                    'line-height' => $attr['connectorBgsize'].'px',
-                    'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
-                );
+                'background-color' => $attr['separatorBg'],
+                'min-height'=> $attr['connectorBgsize'].'px',
+                'min-width' => $attr['connectorBgsize'].'px',
+                'line-height' => $attr['connectorBgsize'].'px',
+                'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
-                    'margin-left' => $attr['horizontalSpace'].'px',
-                    'margin-right'=> $attr['horizontalSpace'].'px',
-                );
+                'margin-left' => $attr['horizontalSpace'].'px',
+                'margin-right'=> $attr['horizontalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__field:not(:last-child)'] = array(
-                    'margin-bottom' => $attr['verticalSpace'].'px',
-                );
+                'margin-bottom' => $attr['verticalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-                    'margin-bottom' => $attr['dateBottomspace'].'px',
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',
-                    'text-align'=> $attr['align'],
-                );
+                'margin-bottom' => $attr['dateBottomspace'].'px',
+                'color'=> $attr['dateColor'],
+                'font-size' => $attr['dateFontsize'].'px',
+                'text-align'=> $attr['align'],
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
-                    'margin-left' => $attr['horizontalSpace'].'px',
-                );
+                'margin-left' => $attr['horizontalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
-                    'margin-right' => $attr['horizontalSpace'].'px',
-                );
+                'margin-right' => $attr['horizontalSpace'].'px',
+            );
 
-             $selectors[' .uagb-timeline__date-new'] = array(
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',
-                );
+            $selectors[' .uagb-timeline__date-new'] = array(
+                'color'=> $attr['dateColor'],
+                'font-size' => $attr['dateFontsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__events-inner-new'] = array(
-                    'background-color' => $attr['backgroundColor'],
-                    'border-radius' => $attr['borderRadius'].'px',
-                    'padding'=> $attr['bgPadding'].'px',
-                );
+                'background-color' => $attr['backgroundColor'],
+                'border-radius' => $attr['borderRadius'].'px',
+                'padding'=> $attr['bgPadding'].'px',
+            );
 
             $selectors[' .uagb-content'] = array(
-                    'padding'=> $attr['contentPadding'].'px',
-                );
+                'padding'=> $attr['contentPadding'].'px',
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
-                    'color'=> $attr['iconColor'],
-                    'font-size' => $attr['iconSize'].'px',
-                );
+                'color'     => $attr['iconColor'],
+                'font-size' => $attr['iconSize'].'px',
+                'width'     => $attr['iconSize'].'px',
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
-                    'background' => $attr['iconBgFocus'],
-                    'border-color'=> $attr['borderFocus'],
-                );
+                'background' => $attr['iconBgFocus'],
+                'border-color'=> $attr['borderFocus'],
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
@@ -1824,13 +1829,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
-			        'text-align' => 'left'
-			    );
+		        'text-align' => 'left'
+		    );
 			$t_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner'] = array(
-			        'text-align' => 'left'
-			    );
+		        'text-align' => 'left'
+		    );
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-					'text-align'=> 'left',
+				'text-align'=> 'left',
 			);
 
 			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
