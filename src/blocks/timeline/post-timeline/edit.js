@@ -6,6 +6,7 @@ import pickBy from "lodash/pickBy"
 import classnames from "classnames"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 // Import css for timeline.
 import contentTimelineStyle from ".././inline-styles"
@@ -18,7 +19,7 @@ import Excerpt from "./components/Excerpt"
 import CtaLink from "./components/CtaLink"
 import Author from "./components/Author"
 import PostDate from "./components/PostDate"
-import TmIcon from "./components/TmIcon"
+import Icon from "./components/Icon"
 
 const { Component, Fragment } = wp.element
 
@@ -49,6 +50,8 @@ const {
 	BlockControls,
 	PanelColorSettings,
 } = wp.editor
+
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBTimeline extends Component {
    
@@ -134,14 +137,14 @@ class UAGBTimeline extends Component {
 			{ value: "large", label: __( "Large" ) }
 		]      
 
-		// Parameters for FontIconPicker.
+		// Parameters for FontIconPicker.		
 		const icon_props = {
-			icons: UAGBIcon,
-			renderUsing: "class",
-			theme: "default",
+			icons: svg_icons,
 			value: icon,
 			onChange: this.getTimelineicon,
 			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( 'Select Icon' )
 		}
 
 		const iconColorSettings = (
@@ -900,7 +903,7 @@ class UAGBTimeline extends Component {
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
 									<div className = {content_align_class}> 
 
-										{ <TmIcon attributes={attributes} /> } 
+										{ <Icon attributes={attributes} /> } 
                                         
 										<div className = {day_align_class} >
 											<div className="uagb-timeline__events-new">

@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1808,6 +1809,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
                 );
+            
+            $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['i
+                    conColor'],
+                );
+
+			$selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg'] = array(
+			        'fill'=> $attr['iconFocus'],
+			    );
 
             $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
 	            'margin-left' => 0,

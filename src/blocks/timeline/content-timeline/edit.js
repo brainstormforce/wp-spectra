@@ -268,14 +268,6 @@ class UAGBcontentTimeline extends Component {
 		} = this.props
 
 		// Parameters for FontIconPicker
-		/*const icon_props = {
-			icons: UAGBIcon,
-			renderUsing: "class",
-			theme: "default",
-			value: icon,
-			onChange: this.getTimelineicon,
-			isMulti: false,
-		}*/
 		const icon_props = {
 			icons: svg_icons,
 			value: icon,
