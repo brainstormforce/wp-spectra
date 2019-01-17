@@ -356,8 +356,8 @@ class UAGBMultiButtonEdit extends Component {
 								{ value: "mobile", label: __( "Mobile" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
+							help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
 						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
