@@ -382,8 +382,8 @@ class UAGBColumns extends Component {
 								{ value: "mobile", label: __( "Mobile" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
+							help={ __( "Note: Choose on what breakpoint the columns will stack." ) }
 						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
 						<SelectControl
 							label={ __( "Container Width" ) }
 							value={ contentWidth }

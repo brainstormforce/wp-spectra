@@ -457,7 +457,7 @@ class UAGBRestaurantMenu extends Component {
 						initialOpen={ true }
 					>	
 				 	<RangeControl
-							label={ __( "Number of Menu Items" ) }
+							label={ __( "Number of Items" ) }
 							value={ menu_item_count }
 							onChange={ ( newCount ) => {
 								let cloneTest_block = [ ...rest_menu_item_arr ]

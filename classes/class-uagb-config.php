@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 	class UAGB_Config {
 
 
+
 		/**
 		 * Block Attributes
 		 *
@@ -48,7 +49,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'subHeadFontSize' => '',
 							'headSpace'       => 15,
 							'separatorSpace'  => 15,
-							'subHeadSpace'    => '',
 						),
 					),
 					'uagb/columns'          => array(
@@ -501,8 +501,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/restaurant-menu'  => array(
 						'slug'        => '',
-						'title'       => __( 'Restaurant Menu', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to add attractive Restaurant Menu.', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'Price List', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'           => '',

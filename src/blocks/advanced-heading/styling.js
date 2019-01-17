@@ -18,19 +18,17 @@ function styling( props ) {
 		separatorColor,
 		separatorSpace,
 		subHeadFontSize,
-		subHeadingColor,
-		subHeadSpace
+		subHeadingColor
 	} = props.attributes
 
 	var selectors = {
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,
-		},		
+		},
 		" .editor-rich-text .uagb-desc-text": {
 			"text-align": headingAlign,
 			"font-size": subHeadFontSize + "px",
 			"color": subHeadingColor,
-			"margin-bottom": subHeadSpace + "px",
 		}
 	}
 
