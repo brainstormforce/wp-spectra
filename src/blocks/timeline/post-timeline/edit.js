@@ -4,7 +4,6 @@
 import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 import classnames from "classnames"
-// UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
 import UAGBIcon from '../../../../dist/blocks/uagb-controls/UAGBIcon.json'
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"

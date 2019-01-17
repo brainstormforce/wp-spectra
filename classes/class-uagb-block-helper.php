@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -980,8 +981,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => $attr['socialFontSize'] . "px",
 					"height" => $attr['socialFontSize'] . "px",
 				),
+				" .uagb-team__social-icon svg" => array(
+					"fill" => $attr['socialColor'],
+				),
 				" .uagb-team__social-icon:hover a" => array(
 					"color" => $attr['socialHoverColor'],
+				),
+				" .uagb-team__social-icon:hover svg" => array(
+					"fill" => $attr['socialHoverColor'],
 				),
 				".uagb-team__image-position-left .uagb-team__social-icon" => array(
 					"margin-right" => $attr['socialSpace'] . "px",

@@ -52,8 +52,14 @@ function styling( props ) {
 			"width": socialFontSize + "px !important",
 			"height": socialFontSize + "px !important",
 		},
+		" .uagb-team__social-icon svg": {
+			"fill": socialColor + " !important",
+		},
 		" .uagb-team__social-icon:hover a": {
 			"color": socialHoverColor + " !important",
+		},
+		" .uagb-team__social-icon:hover svg": {
+			"fill": socialHoverColor + " !important",
 		},
 		".uagb-team__image-position-left .uagb-team__social-icon" : {
 			"margin-right": socialSpace + "px !important",

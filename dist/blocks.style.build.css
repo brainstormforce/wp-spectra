@@ -967,7 +967,8 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
   font-size: 20px;
   width: 20px;
   height: 20px;
-  color: #333; }
+  color: #333;
+  display: block; }
 
 .uagb-team__outer-wrap .uagb-team__social-icon {
   margin-right: 20px;
