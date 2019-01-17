@@ -49,7 +49,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'subHeadFontSize' => '',
 							'headSpace'       => 15,
 							'separatorSpace'  => 15,
-							'subHeadSpace'    => '',
 						),
 					),
 					'uagb/columns'          => array(

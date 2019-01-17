@@ -396,7 +396,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 					'font-size' => $attr['subHeadFontSize'] . "px",
 					'color' => $attr['subHeadingColor'],
-					'margin-bottom' => $attr['subHeadSpace'] . "px",
 				)
 
 			);
