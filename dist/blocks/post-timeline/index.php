@@ -311,13 +311,13 @@ add_action( 'init', 'uagb_blocks_register_timeline_posts' );
  */
 function uagb_tm_get_icon( $attributes ) {
 
-	$icon = $attributes['icon'];
-	// var_dump('praju');
-	// var_dump($icon);
-	$icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon ' . $icon;
+	$icon       = $attributes['icon'];
+	$htm        = UAGB_Helper::get_font_awesome_icons_svg( $icon );
+	$icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon ';
 	$output     = '';
 	$output    .= sprintf( '<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >' );
 	$output    .= sprintf( '<span class = "%1$s" >', esc_attr( $icon_class ) );
+	$output    .= $htm;
 	$output    .= sprintf( '</span>' );
 	$output    .= sprintf( '</div>' ); // End of icon div.
 

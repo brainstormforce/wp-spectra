@@ -4,7 +4,8 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
+//import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from '../../../../dist/blocks/uagb-controls/UAGBIcon.json'
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"

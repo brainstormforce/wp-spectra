@@ -2,7 +2,8 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+//import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json';
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Title from "./components/Title"
 import Description from "./components/Description"
@@ -35,7 +36,7 @@ let svg_icons = Object.keys( UAGBIcon )
 
 // Extend component
 const { Component, Fragment } = wp.element
-
+//console.log(jsonData);
 class UAGBCallToAction extends Component {
 
 	constructor() {
