@@ -131,7 +131,7 @@ export default class UAGBAdvancedHeading extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "Content" ) }>
+					<PanelBody title={ __( "Advanced Heading" ) }>
 						<h2>{ __( 'Heading' ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
