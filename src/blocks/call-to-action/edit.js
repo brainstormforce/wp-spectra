@@ -445,13 +445,6 @@ class UAGBCallToAction extends Component {
 			</PanelBody>
 		)
 
-		const color_settings = (
-			<PanelBody title={ __( "Color Settings" ) } initialOpen={ false }>
-
-
-			</PanelBody>
-		)
-
 		// Margin Settings.
 		const marginSettings = (
 			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
@@ -559,7 +552,6 @@ class UAGBCallToAction extends Component {
 				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) && layouts }
 				{ TypographySettings }
 				{ ctaSettings }
-				{ /*color_settings*/ }
 				{ marginSettings }
 			</InspectorControls>
 		)

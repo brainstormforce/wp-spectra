@@ -20,9 +20,9 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	PanelColorSettings,
 	MediaUpload,
-	RichText
+	RichText,
+	ColorPalette
 } = wp.editor
 
 const {
@@ -31,7 +31,8 @@ const {
 	RangeControl,
 	Button,
 	TextControl,
-	ToggleControl
+	ToggleControl,
+	TabPanel
 } = wp.components
 
 
@@ -84,68 +85,93 @@ class UAGBIconList extends Component {
 			bgSize
 		} = attributes
 
+
+
 		const iconControls = ( index ) => {
 
 			let color_control = ""
+			let color_control_hover = ""
 
 			if ( "image" == icons[ index ].image_icon ) {
 
-				color_control = [
-					{
-						value: icons[ index ].label_color,
-						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
-						label: __( "Text Color" ),
-					},
-					{
-						value: icons[ index ].icon_bg_color,
-						onChange:( value ) => this.saveIcons( { icon_bg_color: value }, index ),
-						label: __( "Image Background Color" ),
-					},
-					{
-						value: icons[ index ].label_hover_color,
-						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
-						label: __( "Text Hover Color" ),
-					},
-					{
-						value: icons[ index ].icon_bg_hover_color,
-						onChange:( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ),
-						label: __( "Image Background Hover Color" ),
-					},
-				]
+				color_control = (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].label_color }
+							onChange={ ( value ) => this.saveIcons( { label_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Image Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_bg_color }
+							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
+							allowReset
+						/>
+					</Fragment>
+				)
+				color_control_hover = (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].label_hover_color }
+							onChange={ ( value ) => this.saveIcons( { label_hover_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Image Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_bg_hover_color }
+							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
+							allowReset
+						/>
+					</Fragment>
+				)
 			} else {
 
-				color_control = [
-					{
-						value: icons[ index ].icon_color,
-						onChange:( value ) => this.saveIcons( { icon_color: value }, index ),
-						label: __( "Icon Color" ),
-					},
-					{
-						value: icons[ index ].icon_bg_color,
-						onChange:( value ) => this.saveIcons( { icon_bg_color: value }, index ),
-						label: __( "Background Color" ),
-					},
-					{
-						value: icons[ index ].label_color,
-						onChange:( value ) => this.saveIcons( { label_color: value }, index ),
-						label: __( "Text Color" ),
-					},
-					{
-						value: icons[ index ].icon_hover_color,
-						onChange:( value ) => this.saveIcons( { icon_hover_color: value }, index ),
-						label: __( "Icon Hover Color" ),
-					},
-					{
-						value: icons[ index ].icon_bg_hover_color,
-						onChange:( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ),
-						label: __( "Background Hover Color" ),
-					},
-					{
-						value: icons[ index ].label_hover_color,
-						onChange:( value ) => this.saveIcons( { label_hover_color: value }, index ),
-						label: __( "Text Hover Color" ),
-					},
-				]
+				color_control = (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].label_color }
+							onChange={ ( value ) => this.saveIcons( { label_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_color }
+							onChange={ ( value ) => this.saveIcons( { icon_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Icon Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_bg_color }
+							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
+							allowReset
+						/>
+					</Fragment>
+				)
+				color_control_hover = (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].label_hover_color }
+							onChange={ ( value ) => this.saveIcons( { label_hover_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_hover_color }
+							onChange={ ( value ) => this.saveIcons( { icon_hover_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Icon Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_bg_hover_color }
+							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
+							allowReset
+						/>
+					</Fragment>
+				)
 			}
 
 			return (
@@ -206,25 +232,62 @@ class UAGBIconList extends Component {
 							}
 						</Fragment>
 					}
-					<p className="components-base-control__label">{__( "URL" )}</p>
-					<TextControl
-						value={ icons[ index ].link }
-						onChange={ value => {
-							this.saveIcons( { link: value }, index )
-						} }
-						placeholder={__( "Enter URL" )}
-					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "List Item Link" ) }</h2>
 					<ToggleControl
-						label={ __( "Open in New Tab" ) }
-						checked={ icons[ index ].target }
+						label={ __( "Disable Link" ) }
+						checked={ icons[ index ].disableLink }
 						onChange={ value => {
-							this.saveIcons( { target: value }, index )
+							this.saveIcons( { disableLink: value }, index )
 						} }
 					/>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						colorSettings={ color_control }>
-					</PanelColorSettings>
+					{ ! icons[ index ].disableLink &&
+						<Fragment>
+							<p className="components-base-control__label">{__( "URL" )}</p>
+							<TextControl
+								value={ icons[ index ].link }
+								onChange={ value => {
+									this.saveIcons( { link: value }, index )
+								} }
+								placeholder={__( "Enter URL" )}
+							/>
+							<ToggleControl
+								label={ __( "Open in New Tab" ) }
+								checked={ icons[ index ].target }
+								onChange={ value => {
+									this.saveIcons( { target: value }, index )
+								} }
+							/>
+						</Fragment>
+					}
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Icon #" ) + " " + ( index + 1 ) + " " + __( " Color Settings" ) }</h2>
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
+							{
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
+							},
+							{
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-hover-tab",
+							},
+						] }>
+						{
+							( tabName ) => {
+								let color_tab
+								if( "normal" === tabName.name ) {
+									color_tab = color_control
+								}else {
+									color_tab = color_control_hover
+								}
+								return <div>{ color_tab }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 			)
 		}
