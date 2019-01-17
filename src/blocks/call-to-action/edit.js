@@ -7,8 +7,10 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaPositionClasses from "./classes"
-import CallToAction from "./components/CallToAction"
+import CTA from "./components/CTA"
+
 import CtaStyle from "./inline-styles"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const { __ } = wp.i18n
 
@@ -28,6 +30,8 @@ const {
 	ToggleControl,
 	TextControl,
 } = wp.components
+
+let svg_icons = Object.keys( UAGBIcon )
 
 // Extend component
 const { Component, Fragment } = wp.element
@@ -110,12 +114,12 @@ class UAGBCallToAction extends Component {
 		
 		// Icon properties.
 		const cta_icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: ctaIcon,
-		  onChange: this.setCtaIcon,
-		  isMulti: false,
+			icons: svg_icons,
+			value: ctaIcon,
+			onChange: this.setCtaIcon,
+			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( 'Select Icon' )
 		}
 
 		const my_block_id = "uagb-cta-block-"+this.props.clientId
@@ -559,7 +563,7 @@ class UAGBCallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_cta =  <CallToAction attributes={attributes} setAttributes = { setAttributes }/>
+		let is_cta =  <CTA attributes={attributes} setAttributes = { setAttributes }/>
 			
 		// Get description components.
 		const desc = (
