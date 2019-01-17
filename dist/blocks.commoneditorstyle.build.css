@@ -19,6 +19,10 @@
     transition: all 0.2s;
 }
 
+hr.uagb-editor__separator {
+	border-bottom: 1px solid #c9c9ca;
+}
+
 .uagb-inspect-tabs .components-tab-panel__tabs button.active-tab,
 .uagb-inspect-tabs .components-tab-panel__tabs button:focus {
 	border-bottom: 5px solid #333;
