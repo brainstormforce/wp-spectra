@@ -596,7 +596,7 @@ class UAGBinfoBox extends Component {
 					initialOpen={ true }
 				>
 					{ showPrefix && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Prefix Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+						    <p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 						    <ColorPalette
 						        value={ prefixColor }
 						        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }

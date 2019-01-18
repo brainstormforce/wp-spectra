@@ -289,9 +289,19 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
 	height: 15px;
     width: 15px;
     font-size: 15px;
+    vertical-align: middle
+}
+.uagb-ifb-text-icon {
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+    line-height: 15px;
+    vertical-align: middle;
+    display: inline-block;
 }
 
-.uagb-ifb-button-icon svg {
+.uagb-ifb-button-icon svg,
+.uagb-ifb-text-icon svg {
 	height: inherit;
 	width: inherit;
 	display: inline-block;

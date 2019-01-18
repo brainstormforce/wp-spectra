@@ -17,6 +17,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -644,11 +645,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
 
 	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg' => array(
+	                'fill'            => $attr->ctaBtnLinkColor,	                
+	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
 	                'color'       => $attr->ctaLinkHoverColor,
 	                'background-color' => $attr->ctaBgHoverColor,
 	                'border-color'     => $attr->ctaBorderhoverColor,
 	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg' => array(
+	                'fill'       => $attr->ctaLinkHoverColor,
+	            ),
+
 
 	           // Prefix Style.
 	            ' .uagb-ifb-title-prefix' => array(
