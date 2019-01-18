@@ -759,18 +759,12 @@ if (! class_exists('UAGB_Block_Helper')) {
 					'background-color' => $attr->ctaBgHoverColor,
 					'border-color'     => $attr->ctaBorderhoverColor,
 				),
-				' .uagb-cta__button-wrapper .uagb-cta-text-icon'  => array(
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'width'       => $attr->ctaFontSize. "px",
 					'height'      => $attr->ctaFontSize. "px",
 					'line-height' => $attr->ctaFontSize. "px",
-				),
-				' .uagb-cta__button-wrapper .uagb-cta-button-icon'  => array(
-					'font-size'   => $attr->ctaFontSize. "px",
-					'width'       => $attr->ctaFontSize. "px",
-					'height'      => $attr->ctaFontSize. "px",
-					'line-height' => $attr->ctaFontSize. "px",
-				),						
+				),								
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr->ctaBtnLinkColor,
 				),
