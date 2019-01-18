@@ -100,12 +100,19 @@ function CtaStyle( props ) {
 		"border-color": ctaBorderhoverColor,
 	}
 
-	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link"] = {
+	selectors[".uagb-cta__button-wrapper .uagb-cta-text-icon"] = {
 		"font-size" : ctaFontSize+"px",
 		"height": ctaFontSize+"px",
 		"width": ctaFontSize+"px",
 		"line-height": ctaFontSize+"px",
-	}	
+	}
+
+	selectors[".uagb-cta__button-wrapper .uagb-cta-button-icon"] = {
+		"font-size" : ctaFontSize+"px",
+		"height": ctaFontSize+"px",
+		"width": ctaFontSize+"px",
+		"line-height": ctaFontSize+"px",
+	}
 
 	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link svg"] = {
 		"fill" : ctaBtnLinkColor,
