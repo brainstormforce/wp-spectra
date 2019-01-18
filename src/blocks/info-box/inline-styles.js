@@ -125,6 +125,14 @@ function InfoBoxStyle( props ) {
 		"color": ctaLinkHoverColor,
 	}
 
+	selectors[".uagb-infobox-cta-link .uagb-ifb-text-icon svg"] = {
+		"fill": ctaLinkColor,
+	}
+
+	selectors[".uagb-infobox-cta-link a:hover svg"] = {
+		"fill": ctaLinkHoverColor,
+	}
+
 	selectors[".uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
 		"width" : ctaFontSize+"px",

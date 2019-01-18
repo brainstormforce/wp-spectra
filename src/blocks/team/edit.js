@@ -2,9 +2,11 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
 
 const { __ } = wp.i18n
 
@@ -30,6 +32,8 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
+let svg_icons = Object.keys( UAGBIcon )
+
 class UAGBTeam extends Component {
 
 	social_html( icon, link, target ) {
@@ -37,7 +41,7 @@ class UAGBTeam extends Component {
 		let target_value =  ( target ) ? "_blank" : "_self"
 
 		return (
-			<li className="uagb-team__social-icon"><a href={link} target={target_value} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} target={target_value} title="" rel ="noopener noreferrer">{ renderSVG(icon) }</a></li>
 		)
 	}
 
@@ -353,12 +357,13 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
 										theme="default"
 										value={twitterIcon}
 										onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
 										isMulti={false}
+										noSelectedPlaceholder={__( 'Select Icon' )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -370,12 +375,13 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Facebook" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
 										theme="default"
 										value={fbIcon}
 										onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
 										isMulti={false}
+										noSelectedPlaceholder={__( 'Select Icon' )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -387,8 +393,9 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
+										noSelectedPlaceholder={__( 'Select Icon' )}
 										theme="default"
 										value={linkedinIcon}
 										onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
@@ -404,8 +411,9 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Pinterest" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
+										noSelectedPlaceholder={__( 'Select Icon' )}
 										theme="default"
 										value={pinIcon}
 										onChange={ ( value ) => setAttributes( { pinIcon: value } ) }

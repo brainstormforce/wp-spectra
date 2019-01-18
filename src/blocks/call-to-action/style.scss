@@ -91,7 +91,8 @@
         margin-right: 5px;
     }
 
-    .uagb-cta__block-link-icon {
+    .uagb-cta__block-link-icon,
+    .uagb-cta__block svg{
         -webkit-transition: all 200ms linear;
         -o-transition: all 200ms linear;
         transition: all 200ms linear;
@@ -170,7 +171,14 @@
     .uagb-cta__button-type-none .uagb-cta__content {
         width: 100%;
     }
-
+    .uagb-cta-button-icon,
+    .uagb-cta-text-icon{
+        height: 20px;
+        width: 20px;
+        line-height: 20px;
+        display: inline-block;
+        vertical-align: middle;
+    }
     .uagb-cta__align-button-after {
         margin-left: 5px;
     }

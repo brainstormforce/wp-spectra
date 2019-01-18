@@ -19,7 +19,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Init_Blocks {
 
-
 	/**
 	 * Member Variable
 	 *
@@ -48,39 +47,7 @@ class UAGB_Init_Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) );
 
-		// add_action( 'init', array( $this, 'icon_to_svg_compatibility' ) );
 		add_filter( 'block_categories', array( $this, 'register_block_category' ), 10, 2 );
-	}
-
-	/**
-	 * Icon to SVG Compatibility
-	 *
-	 * @since x.x.x
-	 */
-	public function icon_to_svg_compatibility() {
-
-		$args = array(
-			'post_status'    => 'public',
-			'posts_per_page' => -1,
-		);
-
-		// The Query
-		$the_query = new WP_Query( $args );
-
-		// The Loop
-		if ( $the_query->have_posts() ) {
-			echo '<ul>';
-			while ( $the_query->have_posts() ) {
-				$the_query->the_post();
-
-				echo '<li>' . get_the_title() . '</li>';
-			}
-			echo '</ul>';
-			/* Restore original Post Data */
-			wp_reset_postdata();
-		} else {
-			// no posts found
-		}
 	}
 
 	/**

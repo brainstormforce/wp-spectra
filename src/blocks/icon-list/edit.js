@@ -5,9 +5,10 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const { __ } = wp.i18n
 
@@ -35,6 +36,7 @@ const {
 	TabPanel
 } = wp.components
 
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBIconList extends Component {
 
@@ -194,14 +196,15 @@ class UAGBIconList extends Component {
 						<Fragment>
 							<p className="components-base-control__label">{__( "Icon" )}</p>
 							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
+								icons={svg_icons}
+								renderFunc= {renderSVG}
 								theme="default"
 								value={icons[ index ].icon}
 								onChange={ value => {
 									this.saveIcons( { icon: value }, index )
 								} }
 								isMulti={false}
+								noSelectedPlaceholder= { __( 'Select Icon' ) }
 							/>
 						</Fragment>
 					}
@@ -458,7 +461,7 @@ class UAGBIconList extends Component {
 
 								if ( icon.image_icon == "icon" ) {
 									if ( icon.icon ) {
-										image_icon_html = <span className={ classnames( icon.icon , "uagb-icon-list__source-icon" ) }></span>
+										image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
 									}
 								} else {
 									if ( icon.image ) {
