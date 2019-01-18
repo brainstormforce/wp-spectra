@@ -195,10 +195,7 @@ class UAGBRestaurantMenu extends Component {
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
-				<PanelBody
-					title={ __( "Typography" ) }
-					initialOpen={ false }
-				>	
+				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>	
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ headingTag }
@@ -270,55 +267,51 @@ class UAGBRestaurantMenu extends Component {
 			</Fragment>
 		)
 
-		const separatorSettings =(
-			<Fragment>
-				<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( "Seperator Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "groove", label: __( "Groove" ) },
-							{ value: "inset", label: __( "Inset" ) },
-							{ value: "outset", label: __( "Outset" ) },
-							{ value: "ridge", label: __( "Ridge" ) },
-						] }
-					/>
-					{ "none" != seperatorStyle &&
-						<Fragment>
-							<RangeControl
-								label={ __( "Seperator Width" ) }
-								value={ seperatorWidth }
-								onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Seperator Thickness" ) }
-								value={ seperatorThickness }
-								onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-								min={ 0 }
-								max={ 20 }
-								allowReset
-							/>	
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-								<ColorPalette
-									value={ seperatorColor }
-									onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-									allowReset
-								/>
-							</Fragment>	
-						</Fragment>
-					}
-				</PanelBody>
-			</Fragment>
+		const separatorSettings =(			
+			<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
+				<SelectControl
+					label={ __( "Seperator Style" ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "groove", label: __( "Groove" ) },
+						{ value: "inset", label: __( "Inset" ) },
+						{ value: "outset", label: __( "Outset" ) },
+						{ value: "ridge", label: __( "Ridge" ) },
+					] }
+				/>
+				{ "none" != seperatorStyle &&
+					<Fragment>
+						<RangeControl
+							label={ __( "Seperator Width" ) }
+							value={ seperatorWidth }
+							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Seperator Thickness" ) }
+							value={ seperatorThickness }
+							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+							min={ 0 }
+							max={ 20 }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+						<ColorPalette
+							value={ seperatorColor }
+							onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+							allowReset
+						/>
+					</Fragment>
+				}
+			</PanelBody>			
 		)
 
 		// Image sizes.
@@ -379,204 +372,189 @@ class UAGBRestaurantMenu extends Component {
 		} )	    
 
 		// Margin Settings.
-		const marginSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Spacing" ) }
-					initialOpen={ false }
-				>
+		const marginSettings = (			
+			<PanelBody	title={ __( "Spacing" ) } initialOpen={ false }	>
+				<RangeControl
+					label={ __( "Row Gap" ) }
+					value={ rowGap }
+					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Column Gap" ) }
+					value={ columnGap }
+					onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Item Horizontal Padding" ) }
+					value={ contentHrPadding }
+					onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Item Vertical Padding" ) }
+					value={ contentVrPadding }
+					onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>			
+				<RangeControl
+					label={ __( "Title Bottom Margin" ) }
+					value={ titleSpace }
+					onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>								
+				{  cnt > 0 && <Fragment>
 					<RangeControl
-						label={ __( "Row Gap" ) }
-						value={ rowGap }
-						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+						label={ __( "Image Horizontal Padding" ) }
+						value={ imgHrPadding }
+						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
-						value={ columnGap }
-						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+						label={ __( "Image Vertical Padding" ) }
+						value={ imgVrPadding }
+						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>
-					<RangeControl
-						label={ __( "Item Horizontal Padding" ) }
-						value={ contentHrPadding }
-						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Item Vertical Padding" ) }
-						value={ contentVrPadding }
-						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>			
-					<RangeControl
-						label={ __( "Title Bottom Margin" ) }
-						value={ titleSpace }
-						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>								
-					{  cnt > 0 && <Fragment>
-						<RangeControl
-							label={ __( "Image Horizontal Padding" ) }
-							value={ imgHrPadding }
-							onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Image Vertical Padding" ) }
-							value={ imgVrPadding }
-							onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>	
-					</Fragment>
-					}					
-					
-				</PanelBody>
-			</Fragment>
+					/>	
+				</Fragment>
+				}				
+				
+			</PanelBody>			
 		)
 
-		const inspect_control = (
-			<Fragment>
-				 <InspectorControls>
-				 	<PanelBody
-						title={ __( "General" ) }
-						initialOpen={ true }
-					>	
-				 	<RangeControl
-							label={ __( "Number of Items" ) }
-							value={ menu_item_count }
-							onChange={ ( newCount ) => {
-								let cloneTest_block = [ ...rest_menu_item_arr ]
-								if ( cloneTest_block.length < newCount ) {
-									const incAmount = Math.abs( newCount - cloneTest_block.length )
+		const inspect_control = (			
+			<InspectorControls>
+			 	<PanelBody	title={ __( "General" ) } initialOpen={ true }	>	
+			 		<RangeControl
+						label={ __( "Number of Items" ) }
+						value={ menu_item_count }
+						onChange={ ( newCount ) => {
+							let cloneTest_block = [ ...rest_menu_item_arr ]
+							if ( cloneTest_block.length < newCount ) {
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
 
-									{ times( incAmount, n => {
+								{ times( incAmount, n => {
 
-										cloneTest_block.push( {
-											description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
-											title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
-											price: __("$19"),
-											image: "",
-										} )
-									} ) }
-									setAttributes( { rest_menu_item_arr: cloneTest_block } )
-								}else{
-									const incAmount = Math.abs( newCount - cloneTest_block.length )
-									let data_new = cloneTest_block
-					            for( var i= 0; i < incAmount; i++ ){             
-					                data_new.pop()
-					            }           
-					            setAttributes({rest_menu_item_arr:data_new})
+									cloneTest_block.push( {
+										description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
+										title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
+										price: __("$19"),
+										image: "",
+									} )
+								} ) }
+								setAttributes( { rest_menu_item_arr: cloneTest_block } )
+							}else{
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
+								let data_new = cloneTest_block
+				            for( var i= 0; i < incAmount; i++ ){             
+				                data_new.pop()
+				            }           
+				            setAttributes({rest_menu_item_arr:data_new})
 
-								}
-								setAttributes( { menu_item_count: newCount } )
-							} }
-							min={ 0 }
-							max={ 10 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Columns" ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-						<RangeControl
-							label={ __( "Columns (Tablet)" ) }
-							value={ tcolumns }
-							onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-						<RangeControl
-							label={ __( "Columns (Mobile)" ) }
-							value={ mcolumns }
-							onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-					</PanelBody>
-									 	
-					<PanelBody
-						title={ __( "Image" ) }
-						initialOpen={ false }
-					>
-						{ times( menu_item_count, n => imageControls( n ) ) }
+							}
+							setAttributes( { menu_item_count: newCount } )
+						} }
+						min={ 0 }
+						max={ 10 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Columns" ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+				</PanelBody>
+								 	
+				<PanelBody title={ __( "Image" ) }initialOpen={ false } >
+					{ times( menu_item_count, n => imageControls( n ) ) }
 
-						{  cnt > 0 && <Fragment>
+					{  cnt > 0 && <Fragment>
+						<SelectControl
+							label={ __( "Image Position" ) }
+							value={ imagePosition }
+							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+							options={ [
+								{ value: "top", label: __( "Top" ) },
+								{ value: "left", label: __( "Left" ) },
+								{ value: "right", label: __( "Right" ) },
+							] }
+						/>	
+						{ (imagePosition == "left" || imagePosition == "right") && 
+						<Fragment>
 							<SelectControl
-								label={ __( "Image Position" ) }
-								value={ imagePosition }
-								onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+								label={ __( "Vertical Alignment" ) }
+								value={ imageAlignment }
+								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
 								options={ [
 									{ value: "top", label: __( "Top" ) },
-									{ value: "left", label: __( "Left" ) },
-									{ value: "right", label: __( "Right" ) },
+									{ value: "middle", label: __( "Middle" ) },
 								] }
 							/>	
-							{ (imagePosition == "left" || imagePosition == "right") && 
-							<Fragment>
-								<SelectControl
-									label={ __( "Vertical Alignment" ) }
-									value={ imageAlignment }
-									onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-									options={ [
-										{ value: "top", label: __( "Top" ) },
-										{ value: "middle", label: __( "Middle" ) },
-									] }
-								/>	
-								<SelectControl
-									label={ __( "Stack on" ) }
-									value={ stack }
-									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
-									] }
-									help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
-									onChange={ ( value ) => setAttributes( { stack: value } ) }
-								/>
-							</Fragment>
-							}						
 							<SelectControl
-								label={ __( "Image Size" ) }
-								options={ imageSizeOptions }
-								value={ imageSize }
-								onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
-						 <RangeControl
-								label={ __( "Width" ) }
-								value={ imageWidth }
-								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-								min={ 0 }
-								max={ 500 }								
-								allowReset
-							/>
-						</Fragment> 
-						}
-					
-					
-					</PanelBody>
-					{ separatorSettings }
-					{ TypographySettings }
-					{ marginSettings }					
-				</InspectorControls>
-			</Fragment>
+						</Fragment>
+						}						
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ imageSize }
+							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+						/>
+					 <RangeControl
+							label={ __( "Width" ) }
+							value={ imageWidth }
+							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+							min={ 0 }
+							max={ 500 }								
+							allowReset
+						/>
+					</Fragment> 
+					}
+				</PanelBody>
+				{ separatorSettings }
+				{ TypographySettings }
+				{ marginSettings }					
+			</InspectorControls>			
 		)
 
 		return (
