@@ -86,7 +86,7 @@ registerBlockType( "uagb/icon-list", {
 
 							if ( icon.image_icon == "icon" ) {
 								if ( icon.icon ) {
-									image_icon_html = <span className={ classnames( "uagb-icon-list__source-icon" ) }>{ renderSVG(icon.icon) }</span>
+									image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
 								}
 							} else {
 								if ( icon.image ) {
