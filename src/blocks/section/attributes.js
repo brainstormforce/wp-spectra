@@ -86,6 +86,13 @@ const attributes = {
 	backgroundVideo: {
 		type: "object",
 	},
+	backgroundVideoType: {
+		type: "string",
+		default: "custom"
+	},
+	backgroundVideoURL: {
+		type: "string"
+	},
 	backgroundColor: {
 		type: "string",
 	},
