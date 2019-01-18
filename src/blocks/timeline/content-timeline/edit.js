@@ -444,7 +444,7 @@ class UAGBcontentTimeline extends Component {
 			<InspectorControls>
 				<PanelBody
 					title={ __( "General" ) }
-					initialOpen={ false }
+					initialOpen={ true }
 				>
 					<RangeControl
 						label={ __( "Number of Items" ) }

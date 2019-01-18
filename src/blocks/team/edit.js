@@ -372,7 +372,7 @@ class UAGBTeam extends Component {
 										placeholder={__( "Enter Twitter URL" )}
 									/>
 								</PanelBody>
-								<PanelBody title={ __( "FaceBook" ) } initialOpen={ false }>
+								<PanelBody title={ __( "Facebook" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
 										icons={svg_icons}
@@ -387,7 +387,7 @@ class UAGBTeam extends Component {
 									<TextControl
 										value={ fbLink }
 										onChange={ ( value ) => setAttributes( { fbLink: value } ) }
-										placeholder={__( "Enter FaceBook URL" )}
+										placeholder={__( "Enter Facebook URL" )}
 									/>
 								</PanelBody>
 								<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
@@ -497,22 +497,22 @@ class UAGBTeam extends Component {
 							{
 								value: prefixColor,
 								onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
-								label: __( "Designation" ),
+								label: __( "Designation Color" ),
 							},
 							{
 								value: descColor,
 								onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
-								label: __( "Description" ),
+								label: __( "Description Color" ),
 							},
 							{
 								value: socialColor,
 								onChange: ( colorValue ) => setAttributes( { socialColor: colorValue } ),
-								label: __( "Social Icon" ),
+								label: __( "Social Icon Color" ),
 							},
 							{
 								value: socialHoverColor,
 								onChange: ( colorValue ) => setAttributes( { socialHoverColor: colorValue } ),
-								label: __( "Social Icon Hover" ),
+								label: __( "Social Icon Hover Color" ),
 							},
 						] }
 					>
@@ -555,51 +555,50 @@ class UAGBTeam extends Component {
 							max={ 50 }
 							allowReset
 						/>
-						<PanelBody
-							title={ __( "Image Margins" ) }
-							initialOpen={ true }
-						>
-							{  imgPosition != "above" &&
-							<RangeControl
-								label={ __( "Left Margin" ) }
-								value={ imgLeftMargin }
-								onChange={ ( value ) => setAttributes( { imgLeftMargin: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							}
-							{  imgPosition != "above" &&
-							<RangeControl
-								label={ __( "Right Margin" ) }
-								value={ imgRightMargin }
-								onChange={ ( value ) => setAttributes( { imgRightMargin: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							}
-							<RangeControl
-								label={ __( "Top Margin" ) }
-								value={ imgTopMargin }
-								onChange={ ( value ) => setAttributes( { imgTopMargin: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Bottom Margin" ) }
-								value={ imgBottomMargin }
-								onChange={ ( value ) => setAttributes( { imgBottomMargin: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon="editor-textcolor"
-								allowReset
-							/>
-						</PanelBody>
+						{ image &&
+							<PanelBody title={ __( "Image Margins" ) } initialOpen={ true }>
+								{  imgPosition != "above" &&
+								<RangeControl
+									label={ __( "Left Margin" ) }
+									value={ imgLeftMargin }
+									onChange={ ( value ) => setAttributes( { imgLeftMargin: value } ) }
+									min={ 0 }
+									max={ 50 }
+									beforeIcon="editor-textcolor"
+									allowReset
+								/>
+								}
+								{  imgPosition != "above" &&
+								<RangeControl
+									label={ __( "Right Margin" ) }
+									value={ imgRightMargin }
+									onChange={ ( value ) => setAttributes( { imgRightMargin: value } ) }
+									min={ 0 }
+									max={ 50 }
+									beforeIcon="editor-textcolor"
+									allowReset
+								/>
+								}
+								<RangeControl
+									label={ __( "Top Margin" ) }
+									value={ imgTopMargin }
+									onChange={ ( value ) => setAttributes( { imgTopMargin: value } ) }
+									min={ 0 }
+									max={ 50 }
+									beforeIcon="editor-textcolor"
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Bottom Margin" ) }
+									value={ imgBottomMargin }
+									onChange={ ( value ) => setAttributes( { imgBottomMargin: value } ) }
+									min={ 0 }
+									max={ 50 }
+									beforeIcon="editor-textcolor"
+									allowReset
+								/>
+							</PanelBody>
+						}
 					</PanelBody>
 				</InspectorControls>
 				<div

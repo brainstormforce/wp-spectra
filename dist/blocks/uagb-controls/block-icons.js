@@ -117,7 +117,7 @@ const UAGB_Block_Icons = {
 	),
 	"bottom_align": el("svg", { width: 20, height: 20 },
 		el("path", { d: "M18.5 20v-2.125h-17v2.125h17zM14.25 11.5h-3.187v-10.625h-2.125v10.625h-3.188l4.25 4.25 4.25-4.25z" } )
-	),
+	)
 }
 
 export default UAGB_Block_Icons

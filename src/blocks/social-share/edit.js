@@ -277,20 +277,18 @@ class UAGBSocialShare extends Component {
 							onChange={ ( value ) => setAttributes( { social_layout: value } ) }
 						/>
 						{ "horizontal" == social_layout &&
-							<Fragment>
-								<SelectControl
-									label={ __( "Stack on" ) }
-									value={ stack }
-									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "desktop", label: __( "Desktop" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
-									] }
-									onChange={ ( value ) => setAttributes( { stack: value } ) }
-								/>
-								<p className="uagb-note">{ __( "Note: Choose on what breakpoint the Icons will stack." ) }</p>
-							</Fragment>
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "desktop", label: __( "Desktop" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+								help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
+							/>
 						}
 						<RangeControl
 							label={ __( "Size" ) }
