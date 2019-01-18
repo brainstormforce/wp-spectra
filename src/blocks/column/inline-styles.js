@@ -16,7 +16,7 @@ function inlineStyles( props, isEditor ) {
 		gradientLocation1,
 		gradientLocation2,
 		gradientType,
-		gradientAngle,		
+		gradientAngle,
 		backgroundImageColor,
 		borderStyle,
 		borderRadius,
@@ -48,9 +48,7 @@ function inlineStyles( props, isEditor ) {
 		style["background-color"] = backgroundColor
 	}
 
-	if( borderStyle !== 'none' ){
-		style["border-radius"] = borderRadius + "%"
-	}
+	style["border-radius"] = borderRadius + "px"
 
 	return style
 }

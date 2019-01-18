@@ -306,7 +306,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
 				'margin-left'    => $attr['leftMargin'] . 'px',
 				'margin-right' => $attr['rightMargin'] . 'px',
-				'border-radius' => $attr['borderRadius'] . '%',
+				'border-radius' => $attr['borderRadius'] . 'px',
 			);
 
 			if ( "none" != $attr['borderStyle'] ) {
