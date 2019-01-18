@@ -19,6 +19,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Member Variable
 		 *
@@ -601,15 +603,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$icon = str_replace( 'fab', '', $icon );
 			$icon = str_replace( 'fa-', '', $icon );
 			$icon = str_replace( 'fa', '', $icon );
-			$icon = esc_attr( $icon );
+			$icon = sanitize_text_field( esc_attr( $icon ) );
 
 			$json = UAGB_Helper::backend_load_font_awesome_icons();
-
 			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
 			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
-
-			$view = implode( ' ', $view );
-			$htm  = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
+			if ( $view ) {
+				$view = implode( ' ', $view );
+			}
+			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
 			return $htm;
 		}
 	}
