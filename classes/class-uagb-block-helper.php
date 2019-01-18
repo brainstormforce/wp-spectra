@@ -302,7 +302,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
 				'margin-left'    => $attr['leftMargin'] . 'px',
 				'margin-right' => $attr['rightMargin'] . 'px',
-				'border-radius' => $attr['borderRadius'] . '%',
+				'border-radius' => $attr['borderRadius'] . 'px',
 			);
 
 			if ( "none" != $attr['borderStyle'] ) {
@@ -392,7 +392,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 					'font-size' => $attr['subHeadFontSize'] . "px",
 					'color' => $attr['subHeadingColor'],
-					'margin-bottom' => $attr['subHeadSpace'] . "px",
 				)
 
 			);

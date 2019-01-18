@@ -13,7 +13,7 @@ import InfoBoxDesc from "./components/InfoBoxDesc"
 import InfoBoxIcon from "./components/InfoBoxIcon"
 import Icon from "./components/Icon"
 import InfoBoxPositionClasses from "./classes"
-import InfoBoxSeperator from "./components/InfoBoxSeperator"
+import InfoBoxSeparator from "./components/InfoBoxSeparator"
 import InfoBoxCta from "./components/InfoBoxCta"
 import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
@@ -100,7 +100,7 @@ registerBlockType( "uagb/info-box", {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
 					{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
@@ -236,7 +236,7 @@ registerBlockType( "uagb/info-box", {
 				// Get description and seperator components.
 				const desc = (
 					<Fragment>
-						{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+						{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
 						<div className = "uagb-ifb-text-wrap">
 							<InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/>
 							<InfoBoxCta attributes={props.attributes} />

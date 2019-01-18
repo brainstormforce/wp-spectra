@@ -41,7 +41,7 @@ function styling( props ) {
 		"margin-bottom": bottomMargin + "px",
 		"margin-left": leftMargin + "px",
 		"margin-right": rightMargin + "px",
-		"border-radius": borderRadius + "%",
+		"border-radius": borderRadius + "px",
 	}
 
 	if ( borderStyle != "none" ) {
@@ -87,7 +87,7 @@ function styling( props ) {
 	if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
-	
+
 
 	return styling_css
 }

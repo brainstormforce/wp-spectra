@@ -396,15 +396,15 @@ export default class UAGBColumnEdit extends Component {
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
 										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
 											label: __( "Color 1" ),
 										},
 										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
 											label: __( "Color 2" ),
-										}
+										},
 									] }
 								>
 								</PanelColorSettings>
