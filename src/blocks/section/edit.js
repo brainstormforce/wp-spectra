@@ -33,7 +33,6 @@ const {
 	BaseControl,
 	withNotices,
 	ToggleControl,
-	TextControl
 } = wp.components
 
 
@@ -139,8 +138,6 @@ class UAGBSectionEdit extends Component {
 			backgroundType,
 			backgroundImage,
 			backgroundVideo,
-			backgroundVideoType,
-			backgroundVideoURL,
 			backgroundColor,
 			backgroundPosition,
 			backgroundAttachment,
@@ -411,12 +408,14 @@ class UAGBSectionEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
-										<ColorPalette
-											value={ backgroundImageColor }
-											onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
-											allowReset
-										/>
+										<Fragment>
+											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
+											<ColorPalette
+												value={ backgroundImageColor }
+												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+												allowReset
+											/>
+										</Fragment>
 									</Fragment> )
 								}
 							</Fragment> )
@@ -475,44 +474,25 @@ class UAGBSectionEdit extends Component {
 							</Fragment> )
 						}
 						{ "video" == backgroundType && (
-							<BaseControl className="editor-bg-video-control" label={ __( "Background Video" ) }>
-								<SelectControl
-									label={ __( "Attachment" ) }
-									value={ backgroundVideoType }
-									onChange={ ( value ) => setAttributes( { backgroundAttachment: value } ) }
-									options={ [
-										{ value: "src", label: __( "From URL" ) },
-										{ value: "custom", label: __( "Upload" ) }
-									] }
+							<BaseControl
+								className="editor-bg-video-control"
+								label={ __( "Background Video" ) }
+							>
+								<MediaUpload
+									title={ __( "Select Background Video" ) }
+									onSelect={ this.onSelectVideo }
+									allowedTypes={ [ "video" ] }
+									value={ backgroundVideo }
+									render={ ( { open } ) => (
+										<Button isDefault onClick={ open }>
+											{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
+										</Button>
+									) }
 								/>
-								{ backgroundVideoType == 'custom' && (
-									<Fragment>
-										<MediaUpload
-											title={ __( "Select Background Video" ) }
-											onSelect={ this.onSelectVideo }
-											allowedTypes={ [ "video" ] }
-											value={ backgroundVideo }
-											render={ ( { open } ) => (
-												<Button isDefault onClick={ open }>
-													{ ! backgroundVideo ? __( "Select Background Video" ) : __( "Replace Video" ) }
-												</Button>
-											) }
-										/>
-										{ backgroundVideo &&
-											( <Button onClick={ this.onRemoveVideo } isLink isDestructive>
-												{ __( "Remove Video" ) }
-											</Button> )
-										}
-										</Fragment>
-									)
-								}
-								{ backgroundVideoType == 'src' && (
-									<TextControl
-										value={ backgroundVideoURL }
-										onChange={ ( value ) => setAttributes( { backgroundVideoURL: value } ) }
-										placeholder={__( "Video URL" )}
-									/>
-									)
+								{ backgroundVideo &&
+									( <Button onClick={ this.onRemoveVideo } isLink isDestructive>
+										{ __( "Remove Video" ) }
+									</Button> )
 								}
 							</BaseControl> )
 						}
