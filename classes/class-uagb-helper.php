@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
+
 		/**
 		 * Member Variable
 		 *
@@ -588,7 +589,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  array $icon Decoded fontawesome json file data.
 		 * @return string
 		 */
-		public static function get_font_awesome_icons_svg( $icon ) {
+		public static function render_svg_html( $icon ) {
 			$icon = str_replace( 'far', '', $icon );
 			$icon = str_replace( 'fas', '', $icon );
 			$icon = str_replace( 'fab', '', $icon );
