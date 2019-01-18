@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1274,6 +1275,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size" => $attr['size'] . "px"
 			);
 
+			$selectors[" .uagb-icon-list__source-icon svg"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+			);
+
 			$selectors[" .uagb-icon-list__source-icon:before"] = array(
 				"width" => $attr['size'] . "px",
 				"height" => $attr['size'] . "px",
@@ -1319,8 +1325,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"color" => $icon['icon_color']
 				);
 
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon svg"] = array (
+					"fill" => $icon['icon_color']
+				);
+
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
 					"color" => $icon['icon_hover_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon svg"] = array (
+					"fill" => $icon['icon_hover_color']
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
