@@ -32,7 +32,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Store Json variable
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 * @var instance
 		 */
 		public static $icon_json;
@@ -562,7 +562,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get Json Data.
 		 *
-		 * @since 1.8.1
+		 * @since x.x.x
 		 * @return Array
 		 */
 		public static function backend_load_font_awesome_icons() {
@@ -585,7 +585,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Generate SVG.
 		 *
-		 * @since 1.8.1
+		 * @since x.x.x
 		 * @param  array $icon Decoded fontawesome json file data.
 		 * @return string
 		 */
