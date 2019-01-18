@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Init_Blocks {
 
+
 	/**
 	 * Member Variable
 	 *
@@ -95,7 +96,7 @@ class UAGB_Init_Blocks {
 			array(
 				array(
 					'slug'  => 'uagb',
-					'title' => __( 'UAGB Blocks', 'ultimate-addons-for-gutenberg' ),
+					'title' => __( 'Ultimate Addons Blocks', 'ultimate-addons-for-gutenberg' ),
 				),
 			)
 		);
@@ -200,13 +201,10 @@ class UAGB_Init_Blocks {
 		$blocks       = array();
 		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
 		if ( is_array( $saved_blocks ) ) {
-
 			foreach ( $saved_blocks as $slug => $data ) {
-
 				$_slug = 'uagb/' . $slug;
 
 				if ( isset( $saved_blocks[ $slug ] ) ) {
-
 					if ( 'disabled' === $saved_blocks[ $slug ] ) {
 						array_push( $blocks, $_slug );
 					}
@@ -230,9 +228,7 @@ class UAGB_Init_Blocks {
 				'category' => 'uagb',
 			)
 		);
-
 	} // End function editor_assets().
-
 }
 
 /**
