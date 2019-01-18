@@ -313,7 +313,7 @@ class UAGBinfoBox extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Width" ) }
+							label={ __( "Width (%)" ) }
 							value={ seperatorWidth }
 							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 							min={ 0 }
