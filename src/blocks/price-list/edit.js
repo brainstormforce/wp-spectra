@@ -292,7 +292,7 @@ class UAGBRestaurantMenu extends Component {
 					{ "none" != seperatorStyle &&
 						<Fragment>
 							<RangeControl
-								label={ __( "Seperator Width" ) }
+								label={ __( "Seperator Width (%)" ) }
 								value={ seperatorWidth }
 								onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 								min={ 0 }
