@@ -218,7 +218,35 @@ class UAGBBlockQuote extends Component {
 					onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
 				/>
 				{ skinStyle === "border" && border_settings	}
-				{ skinStyle === "quotation" && quote_settings }						
+				{ skinStyle === "quotation" && quote_settings }	
+				<hr className="uagb-editor__separator" />
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
+						{
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-hover-tab",
+						},							
+					] }>
+					{
+						( tabName ) => {
+							let tabout
+							if( "hover" === tabName.name ) {
+								tabout = hoverSettings
+							}else {
+								tabout = colorSettings
+							}
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>	
+				<hr className="uagb-editor__separator" />				
 				<SelectControl
 					label={ __( "Stack on" ) }
 					value={ stack }
@@ -297,7 +325,7 @@ class UAGBBlockQuote extends Component {
 
 		const colorSettings = (
 			<Fragment>
-				{ "none" != borderStyle &&  <Fragment>					
+				{ "none" != borderStyle && skinStyle == "border" && <Fragment>					
 					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 					<ColorPalette
 						value={ borderColor }
@@ -306,24 +334,9 @@ class UAGBBlockQuote extends Component {
 					/>
 					</Fragment>
 				}
-				<p className="uagb-setting-label">{ __( "Quote Color" ) }
-					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
-					<ColorPalette
-						value={ descColor }
-						onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
-						allowReset
-					/>
+				
 
-				<p className="uagb-setting-label">{ __( "Author Color" ) }
-					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
-					<ColorPalette
-						value={ authorColor }
-						onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
-						allowReset
-					/>
-
+				
 				{ skinStyle == "quotation" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Quote Icon Color" ) }
 					<span className="components-base-control__label">
@@ -393,6 +406,14 @@ class UAGBBlockQuote extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 						initialPosition={30}
+					/>					
+					<p className="uagb-setting-label">{ __( "Quote Color" ) }
+					<span className="components-base-control__label">
+					<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
+					<ColorPalette
+						value={ descColor }
+						onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
+						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
@@ -404,38 +425,19 @@ class UAGBBlockQuote extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 						initialPosition={16}
-					/>					
+					/>	
+					<p className="uagb-setting-label">{ __( "Author Color" ) }
+					<span className="components-base-control__label">
+					<span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+					<ColorPalette
+						value={ authorColor }
+						onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+						allowReset
+					/>
+				
 					{ imageControls } 
 								
-				</PanelBody>
-				<PanelBody title={ __( "Color Settings" ) } initialOpen={ false }>		
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
-							{
-								name: "normal",
-								title: __( "Normal" ),
-								className: "uagb-normal-tab",
-							},
-							{
-								name: "hover",
-								title: __( "Hover" ),
-								className: "uagb-hover-tab",
-							},							
-						] }>
-						{
-							( tabName ) => {
-								let tabout
-								if( "hover" === tabName.name ) {
-									tabout = hoverSettings
-								}else {
-									tabout = colorSettings
-								}
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
-				</PanelBody>
+				</PanelBody>			
 			</Fragment>
 		)
 

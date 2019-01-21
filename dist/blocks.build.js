@@ -66125,6 +66125,35 @@ var UAGBBlockQuote = function (_Component) {
 				}),
 				skinStyle === "border" && border_settings,
 				skinStyle === "quotation" && quote_settings,
+				wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+				wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-hover-tab"
+						}] },
+					function (tabName) {
+						var tabout = void 0;
+						if ("hover" === tabName.name) {
+							tabout = hoverSettings;
+						} else {
+							tabout = colorSettings;
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout
+						);
+					}
+				),
+				wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 				wp.element.createElement(SelectControl, {
 					label: __("Stack on"),
 					value: stack,
@@ -66210,7 +66239,7 @@ var UAGBBlockQuote = function (_Component) {
 			var colorSettings = wp.element.createElement(
 				Fragment,
 				null,
-				"none" != borderStyle && wp.element.createElement(
+				"none" != borderStyle && skinStyle == "border" && wp.element.createElement(
 					Fragment,
 					null,
 					wp.element.createElement(
@@ -66231,40 +66260,6 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true
 					})
 				),
-				wp.element.createElement(
-					"p",
-					{ className: "uagb-setting-label" },
-					__("Quote Color"),
-					wp.element.createElement(
-						"span",
-						{ className: "components-base-control__label" },
-						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: descColor } })
-					)
-				),
-				wp.element.createElement(ColorPalette, {
-					value: descColor,
-					onChange: function onChange(colorValue) {
-						return setAttributes({ descColor: colorValue });
-					},
-					allowReset: true
-				}),
-				wp.element.createElement(
-					"p",
-					{ className: "uagb-setting-label" },
-					__("Author Color"),
-					wp.element.createElement(
-						"span",
-						{ className: "components-base-control__label" },
-						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: authorColor } })
-					)
-				),
-				wp.element.createElement(ColorPalette, {
-					value: authorColor,
-					onChange: function onChange(colorValue) {
-						return setAttributes({ authorColor: colorValue });
-					},
-					allowReset: true
-				}),
 				skinStyle == "quotation" && wp.element.createElement(
 					Fragment,
 					null,
@@ -66387,6 +66382,23 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true,
 						initialPosition: 30
 					}),
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Quote Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: descColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: descColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ descColor: colorValue });
+						},
+						allowReset: true
+					}),
 					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 					wp.element.createElement(RangeControl, {
 						label: __("Author Font Size"),
@@ -66400,38 +66412,24 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true,
 						initialPosition: 16
 					}),
-					imageControls
-				),
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Color Settings"), initialOpen: false },
 					wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "hover",
-								title: __("Hover"),
-								className: "uagb-hover-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("hover" === tabName.name) {
-								tabout = hoverSettings;
-							} else {
-								tabout = colorSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
-						}
-					)
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Author Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: authorColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: authorColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ authorColor: colorValue });
+						},
+						allowReset: true
+					}),
+					imageControls
 				)
 			);
 
