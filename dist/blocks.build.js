@@ -66167,7 +66167,7 @@ var UAGBBlockQuote = function (_Component) {
 					Fragment,
 					null,
 					wp.element.createElement(SelectControl, {
-						label: __("Image Position"),
+						label: __("Author Image Position"),
 						value: authorImgPosition,
 						onChange: function onChange(value) {
 							return setAttributes({ authorImgPosition: value });
@@ -66175,7 +66175,7 @@ var UAGBBlockQuote = function (_Component) {
 						options: [{ value: "left", label: __("Left") }, { value: "right", label: __("Right") }, { value: "top", label: __("Top") }]
 					}),
 					wp.element.createElement(SelectControl, {
-						label: __("Image Size"),
+						label: __("Author Image Size"),
 						options: imageSizeOptions,
 						value: authorImageSize,
 						onChange: function onChange(value) {
@@ -66183,7 +66183,7 @@ var UAGBBlockQuote = function (_Component) {
 						}
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Image Width"),
+						label: __("Author Image Width"),
 						value: authorImageWidth,
 						onChange: function onChange(value) {
 							return setAttributes({ authorImageWidth: value });
@@ -66194,7 +66194,7 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Image Rounded Corners"),
+						label: __("Author Image Rounded Corners"),
 						value: authorImgBorderRadius,
 						onChange: function onChange(value) {
 							return setAttributes({ authorImgBorderRadius: value });
@@ -66302,65 +66302,6 @@ var UAGBBlockQuote = function (_Component) {
 						},
 						allowReset: true
 					})
-				),
-				enableTweet && iconSkin == 'link' && wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(
-						"p",
-						{ className: "uagb-setting-label" },
-						__("Tweet Color"),
-						wp.element.createElement(
-							"span",
-							{ className: "components-base-control__label" },
-							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetLinkColor } })
-						)
-					),
-					wp.element.createElement(ColorPalette, {
-						value: tweetLinkColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ tweetLinkColor: colorValue });
-						},
-						allowReset: true
-					})
-				),
-				enableTweet && iconSkin !== 'link' && wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(
-						"p",
-						{ className: "uagb-setting-label" },
-						__("Tweet Button Color"),
-						wp.element.createElement(
-							"span",
-							{ className: "components-base-control__label" },
-							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnColor } })
-						)
-					),
-					wp.element.createElement(ColorPalette, {
-						value: tweetBtnColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ tweetBtnColor: colorValue });
-						},
-						allowReset: true
-					}),
-					wp.element.createElement(
-						"p",
-						{ className: "uagb-setting-label" },
-						__("Tweet Button Background Color"),
-						wp.element.createElement(
-							"span",
-							{ className: "components-base-control__label" },
-							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnBgColor } })
-						)
-					),
-					wp.element.createElement(ColorPalette, {
-						value: tweetBtnBgColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ tweetBtnBgColor: colorValue });
-						},
-						allowReset: true
-					})
 				)
 			);
 
@@ -66425,8 +66366,142 @@ var UAGBBlockQuote = function (_Component) {
 						},
 						allowReset: true
 					})
+				)
+			);
+
+			var Typography = wp.element.createElement(
+				Fragment,
+				null,
+				wp.element.createElement(
+					PanelBody,
+					{ title: __("Content"), initialOpen: false },
+					wp.element.createElement(RangeControl, {
+						label: __("Quote Font Size"),
+						value: descFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ descFontSize: value });
+						},
+						min: 0,
+						max: 100,
+						beforeIcon: "editor-textcolor",
+						allowReset: true,
+						initialPosition: 30
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Author Font Size"),
+						value: authorFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ authorFontSize: value });
+						},
+						min: 0,
+						max: 100,
+						beforeIcon: "editor-textcolor",
+						allowReset: true,
+						initialPosition: 16
+					}),
+					imageControls
 				),
-				enableTweet && iconSkin == 'link' && wp.element.createElement(
+				wp.element.createElement(
+					PanelBody,
+					{ title: __("Color Settings"), initialOpen: false },
+					wp.element.createElement(
+						TabPanel,
+						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+							activeClass: "active-tab",
+							tabs: [{
+								name: "normal",
+								title: __("Normal"),
+								className: "uagb-normal-tab"
+							}, {
+								name: "hover",
+								title: __("Hover"),
+								className: "uagb-hover-tab"
+							}] },
+						function (tabName) {
+							var tabout = void 0;
+							if ("hover" === tabName.name) {
+								tabout = hoverSettings;
+							} else {
+								tabout = colorSettings;
+							}
+							return wp.element.createElement(
+								"div",
+								null,
+								tabout
+							);
+						}
+					)
+				)
+			);
+
+			var tweet_normal = wp.element.createElement(
+				Fragment,
+				null,
+				iconSkin == 'link' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Tweet Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetLinkColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: tweetLinkColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ tweetLinkColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
+				iconSkin !== 'link' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Tweet Button Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: tweetBtnColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ tweetBtnColor: colorValue });
+						},
+						allowReset: true
+					}),
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Tweet Button Background Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: tweetBtnBgColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: tweetBtnBgColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ tweetBtnBgColor: colorValue });
+						},
+						allowReset: true
+					})
+				)
+			);
+
+			var tweet_hover = wp.element.createElement(
+				Fragment,
+				null,
+				iconSkin == 'link' && wp.element.createElement(
 					Fragment,
 					null,
 					wp.element.createElement(
@@ -66447,7 +66522,7 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true
 					})
 				),
-				enableTweet && iconSkin !== 'link' && wp.element.createElement(
+				iconSkin !== 'link' && wp.element.createElement(
 					Fragment,
 					null,
 					wp.element.createElement(
@@ -66484,87 +66559,6 @@ var UAGBBlockQuote = function (_Component) {
 						},
 						allowReset: true
 					})
-				)
-			);
-
-			var Typography = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Content"), initialOpen: false },
-					wp.element.createElement(RangeControl, {
-						label: __("Quote Font Size"),
-						value: descFontSize,
-						onChange: function onChange(value) {
-							return setAttributes({ descFontSize: value });
-						},
-						min: 0,
-						max: 100,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: 30
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Author Font Size"),
-						value: authorFontSize,
-						onChange: function onChange(value) {
-							return setAttributes({ authorFontSize: value });
-						},
-						min: 0,
-						max: 100,
-						beforeIcon: "editor-textcolor",
-						allowReset: true,
-						initialPosition: 16
-					}),
-					imageControls,
-					enableTweet && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Button Font Size"),
-							value: tweetBtnFontSize,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetBtnFontSize: value });
-							},
-							min: 0,
-							max: 100,
-							beforeIcon: "editor-textcolor",
-							allowReset: true,
-							initialPosition: 16
-						})
-					)
-				),
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Color Settings"), initialOpen: false },
-					wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "hover",
-								title: __("Hover"),
-								className: "uagb-hover-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("hover" === tabName.name) {
-								tabout = hoverSettings;
-							} else {
-								tabout = colorSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
-						}
-					)
 				)
 			);
 
@@ -66702,6 +66696,18 @@ var UAGBBlockQuote = function (_Component) {
 						onChange: function onChange(value) {
 							return setAttributes({ iconLabel: value });
 						}
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Button Font Size"),
+						value: tweetBtnFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ tweetBtnFontSize: value });
+						},
+						min: 0,
+						max: 100,
+						beforeIcon: "editor-textcolor",
+						allowReset: true,
+						initialPosition: 16
 					})
 				),
 				enableTweet && wp.element.createElement(
@@ -66757,20 +66763,43 @@ var UAGBBlockQuote = function (_Component) {
 						initialPosition: 5
 					})
 				),
-				enableTweet && iconView == 'icon_text' && wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(RangeControl, {
-						label: __("Space between Tweet Icon and Text"),
-						value: tweetIconSpacing,
-						onChange: function onChange(value) {
-							return setAttributes({ tweetIconSpacing: value });
-						},
-						min: 0,
-						max: 20,
-						allowReset: true,
-						initialPosition: 5
-					})
+				enableTweet && iconView == 'icon_text' && wp.element.createElement(RangeControl, {
+					label: __("Space between Tweet Icon and Text"),
+					value: tweetIconSpacing,
+					onChange: function onChange(value) {
+						return setAttributes({ tweetIconSpacing: value });
+					},
+					min: 0,
+					max: 20,
+					allowReset: true,
+					initialPosition: 5
+				}),
+				enableTweet && wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-hover-tab"
+						}] },
+					function (tabName) {
+						var tweet_tab_output = void 0;
+						if ("hover" === tabName.name) {
+							tweet_tab_output = tweet_hover;
+						} else {
+							tweet_tab_output = tweet_normal;
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tweet_tab_output
+						);
+					}
 				)
 			);
 
