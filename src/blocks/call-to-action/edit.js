@@ -44,7 +44,6 @@ class UAGBCallToAction extends Component {
 		this.props.setAttributes( { ctaIcon: value } )
 	}
 
-
 	/**
 	 * Function Name: toggleTarget.
 	 */
@@ -608,7 +607,6 @@ class UAGBCallToAction extends Component {
 
 		return (
 			<Fragment>
-
 				<BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ textAlign }
