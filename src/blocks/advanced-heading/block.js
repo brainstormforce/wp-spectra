@@ -244,19 +244,16 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-						{ seperatorStyle !== "none" &&
-							<Fragment>
-								<RangeControl
-									label={ __( "Separator Bottom Spacing" ) }
-									value={ separatorSpace }
-									onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-									min={ 0 }
-									max={ 50 }
-									beforeIcon=""
-									allowReset
-									initialPosition={0}
-								/>
-							</Fragment>
+						{ seperatorStyle !== "none" && <RangeControl
+								label={ __( "Separator Bottom Spacing" ) }
+								value={ separatorSpace }
+								onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+								initialPosition={0}
+							/>
 						}
 					</PanelBody>
 				</InspectorControls>
