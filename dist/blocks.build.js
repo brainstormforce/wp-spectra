@@ -66712,7 +66712,8 @@ var UAGBBlockQuote = function (_Component) {
 						value: iconShareVia,
 						onChange: function onChange(value) {
 							return setAttributes({ iconShareVia: value });
-						}
+						},
+						help: __("Note: @username accounts to follow after the author has successfully posted a Tweet")
 					}),
 					wp.element.createElement(SelectControl, {
 						label: __("Target URL"),

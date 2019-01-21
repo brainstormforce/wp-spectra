@@ -635,6 +635,7 @@ class UAGBBlockQuote extends Component {
 						label= { __( "Share Via" ) }
 						value= { iconShareVia }
 						onChange={ value => setAttributes( { iconShareVia: value } ) }
+						help={ __( "Note: @username accounts to follow after the author has successfully posted a Tweet" ) }
 					/>		
 					<SelectControl
 						label={ __( "Target URL" ) }
