@@ -266,8 +266,7 @@ class UAGBRestaurantMenu extends Component {
 				</PanelColorSettings>
 			</Fragment>
 		)
-
-		const separatorSettings =(			
+		const separatorSettings =(
 			<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
 				<SelectControl
 					label={ __( "Seperator Style" ) }
@@ -288,7 +287,7 @@ class UAGBRestaurantMenu extends Component {
 				{ "none" != seperatorStyle &&
 					<Fragment>
 						<RangeControl
-							label={ __( "Seperator Width" ) }
+							label={ __( "Seperator Width (%)" ) }
 							value={ seperatorWidth }
 							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 							min={ 0 }
@@ -302,16 +301,18 @@ class UAGBRestaurantMenu extends Component {
 							min={ 0 }
 							max={ 20 }
 							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-						<ColorPalette
-							value={ seperatorColor }
-							onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-							allowReset
-						/>
+						/>	
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							<ColorPalette
+								value={ seperatorColor }
+								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>	
 					</Fragment>
 				}
-			</PanelBody>			
+			</PanelBody>
 		)
 
 		// Image sizes.
