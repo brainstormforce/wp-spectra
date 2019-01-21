@@ -279,200 +279,241 @@ class UAGBinfoBox extends Component {
 		)
 
 		// Separator settings.
-		const seperatorSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Separator" ) }
-					initialOpen={ false } >
+		const seperatorSettings = (			
+			<PanelBody
+				title={ __( "Separator" ) }
+				initialOpen={ false } >
 
-					<SelectControl
-						label={ __( "Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
+				<SelectControl
+					label={ __( "Style" ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+					] }
+				/>
+				{ "none" !== seperatorStyle &&
+				( <Fragment>
+					<RangeControl
+						label={ __( "Thickness" ) }
+						value={ seperatorThickness }
+						onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+						min={ 0 }
+						max={ 10 }
+						beforeIcon=""
+						allowReset
 					/>
-					{ "none" !== seperatorStyle &&
-					( <Fragment>
+					<RangeControl
+						label={ __( "Width (%)" ) }
+						value={ seperatorWidth }
+						onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+						min={ 0 }
+						max={ 100 }
+						beforeIcon=""
+						allowReset
+					/>
+				    <p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ seperatorColor }
+				        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+				        allowReset
+				    />
+				</Fragment>
+				)
+				}
+
+			</PanelBody>			
+		)
+
+		// CTA settings.
+		const ctaSettings = (			
+			<PanelBody	title={ __( "Call To Action" ) } initialOpen={ false }	>
+				<SelectControl
+					label={ __( "Type" ) }
+					value={ ctaType }
+					onChange={ ( value ) => setAttributes( { ctaType: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "text", label: __( "Text" ) },
+						{ value: "button", label: __( "Button" ) },
+						{ value: "all", label: __( "Complete Box" ) },
+					] }
+				/>
+				{ ( ctaType === "text" || ctaType === "button" ) && <Fragment>
+					<TextControl
+						label= { __( "Text" ) }
+						value= { ctaText }
+						onChange={ value => setAttributes( { ctaText: value } ) }
+					/>
+					<RangeControl
+						label={ __( "Text Font Size" ) }
+						value={ ctaFontSize }
+						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+						min={ 0 }
+						max={ 50 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					</Fragment>
+				}
+				{ ( ctaType !== "none" ) &&
+					<Fragment>
+						<TextControl
+							label= { __( "Link" ) }
+							value= { ctaLink }
+							onChange={ value => setAttributes( { ctaLink: value } ) }
+						/>
+						<ToggleControl
+							label={ __( "Open in new Window" ) }
+							checked={ ctaTarget }
+							onChange={ this.toggleTarget }
+						/>
+						<hr className="uagb-editor__separator" />
+					</Fragment>
+				}
+
+				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
+					<Fragment>
+						<h2>{ __( "Button Icon" ) }</h2>
+						<FontIconPicker {...cta_icon_props} />
+						{ ctaIcon != '' && <Fragment>
+								<SelectControl
+									label={ __( "Icon Position" ) }
+									value={ ctaIconPosition }
+									onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
+									options={ [
+										{ value: "before", label: __( "Before Text" ) },
+										{ value: "after", label: __( "After Text" ) },
+									] }
+								/>
+								<RangeControl
+									label={ __( "Icon Spacing" ) }
+									value={ ctaIconSpace }
+									onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
+									min={ 0 }
+									max={ 50 }
+									beforeIcon=""
+									allowReset
+								/>
+							</Fragment>
+						}
+						<hr className="uagb-editor__separator" />
+					</Fragment>
+				}
+
+				{ ( ctaType == "button" ) && (
+					<Fragment>
+						<h2>{ __( "Button Padding" ) }</h2>
 						<RangeControl
-							label={ __( "Thickness" ) }
-							value={ seperatorThickness }
-							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+							label={ __( "Vertical" ) }
+							value={ ctaBtnVertPadding }
+							onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
 							min={ 0 }
-							max={ 10 }
+							max={ 50 }
 							beforeIcon=""
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Width (%)" ) }
-							value={ seperatorWidth }
-							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+							label={ __( "Horizontal" ) }
+							value={ ctaBtnHrPadding }
+							onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Button Border" ) }</h2>
+						<SelectControl
+							label={ __( "Style" ) }
+							value={ ctaBorderStyle }
+							onChange={ ( value ) => setAttributes( { ctaBorderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+							] }
+						/>
+
+						{ ( ctaBorderStyle !== "none" ) && (
+							<Fragment>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ ctaBorderWidth }
+									onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
+									min={ 0 }
+									max={ 10 }
+									beforeIcon=""
+									allowReset
+								/>
+							</Fragment>
+						)
+						}
+						<RangeControl
+							label={ __( "Rounded Corner" ) }
+							value={ ctaBorderRadius }
+							onChange={ ( value ) => setAttributes( { ctaBorderRadius: value } ) }
 							min={ 0 }
 							max={ 100 }
 							beforeIcon=""
 							allowReset
 						/>
-					    <p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-					    <ColorPalette
-					        value={ seperatorColor }
-					        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-					        allowReset
-					    />
+						<hr className="uagb-editor__separator" />
 					</Fragment>
-					)
-					}
+				)
+				}
 
-				</PanelBody>
-			</Fragment>
-		)
-
-		// CTA settings.
-		const ctaSettings = (			
-				<PanelBody	title={ __( "Call To Action" ) } initialOpen={ false }	>
-					<SelectControl
-						label={ __( "Type" ) }
-						value={ ctaType }
-						onChange={ ( value ) => setAttributes( { ctaType: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "text", label: __( "Text" ) },
-							{ value: "button", label: __( "Button" ) },
-							{ value: "all", label: __( "Complete Box" ) },
-						] }
-					/>
-					{ ( ctaType === "text" || ctaType === "button" ) && <Fragment>
-						<TextControl
-							label= { __( "Text" ) }
-							value= { ctaText }
-							onChange={ value => setAttributes( { ctaText: value } ) }
-						/>
-						<RangeControl
-							label={ __( "Text Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						</Fragment>
-					}
-					{ ( ctaType !== "none" ) &&
-						<Fragment>
-							<TextControl
-								label= { __( "Link" ) }
-								value= { ctaLink }
-								onChange={ value => setAttributes( { ctaLink: value } ) }
-							/>
-							<ToggleControl
-								label={ __( "Open in new Window" ) }
-								checked={ ctaTarget }
-								onChange={ this.toggleTarget }
-							/>
-							<hr className="uagb-editor__separator" />
-						</Fragment>
-					}
-
-					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
-						<Fragment>
-							<h2>{ __( "Button Icon" ) }</h2>
-							<FontIconPicker {...cta_icon_props} />
-							{ ctaIcon != '' && <Fragment>
-									<SelectControl
-										label={ __( "Icon Position" ) }
-										value={ ctaIconPosition }
-										onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
-										options={ [
-											{ value: "before", label: __( "Before Text" ) },
-											{ value: "after", label: __( "After Text" ) },
-										] }
-									/>
-									<RangeControl
-										label={ __( "Icon Spacing" ) }
-										value={ ctaIconSpace }
-										onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
-										min={ 0 }
-										max={ 50 }
-										beforeIcon=""
-										allowReset
-									/>
-								</Fragment>
+				{ ( ctaType === "text") &&
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
+							{
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
+							},
+							{
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-focus-tab",
+							},
+						] }>
+						{
+							( tabName ) => {
+								let tabout_1
+								if( "normal" === tabName.name ) {
+									tabout_1 = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
+										<ColorPalette
+											value={ ctaLinkColor }
+											onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+											allowReset
+										/>
+									</Fragment>
+								}else {
+									tabout_1 = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+										<ColorPalette
+											value={ ctaLinkHoverColor }
+											onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+								return <div>{ tabout_1 }</div>
 							}
-							<hr className="uagb-editor__separator" />
-						</Fragment>
-					}
+						}
+					</TabPanel>
+				}
 
-					{ ( ctaType == "button" ) && (
-						<Fragment>
-							<h2>{ __( "Button Padding" ) }</h2>
-							<RangeControl
-								label={ __( "Vertical" ) }
-								value={ ctaBtnVertPadding }
-								onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Horizontal" ) }
-								value={ ctaBtnHrPadding }
-								onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-							<hr className="uagb-editor__separator" />
-							<h2>{ __( "Button Border" ) }</h2>
-							<SelectControl
-								label={ __( "Style" ) }
-								value={ ctaBorderStyle }
-								onChange={ ( value ) => setAttributes( { ctaBorderStyle: value } ) }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "solid", label: __( "Solid" ) },
-									{ value: "double", label: __( "Double" ) },
-									{ value: "dashed", label: __( "Dashed" ) },
-									{ value: "dotted", label: __( "Dotted" ) },
-								] }
-							/>
-
-							{ ( ctaBorderStyle !== "none" ) && (
-								<Fragment>
-									<RangeControl
-										label={ __( "Width" ) }
-										value={ ctaBorderWidth }
-										onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
-										min={ 0 }
-										max={ 10 }
-										beforeIcon=""
-										allowReset
-									/>
-								</Fragment>
-							)
-							}
-							<RangeControl
-								label={ __( "Rounded Corner" ) }
-								value={ ctaBorderRadius }
-								onChange={ ( value ) => setAttributes( { ctaBorderRadius: value } ) }
-								min={ 0 }
-								max={ 100 }
-								beforeIcon=""
-								allowReset
-							/>
-							<hr className="uagb-editor__separator" />
-						</Fragment>
-					)
-					}
-
-					{ ( ctaType === "text") &&
+				{ ( ctaType === "button") &&
 						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 							activeClass="active-tab"
 							tabs={ [
@@ -489,61 +530,18 @@ class UAGBinfoBox extends Component {
 							] }>
 							{
 								( tabName ) => {
-									let tabout_1
+									let tabout
 									if( "normal" === tabName.name ) {
-										tabout_1 = <Fragment>
-											<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
-											<ColorPalette
-												value={ ctaLinkColor }
-												onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-												allowReset
-											/>
-										</Fragment>
+										tabout = ctaNormalSettings
 									}else {
-										tabout_1 = <Fragment>
-											<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
-											<ColorPalette
-												value={ ctaLinkHoverColor }
-												onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
-												allowReset
-											/>
-										</Fragment>
+										tabout = ctaHoverSettings
 									}
-									return <div>{ tabout_1 }</div>
+									return <div>{ tabout }</div>
 								}
 							}
 						</TabPanel>
-					}
-
-					{ ( ctaType === "button") &&
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "normal" === tabName.name ) {
-											tabout = ctaNormalSettings
-										}else {
-											tabout = ctaHoverSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-					}
-				</PanelBody>			
+				}
+			</PanelBody>			
 		)
 
 		const ctaNormalSettings = (
@@ -937,60 +935,54 @@ class UAGBinfoBox extends Component {
 			</Fragment>
 		)
 
-		const output = (
-			<Fragment>
-				<div className = { classnames(
-					"uagb-infobox__content-wrap",
-					...InfoBoxPositionClasses( attributes ),
-				) }>
-					<div className = "uagb-ifb-left-right-wrap">
+		const output = (			
+			<div className = { classnames( "uagb-infobox__content-wrap", ...InfoBoxPositionClasses( attributes ) ) }>
+				<div className = "uagb-ifb-left-right-wrap">
+					{ ( iconimgPosition == "left") &&
+							is_image
+					}
+					<div className = "uagb-ifb-content">
 
-						{ ( iconimgPosition == "left") &&
-								is_image
-						}
-						<div className = "uagb-ifb-content">
+						{  iconimgPosition == "above-title" && is_image }
 
-							{  iconimgPosition == "above-title" && is_image }
+						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+						{ iconimgPosition == "below-title"  && is_image }
 
-							{ iconimgPosition == "below-title"  && is_image }
+						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
-
-							{ ( iconimgPosition === "left-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-left-title-image">
-											{ is_image }
-											{ title_text }
-										</div>
-										{ desc }
-									</Fragment>
-							}
-
-							{ ( iconimgPosition === "right-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-right-title-image">
-											{ title_text }
-											{ is_image }
-										</div>
-										{ desc }
-									</Fragment>
-							}
-
-							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
-									<Fragment>
+						{ ( iconimgPosition === "left-title") &&
+								<Fragment>
+									<div className = "uagb-ifb-left-title-image">
+										{ is_image }
 										{ title_text }
-										{ desc }
-									</Fragment>
-							}
+									</div>
+									{ desc }
+								</Fragment>
+						}
 
-						</div>
+						{ ( iconimgPosition === "right-title") &&
+								<Fragment>
+									<div className = "uagb-ifb-right-title-image">
+										{ title_text }
+										{ is_image }
+									</div>
+									{ desc }
+								</Fragment>
+						}
 
-						{ ( iconimgPosition == "right") && is_image	}
+						{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+								<Fragment>
+									{ title_text }
+									{ desc }
+								</Fragment>
+						}
+
 					</div>
+
+					{ ( iconimgPosition == "right") && is_image	}
 				</div>
-			</Fragment>
+			</div>
 		)
 
 		return (
