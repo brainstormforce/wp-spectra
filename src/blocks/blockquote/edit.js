@@ -642,13 +642,7 @@ class UAGBBlockQuote extends Component {
 					/>	
 					</Fragment>		
 				}					
-				{ enableTweet && <Fragment>
-					<TextControl
-						label= { __( "Share Via" ) }
-						value= { iconShareVia }
-						onChange={ value => setAttributes( { iconShareVia: value } ) }
-						help={ __( "Note: @username accounts to follow after the author has successfully posted a Tweet" ) }
-					/>		
+				{ enableTweet && <Fragment>					
 					<SelectControl
 						label={ __( "Target URL" ) }
 						value={ iconTargetUrl }
@@ -768,6 +762,28 @@ class UAGBBlockQuote extends Component {
 									{ UAGB_Block_Icons.quote_2 }
 								</Button>
 							</Tooltip>
+						</Toolbar>
+						</Fragment>
+					}
+
+					{ enableTweet && 
+						<Fragment>
+							<Toolbar>
+							<label
+								aria-label={ __( 'Twitter Username' ) }
+								className={ `${ className }__via-label` }
+								htmlFor={ `${ className }__via` }
+							>	{ __("@") }
+							</label>
+							<input
+								aria-label={ __( 'Twitter Username' ) }
+								className={ `${ className }__via` }
+								id={ `${ className }__via` }
+								onChange={ ( event ) => setAttributes( { iconShareVia: event.target.value } ) }
+								placeholder={ __( 'Username' ) }
+								type="text"
+								value={ iconShareVia }
+							/>
 						</Toolbar>
 						</Fragment>
 					}

@@ -66713,14 +66713,6 @@ var UAGBBlockQuote = function (_Component) {
 				enableTweet && wp.element.createElement(
 					Fragment,
 					null,
-					wp.element.createElement(TextControl, {
-						label: __("Share Via"),
-						value: iconShareVia,
-						onChange: function onChange(value) {
-							return setAttributes({ iconShareVia: value });
-						},
-						help: __("Note: @username accounts to follow after the author has successfully posted a Tweet")
-					}),
 					wp.element.createElement(SelectControl, {
 						label: __("Target URL"),
 						value: iconTargetUrl,
@@ -66859,6 +66851,35 @@ var UAGBBlockQuote = function (_Component) {
 									__WEBPACK_IMPORTED_MODULE_6__dist_blocks_uagb_controls_block_icons__["a" /* default */].quote_2
 								)
 							)
+						)
+					),
+					enableTweet && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							Toolbar,
+							null,
+							wp.element.createElement(
+								"label",
+								{
+									"aria-label": __('Twitter Username'),
+									className: className + "__via-label",
+									htmlFor: className + "__via"
+								},
+								" ",
+								__("@")
+							),
+							wp.element.createElement("input", {
+								"aria-label": __('Twitter Username'),
+								className: className + "__via",
+								id: className + "__via",
+								onChange: function onChange(event) {
+									return setAttributes({ iconShareVia: event.target.value });
+								},
+								placeholder: __('Username'),
+								type: "text",
+								value: iconShareVia
+							})
 						)
 					)
 				),
