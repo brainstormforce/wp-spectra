@@ -97,6 +97,21 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 = 1.8.0.1 =
 * Fix: Advanced Columns - Editor end width issue fixed.
+* Fix: Advanced Columns - Editor end Draggable pointer overflow issue.
+* New: Advanced Column - Added border option for inner column.
+* Fix: Info Box - Separator width issue.
+* Fix: Testimonial - Border radius should be out of Border condition.
+* Fix: Info Box - Color setting option default open.
+* Improvement: CTA -  Reorder CTA color setting options.
+* Improvement: Info Box - CTA Color Settings into Call To Action Tab.
+* Improvement: Info Box - Deprecated color setting panel.
+* Improvement: Team - Fixed typo error.
+* Improvement: Multi Button - Rename color to text color and text hover color.
+* Improvement: Multi Button - Added index to the color setting.
+* Improvement: Multi Button - Added tabs control for buttons Colors.
+* Improvement: Content Timeline - First tab not open default.
+* Improvement: Changed Block Category name to Ultimate Addons block.
+* Improvement: Changed panel tab design.
 
 = 1.8.0 =
 * New: Advanced Columns

@@ -23,7 +23,11 @@ function styling( props ) {
 		backgroundPosition,
 		backgroundAttachment,
 		backgroundRepeat,
-		backgroundSize
+		backgroundSize,
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor,
 	} = props.attributes
 
 	var position = backgroundPosition.replace( "-", " " )
@@ -37,6 +41,13 @@ function styling( props ) {
 		"margin-bottom": bottomMargin + "px",
 		"margin-left": leftMargin + "px",
 		"margin-right": rightMargin + "px",
+		"border-radius": borderRadius + "px",
+	}
+
+	if ( borderStyle != "none" ) {
+		style["border-style"] = borderStyle
+		style["border-width"] = borderWidth + "px"
+		style["border-color"] =  borderColor
 	}
 
 	if ( "image" === backgroundType ) {
@@ -76,6 +87,7 @@ function styling( props ) {
 	if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
+
 
 	return styling_css
 }

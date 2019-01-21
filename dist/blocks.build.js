@@ -6595,7 +6595,7 @@ function InfoBoxPositionClasses(attributes) {
 /***/ }),
 /* 118 */
 /*!************************************************************!*\
-  !*** ./src/blocks/info-box/components/InfoBoxSeperator.js ***!
+  !*** ./src/blocks/info-box/components/InfoBoxSeparator.js ***!
   \************************************************************/
 /*! exports provided: default */
 /*! exports used: default */
@@ -8525,9 +8525,9 @@ var links = {
 
 /***/ }),
 /* 132 */
-/*!********************************************************!*\
-  !*** ./src/blocks/restaurant-menu/components/Title.js ***!
-  \********************************************************/
+/*!***************************************************!*\
+  !*** ./src/blocks/price-list/components/Title.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8614,9 +8614,9 @@ var Title = function (_React$Component) {
 
 /***/ }),
 /* 133 */
-/*!********************************************************!*\
-  !*** ./src/blocks/restaurant-menu/components/Price.js ***!
-  \********************************************************/
+/*!***************************************************!*\
+  !*** ./src/blocks/price-list/components/Price.js ***!
+  \***************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8705,9 +8705,9 @@ var Price = function (_React$Component) {
 
 /***/ }),
 /* 134 */
-/*!**************************************************************!*\
-  !*** ./src/blocks/restaurant-menu/components/Description.js ***!
-  \**************************************************************/
+/*!*********************************************************!*\
+  !*** ./src/blocks/price-list/components/Description.js ***!
+  \*********************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8794,9 +8794,9 @@ var Description = function (_React$Component) {
 
 /***/ }),
 /* 135 */
-/*!***********************************************!*\
-  !*** ./src/blocks/restaurant-menu/classes.js ***!
-  \***********************************************/
+/*!******************************************!*\
+  !*** ./src/blocks/price-list/classes.js ***!
+  \******************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -8850,9 +8850,9 @@ function PositionClasses(attributes) {
 
 /***/ }),
 /* 136 */
-/*!****************************************************************!*\
-  !*** ./src/blocks/restaurant-menu/components/RestMenuImage.js ***!
-  \****************************************************************/
+/*!***********************************************************!*\
+  !*** ./src/blocks/price-list/components/RestMenuImage.js ***!
+  \***********************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -9726,7 +9726,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__blocks_social_share_block_js__ = __webpack_require__(/*! ./blocks/social-share/block.js */ 361);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__blocks_google_map_block_js__ = __webpack_require__(/*! ./blocks/google-map/block.js */ 367);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__blocks_icon_list_block_js__ = __webpack_require__(/*! ./blocks/icon-list/block.js */ 369);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_restaurant_menu_block_js__ = __webpack_require__(/*! ./blocks/restaurant-menu/block.js */ 375);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__blocks_price_list_block_js__ = __webpack_require__(/*! ./blocks/price-list/block.js */ 375);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__blocks_timeline_block_js__ = __webpack_require__(/*! ./blocks/timeline/block.js */ 381);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__blocks_call_to_action_block_js__ = __webpack_require__(/*! ./blocks/call-to-action/block.js */ 395);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__blocks_column_block_js__ = __webpack_require__(/*! ./blocks/column/block.js */ 400);
@@ -9809,7 +9809,6 @@ var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
-    PanelColorSettings = _wp$editor.PanelColorSettings,
     ColorPalette = _wp$editor.ColorPalette;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -9907,8 +9906,7 @@ var UAGBAdvancedHeading = function (_Component) {
 			    seperatorStyle = _props2$attributes.seperatorStyle,
 			    separatorHeight = _props2$attributes.separatorHeight,
 			    headSpace = _props2$attributes.headSpace,
-			    separatorSpace = _props2$attributes.separatorSpace,
-			    subHeadSpace = _props2$attributes.subHeadSpace;
+			    separatorSpace = _props2$attributes.separatorSpace;
 
 
 			var element = document.getElementById("uagb-adv-heading-style-" + this.props.clientId);
@@ -9935,11 +9933,14 @@ var UAGBAdvancedHeading = function (_Component) {
 					null,
 					wp.element.createElement(
 						PanelBody,
-						{
-							title: __("Typography")
-						},
+						{ title: __("Advanced Heading") },
+						wp.element.createElement(
+							"h2",
+							null,
+							__('Heading')
+						),
 						wp.element.createElement(SelectControl, {
-							label: __("Tag"),
+							label: __("Heading Tag"),
 							value: headingTag,
 							onChange: function onChange(value) {
 								return setAttributes({ headingTag: value });
@@ -9958,6 +9959,29 @@ var UAGBAdvancedHeading = function (_Component) {
 							allowReset: true,
 							initialPosition: 30
 						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Heading Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: headingColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: headingColor,
+							onChange: function onChange(value) {
+								return setAttributes({ headingColor: value });
+							},
+							allowReset: true
+						}),
+						wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+						wp.element.createElement(
+							"h2",
+							null,
+							__('Sub-Heading')
+						),
 						wp.element.createElement(RangeControl, {
 							label: __("Sub-Heading Font Size"),
 							value: subHeadFontSize,
@@ -9969,6 +9993,23 @@ var UAGBAdvancedHeading = function (_Component) {
 							beforeIcon: "editor-textcolor",
 							allowReset: true,
 							initialPosition: 10
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Sub Heading Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: subHeadingColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: subHeadingColor,
+							onChange: function onChange(value) {
+								return setAttributes({ subHeadingColor: value });
+							},
+							allowReset: true
 						})
 					),
 					wp.element.createElement(
@@ -9989,7 +10030,7 @@ var UAGBAdvancedHeading = function (_Component) {
 							Fragment,
 							null,
 							wp.element.createElement(RangeControl, {
-								label: __("Thickness"),
+								label: __("Thickness (px)"),
 								value: separatorHeight,
 								onChange: function onChange(value) {
 									return setAttributes({ separatorHeight: value });
@@ -10001,7 +10042,7 @@ var UAGBAdvancedHeading = function (_Component) {
 								initialPosition: 3
 							}),
 							wp.element.createElement(RangeControl, {
-								label: __("Width"),
+								label: __("Width (%)"),
 								value: separatorWidth,
 								onChange: function onChange(value) {
 									return setAttributes({ separatorWidth: value });
@@ -10011,48 +10052,28 @@ var UAGBAdvancedHeading = function (_Component) {
 								beforeIcon: "",
 								allowReset: true,
 								initialPosition: 20
-							})
-						)
-					),
-					wp.element.createElement(
-						PanelColorSettings,
-						{
-							title: __("Color Settings"),
-							initialOpen: false,
-							colorSettings: [{
-								value: headingColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ headingColor: colorValue });
-								},
-								label: __("Heading Color")
-							}, {
-								value: subHeadingColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ subHeadingColor: colorValue });
-								},
-								label: __("Sub-Heading Color")
-							}]
-						},
-						seperatorStyle !== "none" && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Seperator Color"),
+							}),
+							seperatorStyle !== "none" && wp.element.createElement(
+								Fragment,
+								null,
 								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: separatorColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: separatorColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ separatorColor: colorValue });
-								},
-								allowReset: true
-							})
+									"p",
+									{ className: "uagb-setting-label" },
+									__("Seperator Color"),
+									wp.element.createElement(
+										"span",
+										{ className: "components-base-control__label" },
+										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: separatorColor } })
+									)
+								),
+								wp.element.createElement(ColorPalette, {
+									value: separatorColor,
+									onChange: function onChange(colorValue) {
+										return setAttributes({ separatorColor: colorValue });
+									},
+									allowReset: true
+								})
+							)
 						)
 					),
 					wp.element.createElement(
@@ -10062,7 +10083,7 @@ var UAGBAdvancedHeading = function (_Component) {
 							initialOpen: false
 						},
 						wp.element.createElement(RangeControl, {
-							label: __("Heading Spacing"),
+							label: __("Heading Bottom Spacing"),
 							value: headSpace,
 							onChange: function onChange(value) {
 								return setAttributes({ headSpace: value });
@@ -10073,27 +10094,11 @@ var UAGBAdvancedHeading = function (_Component) {
 							allowReset: true,
 							initialPosition: 0
 						}),
-						seperatorStyle !== "none" && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(RangeControl, {
-								label: __("Separator Spacing"),
-								value: separatorSpace,
-								onChange: function onChange(value) {
-									return setAttributes({ separatorSpace: value });
-								},
-								min: 0,
-								max: 50,
-								beforeIcon: "",
-								allowReset: true,
-								initialPosition: 0
-							})
-						),
-						wp.element.createElement(RangeControl, {
-							label: __("Sub-Heading Spacing"),
-							value: subHeadSpace,
+						seperatorStyle !== "none" && wp.element.createElement(RangeControl, {
+							label: __("Separator Bottom Spacing"),
+							value: separatorSpace,
 							onChange: function onChange(value) {
-								return setAttributes({ subHeadSpace: value });
+								return setAttributes({ separatorSpace: value });
 							},
 							min: 0,
 							max: 50,
@@ -10230,9 +10235,6 @@ registerBlockType("uagb/advanced-heading", {
 		separatorSpace: {
 			type: "number",
 			default: 15
-		},
-		subHeadSpace: {
-			type: "number"
 		}
 	},
 	transforms: {
@@ -10349,8 +10351,7 @@ function styling(props) {
 	    separatorColor = _props$attributes.separatorColor,
 	    separatorSpace = _props$attributes.separatorSpace,
 	    subHeadFontSize = _props$attributes.subHeadFontSize,
-	    subHeadingColor = _props$attributes.subHeadingColor,
-	    subHeadSpace = _props$attributes.subHeadSpace;
+	    subHeadingColor = _props$attributes.subHeadingColor;
 
 
 	var selectors = {
@@ -10360,8 +10361,7 @@ function styling(props) {
 		" .editor-rich-text .uagb-desc-text": {
 			"text-align": headingAlign,
 			"font-size": subHeadFontSize + "px",
-			"color": subHeadingColor,
-			"margin-bottom": subHeadSpace + "px"
+			"color": subHeadingColor
 		}
 	};
 
@@ -48110,15 +48110,15 @@ var UAGBSectionEdit = function (_Component) {
 							wp.element.createElement(PanelColorSettings, {
 								title: __("Color Settings"),
 								colorSettings: [{
-									value: gradientColor1,
-									onChange: function onChange(value) {
-										return setAttributes({ gradientColor1: value });
-									},
-									label: __("Color 1")
-								}, {
 									value: gradientColor2,
 									onChange: function onChange(value) {
 										return setAttributes({ gradientColor2: value });
+									},
+									label: __("Color 1")
+								}, {
+									value: gradientColor1,
+									onChange: function onChange(value) {
+										return setAttributes({ gradientColor1: value });
 									},
 									label: __("Color 2")
 								}]
@@ -48700,11 +48700,13 @@ var _wp$editor = wp.editor,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
     PanelColorSettings = _wp$editor.PanelColorSettings,
-    URLInput = _wp$editor.URLInput;
+    URLInput = _wp$editor.URLInput,
+    ColorPalette = _wp$editor.ColorPalette;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
-    RangeControl = _wp$components.RangeControl;
+    RangeControl = _wp$components.RangeControl,
+    TabPanel = _wp$components.TabPanel;
 
 var UAGBMultiButtonEdit = function (_Component) {
 	_inherits(UAGBMultiButtonEdit, _Component);
@@ -48837,8 +48839,14 @@ var UAGBMultiButtonEdit = function (_Component) {
 						max: 100,
 						initialPosition: 16
 					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__('Button Padding (px)')
+					),
 					wp.element.createElement(RangeControl, {
-						label: __("Top and Bottom Padding"),
+						label: __("Vertical"),
 						value: buttons[index].vPadding,
 						onChange: function onChange(value) {
 							_this2.saveButton({ vPadding: value }, index);
@@ -48847,7 +48855,7 @@ var UAGBMultiButtonEdit = function (_Component) {
 						max: 100
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Left and Right Padding"),
+						label: __("Horizontal"),
 						value: buttons[index].hPadding,
 						onChange: function onChange(value) {
 							_this2.saveButton({ hPadding: value }, index);
@@ -48855,8 +48863,22 @@ var UAGBMultiButtonEdit = function (_Component) {
 						min: 0,
 						max: 100
 					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Border Thickness"),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__('Button Border')
+					),
+					wp.element.createElement(SelectControl, {
+						label: __("Style"),
+						value: buttons[index].borderStyle,
+						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }],
+						onChange: function onChange(value) {
+							_this2.saveButton({ borderStyle: value }, index);
+						}
+					}),
+					buttons[index].borderStyle != 'none' && wp.element.createElement(RangeControl, {
+						label: __("Thickness"),
 						value: buttons[index].borderWidth,
 						onChange: function onChange(value) {
 							_this2.saveButton({ borderWidth: value }, index);
@@ -48864,16 +48886,8 @@ var UAGBMultiButtonEdit = function (_Component) {
 						min: 0,
 						max: 20
 					}),
-					wp.element.createElement(SelectControl, {
-						label: __("Border Style"),
-						value: buttons[index].borderStyle,
-						options: [{ value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }],
-						onChange: function onChange(value) {
-							_this2.saveButton({ borderStyle: value }, index);
-						}
-					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Border Radius"),
+						label: __("Rounded Corners"),
 						value: buttons[index].borderRadius,
 						onChange: function onChange(value) {
 							_this2.saveButton({ borderRadius: value }, index);
@@ -48881,46 +48895,147 @@ var UAGBMultiButtonEdit = function (_Component) {
 						min: 0,
 						max: 50
 					}),
-					wp.element.createElement(PanelColorSettings, {
-						title: __("Color Settings"),
-						colorSettings: [{
-							value: buttons[index].color,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ color: value }, index);
-							},
-							label: __("Color")
-						}, {
-							value: buttons[index].background,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ background: value }, index);
-							},
-							label: __("Background Color")
-						}, {
-							value: buttons[index].borderColor,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ borderColor: value }, index);
-							},
-							label: __("Border Color")
-						}, {
-							value: buttons[index].hColor,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ hColor: value }, index);
-							},
-							label: __("Hover Color")
-						}, {
-							value: buttons[index].hBackground,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ hBackground: value }, index);
-							},
-							label: __("Background Hover Color")
-						}, {
-							value: buttons[index].borderHColor,
-							onChange: function onChange(value) {
-								return _this2.saveButton({ borderHColor: value }, index);
-							},
-							label: __("Border Hover Color")
-						}]
-					})
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Button #") + " " + (index + 1) + " " + __(" Color Settings")
+					),
+					wp.element.createElement(
+						TabPanel,
+						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+							activeClass: "active-tab",
+							tabs: [{
+								name: "normal",
+								title: __("Normal"),
+								className: "uagb-normal-tab"
+							}, {
+								name: "hover",
+								title: __("Hover"),
+								className: "uagb-hover-tab"
+							}] },
+						function (tabName) {
+							var btn_color_tab = void 0;
+							if ("normal" === tabName.name) {
+								btn_color_tab = wp.element.createElement(
+									Fragment,
+									null,
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Text Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].color } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].color,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ color: value }, index);
+										},
+										allowReset: true
+									}),
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Background Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].background } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].background,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ background: value }, index);
+										},
+										allowReset: true
+									}),
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Border Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].borderColor } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].borderColor,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ borderColor: value }, index);
+										},
+										allowReset: true
+									})
+								);
+							} else {
+								btn_color_tab = wp.element.createElement(
+									Fragment,
+									null,
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Text Hover Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].hColor } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].hColor,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ hColor: value }, index);
+										},
+										allowReset: true
+									}),
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Background Hover Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].hBackground } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].hBackground,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ hBackground: value }, index);
+										},
+										allowReset: true
+									}),
+									wp.element.createElement(
+										"p",
+										{ className: "uagb-setting-label" },
+										__("Border Hover Color"),
+										wp.element.createElement(
+											"span",
+											{ className: "components-base-control__label" },
+											wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: buttons[index].borderHColor } })
+										)
+									),
+									wp.element.createElement(ColorPalette, {
+										value: buttons[index].borderHColor,
+										onChange: function onChange(value) {
+											return _this2.saveButton({ borderHColor: value }, index);
+										},
+										allowReset: true
+									})
+								);
+							}
+							return wp.element.createElement(
+								"div",
+								null,
+								btn_color_tab
+							);
+						}
+					)
 				);
 			};
 
@@ -49004,7 +49119,7 @@ var UAGBMultiButtonEdit = function (_Component) {
 							initialOpen: false
 						},
 						wp.element.createElement(RangeControl, {
-							label: __("Gap between Buttons"),
+							label: __("Gap Between Buttons"),
 							value: gap,
 							onChange: function onChange(value) {
 								return setAttributes({ gap: value });
@@ -49018,13 +49133,9 @@ var UAGBMultiButtonEdit = function (_Component) {
 							options: [{ value: "none", label: __("None") }, { value: "desktop", label: __("Desktop") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
 							onChange: function onChange(value) {
 								return setAttributes({ stack: value });
-							}
-						}),
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-note" },
-							__("Note: Choose on what breakpoint the buttons will stack.")
-						)
+							},
+							help: __("Note: Choose on what breakpoint the buttons will stack.")
+						})
 					)
 				),
 				wp.element.createElement(
@@ -49291,7 +49402,7 @@ function styling(props) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_InfoBoxDesc__ = __webpack_require__(/*! ./components/InfoBoxDesc */ 115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_InfoBoxIcon__ = __webpack_require__(/*! ./components/InfoBoxIcon */ 116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__classes__ = __webpack_require__(/*! ./classes */ 117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeperator__ = __webpack_require__(/*! ./components/InfoBoxSeperator */ 118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeparator__ = __webpack_require__(/*! ./components/InfoBoxSeparator */ 118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_InfoBoxCta__ = __webpack_require__(/*! ./components/InfoBoxCta */ 119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__inline_styles__ = __webpack_require__(/*! ./inline-styles */ 120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_InfoBoxIconImage__ = __webpack_require__(/*! ./components/InfoBoxIconImage */ 121);
@@ -49397,7 +49508,7 @@ registerBlockType("uagb/info-box", {
 		var desc = wp.element.createElement(
 			Fragment,
 			null,
-			"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeperator__["a" /* default */], { attributes: props.attributes }),
+			"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeparator__["a" /* default */], { attributes: props.attributes }),
 			wp.element.createElement(
 				"div",
 				{ className: "uagb-ifb-text-wrap" },
@@ -49530,7 +49641,7 @@ registerBlockType("uagb/info-box", {
 			var desc = wp.element.createElement(
 				Fragment,
 				null,
-				"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeperator__["a" /* default */], { attributes: props.attributes }),
+				"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_7__components_InfoBoxSeparator__["a" /* default */], { attributes: props.attributes }),
 				wp.element.createElement(
 					"div",
 					{ className: "uagb-ifb-text-wrap" },
@@ -49651,7 +49762,7 @@ registerBlockType("uagb/info-box", {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_InfoBoxDesc__ = __webpack_require__(/*! ./components/InfoBoxDesc */ 115);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_InfoBoxIcon__ = __webpack_require__(/*! ./components/InfoBoxIcon */ 116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__classes__ = __webpack_require__(/*! ./classes */ 117);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_InfoBoxSeperator__ = __webpack_require__(/*! ./components/InfoBoxSeperator */ 118);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_InfoBoxSeparator__ = __webpack_require__(/*! ./components/InfoBoxSeparator */ 118);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_InfoBoxCta__ = __webpack_require__(/*! ./components/InfoBoxCta */ 119);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__inline_styles__ = __webpack_require__(/*! ./inline-styles */ 120);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_InfoBoxIconImage__ = __webpack_require__(/*! ./components/InfoBoxIconImage */ 121);
@@ -49688,7 +49799,6 @@ var _wp$editor = wp.editor,
     ColorPalette = _wp$editor.ColorPalette,
     InspectorControls = _wp$editor.InspectorControls,
     RichText = _wp$editor.RichText,
-    PanelColorSettings = _wp$editor.PanelColorSettings,
     MediaUpload = _wp$editor.MediaUpload;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
@@ -49925,137 +50035,198 @@ var UAGBinfoBox = function (_Component) {
 					beforeIcon: "",
 					allowReset: true
 				}),
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: iconColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconColor: colorValue });
-						},
-						label: __("Icon Color")
-					}, {
-						value: iconHover,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconHover: colorValue });
-						},
-						label: __("Icon Hover Color")
-					}]
-				})
+				wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout_icon = void 0;
+						if ("normal" === tabName.name) {
+							tabout_icon = wp.element.createElement(
+								Fragment,
+								null,
+								wp.element.createElement(
+									"p",
+									{ className: "uagb-setting-label" },
+									__("Icon Color"),
+									wp.element.createElement(
+										"span",
+										{ className: "components-base-control__label" },
+										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: iconColor } })
+									)
+								),
+								wp.element.createElement(ColorPalette, {
+									value: iconColor,
+									onChange: function onChange(colorValue) {
+										return setAttributes({ iconColor: colorValue });
+									},
+									allowReset: true
+								})
+							);
+						} else {
+							tabout_icon = wp.element.createElement(
+								Fragment,
+								null,
+								wp.element.createElement(
+									"p",
+									{ className: "uagb-setting-label" },
+									__("Icon Hover Color"),
+									wp.element.createElement(
+										"span",
+										{ className: "components-base-control__label" },
+										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: iconHover } })
+									)
+								),
+								wp.element.createElement(ColorPalette, {
+									value: iconHover,
+									onChange: function onChange(colorValue) {
+										return setAttributes({ iconHover: colorValue });
+									},
+									allowReset: true
+								})
+							);
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout_icon
+						);
+					}
+				)
 			);
 
-			// Seperator settings.
+			// Separator settings.
 			var seperatorSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Seperator"),
-						initialOpen: false },
-					wp.element.createElement(SelectControl, {
-						label: __("Style"),
-						value: seperatorStyle,
+				PanelBody,
+				{
+					title: __("Separator"),
+					initialOpen: false },
+				wp.element.createElement(SelectControl, {
+					label: __("Style"),
+					value: seperatorStyle,
+					onChange: function onChange(value) {
+						return setAttributes({ seperatorStyle: value });
+					},
+					options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
+				}),
+				"none" !== seperatorStyle && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Thickness"),
+						value: seperatorThickness,
 						onChange: function onChange(value) {
-							return setAttributes({ seperatorStyle: value });
+							return setAttributes({ seperatorThickness: value });
 						},
-						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
+						min: 0,
+						max: 10,
+						beforeIcon: "",
+						allowReset: true
 					}),
-					"none" !== seperatorStyle && wp.element.createElement(
-						Fragment,
-						null,
+					wp.element.createElement(RangeControl, {
+						label: __("Width (%)"),
+						value: seperatorWidth,
+						onChange: function onChange(value) {
+							return setAttributes({ seperatorWidth: value });
+						},
+						min: 0,
+						max: 100,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Separator Color"),
 						wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Seperator Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: seperatorColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: seperatorColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ seperatorColor: colorValue });
-								},
-								allowReset: true
-							})
-						),
-						wp.element.createElement(RangeControl, {
-							label: __("Thickness"),
-							value: seperatorThickness,
-							onChange: function onChange(value) {
-								return setAttributes({ seperatorThickness: value });
-							},
-							min: 0,
-							max: 10,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Width"),
-							value: seperatorWidth,
-							onChange: function onChange(value) {
-								return setAttributes({ seperatorWidth: value });
-							},
-							min: 0,
-							max: 100,
-							beforeIcon: "",
-							allowReset: true
-						})
-					)
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: seperatorColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: seperatorColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ seperatorColor: colorValue });
+						},
+						allowReset: true
+					})
 				)
 			);
 
 			// CTA settings.
 			var ctaSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Call To Action"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Call To Action"), initialOpen: false },
+				wp.element.createElement(SelectControl, {
+					label: __("Type"),
+					value: ctaType,
+					onChange: function onChange(value) {
+						return setAttributes({ ctaType: value });
 					},
-					wp.element.createElement(SelectControl, {
-						label: __("Type"),
-						value: ctaType,
-						onChange: function onChange(value) {
-							return setAttributes({ ctaType: value });
-						},
-						options: [{ value: "none", label: __("None") }, { value: "text", label: __("Text") }, { value: "button", label: __("Button") }, { value: "all", label: __("Complete Box") }]
-					}),
-					(ctaType === "text" || ctaType === "button") && wp.element.createElement(TextControl, {
+					options: [{ value: "none", label: __("None") }, { value: "text", label: __("Text") }, { value: "button", label: __("Button") }, { value: "all", label: __("Complete Box") }]
+				}),
+				(ctaType === "text" || ctaType === "button") && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
 						label: __("Text"),
 						value: ctaText,
 						onChange: function onChange(value) {
 							return setAttributes({ ctaText: value });
 						}
 					}),
-					ctaType !== "none" && wp.element.createElement(
-						Fragment,
+					wp.element.createElement(RangeControl, {
+						label: __("Text Font Size"),
+						value: ctaFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaFontSize: value });
+						},
+						min: 0,
+						max: 50,
+						initialPosition: 16,
+						beforeIcon: "editor-textcolor",
+						allowReset: true
+					})
+				),
+				ctaType !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
+						label: __("Link"),
+						value: ctaLink,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaLink: value });
+						}
+					}),
+					wp.element.createElement(ToggleControl, {
+						label: __("Open in new Window"),
+						checked: ctaTarget,
+						onChange: this.toggleTarget
+					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" })
+				),
+				ctaType !== "all" && ctaType !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"h2",
 						null,
-						wp.element.createElement(TextControl, {
-							label: __("Link"),
-							value: ctaLink,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaLink: value });
-							}
-						}),
-						wp.element.createElement(ToggleControl, {
-							label: __("Open in new Window"),
-							checked: ctaTarget,
-							onChange: this.toggleTarget
-						})
+						__("Button Icon")
 					),
-					ctaType !== "all" && ctaType !== "none" && wp.element.createElement(
+					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default.a, cta_icon_props),
+					ctaIcon != '' && wp.element.createElement(
 						Fragment,
 						null,
-						wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default.a, cta_icon_props),
 						wp.element.createElement(SelectControl, {
 							label: __("Icon Position"),
 							value: ctaIconPosition,
@@ -50076,165 +50247,311 @@ var UAGBinfoBox = function (_Component) {
 							allowReset: true
 						})
 					),
-					ctaType == "button" && wp.element.createElement(
+					wp.element.createElement("hr", { className: "uagb-editor__separator" })
+				),
+				ctaType == "button" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Button Padding")
+					),
+					wp.element.createElement(RangeControl, {
+						label: __("Vertical"),
+						value: ctaBtnVertPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBtnVertPadding: value });
+						},
+						min: 0,
+						max: 50,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Horizontal"),
+						value: ctaBtnHrPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBtnHrPadding: value });
+						},
+						min: 0,
+						max: 50,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Button Border")
+					),
+					wp.element.createElement(SelectControl, {
+						label: __("Style"),
+						value: ctaBorderStyle,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBorderStyle: value });
+						},
+						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
+					}),
+					ctaBorderStyle !== "none" && wp.element.createElement(
 						Fragment,
 						null,
 						wp.element.createElement(RangeControl, {
-							label: __("Vertical Padding"),
-							value: ctaBtnVertPadding,
+							label: __("Width"),
+							value: ctaBorderWidth,
 							onChange: function onChange(value) {
-								return setAttributes({ ctaBtnVertPadding: value });
+								return setAttributes({ ctaBorderWidth: value });
 							},
 							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("HorizontalPadding"),
-							value: ctaBtnHrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaBtnHrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Border Style"),
-							value: ctaBorderStyle,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaBorderStyle: value });
-							},
-							options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
-						}),
-						ctaBorderStyle !== "none" && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(RangeControl, {
-								label: __("Border Width"),
-								value: ctaBorderWidth,
-								onChange: function onChange(value) {
-									return setAttributes({ ctaBorderWidth: value });
-								},
-								min: 0,
-								max: 10,
-								beforeIcon: "",
-								allowReset: true
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Border Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: ctaBorderColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ ctaBorderColor: colorValue });
-								},
-								allowReset: true
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Border Hover Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderhoverColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: ctaBorderhoverColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ ctaBorderhoverColor: colorValue });
-								},
-								allowReset: true
-							})
-						),
-						wp.element.createElement(RangeControl, {
-							label: __("Rounded Corner"),
-							value: ctaBorderRadius,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaBorderRadius: value });
-							},
-							min: 0,
-							max: 100,
+							max: 10,
 							beforeIcon: "",
 							allowReset: true
 						})
-					)
+					),
+					wp.element.createElement(RangeControl, {
+						label: __("Rounded Corner"),
+						value: ctaBorderRadius,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBorderRadius: value });
+						},
+						min: 0,
+						max: 100,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" })
+				),
+				ctaType === "text" && wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout_1 = void 0;
+						if ("normal" === tabName.name) {
+							tabout_1 = wp.element.createElement(
+								Fragment,
+								null,
+								wp.element.createElement(
+									"p",
+									{ className: "uagb-setting-label" },
+									__("Text Color"),
+									wp.element.createElement(
+										"span",
+										{ className: "components-base-control__label" },
+										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkColor } })
+									)
+								),
+								wp.element.createElement(ColorPalette, {
+									value: ctaLinkColor,
+									onChange: function onChange(colorValue) {
+										return setAttributes({ ctaLinkColor: colorValue });
+									},
+									allowReset: true
+								})
+							);
+						} else {
+							tabout_1 = wp.element.createElement(
+								Fragment,
+								null,
+								wp.element.createElement(
+									"p",
+									{ className: "uagb-setting-label" },
+									__("Text Hover Color"),
+									wp.element.createElement(
+										"span",
+										{ className: "components-base-control__label" },
+										wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
+									)
+								),
+								wp.element.createElement(ColorPalette, {
+									value: ctaLinkHoverColor,
+									onChange: function onChange(colorValue) {
+										return setAttributes({ ctaLinkHoverColor: colorValue });
+									},
+									allowReset: true
+								})
+							);
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout_1
+						);
+					}
+				),
+				ctaType === "button" && wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout = void 0;
+						if ("normal" === tabName.name) {
+							tabout = ctaNormalSettings;
+						} else {
+							tabout = ctaHoverSettings;
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout
+						);
+					}
 				)
 			);
 
 			var ctaNormalSettings = wp.element.createElement(
 				Fragment,
 				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("CTA Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: ctaBtnLinkColor,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Text Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBtnLinkColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBtnLinkColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBtnLinkColor: colorValue });
+					},
+					allowReset: true
+				}),
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Background Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBgColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBgColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBgColor: colorValue });
+					},
+					allowReset: true
+				}),
+				ctaBorderStyle !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Border Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaBorderColor,
 						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBtnLinkColor: colorValue });
+							return setAttributes({ ctaBorderColor: colorValue });
 						},
-						label: __("Color")
-					}, {
-						value: ctaBgColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBgColor: colorValue });
-						},
-						label: __("Background Color")
-					}]
-				})
+						allowReset: true
+					})
+				)
 			);
 
 			var ctaHoverSettings = wp.element.createElement(
 				Fragment,
 				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("CTA Hover Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: ctaLinkHoverColor,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Text Hover Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaLinkHoverColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaLinkHoverColor: colorValue });
+					},
+					allowReset: true
+				}),
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Background Hover Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBgHoverColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBgHoverColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBgHoverColor: colorValue });
+					},
+					allowReset: true
+				}),
+				ctaBorderStyle !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Border Hover Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderhoverColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaBorderhoverColor,
 						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaLinkHoverColor: colorValue });
+							return setAttributes({ ctaBorderhoverColor: colorValue });
 						},
-						label: __("Hover Color")
-					}, {
-						value: ctaBgHoverColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBgHoverColor: colorValue });
-						},
-						label: __("Background Hover Color")
-					}]
-				})
+						allowReset: true
+					})
+				)
 			);
 
 			// Typography settings.
 			var TypographySettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Typography"),
-						initialOpen: false
-					},
-					wp.element.createElement(ToggleControl, {
-						label: __("Enable Prefix"),
-						checked: showPrefix,
-						onChange: function onChange(value) {
-							return setAttributes({ showPrefix: !showPrefix });
-						}
-					}),
-					showPrefix && wp.element.createElement(RangeControl, {
+				PanelBody,
+				{ title: __("Content"), initialOpen: false },
+				wp.element.createElement(ToggleControl, {
+					label: __("Enable Prefix"),
+					checked: showPrefix,
+					onChange: function onChange(value) {
+						return setAttributes({ showPrefix: !showPrefix });
+					}
+				}),
+				showPrefix && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
 						label: __("Prefix Font Size"),
 						value: prefixFontSize,
 						onChange: function onChange(value) {
@@ -50246,45 +50563,85 @@ var UAGBinfoBox = function (_Component) {
 						beforeIcon: "editor-textcolor",
 						allowReset: true
 					}),
-					wp.element.createElement(ToggleControl, {
-						label: __("Enable Heading"),
-						checked: showTitle,
-						onChange: function onChange(value) {
-							return setAttributes({ showTitle: !showTitle });
-						}
-					}),
-					showTitle && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(SelectControl, {
-							label: __("Title Tag"),
-							value: headingTag,
-							onChange: function onChange(value) {
-								return setAttributes({ headingTag: value });
-							},
-							options: [{ value: "h1", label: __("H1") }, { value: "h2", label: __("H2") }, { value: "h3", label: __("H3") }, { value: "h4", label: __("H4") }, { value: "h5", label: __("H5") }, { value: "h6", label: __("H6") }]
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Heading Font Size"),
-							value: headFontSize,
-							onChange: function onChange(value) {
-								return setAttributes({ headFontSize: value });
-							},
-							min: 10,
-							max: 200,
-							initialPosition: 30,
-							beforeIcon: "editor-textcolor",
-							allowReset: true
-						})
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Prefix Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: prefixColor } })
+						)
 					),
-					wp.element.createElement(ToggleControl, {
-						label: __("Enable Description"),
-						checked: showDesc,
-						onChange: function onChange(value) {
-							return setAttributes({ showDesc: !showDesc });
-						}
+					wp.element.createElement(ColorPalette, {
+						value: prefixColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ prefixColor: colorValue });
+						},
+						allowReset: true
 					}),
-					showDesc && wp.element.createElement(RangeControl, {
+					wp.element.createElement("hr", { className: "uagb-editor__separator" })
+				),
+				wp.element.createElement(ToggleControl, {
+					label: __("Enable Title"),
+					checked: showTitle,
+					onChange: function onChange(value) {
+						return setAttributes({ showTitle: !showTitle });
+					}
+				}),
+				showTitle && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(SelectControl, {
+						label: __("Title Tag"),
+						value: headingTag,
+						onChange: function onChange(value) {
+							return setAttributes({ headingTag: value });
+						},
+						options: [{ value: "h1", label: __("H1") }, { value: "h2", label: __("H2") }, { value: "h3", label: __("H3") }, { value: "h4", label: __("H4") }, { value: "h5", label: __("H5") }, { value: "h6", label: __("H6") }]
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Title Font Size"),
+						value: headFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ headFontSize: value });
+						},
+						min: 10,
+						max: 200,
+						initialPosition: 30,
+						beforeIcon: "editor-textcolor",
+						allowReset: true
+					}),
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Title Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: headingColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: headingColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ headingColor: colorValue });
+						},
+						allowReset: true
+					}),
+					wp.element.createElement("hr", { "class": "uagb-editor__separator" })
+				),
+				wp.element.createElement(ToggleControl, {
+					label: __("Enable Description"),
+					checked: showDesc,
+					onChange: function onChange(value) {
+						return setAttributes({ showDesc: !showDesc });
+					}
+				}),
+				showDesc && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
 						label: __("Description Font Size"),
 						value: subHeadFontSize,
 						onChange: function onChange(value) {
@@ -50296,264 +50653,120 @@ var UAGBinfoBox = function (_Component) {
 						beforeIcon: "editor-textcolor",
 						allowReset: true
 					}),
-					(ctaType === "text" || ctaType === "button") && wp.element.createElement(RangeControl, {
-						label: __("CTA Font Size"),
-						value: ctaFontSize,
-						onChange: function onChange(value) {
-							return setAttributes({ ctaFontSize: value });
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Description Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: subHeadingColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: subHeadingColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ subHeadingColor: colorValue });
 						},
-						min: 0,
-						max: 50,
-						initialPosition: 16,
-						beforeIcon: "editor-textcolor",
 						allowReset: true
 					})
-				),
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Color Settings"),
-						initialOpen: true
-					},
-					showPrefix && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Prefix Title Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: prefixColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: prefixColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ prefixColor: colorValue });
-							},
-							allowReset: true
-						})
-					),
-					showTitle && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Heading Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: headingColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: headingColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ headingColor: colorValue });
-							},
-							allowReset: true
-						}),
-						" "
-					),
-					showDesc && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Description Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: subHeadingColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: subHeadingColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ subHeadingColor: colorValue });
-							},
-							allowReset: true
-						}),
-						" "
-					),
-					ctaType === "text" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaLinkColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaLinkColor: colorValue });
-							},
-							allowReset: true
-						}),
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Hover Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaLinkHoverColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaLinkHoverColor: colorValue });
-							},
-							allowReset: true
-						})
-					),
-					ctaType === "button" && wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "hover",
-								title: __("Hover"),
-								className: "uagb-focus-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("normal" === tabName.name) {
-								tabout = ctaNormalSettings;
-							} else {
-								tabout = ctaHoverSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
-						}
-					)
 				)
 			);
 
 			// Margin Settings.
 			var marginSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Spacing"), initialOpen: false },
+				showPrefix && wp.element.createElement(RangeControl, {
+					label: __("Prefix Bottom Margin"),
+					value: prefixSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ prefixSpace: value });
 					},
-					showPrefix && wp.element.createElement(RangeControl, {
-						label: __("Prefix Bottom Margin"),
-						value: prefixSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ prefixSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					showTitle && wp.element.createElement(RangeControl, {
-						label: __("Heading Bottom Margin"),
-						value: headSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ headSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Seperator Bottom Margin"),
-						value: seperatorSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ seperatorSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					showDesc && wp.element.createElement(RangeControl, {
-						label: __("Description Bottom Margin"),
-						value: subHeadSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ subHeadSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("Image/Icon Margins"),
-							initialOpen: true
-						},
-						wp.element.createElement(RangeControl, {
-							label: __("Left Margin"),
-							value: iconLeftMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ iconLeftMargin: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Right Margin"),
-							value: iconRightMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ iconRightMargin: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Top Margin"),
-							value: iconTopMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ iconTopMargin: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Bottom Margin"),
-							value: iconBottomMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ iconBottomMargin: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						})
-					)
-				)
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				showTitle && wp.element.createElement(RangeControl, {
+					label: __("Title Bottom Margin"),
+					value: headSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ headSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Separator Bottom Margin"),
+					value: seperatorSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ seperatorSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				showDesc && wp.element.createElement(RangeControl, {
+					label: __("Description Bottom Margin"),
+					value: subHeadSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ subHeadSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+				wp.element.createElement(
+					"h2",
+					null,
+					__('Image/Icon Margin (px)')
+				),
+				wp.element.createElement(RangeControl, {
+					value: iconLeftMargin,
+					onChange: function onChange(value) {
+						return setAttributes({ iconLeftMargin: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "grid-view",
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					value: iconRightMargin,
+					onChange: function onChange(value) {
+						return setAttributes({ iconRightMargin: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "grid-view",
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					value: iconTopMargin,
+					onChange: function onChange(value) {
+						return setAttributes({ iconTopMargin: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "grid-view",
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					value: iconBottomMargin,
+					onChange: function onChange(value) {
+						return setAttributes({ iconBottomMargin: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "grid-view",
+					allowReset: true
+				})
 			);
 
 			// Image sizes.
@@ -50574,10 +50787,7 @@ var UAGBinfoBox = function (_Component) {
 				null,
 				wp.element.createElement(
 					BaseControl,
-					{
-						className: "editor-bg-image-control",
-						label: __("Image")
-					},
+					{ className: "editor-bg-image-control", label: __("Image") },
 					wp.element.createElement(MediaUpload, {
 						title: __("Select Image"),
 						onSelect: this.onSelectImage,
@@ -50636,57 +50846,52 @@ var UAGBinfoBox = function (_Component) {
 
 			// Global Controls.
 			var inspect_control = wp.element.createElement(
-				Fragment,
+				InspectorControls,
 				null,
 				wp.element.createElement(
-					InspectorControls,
-					null,
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("Image/Icon")
+					PanelBody,
+					{ title: __("Image/Icon") },
+					wp.element.createElement(SelectControl, {
+						label: __("Select Position"),
+						value: iconimgPosition,
+						onChange: function onChange(value) {
+							return setAttributes({ iconimgPosition: value });
 						},
-						wp.element.createElement(SelectControl, {
-							label: __("Select Position"),
-							value: iconimgPosition,
-							onChange: function onChange(value) {
-								return setAttributes({ iconimgPosition: value });
-							},
-							options: [{ value: "above-title", label: __("Above Heading") }, { value: "below-title", label: __("Below Heading") }, { value: "left-title", label: __("Left of Heading") }, { value: "right-title", label: __("Right of Heading") }, { value: "left", label: __("Left of Text and Heading") }, { value: "right", label: __("Right of Text and Heading") }]
-						}),
-						(iconimgPosition == "left" || iconimgPosition == "right") && wp.element.createElement(SelectControl, {
-							label: __("Stack on"),
-							value: stack,
-							options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-							help: __("Note: Choose on what breakpoint the Info Box will stack."),
-							onChange: function onChange(value) {
-								return setAttributes({ stack: value });
-							}
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Select Source"),
-							value: source_type,
-							onChange: function onChange(value) {
-								return setAttributes({ source_type: value });
-							},
-							options: [{ value: "icon", label: __("Icon") }, { value: "image", label: __("Image") }]
-						}),
-						iconimgPosition && iconimgPosition !== "above-title" && iconimgPosition !== "below-title" && wp.element.createElement(SelectControl, {
-							label: __("Vertical ALignment"),
-							value: sourceAlign,
-							onChange: function onChange(value) {
-								return setAttributes({ sourceAlign: value });
-							},
-							options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
-						}),
-						source_type && source_type == "icon" && iconControls,
-						source_type && source_type == "image" && imageControls
-					),
-					TypographySettings,
-					seperatorSettings,
-					ctaSettings,
-					marginSettings
-				)
+						options: [{ value: "above-title", label: __("Above Title") }, { value: "below-title", label: __("Below Title") }, { value: "left-title", label: __("Left of Title") }, { value: "right-title", label: __("Right of Title") }, { value: "left", label: __("Left of Text and Title") }, { value: "right", label: __("Right of Text and Title") }]
+					}),
+					(iconimgPosition == "left" || iconimgPosition == "right") && wp.element.createElement(SelectControl, {
+						label: __("Stack on"),
+						value: stack,
+						options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+						help: __("Note: Choose on what breakpoint the Info Box will stack."),
+						onChange: function onChange(value) {
+							return setAttributes({ stack: value });
+						}
+					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(SelectControl, {
+						label: __("Select Source"),
+						value: source_type,
+						onChange: function onChange(value) {
+							return setAttributes({ source_type: value });
+						},
+						options: [{ value: "icon", label: __("Icon") }, { value: "image", label: __("Image") }]
+					}),
+					iconimgPosition && iconimgPosition !== "above-title" && iconimgPosition !== "below-title" && wp.element.createElement(SelectControl, {
+						label: __("Vertical ALignment"),
+						value: sourceAlign,
+						onChange: function onChange(value) {
+							return setAttributes({ sourceAlign: value });
+						},
+						options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
+					}),
+					source_type && source_type == "icon" && iconControls,
+					source_type && source_type == "image" && imageControls
+				),
+				TypographySettings,
+				seperatorSettings,
+				ctaSettings,
+				marginSettings
 			);
 
 			// Get icon/Image components.
@@ -50702,7 +50907,7 @@ var UAGBinfoBox = function (_Component) {
 			var desc = wp.element.createElement(
 				Fragment,
 				null,
-				"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_InfoBoxSeperator__["a" /* default */], { attributes: attributes }),
+				"none" !== seperatorStyle && wp.element.createElement(__WEBPACK_IMPORTED_MODULE_8__components_InfoBoxSeparator__["a" /* default */], { attributes: attributes }),
 				wp.element.createElement(
 					"div",
 					{ className: "uagb-ifb-text-wrap" },
@@ -50724,53 +50929,49 @@ var UAGBinfoBox = function (_Component) {
 			);
 
 			var output = wp.element.createElement(
-				Fragment,
-				null,
+				"div",
+				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default.a.apply(undefined, ["uagb-infobox__content-wrap"].concat(_toConsumableArray(Object(__WEBPACK_IMPORTED_MODULE_7__classes__["a" /* default */])(attributes)))) },
 				wp.element.createElement(
 					"div",
-					{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default.a.apply(undefined, ["uagb-infobox__content-wrap"].concat(_toConsumableArray(Object(__WEBPACK_IMPORTED_MODULE_7__classes__["a" /* default */])(attributes)))) },
+					{ className: "uagb-ifb-left-right-wrap" },
+					iconimgPosition == "left" && is_image,
 					wp.element.createElement(
 						"div",
-						{ className: "uagb-ifb-left-right-wrap" },
-						iconimgPosition == "left" && is_image,
-						wp.element.createElement(
-							"div",
-							{ className: "uagb-ifb-content" },
-							iconimgPosition == "above-title" && is_image,
-							(iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text,
-							iconimgPosition == "below-title" && is_image,
-							(iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc,
-							iconimgPosition === "left-title" && wp.element.createElement(
-								Fragment,
-								null,
-								wp.element.createElement(
-									"div",
-									{ className: "uagb-ifb-left-title-image" },
-									is_image,
-									title_text
-								),
-								desc
+						{ className: "uagb-ifb-content" },
+						iconimgPosition == "above-title" && is_image,
+						(iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text,
+						iconimgPosition == "below-title" && is_image,
+						(iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc,
+						iconimgPosition === "left-title" && wp.element.createElement(
+							Fragment,
+							null,
+							wp.element.createElement(
+								"div",
+								{ className: "uagb-ifb-left-title-image" },
+								is_image,
+								title_text
 							),
-							iconimgPosition === "right-title" && wp.element.createElement(
-								Fragment,
-								null,
-								wp.element.createElement(
-									"div",
-									{ className: "uagb-ifb-right-title-image" },
-									title_text,
-									is_image
-								),
-								desc
-							),
-							(iconimgPosition == "left" || iconimgPosition == "right") && wp.element.createElement(
-								Fragment,
-								null,
-								title_text,
-								desc
-							)
+							desc
 						),
-						iconimgPosition == "right" && is_image
-					)
+						iconimgPosition === "right-title" && wp.element.createElement(
+							Fragment,
+							null,
+							wp.element.createElement(
+								"div",
+								{ className: "uagb-ifb-right-title-image" },
+								title_text,
+								is_image
+							),
+							desc
+						),
+						(iconimgPosition == "left" || iconimgPosition == "right") && wp.element.createElement(
+							Fragment,
+							null,
+							title_text,
+							desc
+						)
+					),
+					iconimgPosition == "right" && is_image
 				)
 			);
 
@@ -50794,14 +50995,10 @@ var UAGBinfoBox = function (_Component) {
 						id: my_block_id
 					},
 					ctaType == "all" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"a",
-							{ href: ctaLink, className: "uagb-infobox-link-wrap", rel: "noopener noreferrer" },
-							" ",
-							output
-						)
+						"a",
+						{ href: ctaLink, className: "uagb-infobox-link-wrap", rel: "noopener noreferrer" },
+						" ",
+						output
 					),
 					ctaType !== "all" && output
 				)
@@ -52341,10 +52538,7 @@ var UAGBtestimonial = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Typography"),
-						initialOpen: false
-					},
+					{ title: __("Typography"), initialOpen: false },
 					wp.element.createElement(RangeControl, {
 						label: __("Testimonial Font Size"),
 						value: descFontSize,
@@ -52415,85 +52609,78 @@ var UAGBtestimonial = function (_Component) {
 
 			// Margin Settings.
 			var marginSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Spacing"), initialOpen: false },
+				wp.element.createElement(RangeControl, {
+					label: __("Gap Between Content & Dots"),
+					value: rowGap,
+					onChange: function onChange(value) {
+						return setAttributes({ rowGap: value });
 					},
-					wp.element.createElement(RangeControl, {
-						label: __("Gap Between Content & Dots"),
-						value: rowGap,
-						onChange: function onChange(value) {
-							return setAttributes({ rowGap: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Row Gap"),
-						value: columnGap,
-						onChange: function onChange(value) {
-							return setAttributes({ columnGap: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Content Padding"),
-						value: contentPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ contentPadding: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Testimonial Bottom Margin"),
-						value: descSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ descSpace: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Name Bottom Margin"),
-						value: nameSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ nameSpace: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Image Horizontal Padding"),
-						value: imgHrPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ imgHrPadding: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Image Vertical Padding"),
-						value: imgVrPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ imgVrPadding: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					})
-				)
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Row Gap"),
+					value: columnGap,
+					onChange: function onChange(value) {
+						return setAttributes({ columnGap: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Content Padding"),
+					value: contentPadding,
+					onChange: function onChange(value) {
+						return setAttributes({ contentPadding: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Testimonial Bottom Margin"),
+					value: descSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ descSpace: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Name Bottom Margin"),
+					value: nameSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ nameSpace: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Image Horizontal Padding"),
+					value: imgHrPadding,
+					onChange: function onChange(value) {
+						return setAttributes({ imgHrPadding: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Image Vertical Padding"),
+					value: imgVrPadding,
+					onChange: function onChange(value) {
+						return setAttributes({ imgVrPadding: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				})
 			);
 
 			var background_settings = wp.element.createElement(
@@ -52645,16 +52832,6 @@ var UAGBtestimonial = function (_Component) {
 							max: 50,
 							allowReset: true
 						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Border Radius"),
-							value: borderRadius,
-							onChange: function onChange(value) {
-								return setAttributes({ borderRadius: value });
-							},
-							min: 0,
-							max: 1000,
-							allowReset: true
-						}),
 						wp.element.createElement(
 							Fragment,
 							null,
@@ -52676,7 +52853,17 @@ var UAGBtestimonial = function (_Component) {
 								allowReset: true
 							})
 						)
-					)
+					),
+					wp.element.createElement(RangeControl, {
+						label: __("Border Radius"),
+						value: borderRadius,
+						onChange: function onChange(value) {
+							return setAttributes({ borderRadius: value });
+						},
+						min: 0,
+						max: 1000,
+						allowReset: true
+					})
 				)
 			);
 
@@ -52684,7 +52871,6 @@ var UAGBtestimonial = function (_Component) {
 			var imageSizeOptions = [{ value: "thumbnail", label: __("Thumbnail") }, { value: "medium", label: __("Medium") }, { value: "full", label: __("Large") }];
 
 			function NextArrow(props) {
-
 				return wp.element.createElement(
 					"button",
 					{ type: "button", "data-role": "none", className: "slick-next slick-arrow", "aria-label": "Next", tabIndex: "0", role: "button", style: { "borderColor": arrowColor, "borderRadius": arrowBorderRadius, "borderWidth": arrowBorderSize } },
@@ -52693,7 +52879,6 @@ var UAGBtestimonial = function (_Component) {
 			}
 
 			function PrevArrow(props) {
-
 				return wp.element.createElement(
 					"button",
 					{ type: "button", "data-role": "none", className: "slick-prev slick-arrow", "aria-label": "Previous", tabIndex: "0", role: "button", style: { "borderColor": arrowColor, "borderRadius": arrowBorderRadius, "borderWidth": arrowBorderSize } },
@@ -52780,83 +52965,79 @@ var UAGBtestimonial = function (_Component) {
 			};
 
 			var carousal_settings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Carousel"), initialOpen: false },
-					wp.element.createElement(ToggleControl, {
-						label: __("Pause On Hover"),
-						checked: pauseOnHover,
-						onChange: this.togglePauseOnHover
-					}),
-					wp.element.createElement(ToggleControl, {
-						label: __("Autoplay"),
-						checked: autoplay,
-						onChange: this.toggleAutoplay
-					}),
-					autoplay == true && wp.element.createElement(RangeControl, {
-						label: __("Autoplay Speed (ms)"),
-						value: autoplaySpeed,
+				PanelBody,
+				{ title: __("Carousel"), initialOpen: false },
+				wp.element.createElement(ToggleControl, {
+					label: __("Pause On Hover"),
+					checked: pauseOnHover,
+					onChange: this.togglePauseOnHover
+				}),
+				wp.element.createElement(ToggleControl, {
+					label: __("Autoplay"),
+					checked: autoplay,
+					onChange: this.toggleAutoplay
+				}),
+				autoplay == true && wp.element.createElement(RangeControl, {
+					label: __("Autoplay Speed (ms)"),
+					value: autoplaySpeed,
+					onChange: function onChange(value) {
+						return setAttributes({ autoplaySpeed: value });
+					},
+					min: 100,
+					max: 10000
+				}),
+				wp.element.createElement(ToggleControl, {
+					label: __("Infinite Loop"),
+					checked: infiniteLoop,
+					onChange: this.toggleInfiniteLoop
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Transition Speed (ms)"),
+					value: transitionSpeed,
+					onChange: function onChange(value) {
+						return setAttributes({ transitionSpeed: value });
+					},
+					min: 100,
+					max: 5000
+				}),
+				wp.element.createElement(SelectControl, {
+					label: __("Show Arrows & Dots"),
+					value: arrowDots,
+					onChange: function onChange(value) {
+						return setAttributes({ arrowDots: value });
+					},
+					options: [{ value: "arrows", label: __("Only Arrows") }, { value: "dots", label: __("Only Dots") }, { value: "arrows_dots", label: __("Both Arrows & Dots") }]
+				}),
+				"dots" != arrowDots && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Arrow Size"),
+						value: arrowSize,
 						onChange: function onChange(value) {
-							return setAttributes({ autoplaySpeed: value });
+							return setAttributes({ arrowSize: value });
 						},
-						min: 100,
-						max: 10000
-					}),
-					wp.element.createElement(ToggleControl, {
-						label: __("Infinite Loop"),
-						checked: infiniteLoop,
-						onChange: this.toggleInfiniteLoop
+						min: 0,
+						max: 50
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Transition Speed (ms)"),
-						value: transitionSpeed,
+						label: __("Arrow Border Size"),
+						value: arrowBorderSize,
 						onChange: function onChange(value) {
-							return setAttributes({ transitionSpeed: value });
+							return setAttributes({ arrowBorderSize: value });
 						},
-						min: 100,
-						max: 5000
+						min: 0,
+						max: 50
 					}),
-					wp.element.createElement(SelectControl, {
-						label: __("Show Arrows & Dots"),
-						value: arrowDots,
+					wp.element.createElement(RangeControl, {
+						label: __("Arrow Border Radius"),
+						value: arrowBorderRadius,
 						onChange: function onChange(value) {
-							return setAttributes({ arrowDots: value });
+							return setAttributes({ arrowBorderRadius: value });
 						},
-						options: [{ value: "arrows", label: __("Only Arrows") }, { value: "dots", label: __("Only Dots") }, { value: "arrows_dots", label: __("Both Arrows & Dots") }]
-					}),
-					"dots" != arrowDots && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Arrow Size"),
-							value: arrowSize,
-							onChange: function onChange(value) {
-								return setAttributes({ arrowSize: value });
-							},
-							min: 0,
-							max: 50
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Arrow Border Size"),
-							value: arrowBorderSize,
-							onChange: function onChange(value) {
-								return setAttributes({ arrowBorderSize: value });
-							},
-							min: 0,
-							max: 50
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Arrow Border Radius"),
-							value: arrowBorderRadius,
-							onChange: function onChange(value) {
-								return setAttributes({ arrowBorderRadius: value });
-							},
-							min: 0,
-							max: 50
-						})
-					)
+						min: 0,
+						max: 50
+					})
 				)
 			);
 
@@ -52873,153 +53054,146 @@ var UAGBtestimonial = function (_Component) {
 
 			// Global Controls.
 			var inspect_control = wp.element.createElement(
-				Fragment,
+				InspectorControls,
 				null,
 				wp.element.createElement(
-					InspectorControls,
-					null,
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("General"),
-							initialOpen: true
-						},
-						wp.element.createElement(RangeControl, {
-							label: __("Number of Testimonials"),
-							value: test_item_count,
-							onChange: function onChange(newCount) {
-								var cloneTest_block = [].concat(_toConsumableArray(test_block));
-								if (cloneTest_block.length < newCount) {
-									var incAmount = Math.abs(newCount - cloneTest_block.length);
+					PanelBody,
+					{ title: __("General"), initialOpen: true },
+					wp.element.createElement(RangeControl, {
+						label: __("Number of Testimonials"),
+						value: test_item_count,
+						onChange: function onChange(newCount) {
+							var cloneTest_block = [].concat(_toConsumableArray(test_block));
+							if (cloneTest_block.length < newCount) {
+								var incAmount = Math.abs(newCount - cloneTest_block.length);
 
-									{
-										__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(incAmount, function (n) {
+								{
+									__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(incAmount, function (n) {
 
-											cloneTest_block.push({
-												description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!",
-												name: "John Doe",
-												company: "Company" + (cloneTest_block.length + 1),
-												image: ""
-											});
+										cloneTest_block.push({
+											description: "I have been working with these guys since years now! With lots of hard work and timely communication they made sure they delivered the best to me. Highly recommended!",
+											name: "John Doe",
+											company: "Company" + (cloneTest_block.length + 1),
+											image: ""
 										});
-									}
-									setAttributes({ test_block: cloneTest_block });
-								} else {
-									var _incAmount = Math.abs(newCount - cloneTest_block.length);
-									var data_new = cloneTest_block;
-									for (var i = 0; i < _incAmount; i++) {
-										data_new.pop();
-									}
-									setAttributes({ test_block: data_new });
+									});
 								}
-								setAttributes({ test_item_count: newCount });
-							},
-							min: 0,
-							max: 10,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns"),
-							value: columns,
-							onChange: function onChange(value) {
-								return setAttributes({ columns: value });
-							},
-							min: 1,
-							max: test_item_count
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns (Tablet)"),
-							value: tcolumns,
-							onChange: function onChange(value) {
-								return setAttributes({ tcolumns: value });
-							},
-							min: 1,
-							max: test_item_count
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns (Mobile)"),
-							value: mcolumns,
-							onChange: function onChange(value) {
-								return setAttributes({ mcolumns: value });
-							},
-							min: 1,
-							max: test_item_count
-						})
-					),
-					carousal_settings,
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("Image"),
-							initialOpen: false
+								setAttributes({ test_block: cloneTest_block });
+							} else {
+								var _incAmount = Math.abs(newCount - cloneTest_block.length);
+								var data_new = cloneTest_block;
+								for (var i = 0; i < _incAmount; i++) {
+									data_new.pop();
+								}
+								setAttributes({ test_block: data_new });
+							}
+							setAttributes({ test_item_count: newCount });
 						},
-						__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(test_item_count, function (n) {
-							return tmControls(n);
+						min: 0,
+						max: 10,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns"),
+						value: columns,
+						onChange: function onChange(value) {
+							return setAttributes({ columns: value });
+						},
+						min: 1,
+						max: test_item_count
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns (Tablet)"),
+						value: tcolumns,
+						onChange: function onChange(value) {
+							return setAttributes({ tcolumns: value });
+						},
+						min: 1,
+						max: test_item_count
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns (Mobile)"),
+						value: mcolumns,
+						onChange: function onChange(value) {
+							return setAttributes({ mcolumns: value });
+						},
+						min: 1,
+						max: test_item_count
+					})
+				),
+				carousal_settings,
+				wp.element.createElement(
+					PanelBody,
+					{
+						title: __("Image"),
+						initialOpen: false
+					},
+					__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(test_item_count, function (n) {
+						return tmControls(n);
+					}),
+					cnt > 0 && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(SelectControl, {
+							label: __("Image Position"),
+							value: imagePosition,
+							onChange: function onChange(value) {
+								return setAttributes({ imagePosition: value });
+							},
+							options: [{ value: "top", label: __("Top") }, { value: "bottom", label: __("Bottom") }, { value: "left", label: __("Left") }, { value: "right", label: __("Right") }]
 						}),
-						cnt > 0 && wp.element.createElement(
+						(imagePosition == "left" || imagePosition == "right") && wp.element.createElement(
 							Fragment,
 							null,
 							wp.element.createElement(SelectControl, {
-								label: __("Image Position"),
-								value: imagePosition,
+								label: __("Vertical ALignment"),
+								value: imageAlignment,
 								onChange: function onChange(value) {
-									return setAttributes({ imagePosition: value });
+									return setAttributes({ imageAlignment: value });
 								},
-								options: [{ value: "top", label: __("Top") }, { value: "bottom", label: __("Bottom") }, { value: "left", label: __("Left") }, { value: "right", label: __("Right") }]
-							}),
-							(imagePosition == "left" || imagePosition == "right") && wp.element.createElement(
-								Fragment,
-								null,
-								wp.element.createElement(SelectControl, {
-									label: __("Vertical ALignment"),
-									value: imageAlignment,
-									onChange: function onChange(value) {
-										return setAttributes({ imageAlignment: value });
-									},
-									options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
-								}),
-								wp.element.createElement(SelectControl, {
-									label: __("Stack on"),
-									value: stack,
-									options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-									help: __("Note: Choose on what breakpoint the Info Box will stack."),
-									onChange: function onChange(value) {
-										return setAttributes({ stack: value });
-									}
-								})
-							),
-							wp.element.createElement(SelectControl, {
-								label: __("Image Style"),
-								value: iconimgStyle,
-								onChange: function onChange(value) {
-									return setAttributes({ iconimgStyle: value });
-								},
-								options: [{ value: "normal", label: __("Normal") }, { value: "circle", label: __("Circle") }, { value: "square", label: __("Square") }]
+								options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
 							}),
 							wp.element.createElement(SelectControl, {
-								label: __("Image Size"),
-								options: imageSizeOptions,
-								value: imageSize,
+								label: __("Stack on"),
+								value: stack,
+								options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+								help: __("Note: Choose on what breakpoint the Info Box will stack."),
 								onChange: function onChange(value) {
-									return setAttributes({ imageSize: value });
+									return setAttributes({ stack: value });
 								}
-							}),
-							wp.element.createElement(RangeControl, {
-								label: __("Width"),
-								value: imageWidth,
-								onChange: function onChange(value) {
-									return setAttributes({ imageWidth: value });
-								},
-								min: 0,
-								max: 500,
-								allowReset: true
 							})
-						)
-					),
-					TypographySettings,
-					marginSettings,
-					background_settings
-				)
+						),
+						wp.element.createElement(SelectControl, {
+							label: __("Image Style"),
+							value: iconimgStyle,
+							onChange: function onChange(value) {
+								return setAttributes({ iconimgStyle: value });
+							},
+							options: [{ value: "normal", label: __("Normal") }, { value: "circle", label: __("Circle") }, { value: "square", label: __("Square") }]
+						}),
+						wp.element.createElement(SelectControl, {
+							label: __("Image Size"),
+							options: imageSizeOptions,
+							value: imageSize,
+							onChange: function onChange(value) {
+								return setAttributes({ imageSize: value });
+							}
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Width"),
+							value: imageWidth,
+							onChange: function onChange(value) {
+								return setAttributes({ imageWidth: value });
+							},
+							min: 0,
+							max: 500,
+							allowReset: true
+						})
+					)
+				),
+				TypographySettings,
+				marginSettings,
+				background_settings
 			);
 
 			return wp.element.createElement(
@@ -53248,6 +53422,10 @@ function TestimonialStyle(props) {
 			"border-color": borderColor,
 			"border-style": borderStyle,
 			"border-width": borderWidth + "px",
+			"border-radius": borderRadius + "px"
+		};
+	} else {
+		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
 			"border-radius": borderRadius + "px"
 		};
 	}
@@ -54174,7 +54352,7 @@ var UAGBTeam = function (_Component) {
 							),
 							wp.element.createElement(
 								PanelBody,
-								{ title: __("FaceBook"), initialOpen: false },
+								{ title: __("Facebook"), initialOpen: false },
 								wp.element.createElement(
 									"p",
 									{ className: "components-base-control__label" },
@@ -54200,7 +54378,7 @@ var UAGBTeam = function (_Component) {
 									onChange: function onChange(value) {
 										return setAttributes({ fbLink: value });
 									},
-									placeholder: __("Enter FaceBook URL")
+									placeholder: __("Enter Facebook URL")
 								})
 							),
 							wp.element.createElement(
@@ -54342,25 +54520,25 @@ var UAGBTeam = function (_Component) {
 							onChange: function onChange(colorValue) {
 								return setAttributes({ prefixColor: colorValue });
 							},
-							label: __("Designation")
+							label: __("Designation Color")
 						}, {
 							value: descColor,
 							onChange: function onChange(colorValue) {
 								return setAttributes({ descColor: colorValue });
 							},
-							label: __("Description")
+							label: __("Description Color")
 						}, {
 							value: socialColor,
 							onChange: function onChange(colorValue) {
 								return setAttributes({ socialColor: colorValue });
 							},
-							label: __("Social Icon")
+							label: __("Social Icon Color")
 						}, {
 							value: socialHoverColor,
 							onChange: function onChange(colorValue) {
 								return setAttributes({ socialHoverColor: colorValue });
 							},
-							label: __("Social Icon Hover")
+							label: __("Social Icon Hover Color")
 						}]
 					}),
 					wp.element.createElement(
@@ -54410,12 +54588,9 @@ var UAGBTeam = function (_Component) {
 							max: 50,
 							allowReset: true
 						}),
-						wp.element.createElement(
+						image && wp.element.createElement(
 							PanelBody,
-							{
-								title: __("Image Margins"),
-								initialOpen: true
-							},
+							{ title: __("Image Margins"), initialOpen: true },
 							imgPosition != "above" && wp.element.createElement(RangeControl, {
 								label: __("Left Margin"),
 								value: imgLeftMargin,
@@ -55380,23 +55555,15 @@ var UAGBSocialShare = function (_Component) {
 								return setAttributes({ social_layout: value });
 							}
 						}),
-						"horizontal" == social_layout && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(SelectControl, {
-								label: __("Stack on"),
-								value: stack,
-								options: [{ value: "none", label: __("None") }, { value: "desktop", label: __("Desktop") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-								onChange: function onChange(value) {
-									return setAttributes({ stack: value });
-								}
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-note" },
-								__("Note: Choose on what breakpoint the Icons will stack.")
-							)
-						),
+						"horizontal" == social_layout && wp.element.createElement(SelectControl, {
+							label: __("Stack on"),
+							value: stack,
+							options: [{ value: "none", label: __("None") }, { value: "desktop", label: __("Desktop") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+							onChange: function onChange(value) {
+								return setAttributes({ stack: value });
+							},
+							help: __("Note: Choose on what breakpoint the Icons will stack.")
+						}),
 						wp.element.createElement(RangeControl, {
 							label: __("Size"),
 							value: size,
@@ -56025,7 +56192,8 @@ registerBlockType("uagb/icon-list", {
 		    icons = _props$attributes.icons,
 		    icon_count = _props$attributes.icon_count,
 		    icon_layout = _props$attributes.icon_layout,
-		    hideLabel = _props$attributes.hideLabel;
+		    hideLabel = _props$attributes.hideLabel,
+		    disableLink = _props$attributes.disableLink;
 
 
 		var labelClass = hideLabel ? "uagb-icon-list__no-label" : "";
@@ -56057,6 +56225,7 @@ registerBlockType("uagb/icon-list", {
 					}
 
 					var target = icon.target ? "_blank" : "_self";
+					var link_url = !disableLink ? icon.link : 'javascript:void(0);';
 
 					return wp.element.createElement(
 						"a",
@@ -56065,7 +56234,7 @@ registerBlockType("uagb/icon-list", {
 							key: index,
 							target: target,
 							rel: "noopener noreferrer",
-							href: icon.link
+							href: link_url
 						},
 						wp.element.createElement(
 							"div",
@@ -56141,7 +56310,8 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 		"icon_bg_color": "",
 		"icon_bg_hover_color": "",
 		"link": "#",
-		"target": false
+		"target": false,
+		"disableLink": false
 	});
 }
 
@@ -56251,16 +56421,17 @@ var _wp$editor = wp.editor,
     BlockControls = _wp$editor.BlockControls,
     BlockAlignmentToolbar = _wp$editor.BlockAlignmentToolbar,
     InspectorControls = _wp$editor.InspectorControls,
-    PanelColorSettings = _wp$editor.PanelColorSettings,
     MediaUpload = _wp$editor.MediaUpload,
-    RichText = _wp$editor.RichText;
+    RichText = _wp$editor.RichText,
+    ColorPalette = _wp$editor.ColorPalette;
 var _wp$components = wp.components,
     PanelBody = _wp$components.PanelBody,
     SelectControl = _wp$components.SelectControl,
     RangeControl = _wp$components.RangeControl,
     Button = _wp$components.Button,
     TextControl = _wp$components.TextControl,
-    ToggleControl = _wp$components.ToggleControl;
+    ToggleControl = _wp$components.ToggleControl,
+    TabPanel = _wp$components.TabPanel;
 
 var UAGBIconList = function (_Component) {
 	_inherits(UAGBIconList, _Component);
@@ -56330,73 +56501,198 @@ var UAGBIconList = function (_Component) {
 			var iconControls = function iconControls(index) {
 
 				var color_control = "";
+				var color_control_hover = "";
 
 				if ("image" == icons[index].image_icon) {
 
-					color_control = [{
-						value: icons[index].label_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ label_color: value }, index);
-						},
-						label: __("Text Color")
-					}, {
-						value: icons[index].icon_bg_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_bg_color: value }, index);
-						},
-						label: __("Image Background Color")
-					}, {
-						value: icons[index].label_hover_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ label_hover_color: value }, index);
-						},
-						label: __("Text Hover Color")
-					}, {
-						value: icons[index].icon_bg_hover_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_bg_hover_color: value }, index);
-						},
-						label: __("Image Background Hover Color")
-					}];
+					color_control = wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Text Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].label_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].label_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ label_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Image Background Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_bg_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_bg_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_bg_color: value }, index);
+							},
+							allowReset: true
+						})
+					);
+					color_control_hover = wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Text Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].label_hover_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].label_hover_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ label_hover_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Image Background Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_bg_hover_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_bg_hover_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_bg_hover_color: value }, index);
+							},
+							allowReset: true
+						})
+					);
 				} else {
 
-					color_control = [{
-						value: icons[index].icon_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_color: value }, index);
-						},
-						label: __("Icon Color")
-					}, {
-						value: icons[index].icon_bg_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_bg_color: value }, index);
-						},
-						label: __("Background Color")
-					}, {
-						value: icons[index].label_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ label_color: value }, index);
-						},
-						label: __("Text Color")
-					}, {
-						value: icons[index].icon_hover_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_hover_color: value }, index);
-						},
-						label: __("Icon Hover Color")
-					}, {
-						value: icons[index].icon_bg_hover_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ icon_bg_hover_color: value }, index);
-						},
-						label: __("Background Hover Color")
-					}, {
-						value: icons[index].label_hover_color,
-						onChange: function onChange(value) {
-							return _this2.saveIcons({ label_hover_color: value }, index);
-						},
-						label: __("Text Hover Color")
-					}];
+					color_control = wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Text Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].label_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].label_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ label_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Icon Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Icon Background Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_bg_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_bg_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_bg_color: value }, index);
+							},
+							allowReset: true
+						})
+					);
+					color_control_hover = wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Text Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].label_hover_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].label_hover_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ label_hover_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Icon Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_hover_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_hover_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_hover_color: value }, index);
+							},
+							allowReset: true
+						}),
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Icon Background Hover Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: icons[index].icon_bg_hover_color } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: icons[index].icon_bg_hover_color,
+							onChange: function onChange(value) {
+								return _this2.saveIcons({ icon_bg_hover_color: value }, index);
+							},
+							allowReset: true
+						})
+					);
 				}
 
 				return wp.element.createElement(
@@ -56462,28 +56758,75 @@ var UAGBIconList = function (_Component) {
 							__("Remove Image")
 						)
 					),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 					wp.element.createElement(
-						"p",
-						{ className: "components-base-control__label" },
-						__("URL")
+						"h2",
+						null,
+						__("List Item Link")
 					),
-					wp.element.createElement(TextControl, {
-						value: icons[index].link,
-						onChange: function onChange(value) {
-							_this2.saveIcons({ link: value }, index);
-						},
-						placeholder: __("Enter URL")
-					}),
 					wp.element.createElement(ToggleControl, {
-						label: __("Open in New Tab"),
-						checked: icons[index].target,
+						label: __("Disable Link"),
+						checked: icons[index].disableLink,
 						onChange: function onChange(value) {
-							_this2.saveIcons({ target: value }, index);
+							_this2.saveIcons({ disableLink: value }, index);
 						}
 					}),
-					wp.element.createElement(PanelColorSettings, {
-						title: __("Color Settings"),
-						colorSettings: color_control })
+					!icons[index].disableLink && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "components-base-control__label" },
+							__("URL")
+						),
+						wp.element.createElement(TextControl, {
+							value: icons[index].link,
+							onChange: function onChange(value) {
+								_this2.saveIcons({ link: value }, index);
+							},
+							placeholder: __("Enter URL")
+						}),
+						wp.element.createElement(ToggleControl, {
+							label: __("Open in New Tab"),
+							checked: icons[index].target,
+							onChange: function onChange(value) {
+								_this2.saveIcons({ target: value }, index);
+							}
+						})
+					),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Icon #") + " " + (index + 1) + " " + __(" Color Settings")
+					),
+					wp.element.createElement(
+						TabPanel,
+						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+							activeClass: "active-tab",
+							tabs: [{
+								name: "normal",
+								title: __("Normal"),
+								className: "uagb-normal-tab"
+							}, {
+								name: "hover",
+								title: __("Hover"),
+								className: "uagb-hover-tab"
+							}] },
+						function (tabName) {
+							var color_tab = void 0;
+							if ("normal" === tabName.name) {
+								color_tab = color_control;
+							} else {
+								color_tab = color_control_hover;
+							}
+							return wp.element.createElement(
+								"div",
+								null,
+								color_tab
+							);
+						}
+					)
 				);
 			};
 
@@ -56581,13 +56924,9 @@ var UAGBIconList = function (_Component) {
 								options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
 								onChange: function onChange(value) {
 									return setAttributes({ stack: value });
-								}
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-note" },
-								__("Note: Choose on what breakpoint the Icons will stack.")
-							)
+								},
+								help: __("Note: Choose on what breakpoint the Icons will stack.")
+							})
 						),
 						wp.element.createElement(ToggleControl, {
 							label: __("Hide Labels"),
@@ -56982,9 +57321,9 @@ function styling(props) {
 
 /***/ }),
 /* 375 */
-/*!*********************************************!*\
-  !*** ./src/blocks/restaurant-menu/block.js ***!
-  \*********************************************/
+/*!****************************************!*\
+  !*** ./src/blocks/price-list/block.js ***!
+  \****************************************/
 /*! no exports provided */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -57052,7 +57391,7 @@ registerBlockType("uagb/restaurant-menu", {
 	title: uagb_blocks_info.blocks["uagb/restaurant-menu"]["title"], // Block title.
 	description: uagb_blocks_info.blocks["uagb/restaurant-menu"]["description"], // Block description.
 	icon: __WEBPACK_IMPORTED_MODULE_1__dist_blocks_uagb_controls_block_icons__["a" /* default */].restaurant_menu, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
-	keywords: [__("restaurant"), __("menu"), __("uagb")],
+	keywords: [__("pricelist"), __("menu"), __("uagb")],
 	category: uagb_blocks_info.category,
 	attributes: __WEBPACK_IMPORTED_MODULE_8__attributes__["a" /* default */],
 	edit: __WEBPACK_IMPORTED_MODULE_7__edit__["a" /* default */],
@@ -57125,9 +57464,9 @@ registerBlockType("uagb/restaurant-menu", {
 
 /***/ }),
 /* 376 */
-/*!********************************************!*\
-  !*** ./src/blocks/restaurant-menu/edit.js ***!
-  \********************************************/
+/*!***************************************!*\
+  !*** ./src/blocks/price-list/edit.js ***!
+  \***************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -57386,10 +57725,7 @@ var UAGBRestaurantMenu = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Typography"),
-						initialOpen: false
-					},
+					{ title: __("Typography"), initialOpen: false },
 					wp.element.createElement(SelectControl, {
 						label: __("Title Tag"),
 						value: headingTag,
@@ -57459,65 +57795,60 @@ var UAGBRestaurantMenu = function (_Component) {
 					}]
 				})
 			);
-
 			var separatorSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Seperator"), initialOpen: false },
-					wp.element.createElement(SelectControl, {
-						label: __("Seperator Style"),
-						value: seperatorStyle,
+				PanelBody,
+				{ title: __("Seperator"), initialOpen: false },
+				wp.element.createElement(SelectControl, {
+					label: __("Seperator Style"),
+					value: seperatorStyle,
+					onChange: function onChange(value) {
+						return setAttributes({ seperatorStyle: value });
+					},
+					options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }, { value: "groove", label: __("Groove") }, { value: "inset", label: __("Inset") }, { value: "outset", label: __("Outset") }, { value: "ridge", label: __("Ridge") }]
+				}),
+				"none" != seperatorStyle && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Seperator Width (%)"),
+						value: seperatorWidth,
 						onChange: function onChange(value) {
-							return setAttributes({ seperatorStyle: value });
+							return setAttributes({ seperatorWidth: value });
 						},
-						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }, { value: "groove", label: __("Groove") }, { value: "inset", label: __("Inset") }, { value: "outset", label: __("Outset") }, { value: "ridge", label: __("Ridge") }]
+						min: 0,
+						max: 100,
+						allowReset: true
 					}),
-					"none" != seperatorStyle && wp.element.createElement(
+					wp.element.createElement(RangeControl, {
+						label: __("Seperator Thickness"),
+						value: seperatorThickness,
+						onChange: function onChange(value) {
+							return setAttributes({ seperatorThickness: value });
+						},
+						min: 0,
+						max: 20,
+						allowReset: true
+					}),
+					wp.element.createElement(
 						Fragment,
 						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Seperator Width"),
-							value: seperatorWidth,
-							onChange: function onChange(value) {
-								return setAttributes({ seperatorWidth: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Seperator Thickness"),
-							value: seperatorThickness,
-							onChange: function onChange(value) {
-								return setAttributes({ seperatorThickness: value });
-							},
-							min: 0,
-							max: 20,
-							allowReset: true
-						}),
 						wp.element.createElement(
-							Fragment,
-							null,
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Seperator Color"),
 							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Seperator Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: seperatorColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: seperatorColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ seperatorColor: colorValue });
-								},
-								allowReset: true
-							})
-						)
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: seperatorColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: seperatorColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ seperatorColor: colorValue });
+							},
+							allowReset: true
+						})
 					)
 				)
 			);
@@ -57582,230 +57913,213 @@ var UAGBRestaurantMenu = function (_Component) {
 
 			// Margin Settings.
 			var marginSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Spacing"), initialOpen: false },
+				wp.element.createElement(RangeControl, {
+					label: __("Row Gap"),
+					value: rowGap,
+					onChange: function onChange(value) {
+						return setAttributes({ rowGap: value });
 					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Column Gap"),
+					value: columnGap,
+					onChange: function onChange(value) {
+						return setAttributes({ columnGap: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Item Horizontal Padding"),
+					value: contentHrPadding,
+					onChange: function onChange(value) {
+						return setAttributes({ contentHrPadding: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Item Vertical Padding"),
+					value: contentVrPadding,
+					onChange: function onChange(value) {
+						return setAttributes({ contentVrPadding: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Title Bottom Margin"),
+					value: titleSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ titleSpace: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				cnt > 0 && wp.element.createElement(
+					Fragment,
+					null,
 					wp.element.createElement(RangeControl, {
-						label: __("Row Gap"),
-						value: rowGap,
+						label: __("Image Horizontal Padding"),
+						value: imgHrPadding,
 						onChange: function onChange(value) {
-							return setAttributes({ rowGap: value });
+							return setAttributes({ imgHrPadding: value });
 						},
 						min: 0,
 						max: 50,
 						allowReset: true
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Column Gap"),
-						value: columnGap,
+						label: __("Image Vertical Padding"),
+						value: imgVrPadding,
 						onChange: function onChange(value) {
-							return setAttributes({ columnGap: value });
+							return setAttributes({ imgVrPadding: value });
 						},
 						min: 0,
 						max: 50,
 						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Item Horizontal Padding"),
-						value: contentHrPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ contentHrPadding: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Item Vertical Padding"),
-						value: contentVrPadding,
-						onChange: function onChange(value) {
-							return setAttributes({ contentVrPadding: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Title Bottom Margin"),
-						value: titleSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ titleSpace: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					cnt > 0 && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Image Horizontal Padding"),
-							value: imgHrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ imgHrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Image Vertical Padding"),
-							value: imgVrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ imgVrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true
-						})
-					)
+					})
 				)
 			);
 
 			var inspect_control = wp.element.createElement(
-				Fragment,
+				InspectorControls,
 				null,
 				wp.element.createElement(
-					InspectorControls,
-					null,
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("General"),
-							initialOpen: true
-						},
-						wp.element.createElement(RangeControl, {
-							label: __("Number of Menu Items"),
-							value: menu_item_count,
-							onChange: function onChange(newCount) {
-								var cloneTest_block = [].concat(_toConsumableArray(rest_menu_item_arr));
-								if (cloneTest_block.length < newCount) {
-									var incAmount = Math.abs(newCount - cloneTest_block.length);
+					PanelBody,
+					{ title: __("General"), initialOpen: true },
+					wp.element.createElement(RangeControl, {
+						label: __("Number of Items"),
+						value: menu_item_count,
+						onChange: function onChange(newCount) {
+							var cloneTest_block = [].concat(_toConsumableArray(rest_menu_item_arr));
+							if (cloneTest_block.length < newCount) {
+								var incAmount = Math.abs(newCount - cloneTest_block.length);
 
-									{
-										__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(incAmount, function (n) {
+								{
+									__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(incAmount, function (n) {
 
-											cloneTest_block.push({
-												description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
-												title: __(" Menu Item" + (cloneTest_block.length + 1)),
-												price: __("$19"),
-												image: ""
-											});
+										cloneTest_block.push({
+											description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit."),
+											title: __(" Menu Item" + (cloneTest_block.length + 1)),
+											price: __("$19"),
+											image: ""
 										});
-									}
-									setAttributes({ rest_menu_item_arr: cloneTest_block });
-								} else {
-									var _incAmount = Math.abs(newCount - cloneTest_block.length);
-									var data_new = cloneTest_block;
-									for (var i = 0; i < _incAmount; i++) {
-										data_new.pop();
-									}
-									setAttributes({ rest_menu_item_arr: data_new });
+									});
 								}
-								setAttributes({ menu_item_count: newCount });
-							},
-							min: 0,
-							max: 10,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns"),
-							value: columns,
-							onChange: function onChange(value) {
-								return setAttributes({ columns: value });
-							},
-							min: 1,
-							max: Math.min(MAX_COLUMNS, menu_item_count)
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns (Tablet)"),
-							value: tcolumns,
-							onChange: function onChange(value) {
-								return setAttributes({ tcolumns: value });
-							},
-							min: 1,
-							max: Math.min(MAX_COLUMNS, menu_item_count)
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Columns (Mobile)"),
-							value: mcolumns,
-							onChange: function onChange(value) {
-								return setAttributes({ mcolumns: value });
-							},
-							min: 1,
-							max: Math.min(MAX_COLUMNS, menu_item_count)
-						})
-					),
-					wp.element.createElement(
-						PanelBody,
-						{
-							title: __("Image"),
-							initialOpen: false
+								setAttributes({ rest_menu_item_arr: cloneTest_block });
+							} else {
+								var _incAmount = Math.abs(newCount - cloneTest_block.length);
+								var data_new = cloneTest_block;
+								for (var i = 0; i < _incAmount; i++) {
+									data_new.pop();
+								}
+								setAttributes({ rest_menu_item_arr: data_new });
+							}
+							setAttributes({ menu_item_count: newCount });
 						},
-						__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(menu_item_count, function (n) {
-							return imageControls(n);
+						min: 0,
+						max: 10,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns"),
+						value: columns,
+						onChange: function onChange(value) {
+							return setAttributes({ columns: value });
+						},
+						min: 1,
+						max: Math.min(MAX_COLUMNS, menu_item_count)
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns (Tablet)"),
+						value: tcolumns,
+						onChange: function onChange(value) {
+							return setAttributes({ tcolumns: value });
+						},
+						min: 1,
+						max: Math.min(MAX_COLUMNS, menu_item_count)
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Columns (Mobile)"),
+						value: mcolumns,
+						onChange: function onChange(value) {
+							return setAttributes({ mcolumns: value });
+						},
+						min: 1,
+						max: Math.min(MAX_COLUMNS, menu_item_count)
+					})
+				),
+				wp.element.createElement(
+					PanelBody,
+					{ title: __("Image"), initialOpen: false },
+					__WEBPACK_IMPORTED_MODULE_7_lodash_times___default()(menu_item_count, function (n) {
+						return imageControls(n);
+					}),
+					cnt > 0 && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(SelectControl, {
+							label: __("Image Position"),
+							value: imagePosition,
+							onChange: function onChange(value) {
+								return setAttributes({ imagePosition: value });
+							},
+							options: [{ value: "top", label: __("Top") }, { value: "left", label: __("Left") }, { value: "right", label: __("Right") }]
 						}),
-						cnt > 0 && wp.element.createElement(
+						(imagePosition == "left" || imagePosition == "right") && wp.element.createElement(
 							Fragment,
 							null,
 							wp.element.createElement(SelectControl, {
-								label: __("Image Position"),
-								value: imagePosition,
+								label: __("Vertical Alignment"),
+								value: imageAlignment,
 								onChange: function onChange(value) {
-									return setAttributes({ imagePosition: value });
+									return setAttributes({ imageAlignment: value });
 								},
-								options: [{ value: "top", label: __("Top") }, { value: "left", label: __("Left") }, { value: "right", label: __("Right") }]
+								options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
 							}),
-							(imagePosition == "left" || imagePosition == "right") && wp.element.createElement(
-								Fragment,
-								null,
-								wp.element.createElement(SelectControl, {
-									label: __("Vertical Alignment"),
-									value: imageAlignment,
-									onChange: function onChange(value) {
-										return setAttributes({ imageAlignment: value });
-									},
-									options: [{ value: "top", label: __("Top") }, { value: "middle", label: __("Middle") }]
-								}),
-								wp.element.createElement(SelectControl, {
-									label: __("Stack on"),
-									value: stack,
-									options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-									help: __("Note: Choose on what breakpoint the Images will stack."),
-									onChange: function onChange(value) {
-										return setAttributes({ stack: value });
-									}
-								})
-							),
 							wp.element.createElement(SelectControl, {
-								label: __("Image Size"),
-								options: imageSizeOptions,
-								value: imageSize,
+								label: __("Stack on"),
+								value: stack,
+								options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+								help: __("Note: Choose on what breakpoint the Images will stack."),
 								onChange: function onChange(value) {
-									return setAttributes({ imageSize: value });
+									return setAttributes({ stack: value });
 								}
-							}),
-							wp.element.createElement(RangeControl, {
-								label: __("Width"),
-								value: imageWidth,
-								onChange: function onChange(value) {
-									return setAttributes({ imageWidth: value });
-								},
-								min: 0,
-								max: 500,
-								allowReset: true
 							})
-						)
-					),
-					separatorSettings,
-					TypographySettings,
-					marginSettings
-				)
+						),
+						wp.element.createElement(SelectControl, {
+							label: __("Image Size"),
+							options: imageSizeOptions,
+							value: imageSize,
+							onChange: function onChange(value) {
+								return setAttributes({ imageSize: value });
+							}
+						}),
+						wp.element.createElement(RangeControl, {
+							label: __("Width"),
+							value: imageWidth,
+							onChange: function onChange(value) {
+								return setAttributes({ imageWidth: value });
+							},
+							min: 0,
+							max: 500,
+							allowReset: true
+						})
+					)
+				),
+				separatorSettings,
+				TypographySettings,
+				marginSettings
 			);
 
 			return wp.element.createElement(
@@ -57895,9 +58209,9 @@ var UAGBRestaurantMenu = function (_Component) {
 
 /***/ }),
 /* 377 */
-/*!*****************************************************!*\
-  !*** ./src/blocks/restaurant-menu/inline-styles.js ***!
-  \*****************************************************/
+/*!************************************************!*\
+  !*** ./src/blocks/price-list/inline-styles.js ***!
+  \************************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -58036,9 +58350,9 @@ function RestMenuStyle(props) {
 
 /***/ }),
 /* 378 */
-/*!**************************************************!*\
-  !*** ./src/blocks/restaurant-menu/attributes.js ***!
-  \**************************************************/
+/*!*********************************************!*\
+  !*** ./src/blocks/price-list/attributes.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /*! exports used: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -58206,9 +58520,9 @@ var attributes = {
 
 /***/ }),
 /* 379 */
-/*!***********************************************!*\
-  !*** ./src/blocks/restaurant-menu/style.scss ***!
-  \***********************************************/
+/*!******************************************!*\
+  !*** ./src/blocks/price-list/style.scss ***!
+  \******************************************/
 /*! dynamic exports provided */
 /***/ (function(module, exports) {
 
@@ -58216,9 +58530,9 @@ var attributes = {
 
 /***/ }),
 /* 380 */
-/*!************************************************!*\
-  !*** ./src/blocks/restaurant-menu/editor.scss ***!
-  \************************************************/
+/*!*******************************************!*\
+  !*** ./src/blocks/price-list/editor.scss ***!
+  \*******************************************/
 /*! dynamic exports provided */
 /***/ (function(module, exports) {
 
@@ -59123,110 +59437,91 @@ var UAGBcontentTimeline = function (_Component) {
 				isMulti: false
 			};
 
-			var iconColorSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: separatorColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorColor: colorValue });
-						},
-						label: __("Line Color")
-					}, {
-						value: iconColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconColor: colorValue });
-						},
-						label: __("Icon Color")
-					}, {
-						value: separatorBg,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorBg: colorValue });
-						},
-						label: __("Background Color")
-					}, {
-						value: separatorBorder,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorBorder: colorValue });
-						},
-						label: __("Border Color")
-					}]
-				})
-			);
+			var iconColorSettings = wp.element.createElement(PanelColorSettings, { title: __("Color Settings"), initialOpen: true,
+				colorSettings: [{
+					value: separatorColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorColor: colorValue });
+					},
+					label: __("Line Color")
+				}, {
+					value: iconColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconColor: colorValue });
+					},
+					label: __("Icon Color")
+				}, {
+					value: separatorBg,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorBg: colorValue });
+					},
+					label: __("Background Color")
+				}, {
+					value: separatorBorder,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorBorder: colorValue });
+					},
+					label: __("Border Color")
+				}]
+			});
 
-			var iconFocusSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: separatorFillColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorFillColor: colorValue });
-						},
-						label: __("Line Color")
-					}, {
-						value: iconFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconFocus: colorValue });
-						},
-						label: __("Icon Color")
-					}, {
-						value: iconBgFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconBgFocus: colorValue });
-						},
-						label: __("Background Color")
-					}, {
-						value: borderFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ borderFocus: colorValue });
-						},
-						label: __("Border Color")
-					}]
-				})
-			);
+			var iconFocusSettings = wp.element.createElement(PanelColorSettings, { title: __("Color Settings"), initialOpen: true,
+				colorSettings: [{
+					value: separatorFillColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorFillColor: colorValue });
+					},
+					label: __("Line Color")
+				}, {
+					value: iconFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconFocus: colorValue });
+					},
+					label: __("Icon Color")
+				}, {
+					value: iconBgFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconBgFocus: colorValue });
+					},
+					label: __("Background Color")
+				}, {
+					value: borderFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ borderFocus: colorValue });
+					},
+					label: __("Border Color")
+				}]
+			});
 
 			var iconControls = wp.element.createElement(
-				Fragment,
-				null,
+				PanelBody,
+				{ title: __("Connector Color Settings"), initialOpen: true },
 				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Connector Color Settings"),
-						initialOpen: true
-					},
-					wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "focus",
-								title: __("Focus"),
-								className: "uagb-focus-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("focus" === tabName.name) {
-								tabout = iconFocusSettings;
-							} else {
-								tabout = iconColorSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "focus",
+							title: __("Focus"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout = void 0;
+						if ("focus" === tabName.name) {
+							tabout = iconFocusSettings;
+						} else {
+							tabout = iconColorSettings;
 						}
-					)
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout
+						);
+					}
 				)
 			);
 
@@ -59245,69 +59540,62 @@ var UAGBcontentTimeline = function (_Component) {
 			};
 
 			var renderSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Date Settings"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Date Settings"), initialOpen: false },
+				wp.element.createElement(ToggleControl, {
+					label: __("Display Post Date"),
+					checked: displayPostDate,
+					onChange: this.toggleDisplayPostDate
+				}),
+				displayPostDate && __WEBPACK_IMPORTED_MODULE_1_lodash_times___default()(timelineItem, function (n) {
+					return renderDateSettings(n);
+				}),
+				displayPostDate && timelinAlignment !== "center" && wp.element.createElement(RangeControl, {
+					label: __("Date Bottom Spacing"),
+					value: dateBottomspace,
+					onChange: function onChange(value) {
+						return setAttributes({ dateBottomspace: value });
 					},
-					wp.element.createElement(ToggleControl, {
-						label: __("Display Post Date"),
-						checked: displayPostDate,
-						onChange: this.toggleDisplayPostDate
-					}),
-					displayPostDate && __WEBPACK_IMPORTED_MODULE_1_lodash_times___default()(timelineItem, function (n) {
-						return renderDateSettings(n);
-					}),
-					displayPostDate && timelinAlignment !== "center" && wp.element.createElement(RangeControl, {
-						label: __("Date Bottom Spacing"),
-						value: dateBottomspace,
-						onChange: function onChange(value) {
-							return setAttributes({ dateBottomspace: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					}),
-					displayPostDate && wp.element.createElement(
+					min: 0,
+					max: 50,
+					allowReset: true
+				}),
+				displayPostDate && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
 						Fragment,
 						null,
 						wp.element.createElement(
-							Fragment,
-							null,
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Date Color"),
 							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Date Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: dateColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: dateColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ dateColor: colorValue });
-								},
-								allowReset: true
-							})
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: dateColor } })
+							)
 						),
-						wp.element.createElement(RangeControl, {
-							label: __("Date Font Size"),
-							value: dateFontsize,
-							onChange: function onChange(value) {
-								return setAttributes({ dateFontsize: value });
+						wp.element.createElement(ColorPalette, {
+							value: dateColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ dateColor: colorValue });
 							},
-							min: 1,
-							max: 50,
-							initialPosition: 16,
-							beforeIcon: "editor-textcolor",
 							allowReset: true
 						})
-					)
+					),
+					wp.element.createElement(RangeControl, {
+						label: __("Date Font Size"),
+						value: dateFontsize,
+						onChange: function onChange(value) {
+							return setAttributes({ dateFontsize: value });
+						},
+						min: 1,
+						max: 50,
+						initialPosition: 16,
+						beforeIcon: "editor-textcolor",
+						allowReset: true
+					})
 				)
 			);
 
@@ -59316,10 +59604,7 @@ var UAGBcontentTimeline = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("General"),
-						initialOpen: false
-					},
+					{ title: __("General"), initialOpen: true },
 					wp.element.createElement(RangeControl, {
 						label: __("Number of Items"),
 						value: timelineItem,
@@ -59336,10 +59621,7 @@ var UAGBcontentTimeline = function (_Component) {
 				renderSettings,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Layout"),
-						initialOpen: false
-					},
+					{ title: __("Layout"), initialOpen: false },
 					wp.element.createElement(SelectControl, {
 						label: __("Orientation"),
 						value: timelinAlignment,
@@ -59368,10 +59650,7 @@ var UAGBcontentTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
-					},
+					{ title: __("Spacing"), initialOpen: false },
 					wp.element.createElement(RangeControl, {
 						label: __("Horizontal Space"),
 						value: horizontalSpace,
@@ -59405,10 +59684,7 @@ var UAGBcontentTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Timeline Item"),
-						initialOpen: false
-					},
+					{ title: __("Timeline Item"), initialOpen: false },
 					wp.element.createElement(SelectControl, {
 						label: __("Heading Tag"),
 						value: headingTag,
@@ -59466,10 +59742,7 @@ var UAGBcontentTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Connector"),
-						initialOpen: false
-					},
+					{ title: __("Connector"), initialOpen: false },
 					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__fonticonpicker_react_fonticonpicker___default.a, icon_props),
 					wp.element.createElement(RangeControl, {
 						label: __("Icon Size"),
@@ -60161,251 +60434,229 @@ var UAGBTimeline = function (_Component) {
 				isMulti: false
 			};
 
-			var iconColorSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: separatorColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorColor: colorValue });
-						},
-						label: __("Line Color")
-					}, {
-						value: iconColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconColor: colorValue });
-						},
-						label: __("Icon Color")
-					}, {
-						value: separatorBg,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorBg: colorValue });
-						},
-						label: __("Background Color")
-					}, {
-						value: separatorBorder,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorBorder: colorValue });
-						},
-						label: __("Border Color")
-					}]
-				})
-			);
+			var iconColorSettings = wp.element.createElement(PanelColorSettings, {
+				title: __("Color Settings"),
+				initialOpen: true,
+				colorSettings: [{
+					value: separatorColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorColor: colorValue });
+					},
+					label: __("Line Color")
+				}, {
+					value: iconColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconColor: colorValue });
+					},
+					label: __("Icon Color")
+				}, {
+					value: separatorBg,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorBg: colorValue });
+					},
+					label: __("Background Color")
+				}, {
+					value: separatorBorder,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorBorder: colorValue });
+					},
+					label: __("Border Color")
+				}]
+			});
 
-			var iconFocusSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Color Settings"),
-					initialOpen: true,
-					colorSettings: [{
-						value: separatorFillColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ separatorFillColor: colorValue });
-						},
-						label: __("Line Color")
-					}, {
-						value: iconFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconFocus: colorValue });
-						},
-						label: __("Icon Color")
-					}, {
-						value: iconBgFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ iconBgFocus: colorValue });
-						},
-						label: __("Background Color")
-					}, {
-						value: borderFocus,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ borderFocus: colorValue });
-						},
-						label: __("Border Color")
-					}]
-				})
-			);
+			var iconFocusSettings = wp.element.createElement(PanelColorSettings, {
+				title: __("Color Settings"),
+				initialOpen: true,
+				colorSettings: [{
+					value: separatorFillColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ separatorFillColor: colorValue });
+					},
+					label: __("Line Color")
+				}, {
+					value: iconFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconFocus: colorValue });
+					},
+					label: __("Icon Color")
+				}, {
+					value: iconBgFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ iconBgFocus: colorValue });
+					},
+					label: __("Background Color")
+				}, {
+					value: borderFocus,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ borderFocus: colorValue });
+					},
+					label: __("Border Color")
+				}]
+			});
 
 			var iconControls = wp.element.createElement(
-				Fragment,
-				null,
+				PanelBody,
+				{ title: __("Connector Color Settings"), initialOpen: true },
 				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Connector Color Settings"),
-						initialOpen: true
-					},
-					wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "focus",
-								title: __("Focus"),
-								className: "uagb-focus-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("focus" === tabName.name) {
-								tabout = iconFocusSettings;
-							} else {
-								tabout = iconColorSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "focus",
+							title: __("Focus"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout = void 0;
+						if ("focus" === tabName.name) {
+							tabout = iconFocusSettings;
+						} else {
+							tabout = iconColorSettings;
 						}
-					)
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout
+						);
+					}
 				)
 			);
 
 			var colorSetting = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelColorSettings,
-					{
-						title: __("Color Settings"),
-						initialOpen: false,
-						colorSettings: [{
-							value: backgroundColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ backgroundColor: colorValue });
-							},
-							label: __("Background Color")
-						}]
-					},
-					displayPostDate && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Date Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: dateColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: dateColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ dateColor: colorValue });
-							},
-							allowReset: true
-						})
-					),
+				PanelColorSettings,
+				{ title: __("Color Settings"), initialOpen: false,
+					colorSettings: [{
+						value: backgroundColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ backgroundColor: colorValue });
+						},
+						label: __("Background Color")
+					}] },
+				displayPostDate && wp.element.createElement(
+					Fragment,
+					null,
 					wp.element.createElement(
-						Fragment,
-						null,
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Date Color"),
 						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Heading Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: headingColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: headingColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ headingColor: colorValue });
-							},
-							allowReset: true
-						})
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: dateColor } })
+						)
 					),
-					displayPostAuthor && wp.element.createElement(
-						Fragment,
-						null,
+					wp.element.createElement(ColorPalette, {
+						value: dateColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ dateColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
+				wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Heading Color"),
 						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Author Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: authorColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: authorColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ authorColor: colorValue });
-							},
-							allowReset: true
-						})
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: headingColor } })
+						)
 					),
-					displayPostExcerpt && wp.element.createElement(
-						Fragment,
-						null,
+					wp.element.createElement(ColorPalette, {
+						value: headingColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ headingColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
+				displayPostAuthor && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Author Color"),
 						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Content Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: subHeadingColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: subHeadingColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ subHeadingColor: colorValue });
-							},
-							allowReset: true
-						})
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: authorColor } })
+						)
 					),
-					displayPostLink && wp.element.createElement(
-						Fragment,
-						null,
+					wp.element.createElement(ColorPalette, {
+						value: authorColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ authorColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
+				displayPostExcerpt && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Content Color"),
 						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaColor: colorValue });
-							},
-							allowReset: true
-						}),
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: subHeadingColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: subHeadingColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ subHeadingColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
+				displayPostLink && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("CTA Color"),
 						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Background Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBackground } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaBackground,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaBackground: colorValue });
-							},
-							allowReset: true
-						})
-					)
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ ctaColor: colorValue });
+						},
+						allowReset: true
+					}),
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("CTA Background Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBackground } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaBackground,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ ctaBackground: colorValue });
+						},
+						allowReset: true
+					})
 				)
 			);
 
@@ -60414,9 +60665,7 @@ var UAGBTimeline = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{ title: __("Query"),
-						initialOpen: true
-					},
+					{ title: __("Query"), initialOpen: true },
 					wp.element.createElement(QueryControls, _extends({
 						numberOfItems: postsToShow
 					}, { order: order, orderBy: orderBy }, {
@@ -60438,10 +60687,7 @@ var UAGBTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Layout"),
-						initialOpen: false
-					},
+					{ title: __("Layout"), initialOpen: false },
 					wp.element.createElement(SelectControl, {
 						label: __("Orientation"),
 						value: timelinAlignment,
@@ -60470,9 +60716,7 @@ var UAGBTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{ title: __("Image"),
-						initialOpen: false
-					},
+					{ title: __("Image"), initialOpen: false },
 					wp.element.createElement(ToggleControl, {
 						label: __("Display Featured Image"),
 						checked: displayPostImage,
@@ -60491,9 +60735,7 @@ var UAGBTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{ title: __("Content"),
-						initialOpen: false
-					},
+					{ title: __("Content"), initialOpen: false },
 					wp.element.createElement(ToggleControl, {
 						label: __("Display Post Author"),
 						checked: displayPostAuthor,
@@ -60553,10 +60795,7 @@ var UAGBTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Timeline Item"),
-						initialOpen: false
-					},
+					{ title: __("Timeline Item"), initialOpen: false },
 					wp.element.createElement(SelectControl, {
 						label: __("Heading Tag"),
 						value: headingTag,
@@ -60639,10 +60878,7 @@ var UAGBTimeline = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Connector"),
-						initialOpen: false
-					},
+					{ title: __("Connector"), initialOpen: false },
 					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__fonticonpicker_react_fonticonpicker___default.a, icon_props),
 					wp.element.createElement(RangeControl, {
 						label: __("Icon Size"),
@@ -60689,10 +60925,7 @@ var UAGBTimeline = function (_Component) {
 				colorSetting,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
-					},
+					{ title: __("Spacing"), initialOpen: false },
 					wp.element.createElement(RangeControl, {
 						label: __("Block Padding"),
 						value: bgPadding,
@@ -61919,49 +62152,68 @@ var UAGBCallToAction = function (_Component) {
 
 			// CTA settings.
 			var ctaSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Button"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Button"), initialOpen: false },
+				wp.element.createElement(SelectControl, {
+					label: __("Type"),
+					value: ctaType,
+					onChange: function onChange(value) {
+						return setAttributes({ ctaType: value });
 					},
-					wp.element.createElement(SelectControl, {
-						label: __("Type"),
-						value: ctaType,
-						onChange: function onChange(value) {
-							return setAttributes({ ctaType: value });
-						},
-						options: [{ value: "none", label: __("None") }, { value: "text", label: __("Text") }, { value: "button", label: __("Button") }, { value: "all", label: __("Complete Box") }]
-					}),
-					(ctaType === "text" || ctaType === "button") && wp.element.createElement(TextControl, {
+					options: [{ value: "none", label: __("None") }, { value: "text", label: __("Text") }, { value: "button", label: __("Button") }, { value: "all", label: __("Complete Box") }]
+				}),
+				(ctaType === "text" || ctaType === "button") && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
 						label: __("Text"),
 						value: ctaText,
 						onChange: function onChange(value) {
 							return setAttributes({ ctaText: value });
 						}
 					}),
-					ctaType !== "none" && wp.element.createElement(
+					wp.element.createElement(RangeControl, {
+						label: __("Button Font Size"),
+						value: ctaFontSize,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaFontSize: value });
+						},
+						min: 0,
+						max: 50,
+						initialPosition: 16,
+						beforeIcon: "editor-textcolor",
+						allowReset: true
+					})
+				),
+				ctaType !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
+						label: __("Link"),
+						value: ctaLink,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaLink: value });
+						}
+					}),
+					wp.element.createElement(ToggleControl, {
+						label: __("Open in new Window"),
+						checked: ctaTarget,
+						onChange: this.toggleTarget
+					})
+				),
+				wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+				wp.element.createElement(
+					"h2",
+					null,
+					__("Button Icon")
+				),
+				ctaType !== "all" && ctaType !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default.a, cta_icon_props),
+					ctaIcon != '' && wp.element.createElement(
 						Fragment,
 						null,
-						wp.element.createElement(TextControl, {
-							label: __("Link"),
-							value: ctaLink,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaLink: value });
-							}
-						}),
-						wp.element.createElement(ToggleControl, {
-							label: __("Open in new Window"),
-							checked: ctaTarget,
-							onChange: this.toggleTarget
-						})
-					),
-					ctaType !== "all" && ctaType !== "none" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(__WEBPACK_IMPORTED_MODULE_2__fonticonpicker_react_fonticonpicker___default.a, cta_icon_props),
 						wp.element.createElement(SelectControl, {
 							label: __("Icon Position"),
 							value: ctaIconPosition,
@@ -61981,89 +62233,67 @@ var UAGBCallToAction = function (_Component) {
 							beforeIcon: "",
 							allowReset: true
 						})
+					)
+				),
+				ctaType == "button" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Button Padding")
 					),
-					ctaType == "button" && wp.element.createElement(
+					wp.element.createElement(RangeControl, {
+						label: __("Vertical"),
+						value: ctaBtnVertPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBtnVertPadding: value });
+						},
+						min: 0,
+						max: 50,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Horizontal"),
+						value: ctaBtnHrPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBtnHrPadding: value });
+						},
+						min: 0,
+						max: 50,
+						beforeIcon: "",
+						allowReset: true
+					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						"h2",
+						null,
+						__("Button Border")
+					),
+					wp.element.createElement(SelectControl, {
+						label: __("Style"),
+						value: ctaBorderStyle,
+						onChange: function onChange(value) {
+							return setAttributes({ ctaBorderStyle: value });
+						},
+						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
+					}),
+					ctaBorderStyle != "none" && wp.element.createElement(
 						Fragment,
 						null,
 						wp.element.createElement(RangeControl, {
-							label: __("Vertical Padding"),
-							value: ctaBtnVertPadding,
+							label: __("Width"),
+							value: ctaBorderWidth,
 							onChange: function onChange(value) {
-								return setAttributes({ ctaBtnVertPadding: value });
+								return setAttributes({ ctaBorderWidth: value });
 							},
 							min: 0,
-							max: 50,
+							max: 10,
 							beforeIcon: "",
 							allowReset: true
 						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Horizontal Padding"),
-							value: ctaBtnHrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaBtnHrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Border Style"),
-							value: ctaBorderStyle,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaBorderStyle: value });
-							},
-							options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "double", label: __("Double") }, { value: "dashed", label: __("Dashed") }, { value: "dotted", label: __("Dotted") }]
-						}),
-						ctaBorderStyle !== "none" && wp.element.createElement(
-							Fragment,
-							null,
-							wp.element.createElement(RangeControl, {
-								label: __("Border Width"),
-								value: ctaBorderWidth,
-								onChange: function onChange(value) {
-									return setAttributes({ ctaBorderWidth: value });
-								},
-								min: 0,
-								max: 10,
-								beforeIcon: "",
-								allowReset: true
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Border Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: ctaBorderColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ ctaBorderColor: colorValue });
-								},
-								allowReset: true
-							}),
-							wp.element.createElement(
-								"p",
-								{ className: "uagb-setting-label" },
-								__("Border Hover Color"),
-								wp.element.createElement(
-									"span",
-									{ className: "components-base-control__label" },
-									wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderhoverColor } })
-								)
-							),
-							wp.element.createElement(ColorPalette, {
-								value: ctaBorderhoverColor,
-								onChange: function onChange(colorValue) {
-									return setAttributes({ ctaBorderhoverColor: colorValue });
-								},
-								allowReset: true
-							})
-						),
 						wp.element.createElement(RangeControl, {
 							label: __("Rounded Corner"),
 							value: ctaBorderRadius,
@@ -62076,321 +62306,363 @@ var UAGBCallToAction = function (_Component) {
 							allowReset: true
 						})
 					)
+				),
+				ctaType === "text" && wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-hover-tab"
+						}] },
+					function (tabName) {
+						var cta_text_tab = void 0;
+						if ("normal" === tabName.name) {
+							cta_text_tab = cta_txt_color;
+						} else {
+							cta_text_tab = cta_txt_hover_color;
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							cta_text_tab
+						);
+					}
+				),
+				ctaType === "button" && wp.element.createElement(
+					TabPanel,
+					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+						activeClass: "active-tab",
+						tabs: [{
+							name: "normal",
+							title: __("Normal"),
+							className: "uagb-normal-tab"
+						}, {
+							name: "hover",
+							title: __("Hover"),
+							className: "uagb-focus-tab"
+						}] },
+					function (tabName) {
+						var tabout = void 0;
+						if ("normal" === tabName.name) {
+							tabout = ctaNormalSettings;
+						} else {
+							tabout = ctaHoverSettings;
+						}
+						return wp.element.createElement(
+							"div",
+							null,
+							tabout
+						);
+					}
 				)
 			);
 
 			var ctaNormalSettings = wp.element.createElement(
 				Fragment,
 				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Button Color"),
-					initialOpen: true,
-					colorSettings: [{
-						value: ctaBtnLinkColor,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Text Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBtnLinkColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBtnLinkColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBtnLinkColor: colorValue });
+					},
+					allowReset: true
+				}),
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Background Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBgColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBgColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBgColor: colorValue });
+					},
+					allowReset: true
+				}),
+				ctaBorderStyle !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Border Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaBorderColor,
 						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBtnLinkColor: colorValue });
+							return setAttributes({ ctaBorderColor: colorValue });
 						},
-						label: __("Color")
-					}, {
-						value: ctaBgColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBgColor: colorValue });
-						},
-						label: __("Background Color")
-					}]
-				})
+						allowReset: true
+					})
+				)
 			);
 
 			var ctaHoverSettings = wp.element.createElement(
 				Fragment,
 				null,
-				wp.element.createElement(PanelColorSettings, {
-					title: __("Button Hover Color"),
-					initialOpen: true,
-					colorSettings: [{
-						value: ctaLinkHoverColor,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Text Hover Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaLinkHoverColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaLinkHoverColor: colorValue });
+					},
+					allowReset: true
+				}),
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Background Hover Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBgHoverColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBgHoverColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBgHoverColor: colorValue });
+					},
+					allowReset: true
+				}),
+				ctaBorderStyle !== "none" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Border Hover Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBorderhoverColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: ctaBorderhoverColor,
 						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaLinkHoverColor: colorValue });
+							return setAttributes({ ctaBorderhoverColor: colorValue });
 						},
-						label: __("Hover Color")
-					}, {
-						value: ctaBgHoverColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ ctaBgHoverColor: colorValue });
-						},
-						label: __("Background Hover Color")
-					}]
+						allowReset: true
+					})
+				)
+			);
+
+			var cta_txt_color = wp.element.createElement(
+				Fragment,
+				null,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("CTA Text Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBtnLinkColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaBtnLinkColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaBtnLinkColor: colorValue });
+					},
+					allowReset: true
+				})
+			);
+
+			var cta_txt_hover_color = wp.element.createElement(
+				Fragment,
+				null,
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("CTA Text Hover Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: ctaLinkHoverColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ ctaLinkHoverColor: colorValue });
+					},
+					allowReset: true
 				})
 			);
 
 			// Typography settings.
 			var TypographySettings = wp.element.createElement(
-				Fragment,
-				null,
+				PanelBody,
+				{ title: __("Content"), initialOpen: false },
 				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Content"),
-						initialOpen: false
+					"h2",
+					null,
+					__('Heading')
+				),
+				wp.element.createElement(SelectControl, {
+					label: __("Heading Tag"),
+					value: titleTag,
+					onChange: function onChange(value) {
+						return setAttributes({ titleTag: value });
 					},
-					wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(SelectControl, {
-							label: __("Heading Tag"),
-							value: titleTag,
-							onChange: function onChange(value) {
-								return setAttributes({ titleTag: value });
-							},
-							options: [{ value: "h1", label: __("H1") }, { value: "h2", label: __("H2") }, { value: "h3", label: __("H3") }, { value: "h4", label: __("H4") }, { value: "h5", label: __("H5") }, { value: "h6", label: __("H6") }]
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Heading Font Size"),
-							value: titleFontSize,
-							onChange: function onChange(value) {
-								return setAttributes({ titleFontSize: value });
-							},
-							min: 10,
-							max: 200,
-							initialPosition: 30,
-							beforeIcon: "editor-textcolor",
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Description Font Size"),
-							value: descFontSize,
-							onChange: function onChange(value) {
-								return setAttributes({ descFontSize: value });
-							},
-							min: 10,
-							max: 200,
-							initialPosition: 16,
-							beforeIcon: "editor-textcolor",
-							allowReset: true
-						})
-					),
-					(ctaType === "text" || ctaType === "button") && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Button Font Size"),
-							value: ctaFontSize,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaFontSize: value });
-							},
-							min: 0,
-							max: 50,
-							initialPosition: 16,
-							beforeIcon: "editor-textcolor",
-							allowReset: true
-						}),
-						ctaPosition === "right" && wp.element.createElement(RangeControl, {
-							label: __("Content Width"),
-							value: contentWidth,
-							onChange: function onChange(value) {
-								return setAttributes({ contentWidth: value });
-							},
-							min: 0,
-							max: 100,
-							initialPosition: 70,
-							allowReset: true
-						})
-					)
-				)
-			);
-
-			var color_settings = wp.element.createElement(
-				Fragment,
-				null,
+					options: [{ value: "h1", label: __("H1") }, { value: "h2", label: __("H2") }, { value: "h3", label: __("H3") }, { value: "h4", label: __("H4") }, { value: "h5", label: __("H5") }, { value: "h6", label: __("H6") }]
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Heading Font Size"),
+					value: titleFontSize,
+					onChange: function onChange(value) {
+						return setAttributes({ titleFontSize: value });
+					},
+					min: 10,
+					max: 200,
+					initialPosition: 30,
+					beforeIcon: "editor-textcolor",
+					allowReset: true
+				}),
 				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Color Settings"),
-						initialOpen: false
-					},
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Heading Color"),
 					wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Heading Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: titleColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: titleColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ titleColor: colorValue });
-							},
-							allowReset: true
-						}),
-						" "
-					),
-					wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("Description Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: descColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: descColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ descColor: colorValue });
-							},
-							allowReset: true
-						}),
-						" "
-					),
-					ctaType === "text" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Text Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaBtnLinkColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaBtnLinkColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaBtnLinkColor: colorValue });
-							},
-							allowReset: true
-						}),
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-setting-label" },
-							__("CTA Text Hover Color"),
-							wp.element.createElement(
-								"span",
-								{ className: "components-base-control__label" },
-								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: ctaLinkHoverColor } })
-							)
-						),
-						wp.element.createElement(ColorPalette, {
-							value: ctaLinkHoverColor,
-							onChange: function onChange(colorValue) {
-								return setAttributes({ ctaLinkHoverColor: colorValue });
-							},
-							allowReset: true
-						})
-					),
-					ctaType === "button" && wp.element.createElement(
-						TabPanel,
-						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-							activeClass: "active-tab",
-							tabs: [{
-								name: "normal",
-								title: __("Normal"),
-								className: "uagb-normal-tab"
-							}, {
-								name: "hover",
-								title: __("Hover"),
-								className: "uagb-focus-tab"
-							}] },
-						function (tabName) {
-							var tabout = void 0;
-							if ("normal" === tabName.name) {
-								tabout = ctaNormalSettings;
-							} else {
-								tabout = ctaHoverSettings;
-							}
-							return wp.element.createElement(
-								"div",
-								null,
-								tabout
-							);
-						}
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: titleColor } })
 					)
-				)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: titleColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ titleColor: colorValue });
+					},
+					allowReset: true
+				}),
+				wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+				wp.element.createElement(
+					"h2",
+					null,
+					__('Description')
+				),
+				wp.element.createElement(RangeControl, {
+					label: __("Description Font Size"),
+					value: descFontSize,
+					onChange: function onChange(value) {
+						return setAttributes({ descFontSize: value });
+					},
+					min: 10,
+					max: 200,
+					initialPosition: 16,
+					beforeIcon: "editor-textcolor",
+					allowReset: true
+				}),
+				wp.element.createElement(
+					"p",
+					{ className: "uagb-setting-label" },
+					__("Description Color"),
+					wp.element.createElement(
+						"span",
+						{ className: "components-base-control__label" },
+						wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: descColor } })
+					)
+				),
+				wp.element.createElement(ColorPalette, {
+					value: descColor,
+					onChange: function onChange(colorValue) {
+						return setAttributes({ descColor: colorValue });
+					},
+					allowReset: true
+				})
 			);
 
 			// Margin Settings.
 			var marginSettings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false
+				PanelBody,
+				{ title: __("Spacing"), initialOpen: false },
+				wp.element.createElement(RangeControl, {
+					label: __("Heading Bottom Margin"),
+					value: titleSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ titleSpace: value });
 					},
-					wp.element.createElement(RangeControl, {
-						label: __("Heading Bottom Margin"),
-						value: titleSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ titleSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Description Bottom Margin"),
-						value: descSpace,
-						onChange: function onChange(value) {
-							return setAttributes({ descSpace: value });
-						},
-						min: 0,
-						max: 50,
-						beforeIcon: "",
-						allowReset: true
-					}),
-					textAlign === "left" && ctaPosition === "right" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Content Left Margin"),
-							value: ctaLeftSpace,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaLeftSpace: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						})
-					),
-					textAlign === "right" && ctaPosition === "right" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Content Right Margin"),
-							value: ctaRightSpace,
-							onChange: function onChange(value) {
-								return setAttributes({ ctaRightSpace: value });
-							},
-							min: 0,
-							max: 50,
-							beforeIcon: "",
-							allowReset: true
-						})
-					)
-				)
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Description Bottom Margin"),
+					value: descSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ descSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				textAlign === "left" && ctaPosition === "right" && wp.element.createElement(RangeControl, {
+					label: __("Content Left Margin"),
+					value: ctaLeftSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ ctaLeftSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				}),
+				textAlign === "right" && ctaPosition === "right" && wp.element.createElement(RangeControl, {
+					label: __("Content Right Margin"),
+					value: ctaRightSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ ctaRightSpace: value });
+					},
+					min: 0,
+					max: 50,
+					beforeIcon: "",
+					allowReset: true
+				})
 			);
 
 			var layouts = wp.element.createElement(
 				PanelBody,
-				{
-					title: __("Layout"),
-					initialOpen: true
-				},
+				{ title: __("Layout"), initialOpen: true },
 				wp.element.createElement(SelectControl, {
 					label: __("Button Position"),
 					value: ctaPosition,
@@ -62408,6 +62680,21 @@ var UAGBCallToAction = function (_Component) {
 						return setAttributes({ stack: value });
 					}
 				}),
+				(ctaType === "text" || ctaType === "button") && wp.element.createElement(
+					Fragment,
+					null,
+					ctaPosition === "right" && wp.element.createElement(RangeControl, {
+						label: __("Content Width (%)"),
+						value: contentWidth,
+						onChange: function onChange(value) {
+							return setAttributes({ contentWidth: value });
+						},
+						min: 0,
+						max: 100,
+						initialPosition: 70,
+						allowReset: true
+					})
+				),
 				ctaPosition && ctaPosition === "right" && wp.element.createElement(SelectControl, {
 					label: __("Verticle Alignment"),
 					value: buttonAlign,
@@ -62420,17 +62707,12 @@ var UAGBCallToAction = function (_Component) {
 
 			// Global Controls.
 			var inspect_control = wp.element.createElement(
-				Fragment,
+				InspectorControls,
 				null,
-				wp.element.createElement(
-					InspectorControls,
-					null,
-					ctaType !== "all" && ctaType !== "none" && layouts,
-					TypographySettings,
-					ctaSettings,
-					color_settings,
-					marginSettings
-				)
+				ctaType !== "all" && ctaType !== "none" && layouts,
+				TypographySettings,
+				ctaSettings,
+				marginSettings
 			);
 
 			// Get icon/Image components.
@@ -62438,54 +62720,42 @@ var UAGBCallToAction = function (_Component) {
 
 			// Get description components.
 			var desc = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					"div",
-					{ className: "uagb-cta-text-wrap" },
-					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Description__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props })
-				)
+				"div",
+				{ className: "uagb-cta-text-wrap" },
+				wp.element.createElement(__WEBPACK_IMPORTED_MODULE_4__components_Description__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props })
 			);
 
 			// Get Title components.
 			var title_text = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					"div",
-					{ className: "uagb-cta__title-wrap" },
-					wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Title__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props })
-				)
+				"div",
+				{ className: "uagb-cta__title-wrap" },
+				wp.element.createElement(__WEBPACK_IMPORTED_MODULE_3__components_Title__["a" /* default */], { attributes: attributes, setAttributes: setAttributes, props: this.props })
 			);
 
 			var output = wp.element.createElement(
-				Fragment,
-				null,
+				"div",
+				{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default.a.apply(undefined, ["uagb-cta__content-wrap"].concat(_toConsumableArray(Object(__WEBPACK_IMPORTED_MODULE_5__classes__["a" /* default */])(attributes)))) },
 				wp.element.createElement(
 					"div",
-					{ className: __WEBPACK_IMPORTED_MODULE_0_classnames___default.a.apply(undefined, ["uagb-cta__content-wrap"].concat(_toConsumableArray(Object(__WEBPACK_IMPORTED_MODULE_5__classes__["a" /* default */])(attributes)))) },
+					{ className: "uagb-cta__left-right-wrap" },
 					wp.element.createElement(
 						"div",
-						{ className: "uagb-cta__left-right-wrap" },
-						wp.element.createElement(
-							"div",
-							{ className: "uagb-cta__content" },
-							ctaPosition == "below-title" && wp.element.createElement(
-								Fragment,
-								null,
-								title_text,
-								desc,
-								is_cta
-							),
-							ctaPosition == "right" && wp.element.createElement(
-								Fragment,
-								null,
-								title_text,
-								desc
-							)
+						{ className: "uagb-cta__content" },
+						ctaPosition == "below-title" && wp.element.createElement(
+							Fragment,
+							null,
+							title_text,
+							desc,
+							is_cta
 						),
-						ctaPosition == "right" && is_cta
-					)
+						ctaPosition == "right" && wp.element.createElement(
+							Fragment,
+							null,
+							title_text,
+							desc
+						)
+					),
+					ctaPosition == "right" && is_cta
 				)
 			);
 
@@ -62869,6 +63139,10 @@ var UAGBColumnEdit = function (_Component) {
 			    gradientAngle = _props$attributes.gradientAngle,
 			    backgroundOpacity = _props$attributes.backgroundOpacity,
 			    backgroundImageColor = _props$attributes.backgroundImageColor,
+			    borderStyle = _props$attributes.borderStyle,
+			    borderWidth = _props$attributes.borderWidth,
+			    borderRadius = _props$attributes.borderRadius,
+			    borderColor = _props$attributes.borderColor,
 			    setAttributes = _props.setAttributes,
 			    className = _props.className,
 			    isSelected = _props.isSelected;
@@ -62879,6 +63153,64 @@ var UAGBColumnEdit = function (_Component) {
 			if (null != element && "undefined" != typeof element) {
 				element.innerHTML = Object(__WEBPACK_IMPORTED_MODULE_4__styling__["a" /* default */])(this.props);
 			}
+
+			var border_setting = wp.element.createElement(
+				Fragment,
+				null,
+				wp.element.createElement(
+					PanelBody,
+					{ title: __("Border"), initialOpen: false },
+					wp.element.createElement(SelectControl, {
+						label: __("Border Style"),
+						value: borderStyle,
+						onChange: function onChange(value) {
+							return setAttributes({ borderStyle: value });
+						},
+						options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }, { value: "groove", label: __("Groove") }, { value: "inset", label: __("Inset") }, { value: "outset", label: __("Outset") }, { value: "ridge", label: __("Ridge") }]
+					}),
+					"none" != borderStyle && wp.element.createElement(RangeControl, {
+						label: __("Border Width"),
+						value: borderWidth,
+						onChange: function onChange(value) {
+							return setAttributes({ borderWidth: value });
+						},
+						min: 0,
+						max: 50,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Border Radius"),
+						value: borderRadius,
+						onChange: function onChange(value) {
+							return setAttributes({ borderRadius: value });
+						},
+						min: 0,
+						max: 100,
+						allowReset: true
+					}),
+					"none" != borderStyle && wp.element.createElement(
+						Fragment,
+						null,
+						wp.element.createElement(
+							"p",
+							{ className: "uagb-setting-label" },
+							__("Border Color"),
+							wp.element.createElement(
+								"span",
+								{ className: "components-base-control__label" },
+								wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: borderColor } })
+							)
+						),
+						wp.element.createElement(ColorPalette, {
+							value: borderColor,
+							onChange: function onChange(colorValue) {
+								return setAttributes({ borderColor: colorValue });
+							},
+							allowReset: true
+						})
+					)
+				)
+			);
 
 			var inspector_controls = wp.element.createElement(
 				Fragment,
@@ -63114,15 +63446,15 @@ var UAGBColumnEdit = function (_Component) {
 						wp.element.createElement(PanelColorSettings, {
 							title: __("Color Settings"),
 							colorSettings: [{
-								value: gradientColor1,
-								onChange: function onChange(value) {
-									return setAttributes({ gradientColor1: value });
-								},
-								label: __("Color 1")
-							}, {
 								value: gradientColor2,
 								onChange: function onChange(value) {
 									return setAttributes({ gradientColor2: value });
+								},
+								label: __("Color 1")
+							}, {
+								value: gradientColor1,
+								onChange: function onChange(value) {
+									return setAttributes({ gradientColor1: value });
 								},
 								label: __("Color 2")
 							}]
@@ -63177,7 +63509,8 @@ var UAGBColumnEdit = function (_Component) {
 						allowReset: true,
 						initialPosition: 0
 					})
-				)
+				),
+				border_setting
 			);
 
 			var active = isSelected ? "active" : "not-active";
@@ -63325,6 +63658,20 @@ registerBlockType("uagb/column", {
 		},
 		backgroundImageColor: {
 			type: "string"
+		},
+		borderStyle: {
+			type: "string",
+			default: "none"
+		},
+		borderWidth: {
+			type: "number",
+			default: 1
+		},
+		borderRadius: {
+			type: "number"
+		},
+		borderColor: {
+			type: "string"
 		}
 	},
 
@@ -63407,7 +63754,11 @@ function styling(props) {
 	    backgroundPosition = _props$attributes.backgroundPosition,
 	    backgroundAttachment = _props$attributes.backgroundAttachment,
 	    backgroundRepeat = _props$attributes.backgroundRepeat,
-	    backgroundSize = _props$attributes.backgroundSize;
+	    backgroundSize = _props$attributes.backgroundSize,
+	    borderStyle = _props$attributes.borderStyle,
+	    borderWidth = _props$attributes.borderWidth,
+	    borderRadius = _props$attributes.borderRadius,
+	    borderColor = _props$attributes.borderColor;
 
 
 	var position = backgroundPosition.replace("-", " ");
@@ -63420,8 +63771,15 @@ function styling(props) {
 		"margin-top": topMargin + "px",
 		"margin-bottom": bottomMargin + "px",
 		"margin-left": leftMargin + "px",
-		"margin-right": rightMargin + "px"
+		"margin-right": rightMargin + "px",
+		"border-radius": borderRadius + "px"
 	};
+
+	if (borderStyle != "none") {
+		style["border-style"] = borderStyle;
+		style["border-width"] = borderWidth + "px";
+		style["border-color"] = borderColor;
+	}
 
 	if ("image" === backgroundType) {
 
@@ -63493,11 +63851,9 @@ function inlineStyles(props, isEditor) {
 	    gradientLocation2 = _props$attributes.gradientLocation2,
 	    gradientType = _props$attributes.gradientType,
 	    gradientAngle = _props$attributes.gradientAngle,
+	    backgroundImageColor = _props$attributes.backgroundImageColor,
 	    borderStyle = _props$attributes.borderStyle,
-	    borderWidth = _props$attributes.borderWidth,
-	    borderRadius = _props$attributes.borderRadius,
-	    borderColor = _props$attributes.borderColor,
-	    backgroundImageColor = _props$attributes.backgroundImageColor;
+	    borderRadius = _props$attributes.borderRadius;
 
 
 	var style = {};
@@ -63524,6 +63880,8 @@ function inlineStyles(props, isEditor) {
 		style["opacity"] = typeof backgroundOpacity != "undefined" ? backgroundOpacity / 100 : "";
 		style["background-color"] = backgroundColor;
 	}
+
+	style["border-radius"] = borderRadius + "px";
 
 	return style;
 }
@@ -64320,13 +64678,9 @@ var UAGBColumns = function (_Component) {
 							options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
 							onChange: function onChange(value) {
 								return setAttributes({ stack: value });
-							}
+							},
+							help: __("Note: Choose on what breakpoint the columns will stack.")
 						}),
-						wp.element.createElement(
-							"p",
-							{ className: "uagb-note" },
-							__("Note: Choose on what breakpoint the columns will stack.")
-						),
 						wp.element.createElement(SelectControl, {
 							label: __("Container Width"),
 							value: contentWidth,
@@ -64554,15 +64908,15 @@ var UAGBColumns = function (_Component) {
 							wp.element.createElement(PanelColorSettings, {
 								title: __("Color Settings"),
 								colorSettings: [{
-									value: gradientColor1,
-									onChange: function onChange(value) {
-										return setAttributes({ gradientColor1: value });
-									},
-									label: __("Color 1")
-								}, {
 									value: gradientColor2,
 									onChange: function onChange(value) {
 										return setAttributes({ gradientColor2: value });
+									},
+									label: __("Color 1")
+								}, {
+									value: gradientColor1,
+									onChange: function onChange(value) {
+										return setAttributes({ gradientColor1: value });
 									},
 									label: __("Color 2")
 								}]

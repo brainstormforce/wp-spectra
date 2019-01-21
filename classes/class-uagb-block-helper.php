@@ -12,6 +12,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
+
+
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -302,7 +307,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'margin-bottom' => $attr['bottomMargin'] . 'px',
 				'margin-left'    => $attr['leftMargin'] . 'px',
 				'margin-right' => $attr['rightMargin'] . 'px',
+				'border-radius' => $attr['borderRadius'] . 'px',
 			);
+
+			if ( "none" != $attr['borderStyle'] ) {
+				$style["border-style"] = $attr['borderStyle'];
+				$style["border-width"] = $attr['borderWidth'] . "px";
+				$style["border-color"] =  $attr['borderColor'];
+			}
 
 			$position = str_replace( '-', ' ', $attr['backgroundPosition'] );
 
@@ -385,7 +397,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 					'font-size' => $attr['subHeadFontSize'] . "px",
 					'color' => $attr['subHeadingColor'],
-					'margin-bottom' => $attr['subHeadSpace'] . "px",
 				)
 
 			);
@@ -917,7 +928,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
 
 			return $desktop . $mobile;
-
 		}
 
 		/**
@@ -2431,8 +2441,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd.
 		}
 
-
-
 		/**
 		 * Get Blockquote Js
 		 *
@@ -2472,8 +2480,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			<?php 
 			
 			// @codingStandardsIgnoreEnd.
-
 		}
-
 	}
 }

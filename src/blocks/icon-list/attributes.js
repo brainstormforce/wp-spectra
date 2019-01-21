@@ -19,7 +19,8 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 			"icon_bg_color": "",
 			"icon_bg_hover_color": "",
 			"link": "#",
-			"target": false
+			"target": false,
+			"disableLink": false,
 		}
 	)
 }

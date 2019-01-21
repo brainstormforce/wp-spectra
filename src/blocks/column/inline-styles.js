@@ -17,11 +17,9 @@ function inlineStyles( props, isEditor ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
+		backgroundImageColor,
 		borderStyle,
-		borderWidth,
 		borderRadius,
-		borderColor,
-		backgroundImageColor
 	} = props.attributes
 
 	var style = {}
@@ -49,6 +47,8 @@ function inlineStyles( props, isEditor ) {
 		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 		style["background-color"] = backgroundColor
 	}
+
+	style["border-radius"] = borderRadius + "px"
 
 	return style
 }

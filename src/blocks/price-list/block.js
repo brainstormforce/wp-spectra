@@ -48,7 +48,7 @@ registerBlockType( "uagb/restaurant-menu", {
 	description:uagb_blocks_info.blocks["uagb/restaurant-menu"]["description"], // Block description.
 	icon: UAGB_Block_Icons.restaurant_menu, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
-		__( "restaurant" ),
+		__( "pricelist" ),
 		__( "menu" ),		
 		__( "uagb" ),
 	],

@@ -382,8 +382,8 @@ class UAGBColumns extends Component {
 								{ value: "mobile", label: __( "Mobile" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
+							help={ __( "Note: Choose on what breakpoint the columns will stack." ) }
 						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the columns will stack." ) }</p>
 						<SelectControl
 							label={ __( "Container Width" ) }
 							value={ contentWidth }
@@ -594,15 +594,15 @@ class UAGBColumns extends Component {
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
 										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
 											label: __( "Color 1" ),
 										},
 										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
 											label: __( "Color 2" ),
-										}
+										},
 									] }
 								>
 								</PanelColorSettings>

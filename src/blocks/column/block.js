@@ -114,6 +114,10 @@ export default class UAGBColumnEdit extends Component {
 				gradientAngle,
 				backgroundOpacity,
 				backgroundImageColor,
+				borderStyle,
+				borderWidth,
+				borderRadius,
+				borderColor
 			},
 			setAttributes,
 			className,
@@ -125,6 +129,57 @@ export default class UAGBColumnEdit extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const border_setting = (
+			<Fragment>
+				<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+						<SelectControl
+							label={ __( "Border Style" ) }
+							value={ borderStyle }
+							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "groove", label: __( "Groove" ) },
+								{ value: "inset", label: __( "Inset" ) },
+								{ value: "outset", label: __( "Outset" ) },
+								{ value: "ridge", label: __( "Ridge" ) },
+							] }
+						/>
+						{ "none" != borderStyle && (
+							<RangeControl
+								label={ __( "Border Width" ) }
+								value={ borderWidth }
+								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+						) }
+						<RangeControl
+							label={ __( "Border Radius" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						{ "none" != borderStyle && (
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+								<ColorPalette
+									value={ borderColor }
+									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						) }
+					</PanelBody>
+			</Fragment>
+			)
 
 		const inspector_controls = (
 			<Fragment>
@@ -341,15 +396,15 @@ export default class UAGBColumnEdit extends Component {
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
 										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
 											label: __( "Color 1" ),
 										},
 										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
 											label: __( "Color 2" ),
-										}
+										},
 									] }
 								>
 								</PanelColorSettings>
@@ -400,6 +455,7 @@ export default class UAGBColumnEdit extends Component {
 							/> )
 					}
 				</PanelBody>
+				{ border_setting }
 			</Fragment>
 		)
 
@@ -540,6 +596,20 @@ registerBlockType( "uagb/column", {
 			type: "number"
 		},
 		backgroundImageColor: {
+			type: "string"
+		},
+		borderStyle : {
+			type: "string",
+			default: "none"
+		},
+		borderWidth : {
+			type: "number",
+			default: 1
+		},
+		borderRadius : {
+			type: "number"
+		},
+		borderColor : {
 			type: "string"
 		},
 	},
