@@ -171,25 +171,16 @@ class UAGBBlockQuote extends Component {
 						{ value: "ridge", label: __( "Ridge" ) },
 					] }
 				/>
-				{ "none" != borderStyle &&  <Fragment>					
-					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
-					<ColorPalette
-						value={ borderColor }
-						onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-						allowReset
-					/>
-					<RangeControl
+				{ "none" != borderStyle && <RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderWidth }
 						onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>	
-					
-					</Fragment>
+					/>
 				 }
-				</Fragment>		
+			</Fragment>		
 		)
 
 		const quote_settings = (
@@ -215,44 +206,37 @@ class UAGBBlockQuote extends Component {
 			</Fragment>
 		)
 
-		const skin_settings =(
-			<Fragment>
-				<PanelBody
-						title={ __( "Style" ) }
-					>
-					<SelectControl
-						label={ __( "Style" ) }
-						options={[
-							{ value: "border", label: __( "Border" ) },
-							{ value: "quotation", label: __( "Quotation" ) },
-						] }
-						value={ skinStyle }
-						onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
-					/>
-					{ skinStyle === "border" && border_settings	}
-					{ skinStyle === "quotation" && quote_settings }						
-					<SelectControl
-						label={ __( "Stack on" ) }
-						value={ stack }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "tablet", label: __( "Tablet" ) },
-							{ value: "mobile", label: __( "Mobile" ) },
-						] }
-						help={ __( "Note: Choose on what breakpoint the elements will stack." ) }
-						onChange={ ( value ) => setAttributes( { stack: value } ) }
-					/>										
-				</PanelBody>
-			</Fragment>
+		const skin_settings =(			
+			<PanelBody	title={ __( "Style" ) } >
+				<SelectControl
+					label={ __( "Style" ) }
+					options={[
+						{ value: "border", label: __( "Border" ) },
+						{ value: "quotation", label: __( "Quotation" ) },
+					] }
+					value={ skinStyle }
+					onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
+				/>
+				{ skinStyle === "border" && border_settings	}
+				{ skinStyle === "quotation" && quote_settings }						
+				<SelectControl
+					label={ __( "Stack on" ) }
+					value={ stack }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "tablet", label: __( "Tablet" ) },
+						{ value: "mobile", label: __( "Mobile" ) },
+					] }
+					help={ __( "Note: Choose on what breakpoint the elements will stack." ) }
+					onChange={ ( value ) => setAttributes( { stack: value } ) }
+				/>										
+			</PanelBody>			
 		)
 
 		// Image controls.
 		const imageControls = (
 			<Fragment>
-				<BaseControl
-					className="editor-bg-image-control"
-					label={ __( "Author Image" ) }
-				>
+				<BaseControl className="editor-bg-image-control" label={ __( "Author Image" ) } >
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
@@ -313,6 +297,15 @@ class UAGBBlockQuote extends Component {
 
 		const colorSettings = (
 			<Fragment>
+				{ "none" != borderStyle &&  <Fragment>					
+					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+					<ColorPalette
+						value={ borderColor }
+						onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+						allowReset
+					/>
+					</Fragment>
+				}
 				<p className="uagb-setting-label">{ __( "Quote Color" ) }
 					<span className="components-base-control__label">
 					<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
@@ -453,9 +446,7 @@ class UAGBBlockQuote extends Component {
 
 		const Typography =(
 			<Fragment>
-				<PanelBody
-						title={ __( "Content" ) }
-						initialOpen={ false }>						
+					<PanelBody title={ __( "Content" ) } initialOpen={ false }>						
 						<RangeControl
 							label={ __( "Quote Font Size" ) }
 							value={ descFontSize }
@@ -491,9 +482,7 @@ class UAGBBlockQuote extends Component {
 							</Fragment>
 						}					
 					</PanelBody>
-					<PanelBody
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }>		
+					<PanelBody title={ __( "Color Settings" ) } initialOpen={ false }>		
 						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 							activeClass="active-tab"
 							tabs={ [
@@ -524,188 +513,180 @@ class UAGBBlockQuote extends Component {
 			</Fragment>
 		)
 
-		const spacing_settings =(
-			<Fragment>
-				<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }>
+		const spacing_settings =(			
+			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+				{ skinStyle === "quotation" && <Fragment>						
+					<RangeControl
+						label={ __( "Quote Icon Top Margin" ) }
+						value={ quoteTopMargin }
+						onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Quote Icon Bottom Margin" ) }
+						value={ quoteBottomMargin }
+						onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Quote Icon Left Margin" ) }
+						value={ quoteLeftMargin }
+						onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Quote Icon Right Margin" ) }
+						value={ quoteRightMargin }
+						onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					</Fragment>
+				}
 
-					{ skinStyle === "quotation" && <Fragment>						
-						<RangeControl
-							label={ __( "Quote Icon Top Margin" ) }
-							value={ quoteTopMargin }
-							onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Quote Icon Bottom Margin" ) }
-							value={ quoteBottomMargin }
-							onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Quote Icon Left Margin" ) }
-							value={ quoteLeftMargin }
-							onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Quote Icon Right Margin" ) }
-							value={ quoteRightMargin }
-							onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						</Fragment>
-					}
-
-					{ skinStyle === "border" && <Fragment>
-						<RangeControl
-							label={ __( "Gap Beetween Border and Quote" ) }
-							value={ borderGap }
-							onChange={ ( value ) => setAttributes( { borderGap: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Vertical Padding" ) }
-							value={ verticalPadding }
-							onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>	
-						</Fragment>
-					}
-						<RangeControl
-							label={ __( "Quote Bottom Spacing" ) }
-							value={ descSpace }
-							onChange={ ( value ) => setAttributes( { descSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={0}
-						/>	
-					{ align == "center" && skinStyle !== "border" && <RangeControl
-							label={ __( "Author Bottom Spacing" ) }
-							value={ authorSpace }
-							onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={0}
-						/>
-					}									
-						
-					</PanelBody>
-			</Fragment>
+				{ skinStyle === "border" && <Fragment>
+					<RangeControl
+						label={ __( "Gap Beetween Border and Quote" ) }
+						value={ borderGap }
+						onChange={ ( value ) => setAttributes( { borderGap: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Vertical Padding" ) }
+						value={ verticalPadding }
+						onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>	
+					</Fragment>
+				}
+					<RangeControl
+						label={ __( "Quote Bottom Spacing" ) }
+						value={ descSpace }
+						onChange={ ( value ) => setAttributes( { descSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+						initialPosition={0}
+					/>	
+				{ align == "center" && skinStyle !== "border" && <RangeControl
+						label={ __( "Author Bottom Spacing" ) }
+						value={ authorSpace }
+						onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+						initialPosition={0}
+					/>
+				}									
+					
+			</PanelBody>
 		)
 
-		const twitter_settings =(
-			<Fragment>
-				<PanelBody title={ __( "Twitter Icon" ) }
-					initialOpen={ false }>
-					<ToggleControl
-						label={ __( "Enable Twitter Icon" ) }
-						checked={ enableTweet }
-						onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
+		const twitter_settings =(			
+			<PanelBody title={ __( "Twitter Icon" ) } initialOpen={ false }>
+				<ToggleControl
+					label={ __( "Enable Twitter Icon" ) }
+					checked={ enableTweet }
+					onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
+				/>	
+				{ enableTweet && <Fragment>
+					<SelectControl
+						label={ __( "Icon View" ) }
+						value={ iconView }
+						onChange={ ( value ) => setAttributes( { iconView: value } ) }
+						options={ [
+							{ value: "icon_text", label: __( "Icon & Text" ) },
+							{ value: "icon", label: __( "Icon" ) },
+							{ value: "text", label: __( "Text" ) },
+						] }
+					/>
+					<SelectControl
+						label={ __( "Icon Style" ) }
+						value={ iconSkin }
+						onChange={ ( value ) => setAttributes( { iconSkin: value } ) }
+						options={ [
+							{ value: "classic", label: __( "Classic" ) },
+							{ value: "bubble", label: __( "Bubble" ) },
+							{ value: "link", label: __( "Link" ) },
+						] }
+					/>
+				</Fragment>}	
+				{ enableTweet && iconView !== "icon" && <Fragment>
+					<TextControl
+						label= { __( "Label" ) }
+						value= { iconLabel }
+						onChange={ value => setAttributes( { iconLabel: value } ) }
+					/>
+					</Fragment>
+				}	
+				{ enableTweet && <Fragment>
+					<TextControl
+						label= { __( "Share Via" ) }
+						value= { iconShareVia }
+						onChange={ value => setAttributes( { iconShareVia: value } ) }
+					/>		
+					<SelectControl
+						label={ __( "Target URL" ) }
+						value={ iconTargetUrl }
+						onChange={ ( value ) => setAttributes( { iconTargetUrl: value } ) }
+						options={ [
+							{ value: "current", label: __( "Current Page" ) },
+							{ value: "custom", label: __( "Custom URL" ) },
+						] }
+					/>				
+					{ iconTargetUrl == "custom" && <TextControl
+						label= { __( "URL" ) }
+						value= { customUrl }
+						onChange={ value => setAttributes( { customUrl: value } ) }
 					/>	
-					{ enableTweet && <Fragment>
-						<SelectControl
-							label={ __( "Icon View" ) }
-							value={ iconView }
-							onChange={ ( value ) => setAttributes( { iconView: value } ) }
-							options={ [
-								{ value: "icon_text", label: __( "Icon & Text" ) },
-								{ value: "icon", label: __( "Icon" ) },
-								{ value: "text", label: __( "Text" ) },
-							] }
-						/>
-						<SelectControl
-							label={ __( "Icon Style" ) }
-							value={ iconSkin }
-							onChange={ ( value ) => setAttributes( { iconSkin: value } ) }
-							options={ [
-								{ value: "classic", label: __( "Classic" ) },
-								{ value: "bubble", label: __( "Bubble" ) },
-								{ value: "link", label: __( "Link" ) },
-							] }
-						/>
-					</Fragment>}	
-					{ enableTweet && iconView !== "icon" && <Fragment>
-						<TextControl
-							label= { __( "Label" ) }
-							value= { iconLabel }
-							onChange={ value => setAttributes( { iconLabel: value } ) }
-						/>
-						</Fragment>
-					}	
-					{ enableTweet && <Fragment>
-						<TextControl
-							label= { __( "Share Via" ) }
-							value= { iconShareVia }
-							onChange={ value => setAttributes( { iconShareVia: value } ) }
-						/>		
-						<SelectControl
-							label={ __( "Target URL" ) }
-							value={ iconTargetUrl }
-							onChange={ ( value ) => setAttributes( { iconTargetUrl: value } ) }
-							options={ [
-								{ value: "current", label: __( "Current Page" ) },
-								{ value: "custom", label: __( "Custom URL" ) },
-							] }
-						/>				
-						{ iconTargetUrl == "custom" && <TextControl
-							label= { __( "URL" ) }
-							value= { customUrl }
-							onChange={ value => setAttributes( { customUrl: value } ) }
-						/>	
-						}							
-						</Fragment>
-					}	
-					{ enableTweet && iconSkin !== 'link' && <Fragment>
-						<RangeControl
-							label={ __( "Button Horizontal Padding" ) }
-							value={ tweetBtnHrPadding }
-							onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={5}
-						/>	
-						<RangeControl
-							label={ __( "Button Vertical Padding" ) }
-							value={ tweetBtnVrPadding }
-							onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-							initialPosition={5}
-						/>	
-						</Fragment>
-					}	
-					{ (enableTweet && iconView == 'icon_text') && <Fragment>
-						<RangeControl
-							label={ __( "Space between Tweet Icon and Text" ) }
-							value={ tweetIconSpacing }
-							onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
-							min={ 0 }
-							max={ 20 }
-							allowReset
-							initialPosition={5}
-						/>	
-						</Fragment>
-					}
-				</PanelBody>	
-			</Fragment>
+					}							
+					</Fragment>
+				}	
+				{ enableTweet && iconSkin !== 'link' && <Fragment>
+					<RangeControl
+						label={ __( "Button Horizontal Padding" ) }
+						value={ tweetBtnHrPadding }
+						onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+						initialPosition={5}
+					/>	
+					<RangeControl
+						label={ __( "Button Vertical Padding" ) }
+						value={ tweetBtnVrPadding }
+						onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+						initialPosition={5}
+					/>	
+					</Fragment>
+				}	
+				{ (enableTweet && iconView == 'icon_text') && <Fragment>
+					<RangeControl
+						label={ __( "Space between Tweet Icon and Text" ) }
+						value={ tweetIconSpacing }
+						onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
+						min={ 0 }
+						max={ 20 }
+						allowReset
+						initialPosition={5}
+					/>	
+					</Fragment>
+				}
+			</PanelBody>				
 		)	
 		
 		return (

@@ -66075,37 +66075,16 @@ var UAGBBlockQuote = function (_Component) {
 					},
 					options: [{ value: "none", label: __("None") }, { value: "solid", label: __("Solid") }, { value: "dotted", label: __("Dotted") }, { value: "dashed", label: __("Dashed") }, { value: "double", label: __("Double") }, { value: "groove", label: __("Groove") }, { value: "inset", label: __("Inset") }, { value: "outset", label: __("Outset") }, { value: "ridge", label: __("Ridge") }]
 				}),
-				"none" != borderStyle && wp.element.createElement(
-					Fragment,
-					null,
-					wp.element.createElement(
-						"p",
-						{ className: "uagb-setting-label" },
-						__("Border Color"),
-						wp.element.createElement(
-							"span",
-							{ className: "components-base-control__label" },
-							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: borderColor } })
-						)
-					),
-					wp.element.createElement(ColorPalette, {
-						value: borderColor,
-						onChange: function onChange(colorValue) {
-							return setAttributes({ borderColor: colorValue });
-						},
-						allowReset: true
-					}),
-					wp.element.createElement(RangeControl, {
-						label: __("Border Width"),
-						value: borderWidth,
-						onChange: function onChange(value) {
-							return setAttributes({ borderWidth: value });
-						},
-						min: 0,
-						max: 50,
-						allowReset: true
-					})
-				)
+				"none" != borderStyle && wp.element.createElement(RangeControl, {
+					label: __("Border Width"),
+					value: borderWidth,
+					onChange: function onChange(value) {
+						return setAttributes({ borderWidth: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true
+				})
 			);
 
 			var quote_settings = wp.element.createElement(
@@ -66134,33 +66113,27 @@ var UAGBBlockQuote = function (_Component) {
 			);
 
 			var skin_settings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Style")
-					},
-					wp.element.createElement(SelectControl, {
-						label: __("Style"),
-						options: [{ value: "border", label: __("Border") }, { value: "quotation", label: __("Quotation") }],
-						value: skinStyle,
-						onChange: function onChange(value) {
-							return setAttributes({ skinStyle: value });
-						}
-					}),
-					skinStyle === "border" && border_settings,
-					skinStyle === "quotation" && quote_settings,
-					wp.element.createElement(SelectControl, {
-						label: __("Stack on"),
-						value: stack,
-						options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
-						help: __("Note: Choose on what breakpoint the elements will stack."),
-						onChange: function onChange(value) {
-							return setAttributes({ stack: value });
-						}
-					})
-				)
+				PanelBody,
+				{ title: __("Style") },
+				wp.element.createElement(SelectControl, {
+					label: __("Style"),
+					options: [{ value: "border", label: __("Border") }, { value: "quotation", label: __("Quotation") }],
+					value: skinStyle,
+					onChange: function onChange(value) {
+						return setAttributes({ skinStyle: value });
+					}
+				}),
+				skinStyle === "border" && border_settings,
+				skinStyle === "quotation" && quote_settings,
+				wp.element.createElement(SelectControl, {
+					label: __("Stack on"),
+					value: stack,
+					options: [{ value: "none", label: __("None") }, { value: "tablet", label: __("Tablet") }, { value: "mobile", label: __("Mobile") }],
+					help: __("Note: Choose on what breakpoint the elements will stack."),
+					onChange: function onChange(value) {
+						return setAttributes({ stack: value });
+					}
+				})
 			);
 
 			// Image controls.
@@ -66169,10 +66142,7 @@ var UAGBBlockQuote = function (_Component) {
 				null,
 				wp.element.createElement(
 					BaseControl,
-					{
-						className: "editor-bg-image-control",
-						label: __("Author Image")
-					},
+					{ className: "editor-bg-image-control", label: __("Author Image") },
 					wp.element.createElement(MediaUpload, {
 						title: __("Select Image"),
 						onSelect: this.onSelectImage,
@@ -66240,6 +66210,27 @@ var UAGBBlockQuote = function (_Component) {
 			var colorSettings = wp.element.createElement(
 				Fragment,
 				null,
+				"none" != borderStyle && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(
+						"p",
+						{ className: "uagb-setting-label" },
+						__("Border Color"),
+						wp.element.createElement(
+							"span",
+							{ className: "components-base-control__label" },
+							wp.element.createElement("span", { className: "component-color-indicator", style: { backgroundColor: borderColor } })
+						)
+					),
+					wp.element.createElement(ColorPalette, {
+						value: borderColor,
+						onChange: function onChange(colorValue) {
+							return setAttributes({ borderColor: colorValue });
+						},
+						allowReset: true
+					})
+				),
 				wp.element.createElement(
 					"p",
 					{ className: "uagb-setting-label" },
@@ -66501,9 +66492,7 @@ var UAGBBlockQuote = function (_Component) {
 				null,
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Content"),
-						initialOpen: false },
+					{ title: __("Content"), initialOpen: false },
 					wp.element.createElement(RangeControl, {
 						label: __("Quote Font Size"),
 						value: descFontSize,
@@ -66548,9 +66537,7 @@ var UAGBBlockQuote = function (_Component) {
 				),
 				wp.element.createElement(
 					PanelBody,
-					{
-						title: __("Color Settings"),
-						initialOpen: false },
+					{ title: __("Color Settings"), initialOpen: false },
 					wp.element.createElement(
 						TabPanel,
 						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
@@ -66582,218 +66569,207 @@ var UAGBBlockQuote = function (_Component) {
 			);
 
 			var spacing_settings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{
-						title: __("Spacing"),
-						initialOpen: false },
-					skinStyle === "quotation" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Quote Icon Top Margin"),
-							value: quoteTopMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ quoteTopMargin: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Quote Icon Bottom Margin"),
-							value: quoteBottomMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ quoteBottomMargin: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Quote Icon Left Margin"),
-							value: quoteLeftMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ quoteLeftMargin: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Quote Icon Right Margin"),
-							value: quoteRightMargin,
-							onChange: function onChange(value) {
-								return setAttributes({ quoteRightMargin: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						})
-					),
-					skinStyle === "border" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Gap Beetween Border and Quote"),
-							value: borderGap,
-							onChange: function onChange(value) {
-								return setAttributes({ borderGap: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Vertical Padding"),
-							value: verticalPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ verticalPadding: value });
-							},
-							min: 0,
-							max: 100,
-							allowReset: true
-						})
-					),
+				PanelBody,
+				{ title: __("Spacing"), initialOpen: false },
+				skinStyle === "quotation" && wp.element.createElement(
+					Fragment,
+					null,
 					wp.element.createElement(RangeControl, {
-						label: __("Quote Bottom Spacing"),
-						value: descSpace,
+						label: __("Quote Icon Top Margin"),
+						value: quoteTopMargin,
 						onChange: function onChange(value) {
-							return setAttributes({ descSpace: value });
+							return setAttributes({ quoteTopMargin: value });
 						},
 						min: 0,
-						max: 50,
-						allowReset: true,
-						initialPosition: 0
+						max: 100,
+						allowReset: true
 					}),
-					align == "center" && skinStyle !== "border" && wp.element.createElement(RangeControl, {
-						label: __("Author Bottom Spacing"),
-						value: authorSpace,
+					wp.element.createElement(RangeControl, {
+						label: __("Quote Icon Bottom Margin"),
+						value: quoteBottomMargin,
 						onChange: function onChange(value) {
-							return setAttributes({ authorSpace: value });
+							return setAttributes({ quoteBottomMargin: value });
 						},
 						min: 0,
-						max: 50,
-						allowReset: true,
-						initialPosition: 0
+						max: 100,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Quote Icon Left Margin"),
+						value: quoteLeftMargin,
+						onChange: function onChange(value) {
+							return setAttributes({ quoteLeftMargin: value });
+						},
+						min: 0,
+						max: 100,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Quote Icon Right Margin"),
+						value: quoteRightMargin,
+						onChange: function onChange(value) {
+							return setAttributes({ quoteRightMargin: value });
+						},
+						min: 0,
+						max: 100,
+						allowReset: true
 					})
-				)
+				),
+				skinStyle === "border" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Gap Beetween Border and Quote"),
+						value: borderGap,
+						onChange: function onChange(value) {
+							return setAttributes({ borderGap: value });
+						},
+						min: 0,
+						max: 100,
+						allowReset: true
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Vertical Padding"),
+						value: verticalPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ verticalPadding: value });
+						},
+						min: 0,
+						max: 100,
+						allowReset: true
+					})
+				),
+				wp.element.createElement(RangeControl, {
+					label: __("Quote Bottom Spacing"),
+					value: descSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ descSpace: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true,
+					initialPosition: 0
+				}),
+				align == "center" && skinStyle !== "border" && wp.element.createElement(RangeControl, {
+					label: __("Author Bottom Spacing"),
+					value: authorSpace,
+					onChange: function onChange(value) {
+						return setAttributes({ authorSpace: value });
+					},
+					min: 0,
+					max: 50,
+					allowReset: true,
+					initialPosition: 0
+				})
 			);
 
 			var twitter_settings = wp.element.createElement(
-				Fragment,
-				null,
-				wp.element.createElement(
-					PanelBody,
-					{ title: __("Twitter Icon"),
-						initialOpen: false },
-					wp.element.createElement(ToggleControl, {
-						label: __("Enable Twitter Icon"),
-						checked: enableTweet,
+				PanelBody,
+				{ title: __("Twitter Icon"), initialOpen: false },
+				wp.element.createElement(ToggleControl, {
+					label: __("Enable Twitter Icon"),
+					checked: enableTweet,
+					onChange: function onChange(value) {
+						return setAttributes({ enableTweet: !enableTweet });
+					}
+				}),
+				enableTweet && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(SelectControl, {
+						label: __("Icon View"),
+						value: iconView,
 						onChange: function onChange(value) {
-							return setAttributes({ enableTweet: !enableTweet });
+							return setAttributes({ iconView: value });
+						},
+						options: [{ value: "icon_text", label: __("Icon & Text") }, { value: "icon", label: __("Icon") }, { value: "text", label: __("Text") }]
+					}),
+					wp.element.createElement(SelectControl, {
+						label: __("Icon Style"),
+						value: iconSkin,
+						onChange: function onChange(value) {
+							return setAttributes({ iconSkin: value });
+						},
+						options: [{ value: "classic", label: __("Classic") }, { value: "bubble", label: __("Bubble") }, { value: "link", label: __("Link") }]
+					})
+				),
+				enableTweet && iconView !== "icon" && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
+						label: __("Label"),
+						value: iconLabel,
+						onChange: function onChange(value) {
+							return setAttributes({ iconLabel: value });
+						}
+					})
+				),
+				enableTweet && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(TextControl, {
+						label: __("Share Via"),
+						value: iconShareVia,
+						onChange: function onChange(value) {
+							return setAttributes({ iconShareVia: value });
 						}
 					}),
-					enableTweet && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(SelectControl, {
-							label: __("Icon View"),
-							value: iconView,
-							onChange: function onChange(value) {
-								return setAttributes({ iconView: value });
-							},
-							options: [{ value: "icon_text", label: __("Icon & Text") }, { value: "icon", label: __("Icon") }, { value: "text", label: __("Text") }]
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Icon Style"),
-							value: iconSkin,
-							onChange: function onChange(value) {
-								return setAttributes({ iconSkin: value });
-							},
-							options: [{ value: "classic", label: __("Classic") }, { value: "bubble", label: __("Bubble") }, { value: "link", label: __("Link") }]
-						})
-					),
-					enableTweet && iconView !== "icon" && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(TextControl, {
-							label: __("Label"),
-							value: iconLabel,
-							onChange: function onChange(value) {
-								return setAttributes({ iconLabel: value });
-							}
-						})
-					),
-					enableTweet && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(TextControl, {
-							label: __("Share Via"),
-							value: iconShareVia,
-							onChange: function onChange(value) {
-								return setAttributes({ iconShareVia: value });
-							}
-						}),
-						wp.element.createElement(SelectControl, {
-							label: __("Target URL"),
-							value: iconTargetUrl,
-							onChange: function onChange(value) {
-								return setAttributes({ iconTargetUrl: value });
-							},
-							options: [{ value: "current", label: __("Current Page") }, { value: "custom", label: __("Custom URL") }]
-						}),
-						iconTargetUrl == "custom" && wp.element.createElement(TextControl, {
-							label: __("URL"),
-							value: customUrl,
-							onChange: function onChange(value) {
-								return setAttributes({ customUrl: value });
-							}
-						})
-					),
-					enableTweet && iconSkin !== 'link' && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Button Horizontal Padding"),
-							value: tweetBtnHrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetBtnHrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true,
-							initialPosition: 5
-						}),
-						wp.element.createElement(RangeControl, {
-							label: __("Button Vertical Padding"),
-							value: tweetBtnVrPadding,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetBtnVrPadding: value });
-							},
-							min: 0,
-							max: 50,
-							allowReset: true,
-							initialPosition: 5
-						})
-					),
-					enableTweet && iconView == 'icon_text' && wp.element.createElement(
-						Fragment,
-						null,
-						wp.element.createElement(RangeControl, {
-							label: __("Space between Tweet Icon and Text"),
-							value: tweetIconSpacing,
-							onChange: function onChange(value) {
-								return setAttributes({ tweetIconSpacing: value });
-							},
-							min: 0,
-							max: 20,
-							allowReset: true,
-							initialPosition: 5
-						})
-					)
+					wp.element.createElement(SelectControl, {
+						label: __("Target URL"),
+						value: iconTargetUrl,
+						onChange: function onChange(value) {
+							return setAttributes({ iconTargetUrl: value });
+						},
+						options: [{ value: "current", label: __("Current Page") }, { value: "custom", label: __("Custom URL") }]
+					}),
+					iconTargetUrl == "custom" && wp.element.createElement(TextControl, {
+						label: __("URL"),
+						value: customUrl,
+						onChange: function onChange(value) {
+							return setAttributes({ customUrl: value });
+						}
+					})
+				),
+				enableTweet && iconSkin !== 'link' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Button Horizontal Padding"),
+						value: tweetBtnHrPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ tweetBtnHrPadding: value });
+						},
+						min: 0,
+						max: 50,
+						allowReset: true,
+						initialPosition: 5
+					}),
+					wp.element.createElement(RangeControl, {
+						label: __("Button Vertical Padding"),
+						value: tweetBtnVrPadding,
+						onChange: function onChange(value) {
+							return setAttributes({ tweetBtnVrPadding: value });
+						},
+						min: 0,
+						max: 50,
+						allowReset: true,
+						initialPosition: 5
+					})
+				),
+				enableTweet && iconView == 'icon_text' && wp.element.createElement(
+					Fragment,
+					null,
+					wp.element.createElement(RangeControl, {
+						label: __("Space between Tweet Icon and Text"),
+						value: tweetIconSpacing,
+						onChange: function onChange(value) {
+							return setAttributes({ tweetIconSpacing: value });
+						},
+						min: 0,
+						max: 20,
+						allowReset: true,
+						initialPosition: 5
+					})
 				)
 			);
 
