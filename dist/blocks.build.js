@@ -66387,6 +66387,7 @@ var UAGBBlockQuote = function (_Component) {
 						allowReset: true,
 						initialPosition: 30
 					}),
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 					wp.element.createElement(RangeControl, {
 						label: __("Author Font Size"),
 						value: authorFontSize,
@@ -66464,7 +66465,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Tweet Button Color"),
+						__("Tweet Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66481,7 +66482,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Tweet Button Background Color"),
+						__("Tweet Background Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66528,7 +66529,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Button Hover Color"),
+						__("Tweet Hover Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66545,7 +66546,7 @@ var UAGBBlockQuote = function (_Component) {
 					wp.element.createElement(
 						"p",
 						{ className: "uagb-setting-label" },
-						__("Button Background Hover Color"),
+						__("Tweet Background Hover Color"),
 						wp.element.createElement(
 							"span",
 							{ className: "components-base-control__label" },
@@ -66690,6 +66691,7 @@ var UAGBBlockQuote = function (_Component) {
 				enableTweet && iconView !== "icon" && wp.element.createElement(
 					Fragment,
 					null,
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 					wp.element.createElement(TextControl, {
 						label: __("Label"),
 						value: iconLabel,
@@ -66698,7 +66700,7 @@ var UAGBBlockQuote = function (_Component) {
 						}
 					}),
 					wp.element.createElement(RangeControl, {
-						label: __("Button Font Size"),
+						label: __("Tweet Font Size"),
 						value: tweetBtnFontSize,
 						onChange: function onChange(value) {
 							return setAttributes({ tweetBtnFontSize: value });
@@ -66740,6 +66742,7 @@ var UAGBBlockQuote = function (_Component) {
 				enableTweet && iconSkin !== 'link' && wp.element.createElement(
 					Fragment,
 					null,
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
 					wp.element.createElement(RangeControl, {
 						label: __("Button Horizontal Padding"),
 						value: tweetBtnHrPadding,
@@ -66775,31 +66778,36 @@ var UAGBBlockQuote = function (_Component) {
 					initialPosition: 5
 				}),
 				enableTweet && wp.element.createElement(
-					TabPanel,
-					{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
-						activeClass: "active-tab",
-						tabs: [{
-							name: "normal",
-							title: __("Normal"),
-							className: "uagb-normal-tab"
-						}, {
-							name: "hover",
-							title: __("Hover"),
-							className: "uagb-hover-tab"
-						}] },
-					function (tabName) {
-						var tweet_tab_output = void 0;
-						if ("hover" === tabName.name) {
-							tweet_tab_output = tweet_hover;
-						} else {
-							tweet_tab_output = tweet_normal;
+					Fragment,
+					null,
+					wp.element.createElement("hr", { className: "uagb-editor__separator" }),
+					wp.element.createElement(
+						TabPanel,
+						{ className: "uagb-inspect-tabs uagb-inspect-tabs-col-2",
+							activeClass: "active-tab",
+							tabs: [{
+								name: "normal",
+								title: __("Normal"),
+								className: "uagb-normal-tab"
+							}, {
+								name: "hover",
+								title: __("Hover"),
+								className: "uagb-hover-tab"
+							}] },
+						function (tabName) {
+							var tweet_tab_output = void 0;
+							if ("hover" === tabName.name) {
+								tweet_tab_output = tweet_hover;
+							} else {
+								tweet_tab_output = tweet_normal;
+							}
+							return wp.element.createElement(
+								"div",
+								null,
+								tweet_tab_output
+							);
 						}
-						return wp.element.createElement(
-							"div",
-							null,
-							tweet_tab_output
-						);
-					}
+					)
 				)
 			);
 
