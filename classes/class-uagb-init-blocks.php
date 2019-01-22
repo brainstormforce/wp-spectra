@@ -102,7 +102,7 @@ class UAGB_Init_Blocks {
 		// Font Awsome.
 		wp_enqueue_style(
 			'uagb-fontawesome-css', // Handle.
-			'https://use.fontawesome.com/releases/v5.6.0/css/all.css', // Block style CSS.
+			UAGB_URL . 'assets/css/font-awesome.css', // Block style CSS.
 			UAGB_VER
 		);
 
