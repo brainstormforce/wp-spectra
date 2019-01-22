@@ -49,6 +49,7 @@ function styling( props ) {
 		quoteHoverColor,
 		quoteBgHoverColor,
 		borderHoverColor,	
+		quotePadding,
 	} = props.attributes
 
 	var content_align ="center"
@@ -102,25 +103,21 @@ function styling( props ) {
 			"margin-bottom" : quoteBottomMargin + "px",
 			"margin-left"   : quoteLeftMargin + "px",
 			"margin-right"  : quoteRightMargin + "px",
-		},	
+			"padding"       : quotePadding+"px",
+		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
-			"color"         : quoteColor,
-			"font-size"     : quoteSize+"px",
-			"width"         : quoteSize+"px",
-			"height"        : quoteSize+"px",
-			"line-height"   : quoteSize+"px",
-		},	
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-main":{
-			"font-size"     : quoteSize+"px",
 			"width"         : quoteSize+"px",
 			"height"        : quoteSize+"px",
 		},	
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon":{
-			"color"         : quoteHoverColor,
-		},	
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon svg":{
+			"fill"         : quoteColor,
+		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover":{
 			"background"    : quoteBgHoverColor,
-		},				
+		},
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon svg":{
+			"fill"         : quoteHoverColor,
+		},		
 		" .uagb-quote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
 		},			

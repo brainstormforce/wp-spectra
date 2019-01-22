@@ -99,6 +99,7 @@ class UAGBBlockQuote extends Component {
 			quoteColor,
 			quoteBgColor,
 			quoteSize,
+			quotePadding,
 			quoteBorderRadius,
 			quoteStyle,			
 			enableTweet,
@@ -190,12 +191,20 @@ class UAGBBlockQuote extends Component {
 					value={ quoteSize }
 					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
 					min={ 0 }
-					max={ 200 }
+					max={ 150 }
 					allowReset
-				/>	
+				/>		
+				<RangeControl
+					label={ __( "Quote Icon Background Size" ) }
+					value={ quotePadding }
+					onChange={ ( value ) => setAttributes( { quotePadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
 				{ quoteBgColor &&				
 					<RangeControl
-						label={ __( "Quote Icon Border Radius" ) }
+						label={ __( "Quote Icon Border Radius (%)" ) }
 						value={ quoteBorderRadius }
 						onChange={ ( value ) => setAttributes( { quoteBorderRadius: value } ) }
 						min={ 0 }
@@ -811,7 +820,8 @@ class UAGBBlockQuote extends Component {
 					) } >
 						
 						<blockquote className="uagb-blockquote">					  
-						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon"><span className="uagb-quote__icon-main fa fa-quote"></span></span></div> }
+						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M7.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.357-0.056 0.724-0.086 1.097-0.086zM25.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.358-0.056 0.724-0.086 1.097-0.086z"></path></svg></span></div> }
+
 						<div className="uagb-blockquote__content-wrap">
 						   	{ <Description attributes={attributes} setAttributes = { setAttributes } props = { this.props }  /> }
 

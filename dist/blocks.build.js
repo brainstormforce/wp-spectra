@@ -65844,7 +65844,11 @@ registerBlockType("uagb/blockquote", {
 						wp.element.createElement(
 							"span",
 							{ className: "uagb-quote__icon" },
-							wp.element.createElement("span", { className: "uagb-quote__icon-main fa fa-quote" })
+							wp.element.createElement(
+								"svg",
+								{ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32" },
+								wp.element.createElement("path", { d: "M7.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.357-0.056 0.724-0.086 1.097-0.086zM25.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.358-0.056 0.724-0.086 1.097-0.086z" })
+							)
 						)
 					),
 					wp.element.createElement(
@@ -66015,6 +66019,7 @@ var UAGBBlockQuote = function (_Component) {
 			    quoteColor = attributes.quoteColor,
 			    quoteBgColor = attributes.quoteBgColor,
 			    quoteSize = attributes.quoteSize,
+			    quotePadding = attributes.quotePadding,
 			    quoteBorderRadius = attributes.quoteBorderRadius,
 			    quoteStyle = attributes.quoteStyle,
 			    enableTweet = attributes.enableTweet,
@@ -66098,11 +66103,21 @@ var UAGBBlockQuote = function (_Component) {
 						return setAttributes({ quoteSize: value });
 					},
 					min: 0,
-					max: 200,
+					max: 150,
+					allowReset: true
+				}),
+				wp.element.createElement(RangeControl, {
+					label: __("Quote Icon Background Size"),
+					value: quotePadding,
+					onChange: function onChange(value) {
+						return setAttributes({ quotePadding: value });
+					},
+					min: 0,
+					max: 50,
 					allowReset: true
 				}),
 				quoteBgColor && wp.element.createElement(RangeControl, {
-					label: __("Quote Icon Border Radius"),
+					label: __("Quote Icon Border Radius (%)"),
 					value: quoteBorderRadius,
 					onChange: function onChange(value) {
 						return setAttributes({ quoteBorderRadius: value });
@@ -66909,7 +66924,11 @@ var UAGBBlockQuote = function (_Component) {
 								wp.element.createElement(
 									"span",
 									{ className: "uagb-quote__icon" },
-									wp.element.createElement("span", { className: "uagb-quote__icon-main fa fa-quote" })
+									wp.element.createElement(
+										"svg",
+										{ xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 32 32" },
+										wp.element.createElement("path", { d: "M7.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.357-0.056 0.724-0.086 1.097-0.086zM25.031 14c3.866 0 7 3.134 7 7s-3.134 7-7 7-7-3.134-7-7l-0.031-1c0-7.732 6.268-14 14-14v4c-2.671 0-5.182 1.040-7.071 2.929-0.364 0.364-0.695 0.751-0.995 1.157 0.358-0.056 0.724-0.086 1.097-0.086z" })
+									)
 								)
 							),
 							wp.element.createElement(
@@ -67011,7 +67030,8 @@ function styling(props) {
 	    quoteRightMargin = _props$attributes.quoteRightMargin,
 	    quoteHoverColor = _props$attributes.quoteHoverColor,
 	    quoteBgHoverColor = _props$attributes.quoteBgHoverColor,
-	    borderHoverColor = _props$attributes.borderHoverColor;
+	    borderHoverColor = _props$attributes.borderHoverColor,
+	    quotePadding = _props$attributes.quotePadding;
 
 
 	var content_align = "center";
@@ -67064,25 +67084,21 @@ function styling(props) {
 			"margin-top": quoteTopMargin + "px",
 			"margin-bottom": quoteBottomMargin + "px",
 			"margin-left": quoteLeftMargin + "px",
-			"margin-right": quoteRightMargin + "px"
+			"margin-right": quoteRightMargin + "px",
+			"padding": quotePadding + "px"
 		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon": {
-			"color": quoteColor,
-			"font-size": quoteSize + "px",
-			"width": quoteSize + "px",
-			"height": quoteSize + "px",
-			"line-height": quoteSize + "px"
-		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-main": {
-			"font-size": quoteSize + "px",
 			"width": quoteSize + "px",
 			"height": quoteSize + "px"
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon": {
-			"color": quoteHoverColor
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon svg": {
+			"fill": quoteColor
 		},
 		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover": {
 			"background": quoteBgHoverColor
+		},
+		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon svg": {
+			"fill": quoteHoverColor
 		},
 		" .uagb-quote__style-style_1 .uagb-blockquote": {
 			"text-align": align
@@ -67347,7 +67363,11 @@ var attributes = {
 	},
 	quoteSize: {
 		type: "number",
-		default: 45
+		default: 25
+	},
+	quotePadding: {
+		type: "number",
+		default: 10
 	},
 	quoteBorderRadius: {
 		type: "number",

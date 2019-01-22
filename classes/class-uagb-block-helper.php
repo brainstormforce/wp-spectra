@@ -5,27 +5,23 @@
  * @package UAGB
  */
 
-if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
+if (! class_exists('UAGB_Block_Helper')) {
 
-	/**
-	 * Class UAGB_Block_Helper.
-	 */
-	class UAGB_Block_Helper {
-
-
-
-
-
-
-		/**
-		 * Get Section Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_section_css( $attr, $id ) {
+    /**
+     * Class UAGB_Block_Helper.
+     */
+    class UAGB_Block_Helper
+    {
+        /**
+         * Get Section Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_section_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -155,18 +151,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-section-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-section-' . $id);
+        }
 
-		/**
-		 * Get Columns Block CSS
-		 *
-		 * @since 1.8.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_columns_css( $attr, $id ) {
+        /**
+         * Get Columns Block CSS
+         *
+         * @since 1.8.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_columns_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -275,18 +272,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-columns-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-columns-' . $id);
+        }
 
-		/**
-		 * Get Single Column Block CSS
-		 *
-		 * @since 1.8.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_column_css( $attr, $id ) {
+        /**
+         * Get Single Column Block CSS
+         *
+         * @since 1.8.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_column_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -364,18 +362,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-column-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-column-' . $id);
+        }
 
-		/**
-		 * Get Advanced Heading Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_adv_heading_css( $attr, $id ) {
+        /**
+         * Get Advanced Heading Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_adv_heading_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -414,18 +413,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-adv-heading-' . $id);
+        }
 
-		/**
-		 * Get Multi Buttons Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_buttons_css( $attr, $id ) {
+        /**
+         * Get Multi Buttons Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_buttons_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -556,25 +556,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-buttons-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-buttons-' . $id);
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-buttons-' . $id );
+            $tablet = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 976px)', $t_selectors, '#uagb-buttons-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-buttons-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-buttons-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
 
-		/**
-		 * Get Info Box CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_info_box_css( $attr, $id ) {
+        /**
+         * Get Info Box CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_info_box_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
@@ -692,19 +693,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             }
 
 			// @codingStandardsIgnoreEnd.
-			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-infobox-' . $id);
+        }
 
 
-		/**
-		 * Get CTA CSS
-		 *
-		 * @since 1.7.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_call_to_action_css( $attr, $id ) {
+        /**
+         * Get CTA CSS
+         *
+         * @since 1.7.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_call_to_action_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
@@ -814,22 +816,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			// @codingStandardsIgnoreEnd.
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-cta-block-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-cta-block-' . $id);
+            $tablet  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id);
+            $mobile  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-cta-block-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
-		/**
-		 * Get Testimonial CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_testimonial_css( $attr, $id ) {
+        /**
+         * Get Testimonial CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_testimonial_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart.
 
@@ -923,22 +926,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			// @codingStandardsIgnoreEnd.
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-testimonial-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id);
 
-			return $desktop . $mobile;
-		}
+            return $desktop . $mobile;
+        }
 
-		/**
-		 * Get Team Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_team_css( $attr, $id ) {
+        /**
+         * Get Team Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_team_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1022,18 +1026,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
-		}
+            return UAGB_Helper::generate_css($selectors, '#uagb-team-' . $id);
+        }
 
-		/**
-		 * Get Social Share Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_social_share_css( $attr, $id ) {
+        /**
+         * Get Social Share Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_social_share_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1185,24 +1190,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-social-share-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-social-share-' . $id);
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
+            $tablet = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
-		/**
-		 * Get Icon List Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_icon_list_css( $attr, $id ) {
+        /**
+         * Get Icon List Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_icon_list_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1367,24 +1373,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-icon-list-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-icon-list-' . $id);
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id );
+            $tablet = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
-		/**
-		 * Get Content Timeline Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_content_timeline_css( $attr, $id ) {
+        /**
+         * Get Content Timeline Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_content_timeline_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1591,22 +1598,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-ctm-' . $id);
+            $tablet  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id);
+            $mobile  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
-		/**
-		 * Get Content Timeline Block CSS
-		 *
-		 * @since 0.0.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_post_timeline_css( $attr, $id ) {
+        /**
+         * Get Content Timeline Block CSS
+         *
+         * @since 0.0.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_post_timeline_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1872,23 +1880,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-ctm-' . $id);
+            $tablet  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id);
+            $mobile  = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id);
 
-			return $desktop . $tablet . $mobile;
-		}
+            return $desktop . $tablet . $mobile;
+        }
 
 
-		/**
-		 * Get Restaurant Menu Block CSS
-		 *
-		 * @since 1.0.2
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_restaurant_menu_css( $attr, $id ) {
+        /**
+         * Get Restaurant Menu Block CSS
+         *
+         * @since 1.0.2
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_restaurant_menu_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -1979,23 +1988,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop   = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
-			$r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
-			$tablet    = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id );
-			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
+            $desktop   = UAGB_Helper::generate_css($selectors, '#uagb-rm-' . $id);
+            $r_desktop = UAGB_Helper::generate_responsive_css('@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id);
+            $tablet    = UAGB_Helper::generate_responsive_css('@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id);
+            $mobile    = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id);
 
-			return $desktop . $r_desktop . $tablet . $mobile;
-		}
+            return $desktop . $r_desktop . $tablet . $mobile;
+        }
 
-		/**
-		 * Get Post Grid Block CSS
-		 *
-		 * @since 1.4.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_post_grid_css( $attr, $id ) {
+        /**
+         * Get Post Grid Block CSS
+         *
+         * @since 1.4.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_post_grid_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -2009,22 +2019,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-post__grid-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__grid-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__grid-' . $id);
 
-			return $desktop . $mobile;
-		}
+            return $desktop . $mobile;
+        }
 
-		/**
-		 * Get Post Carousel Block CSS
-		 *
-		 * @since 1.4.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_post_carousel_css( $attr, $id ) {
+        /**
+         * Get Post Carousel Block CSS
+         *
+         * @since 1.4.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_post_carousel_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -2070,22 +2081,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-post__carousel-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__carousel-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__carousel-' . $id);
 
-			return $desktop . $mobile;
-		}
+            return $desktop . $mobile;
+        }
 
-		/**
-		 * Get Post Masonry Block CSS
-		 *
-		 * @since 1.4.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_post_masonry_css( $attr, $id ) {
+        /**
+         * Get Post Masonry Block CSS
+         *
+         * @since 1.4.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_post_masonry_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -2099,20 +2111,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__masonry-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-post__masonry-' . $id);
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__masonry-' . $id );
+            $mobile = UAGB_Helper::generate_responsive_css('@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__masonry-' . $id);
 
-			return $desktop . $mobile;
-		}
+            return $desktop . $mobile;
+        }
 
-		/**
-		 * Get Post Block Selectors CSS
-		 *
-		 * @param array $attr The block attributes.
-		 * @since 1.4.0
-		 */
-		public static function get_post_selectors( $attr ) {
+        /**
+         * Get Post Block Selectors CSS
+         *
+         * @param array $attr The block attributes.
+         * @since 1.4.0
+         */
+        public static function get_post_selectors($attr)
+        {
 
 			// @codingStandardsIgnoreStart
 			return array(
@@ -2189,15 +2202,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 			// @codingStandardsIgnoreEnd
-		}
+        }
 
-		/**
-		 * Get Post Block Selectors CSS for Mobile devices
-		 *
-		 * @param array $attr The block attributes.
-		 * @since 1.6.1
-		 */
-		public static function get_post_mobile_selectors( $attr ) {
+        /**
+         * Get Post Block Selectors CSS for Mobile devices
+         *
+         * @param array $attr The block attributes.
+         * @since 1.6.1
+         */
+        public static function get_post_mobile_selectors($attr)
+        {
 
 			// @codingStandardsIgnoreStart
 			return array(
@@ -2206,17 +2220,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 			// @codingStandardsIgnoreEnd
-		}
+        }
 
-		/**
-		 * Get Blockquote CSS
-		 *
-		 * @since 1.7.1
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 * @return array The Widget List.
-		 */
-		public static function get_blockquote_css( $attr, $id ) {
+        /**
+         * Get Blockquote CSS
+         *
+         * @since 1.7.1
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         * @return array The Widget List.
+         */
+        public static function get_blockquote_css($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart
 
@@ -2278,22 +2293,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
 				"margin-left"       => $attr['quoteLeftMargin'] . "px",
 				"margin-right"      => $attr['quoteRightMargin'] . "px",
+				"padding"      		=> $attr['quotePadding'] . "px",
 			);			
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon"] = array(
-				"color"             => $attr['quoteColor'],
-				"font-size"         => $attr['quoteSize']."px",
 				"width"             => $attr['quoteSize']."px",
 				"height"            => $attr['quoteSize']."px",
-				"line-height"       => $attr['quoteSize']."px",
+			);	
+
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon svg"] = array(
+				"fill"         => $attr['quoteColor'],
 			);		
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-main"] = array(
-				"font-size"         => $attr['quoteSize']."px",
-				"width"             => $attr['quoteSize']."px",
-				"height"            => $attr['quoteSize']."px",
-			);			
-			
 			$selectors[" .uagb-quote__style-style_1 .uagb-blockquote"] = array(
 				"text-align"        => $attr['align'],
 			);		
@@ -2307,8 +2318,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"border-radius"     => $attr['authorImgBorderRadius']."%"
 			);	
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover"] = array(
-				"color"         => $attr['quoteHoverColor'],
+			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover svg"] = array(
+				"fill"         => $attr['quoteHoverColor'],
 			);	
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover"] = array(
@@ -2375,19 +2386,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-quote-' . $id );
+            $desktop = UAGB_Helper::generate_css($selectors, '#uagb-quote-' . $id);
 
-			return $desktop;
-		}
+            return $desktop;
+        }
 
-		/**
-		 * Get Testimonial Js
-		 *
-		 * @since 1.6.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_testimonial_js( $attr, $id ) {
+        /**
+         * Get Testimonial Js
+         *
+         * @since 1.6.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         */
+        public static function get_testimonial_js($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart.
 
@@ -2439,16 +2451,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			<?php
 			// @codingStandardsIgnoreEnd.
-		}
+        }
 
-		/**
-		 * Get Blockquote Js
-		 *
-		 * @since 1.7.0
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_blockquote_js( $attr, $id ) {
+        /**
+         * Get Blockquote Js
+         *
+         * @since 1.7.0
+         * @param array  $attr The block attributes.
+         * @param string $id The selector ID.
+         */
+        public static function get_blockquote_js($attr, $id)
+        {
 
 			// @codingStandardsIgnoreStart.
 
@@ -2480,6 +2493,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			<?php 
 			
 			// @codingStandardsIgnoreEnd.
-		}
-	}
+        }
+    }
 }

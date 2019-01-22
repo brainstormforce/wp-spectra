@@ -38,29 +38,24 @@
 		position: relative;
 		display: inline-block;
     	padding: 0px;
-    	z-index: 1;	   
-	}
-	.uagb-blockquote__skin-quotation span.uagb-quote__icon {
-	    width: 45px;
-	    height: 45px;
-	    line-height: 45px;
-	    display: block;
-	    text-align: center;
-	    border-radius: inherit;
+    	z-index: 1;	
+	    background: green;
+	    padding: 10px;
+	    border-radius: 100%;
+	    margin-right: 10px;   
 	}
 
-	.uagb-blockquote__skin-quotation span.fa.fa-quote {
-	    font-size: 45px;
-	    width: 45px;
-	    height: 45px;
-	}	
-	
-	.uagb-blockquote__skin-quotation .fa-quote:before{
-		content: "“";
-	    color: inherit;	 	
-	    display: inline-block; 
-	    vertical-align: middle;  
+	.uagb-blockquote__skin-quotation .uagb-quote__icon{
+		height: 25px;
+	    width: 25px;
+	    display: inline-block;
+    	float: left;
 	}
+	.uagb-blockquote__skin-quotation .uagb-quote__icon svg{
+		height: inherit;
+	    width: inherit;
+	    display: inherit;
+	}	
 	.uagb-blockquote__skin-quotation.uagb-quote__style-style_2 .uagb-quote__icon-wrap{
 		display: inline-block;
 	    float: left;
