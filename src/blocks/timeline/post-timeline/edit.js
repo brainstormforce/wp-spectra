@@ -147,179 +147,164 @@ class UAGBTimeline extends Component {
 			noSelectedPlaceholder: __( 'Select Icon' )
 		}
 
-		const iconColorSettings = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: separatorColor,
-							onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-							label: __( "Line Color" ),
-						},
-						{
-							value: iconColor,
-							onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: separatorBg,
-							onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: separatorBorder,
-							onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>         
-			</Fragment>
+		const iconColorSettings = (			
+			<PanelColorSettings
+				title={ __( "Color Settings" ) }
+				initialOpen={ true }
+				colorSettings={ [
+					{
+						value: separatorColor,
+						onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
+						label: __( "Line Color" ),
+					},
+					{
+						value: iconColor,
+						onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
+						label: __( "Icon Color" ),
+					},
+					{
+						value: separatorBg,
+						onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
+						label: __( "Background Color" ),
+					},
+					{
+						value: separatorBorder,
+						onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
+						label: __( "Border Color" ),
+					},
+				] }
+			>
+			</PanelColorSettings>  
 		)   
 
-		const iconFocusSettings = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: separatorFillColor,
-							onChange: ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ),
-							label: __( "Line Color" ),
-						},
-						{
-							value: iconFocus,
-							onChange: ( colorValue ) => setAttributes( { iconFocus: colorValue } ),
-							label: __( "Icon Color" ),
-						},
-						{
-							value: iconBgFocus,
-							onChange: ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ),
-							label: __( "Background Color" ),
-						},
-						{
-							value: borderFocus,
-							onChange: ( colorValue ) => setAttributes( { borderFocus: colorValue } ),
-							label: __( "Border Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings> 
-			</Fragment>
+		const iconFocusSettings = (			
+			<PanelColorSettings
+				title={ __( "Color Settings" ) }
+				initialOpen={ true }
+				colorSettings={ [
+					{
+						value: separatorFillColor,
+						onChange: ( colorValue ) => setAttributes( { separatorFillColor: colorValue } ),
+						label: __( "Line Color" ),
+					},
+					{
+						value: iconFocus,
+						onChange: ( colorValue ) => setAttributes( { iconFocus: colorValue } ),
+						label: __( "Icon Color" ),
+					},
+					{
+						value: iconBgFocus,
+						onChange: ( colorValue ) => setAttributes( { iconBgFocus: colorValue } ),
+						label: __( "Background Color" ),
+					},
+					{
+						value: borderFocus,
+						onChange: ( colorValue ) => setAttributes( { borderFocus: colorValue } ),
+						label: __( "Border Color" ),
+					},
+				] }
+			>
+			</PanelColorSettings> 			
 		)   
 
 		const iconControls = (
-			<Fragment>
-				<PanelBody 
-					title={ __( "Connector Color Settings" ) }
-					initialOpen={ true }
-				>               
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
-							{
-								name: "normal",
-								title: __( "Normal" ),
-								className: "uagb-normal-tab",
-							},
-							{
-								name: "focus",
-								title: __( "Focus" ),
-								className: "uagb-focus-tab",
-							}, 							                               
-						] }>
+			<PanelBody title={ __( "Connector Color Settings" ) } initialOpen={ true } >               
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
 						{
-							( tabName ) => {
-								let tabout
-								if( "focus" === tabName.name ) {
-									tabout = iconFocusSettings
-								}else {
-									tabout = iconColorSettings
-								}
-								return <div>{ tabout }</div>
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "focus",
+							title: __( "Focus" ),
+							className: "uagb-focus-tab",
+						}, 							                               
+					] }>
+					{
+						( tabName ) => {
+							let tabout
+							if( "focus" === tabName.name ) {
+								tabout = iconFocusSettings
+							}else {
+								tabout = iconColorSettings
 							}
+							return <div>{ tabout }</div>
 						}
-					</TabPanel> 
-				</PanelBody>               
-			</Fragment>
+					}
+				</TabPanel> 
+			</PanelBody>   
 		)
       
-		const colorSetting = (
-			<Fragment>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [       
-						{
-							value: backgroundColor,
-							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-							label: __( "Background Color" ),
-						},
-					] }
-				>
-					{ displayPostDate && <Fragment>
-						<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-						<ColorPalette
-							value={ dateColor }
-							onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					}
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-						<ColorPalette
-							value={ headingColor }
-							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					{ displayPostAuthor && <Fragment>
-						<p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
-						<ColorPalette
-							value={ authorColor }
-							onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					}
-					{ displayPostExcerpt && <Fragment>
-						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
-						<ColorPalette
-							value={ subHeadingColor }
-							onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					}
-                               
-					{ displayPostLink && <Fragment>
-						<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
-						<ColorPalette
-							value={ ctaColor }
-							onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
-							allowReset
-						/>                   
-						<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBackground }} ></span></span></p>
-						<ColorPalette
-							value={ ctaBackground }
-							onChange={ ( colorValue ) => setAttributes( { ctaBackground: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					}                
-				</PanelColorSettings>
-			</Fragment>
+		const colorSetting = (			
+			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ false }
+				colorSettings={ [       
+					{
+						value: backgroundColor,
+						onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
+						label: __( "Background Color" ),
+					},
+				] }	>
+
+				{ displayPostDate && <Fragment>
+					<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+					<ColorPalette
+						value={ dateColor }
+						onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
+						allowReset
+					/>
+				</Fragment>
+				}
+				<Fragment>
+					<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+					<ColorPalette
+						value={ headingColor }
+						onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+						allowReset
+					/>
+				</Fragment>
+				{ displayPostAuthor && <Fragment>
+					<p className="uagb-setting-label">{ __( "Author Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
+					<ColorPalette
+						value={ authorColor }
+						onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
+						allowReset
+					/>
+				</Fragment>
+				}
+				{ displayPostExcerpt && <Fragment>
+					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+					<ColorPalette
+						value={ subHeadingColor }
+						onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+						allowReset
+					/>
+				</Fragment>
+				}
+                           
+				{ displayPostLink && <Fragment>
+					<p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaColor }} ></span></span></p>
+					<ColorPalette
+						value={ ctaColor }
+						onChange={ ( colorValue ) => setAttributes( { ctaColor: colorValue } ) }
+						allowReset
+					/>                   
+					<p className="uagb-setting-label">{ __( "CTA Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBackground }} ></span></span></p>
+					<ColorPalette
+						value={ ctaBackground }
+						onChange={ ( colorValue ) => setAttributes( { ctaBackground: colorValue } ) }
+						allowReset
+					/>
+				</Fragment>
+				}                
+			</PanelColorSettings>
 		)
 
 		const content_control = (
 			<InspectorControls>  
-				<PanelBody title={ __( "Query" ) }
-					initialOpen={ true }
-				>
+				<PanelBody title={ __( "Query" ) } initialOpen={ true } >
 					<QueryControls
 						numberOfItems={ postsToShow }
 						{ ...{ order, orderBy } }
@@ -331,10 +316,7 @@ class UAGBTimeline extends Component {
 						onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ) } }
 					/>
 				</PanelBody>
-				<PanelBody 
-					title={ __( "Layout" ) }
-					initialOpen={ false }
-				>          
+				<PanelBody  title={ __( "Layout" ) } initialOpen={ false } >          
 					<SelectControl
 						label={ __( "Orientation" ) }
 						value={ timelinAlignment }
@@ -367,9 +349,7 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { stack: value } ) }
 					/>                
 				</PanelBody>
-				<PanelBody title={ __( "Image" ) }
-					initialOpen={ false }
-				>
+				<PanelBody title={ __( "Image" ) } initialOpen={ false } >
 					<ToggleControl
 						label={ __( "Display Featured Image" ) }
 						checked={ displayPostImage }
@@ -384,9 +364,7 @@ class UAGBTimeline extends Component {
                         />
 					}   
 				</PanelBody>
-				<PanelBody title={ __( "Content" ) }
-					initialOpen={ false }
-				> 
+				<PanelBody title={ __( "Content" ) } initialOpen={ false } > 
 					<ToggleControl
 						label={ __( "Display Post Author" ) }
 						checked={ displayPostAuthor }
@@ -432,10 +410,7 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { linkTarget: ! linkTarget } ) }
 					/>
 				</PanelBody> 
-				<PanelBody 
-					title={ __( "Timeline Item" ) }
-					initialOpen={ false }
-				>
+				<PanelBody  title={ __( "Timeline Item" ) } initialOpen={ false } >
 					<SelectControl
 						label={ __( "Heading Tag" ) }
 						value={ headingTag }
@@ -515,10 +490,7 @@ class UAGBTimeline extends Component {
 						allowReset
 					/>                 
 				</PanelBody>
-				<PanelBody 
-					title={ __( "Connector" ) }
-					initialOpen={ false }
-				>                    
+				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >                    
 					<FontIconPicker {...icon_props} />
 					<RangeControl
 						label={ __( "Icon Size" ) }
@@ -555,10 +527,7 @@ class UAGBTimeline extends Component {
 					{ iconControls }                  
 				</PanelBody>
 				{ colorSetting }
-				<PanelBody 
-					title={ __( "Spacing" ) }
-					initialOpen={ false }
-				>   
+				<PanelBody  title={ __( "Spacing" ) } initialOpen={ false } >   
 					<RangeControl
 						label={ __( "Block Padding" ) }
 						value={ bgPadding }
@@ -636,9 +605,7 @@ class UAGBTimeline extends Component {
 						allowReset
 					/>
 					}       
-				</PanelBody>
-                 
-               
+				</PanelBody>   
 			</InspectorControls>
 		)
        
