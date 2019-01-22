@@ -13,6 +13,9 @@
 
     a.uagb-cta__block-link span {
         font-size: inherit;
+        vertical-align: middle;
+        display: inline-block;
+        float: left;
     }
     .uagb-cta__content-right .uagb-cta__link-wrapper{
         width:30%;    
@@ -171,13 +174,17 @@
     .uagb-cta__button-type-none .uagb-cta__content {
         width: 100%;
     }
-    .uagb-cta-button-icon,
-    .uagb-cta-text-icon{
-        height: 20px;
-        width: 20px;
-        line-height: 20px;
+    .uagb-cta-with-svg{
+        height: 14px;
+        width: 14px;
+        line-height: 14px;
         display: inline-block;
         vertical-align: middle;
+    }
+    .uagb-cta__block svg{
+        display: block;
+        height: inherit;
+        width: inherit;
     }
     .uagb-cta__align-button-after {
         margin-left: 5px;
