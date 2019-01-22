@@ -5,7 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
@@ -204,7 +204,7 @@ class UAGBIconList extends Component {
 									this.saveIcons( { icon: value }, index )
 								} }
 								isMulti={false}
-								noSelectedPlaceholder= { __( 'Select Icon' ) }
+								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
 					}

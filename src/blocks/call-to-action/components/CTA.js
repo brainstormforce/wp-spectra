@@ -19,8 +19,8 @@ class CTA extends React.Component {
 
 		var cta_icon_output = ""
 		if( attributes.ctaIcon !== "" ){
-			cta_icon_output = <span className= { classnames(`uagb-cta-${ attributes.ctaType }-icon`, `uagb-cta__align-button-${ attributes.ctaIconPosition }` , 'uagb-cta-with-svg') }>
-			{ renderSVG(attributes.ctaIcon) }
+			cta_icon_output = <span className= { classnames(`uagb-cta-${ attributes.ctaType }-icon`, `uagb-cta__align-button-${ attributes.ctaIconPosition }` , "uagb-cta-with-svg") }>
+				{ renderSVG(attributes.ctaIcon) }
 			</span>
 		}
 

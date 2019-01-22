@@ -95,7 +95,7 @@ registerBlockType( "uagb/icon-list", {
 							}
 
 							let target = ( icon.target ) ? "_blank" : "_self"
-							let link_url = ( !disableLink ) ? icon.link : 'javascript:void(0);'
+							let link_url = ( !disableLink ) ? icon.link : "javascript:void(0);"
 
 							return (
 								<a
@@ -175,7 +175,7 @@ registerBlockType( "uagb/icon-list", {
 									}
 
 									let target = ( icon.target ) ? "_blank" : "_self"
-									let link_url = ( !disableLink ) ? icon.link : 'javascript:void(0);'
+									let link_url = ( !disableLink ) ? icon.link : "javascript:void(0);"
 
 									return (
 										<a

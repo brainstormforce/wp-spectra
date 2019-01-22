@@ -2,7 +2,7 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
@@ -363,7 +363,7 @@ class UAGBTeam extends Component {
 										value={twitterIcon}
 										onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
 										isMulti={false}
-										noSelectedPlaceholder={__( 'Select Icon' )}
+										noSelectedPlaceholder={__( "Select Icon" )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -381,7 +381,7 @@ class UAGBTeam extends Component {
 										value={fbIcon}
 										onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
 										isMulti={false}
-										noSelectedPlaceholder={__( 'Select Icon' )}
+										noSelectedPlaceholder={__( "Select Icon" )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -395,7 +395,7 @@ class UAGBTeam extends Component {
 									<FontIconPicker
 										icons={svg_icons}
 										renderFunc={renderSVG}
-										noSelectedPlaceholder={__( 'Select Icon' )}
+										noSelectedPlaceholder={__( "Select Icon" )}
 										theme="default"
 										value={linkedinIcon}
 										onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
@@ -413,7 +413,7 @@ class UAGBTeam extends Component {
 									<FontIconPicker
 										icons={svg_icons}
 										renderFunc={renderSVG}
-										noSelectedPlaceholder={__( 'Select Icon' )}
+										noSelectedPlaceholder={__( "Select Icon" )}
 										theme="default"
 										value={pinIcon}
 										onChange={ ( value ) => setAttributes( { pinIcon: value } ) }

@@ -133,53 +133,53 @@ export default class UAGBColumnEdit extends Component {
 		const border_setting = (
 			<Fragment>
 				<PanelBody title={ __( "Border" ) } initialOpen={ false }>
-						<SelectControl
-							label={ __( "Border Style" ) }
-							value={ borderStyle }
-							onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "solid", label: __( "Solid" ) },
-								{ value: "dotted", label: __( "Dotted" ) },
-								{ value: "dashed", label: __( "Dashed" ) },
-								{ value: "double", label: __( "Double" ) },
-								{ value: "groove", label: __( "Groove" ) },
-								{ value: "inset", label: __( "Inset" ) },
-								{ value: "outset", label: __( "Outset" ) },
-								{ value: "ridge", label: __( "Ridge" ) },
-							] }
-						/>
-						{ "none" != borderStyle && (
-							<RangeControl
-								label={ __( "Border Width" ) }
-								value={ borderWidth }
-								onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
-						) }
+					<SelectControl
+						label={ __( "Border Style" ) }
+						value={ borderStyle }
+						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "groove", label: __( "Groove" ) },
+							{ value: "inset", label: __( "Inset" ) },
+							{ value: "outset", label: __( "Outset" ) },
+							{ value: "ridge", label: __( "Ridge" ) },
+						] }
+					/>
+					{ "none" != borderStyle && (
 						<RangeControl
-							label={ __( "Border Radius" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							label={ __( "Border Width" ) }
+							value={ borderWidth }
+							onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 							min={ 0 }
-							max={ 100 }
+							max={ 50 }
 							allowReset
 						/>
-						{ "none" != borderStyle && (
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
-								<ColorPalette
-									value={ borderColor }
-									onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
-									allowReset
-								/>
-							</Fragment>
-						) }
-					</PanelBody>
+					) }
+					<RangeControl
+						label={ __( "Border Radius" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					{ "none" != borderStyle && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+							<ColorPalette
+								value={ borderColor }
+								onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+					) }
+				</PanelBody>
 			</Fragment>
-			)
+		)
 
 		const inspector_controls = (
 			<Fragment>

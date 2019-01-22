@@ -148,7 +148,7 @@ class UAGBMultiButtonEdit extends Component {
 						initialPosition={16}
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Button Padding (px)' ) }</h2>
+					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
 						label={ __( "Vertical" ) }
 						value={ buttons[ index ].vPadding }
@@ -168,7 +168,7 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 100 }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Button Border' ) }</h2>
+					<h2>{ __( "Button Border" ) }</h2>
 					<SelectControl
 						label={ __( "Style" ) }
 						value={ buttons[ index ].borderStyle }
@@ -183,7 +183,7 @@ class UAGBMultiButtonEdit extends Component {
 							this.saveButton( { borderStyle: value }, index )
 						} }
 					/>
-					{ buttons[ index ].borderStyle != 'none' &&
+					{ buttons[ index ].borderStyle != "none" &&
 						<RangeControl
 							label={ __( "Thickness" ) }
 							value={ buttons[ index ].borderWidth }

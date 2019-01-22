@@ -5,7 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
@@ -133,7 +133,7 @@ class UAGBSocialShare extends Component {
 									this.saveSocials( { icon: value }, index )
 								} }
 								isMulti={false}
-								noSelectedPlaceholder= { __( 'Select Icon' ) }
+								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
 					}

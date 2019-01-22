@@ -210,7 +210,7 @@ class UAGBinfoBox extends Component {
 			onChange: this.getIfbIcon,
 			isMulti: false,
 			renderFunc: renderSVG,
-			noSelectedPlaceholder: __( 'Select Icon' )
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		// Icon properties.
@@ -220,7 +220,7 @@ class UAGBinfoBox extends Component {
 			value: ctaIcon,
 			onChange: this.getCtaicon,
 			isMulti: false,
-			noSelectedPlaceholder: __( 'Select Icon' )
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
@@ -362,7 +362,7 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-					</Fragment>
+				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
 					<Fragment>
@@ -384,26 +384,26 @@ class UAGBinfoBox extends Component {
 					<Fragment>
 						<h2>{ __( "Button Icon" ) }</h2>
 						<FontIconPicker {...cta_icon_props} />
-						{ ctaIcon != '' && <Fragment>
-								<SelectControl
-									label={ __( "Icon Position" ) }
-									value={ ctaIconPosition }
-									onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
-									options={ [
-										{ value: "before", label: __( "Before Text" ) },
-										{ value: "after", label: __( "After Text" ) },
-									] }
-								/>
-								<RangeControl
-									label={ __( "Icon Spacing" ) }
-									value={ ctaIconSpace }
-									onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
-									min={ 0 }
-									max={ 50 }
-									beforeIcon=""
-									allowReset
-								/>
-							</Fragment>
+						{ ctaIcon != "" && <Fragment>
+							<SelectControl
+								label={ __( "Icon Position" ) }
+								value={ ctaIconPosition }
+								onChange={ ( value ) => setAttributes( { ctaIconPosition: value } ) }
+								options={ [
+									{ value: "before", label: __( "Before Text" ) },
+									{ value: "after", label: __( "After Text" ) },
+								] }
+							/>
+							<RangeControl
+								label={ __( "Icon Spacing" ) }
+								value={ ctaIconSpace }
+								onChange={ ( value ) => setAttributes( { ctaIconSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								beforeIcon=""
+								allowReset
+							/>
+						</Fragment>
 						}
 						<hr className="uagb-editor__separator" />
 					</Fragment>
@@ -608,24 +608,24 @@ class UAGBinfoBox extends Component {
 					onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
 				/>
 				{ showPrefix && <Fragment>
-						<RangeControl
-							label={ __( "Prefix Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 10 }
-							max={ 200 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+					<RangeControl
+						label={ __( "Prefix Font Size" ) }
+						value={ prefixFontSize }
+						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+						min={ 10 }
+						max={ 200 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 					    <ColorPalette
 					        value={ prefixColor }
 					        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
 					        allowReset
 					    />
 					  	<hr className="uagb-editor__separator" />
-					</Fragment>
+				</Fragment>
 				}
 
 				<ToggleControl
@@ -688,7 +688,7 @@ class UAGBinfoBox extends Component {
 					        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
 					        allowReset
 					    />
-					</Fragment>
+				</Fragment>
 				}
 			</PanelBody>			
 		)
@@ -739,7 +739,7 @@ class UAGBinfoBox extends Component {
 					/>
 				}
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Image/Icon Margin (px)' ) }</h2>
+				<h2>{ __( "Image/Icon Margin (px)" ) }</h2>
 				<RangeControl
 					value={ iconLeftMargin }
 					onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
