@@ -99,7 +99,7 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
-		$font_awesome = apply_filters( 'uagb_font_awesome_url', UAGB_URL . 'assets/css/font-awesome.css' )
+		$font_awesome = apply_filters( 'uagb_font_awesome_url', UAGB_URL . 'assets/css/font-awesome.css' );
 
 		// Font Awsome.
 		wp_enqueue_style(
