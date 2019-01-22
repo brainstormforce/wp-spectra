@@ -773,7 +773,7 @@ class UAGBBlockQuote extends Component {
 								aria-label={ __( 'Twitter Username' ) }
 								className={ `${ className }__via-label` }
 								htmlFor={ `${ className }__via` }
-							>	{ __("@") }
+							>	{ UAGB_Block_Icons.at_the_rate }
 							</label>
 							<input
 								aria-label={ __( 'Twitter Username' ) }
