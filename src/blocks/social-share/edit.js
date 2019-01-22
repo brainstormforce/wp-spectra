@@ -290,6 +290,7 @@ class UAGBSocialShare extends Component {
 								help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
 							/>
 						}
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Size" ) }
 							value={ size }
@@ -302,18 +303,18 @@ class UAGBSocialShare extends Component {
 							label={ __( "Background Size" ) }
 							value={ bgSize }
 							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Background Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Circular Size" ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							help={ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Gap between Icon / Image" ) }
 							value={ gap }
