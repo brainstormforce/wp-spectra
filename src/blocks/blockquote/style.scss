@@ -113,9 +113,9 @@
 	    display: -webkit-flex;
 	    display: -ms-flexbox;
 	    display: flex;
-	    -webkit-transition: 0.3s;
-	    -o-transition: 0.3s;
-	    transition: 0.3s;
+	    -webkit-transition: 0.2s;
+	    -o-transition: 0.2s;
+	    transition: 0.2s;
 	    -webkit-align-self: flex-end;
 	    -ms-flex-item-align: end;
 	    align-self: flex-end;
@@ -169,9 +169,9 @@
 	    -webkit-transform: translateY(-50%) scale(1, 0.65);
 	    -ms-transform: translateY(-50%) scale(1, 0.65);
 	    transform: translateY(-50%) scale(1, 0.65);
-	    -webkit-transition: 0.3s;
-	    -o-transition: 0.3s;
-	    transition: 0.3s;
+	    -webkit-transition: 0.2s;
+	    -o-transition: 0.2s;
+	    transition: 0.2s;
 	}
 	
 	.uagb-quote__with-tweet.uagb-quote__align-center .uagb-blockquote footer,

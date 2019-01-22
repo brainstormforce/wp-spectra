@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2354,6 +2355,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
 					"margin-right"       => $attr['tweetIconSpacing'] . "px",
+					"width"       		 => $attr['tweetBtnFontSize'] . "px",
+					"height"             => $attr['tweetBtnFontSize'] . "px",
 				);	
 
 				// Hover CSS.
