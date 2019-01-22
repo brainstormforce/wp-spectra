@@ -338,7 +338,7 @@ registerBlockType( "uagb/info-box", {
 			},
 		},
 		{
-			attributes,
+			attributes,	
 			save: function( props ) {
 				const {
 					iconimgPosition,
@@ -379,7 +379,7 @@ registerBlockType( "uagb/info-box", {
 				// Get description and seperator components.
 				const desc = (
 					<Fragment>
-						{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={props.attributes} /> }
+						{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
 						<div className = "uagb-ifb-text-wrap">
 							{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
 							{ ctaType !== "none" && <InfoBoxCta attributes={props.attributes} />}
