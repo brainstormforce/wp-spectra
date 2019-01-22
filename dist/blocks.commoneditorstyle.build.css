@@ -55,6 +55,9 @@ hr.uagb-editor__separator {
 	font-style: italic;
 	color: #a4afb7;
 }
+.components-range-control.uagb-margin-control .components-base-control__label {
+    width: 30px;
+}
 
 .uagb-icons-list .uagb-widget-icon {
 	-js-display: flex;
