@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -21,7 +22,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_section_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -162,7 +162,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_columns_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -282,7 +281,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_column_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -371,7 +369,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_adv_heading_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
@@ -421,7 +418,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_buttons_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
@@ -570,7 +566,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_info_box_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
@@ -719,7 +714,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_call_to_action_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
 
@@ -751,12 +745,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr->ctaBgHoverColor,
 					'border-color'     => $attr->ctaBorderhoverColor,
 				),
-				' .uagb-cta__button-wrapper .uagb-cta__block-link'  => array(
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
 					'font-size'   => $attr->ctaFontSize. "px",
 					'width'       => $attr->ctaFontSize. "px",
-					'heigth'      => $attr->ctaFontSize. "px",
+					'height'      => $attr->ctaFontSize. "px",
 					'line-height' => $attr->ctaFontSize. "px",
-				),				
+				),								
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr->ctaBtnLinkColor,
 				),
@@ -856,7 +850,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_testimonial_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
@@ -965,7 +958,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_team_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
@@ -1066,7 +1058,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_social_share_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
@@ -1248,7 +1239,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_icon_list_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
@@ -1443,7 +1433,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_content_timeline_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
@@ -1674,7 +1663,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_timeline_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-timeline']['attributes'];
@@ -1966,7 +1954,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_restaurant_menu_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
@@ -2073,7 +2060,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_grid_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
@@ -2102,7 +2088,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_carousel_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
@@ -2163,7 +2148,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_masonry_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
@@ -2190,7 +2174,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.4.0
 		 */
 		public static function get_post_selectors( $attr ) {
-
 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__items" => array(
@@ -2275,7 +2258,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
-
 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__text" => array(
@@ -2293,7 +2275,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_testimonial_js( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
