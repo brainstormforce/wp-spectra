@@ -130,12 +130,17 @@
 	    -ms-flex-item-align: center;
     	align-self: center; 
 	}
-
+	a.uagb-blockquote__tweet-button svg {
+	    height: 15px;
+	    width: 15px;
+	    margin-right: 5px;
+	    fill: #fff;
+	}
 	a.uagb-blockquote__tweet-button,
-	a.uagb-blockquote__tweet-button i{
+	a.uagb-blockquote__tweet-button svg{
 		font-style:normal;
 	}
-	.uagb-quote__tweet-icon_text i.fab.fa-twitter {
+	.uagb-quote__tweet-icon_text svg {
 	    margin-right: 10px;
 	}
 	.uagb-quote__tweet-icon a.uagb-blockquote__tweet-button {

@@ -137,6 +137,10 @@ function styling( props ) {
 			"color": tweetLinkColor,		
 		}
 
+		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = {
+			"fill": tweetLinkColor,		
+		}
+
 		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
 			"font-size": tweetBtnFontSize + "px",
 			"color": tweetBtnColor,		
@@ -145,6 +149,10 @@ function styling( props ) {
 			"padding-right": tweetBtnHrPadding + "px",
 			"padding-top": tweetBtnVrPadding + "px",
 			"padding-bottom": tweetBtnVrPadding + "px",	
+		}
+
+		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = {
+			"fill": tweetBtnColor,		
 		}
 
 		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
@@ -156,13 +164,18 @@ function styling( props ) {
 			"padding-top": tweetBtnVrPadding + "px",
 			"padding-bottom": tweetBtnVrPadding + "px",	
 		}	
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = {
+			"fill": tweetBtnColor,		
+		}	
 
 		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = {
 			"border-right-color": tweetBtnBgColor,		
 		}	
 
-		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button i"] = {
+		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
 			"margin-right": tweetIconSpacing + "px",
+			"width": tweetBtnFontSize + "px",
+			"height": tweetBtnFontSize + "px",
 		}	
 
 		// Hover CSS
@@ -170,13 +183,27 @@ function styling( props ) {
 			"color": tweetBtnHoverColor,		
 		}
 
+		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = {
+			"fill": tweetBtnHoverColor,		
+		}
+
 		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = {
 			"color": tweetBtnHoverColor,		
 			"background-color": tweetBtnBgHoverColor,	
 		}
 
+		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = {
+			"fill": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
 		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover "] = {
 			"color": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
+		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = {
+			"fill": tweetBtnHoverColor,		
 			"background-color": tweetBtnBgHoverColor,	
 		}
 

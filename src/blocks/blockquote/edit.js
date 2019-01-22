@@ -342,9 +342,7 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 					</Fragment>
-				}
-				
-
+				}				
 				
 				{ skinStyle == "quotation" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Quote Icon Color" ) }
@@ -639,18 +637,19 @@ class UAGBBlockQuote extends Component {
 						value= { iconLabel }
 						onChange={ value => setAttributes( { iconLabel: value } ) }
 					/>		
-					<RangeControl
-						label={ __( "Tweet Font Size" ) }
-						value={ tweetBtnFontSize }
-						onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
-						min={ 0 }
-						max={ 100 }
-						beforeIcon="editor-textcolor"
-						allowReset
-						initialPosition={16}
-					/>	
+					
 					</Fragment>		
-				}					
+				}	
+				<RangeControl
+					label={ __( "Tweet Font Size" ) }
+					value={ tweetBtnFontSize }
+					onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
+					min={ 0 }
+					max={ 100 }
+					beforeIcon="editor-textcolor"
+					allowReset
+					initialPosition={16}
+				/>					
 				{ enableTweet && <Fragment>					
 					<SelectControl
 						label={ __( "Target URL" ) }
