@@ -171,7 +171,7 @@ class UAGBCallToAction extends Component {
 				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
 					<Fragment>
 						<FontIconPicker {...cta_icon_props} />
-						{ ctaIcon != '' &&
+						{ ctaIcon != "" &&
 							<Fragment>
 								<SelectControl
 									label={ __( "Icon Position" ) }
@@ -258,31 +258,31 @@ class UAGBCallToAction extends Component {
 				)
 				}
 				{ ( ctaType === "text" ) && <TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-							activeClass="active-tab"
-							tabs={ [
-								{
-									name: "normal",
-									title: __( "Normal" ),
-									className: "uagb-normal-tab",
-								},
-								{
-									name: "hover",
-									title: __( "Hover" ),
-									className: "uagb-hover-tab",
-								},
-							] }>
-							{
-								( tabName ) => {
-									let cta_text_tab
-									if( "normal" === tabName.name ) {
-										cta_text_tab = cta_txt_color
-									}else {
-										cta_text_tab = cta_txt_hover_color
-									}
-									return <div>{ cta_text_tab }</div>
-								}
+					activeClass="active-tab"
+					tabs={ [
+						{
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-hover-tab",
+						},
+					] }>
+					{
+						( tabName ) => {
+							let cta_text_tab
+							if( "normal" === tabName.name ) {
+								cta_text_tab = cta_txt_color
+							}else {
+								cta_text_tab = cta_txt_hover_color
 							}
-						</TabPanel>
+							return <div>{ cta_text_tab }</div>
+						}
+					}
+				</TabPanel>
 				}
 
 				{ ( ctaType === "button") &&
@@ -393,7 +393,7 @@ class UAGBCallToAction extends Component {
 		// Typography settings.
 		const TypographySettings = (
 			<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-				<h2>{ __( 'Heading' ) }</h2>
+				<h2>{ __( "Heading" ) }</h2>
 				<SelectControl
 					label={ __( "Heading Tag" ) }
 					value={ titleTag }
@@ -424,7 +424,7 @@ class UAGBCallToAction extends Component {
 					allowReset
 				/>
 				<hr className="uagb-editor__separator" />
-				<h2>{ __( 'Description' ) }</h2>
+				<h2>{ __( "Description" ) }</h2>
 				<RangeControl
 					label={ __( "Description Font Size" ) }
 					value={ descFontSize }

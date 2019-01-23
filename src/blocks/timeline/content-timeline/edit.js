@@ -327,7 +327,7 @@ class UAGBcontentTimeline extends Component {
 						label: __( "Border Color" ),
 					},
 				] }
-				>
+			>
 			</PanelColorSettings>			
 		)
 
