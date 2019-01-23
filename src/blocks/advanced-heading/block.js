@@ -132,7 +132,7 @@ export default class UAGBAdvancedHeading extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Advanced Heading" ) }>
-						<h2>{ __( 'Heading' ) }</h2>
+						<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
 							value={ headingTag }
@@ -163,7 +163,7 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( 'Sub-Heading' ) }</h2>
+						<h2>{ __( "Sub-Heading" ) }</h2>
 						<RangeControl
 							label={ __( "Sub-Heading Font Size" ) }
 							value={ subHeadFontSize }
@@ -219,13 +219,13 @@ export default class UAGBAdvancedHeading extends Component {
 								initialPosition={20}
 							/>
 							{ seperatorStyle !== "none" && <Fragment>
-									<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
-									<ColorPalette
-										value={ separatorColor }
-										onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-										allowReset
-									/>
-								</Fragment>
+								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
+								<ColorPalette
+									value={ separatorColor }
+									onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
 							}
 						</Fragment>
 						}
@@ -245,15 +245,15 @@ export default class UAGBAdvancedHeading extends Component {
 							initialPosition={0}
 						/>
 						{ seperatorStyle !== "none" && <RangeControl
-								label={ __( "Separator Bottom Spacing" ) }
-								value={ separatorSpace }
-								onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-								initialPosition={0}
-							/>
+							label={ __( "Separator Bottom Spacing" ) }
+							value={ separatorSpace }
+							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+							initialPosition={0}
+						/>
 						}
 					</PanelBody>
 				</InspectorControls>
