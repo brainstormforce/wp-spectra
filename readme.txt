@@ -102,6 +102,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Info Box - Separator width issue.
 * Fix: Testimonial - Border radius should be out of Border condition.
 * Fix: Info Box - Color setting option default open.
+* Fix: Conflict with GeneratePress theme.
 * Improvement: CTA -  Reorder CTA color setting options.
 * Improvement: Info Box - CTA Color Settings into Call To Action Tab.
 * Improvement: Info Box - Deprecated color setting panel.
