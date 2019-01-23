@@ -155,7 +155,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		static public function initialise_plugin() {
 
 			define( 'UAGB_PLUGIN_NAME', 'Ultimate Addons for Gutenberg' );
-			define( 'UAGB_PLUGIN_SHORT_NAME', 'UAGB' );
+			define( 'UAGB_PLUGIN_SHORT_NAME', 'UAG' );
 		}
 
 		/**
@@ -193,7 +193,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Enable header icon filter below.
 			$uagb_icon                 = apply_filters( 'uagb_header_top_icon', true );
-			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'https://www.ultimategutenberg.com/' );
+			$uagb_visit_site_url       = apply_filters( 'uagb_site_url', 'https://www.ultimategutenberg.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
 
 			include_once UAGB_DIR . 'admin/uagb-admin.php';

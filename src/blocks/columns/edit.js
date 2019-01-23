@@ -434,7 +434,7 @@ class UAGBColumns extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-						<h2>{ __( 'Padding (px)' ) }</h2>
+						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.left_margin }
 							className={ "uagb-margin-control" }
@@ -472,7 +472,7 @@ class UAGBColumns extends Component {
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( 'Margin (px)' ) }</h2>
+						<h2>{ __( "Margin (px)" ) }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.top_margin }
 							className={ "uagb-margin-control" }
