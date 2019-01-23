@@ -317,7 +317,8 @@ registerBlockType( "uagb/advanced-heading", {
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
-		__( "uagb" ),
+		__( "uag" ),
+		__( "heading" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes: {

@@ -50,7 +50,7 @@ registerBlockType( "uagb/call-to-action", {
 	keywords: [
 		__( "cta" ),
 		__( "call to action" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes,
@@ -75,7 +75,7 @@ registerBlockType( "uagb/call-to-action", {
 		const desc = (
 			<Fragment>
 				{ "" !== description && <div className = "uagb-cta-text-wrap">
-					<Description attributes={props.attributes} setAttributes = "not_set"/> 
+					<Description attributes={props.attributes} setAttributes = "not_set"/>
 				</div>
 				}
 			</Fragment>
@@ -87,7 +87,7 @@ registerBlockType( "uagb/call-to-action", {
 				{ "" !== ctaTitle && <div className = "uagb-cta__title-wrap">
 					<Title attributes={ props.attributes} setAttributes = "not_set"/>
 				</div>
-				}	
+				}
 			</Fragment>
 		)
 
@@ -104,22 +104,22 @@ registerBlockType( "uagb/call-to-action", {
 						}
 						<div className = "uagb-cta__content">
 
-							{  ctaPosition == "above-title" && 
+							{  ctaPosition == "above-title" &&
 								<Fragment>
 							     { is_cta }
 							     { title_text }
 							     { desc }
 							    </Fragment>
 							}
-							
-							{ ctaPosition == "below-title"  && 
+
+							{ ctaPosition == "below-title"  &&
 								<Fragment>
 							     { title_text }
 							     { desc }
 							     { is_cta }
 							    </Fragment>
 							}
-							
+
 							{ ( ctaPosition == "left" || ctaPosition == "right") &&
 								<Fragment>
 									{ title_text }

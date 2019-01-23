@@ -123,7 +123,8 @@ registerBlockType( "uagb/google-map", {
 	icon: UAGB_Block_Icons.google_map,
 	keywords: [
 		__( "google map" ),
-		__( "uagb" ),
+		__( "uag" ),
+		__( "map" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes: {

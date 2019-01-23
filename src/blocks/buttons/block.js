@@ -46,7 +46,7 @@ registerBlockType( "uagb/buttons", {
 	keywords: [
 		__( "buttons" ),
 		__( "multi buttons" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,
