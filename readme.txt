@@ -113,6 +113,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Improvement: Content Timeline - First tab not open default.
 * Improvement: Changed Block Category name to Ultimate Addons block.
 * Improvement: Changed panel tab design.
+* Improvement: Dynamic image sizes for the Team and Info Box block.
 
 = 1.8.0 =
 * New: Advanced Columns
