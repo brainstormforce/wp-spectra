@@ -25,7 +25,7 @@ registerBlockType( "uagb/post-grid", {
 	keywords: [
 		__( "post" ),
 		__( "grid" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	edit,
 	// Render via PHP

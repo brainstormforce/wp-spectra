@@ -44,7 +44,8 @@ registerBlockType( "uagb/section", {
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "section" ),
-		__( "uagb" ),
+		__( "wrapper" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,

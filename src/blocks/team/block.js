@@ -53,7 +53,7 @@ registerBlockType( "uagb/team", {
 	keywords: [
 		__( "team" ),
 		__( "members" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes,

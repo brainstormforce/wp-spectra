@@ -50,7 +50,7 @@ registerBlockType( "uagb/testimonial", {
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	keywords: [
 		__( "testimonial" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	category: uagb_blocks_info.category,
 
@@ -152,5 +152,5 @@ registerBlockType( "uagb/testimonial", {
 				</div>
 			</Fragment>
 		)
-	}	
+	}
 } )

@@ -45,7 +45,7 @@ registerBlockType( "uagb/content-timeline", {
 	keywords: [
 		__( "Content Timeline" ),
 		__( "Timeline" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,

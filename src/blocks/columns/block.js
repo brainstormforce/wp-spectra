@@ -33,7 +33,7 @@ registerBlockType( "uagb/columns", {
 	keywords: [
 		__( "columns" ),
 		__( "rows" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,
