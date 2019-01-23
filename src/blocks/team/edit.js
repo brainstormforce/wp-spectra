@@ -136,19 +136,6 @@ class UAGBTeam extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		// Set image.
-		/*const onSelectImage = ( media ) => {
-			if ( ! media || ! media.url ) {
-				setAttributes( { image: null } )
-				return
-			}
-			if ( ! media.type || "image" != media.type ) {
-				return
-			}
-			setAttributes( { image: media } )
-			imageSizeOptions = this.getImageSize(media['sizes'])			
-		}*/
-
 		if( typeof attributes.image !== "undefined" && attributes.image !== null && attributes.image !=="" ){
 			imageSizeOptions = this.getImageSize(image['sizes'])
 		}
