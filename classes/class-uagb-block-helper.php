@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2106,6 +2107,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .slick-arrow span"] = array(
 				"color" => $attr['arrowColor'],
 				"font-size" => $attr['arrowSize'] . "px",
+				"width" => $attr['arrowSize'] . "px",
+				"height" => $attr['arrowSize'] . "px"
+			);
+
+			$selectors[" .slick-arrow svg"] = array(
+				"fill" => $attr['arrowColor'],
 				"width" => $attr['arrowSize'] . "px",
 				"height" => $attr['arrowSize'] . "px"
 			);
