@@ -120,7 +120,6 @@ class UAGBcontentTimeline extends Component {
 		const { tm_content, timelineItem } = this.props.attributes
 		const { setAttributes } = this.props
 		var item_number = value
-		console.log(tm_content)
 		let data_copy     = [ ...tm_content ]
 		let data_length = data_copy.length
 		if( item_number < data_length ){
