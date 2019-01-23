@@ -99,6 +99,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Advanced Columns - Editor end width issue fixed.
 * Fix: Advanced Columns - Editor end Draggable pointer overflow issue.
 * New: Advanced Columns - Added border option for inner column.
+* New: Advanced Columns - Added alignment option for inner column.
 * Fix: Info Box - Separator width issue.
 * Fix: Testimonial - Border radius should be out of Border condition.
 * Fix: Info Box - Color setting option default open.
