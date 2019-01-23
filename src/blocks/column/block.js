@@ -20,7 +20,7 @@ const {
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
-	PanelColorSettings
+	PanelColorSettings,
 } = wp.editor
 
 const {
@@ -117,7 +117,8 @@ export default class UAGBColumnEdit extends Component {
 				borderStyle,
 				borderWidth,
 				borderRadius,
-				borderColor
+				borderColor,
+				align
 			},
 			setAttributes,
 			className,
@@ -194,6 +195,16 @@ export default class UAGBColumnEdit extends Component {
 						} }
 						min={ 0 }
 						max={ 100 }
+					/>
+					<SelectControl
+						label={ __( "Content Alignment" ) }
+						value={ align }
+						onChange={ ( value ) => setAttributes( { align: value } ) }
+						options={ [
+							{ value: "left", label: __( "Left" ) },
+							{ value: "center", label: __( "Center" ) },
+							{ value: "right", label: __( "Right" ) },
+						] }
 					/>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
@@ -472,6 +483,8 @@ export default class UAGBColumnEdit extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
+		let align_class = ( 'center' == align ) ? "" : `uagb-column__align-${align}`
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -483,6 +496,7 @@ export default class UAGBColumnEdit extends Component {
 						"uagb-column__wrap",
 						`uagb-column__background-${backgroundType}`,
 						`uagb-column__edit-${ active }`,
+						align_class
 					) }
 					id={ `uagb-column-${this.props.clientId}` }
 				>
@@ -519,6 +533,10 @@ registerBlockType( "uagb/column", {
 	attributes: {
 		block_id: {
 			type: "string",
+		},
+		align : {
+			type: "string",
+			default: "center"
 		},
 		topPadding: {
 			type: "number",
@@ -626,15 +644,16 @@ registerBlockType( "uagb/column", {
 	},
 
 	edit: UAGBColumnEdit,
-
 	save( { attributes, className } ) {
-		const { block_id, backgroundType  } = attributes
+		const { block_id, backgroundType, align  } = attributes
+		let align_class = ( 'center' == align ) ? "" : `uagb-column__align-${align}`
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
-					`uagb-column__background-${backgroundType}`
+					`uagb-column__background-${backgroundType}`,
+					align_class
 				) }
 				id={ `uagb-column-${block_id}` }
 			>
