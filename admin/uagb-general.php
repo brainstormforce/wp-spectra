@@ -99,10 +99,11 @@ $support_url    = $support_data['support_url'];
 		</div>
 		<div class="postbox-container uagb-sidebar" id="postbox-container-1">
 			<div id="side-sortables">
+				<?php if ( ! defined( 'ASTRA_THEME_VERSION' ) ) { ?>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-admin-customizer"></span>
-						<span><?php esc_html_e( 'Free Theme Download', 'ultimate-addons-for-gutenberg' ); ?></span>
+						<span><?php esc_html_e( 'Free Theme for Gutenberg', 'ultimate-addons-for-gutenberg' ); ?></span>
 					</h2>
 					<img class="uagb-ast-img" src="https://i0.wp.com/themes.svn.wordpress.org/astra/1.6.2/screenshot.jpg">
 					<div class="inside">
@@ -110,10 +111,11 @@ $support_url    = $support_data['support_url'];
 						<p><?php esc_html_e( 'Try Astra! Our FREE WordPress theme that can be used to build all kinds of websites with numerous customizations and options present in the customizer itself.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<h4><?php esc_html_e( 'What\'s more?', 'ultimate-addons-for-gutenberg' ); ?></h4>
 						<p><?php esc_html_e( 'The theme is fully compatible with Gutenberg and gives you ready-to-use full website demos built with the Astra theme, Gutenberg and the Ultimate Addons for Gutenberg!', 'ultimate-addons-for-gutenberg' ); ?></p>
-						<a class="button ast-sites-inactive" href="https://wpastra.com/" target="_blank"><?php esc_html_e( 'Try Now!', 'ultimate-addons-for-gutenberg' ); ?></a>					<div>
+						<a class="button ast-sites-inactive" href="https://wpastra.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target="_blank"><?php esc_html_e( 'Try Now!', 'ultimate-addons-for-gutenberg' ); ?></a>					<div>
 						</div>
 					</div>
 				</div>
+				<?php } ?>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>

@@ -4,7 +4,7 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from '../../../../dist/blocks/uagb-controls/UAGBIcon.json'
+import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
@@ -274,7 +274,7 @@ class UAGBcontentTimeline extends Component {
 			onChange: this.getTimelineicon,
 			isMulti: false,
 			renderFunc: renderSVG,
-			noSelectedPlaceholder: __( 'Select Icon' )
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		const iconColorSettings = (			
@@ -329,7 +329,7 @@ class UAGBcontentTimeline extends Component {
 						label: __( "Border Color" ),
 					},
 				] }
-				>
+			>
 			</PanelColorSettings>			
 		)
 

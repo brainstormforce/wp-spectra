@@ -5,6 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
@@ -250,8 +251,10 @@ class UAGBSectionEdit extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Left Padding" ) }
+							label={ UAGB_Block_Icons.left_margin }
+							className={ "uagb-margin-control" }
 							value={ leftPadding }
 							onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
 							min={ 0 }
@@ -259,7 +262,8 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Padding" ) }
+							label={ UAGB_Block_Icons.right_margin }
+							className={ "uagb-margin-control" }
 							value={ rightPadding }
 							onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
 							min={ 0 }
@@ -267,7 +271,8 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Padding" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topPadding }
 							onChange={ ( value ) => setAttributes( { topPadding: value } ) }
 							min={ 0 }
@@ -275,15 +280,19 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Padding" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
 							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Margin (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Left Margin" ) }
+							label={ UAGB_Block_Icons.left_margin }
+							className={ "uagb-margin-control" }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
 							min={ -200 }
@@ -291,7 +300,8 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Margin" ) }
+							label={ UAGB_Block_Icons.right_margin }
+							className={ "uagb-margin-control" }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
 							min={ -200 }
@@ -299,7 +309,8 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Margin" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
 							min={ -200 }
@@ -307,7 +318,8 @@ class UAGBSectionEdit extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Margin" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
 							min={ -200 }

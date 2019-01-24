@@ -5,7 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from '../../../dist/blocks/uagb-controls/UAGBIcon.json'
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
@@ -204,7 +204,7 @@ class UAGBIconList extends Component {
 									this.saveIcons( { icon: value }, index )
 								} }
 								isMulti={false}
-								noSelectedPlaceholder= { __( 'Select Icon' ) }
+								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
 					}
@@ -388,6 +388,7 @@ class UAGBIconList extends Component {
 							checked={ hideLabel }
 							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
 						/>
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Size" ) }
 							value={ size }
@@ -410,18 +411,19 @@ class UAGBIconList extends Component {
 							label={ __( "Background Size" ) }
 							value={ bgSize }
 							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Background Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Circular Size" ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							help={ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }</p>
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Gap between Items" ) }
 							value={ gap }

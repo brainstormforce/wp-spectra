@@ -511,13 +511,13 @@ class UAGBtestimonial extends Component {
 							</Fragment>
 					}
 					<RangeControl
-							label={ __( "Border Radius" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							max={ 1000 }
-							allowReset
-						/>
+						label={ __( "Border Radius" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						max={ 1000 }
+						allowReset
+					/>
 				</PanelBody>
 			</Fragment>
 		)
