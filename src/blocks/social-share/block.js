@@ -43,7 +43,7 @@ registerBlockType( "uagb/social-share", {
 	keywords: [
 		__( "social share" ),
 		__( "icon" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,

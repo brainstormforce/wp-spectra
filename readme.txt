@@ -99,6 +99,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Fix: Advanced Columns - Editor end width issue fixed.
 * Fix: Advanced Columns - Editor end Draggable pointer overflow issue.
 * New: Advanced Columns - Added border option for inner column.
+* New: Advanced Columns - Added alignment option for inner column.
 * Fix: Info Box - Separator width issue.
 * Fix: Testimonial - Border radius should be out of Border condition.
 * Fix: Info Box - Color setting option default open.
@@ -113,6 +114,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Improvement: Content Timeline - First tab not open default.
 * Improvement: Changed Block Category name to Ultimate Addons block.
 * Improvement: Changed panel tab design.
+* Improvement: Dynamic image sizes for the Team and Info Box block.
 
 = 1.8.0 =
 * New: Advanced Columns

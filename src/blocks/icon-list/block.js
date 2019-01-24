@@ -46,7 +46,7 @@ registerBlockType( "uagb/icon-list", {
 	keywords: [
 		__( "icon list" ),
 		__( "image list" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	attributes,
 	edit,

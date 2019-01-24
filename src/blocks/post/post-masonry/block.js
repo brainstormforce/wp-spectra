@@ -25,7 +25,7 @@ registerBlockType( "uagb/post-masonry", {
 	keywords: [
 		__( "post" ),
 		__( "masonry" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	edit,
 	// Render via PHP

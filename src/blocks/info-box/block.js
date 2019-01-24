@@ -54,8 +54,8 @@ registerBlockType( "uagb/info-box", {
 	description: uagb_blocks_info.blocks["uagb/info-box"]["description"],
 	icon: UAGB_Block_Icons.info_box,
 	keywords: [
-		__( "info-box" ),
-		__( "uagb" ),
+		__( "info box" ),
+		__( "uag" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes,

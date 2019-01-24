@@ -3038,7 +3038,9 @@ i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
 }
-
 .slick-arrow svg{
 	vertical-align: middle;
+}
+.components-select-control__input{
+	text-transform: capitalize;
 }
