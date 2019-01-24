@@ -17,6 +17,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2295,9 +2296,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				  window.open( request_url );
 				});
 			<?php 
-
-			//var_dump($url);
-			//var_dump('praj');
 		}
 	}
 }
