@@ -8,12 +8,22 @@
 
 	position: relative;
 	overflow:hidden;
-	
+
 	.uagb-column__inner-wrap {
 		margin-left: auto;
 		margin-right: auto;
 		position: relative;
 		z-index: 2;
+	}
+
+	&.uagb-column__align-left	.uagb-column__inner-wrap {
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+	&.uagb-column__align-right .uagb-column__inner-wrap {
+		margin-left: auto;
+		margin-right: 0;
 	}
 
 	.uagb-column__overlay {

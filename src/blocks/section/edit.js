@@ -15,7 +15,6 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	ColorPalette,
