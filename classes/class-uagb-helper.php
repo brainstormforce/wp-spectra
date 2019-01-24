@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
+
 		/**
 		 * Member Variable
 		 *
@@ -79,14 +80,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			foreach ( $selectors as $key => $value ) {
-
 				$styling_css .= $id;
 
 				$styling_css .= $key . ' { ';
 				$css          = '';
 
 				foreach ( $value as $j => $val ) {
-
 					$css .= $j . ': ' . $val . ';';
 				}
 
@@ -256,6 +255,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/social-share':
+					$js .= UAGB_Block_Helper::get_social_share_js( $blockattr, $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -311,7 +314,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function _generate_stylesheet( $this_post ) {
 
 			if ( has_blocks( get_the_ID() ) ) {
-
 				$blocks            = $this->parse( $this_post->post_content );
 				self::$page_blocks = $blocks;
 
@@ -371,15 +373,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_stylesheet( $blocks ) {
 
 			foreach ( $blocks as $i => $block ) {
-
 				if ( is_array( $block ) ) {
-
 					if ( 'core/block' == $block['blockName'] ) {
-
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
-
 							$content = get_post_field( 'post_content', $id );
 
 							$reusable_blocks = $this->parse( $content );
@@ -387,7 +385,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_stylesheet( $reusable_blocks );
 						}
 					} else {
-
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}
@@ -405,15 +402,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_scripts( $blocks ) {
 
 			foreach ( $blocks as $i => $block ) {
-
 				if ( is_array( $block ) ) {
-
 					if ( 'core/block' == $block['blockName'] ) {
-
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
-
 							$content = get_post_field( 'post_content', $id );
 
 							$reusable_blocks = $this->parse( $content );
@@ -421,7 +414,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_scripts( $reusable_blocks );
 						}
 					} else {
-
 						// Get CSS for the Block.
 						$this->get_block_js( $block );
 					}
@@ -490,7 +482,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param bool   $network   Whether to allow the network admin setting to be overridden on subsites.
 		 * @return mixed
 		 */
-		static public function update_admin_settings_option( $key, $value, $network = false ) {
+		public static function update_admin_settings_option( $key, $value, $network = false ) {
 
 			// Update the site-wide option since we're in the network admin.
 			if ( $network && is_multisite() ) {
@@ -498,7 +490,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} else {
 				update_option( $key, $value );
 			}
-
 		}
 
 		/**
@@ -507,7 +498,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return string
 		 * @since 0.0.1
 		 */
-		static public function knowledgebase_data() {
+		public static function knowledgebase_data() {
 
 			$knowledgebase = array(
 				'enable_knowledgebase' => true,
@@ -523,7 +514,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return string
 		 * @since 0.0.1
 		 */
-		static public function support_data() {
+		public static function support_data() {
 
 			$support = array(
 				'enable_support' => true,
@@ -539,18 +530,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return array()
 		 * @since 0.0.1
 		 */
-		static public function get_block_options() {
+		public static function get_block_options() {
 
 			$blocks       = self::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
 			if ( is_array( $blocks ) ) {
-
 				foreach ( $blocks as $slug => $data ) {
-
 					$_slug = str_replace( 'uagb/', '', $slug );
 
 					if ( isset( $saved_blocks[ $_slug ] ) ) {
-
 						if ( 'disabled' === $saved_blocks[ $_slug ] ) {
 							$blocks[ $slug ]['is_activate'] = false;
 						} else {

@@ -8,7 +8,6 @@ import times from "lodash/times"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
-import links from "./links"
 
 const { __ } = wp.i18n
 
@@ -337,13 +336,7 @@ class UAGBSocialShare extends Component {
 								if ( social_count <= index ) {
 									return
 								}
-
-								let url = ""
-
-								if( null != current_url ) {
-									url = links[social.type] + encodeURI( current_url )
-								}
-
+								
 								let image_icon_html = ""
 
 								if ( social.image_icon == "icon" ) {
