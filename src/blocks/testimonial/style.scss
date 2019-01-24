@@ -12,9 +12,9 @@
 }
 .uagb-testimonial__wrap,
 .uagb-testimonial__wrap *{
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 .uagb-icon-wrap .uagb-icon {
     display: inline-block;
@@ -116,10 +116,10 @@
     visibility: visible;
 }
 .uagb-tm__image-position-top .uagb-tm__image-content{
-    display: -webkit-box; 
+    display: -webkit-box;
     display: -moz-box;
     display: -ms-flexbox;
-    display: -webkit-flex; 
+    display: -webkit-flex;
     display: flex;
     justify-content:center;
 }

@@ -113,8 +113,6 @@ function InfoBoxStyle( props ) {
 		}
 	}
 
-	console.log(ctaLinkColor)
-
 	// CTA style
 	selectors[".uagb-infobox-cta-link a"] = {
 		"font-size" : ctaFontSize+"px",
