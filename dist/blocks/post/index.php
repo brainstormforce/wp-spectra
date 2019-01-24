@@ -71,14 +71,15 @@ function uagb_post_masonry_callback( $attributes ) {
 	return ob_get_clean();
 }
 
-add_action( 'wp_footer', 'uagb_post_masonry_add_script', 1000 );
+add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
 
 /**
  * Renders the post masonry related script.
  *
  * @since 0.0.1
  */
-function uagb_post_masonry_add_script() {
+function uagb_post_block_add_script() {
+
 	global $uagb_post_settings;
 
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {

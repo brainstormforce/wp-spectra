@@ -99,13 +99,19 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
-		// $font_awesome = apply_filters( 'uagb_font_awesome_url', UAGB_URL . 'assets/css/font-awesome.css' );
-		// Font Awsome.
-		// wp_enqueue_style(
-		// 'uagb-fontawesome-css', // Handle.
-		// $font_awesome, // Block style CSS.
-		// UAGB_VER
-		// );
+		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', false );
+
+		if ( $enable_font_awesome ) {
+
+			$font_awesome = apply_filters( 'uagb_font_awesome_url', 'https://use.fontawesome.com/releases/v5.6.0/css/all.css' );
+			// Font Awesome.
+			wp_enqueue_style(
+				'uagb-fontawesome-css', // Handle.
+				$font_awesome, // Block style CSS.
+				UAGB_VER
+			);
+		}
+
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-slick-js', // Handle.
@@ -130,6 +136,10 @@ class UAGB_Init_Blocks {
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
+
+		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
+			wp_enqueue_script( 'jquery' );
+		}
 	} // End function editor_assets().
 
 	/**

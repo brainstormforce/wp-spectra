@@ -483,7 +483,7 @@ export default class UAGBColumnEdit extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
-		let align_class = ( 'center' == align ) ? "" : `uagb-column__align-${align}`
+		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
 
 		return (
 			<Fragment>
@@ -646,7 +646,7 @@ registerBlockType( "uagb/column", {
 	edit: UAGBColumnEdit,
 	save( { attributes, className } ) {
 		const { block_id, backgroundType, align  } = attributes
-		let align_class = ( 'center' == align ) ? "" : `uagb-column__align-${align}`
+		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
 		return (
 			<div
 				className={ classnames(

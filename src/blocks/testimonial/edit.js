@@ -532,14 +532,14 @@ class UAGBtestimonial extends Component {
 		function NextArrow( props ) {
 			return (
 				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
-				{ UAGB_Block_Icons.carousel_right }</button>			
+					{ UAGB_Block_Icons.carousel_right }</button>			
 			)
 		}
 
 		function PrevArrow( props ) {
 			return (
 				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
-				{ UAGB_Block_Icons.carousel_left }</button>
+					{ UAGB_Block_Icons.carousel_left }</button>
 			)
 		}
 

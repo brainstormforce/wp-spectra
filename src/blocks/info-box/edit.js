@@ -100,18 +100,18 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
-		var new_img = this.getImageSize(media['sizes'])
+		var new_img = this.getImageSize(media["sizes"])
 		imageSizeOptions = new_img
 		setAttributes( { iconImage: media } )
 	}
 
 	getImageSize(sizes) {
-		var size_arr = [];
+		var size_arr = []
 		$.each(sizes, function (index, item) {
-		  var name = index;	
-		  	var p = { 'value' : name, 'label': name }
+		  var name = index	
+		  	var p = { "value" : name, "label": name }
 		  	size_arr.push(p)
-		});
+		})
 		return(size_arr)
 	}
 
@@ -243,7 +243,7 @@ class UAGBinfoBox extends Component {
 		}
 
 		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=="" ){
-			imageSizeOptions = this.getImageSize(iconImage['sizes'])
+			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
