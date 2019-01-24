@@ -55,12 +55,12 @@ class UAGBTeam extends Component {
 
 
 	getImageSize(sizes) {
-		var size_arr = [];
+		var size_arr = []
 		$.each(sizes, function (index, item) {
-		  var name = index;	
-		  	var p = { 'value' : name, 'label': name }
+		  var name = index	
+		  	var p = { "value" : name, "label": name }
 		  	size_arr.push(p)
-		});
+		})
 		return(size_arr)
 	}
 
@@ -78,7 +78,7 @@ class UAGBTeam extends Component {
 		}
 		setAttributes( { image: media } )
 
-		var new_img = this.getImageSize(media['sizes'])
+		var new_img = this.getImageSize(media["sizes"])
 		imageSizeOptions = new_img			
 	}
 
@@ -137,7 +137,7 @@ class UAGBTeam extends Component {
 		}
 
 		if( typeof attributes.image !== "undefined" && attributes.image !== null && attributes.image !=="" ){
-			imageSizeOptions = this.getImageSize(image['sizes'])
+			imageSizeOptions = this.getImageSize(image["sizes"])
 		}
 
 		// Remove image.

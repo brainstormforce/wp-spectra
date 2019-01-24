@@ -131,6 +131,10 @@ class UAGB_Init_Blocks {
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
+
+		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
+			wp_enqueue_script( 'jquery' );
+		}
 	} // End function editor_assets().
 
 	/**

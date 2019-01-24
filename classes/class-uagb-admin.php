@@ -35,7 +35,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				if ( ! is_multisite() ) {
 					exit( wp_redirect( admin_url( 'options-general.php?page=uagb' ) ) );
 				}
-				exit();
 			}
 		}
 
