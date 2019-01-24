@@ -15,6 +15,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -984,9 +985,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-size" => $attr['socialFontSize'] . "px",
 					"width" => $attr['socialFontSize'] . "px",
 					"height" => $attr['socialFontSize'] . "px",
+					"line-height" => $attr['socialFontSize'] . "px",
 				),
 				" .uagb-team__social-icon svg" => array(
 					"fill" => $attr['socialColor'],
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
 				),
 				" .uagb-team__social-icon:hover a" => array(
 					"color" => $attr['socialHoverColor'],
