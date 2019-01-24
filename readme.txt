@@ -1,4 +1,4 @@
-=== Gutenberg Blocks - Ultimate Addons for Gutenberg ===
+=== UAG - Gutenberg Blocks ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
@@ -115,6 +115,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Improvement: Changed Block Category name to Ultimate Addons block.
 * Improvement: Changed panel tab design.
 * Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Replaced all Font Awesome Icon with SVG.
 
 = 1.8.0 =
 * New: Advanced Columns

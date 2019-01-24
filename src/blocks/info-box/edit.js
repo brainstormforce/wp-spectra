@@ -2,18 +2,21 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
+import Icon from "./components/Icon"
 import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeparator from "./components/InfoBoxSeparator"
-import InfoBoxCta from "./components/InfoBoxCta"
+import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+
+let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
 
@@ -221,22 +224,22 @@ class UAGBinfoBox extends Component {
 
 		// Icon properties.
 		const icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: icon,
-		  onChange: this.getIfbIcon,
-		  isMulti: false,
+			icons: svg_icons,
+			value: icon,
+			onChange: this.getIfbIcon,
+			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		// Icon properties.
 		const cta_icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: ctaIcon,
-		  onChange: this.getCtaicon,
-		  isMulti: false,
+			icons: svg_icons,
+			renderFunc: renderSVG,
+			value: ctaIcon,
+			onChange: this.getCtaicon,
+			isMulti: false,
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=="" ){
@@ -929,7 +932,7 @@ class UAGBinfoBox extends Component {
 		let is_image = ""
 
 		if( source_type === "icon" && icon !== "" ) {
-			is_image =  <InfoBoxIcon attributes={attributes}/>
+			is_image =  <Icon attributes={attributes}/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
@@ -940,7 +943,7 @@ class UAGBinfoBox extends Component {
 				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<InfoBoxCta attributes={attributes} />
+					<CallToAction attributes={attributes} />
 				</div>
 			</Fragment>
 		)
