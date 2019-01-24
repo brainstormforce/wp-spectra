@@ -1,4 +1,4 @@
-=== Gutenberg Blocks - Ultimate Addons for Gutenberg ===
+=== UAG - Gutenberg Blocks ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
