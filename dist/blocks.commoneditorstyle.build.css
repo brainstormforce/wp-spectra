@@ -59,6 +59,59 @@ hr.uagb-editor__separator {
     width: 30px;
 }
 
+.uagb-icons-list .uagb-widget-icon {
+	-js-display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	float: left;
+	cursor: pointer;
+	padding: 1em;
+	line-height: 1em;
+	font-size: 1em;
+	border: 1px solid #f1f1f1;
+	margin: 0;
+	text-align: center;
+}
+
+.uagb-icons-list {
+	display: inline-block;
+	margin: 1em 0 0 0;
+	padding: 0;
+	max-height: 200px;
+	overflow: auto;
+}
+
+.uagb-widget-icon svg {
+	width: 20px;
+	height: 20px;
+}
+
+.uagb-icon-picker-wrap {
+	position: relative;
+	margin: 8px 0;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.uagb-icon-picker-wrap .search-icon {
+	background-color: #fff;
+    border: 1px solid #e0e0e0;
+    width: 100%;
+}
+
 /*
  Fonticon picker css
  */
@@ -284,7 +337,11 @@ hr.uagb-editor__separator {
 .rfipbtn__elm img,
 .rfipbtn__elm svg {
 	height: 18px;
-	width: auto
+	width: 18px;
+}
+
+.rfipbtn__elm svg {
+	fill : #333;
 }
 
 .rfipbtn__del {
@@ -490,7 +547,12 @@ hr.uagb-editor__separator {
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
 	max-height: 24px;
-	width: auto
+	height: 18px;
+	width: 18px;
+}
+
+.rfipicons__ibox svg {
+	fill: #333;
 }
 
 .rfipicons__ibox>* {
@@ -2975,6 +3037,9 @@ i.fipicon-angle-right:before {
 i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
+}
+.slick-arrow svg{
+	vertical-align: middle;
 }
 .components-select-control__input{
 	text-transform: capitalize;

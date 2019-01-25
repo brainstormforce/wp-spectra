@@ -4,6 +4,8 @@
 
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
 //  Import CSS.
 import "./style.scss"
 import "./editor.scss"
@@ -77,14 +79,14 @@ registerBlockType( "uagb/social-share", {
 							let url = ""
 
 							if( null != current_url ) {
-								url = links[social.type]
+								url = links[social.type] 
 							}
-							//console.log(links[social.type]);
+
 							let image_icon_html = ""
 
 							if ( social.image_icon == "icon" ) {
 								if ( social.icon ) {
-									image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+									image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
 								}
 							} else {
 								if ( social.image ) {
@@ -146,7 +148,7 @@ registerBlockType( "uagb/social-share", {
 									if( null != current_url ) {
 										url = links[social.type] + encodeURI( current_url )
 									}
-									//console.log(links[social.type]);
+
 									let image_icon_html = ""
 
 									if ( social.image_icon == "icon" ) {
@@ -175,7 +177,7 @@ registerBlockType( "uagb/social-share", {
 						</div>
 					</div>
 				)
-			}
+			},
 		}
 	]
 } )

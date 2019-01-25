@@ -5,7 +5,8 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 
@@ -31,6 +32,7 @@ const {
 	Button
 } = wp.components
 
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBSocialShare extends Component {
 
@@ -122,14 +124,15 @@ class UAGBSocialShare extends Component {
 						<Fragment>
 							<p className="components-base-control__label">{__( "Icon" )}</p>
 							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
+								icons={svg_icons}
+								renderFunc={renderSVG}
 								theme="default"
 								value={socials[ index ].icon}
 								onChange={ value => {
 									this.saveSocials( { icon: value }, index )
 								} }
 								isMulti={false}
+								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
 					}
@@ -341,7 +344,7 @@ class UAGBSocialShare extends Component {
 
 								if ( social.image_icon == "icon" ) {
 									if ( social.icon ) {
-										image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
 									}
 								} else {
 									if ( social.image ) {

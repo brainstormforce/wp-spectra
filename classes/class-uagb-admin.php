@@ -33,7 +33,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( get_option( '__uagb_do_redirect' ) ) {
 				update_option( '__uagb_do_redirect', false );
 				if ( ! is_multisite() ) {
-					exit( wp_redirect( admin_url( 'options-general.php?page=uagb' ) ) );
+					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
 				}
 			}
 		}

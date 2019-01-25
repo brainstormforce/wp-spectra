@@ -30,6 +30,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $block_list;
 
 		/**
+		 * Store Json variable
+		 *
+		 * @since x.x.x
+		 * @var instance
+		 */
+		public static $icon_json;
+
+		/**
 		 * Page Blocks Variable
 		 *
 		 * @since 1.6.0
@@ -553,6 +561,54 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = $blocks;
 
 			return apply_filters( 'uagb_enabled_blocks', self::$block_list );
+		}
+
+		/**
+		 * Get Json Data.
+		 *
+		 * @since x.x.x
+		 * @return Array
+		 */
+		public static function backend_load_font_awesome_icons() {
+
+			$json_file = UAGB_DIR . 'dist/blocks/uagb-controls/UAGBIcon.json';
+			if ( ! file_exists( $json_file ) ) {
+				return array();
+			}
+
+			// Function has already run.
+			if ( null !== self::$icon_json ) {
+				return self::$icon_json;
+			}
+
+			$str             = file_get_contents( $json_file );
+			self::$icon_json = json_decode( $str, true );
+			return self::$icon_json;
+		}
+
+		/**
+		 * Generate SVG.
+		 *
+		 * @since x.x.x
+		 * @param  array $icon Decoded fontawesome json file data.
+		 * @return string
+		 */
+		public static function render_svg_html( $icon ) {
+			$icon = str_replace( 'far', '', $icon );
+			$icon = str_replace( 'fas', '', $icon );
+			$icon = str_replace( 'fab', '', $icon );
+			$icon = str_replace( 'fa-', '', $icon );
+			$icon = str_replace( 'fa', '', $icon );
+			$icon = sanitize_text_field( esc_attr( $icon ) );
+
+			$json = UAGB_Helper::backend_load_font_awesome_icons();
+			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			if ( $view ) {
+				$view = implode( ' ', $view );
+			}
+			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
+			return $htm;
 		}
 	}
 

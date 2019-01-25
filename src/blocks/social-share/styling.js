@@ -28,8 +28,16 @@ function styling( props ) {
 			"padding": bgSize + "px"
 		}
 
+		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link svg"] = {
+			"fill" : social.icon_color,
+		}
+
 		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link"] = {
 			"color" : social.icon_hover_color
+		}
+
+		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link svg"] = {
+			"fill" : social.icon_hover_color
 		}
 
 		selectors[" .uagb-ss-repeater-" + index] = {
@@ -80,6 +88,11 @@ function styling( props ) {
 		"width": size + "px",
 		"height": size + "px",
 		"line-height": size + "px"
+	}
+
+	selectors[" .uagb-ss__source-wrap svg"] = {
+		"width": size + "px",
+		"height": size + "px",
 	}
 
 	selectors[" .uagb-ss__source-icon"] = {

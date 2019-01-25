@@ -1,4 +1,4 @@
-=== Gutenberg Blocks - Ultimate Addons for Gutenberg ===
+=== UAG - Gutenberg Blocks ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
@@ -45,7 +45,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
- 	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-actions with a trendy title, description and a catchy button that boosts conversions on your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
@@ -115,6 +115,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 * Improvement: Changed Block Category name to Ultimate Addons block.
 * Improvement: Changed panel tab design.
 * Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Replaced all Font Awesome Icon with SVG.
 
 = 1.8.0 =
 * New: Advanced Columns
