@@ -100,6 +100,21 @@ function CtaStyle( props ) {
 		"border-color": ctaBorderhoverColor,
 	}
 
+	selectors[".uagb-cta__button-wrapper .uagb-cta-with-svg"] = {
+		"font-size" : ctaFontSize+"px",
+		"height": ctaFontSize+"px",
+		"width": ctaFontSize+"px",
+		"line-height": ctaFontSize+"px",
+	}
+
+	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link svg"] = {
+		"fill" : ctaBtnLinkColor,
+	}	
+
+	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link svg"] = {
+		"fill": ctaLinkHoverColor,
+	}
+	
 	// Title Style
 	selectors[".editor-rich-text .uagb-cta__title"] = {
 		"font-size" : titleFontSize+"px",

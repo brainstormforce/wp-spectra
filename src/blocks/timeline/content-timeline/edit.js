@@ -4,12 +4,13 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from ".././inline-styles"
 import ContentTmClasses from ".././classes"
 import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
+import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
 const { dateI18n, __experimentalGetSettings } = wp.date
 
@@ -45,6 +46,8 @@ const {
 	Toolbar,
 	TabPanel,
 } = wp.components
+
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBcontentTimeline extends Component {
 
@@ -266,12 +269,12 @@ class UAGBcontentTimeline extends Component {
 
 		// Parameters for FontIconPicker
 		const icon_props = {
-			icons: UAGBIcon,
-			renderUsing: "class",
-			theme: "default",
+			icons: svg_icons,
 			value: icon,
 			onChange: this.getTimelineicon,
 			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		const iconColorSettings = (			
@@ -326,7 +329,7 @@ class UAGBcontentTimeline extends Component {
 						label: __( "Border Color" ),
 					},
 				] }
-				>
+			>
 			</PanelColorSettings>			
 		)
 
@@ -735,7 +738,7 @@ class UAGBcontentTimeline extends Component {
 								day_align_class = DayAlignClass( this.props.attributes, index )
 							}
 							const Tag = this.props.attributes.headingTag
-							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "+icon
+							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 							var post_date = dateI18n( dateFormat, t_date[index].title )
 							if( post_date === "Invalid date" ){
 								post_date = t_date[index].title
@@ -745,7 +748,7 @@ class UAGBcontentTimeline extends Component {
 									<div className = {content_align_class}>
 
 										<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
-											<span className = {icon_class}></span>
+											<span className = {icon_class}>{ renderSVG(icon) }</span>
 										</div>
 
 										<div className = {day_align_class} >

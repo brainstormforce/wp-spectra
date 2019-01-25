@@ -22,7 +22,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_section_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -163,7 +162,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_columns_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -283,7 +281,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_column_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			global $content_width;
@@ -372,7 +369,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_adv_heading_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
@@ -422,7 +418,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_buttons_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
@@ -571,7 +566,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_info_box_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
@@ -590,8 +584,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height' => $attr->iconSize. "px",
 					'color'       => $attr->iconColor,
 				),
+				' .uagb-ifb-icon svg' => array(
+					'fill'       => $attr->iconColor,
+				),
 				' .uagb-ifb-icon:hover > span' => array(
 					'color' => $attr->iconHover ,
+				),
+				' .uagb-ifb-icon:hover svg' => array(
+					'fill' => $attr->iconHover ,
 				),
 	            ' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 	                    'margin-left'   => $attr->iconLeftMargin.'px',
@@ -619,6 +619,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	            ' .uagb-infobox-cta-link:hover' => array(
 	                'color'       => $attr->ctaLinkHoverColor,
 	            ),
+	            ' .uagb-infobox-cta-link svg' => array(
+	                'fill'       => $attr->ctaLinkColor,
+	            ),
+	            ' .uagb-infobox-cta-link:hover svg' => array(
+	                'fill'       => $attr->ctaLinkHoverColor,
+	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
 	                'font-size'        => $attr->ctaFontSize.'px',
 	                'color'            => $attr->ctaBtnLinkColor,
@@ -633,11 +639,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	                'padding-right'    => $attr->ctaBtnHrPadding . "px",
 
 	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg' => array(
+	                'fill'            => $attr->ctaBtnLinkColor,	                
+	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
 	                'color'       => $attr->ctaLinkHoverColor,
 	                'background-color' => $attr->ctaBgHoverColor,
 	                'border-color'     => $attr->ctaBorderhoverColor,
 	            ),
+	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg' => array(
+	                'fill'       => $attr->ctaLinkHoverColor,
+	            ),
+
 
 	           // Prefix Style.
 	            ' .uagb-ifb-title-prefix' => array(
@@ -701,7 +714,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_call_to_action_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
 
@@ -732,6 +744,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr->ctaLinkHoverColor,
 					'background-color' => $attr->ctaBgHoverColor,
 					'border-color'     => $attr->ctaBorderhoverColor,
+				),
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
+					'font-size'   => $attr->ctaFontSize. "px",
+					'width'       => $attr->ctaFontSize. "px",
+					'height'      => $attr->ctaFontSize. "px",
+					'line-height' => $attr->ctaFontSize. "px",
+				),								
+				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
+					'fill'   => $attr->ctaBtnLinkColor,
+				),
+				' .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg'  => array(
+					'fill'   => $attr->ctaLinkHoverColor,
 				),
 				' .uagb-cta__title'  => array(
 					'font-size'        => $attr->titleFontSize. "px",
@@ -826,7 +850,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_testimonial_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
@@ -935,7 +958,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_team_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
@@ -960,9 +982,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-size" => $attr['socialFontSize'] . "px",
 					"width" => $attr['socialFontSize'] . "px",
 					"height" => $attr['socialFontSize'] . "px",
+					"line-height" => $attr['socialFontSize'] . "px",
+				),
+				" .uagb-team__social-icon svg" => array(
+					"fill" => $attr['socialColor'],
+					"width" => $attr['socialFontSize'] . "px",
+					"height" => $attr['socialFontSize'] . "px",
 				),
 				" .uagb-team__social-icon:hover a" => array(
 					"color" => $attr['socialHoverColor'],
+				),
+				" .uagb-team__social-icon:hover svg" => array(
+					"fill" => $attr['socialHoverColor'],
 				),
 				".uagb-team__image-position-left .uagb-team__social-icon" => array(
 					"margin-right" => $attr['socialSpace'] . "px",
@@ -1030,7 +1061,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_social_share_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
@@ -1079,6 +1109,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"line-height" => $attr['size'] . "px"
 			);
 
+			$selectors[" .uagb-ss__source-wrap svg"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+			);
+
 			$selectors[" .uagb-ss__source-image"] = array(
 				"width" => $attr['size'] . "px"
 			);
@@ -1104,8 +1139,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding" => $attr['bgSize'] . "px"
 				);
 
+				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link svg"] = array (
+					"fill" => $social['icon_color'],
+				);
+
 				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
 					"color" => $social['icon_hover_color']
+				);
+
+				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link svg"] = array (
+					"fill" => $social['icon_hover_color']
 				);
 
 				$selectors[" .uagb-ss-repeater-" . $key] = array (
@@ -1199,7 +1242,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_icon_list_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
@@ -1248,6 +1290,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size" => $attr['size'] . "px"
 			);
 
+			$selectors[" .uagb-icon-list__source-icon svg"] = array(
+				"width" => $attr['size'] . "px",
+				"height" => $attr['size'] . "px",
+			);
+
 			$selectors[" .uagb-icon-list__source-icon:before"] = array(
 				"width" => $attr['size'] . "px",
 				"height" => $attr['size'] . "px",
@@ -1293,8 +1340,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"color" => $icon['icon_color']
 				);
 
+				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon svg"] = array (
+					"fill" => $icon['icon_color']
+				);
+
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
 					"color" => $icon['icon_hover_color']
+				);
+
+				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon svg"] = array (
+					"fill" => $icon['icon_hover_color']
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
@@ -1381,7 +1436,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_content_timeline_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
@@ -1511,6 +1565,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconColor'],
                     'font-size' => $attr['iconSize'].'px',
+                    'width' => $attr['iconSize'].'px',
                 );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
@@ -1521,6 +1576,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['iconColor'],
+                );
+
+            $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['iconFocus'],
                 );
 
             $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
@@ -1603,7 +1666,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_timeline_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-timeline']['attributes'];
@@ -1661,125 +1723,135 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[' .uagb-timeline__events-new'] = array(
-                    'text-align' => $attr['align']
-                );
+                'text-align' => $attr['align']
+            );
             $selectors['.uagb-timeline__date-inner'] = array(
-                    'text-align' => $attr['align']
-                );
+                'text-align' => $attr['align']
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
-                    'border-left-color'  => $attr['backgroundColor']
-                );
+                'border-left-color'  => $attr['backgroundColor']
+            );
 
            	$selectors[' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after'] = array(
-                    'border-left-color'  => $attr['backgroundColor']
-                );
+                'border-left-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
-                    'border-right-color'  => $attr['backgroundColor']
-                );
+                'border-right-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-left .uagb-timeline__arrow:after'] = array(
-                    'border-right-color'  => $attr['backgroundColor']
-                );
+                'border-right-color'  => $attr['backgroundColor']
+            );
 
             $selectors[' .uagb-timeline__line__inner'] = array(
-                    'background-color'  => $attr['separatorFillColor']
-                );
+                'background-color'  => $attr['separatorFillColor']
+            );
 
             $selectors[' .uagb-timeline__line'] = array(
-                    'background-color'  => $attr['separatorColor'],
-                    'width'  => $attr['separatorwidth'].'px'
-                );
+                'background-color'  => $attr['separatorColor'],
+                'width'  => $attr['separatorwidth'].'px'
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__line'] = array(
-                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__line'] = array(
-                    'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__line'] = array(
-                    'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-                );
+                'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+            );
 
             $selectors[' .uagb-timeline__marker'] = array(
-                    'background-color' => $attr['separatorBg'],
-                    'min-height'=> $attr['connectorBgsize'].'px',
-                    'min-width' => $attr['connectorBgsize'].'px',
-                    'line-height' => $attr['connectorBgsize'].'px',
-                    'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
-                );
+                'background-color' => $attr['separatorBg'],
+                'min-height'=> $attr['connectorBgsize'].'px',
+                'min-width' => $attr['connectorBgsize'].'px',
+                'line-height' => $attr['connectorBgsize'].'px',
+                'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow'] = array(
-                    'height' => $attr['connectorBgsize'].'px',
-                );
+                'height' => $attr['connectorBgsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
-                    'margin-left' => $attr['horizontalSpace'].'px',
-                    'margin-right'=> $attr['horizontalSpace'].'px',
-                );
+                'margin-left' => $attr['horizontalSpace'].'px',
+                'margin-right'=> $attr['horizontalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__field:not(:last-child)'] = array(
-                    'margin-bottom' => $attr['verticalSpace'].'px',
-                );
+                'margin-bottom' => $attr['verticalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-                    'margin-bottom' => $attr['dateBottomspace'].'px',
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',
-                    'text-align'=> $attr['align'],
-                );
+                'margin-bottom' => $attr['dateBottomspace'].'px',
+                'color'=> $attr['dateColor'],
+                'font-size' => $attr['dateFontsize'].'px',
+                'text-align'=> $attr['align'],
+            );
 
             $selectors[' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left'] = array(
-                    'margin-left' => $attr['horizontalSpace'].'px',
-                );
+                'margin-left' => $attr['horizontalSpace'].'px',
+            );
 
             $selectors[' .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right'] = array(
-                    'margin-right' => $attr['horizontalSpace'].'px',
-                );
+                'margin-right' => $attr['horizontalSpace'].'px',
+            );
 
-             $selectors[' .uagb-timeline__date-new'] = array(
-                    'color'=> $attr['dateColor'],
-                    'font-size' => $attr['dateFontsize'].'px',
-                );
+            $selectors[' .uagb-timeline__date-new'] = array(
+                'color'=> $attr['dateColor'],
+                'font-size' => $attr['dateFontsize'].'px',
+            );
 
             $selectors[' .uagb-timeline__events-inner-new'] = array(
-                    'background-color' => $attr['backgroundColor'],
-                    'border-radius' => $attr['borderRadius'].'px',
-                    'padding'=> $attr['bgPadding'].'px',
-                );
+                'background-color' => $attr['backgroundColor'],
+                'border-radius' => $attr['borderRadius'].'px',
+                'padding'=> $attr['bgPadding'].'px',
+            );
 
             $selectors[' .uagb-content'] = array(
-                    'padding'=> $attr['contentPadding'].'px',
-                );
+                'padding'=> $attr['contentPadding'].'px',
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new'] = array(
-                    'color'=> $attr['iconColor'],
-                    'font-size' => $attr['iconSize'].'px',
-                );
+                'color'     => $attr['iconColor'],
+                'font-size' => $attr['iconSize'].'px',
+                'width'     => $attr['iconSize'].'px',
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon'] = array(
-                    'background' => $attr['iconBgFocus'],
-                    'border-color'=> $attr['borderFocus'],
-                );
+                'background' => $attr['iconBgFocus'],
+                'border-color'=> $attr['borderFocus'],
+            );
 
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
                 );
+            
+            $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
+                    'fill'=> $attr['i
+                    conColor'],
+                );
+
+			$selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg'] = array(
+			        'fill'=> $attr['iconFocus'],
+			    );
 
             $t_selectors[' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
 	            'margin-left' => 0,
@@ -1801,13 +1873,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new'] = array(
-			        'text-align' => 'left'
-			    );
+		        'text-align' => 'left'
+		    );
 			$t_selectors['.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner'] = array(
-			        'text-align' => 'left'
-			    );
+		        'text-align' => 'left'
+		    );
 			$t_selectors[' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner'] = array(
-					'text-align'=> 'left',
+				'text-align'=> 'left',
 			);
 
 			$t_selectors[" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after"] = array(
@@ -1885,7 +1957,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_restaurant_menu_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
@@ -1992,7 +2063,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_grid_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
@@ -2021,7 +2091,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_carousel_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
@@ -2039,6 +2108,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .slick-arrow span"] = array(
 				"color" => $attr['arrowColor'],
 				"font-size" => $attr['arrowSize'] . "px",
+				"width" => $attr['arrowSize'] . "px",
+				"height" => $attr['arrowSize'] . "px"
+			);
+
+			$selectors[" .slick-arrow svg"] = array(
+				"fill" => $attr['arrowColor'],
 				"width" => $attr['arrowSize'] . "px",
 				"height" => $attr['arrowSize'] . "px"
 			);
@@ -2082,7 +2157,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_post_masonry_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
@@ -2109,7 +2183,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.4.0
 		 */
 		public static function get_post_selectors( $attr ) {
-
 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__items" => array(
@@ -2194,7 +2267,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.6.1
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
-
 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__text" => array(
@@ -2406,7 +2478,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_testimonial_js( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
@@ -2427,8 +2498,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'arrows'         => $arrows,
 				'dots'           => $dots,
 				'rtl'            => false,
-				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-left" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
-				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><span class="fas fa-angle-right" style= "font-size:'.$attr["arrowSize"].'px;color: '.$attr["arrowColor"].';height:'.$attr["arrowSize"].'px;width:'.$attr["arrowSize"].'px"></span></button>',
+				'prevArrow'		 => '<button type="button" data-role="none" class="slick-prev" aria-label="Previous" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="'.$attr["arrowSize"].'" width = "'.$attr["arrowSize"].'" fill ="'.$attr["arrowColor"].'"  ><path d="M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z"></path></svg></button>',
+				'nextArrow'		 => '<button type="button" data-role="none" class="slick-next" aria-label="Next" tabindex="0" role="button" style="border-color: '.$attr["arrowColor"].';border-radius:'.$attr["arrowBorderRadius"].'px;border-width:'.$attr["arrowBorderSize"].'px"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512" height ="'.$attr["arrowSize"].'" width = "'.$attr["arrowSize"].'" fill ="'.$attr["arrowColor"].'" ><path d="M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z"></path></svg></button>',
 				'responsive'		=> [
 					[
 						'breakpoint' => 1024,

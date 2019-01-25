@@ -35,7 +35,8 @@ function TestimonialStyle( props ) {
 		arrowColor,
 		test_item_count,
 		columns,
-		arrowDots      
+		arrowDots,
+		arrowSize      
 	} = props.attributes        
 
 	if( props.clientId ){
@@ -138,6 +139,12 @@ function TestimonialStyle( props ) {
 	selectors["ul.slick-dots li.slick-active button:before"] = {
 		"color" : arrowColor,
 	} 
+
+	selectors[".slick-arrow svg"] = {
+		"fill" : arrowColor,
+		"height":arrowSize + "px",              
+		"width":arrowSize + "px",              
+	} 	
 
 	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
 		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {

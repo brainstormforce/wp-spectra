@@ -415,8 +415,8 @@ class UAGBColumns extends Component {
 								{ value: "20", label: __( "Wide (20px)" ) },
 								{ value: "30", label: __( "Wider (30px)" ) }
 							] }
+							help={ __( "Note: The individual Column Gap can be managed from Column Settings." ) }
 						/>
-						<p className="uagb-note">{ __( "Note: The individual Column Gap can be managed from Column Settings." ) }</p>
 						<SelectControl
 							label={ __( "HTML Tag" ) }
 							value={ tag }
@@ -434,8 +434,10 @@ class UAGBColumns extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Left Padding" ) }
+							label={ UAGB_Block_Icons.left_margin }
+							className={ "uagb-margin-control" }
 							value={ leftPadding }
 							onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
 							min={ 0 }
@@ -443,7 +445,8 @@ class UAGBColumns extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Padding" ) }
+							label={ UAGB_Block_Icons.right_margin }
+							className={ "uagb-margin-control" }
 							value={ rightPadding }
 							onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
 							min={ 0 }
@@ -451,7 +454,8 @@ class UAGBColumns extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Padding" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topPadding }
 							onChange={ ( value ) => setAttributes( { topPadding: value } ) }
 							min={ 0 }
@@ -459,15 +463,19 @@ class UAGBColumns extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Padding" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
 							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Margin (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Top Margin" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
 							min={ -200 }
@@ -475,7 +483,8 @@ class UAGBColumns extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Margin" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
 							min={ -200 }

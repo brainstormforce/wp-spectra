@@ -25,7 +25,7 @@ registerBlockType( "uagb/post-carousel", {
 	keywords: [
 		__( "post" ),
 		__( "carousel" ),
-		__( "uagb" ),
+		__( "uag" ),
 	],
 	edit,
 	// Render via PHP

@@ -8,6 +8,7 @@ import TestimonialStyle from "./inline-styles"
 import TestimonialImage from "./components/TestimonialImage"
 import times from "lodash/times"
 import Slider from "react-slick"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
@@ -510,13 +511,13 @@ class UAGBtestimonial extends Component {
 							</Fragment>
 					}
 					<RangeControl
-							label={ __( "Border Radius" ) }
-							value={ borderRadius }
-							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							min={ 0 }
-							max={ 1000 }
-							allowReset
-						/>
+						label={ __( "Border Radius" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						max={ 1000 }
+						allowReset
+					/>
 				</PanelBody>
 			</Fragment>
 		)
@@ -530,13 +531,15 @@ class UAGBtestimonial extends Component {
 
 		function NextArrow( props ) {
 			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-right" style={{ "fontSize" : props.arrowSize, "color" : arrowColor, "height" : props.arrowSize, "width" : props.arrowSize,}}></span></button>
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
+					{ UAGB_Block_Icons.carousel_right }</button>			
 			)
 		}
 
 		function PrevArrow( props ) {
 			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-left" style={{ "fontSize" : props.arrowSize, "color" : arrowColor, "height" : props.arrowSize, "width" : props.arrowSize, }}></span></button>
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
+					{ UAGB_Block_Icons.carousel_left }</button>
 			)
 		}
 

@@ -6,6 +6,7 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
@@ -148,9 +149,10 @@ class UAGBMultiButtonEdit extends Component {
 						initialPosition={16}
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Button Padding (px)' ) }</h2>
+					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
-						label={ __( "Vertical" ) }
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
 						value={ buttons[ index ].vPadding }
 						onChange={ value => {
 							this.saveButton( { vPadding: value }, index )
@@ -159,7 +161,8 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 100 }
 					/>
 					<RangeControl
-						label={ __( "Horizontal" ) }
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
 						value={ buttons[ index ].hPadding }
 						onChange={ value => {
 							this.saveButton( { hPadding: value }, index )
@@ -168,7 +171,7 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 100 }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( 'Button Border' ) }</h2>
+					<h2>{ __( "Button Border" ) }</h2>
 					<SelectControl
 						label={ __( "Style" ) }
 						value={ buttons[ index ].borderStyle }
@@ -183,7 +186,7 @@ class UAGBMultiButtonEdit extends Component {
 							this.saveButton( { borderStyle: value }, index )
 						} }
 					/>
-					{ buttons[ index ].borderStyle != 'none' &&
+					{ buttons[ index ].borderStyle != "none" &&
 						<RangeControl
 							label={ __( "Thickness" ) }
 							value={ buttons[ index ].borderWidth }

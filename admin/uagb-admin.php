@@ -23,7 +23,7 @@
 				</div>
 				<div class="uagb-top-links">
 					<?php esc_attr_e( 'Take Gutenberg to The Next Level! - ', 'ultimate-addons-for-gutenberg' ); ?>
-					<a href="https://www.ultimategutenberg.com/" target="_blank" rel=""><?php _e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
+					<a href="<?php echo esc_url( $uagb_visit_site_url ); ?>" target="_blank" rel=""><?php _e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
 				</div>
 			</div>
 		</div>

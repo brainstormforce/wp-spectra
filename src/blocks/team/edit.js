@@ -2,9 +2,11 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
 
 const { __ } = wp.i18n
 
@@ -30,6 +32,15 @@ const {
 // Extend component
 const { Component, Fragment } = wp.element
 
+let svg_icons = Object.keys( UAGBIcon )
+
+// Image sizes.
+let imageSizeOptions = [
+	{ value: "thumbnail", label: __( "Thumbnail" ) },
+	{ value: "medium", label: __( "Medium" ) },
+	{ value: "full", label: __( "Large" ) }
+]
+
 class UAGBTeam extends Component {
 
 	social_html( icon, link, target ) {
@@ -37,8 +48,42 @@ class UAGBTeam extends Component {
 		let target_value =  ( target ) ? "_blank" : "_self"
 
 		return (
-			<li className="uagb-team__social-icon"><a href={link} target={target_value} title="" rel ="noopener noreferrer"><span className={icon}></span></a></li>
+			<li className="uagb-team__social-icon"><a href={link} target={target_value} title="" rel ="noopener noreferrer">{ renderSVG(icon) }</a></li>
 		)
+	}
+
+	constructor() {
+		super( ...arguments )		
+		this.onSelectImage    = this.onSelectImage.bind( this )
+	}
+
+
+	getImageSize(sizes) {
+		var size_arr = []
+		$.each(sizes, function (index, item) {
+		  var name = index	
+		  	var p = { "value" : name, "label": name }
+		  	size_arr.push(p)
+		})
+		return(size_arr)
+	}
+
+	onSelectImage( media ) {
+
+		const { image } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { image: null } )
+			return
+		}
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+		setAttributes( { image: media } )
+
+		var new_img = this.getImageSize(media["sizes"])
+		imageSizeOptions = new_img			
 	}
 
 	render() {
@@ -95,23 +140,15 @@ class UAGBTeam extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		// Set image.
-		const onSelectImage = ( media ) => {
-			if ( ! media || ! media.url ) {
-				setAttributes( { image: null } )
-				return
-			}
-			if ( ! media.type || "image" != media.type ) {
-				return
-			}
-			setAttributes( { image: media } )
+		if( typeof attributes.image !== "undefined" && attributes.image !== null && attributes.image !=="" ){
+			imageSizeOptions = this.getImageSize(image["sizes"])
 		}
 
 		// Remove image.
 		const onRemoveImage = ( media ) => {
 			setAttributes( { image: null } )
 		}
-
+	
 		let size = ""
 		let img_url = ""
 
@@ -249,7 +286,7 @@ class UAGBTeam extends Component {
 							label={ __( "Team Member Image" ) }>
 							<MediaUpload
 								title={ __( "Select Image" ) }
-								onSelect={ onSelectImage }
+								onSelect={ this.onSelectImage }
 								allowedTypes={ [ "image" ] }
 								value={ image }
 								render={ ( { open } ) => (
@@ -317,11 +354,7 @@ class UAGBTeam extends Component {
 							<Fragment>
 								<SelectControl
 									label={ __( "Size" ) }
-									options={[
-										{ value: "thumbnail", label: __( "Thumbnail" ) },
-										{ value: "medium", label: __( "Medium" ) },
-										{ value: "full", label: __( "Large" ) }
-									] }
+									options={ imageSizeOptions }
 									value={ imgSize }
 									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 								/>
@@ -353,12 +386,13 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Twitter" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
 										theme="default"
 										value={twitterIcon}
 										onChange={ ( value ) => setAttributes( { twitterIcon: value } ) }
 										isMulti={false}
+										noSelectedPlaceholder={__( "Select Icon" )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -370,12 +404,13 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Facebook" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
 										theme="default"
 										value={fbIcon}
 										onChange={ ( value ) => setAttributes( { fbIcon: value } ) }
 										isMulti={false}
+										noSelectedPlaceholder={__( "Select Icon" )}
 									/>
 									<p className="components-base-control__label">{__( "URL" )}</p>
 									<TextControl
@@ -387,8 +422,9 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "LinkedIn" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
+										noSelectedPlaceholder={__( "Select Icon" )}
 										theme="default"
 										value={linkedinIcon}
 										onChange={ ( value ) => setAttributes( { linkedinIcon: value } ) }
@@ -404,8 +440,9 @@ class UAGBTeam extends Component {
 								<PanelBody title={ __( "Pinterest" ) } initialOpen={ false }>
 									<p className="components-base-control__label">{__( "Icon" )}</p>
 									<FontIconPicker
-										icons={UAGBIcon}
-										renderUsing="class"
+										icons={svg_icons}
+										renderFunc={renderSVG}
+										noSelectedPlaceholder={__( "Select Icon" )}
 										theme="default"
 										value={pinIcon}
 										onChange={ ( value ) => setAttributes( { pinIcon: value } ) }
