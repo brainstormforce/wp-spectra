@@ -12,12 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -561,7 +555,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tablet . $mobile;
 		}
 
-
 		/**
 		 * Get Info Box CSS
 		 *
@@ -645,7 +638,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg' => array(
-	                'fill'            => $attr->ctaBtnLinkColor,	                
+	                'fill'            => $attr->ctaBtnLinkColor,
 	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
 	                'color'       => $attr->ctaLinkHoverColor,
@@ -709,7 +702,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
-
 		/**
 		 * Get CTA CSS
 		 *
@@ -755,7 +747,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $attr->ctaFontSize. "px",
 					'height'      => $attr->ctaFontSize. "px",
 					'line-height' => $attr->ctaFontSize. "px",
-				),								
+				),
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr->ctaBtnLinkColor,
 				),
@@ -1848,7 +1840,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
                 );
-            
+
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
                     'fill'=> $attr['i
                     conColor'],
@@ -1951,7 +1943,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $desktop . $tablet . $mobile;
 		}
-
 
 		/**
 		 * Get Restaurant Menu Block CSS
@@ -2344,29 +2335,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Social Share JS
 		 *
-		 * @since 1.6.0
-		 * @param array  $attr The block attributes.
+		 * @since x.x.x
 		 * @param string $id The selector ID.
 		 */
-		public static function get_social_share_js( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_social_share_js( $id ) {
 
-			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
-
-			$attr = array_merge( $defaults, (array) $attr );
-
-			global $wp;  
-			$url = home_url(add_query_arg(array(),$wp->request));
-
-			$selector =	'#uagb-social-share-'. $id;
-
+			$selector = '#uagb-social-share-' . $id;
 			?>
-				jQuery( "<?php echo $selector ?>" ).find( ".uagb-ss__link" ).click(function(){
-				  var social_url = jQuery(this).data("href");
-				  var request_url = social_url+ "<?php echo $url ?>" ;
-				  window.open( request_url );
+				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
+					var social_url = jQuery( this ).data( "href" );
+					var request_url = social_url + window.location.href ;
+					window.open( request_url );
 				});
-			<?php 
+			<?php
 		}
 	}
 }
