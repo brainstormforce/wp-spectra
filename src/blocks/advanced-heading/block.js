@@ -390,6 +390,14 @@ export default class UAGBAdvancedHeading extends Component {
 								}
 							}
 						</TabPanel>
+						<Button
+							key={ 2 }
+							className="uagb-size-btn"
+							isSmall
+							onClick={ () => setAttributes( { headFontSizeType: key } ) }
+						>
+							<Dashicon icon="desktop" />
+						</Button>
 						<RangeControl
 							label={ __( "Heading Font Size" ) }
 							value={ headFontSize }
