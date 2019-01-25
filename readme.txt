@@ -2,7 +2,7 @@
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
-Requires at least: 4.6
+Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
 Stable tag: 1.8.0.1
