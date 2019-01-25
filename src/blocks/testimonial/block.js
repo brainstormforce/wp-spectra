@@ -76,23 +76,6 @@ registerBlockType( "uagb/testimonial", {
 
 		const my_block_id = "uagb-testimonial-"+ block_id
 
-		const sldier_data = []
-		sldier_data.push(
-			{
-				"block_id" : block_id,
-				"columns" : columns,
-				"autoplaySpeed" : autoplaySpeed,
-				"autoplay" : autoplay,
-				"infiniteLoop" : infiniteLoop,
-				"pauseOnHover" : pauseOnHover,
-				"transitionSpeed" : transitionSpeed,
-				"tcolumns" : tcolumns,
-				"arrowSize" : arrowSize,
-				"mcolumns" : mcolumns,
-				"arrowColor":arrowColor,
-			}
-		)
-
 		return (
 			<Fragment>
 				<div className={ classnames(
