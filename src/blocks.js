@@ -18,5 +18,16 @@ import "./blocks/team/block.js"
 import "./blocks/social-share/block.js"
 import "./blocks/google-map/block.js"
 import "./blocks/icon-list/block.js"
-import "./blocks/restaurant-menu/block.js"
+import "./blocks/price-list/block.js"
 import "./blocks/timeline/block.js"
+import "./blocks/call-to-action/block.js"
+import "./blocks/column/block.js"
+import "./blocks/columns/block.js"
+
+import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
+
+const { updateCategory } = wp.blocks
+
+updateCategory( "uagb", {
+	icon: UAGB_Block_Icons.logo,
+}, )

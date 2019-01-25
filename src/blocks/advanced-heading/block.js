@@ -27,7 +27,6 @@ const {
 	BlockControls,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 	ColorPalette
 } = wp.editor
 
@@ -112,19 +111,18 @@ export default class UAGBAdvancedHeading extends Component {
 				separatorColor,
 				headingTag,
 				headFontSize,
-				subHeadFontSize,
+				headFontSizeType,
 				headFontSizeMobile,
-				subHeadFontSizeMobile,
 				headFontSizeTablet,
+				subHeadFontSize,
+				subHeadFontSizeType,
+				subHeadFontSizeMobile,
 				subHeadFontSizeTablet,
 				separatorWidth,
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
-				separatorSpace,
-				subHeadSpace,
-				headFontSizeType,
-				subHeadFontSizeType
+				separatorSpace
 			},
 		} = this.props
 
@@ -291,6 +289,7 @@ export default class UAGBAdvancedHeading extends Component {
 			</TabPanel>
 		)
 
+
 		return (
 			<Fragment>
 				<BlockControls key='controls'>
@@ -300,11 +299,10 @@ export default class UAGBAdvancedHeading extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Typography" ) }
-					>
+					<PanelBody title={ __( "Advanced Heading" ) }>
+						<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
-							label={ __( "Tag" ) }
+							label={ __( "Heading Tag" ) }
 							value={ headingTag }
 							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 							options={ [
@@ -316,8 +314,116 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<h2 className="uagb-size-type-field-title">{ __( 'Font Size' ) }</h2>
-						{ tabControls }
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: 'desktop',
+									title: <Dashicon icon="desktop" />,
+									className: 'uagb-desktop-tab',
+								},
+								{
+									name: 'tablet',
+									title: <Dashicon icon="tablet" />,
+									className: 'uagb-tablet-tab',
+								},
+								{
+									name: 'mobile',
+									title: <Dashicon icon="smartphone" />,
+									className: 'uagb-mobile-tab',
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout;
+
+									if ( 'mobile' === tab.name ) {
+										tabout = (
+											<Fragment>
+												{headsizeTypesControls}
+												<RangeControl
+													label={ __( "Heading" ) }
+													value={ headFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else if ( 'tablet' === tab.name ) {
+										tabout = (
+											<Fragment>
+												{headsizeTypesControls}
+												<RangeControl
+													label={ __( "Heading" ) }
+													value={ headFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										);
+									} else {
+										tabout = (
+											<Fragment>
+												{headsizeTypesControls}
+												<RangeControl
+													label={ __( "Heading" ) }
+													value={ headFontSize }
+													onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>;
+								}
+							}
+						</TabPanel>
+						<RangeControl
+							label={ __( "Heading Font Size" ) }
+							value={ headFontSize }
+							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+							min={ 10 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={30}
+						/>
+						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						<ColorPalette
+							value={ headingColor }
+							onChange={ ( value ) => setAttributes( { headingColor: value } ) }
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Sub-Heading" ) }</h2>
+						<RangeControl
+							label={ __( "Sub-Heading Font Size" ) }
+							value={ subHeadFontSize }
+							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+							min={ 10 }
+							max={ 100 }
+							beforeIcon="editor-textcolor"
+							allowReset
+							initialPosition={10}
+						/>
+						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						<ColorPalette
+							value={ subHeadingColor }
+							onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
+							allowReset
+						/>
 					</PanelBody>
 					<PanelBody
 						title={ __( "Separator" ) }
@@ -337,7 +443,7 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						{ seperatorStyle !== "none" && <Fragment>
 							<RangeControl
-								label={ __( "Thickness" ) }
+								label={ __( "Thickness (px)" ) }
 								value={ separatorHeight }
 								onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 								min={ 0 }
@@ -347,7 +453,7 @@ export default class UAGBAdvancedHeading extends Component {
 								initialPosition={3}
 							/>
 							<RangeControl
-								label={ __( "Width" ) }
+								label={ __( "Width (%)" ) }
 								value={ separatorWidth }
 								onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
 								min={ 0 }
@@ -356,41 +462,24 @@ export default class UAGBAdvancedHeading extends Component {
 								allowReset
 								initialPosition={20}
 							/>
+							{ seperatorStyle !== "none" && <Fragment>
+								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
+								<ColorPalette
+									value={ separatorColor }
+									onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+							}
 						</Fragment>
 						}
 					</PanelBody>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Sub-Heading Color" ),
-							},
-						] }
-					>
-						{ seperatorStyle !== "none" && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ separatorColor }
-						        onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-						        allowReset
-							/>
-						</Fragment>
-						}
-					</PanelColorSettings>
 					<PanelBody
 						title={ __( "Spacing" ) }
 						initialOpen={ false }
 					>
 						<RangeControl
-							label={ __( "Heading Spacing" ) }
+							label={ __( "Heading Bottom Spacing" ) }
 							value={ headSpace }
 							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 							min={ 0 }
@@ -399,30 +488,17 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-						{ seperatorStyle !== "none" &&
-							<Fragment>
-								<RangeControl
-									label={ __( "Separator Spacing" ) }
-									value={ separatorSpace }
-									onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-									min={ 0 }
-									max={ 50 }
-									beforeIcon=""
-									allowReset
-									initialPosition={0}
-								/>
-							</Fragment>
-						}
-						<RangeControl
-							label={ __( "Sub-Heading Spacing" ) }
-							value={ subHeadSpace }
-							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						{ seperatorStyle !== "none" && <RangeControl
+							label={ __( "Separator Bottom Spacing" ) }
+							value={ separatorSpace }
+							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon=""
 							allowReset
 							initialPosition={0}
 						/>
+						}
 					</PanelBody>
 				</InspectorControls>
 				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
@@ -432,7 +508,9 @@ export default class UAGBAdvancedHeading extends Component {
 						value={ headingTitle }
 						className='uagb-heading-text'
 						multiline={ false }
-						onChange={ ( value ) => setAttributes( { headingTitle: value } ) }
+						onChange={ ( value ) => {
+							setAttributes( { headingTitle: value } ) }
+						}
 						onMerge={ mergeBlocks }
 						unstableOnSplit={
 							insertBlocksAfter ?
@@ -483,7 +561,8 @@ registerBlockType( "uagb/advanced-heading", {
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
-		__( "uagb" ),
+		__( "uag" ),
+		__( "heading" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes: {
@@ -526,43 +605,40 @@ registerBlockType( "uagb/advanced-heading", {
 		separatorWidth: {
 			type: "number"
 		},
-		headFontSize: {
-			type: "number",
-		},
-		subHeadFontSize: {
-			type: "number",
-		},
-		headFontSizeTablet: {
-			type: "number",
-		},
-		subHeadFontSizeTablet: {
-			type: "number",
-		},
-		headFontSizeMobile: {
-			type: "number",
-		},
-		subHeadFontSizeMobile: {
-			type: "number",
-		},
 		headSpace: {
 			type: "number",
 			default: 15
 		},
-		separatorSpace: {
-			type: "number",
-			default: 15
-		},
-		subHeadSpace: {
+		headFontSize: {
 			type: "number",
 		},
 		headFontSizeType: {
 			type: "string",
 			default: "px"
 		},
+		headFontSizeTablet: {
+			type: "number",
+		},
+		headFontSizeMobile: {
+			type: "number",
+		},
+		subHeadFontSize: {
+			type: "number",
+		},
 		subHeadFontSizeType: {
 			type: "string",
 			default: "px"
-		}
+		},
+		subHeadFontSizeTablet: {
+			type: "number",
+		},
+		subHeadFontSizeMobile: {
+			type: "number",
+		},
+		separatorSpace: {
+			type: "number",
+			default: 15
+		},
 	},
 	transforms: {
 		from: [

@@ -72,6 +72,8 @@ class UAGBPostGrid extends Component {
 			borderColor,
 			borderHColor,
 			borderRadius,
+			btnVPadding,
+			btnHPadding,
 			align,
 			columns,
 			tcolumns,
@@ -84,6 +86,7 @@ class UAGBPostGrid extends Component {
 			columnGap,
 			bgColor,
 			contentPadding,
+			contentPaddingMobile,
 			titleColor,
 			titleTag,
 			titleFontSize,
@@ -102,7 +105,8 @@ class UAGBPostGrid extends Component {
 			equalHeight,
 			excerptLength,
 			overlayOpacity,
-			bgOverlayColor
+			bgOverlayColor,
+			linkBox
 		} = attributes
 
 		const hoverSettings = (
@@ -239,6 +243,11 @@ class UAGBPostGrid extends Component {
 								max={ 100 }
 								allowReset
 							/>
+							<ToggleControl
+								label={ __( "Link Complete Box" ) }
+								checked={ linkBox }
+								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
+							/>
 						</Fragment>
 					}
 				</PanelBody>
@@ -325,6 +334,22 @@ class UAGBPostGrid extends Component {
 								label={ __( "Button Border Radius" ) }
 								value={ borderRadius }
 								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Vertical Padding" ) }
+								value={ btnVPadding }
+								onChange={ ( value ) => setAttributes( { btnVPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Horizontal Padding" ) }
+								value={ btnHPadding }
+								onChange={ ( value ) => setAttributes( { btnHPadding: value } ) }
 								min={ 0 }
 								max={ 50 }
 								allowReset
@@ -468,6 +493,14 @@ class UAGBPostGrid extends Component {
 						allowReset
 					/>
 					<RangeControl
+						label={ __( "Content Padding (Mobile)" ) }
+						value={ contentPaddingMobile }
+						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
 						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
@@ -529,7 +562,7 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "center", "wide" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} />

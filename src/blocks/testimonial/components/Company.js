@@ -25,26 +25,22 @@ class Company extends React.Component {
 			company = test_arr["company"]			
 		}
 
+		var data_copy = [...attributes.test_block]
+		
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= 'span'
+	                tagName= 'div'
 	                value={ company }
 	                className = 'uagb-tm__company'
 	                onChange={ ( value ) => { 
-
-	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
-							if ( thisIndex === index_value ) {
-								item["company"] = value				
-							}
-							return item			
-						} )
-	                	setAttributes( {
-							test_block: newItems,
-						} )	
+	                	var new_content = { "description" : data_copy[index_value]["description"], "name":data_copy[index_value]["name"], "company" : value, "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
+						setAttributes( { "test_block": data_copy } )	
+	                	
 	                } }     
 	                multiline={ false }
-	                placeholder={ __( "Write a Heading" ) }
+	                placeholder={ __( "Company Name" ) }
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

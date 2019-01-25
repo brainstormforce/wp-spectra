@@ -72,6 +72,8 @@ class UAGBPostCarousel extends Component {
 			borderColor,
 			borderHColor,
 			borderRadius,
+			btnVPadding,
+			btnHPadding,
 			align,
 			postLayout,
 			columns,
@@ -85,6 +87,7 @@ class UAGBPostCarousel extends Component {
 			columnGap,
 			bgColor,
 			contentPadding,
+			contentPaddingMobile,
 			titleColor,
 			titleTag,
 			titleFontSize,
@@ -112,7 +115,8 @@ class UAGBPostCarousel extends Component {
 			arrowBorderRadius,
 			excerptLength,
 			overlayOpacity,
-			bgOverlayColor
+			bgOverlayColor,
+			linkBox
 		} = attributes
 
 		const hoverSettings = (
@@ -310,6 +314,11 @@ class UAGBPostCarousel extends Component {
 								max={ 100 }
 								allowReset
 							/>
+							<ToggleControl
+								label={ __( "Link Complete Box" ) }
+								checked={ linkBox }
+								onChange={ ( value ) => setAttributes( { linkBox: ! linkBox } ) }
+							/>
 						</Fragment>
 					}
 				</PanelBody>
@@ -396,6 +405,22 @@ class UAGBPostCarousel extends Component {
 								label={ __( "Button Border Radius" ) }
 								value={ borderRadius }
 								onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Vertical Padding" ) }
+								value={ btnVPadding }
+								onChange={ ( value ) => setAttributes( { btnVPadding: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
+							<RangeControl
+								label={ __( "Button Horizontal Padding" ) }
+								value={ btnHPadding }
+								onChange={ ( value ) => setAttributes( { btnHPadding: value } ) }
 								min={ 0 }
 								max={ 50 }
 								allowReset
@@ -545,6 +570,14 @@ class UAGBPostCarousel extends Component {
 						allowReset
 					/>
 					<RangeControl
+						label={ __( "Content Padding (Mobile)" ) }
+						value={ contentPaddingMobile }
+						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
 						label={ __( "Title Bottom Spacing" ) }
 						value={ titleBottomSpace }
 						onChange={ ( value ) => setAttributes( { titleBottomSpace: value } ) }
@@ -610,7 +643,7 @@ class UAGBPostCarousel extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "center", "wide" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId}/>

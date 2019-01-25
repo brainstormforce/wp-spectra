@@ -32,7 +32,11 @@ function TestimonialStyle( props ) {
 		borderWidth ,
 		borderRadius,
 		borderColor,
-		arrowColor        
+		arrowColor,
+		test_item_count,
+		columns,
+		arrowDots,
+		arrowSize      
 	} = props.attributes        
 
 	if( props.clientId ){
@@ -123,6 +127,10 @@ function TestimonialStyle( props ) {
 			"border-width":borderWidth + "px",
 			"border-radius":borderRadius + "px",                    
 		}                 
+	}else{
+		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
+			"border-radius":borderRadius + "px",                    
+		}
 	}
 
 	selectors["ul.slick-dots li button:before"] = {
@@ -132,12 +140,27 @@ function TestimonialStyle( props ) {
 		"color" : arrowColor,
 	} 
 
+	selectors[".slick-arrow svg"] = {
+		"fill" : arrowColor,
+		"height":arrowSize + "px",              
+		"width":arrowSize + "px",              
+	} 	
+
+	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
+		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
+			"padding" : 0,
+		} 
+	}
+
 	var styling_css = ""
 
 	for( var i in selectors ) {
-           
-		styling_css += "#wpwrap #"+clientId+" "+i + " { "
-            
+       
+		if( i === ".uagb-slick-carousel.uagb-tm__arrow-outside"){
+        	styling_css += "#wpwrap #"+clientId+i + " { "     
+		}else{
+        	styling_css += "#wpwrap #"+clientId+" "+i + " { " 
+		}		       
             
 		var sel = selectors[i]
 		var css = ""

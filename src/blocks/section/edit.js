@@ -5,6 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
@@ -14,7 +15,6 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	ColorPalette,
@@ -54,7 +54,7 @@ class UAGBSectionEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-section-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -117,11 +117,10 @@ class UAGBSectionEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes, isSelected } = this.props
+		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
 			align,
-			className,
 			padding,
 			contentWidth,
 			width,
@@ -162,7 +161,7 @@ class UAGBSectionEdit extends Component {
 
 		const CustomTag = `${tag}`
 
-		var element = document.getElementById( "uagb-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-section-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
@@ -174,6 +173,17 @@ class UAGBSectionEdit extends Component {
 
 		let active = ( isSelected ) ? "active" : "not-active"
 
+		let block_controls = [ "left","center","right" ]
+		let block_controls_class = ""
+
+		if ( "full_width" == contentWidth ) {
+			block_controls = [ "wide","full" ]
+
+			if ( align == "wide" || align == "full" ) {
+				block_controls_class = "align" + align
+			}
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -182,7 +192,7 @@ class UAGBSectionEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left","center","right" ] }
+						controls={ block_controls }
 					/>
 				</BlockControls>
 				<InspectorControls>
@@ -201,6 +211,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Width" ) }
 								value={ width }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { width: value } ) }
 							/> )
 						}
@@ -216,6 +228,8 @@ class UAGBSectionEdit extends Component {
 							( <RangeControl
 								label={ __( "Inner Width" ) }
 								value={ innerWidth }
+								min={ 0 }
+								max={ 2000 }
 								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
 							/> )
 						}
@@ -236,67 +250,78 @@ class UAGBSectionEdit extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Left Padding" ) }
+							label={ UAGB_Block_Icons.left_margin }
+							className={ "uagb-margin-control" }
 							value={ leftPadding }
 							onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Padding" ) }
+							label={ UAGB_Block_Icons.right_margin }
+							className={ "uagb-margin-control" }
 							value={ rightPadding }
 							onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Padding" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topPadding }
 							onChange={ ( value ) => setAttributes( { topPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Padding" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomPadding }
 							onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
-							min={ 10 }
+							min={ 0 }
 							max={ 200 }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Margin (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Left Margin" ) }
+							label={ UAGB_Block_Icons.left_margin }
+							className={ "uagb-margin-control" }
 							value={ leftMargin }
 							onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-							min={ 10 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Right Margin" ) }
+							label={ UAGB_Block_Icons.right_margin }
+							className={ "uagb-margin-control" }
 							value={ rightMargin }
 							onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-							min={ 10 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Top Margin" ) }
+							label={ UAGB_Block_Icons.top_margin }
+							className={ "uagb-margin-control" }
 							value={ topMargin }
 							onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-							min={ 10 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Bottom Margin" ) }
+							label={ UAGB_Block_Icons.bottom_margin }
+							className={ "uagb-margin-control" }
 							value={ bottomMargin }
 							onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-							min={ 10 }
+							min={ -200 }
 							max={ 200 }
 							allowReset
 						/>
@@ -412,15 +437,15 @@ class UAGBSectionEdit extends Component {
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
 										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
 											label: __( "Color 1" ),
 										},
 										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
 											label: __( "Color 2" ),
-										}
+										},
 									] }
 								>
 								</PanelColorSettings>
@@ -567,7 +592,8 @@ class UAGBSectionEdit extends Component {
 						className,
 						"uagb-section__wrap",
 						`uagb-section__background-${backgroundType}`,
-						`uagb-section__edit-${ active }`
+						`uagb-section__edit-${ active }`,
+						block_controls_class
 					) }
 					id={ `uagb-section-${this.props.clientId}` }
 				>

@@ -1,4 +1,5 @@
 const { decodeEntities } = wp.htmlEntities
+const { __ } = wp.i18n
 
 class FeaturedImage extends React.Component {
 

@@ -3,13 +3,12 @@ const {
 } = wp.editor
 
 const { __ } = wp.i18n
-
 const {
 	createBlock
 } = wp.blocks
 
 class Title extends React.Component {
-
+	
 	render() {
 
 		const {
@@ -26,21 +25,17 @@ class Title extends React.Component {
 		}
 
 		if( setAttributes !== "not_set" ){
+			var data_copy = [...attributes.rest_menu_item_arr]
 			return (
 				<RichText
 	                tagName= {attributes.headingTag}
 	                value={ author_title }
+	                 placeholder={ __( "Write a Title" ) }
 	                className='uagb-rm__title'
 	                onChange={ ( value ) => { 
-	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
-							if ( thisIndex === index_value ) {
-								item["title"] = value				
-							}
-							return item			
-						} )
-	                	setAttributes( {
-							rest_menu_item_arr: newItems,
-						} )	
+	                	var new_content = { "description" : data_copy[index_value]["description"], "title":value, "price" : data_copy[index_value]["price"], "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
+						setAttributes( { "rest_menu_item_arr": data_copy } )	                	
 	                } }     
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {

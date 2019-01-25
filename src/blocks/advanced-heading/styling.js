@@ -9,7 +9,6 @@ function styling( props ) {
 	const {
 		headingAlign,
 		headingTag,
-		headFontSize,
 		headingColor,
 		headSpace,
 		seperatorStyle,
@@ -17,14 +16,15 @@ function styling( props ) {
 		separatorWidth,
 		separatorColor,
 		separatorSpace,
-		subHeadFontSize,
 		subHeadingColor,
 		subHeadSpace,
+		headFontSize,
 		headFontSizeType,
-		subHeadFontSizeType,
 		headFontSizeMobile,
-		subHeadFontSizeMobile,
 		headFontSizeTablet,
+		subHeadFontSize,
+		subHeadFontSizeType,
+		subHeadFontSizeMobile,
 		subHeadFontSizeTablet,
 	} = props.attributes
 
@@ -39,7 +39,6 @@ function styling( props ) {
 			"text-align": headingAlign,
 			"font-size": subHeadFontSize + subHeadFontSizeType,
 			"color": subHeadingColor,
-			"margin-bottom": subHeadSpace + "px",
 		}
 	}
 

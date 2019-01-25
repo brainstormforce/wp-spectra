@@ -44,15 +44,19 @@ registerBlockType( "uagb/section", {
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "section" ),
-		__( "uagb" ),
+		__( "wrapper" ),
+		__( "uag" ),
 	],
 	attributes,
-	getEditWrapperProps( { blockAlignment } ) {
-		if ( "left" === blockAlignment || "right" === blockAlignment || "center" === blockAlignment ) {
-			return { "data-align": blockAlignment }
+	edit,
+	getEditWrapperProps( attributes ) {
+		const { align, contentWidth } = attributes
+		if ( "left" === align || "right" === align || "wide" === align || "full" === align ) {
+			if ( "full_width" == contentWidth ) {
+				return { "data-align": align }
+			}
 		}
 	},
-	edit,
 	save : function( props ) {
 
 		const { attributes, className } = props
@@ -61,8 +65,19 @@ registerBlockType( "uagb/section", {
 			block_id,
 			tag,
 			backgroundType,
-			backgroundVideo
+			backgroundVideo,
+			contentWidth,
+			align
 		} = props.attributes
+
+		let block_controls_class = ""
+
+		if ( "full_width" == contentWidth ) {
+
+			if ( align == "wide" || align == "full" ) {
+				block_controls_class = "align" + align
+			}
+		}
 
 		const CustomTag = `${tag}`
 
@@ -71,7 +86,8 @@ registerBlockType( "uagb/section", {
 				className={ classnames(
 					className,
 					"uagb-section__wrap",
-					`uagb-section__background-${backgroundType}`
+					`uagb-section__background-${backgroundType}`,
+					block_controls_class
 				) }
 				id={ `uagb-section-${block_id}` }
 			>

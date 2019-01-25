@@ -1,11 +1,11 @@
-=== Gutenberg Blocks - Ultimate Addons for Gutenberg ===
+=== UAG - Gutenberg Blocks ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
-Requires at least: 4.6
+Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.0.2
-Stable tag: 1.6.0
+Tested up to: 5.0.3
+Stable tag: 1.8.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -39,14 +39,16 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Carousel </a>: Wish to create a post slider in which your blog posts appear within a carousel? The Post Carousel block allows you to display posts in a carousel and manage their settings and the content you wish to display within them.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Masonry </a>: The Post Masonry block fetches the blog posts on your website and displays them in a masonry layout. You can customize the way your posts look and manage settings like the featured image, the content you want to display, etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
- 	<li><a href="#" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/google-map/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
- 	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
- 	<li><a href="#" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-actions with a trendy title, description and a catchy button that boosts conversions on your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
 </ul>
 
 <strong>Optimized For Performance and Speed</strong>
@@ -93,9 +95,58 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.8.0.1 =
+* Fix: Advanced Columns - Editor end width issue fixed.
+* Fix: Advanced Columns - Editor end Draggable pointer overflow issue.
+* New: Advanced Columns - Added border option for inner column.
+* New: Advanced Columns - Added alignment option for inner column.
+* Fix: Info Box - Separator width issue.
+* Fix: Testimonial - Border radius should be out of Border condition.
+* Fix: Info Box - Color setting option default open.
+* Fix: Social Share - Links not updated in reusable block.
+* Fix: Conflict with GeneratePress theme.
+* Improvement: Call To Action -  Reorder CTA color setting options.
+* Improvement: Info Box - Reorganize setting options.
+* Improvement: Info Box - Deprecated color setting panel.
+* Improvement: Team - Fixed typo error.
+* Improvement: Multi Buttons - Rename color to text color and text hover color.
+* Improvement: Multi Buttons - Added index to the color setting.
+* Improvement: Multi Buttons - Added tabs control for buttons Colors.
+* Improvement: Content Timeline - First tab not open default.
+* Improvement: Changed Block Category name to Ultimate Addons block.
+* Improvement: Changed panel tab design.
+* Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Replaced all Font Awesome Icon with SVG.
+
+= 1.8.0 =
+* New: Advanced Columns
+* Fix: Post Masonry - Messed view on first load issue fixed.
+* Improvement: Post - Added Action/Filter hooks.
+
+= 1.7.0 =
+* New: Call to Action
+* Fix: Section - Background Opacity issue fix.
+* Improvement: Post - Added an option for Complete Box Link.
+
+= 1.6.2 =
+* Fix: Info Box - Editable RichText issue with Prefix.
+* Fix: Icon List - Editable RichText issue with List Label.
+* Fix: Multi Buttons- Editable RichText issue with Button Text.
+* Improvement: Content Timeline - Date value can be both Dates and Arbitrary Text values.
+
+= 1.6.1 =
+* Improvement: Post - Added an option for Content Padding on Mobile devices.
+* Improvement: Post - Added an option for padding to Read More link button.
+
 = 1.6.0 =
 * New: Post Masonry
 * Fix: Icon List - Gap between items not being applied on editor issue fixed.
+* Fix: Post Grid - Twenty Nineteen theme related issues fixed.
+* Fix: Post Grid - Alignment issue fixed.
+* Fix: Restaurant Menu - Duplicate block content error.
+* Fix: Testimonial - Arrow and Dots design options added for Carousel.
+* Fix: Testimonial - Duplicate block content error.
+* Improvement: Info Box - Added option to Enable/Disable Prefix, Heading and Description.
 
 = 1.5.0 =
 * New: Post Carousel

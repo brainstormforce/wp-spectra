@@ -2,11 +2,11 @@ const {
 	RichText,
 } = wp.editor
 
+const { __ } = wp.i18n
+
 const {
 	createBlock
 } = wp.blocks
-
-const { __ } = wp.i18n
 
 class Price extends React.Component {
 
@@ -19,32 +19,27 @@ class Price extends React.Component {
 			index_value	
 		} = this.props
 
-		const test_arr = attributes.rest_menu_item_arr[index_value]
+		const rest_arr = attributes.rest_menu_item_arr[index_value]
 		let price = ""
-		if( test_arr && typeof test_arr !== "undefined"){
-			price = test_arr["price"]			
+		if( rest_arr && typeof rest_arr !== "undefined"){
+			price = rest_arr["price"]			
 		}
+
+		var data_copy = [...attributes.rest_menu_item_arr]
 
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName= 'span'
+	                tagName= 'div'
 	                value={ price }
 	                className = 'uagb-rm__price'
+	                placeholder={ __( "Price" ) }
 	                onChange={ ( value ) => { 
-
-	                	const newItems = attributes.rest_menu_item_arr.map( ( item, thisIndex ) => {
-							if ( thisIndex === index_value ) {
-								item["price"] = value				
-							}
-							return item			
-						} )
-	                	setAttributes( {
-							rest_menu_item_arr: newItems,
-						} )	
+	                	var new_content = { "description" : data_copy[index_value]["description"], "title":data_copy[index_value]["title"], "price" : value, "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
+						setAttributes( { "rest_menu_item_arr": data_copy } )	                	
 	                } }     
 	                multiline={ false }
-	                placeholder={ __( "Write a Heading" ) }
 	                onMerge = { props.mergeBlocks }		
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

@@ -15,7 +15,6 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	RichText,
 	PanelColorSettings,
 	MediaUpload
 } = wp.editor
@@ -33,7 +32,7 @@ const { Component, Fragment } = wp.element
 
 const MAX_COLUMNS = 3
 
-class UAGBrestMenu extends Component {
+class UAGBRestaurantMenu extends Component {
 
 	constructor() {
 
@@ -52,20 +51,20 @@ class UAGBrestMenu extends Component {
 		const { rest_menu_item_arr } = this.props.attributes
 		const { setAttributes } = this.props
 
-		let imag_url = null
+		let image_url = null
 		if ( ! media || ! media.url ) {			
-			imag_url = null
+			image_url = null
 		}else{
-			imag_url = media
+			image_url = media
 		}
 
 		if ( ! media.type || "image" !== media.type ) {
-			imag_url = null
+			image_url = null
 		}
 
 		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = imag_url				
+				item["image"] = image_url				
 			}
 			return item			
 		} )
@@ -101,12 +100,12 @@ class UAGBrestMenu extends Component {
 	getImageName( image ){
 		const { rest_menu_item_arr } = this.props.attributes
 
-		let image_title = "Select Image"
+		let image_title = __( "Select Image" )
 		if(image){
 			if(image.url == null || image.url == "" ){
-				image_title = "Select Image"
+				image_title = __( "Select Image" )
 			}else{
-				image_title = "Replace Image"
+				image_title = __( "Replace Image" )
 			}
 		}
 		return image_title
@@ -169,7 +168,6 @@ class UAGBrestMenu extends Component {
 			titleSpace,
 			imgHrPadding,
 			imgVrPadding,
-			iconImage,
 			imageSize,
 			imageWidth,
 			columns,
@@ -187,7 +185,7 @@ class UAGBrestMenu extends Component {
 		} = attributes
 
 		// Add CSS.
-		var element = document.getElementById( "uagb-testinomial-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-restaurant-menu-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = RestMenuStyle( this.props )
 		}		
@@ -197,10 +195,7 @@ class UAGBrestMenu extends Component {
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
-				<PanelBody
-					title={ __( "Typography" ) }
-					initialOpen={ false }
-				>	
+				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>	
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ headingTag }
@@ -271,56 +266,53 @@ class UAGBrestMenu extends Component {
 				</PanelColorSettings>
 			</Fragment>
 		)
-
 		const separatorSettings =(
-			<Fragment>
-				<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
-					<SelectControl
-						label={ __( "Seperator Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "groove", label: __( "Groove" ) },
-							{ value: "inset", label: __( "Inset" ) },
-							{ value: "outset", label: __( "Outset" ) },
-							{ value: "ridge", label: __( "Ridge" ) },
-						] }
-					/>
-					{ "none" != seperatorStyle &&
+			<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
+				<SelectControl
+					label={ __( "Seperator Style" ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "groove", label: __( "Groove" ) },
+						{ value: "inset", label: __( "Inset" ) },
+						{ value: "outset", label: __( "Outset" ) },
+						{ value: "ridge", label: __( "Ridge" ) },
+					] }
+				/>
+				{ "none" != seperatorStyle &&
+					<Fragment>
+						<RangeControl
+							label={ __( "Seperator Width (%)" ) }
+							value={ seperatorWidth }
+							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Seperator Thickness" ) }
+							value={ seperatorThickness }
+							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+							min={ 0 }
+							max={ 20 }
+							allowReset
+						/>	
 						<Fragment>
-							<RangeControl
-								label={ __( "Seperator Width" ) }
-								value={ seperatorWidth }
-								onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-								min={ 0 }
-								max={ 100 }
+							<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							<ColorPalette
+								value={ seperatorColor }
+								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
 								allowReset
 							/>
-							<RangeControl
-								label={ __( "Seperator Thickness" ) }
-								value={ seperatorThickness }
-								onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-								min={ 0 }
-								max={ 20 }
-								allowReset
-							/>	
-							<Fragment>
-								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-								<ColorPalette
-									value={ seperatorColor }
-									onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-									allowReset
-								/>
-							</Fragment>	
-						</Fragment>
-					}
-				</PanelBody>
-			</Fragment>
+						</Fragment>	
+					</Fragment>
+				}
+			</PanelBody>
 		)
 
 		// Image sizes.
@@ -330,7 +322,7 @@ class UAGBrestMenu extends Component {
 			{ value: "full", label: __( "Large" ) }
 		]		
 				
-		const tmControls = ( index ) => {
+		const imageControls = ( index ) => {
 			let image_val = null
 			if( rest_menu_item_arr[index] && typeof rest_menu_item_arr[index] !== "undefined"){
 				image_val = rest_menu_item_arr[index]["image"]
@@ -381,204 +373,189 @@ class UAGBrestMenu extends Component {
 		} )	    
 
 		// Margin Settings.
-		const marginSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Spacing" ) }
-					initialOpen={ false }
-				>
+		const marginSettings = (			
+			<PanelBody	title={ __( "Spacing" ) } initialOpen={ false }	>
+				<RangeControl
+					label={ __( "Row Gap" ) }
+					value={ rowGap }
+					onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Column Gap" ) }
+					value={ columnGap }
+					onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Item Horizontal Padding" ) }
+					value={ contentHrPadding }
+					onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "Item Vertical Padding" ) }
+					value={ contentVrPadding }
+					onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>			
+				<RangeControl
+					label={ __( "Title Bottom Margin" ) }
+					value={ titleSpace }
+					onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>								
+				{  cnt > 0 && <Fragment>
 					<RangeControl
-						label={ __( "Row Gap" ) }
-						value={ rowGap }
-						onChange={ ( value ) => setAttributes( { rowGap: value } ) }
+						label={ __( "Image Horizontal Padding" ) }
+						value={ imgHrPadding }
+						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Column Gap" ) }
-						value={ columnGap }
-						onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+						label={ __( "Image Vertical Padding" ) }
+						value={ imgVrPadding }
+						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
-					/>
-					<RangeControl
-						label={ __( "Item Horizontal Padding" ) }
-						value={ contentHrPadding }
-						onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Item Vertical Padding" ) }
-						value={ contentVrPadding }
-						onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>			
-					<RangeControl
-						label={ __( "Title Bottom Margin" ) }
-						value={ titleSpace }
-						onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>								
-					{  cnt > 0 && <Fragment>
-						<RangeControl
-							label={ __( "Image Horizontal Padding" ) }
-							value={ imgHrPadding }
-							onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Image Vertical Padding" ) }
-							value={ imgVrPadding }
-							onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>	
-					</Fragment>
-					}					
-					
-				</PanelBody>
-			</Fragment>
+					/>	
+				</Fragment>
+				}				
+				
+			</PanelBody>			
 		)
 
-		const inspect_control = (
-			<Fragment>
-				 <InspectorControls>
-				 	<PanelBody
-						title={ __( "General" ) }
-						initialOpen={ true }
-					>	
-				 	<RangeControl
-							label={ __( "Number of Menu Items" ) }
-							value={ menu_item_count }
-							onChange={ ( newCount ) => {
-								let cloneTest_block = [ ...rest_menu_item_arr ]
-								if ( cloneTest_block.length < newCount ) {
-									const incAmount = Math.abs( newCount - cloneTest_block.length )
+		const inspect_control = (			
+			<InspectorControls>
+			 	<PanelBody	title={ __( "General" ) } initialOpen={ true }	>	
+			 		<RangeControl
+						label={ __( "Number of Items" ) }
+						value={ menu_item_count }
+						onChange={ ( newCount ) => {
+							let cloneTest_block = [ ...rest_menu_item_arr ]
+							if ( cloneTest_block.length < newCount ) {
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
 
-									{ times( incAmount, n => {
+								{ times( incAmount, n => {
 
-										cloneTest_block.push( {
-											description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
-											title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
-											price: __("$19"),
-											image: "",
-										} )
-									} ) }
-									setAttributes( { rest_menu_item_arr: cloneTest_block } )
-								}else{
-									const incAmount = Math.abs( newCount - cloneTest_block.length )
-									let data_new = cloneTest_block
-					            for( var i= 0; i < incAmount; i++ ){             
-					                data_new.pop()
-					            }           
-					            setAttributes({rest_menu_item_arr:data_new})
+									cloneTest_block.push( {
+										description: __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.") ,
+										title:__(" Menu Item"+ ( cloneTest_block.length + 1 ) ),
+										price: __("$19"),
+										image: "",
+									} )
+								} ) }
+								setAttributes( { rest_menu_item_arr: cloneTest_block } )
+							}else{
+								const incAmount = Math.abs( newCount - cloneTest_block.length )
+								let data_new = cloneTest_block
+				            for( var i= 0; i < incAmount; i++ ){             
+				                data_new.pop()
+				            }           
+				            setAttributes({rest_menu_item_arr:data_new})
 
-								}
-								setAttributes( { menu_item_count: newCount } )
-							} }
-							min={ 0 }
-							max={ 10 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Columns" ) }
-							value={ columns }
-							onChange={ ( value ) => setAttributes( { columns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-						<RangeControl
-							label={ __( "Columns (Tablet)" ) }
-							value={ tcolumns }
-							onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-						<RangeControl
-							label={ __( "Columns (Mobile)" ) }
-							value={ mcolumns }
-							onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-							min={ 1 }
-							max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-						/>
-					</PanelBody>
-									 	
-					<PanelBody
-						title={ __( "Image" ) }
-						initialOpen={ false }
-					>
-						{ times( menu_item_count, n => tmControls( n ) ) }
+							}
+							setAttributes( { menu_item_count: newCount } )
+						} }
+						min={ 0 }
+						max={ 10 }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Columns" ) }
+						value={ columns }
+						onChange={ ( value ) => setAttributes( { columns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Tablet)" ) }
+						value={ tcolumns }
+						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+					<RangeControl
+						label={ __( "Columns (Mobile)" ) }
+						value={ mcolumns }
+						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+						min={ 1 }
+						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+					/>
+				</PanelBody>
+								 	
+				<PanelBody title={ __( "Image" ) }initialOpen={ false } >
+					{ times( menu_item_count, n => imageControls( n ) ) }
 
-						{  cnt > 0 && <Fragment>
+					{  cnt > 0 && <Fragment>
+						<SelectControl
+							label={ __( "Image Position" ) }
+							value={ imagePosition }
+							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+							options={ [
+								{ value: "top", label: __( "Top" ) },
+								{ value: "left", label: __( "Left" ) },
+								{ value: "right", label: __( "Right" ) },
+							] }
+						/>	
+						{ (imagePosition == "left" || imagePosition == "right") && 
+						<Fragment>
 							<SelectControl
-								label={ __( "Image Position" ) }
-								value={ imagePosition }
-								onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
+								label={ __( "Vertical Alignment" ) }
+								value={ imageAlignment }
+								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
 								options={ [
 									{ value: "top", label: __( "Top" ) },
-									{ value: "left", label: __( "Left" ) },
-									{ value: "right", label: __( "Right" ) },
+									{ value: "middle", label: __( "Middle" ) },
 								] }
 							/>	
-							{ (imagePosition == "left" || imagePosition == "right") && 
-							<Fragment>
-								<SelectControl
-									label={ __( "Vertical Alignment" ) }
-									value={ imageAlignment }
-									onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-									options={ [
-										{ value: "top", label: __( "Top" ) },
-										{ value: "middle", label: __( "Middle" ) },
-									] }
-								/>	
-								<SelectControl
-									label={ __( "Stack on" ) }
-									value={ stack }
-									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
-									] }
-									help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
-									onChange={ ( value ) => setAttributes( { stack: value } ) }
-								/>
-							</Fragment>
-							}						
 							<SelectControl
-								label={ __( "Image Size" ) }
-								options={ imageSizeOptions }
-								value={ imageSize }
-								onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
-						 <RangeControl
-								label={ __( "Width" ) }
-								value={ imageWidth }
-								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-								min={ 0 }
-								max={ 500 }								
-								allowReset
-							/>
-						</Fragment> 
-						}
-					
-					
-					</PanelBody>
-					{ separatorSettings }
-					{ TypographySettings }
-					{ marginSettings }					
-				</InspectorControls>
-			</Fragment>
+						</Fragment>
+						}						
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ imageSize }
+							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
+						/>
+					 <RangeControl
+							label={ __( "Width" ) }
+							value={ imageWidth }
+							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+							min={ 0 }
+							max={ 500 }								
+							allowReset
+						/>
+					</Fragment> 
+					}
+				</PanelBody>
+				{ separatorSettings }
+				{ TypographySettings }
+				{ marginSettings }					
+			</InspectorControls>			
 		)
 
 		return (
@@ -641,9 +618,9 @@ class UAGBrestMenu extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-testinomial-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-restaurant-menu-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 }
 
-export default UAGBrestMenu
+export default UAGBRestaurantMenu

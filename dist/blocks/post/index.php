@@ -71,27 +71,30 @@ function uagb_post_masonry_callback( $attributes ) {
 	return ob_get_clean();
 }
 
-add_action( 'wp_footer', 'uagb_post_masonry_add_script', 1000 );
+add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
 
 /**
  * Renders the post masonry related script.
  *
  * @since 0.0.1
  */
-function uagb_post_masonry_add_script() {
+function uagb_post_block_add_script() {
 
 	global $uagb_post_settings;
 
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
-
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
-					$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+
+					var $scope = $( '#uagb-post__masonry-<?php echo $key; ?>' );
+					$scope.imagesLoaded( function() {
+						$scope.find( '.is-masonry' ).isotope();
+					});
 
 					$( window ).resize( function() {
-						$( '#uagb-post__masonry-<?php echo $key; ?>' ).find( '.is-masonry' ).isotope();
+						$scope.find( '.is-masonry' ).isotope();
 					} );
 				} )( jQuery );
 			</script>
@@ -100,7 +103,6 @@ function uagb_post_masonry_add_script() {
 	}
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
-
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
 			$dots   = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
 			$arrows = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
@@ -125,8 +127,8 @@ function uagb_post_masonry_add_script() {
 						'arrows' : Boolean( '<?php echo $arrows; ?>' ),
 						'dots' : Boolean( '<?php echo $dots; ?>' ),
 						'rtl' : false,
-						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-left\"><\/span><\/button>',
-						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-right\"><\/span><\/button>',
+						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z\"></path></svg><\/button>',
+						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z\"></path></svg><\/button>',
 						'responsive' : [
 							{
 								'breakpoint' : 1024,
@@ -152,7 +154,6 @@ function uagb_post_masonry_add_script() {
 			<?php
 		}
 	}
-
 }
 
 /**
@@ -187,6 +188,8 @@ function uagb_get_post_query( $attributes ) {
  * @since 0.0.1
  */
 function uagb_get_post_html( $attributes, $query, $layout ) {
+
+	$attributes['post_type'] = $layout;
 
 	$wrap = array(
 		'uagb-post__items uagb-post__columns-' . $attributes['columns'],
@@ -247,7 +250,6 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
  * @since 0.0.1
  */
 function uagb_register_blocks() {
-
 	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -257,194 +259,208 @@ function uagb_register_blocks() {
 		'uagb/post-grid',
 		array(
 			'attributes'      => array(
-				'block_id'           => array(
+				'block_id'             => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
-				'categories'         => array(
+				'categories'           => array(
 					'type' => 'string',
 				),
-				'className'          => array(
+				'className'            => array(
 					'type' => 'string',
 				),
-				'postsToShow'        => array(
+				'postsToShow'          => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'    => array(
+				'displayPostDate'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt' => array(
+				'displayPostExcerpt'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'excerptLength'      => array(
+				'excerptLength'        => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'displayPostAuthor'  => array(
+				'displayPostAuthor'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostComment' => array(
+				'displayPostComment'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'   => array(
+				'displayPostImage'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'imgSize'            => array(
+				'imgSize'              => array(
 					'type'    => 'string',
 					'default' => 'large',
 				),
-				'imgPosition'        => array(
+				'imgPosition'          => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'bgOverlayColor'     => array(
+				'linkBox'              => array(
+					'type' => 'boolean',
+				),
+				'bgOverlayColor'       => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'overlayOpacity'     => array(
+				'overlayOpacity'       => array(
 					'type'    => 'number',
 					'default' => '50',
 				),
-				'displayPostLink'    => array(
+				'displayPostLink'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'newTab'             => array(
+				'newTab'               => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'ctaText'            => array(
+				'ctaText'              => array(
 					'type'    => 'string',
 					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
-				'borderWidth'        => array(
+				'borderWidth'          => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'borderStyle'        => array(
+				'btnHPadding'          => array(
+					'type'    => 'number',
+					'default' => 10,
+				),
+				'btnVPadding'          => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'borderStyle'          => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'borderColor'        => array(
+				'borderColor'          => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'borderHColor'       => array(
+				'borderHColor'         => array(
 					'type' => 'string',
 				),
-				'borderRadius'       => array(
+				'borderRadius'         => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'columns'            => array(
+				'columns'              => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'tcolumns'           => array(
+				'tcolumns'             => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'mcolumns'           => array(
+				'mcolumns'             => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'align'              => array(
+				'align'                => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
-				'width'              => array(
+				'width'                => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'              => array(
+				'order'                => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'            => array(
+				'orderBy'              => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'rowGap'             => array(
+				'rowGap'               => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'          => array(
+				'columnGap'            => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'bgColor'            => array(
+				'bgColor'              => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'titleColor'         => array(
+				'titleColor'           => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'titleTag'           => array(
+				'titleTag'             => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'titleFontSize'      => array(
+				'titleFontSize'        => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontSize'       => array(
+				'metaFontSize'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontSize'    => array(
+				'excerptFontSize'      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'ctaFontSize'        => array(
+				'ctaFontSize'          => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaColor'          => array(
+				'metaColor'            => array(
 					'type'    => 'string',
 					'default' => '#777777',
 				),
-				'excerptColor'       => array(
+				'excerptColor'         => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaColor'           => array(
+				'ctaColor'             => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaBgColor'         => array(
+				'ctaBgColor'           => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaHColor'          => array(
+				'ctaHColor'            => array(
 					'type' => 'string',
 				),
-				'ctaBgHColor'        => array(
+				'ctaBgHColor'          => array(
 					'type' => 'string',
 				),
-				'contentPadding'     => array(
+				'contentPadding'       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleBottomSpace'   => array(
+				'contentPaddingMobile' => array(
+					'type' => 'number',
+				),
+				'titleBottomSpace'     => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'metaBottomSpace'    => array(
+				'metaBottomSpace'      => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'excerptBottomSpace' => array(
+				'excerptBottomSpace'   => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'equalHeight'        => array(
+				'equalHeight'          => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -457,230 +473,244 @@ function uagb_register_blocks() {
 		'uagb/post-carousel',
 		array(
 			'attributes'      => array(
-				'block_id'           => array(
+				'block_id'             => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
-				'categories'         => array(
+				'categories'           => array(
 					'type' => 'string',
 				),
-				'className'          => array(
+				'className'            => array(
 					'type' => 'string',
 				),
-				'postsToShow'        => array(
+				'postsToShow'          => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'    => array(
+				'displayPostDate'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt' => array(
+				'displayPostExcerpt'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'excerptLength'      => array(
+				'excerptLength'        => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'displayPostAuthor'  => array(
+				'displayPostAuthor'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostComment' => array(
+				'displayPostComment'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'   => array(
+				'displayPostImage'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'imgSize'            => array(
+				'imgSize'              => array(
 					'type'    => 'string',
 					'default' => 'large',
 				),
-				'imgPosition'        => array(
+				'imgPosition'          => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'bgOverlayColor'     => array(
+				'linkBox'              => array(
+					'type' => 'boolean',
+				),
+				'bgOverlayColor'       => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'overlayOpacity'     => array(
+				'overlayOpacity'       => array(
 					'type'    => 'number',
 					'default' => '50',
 				),
-				'displayPostLink'    => array(
+				'displayPostLink'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'newTab'             => array(
+				'newTab'               => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'ctaText'            => array(
+				'ctaText'              => array(
 					'type'    => 'string',
 					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
-				'borderWidth'        => array(
+				'borderWidth'          => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'borderStyle'        => array(
+				'btnHPadding'          => array(
+					'type'    => 'number',
+					'default' => 10,
+				),
+				'btnVPadding'          => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'borderStyle'          => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'borderColor'        => array(
+				'borderColor'          => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'borderHColor'       => array(
+				'borderHColor'         => array(
 					'type' => 'string',
 				),
-				'borderRadius'       => array(
+				'borderRadius'         => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'columns'            => array(
+				'columns'              => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'tcolumns'           => array(
+				'tcolumns'             => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'mcolumns'           => array(
+				'mcolumns'             => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'align'              => array(
+				'align'                => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
-				'width'              => array(
+				'width'                => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'              => array(
+				'order'                => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'            => array(
+				'orderBy'              => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'rowGap'             => array(
+				'rowGap'               => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'          => array(
+				'columnGap'            => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'bgColor'            => array(
+				'bgColor'              => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'titleColor'         => array(
+				'titleColor'           => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'titleTag'           => array(
+				'titleTag'             => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'titleFontSize'      => array(
+				'titleFontSize'        => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontSize'       => array(
+				'metaFontSize'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontSize'    => array(
+				'excerptFontSize'      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'ctaFontSize'        => array(
+				'ctaFontSize'          => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaColor'          => array(
+				'metaColor'            => array(
 					'type'    => 'string',
 					'default' => '#777777',
 				),
-				'excerptColor'       => array(
+				'excerptColor'         => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaColor'           => array(
+				'ctaColor'             => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaBgColor'         => array(
+				'ctaBgColor'           => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaHColor'          => array(
+				'ctaHColor'            => array(
 					'type' => 'string',
 				),
-				'ctaBgHColor'        => array(
+				'ctaBgHColor'          => array(
 					'type' => 'string',
 				),
-				'contentPadding'     => array(
+				'contentPadding'       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleBottomSpace'   => array(
+				'contentPaddingMobile' => array(
+					'type' => 'number',
+				),
+				'titleBottomSpace'     => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'metaBottomSpace'    => array(
+				'metaBottomSpace'      => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'excerptBottomSpace' => array(
+				'excerptBottomSpace'   => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'pauseOnHover'       => array(
+				'pauseOnHover'         => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'infiniteLoop'       => array(
+				'infiniteLoop'         => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'transitionSpeed'    => array(
+				'transitionSpeed'      => array(
 					'type'    => 'number',
 					'default' => 500,
 				),
-				'arrowDots'          => array(
+				'arrowDots'            => array(
 					'type'    => 'string',
 					'default' => 'arrows_dots',
 				),
-				'autoplay'           => array(
+				'autoplay'             => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'autoplaySpeed'      => array(
+				'autoplaySpeed'        => array(
 					'type'    => 'number',
 					'default' => 2000,
 				),
-				'arrowSize'          => array(
+				'arrowSize'            => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'arrowBorderSize'    => array(
+				'arrowBorderSize'      => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'arrowBorderRadius'  => array(
+				'arrowBorderRadius'    => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'arrowColor'         => array(
+				'arrowColor'           => array(
 					'type'    => 'string',
 					'default' => '#aaaaaa',
 				),
@@ -693,190 +723,204 @@ function uagb_register_blocks() {
 		'uagb/post-masonry',
 		array(
 			'attributes'      => array(
-				'block_id'           => array(
+				'block_id'             => array(
 					'type'    => 'string',
 					'default' => 'not_set',
 				),
-				'categories'         => array(
+				'categories'           => array(
 					'type' => 'string',
 				),
-				'className'          => array(
+				'className'            => array(
 					'type' => 'string',
 				),
-				'postsToShow'        => array(
+				'postsToShow'          => array(
 					'type'    => 'number',
 					'default' => 6,
 				),
-				'displayPostDate'    => array(
+				'displayPostDate'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostExcerpt' => array(
+				'displayPostExcerpt'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'excerptLength'      => array(
+				'excerptLength'        => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'displayPostAuthor'  => array(
+				'displayPostAuthor'    => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostComment' => array(
+				'displayPostComment'   => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostImage'   => array(
+				'displayPostImage'     => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'imgSize'            => array(
+				'imgSize'              => array(
 					'type'    => 'string',
 					'default' => 'large',
 				),
-				'imgPosition'        => array(
+				'imgPosition'          => array(
 					'type'    => 'string',
 					'default' => 'top',
 				),
-				'bgOverlayColor'     => array(
+				'linkBox'              => array(
+					'type' => 'boolean',
+				),
+				'bgOverlayColor'       => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'overlayOpacity'     => array(
+				'overlayOpacity'       => array(
 					'type'    => 'number',
 					'default' => '50',
 				),
-				'displayPostLink'    => array(
+				'displayPostLink'      => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'newTab'             => array(
+				'newTab'               => array(
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'ctaText'            => array(
+				'ctaText'              => array(
 					'type'    => 'string',
 					'default' => __( 'Read More', 'ultimate-addons-for-gutenberg' ),
 				),
-				'borderWidth'        => array(
+				'borderWidth'          => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'borderStyle'        => array(
+				'btnHPadding'          => array(
+					'type'    => 'number',
+					'default' => 10,
+				),
+				'btnVPadding'          => array(
+					'type'    => 'number',
+					'default' => 5,
+				),
+				'borderStyle'          => array(
 					'type'    => 'string',
 					'default' => 'none',
 				),
-				'borderColor'        => array(
+				'borderColor'          => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'borderHColor'       => array(
+				'borderHColor'         => array(
 					'type' => 'string',
 				),
-				'borderRadius'       => array(
+				'borderRadius'         => array(
 					'type'    => 'number',
 					'default' => 0,
 				),
-				'columns'            => array(
+				'columns'              => array(
 					'type'    => 'number',
 					'default' => 3,
 				),
-				'tcolumns'           => array(
+				'tcolumns'             => array(
 					'type'    => 'number',
 					'default' => 2,
 				),
-				'mcolumns'           => array(
+				'mcolumns'             => array(
 					'type'    => 'number',
 					'default' => 1,
 				),
-				'align'              => array(
+				'align'                => array(
 					'type'    => 'string',
-					'default' => 'center',
+					'default' => 'left',
 				),
-				'width'              => array(
+				'width'                => array(
 					'type'    => 'string',
 					'default' => 'wide',
 				),
-				'order'              => array(
+				'order'                => array(
 					'type'    => 'string',
 					'default' => 'desc',
 				),
-				'orderBy'            => array(
+				'orderBy'              => array(
 					'type'    => 'string',
 					'default' => 'date',
 				),
-				'rowGap'             => array(
+				'rowGap'               => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'columnGap'          => array(
+				'columnGap'            => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'bgColor'            => array(
+				'bgColor'              => array(
 					'type'    => 'string',
 					'default' => '#e4e4e4',
 				),
-				'titleColor'         => array(
+				'titleColor'           => array(
 					'type'    => 'string',
 					'default' => '#3b3b3b',
 				),
-				'titleTag'           => array(
+				'titleTag'             => array(
 					'type'    => 'string',
 					'default' => 'h3',
 				),
-				'titleFontSize'      => array(
+				'titleFontSize'        => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaFontSize'       => array(
+				'metaFontSize'         => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'excerptFontSize'    => array(
+				'excerptFontSize'      => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'ctaFontSize'        => array(
+				'ctaFontSize'          => array(
 					'type'    => 'number',
 					'default' => '',
 				),
-				'metaColor'          => array(
+				'metaColor'            => array(
 					'type'    => 'string',
 					'default' => '#777777',
 				),
-				'excerptColor'       => array(
+				'excerptColor'         => array(
 					'type'    => 'string',
 					'default' => '',
 				),
-				'ctaColor'           => array(
+				'ctaColor'             => array(
 					'type'    => 'string',
 					'default' => '#ffffff',
 				),
-				'ctaBgColor'         => array(
+				'ctaBgColor'           => array(
 					'type'    => 'string',
 					'default' => '#333333',
 				),
-				'ctaHColor'          => array(
+				'ctaHColor'            => array(
 					'type' => 'string',
 				),
-				'ctaBgHColor'        => array(
+				'ctaBgHColor'          => array(
 					'type' => 'string',
 				),
-				'contentPadding'     => array(
+				'contentPadding'       => array(
 					'type'    => 'number',
 					'default' => 20,
 				),
-				'titleBottomSpace'   => array(
+				'contentPaddingMobile' => array(
+					'type' => 'number',
+				),
+				'titleBottomSpace'     => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'metaBottomSpace'    => array(
+				'metaBottomSpace'      => array(
 					'type'    => 'number',
 					'default' => 15,
 				),
-				'excerptBottomSpace' => array(
+				'excerptBottomSpace'   => array(
 					'type'    => 'number',
 					'default' => 25,
 				),
@@ -894,7 +938,6 @@ add_action( 'init', 'uagb_register_blocks' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-
 	// Add featured image source.
 	register_rest_field(
 		'post',
@@ -1042,12 +1085,14 @@ function uagb_render_image( $attributes ) {
 		return;
 	}
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1059,11 +1104,13 @@ function uagb_render_image( $attributes ) {
  */
 function uagb_render_title( $attributes ) {
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title">
-		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
 	</<?php echo $attributes['titleTag']; ?>>
 	<?php
+	do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1076,6 +1123,7 @@ function uagb_render_title( $attributes ) {
 function uagb_render_meta( $attributes ) {
 	global $post;
 	// @codingStandardsIgnoreStart
+	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
 		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
@@ -1086,6 +1134,7 @@ function uagb_render_meta( $attributes ) {
 ?></span><?php }
 		?></div>
 	<?php
+	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	// @codingStandardsIgnoreEnd
 }
 
@@ -1108,11 +1157,14 @@ function uagb_render_excerpt( $attributes ) {
 	if ( ! $excerpt ) {
 		$excerpt = null;
 	}
+	$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
+	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__excerpt">
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -1128,9 +1180,28 @@ function uagb_render_button( $attributes ) {
 	}
 	$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
+	do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
 	</div>
+	<?php
+	do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
+}
+
+/**
+ * Render Complete Box Link HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since 1.7.0
+ */
+function uagb_render_complete_box_link( $attributes ) {
+	if ( ! ( isset( $attributes['linkBox'] ) && $attributes['linkBox'] ) ) {
+		return;
+	}
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	?>
+	<a class="uagb-post__link-complete-box" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"></a>
 	<?php
 }

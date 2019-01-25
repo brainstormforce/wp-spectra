@@ -22,6 +22,7 @@ function inlineStyles( props, isEditor ) {
 		backgroundAttachment,
 		backgroundImage,
 		backgroundColor,
+		backgroundOpacity,
 		backgroundRepeat,
 		backgroundType,
 		gradientColor1,
@@ -59,6 +60,9 @@ function inlineStyles( props, isEditor ) {
 		style["margin-left"] = "auto"
 		style["margin-top"] = topMargin + "px"
 		style["margin-bottom"] =  bottomMargin + "px"
+	} else {
+		style["margin-top"] = topMargin + "px"
+		style["margin-bottom"] =  bottomMargin + "px"
 	}
 
 	if ( borderStyle != "none" ) {
@@ -80,11 +84,7 @@ function inlineStyles( props, isEditor ) {
 	style["max-width"] = section_width
 
 
-	if ( "color" === backgroundType ) {
-
-		style["background-color"] = backgroundColor
-
-	} else if ( "image" === backgroundType ) {
+	if ( "image" === backgroundType ) {
 
 		style["background-image"] = ( backgroundImage ) ? `url(${ backgroundImage.url })` : null
 		style["background-position"] = position
@@ -92,16 +92,6 @@ function inlineStyles( props, isEditor ) {
 		style["background-repeat"] = backgroundRepeat
 		style["background-size"] = backgroundSize
 
-	} else if ( "gradient" === backgroundType ) {
-		style["background-color"] = "transparent"
-
-		if ( "linear" === gradientType ) {
-
-			style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		} else {
-
-			style["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
-		}
 	}
 
 	return style

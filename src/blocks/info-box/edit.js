@@ -2,17 +2,21 @@
 import classnames from "classnames"
 
 // Import icon.
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
 import Title from "./components/Title"
+import Icon from "./components/Icon"
 import InfoBoxDesc from "./components/InfoBoxDesc"
-import InfoBoxIcon from "./components/InfoBoxIcon"
 import InfoBoxPositionClasses from "./classes"
-import InfoBoxSeperator from "./components/InfoBoxSeperator"
-import InfoBoxCta from "./components/InfoBoxCta"
+import InfoBoxSeparator from "./components/InfoBoxSeparator"
+import CallToAction from "./components/CallToAction"
 import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+
+let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
 
@@ -22,7 +26,6 @@ const {
 	ColorPalette,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 	MediaUpload
 } = wp.editor
 
@@ -52,6 +55,13 @@ const {
 
 // Extend component
 const { Component, Fragment } = wp.element
+
+// Image sizes.
+let imageSizeOptions = [
+	{ value: "thumbnail", label: __( "Thumbnail" ) },
+	{ value: "medium", label: __( "Medium" ) },
+	{ value: "full", label: __( "Large" ) }
+]
 
 class UAGBinfoBox extends Component {
 
@@ -90,8 +100,19 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
-
+		var new_img = this.getImageSize(media["sizes"])
+		imageSizeOptions = new_img
 		setAttributes( { iconImage: media } )
+	}
+
+	getImageSize(sizes) {
+		var size_arr = []
+		$.each(sizes, function (index, item) {
+		  var name = index	
+		  	var p = { "value" : name, "label": name }
+		  	size_arr.push(p)
+		})
+		return(size_arr)
 	}
 
 	/*
@@ -189,7 +210,10 @@ class UAGBinfoBox extends Component {
 			iconImage,
 			imageSize,
 			imageWidth,
-			stack
+			stack,
+			showPrefix,
+			showTitle,
+			showDesc,
 		} = attributes
 
 		// Add CSS.
@@ -200,26 +224,29 @@ class UAGBinfoBox extends Component {
 
 		// Icon properties.
 		const icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: icon,
-		  onChange: this.getIfbIcon,
-		  isMulti: false,
+			icons: svg_icons,
+			value: icon,
+			onChange: this.getIfbIcon,
+			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
 		// Icon properties.
 		const cta_icon_props = {
-		  icons: UAGBIcon,
-		  renderUsing: "class",
-		  theme: "default",
-		  value: ctaIcon,
-		  onChange: this.getCtaicon,
-		  isMulti: false,
+			icons: svg_icons,
+			renderFunc: renderSVG,
+			value: ctaIcon,
+			onChange: this.getCtaicon,
+			isMulti: false,
+			noSelectedPlaceholder: __( "Select Icon" )
+		}
+
+		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=="" ){
+			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 
 		const my_block_id = "uagb-infobox-"+this.props.clientId
-
 
 		// Settings for icon.
 		const iconControls = (
@@ -234,125 +261,153 @@ class UAGBinfoBox extends Component {
 					beforeIcon = ""
 					allowReset
 				/>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
 						{
-							value: iconColor,
-							onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
-							label: __( "Icon Color" ),
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
 						},
 						{
-							value: iconHover,
-							onChange: ( colorValue ) => setAttributes( { iconHover: colorValue } ),
-							label: __( "Icon Hover Color" ),
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-focus-tab",
 						},
-					] }
-				>
-				</PanelColorSettings>
+					] }>
+					{
+						( tabName ) => {
+							let tabout_icon
+							if( "normal" === tabName.name ) {
+								tabout_icon = <Fragment>
+									<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconColor }} ></span></span></p>
+									<ColorPalette
+										value={ iconColor }
+										onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
+										allowReset
+									/>
+								</Fragment>
+							}else {
+								tabout_icon = <Fragment>
+									<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconHover }} ></span></span></p>
+									<ColorPalette
+										value={ iconHover }
+										onChange={ ( colorValue ) => setAttributes( { iconHover: colorValue } ) }
+										allowReset
+									/>
+								</Fragment>
+							}
+							return <div>{ tabout_icon }</div>
+						}
+					}
+				</TabPanel>
 			</Fragment>
 		)
 
-		// Seperator settings.
+		// Separator settings.
 		const seperatorSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Seperator" ) }
-					initialOpen={ false } >
+			<PanelBody
+				title={ __( "Separator" ) }
+				initialOpen={ false } >
 
-					<SelectControl
-						label={ __( "Style" ) }
-						value={ seperatorStyle }
-						onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
+				<SelectControl
+					label={ __( "Style" ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+					] }
+				/>
+				{ "none" !== seperatorStyle &&
+				( <Fragment>
+					<RangeControl
+						label={ __( "Thickness" ) }
+						value={ seperatorThickness }
+						onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+						min={ 0 }
+						max={ 10 }
+						beforeIcon=""
+						allowReset
 					/>
-					{ "none" !== seperatorStyle &&
-					( <Fragment>
-						<Fragment>
-						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ seperatorColor }
-						        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-						        allowReset
-						    />
-						</Fragment>
+					<RangeControl
+						label={ __( "Width (%)" ) }
+						value={ seperatorWidth }
+						onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+						min={ 0 }
+						max={ 100 }
+						beforeIcon=""
+						allowReset
+					/>
+				    <p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ seperatorColor }
+				        onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+				        allowReset
+				    />
+				</Fragment>
+				)
+				}
 
-						<RangeControl
-							label={ __( "Thickness" ) }
-							value={ seperatorThickness }
-							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-							min={ 0 }
-							max={ 10 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ seperatorWidth }
-							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-							min={ 0 }
-							max={ 100 }
-							beforeIcon=""
-							allowReset
-						/>
-					</Fragment>
-					)
-					}
-
-				</PanelBody>
-			</Fragment>
+			</PanelBody>
 		)
 
 		// CTA settings.
 		const ctaSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Call To Action" ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={ __( "Type" ) }
-						value={ ctaType }
-						onChange={ ( value ) => setAttributes( { ctaType: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "text", label: __( "Text" ) },
-							{ value: "button", label: __( "Button" ) },
-							{ value: "all", label: __( "Complete Box" ) },
-						] }
-					/>
-					{ ( ctaType === "text" || ctaType === "button" ) &&
+			<PanelBody	title={ __( "Call To Action" ) } initialOpen={ false }	>
+				<SelectControl
+					label={ __( "Type" ) }
+					value={ ctaType }
+					onChange={ ( value ) => setAttributes( { ctaType: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "text", label: __( "Text" ) },
+						{ value: "button", label: __( "Button" ) },
+						{ value: "all", label: __( "Complete Box" ) },
+					] }
+				/>
+				{ ( ctaType === "text" || ctaType === "button" ) && <Fragment>
 					<TextControl
 						label= { __( "Text" ) }
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					}
-					{ ( ctaType !== "none" ) &&
-						<Fragment>
-							<TextControl
-								label= { __( "Link" ) }
-								value= { ctaLink }
-								onChange={ value => setAttributes( { ctaLink: value } ) }
-							/>
-							<ToggleControl
-								label={ __( "Open in new Window" ) }
-								checked={ ctaTarget }
-								onChange={ this.toggleTarget }
-							/>
-						</Fragment>
-					}
+					<RangeControl
+						label={ __( "Text Font Size" ) }
+						value={ ctaFontSize }
+						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+						min={ 0 }
+						max={ 50 }
+						initialPosition={16}
+						beforeIcon="editor-textcolor"
+						allowReset
+					/>
+				</Fragment>
+				}
+				{ ( ctaType !== "none" ) &&
+					<Fragment>
+						<TextControl
+							label= { __( "Link" ) }
+							value= { ctaLink }
+							onChange={ value => setAttributes( { ctaLink: value } ) }
+						/>
+						<ToggleControl
+							label={ __( "Open in new Window" ) }
+							checked={ ctaTarget }
+							onChange={ this.toggleTarget }
+						/>
+						<hr className="uagb-editor__separator" />
+					</Fragment>
+				}
 
-					{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
-						<Fragment>
-							<FontIconPicker {...cta_icon_props} />
+				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
+					<Fragment>
+						<h2>{ __( "Button Icon" ) }</h2>
+						<FontIconPicker {...cta_icon_props} />
+						{ ctaIcon != "" && <Fragment>
 							<SelectControl
 								label={ __( "Icon Position" ) }
 								value={ ctaIconPosition }
@@ -372,135 +427,210 @@ class UAGBinfoBox extends Component {
 								allowReset
 							/>
 						</Fragment>
-					}
+						}
+						<hr className="uagb-editor__separator" />
+					</Fragment>
+				}
 
-					{ ( ctaType == "button" ) && (
-						<Fragment>
+				{ ( ctaType == "button" ) && (
+					<Fragment>
+						<h2>{ __( "Button Padding" ) }</h2>
+						<RangeControl
+							label={ __( "Vertical" ) }
+							value={ ctaBtnVertPadding }
+							onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Horizontal" ) }
+							value={ ctaBtnHrPadding }
+							onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							beforeIcon=""
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Button Border" ) }</h2>
+						<SelectControl
+							label={ __( "Style" ) }
+							value={ ctaBorderStyle }
+							onChange={ ( value ) => setAttributes( { ctaBorderStyle: value } ) }
+							options={ [
+								{ value: "none", label: __( "None" ) },
+								{ value: "solid", label: __( "Solid" ) },
+								{ value: "double", label: __( "Double" ) },
+								{ value: "dashed", label: __( "Dashed" ) },
+								{ value: "dotted", label: __( "Dotted" ) },
+							] }
+						/>
 
-							<RangeControl
-								label={ __( "Vertical Padding" ) }
-								value={ ctaBtnVertPadding }
-								onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "HorizontalPadding" ) }
-								value={ ctaBtnHrPadding }
-								onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
-								min={ 0 }
-								max={ 50 }
-								beforeIcon=""
-								allowReset
-							/>
-							<SelectControl
-								label={ __( "Border Style" ) }
-								value={ ctaBorderStyle }
-								onChange={ ( value ) => setAttributes( { ctaBorderStyle: value } ) }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "solid", label: __( "Solid" ) },
-									{ value: "double", label: __( "Double" ) },
-									{ value: "dashed", label: __( "Dashed" ) },
-									{ value: "dotted", label: __( "Dotted" ) },
-								] }
-							/>
+						{ ( ctaBorderStyle !== "none" ) && (
+							<Fragment>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ ctaBorderWidth }
+									onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
+									min={ 0 }
+									max={ 10 }
+									beforeIcon=""
+									allowReset
+								/>
+							</Fragment>
+						)
+						}
+						<RangeControl
+							label={ __( "Rounded Corner" ) }
+							value={ ctaBorderRadius }
+							onChange={ ( value ) => setAttributes( { ctaBorderRadius: value } ) }
+							min={ 0 }
+							max={ 100 }
+							beforeIcon=""
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+					</Fragment>
+				)
+				}
 
-							{ ( ctaBorderStyle !== "none" ) && (
-								<Fragment>
-									<RangeControl
-										label={ __( "Border Width" ) }
-										value={ ctaBorderWidth }
-										onChange={ ( value ) => setAttributes( { ctaBorderWidth: value } ) }
-										min={ 0 }
-										max={ 10 }
-										beforeIcon=""
-										allowReset
-									/>
-									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
-								        allowReset
-								    />
-								    <p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
-								    <ColorPalette
-								        value={ ctaBorderhoverColor }
-								        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
-								        allowReset
-								    />
-								</Fragment>
-							)
+				{ ( ctaType === "text") &&
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
+							{
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
+							},
+							{
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-focus-tab",
+							},
+						] }>
+						{
+							( tabName ) => {
+								let tabout_1
+								if( "normal" === tabName.name ) {
+									tabout_1 = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
+										<ColorPalette
+											value={ ctaLinkColor }
+											onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
+											allowReset
+										/>
+									</Fragment>
+								}else {
+									tabout_1 = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+										<ColorPalette
+											value={ ctaLinkHoverColor }
+											onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+								return <div>{ tabout_1 }</div>
 							}
-							<RangeControl
-								label={ __( "Rounded Corner" ) }
-								value={ ctaBorderRadius }
-								onChange={ ( value ) => setAttributes( { ctaBorderRadius: value } ) }
-								min={ 0 }
-								max={ 100 }
-								beforeIcon=""
-								allowReset
-							/>
-						</Fragment>
-					)
-					}
-				</PanelBody>
-			</Fragment>
+						}
+					</TabPanel>
+				}
+
+				{ ( ctaType === "button") &&
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+							activeClass="active-tab"
+							tabs={ [
+								{
+									name: "normal",
+									title: __( "Normal" ),
+									className: "uagb-normal-tab",
+								},
+								{
+									name: "hover",
+									title: __( "Hover" ),
+									className: "uagb-focus-tab",
+								},
+							] }>
+							{
+								( tabName ) => {
+									let tabout
+									if( "normal" === tabName.name ) {
+										tabout = ctaNormalSettings
+									}else {
+										tabout = ctaHoverSettings
+									}
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+				}
+			</PanelBody>
 		)
 
 		const ctaNormalSettings = (
 			<Fragment>
-				<PanelColorSettings
-					title={ __( "CTA Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: ctaBtnLinkColor,
-							onChange: ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ),
-							label: __( "Color" ),
-						},
-						{
-							value: ctaBgColor,
-							onChange: ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ),
-							label: __( "Background Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
+				<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBtnLinkColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBtnLinkColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBtnLinkColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgColor: colorValue } ) }
+					allowReset
+				/>
+				{ ( ctaBorderStyle !== "none" ) && <Fragment>
+					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderColor: colorValue } ) }
+				        allowReset
+				    />
+				    </Fragment>
+				}
 			</Fragment>
 		)
 
 		const ctaHoverSettings = (
 			<Fragment>
-				<PanelColorSettings
-					title={ __( "CTA Hover Color Settings" ) }
-					initialOpen={ true }
-					colorSettings={ [
-						{
-							value: ctaLinkHoverColor,
-							onChange: ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ),
-							label: __( "Hover Color" ),
-						},
-						{
-							value: ctaBgHoverColor,
-							onChange: ( colorValue ) => setAttributes( { ctaBgHoverColor: colorValue } ),
-							label: __( "Background Hover Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
+				<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaLinkHoverColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBgHoverColor }} ></span></span></p>
+				<ColorPalette
+					value={ ctaBgHoverColor }
+					onChange={ ( colorValue ) => setAttributes( { ctaBgHoverColor: colorValue } ) }
+					allowReset
+				/>
+				{ ( ctaBorderStyle !== "none" ) && <Fragment>
+					<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaBorderhoverColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ ctaBorderhoverColor }
+				        onChange={ ( colorValue ) => setAttributes( { ctaBorderhoverColor: colorValue } ) }
+				        allowReset
+				    />
+				    </Fragment>
+				}
 			</Fragment>
 		)
 
 		// Typography settings.
 		const TypographySettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Typography" ) }
-					initialOpen={ false }
-				>
+			<PanelBody	title={ __( "Content" ) } initialOpen={ false }	>
+				<ToggleControl
+					label={ __( "Enable Prefix" ) }
+					checked={ showPrefix }
+					onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
+				/>
+				{ showPrefix && <Fragment>
 					<RangeControl
 						label={ __( "Prefix Font Size" ) }
 						value={ prefixFontSize }
@@ -511,7 +641,22 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
+					<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+					    <ColorPalette
+					        value={ prefixColor }
+					        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
+					        allowReset
+					    />
+					  	<hr className="uagb-editor__separator" />
+				</Fragment>
+				}
 
+				<ToggleControl
+					label={ __( "Enable Title" ) }
+					checked={ showTitle }
+					onChange={ ( value ) => setAttributes( { showTitle: ! showTitle } ) }
+				/>
+				{ showTitle && <Fragment>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ headingTag }
@@ -526,7 +671,7 @@ class UAGBinfoBox extends Component {
 						] }
 					/>
 					<RangeControl
-						label={ __( "Heading Font Size" ) }
+						label={ __( "Title Font Size" ) }
 						value={ headFontSize }
 						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 						min={ 10 }
@@ -535,7 +680,21 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-
+				    <p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+				    <ColorPalette
+				        value={ headingColor }
+				        onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+				        allowReset
+				    />
+				    <hr class="uagb-editor__separator" />
+				</Fragment>
+				}
+				<ToggleControl
+					label={ __( "Enable Description" ) }
+					checked={ showDesc }
+					onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
+				/>
+				{ showDesc && <Fragment>
 					<RangeControl
 						label={ __( "Description Font Size" ) }
 						value={ subHeadFontSize }
@@ -546,103 +705,21 @@ class UAGBinfoBox extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 					/>
-
-					{ ( ctaType === "text" || ctaType === "button" ) &&	(
-
-						<RangeControl
-							label={ __( "CTA Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
-					)
-					}
-
-				</PanelBody>
-
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: prefixColor,
-							onChange: ( colorValue ) => setAttributes( { prefixColor: colorValue } ),
-							label: __( "Prefix Title Color" ),
-						},
-						{
-							value: headingColor,
-							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-							label: __( "Title Color" ),
-						},
-						{
-							value: subHeadingColor,
-							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-							label: __( "Description Color" ),
-						},
-
-					] }
-				>
-					{ ( ctaType === "text") &&
-							<Fragment>
-							    <p className="uagb-setting-label">{ __( "CTA Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkColor }} ></span></span></p>
-							    <ColorPalette
-							        value={ ctaLinkColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkColor: colorValue } ) }
-							        allowReset
-							    />
-							    <p className="uagb-setting-label">{ __( "CTA Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
-							    <ColorPalette
-							        value={ ctaLinkHoverColor }
-							        onChange={ ( colorValue ) => setAttributes( { ctaLinkHoverColor: colorValue } ) }
-							        allowReset
-							    />
-							</Fragment>
-					}
-					{ ( ctaType === "button") &&
-							<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-								activeClass="active-tab"
-								tabs={ [
-									{
-										name: "normal",
-										title: __( "Normal" ),
-										className: "uagb-normal-tab",
-									},
-									{
-										name: "hover",
-										title: __( "Hover" ),
-										className: "uagb-focus-tab",
-									},
-								] }>
-								{
-									( tabName ) => {
-										let tabout
-										if( "normal" === tabName.name ) {
-											tabout = ctaNormalSettings
-										}else {
-											tabout = ctaHoverSettings
-										}
-										return <div>{ tabout }</div>
-									}
-								}
-							</TabPanel>
-					}
-				</PanelColorSettings>
-
-
-			</Fragment>
+					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+					    <ColorPalette
+					        value={ subHeadingColor }
+					        onChange={ ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ) }
+					        allowReset
+					    />
+				</Fragment>
+				}
+			</PanelBody>
 		)
 
 		// Margin Settings.
 		const marginSettings = (
-			<Fragment>
-				<PanelBody
-					title={ __( "Spacing" ) }
-					initialOpen={ false }
-				>
+			<PanelBody	title={ __( "Spacing" ) } initialOpen={ false }	>
+				{ showPrefix &&
 					<RangeControl
 						label={ __( "Prefix Bottom Margin" ) }
 						value={ prefixSpace }
@@ -652,6 +729,8 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
+				}
+				{ showTitle &&
 					<RangeControl
 						label={ __( "Title Bottom Margin" ) }
 						value={ headSpace }
@@ -661,15 +740,17 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Seperator Bottom Margin" ) }
-						value={ seperatorSpace }
-						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
+				}
+				<RangeControl
+					label={ __( "Separator Bottom Margin" ) }
+					value={ seperatorSpace }
+					onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
+					min={ 0 }
+					max={ 50 }
+					beforeIcon=""
+					allowReset
+				/>
+				{ showDesc &&
 					<RangeControl
 						label={ __( "Description Bottom Margin" ) }
 						value={ subHeadSpace }
@@ -679,74 +760,61 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
-					<PanelBody
-						title={ __( "Image/Icon Margins" ) }
-						initialOpen={ true }
-					>
-						<RangeControl
-							label={ __( "Left Margin" ) }
-							value={ iconLeftMargin }
-							onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Right Margin" ) }
-							value={ iconRightMargin }
-							onChange={ ( value ) => setAttributes( { iconRightMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Top Margin" ) }
-							value={ iconTopMargin }
-							onChange={ ( value ) => setAttributes( { iconTopMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Bottom Margin" ) }
-							value={ iconBottomMargin }
-							onChange={ ( value ) => setAttributes( { iconBottomMargin: value } ) }
-							min={ 0 }
-							max={ 50 }
-							beforeIcon=""
-							allowReset
-						/>
-					</PanelBody>
-				</PanelBody>
-			</Fragment>
+				}
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Image/Icon Margin (px)" ) }</h2>
+				<RangeControl
+					label={ UAGB_Block_Icons.left_margin }
+					className={ "uagb-margin-control" }
+					value={ iconLeftMargin }
+					onChange={ ( value ) => setAttributes( { iconLeftMargin: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ UAGB_Block_Icons.right_margin }
+					className={ "uagb-margin-control" }
+					value={ iconRightMargin }
+					onChange={ ( value ) => setAttributes( { iconRightMargin: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ UAGB_Block_Icons.top_margin }
+					className={ "uagb-margin-control" }
+					value={ iconTopMargin }
+					onChange={ ( value ) => setAttributes( { iconTopMargin: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ UAGB_Block_Icons.bottom_margin }
+					className={ "uagb-margin-control" }
+					value={ iconBottomMargin }
+					onChange={ ( value ) => setAttributes( { iconBottomMargin: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+			</PanelBody>
 		)
 
-		// Image sizes.
-		const imageSizeOptions = [
-			{ value: "thumbnail", label: __( "Thumbnail" ) },
-			{ value: "medium", label: __( "Medium" ) },
-			{ value: "full", label: __( "Large" ) }
-		]
-
-		let image_name = "Select Image"
+		let image_name = __( "Select Image" )
 		if(iconImage){
 			if(iconImage.url == null || iconImage.url == "" ){
-				image_name = "Select Image"
+				image_name = __( "Select Image" )
 			}else{
-				image_name = "Replace Image"
+				image_name = __( "Replace Image" )
 			}
 		}
 
 		// Image controls.
 		const imageControls = (
 			<Fragment>
-				<BaseControl
-					className="editor-bg-image-control"
-					label={ __( "Image" ) }
-				>
+				<BaseControl className="editor-bg-image-control" label={ __( "Image" ) } >
 					<MediaUpload
 						title={ __( "Select Image" ) }
 						onSelect={ this.onSelectImage }
@@ -797,83 +865,74 @@ class UAGBinfoBox extends Component {
 
 		// Global Controls.
 		const inspect_control = (
-			<Fragment>
-				 <InspectorControls>
+			<InspectorControls>
+				<PanelBody	title={ __( "Image/Icon" ) } >
+					<SelectControl
+						label={ __( "Select Position" ) }
+						value={ iconimgPosition }
+						onChange={ ( value ) => setAttributes( { iconimgPosition: value } ) }
+						options={ [
+							{ value: "above-title", label: __( "Above Title" ) },
+							{ value: "below-title", label: __( "Below Title" ) },
+							{ value: "left-title", label: __( "Left of Title" ) },
+							{ value: "right-title", label: __( "Right of Title" ) },
+							{ value: "left", label: __( "Left of Text and Title" ) },
+							{ value: "right", label: __( "Right of Text and Title" ) },
 
-					<PanelBody
-						title={ __( "Image/Icon" ) }
-					>
+						] }
+					/>
+					{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
 						<SelectControl
-							label={ __( "Select Position" ) }
-							value={ iconimgPosition }
-							onChange={ ( value ) => setAttributes( { iconimgPosition: value } ) }
+							label={ __( "Stack on" ) }
+							value={ stack }
 							options={ [
-								{ value: "above-title", label: __( "Above Heading" ) },
-								{ value: "below-title", label: __( "Below Heading" ) },
-								{ value: "left-title", label: __( "Left of Heading" ) },
-								{ value: "right-title", label: __( "Right of Heading" ) },
-								{ value: "left", label: __( "Left of Text and Heading" ) },
-								{ value: "right", label: __( "Right of Text and Heading" ) },
-
+								{ value: "none", label: __( "None" ) },
+								{ value: "tablet", label: __( "Tablet" ) },
+								{ value: "mobile", label: __( "Mobile" ) },
 							] }
+							help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
+							onChange={ ( value ) => setAttributes( { stack: value } ) }
 						/>
-						{ ( iconimgPosition == "left" || iconimgPosition == "right" ) &&
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								help={ __( "Note: Choose on what breakpoint the Info Box will stack." ) }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						}
-						<SelectControl
-							label={ __( "Select Source" ) }
-							value={ source_type }
-							onChange={ ( value ) => setAttributes( { source_type: value } ) }
-							options={ [
-								{ value: "icon", label: __( "Icon" ) },
-								{ value: "image", label: __( "Image" ) },
-							] }
-						/>
+					}
+					<hr className="uagb-editor__separator" />
+					<SelectControl
+						label={ __( "Select Source" ) }
+						value={ source_type }
+						onChange={ ( value ) => setAttributes( { source_type: value } ) }
+						options={ [
+							{ value: "icon", label: __( "Icon" ) },
+							{ value: "image", label: __( "Image" ) },
+						] }
+					/>
 
-						{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
-							label={ __( "Vertical ALignment" ) }
-							value={ sourceAlign }
-							onChange={ ( value ) => setAttributes( { sourceAlign: value } ) }
-							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "middle", label: __( "Middle" ) },
-							] }
-						/>
-						}
+					{ ( iconimgPosition && (iconimgPosition !== "above-title" && iconimgPosition !== "below-title" )  ) && <SelectControl
+						label={ __( "Vertical ALignment" ) }
+						value={ sourceAlign }
+						onChange={ ( value ) => setAttributes( { sourceAlign: value } ) }
+						options={ [
+							{ value: "top", label: __( "Top" ) },
+							{ value: "middle", label: __( "Middle" ) },
+						] }
+					/>
+					}
 
-						{ ( source_type && source_type == "icon" ) && iconControls }
+					{ ( source_type && source_type == "icon" ) && iconControls }
 
-						{ ( source_type && source_type == "image" ) && imageControls }
+					{ ( source_type && source_type == "image" ) && imageControls }
 
-					</PanelBody>
-
-					{ seperatorSettings }
-
-					{ ctaSettings }
-
-					{ TypographySettings }
-
-					{ marginSettings }
-
-				</InspectorControls>
-			</Fragment>
+				</PanelBody>
+				{ TypographySettings }
+				{ seperatorSettings }
+				{ ctaSettings }
+				{ marginSettings }
+			</InspectorControls>
 		)
 
 		// Get icon/Image components.
 		let is_image = ""
 
 		if( source_type === "icon" && icon !== "" ) {
-			is_image =  <InfoBoxIcon attributes={attributes}/>
+			is_image =  <Icon attributes={attributes}/>
 		}else{
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
@@ -881,10 +940,10 @@ class UAGBinfoBox extends Component {
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeperator attributes={attributes} /> }
+				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
-					<InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
-					<InfoBoxCta attributes={attributes} /> 
+					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
+					<CallToAction attributes={attributes} />
 				</div>
 			</Fragment>
 		)
@@ -893,69 +952,60 @@ class UAGBinfoBox extends Component {
 		const title_text = (
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
-					<Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> 
-					<Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } />
+					{ showPrefix && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
 		)
 
-
 		const output = (
-			<Fragment>
-				<div className = { classnames(
-					"uagb-infobox__content-wrap",
-					...InfoBoxPositionClasses( attributes ),
-				) }>
-					<div className = "uagb-ifb-left-right-wrap">
+			<div className = { classnames( "uagb-infobox__content-wrap", ...InfoBoxPositionClasses( attributes ) ) }>
+				<div className = "uagb-ifb-left-right-wrap">
+					{ ( iconimgPosition == "left") &&
+							is_image
+					}
+					<div className = "uagb-ifb-content">
 
-						{ ( iconimgPosition == "left") &&
-								is_image
-						}
-						<div className = "uagb-ifb-content">
+						{  iconimgPosition == "above-title" && is_image }
 
-							{  iconimgPosition == "above-title" && is_image }
+						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+						{ iconimgPosition == "below-title"  && is_image }
 
-							{ iconimgPosition == "below-title"  && is_image }
+						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
-
-							{ ( iconimgPosition === "left-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-left-title-image">
-											{ is_image }
-											{ title_text }
-										</div>
-										{ desc }
-									</Fragment>
-							}
-
-							{ ( iconimgPosition === "right-title") &&
-									<Fragment>
-										<div className = "uagb-ifb-right-title-image">
-											{ title_text }
-											{ is_image }
-										</div>
-										{ desc }
-									</Fragment>
-							}
-
-							{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
-									<Fragment>
+						{ ( iconimgPosition === "left-title") &&
+								<Fragment>
+									<div className = "uagb-ifb-left-title-image">
+										{ is_image }
 										{ title_text }
-										{ desc }
-									</Fragment>
-							}
-
-						</div>
-
-						{ ( iconimgPosition == "right") &&
-								is_image
+									</div>
+									{ desc }
+								</Fragment>
 						}
+
+						{ ( iconimgPosition === "right-title") &&
+								<Fragment>
+									<div className = "uagb-ifb-right-title-image">
+										{ title_text }
+										{ is_image }
+									</div>
+									{ desc }
+								</Fragment>
+						}
+
+						{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+								<Fragment>
+									{ title_text }
+									{ desc }
+								</Fragment>
+						}
+
 					</div>
+
+					{ ( iconimgPosition == "right") && is_image	}
 				</div>
-			</Fragment>
+			</div>
 		)
 
 		return (
@@ -976,9 +1026,7 @@ class UAGBinfoBox extends Component {
 				id = { my_block_id }
 				>
 					{ ( ctaType == "all") &&
-						<Fragment>
-							<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
-						</Fragment>
+						<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
 					}
 					{ ( ctaType !== "all") && output }
 				</div>

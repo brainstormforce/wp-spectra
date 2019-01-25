@@ -6,7 +6,7 @@
  */
 
 ?>
-<div class="uagb-menu-page-wrapper">
+<div class="uagb-menu-page-wrapper wrap uagb-clear general">
 	<div id="uagb-menu-page">
 		<div class="uagb-menu-page-header <?php echo esc_attr( implode( ' ', $uagb_header_wrapper_class ) ); ?>">
 			<div class="uagb-container uagb-flex">
@@ -18,11 +18,12 @@
 					} else {
 						echo '<h4>' . UAGB_PLUGIN_NAME . '</h4>'; }
 					?>
+						<span class="uagb-plugin-version"><?php echo UAGB_VER; ?></span>
 					</a>
 				</div>
 				<div class="uagb-top-links">
 					<?php esc_attr_e( 'Take Gutenberg to The Next Level! - ', 'ultimate-addons-for-gutenberg' ); ?>
-					<a href="https://www.ultimategutenberg.com/" target="_blank" rel=""><?php _e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
+					<a href="<?php echo esc_url( $uagb_visit_site_url ); ?>" target="_blank" rel=""><?php _e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
 				</div>
 			</div>
 		</div>

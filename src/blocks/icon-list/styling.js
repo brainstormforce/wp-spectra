@@ -28,8 +28,16 @@ function styling( props ) {
 			"color" : icon.icon_color
 		}
 
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon svg"] = {
+			"fill" : icon.icon_color
+		}
+
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon"] = {
 			"color" : icon.icon_hover_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon svg"] = {
+			"fill" : icon.icon_hover_color
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
@@ -104,6 +112,11 @@ function styling( props ) {
 		"width": size + "px",
 		"height": size + "px",
 		"font-size": size + "px"
+	}
+
+	selectors[" .uagb-icon-list__source-icon svg"] = {
+		"width": size + "px",
+		"height": size + "px",
 	}
 
 	selectors[" .uagb-icon-list__source-icon:before"] = {

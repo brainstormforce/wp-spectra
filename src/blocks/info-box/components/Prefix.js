@@ -23,11 +23,15 @@ class Prefix extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName="span"
+	                tagName="div"
 	                value={ attributes.prefixTitle }
 	                placeholder={ __( "Write a Prefix" ) }
 	                className='uagb-ifb-title-prefix'
-	                onChange={ ( value ) => setAttributes( { prefixTitle: value } ) }
+	                multiline={ false }
+	                onChange={ ( value ) => {	 
+	                		setAttributes( { prefixTitle: value } ) 
+	                	}	
+	                }            	
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {
 						props.insertBlocksAfter ?

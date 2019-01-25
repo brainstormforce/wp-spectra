@@ -25,22 +25,19 @@ class AuthorName extends React.Component {
 			author_name = test_arr["name"]			
 		}
 
+		var data_copy = [...attributes.test_block]
+
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName="span"
+	                tagName="div"
 	                value={ author_name }
+	                placeholder={ __( "Author Name" ) }
 	                className='uagb-tm__author-name'
 	                onChange={ ( value ) => { 
-	                	const newItems = attributes.test_block.map( ( item, thisIndex ) => {
-							if ( thisIndex === index_value ) {
-								item["name"] = value				
-							}
-							return item			
-						} )
-	                	setAttributes( {
-							test_block: newItems,
-						} )	
+	                	var new_content = { "description" : data_copy[index_value]["description"], "name":value, "company" : data_copy[index_value]["company"], "image" : data_copy[index_value]["image"]  }
+						data_copy[index_value] = new_content
+						setAttributes( { "test_block": data_copy } )	                	
 	                } }     
 	                onMerge = { props.mergeBlocks }
 	                unstableOnSplit = {

@@ -5,6 +5,7 @@ import Title from ".././components/Title"
 import Meta from ".././components/Meta"
 import Excerpt from ".././components/Excerpt"
 import Button from ".././components/Button"
+import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
 class Blog extends React.Component {
 
@@ -42,14 +43,18 @@ class Blog extends React.Component {
 		function NextArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-right" style={{ "fontSize" : props.arrowSize, "width" : props.arrowSize, "height" : props.arrowSize, "color" : arrowColor }}></span></button>
+				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
+					{ UAGB_Block_Icons.carousel_right }
+				</button>
 			)
 		}
 
 		function PrevArrow( props ) {
 
 			return (
-				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}><span className="fas fa-angle-left" style={{ "fontSize" : props.arrowSize, "width" : props.arrowSize, "height" : props.arrowSize, "color" : arrowColor }}></span></button>
+				<button type="button" data-role="none" className="slick-prev slick-arrow" aria-label="Previous" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
+					{ UAGB_Block_Icons.carousel_left }
+				</button>
 			)
 		}
 
@@ -128,6 +133,10 @@ class Blog extends React.Component {
 			)
 		} else {
 
+			let style_str = ""
+
+			if ( "dots" == arrowDots ) { style_str = {padding:0} }
+
 			return (
 
 				<div
@@ -140,6 +149,7 @@ class Blog extends React.Component {
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
+					style={ ( "dots" == arrowDots ) ? { padding: 0 } : {} }
 				>
 					<Slider
 						className={ classnames(
