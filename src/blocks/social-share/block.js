@@ -79,7 +79,7 @@ registerBlockType( "uagb/social-share", {
 							let url = ""
 
 							if( null != current_url ) {
-								url = links[social.type] + encodeURI( current_url )
+								url = links[social.type] 
 							}
 
 							let image_icon_html = ""
@@ -102,7 +102,7 @@ registerBlockType( "uagb/social-share", {
 									) }
 									key={ index }
 								>
-									<a className="uagb-ss__link" href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
+									<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 								</div>
 							)
 						})

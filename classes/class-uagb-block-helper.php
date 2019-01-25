@@ -16,6 +16,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2337,6 +2339,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			<?php
 			// @codingStandardsIgnoreEnd.
+		}
+
+		/**
+		 * Get Social Share JS
+		 *
+		 * @since 1.6.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_social_share_js( $attr, $id ) {
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			global $wp;  
+			$url = home_url(add_query_arg(array(),$wp->request));
+
+			$selector =	'#uagb-social-share-'. $id;
+
+			?>
+				jQuery( "<?php echo $selector ?>" ).find( ".uagb-ss__link" ).click(function(){
+				  var social_url = jQuery(this).data("href");
+				  var request_url = social_url+ "<?php echo $url ?>" ;
+				  window.open( request_url );
+				});
+			<?php 
 		}
 	}
 }
