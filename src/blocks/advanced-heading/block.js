@@ -7,6 +7,9 @@ import classnames from "classnames"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+// Import all of our Text Options requirements.
+import TypographyOptions, { TypographyOptionsAttributes } from '../../components/typography';
+
 //  Import CSS.
 import "./style.scss"
 
@@ -111,7 +114,8 @@ export default class UAGBAdvancedHeading extends Component {
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
-				separatorSpace
+				separatorSpace,
+				...TypographyOptionsAttributes,
 			},
 		} = this.props
 
@@ -132,6 +136,8 @@ export default class UAGBAdvancedHeading extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Advanced Heading" ) }>
+						<TypographyOptions 
+						/>
 						<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
