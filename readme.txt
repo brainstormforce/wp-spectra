@@ -95,7 +95,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.8.0.1 =
+= 1.8.1 =
 * Fix: Advanced Columns - Editor end, width issue.
 * Fix: Advanced Columns - Editor end, move pointer overflow issue.
 * Fix: Info Box - Separator width issue.
