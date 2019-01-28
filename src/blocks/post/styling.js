@@ -40,7 +40,9 @@ function styling( props, id ) {
 		borderRadius,
 		btnVPadding,
 		btnHPadding,
-		linkBox
+		linkBox,
+		arrowColor,
+		arrowSize
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -122,6 +124,12 @@ function styling( props, id ) {
 	if ( linkBox ) {
 		selectors[" .uagb-post__inner-wrap"]["cursor"] = "pointer"
 	}
+
+	selectors[" .slick-arrow svg"] = {
+		"fill" : arrowColor,
+		"height":arrowSize + "px",              
+		"width":arrowSize + "px",              
+	} 	
 
 	mobile_selectors = {
 		" .uagb-post__text": {

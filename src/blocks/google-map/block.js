@@ -68,7 +68,7 @@ class UAGBGoogleMap extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } >
-						<p className="uagb-google-map-notice">{ __( "This block uses UAGB's API key to display the map. You don't need to create your own API key or worry about renewing it." ) }</p>
+						<p className="uagb-google-map-notice">{ __( "This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it." ) }</p>
 						<p className="components-base-control__label">{__( "Address" )}</p>
 						<TextControl
 							value={ address }
@@ -123,7 +123,8 @@ registerBlockType( "uagb/google-map", {
 	icon: UAGB_Block_Icons.google_map,
 	keywords: [
 		__( "google map" ),
-		__( "uagb" ),
+		__( "uag" ),
+		__( "map" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes: {

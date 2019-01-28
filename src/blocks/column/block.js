@@ -20,7 +20,7 @@ const {
 	ColorPalette,
 	InspectorControls,
 	MediaUpload,
-	PanelColorSettings
+	PanelColorSettings,
 } = wp.editor
 
 const {
@@ -114,6 +114,11 @@ export default class UAGBColumnEdit extends Component {
 				gradientAngle,
 				backgroundOpacity,
 				backgroundImageColor,
+				borderStyle,
+				borderWidth,
+				borderRadius,
+				borderColor,
+				align
 			},
 			setAttributes,
 			className,
@@ -125,6 +130,57 @@ export default class UAGBColumnEdit extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const border_setting = (
+			<Fragment>
+				<PanelBody title={ __( "Border" ) } initialOpen={ false }>
+					<SelectControl
+						label={ __( "Border Style" ) }
+						value={ borderStyle }
+						onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "groove", label: __( "Groove" ) },
+							{ value: "inset", label: __( "Inset" ) },
+							{ value: "outset", label: __( "Outset" ) },
+							{ value: "ridge", label: __( "Ridge" ) },
+						] }
+					/>
+					{ "none" != borderStyle && (
+						<RangeControl
+							label={ __( "Border Width" ) }
+							value={ borderWidth }
+							onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+					) }
+					<RangeControl
+						label={ __( "Border Radius" ) }
+						value={ borderRadius }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					{ "none" != borderStyle && (
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+							<ColorPalette
+								value={ borderColor }
+								onChange={ ( colorValue ) => setAttributes( { borderColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+					) }
+				</PanelBody>
+			</Fragment>
+		)
 
 		const inspector_controls = (
 			<Fragment>
@@ -140,10 +196,22 @@ export default class UAGBColumnEdit extends Component {
 						min={ 0 }
 						max={ 100 }
 					/>
+					<SelectControl
+						label={ __( "Content Alignment" ) }
+						value={ align }
+						onChange={ ( value ) => setAttributes( { align: value } ) }
+						options={ [
+							{ value: "left", label: __( "Left" ) },
+							{ value: "center", label: __( "Center" ) },
+							{ value: "right", label: __( "Right" ) },
+						] }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
+					<h2>{ __( "Padding (px)" ) }</h2>
 					<RangeControl
-						label={ __( "Top Padding" ) }
+						label={ UAGB_Block_Icons.top_margin }
+						className={ "uagb-margin-control" }
 						value={ topPadding }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -154,18 +222,8 @@ export default class UAGBColumnEdit extends Component {
 						max={ 500 }
 					/>
 					<RangeControl
-						label={ __( "Right Padding" ) }
-						value={ rightPadding }
-						onChange={ ( value ) => {
-							setAttributes( {
-								rightPadding: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 500 }
-					/>
-					<RangeControl
-						label={ __( "Bottom Padding" ) }
+						label={ UAGB_Block_Icons.bottom_margin }
+						className={ "uagb-margin-control" }
 						value={ bottomPadding }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -176,7 +234,8 @@ export default class UAGBColumnEdit extends Component {
 						max={ 500 }
 					/>
 					<RangeControl
-						label={ __( "Left Padding" ) }
+						label={ UAGB_Block_Icons.left_margin }
+						className={ "uagb-margin-control" }
 						value={ leftPadding }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -187,7 +246,22 @@ export default class UAGBColumnEdit extends Component {
 						max={ 500 }
 					/>
 					<RangeControl
-						label={ __( "Top Margin" ) }
+						label={ UAGB_Block_Icons.right_margin }
+						className={ "uagb-margin-control" }
+						value={ rightPadding }
+						onChange={ ( value ) => {
+							setAttributes( {
+								rightPadding: value,
+							} )
+						} }
+						min={ 0 }
+						max={ 500 }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Margin (px)" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.top_margin }
+						className={ "uagb-margin-control" }
 						value={ topMargin }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -198,7 +272,8 @@ export default class UAGBColumnEdit extends Component {
 						max={ 200 }
 					/>
 					<RangeControl
-						label={ __( "Bottom Margin" ) }
+						label={ UAGB_Block_Icons.bottom_margin }
+						className={ "uagb-margin-control" }
 						value={ bottomMargin }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -209,7 +284,8 @@ export default class UAGBColumnEdit extends Component {
 						max={ 200 }
 					/>
 					<RangeControl
-						label={ __( "Left Margin" ) }
+						label={ UAGB_Block_Icons.left_margin }
+						className={ "uagb-margin-control" }
 						value={ leftMargin }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -220,7 +296,8 @@ export default class UAGBColumnEdit extends Component {
 						max={ 200 }
 					/>
 					<RangeControl
-						label={ __( "Right Margin" ) }
+						label={ UAGB_Block_Icons.right_margin }
+						className={ "uagb-margin-control" }
 						value={ rightMargin }
 						onChange={ ( value ) => {
 							setAttributes( {
@@ -341,15 +418,15 @@ export default class UAGBColumnEdit extends Component {
 									title={ __( "Color Settings" ) }
 									colorSettings={ [
 										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
+											value: gradientColor2,
+											onChange:( value ) => setAttributes( { gradientColor2: value } ),
 											label: __( "Color 1" ),
 										},
 										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
+											value: gradientColor1,
+											onChange:( value ) => setAttributes( { gradientColor1: value } ),
 											label: __( "Color 2" ),
-										}
+										},
 									] }
 								>
 								</PanelColorSettings>
@@ -400,10 +477,13 @@ export default class UAGBColumnEdit extends Component {
 							/> )
 					}
 				</PanelBody>
+				{ border_setting }
 			</Fragment>
 		)
 
 		let active = ( isSelected ) ? "active" : "not-active"
+
+		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
 
 		return (
 			<Fragment>
@@ -416,6 +496,7 @@ export default class UAGBColumnEdit extends Component {
 						"uagb-column__wrap",
 						`uagb-column__background-${backgroundType}`,
 						`uagb-column__edit-${ active }`,
+						align_class
 					) }
 					id={ `uagb-column-${this.props.clientId}` }
 				>
@@ -452,6 +533,10 @@ registerBlockType( "uagb/column", {
 	attributes: {
 		block_id: {
 			type: "string",
+		},
+		align : {
+			type: "string",
+			default: "center"
 		},
 		topPadding: {
 			type: "number",
@@ -542,18 +627,33 @@ registerBlockType( "uagb/column", {
 		backgroundImageColor: {
 			type: "string"
 		},
+		borderStyle : {
+			type: "string",
+			default: "none"
+		},
+		borderWidth : {
+			type: "number",
+			default: 1
+		},
+		borderRadius : {
+			type: "number"
+		},
+		borderColor : {
+			type: "string"
+		},
 	},
 
 	edit: UAGBColumnEdit,
-
 	save( { attributes, className } ) {
-		const { block_id, backgroundType  } = attributes
+		const { block_id, backgroundType, align  } = attributes
+		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
-					`uagb-column__background-${backgroundType}`
+					`uagb-column__background-${backgroundType}`,
+					align_class
 				) }
 				id={ `uagb-column-${block_id}` }
 			>

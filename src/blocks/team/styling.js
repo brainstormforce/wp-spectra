@@ -47,32 +47,41 @@ function styling( props ) {
 			"margin-top": prefixSpace + "px",
 		},
 		" .uagb-team__social-icon a": {
-			"color": socialColor + " !important",
-			"font-size": socialFontSize + "px !important",
-			"width": socialFontSize + "px !important",
-			"height": socialFontSize + "px !important",
+			"color": socialColor,
+			"font-size": socialFontSize + "px",
+			"width": socialFontSize + "px",
+			"height": socialFontSize + "px",
+			"line-height": socialFontSize + "px",
+		},
+		" .uagb-team__social-icon svg": {
+			"fill": socialColor,
+			"width": socialFontSize + "px",
+			"height": socialFontSize + "px",
 		},
 		" .uagb-team__social-icon:hover a": {
-			"color": socialHoverColor + " !important",
+			"color": socialHoverColor,
+		},
+		" .uagb-team__social-icon:hover svg": {
+			"fill": socialHoverColor
 		},
 		".uagb-team__image-position-left .uagb-team__social-icon" : {
-			"margin-right": socialSpace + "px !important",
+			"margin-right": socialSpace + "px",
 			"margin-left": "0",
 		},
 		".uagb-team__image-position-right .uagb-team__social-icon" : {
-			"margin-left": socialSpace + "px !important",
+			"margin-left": socialSpace + "px",
 			"margin-right": "0",
 		},
 		".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" : {
-			"margin-right": ( socialSpace / 2 ) + "px !important",
-			"margin-left": ( socialSpace / 2 ) + "px !important",
+			"margin-right": ( socialSpace / 2 ) + "px",
+			"margin-left": ( socialSpace / 2 ) + "px",
 		},
 		".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" : {
-			"margin-right": socialSpace + "px !important",
+			"margin-right": socialSpace + "px",
 			"margin-left": "0",
 		},
 		".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" : {
-			"margin-left": socialSpace + "px !important",
+			"margin-left": socialSpace + "px",
 			"margin-right": "0",
 		},
 		" .uagb-team__image-wrap" : {

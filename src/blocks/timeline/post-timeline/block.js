@@ -7,10 +7,10 @@ import ".././editor.scss"
 import edit from "./edit"
 
 // Components.
-const { __ } = wp.i18n 
+const { __ } = wp.i18n
 
 // Register block controls.
-const { 
+const {
 	registerBlockType,
 } = wp.blocks
 
@@ -25,8 +25,8 @@ registerBlockType( "uagb/post-timeline", {
 	keywords: [
 		__( "post" ),
 		__( "timeline" ),
-		__( "uagb" ),
-	],   
+		__( "uag" ),
+	],
 
 	getEditWrapperProps( attributes ) {
 		const { align } = attributes
@@ -37,7 +37,7 @@ registerBlockType( "uagb/post-timeline", {
 
 	// Render via PHP
 	save() {
-		return null 
+		return null
 	},
-    
+
 } )

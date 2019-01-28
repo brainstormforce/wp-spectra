@@ -1,11 +1,11 @@
-=== Gutenberg Blocks - Ultimate Addons for Gutenberg ===
+=== Gutenberg Blocks – Ultimate Addons for Gutenberg ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
-Requires at least: 4.6
+Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.0
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -45,7 +45,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
  	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
- 	<li><a href="https://www.ultimategutenberg.com/blocks/restaurant-menu/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Restaurant Menu </a>: The Restaurant Menu allows you can design a nice-looking, easy to manage, Food & Drinks Menu for your website.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Timeline </a>: The Post Timeline block helps you display the blog posts on your website in an ordered list according to the dates they are published on. You can customize the content seen for each blog post and manage the date, featured image etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-actions with a trendy title, description and a catchy button that boosts conversions on your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
@@ -95,8 +95,23 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.8.1 =
+* Fix: Advanced Columns - Editor end, width issue.
+* Fix: Advanced Columns - Editor end, move pointer overflow issue.
+* Fix: Info Box - Separator width issue.
+* Fix: Testimonial - Border radius independent of Border Size issue.
+* Fix: Social Share - Links not updated in reusable block issue.
+* Fix: Conflict with GeneratePress theme.
+* Improvement: Restaurant Menu is now Price List.
+* Improvement: Replaced all Font Awesome Icon with SVG.
+* Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Better UX in editor.
+* Improvement: Advanced Columns - Added border option for inner column.
+* Improvement: Advanced Columns - Added alignment option for inner column.
+* Improvement: Changed Block Category name to Ultimate Addons Block.
+
 = 1.8.0 =
-* New: Columns
+* New: Advanced Columns
 * Fix: Post Masonry - Messed view on first load issue fixed.
 * Improvement: Post - Added Action/Filter hooks.
 

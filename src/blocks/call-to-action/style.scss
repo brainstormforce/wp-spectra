@@ -13,6 +13,9 @@
 
     a.uagb-cta__block-link span {
         font-size: inherit;
+        vertical-align: middle;
+        display: inline-block;
+        float: left;
     }
     .uagb-cta__content-right .uagb-cta__link-wrapper{
         width:30%;    
@@ -91,7 +94,8 @@
         margin-right: 5px;
     }
 
-    .uagb-cta__block-link-icon {
+    .uagb-cta__block-link-icon,
+    .uagb-cta__block svg{
         -webkit-transition: all 200ms linear;
         -o-transition: all 200ms linear;
         transition: all 200ms linear;
@@ -170,7 +174,18 @@
     .uagb-cta__button-type-none .uagb-cta__content {
         width: 100%;
     }
-
+    .uagb-cta-with-svg{
+        height: 14px;
+        width: 14px;
+        line-height: 14px;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .uagb-cta__block svg{
+        display: block;
+        height: inherit;
+        width: inherit;
+    }
     .uagb-cta__align-button-after {
         margin-left: 5px;
     }

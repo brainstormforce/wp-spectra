@@ -5,10 +5,10 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
-import links from "./links"
 
 const { __ } = wp.i18n
 
@@ -32,6 +32,7 @@ const {
 	Button
 } = wp.components
 
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBSocialShare extends Component {
 
@@ -123,14 +124,15 @@ class UAGBSocialShare extends Component {
 						<Fragment>
 							<p className="components-base-control__label">{__( "Icon" )}</p>
 							<FontIconPicker
-								icons={UAGBIcon}
-								renderUsing="class"
+								icons={svg_icons}
+								renderFunc={renderSVG}
 								theme="default"
 								value={socials[ index ].icon}
 								onChange={ value => {
 									this.saveSocials( { icon: value }, index )
 								} }
 								isMulti={false}
+								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
 					}
@@ -277,21 +279,20 @@ class UAGBSocialShare extends Component {
 							onChange={ ( value ) => setAttributes( { social_layout: value } ) }
 						/>
 						{ "horizontal" == social_layout &&
-							<Fragment>
-								<SelectControl
-									label={ __( "Stack on" ) }
-									value={ stack }
-									options={ [
-										{ value: "none", label: __( "None" ) },
-										{ value: "desktop", label: __( "Desktop" ) },
-										{ value: "tablet", label: __( "Tablet" ) },
-										{ value: "mobile", label: __( "Mobile" ) },
-									] }
-									onChange={ ( value ) => setAttributes( { stack: value } ) }
-								/>
-								<p className="uagb-note">{ __( "Note: Choose on what breakpoint the Icons will stack." ) }</p>
-							</Fragment>
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "desktop", label: __( "Desktop" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+								help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
+							/>
 						}
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Size" ) }
 							value={ size }
@@ -304,18 +305,18 @@ class UAGBSocialShare extends Component {
 							label={ __( "Background Size" ) }
 							value={ bgSize }
 							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Background Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Circular Size" ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							help={ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
-						<p className="uagb-note">{ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }</p>
 						<RangeControl
 							label={ __( "Gap between Icon / Image" ) }
 							value={ gap }
@@ -338,18 +339,12 @@ class UAGBSocialShare extends Component {
 								if ( social_count <= index ) {
 									return
 								}
-
-								let url = ""
-
-								if( null != current_url ) {
-									url = links[social.type] + encodeURI( current_url )
-								}
-
+								
 								let image_icon_html = ""
 
 								if ( social.image_icon == "icon" ) {
 									if ( social.icon ) {
-										image_icon_html = <span className={ classnames( social.icon , "uagb-ss__source-icon" ) }></span>
+										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
 									}
 								} else {
 									if ( social.image ) {

@@ -6,6 +6,7 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import styling from "./styling"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 
@@ -21,13 +22,15 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	URLInput
+	URLInput,
+	ColorPalette
 } = wp.editor
 
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl
+	RangeControl,
+	TabPanel
 } = wp.components
 
 
@@ -145,8 +148,11 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 100 }
 						initialPosition={16}
 					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
-						label={ __( "Top and Bottom Padding" ) }
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
 						value={ buttons[ index ].vPadding }
 						onChange={ value => {
 							this.saveButton( { vPadding: value }, index )
@@ -155,7 +161,8 @@ class UAGBMultiButtonEdit extends Component {
 						max={ 100 }
 					/>
 					<RangeControl
-						label={ __( "Left and Right Padding" ) }
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
 						value={ buttons[ index ].hPadding }
 						onChange={ value => {
 							this.saveButton( { hPadding: value }, index )
@@ -163,19 +170,13 @@ class UAGBMultiButtonEdit extends Component {
 						min={ 0 }
 						max={ 100 }
 					/>
-					<RangeControl
-						label={ __( "Border Thickness" ) }
-						value={ buttons[ index ].borderWidth }
-						onChange={ value => {
-							this.saveButton( { borderWidth: value }, index )
-						} }
-						min={ 0 }
-						max={ 20 }
-					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Button Border" ) }</h2>
 					<SelectControl
-						label={ __( "Border Style" ) }
+						label={ __( "Style" ) }
 						value={ buttons[ index ].borderStyle }
 						options={ [
+							{ value: "none", label: __( "None" ) },
 							{ value: "solid", label: __( "Solid" ) },
 							{ value: "dotted", label: __( "Dotted" ) },
 							{ value: "dashed", label: __( "Dashed" ) },
@@ -185,8 +186,19 @@ class UAGBMultiButtonEdit extends Component {
 							this.saveButton( { borderStyle: value }, index )
 						} }
 					/>
+					{ buttons[ index ].borderStyle != "none" &&
+						<RangeControl
+							label={ __( "Thickness" ) }
+							value={ buttons[ index ].borderWidth }
+							onChange={ value => {
+								this.saveButton( { borderWidth: value }, index )
+							} }
+							min={ 0 }
+							max={ 20 }
+						/>
+					}
 					<RangeControl
-						label={ __( "Border Radius" ) }
+						label={ __( "Rounded Corners" ) }
 						value={ buttons[ index ].borderRadius }
 						onChange={ value => {
 							this.saveButton( { borderRadius: value }, index )
@@ -194,42 +206,72 @@ class UAGBMultiButtonEdit extends Component {
 						min={ 0 }
 						max={ 50 }
 					/>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						colorSettings={ [
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Button #" ) + " " + ( index + 1 ) + " " + __( " Color Settings" ) }</h2>
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
 							{
-								value: buttons[ index ].color,
-								onChange:( value ) => this.saveButton( { color: value }, index ),
-								label: __( "Color" ),
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
 							},
 							{
-								value: buttons[ index ].background,
-								onChange:( value ) => this.saveButton( { background: value }, index ),
-								label: __( "Background Color" ),
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-hover-tab",
 							},
-							{
-								value: buttons[ index ].borderColor,
-								onChange: ( value ) => this.saveButton( { borderColor: value }, index ),
-								label: __( "Border Color" ),
-							},
-							{
-								value: buttons[ index ].hColor,
-								onChange:( value ) => this.saveButton( { hColor: value }, index ),
-								label: __( "Hover Color" ),
-							},
-							{
-								value: buttons[ index ].hBackground,
-								onChange:( value ) => this.saveButton( { hBackground: value }, index ),
-								label: __( "Background Hover Color" ),
-							},
-							{
-								value: buttons[ index ].borderHColor,
-								onChange: ( value ) => this.saveButton( { borderHColor: value }, index ),
-								label: __( "Border Hover Color" ),
-							},
-						] }
-					>
-					</PanelColorSettings>
+						] }>
+						{
+							( tabName ) => {
+								let btn_color_tab
+								if( "normal" === tabName.name ) {
+									btn_color_tab = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].color }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].color }
+											onChange={ ( value ) => this.saveButton( { color: value }, index ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].background }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].background }
+											onChange={ ( value ) => this.saveButton( { background: value }, index ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].borderColor }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].borderColor }
+											onChange={ ( value ) => this.saveButton( { borderColor: value }, index ) }
+											allowReset
+										/>
+									</Fragment>
+								}else {
+									btn_color_tab = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].hColor }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].hColor }
+											onChange={ ( value ) => this.saveButton( { hColor: value }, index ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].hBackground }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].hBackground }
+											onChange={ ( value ) => this.saveButton( { hBackground: value }, index ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttons[ index ].borderHColor }} ></span></span></p>
+										<ColorPalette
+											value={ buttons[ index ].borderHColor }
+											onChange={ ( value ) => this.saveButton( { borderHColor: value }, index ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+								return <div>{ btn_color_tab }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 			)
 		}
@@ -301,7 +343,7 @@ class UAGBMultiButtonEdit extends Component {
 						initialOpen={ false }
 					>
 						<RangeControl
-							label={ __( "Gap between Buttons" ) }
+							label={ __( "Gap Between Buttons" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
 							min={ 0 }
@@ -317,8 +359,8 @@ class UAGBMultiButtonEdit extends Component {
 								{ value: "mobile", label: __( "Mobile" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
+							help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
 						/>
-						<p className="uagb-note">{ __( "Note: Choose on what breakpoint the buttons will stack." ) }</p>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(

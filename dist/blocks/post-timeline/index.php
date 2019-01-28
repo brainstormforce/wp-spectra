@@ -36,7 +36,7 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
 	<div class = "<?php echo $attributes['className']; ?> uagb-timeline__outer-wrap" id = "<?php echo $my_block_id; ?>" >
 		<div  class = "uagb-timeline__content-wrap <?php echo $post_tm_class; ?>" >
 			<div class = "uagb-timeline-wrapper">
-				<div class = "uagb-timeline__main"> 					
+				<div class = "uagb-timeline__main">
 					<?php
 					if ( empty( $recent_posts ) ) {
 						_e( 'No posts found', 'ultimate-addons-for-gutenberg' );
@@ -46,7 +46,7 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
 					?>
 					<div class = "uagb-timeline__line" >
 						<div class = "uagb-timeline__line__inner"></div>
-					</div> 
+					</div>
 				</div>
 			</div>
 		</div>
@@ -59,7 +59,6 @@ function uagb_tm_render_core_latest_posts( $attributes ) {
  * Registers the `timeline` block on server.
  */
 function uagb_blocks_register_timeline_posts() {
-
 	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -313,11 +312,13 @@ add_action( 'init', 'uagb_blocks_register_timeline_posts' );
 function uagb_tm_get_icon( $attributes ) {
 
 	$icon       = $attributes['icon'];
-	$icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon ' . $icon;
+	$htm        = UAGB_Helper::render_svg_html( $icon );
+	$icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon ';
 	$output     = '';
 	$output    .= sprintf( '<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >' );
-	$output    .= sprintf( '<i class = "%1$s" >', esc_attr( $icon_class ) );
-	$output    .= sprintf( '</i>' );
+	$output    .= sprintf( '<span class = "%1$s" >', esc_attr( $icon_class ) );
+	$output    .= $htm;
+	$output    .= sprintf( '</span>' );
 	$output    .= sprintf( '</div>' ); // End of icon div.
 
 	return $output;
@@ -399,7 +400,6 @@ function uagb_tm_get_cta( $attributes ) {
 		<a class="uagb-timeline__link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
 	</div>
 	<?php
-
 }
 
 /**
@@ -441,7 +441,6 @@ function uagb_tm_get_excerpt( $attributes ) {
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
-
 }
 
 /**
@@ -473,7 +472,6 @@ function uagb_tm_get_classes( $attributes ) {
 	$align_class .= 'uagb-timeline__responsive-' . $attributes['stack'] . ' uagb-timeline';
 
 	return $align_class;
-
 }
 
 /**
@@ -562,10 +560,10 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 			?>
 			<article class = "uagb-timeline__field uagb-timeline__field-wrap" key= "<?php echo $index; ?>">
 				<div class = "<?php echo $content_align_class; ?>">
-					<?php echo uagb_tm_get_icon( $attributes ); ?> 
+					<?php echo uagb_tm_get_icon( $attributes ); ?>
 					<div class = "<?php echo $day_align_class; ?>" >
 						<div class = "uagb-timeline__events-new">
-							<div class ="uagb-timeline__events-inner-new"> 							
+							<div class ="uagb-timeline__events-inner-new">
 								<div class = "uagb-timeline__date-hide uagb-timeline__date-inner" >
 									<?php echo uagb_tm_get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
 								</div>
