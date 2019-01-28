@@ -126,6 +126,8 @@ export default class UAGBAdvancedHeading extends Component {
 			},
 		} = this.props
 
+		console.log(this.props.attributes)
+
 		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
@@ -319,17 +321,17 @@ export default class UAGBAdvancedHeading extends Component {
 								{
 									name: 'desktop',
 									title: <Dashicon icon="desktop" />,
-									className: 'uagb-desktop-tab',
+									className: 'uagb-desktop-tab uagb-responsive-tabs',
 								},
 								{
 									name: 'tablet',
 									title: <Dashicon icon="tablet" />,
-									className: 'uagb-tablet-tab',
+									className: 'uagb-tablet-tab uagb-responsive-tabs',
 								},
 								{
 									name: 'mobile',
 									title: <Dashicon icon="smartphone" />,
-									className: 'uagb-mobile-tab',
+									className: 'uagb-mobile-tab uagb-responsive-tabs',
 								},
 							] }>
 							{
@@ -341,7 +343,7 @@ export default class UAGBAdvancedHeading extends Component {
 											<Fragment>
 												{headsizeTypesControls}
 												<RangeControl
-													label={ __( "Heading" ) }
+													label={ __( "Font Size" ) }
 													value={ headFontSizeMobile }
 													onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
 													min={ 10 }
@@ -357,7 +359,7 @@ export default class UAGBAdvancedHeading extends Component {
 											<Fragment>
 												{headsizeTypesControls}
 												<RangeControl
-													label={ __( "Heading" ) }
+													label={ __( "Font Size" ) }
 													value={ headFontSizeTablet }
 													onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
 													min={ 10 }
@@ -373,7 +375,7 @@ export default class UAGBAdvancedHeading extends Component {
 											<Fragment>
 												{headsizeTypesControls}
 												<RangeControl
-													label={ __( "Heading" ) }
+													label={ __( "Font Size" ) }
 													value={ headFontSize }
 													onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
 													min={ 10 }
@@ -390,24 +392,6 @@ export default class UAGBAdvancedHeading extends Component {
 								}
 							}
 						</TabPanel>
-						<Button
-							key={ 2 }
-							className="uagb-size-btn"
-							isSmall
-							onClick={ () => setAttributes( { headFontSizeType: key } ) }
-						>
-							<Dashicon icon="desktop" />
-						</Button>
-						<RangeControl
-							label={ __( "Heading Font Size" ) }
-							value={ headFontSize }
-							onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={30}
-						/>
 						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
 							value={ headingColor }
@@ -416,16 +400,82 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Sub-Heading" ) }</h2>
-						<RangeControl
-							label={ __( "Sub-Heading Font Size" ) }
-							value={ subHeadFontSize }
-							onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-							min={ 10 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={10}
-						/>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: 'desktop',
+									title: <Dashicon icon="desktop" />,
+									className: 'uagb-desktop-tab uagb-responsive-tabs',
+								},
+								{
+									name: 'tablet',
+									title: <Dashicon icon="tablet" />,
+									className: 'uagb-tablet-tab uagb-responsive-tabs',
+								},
+								{
+									name: 'mobile',
+									title: <Dashicon icon="smartphone" />,
+									className: 'uagb-mobile-tab uagb-responsive-tabs',
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout;
+
+									if ( 'mobile' === tab.name ) {
+										tabout = (
+											<Fragment>
+												{subheadsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ subHeadFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else if ( 'tablet' === tab.name ) {
+										tabout = (
+											<Fragment>
+												{subheadsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ subHeadFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										);
+									} else {
+										tabout = (
+											<Fragment>
+												{subheadsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ subHeadFontSize }
+													onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+													min={ 10 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>;
+								}
+							}
+						</TabPanel>
 						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 						<ColorPalette
 							value={ subHeadingColor }

@@ -127,15 +127,15 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
-    border-bottom: 0;
-    text-align: right;
-    margin-top: -20px;
-    margin-bottom: 10px;
+	border-bottom: 0;
+	text-align: right;
+	margin-right: 40px;
+	margin-bottom: -20px;
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
-    width: 15px;
-    height: 15px
+    width: 14px;
+    height: 14px
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
@@ -145,13 +145,13 @@ hr.uagb-editor__separator {
     margin-bottom: 0;
     outline: 0;
     width: auto;
-    font-size: 10px;
+    font-size: 9px;
     background: #a4afb7;
     color: #fff;
     display: inline-block;
     border-radius: 50%;
-    height: 23px;
-    width: 23px;
+    height: 21px;
+    width: 21px;
     margin-right: 3px;
 }
 
@@ -169,7 +169,7 @@ hr.uagb-editor__separator {
     text-shadow: none;
     height: 18px;
     line-height: 18px;
-    padding: 0 4px;
+    padding: 0 3px;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,

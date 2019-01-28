@@ -374,10 +374,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$m_selectors = array();
+			$t_selectors = array();
+
 			$selectors = array(
 				' .uagb-heading-text'        => array(
 					'text-align' => $attr['headingAlign'],
-					'font-size' => $attr['headFontSize'] . "px",
+					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
 					'color' => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . "px",
 				),
@@ -386,8 +389,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-desc-text' => array(
 					'text-align' => $attr['headingAlign'],
-					'font-size' => $attr['subHeadFontSize'] . "px",
+					'font-size' => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
 					'color' => $attr['subHeadingColor'],
+				)
+
+			);
+
+			$m_selectors = array(
+				' .uagb-heading-text'        => array(
+					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+				),
+				' .uagb-desc-text' => array(
+					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+				)
+
+			);
+
+			$t_selectors = array(
+				' .uagb-heading-text'        => array(
+					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+				),
+				' .uagb-desc-text' => array(
+					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
 				)
 
 			);
@@ -405,7 +428,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-adv-heading-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-adv-heading-' . $id );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
