@@ -151,6 +151,15 @@
         -moz-box-direction: reverse;
         flex-direction: column-reverse;
     }
+    .uagb-tm__image-aligned-top.uagb-tm-stacked-tablet .uagb-tm__image-content{
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        -js-display: inline-flex;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: inline-flex;
+        align-self: center;
+    }
 }
 
 @media(max-width:768px) {
@@ -180,6 +189,15 @@
         -moz-box-orient: vertical;
         -moz-box-direction: reverse;
         flex-direction: column-reverse;
+    }
+    .uagb-tm__image-aligned-top.uagb-tm-stacked-mobile .uagb-tm__image-content{
+        display: -webkit-inline-box;
+        display: -ms-inline-flexbox;
+        -js-display: inline-flex;
+        display: -webkit-inline-flex;
+        display: -moz-inline-box;
+        display: inline-flex;
+        align-self: center;
     }
 }
 
