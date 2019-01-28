@@ -2,10 +2,11 @@
  * WordPress dependencies
  */
 const { __ } = wp.i18n;
-const { ColorPalette } = wp.editor;
+
 const {
-	PanelBody,
 	TextControl,
+	RangeControl,
+	SelectControl,
 	PanelRow,
 } = wp.components;
 
@@ -25,44 +26,58 @@ export {
 };
 
 function TypographyOptions( props ) {
+	
 	const setFontFamily = value => props.setAttributes( { fontFamily: value } );
 	const setFontSize 	= value => props.setAttributes( { fontSize  : value } );
 	const setFontWeight = value => props.setAttributes( { fontWeight: value } );
 	const setLineheight = value => props.setAttributes( { lineheight: value } );
 
 	return (
-		<PanelBody
-			title={ __( 'Typography Options' ) }
-			className="uag-typography-options"
-			initialOpen={ false }
-		>
-			<PanelRow>
-				<div className="uag-typography-option">
-					<div>
-						<TextControl
-							label= { __( "Font Family" ) }
-							value= { setFontFamily }
-							onChange={ value => setAttributes( { setFontFamily: value } ) }
-						/>
-						<TextControl
-							label= { __( "Font Size" ) }
-							value= { setFontSize }
-							onChange={ value => setAttributes( { setFontSize: value } ) }
-						/>
-						<TextControl
-							label= { __( "Font Weight" ) }
-							value= { setFontWeight }
-							onChange={ value => setAttributes( { setFontWeight: value } ) }
-						/>
-						<TextControl
-							label= { __( "Line Height" ) }
-							value= { setLineheight }
-							onChange={ value => setAttributes( { setLineheight: value } ) }
-						/>
-					</div>
+		<PanelRow>
+			<div className="uag-typography-options">
+				<div>
+					<SelectControl
+						label={ __( "Font Family" ) }
+						value={ setFontFamily }
+						onChange={ ( value ) => setAttributes( { setFontFamily: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+						] }
+					/>
+					<SelectControl
+						label={ __( "Font Weight" ) }
+						value={ setFontWeight }
+						onChange={ ( value ) => setAttributes( { setFontWeight: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "double", label: __( "Double" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+						] }
+					/>
+					<RangeControl
+						label={ __( "Font Size" ) }
+						value={ setFontSize }
+						onChange={ ( value ) => setAttributes( { setFontSize: value } ) }
+						min={ 10 }
+						max={ 100 }
+						beforeIcon="editor-textcolor"
+						allowReset
+						initialPosition={30}
+					/>
+					<TextControl
+						label= { __( "Line Height" ) }
+						value= { setLineheight }
+						onChange={ value => setAttributes( { setLineheight: value } ) }
+					/>
 				</div>
-			</PanelRow>
-		</PanelBody>
+			</div>
+		</PanelRow>
 	);
 }
 
