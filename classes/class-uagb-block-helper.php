@@ -2335,7 +2335,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Social Share JS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {

@@ -99,7 +99,13 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
-		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', false );
+		$value = true;
+
+		if ( did_action( 'elementor/loaded' ) ) {
+			$value = false;
+		}
+
+		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', $value );
 
 		if ( $enable_font_awesome ) {
 
