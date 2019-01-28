@@ -88,22 +88,22 @@ registerBlockType( "uagb/blockquote", {
 				) } >
 					
 					<blockquote className="uagb-blockquote">					  
-					{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span></div> }
-					<div className="uagb-blockquote__content-wrap">
+						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span></div> }
+						<div className="uagb-blockquote__content-wrap">
 					   	{ description_text !=="" && <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
 
 				   	<footer>
 				   		<div className={ classnames(
-							"uagb-quote__author-wrap",
-							( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
-						) }	>					   		
+									"uagb-quote__author-wrap",
+									( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
+								) }	>					   		
 				      		{ <AuthorImage attributes={props.attributes} /> }
 				      		{ author !== "" && <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
-						</div>
+								</div>
 				      	{ enableTweet &&  <TweetButton attributes={props.attributes} /> }
 				   	</footer>
-				</div>
-				</blockquote>
+						</div>
+					</blockquote>
 				</div>
 			</div>
 		)

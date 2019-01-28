@@ -1,11 +1,11 @@
-=== UAG - Gutenberg Blocks ===
+=== Gutenberg Blocks – Ultimate Addons for Gutenberg ===
 Contributors: brainstormforce
 Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
-Requires at least: 4.6
+Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.0.1
+Stable tag: 1.8.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,27 +95,20 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.8.0.1 =
-* Fix: Advanced Columns - Editor end width issue fixed.
-* Fix: Advanced Columns - Editor end Draggable pointer overflow issue.
-* New: Advanced Columns - Added border option for inner column.
-* New: Advanced Columns - Added alignment option for inner column.
+= 1.8.1 =
+* Fix: Advanced Columns - Editor end, width issue.
+* Fix: Advanced Columns - Editor end, move pointer overflow issue.
 * Fix: Info Box - Separator width issue.
-* Fix: Testimonial - Border radius should be out of Border condition.
-* Fix: Info Box - Color setting option default open.
+* Fix: Testimonial - Border radius independent of Border Size issue.
+* Fix: Social Share - Links not updated in reusable block issue.
 * Fix: Conflict with GeneratePress theme.
-* Improvement: Call To Action -  Reorder CTA color setting options.
-* Improvement: Info Box - Reorganize setting options.
-* Improvement: Info Box - Deprecated color setting panel.
-* Improvement: Team - Fixed typo error.
-* Improvement: Multi Buttons - Rename color to text color and text hover color.
-* Improvement: Multi Buttons - Added index to the color setting.
-* Improvement: Multi Buttons - Added tabs control for buttons Colors.
-* Improvement: Content Timeline - First tab not open default.
-* Improvement: Changed Block Category name to Ultimate Addons block.
-* Improvement: Changed panel tab design.
-* Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Restaurant Menu is now Price List.
 * Improvement: Replaced all Font Awesome Icon with SVG.
+* Improvement: Dynamic image sizes for the Team and Info Box block.
+* Improvement: Better UX in editor.
+* Improvement: Advanced Columns - Added border option for inner column.
+* Improvement: Advanced Columns - Added alignment option for inner column.
+* Improvement: Changed Block Category name to Ultimate Addons Block.
 
 = 1.8.0 =
 * New: Advanced Columns

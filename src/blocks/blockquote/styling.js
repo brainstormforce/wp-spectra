@@ -54,23 +54,23 @@ function styling( props ) {
 
 	var content_align ="center"
 
-	if( align == 'left' ){
+	if( align == "left" ){
 		content_align =" flex-start"
 	}
-	if( align == 'right' ){
+	if( align == "right" ){
 		content_align =" flex-end"
 	}
 
-	var author_space = authorSpace;
+	var author_space = authorSpace
 
-	if( align !== 'center' || skinStyle == "border" ){
+	if( align !== "center" || skinStyle == "border" ){
 		author_space = 0
 	}
 	//Set align to left for border style
 	var text_align = align
 
-	if( skinStyle == 'border' ){
-		text_align = 'left'
+	if( skinStyle == "border" ){
+		text_align = "left"
 	}
 
 	var selectors = {

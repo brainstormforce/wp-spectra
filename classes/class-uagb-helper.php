@@ -32,7 +32,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Store Json variable
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @var instance
 		 */
 		public static $icon_json;
@@ -269,6 +269,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/blockquote':
 					$js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
+					break;
+
+				case 'uagb/social-share':
+					$js .= UAGB_Block_Helper::get_social_share_js( $block_id );
 					break;
 
 				default:
@@ -570,7 +574,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get Json Data.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @return Array
 		 */
 		public static function backend_load_font_awesome_icons() {
@@ -593,7 +597,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Generate SVG.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @param  array $icon Decoded fontawesome json file data.
 		 * @return string
 		 */

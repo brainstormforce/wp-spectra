@@ -12,7 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -556,7 +555,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tablet . $mobile;
 		}
 
-
 		/**
 		 * Get Info Box CSS
 		 *
@@ -640,7 +638,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg' => array(
-	                'fill'            => $attr->ctaBtnLinkColor,	                
+	                'fill'            => $attr->ctaBtnLinkColor,
 	            ),
 	            ' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover' => array(
 	                'color'       => $attr->ctaLinkHoverColor,
@@ -704,7 +702,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 		}
 
-
 		/**
 		 * Get CTA CSS
 		 *
@@ -750,7 +747,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'       => $attr->ctaFontSize. "px",
 					'height'      => $attr->ctaFontSize. "px",
 					'line-height' => $attr->ctaFontSize. "px",
-				),								
+				),
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr->ctaBtnLinkColor,
 				),
@@ -1843,7 +1840,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             $selectors[' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new'] = array(
                     'color'=> $attr['iconFocus'],
                 );
-            
+
             $selectors[' .uagb-timeline__main .uagb-timeline__icon-new svg'] = array(
                     'fill'=> $attr['i
                     conColor'],
@@ -1946,7 +1943,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $desktop . $tablet . $mobile;
 		}
-
 
 		/**
 		 * Get Restaurant Menu Block CSS
@@ -2327,8 +2323,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			$selectors[" cite.uagb-blockquote__author"] = array(
 				"font-size"         => $attr['authorFontSize'] . "px",
-				"color"             => $attr['authorColor'],			
-				"text-align"        => $text_align,			
+				"color"             => $attr['authorColor'],
+				"text-align"        => $text_align,
 			);
 			$selectors[" .uagb-blockquote__skin-border blockquote.uagb-blockquote"] = array(
 				"border-color"      => $attr['borderColor'],
@@ -2347,21 +2343,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"margin-left"       => $attr['quoteLeftMargin'] . "px",
 				"margin-right"      => $attr['quoteRightMargin'] . "px",
 				"padding"      		=> $attr['quotePadding'] . "px",
-			);			
+			);
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon"] = array(
 				"width"             => $attr['quoteSize']."px",
 				"height"            => $attr['quoteSize']."px",
-			);	
+			);
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon svg"] = array(
 				"fill"         => $attr['quoteColor'],
-			);		
+			);
 
 			$selectors[" .uagb-quote__style-style_1 .uagb-blockquote"] = array(
 				"text-align"        => $attr['align'],
-			);		
-		
+			);
+
 			$selectors[" .uagb-quote__author-wrap"] = array(
 				"margin-bottom"     => $author_space . "px",
 			);
@@ -2369,97 +2365,97 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"width"             => $attr['authorImageWidth']."px",
 				"height"            => $attr['authorImageWidth']."px",
 				"border-radius"     => $attr['authorImgBorderRadius']."%"
-			);	
+			);
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover svg"] = array(
 				"fill"         => $attr['quoteHoverColor'],
-			);	
+			);
 
 			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover"] = array(
 				"background"    => $attr['quoteBgHoverColor'],
-			);	
+			);
 
 			$selectors[" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover"] = array(
 				"border-left-color"         => $attr['borderHoverColor'],
-			);	
+			);
 
 			if( $attr['enableTweet'] ){
 				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = array(
 					"font-size"          => $attr['tweetBtnFontSize'] . "px",
-					"color"              => $attr['tweetLinkColor'],		
+					"color"              => $attr['tweetLinkColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = array(
-					"fill"              => $attr['tweetLinkColor'],		
+					"fill"              => $attr['tweetLinkColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = array(
 					"font-size"          => $attr['tweetBtnFontSize'] . "px",
-					"color"              => $attr['tweetBtnColor'],		
-					"background-color"   => $attr['tweetBtnBgColor'],	
+					"color"              => $attr['tweetBtnColor'],
+					"background-color"   => $attr['tweetBtnBgColor'],
 					"padding-left"       => $attr['tweetBtnHrPadding'] . "px",
 					"padding-right"      => $attr['tweetBtnHrPadding'] . "px",
 					"padding-top"        => $attr['tweetBtnVrPadding'] . "px",
-					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",	
+					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",
 				);
 
 				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = array(
-					"fill"              => $attr['tweetBtnColor'],	
+					"fill"              => $attr['tweetBtnColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = array(
 					"font-size"          => $attr['tweetBtnFontSize'] . "px",
-					"color"              => $attr['tweetBtnColor'],		
-					"background-color"   => $attr['tweetBtnBgColor'],	
+					"color"              => $attr['tweetBtnColor'],
+					"background-color"   => $attr['tweetBtnBgColor'],
 					"padding-left"       => $attr['tweetBtnHrPadding'] . "px",
 					"padding-right"      => $attr['tweetBtnHrPadding'] . "px",
 					"padding-top"        => $attr['tweetBtnVrPadding'] . "px",
-					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",	
-				);	
+					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",
+				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = array(
-					"fill"              => $attr['tweetBtnColor'],							
-				);	
+					"fill"              => $attr['tweetBtnColor'],
+				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = array(
-					"border-right-color" => $attr['tweetBtnBgColor'],		
-				);	
+					"border-right-color" => $attr['tweetBtnBgColor'],
+				);
 
 				$selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
 					"margin-right"       => $attr['tweetIconSpacing'] . "px",
 					"width"       		 => $attr['tweetBtnFontSize'] . "px",
 					"height"             => $attr['tweetBtnFontSize'] . "px",
-				);	
+				);
 
 				// Hover CSS.
 				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = array(
-					"color"              => $attr['tweetBtnHoverColor'],		
+					"color"              => $attr['tweetBtnHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = array(
-					"fill"              => $attr['tweetBtnHoverColor'],		
+					"fill"              => $attr['tweetBtnHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = array(
-					"color"              => $attr['tweetBtnHoverColor'],		
-					"background-color"   => $attr['tweetBtnBgHoverColor'],	
+					"color"              => $attr['tweetBtnHoverColor'],
+					"background-color"   => $attr['tweetBtnBgHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = array(
-					"fill"              => $attr['tweetBtnHoverColor'],		
+					"fill"              => $attr['tweetBtnHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover"] = array(
-					"color"              => $attr['tweetBtnHoverColor'],		
-					"background-color"   => $attr['tweetBtnBgHoverColor'],	
+					"color"              => $attr['tweetBtnHoverColor'],
+					"background-color"   => $attr['tweetBtnBgHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = array(
-					"fill"              => $attr['tweetBtnHoverColor'],		
+					"fill"              => $attr['tweetBtnHoverColor'],
 				);
 
 				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = array(
-					"border-right-color" => $attr['tweetBtnBgHoverColor'],	
+					"border-right-color" => $attr['tweetBtnBgHoverColor'],
 				);
 			}
 
@@ -2533,7 +2529,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Blockquote Js
 		 *
-		 * @since 1.7.0
+		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
@@ -2548,27 +2544,45 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$target = $attr['iconTargetUrl'];
 
 			$url = " " ;
-			
+
 			if( $target == 'current' ){
-				global $wp;  
+				global $wp;
 				$url = home_url(add_query_arg(array(),$wp->request));
 			}else{
 				$url = $attr['customUrl'];
-			}			
+			}
 
 			$slug = basename(get_permalink());
 
 			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconShareVia'];
-				
+
 			$selector =	'#uagb-quote-'. $id;
 
 			?>
 				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
 				  window.open( "<?php echo $request_url ?>" );
 				});
-			<?php 
-			
+			<?php
+
 			// @codingStandardsIgnoreEnd.
+		}
+
+		/**
+		 * Get Social Share JS
+		 *
+		 * @since 1.8.1
+		 * @param string $id The selector ID.
+		 */
+		public static function get_social_share_js( $id ) {
+
+			$selector = '#uagb-social-share-' . $id;
+			?>
+				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
+					var social_url = jQuery( this ).data( "href" );
+					var request_url = social_url + window.location.href ;
+					window.open( request_url );
+				});
+			<?php
 		}
 	}
 }

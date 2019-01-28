@@ -8,18 +8,18 @@ class TweetButton extends React.Component {
 	
 		return (			
 			<a href= "javascript:void(0)" className='uagb-blockquote__tweet-button' target='_blank' rel ='noopener noreferrer'>
-	      		{ ( attributes.iconView === 'icon_text' ) && <Fragment>
+	      		{ ( attributes.iconView === "icon_text" ) && <Fragment>
 	      			{ UAGB_Block_Icons.quote_tweet_icon }
 		      			<span className="uagb-blockquote__tweet-label">{attributes.iconLabel}</span>
 		      		</Fragment>
 		      	}
 
-		      	{ ( attributes.iconView ==='icon' ) && <Fragment>
+		      	{ ( attributes.iconView ==="icon" ) && <Fragment>
 	      			<i className="fab fa-twitter"></i>		      			
 		      		</Fragment>
 		      	}
 
-		      	{ ( attributes.iconView === 'text' ) && <Fragment>	      			
+		      	{ ( attributes.iconView === "text" ) && <Fragment>	      			
 		      			<span className="uagb-blockquote__tweet-label">{attributes.iconLabel}</span>
 		      		</Fragment>
 		      	}
