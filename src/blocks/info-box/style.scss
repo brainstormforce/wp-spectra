@@ -7,13 +7,19 @@
 /* Info Box */
 
 .uagb-ifb-icon-wrap, .uagb-ifb-icon-wrap * {
-    -webkit-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 .uagb-ifb-icon-wrap .uagb-ifb-icon,
 .uagb-ifb-content {
     display: inline-block;
+}
+
+.uagb-ifb-icon svg {
+	width: inherit;
+	height: inherit;
+    vertical-align: middle;
 }
 
 .infobox-icon-above-title .uagb-ifb-left-right-wrap {
@@ -236,8 +242,15 @@ a.uagb-infobox-link-wrap:hover,
     height: 40px;
     color: #333;
     width: 40px;
-  }
+}
 
+.uagb-ifb-icon svg {
+	fill: #333;
+}
+
+.uagb-ifb-content{
+    width: 100%;
+}
 .uagb-infobox__content-wrap.uagb-infobox,
 .uagb-ifb-content,
 .uagb-ifb-title-wrap,
@@ -273,8 +286,30 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
     float: right;
 }
 
-.block-editor-page #wpwrap .uagb-infobox-cta-link i,
-.uagb-infobox-cta-link i {
+.uagb-ifb-button-icon {
+	height: 15px;
+    width: 15px;
+    font-size: 15px;
+    vertical-align: middle
+}
+.uagb-ifb-text-icon {
+    height: 15px;
+    width: 15px;
+    font-size: 15px;
+    line-height: 15px;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.uagb-ifb-button-icon svg,
+.uagb-ifb-text-icon svg {
+	height: inherit;
+	width: inherit;
+	display: inline-block;
+}
+
+.block-editor-page #wpwrap .uagb-infobox-cta-link svg,
+.uagb-infobox-cta-link svg {
     font-style: normal;
 }
 

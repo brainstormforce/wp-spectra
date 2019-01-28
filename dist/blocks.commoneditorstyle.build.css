@@ -5,24 +5,29 @@
  * that are used across the project.
 */
 .uagb-inspect-tabs .components-tab-panel__tabs button{
-	border: 1px solid #a4afb7;
-		padding: 10px;
+	padding: 10px;
+    background: transparent;
+    color: #333;
+    outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid #eee;
+    cursor: pointer;
+    -webkit-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
-.uagb-inspect-tabs .active-tab {
-		background-color: #a4afb7;
-		color: #fff;
-		outline:none;
+hr.uagb-editor__separator {
+	border-bottom: 1px solid #c9c9ca;
 }
 
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus{
-		border: 1px solid #a4afb7;
-		outline: none;
-}
-
-.uagb-inspect-tabs .components-tab-panel__tabs {
-		margin-top: 15px;
-		margin-bottom: 15px;
+.uagb-inspect-tabs .components-tab-panel__tabs button.active-tab,
+.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+	border-bottom: 5px solid #333;
+	outline:none;
+	font-weight:500;
 }
 
 .uagb-inspect-tab-title {
@@ -32,6 +37,10 @@
 .uagb-inspect-tabs-col-2 .components-tab-panel__tabs button,
 .uagb-inspect-tabs.uagb-inspect-tabs-col-2 .components-tab-panel__tabs button {
 	width: 50%;
+}
+
+.uagb-inspect-tabs .components-tab-panel__tabs {
+	margin-bottom: 15px;
 }
 
 .uagb-inspect-tabs-col-3 .components-tab-panel__tabs button {
@@ -45,6 +54,62 @@
 	font-size: 12px;
 	font-style: italic;
 	color: #a4afb7;
+}
+.components-range-control.uagb-margin-control .components-base-control__label {
+    width: 30px;
+}
+
+.uagb-icons-list .uagb-widget-icon {
+	-js-display: flex;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	-moz-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	-moz-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
+	float: left;
+	cursor: pointer;
+	padding: 1em;
+	line-height: 1em;
+	font-size: 1em;
+	border: 1px solid #f1f1f1;
+	margin: 0;
+	text-align: center;
+}
+
+.uagb-icons-list {
+	display: inline-block;
+	margin: 1em 0 0 0;
+	padding: 0;
+	max-height: 200px;
+	overflow: auto;
+}
+
+.uagb-widget-icon svg {
+	width: 20px;
+	height: 20px;
+}
+
+.uagb-icon-picker-wrap {
+	position: relative;
+	margin: 8px 0;
+	width: 100%;
+	vertical-align: middle;
+}
+
+.uagb-icon-picker-wrap .search-icon {
+	background-color: #fff;
+    border: 1px solid #e0e0e0;
+    width: 100%;
 }
 
 /*
@@ -139,7 +204,8 @@
 	-webkit-user-select: none;
 	-moz-user-select: none;
 	-ms-user-select: none;
-	user-select: none
+	user-select: none;
+	height: 40px;
 }
 
 .rfipbtn--open {
@@ -166,11 +232,16 @@
 }
 
 .rfipbtn__button i {
-	font-size: 32px;
+	font-size: 26px;
+    line-height: 26px;
+    height: 26px;
+    width: 26px;
 	-webkit-transition: -webkit-transform .25s;
 	transition: -webkit-transform .25s;
 	transition: transform .25s;
-	transition: transform .25s, -webkit-transform .25s
+	transition: transform .25s, -webkit-transform .25s;
+	margin-left: auto;
+    margin-right: auto;
 }
 
 .rfipbtn__button--open i {
@@ -266,7 +337,11 @@
 .rfipbtn__elm img,
 .rfipbtn__elm svg {
 	height: 18px;
-	width: auto
+	width: 18px;
+}
+
+.rfipbtn__elm svg {
+	fill : #333;
 }
 
 .rfipbtn__del {
@@ -472,7 +547,12 @@
 .rfipicons__ibox img,
 .rfipicons__ibox svg {
 	max-height: 24px;
-	width: auto
+	height: 18px;
+	width: 18px;
+}
+
+.rfipicons__ibox svg {
+	fill: #333;
 }
 
 .rfipicons__ibox>* {
@@ -2957,4 +3037,10 @@ i.fipicon-angle-right:before {
 i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
+}
+.slick-arrow svg{
+	vertical-align: middle;
+}
+.components-select-control__input{
+	text-transform: capitalize;
 }

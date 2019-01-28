@@ -71,19 +71,18 @@ function uagb_post_masonry_callback( $attributes ) {
 	return ob_get_clean();
 }
 
-add_action( 'wp_footer', 'uagb_post_masonry_add_script', 1000 );
+add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
 
 /**
  * Renders the post masonry related script.
  *
  * @since 0.0.1
  */
-function uagb_post_masonry_add_script() {
+function uagb_post_block_add_script() {
 
 	global $uagb_post_settings;
 
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
-
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
@@ -104,7 +103,6 @@ function uagb_post_masonry_add_script() {
 	}
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
-
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
 			$dots   = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
 			$arrows = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
@@ -129,8 +127,8 @@ function uagb_post_masonry_add_script() {
 						'arrows' : Boolean( '<?php echo $arrows; ?>' ),
 						'dots' : Boolean( '<?php echo $dots; ?>' ),
 						'rtl' : false,
-						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-left\"><\/span><\/button>',
-						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><span class=\"fas fa-angle-right\"><\/span><\/button>',
+						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z\"></path></svg><\/button>',
+						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z\"></path></svg><\/button>',
 						'responsive' : [
 							{
 								'breakpoint' : 1024,
@@ -156,7 +154,6 @@ function uagb_post_masonry_add_script() {
 			<?php
 		}
 	}
-
 }
 
 /**
@@ -253,7 +250,6 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
  * @since 0.0.1
  */
 function uagb_register_blocks() {
-
 	// Check if the register function exists.
 	if ( ! function_exists( 'register_block_type' ) ) {
 		return;
@@ -942,7 +938,6 @@ add_action( 'init', 'uagb_register_blocks' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-
 	// Add featured image source.
 	register_rest_field(
 		'post',

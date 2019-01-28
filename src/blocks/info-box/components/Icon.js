@@ -6,7 +6,7 @@ const {
 
 const { __ } = wp.i18n
 
-class InfoBoxIcon extends React.Component {
+class Icon extends React.Component {
 
 	render() {
 
@@ -16,7 +16,7 @@ class InfoBoxIcon extends React.Component {
 			<div className="uagb-ifb-image-icon-content uagb-ifb-imgicon-wrap" >
 				<div className="uagb-ifb-icon-wrap">
 					<span className="uagb-ifb-icon">
-						<span className={attributes.icon} ></span>
+						{ renderSVG(attributes.icon) }
 					</span>
 				</div>
 			</div>
@@ -24,4 +24,4 @@ class InfoBoxIcon extends React.Component {
 	}
 }
 
-export default InfoBoxIcon
+export default Icon

@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
+
 		/**
 		 * Member Variable
 		 *
@@ -27,6 +28,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @var instance
 		 */
 		public static $block_list;
+
+		/**
+		 * Store Json variable
+		 *
+		 * @since x.x.x
+		 * @var instance
+		 */
+		public static $icon_json;
 
 		/**
 		 * Page Blocks Variable
@@ -79,14 +88,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			foreach ( $selectors as $key => $value ) {
-
 				$styling_css .= $id;
 
 				$styling_css .= $key . ' { ';
 				$css          = '';
 
 				foreach ( $value as $j => $val ) {
-
 					$css .= $j . ': ' . $val . ';';
 				}
 
@@ -256,6 +263,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/social-share':
+					$js .= UAGB_Block_Helper::get_social_share_js( $block_id );
+					break;
+
 				default:
 					// Nothing to do here.
 					break;
@@ -311,7 +322,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function _generate_stylesheet( $this_post ) {
 
 			if ( has_blocks( get_the_ID() ) ) {
-
 				$blocks            = $this->parse( $this_post->post_content );
 				self::$page_blocks = $blocks;
 
@@ -371,15 +381,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_stylesheet( $blocks ) {
 
 			foreach ( $blocks as $i => $block ) {
-
 				if ( is_array( $block ) ) {
-
 					if ( 'core/block' == $block['blockName'] ) {
-
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
-
 							$content = get_post_field( 'post_content', $id );
 
 							$reusable_blocks = $this->parse( $content );
@@ -387,7 +393,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_stylesheet( $reusable_blocks );
 						}
 					} else {
-
 						// Get CSS for the Block.
 						$this->get_block_css( $block );
 					}
@@ -405,15 +410,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_scripts( $blocks ) {
 
 			foreach ( $blocks as $i => $block ) {
-
 				if ( is_array( $block ) ) {
-
 					if ( 'core/block' == $block['blockName'] ) {
-
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
-
 							$content = get_post_field( 'post_content', $id );
 
 							$reusable_blocks = $this->parse( $content );
@@ -421,7 +422,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_scripts( $reusable_blocks );
 						}
 					} else {
-
 						// Get CSS for the Block.
 						$this->get_block_js( $block );
 					}
@@ -490,7 +490,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param bool   $network   Whether to allow the network admin setting to be overridden on subsites.
 		 * @return mixed
 		 */
-		static public function update_admin_settings_option( $key, $value, $network = false ) {
+		public static function update_admin_settings_option( $key, $value, $network = false ) {
 
 			// Update the site-wide option since we're in the network admin.
 			if ( $network && is_multisite() ) {
@@ -498,7 +498,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} else {
 				update_option( $key, $value );
 			}
-
 		}
 
 		/**
@@ -507,11 +506,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return string
 		 * @since 0.0.1
 		 */
-		static public function knowledgebase_data() {
+		public static function knowledgebase_data() {
 
 			$knowledgebase = array(
 				'enable_knowledgebase' => true,
-				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/',
+				'knowledgebase_url'    => 'https://www.ultimategutenberg.com/docs/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
 			);
 
 			return $knowledgebase;
@@ -523,11 +522,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return string
 		 * @since 0.0.1
 		 */
-		static public function support_data() {
+		public static function support_data() {
 
 			$support = array(
 				'enable_support' => true,
-				'support_url'    => 'https://www.ultimategutenberg.com/support/',
+				'support_url'    => 'https://www.ultimategutenberg.com/support/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard',
 			);
 
 			return $support;
@@ -539,18 +538,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return array()
 		 * @since 0.0.1
 		 */
-		static public function get_block_options() {
+		public static function get_block_options() {
 
 			$blocks       = self::$block_list;
 			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
 			if ( is_array( $blocks ) ) {
-
 				foreach ( $blocks as $slug => $data ) {
-
 					$_slug = str_replace( 'uagb/', '', $slug );
 
 					if ( isset( $saved_blocks[ $_slug ] ) ) {
-
 						if ( 'disabled' === $saved_blocks[ $_slug ] ) {
 							$blocks[ $slug ]['is_activate'] = false;
 						} else {
@@ -565,6 +561,54 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = $blocks;
 
 			return apply_filters( 'uagb_enabled_blocks', self::$block_list );
+		}
+
+		/**
+		 * Get Json Data.
+		 *
+		 * @since x.x.x
+		 * @return Array
+		 */
+		public static function backend_load_font_awesome_icons() {
+
+			$json_file = UAGB_DIR . 'dist/blocks/uagb-controls/UAGBIcon.json';
+			if ( ! file_exists( $json_file ) ) {
+				return array();
+			}
+
+			// Function has already run.
+			if ( null !== self::$icon_json ) {
+				return self::$icon_json;
+			}
+
+			$str             = file_get_contents( $json_file );
+			self::$icon_json = json_decode( $str, true );
+			return self::$icon_json;
+		}
+
+		/**
+		 * Generate SVG.
+		 *
+		 * @since x.x.x
+		 * @param  array $icon Decoded fontawesome json file data.
+		 * @return string
+		 */
+		public static function render_svg_html( $icon ) {
+			$icon = str_replace( 'far', '', $icon );
+			$icon = str_replace( 'fas', '', $icon );
+			$icon = str_replace( 'fab', '', $icon );
+			$icon = str_replace( 'fa-', '', $icon );
+			$icon = str_replace( 'fa', '', $icon );
+			$icon = sanitize_text_field( esc_attr( $icon ) );
+
+			$json = UAGB_Helper::backend_load_font_awesome_icons();
+			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
+			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
+			if ( $view ) {
+				$view = implode( ' ', $view );
+			}
+			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
+			return $htm;
 		}
 	}
 

@@ -26,7 +26,6 @@ const {
 	BlockControls,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 	ColorPalette
 } = wp.editor
 
@@ -112,8 +111,7 @@ export default class UAGBAdvancedHeading extends Component {
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
-				separatorSpace,
-				subHeadSpace,
+				separatorSpace
 			},
 		} = this.props
 
@@ -133,11 +131,10 @@ export default class UAGBAdvancedHeading extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Typography" ) }
-					>
+					<PanelBody title={ __( "Advanced Heading" ) }>
+						<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
-							label={ __( "Tag" ) }
+							label={ __( "Heading Tag" ) }
 							value={ headingTag }
 							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 							options={ [
@@ -159,6 +156,14 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={30}
 						/>
+						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						<ColorPalette
+							value={ headingColor }
+							onChange={ ( value ) => setAttributes( { headingColor: value } ) }
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Sub-Heading" ) }</h2>
 						<RangeControl
 							label={ __( "Sub-Heading Font Size" ) }
 							value={ subHeadFontSize }
@@ -169,11 +174,17 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={10}
 						/>
+						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						<ColorPalette
+							value={ subHeadingColor }
+							onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
+							allowReset
+						/>
 					</PanelBody>
 					<PanelBody
 						title={ __( "Separator" ) }
 						initialOpen={ false }
-					>	
+					>
 						<SelectControl
 							label={ __( "Style" ) }
 							value={ seperatorStyle }
@@ -188,7 +199,7 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						{ seperatorStyle !== "none" && <Fragment>
 							<RangeControl
-								label={ __( "Thickness" ) }
+								label={ __( "Thickness (px)" ) }
 								value={ separatorHeight }
 								onChange={ ( value ) => setAttributes( { separatorHeight: value } ) }
 								min={ 0 }
@@ -198,7 +209,7 @@ export default class UAGBAdvancedHeading extends Component {
 								initialPosition={3}
 							/>
 							<RangeControl
-								label={ __( "Width" ) }
+								label={ __( "Width (%)" ) }
 								value={ separatorWidth }
 								onChange={ ( value ) => setAttributes( { separatorWidth: value } ) }
 								min={ 0 }
@@ -206,42 +217,25 @@ export default class UAGBAdvancedHeading extends Component {
 								beforeIcon=""
 								allowReset
 								initialPosition={20}
-							/>							
+							/>
+							{ seperatorStyle !== "none" && <Fragment>
+								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
+								<ColorPalette
+									value={ separatorColor }
+									onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+							}
 						</Fragment>
 						}
 					</PanelBody>
-					<PanelColorSettings
-						title={ __( "Color Settings" ) }
-						initialOpen={ false }
-						colorSettings={ [
-							{
-								value: headingColor,
-								onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-								label: __( "Heading Color" ),
-							},
-							{
-								value: subHeadingColor,
-								onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-								label: __( "Sub-Heading Color" ),
-							},							
-						] }
-					>
-						{ seperatorStyle !== "none" && <Fragment>
-						    <p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
-						    <ColorPalette
-						        value={ separatorColor }
-						        onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
-						        allowReset
-							/>
-						</Fragment>
-						}
-					</PanelColorSettings>
 					<PanelBody
 						title={ __( "Spacing" ) }
 						initialOpen={ false }
 					>
 						<RangeControl
-							label={ __( "Heading Spacing" ) }
+							label={ __( "Heading Bottom Spacing" ) }
 							value={ headSpace }
 							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 							min={ 0 }
@@ -250,30 +244,17 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 							initialPosition={0}
 						/>
-						{ seperatorStyle !== "none" && 
-							<Fragment> 
-								<RangeControl
-									label={ __( "Separator Spacing" ) }
-									value={ separatorSpace }
-									onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
-									min={ 0 }
-									max={ 50 }
-									beforeIcon=""
-									allowReset
-									initialPosition={0}
-								/>
-							</Fragment>
-						}
-						<RangeControl
-							label={ __( "Sub-Heading Spacing" ) }
-							value={ subHeadSpace }
-							onChange={ ( value ) => setAttributes( { subHeadSpace: value } ) }
+						{ seperatorStyle !== "none" && <RangeControl
+							label={ __( "Separator Bottom Spacing" ) }
+							value={ separatorSpace }
+							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
 							min={ 0 }
 							max={ 50 }
 							beforeIcon=""
 							allowReset
 							initialPosition={0}
 						/>
+						}
 					</PanelBody>
 				</InspectorControls>
 				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
@@ -336,7 +317,8 @@ registerBlockType( "uagb/advanced-heading", {
 	icon: UAGB_Block_Icons.advanced_heading,
 	keywords: [
 		__( "advanced heading" ),
-		__( "uagb" ),
+		__( "uag" ),
+		__( "heading" ),
 	],
 	category: uagb_blocks_info.category,
 	attributes: {
@@ -392,9 +374,6 @@ registerBlockType( "uagb/advanced-heading", {
 		separatorSpace: {
 			type: "number",
 			default: 15
-		},
-		subHeadSpace: {
-			type: "number",
 		},
 	},
 	transforms: {

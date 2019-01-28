@@ -172,6 +172,7 @@ function contentTimelineStyle( props ) {
 	selectors[".uagb-timeline__main .uagb-timeline__icon-new"] = {
 		"color": iconColor,
 		"font-size" : iconSize+"px",
+		"width": iconSize+"px",
 	}
 
 	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon"] = {
@@ -181,6 +182,14 @@ function contentTimelineStyle( props ) {
 
 	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new"] = {
 		"color": iconFocus,
+	}
+
+	selectors[".uagb-timeline__main .uagb-timeline__icon-new svg"] = {
+		"fill": iconColor,
+	}
+
+	selectors[".uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg"] = {
+		"fill": iconFocus,
 	}
 
 	/* Generate Responsive CSS for timeline */

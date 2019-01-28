@@ -72,12 +72,21 @@ function InfoBoxStyle( props ) {
 		"font-size" : iconSize+"px",
 		"height": iconSize+"px",
 		"color": iconColor,
+		"fill": iconColor,
 		"width": iconSize+"px",
 		"line-height": iconSize + "px",
 	}
 
+	selectors[".uagb-ifb-icon > svg"] = {
+		"fill": iconColor,
+	}
+
 	selectors[".uagb-ifb-icon:hover > span"] = {
 		"color" : iconHover,
+	}
+
+	selectors[".uagb-ifb-icon:hover > svg"] = {
+		"fill" : iconHover,
 	}
 
 	selectors[".uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap"] = {
@@ -114,12 +123,29 @@ function InfoBoxStyle( props ) {
 		"color": ctaLinkHoverColor,
 	}
 
+	selectors[".uagb-infobox-cta-link .uagb-ifb-text-icon svg"] = {
+		"fill": ctaLinkColor,
+	}
+
+	selectors[".uagb-infobox-cta-link a:hover svg"] = {
+		"fill": ctaLinkHoverColor,
+	}
+
 	selectors[".uagb-infobox-cta-link span"] = {
 		"font-size" : ctaFontSize+"px",
+		"width" : ctaFontSize+"px",
+		"height" : ctaFontSize+"px",
 		"color": ctaLinkColor,
 	}
 	selectors[".uagb-infobox-cta-link:hover span"] = {
 		"color": ctaLinkHoverColor,
+	}
+
+	selectors[".uagb-infobox-cta-link svg"] = {
+		"fill": ctaBtnLinkColor,
+	}
+	selectors[".uagb-infobox-cta-link:hover svg"] = {
+		"fill": ctaLinkHoverColor,
 	}
 
 	selectors[".uagb-ifb-button-wrapper .uagb-infobox-cta-link span"] = {
