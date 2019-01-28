@@ -26,7 +26,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
  *
  * Warning when the site doesn't have the minimum required PHP version.
  *
- * @since x.x.x
+ * @since 1.8.1
  *
  * @return void
  */
@@ -43,7 +43,7 @@ function uagb_fail_php_version() {
  *
  * Warning when the site doesn't have the minimum required WordPress version.
  *
- * @since x.x.x
+ * @since 1.8.1
  *
  * @return void
  */
