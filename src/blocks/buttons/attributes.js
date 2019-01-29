@@ -24,7 +24,10 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 			"color": "#333",
 			"background": "",
 			"hColor": "#333",
-			"hBackground": ""
+			"hBackground": "",
+			"sizeType": "px",
+			"sizeMobile": "",
+			"sizeTablet": "",
 		}
 	)
 }
