@@ -126,6 +126,10 @@ hr.uagb-editor__separator {
     margin-top: 30px
 }
 
+.uagb-size-type-field-tabs {
+	margin-bottom: 20px;
+}
+
 .uagb-size-type-field-tabs .components-tab-panel__tabs {
 	border-bottom: 0;
 	text-align: right;
@@ -141,17 +145,17 @@ hr.uagb-editor__separator {
 .uagb-size-type-field-tabs .components-tab-panel__tabs button {
     border: 0;
     border-bottom: 0;
-    padding: 2px 4px;
+    padding: 3px;
     margin-bottom: 0;
     outline: 0;
     width: auto;
-    font-size: 9px;
+    font-size: 8px;
     background: #a4afb7;
     color: #fff;
     display: inline-block;
     border-radius: 50%;
-    height: 21px;
-    width: 21px;
+    height: 20px;
+    width: 20px;
     margin-right: 3px;
 }
 
@@ -170,6 +174,14 @@ hr.uagb-editor__separator {
     height: 18px;
     line-height: 18px;
     padding: 0 3px;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:first-child {
+	padding-left: 0;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:last-child {
+	padding-right: 0;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn.is-primary,

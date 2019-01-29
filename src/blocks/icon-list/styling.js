@@ -8,7 +8,13 @@ function styling( props ) {
 		inner_gap,
 		icon_layout,
 		size,
+		sizeType,
+		sizeTablet,
+		sizeMobile,
 		fontSize,
+		fontSizeType,
+		fontSizeMobile,
+		fontSizeTablet,
 		stack,
 		bgSize,
 		borderRadius
@@ -42,7 +48,15 @@ function styling( props ) {
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
 			"color" : icon.label_color,
-			"font-size" : fontSize + "px"
+			"font-size" : fontSize + fontSizeType
+		}
+
+		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"font-size" : fontSizeMobile + fontSizeType
+		}
+
+		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"font-size" : fontSizeTablet + fontSizeType
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
@@ -105,24 +119,66 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-icon-list__source-image"] = {
-		"width": size + "px"
+		"width": size + sizeType
 	}
 
 	selectors[" .uagb-icon-list__source-icon"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"font-size": size + "px"
+		"width": size + sizeType,
+		"height": size + sizeType,
+		"font-size": size + sizeType
 	}
 
 	selectors[" .uagb-icon-list__source-icon svg"] = {
-		"width": size + "px",
-		"height": size + "px",
+		"width": size + sizeType,
+		"height": size + sizeType,
 	}
 
 	selectors[" .uagb-icon-list__source-icon:before"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"font-size": size + "px"
+		"width": size + sizeType,
+		"height": size + sizeType,
+		"font-size": size + sizeType
+	}
+
+	mobile_selectors[" .uagb-icon-list__source-image"] = {
+		"width": sizeMobile + sizeType
+	}
+
+	mobile_selectors[" .uagb-icon-list__source-icon"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+		"font-size": sizeMobile + sizeType
+	}
+
+	mobile_selectors[" .uagb-icon-list__source-icon svg"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+	}
+
+	mobile_selectors[" .uagb-icon-list__source-icon:before"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+		"font-size": sizeMobile + sizeType
+	}
+
+	tablet_selectors[" .uagb-icon-list__source-image"] = {
+		"width": sizeTablet + sizeType
+	}
+
+	tablet_selectors[" .uagb-icon-list__source-icon"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+		"font-size": sizeTablet + sizeType
+	}
+
+	tablet_selectors[" .uagb-icon-list__source-icon svg"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+	}
+
+	tablet_selectors[" .uagb-icon-list__source-icon:before"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+		"font-size": sizeTablet + sizeType
 	}
 
 	selectors[" .uagb-icon-list__label-wrap"] = {
