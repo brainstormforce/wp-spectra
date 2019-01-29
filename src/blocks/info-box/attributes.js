@@ -62,20 +62,44 @@ const attributes = {
 	prefixFontSize: {
 		type: "number",
 	},
+	prefixFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	prefixFontSizeTablet: {
+		type: "number",
+	},
+	prefixFontSizeMobile: {
+		type: "number",
+	},
 	headingTag: {
 		type: "string",
 		default: "h3"
 	},
-	separatorHeight: {
-		type: "number"
-	},
-	separatorWidth: {
-		type: "number"
-	},
 	headFontSize: {
 		type: "number",
 	},
+	headFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	headFontSizeTablet: {
+		type: "number",
+	},
+	headFontSizeMobile: {
+		type: "number",
+	},
 	subHeadFontSize: {
+		type: "number",
+	},
+	subHeadFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	subHeadFontSizeTablet: {
+		type: "number",
+	},
+	subHeadFontSizeMobile: {
 		type: "number",
 	},
 	headSpace: {
@@ -133,6 +157,10 @@ const attributes = {
 	seperatorWidth :{
 		type: "number",
 		default : 30
+	},
+	separatorWidthType: {
+		type: "string",
+		default: "%"
 	},
 	seperatorThickness :{
 		type: "number",
