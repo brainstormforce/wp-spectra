@@ -172,8 +172,6 @@ export default class UAGBAdvancedHeading extends Component {
 			</ButtonGroup>
 		)
 
-		let widthMax = ( "%" == separatorWidthType ) ? 100 : 500
-
 		return (
 			<Fragment>
 				<BlockControls key='controls'>
@@ -365,10 +363,7 @@ export default class UAGBAdvancedHeading extends Component {
 							allowReset
 						/>
 					</PanelBody>
-					<PanelBody
-						title={ __( "Separator" ) }
-						initialOpen={ false }
-					>
+					<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Style" ) }
 							value={ seperatorStyle }
@@ -418,10 +413,7 @@ export default class UAGBAdvancedHeading extends Component {
 						</Fragment>
 						}
 					</PanelBody>
-					<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
+					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Heading Bottom Spacing" ) }
 							value={ headSpace }
