@@ -420,7 +420,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-separator'] = array (
 					'border-top-style' => $attr['seperatorStyle'] ,
 					'border-top-width' => $attr['separatorHeight'] . "px",
-					'width' => $attr['separatorWidth'] . "%",
+					'width' => $attr['separatorWidth'] . $attr['separatorWidthType'],
 					'border-color' => $attr['separatorColor'],
 					'margin-bottom' => $attr['separatorSpace'] . "px",
 				);

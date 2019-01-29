@@ -14,6 +14,7 @@ function styling( props ) {
 		seperatorStyle,
 		separatorHeight,
 		separatorWidth,
+		separatorWidthType,
 		separatorColor,
 		separatorSpace,
 		subHeadingColor,
@@ -53,7 +54,7 @@ function styling( props ) {
 		selectors[" .uagb-separator"] = {
 			"border-top-style": seperatorStyle,
 			"border-top-width": separatorHeight + "px",
-			"width": separatorWidth + "%",
+			"width": separatorWidth + separatorWidthType,
 			"border-color": separatorColor,
 			"margin-bottom": separatorSpace + "px",
 		}
