@@ -454,6 +454,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						'background'   => '',
 						'hColor'       => '#333',
 						'hBackground'  => '',
+						'sizeType'     => 'px',
+						'sizeMobile'   => '',
+						'sizeTablet'   => '',
 					)
 				);
 			}

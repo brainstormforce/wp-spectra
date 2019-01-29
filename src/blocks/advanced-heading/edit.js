@@ -5,7 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import styling from "./styling"
-import map from 'lodash/map';
+import map from 'lodash/map'
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 //  Import CSS.
