@@ -9,7 +9,7 @@ for (var i = 1; i <= 5; i++) {
 	var title_desc_val    = "This is Timeline description, you can change me anytime click here "
 	var temp = []
 	var p = { "time_heading" : title_heading_val,"time_desc":title_desc_val }
-	item.push(p)     
+	item.push(p)
 	var j = i - 1
 	var today = new Date()
 	var dd = today.getDate()
@@ -18,14 +18,14 @@ for (var i = 1; i <= 5; i++) {
 
 	if(dd<10) {
 		dd = "0"+dd
-	} 
+	}
 
 	if(mm<10) {
 		mm = "0"+mm
-	} 
+	}
 
-	today = mm + "/" + dd + "/" + yyyy   
-	var p = { "title" : today }    
+	today = mm + "/" + dd + "/" + yyyy
+	var p = { "title" : today }
 	date_arr.push(p)
 }
 
@@ -43,7 +43,7 @@ const attributes = {
 	align : {
 		type : "string",
 		default : "center",
-	},          
+	},
 	headingColor : {
 		type : "string",
 	},
@@ -88,7 +88,17 @@ const attributes = {
 	},
 	headFontSize : {
 		type : "number",
-	},          
+	},
+	headFontSizeType : {
+		type : "string",
+		default: "px"
+	},
+	headFontSizeMobile : {
+		type : "number",
+	},
+	headFontSizeTablet : {
+		type : "number",
+	},
 	timelinAlignment : {
 		type : "string",
 		default : "center",
@@ -98,6 +108,16 @@ const attributes = {
 		default : "center",
 	},
 	subHeadFontSize : {
+		type : "number",
+	},
+	subHeadFontSizeType : {
+		type : "string",
+		default: "px"
+	},
+	subHeadFontSizeMobile : {
+		type : "number",
+	},
+	subHeadFontSizeTablet : {
 		type : "number",
 	},
 	headSpace : {
@@ -123,7 +143,7 @@ const attributes = {
 	iconBgFocus : {
 		type : "string",
 		default : "#61ce70",
-	},   
+	},
 	authorFontsize : {
 		type : "number",
 		default : 12,
@@ -136,6 +156,16 @@ const attributes = {
 		type : "number",
 		default : 12,
 	},
+	dateFontsizeType : {
+		type : "string",
+		default : "px",
+	},
+	dateFontsizeMobile : {
+		type : "number",
+	},
+	dateFontsizeTablet : {
+		type : "number",
+	},
 	connectorBgsize : {
 		type : "number",
 		default : 35,
@@ -143,11 +173,11 @@ const attributes = {
 	subHeadSpace : {
 		type : "number",
 		default : 5,
-	},  
+	},
 	dateBottomspace : {
 		type : "number",
 		default : 5,
-	},     
+	},
 	block_id  : {
 		type : "string",
 		default : "0",
@@ -159,7 +189,7 @@ const attributes = {
 	tm_client_id  : {
 		type : "string",
 		default : "not_set",
-	},      
+	},
 	borderRadius : {
 		type : "number",
 		default : 2,
@@ -171,7 +201,7 @@ const attributes = {
 	iconSize : {
 		type : "number",
 		default : 12,
-	}, 
+	},
 	icon : {
 		type : "string",
 		default : "fab fa fa-calendar-alt"
@@ -182,8 +212,8 @@ const attributes = {
 	},
 	displayPostDate:{
 		type: "boolean",
-		default: true,            
-	}, 
+		default: true,
+	},
 	stack: {
 		type: "string",
 		default: "tablet"

@@ -3,6 +3,7 @@
  */
 
 import classnames from "classnames"
+import map from 'lodash/map'
 import times from "lodash/times"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -44,7 +45,10 @@ const {
 	TextControl,
 	ToggleControl,
 	Toolbar,
+	ButtonGroup,
+	Button,
 	TabPanel,
+	Dashicon,
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -254,6 +258,9 @@ class UAGBcontentTimeline extends Component {
 				iconColor,
 				dateColor,
 				dateFontsize,
+				dateFontsizeType,
+				dateFontsizeMobile,
+				dateFontsizeTablet,
 				authorFontsize,
 				iconSize,
 				borderRadius,
@@ -277,8 +284,8 @@ class UAGBcontentTimeline extends Component {
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
-		const iconColorSettings = (			
-			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true } 
+		const iconColorSettings = (
+			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
 				colorSettings={ [
 					{
 						value: separatorColor,
@@ -302,10 +309,10 @@ class UAGBcontentTimeline extends Component {
 					},
 				] }
 			>
-			</PanelColorSettings>			
+			</PanelColorSettings>
 		)
 
-		const iconFocusSettings = (			
+		const iconFocusSettings = (
 			<PanelColorSettings	title={ __( "Color Settings" ) } initialOpen={ true }
 				colorSettings={ [
 					{
@@ -330,10 +337,10 @@ class UAGBcontentTimeline extends Component {
 					},
 				] }
 			>
-			</PanelColorSettings>			
+			</PanelColorSettings>
 		)
 
-		const iconControls = (			
+		const iconControls = (
 			<PanelBody	title={ __( "Connector Color Settings" ) }	initialOpen={ true }>
 				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 					activeClass="active-tab"
@@ -347,7 +354,7 @@ class UAGBcontentTimeline extends Component {
 							name: "focus",
 							title: __( "Focus" ),
 							className: "uagb-focus-tab",
-						},							
+						},
 					] }>
 					{
 						( tabName ) => {
@@ -378,7 +385,29 @@ class UAGBcontentTimeline extends Component {
 			)
 		}
 
-		const renderSettings = (			
+		const sizeTypes = [
+			{ key: 'px', name: __( 'px' ) },
+			{ key: 'em', name: __( 'em' ) },
+		];
+
+		const dateTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ dateFontsizeType === key }
+						aria-pressed={ dateFontsizeType === key }
+						onClick={ () => setAttributes( { dateFontsizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const renderSettings = (
 			<PanelBody	title={ __( "Date Settings" ) }	initialOpen={ false } >
 				<ToggleControl
 					label={ __( "Display Post Date" ) }
@@ -399,27 +428,91 @@ class UAGBcontentTimeline extends Component {
 				}
 
 				{ displayPostDate &&  <Fragment>
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
-						<ColorPalette
-							value={ dateColor }
-							onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					<RangeControl
-						label={ __( "Date Font Size" ) }
-						value={ dateFontsize }
-						onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-						min={ 1 }
-						max={ 50 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
+					<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
+					<ColorPalette
+						value={ dateColor }
+						onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
 						allowReset
 					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: 'desktop',
+								title: <Dashicon icon="desktop" />,
+								className: 'uagb-desktop-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'tablet',
+								title: <Dashicon icon="tablet" />,
+								className: 'uagb-tablet-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'mobile',
+								title: <Dashicon icon="smartphone" />,
+								className: 'uagb-mobile-tab uagb-responsive-tabs',
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout;
+
+								if ( 'mobile' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{dateTypesControls}
+											<RangeControl
+												label={ __( "Date Font Size" ) }
+												value={ dateFontsizeMobile }
+												onChange={ ( value ) => setAttributes( { dateFontsizeMobile: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( 'tablet' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{dateTypesControls}
+											<RangeControl
+												label={ __( "Date Font Size" ) }
+												value={ dateFontsizeTablet }
+												onChange={ ( value ) => setAttributes( { dateFontsizeTablet: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									);
+								} else {
+									tabout = (
+										<Fragment>
+											{dateTypesControls}
+											<RangeControl
+												label={ __( "Date Font Size" ) }
+												value={ dateFontsize }
+												onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>;
+							}
+						}
+					</TabPanel>
 				</Fragment>
 				}
-			</PanelBody>			
+			</PanelBody>
 		)
 
 		const content_control = (
@@ -514,7 +607,7 @@ class UAGBcontentTimeline extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>					
+					/>
 					<RangeControl
 						label={ __( "Rounded Corners" ) }
 						value={ borderRadius }
