@@ -243,10 +243,16 @@ class UAGBcontentTimeline extends Component {
 				borderFocus,
 				headingTag,
 				headFontSize,
+				headFontSizeType,
+				headFontSizeMobile,
+				headFontSizeTablet,
 				timelineItem,
 				timelinAlignment,
 				arrowlinAlignment,
 				subHeadFontSize,
+				subHeadFontSizeType,
+				subHeadFontSizeMobile,
+				subHeadFontSizeTablet,
 				verticalSpace,
 				horizontalSpace,
 				separatorwidth,
@@ -400,6 +406,40 @@ class UAGBcontentTimeline extends Component {
 						isPrimary={ dateFontsizeType === key }
 						aria-pressed={ dateFontsizeType === key }
 						onClick={ () => setAttributes( { dateFontsizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const headingTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ headFontSizeType === key }
+						aria-pressed={ headFontSizeType === key }
+						onClick={ () => setAttributes( { headFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const subHeadTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ subHeadFontSizeType === key }
+						aria-pressed={ subHeadFontSizeType === key }
+						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
 					>
 						{ name }
 					</Button>
@@ -626,26 +666,158 @@ class UAGBcontentTimeline extends Component {
 						max={ 50 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Heading Font Size" ) }
-						value={ headFontSize }
-						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Content Font Size" ) }
-						value={ subHeadFontSize }
-						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: 'desktop',
+								title: <Dashicon icon="desktop" />,
+								className: 'uagb-desktop-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'tablet',
+								title: <Dashicon icon="tablet" />,
+								className: 'uagb-tablet-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'mobile',
+								title: <Dashicon icon="smartphone" />,
+								className: 'uagb-mobile-tab uagb-responsive-tabs',
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout;
+
+								if ( 'mobile' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( 'tablet' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									);
+								} else {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSize }
+												onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>;
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: 'desktop',
+								title: <Dashicon icon="desktop" />,
+								className: 'uagb-desktop-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'tablet',
+								title: <Dashicon icon="tablet" />,
+								className: 'uagb-tablet-tab uagb-responsive-tabs',
+							},
+							{
+								name: 'mobile',
+								title: <Dashicon icon="smartphone" />,
+								className: 'uagb-mobile-tab uagb-responsive-tabs',
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout;
+
+								if ( 'mobile' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( 'tablet' === tab.name ) {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									);
+								} else {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSize }
+												onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>;
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
 					<FontIconPicker {...icon_props} />
