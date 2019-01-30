@@ -5,6 +5,7 @@
 const TypographyOptionsAttributes = {
 	fontFamily: {
 		type: 'string',
+		default: 'solid'
 	},
 	fontSize: {
 		type: 'string',

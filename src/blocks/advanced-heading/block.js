@@ -100,11 +100,16 @@ export default class UAGBAdvancedHeading extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
+			attributes,
 			attributes: {
 				headingTitle,
 				headingDesc,
 				headingAlign,
 				headingColor,
+				fontFamily,
+				fontSize,
+				fontWeight,
+				lineHeight,
 				subHeadingColor,
 				separatorColor,
 				headingTag,
@@ -137,11 +142,14 @@ export default class UAGBAdvancedHeading extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( "Advanced Heading" ) }>
 						<TypographyOptions 
+							label={ __( "Heading Tag" ) }
+							attributes={attributes} 
+							setAttributes = { setAttributes } 
+							props = { this.props }
 						/>
 						<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
-							value={ headingTag }
 							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 							options={ [
 								{ value: "h1", label: __( "H1" ) },
@@ -346,6 +354,22 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		headingColor: {
 			type: "string",
+		},
+		fontFamily: {
+			type: 'string',
+			default: 'inherit'
+		},
+		fontSize: {
+			type: 'string',
+			default: ''
+		},
+		fontWeight: {
+			type: 'string',
+			default: 'inherit'
+		},
+		lineHeight: {
+			type: 'string',
+			default: 'inherit'
 		},
 		subHeadingColor: {
 			type: "string",

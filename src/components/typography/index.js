@@ -26,11 +26,19 @@ export {
 };
 
 function TypographyOptions( props ) {
-	
-	const setFontFamily = value => props.setAttributes( { fontFamily: value } );
-	const setFontSize 	= value => props.setAttributes( { fontSize  : value } );
-	const setFontWeight = value => props.setAttributes( { fontWeight: value } );
-	const setLineheight = value => props.setAttributes( { lineheight: value } );
+
+	const setFontFamily = value => {
+		props.setAttributes( { fontFamily: value } );
+	};
+	const setFontSize = value => {
+		props.setAttributes( { fontSize: value } );
+	};
+	const setFontWeight = value => {
+		props.setAttributes( { fontWeight: value } );
+	};
+	const setLineheight = value => {
+		props.setAttributes( { Lineheight: value } );
+	};
 
 	return (
 		<PanelRow>
@@ -38,8 +46,8 @@ function TypographyOptions( props ) {
 				<div>
 					<SelectControl
 						label={ __( "Font Family" ) }
-						value={ setFontFamily }
-						onChange={ ( value ) => setAttributes( { setFontFamily: value } ) }
+						value={ props.attributes.fontFamily }
+						onChange={ setFontFamily }
 						options={ [
 							{ value: "none", label: __( "None" ) },
 							{ value: "solid", label: __( "Solid" ) },
@@ -50,8 +58,8 @@ function TypographyOptions( props ) {
 					/>
 					<SelectControl
 						label={ __( "Font Weight" ) }
-						value={ setFontWeight }
-						onChange={ ( value ) => setAttributes( { setFontWeight: value } ) }
+						value={ props.attributes.fontWeight }
+						onChange={ setFontWeight }
 						options={ [
 							{ value: "none", label: __( "None" ) },
 							{ value: "solid", label: __( "Solid" ) },
@@ -62,8 +70,8 @@ function TypographyOptions( props ) {
 					/>
 					<RangeControl
 						label={ __( "Font Size" ) }
-						value={ setFontSize }
-						onChange={ ( value ) => setAttributes( { setFontSize: value } ) }
+						value={ props.attributes.fontSize }
+						onChange={ setFontSize }
 						min={ 10 }
 						max={ 100 }
 						beforeIcon="editor-textcolor"
@@ -72,8 +80,8 @@ function TypographyOptions( props ) {
 					/>
 					<TextControl
 						label= { __( "Line Height" ) }
-						value= { setLineheight }
-						onChange={ value => setAttributes( { setLineheight: value } ) }
+						value= { props.attributes.lineHeight }
+						onChange={ setLineheight }
 					/>
 				</div>
 			</div>
