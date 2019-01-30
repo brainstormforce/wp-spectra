@@ -75,3 +75,27 @@
     overflow-wrap: break-word;
     flex-basis: 100%;
 }
+
+@media (max-width: 976px) {
+	.uagb-column__align-tablet-left .uagb-column__inner-wrap {
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+	.uagb-column__align-tablet-right .uagb-column__inner-wrap {
+		margin-left: auto;
+		margin-right: 0;
+	}
+}
+
+@media (max-width: 767px) {
+	.uagb-column__align-mobile-left .uagb-column__inner-wrap {
+		margin-left: 0;
+		margin-right: auto;
+	}
+
+	.uagb-column__align-mobile-right .uagb-column__inner-wrap {
+		margin-left: auto;
+		margin-right: 0;
+	}
+}
