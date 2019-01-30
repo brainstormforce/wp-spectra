@@ -138,6 +138,10 @@ hr.uagb-editor__separator {
 	margin-bottom: -20px;
 }
 
+.uagb-size-type-field-tabs.uagb-without-size-type .components-tab-panel__tabs {
+	margin-right: 0;
+}
+
 .uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
     width: 14px;
     height: 14px

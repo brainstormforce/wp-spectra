@@ -200,7 +200,7 @@ export default class UAGBColumnEdit extends Component {
 						min={ 0 }
 						max={ 100 }
 					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
 							{
 								name: "desktop",
