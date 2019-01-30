@@ -1,6 +1,6 @@
 // Import block dependencies and components.
 import classnames from "classnames"
-import map from 'lodash/map';
+import map from "lodash/map"
 
 // Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
@@ -258,12 +258,12 @@ class UAGBinfoBox extends Component {
 		}
 
 		const sizeTypes = [
-			{ key: 'px', name: __( 'px' ) },
-			{ key: 'em', name: __( 'em' ) },
-		];
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
 
 		const prefixsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -280,7 +280,7 @@ class UAGBinfoBox extends Component {
 		)
 
 		const headsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -297,7 +297,7 @@ class UAGBinfoBox extends Component {
 		)
 
 		const descsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -400,7 +400,7 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
-					<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ separatorWidthType === "px" } aria-pressed={ separatorWidthType === "px" } onClick={ () => setAttributes( { separatorWidthType: "px" } ) }>{ "px" }</Button>
 						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ separatorWidthType === "%" } aria-pressed={ separatorWidthType === "%" } onClick={ () => setAttributes( { separatorWidthType: "%" } ) }>{ "%" }</Button>
 					</ButtonGroup>
@@ -706,26 +706,26 @@ class UAGBinfoBox extends Component {
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
-									name: 'desktop',
+									name: "desktop",
 									title: <Dashicon icon="desktop" />,
-									className: 'uagb-desktop-tab uagb-responsive-tabs',
+									className: "uagb-desktop-tab uagb-responsive-tabs",
 								},
 								{
-									name: 'tablet',
+									name: "tablet",
 									title: <Dashicon icon="tablet" />,
-									className: 'uagb-tablet-tab uagb-responsive-tabs',
+									className: "uagb-tablet-tab uagb-responsive-tabs",
 								},
 								{
-									name: 'mobile',
+									name: "mobile",
 									title: <Dashicon icon="smartphone" />,
-									className: 'uagb-mobile-tab uagb-responsive-tabs',
+									className: "uagb-mobile-tab uagb-responsive-tabs",
 								},
 							] }>
 							{
 								( tab ) => {
-									let tabout;
+									let tabout
 
-									if ( 'mobile' === tab.name ) {
+									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
 												{prefixsizeTypesControls}
@@ -741,7 +741,7 @@ class UAGBinfoBox extends Component {
 												/>
 											</Fragment>
 										)
-									} else if ( 'tablet' === tab.name ) {
+									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
 												{prefixsizeTypesControls}
@@ -756,7 +756,7 @@ class UAGBinfoBox extends Component {
 													initialPosition={16}
 												/>
 											</Fragment>
-										);
+										)
 									} else {
 										tabout = (
 											<Fragment>
@@ -775,7 +775,7 @@ class UAGBinfoBox extends Component {
 										)
 									}
 
-									return <div>{ tabout }</div>;
+									return <div>{ tabout }</div>
 								}
 							}
 						</TabPanel>
@@ -811,26 +811,26 @@ class UAGBinfoBox extends Component {
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{headsizeTypesControls}
@@ -846,7 +846,7 @@ class UAGBinfoBox extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{headsizeTypesControls}
@@ -861,7 +861,7 @@ class UAGBinfoBox extends Component {
 												initialPosition={30}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
@@ -880,7 +880,7 @@ class UAGBinfoBox extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>
@@ -902,26 +902,26 @@ class UAGBinfoBox extends Component {
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{descsizeTypesControls}
@@ -937,7 +937,7 @@ class UAGBinfoBox extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{descsizeTypesControls}
@@ -952,7 +952,7 @@ class UAGBinfoBox extends Component {
 												initialPosition={16}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
@@ -971,7 +971,7 @@ class UAGBinfoBox extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>

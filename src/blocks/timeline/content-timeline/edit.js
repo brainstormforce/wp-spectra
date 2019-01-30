@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-import map from 'lodash/map'
+import map from "lodash/map"
 import times from "lodash/times"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -392,12 +392,12 @@ class UAGBcontentTimeline extends Component {
 		}
 
 		const sizeTypes = [
-			{ key: 'px', name: __( 'px' ) },
-			{ key: 'em', name: __( 'em' ) },
-		];
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
 
 		const dateTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -414,7 +414,7 @@ class UAGBcontentTimeline extends Component {
 		)
 
 		const headingTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -431,7 +431,7 @@ class UAGBcontentTimeline extends Component {
 		)
 
 		const subHeadTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 				{ map( sizeTypes, ( { name, key } ) => (
 					<Button
 						key={ key }
@@ -477,26 +477,26 @@ class UAGBcontentTimeline extends Component {
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{dateTypesControls}
@@ -512,7 +512,7 @@ class UAGBcontentTimeline extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{dateTypesControls}
@@ -527,7 +527,7 @@ class UAGBcontentTimeline extends Component {
 												initialPosition={16}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
@@ -546,7 +546,7 @@ class UAGBcontentTimeline extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>
@@ -669,26 +669,26 @@ class UAGBcontentTimeline extends Component {
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{headingTypesControls}
@@ -704,7 +704,7 @@ class UAGBcontentTimeline extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{headingTypesControls}
@@ -719,7 +719,7 @@ class UAGBcontentTimeline extends Component {
 												initialPosition={30}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
@@ -738,33 +738,33 @@ class UAGBcontentTimeline extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{subHeadTypesControls}
@@ -780,7 +780,7 @@ class UAGBcontentTimeline extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
 											{subHeadTypesControls}
@@ -795,7 +795,7 @@ class UAGBcontentTimeline extends Component {
 												initialPosition={16}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
@@ -814,7 +814,7 @@ class UAGBcontentTimeline extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>

@@ -5,7 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
-import map from 'lodash/map'
+import map from "lodash/map"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
@@ -143,29 +143,29 @@ class UAGBMultiButtonEdit extends Component {
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
-								name: 'desktop',
+								name: "desktop",
 								title: <Dashicon icon="desktop" />,
-								className: 'uagb-desktop-tab uagb-responsive-tabs',
+								className: "uagb-desktop-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'tablet',
+								name: "tablet",
 								title: <Dashicon icon="tablet" />,
-								className: 'uagb-tablet-tab uagb-responsive-tabs',
+								className: "uagb-tablet-tab uagb-responsive-tabs",
 							},
 							{
-								name: 'mobile',
+								name: "mobile",
 								title: <Dashicon icon="smartphone" />,
-								className: 'uagb-mobile-tab uagb-responsive-tabs',
+								className: "uagb-mobile-tab uagb-responsive-tabs",
 							},
 						] }>
 						{
 							( tab ) => {
-								let tabout;
+								let tabout
 
-								if ( 'mobile' === tab.name ) {
+								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 												<Button
 													key={ "px" }
 													className="uagb-size-btn"
@@ -201,10 +201,10 @@ class UAGBMultiButtonEdit extends Component {
 											/>
 										</Fragment>
 									)
-								} else if ( 'tablet' === tab.name ) {
+								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 												<Button
 													key={ "px" }
 													className="uagb-size-btn"
@@ -239,11 +239,11 @@ class UAGBMultiButtonEdit extends Component {
 												initialPosition={16}
 											/>
 										</Fragment>
-									);
+									)
 								} else {
 									tabout = (
 										<Fragment>
-											<ButtonGroup className="uagb-size-type-field" aria-label={ __( 'Size Type' ) }>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 												<Button
 													key={ "px" }
 													className="uagb-size-btn"
@@ -281,7 +281,7 @@ class UAGBMultiButtonEdit extends Component {
 									)
 								}
 
-								return <div>{ tabout }</div>;
+								return <div>{ tabout }</div>
 							}
 						}
 					</TabPanel>

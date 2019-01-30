@@ -17,7 +17,7 @@ global $uagb_post_settings;
  */
 function uagb_post_carousel_callback( $attributes ) {
 
-	$query = uagb_get_post_query( $attributes );
+	$query = UAGB_Helper::get_query( $attributes, 'carousel' );
 	global $uagb_post_settings;
 
 	$uagb_post_settings['carousel'][ $attributes['block_id'] ] = $attributes;
@@ -38,7 +38,7 @@ function uagb_post_carousel_callback( $attributes ) {
  */
 function uagb_post_grid_callback( $attributes ) {
 
-	$query = uagb_get_post_query( $attributes );
+	$query = UAGB_Helper::get_query( $attributes, 'grid' );
 	global $uagb_post_settings;
 
 	$uagb_post_settings['grid'][ $attributes['block_id'] ] = $attributes;
@@ -59,7 +59,7 @@ function uagb_post_grid_callback( $attributes ) {
  */
 function uagb_post_masonry_callback( $attributes ) {
 
-	$query = uagb_get_post_query( $attributes );
+	$query = UAGB_Helper::get_query( $attributes, 'masonry' );
 	global $uagb_post_settings;
 
 	$uagb_post_settings['masonry'][ $attributes['block_id'] ] = $attributes;
@@ -154,28 +154,6 @@ function uagb_post_block_add_script() {
 			<?php
 		}
 	}
-}
-
-/**
- * Renders the post block query object.
- *
- * @param array $attributes Array of block attributes.
- *
- * @return WP_Query object Object.
- * @since 0.0.1
- */
-function uagb_get_post_query( $attributes ) {
-
-	$query_args = array(
-		'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
-		'post_status'         => 'publish',
-		'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
-		'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
-		'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
-		'ignore_sticky_posts' => 1,
-	);
-
-	return new WP_Query( $query_args );
 }
 
 /**
