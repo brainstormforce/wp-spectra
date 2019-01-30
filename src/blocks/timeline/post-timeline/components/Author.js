@@ -18,18 +18,18 @@ class Author extends React.Component {
 					}}		>
 						<span className="dashicons-admin-users dashicons" style= {{
 							color: attributes.authorColor,
-							fontSize: attributes.authorFontSize+"px",								
+							fontSize: attributes.authorFontSize+attributes.authorFontSizeType,
 						}}></span>
-						<a className="uagb-timeline__author-link" target= {target} href={ post.author_info.author_link } rel ="noopener noreferrer" 
+						<a className="uagb-timeline__author-link" target= {target} href={ post.author_info.author_link } rel ="noopener noreferrer"
 							style= {{
 								color: attributes.authorColor,
-								fontSize: attributes.authorFontSize+"px",								
+								fontSize: attributes.authorFontSize+attributes.authorFontSizeType,
 							}}
 						>
 							{ post.author_info.display_name }
 						</a>
 					</div>
-				}				
+				}
 			</Fragment>
 		)
 	}
