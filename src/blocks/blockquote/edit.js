@@ -42,7 +42,7 @@ class UAGBBlockQuote extends Component {
 		this.onSelectImage    = this.onSelectImage.bind( this )
 		this.onRemoveImage    = this.onRemoveImage.bind( this )
 	}
-	
+
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -71,7 +71,7 @@ class UAGBBlockQuote extends Component {
 		}
 
 		setAttributes( { authorImage: media } )
-	}	
+	}
 
 	render() {
 
@@ -81,15 +81,15 @@ class UAGBBlockQuote extends Component {
 		const {
 			block_id,
 			skinStyle,
-			align,	
+			align,
 			description_text,
-			author,		
+			author,
 			authorColor,
-			descColor,			
+			descColor,
 			descFontSize,
 			authorFontSize,
 			descSpace,
-			authorSpace,	
+			authorSpace,
 			stack,
 			borderColor,
 			borderStyle,
@@ -101,7 +101,7 @@ class UAGBBlockQuote extends Component {
 			quoteSize,
 			quotePadding,
 			quoteBorderRadius,
-			quoteStyle,			
+			quoteStyle,
 			enableTweet,
 			tweetLinkColor,
 			tweetBtnColor,
@@ -116,8 +116,8 @@ class UAGBBlockQuote extends Component {
 			iconSkin,
 			iconLabel,
 			iconShareVia,
-			iconTargetUrl,	
-			customUrl,		
+			iconTargetUrl,
+			customUrl,
 			authorImage,
 			authorImageWidth,
 			authorImageSize,
@@ -136,7 +136,7 @@ class UAGBBlockQuote extends Component {
 		var element = document.getElementById( "uagb-blockquote-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
-		}	
+		}
 
 		let image_name = __( "Select Image" )
 		if(authorImage){
@@ -157,7 +157,7 @@ class UAGBBlockQuote extends Component {
 		const border_settings =(
 			<Fragment>
 				<SelectControl
-					label={ __( "Border Style" ) }
+					label={ __( "Style" ) }
 					value={ borderStyle }
 					onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 					options={ [
@@ -173,7 +173,7 @@ class UAGBBlockQuote extends Component {
 					] }
 				/>
 				{ "none" != borderStyle && <RangeControl
-					label={ __( "Border Width" ) }
+					label={ __( "Thickness (px)" ) }
 					value={ borderWidth }
 					onChange={ ( value ) => setAttributes( { borderWidth: value } ) }
 					min={ 0 }
@@ -181,7 +181,7 @@ class UAGBBlockQuote extends Component {
 					allowReset
 				/>
 				 }
-			</Fragment>		
+			</Fragment>
 		)
 
 		const quote_settings = (
@@ -193,7 +193,7 @@ class UAGBBlockQuote extends Component {
 					min={ 0 }
 					max={ 150 }
 					allowReset
-				/>		
+				/>
 				<RangeControl
 					label={ __( "Quote Icon Background Size" ) }
 					value={ quotePadding }
@@ -202,7 +202,7 @@ class UAGBBlockQuote extends Component {
 					max={ 50 }
 					allowReset
 				/>
-				{ quoteBgColor &&				
+				{ quoteBgColor &&
 					<RangeControl
 						label={ __( "Quote Icon Border Radius (%)" ) }
 						value={ quoteBorderRadius }
@@ -210,24 +210,24 @@ class UAGBBlockQuote extends Component {
 						min={ 0 }
 						max={ 100 }
 						allowReset
-					/>	
-				}			
+					/>
+				}
 			</Fragment>
 		)
 
-		const skin_settings =(			
-			<PanelBody	title={ __( "Style" ) } >
+		const skin_settings =(
+			<PanelBody	title={ __( "Layout" ) } >
 				<SelectControl
-					label={ __( "Style" ) }
+					label={ __( "Layout" ) }
 					options={[
-						{ value: "border", label: __( "Border" ) },
+						{ value: "border", label: __( "Modern" ) },
 						{ value: "quotation", label: __( "Quotation" ) },
 					] }
 					value={ skinStyle }
 					onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
 				/>
 				{ skinStyle === "border" && border_settings	}
-				{ skinStyle === "quotation" && quote_settings }	
+				{ skinStyle === "quotation" && quote_settings }
 				<hr className="uagb-editor__separator" />
 				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 					activeClass="active-tab"
@@ -241,7 +241,7 @@ class UAGBBlockQuote extends Component {
 							name: "hover",
 							title: __( "Hover" ),
 							className: "uagb-hover-tab",
-						},							
+						},
 					] }>
 					{
 						( tabName ) => {
@@ -254,8 +254,8 @@ class UAGBBlockQuote extends Component {
 							return <div>{ tabout }</div>
 						}
 					}
-				</TabPanel>	
-				<hr className="uagb-editor__separator" />				
+				</TabPanel>
+				<hr className="uagb-editor__separator" />
 				<SelectControl
 					label={ __( "Stack on" ) }
 					value={ stack }
@@ -266,8 +266,8 @@ class UAGBBlockQuote extends Component {
 					] }
 					help={ __( "Note: Choose on what breakpoint the elements will stack." ) }
 					onChange={ ( value ) => setAttributes( { stack: value } ) }
-				/>										
-			</PanelBody>			
+				/>
+			</PanelBody>
 		)
 
 		// Image controls.
@@ -326,7 +326,7 @@ class UAGBBlockQuote extends Component {
 							max = { 100 }
 							beforeIcon = ""
 							allowReset
-						/>		
+						/>
 					</Fragment>
 				}
 			</Fragment>
@@ -334,7 +334,7 @@ class UAGBBlockQuote extends Component {
 
 		const colorSettings = (
 			<Fragment>
-				{ "none" != borderStyle && skinStyle == "border" && <Fragment>					
+				{ "none" != borderStyle && skinStyle == "border" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
 					<ColorPalette
 						value={ borderColor }
@@ -342,8 +342,8 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 				</Fragment>
-				}				
-				
+				}
+
 				{ skinStyle == "quotation" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Quote Icon Color" ) }
 						<span className="components-base-control__label">
@@ -360,14 +360,14 @@ class UAGBBlockQuote extends Component {
 						value={ quoteBgColor }
 						onChange={ ( colorValue ) => setAttributes( { quoteBgColor: colorValue } ) }
 						allowReset
-					/>		
+					/>
 				</Fragment>
-				}				
+				}
 			</Fragment>
 		)
 
 		const hoverSettings = (
-			<Fragment>	
+			<Fragment>
 				{ skinStyle == "border" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
 						<span className="components-base-control__label">
@@ -376,7 +376,7 @@ class UAGBBlockQuote extends Component {
 						value={ borderHoverColor }
 						onChange={ ( colorValue ) => setAttributes( { borderHoverColor: colorValue } ) }
 						allowReset
-					/>					
+					/>
 				</Fragment>
 				}
 				{ skinStyle == "quotation" && <Fragment>
@@ -395,15 +395,15 @@ class UAGBBlockQuote extends Component {
 						value={ quoteBgHoverColor }
 						onChange={ ( colorValue ) => setAttributes( { quoteBgHoverColor: colorValue } ) }
 						allowReset
-					/>		
+					/>
 				</Fragment>
-				}									
+				}
 			</Fragment>
 		)
 
 		const Typography =(
 			<Fragment>
-				<PanelBody title={ __( "Content" ) } initialOpen={ false }>						
+				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<RangeControl
 						label={ __( "Quote Font Size" ) }
 						value={ descFontSize }
@@ -413,7 +413,7 @@ class UAGBBlockQuote extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 						initialPosition={30}
-					/>					
+					/>
 					<p className="uagb-setting-label">{ __( "Quote Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
@@ -432,7 +432,7 @@ class UAGBBlockQuote extends Component {
 						beforeIcon="editor-textcolor"
 						allowReset
 						initialPosition={16}
-					/>	
+					/>
 					<p className="uagb-setting-label">{ __( "Author Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
@@ -441,14 +441,14 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( colorValue ) => setAttributes( { authorColor: colorValue } ) }
 						allowReset
 					/>
-				
-					{ imageControls } 
-								
-				</PanelBody>			
+
+					{ imageControls }
+
+				</PanelBody>
 			</Fragment>
 		)
 
-		const tweet_normal = ( 
+		const tweet_normal = (
 			<Fragment>
 				{ iconSkin == "link" && <Fragment>
 					<p className="uagb-setting-label">{ __( "Tweet Color" ) }
@@ -478,15 +478,15 @@ class UAGBBlockQuote extends Component {
 					        value={ tweetBtnBgColor }
 					        onChange={ ( colorValue ) => setAttributes( { tweetBtnBgColor: colorValue } ) }
 					        allowReset
-					    />			   
+					    />
 				</Fragment>
 				}
 			</Fragment>
-		)	
+		)
 
 		const tweet_hover = (
 			<Fragment>
-				{ iconSkin == "link" && <Fragment>							
+				{ iconSkin == "link" && <Fragment>
 					    <p className="uagb-setting-label">{ __( "Tweet Hover Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: tweetBtnHoverColor }} ></span></span></p>
@@ -517,13 +517,13 @@ class UAGBBlockQuote extends Component {
 					        allowReset
 					    />
 				</Fragment>
-				}			
+				}
 			</Fragment>
 		)
 
-		const spacing_settings =(			
+		const spacing_settings =(
 			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-				{ skinStyle === "quotation" && <Fragment>						
+				{ skinStyle === "quotation" && <Fragment>
 					<RangeControl
 						label={ __( "Quote Icon Top Margin" ) }
 						value={ quoteTopMargin }
@@ -575,7 +575,7 @@ class UAGBBlockQuote extends Component {
 						min={ 0 }
 						max={ 100 }
 						allowReset
-					/>	
+					/>
 				</Fragment>
 				}
 				<RangeControl
@@ -586,7 +586,7 @@ class UAGBBlockQuote extends Component {
 					max={ 50 }
 					allowReset
 					initialPosition={0}
-				/>	
+				/>
 				{ align == "center" && skinStyle !== "border" && <RangeControl
 					label={ __( "Author Bottom Spacing" ) }
 					value={ authorSpace }
@@ -596,18 +596,18 @@ class UAGBBlockQuote extends Component {
 					allowReset
 					initialPosition={0}
 				/>
-				}									
-					
+				}
+
 			</PanelBody>
 		)
 
-		const twitter_settings =(			
+		const twitter_settings =(
 			<PanelBody title={ __( "Twitter Icon" ) } initialOpen={ false }>
 				<ToggleControl
 					label={ __( "Enable Twitter Icon" ) }
 					checked={ enableTweet }
 					onChange={ ( value ) => setAttributes( { enableTweet: ! enableTweet } ) }
-				/>	
+				/>
 				{ enableTweet && <Fragment>
 					<SelectControl
 						label={ __( "Icon View" ) }
@@ -629,17 +629,17 @@ class UAGBBlockQuote extends Component {
 							{ value: "link", label: __( "Link" ) },
 						] }
 					/>
-				</Fragment>}	
+				</Fragment>}
 				{ enableTweet && iconView !== "icon" && <Fragment>
 					<hr className="uagb-editor__separator" />
 					<TextControl
 						label= { __( "Label" ) }
 						value= { iconLabel }
 						onChange={ value => setAttributes( { iconLabel: value } ) }
-					/>		
-					
-				</Fragment>		
-				}	
+					/>
+
+				</Fragment>
+				}
 				<RangeControl
 					label={ __( "Tweet Font Size" ) }
 					value={ tweetBtnFontSize }
@@ -649,8 +649,8 @@ class UAGBBlockQuote extends Component {
 					beforeIcon="editor-textcolor"
 					allowReset
 					initialPosition={16}
-				/>					
-				{ enableTweet && <Fragment>					
+				/>
+				{ enableTweet && <Fragment>
 					<SelectControl
 						label={ __( "Target URL" ) }
 						value={ iconTargetUrl }
@@ -659,15 +659,15 @@ class UAGBBlockQuote extends Component {
 							{ value: "current", label: __( "Current Page" ) },
 							{ value: "custom", label: __( "Custom URL" ) },
 						] }
-					/>				
+					/>
 					{ iconTargetUrl == "custom" && <TextControl
 						label= { __( "URL" ) }
 						value= { customUrl }
 						onChange={ value => setAttributes( { customUrl: value } ) }
-					/>	
-					}							
+					/>
+					}
 				</Fragment>
-				}	
+				}
 				{ enableTweet && iconSkin !== "link" && <Fragment>
 					<hr className="uagb-editor__separator" />
 					<RangeControl
@@ -678,7 +678,7 @@ class UAGBBlockQuote extends Component {
 						max={ 50 }
 						allowReset
 						initialPosition={5}
-					/>	
+					/>
 					<RangeControl
 						label={ __( "Button Vertical Padding" ) }
 						value={ tweetBtnVrPadding }
@@ -687,9 +687,9 @@ class UAGBBlockQuote extends Component {
 						max={ 50 }
 						allowReset
 						initialPosition={5}
-					/>	
+					/>
 				</Fragment>
-				}	
+				}
 				{ (enableTweet && iconView == "icon_text") && <RangeControl
 					label={ __( "Space between Tweet Icon and Text" ) }
 					value={ tweetIconSpacing }
@@ -698,7 +698,7 @@ class UAGBBlockQuote extends Component {
 					max={ 20 }
 					allowReset
 					initialPosition={5}
-				/>						
+				/>
 				}
 				{ enableTweet && <Fragment>
 					<hr className="uagb-editor__separator" />
@@ -714,7 +714,7 @@ class UAGBBlockQuote extends Component {
 								name: "hover",
 								title: __( "Hover" ),
 								className: "uagb-hover-tab",
-							},							
+							},
 						] }>
 						{
 							( tabName ) => {
@@ -730,18 +730,18 @@ class UAGBBlockQuote extends Component {
 					</TabPanel>
 				</Fragment>
 				}
-			</PanelBody>				
-		)	
-		
+			</PanelBody>
+		)
+
 		return (
-			<Fragment>				
+			<Fragment>
 				<BlockControls key='controls'>
 					{  ( skinStyle !== "border" )  && <AlignmentToolbar
 						value={ align }
 						onChange={ ( value ) => setAttributes( { align: value } ) }
 					/>
 					}
-					{ skinStyle === "quotation" && <Fragment>						
+					{ skinStyle === "quotation" && <Fragment>
 						<Toolbar>
 							<Tooltip text={ __( "Normal Quote" ) }>
 								<Button
@@ -774,7 +774,7 @@ class UAGBBlockQuote extends Component {
 					</Fragment>
 					}
 
-					{ enableTweet && 
+					{ enableTweet &&
 						<Fragment>
 							<Toolbar>
 								<label
@@ -795,17 +795,17 @@ class UAGBBlockQuote extends Component {
 							</Toolbar>
 						</Fragment>
 					}
-					
+
 				</BlockControls>
 				<InspectorControls>
-					{ skin_settings }					
+					{ skin_settings }
 					{ Typography }
 					{ twitter_settings }
-					{ spacing_settings }					
+					{ spacing_settings }
 				</InspectorControls>
 				<div
 					className = { classnames(
-						className,						
+						className,
 						"uagb-blockquote__outer-wrap",
 					) }
 					id={ `uagb-quote-${ this.props.clientId }` }>
@@ -817,8 +817,8 @@ class UAGBBlockQuote extends Component {
 						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
 						`uagb-quote-stack-img-${stack}`
 					) } >
-						
-						<blockquote className="uagb-blockquote">					  
+
+						<blockquote className="uagb-blockquote">
 							{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">
 								{ UAGB_Block_Icons.quote_inline_icon }
 							</span>	</div> }
@@ -829,8 +829,8 @@ class UAGBBlockQuote extends Component {
 					   <footer>
 					   		<div className={ classnames(
 										"uagb-quote__author-wrap",
-										( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
-									) }	>					   		
+										( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",
+									) }	>
 					      		{ <AuthorImage attributes={attributes} /> }
 					      		{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 									</div>
