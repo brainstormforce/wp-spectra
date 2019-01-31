@@ -29,6 +29,9 @@ function InfoBoxStyle( props ) {
 		seperatorSpace,
 		ctaLinkColor,
 		ctaFontSize,
+		ctaFontSizeType,
+		ctaFontSizeMobile,
+		ctaFontSizeTablet,
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
@@ -120,7 +123,7 @@ function InfoBoxStyle( props ) {
 
 	// CTA style
 	selectors[".uagb-infobox-cta-link a"] = {
-		"font-size" : ctaFontSize+"px",
+		"font-size" : ctaFontSize+ctaFontSizeType,
 		"color": ctaLinkColor,
 	}
 
@@ -137,7 +140,7 @@ function InfoBoxStyle( props ) {
 	}
 
 	selectors[".uagb-infobox-cta-link span"] = {
-		"font-size" : ctaFontSize+"px",
+		"font-size" : ctaFontSize+ctaFontSizeType,
 		"width" : ctaFontSize+"px",
 		"height" : ctaFontSize+"px",
 		"color": ctaLinkColor,
@@ -234,6 +237,12 @@ function InfoBoxStyle( props ) {
 	tablet_selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
 		"font-size": prefixFontSizeTablet + prefixFontSizeType,
 	}
+	tablet_selectors[".uagb-infobox-cta-link a"] = {
+		"font-size": ctaFontSizeTablet + ctaFontSizeType,
+	}
+	tablet_selectors[".uagb-infobox-cta-link span"] = {
+		"font-size": ctaFontSizeTablet + ctaFontSizeType,
+	}
 
 	mobile_selectors[".editor-rich-text .uagb-ifb-desc"] = {
 		"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
@@ -243,6 +252,12 @@ function InfoBoxStyle( props ) {
 	}
 	mobile_selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
 		"font-size": prefixFontSizeMobile + prefixFontSizeType,
+	}
+	mobile_selectors[".uagb-infobox-cta-link a"] = {
+		"font-size": ctaFontSizeMobile + ctaFontSizeType,
+	}
+	mobile_selectors[".uagb-infobox-cta-link span"] = {
+		"font-size": ctaFontSizeMobile + ctaFontSizeType,
 	}
 
 	var styling_css = ""
