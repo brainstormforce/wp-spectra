@@ -42,45 +42,45 @@ function CtaStyle( props ) {
 
 	var selectors = {}
 
-	selectors[".uagb-cta__content-wrap"] = {
+	selectors[" .uagb-cta__content-wrap"] = {
 		"text-align" : textAlign,
 	}		
 	
 
 	if( textAlign === "left" && ctaPosition === "right" ){		
-		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
+		selectors[" .uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-left" : ctaLeftSpace+"px",
 			"margin-right" : "0px",
 		}		
 	}
 
 	if( textAlign === "right" && ctaPosition === "right" ){		
-		selectors[".uagb-cta__left-right-wrap .uagb-cta__content"] = {
+		selectors[" .uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-right" : ctaRightSpace+"px",	
 			"margin-left" : "0px",	
 		}		
 	}
 
 	if( ctaPosition === "right" && ( ctaType === "text" || ctaType === "button" ) ){		
-		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
+		selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"width" : contentWidth+"%",	
 		}	
-		selectors[".uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
+		selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
 			"width" : ( 100 - contentWidth )+"%",	
 		}
 	}
 
 	// CTA style
 
-	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-text"] = {
+	selectors[" .uagb-cta__button-wrapper a.uagb-cta-typeof-text"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 	}
-	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text"] = {
+	selectors[" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text"] = {
 		"color": ctaLinkHoverColor,
 	}
 
-	selectors[".uagb-cta__button-wrapper a.uagb-cta-typeof-button"] = {
+	selectors[" .uagb-cta__button-wrapper a.uagb-cta-typeof-button"] = {
 		"font-size" : ctaFontSize+"px",
 		"color": ctaBtnLinkColor,
 		"background-color": ctaBgColor,
@@ -94,46 +94,46 @@ function CtaStyle( props ) {
 		"padding-right": ctaBtnHrPadding + "px",
 	}
 
-	selectors[".uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button"] = {
+	selectors[" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button"] = {
 		"color": ctaLinkHoverColor,
 		"background-color": ctaBgHoverColor,
 		"border-color": ctaBorderhoverColor,
 	}
 
-	selectors[".uagb-cta__button-wrapper .uagb-cta-with-svg"] = {
+	selectors[" .uagb-cta__button-wrapper .uagb-cta-with-svg"] = {
 		"font-size" : ctaFontSize+"px",
 		"height": ctaFontSize+"px",
 		"width": ctaFontSize+"px",
 		"line-height": ctaFontSize+"px",
 	}
 
-	selectors[".uagb-cta__button-wrapper .uagb-cta__block-link svg"] = {
+	selectors[" .uagb-cta__button-wrapper .uagb-cta__block-link svg"] = {
 		"fill" : ctaBtnLinkColor,
 	}	
 
-	selectors[".uagb-cta__button-wrapper:hover .uagb-cta__block-link svg"] = {
+	selectors[" .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg"] = {
 		"fill": ctaLinkHoverColor,
 	}
 	
 	// Title Style
-	selectors[".editor-rich-text .uagb-cta__title"] = {
+	selectors[" .editor-rich-text .uagb-cta__title"] = {
 		"font-size" : titleFontSize+"px",
 		"color": titleColor,
 		"margin-bottom": titleSpace+"px",
 	}
 
 	// Description Style
-	selectors[".editor-rich-text .uagb-cta__desc"] = {
+	selectors[" .editor-rich-text .uagb-cta__desc"] = {
 		"font-size" : descFontSize+"px",
 		"color": descColor,
 		"margin-bottom": descSpace+"px",
 	}
 	
-	selectors[".uagb-cta__align-button-after"] = {
+	selectors[" .uagb-cta__align-button-after"] = {
 		"margin-left" : ctaIconSpace+"px",
 	}
 
-	selectors[".uagb-cta__align-button-before"] = {
+	selectors[" .uagb-cta__align-button-before"] = {
 		"margin-right" : ctaIconSpace+"px",
 	}
 
@@ -141,8 +141,7 @@ function CtaStyle( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
-
+		styling_css += " .block-editor-page #wpwrap #"+clientId+i + " { "
 
 		var sel = selectors[i]
 		var css = ""

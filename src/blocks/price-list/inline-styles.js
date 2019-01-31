@@ -39,13 +39,13 @@ function RestMenuStyle( props ) {
 
 	var selectors = {}
 
-	selectors[".uagb-rest_menu__wrap"] = {
+	selectors[" .uagb-rest_menu__wrap"] = {
 		"padding-left" : columnGap/2+"px",
 		"padding-right" : columnGap/2+"px",                                
 		"margin-bottom" : rowGap+"px",
 	} 
             
-	selectors[".uagb-rest_menu__wrap .uagb-rm__image-content"] = {
+	selectors[" .uagb-rest_menu__wrap .uagb-rm__image-content"] = {
 		"padding-left" : imgHrPadding+"px",
 		"padding-right" : imgHrPadding+"px",                                
 		"padding-top" : imgVrPadding+"px",
@@ -53,7 +53,7 @@ function RestMenuStyle( props ) {
 	} 
 
 	// Image
-	selectors[".uagb-rm__image img"] = {
+	selectors[" .uagb-rm__image img"] = {
 		"width": imageWidth+"px",
 		"max-width": imageWidth+"px",                         
 	} 
@@ -65,11 +65,11 @@ function RestMenuStyle( props ) {
     	align = "flex-end"
 	}
 
-	selectors[".uagb-rm__separator-parent"] ={
+	selectors[" .uagb-rm__separator-parent"] ={
 		"justify-content" : align, 
 	}
             
-	selectors[".uagb-rm__content"] = {                    
+	selectors[" .uagb-rm__content"] = {                    
 		"text-align" : headingAlign, 
 		"padding-left" : contentHrPadding+"px", 
 		"padding-right" : contentHrPadding+"px",      
@@ -78,27 +78,27 @@ function RestMenuStyle( props ) {
 	}                       
 
 	// Prefix Style
-	selectors[".uagb-rm__title"] = {
+	selectors[" .uagb-rm__title"] = {
 		"font-size" : titleFontSize+"px",
 		"color": titleColor,
 		"margin-bottom": titleSpace+"px",
 	}
 
 	// Title Style
-	selectors[".uagb-rm__price"] = {
+	selectors[" .uagb-rm__price"] = {
 		"font-size" : priceFontSize+"px",
 		"color": priceColor,
 	}
 
 	// Description Style
-	selectors[".uagb-rm__desc"] = {
+	selectors[" .uagb-rm__desc"] = {
 		"font-size" : descFontSize+"px",
 		"color": descColor,
 		"margin-bottom": descSpace+"px",
 	}    
                      
 	if ( seperatorStyle != "none" ) {
-		selectors[".uagb-rest_menu__wrap .uagb-rm__separator"] = {
+		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,
 			"border-top-style":seperatorStyle,
 			"border-top-width":seperatorThickness + "px",    
@@ -106,7 +106,7 @@ function RestMenuStyle( props ) {
 		}                 
 	}
 
-	selectors[".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
 		"margin-left": "0%",
 		"clear":"left",
 	}   
@@ -115,7 +115,7 @@ function RestMenuStyle( props ) {
 
 	for( var i in selectors ) {
            
-		styling_css += "#wpwrap #"+clientId+" "+i + " { "
+		styling_css += "#wpwrap #"+clientId+i + " { "
             
             
 		var sel = selectors[i]
