@@ -147,6 +147,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderWidth'          => 1,
 							'borderRadius'         => '',
 							'borderColor'          => '',
+							'align'                => 'center',
+							'alignMobile'          => '',
+							'alignTablet'          => '',
 						),
 					),
 					'uagb/content-timeline' => array(
