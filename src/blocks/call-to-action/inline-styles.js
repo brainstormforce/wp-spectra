@@ -40,12 +40,78 @@ function CtaStyle( props ) {
 		var clientId = "uagb-cta-block-"+block_id
 	}
 
-	var selectors = {}
+	var selectors = {
+		
+		" .uagb-cta__content-wrap" : {
+			"text-align" : textAlign,
+		},		
+		// CTA style
 
-	selectors[" .uagb-cta__content-wrap"] = {
-		"text-align" : textAlign,
-	}		
-	
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
+			"font-size" : ctaFontSize+"px",
+			"color": ctaBtnLinkColor,
+		},
+		" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text" : {
+			"color": ctaLinkHoverColor,
+		},
+
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-button" : {
+			"font-size" : ctaFontSize+"px",
+			"color": ctaBtnLinkColor,
+			"background-color": ctaBgColor,
+			"border-style": ctaBorderStyle,
+			"border-color": ctaBorderColor,
+			"border-radius": ctaBorderRadius + "px",
+			"border-width": ctaBorderWidth + "px",
+			"padding-top": ctaBtnVertPadding + "px",
+			"padding-bottom": ctaBtnVertPadding + "px",
+			"padding-left": ctaBtnHrPadding + "px",
+			"padding-right": ctaBtnHrPadding + "px",
+		},
+
+		" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button" : {
+			"color": ctaLinkHoverColor,
+			"background-color": ctaBgHoverColor,
+			"border-color": ctaBorderhoverColor,
+		},
+
+		" .uagb-cta__button-wrapper .uagb-cta-with-svg" : {
+			"font-size" : ctaFontSize+"px",
+			"height": ctaFontSize+"px",
+			"width": ctaFontSize+"px",
+			"line-height": ctaFontSize+"px",
+		},
+
+		" .uagb-cta__button-wrapper .uagb-cta__block-link svg" : {
+			"fill" : ctaBtnLinkColor,
+		},	
+
+		" .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg" : {
+			"fill": ctaLinkHoverColor,
+		},
+		
+		// Title Style
+		" .editor-rich-text .uagb-cta__title" : {
+			"font-size" : titleFontSize+"px",
+			"color": titleColor,
+			"margin-bottom": titleSpace+"px",
+		},
+
+		// Description Style
+		" .editor-rich-text .uagb-cta__desc" : {
+			"font-size" : descFontSize+"px",
+			"color": descColor,
+			"margin-bottom": descSpace+"px",
+		},
+		
+		" .uagb-cta__align-button-after" : {
+			"margin-left" : ctaIconSpace+"px",
+		},
+
+		" .uagb-cta__align-button-before" : {
+			"margin-right" : ctaIconSpace+"px",
+		},
+	}
 
 	if( textAlign === "left" && ctaPosition === "right" ){		
 		selectors[" .uagb-cta__left-right-wrap .uagb-cta__content"] = {
@@ -68,74 +134,7 @@ function CtaStyle( props ) {
 		selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
 			"width" : ( 100 - contentWidth )+"%",	
 		}
-	}
-
-	// CTA style
-
-	selectors[" .uagb-cta__button-wrapper a.uagb-cta-typeof-text"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaBtnLinkColor,
-	}
-	selectors[" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text"] = {
-		"color": ctaLinkHoverColor,
-	}
-
-	selectors[" .uagb-cta__button-wrapper a.uagb-cta-typeof-button"] = {
-		"font-size" : ctaFontSize+"px",
-		"color": ctaBtnLinkColor,
-		"background-color": ctaBgColor,
-		"border-style": ctaBorderStyle,
-		"border-color": ctaBorderColor,
-		"border-radius": ctaBorderRadius + "px",
-		"border-width": ctaBorderWidth + "px",
-		"padding-top": ctaBtnVertPadding + "px",
-		"padding-bottom": ctaBtnVertPadding + "px",
-		"padding-left": ctaBtnHrPadding + "px",
-		"padding-right": ctaBtnHrPadding + "px",
-	}
-
-	selectors[" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-button"] = {
-		"color": ctaLinkHoverColor,
-		"background-color": ctaBgHoverColor,
-		"border-color": ctaBorderhoverColor,
-	}
-
-	selectors[" .uagb-cta__button-wrapper .uagb-cta-with-svg"] = {
-		"font-size" : ctaFontSize+"px",
-		"height": ctaFontSize+"px",
-		"width": ctaFontSize+"px",
-		"line-height": ctaFontSize+"px",
-	}
-
-	selectors[" .uagb-cta__button-wrapper .uagb-cta__block-link svg"] = {
-		"fill" : ctaBtnLinkColor,
 	}	
-
-	selectors[" .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg"] = {
-		"fill": ctaLinkHoverColor,
-	}
-	
-	// Title Style
-	selectors[" .editor-rich-text .uagb-cta__title"] = {
-		"font-size" : titleFontSize+"px",
-		"color": titleColor,
-		"margin-bottom": titleSpace+"px",
-	}
-
-	// Description Style
-	selectors[" .editor-rich-text .uagb-cta__desc"] = {
-		"font-size" : descFontSize+"px",
-		"color": descColor,
-		"margin-bottom": descSpace+"px",
-	}
-	
-	selectors[" .uagb-cta__align-button-after"] = {
-		"margin-left" : ctaIconSpace+"px",
-	}
-
-	selectors[" .uagb-cta__align-button-before"] = {
-		"margin-right" : ctaIconSpace+"px",
-	}
 
 	var styling_css = ""
 
