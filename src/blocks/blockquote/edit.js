@@ -559,24 +559,15 @@ class UAGBBlockQuote extends Component {
 				</Fragment>
 				}
 
-				{ skinStyle === "border" && <Fragment>
+				{ skinStyle === "border" &&
 					<RangeControl
-						label={ __( "Gap Beetween Border and Quote" ) }
+						label={ __( "Gap Between Border and Quote" ) }
 						value={ borderGap }
 						onChange={ ( value ) => setAttributes( { borderGap: value } ) }
 						min={ 0 }
 						max={ 100 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Vertical Padding" ) }
-						value={ verticalPadding }
-						onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>
-				</Fragment>
 				}
 				<RangeControl
 					label={ __( "Quote Bottom Spacing" ) }
@@ -598,6 +589,19 @@ class UAGBBlockQuote extends Component {
 				/>
 				}
 
+				{ skinStyle === "border"  && <Fragment>
+					<h2>{ __( "Vertical Padding" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
+						value={ verticalPadding }
+						onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
+						min={ 0 }
+						max={ 100 }
+						allowReset
+					/>
+					</Fragment>
+				}
 			</PanelBody>
 		)
 
