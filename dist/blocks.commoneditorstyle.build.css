@@ -3038,15 +3038,14 @@ i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
 }
-<<<<<<< HEAD
+
 label.wp-block-uagb-blockquote__via-label svg {
     fill: #6c7781;
     vertical-align: middle;
-=======
+}
 .slick-arrow svg{
 	vertical-align: middle;
 }
 .components-select-control__input{
 	text-transform: capitalize;
->>>>>>> a77520f67842c44d55a0c5300dc21f86450fc01a
 }
