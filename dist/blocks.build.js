@@ -64969,9 +64969,7 @@ registerBlockType("uagb/column", {
 	category: uagb_blocks_info.category,
 	parent: ["uagb/columns"],
 	supports: {
-		inserter: false,
-		reusable: false,
-		html: false
+		inserter: false
 	},
 	attributes: {
 		block_id: {
