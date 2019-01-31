@@ -2148,18 +2148,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
 
             $selectors[' .uagb-rm__title'] = array(
-                    'font-size' =>  $attr['titleFontSize'] .'px',
+                    'font-size' =>  $attr['titleFontSize'] .$attr['titleFontSizeType'],
                     'color'=>  $attr['titleColor'] ,
                     'margin-bottom'=>  $attr['titleSpace'] .'px',
                 );
 
             $selectors[' .uagb-rm__price'] = array(
-                    'font-size' =>  $attr['priceFontSize'].'px',
+                    'font-size' =>  $attr['priceFontSize'].$attr['priceFontSizeType'],
                     'color'=>  $attr['priceColor'],
                 );
 
             $selectors[' .uagb-rm__desc'] = array(
-                    'font-size' =>  $attr['descFontSize'].'px',
+                    'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
                     'color'=>  $attr['descColor'],
                     'margin-bottom'=>  $attr['descSpace'].'px',
                 );
@@ -2178,15 +2178,37 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'clear'=> 'left',
 			    );
 
-			$t_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)'] = array(
-			        'margin-left'=>  '0%',
-			        'clear'=> 'left',
-			    );
+			$t_selectors = array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
+					'margin-left'=> '0%',
+					'clear'=> 'left',
+				),
+				" .uagb-rm__title" => array(
+					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+				),
+				" .uagb-rm__desc" => array(
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType']
+				),
+				" .uagb-rm__price" => array(
+					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType']
+				)
+			);
 
-			$m_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)'] = array(
-			        'margin-left'=> '0%',
-			        'clear'=> 'left',
-			    );
+			$m_selectors = array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)' => array(
+					'margin-left'=> '0%',
+					'clear'=> 'left',
+				),
+				" .uagb-rm__title" => array(
+					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+				),
+				" .uagb-rm__desc" => array(
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType']
+				),
+				" .uagb-rm__price" => array(
+					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType']
+				)
+			);
 
 			// @codingStandardsIgnoreEnd
 
