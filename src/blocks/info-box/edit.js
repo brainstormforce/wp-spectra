@@ -202,6 +202,9 @@ class UAGBinfoBox extends Component {
 			ctaIconSpace,
 			ctaLinkColor,
 			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeMobile,
+			ctaFontSizeTablet,
 			ctaBtnLinkColor,
 			ctaLinkHoverColor,
 			ctaBgHoverColor,
@@ -306,6 +309,23 @@ class UAGBinfoBox extends Component {
 						isPrimary={ subHeadFontSizeType === key }
 						aria-pressed={ subHeadFontSizeType === key }
 						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const ctaTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ ctaFontSizeType === key }
+						aria-pressed={ ctaFontSizeType === key }
+						onClick={ () => setAttributes( { ctaFontSizeType: key } ) }
 					>
 						{ name }
 					</Button>
@@ -446,16 +466,82 @@ class UAGBinfoBox extends Component {
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					<RangeControl
-						label={ __( "Text Font Size" ) }
-						value={ ctaFontSize }
-						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-						min={ 0 }
-						max={ 50 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSize }
+												onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
