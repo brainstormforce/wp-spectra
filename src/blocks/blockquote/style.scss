@@ -282,7 +282,10 @@
 			-ms-flex-item-align: flex-end;
     		align-self: flex-end;
 		}
-		
+
+		.uagb-quote-stack-img-tablet a.uagb-blockquote__tweet-button{
+			margin-top: 10px;
+		}		
 	}
 }
 
@@ -321,6 +324,10 @@
 		.uagb-quote-stack-img-mobile.uagb-quote__align-right a.uagb-blockquote__tweet-button{
 			-ms-flex-item-align: flex-end;
     		align-self: flex-end;
+		}
+		
+		.uagb-quote-stack-img-mobile a.uagb-blockquote__tweet-button{
+			margin-top: 10px;
 		}
 	}
 }
