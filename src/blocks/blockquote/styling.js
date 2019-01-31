@@ -32,6 +32,9 @@ function styling( props ) {
 		quoteBgColor,
 		enableTweet,
 		tweetBtnFontSize,
+		tweetBtnFontSizeType,
+		tweetBtnFontSizeTablet,
+		tweetBtnFontSizeMobile,
 		tweetLinkColor,
 		tweetBtnColor,
 		tweetBtnBgColor,
@@ -134,8 +137,10 @@ function styling( props ) {
 	}
 	
 	if( enableTweet ){
+		selectors[" a.uagb-blockquote__tweet-button"] = {
+			"font-size": tweetBtnFontSize + descFontSizeType,				
+		}
 		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + descFontSizeType,
 			"color": tweetLinkColor,		
 		}
 
@@ -144,7 +149,6 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + descFontSizeType,
 			"color": tweetBtnColor,		
 			"background-color": tweetBtnBgColor,	
 			"padding-left": tweetBtnHrPadding + "px",
@@ -158,7 +162,6 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + "px",
 			"color": tweetBtnColor,		
 			"background-color": tweetBtnBgColor,	
 			"padding-left": tweetBtnHrPadding + "px",
@@ -221,6 +224,13 @@ function styling( props ) {
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeTablet + authorFontSizeType,
 		},
+		" a.uagb-blockquote__tweet-button" : {
+			"font-size": tweetBtnFontSizeTablet + descFontSizeType,				
+		},
+		" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" : {
+			"width": tweetBtnFontSizeTablet + tweetBtnFontSizeType,
+			"height": tweetBtnFontSizeTablet +tweetBtnFontSizeType,
+		}	
 	}
 
 	var m_selectors = {
@@ -230,6 +240,13 @@ function styling( props ) {
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeMobile + authorFontSizeType,
 		},
+		" a.uagb-blockquote__tweet-button" : {
+			"font-size": tweetBtnFontSizeMobile + descFontSizeType,				
+		},
+		" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" :{
+			"width": tweetBtnFontSizeMobile + tweetBtnFontSizeType,
+			"height": tweetBtnFontSizeMobile +tweetBtnFontSizeType,
+		}	
 	}
 
 	var styling_css = ""
