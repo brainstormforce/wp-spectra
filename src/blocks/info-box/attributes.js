@@ -185,6 +185,16 @@ const attributes = {
 	ctaFontSize :{
 		type: "number",
 	},
+	ctaFontSizeType :{
+		type: "string",
+		default: "px"
+	},
+	ctaFontSizeMobile :{
+		type: "number",
+	},
+	ctaFontSizeTablet :{
+		type: "number",
+	},
 	ctaBtnLinkColor :{
 		type: "string",
 		default: "#333",
