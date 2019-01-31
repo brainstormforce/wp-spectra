@@ -7,6 +7,7 @@ import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
 import AuthorImage from "./components/AuthorImage"
 import styling from "./styling"
+import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
@@ -30,6 +31,8 @@ const {
 	Toolbar,
 	Tooltip,
 	TabPanel,
+	ButtonGroup,
+	Dashicon
 } = wp.components
 
 // Extend component
@@ -87,7 +90,13 @@ class UAGBBlockQuote extends Component {
 			authorColor,
 			descColor,
 			descFontSize,
+			descFontSizeType,
+			descFontSizeTablet,
+			descFontSizeMobile,
 			authorFontSize,
+			authorFontSizeType,
+			authorFontSizeTablet,
+			authorFontSizeMobile,
 			descSpace,
 			authorSpace,
 			stack,
@@ -109,6 +118,9 @@ class UAGBBlockQuote extends Component {
 			tweetBtnBgColor,
 			tweetBtnBgHoverColor,
 			tweetBtnFontSize,
+			tweetBtnFontSizeType,
+			tweetBtnFontSizeTablet,
+			tweetBtnFontSizeMobile,
 			tweetBtnHrPadding,
 			tweetBtnVrPadding,
 			tweetIconSpacing,
@@ -137,6 +149,63 @@ class UAGBBlockQuote extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const descFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ descFontSizeType === key }
+						aria-pressed={ descFontSizeType === key }
+						onClick={ () => setAttributes( { descFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const authorFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ authorFontSizeType === key }
+						aria-pressed={ authorFontSizeType === key }
+						onClick={ () => setAttributes( { authorFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const tweetBtnFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ tweetBtnFontSizeType === key }
+						aria-pressed={ tweetBtnFontSizeType === key }
+						onClick={ () => setAttributes( { tweetBtnFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
 
 		let image_name = __( "Select Image" )
 		if(authorImage){
@@ -404,16 +473,82 @@ class UAGBBlockQuote extends Component {
 		const Typography =(
 			<Fragment>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-					<RangeControl
-						label={ __( "Quote Font Size" ) }
-						value={ descFontSize }
-						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-						min={ 0 }
-						max={ 100 }
-						beforeIcon="editor-textcolor"
-						allowReset
-						initialPosition={30}
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Quote Font Size" ) }
+												value={ descFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Quote Font Size" ) }
+												value={ descFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Quote Font Size" ) }
+												value={ descFontSize }
+												onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<p className="uagb-setting-label">{ __( "Quote Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
@@ -423,16 +558,82 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<RangeControl
-						label={ __( "Author Font Size" ) }
-						value={ authorFontSize }
-						onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
-						min={ 0 }
-						max={ 100 }
-						beforeIcon="editor-textcolor"
-						allowReset
-						initialPosition={16}
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{authorFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Author Font Size" ) }
+												value={ authorFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { authorFontSizeMobile: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{authorFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Author Font Size" ) }
+												value={ authorFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { authorFontSizeTablet: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{authorFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Author Font Size" ) }
+												value={ authorFontSize }
+												onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<p className="uagb-setting-label">{ __( "Author Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: authorColor }} ></span></span></p>
@@ -644,17 +845,84 @@ class UAGBBlockQuote extends Component {
 
 				</Fragment>
 				}
-				<RangeControl
-					label={ __( "Tweet Font Size" ) }
-					value={ tweetBtnFontSize }
-					onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
-					min={ 0 }
-					max={ 100 }
-					beforeIcon="editor-textcolor"
-					allowReset
-					initialPosition={16}
-				/>
+				
 				{ enableTweet && <Fragment>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{tweetBtnFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Tweet Font Size" ) }
+												value={ tweetBtnFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { tweetBtnFontSizeMobile: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{tweetBtnFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Tweet Font Size" ) }
+												value={ tweetBtnFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { tweetBtnFontSizeTablet: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{tweetBtnFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Tweet Font Size" ) }
+												value={ tweetBtnFontSize }
+												onChange={ ( value ) => setAttributes( { tweetBtnFontSize: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<SelectControl
 						label={ __( "Target URL" ) }
 						value={ iconTargetUrl }

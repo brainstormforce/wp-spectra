@@ -9,15 +9,19 @@ function styling( props ) {
 	const {
 		block_id,
 		skinStyle,
-		quoteStyle,
 		align,	
 		authorColor,
 		descColor,
 		descFontSize,
+		descFontSizeType,
+		descFontSizeTablet,
+		descFontSizeMobile,
 		authorFontSize,
+		authorFontSizeType,
+		authorFontSizeTablet,
+		authorFontSizeMobile,
 		descSpace,
 		authorSpace,	
-		stack,
 		borderColor,
 		borderStyle,
 		borderWidth,
@@ -25,7 +29,6 @@ function styling( props ) {
 		verticalPadding,
 		quoteColor,
 		quoteSize,
-		quoteGap,
 		quoteBgColor,
 		enableTweet,
 		tweetBtnFontSize,
@@ -37,7 +40,6 @@ function styling( props ) {
 		tweetBtnHrPadding,
 		tweetBtnVrPadding,
 		tweetIconSpacing,		
-		authorImage,
 		authorImageWidth,
 		authorImageSize,
 		authorImgBorderRadius,
@@ -75,13 +77,13 @@ function styling( props ) {
 
 	var selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
-			"font-size": descFontSize + "px",
+			"font-size": descFontSize + descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
 			"text-align": text_align,
 		},
 		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
-			"font-size": authorFontSize + "px",
+			"font-size": authorFontSize + authorFontSizeType,
 			"color": authorColor,			
 			"text-align": text_align,			
 		},
@@ -133,7 +135,7 @@ function styling( props ) {
 	
 	if( enableTweet ){
 		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + "px",
+			"font-size": tweetBtnFontSize + descFontSizeType,
 			"color": tweetLinkColor,		
 		}
 
@@ -142,7 +144,7 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + "px",
+			"font-size": tweetBtnFontSize + descFontSizeType,
 			"color": tweetBtnColor,		
 			"background-color": tweetBtnBgColor,	
 			"padding-left": tweetBtnHrPadding + "px",
@@ -212,6 +214,24 @@ function styling( props ) {
 		}
 	}
 
+	var t_selectors = {
+		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
+			"font-size": descFontSizeTablet + descFontSizeType,
+		},
+		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+			"font-size": authorFontSizeTablet + authorFontSizeType,
+		},
+	}
+
+	var m_selectors = {
+		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
+			"font-size": descFontSizeMobile + descFontSizeType,
+		},
+		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+			"font-size": authorFontSizeMobile + authorFontSizeType,
+		},
+	}
+
 	var styling_css = ""
 
 	for( var i in selectors ) {
@@ -230,6 +250,48 @@ function styling( props ) {
 
 		styling_css += css + " } "
 	}
+
+	styling_css += "@media only screen and (max-width: 976px) {"
+
+	for( var i in t_selectors ) {
+
+		styling_css += `.block-editor-page #wpwrap #uagb-quote-${ props.clientId }`
+
+		styling_css += i + " { "
+
+		var sel = t_selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	styling_css += " }"
+
+	styling_css += "@media only screen and (max-width: 767px) {"
+
+	for( var i in m_selectors ) {
+
+		styling_css += `.block-editor-page #wpwrap #uagb-quote-${ props.clientId }`
+
+		styling_css += i + " { "
+
+		var sel = m_selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	styling_css += " }"
 
 	return styling_css
 }

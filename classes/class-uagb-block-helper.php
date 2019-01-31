@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2596,9 +2597,61 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
+			$t_selectors = array(
+				" .uagb-blockquote__content" => array(
+					"font-size"         => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+				),
+				" cite.uagb-blockquote__author" =>array(
+					"font-size"         => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+				),
+				" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+				),
+				" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],					
+				),
+				" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+				),
+				" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+					"height"             => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+				),		
+			);
+
+			$m_selectors = array(
+				" .uagb-blockquote__content" =>  array(
+					"font-size"         => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+				),
+				" cite.uagb-blockquote__author" =>  array(
+					"font-size"         => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+				),
+				" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+				),
+
+				" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],					
+				),
+
+				" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button" => array(
+					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+				),
+
+				" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+				),
+			);
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-quote-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-quote-' . $id );
+
+			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-quote-' . $id );
+
+			return $desktop . $tablet . $mobile;
 
 			return $desktop;
 		}
