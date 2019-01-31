@@ -20,7 +20,7 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.size + "px",
+			"font-size" : button.size + button.sizeType,
 			"border-width": button.borderWidth + "px",
 			"border-style": button.borderStyle,
 			"border-color": button.borderColor,
@@ -51,6 +51,14 @@ function styling( props ) {
 
 		selectors[" .uagb-buttons-repeater-" + index + ":hover .uagb-button__link"] = {
 			"color": button.hColor
+		}
+
+		mobile_selectors[" .uagb-buttons-repeater-" + index] = {
+			"font-size" : button.sizeMobile + button.sizeType
+		}
+
+		tablet_selectors[" .uagb-buttons-repeater-" + index] = {
+			"font-size" : button.sizeTablet + button.sizeType
 		}
 
 	})

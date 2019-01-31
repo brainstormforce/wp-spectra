@@ -16,12 +16,12 @@ class CtaLink extends React.Component {
 					className='uagb-timeline__link_parent'
 					style= {{
 						textAlign: attributes.align
-					}}					
+					}}
 				>
-					<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer" 
+					<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer"
 						style= {{
 							color: attributes.ctaColor,
-							fontSize: attributes.ctaFontSize+"px",
+							fontSize: attributes.ctaFontSize+attributes.ctaFontSizeType,
 							background: attributes.ctaBackground,
 						}}
 					>{ attributes.readMoreText }</a>

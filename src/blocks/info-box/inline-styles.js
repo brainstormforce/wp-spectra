@@ -12,8 +12,7 @@ function InfoBoxStyle( props ) {
 		prefixFontSize,
 		headFontSize,
 		subHeadFontSize,
-		separatorWidth,
-		separatorHeight,
+		separatorWidthType,
 		headSpace,
 		separatorSpace,
 		subHeadSpace,
@@ -21,7 +20,6 @@ function InfoBoxStyle( props ) {
 		iconColor,
 		iconSize,
 		iconimgPosition,
-		block_id,
 		iconHover,
 		iconimgBorderRadius,
 		seperatorStyle,
@@ -50,16 +48,23 @@ function InfoBoxStyle( props ) {
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
-		ctaIconSpace
+		ctaIconSpace,
+		subHeadFontSizeType,
+		subHeadFontSizeTablet,
+		subHeadFontSizeMobile,
+		headFontSizeType,
+		headFontSizeTablet,
+		headFontSizeMobile,
+		prefixFontSizeType,
+		prefixFontSizeTablet,
+		prefixFontSizeMobile,
 	} = props.attributes
 
-	if( props.clientId ){
-		var clientId = "uagb-infobox-"+props.clientId
-	}else{
-		var clientId = "uagb-infobox-"+block_id
-	}
+	var clientId = "uagb-infobox-"+props.clientId
 
 	var selectors = {}
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	// Icon css
 	selectors[".uagb-ifb-icon"] = {
@@ -178,28 +183,28 @@ function InfoBoxStyle( props ) {
 
 	// Prefix Style
 	selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
-		"font-size" : prefixFontSize+"px",
+		"font-size" : prefixFontSize+prefixFontSizeType,
 		"color": prefixColor,
 		"margin-bottom": prefixSpace+"px",
 	}
 
 	// Title Style
 	selectors[".editor-rich-text .uagb-ifb-title"] = {
-		"font-size" : headFontSize+"px",
+		"font-size" : headFontSize+headFontSizeType,
 		"color": headingColor,
 		"margin-bottom": headSpace+"px",
 	}
 
 	// Description Style
 	selectors[".editor-rich-text .uagb-ifb-desc"] = {
-		"font-size" : subHeadFontSize+"px",
+		"font-size" : subHeadFontSize+subHeadFontSizeType,
 		"color": subHeadingColor,
 		"margin-bottom": subHeadSpace+"px",
 	}
 
 	// Seperator
 	selectors[".uagb-ifb-separator"] = {
-		"width" : seperatorWidth+"%",
+		"width" : seperatorWidth+separatorWidthType,
 		"border-top-width" : seperatorThickness+"px",
 		"border-top-color": seperatorColor,
 		"border-top-style": seperatorStyle,
@@ -220,6 +225,26 @@ function InfoBoxStyle( props ) {
 		"margin-right" : ctaIconSpace+"px",
 	}
 
+	tablet_selectors[".editor-rich-text .uagb-ifb-desc"] = {
+		"font-size": subHeadFontSizeTablet + subHeadFontSizeType,
+	}
+	tablet_selectors[".editor-rich-text .uagb-ifb-title"] = {
+		"font-size": headFontSizeTablet + headFontSizeType,
+	}
+	tablet_selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
+		"font-size": prefixFontSizeTablet + prefixFontSizeType,
+	}
+
+	mobile_selectors[".editor-rich-text .uagb-ifb-desc"] = {
+		"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
+	}
+	mobile_selectors[".editor-rich-text .uagb-ifb-title"] = {
+		"font-size": headFontSizeMobile + headFontSizeType,
+	}
+	mobile_selectors[".editor-rich-text .uagb-ifb-title-prefix"] = {
+		"font-size": prefixFontSizeMobile + prefixFontSizeType,
+	}
+
 	var styling_css = ""
 
 	for( var i in selectors ) {
@@ -237,6 +262,44 @@ function InfoBoxStyle( props ) {
 
 		styling_css += css + " } "
 	}
+
+	styling_css += "@media only screen and (max-width: 976px) {"
+
+	for( var i in tablet_selectors ) {
+
+		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
+
+		var sel = tablet_selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	styling_css += " }"
+
+	styling_css += "@media only screen and (max-width: 767px) {"
+
+	for( var i in mobile_selectors ) {
+
+		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
+
+		var sel = mobile_selectors[i]
+		var css = ""
+
+		for( var j in sel ) {
+
+			css += j + ": " + sel[j] + ";"
+		}
+
+		styling_css += css + " } "
+	}
+
+	styling_css += " }"
 
 	return styling_css
 

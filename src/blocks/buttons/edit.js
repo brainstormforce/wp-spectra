@@ -5,6 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
+import map from "lodash/map"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
@@ -30,7 +31,10 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	TabPanel
+	TabPanel,
+	ButtonGroup,
+	Button,
+	Dashicon
 } = wp.components
 
 
@@ -136,18 +140,151 @@ class UAGBMultiButtonEdit extends Component {
 							this.saveButton( { target: value }, index )
 						} }
 					/>
-					<RangeControl
-						beforeIcon="editor-textcolor"
-						afterIcon="editor-textcolor"
-						label={ __( "Button Text Size" ) }
-						value={ buttons[ index ].size }
-						onChange={ value => {
-							this.saveButton( { size: value }, index )
-						} }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "px" }
+													aria-pressed={ buttons[ index ].sizeType === "px" }
+													onClick={ () => this.saveButton( { sizeType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "%" }
+													aria-pressed={ buttons[ index ].sizeType === "%" }
+													onClick={ () => this.saveButton( { sizeType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ buttons[ index ].sizeMobile }
+												onChange={ value => {
+													this.saveButton( { sizeMobile: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "px" }
+													aria-pressed={ buttons[ index ].sizeType === "px" }
+													onClick={ () => this.saveButton( { sizeType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "%" }
+													aria-pressed={ buttons[ index ].sizeType === "%" }
+													onClick={ () => this.saveButton( { sizeType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ buttons[ index ].sizeTablet }
+												onChange={ value => {
+													this.saveButton( { sizeTablet: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "px" }
+													aria-pressed={ buttons[ index ].sizeType === "px" }
+													onClick={ () => this.saveButton( { sizeType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].sizeType === "%" }
+													aria-pressed={ buttons[ index ].sizeType === "%" }
+													onClick={ () => this.saveButton( { sizeType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ buttons[ index ].size }
+												onChange={ value => {
+													this.saveButton( { size: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
