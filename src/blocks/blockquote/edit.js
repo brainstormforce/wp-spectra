@@ -156,6 +156,7 @@ class UAGBBlockQuote extends Component {
 
 		const border_settings =(
 			<Fragment>
+				<h2>{ __( "Modern Layout - Styling" ) }</h2>
 				<SelectControl
 					label={ __( "Style" ) }
 					value={ borderStyle }
@@ -186,6 +187,7 @@ class UAGBBlockQuote extends Component {
 
 		const quote_settings = (
 			<Fragment>
+				<h2>{ __( "Quotation Layout - Styling" ) }</h2>
 				<RangeControl
 					label={ __( "Quote Icon Size" ) }
 					value={ quoteSize }
@@ -226,9 +228,10 @@ class UAGBBlockQuote extends Component {
 					value={ skinStyle }
 					onChange={ ( value ) => setAttributes( { skinStyle: value } ) }
 				/>
+				<hr className="uagb-editor__separator" />
 				{ skinStyle === "border" && border_settings	}
 				{ skinStyle === "quotation" && quote_settings }
-				<hr className="uagb-editor__separator" />
+				{ skinStyle === "quotation" && <Fragment><hr className="uagb-editor__separator" /><h2>{ __( "Quote Icon Colors" ) }</h2></Fragment> }
 				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 					activeClass="active-tab"
 					tabs={ [
@@ -345,7 +348,7 @@ class UAGBBlockQuote extends Component {
 				}
 
 				{ skinStyle == "quotation" && <Fragment>
-					<p className="uagb-setting-label">{ __( "Quote Icon Color" ) }
+					<p className="uagb-setting-label">{ __( "Icon Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: quoteColor }} ></span></span></p>
 					<ColorPalette
@@ -353,7 +356,7 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( colorValue ) => setAttributes( { quoteColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Quote Icon Background Color" ) }
+					<p className="uagb-setting-label">{ __( "Icon Background Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: quoteBgColor }} ></span></span></p>
 					<ColorPalette
@@ -380,7 +383,7 @@ class UAGBBlockQuote extends Component {
 				</Fragment>
 				}
 				{ skinStyle == "quotation" && <Fragment>
-					<p className="uagb-setting-label">{ __( "Quote Icon Hover Color" ) }
+					<p className="uagb-setting-label">{ __( "Hover Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: quoteHoverColor }} ></span></span></p>
 					<ColorPalette
@@ -388,7 +391,7 @@ class UAGBBlockQuote extends Component {
 						onChange={ ( colorValue ) => setAttributes( { quoteHoverColor: colorValue } ) }
 						allowReset
 					/>
-					<p className="uagb-setting-label">{ __( "Quote Icon Background Hover Color" ) }
+					<p className="uagb-setting-label">{ __( "Background Hover Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: quoteBgHoverColor }} ></span></span></p>
 					<ColorPalette
@@ -600,7 +603,7 @@ class UAGBBlockQuote extends Component {
 						max={ 100 }
 						allowReset
 					/>
-					</Fragment>
+				</Fragment>
 				}
 			</PanelBody>
 		)
