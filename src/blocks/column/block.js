@@ -602,10 +602,12 @@ registerBlockType( "uagb/column", {
 			default: "center"
 		},
 		alignTablet : {
-			type: "string"
+			type: "string",
+			default: ""
 		},
 		alignMobile : {
-			type: "string"
+			type: "string",
+			default: ""
 		},
 		topPadding: {
 			type: "number",
