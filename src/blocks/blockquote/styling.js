@@ -138,7 +138,7 @@ function styling( props ) {
 	
 	if( enableTweet ){
 		selectors[" a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + descFontSizeType,				
+			"font-size": tweetBtnFontSize + tweetBtnFontSizeType,				
 		}
 		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
 			"color": tweetLinkColor,		
@@ -179,8 +179,8 @@ function styling( props ) {
 
 		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
 			"margin-right": tweetIconSpacing + "px",
-			"width": tweetBtnFontSize + "px",
-			"height": tweetBtnFontSize + "px",
+			"width": tweetBtnFontSize + tweetBtnFontSizeType,
+			"height": tweetBtnFontSize + tweetBtnFontSizeType,
 		}	
 
 		// Hover CSS
