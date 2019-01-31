@@ -67205,7 +67205,6 @@ var __ = wp.i18n.__;
 // Import registerBlockType() from wp.blocks
 
 var registerBlockType = wp.blocks.registerBlockType;
-var RichText = wp.editor.RichText;
 
 // Extend component
 

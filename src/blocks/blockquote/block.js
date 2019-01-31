@@ -22,10 +22,6 @@ const {
 	registerBlockType,
 } = wp.blocks
 
-const {
-	RichText
-} = wp.editor
-
 // Extend component
 const { Fragment } = wp.element
 
