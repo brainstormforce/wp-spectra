@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 	class UAGB_Config {
 
 
+
 		/**
 		 * Block Attributes
 		 *

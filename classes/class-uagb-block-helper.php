@@ -12,6 +12,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2312,71 +2314,70 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$text_align = 'left';
 			}
 
-			$m_selectors = array();
-			$t_selectors = array();
+			$selectors = array(
+				" .uagb-blockquote__content" => array(
+					"font-size"         => $attr['descFontSize'] . "px",
+					"color"             => $attr['descColor'],
+					"margin-bottom"     => $attr['descSpace'] . "px",
+					"text-align"        => $text_align,
+				),
+				" cite.uagb-blockquote__author" => array(
+					"font-size"         => $attr['authorFontSize'] . "px",
+					"color"             => $attr['authorColor'],
+					"text-align"        => $text_align,
+				),
+				" .uagb-blockquote__skin-border blockquote.uagb-blockquote" => array(
+					"border-color"      => $attr['borderColor'],
+					"border-left-style" => $attr['borderStyle'],
+					"border-left-width" => $attr['borderWidth'] . "px",
+					"padding-left"      => $attr['borderGap'] . "px",
+					"padding-top"       => $attr['verticalPadding'] . "px",
+					"padding-bottom"    => $attr['verticalPadding'] . "px",
+				),
 
-			$selectors[" .uagb-blockquote__content"] = array(
-				"font-size"         => $attr['descFontSize'] . "px",
-				"color"             => $attr['descColor'],
-				"margin-bottom"     => $attr['descSpace'] . "px",
-				"text-align"        => $text_align,
-			);
-			$selectors[" cite.uagb-blockquote__author"] = array(
-				"font-size"         => $attr['authorFontSize'] . "px",
-				"color"             => $attr['authorColor'],
-				"text-align"        => $text_align,
-			);
-			$selectors[" .uagb-blockquote__skin-border blockquote.uagb-blockquote"] = array(
-				"border-color"      => $attr['borderColor'],
-				"border-left-style" => $attr['borderStyle'],
-				"border-left-width" => $attr['borderWidth'] . "px",
-				"padding-left"      => $attr['borderGap'] . "px",
-				"padding-top"       => $attr['verticalPadding'] . "px",
-				"padding-bottom"    => $attr['verticalPadding'] . "px",
-			);
+				" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap" => array(
+					"background"        => $attr['quoteBgColor'],
+					"border-radius"     => $attr['quoteBorderRadius']."%",
+					"margin-top"        => $attr['quoteTopMargin'] . "px",
+					"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
+					"margin-left"       => $attr['quoteLeftMargin'] . "px",
+					"margin-right"      => $attr['quoteRightMargin'] . "px",
+					"padding"      		=> $attr['quotePadding'] . "px",
+				),
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap"] = array(
-				"background"        => $attr['quoteBgColor'],
-				"border-radius"     => $attr['quoteBorderRadius']."%",
-				"margin-top"        => $attr['quoteTopMargin'] . "px",
-				"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
-				"margin-left"       => $attr['quoteLeftMargin'] . "px",
-				"margin-right"      => $attr['quoteRightMargin'] . "px",
-				"padding"      		=> $attr['quotePadding'] . "px",
-			);
+				" .uagb-blockquote__skin-quotation .uagb-quote__icon" => array(
+					"width"             => $attr['quoteSize']."px",
+					"height"            => $attr['quoteSize']."px",
+				),
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon"] = array(
-				"width"             => $attr['quoteSize']."px",
-				"height"            => $attr['quoteSize']."px",
-			);
+				" .uagb-blockquote__skin-quotation .uagb-quote__icon svg" => array(
+					"fill"         => $attr['quoteColor'],
+				),
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon svg"] = array(
-				"fill"         => $attr['quoteColor'],
-			);
+				" .uagb-quote__style-style_1 .uagb-blockquote" => array(
+					"text-align"        => $attr['align'],
+				),
 
-			$selectors[" .uagb-quote__style-style_1 .uagb-blockquote"] = array(
-				"text-align"        => $attr['align'],
-			);
+				" .uagb-quote__author-wrap" => array(
+					"margin-bottom"     => $author_space . "px",
+				),
+				" .uagb-quote__author-image img" => array(
+					"width"             => $attr['authorImageWidth']."px",
+					"height"            => $attr['authorImageWidth']."px",
+					"border-radius"     => $attr['authorImgBorderRadius']."%"
+				),
 
-			$selectors[" .uagb-quote__author-wrap"] = array(
-				"margin-bottom"     => $author_space . "px",
-			);
-			$selectors[" .uagb-quote__author-image img"] = array(
-				"width"             => $attr['authorImageWidth']."px",
-				"height"            => $attr['authorImageWidth']."px",
-				"border-radius"     => $attr['authorImgBorderRadius']."%"
-			);
+				" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover svg" => array(
+					"fill"         => $attr['quoteHoverColor'],
+				),
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover svg"] = array(
-				"fill"         => $attr['quoteHoverColor'],
-			);
+				" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover" => array(
+					"background"    => $attr['quoteBgHoverColor'],
+				),
 
-			$selectors[" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover"] = array(
-				"background"    => $attr['quoteBgHoverColor'],
-			);
-
-			$selectors[" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover"] = array(
-				"border-left-color"         => $attr['borderHoverColor'],
+				" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover" => array(
+					"border-left-color"         => $attr['borderHoverColor'],
+				),
 			);
 
 			if( $attr['enableTweet'] ){
