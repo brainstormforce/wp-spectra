@@ -33,13 +33,7 @@ const attributes = {
 	tm_content: {
 		type: "array",
 		default : item,
-	},
-	headingTitle: {
-		type: "string",
-	},
-	headingDesc: {
-		type: "string",
-	},
+	},	
 	align : {
 		type : "string",
 		default : "center",

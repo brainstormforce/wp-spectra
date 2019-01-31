@@ -227,8 +227,6 @@ class UAGBcontentTimeline extends Component {
 			onReplace,
 			attributes: {
 				tm_content,
-				headingTitle,
-				headingDesc,
 				headingAlign,
 				separatorHeight,
 				headSpace,
