@@ -16,6 +16,7 @@ const {
 import TypographyOptionsAttributes from './attributes';
 import TypographyOptionsInlineStyles from './inline-styles';
 import TypographyOptionsClasses from './classes';
+import googleFonts from './fonts';
 import './editor.scss';
 
 // Export for ease of importing in individual blocks.
@@ -27,18 +28,45 @@ export {
 
 function TypographyOptions( props ) {
 
-	const setFontFamily = value => {
-		props.setAttributes( { fontFamily: value } );
-	};
-	const setFontSize = value => {
-		props.setAttributes( { fontSize: value } );
-	};
-	const setFontWeight = value => {
-		props.setAttributes( { fontWeight: value } );
-	};
-	const setLineheight = value => {
-		props.setAttributes( { Lineheight: value } );
-	};
+	const fonts = [
+		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+	];
+
+	let font_weight = '';
+
+	//Push Google Fonts into stytem fonts object
+	Object.keys( googleFonts ).map( ( k, v ) => {
+		fonts.push(
+			{ value: k, label: k, weight: googleFonts[k] }
+		);
+
+		if( k === props.attributes.fontFamily ) {
+			font_weight = googleFonts[k].weight;
+		}
+	})
+
+	// check if the font is a stystem font and then apply the font weight accordingly.
+
+	if ( font_weight === '' ) {
+		font_weight = fonts[0].weight;
+	}
+	
+	const font_weight_obj = [];
+
+	font_weight.forEach(function(item) {
+		font_weight_obj.push(
+			{ value: item, label: item }
+		);
+	});
+		
+	const onFontFamilyChange = value => props.setAttributes( { fontFamily: value } );
+	const onFontSizeChange 	= value => props.setAttributes( { fontSize  : value } );
+	const onFontWeightChange = value => props.setAttributes( { fontWeight: value } );
+	const onLineheightChange = value => props.setAttributes( { LineHeight: value } );
 
 	return (
 		<PanelRow>
@@ -47,41 +75,38 @@ function TypographyOptions( props ) {
 					<SelectControl
 						label={ __( "Font Family" ) }
 						value={ props.attributes.fontFamily }
-						onChange={ setFontFamily }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
+						onChange={ onFontFamilyChange }
+						options={
+							fonts
+						}
 					/>
 					<SelectControl
 						label={ __( "Font Weight" ) }
 						value={ props.attributes.fontWeight }
-						onChange={ setFontWeight }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-						] }
+						onChange={ onFontWeightChange }
+						options={
+							font_weight_obj
+						}
 					/>
 					<RangeControl
 						label={ __( "Font Size" ) }
 						value={ props.attributes.fontSize }
-						onChange={ setFontSize }
-						min={ 10 }
-						max={ 100 }
+						onChange={ onFontSizeChange }
+						min={ 0 }
+						max={ 200 }
+						initialPosition={16}
 						beforeIcon="editor-textcolor"
 						allowReset
-						initialPosition={30}
 					/>
-					<TextControl
-						label= { __( "Line Height" ) }
-						value= { props.attributes.lineHeight }
-						onChange={ setLineheight }
+					<RangeControl
+						label={ __( "Line Height" ) }
+						value={ props.attributes.lineHeight }
+						onChange={ onLineheightChange }
+						min={ 0 }
+						max={ 20 }
+						beforeIcon=""
+						allowReset
+						initialPosition={3}
 					/>
 				</div>
 			</div>

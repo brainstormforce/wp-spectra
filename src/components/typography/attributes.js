@@ -3,17 +3,17 @@
  * @type {Object}
  */
 const TypographyOptionsAttributes = {
-	fontFamily: {
-		type: 'string',
-		default: 'solid'
-	},
-	fontSize: {
-		type: 'string',
-	},
+	// fontFamily: {
+	// 	type: 'string',
+	// 	default: 'inherit'
+	// },
+	// fontSize: {
+	// 	type: 'string',
+	// },
 	fontWeight: {
 		type: 'string',
 	},
-	lineheight: {
+	lineHeight: {
 		type: 'string',
 	},
 };

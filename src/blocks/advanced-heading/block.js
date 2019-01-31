@@ -120,9 +120,10 @@ export default class UAGBAdvancedHeading extends Component {
 				separatorHeight,
 				headSpace,
 				separatorSpace,
-				...TypographyOptionsAttributes,
 			},
 		} = this.props
+
+		console.log( attributes );
 
 		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId )
 
@@ -357,19 +358,17 @@ registerBlockType( "uagb/advanced-heading", {
 		},
 		fontFamily: {
 			type: 'string',
-			default: 'inherit'
 		},
 		fontSize: {
 			type: 'string',
-			default: ''
+			default: "",
 		},
 		fontWeight: {
 			type: 'string',
-			default: 'inherit'
 		},
 		lineHeight: {
-			type: 'string',
-			default: 'inherit'
+			type: 'number',
+			default: "",
 		},
 		subHeadingColor: {
 			type: "string",
