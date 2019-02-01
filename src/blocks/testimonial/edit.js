@@ -233,9 +233,7 @@ class UAGBtestimonial extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = TestimonialStyle( this.props )
 		}
-
-		const my_block_id = "uagb-testimonial-"+this.props.clientId
-
+	
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -854,7 +852,7 @@ class UAGBtestimonial extends Component {
 					className,
 					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
-				id = { my_block_id }
+				id = { `uagb-testimonial-${ this.props.clientId }` }
 				>
 					<Slider
 						className={ classnames(
