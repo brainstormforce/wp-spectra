@@ -13,6 +13,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1722,46 +1724,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			/*$t_selectors = array(
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
-					'margin-left' => 0,
-					'margin-right' => 0,
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading" => array(
-					"text-align"  => 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content" => array(
-					"text-align"  => 'left',
-				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new' => array(
-					'text-align' => 'left'
-				),
-				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner' => array(
-					'text-align' => 'left'
-				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-					'text-align'=> 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arow:after" => array(
-					"border-right-color"  => $attr['backgroundColor'],
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" => array(
-					'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-				),
-				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
-					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
-				),
-				" .uagb-timeline__date-new" => array(
-					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
-				),
-				" .uagb-timeline__heading" => array(
-					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType']
-				),
-				" .uagb-timeline-desc-content" => array(
-					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType']
-				),
-			);*/
-
 			$t_selectors = array(	
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
@@ -1780,7 +1742,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
 			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
 
-			$m_selectors = array(
+			/*$m_selectors = array(
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left' => 0,
 					'margin-right' => 0,
@@ -1824,8 +1786,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline-desc-content" => array(
 					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType']
 				),
+			);*/
+			$m_selectors = array(					
+				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
+					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+				),
+				" .uagb-timeline__date-new" => array(
+					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+				),
+				" .uagb-timeline__heading" => array(
+					"font-size" => $attr['headFontSizeMobile'] . $attr['headFontSizeType']
+				),
+				" .uagb-timeline-desc-content" => array(
+					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType']
+				),
 			);
 
+			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );
+			
+			$m_selectors = array_merge( $m_selectors, (array) $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
 
@@ -1995,46 +1974,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    ' .uagb-timeline__main .uagb-timeline__icon-new svg' => array(
 			            'fill'=> $attr['iconColor'],
 			        ),
-			);
-			
-            /*$t_selectors = array(				
-				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
-			        'margin-left' => 0,
-			        'margin-right' => 0,
-			    ),
-			   	" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading" => array(
-					"text-align"  => 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content" => array(
-					"text-align"  => 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
-					"text-align"  => 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" => array(
-					"text-align"  => 'left',
-				),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new' => array(
-			        'text-align' => 'left'
-			    ),
-				'.uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner' => array(
-			        'text-align' => 'left'
-			    ),
-				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-					'text-align'=> 'left',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after" => array(
-					"border-right-color"  => $attr['backgroundColor'],
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" => array(
-					'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-				),
-				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a" => array(
-					'text-align' => 'left',
-				),
-			);*/
+			);			          
 
-			 $t_selectors = array(		
+			$t_selectors = array(		
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
 					"text-align"  => 'left',
 				),
@@ -2050,7 +1992,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
 
 			// Mobile responsive CSS.
-	        $m_selectors = array(
+	       /* $m_selectors = array(
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
 				),
@@ -2095,7 +2037,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a" => array(
 					'text-align' => 'left',
 				),
+			);*/
+
+			$m_selectors = array(
+				" .uagb-timeline__heading" => array(
+					"text-align"  => $attr['align'],
+				),					
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
+					"text-align"  => 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" => array(
+					"text-align"  => 'left',
+				),	
+				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a" => array(
+					'text-align' => 'left',
+				),
 			);
+
+			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );			
+			$m_selectors = array_merge( $m_selectors, (array) $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
 
@@ -2465,7 +2425,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since x.x.x
 		 */
 		public static function get_timeline_tablet_selectors( $attr ) {
-
 			// @codingStandardsIgnoreStart
 			$tablet_selector = array(
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
@@ -2497,6 +2456,51 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $tablet_selector;
 			// @codingStandardsIgnoreEnd
+		}
+
+		 /**
+		  * Get Timeline Block Mobile Selectors CSS
+		  *
+		  * @param array $attr The block attributes.
+		  * @since x.x.x
+		  */
+		public static function get_timeline_mobile_selectors( $attr ) {
+        	// @codingStandardsIgnoreStart
+        	$m_selectors = array(
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+			        'margin-left' => 0,
+			        'margin-right' => 0,
+			    ),
+			    ' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
+					'margin-left' => $attr['horizontalSpace'].'px',
+				),
+				' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right' => array(
+			        'margin-left' => $attr['horizontalSpace'].'px',
+			    ),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading" => array(
+					"text-align"  => 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline-desc-content" => array(
+					"text-align"  => 'left',
+				),
+				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__events-new' => array(
+					'text-align' => 'left'
+				),
+				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-inner' => array(
+					'text-align' => 'left'
+				),
+				' .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+					'text-align'=> 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__day-right .uagb-timeline__arrow:after" => array(
+					"border-right-color"  => $attr['backgroundColor'],
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line" => array(
+					'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+				),
+			);
+			return $m_selectors;
+        	// @codingStandardsIgnoreEnd
 		}
 
 		/**
