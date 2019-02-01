@@ -2380,13 +2380,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
+			$t_selectors = self::get_post_tablet_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
 
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__grid-' . $id, 'tablet' );
+
 			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__grid-' . $id, 'mobile' );
 
-			return $desktop . $mobile;
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2407,6 +2411,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = self::get_post_selectors( $attr );
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
+
+			$t_selectors = self::get_post_tablet_selectors( $attr );
 
 			$selectors[" .slick-arrow"] = array(
 				"border-color" => $attr['arrowColor']
@@ -2450,9 +2456,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
 
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__carousel-' . $id, 'tablet' );
+
 			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__carousel-' . $id, 'mobile' );
 
-			return $desktop . $mobile;
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2474,13 +2482,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
+			$t_selectors = self::get_post_tablet_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__masonry-' . $id );
 
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__masonry-' . $id, 'tablet' );
+
 			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__masonry-' . $id, 'mobile' );
 
-			return $desktop . $mobile;
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2575,10 +2587,72 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
 			// @codingStandardsIgnoreStart
+
 			return array(
+				" .uagb-post__text .uagb-post__title" => array(
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__title a" => array(
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+				),
+				" .uagb-post__text .uagb-post-grid-byline" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__excerpt" => array(
+					"font-size" =>$attr['excerptFontSizeMobile'] . $attr['excerptFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta" => array(
+					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta a" => array(
+					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+				),
 				" .uagb-post__text" => array(
-					"padding" => ( $attr['contentPaddingMobile'] ) . "px",
-				)
+					"padding" =>( $attr['contentPaddingMobile'] ) . "px",
+				),
+			);
+			// @codingStandardsIgnoreEnd
+		}
+
+		/**
+		 * Get Post Block Selectors CSS for Tablet devices
+		 *
+		 * @param array $attr The block attributes.
+		 * @since x.x.x
+		 */
+		public static function get_post_tablet_selectors( $attr ) {
+			// @codingStandardsIgnoreStart
+			return array(
+				" .uagb-post__text .uagb-post__title" => array(
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__title a" => array(
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+				),
+				" .uagb-post__text .uagb-post-grid-byline" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__excerpt" => array(
+					"font-size" =>$attr['excerptFontSizeTablet'] . $attr['excerptFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta" => array(
+					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta a" => array(
+					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+				),
 			);
 			// @codingStandardsIgnoreEnd
 		}
