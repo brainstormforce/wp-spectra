@@ -1205,25 +1205,70 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[" .uagb-ss__source-wrap"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"line-height" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
+				"line-height" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-wrap svg"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(
-				"width" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-icon"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px",
-				"line-height" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
+				"font-size" => $attr['size'] . $attr['sizeType'],
+				"line-height" => $attr['size'] . $attr['sizeType']
+			);
+
+
+			$t_selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+				"line-height" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$t_selectors[" .uagb-ss__source-wrap svg"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+			);
+
+			$t_selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$t_selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+				"font-size" => $attr['sizeTablet'] . $attr['sizeType'],
+				"line-height" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+				"line-height" => $attr['sizeMobile'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-wrap svg"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+			);
+
+			$m_selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+				"font-size" => $attr['sizeMobile'] . $attr['sizeType'],
+				"line-height" => $attr['sizeMobile'] . $attr['sizeType']
 			);
 
 			foreach ( $attr['socials'] as $key => $social ) {
@@ -1237,7 +1282,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
 					"color" => $social['icon_color'],
-					"padding" => $attr['bgSize'] . "px"
+					"padding" => $attr['bgSize'] . $attr['bgSizeType']
+				);
+
+				$m_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"padding" => $attr['bgSizeMobile'] . $attr['bgSizeType']
+				);
+
+				$t_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"padding" => $attr['bgSizeTablet'] . $attr['bgSizeType']
 				);
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link svg"] = array (
