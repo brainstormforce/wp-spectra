@@ -1065,14 +1065,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$m_selectors = array();
+			$t_selectors = array();
+
 			$selectors = array(
 				" p.uagb-team__desc" => array(
-					"font-size" => $attr['descFontSize'] . "px",
+					"font-size" => $attr['descFontSize'] . $attr['descFontSizeType'],
 					"color" => $attr['descColor'],
 					"margin-bottom" => $attr['descSpace'] . "px",
 				),
 				" .uagb-team__prefix" => array(
-					"font-size" => $attr['prefixFontSize'] . "px",
+					"font-size" => $attr['prefixFontSize'] . $attr['prefixFontSizeType'],
 					"color" => $attr['prefixColor'],
 				),
 				" .uagb-team__desc-wrap" => array(
@@ -1080,15 +1083,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-team__social-icon a" => array(
 					"color" => $attr['socialColor'],
-					"font-size" => $attr['socialFontSize'] . "px",
-					"width" => $attr['socialFontSize'] . "px",
-					"height" => $attr['socialFontSize'] . "px",
-					"line-height" => $attr['socialFontSize'] . "px",
+					"font-size" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
 				),
 				" .uagb-team__social-icon svg" => array(
 					"fill" => $attr['socialColor'],
-					"width" => $attr['socialFontSize'] . "px",
-					"height" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
 				),
 				" .uagb-team__social-icon:hover a" => array(
 					"color" => $attr['socialHoverColor'],
@@ -1143,14 +1146,66 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
-				"font-size" => $attr['titleFontSize'] . "px",
+				"font-size" => $attr['titleFontSize'] . $attr['titleFontSizeType'],
 				"color" => $attr['titleColor'],
 				"margin-bottom" => $attr['titleSpace'] . "px",
 			);
 
+			$m_selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSizeMobile'] . $attr['prefixFontSizeType'],
+				),
+				" .uagb-team__social-icon a" => array(
+					"font-size" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+				),
+				" .uagb-team__social-icon svg" => array(
+					"width" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+				),
+			);
+
+			$t_selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSizeTablet'] . $attr['prefixFontSizeType'],
+				),
+				" .uagb-team__social-icon a" => array(
+					"font-size" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+				),
+				" .uagb-team__social-icon svg" => array(
+					"width" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+				),
+			);
+
+			$m_selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+			);
+
+			$t_selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+			);
+
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-team-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-team-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**

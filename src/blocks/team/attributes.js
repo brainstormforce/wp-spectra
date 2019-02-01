@@ -46,16 +46,56 @@ const attributes = {
 	titleFontSize: {
 		type: "number",
 	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
 	prefixFontSize: {
 		type: "number",
 		default: 15
 	},
+	prefixFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	prefixFontSizeMobile: {
+		type: "number",
+	},
+	prefixFontSizeTablet: {
+		type: "number",
+	},
 	descFontSize: {
+		type: "number",
+	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontSizeTablet: {
 		type: "number",
 	},
 	socialFontSize: {
 		type: "number",
 		default: 20
+	},
+	socialFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	socialFontSizeMobile: {
+		type: "number",
+	},
+	socialFontSizeTablet: {
+		type: "number",
 	},
 	image: {
 		type: "object",
