@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1743,7 +1744,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			
 			$desktop_selectors = self::get_timeline_selectors( $attr );
-			$selectors = array_merge( $selectors, (array) $desktop_selectors );
+			$selectors = array_merge( $selectors, $desktop_selectors );
 
 			$t_selectors = array(					
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
@@ -1761,7 +1762,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
-			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
+			$t_selectors = array_merge( $t_selectors, $tablet_selectors );
 
 			$m_selectors = array(					
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
@@ -1780,7 +1781,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );
 			
-			$m_selectors = array_merge( $m_selectors, (array) $mobile_selectors );
+			$m_selectors = array_merge( $m_selectors, $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
 
@@ -1853,7 +1854,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$desktop_selectors = self::get_timeline_selectors( $attr );
-			$selectors = array_merge( $selectors, (array) $desktop_selectors );
+			$selectors = array_merge( $selectors, $desktop_selectors );
 
 			$t_selectors = array(	
 				" .uagb-timeline__author-link" => array(
@@ -1880,7 +1881,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
-			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
+			$t_selectors = array_merge( $t_selectors, $tablet_selectors );
 
 			// Mobile responsive CSS.
 			$m_selectors = array(
@@ -1911,7 +1912,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );			
-			$m_selectors = array_merge( $m_selectors, (array) $mobile_selectors );
+			$m_selectors = array_merge( $m_selectors, $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
 
@@ -2395,8 +2396,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $selectors;
 			// @codingStandardsIgnoreEnd
 		}
+
 		/**
-		 * Get Post Timeline Block Selectors CSS
+		 * Get Timeline Block Tablet Selectors CSS.
 		 *
 		 * @param array $attr The block attributes.
 		 * @since x.x.x
@@ -2445,7 +2447,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
-		 * Get Timeline Block Mobile Selectors CSS
+		 * Get Timeline Block Mobile Selectors CSS.
 		 *
 		 * @param array $attr The block attributes.
 		 * @since x.x.x
