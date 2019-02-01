@@ -16,7 +16,7 @@ class Author extends React.Component {
 						<span className="dashicons-admin-users dashicons"></span>
 						<a className="uagb-timeline__author-link" target= {target} href={ post.author_info.author_link } rel ="noopener noreferrer"
 						>
-						{ post.author_info.display_name }
+							{ post.author_info.display_name }
 						</a>
 					</div>
 				}
