@@ -3,6 +3,9 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
+
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function CtaStyle( props ) {
 	const {
 		textAlign,
@@ -41,10 +44,10 @@ function CtaStyle( props ) {
 	}
 
 	var selectors = {
-		
+
 		" .uagb-cta__content-wrap" : {
 			"text-align" : textAlign,
-		},		
+		},
 		// CTA style
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
@@ -84,12 +87,12 @@ function CtaStyle( props ) {
 
 		" .uagb-cta__button-wrapper .uagb-cta__block-link svg" : {
 			"fill" : ctaBtnLinkColor,
-		},	
+		},
 
 		" .uagb-cta__button-wrapper:hover .uagb-cta__block-link svg" : {
 			"fill": ctaLinkHoverColor,
 		},
-		
+
 		// Title Style
 		" .editor-rich-text .uagb-cta__title" : {
 			"font-size" : titleFontSize+"px",
@@ -103,7 +106,7 @@ function CtaStyle( props ) {
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
 		},
-		
+
 		" .uagb-cta__align-button-after" : {
 			"margin-left" : ctaIconSpace+"px",
 		},
@@ -113,45 +116,33 @@ function CtaStyle( props ) {
 		},
 	}
 
-	if( textAlign === "left" && ctaPosition === "right" ){		
+	if( textAlign === "left" && ctaPosition === "right" ){
 		selectors[" .uagb-cta__left-right-wrap .uagb-cta__content"] = {
 			"margin-left" : ctaLeftSpace+"px",
 			"margin-right" : "0px",
-		}		
+		}
 	}
 
-	if( textAlign === "right" && ctaPosition === "right" ){		
+	if( textAlign === "right" && ctaPosition === "right" ){
 		selectors[" .uagb-cta__left-right-wrap .uagb-cta__content"] = {
-			"margin-right" : ctaRightSpace+"px",	
-			"margin-left" : "0px",	
-		}		
+			"margin-right" : ctaRightSpace+"px",
+			"margin-left" : "0px",
+		}
 	}
 
-	if( ctaPosition === "right" && ( ctaType === "text" || ctaType === "button" ) ){		
+	if( ctaPosition === "right" && ( ctaType === "text" || ctaType === "button" ) ){
 		selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = {
-			"width" : contentWidth+"%",	
-		}	
+			"width" : contentWidth+"%",
+		}
 		selectors[" .uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = {
-			"width" : ( 100 - contentWidth )+"%",	
+			"width" : ( 100 - contentWidth )+"%",
 		}
-	}	
-
-	var styling_css = ""
-
-	for( var i in selectors ) {
-
-		styling_css += " .block-editor-page #wpwrap #"+clientId+i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
 	}
+
+
+	var id = `.block-editor-page #wpwrap #${ clientId }`
+
+	var styling_css = generateCSS( selectors, id )
 
 	return styling_css
 
