@@ -13,6 +13,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	final class UAGB_Helper {
 
 
+
+
 		/**
 		 * Member Variable
 		 *
@@ -106,9 +108,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Parse CSS into correct CSS syntax.
 		 *
-		 * @param string $query Media Query string.
 		 * @param array  $selectors The block selectors.
 		 * @param string $id The selector ID.
+		 * @param string $type Type of responsive devices.
 		 * @since 0.0.1
 		 */
 		public static function generate_responsive_css( $selectors, $id, $type ) {
