@@ -220,7 +220,7 @@ function InfoBoxStyle( props ) {
 	}
 		
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
-		selectors[".uagb-infobox__content-wrap"] = {
+		selectors[" .uagb-infobox__content-wrap"] = {
 			"text-align" : headingAlign,
 		}
 	}
@@ -283,7 +283,7 @@ function InfoBoxStyle( props ) {
 
 	for( var i in tablet_selectors ) {
 
-		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
+		styling_css += " .block-editor-page #wpwrap #"+clientId+i + " { "
 
 		var sel = tablet_selectors[i]
 		var css = ""
@@ -302,7 +302,7 @@ function InfoBoxStyle( props ) {
 
 	for( var i in mobile_selectors ) {
 
-		styling_css += " .block-editor-page #wpwrap #"+clientId+" "+i + " { "
+		styling_css += " .block-editor-page #wpwrap #"+clientId+i + " { "
 
 		var sel = mobile_selectors[i]
 		var css = ""
