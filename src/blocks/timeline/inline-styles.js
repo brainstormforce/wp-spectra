@@ -47,6 +47,19 @@ function contentTimelineStyle( props ) {
 		subHeadFontSizeMobile,
 		subHeadFontSizeTablet,
 		subHeadingColor,
+
+		authorSpace,
+		authorColor,		
+		authorFontSize,
+		authorFontSizeType,
+		authorFontSizeMobile,
+		authorFontSizeTablet,
+		ctaColor,
+		ctaFontSize,
+		ctaFontSizeType,
+		ctaFontSizeMobile,
+		ctaFontSizeTablet,
+		ctaBackground,
 	} = props.attributes
 
 	if( props.clientId ){
@@ -175,6 +188,29 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
 			"fill": iconFocus,
+		},
+
+		//Author and CTA
+		" .uagb-timeline__author" : {
+			"margin-bottom" : authorSpace+"px",
+			"text-align": align,
+		},
+		" .uagb-timeline__author .dashicons-admin-users" : {
+			"font-size" : authorFontSize+authorFontSizeType,
+			"color": authorColor,
+		},
+		" .uagb-timeline__author-link" :{
+			"font-size" : authorFontSize+authorFontSizeType,
+			"color": authorColor,
+		},
+
+		" .uagb-timeline__link_parent" :{
+			"text-align": align,
+		},
+		" .uagb-timeline__link" :{
+			"font-size" : ctaFontSize+ctaFontSizeType,
+			"color": ctaColor,
+			"background-color": ctaBackground,
 		}
 	}
 
@@ -220,6 +256,17 @@ function contentTimelineStyle( props ) {
 		" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" : {
 			'left' : 'calc( '+connectorBgsize+'px / 2 )',
 		},
+
+		// CTA AUTHOR.
+		" .uagb-timeline__author .dashicons-admin-users" : {
+			"font-size" : authorFontSizeTablet+authorFontSizeType,
+		},
+		" .uagb-timeline__author-link" :{
+			"font-size" : authorFontSizeTablet+authorFontSizeType,
+		},
+		" .uagb-timeline__link" :{
+			"font-size" : ctaFontSizeTablet+ctaFontSizeType,
+		}	
 	}
 
 	mobile_selectors = {
@@ -269,6 +316,17 @@ function contentTimelineStyle( props ) {
 		" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__line" : {
 			'left' : 'calc( '+connectorBgsize+'px / 2 )',
 		},
+
+		// CTA  AUthor
+		" .uagb-timeline__author .dashicons-admin-users" : {
+			"font-size" : authorFontSizeMobile+authorFontSizeType,
+		},
+		" .uagb-timeline__author-link" :{
+			"font-size" : authorFontSizeMobile+authorFontSizeType,
+		},
+		" .uagb-timeline__link" :{
+			"font-size" : ctaFontSizeMobile+ctaFontSizeType,
+		}	
 	}
 
 	var styling_css = ""
