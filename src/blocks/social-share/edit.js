@@ -5,6 +5,7 @@
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
+import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -29,7 +30,10 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	Button
+	Button,
+	ButtonGroup,
+	TabPanel,
+	Dashicon
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -339,7 +343,7 @@ class UAGBSocialShare extends Component {
 								if ( social_count <= index ) {
 									return
 								}
-								
+
 								let image_icon_html = ""
 
 								if ( social.image_icon == "icon" ) {
