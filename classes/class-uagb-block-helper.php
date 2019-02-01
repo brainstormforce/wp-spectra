@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1706,7 +1707,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$t_selectors = array(
+			/*$t_selectors = array(
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 					'margin-left' => 0,
 					'margin-right' => 0,
@@ -1744,7 +1745,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline-desc-content" => array(
 					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType']
 				),
+			);*/
+
+			$t_selectors = array(	
+				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
+					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+				),
+				" .uagb-timeline__date-new" => array(
+					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+				),
+				" .uagb-timeline__heading" => array(
+					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType']
+				),
+				" .uagb-timeline-desc-content" => array(
+					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType']
+				),
 			);
+
+			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
+			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
 
 			$m_selectors = array(
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
@@ -1963,7 +1982,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        ),
 			);
 			
-            $t_selectors = array(				
+            /*$t_selectors = array(				
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,
 			        'margin-right' => 0,
@@ -1998,18 +2017,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a" => array(
 					'text-align' => 'left',
 				),
+			);*/
+
+			 $t_selectors = array(		
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
+					"text-align"  => 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" => array(
+					"text-align"  => 'left',
+				),	
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a" => array(
+					'text-align' => 'left',
+				),
 			);
+
+			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
+			$t_selectors = array_merge( $t_selectors, (array) $tablet_selectors );
 
 			// Mobile responsive CSS.
 	        $m_selectors = array(
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
 				),
-				' .uagb-timeline__center-block .uagb-timeline__marker'] = array(
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,
 			        'margin-right' => 0,
 			    ),
-
 			    ' .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 			        'margin-left' => $attr['horizontalSpace'].'px',
 			    ),
@@ -2405,6 +2438,47 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding" => ( $attr['contentPaddingMobile'] ) . "px",
 				)
 			);
+			// @codingStandardsIgnoreEnd
+		}
+
+		/**
+		 * Get Post Timeline Block Selectors CSS
+		 *
+		 * @param array $attr The block attributes.
+		 * @since x.x.x
+		 */
+		public static function get_timeline_tablet_selectors( $attr ) {
+
+			// @codingStandardsIgnoreStart
+			$tablet_selector = array(
+				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
+			        'margin-left' => 0,
+			        'margin-right' => 0,
+			    ),
+			    " .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__heading" => array(
+					"text-align"  => 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-desc-content" => array(
+					"text-align"  => 'left',
+				),
+				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__events-new' => array(
+					'text-align' => 'left'
+				),
+				' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-inner' => array(
+			        'text-align' => 'left'
+			    ),
+			    ' .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
+					'text-align'=> 'left',
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__day-right .uagb-timeline__arrow:after" => array(
+					"border-right-color"  => $attr['backgroundColor'],
+				),
+				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__line" => array(
+					'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
+				),
+			);
+
+			return $tablet_selector;
 			// @codingStandardsIgnoreEnd
 		}
 
