@@ -3,6 +3,9 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
+
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function contentTimelineStyle( props ) {
 	const {
 		dateBottomspace,
@@ -52,8 +55,8 @@ function contentTimelineStyle( props ) {
 		var clientId = block_id
 	}
 
-	var m_selectors = {}
-	var t_selectors = {}
+	var mobile_selectors = {}
+	var tablet_selectors = {}
 
 	var selectors = {
 		" .uagb-timeline__heading" : {
@@ -175,7 +178,7 @@ function contentTimelineStyle( props ) {
 		}
 	}
 
-	var t_selectors = {
+	tablet_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
 			"font-size" : dateFontsizeTablet + dateFontsizeType,
 		},
@@ -193,7 +196,7 @@ function contentTimelineStyle( props ) {
 		}
 	}
 
-	var m_selectors = {
+	mobile_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
 			"font-size" : dateFontsizeMobile + dateFontsizeType,
 		},
@@ -225,58 +228,13 @@ function contentTimelineStyle( props ) {
 	}
 
 	var styling_css = ""
+	var id = `.block-editor-page #wpwrap #uagb-ctm-${ clientId }`
 
-	for( var i in selectors ) {
+	styling_css = generateCSS( selectors, id )
 
-		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+i + " { "
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	// Responsive css.
-	styling_css += "@media(max-width: 976px){"
-	for( var i in t_selectors ) {
-
-
-		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+i + " { "
-
-		var sel = t_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-	styling_css += "}"
-
-	styling_css += "@media(max-width:768px){"
-	for( var i in m_selectors ) {
-
-
-		styling_css += ".block-editor-page #wpwrap #uagb-ctm-"+clientId+i + " { "
-
-		var sel = m_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-	styling_css += "}"
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 
