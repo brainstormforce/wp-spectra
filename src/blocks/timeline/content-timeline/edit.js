@@ -878,8 +878,6 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
-		var my_block_id = "uagb-ctm-"+this.props.clientId
-
 		return (
 			<Fragment>
 				{ content_control }
@@ -896,7 +894,7 @@ class UAGBcontentTimeline extends Component {
 					className,
 					"uagb-timeline__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-ctm-${ this.props.clientId }` } >
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						...ContentTmClasses( this.props.attributes ),
