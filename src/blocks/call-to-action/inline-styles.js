@@ -12,12 +12,21 @@ function CtaStyle( props ) {
 		titleColor,
 		descColor,
 		titleFontSize,
+		titleFontSizeType,
+		titleFontSizeMobile,
+		titleFontSizeTablet,
 		descFontSize,
+		descFontSizeType,
+		descFontSizeMobile,
+		descFontSizeTablet,
 		titleSpace,
 		descSpace,
 		ctaPosition,
 		block_id,
 		ctaFontSize,
+		ctaFontSizeType,
+		ctaFontSizeMobile,
+		ctaFontSizeTablet,
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
@@ -37,11 +46,7 @@ function CtaStyle( props ) {
 		ctaType
 	} = props.attributes
 
-	if( props.clientId ){
-		var clientId = "uagb-cta-block-"+props.clientId
-	}else{
-		var clientId = "uagb-cta-block-"+block_id
-	}
+	var clientId = "uagb-cta-block-"+props.clientId
 
 	var selectors = {
 
@@ -51,7 +56,7 @@ function CtaStyle( props ) {
 		// CTA style
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
-			"font-size" : ctaFontSize+"px",
+			"font-size" : ctaFontSize+ctaFontSizeType,
 			"color": ctaBtnLinkColor,
 		},
 		" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text" : {
@@ -59,7 +64,7 @@ function CtaStyle( props ) {
 		},
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-button" : {
-			"font-size" : ctaFontSize+"px",
+			"font-size" : ctaFontSize+ctaFontSizeType,
 			"color": ctaBtnLinkColor,
 			"background-color": ctaBgColor,
 			"border-style": ctaBorderStyle,
@@ -79,10 +84,10 @@ function CtaStyle( props ) {
 		},
 
 		" .uagb-cta__button-wrapper .uagb-cta-with-svg" : {
-			"font-size" : ctaFontSize+"px",
-			"height": ctaFontSize+"px",
-			"width": ctaFontSize+"px",
-			"line-height": ctaFontSize+"px",
+			"font-size" : ctaFontSize+ctaFontSizeType,
+			"height": ctaFontSize+ctaFontSizeType,
+			"width": ctaFontSize+ctaFontSizeType,
+			"line-height": ctaFontSize+ctaFontSizeType,
 		},
 
 		" .uagb-cta__button-wrapper .uagb-cta__block-link svg" : {
@@ -95,14 +100,14 @@ function CtaStyle( props ) {
 
 		// Title Style
 		" .editor-rich-text .uagb-cta__title" : {
-			"font-size" : titleFontSize+"px",
+			"font-size" : titleFontSize+titleFontSizeType,
 			"color": titleColor,
 			"margin-bottom": titleSpace+"px",
 		},
 
 		// Description Style
 		" .editor-rich-text .uagb-cta__desc" : {
-			"font-size" : descFontSize+"px",
+			"font-size" : descFontSize+descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
 		},
@@ -139,10 +144,56 @@ function CtaStyle( props ) {
 		}
 	}
 
+	var tablet_selectors = {
+		" .editor-rich-text .uagb-cta__title" : {
+			"font-size" : titleFontSizeTablet + titleFontSizeType,
+		},
+		" .editor-rich-text .uagb-cta__desc" : {
+			"font-size" : descFontSizeTablet + descFontSizeType,
+		},
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
+			"font-size" : ctaFontSizeTablet + ctaFontSizeType,
+		},
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-button" : {
+			"font-size" : ctaFontSizeTablet + ctaFontSizeType,
+		},
+		" .uagb-cta__button-wrapper .uagb-cta-with-svg" : {
+			"font-size" : ctaFontSizeTablet + ctaFontSizeType,
+			"height": ctaFontSizeTablet + ctaFontSizeType,
+			"width": ctaFontSizeTablet + ctaFontSizeType,
+			"line-height": ctaFontSizeTablet + ctaFontSizeType,
+		},
+	}
+
+	var mobile_selectors = {
+		" .editor-rich-text .uagb-cta__title" : {
+			"font-size" : titleFontSizeMobile + titleFontSizeType,
+		},
+		" .editor-rich-text .uagb-cta__desc" : {
+			"font-size" : descFontSizeMobile + descFontSizeType,
+		},
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
+			"font-size" : ctaFontSizeMobile + ctaFontSizeType,
+		},
+		" .uagb-cta__button-wrapper a.uagb-cta-typeof-button" : {
+			"font-size" : ctaFontSizeMobile + ctaFontSizeType,
+		},
+		" .uagb-cta__button-wrapper .uagb-cta-with-svg" : {
+			"font-size" : ctaFontSizeMobile + ctaFontSizeType,
+			"height": ctaFontSizeMobile + ctaFontSizeType,
+			"width": ctaFontSizeMobile + ctaFontSizeType,
+			"line-height": ctaFontSizeMobile + ctaFontSizeType,
+		},
+	}
+
 
 	var id = `.block-editor-page #wpwrap #${ clientId }`
 
 	var styling_css = generateCSS( selectors, id )
+
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 
