@@ -820,16 +820,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$t_selectors = array();
+			$m_selectors = array();
+
 			$selectors = array(
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
-					'font-size'   => $attr['ctaFontSize']. "px",
+					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 					'color'       => $attr['ctaBtnLinkColor'],
 				),
 				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text '  => array(
 					'color'       => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
-					'font-size'        => $attr['ctaFontSize']. "px",
+					'font-size'        => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -847,10 +850,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['ctaBorderhoverColor'],
 				),
 				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
-					'font-size'   => $attr['ctaFontSize']. "px",
-					'width'       => $attr['ctaFontSize']. "px",
-					'height'      => $attr['ctaFontSize']. "px",
-					'line-height' => $attr['ctaFontSize']. "px",
+					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 				),
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr['ctaBtnLinkColor'],
@@ -859,12 +862,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'fill'   => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__title'  => array(
-					'font-size'        => $attr['titleFontSize']. "px",
+					'font-size'        => $attr['titleFontSize']. $attr['titleFontSizeType'],
 					'color'            => $attr['titleColor'],
 					'margin-bottom'    => $attr['titleSpace']. "px",
 				),
 				' .uagb-cta__desc'  => array(
-					'font-size'        => $attr['descFontSize']. "px",
+					'font-size'        => $attr['descFontSize']. $attr['descFontSizeType'],
 					'color'            => $attr['descColor'],
 					'margin-bottom'    => $attr['descSpace']. "px",
 				),
@@ -904,40 +907,52 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
-            // Tablet.
-            $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-	                'margin-left'  => "0",
-	                'margin-right' => "0",
-	            );
+			$t_selectors = array(
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
+					'font-size'   => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
+					'font-size'        => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
+					'font-size'   => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__title'  => array(
+					'font-size'        => $attr['titleFontSizeTablet']. $attr['titleFontSizeType'],
+				),
+				' .uagb-cta__desc'  => array(
+					'font-size'        => $attr['descFontSizeTablet']. $attr['descFontSizeType'],
+				),
+			);
 
-            if( $attr['ctaPosition'] === "right" && ( $attr['ctaType'] === 'text' || $attr['ctaType'] === 'button' ) ){
-				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
-					"width" => "100%",
-				);
-				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
-					"width" => "100%",
-				);
-			}
-
-             // mobile.
-            $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-	                'margin-left' => "0",
-	                'margin-right' => "0",
-	            );
-
-            if( $attr['ctaPosition'] === "right" && ( $attr['ctaType'] === 'text' || $attr['ctaType'] === 'button' ) ){
-				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
-					"width" => "100%",
-				);
-				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
-					"width" => "100%",
-				);
-			}
+			$m_selectors = array(
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
+					'font-size'   => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
+					'font-size'        => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
+					'font-size'   => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__title'  => array(
+					'font-size'        => $attr['titleFontSizeMobile']. $attr['titleFontSizeType'],
+				),
+				' .uagb-cta__desc'  => array(
+					'font-size'        => $attr['descFontSizeMobile']. $attr['descFontSizeType'],
+				),
+			);
 
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-cta-block-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-cta-block-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-cta-block-' . $id, 'tablet' );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-cta-block-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
