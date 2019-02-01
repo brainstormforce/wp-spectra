@@ -111,9 +111,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @since 0.0.1
 		 */
-		public static function generate_responsive_css( $query, $selectors, $id ) {
+		public static function generate_responsive_css( $selectors, $id, $type ) {
 
-			$css  = $query . ' { ';
+			$breakpoint = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
+
+			$css  = '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
 			$css .= self::generate_css( $selectors, $id );
 			$css .= ' } ';
 
