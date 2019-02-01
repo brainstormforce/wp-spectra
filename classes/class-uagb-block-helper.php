@@ -12,11 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -674,7 +669,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
 				),
 				' .uagb-infobox-cta-link svg' => array(
-					'fill'        => $attr['ctaLinkColor'],					
+					'fill'        => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
@@ -758,7 +753,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
-				),				
+				),
 				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
 					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
 					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
