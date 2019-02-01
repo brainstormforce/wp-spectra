@@ -4,6 +4,8 @@
  * @return {object} The inline background type CSS.
  */
 
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function styling( props, id ) {
 
 	const {
@@ -127,9 +129,9 @@ function styling( props, id ) {
 
 	selectors[" .slick-arrow svg"] = {
 		"fill" : arrowColor,
-		"height":arrowSize + "px",              
-		"width":arrowSize + "px",              
-	} 	
+		"height":arrowSize + "px",
+		"width":arrowSize + "px",
+	}
 
 	mobile_selectors = {
 		" .uagb-post__text": {
@@ -139,43 +141,9 @@ function styling( props, id ) {
 
 	var styling_css = ""
 
-	for( var i in selectors ) {
+	styling_css = generateCSS( selectors, `#${id}-${ props.clientId }` )
 
-		styling_css += `#${id}-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += "@media only screen and (max-width: 767px) {"
-
-	for( var i in mobile_selectors ) {
-
-		styling_css += `#${id}-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = mobile_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
+	styling_css += generateCSS( mobile_selectors, `#${id}-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }
