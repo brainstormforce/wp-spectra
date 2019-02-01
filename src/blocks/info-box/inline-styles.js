@@ -66,13 +66,12 @@ function InfoBoxStyle( props ) {
 	var clientId = "uagb-infobox-"+props.clientId
 
 	var selectors = {
-			// Icon css
+		// Icon css
 		" .uagb-ifb-icon" : {
 			"height" : iconSize+"px",
 			"width" : iconSize+"px",
 			"line-height" : iconSize+"px",
 		},
-
 		" .uagb-ifb-icon > span" : {
 			"font-size" : iconSize+"px",
 			"height": iconSize+"px",
@@ -81,81 +80,56 @@ function InfoBoxStyle( props ) {
 			"width": iconSize+"px",
 			"line-height": iconSize + "px",
 		},
-
 		" .uagb-ifb-icon > svg" : {
 			"fill": iconColor,
 		},
-
 		" .uagb-ifb-icon:hover > span" : {
 			"color" : iconHover,
 		},
-
 		" .uagb-ifb-icon:hover > svg" : {
 			"fill" : iconHover,
 		},
-
 		" .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap" : {
 			"margin-left" : iconLeftMargin+"px",
 			"margin-right" : iconRightMargin+"px",
 			"margin-top" : iconTopMargin+"px",
 			"margin-bottom" : iconBottomMargin+"px",
 		},
-
 		// Image
 		" .uagb-ifb-image-content img" : {
 			"width": imageWidth+"px",
 			"max-width": imageWidth+"px",
 		},
-
 		" .uagb-infobox .uagb-ifb-image-content img" : {
 			"border-radius" : iconimgBorderRadius+"px",
 		},
-
 		// CTA style
-		" .uagb-infobox-cta-link a" : {
+		" .uagb-infobox-cta-link" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
 			"color": ctaLinkColor,
 		},
-
-		" .uagb-infobox-cta-link a:hover" : {
+		" .uagb-infobox-cta-link:hover" : {
 			"color": ctaLinkHoverColor,
-		},
-
-		" .uagb-infobox-cta-link .uagb-ifb-text-icon svg" : {
-			"fill": ctaLinkColor,
-		},
-
-		" .uagb-infobox-cta-link a:hover svg" : {
-			"fill": ctaLinkHoverColor,
-		},
-
-		" .uagb-infobox-cta-link span" : {
-			"font-size" : ctaFontSize+ctaFontSizeType,
-			"width" : ctaFontSize+"px",
+		},	
+		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
+			"font-size" : ctaFontSize+"px",
 			"height" : ctaFontSize+"px",
-			"color": ctaLinkColor,
-		},
-		" .uagb-infobox-cta-link:hover span" : {
-			"color": ctaLinkHoverColor,
-		},
-
+			"width" : ctaFontSize+"px",
+			"line-height" : ctaFontSize+"px",
+		},	
+		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
+			"font-size" : ctaFontSize+"px",
+			"height" : ctaFontSize+"px",
+			"width" : ctaFontSize+"px",
+			"line-height" : ctaFontSize+"px",
+		},	
 		" .uagb-infobox-cta-link svg" : {
-			"fill": ctaBtnLinkColor,
+			"fill": ctaLinkColor,			
 		},
 		" .uagb-infobox-cta-link:hover svg" : {
 			"fill": ctaLinkHoverColor,
-		},
-
-		" .uagb-ifb-button-wrapper .uagb-infobox-cta-link span" : {
-			"font-size" : ctaFontSize+"px",
-			"color": ctaBtnLinkColor,
-		},
-		" .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link span" : {
-			"color": ctaLinkHoverColor,
-		},
-
+		},		
 		" .uagb-ifb-button-wrapper .uagb-infobox-cta-link" : {
-			"font-size" : ctaFontSize+"px",
 			"color": ctaBtnLinkColor,
 			"background-color": ctaBgColor,
 			"border-style": ctaBorderStyle,
@@ -167,34 +141,35 @@ function InfoBoxStyle( props ) {
 			"padding-left": ctaBtnHrPadding + "px",
 			"padding-right": ctaBtnHrPadding + "px",
 		},
-
 		" .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link" : {
 			"color": ctaLinkHoverColor,
 			"background-color": ctaBgHoverColor,
 			"border-color": ctaBorderhoverColor,
 		},
-
+		" .uagb-ifb-button-wrapper .uagb-infobox-cta-link svg" : {
+			"fill": ctaBtnLinkColor,
+		},
+		" .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg" : {
+			"fill": ctaLinkHoverColor,
+		},
 		// Prefix Style
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size" : prefixFontSize+prefixFontSizeType,
 			"color": prefixColor,
 			"margin-bottom": prefixSpace+"px",
 		},
-
 		// Title Style
 		" .editor-rich-text .uagb-ifb-title" : {
 			"font-size" : headFontSize+headFontSizeType,
 			"color": headingColor,
 			"margin-bottom": headSpace+"px",
 		},
-
 		// Description Style
 		" .editor-rich-text .uagb-ifb-desc" : {
 			"font-size" : subHeadFontSize+subHeadFontSizeType,
 			"color": subHeadingColor,
 			"margin-bottom": subHeadSpace+"px",
 		},
-
 		// Seperator
 		" .uagb-ifb-separator" : {
 			"width" : seperatorWidth+separatorWidthType,
@@ -205,15 +180,12 @@ function InfoBoxStyle( props ) {
 		" .uagb-ifb-separator-parent" : {
 			"margin-bottom":seperatorSpace+"px"
 		},
-
 		" .uagb-ifb-content" : {
 			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
 		},
-
 		" .uagb-ifb-align-icon-after" : {
 			"margin-left" : ctaIconSpace+"px",
 		},
-
 		" .uagb-ifb-align-icon-before" : {
 			"margin-right" : ctaIconSpace+"px",
 		},		
@@ -235,12 +207,21 @@ function InfoBoxStyle( props ) {
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size": prefixFontSizeTablet + prefixFontSizeType,
 		},
-		" .uagb-infobox-cta-link a" : {
+		" .uagb-infobox-cta-link" : {
 			"font-size": ctaFontSizeTablet + ctaFontSizeType,
 		},
-		" .uagb-infobox-cta-link span" : {
+		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
 			"font-size": ctaFontSizeTablet + ctaFontSizeType,
+			"height": ctaFontSizeTablet + ctaFontSizeType,
+			"line-height": ctaFontSizeTablet + ctaFontSizeType,
+			"width": ctaFontSizeTablet + ctaFontSizeType,
 		},
+		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
+			"font-size": ctaFontSizeTablet + ctaFontSizeType,
+			"height": ctaFontSizeTablet + ctaFontSizeType,
+			"line-height": ctaFontSizeTablet + ctaFontSizeType,
+			"width": ctaFontSizeTablet + ctaFontSizeType,
+		}
 	}
 
 	var mobile_selectors = {
@@ -253,11 +234,20 @@ function InfoBoxStyle( props ) {
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size": prefixFontSizeMobile + prefixFontSizeType,
 		},
-		" .uagb-infobox-cta-link a" : {
+		" .uagb-infobox-cta-link" : {
 			"font-size": ctaFontSizeMobile + ctaFontSizeType,
 		},
-		" .uagb-infobox-cta-link span" : {
+		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
 			"font-size": ctaFontSizeMobile + ctaFontSizeType,
+			"height": ctaFontSizeMobile + ctaFontSizeType,
+			"line-height": ctaFontSizeMobile + ctaFontSizeType,
+			"width": ctaFontSizeMobile + ctaFontSizeType,
+		},
+		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
+			"font-size": ctaFontSizeMobile + ctaFontSizeType,
+			"height": ctaFontSizeMobile + ctaFontSizeType,
+			"line-height": ctaFontSizeMobile + ctaFontSizeType,
+			"width": ctaFontSizeMobile + ctaFontSizeType,
 		}
 	}
 

@@ -13,6 +13,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -641,18 +643,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => $attr['iconTopMargin'].'px',
 					'margin-bottom' => $attr['iconBottomMargin'].'px',
 				),
-
 				// Image.
 				' .uagb-ifb-image-content > img' => array(
 					'width'=> $attr['imageWidth'].'px',
 				    'max-width'=> $attr['imageWidth'].'px',
 				),
-
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
 					'border-radius' => $attr['iconimgBorderRadius'].'px',
 				),
-
-
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
 					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
@@ -661,14 +659,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-infobox-cta-link:hover' => array(
 					'color'       => $attr['ctaLinkHoverColor'],
 				),
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
 				' .uagb-infobox-cta-link svg' => array(
-					'fill'       => $attr['ctaLinkColor'],
+					'fill'        => $attr['ctaLinkColor'],					
 				),
 				' .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size'        => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -692,29 +701,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
-
-
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
-
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
-
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
-
 				// Seperator.
 				' .uagb-ifb-separator' => array(
 					'width'            => $attr['seperatorWidth'].$attr['separatorWidthType'],
@@ -725,7 +729,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-separator-parent' => array(
 					'margin-bottom' => $attr['seperatorSpace'].'px',
 				),
-
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after' => array(
 					'margin-left' => $attr['ctaIconSpace'].'px',
@@ -733,7 +736,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-align-icon-before' => array(
 					'margin-right' => $attr['ctaIconSpace'].'px',
 				),
-
 			);
 
 			if( 'above-title' === $attr['iconimgPosition'] ||  'below-title' === $attr['iconimgPosition'] ){
@@ -754,11 +756,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),				
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
 				),
-				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
-				)
-
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			$t_selectors = array(
@@ -774,10 +784,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
 				),
-				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
-				)
-
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			// @codingStandardsIgnoreEnd.
