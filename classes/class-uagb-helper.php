@@ -13,6 +13,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	final class UAGB_Helper {
 
 
+
+
+
 		/**
 		 * Member Variable
 		 *
