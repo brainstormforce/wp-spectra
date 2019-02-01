@@ -5,6 +5,7 @@
  */
 
 import inlineStyles from "./inline-styles"
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
@@ -104,22 +105,7 @@ function styling( props ) {
 
 	var styling_css = ""
 
-	for( var i in selectors ) {
-
-		styling_css += `#uagb-columns-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
+	styling_css = generateCSS( selectors, `#uagb-columns-${ props.clientId }` )
 
 	return styling_css
 }
