@@ -5,6 +5,7 @@
  */
 
 import inlineStyles from "./inline-styles"
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
@@ -81,23 +82,9 @@ function styling( props ) {
 	selectors[" > .uagb-section__overlay"]["border-radius"] = borderRadius + "px"
 
 	var styling_css = ""
+	var id = `#uagb-section-${ props.clientId }`
 
-	for( var i in selectors ) {
-
-		styling_css += `#uagb-section-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
+	styling_css = generateCSS( selectors, id )
 
 	return styling_css
 }
