@@ -58,13 +58,7 @@ function TestimonialStyle( props ) {
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	var selectors = {
-		" .uagb-timeline__heading" : {
-			"font-size" : headFontSize+headFontSizeType,
-			"text-align": align,
-			"color": headingColor,
-		},
-
+	var selectors = {		
 		" .uagb-testimonial__wrap": {
 			"padding-left" : columnGap/2+"px",
 			"padding-right" : columnGap/2+"px",
