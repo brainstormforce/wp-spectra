@@ -333,8 +333,6 @@ class UAGBinfoBox extends Component {
 			</ButtonGroup>
 		)
 
-		const my_block_id = "uagb-infobox-"+this.props.clientId
-
 		// Settings for icon.
 		const iconControls = (
 			<Fragment>
@@ -1379,7 +1377,7 @@ class UAGBinfoBox extends Component {
 					className,
 					"uagb-infobox__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-infobox-${ this.props.clientId }` }
 				>
 					{ ( ctaType == "all") &&
 						<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>

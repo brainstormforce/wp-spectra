@@ -430,9 +430,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-adv-heading-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-adv-heading-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-adv-heading-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-adv-heading-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -588,9 +588,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-buttons-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-buttons-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-buttons-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-buttons-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-buttons-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -640,18 +640,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => $attr['iconTopMargin'].'px',
 					'margin-bottom' => $attr['iconBottomMargin'].'px',
 				),
-
 				// Image.
 				' .uagb-ifb-image-content > img' => array(
 					'width'=> $attr['imageWidth'].'px',
 				    'max-width'=> $attr['imageWidth'].'px',
 				),
-
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
 					'border-radius' => $attr['iconimgBorderRadius'].'px',
 				),
-
-
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
 					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
@@ -660,14 +656,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-infobox-cta-link:hover' => array(
 					'color'       => $attr['ctaLinkHoverColor'],
 				),
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
 				' .uagb-infobox-cta-link svg' => array(
-					'fill'       => $attr['ctaLinkColor'],
+					'fill'        => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size'        => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -691,29 +698,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
-
-
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
-
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
-
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
-
 				// Seperator.
 				' .uagb-ifb-separator' => array(
 					'width'            => $attr['seperatorWidth'].$attr['separatorWidthType'],
@@ -724,7 +726,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-separator-parent' => array(
 					'margin-bottom' => $attr['seperatorSpace'].'px',
 				),
-
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after' => array(
 					'margin-left' => $attr['ctaIconSpace'].'px',
@@ -732,7 +733,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-align-icon-before' => array(
 					'margin-right' => $attr['ctaIconSpace'].'px',
 				),
-
 			);
 
 			if( 'above-title' === $attr['iconimgPosition'] ||  'below-title' === $attr['iconimgPosition'] ){
@@ -754,10 +754,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
 				),
-				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
-				)
-
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			$t_selectors = array(
@@ -773,19 +781,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
 				),
-				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
-				)
-
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			// @codingStandardsIgnoreEnd.
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-infobox-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-infobox-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-infobox-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-infobox-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -920,8 +936,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-cta-block-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-cta-block-' . $id );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-cta-block-' . $id );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1029,7 +1045,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $r_selectors, '#uagb-testimonial-' . $id, 'mobile' );
 
 			return $desktop . $mobile;
 		}
@@ -1311,9 +1327,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-social-share-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-social-share-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-social-share-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1561,9 +1577,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-icon-list-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-icon-list-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-icon-list-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1796,9 +1812,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-ctm-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -2086,8 +2102,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-ctm-' . $id, 'tablet' );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -2173,10 +2189,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
             }
 
-			$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
+			/*$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
 			        'margin-left'=>  '0%',
 			        'clear'=> 'left',
-			    );
+			    );*/
 
 			$t_selectors = array(
 				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
@@ -2212,12 +2228,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop   = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
-			$r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
-			$tablet    = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id );
-			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
+			// @codingStandardsIgnoreStart
+			// $r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
+			// @codingStandardsIgnoreEnd
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-rm-' . $id, 'tablet' );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-rm-' . $id, 'mobile' );
 
-			return $desktop . $r_desktop . $tablet . $mobile;
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2243,7 +2261,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__grid-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__grid-' . $id, 'mobile' );
 
 			return $desktop . $mobile;
 		}
@@ -2309,7 +2327,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__carousel-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__carousel-' . $id, 'mobile' );
 
 			return $desktop . $mobile;
 		}
@@ -2337,7 +2355,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__masonry-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__masonry-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__masonry-' . $id, 'mobile' );
 
 			return $desktop . $mobile;
 		}

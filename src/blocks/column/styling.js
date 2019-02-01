@@ -5,6 +5,7 @@
  */
 
 import inlineStyles from "./inline-styles"
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
@@ -67,27 +68,13 @@ function styling( props ) {
 
 	var styling_css = ""
 
-	for( var i in selectors ) {
+	var id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
 
-		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
+	styling_css = generateCSS( selectors, id )
 
 	if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
-
 
 	return styling_css
 }

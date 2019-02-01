@@ -4,6 +4,8 @@
  * @return {object} The inline background type CSS.
  */
 
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function styling( props ) {
 
 	const {
@@ -59,7 +61,6 @@ function styling( props ) {
 			"margin-bottom": separatorSpace + "px",
 		}
 	}
-	var styling_css = ""
 
 	tablet_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
 		"font-size": headFontSizeTablet + headFontSizeType,
@@ -75,64 +76,11 @@ function styling( props ) {
 		"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
 	}
 
-	for( var i in selectors ) {
+	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }` )
 
-		styling_css += `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
+	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "tablet" )
 
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += "@media only screen and (max-width: 976px) {"
-
-	for( var i in tablet_selectors ) {
-
-		styling_css += `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = tablet_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
-
-	styling_css += "@media only screen and (max-width: 767px) {"
-
-	for( var i in mobile_selectors ) {
-
-		styling_css += `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = mobile_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
+	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

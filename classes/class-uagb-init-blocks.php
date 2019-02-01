@@ -215,8 +215,10 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'   => UAGB_Config::get_block_attributes(),
-				'category' => 'uagb',
+				'blocks'            => UAGB_Config::get_block_attributes(),
+				'category'          => 'uagb',
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
 	} // End function editor_assets().
