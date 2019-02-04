@@ -93,7 +93,7 @@ function styling( props ) {
 			"margin-bottom": descSpace + "px",
 			"text-align": text_align,
 		},
-		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + authorFontSizeType,
 			"color": authorColor,			
 			"text-align": text_align,			
