@@ -15,7 +15,7 @@ class TweetButton extends React.Component {
 		      	}
 
 		      	{ ( attributes.iconView ==="icon" ) && <Fragment>
-	      			<i className="fab fa-twitter"></i>		      			
+	      			{ UAGB_Block_Icons.quote_tweet_icon }		      			
 		      		</Fragment>
 		      	}
 

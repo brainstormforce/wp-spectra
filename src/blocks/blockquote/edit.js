@@ -264,7 +264,7 @@ class UAGBBlockQuote extends Component {
 			<Fragment>
 				<h2>{ __( "Modern Layout - Styling" ) }</h2>
 				<SelectControl
-					label={ __( "Style" ) }
+					label={ __( "Quote Border Style" ) }
 					value={ borderStyle }
 					onChange={ ( value ) => setAttributes( { borderStyle: value } ) }
 					options={ [
