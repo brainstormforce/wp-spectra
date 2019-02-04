@@ -72,7 +72,7 @@
 	    box-sizing: border-box;
 	}
 	
-	.uagb-blockquote__style-style_2 .uagb-blockquote-icon-wrap{
+	.uagb-blockquote__style-style_2 .uagb-blockquote__icon-wrap{
 		display: inline-block;
 	    float: left;
 	    text-align: left;
@@ -252,42 +252,42 @@
 
 @media only screen and (max-width: 976px) {
 	.wp-block-uagb-blockquote {
-		.uagb-blockquote-stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right,
-		.uagb-blockquote-stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left{
+		.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right,
+		.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left{
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 		    flex-direction: column;
 		}
-		.uagb-blockquote-stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-image img,
-		.uagb-blockquote-stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-image img{
+		.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-image img,
+		.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-image img{
 	    	margin-left:0;
 	    	margin-right:0;
 	    	margin-bottom: 10px;
 		}
 
 		/* Left alignment */
-		.uagb-blockquote-stack-img-tablet.uagb-blockquote__with-tweet .uagb-blockquote footer{
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__with-tweet .uagb-blockquote footer{
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 		    flex-direction: column;
 		    -ms-flex-item-align: flex-start;
     		align-self: flex-start;
 		}
-		.uagb-blockquote-stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
-		.uagb-blockquote-stack-img-tablet a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
+		.uagb-blockquote__stack-img-tablet a.uagb-blockquote__tweet-button{
 			 -ms-flex-item-align: flex-start;
     		align-self: flex-start;
 		}
 
 		/* Right ALignment */
-		.uagb-blockquote-stack-img-tablet.uagb-blockquote__align-right.uagb-blockquote__with-tweet .uagb-blockquote footer,
-		.uagb-blockquote-stack-img-tablet.uagb-blockquote__align-right .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
-		.uagb-blockquote-stack-img-tablet.uagb-blockquote__align-right a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__align-right.uagb-blockquote__with-tweet .uagb-blockquote footer,
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__align-right .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__align-right a.uagb-blockquote__tweet-button{
 			-ms-flex-item-align: flex-end;
     		align-self: flex-end;
 		}
 
-		.uagb-blockquote-stack-img-tablet a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-tablet a.uagb-blockquote__tweet-button{
 			margin-top: 10px;
 		}		
 	}
@@ -295,42 +295,42 @@
 
 @media screen and (max-width: 767px) {
 	.wp-block-uagb-blockquote {
-		.uagb-blockquote-stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right,
-		.uagb-blockquote-stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left{
+		.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right,
+		.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left{
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 		    flex-direction: column;
 		}
-		.uagb-blockquote-stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-image img,
-		.uagb-blockquote-stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-image img{
+		.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-right .uagb-blockquote__author-image img,
+		.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left .uagb-blockquote__author-image img{
 	    	margin-left:0;
 	    	margin-right:0;
 	    	margin-bottom: 10px;
 		}
 
 		/* Left alignment */
-		.uagb-blockquote-stack-img-mobile.uagb-blockquote__with-tweet .uagb-blockquote footer{
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__with-tweet .uagb-blockquote footer{
 			-webkit-flex-direction: column;
 			-ms-flex-direction: column;
 		    flex-direction: column;
 		    -ms-flex-item-align: flex-start;
     		align-self: flex-start;
 		}
-		.uagb-blockquote-stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
-		.uagb-blockquote-stack-img-mobile a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
+		.uagb-blockquote__stack-img-mobile a.uagb-blockquote__tweet-button{
 			 -ms-flex-item-align: flex-start;
     		align-self: flex-start;
 		}
 
 		/* Right ALignment */
-		.uagb-blockquote-stack-img-mobile.uagb-blockquote__align-right.uagb-blockquote__with-tweet .uagb-blockquote footer,
-		.uagb-blockquote-stack-img-mobile.uagb-blockquote__align-right .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
-		.uagb-blockquote-stack-img-mobile.uagb-blockquote__align-right a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__align-right.uagb-blockquote__with-tweet .uagb-blockquote footer,
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__align-right .uagb-blockquote__author-wrap.uagb-blockquote__author-at-left,
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__align-right a.uagb-blockquote__tweet-button{
 			-ms-flex-item-align: flex-end;
     		align-self: flex-end;
 		}
 		
-		.uagb-blockquote-stack-img-mobile a.uagb-blockquote__tweet-button{
+		.uagb-blockquote__stack-img-mobile a.uagb-blockquote__tweet-button{
 			margin-top: 10px;
 		}
 	}
