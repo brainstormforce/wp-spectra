@@ -44,11 +44,16 @@ function RestMenuStyle( props ) {
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
-	var selectors = {}
 	var clientId = "uagb-rm-"+props.clientId
 
+	var align = headingAlign
+	if( "left" === align ){
+    	align = "flex-start"
+	}else if( "right" === align ){
+    	align = "flex-end"
+	}
 
-	selectors[".uagb-rest_menu__wrap"] = {
+	/*selectors[".uagb-rest_menu__wrap"] = {
 		"padding-left" : columnGap/2+"px",
 		"padding-right" : columnGap/2+"px",
 		"margin-bottom" : rowGap+"px",
@@ -65,13 +70,6 @@ function RestMenuStyle( props ) {
 	selectors[".uagb-rm__image img"] = {
 		"width": imageWidth+"px",
 		"max-width": imageWidth+"px",
-	}
-
-	var align = headingAlign
-	if( "left" === align ){
-    	align = "flex-start"
-	}else if( "right" === align ){
-    	align = "flex-end"
 	}
 
 	selectors[".uagb-rm__separator-parent"] ={
@@ -106,6 +104,70 @@ function RestMenuStyle( props ) {
 		"margin-bottom": descSpace+"px",
 	}
 
+	selectors[".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+		"margin-left": "0%",
+		"clear":"left",
+	}*/
+
+	var selectors = {
+		
+		" .uagb-rest_menu__wrap": {
+			"padding-left" : columnGap/2+"px",
+			"padding-right" : columnGap/2+"px",
+			"margin-bottom" : rowGap+"px",
+		},
+
+		" .uagb-rest_menu__wrap .uagb-rm__image-content": {
+			"padding-left" : imgHrPadding+"px",
+			"padding-right" : imgHrPadding+"px",
+			"padding-top" : imgVrPadding+"px",
+			"padding-bottom" : imgVrPadding+"px",
+		},
+
+		// Image
+		" .uagb-rm__image img": {
+			"width": imageWidth+"px",
+			"max-width": imageWidth+"px",
+		},
+
+		" .uagb-rm__separator-parent"] ={
+			"justify-content" : align,
+		},
+
+		" .uagb-rm__content": {
+			"text-align" : headingAlign,
+			"padding-left" : contentHrPadding+"px",
+			"padding-right" : contentHrPadding+"px",
+			"padding-top" : contentVrPadding+"px",
+			"padding-bottom" : contentVrPadding+"px",
+		},
+
+		// Prefix Style
+		" .uagb-rm__title": {
+			"font-size" : titleFontSize+titleFontSizeType,
+			"color": titleColor,
+			"margin-bottom": titleSpace+"px",
+		},
+
+		// Title Style
+		" .uagb-rm__price": {
+			"font-size" : priceFontSize+priceFontSizeType,
+			"color": priceColor,
+		},
+
+		// Description Style
+		" .uagb-rm__desc": {
+			"font-size" : descFontSize+descFontSizeType,
+			"color": descColor,
+			"margin-bottom": descSpace+"px",
+		},
+
+		" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)": {
+			"margin-left": "0%",
+			"clear":"left",
+		},
+	}
+
 	if ( seperatorStyle != "none" ) {
 		selectors[".uagb-rest_menu__wrap .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,
@@ -115,31 +177,26 @@ function RestMenuStyle( props ) {
 		}
 	}
 
-	selectors[".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
-		"margin-left": "0%",
-		"clear":"left",
-	}
-
 	tablet_selectors = {
-		".uagb-rm__title" : {
+		" .uagb-rm__title" : {
 			"font-size" : titleFontSizeTablet + titleFontSizeType
 		},
-		".uagb-rm__desc" : {
+		" .uagb-rm__desc" : {
 			"font-size" : descFontSizeTablet + descFontSizeType
 		},
-		".uagb-rm__price" : {
+		" .uagb-rm__price" : {
 			"font-size" : priceFontSizeTablet + priceFontSizeType
 		}
 	}
 
 	mobile_selectors = {
-		".uagb-rm__title" : {
+		" .uagb-rm__title" : {
 			"font-size" : titleFontSizeMobile + titleFontSizeType
 		},
-		".uagb-rm__desc" : {
+		" .uagb-rm__desc" : {
 			"font-size" : descFontSizeMobile + descFontSizeType
 		},
-		".uagb-rm__price" : {
+		" .uagb-rm__price" : {
 			"font-size" : priceFontSizeMobile + priceFontSizeType
 		}
 	}
