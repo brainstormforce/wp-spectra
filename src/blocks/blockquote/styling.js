@@ -3,6 +3,8 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
+ 
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
@@ -217,7 +219,7 @@ function styling( props ) {
 		}
 	}
 
-	var t_selectors = {
+	var tablet_selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeTablet + descFontSizeType,
 		},
@@ -233,7 +235,7 @@ function styling( props ) {
 		}	
 	}
 
-	var m_selectors = {
+	var mobile_selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeMobile + descFontSizeType,
 		},
@@ -249,66 +251,11 @@ function styling( props ) {
 		}	
 	}
 
-	var styling_css = ""
+	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }` )
 
-	for( var i in selectors ) {
+	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "tablet" )
 
-		styling_css += `#wpwrap .edit-post-visual-editor #uagb-blockquote-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += "@media only screen and (max-width: 976px) {"
-
-	for( var i in t_selectors ) {
-
-		styling_css += `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = t_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
-
-	styling_css += "@media only screen and (max-width: 767px) {"
-
-	for( var i in m_selectors ) {
-
-		styling_css += `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = m_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
+	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }
