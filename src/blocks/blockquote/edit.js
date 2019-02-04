@@ -939,7 +939,7 @@ class UAGBBlockQuote extends Component {
 						max={ 100 }
 						allowReset
 					/>
-				<hr className="uagb-editor__separator" />
+					<hr className="uagb-editor__separator" />
 				</Fragment>
 				}
 				{ skinStyle === "border" &&
@@ -1159,7 +1159,7 @@ class UAGBBlockQuote extends Component {
 						allowReset
 						initialPosition={5}
 					/>
-					</Fragment>
+				</Fragment>
 				}
 				{ enableTweet && <Fragment>
 					<hr className="uagb-editor__separator" />
