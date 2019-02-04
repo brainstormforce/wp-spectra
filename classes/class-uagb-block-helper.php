@@ -23,6 +23,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -3001,7 +3002,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconShareVia'];
 
-			$selector =	'#uagb-quote-'. $id;
+			$selector =	'#uagb-blockquote-'. $id;
 
 			?>
 				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
