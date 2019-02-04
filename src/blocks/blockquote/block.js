@@ -62,7 +62,7 @@ registerBlockType( "uagb/blockquote", {
 			className,
 			iconView,
 			author,
-			description_text,
+			descriptionText,
 			authorImgPosition,
 			stack,
 		} = props.attributes
@@ -86,7 +86,7 @@ registerBlockType( "uagb/blockquote", {
 					<blockquote className="uagb-blockquote">					  
 						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span></div> }
 						<div className="uagb-blockquote__content-wrap">
-					   	{ description_text !=="" && <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
+					   	{ descriptionText !=="" && <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
 
 				   	<footer>
 				   		<div className={ classnames(

@@ -14,7 +14,7 @@ const attributes = {
 		type: "string",
 		default: "left",
 	},	
-	description_text: {
+	descriptionText: {
 		selector: "div.uagb-blockquote__content",
 		default: "Click here to change this text. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.",
 	},

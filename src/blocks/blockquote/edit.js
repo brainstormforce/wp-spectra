@@ -85,8 +85,6 @@ class UAGBBlockQuote extends Component {
 			block_id,
 			skinStyle,
 			align,
-			description_text,
-			author,
 			authorColor,
 			descColor,
 			descFontSize,
@@ -972,19 +970,21 @@ class UAGBBlockQuote extends Component {
 						max={ 50 }
 						allowReset
 						initialPosition={5}
-					/>	
-				<hr className="uagb-editor__separator" />									
+					/>														
 				</Fragment>
 				}
-				{ (enableTweet && iconView == "icon_text") && <RangeControl
-					label={ __( "Space between Tweet Icon and Text" ) }
-					value={ tweetIconSpacing }
-					onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
-					min={ 0 }
-					max={ 20 }
-					allowReset
-					initialPosition={5}
-				/>
+				{ (enableTweet && iconView == "icon_text") && <Fragment>
+					<hr className="uagb-editor__separator" />
+					<RangeControl
+						label={ __( "Space between Tweet Icon and Text" ) }
+						value={ tweetIconSpacing }
+						onChange={ ( value ) => setAttributes( { tweetIconSpacing: value } ) }
+						min={ 0 }
+						max={ 20 }
+						allowReset
+						initialPosition={5}
+					/>
+					</Fragment>
 				}
 				{ enableTweet && <Fragment>
 					<hr className="uagb-editor__separator" />
