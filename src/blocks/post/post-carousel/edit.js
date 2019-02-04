@@ -359,6 +359,8 @@ class UAGBPostCarousel extends Component {
 						min={ 100 }
 						max={ 5000 }
 					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Arrows & Dots" ) }</h2>
 					<SelectControl
 						label={ __( "Show Arrows & Dots" ) }
 						value={ arrowDots }

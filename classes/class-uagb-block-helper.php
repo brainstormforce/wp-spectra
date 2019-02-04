@@ -22,6 +22,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2738,8 +2739,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSize'].$attr['quoteSizeType'],,
-					"height"            => $attr['quoteSize'].$attr['quoteSizeType'],,
+					"width"             => $attr['quoteSize'].$attr['quoteSizeType'],
+					"height"            => $attr['quoteSize'].$attr['quoteSizeType'],
 				),
 
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg" => array(
@@ -2870,11 +2871,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(					
 					"padding"      		=> $attr['quotePaddingTablet'] . $attr['quotePaddingType'],
 				),
-
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSizeTablet'].$attr['quoteSizeType'],,
-					"height"            => $attr['quoteSizeTablet'].$attr['quoteSizeType'],,
-				),		
+					"width"             => $attr['quoteSizeTablet'].$attr['quoteSizeType'],
+					"height"            => $attr['quoteSizeTablet'].$attr['quoteSizeType'],
+				),
 			);
 
 			$m_selectors = array(
@@ -2895,9 +2895,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding"      		=> $attr['quotePaddingMobile'] . $attr['quotePaddingType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSizeMobile'].$attr['quoteSizeType'],,
-					"height"            => $attr['quoteSizeMobile'].$attr['quoteSizeType'],,
-				),	
+					"width"             => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+					"height"            => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+				),
 			);
 
 			// @codingStandardsIgnoreEnd
