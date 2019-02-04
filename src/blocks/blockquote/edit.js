@@ -798,8 +798,9 @@ class UAGBBlockQuote extends Component {
 					initialPosition={0}
 				/>
 				}
-				<hr className="uagb-editor__separator" />
+				
 				{ skinStyle === "border"  && <Fragment>
+					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Vertical Padding" ) }</h2>
 					<RangeControl
 						label={ UAGB_Block_Icons.vertical_spacing }
