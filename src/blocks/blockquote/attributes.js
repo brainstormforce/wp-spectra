@@ -23,6 +23,16 @@ const attributes = {
 	},
 	descFontSize: {
 		type: "number",
+	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeTablet: {
+		type: "number",
+	},
+	descFontSizeMobile: {
+		type: "number",
 	},		
 	descSpace :{
 		type: "number",
@@ -37,6 +47,16 @@ const attributes = {
 		default: "#888888"
 	},
 	authorFontSize: {
+		type: "number",
+	},
+	authorFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	authorFontSizeTablet: {
+		type: "number",
+	},
+	authorFontSizeMobile: {
 		type: "number",
 	},
 	authorSpace: {
@@ -120,6 +140,16 @@ const attributes = {
 		type: "number",
 		default: 15
 	},	
+	tweetBtnFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	tweetBtnFontSizeTablet: {
+		type: "number",
+	},
+	tweetBtnFontSizeMobile: {
+		type: "number",
+	},
 	tweetBtnHrPadding: {
 		type: "number",
 		default: 10
