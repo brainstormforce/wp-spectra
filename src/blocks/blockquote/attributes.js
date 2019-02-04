@@ -39,7 +39,7 @@ const attributes = {
 		default: 20,
 	},	
 	author: {
-		selector: "div.uagb-blockquote__author",
+		selector: ".uagb-blockquote__author",
 		default: "Author",
 	},		
 	authorColor: {
