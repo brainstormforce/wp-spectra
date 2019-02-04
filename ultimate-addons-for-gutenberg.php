@@ -4,7 +4,7 @@
  * Plugin URI: https://www.brainstormforce.com
  * Author: Brainstorm Force
  * Author URI: https://www.brainstormforce.com
- * Version: 1.8.0.1
+ * Version: 1.8.1.1
  * Description: The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.
  * Text Domain: ultimate-addons-for-gutenberg
  *
@@ -26,7 +26,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
  *
  * Warning when the site doesn't have the minimum required PHP version.
  *
- * @since x.x.x
+ * @since 1.8.1
  *
  * @return void
  */
@@ -43,7 +43,7 @@ function uagb_fail_php_version() {
  *
  * Warning when the site doesn't have the minimum required WordPress version.
  *
- * @since x.x.x
+ * @since 1.8.1
  *
  * @return void
  */

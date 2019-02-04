@@ -1,3 +1,5 @@
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function styling( props ) {
 
 	const {
@@ -7,9 +9,15 @@ function styling( props ) {
 		socials,
 		gap,
 		social_layout,
-		size,
 		borderRadius,
+		size,
+		sizeType,
+		sizeMobile,
+		sizeTablet,
 		bgSize,
+		bgSizeType,
+		bgSizeMobile,
+		bgSizeTablet,
 		stack
 	} = props.attributes
 
@@ -25,7 +33,15 @@ function styling( props ) {
 
 		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
 			"color" : social.icon_color,
-			"padding": bgSize + "px"
+			"padding": bgSize + bgSizeType
+		}
+
+		mobile_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
+			"padding": bgSizeMobile + bgSizeType
+		}
+
+		tablet_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
+			"padding": bgSizeTablet + bgSizeType
 		}
 
 		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link svg"] = {
@@ -81,27 +97,27 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-ss__source-image"] = {
-		"width": size + "px"
+		"width": size + sizeType
 	}
 
 	selectors[" .uagb-ss__source-wrap"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"line-height": size + "px"
+		"width": size + sizeType,
+		"height": size + sizeType,
+		"line-height": size + sizeType
 	}
 
 	selectors[" .uagb-ss__source-wrap svg"] = {
-		"width": size + "px",
-		"height": size + "px",
+		"width": size + sizeType,
+		"height": size + sizeType,
 	}
 
 	selectors[" .uagb-ss__source-icon"] = {
-		"width": size + "px",
-		"height": size + "px",
-		"font-size": size + "px",
-		"line-height": size + "px"
+		"width": size + sizeType,
+		"height": size + sizeType,
+		"font-size": size + sizeType,
+		"line-height": size + sizeType
 	}
-	
+
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
 	selectors[" .uagb-social-share__wrap"] = {
@@ -166,68 +182,59 @@ function styling( props ) {
 		}
 	}
 
+	mobile_selectors[" .uagb-ss__source-image"] = {
+		"width": sizeMobile + sizeType
+	}
+
+	mobile_selectors[" .uagb-ss__source-wrap"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+		"line-height": sizeMobile + sizeType
+	}
+
+	mobile_selectors[" .uagb-ss__source-wrap svg"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+	}
+
+	mobile_selectors[" .uagb-ss__source-icon"] = {
+		"width": sizeMobile + sizeType,
+		"height": sizeMobile + sizeType,
+		"font-size": sizeMobile + sizeType,
+		"line-height": sizeMobile + sizeType
+	}
+
+
+	tablet_selectors[" .uagb-ss__source-image"] = {
+		"width": sizeTablet + sizeType
+	}
+
+	tablet_selectors[" .uagb-ss__source-wrap"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+		"line-height": sizeTablet + sizeType
+	}
+
+	tablet_selectors[" .uagb-ss__source-wrap svg"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+	}
+
+	tablet_selectors[" .uagb-ss__source-icon"] = {
+		"width": sizeTablet + sizeType,
+		"height": sizeTablet + sizeType,
+		"font-size": sizeTablet + sizeType,
+		"line-height": sizeTablet + sizeType
+	}
 
 	var styling_css = ""
 	var id = `#uagb-social-share-${ props.clientId }`
 
-	for( var i in selectors ) {
+	styling_css = generateCSS( selectors, id )
 
-		styling_css += id
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += "@media only screen and (max-width: 976px) {"
-
-	for( var i in tablet_selectors ) {
-
-		styling_css += id
-
-		styling_css += i + " { "
-
-		var sel = tablet_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
-
-	styling_css += "@media only screen and (max-width: 767px) {"
-
-	for( var i in mobile_selectors ) {
-
-		styling_css += id
-
-		styling_css += i + " { "
-
-		var sel = mobile_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 }

@@ -29,6 +29,8 @@ const {
 	SelectControl,
 	Button,
 	BaseControl,
+	TabPanel,
+	Dashicon
 } = wp.components
 
 const {
@@ -118,7 +120,9 @@ export default class UAGBColumnEdit extends Component {
 				borderWidth,
 				borderRadius,
 				borderColor,
-				align
+				align,
+				alignMobile,
+				alignTablet
 			},
 			setAttributes,
 			className,
@@ -196,16 +200,73 @@ export default class UAGBColumnEdit extends Component {
 						min={ 0 }
 						max={ 100 }
 					/>
-					<SelectControl
-						label={ __( "Content Alignment" ) }
-						value={ align }
-						onChange={ ( value ) => setAttributes( { align: value } ) }
-						options={ [
-							{ value: "left", label: __( "Left" ) },
-							{ value: "center", label: __( "Center" ) },
-							{ value: "right", label: __( "Right" ) },
-						] }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<SelectControl
+											label={ __( "Content Alignment" ) }
+											value={ alignMobile }
+											onChange={ ( value ) => setAttributes( { alignMobile: value } ) }
+											options={ [
+												{ value: "left", label: __( "Left" ) },
+												{ value: "center", label: __( "Center" ) },
+												{ value: "right", label: __( "Right" ) },
+											] }
+										/>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<SelectControl
+											label={ __( "Content Alignment" ) }
+											value={ alignTablet }
+											onChange={ ( value ) => setAttributes( { alignTablet: value } ) }
+											options={ [
+												{ value: "left", label: __( "Left" ) },
+												{ value: "center", label: __( "Center" ) },
+												{ value: "right", label: __( "Right" ) },
+											] }
+										/>
+									)
+								} else {
+									tabout = (
+										<SelectControl
+											label={ __( "Content Alignment" ) }
+											value={ align }
+											onChange={ ( value ) => setAttributes( { align: value } ) }
+											options={ [
+												{ value: "left", label: __( "Left" ) },
+												{ value: "center", label: __( "Center" ) },
+												{ value: "right", label: __( "Right" ) },
+											] }
+										/>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<h2>{ __( "Padding (px)" ) }</h2>
@@ -484,6 +545,8 @@ export default class UAGBColumnEdit extends Component {
 		let active = ( isSelected ) ? "active" : "not-active"
 
 		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
+		let align_class_mobile = ( "" == alignMobile ) ? "" : `uagb-column__align-mobile-${alignMobile}`
+		let align_class_tablet = ( "" == alignTablet ) ? "" : `uagb-column__align-tablet-${alignTablet}`
 
 		return (
 			<Fragment>
@@ -496,7 +559,9 @@ export default class UAGBColumnEdit extends Component {
 						"uagb-column__wrap",
 						`uagb-column__background-${backgroundType}`,
 						`uagb-column__edit-${ active }`,
-						align_class
+						align_class,
+						align_class_mobile,
+						align_class_tablet
 					) }
 					id={ `uagb-column-${this.props.clientId}` }
 				>
@@ -526,9 +591,7 @@ registerBlockType( "uagb/column", {
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/columns" ],
 	supports: {
-		inserter: false,
-		reusable: false,
-		html: false,
+		inserter: false
 	},
 	attributes: {
 		block_id: {
@@ -537,6 +600,14 @@ registerBlockType( "uagb/column", {
 		align : {
 			type: "string",
 			default: "center"
+		},
+		alignTablet : {
+			type: "string",
+			default: ""
+		},
+		alignMobile : {
+			type: "string",
+			default: ""
 		},
 		topPadding: {
 			type: "number",
@@ -645,15 +716,21 @@ registerBlockType( "uagb/column", {
 
 	edit: UAGBColumnEdit,
 	save( { attributes, className } ) {
-		const { block_id, backgroundType, align  } = attributes
+		const { block_id, backgroundType, align, alignMobile, alignTablet  } = attributes
+
 		let align_class = ( "center" == align ) ? "" : `uagb-column__align-${align}`
+		let align_class_mobile = ( "" == alignMobile ) ? "" : `uagb-column__align-mobile-${alignMobile}`
+		let align_class_tablet = ( "" == alignTablet ) ? "" : `uagb-column__align-tablet-${alignTablet}`
+
 		return (
 			<div
 				className={ classnames(
 					className,
 					"uagb-column__wrap",
 					`uagb-column__background-${backgroundType}`,
-					align_class
+					align_class,
+					align_class_mobile,
+					align_class_tablet
 				) }
 				id={ `uagb-column-${block_id}` }
 			>

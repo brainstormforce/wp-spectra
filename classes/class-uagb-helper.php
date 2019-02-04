@@ -12,7 +12,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
-
 		/**
 		 * Member Variable
 		 *
@@ -32,7 +31,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Store Json variable
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @var instance
 		 */
 		public static $icon_json;
@@ -106,14 +105,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Parse CSS into correct CSS syntax.
 		 *
-		 * @param string $query Media Query string.
 		 * @param array  $selectors The block selectors.
 		 * @param string $id The selector ID.
+		 * @param string $type Media Query type mobile/tablet.
 		 * @since 0.0.1
 		 */
-		public static function generate_responsive_css( $query, $selectors, $id ) {
+		public static function generate_responsive_css( $selectors, $id, $type ) {
 
-			$css  = $query . ' { ';
+			$breakpoint = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
+
+			$css  = '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
 			$css .= self::generate_css( $selectors, $id );
 			$css .= ' } ';
 
@@ -454,6 +455,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						'background'   => '',
 						'hColor'       => '#333',
 						'hBackground'  => '',
+						'sizeType'     => 'px',
+						'sizeMobile'   => '',
+						'sizeTablet'   => '',
 					)
 				);
 			}
@@ -566,7 +570,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get Json Data.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @return Array
 		 */
 		public static function backend_load_font_awesome_icons() {
@@ -589,7 +593,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Generate SVG.
 		 *
-		 * @since x.x.x
+		 * @since 1.8.1
 		 * @param  array $icon Decoded fontawesome json file data.
 		 * @return string
 		 */
@@ -609,6 +613,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
 			return $htm;
+		}
+
+		/**
+		 * Returns Query.
+		 *
+		 * @param array  $attributes The block attributes.
+		 * @param string $block_type The Block Type.
+		 * @since x.x.x
+		 */
+		public static function get_query( $attributes, $block_type ) {
+
+			// Block type is grid/masonry/carousel/timeline.
+			$query_args = array(
+				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+				'post_status'         => 'publish',
+				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+				'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
+				'ignore_sticky_posts' => 1,
+			);
+
+			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
+
+			return new WP_Query( $query_args );
 		}
 	}
 
