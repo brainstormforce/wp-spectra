@@ -155,8 +155,8 @@ hr.uagb-editor__separator {
     outline: 0;
     width: auto;
     font-size: 8px;
-    background: #a4afb7;
-    color: #fff;
+	background: transparent;
+    color: #999;
     display: inline-block;
     border-radius: 50%;
     height: 20px;
@@ -165,8 +165,8 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab {
-    color: #fff;
-    background-color: #71d7f7;
+	color: #23282d;
+    background-color: #e4e5e5;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
