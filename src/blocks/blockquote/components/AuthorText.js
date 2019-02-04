@@ -21,9 +21,9 @@ class AuthorText extends React.Component {
 		if( setAttributes !== "not_set" ){
 			return (
 				<RichText
-	                tagName='cite'
+	                tagName='div'
 	                value={ attributes.author }
-	                placeholder={ __( "Author Name" ) }
+	                placeholder={ __( "Author" ) }
 	                className='uagb-blockquote__author'
 	                onChange={ ( value ) => setAttributes( { author: value } ) }
 	                onMerge = { props.mergeBlocks }
