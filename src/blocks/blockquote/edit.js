@@ -972,10 +972,10 @@ class UAGBBlockQuote extends Component {
 						max={ 50 }
 						allowReset
 						initialPosition={5}
-					/>					
+					/>	
+				<hr className="uagb-editor__separator" />									
 				</Fragment>
 				}
-				<hr className="uagb-editor__separator" />
 				{ (enableTweet && iconView == "icon_text") && <RangeControl
 					label={ __( "Space between Tweet Icon and Text" ) }
 					value={ tweetIconSpacing }
