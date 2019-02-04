@@ -57,17 +57,45 @@ const attributes = {
 		type: "string",
 		default: "top"
 	},
-	authorFontSize: {
+	
+	nameFontSize:{
 		type: "number",
 	},
-	nameFontSize:{
+	nameFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	nameFontSizeMobile: {
+		type: "number",
+	},
+	nameFontSizeTablet: {
 		type: "number",
 	},
 	companyFontSize: {
 		type: "number",
 		default: 15
 	},
+	companyFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	companyFontSizeMobile: {
+		type: "number",
+	},
+	companyFontSizeTablet: {
+		type: "number",
+	},
 	descFontSize: {
+		type: "number",
+	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontSizeTablet: {
 		type: "number",
 	},
 	nameSpace: {
