@@ -69,7 +69,7 @@ registerBlockType( "uagb/restaurant-menu", {
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-				id = { `uagb-rm-${props.clientId}` }
+				id = { `uagb-rm-${block_id}` }				
 				>
 					{ rest_menu_item_arr.map( ( test, index ) =>
 
