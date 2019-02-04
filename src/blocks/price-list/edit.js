@@ -204,8 +204,6 @@ class UAGBRestaurantMenu extends Component {
 			element.innerHTML = RestMenuStyle( this.props )
 		}
 
-		const my_block_id = "uagb-rm-"+this.props.clientId
-
 		const sizeTypes = [
 			{ key: "px", name: __( "px" ) },
 			{ key: "em", name: __( "em" ) },
@@ -884,7 +882,7 @@ class UAGBRestaurantMenu extends Component {
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-rm-${this.props.clientId}` }
 				>
 
 					{ rest_menu_item_arr.map( ( test, index ) =>

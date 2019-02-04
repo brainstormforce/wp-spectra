@@ -53,87 +53,28 @@ function RestMenuStyle( props ) {
     	align = "flex-end"
 	}
 
-	/*selectors[".uagb-rest_menu__wrap"] = {
-		"padding-left" : columnGap/2+"px",
-		"padding-right" : columnGap/2+"px",
-		"margin-bottom" : rowGap+"px",
-	}
+	var column_class = ".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"
 
-	selectors[".uagb-rest_menu__wrap .uagb-rm__image-content"] = {
-		"padding-left" : imgHrPadding+"px",
-		"padding-right" : imgHrPadding+"px",
-		"padding-top" : imgVrPadding+"px",
-		"padding-bottom" : imgVrPadding+"px",
-	}
-
-	// Image
-	selectors[".uagb-rm__image img"] = {
-		"width": imageWidth+"px",
-		"max-width": imageWidth+"px",
-	}
-
-	selectors[".uagb-rm__separator-parent"] ={
-		"justify-content" : align,
-	}
-
-	selectors[".uagb-rm__content"] = {
-		"text-align" : headingAlign,
-		"padding-left" : contentHrPadding+"px",
-		"padding-right" : contentHrPadding+"px",
-		"padding-top" : contentVrPadding+"px",
-		"padding-bottom" : contentVrPadding+"px",
-	}
-
-	// Prefix Style
-	selectors[".uagb-rm__title"] = {
-		"font-size" : titleFontSize+titleFontSizeType,
-		"color": titleColor,
-		"margin-bottom": titleSpace+"px",
-	}
-
-	// Title Style
-	selectors[".uagb-rm__price"] = {
-		"font-size" : priceFontSize+priceFontSizeType,
-		"color": priceColor,
-	}
-
-	// Description Style
-	selectors[".uagb-rm__desc"] = {
-		"font-size" : descFontSize+descFontSizeType,
-		"color": descColor,
-		"margin-bottom": descSpace+"px",
-	}
-
-	selectors[".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
-		"margin-left": "0%",
-		"clear":"left",
-	}*/
-
-	var selectors = {
-		
+	var selectors = {		
 		" .uagb-rest_menu__wrap": {
 			"padding-left" : columnGap/2+"px",
 			"padding-right" : columnGap/2+"px",
 			"margin-bottom" : rowGap+"px",
 		},
-
 		" .uagb-rest_menu__wrap .uagb-rm__image-content": {
 			"padding-left" : imgHrPadding+"px",
 			"padding-right" : imgHrPadding+"px",
 			"padding-top" : imgVrPadding+"px",
 			"padding-bottom" : imgVrPadding+"px",
 		},
-
 		// Image
 		" .uagb-rm__image img": {
 			"width": imageWidth+"px",
 			"max-width": imageWidth+"px",
 		},
-
-		" .uagb-rm__separator-parent"] ={
+		" .uagb-rm__separator-parent": {
 			"justify-content" : align,
 		},
-
 		" .uagb-rm__content": {
 			"text-align" : headingAlign,
 			"padding-left" : contentHrPadding+"px",
@@ -141,31 +82,28 @@ function RestMenuStyle( props ) {
 			"padding-top" : contentVrPadding+"px",
 			"padding-bottom" : contentVrPadding+"px",
 		},
-
 		// Prefix Style
 		" .uagb-rm__title": {
 			"font-size" : titleFontSize+titleFontSizeType,
 			"color": titleColor,
 			"margin-bottom": titleSpace+"px",
 		},
-
 		// Title Style
 		" .uagb-rm__price": {
 			"font-size" : priceFontSize+priceFontSizeType,
 			"color": priceColor,
 		},
-
 		// Description Style
 		" .uagb-rm__desc": {
 			"font-size" : descFontSize+descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
-		},
+		},		
+	}
 
-		" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)": {
-			"margin-left": "0%",
-			"clear":"left",
-		},
+	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+		"margin-left": "0%",
+		"clear":"left",
 	}
 
 	if ( seperatorStyle != "none" ) {

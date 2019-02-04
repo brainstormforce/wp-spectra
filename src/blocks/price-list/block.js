@@ -63,15 +63,13 @@ registerBlockType( "uagb/restaurant-menu", {
 			imagePosition,
 		} = props.attributes
 
-		const my_block_id = "uagb-rm-"+ block_id
-
 		return (
 			<Fragment>
 				<div className={ classnames(
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-rm-${props.clientId}` }
 				>
 					{ rest_menu_item_arr.map( ( test, index ) =>
 
