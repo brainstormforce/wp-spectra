@@ -164,6 +164,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
 					break;
 
+				case 'uagb/blockquote':
+					$css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
+					break;
+
 				case 'uagb/testimonial':
 					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
 					break;
@@ -262,6 +266,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/testimonial':
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
+					break;
+
+				case 'uagb/blockquote':
+					$js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
 					break;
 
 				case 'uagb/social-share':

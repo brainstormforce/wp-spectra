@@ -214,7 +214,7 @@ class UAGBSocialShare extends Component {
 												onChange={ ( value ) => this.saveSocials( { icon_color: value }, index ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_color }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Icon Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_color }} ></span></span></p>
 											<ColorPalette
 												value={ socials[ index ].icon_bg_color }
 												onChange={ ( value ) => this.saveSocials( { icon_bg_color: value }, index ) }
@@ -229,7 +229,7 @@ class UAGBSocialShare extends Component {
 												onChange={ ( value ) => this.saveSocials( { icon_hover_color: value }, index ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_hover_color }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Icon Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_hover_color }} ></span></span></p>
 											<ColorPalette
 												value={ socials[ index ].icon_bg_hover_color }
 												onChange={ ( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ) }
