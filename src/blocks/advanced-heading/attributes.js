@@ -42,6 +42,13 @@ const attributes = {
 		type: "number",
 		default: 15
 	},
+	headFontFamily: {
+		type: "string",
+		default: "Arial",
+	},
+	headFontWeight: {
+		type: "string",
+	},
 	headFontSize: {
 		type: "number",
 	},
@@ -58,6 +65,12 @@ const attributes = {
 	},
 	headFontSizeMobile: {
 		type: "number",
+	},
+	subHeadFontfamily: {
+		type: "string",
+	},
+	subHeadFontWeight: {
+		type: "string",
 	},
 	subHeadFontSize: {
 		type: "number",

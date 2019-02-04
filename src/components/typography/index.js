@@ -7,23 +7,27 @@ const {
 	TextControl,
 	RangeControl,
 	SelectControl,
+	ButtonGroup,
+	Button,
 	PanelRow,
+	TabPanel,
+	Dashicon,
 } = wp.components;
+
+// Extend component
+const { Component, Fragment } = wp.element
 
 /**
  * Internal dependencies
  */
-import TypographyOptionsAttributes from './attributes';
 import TypographyOptionsInlineStyles from './inline-styles';
-import TypographyOptionsClasses from './classes';
+import map from "lodash/map"
 import googleFonts from './fonts';
 import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
-	TypographyOptionsAttributes,
 	TypographyOptionsInlineStyles,
-	TypographyOptionsClasses
 };
 
 function TypographyOptions( props ) {
@@ -44,7 +48,7 @@ function TypographyOptions( props ) {
 			{ value: k, label: k, weight: googleFonts[k] }
 		);
 
-		if( k === props.attributes.fontFamily ) {
+		if( k === props.fontFamily ) {
 			font_weight = googleFonts[k].weight;
 		}
 	})
@@ -62,19 +66,43 @@ function TypographyOptions( props ) {
 			{ value: item, label: item }
 		);
 	});
-		
-	const onFontFamilyChange = value => props.setAttributes( { fontFamily: value } );
-	const onFontSizeChange 	= value => props.setAttributes( { fontSize  : value } );
-	const onFontWeightChange = value => props.setAttributes( { fontWeight: value } );
-	const onLineheightChange = value => props.setAttributes( { LineHeight: value } );
 
+	const onFontFamilyChange = value => props.setAttributes( { [ props.fontFamily.label ]: value } );
+	const onFontSizeChange 	 = value => props.setAttributes( { [ props.fontSize.label ]  : value } );
+	const onFontWeightChange = value => props.setAttributes( { [ props.fontWeight.label ]: value } );
+	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } );
+
+	const sizeTypes = [
+		{ key: "px", name: __( "px" ) },
+		{ key: "em", name: __( "em" ) },
+	]
+
+	console.log( props );
+
+	const headsizeTypesControls = (
+		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+			{ map( sizeTypes, ( { name, key } ) => (
+				<Button
+					key={ key }
+					className="uagb-size-btn"
+					isSmall
+					isPrimary={ props.fontSizeType === key }
+					aria-pressed={ props.fontSizeType === key }
+					onClick={ () => setAttributes( { fontSizeType: key } ) }
+				>
+					{ name }
+				</Button>
+			) ) }
+		</ButtonGroup>
+	)
+	
 	return (
 		<PanelRow>
 			<div className="uag-typography-options">
 				<div>
 					<SelectControl
 						label={ __( "Font Family" ) }
-						value={ props.attributes.fontFamily }
+						value={ props.fontFamily.value }
 						onChange={ onFontFamilyChange }
 						options={
 							fonts
@@ -82,32 +110,88 @@ function TypographyOptions( props ) {
 					/>
 					<SelectControl
 						label={ __( "Font Weight" ) }
-						value={ props.attributes.fontWeight }
+						value={ props.fontWeight.value }
 						onChange={ onFontWeightChange }
 						options={
 							font_weight_obj
 						}
 					/>
-					<RangeControl
-						label={ __( "Font Size" ) }
-						value={ props.attributes.fontSize }
-						onChange={ onFontSizeChange }
-						min={ 0 }
-						max={ 200 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Line Height" ) }
-						value={ props.attributes.lineHeight }
-						onChange={ onLineheightChange }
-						min={ 0 }
-						max={ 20 }
-						beforeIcon=""
-						allowReset
-						initialPosition={3}
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ props.fontSizeMobile.value }
+												onChange={ ( value ) => props.setAttributes( { [props.fontSizeMobile.label]: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ props.fontSizeTablet.value }
+												onChange={ ( value ) => props.setAttributes( { [props.fontSizeTablet.label]: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ props.fontSize.value }
+												onChange={ ( value ) => props.setAttributes( { [props.fontSize.label]: value } ) }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</div>
 			</div>
 		</PanelRow>

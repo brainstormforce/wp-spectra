@@ -9,7 +9,7 @@ import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
-import TypographyOptions, { TypographyOptionsAttributes } from '../../components/typography';
+import TypographyOptions from '../../components/typography';
 
 //  Import CSS.
 import "./style.scss"
@@ -101,6 +101,7 @@ export default class UAGBAdvancedHeading extends Component {
 		const {
 			isSelected,
 			className,
+			attributes,
 			setAttributes,
 			insertBlocksAfter,
 			mergeBlocks,
@@ -113,6 +114,8 @@ export default class UAGBAdvancedHeading extends Component {
 				subHeadingColor,
 				separatorColor,
 				headingTag,
+				headFontFamily,
+				headFontWeight,
 				headFontSize,
 				headFontSizeType,
 				headFontSizeMobile,
@@ -126,7 +129,8 @@ export default class UAGBAdvancedHeading extends Component {
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
-				separatorSpace
+				separatorSpace,
+				...TypographyOptionsAttributes
 			},
 		} = this.props
 
@@ -140,23 +144,6 @@ export default class UAGBAdvancedHeading extends Component {
 			{ key: "px", name: __( "px" ) },
 			{ key: "em", name: __( "em" ) },
 		]
-
-		const headsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ headFontSizeType === key }
-						aria-pressed={ headFontSizeType === key }
-						onClick={ () => setAttributes( { headFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
 
 		const subheadsizeTypesControls = (
 			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
@@ -201,86 +188,16 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						<TypographyOptions 
 							label={ __( "Heading Tag" ) }
-							attributes={attributes} 
-							setAttributes = { setAttributes } 
+							attributes = { attributes }
+							setAttributes = { setAttributes }
 							props = { this.props }
+							fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
+							fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
+							fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
+							fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
+							fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
+							fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
 						/>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSize }
-													onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
 						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
 							value={ headingColor }
