@@ -175,6 +175,9 @@ function TestimonialStyle( props ) {
 		" .uagb-tm__author-name": {
 			"font-size" : nameFontSizeTablet+nameFontSizeType,
 		},
+		" .uagb-tm__content": {
+			"text-align" : 'center',
+		},
 	}
 
 	var styling_css = ""

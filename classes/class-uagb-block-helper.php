@@ -26,6 +26,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1085,7 +1086,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
-				),				
+				),	
+				' .uagb-tm__content' => array(
+					'text-align' => 'center',
+				)			
 			);
 
 
