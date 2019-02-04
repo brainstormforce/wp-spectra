@@ -729,7 +729,7 @@ class UAGBBlockQuote extends Component {
 		const spacing_settings =(
 			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 				{ skinStyle === "quotation" && <Fragment>
-					<h2>{ __( "Quote Icon MArgin (px)" ) }</h2>
+					<h2>{ __( "Quote Icon Margin (px)" ) }</h2>
 					<RangeControl
 						label={ UAGB_Block_Icons.top_margin }
 						className={ "uagb-margin-control" }
