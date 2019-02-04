@@ -57,19 +57,7 @@ const attributes = {
 		type: "string",
 		default: "top"
 	},
-	authorFontSize: {
-		type: "number",
-	},
-	authorFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	authorFontSizeMobile: {
-		type: "number",
-	},
-	authorFontSizeTablet: {
-		type: "number",
-	},
+	
 	nameFontSize:{
 		type: "number",
 	},

@@ -9,6 +9,7 @@ import TestimonialImage from "./components/TestimonialImage"
 import times from "lodash/times"
 import Slider from "react-slick"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import map from "lodash/map"
 
 const { __ } = wp.i18n
 
@@ -29,6 +30,9 @@ const {
 	ToggleControl,
 	BaseControl,
 	Button,
+	ButtonGroup,
+	Dashicon,
+	TabPanel
 } = wp.components
 
 // Extend component
@@ -242,42 +246,296 @@ class UAGBtestimonial extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = TestimonialStyle( this.props )
 		}
-	
+		
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const descFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ descFontSizeType === key }
+						aria-pressed={ descFontSizeType === key }
+						onClick={ () => setAttributes( { descFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+
+		const nameFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ nameFontSizeType === key }
+						aria-pressed={ nameFontSizeType === key }
+						onClick={ () => setAttributes( { nameFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const companyFontSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ companyFontSizeType === key }
+						aria-pressed={ companyFontSizeType === key }
+						onClick={ () => setAttributes( { companyFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false } >
-					<RangeControl
-						label={ __( "Testimonial Font Size" ) }
-						value={ descFontSize }
-						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Name Font Size" ) }
-						value={ nameFontSize }
-						onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Company Font Size" ) }
-						value={ companyFontSize }
-						onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
 
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Testimonial Font Size" ) }
+												value={ descFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Testimonial Font Size" ) }
+												value={ descFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{descFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Testimonial Font Size" ) }
+												value={ descFontSize }
+												onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{nameFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Name Font Size" ) }
+												value={ nameFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { nameFontSizeMobile: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{nameFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Name Font Size" ) }
+												value={ nameFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { nameFontSizeTablet: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{nameFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Name Font Size" ) }
+												value={ nameFontSize }
+												onChange={ ( value ) => setAttributes( { nameFontSize: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{companyFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Company Font Size" ) }
+												value={ companyFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { companyFontSizeMobile: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{companyFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Company Font Size" ) }
+												value={ companyFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { companyFontSizeTablet: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{companyFontSizeTypeControls}
+											<RangeControl
+												label={ __( "Company Font Size" ) }
+												value={ companyFontSize }
+												onChange={ ( value ) => setAttributes( { companyFontSize: value } ) }
+												min={ 1 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 
 				<PanelColorSettings

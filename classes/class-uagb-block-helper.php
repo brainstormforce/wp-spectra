@@ -24,6 +24,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1014,16 +1016,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-tm__author-name' => array(
 					'color'   => $attr['authorColor'],
-					'font-size'  => $attr['nameFontSize'] . 'px',
+					'font-size'  => $attr['nameFontSize'] . $attr['nameFontSizeType'],
 					'margin-bottom'  => $attr['nameSpace'] . 'px',
 				),
 				' .uagb-tm__company' => array(
 					'color'   => $attr['companyColor'],
-					'font-size'  => $attr['companyFontSize'] . 'px',
+					'font-size'  => $attr['companyFontSize'] . $attr['companyFontSizeType'],
 				),
 				' .uagb-tm__desc' => array(
 					'color'   => $attr['descColor'],
-					'font-size'  => $attr['descFontSize'] . 'px',
+					'font-size'  => $attr['descFontSize'] . $attr['descFontSizeType'],
 					'margin-bottom'  => $attr['descSpace'] . 'px',
 				),
 				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
@@ -1062,18 +1064,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 			}
 
-			$r_selectors = array(
-				' .uagb-tm__content' => array(
-					'text-align' => 'center',
-				)
+			$t_selectors = array(
+				' .uagb-tm__author-name' => array(
+					'font-size'  => $attr['nameFontSizeTablet'] . $attr['nameFontSizeType'],
+				),
+				' .uagb-tm__company' => array(
+					'font-size'  => $attr['companyFontSizeTablet'] . $attr['companyFontSizeType'],
+				),
+				' .uagb-tm__desc' => array(
+					'font-size'  => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+				),
 			);
+
+			$m_selectors = array(
+				' .uagb-tm__author-name' => array(
+					'font-size'  => $attr['nameFontSizeMobile'] . $attr['nameFontSizeType'],
+				),
+				' .uagb-tm__company' => array(
+					'font-size'  => $attr['companyFontSizeMobile'] . $attr['companyFontSizeType'],
+				),
+				' .uagb-tm__desc' => array(
+					'font-size'  => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+				),				
+			);
+
 
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( $r_selectors, '#uagb-testimonial-' . $id, 'mobile' );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-testimonial-' . $id, 'tablet' );
 
-			return $desktop . $mobile;
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-testimonial-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**

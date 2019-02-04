@@ -13,8 +13,17 @@ function TestimonialStyle( props ) {
 		descColor,
 		authorColor,
 		nameFontSize,
+		nameFontSizeType,
+		nameFontSizeMobile,
+		nameFontSizeTablet,
 		companyFontSize,
+		companyFontSizeType,
+		companyFontSizeMobile,
+		companyFontSizeTablet,
 		descFontSize,
+		descFontSizeType,
+		descFontSizeMobile,
+		descFontSizeTablet,
 		descSpace,
 		block_id,
 		nameSpace,
@@ -84,18 +93,18 @@ function TestimonialStyle( props ) {
 		},
 		// Prefix Style
 		" .uagb-tm__author-name": {
-			"font-size" : nameFontSize+"px",
+			"font-size" : nameFontSize+nameFontSizeType,
 			"color": authorColor,
 			"margin-bottom": nameSpace+"px",
 		},
 		// Title Style
 		" .uagb-tm__company": {
-			"font-size" : companyFontSize+"px",
+			"font-size" : companyFontSize+companyFontSizeType,
 			"color": companyColor,
 		},
 		// Description Style
 		" .uagb-tm__desc": {
-			"font-size" : descFontSize+"px",
+			"font-size" : descFontSize+descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
 		},
@@ -144,10 +153,36 @@ function TestimonialStyle( props ) {
 		}
 	}
 
+	var mobile_selectors = {	
+		" .uagb-tm__desc": {
+			"font-size" : descFontSizeMobile+descFontSizeType,
+		},
+		" .uagb-tm__company": {
+			"font-size" : companyFontSizeMobile+companyFontSizeType,
+		},
+		" .uagb-tm__author-name": {
+			"font-size" : nameFontSizeMobile+nameFontSizeType,
+		},
+	}
+
+	var tablet_selectors = {
+		" .uagb-tm__desc": {
+			"font-size" : descFontSizeTablet+descFontSizeType,
+		},
+		" .uagb-tm__company": {
+			"font-size" : companyFontSizeTablet+companyFontSizeType,
+		},
+		" .uagb-tm__author-name": {
+			"font-size" : nameFontSizeTablet+nameFontSizeType,
+		},
+	}
+
 	var styling_css = ""
 	var id = `#wpwrap #${ clientId }`
 
 	styling_css = generateCSS( selectors, id )
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 
