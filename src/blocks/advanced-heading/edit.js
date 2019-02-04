@@ -402,7 +402,7 @@ export default class UAGBAdvancedHeading extends Component {
 								initialPosition={20}
 							/>
 							{ seperatorStyle !== "none" && <Fragment>
-								<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: separatorColor }} ></span></span></p>
 								<ColorPalette
 									value={ separatorColor }
 									onChange={ ( colorValue ) => setAttributes( { separatorColor: colorValue } ) }
@@ -415,7 +415,7 @@ export default class UAGBAdvancedHeading extends Component {
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 						<RangeControl
-							label={ __( "Heading Bottom Spacing" ) }
+							label={ __( "Heading Bottom Spacing (px)" ) }
 							value={ headSpace }
 							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 							min={ 0 }
@@ -425,7 +425,7 @@ export default class UAGBAdvancedHeading extends Component {
 							initialPosition={0}
 						/>
 						{ seperatorStyle !== "none" && <RangeControl
-							label={ __( "Separator Bottom Spacing" ) }
+							label={ __( "Separator Bottom Spacing (px)" ) }
 							value={ separatorSpace }
 							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
 							min={ 0 }

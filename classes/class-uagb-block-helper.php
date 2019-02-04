@@ -436,9 +436,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-adv-heading-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-adv-heading-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-adv-heading-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-adv-heading-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -594,9 +594,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-buttons-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-buttons-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-buttons-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-buttons-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-buttons-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -646,34 +646,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => $attr['iconTopMargin'].'px',
 					'margin-bottom' => $attr['iconBottomMargin'].'px',
 				),
-
 				// Image.
 				' .uagb-ifb-image-content > img' => array(
 					'width'=> $attr['imageWidth'].'px',
 				    'max-width'=> $attr['imageWidth'].'px',
 				),
-
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
 					'border-radius' => $attr['iconimgBorderRadius'].'px',
 				),
-
-
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
-					'font-size'   => $attr['ctaFontSize'].'px',
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
 					'color'       => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover' => array(
 					'color'       => $attr['ctaLinkHoverColor'],
 				),
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+				),
 				' .uagb-infobox-cta-link svg' => array(
-					'fill'       => $attr['ctaLinkColor'],
+					'fill'        => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link' => array(
-					'font-size'        => $attr['ctaFontSize'].'px',
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -697,29 +704,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-button-wrapper .uagb-infobox-cta-link:hover svg' => array(
 					'fill'       => $attr['ctaLinkHoverColor'],
 				),
-
-
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
-
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
-
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
-
 				// Seperator.
 				' .uagb-ifb-separator' => array(
 					'width'            => $attr['seperatorWidth'].$attr['separatorWidthType'],
@@ -730,7 +732,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-separator-parent' => array(
 					'margin-bottom' => $attr['seperatorSpace'].'px',
 				),
-
 				// CTA icon space.
 				' .uagb-ifb-align-icon-after' => array(
 					'margin-left' => $attr['ctaIconSpace'].'px',
@@ -738,7 +739,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-align-icon-before' => array(
 					'margin-right' => $attr['ctaIconSpace'].'px',
 				),
-
 			);
 
 			if( 'above-title' === $attr['iconimgPosition'] ||  'below-title' === $attr['iconimgPosition'] ){
@@ -756,8 +756,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-ifb-desc' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
-				)
-
+				),
+				' .uagb-infobox-cta-link' => array(
+					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			$t_selectors = array(
@@ -769,17 +783,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-ifb-desc' => array(
 					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
-				)
-
+				),
+				' .uagb-infobox-cta-link' => array(
+					'font-size' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-button-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
+				' .uagb-infobox-cta-link .uagb-ifb-text-icon' => array(
+					'font-size'   => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet'].$attr['ctaFontSizeType'],
+				),
 			);
 
 			// @codingStandardsIgnoreEnd.
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-infobox-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-infobox-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-infobox-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-infobox-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-infobox-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -798,16 +826,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$t_selectors = array();
+			$m_selectors = array();
+
 			$selectors = array(
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
-					'font-size'   => $attr['ctaFontSize']. "px",
+					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 					'color'       => $attr['ctaBtnLinkColor'],
 				),
 				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text '  => array(
 					'color'       => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
-					'font-size'        => $attr['ctaFontSize']. "px",
+					'font-size'        => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -825,10 +856,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['ctaBorderhoverColor'],
 				),
 				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
-					'font-size'   => $attr['ctaFontSize']. "px",
-					'width'       => $attr['ctaFontSize']. "px",
-					'height'      => $attr['ctaFontSize']. "px",
-					'line-height' => $attr['ctaFontSize']. "px",
+					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
 				),
 				' .uagb-cta__button-wrapper .uagb-cta__block-link svg'  => array(
 					'fill'   => $attr['ctaBtnLinkColor'],
@@ -837,12 +868,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'fill'   => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__title'  => array(
-					'font-size'        => $attr['titleFontSize']. "px",
+					'font-size'        => $attr['titleFontSize']. $attr['titleFontSizeType'],
 					'color'            => $attr['titleColor'],
 					'margin-bottom'    => $attr['titleSpace']. "px",
 				),
 				' .uagb-cta__desc'  => array(
-					'font-size'        => $attr['descFontSize']. "px",
+					'font-size'        => $attr['descFontSize']. $attr['descFontSizeType'],
 					'color'            => $attr['descColor'],
 					'margin-bottom'    => $attr['descSpace']. "px",
 				),
@@ -882,40 +913,52 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
-            // Tablet.
-            $t_selectors[' .uagb-cta__content-stacked-tablet .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-	                'margin-left'  => "0",
-	                'margin-right' => "0",
-	            );
+			$t_selectors = array(
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
+					'font-size'   => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
+					'font-size'        => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
+					'font-size'   => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeTablet']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__title'  => array(
+					'font-size'        => $attr['titleFontSizeTablet']. $attr['titleFontSizeType'],
+				),
+				' .uagb-cta__desc'  => array(
+					'font-size'        => $attr['descFontSizeTablet']. $attr['descFontSizeType'],
+				),
+			);
 
-            if( $attr['ctaPosition'] === "right" && ( $attr['ctaType'] === 'text' || $attr['ctaType'] === 'button' ) ){
-				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
-					"width" => "100%",
-				);
-				$t_selectors[" .uagb-cta__content-stacked-tablet.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
-					"width" => "100%",
-				);
-			}
-
-             // mobile.
-            $m_selectors[' .uagb-cta__content-stacked-mobile .uagb-cta__left-right-wrap .uagb-cta__content'] = array(
-	                'margin-left' => "0",
-	                'margin-right' => "0",
-	            );
-
-            if( $attr['ctaPosition'] === "right" && ( $attr['ctaType'] === 'text' || $attr['ctaType'] === 'button' ) ){
-				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__content"] = array(
-					"width" => "100%",
-				);
-				$m_selectors[" .uagb-cta__content-stacked-mobile.uagb-cta__content-right .uagb-cta__left-right-wrap .uagb-cta__link-wrapper"] = array(
-					"width" => "100%",
-				);
-			}
+			$m_selectors = array(
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
+					'font-size'   => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
+					'font-size'        => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__button-wrapper .uagb-cta-with-svg'  => array(
+					'font-size'   => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'width'       => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'height'      => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaFontSizeMobile']. $attr['ctaFontSizeType'],
+				),
+				' .uagb-cta__title'  => array(
+					'font-size'        => $attr['titleFontSizeMobile']. $attr['titleFontSizeType'],
+				),
+				' .uagb-cta__desc'  => array(
+					'font-size'        => $attr['descFontSizeMobile']. $attr['descFontSizeType'],
+				),
+			);
 
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-cta-block-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-cta-block-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-cta-block-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-cta-block-' . $id, 'tablet' );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-cta-block-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1023,7 +1066,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd.
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $r_selectors, '#uagb-testimonial-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $r_selectors, '#uagb-testimonial-' . $id, 'mobile' );
 
 			return $desktop . $mobile;
 		}
@@ -1043,14 +1086,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$m_selectors = array();
+			$t_selectors = array();
+
 			$selectors = array(
 				" p.uagb-team__desc" => array(
-					"font-size" => $attr['descFontSize'] . "px",
+					"font-size" => $attr['descFontSize'] . $attr['descFontSizeType'],
 					"color" => $attr['descColor'],
 					"margin-bottom" => $attr['descSpace'] . "px",
 				),
 				" .uagb-team__prefix" => array(
-					"font-size" => $attr['prefixFontSize'] . "px",
+					"font-size" => $attr['prefixFontSize'] . $attr['prefixFontSizeType'],
 					"color" => $attr['prefixColor'],
 				),
 				" .uagb-team__desc-wrap" => array(
@@ -1058,15 +1104,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-team__social-icon a" => array(
 					"color" => $attr['socialColor'],
-					"font-size" => $attr['socialFontSize'] . "px",
-					"width" => $attr['socialFontSize'] . "px",
-					"height" => $attr['socialFontSize'] . "px",
-					"line-height" => $attr['socialFontSize'] . "px",
+					"font-size" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
 				),
 				" .uagb-team__social-icon svg" => array(
 					"fill" => $attr['socialColor'],
-					"width" => $attr['socialFontSize'] . "px",
-					"height" => $attr['socialFontSize'] . "px",
+					"width" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSize'] . $attr['socialFontSizeType'],
 				),
 				" .uagb-team__social-icon:hover a" => array(
 					"color" => $attr['socialHoverColor'],
@@ -1121,14 +1167,66 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
-				"font-size" => $attr['titleFontSize'] . "px",
+				"font-size" => $attr['titleFontSize'] . $attr['titleFontSizeType'],
 				"color" => $attr['titleColor'],
 				"margin-bottom" => $attr['titleSpace'] . "px",
 			);
 
+			$m_selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSizeMobile'] . $attr['prefixFontSizeType'],
+				),
+				" .uagb-team__social-icon a" => array(
+					"font-size" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+				),
+				" .uagb-team__social-icon svg" => array(
+					"width" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeMobile'] . $attr['socialFontSizeType'],
+				),
+			);
+
+			$t_selectors = array(
+				" p.uagb-team__desc" => array(
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+				),
+				" .uagb-team__prefix" => array(
+					"font-size" => $attr['prefixFontSizeTablet'] . $attr['prefixFontSizeType'],
+				),
+				" .uagb-team__social-icon a" => array(
+					"font-size" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"width" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"line-height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+				),
+				" .uagb-team__social-icon svg" => array(
+					"width" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+					"height" => $attr['socialFontSizeTablet'] . $attr['socialFontSizeType'],
+				),
+			);
+
+			$m_selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+			);
+
+			$t_selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+			);
+
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-team-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-team-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-team-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -1183,25 +1281,70 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$selectors[" .uagb-ss__source-wrap"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"line-height" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
+				"line-height" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-wrap svg"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
 			);
 
 			$selectors[" .uagb-ss__source-image"] = array(
-				"width" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-icon"] = array(
-				"width" => $attr['size'] . "px",
-				"height" => $attr['size'] . "px",
-				"font-size" => $attr['size'] . "px",
-				"line-height" => $attr['size'] . "px"
+				"width" => $attr['size'] . $attr['sizeType'],
+				"height" => $attr['size'] . $attr['sizeType'],
+				"font-size" => $attr['size'] . $attr['sizeType'],
+				"line-height" => $attr['size'] . $attr['sizeType']
+			);
+
+
+			$t_selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+				"line-height" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$t_selectors[" .uagb-ss__source-wrap svg"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+			);
+
+			$t_selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$t_selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['sizeTablet'] . $attr['sizeType'],
+				"height" => $attr['sizeTablet'] . $attr['sizeType'],
+				"font-size" => $attr['sizeTablet'] . $attr['sizeType'],
+				"line-height" => $attr['sizeTablet'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-wrap"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+				"line-height" => $attr['sizeMobile'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-wrap svg"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+			);
+
+			$m_selectors[" .uagb-ss__source-image"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType']
+			);
+
+			$m_selectors[" .uagb-ss__source-icon"] = array(
+				"width" => $attr['sizeMobile'] . $attr['sizeType'],
+				"height" => $attr['sizeMobile'] . $attr['sizeType'],
+				"font-size" => $attr['sizeMobile'] . $attr['sizeType'],
+				"line-height" => $attr['sizeMobile'] . $attr['sizeType']
 			);
 
 			foreach ( $attr['socials'] as $key => $social ) {
@@ -1215,7 +1358,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
 					"color" => $social['icon_color'],
-					"padding" => $attr['bgSize'] . "px"
+					"padding" => $attr['bgSize'] . $attr['bgSizeType']
+				);
+
+				$m_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"padding" => $attr['bgSizeMobile'] . $attr['bgSizeType']
+				);
+
+				$t_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
+					"padding" => $attr['bgSizeTablet'] . $attr['bgSizeType']
 				);
 
 				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link svg"] = array (
@@ -1305,9 +1456,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-social-share-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-social-share-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-social-share-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-social-share-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-social-share-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1555,9 +1706,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-icon-list-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-icon-list-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-icon-list-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-icon-list-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-icon-list-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -1790,9 +1941,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-ctm-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -2080,8 +2231,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 1024px)', $t_selectors, '#uagb-ctm-' . $id );
-			$mobile  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-ctm-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-ctm-' . $id, 'tablet' );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}
@@ -2142,18 +2293,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
 
             $selectors[' .uagb-rm__title'] = array(
-                    'font-size' =>  $attr['titleFontSize'] .'px',
+                    'font-size' =>  $attr['titleFontSize'] .$attr['titleFontSizeType'],
                     'color'=>  $attr['titleColor'] ,
                     'margin-bottom'=>  $attr['titleSpace'] .'px',
                 );
 
             $selectors[' .uagb-rm__price'] = array(
-                    'font-size' =>  $attr['priceFontSize'].'px',
+                    'font-size' =>  $attr['priceFontSize'].$attr['priceFontSizeType'],
                     'color'=>  $attr['priceColor'],
                 );
 
             $selectors[' .uagb-rm__desc'] = array(
-                    'font-size' =>  $attr['descFontSize'].'px',
+                    'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
                     'color'=>  $attr['descColor'],
                     'margin-bottom'=>  $attr['descSpace'].'px',
                 );
@@ -2167,29 +2318,53 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
             }
 
-			$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
+			/*$r_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
 			        'margin-left'=>  '0%',
 			        'clear'=> 'left',
-			    );
+			    );*/
 
-			$t_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)'] = array(
-			        'margin-left'=>  '0%',
-			        'clear'=> 'left',
-			    );
+			$t_selectors = array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
+					'margin-left'=> '0%',
+					'clear'=> 'left',
+				),
+				" .uagb-rm__title" => array(
+					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+				),
+				" .uagb-rm__desc" => array(
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType']
+				),
+				" .uagb-rm__price" => array(
+					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType']
+				)
+			);
 
-			$m_selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)'] = array(
-			        'margin-left'=> '0%',
-			        'clear'=> 'left',
-			    );
+			$m_selectors = array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)' => array(
+					'margin-left'=> '0%',
+					'clear'=> 'left',
+				),
+				" .uagb-rm__title" => array(
+					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+				),
+				" .uagb-rm__desc" => array(
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType']
+				),
+				" .uagb-rm__price" => array(
+					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType']
+				)
+			);
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop   = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
-			$r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
-			$tablet    = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 768px) and (max-width: 1023px)', $t_selectors, '#uagb-rm-' . $id );
-			$mobile    = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-rm-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-rm-' . $id );
+			// @codingStandardsIgnoreStart
+			// $r_desktop = UAGB_Helper::generate_responsive_css( '@media only screen and (min-width: 1024px)', $r_selectors, '#uagb-rm-' . $id );
+			// @codingStandardsIgnoreEnd
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-rm-' . $id, 'tablet' );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-rm-' . $id, 'mobile' );
 
-			return $desktop . $r_desktop . $tablet . $mobile;
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2211,13 +2386,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
+			$t_selectors = self::get_post_tablet_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__grid-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__grid-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__grid-' . $id, 'tablet' );
 
-			return $desktop . $mobile;
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__grid-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2238,6 +2417,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = self::get_post_selectors( $attr );
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
+
+			$t_selectors = self::get_post_tablet_selectors( $attr );
 
 			$selectors[" .slick-arrow"] = array(
 				"border-color" => $attr['arrowColor']
@@ -2281,9 +2462,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__carousel-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__carousel-' . $id, 'tablet' );
 
-			return $desktop . $mobile;
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__carousel-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2305,13 +2488,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
+			$t_selectors = self::get_post_tablet_selectors( $attr );
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__masonry-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-post__masonry-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-post__masonry-' . $id, 'tablet' );
 
-			return $desktop . $mobile;
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-post__masonry-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
@@ -2406,10 +2593,72 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_post_mobile_selectors( $attr ) {
 			// @codingStandardsIgnoreStart
+
 			return array(
+				" .uagb-post__text .uagb-post__title" => array(
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__title a" => array(
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+				),
+				" .uagb-post__text .uagb-post-grid-byline" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
+					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__excerpt" => array(
+					"font-size" =>$attr['excerptFontSizeMobile'] . $attr['excerptFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta" => array(
+					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta a" => array(
+					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+				),
 				" .uagb-post__text" => array(
-					"padding" => ( $attr['contentPaddingMobile'] ) . "px",
-				)
+					"padding" =>( $attr['contentPaddingMobile'] ) . "px",
+				),
+			);
+			// @codingStandardsIgnoreEnd
+		}
+
+		/**
+		 * Get Post Block Selectors CSS for Tablet devices
+		 *
+		 * @param array $attr The block attributes.
+		 * @since x.x.x
+		 */
+		public static function get_post_tablet_selectors( $attr ) {
+			// @codingStandardsIgnoreStart
+			return array(
+				" .uagb-post__text .uagb-post__title" => array(
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__title a" => array(
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+				),
+				" .uagb-post__text .uagb-post-grid-byline" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
+					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__excerpt" => array(
+					"font-size" =>$attr['excerptFontSizeTablet'] . $attr['excerptFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta" => array(
+					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+				),
+				" .uagb-post__text .uagb-post__cta a" => array(
+					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+				),
 			);
 			// @codingStandardsIgnoreEnd
 		}

@@ -3,6 +3,7 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
+
 function inlineStyles( props, isEditor ) {
 
 	const {
