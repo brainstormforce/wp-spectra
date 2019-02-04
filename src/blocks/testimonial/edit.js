@@ -181,17 +181,8 @@ class UAGBtestimonial extends Component {
 			authorColor,
 			prefixTag,
 			nameFontSize,
-			nameFontSizeType,
-			nameFontSizeMobile,
-			nameFontSizeTablet,
 			companyFontSize,
-			companyFontSizeType,
-			companyFontSizeMobile,
-			companyFontSizeTablet,
 			descFontSize,
-			descFontSizeType,
-			descFontSizeMobile,
-			descFontSizeTablet,
 			separatorWidth,
 			separatorSpace,
 			descSpace,
@@ -242,7 +233,9 @@ class UAGBtestimonial extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = TestimonialStyle( this.props )
 		}
-	
+
+		const my_block_id = "uagb-testimonial-"+this.props.clientId
+
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
@@ -861,7 +854,7 @@ class UAGBtestimonial extends Component {
 					className,
 					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
-				id = { `uagb-testimonial-${ this.props.clientId }` }
+				id = { my_block_id }
 				>
 					<Slider
 						className={ classnames(
