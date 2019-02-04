@@ -1094,18 +1094,18 @@ class UAGBBlockQuote extends Component {
 						className,
 						"uagb-blockquote__outer-wrap",
 					) }
-					id={ `uagb-quote-${ this.props.clientId }` }>
+					id={ `uagb-blockquote-${ this.props.clientId }` }>
 					<div className = { classnames(
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
-						( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
-						( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
-						( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
-						`uagb-quote-stack-img-${stack}`
+						( skinStyle !== "border" ) ? `uagb-blockquote__align-${align}` : "",
+						( skinStyle === "quotation" ) ? `uagb-blockquote__style-${quoteStyle}` : "",
+						( enableTweet ) ? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${iconSkin} uagb-blockquote__tweet-${iconView}` : "",
+						`uagb-blockquote__stack-img-${stack}`
 					) } >
 
 						<blockquote className="uagb-blockquote">
-							{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">
+							{ skinStyle === "quotation" && <div className="uagb-blockquote__icon-wrap"><span className="uagb-blockquote__icon">
 								{ UAGB_Block_Icons.quote_inline_icon }
 							</span>	</div> }
 
@@ -1114,8 +1114,8 @@ class UAGBBlockQuote extends Component {
 
 					   <footer>
 					   		<div className={ classnames(
-										"uagb-quote__author-wrap",
-										( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",
+										"uagb-blockquote__author-wrap",
+										( authorImage !== "" ) ? `uagb-blockquote__author-at-${authorImgPosition}` : "",
 									) }	>
 					      		{ <AuthorImage attributes={attributes} /> }
 					      		{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }

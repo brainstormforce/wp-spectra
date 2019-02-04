@@ -21,7 +21,7 @@ class AuthorImage extends React.Component {
 			}
 
 			return (				
-				<div className="uagb-quote__author-image">
+				<div className="uagb-blockquote__author-image">
 					<img
 						className =""
 						src = { url }                        

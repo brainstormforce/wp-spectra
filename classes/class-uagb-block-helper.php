@@ -19,6 +19,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2724,7 +2725,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-bottom"    => $attr['verticalPadding'] . "px",
 				),
 
-				" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap" => array(
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"background"        => $attr['quoteBgColor'],
 					"border-radius"     => $attr['quoteBorderRadius']."%",
 					"margin-top"        => $attr['quoteTopMargin'] . "px",
@@ -2734,33 +2735,33 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding"      		=> $attr['quotePadding'] . "px",
 				),
 
-				" .uagb-blockquote__skin-quotation .uagb-quote__icon" => array(
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
 					"width"             => $attr['quoteSize']."px",
 					"height"            => $attr['quoteSize']."px",
 				),
 
-				" .uagb-blockquote__skin-quotation .uagb-quote__icon svg" => array(
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg" => array(
 					"fill"         => $attr['quoteColor'],
 				),
 
-				" .uagb-quote__style-style_1 .uagb-blockquote" => array(
+				" .uagb-blockquote__style-style_1 .uagb-blockquote" => array(
 					"text-align"        => $attr['align'],
 				),
 
-				" .uagb-quote__author-wrap" => array(
+				" .uagb-blockquote__author-wrap" => array(
 					"margin-bottom"     => $author_space . "px",
 				),
-				" .uagb-quote__author-image img" => array(
+				" .uagb-blockquote__author-image img" => array(
 					"width"             => $attr['authorImageWidth']."px",
 					"height"            => $attr['authorImageWidth']."px",
 					"border-radius"     => $attr['authorImgBorderRadius']."%"
 				),
 
-				" .uagb-blockquote__skin-quotation .uagb-quote__icon:hover svg" => array(
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon:hover svg" => array(
 					"fill"         => $attr['quoteHoverColor'],
 				),
 
-				" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover" => array(
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover" => array(
 					"background"    => $attr['quoteBgHoverColor'],
 				),
 
@@ -2774,15 +2775,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-size"          => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button"] = array(
 					"color"              => $attr['tweetLinkColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = array(
 					"fill"              => $attr['tweetLinkColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button"] = array(
 					"color"              => $attr['tweetBtnColor'],
 					"background-color"   => $attr['tweetBtnBgColor'],
 					"padding-left"       => $attr['tweetBtnHrPadding'] . "px",
@@ -2791,11 +2792,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",
 				);
 
-				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = array(
 					"fill"              => $attr['tweetBtnColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = array(
 					"color"              => $attr['tweetBtnColor'],
 					"background-color"   => $attr['tweetBtnBgColor'],
 					"padding-left"       => $attr['tweetBtnHrPadding'] . "px",
@@ -2804,48 +2805,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-bottom"     => $attr['tweetBtnVrPadding'] . "px",
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = array(
 					"fill"              => $attr['tweetBtnColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = array(
 					"border-right-color" => $attr['tweetBtnBgColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
 					"margin-right"       => $attr['tweetIconSpacing'] . "px",
 					"width"       		 => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
 				);
 
 				// Hover CSS.
-				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = array(
 					"color"              => $attr['tweetBtnHoverColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = array(
 					"fill"              => $attr['tweetBtnHoverColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = array(
-					"color"              => $attr['tweetBtnHoverColor'],
-					"background-color"   => $attr['tweetBtnBgHoverColor'],
-				);
-
-				$selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = array(
-					"fill"              => $attr['tweetBtnHoverColor'],
-				);
-
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = array(
 					"color"              => $attr['tweetBtnHoverColor'],
 					"background-color"   => $attr['tweetBtnBgHoverColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = array(
 					"fill"              => $attr['tweetBtnHoverColor'],
 				);
 
-				$selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = array(
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover"] = array(
+					"color"              => $attr['tweetBtnHoverColor'],
+					"background-color"   => $attr['tweetBtnBgHoverColor'],
+				);
+
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = array(
+					"fill"              => $attr['tweetBtnHoverColor'],
+				);
+
+				$selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = array(
 					"border-right-color" => $attr['tweetBtnBgHoverColor'],
 				);
 			}
@@ -2860,7 +2861,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 				),	
-				" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 				)		
@@ -2876,7 +2877,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),	
-				" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				)	
@@ -2884,11 +2885,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-quote-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-blockquote-' . $id );
 
-			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-quote-' . $id, 'tablet' );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-blockquote-' . $id, 'tablet' );
 
-			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-quote-' . $id, 'mobile' );
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-blockquote-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
 		}

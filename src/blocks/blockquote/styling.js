@@ -101,7 +101,7 @@ function styling( props ) {
 		" .uagb-blockquote__skin-border blockquote.uagb-blockquote:hover":{
 			"border-left-color": borderHoverColor,
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap":{
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap":{
 			"background"    : quoteBgColor,
 			"border-radius" : quoteBorderRadius+"%",
 			"margin-top"    : quoteTopMargin + "px",
@@ -110,26 +110,26 @@ function styling( props ) {
 			"margin-right"  : quoteRightMargin + "px",
 			"padding"       : quotePadding+"px",
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon":{
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon":{
 			"width"         : quoteSize+"px",
 			"height"        : quoteSize+"px",
 		},	
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon svg":{
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg":{
 			"fill"         : quoteColor,
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover":{
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover":{
 			"background"    : quoteBgHoverColor,
 		},
-		" .uagb-blockquote__skin-quotation .uagb-quote__icon-wrap:hover .uagb-quote__icon svg":{
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap:hover .uagb-blockquote__icon svg":{
 			"fill"         : quoteHoverColor,
 		},		
-		" .uagb-quote__style-style_1 .uagb-blockquote":{
+		" .uagb-blockquote__style-style_1 .uagb-blockquote":{
 			"text-align": align,
 		},			
-		" .uagb-quote__author-wrap":{
+		" .uagb-blockquote__author-wrap":{
 			"margin-bottom": author_space + "px",
 		},
-		" .uagb-quote__author-image img":{
+		" .uagb-blockquote__author-image img":{
 			"width": authorImageWidth+"px",
 			"height": authorImageWidth+"px",
 			"border-radius": authorImgBorderRadius+"%"
@@ -140,15 +140,15 @@ function styling( props ) {
 		selectors[" a.uagb-blockquote__tweet-button"] = {
 			"font-size": tweetBtnFontSize + tweetBtnFontSizeType,				
 		}
-		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
+		selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
 			"color": tweetLinkColor,		
 		}
 
-		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = {
+		selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button svg"] = {
 			"fill": tweetLinkColor,		
 		}
 
-		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
+		selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button"] = {
 			"color": tweetBtnColor,		
 			"background-color": tweetBtnBgColor,	
 			"padding-left": tweetBtnHrPadding + "px",
@@ -157,11 +157,11 @@ function styling( props ) {
 			"padding-bottom": tweetBtnVrPadding + "px",	
 		}
 
-		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = {
+		selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button svg"] = {
 			"fill": tweetBtnColor,		
 		}
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button"] = {
 			"color": tweetBtnColor,		
 			"background-color": tweetBtnBgColor,	
 			"padding-left": tweetBtnHrPadding + "px",
@@ -169,50 +169,50 @@ function styling( props ) {
 			"padding-top": tweetBtnVrPadding + "px",
 			"padding-bottom": tweetBtnVrPadding + "px",	
 		}	
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = {
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button svg"] = {
 			"fill": tweetBtnColor,		
 		}	
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = {
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before"] = {
 			"border-right-color": tweetBtnBgColor,		
 		}	
 
-		selectors[" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
+		selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
 			"margin-right": tweetIconSpacing + "px",
 			"width": tweetBtnFontSize + tweetBtnFontSizeType,
 			"height": tweetBtnFontSize + tweetBtnFontSizeType,
 		}	
 
 		// Hover CSS
-		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = {
+		selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover"] = {
 			"color": tweetBtnHoverColor,		
 		}
 
-		selectors[" .uagb-quote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = {
+		selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button:hover svg"] = {
 			"fill": tweetBtnHoverColor,		
 		}
 
-		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = {
-			"color": tweetBtnHoverColor,		
-			"background-color": tweetBtnBgHoverColor,	
-		}
-
-		selectors[" .uagb-quote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = {
-			"fill": tweetBtnHoverColor,		
-			"background-color": tweetBtnBgHoverColor,	
-		}
-
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover "] = {
+		selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover"] = {
 			"color": tweetBtnHoverColor,		
 			"background-color": tweetBtnBgHoverColor,	
 		}
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = {
+		selectors[" .uagb-blockquote__tweet-style-classic a.uagb-blockquote__tweet-button:hover svg"] = {
 			"fill": tweetBtnHoverColor,		
 			"background-color": tweetBtnBgHoverColor,	
 		}
 
-		selectors[" .uagb-quote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = {
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover "] = {
+			"color": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover svg"] = {
+			"fill": tweetBtnHoverColor,		
+			"background-color": tweetBtnBgHoverColor,	
+		}
+
+		selectors[" .uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:hover:before"] = {
 			"border-right-color": tweetBtnBgHoverColor,	
 		}
 	}
@@ -227,7 +227,7 @@ function styling( props ) {
 		" a.uagb-blockquote__tweet-button" : {
 			"font-size": tweetBtnFontSizeTablet + descFontSizeType,				
 		},
-		" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" : {
+		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" : {
 			"width": tweetBtnFontSizeTablet + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeTablet +tweetBtnFontSizeType,
 		}	
@@ -243,7 +243,7 @@ function styling( props ) {
 		" a.uagb-blockquote__tweet-button" : {
 			"font-size": tweetBtnFontSizeMobile + descFontSizeType,				
 		},
-		" .uagb-quote__tweet-icon_text a.uagb-blockquote__tweet-button svg" :{
+		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" :{
 			"width": tweetBtnFontSizeMobile + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeMobile +tweetBtnFontSizeType,
 		}	
@@ -253,7 +253,7 @@ function styling( props ) {
 
 	for( var i in selectors ) {
 
-		styling_css += `#wpwrap .edit-post-visual-editor #uagb-quote-${ props.clientId }`
+		styling_css += `#wpwrap .edit-post-visual-editor #uagb-blockquote-${ props.clientId }`
 
 		styling_css += i + " { "
 
@@ -272,7 +272,7 @@ function styling( props ) {
 
 	for( var i in t_selectors ) {
 
-		styling_css += `.block-editor-page #wpwrap #uagb-quote-${ props.clientId }`
+		styling_css += `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
 
 		styling_css += i + " { "
 
@@ -293,7 +293,7 @@ function styling( props ) {
 
 	for( var i in m_selectors ) {
 
-		styling_css += `.block-editor-page #wpwrap #uagb-quote-${ props.clientId }`
+		styling_css += `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
 
 		styling_css += i + " { "
 

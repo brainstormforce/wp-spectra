@@ -59,7 +59,6 @@ registerBlockType( "uagb/blockquote", {
 			iconSkin,
 			authorImage,
 			enableTweet,
-			className,
 			iconView,
 			author,
 			descriptionText,
@@ -70,28 +69,28 @@ registerBlockType( "uagb/blockquote", {
 		return (
 			<div
 				className = { classnames(
-					className,						
+					props.className ,						
 					"uagb-blockquote__outer-wrap",
 				) }
-				id={ `uagb-quote-${ block_id }` }>
+				id={ `uagb-blockquote-${ block_id }` }>
 				<div className = { classnames(
 					"uagb-blockquote__wrap",
 					`uagb-blockquote__skin-${skinStyle}`,
-					( skinStyle !== "border" ) ? `uagb-quote__align-${align}` : "",
-					( skinStyle === "quotation" ) ? `uagb-quote__style-${quoteStyle}` : "",
-					( enableTweet ) ? `uagb-quote__with-tweet uagb-quote__tweet-style-${iconSkin} uagb-quote__tweet-${iconView}` : "",
-					`uagb-quote-stack-img-${stack}`,
+					( skinStyle !== "border" ) ? `uagb-blockquote__align-${align}` : "",
+					( skinStyle === "quotation" ) ? `uagb-blockquote__style-${quoteStyle}` : "",
+					( enableTweet ) ? `uagb-blockquote__with-tweet uagb-blockquote__tweet-style-${iconSkin} uagb-blockquote__tweet-${iconView}` : "",
+					`uagb-blockquote__stack-img-${stack}`,
 				) } >
 					
 					<blockquote className="uagb-blockquote">					  
-						{ skinStyle === "quotation" && <div className="uagb-quote__icon-wrap"><span className="uagb-quote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span></div> }
+						{ skinStyle === "quotation" && <div className="uagb-blockquote__icon-wrap"><span className="uagb-blockquote__icon">{ UAGB_Block_Icons.quote_inline_icon }</span></div> }
 						<div className="uagb-blockquote__content-wrap">
 					   	{ descriptionText !=="" && <Description attributes={props.attributes} setAttributes = "not_set" props = { props }  /> }
 
 				   	<footer>
 				   		<div className={ classnames(
-									"uagb-quote__author-wrap",
-									( authorImage !== "" ) ? `uagb-quote__author-at-${authorImgPosition}` : "",	
+									"uagb-blockquote__author-wrap",
+									( authorImage !== "" ) ? `uagb-blockquote__author-at-${authorImgPosition}` : "",	
 								) }	>					   		
 				      		{ <AuthorImage attributes={props.attributes} /> }
 				      		{ author !== "" && <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
