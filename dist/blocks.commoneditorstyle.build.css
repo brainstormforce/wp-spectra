@@ -3136,6 +3136,11 @@ i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
 }
+
+label.wp-block-uagb-blockquote__via-label svg {
+    fill: #6c7781;
+    vertical-align: middle;
+}
 .slick-arrow svg{
 	vertical-align: middle;
 }
