@@ -193,10 +193,30 @@ const attributes = {
 		type: "number",
 		default: 25,
 	},	
+	quoteSizeType: {
+		type: "string",
+		default: "px"
+	},
+	quoteSizeTablet: {
+		type: "number",
+	},
+	quoteSizeMobile: {
+		type: "number",
+	},
 	quotePadding: {
 		type: "number",
 		default: 10,
-	},		
+	},	
+	quotePaddingType: {
+		type: "string",
+		default: "px"
+	},
+	quotePaddingTablet: {
+		type: "number",
+	},
+	quotePaddingMobile: {
+		type: "number",
+	},	
 	quoteBorderRadius: {
 		type: "number",
 		default: 100,

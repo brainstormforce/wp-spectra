@@ -3,7 +3,7 @@
  * @param  {object} props - The block object.
  * @return {object} The inline background type CSS.
  */
- 
+
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
@@ -31,6 +31,9 @@ function styling( props ) {
 		verticalPadding,
 		quoteColor,
 		quoteSize,
+		quoteSizeType,
+		quoteSizeTablet,
+		quoteSizeMobile,
 		quoteBgColor,
 		enableTweet,
 		tweetBtnFontSize,
@@ -57,6 +60,9 @@ function styling( props ) {
 		quoteBgHoverColor,
 		borderHoverColor,	
 		quotePadding,
+		quotePaddingType,
+		quotePaddingTablet,
+		quotePaddingMobile,
 	} = props.attributes
 
 	var content_align ="center"
@@ -110,11 +116,11 @@ function styling( props ) {
 			"margin-bottom" : quoteBottomMargin + "px",
 			"margin-left"   : quoteLeftMargin + "px",
 			"margin-right"  : quoteRightMargin + "px",
-			"padding"       : quotePadding+"px",
+			"padding"       : quotePadding+quotePaddingType,
 		},
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon":{
-			"width"         : quoteSize+"px",
-			"height"        : quoteSize+"px",
+			"width"         : quoteSize+quoteSizeType,
+			"height"        : quoteSize+quoteSizeType,
 		},	
 		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg":{
 			"fill"         : quoteColor,
@@ -227,12 +233,19 @@ function styling( props ) {
 			"font-size": authorFontSizeTablet + authorFontSizeType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
-			"font-size": tweetBtnFontSizeTablet + descFontSizeType,				
+			"font-size": tweetBtnFontSizeTablet + tweetBtnFontSizeType,				
 		},
 		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" : {
 			"width": tweetBtnFontSizeTablet + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeTablet +tweetBtnFontSizeType,
-		}	
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap":{
+			"padding"       : quotePaddingTablet+quotePaddingType,
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon":{
+			"width"         : quoteSizeTablet+quoteSizeType,
+			"height"        : quoteSizeTablet+quoteSizeType,
+		},		
 	}
 
 	var mobile_selectors = {
@@ -243,12 +256,19 @@ function styling( props ) {
 			"font-size": authorFontSizeMobile + authorFontSizeType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
-			"font-size": tweetBtnFontSizeMobile + descFontSizeType,				
+			"font-size": tweetBtnFontSizeMobile + tweetBtnFontSizeType,				
 		},
 		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" :{
 			"width": tweetBtnFontSizeMobile + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeMobile +tweetBtnFontSizeType,
-		}	
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap":{
+			"padding"       : quotePaddingMobile + quotePaddingType,
+		},
+		" .uagb-blockquote__skin-quotation .uagb-blockquote__icon":{
+			"width"         : quoteSizeMobile + quoteSizeType,
+			"height"        : quoteSizeMobile + quoteSizeType,
+		},		
 	}
 
 	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }` )

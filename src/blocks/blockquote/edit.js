@@ -106,7 +106,13 @@ class UAGBBlockQuote extends Component {
 			quoteColor,
 			quoteBgColor,
 			quoteSize,
+			quoteSizeType,
+			quoteSizeTablet,
+			quoteSizeMobile,
 			quotePadding,
+			quotePaddingType,
+			quotePaddingTablet,
+			quotePaddingMobile,
 			quoteBorderRadius,
 			quoteStyle,
 			enableTweet,
@@ -204,6 +210,39 @@ class UAGBBlockQuote extends Component {
 			</ButtonGroup>
 		)
 
+		const quoteSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ quoteSizeType === key }
+						aria-pressed={ quoteSizeType === key }
+						onClick={ () => setAttributes( { quoteSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const quotePaddingControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ quotePaddingType === key }
+						aria-pressed={ quotePaddingType === key }
+						onClick={ () => setAttributes( { quotePaddingType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
 
 		let image_name = __( "Select Image" )
 		if(authorImage){
@@ -255,22 +294,158 @@ class UAGBBlockQuote extends Component {
 		const quote_settings = (
 			<Fragment>
 				<h2>{ __( "Quotation Layout - Styling" ) }</h2>
-				<RangeControl
-					label={ __( "Quote Icon Size" ) }
-					value={ quoteSize }
-					onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
-					min={ 0 }
-					max={ 150 }
-					allowReset
-				/>
-				<RangeControl
-					label={ __( "Quote Icon Background Size" ) }
-					value={ quotePadding }
-					onChange={ ( value ) => setAttributes( { quotePadding: value } ) }
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
+				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					tabs={ [
+						{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className: "uagb-desktop-tab uagb-responsive-tabs",
+						},
+						{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className: "uagb-tablet-tab uagb-responsive-tabs",
+						},
+						{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className: "uagb-mobile-tab uagb-responsive-tabs",
+						},
+					] }>
+					{
+						( tab ) => {
+							let tabout
+
+							if ( "mobile" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{quoteSizeTypeControls}
+										<RangeControl
+											label={ __( "Quote Icon Size" ) }
+											value={ quoteSizeMobile }
+											onChange={ ( value ) => setAttributes( { quoteSizeMobile: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else if ( "tablet" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{quoteSizeTypeControls}
+										<RangeControl
+											label={ __( "Quote Icon Size" ) }
+											value={ quoteSizeTablet }
+											onChange={ ( value ) => setAttributes( { quoteSizeTablet: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else {
+								tabout = (
+									<Fragment>
+										{quoteSizeTypeControls}
+										<RangeControl
+											label={ __( "Quote Icon Size" ) }
+											value={ quoteSize }
+											onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							}
+
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>	
+				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					tabs={ [
+						{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className: "uagb-desktop-tab uagb-responsive-tabs",
+						},
+						{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className: "uagb-tablet-tab uagb-responsive-tabs",
+						},
+						{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className: "uagb-mobile-tab uagb-responsive-tabs",
+						},
+					] }>
+					{
+						( tab ) => {
+							let tabout
+
+							if ( "mobile" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{quotePaddingControls}
+										<RangeControl
+											label={ __( "Background Size" ) }
+											value={ quotePaddingMobile }
+											onChange={ ( value ) => setAttributes( { quotePaddingMobile: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else if ( "tablet" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{quotePaddingControls}
+										<RangeControl
+											label={ __( "Background Size" ) }
+											value={ quotePaddingTablet }
+											onChange={ ( value ) => setAttributes( { quotePaddingTablet: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else {
+								tabout = (
+									<Fragment>
+										{quotePaddingControls}
+										<RangeControl
+											label={ __( "Background Size" ) }
+											value={ quotePadding }
+											onChange={ ( value ) => setAttributes( { quotePadding: value } ) }
+											min={ 10 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							}
+
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>
 				{ quoteBgColor &&
 					<RangeControl
 						label={ __( "Quote Icon Border Radius (%)" ) }

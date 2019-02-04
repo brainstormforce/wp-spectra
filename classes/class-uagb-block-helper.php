@@ -20,6 +20,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2732,12 +2734,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom"     => $attr['quoteBottomMargin'] . "px",
 					"margin-left"       => $attr['quoteLeftMargin'] . "px",
 					"margin-right"      => $attr['quoteRightMargin'] . "px",
-					"padding"      		=> $attr['quotePadding'] . "px",
+					"padding"      		=> $attr['quotePadding'] . $attr['quotePaddingType'],
 				),
 
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSize']."px",
-					"height"            => $attr['quoteSize']."px",
+					"width"             => $attr['quoteSize'].$attr['quoteSizeType'],,
+					"height"            => $attr['quoteSize'].$attr['quoteSizeType'],,
 				),
 
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon svg" => array(
@@ -2864,7 +2866,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
-				)		
+				),
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(					
+					"padding"      		=> $attr['quotePaddingTablet'] . $attr['quotePaddingType'],
+				),
+
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
+					"width"             => $attr['quoteSizeTablet'].$attr['quoteSizeType'],,
+					"height"            => $attr['quoteSizeTablet'].$attr['quoteSizeType'],,
+				),		
 			);
 
 			$m_selectors = array(
@@ -2880,7 +2890,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
-				)	
+				),
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(					
+					"padding"      		=> $attr['quotePaddingMobile'] . $attr['quotePaddingType'],
+				),
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
+					"width"             => $attr['quoteSizeMobile'].$attr['quoteSizeType'],,
+					"height"            => $attr['quoteSizeMobile'].$attr['quoteSizeType'],,
+				),	
 			);
 
 			// @codingStandardsIgnoreEnd

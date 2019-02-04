@@ -13,9 +13,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 	class UAGB_Config {
 
 
-
-
-
 		/**
 		 * Block Attributes
 		 *
@@ -853,6 +850,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quoteStyle'             => 'style_1',
 							'quoteColor'             => '#abb8c3',
 							'quoteSize'              => 25,
+							'quoteSizeType'          => 'px',
+							'quoteSizeTablet'        => '',
+							'quoteSizeMobile'        => '',
 							'quoteTopMargin'         => '',
 							'quoteBottomMargin'      => '',
 							'quoteLeftMargin'        => '',
@@ -866,6 +866,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'customUrl'              => '',
 							'iconShareVia'           => '',
 							'quotePadding'           => 10,
+							'quotePaddingType'       => 'px',
+							'quotePaddingTablet'     => '',
+							'quotePaddingMobile'     => '',
 						),
 					),
 				);
