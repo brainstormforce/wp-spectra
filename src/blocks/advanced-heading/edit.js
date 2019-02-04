@@ -116,21 +116,30 @@ export default class UAGBAdvancedHeading extends Component {
 				headingTag,
 				headFontFamily,
 				headFontWeight,
-				headFontSize,
 				headFontSizeType,
+				headFontSize,
 				headFontSizeMobile,
 				headFontSizeTablet,
+				headLineHeightType,
+				headLineHeight,
+				headLineHeightMobile,
+				headLineHeightTablet,
+				subHeadFontFamily,
+				subHeadFontWeight,
 				subHeadFontSize,
 				subHeadFontSizeType,
 				subHeadFontSizeMobile,
-				subHeadFontSizeTablet,
+				subHeadFontSizeTablet,				
+				subHeadLineHeight,
+				subHeadLineHeightType,
+				subHeadLineHeightMobile,
+				subHeadLineHeightTablet,
 				separatorWidth,
 				separatorWidthType,
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
 				separatorSpace,
-				...TypographyOptionsAttributes
 			},
 		} = this.props
 
@@ -197,6 +206,10 @@ export default class UAGBAdvancedHeading extends Component {
 							fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
 							fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
 							fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
+							lineheightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
+							lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
+							lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
+							lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
 						/>
 						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
@@ -206,82 +219,22 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Sub-Heading" ) }</h2>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSize }
-													onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<TypographyOptions 
+							label={ __( "Heading Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							props = { this.props }
+							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
+							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
+							fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
+							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
+							lineheightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
+							lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+						/>
 						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 						<ColorPalette
 							value={ subHeadingColor }

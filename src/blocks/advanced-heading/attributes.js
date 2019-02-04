@@ -38,6 +38,10 @@ const attributes = {
 	separatorWidth: {
 		type: "number"
 	},
+	separatorWidthType : {
+		type: "string",
+		default: "%"
+	},
 	headSpace: {
 		type: "number",
 		default: 15
@@ -49,21 +53,30 @@ const attributes = {
 	headFontWeight: {
 		type: "string",
 	},
-	headFontSize: {
-		type: "number",
-	},
 	headFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	separatorWidthType : {
+	headLineHeightType: {
 		type: "string",
-		default: "%"
+		default: "px"
+	},
+	headFontSize: {
+		type: "number",
 	},
 	headFontSizeTablet: {
 		type: "number",
 	},
 	headFontSizeMobile: {
+		type: "number",
+	},
+	headLineHeight: {
+		type: "number",
+	},
+	headLineHeightTablet: {
+		type: "number",
+	},
+	headLineHeightMobile: {
 		type: "number",
 	},
 	subHeadFontfamily: {
@@ -83,6 +96,19 @@ const attributes = {
 		type: "number",
 	},
 	subHeadFontSizeMobile: {
+		type: "number",
+	},
+	subHeadLineHeight: {
+		type: "number",
+	},
+	subHeadLineHeightType: {
+		type: "string",
+		default: "px"
+	},
+	subHeadLineHeightTablet: {
+		type: "number",
+	},
+	subHeadLineHeightMobile: {
 		type: "number",
 	},
 	separatorSpace: {
