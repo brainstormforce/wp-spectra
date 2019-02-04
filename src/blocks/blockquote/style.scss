@@ -292,7 +292,17 @@
 
 		.uagb-blockquote__stack-img-tablet a.uagb-blockquote__tweet-button{
 			margin-top: 10px;
-		}		
+		}	
+
+		.uagb-blockquote__align-right.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-image{
+			-ms-flex-item-align: flex-end;
+		    align-self: flex-end;
+		}
+
+		.uagb-blockquote__align-left.uagb-blockquote__stack-img-tablet .uagb-blockquote__author-image{
+			-ms-flex-item-align: flex-start;
+		    align-self: flex-start;
+		}	
 	}
 }
 
@@ -335,6 +345,16 @@
 		
 		.uagb-blockquote__stack-img-mobile a.uagb-blockquote__tweet-button{
 			margin-top: 10px;
+		}
+
+		.uagb-blockquote__align-right.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-image{
+			-ms-flex-item-align: flex-end;
+		    align-self: flex-end;
+		}
+
+		.uagb-blockquote__align-left.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-image{
+			-ms-flex-item-align: flex-start;
+		    align-self: flex-start;
 		}
 	}
 }
