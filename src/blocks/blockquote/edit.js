@@ -729,7 +729,7 @@ class UAGBBlockQuote extends Component {
 		const spacing_settings =(
 			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 				{ skinStyle === "quotation" && <Fragment>
-					<h2>{ __( "Quote Icon" ) }</h2>
+					<h2>{ __( "Quote Icon MArgin (px)" ) }</h2>
 					<RangeControl
 						label={ UAGB_Block_Icons.top_margin }
 						className={ "uagb-margin-control" }
@@ -951,17 +951,10 @@ class UAGBBlockQuote extends Component {
 				}
 				{ enableTweet && iconSkin !== "link" && <Fragment>
 					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Button Padding (px)" ) }</h2> 
 					<RangeControl
-						label={ __( "Button Horizontal Padding" ) }
-						value={ tweetBtnHrPadding }
-						onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-						initialPosition={5}
-					/>
-					<RangeControl
-						label={ __( "Button Vertical Padding" ) }
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
 						value={ tweetBtnVrPadding }
 						onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
 						min={ 0 }
@@ -969,8 +962,19 @@ class UAGBBlockQuote extends Component {
 						allowReset
 						initialPosition={5}
 					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
+						value={ tweetBtnHrPadding }
+						onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+						initialPosition={5}
+					/>					
 				</Fragment>
 				}
+				<hr className="uagb-editor__separator" />
 				{ (enableTweet && iconView == "icon_text") && <RangeControl
 					label={ __( "Space between Tweet Icon and Text" ) }
 					value={ tweetIconSpacing }

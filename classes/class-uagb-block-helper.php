@@ -18,6 +18,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -87,7 +88,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'wide' != $attr['align'] && 'full' != $attr['align'] ) {
 				$style['max-width'] = $section_width;
 			}
-
 
 			if ( 'image' === $bg_type ) {
 
@@ -2885,13 +2885,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-quote-' . $id );
-			$tablet  = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 976px)', $t_selectors, '#uagb-quote-' . $id );
 
-			$mobile = UAGB_Helper::generate_responsive_css( '@media only screen and (max-width: 767px)', $m_selectors, '#uagb-quote-' . $id );
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-quote-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-quote-' . $id, 'mobile' );
 
 			return $desktop . $tablet . $mobile;
-
-			return $desktop;
 		}
 
 		/**
