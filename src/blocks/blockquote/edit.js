@@ -273,6 +273,7 @@ class UAGBBlockQuote extends Component {
 		// Image controls.
 		const imageControls = (
 			<Fragment>
+				<hr className="uagb-editor__separator" />
 				<BaseControl className="editor-bg-image-control" label={ __( "Author Image" ) } >
 					<MediaUpload
 						title={ __( "Select Image" ) }
@@ -524,8 +525,10 @@ class UAGBBlockQuote extends Component {
 		const spacing_settings =(
 			<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 				{ skinStyle === "quotation" && <Fragment>
+					<h2>{ __( "Quote Icon" ) }</h2>
 					<RangeControl
-						label={ __( "Quote Icon Top Margin" ) }
+						label={ UAGB_Block_Icons.top_margin }
+						className={ "uagb-margin-control" }
 						value={ quoteTopMargin }
 						onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
 						min={ 0 }
@@ -533,7 +536,8 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Quote Icon Bottom Margin" ) }
+						label={ UAGB_Block_Icons.bottom_margin }
+						className={ "uagb-margin-control" }
 						value={ quoteBottomMargin }
 						onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
 						min={ 0 }
@@ -541,7 +545,8 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Quote Icon Left Margin" ) }
+						label={ UAGB_Block_Icons.left_margin }
+						className={ "uagb-margin-control" }
 						value={ quoteLeftMargin }
 						onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
 						min={ 0 }
@@ -549,7 +554,8 @@ class UAGBBlockQuote extends Component {
 						allowReset
 					/>
 					<RangeControl
-						label={ __( "Quote Icon Right Margin" ) }
+						label={ UAGB_Block_Icons.right_margin }
+						className={ "uagb-margin-control" }
 						value={ quoteRightMargin }
 						onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
 						min={ 0 }
@@ -558,7 +564,7 @@ class UAGBBlockQuote extends Component {
 					/>
 				</Fragment>
 				}
-
+				<hr className="uagb-editor__separator" />
 				{ skinStyle === "border" &&
 					<RangeControl
 						label={ __( "Gap Between Border and Quote" ) }
@@ -588,7 +594,7 @@ class UAGBBlockQuote extends Component {
 					initialPosition={0}
 				/>
 				}
-
+				<hr className="uagb-editor__separator" />
 				{ skinStyle === "border"  && <Fragment>
 					<h2>{ __( "Vertical Padding" ) }</h2>
 					<RangeControl

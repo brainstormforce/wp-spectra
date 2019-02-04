@@ -7,6 +7,8 @@ import PositionClasses from "./classes"
 import RestMenuStyle from "./inline-styles"
 import RestMenuImage from "./components/RestMenuImage"
 import times from "lodash/times"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import map from "lodash/map"
 
 const { __ } = wp.i18n
 
@@ -24,7 +26,10 @@ const {
 	SelectControl,
 	RangeControl,
 	BaseControl,
+	ButtonGroup,
 	Button,
+	TabPanel,
+	Dashicon
 } = wp.components
 
 // Extend component
@@ -52,7 +57,7 @@ class UAGBRestaurantMenu extends Component {
 		const { setAttributes } = this.props
 
 		let image_url = null
-		if ( ! media || ! media.url ) {			
+		if ( ! media || ! media.url ) {
 			image_url = null
 		}else{
 			image_url = media
@@ -64,16 +69,16 @@ class UAGBRestaurantMenu extends Component {
 
 		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = image_url				
+				item["image"] = image_url
 			}
-			return item			
+			return item
 		} )
 
 		setAttributes( {
 			rest_menu_item_arr: newItems,
-		} )		
+		} )
 
-	}	
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -81,19 +86,19 @@ class UAGBRestaurantMenu extends Component {
 	onRemoveRestImage( index ) {
 		const { rest_menu_item_arr } = this.props.attributes
 		const { setAttributes } = this.props
-		
+
 		const newItems = rest_menu_item_arr.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
-				item["image"] = null				
+				item["image"] = null
 			}
-			return item			
+			return item
 		} )
 
 		setAttributes( {
 			rest_menu_item_arr: newItems,
 		} )
 	}
-	
+
 	/*
 	 * Event to set Image selectot label.
 	 */
@@ -109,7 +114,7 @@ class UAGBRestaurantMenu extends Component {
 			}
 		}
 		return image_title
-	}		
+	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -156,8 +161,17 @@ class UAGBRestaurantMenu extends Component {
 			prefixTag,
 			headingTag,
 			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeTablet,
+			titleFontSizeMobile,
 			priceFontSize,
+			priceFontSizeType,
+			priceFontSizeTablet,
+			priceFontSizeMobile,
 			descFontSize,
+			descFontSizeType,
+			descFontSizeTablet,
+			descFontSizeMobile,
 			separatorWidth,
 			separatorSpace,
 			descSpace,
@@ -172,30 +186,86 @@ class UAGBRestaurantMenu extends Component {
 			imageWidth,
 			columns,
 			tcolumns,
-			mcolumns,			
+			mcolumns,
 			rowGap,
 			columnGap,
 			contentHrPadding,
-			contentVrPadding,			
+			contentVrPadding,
 			seperatorStyle,
 			seperatorWidth,
 			seperatorThickness,
 			seperatorColor,
-			stack,			
+			stack,
 		} = attributes
 
 		// Add CSS.
 		var element = document.getElementById( "uagb-restaurant-menu-style-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = RestMenuStyle( this.props )
-		}		
+		}
 
 		const my_block_id = "uagb-rm-"+this.props.clientId
-			
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const priceTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ priceFontSizeType === key }
+						aria-pressed={ priceFontSizeType === key }
+						onClick={ () => setAttributes( { priceFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const contentTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ descFontSizeType === key }
+						aria-pressed={ descFontSizeType === key }
+						onClick={ () => setAttributes( { descFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const titleTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ titleFontSizeType === key }
+						aria-pressed={ titleFontSizeType === key }
+						onClick={ () => setAttributes( { titleFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
 		// Typography settings.
 		const TypographySettings = (
 			<Fragment>
-				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>	
+				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
 						value={ headingTag }
@@ -208,38 +278,235 @@ class UAGBRestaurantMenu extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>			
-					<RangeControl
-						label={ __( "Title Font Size" ) }
-						value={ titleFontSize }
-						onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>									
-					<RangeControl
-						label={ __( "Content Font Size" ) }
-						value={ descFontSize }
-						onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>	
-					<RangeControl
-						label={ __( "Price Font Size" ) }
-						value={ priceFontSize }
-						onChange={ ( value ) => setAttributes( { priceFontSize: value } ) }
-						min={ 10 }
-						max={ 100 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"							
-						llowReset
-					/>			
-						
+					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{titleTypesControls}
+											<RangeControl
+												label={ __( "Title Font Size" ) }
+												value={ titleFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { titleFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{titleTypesControls}
+											<RangeControl
+												label={ __( "Title Font Size" ) }
+												value={ titleFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { titleFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{titleTypesControls}
+											<RangeControl
+												label={ __( "Title Font Size" ) }
+												value={ titleFontSize }
+												onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{contentTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ descFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{contentTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ descFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{contentTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ descFontSize }
+												onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{priceTypesControls}
+											<RangeControl
+												label={ __( "Price Font Size" ) }
+												value={ priceFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { priceFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{priceTypesControls}
+											<RangeControl
+												label={ __( "Price Font Size" ) }
+												value={ priceFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { priceFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{priceTypesControls}
+											<RangeControl
+												label={ __( "Price Font Size" ) }
+												value={ priceFontSize }
+												onChange={ ( value ) => setAttributes( { priceFontSize: value } ) }
+												min={ 0 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 
 				<PanelColorSettings
@@ -255,21 +522,21 @@ class UAGBRestaurantMenu extends Component {
 							value: descColor,
 							onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
 							label: __( "Content Color" ),
-						},								
+						},
 						{
 							value: priceColor,
 							onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
 							label: __( "Price Color" ),
-						},															
+						},
 					] }
 				>
 				</PanelColorSettings>
 			</Fragment>
 		)
 		const separatorSettings =(
-			<PanelBody title={ __( "Seperator" ) } initialOpen={ false }>
+			<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
 				<SelectControl
-					label={ __( "Seperator Style" ) }
+					label={ __( "Separator Style" ) }
 					value={ seperatorStyle }
 					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
 					options={ [
@@ -287,7 +554,7 @@ class UAGBRestaurantMenu extends Component {
 				{ "none" != seperatorStyle &&
 					<Fragment>
 						<RangeControl
-							label={ __( "Seperator Width (%)" ) }
+							label={ __( "Separator Width (%)" ) }
 							value={ seperatorWidth }
 							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 							min={ 0 }
@@ -295,21 +562,21 @@ class UAGBRestaurantMenu extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Seperator Thickness" ) }
+							label={ __( "Separator Thickness" ) }
 							value={ seperatorThickness }
 							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
 							min={ 0 }
 							max={ 20 }
 							allowReset
-						/>	
+						/>
 						<Fragment>
-							<p className="uagb-setting-label">{ __( "Seperator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							<p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
 							<ColorPalette
 								value={ seperatorColor }
 								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
 								allowReset
 							/>
-						</Fragment>	
+						</Fragment>
 					</Fragment>
 				}
 			</PanelBody>
@@ -320,8 +587,8 @@ class UAGBRestaurantMenu extends Component {
 			{ value: "thumbnail", label: __( "Thumbnail" ) },
 			{ value: "medium", label: __( "Medium" ) },
 			{ value: "full", label: __( "Large" ) }
-		]		
-				
+		]
+
 		const imageControls = ( index ) => {
 			let image_val = null
 			if( rest_menu_item_arr[index] && typeof rest_menu_item_arr[index] !== "undefined"){
@@ -331,24 +598,24 @@ class UAGBRestaurantMenu extends Component {
 				<PanelBody key={index}
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
-				>				
+				>
 					<BaseControl
 						className="editor-bg-image-control"
 						label={ __( "" ) }
 					>
 						<MediaUpload
 							title={ __( "Select Image"+ ( index + 1 ) ) }
-							onSelect={ ( media ) => { 
-								this.onSelectRestImage( media, index )								
+							onSelect={ ( media ) => {
+								this.onSelectRestImage( media, index )
 							} }
-							allowedTypes= { [ "image" ] }							
+							allowedTypes= { [ "image" ] }
 							value={ image_val }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
 									{  this.getImageName( rest_menu_item_arr[index]["image"] ) }
 								</Button>
 							) }
-						/>						
+						/>
 						{ ( image_val && rest_menu_item_arr[index]["image"].url !== null && rest_menu_item_arr[index]["image"].url !=="" ) &&
 							<Button className="uagb-rm-btn" key= { index} onClick={ (value) => {
 								this.onRemoveRestImage(index)
@@ -360,20 +627,20 @@ class UAGBRestaurantMenu extends Component {
 				</PanelBody>
 			)
 		}
-		
+
 		let cnt = 0
 		rest_menu_item_arr.map( ( item, thisIndex ) => {
-			let image_arr = rest_menu_item_arr[thisIndex]			
+			let image_arr = rest_menu_item_arr[thisIndex]
 			if( image_arr && typeof image_arr !== "undefined"){
 	            const image = image_arr["image"]
 	            if( typeof image !== "undefined" && image !== null && image !=="" ){
 	            	cnt++
 	            }
 	        }
-		} )	    
+		} )
 
 		// Margin Settings.
-		const marginSettings = (			
+		const marginSettings = (
 			<PanelBody	title={ __( "Spacing" ) } initialOpen={ false }	>
 				<RangeControl
 					label={ __( "Row Gap" ) }
@@ -392,55 +659,63 @@ class UAGBRestaurantMenu extends Component {
 					allowReset
 				/>
 				<RangeControl
-					label={ __( "Item Horizontal Padding" ) }
-					value={ contentHrPadding }
-					onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>
-				<RangeControl
-					label={ __( "Item Vertical Padding" ) }
-					value={ contentVrPadding }
-					onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
-					min={ 0 }
-					max={ 50 }
-					allowReset
-				/>			
-				<RangeControl
 					label={ __( "Title Bottom Margin" ) }
 					value={ titleSpace }
 					onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 					min={ 0 }
 					max={ 50 }
 					allowReset
-				/>								
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Item Padding (px)" ) }</h2>
+				<RangeControl
+					label={ UAGB_Block_Icons.vertical_spacing }
+					className={ "uagb-margin-control" }
+					value={ contentVrPadding }
+					onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+				<RangeControl
+					label={ UAGB_Block_Icons.horizontal_spacing }
+					className={ "uagb-margin-control" }
+					value={ contentHrPadding }
+					onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
 				{  cnt > 0 && <Fragment>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Image Padding (px)" ) }</h2>
 					<RangeControl
-						label={ __( "Image Horizontal Padding" ) }
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
+						value={ imgVrPadding }
+						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
 						value={ imgHrPadding }
 						onChange={ ( value ) => setAttributes( { imgHrPadding: value } ) }
 						min={ 0 }
 						max={ 50 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Image Vertical Padding" ) }
-						value={ imgVrPadding }
-						onChange={ ( value ) => setAttributes( { imgVrPadding: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>	
 				</Fragment>
-				}				
-				
-			</PanelBody>			
+				}
+
+			</PanelBody>
 		)
 
-		const inspect_control = (			
+		const inspect_control = (
 			<InspectorControls>
-			 	<PanelBody	title={ __( "General" ) } initialOpen={ true }	>	
+			 	<PanelBody	title={ __( "General" ) } initialOpen={ true }	>
 			 		<RangeControl
 						label={ __( "Number of Items" ) }
 						value={ menu_item_count }
@@ -462,9 +737,9 @@ class UAGBRestaurantMenu extends Component {
 							}else{
 								const incAmount = Math.abs( newCount - cloneTest_block.length )
 								let data_new = cloneTest_block
-				            for( var i= 0; i < incAmount; i++ ){             
+				            for( var i= 0; i < incAmount; i++ ){
 				                data_new.pop()
-				            }           
+				            }
 				            setAttributes({rest_menu_item_arr:data_new})
 
 							}
@@ -474,29 +749,66 @@ class UAGBRestaurantMenu extends Component {
 						max={ 10 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Columns" ) }
-						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
-					<RangeControl
-						label={ __( "Columns (Tablet)" ) }
-						value={ tcolumns }
-						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
-					<RangeControl
-						label={ __( "Columns (Mobile)" ) }
-						value={ mcolumns }
-						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-						min={ 1 }
-						max={ Math.min( MAX_COLUMNS, menu_item_count ) }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ mcolumns }
+											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+											min={ 1 }
+											max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+										/>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ tcolumns }
+											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+											min={ 1 }
+											max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+										/>
+									)
+								} else {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ columns }
+											onChange={ ( value ) => setAttributes( { columns: value } ) }
+											min={ 1 }
+											max={ Math.min( MAX_COLUMNS, menu_item_count ) }
+										/>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
-								 	
+
 				<PanelBody title={ __( "Image" ) }initialOpen={ false } >
 					{ times( menu_item_count, n => imageControls( n ) ) }
 
@@ -510,8 +822,8 @@ class UAGBRestaurantMenu extends Component {
 								{ value: "left", label: __( "Left" ) },
 								{ value: "right", label: __( "Right" ) },
 							] }
-						/>	
-						{ (imagePosition == "left" || imagePosition == "right") && 
+						/>
+						{ (imagePosition == "left" || imagePosition == "right") &&
 						<Fragment>
 							<SelectControl
 								label={ __( "Vertical Alignment" ) }
@@ -521,7 +833,7 @@ class UAGBRestaurantMenu extends Component {
 									{ value: "top", label: __( "Top" ) },
 									{ value: "middle", label: __( "Middle" ) },
 								] }
-							/>	
+							/>
 							<SelectControl
 								label={ __( "Stack on" ) }
 								value={ stack }
@@ -534,7 +846,7 @@ class UAGBRestaurantMenu extends Component {
 								onChange={ ( value ) => setAttributes( { stack: value } ) }
 							/>
 						</Fragment>
-						}						
+						}
 						<SelectControl
 							label={ __( "Image Size" ) }
 							options={ imageSizeOptions }
@@ -546,27 +858,27 @@ class UAGBRestaurantMenu extends Component {
 							value={ imageWidth }
 							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
 							min={ 0 }
-							max={ 500 }								
+							max={ 500 }
 							allowReset
 						/>
-					</Fragment> 
+					</Fragment>
 					}
 				</PanelBody>
 				{ separatorSettings }
 				{ TypographySettings }
-				{ marginSettings }					
-			</InspectorControls>			
+				{ marginSettings }
+			</InspectorControls>
 		)
 
 		return (
-			<Fragment>				
+			<Fragment>
 				{  ( (cnt == 0) || (cnt > 0 && imagePosition =="top" ) ) && <BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
 				</BlockControls>
-				}				
+				}
 				{inspect_control}
 				<div className={ classnames(
 					className,
@@ -574,18 +886,18 @@ class UAGBRestaurantMenu extends Component {
 				) }
 				id = { my_block_id }
 				>
-				
-					{ rest_menu_item_arr.map( ( test, index ) => 
+
+					{ rest_menu_item_arr.map( ( test, index ) =>
 
 						<div className = { classnames(
 							"uagb-rest_menu__wrap",
 							...PositionClasses( attributes ),
-						) } key ={ "wrap-"+index } >							
-							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>								
-								{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }	
+						) } key ={ "wrap-"+index } >
+							<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
+								{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
 
-								<div className ="uagb-rm__text-wrap">																								
-									{ 
+								<div className ="uagb-rm__text-wrap">
+									{
 										<Fragment>
 											<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
 												<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
@@ -596,16 +908,16 @@ class UAGBRestaurantMenu extends Component {
 												</div>
 												<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
 													<Price attributes={attributes} setAttributes = { setAttributes } props = { this.props }  index_value = {index}/>
-												</div>	
+												</div>
 											</div>
 										</Fragment>
-									}																		
+									}
 								</div>
 								{ ( imagePosition == "right" ) && <RestMenuImage  attributes={attributes}  index_value = {index} /> }
 							</div>
-							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>		
-						</div>												
-					)}				
+							<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
+						</div>
+					)}
 				</div>
 			</Fragment>
 		)

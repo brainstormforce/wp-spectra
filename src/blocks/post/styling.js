@@ -4,6 +4,8 @@
  * @return {object} The inline background type CSS.
  */
 
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+
 function styling( props, id ) {
 
 	const {
@@ -17,9 +19,21 @@ function styling( props, id ) {
 		titleColor,
 		titleTag,
 		titleFontSize,
+		titleFontSizeType,
+		titleFontSizeMobile,
+		titleFontSizeTablet,
 		metaFontSize,
+		metaFontSizeType,
+		metaFontSizeMobile,
+		metaFontSizeTablet,
 		excerptFontSize,
+		excerptFontSizeType,
+		excerptFontSizeTablet,
+		excerptFontSizeMobile,
 		ctaFontSize,
+		ctaFontSizeType,
+		ctaFontSizeTablet,
+		ctaFontSizeMobile,
 		metaColor,
 		excerptColor,
 		ctaColor,
@@ -46,6 +60,7 @@ function styling( props, id ) {
 	} = props.attributes
 
 	var mobile_selectors = {}
+	var tablet_selectors = {}
 
 	var selectors = {
 		" .uagb-post__items": {
@@ -66,34 +81,34 @@ function styling( props, id ) {
 		},
 		" .uagb-post__text .uagb-post__title": {
 			"color": titleColor,
-			"font-size": titleFontSize  + "px",
+			"font-size": titleFontSize  + titleFontSizeType,
 			"margin-bottom": titleBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post__title a": {
 			"color": titleColor,
-			"font-size": titleFontSize  + "px"
+			"font-size": titleFontSize  + titleFontSizeType
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
 			"color": metaColor,
-			"font-size": metaFontSize  + "px",
+			"font-size": metaFontSize  + metaFontSizeType,
 			"margin-bottom": metaBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
 			"color": metaColor,
-			"font-size": metaFontSize  + "px",
+			"font-size": metaFontSize  + metaFontSizeType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
 			"color": metaColor,
-			"font-size": metaFontSize  + "px",
+			"font-size": metaFontSize  + metaFontSizeType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
 			"color": excerptColor,
-			"font-size": excerptFontSize  + "px",
+			"font-size": excerptFontSize  + excerptFontSizeType,
 			"margin-bottom": excerptBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post__cta": {
 			"color": ctaColor,
-			"font-size": ctaFontSize  + "px",
+			"font-size": ctaFontSize  + ctaFontSizeType,
 			"background": ctaBgColor,
 			"border-width": borderWidth  + "px",
 			"border-radius": borderRadius  + "px",
@@ -105,7 +120,7 @@ function styling( props, id ) {
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"color": ctaColor,
-			"font-size": ctaFontSize  + "px",
+			"font-size": ctaFontSize  + ctaFontSizeType,
 			"padding": btnVPadding + "px " + btnHPadding + "px"
 		},
 		" .uagb-post__text .uagb-post__cta:hover": {
@@ -127,55 +142,74 @@ function styling( props, id ) {
 
 	selectors[" .slick-arrow svg"] = {
 		"fill" : arrowColor,
-		"height":arrowSize + "px",              
-		"width":arrowSize + "px",              
-	} 	
+		"height":arrowSize + "px",
+		"width":arrowSize + "px",
+	}
 
 	mobile_selectors = {
+		" .uagb-post__text .uagb-post__title": {
+			"font-size": titleFontSizeMobile  + titleFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__title a": {
+			"font-size": titleFontSizeMobile  + titleFontSizeType
+		},
+		" .uagb-post__text .uagb-post-grid-byline": {
+			"font-size": metaFontSizeMobile  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
+			"font-size": metaFontSizeMobile  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
+			"font-size": metaFontSizeMobile  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__excerpt": {
+			"font-size": excerptFontSizeMobile  + excerptFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__cta": {
+			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__cta a": {
+			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+		},
 		" .uagb-post__text": {
 			"padding" : ( contentPaddingMobile ) + "px",
 		},
 	}
 
+	tablet_selectors = {
+		" .uagb-post__text .uagb-post__title": {
+			"font-size": titleFontSizeTablet  + titleFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__title a": {
+			"font-size": titleFontSizeTablet  + titleFontSizeType
+		},
+		" .uagb-post__text .uagb-post-grid-byline": {
+			"font-size": metaFontSizeTablet  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
+			"font-size": metaFontSizeTablet  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
+			"font-size": metaFontSizeTablet  + metaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__excerpt": {
+			"font-size": excerptFontSizeTablet  + excerptFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__cta": {
+			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+		},
+		" .uagb-post__text .uagb-post__cta a": {
+			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+		},
+	}
+
 	var styling_css = ""
 
-	for( var i in selectors ) {
+	styling_css = generateCSS( selectors, `#${id}-${ props.clientId }` )
 
-		styling_css += `#${id}-${ props.clientId }`
+	styling_css += generateCSS( tablet_selectors, `#${id}-${ props.clientId }`, true, "tablet" )
 
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += "@media only screen and (max-width: 767px) {"
-
-	for( var i in mobile_selectors ) {
-
-		styling_css += `#${id}-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = mobile_selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
-
-	styling_css += " }"
+	styling_css += generateCSS( mobile_selectors, `#${id}-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

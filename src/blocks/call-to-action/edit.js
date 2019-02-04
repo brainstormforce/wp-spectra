@@ -1,5 +1,6 @@
 // Import block dependencies and components.
 import classnames from "classnames"
+import map from "lodash/map"
 
 // Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
@@ -8,7 +9,7 @@ import Title from "./components/Title"
 import Description from "./components/Description"
 import CtaPositionClasses from "./classes"
 import CTA from "./components/CTA"
-
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import CtaStyle from "./inline-styles"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
@@ -26,7 +27,10 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
+	Button,
+	ButtonGroup,
 	TabPanel,
+	Dashicon,
 	ToggleControl,
 	TextControl,
 } = wp.components
@@ -71,7 +75,13 @@ class UAGBCallToAction extends Component {
 			descColor,
 			titleTag,
 			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
 			descFontSize,
+			descFontSizeType,
+			descFontSizeMobile,
+			descFontSizeTablet,
 			separatorWidth,
 			separatorHeight,
 			titleSpace,
@@ -88,6 +98,9 @@ class UAGBCallToAction extends Component {
 			ctaIconPosition,
 			ctaIconSpace,
 			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeMobile,
+			ctaFontSizeTablet,
 			contentWidth,
 			ctaBtnLinkColor,
 			ctaBgHoverColor,
@@ -110,6 +123,62 @@ class UAGBCallToAction extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = CtaStyle( this.props )
 		}
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const titleTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ titleFontSizeType === key }
+						aria-pressed={ titleFontSizeType === key }
+						onClick={ () => setAttributes( { titleFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const descTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ descFontSizeType === key }
+						aria-pressed={ descFontSizeType === key }
+						onClick={ () => setAttributes( { descFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const ctaTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ ctaFontSizeType === key }
+						aria-pressed={ ctaFontSizeType === key }
+						onClick={ () => setAttributes( { ctaFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
 
 		// Icon properties.
 		const cta_icon_props = {
@@ -144,16 +213,82 @@ class UAGBCallToAction extends Component {
 							value= { ctaText }
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
-						<RangeControl
-							label={ __( "Button Font Size" ) }
-							value={ ctaFontSize }
-							onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-							min={ 0 }
-							max={ 50 }
-							initialPosition={16}
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "Button Font Size" ) }
+													value={ ctaFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 0 }
+													max={ 50 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "Button Font Size" ) }
+													value={ ctaFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 0 }
+													max={ 50 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "Button Font Size" ) }
+													value={ ctaFontSize }
+													onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 0 }
+													max={ 50 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 					</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -203,9 +338,10 @@ class UAGBCallToAction extends Component {
 				{ ( ctaType == "button" ) && (
 					<Fragment>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Button Padding" ) }</h2>
+						<h2>{ __( "Button Padding (px)" ) }</h2>
 						<RangeControl
-							label={ __( "Vertical" ) }
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-margin-control" }
 							value={ ctaBtnVertPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
 							min={ 0 }
@@ -214,7 +350,8 @@ class UAGBCallToAction extends Component {
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Horizontal" ) }
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-margin-control" }
 							value={ ctaBtnHrPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
 							min={ 0 }
@@ -399,7 +536,7 @@ class UAGBCallToAction extends Component {
 			<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 				<h2>{ __( "Heading" ) }</h2>
 				<SelectControl
-					label={ __( "Heading Tag" ) }
+					label={ __( "Tag" ) }
 					value={ titleTag }
 					onChange={ ( value ) => setAttributes( { titleTag: value } ) }
 					options={ [
@@ -411,17 +548,84 @@ class UAGBCallToAction extends Component {
 						{ value: "h6", label: __( "H6" ) },
 					] }
 				/>
-				<RangeControl
-					label={ __( "Heading Font Size" ) }
-					value={ titleFontSize }
-					onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-					min={ 10 }
-					max={ 200 }
-					initialPosition={30}
-					beforeIcon="editor-textcolor"
-					allowReset
-				/>
-				<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+
+				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					tabs={ [
+						{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className: "uagb-desktop-tab uagb-responsive-tabs",
+						},
+						{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className: "uagb-tablet-tab uagb-responsive-tabs",
+						},
+						{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className: "uagb-mobile-tab uagb-responsive-tabs",
+						},
+					] }>
+					{
+						( tab ) => {
+							let tabout
+
+							if ( "mobile" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{titleTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ titleFontSizeMobile }
+											onChange={ ( value ) => setAttributes( { titleFontSizeMobile: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else if ( "tablet" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{titleTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ titleFontSizeTablet }
+											onChange={ ( value ) => setAttributes( { titleFontSizeTablet: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							} else {
+								tabout = (
+									<Fragment>
+										{titleTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ titleFontSize }
+											onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={30}
+										/>
+									</Fragment>
+								)
+							}
+
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>
+				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 				<ColorPalette
 					value={ titleColor }
 					onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
@@ -429,17 +633,83 @@ class UAGBCallToAction extends Component {
 				/>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( "Description" ) }</h2>
-				<RangeControl
-					label={ __( "Description Font Size" ) }
-					value={ descFontSize }
-					onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-					min={ 10 }
-					max={ 200 }
-					initialPosition={16}
-					beforeIcon="editor-textcolor"
-					allowReset
-				/>
-				<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
+				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+					tabs={ [
+						{
+							name: "desktop",
+							title: <Dashicon icon="desktop" />,
+							className: "uagb-desktop-tab uagb-responsive-tabs",
+						},
+						{
+							name: "tablet",
+							title: <Dashicon icon="tablet" />,
+							className: "uagb-tablet-tab uagb-responsive-tabs",
+						},
+						{
+							name: "mobile",
+							title: <Dashicon icon="smartphone" />,
+							className: "uagb-mobile-tab uagb-responsive-tabs",
+						},
+					] }>
+					{
+						( tab ) => {
+							let tabout
+
+							if ( "mobile" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{descTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ descFontSizeMobile }
+											onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={16}
+										/>
+									</Fragment>
+								)
+							} else if ( "tablet" === tab.name ) {
+								tabout = (
+									<Fragment>
+										{descTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ descFontSizeTablet }
+											onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={16}
+										/>
+									</Fragment>
+								)
+							} else {
+								tabout = (
+									<Fragment>
+										{descTypesControls}
+										<RangeControl
+											label={ __( "Font Size" ) }
+											value={ descFontSize }
+											onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+											min={ 1 }
+											max={ 100 }
+											beforeIcon="editor-textcolor"
+											allowReset
+											initialPosition={16}
+										/>
+									</Fragment>
+								)
+							}
+
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>
+				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 				<ColorPalette
 					value={ descColor }
 					onChange={ ( colorValue ) => setAttributes( { descColor: colorValue } ) }
@@ -560,7 +830,7 @@ class UAGBCallToAction extends Component {
 		)
 
 		// Get icon/Image components.
-		let is_cta =  <CTA attributes={attributes} setAttributes = { setAttributes }/>			
+		let is_cta =  <CTA attributes={attributes} setAttributes = { setAttributes }/>
 		// Get description components.
 		const desc = (
 			<div className = "uagb-cta-text-wrap">
