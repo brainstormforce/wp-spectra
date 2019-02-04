@@ -32,7 +32,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
- 	<li><a href="#" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
@@ -96,6 +96,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 == Changelog ==
 
 = 1.8.1.1 =
+* New: Blockquote.
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
 
 = 1.8.1 =
