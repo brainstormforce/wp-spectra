@@ -9,25 +9,13 @@ class CtaLink extends React.Component {
 		}
 
 		if ( attributes.displayPostLink ) {
-
 			return (
-
-				<div
-					className='uagb-timeline__link_parent'
-					style= {{
-						textAlign: attributes.align
-					}}
-				>
-					<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer"
-						style= {{
-							color: attributes.ctaColor,
-							fontSize: attributes.ctaFontSize+attributes.ctaFontSizeType,
-							background: attributes.ctaBackground,
-						}}
-					>{ attributes.readMoreText }</a>
+				<div className='uagb-timeline__link_parent'	>
+					<a className='uagb-timeline__link' href={ post.link } target={target} rel ="noopener noreferrer">
+						{ attributes.readMoreText }
+					</a>
 				</div>
 			)
-
 		} else {
 			return null
 		}
