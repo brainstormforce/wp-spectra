@@ -766,9 +766,9 @@ class UAGBBlockQuote extends Component {
 						max={ 100 }
 						allowReset
 					/>
+				<hr className="uagb-editor__separator" />
 				</Fragment>
 				}
-				<hr className="uagb-editor__separator" />
 				{ skinStyle === "border" &&
 					<RangeControl
 						label={ __( "Gap Between Border and Quote" ) }
