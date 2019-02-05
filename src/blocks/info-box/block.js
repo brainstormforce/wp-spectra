@@ -80,14 +80,6 @@ registerBlockType( "uagb/info-box", {
 			icon
 		} = props.attributes
 
-
-		const my_block_id = "uagb-infobox-"+ block_id
-		var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
-
-		ClassNamesId = ClassNamesId +" "+ my_block_id
-
-		var back_style = InfoBoxStyle( props )
-
 		// Get icon/Image components.
 		let is_image = ""
 
@@ -187,7 +179,7 @@ registerBlockType( "uagb/info-box", {
 					className,
 					"uagb-infobox__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-infobox-${block_id}` } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
@@ -215,14 +207,6 @@ registerBlockType( "uagb/info-box", {
 					ctaTarget,
 					className
 				} = props.attributes
-
-
-				const my_block_id = "uagb-infobox-"+ block_id
-				var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
-
-				ClassNamesId = ClassNamesId +" "+ my_block_id
-
-				var back_style = InfoBoxStyle( props )
 
 				// Get icon/Image components.
 				let is_image = ""
@@ -323,7 +307,7 @@ registerBlockType( "uagb/info-box", {
 							className,
 							"uagb-infobox__outer-wrap"
 						) }
-						id = { my_block_id } >
+						id = { `uagb-infobox-${block_id}` } >
 
 							{ ( ctaType == "all") &&
 								<Fragment>
@@ -358,14 +342,6 @@ registerBlockType( "uagb/info-box", {
 					showDesc,
 					icon
 				} = props.attributes
-
-
-				const my_block_id = "uagb-infobox-"+ block_id
-				var ClassNamesId    =  ( typeof className != "undefined" ) ? className : ""
-
-				ClassNamesId = ClassNamesId +" "+ my_block_id
-
-				var back_style = InfoBoxStyle( props )
 
 				// Get icon/Image components.
 				let is_image = ""
@@ -466,7 +442,7 @@ registerBlockType( "uagb/info-box", {
 							className,
 							"uagb-infobox__outer-wrap"
 						) }
-						id = { my_block_id } >
+						id = { `uagb-infobox-${block_id}` } >
 
 							{ ( ctaType == "all") &&
 								<Fragment>

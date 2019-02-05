@@ -154,14 +154,10 @@ class UAGBinfoBox extends Component {
 
 		// Setup the attributes.
 		const {
-			prefixTitle,
-			infoBoxTitle,
-			headingDesc,
 			headingAlign,
 			headingColor,
 			subHeadingColor,
 			prefixColor,
-			prefixTag,
 			prefixFontSize,
 			prefixFontSizeType,
 			prefixFontSizeTablet,
