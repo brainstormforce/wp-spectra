@@ -98,6 +98,7 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 = 1.8.1.1 =
 * New: Blockquote.
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
+* Fix: Icon List - label not editable in Firefox browser.
 
 = 1.8.1 =
 * Fix: Advanced Columns - Editor end, width issue.
