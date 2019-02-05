@@ -12,18 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
-
-
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -391,7 +379,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-heading-text'        => array(
 					'text-align' => $attr['headingAlign'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
 					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 					'color' => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . "px",
 				),
@@ -400,7 +391,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-desc-text' => array(
 					'text-align' => $attr['headingAlign'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
 					'font-size' => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 					'color' => $attr['subHeadingColor'],
 				)
 
@@ -409,9 +403,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightTypeMobile'],
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightTypeMobile'],
 				)
 
 			);
@@ -419,9 +415,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightTypeTablet'],
+
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightTypeTablet'],
 				)
 
 			);

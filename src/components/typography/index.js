@@ -74,8 +74,6 @@ function TypographyOptions( props ) {
 		{ key: "em", name: __( "em" ) },
 	]
 
-	console.log( props );
-
 	const headsizeTypesControls = (
 		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
 			{ map( sizeTypes, ( { name, key } ) => (
@@ -111,180 +109,177 @@ function TypographyOptions( props ) {
 	)
 	
 	return (
-		<PanelRow>
-			<div className="uag-typography-options">
-				<div>
-					<SelectControl
-						label={ __( "Font Family" ) }
-						value={ props.fontFamily.value }
-						onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
-						options={
-							fonts
-						}
-					/>
-					<SelectControl
-						label={ __( "Font Weight" ) }
-						value={ props.fontWeight.value }
-						onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
-						options={
-							font_weight_obj
-						}
-					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
+		<div className="uag-typography-options">
+			<SelectControl
+				label={ __( "Font Family" ) }
+				value={ props.fontFamily.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
+				options={
+					fonts
+				}
+			/>
+			<SelectControl
+				label={ __( "Font Weight" ) }
+				value={ props.fontWeight.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
+				options={
+					font_weight_obj
+				}
+			/>
+			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+				tabs={ [
+					{
+						name: "desktop",
+						title: <Dashicon icon="desktop" />,
+						className: "uagb-desktop-tab uagb-responsive-tabs",
+					},
+					{
+						name: "tablet",
+						title: <Dashicon icon="tablet" />,
+						className: "uagb-tablet-tab uagb-responsive-tabs",
+					},
+					{
+						name: "mobile",
+						title: <Dashicon icon="smartphone" />,
+						className: "uagb-mobile-tab uagb-responsive-tabs",
+					},
+				] }>
+				{
+					( tab ) => {
+						let tabout
 
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size Mobile" ) }
-												value={ props.fontSizeMobile.value }
-												onChange={ ( value ) => props.setAttributes( { [props.fontSizeMobile.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size Tablet" ) }
-												value={ props.fontSizeTablet.value }
-												onChange={ ( value ) => props.setAttributes( { [props.fontSizeTablet.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ props.fontSize.value }
-												onChange={ ( value ) => props.setAttributes( { [props.fontSize.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
+						if ( "mobile" === tab.name ) {
+							tabout = (
+								<Fragment>
+									{headsizeTypesControls}
+									<RangeControl
+										label={ __( "Font Size Mobile" ) }
+										value={ props.fontSizeMobile.value }
+										onChange={ ( value ) => props.setAttributes( { [props.fontSizeMobile.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>											
+								</Fragment>
+							)
+						} else if ( "tablet" === tab.name ) {
+							tabout = (
+								<Fragment>
+									{headsizeTypesControls}
+									<RangeControl
+										label={ __( "Font Size Tablet" ) }
+										value={ props.fontSizeTablet.value }
+										onChange={ ( value ) => props.setAttributes( { [props.fontSizeTablet.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>
+								</Fragment>
+							)
+						} else {
+							tabout = (
+								<Fragment>
+									{headsizeTypesControls}
+									<RangeControl
+										label={ __( "Font Size" ) }
+										value={ props.fontSize.value }
+										onChange={ ( value ) => props.setAttributes( { [props.fontSize.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>
+								</Fragment>
+							)
 						}
-					</TabPanel>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let lineheighttab
 
-								if ( "mobile" === tab.name ) {
-									lineheighttab = (
-										<Fragment>
-											{headLineHeightTypesControls}
-											<RangeControl
-												label={ __( "Line Height Mobile" ) }
-												value={ props.lineHeightMobile.value }
-												onChange={ ( value ) => props.setAttributes( { [props.lineHeightMobile.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									lineheighttab = (
-										<Fragment>
-											{headLineHeightTypesControls}
-											<RangeControl
-												label={ __( "Line Height tablet" ) }
-												value={ props.lineHeightTablet.value }
-												onChange={ ( value ) => props.setAttributes( { [props.lineHeightTablet.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else {
-									lineheighttab = (
-										<Fragment>
-											{headLineHeightTypesControls}
-											<RangeControl
-												label={ __( "Line Height" ) }
-												value={ props.lineHeight.value }
-												onChange={ ( value ) => props.setAttributes( { [props.lineHeight.label]: value } ) }
-												min={ 10 }
-												max={ 100 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								}
+						return <div>{ tabout }</div>
+					}
+				}
+			</TabPanel>
 
-								return <div>{ lineheighttab }</div>
-							}
+			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+				tabs={ [
+					{
+						name: "desktop",
+						title: <Dashicon icon="desktop" />,
+						className: "uagb-desktop-tab uagb-responsive-tabs",
+					},
+					{
+						name: "tablet",
+						title: <Dashicon icon="tablet" />,
+						className: "uagb-tablet-tab uagb-responsive-tabs",
+					},
+					{
+						name: "mobile",
+						title: <Dashicon icon="smartphone" />,
+						className: "uagb-mobile-tab uagb-responsive-tabs",
+					},
+				] }>
+				{
+					( tab ) => {
+						let lineheighttab
+
+						if ( "mobile" === tab.name ) {
+							lineheighttab = (
+								<Fragment>
+									{headLineHeightTypesControls}
+									<RangeControl
+										label={ __( "Line Height Mobile" ) }
+										value={ props.lineHeightMobile.value }
+										onChange={ ( value ) => props.setAttributes( { [props.lineHeightMobile.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>
+								</Fragment>
+							)
+						} else if ( "tablet" === tab.name ) {
+							lineheighttab = (
+								<Fragment>
+									{headLineHeightTypesControls}
+									<RangeControl
+										label={ __( "Line Height tablet" ) }
+										value={ props.lineHeightTablet.value }
+										onChange={ ( value ) => props.setAttributes( { [props.lineHeightTablet.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>
+								</Fragment>
+							)
+						} else {
+							lineheighttab = (
+								<Fragment>
+									{headLineHeightTypesControls}
+									<RangeControl
+										label={ __( "Line Height" ) }
+										value={ props.lineHeight.value }
+										onChange={ ( value ) => props.setAttributes( { [props.lineHeight.label]: value } ) }
+										min={ 10 }
+										max={ 100 }
+										beforeIcon="editor-textcolor"
+										allowReset
+										initialPosition={30}
+									/>
+								</Fragment>
+							)
 						}
-					</TabPanel>
-				</div>
-			</div>
-		</PanelRow>
+
+						return <div>{ lineheighttab }</div>
+					}
+				}
+			</TabPanel>
+		</div>
 	);
 }
 
