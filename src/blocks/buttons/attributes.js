@@ -1,11 +1,8 @@
-/**
- * BLOCK: UAGB Section Attributes
- */
 const ITEM_COUNT = 2
 
 const buttons = []
 
-for (var i = 1; i <= ITEM_COUNT; i++) {
+for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	var label = "Click Here " + "#" + i
 	var link    = "#"
 	buttons.push(

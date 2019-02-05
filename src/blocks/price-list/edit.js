@@ -1,4 +1,8 @@
-// Import block dependencies and components.
+/**
+ * BLOCK: Price List - Edit Class
+ */
+
+
 import classnames from "classnames"
 import Title from "./components/Title"
 import Price from "./components/Price"
@@ -32,7 +36,6 @@ const {
 	Dashicon
 } = wp.components
 
-// Extend component
 const { Component, Fragment } = wp.element
 
 const MAX_COLUMNS = 3
@@ -203,8 +206,6 @@ class UAGBRestaurantMenu extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = RestMenuStyle( this.props )
 		}
-
-		const my_block_id = "uagb-rm-"+this.props.clientId
 
 		const sizeTypes = [
 			{ key: "px", name: __( "px" ) },
@@ -884,7 +885,7 @@ class UAGBRestaurantMenu extends Component {
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-rm-${this.props.clientId}` }
 				>
 
 					{ rest_menu_item_arr.map( ( test, index ) =>

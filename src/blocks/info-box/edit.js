@@ -1,8 +1,9 @@
-// Import block dependencies and components.
+/**
+ * BLOCK: Info Box - Edit Class
+ */
+
 import classnames from "classnames"
 import map from "lodash/map"
-
-// Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
@@ -56,10 +57,8 @@ const {
 	withViewportMatch
 } = wp.viewport
 
-// Extend component
 const { Component, Fragment } = wp.element
 
-// Image sizes.
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
 	{ value: "medium", label: __( "Medium" ) },
@@ -154,14 +153,10 @@ class UAGBinfoBox extends Component {
 
 		// Setup the attributes.
 		const {
-			prefixTitle,
-			infoBoxTitle,
-			headingDesc,
 			headingAlign,
 			headingColor,
 			subHeadingColor,
 			prefixColor,
-			prefixTag,
 			prefixFontSize,
 			prefixFontSizeType,
 			prefixFontSizeTablet,

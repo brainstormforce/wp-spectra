@@ -1,11 +1,12 @@
 /**
- * BLOCK: UAGB Icon List Attributes
+ * BLOCK: Icon List - Attributes
  */
+
 const ITEM_COUNT = 1
 
 const icons = []
 
-for (var i = 1; i <= ITEM_COUNT; i++) {
+for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	icons.push(
 		{
 			"label": "Label #" + i,
