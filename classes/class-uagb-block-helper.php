@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -417,6 +418,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
+			
 			if( 'none' !== $seperatorStyle ){
 				$selectors[' .uagb-separator'] = array (
 					'border-top-style' => $attr['seperatorStyle'] ,
