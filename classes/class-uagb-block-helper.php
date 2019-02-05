@@ -15,6 +15,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1504,104 +1505,62 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper"] = array(
-				"margin-left"  => 0,
-				"margin-right"  => 0,
-				"margin-bottom"  => $attr['gap'] . "px"
-			);
+			$selectors = array(	
+				".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper" => array(
+					"margin-left"  => 0,
+					"margin-right"  => 0,
+					"margin-bottom"  => $attr['gap'] . "px"
+				),
+				".uagb-icon-list__layout-vertical .uagb-icon-list__wrap" => array(
+					 "flex-direction" => "column"
+				),
+				".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child" => array(
+					"margin-bottom"  => 0
+				),
+				".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper" => array(
+					"margin-left"  => ( $attr['gap']/2 ) . "px",
+					"margin-right"  => ( $attr['gap']/2 ) . "px"
+				),
+				".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child" => array(
+					"margin-left"  => 0
+				),
+				".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child" => array(
+					"margin-right"  => 0
+				),
+				// Desktop Icon Size CSS starts.
+				" .uagb-icon-list__source-image" => array(
+					"width" => $attr['size'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon" => array(
+					"width" => $attr['size'] . $attr['sizeType'],
+					"height" => $attr['size'] . $attr['sizeType'],
+					"font-size" => $attr['size'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon svg" => array(
+					"width" => $attr['size'] . $attr['sizeType'],
+					"height" => $attr['size'] . $attr['sizeType'],
+				),
+				" .uagb-icon-list__source-icon:before"=> array(
+					"width" => $attr['size'] . $attr['sizeType'],
+					"height" => $attr['size'] . $attr['sizeType'],
+					"font-size" => $attr['size'] . $attr['sizeType']
+				),	" .uagb-icon-list__label-wrap"=> array(
+					"text-align" => $attr['align']
+				),
 
-			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrap"] = array(
-				 "flex-direction" => "column"
-			);
-
-			$selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child"] = array(
-				"margin-bottom"  => 0
-			);
-
-			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper"] = array(
-				"margin-left"  => ( $attr['gap']/2 ) . "px",
-				"margin-right"  => ( $attr['gap']/2 ) . "px"
-			);
-
-			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child"] = array(
-				"margin-left"  => 0
-			);
-
-			$selectors[".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child"] = array(
-				"margin-right"  => 0
-			);
-
-			// Desktop Icon Size CSS starts.
-			$selectors[" .uagb-icon-list__source-image"] = array(
-				"width" => $attr['size'] . $attr['sizeType']
-			);
-
-			$selectors[" .uagb-icon-list__source-icon"] = array(
-				"width" => $attr['size'] . $attr['sizeType'],
-				"height" => $attr['size'] . $attr['sizeType'],
-				"font-size" => $attr['size'] . $attr['sizeType']
-			);
-
-			$selectors[" .uagb-icon-list__source-icon svg"] = array(
-				"width" => $attr['size'] . $attr['sizeType'],
-				"height" => $attr['size'] . $attr['sizeType'],
-			);
-
-			$selectors[" .uagb-icon-list__source-icon:before"] = array(
-				"width" => $attr['size'] . $attr['sizeType'],
-				"height" => $attr['size'] . $attr['sizeType'],
-				"font-size" => $attr['size'] . $attr['sizeType']
-			);
-			// Desktop Icon Size CSS ends.
-
-			// Mobile Icon Size CSS starts.
-			$m_selectors[" .uagb-icon-list__source-image"] = array(
-				"width" => $attr['sizeMobile'] . $attr['sizeType']
-			);
-
-			$m_selectors[" .uagb-icon-list__source-icon"] = array(
-				"width" => $attr['sizeMobile'] . $attr['sizeType'],
-				"height" => $attr['sizeMobile'] . $attr['sizeType'],
-				"font-size" => $attr['sizeMobile'] . $attr['sizeType']
-			);
-
-			$m_selectors[" .uagb-icon-list__source-icon svg"] = array(
-				"width" => $attr['sizeMobile'] . $attr['sizeType'],
-				"height" => $attr['sizeMobile'] . $attr['sizeType'],
-			);
-
-			$m_selectors[" .uagb-icon-list__source-icon:before"] = array(
-				"width" => $attr['sizeMobile'] . $attr['sizeType'],
-				"height" => $attr['sizeMobile'] . $attr['sizeType'],
-				"font-size" => $attr['sizeMobile'] . $attr['sizeType']
-			);
-			// Mobile Icon Size CSS ends.
-
-			// Tablet Icon Size CSS starts.
-			$t_selectors[" .uagb-icon-list__source-image"] = array(
-				"width" => $attr['sizeTablet'] . $attr['sizeType']
-			);
-
-			$t_selectors[" .uagb-icon-list__source-icon"] = array(
-				"width" => $attr['sizeTablet'] . $attr['sizeType'],
-				"height" => $attr['sizeTablet'] . $attr['sizeType'],
-				"font-size" => $attr['sizeTablet'] . $attr['sizeType']
-			);
-
-			$t_selectors[" .uagb-icon-list__source-icon svg"] = array(
-				"width" => $attr['sizeTablet'] . $attr['sizeType'],
-				"height" => $attr['sizeTablet'] . $attr['sizeType'],
-			);
-
-			$t_selectors[" .uagb-icon-list__source-icon:before"] = array(
-				"width" => $attr['sizeTablet'] . $attr['sizeType'],
-				"height" => $attr['sizeTablet'] . $attr['sizeType'],
-				"font-size" => $attr['sizeTablet'] . $attr['sizeType']
-			);
-			// Tablet Icon Size CSS ends.
-
-			$selectors[" .uagb-icon-list__label-wrap"] = array(
-				"text-align" => $attr['align']
+				" .uagb-icon-list__source-wrap"=> array(
+					"padding" => $attr['bgSize'] . "px",
+					"border-radius" => $attr['borderRadius'] . "px"
+				),
+				" .uagb-icon-list__wrap"=> array(
+					"justify-content"  => $alignment,
+					"-webkit-box-pack" => $alignment,
+					"-ms-flex-pack" => $alignment,
+					"justify-content" => $alignment,
+					"-webkit-box-align" => $alignment,
+					"-ms-flex-align" => $alignment,
+					"align-items" => $alignment,
+				)
 			);
 
 			if ( 'right' == $attr['align'] ) {
@@ -1616,11 +1575,51 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-right" => $attr['inner_gap'] . "px"
 				);
 			}
+			// Desktop Icon Size CSS ends.
 
-			$selectors[" .uagb-icon-list__source-wrap"] = array(
-				"padding" => $attr['bgSize'] . "px",
-				"border-radius" => $attr['borderRadius'] . "px"
+			// Mobile Icon Size CSS starts.
+			$m_selectors = array(					
+				" .uagb-icon-list__source-image" => array(
+					"width" => $attr['sizeMobile'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon" => array(
+					"width" => $attr['sizeMobile'] . $attr['sizeType'],
+					"height" => $attr['sizeMobile'] . $attr['sizeType'],
+					"font-size" => $attr['sizeMobile'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon svg" => array(
+					"width" => $attr['sizeMobile'] . $attr['sizeType'],
+					"height" => $attr['sizeMobile'] . $attr['sizeType'],
+				),
+				" .uagb-icon-list__source-icon:before" => array(
+					"width" => $attr['sizeMobile'] . $attr['sizeType'],
+					"height" => $attr['sizeMobile'] . $attr['sizeType'],
+					"font-size" => $attr['sizeMobile'] . $attr['sizeType']
+				),
 			);
+			// Mobile Icon Size CSS ends.
+
+			// Tablet Icon Size CSS starts.
+			$t_selectors = array(	
+				" .uagb-icon-list__source-image" => array(
+					"width" => $attr['sizeTablet'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon" => array(
+					"width" => $attr['sizeTablet'] . $attr['sizeType'],
+					"height" => $attr['sizeTablet'] . $attr['sizeType'],
+					"font-size" => $attr['sizeTablet'] . $attr['sizeType']
+				),
+				" .uagb-icon-list__source-icon svg" => array(
+					"width" => $attr['sizeTablet'] . $attr['sizeType'],
+					"height" => $attr['sizeTablet'] . $attr['sizeType'],
+				),
+				" .uagb-icon-list__source-icon:before" => array(
+					"width" => $attr['sizeTablet'] . $attr['sizeType'],
+					"height" => $attr['sizeTablet'] . $attr['sizeType'],
+					"font-size" => $attr['sizeTablet'] . $attr['sizeType']
+				),
+			);
+			// Tablet Icon Size CSS ends.			
 
 			foreach ( $attr['icons'] as $key => $icon ) {
 
@@ -1675,17 +1674,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
 					"background" => $icon['icon_bg_hover_color']
 				);
-			}
-
-			$selectors[" .uagb-icon-list__wrap"] = array(
-				"justify-content"  => $alignment,
-				"-webkit-box-pack" => $alignment,
-				"-ms-flex-pack" => $alignment,
-				"justify-content" => $alignment,
-				"-webkit-box-align" => $alignment,
-				"-ms-flex-align" => $alignment,
-				"align-items" => $alignment,
-			);
+			}			
 
 			if ( 'horizontal' == $attr['icon_layout'] ) {
 

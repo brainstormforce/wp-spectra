@@ -84,7 +84,6 @@ function styling( props ) {
 		},
 	}
 
-
 	mobile_selectors = {		
 		" .uagb-icon-list__source-image": {
 			"width": sizeMobile + sizeType
