@@ -177,6 +177,23 @@
 	    -o-transition: 0.2s;
 	    transition: 0.2s;
 	}
+
+	.uagb-blockquote__align-right.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before {
+	    left: auto;
+	    right: -0.8em;
+	    -webkit-transform: translateY(-50%) scale(1, 0.65) rotate(180deg);
+	    -ms-transform: translateY(-50%) scale(1, 0.65) rotate(180deg);
+	    transform: translateY(-50%) scale(1, 0.65) rotate(180deg);	  
+	}
+
+	.uagb-blockquote__align-center.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before {
+	    left: 50%;
+	    top: -0.8em;
+	    right: auto;
+	    -webkit-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+	    -ms-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+	    transform: translate(-50%, 10%) scale(1, 0.85) rotate(90deg);
+	}
 	
 	.uagb-blockquote__with-tweet.uagb-blockquote__align-center .uagb-blockquote footer,
 	.uagb-blockquote__align-center .uagb-blockquote footer{
@@ -303,6 +320,15 @@
 			-ms-flex-item-align: flex-start;
 		    align-self: flex-start;
 		}	
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__align-right.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before,
+		.uagb-blockquote__stack-img-tablet.uagb-blockquote__align-left.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before {
+		    left: 50%;
+		    top: -0.8em;
+		    right: auto;
+		    -webkit-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+		    -ms-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+		    transform: translate(-50%, 10%) scale(1, 0.85) rotate(90deg);
+		}
 	}
 }
 
@@ -355,6 +381,15 @@
 		.uagb-blockquote__align-left.uagb-blockquote__stack-img-mobile .uagb-blockquote__author-image{
 			-ms-flex-item-align: flex-start;
 		    align-self: flex-start;
+		}
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__align-right.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before,
+		.uagb-blockquote__stack-img-mobile.uagb-blockquote__align-left.uagb-blockquote__tweet-style-bubble a.uagb-blockquote__tweet-button:before {
+		    left: 50%;
+		    top: -0.8em;
+		    right: auto;
+		    -webkit-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+		    -ms-transform: translateX(-50%) scale(1, 0.85) rotate(90deg);
+		    transform: translate(-50%, 10%) scale(1, 0.85) rotate(90deg);
 		}
 	}
 }
