@@ -1,7 +1,5 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import inlineStyles from "./inline-styles"

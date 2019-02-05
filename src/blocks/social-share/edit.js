@@ -2,7 +2,6 @@
  * BLOCK: UAGB - Social Share Edit Class
  */
 
-// Import classes
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"

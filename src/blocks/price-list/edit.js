@@ -1,4 +1,8 @@
-// Import block dependencies and components.
+/**
+ * BLOCK: Price List - Edit Class
+ */
+
+
 import classnames from "classnames"
 import Title from "./components/Title"
 import Price from "./components/Price"
@@ -32,7 +36,6 @@ const {
 	Dashicon
 } = wp.components
 
-// Extend component
 const { Component, Fragment } = wp.element
 
 const MAX_COLUMNS = 3

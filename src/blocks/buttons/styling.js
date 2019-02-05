@@ -1,3 +1,7 @@
+/**
+ * Returns Dynamic Generated CSS
+ */
+
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {

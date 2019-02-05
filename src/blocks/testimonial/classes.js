@@ -1,13 +1,11 @@
 /**
- * Set inline CSS class.
- * @param {object} props - The block object.
- * @return {array} The inline CSS class.
+ * Returns Dynamic Generated CSS
  */
 
-function PositionClasses( attributes ) {    
+function PositionClasses( attributes ) {
 
 	var iconimgStyle_class = ""
-	iconimgStyle_class += " uagb-tm__imgicon-style-"+attributes.iconimgStyle+ " "   
+	iconimgStyle_class += " uagb-tm__imgicon-style-"+attributes.iconimgStyle+ " "
 	iconimgStyle_class += "uagb-tm__image-position-"+attributes.imagePosition+ " "
 
 	if( attributes.imagePosition == "left" || attributes.imagePosition == "right"){
@@ -23,7 +21,7 @@ function PositionClasses( attributes ) {
 	iconimgStyle_class += "uagb-tm__bg-type-"+attributes.backgroundType+ " "
 
 	return [
-		iconimgStyle_class        
+		iconimgStyle_class
 	]
 }
 

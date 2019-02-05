@@ -4,19 +4,15 @@
 
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
-//  Import CSS.
-import "./style.scss"
-import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
 import shapes from "./shapes"
+import "./style.scss"
+import "./editor.scss"
 
 
-// Components
 const { __ } = wp.i18n
 
-// Register block controls
 const {
 	registerBlockType
 } = wp.blocks

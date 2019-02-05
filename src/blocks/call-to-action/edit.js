@@ -1,8 +1,10 @@
-// Import block dependencies and components.
+/**
+ * BLOCK: Call To Action
+ */
+
+
 import classnames from "classnames"
 import map from "lodash/map"
-
-// Import icon.
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Title from "./components/Title"
@@ -37,9 +39,8 @@ const {
 
 let svg_icons = Object.keys( UAGBIcon )
 
-// Extend component
 const { Component, Fragment } = wp.element
-//console.log(jsonData);
+
 class UAGBCallToAction extends Component {
 
 	constructor() {
@@ -67,7 +68,7 @@ class UAGBCallToAction extends Component {
 		const { className, setAttributes, attributes } = this.props
 
 		// Setup the attributes.
-		const {			
+		const {
 			textAlign,
 			titleColor,
 			descColor,

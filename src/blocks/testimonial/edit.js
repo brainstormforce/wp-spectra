@@ -1,4 +1,8 @@
-// Import block dependencies and components.
+/**
+ * BLOCK: Testimonial
+ */
+
+
 import classnames from "classnames"
 import AuthorName from "./components/AuthorName"
 import Company from "./components/Company"
@@ -35,7 +39,7 @@ const {
 	TabPanel
 } = wp.components
 
-// Extend component
+
 const { Component, Fragment } = wp.element
 
 class UAGBtestimonial extends Component {
@@ -216,7 +220,7 @@ class UAGBtestimonial extends Component {
 			infiniteLoop,
 			transitionSpeed,
 			arrowDots,
-			arrowSize, 
+			arrowSize,
 			arrowBorderSize,
 			arrowBorderRadius,
 			autoplay,
@@ -237,7 +241,7 @@ class UAGBtestimonial extends Component {
 			borderWidth ,
 			borderRadius,
 			borderColor,
-			stack,			
+			stack,
 		} = attributes
 
 		// Add CSS.
@@ -245,7 +249,7 @@ class UAGBtestimonial extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = TestimonialStyle( this.props )
 		}
-		
+
 		const sizeTypes = [
 			{ key: "px", name: __( "px" ) },
 			{ key: "em", name: __( "em" ) },
@@ -626,7 +630,7 @@ class UAGBtestimonial extends Component {
 					max={ 50 }
 					allowReset
 				/>
-			</PanelBody>			
+			</PanelBody>
 		)
 
 		const background_settings = (
@@ -796,7 +800,7 @@ class UAGBtestimonial extends Component {
 		function NextArrow( props ) {
 			return (
 				<button type="button" data-role="none" className="slick-next slick-arrow" aria-label="Next" tabIndex="0" role="button" style={{ "borderColor" : arrowColor, "borderRadius" : arrowBorderRadius, "borderWidth" : arrowBorderSize }}>
-					{ UAGB_Block_Icons.carousel_right }</button>			
+					{ UAGB_Block_Icons.carousel_right }</button>
 			)
 		}
 
@@ -884,7 +888,7 @@ class UAGBtestimonial extends Component {
 			)
 		}
 
-		const carousal_settings = (			
+		const carousal_settings = (
 			<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 				<ToggleControl
 					label={ __( "Pause On Hover" ) }
@@ -952,7 +956,7 @@ class UAGBtestimonial extends Component {
 						/>
 					</Fragment>
 				}
-			</PanelBody>			
+			</PanelBody>
 		)
 
 		let cnt = 0
@@ -967,7 +971,7 @@ class UAGBtestimonial extends Component {
 		} )
 
 		// Global Controls.
-		const inspect_control = (			
+		const inspect_control = (
 			<InspectorControls>
 			 	<PanelBody title={ __( "General" ) } initialOpen={ true } >
 			 		<RangeControl
@@ -1139,7 +1143,7 @@ class UAGBtestimonial extends Component {
 
 				{ marginSettings }
 				{ background_settings }
-			</InspectorControls>			
+			</InspectorControls>
 		)
 
 		return (
