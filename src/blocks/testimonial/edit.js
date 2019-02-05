@@ -1003,27 +1003,64 @@ class UAGBtestimonial extends Component {
 						max={ 10 }
 						allowReset
 					/>
-					<RangeControl
-						label={ __( "Columns" ) }
-						value={ columns }
-						onChange={ ( value ) => setAttributes( { columns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
-					<RangeControl
-						label={ __( "Columns (Tablet)" ) }
-						value={ tcolumns }
-						onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
-					<RangeControl
-						label={ __( "Columns (Mobile)" ) }
-						value={ mcolumns }
-						onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
-						min={ 1 }
-						max={ test_item_count }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ mcolumns }
+											onChange={ ( value ) => setAttributes( { mcolumns: value } ) }
+											min={ 1 }
+											max={ test_item_count }
+										/>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ tcolumns }
+											onChange={ ( value ) => setAttributes( { tcolumns: value } ) }
+											min={ 1 }
+											max={ test_item_count }
+										/>
+									)
+								} else {
+									tabout = (
+										<RangeControl
+											label={ __( "Columns" ) }
+											value={ columns }
+											onChange={ ( value ) => setAttributes( { columns: value } ) }
+											min={ 1 }
+											max={ test_item_count }
+										/>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 				{ carousal_settings }
 
