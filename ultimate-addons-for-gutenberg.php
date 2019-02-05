@@ -38,7 +38,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
  */
 function uagb_fail_block_editor() {
 	/* translators: %s: PHP version */
-	$message      = sprintf( __( 'Ultimate Addons for Gutenberg requires <strong>Block Editor</strong>. You can change it to Block Editor from %1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ), '<a href="' . admin_url( 'options-writing.php' ) . '">', '</a>' );
+	$message      = sprintf( __( 'Ultimate Addons for Gutenberg requires <strong>Block Editor</strong>. You can change your editor settings to Block Editor from %1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ), '<a href="' . admin_url( 'options-writing.php' ) . '">', '</a>' );
 	$html_message = sprintf( '<div class="notice notice-warning">%s</div>', wpautop( $message ) );
 	echo wp_kses_post( $html_message );
 }
