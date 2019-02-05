@@ -106,8 +106,8 @@ function RestMenuStyle( props ) {
 		"clear":"left",
 	}
 
-	if ( seperatorStyle != "none" ) {
-		selectors[".uagb-rest_menu__wrap .uagb-rm__separator"] = {
+	if ( seperatorStyle !== "none" ) {
+		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,
 			"border-top-style":seperatorStyle,
 			"border-top-width":seperatorThickness + "px",
