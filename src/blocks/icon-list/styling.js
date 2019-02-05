@@ -84,66 +84,6 @@ function styling( props ) {
 		},
 	}
 
-	icons.map( ( icon, index ) => {
-
-		if ( icon_count <= index ) {
-			return
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon"] = {
-			"color" : icon.icon_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon svg"] = {
-			"fill" : icon.icon_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon"] = {
-			"color" : icon.icon_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon svg"] = {
-			"fill" : icon.icon_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"color" : icon.label_color,
-			"font-size" : fontSize + fontSizeType
-		}
-
-		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeMobile + fontSizeType
-		}
-
-		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeTablet + fontSizeType
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
-			"color" : icon.label_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_hover_color
-		}
-	})
-
-	if ( "right" == align ) {
-		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
-			"margin-left" : inner_gap + "px"
-		}
-		selectors[" .uagb-icon-list__content-wrap"] = {
-			"flex-direction" : "row-reverse"
-		}
-	} else {
-		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
-			"margin-right" : inner_gap + "px"
-		}
-	}
 
 	mobile_selectors = {		
 		" .uagb-icon-list__source-image": {
@@ -218,6 +158,67 @@ function styling( props ) {
 			mobile_selectors[" .uagb-icon-list__wrap a.uagb-icon-list__wrapper:last-child"] = {
 				"margin-bottom" : 0
 			}
+		}
+	}
+
+	icons.map( ( icon, index ) => {
+
+		if ( icon_count <= index ) {
+			return
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon"] = {
+			"color" : icon.icon_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon svg"] = {
+			"fill" : icon.icon_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon"] = {
+			"color" : icon.icon_hover_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon svg"] = {
+			"fill" : icon.icon_hover_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"color" : icon.label_color,
+			"font-size" : fontSize + fontSizeType
+		}
+
+		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"font-size" : fontSizeMobile + fontSizeType
+		}
+
+		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
+			"font-size" : fontSizeTablet + fontSizeType
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
+			"color" : icon.label_hover_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-wrap"] = {
+			"background" : icon.icon_bg_color
+		}
+
+		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-wrap"] = {
+			"background" : icon.icon_bg_hover_color
+		}
+	})
+
+	if ( "right" == align ) {
+		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
+			"margin-left" : inner_gap + "px"
+		}
+		selectors[" .uagb-icon-list__content-wrap"] = {
+			"flex-direction" : "row-reverse"
+		}
+	} else {
+		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
+			"margin-right" : inner_gap + "px"
 		}
 	}
 
