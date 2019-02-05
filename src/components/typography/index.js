@@ -14,6 +14,10 @@ const {
 	Dashicon,
 } = wp.components;
 
+const {
+	withSelect
+} = wp.data
+
 // Extend component
 const { Component, Fragment } = wp.element
 
@@ -283,4 +287,32 @@ function TypographyOptions( props ) {
 	);
 }
 
-export default TypographyOptions;
+export default withSelect( ( select, props ) => {
+	const { setAttributes, setState, fontFamily } = props
+
+	let json_data = ''
+
+	console.log( uagb_blocks_info );
+
+	if ( fontFamily.value ) {
+
+		$.ajax({
+			url: uagb_blocks_info.ajax_url,
+			data: {
+				action: 'uagb_google_fonts',
+				demo : 'demo',
+			},
+			dataType: 'json',
+			type: 'POST',
+			success: function( data ) {
+				// setAttributes( { is_html: true } )
+				// setAttributes( { form_json: data } )
+				// json_data = data
+			}
+		});
+	}
+
+	return {
+		formHTML: json_data
+	}
+} )( TypographyOptions )
