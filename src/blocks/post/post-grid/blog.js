@@ -14,16 +14,11 @@ class Blog extends React.Component {
 		const { attributes, className, latestPosts, block_id } = this.props
 
 		const {
-			displayPostImage,
 			columns,
 			tcolumns,
 			mcolumns,
 			imgPosition,
 			postsToShow,
-			rowGap,
-			columnGap,
-			bgColor,
-			contentPadding,
 			equalHeight
 		} = attributes
 
