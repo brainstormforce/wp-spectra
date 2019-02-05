@@ -74,15 +74,13 @@ registerBlockType( "uagb/testimonial", {
 			arrowColor,
 		} = props.attributes
 
-		const my_block_id = "uagb-testimonial-"+ block_id
-
 		return (
 			<Fragment>
 				<div className={ classnames(
 					className,
 					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
-				id = { my_block_id }				
+				id = { `uagb-testimonial-${block_id}` }				
 				>
 
 					<div
@@ -156,8 +154,6 @@ registerBlockType( "uagb/testimonial", {
 					arrowColor,
 				} = props.attributes
 
-				const my_block_id = "uagb-testimonial-"+ block_id
-
 				const sldier_data = []
 				sldier_data.push(
 					{
@@ -181,7 +177,7 @@ registerBlockType( "uagb/testimonial", {
 							className,
 							"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 						) }
-						id = { my_block_id }
+						id = { `uagb-testimonial-${block_id}` }
 						data-slider = {JSON.stringify(sldier_data)}
 						>
 
