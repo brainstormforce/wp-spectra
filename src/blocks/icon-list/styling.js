@@ -25,6 +25,64 @@ function styling( props ) {
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
+
+	selectors = {
+		" .uagb-icon-list__source-wrap" : {
+			"padding": bgSize + "px",
+			"border-radius": borderRadius + "px"
+		},
+		".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper" : {
+			"margin-left" : 0,
+			"margin-right" : 0,
+			"margin-bottom" : gap + "px"
+		},
+		".uagb-icon-list__layout-vertical .uagb-icon-list__wrap" : {
+			 "flex-direction": "column"
+		},
+		".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper:last-child" : {
+			"margin-bottom" : 0
+		},
+		".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper" : {
+			"margin-left" : ( gap/2 ) + "px",
+			"margin-right" : ( gap/2 ) + "px"
+		},
+		".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper:first-child" : {
+			"margin-left" : 0
+		},
+		".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper:last-child" : {
+			"margin-right" : 0
+		},
+		" .uagb-icon-list__source-image" : {
+			"width": size + sizeType
+		},
+		" .uagb-icon-list__source-icon" : {
+			"width": size + sizeType,
+			"height": size + sizeType,
+			"font-size": size + sizeType
+		},
+		" .uagb-icon-list__source-icon svg" : {
+			"width": size + sizeType,
+			"height": size + sizeType,
+		},
+		" .uagb-icon-list__source-icon:before" : {
+			"width": size + sizeType,
+			"height": size + sizeType,
+			"font-size": size + sizeType
+		},
+		" .uagb-icon-list__label-wrap" : {
+			"text-align": align
+		},
+		" .uagb-icon-list__wrap" : {
+			"justify-content" : alignment,
+			"-webkit-box-pack": alignment,
+			"-ms-flex-pack": alignment,
+			"justify-content": alignment,
+			"-webkit-box-align": alignment,
+			"-ms-flex-align": alignment,
+			"align-items": alignment,
+		},
+	}
 
 	icons.map( ( icon, index ) => {
 
@@ -87,117 +145,45 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" .uagb-icon-list__source-wrap"] = {
-		"padding": bgSize + "px",
-		"border-radius": borderRadius + "px"
+	mobile_selectors = {		
+		" .uagb-icon-list__source-image": {
+			"width": sizeMobile + sizeType
+		},
+		" .uagb-icon-list__source-icon": {
+			"width": sizeMobile + sizeType,
+			"height": sizeMobile + sizeType,
+			"font-size": sizeMobile + sizeType
+		},
+		" .uagb-icon-list__source-icon svg": {
+			"width": sizeMobile + sizeType,
+			"height": sizeMobile + sizeType,
+		},
+		" .uagb-icon-list__source-icon:before": {
+			"width": sizeMobile + sizeType,
+			"height": sizeMobile + sizeType,
+			"font-size": sizeMobile + sizeType
+		},
 	}
 
-
-	selectors[".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper"] = {
-		"margin-left" : 0,
-		"margin-right" : 0,
-		"margin-bottom" : gap + "px"
-	}
-
-	selectors[".uagb-icon-list__layout-vertical .uagb-icon-list__wrap"] = {
-		 "flex-direction": "column"
-	}
-
-	selectors[".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper:last-child"] = {
-		"margin-bottom" : 0
-	}
-
-	selectors[".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper"] = {
-		"margin-left" : ( gap/2 ) + "px",
-		"margin-right" : ( gap/2 ) + "px"
-	}
-
-	selectors[".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper:first-child"] = {
-		"margin-left" : 0
-	}
-
-	selectors[".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper:last-child"] = {
-		"margin-right" : 0
-	}
-
-	selectors[" .uagb-icon-list__source-image"] = {
-		"width": size + sizeType
-	}
-
-	selectors[" .uagb-icon-list__source-icon"] = {
-		"width": size + sizeType,
-		"height": size + sizeType,
-		"font-size": size + sizeType
-	}
-
-	selectors[" .uagb-icon-list__source-icon svg"] = {
-		"width": size + sizeType,
-		"height": size + sizeType,
-	}
-
-	selectors[" .uagb-icon-list__source-icon:before"] = {
-		"width": size + sizeType,
-		"height": size + sizeType,
-		"font-size": size + sizeType
-	}
-
-	mobile_selectors[" .uagb-icon-list__source-image"] = {
-		"width": sizeMobile + sizeType
-	}
-
-	mobile_selectors[" .uagb-icon-list__source-icon"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
-		"font-size": sizeMobile + sizeType
-	}
-
-	mobile_selectors[" .uagb-icon-list__source-icon svg"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
-	}
-
-	mobile_selectors[" .uagb-icon-list__source-icon:before"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
-		"font-size": sizeMobile + sizeType
-	}
-
-	tablet_selectors[" .uagb-icon-list__source-image"] = {
-		"width": sizeTablet + sizeType
-	}
-
-	tablet_selectors[" .uagb-icon-list__source-icon"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
-		"font-size": sizeTablet + sizeType
-	}
-
-	tablet_selectors[" .uagb-icon-list__source-icon svg"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
-	}
-
-	tablet_selectors[" .uagb-icon-list__source-icon:before"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
-		"font-size": sizeTablet + sizeType
-	}
-
-	selectors[" .uagb-icon-list__label-wrap"] = {
-		"text-align": align
-	}
-
-	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
-
-	selectors[" .uagb-icon-list__wrap"] = {
-		"justify-content" : alignment,
-		"-webkit-box-pack": alignment,
-		"-ms-flex-pack": alignment,
-		"justify-content": alignment,
-		"-webkit-box-align": alignment,
-		"-ms-flex-align": alignment,
-		"align-items": alignment,
-	}
+	tablet_selectors = {
+		" .uagb-icon-list__source-image" : {
+			"width": sizeTablet + sizeType
+		},
+		" .uagb-icon-list__source-icon" : {
+			"width": sizeTablet + sizeType,
+			"height": sizeTablet + sizeType,
+			"font-size": sizeTablet + sizeType
+		},
+		" .uagb-icon-list__source-icon svg" : {
+			"width": sizeTablet + sizeType,
+			"height": sizeTablet + sizeType,
+		},
+		" .uagb-icon-list__source-icon:before" : {
+			"width": sizeTablet + sizeType,
+			"height": sizeTablet + sizeType,
+			"font-size": sizeTablet + sizeType
+		}
+	}	
 
 	if ( "horizontal" == icon_layout ) {
 
@@ -234,7 +220,6 @@ function styling( props ) {
 			}
 		}
 	}
-
 
 	var styling_css = ""
 	var id = `#uagb-icon-list-${ props.clientId }`
