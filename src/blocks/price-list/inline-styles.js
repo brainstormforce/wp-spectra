@@ -1,7 +1,5 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
@@ -55,7 +53,7 @@ function RestMenuStyle( props ) {
 
 	var column_class = ".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"
 
-	var selectors = {		
+	var selectors = {
 		" .uagb-rest_menu__wrap": {
 			"padding-left" : columnGap/2+"px",
 			"padding-right" : columnGap/2+"px",
@@ -98,7 +96,7 @@ function RestMenuStyle( props ) {
 			"font-size" : descFontSize+descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
-		},		
+		},
 	}
 
 	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {

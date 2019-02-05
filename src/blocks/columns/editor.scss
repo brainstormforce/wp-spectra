@@ -47,13 +47,6 @@
 .uagb-columns__columns-5 .editor-block-list__block[data-type="uagb/column"] { width: 20%; }
 .uagb-columns__columns-6 .editor-block-list__block[data-type="uagb/column"] { width: 16.66%; }
 
-/**
- * #.# Editor Styles
- *
- * CSS for just Backend enqueued after style.scss
- * which makes it higher in priority.
- */
-
 .wp-block-uagb-columns .editor-block-list__layout {
 	margin-left: 0;
 	margin-right: 0;

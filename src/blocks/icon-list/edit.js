@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - Social Share Edit Class
+ * BLOCK: Icon List - Edit Class
  */
 
 // Import classes

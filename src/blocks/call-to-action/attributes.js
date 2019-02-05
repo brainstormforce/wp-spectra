@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB CTA Attributes
+ * BLOCK: Call To Action - Attributes
  */
 
 const attributes = {

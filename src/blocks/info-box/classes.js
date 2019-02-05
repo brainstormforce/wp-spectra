@@ -1,7 +1,5 @@
 /**
- * Set inline CSS class.
- * @param {object} props - The block object.
- * @return {array} The inline CSS class.
+ * Returns Dynamic Generated Classes
  */
 
 function InfoBoxPositionClasses( attributes ) {
@@ -43,7 +41,7 @@ function InfoBoxPositionClasses( attributes ) {
 	iconimgStyle_class += "uagb-infobox-enable-border-radius"+ " "
 
 	return [
-		iconimgStyle_class        
+		iconimgStyle_class
 	]
 }
 

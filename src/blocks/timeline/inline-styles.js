@@ -1,7 +1,5 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
@@ -49,7 +47,7 @@ function contentTimelineStyle( props ) {
 		subHeadingColor,
 
 		authorSpace,
-		authorColor,		
+		authorColor,
 		authorFontSize,
 		authorFontSizeType,
 		authorFontSizeMobile,
@@ -274,7 +272,7 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__link" :{
 			"font-size" : ctaFontSizeTablet+ctaFontSizeType,
-		}	
+		}
 	}
 
 	var mobile_selectors = {
@@ -343,7 +341,7 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__link" :{
 			"font-size" : ctaFontSizeMobile+ctaFontSizeType,
-		}	
+		}
 	}
 
 	var styling_css = ""

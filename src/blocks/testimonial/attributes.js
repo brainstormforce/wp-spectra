@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: Testimonial - Attributes
  */
 
 const ITEM_COUNT = 3
@@ -57,7 +57,7 @@ const attributes = {
 		type: "string",
 		default: "top"
 	},
-	
+
 	nameFontSize:{
 		type: "number",
 	},
@@ -185,11 +185,11 @@ const attributes = {
 		type: "number",
 		default: 20,
 	},
-	"arrowBorderSize" : {
+	arrowBorderSize : {
 		type: "number",
 		default : 1,
 	},
-	"arrowBorderRadius" : {
+	arrowBorderRadius : {
 		type: "number",
 		default : 0,
 	},

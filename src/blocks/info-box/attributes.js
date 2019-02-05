@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: Info Box - Attributes
  */
 
 const attributes = {
