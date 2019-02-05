@@ -1,8 +1,7 @@
 /**
- * Function name: DayAlignClass
- * @param array attributes settign array of attributes.
- * @param int index_val  index values.
+ * Returns Dynamic Generated Classes
  */
+
 function DayAlignClass( attributes, index_val ) {
 
 	let day_align_class = ""

@@ -1,8 +1,7 @@
 /**
- * BLOCK: UAGB - Section Edit Class
+ * BLOCK: Multi Buttons
  */
 
-// Import classes
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
@@ -431,10 +430,7 @@ class UAGBMultiButtonEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Button Count" ) }
-						initialOpen={ true }
-					>
+					<PanelBody title={ __( "Button Count" ) } initialOpen={ true }>
 						<RangeControl
 							label={ __( "Number of Buttons" ) }
 							value={ btn_count }
@@ -504,8 +500,7 @@ class UAGBMultiButtonEdit extends Component {
 					className,
 					"uagb-buttons__outer-wrap"
 				) }
-				id={ `uagb-buttons-${ this.props.clientId }` }
-				>
+				id={ `uagb-buttons-${ this.props.clientId }` }>
 					<div className="uagb-buttons__wrap">
 						{
 							buttons.map( ( button, index ) => {

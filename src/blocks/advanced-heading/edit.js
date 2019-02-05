@@ -1,22 +1,15 @@
 /**
- * BLOCK: advanced-heading
+ * BLOCK: Advanced Heading
  */
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import styling from "./styling"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import styling from "./styling"
 
-//  Import CSS.
-import "./style.scss"
-
-/* eslint-disable */
-// Import __() from wp.i18n
 const { __ } = wp.i18n
-/* eslint-enable  */
 
-// Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
 	createBlock
@@ -40,7 +33,6 @@ const {
 	Dashicon
 } = wp.components
 
-// Extend component
 const { Component, Fragment } = wp.element
 
 export default class UAGBAdvancedHeading extends Component {

@@ -1,8 +1,7 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
+
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function InfoBoxStyle( props ) {
@@ -110,25 +109,25 @@ function InfoBoxStyle( props ) {
 		},
 		" .uagb-infobox-cta-link:hover" : {
 			"color": ctaLinkHoverColor,
-		},	
+		},
 		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
 			"height" : ctaFontSize+ctaFontSizeType,
 			"width" : ctaFontSize+ctaFontSizeType,
 			"line-height" : ctaFontSize+ctaFontSizeType,
-		},	
+		},
 		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
 			"height" : ctaFontSize+ctaFontSizeType,
 			"width" : ctaFontSize+ctaFontSizeType,
 			"line-height" : ctaFontSize+ctaFontSizeType,
-		},	
+		},
 		" .uagb-infobox-cta-link svg" : {
-			"fill": ctaLinkColor,			
+			"fill": ctaLinkColor,
 		},
 		" .uagb-infobox-cta-link:hover svg" : {
 			"fill": ctaLinkHoverColor,
-		},		
+		},
 		" .uagb-ifb-button-wrapper .uagb-infobox-cta-link" : {
 			"color": ctaBtnLinkColor,
 			"background-color": ctaBgColor,
@@ -188,9 +187,9 @@ function InfoBoxStyle( props ) {
 		},
 		" .uagb-ifb-align-icon-before" : {
 			"margin-right" : ctaIconSpace+"px",
-		},		
+		},
 	}
-		
+
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
 		selectors[" .uagb-infobox__content-wrap"] = {
 			"text-align" : headingAlign,
@@ -250,7 +249,7 @@ function InfoBoxStyle( props ) {
 			"width": ctaFontSizeMobile + ctaFontSizeType,
 		}
 	}
-	
+
 	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }` )
 
 	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }`, true, "tablet" )

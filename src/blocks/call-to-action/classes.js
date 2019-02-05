@@ -1,23 +1,21 @@
 /**
- * Set inline CSS class.
- * @param {object} props - The block object.
- * @return {array} The inline CSS class.
+ * Returns Dynamic Generated Classes
  */
 
 function CtaPositionClasses( attributes ) {
 
-	
+
 	var iconimgStyle_class = ""
 
 	iconimgStyle_class += "uagb-cta__block"+ " "
 	iconimgStyle_class += "uagb-cta__icon-position-"+attributes.ctaPosition+ " "
-	
+
 	if( attributes.ctaPosition === "right" ){
 		iconimgStyle_class +="uagb-cta__content-right"+ " "
 	}
 
 	if( ( attributes.ctaPosition === "right" ) && attributes.stack !== "none"  ){
-		iconimgStyle_class +="uagb-cta__content-stacked-"+attributes.stack+ " "		
+		iconimgStyle_class +="uagb-cta__content-stacked-"+attributes.stack+ " "
 	}
 
 	if( attributes.ctaPosition !== "below-title"  ){
@@ -29,7 +27,7 @@ function CtaPositionClasses( attributes ) {
 	}
 
 	return [
-		iconimgStyle_class        
+		iconimgStyle_class
 	]
 }
 

@@ -1,7 +1,5 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
@@ -67,7 +65,7 @@ function TestimonialStyle( props ) {
 
 	var position = backgroundPosition.replace( "-", " " )
 
-	var selectors = {		
+	var selectors = {
 		" .uagb-testimonial__wrap": {
 			"padding-left" : columnGap/2+"px",
 			"padding-right" : columnGap/2+"px",
@@ -110,7 +108,7 @@ function TestimonialStyle( props ) {
 		},
 		" .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content": {
 			"background-color": backgroundColor,
-		},	
+		},
 		" .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content": {
 			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url },)` : null,
 			"background-position":position,
@@ -145,7 +143,7 @@ function TestimonialStyle( props ) {
 		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
 			"border-radius":borderRadius + "px",
 		}
-	}	
+	}
 
 	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
 		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
@@ -153,7 +151,7 @@ function TestimonialStyle( props ) {
 		}
 	}
 
-	var mobile_selectors = {	
+	var mobile_selectors = {
 		" .uagb-tm__desc": {
 			"font-size" : descFontSizeMobile+descFontSizeType,
 		},
@@ -176,7 +174,7 @@ function TestimonialStyle( props ) {
 			"font-size" : nameFontSizeTablet+nameFontSizeType,
 		},
 		" .uagb-tm__content": {
-			"text-align" : 'center',
+			"text-align" : "center",
 		},
 	}
 

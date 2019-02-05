@@ -1,18 +1,15 @@
 /**
- * BLOCK: UAGB Column
- *
- * Registering a basic block with Gutenberg.
+ * BLOCK: Column
  */
 
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
+import styling from "./styling"
 import "./style.scss"
 import "./editor.scss"
 
-import styling from "./styling"
-
 const { __ } = wp.i18n
+
 const { registerBlockType } = wp.blocks
 
 const {
@@ -575,15 +572,6 @@ export default class UAGBColumnEdit extends Component {
 	}
 }
 
-/**
- * Register: a Gutenberg Block.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( "uagb/column", {
 	title: uagb_blocks_info.blocks["uagb/column"]["title"],
 	description: uagb_blocks_info.blocks["uagb/column"]["description"],

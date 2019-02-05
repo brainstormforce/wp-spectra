@@ -1,6 +1,7 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: Columns - Attributes
  */
+
 const attributes = {
 	block_id: {
 		type: "string",

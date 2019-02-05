@@ -1,6 +1,7 @@
 /**
  * BLOCK: UAGB Social Share Attributes
  */
+
 const ITEM_COUNT = 1
 
 const socials = []
