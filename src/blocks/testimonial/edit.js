@@ -183,7 +183,6 @@ class UAGBtestimonial extends Component {
 			companyColor,
 			descColor,
 			authorColor,
-			prefixTag,
 			nameFontSize,
 			nameFontSizeType,
 			nameFontSizeMobile,
