@@ -67,9 +67,7 @@ registerBlockType( "uagb/call-to-action", {
 			ctaTitle,
 			description,
 		} = props.attributes
-
-		const my_block_id = "uagb-cta-block-"+ block_id
-
+		
 		let is_cta =  <CTA attributes={props.attributes} setAttributes = "not_set" />
 
 		// Get description and seperator components.
@@ -149,7 +147,7 @@ registerBlockType( "uagb/call-to-action", {
 					className,
 					"uagb-cta__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-cta-block-${block_id}` } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
@@ -176,9 +174,7 @@ registerBlockType( "uagb/call-to-action", {
 					className,
 					ctaTitle,
 					description,
-				} = props.attributes
-
-				const my_block_id = "uagb-cta-block-"+ block_id
+				} = props.attributes				
 
 				let is_cta =  <CallToAction attributes={props.attributes} setAttributes = "not_set" />
 
@@ -259,7 +255,7 @@ registerBlockType( "uagb/call-to-action", {
 							className,
 							"uagb-cta__outer-wrap"
 						) }
-						id = { my_block_id } >
+						id = { `uagb-cta-block-${block_id}` } >
 
 							{ ( ctaType == "all") &&
 								<Fragment>

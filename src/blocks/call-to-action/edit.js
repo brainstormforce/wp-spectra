@@ -67,9 +67,7 @@ class UAGBCallToAction extends Component {
 		const { className, setAttributes, attributes } = this.props
 
 		// Setup the attributes.
-		const {
-			ctaTitle,
-			description,
+		const {			
 			textAlign,
 			titleColor,
 			descColor,
@@ -189,8 +187,6 @@ class UAGBCallToAction extends Component {
 			renderFunc: renderSVG,
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
-
-		const my_block_id = "uagb-cta-block-"+this.props.clientId
 
 		// CTA settings.
 		const ctaSettings = (
@@ -892,7 +888,7 @@ class UAGBCallToAction extends Component {
 					className,
 					"uagb-cta__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-cta-block-${this.props.clientId}` }
 				>
 					{ ( ctaType == "all") &&
 							<Fragment>
