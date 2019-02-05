@@ -1,7 +1,3 @@
-.notice:not(.uagb-notice) {
-	display: none;
-}
-
 .uagb-clear:before, .uagb-clear:after {
 	content: " ";
 	display: table;
