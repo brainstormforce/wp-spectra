@@ -398,9 +398,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Required Plugin Activate
 		 *
-		 * @since 1.2.4
+		 * @since x.x.x
 		 */
-		public function theme_activate() {
+		public static function theme_activate() {
 
 			if ( ! current_user_can( 'switch_themes' ) || ! isset( $_POST['slug'] ) || ! $_POST['slug'] ) {
 				wp_send_json_error(
