@@ -185,10 +185,13 @@ function styling( props ) {
 			"border-right-color": tweetBtnBgColor,		
 		}	
 
-		selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
-			"margin-right": tweetIconSpacing + "px",
+		selectors[" a.uagb-blockquote__tweet-button svg"] = {
 			"width": tweetBtnFontSize + tweetBtnFontSizeType,
 			"height": tweetBtnFontSize + tweetBtnFontSizeType,
+		}
+
+		selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = {
+			"margin-right": tweetIconSpacing + "px",
 		}	
 
 		// Hover CSS
@@ -235,7 +238,7 @@ function styling( props ) {
 		" a.uagb-blockquote__tweet-button" : {
 			"font-size": tweetBtnFontSizeTablet + tweetBtnFontSizeType,				
 		},
-		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" : {
+		" a.uagb-blockquote__tweet-button svg" : {
 			"width": tweetBtnFontSizeTablet + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeTablet +tweetBtnFontSizeType,
 		},
@@ -258,7 +261,7 @@ function styling( props ) {
 		" a.uagb-blockquote__tweet-button" : {
 			"font-size": tweetBtnFontSizeMobile + tweetBtnFontSizeType,				
 		},
-		" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" :{
+		" a.uagb-blockquote__tweet-button svg" :{
 			"width": tweetBtnFontSizeMobile + tweetBtnFontSizeType,
 			"height": tweetBtnFontSizeMobile +tweetBtnFontSizeType,
 		},
