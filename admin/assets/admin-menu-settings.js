@@ -257,7 +257,7 @@
 
 			var $slug = $button.data('slug');
 
-			$button.text( 'Activating Astra...' );
+			$button.text( uagb.activating_text ).addClass( 'updating-message' );
 
 			// WordPress adds "Activate" button after waiting for 1000ms. So we will run our activation after that.
 			setTimeout( function() {
@@ -273,11 +273,11 @@
 				.done(function (result) {
 					
 					if( result.success ) {
-						$button.text( 'Astra Activated' );
+						$button.text( uagb.activated_text ).removeClass( 'updating-message' );
 
 						setTimeout( function() {
-							$button.parents( '.uagb-sidebar' ).find( '.uagb-astra-sidebar' ).hide();
-						}, 1000 );
+							$button.parents( '.uagb-sidebar' ).find( '.uagb-astra-sidebar' ).slideUp();
+						}, 1200 );
 					}
 
 				});
@@ -296,7 +296,7 @@
 			var $button 	= jQuery( event.target ),
 				$document   = jQuery(document);
 
-			$button.text( 'Installing Astra...' );
+			$button.text( uagb.installing_text ).addClass( 'updating-message' );
 
 			if ( wp.updates.shouldRequestFilesystemCredentials && ! wp.updates.ajaxLocked ) {
 				wp.updates.requestFilesystemCredentials( event );
@@ -310,7 +310,7 @@
 			wp.updates.installTheme( {
 				slug:    $button.data( 'slug' )
 			}).then(function(e){
-				$button.removeClass( 'uag-install-theme' ).addClass( 'uag-activate-theme' ).text( 'Activate Theme' );
+				$button.removeClass( 'uag-install-theme updating-message' ).addClass( 'uag-activate-theme' ).text( 'Activate Astra Now!' );
 			});
 		},
 
