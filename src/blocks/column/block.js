@@ -818,10 +818,6 @@ registerBlockType( "uagb/column", {
 			type: "string",
 			default: "center"
 		},
-		testattr : {
-			type: "string",
-			default: "center"
-		},
 		alignTablet : {
 			type: "string",
 			default: ""
