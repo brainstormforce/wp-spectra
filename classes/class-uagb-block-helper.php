@@ -18,6 +18,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2504,10 +2505,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-right-color" => $attr['tweetBtnBgColor'],
 				);
 
-				$selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
-					"margin-right"       => $attr['tweetIconSpacing'] . "px",
+				$selectors[" a.uagb-blockquote__tweet-button svg"] = array(
 					"width"       		 => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
+				);
+
+				$selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
+					"margin-right"       => $attr['tweetIconSpacing'] . "px",					
 				);
 
 				// Hover CSS.
@@ -2552,7 +2556,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 				),	
-				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 				),
@@ -2575,7 +2579,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),	
-				" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg" => array(
+				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),
