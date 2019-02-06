@@ -99,6 +99,24 @@ class UAGB_Init_Blocks {
 			false // Enqueue the script in the footer.
 		);
 
+		// Tooltipster JS.
+		wp_enqueue_script(
+			'uagb-tooltipster', // Handle.
+			UAGB_URL . 'assets/js/tooltipster.js',
+			array( 'jquery' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
+
+		// Tour JS.
+		wp_enqueue_script(
+			'uagb-tour', // Handle.
+			UAGB_URL . 'assets/js/tour.js',
+			array( 'jquery', 'uagb-tooltipster' ),
+			UAGB_VER,
+			true // Enqueue the script in the footer.
+		);
+
 		$value = true;
 
 		if ( did_action( 'elementor/loaded' ) ) {
