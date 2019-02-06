@@ -24,7 +24,25 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
-		borderRadius
+		borderRadius,
+		topPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		rightPaddingTablet,
+		topMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		rightMarginTablet,
+
+		topPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
+		rightPaddingMobile,
+		topMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		rightMarginMobile,
+		align
 	} = props.attributes
 
 	var inner_width = "100%"
@@ -36,6 +54,9 @@ function styling( props ) {
 			}
 		}
 	}
+
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	var selectors = {
 		".uagb-section__wrap" : inlineStyles( props ),
@@ -79,10 +100,56 @@ function styling( props ) {
 
 	selectors[" > .uagb-section__overlay"]["border-radius"] = borderRadius + "px"
 
+	tablet_selectors = {
+		".uagb-section__wrap" : {
+			"padding-top": topPaddingTablet + "px",
+			"padding-bottom": bottomPaddingTablet + "px",
+			"padding-left": leftPaddingTablet + "px",
+			"padding-right": rightPaddingTablet + "px",
+		}
+	}
+
+	mobile_selectors = {
+		".uagb-section__wrap" : {
+			"padding-top": topPaddingMobile + "px",
+			"padding-bottom": bottomPaddingMobile + "px",
+			"padding-left": leftPaddingMobile + "px",
+			"padding-right": rightPaddingMobile + "px",
+		}
+	}
+
+	if ( "right" == align ) {
+		mobile_selectors[".uagb-section__wrap"]["margin-top"] = topMarginMobile + "px"
+		mobile_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginMobile + "px"
+		mobile_selectors[".uagb-section__wrap"]["margin-right"] =  rightMarginMobile + "px"
+
+		tablet_selectors[".uagb-section__wrap"]["margin-top"] = topMarginTablet + "px"
+		tablet_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginTablet + "px"
+		tablet_selectors[".uagb-section__wrap"]["margin-right"] =  rightMarginTablet + "px"
+	} else if ( "left" == align ) {
+		mobile_selectors[".uagb-section__wrap"]["margin-top"] = topMarginMobile + "px"
+		mobile_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginMobile + "px"
+		mobile_selectors[".uagb-section__wrap"]["margin-left"] =  leftMarginMobile + "px"
+
+		tablet_selectors[".uagb-section__wrap"]["margin-top"] = topMarginTablet + "px"
+		tablet_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginTablet + "px"
+		tablet_selectors[".uagb-section__wrap"]["margin-left"] =  leftMarginTablet + "px"
+	} else {
+		mobile_selectors[".uagb-section__wrap"]["margin-top"] = topMarginMobile + "px"
+		mobile_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginMobile + "px"
+
+		tablet_selectors[".uagb-section__wrap"]["margin-top"] = topMarginTablet + "px"
+		tablet_selectors[".uagb-section__wrap"]["margin-bottom"] =  bottomMarginTablet + "px"
+	}
+
 	var styling_css = ""
 	var id = `#uagb-section-${ props.clientId }`
 
 	styling_css = generateCSS( selectors, id )
+
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 }
