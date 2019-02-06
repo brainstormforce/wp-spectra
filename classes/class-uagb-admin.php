@@ -243,12 +243,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			wp_enqueue_script( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER );
 
 			$localize = array(
-				'ajax_url'     => admin_url( 'admin-ajax.php' ),
-				'ajax_nonce'   => wp_create_nonce( 'uagb-block-nonce' ),
-				'activate'     => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
-				'deactivate'   => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
-				'enable_beta'  => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
-				'disable_beta' => __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+				'ajax_url'        => admin_url( 'admin-ajax.php' ),
+				'ajax_nonce'      => wp_create_nonce( 'uagb-block-nonce' ),
+				'activate'        => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+				'deactivate'      => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
+				'enable_beta'     => __( 'Enable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+				'disable_beta'    => __( 'Disable Beta Updates', 'ultimate-addons-for-gutenberg' ),
+				'installing_text' => __( 'Installing Astra', 'ultimate-addons-for-gutenberg' ),
+				'activating_text' => __( 'Activating Astra', 'ultimate-addons-for-gutenberg' ),
+				'activated_text'  => __( 'Astra Activated!', 'ultimate-addons-for-gutenberg' ),
 			);
 
 			wp_localize_script( 'uagb-admin-settings', 'uagb', apply_filters( 'uagb_js_localize', $localize ) );

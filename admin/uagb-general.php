@@ -136,9 +136,9 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						$theme = wp_get_theme();
 						if ( ! file_exists( get_theme_root() . '/astra/functions.php' ) ) {
 							?>
-						<a class="button ast-sites-inactive uag-install-theme" href="#" data-slug="astra"><?php esc_html_e( 'Install Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
+						<a class="button button-primary ast-sites-inactive uag-install-theme" href="#" data-slug="astra"><?php esc_html_e( 'Install Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
 						<?php } elseif ( 'Astra' !== $theme->name || 'Astra' !== $theme->parent_theme && file_exists( get_theme_root() . '/astra/functions.php' ) ) { ?> 
-							<a class="button ast-sites-inactive uag-activate-theme" href="#" data-slug="astra" data-init="astra/astra.php"><?php esc_html_e( 'Activate Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
+							<a class="button button-primary ast-sites-inactive uag-activate-theme" href="#" data-slug="astra" data-init="astra/astra.php"><?php esc_html_e( 'Activate Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
 						<?php } ?>
 						<div>
 						</div>
