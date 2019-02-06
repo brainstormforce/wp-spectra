@@ -170,6 +170,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
+			$m_selectors = array();
+			$t_selectors = array();
+
 			$style = array(
 				'padding-top'    => $attr['topPadding'] . 'px',
 				'padding-bottom' => $attr['bottomPadding'] . 'px',
@@ -265,9 +268,37 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[' > .uagb-columns__overlay']["border-radius"] = $attr['borderRadius'] . "px";
 
+			$m_selectors = array(
+				'.uagb-columns__wrap' => array(
+					'padding-top'    => $attr['topPaddingMobile'] . 'px',
+					'padding-bottom' => $attr['bottomPaddingMobile'] . 'px',
+					'padding-left'   => $attr['leftPaddingMobile'] . 'px',
+					'padding-right'  => $attr['rightPaddingMobile'] . 'px',
+					'margin-top'    => $attr['topMarginMobile'] . 'px',
+					'margin-bottom' => $attr['bottomMarginMobile'] . 'px',
+				)
+			);
+
+			$t_selectors = array(
+				'.uagb-columns__wrap' => array(
+					'padding-top'    => $attr['topPaddingTablet'] . 'px',
+					'padding-bottom' => $attr['bottomPaddingTablet'] . 'px',
+					'padding-left'   => $attr['leftPaddingTablet'] . 'px',
+					'padding-right'  => $attr['rightPaddingTablet'] . 'px',
+					'margin-top'    => $attr['topMarginTablet'] . 'px',
+					'margin-bottom' => $attr['bottomMarginTablet'] . 'px',
+				)
+			);
+
 			// @codingStandardsIgnoreEnd
 
-			return UAGB_Helper::generate_css( $selectors, '#uagb-columns-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-columns-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-columns-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-columns-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
 		}
 
 		/**
