@@ -23,7 +23,6 @@ import "./blocks/timeline/block.js"
 import "./blocks/call-to-action/block.js"
 import "./blocks/column/block.js"
 import "./blocks/columns/block.js"
-import "./blocks/blockquote/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 

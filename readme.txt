@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -95,10 +95,10 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.8.1.1 =
-* New: Blockquote.
+= 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
 * Fix: Icon List - label not editable in Firefox browser.
+* Improvement: 100% Responsive Font Size Support.
 
 = 1.8.1 =
 * Fix: Advanced Columns - Editor end, width issue.

@@ -12,13 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -422,7 +415,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$seperatorStyle = isset( $attr['seperatorStyle'] ) ? $attr['seperatorStyle'] : '';
-			
+
 			if( 'none' !== $seperatorStyle ){
 				$selectors[' .uagb-separator'] = array (
 					'border-top-style' => $attr['seperatorStyle'] ,
@@ -1079,10 +1072,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
-				),	
+				),
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
-				)			
+				)
 			);
 
 
@@ -1508,7 +1501,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$selectors = array(	
+			$selectors = array(
 				".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper" => array(
 					"margin-left"  => 0,
 					"margin-right"  => 0,
@@ -1581,7 +1574,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// Desktop Icon Size CSS ends.
 
 			// Mobile Icon Size CSS starts.
-			$m_selectors = array(					
+			$m_selectors = array(
 				" .uagb-icon-list__source-image" => array(
 					"width" => $attr['sizeMobile'] . $attr['sizeType']
 				),
@@ -1603,7 +1596,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			// Mobile Icon Size CSS ends.
 
 			// Tablet Icon Size CSS starts.
-			$t_selectors = array(	
+			$t_selectors = array(
 				" .uagb-icon-list__source-image" => array(
 					"width" => $attr['sizeTablet'] . $attr['sizeType']
 				),
@@ -1622,7 +1615,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-size" => $attr['sizeTablet'] . $attr['sizeType']
 				),
 			);
-			// Tablet Icon Size CSS ends.			
+			// Tablet Icon Size CSS ends.
 
 			foreach ( $attr['icons'] as $key => $icon ) {
 
@@ -1677,7 +1670,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
 					"background" => $icon['icon_bg_hover_color']
 				);
-			}			
+			}
 
 			if ( 'horizontal' == $attr['icon_layout'] ) {
 
@@ -1753,16 +1746,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
-				),	
+				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
 					'color'=> $attr['iconFocus'],
-				),	
+				),
 			);
-			
+
 			$desktop_selectors = self::get_timeline_selectors( $attr );
 			$selectors = array_merge( $selectors, $desktop_selectors );
 
-			$t_selectors = array(					
+			$t_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
 				),
@@ -1780,7 +1773,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet_selectors = self::get_timeline_tablet_selectors( $attr );
 			$t_selectors = array_merge( $t_selectors, $tablet_selectors );
 
-			$m_selectors = array(					
+			$m_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
 				),
@@ -1796,7 +1789,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );
-			
+
 			$m_selectors = array_merge( $m_selectors, $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
@@ -1825,7 +1818,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 			$t_selectors = array();
-		
+
 			$selectors = array(
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
@@ -1860,19 +1853,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
-				),				
+				),
 				" .uagb_timeline__cta-enable .uagb-timeline-desc-content" => array(
 					"margin-bottom"  => $attr['contentSpace'] . "px",
-				),	
+				),
 			    ' .uagb-content' => array(
 			        'padding'=> $attr['contentPadding'].'px',
-			    ),				    
+			    ),
 			);
 
 			$desktop_selectors = self::get_timeline_selectors( $attr );
 			$selectors = array_merge( $selectors, $desktop_selectors );
 
-			$t_selectors = array(	
+			$t_selectors = array(
 				" .uagb-timeline__author-link" => array(
 					"font-size"  => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
 				),
@@ -1884,13 +1877,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-timeline__heading a" => array(
 					"font-size"  => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
-				),	
+				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
 					"text-align"  => 'left',
 				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" => array(
 					"text-align"  => 'left',
-				),	
+				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__image a" => array(
 					'text-align' => 'left',
 				),
@@ -1915,19 +1908,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
-				),					
+				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
 					"text-align"  => 'left',
 				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__link_parent" => array(
 					"text-align"  => 'left',
-				),	
+				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__image a" => array(
 					'text-align' => 'left',
 				),
 			);
 
-			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );			
+			$mobile_selectors = self::get_timeline_mobile_selectors( $attr );
 			$m_selectors = array_merge( $m_selectors, $mobile_selectors );
 
 			// @codingStandardsIgnoreEnd
@@ -1964,7 +1957,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
             	$align = 'flex-end';
             }
 
-			$selectors = array(	
+			$selectors = array(
 				" .uagb-rest_menu__wrap" => array(
 					'padding-left'  => ($attr['columnGap']/2) . "px",
 					'padding-right'  => ($attr['columnGap']/2). "px",
@@ -1979,7 +1972,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    " .uagb-rm__image img" => array(
 			        'width'=>  $attr['imageWidth'] .'px',
 			        'max-width'=>  $attr['imageWidth'] .'px',
-			    ),   
+			    ),
 			    " .uagb-rm__separator-parent" => array(
 			        'justify-content' => $align,
 			    ),
@@ -2018,7 +2011,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                     'width'=> $attr['seperatorWidth'] . "%",
                 );
             }
-			
+
 			$t_selectors = array(
 				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
 					'margin-left'=> '0%',
@@ -2323,7 +2316,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Post Block Selectors CSS for Tablet devices
 		 *
 		 * @param array $attr The block attributes.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_post_tablet_selectors( $attr ) {
 			// @codingStandardsIgnoreStart
@@ -2359,7 +2352,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Blockquote CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.8.2
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -2511,7 +2504,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[" .uagb-blockquote__tweet-icon_text a.uagb-blockquote__tweet-button svg"] = array(
-					"margin-right"       => $attr['tweetIconSpacing'] . "px",					
+					"margin-right"       => $attr['tweetIconSpacing'] . "px",
 				);
 
 				// Hover CSS.
@@ -2555,12 +2548,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
-				),	
+				),
 				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
 				),
-				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(					
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"padding"      		=> $attr['quotePaddingTablet'] . $attr['quotePaddingType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
@@ -2578,12 +2571,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
-				),	
+				),
 				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),
-				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(					
+				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"padding"      		=> $attr['quotePaddingMobile'] . $attr['quotePaddingType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
@@ -2607,7 +2600,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Timeline Block Desktop Selectors CSS
 		 *
 		 * @param array $attr The block attributes.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_timeline_selectors( $attr ) {
 			// @codingStandardsIgnoreStart
@@ -2628,7 +2621,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-timeline__center-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 			        'border-left-color'  => $attr['backgroundColor']
-			    ), 
+			    ),
 			    ' .uagb-timeline__right-block .uagb-timeline__day-right .uagb-timeline__arrow:after' => array(
 					'border-left-color'  => $attr['backgroundColor']
 				),
@@ -2640,14 +2633,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    ),
 			    ' .uagb-timeline__line__inner' => array(
 					'background-color'  => $attr['separatorFillColor']
-				),  
+				),
 				' .uagb-timeline__line' => array(
 					'background-color'  => $attr['separatorColor'],
 					'width'  => $attr['separatorwidth'].'px'
-				), 
+				),
 				' .uagb-timeline__right-block .uagb-timeline__line' => array(
 			        'right' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
-			    ), 
+			    ),
 			    ' .uagb-timeline__left-block .uagb-timeline__line' => array(
 					'left' => 'calc( '.$attr['connectorBgsize'].'px / 2 )',
 				),
@@ -2708,7 +2701,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
 					'fill'=> $attr['iconFocus'],
-				),	
+				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new' => array(
 			        'color'=> $attr['iconFocus'],
 			    ),
@@ -2720,7 +2713,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'fill'=> $attr['iconColor'],
 			    ),
 			);
-			
+
 			return $selectors;
 			// @codingStandardsIgnoreEnd
 		}
@@ -2729,7 +2722,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Timeline Block Tablet Selectors CSS.
 		 *
 		 * @param array $attr The block attributes.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_timeline_tablet_selectors( $attr ) {
 			// @codingStandardsIgnoreStart
@@ -2778,7 +2771,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Timeline Block Mobile Selectors CSS.
 		 *
 		 * @param array $attr The block attributes.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_timeline_mobile_selectors( $attr ) {
         	// @codingStandardsIgnoreStart
@@ -2891,7 +2884,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Blockquote Js
 		 *
-		 * @since x.x.x
+		 * @since 1.8.2
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
