@@ -2123,11 +2123,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
-			    ),
-			    " .uagb-rest_menu__wrap.uagb-rm__desk-column-".$attr['columns'].":nth-child(".$attr['columns']."n+1)" => array(
-			        'margin-left'=>  '0%',
-			        'clear'=> 'left',
-			    )
+			    ),			  
 			);
 
             if ( $attr["seperatorStyle"] != "none" ) {
