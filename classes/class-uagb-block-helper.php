@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1418,8 +1419,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['size'] . $attr['sizeType'],
-				//height" => $attr['size'] . $attr['sizeType'],
-				//"line-height" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-wrap svg"] = array(
