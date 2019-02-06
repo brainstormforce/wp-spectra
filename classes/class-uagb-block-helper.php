@@ -17,6 +17,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2909,15 +2910,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$url = $attr['customUrl'];
 			}
 
-			$slug = basename(get_permalink());
-
-			$request_url = "https://twitter.com/share?url=".urlencode($url)."&text=".$slug."&via=".$attr['iconShareVia'];
+			$via = isset( $attr['iconShareVia'] ) ? $attr['iconShareVia'] : '';
 
 			$selector =	'#uagb-blockquote-'. $id;
 
 			?>
 				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
-				  window.open( "<?php echo $request_url ?>" );
+				  var content = jQuery("<?php echo $selector ?>").find(".uagb-blockquote__content").text();
+				  var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo $url ?>")+"&text="+content+"&via="+("<?php echo $via;?>");
+				  window.open( request_url );
 				});
 			<?php
 
