@@ -24,6 +24,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'after_setup_theme', __CLASS__ . '::init_hooks' );
 			// Activation hook.
 			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
+
 		}
 
 		/**
@@ -62,6 +63,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_filter( 'wp_kses_allowed_html', __CLASS__ . '::add_data_attributes', 10, 2 );
 
 			add_action( 'admin_enqueue_scripts', __CLASS__ . '::notice_styles_scripts' );
+
+			add_action( 'wp_ajax_uag-theme-activate', __CLASS__ . '::theme_activate' );
 
 			// Enqueue admin scripts.
 			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG == $_REQUEST['page'] ) {
@@ -240,6 +243,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			wp_enqueue_script( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER );
 
 			$localize = array(
+				'ajax_url'     => admin_url( 'admin-ajax.php' ),
 				'ajax_nonce'   => wp_create_nonce( 'uagb-block-nonce' ),
 				'activate'     => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
 				'deactivate'   => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
@@ -389,6 +393,44 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			echo 'success';
 
 			die();
+		}
+
+		/**
+		 * Required Plugin Activate
+		 *
+		 * @since 1.2.4
+		 */
+		public function theme_activate() {
+
+			if ( ! current_user_can( 'switch_themes' ) || ! isset( $_POST['slug'] ) || ! $_POST['slug'] ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'No Theme specified', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
+
+			$theme_slug = ( isset( $_POST['slug'] ) ) ? esc_attr( $_POST['slug'] ) : '';
+
+			$activate = switch_theme( $theme_slug );
+
+			if ( is_wp_error( $activate ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => $activate->get_error_message(),
+					)
+				);
+			}
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
+				)
+			);
+
 		}
 
 	}
