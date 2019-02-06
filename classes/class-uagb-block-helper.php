@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1417,8 +1418,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['size'] . $attr['sizeType'],
-				"height" => $attr['size'] . $attr['sizeType'],
-				"line-height" => $attr['size'] . $attr['sizeType']
+				//height" => $attr['size'] . $attr['sizeType'],
+				//"line-height" => $attr['size'] . $attr['sizeType']
 			);
 
 			$selectors[" .uagb-ss__source-wrap svg"] = array(
@@ -1459,6 +1460,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size" => $attr['sizeTablet'] . $attr['sizeType'],
 				"line-height" => $attr['sizeTablet'] . $attr['sizeType']
 			);
+			$t_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0
+			);
+
 
 			$m_selectors[" .uagb-ss__source-wrap"] = array(
 				"width" => $attr['sizeMobile'] . $attr['sizeType'],
@@ -1481,6 +1487,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"font-size" => $attr['sizeMobile'] . $attr['sizeType'],
 				"line-height" => $attr['sizeMobile'] . $attr['sizeType']
 			);
+			$m_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
+				"margin-left"  => 0,
+				"margin-right"  => 0
+			);
+
 
 			foreach ( $attr['socials'] as $key => $social ) {
 
