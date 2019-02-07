@@ -222,7 +222,7 @@ export default class UAGBAdvancedHeading extends Component {
 							fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
 							fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
 							fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
-							lineheightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
+							lineHeightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
 							lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
 							lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
 							lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
@@ -247,7 +247,7 @@ export default class UAGBAdvancedHeading extends Component {
 							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
 							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
 							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
-							lineheightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
+							lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
 							lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
 							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
 							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }

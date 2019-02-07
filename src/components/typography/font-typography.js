@@ -16,7 +16,6 @@ const { Component, Fragment } = wp.element
 import TypographyOptionsInlineStyles from './inline-styles';
 import map from "lodash/map"
 import googleFonts from './fonts';
-import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
