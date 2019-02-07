@@ -113,6 +113,8 @@ function TypographyOptions( props ) {
 		</ButtonGroup>
 	)
 
+	console.log( props );
+
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
