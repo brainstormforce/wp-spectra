@@ -95,6 +95,9 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
+= 1.8.2.1 =
+* New: Blockquote
+
 = 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
 * Fix: Call to Action - Width issue when elements stack.
