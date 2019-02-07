@@ -401,7 +401,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Required Plugin Activate
 		 *
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function theme_activate() {
 

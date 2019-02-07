@@ -656,7 +656,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $attributes The block attributes.
 		 * @param string $block_type The Block Type.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
 

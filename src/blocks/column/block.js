@@ -97,6 +97,25 @@ export default class UAGBColumnEdit extends Component {
 				bottomMargin,
 				leftMargin,
 				rightMargin,
+
+				topPaddingTablet,
+				bottomPaddingTablet,
+				leftPaddingTablet,
+				rightPaddingTablet,
+				topMarginTablet,
+				bottomMarginTablet,
+				leftMarginTablet,
+				rightMarginTablet,
+
+				topPaddingMobile,
+				bottomPaddingMobile,
+				leftPaddingMobile,
+				rightPaddingMobile,
+				topMarginMobile,
+				bottomMarginMobile,
+				leftMarginMobile,
+				rightMarginMobile,
+
 				colWidth,
 				backgroundType,
 				backgroundImage,
@@ -266,105 +285,315 @@ export default class UAGBColumnEdit extends Component {
 					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-					<h2>{ __( "Padding (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.top_margin }
-						className={ "uagb-margin-control" }
-						value={ topPadding }
-						onChange={ ( value ) => {
-							setAttributes( {
-								topPadding: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 500 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.bottom_margin }
-						className={ "uagb-margin-control" }
-						value={ bottomPadding }
-						onChange={ ( value ) => {
-							setAttributes( {
-								bottomPadding: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 500 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.left_margin }
-						className={ "uagb-margin-control" }
-						value={ leftPadding }
-						onChange={ ( value ) => {
-							setAttributes( {
-								leftPadding: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 500 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.right_margin }
-						className={ "uagb-margin-control" }
-						value={ rightPadding }
-						onChange={ ( value ) => {
-							setAttributes( {
-								rightPadding: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 500 }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Padding Mobile (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftPaddingMobile }
+												onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightPaddingMobile }
+												onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topPaddingMobile }
+												onChange={ ( value ) => setAttributes( { topPaddingMobile: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomPaddingMobile }
+												onChange={ ( value ) => setAttributes( { bottomPaddingMobile: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Padding Tablet (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftPaddingTablet }
+												onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightPaddingTablet }
+												onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topPaddingTablet }
+												onChange={ ( value ) => setAttributes( { topPaddingTablet: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomPaddingTablet }
+												onChange={ ( value ) => setAttributes( { bottomPaddingTablet: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Padding (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftPadding }
+												onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightPadding }
+												onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topPadding }
+												onChange={ ( value ) => setAttributes( { topPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomPadding }
+												onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Margin (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.top_margin }
-						className={ "uagb-margin-control" }
-						value={ topMargin }
-						onChange={ ( value ) => {
-							setAttributes( {
-								topMargin: value,
-							} )
-						} }
-						min={ -200 }
-						max={ 200 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.bottom_margin }
-						className={ "uagb-margin-control" }
-						value={ bottomMargin }
-						onChange={ ( value ) => {
-							setAttributes( {
-								bottomMargin: value,
-							} )
-						} }
-						min={ -200 }
-						max={ 200 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.left_margin }
-						className={ "uagb-margin-control" }
-						value={ leftMargin }
-						onChange={ ( value ) => {
-							setAttributes( {
-								leftMargin: value,
-							} )
-						} }
-						min={ -200 }
-						max={ 200 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.right_margin }
-						className={ "uagb-margin-control" }
-						value={ rightMargin }
-						onChange={ ( value ) => {
-							setAttributes( {
-								rightMargin: value,
-							} )
-						} }
-						min={ -200 }
-						max={ 200 }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Margin Mobile (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topMarginMobile }
+												onChange={ ( value ) => setAttributes( { topMarginMobile: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomMarginMobile }
+												onChange={ ( value ) => setAttributes( { bottomMarginMobile: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftMarginMobile }
+												onChange={ ( value ) => setAttributes( { leftMarginMobile: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightMarginMobile }
+												onChange={ ( value ) => setAttributes( { rightMarginMobile: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Margin Tablet (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topMarginTablet }
+												onChange={ ( value ) => setAttributes( { topMarginTablet: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomMarginTablet }
+												onChange={ ( value ) => setAttributes( { bottomMarginTablet: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftMarginTablet }
+												onChange={ ( value ) => setAttributes( { leftMarginTablet: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightMarginTablet }
+												onChange={ ( value ) => setAttributes( { rightMarginTablet: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Margin (px)" ) }</h2>
+											<RangeControl
+												label={ UAGB_Block_Icons.top_margin }
+												className={ "uagb-margin-control" }
+												value={ topMargin }
+												onChange={ ( value ) => setAttributes( { topMargin: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.bottom_margin }
+												className={ "uagb-margin-control" }
+												value={ bottomMargin }
+												onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftMargin }
+												onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightMargin }
+												onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
+												min={ -200 }
+												max={ 200 }
+												allowReset
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Background" ) } initialOpen={ false }>
 					<SelectControl
@@ -628,6 +857,71 @@ registerBlockType( "uagb/column", {
 		rightMargin: {
 			type: "number",
 			default: "",
+		},
+		topPaddingTablet: {
+			type: "number",
+			default: ""
+		},
+		bottomPaddingTablet: {
+			type: "number",
+			default: ""
+		},
+		leftPaddingTablet: {
+			type: "number",
+			default: ""
+		},
+		rightPaddingTablet: {
+			type: "number",
+			default: ""
+		},
+		topMarginTablet: {
+			type: "number",
+			default: ""
+		},
+		bottomMarginTablet: {
+			type: "number",
+			default: ""
+		},
+		leftMarginTablet: {
+			type: "number",
+			default: ""
+		},
+		rightMarginTablet: {
+			type: "number",
+			default: ""
+		},
+
+		topPaddingMobile: {
+			type: "number",
+			default: ""
+		},
+		bottomPaddingMobile: {
+			type: "number",
+			default: ""
+		},
+		leftPaddingMobile: {
+			type: "number",
+			default: ""
+		},
+		rightPaddingMobile: {
+			type: "number",
+			default: ""
+		},
+		topMarginMobile: {
+			type: "number",
+			default: ""
+		},
+		bottomMarginMobile: {
+			type: "number",
+			default: ""
+		},
+		leftMarginMobile: {
+			type: "number",
+			default: ""
+		},
+		rightMarginMobile: {
+			type: "number",
+			default: ""
 		},
 		colWidth: {
 			type: "number",

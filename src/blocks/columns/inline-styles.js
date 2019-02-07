@@ -22,7 +22,7 @@ function inlineStyles( props, isEditor ) {
 		borderStyle,
 		borderWidth,
 		borderRadius,
-		borderColor
+		borderColor,
 	} = props.attributes
 
 	var style = {

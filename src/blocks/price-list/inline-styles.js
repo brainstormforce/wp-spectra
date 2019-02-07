@@ -99,11 +99,6 @@ function RestMenuStyle( props ) {
 		},
 	}
 
-	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
-		"margin-left": "0%",
-		"clear":"left",
-	}
-
 	if ( seperatorStyle !== "none" ) {
 		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
 			"border-top-color": seperatorColor,

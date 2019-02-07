@@ -164,9 +164,11 @@ hr.uagb-editor__separator {
     margin-right: 3px;
 }
 
-.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab {
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
 	color: #23282d;
     background-color: #e4e5e5;
+    box-shadow: none;
 }
 
 .uagb-size-type-field button.components-button.uagb-size-btn {
@@ -207,6 +209,10 @@ hr.uagb-editor__separator {
     box-shadow: none;
     border: none;
     outline: none
+}
+
+.uagb-size-type-field__common-tabs .components-tab-panel__tabs {
+	margin-bottom: -34px;
 }
 
 
