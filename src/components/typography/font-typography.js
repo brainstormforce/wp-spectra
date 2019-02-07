@@ -4,43 +4,47 @@
 const { __ } = wp.i18n;
 
 const {
-	TextControl,
-	RangeControl,
-	SelectControl,
-	PanelRow,
+	SelectControl
 } = wp.components;
+
+// Extend component
+const { Component, Fragment } = wp.element
 
 /**
  * Internal dependencies
  */
-import TypographyOptionsClasses from './classes';
+import TypographyOptionsInlineStyles from './inline-styles';
+import map from "lodash/map"
 import googleFonts from './fonts';
+import './editor.scss';
 
 // Export for ease of importing in individual blocks.
 export {
 	TypographyOptionsInlineStyles,
 };
 
-function FontTypographyOptions( props ) {
+function TypographyOptions( props ) {
 
 	const fonts = [
-		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
 	];
 
 	let font_weight = '';
+	let font_subset = '';
 
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
 		fonts.push(
-			{ value: k, label: k, weight: googleFonts[k] }
+			{ value: k, label: k, weight: googleFonts[k].weight }
 		);
 
-		if( k === props.fontFamily ) {
+		if( k === props.fontFamily.value ) {
 			font_weight = googleFonts[k].weight;
+			font_subset = googleFonts[k].subset;
 		}
 	})
 
@@ -57,11 +61,18 @@ function FontTypographyOptions( props ) {
 			{ value: item, label: item }
 		);
 	});
-		
-	const onFontFamilyChange = value => props.setAttributes( { fontFamily: value } );
-	const onFontSizeChange 	= value => props.setAttributes( { fontSize  : value } );
-	const onFontWeightChange = value => props.setAttributes( { fontWeight: value } );
-	const onLineheightChange = value => props.setAttributes( { LineHeight: value } );
+
+	const font_subset_obj = [];
+
+	if( typeof font_subset == 'object' ) {
+		font_subset.forEach(function(item) {
+			font_subset_obj.push(
+				{ value: item, label: item }
+			);
+		});
+	}
+
+	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } );
 
 	const sizeTypes = [
 		{ key: "px", name: __( "px" ) },
@@ -75,9 +86,9 @@ function FontTypographyOptions( props ) {
 					key={ key }
 					className="uagb-size-btn"
 					isSmall
-					isPrimary={ headFontSizeType === key }
-					aria-pressed={ headFontSizeType === key }
-					onClick={ () => setAttributes( { headFontSizeType: key } ) }
+					isPrimary={ props.fontSizeType === key }
+					aria-pressed={ props.fontSizeType === key }
+					onClick={ () => props.setAttributes( { [props.fontSizeType.label]: key } ) }
 				>
 					{ name }
 				</Button>
@@ -85,28 +96,78 @@ function FontTypographyOptions( props ) {
 		</ButtonGroup>
 	)
 
+	const headLineHeightTypesControls = (
+		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+			{ map( sizeTypes, ( { name, key } ) => (
+				<Button
+					key={ key }
+					className="uagb-size-btn"
+					isSmall
+					isPrimary={ props.lineheightType === key }
+					aria-pressed={ props.lineheightType === key }
+					onClick={ () => props.setAttributes( { [props.lineheightType.label]: key } ) }
+				>
+					{ name }
+				</Button>
+			) ) }
+		</ButtonGroup>
+	)
+
+	const onFontfamilyChange = ( value ) => {
+		props.setAttributes( { [ props.fontFamily.label ]: value } )
+		onFontChange( props.fontWeight, font_weight_obj );
+		onFontChange( props.fontSubset, font_weight_obj );
+	}
+
+	const onFontChange = ( font_arr, font_weight_obj ) => {
+	
+		let font_flag;
+		let new_value;
+
+		if( typeof font_weight_obj == 'object' ) {
+
+			font_weight_obj.forEach(function(item) {
+				if( font_arr.value == item.value ) {
+					font_flag = false;
+				} else {
+					new_value  = item.value;
+					font_flag = true;
+				}
+			});
+		}
+
+		if( font_flag == true ) {
+			props.setAttributes( { [ font_arr.label ]: new_value } )
+		}
+	}
+
 	return (
-		<PanelRow>
-			<div className="uag-typography-options">
-				<SelectControl
-					label={ __( "Font Family" ) }
-					value={ props.fontFamily }
-					onChange={ onFontFamilyChange }
-					options={
-						fonts
-					}
-				/>
-				<SelectControl
-					label={ __( "Font Weight" ) }
-					value={ props.fontWeight }
-					onChange={ onFontWeightChange }
-					options={
-						font_weight_obj
-					}
-				/>
-			</div>
-		</PanelRow>
+		<div className="uag-typography-options">
+			<SelectControl
+				label={ __( "Font Family" ) }
+				value={ props.fontFamily.value }
+				onChange={ onFontfamilyChange }
+				options={ fonts	}
+				placeholder={ __( 'Font family' ) }
+			/>
+			<SelectControl
+				label={ __( "Font Weight" ) }
+				value={ props.fontWeight.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
+				options={
+					font_weight_obj
+				}
+			/>
+			<SelectControl
+				label={ __( "Font Subset" ) }
+				value={ props.fontSubset.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
+				options={
+					font_subset_obj
+				}
+			/>
+		</div>
 	);
 }
 
-export default FontTypographyOptions;
+export default TypographyOptions
