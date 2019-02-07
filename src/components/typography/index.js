@@ -112,14 +112,13 @@ function TypographyOptions( props ) {
 			) ) }
 		</ButtonGroup>
 	)
-	
+
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
 				value={ props.fontFamily.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
 				options={ fonts	}
-				maxMenuHeight={ 300 }
 				placeholder={ __( 'Font family' ) }
 			/>
 			<SelectControl
