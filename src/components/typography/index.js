@@ -46,6 +46,7 @@ function TypographyOptions( props ) {
 	];
 
 	let font_weight = '';
+	let font_subset = '';
 
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
@@ -55,6 +56,7 @@ function TypographyOptions( props ) {
 
 		if( k === props.fontFamily.value ) {
 			font_weight = googleFonts[k].weight;
+			font_subset = googleFonts[k].subset;
 		}
 	})
 
@@ -71,6 +73,16 @@ function TypographyOptions( props ) {
 			{ value: item, label: item }
 		);
 	});
+
+	const font_subset_obj = [];
+
+	if( typeof font_subset == 'object' ) {
+		font_subset.forEach(function(item) {
+			font_subset_obj.push(
+				{ value: item, label: item }
+			);
+		});
+	}
 
 	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } );
 
@@ -113,11 +125,10 @@ function TypographyOptions( props ) {
 		</ButtonGroup>
 	)
 
-	console.log( props );
-
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
+				label={ __( "Font Family" ) }
 				value={ props.fontFamily.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
 				options={ fonts	}
@@ -132,11 +143,11 @@ function TypographyOptions( props ) {
 				}
 			/>
 			<SelectControl
-				label={ __( "Font Family Subset" ) }
-				value={ props.fontWeight.value }
-				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
+				label={ __( "Font Subset" ) }
+				value={ props.fontSubset.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
 				options={
-					font_weight_obj
+					font_subset_obj
 				}
 			/>
 			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
