@@ -20,7 +20,7 @@
 }
 
 hr.uagb-editor__separator {
-	border-bottom: 1px solid #c9c9ca;
+	border-bottom: 1px solid #e2e4e7;
 }
 
 .uagb-inspect-tabs .components-tab-panel__tabs button.active-tab,
@@ -111,6 +111,110 @@ hr.uagb-editor__separator {
     border: 1px solid #e0e0e0;
     width: 100%;
 }
+
+.components-button-group.uagb-size-type-field {
+    margin: 0;
+    text-align: right;
+    display: block;
+    margin-bottom: -18px
+}
+
+.edit-post-sidebar h2.uagb-size-type-field-title {
+    font-size: 14px;
+    margin-bottom: 0;
+    color: #555d66;
+    margin-top: 30px
+}
+
+.uagb-size-type-field-tabs {
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs {
+	border-bottom: 0;
+	text-align: right;
+	margin-right: 40px;
+	margin-bottom: -20px;
+}
+
+.uagb-size-type-field-tabs.uagb-without-size-type .components-tab-panel__tabs {
+	margin-right: 0;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button svg {
+    width: 14px;
+    height: 14px
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button {
+    border: 0;
+    border-bottom: 0;
+    padding: 3px;
+    margin-bottom: 0;
+    outline: 0;
+    width: auto;
+    font-size: 8px;
+	background: transparent;
+    color: #999;
+    display: inline-block;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    margin-right: 3px;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab,
+.uagb-size-type-field-tabs .components-tab-panel__tabs button.active-tab:focus {
+	color: #23282d;
+    background-color: #e4e5e5;
+    box-shadow: none;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn {
+    background: transparent;
+    color: #777;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+    height: 18px;
+    line-height: 18px;
+    padding: 0 3px;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:first-child {
+	padding-left: 0;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:last-child {
+	padding-right: 0;
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary,
+.uagb-size-type-field button.components-button.uagb-size-btn.is-primary:focus:not(:disabled):not([aria-disabled=true]) {
+    color: #000;
+    text-decoration: underline;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    outline: none
+}
+
+.uagb-size-type-field button.components-button.uagb-size-btn:hover,.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled=true]) {
+    color: #000;
+    background: transparent;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: none;
+    outline: none
+}
+
+.uagb-size-type-field__common-tabs .components-tab-panel__tabs {
+	margin-bottom: -34px;
+}
+
 
 /*
  Fonticon picker css
@@ -3037,6 +3141,11 @@ i.fipicon-angle-right:before {
 i.fipicon-angle-left:before {
 	content: "\f341";
 	font-family: dashicons;
+}
+
+label.wp-block-uagb-blockquote__via-label svg {
+    fill: #6c7781;
+    vertical-align: middle;
 }
 .slick-arrow svg{
 	vertical-align: middle;

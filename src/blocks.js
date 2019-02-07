@@ -31,3 +31,4 @@ const { updateCategory } = wp.blocks
 updateCategory( "uagb", {
 	icon: UAGB_Block_Icons.logo,
 }, )
+

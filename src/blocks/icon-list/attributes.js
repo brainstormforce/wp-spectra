@@ -1,11 +1,12 @@
 /**
- * BLOCK: UAGB Icon List Attributes
+ * BLOCK: Icon List - Attributes
  */
+
 const ITEM_COUNT = 1
 
 const icons = []
 
-for (var i = 1; i <= ITEM_COUNT; i++) {
+for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	icons.push(
 		{
 			"label": "Label #" + i,
@@ -53,6 +54,16 @@ const attributes = {
 		type: "number",
 		default: 40
 	},
+	sizeType: {
+		type: "string",
+		default: "px"
+	},
+	sizeMobile: {
+		type: "number"
+	},
+	sizeTablet: {
+		type: "number"
+	},
 	bgSize: {
 		type: "number",
 		default: 0
@@ -66,6 +77,16 @@ const attributes = {
 		default: false
 	},
 	fontSize: {
+		type: "number"
+	},
+	fontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	fontSizeMobile: {
+		type: "number"
+	},
+	fontSizeTablet: {
 		type: "number"
 	},
 	icon_layout: {

@@ -1,7 +1,3 @@
-.notice:not(.uagb-notice) {
-	display: none;
-}
-
 .uagb-clear:before, .uagb-clear:after {
 	content: " ";
 	display: table;
@@ -202,7 +198,7 @@
 	animation: rotation 2s infinite linear;
 }
 
-.settings_page_uagb  #wpcontent{
+.settings_page_uag  #wpcontent{
 	padding: 0;
 }
 

@@ -183,9 +183,17 @@ class UAGB_Init_Blocks {
 
 		$blocks       = array();
 		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
+
 		if ( is_array( $saved_blocks ) ) {
+
 			foreach ( $saved_blocks as $slug => $data ) {
-				$_slug = 'uagb/' . $slug;
+
+				$_slug         = 'uagb/' . $slug;
+				$current_block = UAGB_Config::$block_attributes[ $_slug ];
+
+				if ( isset( $current_block['is_child'] ) && $current_block['is_child'] ) {
+					continue;
+				}
 
 				if ( isset( $saved_blocks[ $slug ] ) ) {
 					if ( 'disabled' === $saved_blocks[ $slug ] ) {
@@ -207,8 +215,10 @@ class UAGB_Init_Blocks {
 			'uagb-block-editor-js',
 			'uagb_blocks_info',
 			array(
-				'blocks'   => UAGB_Config::get_block_attributes(),
-				'category' => 'uagb',
+				'blocks'            => UAGB_Config::get_block_attributes(),
+				'category'          => 'uagb',
+				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
+				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 			)
 		);
 	} // End function editor_assets().

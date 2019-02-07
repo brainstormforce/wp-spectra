@@ -2,9 +2,9 @@
  * BLOCK: UAGB - Social Share Edit Class
  */
 
-// Import classes
 import classnames from "classnames"
 import times from "lodash/times"
+import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -22,14 +22,18 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	PanelColorSettings,
-	MediaUpload
+	MediaUpload,
+	ColorPalette
 } = wp.editor
 
 const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	Button
+	Button,
+	ButtonGroup,
+	TabPanel,
+	Dashicon
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -77,9 +81,15 @@ class UAGBSocialShare extends Component {
 			stack,
 			current_url,
 			social_layout,
-			size,
 			borderRadius,
-			bgSize
+			size,
+			sizeType,
+			sizeMobile,
+			sizeTablet,
+			bgSize,
+			bgSizeType,
+			bgSizeMobile,
+			bgSizeTablet,
 		} = attributes
 
 		const socialControls = ( index ) => {
@@ -179,31 +189,57 @@ class UAGBSocialShare extends Component {
 						</Fragment>
 					}
 					{ "icon" == socials[ index ].image_icon &&
-						<PanelColorSettings
-							title={ __( "Color Settings" ) }
-							colorSettings={ [
+						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2" activeClass="active-tab"
+							tabs={ [
 								{
-									value: socials[ index ].icon_color,
-									onChange:( value ) => this.saveSocials( { icon_color: value }, index ),
-									label: __( "Color" ),
+									name: "normal",
+									title: __( "Normal" ),
+									className: "uagb-normal-tab",
 								},
 								{
-									value: socials[ index ].icon_bg_color,
-									onChange:( value ) => this.saveSocials( { icon_bg_color: value }, index ),
-									label: __( "Background Color" ),
+									name: "hover",
+									title: __( "Hover" ),
+									className: "uagb-focus-tab",
 								},
-								{
-									value: socials[ index ].icon_hover_color,
-									onChange:( value ) => this.saveSocials( { icon_hover_color: value }, index ),
-									label: __( "Hover Color" ),
-								},
-								{
-									value: socials[ index ].icon_bg_hover_color,
-									onChange:( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ),
-									label: __( "Background Hover Color" ),
-								}
 							] }>
-						</PanelColorSettings>
+							{
+								( tabName ) => {
+									let tabout_icon
+									if( "normal" === tabName.name ) {
+										tabout_icon = <Fragment>
+											<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_color }} ></span></span></p>
+											<ColorPalette
+												value={ socials[ index ].icon_color }
+												onChange={ ( value ) => this.saveSocials( { icon_color: value }, index ) }
+												allowReset
+											/>
+											<p className="uagb-setting-label">{ __( "Icon Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_color }} ></span></span></p>
+											<ColorPalette
+												value={ socials[ index ].icon_bg_color }
+												onChange={ ( value ) => this.saveSocials( { icon_bg_color: value }, index ) }
+												allowReset
+											/>
+										</Fragment>
+									}else {
+										tabout_icon = <Fragment>
+											<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_hover_color }} ></span></span></p>
+											<ColorPalette
+												value={ socials[ index ].icon_hover_color }
+												onChange={ ( value ) => this.saveSocials( { icon_hover_color: value }, index ) }
+												allowReset
+											/>
+											<p className="uagb-setting-label">{ __( "Icon Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_hover_color }} ></span></span></p>
+											<ColorPalette
+												value={ socials[ index ].icon_bg_hover_color }
+												onChange={ ( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ) }
+												allowReset
+											/>
+										</Fragment>
+									}
+									return <div>{ tabout_icon }</div>
+								}
+							}
+						</TabPanel>
 					}
 				</PanelBody>
 			)
@@ -214,6 +250,45 @@ class UAGBSocialShare extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const sizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ sizeType === key }
+						aria-pressed={ sizeType === key }
+						onClick={ () => setAttributes( { sizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const bgSizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ bgSizeType === key }
+						aria-pressed={ bgSizeType === key }
+						onClick={ () => setAttributes( { bgSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
 
 		return (
 			<Fragment>
@@ -227,10 +302,7 @@ class UAGBSocialShare extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Social Icon Count" ) }
-						initialOpen={ true }
-					>
+					<PanelBody title={ __( "Social Icon Count" ) } initialOpen={ true }>
 						<RangeControl
 							label={ __( "Number of Social Icons" ) }
 							value={ social_count }
@@ -265,10 +337,7 @@ class UAGBSocialShare extends Component {
 						/>
 					</PanelBody>
 					{ times( social_count, n => socialControls( n ) ) }
-					<PanelBody
-						title={ __( "General" ) }
-						initialOpen={ false }
-					>
+					<PanelBody title={ __( "General" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ social_layout }
@@ -293,22 +362,155 @@ class UAGBSocialShare extends Component {
 							/>
 						}
 						<hr className="uagb-editor__separator" />
-						<RangeControl
-							label={ __( "Size" ) }
-							value={ size }
-							onChange={ ( value ) => setAttributes( { size: value } ) }
-							min={ 0 }
-							max={ 500 }
-							initialPosition={40}
-						/>
-						<RangeControl
-							label={ __( "Background Size" ) }
-							value={ bgSize }
-							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
-							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
-							min={ 0 }
-							max={ 500 }
-						/>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeMobile }
+													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeTablet }
+													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ size }
+													onChange={ ( value ) => setAttributes( { size: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{bgSizeTypesControls}
+												<RangeControl
+													label={ __( "Background Size" ) }
+													value={ bgSizeMobile }
+													onChange={ ( value ) => setAttributes( { bgSizeMobile: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{bgSizeTypesControls}
+												<RangeControl
+													label={ __( "Background Size" ) }
+													value={ bgSizeTablet }
+													onChange={ ( value ) => setAttributes( { bgSizeTablet: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{bgSizeTypesControls}
+												<RangeControl
+													label={ __( "Background Size" ) }
+													value={ bgSize }
+													onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+													allowReset
+													min={ 0 }
+													max={ 500 }
+													help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 						<RangeControl
 							label={ __( "Circular Size" ) }
 							value={ borderRadius }
@@ -339,7 +541,7 @@ class UAGBSocialShare extends Component {
 								if ( social_count <= index ) {
 									return
 								}
-								
+
 								let image_icon_html = ""
 
 								if ( social.image_icon == "icon" ) {

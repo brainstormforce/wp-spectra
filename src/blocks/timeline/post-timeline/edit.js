@@ -3,6 +3,7 @@
  */
 import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
+import map from "lodash/map"
 import classnames from "classnames"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -41,6 +42,9 @@ const {
 	ToggleControl,
 	TabPanel,
 	TextControl,
+	ButtonGroup,
+	Button,
+	Dashicon,
 } = wp.components
 
 const {
@@ -80,11 +84,17 @@ class UAGBTimeline extends Component {
 			borderFocus,
 			headingTag,
 			headFontSize,
+			headFontSizeType,
+			headFontSizeMobile,
+			headFontSizeTablet,
 			timelineItem,
 			postNumber,
 			timelinAlignment,
 			arrowlinAlignment,
 			subHeadFontSize,
+			subHeadFontSizeType,
+			subHeadFontSizeMobile,
+			subHeadFontSizeTablet,
 			verticalSpace,
 			horizontalSpace,
 			headSpace,
@@ -115,8 +125,17 @@ class UAGBTimeline extends Component {
 			dateColor,
 			ctaColor,
 			dateFontsize,
+			dateFontsizeType,
+			dateFontsizeMobile,
+			dateFontsizeTablet,
 			authorFontSize,
+			authorFontSizeType,
+			authorFontSizeMobile,
+			authorFontSizeTablet,
 			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeMobile,
+			ctaFontSizeTablet,
 			iconSize,
 			exerptLength,
 			borderRadius,
@@ -146,6 +165,96 @@ class UAGBTimeline extends Component {
 			renderFunc: renderSVG,
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const dateTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ dateFontsizeType === key }
+						aria-pressed={ dateFontsizeType === key }
+						onClick={ () => setAttributes( { dateFontsizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const headingTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ headFontSizeType === key }
+						aria-pressed={ headFontSizeType === key }
+						onClick={ () => setAttributes( { headFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const subHeadTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ subHeadFontSizeType === key }
+						aria-pressed={ subHeadFontSizeType === key }
+						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const authorTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ authorFontSize === key }
+						aria-pressed={ authorFontSize === key }
+						onClick={ () => setAttributes( { authorFontSize: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const ctaTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ ctaFontSize === key }
+						aria-pressed={ ctaFontSize === key }
+						onClick={ () => setAttributes( { ctaFontSize: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
 
 		const iconColorSettings = (
 			<PanelColorSettings
@@ -424,61 +533,393 @@ class UAGBTimeline extends Component {
 							{ value: "h6", label: __( "H6" ) },
 						] }
 					/>
-					<RangeControl
-						label={ __( "Heading Font Size" ) }
-						value={ headFontSize }
-						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Content Font Size" ) }
-						value={ subHeadFontSize }
-						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{headingTypesControls}
+											<RangeControl
+												label={ __( "Heading Font Size" ) }
+												value={ headFontSize }
+												onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{subHeadTypesControls}
+											<RangeControl
+												label={ __( "Content Font Size" ) }
+												value={ subHeadFontSize }
+												onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+												min={ 0 }
+												max={ 50 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 
 					{ displayPostDate &&
-                        <RangeControl
-                        	label={ __( "Date Font Size" ) }
-                        	value={ dateFontsize }
-                        	onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-                        	min={ 1 }
-                        	max={ 50 }
-                        	initialPosition={16}
-                        	beforeIcon="editor-textcolor"
-                        	allowReset
-                        />
+                        <TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+                        	tabs={ [
+                        		{
+                        			name: "desktop",
+                        			title: <Dashicon icon="desktop" />,
+                        			className: "uagb-desktop-tab uagb-responsive-tabs",
+                        		},
+                        		{
+                        			name: "tablet",
+                        			title: <Dashicon icon="tablet" />,
+                        			className: "uagb-tablet-tab uagb-responsive-tabs",
+                        		},
+                        		{
+                        			name: "mobile",
+                        			title: <Dashicon icon="smartphone" />,
+                        			className: "uagb-mobile-tab uagb-responsive-tabs",
+                        		},
+                        	] }>
+                        	{
+                        		( tab ) => {
+                        			let tabout
+
+                        			if ( "mobile" === tab.name ) {
+                        				tabout = (
+                        					<Fragment>
+                        						{dateTypesControls}
+                        						<RangeControl
+                        							label={ __( "Date Font Size" ) }
+                        							value={ dateFontsizeMobile }
+                        							onChange={ ( value ) => setAttributes( { dateFontsizeMobile: value } ) }
+                        							min={ 0 }
+                        							max={ 50 }
+                        							beforeIcon="editor-textcolor"
+                        							allowReset
+                        							initialPosition={16}
+                        						/>
+                        					</Fragment>
+                        				)
+                        			} else if ( "tablet" === tab.name ) {
+                        				tabout = (
+                        					<Fragment>
+                        						{dateTypesControls}
+                        						<RangeControl
+                        							label={ __( "Date Font Size" ) }
+                        							value={ dateFontsizeTablet }
+                        							onChange={ ( value ) => setAttributes( { dateFontsizeTablet: value } ) }
+                        							min={ 0 }
+                        							max={ 50 }
+                        							beforeIcon="editor-textcolor"
+                        							allowReset
+                        							initialPosition={16}
+                        						/>
+                        					</Fragment>
+                        				)
+                        			} else {
+                        				tabout = (
+                        					<Fragment>
+                        						{dateTypesControls}
+                        						<RangeControl
+                        							label={ __( "Date Font Size" ) }
+                        							value={ dateFontsize }
+                        							onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
+                        							min={ 0 }
+                        							max={ 50 }
+                        							beforeIcon="editor-textcolor"
+                        							allowReset
+                        							initialPosition={16}
+                        						/>
+                        					</Fragment>
+                        				)
+                        			}
+
+                        			return <div>{ tabout }</div>
+                        		}
+                        	}
+                        </TabPanel>
 					}
 
-					{ displayPostAuthor && <RangeControl
-						label={ __( "Author Font Size" ) }
-						value={ authorFontSize }
-						onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					{ displayPostAuthor &&
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{authorTypesControls}
+												<RangeControl
+													label={ __( "Author Font Size" ) }
+													value={ authorFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { authorFontSizeMobile: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{authorTypesControls}
+												<RangeControl
+													label={ __( "Author Font Size" ) }
+													value={ authorFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { authorFontSizeTablet: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{authorTypesControls}
+												<RangeControl
+													label={ __( "Author Font Size" ) }
+													value={ authorFontSize }
+													onChange={ ( value ) => setAttributes( { authorFontSize: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 					}
-					{ displayPostLink && <RangeControl
-						label={ __( "CTA Font Size" ) }
-						value={ ctaFontSize }
-						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-						min={ 10 }
-						max={ 50 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					{ displayPostLink &&
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "CTA Font Size" ) }
+													value={ ctaFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "CTA Font Size" ) }
+													value={ ctaFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{ctaTypesControls}
+												<RangeControl
+													label={ __( "CTA Font Size" ) }
+													value={ ctaFontSize }
+													onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+													min={ 0 }
+													max={ 50 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 					}
 					<RangeControl
 						label={ __( "Rounded Corners" ) }
@@ -609,7 +1050,6 @@ class UAGBTimeline extends Component {
 			</InspectorControls>
 		)
 
-		var my_block_id = "uagb-ctm-"+this.props.clientId
 		var cta_enable = ""
 
 		if(displayPostLink){
@@ -632,7 +1072,7 @@ class UAGBTimeline extends Component {
 					className,
 					"uagb-timeline__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-ctm-${ this.props.clientId }` } >
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						cta_enable,

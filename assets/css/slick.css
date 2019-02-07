@@ -99,9 +99,6 @@
 	display: none
 }
 
-
-/*# sourceMappingURL=slick.min.css.map */
-
 .uagb-slick-carousel {
 	padding: 45px;
 }
@@ -237,3 +234,8 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+@media only screen and (max-width: 976px) {
+	.uagb-slick-carousel {
+		padding: 0;
+	}
+}

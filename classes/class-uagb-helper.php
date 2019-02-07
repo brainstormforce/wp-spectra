@@ -12,7 +12,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
-
 		/**
 		 * Member Variable
 		 *
@@ -106,14 +105,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Parse CSS into correct CSS syntax.
 		 *
-		 * @param string $query Media Query string.
 		 * @param array  $selectors The block selectors.
 		 * @param string $id The selector ID.
+		 * @param string $type Media Query type mobile/tablet.
 		 * @since 0.0.1
 		 */
-		public static function generate_responsive_css( $query, $selectors, $id ) {
+		public static function generate_responsive_css( $selectors, $id, $type ) {
 
-			$css  = $query . ' { ';
+			$breakpoint = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
+
+			$css  = '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
 			$css .= self::generate_css( $selectors, $id );
 			$css .= ' } ';
 
@@ -161,6 +162,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/buttons':
 					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
+					break;
+
+				case 'uagb/blockquote':
+					$css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
 					break;
 
 				case 'uagb/testimonial':
@@ -222,7 +227,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( isset( $block['innerBlocks'] ) ) {
 				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-					$css .= $this->get_block_css( $inner_block );
+					if ( 'core/block' == $inner_block['blockName'] ) {
+						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = $this->parse( $content );
+
+							$this->get_stylesheet( $reusable_blocks );
+						}
+					} else {
+						// Get CSS for the Block.
+						$css .= $this->get_block_css( $inner_block );
+					}
 				}
 			}
 
@@ -263,6 +281,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
 					break;
 
+				case 'uagb/blockquote':
+					$js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
+					break;
+
 				case 'uagb/social-share':
 					$js .= UAGB_Block_Helper::get_social_share_js( $block_id );
 					break;
@@ -273,8 +295,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( isset( $block['innerBlocks'] ) ) {
+
 				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-					$js .= $this->get_block_js( $inner_block );
+
+					if ( 'core/block' == $inner_block['blockName'] ) {
+						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = $this->parse( $content );
+
+							$this->get_scripts( $reusable_blocks );
+						}
+					} else {
+						// Get JS for the Block.
+						$js .= $this->get_block_js( $inner_block );
+					}
 				}
 			}
 
@@ -422,7 +459,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_scripts( $reusable_blocks );
 						}
 					} else {
-						// Get CSS for the Block.
+						// Get JS for the Block.
 						$this->get_block_js( $block );
 					}
 				}
@@ -454,6 +491,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						'background'   => '',
 						'hColor'       => '#333',
 						'hBackground'  => '',
+						'sizeType'     => 'px',
+						'sizeMobile'   => '',
+						'sizeTablet'   => '',
 					)
 				);
 			}
@@ -609,6 +649,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
 			return $htm;
+		}
+
+		/**
+		 * Returns Query.
+		 *
+		 * @param array  $attributes The block attributes.
+		 * @param string $block_type The Block Type.
+		 * @since 1.8.2
+		 */
+		public static function get_query( $attributes, $block_type ) {
+
+			// Block type is grid/masonry/carousel/timeline.
+			$query_args = array(
+				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
+				'post_status'         => 'publish',
+				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
+				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
+				'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
+				'ignore_sticky_posts' => 1,
+			);
+
+			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
+
+			return new WP_Query( $query_args );
 		}
 	}
 

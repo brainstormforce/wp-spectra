@@ -120,7 +120,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 		<div class="postbox-container uagb-sidebar" id="postbox-container-1">
 			<div id="side-sortables">
 				<?php if ( ! defined( 'ASTRA_THEME_VERSION' ) ) { ?>
-				<div class="postbox">
+				<div class="postbox uagb-astra-sidebar">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-admin-customizer"></span>
 						<span><?php esc_html_e( 'Free Theme for Gutenberg', 'ultimate-addons-for-gutenberg' ); ?></span>
@@ -132,7 +132,15 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						<p><strong><?php esc_html_e( 'Faster Performance - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Easy Customization - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Pixel Perfect Design - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Astra reduces your design time by giving you pixel-perfect FREE ready-to-use websites demos within a huge library of starter sites.', 'ultimate-addons-for-gutenberg' ); ?></p>
-						<a class="button ast-sites-inactive" href="https://wpastra.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target="_blank"><?php esc_html_e( 'Install Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>					<div>
+						<?php
+						$theme = wp_get_theme();
+						if ( ! file_exists( get_theme_root() . '/astra/functions.php' ) ) {
+							?>
+						<a class="button button-primary ast-sites-inactive uag-install-theme" href="#" data-slug="astra"><?php esc_html_e( 'Install Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
+						<?php } elseif ( 'Astra' !== $theme->name || 'Astra' !== $theme->parent_theme && file_exists( get_theme_root() . '/astra/functions.php' ) ) { ?> 
+							<a class="button button-primary ast-sites-inactive uag-activate-theme" href="#" data-slug="astra" data-init="astra/astra.php"><?php esc_html_e( 'Activate Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
+						<?php } ?>
+						<div>
 						</div>
 					</div>
 				</div>

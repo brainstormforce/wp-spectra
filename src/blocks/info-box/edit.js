@@ -1,7 +1,9 @@
-// Import block dependencies and components.
-import classnames from "classnames"
+/**
+ * BLOCK: Info Box - Edit Class
+ */
 
-// Import icon.
+import classnames from "classnames"
+import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import Prefix from "./components/Prefix"
@@ -38,6 +40,8 @@ const {
 	TextControl,
 	BaseControl,
 	Button,
+	ButtonGroup,
+	Dashicon,
 	withNotices,
 } = wp.components
 
@@ -53,10 +57,8 @@ const {
 	withViewportMatch
 } = wp.viewport
 
-// Extend component
 const { Component, Fragment } = wp.element
 
-// Image sizes.
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
 	{ value: "medium", label: __( "Medium" ) },
@@ -108,7 +110,7 @@ class UAGBinfoBox extends Component {
 	getImageSize(sizes) {
 		var size_arr = []
 		$.each(sizes, function (index, item) {
-		  var name = index	
+		  var name = index
 		  	var p = { "value" : name, "label": name }
 		  	size_arr.push(p)
 		})
@@ -151,20 +153,24 @@ class UAGBinfoBox extends Component {
 
 		// Setup the attributes.
 		const {
-			prefixTitle,
-			infoBoxTitle,
-			headingDesc,
 			headingAlign,
 			headingColor,
 			subHeadingColor,
 			prefixColor,
-			prefixTag,
 			prefixFontSize,
+			prefixFontSizeType,
+			prefixFontSizeTablet,
+			prefixFontSizeMobile,
 			headingTag,
 			headFontSize,
+			headFontSizeType,
+			headFontSizeTablet,
+			headFontSizeMobile,
 			subHeadFontSize,
-			separatorWidth,
-			separatorHeight,
+			subHeadFontSizeType,
+			subHeadFontSizeTablet,
+			subHeadFontSizeMobile,
+			separatorWidthType,
 			seperatorSpace,
 			headSpace,
 			separatorSpace,
@@ -191,6 +197,9 @@ class UAGBinfoBox extends Component {
 			ctaIconSpace,
 			ctaLinkColor,
 			ctaFontSize,
+			ctaFontSizeType,
+			ctaFontSizeMobile,
+			ctaFontSizeTablet,
 			ctaBtnLinkColor,
 			ctaLinkHoverColor,
 			ctaBgHoverColor,
@@ -246,7 +255,78 @@ class UAGBinfoBox extends Component {
 			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 
-		const my_block_id = "uagb-infobox-"+this.props.clientId
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const prefixsizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ prefixFontSizeType === key }
+						aria-pressed={ prefixFontSizeType === key }
+						onClick={ () => setAttributes( { prefixFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const headsizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ headFontSizeType === key }
+						aria-pressed={ headFontSizeType === key }
+						onClick={ () => setAttributes( { headFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const descsizeTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ subHeadFontSizeType === key }
+						aria-pressed={ subHeadFontSizeType === key }
+						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const ctaTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ ctaFontSizeType === key }
+						aria-pressed={ ctaFontSizeType === key }
+						onClick={ () => setAttributes( { ctaFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
 
 		// Settings for icon.
 		const iconControls = (
@@ -333,12 +413,16 @@ class UAGBinfoBox extends Component {
 						beforeIcon=""
 						allowReset
 					/>
+					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ separatorWidthType === "px" } aria-pressed={ separatorWidthType === "px" } onClick={ () => setAttributes( { separatorWidthType: "px" } ) }>{ "px" }</Button>
+						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ separatorWidthType === "%" } aria-pressed={ separatorWidthType === "%" } onClick={ () => setAttributes( { separatorWidthType: "%" } ) }>{ "%" }</Button>
+					</ButtonGroup>
 					<RangeControl
-						label={ __( "Width (%)" ) }
+						label={ __( "Width" ) }
 						value={ seperatorWidth }
 						onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ ( "%" == separatorWidthType ) ? 100 : 500 }
 						beforeIcon=""
 						allowReset
 					/>
@@ -375,16 +459,82 @@ class UAGBinfoBox extends Component {
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					<RangeControl
-						label={ __( "Text Font Size" ) }
-						value={ ctaFontSize }
-						onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-						min={ 0 }
-						max={ 50 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{ctaTypesControls}
+											<RangeControl
+												label={ __( "Text Font Size" ) }
+												value={ ctaFontSize }
+												onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 0 }
+												max={ 50 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -436,21 +586,21 @@ class UAGBinfoBox extends Component {
 					<Fragment>
 						<h2>{ __( "Button Padding" ) }</h2>
 						<RangeControl
-							label={ __( "Vertical" ) }
+							label={ UAGB_Block_Icons.vertical_spacing }
 							value={ ctaBtnVertPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon=""
+							className={ "uagb-margin-control" }
 							allowReset
 						/>
 						<RangeControl
-							label={ __( "Horizontal" ) }
+							label={ UAGB_Block_Icons.horizontal_spacing }
 							value={ ctaBtnHrPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
 							min={ 0 }
 							max={ 50 }
-							beforeIcon=""
+							className={ "uagb-margin-control" }
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />
@@ -630,25 +780,92 @@ class UAGBinfoBox extends Component {
 					checked={ showPrefix }
 					onChange={ ( value ) => setAttributes( { showPrefix: ! showPrefix } ) }
 				/>
-				{ showPrefix && <Fragment>
-					<RangeControl
-						label={ __( "Prefix Font Size" ) }
-						value={ prefixFontSize }
-						onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
-					<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+				{ showPrefix &&
+					<Fragment>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{prefixsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ prefixFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { prefixFontSizeMobile: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 10 }
+													max={ 200 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{prefixsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ prefixFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { prefixFontSizeTablet: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 10 }
+													max={ 200 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{prefixsizeTypesControls}
+												<RangeControl
+													label={ __( "Font Size" ) }
+													value={ prefixFontSize }
+													onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+													beforeIcon="editor-textcolor"
+													allowReset
+													min={ 10 }
+													max={ 200 }
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 					    <ColorPalette
 					        value={ prefixColor }
 					        onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
 					        allowReset
 					    />
 					  	<hr className="uagb-editor__separator" />
-				</Fragment>
+					</Fragment>
 				}
 
 				<ToggleControl
@@ -670,16 +887,82 @@ class UAGBinfoBox extends Component {
 							{ value: "h6", label: __( "H6" ) },
 						] }
 					/>
-					<RangeControl
-						label={ __( "Title Font Size" ) }
-						value={ headFontSize }
-						onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={30}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ headFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ headFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{headsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ headFontSize }
+												onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={30}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 				    <p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 				    <ColorPalette
 				        value={ headingColor }
@@ -695,16 +978,82 @@ class UAGBinfoBox extends Component {
 					onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
 				/>
 				{ showDesc && <Fragment>
-					<RangeControl
-						label={ __( "Description Font Size" ) }
-						value={ subHeadFontSize }
-						onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-						min={ 10 }
-						max={ 200 }
-						initialPosition={16}
-						beforeIcon="editor-textcolor"
-						allowReset
-					/>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ subHeadFontSizeMobile }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											{descsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ subHeadFontSizeTablet }
+												onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											{descsizeTypesControls}
+											<RangeControl
+												label={ __( "Font Size" ) }
+												value={ subHeadFontSize }
+												onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
+												beforeIcon="editor-textcolor"
+												allowReset
+												min={ 10 }
+												max={ 200 }
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 					    <ColorPalette
 					        value={ subHeadingColor }
@@ -1023,7 +1372,7 @@ class UAGBinfoBox extends Component {
 					className,
 					"uagb-infobox__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-infobox-${ this.props.clientId }` }
 				>
 					{ ( ctaType == "all") &&
 						<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>

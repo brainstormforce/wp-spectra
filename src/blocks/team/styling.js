@@ -1,8 +1,8 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
+
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
@@ -13,8 +13,21 @@ function styling( props ) {
 		prefixColor,
 		descColor,
 		titleFontSize,
+		titleFontSizeType,
+		titleFontSizeMobile,
+		titleFontSizeTablet,
 		prefixFontSize,
+		prefixFontSizeType,
+		prefixFontSizeMobile,
+		prefixFontSizeTablet,
 		descFontSize,
+		descFontSizeType,
+		descFontSizeMobile,
+		descFontSizeTablet,
+		socialFontSize,
+		socialFontSizeType,
+		socialFontSizeMobile,
+		socialFontSizeTablet,
 		imgStyle,
 		imgAlign,
 		imgSize,
@@ -30,17 +43,19 @@ function styling( props ) {
 		socialColor,
 		socialHoverColor,
 		socialSpace,
-		socialFontSize
 	} = props.attributes
+
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	var selectors = {
 		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
-			"font-size": descFontSize + "px",
+			"font-size": descFontSize + descFontSizeType,
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
 		},
 		" .uagb-team__prefix": {
-			"font-size": prefixFontSize + "px",
+			"font-size": prefixFontSize + prefixFontSizeType,
 			"color": prefixColor,
 		},
 		" .uagb-team__desc-wrap": {
@@ -48,15 +63,15 @@ function styling( props ) {
 		},
 		" .uagb-team__social-icon a": {
 			"color": socialColor,
-			"font-size": socialFontSize + "px",
-			"width": socialFontSize + "px",
-			"height": socialFontSize + "px",
-			"line-height": socialFontSize + "px",
+			"font-size": socialFontSize + socialFontSizeType,
+			"width": socialFontSize + socialFontSizeType,
+			"height": socialFontSize + socialFontSizeType,
+			"line-height": socialFontSize + socialFontSizeType,
 		},
 		" .uagb-team__social-icon svg": {
 			"fill": socialColor,
-			"width": socialFontSize + "px",
-			"height": socialFontSize + "px",
+			"width": socialFontSize + socialFontSizeType,
+			"height": socialFontSize + socialFontSizeType,
 		},
 		" .uagb-team__social-icon:hover a": {
 			"color": socialHoverColor,
@@ -111,29 +126,65 @@ function styling( props ) {
 	}
 
 	selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
-		"font-size": titleFontSize + "px",
+		"font-size": titleFontSize + titleFontSizeType,
 		"color": titleColor,
 		"margin-bottom": titleSpace + "px",
 	}
 
-	var styling_css = ""
-
-	for( var i in selectors ) {
-
-		styling_css += `#uagb-team-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
+	mobile_selectors = {
+		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+			"font-size": descFontSizeMobile + descFontSizeType,
+		},
+		" .uagb-team__prefix": {
+			"font-size": prefixFontSizeMobile + prefixFontSizeType,
+		},
+		" .uagb-team__social-icon a": {
+			"font-size": socialFontSizeMobile + socialFontSizeType,
+			"width": socialFontSizeMobile + socialFontSizeType,
+			"height": socialFontSizeMobile + socialFontSizeType,
+			"line-height": socialFontSizeMobile + socialFontSizeType,
+		},
+		" .uagb-team__social-icon svg": {
+			"width": socialFontSizeMobile + socialFontSizeType,
+			"height": socialFontSizeMobile + socialFontSizeType,
+		},
 	}
+
+	tablet_selectors = {
+		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+			"font-size": descFontSizeTablet + descFontSizeType,
+		},
+		" .uagb-team__prefix": {
+			"font-size": prefixFontSizeTablet + prefixFontSizeType,
+		},
+		" .uagb-team__social-icon a": {
+			"font-size": socialFontSizeTablet + socialFontSizeType,
+			"width": socialFontSizeTablet + socialFontSizeType,
+			"height": socialFontSizeTablet + socialFontSizeType,
+			"line-height": socialFontSizeTablet + socialFontSizeType,
+		},
+		" .uagb-team__social-icon svg": {
+			"width": socialFontSizeTablet + socialFontSizeType,
+			"height": socialFontSizeTablet + socialFontSizeType,
+		},
+	}
+
+	mobile_selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
+		"font-size": titleFontSizeMobile + titleFontSizeType,
+	}
+
+	tablet_selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
+		"font-size": titleFontSizeTablet + titleFontSizeType,
+	}
+
+	var styling_css = ""
+	var id = `#uagb-team-${ props.clientId }`
+
+	styling_css = generateCSS( selectors, id )
+
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 }
