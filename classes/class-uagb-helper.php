@@ -91,7 +91,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			$link    = '';
 			$subsets = array();
-	 		foreach ( self::$gfonts as $key => $gfont_values ) {
+			foreach ( self::$gfonts as $key => $gfont_values ) {
 				if ( ! empty( $link ) ) {
 					$link .= '%7C'; // Append a new font to the string.
 				}
@@ -286,29 +286,28 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
-		 * @param array  $attr the blocks attr.
-		 * @param string $unique_id the blocks attr ID.
+		 * @param array $attr the blocks attr.
 		 */
 		public function blocks_advanced_heading_gfont( $attr ) {
 
 			if ( isset( $attr['headFontFamily'] ) && $attr['headFontFamily'] ) {
 				// Check if the font has been added yet.
-				$add_font = array(
-					'fontfamily' => $attr['headFontFamily'],
+				$add_font                                = array(
+					'fontfamily'   => $attr['headFontFamily'],
 					'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
-					'fontsubsets' => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
+					'fontsubsets'  => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
 				);
-				self::$gfonts[$attr['headFontFamily']] = $add_font;
+				self::$gfonts[ $attr['headFontFamily'] ] = $add_font;
 			}
 
 			if ( isset( $attr['subHeadFontFamily'] ) && $attr['subHeadFontFamily'] ) {
 				// Check if the font has been added yet.
-				$add_font = array(
-					'fontfamily' => $attr['subHeadFontFamily'],
+				$add_font                                   = array(
+					'fontfamily'   => $attr['subHeadFontFamily'],
 					'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
-					'fontsubsets' => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
+					'fontsubsets'  => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
 				);
-				self::$gfonts[$attr['subHeadFontFamily']] = $add_font;
+				self::$gfonts[ $attr['subHeadFontFamily'] ] = $add_font;
 			}
 		}
 
