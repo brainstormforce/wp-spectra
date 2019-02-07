@@ -1,5 +1,5 @@
-if ( googlefonts === undefined ) {
-	var googlefonts = [];
+if ( ktgooglefonts === undefined ) {
+	var ktgooglefonts = [];
 }
 const {
 	Component,
@@ -14,44 +14,39 @@ const statuses = {
 
 const noop = () => {};
 
-class WebfontLoader extends Component {
+class KTWebfontLoader extends Component {
+	state = {
+		status: undefined,
+	};
 
-	constructor(props) {
-	    super(props);
+	addFont = ( font ) => {
+		if ( ! ktgooglefonts.includes( font ) ) {
+			ktgooglefonts.push( font );
+		}
+	};
 
-	    this.state = {
-			status: undefined,
-	    };
+	handleLoading = () => {
+		this.setState( { status: statuses.loading } );
+	};
 
-		this.handleLoading = () => {
-			this.setState( { status: statuses.loading } );
-		};
-		
-		this.addFont = ( font ) => {
-			if ( ! googlefonts.includes( font ) ) {
-				googlefonts.push( font );
-			}
-		};
-		
-		this.handleActive = () => {
-			this.setState( { status: statuses.active } );
-		};
+	handleActive = () => {
+		this.setState( { status: statuses.active } );
+	};
 
-		this.handleInactive = () => {
-			this.setState( { status: statuses.inactive } );
-		};
+	handleInactive = () => {
+		this.setState( { status: statuses.inactive } );
+	};
 
-		this.loadFonts = () => {
-			//if ( ! this.state.fonts.includes( this.props.config.google.families[ 0 ] ) ) {
-			if ( ! googlefonts.includes( this.props.config.google.families[ 0 ] ) ) {
-				WebFont.load( {
-					...this.props.config,
-					loading: this.handleLoading,
-					active: this.handleActive,
-					inactive: this.handleInactive,
-				} );
-				this.addFont( this.props.config.google.families[ 0 ] );
-			}
+	loadFonts = () => {
+		//if ( ! this.state.fonts.includes( this.props.config.google.families[ 0 ] ) ) {
+		if ( ! ktgooglefonts.includes( this.props.config.google.families[ 0 ] ) ) {
+			WebFont.load( {
+				...this.props.config,
+				loading: this.handleLoading,
+				active: this.handleActive,
+				inactive: this.handleInactive,
+			} );
+			this.addFont( this.props.config.google.families[ 0 ] );
 		}
 	}
 
@@ -76,14 +71,14 @@ class WebfontLoader extends Component {
 	}
 }
 
-WebfontLoader.propTypes = {
+KTWebfontLoader.propTypes = {
 	config: PropTypes.object.isRequired,
 	children: PropTypes.element,
 	onStatus: PropTypes.func.isRequired,
 };
 
-WebfontLoader.defaultProps = {
+KTWebfontLoader.defaultProps = {
 	onStatus: noop,
 };
 
-export default WebfontLoader;
+export default KTWebfontLoader;

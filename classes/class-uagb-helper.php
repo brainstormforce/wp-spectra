@@ -291,7 +291,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function blocks_advanced_heading_gfont( $attr ) {
 
 			if ( ! array_key_exists( $attr['headFontFamily'], self::$gfonts ) ) {
-				$add_font = array(
+				$add_font                                = array(
 					'fontfamily'   => $attr['headFontFamily'],
 					'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
 					'fontsubsets'  => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
@@ -311,7 +311,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( ! array_key_exists( $attr['subHeadFontFamily'], self::$gfonts ) ) {
-				$add_font = array(
+				$add_font                                   = array(
 					'fontfamily'   => $attr['subHeadFontFamily'],
 					'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
 					'fontsubsets'  => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
