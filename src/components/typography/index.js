@@ -125,12 +125,40 @@ function TypographyOptions( props ) {
 		</ButtonGroup>
 	)
 
+	const onFontfamilyChange = ( value ) => {
+		props.setAttributes( { [ props.fontFamily.label ]: value } )
+		onFontChange( props.fontWeight, font_weight_obj );
+		onFontChange( props.fontSubset, font_weight_obj );
+	}
+
+	const onFontChange = ( font_arr, font_weight_obj ) => {
+	
+		let font_flag;
+		let new_value;
+
+		if( typeof font_weight_obj == 'object' ) {
+
+			font_weight_obj.forEach(function(item) {
+				if( font_arr.value == item.value ) {
+					font_flag = false;
+				} else {
+					new_value  = item.value;
+					font_flag = true;
+				}
+			});
+		}
+
+		if( font_flag == true ) {
+			props.setAttributes( { [ font_arr.label ]: new_value } )
+		}
+	}
+
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
 				label={ __( "Font Family" ) }
 				value={ props.fontFamily.value }
-				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
+				onChange={ onFontfamilyChange }
 				options={ fonts	}
 				placeholder={ __( 'Font family' ) }
 			/>
