@@ -45,7 +45,7 @@ function styling( props ) {
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
-
+	
 	var selectors = {
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,

@@ -48,7 +48,7 @@ const attributes = {
 	},
 	headFontFamily: {
 		type: "string",
-		default: "Arial",
+		default: "",
 	},
 	headFontWeight: {
 		type: "string",
@@ -79,8 +79,9 @@ const attributes = {
 	headLineHeightMobile: {
 		type: "number",
 	},
-	subHeadFontfamily: {
+	subHeadFontFamily: {
 		type: "string",
+		default: "",
 	},
 	subHeadFontWeight: {
 		type: "string",

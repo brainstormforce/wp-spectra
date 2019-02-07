@@ -27,6 +27,7 @@ const { Component, Fragment } = wp.element
 import TypographyOptionsInlineStyles from './inline-styles';
 import map from "lodash/map"
 import googleFonts from './fonts';
+import Select from 'react-select';
 import './editor.scss';
 
 // Export for ease of importing in individual blocks.
@@ -37,11 +38,11 @@ export {
 function TypographyOptions( props ) {
 
 	const fonts = [
-		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
-		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ] },
+		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
+		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
 	];
 
 	let font_weight = '';
@@ -49,10 +50,10 @@ function TypographyOptions( props ) {
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
 		fonts.push(
-			{ value: k, label: k, weight: googleFonts[k] }
+			{ value: k, label: k, weight: googleFonts[k].weight }
 		);
 
-		if( k === props.fontFamily ) {
+		if( k === props.fontFamily.value ) {
 			font_weight = googleFonts[k].weight;
 		}
 	})
@@ -111,16 +112,17 @@ function TypographyOptions( props ) {
 			) ) }
 		</ButtonGroup>
 	)
-	
+
+	console.log( props.fontFamily );
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
-				label={ __( "Font Family" ) }
 				value={ props.fontFamily.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
-				options={
-					fonts
-				}
+				options={ fonts	}
+				isMulti={ false }
+				maxMenuHeight={ 300 }
+				placeholder={ __( 'Font family' ) }
 			/>
 			<SelectControl
 				label={ __( "Font Weight" ) }
@@ -291,8 +293,6 @@ export default withSelect( ( select, props ) => {
 	const { setAttributes, setState, fontFamily } = props
 
 	let json_data = ''
-
-	console.log( uagb_blocks_info );
 
 	if ( fontFamily.value ) {
 

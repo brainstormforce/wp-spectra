@@ -56,7 +56,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headLineHeightType'      	=> 'px',
 							'headLineHeightTablet'    	=> '',
 							'headLineHeightMobile'    	=> '',
-							'subHeadFontfamily'         => '',
+							'subHeadFontFamily'         => '',
 							'subHeadFontWeight'         => '',
 							'subHeadFontSize'       	=> '',
 							'subHeadFontSizeType'   	=> 'px',

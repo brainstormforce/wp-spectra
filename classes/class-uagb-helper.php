@@ -45,6 +45,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $page_blocks;
 
 		/**
+		 * Google fonts to enqueue
+		 *
+		 * @var array
+		 */
+		public static $gfonts = array();
+
+		/**
 		 *  Initiator
 		 *
 		 * @since 0.0.1
@@ -67,7 +74,45 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = UAGB_Config::get_block_attributes();
 
 			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
+			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
+		}
+
+		/**
+		 * Load the front end Google Fonts
+		 */
+		public function frontend_gfonts() {
+			if ( empty( self::$gfonts ) ) {
+				return;
+			}
+			$show_google_fonts = apply_filters( 'uagb_blocks_show_google_fonts', true );
+			if ( ! $show_google_fonts ) {
+				return;
+			}
+			$link    = '';
+			$subsets = array();
+	 		foreach ( self::$gfonts as $key => $gfont_values ) {
+				if ( ! empty( $link ) ) {
+					$link .= '%7C'; // Append a new font to the string.
+				}
+				$link .= $gfont_values['fontfamily'];
+				if ( ! empty( $gfont_values['fontvariants'] ) ) {
+					$link .= ':';
+					$link .= implode( ',', $gfont_values['fontvariants'] );
+				}
+				if ( ! empty( $gfont_values['fontsubsets'] ) ) {
+					foreach ( $gfont_values['fontsubsets'] as $subset ) {
+						if ( ! in_array( $subset, $subsets ) ) {
+							array_push( $subsets, $subset );
+						}
+					}
+				}
+			}
+			if ( ! empty( $subsets ) ) {
+				$link .= '&amp;subset=' . implode( ',', $subsets );
+			}
+			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+
 		}
 
 
@@ -154,6 +199,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/advanced-heading':
 					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
+					$this->blocks_advanced_heading_gfont( $blockattr );
 					break;
 
 				case 'uagb/info-box':
@@ -234,6 +280,35 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			echo $css;
 
 			// @codingStandardsIgnoreEnd
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @param array  $attr the blocks attr.
+		 * @param string $unique_id the blocks attr ID.
+		 */
+		public function blocks_advanced_heading_gfont( $attr ) {
+
+			if ( isset( $attr['headFontFamily'] ) && $attr['headFontFamily'] ) {
+				// Check if the font has been added yet.
+				$add_font = array(
+					'fontfamily' => $attr['headFontFamily'],
+					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
+					'fontsubsets' => ( isset( $attr['fontSubset'] ) && ! empty( $attr['fontSubset'] ) ? array( $attr['fontSubset'] ) : array() ),
+				);
+				self::$gfonts[$attr['headFontFamily']] = $add_font;
+			}
+
+			if ( isset( $attr['subHeadFontFamily'] ) && $attr['subHeadFontFamily'] ) {
+				// Check if the font has been added yet.
+				$add_font = array(
+					'fontfamily' => $attr['subHeadFontFamily'],
+					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
+					'fontsubsets' => ( isset( $attr['fontSubset'] ) && ! empty( $attr['fontSubset'] ) ? array( $attr['fontSubset'] ) : array() ),
+				);
+				self::$gfonts[$attr['subHeadFontFamily']] = $add_font;
+			}
 		}
 
 		/**
