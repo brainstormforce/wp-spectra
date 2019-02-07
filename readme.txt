@@ -97,8 +97,11 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 = 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
-* Fix: Icon List - label not editable in Firefox browser.
-* Improvement: 100% Responsive Font Size Support.
+* Fix: Call to Action - Width issue when elements stack.
+* Fix: Icon List - Label not editable in Firefox browser.
+* Fix: Reusable Blocks CSS issue in Section/Advanced Columns blocks.
+* Fix: Social Share - Extra height and space issue.
+* Improvement: Responsive Support with Mobile Editing Block Controls
 
 = 1.8.1 =
 * Fix: Advanced Columns - Editor end, width issue.
