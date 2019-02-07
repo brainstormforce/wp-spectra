@@ -79,40 +79,6 @@ function TypographyOptions( props ) {
 		{ key: "em", name: __( "em" ) },
 	]
 
-	const headsizeTypesControls = (
-		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-			{ map( sizeTypes, ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ props.fontSizeType === key }
-					aria-pressed={ props.fontSizeType === key }
-					onClick={ () => props.setAttributes( { [props.fontSizeType.label]: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	)
-
-	const headLineHeightTypesControls = (
-		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-			{ map( sizeTypes, ( { name, key } ) => (
-				<Button
-					key={ key }
-					className="uagb-size-btn"
-					isSmall
-					isPrimary={ props.lineheightType === key }
-					aria-pressed={ props.lineheightType === key }
-					onClick={ () => props.setAttributes( { [props.lineheightType.label]: key } ) }
-				>
-					{ name }
-				</Button>
-			) ) }
-		</ButtonGroup>
-	)
-
 	const onFontfamilyChange = ( value ) => {
 		props.setAttributes( { [ props.fontFamily.label ]: value } )
 		onFontChange( props.fontWeight, font_weight_obj );
