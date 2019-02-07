@@ -112,14 +112,13 @@ function TypographyOptions( props ) {
 			) ) }
 		</ButtonGroup>
 	)
-
+	
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
 				value={ props.fontFamily.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontFamily.label ]: value } ) }
 				options={ fonts	}
-				isMulti={ false }
 				maxMenuHeight={ 300 }
 				placeholder={ __( 'Font family' ) }
 			/>
@@ -296,30 +295,4 @@ function TypographyOptions( props ) {
 	);
 }
 
-export default withSelect( ( select, props ) => {
-	const { setAttributes, setState, fontFamily } = props
-
-	let json_data = ''
-
-	if ( fontFamily.value ) {
-
-		$.ajax({
-			url: uagb_blocks_info.ajax_url,
-			data: {
-				action: 'uagb_google_fonts',
-				demo : 'demo',
-			},
-			dataType: 'json',
-			type: 'POST',
-			success: function( data ) {
-				// setAttributes( { is_html: true } )
-				// setAttributes( { form_json: data } )
-				// json_data = data
-			}
-		});
-	}
-
-	return {
-		formHTML: json_data
-	}
-} )( TypographyOptions )
+export default TypographyOptions

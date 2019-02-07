@@ -11,6 +11,10 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 // Import all of our Text Options requirements.
 import TypographyOptions from '../../components/typography';
 
+// Import Web font loader for google fonts.
+import WebfontLoader from '../../components/typography/fontloader';
+
+
 //  Import CSS.
 import "./style.scss"
 
@@ -172,6 +176,17 @@ export default class UAGBAdvancedHeading extends Component {
 				) ) }
 			</ButtonGroup>
 		)
+
+		const hconfig = {
+			google: {
+				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+			},
+		};
+		const sconfig = {
+			google: {
+				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+			},
+		};
 
 		return (
 			<Fragment>
@@ -356,6 +371,11 @@ export default class UAGBAdvancedHeading extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+				<WebfontLoader config={ sconfig }>
+				</WebfontLoader>
+
 			</Fragment>
 		)
 	}
