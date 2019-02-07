@@ -273,7 +273,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( isset( $block['innerBlocks'] ) ) {
 				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-					$css .= $this->get_block_css( $inner_block );
+					if ( 'core/block' == $inner_block['blockName'] ) {
+						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = $this->parse( $content );
+
+							$this->get_stylesheet( $reusable_blocks );
+						}
+					} else {
+						// Get CSS for the Block.
+						$css .= $this->get_block_css( $inner_block );
+					}
 				}
 			}
 
@@ -377,8 +390,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( isset( $block['innerBlocks'] ) ) {
+
 				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-					$js .= $this->get_block_js( $inner_block );
+
+					if ( 'core/block' == $inner_block['blockName'] ) {
+						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+
+						if ( $id ) {
+							$content = get_post_field( 'post_content', $id );
+
+							$reusable_blocks = $this->parse( $content );
+
+							$this->get_scripts( $reusable_blocks );
+						}
+					} else {
+						// Get JS for the Block.
+						$js .= $this->get_block_js( $inner_block );
+					}
 				}
 			}
 
@@ -526,7 +554,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$this->get_scripts( $reusable_blocks );
 						}
 					} else {
-						// Get CSS for the Block.
+						// Get JS for the Block.
 						$this->get_block_js( $block );
 					}
 				}
@@ -723,7 +751,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $attributes The block attributes.
 		 * @param string $block_type The Block Type.
-		 * @since x.x.x
+		 * @since 1.8.2
 		 */
 		public static function get_query( $attributes, $block_type ) {
 

@@ -1050,7 +1050,6 @@ class UAGBTimeline extends Component {
 			</InspectorControls>
 		)
 
-		var my_block_id = "uagb-ctm-"+this.props.clientId
 		var cta_enable = ""
 
 		if(displayPostLink){
@@ -1073,7 +1072,7 @@ class UAGBTimeline extends Component {
 					className,
 					"uagb-timeline__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-ctm-${ this.props.clientId }` } >
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						cta_enable,

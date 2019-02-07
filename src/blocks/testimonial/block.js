@@ -2,11 +2,8 @@
  * BLOCK: Testimonial
  */
 
-// Import block dependencies and components.
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
-// Import icon.
 import AuthorName from "./components/AuthorName"
 import Company from "./components/Company"
 import Description from "./components/Description"
@@ -18,7 +15,6 @@ import "./style.scss"
 import "./editor.scss"
 const { __ } = wp.i18n
 
-// Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
 } = wp.blocks
@@ -27,24 +23,9 @@ const {
 	RichText
 } = wp.editor
 
-// Extend component
 const { Fragment } = wp.element
 
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( "uagb/testimonial", {
-
-	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: uagb_blocks_info.blocks["uagb/testimonial"]["title"], // Block title.
 	description: uagb_blocks_info.blocks["uagb/testimonial"]["description"], // Block description.
 	icon: UAGB_Block_Icons.testimonial, // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
@@ -74,15 +55,13 @@ registerBlockType( "uagb/testimonial", {
 			arrowColor,
 		} = props.attributes
 
-		const my_block_id = "uagb-testimonial-"+ block_id
-
 		return (
 			<Fragment>
 				<div className={ classnames(
 					className,
 					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 				) }
-				id = { my_block_id }				
+				id = { `uagb-testimonial-${block_id}` }
 				>
 
 					<div
@@ -156,8 +135,6 @@ registerBlockType( "uagb/testimonial", {
 					arrowColor,
 				} = props.attributes
 
-				const my_block_id = "uagb-testimonial-"+ block_id
-
 				const sldier_data = []
 				sldier_data.push(
 					{
@@ -181,7 +158,7 @@ registerBlockType( "uagb/testimonial", {
 							className,
 							"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
 						) }
-						id = { my_block_id }
+						id = { `uagb-testimonial-${block_id}` }
 						data-slider = {JSON.stringify(sldier_data)}
 						>
 

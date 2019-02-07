@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB - Social Share Edit Class
+ * BLOCK: Icon List - Edit Class
  */
 
 // Import classes
@@ -653,7 +653,6 @@ class UAGBIconList extends Component {
 											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
-										// href="javascript:void(0)"
 										target={ target }
 										rel="noopener noreferrer"
 									>

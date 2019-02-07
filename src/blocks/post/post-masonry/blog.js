@@ -13,16 +13,11 @@ class Blog extends React.Component {
 		const { attributes, className, latestPosts, blogID } = this.props
 
 		const {
-			displayPostImage,
 			columns,
 			tcolumns,
 			mcolumns,
 			imgPosition,
 			postsToShow,
-			rowGap,
-			columnGap,
-			bgColor,
-			contentPadding,
 		} = attributes
 
 		// Removing posts from display should be instant.

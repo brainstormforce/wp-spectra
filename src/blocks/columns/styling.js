@@ -1,7 +1,5 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import inlineStyles from "./inline-styles"
@@ -33,6 +31,18 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
+		topPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		rightPaddingTablet,
+		topPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
+		rightPaddingMobile,
+		topMarginMobile,
+		bottomMarginMobile,
+		topMarginTablet,
+		bottomMarginTablet,
 	} = props.attributes
 
 	let max_width = "100%"
@@ -42,6 +52,9 @@ function styling( props ) {
 			max_width = width + "px"
 		}
 	}
+
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	var selectors = {
 		".uagb-columns__wrap" : inlineStyles( props ),
@@ -103,9 +116,35 @@ function styling( props ) {
 
 	selectors[" > .uagb-columns__overlay"]["border-radius"] = borderRadius + "px"
 
+	tablet_selectors = {
+		".uagb-columns__wrap" : {
+			"padding-top": topPaddingTablet + "px",
+			"padding-bottom": bottomPaddingTablet + "px",
+			"padding-left": leftPaddingTablet + "px",
+			"padding-right": rightPaddingTablet + "px",
+			"margin-top": topMarginTablet + "px",
+			"margin-bottom": bottomMarginTablet + "px",
+		}
+	}
+
+	mobile_selectors = {
+		".uagb-columns__wrap" : {
+			"padding-top": topPaddingMobile + "px",
+			"padding-bottom": bottomPaddingMobile + "px",
+			"padding-left": leftPaddingMobile + "px",
+			"padding-right": rightPaddingMobile + "px",
+			"margin-top": topMarginMobile + "px",
+			"margin-bottom": bottomMarginMobile + "px",
+		}
+	}
+
 	var styling_css = ""
 
 	styling_css = generateCSS( selectors, `#uagb-columns-${ props.clientId }` )
+
+	styling_css += generateCSS( tablet_selectors, `#uagb-columns-${ props.clientId }`, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, `#uagb-columns-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

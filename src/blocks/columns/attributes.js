@@ -1,6 +1,7 @@
 /**
- * BLOCK: UAGB Section Attributes
+ * BLOCK: Columns - Attributes
  */
+
 const attributes = {
 	block_id: {
 		type: "string",
@@ -39,6 +40,30 @@ const attributes = {
 		type: "number",
 		default: 20
 	},
+	topPaddingTablet: {
+		type: "number"
+	},
+	bottomPaddingTablet: {
+		type: "number"
+	},
+	leftPaddingTablet: {
+		type: "number"
+	},
+	rightPaddingTablet: {
+		type: "number"
+	},
+	topPaddingMobile: {
+		type: "number"
+	},
+	bottomPaddingMobile: {
+		type: "number"
+	},
+	leftPaddingMobile: {
+		type: "number"
+	},
+	rightPaddingMobile: {
+		type: "number"
+	},
 	topMargin: {
 		type: "number",
 		default: 0
@@ -46,6 +71,18 @@ const attributes = {
 	bottomMargin: {
 		type: "number",
 		default: 0
+	},
+	topMarginMobile: {
+		type: "number"
+	},
+	bottomMarginMobile: {
+		type: "number"
+	},
+	topMarginTablet: {
+		type: "number"
+	},
+	bottomMarginTablet: {
+		type: "number"
 	},
 	contentWidth: {
 		type: "string",
