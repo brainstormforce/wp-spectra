@@ -64,8 +64,6 @@ registerBlockType( "uagb/content-timeline", {
 			className
 		} = props.attributes
 
-		var my_block_id = "uagb-ctm-"+block_id
-
 		/* Style for elements */
 		var front_style = contentTimelineStyle( props )
 
@@ -84,7 +82,7 @@ registerBlockType( "uagb/content-timeline", {
 				className,
 				"uagb-timeline__outer-wrap"
 			) }
-			id = { my_block_id } >
+			id = { `uagb-ctm-${block_id}` } >
 				<div  className = { classnames(
 					"uagb-timeline__content-wrap",
 					...ContentTmClasses( props.attributes ),
@@ -194,8 +192,6 @@ registerBlockType( "uagb/content-timeline", {
 					className
 				} = props.attributes
 
-				var my_block_id = "uagb-ctm-"+block_id
-
 				/* Style for elements */
 				var front_style = contentTimelineStyle( props )
 
@@ -214,7 +210,7 @@ registerBlockType( "uagb/content-timeline", {
 						className,
 						"uagb-timeline__outer-wrap"
 					) }
-					id = { my_block_id } >
+					id = { `uagb-ctm-${block_id}` } >
 						<div  className = { classnames(
 							"uagb-timeline__content-wrap",
 							...ContentTmClasses( props.attributes ),
@@ -321,8 +317,6 @@ registerBlockType( "uagb/content-timeline", {
 					className
 				} = props.attributes
 
-				var my_block_id = "uagb-ctm-"+block_id
-
 				/* Style for elements */
 				var front_style = contentTimelineStyle( props )
 
@@ -341,7 +335,7 @@ registerBlockType( "uagb/content-timeline", {
 						className,
 						"uagb-timeline__outer-wrap"
 					) }
-					id = { my_block_id } >
+					id = { `uagb-ctm-${block_id}` } >
 						<div  className = { classnames(
 							"uagb-timeline__content-wrap",
 							...ContentTmClasses( props.attributes ),

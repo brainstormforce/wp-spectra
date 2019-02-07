@@ -41,6 +41,72 @@ const attributes = {
 		type: "number",
 		default: 0
 	},
+
+	topPaddingTablet: {
+		type: "number",
+		default: ""
+	},
+	bottomPaddingTablet: {
+		type: "number",
+		default: ""
+	},
+	leftPaddingTablet: {
+		type: "number",
+		default: ""
+	},
+	rightPaddingTablet: {
+		type: "number",
+		default: ""
+	},
+	topMarginTablet: {
+		type: "number",
+		default: ""
+	},
+	bottomMarginTablet: {
+		type: "number",
+		default: ""
+	},
+	leftMarginTablet: {
+		type: "number",
+		default: ""
+	},
+	rightMarginTablet: {
+		type: "number",
+		default: ""
+	},
+
+	topPaddingMobile: {
+		type: "number",
+		default: ""
+	},
+	bottomPaddingMobile: {
+		type: "number",
+		default: ""
+	},
+	leftPaddingMobile: {
+		type: "number",
+		default: ""
+	},
+	rightPaddingMobile: {
+		type: "number",
+		default: ""
+	},
+	topMarginMobile: {
+		type: "number",
+		default: ""
+	},
+	bottomMarginMobile: {
+		type: "number",
+		default: ""
+	},
+	leftMarginMobile: {
+		type: "number",
+		default: ""
+	},
+	rightMarginMobile: {
+		type: "number",
+		default: ""
+	},
 	contentWidth: {
 		type: "string",
 		default: "boxed"

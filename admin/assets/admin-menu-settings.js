@@ -90,6 +90,10 @@
 
 			$( document ).delegate( ".uagb-activate-all", "click", UAGBAdmin._bulk_activate_widgets )
 			$( document ).delegate( ".uagb-deactivate-all", "click", UAGBAdmin._bulk_deactivate_widgets )
+
+			$( document ).delegate( ".uag-install-theme", "click", UAGBAdmin._installNow )
+			$( document ).delegate( ".uag-activate-theme", "click", UAGBAdmin._activateTheme)
+
 		},
 
 		/**
@@ -239,6 +243,75 @@
 				}
 			})
 			e.preventDefault()
+		},
+
+
+		/**
+		 * Activate Success
+		 */
+		_activateTheme: function( event, response ) {
+
+			event.preventDefault()
+
+			var $button = jQuery(event.target)
+
+			var $slug = $button.data("slug")
+
+			$button.text( uagb.activating_text ).addClass( "updating-message" )
+
+			// WordPress adds "Activate" button after waiting for 1000ms. So we will run our activation after that.
+			setTimeout( function() {
+
+				$.ajax({
+					url: uagb.ajax_url,
+					type: "POST",
+					data: {
+						"action" : "uag-theme-activate",
+						"slug"   : $slug,
+					},
+				})
+					.done(function (result) {
+					
+						if( result.success ) {
+							$button.text( uagb.activated_text ).removeClass( "updating-message" )
+
+							setTimeout( function() {
+								$button.parents( ".uagb-sidebar" ).find( ".uagb-astra-sidebar" ).slideUp()
+							}, 1200 )
+						}
+
+					})
+
+			}, 1200 )
+
+		},
+
+		/**
+		 * Install Now
+		 */
+		_installNow: function(event)
+		{
+			event.preventDefault()
+
+			var $button 	= jQuery( event.target ),
+				$document   = jQuery(document)
+
+			$button.text( uagb.installing_text ).addClass( "updating-message" )
+
+			if ( wp.updates.shouldRequestFilesystemCredentials && ! wp.updates.ajaxLocked ) {
+				wp.updates.requestFilesystemCredentials( event )
+
+				$document.on( "credential-modal-cancel", function() {
+					$button.text( wp.updates.l10n.installNow )
+					wp.a11y.speak( wp.updates.l10n.updateCancel, "polite" )
+				} )
+			}
+			
+			wp.updates.installTheme( {
+				slug:    $button.data( "slug" )
+			}).then(function(e){
+				$button.removeClass( "uag-install-theme updating-message" ).addClass( "uag-activate-theme" ).text( "Activate Astra Now!" )
+			})
 		},
 
 	}

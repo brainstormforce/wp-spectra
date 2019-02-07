@@ -17,9 +17,9 @@ import edit from "./edit"
 import attributes from "./attributes"
 import "./editor.scss"
 import "./style.scss"
+
 const { __ } = wp.i18n
 
-// Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
 } = wp.blocks
@@ -28,22 +28,8 @@ const {
 	RichText
 } = wp.editor
 
-// Extend component
 const { Fragment } = wp.element
 
-
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( "uagb/call-to-action", {
 	title: uagb_blocks_info.blocks["uagb/call-to-action"]["title"],
 	description: uagb_blocks_info.blocks["uagb/call-to-action"]["description"],
@@ -67,8 +53,6 @@ registerBlockType( "uagb/call-to-action", {
 			ctaTitle,
 			description,
 		} = props.attributes
-
-		const my_block_id = "uagb-cta-block-"+ block_id
 
 		let is_cta =  <CTA attributes={props.attributes} setAttributes = "not_set" />
 
@@ -149,7 +133,7 @@ registerBlockType( "uagb/call-to-action", {
 					className,
 					"uagb-cta__outer-wrap"
 				) }
-				id = { my_block_id } >
+				id = { `uagb-cta-block-${block_id}` } >
 
 					{ ( ctaType == "all") &&
 						<Fragment>
@@ -163,7 +147,7 @@ registerBlockType( "uagb/call-to-action", {
 			</Fragment>
 		)
 	},
-	deprecated: [		
+	deprecated: [
 		{
 			attributes,
 			save: function( props ) {
@@ -178,15 +162,13 @@ registerBlockType( "uagb/call-to-action", {
 					description,
 				} = props.attributes
 
-				const my_block_id = "uagb-cta-block-"+ block_id
-
 				let is_cta =  <CallToAction attributes={props.attributes} setAttributes = "not_set" />
 
 				// Get description and seperator components.
 				const desc = (
 					<Fragment>
 						{ "" !== description && <div className = "uagb-cta-text-wrap">
-							<Description attributes={props.attributes} setAttributes = "not_set"/> 
+							<Description attributes={props.attributes} setAttributes = "not_set"/>
 						</div>
 						}
 					</Fragment>
@@ -198,7 +180,7 @@ registerBlockType( "uagb/call-to-action", {
 						{ "" !== ctaTitle && <div className = "uagb-cta__title-wrap">
 							<Title attributes={ props.attributes} setAttributes = "not_set"/>
 						</div>
-						}	
+						}
 					</Fragment>
 				)
 
@@ -215,22 +197,22 @@ registerBlockType( "uagb/call-to-action", {
 								}
 								<div className = "uagb-cta__content">
 
-									{  ctaPosition == "above-title" && 
+									{  ctaPosition == "above-title" &&
 										<Fragment>
 									     { is_cta }
 									     { title_text }
 									     { desc }
 									    </Fragment>
 									}
-									
-									{ ctaPosition == "below-title"  && 
+
+									{ ctaPosition == "below-title"  &&
 										<Fragment>
 									     { title_text }
 									     { desc }
 									     { is_cta }
 									    </Fragment>
 									}
-									
+
 									{ ( ctaPosition == "left" || ctaPosition == "right") &&
 										<Fragment>
 											{ title_text }
@@ -259,7 +241,7 @@ registerBlockType( "uagb/call-to-action", {
 							className,
 							"uagb-cta__outer-wrap"
 						) }
-						id = { my_block_id } >
+						id = { `uagb-cta-block-${block_id}` } >
 
 							{ ( ctaType == "all") &&
 								<Fragment>

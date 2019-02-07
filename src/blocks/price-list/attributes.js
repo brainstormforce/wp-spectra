@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Restaurent Menu Attributes
+ * BLOCK: Price List - Attributes
  */
 const { __ } = wp.i18n
 
@@ -7,7 +7,7 @@ const ITEM_COUNT = 4
 
 const rest_menu_block = []
 
-for (var i = 1; i <= ITEM_COUNT; i++) {
+for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	var desc_text = __("Lorem ipsum dolor sit amet, consectetur adipiscing elit.")
 	var title_text    = __("Menu Item "+i)
 	var price_text    = __("$9")
@@ -29,7 +29,7 @@ const attributes = {
 	rest_menu_item_arr: {
 		type: "array",
 		default : rest_menu_block,
-	},	
+	},
 	headingAlign: {
 		type: "string",
 		default: "left",
@@ -40,16 +40,16 @@ const attributes = {
 	},
 	priceColor: {
 		type: "string",
-		default: "#888888"		
-	},	
+		default: "#888888"
+	},
 	titleColor: {
 		type: "string",
-		default: "#333"		
+		default: "#333"
 	},
 	imagePosition:{
 		type: "string",
 		default: "top"
-	},	
+	},
 	imageAlignment:{
 		type: "string",
 		default: "top"
@@ -60,17 +60,47 @@ const attributes = {
 	},
 	titleFontSize: {
 		type: "number",
-	},	
+	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
 	priceFontSize: {
+		type: "number",
+	},
+	priceFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	priceFontSizeMobile: {
+		type: "number",
+	},
+	priceFontSizeTablet: {
 		type: "number",
 	},
 	descFontSize: {
 		type: "number",
 	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontSizeTablet: {
+		type: "number",
+	},
 	priceSpace: {
 		type: "number",
 		default : 5
-	},	
+	},
 	descSpace: {
 		type: "number",
 		default : 15
@@ -78,11 +108,11 @@ const attributes = {
 	titleSpace :{
 		type: "number",
 		default: 10,
-	},		
+	},
 	block_id :{
 		type : "string",
 		default : "not_set"
-	},	
+	},
 	imgVrPadding :{
 		type: "number",
 		default: 0,
@@ -104,21 +134,21 @@ const attributes = {
 		default: "medium",
 	},
 	imageWidth :{
-		type: "number",	
-		default: "",	
-	},	
+		type: "number",
+		default: "",
+	},
 	columns :{
 		type: "number",
 		default: 2,
-	},	
+	},
 	tcolumns :{
 		type: "number",
 		default: 2,
-	},	
+	},
 	mcolumns :{
 		type: "number",
 		default: 1,
-	},	
+	},
 	rowGap: {
 		type: "number",
 		default : 10
@@ -126,15 +156,15 @@ const attributes = {
 	columnGap: {
 		type: "number",
 		default : 10
-	},	
+	},
 	contentVrPadding: {
 		type: "number",
 		default : 5
-	},	
+	},
 	contentHrPadding: {
 		type: "number",
 		default : 5
-	},	
+	},
 	seperatorStyle : {
 		type: "string",
 		default: "dashed"
@@ -146,15 +176,15 @@ const attributes = {
 	seperatorThickness : {
 		type: "number",
 		default: "1"
-	},		
+	},
 	seperatorColor : {
 		type: "string",
 		default: "#b2b4b5",
-	},	
+	},
 	stack: {
 		type: "string",
 		default: "tablet"
-	},	
+	},
 }
 
 export default attributes

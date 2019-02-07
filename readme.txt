@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, gutenberg block, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.1
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -32,7 +32,7 @@ Not sure how the blocks work? With <a href="https://www.ultimategutenberg.com/do
 <strong>An Ultimate Gutenberg Blocks Library</strong>
 
 <ul>
- 	<li><a href="#" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/multi-buttons/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Multi Buttons </a>: This Gutenberg block allows you to add multiple buttons within a single block. You can add as many as 1 to 5 buttons with a Multi-Button block. Furthermore, it gives you additional settings for every button and allows you to manage spacing and responsive settings too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/post-layouts/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Post Grid </a>: The Post Grid block fetches the blog posts you may have on your website and displays them in a grid layout. You can customize the order of your posts, and manage settings like the featured image, content, etc.</li>
@@ -95,8 +95,13 @@ Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performa
 
 == Changelog ==
 
-= 1.8.1.1 =
+= 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
+* Fix: Call to Action - Width issue when elements stack.
+* Fix: Icon List - Label not editable in Firefox browser.
+* Fix: Reusable Blocks CSS issue in Section/Advanced Columns blocks.
+* Fix: Social Share - Extra height and space issue.
+* Improvement: Responsive Support with Mobile Editing Block Controls
 
 = 1.8.1 =
 * Fix: Advanced Columns - Editor end, width issue.

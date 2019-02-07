@@ -1,11 +1,14 @@
-// Import block dependencies and components.
-import classnames from "classnames"
+/**
+ * BLOCK: Team
+ */
 
-// Import icon.
+import classnames from "classnames"
+import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 
 const { __ } = wp.i18n
@@ -24,17 +27,18 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
+	ButtonGroup,
+	TabPanel,
+	Dashicon,
 	TextControl,
 	BaseControl,
 	ToggleControl
 } = wp.components
 
-// Extend component
 const { Component, Fragment } = wp.element
 
 let svg_icons = Object.keys( UAGBIcon )
 
-// Image sizes.
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
 	{ value: "medium", label: __( "Medium" ) },
@@ -53,7 +57,7 @@ class UAGBTeam extends Component {
 	}
 
 	constructor() {
-		super( ...arguments )		
+		super( ...arguments )
 		this.onSelectImage    = this.onSelectImage.bind( this )
 	}
 
@@ -61,7 +65,7 @@ class UAGBTeam extends Component {
 	getImageSize(sizes) {
 		var size_arr = []
 		$.each(sizes, function (index, item) {
-		  var name = index	
+		  var name = index
 		  	var p = { "value" : name, "label": name }
 		  	size_arr.push(p)
 		})
@@ -83,7 +87,7 @@ class UAGBTeam extends Component {
 		setAttributes( { image: media } )
 
 		var new_img = this.getImageSize(media["sizes"])
-		imageSizeOptions = new_img			
+		imageSizeOptions = new_img
 	}
 
 	render() {
@@ -102,9 +106,21 @@ class UAGBTeam extends Component {
 			prefixColor,
 			descColor,
 			titleFontSize,
+			titleFontSizeType,
+			titleFontSizeMobile,
+			titleFontSizeTablet,
 			prefixFontSize,
+			prefixFontSizeType,
+			prefixFontSizeMobile,
+			prefixFontSizeTablet,
 			descFontSize,
+			descFontSizeType,
+			descFontSizeMobile,
+			descFontSizeTablet,
 			socialFontSize,
+			socialFontSizeType,
+			socialFontSizeMobile,
+			socialFontSizeTablet,
 			image,
 			imgStyle,
 			imgAlign,
@@ -148,7 +164,7 @@ class UAGBTeam extends Component {
 		const onRemoveImage = ( media ) => {
 			setAttributes( { image: null } )
 		}
-	
+
 		let size = ""
 		let img_url = ""
 
@@ -265,6 +281,79 @@ class UAGBTeam extends Component {
 					onRemove={ () => onReplace( [] ) }
 				/>
 			</div>
+		)
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const titleTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ titleFontSizeType === key }
+						aria-pressed={ titleFontSizeType === key }
+						onClick={ () => setAttributes( { titleFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const descTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ descFontSizeType === key }
+						aria-pressed={ descFontSizeType === key }
+						onClick={ () => setAttributes( { descFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const prefixTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ prefixFontSizeType === key }
+						aria-pressed={ prefixFontSizeType === key }
+						onClick={ () => setAttributes( { prefixFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const socialTypesControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ socialFontSizeType === key }
+						aria-pressed={ socialFontSizeType === key }
+						onClick={ () => setAttributes( { socialFontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
 		)
 
 		return (
@@ -474,45 +563,310 @@ class UAGBTeam extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<RangeControl
-							label={ __( "Title Font Size" ) }
-							value={ titleFontSize }
-							onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={30}
-						/>
-						<RangeControl
-							label={ __( "Designation Font Size" ) }
-							value={ prefixFontSize }
-							onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={16}
-						/>
-						<RangeControl
-							label={ __( "Description Font Size" ) }
-							value={ descFontSize }
-							onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={16}
-						/>
-						<RangeControl
-							label={ __( "Social Icon Font Size" ) }
-							value={ socialFontSize }
-							onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-						/>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{titleTypesControls}
+												<RangeControl
+													label={ __( "Title Font Size" ) }
+													value={ titleFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { titleFontSizeMobile: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{titleTypesControls}
+												<RangeControl
+													label={ __( "Title Font Size" ) }
+													value={ titleFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { titleFontSizeTablet: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{titleTypesControls}
+												<RangeControl
+													label={ __( "Title Font Size" ) }
+													value={ titleFontSize }
+													onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={30}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{prefixTypesControls}
+												<RangeControl
+													label={ __( "Designation Font Size" ) }
+													value={ prefixFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { prefixFontSizeMobile: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{prefixTypesControls}
+												<RangeControl
+													label={ __( "Designation Font Size" ) }
+													value={ prefixFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { prefixFontSizeTablet: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{prefixTypesControls}
+												<RangeControl
+													label={ __( "Designation Font Size" ) }
+													value={ prefixFontSize }
+													onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{descTypesControls}
+												<RangeControl
+													label={ __( "Description Font Size" ) }
+													value={ descFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{descTypesControls}
+												<RangeControl
+													label={ __( "Description Font Size" ) }
+													value={ descFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{descTypesControls}
+												<RangeControl
+													label={ __( "Description Font Size" ) }
+													value={ descFontSize }
+													onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{socialTypesControls}
+												<RangeControl
+													label={ __( "Social Icon Font Size" ) }
+													value={ socialFontSizeMobile }
+													onChange={ ( value ) => setAttributes( { socialFontSizeMobile: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{socialTypesControls}
+												<RangeControl
+													label={ __( "Social Icon Font Size" ) }
+													value={ socialFontSizeTablet }
+													onChange={ ( value ) => setAttributes( { socialFontSizeTablet: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{socialTypesControls}
+												<RangeControl
+													label={ __( "Social Icon Font Size" ) }
+													value={ socialFontSize }
+													onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
+													min={ 1 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={16}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
@@ -585,48 +939,50 @@ class UAGBTeam extends Component {
 							allowReset
 						/>
 						{ image &&
-							<PanelBody title={ __( "Image Margins" ) } initialOpen={ true }>
+							<Fragment>
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Image Margin (px)" ) }</h2>
 								{  imgPosition != "above" &&
 								<RangeControl
-									label={ __( "Left Margin" ) }
+									label={ UAGB_Block_Icons.left_margin }
+									className={ "uagb-margin-control" }
 									value={ imgLeftMargin }
 									onChange={ ( value ) => setAttributes( { imgLeftMargin: value } ) }
 									min={ 0 }
 									max={ 50 }
-									beforeIcon="editor-textcolor"
 									allowReset
 								/>
 								}
 								{  imgPosition != "above" &&
 								<RangeControl
-									label={ __( "Right Margin" ) }
+									label={ UAGB_Block_Icons.right_margin }
+									className={ "uagb-margin-control" }
 									value={ imgRightMargin }
 									onChange={ ( value ) => setAttributes( { imgRightMargin: value } ) }
 									min={ 0 }
 									max={ 50 }
-									beforeIcon="editor-textcolor"
 									allowReset
 								/>
 								}
 								<RangeControl
-									label={ __( "Top Margin" ) }
+									label={ UAGB_Block_Icons.top_margin }
+									className={ "uagb-margin-control" }
 									value={ imgTopMargin }
 									onChange={ ( value ) => setAttributes( { imgTopMargin: value } ) }
 									min={ 0 }
 									max={ 50 }
-									beforeIcon="editor-textcolor"
 									allowReset
 								/>
 								<RangeControl
-									label={ __( "Bottom Margin" ) }
+									label={ UAGB_Block_Icons.bottom_margin }
+									className={ "uagb-margin-control" }
 									value={ imgBottomMargin }
 									onChange={ ( value ) => setAttributes( { imgBottomMargin: value } ) }
 									min={ 0 }
 									max={ 50 }
-									beforeIcon="editor-textcolor"
 									allowReset
 								/>
-							</PanelBody>
+							</Fragment>
 						}
 					</PanelBody>
 				</InspectorControls>

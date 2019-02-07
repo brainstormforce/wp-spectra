@@ -1,10 +1,11 @@
 /**
- * BLOCK: UAGB - Social Share Edit Class
+ * BLOCK: Icon List - Edit Class
  */
 
 // Import classes
 import classnames from "classnames"
 import times from "lodash/times"
+import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
@@ -33,7 +34,9 @@ const {
 	Button,
 	TextControl,
 	ToggleControl,
-	TabPanel
+	TabPanel,
+	ButtonGroup,
+	Dashicon
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -81,8 +84,14 @@ class UAGBIconList extends Component {
 			stack,
 			icon_layout,
 			size,
+			sizeType,
+			sizeMobile,
+			sizeTablet,
 			hideLabel,
 			fontSize,
+			fontSizeType,
+			fontSizeMobile,
+			fontSizeTablet,
 			borderRadius,
 			bgSize
 		} = attributes
@@ -303,6 +312,45 @@ class UAGBIconList extends Component {
 
 		const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
 
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+
+		const sizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ sizeType === key }
+						aria-pressed={ sizeType === key }
+						onClick={ () => setAttributes( { sizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
+		const lableSizeTypeControls = (
+			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+				{ map( sizeTypes, ( { name, key } ) => (
+					<Button
+						key={ key }
+						className="uagb-size-btn"
+						isSmall
+						isPrimary={ fontSizeType === key }
+						aria-pressed={ fontSizeType === key }
+						onClick={ () => setAttributes( { fontSizeType: key } ) }
+					>
+						{ name }
+					</Button>
+				) ) }
+			</ButtonGroup>
+		)
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -315,10 +363,7 @@ class UAGBIconList extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody
-						title={ __( "Icon Count" ) }
-						initialOpen={ true }
-					>
+					<PanelBody title={ __( "Icon Count" ) } initialOpen={ true }>
 						<RangeControl
 							label={ __( "Number of Icons" ) }
 							value={ icon_count }
@@ -355,10 +400,7 @@ class UAGBIconList extends Component {
 						/>
 					</PanelBody>
 					{ times( icon_count, n => iconControls( n ) ) }
-					<PanelBody
-						title={ __( "General" ) }
-						initialOpen={ false }
-					>
+					<PanelBody title={ __( "General" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ icon_layout }
@@ -389,24 +431,155 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
 						/>
 						<hr className="uagb-editor__separator" />
-						<RangeControl
-							label={ __( "Size" ) }
-							value={ size }
-							onChange={ ( value ) => setAttributes( { size: value } ) }
-							min={ 0 }
-							max={ 500 }
-							initialPosition={40}
-						/>
-						<RangeControl
-							label={ __( "Lable Font Size" ) }
-							value={ fontSize }
-							onChange={ ( value ) => setAttributes( { fontSize: value } ) }
-							min={ 1 }
-							max={ 100 }
-							beforeIcon="editor-textcolor"
-							allowReset
-							initialPosition={15}
-						/>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypeControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeMobile }
+													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypeControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeTablet }
+													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{sizeTypeControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ size }
+													onChange={ ( value ) => setAttributes( { size: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{lableSizeTypeControls}
+												<RangeControl
+													label={ __( "Lable Size" ) }
+													value={ fontSizeMobile }
+													onChange={ ( value ) => setAttributes( { fontSizeMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={15}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{lableSizeTypeControls}
+												<RangeControl
+													label={ __( "Lable Size" ) }
+													value={ fontSizeTablet }
+													onChange={ ( value ) => setAttributes( { fontSizeTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={15}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{lableSizeTypeControls}
+												<RangeControl
+													label={ __( "Lable Size" ) }
+													value={ fontSize }
+													onChange={ ( value ) => setAttributes( { fontSize: value } ) }
+													min={ 0 }
+													max={ 100 }
+													beforeIcon="editor-textcolor"
+													allowReset
+													initialPosition={15}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 						<RangeControl
 							label={ __( "Background Size" ) }
 							value={ bgSize }
@@ -480,7 +653,6 @@ class UAGBIconList extends Component {
 											"uagb-icon-list__wrapper"
 										) }
 										key={ index }
-										href="javascript:void(0)"
 										target={ target }
 										rel="noopener noreferrer"
 									>

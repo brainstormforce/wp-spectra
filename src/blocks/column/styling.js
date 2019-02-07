@@ -1,15 +1,15 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
 
 import inlineStyles from "./inline-styles"
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
 	const {
 		colWidth,
+
 		topPadding,
 		bottomPadding,
 		leftPadding,
@@ -18,6 +18,25 @@ function styling( props ) {
 		bottomMargin,
 		leftMargin,
 		rightMargin,
+
+		topPaddingTablet,
+		bottomPaddingTablet,
+		leftPaddingTablet,
+		rightPaddingTablet,
+		topMarginTablet,
+		bottomMarginTablet,
+		leftMarginTablet,
+		rightMarginTablet,
+
+		topPaddingMobile,
+		bottomPaddingMobile,
+		leftPaddingMobile,
+		rightPaddingMobile,
+		topMarginMobile,
+		bottomMarginMobile,
+		leftMarginMobile,
+		rightMarginMobile,
+
 		backgroundType,
 		backgroundImage,
 		backgroundPosition,
@@ -31,6 +50,9 @@ function styling( props ) {
 	} = props.attributes
 
 	var position = backgroundPosition.replace( "-", " " )
+
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	var style = {
 		"padding-top": topPadding + "px",
@@ -65,29 +87,45 @@ function styling( props ) {
 		"" : style
 	}
 
+	tablet_selectors = {
+		"" : {
+			"padding-top": topPaddingTablet + "px",
+			"padding-bottom": bottomPaddingTablet + "px",
+			"padding-left": leftPaddingTablet + "px",
+			"padding-right": rightPaddingTablet + "px",
+			"margin-top": topMarginTablet + "px",
+			"margin-bottom": bottomMarginTablet + "px",
+			"margin-left": leftMarginTablet + "px",
+			"margin-right": rightMarginTablet + "px",
+		}
+	}
+
+	mobile_selectors = {
+		"" : {
+			"padding-top": topPaddingMobile + "px",
+			"padding-bottom": bottomPaddingMobile + "px",
+			"padding-left": leftPaddingMobile + "px",
+			"padding-right": rightPaddingMobile + "px",
+			"margin-top": topMarginMobile + "px",
+			"margin-bottom": bottomMarginMobile + "px",
+			"margin-left": leftMarginMobile + "px",
+			"margin-right": rightMarginMobile + "px",
+		}
+	}
+
 	var styling_css = ""
 
-	for( var i in selectors ) {
+	var id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
 
-		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
+	styling_css = generateCSS( selectors, id )
 
-		styling_css += i + " { "
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
-	}
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
-
 
 	return styling_css
 }

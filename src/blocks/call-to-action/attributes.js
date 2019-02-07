@@ -1,8 +1,8 @@
 /**
- * BLOCK: UAGB CTA Attributes
+ * BLOCK: Call To Action - Attributes
  */
 
-const attributes = {	
+const attributes = {
 	ctaTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
@@ -22,19 +22,39 @@ const attributes = {
 	},
 	descColor: {
 		type: "string",
-	},		
+	},
 	ctaPosition: {
 		type: "string",
 		default: "right"
-	},	
+	},
 	titleTag: {
 		type: "string",
 		default: "h3"
-	},	
+	},
 	titleFontSize: {
 		type: "number",
-	},	
+	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
 	descFontSize: {
+		type: "number",
+	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontSizeTablet: {
 		type: "number",
 	},
 	titleSpace: {
@@ -44,7 +64,7 @@ const attributes = {
 	descSpace: {
 		type: "number",
 		default : 10,
-	},		
+	},
 	block_id :{
 		type : "string",
 		default : "not_set"
@@ -68,7 +88,7 @@ const attributes = {
 	ctaIconSpace :{
 		type: "number",
 		default : 5
-	},	
+	},
 	ctaType: {
 		type: "string",
 		default: "button",
@@ -80,8 +100,18 @@ const attributes = {
 	ctaLink: {
 		type: "string",
 		default: "#",
-	},	
+	},
 	ctaFontSize :{
+		type: "number",
+	},
+	ctaFontSizeType :{
+		type: "string",
+		default: "px"
+	},
+	ctaFontSizeMobile :{
+		type: "number",
+	},
+	ctaFontSizeTablet :{
 		type: "number",
 	},
 	contentWidth :{
@@ -131,7 +161,7 @@ const attributes = {
 	ctaBorderRadius :{
 		type: "number",
 		default: 0,
-	},		
+	},
 	stack: {
 		type: "string",
 		default: "tablet"

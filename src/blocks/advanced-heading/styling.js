@@ -1,25 +1,36 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
+
+import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 
 function styling( props ) {
 
 	const {
 		headingAlign,
 		headingTag,
-		headFontSize,
 		headingColor,
 		headSpace,
 		seperatorStyle,
 		separatorHeight,
 		separatorWidth,
+		separatorWidthType,
 		separatorColor,
 		separatorSpace,
+		subHeadingColor,
+		subHeadSpace,
+		headFontSize,
+		headFontSizeType,
+		headFontSizeMobile,
+		headFontSizeTablet,
 		subHeadFontSize,
-		subHeadingColor
+		subHeadFontSizeType,
+		subHeadFontSizeMobile,
+		subHeadFontSizeTablet,
 	} = props.attributes
+
+	var tablet_selectors = {}
+	var mobile_selectors = {}
 
 	var selectors = {
 		" .uagb-separator-wrap": {
@@ -27,14 +38,14 @@ function styling( props ) {
 		},
 		" .editor-rich-text .uagb-desc-text": {
 			"text-align": headingAlign,
-			"font-size": subHeadFontSize + "px",
+			"font-size": subHeadFontSize + subHeadFontSizeType,
 			"color": subHeadingColor,
 		}
 	}
 
 	selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
 		"text-align": headingAlign,
-		"font-size": headFontSize + "px",
+		"font-size": headFontSize + headFontSizeType,
 		"color": headingColor,
 		"margin-bottom": headSpace + "px",
 	}
@@ -43,29 +54,31 @@ function styling( props ) {
 		selectors[" .uagb-separator"] = {
 			"border-top-style": seperatorStyle,
 			"border-top-width": separatorHeight + "px",
-			"width": separatorWidth + "%",
+			"width": separatorWidth + separatorWidthType,
 			"border-color": separatorColor,
 			"margin-bottom": separatorSpace + "px",
 		}
 	}
-	var styling_css = ""
 
-	for( var i in selectors ) {
-
-		styling_css += `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
-
-		styling_css += i + " { "
-
-		var sel = selectors[i]
-		var css = ""
-
-		for( var j in sel ) {
-
-			css += j + ": " + sel[j] + ";"
-		}
-
-		styling_css += css + " } "
+	tablet_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+		"font-size": headFontSizeTablet + headFontSizeType,
 	}
+	tablet_selectors[" .editor-rich-text .uagb-desc-text"] = {
+		"font-size": subHeadFontSizeTablet + subHeadFontSizeType,
+	}
+
+	mobile_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+		"font-size": headFontSizeMobile + headFontSizeType,
+	}
+	mobile_selectors[" .editor-rich-text .uagb-desc-text"] = {
+		"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
+	}
+
+	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }` )
+
+	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

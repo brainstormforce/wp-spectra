@@ -1,11 +1,10 @@
 /**
- * BLOCK: Restaurant Menu
+ * BLOCK: Price List
  */
 
-// Import block dependencies and components.
+
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-
 import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
@@ -15,9 +14,9 @@ import edit from "./edit"
 import attributes from "./attributes"
 import "./style.scss"
 import "./editor.scss"
+
 const { __ } = wp.i18n
 
-// Import registerBlockType() from wp.blocks
 const {
 	registerBlockType,
 } = wp.blocks
@@ -26,21 +25,8 @@ const {
 	RichText
 } = wp.editor
 
-// Extend component
 const { Fragment } = wp.element
 
-/**
- * Register: as Gutenberg Block.
- *
- * Registers a new block provided a unique name and an object defining its
- * behavior.
- *
- * @link https://wordpress.org/gutenberg/handbook/block-api/
- * @param  {string}   name     Block name.
- * @param  {Object}   settings Block settings.
- * @return {?WPBlock}          The block, if it has been successfully
- *                             registered; otherwise `undefined`.
- */
 registerBlockType( "uagb/restaurant-menu", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
@@ -63,15 +49,13 @@ registerBlockType( "uagb/restaurant-menu", {
 			imagePosition,
 		} = props.attributes
 
-		const my_block_id = "uagb-rm-"+ block_id
-
 		return (
 			<Fragment>
 				<div className={ classnames(
 					className,
 					"uagb-rest_menu__outer-wrap"
 				) }
-				id = { my_block_id }
+				id = { `uagb-rm-${block_id}` }
 				>
 					{ rest_menu_item_arr.map( ( test, index ) =>
 

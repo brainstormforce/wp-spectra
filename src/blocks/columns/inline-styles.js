@@ -1,8 +1,7 @@
 /**
- * Set inline styles.
- * @param  {object} props - The block object.
- * @return {object} The inline background type CSS.
+ * Returns Dynamic Generated CSS
  */
+
 function inlineStyles( props, isEditor ) {
 
 	const {
@@ -23,7 +22,7 @@ function inlineStyles( props, isEditor ) {
 		borderStyle,
 		borderWidth,
 		borderRadius,
-		borderColor
+		borderColor,
 	} = props.attributes
 
 	var style = {
