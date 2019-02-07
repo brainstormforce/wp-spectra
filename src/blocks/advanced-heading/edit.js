@@ -116,6 +116,7 @@ export default class UAGBAdvancedHeading extends Component {
 				headingTag,
 				headFontFamily,
 				headFontWeight,
+				headFontSubset,
 				headFontSizeType,
 				headFontSize,
 				headFontSizeMobile,
@@ -126,6 +127,7 @@ export default class UAGBAdvancedHeading extends Component {
 				headLineHeightTablet,
 				subHeadFontFamily,
 				subHeadFontWeight,
+				subHeadFontSubset,
 				subHeadFontSize,
 				subHeadFontSizeType,
 				subHeadFontSizeMobile,
@@ -202,6 +204,7 @@ export default class UAGBAdvancedHeading extends Component {
 							props = { this.props }
 							fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
 							fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
+							fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
 							fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
 							fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
 							fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
@@ -226,6 +229,7 @@ export default class UAGBAdvancedHeading extends Component {
 							props = { this.props }
 							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
 							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
+							fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
 							fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
 							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
 							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }

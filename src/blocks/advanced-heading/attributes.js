@@ -53,6 +53,9 @@ const attributes = {
 	headFontWeight: {
 		type: "string",
 	},
+	headFontSubset: {
+		type: "string",
+	},
 	headFontSizeType: {
 		type: "string",
 		default: "px"
@@ -84,6 +87,9 @@ const attributes = {
 		default: "",
 	},
 	subHeadFontWeight: {
+		type: "string",
+	},
+	subHeadFontSubset: {
 		type: "string",
 	},
 	subHeadFontSize: {

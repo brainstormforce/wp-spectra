@@ -113,7 +113,6 @@ function TypographyOptions( props ) {
 		</ButtonGroup>
 	)
 
-	console.log( props.fontFamily );
 	return (
 		<div className="uag-typography-options">
 			<SelectControl
@@ -126,6 +125,14 @@ function TypographyOptions( props ) {
 			/>
 			<SelectControl
 				label={ __( "Font Weight" ) }
+				value={ props.fontWeight.value }
+				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
+				options={
+					font_weight_obj
+				}
+			/>
+			<SelectControl
+				label={ __( "Font Family Subset" ) }
 				value={ props.fontWeight.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
 				options={

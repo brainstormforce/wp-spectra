@@ -16,6 +16,7 @@
     "url": "git@git.brainstormforce.com:wp-sharks/ultimate-addons-for-gutenberg.git"
   },
   "dependencies": {
+    "@dr-kobros/react-webfont-loader": "^8.0.0",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.3",

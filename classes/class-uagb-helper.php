@@ -280,6 +280,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			echo $css;
 
 			// @codingStandardsIgnoreEnd
+
 		}
 
 		/**
@@ -294,8 +295,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				// Check if the font has been added yet.
 				$add_font = array(
 					'fontfamily' => $attr['headFontFamily'],
-					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-					'fontsubsets' => ( isset( $attr['fontSubset'] ) && ! empty( $attr['fontSubset'] ) ? array( $attr['fontSubset'] ) : array() ),
+					'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
+					'fontsubsets' => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
 				);
 				self::$gfonts[$attr['headFontFamily']] = $add_font;
 			}
@@ -304,8 +305,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				// Check if the font has been added yet.
 				$add_font = array(
 					'fontfamily' => $attr['subHeadFontFamily'],
-					'fontvariants' => ( isset( $attr['fontVariant'] ) && ! empty( $attr['fontVariant'] ) ? array( $attr['fontVariant'] ) : array() ),
-					'fontsubsets' => ( isset( $attr['fontSubset'] ) && ! empty( $attr['fontSubset'] ) ? array( $attr['fontSubset'] ) : array() ),
+					'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
+					'fontsubsets' => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
 				);
 				self::$gfonts[$attr['subHeadFontFamily']] = $add_font;
 			}
