@@ -9,10 +9,10 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
 
 // Import all of our Text Options requirements.
-import TypographyOptions from '../../components/typography';
+import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
-import WebfontLoader from '../../components/typography/fontloader';
+import WebfontLoader from "../../components/typography/fontloader"
 
 
 //  Import CSS.
@@ -133,7 +133,7 @@ export default class UAGBAdvancedHeading extends Component {
 				subHeadFontSize,
 				subHeadFontSizeType,
 				subHeadFontSizeMobile,
-				subHeadFontSizeTablet,				
+				subHeadFontSizeTablet,
 				subHeadLineHeight,
 				subHeadLineHeightType,
 				subHeadLineHeightMobile,
@@ -210,7 +210,7 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<TypographyOptions 
+						<TypographyControl
 							label={ __( "Heading Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
@@ -235,7 +235,7 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Sub-Heading" ) }</h2>
-						<TypographyOptions 
+						<TypographyControl
 							label={ __( "Heading Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }

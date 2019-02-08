@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 const {
 	RangeControl,
@@ -9,7 +9,7 @@ const {
 	Button,
 	TabPanel,
 	Dashicon,
-} = wp.components;
+} = wp.components
 
 // Extend component
 const { Component, Fragment } = wp.element
@@ -82,7 +82,7 @@ function RangeTypographyControl( props ) {
 										beforeIcon="editor-textcolor"
 										allowReset
 										initialPosition={30}
-									/>											
+									/>
 								</Fragment>
 							)
 						} else if ( "tablet" === tab.name ) {
@@ -124,7 +124,7 @@ function RangeTypographyControl( props ) {
 				}
 			</TabPanel>
 		</div>
-	);
+	)
 }
 
 export default RangeTypographyControl

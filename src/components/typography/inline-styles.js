@@ -3,9 +3,9 @@
  * @param {object} props - The block object.
  * @return {object} The inline text color CSS.
  */
-function TypographyOptionsInlineStyles( props ) {
+function TypographyStyles( props ) {
 	return {
-	};
+	}
 }
 
-export default TypographyOptionsInlineStyles;
+export default TypographyStyles

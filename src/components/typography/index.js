@@ -1,7 +1,7 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 const {
 	TextControl,
@@ -12,7 +12,7 @@ const {
 	PanelRow,
 	TabPanel,
 	Dashicon,
-} = wp.components;
+} = wp.components
 
 const {
 	withSelect
@@ -24,17 +24,17 @@ const { Component, Fragment } = wp.element
 /**
  * Internal dependencies
  */
-import FontFamilyControl from './font-typography';
-import RangeTypographyControl from './range-typography';
-import TypographyOptionsInlineStyles from './inline-styles';
-import './editor.scss';
+import FontFamilyControl from "./font-typography"
+import RangeTypographyControl from "./range-typography"
+import TypographyStyles from "./inline-styles"
+import "./editor.scss"
 
 // Export for ease of importing in individual blocks.
 export {
-	TypographyOptionsInlineStyles,
-};
+	TypographyStyles,
+}
 
-function TypographyOptions( props ) {
+function TypographyControl( props ) {
 
 	return (
 		<div className="uag-typography-options">
@@ -70,7 +70,7 @@ function TypographyOptions( props ) {
 				{ ...props }
 			/>
 		</div>
-	);
+	)
 }
 
-export default TypographyOptions
+export default TypographyControl

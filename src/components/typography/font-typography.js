@@ -1,11 +1,11 @@
 /**
  * WordPress dependencies
  */
-const { __ } = wp.i18n;
+const { __ } = wp.i18n
 
 const {
 	SelectControl
-} = wp.components;
+} = wp.components
 
 // Extend component
 const { Component, Fragment } = wp.element
@@ -14,57 +14,57 @@ const { Component, Fragment } = wp.element
  * Internal dependencies
  */
 import map from "lodash/map"
-import googleFonts from './fonts';
+import googleFonts from "./fonts"
 
-function TypographyOptions( props ) {
+function FontFamilyControl( props ) {
 
 	const fonts = [
-		{ value: '', label: __( 'Default' ), weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-		{ value: 'Arial', label: 'Arial', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-		{ value: 'Helvetica', label: 'Helvetica', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-		{ value: 'Times New Roman', label: 'Times New Roman', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-		{ value: 'Georgia', label: 'Georgia', weight: [ '100', '200', '300', '400', '500', '600', '700', '800', '900' ], google: false },
-	];
+		{ value: "", label: __( "Default" ), weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+		{ value: "Arial", label: "Arial", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+		{ value: "Helvetica", label: "Helvetica", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+		{ value: "Times New Roman", label: "Times New Roman", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+		{ value: "Georgia", label: "Georgia", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
+	]
 
-	let font_weight = '';
-	let font_subset = '';
+	let font_weight = ""
+	let font_subset = ""
 
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
 		fonts.push(
 			{ value: k, label: k, weight: googleFonts[k].weight }
-		);
+		)
 
 		if( k === props.fontFamily.value ) {
-			font_weight = googleFonts[k].weight;
-			font_subset = googleFonts[k].subset;
+			font_weight = googleFonts[k].weight
+			font_subset = googleFonts[k].subset
 		}
 	})
 
 	// check if the font is a system font and then apply the font weight accordingly.
-	if ( font_weight === '' ) {
-		font_weight = fonts[0].weight;
+	if ( font_weight === "" ) {
+		font_weight = fonts[0].weight
 	}
-	
-	const fontWeightObj = [];
+
+	const fontWeightObj = []
 
 	font_weight.forEach(function(item) {
 		fontWeightObj.push(
 			{ value: item, label: item }
-		);
-	});
+		)
+	})
 
-	const font_subset_obj = [];
+	const font_subset_obj = []
 
-	if( typeof font_subset == 'object' ) {
+	if( typeof font_subset == "object" ) {
 		font_subset.forEach(function(item) {
 			font_subset_obj.push(
 				{ value: item, label: item }
-			);
-		});
+			)
+		})
 	}
 
-	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } );
+	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } )
 
 	const sizeTypes = [
 		{ key: "px", name: __( "px" ) },
@@ -73,12 +73,12 @@ function TypographyOptions( props ) {
 
 	const onFontfamilyChange = ( value ) => {
 		props.setAttributes( { [ props.fontFamily.label ]: value } )
-		onFontChange( props.fontWeight, props.fontFamily.value );
-		onFontChange( props.fontSubset, props.fontFamily.value );
+		onFontChange( props.fontWeight, props.fontFamily.value )
+		onFontChange( props.fontSubset, props.fontFamily.value )
 	}
 
 	// const onFontChange = ( fontArr, fontFamily ) => {
-	
+
 	// 	let font_flag;
 	// 	let new_value;
 
@@ -110,7 +110,7 @@ function TypographyOptions( props ) {
 				value={ props.fontFamily.value }
 				onChange={ onFontfamilyChange }
 				options={ fonts	}
-				placeholder={ __( 'Font family' ) }
+				placeholder={ __( "Font family" ) }
 			/>
 			<SelectControl
 				label={ __( "Font Weight" ) }
@@ -129,7 +129,7 @@ function TypographyOptions( props ) {
 				}
 			/>
 		</div>
-	);
+	)
 }
 
-export default TypographyOptions
+export default FontFamilyControl
