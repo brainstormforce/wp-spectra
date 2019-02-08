@@ -29,9 +29,9 @@ function TypographyControl( props ) {
 				sizeTabletLabel = { props.fontSizeTablet.label }
 				size = { props.fontSize }
 				sizeLabel = { props.fontSize.label }
-				sizeMobileText = 'Font Size Mobile'
-				sizeTabletText = 'Font Size Tablet'
-				sizeText = 'Font Size'
+				sizeMobileText = { __( "Font Size Mobile" ) }
+				sizeTabletText = { __( "Font Size Tablet" ) }
+				sizeText = { __( "Font Size" ) }
 				{ ...props }
 			/>
 			<FontFamilyControl
@@ -46,9 +46,9 @@ function TypographyControl( props ) {
 				sizeTabletLabel = { props.lineHeightTablet.label }
 				size = { props.lineHeight }
 				sizeLabel = { props.lineHeight.label }
-				sizeMobileText = 'Line Height Mobile'
-				sizeTabletText = 'Line Height Tablet'
-				sizeText = 'Line Height'
+				sizeMobileText = { __( "Line Height Mobile" ) }
+				sizeTabletText = { __( "Line Height Tablet" ) }
+				sizeText = { __( "Line Height" ) }
 				{ ...props }
 			/>
 		</div>

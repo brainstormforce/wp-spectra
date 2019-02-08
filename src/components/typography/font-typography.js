@@ -64,13 +64,6 @@ function FontFamilyControl( props ) {
 		})
 	}
 
-	const onLineheightChange = value => props.setAttributes( { [ props.LineHeight.label ]: value } )
-
-	const sizeTypes = [
-		{ key: "px", name: __( "px" ) },
-		{ key: "em", name: __( "em" ) },
-	]
-
 	const onFontfamilyChange = ( value ) => {
 		props.setAttributes( { [ props.fontFamily.label ]: value } )
 		onFontChange( props.fontWeight, props.fontFamily.value )
