@@ -310,25 +310,7 @@ export default class UAGBColumnEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding Mobile (px)" ) }</h2>
-											<RangeControl
-												label={ UAGB_Block_Icons.left_margin }
-												className={ "uagb-margin-control" }
-												value={ leftPaddingMobile }
-												onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
-												min={ 0 }
-												max={ 200 }
-												allowReset
-											/>
-											<RangeControl
-												label={ UAGB_Block_Icons.right_margin }
-												className={ "uagb-margin-control" }
-												value={ rightPaddingMobile }
-												onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
-												min={ 0 }
-												max={ 200 }
-												allowReset
-											/>
+											<h2>{ __( "Padding Mobile (px)" ) }</h2>											
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -347,17 +329,11 @@ export default class UAGBColumnEdit extends Component {
 												max={ 200 }
 												allowReset
 											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											<h2>{ __( "Padding Tablet (px)" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.left_margin }
 												className={ "uagb-margin-control" }
-												value={ leftPaddingTablet }
-												onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
+												value={ leftPaddingMobile }
+												onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
 												min={ 0 }
 												max={ 200 }
 												allowReset
@@ -365,12 +341,18 @@ export default class UAGBColumnEdit extends Component {
 											<RangeControl
 												label={ UAGB_Block_Icons.right_margin }
 												className={ "uagb-margin-control" }
-												value={ rightPaddingTablet }
-												onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
+												value={ rightPaddingMobile }
+												onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
 												min={ 0 }
 												max={ 200 }
 												allowReset
 											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Padding Tablet (px)" ) }</h2>											
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -389,17 +371,11 @@ export default class UAGBColumnEdit extends Component {
 												max={ 200 }
 												allowReset
 											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											<h2>{ __( "Padding (px)" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.left_margin }
 												className={ "uagb-margin-control" }
-												value={ leftPadding }
-												onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
+												value={ leftPaddingTablet }
+												onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
 												min={ 0 }
 												max={ 200 }
 												allowReset
@@ -407,12 +383,18 @@ export default class UAGBColumnEdit extends Component {
 											<RangeControl
 												label={ UAGB_Block_Icons.right_margin }
 												className={ "uagb-margin-control" }
-												value={ rightPadding }
-												onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
+												value={ rightPaddingTablet }
+												onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
 												min={ 0 }
 												max={ 200 }
 												allowReset
 											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											<h2>{ __( "Padding (px)" ) }</h2>											
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -427,6 +409,24 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ bottomPadding }
 												onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.left_margin }
+												className={ "uagb-margin-control" }
+												value={ leftPadding }
+												onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
+												min={ 0 }
+												max={ 200 }
+												allowReset
+											/>
+											<RangeControl
+												label={ UAGB_Block_Icons.right_margin }
+												className={ "uagb-margin-control" }
+												value={ rightPadding }
+												onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
 												min={ 0 }
 												max={ 200 }
 												allowReset

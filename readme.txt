@@ -149,6 +149,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.8.2.1 =
 * New: Blockquote
+* Fix: Move button issue for inner columns.
+# Fix: Padding, Margin setting rearranged for section, column and inner columns.
 
 = 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
