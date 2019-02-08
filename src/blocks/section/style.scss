@@ -50,3 +50,9 @@
 		background-size: cover;
 	}
 }
+
+@media only screen and (max-width: 449px) {
+	.uagb-section__wrap.uagb-section__background-image{
+		background-attachment: scroll!important;
+	}
+}
