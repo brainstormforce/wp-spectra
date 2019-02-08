@@ -17,13 +17,8 @@ const { Component, Fragment } = wp.element
 /**
  * Internal dependencies
  */
-import TypographyOptionsInlineStyles from './inline-styles';
 import map from "lodash/map"
 
-// Export for ease of importing in individual blocks.
-export {
-	TypographyOptionsInlineStyles,
-};
 
 function RangeTypographyControl( props ) {
 

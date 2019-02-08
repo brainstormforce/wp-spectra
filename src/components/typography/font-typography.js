@@ -13,14 +13,8 @@ const { Component, Fragment } = wp.element
 /**
  * Internal dependencies
  */
-import TypographyOptionsInlineStyles from './inline-styles';
 import map from "lodash/map"
 import googleFonts from './fonts';
-
-// Export for ease of importing in individual blocks.
-export {
-	TypographyOptionsInlineStyles,
-};
 
 function TypographyOptions( props ) {
 
@@ -47,16 +41,15 @@ function TypographyOptions( props ) {
 		}
 	})
 
-	// check if the font is a stystem font and then apply the font weight accordingly.
-
+	// check if the font is a system font and then apply the font weight accordingly.
 	if ( font_weight === '' ) {
 		font_weight = fonts[0].weight;
 	}
 	
-	const font_weight_obj = [];
+	const fontWeightObj = [];
 
 	font_weight.forEach(function(item) {
-		font_weight_obj.push(
+		fontWeightObj.push(
 			{ value: item, label: item }
 		);
 	});
@@ -80,31 +73,35 @@ function TypographyOptions( props ) {
 
 	const onFontfamilyChange = ( value ) => {
 		props.setAttributes( { [ props.fontFamily.label ]: value } )
-		onFontChange( props.fontWeight, font_weight_obj );
-		onFontChange( props.fontSubset, font_weight_obj );
+		onFontChange( props.fontWeight, props.fontFamily.value );
+		onFontChange( props.fontSubset, props.fontFamily.value );
 	}
 
-	const onFontChange = ( font_arr, font_weight_obj ) => {
+	// const onFontChange = ( fontArr, fontFamily ) => {
 	
-		let font_flag;
-		let new_value;
+	// 	let font_flag;
+	// 	let new_value;
 
-		if( typeof font_weight_obj == 'object' ) {
 
-			font_weight_obj.forEach(function(item) {
-				if( font_arr.value == item.value ) {
-					font_flag = false;
-				} else {
-					new_value  = item.value;
-					font_flag = true;
-				}
-			});
-		}
 
-		if( font_flag == true ) {
-			props.setAttributes( { [ font_arr.label ]: new_value } )
-		}
-	}
+	// 	const gfontsObj = googleFonts[fontFamily].weight;
+
+	// 	if( typeof gfontsObj == 'object' ) {
+
+	// 		const gfontsWeightObj = googleFonts[fontFamily].weight;
+	// 		gfontsObj.forEach(function(item) {
+
+	// 			if( fontArr.value == item ) {
+	// 				font_flag = false;
+	// 			} else {
+	// 				new_value  = item;
+	// 				font_flag = true;
+	// 				props.setAttributes( { [ props.fontWeight.label ]: new_value } );
+	// 				return;
+	// 			}
+	// 		});
+	// 	}
+	// }
 
 	return (
 		<div className="uag-typography-options">
@@ -120,7 +117,7 @@ function TypographyOptions( props ) {
 				value={ props.fontWeight.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontWeight.label ]: value } ) }
 				options={
-					font_weight_obj
+					fontWeightObj
 				}
 			/>
 			<SelectControl
