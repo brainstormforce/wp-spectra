@@ -15,6 +15,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -863,7 +865,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
-					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-size'     => $attr['prefixFontSizeMobile'].$attr['prefixFontSizeType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
@@ -890,7 +892,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
-					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-size'     => $attr['prefixFontSizeTablet'].$attr['prefixFontSizeType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
