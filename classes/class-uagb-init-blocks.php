@@ -219,7 +219,7 @@ class UAGB_Init_Blocks {
 				'category'          => 'uagb',
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
-				'image_sizes'		=> UAGB_Helper::get_image_sizes()
+				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 			)
 		);
 	} // End function editor_assets().

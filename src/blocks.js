@@ -27,8 +27,6 @@ import "./blocks/blockquote/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 
-console.log(uagb_blocks_info.image_sizes)
-
 const { updateCategory } = wp.blocks
 
 updateCategory( "uagb", {
