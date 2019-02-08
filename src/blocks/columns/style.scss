@@ -204,3 +204,11 @@
 		display: block;
 	}
 }
+
+@media (max-width: 449px) {
+	.uagb-columns__wrap {
+		.uagb-column__wrap.uagb-column__background-image{
+			background-attachment: scroll!important;
+		}
+	}
+}

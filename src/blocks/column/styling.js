@@ -127,6 +127,8 @@ function styling( props ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
 	}
 
+	styling_css += `@media (max-width: 449px) { #wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { background-attachment:scroll!important } }`
+
 	return styling_css
 }
 
