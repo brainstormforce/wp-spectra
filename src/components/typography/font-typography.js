@@ -26,8 +26,8 @@ function FontFamilyControl( props ) {
 		{ value: "Georgia", label: "Georgia", weight: [ "100", "200", "300", "400", "500", "600", "700", "800", "900" ], google: false },
 	]
 
-	let font_weight = ""
-	let font_subset = ""
+	let fontWeight = ""
+	let fontSubset = ""
 
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
@@ -36,29 +36,29 @@ function FontFamilyControl( props ) {
 		)
 
 		if( k === props.fontFamily.value ) {
-			font_weight = googleFonts[k].weight
-			font_subset = googleFonts[k].subset
+			fontWeight = googleFonts[k].weight
+			fontSubset = googleFonts[k].subset
 		}
 	})
 
 	// check if the font is a system font and then apply the font weight accordingly.
-	if ( font_weight === "" ) {
-		font_weight = fonts[0].weight
+	if ( fontWeight === "" ) {
+		fontWeight = fonts[0].weight
 	}
 
 	const fontWeightObj = []
 
-	font_weight.forEach(function(item) {
+	fontWeight.forEach(function(item) {
 		fontWeightObj.push(
 			{ value: item, label: item }
 		)
 	})
 
-	const font_subset_obj = []
+	const fontSubsetObj = []
 
-	if( typeof font_subset == "object" ) {
-		font_subset.forEach(function(item) {
-			font_subset_obj.push(
+	if( typeof fontSubset == "object" ) {
+		fontSubset.forEach(function(item) {
+			fontSubsetObj.push(
 				{ value: item, label: item }
 			)
 		})
@@ -125,7 +125,7 @@ function FontFamilyControl( props ) {
 				value={ props.fontSubset.value }
 				onChange={ ( value ) => props.setAttributes( { [ props.fontSubset.label ]: value } ) }
 				options={
-					font_subset_obj
+					fontSubsetObj
 				}
 			/>
 		</div>
