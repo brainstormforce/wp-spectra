@@ -3,24 +3,6 @@
  */
 const { __ } = wp.i18n
 
-const {
-	TextControl,
-	RangeControl,
-	SelectControl,
-	ButtonGroup,
-	Button,
-	PanelRow,
-	TabPanel,
-	Dashicon,
-} = wp.components
-
-const {
-	withSelect
-} = wp.data
-
-// Extend component
-const { Component, Fragment } = wp.element
-
 /**
  * Internal dependencies
  */
