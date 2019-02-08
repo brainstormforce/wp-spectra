@@ -33,7 +33,6 @@ function styling( props ) {
 		bottomMarginTablet,
 		leftMarginTablet,
 		rightMarginTablet,
-
 		topPaddingMobile,
 		bottomPaddingMobile,
 		leftPaddingMobile,
@@ -115,7 +114,7 @@ function styling( props ) {
 			"padding-bottom": bottomPaddingMobile + "px",
 			"padding-left": leftPaddingMobile + "px",
 			"padding-right": rightPaddingMobile + "px",
-		}
+		}		
 	}
 
 	if ( "right" == align ) {
