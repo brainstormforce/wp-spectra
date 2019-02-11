@@ -179,9 +179,6 @@ export default class UAGBAdvancedHeading extends Component {
 
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
-
-		console.log( headLoadGoogleFonts );
-		console.log( subHeadLoadGoogleFonts );
  
 		if( headLoadGoogleFonts == true ) {
 			

@@ -68,48 +68,59 @@ function FontFamilyControl( props ) {
 		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props
 		props.setAttributes( { [ fontFamily.label ]: value } )
 		onloadGoogleFonts( loadGoogleFonts, value )
-		// onFontChange( fontWeight, fontFamily.value )
-		// onFontChange( fontSubset, fontFamily.value )
+		onFontChange( fontWeight, fontSubset, value )
 	}
 
-	// const onFontChange = ( fontArr, fontFamily ) => {
+	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
 
-	// 	let font_flag;
-	// 	let new_value;
+		let font_flag;
+		let new_value;
 
+		if( typeof googleFonts[fontFamily] == 'object' ) {
 
+			const gfontsObj = googleFonts[fontFamily].weight;
+			const gfontSubsetObj = googleFonts[fontFamily].subset;
+			if( typeof gfontsObj == 'object' ) {
 
-	// 	const gfontsObj = googleFonts[fontFamily].weight;
+				gfontsObj.forEach(function(item) {
 
-	// 	if( typeof gfontsObj == 'object' ) {
+					if( fontWeight.value == item ) {
+						font_flag = false;
+					} else {
+						new_value  = item;
+						font_flag = true;
+						props.setAttributes( { [ props.fontWeight.label ]: new_value } );
+						return;
+					}
+				});
 
-	// 		const gfontsWeightObj = googleFonts[fontFamily].weight;
-	// 		gfontsObj.forEach(function(item) {
+				gfontSubsetObj.forEach(function(item) {
 
-	// 			if( fontArr.value == item ) {
-	// 				font_flag = false;
-	// 			} else {
-	// 				new_value  = item;
-	// 				font_flag = true;
-	// 				props.setAttributes( { [ props.fontWeight.label ]: new_value } );
-	// 				return;
-	// 			}
-	// 		});
-	// 	}
-	// }
+					console.log( fontSubset.value );
+					console.log( item );
+					console.log( fontSubset.value == item );
+					if( fontSubset.value == item ) {
+						font_flag = false;
+					} else {
+						new_value  = item;
+						font_flag = true;
+						props.setAttributes( { [ props.fontSubset.label ]: new_value } );
+						return;
+					}
+				});
+			}
+		}
+	}
 
 	const onloadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
 
 		let value = false;
 
 		if( fontFamily != '' && typeof googleFonts[fontFamily] != 'object' ) {
-			console.log( 'in if condition' );
 			value = false;
 		} else {
-			console.log( 'in else condition' );
 			value = true;
 		}
-		console.log( value );
 
 		props.setAttributes( { [loadGoogleFonts.label]: value } )
 	}
