@@ -29,10 +29,7 @@ class TypographyControl extends Component {
 	constructor() {
 		super( ...arguments )
 		this.onAdvancedControlClick  = this.onAdvancedControlClick.bind( this )
-	}
-
-	componentDidMount() {
-		console.log( this.state );
+		this.onAdvancedControlReset  = this.onAdvancedControlReset.bind( this )
 	}
 
 	onAdvancedControlClick() {
@@ -53,13 +50,37 @@ class TypographyControl extends Component {
 		);
 	}
 
+	onAdvancedControlReset() {
+
+		const { setAttributes } = this.props
+
+		// Reset Font family to default.
+		setAttributes( { [ this.props.fontFamily.label ]: '' } )
+		setAttributes( { [ this.props.fontWeight.label ]: '' } )
+		setAttributes( { [ this.props.fontSubset.label ]: '' } )
+
+		// Reset Font Size to default.
+		setAttributes( { [ this.props.fontSize.label ]: '' } )
+		setAttributes( { [ this.props.fontSizeType.label ]: '' } )
+		setAttributes( { [ this.props.fontSizeMobile.label ]: '' } )
+		setAttributes( { [ this.props.fontSizeTablet.label ]: '' } )
+
+		// Reset Line Height to default.
+		setAttributes( { [ this.props.lineHeight.label ]: '' } )
+		setAttributes( { [ this.props.lineHeightType.label ]: '' } )
+		setAttributes( { [ this.props.lineHeightMobile.label ]: '' } )
+		setAttributes( { [ this.props.lineHeightTablet.label ]: '' } )
+
+		// Reset Google Fonts to default.
+		setAttributes( { [ this.props.loadGoogleFonts.label ]: false } )
+
+	}
+
 	render() {
 
-
-		console.log( this.state )
-		const { disableFontfamily } = this.props;
-
 		let fontFamily;
+
+		const { disableFontfamily } = this.props;
 
 		if( true !== disableFontfamily ) {
 			fontFamily = (
@@ -74,12 +95,22 @@ class TypographyControl extends Component {
 		const fontAdvancedControls =  (
 			<Button
 				className="uagb-size-btn"
-				isSmall
-				isPrimary={ true }
+				isSmall	
 				aria-pressed={ ( this.state !== null ) }
 				onClick={ this.onAdvancedControlClick }
 			>
 				{ (this.state === null) ? __( "Show Advanced Controls" ) : this.state.showAdvancedControlsLabel }
+			</Button>
+		)
+
+		const resetFontAdvancedControls =  (
+			<Button
+				className="uagb-size-btn"
+				isSmall	
+				aria-pressed={ ( this.state !== null ) }
+				onClick={ this.onAdvancedControlReset }
+			> 
+				{ __( "Reset" ) } 
 			</Button>
 		)
 
@@ -125,6 +156,7 @@ class TypographyControl extends Component {
 					{ ...this.props }
 				/>
 				{ fontAdvancedControls }
+				{ resetFontAdvancedControls }
 				{ showAdvancedFontControls }
 			</div>
 		)
