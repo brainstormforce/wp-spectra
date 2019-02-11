@@ -100,3 +100,9 @@
 		margin-right: 0;
 	}
 }
+
+@media (max-width: 449px) {
+	.uagb-columns__wrap.uagb-columns__background-image{
+		background-attachment: scroll!important;
+	}
+}

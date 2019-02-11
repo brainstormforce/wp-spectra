@@ -50,3 +50,13 @@
 	width: 100%;
 	padding: 30px;
 }
+
+.edit-post-visual-editor .uagb-column__inner-wrap .editor-block-list__block > .editor-block-mover {
+    left: -30px;
+}
+
+@media (max-width: 449px) {
+	.block-editor-page #wpwrap .uagb-columns__inner-wrap .editor-block-list__block{
+		background-attachment: scroll!important;
+	}
+}
