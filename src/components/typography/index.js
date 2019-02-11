@@ -18,6 +18,18 @@ export {
 
 function TypographyControl( props ) {
 
+	const { disableFontfamily } = props;
+
+	let fontFamily;
+
+	if( true !== disableFontfamily ) {
+		fontFamily = (
+			<FontFamilyControl
+				{ ...props }
+			/>
+		)
+	}
+
 	return (
 		<div className="uag-typography-options">
 			<RangeTypographyControl
@@ -34,9 +46,7 @@ function TypographyControl( props ) {
 				sizeText = { __( "Font Size" ) }
 				{ ...props }
 			/>
-			<FontFamilyControl
-				{ ...props }
-			/>
+			{ fontFamily }
 			<RangeTypographyControl
 				type = { props.lineHeightType }
 				typeLabel = { props.lineHeightType.label }
