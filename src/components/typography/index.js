@@ -11,58 +11,124 @@ import RangeTypographyControl from "./range-typography"
 import TypographyStyles from "./inline-styles"
 import "./editor.scss"
 
+const {
+	Button,
+} = wp.components
+
+
+// Extend component
+const { Component, Fragment } = wp.element
+
 // Export for ease of importing in individual blocks.
 export {
 	TypographyStyles,
 }
 
-function TypographyControl( props ) {
+class TypographyControl extends Component {
 
-	const { disableFontfamily } = props;
-
-	let fontFamily;
-
-	if( true !== disableFontfamily ) {
-		fontFamily = (
-			<FontFamilyControl
-				{ ...props }
-			/>
-		)
+	constructor() {
+		super( ...arguments )
+		this.onAdvancedControlClick  = this.onAdvancedControlClick.bind( this )
 	}
 
-	return (
-		<div className="uag-typography-options">
-			<RangeTypographyControl
-				type = { props.fontSizeType }
-				typeLabel = { props.fontSizeType.label }
-				sizeMobile = { props.fontSizeMobile }
-				sizeMobileLabel = { props.fontSizeMobile.label }
-				sizeTablet = { props.fontSizeTablet }
-				sizeTabletLabel = { props.fontSizeTablet.label }
-				size = { props.fontSize }
-				sizeLabel = { props.fontSize.label }
-				sizeMobileText = { __( "Font Size Mobile" ) }
-				sizeTabletText = { __( "Font Size Tablet" ) }
-				sizeText = { __( "Font Size" ) }
-				{ ...props }
-			/>
-			{ fontFamily }
-			<RangeTypographyControl
-				type = { props.lineHeightType }
-				typeLabel = { props.lineHeightType.label }
-				sizeMobile = { props.lineHeightMobile }
-				sizeMobileLabel = { props.lineHeightMobile.label }
-				sizeTablet = { props.lineHeightTablet }
-				sizeTabletLabel = { props.lineHeightTablet.label }
-				size = { props.lineHeight }
-				sizeLabel = { props.lineHeight.label }
-				sizeMobileText = { __( "Line Height Mobile" ) }
-				sizeTabletText = { __( "Line Height Tablet" ) }
-				sizeText = { __( "Line Height" ) }
-				{ ...props }
-			/>
-		</div>
-	)
+	componentDidMount() {
+		console.log( this.state );
+	}
+
+	onAdvancedControlClick() {
+		
+		let control = true
+		let label = __( "Hide Advanced Controls" )
+
+		if( this.state !== null && this.state.showAdvancedControls === true ) {
+			control = false;
+			label = __( "Show Advanced Controls" )
+		}
+
+		this.setState(
+			{
+				showAdvancedControls: control,
+				showAdvancedControlsLabel: label
+			}
+		);
+	}
+
+	render() {
+
+
+		console.log( this.state )
+		const { disableFontfamily } = this.props;
+
+		let fontFamily;
+
+		if( true !== disableFontfamily ) {
+			fontFamily = (
+				<FontFamilyControl
+					{ ...this.props }
+				/>
+			)
+		}
+
+		let showAdvancedControls = false;
+
+		const fontAdvancedControls =  (
+			<Button
+				className="uagb-size-btn"
+				isSmall
+				isPrimary={ true }
+				aria-pressed={ ( this.state !== null ) }
+				onClick={ this.onAdvancedControlClick }
+			>
+				{ (this.state === null) ? __( "Show Advanced Controls" ) : this.state.showAdvancedControlsLabel }
+			</Button>
+		)
+
+		let showAdvancedFontControls;
+
+		if( this.state !== null && this.state.showAdvancedControls === true ) {
+			
+			showAdvancedFontControls = (
+				<Fragment>
+					{ fontFamily }
+					<RangeTypographyControl
+						type = { this.props.lineHeightType }
+						typeLabel = { this.props.lineHeightType.label }
+						sizeMobile = { this.props.lineHeightMobile }
+						sizeMobileLabel = { this.props.lineHeightMobile.label }
+						sizeTablet = { this.props.lineHeightTablet }
+						sizeTabletLabel = { this.props.lineHeightTablet.label }
+						size = { this.props.lineHeight }
+						sizeLabel = { this.props.lineHeight.label }
+						sizeMobileText = { __( "Line Height Mobile" ) }
+						sizeTabletText = { __( "Line Height Tablet" ) }
+						sizeText = { __( "Line Height" ) }
+						{ ...this.props }
+					/>
+				</Fragment>
+			)
+		}
+
+		return (
+			<div className="uag-typography-options">
+				<RangeTypographyControl
+					type = { this.props.fontSizeType }
+					typeLabel = { this.props.fontSizeType.label }
+					sizeMobile = { this.props.fontSizeMobile }
+					sizeMobileLabel = { this.props.fontSizeMobile.label }
+					sizeTablet = { this.props.fontSizeTablet }
+					sizeTabletLabel = { this.props.fontSizeTablet.label }
+					size = { this.props.fontSize }
+					sizeLabel = { this.props.fontSize.label }
+					sizeMobileText = { __( "Font Size Mobile" ) }
+					sizeTabletText = { __( "Font Size Tablet" ) }
+					sizeText = { __( "Font Size" ) }
+					{ ...this.props }
+				/>
+				{ fontAdvancedControls }
+				{ showAdvancedFontControls }
+			</div>
+		)
+	}
 }
 
 export default TypographyControl
