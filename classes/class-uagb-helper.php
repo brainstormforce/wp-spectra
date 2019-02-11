@@ -303,42 +303,46 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function blocks_advanced_heading_gfont( $attr ) {
 
-			if ( ! array_key_exists( $attr['headFontFamily'], self::$gfonts ) ) {
-				$add_font                                = array(
-					'fontfamily'   => $attr['headFontFamily'],
-					'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
-					'fontsubsets'  => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
-				);
-				self::$gfonts[ $attr['headFontFamily'] ] = $add_font;
-			} else {
-				if ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ) {
-					if ( ! in_array( $attr['headFontWeight'], self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], true ) ) {
-						array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], $attr['headFontWeight'] );
+			if( $attr['headLoadGoogleFonts'] == true ) {
+				if ( ! array_key_exists( $attr['headFontFamily'], self::$gfonts ) ) {
+					$add_font                                = array(
+						'fontfamily'   => $attr['headFontFamily'],
+						'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
+						'fontsubsets'  => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
+					);
+					self::$gfonts[ $attr['headFontFamily'] ] = $add_font;
+				} else {
+					if ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ) {
+						if ( ! in_array( $attr['headFontWeight'], self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], true ) ) {
+							array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], $attr['headFontWeight'] );
+						}
 					}
-				}
-				if ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ) {
-					if ( ! in_array( $attr['headFontSubset'], self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], true ) ) {
-						array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], $attr['headFontSubset'] );
+					if ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ) {
+						if ( ! in_array( $attr['headFontSubset'], self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], true ) ) {
+							array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], $attr['headFontSubset'] );
+						}
 					}
 				}
 			}
 
-			if ( ! array_key_exists( $attr['subHeadFontFamily'], self::$gfonts ) ) {
-				$add_font                                   = array(
-					'fontfamily'   => $attr['subHeadFontFamily'],
-					'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
-					'fontsubsets'  => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
-				);
-				self::$gfonts[ $attr['subHeadFontFamily'] ] = $add_font;
-			} else {
-				if ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ) {
-					if ( ! in_array( $attr['subHeadFontWeight'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], true ) ) {
-						array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], $attr['subHeadFontWeight'] );
+			if( $attr['subHeadLoadGoogleFonts'] == true ) {
+				if ( ! array_key_exists( $attr['subHeadFontFamily'], self::$gfonts ) ) {
+					$add_font                                   = array(
+						'fontfamily'   => $attr['subHeadFontFamily'],
+						'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
+						'fontsubsets'  => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
+					);
+					self::$gfonts[ $attr['subHeadFontFamily'] ] = $add_font;
+				} else {
+					if ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ) {
+						if ( ! in_array( $attr['subHeadFontWeight'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], true ) ) {
+							array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], $attr['subHeadFontWeight'] );
+						}
 					}
-				}
-				if ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ) {
-					if ( ! in_array( $attr['subHeadFontSubset'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], true ) ) {
-						array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], $attr['subHeadFontSubset'] );
+					if ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ) {
+						if ( ! in_array( $attr['subHeadFontSubset'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], true ) ) {
+							array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], $attr['subHeadFontSubset'] );
+						}
 					}
 				}
 			}

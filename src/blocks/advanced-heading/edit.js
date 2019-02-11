@@ -144,6 +144,8 @@ export default class UAGBAdvancedHeading extends Component {
 				separatorHeight,
 				headSpace,
 				separatorSpace,
+				headLoadGoogleFonts,
+				subHeadLoadGoogleFonts,
 			},
 		} = this.props
 
@@ -175,16 +177,39 @@ export default class UAGBAdvancedHeading extends Component {
 			</ButtonGroup>
 		)
 
-		const hconfig = {
-			google: {
-				families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
-			},
-		};
-		const sconfig = {
-			google: {
-				families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
-			},
-		};
+		let loadHeadingGoogleFonts;
+		let loadSubHeadingGoogleFonts;
+
+		console.log( headLoadGoogleFonts );
+		console.log( subHeadLoadGoogleFonts );
+ 
+		if( headLoadGoogleFonts == true ) {
+			
+			const hconfig = {
+				google: {
+					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+				},
+			};
+
+			loadHeadingGoogleFonts = (
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( subHeadLoadGoogleFonts == true ) {
+
+			const sconfig = {
+				google: {
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+				},
+			};
+
+			loadSubHeadingGoogleFonts = (
+				<WebfontLoader config={ sconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		return (
 			<Fragment>
@@ -214,7 +239,7 @@ export default class UAGBAdvancedHeading extends Component {
 							label={ __( "Heading Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							props = { this.props }
+							loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
 							fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
 							fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
 							fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
@@ -239,7 +264,7 @@ export default class UAGBAdvancedHeading extends Component {
 							label={ __( "Heading Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							props = { this.props }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
 							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
 							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
 							fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
@@ -369,10 +394,8 @@ export default class UAGBAdvancedHeading extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>
-				<WebfontLoader config={ hconfig }>
-				</WebfontLoader>
-				<WebfontLoader config={ sconfig }>
-				</WebfontLoader>
+				{ loadHeadingGoogleFonts }
+				{ loadSubHeadingGoogleFonts }
 
 			</Fragment>
 		)

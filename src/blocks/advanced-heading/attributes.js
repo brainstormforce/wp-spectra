@@ -122,6 +122,14 @@ const attributes = {
 		type: "number",
 		default: 15
 	},
+	headLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	subHeadLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	}
 }
 
 export default attributes

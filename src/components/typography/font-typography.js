@@ -65,9 +65,11 @@ function FontFamilyControl( props ) {
 	}
 
 	const onFontfamilyChange = ( value ) => {
-		props.setAttributes( { [ props.fontFamily.label ]: value } )
-		onFontChange( props.fontWeight, props.fontFamily.value )
-		onFontChange( props.fontSubset, props.fontFamily.value )
+		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props
+		props.setAttributes( { [ fontFamily.label ]: value } )
+		onloadGoogleFonts( loadGoogleFonts, value )
+		// onFontChange( fontWeight, fontFamily.value )
+		// onFontChange( fontSubset, fontFamily.value )
 	}
 
 	// const onFontChange = ( fontArr, fontFamily ) => {
@@ -95,6 +97,22 @@ function FontFamilyControl( props ) {
 	// 		});
 	// 	}
 	// }
+
+	const onloadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
+
+		let value = false;
+
+		if( fontFamily != '' && typeof googleFonts[fontFamily] != 'object' ) {
+			console.log( 'in if condition' );
+			value = false;
+		} else {
+			console.log( 'in else condition' );
+			value = true;
+		}
+		console.log( value );
+
+		props.setAttributes( { [loadGoogleFonts.label]: value } )
+	}
 
 	return (
 		<div className="uag-typography-options">
