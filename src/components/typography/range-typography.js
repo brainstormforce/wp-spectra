@@ -40,8 +40,8 @@ function RangeTypographyControl( props ) {
 					key={ key }
 					className="uagb-size-btn"
 					isSmall
-					isPrimary={ props.type === key }
-					aria-pressed={ props.type === key }
+					isPrimary={ props.type.value === key }
+					aria-pressed={ props.type.value === key }
 					onClick={ () => props.setAttributes( { [props.typeLabel]: key } ) }
 				>
 					{ name }

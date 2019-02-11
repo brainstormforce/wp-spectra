@@ -160,23 +160,6 @@ export default class UAGBAdvancedHeading extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		const subheadsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ subHeadFontSizeType === key }
-						aria-pressed={ subHeadFontSizeType === key }
-						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
-
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
 
