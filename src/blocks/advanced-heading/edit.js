@@ -179,7 +179,7 @@ export default class UAGBAdvancedHeading extends Component {
 
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
- 
+
 		if( headLoadGoogleFonts == true ) {
 			
 			const hconfig = {

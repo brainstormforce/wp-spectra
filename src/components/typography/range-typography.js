@@ -22,10 +22,16 @@ import map from "lodash/map"
 
 function RangeTypographyControl( props ) {
 
-	const sizeTypes = [
-		{ key: "px", name: __( "px" ) },
-		{ key: "em", name: __( "em" ) },
-	]
+	let sizeTypes;
+
+	if( 'sizeTypes' in props ) {
+		sizeTypes = props.sizeTypes;
+	} else {
+		sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
+	}
 
 	const sizeTypesControls = (
 		<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>

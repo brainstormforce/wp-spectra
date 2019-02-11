@@ -67,7 +67,7 @@ function FontFamilyControl( props ) {
 	const onFontfamilyChange = ( value ) => {
 		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props
 		props.setAttributes( { [ fontFamily.label ]: value } )
-		onloadGoogleFonts( loadGoogleFonts, value )
+		onLoadGoogleFonts( loadGoogleFonts, value )
 		onFontChange( fontWeight, fontSubset, value )
 	}
 
@@ -80,6 +80,7 @@ function FontFamilyControl( props ) {
 
 			const gfontsObj = googleFonts[fontFamily].weight;
 			const gfontSubsetObj = googleFonts[fontFamily].subset;
+
 			if( typeof gfontsObj == 'object' ) {
 
 				gfontsObj.forEach(function(item) {
@@ -96,9 +97,6 @@ function FontFamilyControl( props ) {
 
 				gfontSubsetObj.forEach(function(item) {
 
-					console.log( fontSubset.value );
-					console.log( item );
-					console.log( fontSubset.value == item );
 					if( fontSubset.value == item ) {
 						font_flag = false;
 					} else {
@@ -112,9 +110,9 @@ function FontFamilyControl( props ) {
 		}
 	}
 
-	const onloadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
+	const onLoadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
 
-		let value = false;
+		let value;
 
 		if( fontFamily != '' && typeof googleFonts[fontFamily] != 'object' ) {
 			value = false;
