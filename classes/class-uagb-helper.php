@@ -303,7 +303,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function blocks_advanced_heading_gfont( $attr ) {
 
-			if( $attr['headLoadGoogleFonts'] == true ) {
+			if ( true == $attr['headLoadGoogleFonts'] ) {
 				if ( ! array_key_exists( $attr['headFontFamily'], self::$gfonts ) ) {
 					$add_font                                = array(
 						'fontfamily'   => $attr['headFontFamily'],
@@ -325,7 +325,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			if( $attr['subHeadLoadGoogleFonts'] == true ) {
+			if ( true == $attr['subHeadLoadGoogleFonts'] ) {
 				if ( ! array_key_exists( $attr['subHeadFontFamily'], self::$gfonts ) ) {
 					$add_font                                   = array(
 						'fontfamily'   => $attr['subHeadFontFamily'],
