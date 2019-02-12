@@ -159,6 +159,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'leftMarginTablet'     => '',
 							'rightMarginTablet'    => '',
 							'colWidth'             => '',
+							'colWidthTablet'       => '',
+							'colWidthMobile'       => '',
 							'backgroundType'       => 'none',
 							'backgroundImage'      => '',
 							'backgroundPosition'   => 'center-center',
