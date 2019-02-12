@@ -626,7 +626,6 @@ class UAGBTimeline extends Component {
 							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
 							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
 						/>
-
 						</Fragment>
 					}
 
@@ -673,7 +672,6 @@ class UAGBTimeline extends Component {
 							lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "ctaLineHeightMobile" ) } }
 							lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "ctaLineHeightTablet" ) } }
 						/>
-
 						</Fragment>
 					}
 					<hr className="uagb-editor__separator" />
