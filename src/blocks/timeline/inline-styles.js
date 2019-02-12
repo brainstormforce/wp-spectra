@@ -71,15 +71,31 @@ function contentTimelineStyle( props ) {
 		subHeadingColor,
 		authorSpace,
 		authorColor,
-		authorFontSize,
 		authorFontSizeType,
-		authorFontSizeMobile,
+		authorFontSize,
 		authorFontSizeTablet,
+		authorFontSizeMobile,
+		authorFontFamily,
+		authorFontWeight,
+		authorFontSubset,
+		authorLineHeightType,
+		authorLineHeight,
+		authorLineHeightTablet,
+		authorLineHeightMobile,
+		authorLoadGoogleFonts,
 		ctaColor,
-		ctaFontSize,
 		ctaFontSizeType,
-		ctaFontSizeMobile,
+		ctaFontSize,
 		ctaFontSizeTablet,
+		ctaFontSizeMobile,
+		ctaFontFamily,
+		ctaFontWeight,
+		ctaFontSubset,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightTablet,
+		ctaLineHeightMobile,
+		ctaLoadGoogleFonts,
 		ctaBackground,
 	} = props.attributes
 
@@ -231,11 +247,16 @@ function contentTimelineStyle( props ) {
 			"text-align": align,
 		},
 		" .uagb-timeline__author .dashicons-admin-users" : {
-			"font-size" : authorFontSize+authorFontSizeType,
+			"font-size" : authorFontSize+authorFontSizeType,			
+			"font-weight": authorFontWeight,
+			"line-height": authorLineHeight + authorLineHeightType,
 			"color": authorColor,
 		},
 		" .uagb-timeline__author-link" :{
 			"font-size" : authorFontSize+authorFontSizeType,
+			"font-family": authorFontFamily,
+			"font-weight": authorFontWeight,
+			"line-height": authorLineHeight + authorLineHeightType,
 			"color": authorColor,
 		},
 
@@ -244,6 +265,9 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__link" :{
 			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
+			"line-height": ctaLineHeight + ctaLineHeightType,
 			"color": ctaColor,
 			"background-color": ctaBackground,
 		}
@@ -309,12 +333,15 @@ function contentTimelineStyle( props ) {
 		// CTA AUTHOR.
 		" .uagb-timeline__author .dashicons-admin-users" : {
 			"font-size" : authorFontSizeTablet+authorFontSizeType,
+			"line-height": authorLineHeightTablet + authorLineHeightType,
 		},
 		" .uagb-timeline__author-link" :{
 			"font-size" : authorFontSizeTablet+authorFontSizeType,
+			"line-height": authorLineHeightTablet + authorLineHeightType,
 		},
 		" .uagb-timeline__link" :{
 			"font-size" : ctaFontSizeTablet+ctaFontSizeType,
+			"line-height": ctaLineHeightTablet + ctaLineHeightType,
 		}
 	}
 
@@ -383,12 +410,15 @@ function contentTimelineStyle( props ) {
 		// CTA  AUthor
 		" .uagb-timeline__author .dashicons-admin-users" : {
 			"font-size" : authorFontSizeMobile+authorFontSizeType,
+			"line-height": authorLineHeightMobile + authorLineHeightType,
 		},
 		" .uagb-timeline__author-link" :{
 			"font-size" : authorFontSizeMobile+authorFontSizeType,
+			"line-height": authorLineHeightMobile + authorLineHeightType,
 		},
 		" .uagb-timeline__link" :{
 			"font-size" : ctaFontSizeMobile+ctaFontSizeType,
+			"line-height": ctaLineHeightMobile + ctaLineHeightType,
 		}
 	}
 
