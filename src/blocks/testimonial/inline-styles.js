@@ -10,7 +10,6 @@ function TestimonialStyle( props ) {
 		companyColor,
 		descColor,
 		authorColor,
-
 		nameFontSizeType,
 		nameFontSize,
 		nameFontSizeTablet,
@@ -22,7 +21,6 @@ function TestimonialStyle( props ) {
 		nameLineHeight,
 		nameLineHeightTablet,
 		nameLineHeightMobile,
-
 		companyFontSizeType,
 		companyFontSize,
 		companyFontSizeTablet,
@@ -34,7 +32,6 @@ function TestimonialStyle( props ) {
 		companyLineHeight,
 		companyLineHeightTablet,
 		companyLineHeightMobile,
-
 		descFontSizeType,
 		descFontSize,
 		descFontSizeTablet,
@@ -47,7 +44,6 @@ function TestimonialStyle( props ) {
 		descLineHeightTablet,
 		descLineHeightMobile,
 		descLoadGoogleFonts,
-
 		descSpace,
 		block_id,
 		nameSpace,
