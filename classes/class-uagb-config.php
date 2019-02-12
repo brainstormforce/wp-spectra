@@ -17,6 +17,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 
 
+
 		/**
 		 * Block Attributes
 		 *
@@ -728,10 +729,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconFocus'               => '#fff',
 							'iconBgFocus'             => '#61ce70',
 							'dateColor'               => '#333',
-							'dateFontSizeType'        => 'px',
-							'dateFontSize'            => 12,
-							'dateFontSizeTablet'      => '',
-							'dateFontSizeMobile'      => '',
+							'dateFontsizeType'        => 'px',
+							'dateFontsize'            => 12,
+							'dateFontsizeTablet'      => '',
+							'dateFontsizeMobile'      => '',
 							'dateFontFamily'          => '',
 							'dateFontWeight'          => '',
 							'dateFontSubset'          => '',

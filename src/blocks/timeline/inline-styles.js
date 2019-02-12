@@ -105,6 +105,7 @@ function contentTimelineStyle( props ) {
 		var clientId = block_id
 	}
 
+
 	var resp_selectors = "left"
 
 	var selectors = {

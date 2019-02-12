@@ -277,18 +277,18 @@ function uagb_register_post_timeline() {
 					'type'    => 'string',
 					'default' => '#333',
 				),
-				'dateFontSizeType'        => array(
+				'dateFontsizeType'        => array(
 					'type'    => 'string',
 					'default' => 'px',
 				),
-				'dateFontSize'            => array(
+				'dateFontsize'            => array(
 					'type'    => 'number',
 					'default' => 12,
 				),
-				'dateFontSizeTablet'      => array(
+				'dateFontsizeTablet'      => array(
 					'type' => 'number',
 				),
-				'dateFontSizeMobile'      => array(
+				'dateFontsizeMobile'      => array(
 					'type' => 'number',
 				),
 				'dateFontFamily'          => array(
