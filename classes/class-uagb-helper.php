@@ -302,46 +302,37 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array $attr the blocks attr.
 		 */
 		public function blocks_advanced_heading_gfont( $attr ) {
+			self::blocks_google_font( $attr['headLoadGoogleFonts'], $attr['headFontFamily'], $attr['headFontWeight'], $attr['headFontSubset'] );
+			self::blocks_google_font( $attr['subHeadLoadGoogleFonts'], $attr['subHeadFontFamily'], $attr['subHeadFontWeight'], $attr['subHeadFontSubset'] );
+		}
 
-			if ( true == $attr['headLoadGoogleFonts'] ) {
-				if ( ! array_key_exists( $attr['headFontFamily'], self::$gfonts ) ) {
+		/**
+		 * Adds Google fonts all blocks.
+		 *
+		 * @param array $loadGoogleFont the blocks attr.
+		 * @param array $fontfamily the blocks attr.
+		 * @param array $fontWeight the blocks attr.
+		 * @param array $fontsubset the blocks attr.
+		 */
+		public static function blocks_google_font( $loadGoogleFont, $fontfamily, $fontWeight, $fontsubset ) {
+
+			if ( true == $loadGoogleFont ) {
+				if ( ! array_key_exists( $fontfamily, self::$gfonts ) ) {
 					$add_font                                = array(
-						'fontfamily'   => $attr['headFontFamily'],
-						'fontvariants' => ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ? array( $attr['headFontWeight'] ) : array() ),
-						'fontsubsets'  => ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ? array( $attr['headFontSubset'] ) : array() ),
+						'fontfamily'   => $fontfamily,
+						'fontvariants' => ( isset( $fontWeight ) && ! empty( $fontWeight ) ? array( $fontWeight ) : array() ),
+						'fontsubsets'  => ( isset( $fontsubset ) && ! empty( $fontsubset ) ? array( $fontsubset ) : array() ),
 					);
-					self::$gfonts[ $attr['headFontFamily'] ] = $add_font;
+					self::$gfonts[ $fontfamily ] = $add_font;
 				} else {
-					if ( isset( $attr['headFontWeight'] ) && ! empty( $attr['headFontWeight'] ) ) {
-						if ( ! in_array( $attr['headFontWeight'], self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], true ) ) {
-							array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontvariants'], $attr['headFontWeight'] );
+					if ( isset( $fontWeight ) && ! empty( $fontWeight ) ) {
+						if ( ! in_array( $fontWeight, self::$gfonts[ $fontfamily ]['fontvariants'], true ) ) {
+							array_push( self::$gfonts[ $fontfamily ]['fontvariants'], $fontWeight );
 						}
 					}
-					if ( isset( $attr['headFontSubset'] ) && ! empty( $attr['headFontSubset'] ) ) {
-						if ( ! in_array( $attr['headFontSubset'], self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], true ) ) {
-							array_push( self::$gfonts[ $attr['headFontFamily'] ]['fontsubsets'], $attr['headFontSubset'] );
-						}
-					}
-				}
-			}
-
-			if ( true == $attr['subHeadLoadGoogleFonts'] ) {
-				if ( ! array_key_exists( $attr['subHeadFontFamily'], self::$gfonts ) ) {
-					$add_font                                   = array(
-						'fontfamily'   => $attr['subHeadFontFamily'],
-						'fontvariants' => ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ? array( $attr['subHeadFontWeight'] ) : array() ),
-						'fontsubsets'  => ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ? array( $attr['subHeadFontSubset'] ) : array() ),
-					);
-					self::$gfonts[ $attr['subHeadFontFamily'] ] = $add_font;
-				} else {
-					if ( isset( $attr['subHeadFontWeight'] ) && ! empty( $attr['subHeadFontWeight'] ) ) {
-						if ( ! in_array( $attr['subHeadFontWeight'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], true ) ) {
-							array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontvariants'], $attr['subHeadFontWeight'] );
-						}
-					}
-					if ( isset( $attr['subHeadFontSubset'] ) && ! empty( $attr['subHeadFontSubset'] ) ) {
-						if ( ! in_array( $attr['subHeadFontSubset'], self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], true ) ) {
-							array_push( self::$gfonts[ $attr['subHeadFontFamily'] ]['fontsubsets'], $attr['subHeadFontSubset'] );
+					if ( isset( $fontsubset ) && ! empty( $fontsubset ) ) {
+						if ( ! in_array( $fontsubset, self::$gfonts[ $fontfamily ]['fontsubsets'], true ) ) {
+							array_push( self::$gfonts[ $attr[$fontfamily] ]['fontsubsets'], $fontsubset );
 						}
 					}
 				}
