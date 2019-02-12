@@ -13,6 +13,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	final class UAGB_Helper {
 
 
+
+
 		/**
 		 * Member Variable
 		 *
@@ -216,6 +218,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/testimonial':
 					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
+					$this->blocks_testimonial_gfont( $blockattr );
 					break;
 
 				case 'uagb/team':
@@ -303,6 +306,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function blocks_advanced_heading_gfont( $attr ) {
 			self::blocks_google_font( $attr['headLoadGoogleFonts'], $attr['headFontFamily'], $attr['headFontWeight'], $attr['headFontSubset'] );
 			self::blocks_google_font( $attr['subHeadLoadGoogleFonts'], $attr['subHeadFontFamily'], $attr['subHeadFontWeight'], $attr['subHeadFontSubset'] );
+		}
+
+
+		/**
+		 * Adds Google fonts for Testimonial block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_testimonial_gfont( $attr ) {
+			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$name_load_google_fonts = isset( $attr['nameLoadGoogleFonts'] ) ? $attr['nameLoadGoogleFonts'] : '';
+			$name_font_family       = isset( $attr['nameFontFamily'] ) ? $attr['nameFontFamily'] : '';
+			$name_font_weight       = isset( $attr['nameFontWeight'] ) ? $attr['nameFontWeight'] : '';
+			$name_font_subset       = isset( $attr['nameFontSubset'] ) ? $attr['nameFontSubset'] : '';
+
+			$company_load_google_fonts = isset( $attr['companyLoadGoogleFonts'] ) ? $attr['companyLoadGoogleFonts'] : '';
+			$company_font_family       = isset( $attr['companyFontFamily'] ) ? $attr['companyFontFamily'] : '';
+			$company_font_weight       = isset( $attr['companyFontWeight'] ) ? $attr['companyFontWeight'] : '';
+			$company_font_subset       = isset( $attr['companyFontSubset'] ) ? $attr['companyFontSubset'] : '';
+
+			self::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
+			self::blocks_google_font( $name_load_google_fonts, $name_font_family, $name_font_family, $name_font_subset );
+			self::blocks_google_font( $company_load_google_fonts, $company_font_family, $company_font_family, $company_font_subset );
 		}
 
 		/**
