@@ -9,6 +9,8 @@ function styling( props ) {
 
 	const {
 		colWidth,
+		colWidthTablet,
+		colWidthMobile,
 
 		topPadding,
 		bottomPadding,
@@ -50,7 +52,6 @@ function styling( props ) {
 	} = props.attributes
 
 	var position = backgroundPosition.replace( "-", " " )
-
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
@@ -113,6 +114,18 @@ function styling( props ) {
 		}
 	}
 
+	if ( colWidth != "" && colWidth != 0 ) {
+		selectors[".editor-block-list__block"] = { "width" : colWidth + "%" }
+	}
+
+	if ( colWidthTablet != "" && colWidthTablet != 0 ) {
+		tablet_selectors[".editor-block-list__block"] = { "width" : colWidthTablet + "%" }
+	}
+
+	if ( colWidthMobile != "" && colWidthMobile != 0 ) {
+		mobile_selectors[".editor-block-list__block"] = { "width" : colWidthMobile + "%" }
+	}
+
 	var styling_css = ""
 
 	var id = `#wpwrap .edit-post-visual-editor #block-${ props.clientId }`
@@ -123,9 +136,9 @@ function styling( props ) {
 
 	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
-	if ( colWidth != "" && colWidth != 0 ) {
+	/*if ( colWidth != "" && colWidth != 0 ) {
 		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
-	}
+	}*/
 
 	return styling_css
 }
