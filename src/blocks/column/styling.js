@@ -136,10 +136,6 @@ function styling( props ) {
 
 	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
-	/*if ( colWidth != "" && colWidth != 0 ) {
-		styling_css += `#wpwrap .edit-post-visual-editor #block-${ props.clientId }.editor-block-list__block { width: ${colWidth}%; }`
-	}*/
-
 	return styling_css
 }
 
