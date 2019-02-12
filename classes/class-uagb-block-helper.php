@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -520,11 +521,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
-					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightTypeMobile'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
-					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightTypeMobile'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				)
 
 			);
@@ -532,12 +533,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
-					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightTypeTablet'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
 
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
-					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightTypeTablet'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				)
 
 			);

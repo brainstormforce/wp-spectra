@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
+
 		/**
 		 * Member Variable
 		 *
@@ -112,7 +113,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$link .= '&amp;subset=' . implode( ',', $subsets );
 			}
 			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
-
 		}
 
 
@@ -293,7 +293,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			echo $css;
 
 			// @codingStandardsIgnoreEnd
-
 		}
 
 		/**
@@ -319,7 +318,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( true == $load_google_font ) {
 				if ( ! array_key_exists( $font_family, self::$gfonts ) ) {
 					$add_font                     = array(
-						'font_family'  => $font_family,
+						'fontfamily'   => $font_family,
 						'fontvariants' => ( isset( $font_weight ) && ! empty( $font_weight ) ? array( $font_weight ) : array() ),
 						'fontsubsets'  => ( isset( $font_subset ) && ! empty( $font_subset ) ? array( $font_subset ) : array() ),
 					);
