@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1879,7 +1880,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
 					"color"  => $attr['headingColor'],
-					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType']
+					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
@@ -1895,15 +1899,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__date-new" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
-					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType']
+					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline-desc-content" => array(
-					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType']
+					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				),
 			);
 
@@ -1913,15 +1921,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__date-new" => array(
 					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
-					"font-size" => $attr['headFontSizeMobile'] . $attr['headFontSizeType']
+					"font-size" => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline-desc-content" => array(
-					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType']
+					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 			);
 
@@ -2745,6 +2757,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"text-align"  => $attr['align'],
 					"color"  => $attr['subHeadingColor'],
 					"font-size"  => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__events-new' => array(
 					'text-align' => $attr['align']
@@ -2807,10 +2822,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => $attr['verticalSpace'].'px',
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			        'margin-bottom' => $attr['dateBottomspace'].'px',
-			        'color'=> $attr['dateColor'],
-			        'font-size' => $attr['dateFontsize'].$attr['dateFontsizeType'],
-			        'text-align'=> $attr['align'],
+					'margin-bottom' => $attr['dateBottomspace'].'px',
+					'color'         => $attr['dateColor'],
+					'font-size'     => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'font-family'   => $attr['dateFontFamily'],
+					'font-weight'   => $attr['dateFontWeight'],
+					'line-height'   => $attr['dateLineHeight'] . $attr['dateLineHeightType'],
+					'text-align'    => $attr['align'],
 			    ),
 			    ' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 			        'margin-left' => $attr['horizontalSpace'].'px',
@@ -2819,8 +2837,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => $attr['horizontalSpace'].'px',
 				),
 				' .uagb-timeline__date-new' => array(
-					'color'=> $attr['dateColor'],
-					'font-size' => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'color'       => $attr['dateColor'],
+					'font-size'   => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'font-family' => $attr['dateFontFamily'],
+					'font-weight' => $attr['dateFontWeight'],
+					'line-height' => $attr['dateLineHeight'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__events-inner-new' => array(
 					'background-color' => $attr['backgroundColor'],
@@ -2828,9 +2849,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'=> $attr['bgPadding'].'px',
 				),
 				' .uagb-timeline__main .uagb-timeline__icon-new' => array(
-					'color'=> $attr['iconColor'],
+					'color'     => $attr['iconColor'],
 					'font-size' => $attr['iconSize'].'px',
-					'width' => $attr['iconSize'].'px',
+					'width'     => $attr['iconSize'].'px',
 				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
 					'fill'=> $attr['iconFocus'],
@@ -2862,12 +2883,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet_selector = array(
 				" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 				    'font-size' => $attr['dateFontsizeTablet'].$attr['dateFontsizeType'],
+				    'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__date-new' => array(
 					'font-size' => $attr['dateFontsizeTablet'].$attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,
@@ -2911,12 +2935,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
         	$m_selectors = array(
         		" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 				    'font-size' => $attr['dateFontsizeMobile'].$attr['dateFontsizeType'],
+				    'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__date-new' => array(
 					'font-size' => $attr['dateFontsizeMobile'].$attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,

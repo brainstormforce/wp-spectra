@@ -13,6 +13,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	final class UAGB_Helper {
 
 
+
+
+
+
 		/**
 		 * Member Variable
 		 *
@@ -228,6 +232,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/content-timeline':
 					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+					$this->blocks_content_timeline_gfont( $blockattr );
 					break;
 
 				case 'uagb/call-to-action':
@@ -303,6 +308,32 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function blocks_advanced_heading_gfont( $attr ) {
 			self::blocks_google_font( $attr['headLoadGoogleFonts'], $attr['headFontFamily'], $attr['headFontWeight'], $attr['headFontSubset'] );
 			self::blocks_google_font( $attr['subHeadLoadGoogleFonts'], $attr['subHeadFontFamily'], $attr['subHeadFontWeight'], $attr['subHeadFontSubset'] );
+		}
+
+		/**
+		 * Adds Google fonts for Content Timeline block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_content_timeline_gfont( $attr ) {
+			$head_load_google_fonts = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family       = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight       = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset       = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subheadload_google_fonts = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subheadfont_family       = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subheadfont_weight       = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subheadfont_subset       = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$date_load_google_fonts = isset( $attr['dateLoadGoogleFonts'] ) ? $attr['dateLoadGoogleFonts'] : '';
+			$date_font_family       = isset( $attr['dateFontFamily'] ) ? $attr['dateFontFamily'] : '';
+			$date_font_weight       = isset( $attr['dateFontWeight'] ) ? $attr['dateFontWeight'] : '';
+			$date_font_subset       = isset( $attr['dateFontSubset'] ) ? $attr['dateFontSubset'] : '';
+
+			self::blocks_google_font( $head_load_google_fonts, $head_font_family, $head_font_weight, $head_font_subset );
+			self::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
+			self::blocks_google_font( $date_load_google_fonts, $date_font_family, $date_font_weight, $date_font_subset );
 		}
 
 		/**

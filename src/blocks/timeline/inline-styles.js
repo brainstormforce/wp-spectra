@@ -24,28 +24,51 @@ function contentTimelineStyle( props ) {
 		readMoreText,
 		icon,
 		iconColor,
-		dateFontsize,
 		dateFontsizeType,
-		dateFontsizeMobile,
+		dateFontsize,
 		dateFontsizeTablet,
+		dateFontsizeMobile,
+		dateFontFamily,
+		dateFontWeight,
+		dateFontSubset,
+		dateLineHeightType,
+		dateLineHeight,
+		dateLineHeightTablet,
+		dateLineHeightMobile,
+		dateLoadGoogleFonts,
 		dateColor,
 		iconSize,
 		iconFocus,
 		iconBgFocus,
 		block_id,
-		headFontSize,
 		headFontSizeType,
-		headFontSizeMobile,
+		headFontSize,
 		headFontSizeTablet,
+		headFontSizeMobile,
+		headFontFamily,
+		headFontWeight,
+		headFontSubset,
+		headLineHeightType,
+		headLineHeight,
+		headLineHeightTablet,
+		headLineHeightMobile,
+		headLoadGoogleFonts,
 		align,
 		headingColor,
 		headSpace,
-		subHeadFontSize,
 		subHeadFontSizeType,
-		subHeadFontSizeMobile,
+		subHeadFontSize,
 		subHeadFontSizeTablet,
+		subHeadFontSizeMobile,
+		subHeadFontFamily,
+		subHeadFontWeight,
+		subHeadFontSubset,
+		subHeadLineHeightType,
+		subHeadLineHeight,
+		subHeadLineHeightTablet,
+		subHeadLineHeightMobile,
+		subHeadLoadGoogleFonts,
 		subHeadingColor,
-
 		authorSpace,
 		authorColor,
 		authorFontSize,
@@ -71,11 +94,17 @@ function contentTimelineStyle( props ) {
 	var selectors = {
 		" .uagb-timeline__heading" : {
 			"font-size" : headFontSize+headFontSizeType,
+			"font-family": headFontFamily,
+			"font-weight": headFontWeight,
+			"line-height": headLineHeight + headLineHeightType,
 			"text-align": align,
 			"color": headingColor,
 		},
 		" .uagb-timeline__heading a" : {
 			"font-size" : headFontSize+headFontSizeType,
+			"font-family": headFontFamily,
+			"font-weight": headFontWeight,
+			"line-height": headLineHeight + headLineHeightType,
 			"text-align": align,
 			"color": headingColor,
 		},
@@ -84,6 +113,9 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline-desc-content" : {
 			"font-size" : subHeadFontSize+subHeadFontSizeType,
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"line-height": subHeadLineHeight + subHeadLineHeightType,
 			"text-align": align,
 			"color": subHeadingColor,
 		},
@@ -151,6 +183,9 @@ function contentTimelineStyle( props ) {
 			"margin-bottom" : dateBottomspace+"px",
 			"color": dateColor,
 			"font-size" : dateFontsize+dateFontsizeType,
+			"font-family": dateFontFamily,
+			"font-weight": dateFontWeight,
+			"line-height": dateLineHeight + dateLineHeightType,
 			"text-align": align,
 		},
 		" .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left" : {
@@ -162,6 +197,9 @@ function contentTimelineStyle( props ) {
 		" .uagb-timeline__date-new" : {
 			"color": dateColor,
 			"font-size" : dateFontsize+dateFontsizeType,
+			"font-family": dateFontFamily,
+			"font-weight": dateFontWeight,
+			"line-height": dateLineHeight + dateLineHeightType,
 		},
 		" .uagb-timeline__events-inner-new" : {
 			"background-color" : backgroundColor,
@@ -215,18 +253,23 @@ function contentTimelineStyle( props ) {
 	var tablet_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
 			"font-size" : dateFontsizeTablet + dateFontsizeType,
+			"line-height": dateLineHeightTablet + dateLineHeightType,
 		},
 		" .uagb-timeline__date-new" : {
 			"font-size" : dateFontsizeTablet + dateFontsizeType,
+			"line-height": dateLineHeightTablet + dateLineHeightType,
 		},
 		" .uagb-timeline__heading" : {
-			"font-size" : headFontSizeTablet + headFontSizeType
+			"font-size" : headFontSizeTablet + headFontSizeType,
+			"line-height": headLineHeightTablet + headLineHeightType,
 		},
 		" .uagb-timeline__heading a" : {
-			"font-size" : headFontSizeTablet + headFontSizeType
+			"font-size" : headFontSizeTablet + headFontSizeType,
+			"line-height": headLineHeightTablet + headLineHeightType,
 		},
 		" .uagb-timeline-desc-content" : {
-			"font-size" : subHeadFontSizeTablet + subHeadFontSizeType
+			"font-size" : subHeadFontSizeTablet + subHeadFontSizeType,
+			"line-height": subHeadLineHeightTablet + subHeadLineHeightType,
 		},
 		" .uagb-timeline__center-block .uagb-timeline__marker" : {
 		    "margin-left" : 0,
@@ -278,18 +321,23 @@ function contentTimelineStyle( props ) {
 	var mobile_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
 			"font-size" : dateFontsizeMobile + dateFontsizeType,
+			"line-height": dateLineHeightMobile + dateLineHeightType,
 		},
 		" .uagb-timeline__date-new" : {
 			"font-size" : dateFontsizeMobile + dateFontsizeType,
+			"line-height": dateLineHeightMobile + dateLineHeightType,
 		},
 		" .uagb-timeline__heading" : {
-			"font-size" : headFontSizeMobile + headFontSizeType
+			"font-size" : headFontSizeMobile + headFontSizeType,
+			"line-height": headLineHeightMobile + headLineHeightType,
 		},
 		" .uagb-timeline__heading a" : {
-			"font-size" : headFontSizeMobile + headFontSizeType
+			"font-size" : headFontSizeMobile + headFontSizeType,
+			"line-height": headLineHeightMobile + headLineHeightType,
 		},
 		" .uagb-timeline-desc-content" : {
-			"font-size" : subHeadFontSizeMobile + subHeadFontSizeType
+			"font-size" : subHeadFontSizeMobile + subHeadFontSizeType,
+			"line-height": subHeadLineHeightMobile + subHeadLineHeightType,
 		},
 		" .uagb-timeline__center-block .uagb-timeline__marker" : {
 		    "margin-left" : 0,
