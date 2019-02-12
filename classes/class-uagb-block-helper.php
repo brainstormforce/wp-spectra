@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1985,20 +1986,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__author-link" => array(
 					"color"  => $attr['authorColor'],
 					"font-size"  => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-family' => $attr['authorFontFamily'],
+					'font-weight' => $attr['authorFontWeight'],
+					'line-height' => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"color"  => $attr['authorColor'],
 					"font-size"  => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-weight' => $attr['authorFontWeight'],
+					'line-height' => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"color"  => $attr['ctaColor'],
 					"font-size"  => $attr['ctaFontSize'] . $attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
+					'line-height' => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
 					"background-color"  => $attr['ctaBackground'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"text-align"  => $attr['align'],
 					"color"  => $attr['headingColor'],
 					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
@@ -2017,15 +2029,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-timeline__author-link" => array(
 					"font-size"  => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"font-size"  => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"font-size"  => $attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"font-size"  => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
 					"text-align"  => 'left',
@@ -2045,15 +2061,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				" .uagb-timeline__author-link" => array(
 					"font-size"  => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"font-size"  => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"font-size"  => $attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"font-size"  => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
@@ -2755,8 +2775,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-timeline-desc-content" => array(
 					"text-align"  => $attr['align'],
-					"color"  => $attr['subHeadingColor'],
-					"font-size"  => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					"color"       => $attr['subHeadingColor'],
+					"font-size"   => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
 					'font-family' => $attr['subHeadFontFamily'],
 					'font-weight' => $attr['subHeadFontWeight'],
 					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
@@ -2797,10 +2817,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    ),
 			    ' .uagb-timeline__marker' => array(
 					'background-color' => $attr['separatorBg'],
-					'min-height'=> $attr['connectorBgsize'].'px',
-					'min-width' => $attr['connectorBgsize'].'px',
-					'line-height' => $attr['connectorBgsize'].'px',
-					'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
+					'min-height'       => $attr['connectorBgsize'].'px',
+					'min-width'        => $attr['connectorBgsize'].'px',
+					'line-height'      => $attr['connectorBgsize'].'px',
+					'border'           => $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
 				),
 				' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 			        'height' => $attr['connectorBgsize'].'px',
