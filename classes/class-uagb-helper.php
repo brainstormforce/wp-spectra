@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 
+
 		/**
 		 * Member Variable
 		 *
@@ -232,9 +233,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $this->blocks_content_timeline_gfont( $blockattr );
                     break;
 
+				case 'uagb/restaurant-menu':
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );					
+					$this->blocks_restaurant_menu_gfont( $blockattr );
+					break;
+
                 case 'uagb/call-to-action':
                     $css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
                     break;
+
 
                 case 'uagb/post-timeline':
                     $css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
@@ -320,6 +327,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 *
+		 * Adds Google fonts for Restaurant Menu block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_restaurant_menu_gfont( $attr ) {
+			$title_load_google_fonts = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family       = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight       = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset       = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$price_load_google_fonts = isset( $attr['priceLoadGoogleFonts'] ) ? $attr['priceLoadGoogleFonts'] : '';
+			$price_font_family       = isset( $attr['priceFontFamily'] ) ? $attr['priceFontFamily'] : '';
+			$price_font_weight       = isset( $attr['priceFontWeight'] ) ? $attr['priceFontWeight'] : '';
+			$price_font_subset       = isset( $attr['priceFontSubset'] ) ? $attr['priceFontSubset'] : '';
+
+			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			self::blocks_google_font( $title_load_google_fonts, $title_font_family, $title_font_weight, $title_font_subset );
+			self::blocks_google_font( $price_load_google_fonts, $price_font_family, $price_font_weight, $price_font_subset );
+			self::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
+
+		/**
 		 * Adds Google fonts for Content Timeline block.
 		 *
 		 * @param array $attr the blocks attr.
@@ -367,6 +401,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
 		}
 
+
 		/**
 		 * Adds Google fonts all blocks.
 		 *
@@ -393,7 +428,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 					if ( isset( $font_subset ) && ! empty( $font_subset ) ) {
 						if ( ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
-							array_push( self::$gfonts[ $attr[ $font_family ] ]['fontsubsets'], $font_subset );
+							array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
 						}
 					}
 				}

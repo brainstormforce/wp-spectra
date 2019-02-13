@@ -15,6 +15,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -23,8 +25,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_section_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_section_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -213,8 +214,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_columns_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_columns_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -363,8 +363,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_column_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_column_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -486,8 +485,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_adv_heading_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_adv_heading_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
 
@@ -576,8 +574,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_buttons_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_buttons_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
 
@@ -734,8 +731,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_info_box_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_info_box_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
@@ -945,8 +941,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_call_to_action_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_call_to_action_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
@@ -1096,8 +1091,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_testimonial_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_testimonial_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
@@ -1228,8 +1222,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_team_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_team_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
 
@@ -1386,8 +1379,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_social_share_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_social_share_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
 
@@ -1628,8 +1620,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_icon_list_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
 
@@ -1866,8 +1857,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_content_timeline_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_content_timeline_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
 
@@ -1961,8 +1951,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_timeline_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_timeline_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-timeline']['attributes'];
 
@@ -2109,8 +2098,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_restaurant_menu_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_restaurant_menu_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
 
@@ -2146,23 +2134,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'justify-content' => $align,
 			    ),
 			    " .uagb-rm__content" => array(
-			        'text-align' =>  $attr['headingAlign'] ,
-			        'padding-left'  => $attr['contentHrPadding'] . 'px',
-					'padding-right' => $attr['contentHrPadding'] . 'px',
-					'padding-top'   => $attr['contentVrPadding'] . 'px',
-					'padding-bottom'  => $attr['contentVrPadding'] . 'px',
+					'text-align'     => $attr['headingAlign'] ,
+					'padding-left'   => $attr['contentHrPadding'] . 'px',
+					'padding-right'  => $attr['contentHrPadding'] . 'px',
+					'padding-top'    => $attr['contentVrPadding'] . 'px',
+					'padding-bottom' => $attr['contentVrPadding'] . 'px',
 			    ),
 			    " .uagb-rm__title" => array(
-			        'font-size' =>  $attr['titleFontSize'] .$attr['titleFontSizeType'],
-			        'color'=>  $attr['titleColor'] ,
-			        'margin-bottom'=>  $attr['titleSpace'] .'px',
+					'font-size'     => $attr['titleFontSize'] .$attr['titleFontSizeType'],
+					'color'         => $attr['titleColor'] ,
+					'margin-bottom' => $attr['titleSpace'] .'px',
+					'font-family'   => $attr['titleFontFamily'],
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 			    ),
 			    " .uagb-rm__price" => array(
-			        'font-size' =>  $attr['priceFontSize'].$attr['priceFontSizeType'],
-			        'color'=>  $attr['priceColor'],
+			        'font-size' => $attr['priceFontSize'].$attr['priceFontSizeType'],
+			        'font-family'   => $attr['priceFontFamily'],
+					'font-weight'   => $attr['priceFontWeight'],
+					'line-height'   => $attr['priceLineHeight'] . $attr['priceLineHeightType'],
+			        'color'     => $attr['priceColor'],
 			    ),
 			    " .uagb-rm__desc" => array(
 			        'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
+			        'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
 			    ),			  
@@ -2183,13 +2180,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'clear'=> 'left',
 				),
 				" .uagb-rm__title" => array(
-					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-rm__desc" => array(
-					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType']
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 				" .uagb-rm__price" => array(
-					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType']
+					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType'],
+					'line-height'   => $attr['priceLineHeightTablet'] . $attr['priceLineHeightType'],
 				)
 			);
 
@@ -2199,13 +2199,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'clear'=> 'left',
 				),
 				" .uagb-rm__title" => array(
-					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-rm__desc" => array(
-					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType']
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				" .uagb-rm__price" => array(
-					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType']
+					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType'],
+					'line-height'   => $attr['priceLineHeightMobile'] . $attr['priceLineHeightType'],
 				)
 			);
 
@@ -2226,8 +2229,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_grid_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_grid_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
 
@@ -2258,8 +2260,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_carousel_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_carousel_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
 
@@ -2328,8 +2329,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_masonry_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_masonry_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
 
@@ -2358,8 +2358,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.4.0
 		 */
-		public static function get_post_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__items" => array(
 					"margin-right" =>  ( -$attr['rowGap']/2 ) . "px",
@@ -2442,8 +2441,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.6.1
 		 */
-		public static function get_post_mobile_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_mobile_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
@@ -2483,8 +2481,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_post_tablet_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_tablet_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
 					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
@@ -2523,7 +2520,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_blockquote_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
@@ -2767,8 +2763,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_timeline_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			$selectors = array(
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
@@ -2898,8 +2893,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_tablet_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_timeline_tablet_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			$tablet_selector = array(
 				" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
@@ -2950,8 +2944,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_mobile_selectors( $attr ) {
-        	// @codingStandardsIgnoreStart
+		public static function get_timeline_mobile_selectors( $attr ) {         	// @codingStandardsIgnoreStart
         	$m_selectors = array(
         		" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
@@ -3008,8 +3001,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
-		public static function get_testimonial_js( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_testimonial_js( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
@@ -3069,7 +3061,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_blockquote_js( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
@@ -3109,7 +3100,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {
-
 			$selector = '#uagb-social-share-' . $id;
 			?>
 				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
