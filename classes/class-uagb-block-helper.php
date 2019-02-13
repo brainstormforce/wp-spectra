@@ -497,7 +497,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-heading-text'        => array(
 					'text-align' => $attr['headingAlign'],
-					'font-family' => $attr['headFontFamily'],
+					'font-family' => ( isset( $attr['headFontFamily'] ) ) ? $attr['headFontFamily'] : '',
 					'font-weight' => $attr['headFontWeight'],
 					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
 					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
