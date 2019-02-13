@@ -11,6 +11,12 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 const { __ } = wp.i18n
 
 const {
@@ -87,14 +93,38 @@ class UAGBIconList extends Component {
 			sizeType,
 			sizeMobile,
 			sizeTablet,
+			lineHeight,
+			lineHeightType,
+			lineHeightMobile,
+			lineHeightTablet,
 			hideLabel,
 			fontSize,
 			fontSizeType,
 			fontSizeMobile,
 			fontSizeTablet,
 			borderRadius,
-			bgSize
+			bgSize,
+			loadGoogleFonts,
+			fontFamily,
+			fontWeight,
+			fontSubset,
 		} = attributes
+
+		let googleFonts;
+
+		if( loadGoogleFonts == true ) {
+			
+			const hconfig = {
+				google: {
+					families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
+				},
+			};
+
+			googleFonts = (
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+			)
+		}
 
 
 
