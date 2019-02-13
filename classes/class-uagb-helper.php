@@ -304,8 +304,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array $attr the blocks attr.
 		 */
 		public function blocks_advanced_heading_gfont( $attr ) {
-			self::blocks_google_font( $attr['headLoadGoogleFonts'], $attr['headFontFamily'], $attr['headFontWeight'], $attr['headFontSubset'] );
-			self::blocks_google_font( $attr['subHeadLoadGoogleFonts'], $attr['subHeadFontFamily'], $attr['subHeadFontWeight'], $attr['subHeadFontSubset'] );
+
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
 		}
 
 

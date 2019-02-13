@@ -78,11 +78,16 @@ class TypographyControl extends Component {
 
 	render() {
 
+		let fontSize;
+		let fontWeight;
 		let fontFamily;
+		let fontAdvancedControls;
+		let showAdvancedFontControls;
+		let resetFontAdvancedControls;
 
-		const { disableFontfamily } = this.props;
+		const { disableFontFamily, disableFontSize, disableLineHeight } = this.props;
 
-		if( true !== disableFontfamily ) {
+		if( true !== disableFontFamily ) {
 			fontFamily = (
 				<FontFamilyControl
 					{ ...this.props }
@@ -90,57 +95,27 @@ class TypographyControl extends Component {
 			)
 		}
 
-		let showAdvancedControls = false;
-
-		const fontAdvancedControls =  (
-			<Button
-				className="uagb-size-btn"
-				isSmall	
-				aria-pressed={ ( this.state !== null ) }
-				onClick={ this.onAdvancedControlClick }
-			>
-				{ (this.state === null) ? __( "Show Advanced Controls" ) : this.state.showAdvancedControlsLabel }
-			</Button>
-		)
-
-		const resetFontAdvancedControls =  (
-			<Button
-				className="uagb-size-btn"
-				isSmall	
-				aria-pressed={ ( this.state !== null ) }
-				onClick={ this.onAdvancedControlReset }
-			> 
-				{ __( "Reset" ) } 
-			</Button>
-		)
-
-		let showAdvancedFontControls;
-
-		if( this.state !== null && this.state.showAdvancedControls === true ) {
-			
-			showAdvancedFontControls = (
-				<Fragment>
-					{ fontFamily }
-					<RangeTypographyControl
-						type = { this.props.lineHeightType }
-						typeLabel = { this.props.lineHeightType.label }
-						sizeMobile = { this.props.lineHeightMobile }
-						sizeMobileLabel = { this.props.lineHeightMobile.label }
-						sizeTablet = { this.props.lineHeightTablet }
-						sizeTabletLabel = { this.props.lineHeightTablet.label }
-						size = { this.props.lineHeight }
-						sizeLabel = { this.props.lineHeight.label }
-						sizeMobileText = { __( "Line Height Mobile" ) }
-						sizeTabletText = { __( "Line Height Tablet" ) }
-						sizeText = { __( "Line Height" ) }
-						{ ...this.props }
-					/>
-				</Fragment>
+		if( true !== disableLineHeight ) {
+			fontWeight = (
+				<RangeTypographyControl
+					type = { this.props.lineHeightType }
+					typeLabel = { this.props.lineHeightType.label }
+					sizeMobile = { this.props.lineHeightMobile }
+					sizeMobileLabel = { this.props.lineHeightMobile.label }
+					sizeTablet = { this.props.lineHeightTablet }
+					sizeTabletLabel = { this.props.lineHeightTablet.label }
+					size = { this.props.lineHeight }
+					sizeLabel = { this.props.lineHeight.label }
+					sizeMobileText = { __( "Line Height Mobile" ) }
+					sizeTabletText = { __( "Line Height Tablet" ) }
+					sizeText = { __( "Line Height" ) }
+					{ ...this.props }
+				/>
 			)
 		}
 
-		return (
-			<div className="uag-typography-options">
+		if( true !== disableFontSize ) {
+			fontSize = (
 				<RangeTypographyControl
 					type = { this.props.fontSizeType }
 					typeLabel = { this.props.fontSizeType.label }
@@ -155,6 +130,54 @@ class TypographyControl extends Component {
 					sizeText = { __( "Font Size" ) }
 					{ ...this.props }
 				/>
+			)
+		}
+
+		if( true !== disableFontFamily && true !== disableFontSize ) {
+			fontAdvancedControls =  (
+				<Button
+					className="uagb-size-btn"
+					isSmall	
+					aria-pressed={ ( this.state !== null ) }
+					onClick={ this.onAdvancedControlClick }
+				>
+					{ (this.state === null) ? __( "Show Advanced Controls" ) : this.state.showAdvancedControlsLabel }
+				</Button>
+			)
+
+			resetFontAdvancedControls =  (
+				<Button
+					className="uagb-size-btn"
+					isSmall	
+					aria-pressed={ ( this.state !== null ) }
+					onClick={ this.onAdvancedControlReset }
+				> 
+					{ __( "Reset" ) } 
+				</Button>
+			)
+		} else {
+			showAdvancedFontControls = (
+				<Fragment>
+					{ fontFamily }
+					{ fontWeight }
+				</Fragment>
+			)
+		}
+
+
+		if( this.state !== null && this.state.showAdvancedControls === true ) {
+			
+			showAdvancedFontControls = (
+				<Fragment>
+					{ fontFamily }
+					{ fontWeight }
+				</Fragment>
+			)
+		}
+
+		return (
+			<div className="uag-typography-options">
+				{ fontSize }
 				{ fontAdvancedControls }
 				{ resetFontAdvancedControls }
 				{ showAdvancedFontControls }
