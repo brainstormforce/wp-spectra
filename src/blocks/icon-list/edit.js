@@ -92,22 +92,22 @@ class UAGBIconList extends Component {
 			size,
 			sizeType,
 			sizeMobile,
-			sizeTablet,
-			lineHeight,
-			lineHeightType,
-			lineHeightMobile,
-			lineHeightTablet,
-			hideLabel,
+			sizeTablet,			
+			hideLabel,			
+			borderRadius,
+			bgSize,
 			fontSize,
 			fontSizeType,
 			fontSizeMobile,
 			fontSizeTablet,
-			borderRadius,
-			bgSize,
-			loadGoogleFonts,
 			fontFamily,
 			fontWeight,
 			fontSubset,
+			lineHeight,
+			lineHeightType,
+			lineHeightMobile,
+			lineHeightTablet,
+			loadGoogleFonts,
 		} = attributes
 
 		let googleFonts;
@@ -518,7 +518,7 @@ class UAGBIconList extends Component {
 											<Fragment>
 												{sizeTypeControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Icon Size" ) }
 													value={ size }
 													onChange={ ( value ) => setAttributes( { size: value } ) }
 													min={ 0 }
@@ -534,82 +534,27 @@ class UAGBIconList extends Component {
 								}
 							}
 						</TabPanel>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSizeMobile }
-													onChange={ ( value ) => setAttributes( { fontSizeMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSizeTablet }
-													onChange={ ( value ) => setAttributes( { fontSizeTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSize }
-													onChange={ ( value ) => setAttributes( { fontSize: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Lable Size" ) }</h2>
+						<TypographyControl
+							label={ __( "Lable Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
+							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
+							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
+							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
+							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
+							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
+							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
+							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+							disableFontFamily = { true }
+						/>
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Background Size" ) }
 							value={ bgSize }
@@ -710,6 +655,7 @@ class UAGBIconList extends Component {
 						}
 					</div>
 				</div>
+				{googleFonts}
 			</Fragment>
 		)
 	}
