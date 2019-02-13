@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	final class UAGB_Helper {
 
 
+
 		/**
 		 * Member Variable
 		 *
@@ -174,125 +175,127 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_block_css( $block ) {
 
-			// @codingStandardsIgnoreStart
+            // @codingStandardsIgnoreStart
 
-			$block = ( array ) $block;
+            $block = ( array ) $block;
 
-			$name = $block['blockName'];
-			$css  = '';
+            $name = $block['blockName'];
+            $css  = '';
 
-			if( ! isset( $name ) ) {
-				return;
-			}
+            if( ! isset( $name ) ) {
+                return;
+            }
 
-			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-				$blockattr = $block['attrs'];
-				if ( isset( $blockattr['block_id'] ) ) {
-					$block_id = $blockattr['block_id'];
-				}
-			}
+            if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
+                $blockattr = $block['attrs'];
+                if ( isset( $blockattr['block_id'] ) ) {
+                    $block_id = $blockattr['block_id'];
+                }
+            }
 
-			switch ( $name ) {
-				case 'uagb/section':
-					$css .= UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
-					break;
+            switch ( $name ) {
+                case 'uagb/section':
+                    $css .= UAGB_Block_Helper::get_section_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/advanced-heading':
-					$css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
-					$this->blocks_advanced_heading_gfont( $blockattr );
-					break;
+                case 'uagb/advanced-heading':
+                    $css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
+                    $this->blocks_advanced_heading_gfont( $blockattr );
+                    break;
 
-				case 'uagb/info-box':
-					$css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
-					break;
+                case 'uagb/info-box':
+                    $css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/buttons':
-					$css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
-					break;
+                case 'uagb/buttons':
+                    $css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/blockquote':
-					$css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
-					break;
+                case 'uagb/blockquote':
+                    $css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/testimonial':
-					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
-					break;
+                case 'uagb/testimonial':
+                    $css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/team':
-					$css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
-					break;
+                case 'uagb/team':
+                    $css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/social-share':
-					$css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
-					break;
+                case 'uagb/social-share':
+                    $css .= UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/content-timeline':
-					$css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
-					break;
+                case 'uagb/content-timeline':
+                    $css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
+                    $this->blocks_content_timeline_gfont( $blockattr );
+                    break;
 
-				case 'uagb/call-to-action':
-					$css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
-					break;
+                case 'uagb/call-to-action':
+                    $css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/post-timeline':
-					$css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
-					break;
+                case 'uagb/post-timeline':
+                    $css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
+                    $this->blocks_post_timeline_gfont( $blockattr );
+                    break;
 
-				case 'uagb/restaurant-menu':
-					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
-					break;
+                case 'uagb/restaurant-menu':
+                    $css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/icon-list':
-					$css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
-					break;
+                case 'uagb/icon-list':
+                    $css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/post-grid':
-					$css .= UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
-					break;
+                case 'uagb/post-grid':
+                    $css .= UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/post-carousel':
-					$css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
-					break;
+                case 'uagb/post-carousel':
+                    $css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/post-masonry':
-					$css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
-					break;
+                case 'uagb/post-masonry':
+                    $css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/columns':
-					$css .= UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
-					break;
+                case 'uagb/columns':
+                    $css .= UAGB_Block_Helper::get_columns_css( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/column':
-					$css .= UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
-					break;
+                case 'uagb/column':
+                    $css .= UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
+                    break;
 
-				default:
-					// Nothing to do here.
-					break;
-			}
+                default:
+                    // Nothing to do here.
+                    break;
+            }
 
-			if ( isset( $block['innerBlocks'] ) ) {
-				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
-					if ( 'core/block' == $inner_block['blockName'] ) {
-						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+            if ( isset( $block['innerBlocks'] ) ) {
+                foreach ( $block['innerBlocks'] as $j => $inner_block ) {
+                    if ( 'core/block' == $inner_block['blockName'] ) {
+                        $id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 
-						if ( $id ) {
-							$content = get_post_field( 'post_content', $id );
+                        if ( $id ) {
+                            $content = get_post_field( 'post_content', $id );
 
-							$reusable_blocks = $this->parse( $content );
+                            $reusable_blocks = $this->parse( $content );
 
-							$this->get_stylesheet( $reusable_blocks );
-						}
-					} else {
-						// Get CSS for the Block.
-						$css .= $this->get_block_css( $inner_block );
-					}
-				}
-			}
+                            $this->get_stylesheet( $reusable_blocks );
+                        }
+                    } else {
+                        // Get CSS for the Block.
+                        $css .= $this->get_block_css( $inner_block );
+                    }
+                }
+            }
 
-			echo $css;
+            echo $css;
 
-			// @codingStandardsIgnoreEnd
+            // @codingStandardsIgnoreEnd
 		}
 
 		/**
@@ -314,6 +317,54 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
 			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Content Timeline block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_content_timeline_gfont( $attr ) {
+			$head_load_google_fonts = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family       = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight       = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset       = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subheadload_google_fonts = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subheadfont_family       = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subheadfont_weight       = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subheadfont_subset       = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$date_load_google_fonts = isset( $attr['dateLoadGoogleFonts'] ) ? $attr['dateLoadGoogleFonts'] : '';
+			$date_font_family       = isset( $attr['dateFontFamily'] ) ? $attr['dateFontFamily'] : '';
+			$date_font_weight       = isset( $attr['dateFontWeight'] ) ? $attr['dateFontWeight'] : '';
+			$date_font_subset       = isset( $attr['dateFontSubset'] ) ? $attr['dateFontSubset'] : '';
+
+			self::blocks_google_font( $head_load_google_fonts, $head_font_family, $head_font_weight, $head_font_subset );
+			self::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
+			self::blocks_google_font( $date_load_google_fonts, $date_font_family, $date_font_weight, $date_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Post Timeline block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_post_timeline_gfont( $attr ) {
+			$this->blocks_content_timeline_gfont( $attr );
+
+			$author_load_google_fonts = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
+			$author_font_family       = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
+			$author_font_weight       = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
+			$author_font_subset       = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
+
+			$cta_load_google_fonts = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family       = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight       = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset       = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			self::blocks_google_font( $author_load_google_fonts, $author_font_family, $author_font_weight, $author_font_subset );
+			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
 		}
 
 		/**
@@ -357,67 +408,67 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_block_js( $block ) {
 
-			// @codingStandardsIgnoreStart
+            // @codingStandardsIgnoreStart
 
-			$block = ( array ) $block;
+            $block = ( array ) $block;
 
-			$name = $block['blockName'];
-			$js  = '';
+            $name = $block['blockName'];
+            $js  = '';
 
-			if( ! isset( $name ) ) {
-				return;
-			}
+            if( ! isset( $name ) ) {
+                return;
+            }
 
-			if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
-				$blockattr = $block['attrs'];
-				if ( isset( $blockattr['block_id'] ) ) {
-					$block_id = $blockattr['block_id'];
-				}
-			}
+            if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
+                $blockattr = $block['attrs'];
+                if ( isset( $blockattr['block_id'] ) ) {
+                    $block_id = $blockattr['block_id'];
+                }
+            }
 
-			switch ( $name ) {
+            switch ( $name ) {
 
-				case 'uagb/testimonial':
-					$js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
-					break;
+                case 'uagb/testimonial':
+                    $js .= UAGB_Block_Helper::get_testimonial_js( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/blockquote':
-					$js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
-					break;
+                case 'uagb/blockquote':
+                    $js .= UAGB_Block_Helper::get_blockquote_js( $blockattr, $block_id );
+                    break;
 
-				case 'uagb/social-share':
-					$js .= UAGB_Block_Helper::get_social_share_js( $block_id );
-					break;
+                case 'uagb/social-share':
+                    $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
+                    break;
 
-				default:
-					// Nothing to do here.
-					break;
-			}
+                default:
+                    // Nothing to do here.
+                    break;
+            }
 
-			if ( isset( $block['innerBlocks'] ) ) {
+            if ( isset( $block['innerBlocks'] ) ) {
 
-				foreach ( $block['innerBlocks'] as $j => $inner_block ) {
+                foreach ( $block['innerBlocks'] as $j => $inner_block ) {
 
-					if ( 'core/block' == $inner_block['blockName'] ) {
-						$id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
+                    if ( 'core/block' == $inner_block['blockName'] ) {
+                        $id = ( isset( $inner_block['attrs']['ref'] ) ) ? $inner_block['attrs']['ref'] : 0;
 
-						if ( $id ) {
-							$content = get_post_field( 'post_content', $id );
+                        if ( $id ) {
+                            $content = get_post_field( 'post_content', $id );
 
-							$reusable_blocks = $this->parse( $content );
+                            $reusable_blocks = $this->parse( $content );
 
-							$this->get_scripts( $reusable_blocks );
-						}
-					} else {
-						// Get JS for the Block.
-						$js .= $this->get_block_js( $inner_block );
-					}
-				}
-			}
+                            $this->get_scripts( $reusable_blocks );
+                        }
+                    } else {
+                        // Get JS for the Block.
+                        $js .= $this->get_block_js( $inner_block );
+                    }
+                }
+            }
 
-			echo $js;
+            echo $js;
 
-			// @codingStandardsIgnoreEnd
+            // @codingStandardsIgnoreEnd
 		}
 
 		/**

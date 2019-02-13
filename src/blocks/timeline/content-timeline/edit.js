@@ -13,6 +13,12 @@ import AlignClass from ".././align-classes"
 import DayAlignClass from ".././day-align-classes"
 import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../../components/typography/fontloader"
+
 const { dateI18n, __experimentalGetSettings } = wp.date
 
 const { Component, Fragment } = wp.element
@@ -240,17 +246,33 @@ class UAGBcontentTimeline extends Component {
 				separatorBorder,
 				borderFocus,
 				headingTag,
-				headFontSize,
 				headFontSizeType,
-				headFontSizeMobile,
+				headFontSize,
 				headFontSizeTablet,
+				headFontSizeMobile,
+				headFontFamily,
+				headFontWeight,
+				headFontSubset,
+				headLineHeightType,
+				headLineHeight,
+				headLineHeightTablet,
+				headLineHeightMobile,
+				headLoadGoogleFonts,
 				timelineItem,
 				timelinAlignment,
 				arrowlinAlignment,
-				subHeadFontSize,
 				subHeadFontSizeType,
-				subHeadFontSizeMobile,
+				subHeadFontSize,
 				subHeadFontSizeTablet,
+				subHeadFontSizeMobile,
+				subHeadFontFamily,
+				subHeadFontWeight,
+				subHeadFontSubset,
+				subHeadLineHeightType,
+				subHeadLineHeight,
+				subHeadLineHeightTablet,
+				subHeadLineHeightMobile,
+				subHeadLoadGoogleFonts,
 				verticalSpace,
 				horizontalSpace,
 				separatorwidth,
@@ -261,11 +283,18 @@ class UAGBcontentTimeline extends Component {
 				icon,
 				iconColor,
 				dateColor,
-				dateFontsize,
 				dateFontsizeType,
-				dateFontsizeMobile,
+				dateFontsize,
 				dateFontsizeTablet,
-				authorFontsize,
+				dateFontsizeMobile,
+				dateFontFamily,
+				dateFontWeight,
+				dateFontSubset,
+				dateLineHeightType,
+				dateLineHeight,
+				dateLineHeightTablet,
+				dateLineHeightMobile,
+				dateLoadGoogleFonts,
 				iconSize,
 				borderRadius,
 				bgPadding,
@@ -394,57 +423,52 @@ class UAGBcontentTimeline extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		const dateTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ dateFontsizeType === key }
-						aria-pressed={ dateFontsizeType === key }
-						onClick={ () => setAttributes( { dateFontsizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		let loadHeadGoogleFonts;
+		let loadSubHeadGoogleFonts;
+		let loadDateGoogleFonts;
 
-		const headingTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ headFontSizeType === key }
-						aria-pressed={ headFontSizeType === key }
-						onClick={ () => setAttributes( { headFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		if( headLoadGoogleFonts == true ) {
+					
+			const headconfig = {
+				google: {
+					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+				},
+			};
 
-		const subHeadTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ subHeadFontSizeType === key }
-						aria-pressed={ subHeadFontSizeType === key }
-						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+			loadHeadGoogleFonts = (
+				<WebfontLoader config={ headconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( subHeadLoadGoogleFonts == true ) {
+					
+			const subHeadconfig = {
+				google: {
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+				},
+			};
 
+			loadSubHeadGoogleFonts = (
+				<WebfontLoader config={ subHeadconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( dateLoadGoogleFonts == true ) {
+					
+			const dateconfig = {
+				google: {
+					families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
+				},
+			};
+
+			loadDateGoogleFonts = (
+				<WebfontLoader config={ dateconfig }>
+				</WebfontLoader>
+			)
+		}
+		
 		const renderSettings = (
 			<PanelBody	title={ __( "Date Settings" ) }	initialOpen={ false } >
 				<ToggleControl
@@ -466,88 +490,32 @@ class UAGBcontentTimeline extends Component {
 				}
 
 				{ displayPostDate &&  <Fragment>
+					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
 					<ColorPalette
 						value={ dateColor }
 						onChange={ ( colorValue ) => setAttributes( { dateColor: colorValue } ) }
 						allowReset
 					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{dateTypesControls}
-											<RangeControl
-												label={ __( "Date Font Size" ) }
-												value={ dateFontsizeMobile }
-												onChange={ ( value ) => setAttributes( { dateFontsizeMobile: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{dateTypesControls}
-											<RangeControl
-												label={ __( "Date Font Size" ) }
-												value={ dateFontsizeTablet }
-												onChange={ ( value ) => setAttributes( { dateFontsizeTablet: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{dateTypesControls}
-											<RangeControl
-												label={ __( "Date Font Size" ) }
-												value={ dateFontsize }
-												onChange={ ( value ) => setAttributes( { dateFontsize: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Date Font " ) }</h2>
+					<TypographyControl
+							label={ __( "Date Tag" ) }
+							attributes = { this.props.attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
+							fontFamily = { { value: dateFontFamily, label: __( "dateFontFamily" ) } }
+							fontWeight = { { value: dateFontWeight, label: __( "dateFontWeight" ) } }
+							fontSubset = { { value: dateFontSubset, label: __( "dateFontSubset" ) } }
+							fontSizeType = { { value: dateFontsizeType, label: __( "dateFontsizeType" ) } }
+							fontSize = { { value: dateFontsize, label: __( "dateFontsize" ) } }
+							fontSizeMobile = { { value: dateFontsizeMobile, label: __( "dateFontsizeMobile" ) } }
+							fontSizeTablet= { { value: dateFontsizeTablet, label: __( "dateFontsizeTablet" ) } }
+							lineHeightType = { { value: dateLineHeightType, label: __( "dateLineHeightType" ) } }
+							lineHeight = { { value: dateLineHeight, label: __( "dateLineHeight" ) } }
+							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
+							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
+						/>
 				</Fragment>
 				}
 			</PanelBody>
@@ -664,158 +632,45 @@ class UAGBcontentTimeline extends Component {
 						max={ 50 }
 						allowReset
 					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Heading" ) }</h2>
+					<TypographyControl
+						label={ __( "Title Tag" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
+						fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
+						fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
+						fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
+						fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
+						fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
+						lineHeightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
+						lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
+					/>
 
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headingTypesControls}
-											<RangeControl
-												label={ __( "Heading Font Size" ) }
-												value={ headFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headingTypesControls}
-											<RangeControl
-												label={ __( "Heading Font Size" ) }
-												value={ headFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{headingTypesControls}
-											<RangeControl
-												label={ __( "Heading Font Size" ) }
-												value={ headFontSize }
-												onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{subHeadTypesControls}
-											<RangeControl
-												label={ __( "Content Font Size" ) }
-												value={ subHeadFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{subHeadTypesControls}
-											<RangeControl
-												label={ __( "Content Font Size" ) }
-												value={ subHeadFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{subHeadTypesControls}
-											<RangeControl
-												label={ __( "Content Font Size" ) }
-												value={ subHeadFontSize }
-												onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-												min={ 0 }
-												max={ 50 }
-												beforeIcon="editor-textcolor"
-												allowReset
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Content" ) }</h2>
+					<TypographyControl
+						label={ __( "Content Tag" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
+						fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
+						fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
+						fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
+						fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
+						fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
+						lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
+						lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
 					<FontIconPicker {...icon_props} />
@@ -909,6 +764,9 @@ class UAGBcontentTimeline extends Component {
 						</div>
 					</div>
 				</div>
+				{ loadHeadGoogleFonts }
+				{ loadSubHeadGoogleFonts }
+				{ loadDateGoogleFonts }
 			</Fragment>
 		)
 	}
