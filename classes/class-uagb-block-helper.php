@@ -15,6 +15,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2391,46 +2392,70 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__title" => array(
 					"color"=> $attr['titleColor'],
-					"font-size"=> $attr['titleFontSize']  . "px",
+					"font-size"=> $attr['titleFontSize']  . $attr['titleFontSizeType'],
+					'font-family' => $attr['titleFontFamily'],
+					'font-weight' => $attr['titleFontWeight'],
+					'line-height' => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 					"margin-bottom"=> $attr['titleBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"color"=> $attr['titleColor'],
-					"font-size"=> $attr['titleFontSize']  . "px"
+					"color"       => $attr['titleColor'],
+					"font-size"   => $attr['titleFontSize']  . $attr['titleFontSizeType'],
+					'font-family' => $attr['titleFontFamily'],
+					'font-weight' => $attr['titleFontWeight'],
+					'line-height' => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
-					"margin-bottom"=> $attr['metaBottomSpace']  . "px"
+					"font-size"     => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family'   => $attr['metaFontFamily'],
+					'font-weight'   => $attr['metaFontWeight'],
+					'line-height'   => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
+					"margin-bottom" => $attr['metaBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
-					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
+					"color"       => $attr['metaColor'],
+					"font-size"   => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family' => $attr['metaFontFamily'],
+					'font-weight' => $attr['metaFontWeight'],
+					'line-height' => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
-					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
+					"color"       => $attr['metaColor'],
+					"font-size"   => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family' => $attr['metaFontFamily'],
+					'font-weight' => $attr['metaFontWeight'],
+					'line-height' => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
-					"color"=> $attr['excerptColor'],
-					"font-size"=> $attr['excerptFontSize']  . "px",
-					"margin-bottom"=> $attr['excerptBottomSpace']  . "px"
+					"color"         => $attr['excerptColor'],
+					"font-size"     => $attr['excerptFontSize']  . $attr['excerptFontSizeType'],
+					'font-family'   => $attr['excerptFontFamily'],
+					'font-weight'   => $attr['excerptFontWeight'],
+					'line-height'   => $attr['excerptLineHeight'] . $attr['excerptLineHeightType'],
+					"margin-bottom" => $attr['excerptBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
-					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . "px",
-					"background"=> $attr['ctaBgColor'],
-					"border-color"=> $attr['borderColor'],
-					"border-width"=> $attr['borderWidth']  . "px",
-					"border-radius"=> $attr['borderRadius']  . "px",
-					"border-style"=> $attr['borderStyle'],
+					"color"         => $attr['ctaColor'],
+					"font-size"     => $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
+					'font-family'   => $attr['ctaFontFamily'],
+					'font-weight'   => $attr['ctaFontWeight'],
+					'line-height'   => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
+					"background"    => $attr['ctaBgColor'],
+					"border-color"  => $attr['borderColor'],
+					"border-width"  => $attr['borderWidth']  . "px",
+					"border-radius" => $attr['borderRadius']  . "px",
+					"border-style"  => $attr['borderStyle'],
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
 					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . "px",
+					"font-size"     => $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
+					'font-family'   => $attr['ctaFontFamily'],
+					'font-weight'   => $attr['ctaFontWeight'],
+					'line-height'   => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
 					"padding" => ( $attr['btnVPadding'] ) . "px " . ( $attr['btnHPadding'] ) . "px",
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
@@ -2459,27 +2484,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
 					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
 					"font-size" =>$attr['excerptFontSizeMobile'] . $attr['excerptFontSizeType'],
+					'line-height'   => $attr['excerptLineHeightMobile'] . $attr['excerptLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
 					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],					
 				),
 				" .uagb-post__text" => array(
 					"padding" =>( $attr['contentPaddingMobile'] ) . "px",
@@ -2498,27 +2531,35 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
 					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
 					"font-size" =>$attr['excerptFontSizeTablet'] . $attr['excerptFontSizeType'],
+					'line-height'   => $attr['excerptLineHeightTablet'] . $attr['excerptLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
 					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],	
 				),
 			);
 			// @codingStandardsIgnoreEnd
