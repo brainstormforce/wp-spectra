@@ -15,8 +15,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1127,18 +1125,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'  => $attr['contentPadding'] . 'px',
 				),
 				' .uagb-tm__author-name' => array(
-					'color'   => $attr['authorColor'],
-					'font-size'  => $attr['nameFontSize'] . $attr['nameFontSizeType'],
-					'margin-bottom'  => $attr['nameSpace'] . 'px',
+					'color'         => $attr['authorColor'],
+					'font-size'     => $attr['nameFontSize'] . $attr['nameFontSizeType'],
+					'font-family'   => $attr['nameFontFamily'],
+					'font-weight'   => $attr['nameFontWeight'],
+					'line-height'   => $attr['nameLineHeight'] . $attr['nameLineHeightType'],
+					'margin-bottom' => $attr['nameSpace'] . 'px',
 				),
 				' .uagb-tm__company' => array(
-					'color'   => $attr['companyColor'],
-					'font-size'  => $attr['companyFontSize'] . $attr['companyFontSizeType'],
+					'color'       => $attr['companyColor'],
+					'font-size'   => $attr['companyFontSize'] . $attr['companyFontSizeType'],
+					'font-family' => $attr['companyFontFamily'],
+					'font-weight' => $attr['companyFontWeight'],
+					'line-height' => $attr['companyLineHeight'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
-					'color'   => $attr['descColor'],
-					'font-size'  => $attr['descFontSize'] . $attr['descFontSizeType'],
-					'margin-bottom'  => $attr['descSpace'] . 'px',
+					'color'         => $attr['descColor'],
+					'font-size'     => $attr['descFontSize'] . $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					'margin-bottom' => $attr['descSpace'] . 'px',
 				),
 				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
 					'background-color'   => $attr['backgroundColor'],
@@ -1179,24 +1186,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-tm__author-name' => array(
 					'font-size'  => $attr['nameFontSizeTablet'] . $attr['nameFontSizeType'],
+					'line-height' => $attr['nameLineHeightTablet'] . $attr['nameLineHeightType'],
 				),
 				' .uagb-tm__company' => array(
 					'font-size'  => $attr['companyFontSizeTablet'] . $attr['companyFontSizeType'],
+					'line-height' => $attr['companyLineHeightTablet'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 			);
 
 			$m_selectors = array(
 				' .uagb-tm__author-name' => array(
 					'font-size'  => $attr['nameFontSizeMobile'] . $attr['nameFontSizeType'],
+					'line-height' => $attr['nameLineHeightMobile'] . $attr['nameLineHeightType'],
 				),
 				' .uagb-tm__company' => array(
 					'font-size'  => $attr['companyFontSizeMobile'] . $attr['companyFontSizeType'],
+					'line-height' => $attr['companyLineHeightMobile'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
