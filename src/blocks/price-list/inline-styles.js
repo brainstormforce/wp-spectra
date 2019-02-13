@@ -10,18 +10,42 @@ function RestMenuStyle( props ) {
 		priceColor,
 		descColor,
 		titleColor,
-		titleFontSize,
 		titleFontSizeType,
+		titleFontSize,
 		titleFontSizeTablet,
 		titleFontSizeMobile,
-		priceFontSize,
+		titleFontFamily,
+		titleFontWeight,
+		titleFontSubset,
+		titleLineHeightType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+
 		priceFontSizeType,
+		priceFontSize,
 		priceFontSizeTablet,
 		priceFontSizeMobile,
-		descFontSize,
+		priceFontFamily,
+		priceFontWeight,
+		priceFontSubset,
+		priceLineHeightType,
+		priceLineHeight,
+		priceLineHeightTablet,
+		priceLineHeightMobile,
+
 		descFontSizeType,
+		descFontSize,
 		descFontSizeTablet,
 		descFontSizeMobile,
+		descFontFamily,
+		descFontWeight,
+		descFontSubset,
+		descLineHeightType,
+		descLineHeight,
+		descLineHeightTablet,
+		descLineHeightMobile,
+
 		descSpace,
 		titleSpace,
 		imgVrPadding,
@@ -85,15 +109,24 @@ function RestMenuStyle( props ) {
 			"font-size" : titleFontSize+titleFontSizeType,
 			"color": titleColor,
 			"margin-bottom": titleSpace+"px",
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"line-height": titleLineHeight + titleLineHeightType,
 		},
 		// Title Style
 		" .uagb-rm__price": {
 			"font-size" : priceFontSize+priceFontSizeType,
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"line-height": priceLineHeight + priceLineHeightType,
 			"color": priceColor,
 		},
 		// Description Style
 		" .uagb-rm__desc": {
 			"font-size" : descFontSize+descFontSizeType,
+			"font-family": descFontFamily,
+			"font-weight": descFontWeight,
+			"line-height": descLineHeight + descLineHeightType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
 		},
@@ -110,25 +143,31 @@ function RestMenuStyle( props ) {
 
 	tablet_selectors = {
 		" .uagb-rm__title" : {
-			"font-size" : titleFontSizeTablet + titleFontSizeType
+			"font-size" : titleFontSizeTablet + titleFontSizeType,
+			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .uagb-rm__desc" : {
-			"font-size" : descFontSizeTablet + descFontSizeType
+			"font-size" : descFontSizeTablet + descFontSizeType,
+			"line-height": descLineHeightTablet + descLineHeightType,
 		},
 		" .uagb-rm__price" : {
-			"font-size" : priceFontSizeTablet + priceFontSizeType
+			"font-size" : priceFontSizeTablet + priceFontSizeType,
+			"line-height": priceLineHeightTablet + priceLineHeightType,
 		}
 	}
 
 	mobile_selectors = {
 		" .uagb-rm__title" : {
-			"font-size" : titleFontSizeMobile + titleFontSizeType
+			"font-size" : titleFontSizeMobile + titleFontSizeType,
+			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .uagb-rm__desc" : {
-			"font-size" : descFontSizeMobile + descFontSizeType
+			"font-size" : descFontSizeMobile + descFontSizeType,
+			"line-height": descLineHeightMobile + descLineHeightType,
 		},
 		" .uagb-rm__price" : {
-			"font-size" : priceFontSizeMobile + priceFontSizeType
+			"font-size" : priceFontSizeMobile + priceFontSizeType,
+			"line-height": priceLineHeightMobile + priceLineHeightType,
 		}
 	}
 
