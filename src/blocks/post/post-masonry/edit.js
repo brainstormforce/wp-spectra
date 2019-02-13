@@ -6,7 +6,11 @@ import isUndefined from "lodash/isUndefined"
 import pickBy from "lodash/pickBy"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
+// Import all of our Text Options requirements.
+import TypographyControl from "../../../components/typography"
 
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
@@ -93,18 +97,50 @@ class UAGBPostMasonry extends Component {
 			titleFontSizeType,
 			titleFontSizeMobile,
 			titleFontSizeTablet,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			titleLoadGoogleFonts,
 			metaFontSize,
 			metaFontSizeType,
 			metaFontSizeMobile,
 			metaFontSizeTablet,
+			metaFontFamily,
+			metaFontWeight,
+			metaFontSubset,
+			metaLineHeightType,
+			metaLineHeight,
+			metaLineHeightTablet,
+			metaLineHeightMobile,
+			metaLoadGoogleFonts,
 			excerptFontSize,
 			excerptFontSizeType,
 			excerptFontSizeTablet,
 			excerptFontSizeMobile,
+			excerptFontFamily,
+			excerptFontWeight,
+			excerptFontSubset,
+			excerptLineHeightType,
+			excerptLineHeight,
+			excerptLineHeightTablet,
+			excerptLineHeightMobile,
+			excerptLoadGoogleFonts,
 			ctaFontSize,
 			ctaFontSizeType,
 			ctaFontSizeTablet,
 			ctaFontSizeMobile,
+			ctaFontFamily,
+			ctaFontWeight,
+			ctaFontSubset,
+			ctaLineHeightType,
+			ctaLineHeight,
+			ctaLineHeightTablet,
+			ctaLineHeightMobile,
+			ctaLoadGoogleFonts,
 			metaColor,
 			excerptColor,
 			ctaColor,
