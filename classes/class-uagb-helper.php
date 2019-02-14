@@ -16,6 +16,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 
+
 		/**
 		 * Member Variable
 		 *
@@ -207,6 +208,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/info-box':
                     $css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
+                    $this->blocks_info_box_gfont( $blockattr );
                     break;
 
                 case 'uagb/buttons':
@@ -327,7 +329,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
 		}
 
-
 		/**
 		 * Adds Google fonts for Testimonial block.
 		 *
@@ -427,6 +428,39 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::blocks_google_font( $author_load_google_fonts, $author_font_family, $author_font_weight, $author_font_subset );
 			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_info_box_gfont( $attr ) {
+
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
+			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
+			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
+			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
+
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			self::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+			self::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
 		}
 
 
