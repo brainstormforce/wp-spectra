@@ -967,6 +967,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
 					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
 					'color'       => $attr['ctaBtnLinkColor'],
 				),
 				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text '  => array(
@@ -974,6 +976,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
 					'font-size'        => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'font-family'      => $attr['ctaFontFamily'],
+					'font-weight'      => $attr['ctaFontWeight'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -1003,14 +1007,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'fill'   => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__title'  => array(
-					'font-size'        => $attr['titleFontSize']. $attr['titleFontSizeType'],
-					'color'            => $attr['titleColor'],
-					'margin-bottom'    => $attr['titleSpace']. "px",
+					'font-size'     => $attr['titleFontSize']. $attr['titleFontSizeType'],
+					'font-family'   => $attr['titleFontFamily'],
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
+					'color'         => $attr['titleColor'],
+					'margin-bottom' => $attr['titleSpace']. "px",
 				),
 				' .uagb-cta__desc'  => array(
-					'font-size'        => $attr['descFontSize']. $attr['descFontSizeType'],
-					'color'            => $attr['descColor'],
-					'margin-bottom'    => $attr['descSpace']. "px",
+					'font-size'     => $attr['descFontSize']. $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					'color'         => $attr['descColor'],
+					'margin-bottom' => $attr['descSpace']. "px",
 				),
 				' .uagb-cta__align-button-after'  => array(
 					'margin-left'    => $attr['ctaIconSpace']. "px",
@@ -1063,9 +1073,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__title'  => array(
 					'font-size'        => $attr['titleFontSizeTablet']. $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				' .uagb-cta__desc'  => array(
 					'font-size'        => $attr['descFontSizeTablet']. $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 			);
 
@@ -1084,9 +1096,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__title'  => array(
 					'font-size'        => $attr['titleFontSizeMobile']. $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightMobile']. $attr['titleLineHeightType'],
 				),
 				' .uagb-cta__desc'  => array(
 					'font-size'        => $attr['descFontSizeMobile']. $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 			);
 
