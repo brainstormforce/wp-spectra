@@ -12,11 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1690,7 +1685,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => $attr['size'] . $attr['sizeType'],
 					"height" => $attr['size'] . $attr['sizeType'],
 					"font-size" => $attr['size'] . $attr['sizeType']
-				),	" .uagb-icon-list__label-wrap"=> array(
+				),
+				" .uagb-icon-list__label-wrap"=> array(
 					"text-align" => $attr['align']
 				),
 
@@ -1798,15 +1794,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
 					"color" => $icon['label_color'],
-					"font-size" => $attr['fontSize'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSize'] . $attr['fontSizeType'],
+					'font-family' => $attr['fontFamily'],
+					'font-weight' => $attr['fontWeight'],
+					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 
 				$m_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => $attr['fontSizeMobile'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSizeMobile'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
 				);
 
 				$t_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => $attr['fontSizeTablet'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSizeTablet'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
@@ -2182,7 +2183,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
-			    ),			  
+			    ),
 			);
 
             if ( $attr["seperatorStyle"] != "none" ) {

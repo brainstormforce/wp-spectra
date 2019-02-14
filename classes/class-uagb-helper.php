@@ -238,7 +238,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     break;
 
 				case 'uagb/restaurant-menu':
-					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );					
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					$this->blocks_restaurant_menu_gfont( $blockattr );
 					break;
 
@@ -257,6 +257,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/icon-list':
                     $css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+                     $this->blocks_icon_list_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-grid':
@@ -437,6 +438,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param array $attr the blocks attr.
 		 */
 		public function blocks_buttons_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Icon List block
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_icon_list_gfont( $attr ) {
 
 			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
 			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
