@@ -12,7 +12,9 @@ function styling( props ) {
 		btn_count,
 		buttons,
 		gap,
-		stack
+		stack,
+		fontFamily,
+		fontWeight,
 	} = props.attributes
 
 	var selectors = {}
@@ -27,6 +29,9 @@ function styling( props ) {
 
 		selectors[" .uagb-buttons-repeater-" + index] = {
 			"font-size" : button.size + button.sizeType,
+			"line-height" : button.lineHeight + button.lineHeightType,
+			"font-family": fontFamily,
+			"font-weight": fontWeight,
 			"border-width": button.borderWidth + "px",
 			"border-style": button.borderStyle,
 			"border-color": button.borderColor,
@@ -60,11 +65,13 @@ function styling( props ) {
 		}
 
 		mobile_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.sizeMobile + button.sizeType
+			"font-size" : button.sizeMobile + button.sizeType,
+			"line-height" : button.lineHeightMobile + button.lineHeightType,
 		}
 
 		tablet_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.sizeTablet + button.sizeType
+			"font-size" : button.sizeTablet + button.sizeType,
+			"line-height" : button.lineHeightTablet + button.lineHeightType,
 		}
 
 	})

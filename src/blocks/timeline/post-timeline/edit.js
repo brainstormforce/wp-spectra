@@ -209,19 +209,19 @@ class UAGBTimeline extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadHeadGoogleFonts;
-		let loadSubHeadGoogleFonts;
-		let loadDateGoogleFonts;
-		let loadAuthorGoogleFonts;
-		let loadCtaGoogleFonts;
+		let loadHeadGoogleFonts
+		let loadSubHeadGoogleFonts
+		let loadDateGoogleFonts
+		let loadAuthorGoogleFonts
+		let loadCtaGoogleFonts
 
 		if( headLoadGoogleFonts == true ) {
 
 			const headconfig = {
 				google: {
-					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+					families: [ headFontFamily + ( headFontWeight ? ":" + headFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadHeadGoogleFonts = (
 				<WebfontLoader config={ headconfig }>
@@ -233,9 +233,9 @@ class UAGBTimeline extends Component {
 
 			const subHeadconfig = {
 				google: {
-					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ":" + subHeadFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadSubHeadGoogleFonts = (
 				<WebfontLoader config={ subHeadconfig }>
@@ -247,9 +247,9 @@ class UAGBTimeline extends Component {
 
 			const dateconfig = {
 				google: {
-					families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
+					families: [ dateFontFamily + ( dateFontWeight ? ":" + dateFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadDateGoogleFonts = (
 				<WebfontLoader config={ dateconfig }>
@@ -261,9 +261,9 @@ class UAGBTimeline extends Component {
 
 			const authorconfig = {
 				google: {
-					families: [ authorFontFamily + ( authorFontWeight ? ':' + authorFontWeight : '' ) ],
+					families: [ authorFontFamily + ( authorFontWeight ? ":" + authorFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadAuthorGoogleFonts = (
 				<WebfontLoader config={ authorconfig }>
@@ -275,9 +275,9 @@ class UAGBTimeline extends Component {
 
 			const ctaconfig = {
 				google: {
-					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadCtaGoogleFonts = (
 				<WebfontLoader config={ ctaconfig }>
@@ -609,7 +609,7 @@ class UAGBTimeline extends Component {
 					{ displayPostDate && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Date" ) }</h2>
-                        <TypographyControl
+						<TypographyControl
 							label={ __( "Date Tag" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
@@ -626,7 +626,7 @@ class UAGBTimeline extends Component {
 							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
 							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
 						/>
-						</Fragment>
+					</Fragment>
 					}
 
 					{ displayPostAuthor && <Fragment>
@@ -649,7 +649,7 @@ class UAGBTimeline extends Component {
 							lineHeightMobile = { { value: authorLineHeightMobile, label: __( "authorLineHeightMobile" ) } }
 							lineHeightTablet= { { value: authorLineHeightTablet, label: __( "authorLineHeightTablet" ) } }
 						/>
-						</Fragment>
+					</Fragment>
 					}
 
 					{ displayPostLink && <Fragment>
@@ -672,7 +672,7 @@ class UAGBTimeline extends Component {
 							lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "ctaLineHeightMobile" ) } }
 							lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "ctaLineHeightTablet" ) } }
 						/>
-						</Fragment>
+					</Fragment>
 					}
 					<hr className="uagb-editor__separator" />
 					<RangeControl
