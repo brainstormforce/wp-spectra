@@ -16,6 +16,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 
+
 		/**
 		 * Member Variable
 		 *
@@ -242,6 +243,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/call-to-action':
                     $css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
+                    $this->blocks_call_to_action_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-timeline':
@@ -327,6 +329,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
 		}
 
+
+		/**
+		 * Adds Google fonts for Call To Action block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_call_to_action_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
 
 		/**
 		 * Adds Google fonts for Testimonial block.

@@ -75,6 +75,8 @@ function CtaStyle( props ) {
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
 			"color": ctaBtnLinkColor,
 		},
 		" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text" : {
