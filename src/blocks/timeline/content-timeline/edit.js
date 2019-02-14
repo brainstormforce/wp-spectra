@@ -423,17 +423,17 @@ class UAGBcontentTimeline extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadHeadGoogleFonts;
-		let loadSubHeadGoogleFonts;
-		let loadDateGoogleFonts;
+		let loadHeadGoogleFonts
+		let loadSubHeadGoogleFonts
+		let loadDateGoogleFonts
 
 		if( headLoadGoogleFonts == true ) {
 
 			const headconfig = {
 				google: {
-					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+					families: [ headFontFamily + ( headFontWeight ? ":" + headFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadHeadGoogleFonts = (
 				<WebfontLoader config={ headconfig }>
@@ -445,9 +445,9 @@ class UAGBcontentTimeline extends Component {
 
 			const subHeadconfig = {
 				google: {
-					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ":" + subHeadFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadSubHeadGoogleFonts = (
 				<WebfontLoader config={ subHeadconfig }>
@@ -459,9 +459,9 @@ class UAGBcontentTimeline extends Component {
 
 			const dateconfig = {
 				google: {
-					families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
+					families: [ dateFontFamily + ( dateFontWeight ? ":" + dateFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadDateGoogleFonts = (
 				<WebfontLoader config={ dateconfig }>
@@ -500,22 +500,22 @@ class UAGBcontentTimeline extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Date Typography" ) }</h2>
 					<TypographyControl
-							label={ __( "Date Tag" ) }
-							attributes = { this.props.attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
-							fontFamily = { { value: dateFontFamily, label: __( "dateFontFamily" ) } }
-							fontWeight = { { value: dateFontWeight, label: __( "dateFontWeight" ) } }
-							fontSubset = { { value: dateFontSubset, label: __( "dateFontSubset" ) } }
-							fontSizeType = { { value: dateFontsizeType, label: __( "dateFontsizeType" ) } }
-							fontSize = { { value: dateFontsize, label: __( "dateFontsize" ) } }
-							fontSizeMobile = { { value: dateFontsizeMobile, label: __( "dateFontsizeMobile" ) } }
-							fontSizeTablet= { { value: dateFontsizeTablet, label: __( "dateFontsizeTablet" ) } }
-							lineHeightType = { { value: dateLineHeightType, label: __( "dateLineHeightType" ) } }
-							lineHeight = { { value: dateLineHeight, label: __( "dateLineHeight" ) } }
-							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
-							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
-						/>
+						label={ __( "Date Tag" ) }
+						attributes = { this.props.attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
+						fontFamily = { { value: dateFontFamily, label: __( "dateFontFamily" ) } }
+						fontWeight = { { value: dateFontWeight, label: __( "dateFontWeight" ) } }
+						fontSubset = { { value: dateFontSubset, label: __( "dateFontSubset" ) } }
+						fontSizeType = { { value: dateFontsizeType, label: __( "dateFontsizeType" ) } }
+						fontSize = { { value: dateFontsize, label: __( "dateFontsize" ) } }
+						fontSizeMobile = { { value: dateFontsizeMobile, label: __( "dateFontsizeMobile" ) } }
+						fontSizeTablet= { { value: dateFontsizeTablet, label: __( "dateFontsizeTablet" ) } }
+						lineHeightType = { { value: dateLineHeightType, label: __( "dateLineHeightType" ) } }
+						lineHeight = { { value: dateLineHeight, label: __( "dateLineHeight" ) } }
+						lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
+						lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
+					/>
 				</Fragment>
 				}
 			</PanelBody>

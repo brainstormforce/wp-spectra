@@ -73,51 +73,51 @@ function FontFamilyControl( props ) {
 
 	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
 
-		let font_flag;
-		let new_value;
+		let font_flag
+		let new_value
 
-		if( typeof googleFonts[fontFamily] == 'object' ) {
+		if( typeof googleFonts[fontFamily] == "object" ) {
 
-			const gfontsObj = googleFonts[fontFamily].weight;
-			const gfontSubsetObj = googleFonts[fontFamily].subset;
+			const gfontsObj = googleFonts[fontFamily].weight
+			const gfontSubsetObj = googleFonts[fontFamily].subset
 
-			if( typeof gfontsObj == 'object' ) {
+			if( typeof gfontsObj == "object" ) {
 
 				gfontsObj.forEach(function(item) {
 
 					if( fontWeight.value == item ) {
-						font_flag = false;
+						font_flag = false
 					} else {
-						new_value  = item;
-						font_flag = true;
-						props.setAttributes( { [ props.fontWeight.label ]: new_value } );
-						return;
+						new_value  = item
+						font_flag = true
+						props.setAttributes( { [ props.fontWeight.label ]: new_value } )
+						return
 					}
-				});
+				})
 
 				gfontSubsetObj.forEach(function(item) {
 
 					if( fontSubset.value == item ) {
-						font_flag = false;
+						font_flag = false
 					} else {
-						new_value  = item;
-						font_flag = true;
-						props.setAttributes( { [ props.fontSubset.label ]: new_value } );
-						return;
+						new_value  = item
+						font_flag = true
+						props.setAttributes( { [ props.fontSubset.label ]: new_value } )
+						return
 					}
-				});
+				})
 			}
 		}
 	}
 
 	const onLoadGoogleFonts = ( loadGoogleFonts, fontFamily ) => {
 
-		let value;
+		let value
 
-		if( fontFamily != '' && typeof googleFonts[fontFamily] != 'object' ) {
-			value = false;
+		if( fontFamily != "" && typeof googleFonts[fontFamily] != "object" ) {
+			value = false
 		} else {
-			value = true;
+			value = true
 		}
 
 		props.setAttributes( { [loadGoogleFonts.label]: value } )

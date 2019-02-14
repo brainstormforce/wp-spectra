@@ -14,9 +14,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 
-
-
-
 		/**
 		 * Member Variable
 		 *
@@ -212,6 +209,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/buttons':
                     $css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
+                    $this->blocks_buttons_gfont( $blockattr );
                     break;
 
                 case 'uagb/blockquote':
@@ -237,7 +235,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     break;
 
 				case 'uagb/restaurant-menu':
-					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );					
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					$this->blocks_restaurant_menu_gfont( $blockattr );
 					break;
 
@@ -251,24 +249,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $this->blocks_post_timeline_gfont( $blockattr );
                     break;
 
-                case 'uagb/restaurant-menu':
-                    $css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
-                    break;
-
                 case 'uagb/icon-list':
                     $css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+                     $this->blocks_icon_list_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-grid':
                     $css .= UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
+                    $this->blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-carousel':
                     $css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
+                    $this->blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-masonry':
                     $css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
+                    $this->blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/columns':
@@ -328,7 +326,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
 			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
 		}
-
 
 		/**
 		 * Adds Google fonts for Call To Action block.
@@ -458,6 +455,71 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
 		}
 
+		/**
+		 * Adds Google fonts for Mulit Button's block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_buttons_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Icon List block
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_icon_list_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Post block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_post_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$meta_load_google_font = isset( $attr['metaLoadGoogleFonts'] ) ? $attr['metaLoadGoogleFonts'] : '';
+			$meta_font_family      = isset( $attr['metaFontFamily'] ) ? $attr['metaFontFamily'] : '';
+			$meta_font_weight      = isset( $attr['metaFontWeight'] ) ? $attr['metaFontWeight'] : '';
+			$meta_font_subset      = isset( $attr['metaFontSubset'] ) ? $attr['metaFontSubset'] : '';
+
+			$excerpt_load_google_font = isset( $attr['excerptLoadGoogleFonts'] ) ? $attr['excerptLoadGoogleFonts'] : '';
+			$excerpt_font_family      = isset( $attr['excerptFontFamily'] ) ? $attr['excerptFontFamily'] : '';
+			$excerpt_font_weight      = isset( $attr['excerptFontWeight'] ) ? $attr['excerptFontWeight'] : '';
+			$excerpt_font_subset      = isset( $attr['excerptFontSubset'] ) ? $attr['excerptFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+
+			self::blocks_google_font( $meta_load_google_font, $meta_font_family, $meta_font_weight, $meta_font_subset );
+
+			self::blocks_google_font( $excerpt_load_google_font, $excerpt_font_family, $excerpt_font_weight, $excerpt_font_subset );
+
+			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+		}
 
 		/**
 		 * Adds Google fonts all blocks.
@@ -722,21 +784,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'size'         => '',
-						'vPadding'     => 10,
-						'hPadding'     => 14,
-						'borderWidth'  => 1,
-						'borderRadius' => 2,
-						'borderStyle'  => 'solid',
-						'borderColor'  => '#333',
-						'borderHColor' => '#333',
-						'color'        => '#333',
-						'background'   => '',
-						'hColor'       => '#333',
-						'hBackground'  => '',
-						'sizeType'     => 'px',
-						'sizeMobile'   => '',
-						'sizeTablet'   => '',
+						'size'             => '',
+						'vPadding'         => 10,
+						'hPadding'         => 14,
+						'borderWidth'      => 1,
+						'borderRadius'     => 2,
+						'borderStyle'      => 'solid',
+						'borderColor'      => '#333',
+						'borderHColor'     => '#333',
+						'color'            => '#333',
+						'background'       => '',
+						'hColor'           => '#333',
+						'hBackground'      => '',
+						'sizeType'         => 'px',
+						'sizeMobile'       => '',
+						'sizeTablet'       => '',
+						'lineHeightType'   => 'px',
+						'lineHeight'       => '',
+						'lineHeightMobile' => '',
+						'lineHeightTablet' => '',
 					)
 				);
 			}
