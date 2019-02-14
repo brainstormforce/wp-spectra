@@ -428,7 +428,7 @@ class UAGBcontentTimeline extends Component {
 		let loadDateGoogleFonts;
 
 		if( headLoadGoogleFonts == true ) {
-					
+
 			const headconfig = {
 				google: {
 					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
@@ -440,9 +440,9 @@ class UAGBcontentTimeline extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( subHeadLoadGoogleFonts == true ) {
-					
+
 			const subHeadconfig = {
 				google: {
 					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
@@ -454,9 +454,9 @@ class UAGBcontentTimeline extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( dateLoadGoogleFonts == true ) {
-					
+
 			const dateconfig = {
 				google: {
 					families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
@@ -468,7 +468,7 @@ class UAGBcontentTimeline extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		const renderSettings = (
 			<PanelBody	title={ __( "Date Settings" ) }	initialOpen={ false } >
 				<ToggleControl
@@ -498,7 +498,7 @@ class UAGBcontentTimeline extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Date Font " ) }</h2>
+					<h2>{ __( "Date Typography" ) }</h2>
 					<TypographyControl
 							label={ __( "Date Tag" ) }
 							attributes = { this.props.attributes }

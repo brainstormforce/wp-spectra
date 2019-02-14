@@ -33,7 +33,7 @@ class TypographyControl extends Component {
 	}
 
 	onAdvancedControlClick() {
-		
+
 		let control = true
 		let label = __( "Hide Advanced Controls" )
 
@@ -106,8 +106,8 @@ class TypographyControl extends Component {
 					sizeTabletLabel = { this.props.lineHeightTablet.label }
 					size = { this.props.lineHeight }
 					sizeLabel = { this.props.lineHeight.label }
-					sizeMobileText = { __( "Line Height Mobile" ) }
-					sizeTabletText = { __( "Line Height Tablet" ) }
+					sizeMobileText = { __( "Line Height" ) }
+					sizeTabletText = { __( "Line Height" ) }
 					sizeText = { __( "Line Height" ) }
 					{ ...this.props }
 				/>
@@ -125,8 +125,8 @@ class TypographyControl extends Component {
 					sizeTabletLabel = { this.props.fontSizeTablet.label }
 					size = { this.props.fontSize }
 					sizeLabel = { this.props.fontSize.label }
-					sizeMobileText = { __( "Font Size Mobile" ) }
-					sizeTabletText = { __( "Font Size Tablet" ) }
+					sizeMobileText = { __( "Font Size" ) }
+					sizeTabletText = { __( "Font Size" ) }
 					sizeText = { __( "Font Size" ) }
 					{ ...this.props }
 				/>
@@ -137,7 +137,7 @@ class TypographyControl extends Component {
 			fontAdvancedControls =  (
 				<Button
 					className="uagb-size-btn"
-					isSmall	
+					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlClick }
 				>
@@ -148,30 +148,30 @@ class TypographyControl extends Component {
 			resetFontAdvancedControls =  (
 				<Button
 					className="uagb-size-btn"
-					isSmall	
+					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlReset }
-				> 
-					{ __( "Reset" ) } 
+				>
+					{ __( "Reset" ) }
 				</Button>
 			)
 		} else {
 			showAdvancedFontControls = (
-				<Fragment>
+				<div className="uagb-typography-advanced">
 					{ fontFamily }
 					{ fontWeight }
-				</Fragment>
+				</div>
 			)
 		}
 
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
-			
+
 			showAdvancedFontControls = (
-				<Fragment>
+				<div className="uagb-typography-advanced">
 					{ fontFamily }
 					{ fontWeight }
-				</Fragment>
+				</div>
 			)
 		}
 

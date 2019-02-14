@@ -216,7 +216,7 @@ class UAGBTimeline extends Component {
 		let loadCtaGoogleFonts;
 
 		if( headLoadGoogleFonts == true ) {
-					
+
 			const headconfig = {
 				google: {
 					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
@@ -228,9 +228,9 @@ class UAGBTimeline extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( subHeadLoadGoogleFonts == true ) {
-					
+
 			const subHeadconfig = {
 				google: {
 					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
@@ -242,9 +242,9 @@ class UAGBTimeline extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( dateLoadGoogleFonts == true ) {
-					
+
 			const dateconfig = {
 				google: {
 					families: [ dateFontFamily + ( dateFontWeight ? ':' + dateFontWeight : '' ) ],
@@ -255,10 +255,10 @@ class UAGBTimeline extends Component {
 				<WebfontLoader config={ dateconfig }>
 				</WebfontLoader>
 			)
-		}		
-		
+		}
+
 		if( authorLoadGoogleFonts == true ) {
-					
+
 			const authorconfig = {
 				google: {
 					families: [ authorFontFamily + ( authorFontWeight ? ':' + authorFontWeight : '' ) ],
@@ -272,7 +272,7 @@ class UAGBTimeline extends Component {
 		}
 
 		if( ctaLoadGoogleFonts == true ) {
-					
+
 			const ctaconfig = {
 				google: {
 					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
@@ -549,8 +549,8 @@ class UAGBTimeline extends Component {
 						onChange={ ( value ) => setAttributes( { linkTarget: ! linkTarget } ) }
 					/>
 				</PanelBody>
-				<PanelBody  title={ __( "Timeline Item" ) } initialOpen={ false } >					
-					
+				<PanelBody  title={ __( "Timeline Item" ) } initialOpen={ false } >
+
 					<h2>{ __( "Heading" ) }</h2>
 					<SelectControl
 						label={ __( "Heading Tag" ) }
@@ -565,7 +565,7 @@ class UAGBTimeline extends Component {
 							{ value: "h6", label: __( "H6" ) },
 						] }
 					/>
-					
+
 					<TypographyControl
 						label={ __( "Heading Tag" ) }
 						attributes = { this.props.attributes }
@@ -583,7 +583,7 @@ class UAGBTimeline extends Component {
 						lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
 						lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
 					/>
-					{ displayPostExcerpt && <Fragment> 
+					{ displayPostExcerpt && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content" ) }</h2>
 						<TypographyControl
@@ -1032,10 +1032,7 @@ class UAGBTimeline extends Component {
 		if ( ! hasPosts ) {
 			return (
 				<Fragment>
-					<Placeholder
-						icon="admin-post"
-						label={ __( "UAGB timeline" ) }
-					>
+					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-timeline"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							__( "No posts found." )
