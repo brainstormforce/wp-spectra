@@ -110,15 +110,15 @@ class UAGBIconList extends Component {
 			loadGoogleFonts,
 		} = attributes
 
-		let googleFonts;
+		let googleFonts
 
 		if( loadGoogleFonts == true ) {
 
 			const hconfig = {
 				google: {
-					families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
+					families: [ fontFamily + ( fontWeight ? ":" + fontWeight : "" ) ],
 				},
-			};
+			}
 
 			googleFonts = (
 				<WebfontLoader config={ hconfig }>

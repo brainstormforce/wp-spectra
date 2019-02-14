@@ -573,14 +573,14 @@ class UAGBMultiButtonEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		let loadBtnGoogleFonts;
+		let loadBtnGoogleFonts
 		if( loadGoogleFonts == true ) {
 
 			const btnconfig = {
 				google: {
-					families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
+					families: [ fontFamily + ( fontWeight ? ":" + fontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadBtnGoogleFonts = (
 				<WebfontLoader config={ btnconfig }>

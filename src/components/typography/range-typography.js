@@ -22,10 +22,10 @@ import map from "lodash/map"
 
 function RangeTypographyControl( props ) {
 
-	let sizeTypes;
+	let sizeTypes
 
-	if( 'sizeTypes' in props ) {
-		sizeTypes = props.sizeTypes;
+	if( "sizeTypes" in props ) {
+		sizeTypes = props.sizeTypes
 	} else {
 		sizeTypes = [
 			{ key: "px", name: __( "px" ) },
