@@ -212,6 +212,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/buttons':
                     $css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
+                    $this->blocks_buttons_gfont( $blockattr );
                     break;
 
                 case 'uagb/blockquote':
@@ -237,7 +238,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     break;
 
 				case 'uagb/restaurant-menu':
-					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );					
+					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					$this->blocks_restaurant_menu_gfont( $blockattr );
 					break;
 
@@ -252,6 +253,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/icon-list':
                     $css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
+                     $this->blocks_icon_list_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-grid':
@@ -428,6 +430,35 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
 		}
 
+		/**
+		 * Adds Google fonts for Mulit Button's block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_buttons_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Icon List block
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_icon_list_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
 
 		/**
 		 * Adds Google fonts for Post block.
@@ -728,21 +759,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				array_push(
 					$default,
 					array(
-						'size'         => '',
-						'vPadding'     => 10,
-						'hPadding'     => 14,
-						'borderWidth'  => 1,
-						'borderRadius' => 2,
-						'borderStyle'  => 'solid',
-						'borderColor'  => '#333',
-						'borderHColor' => '#333',
-						'color'        => '#333',
-						'background'   => '',
-						'hColor'       => '#333',
-						'hBackground'  => '',
-						'sizeType'     => 'px',
-						'sizeMobile'   => '',
-						'sizeTablet'   => '',
+						'size'             => '',
+						'vPadding'         => 10,
+						'hPadding'         => 14,
+						'borderWidth'      => 1,
+						'borderRadius'     => 2,
+						'borderStyle'      => 'solid',
+						'borderColor'      => '#333',
+						'borderHColor'     => '#333',
+						'color'            => '#333',
+						'background'       => '',
+						'hColor'           => '#333',
+						'hBackground'      => '',
+						'sizeType'         => 'px',
+						'sizeMobile'       => '',
+						'sizeTablet'       => '',
+						'lineHeightType'   => 'px',
+						'lineHeight'       => '',
+						'lineHeightMobile' => '',
+						'lineHeightTablet' => '',
 					)
 				);
 			}

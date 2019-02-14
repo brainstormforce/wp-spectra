@@ -215,6 +215,54 @@ hr.uagb-editor__separator {
 	margin-bottom: -34px;
 }
 
+.uagb-typography-advanced {
+	box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
+    border: 1px solid #e2e4e7;
+    background: #fff;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.uagb-typography-advanced::before {
+	border: 8px solid #e2e4e7;
+
+	content: "";
+	position: absolute;
+	height: 0;
+	width: 0;
+	line-height: 0;
+
+	top: -8px;
+	left: 50%;
+
+	border-bottom-style: solid;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-top: none;
+	margin-left: -10px;
+}
+
+.uagb-typography-advanced::after {
+	border: 8px solid #fff;
+
+	content: "";
+	position: absolute;
+	height: 0;
+	width: 0;
+	line-height: 0;
+
+	top: -6px;
+	left: 50%;
+
+	border-bottom-style: solid;
+	border-left-color: transparent;
+	border-right-color: transparent;
+	border-top: none;
+	margin-left: -10px;
+}
+
 
 /*
  Fonticon picker css
