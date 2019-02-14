@@ -224,6 +224,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/team':
                     $css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
+                    $this->blocks_team_gfont( $blockattr );
                     break;
 
                 case 'uagb/social-share':
@@ -378,6 +379,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
 			self::blocks_google_font( $name_load_google_fonts, $name_font_family, $name_font_family, $name_font_subset );
 			self::blocks_google_font( $company_load_google_fonts, $company_font_family, $company_font_family, $company_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_team_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
+			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
+			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
+			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			self::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
 		}
 
 		/**

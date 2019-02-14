@@ -155,11 +155,6 @@ export default class UAGBAdvancedHeading extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
-		]
-
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
 
