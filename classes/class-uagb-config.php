@@ -14,6 +14,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 
 
+
 		/**
 		 * Block Attributes
 		 *
@@ -507,12 +508,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'block_id'  => '',
-							'align'     => 'center',
-							'btn_count' => '2',
-							'buttons'   => UAGB_Helper::get_button_defaults(),
-							'gap'       => 10,
-							'stack'     => 'none',
+							'block_id'        => '',
+							'align'           => 'center',
+							'btn_count'       => '2',
+							'buttons'         => UAGB_Helper::get_button_defaults(),
+							'gap'             => 10,
+							'stack'           => 'none',
+							'fontFamily'      => '',
+							'fontWeight'      => '',
+							'loadGoogleFonts' => false,
+							'fontSubset'      => '',
 						),
 					),
 					'uagb/post-carousel'    => array(

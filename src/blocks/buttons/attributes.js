@@ -25,6 +25,10 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"sizeType": "px",
 			"sizeMobile": "",
 			"sizeTablet": "",
+			"lineHeight": "",
+			"lineHeightType": "px",
+			"lineHeightMobile": "",
+			"lineHeightTablet": "",
 		}
 	)
 }
@@ -52,7 +56,21 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "none"
-	}
+	},
+	loadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	fontFamily: {
+		type: "string",
+		default: "",
+	},
+	fontWeight: {
+		type: "string",
+	},
+	fontSubset: {
+		type: "string",
+	},
 }
 
 export default attributes
