@@ -33,7 +33,34 @@ const attributes = {
 	},
 	descFontSizeMobile: {
 		type: "number",
-	},		
+	},	
+	descFontFamily: {
+		type: "string",
+		default: "",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
+	},
+	descLineHeightType: {
+		type: "string",
+		default: "px"
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
+		type: "number",
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},	
 	descSpace :{
 		type: "number",
 		default: 20,
@@ -58,6 +85,33 @@ const attributes = {
 	},
 	authorFontSizeMobile: {
 		type: "number",
+	},
+	authorFontFamily: {
+		type: "string",
+		default: "",
+	},
+	authorFontWeight: {
+		type: "string",
+	},
+	authorFontSubset: {
+		type: "string",
+	},
+	authorLineHeightType: {
+		type: "string",
+		default: "px"
+	},
+	authorLineHeight: {
+		type: "number",
+	},
+	authorLineHeightTablet: {
+		type: "number",
+	},
+	authorLineHeightMobile: {
+		type: "number",
+	},
+	authorLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	authorSpace: {
 		type: "number",
@@ -149,6 +203,33 @@ const attributes = {
 	},
 	tweetBtnFontSizeMobile: {
 		type: "number",
+	},
+	tweetBtnFontFamily: {
+		type: "string",
+		default: "",
+	},
+	tweetBtnFontWeight: {
+		type: "string",
+	},
+	tweetBtnFontSubset: {
+		type: "string",
+	},
+	tweetBtnLineHeightType: {
+		type: "string",
+		default: "px"
+	},
+	tweetBtnLineHeight: {
+		type: "number",
+	},
+	tweetBtnLineHeightTablet: {
+		type: "number",
+	},
+	tweetBtnLineHeightMobile: {
+		type: "number",
+	},
+	tweetBtnLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	tweetBtnHrPadding: {
 		type: "number",

@@ -212,6 +212,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/blockquote':
                     $css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
+                     $this->blocks_blockquote_gfont( $blockattr );
                     break;
 
 				case 'uagb/testimonial':
@@ -322,6 +323,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
 			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Blockquote.
+		 *
+		 * @param array $attr the blocks attr.
+		 */
+		public function blocks_blockquote_gfont( $attr ) {
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$author_load_google_font = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
+			$author_font_family      = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
+			$author_font_weight      = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
+			$author_font_subset      = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
+
+			$tweet_btn_load_google_font = isset( $attr['tweetBtnLoadGoogleFonts'] ) ? $attr['tweetBtnLoadGoogleFonts'] : '';
+			$tweet_btn_font_family      = isset( $attr['tweetBtnFontFamily'] ) ? $attr['tweetBtnFontFamily'] : '';
+			$tweet_btn_font_weight      = isset( $attr['tweetBtnFontWeight'] ) ? $attr['tweetBtnFontWeight'] : '';
+			$tweet_btn_font_subset      = isset( $attr['tweetBtnFontSubset'] ) ? $attr['tweetBtnFontSubset'] : '';
+
+			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+			self::blocks_google_font( $author_load_google_font, $author_font_family, $author_font_weight, $author_font_subset );
+			self::blocks_google_font( $tweet_btn_load_google_font, $tweet_btn_font_family, $tweet_btn_font_weight, $tweet_btn_font_subset );
 		}
 
 		/**
