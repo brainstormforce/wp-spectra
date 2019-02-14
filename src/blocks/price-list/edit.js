@@ -246,17 +246,17 @@ class UAGBRestaurantMenu extends Component {
 			{ key: "em", name: __( "em" ) },
 		]		
 
-		let loadTitleGoogleFonts;
-		let loadDescGoogleFonts;
-		let loadPriceGoogleFonts;
+		let loadTitleGoogleFonts
+		let loadDescGoogleFonts
+		let loadPriceGoogleFonts
 
 		if( titleLoadGoogleFonts == true ) {
 			
 			const titleconfig = {
 				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadTitleGoogleFonts = (
 				<WebfontLoader config={ titleconfig }>
@@ -268,9 +268,9 @@ class UAGBRestaurantMenu extends Component {
 					
 			const descconfig = {
 				google: {
-					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadDescGoogleFonts = (
 				<WebfontLoader config={ descconfig }>
@@ -282,9 +282,9 @@ class UAGBRestaurantMenu extends Component {
 					
 			const priceconfig = {
 				google: {
-					families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
+					families: [ priceFontFamily + ( priceFontWeight ? ":" + priceFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadPriceGoogleFonts = (
 				<WebfontLoader config={ priceconfig }>

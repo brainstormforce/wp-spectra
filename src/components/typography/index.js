@@ -38,7 +38,7 @@ class TypographyControl extends Component {
 		let label = __( "Hide Advanced Controls" )
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
-			control = false;
+			control = false
 			label = __( "Show Advanced Controls" )
 		}
 
@@ -47,7 +47,7 @@ class TypographyControl extends Component {
 				showAdvancedControls: control,
 				showAdvancedControlsLabel: label
 			}
-		);
+		)
 	}
 
 	onAdvancedControlReset() {
@@ -55,21 +55,21 @@ class TypographyControl extends Component {
 		const { setAttributes } = this.props
 
 		// Reset Font family to default.
-		setAttributes( { [ this.props.fontFamily.label ]: '' } )
-		setAttributes( { [ this.props.fontWeight.label ]: '' } )
-		setAttributes( { [ this.props.fontSubset.label ]: '' } )
+		setAttributes( { [ this.props.fontFamily.label ]: "" } )
+		setAttributes( { [ this.props.fontWeight.label ]: "" } )
+		setAttributes( { [ this.props.fontSubset.label ]: "" } )
 
 		// Reset Font Size to default.
-		setAttributes( { [ this.props.fontSize.label ]: '' } )
-		setAttributes( { [ this.props.fontSizeType.label ]: '' } )
-		setAttributes( { [ this.props.fontSizeMobile.label ]: '' } )
-		setAttributes( { [ this.props.fontSizeTablet.label ]: '' } )
+		setAttributes( { [ this.props.fontSize.label ]: "" } )
+		setAttributes( { [ this.props.fontSizeType.label ]: "" } )
+		setAttributes( { [ this.props.fontSizeMobile.label ]: "" } )
+		setAttributes( { [ this.props.fontSizeTablet.label ]: "" } )
 
 		// Reset Line Height to default.
-		setAttributes( { [ this.props.lineHeight.label ]: '' } )
-		setAttributes( { [ this.props.lineHeightType.label ]: '' } )
-		setAttributes( { [ this.props.lineHeightMobile.label ]: '' } )
-		setAttributes( { [ this.props.lineHeightTablet.label ]: '' } )
+		setAttributes( { [ this.props.lineHeight.label ]: "" } )
+		setAttributes( { [ this.props.lineHeightType.label ]: "" } )
+		setAttributes( { [ this.props.lineHeightMobile.label ]: "" } )
+		setAttributes( { [ this.props.lineHeightTablet.label ]: "" } )
 
 		// Reset Google Fonts to default.
 		setAttributes( { [ this.props.loadGoogleFonts.label ]: false } )
@@ -78,14 +78,14 @@ class TypographyControl extends Component {
 
 	render() {
 
-		let fontSize;
-		let fontWeight;
-		let fontFamily;
-		let fontAdvancedControls;
-		let showAdvancedFontControls;
-		let resetFontAdvancedControls;
+		let fontSize
+		let fontWeight
+		let fontFamily
+		let fontAdvancedControls
+		let showAdvancedFontControls
+		let resetFontAdvancedControls
 
-		const { disableFontFamily, disableFontSize, disableLineHeight } = this.props;
+		const { disableFontFamily, disableFontSize, disableLineHeight } = this.props
 
 		if( true !== disableFontFamily ) {
 			fontFamily = (

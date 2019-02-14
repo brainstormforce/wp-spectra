@@ -225,18 +225,18 @@ class UAGBPostCarousel extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadTitleGoogleFonts;
-		let loadMetaGoogleFonts;
-		let loadExcerptGoogleFonts;
-		let loadCtaGoogleFonts;
+		let loadTitleGoogleFonts
+		let loadMetaGoogleFonts
+		let loadExcerptGoogleFonts
+		let loadCtaGoogleFonts
 
 		if( titleLoadGoogleFonts == true ) {
 					
 			const titleconfig = {
 				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadTitleGoogleFonts = (
 				<WebfontLoader config={ titleconfig }>
@@ -248,9 +248,9 @@ class UAGBPostCarousel extends Component {
 					
 			const metaconfig = {
 				google: {
-					families: [ metaFontFamily + ( metaFontWeight ? ':' + metaFontWeight : '' ) ],
+					families: [ metaFontFamily + ( metaFontWeight ? ":" + metaFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadMetaGoogleFonts = (
 				<WebfontLoader config={ metaconfig }>
@@ -262,9 +262,9 @@ class UAGBPostCarousel extends Component {
 					
 			const excerptconfig = {
 				google: {
-					families: [ excerptFontFamily + ( excerptFontWeight ? ':' + excerptFontWeight : '' ) ],
+					families: [ excerptFontFamily + ( excerptFontWeight ? ":" + excerptFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadExcerptGoogleFonts = (
 				<WebfontLoader config={ excerptconfig }>
@@ -276,9 +276,9 @@ class UAGBPostCarousel extends Component {
 					
 			const ctaconfig = {
 				google: {
-					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadCtaGoogleFonts = (
 				<WebfontLoader config={ ctaconfig }>
@@ -661,7 +661,7 @@ class UAGBPostCarousel extends Component {
 					{ ( displayPostAuthor || displayPostDate || displayPostComment ) && <Fragment>
 						<hr className="uagb-editor__separator" />				
 						<h2>{ __( "Meta" ) }</h2>
-							<TypographyControl
+						<TypographyControl
 							label={ __( "Meta Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
@@ -678,13 +678,13 @@ class UAGBPostCarousel extends Component {
 							lineHeightMobile = { { value: metaLineHeightMobile, label: __( "metaLineHeightMobile" ) } }
 							lineHeightTablet= { { value: metaLineHeightTablet, label: __( "metaLineHeightTablet" ) } }
 						/>
-						</Fragment>						
+					</Fragment>						
 					}
 
 					{ displayPostExcerpt && <Fragment>
 						<hr className="uagb-editor__separator" />				
 						<h2>{ __( "Excerpt" ) }</h2>
-							<TypographyControl
+						<TypographyControl
 							label={ __( "Excerpt Tag" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
@@ -701,7 +701,7 @@ class UAGBPostCarousel extends Component {
 							lineHeightMobile = { { value: excerptLineHeightMobile, label: __( "excerptLineHeightMobile" ) } }
 							lineHeightTablet= { { value: excerptLineHeightTablet, label: __( "excerptLineHeightTablet" ) } }
 						/>
-						</Fragment>						
+					</Fragment>						
 					}
 				</PanelBody>
 

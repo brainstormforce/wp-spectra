@@ -289,17 +289,17 @@ class UAGBtestimonial extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadNameGoogleFonts;
-		let loadCompanyGoogleFonts;
-		let loadDescGoogleFonts;
+		let loadNameGoogleFonts
+		let loadCompanyGoogleFonts
+		let loadDescGoogleFonts
 
 		if( nameLoadGoogleFonts == true ) {
 					
 			const nameconfig = {
 				google: {
-					families: [ nameFontFamily + ( nameFontWeight ? ':' + nameFontWeight : '' ) ],
+					families: [ nameFontFamily + ( nameFontWeight ? ":" + nameFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadNameGoogleFonts = (
 				<WebfontLoader config={ nameconfig }>
@@ -311,9 +311,9 @@ class UAGBtestimonial extends Component {
 					
 			const companyconfig = {
 				google: {
-					families: [ companyFontFamily + ( companyFontWeight ? ':' + companyFontWeight : '' ) ],
+					families: [ companyFontFamily + ( companyFontWeight ? ":" + companyFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadCompanyGoogleFonts = (
 				<WebfontLoader config={ companyconfig }>
@@ -325,9 +325,9 @@ class UAGBtestimonial extends Component {
 					
 			const descconfig = {
 				google: {
-					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadDescGoogleFonts = (
 				<WebfontLoader config={ descconfig }>
@@ -340,63 +340,63 @@ class UAGBtestimonial extends Component {
 			<Fragment>
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false } >
 					<h2>{ __( "Testimonial" ) }</h2>
-						<TypographyControl
-							label={ __( "Desc Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
-							fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
-							fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
-							fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
-							fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
-							fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
-							fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
-							fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
-							lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
-							lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
-							lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
-							lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
-						/>
+					<TypographyControl
+						label={ __( "Desc Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
+						fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
+						fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
+						fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
+						fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
+						fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
+						fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
+						fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
+						lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
+						lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
+						lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
+						lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
+					/>
 
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Name" ) }</h2>
-						<TypographyControl
-							label={ __( "Name Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: nameLoadGoogleFonts, label: __( "nameLoadGoogleFonts" ) } }
-							fontFamily = { { value: nameFontFamily, label: __( "nameFontFamily" ) } }
-							fontWeight = { { value: nameFontWeight, label: __( "nameFontWeight" ) } }
-							fontSubset = { { value: nameFontSubset, label: __( "nameFontSubset" ) } }
-							fontSizeType = { { value: nameFontSizeType, label: __( "nameFontSizeType" ) } }
-							fontSize = { { value: nameFontSize, label: __( "nameFontSize" ) } }
-							fontSizeMobile = { { value: nameFontSizeMobile, label: __( "nameFontSizeMobile" ) } }
-							fontSizeTablet= { { value: nameFontSizeTablet, label: __( "nameFontSizeTablet" ) } }
-							lineHeightType = { { value: nameLineHeightType, label: __( "nameLineHeightType" ) } }
-							lineHeight = { { value: nameLineHeight, label: __( "nameLineHeight" ) } }
-							lineHeightMobile = { { value: nameLineHeightMobile, label: __( "nameLineHeightMobile" ) } }
-							lineHeightTablet= { { value: nameLineHeightTablet, label: __( "nameLineHeightTablet" ) } }
-						/>
+					<TypographyControl
+						label={ __( "Name Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: nameLoadGoogleFonts, label: __( "nameLoadGoogleFonts" ) } }
+						fontFamily = { { value: nameFontFamily, label: __( "nameFontFamily" ) } }
+						fontWeight = { { value: nameFontWeight, label: __( "nameFontWeight" ) } }
+						fontSubset = { { value: nameFontSubset, label: __( "nameFontSubset" ) } }
+						fontSizeType = { { value: nameFontSizeType, label: __( "nameFontSizeType" ) } }
+						fontSize = { { value: nameFontSize, label: __( "nameFontSize" ) } }
+						fontSizeMobile = { { value: nameFontSizeMobile, label: __( "nameFontSizeMobile" ) } }
+						fontSizeTablet= { { value: nameFontSizeTablet, label: __( "nameFontSizeTablet" ) } }
+						lineHeightType = { { value: nameLineHeightType, label: __( "nameLineHeightType" ) } }
+						lineHeight = { { value: nameLineHeight, label: __( "nameLineHeight" ) } }
+						lineHeightMobile = { { value: nameLineHeightMobile, label: __( "nameLineHeightMobile" ) } }
+						lineHeightTablet= { { value: nameLineHeightTablet, label: __( "nameLineHeightTablet" ) } }
+					/>
 
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Company" ) }</h2>
-						<TypographyControl
-							label={ __( "Company Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: companyLoadGoogleFonts, label: __( "companyLoadGoogleFonts" ) } }
-							fontFamily = { { value: companyFontFamily, label: __( "companyFontFamily" ) } }
-							fontWeight = { { value: companyFontWeight, label: __( "companyFontWeight" ) } }
-							fontSubset = { { value: companyFontSubset, label: __( "companyFontSubset" ) } }
-							fontSizeType = { { value: companyFontSizeType, label: __( "companyFontSizeType" ) } }
-							fontSize = { { value: companyFontSize, label: __( "companyFontSize" ) } }
-							fontSizeMobile = { { value: companyFontSizeMobile, label: __( "companyFontSizeMobile" ) } }
-							fontSizeTablet= { { value: companyFontSizeTablet, label: __( "companyFontSizeTablet" ) } }
-							lineHeightType = { { value: companyLineHeightType, label: __( "companyLineHeightType" ) } }
-							lineHeight = { { value: companyLineHeight, label: __( "companyLineHeight" ) } }
-							lineHeightMobile = { { value: companyLineHeightMobile, label: __( "companyLineHeightMobile" ) } }
-							lineHeightTablet= { { value: companyLineHeightTablet, label: __( "companyLineHeightTablet" ) } }
-						/>
+					<TypographyControl
+						label={ __( "Company Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: companyLoadGoogleFonts, label: __( "companyLoadGoogleFonts" ) } }
+						fontFamily = { { value: companyFontFamily, label: __( "companyFontFamily" ) } }
+						fontWeight = { { value: companyFontWeight, label: __( "companyFontWeight" ) } }
+						fontSubset = { { value: companyFontSubset, label: __( "companyFontSubset" ) } }
+						fontSizeType = { { value: companyFontSizeType, label: __( "companyFontSizeType" ) } }
+						fontSize = { { value: companyFontSize, label: __( "companyFontSize" ) } }
+						fontSizeMobile = { { value: companyFontSizeMobile, label: __( "companyFontSizeMobile" ) } }
+						fontSizeTablet= { { value: companyFontSizeTablet, label: __( "companyFontSizeTablet" ) } }
+						lineHeightType = { { value: companyLineHeightType, label: __( "companyLineHeightType" ) } }
+						lineHeight = { { value: companyLineHeight, label: __( "companyLineHeight" ) } }
+						lineHeightMobile = { { value: companyLineHeightMobile, label: __( "companyLineHeightMobile" ) } }
+						lineHeightTablet= { { value: companyLineHeightTablet, label: __( "companyLineHeightTablet" ) } }
+					/>
 				</PanelBody>
 
 				<PanelColorSettings
