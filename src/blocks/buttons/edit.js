@@ -8,6 +8,12 @@ import map from "lodash/map"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 const { __ } = wp.i18n
 
 const {
@@ -92,7 +98,11 @@ class UAGBMultiButtonEdit extends Component {
 			btn_count,
 			buttons,
 			gap,
-			stack
+			stack,
+			loadGoogleFonts,
+			fontFamily,
+			fontWeight,
+			fontSubset,
 		} = attributes
 
 		const onMouseOut = () => {
@@ -284,6 +294,151 @@ class UAGBMultiButtonEdit extends Component {
 							}
 						}
 					</TabPanel>
+					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "px" }
+													aria-pressed={ buttons[ index ].lineHeightType === "px" }
+													onClick={ () => this.saveButton( { lineHeightType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "%" }
+													aria-pressed={ buttons[ index ].lineHeightType === "%" }
+													onClick={ () => this.saveButton( { lineHeightType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Line Height" ) }
+												value={ buttons[ index ].lineHeightMobile }
+												onChange={ value => {
+													this.saveButton( { lineHeightMobile: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "px" }
+													aria-pressed={ buttons[ index ].lineHeightType === "px" }
+													onClick={ () => this.saveButton( { lineHeightType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "%" }
+													aria-pressed={ buttons[ index ].lineHeightType === "%" }
+													onClick={ () => this.saveButton( { lineHeightType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Line Height" ) }
+												value={ buttons[ index ].lineHeightTablet }
+												onChange={ value => {
+													this.saveButton( { lineHeightTablet: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								} else {
+									tabout = (
+										<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button
+													key={ "px" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "px" }
+													aria-pressed={ buttons[ index ].lineHeightType === "px" }
+													onClick={ () => this.saveButton( { lineHeightType: "px" }, index ) }
+												>
+													{ "px" }
+												</Button>
+												<Button
+													key={ "%" }
+													className="uagb-size-btn"
+													isSmall
+													isPrimary={ buttons[ index ].lineHeightType === "%" }
+													aria-pressed={ buttons[ index ].lineHeightType === "%" }
+													onClick={ () => this.saveButton( { lineHeightType: "%" }, index ) }
+												>
+													{ "%" }
+												</Button>
+											</ButtonGroup>
+											<RangeControl
+												label={ __( "Line Height" ) }
+												value={ buttons[ index ].lineHeight }
+												onChange={ value => {
+													this.saveButton( { lineHeight: value }, index )
+												} }
+												min={ 10 }
+												max={ 100 }
+												beforeIcon="editor-textcolor"
+												allowReset
+												initialPosition={16}
+											/>
+										</Fragment>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
@@ -418,6 +573,21 @@ class UAGBMultiButtonEdit extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
+		let loadBtnGoogleFonts;
+		if( loadGoogleFonts == true ) {
+
+			const btnconfig = {
+				google: {
+					families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
+				},
+			};
+
+			loadBtnGoogleFonts = (
+				<WebfontLoader config={ btnconfig }>
+				</WebfontLoader>
+			)
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -471,10 +641,21 @@ class UAGBMultiButtonEdit extends Component {
 						/>
 					</PanelBody>
 					{ times( btn_count, n => buttonControls( n ) ) }
-					<PanelBody
-						title={ __( "Spacing" ) }
-						initialOpen={ false }
-					>
+					<PanelBody title={ __( "General" ) } initialOpen={ false }>
+						<h2>{ __( "Button Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							disableFontSize={true}
+							disableLineHeight={true}
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Button Spacing" ) }</h2>
 						<RangeControl
 							label={ __( "Gap Between Buttons" ) }
 							value={ gap }
@@ -482,6 +663,7 @@ class UAGBMultiButtonEdit extends Component {
 							min={ 0 }
 							max={ 50 }
 						/>
+						<hr className="uagb-editor__separator" />
 						<SelectControl
 							label={ __( "Stack on" ) }
 							value={ stack }
@@ -536,6 +718,7 @@ class UAGBMultiButtonEdit extends Component {
 						}
 					</div>
 				</div>
+				{ loadBtnGoogleFonts }
 			</Fragment>
 		)
 	}

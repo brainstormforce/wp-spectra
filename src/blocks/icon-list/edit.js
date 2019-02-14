@@ -92,8 +92,8 @@ class UAGBIconList extends Component {
 			size,
 			sizeType,
 			sizeMobile,
-			sizeTablet,			
-			hideLabel,			
+			sizeTablet,
+			hideLabel,
 			borderRadius,
 			bgSize,
 			fontSize,
@@ -113,7 +113,7 @@ class UAGBIconList extends Component {
 		let googleFonts;
 
 		if( loadGoogleFonts == true ) {
-			
+
 			const hconfig = {
 				google: {
 					families: [ fontFamily + ( fontWeight ? ':' + fontWeight : '' ) ],
@@ -552,7 +552,6 @@ class UAGBIconList extends Component {
 							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
 							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
 							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
-							disableFontFamily = { true }
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
