@@ -154,17 +154,17 @@ class UAGBCallToAction extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadCtaGoogleFonts;
-		let loadTitleGoogleFonts;
-		let loadDescGoogleFonts;
+		let loadCtaGoogleFonts
+		let loadTitleGoogleFonts
+		let loadDescGoogleFonts
 
 		if( ctaLoadGoogleFonts == true ) {
 					
 			const ctaconfig = {
 				google: {
-					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadCtaGoogleFonts = (
 				<WebfontLoader config={ ctaconfig }>
@@ -176,9 +176,9 @@ class UAGBCallToAction extends Component {
 					
 			const titleconfig = {
 				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadTitleGoogleFonts = (
 				<WebfontLoader config={ titleconfig }>
@@ -190,9 +190,9 @@ class UAGBCallToAction extends Component {
 					
 			const descconfig = {
 				google: {
-					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadDescGoogleFonts = (
 				<WebfontLoader config={ descconfig }>

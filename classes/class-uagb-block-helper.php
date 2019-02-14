@@ -493,7 +493,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-heading-text'        => array(
 					'text-align' => $attr['headingAlign'],
-					'font-family' => ( isset( $attr['headFontFamily'] ) ) ? $attr['headFontFamily'] : '',
+					'font-family' => $attr['headFontFamily'],
 					'font-weight' => $attr['headFontWeight'],
 					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
 					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
@@ -1277,12 +1277,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				" p.uagb-team__desc" => array(
+					"font-family" => $attr['descFontFamily'],
+					"font-weight" => $attr['descFontWeight'],
 					"font-size" => $attr['descFontSize'] . $attr['descFontSizeType'],
+					"line-height" => $attr['descLineHeight'] . $attr['descLineHeightType'],
 					"color" => $attr['descColor'],
 					"margin-bottom" => $attr['descSpace'] . "px",
 				),
 				" .uagb-team__prefix" => array(
+					"font-family" => $attr['prefixFontFamily'],
+					"font-weight" => $attr['prefixFontWeight'],
 					"font-size" => $attr['prefixFontSize'] . $attr['prefixFontSizeType'],
+					"line-height" => $attr['prefixLineHeight'] . $attr['prefixLineHeightType'],
 					"color" => $attr['prefixColor'],
 				),
 				" .uagb-team__desc-wrap" => array(
@@ -1353,7 +1359,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-family" => $attr['titleFontFamily'],
+				"font-weight" => $attr['titleFontWeight'],
 				"font-size" => $attr['titleFontSize'] . $attr['titleFontSizeType'],
+				"line-height" => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 				"color" => $attr['titleColor'],
 				"margin-bottom" => $attr['titleSpace'] . "px",
 			);

@@ -294,18 +294,18 @@ class UAGBinfoBox extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadPrefixGoogleFonts;
-		let loadSubHeadGoogleFonts;
-		let loadCtaGoogleFonts;
-		let loadHeadGoogleFonts;
+		let loadPrefixGoogleFonts
+		let loadSubHeadGoogleFonts
+		let loadCtaGoogleFonts
+		let loadHeadGoogleFonts
 
 		if( prefixLoadGoogleFonts == true ) {
 					
 			const prefixconfig = {
 				google: {
-					families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
+					families: [ prefixFontFamily + ( prefixFontWeight ? ":" + prefixFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadPrefixGoogleFonts = (
 				<WebfontLoader config={ prefixconfig }>
@@ -317,9 +317,9 @@ class UAGBinfoBox extends Component {
 					
 			const headconfig = {
 				google: {
-					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+					families: [ headFontFamily + ( headFontWeight ? ":" + headFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadHeadGoogleFonts = (
 				<WebfontLoader config={ headconfig }>
@@ -331,9 +331,9 @@ class UAGBinfoBox extends Component {
 					
 			const subHeadconfig = {
 				google: {
-					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ":" + subHeadFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadSubHeadGoogleFonts = (
 				<WebfontLoader config={ subHeadconfig }>
@@ -345,9 +345,9 @@ class UAGBinfoBox extends Component {
 					
 			const ctaconfig = {
 				google: {
-					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadCtaGoogleFonts = (
 				<WebfontLoader config={ ctaconfig }>
@@ -487,19 +487,19 @@ class UAGBinfoBox extends Component {
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
 					<TypographyControl
-							label={ __( "CTA Font Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
-							fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
-							fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
-							fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
-							fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
-							fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
-							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
-							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
-							disableLineHeight = {true}
-						/>
+						label={ __( "CTA Font Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
+						fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
+						fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
+						fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
+						fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
+						fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
+						fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
+						fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
+						disableLineHeight = {true}
+					/>
 				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
