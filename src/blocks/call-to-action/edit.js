@@ -15,6 +15,12 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import CtaStyle from "./inline-styles"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 const { __ } = wp.i18n
 
 const {
@@ -77,10 +83,26 @@ class UAGBCallToAction extends Component {
 			titleFontSizeType,
 			titleFontSizeMobile,
 			titleFontSizeTablet,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			titleLoadGoogleFonts,
 			descFontSize,
 			descFontSizeType,
 			descFontSizeMobile,
 			descFontSizeTablet,
+			descFontFamily,
+			descFontWeight,
+			descFontSubset,
+			descLineHeightType,
+			descLineHeight,
+			descLineHeightTablet,
+			descLineHeightMobile,
+			descLoadGoogleFonts,
 			separatorWidth,
 			separatorHeight,
 			titleSpace,
@@ -100,6 +122,10 @@ class UAGBCallToAction extends Component {
 			ctaFontSizeType,
 			ctaFontSizeMobile,
 			ctaFontSizeTablet,
+			ctaFontFamily,
+			ctaFontWeight,
+			ctaFontSubset,
+			ctaLoadGoogleFonts,
 			contentWidth,
 			ctaBtnLinkColor,
 			ctaBgHoverColor,
@@ -128,56 +154,51 @@ class UAGBCallToAction extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		const titleTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ titleFontSizeType === key }
-						aria-pressed={ titleFontSizeType === key }
-						onClick={ () => setAttributes( { titleFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		let loadCtaGoogleFonts;
+		let loadTitleGoogleFonts;
+		let loadDescGoogleFonts;
 
-		const descTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ descFontSizeType === key }
-						aria-pressed={ descFontSizeType === key }
-						onClick={ () => setAttributes( { descFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		if( ctaLoadGoogleFonts == true ) {
+					
+			const ctaconfig = {
+				google: {
+					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+				},
+			};
 
-		const ctaTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ ctaFontSizeType === key }
-						aria-pressed={ ctaFontSizeType === key }
-						onClick={ () => setAttributes( { ctaFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+			loadCtaGoogleFonts = (
+				<WebfontLoader config={ ctaconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( titleLoadGoogleFonts == true ) {
+					
+			const titleconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+				},
+			};
+
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ titleconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( descLoadGoogleFonts == true ) {
+					
+			const descconfig = {
+				google: {
+					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+				},
+			};
+
+			loadDescGoogleFonts = (
+				<WebfontLoader config={ descconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		// Icon properties.
 		const cta_icon_props = {
@@ -210,82 +231,20 @@ class UAGBCallToAction extends Component {
 							value= { ctaText }
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{ctaTypesControls}
-												<RangeControl
-													label={ __( "Button Font Size" ) }
-													value={ ctaFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 0 }
-													max={ 50 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{ctaTypesControls}
-												<RangeControl
-													label={ __( "Button Font Size" ) }
-													value={ ctaFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 0 }
-													max={ 50 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{ctaTypesControls}
-												<RangeControl
-													label={ __( "Button Font Size" ) }
-													value={ ctaFontSize }
-													onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 0 }
-													max={ 50 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<TypographyControl
+							label={ __( "CTA Font Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
+							fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
+							fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
+							fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
+							fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
+							fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
+							disableLineHeight = {true}
+						/>
 					</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -546,82 +505,23 @@ class UAGBCallToAction extends Component {
 					] }
 				/>
 
-				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-					tabs={ [
-						{
-							name: "desktop",
-							title: <Dashicon icon="desktop" />,
-							className: "uagb-desktop-tab uagb-responsive-tabs",
-						},
-						{
-							name: "tablet",
-							title: <Dashicon icon="tablet" />,
-							className: "uagb-tablet-tab uagb-responsive-tabs",
-						},
-						{
-							name: "mobile",
-							title: <Dashicon icon="smartphone" />,
-							className: "uagb-mobile-tab uagb-responsive-tabs",
-						},
-					] }>
-					{
-						( tab ) => {
-							let tabout
-
-							if ( "mobile" === tab.name ) {
-								tabout = (
-									<Fragment>
-										{titleTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ titleFontSizeMobile }
-											onChange={ ( value ) => setAttributes( { titleFontSizeMobile: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={30}
-										/>
-									</Fragment>
-								)
-							} else if ( "tablet" === tab.name ) {
-								tabout = (
-									<Fragment>
-										{titleTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ titleFontSizeTablet }
-											onChange={ ( value ) => setAttributes( { titleFontSizeTablet: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={30}
-										/>
-									</Fragment>
-								)
-							} else {
-								tabout = (
-									<Fragment>
-										{titleTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ titleFontSize }
-											onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={30}
-										/>
-									</Fragment>
-								)
-							}
-
-							return <div>{ tabout }</div>
-						}
-					}
-				</TabPanel>
+				<TypographyControl
+					label={ __( "Title Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
+					fontFamily = { { value: titleFontFamily, label: __( "titleFontFamily" ) } }
+					fontWeight = { { value: titleFontWeight, label: __( "titleFontWeight" ) } }
+					fontSubset = { { value: titleFontSubset, label: __( "titleFontSubset" ) } }
+					fontSizeType = { { value: titleFontSizeType, label: __( "titleFontSizeType" ) } }
+					fontSize = { { value: titleFontSize, label: __( "titleFontSize" ) } }
+					fontSizeMobile = { { value: titleFontSizeMobile, label: __( "titleFontSizeMobile" ) } }
+					fontSizeTablet= { { value: titleFontSizeTablet, label: __( "titleFontSizeTablet" ) } }
+					lineHeightType = { { value: titleLineHeightType, label: __( "titleLineHeightType" ) } }
+					lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
+					lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
+					lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
+				/>
 				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 				<ColorPalette
 					value={ titleColor }
@@ -630,82 +530,23 @@ class UAGBCallToAction extends Component {
 				/>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( "Description" ) }</h2>
-				<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-					tabs={ [
-						{
-							name: "desktop",
-							title: <Dashicon icon="desktop" />,
-							className: "uagb-desktop-tab uagb-responsive-tabs",
-						},
-						{
-							name: "tablet",
-							title: <Dashicon icon="tablet" />,
-							className: "uagb-tablet-tab uagb-responsive-tabs",
-						},
-						{
-							name: "mobile",
-							title: <Dashicon icon="smartphone" />,
-							className: "uagb-mobile-tab uagb-responsive-tabs",
-						},
-					] }>
-					{
-						( tab ) => {
-							let tabout
-
-							if ( "mobile" === tab.name ) {
-								tabout = (
-									<Fragment>
-										{descTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ descFontSizeMobile }
-											onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={16}
-										/>
-									</Fragment>
-								)
-							} else if ( "tablet" === tab.name ) {
-								tabout = (
-									<Fragment>
-										{descTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ descFontSizeTablet }
-											onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={16}
-										/>
-									</Fragment>
-								)
-							} else {
-								tabout = (
-									<Fragment>
-										{descTypesControls}
-										<RangeControl
-											label={ __( "Font Size" ) }
-											value={ descFontSize }
-											onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-											min={ 1 }
-											max={ 100 }
-											beforeIcon="editor-textcolor"
-											allowReset
-											initialPosition={16}
-										/>
-									</Fragment>
-								)
-							}
-
-							return <div>{ tabout }</div>
-						}
-					}
-				</TabPanel>
+				<TypographyControl
+					label={ __( "Description Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
+					fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
+					fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
+					fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
+					fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
+					fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
+					fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
+					fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
+					lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
+					lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
+					lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
+					lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
+				/>
 				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 				<ColorPalette
 					value={ descColor }
@@ -899,6 +740,9 @@ class UAGBCallToAction extends Component {
 					}
 					{ ( ctaType !== "all") && output }
 				</div>
+				{ loadCtaGoogleFonts }
+				{ loadTitleGoogleFonts }
+				{ loadDescGoogleFonts }
 			</Fragment>
 		)
 	}
