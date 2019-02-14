@@ -157,10 +157,10 @@ class TypographyControl extends Component {
 			)
 		} else {
 			showAdvancedFontControls = (
-				<div className="uagb-typography-advanced">
+				<Fragment>
 					{ fontFamily }
 					{ fontWeight }
-				</div>
+				</Fragment>
 			)
 		}
 

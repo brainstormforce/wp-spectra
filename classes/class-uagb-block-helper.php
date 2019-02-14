@@ -15,6 +15,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -607,45 +609,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			foreach ( $attr['buttons'] as $key => $button ) {
 
-				$button['size'] = ( isset( $button['size'] ) ) ? $button['size'] : '';
-				$button['borderWidth'] = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
-				$button['borderStyle'] = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
-				$button['borderColor'] = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
+				$button['size']         = ( isset( $button['size'] ) ) ? $button['size'] : '';
+				$button['borderWidth']  = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
+				$button['borderStyle']  = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
+				$button['borderColor']  = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
 				$button['borderRadius'] = ( isset( $button['borderRadius'] ) ) ? $button['borderRadius'] : '';
-				$button['background'] = ( isset( $button['background'] ) ) ? $button['background'] : '';
-				$button['hBackground'] = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
+				$button['background']   = ( isset( $button['background'] ) ) ? $button['background'] : '';
+				$button['hBackground']  = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
 				$button['borderHColor'] = ( isset( $button['borderHColor'] ) ) ? $button['borderHColor'] : '';
-				$button['vPadding'] = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
-				$button['hPadding'] = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
-				$button['color'] = ( isset( $button['color'] ) ) ? $button['color'] : '';
-				$button['hColor'] = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
-				$button['sizeType'] = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
-				$button['sizeMobile'] = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
-				$button['sizeTablet'] = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
+				$button['vPadding']     = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
+				$button['hPadding']     = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
+				$button['color']        = ( isset( $button['color'] ) ) ? $button['color'] : '';
+				$button['hColor']       = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
+				$button['sizeType']     = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
+				$button['sizeMobile']   = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
+				$button['sizeTablet']   = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
 
 				if ( $attr['btn_count'] <= $key ) {
 					break;
 				}
 
 				$selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['size'] . $button['sizeType'],
-					'border-width' => $button['borderWidth'] . 'px',
-					'border-color' => $button['borderColor'],
-					'border-style' => $button['borderStyle'],
-					'border-radius'  => $button['borderRadius'] . 'px',
-					'background' => $button['background']
+					'font-size'     => $button['size'] . $button['sizeType'],
+					'line-height'   => $button['lineHeight'] . $button['lineHeightType'],
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					'border-width'  => $button['borderWidth'] . 'px',
+					'border-color'  => $button['borderColor'],
+					'border-style'  => $button['borderStyle'],
+					'border-radius' => $button['borderRadius'] . 'px',
+					'background'    => $button['background']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover'] = array (
-					'background' => $button['hBackground'],
+					'background'   => $button['hBackground'],
 					'border-width' => $button['borderWidth'] . 'px',
 					'border-color' => $button['borderHColor'],
 					'border-style' => $button['borderStyle'],
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ' a.uagb-button__link'] = array (
-					'padding'  => $button['vPadding'] . 'px ' . $button['hPadding'] . 'px',
-					'color' => $button['color']
+					'padding' => $button['vPadding'] . 'px ' . $button['hPadding'] . 'px',
+					'color'   => $button['color']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover a.uagb-button__link'] = array (
@@ -653,11 +658,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$m_selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['sizeMobile'] . $button['sizeType'],
+					'font-size'   => $button['sizeMobile'] . $button['sizeType'],
+					'line-height' => $button['lineHeightMobile'] . $button['lineHeightType'],
 				);
 
 				$t_selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['sizeTablet'] . $button['sizeType'],
+					'font-size'   => $button['sizeTablet'] . $button['sizeType'],
+					'line-height' => $button['lineHeightTablet'] . $button['lineHeightType'],
 				);
 			}
 
