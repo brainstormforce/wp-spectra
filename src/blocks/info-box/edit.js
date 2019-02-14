@@ -18,6 +18,12 @@ import InfoBoxIconImage from "./components/InfoBoxIconImage"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
@@ -161,15 +167,39 @@ class UAGBinfoBox extends Component {
 			prefixFontSizeType,
 			prefixFontSizeTablet,
 			prefixFontSizeMobile,
+			prefixFontFamily,
+			prefixFontWeight,
+			prefixFontSubset,
+			prefixLineHeightType,
+			prefixLineHeight,
+			prefixLineHeightTablet,
+			prefixLineHeightMobile,
+			prefixLoadGoogleFonts,
 			headingTag,
 			headFontSize,
 			headFontSizeType,
 			headFontSizeTablet,
 			headFontSizeMobile,
+			headFontFamily,
+			headFontWeight,
+			headFontSubset,
+			headLineHeightType,
+			headLineHeight,
+			headLineHeightTablet,
+			headLineHeightMobile,
+			headLoadGoogleFonts,
 			subHeadFontSize,
 			subHeadFontSizeType,
 			subHeadFontSizeTablet,
 			subHeadFontSizeMobile,
+			subHeadFontFamily,
+			subHeadFontWeight,
+			subHeadFontSubset,
+			subHeadLineHeightType,
+			subHeadLineHeight,
+			subHeadLineHeightTablet,
+			subHeadLineHeightMobile,
+			subHeadLoadGoogleFonts,
 			separatorWidthType,
 			seperatorSpace,
 			headSpace,
@@ -200,6 +230,10 @@ class UAGBinfoBox extends Component {
 			ctaFontSizeType,
 			ctaFontSizeMobile,
 			ctaFontSizeTablet,
+			ctaFontFamily,
+			ctaFontWeight,
+			ctaFontSubset,			
+			ctaLoadGoogleFonts,
 			ctaBtnLinkColor,
 			ctaLinkHoverColor,
 			ctaBgHoverColor,
@@ -260,73 +294,66 @@ class UAGBinfoBox extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		const prefixsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ prefixFontSizeType === key }
-						aria-pressed={ prefixFontSizeType === key }
-						onClick={ () => setAttributes( { prefixFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		let loadPrefixGoogleFonts;
+		let loadSubHeadGoogleFonts;
+		let loadCtaGoogleFonts;
+		let loadHeadGoogleFonts;
 
-		const headsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ headFontSizeType === key }
-						aria-pressed={ headFontSizeType === key }
-						onClick={ () => setAttributes( { headFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		if( prefixLoadGoogleFonts == true ) {
+					
+			const prefixconfig = {
+				google: {
+					families: [ prefixFontFamily + ( prefixFontWeight ? ':' + prefixFontWeight : '' ) ],
+				},
+			};
 
-		const descsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ subHeadFontSizeType === key }
-						aria-pressed={ subHeadFontSizeType === key }
-						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+			loadPrefixGoogleFonts = (
+				<WebfontLoader config={ prefixconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( headLoadGoogleFonts == true ) {
+					
+			const headconfig = {
+				google: {
+					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+				},
+			};
 
-		const ctaTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ ctaFontSizeType === key }
-						aria-pressed={ ctaFontSizeType === key }
-						onClick={ () => setAttributes( { ctaFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+			loadHeadGoogleFonts = (
+				<WebfontLoader config={ headconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( subHeadLoadGoogleFonts == true ) {
+					
+			const subHeadconfig = {
+				google: {
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+				},
+			};
+
+			loadSubHeadGoogleFonts = (
+				<WebfontLoader config={ subHeadconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( subHeadLoadGoogleFonts == true ) {
+					
+			const ctaconfig = {
+				google: {
+					families: [ ctaFontFamily + ( ctaFontWeight ? ':' + ctaFontWeight : '' ) ],
+				},
+			};
+
+			loadCtaGoogleFonts = (
+				<WebfontLoader config={ ctaconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		// Settings for icon.
 		const iconControls = (
@@ -459,82 +486,20 @@ class UAGBinfoBox extends Component {
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{ctaTypesControls}
-											<RangeControl
-												label={ __( "Text Font Size" ) }
-												value={ ctaFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { ctaFontSizeMobile: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 0 }
-												max={ 50 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{ctaTypesControls}
-											<RangeControl
-												label={ __( "Text Font Size" ) }
-												value={ ctaFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { ctaFontSizeTablet: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 0 }
-												max={ 50 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{ctaTypesControls}
-											<RangeControl
-												label={ __( "Text Font Size" ) }
-												value={ ctaFontSize }
-												onChange={ ( value ) => setAttributes( { ctaFontSize: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 0 }
-												max={ 50 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<TypographyControl
+							label={ __( "CTA Font Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
+							fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
+							fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
+							fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
+							fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
+							fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
+							disableLineHeight = {true}
+						/>
 				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -782,82 +747,23 @@ class UAGBinfoBox extends Component {
 				/>
 				{ showPrefix &&
 					<Fragment>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{prefixsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ prefixFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { prefixFontSizeMobile: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 10 }
-													max={ 200 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{prefixsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ prefixFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { prefixFontSizeTablet: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 10 }
-													max={ 200 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{prefixsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ prefixFontSize }
-													onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-													beforeIcon="editor-textcolor"
-													allowReset
-													min={ 10 }
-													max={ 200 }
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<TypographyControl
+							label={ __( "Prefix Font Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: prefixLoadGoogleFonts, label: __( "prefixLoadGoogleFonts" ) } }
+							fontFamily = { { value: prefixFontFamily, label: __( "prefixFontFamily" ) } }
+							fontWeight = { { value: prefixFontWeight, label: __( "prefixFontWeight" ) } }
+							fontSubset = { { value: prefixFontSubset, label: __( "prefixFontSubset" ) } }
+							fontSizeType = { { value: prefixFontSizeType, label: __( "prefixFontSizeType" ) } }
+							fontSize = { { value: prefixFontSize, label: __( "prefixFontSize" ) } }
+							fontSizeMobile = { { value: prefixFontSizeMobile, label: __( "prefixFontSizeMobile" ) } }
+							fontSizeTablet= { { value: prefixFontSizeTablet, label: __( "prefixFontSizeTablet" ) } }
+							lineHeightType = { { value: prefixLineHeightType, label: __( "prefixLineHeightType" ) } }
+							lineHeight = { { value: prefixLineHeight, label: __( "prefixLineHeight" ) } }
+							lineHeightMobile = { { value: prefixLineHeightMobile, label: __( "prefixLineHeightMobile" ) } }
+							lineHeightTablet= { { value: prefixLineHeightTablet, label: __( "prefixLineHeightTablet" ) } }
+						/>
 						<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 					    <ColorPalette
 					        value={ prefixColor }
@@ -887,82 +793,23 @@ class UAGBinfoBox extends Component {
 							{ value: "h6", label: __( "H6" ) },
 						] }
 					/>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ headFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ headFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{headsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ headFontSize }
-												onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={30}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<TypographyControl
+						label={ __( "Title Font Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
+						fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
+						fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
+						fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
+						fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
+						fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
+						lineHeightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
+						lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
+					/>
 				    <p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 				    <ColorPalette
 				        value={ headingColor }
@@ -978,82 +825,23 @@ class UAGBinfoBox extends Component {
 					onChange={ ( value ) => setAttributes( { showDesc: ! showDesc } ) }
 				/>
 				{ showDesc && <Fragment>
-					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{descsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ subHeadFontSizeMobile }
-												onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<Fragment>
-											{descsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ subHeadFontSizeTablet }
-												onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								} else {
-									tabout = (
-										<Fragment>
-											{descsizeTypesControls}
-											<RangeControl
-												label={ __( "Font Size" ) }
-												value={ subHeadFontSize }
-												onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-												beforeIcon="editor-textcolor"
-												allowReset
-												min={ 10 }
-												max={ 200 }
-												initialPosition={16}
-											/>
-										</Fragment>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
+					<TypographyControl
+						label={ __( "Description Font Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
+						fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
+						fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
+						fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
+						fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
+						fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
+						lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
+						lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+					/>
 					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 					    <ColorPalette
 					        value={ subHeadingColor }
@@ -1379,6 +1167,10 @@ class UAGBinfoBox extends Component {
 					}
 					{ ( ctaType !== "all") && output }
 				</div>
+				{ loadPrefixGoogleFonts }
+				{ loadSubHeadGoogleFonts }
+				{ loadCtaGoogleFonts }
+				{ loadHeadGoogleFonts }
 			</Fragment>
 		)
 	}

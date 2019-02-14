@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -778,6 +779,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
 					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
 					'color'       => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover' => array(
@@ -828,18 +831,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-family' => $attr['prefixFontFamily'],
+					'font-weight' => $attr['prefixFontWeight'],
+					'line-height' => $attr['prefixLineHeight'] . $attr['prefixLineHeightType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
@@ -871,12 +883,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSizeMobile'].$attr['prefixFontSizeType'],
+					'line-height' => $attr['prefixLineHeightMobile'] . $attr['prefixLineHeightType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				' .uagb-ifb-desc' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
