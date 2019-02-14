@@ -779,6 +779,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
 					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
 					'color'       => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover' => array(
@@ -829,18 +831,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-family' => $attr['prefixFontFamily'],
+					'font-weight' => $attr['prefixFontWeight'],
+					'line-height' => $attr['prefixLineHeight'] . $attr['prefixLineHeightType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
@@ -872,12 +883,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSizeMobile'].$attr['prefixFontSizeType'],
+					'line-height' => $attr['prefixLineHeightMobile'] . $attr['prefixLineHeightType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				' .uagb-ifb-desc' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
@@ -2628,13 +2642,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				" .uagb-blockquote__content" => array(
-					"font-size"         => $attr['descFontSize'] . $attr['descFontSizeType'],
-					"color"             => $attr['descColor'],
-					"margin-bottom"     => $attr['descSpace'] . "px",
-					"text-align"        => $text_align,
+					"font-size"     => $attr['descFontSize'] . $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					"color"         => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+					"text-align"    => $text_align,
 				),
 				" cite.uagb-blockquote__author" => array(
 					"font-size"         => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-family'   => $attr['authorFontFamily'],
+					'font-weight'   => $attr['authorFontWeight'],
+					'line-height'   => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 					"color"             => $attr['authorColor'],
 					"text-align"        => $text_align,
 				),
@@ -2695,6 +2715,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if( $attr['enableTweet'] ){
 				$selectors[" a.uagb-blockquote__tweet-button"] = array(
 					"font-size"          => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
+					'font-family'   => $attr['tweetBtnFontFamily'],
+					'font-weight'   => $attr['tweetBtnFontWeight'],
+					'line-height'   => $attr['tweetBtnLineHeight'] . $attr['tweetBtnLineHeightType'],
 				);
 
 				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button"] = array(
@@ -2779,12 +2802,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-blockquote__content" => array(
 					"font-size"         => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 				" cite.uagb-blockquote__author" =>array(
 					"font-size"         => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height'   => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+					'line-height'   => $attr['tweetBtnLineHeightTablet'] . $attr['tweetBtnLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
@@ -2801,24 +2827,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				" .uagb-blockquote__content" =>  array(
-					"font-size"         => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					"font-size"   => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				" cite.uagb-blockquote__author" =>  array(
-					"font-size"         => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					"font-size"   => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button" => array(
-					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"font-size"   => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					'line-height' => $attr['tweetBtnLineHeightMobile'] . $attr['tweetBtnLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button svg" => array(
-					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
-					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"width"  => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"height" => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"padding"      		=> $attr['quotePaddingMobile'] . $attr['quotePaddingType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
-					"height"            => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+					"width"  => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+					"height" => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
 				),
 			);
 
