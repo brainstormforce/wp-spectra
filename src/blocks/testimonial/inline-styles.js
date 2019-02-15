@@ -110,7 +110,7 @@ function TestimonialStyle( props ) {
 			"background-color": backgroundColor,
 		},
 		" .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content": {
-			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url },)` : null,
+			"background-image": ( backgroundImage ) ? `url(${ backgroundImage.url })` : null,
 			"background-position":position,
 			"background-repeat":backgroundRepeat,
 			"background-size":backgroundSize,

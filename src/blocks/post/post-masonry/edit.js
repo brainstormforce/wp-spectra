@@ -322,12 +322,7 @@ class UAGBPostMasonry extends Component {
 							label={ __( "Image Sizes" ) }
 							value={ imgSize }
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-							options={ [
-								{ value: "thumbnail", label: __( "Thumbnail" ) },
-								{ value: "medium", label: __( "Medium" ) },
-								{ value: "medium_large", label: __( "Medium Large" ) },
-								{ value: "large", label: __( "Large" ) },
-							] }
+							options={ uagb_blocks_info.image_sizes }
 						/>
                 	}
                 	{ displayPostImage == true &&

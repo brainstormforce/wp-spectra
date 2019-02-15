@@ -148,14 +148,6 @@ class UAGBTimeline extends Component {
 			linkTarget,
 		} = attributes
 
-		/* Image size options */
-		const imageSizeOptions = [
-			{ value: "thumbnail", label: __( "Thumbnail" ) },
-			{ value: "medium", label: __( "Medium" ) },
-			{ value: "medium_large", label: __( "Medium Large" ) },
-			{ value: "large", label: __( "Large" ) }
-		]
-
 		// Parameters for FontIconPicker.
 		const icon_props = {
 			icons: svg_icons,
@@ -467,7 +459,7 @@ class UAGBTimeline extends Component {
 					{ displayPostImage &&
                         <SelectControl
                         	label={ __( "Featured Image Style" ) }
-                        	options={ imageSizeOptions }
+                        	options={ uagb_blocks_info.image_sizes }
                         	value={ imageSize }
                         	onChange={ ( value ) => this.props.setAttributes( { imageSize: value } ) }
                         />

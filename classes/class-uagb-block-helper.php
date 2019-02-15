@@ -12,8 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -466,6 +464,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
+			if ( '' != $attr['colWidthTablet'] && 0 != $attr['colWidthTablet'] ) {
+
+				$t_selectors[''] = array(
+					"width" => $attr['colWidthTablet'] . "%"
+				);
+			}
+
+			if ( '' != $attr['colWidthMobile'] && 0 != $attr['colWidthMobile'] ) {
+
+				$m_selectors[''] = array(
+					"width" => $attr['colWidthMobile'] . "%"
+				);
+			}
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-column-' . $id );
@@ -862,7 +874,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
-					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-size'     => $attr['prefixFontSizeMobile'].$attr['prefixFontSizeType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
@@ -889,7 +901,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
-					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-size'     => $attr['prefixFontSizeTablet'].$attr['prefixFontSizeType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
@@ -2123,7 +2135,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
-			    ),			  
+			    ),
 			);
 
             if ( $attr["seperatorStyle"] != "none" ) {
@@ -2337,34 +2349,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__title" => array(
 					"color"=> $attr['titleColor'],
-					"font-size"=> $attr['titleFontSize']  . "px",
+					"font-size"=> $attr['titleFontSize']  . $attr['titleFontSizeType'],
 					"margin-bottom"=> $attr['titleBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
 					"color"=> $attr['titleColor'],
-					"font-size"=> $attr['titleFontSize']  . "px"
+					"font-size"=> $attr['titleFontSize'] . $attr['titleFontSizeType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
+					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
 					"margin-bottom"=> $attr['metaBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
 					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
+					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
 					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . "px",
+					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
 					"color"=> $attr['excerptColor'],
-					"font-size"=> $attr['excerptFontSize']  . "px",
+					"font-size"=> $attr['excerptFontSize']  . $attr['excerptFontSizeType'],
 					"margin-bottom"=> $attr['excerptBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
 					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . "px",
+					"font-size"=> $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
 					"background"=> $attr['ctaBgColor'],
 					"border-color"=> $attr['borderColor'],
 					"border-width"=> $attr['borderWidth']  . "px",
@@ -2376,7 +2388,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . "px",
+					"font-size"=> $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
 					"padding" => ( $attr['btnVPadding'] ) . "px " . ( $attr['btnHPadding'] ) . "px",
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(

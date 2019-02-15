@@ -1093,30 +1093,21 @@ add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
  * @since 0.0.1
  */
 function uagb_blocks_get_image_src( $object, $field_name, $request ) {
-	$feat_img_array['large'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'large',
-		false
-	);
 
-	$feat_img_array['medium'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'medium',
-		false
-	);
+	$image_sizes = UAGB_Helper::get_image_sizes();
 
-	$feat_img_array['medium_large'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'medium_large',
-		false
-	);
+	$featured_images = array();
 
-	$feat_img_array['thumbnail'] = wp_get_attachment_image_src(
-		$object['featured_media'],
-		'thumbnail',
-		false
-	);
-	return $feat_img_array;
+	foreach ( $image_sizes as $key => $value ) {
+		$size = $value['value'];
+
+		$featured_images[ $size ] = wp_get_attachment_image_src(
+			$object['featured_media'],
+			$size,
+			false
+		);
+	}
+	return $featured_images;
 }
 
 /**
