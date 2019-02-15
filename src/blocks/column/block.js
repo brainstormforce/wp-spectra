@@ -117,6 +117,9 @@ export default class UAGBColumnEdit extends Component {
 				rightMarginMobile,
 
 				colWidth,
+				colWidthTablet,
+				colWidthMobile,
+
 				backgroundType,
 				backgroundImage,
 				backgroundColor,
@@ -205,17 +208,76 @@ export default class UAGBColumnEdit extends Component {
 		const inspector_controls = (
 			<Fragment>
 				<PanelBody title={ __( "Layout" ) }>
-					<RangeControl
-						label={ __( "Content Width (%)" ) }
-						value={ colWidth }
-						onChange={ ( value ) => {
-							setAttributes( {
-								colWidth: value,
-							} )
-						} }
-						min={ 0 }
-						max={ 100 }
-					/>
+					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+						tabs={ [
+							{
+								name: "desktop",
+								title: <Dashicon icon="desktop" />,
+								className: "uagb-desktop-tab uagb-responsive-tabs",
+							},
+							{
+								name: "tablet",
+								title: <Dashicon icon="tablet" />,
+								className: "uagb-tablet-tab uagb-responsive-tabs",
+							},
+							{
+								name: "mobile",
+								title: <Dashicon icon="smartphone" />,
+								className: "uagb-mobile-tab uagb-responsive-tabs",
+							},
+						] }>
+						{
+							( tab ) => {
+								let tabout
+
+								if ( "mobile" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Content Width (%)" ) }
+											value={ colWidthMobile }
+											onChange={ ( value ) => {
+												setAttributes( {
+													colWidthMobile: value,
+												} )
+											} }
+											min={ 0 }
+											max={ 100 }
+										/>
+									)
+								} else if ( "tablet" === tab.name ) {
+									tabout = (
+										<RangeControl
+											label={ __( "Content Width (%)" ) }
+											value={ colWidthTablet }
+											onChange={ ( value ) => {
+												setAttributes( {
+													colWidthTablet: value,
+												} )
+											} }
+											min={ 0 }
+											max={ 100 }
+										/>
+									)
+								} else {
+									tabout = (
+										<RangeControl
+											label={ __( "Content Width (%)" ) }
+											value={ colWidth }
+											onChange={ ( value ) => {
+												setAttributes( {
+													colWidth: value,
+												} )
+											} }
+											min={ 0 }
+											max={ 100 }
+										/>
+									)
+								}
+
+								return <div>{ tabout }</div>
+							}
+						}
+					</TabPanel>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
 							{
@@ -924,6 +986,14 @@ registerBlockType( "uagb/column", {
 			default: ""
 		},
 		colWidth: {
+			type: "number",
+			default: "",
+		},
+		colWidthTablet: {
+			type: "number",
+			default: "",
+		},
+		colWidthMobile: {
 			type: "number",
 			default: "",
 		},

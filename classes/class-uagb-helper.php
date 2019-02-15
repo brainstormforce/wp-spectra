@@ -198,32 +198,32 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/advanced-heading':
                     $css .= UAGB_Block_Helper::get_adv_heading_css( $blockattr, $block_id );
-                    $this->blocks_advanced_heading_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_advanced_heading_gfont( $blockattr );
                     break;
 
                 case 'uagb/info-box':
 					$css .= UAGB_Block_Helper::get_info_box_css( $blockattr, $block_id );
-                    $this->blocks_info_box_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_info_box_gfont( $blockattr );
                     break;
 
                 case 'uagb/buttons':
                     $css .= UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
-                    $this->blocks_buttons_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_buttons_gfont( $blockattr );
                     break;
 
                 case 'uagb/blockquote':
                     $css .= UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
-                     $this->blocks_blockquote_gfont( $blockattr );
+                     UAGB_Block_Helper::blocks_blockquote_gfont( $blockattr );
                     break;
 
 				case 'uagb/testimonial':
 					$css .= UAGB_Block_Helper::get_testimonial_css( $blockattr, $block_id );
-					$this->blocks_testimonial_gfont( $blockattr );
+					UAGB_Block_Helper::blocks_testimonial_gfont( $blockattr );
 					break;
 
                 case 'uagb/team':
                     $css .= UAGB_Block_Helper::get_team_css( $blockattr, $block_id );
-                    $this->blocks_team_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_team_gfont( $blockattr );
                     break;
 
                 case 'uagb/social-share':
@@ -232,42 +232,42 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/content-timeline':
                     $css .= UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
-                    $this->blocks_content_timeline_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_content_timeline_gfont( $blockattr );
                     break;
 
 				case 'uagb/restaurant-menu':
 					$css .= UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
-					$this->blocks_restaurant_menu_gfont( $blockattr );
+					UAGB_Block_Helper::blocks_restaurant_menu_gfont( $blockattr );
 					break;
 
                 case 'uagb/call-to-action':
                     $css .= UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
-                    $this->blocks_call_to_action_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_call_to_action_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-timeline':
                     $css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
-                    $this->blocks_post_timeline_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_post_timeline_gfont( $blockattr );
                     break;
 
                 case 'uagb/icon-list':
                     $css .= UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
-                     $this->blocks_icon_list_gfont( $blockattr );
+                     UAGB_Block_Helper::blocks_icon_list_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-grid':
                     $css .= UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
-                    $this->blocks_post_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-carousel':
                     $css .= UAGB_Block_Helper::get_post_carousel_css( $blockattr, $block_id );
-                    $this->blocks_post_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/post-masonry':
                     $css .= UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
-                    $this->blocks_post_gfont( $blockattr );
+                    UAGB_Block_Helper::blocks_post_gfont( $blockattr );
                     break;
 
                 case 'uagb/columns':
@@ -306,309 +306,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
             // @codingStandardsIgnoreEnd
 		}
-
-		/**
-		 * Adds Google fonts for Advanced Heading block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_advanced_heading_gfont( $attr ) {
-
-			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
-			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
-			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
-			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
-
-			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
-			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
-			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
-			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
-
-			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
-			self::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Blockquote.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_blockquote_gfont( $attr ) {
-
-			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			$author_load_google_font = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
-			$author_font_family      = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
-			$author_font_weight      = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
-			$author_font_subset      = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
-
-			$tweet_btn_load_google_font = isset( $attr['tweetBtnLoadGoogleFonts'] ) ? $attr['tweetBtnLoadGoogleFonts'] : '';
-			$tweet_btn_font_family      = isset( $attr['tweetBtnFontFamily'] ) ? $attr['tweetBtnFontFamily'] : '';
-			$tweet_btn_font_weight      = isset( $attr['tweetBtnFontWeight'] ) ? $attr['tweetBtnFontWeight'] : '';
-			$tweet_btn_font_subset      = isset( $attr['tweetBtnFontSubset'] ) ? $attr['tweetBtnFontSubset'] : '';
-
-			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
-			self::blocks_google_font( $author_load_google_font, $author_font_family, $author_font_weight, $author_font_subset );
-			self::blocks_google_font( $tweet_btn_load_google_font, $tweet_btn_font_family, $tweet_btn_font_weight, $tweet_btn_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Testimonial block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_testimonial_gfont( $attr ) {
-			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			$name_load_google_fonts = isset( $attr['nameLoadGoogleFonts'] ) ? $attr['nameLoadGoogleFonts'] : '';
-			$name_font_family       = isset( $attr['nameFontFamily'] ) ? $attr['nameFontFamily'] : '';
-			$name_font_weight       = isset( $attr['nameFontWeight'] ) ? $attr['nameFontWeight'] : '';
-			$name_font_subset       = isset( $attr['nameFontSubset'] ) ? $attr['nameFontSubset'] : '';
-
-			$company_load_google_fonts = isset( $attr['companyLoadGoogleFonts'] ) ? $attr['companyLoadGoogleFonts'] : '';
-			$company_font_family       = isset( $attr['companyFontFamily'] ) ? $attr['companyFontFamily'] : '';
-			$company_font_weight       = isset( $attr['companyFontWeight'] ) ? $attr['companyFontWeight'] : '';
-			$company_font_subset       = isset( $attr['companyFontSubset'] ) ? $attr['companyFontSubset'] : '';
-
-			self::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
-			self::blocks_google_font( $name_load_google_fonts, $name_font_family, $name_font_family, $name_font_subset );
-			self::blocks_google_font( $company_load_google_fonts, $company_font_family, $company_font_family, $company_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Advanced Heading block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_team_gfont( $attr ) {
-
-			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
-
-			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
-			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
-			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
-			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
-
-			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
-			self::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
-			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
-		}
-
-		/**
-		 *
-		 * Adds Google fonts for Restaurant Menu block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_restaurant_menu_gfont( $attr ) {
-			$title_load_google_fonts = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family       = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight       = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset       = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
-
-			$price_load_google_fonts = isset( $attr['priceLoadGoogleFonts'] ) ? $attr['priceLoadGoogleFonts'] : '';
-			$price_font_family       = isset( $attr['priceFontFamily'] ) ? $attr['priceFontFamily'] : '';
-			$price_font_weight       = isset( $attr['priceFontWeight'] ) ? $attr['priceFontWeight'] : '';
-			$price_font_subset       = isset( $attr['priceFontSubset'] ) ? $attr['priceFontSubset'] : '';
-
-			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			self::blocks_google_font( $title_load_google_fonts, $title_font_family, $title_font_weight, $title_font_subset );
-			self::blocks_google_font( $price_load_google_fonts, $price_font_family, $price_font_weight, $price_font_subset );
-			self::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Content Timeline block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_content_timeline_gfont( $attr ) {
-			$head_load_google_fonts = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
-			$head_font_family       = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
-			$head_font_weight       = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
-			$head_font_subset       = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
-
-			$subheadload_google_fonts = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
-			$subheadfont_family       = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
-			$subheadfont_weight       = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
-			$subheadfont_subset       = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
-
-			$date_load_google_fonts = isset( $attr['dateLoadGoogleFonts'] ) ? $attr['dateLoadGoogleFonts'] : '';
-			$date_font_family       = isset( $attr['dateFontFamily'] ) ? $attr['dateFontFamily'] : '';
-			$date_font_weight       = isset( $attr['dateFontWeight'] ) ? $attr['dateFontWeight'] : '';
-			$date_font_subset       = isset( $attr['dateFontSubset'] ) ? $attr['dateFontSubset'] : '';
-
-			self::blocks_google_font( $head_load_google_fonts, $head_font_family, $head_font_weight, $head_font_subset );
-			self::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
-			self::blocks_google_font( $date_load_google_fonts, $date_font_family, $date_font_weight, $date_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Post Timeline block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_post_timeline_gfont( $attr ) {
-			$this->blocks_content_timeline_gfont( $attr );
-
-			$author_load_google_fonts = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
-			$author_font_family       = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
-			$author_font_weight       = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
-			$author_font_subset       = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
-
-			$cta_load_google_fonts = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
-			$cta_font_family       = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
-			$cta_font_weight       = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
-			$cta_font_subset       = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
-
-			self::blocks_google_font( $author_load_google_fonts, $author_font_family, $author_font_weight, $author_font_subset );
-			self::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Mulit Button's block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_buttons_gfont( $attr ) {
-
-			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
-			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
-			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
-			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
-
-			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Icon List block
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_icon_list_gfont( $attr ) {
-
-			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
-			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
-			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
-			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
-
-			self::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Post block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_post_gfont( $attr ) {
-
-			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
-
-			$meta_load_google_font = isset( $attr['metaLoadGoogleFonts'] ) ? $attr['metaLoadGoogleFonts'] : '';
-			$meta_font_family      = isset( $attr['metaFontFamily'] ) ? $attr['metaFontFamily'] : '';
-			$meta_font_weight      = isset( $attr['metaFontWeight'] ) ? $attr['metaFontWeight'] : '';
-			$meta_font_subset      = isset( $attr['metaFontSubset'] ) ? $attr['metaFontSubset'] : '';
-
-			$excerpt_load_google_font = isset( $attr['excerptLoadGoogleFonts'] ) ? $attr['excerptLoadGoogleFonts'] : '';
-			$excerpt_font_family      = isset( $attr['excerptFontFamily'] ) ? $attr['excerptFontFamily'] : '';
-			$excerpt_font_weight      = isset( $attr['excerptFontWeight'] ) ? $attr['excerptFontWeight'] : '';
-			$excerpt_font_subset      = isset( $attr['excerptFontSubset'] ) ? $attr['excerptFontSubset'] : '';
-
-			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
-			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
-			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
-			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
-
-			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
-
-			self::blocks_google_font( $meta_load_google_font, $meta_font_family, $meta_font_weight, $meta_font_subset );
-
-			self::blocks_google_font( $excerpt_load_google_font, $excerpt_font_family, $excerpt_font_weight, $excerpt_font_subset );
-
-			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Advanced Heading block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_info_box_gfont( $attr ) {
-
-			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
-			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
-			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
-			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
-
-			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
-			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
-			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
-			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
-
-			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
-			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
-			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
-			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
-
-			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
-			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
-			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
-			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
-
-			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
-			self::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
-			self::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
-			self::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
-		}
-
-		/**
-		 * Adds Google fonts for Call To Action block.
-		 *
-		 * @param array $attr the blocks attr.
-		 */
-		public function blocks_call_to_action_gfont( $attr ) {
-
-			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
-
-			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
-			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
-			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
-			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
-
-			self::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
-			self::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
-			self::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
-		}
-
 
 		/**
 		 * Adds Google fonts all blocks.
@@ -1079,7 +776,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @global $_wp_additional_image_sizes
 		 * @uses   get_intermediate_image_sizes()
 		 * @link   https://codex.wordpress.org/Function_Reference/get_intermediate_image_sizes
-		 * @since x.x.x
+		 * @since  1.9.0
 		 * @return array $sizes Data for all currently-registered image sizes.
 		 */
 		public static function get_image_sizes() {
