@@ -18,29 +18,7 @@ if ( ! version_compare( PHP_VERSION, '5.6', '>=' ) ) {
 } elseif ( ! version_compare( get_bloginfo( 'version' ), '4.7', '>=' ) ) {
 	add_action( 'admin_notices', 'uagb_fail_wp_version' );
 } else {
-	if ( class_exists( 'Classic_Editor' ) ) {
-		$editor_option = get_option( 'classic-editor-replace' );
-		if ( isset( $editor_option ) && 'block' != $editor_option ) {
-			add_action( 'admin_notices', 'uagb_fail_block_editor' );
-		}
-	}
 	require_once 'classes/class-uagb-loader.php';
-}
-
-/**
- * Ultimate Addons for Gutenberg admin notice for Classic Editor.
- *
- * Warning when the site has Classic Editor installed.
- *
- * @since x.x.x
- *
- * @return void
- */
-function uagb_fail_block_editor() {
-	/* translators: %s: PHP version */
-	$message      = sprintf( __( 'Ultimate Addons for Gutenberg requires <strong>Block Editor</strong>. You can change your editor settings to Block Editor from %1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ), '<a href="' . admin_url( 'options-writing.php' ) . '">', '</a>' );
-	$html_message = sprintf( '<div class="notice notice-warning">%s</div>', wpautop( $message ) );
-	echo wp_kses_post( $html_message );
 }
 
 /**
