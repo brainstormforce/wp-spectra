@@ -141,7 +141,7 @@
 
 .uagb-columns__inner-wrap {
 	display: flex;
-	flex-wrap: nowrap;
+	flex-wrap: wrap;
 }
 
 .uagb-columns__columns-1 > .uagb-column__wrap { width: 100%; }
@@ -202,5 +202,13 @@
 
 	.uagb-columns__stack-mobile .uagb-columns__inner-wrap {
 		display: block;
+	}
+}
+
+@media (max-width: 449px) {
+	.uagb-columns__wrap {
+		.uagb-column__wrap.uagb-column__background-image{
+			background-attachment: scroll!important;
+		}
 	}
 }

@@ -232,7 +232,7 @@ function styling( props ) {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeTablet + descFontSizeType,
 		},
-		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeTablet + authorFontSizeType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
@@ -255,7 +255,7 @@ function styling( props ) {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeMobile + descFontSizeType,
 		},
-		" .editor-rich-text cite.uagb-blockquote__author.editor-rich-text__tinymce": {
+		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeMobile + authorFontSizeType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
