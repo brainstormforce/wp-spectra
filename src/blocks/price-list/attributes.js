@@ -84,7 +84,7 @@ const attributes = {
 	},
 	titleLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	titleLineHeight: {
 		type: "number",
@@ -125,7 +125,7 @@ const attributes = {
 	},
 	priceLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	priceLineHeight: {
 		type: "number",
@@ -166,7 +166,7 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	descLineHeight: {
 		type: "number",

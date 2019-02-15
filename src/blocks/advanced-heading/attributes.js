@@ -62,7 +62,7 @@ const attributes = {
 	},
 	headLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	headFontSize: {
 		type: "number",
@@ -110,7 +110,7 @@ const attributes = {
 	},
 	subHeadLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	subHeadLineHeightTablet: {
 		type: "number",

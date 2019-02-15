@@ -83,7 +83,7 @@ const attributes = {
 	},
 	nameLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	nameLineHeight: {
 		type: "number",
@@ -124,7 +124,7 @@ const attributes = {
 	},
 	companyLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	companyLineHeight: {
 		type: "number",
@@ -165,7 +165,7 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	descLineHeight: {
 		type: "number",

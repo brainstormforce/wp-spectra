@@ -59,7 +59,7 @@ const attributes = {
 	},
 	titleLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	titleFontSize: {
 		type: "number",
@@ -95,7 +95,7 @@ const attributes = {
 	},
 	prefixLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	prefixFontSize: {
 		type: "number",
@@ -132,7 +132,7 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	descFontSize: {
 		type: "number",

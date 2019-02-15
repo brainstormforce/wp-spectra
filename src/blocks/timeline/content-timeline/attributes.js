@@ -108,7 +108,7 @@ const attributes = {
 	},
 	headLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	headLineHeight: {
 		type: "number",
@@ -156,7 +156,7 @@ const attributes = {
 	},
 	subHeadLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em",
 	},
 	subHeadLineHeight: {
 		type: "number",
@@ -224,7 +224,7 @@ const attributes = {
 	},
 	dateLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	dateLineHeight: {
 		type: "number",

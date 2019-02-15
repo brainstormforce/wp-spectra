@@ -101,7 +101,7 @@ const attributes = {
 	},
 	lineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	lineHeight: {
 		type: "number",
