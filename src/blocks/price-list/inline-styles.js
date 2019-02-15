@@ -51,7 +51,7 @@ function RestMenuStyle( props ) {
     	align = "flex-end"
 	}
 
-	var column_class = ".uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"
+	var column_class = " .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"
 
 	var selectors = {
 		" .uagb-rest_menu__wrap": {
@@ -108,6 +108,11 @@ function RestMenuStyle( props ) {
 		}
 	}
 
+	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+			"margin-left": 0,
+			"clear":'left',
+		}
+
 	tablet_selectors = {
 		" .uagb-rm__title" : {
 			"font-size" : titleFontSizeTablet + titleFontSizeType
@@ -117,8 +122,18 @@ function RestMenuStyle( props ) {
 		},
 		" .uagb-rm__price" : {
 			"font-size" : priceFontSizeTablet + priceFontSizeType
-		}
+		},
 	}
+
+	tablet_selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+			"margin-left": 'unset',
+			"clear":'unset',
+		}
+
+	tablet_selectors[" .uagb-rest_menu__wrap.uagb-rm__tablet-column-"+tcolumns+":nth-child("+tcolumns+"n+1)"] = {
+			"margin-left": 0,
+			"clear":'left',
+		}
 
 	mobile_selectors = {
 		" .uagb-rm__title" : {
@@ -129,8 +144,18 @@ function RestMenuStyle( props ) {
 		},
 		" .uagb-rm__price" : {
 			"font-size" : priceFontSizeMobile + priceFontSizeType
-		}
+		},		
 	}
+
+	mobile_selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
+			"margin-left": 'unset',
+			"clear":'unset',
+		}
+
+	mobile_selectors[" .uagb-rest_menu__wrap.uagb-rm__mobile-column-"+mcolumns+":nth-child("+mcolumns+"n+1)"] = {
+			"margin-left": 0,
+			"clear":'left',
+		}
 
 	var styling_css = ""
 	var id = `#wpwrap #${ clientId }`
