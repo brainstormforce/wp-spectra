@@ -1138,7 +1138,8 @@ class UAGBcontentTimeline extends Component {
 			var num = 0
 			var elementEnd = $last_item + 20
 
-			var viewportHeight = document.documentElement.clientHeight
+			var connectorHeight = 2 * timeline.find(".uagb-timeline__marker:first").height()
+			var viewportHeight = document.documentElement.clientHeight + connectorHeight
 			var viewportHeightHalf = viewportHeight/2
 
 			var elementPos = tm_item.offset().top

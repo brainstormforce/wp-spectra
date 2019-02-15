@@ -54,7 +54,8 @@
 
 				var num = 0
 				var elementEnd = $last_item + 20
-				var viewportHeight = document.documentElement.clientHeight
+				var connectorHeight = 2 * $(this).find(".uagb-timeline__marker:first").height()
+				var viewportHeight = document.documentElement.clientHeight + connectorHeight
 				var viewportHeightHalf = viewportHeight/2
 				var elementPos = $(this).offset().top
 				var new_elementPos = elementPos + timeline_start_icon.top
