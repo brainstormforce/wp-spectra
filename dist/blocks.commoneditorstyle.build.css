@@ -263,6 +263,15 @@ hr.uagb-editor__separator {
 	margin-left: -10px;
 }
 
+.uag-typography-options .components-button.is-default.uagb-typography-reset-btn {
+    background: transparent;
+    border-color: transparent;
+    box-shadow: inset 0 1px 0 transparent;
+    float: right;
+}
+.uag-typography-options .components-button.is-default.uagb-typography-reset-btn:hover {
+	border-color: #cccccc;
+}
 
 /*
  Fonticon picker css

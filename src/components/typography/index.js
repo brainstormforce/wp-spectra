@@ -148,7 +148,7 @@ class TypographyControl extends Component {
 
 			resetFontAdvancedControls =  (
 				<Button
-					className="uagb-size-btn"
+					className="uagb-size-btn uagb-typography-reset-btn"
 					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlReset }
