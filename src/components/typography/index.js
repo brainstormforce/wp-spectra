@@ -36,11 +36,11 @@ class TypographyControl extends Component {
 	onAdvancedControlClick() {
 
 		let control = true
-		let label = __( "Hide Advanced Controls" )
+		let label = __( "Hide Advanced Typography" )
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
 			control = false
-			label = __( "Show Advanced Controls" )
+			label = __( "Advanced Typography" )
 		}
 
 		this.setState(
