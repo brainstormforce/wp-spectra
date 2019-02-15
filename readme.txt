@@ -153,6 +153,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Padding, Margin setting rearranged for Section & Column and Columns.
 * Fix: Disabled background attachemnt for smaller screen.
 * Fix: Testimonial - Background Image not visible while editing.
+* Fix: Icon List - Extra p tag case handled in Icon List.
 * Fix: Info Box - Prefix responsive font size not working issue.
 * Fix: Post Block - Responsive font size not working for desktop issue.
 * Improvement : Post - All registered Image Sizes are fetched.
