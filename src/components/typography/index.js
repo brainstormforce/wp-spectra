@@ -13,6 +13,7 @@ import "./editor.scss"
 
 const {
 	Button,
+	Dashicon
 } = wp.components
 
 
@@ -152,7 +153,7 @@ class TypographyControl extends Component {
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlReset }
 				>
-					{ __( "Reset" ) }
+					{ <Dashicon icon="update" /> }
 				</Button>
 			)
 		} else {
