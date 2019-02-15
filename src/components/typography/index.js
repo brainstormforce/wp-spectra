@@ -61,13 +61,13 @@ class TypographyControl extends Component {
 
 		// Reset Font Size to default.
 		setAttributes( { [ this.props.fontSize.label ]: "" } )
-		setAttributes( { [ this.props.fontSizeType.label ]: "" } )
+		setAttributes( { [ this.props.fontSizeType.label ]: "px" } )
 		setAttributes( { [ this.props.fontSizeMobile.label ]: "" } )
 		setAttributes( { [ this.props.fontSizeTablet.label ]: "" } )
 
 		// Reset Line Height to default.
 		setAttributes( { [ this.props.lineHeight.label ]: "" } )
-		setAttributes( { [ this.props.lineHeightType.label ]: "" } )
+		setAttributes( { [ this.props.lineHeightType.label ]: "em" } )
 		setAttributes( { [ this.props.lineHeightMobile.label ]: "" } )
 		setAttributes( { [ this.props.lineHeightTablet.label ]: "" } )
 
