@@ -585,7 +585,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						'sizeType'         => 'px',
 						'sizeMobile'       => '',
 						'sizeTablet'       => '',
-						'lineHeightType'   => 'px',
+						'lineHeightType'   => 'em',
 						'lineHeight'       => '',
 						'lineHeightMobile' => '',
 						'lineHeightTablet' => '',
