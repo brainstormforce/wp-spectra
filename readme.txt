@@ -157,7 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Info Box - Prefix responsive font size not working issue.
 * Fix: Post Block - Responsive font size not working for desktop issue.
 * Improvement : Post - All registered Image Sizes are fetched.
-* Improvement : Column - Responsive compatibility to Column Width.
+* Improvement : Advanced Columns- Responsive compatibility to Column Width.
 
 = 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
