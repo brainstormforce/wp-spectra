@@ -26,7 +26,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"sizeMobile": "",
 			"sizeTablet": "",
 			"lineHeight": "",
-			"lineHeightType": "px",
+			"lineHeightType": "em",
 			"lineHeightMobile": "",
 			"lineHeightTablet": "",
 		}

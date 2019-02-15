@@ -84,7 +84,7 @@ const attributes = {
 	},
 	prefixLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	prefixLineHeight: {
 		type: "number",
@@ -129,7 +129,7 @@ const attributes = {
 	},
 	headLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	headLineHeight: {
 		type: "number",
@@ -169,7 +169,7 @@ const attributes = {
 	},
 	subHeadLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	subHeadLineHeight: {
 		type: "number",

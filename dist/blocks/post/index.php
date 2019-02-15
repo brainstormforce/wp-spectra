@@ -406,7 +406,7 @@ function uagb_register_blocks() {
 				),
 				'titleLineHeightType'     => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'titleLineHeight'         => array(
 					'type' => 'number',
@@ -448,7 +448,7 @@ function uagb_register_blocks() {
 				),
 				'metaLineHeightType'      => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'metaLineHeight'          => array(
 					'type' => 'number',
@@ -490,7 +490,7 @@ function uagb_register_blocks() {
 				),
 				'excerptLineHeightType'   => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'excerptLineHeight'       => array(
 					'type' => 'number',
@@ -532,7 +532,7 @@ function uagb_register_blocks() {
 				),
 				'ctaLineHeightType'       => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'ctaLineHeight'           => array(
 					'type' => 'number',
@@ -771,7 +771,7 @@ function uagb_register_blocks() {
 				),
 				'titleLineHeightType'     => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'titleLineHeight'         => array(
 					'type' => 'number',
@@ -812,7 +812,7 @@ function uagb_register_blocks() {
 				),
 				'metaLineHeightType'      => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'metaLineHeight'          => array(
 					'type' => 'number',
@@ -853,7 +853,7 @@ function uagb_register_blocks() {
 				),
 				'excerptLineHeightType'   => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'excerptLineHeight'       => array(
 					'type' => 'number',
@@ -894,7 +894,7 @@ function uagb_register_blocks() {
 				),
 				'ctaLineHeightType'       => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'ctaLineHeight'           => array(
 					'type' => 'number',
@@ -1169,7 +1169,7 @@ function uagb_register_blocks() {
 				),
 				'titleLineHeightType'     => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'titleLineHeight'         => array(
 					'type' => 'number',
@@ -1211,7 +1211,7 @@ function uagb_register_blocks() {
 				),
 				'metaLineHeightType'      => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'metaLineHeight'          => array(
 					'type' => 'number',
@@ -1252,7 +1252,7 @@ function uagb_register_blocks() {
 				),
 				'excerptLineHeightType'   => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'excerptLineHeight'       => array(
 					'type' => 'number',
@@ -1293,7 +1293,7 @@ function uagb_register_blocks() {
 				),
 				'ctaLineHeightType'       => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'ctaLineHeight'           => array(
 					'type' => 'number',

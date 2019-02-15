@@ -124,7 +124,7 @@ function FontFamilyControl( props ) {
 	}
 
 	return (
-		<div className="uag-typography-options">
+		<div className="uag-typography-font-family-options">
 			<SelectControl
 				label={ __( "Font Family" ) }
 				value={ props.fontFamily.value }

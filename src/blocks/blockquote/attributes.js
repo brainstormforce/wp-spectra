@@ -46,7 +46,7 @@ const attributes = {
 	},
 	descLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	descLineHeight: {
 		type: "number",
@@ -98,7 +98,7 @@ const attributes = {
 	},
 	authorLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	authorLineHeight: {
 		type: "number",
@@ -216,7 +216,7 @@ const attributes = {
 	},
 	tweetBtnLineHeightType: {
 		type: "string",
-		default: "px"
+		default: "em"
 	},
 	tweetBtnLineHeight: {
 		type: "number",

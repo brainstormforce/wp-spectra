@@ -51,7 +51,7 @@ function RangeTypographyControl( props ) {
 	)
 
 	return (
-		<div className="uag-typography-options">
+		<div className="uag-typography-range-options">
 
 			<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 				tabs={ [

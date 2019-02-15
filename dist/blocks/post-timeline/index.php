@@ -140,7 +140,7 @@ function uagb_register_post_timeline() {
 				),
 				'subHeadLineHeightType'   => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'subHeadLineHeight'       => array(
 					'type' => 'number',
@@ -217,7 +217,7 @@ function uagb_register_post_timeline() {
 				),
 				'authorLineHeightType'    => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'authorLineHeight'        => array(
 					'type' => 'number',
@@ -258,7 +258,7 @@ function uagb_register_post_timeline() {
 				),
 				'ctaLineHeightType'       => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'ctaLineHeight'           => array(
 					'type' => 'number',
@@ -303,7 +303,7 @@ function uagb_register_post_timeline() {
 				),
 				'dateLineHeightType'      => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'dateLineHeight'          => array(
 					'type' => 'number',
@@ -351,7 +351,7 @@ function uagb_register_post_timeline() {
 				),
 				'headLineHeightType'      => array(
 					'type'    => 'string',
-					'default' => 'px',
+					'default' => 'em',
 				),
 				'headLineHeight'          => array(
 					'type' => 'number',
