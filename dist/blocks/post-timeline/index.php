@@ -140,7 +140,7 @@ function uagb_register_post_timeline() {
 				),
 				'subHeadLineHeightType'   => array(
 					'type'    => 'string',
-					'default' => 'em'
+					'default' => 'em',
 				),
 				'subHeadLineHeight'       => array(
 					'type' => 'number',
