@@ -150,12 +150,12 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.9.0 =
 * New: Blockquote
 * Fix: Advanced Columns: Move block handler button issue.
-* Fix: Testimonial - Background Image not visible while editing.
+* Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
 * Fix: Icon List - Extra p tag case handled in Icon List.
 * Fix: Info Box - Prefix responsive font size not working issue.
 * Fix: Post - Responsive font size not working for desktop issue.
-* Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
 * Fix: Section - Fixed Background Image property disabled for Mobile devices.
+* Fix: Testimonial - Background Image not visible while editing.
 * Improvement: Padding, Margin options redefined for better user understanding.
 * Improvement: Post - All registered Image Sizes are fetched.
 * Improvement: Advanced Columns- Responsive compatibility to Column Width.
