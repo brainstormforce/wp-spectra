@@ -36,11 +36,11 @@ class TypographyControl extends Component {
 	onAdvancedControlClick() {
 
 		let control = true
-		let label = __( "Hide Advanced Typography" )
+		let label = __( "Hide Advanced" )
 
 		if( this.state !== null && this.state.showAdvancedControls === true ) {
 			control = false
-			label = __( "Advanced Typography" )
+			label = __( "Advanced" )
 		}
 
 		this.setState(
@@ -137,12 +137,13 @@ class TypographyControl extends Component {
 		if( true !== disableFontFamily && true !== disableFontSize ) {
 			fontAdvancedControls =  (
 				<Button
-					className="uagb-size-btn"
+					className="uagb-size-btn uagb-typography-control-btn"
 					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlClick }
 				>
-					{ (this.state === null) ? __( "Show Advanced Controls" ) : this.state.showAdvancedControlsLabel }
+					{ <Dashicon icon="admin-tools" /> }
+					{ (this.state === null) ? __( "Advanced" ) : this.state.showAdvancedControlsLabel }
 				</Button>
 			)
 
@@ -153,7 +154,8 @@ class TypographyControl extends Component {
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlReset }
 				>
-					{ <Dashicon icon="update" /> }
+					{ <Dashicon icon="image-rotate" /> }
+					{ __( "Reset" ) }
 				</Button>
 			)
 		} else {
@@ -179,8 +181,10 @@ class TypographyControl extends Component {
 		return (
 			<div className="uag-typography-options">
 				{ fontSize }
-				{ fontAdvancedControls }
-				{ resetFontAdvancedControls }
+				<div className="uag-typography-option-actions">
+					{ fontAdvancedControls }
+					{ resetFontAdvancedControls }
+				</div>
 				{ showAdvancedFontControls }
 			</div>
 		)
