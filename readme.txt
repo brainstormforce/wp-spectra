@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.8.2
+Stable tag: 1.9.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,7 +72,7 @@ We also have an informative and detailed article that will help you to <a href="
 <ul>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-heading/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Heading </a>: The Advanced Heading block lets you add a combination of a heading and a sub-heading with a separator in between. You can select the heading tag for the heading and manage other settings and customizations too.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/advanced-columns/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Advanced Columns </a>: This Advanced Columns block gives you advanced options to insert a number of columns within a single row. You get various customization options to manage the look and feel of the entire block and individual columns on the page with advanced shape dividers, variable widths, etc.</li>
- 	<li><a href="https://www.ultimategutenberg.com/blocks/blockquote/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Blockquote </a>: {NEED_A_TEXT_HERE}</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/blockquote/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Blockquote </a>: This Blockquote block lets you display quoted tweetable text in a trendy and designer format with lots of customization options.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/call-to-action/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Call To Action </a>: The Call To Action block helps you to create attractive call-to-action with a trendy title, description and a catchy button that boosts conversions on your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/google-map/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
@@ -147,14 +147,21 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.8.2.1 =
+= 1.9.0.1 =
+* Improvement: Typography Support - Font Family, Font Size, Line Height etc.
+
+= 1.9.0 =
 * New: Blockquote
-* Fix: Inner Columns: Move button issue.
-* Fix: Padding, Margin setting rearranged for Section & Column and Columns.
-* Fix: Disabled background attachemnt for smaller screen.
-* Fix: Testimonial - Background Image not visible while editing.
+* Fix: Advanced Columns: Move block handler button issue.
+* Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
+* Fix: Icon List - Extra p tag case handled in Icon List.
 * Fix: Info Box - Prefix responsive font size not working issue.
-* Improvement : Post - All registered Image Sizes are fetched.
+* Fix: Post - Responsive font size not working for desktop issue.
+* Fix: Section - Fixed Background Image property disabled for Mobile devices.
+* Fix: Testimonial - Background Image not visible while editing.
+* Improvement: Padding, Margin options redefined for better user understanding.
+* Improvement: Post - All registered Image Sizes are fetched.
+* Improvement: Advanced Columns- Responsive compatibility to Column Width.
 
 = 1.8.2 =
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.

@@ -1079,7 +1079,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @global $_wp_additional_image_sizes
 		 * @uses   get_intermediate_image_sizes()
 		 * @link   https://codex.wordpress.org/Function_Reference/get_intermediate_image_sizes
-		 * @since x.x.x
+		 * @since  1.9.0
 		 * @return array $sizes Data for all currently-registered image sizes.
 		 */
 		public static function get_image_sizes() {

@@ -142,9 +142,31 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						),
 						'repeat-notice-after'        => MONTH_IN_SECONDS,
 						'priority'                   => 10,
-						'display-with-other-notices' => false,
+						'display-with-other-notices' => true,
 					)
 				);
+			}
+
+			if ( class_exists( 'Classic_Editor' ) ) {
+				$editor_option = get_option( 'classic-editor-replace' );
+				if ( isset( $editor_option ) && 'block' != $editor_option ) {
+					UAGB_Admin_Notices::add_notice(
+						array(
+							'id'                         => 'uagb-classic-editor',
+							'type'                       => 'warning',
+							'message'                    => sprintf(
+								/* translators: %s: html tags */
+								__( 'Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can change your editor settings to Block Editor from&nbsp;%1$shere%2$s. Plugin is currently NOT RUNNING.', 'ultimate-addons-for-gutenberg' ),
+								'<a href="' . admin_url( 'options-writing.php' ) . '">',
+								'</a>',
+								'<strong>',
+								'</strong>'
+							),
+							'priority'                   => 10,
+							'display-with-other-notices' => true,
+						)
+					);
+				}
 			}
 		}
 

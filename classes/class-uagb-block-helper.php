@@ -461,6 +461,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
+			if ( '' != $attr['colWidthTablet'] && 0 != $attr['colWidthTablet'] ) {
+
+				$t_selectors[''] = array(
+					"width" => $attr['colWidthTablet'] . "%"
+				);
+			}
+
+			if ( '' != $attr['colWidthMobile'] && 0 != $attr['colWidthMobile'] ) {
+
+				$m_selectors[''] = array(
+					"width" => $attr['colWidthMobile'] . "%"
+				);
+			}
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-column-' . $id );
