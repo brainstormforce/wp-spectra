@@ -12,12 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2141,7 +2135,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
-			    ),			  
+			    ),
 			);
 
             if ( $attr["seperatorStyle"] != "none" ) {
