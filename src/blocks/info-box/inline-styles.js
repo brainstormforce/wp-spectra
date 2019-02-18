@@ -11,8 +11,41 @@ function InfoBoxStyle( props ) {
 		subHeadingColor,
 		prefixColor,
 		prefixFontSize,
+		prefixFontSizeType,
+		prefixFontSizeTablet,
+		prefixFontSizeMobile,
+		prefixFontFamily,
+		prefixFontWeight,
+		prefixFontSubset,
+		prefixLineHeightType,
+		prefixLineHeight,
+		prefixLineHeightTablet,
+		prefixLineHeightMobile,
+		prefixLoadGoogleFonts,
 		headFontSize,
+		headFontSizeType,
+		headFontSizeTablet,
+		headFontSizeMobile,
+		headFontFamily,
+		headFontWeight,
+		headFontSubset,
+		headLineHeightType,
+		headLineHeight,
+		headLineHeightTablet,
+		headLineHeightMobile,
+		headLoadGoogleFonts,
 		subHeadFontSize,
+		subHeadFontSizeType,
+		subHeadFontSizeTablet,
+		subHeadFontSizeMobile,
+		subHeadFontFamily,
+		subHeadFontWeight,
+		subHeadFontSubset,
+		subHeadLineHeightType,
+		subHeadLineHeight,
+		subHeadLineHeightTablet,
+		subHeadLineHeightMobile,
+		subHeadLoadGoogleFonts,
 		separatorWidthType,
 		headSpace,
 		separatorSpace,
@@ -33,6 +66,9 @@ function InfoBoxStyle( props ) {
 		ctaFontSizeType,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
+		ctaFontFamily,
+		ctaFontWeight,
+		ctaFontSubset,		
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
@@ -52,16 +88,7 @@ function InfoBoxStyle( props ) {
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
-		ctaIconSpace,
-		subHeadFontSizeType,
-		subHeadFontSizeTablet,
-		subHeadFontSizeMobile,
-		headFontSizeType,
-		headFontSizeTablet,
-		headFontSizeMobile,
-		prefixFontSizeType,
-		prefixFontSizeTablet,
-		prefixFontSizeMobile,
+		ctaIconSpace,		
 	} = props.attributes
 
 	var selectors = {
@@ -105,6 +132,8 @@ function InfoBoxStyle( props ) {
 		// CTA style
 		" .uagb-infobox-cta-link" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
 			"color": ctaLinkColor,
 		},
 		" .uagb-infobox-cta-link:hover" : {
@@ -154,18 +183,27 @@ function InfoBoxStyle( props ) {
 		// Prefix Style
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size" : prefixFontSize+prefixFontSizeType,
+			"font-family": prefixFontFamily,
+			"font-weight": prefixFontWeight,
+			"line-height": prefixLineHeight + prefixLineHeightType,
 			"color": prefixColor,
 			"margin-bottom": prefixSpace+"px",
 		},
 		// Title Style
 		" .editor-rich-text .uagb-ifb-title" : {
 			"font-size" : headFontSize+headFontSizeType,
+			"font-family": headFontFamily,
+			"font-weight": headFontWeight,
+			"line-height": headLineHeight + headLineHeightType,
 			"color": headingColor,
 			"margin-bottom": headSpace+"px",
 		},
 		// Description Style
 		" .editor-rich-text .uagb-ifb-desc" : {
 			"font-size" : subHeadFontSize+subHeadFontSizeType,
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"line-height": subHeadLineHeight + subHeadLineHeightType,
 			"color": subHeadingColor,
 			"margin-bottom": subHeadSpace+"px",
 		},
@@ -199,12 +237,15 @@ function InfoBoxStyle( props ) {
 	var tablet_selectors = {
 		" .editor-rich-text .uagb-ifb-desc" : {
 			"font-size": subHeadFontSizeTablet + subHeadFontSizeType,
+			"line-height": subHeadLineHeightTablet + subHeadLineHeightType,
 		},
 		" .editor-rich-text .uagb-ifb-title" : {
 			"font-size": headFontSizeTablet + headFontSizeType,
+			"line-height": headLineHeightTablet + headLineHeightType,
 		},
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size": prefixFontSizeTablet + prefixFontSizeType,
+			"line-height": prefixLineHeightTablet + prefixLineHeightType,
 		},
 		" .uagb-infobox-cta-link" : {
 			"font-size": ctaFontSizeTablet + ctaFontSizeType,
@@ -226,12 +267,15 @@ function InfoBoxStyle( props ) {
 	var mobile_selectors = {
 		" .editor-rich-text .uagb-ifb-desc" : {
 			"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
+			"line-height": subHeadLineHeightMobile + subHeadLineHeightType,
 		},
 		" .editor-rich-text .uagb-ifb-title" : {
 			"font-size": headFontSizeMobile + headFontSizeType,
+			"line-height": headLineHeightMobile + headLineHeightType,
 		},
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
 			"font-size": prefixFontSizeMobile + prefixFontSizeType,
+			"line-height": prefixLineHeightMobile + prefixLineHeightType,
 		},
 		" .uagb-infobox-cta-link" : {
 			"font-size": ctaFontSizeMobile + ctaFontSizeType,

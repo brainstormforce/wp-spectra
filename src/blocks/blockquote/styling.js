@@ -18,10 +18,24 @@ function styling( props ) {
 		descFontSizeType,
 		descFontSizeTablet,
 		descFontSizeMobile,
+		descFontFamily,
+		descFontWeight,
+		descFontSubset,
+		descLineHeightType,
+		descLineHeight,
+		descLineHeightTablet,
+		descLineHeightMobile,
 		authorFontSize,
 		authorFontSizeType,
 		authorFontSizeTablet,
 		authorFontSizeMobile,
+		authorFontFamily,
+		authorFontWeight,
+		authorFontSubset,
+		authorLineHeightType,
+		authorLineHeight,
+		authorLineHeightTablet,
+		authorLineHeightMobile,
 		descSpace,
 		authorSpace,	
 		borderColor,
@@ -40,6 +54,13 @@ function styling( props ) {
 		tweetBtnFontSizeType,
 		tweetBtnFontSizeTablet,
 		tweetBtnFontSizeMobile,
+		tweetBtnFontFamily,
+		tweetBtnFontWeight,
+		tweetBtnFontSubset,
+		tweetBtnLineHeightType,
+		tweetBtnLineHeight,
+		tweetBtnLineHeightTablet,
+		tweetBtnLineHeightMobile,
 		tweetLinkColor,
 		tweetBtnColor,
 		tweetBtnBgColor,
@@ -89,12 +110,18 @@ function styling( props ) {
 	var selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSize + descFontSizeType,
+			"font-family": descFontFamily,
+			"font-weight": descFontWeight,
+			"line-height": descLineHeight + descLineHeightType,
 			"color": descColor,
 			"margin-bottom": descSpace + "px",
 			"text-align": text_align,
 		},
 		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSize + authorFontSizeType,
+			"font-family": authorFontFamily,
+			"font-weight": authorFontWeight,
+			"line-height": authorLineHeight + authorLineHeightType,
 			"color": authorColor,			
 			"text-align": text_align,			
 		},
@@ -146,7 +173,10 @@ function styling( props ) {
 	
 	if( enableTweet ){
 		selectors[" a.uagb-blockquote__tweet-button"] = {
-			"font-size": tweetBtnFontSize + tweetBtnFontSizeType,				
+			"font-size": tweetBtnFontSize + tweetBtnFontSizeType,	
+			"font-family": tweetBtnFontFamily,
+			"font-weight": tweetBtnFontWeight,
+			"line-height": tweetBtnLineHeight + tweetBtnLineHeightType,			
 		}
 		selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button"] = {
 			"color": tweetLinkColor,		
@@ -231,12 +261,15 @@ function styling( props ) {
 	var tablet_selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeTablet + descFontSizeType,
+			"line-height": descLineHeightTablet + descLineHeightType,
 		},
 		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeTablet + authorFontSizeType,
+			"line-height": authorLineHeightTablet + authorLineHeightType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
-			"font-size": tweetBtnFontSizeTablet + tweetBtnFontSizeType,				
+			"font-size": tweetBtnFontSizeTablet + tweetBtnFontSizeType,	
+			"line-height": tweetBtnLineHeightTablet + tweetBtnLineHeightType,			
 		},
 		" a.uagb-blockquote__tweet-button svg" : {
 			"width": tweetBtnFontSizeTablet + tweetBtnFontSizeType,
@@ -254,12 +287,15 @@ function styling( props ) {
 	var mobile_selectors = {
 		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__tinymce": {
 			"font-size": descFontSizeMobile + descFontSizeType,
+			"line-height": descLineHeightMobile + descLineHeightType,
 		},
 		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__tinymce": {
 			"font-size": authorFontSizeMobile + authorFontSizeType,
+			"line-height": authorLineHeightMobile + authorLineHeightType,
 		},
 		" a.uagb-blockquote__tweet-button" : {
-			"font-size": tweetBtnFontSizeMobile + tweetBtnFontSizeType,				
+			"font-size": tweetBtnFontSizeMobile + tweetBtnFontSizeType,	
+			"line-height": tweetBtnLineHeightMobile + tweetBtnLineHeightType,			
 		},
 		" a.uagb-blockquote__tweet-button svg" :{
 			"width": tweetBtnFontSizeMobile + tweetBtnFontSizeType,

@@ -217,6 +217,7 @@ class UAGB_Init_Blocks {
 			array(
 				'blocks'            => UAGB_Config::get_block_attributes(),
 				'category'          => 'uagb',
+				'ajax_url'          => admin_url( 'admin-ajax.php' ),
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),

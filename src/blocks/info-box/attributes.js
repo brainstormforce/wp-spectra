@@ -72,6 +72,33 @@ const attributes = {
 	prefixFontSizeMobile: {
 		type: "number",
 	},
+	prefixFontFamily: {
+		type: "string",
+		default: "",
+	},
+	prefixFontWeight: {
+		type: "string",
+	},
+	prefixFontSubset: {
+		type: "string",
+	},
+	prefixLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	prefixLineHeight: {
+		type: "number",
+	},
+	prefixLineHeightTablet: {
+		type: "number",
+	},
+	prefixLineHeightMobile: {
+		type: "number",
+	},
+	prefixLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
 	headingTag: {
 		type: "string",
 		default: "h3"
@@ -89,6 +116,34 @@ const attributes = {
 	headFontSizeMobile: {
 		type: "number",
 	},
+
+	headFontFamily: {
+		type: "string",
+		default: "",
+	},
+	headFontWeight: {
+		type: "string",
+	},
+	headFontSubset: {
+		type: "string",
+	},
+	headLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	headLineHeight: {
+		type: "number",
+	},
+	headLineHeightTablet: {
+		type: "number",
+	},
+	headLineHeightMobile: {
+		type: "number",
+	},
+	headLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
 	subHeadFontSize: {
 		type: "number",
 	},
@@ -101,6 +156,33 @@ const attributes = {
 	},
 	subHeadFontSizeMobile: {
 		type: "number",
+	},
+	subHeadFontFamily: {
+		type: "string",
+		default: "",
+	},
+	subHeadFontWeight: {
+		type: "string",
+	},
+	subHeadFontSubset: {
+		type: "string",
+	},
+	subHeadLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	subHeadLineHeight: {
+		type: "number",
+	},
+	subHeadLineHeightTablet: {
+		type: "number",
+	},
+	subHeadLineHeightMobile: {
+		type: "number",
+	},
+	subHeadLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	headSpace: {
 		type: "number",
@@ -194,6 +276,20 @@ const attributes = {
 	},
 	ctaFontSizeTablet :{
 		type: "number",
+	},
+	ctaFontFamily: {
+		type: "string",
+		default: "",
+	},
+	ctaFontWeight: {
+		type: "string",
+	},
+	ctaFontSubset: {
+		type: "string",
+	},
+	ctaLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	ctaBtnLinkColor :{
 		type: "string",

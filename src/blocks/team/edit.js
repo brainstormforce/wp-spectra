@@ -10,6 +10,12 @@ import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 
 const { __ } = wp.i18n
 
@@ -105,22 +111,46 @@ class UAGBTeam extends Component {
 			titleColor,
 			prefixColor,
 			descColor,
-			titleFontSize,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
 			titleFontSizeType,
+			titleFontSize,
 			titleFontSizeMobile,
 			titleFontSizeTablet,
-			prefixFontSize,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightMobile,
+			titleLineHeightTablet,
+			prefixFontFamily,
+			prefixFontWeight,
+			prefixFontSubset,
 			prefixFontSizeType,
+			prefixFontSize,
 			prefixFontSizeMobile,
 			prefixFontSizeTablet,
-			descFontSize,
+			prefixLineHeightType,
+			prefixLineHeight,
+			prefixLineHeightMobile,
+			prefixLineHeightTablet,
+			descFontFamily,
+			descFontWeight,
+			descFontSubset,
 			descFontSizeType,
+			descFontSize,
 			descFontSizeMobile,
 			descFontSizeTablet,
+			descLineHeightType,
+			descLineHeight,
+			descLineHeightMobile,
+			descLineHeightTablet,
 			socialFontSize,
 			socialFontSizeType,
 			socialFontSizeMobile,
 			socialFontSizeTablet,
+			titleLoadGoogleFonts,
+			prefixLoadGoogleFonts,
+			descLoadGoogleFonts,
 			image,
 			imgStyle,
 			imgAlign,
@@ -165,6 +195,51 @@ class UAGBTeam extends Component {
 			setAttributes( { image: null } )
 		}
 
+		let loadTitleGoogleFonts
+		let loadPrefixGoogleFonts
+		let loadDescGoogleFonts
+
+		if( titleLoadGoogleFonts == true ) {
+			
+			const tconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
+				},
+			}
+
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ tconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( prefixLoadGoogleFonts == true ) {
+
+			const pconfig = {
+				google: {
+					families: [ prefixFontFamily + ( prefixFontWeight ? ":" + prefixFontWeight : "" ) ],
+				},
+			}
+
+			loadPrefixGoogleFonts = (
+				<WebfontLoader config={ pconfig }>
+				</WebfontLoader>
+			)
+		}
+		if( descLoadGoogleFonts == true ) {
+
+			const dconfig = {
+				google: {
+					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
+				},
+			}
+
+			loadDescGoogleFonts = (
+				<WebfontLoader config={ dconfig }>
+				</WebfontLoader>
+			)
+		}
+
 		let size = ""
 		let img_url = ""
 
@@ -194,7 +269,7 @@ class UAGBTeam extends Component {
 				</div>
 			)
 		}
-
+		
 		const team_image = ""
 
 		// Get description and seperator components.
@@ -563,310 +638,76 @@ class UAGBTeam extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{titleTypesControls}
-												<RangeControl
-													label={ __( "Title Font Size" ) }
-													value={ titleFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { titleFontSizeMobile: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{titleTypesControls}
-												<RangeControl
-													label={ __( "Title Font Size" ) }
-													value={ titleFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { titleFontSizeTablet: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{titleTypesControls}
-												<RangeControl
-													label={ __( "Title Font Size" ) }
-													value={ titleFontSize }
-													onChange={ ( value ) => setAttributes( { titleFontSize: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{prefixTypesControls}
-												<RangeControl
-													label={ __( "Designation Font Size" ) }
-													value={ prefixFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { prefixFontSizeMobile: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{prefixTypesControls}
-												<RangeControl
-													label={ __( "Designation Font Size" ) }
-													value={ prefixFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { prefixFontSizeTablet: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{prefixTypesControls}
-												<RangeControl
-													label={ __( "Designation Font Size" ) }
-													value={ prefixFontSize }
-													onChange={ ( value ) => setAttributes( { prefixFontSize: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{descTypesControls}
-												<RangeControl
-													label={ __( "Description Font Size" ) }
-													value={ descFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { descFontSizeMobile: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{descTypesControls}
-												<RangeControl
-													label={ __( "Description Font Size" ) }
-													value={ descFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { descFontSizeTablet: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{descTypesControls}
-												<RangeControl
-													label={ __( "Description Font Size" ) }
-													value={ descFontSize }
-													onChange={ ( value ) => setAttributes( { descFontSize: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{socialTypesControls}
-												<RangeControl
-													label={ __( "Social Icon Font Size" ) }
-													value={ socialFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { socialFontSizeMobile: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{socialTypesControls}
-												<RangeControl
-													label={ __( "Social Icon Font Size" ) }
-													value={ socialFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { socialFontSizeTablet: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{socialTypesControls}
-												<RangeControl
-													label={ __( "Social Icon Font Size" ) }
-													value={ socialFontSize }
-													onChange={ ( value ) => setAttributes( { socialFontSize: value } ) }
-													min={ 1 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={16}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Title" ) }</h2>
+						<TypographyControl
+							label={ __( "Title" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
+							fontFamily = { { value: titleFontFamily, label: __( "titleFontFamily" ) } }
+							fontWeight = { { value: titleFontWeight, label: __( "titleFontWeight" ) } }
+							fontSubset = { { value: titleFontSubset, label: __( "titleFontSubset" ) } }
+							fontSizeType = { { value: titleFontSizeType, label: __( "titleFontSizeType" ) } }
+							fontSize = { { value: titleFontSize, label: __( "titleFontSize" ) } }
+							fontSizeMobile = { { value: titleFontSizeMobile, label: __( "titleFontSizeMobile" ) } }
+							fontSizeTablet= { { value: titleFontSizeTablet, label: __( "titleFontSizeTablet" ) } }
+							lineHeightType = { { value: titleLineHeightType, label: __( "titleLineHeightType" ) } }
+							lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
+							lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
+							lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Prefix" ) }</h2>
+						<TypographyControl
+							label={ __( "Prefix" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: prefixLoadGoogleFonts, label: __( "prefixLoadGoogleFonts" ) } }
+							fontFamily = { { value: prefixFontFamily, label: __( "prefixFontFamily" ) } }
+							fontWeight = { { value: prefixFontWeight, label: __( "prefixFontWeight" ) } }
+							fontSubset = { { value: prefixFontSubset, label: __( "prefixFontSubset" ) } }
+							fontSizeType = { { value: prefixFontSizeType, label: __( "prefixFontSizeType" ) } }
+							fontSize = { { value: prefixFontSize, label: __( "prefixFontSize" ) } }
+							fontSizeMobile = { { value: prefixFontSizeMobile, label: __( "prefixFontSizeMobile" ) } }
+							fontSizeTablet= { { value: prefixFontSizeTablet, label: __( "prefixFontSizeTablet" ) } }
+							lineHeightType = { { value: prefixLineHeightType, label: __( "prefixLineHeightType" ) } }
+							lineHeight = { { value: prefixLineHeight, label: __( "prefixLineHeight" ) } }
+							lineHeightMobile = { { value: prefixLineHeightMobile, label: __( "prefixLineHeightMobile" ) } }
+							lineHeightTablet= { { value: prefixLineHeightTablet, label: __( "prefixLineHeightTablet" ) } }
+						/>						
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Description" ) }</h2>
+						<TypographyControl
+							label={ __( "Description" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
+							fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
+							fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
+							fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
+							fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
+							fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
+							fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
+							fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
+							lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
+							lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
+							lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
+							lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Social Icons" ) }</h2>
+						<TypographyControl
+							label={ __( "Social" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							fontSizeType = { { value: socialFontSizeType, label: __( "socialFontSizeType" ) } }
+							fontSize = { { value: socialFontSize, label: __( "socialFontSize" ) } }
+							fontSizeMobile = { { value: socialFontSizeMobile, label: __( "socialFontSizeMobile" ) } }
+							fontSizeTablet= { { value: socialFontSizeTablet, label: __( "socialFontSizeTablet" ) } }
+							disableFontFamily = { true }
+							disableLineHeight = { true }
+						/>
 					</PanelBody>
 					<PanelColorSettings
 						title={ __( "Color Settings" ) }
@@ -1015,6 +856,9 @@ class UAGBTeam extends Component {
 						{ ( imgPosition == "right") && image_html }
 					</div>
 				</div>
+				{ loadTitleGoogleFonts }
+				{ loadPrefixGoogleFonts }
+				{ loadDescGoogleFonts }
 			</Fragment>
 		)
 	}

@@ -58,46 +58,129 @@ const attributes = {
 		default: "top"
 	},
 
-	nameFontSize:{
-		type: "number",
-	},
 	nameFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	nameFontSizeMobile: {
+	nameFontSize: {
 		type: "number",
 	},
 	nameFontSizeTablet: {
 		type: "number",
 	},
-	companyFontSize: {
+	nameFontSizeMobile: {
 		type: "number",
-		default: 15
 	},
+	nameFontFamily: {
+		type: "string",
+		default: "",
+	},
+	nameFontWeight: {
+		type: "string",
+	},
+	nameFontSubset: {
+		type: "string",
+	},
+	nameLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	nameLineHeight: {
+		type: "number",
+	},
+	nameLineHeightTablet: {
+		type: "number",
+	},
+	nameLineHeightMobile: {
+		type: "number",
+	},
+	nameLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+
 	companyFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	companyFontSizeMobile: {
+	companyFontSize: {
 		type: "number",
 	},
 	companyFontSizeTablet: {
 		type: "number",
 	},
-	descFontSize: {
+	companyFontSizeMobile: {
 		type: "number",
 	},
+	companyFontFamily: {
+		type: "string",
+		default: "",
+	},
+	companyFontWeight: {
+		type: "string",
+	},
+	companyFontSubset: {
+		type: "string",
+	},
+	companyLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	companyLineHeight: {
+		type: "number",
+	},
+	companyLineHeightTablet: {
+		type: "number",
+	},
+	companyLineHeightMobile: {
+		type: "number",
+	},
+	companyLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+
 	descFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	descFontSizeMobile: {
+	descFontSize: {
 		type: "number",
 	},
 	descFontSizeTablet: {
 		type: "number",
 	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontFamily: {
+		type: "string",
+		default: "",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
+	},
+	descLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
+		type: "number",
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+
 	nameSpace: {
 		type: "number",
 		default : 5
