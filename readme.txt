@@ -148,7 +148,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.9.0.1 =
-* Fix: Timeline - Viewport issue.
+* Fix: Timeline - Viewport visibility issue.
 * Improvement: Typography Support - Font Family, Font Size, Line Height etc.
 
 = 1.9.0 =
