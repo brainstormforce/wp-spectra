@@ -16,6 +16,7 @@
     "url": "git@git.brainstormforce.com:wp-sharks/ultimate-addons-for-gutenberg.git"
   },
   "dependencies": {
+    "@dr-kobros/react-webfont-loader": "^8.0.0",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.3",
@@ -46,6 +47,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-select": "^2.2.0",
     "react-slick": "^0.23.2",
     "react-transition-group": "^2.5.1",
     "sass-loader": "^6.0.6",
@@ -111,6 +113,7 @@
     "react-masonry-component": "^6.2.1",
     "react-masonry-css": "^1.0.12",
     "react-memoize": "^1.0.1",
+    "webfontloader": "^1.6.28",
     "webpack-config": "^7.5.0"
   }
 }

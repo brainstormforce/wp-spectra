@@ -83,16 +83,46 @@ const attributes = {
 	headFontSize : {
 		type : "number",
 	},
-	headFontSizeType : {
-		type : "string",
+	headFontSizeType: {
+		type: "string",
 		default: "px"
 	},
-	headFontSizeMobile : {
-		type : "number",
+	headFontSize: {
+		type: "number",
 	},
-	headFontSizeTablet : {
-		type : "number",
+	headFontSizeTablet: {
+		type: "number",
 	},
+	headFontSizeMobile: {
+		type: "number",
+	},
+	headFontFamily: {
+		type: "string",
+		default: "",
+	},
+	headFontWeight: {
+		type: "string",
+	},
+	headFontSubset: {
+		type: "string",
+	},
+	headLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	headLineHeight: {
+		type: "number",
+	},
+	headLineHeightTablet: {
+		type: "number",
+	},
+	headLineHeightMobile: {
+		type: "number",
+	},
+	headLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},	
 	timelinAlignment : {
 		type : "string",
 		default : "center",
@@ -101,19 +131,46 @@ const attributes = {
 		type : "string",
 		default : "center",
 	},
-	subHeadFontSize : {
-		type : "number",
-	},
-	subHeadFontSizeType : {
-		type : "string",
+	subHeadFontSizeType: {
+		type: "string",
 		default: "px"
 	},
-	subHeadFontSizeMobile : {
-		type : "number",
+	subHeadFontSize: {
+		type: "number",
 	},
-	subHeadFontSizeTablet : {
-		type : "number",
+	subHeadFontSizeTablet: {
+		type: "number",
 	},
+	subHeadFontSizeMobile: {
+		type: "number",
+	},
+	subHeadFontFamily: {
+		type: "string",
+		default: "",
+	},
+	subHeadFontWeight: {
+		type: "string",
+	},
+	subHeadFontSubset: {
+		type: "string",
+	},
+	subHeadLineHeightType: {
+		type: "string",
+		default: "em",
+	},
+	subHeadLineHeight: {
+		type: "number",
+	},
+	subHeadLineHeightTablet: {
+		type: "number",
+	},
+	subHeadLineHeightMobile: {
+		type: "number",
+	},
+	subHeadLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},	
 	headSpace : {
 		type : "number",
 		default : 5,
@@ -138,27 +195,49 @@ const attributes = {
 		type : "string",
 		default : "#61ce70",
 	},
-	authorFontsize : {
-		type : "number",
-		default : 12,
-	},
 	dateColor : {
 		type : "string",
 		default : "#333",
 	},
-	dateFontsize : {
-		type : "number",
-		default : 12,
+	dateFontsizeType: {
+		type: "string",
+		default: "px"
 	},
-	dateFontsizeType : {
-		type : "string",
-		default : "px",
+	dateFontsize: {
+		type: "number",
 	},
-	dateFontsizeMobile : {
-		type : "number",
+	dateFontsizeTablet: {
+		type: "number",
 	},
-	dateFontsizeTablet : {
-		type : "number",
+	dateFontsizeMobile: {
+		type: "number",
+	},
+	dateFontFamily: {
+		type: "string",
+		default: "",
+	},
+	dateFontWeight: {
+		type: "string",
+	},
+	dateFontSubset: {
+		type: "string",
+	},
+	dateLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	dateLineHeight: {
+		type: "number",
+	},
+	dateLineHeightTablet: {
+		type: "number",
+	},
+	dateLineHeightMobile: {
+		type: "number",
+	},
+	dateLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	connectorBgsize : {
 		type : "number",
