@@ -1089,6 +1089,9 @@ a.uagb-timeline__link {
  .uagb-timeline-desc-content p {
      font-size: inherit;
 }
+.uagb-timeline__events-inner-new p:empty {
+    display: none;
+}
  @media(max-width:976px){
      .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline-res-right .uagb-timeline__line {
          position: absolute;
