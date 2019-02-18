@@ -8,6 +8,19 @@ import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
+
+//  Import CSS.
+import "./style.scss"
+
+/* eslint-disable */
+// Import __() from wp.i18n
+
 const { __ } = wp.i18n
 
 const {
@@ -90,6 +103,7 @@ export default class UAGBAdvancedHeading extends Component {
 		const {
 			isSelected,
 			className,
+			attributes,
 			setAttributes,
 			insertBlocksAfter,
 			mergeBlocks,
@@ -102,20 +116,36 @@ export default class UAGBAdvancedHeading extends Component {
 				subHeadingColor,
 				separatorColor,
 				headingTag,
-				headFontSize,
+				headFontFamily,
+				headFontWeight,
+				headFontSubset,
 				headFontSizeType,
+				headFontSize,
 				headFontSizeMobile,
 				headFontSizeTablet,
+				headLineHeightType,
+				headLineHeight,
+				headLineHeightMobile,
+				headLineHeightTablet,
+				subHeadFontFamily,
+				subHeadFontWeight,
+				subHeadFontSubset,
 				subHeadFontSize,
 				subHeadFontSizeType,
 				subHeadFontSizeMobile,
 				subHeadFontSizeTablet,
+				subHeadLineHeight,
+				subHeadLineHeightType,
+				subHeadLineHeightMobile,
+				subHeadLineHeightTablet,
 				separatorWidth,
 				separatorWidthType,
 				seperatorStyle,
 				separatorHeight,
 				headSpace,
-				separatorSpace
+				separatorSpace,
+				headLoadGoogleFonts,
+				subHeadLoadGoogleFonts,
 			},
 		} = this.props
 
@@ -125,44 +155,36 @@ export default class UAGBAdvancedHeading extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		const sizeTypes = [
-			{ key: "px", name: __( "px" ) },
-			{ key: "em", name: __( "em" ) },
-		]
+		let loadHeadingGoogleFonts;
+		let loadSubHeadingGoogleFonts;
 
-		const headsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ headFontSizeType === key }
-						aria-pressed={ headFontSizeType === key }
-						onClick={ () => setAttributes( { headFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		if( headLoadGoogleFonts == true ) {
+			
+			const hconfig = {
+				google: {
+					families: [ headFontFamily + ( headFontWeight ? ':' + headFontWeight : '' ) ],
+				},
+			};
 
-		const subheadsizeTypesControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ subHeadFontSizeType === key }
-						aria-pressed={ subHeadFontSizeType === key }
-						onClick={ () => setAttributes( { subHeadFontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+			loadHeadingGoogleFonts = (
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( subHeadLoadGoogleFonts == true ) {
+
+			const sconfig = {
+				google: {
+					families: [ subHeadFontFamily + ( subHeadFontWeight ? ':' + subHeadFontWeight : '' ) ],
+				},
+			};
+
+			loadSubHeadingGoogleFonts = (
+				<WebfontLoader config={ sconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		return (
 			<Fragment>
@@ -188,82 +210,23 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { headFontSizeMobile: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { headFontSizeTablet: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{headsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ headFontSize }
-													onChange={ ( value ) => setAttributes( { headFontSize: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<TypographyControl
+							label={ __( "Heading Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
+							fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
+							fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
+							fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
+							fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
+							fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
+							fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
+							fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
+							lineHeightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
+							lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
+							lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
+							lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
+						/>
 						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
 							value={ headingColor }
@@ -272,82 +235,23 @@ export default class UAGBAdvancedHeading extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Sub-Heading" ) }</h2>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSizeMobile }
-													onChange={ ( value ) => setAttributes( { subHeadFontSizeMobile: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSizeTablet }
-													onChange={ ( value ) => setAttributes( { subHeadFontSizeTablet: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{subheadsizeTypesControls}
-												<RangeControl
-													label={ __( "Font Size" ) }
-													value={ subHeadFontSize }
-													onChange={ ( value ) => setAttributes( { subHeadFontSize: value } ) }
-													min={ 10 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={30}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<TypographyControl
+							label={ __( "Heading Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
+							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
+							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
+							fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
+							fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
+							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
+							lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
+							lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+						/>
 						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 						<ColorPalette
 							value={ subHeadingColor }
@@ -465,6 +369,9 @@ export default class UAGBAdvancedHeading extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 				</div>
+				{ loadHeadingGoogleFonts }
+				{ loadSubHeadingGoogleFonts }
+
 			</Fragment>
 		)
 	}

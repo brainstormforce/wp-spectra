@@ -20,8 +20,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_section_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_section_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -210,8 +209,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_columns_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_columns_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -360,8 +358,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_column_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_column_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -497,8 +494,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_adv_heading_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_adv_heading_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
 
@@ -510,7 +506,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-heading-text'        => array(
 					'text-align' => $attr['headingAlign'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
 					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 					'color' => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'] . "px",
 				),
@@ -519,7 +518,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-desc-text' => array(
 					'text-align' => $attr['headingAlign'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
 					'font-size' => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 					'color' => $attr['subHeadingColor'],
 				)
 
@@ -528,9 +530,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				)
 
 			);
@@ -538,9 +542,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-heading-text'        => array(
 					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
+
 				),
 				' .uagb-desc-text' => array(
 					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				)
 
 			);
@@ -576,8 +583,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_buttons_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_buttons_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
 
@@ -612,45 +618,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			foreach ( $attr['buttons'] as $key => $button ) {
 
-				$button['size'] = ( isset( $button['size'] ) ) ? $button['size'] : '';
-				$button['borderWidth'] = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
-				$button['borderStyle'] = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
-				$button['borderColor'] = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
+				$button['size']         = ( isset( $button['size'] ) ) ? $button['size'] : '';
+				$button['borderWidth']  = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
+				$button['borderStyle']  = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
+				$button['borderColor']  = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
 				$button['borderRadius'] = ( isset( $button['borderRadius'] ) ) ? $button['borderRadius'] : '';
-				$button['background'] = ( isset( $button['background'] ) ) ? $button['background'] : '';
-				$button['hBackground'] = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
+				$button['background']   = ( isset( $button['background'] ) ) ? $button['background'] : '';
+				$button['hBackground']  = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
 				$button['borderHColor'] = ( isset( $button['borderHColor'] ) ) ? $button['borderHColor'] : '';
-				$button['vPadding'] = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
-				$button['hPadding'] = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
-				$button['color'] = ( isset( $button['color'] ) ) ? $button['color'] : '';
-				$button['hColor'] = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
-				$button['sizeType'] = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
-				$button['sizeMobile'] = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
-				$button['sizeTablet'] = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
+				$button['vPadding']     = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
+				$button['hPadding']     = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
+				$button['color']        = ( isset( $button['color'] ) ) ? $button['color'] : '';
+				$button['hColor']       = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
+				$button['sizeType']     = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
+				$button['sizeMobile']   = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
+				$button['sizeTablet']   = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
 
 				if ( $attr['btn_count'] <= $key ) {
 					break;
 				}
 
 				$selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['size'] . $button['sizeType'],
-					'border-width' => $button['borderWidth'] . 'px',
-					'border-color' => $button['borderColor'],
-					'border-style' => $button['borderStyle'],
-					'border-radius'  => $button['borderRadius'] . 'px',
-					'background' => $button['background']
+					'font-size'     => $button['size'] . $button['sizeType'],
+					'line-height'   => $button['lineHeight'] . $button['lineHeightType'],
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					'border-width'  => $button['borderWidth'] . 'px',
+					'border-color'  => $button['borderColor'],
+					'border-style'  => $button['borderStyle'],
+					'border-radius' => $button['borderRadius'] . 'px',
+					'background'    => $button['background']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover'] = array (
-					'background' => $button['hBackground'],
+					'background'   => $button['hBackground'],
 					'border-width' => $button['borderWidth'] . 'px',
 					'border-color' => $button['borderHColor'],
 					'border-style' => $button['borderStyle'],
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ' a.uagb-button__link'] = array (
-					'padding'  => $button['vPadding'] . 'px ' . $button['hPadding'] . 'px',
-					'color' => $button['color']
+					'padding' => $button['vPadding'] . 'px ' . $button['hPadding'] . 'px',
+					'color'   => $button['color']
 				);
 
 				$selectors[' .uagb-buttons-repeater-' . $key . ':hover a.uagb-button__link'] = array (
@@ -658,11 +667,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$m_selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['sizeMobile'] . $button['sizeType'],
+					'font-size'   => $button['sizeMobile'] . $button['sizeType'],
+					'line-height' => $button['lineHeightMobile'] . $button['lineHeightType'],
 				);
 
 				$t_selectors[' .uagb-buttons-repeater-' . $key] = array (
-					'font-size'  => $button['sizeTablet'] . $button['sizeType'],
+					'font-size'   => $button['sizeTablet'] . $button['sizeType'],
+					'line-height' => $button['lineHeightTablet'] . $button['lineHeightType'],
 				);
 			}
 
@@ -734,8 +745,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_info_box_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_info_box_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/info-box']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
@@ -782,6 +792,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// CTA style .
 				' .uagb-infobox-cta-link' => array(
 					'font-size'   => $attr['ctaFontSize'].$attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
 					'color'       => $attr['ctaLinkColor'],
 				),
 				' .uagb-infobox-cta-link:hover' => array(
@@ -832,18 +844,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				// Prefix Style.
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSize'].$attr['prefixFontSizeType'],
+					'font-family' => $attr['prefixFontFamily'],
+					'font-weight' => $attr['prefixFontWeight'],
+					'line-height' => $attr['prefixLineHeight'] . $attr['prefixLineHeightType'],
 					'color'         => $attr['prefixColor'],
 					'margin-bottom' => $attr['prefixSpace'].'px',
 				),
 				// Title Style.
 				' .uagb-ifb-title' => array(
 					'font-size'     => $attr['headFontSize'].$attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 					'color'         => $attr['headingColor'],
 					'margin-bottom' => $attr['headSpace'].'px',
 				),
 				// Description Style.
 				' .uagb-ifb-desc' => array(
 					'font-size'     => $attr['subHeadFontSize'].$attr['subHeadFontSizeType'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => $attr['subHeadSpace'].'px',
 				),
@@ -875,12 +896,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				' .uagb-ifb-title-prefix' => array(
 					'font-size'     => $attr['prefixFontSizeMobile'].$attr['prefixFontSizeType'],
+					'line-height' => $attr['prefixLineHeightMobile'] . $attr['prefixLineHeightType'],
 				),
 				' .uagb-ifb-title'        => array(
 					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				' .uagb-ifb-desc' => array(
 					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => $attr['ctaFontSizeMobile'].$attr['ctaFontSizeType'],
@@ -945,8 +969,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_call_to_action_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_call_to_action_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 			$defaults = UAGB_Helper::$block_list['uagb/call-to-action']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
@@ -957,6 +980,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-text'  => array(
 					'font-size'   => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
 					'color'       => $attr['ctaBtnLinkColor'],
 				),
 				' .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text '  => array(
@@ -964,6 +989,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__button-wrapper a.uagb-cta-typeof-button'  => array(
 					'font-size'        => $attr['ctaFontSize']. $attr['ctaFontSizeType'],
+					'font-family'      => $attr['ctaFontFamily'],
+					'font-weight'      => $attr['ctaFontWeight'],
 					'color'            => $attr['ctaBtnLinkColor'],
 					'background-color' => $attr['ctaBgColor'],
 					'border-style'     => $attr['ctaBorderStyle'],
@@ -993,14 +1020,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'fill'   => $attr['ctaLinkHoverColor'],
 				),
 				' .uagb-cta__title'  => array(
-					'font-size'        => $attr['titleFontSize']. $attr['titleFontSizeType'],
-					'color'            => $attr['titleColor'],
-					'margin-bottom'    => $attr['titleSpace']. "px",
+					'font-size'     => $attr['titleFontSize']. $attr['titleFontSizeType'],
+					'font-family'   => $attr['titleFontFamily'],
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
+					'color'         => $attr['titleColor'],
+					'margin-bottom' => $attr['titleSpace']. "px",
 				),
 				' .uagb-cta__desc'  => array(
-					'font-size'        => $attr['descFontSize']. $attr['descFontSizeType'],
-					'color'            => $attr['descColor'],
-					'margin-bottom'    => $attr['descSpace']. "px",
+					'font-size'     => $attr['descFontSize']. $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					'color'         => $attr['descColor'],
+					'margin-bottom' => $attr['descSpace']. "px",
 				),
 				' .uagb-cta__align-button-after'  => array(
 					'margin-left'    => $attr['ctaIconSpace']. "px",
@@ -1053,9 +1086,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__title'  => array(
 					'font-size'        => $attr['titleFontSizeTablet']. $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				' .uagb-cta__desc'  => array(
 					'font-size'        => $attr['descFontSizeTablet']. $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 			);
 
@@ -1074,9 +1109,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-cta__title'  => array(
 					'font-size'        => $attr['titleFontSizeMobile']. $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightMobile']. $attr['titleLineHeightType'],
 				),
 				' .uagb-cta__desc'  => array(
 					'font-size'        => $attr['descFontSizeMobile']. $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 			);
 
@@ -1096,8 +1133,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_testimonial_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_testimonial_css( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
@@ -1133,18 +1169,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'  => $attr['contentPadding'] . 'px',
 				),
 				' .uagb-tm__author-name' => array(
-					'color'   => $attr['authorColor'],
-					'font-size'  => $attr['nameFontSize'] . $attr['nameFontSizeType'],
-					'margin-bottom'  => $attr['nameSpace'] . 'px',
+					'color'         => $attr['authorColor'],
+					'font-size'     => $attr['nameFontSize'] . $attr['nameFontSizeType'],
+					'font-family'   => $attr['nameFontFamily'],
+					'font-weight'   => $attr['nameFontWeight'],
+					'line-height'   => $attr['nameLineHeight'] . $attr['nameLineHeightType'],
+					'margin-bottom' => $attr['nameSpace'] . 'px',
 				),
 				' .uagb-tm__company' => array(
-					'color'   => $attr['companyColor'],
-					'font-size'  => $attr['companyFontSize'] . $attr['companyFontSizeType'],
+					'color'       => $attr['companyColor'],
+					'font-size'   => $attr['companyFontSize'] . $attr['companyFontSizeType'],
+					'font-family' => $attr['companyFontFamily'],
+					'font-weight' => $attr['companyFontWeight'],
+					'line-height' => $attr['companyLineHeight'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
-					'color'   => $attr['descColor'],
-					'font-size'  => $attr['descFontSize'] . $attr['descFontSizeType'],
-					'margin-bottom'  => $attr['descSpace'] . 'px',
+					'color'         => $attr['descColor'],
+					'font-size'     => $attr['descFontSize'] . $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					'margin-bottom' => $attr['descSpace'] . 'px',
 				),
 				' .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content' => array(
 					'background-color'   => $attr['backgroundColor'],
@@ -1185,24 +1230,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				' .uagb-tm__author-name' => array(
 					'font-size'  => $attr['nameFontSizeTablet'] . $attr['nameFontSizeType'],
+					'line-height' => $attr['nameLineHeightTablet'] . $attr['nameLineHeightType'],
 				),
 				' .uagb-tm__company' => array(
 					'font-size'  => $attr['companyFontSizeTablet'] . $attr['companyFontSizeType'],
+					'line-height' => $attr['companyLineHeightTablet'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 			);
 
 			$m_selectors = array(
 				' .uagb-tm__author-name' => array(
 					'font-size'  => $attr['nameFontSizeMobile'] . $attr['nameFontSizeType'],
+					'line-height' => $attr['nameLineHeightMobile'] . $attr['nameLineHeightType'],
 				),
 				' .uagb-tm__company' => array(
 					'font-size'  => $attr['companyFontSizeMobile'] . $attr['companyFontSizeType'],
+					'line-height' => $attr['companyLineHeightMobile'] . $attr['companyLineHeightType'],
 				),
 				' .uagb-tm__desc' => array(
 					'font-size'  => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				' .uagb-tm__content' => array(
 					'text-align' => 'center',
@@ -1228,8 +1279,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_team_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_team_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/team']['attributes'];
 
@@ -1240,12 +1290,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				" p.uagb-team__desc" => array(
+					"font-family" => $attr['descFontFamily'],
+					"font-weight" => $attr['descFontWeight'],
 					"font-size" => $attr['descFontSize'] . $attr['descFontSizeType'],
+					"line-height" => $attr['descLineHeight'] . $attr['descLineHeightType'],
 					"color" => $attr['descColor'],
 					"margin-bottom" => $attr['descSpace'] . "px",
 				),
 				" .uagb-team__prefix" => array(
+					"font-family" => $attr['prefixFontFamily'],
+					"font-weight" => $attr['prefixFontWeight'],
 					"font-size" => $attr['prefixFontSize'] . $attr['prefixFontSizeType'],
+					"line-height" => $attr['prefixLineHeight'] . $attr['prefixLineHeightType'],
 					"color" => $attr['prefixColor'],
 				),
 				" .uagb-team__desc-wrap" => array(
@@ -1316,7 +1372,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors[" " . $attr['tag'] . ".uagb-team__title"] = array(
+				"font-family" => $attr['titleFontFamily'],
+				"font-weight" => $attr['titleFontWeight'],
 				"font-size" => $attr['titleFontSize'] . $attr['titleFontSizeType'],
+				"line-height" => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 				"color" => $attr['titleColor'],
 				"margin-bottom" => $attr['titleSpace'] . "px",
 			);
@@ -1386,8 +1445,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_social_share_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_social_share_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/social-share']['attributes'];
 
@@ -1628,8 +1686,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_icon_list_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list']['attributes'];
 
@@ -1679,7 +1736,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => $attr['size'] . $attr['sizeType'],
 					"height" => $attr['size'] . $attr['sizeType'],
 					"font-size" => $attr['size'] . $attr['sizeType']
-				),	" .uagb-icon-list__label-wrap"=> array(
+				),
+				" .uagb-icon-list__label-wrap"=> array(
 					"text-align" => $attr['align']
 				),
 
@@ -1787,15 +1845,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
 					"color" => $icon['label_color'],
-					"font-size" => $attr['fontSize'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSize'] . $attr['fontSizeType'],
+					'font-family' => $attr['fontFamily'],
+					'font-weight' => $attr['fontWeight'],
+					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 
 				$m_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => $attr['fontSizeMobile'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSizeMobile'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
 				);
 
 				$t_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => $attr['fontSizeTablet'] . $attr['fontSizeType']
+					"font-size" => $attr['fontSizeTablet'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
@@ -1866,8 +1929,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_content_timeline_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_content_timeline_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/content-timeline']['attributes'];
 
@@ -1881,7 +1943,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
 					"color"  => $attr['headingColor'],
-					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType']
+					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
@@ -1897,15 +1962,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__date-new" => array(
 					"font-size" => $attr['dateFontsizeTablet'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
-					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType']
+					"font-size" => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline-desc-content" => array(
-					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType']
+					"font-size" => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				),
 			);
 
@@ -1915,15 +1984,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				" .uagb-timeline__date-hide.uagb-timeline__date-inner" => array(
 					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__date-new" => array(
 					"font-size" => $attr['dateFontsizeMobile'] . $attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
-					"font-size" => $attr['headFontSizeMobile'] . $attr['headFontSizeType']
+					"font-size" => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline-desc-content" => array(
-					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType']
+					"font-size" => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 			);
 
@@ -1950,8 +2023,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_timeline_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_timeline_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-timeline']['attributes'];
 
@@ -1975,20 +2047,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-timeline__author-link" => array(
 					"color"  => $attr['authorColor'],
 					"font-size"  => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-family' => $attr['authorFontFamily'],
+					'font-weight' => $attr['authorFontWeight'],
+					'line-height' => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"color"  => $attr['authorColor'],
 					"font-size"  => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-weight' => $attr['authorFontWeight'],
+					'line-height' => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"color"  => $attr['ctaColor'],
 					"font-size"  => $attr['ctaFontSize'] . $attr['ctaFontSizeType'],
+					'font-family' => $attr['ctaFontFamily'],
+					'font-weight' => $attr['ctaFontWeight'],
+					'line-height' => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
 					"background-color"  => $attr['ctaBackground'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"text-align"  => $attr['align'],
 					"color"  => $attr['headingColor'],
 					"font-size"  => $attr['headFontSize'] . $attr['headFontSizeType'],
+					'font-family' => $attr['headFontFamily'],
+					'font-weight' => $attr['headFontWeight'],
+					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
@@ -2007,15 +2090,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-timeline__author-link" => array(
 					"font-size"  => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"font-size"  => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"font-size"  => $attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"font-size"  => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__center-block.uagb-timeline__responsive-tablet .uagb-timeline__author" => array(
 					"text-align"  => 'left',
@@ -2035,15 +2122,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array(
 				" .uagb-timeline__author-link" => array(
 					"font-size"  => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" .dashicons-admin-users" => array(
 					"font-size"  => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" .uagb-timeline__link" => array(
 					"font-size"  => $attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height' => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-timeline__heading a" => array(
 					"font-size"  => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
+					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
 				),
 				" .uagb-timeline__heading" => array(
 					"text-align"  => $attr['align'],
@@ -2079,8 +2170,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_restaurant_menu_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_restaurant_menu_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/restaurant-menu']['attributes'];
 
@@ -2116,23 +2206,32 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			        'justify-content' => $align,
 			    ),
 			    " .uagb-rm__content" => array(
-			        'text-align' =>  $attr['headingAlign'] ,
-			        'padding-left'  => $attr['contentHrPadding'] . 'px',
-					'padding-right' => $attr['contentHrPadding'] . 'px',
-					'padding-top'   => $attr['contentVrPadding'] . 'px',
-					'padding-bottom'  => $attr['contentVrPadding'] . 'px',
+					'text-align'     => $attr['headingAlign'] ,
+					'padding-left'   => $attr['contentHrPadding'] . 'px',
+					'padding-right'  => $attr['contentHrPadding'] . 'px',
+					'padding-top'    => $attr['contentVrPadding'] . 'px',
+					'padding-bottom' => $attr['contentVrPadding'] . 'px',
 			    ),
 			    " .uagb-rm__title" => array(
-			        'font-size' =>  $attr['titleFontSize'] .$attr['titleFontSizeType'],
-			        'color'=>  $attr['titleColor'] ,
-			        'margin-bottom'=>  $attr['titleSpace'] .'px',
+					'font-size'     => $attr['titleFontSize'] .$attr['titleFontSizeType'],
+					'color'         => $attr['titleColor'] ,
+					'margin-bottom' => $attr['titleSpace'] .'px',
+					'font-family'   => $attr['titleFontFamily'],
+					'font-weight'   => $attr['titleFontWeight'],
+					'line-height'   => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 			    ),
 			    " .uagb-rm__price" => array(
-			        'font-size' =>  $attr['priceFontSize'].$attr['priceFontSizeType'],
-			        'color'=>  $attr['priceColor'],
+			        'font-size' => $attr['priceFontSize'].$attr['priceFontSizeType'],
+			        'font-family'   => $attr['priceFontFamily'],
+					'font-weight'   => $attr['priceFontWeight'],
+					'line-height'   => $attr['priceLineHeight'] . $attr['priceLineHeightType'],
+			        'color'     => $attr['priceColor'],
 			    ),
 			    " .uagb-rm__desc" => array(
 			        'font-size' =>  $attr['descFontSize'].$attr['descFontSizeType'],
+			        'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
 			        'color'=>  $attr['descColor'],
 			        'margin-bottom'=>  $attr['descSpace'].'px',
 			    ),
@@ -2153,13 +2252,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'clear'=> 'left',
 				),
 				" .uagb-rm__title" => array(
-					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+					"font-size" => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-rm__desc" => array(
-					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType']
+					"font-size" => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 				" .uagb-rm__price" => array(
-					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType']
+					"font-size" => $attr['priceFontSizeTablet'] . $attr['priceFontSizeType'],
+					'line-height'   => $attr['priceLineHeightTablet'] . $attr['priceLineHeightType'],
 				)
 			);
 
@@ -2169,13 +2271,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'clear'=> 'left',
 				),
 				" .uagb-rm__title" => array(
-					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+					"font-size" => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-rm__desc" => array(
-					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType']
+					"font-size" => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				" .uagb-rm__price" => array(
-					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType']
+					"font-size" => $attr['priceFontSizeMobile'] . $attr['priceFontSizeType'],
+					'line-height'   => $attr['priceLineHeightMobile'] . $attr['priceLineHeightType'],
 				)
 			);
 
@@ -2196,8 +2301,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_grid_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_grid_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-grid']['attributes'];
 
@@ -2228,8 +2332,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_carousel_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_carousel_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-carousel']['attributes'];
 
@@ -2298,8 +2401,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_post_masonry_css( $attr, $id ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_masonry_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
 
@@ -2328,8 +2430,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.4.0
 		 */
-		public static function get_post_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__items" => array(
 					"margin-right" =>  ( -$attr['rowGap']/2 ) . "px",
@@ -2350,45 +2451,69 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-post__text .uagb-post__title" => array(
 					"color"=> $attr['titleColor'],
 					"font-size"=> $attr['titleFontSize']  . $attr['titleFontSizeType'],
+					'font-family' => $attr['titleFontFamily'],
+					'font-weight' => $attr['titleFontWeight'],
+					'line-height' => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 					"margin-bottom"=> $attr['titleBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"color"=> $attr['titleColor'],
-					"font-size"=> $attr['titleFontSize'] . $attr['titleFontSizeType'],
+					"color"       => $attr['titleColor'],
+					"font-size"   => $attr['titleFontSize']  . $attr['titleFontSizeType'],
+					'font-family' => $attr['titleFontFamily'],
+					'font-weight' => $attr['titleFontWeight'],
+					'line-height' => $attr['titleLineHeight'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
-					"margin-bottom"=> $attr['metaBottomSpace']  . "px"
+					"font-size"     => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family'   => $attr['metaFontFamily'],
+					'font-weight'   => $attr['metaFontWeight'],
+					'line-height'   => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
+					"margin-bottom" => $attr['metaBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
-					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					"color"       => $attr['metaColor'],
+					"font-size"   => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family' => $attr['metaFontFamily'],
+					'font-weight' => $attr['metaFontWeight'],
+					'line-height' => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
-					"color"=> $attr['metaColor'],
-					"font-size"=> $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					"color"       => $attr['metaColor'],
+					"font-size"   => $attr['metaFontSize']  . $attr['metaFontSizeType'],
+					'font-family' => $attr['metaFontFamily'],
+					'font-weight' => $attr['metaFontWeight'],
+					'line-height' => $attr['metaLineHeight'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
-					"color"=> $attr['excerptColor'],
-					"font-size"=> $attr['excerptFontSize']  . $attr['excerptFontSizeType'],
-					"margin-bottom"=> $attr['excerptBottomSpace']  . "px"
+					"color"         => $attr['excerptColor'],
+					"font-size"     => $attr['excerptFontSize']  . $attr['excerptFontSizeType'],
+					'font-family'   => $attr['excerptFontFamily'],
+					'font-weight'   => $attr['excerptFontWeight'],
+					'line-height'   => $attr['excerptLineHeight'] . $attr['excerptLineHeightType'],
+					"margin-bottom" => $attr['excerptBottomSpace']  . "px"
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
-					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
-					"background"=> $attr['ctaBgColor'],
-					"border-color"=> $attr['borderColor'],
-					"border-width"=> $attr['borderWidth']  . "px",
-					"border-radius"=> $attr['borderRadius']  . "px",
-					"border-style"=> $attr['borderStyle'],
+					"color"         => $attr['ctaColor'],
+					"font-size"     => $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
+					'font-family'   => $attr['ctaFontFamily'],
+					'font-weight'   => $attr['ctaFontWeight'],
+					'line-height'   => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
+					"background"    => $attr['ctaBgColor'],
+					"border-color"  => $attr['borderColor'],
+					"border-width"  => $attr['borderWidth']  . "px",
+					"border-radius" => $attr['borderRadius']  . "px",
+					"border-style"  => $attr['borderStyle'],
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
 					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
-					"font-size"=> $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
+					"font-size"     => $attr['ctaFontSize']  . $attr['ctaFontSizeType'],
+					'font-family'   => $attr['ctaFontFamily'],
+					'font-weight'   => $attr['ctaFontWeight'],
+					'line-height'   => $attr['ctaLineHeight'] . $attr['ctaLineHeightType'],
 					"padding" => ( $attr['btnVPadding'] ) . "px " . ( $attr['btnHPadding'] ) . "px",
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
@@ -2412,33 +2537,40 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.6.1
 		 */
-		public static function get_post_mobile_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_mobile_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
 					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType']
+					"font-size" =>$attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
 					"font-size" =>$attr['metaFontSizeMobile'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightMobile'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
 					"font-size" =>$attr['excerptFontSizeMobile'] . $attr['excerptFontSizeType'],
+					'line-height'   => $attr['excerptLineHeightMobile'] . $attr['excerptLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
 					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"font-size" =>$attr['ctaFontSizeMobile'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightMobile'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-post__text" => array(
 					"padding" =>( $attr['contentPaddingMobile'] ) . "px",
@@ -2453,32 +2585,39 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_post_tablet_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_post_tablet_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			return array(
 				" .uagb-post__text .uagb-post__title" => array(
 					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__title a" => array(
-					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType']
+					"font-size" =>$attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height'   => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a" => array(
 					"font-size" =>$attr['metaFontSizeTablet'] . $attr['metaFontSizeType'],
+					'line-height'   => $attr['metaLineHeightTablet'] . $attr['metaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__excerpt" => array(
 					"font-size" =>$attr['excerptFontSizeTablet'] . $attr['excerptFontSizeType'],
+					'line-height'   => $attr['excerptLineHeightTablet'] . $attr['excerptLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta" => array(
 					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],
 				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"font-size" =>$attr['ctaFontSizeTablet'] . $attr['ctaFontSizeType'],
+					'line-height'   => $attr['ctaLineHeightTablet'] . $attr['ctaLineHeightType'],
 				),
 			);
 			// @codingStandardsIgnoreEnd
@@ -2493,7 +2632,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_blockquote_css( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
@@ -2526,13 +2664,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 				" .uagb-blockquote__content" => array(
-					"font-size"         => $attr['descFontSize'] . $attr['descFontSizeType'],
-					"color"             => $attr['descColor'],
-					"margin-bottom"     => $attr['descSpace'] . "px",
-					"text-align"        => $text_align,
+					"font-size"     => $attr['descFontSize'] . $attr['descFontSizeType'],
+					'font-family'   => $attr['descFontFamily'],
+					'font-weight'   => $attr['descFontWeight'],
+					'line-height'   => $attr['descLineHeight'] . $attr['descLineHeightType'],
+					"color"         => $attr['descColor'],
+					"margin-bottom" => $attr['descSpace'] . "px",
+					"text-align"    => $text_align,
 				),
 				" cite.uagb-blockquote__author" => array(
 					"font-size"         => $attr['authorFontSize'] . $attr['authorFontSizeType'],
+					'font-family'   => $attr['authorFontFamily'],
+					'font-weight'   => $attr['authorFontWeight'],
+					'line-height'   => $attr['authorLineHeight'] . $attr['authorLineHeightType'],
 					"color"             => $attr['authorColor'],
 					"text-align"        => $text_align,
 				),
@@ -2593,6 +2737,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if( $attr['enableTweet'] ){
 				$selectors[" a.uagb-blockquote__tweet-button"] = array(
 					"font-size"          => $attr['tweetBtnFontSize'] . $attr['tweetBtnFontSizeType'],
+					'font-family'   => $attr['tweetBtnFontFamily'],
+					'font-weight'   => $attr['tweetBtnFontWeight'],
+					'line-height'   => $attr['tweetBtnLineHeight'] . $attr['tweetBtnLineHeightType'],
 				);
 
 				$selectors[" .uagb-blockquote__tweet-style-link a.uagb-blockquote__tweet-button"] = array(
@@ -2677,12 +2824,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$t_selectors = array(
 				" .uagb-blockquote__content" => array(
 					"font-size"         => $attr['descFontSizeTablet'] . $attr['descFontSizeType'],
+					'line-height'   => $attr['descLineHeightTablet'] . $attr['descLineHeightType'],
 				),
 				" cite.uagb-blockquote__author" =>array(
 					"font-size"         => $attr['authorFontSizeTablet'] . $attr['authorFontSizeType'],
+					'line-height'   => $attr['authorLineHeightTablet'] . $attr['authorLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button" => array(
 					"font-size"          => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
+					'line-height'   => $attr['tweetBtnLineHeightTablet'] . $attr['tweetBtnLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button svg" => array(
 					"width"       		 => $attr['tweetBtnFontSizeTablet'] . $attr['tweetBtnFontSizeType'],
@@ -2699,24 +2849,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				" .uagb-blockquote__content" =>  array(
-					"font-size"         => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					"font-size"   => $attr['descFontSizeMobile'] . $attr['descFontSizeType'],
+					'line-height' => $attr['descLineHeightMobile'] . $attr['descLineHeightType'],
 				),
 				" cite.uagb-blockquote__author" =>  array(
-					"font-size"         => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					"font-size"   => $attr['authorFontSizeMobile'] . $attr['authorFontSizeType'],
+					'line-height' => $attr['authorLineHeightMobile'] . $attr['authorLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button" => array(
-					"font-size"          => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"font-size"   => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					'line-height' => $attr['tweetBtnLineHeightMobile'] . $attr['tweetBtnLineHeightType'],
 				),
 				" a.uagb-blockquote__tweet-button svg" => array(
-					"width"       		 => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
-					"height"             => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"width"  => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
+					"height" => $attr['tweetBtnFontSizeMobile'] . $attr['tweetBtnFontSizeType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"padding"      		=> $attr['quotePaddingMobile'] . $attr['quotePaddingType'],
 				),
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon" => array(
-					"width"             => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
-					"height"            => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+					"width"  => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
+					"height" => $attr['quoteSizeMobile'].$attr['quoteSizeType'],
 				),
 			);
 
@@ -2737,16 +2890,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_timeline_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			$selectors = array(
 				" .uagb-timeline__heading-text" => array(
 					"margin-bottom"  => $attr['headSpace'] . "px"
 				),
 				" .uagb-timeline-desc-content" => array(
 					"text-align"  => $attr['align'],
-					"color"  => $attr['subHeadingColor'],
-					"font-size"  => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					"color"       => $attr['subHeadingColor'],
+					"font-size"   => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
+					'font-family' => $attr['subHeadFontFamily'],
+					'font-weight' => $attr['subHeadFontWeight'],
+					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__events-new' => array(
 					'text-align' => $attr['align']
@@ -2784,10 +2939,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    ),
 			    ' .uagb-timeline__marker' => array(
 					'background-color' => $attr['separatorBg'],
-					'min-height'=> $attr['connectorBgsize'].'px',
-					'min-width' => $attr['connectorBgsize'].'px',
-					'line-height' => $attr['connectorBgsize'].'px',
-					'border'=> $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
+					'min-height'       => $attr['connectorBgsize'].'px',
+					'min-width'        => $attr['connectorBgsize'].'px',
+					'line-height'      => $attr['connectorBgsize'].'px',
+					'border'           => $attr['borderwidth'].'px solid'.$attr['separatorBorder'],
 				),
 				' .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow' => array(
 			        'height' => $attr['connectorBgsize'].'px',
@@ -2809,10 +2964,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-bottom' => $attr['verticalSpace'].'px',
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
-			        'margin-bottom' => $attr['dateBottomspace'].'px',
-			        'color'=> $attr['dateColor'],
-			        'font-size' => $attr['dateFontsize'].$attr['dateFontsizeType'],
-			        'text-align'=> $attr['align'],
+					'margin-bottom' => $attr['dateBottomspace'].'px',
+					'color'         => $attr['dateColor'],
+					'font-size'     => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'font-family'   => $attr['dateFontFamily'],
+					'font-weight'   => $attr['dateFontWeight'],
+					'line-height'   => $attr['dateLineHeight'] . $attr['dateLineHeightType'],
+					'text-align'    => $attr['align'],
 			    ),
 			    ' .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left' => array(
 			        'margin-left' => $attr['horizontalSpace'].'px',
@@ -2821,8 +2979,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => $attr['horizontalSpace'].'px',
 				),
 				' .uagb-timeline__date-new' => array(
-					'color'=> $attr['dateColor'],
-					'font-size' => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'color'       => $attr['dateColor'],
+					'font-size'   => $attr['dateFontsize'].$attr['dateFontsizeType'],
+					'font-family' => $attr['dateFontFamily'],
+					'font-weight' => $attr['dateFontWeight'],
+					'line-height' => $attr['dateLineHeight'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__events-inner-new' => array(
 					'background-color' => $attr['backgroundColor'],
@@ -2830,9 +2991,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding'=> $attr['bgPadding'].'px',
 				),
 				' .uagb-timeline__main .uagb-timeline__icon-new' => array(
-					'color'=> $attr['iconColor'],
+					'color'     => $attr['iconColor'],
 					'font-size' => $attr['iconSize'].'px',
-					'width' => $attr['iconSize'].'px',
+					'width'     => $attr['iconSize'].'px',
 				),
 				' .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg' => array(
 					'fill'=> $attr['iconFocus'],
@@ -2859,17 +3020,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_tablet_selectors( $attr ) {
-			// @codingStandardsIgnoreStart
+		public static function get_timeline_tablet_selectors( $attr ) { 			// @codingStandardsIgnoreStart
 			$tablet_selector = array(
 				" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 				    'font-size' => $attr['dateFontsizeTablet'].$attr['dateFontsizeType'],
+				    'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__date-new' => array(
 					'font-size' => $attr['dateFontsizeTablet'].$attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightTablet'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,
@@ -2908,17 +3071,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr The block attributes.
 		 * @since 1.8.2
 		 */
-		public static function get_timeline_mobile_selectors( $attr ) {
-        	// @codingStandardsIgnoreStart
+		public static function get_timeline_mobile_selectors( $attr ) {         	// @codingStandardsIgnoreStart
         	$m_selectors = array(
         		" .uagb-timeline-desc-content" => array(
 					"font-size"  => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
+					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
 				),
 				' .uagb-timeline__date-hide.uagb-timeline__date-inner' => array(
 				    'font-size' => $attr['dateFontsizeMobile'].$attr['dateFontsizeType'],
+				    'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__date-new' => array(
 					'font-size' => $attr['dateFontsizeMobile'].$attr['dateFontsizeType'],
+					'line-height' => $attr['dateLineHeightMobile'] . $attr['dateLineHeightType'],
 				),
 				' .uagb-timeline__center-block .uagb-timeline__marker' => array(
 			        'margin-left' => 0,
@@ -2963,8 +3128,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
-		public static function get_testimonial_js( $attr, $id ) {
-			// @codingStandardsIgnoreStart.
+		public static function get_testimonial_js( $attr, $id ) { 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/testimonial']['attributes'];
 
@@ -3024,7 +3188,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_blockquote_js( $attr, $id ) {
-
 			// @codingStandardsIgnoreStart.
 
 			$defaults = UAGB_Helper::$block_list['uagb/blockquote']['attributes'];
@@ -3064,7 +3227,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {
-
 			$selector = '#uagb-social-share-' . $id;
 			?>
 				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
@@ -3073,6 +3235,320 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					window.open( request_url );
 				});
 			<?php
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_advanced_heading_gfont( $attr ) {
+
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Blockquote.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_blockquote_gfont( $attr ) {
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$author_load_google_font = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
+			$author_font_family      = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
+			$author_font_weight      = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
+			$author_font_subset      = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
+
+			$tweet_btn_load_google_font = isset( $attr['tweetBtnLoadGoogleFonts'] ) ? $attr['tweetBtnLoadGoogleFonts'] : '';
+			$tweet_btn_font_family      = isset( $attr['tweetBtnFontFamily'] ) ? $attr['tweetBtnFontFamily'] : '';
+			$tweet_btn_font_weight      = isset( $attr['tweetBtnFontWeight'] ) ? $attr['tweetBtnFontWeight'] : '';
+			$tweet_btn_font_subset      = isset( $attr['tweetBtnFontSubset'] ) ? $attr['tweetBtnFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+			UAGB_Helper::blocks_google_font( $author_load_google_font, $author_font_family, $author_font_weight, $author_font_subset );
+			UAGB_Helper::blocks_google_font( $tweet_btn_load_google_font, $tweet_btn_font_family, $tweet_btn_font_weight, $tweet_btn_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Testimonial block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_testimonial_gfont( $attr ) {
+			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$name_load_google_fonts = isset( $attr['nameLoadGoogleFonts'] ) ? $attr['nameLoadGoogleFonts'] : '';
+			$name_font_family       = isset( $attr['nameFontFamily'] ) ? $attr['nameFontFamily'] : '';
+			$name_font_weight       = isset( $attr['nameFontWeight'] ) ? $attr['nameFontWeight'] : '';
+			$name_font_subset       = isset( $attr['nameFontSubset'] ) ? $attr['nameFontSubset'] : '';
+
+			$company_load_google_fonts = isset( $attr['companyLoadGoogleFonts'] ) ? $attr['companyLoadGoogleFonts'] : '';
+			$company_font_family       = isset( $attr['companyFontFamily'] ) ? $attr['companyFontFamily'] : '';
+			$company_font_weight       = isset( $attr['companyFontWeight'] ) ? $attr['companyFontWeight'] : '';
+			$company_font_subset       = isset( $attr['companyFontSubset'] ) ? $attr['companyFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
+			UAGB_Helper::blocks_google_font( $name_load_google_fonts, $name_font_family, $name_font_family, $name_font_subset );
+			UAGB_Helper::blocks_google_font( $company_load_google_fonts, $company_font_family, $company_font_family, $company_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_team_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
+			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
+			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
+			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
+
+		/**
+		 *
+		 * Adds Google fonts for Restaurant Menu block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_restaurant_menu_gfont( $attr ) {
+			$title_load_google_fonts = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family       = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight       = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset       = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$price_load_google_fonts = isset( $attr['priceLoadGoogleFonts'] ) ? $attr['priceLoadGoogleFonts'] : '';
+			$price_font_family       = isset( $attr['priceFontFamily'] ) ? $attr['priceFontFamily'] : '';
+			$price_font_weight       = isset( $attr['priceFontWeight'] ) ? $attr['priceFontWeight'] : '';
+			$price_font_subset       = isset( $attr['priceFontSubset'] ) ? $attr['priceFontSubset'] : '';
+
+			$desc_load_google_fonts = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family       = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight       = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset       = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_fonts, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $price_load_google_fonts, $price_font_family, $price_font_weight, $price_font_subset );
+			UAGB_Helper::blocks_google_font( $desc_load_google_fonts, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Content Timeline block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_content_timeline_gfont( $attr ) {
+			$head_load_google_fonts = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family       = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight       = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset       = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$subheadload_google_fonts = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subheadfont_family       = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subheadfont_weight       = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subheadfont_subset       = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$date_load_google_fonts = isset( $attr['dateLoadGoogleFonts'] ) ? $attr['dateLoadGoogleFonts'] : '';
+			$date_font_family       = isset( $attr['dateFontFamily'] ) ? $attr['dateFontFamily'] : '';
+			$date_font_weight       = isset( $attr['dateFontWeight'] ) ? $attr['dateFontWeight'] : '';
+			$date_font_subset       = isset( $attr['dateFontSubset'] ) ? $attr['dateFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $head_load_google_fonts, $head_font_family, $head_font_weight, $head_font_subset );
+			UAGB_Helper::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
+			UAGB_Helper::blocks_google_font( $date_load_google_fonts, $date_font_family, $date_font_weight, $date_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Post Timeline block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_post_timeline_gfont( $attr ) {
+			self::blocks_content_timeline_gfont( $attr );
+
+			$author_load_google_fonts = isset( $attr['authorLoadGoogleFonts'] ) ? $attr['authorLoadGoogleFonts'] : '';
+			$author_font_family       = isset( $attr['authorFontFamily'] ) ? $attr['authorFontFamily'] : '';
+			$author_font_weight       = isset( $attr['authorFontWeight'] ) ? $attr['authorFontWeight'] : '';
+			$author_font_subset       = isset( $attr['authorFontSubset'] ) ? $attr['authorFontSubset'] : '';
+
+			$cta_load_google_fonts = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family       = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight       = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset       = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $author_load_google_fonts, $author_font_family, $author_font_weight, $author_font_subset );
+			UAGB_Helper::blocks_google_font( $cta_load_google_fonts, $cta_font_family, $cta_font_weight, $cta_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Mulit Button's block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_buttons_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Icon List block
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_icon_list_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Post block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_post_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$meta_load_google_font = isset( $attr['metaLoadGoogleFonts'] ) ? $attr['metaLoadGoogleFonts'] : '';
+			$meta_font_family      = isset( $attr['metaFontFamily'] ) ? $attr['metaFontFamily'] : '';
+			$meta_font_weight      = isset( $attr['metaFontWeight'] ) ? $attr['metaFontWeight'] : '';
+			$meta_font_subset      = isset( $attr['metaFontSubset'] ) ? $attr['metaFontSubset'] : '';
+
+			$excerpt_load_google_font = isset( $attr['excerptLoadGoogleFonts'] ) ? $attr['excerptLoadGoogleFonts'] : '';
+			$excerpt_font_family      = isset( $attr['excerptFontFamily'] ) ? $attr['excerptFontFamily'] : '';
+			$excerpt_font_weight      = isset( $attr['excerptFontWeight'] ) ? $attr['excerptFontWeight'] : '';
+			$excerpt_font_subset      = isset( $attr['excerptFontSubset'] ) ? $attr['excerptFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+
+			UAGB_Helper::blocks_google_font( $meta_load_google_font, $meta_font_family, $meta_font_weight, $meta_font_subset );
+
+			UAGB_Helper::blocks_google_font( $excerpt_load_google_font, $excerpt_font_family, $excerpt_font_weight, $excerpt_font_subset );
+
+			UAGB_Helper::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Advanced Heading block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_info_box_gfont( $attr ) {
+
+			$head_load_google_font = isset( $attr['headLoadGoogleFonts'] ) ? $attr['headLoadGoogleFonts'] : '';
+			$head_font_family      = isset( $attr['headFontFamily'] ) ? $attr['headFontFamily'] : '';
+			$head_font_weight      = isset( $attr['headFontWeight'] ) ? $attr['headFontWeight'] : '';
+			$head_font_subset      = isset( $attr['headFontSubset'] ) ? $attr['headFontSubset'] : '';
+
+			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
+			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
+			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
+			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
+
+			$subhead_load_google_font = isset( $attr['subHeadLoadGoogleFonts'] ) ? $attr['subHeadLoadGoogleFonts'] : '';
+			$subhead_font_family      = isset( $attr['subHeadFontFamily'] ) ? $attr['subHeadFontFamily'] : '';
+			$subhead_font_weight      = isset( $attr['subHeadFontWeight'] ) ? $attr['subHeadFontWeight'] : '';
+			$subhead_font_subset      = isset( $attr['subHeadFontSubset'] ) ? $attr['subHeadFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+			UAGB_Helper::blocks_google_font( $head_load_google_font, $head_font_family, $head_font_weight, $head_font_subset );
+			UAGB_Helper::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+			UAGB_Helper::blocks_google_font( $subhead_load_google_font, $subhead_font_family, $subhead_font_weight, $subhead_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Call To Action block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_call_to_action_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$cta_load_google_font = isset( $attr['ctaLoadGoogleFonts'] ) ? $attr['ctaLoadGoogleFonts'] : '';
+			$cta_font_family      = isset( $attr['ctaFontFamily'] ) ? $attr['ctaFontFamily'] : '';
+			$cta_font_weight      = isset( $attr['ctaFontWeight'] ) ? $attr['ctaFontWeight'] : '';
+			$cta_font_subset      = isset( $attr['ctaFontSubset'] ) ? $attr['ctaFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $cta_load_google_font, $cta_font_family, $cta_font_weight, $cta_font_subset );
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
 		}
 	}
 }

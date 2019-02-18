@@ -43,44 +43,113 @@ const attributes = {
 	socialHoverColor: {
 		type: "string"
 	},
-	titleFontSize: {
-		type: "number",
+	titleFontFamily: {
+		type: "string",
+		default: "",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
 	},
 	titleFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	titleFontSizeMobile: {
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleFontSize: {
 		type: "number",
 	},
 	titleFontSizeTablet: {
 		type: "number",
 	},
-	prefixFontSize: {
+	titleFontSizeMobile: {
 		type: "number",
-		default: 15
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	prefixFontFamily: {
+		type: "string",
+		default: "",
+	},
+	prefixFontWeight: {
+		type: "string",
+	},
+	prefixFontSubset: {
+		type: "string",
 	},
 	prefixFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	prefixFontSizeMobile: {
+	prefixLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	prefixFontSize: {
 		type: "number",
+		default: 15	
 	},
 	prefixFontSizeTablet: {
 		type: "number",
 	},
-	descFontSize: {
+	prefixFontSizeMobile: {
 		type: "number",
+	},
+	prefixLineHeight: {
+		type: "number",
+	},
+	prefixLineHeightTablet: {
+		type: "number",
+	},
+	prefixLineHeightMobile: {
+		type: "number",
+	},
+	descFontFamily: {
+		type: "string",
+		default: "",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
 	},
 	descFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	descFontSizeMobile: {
+	descLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	descFontSize: {
 		type: "number",
 	},
 	descFontSizeTablet: {
+		type: "number",
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
 		type: "number",
 	},
 	socialFontSize: {
@@ -193,6 +262,18 @@ const attributes = {
 	stack: {
 		type: "string",
 		default: "tablet"
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	prefixLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	}
 }
 
