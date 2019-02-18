@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2082,7 +2083,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    ' .uagb-content' => array(
 			        'padding'=> $attr['contentPadding'].'px',
 			    ),
+			    ' .uagb-timeline__arrow-bottom .uagb-timeline__day-new' => array(
+			        'background-color' => $attr['backgroundColor'],
+			        'border-radius' => $attr['borderRadius'].'px',
+			    ),
 			);
+
+
 
 			$desktop_selectors = self::get_timeline_selectors( $attr );
 			$selectors = array_merge( $selectors, $desktop_selectors );
