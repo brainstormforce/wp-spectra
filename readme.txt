@@ -149,6 +149,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.9.0.1 =
 * Fix: Post - Rest API fields conflict removed.
+* Fix: Post - Extra HTML removed when Featured Image is absent.
 * Fix: Post Timeline - Arrow position bottom issue.
 * Fix: Price List - Layout issue at first drag drop.
 * Fix: Content Timeline - Viewport visibility issue.

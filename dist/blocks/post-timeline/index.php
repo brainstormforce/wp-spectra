@@ -14,6 +14,8 @@
  */
 function uagb_post_timeline_callback( $attributes ) {
 
+	$attributes['post_type'] = 'timeline';
+
 	$recent_posts  = UAGB_Helper::get_query( $attributes, 'timeline' );
 	$post_tm_class = uagb_tm_get_classes( $attributes );
 	$block_id      = 'uagb-ctm-' . $attributes['block_id'];
@@ -505,10 +507,14 @@ function uagb_tm_get_icon( $attributes ) {
  */
 function uagb_tm_get_image( $attributes ) {
 
+	if ( ! get_the_post_thumbnail_url() ) {
+		return;
+	}
+
 	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 	?>
 	<div class='uagb-timeline__image'>
-		<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
+		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 		</a>
 	</div>
 	<?php
