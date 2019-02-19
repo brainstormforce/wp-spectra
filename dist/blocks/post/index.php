@@ -1366,7 +1366,7 @@ function uagb_blocks_register_rest_fields() {
 	// Add featured image source.
 	register_rest_field(
 		'post',
-		'featured_image_src',
+		'uagb_featured_image_src',
 		array(
 			'get_callback'    => 'uagb_blocks_get_image_src',
 			'update_callback' => null,
@@ -1377,7 +1377,7 @@ function uagb_blocks_register_rest_fields() {
 	// Add author info.
 	register_rest_field(
 		'post',
-		'author_info',
+		'uagb_author_info',
 		array(
 			'get_callback'    => 'uagb_blocks_get_author_info',
 			'update_callback' => null,
@@ -1388,7 +1388,7 @@ function uagb_blocks_register_rest_fields() {
 	// Add comment info.
 	register_rest_field(
 		'post',
-		'comment_info',
+		'uagb_comment_info',
 		array(
 			'get_callback'    => 'uagb_blocks_get_comment_info',
 			'update_callback' => null,
@@ -1399,7 +1399,7 @@ function uagb_blocks_register_rest_fields() {
 	// Add excerpt info.
 	register_rest_field(
 		'post',
-		'excerpt',
+		'uagb_excerpt',
 		array(
 			'get_callback'    => 'uagb_blocks_get_excerpt',
 			'update_callback' => null,
