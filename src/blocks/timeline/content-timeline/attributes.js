@@ -5,13 +5,16 @@ const item = []
 const date_arr = []
 
 for (var i = 1; i <= 5; i++) {
-	var title_heading_val = "Timeline Heading "+i
-	var title_desc_val    = "This is Timeline description, you can change me anytime click here "
-	var temp = []
-	var p = { "time_heading" : title_heading_val,"time_desc":title_desc_val }
-	item.push(p)
+	
+	item.push(
+		{
+			"time_heading": "Timeline Heading "+i,
+			"time_desc": "This is Timeline description, you can change me anytime click here ",			
+		}
+	)
+
 	var j = i - 1
-	var today = new Date()
+	var today = new Date('1/1/2019')	
 	var dd = today.getDate()
 	var mm = today.getMonth()+1 //January is 0!
 	var yyyy = today.getFullYear()-j
@@ -26,7 +29,12 @@ for (var i = 1; i <= 5; i++) {
 
 	today = mm + "/" + dd + "/" + yyyy
 	var p = { "title" : today }
-	date_arr.push(p)
+
+	date_arr.push(
+		{
+			"title": today,			
+		}
+	)
 }
 
 const attributes = {
