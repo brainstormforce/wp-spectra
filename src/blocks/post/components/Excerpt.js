@@ -6,18 +6,18 @@ class Excerpt extends React.Component {
 
 		const { post, attributes } = this.props
 
-		if ( post.excerpt == undefined ) {
+		if ( post.uagb_excerpt == undefined ) {
 			return null
 		}
 
-		const words = post.excerpt.split(" ")
+		const words = post.uagb_excerpt.split(" ")
 
-		let excerpt = post.excerpt
+		let excerpt = post.uagb_excerpt
 
 		let exLen = ( attributes.excerptLength ) ? attributes.excerptLength : 25
 
 		if ( exLen >= words.length ) {
-			excerpt = post.excerpt
+			excerpt = post.uagb_excerpt
 		} else {
 			const truncated = words.slice( 0, exLen )
 			excerpt = truncated.join( " " )
