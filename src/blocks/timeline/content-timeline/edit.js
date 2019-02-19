@@ -64,7 +64,7 @@ class UAGBcontentTimeline extends Component {
 	constructor() {
 		super( ...arguments )
 
-		this.splitBlock = this.splitBlock.bind( this )	
+		this.splitBlock = this.splitBlock.bind( this )
 
 		this.getTimelineicon = this.getTimelineicon.bind(this)
 
@@ -119,7 +119,7 @@ class UAGBcontentTimeline extends Component {
 		this.props.setAttributes( { icon: value } )
 	}
 
-	saveDate( value, index ) {		
+	saveDate( value, index ) {
 		const { attributes, setAttributes } = this.props
 		const { t_date } = attributes
 
@@ -133,7 +133,7 @@ class UAGBcontentTimeline extends Component {
 
 		setAttributes( {
 			t_date: newItems,
-		} )			
+		} )
 	}
 
 	render() {
@@ -320,16 +320,16 @@ class UAGBcontentTimeline extends Component {
 		)
 
 		const renderDateSettings = ( index ) => {
-			return (	
-				<Fragment key ={index}>			
-				<TextControl
-					label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-					value= { t_date[ index ].title }					
-					onChange={ value => {
-						this.saveDate( { title: value }, index )
-					} }
-				/>	
-				</Fragment>			
+			return (
+				<Fragment key ={index}>
+					<TextControl
+						label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+						value= { t_date[ index ].title }
+						onChange={ value => {
+							this.saveDate( { title: value }, index )
+						} }
+					/>
+				</Fragment>
 			)
 		}
 
@@ -442,11 +442,11 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Number of Items" ) }
 						value={ timelineItem }
-						onChange={ ( newCount ) => {	
+						onChange={ ( newCount ) => {
 
 							let cloneDate = [ ...t_date ]
 							let cloneContent = [ ...tm_content ]
-							
+
 							if ( cloneDate.length < newCount ) {
 
 								const incAmount = Math.abs( newCount - cloneDate.length )
@@ -458,14 +458,14 @@ class UAGBcontentTimeline extends Component {
 									} )
 								} ) }
 
-								setAttributes( { t_date: cloneDate } )								
+								setAttributes( { t_date: cloneDate } )
 
 								//Save content
 								{ times( incAmount, n => {
-										cloneContent.push( {
-											time_heading: "My Heading " + ( cloneContent.length + 1 ),
-											time_desc: cloneContent[ 0 ].time_desc,																			
-										} )
+									cloneContent.push( {
+										time_heading: __( "Timeline Heading " ) + ( cloneContent.length + 1 ),
+										time_desc: cloneContent[ 0 ].time_desc,
+									} )
 								} ) }
 
 								setAttributes( { tm_content: cloneContent } )
@@ -803,7 +803,7 @@ class UAGBcontentTimeline extends Component {
 							var post_date = dateI18n( dateFormat, t_date[index].title )
 							if( post_date === "Invalid date" ){
 								post_date = t_date[index].title
-							}										
+							}
 							return (
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
 									<div className = {content_align_class}>
