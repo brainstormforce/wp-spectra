@@ -45,7 +45,7 @@ const attributes = {
 	},
 	titleFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	titleFontWeight: {
 		type: "string",
@@ -81,7 +81,7 @@ const attributes = {
 	},
 	prefixFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	prefixFontWeight: {
 		type: "string",
@@ -118,7 +118,7 @@ const attributes = {
 	},
 	descFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	descFontWeight: {
 		type: "string",

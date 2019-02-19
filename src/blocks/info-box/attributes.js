@@ -74,7 +74,7 @@ const attributes = {
 	},
 	prefixFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	prefixFontWeight: {
 		type: "string",
@@ -116,10 +116,9 @@ const attributes = {
 	headFontSizeMobile: {
 		type: "number",
 	},
-
 	headFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	headFontWeight: {
 		type: "string",
@@ -159,7 +158,7 @@ const attributes = {
 	},
 	subHeadFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	subHeadFontWeight: {
 		type: "string",
@@ -279,7 +278,7 @@ const attributes = {
 	},
 	ctaFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	ctaFontWeight: {
 		type: "string",

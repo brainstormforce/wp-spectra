@@ -46,7 +46,7 @@ const attributes = {
 	},
 	titleFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	titleFontWeight: {
 		type: "string",
@@ -86,7 +86,7 @@ const attributes = {
 	},
 	descFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	descFontWeight: {
 		type: "string",
@@ -170,7 +170,7 @@ const attributes = {
 	},
 	ctaFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	ctaFontWeight: {
 		type: "string",

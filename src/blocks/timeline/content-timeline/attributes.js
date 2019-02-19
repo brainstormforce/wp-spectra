@@ -109,7 +109,7 @@ const attributes = {
 	},
 	headFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	headFontWeight: {
 		type: "string",
@@ -157,7 +157,7 @@ const attributes = {
 	},
 	subHeadFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	subHeadFontWeight: {
 		type: "string",
@@ -225,7 +225,7 @@ const attributes = {
 	},
 	dateFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	dateFontWeight: {
 		type: "string",
