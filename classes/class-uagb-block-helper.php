@@ -12,6 +12,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2246,8 +2248,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
                 );
             }
 
+            $selectors[' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)'] = array(
+                    'margin-left'=> 0,
+					'clear'=> 'left',
+                );
+
 			$t_selectors = array(
-				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)' => array(
+					'margin-left'=> 'unset',
+					'clear'=> 'unset',
+				),
+				' .uagb-rest_menu__wrap.uagb-rm__tablet-column-'.$attr['tcolumns'].':nth-child('.$attr['tcolumns'].'n+1)' => array(
 					'margin-left'=> '0%',
 					'clear'=> 'left',
 				),
@@ -2266,7 +2277,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$m_selectors = array(
-				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['mcolumns'].'n+1)' => array(
+				' .uagb-rest_menu__wrap.uagb-rm__desk-column-'.$attr['columns'].':nth-child('.$attr['columns'].'n+1)' => array(
+					'margin-left'=> 'unset',
+					'clear'=> 'unset',
+				),
+				' .uagb-rest_menu__wrap.uagb-rm__mobile-column-'.$attr['mcolumns'].':nth-child('.$attr['mcolumns'].'n+1)' => array(
 					'margin-left'=> '0%',
 					'clear'=> 'left',
 				),
