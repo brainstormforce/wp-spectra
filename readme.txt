@@ -154,13 +154,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Timeline - Arrow position bottom issue.
 * Fix: Price List - Layout issue at first drag drop.
 * Fix: Content Timeline - Viewport visibility issue.
+* Fix: Content Timeline - Date validation error.
 * Fix: Post Timeline - Bottom Layout CSS issue.
 * Improvement: Typography Support - Font Family, Font Size, Line Height etc.
 * Improvement: Post Timeline - Added Action/Filter hooks.
 
 = 1.9.0 =
 * New: Blockquote
-* Fix: Advanced Columns: Move block handler button issue.
+* Fix: Advanced Columns - Move block handler button issue.
 * Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
 * Fix: Icon List - Extra p tag case handled in Icon List.
 * Fix: Info Box - Prefix responsive font size not working issue.

@@ -60,6 +60,7 @@ registerBlockType( "uagb/content-timeline", {
 			icon,
 			tm_content,
 			t_date,
+			date_icon,
 			stack,
 			className
 		} = props.attributes
@@ -74,7 +75,6 @@ registerBlockType( "uagb/content-timeline", {
 		var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
 		var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 
-		let data_copy     = [ ...tm_content ]
 		var display_inner_date = false
 
 		return (

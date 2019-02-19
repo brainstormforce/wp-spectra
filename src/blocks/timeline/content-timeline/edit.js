@@ -64,16 +64,9 @@ class UAGBcontentTimeline extends Component {
 	constructor() {
 		super( ...arguments )
 
-		this.splitBlock = this.splitBlock.bind( this )
-
-		// Get initial timeline content.
-		this.getTimelinecontent = this.getTimelinecontent.bind(this)
-
-		this.getDatecontent = this.getDatecontent.bind(this)
+		this.splitBlock = this.splitBlock.bind( this )	
 
 		this.getTimelineicon = this.getTimelineicon.bind(this)
-
-		this.savedateArray = this.savedateArray.bind(this)
 
 		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 	}
@@ -126,85 +119,7 @@ class UAGBcontentTimeline extends Component {
 		this.props.setAttributes( { icon: value } )
 	}
 
-	/**
-    * Loading Timeline content.
-    */
-	getTimelinecontent(value) {
-		const { tm_content, timelineItem } = this.props.attributes
-		const { setAttributes } = this.props
-		var item_number = value
-		let data_copy     = [ ...tm_content ]
-		let data_length = data_copy.length
-		if( item_number < data_length ){
-			var diff = data_length - item_number
-			let data_new = data_copy
-			for( var i= 0; i < diff; i++ ){
-				data_new.pop()
-			}
-			setAttributes({tm_content:data_new})
-
-		}if( item_number > data_length ){
-			var diff = item_number - data_length
-
-			for( var i= 0; i < diff; i++ ){
-				var array_length = data_length+i
-				var title_heading_val = "My Heading "+item_number
-				var title_desc_val    = "I am timeline card content. You can change me anytime. Click here to edit this text."
-				data_copy[array_length] = { "time_heading" : title_heading_val,"time_desc":title_desc_val }
-			}
-			setAttributes({tm_content:data_copy})
-		}
-		return this.props.attributes.tm_content
-	}
-
-	getDatecontent(value) {
-
-		const { timelineItem, t_date } = this.props.attributes
-		const { setAttributes } = this.props
-
-		var item_number = value
-		let data_copy     = [ ...t_date ]
-		let data_length = data_copy.length
-
-		if( item_number < data_length ){
-			var diff = data_length - item_number
-			let data_new = data_copy
-
-			for( var i= 0; i < diff; i++ ){
-				data_new.pop()
-			}
-			setAttributes({t_date:data_new})
-
-		}
-
-		if( item_number > data_length ){
-			var diff = item_number - data_length
-
-			var today = new Date()
-			var dd = today.getDate()
-			var mm = today.getMonth()+1
-
-			if(dd<10) {
-				dd = "0"+dd
-			}
-			if(mm<10) {
-				mm = "0"+mm
-			}
-
-			for( var i= 0; i < diff; i++ ){
-				var array_length = data_length + i
-				var yyyy = today.getFullYear() - array_length
-				today = mm + "/" + dd + "/" + yyyy
-
-				data_copy[array_length] = { "title" : today }
-			}
-			setAttributes({t_date:data_copy})
-		}
-
-		return this.props.attributes.t_date
-	}
-
-	savedateArray( value, index ) {
+	saveDate( value, index ) {		
 		const { attributes, setAttributes } = this.props
 		const { t_date } = attributes
 
@@ -218,7 +133,7 @@ class UAGBcontentTimeline extends Component {
 
 		setAttributes( {
 			t_date: newItems,
-		} )
+		} )			
 	}
 
 	render() {
@@ -405,16 +320,16 @@ class UAGBcontentTimeline extends Component {
 		)
 
 		const renderDateSettings = ( index ) => {
-			return (
-				<Fragment key = {index} >
-					<TextControl
-						label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-						value= { t_date[ index ].title }
-						onChange={ value => {
-							this.savedateArray( { title: value }, index )
-						} }
-					/>
-				</Fragment>
+			return (	
+				<Fragment key ={index}>			
+				<TextControl
+					label= { __( "Date" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
+					value= { t_date[ index ].title }					
+					onChange={ value => {
+						this.saveDate( { title: value }, index )
+					} }
+				/>	
+				</Fragment>			
 			)
 		}
 
@@ -527,12 +442,39 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Number of Items" ) }
 						value={ timelineItem }
-						onChange={ ( value ) => {
-							setAttributes( { timelineItem: value } )
-							this.getTimelinecontent(value)
-							this.getDatecontent(value)
-						}
-						}
+						onChange={ ( newCount ) => {	
+
+							let cloneDate = [ ...t_date ]
+							let cloneContent = [ ...tm_content ]
+							
+							if ( cloneDate.length < newCount ) {
+
+								const incAmount = Math.abs( newCount - cloneDate.length )
+
+								// Save date.
+								{ times( incAmount, n => {
+									cloneDate.push( {
+										title: cloneDate[ 0 ].title,
+									} )
+								} ) }
+
+								setAttributes( { t_date: cloneDate } )								
+
+								//Save content
+								{ times( incAmount, n => {
+										cloneContent.push( {
+											time_heading: "My Heading " + ( cloneContent.length + 1 ),
+											time_desc: cloneContent[ 0 ].time_desc,																			
+										} )
+								} ) }
+
+								setAttributes( { tm_content: cloneContent } )
+
+							}
+
+							setAttributes( { timelineItem: newCount } )
+
+						} }
 						min={ 1 }
 						max={ 20 }
 						allowReset
@@ -861,7 +803,7 @@ class UAGBcontentTimeline extends Component {
 							var post_date = dateI18n( dateFormat, t_date[index].title )
 							if( post_date === "Invalid date" ){
 								post_date = t_date[index].title
-							}
+							}										
 							return (
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
 									<div className = {content_align_class}>
