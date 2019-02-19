@@ -235,7 +235,7 @@ hr.uagb-editor__separator {
 	line-height: 0;
 
 	top: -8px;
-	left: 50%;
+	right: 5%;
 
 	border-bottom-style: solid;
 	border-left-color: transparent;
@@ -254,7 +254,7 @@ hr.uagb-editor__separator {
 	line-height: 0;
 
 	top: -6px;
-	left: 50%;
+	right: 5%;
 
 	border-bottom-style: solid;
 	border-left-color: transparent;
@@ -288,17 +288,32 @@ hr.uagb-editor__separator {
 }
 
 .uag-typography-option-actions button {
-	align-items: center;
+	margin: 0;
+	float: right;
+}
+
+.uag-typography-option-actions .uagb-typography-reset-btn,
+.uag-typography-option-actions .uagb-typography-reset-btn:hover,
+.uag-typography-option-actions .uagb-typography-reset-btn:active:enabled {
+	background: none;
+	border: none;
+	box-shadow: none;
+	float: right;
 }
 
 .uag-typography-option-actions button svg {
-	margin-right: 5px;
-    height: 15px;
-    width: 15px;
+	height: 15px;
+	width: 15px;
 }
 
-.uagb-typography-control-btn {
-	margin-right: 8px;
+.uag-typography-option-actions button svg:hover {
+	fill: #23282d;
+}
+
+.uag-typography-option-actions button.uagb-typography-reset-btn svg {
+	height: 13px;
+	width: 13px;
+	fill: #777;
 }
 
 /*
