@@ -148,6 +148,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.9.0.1 =
+* Fix: Icon List - Disable Link not working issue.
 * Fix: Post - Rest API fields conflict removed.
 * Fix: Post - Extra HTML removed when Featured Image is absent.
 * Fix: Post Timeline - Arrow position bottom issue.
