@@ -1500,14 +1500,21 @@ function uagb_render_image( $attributes ) {
 	if ( ! $attributes['displayPostImage'] ) {
 		return;
 	}
+
+	if ( ! get_the_post_thumbnail_url() ) {
+		return;
+	}
+
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
+
 	?>
 	<div class='uagb-post__image'>
 		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
+
 	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
