@@ -36,7 +36,7 @@ const attributes = {
 	},	
 	descFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	descFontWeight: {
 		type: "string",
@@ -88,7 +88,7 @@ const attributes = {
 	},
 	authorFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	authorFontWeight: {
 		type: "string",
@@ -206,7 +206,7 @@ const attributes = {
 	},
 	tweetBtnFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	tweetBtnFontWeight: {
 		type: "string",

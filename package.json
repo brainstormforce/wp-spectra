@@ -36,7 +36,7 @@
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-text-replace": "^0.4.0",
-    "grunt-wp-i18n": "^1.0.1",
+    "grunt-wp-i18n": "^1.0.3",
     "gzip-size": "^4.1.0",
     "jquery": "^3.3.1",
     "node-sass": "^4.11.0",
@@ -103,7 +103,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
+    "eslint": "^5.14.1",
     "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-jest": "^21.27.2",
     "eslint-plugin-jsx-a11y": "^6.1.2",

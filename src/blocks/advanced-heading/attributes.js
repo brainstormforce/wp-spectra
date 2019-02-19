@@ -48,7 +48,7 @@ const attributes = {
 	},
 	headFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	headFontWeight: {
 		type: "string",

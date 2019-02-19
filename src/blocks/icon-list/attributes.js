@@ -91,7 +91,7 @@ const attributes = {
 	},
 	fontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	fontWeight: {
 		type: "string",

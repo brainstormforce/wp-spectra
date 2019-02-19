@@ -74,7 +74,7 @@ const attributes = {
 	},
 	titleFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	titleFontWeight: {
 		type: "string",
@@ -115,7 +115,7 @@ const attributes = {
 	},
 	priceFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	priceFontWeight: {
 		type: "string",
@@ -156,7 +156,7 @@ const attributes = {
 	},
 	descFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	descFontWeight: {
 		type: "string",

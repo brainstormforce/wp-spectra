@@ -15,6 +15,7 @@ const { Component, Fragment } = wp.element
  */
 import map from "lodash/map"
 import googleFonts from "./fonts"
+import Select from "react-select"
 
 function FontFamilyControl( props ) {
 
@@ -66,9 +67,9 @@ function FontFamilyControl( props ) {
 
 	const onFontfamilyChange = ( value ) => {
 		const { loadGoogleFonts, fontFamily, fontWeight, fontSubset } = props
-		props.setAttributes( { [ fontFamily.label ]: value } )
-		onLoadGoogleFonts( loadGoogleFonts, value )
-		onFontChange( fontWeight, fontSubset, value )
+		props.setAttributes( { [ fontFamily.label ]: value.label } )
+		onLoadGoogleFonts( loadGoogleFonts, value.label )
+		onFontChange( fontWeight, fontSubset, value.label )
 	}
 
 	const onFontChange = ( fontWeight, fontSubset, fontFamily ) => {
@@ -125,12 +126,15 @@ function FontFamilyControl( props ) {
 
 	return (
 		<div className="uag-typography-font-family-options">
-			<SelectControl
-				label={ __( "Font Family" ) }
-				value={ props.fontFamily.value }
+			<label class="uag-typography-font-family-label">{ __( "Font Family" ) }</label>
+			<Select
+				options={ fonts }
+				value={ { value: props.fontFamily.value, label: props.fontFamily.value, weight: fontWeightObj } }
+				isMulti={ false }
+				maxMenuHeight={ 300 }
 				onChange={ onFontfamilyChange }
-				options={ fonts	}
-				placeholder={ __( "Font family" ) }
+				className="react-select-container" 
+				classNamePrefix="react-select"
 			/>
 			<SelectControl
 				label={ __( "Font Weight" ) }
