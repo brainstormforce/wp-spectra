@@ -512,12 +512,14 @@ function uagb_tm_get_image( $attributes ) {
 	}
 
 	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class='uagb-timeline__image'>
 		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imageSize'] ); ?>
 		</a>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -557,9 +559,11 @@ function uagb_tm_get_title( $attributes ) {
 	global $post;
 	?>
 	<div class = "uagb-timeline__heading-text" >
+		<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 		<<?php echo $tag; ?> class="uagb-timeline__heading" >
-			<a href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : _e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
+			<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : _e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
 		</<?php echo $tag; ?>>
+		<?php do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 	</div>
 	<?php
 }
@@ -575,11 +579,13 @@ function uagb_tm_get_cta( $attributes ) {
 		return;
 	}
 	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-timeline__link_parent">
-		<a class="uagb-timeline__link" href="<?php the_permalink(); ?>" target="<?php echo $target; ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
+		<a class="uagb-timeline__link" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel=" noopener noreferrer"><?php echo esc_html( $attributes['readMoreText'] ); ?></a>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -591,6 +597,7 @@ function uagb_tm_get_cta( $attributes ) {
 function uagb_tm_get_author( $attributes, $author ) {
 
 	$output = '';
+	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
 		$output .= sprintf(
 			'<div class="uagb-timeline__author"><span class="dashicons-admin-users dashicons"></span><a class="uagb-timeline__author-link" href="%2$s">%1$s</a></div>',
@@ -599,6 +606,7 @@ function uagb_tm_get_author( $attributes, $author ) {
 		);
 	}
 	echo $output;
+	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
@@ -616,11 +624,15 @@ function uagb_tm_get_excerpt( $attributes ) {
 	if ( ! $excerpt ) {
 		$excerpt = null;
 	}
+
+	$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
+	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-timeline-desc-content">
 		<?php echo $excerpt; ?>
 	</div>
 	<?php
+	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
 /**
