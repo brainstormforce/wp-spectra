@@ -11,10 +11,10 @@ class Meta extends React.Component {
 		return (
 
 			<div className='uagb-post-grid-byline'>
-				{ attributes.displayPostAuthor && undefined !== post.author_info &&
+				{ attributes.displayPostAuthor && undefined !== post.uagb_author_info &&
 					<span className='uagb-post__author'>
 						<span className="dashicons-admin-users dashicons"></span>
-						<a target="_blank" href={ post.author_info.author_link } rel ="noopener noreferrer">{ post.author_info.display_name }</a>
+						<a target="_blank" href={ post.uagb_author_info.author_link } rel ="noopener noreferrer">{ post.uagb_author_info.display_name }</a>
 					</span>
 				}
 
@@ -25,10 +25,10 @@ class Meta extends React.Component {
 					</time>
 				}
 
-				{ attributes.displayPostComment && undefined !== post.comment_info &&
+				{ attributes.displayPostComment && undefined !== post.uagb_comment_info &&
 					<span className='uagb-post__comment' >
 						<span className="dashicons-admin-comments dashicons"></span>
-						{ post.comment_info }
+						{ post.uagb_comment_info }
 					</span>
 				}
 			</div>
