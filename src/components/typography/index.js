@@ -141,10 +141,7 @@ class TypographyControl extends Component {
 					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlClick }
-				>
-					{ <Dashicon icon="admin-tools" /> }
-					{ (this.state === null) ? __( "Advanced" ) : this.state.showAdvancedControlsLabel }
-				</Button>
+				><Dashicon icon="admin-tools" /></Button>
 			)
 
 			resetFontAdvancedControls =  (
@@ -153,10 +150,7 @@ class TypographyControl extends Component {
 					isSmall
 					aria-pressed={ ( this.state !== null ) }
 					onClick={ this.onAdvancedControlReset }
-				>
-					{ <Dashicon icon="image-rotate" /> }
-					{ __( "Reset" ) }
-				</Button>
+				><Dashicon icon="image-rotate" /></Button>
 			)
 		} else {
 			showAdvancedFontControls = (
@@ -182,6 +176,7 @@ class TypographyControl extends Component {
 			<div className="uag-typography-options">
 				{ fontSize }
 				<div className="uag-typography-option-actions">
+					<strong>{ __( "Advanced Typography" ) }</strong>
 					{ fontAdvancedControls }
 					{ resetFontAdvancedControls }
 				</div>
