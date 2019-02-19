@@ -1089,7 +1089,7 @@ a.uagb-timeline__link {
  .uagb-timeline-desc-content p {
      font-size: inherit;
 }
-.entry-content p:empty {
+.uagb-timeline__main p:empty {
     display: none;
 }
  @media(max-width:976px){
