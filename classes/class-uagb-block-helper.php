@@ -12,8 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -2083,7 +2081,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			    ' .uagb-content' => array(
 			        'padding'=> $attr['contentPadding'].'px',
-			    ),			  
+			    ),
 			);
 
 
