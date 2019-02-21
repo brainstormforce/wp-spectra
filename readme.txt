@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Timeline - Bottom Layout CSS issue.
 * Improvement: Typography Support - Font Family, Font Size, Line Height etc.
 * Improvement: Post Timeline - Added Action/Filter hooks.
+* Improvement: First 5 star rating notice layout issue.
 
 = 1.9.0 =
 * New: Blockquote
