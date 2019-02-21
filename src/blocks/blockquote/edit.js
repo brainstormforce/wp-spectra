@@ -498,32 +498,34 @@ class UAGBBlockQuote extends Component {
 				{ skinStyle === "border" && border_settings	}
 				{ skinStyle === "quotation" && quote_settings }
 				{ skinStyle === "quotation" && <Fragment><hr className="uagb-editor__separator" /><h2>{ __( "Quote Icon Colors" ) }</h2></Fragment> }
-				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
+				{ "none" != borderStyle &&
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
+							{
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
+							},
+							{
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-hover-tab",
+							},
+						] }>
 						{
-							name: "normal",
-							title: __( "Normal" ),
-							className: "uagb-normal-tab",
-						},
-						{
-							name: "hover",
-							title: __( "Hover" ),
-							className: "uagb-hover-tab",
-						},
-					] }>
-					{
-						( tabName ) => {
-							let tabout
-							if( "hover" === tabName.name ) {
-								tabout = hoverSettings
-							}else {
-								tabout = colorSettings
+							( tabName ) => {
+								let tabout
+								if( "hover" === tabName.name ) {
+									tabout = hoverSettings
+								}else {
+									tabout = colorSettings
+								}
+								return <div>{ tabout }</div>
 							}
-							return <div>{ tabout }</div>
 						}
-					}
-				</TabPanel>
+					</TabPanel>
+				}
 				<hr className="uagb-editor__separator" />
 				<SelectControl
 					label={ __( "Stack on" ) }
