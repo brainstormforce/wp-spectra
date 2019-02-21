@@ -3255,7 +3255,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_advanced_heading_gfont( $attr ) {
@@ -3277,7 +3277,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Blockquote.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_blockquote_gfont( $attr ) {
@@ -3305,7 +3305,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Testimonial block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_testimonial_gfont( $attr ) {
@@ -3332,7 +3332,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_team_gfont( $attr ) {
@@ -3361,7 +3361,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * Adds Google fonts for Restaurant Menu block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_restaurant_menu_gfont( $attr ) {
@@ -3388,7 +3388,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Content Timeline block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_content_timeline_gfont( $attr ) {
@@ -3415,7 +3415,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Post Timeline block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_post_timeline_gfont( $attr ) {
@@ -3438,7 +3438,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Mulit Button's block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_buttons_gfont( $attr ) {
@@ -3454,7 +3454,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Icon List block
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_icon_list_gfont( $attr ) {
@@ -3470,7 +3470,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Post block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_post_gfont( $attr ) {
@@ -3507,7 +3507,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_info_box_gfont( $attr ) {
@@ -3541,7 +3541,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Call To Action block.
 		 *
-		 * @since x.x.x
+		 * @since 1.9.1
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_call_to_action_gfont( $attr ) {
