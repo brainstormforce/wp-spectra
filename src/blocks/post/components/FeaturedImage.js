@@ -11,11 +11,11 @@ class FeaturedImage extends React.Component {
 
 		if (
 			attributes.displayPostImage &&
-			undefined !== post.featured_image_src &&
+			undefined !== post.uagb_featured_image_src &&
 			attributes.imgSize &&
-			post.featured_image_src[attributes.imgSize]
+			post.uagb_featured_image_src[attributes.imgSize]
 		) {
-			var src = post.featured_image_src[attributes.imgSize]
+			var src = post.uagb_featured_image_src[attributes.imgSize]
 
 			return (
 				<div className='uagb-post__image'>

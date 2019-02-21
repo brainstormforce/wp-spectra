@@ -16,6 +16,7 @@
     "url": "git@git.brainstormforce.com:wp-sharks/ultimate-addons-for-gutenberg.git"
   },
   "dependencies": {
+    "@dr-kobros/react-webfont-loader": "^8.0.0",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.3",
@@ -35,7 +36,7 @@
     "grunt-contrib-compress": "^1.4.3",
     "grunt-contrib-copy": "^1.0.0",
     "grunt-text-replace": "^0.4.0",
-    "grunt-wp-i18n": "^1.0.1",
+    "grunt-wp-i18n": "^1.0.3",
     "gzip-size": "^4.1.0",
     "jquery": "^3.3.1",
     "node-sass": "^4.11.0",
@@ -46,6 +47,7 @@
     "raw-loader": "^0.5.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-select": "^2.2.0",
     "react-slick": "^0.23.2",
     "react-transition-group": "^2.5.1",
     "sass-loader": "^6.0.6",
@@ -101,7 +103,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.10.0",
+    "eslint": "^5.14.1",
     "eslint-config-wordpress": "^2.0.0",
     "eslint-plugin-jest": "^21.27.2",
     "eslint-plugin-jsx-a11y": "^6.1.2",
@@ -111,6 +113,7 @@
     "react-masonry-component": "^6.2.1",
     "react-masonry-css": "^1.0.12",
     "react-memoize": "^1.0.1",
+    "webfontloader": "^1.6.28",
     "webpack-config": "^7.5.0"
   }
 }

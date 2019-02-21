@@ -191,7 +191,9 @@ class UAGBColumns extends Component {
 			topHeight,
 			topWidth,
 			bottomFlip,
-			topFlip
+			topFlip,
+			reverseTablet,
+			reverseMobile
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -324,6 +326,10 @@ class UAGBColumns extends Component {
 			)
 		)
 
+		const reverse_tablet = ( reverseTablet ) ? "uagb-columns__reverse-tablet" : ""
+
+		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -444,6 +450,16 @@ class UAGBColumns extends Component {
 								{ value: "aside", label: __( "aside" ) },
 								{ value: "nav", label: __( "nav" ) },
 							] }
+						/>
+						<ToggleControl
+							label={ __( "Reverse Columns (Tablet)" ) }
+							checked={ reverseTablet }
+							onChange={ ( value ) => setAttributes( { reverseTablet: ! reverseTablet } ) }
+						/>
+						<ToggleControl
+							label={ __( "Reverse Columns (Mobile)" ) }
+							checked={ reverseMobile }
+							onChange={ ( value ) => setAttributes( { reverseMobile: ! reverseMobile } ) }
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
@@ -1001,7 +1017,9 @@ class UAGBColumns extends Component {
 						`uagb-columns__stack-${stack}`,
 						`uagb-columns__valign-${vAlign}`,
 						`uagb-columns__gap-${columnGap}`,
-						`align${ align }`
+						`align${ align }`,
+						reverse_tablet,
+						reverse_mobile
 					) }
 					id={ `uagb-columns-${this.props.clientId}` }
 				>

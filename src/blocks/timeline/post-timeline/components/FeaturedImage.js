@@ -8,11 +8,11 @@ class FeaturedImage extends React.Component {
 
 		if (
 			attributes.displayPostImage &&
-			undefined !== post.featured_image_src &&
+			undefined !== post.uagb_featured_image_src &&
 			attributes.imageSize &&
-			post.featured_image_src[attributes.imageSize]
+			post.uagb_featured_image_src[attributes.imageSize]
 		) {
-			var src = post.featured_image_src[attributes.imageSize]
+			var src = post.uagb_featured_image_src[attributes.imageSize]
 			let target ="_self"
 			if( attributes.linkTarget ){
 				target ="_blank"

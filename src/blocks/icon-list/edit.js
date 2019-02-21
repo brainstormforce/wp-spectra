@@ -11,6 +11,12 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
+// Import all of our Text Options requirements.
+import TypographyControl from "../../components/typography"
+
+// Import Web font loader for google fonts.
+import WebfontLoader from "../../components/typography/fontloader"
+
 const { __ } = wp.i18n
 
 const {
@@ -83,18 +89,43 @@ class UAGBIconList extends Component {
 			inner_gap,
 			stack,
 			icon_layout,
+			iconPosition,
 			size,
 			sizeType,
 			sizeMobile,
 			sizeTablet,
 			hideLabel,
+			borderRadius,
+			bgSize,
 			fontSize,
 			fontSizeType,
 			fontSizeMobile,
 			fontSizeTablet,
-			borderRadius,
-			bgSize
+			fontFamily,
+			fontWeight,
+			fontSubset,
+			lineHeight,
+			lineHeightType,
+			lineHeightMobile,
+			lineHeightTablet,
+			loadGoogleFonts,
 		} = attributes
+
+		let googleFonts
+
+		if( loadGoogleFonts == true ) {
+
+			const hconfig = {
+				google: {
+					families: [ fontFamily + ( fontWeight ? ":" + fontWeight : "" ) ],
+				},
+			}
+
+			googleFonts = (
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+			)
+		}
 
 
 
@@ -431,6 +462,15 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
 						/>
 						<hr className="uagb-editor__separator" />
+						<SelectControl
+							label={ __( "Icon Position" ) }
+							value={ iconPosition }
+							options={ [
+								{ value: "top", label: __( "Top" ) },
+								{ value: "middle", label: __( "Middle" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }							
+						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
@@ -488,7 +528,7 @@ class UAGBIconList extends Component {
 											<Fragment>
 												{sizeTypeControls}
 												<RangeControl
-													label={ __( "Size" ) }
+													label={ __( "Icon Size" ) }
 													value={ size }
 													onChange={ ( value ) => setAttributes( { size: value } ) }
 													min={ 0 }
@@ -504,82 +544,26 @@ class UAGBIconList extends Component {
 								}
 							}
 						</TabPanel>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSizeMobile }
-													onChange={ ( value ) => setAttributes( { fontSizeMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSizeTablet }
-													onChange={ ( value ) => setAttributes( { fontSizeTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												{lableSizeTypeControls}
-												<RangeControl
-													label={ __( "Lable Size" ) }
-													value={ fontSize }
-													onChange={ ( value ) => setAttributes( { fontSize: value } ) }
-													min={ 0 }
-													max={ 100 }
-													beforeIcon="editor-textcolor"
-													allowReset
-													initialPosition={15}
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						</TabPanel>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Lable Size" ) }</h2>
+						<TypographyControl
+							label={ __( "Lable Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
+							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
+							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
+							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
+							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
+							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
+							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
+							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+						/>
+						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Background Size" ) }
 							value={ bgSize }
@@ -619,6 +603,7 @@ class UAGBIconList extends Component {
 					className,
 					"uagb-icon-list__outer-wrap",
 					`uagb-icon-list__layout-${icon_layout}`,
+					( iconPosition == 'top' ? 'uagb-icon-list__icon-at-top' : '' ),
 					labelClass
 				) }
 				id={ `uagb-icon-list-${ this.props.clientId }` }>
@@ -680,6 +665,7 @@ class UAGBIconList extends Component {
 						}
 					</div>
 				</div>
+				{googleFonts}
 			</Fragment>
 		)
 	}

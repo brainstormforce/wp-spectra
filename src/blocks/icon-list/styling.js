@@ -21,9 +21,17 @@ function styling( props ) {
 		fontSizeType,
 		fontSizeMobile,
 		fontSizeTablet,
+		fontFamily,
+		fontWeight,
+		fontSubset,
+		lineHeightType,
+		lineHeight,
+		lineHeightTablet,
+		lineHeightMobile,
+		loadGoogleFonts,
 		stack,
 		bgSize,
-		borderRadius
+		borderRadius,		
 	} = props.attributes
 
 	var selectors = {}
@@ -188,15 +196,20 @@ function styling( props ) {
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
 			"color" : icon.label_color,
-			"font-size" : fontSize + fontSizeType
+			"font-size" : fontSize + fontSizeType,
+			"font-family": fontFamily,
+			"font-weight": fontWeight,
+			"line-height": lineHeight + lineHeightType,
 		}
 
 		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeMobile + fontSizeType
+			"font-size" : fontSizeMobile + fontSizeType,
+			"line-height": lineHeightMobile + lineHeightType,
 		}
 
 		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeTablet + fontSizeType
+			"font-size" : fontSizeTablet + fontSizeType,
+			"line-height": lineHeightTablet + lineHeightType,
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {

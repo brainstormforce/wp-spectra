@@ -13,10 +13,26 @@ function CtaStyle( props ) {
 		titleFontSizeType,
 		titleFontSizeMobile,
 		titleFontSizeTablet,
+		titleFontFamily,
+		titleFontWeight,
+		titleFontSubset,
+		titleLineHeightType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+		titleLoadGoogleFonts,
 		descFontSize,
 		descFontSizeType,
 		descFontSizeMobile,
 		descFontSizeTablet,
+		descFontFamily,
+		descFontWeight,
+		descFontSubset,
+		descLineHeightType,
+		descLineHeight,
+		descLineHeightTablet,
+		descLineHeightMobile,
+		descLoadGoogleFonts,
 		titleSpace,
 		descSpace,
 		ctaPosition,
@@ -25,6 +41,10 @@ function CtaStyle( props ) {
 		ctaFontSizeType,
 		ctaFontSizeMobile,
 		ctaFontSizeTablet,
+		ctaFontFamily,
+		ctaFontWeight,
+		ctaFontSubset,
+		ctaLoadGoogleFonts,
 		ctaBtnSize,
 		ctaBtnLinkColor,
 		ctaBgColor,
@@ -55,6 +75,8 @@ function CtaStyle( props ) {
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
 			"color": ctaBtnLinkColor,
 		},
 		" .uagb-cta__button-wrapper:hover a.uagb-cta-typeof-text" : {
@@ -63,6 +85,8 @@ function CtaStyle( props ) {
 
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-button" : {
 			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
 			"color": ctaBtnLinkColor,
 			"background-color": ctaBgColor,
 			"border-style": ctaBorderStyle,
@@ -99,6 +123,9 @@ function CtaStyle( props ) {
 		// Title Style
 		" .editor-rich-text .uagb-cta__title" : {
 			"font-size" : titleFontSize+titleFontSizeType,
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"line-height": titleLineHeight + titleLineHeightType,
 			"color": titleColor,
 			"margin-bottom": titleSpace+"px",
 		},
@@ -106,6 +133,9 @@ function CtaStyle( props ) {
 		// Description Style
 		" .editor-rich-text .uagb-cta__desc" : {
 			"font-size" : descFontSize+descFontSizeType,
+			"font-family": descFontFamily,
+			"font-weight": descFontWeight,
+			"line-height": descLineHeight + descLineHeightType,
 			"color": descColor,
 			"margin-bottom": descSpace+"px",
 		},
@@ -145,9 +175,11 @@ function CtaStyle( props ) {
 	var tablet_selectors = {
 		" .editor-rich-text .uagb-cta__title" : {
 			"font-size" : titleFontSizeTablet + titleFontSizeType,
+			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .editor-rich-text .uagb-cta__desc" : {
 			"font-size" : descFontSizeTablet + descFontSizeType,
+			"line-height": descLineHeightTablet + descLineHeightType,
 		},
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
 			"font-size" : ctaFontSizeTablet + ctaFontSizeType,
@@ -166,9 +198,11 @@ function CtaStyle( props ) {
 	var mobile_selectors = {
 		" .editor-rich-text .uagb-cta__title" : {
 			"font-size" : titleFontSizeMobile + titleFontSizeType,
+			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .editor-rich-text .uagb-cta__desc" : {
 			"font-size" : descFontSizeMobile + descFontSizeType,
+			"line-height": descLineHeightMobile + descLineHeightType,
 		},
 		" .uagb-cta__button-wrapper a.uagb-cta-typeof-text" : {
 			"font-size" : ctaFontSizeMobile + ctaFontSizeType,

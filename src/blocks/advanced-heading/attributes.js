@@ -38,26 +38,59 @@ const attributes = {
 	separatorWidth: {
 		type: "number"
 	},
+	separatorWidthType : {
+		type: "string",
+		default: "%"
+	},
 	headSpace: {
 		type: "number",
 		default: 15
 	},
-	headFontSize: {
-		type: "number",
+	headFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	headFontWeight: {
+		type: "string",
+	},
+	headFontSubset: {
+		type: "string",
 	},
 	headFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	separatorWidthType : {
+	headLineHeightType: {
 		type: "string",
-		default: "%"
+		default: "em"
+	},
+	headFontSize: {
+		type: "number",
 	},
 	headFontSizeTablet: {
 		type: "number",
 	},
 	headFontSizeMobile: {
 		type: "number",
+	},
+	headLineHeight: {
+		type: "number",
+	},
+	headLineHeightTablet: {
+		type: "number",
+	},
+	headLineHeightMobile: {
+		type: "number",
+	},
+	subHeadFontFamily: {
+		type: "string",
+		default: "",
+	},
+	subHeadFontWeight: {
+		type: "string",
+	},
+	subHeadFontSubset: {
+		type: "string",
 	},
 	subHeadFontSize: {
 		type: "number",
@@ -72,10 +105,31 @@ const attributes = {
 	subHeadFontSizeMobile: {
 		type: "number",
 	},
+	subHeadLineHeight: {
+		type: "number",
+	},
+	subHeadLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	subHeadLineHeightTablet: {
+		type: "number",
+	},
+	subHeadLineHeightMobile: {
+		type: "number",
+	},
 	separatorSpace: {
 		type: "number",
 		default: 15
 	},
+	headLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	subHeadLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	}
 }
 
 export default attributes

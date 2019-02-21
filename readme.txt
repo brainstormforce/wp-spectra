@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.0.3
-Stable tag: 1.9.0
+Stable tag: 1.9.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,9 +147,24 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.9.1 =
+* Fix: Advanced Columns - Column wrapping issue due to v1.9.0
+* Fix: Icon List - Disable Link not working issue.
+* Fix: Post - Rest API fields conflict removed.
+* Fix: Post - Extra HTML removed when Featured Image is absent.
+* Fix: Post Timeline - Arrow position bottom issue.
+* Fix: Price List - Layout issue at first drag-drop.
+* Fix: Content Timeline - Viewport visibility issue.
+* Fix: Content Timeline - Date validation error.
+* Fix: Post Timeline - Bottom Layout CSS issue.
+* Improvement: Typography Support - Font Family, Font Size, Line Height etc.
+* Improvement: Advanced Columns - Columns Reverse option added for Tablet and Mobile.
+* Improvement: Icon List - Added icon position option.
+* Improvement: Post Timeline - Added Action/Filter hooks.
+
 = 1.9.0 =
 * New: Blockquote
-* Fix: Advanced Columns: Move block handler button issue.
+* Fix: Advanced Columns - Move block handler button issue.
 * Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
 * Fix: Icon List - Extra p tag case handled in Icon List.
 * Fix: Info Box - Prefix responsive font size not working issue.

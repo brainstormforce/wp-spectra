@@ -58,45 +58,130 @@ const attributes = {
 		type: "string",
 		default: "h4"
 	},
-	titleFontSize: {
-		type: "number",
-	},
+
 	titleFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	titleFontSizeMobile: {
+	titleFontSize: {
 		type: "number",
 	},
 	titleFontSizeTablet: {
 		type: "number",
 	},
-	priceFontSize: {
+	titleFontSizeMobile: {
 		type: "number",
 	},
+	titleFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
+	},
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+
 	priceFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	priceFontSizeMobile: {
+	priceFontSize: {
 		type: "number",
 	},
 	priceFontSizeTablet: {
 		type: "number",
 	},
-	descFontSize: {
+	priceFontSizeMobile: {
 		type: "number",
 	},
+	priceFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	priceFontWeight: {
+		type: "string",
+	},
+	priceFontSubset: {
+		type: "string",
+	},
+	priceLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	priceLineHeight: {
+		type: "number",
+	},
+	priceLineHeightTablet: {
+		type: "number",
+	},
+	priceLineHeightMobile: {
+		type: "number",
+	},
+	priceLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+
 	descFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	descFontSizeMobile: {
+	descFontSize: {
 		type: "number",
 	},
 	descFontSizeTablet: {
 		type: "number",
 	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
+	},
+	descLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
+		type: "number",
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+		
 	priceSpace: {
 		type: "number",
 		default : 5

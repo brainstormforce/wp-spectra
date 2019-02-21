@@ -50,6 +50,10 @@ const attributes = {
 		type: "number",
 		default: 15
 	},
+	iconPosition: {
+		type: "string",
+		default: "middle"
+	},
 	size: {
 		type: "number",
 		default: 40
@@ -88,6 +92,33 @@ const attributes = {
 	},
 	fontSizeTablet: {
 		type: "number"
+	},
+	fontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	fontWeight: {
+		type: "string",
+	},
+	fontSubset: {
+		type: "string",
+	},
+	lineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	lineHeight: {
+		type: "number",
+	},
+	lineHeightTablet: {
+		type: "number",
+	},
+	lineHeightMobile: {
+		type: "number",
+	},
+	loadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	icon_layout: {
 		type: "string",

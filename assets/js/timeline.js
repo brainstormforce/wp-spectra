@@ -54,8 +54,9 @@
 
 				var num = 0
 				var elementEnd = $last_item + 20
-				var viewportHeight = document.documentElement.clientHeight
-				var viewportHeightHalf = viewportHeight/2
+				var connectorHeight = 3 * $(this).find(".uagb-timeline__marker:first").height()
+				var viewportHeight = document.documentElement.clientHeight 
+				var viewportHeightHalf = viewportHeight/2 + connectorHeight
 				var elementPos = $(this).offset().top
 				var new_elementPos = elementPos + timeline_start_icon.top
 				var photoViewportOffsetTop = new_elementPos - $document.scrollTop()
@@ -75,12 +76,12 @@
 						}
 					}
 				} else {
-					if ( (photoViewportOffsetTop  + viewportHeightHalf) < elementEnd ) {
+					if ( (photoViewportOffsetTop  + viewportHeightHalf ) < elementEnd ) {
 						if (0 > photoViewportOffsetTop) {
 							line_inner.height((viewportHeightHalf) - Math.abs(photoViewportOffsetTop))
 							++num
 						} else {
-							line_inner.height((viewportHeightHalf) + photoViewportOffsetTop)
+							line_inner.height((viewportHeightHalf) + photoViewportOffsetTop )
 						}
 					}else{
 						if ( (photoViewportOffsetTop + viewportHeightHalf) >= elementEnd ) {

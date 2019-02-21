@@ -44,6 +44,33 @@ const attributes = {
 	titleFontSizeTablet: {
 		type: "number",
 	},
+	titleFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
+	},
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
 	descFontSize: {
 		type: "number",
 	},
@@ -56,6 +83,33 @@ const attributes = {
 	},
 	descFontSizeTablet: {
 		type: "number",
+	},
+	descFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
+	},
+	descLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
+		type: "number",
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	titleSpace: {
 		type: "number",
@@ -113,6 +167,20 @@ const attributes = {
 	},
 	ctaFontSizeTablet :{
 		type: "number",
+	},
+	ctaFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	ctaFontWeight: {
+		type: "string",
+	},
+	ctaFontSubset: {
+		type: "string",
+	},
+	ctaLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
 	},
 	contentWidth :{
 		type: "number",

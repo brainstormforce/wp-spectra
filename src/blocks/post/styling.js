@@ -22,18 +22,50 @@ function styling( props, id ) {
 		titleFontSizeType,
 		titleFontSizeMobile,
 		titleFontSizeTablet,
+		titleFontFamily,
+		titleFontWeight,
+		titleFontSubset,
+		titleLineHeightType,
+		titleLineHeight,
+		titleLineHeightTablet,
+		titleLineHeightMobile,
+		titleLoadGoogleFonts,
 		metaFontSize,
 		metaFontSizeType,
 		metaFontSizeMobile,
 		metaFontSizeTablet,
+		metaFontFamily,
+		metaFontWeight,
+		metaFontSubset,
+		metaLineHeightType,
+		metaLineHeight,
+		metaLineHeightTablet,
+		metaLineHeightMobile,
+		metaLoadGoogleFonts,
 		excerptFontSize,
 		excerptFontSizeType,
 		excerptFontSizeTablet,
 		excerptFontSizeMobile,
+		excerptFontFamily,
+		excerptFontWeight,
+		excerptFontSubset,
+		excerptLineHeightType,
+		excerptLineHeight,
+		excerptLineHeightTablet,
+		excerptLineHeightMobile,
+		excerptLoadGoogleFonts,
 		ctaFontSize,
 		ctaFontSizeType,
 		ctaFontSizeTablet,
 		ctaFontSizeMobile,
+		ctaFontFamily,
+		ctaFontWeight,
+		ctaFontSubset,
+		ctaLineHeightType,
+		ctaLineHeight,
+		ctaLineHeightTablet,
+		ctaLineHeightMobile,
+		ctaLoadGoogleFonts,
 		metaColor,
 		excerptColor,
 		ctaColor,
@@ -82,33 +114,54 @@ function styling( props, id ) {
 		" .uagb-post__text .uagb-post__title": {
 			"color": titleColor,
 			"font-size": titleFontSize  + titleFontSizeType,
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"line-height": titleLineHeight + titleLineHeightType,
 			"margin-bottom": titleBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post__title a": {
 			"color": titleColor,
-			"font-size": titleFontSize  + titleFontSizeType
+			"font-size": titleFontSize  + titleFontSizeType,
+			"font-family": titleFontFamily,
+			"font-weight": titleFontWeight,
+			"line-height": titleLineHeight + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
 			"color": metaColor,
 			"font-size": metaFontSize  + metaFontSizeType,
+			"font-family": metaFontFamily,
+			"font-weight": metaFontWeight,
+			"line-height": metaLineHeight + metaLineHeightType,
 			"margin-bottom": metaBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
 			"color": metaColor,
 			"font-size": metaFontSize  + metaFontSizeType,
+			"font-family": metaFontFamily,
+			"font-weight": metaFontWeight,
+			"line-height": metaLineHeight + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
 			"color": metaColor,
 			"font-size": metaFontSize  + metaFontSizeType,
+			"font-family": metaFontFamily,
+			"font-weight": metaFontWeight,
+			"line-height": metaLineHeight + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
 			"color": excerptColor,
 			"font-size": excerptFontSize  + excerptFontSizeType,
+			"font-family": excerptFontFamily,
+			"font-weight": excerptFontWeight,
+			"line-height": excerptLineHeight + excerptLineHeightType,
 			"margin-bottom": excerptBottomSpace  + "px"
 		},
 		" .uagb-post__text .uagb-post__cta": {
 			"color": ctaColor,
 			"font-size": ctaFontSize  + ctaFontSizeType,
+			"font-family": ctaFontFamily,
+			"font-weight": ctaFontWeight,
+			"line-height": ctaLineHeight + ctaLineHeightType,
 			"background": ctaBgColor,
 			"border-width": borderWidth  + "px",
 			"border-radius": borderRadius  + "px",
@@ -149,27 +202,35 @@ function styling( props, id ) {
 	mobile_selectors = {
 		" .uagb-post__text .uagb-post__title": {
 			"font-size": titleFontSizeMobile  + titleFontSizeType,
+			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__title a": {
-			"font-size": titleFontSizeMobile  + titleFontSizeType
+			"font-size": titleFontSizeMobile  + titleFontSizeType,
+			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
 			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
 			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
 			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
 			"font-size": excerptFontSizeMobile  + excerptFontSizeType,
+			"line-height": excerptLineHeightMobile + excerptLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta": {
 			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+			"line-height": ctaLineHeightMobile + ctaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+			"line-height": ctaLineHeightMobile + ctaLineHeightType,
 		},
 		" .uagb-post__text": {
 			"padding" : ( contentPaddingMobile ) + "px",
@@ -179,27 +240,35 @@ function styling( props, id ) {
 	tablet_selectors = {
 		" .uagb-post__text .uagb-post__title": {
 			"font-size": titleFontSizeTablet  + titleFontSizeType,
+			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__title a": {
-			"font-size": titleFontSizeTablet  + titleFontSizeType
+			"font-size": titleFontSizeTablet  + titleFontSizeType,
+			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
 			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
 			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
 			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
 			"font-size": excerptFontSizeTablet  + excerptFontSizeType,
+			"line-height": excerptLineHeightTablet + excerptLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta": {
 			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+			"line-height": ctaLineHeightTablet + ctaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+			"line-height": ctaLineHeightTablet + ctaLineHeightType,
 		},
 	}
 
