@@ -207,6 +207,14 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	reverseTablet: {
+		type: "boolean",
+		default: false
+	},
+	reverseMobile: {
+		type: "boolean",
+		default: false
+	},
 }
 
 export default attributes

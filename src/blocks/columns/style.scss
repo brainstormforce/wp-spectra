@@ -188,6 +188,11 @@
 	.uagb-columns__stack-tablet .uagb-columns__inner-wrap {
 		display: block;
 	}
+
+	.uagb-columns__reverse-tablet .uagb-columns__inner-wrap {
+		display: flex;
+		flex-direction: column-reverse;
+	}
 }
 
 @media (max-width: 767px) {
@@ -202,6 +207,11 @@
 
 	.uagb-columns__stack-mobile .uagb-columns__inner-wrap {
 		display: block;
+	}
+
+	.uagb-columns__reverse-mobile .uagb-columns__inner-wrap {
+		display: flex;
+		flex-direction: column-reverse;
 	}
 }
 
