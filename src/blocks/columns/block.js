@@ -55,7 +55,9 @@ registerBlockType( "uagb/columns", {
 			topType,
 			bottomType,
 			bottomFlip,
-			topFlip
+			topFlip,
+			reverseTablet,
+			reverseMobile
 		} = props.attributes
 
 		const CustomTag = `${tag}`
@@ -87,6 +89,10 @@ registerBlockType( "uagb/columns", {
 			)
 		)
 
+		const reverse_tablet = ( reverseTablet ) ? "uagb-columns__reverse-tablet" : ""
+
+		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""
+
 		return (
 			<CustomTag
 				className={ classnames(
@@ -96,7 +102,9 @@ registerBlockType( "uagb/columns", {
 					`uagb-columns__stack-${stack}`,
 					`uagb-columns__valign-${vAlign}`,
 					`uagb-columns__gap-${columnGap}`,
-					`align${ align }`
+					`align${ align }`,
+					reverse_tablet,
+					reverse_mobile
 				) }
 				id={ `uagb-columns-${block_id}` }
 			>
