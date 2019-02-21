@@ -161,7 +161,8 @@ class UAGBPostGrid extends Component {
 			excerptLength,
 			overlayOpacity,
 			bgOverlayColor,
-			linkBox
+			linkBox,
+			postType
 		} = attributes
 
 		const hoverSettings = (
@@ -280,6 +281,12 @@ class UAGBPostGrid extends Component {
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
+					<SelectControl
+						label={ __( "Post Type" ) }
+						value={ postType }
+						onChange={ ( value ) => setAttributes( { postType: value } ) }
+						options={ uagb_blocks_info.post_types }
+					/>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -781,10 +788,10 @@ class UAGBPostGrid extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { categories, postsToShow, order, orderBy } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
+	{/*categories: categories*/}
 	const latestPostsQuery = pickBy( {
-		categories: categories,
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
@@ -793,7 +800,7 @@ export default withSelect( ( select, props ) => {
 		per_page: 100,
 	}
 	return {
-		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
+		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
 } )( UAGBPostGrid )

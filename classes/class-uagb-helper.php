@@ -814,6 +814,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			return $image_sizes;
 		}
+
+		/**
+		 * Get Post Types.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function get_post_types() {
+
+			$post_types = get_post_types(
+				array(
+					'public' => true,
+				),
+				'objects'
+			);
+
+			$options = [];
+
+			foreach ( $post_types as $post_type ) {
+				$options[] = array(
+					'value' => $post_type->name,
+					'label' => $post_type->label,
+				);
+			}
+
+			return apply_filters( 'uagb_loop_post_types', $options );
+		}
 	}
 
 	/**
