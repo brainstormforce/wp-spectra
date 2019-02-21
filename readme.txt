@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Content Timeline - Viewport visibility issue.
 * Fix: Content Timeline - Date validation error.
 * Fix: Post Timeline - Bottom Layout CSS issue.
+* Improvement: Icon List - Added icon position option.
 * Improvement: Typography Support - Font Family, Font Size, Line Height etc.
 * Improvement: Advanced Columns - Columns Reverse option added for Tablet and Mobile.
 * Improvement: Post Timeline - Added Action/Filter hooks.

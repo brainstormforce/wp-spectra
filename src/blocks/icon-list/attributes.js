@@ -50,6 +50,10 @@ const attributes = {
 		type: "number",
 		default: 15
 	},
+	iconPosition: {
+		type: "string",
+		default: "middle"
+	},
 	size: {
 		type: "number",
 		default: 40

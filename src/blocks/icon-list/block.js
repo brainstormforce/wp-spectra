@@ -42,7 +42,8 @@ registerBlockType( "uagb/icon-list", {
 			icons,
 			icon_count,
 			icon_layout,
-			hideLabel
+			hideLabel,
+			iconPosition
 		} = props.attributes
 
 		const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
@@ -52,6 +53,7 @@ registerBlockType( "uagb/icon-list", {
 				className,
 				"uagb-icon-list__outer-wrap",
 				`uagb-icon-list__layout-${icon_layout}`,
+				( iconPosition == 'top' ? 'uagb-icon-list__icon-at-top' : '' ),
 				labelClass
 			) }
 			id={ `uagb-icon-list-${ block_id}` }>

@@ -89,6 +89,7 @@ class UAGBIconList extends Component {
 			inner_gap,
 			stack,
 			icon_layout,
+			iconPosition,
 			size,
 			sizeType,
 			sizeMobile,
@@ -461,6 +462,15 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
 						/>
 						<hr className="uagb-editor__separator" />
+						<SelectControl
+							label={ __( "Icon Position" ) }
+							value={ iconPosition }
+							options={ [
+								{ value: "top", label: __( "Top" ) },
+								{ value: "middle", label: __( "Middle" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }							
+						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
 								{
@@ -593,6 +603,7 @@ class UAGBIconList extends Component {
 					className,
 					"uagb-icon-list__outer-wrap",
 					`uagb-icon-list__layout-${icon_layout}`,
+					( iconPosition == 'top' ? 'uagb-icon-list__icon-at-top' : '' ),
 					labelClass
 				) }
 				id={ `uagb-icon-list-${ this.props.clientId }` }>

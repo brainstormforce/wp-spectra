@@ -61,7 +61,6 @@
 		display: inherit;
 		align-items: center;
 	}
-
 	.uagb-icon-list__content-wrap {
 		color: #3a3a3a;
 		-js-display: flex;
@@ -107,4 +106,10 @@
 
 .uagb-icon-list__outer-wrap:not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap {
 	margin-right: 15px;
+}
+
+.uagb-icon-list__outer-wrap.uagb-icon-list__icon-at-top .uagb-icon-list__source-wrap{
+	-ms-flex-item-align: flex-start;
+	align-self: flex-start;
+	margin-top: 5px;
 }

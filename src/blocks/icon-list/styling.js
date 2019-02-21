@@ -31,7 +31,7 @@ function styling( props ) {
 		loadGoogleFonts,
 		stack,
 		bgSize,
-		borderRadius
+		borderRadius,		
 	} = props.attributes
 
 	var selectors = {}
