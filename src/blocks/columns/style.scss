@@ -141,7 +141,7 @@
 
 .uagb-columns__inner-wrap {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 }
 
 .uagb-columns__columns-1 > .uagb-column__wrap { width: 100%; }
