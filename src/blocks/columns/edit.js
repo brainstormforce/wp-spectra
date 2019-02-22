@@ -193,7 +193,9 @@ class UAGBColumns extends Component {
 			bottomFlip,
 			topFlip,
 			reverseTablet,
-			reverseMobile
+			reverseMobile,
+			topDividerOpacity,
+			bottomDividerOpacity
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -229,6 +231,14 @@ class UAGBColumns extends Component {
 						<ColorPalette
 							value={ bottomColor }
 							onChange={ ( colorValue ) => setAttributes( { bottomColor: colorValue } ) }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Opacity" ) }
+							value={ bottomDividerOpacity }
+							onChange={ ( value ) => setAttributes( { bottomDividerOpacity: value } ) }
+							min={ 0 }
+							max={ 100 }
 							allowReset
 						/>
 						<RangeControl
@@ -271,6 +281,14 @@ class UAGBColumns extends Component {
 						<ColorPalette
 							value={ topColor }
 							onChange={ ( colorValue ) => setAttributes( { topColor: colorValue } ) }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Opacity" ) }
+							value={ topDividerOpacity }
+							onChange={ ( value ) => setAttributes( { topDividerOpacity: value } ) }
+							min={ 0 }
+							max={ 100 }
 							allowReset
 						/>
 						<RangeControl
