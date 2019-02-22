@@ -841,6 +841,40 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			return apply_filters( 'uagb_loop_post_types', $options );
 		}
+
+		/**
+		 * Get all taxonomies.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function get_related_taxonomy() {
+
+			$post_types = self::get_post_types();
+
+			$return_array = array();
+
+			foreach ( $post_types as $key => $value ) {
+
+				$post_type = $value['value'];
+
+				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+				$data       = array();
+
+				foreach ( $taxonomies as $tax_slug => $tax ) {
+
+					if ( ! $tax->public || ! $tax->show_ui ) {
+						continue;
+					}
+
+					$data[] = $tax;
+
+					$return_array[ $post_type ] = $data;
+				}
+			}
+
+			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
+		}
 	}
 
 	/**

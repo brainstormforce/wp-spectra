@@ -788,10 +788,12 @@ class UAGBPostGrid extends Component {
 }
 
 export default withSelect( ( select, props ) => {
+	console.log(uagb_blocks_info.all_taxonomy)
 	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
 	{/*categories: categories*/}
 	const latestPostsQuery = pickBy( {
+		categories: categories,
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
@@ -799,8 +801,14 @@ export default withSelect( ( select, props ) => {
 	const categoriesListQuery = {
 		per_page: 100,
 	}
+	let tax = ''
+	if ( 'undefined' != uagb_blocks_info.all_taxonomy[postType] ) {
+		tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
+		console.log(getEntityRecords( "taxonomy", tax, categoriesListQuery ))
+	}
+	console.log(tax)
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
+		categoriesList: getEntityRecords( "taxonomy", tax, categoriesListQuery ),
 	}
 } )( UAGBPostGrid )

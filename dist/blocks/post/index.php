@@ -244,7 +244,8 @@ function uagb_register_blocks() {
 					'type' => 'string',
 				),
 				'postType'                => array(
-					'type' => 'string',
+					'type'    => 'string',
+					'default' => 'post',
 				),
 				'className'               => array(
 					'type' => 'string',
