@@ -798,7 +798,7 @@ export default withSelect( ( select, props ) => {
 	let tax = ''
 	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
 		tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
-		console.log(getEntityRecords( "taxonomy", tax, categoriesListQuery ))
+		console.log(getEntityRecords( "taxonomy", tax ))
 	}
 	const latestPostsQuery = pickBy( {
 		categories: categories,

@@ -12,6 +12,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	 */
 	final class UAGB_Helper {
 
+
+
 		/**
 		 * Member Variable
 		 *
@@ -277,6 +279,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/column':
                     $css .= UAGB_Block_Helper::get_column_css( $blockattr, $block_id );
                     break;
+
+                case 'uagb/cf7-styler':
+					$css .= UAGB_Block_Helper::get_cf7_styler_css( $blockattr, $block_id );
+					 UAGB_Block_Helper::blocks_cf7_styler_gfont( $blockattr );
+					break;
 
                 default:
                     // Nothing to do here.
