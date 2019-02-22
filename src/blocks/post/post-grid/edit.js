@@ -792,12 +792,6 @@ export default withSelect( ( select, props ) => {
 	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
 	{/*categories: categories*/}
-	const latestPostsQuery = pickBy( {
-		categories: categories,
-		order: order,
-		orderby: orderBy,
-		per_page: postsToShow,
-	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
 	}
@@ -806,7 +800,14 @@ export default withSelect( ( select, props ) => {
 		tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
 		console.log(getEntityRecords( "taxonomy", tax, categoriesListQuery ))
 	}
-	console.log(tax)
+	const latestPostsQuery = pickBy( {
+		categories: categories,
+		taxonomy : tax,
+		order: order,
+		orderby: orderBy,
+		per_page: postsToShow,
+	}, ( value ) => ! isUndefined( value ) )
+	console.log(latestPostsQuery)
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", tax, categoriesListQuery ),
