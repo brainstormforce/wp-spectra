@@ -19,6 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Init_Blocks {
 
+
+
+
+
 	/**
 	 * Member Variable
 	 *
@@ -108,7 +112,6 @@ class UAGB_Init_Blocks {
 		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', $value );
 
 		if ( $enable_font_awesome ) {
-
 			$font_awesome = apply_filters( 'uagb_font_awesome_url', 'https://use.fontawesome.com/releases/v5.6.0/css/all.css' );
 			// Font Awesome.
 			wp_enqueue_style(
@@ -145,6 +148,14 @@ class UAGB_Init_Blocks {
 
 		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
 			wp_enqueue_script( 'jquery' );
+		}
+
+		if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
+			wp_enqueue_script( 'contact-form-7' );
+		}
+
+		if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
+			wp_enqueue_script( ' wpcf7-admin' );
 		}
 	} // End function editor_assets().
 
@@ -185,9 +196,7 @@ class UAGB_Init_Blocks {
 		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 		if ( is_array( $saved_blocks ) ) {
-
 			foreach ( $saved_blocks as $slug => $data ) {
-
 				$_slug         = 'uagb/' . $slug;
 				$current_block = UAGB_Config::$block_attributes[ $_slug ];
 
@@ -218,12 +227,51 @@ class UAGB_Init_Blocks {
 				'blocks'            => UAGB_Config::get_block_attributes(),
 				'category'          => 'uagb',
 				'ajax_url'          => admin_url( 'admin-ajax.php' ),
+				'cf7_forms'         => $this->get_cf7_forms(),
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 			)
 		);
 	} // End function editor_assets().
+
+
+	/**
+	 * Function to integrate CF7 Forms.
+	 *
+	 * @since x.x.x
+	 */
+	public function get_cf7_forms() {
+
+		$field_options = array();
+
+		if ( class_exists( 'WPCF7_ContactForm' ) ) {
+			$args             = array(
+				'post_type'      => 'wpcf7_contact_form',
+				'posts_per_page' => -1,
+			);
+			$forms            = get_posts( $args );
+			$field_options[0] = array(
+				'value' => -1,
+				'label' => __( 'Select Form', 'ultimate-addons-for-gutenberg' ),
+			);
+			if ( $forms ) {
+				foreach ( $forms as $form ) {
+					$field_options[] = array(
+						'value' => $form->ID,
+						'label' => $form->post_title,
+					);
+				}
+			}
+		}
+
+		if ( empty( $field_options ) ) {
+			$field_options = array(
+				'-1' => __( 'You have not added any Contact Form 7 yet.', 'uael' ),
+			);
+		}
+		return $field_options;
+	}
 }
 
 /**

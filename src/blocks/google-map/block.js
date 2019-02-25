@@ -62,7 +62,7 @@ class UAGBGoogleMap extends Component {
 			<Fragment>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } >
-						<p className="uagb-google-map-notice">{ __( "This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it." ) }</p>
+						<p className="uagb-settings-notice">{ __( "This block uses Ultimate Addon for Gutenberg's API key to display the map. You don't need to create your own API key or worry about renewing it." ) }</p>
 						<p className="components-base-control__label">{__( "Address" )}</p>
 						<TextControl
 							value={ address }
