@@ -50,7 +50,6 @@ class UAGBCF7 extends Component {
 	 * Event to set Image as while adding.
 	 */
 	onSelectForm( id ) {
-
 		const { formId } = this.props.attributes
 		const { setAttributes, setState } = this.props
 
@@ -1006,10 +1005,9 @@ class UAGBCF7 extends Component {
 	}
 
 	componentDidMount() {
-
 		// Assigning block_id in the attribute.
+		this.props.setAttributes( { isHtml: false } )
 		this.props.setAttributes( { block_id: this.props.clientId } )
-
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-cf7-styler-" + this.props.clientId )
@@ -1020,7 +1018,6 @@ class UAGBCF7 extends Component {
 export default withSelect( ( select, props ) => {
 	const { setAttributes, setState } = props
 	const { formId, isHtml } = props.attributes
-
 	let json_data = ''
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
