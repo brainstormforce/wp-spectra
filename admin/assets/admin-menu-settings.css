@@ -285,3 +285,7 @@
 	-webkit-animation: rotation 1s infinite linear;
 	animation: rotation 1s infinite linear;
 }
+
+.uagb-reusable-block-link > span {
+	vertical-align: text-top;
+}
