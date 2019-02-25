@@ -16,8 +16,11 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
-
+console.log(wp)
 const { Component, Fragment } = wp.element
+import apiFetch from '@wordpress/api-fetch';
+import { addQueryArgs } from '@wordpress/url';
+//const { addQueryArgs } = wp.url;
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 4
 const {
@@ -46,6 +49,36 @@ const { withSelect } = wp.data
 
 class UAGBPostGrid extends Component {
 
+	constructor() {
+		super( ...arguments );
+		/*this.state = {
+			categoriesList: [],
+		};*/
+	}
+
+	/*componentWillMount() {
+		this.isStillMounted = true;
+		this.fetchRequest = apiFetch( {
+			path: `/wp-json/wp/v2/categories?per_page=-1`,
+		} ).then(
+			( categoriesList ) => {
+				if ( this.isStillMounted ) {
+					this.setState( { categoriesList } );
+				}
+			}
+		).catch(
+			() => {
+				if ( this.isStillMounted ) {
+					this.setState( { categoriesList: [] } );
+				}
+			}
+		);
+	}*/
+
+	/*componentWillUnmount() {
+		this.isStillMounted = false;
+	}*/
+
 	componentDidMount() {
 
 		this.props.setAttributes( { block_id: this.props.clientId } )
@@ -60,10 +93,12 @@ class UAGBPostGrid extends Component {
 		// Caching all Props.
 		const {
 			attributes,
-			categoriesList,
 			setAttributes,
-			latestPosts
+			latestPosts,
+			categoriesList
 		} = this.props
+
+		// const { categoriesList } = this.state;
 
 		// Caching all attributes.
 		const {
@@ -788,28 +823,49 @@ class UAGBPostGrid extends Component {
 }
 
 export default withSelect( ( select, props ) => {
+
 	console.log(uagb_blocks_info.all_taxonomy)
-	//console.log(props.attributes)
+
 	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
-	{/*categories: categories*/}
-	const categoriesListQuery = {
-		per_page: 100,
-	}
-	/*let tax = ''
-	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
-		tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
-		console.log(getEntityRecords( "taxonomy", tax ))
-	}*/
 	const latestPostsQuery = pickBy( {
 		categories: categories,
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
 	}, ( value ) => ! isUndefined( value ) )
-	//console.log(getEntityRecords( "postType", postType, latestPostsQuery ))
+	const categoriesListQuery = {
+		per_page: 100,
+	}
+	console.log(postType)
+	let tax = ''
+	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
+		tax = uagb_blocks_info.all_taxonomy[postType]['taxonomy'][0]['name']
+		console.log(getEntityRecords( "taxonomy", tax, categoriesListQuery ))
+	}
 	return {
-		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
+		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
+
+	// console.log(uagb_blocks_info.all_taxonomy)
+	//console.log(props.attributes)
+	// const { categories, postsToShow, order, orderBy } = props.attributes
+	// const { getEntityRecords } = select( "core" )
+	{/*categories: categories*/}
+	// let tax = ''
+	// if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
+	// 	tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
+	// 	console.log(getEntityRecords( "taxonomy", tax ))
+	// }
+	// const latestPostsQuery = pickBy( {
+	// 	categories: categories,
+	// 	order: order,
+	// 	orderby: orderBy,
+	// 	per_page: postsToShow,
+	// }, ( value ) => ! isUndefined( value ) )
+	//console.log(getEntityRecords( "postType", postType, latestPostsQuery ))
+	// return {
+	// 	latestPosts: getEntityRecords( "postType", "post", latestPostsQuery )
+	// }
 } )( UAGBPostGrid )
