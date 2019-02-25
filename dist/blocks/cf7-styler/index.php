@@ -86,11 +86,11 @@ function uagb_blocks_register_cf7_styler() {
 				),
 				'fieldVrPadding'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => 10,
 				),
 				'fieldHrPadding'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => 10,
 				),
 				'fieldBgColor'                  => array(
 					'type'    => 'string',

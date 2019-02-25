@@ -184,3 +184,12 @@
 	    pointer-events: none;
 	}
 }
+
+.block-editor-page #wpwrap .edit-post-visual-editor .button,
+.block-editor-page #wpwrap .edit-post-visual-editor button,
+.block-editor-page #wpwrap .edit-post-visual-editor input,
+.block-editor-page #wpwrap .edit-post-visual-editor select,
+.block-editor-page #wpwrap .edit-post-visual-editor textarea{
+	font-size: 100%;
+	color:inherit;
+}
