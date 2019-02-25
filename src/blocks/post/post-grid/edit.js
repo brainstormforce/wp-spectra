@@ -839,13 +839,14 @@ export default withSelect( ( select, props ) => {
 	}
 	console.log(postType)
 	let tax = ''
+	let tax_list = ''
 	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
 		tax = uagb_blocks_info.all_taxonomy[postType]['taxonomy'][0]['name']
-		console.log(getEntityRecords( "taxonomy", tax, categoriesListQuery ))
+		tax_list = uagb_blocks_info.all_taxonomy[postType]['terms'][tax]
 	}
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
+		categoriesList: tax_list,
 	}
 
 	// console.log(uagb_blocks_info.all_taxonomy)

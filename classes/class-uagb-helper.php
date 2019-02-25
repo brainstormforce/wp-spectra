@@ -837,7 +837,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'objects'
 			);
 
-			$options = [];
+			$options = array();
 
 			foreach ( $post_types as $post_type ) {
 				$options[] = array(
@@ -878,20 +878,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					$terms = get_terms( $tax_slug );
 
-					$related_tax = [];
+					$related_tax = array();
 
 					if ( ! empty( $terms ) ) {
 
 						foreach ( $terms as $t_index => $t_obj ) {
 
-							$related_tax[ $t_obj->slug ] = $t_obj->name;
+							$related_tax[] = array(
+								'name'  => $t_obj->slug,
+								'label' => $t_obj->name,
+							);
 						}
-					}
 
-					$return_array[ $post_type ]['terms'] = $related_tax;
+						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
+					}
 				}
 
-				//$return_array[ $post_type ]['taxonomy'][$tax_slug] = array( 'name' => $tax->name, 'label' => $tax->label );
+				// $return_array[ $post_type ]['taxonomy'][$tax_slug] = array( 'name' => $tax->name, 'label' => $tax->label );
 				$return_array[ $post_type ]['taxonomy'] = $data;
 			}
 
