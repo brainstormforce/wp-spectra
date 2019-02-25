@@ -296,14 +296,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'height' => $attr['topHeight'] . "px"
 				),
 				' .uagb-columns__shape-top .uagb-columns__shape-fill' => array(
-					'fill' => $attr['topColor']
+					'fill' => $attr['topColor'],
+					'opacity' => ( isset( $attr['topDividerOpacity'] ) && '' != $attr['topDividerOpacity'] ) ? ( ( $attr['topDividerOpacity'] ) / 100 ) : ""
 				),
 				' .uagb-columns__shape-bottom svg' => array(
 					'width' => "calc( " . $attr['bottomWidth'] . "% + 1.3px )",
 					'height' => $attr['bottomHeight'] . "px"
 				),
 				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
-					'fill' => $attr['bottomColor']
+					'fill' => $attr['bottomColor'],
+					'opacity' => ( isset( $attr['bottomDividerOpacity'] ) && '' != $attr['bottomDividerOpacity'] ) ? ( ( $attr['bottomDividerOpacity'] ) / 100 ) : ""
 				),
 			);
 

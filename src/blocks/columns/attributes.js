@@ -215,6 +215,14 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	topDividerOpacity : {
+		type: "number",
+		default: 100
+	},
+	bottomDividerOpacity : {
+		type: "number",
+		default: 100
+	},
 }
 
 export default attributes

@@ -58,6 +58,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					<div class="uagb-bulk-actions-wrap">
 						<a class="bulk-action uagb-activate-all button"> <?php esc_html_e( 'Activate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
 						<a class="bulk-action uagb-deactivate-all button"> <?php esc_html_e( 'Deactivate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
+						<a class="uagb-reusable-block-link button button-primary" href="<?php echo admin_url( 'edit.php?post_type=wp_block' ); ?>" rel="noopener"> <?php esc_html_e( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ); ?> <span class="dashicons-controls-repeat dashicons"></span></a>
 					</div>
 				</h2>
 					<div class="uagb-list-section">
@@ -137,7 +138,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						if ( ! file_exists( get_theme_root() . '/astra/functions.php' ) ) {
 							?>
 						<a class="button button-primary ast-sites-inactive uag-install-theme" href="#" data-slug="astra"><?php esc_html_e( 'Install Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
-						<?php } elseif ( 'Astra' !== $theme->name || 'Astra' !== $theme->parent_theme && file_exists( get_theme_root() . '/astra/functions.php' ) ) { ?> 
+						<?php } elseif ( 'Astra' !== $theme->name || 'Astra' !== $theme->parent_theme && file_exists( get_theme_root() . '/astra/functions.php' ) ) { ?>
 							<a class="button button-primary ast-sites-inactive uag-activate-theme" href="#" data-slug="astra" data-init="astra/astra.php"><?php esc_html_e( 'Activate Astra Now!', 'ultimate-addons-for-gutenberg' ); ?></a>
 						<?php } ?>
 						<div>
