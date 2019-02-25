@@ -22,6 +22,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 
 
+
+
 		/**
 		 * Block Attributes
 		 *
@@ -384,8 +386,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'align'                        => 'left',
 							'formId'                       => '0',
 							'fieldStyle'                   => 'box',
-							'fieldHrPadding'               => '',
-							'fieldVrPadding'               => '',
+							'fieldHrPadding'               => 10,
+							'fieldVrPadding'               => 10,
 							'fieldBgColor'                 => '#fafafa',
 							'fieldLabelColor'              => '#333',
 							'fieldInputColor'              => '#333',
