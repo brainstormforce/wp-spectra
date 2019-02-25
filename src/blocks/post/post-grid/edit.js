@@ -222,7 +222,7 @@ class UAGBPostGrid extends Component {
 		let loadCtaGoogleFonts
 
 		if( titleLoadGoogleFonts == true ) {
-					
+
 			const titleconfig = {
 				google: {
 					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
@@ -234,9 +234,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( metaLoadGoogleFonts == true ) {
-					
+
 			const metaconfig = {
 				google: {
 					families: [ metaFontFamily + ( metaFontWeight ? ":" + metaFontWeight : "" ) ],
@@ -248,9 +248,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( excerptLoadGoogleFonts == true ) {
-					
+
 			const excerptconfig = {
 				google: {
 					families: [ excerptFontFamily + ( excerptFontWeight ? ":" + excerptFontWeight : "" ) ],
@@ -262,9 +262,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( ctaLoadGoogleFonts == true ) {
-					
+
 			const ctaconfig = {
 				google: {
 					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
@@ -575,7 +575,7 @@ class UAGBPostGrid extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>		
+					/>
 					<TypographyControl
 						label={ __( "Title Tag" ) }
 						attributes = { attributes }
@@ -592,10 +592,10 @@ class UAGBPostGrid extends Component {
 						lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
 						lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
 						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
-					/>	
-					
+					/>
+
 					{ ( displayPostAuthor || displayPostDate || displayPostComment ) && <Fragment>
-						<hr className="uagb-editor__separator" />				
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
 							label={ __( "Meta Tag" ) }
@@ -618,7 +618,7 @@ class UAGBPostGrid extends Component {
 					}
 
 					{ displayPostExcerpt &&	<Fragment>
-						<hr className="uagb-editor__separator" />				
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Excerpt" ) }</h2>
 						<TypographyControl
 							label={ __( "Excerpt Tag" ) }
@@ -789,27 +789,27 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 	console.log(uagb_blocks_info.all_taxonomy)
+	//console.log(props.attributes)
 	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
 	{/*categories: categories*/}
 	const categoriesListQuery = {
 		per_page: 100,
 	}
-	let tax = ''
+	/*let tax = ''
 	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
 		tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
 		console.log(getEntityRecords( "taxonomy", tax ))
-	}
+	}*/
 	const latestPostsQuery = pickBy( {
 		categories: categories,
-		taxonomy : tax,
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
 	}, ( value ) => ! isUndefined( value ) )
-	console.log(latestPostsQuery)
+	//console.log(getEntityRecords( "postType", postType, latestPostsQuery ))
 	return {
-		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: getEntityRecords( "taxonomy", tax, categoriesListQuery ),
+		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
+		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
 	}
 } )( UAGBPostGrid )
