@@ -32,6 +32,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -3290,6 +3291,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'    => $attr['buttonHrPadding'] . 'px',
 					'padding-top'      => $attr['buttonVrPadding'] . 'px',
 					'padding-bottom'   => $attr['buttonVrPadding'] . 'px',
+				),
+				' .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover' => array(
+					'color'            => $attr['buttonTextHoverColor'],
+					'background-color' => $attr['buttonBgHoverColor'],
+					'border-color'     => $attr['buttonBorderHoverColor'],
 				),
 
 				// Check box Radio.

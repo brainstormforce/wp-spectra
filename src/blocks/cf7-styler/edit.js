@@ -34,6 +34,7 @@ const {
 	Placeholder,
 	Spinner,
 	ButtonGroup,
+	TabPanel
 } = wp.components
 
 // Extend component
@@ -90,11 +91,14 @@ class UAGBCF7 extends Component {
 			buttonVrPadding,
 			buttonHrPadding,
 			buttonTextColor,
-			buttonBgColor,
+			buttonBgColor,			
+			buttonTextHoverColor,
+			buttonBgHoverColor,
 			buttonBorderStyle,
 			buttonBorderWidth,
 			buttonBorderRadius,
 			buttonBorderColor,
+			buttonBorderHoverColor,
 			fieldSpacing,
 			fieldLabelSpacing,
 			labelFontSize,
@@ -526,19 +530,73 @@ class UAGBCF7 extends Component {
 						min={ 0 }
 						max={ 100 }
 						allowReset
-					/>
-					{ "none" != buttonBorderStyle && (
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Border Color" ) }
-							<span className="components-base-control__label">
-							<span className="component-color-indicator" style={{ backgroundColor: buttonBorderColor }} ></span></span></p>
-							<ColorPalette
-								value={ buttonBorderColor }
-								onChange={ ( colorValue ) => setAttributes( { buttonBorderColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					) }				
+					/>									
+			</Fragment>
+		)
+
+		const buttonNormalSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Text Color" ) }
+				<span className="components-base-control__label">
+				<span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
+				<ColorPalette
+					value={ buttonTextColor }
+					onChange={ ( colorValue ) => setAttributes( { buttonTextColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Color" ) }
+				<span className="components-base-control__label">
+				<span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ buttonBgColor }
+					onChange={ ( colorValue ) => setAttributes( { buttonBgColor: colorValue } ) }
+					allowReset
+				/>
+				{ "none" != buttonBorderStyle && (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Border Color" ) }
+						<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonBorderColor }} ></span></span></p>
+						<ColorPalette
+							value={ buttonBorderColor }
+							onChange={ ( colorValue ) => setAttributes( { buttonBorderColor: colorValue } ) }
+							allowReset
+						/>
+					</Fragment>
+				) }		
+			</Fragment>
+		)
+
+		const buttonHoverSettings = (
+			<Fragment>
+				<p className="uagb-setting-label">{ __( "Text Hover Color" ) }
+				<span className="components-base-control__label">
+				<span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
+				<ColorPalette
+					value={ buttonTextHoverColor }
+					onChange={ ( colorValue ) => setAttributes( { buttonTextHoverColor: colorValue } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }
+				<span className="components-base-control__label">
+				<span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
+				<ColorPalette
+					value={ buttonBgHoverColor }
+					onChange={ ( colorValue ) => setAttributes( { buttonBgHoverColor: colorValue } ) }
+					allowReset
+				/>
+				{ "none" != buttonBorderStyle && (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
+						<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonBorderHoverColor }} ></span></span></p>
+						<ColorPalette
+							value={ buttonBorderHoverColor }
+							onChange={ ( colorValue ) => setAttributes( { buttonBorderHoverColor: colorValue } ) }
+							allowReset
+						/>
+					</Fragment>
+				) }		
 			</Fragment>
 		)
 
@@ -573,25 +631,35 @@ class UAGBCF7 extends Component {
 					lineHeightMobile = { { value: buttonLineHeightMobile, label: __( "buttonLineHeightMobile" ) } }
 					lineHeightTablet= { { value: buttonLineHeightTablet, label: __( "buttonLineHeightTablet" ) } }
 				/>
-				<hr className="uagb-editor__separator" />
-				<p className="uagb-setting-label">{ __( "Text Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
-				<ColorPalette
-					value={ buttonTextColor }
-					onChange={ ( colorValue ) => setAttributes( { buttonTextColor: colorValue } ) }
-					allowReset
-				/>
-				<p className="uagb-setting-label">{ __( "Background Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
-				<ColorPalette
-					value={ buttonBgColor }
-					onChange={ ( colorValue ) => setAttributes( { buttonBgColor: colorValue } ) }
-					allowReset
-				/>
-				<hr className="uagb-editor__separator" />
+				<hr className="uagb-editor__separator" />								
 				{ btn_border_setting }
+				<hr className="uagb-editor__separator" />
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
+						{
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-focus-tab",
+						},
+					] }>
+					{
+						( tabName ) => {
+							let tabout
+							if( "normal" === tabName.name ) {
+								tabout = buttonNormalSettings
+							}else {
+								tabout = buttonHoverSettings
+							}
+							return <div>{ tabout }</div>
+						}
+					}
+				</TabPanel>
 				<hr className="uagb-editor__separator" />
 					<h2>{ __( "Button Padding (px)" ) }</h2>
 					<RangeControl
