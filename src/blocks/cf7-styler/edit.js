@@ -1074,6 +1074,12 @@ class UAGBCF7 extends Component {
 		document.head.appendChild( $style )
 	}
 
+	componentDidUpdate(){				
+		$(".wpcf7-submit").click( function(event) {
+			event.preventDefault();
+		})
+	}
+
 }
 
 export default withSelect( ( select, props ) => {
