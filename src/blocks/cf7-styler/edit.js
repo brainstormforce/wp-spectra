@@ -1073,13 +1073,11 @@ class UAGBCF7 extends Component {
 		$style.setAttribute( "id", "uagb-cf7-styler-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
-
 	componentDidUpdate(){				
 		$(".wpcf7-submit").click( function(event) {
 			event.preventDefault();
 		})
 	}
-
 }
 
 export default withSelect( ( select, props ) => {
