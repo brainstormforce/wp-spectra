@@ -13,7 +13,7 @@
  */
 function uagb_cf7_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
-    // @codingStandardsIgnoreEnd
+    // @codingStandardsIgnoreEnd    
 	if ( $id && 0 != $id && -1 != $id ) {
 		$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
 	} else {
@@ -568,6 +568,7 @@ function uagb_render_cf7( $attributes ) {
 	$class 		= isset( $attributes['className']) ? $attributes['className'] : '';
 	// @codingStandardsIgnoreend
 	ob_start();
+	if ($formId && 0 != $formId && -1 != $formId) {
 	?>
 		<div class = "<?php echo $class ?> wp-block-uagb-cf7-styler uagb-cf7-styler__outer-wrap" id = "<?php echo $block_id; ?>" >
 			<div class = "<?php echo $classname; ?>">
@@ -575,6 +576,6 @@ function uagb_render_cf7( $attributes ) {
 			</div>
 		</div>
 	<?php
-
+	}
 	return ob_get_clean();
 }
