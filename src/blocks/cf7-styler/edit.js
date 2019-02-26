@@ -1081,6 +1081,7 @@ class UAGBCF7 extends Component {
 		$style.setAttribute( "id", "uagb-cf7-styler-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
+
 }
 
 export default withSelect( ( select, props ) => {

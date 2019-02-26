@@ -159,8 +159,18 @@
             -webkit-flex-grow: 1;
             -moz-box-flex: 1;
             -ms-flex-positive: 1;
-            flex-grow: 1;
-            padding: 0 10px;
-        }          
+            flex-grow: 1;           
+        }      
+        .uagb-cf7_styler-col br {
+            display: none;
+        }
+        .uagb-cf7_styler-col > span.uagb-cf7_styler-col-1 {
+            padding-left: 0;
+            padding-right: 15px;
+        }  
+        .uagb-cf7_styler-col > span.uagb-cf7_styler-col-3 {
+            padding-left: 15px;
+            padding-right: 0;
+        }    
     }
 }
