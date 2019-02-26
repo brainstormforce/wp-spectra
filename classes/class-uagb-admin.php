@@ -96,16 +96,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function register_notices() {
 
-			if ( false === get_option( 'uagb-old-setup' ) ) {
+			if ( /*false === get_option( 'uagb-old-setup' )*/0 ) {
 
 				set_transient( 'uagb-first-rating', true, MONTH_IN_SECONDS );
 				update_option( 'uagb-old-setup', true );
 
-			} elseif ( false === get_transient( 'uagb-first-rating' ) ) {
+			} elseif ( /*false === get_transient( 'uagb-first-rating' )*/1 ) {
 
 				$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
 
-				UAGB_Admin_Notices::add_notice(
+				Astra_Notices::add_notice(
 					array(
 						'id'                         => 'uagb-admin-rating',
 						'type'                       => '',
@@ -118,15 +118,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 									</div>
 									%3$s<br />
 									<div class="uagb-review-notice-container">
-										<a href="%4$s" class="uagb-notice-close uagb-review-notice button-primary" target="_blank">
+										<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
 										%5$s
 										</a>
 									<span class="dashicons dashicons-calendar"></span>
-										<a href="#" data-repeat-notice-after="%6$s" class="uagb-notice-close uagb-review-notice">
+										<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
 										%7$s
 										</a>
 									<span class="dashicons dashicons-smiley"></span>
-										<a href="#" class="uagb-notice-close uagb-review-notice">
+										<a href="#" class="astra-notice-close uagb-review-notice">
 										%8$s
 										</a>
 									</div>
@@ -140,9 +140,9 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
 							__( 'I already did', 'ultimate-addons-for-gutenberg' )
 						),
-						'repeat-notice-after'        => MONTH_IN_SECONDS,
+						'repeat-notice-after'        => 0,
 						'priority'                   => 10,
-						'display-with-other-notices' => true,
+						'display-with-other-notices' => false,
 					)
 				);
 			}
@@ -150,7 +150,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
 				if ( isset( $editor_option ) && 'block' != $editor_option ) {
-					UAGB_Admin_Notices::add_notice(
+					Astra_Notices::add_notice(
 						array(
 							'id'                         => 'uagb-classic-editor',
 							'type'                       => 'warning',
@@ -247,7 +247,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		static public function notice_styles_scripts() {
 
-			wp_enqueue_script( 'uagb-admin-notices', UAGB_URL . 'admin/assets/uagb-admin-notices.js', array( 'jquery' ), UAGB_VER, true );
+			wp_enqueue_script( 'uagb-admin-notices', UAGB_URL . 'admin/assets/notices.js', array( 'jquery' ), UAGB_VER, true );
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
