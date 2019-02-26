@@ -24,10 +24,13 @@ function styling( props ) {
 		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
+		buttonTextHoverColor,
+		buttonBgHoverColor,
 		buttonBorderStyle,
 		buttonBorderWidth,
 		buttonBorderRadius,
 		buttonBorderColor,
+		buttonBorderHoverColor,
 		fieldSpacing,
 		fieldLabelSpacing,
 		labelFontSize,
@@ -170,12 +173,12 @@ function styling( props ) {
 			"line-height"      : inputLineHeight + inputLineHeightType,
 			"text-align": align,
 		},
-		' .wpcf7 input::placeholder': {  
-		    'color'     : fieldInputColor,   
+		" .wpcf7 input::placeholder": {  
+		    "color"     : fieldInputColor,   
 		    "text-align": align, 
 		},
-		' .wpcf7 textarea::placeholder': {  
-		    'color'     : fieldInputColor,  
+		" .wpcf7 textarea::placeholder": {  
+		    "color"     : fieldInputColor,  
 		    "text-align": align,  
 		},
 		" .wpcf7 textarea::placeholder": {
@@ -224,6 +227,12 @@ function styling( props ) {
 			"padding-right": buttonHrPadding+"px",
 			"padding-top": buttonVrPadding+"px",
 			"padding-bottom": buttonVrPadding+"px",
+		},
+
+		" .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover": {
+			"color": buttonTextHoverColor,
+			"background-color": buttonBgHoverColor,
+			"border-color": buttonBorderHoverColor,		
 		},
 
 		// Check box Radio.
