@@ -464,27 +464,19 @@ class UAGBCF7 extends Component {
 			</PanelBody>			
 		)
 
-		const generalControls = (
-			<InspectorControls>
-				<PanelBody title={ __( "General" ) }>
-					<SelectControl
-						label={ __( "Select Form" ) }
-						value={ formId }
-						onChange={ this.onSelectForm }
-						options={ uagb_blocks_info.cf7_forms }
-					/>
-				</PanelBody>			
-			</InspectorControls>
-		)
-
 		if ( formId == 0 ) {
 			return (
 				<Fragment>
-					{ generalControls }
+					
 					<Placeholder
 						icon="admin-post"
 						label={ __( "Select a Contact Form 7" ) }
 					>
+					<SelectControl				
+						value={ formId }
+						onChange={ this.onSelectForm }
+						options={ uagb_blocks_info.cf7_forms }
+					/>	
 					</Placeholder>
 				</Fragment>
 			)
