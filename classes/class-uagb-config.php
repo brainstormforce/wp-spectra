@@ -24,6 +24,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 
 
+
+
 		/**
 		 * Block Attributes
 		 *
@@ -401,10 +403,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonHrPadding'              => 25,
 							'buttonTextColor'              => '#333',
 							'buttonBgColor'                => 'transparent',
+							'buttonTextHoverColor'         => '',
+							'buttonBgHoverColor'           => '',
 							'buttonBorderStyle'            => 'solid',
 							'buttonBorderWidth'            => 1,
 							'buttonBorderRadius'           => 0,
 							'buttonBorderColor'            => '#333',
+							'buttonBorderHoverColor'       => '',
 							'fieldSpacing'                 => '',
 							'fieldLabelSpacing'            => '',
 							'labelFontSize'                => '',
@@ -443,7 +448,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonLineHeightTablet'       => '',
 							'buttonLineHeightMobile'       => '',
 							'buttonLoadGoogleFonts'        => false,
-							'enableOveride'                => false,
+							'enableOveride'                => true,
 							'radioCheckSize'               => '',
 							'radioCheckBgColor'            => '',
 							'radioCheckSelectColor'        => '',

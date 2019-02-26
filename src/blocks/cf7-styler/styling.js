@@ -24,10 +24,13 @@ function styling( props ) {
 		buttonHrPadding,
 		buttonTextColor,
 		buttonBgColor,
+		buttonTextHoverColor,
+		buttonBgHoverColor,
 		buttonBorderStyle,
 		buttonBorderWidth,
 		buttonBorderRadius,
 		buttonBorderColor,
+		buttonBorderHoverColor,
 		fieldSpacing,
 		fieldLabelSpacing,
 		labelFontSize,
@@ -224,6 +227,12 @@ function styling( props ) {
 			"padding-right": buttonHrPadding+"px",
 			"padding-top": buttonVrPadding+"px",
 			"padding-bottom": buttonVrPadding+"px",
+		},
+
+		" .wpcf7 input.wpcf7-form-control.wpcf7-submit:hover": {
+			"color": buttonTextHoverColor,
+			"background-color": buttonBgHoverColor,
+			"border-color": buttonBorderHoverColor,		
 		},
 
 		// Check box Radio.

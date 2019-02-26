@@ -136,14 +136,6 @@ function uagb_blocks_register_cf7_styler() {
 					'type'    => 'number',
 					'default' => 25,
 				),
-				'buttonTextColor'               => array(
-					'type'    => 'string',
-					'default' => '#333',
-				),
-				'buttonBgColor'                 => array(
-					'type'    => 'string',
-					'default' => 'transparent',
-				),
 				'buttonBorderStyle'             => array(
 					'type'    => 'string',
 					'default' => 'solid',
@@ -159,6 +151,26 @@ function uagb_blocks_register_cf7_styler() {
 				'buttonBorderColor'             => array(
 					'type'    => 'string',
 					'default' => '#333',
+				),
+				'buttonTextColor'               => array(
+					'type'    => 'string',
+					'default' => '#333',
+				),
+				'buttonBgColor'                 => array(
+					'type'    => 'string',
+					'default' => 'transparent',
+				),
+				'buttonBorderHoverColor'        => array(
+					'type'    => 'string',
+					'default' => '#333',
+				),
+				'buttonTextHoverColor'          => array(
+					'type'    => 'string',
+					'default' => '#333',
+				),
+				'buttonBgHoverColor'            => array(
+					'type'    => 'string',
+					'default' => 'transparent',
 				),
 				'fieldSpacing'                  => array(
 					'type'    => 'number',
@@ -293,7 +305,7 @@ function uagb_blocks_register_cf7_styler() {
 				),
 				'enableOveride'                 => array(
 					'type'    => 'boolean',
-					'default' => false,
+					'default' => true,
 				),
 				'radioCheckSize'                => array(
 					'type'    => 'number',
