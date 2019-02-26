@@ -18,8 +18,8 @@ import Blog from "./blog"
 import styling from ".././styling"
 console.log(wp)
 const { Component, Fragment } = wp.element
-import apiFetch from '@wordpress/api-fetch';
-import { addQueryArgs } from '@wordpress/url';
+import apiFetch from "@wordpress/api-fetch"
+import { addQueryArgs } from "@wordpress/url"
 //const { addQueryArgs } = wp.url;
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 4
@@ -50,7 +50,7 @@ const { withSelect } = wp.data
 class UAGBPostGrid extends Component {
 
 	constructor() {
-		super( ...arguments );
+		super( ...arguments )
 		/*this.state = {
 			categoriesList: [],
 		};*/
@@ -838,11 +838,11 @@ export default withSelect( ( select, props ) => {
 		per_page: 100,
 	}
 	console.log(postType)
-	let tax = ''
-	let tax_list = ''
-	if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
-		tax = uagb_blocks_info.all_taxonomy[postType]['taxonomy'][0]['name']
-		tax_list = uagb_blocks_info.all_taxonomy[postType]['terms'][tax]
+	let tax = ""
+	let tax_list = ""
+	if ( "undefined" != typeof uagb_blocks_info.all_taxonomy[postType] ) {
+		tax = uagb_blocks_info.all_taxonomy[postType]["taxonomy"][0]["name"]
+		tax_list = uagb_blocks_info.all_taxonomy[postType]["terms"][tax]
 	}
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
