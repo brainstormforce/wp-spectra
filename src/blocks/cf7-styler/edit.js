@@ -43,7 +43,7 @@ const { Component, Fragment } = wp.element
 class UAGBCF7 extends Component {
 
 	constructor() {
-		super( ...arguments );
+		super( ...arguments )
 		this.onSelectForm = this.onSelectForm.bind( this )
 	}
 
@@ -208,7 +208,7 @@ class UAGBCF7 extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		let html = ''
+		let html = ""
 
 		if ( formJson && formJson.data.html ) {
 			html = formJson.data.html
@@ -220,20 +220,20 @@ class UAGBCF7 extends Component {
 			{ key: "em", name: __( "em" ) },
 		]
 
-		let loadInputGoogleFonts;
-		let loadButtonGoogleFonts;
-		let loadLabelGoogleFonts;
-		let loadRadioGoogleFonts;
-		let loadValidationGoogleFonts;
-		let loadMsgGoogleFonts;
+		let loadInputGoogleFonts
+		let loadButtonGoogleFonts
+		let loadLabelGoogleFonts
+		let loadRadioGoogleFonts
+		let loadValidationGoogleFonts
+		let loadMsgGoogleFonts
 
 		if( labelLoadGoogleFonts == true ) {
 					
 			const labelconfig = {
 				google: {
-					families: [ labelFontFamily + ( labelFontWeight ? ':' + labelFontWeight : '' ) ],
+					families: [ labelFontFamily + ( labelFontWeight ? ":" + labelFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadLabelGoogleFonts = (
 				<WebfontLoader config={ labelconfig }>
@@ -245,9 +245,9 @@ class UAGBCF7 extends Component {
 					
 			const inputconfig = {
 				google: {
-					families: [ inputFontFamily + ( inputFontWeight ? ':' + inputFontWeight : '' ) ],
+					families: [ inputFontFamily + ( inputFontWeight ? ":" + inputFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadInputGoogleFonts = (
 				<WebfontLoader config={ inputconfig }>
@@ -259,9 +259,9 @@ class UAGBCF7 extends Component {
 					
 			const buttonconfig = {
 				google: {
-					families: [ buttonFontFamily + ( buttonFontWeight ? ':' + buttonFontWeight : '' ) ],
+					families: [ buttonFontFamily + ( buttonFontWeight ? ":" + buttonFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadButtonGoogleFonts = (
 				<WebfontLoader config={ buttonconfig }>
@@ -273,9 +273,9 @@ class UAGBCF7 extends Component {
 					
 			const radioCheckconfig = {
 				google: {
-					families: [ radioCheckFontFamily + ( radioCheckFontWeight ? ':' + radioCheckFontWeight : '' ) ],
+					families: [ radioCheckFontFamily + ( radioCheckFontWeight ? ":" + radioCheckFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadRadioGoogleFonts = (
 				<WebfontLoader config={ radioCheckconfig }>
@@ -287,9 +287,9 @@ class UAGBCF7 extends Component {
 					
 			const validationMsgconfig = {
 				google: {
-					families: [ validationMsgFontFamily + ( validationMsgFontWeight ? ':' + validationMsgFontWeight : '' ) ],
+					families: [ validationMsgFontFamily + ( validationMsgFontWeight ? ":" + validationMsgFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadValidationGoogleFonts = (
 				<WebfontLoader config={ validationMsgconfig }>
@@ -301,9 +301,9 @@ class UAGBCF7 extends Component {
 					
 			const msgconfig = {
 				google: {
-					families: [ msgFontFamily + ( msgFontWeight ? ':' + msgFontWeight : '' ) ],
+					families: [ msgFontFamily + ( msgFontWeight ? ":" + msgFontWeight : "" ) ],
 				},
-			};
+			}
 
 			loadMsgGoogleFonts = (
 				<WebfontLoader config={ msgconfig }>
@@ -313,16 +313,16 @@ class UAGBCF7 extends Component {
 		
 		const field_border_setting = (
 			<PanelBody title={ __( "Field Style & Border" ) } initialOpen = { false } > 	
-					<SelectControl
-						label={ __( "Field Style" ) }
-						value={ fieldStyle }
-						onChange={ ( value ) => setAttributes( { fieldStyle: value } ) }
-						options={ [
-							{ value: "box", label: __( "Box" ) },
-							{ value: "underline", label: __( "Underline" ) },							
-						] }
-					/>						
-					{ fieldStyle == "box" && 
+				<SelectControl
+					label={ __( "Field Style" ) }
+					value={ fieldStyle }
+					onChange={ ( value ) => setAttributes( { fieldStyle: value } ) }
+					options={ [
+						{ value: "box", label: __( "Box" ) },
+						{ value: "underline", label: __( "Underline" ) },							
+					] }
+				/>						
+				{ fieldStyle == "box" && 
 						<SelectControl
 							label={ __( "Border Style" ) }
 							value={ fieldBorderStyle }
@@ -339,130 +339,130 @@ class UAGBCF7 extends Component {
 								{ value: "ridge", label: __( "Ridge" ) },
 							] }
 						/>
-					} 
-					{ ( "none" != fieldBorderStyle || fieldStyle == "underline" )&& (
-						<RangeControl
-							label={ __( "Border Width (px)" ) }
-							value={ fieldBorderWidth }
-							onChange={ ( value ) => setAttributes( { fieldBorderWidth: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-					) }
-					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "px" } aria-pressed={ fieldBorderRadiusType === "px" } onClick={ () => setAttributes( { fieldBorderRadiusType: "px" } ) }>{ "px" }</Button>
-						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "%" } aria-pressed={ fieldBorderRadiusType === "%" } onClick={ () => setAttributes( { fieldBorderRadiusType: "%" } ) }>{ "%" }</Button>
-					</ButtonGroup>
+				} 
+				{ ( "none" != fieldBorderStyle || fieldStyle == "underline" )&& (
 					<RangeControl
-						label={ __( "Border Radius" ) }
-						value={ fieldBorderRadius }
-						onChange={ ( value ) => setAttributes( { fieldBorderRadius: value } ) }
+						label={ __( "Border Width (px)" ) }
+						value={ fieldBorderWidth }
+						onChange={ ( value ) => setAttributes( { fieldBorderWidth: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 50 }
 						allowReset
 					/>
-					{ ( "none" != fieldBorderStyle || fieldStyle == "underline" ) && (
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Border Color" ) }
+				) }
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "px" } aria-pressed={ fieldBorderRadiusType === "px" } onClick={ () => setAttributes( { fieldBorderRadiusType: "px" } ) }>{ "px" }</Button>
+					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ fieldBorderRadiusType === "%" } aria-pressed={ fieldBorderRadiusType === "%" } onClick={ () => setAttributes( { fieldBorderRadiusType: "%" } ) }>{ "%" }</Button>
+				</ButtonGroup>
+				<RangeControl
+					label={ __( "Border Radius" ) }
+					value={ fieldBorderRadius }
+					onChange={ ( value ) => setAttributes( { fieldBorderRadius: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>
+				{ ( "none" != fieldBorderStyle || fieldStyle == "underline" ) && (
+					<Fragment>
+						<p className="uagb-setting-label">{ __( "Border Color" ) }
 							<span className="components-base-control__label">
-							<span className="component-color-indicator" style={{ backgroundColor: fieldBorderColor }} ></span></span></p>
-							<ColorPalette
-								value={ fieldBorderColor }
-								onChange={ ( colorValue ) => setAttributes( { fieldBorderColor: colorValue } ) }
-								allowReset
-							/>						
+								<span className="component-color-indicator" style={{ backgroundColor: fieldBorderColor }} ></span></span></p>
+						<ColorPalette
+							value={ fieldBorderColor }
+							onChange={ ( colorValue ) => setAttributes( { fieldBorderColor: colorValue } ) }
+							allowReset
+						/>						
 							
-						</Fragment>
-					) }
-					<p className="uagb-setting-label">{ __( "Active Border Color" ) }
+					</Fragment>
+				) }
+				<p className="uagb-setting-label">{ __( "Active Border Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: fieldBorderFocusColor }} ></span></span></p>
-					<ColorPalette
-						value={ fieldBorderFocusColor }
-						onChange={ ( colorValue ) => setAttributes( { fieldBorderFocusColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: fieldBorderFocusColor }} ></span></span></p>
+				<ColorPalette
+					value={ fieldBorderFocusColor }
+					onChange={ ( colorValue ) => setAttributes( { fieldBorderFocusColor: colorValue } ) }
+					allowReset
+				/>
 			</PanelBody>
 		)
 
 		const typography_settings = (			
-				<PanelBody title={ __( "Content" ) } initialOpen = { false } > 
-					<h2>{ __( "Label" ) }</h2>			
-					<TypographyControl
-						label={ __( "Label Font Tag" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
-						fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
-						fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
-						fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
-						fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
-						fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
-						fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
-						fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
-						lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
-						lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
-						lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
-						lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
-					/>
-					<p className="uagb-setting-label">{ __( "Color" ) }
+			<PanelBody title={ __( "Content" ) } initialOpen = { false } > 
+				<h2>{ __( "Label" ) }</h2>			
+				<TypographyControl
+					label={ __( "Label Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
+					fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
+					fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
+					fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
+					fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
+					fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
+					fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
+					fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
+					lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
+					lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
+					lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
+					lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
+				/>
+				<p className="uagb-setting-label">{ __( "Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
-					<ColorPalette
-						value={ fieldLabelColor }
-						onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Input" ) }</h2>
-					<TypographyControl
-						label={ __( "Input Font Tag" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: inputLoadGoogleFonts, label: __( "inputLoadGoogleFonts" ) } }
-						fontFamily = { { value: inputFontFamily, label: __( "inputFontFamily" ) } }
-						fontWeight = { { value: inputFontWeight, label: __( "inputFontWeight" ) } }
-						fontSubset = { { value: inputFontSubset, label: __( "inputFontSubset" ) } }
-						fontSizeType = { { value: inputFontSizeType, label: __( "inputFontSizeType" ) } }
-						fontSize = { { value: inputFontSize, label: __( "inputFontSize" ) } }
-						fontSizeMobile = { { value: inputFontSizeMobile, label: __( "inputFontSizeMobile" ) } }
-						fontSizeTablet= { { value: inputFontSizeTablet, label: __( "inputFontSizeTablet" ) } }
-						lineHeightType = { { value: inputLineHeightType, label: __( "inputLineHeightType" ) } }
-						lineHeight = { { value: inputLineHeight, label: __( "inputLineHeight" ) } }
-						lineHeightMobile = { { value: inputLineHeightMobile, label: __( "inputLineHeightMobile" ) } }
-						lineHeightTablet= { { value: inputLineHeightTablet, label: __( "inputLineHeightTablet" ) } }
-					/>	
-					<p className="uagb-setting-label">{ __( "Color" ) }
+						<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
+				<ColorPalette
+					value={ fieldLabelColor }
+					onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
+					allowReset
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Input" ) }</h2>
+				<TypographyControl
+					label={ __( "Input Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: inputLoadGoogleFonts, label: __( "inputLoadGoogleFonts" ) } }
+					fontFamily = { { value: inputFontFamily, label: __( "inputFontFamily" ) } }
+					fontWeight = { { value: inputFontWeight, label: __( "inputFontWeight" ) } }
+					fontSubset = { { value: inputFontSubset, label: __( "inputFontSubset" ) } }
+					fontSizeType = { { value: inputFontSizeType, label: __( "inputFontSizeType" ) } }
+					fontSize = { { value: inputFontSize, label: __( "inputFontSize" ) } }
+					fontSizeMobile = { { value: inputFontSizeMobile, label: __( "inputFontSizeMobile" ) } }
+					fontSizeTablet= { { value: inputFontSizeTablet, label: __( "inputFontSizeTablet" ) } }
+					lineHeightType = { { value: inputLineHeightType, label: __( "inputLineHeightType" ) } }
+					lineHeight = { { value: inputLineHeight, label: __( "inputLineHeight" ) } }
+					lineHeightMobile = { { value: inputLineHeightMobile, label: __( "inputLineHeightMobile" ) } }
+					lineHeightTablet= { { value: inputLineHeightTablet, label: __( "inputLineHeightTablet" ) } }
+				/>	
+				<p className="uagb-setting-label">{ __( "Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: fieldInputColor }} ></span></span></p>
-					<ColorPalette
-						value={ fieldInputColor }
-						onChange={ ( colorValue ) => setAttributes( { fieldInputColor: colorValue } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Field Background Color" ) }
+						<span className="component-color-indicator" style={{ backgroundColor: fieldInputColor }} ></span></span></p>
+				<ColorPalette
+					value={ fieldInputColor }
+					onChange={ ( colorValue ) => setAttributes( { fieldInputColor: colorValue } ) }
+					allowReset
+				/>
+				<hr className="uagb-editor__separator" />
+				<p className="uagb-setting-label">{ __( "Field Background Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: fieldBgColor }} ></span></span></p>
-					<ColorPalette
-						value={ fieldBgColor }
-						onChange={ ( colorValue ) => setAttributes( { fieldBgColor: colorValue } ) }
-						allowReset
-					/>								
-				</PanelBody>
-			)	
+						<span className="component-color-indicator" style={{ backgroundColor: fieldBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ fieldBgColor }
+					onChange={ ( colorValue ) => setAttributes( { fieldBgColor: colorValue } ) }
+					allowReset
+				/>								
+			</PanelBody>
+		)	
 
 		const field_settings = (			
-				<PanelBody title={ __( "General" ) } >
-					<SelectControl
-						label={ __( "Select Form" ) }
-						value={ formId }
-						onChange={ this.onSelectForm }
-						options={ uagb_blocks_info.cf7_forms }
-					/>													
-				</PanelBody>			
-			)
+			<PanelBody title={ __( "General" ) } >
+				<SelectControl
+					label={ __( "Select Form" ) }
+					value={ formId }
+					onChange={ this.onSelectForm }
+					options={ uagb_blocks_info.cf7_forms }
+				/>													
+			</PanelBody>			
+		)
 
 		const generalControls = (
 			<InspectorControls>
@@ -493,60 +493,60 @@ class UAGBCF7 extends Component {
 		//Submit button settings.
 		const btn_border_setting = (
 			<Fragment>				
-					<SelectControl
-						label={ __( "Border Style" ) }
-						value={ buttonBorderStyle }
-						onChange={ ( value ) => setAttributes( { buttonBorderStyle: value } ) }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
-							{ value: "groove", label: __( "Groove" ) },
-							{ value: "inset", label: __( "Inset" ) },
-							{ value: "outset", label: __( "Outset" ) },
-							{ value: "ridge", label: __( "Ridge" ) },
-						] }
-					/>
-					{ "none" != buttonBorderStyle && (
-						<RangeControl
-							label={ __( "Border Width (px)" ) }
-							value={ buttonBorderWidth }
-							onChange={ ( value ) => setAttributes( { buttonBorderWidth: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
-					) }
-					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "px" } aria-pressed={ buttonBorderRadiusType === "px" } onClick={ () => setAttributes( { buttonBorderRadiusType: "px" } ) }>{ "px" }</Button>
-						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "%" } aria-pressed={ buttonBorderRadiusType === "%" } onClick={ () => setAttributes( { buttonBorderRadiusType: "%" } ) }>{ "%" }</Button>
-					</ButtonGroup>
+				<SelectControl
+					label={ __( "Border Style" ) }
+					value={ buttonBorderStyle }
+					onChange={ ( value ) => setAttributes( { buttonBorderStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "groove", label: __( "Groove" ) },
+						{ value: "inset", label: __( "Inset" ) },
+						{ value: "outset", label: __( "Outset" ) },
+						{ value: "ridge", label: __( "Ridge" ) },
+					] }
+				/>
+				{ "none" != buttonBorderStyle && (
 					<RangeControl
-						label={ __( "Border Radius" ) }
-						value={ buttonBorderRadius }
-						onChange={ ( value ) => setAttributes( { buttonBorderRadius: value } ) }
+						label={ __( "Border Width (px)" ) }
+						value={ buttonBorderWidth }
+						onChange={ ( value ) => setAttributes( { buttonBorderWidth: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 50 }
 						allowReset
-					/>									
+					/>
+				) }
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "px" } aria-pressed={ buttonBorderRadiusType === "px" } onClick={ () => setAttributes( { buttonBorderRadiusType: "px" } ) }>{ "px" }</Button>
+					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonBorderRadiusType === "%" } aria-pressed={ buttonBorderRadiusType === "%" } onClick={ () => setAttributes( { buttonBorderRadiusType: "%" } ) }>{ "%" }</Button>
+				</ButtonGroup>
+				<RangeControl
+					label={ __( "Border Radius" ) }
+					value={ buttonBorderRadius }
+					onChange={ ( value ) => setAttributes( { buttonBorderRadius: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>									
 			</Fragment>
 		)
 
 		const buttonNormalSettings = (
 			<Fragment>
 				<p className="uagb-setting-label">{ __( "Text Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
+					<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
 				<ColorPalette
 					value={ buttonTextColor }
 					onChange={ ( colorValue ) => setAttributes( { buttonTextColor: colorValue } ) }
 					allowReset
 				/>
 				<p className="uagb-setting-label">{ __( "Background Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
+					<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
 				<ColorPalette
 					value={ buttonBgColor }
 					onChange={ ( colorValue ) => setAttributes( { buttonBgColor: colorValue } ) }
@@ -555,8 +555,8 @@ class UAGBCF7 extends Component {
 				{ "none" != buttonBorderStyle && (
 					<Fragment>
 						<p className="uagb-setting-label">{ __( "Border Color" ) }
-						<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: buttonBorderColor }} ></span></span></p>
+							<span className="components-base-control__label">
+								<span className="component-color-indicator" style={{ backgroundColor: buttonBorderColor }} ></span></span></p>
 						<ColorPalette
 							value={ buttonBorderColor }
 							onChange={ ( colorValue ) => setAttributes( { buttonBorderColor: colorValue } ) }
@@ -570,16 +570,16 @@ class UAGBCF7 extends Component {
 		const buttonHoverSettings = (
 			<Fragment>
 				<p className="uagb-setting-label">{ __( "Text Hover Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
+					<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
 				<ColorPalette
 					value={ buttonTextHoverColor }
 					onChange={ ( colorValue ) => setAttributes( { buttonTextHoverColor: colorValue } ) }
 					allowReset
 				/>
 				<p className="uagb-setting-label">{ __( "Background Hover Color" ) }
-				<span className="components-base-control__label">
-				<span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
+					<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
 				<ColorPalette
 					value={ buttonBgHoverColor }
 					onChange={ ( colorValue ) => setAttributes( { buttonBgHoverColor: colorValue } ) }
@@ -588,8 +588,8 @@ class UAGBCF7 extends Component {
 				{ "none" != buttonBorderStyle && (
 					<Fragment>
 						<p className="uagb-setting-label">{ __( "Border Hover Color" ) }
-						<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: buttonBorderHoverColor }} ></span></span></p>
+							<span className="components-base-control__label">
+								<span className="component-color-indicator" style={{ backgroundColor: buttonBorderHoverColor }} ></span></span></p>
 						<ColorPalette
 							value={ buttonBorderHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { buttonBorderHoverColor: colorValue } ) }
@@ -661,25 +661,25 @@ class UAGBCF7 extends Component {
 					}
 				</TabPanel>
 				<hr className="uagb-editor__separator" />
-					<h2>{ __( "Button Padding (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.vertical_spacing }
-						className={ "uagb-margin-control" }
-						value={ buttonVrPadding }
-						onChange={ ( value ) => setAttributes( { buttonVrPadding: value } ) }
-						min={ 0 }
-						max={ 200 }
-						initialPosition={10}
-					/>					
-					<RangeControl
-						label={ UAGB_Block_Icons.horizontal_spacing }
-						className={ "uagb-margin-control" }
-						value={ buttonHrPadding }
-						onChange={ ( value ) => setAttributes( { buttonHrPadding: value } ) }
-						min={ 0 }
-						max={ 200 }
-						initialPosition={10}
-					/>		
+				<h2>{ __( "Button Padding (px)" ) }</h2>
+				<RangeControl
+					label={ UAGB_Block_Icons.vertical_spacing }
+					className={ "uagb-margin-control" }
+					value={ buttonVrPadding }
+					onChange={ ( value ) => setAttributes( { buttonVrPadding: value } ) }
+					min={ 0 }
+					max={ 200 }
+					initialPosition={10}
+				/>					
+				<RangeControl
+					label={ UAGB_Block_Icons.horizontal_spacing }
+					className={ "uagb-margin-control" }
+					value={ buttonHrPadding }
+					onChange={ ( value ) => setAttributes( { buttonHrPadding: value } ) }
+					min={ 0 }
+					max={ 200 }
+					initialPosition={10}
+				/>		
 			</PanelBody>
 		)
 
@@ -763,31 +763,31 @@ class UAGBCF7 extends Component {
 					/>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Label Color" ) }
-					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: radioCheckLableColor }} ></span></span></p>
+						<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: radioCheckLableColor }} ></span></span></p>
 					<ColorPalette
 						value={ radioCheckLableColor }
 						onChange={ ( colorValue ) => setAttributes( { radioCheckLableColor: colorValue } ) }
 						allowReset
 					/>
 					<p className="uagb-setting-label">{ __( "Background Color" ) }
-					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: radioCheckBgColor }} ></span></span></p>
+						<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: radioCheckBgColor }} ></span></span></p>
 					<ColorPalette
 						value={ radioCheckBgColor }
 						onChange={ ( colorValue ) => setAttributes( { radioCheckBgColor: colorValue } ) }
 						allowReset
 					/>
 					<p className="uagb-setting-label">{ __( "Selected Color" ) }
-					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: radioCheckSelectColor }} ></span></span></p>
+						<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: radioCheckSelectColor }} ></span></span></p>
 					<ColorPalette
 						value={ radioCheckSelectColor }
 						onChange={ ( colorValue ) => setAttributes( { radioCheckSelectColor: colorValue } ) }
 						allowReset
 					/>	
 					
-					{ fieldBorderStyle !=='none' && <Fragment>
+					{ fieldBorderStyle !=="none" && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Radio & Checkbox Border" ) }</h2>
 						<RangeControl
@@ -811,8 +811,8 @@ class UAGBCF7 extends Component {
 							allowReset
 						/>
 						<p className="uagb-setting-label">{ __( "Border Color" ) }
-						<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: radioCheckBorderColor }} ></span></span></p>
+							<span className="components-base-control__label">
+								<span className="component-color-indicator" style={{ backgroundColor: radioCheckBorderColor }} ></span></span></p>
 						<ColorPalette
 							value={ radioCheckBorderColor }
 							onChange={ ( colorValue ) => setAttributes( { radioCheckBorderColor: colorValue } ) }
@@ -821,202 +821,202 @@ class UAGBCF7 extends Component {
 					</Fragment>
 					}		
 								
-					</Fragment>
+				</Fragment>
 				}
 			</PanelBody>
 		)
 
 		const msg_settings = (			
-				<PanelBody title={ __( "Success / Error Message" ) } initialOpen={ false }>
-					<p className="uagb-settings-notice">{ __( "Note: This styling can be only seen at frontend" ) }</p>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Field Validation" ) }</h2>					
+			<PanelBody title={ __( "Success / Error Message" ) } initialOpen={ false }>
+				<p className="uagb-settings-notice">{ __( "Note: This styling can be only seen at frontend" ) }</p>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Field Validation" ) }</h2>					
 
-					<SelectControl
-						label={ __( "Validation Message Position" ) }
-						value={ validationMsgPosition }
-						onChange={ ( value ) => setAttributes( { validationMsgPosition: value } ) }
-						options={ [
-							{ value: "default", label: __( "Default" ) },
-							{ value: "bottom_right", label: __( "Bottom Right Side of Field" ) },								
-						] }
-					/>
-					<h2>{ __( "Validation Font" ) }</h2>
-					<TypographyControl
-						label={ __( "Validation Font Tag" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: __( "validationMsgLoadGoogleFonts" ) } }
-						fontFamily = { { value: validationMsgFontFamily, label: __( "validationMsgFontFamily" ) } }
-						fontWeight = { { value: validationMsgFontWeight, label: __( "validationMsgFontWeight" ) } }
-						fontSubset = { { value: validationMsgFontSubset, label: __( "validationMsgFontSubset" ) } }
-						fontSizeType = { { value: validationMsgFontSizeType, label: __( "validationMsgFontSizeType" ) } }
-						fontSize = { { value: validationMsgFontSize, label: __( "validationMsgFontSize" ) } }
-						fontSizeMobile = { { value: validationMsgFontSizeMobile, label: __( "validationMsgFontSizeMobile" ) } }
-						fontSizeTablet= { { value: validationMsgFontSizeTablet, label: __( "validationMsgFontSizeTablet" ) } }
-						lineHeightType = { { value: validationMsgLineHeightType, label: __( "validationMsgLineHeightType" ) } }
-						lineHeight = { { value: validationMsgLineHeight, label: __( "validationMsgLineHeight" ) } }
-						lineHeightMobile = { { value: validationMsgLineHeightMobile, label: __( "validationMsgLineHeightMobile" ) } }
-						lineHeightTablet= { { value: validationMsgLineHeightTablet, label: __( "validationMsgLineHeightTablet" ) } }
-					/>
-					<p className="uagb-setting-label">{ __( "Validation Message Color" ) }
+				<SelectControl
+					label={ __( "Validation Message Position" ) }
+					value={ validationMsgPosition }
+					onChange={ ( value ) => setAttributes( { validationMsgPosition: value } ) }
+					options={ [
+						{ value: "default", label: __( "Default" ) },
+						{ value: "bottom_right", label: __( "Bottom Right Side of Field" ) },								
+					] }
+				/>
+				<h2>{ __( "Validation Font" ) }</h2>
+				<TypographyControl
+					label={ __( "Validation Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: __( "validationMsgLoadGoogleFonts" ) } }
+					fontFamily = { { value: validationMsgFontFamily, label: __( "validationMsgFontFamily" ) } }
+					fontWeight = { { value: validationMsgFontWeight, label: __( "validationMsgFontWeight" ) } }
+					fontSubset = { { value: validationMsgFontSubset, label: __( "validationMsgFontSubset" ) } }
+					fontSizeType = { { value: validationMsgFontSizeType, label: __( "validationMsgFontSizeType" ) } }
+					fontSize = { { value: validationMsgFontSize, label: __( "validationMsgFontSize" ) } }
+					fontSizeMobile = { { value: validationMsgFontSizeMobile, label: __( "validationMsgFontSizeMobile" ) } }
+					fontSizeTablet= { { value: validationMsgFontSizeTablet, label: __( "validationMsgFontSizeTablet" ) } }
+					lineHeightType = { { value: validationMsgLineHeightType, label: __( "validationMsgLineHeightType" ) } }
+					lineHeight = { { value: validationMsgLineHeight, label: __( "validationMsgLineHeight" ) } }
+					lineHeightMobile = { { value: validationMsgLineHeightMobile, label: __( "validationMsgLineHeightMobile" ) } }
+					lineHeightTablet= { { value: validationMsgLineHeightTablet, label: __( "validationMsgLineHeightTablet" ) } }
+				/>
+				<p className="uagb-setting-label">{ __( "Validation Message Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: validationMsgColor }} ></span></span></p>
+						<span className="component-color-indicator" style={{ backgroundColor: validationMsgColor }} ></span></span></p>
+				<ColorPalette
+					value={ validationMsgColor }
+					onChange={ ( colorValue ) => setAttributes( { validationMsgColor: colorValue } ) }
+					allowReset
+				/>
+
+				{ validationMsgPosition ==="bottom_right" && <Fragment>
+					<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+						<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: validationMsgBgColor }} ></span></span></p>
 					<ColorPalette
-						value={ validationMsgColor }
-						onChange={ ( colorValue ) => setAttributes( { validationMsgColor: colorValue } ) }
+						value={ validationMsgBgColor }
+						onChange={ ( colorValue ) => setAttributes( { validationMsgBgColor: colorValue } ) }
 						allowReset
-					/>
+					/>						
+				</Fragment>
+				}
+				<hr className="uagb-editor__separator" />
+				<ToggleControl
+					label={ __( "Highlight Borders" ) }
+					checked={ enableHighlightBorder }
+					onChange={ ( value ) => setAttributes( { enableHighlightBorder: ! enableHighlightBorder } ) }
+				/>
 
-					{ validationMsgPosition ==='bottom_right' && <Fragment>
-						<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+				{ enableHighlightBorder && <Fragment>
+					<p className="uagb-setting-label">{ __( "Highlight Border Color" ) }
 						<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: validationMsgBgColor }} ></span></span></p>
-						<ColorPalette
-							value={ validationMsgBgColor }
-							onChange={ ( colorValue ) => setAttributes( { validationMsgBgColor: colorValue } ) }
-							allowReset
-						/>						
-						</Fragment>
-					}
-					<hr className="uagb-editor__separator" />
-					<ToggleControl
-						label={ __( "Highlight Borders" ) }
-						checked={ enableHighlightBorder }
-						onChange={ ( value ) => setAttributes( { enableHighlightBorder: ! enableHighlightBorder } ) }
-					/>
-
-					{ enableHighlightBorder && <Fragment>
-						<p className="uagb-setting-label">{ __( "Highlight Border Color" ) }
-						<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: highlightBorderColor }} ></span></span></p>
-						<ColorPalette
-							value={ highlightBorderColor }
-							onChange={ ( colorValue ) => setAttributes( { highlightBorderColor: colorValue } ) }
-							allowReset
-						/>						
-						</Fragment>
-					}					
+							<span className="component-color-indicator" style={{ backgroundColor: highlightBorderColor }} ></span></span></p>
+					<ColorPalette
+						value={ highlightBorderColor }
+						onChange={ ( colorValue ) => setAttributes( { highlightBorderColor: colorValue } ) }
+						allowReset
+					/>						
+				</Fragment>
+				}					
 					
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Form Success / Error Validation" ) }</h2>
-						<TypographyControl
-							label={ __( "Message Font Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: msgLoadGoogleFonts, label: __( "msgLoadGoogleFonts" ) } }
-							fontFamily = { { value: msgFontFamily, label: __( "msgFontFamily" ) } }
-							fontWeight = { { value: msgFontWeight, label: __( "msgFontWeight" ) } }
-							fontSubset = { { value: msgFontSubset, label: __( "msgFontSubset" ) } }
-							fontSizeType = { { value: msgFontSizeType, label: __( "msgFontSizeType" ) } }
-							fontSize = { { value: msgFontSize, label: __( "msgFontSize" ) } }
-							fontSizeMobile = { { value: msgFontSizeMobile, label: __( "msgFontSizeMobile" ) } }
-							fontSizeTablet= { { value: msgFontSizeTablet, label: __( "msgFontSizeTablet" ) } }
-							lineHeightType = { { value: msgLineHeightType, label: __( "msgLineHeightType" ) } }
-							lineHeight = { { value: msgLineHeight, label: __( "msgLineHeight" ) } }
-							lineHeightMobile = { { value: msgLineHeightMobile, label: __( "msgLineHeightMobile" ) } }
-							lineHeightTablet= { { value: msgLineHeightTablet, label: __( "msgLineHeightTablet" ) } }
-						/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Success Message" ) }</h2>
-					<p className="uagb-setting-label">{ __( "Message Color" ) }
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Form Success / Error Validation" ) }</h2>
+				<TypographyControl
+					label={ __( "Message Font Tag" ) }
+					attributes = { attributes }
+					setAttributes = { setAttributes }
+					loadGoogleFonts = { { value: msgLoadGoogleFonts, label: __( "msgLoadGoogleFonts" ) } }
+					fontFamily = { { value: msgFontFamily, label: __( "msgFontFamily" ) } }
+					fontWeight = { { value: msgFontWeight, label: __( "msgFontWeight" ) } }
+					fontSubset = { { value: msgFontSubset, label: __( "msgFontSubset" ) } }
+					fontSizeType = { { value: msgFontSizeType, label: __( "msgFontSizeType" ) } }
+					fontSize = { { value: msgFontSize, label: __( "msgFontSize" ) } }
+					fontSizeMobile = { { value: msgFontSizeMobile, label: __( "msgFontSizeMobile" ) } }
+					fontSizeTablet= { { value: msgFontSizeTablet, label: __( "msgFontSizeTablet" ) } }
+					lineHeightType = { { value: msgLineHeightType, label: __( "msgLineHeightType" ) } }
+					lineHeight = { { value: msgLineHeight, label: __( "msgLineHeight" ) } }
+					lineHeightMobile = { { value: msgLineHeightMobile, label: __( "msgLineHeightMobile" ) } }
+					lineHeightTablet= { { value: msgLineHeightTablet, label: __( "msgLineHeightTablet" ) } }
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Success Message" ) }</h2>
+				<p className="uagb-setting-label">{ __( "Message Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: successMsgColor }} ></span></span></p>
-					<ColorPalette
-						value={ successMsgColor }
-						onChange={ ( colorValue ) => setAttributes( { successMsgColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: successMsgColor }} ></span></span></p>
+				<ColorPalette
+					value={ successMsgColor }
+					onChange={ ( colorValue ) => setAttributes( { successMsgColor: colorValue } ) }
+					allowReset
+				/>
 
-					<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Background Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: successMsgBgColor }} ></span></span></p>
-					<ColorPalette
-						value={ successMsgBgColor }
-						onChange={ ( colorValue ) => setAttributes( { successMsgBgColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: successMsgBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ successMsgBgColor }
+					onChange={ ( colorValue ) => setAttributes( { successMsgBgColor: colorValue } ) }
+					allowReset
+				/>
 
-					<p className="uagb-setting-label">{ __( "Message Border Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Border Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: successMsgBorderColor }} ></span></span></p>
-					<ColorPalette
-						value={ successMsgBorderColor }
-						onChange={ ( colorValue ) => setAttributes( { successMsgBorderColor: colorValue } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Error Message" ) }</h2>
-					<p className="uagb-setting-label">{ __( "Message Color" ) }
+						<span className="component-color-indicator" style={{ backgroundColor: successMsgBorderColor }} ></span></span></p>
+				<ColorPalette
+					value={ successMsgBorderColor }
+					onChange={ ( colorValue ) => setAttributes( { successMsgBorderColor: colorValue } ) }
+					allowReset
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Error Message" ) }</h2>
+				<p className="uagb-setting-label">{ __( "Message Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: errorMsgColor }} ></span></span></p>
-					<ColorPalette
-						value={ errorMsgColor }
-						onChange={ ( colorValue ) => setAttributes( { errorMsgColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: errorMsgColor }} ></span></span></p>
+				<ColorPalette
+					value={ errorMsgColor }
+					onChange={ ( colorValue ) => setAttributes( { errorMsgColor: colorValue } ) }
+					allowReset
+				/>
 
-					<p className="uagb-setting-label">{ __( "Message Background Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Background Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: errorMsgBgColor }} ></span></span></p>
-					<ColorPalette
-						value={ errorMsgBgColor }
-						onChange={ ( colorValue ) => setAttributes( { errorMsgBgColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: errorMsgBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ errorMsgBgColor }
+					onChange={ ( colorValue ) => setAttributes( { errorMsgBgColor: colorValue } ) }
+					allowReset
+				/>
 
-					<p className="uagb-setting-label">{ __( "Message Border Color" ) }
+				<p className="uagb-setting-label">{ __( "Message Border Color" ) }
 					<span className="components-base-control__label">
-					<span className="component-color-indicator" style={{ backgroundColor: errorMsgBorderColor }} ></span></span></p>
-					<ColorPalette
-						value={ errorMsgBorderColor }
-						onChange={ ( colorValue ) => setAttributes( { errorMsgBorderColor: colorValue } ) }
-						allowReset
-					/>
+						<span className="component-color-indicator" style={{ backgroundColor: errorMsgBorderColor }} ></span></span></p>
+				<ColorPalette
+					value={ errorMsgBorderColor }
+					onChange={ ( colorValue ) => setAttributes( { errorMsgBorderColor: colorValue } ) }
+					allowReset
+				/>
 
-					<hr className="uagb-editor__separator" />					
-					<RangeControl
-						label={ __( "Message Border Width (px)" ) }
-						value={ msgBorderSize }
-						onChange={ ( value ) => setAttributes( { msgBorderSize: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>			
-					<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-						<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "px" } aria-pressed={ msgBorderRadiusType === "px" } onClick={ () => setAttributes( { msgBorderRadiusType: "px" } ) }>{ "px" }</Button>
-						<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "%" } aria-pressed={ msgBorderRadiusType === "%" } onClick={ () => setAttributes( { msgBorderRadiusType: "%" } ) }>{ "%" }</Button>
-					</ButtonGroup>
-					<RangeControl
-						label={ __( "Message Border Radius" ) }
-						value={ msgBorderRadius }
-						onChange={ ( value ) => setAttributes( { msgBorderRadius: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Message Padding (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.vertical_spacing }
-						className={ "uagb-margin-control" }
-						value={ msgVrPadding }
-						onChange={ ( value ) => setAttributes( { msgVrPadding: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>					
-					<RangeControl
-						label={ UAGB_Block_Icons.horizontal_spacing }
-						className={ "uagb-margin-control" }
-						value={ msgHrPadding }
-						onChange={ ( value ) => setAttributes( { msgHrPadding: value } ) }
-						min={ 0 }
-						max={ 100 }
-						allowReset
-					/>
-				</PanelBody>
-			)
+				<hr className="uagb-editor__separator" />					
+				<RangeControl
+					label={ __( "Message Border Width (px)" ) }
+					value={ msgBorderSize }
+					onChange={ ( value ) => setAttributes( { msgBorderSize: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>			
+				<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+					<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "px" } aria-pressed={ msgBorderRadiusType === "px" } onClick={ () => setAttributes( { msgBorderRadiusType: "px" } ) }>{ "px" }</Button>
+					<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ msgBorderRadiusType === "%" } aria-pressed={ msgBorderRadiusType === "%" } onClick={ () => setAttributes( { msgBorderRadiusType: "%" } ) }>{ "%" }</Button>
+				</ButtonGroup>
+				<RangeControl
+					label={ __( "Message Border Radius" ) }
+					value={ msgBorderRadius }
+					onChange={ ( value ) => setAttributes( { msgBorderRadius: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Message Padding (px)" ) }</h2>
+				<RangeControl
+					label={ UAGB_Block_Icons.vertical_spacing }
+					className={ "uagb-margin-control" }
+					value={ msgVrPadding }
+					onChange={ ( value ) => setAttributes( { msgVrPadding: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>					
+				<RangeControl
+					label={ UAGB_Block_Icons.horizontal_spacing }
+					className={ "uagb-margin-control" }
+					value={ msgHrPadding }
+					onChange={ ( value ) => setAttributes( { msgHrPadding: value } ) }
+					min={ 0 }
+					max={ 100 }
+					allowReset
+				/>
+			</PanelBody>
+		)
 
 		return (
 			<Fragment>
@@ -1027,18 +1027,18 @@ class UAGBCF7 extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-				{ field_settings }
-				{ field_border_setting }
-				{ typography_settings }				
-				{ radio_check_setting }
-				{ btn_setting }
-				{ msg_settings }
-				{ spacing }
+					{ field_settings }
+					{ field_border_setting }
+					{ typography_settings }				
+					{ radio_check_setting }
+					{ btn_setting }
+					{ msg_settings }
+					{ spacing }
 				</InspectorControls>
 				<div
 					className = { classnames(
 						className,	
-						`uagb-cf7-styler__outer-wrap`,					
+						"uagb-cf7-styler__outer-wrap",					
 					) }
 					id={ `uagb-cf7-styler-${ this.props.clientId }` }>
 					<div className = {  classnames(
@@ -1046,8 +1046,8 @@ class UAGBCF7 extends Component {
 						`uagb-cf7-styler__field-style-${fieldStyle}`,
 						`uagb-cf7-styler__btn-align-${buttonAlignment}`,
 						`uagb-cf7-styler__highlight-style-${validationMsgPosition}`,
-						( enableOveride ? `uagb-cf7-styler__check-style-enabled` : '' ),
-						( enableHighlightBorder ? `uagb-cf7-styler__highlight-border` : '' ),
+						( enableOveride ? "uagb-cf7-styler__check-style-enabled" : "" ),
+						( enableHighlightBorder ? "uagb-cf7-styler__highlight-border" : "" ),
 					) }>
 						{ isHtml &&
 							<div dangerouslySetInnerHTML={ { __html: html } } />
@@ -1086,24 +1086,24 @@ class UAGBCF7 extends Component {
 export default withSelect( ( select, props ) => {
 	const { setAttributes, setState } = props
 	const { formId, isHtml } = props.attributes
-	let json_data = ''
+	let json_data = ""
 
 	if ( formId && -1 != formId && 0 != formId && ! isHtml ) {
 
 		$.ajax({
 			url: uagb_blocks_info.ajax_url,
 			data: {
-				action: 'uagb_cf7_shortcode',
+				action: "uagb_cf7_shortcode",
 				formId : formId,
 			},
-			dataType: 'json',
-			type: 'POST',
+			dataType: "json",
+			type: "POST",
 			success: function( data ) {
 				setAttributes( { isHtml: true } )
 				setAttributes( { formJson: data } )
 				json_data = data
 			}
-		});
+		})
 	}
 
 	return {

@@ -173,12 +173,12 @@ function styling( props ) {
 			"line-height"      : inputLineHeight + inputLineHeightType,
 			"text-align": align,
 		},
-		' .wpcf7 input::placeholder': {  
-		    'color'     : fieldInputColor,   
+		" .wpcf7 input::placeholder": {  
+		    "color"     : fieldInputColor,   
 		    "text-align": align, 
 		},
-		' .wpcf7 textarea::placeholder': {  
-		    'color'     : fieldInputColor,  
+		" .wpcf7 textarea::placeholder": {  
+		    "color"     : fieldInputColor,  
 		    "text-align": align,  
 		},
 		" .wpcf7 textarea::placeholder": {

@@ -12,7 +12,6 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 	 */
 	final class UAGB_Loader {
 
-
 		/**
 		 * Member Variable
 		 *
