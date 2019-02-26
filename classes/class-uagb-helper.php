@@ -881,10 +881,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 
 						foreach ( $terms as $t_index => $t_obj ) {
-
+							// vl($t_obj);
 							$related_tax[] = array(
-								'name'  => $t_obj->slug,
-								'label' => $t_obj->name,
+								'id'   => $t_obj->term_id,
+								'name' => $t_obj->name,
 							);
 						}
 

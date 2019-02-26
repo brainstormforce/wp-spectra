@@ -826,27 +826,40 @@ export default withSelect( ( select, props ) => {
 
 	console.log(uagb_blocks_info.all_taxonomy)
 
+	let allTaxonomy = uagb_blocks_info.all_taxonomy
+
 	const { categories, postsToShow, order, orderBy, postType } = props.attributes
 	const { getEntityRecords } = select( "core" )
-	const latestPostsQuery = pickBy( {
-		categories: categories,
-		order: order,
-		orderby: orderBy,
-		per_page: postsToShow,
-	}, ( value ) => ! isUndefined( value ) )
 	const categoriesListQuery = {
 		per_page: 100,
 	}
-	console.log(postType)
-	let tax = ""
-	let tax_list = ""
-	if ( "undefined" != typeof uagb_blocks_info.all_taxonomy[postType] ) {
-		tax = uagb_blocks_info.all_taxonomy[postType]["taxonomy"][0]["name"]
-		tax_list = uagb_blocks_info.all_taxonomy[postType]["terms"][tax]
+
+	let taxonomy = ""
+	let taxonomyList = ""
+
+	if ( "undefined" != typeof allTaxonomy[postType] ) {
+		if ( "undefined" != typeof allTaxonomy[postType]["taxonomy"][0] ) {
+			taxonomy = allTaxonomy[postType]["taxonomy"][0]["name"]
+		}
+		if ( "undefined" != typeof allTaxonomy[postType]["terms"][taxonomy] ) {
+			taxonomyList = allTaxonomy[postType]["terms"][taxonomy]
+		}
 	}
+
+	let latestPostsQuery = {
+		order: order,
+		orderby: orderBy,
+		per_page: postsToShow,
+	}
+
+	latestPostsQuery[taxonomy] = categories
+
+	console.log(latestPostsQuery)
+	console.log(getEntityRecords( "taxonomy", "category", categoriesListQuery ))
+
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: tax_list,
+		categoriesList: taxonomyList,
 	}
 
 	// console.log(uagb_blocks_info.all_taxonomy)
