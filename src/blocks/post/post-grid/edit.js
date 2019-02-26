@@ -824,7 +824,6 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	console.log(uagb_blocks_info.all_taxonomy)
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
 
@@ -835,14 +834,20 @@ export default withSelect( ( select, props ) => {
 	}
 
 	let taxonomy = ""
-	let taxonomyList = ""
+	let taxonomyList = []
+	let rest_name = ""
 
 	if ( "undefined" != typeof allTaxonomy[postType] ) {
+
 		if ( "undefined" != typeof allTaxonomy[postType]["taxonomy"][0] ) {
+			rest_name = ( allTaxonomy[postType]["taxonomy"][0]["rest_base"] == false ) ? allTaxonomy[postType]["taxonomy"][0]["name"] : allTaxonomy[postType]["taxonomy"][0]["rest_base"]
 			taxonomy = allTaxonomy[postType]["taxonomy"][0]["name"]
 		}
-		if ( "undefined" != typeof allTaxonomy[postType]["terms"][taxonomy] ) {
-			taxonomyList = allTaxonomy[postType]["terms"][taxonomy]
+
+		if ( "" != taxonomy ) {
+			if ( "undefined" != typeof allTaxonomy[postType]["terms"][taxonomy] ) {
+				taxonomyList = allTaxonomy[postType]["terms"][taxonomy]
+			}
 		}
 	}
 
@@ -852,34 +857,11 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
-	latestPostsQuery[taxonomy] = categories
-
-	console.log(latestPostsQuery)
-	console.log(getEntityRecords( "taxonomy", "category", categoriesListQuery ))
+	latestPostsQuery[rest_name] = categories
 
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: taxonomyList,
 	}
 
-	// console.log(uagb_blocks_info.all_taxonomy)
-	//console.log(props.attributes)
-	// const { categories, postsToShow, order, orderBy } = props.attributes
-	// const { getEntityRecords } = select( "core" )
-	{/*categories: categories*/}
-	// let tax = ''
-	// if ( 'undefined' != typeof uagb_blocks_info.all_taxonomy[postType] ) {
-	// 	tax = uagb_blocks_info.all_taxonomy[postType][0]['name']
-	// 	console.log(getEntityRecords( "taxonomy", tax ))
-	// }
-	// const latestPostsQuery = pickBy( {
-	// 	categories: categories,
-	// 	order: order,
-	// 	orderby: orderBy,
-	// 	per_page: postsToShow,
-	// }, ( value ) => ! isUndefined( value ) )
-	//console.log(getEntityRecords( "postType", postType, latestPostsQuery ))
-	// return {
-	// 	latestPosts: getEntityRecords( "postType", "post", latestPostsQuery )
-	// }
 } )( UAGBPostGrid )

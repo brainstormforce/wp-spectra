@@ -881,7 +881,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					if ( ! empty( $terms ) ) {
 
 						foreach ( $terms as $t_index => $t_obj ) {
-							// vl($t_obj);
+
 							$related_tax[] = array(
 								'id'   => $t_obj->term_id,
 								'name' => $t_obj->name,
@@ -892,7 +892,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 				}
 
-				// $return_array[ $post_type ]['taxonomy'][$tax_slug] = array( 'name' => $tax->name, 'label' => $tax->label );
 				$return_array[ $post_type ]['taxonomy'] = $data;
 			}
 
