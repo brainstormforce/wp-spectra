@@ -51,12 +51,20 @@ class UAGBPostGrid extends Component {
 	constructor() {
 		super( ...arguments )
 		this.onSelectPostType = this.onSelectPostType.bind( this )
+		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
 	}
 
 	onSelectPostType( value ) {
 		const { setAttributes } = this.props
 
 		setAttributes( { postType: value } )
+		setAttributes( { categories: "" } )
+	}
+
+	onSelectTaxonomyType( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { taxonomyType: value } )
 		setAttributes( { categories: "" } )
 	}
 
@@ -303,13 +311,13 @@ class UAGBPostGrid extends Component {
 		]
 
 		if ( "" != taxonomyList ) {
-			Object.keys(taxonomyList).map( ( item, thisIndex ) => {
+			Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
 				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
 			} )
 		}
 
 		if ( "" != categoriesList ) {
-			Object.keys(categoriesList).map( ( item, thisIndex ) => {
+			Object.keys( categoriesList ).map( ( item, thisIndex ) => {
 				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
 			} )
 		}
@@ -324,21 +332,25 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => this.onSelectPostType( value ) }
 						options={ uagb_blocks_info.post_types }
 					/>
+					<hr className="uagb-editor__separator" />
 					{ "" != taxonomyList &&
 						<SelectControl
 							label={ __( "Taxonomy" ) }
 							value={ taxonomyType }
-							onChange={ ( value ) => setAttributes( { taxonomyType: value } ) }
+							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
 							options={ taxonomyListOptions }
 						/>
 					}
 					{ "" != categoriesList &&
-						<SelectControl
-							label={ taxonomyList[taxonomyType]["label"] }
-							value={ categories }
-							onChange={ ( value ) => setAttributes( { categories: value } ) }
-							options={ categoryListOptions }
-						/>
+						<Fragment>
+							<SelectControl
+								label={ taxonomyList[taxonomyType]["label"] }
+								value={ categories }
+								onChange={ ( value ) => setAttributes( { categories: value } ) }
+								options={ categoryListOptions }
+							/>
+							<hr className="uagb-editor__separator" />
+						</Fragment>
 					}
 					<QueryControls
 						{ ...{ order, orderBy } }
