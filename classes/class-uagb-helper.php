@@ -764,11 +764,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$query_args = array(
 				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 				'post_status'         => 'publish',
+				'post_type'           => ( isset( $attributes['postsType'] ) ) ? $attributes['postsType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
-				'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
 				'ignore_sticky_posts' => 1,
 			);
+
+			if ( isset( $attributes['categories'] ) ) {
+
+				$query_args['tax_query'][] = array(
+					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
+					'field'    => 'id',
+					'terms'    => $attributes['categories'],
+					'operator' => 'IN',
+				);
+			}
 
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
 
@@ -872,7 +882,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						continue;
 					}
 
-					$data[] = $tax;
+					$data[ $tax_slug ] = $tax;
 
 					$terms = get_terms( $tax_slug );
 

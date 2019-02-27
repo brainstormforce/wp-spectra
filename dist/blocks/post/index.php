@@ -247,6 +247,10 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => 'post',
 				),
+				'taxonomyType'            => array(
+					'type'    => 'string',
+					'default' => 'category',
+				),
 				'className'               => array(
 					'type' => 'string',
 				),

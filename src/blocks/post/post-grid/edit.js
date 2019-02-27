@@ -16,7 +16,6 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
-console.log(wp)
 const { Component, Fragment } = wp.element
 import apiFetch from "@wordpress/api-fetch"
 import { addQueryArgs } from "@wordpress/url"
@@ -51,33 +50,15 @@ class UAGBPostGrid extends Component {
 
 	constructor() {
 		super( ...arguments )
-		/*this.state = {
-			categoriesList: [],
-		};*/
+		this.onSelectPostType = this.onSelectPostType.bind( this )
 	}
 
-	/*componentWillMount() {
-		this.isStillMounted = true;
-		this.fetchRequest = apiFetch( {
-			path: `/wp-json/wp/v2/categories?per_page=-1`,
-		} ).then(
-			( categoriesList ) => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList } );
-				}
-			}
-		).catch(
-			() => {
-				if ( this.isStillMounted ) {
-					this.setState( { categoriesList: [] } );
-				}
-			}
-		);
-	}*/
+	onSelectPostType( value ) {
+		const { setAttributes } = this.props
 
-	/*componentWillUnmount() {
-		this.isStillMounted = false;
-	}*/
+		setAttributes( { postType: value } )
+		setAttributes( { categories: "" } )
+	}
 
 	componentDidMount() {
 
@@ -95,10 +76,9 @@ class UAGBPostGrid extends Component {
 			attributes,
 			setAttributes,
 			latestPosts,
-			categoriesList
+			categoriesList,
+			taxonomyList
 		} = this.props
-
-		// const { categoriesList } = this.state;
 
 		// Caching all attributes.
 		const {
@@ -197,7 +177,8 @@ class UAGBPostGrid extends Component {
 			overlayOpacity,
 			bgOverlayColor,
 			linkBox,
-			postType
+			postType,
+			taxonomyType,
 		} = attributes
 
 		const hoverSettings = (
@@ -312,6 +293,27 @@ class UAGBPostGrid extends Component {
 			)
 		}
 
+
+		let taxonomyListOptions = [
+			{ value: "", label: __( "Select Taxonomy" ) }
+		]
+
+		let categoryListOptions = [
+			{ value: "", label: __( "All" ) }
+		]
+
+		if ( "" != taxonomyList ) {
+			Object.keys(taxonomyList).map( ( item, thisIndex ) => {
+				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
+			} )
+		}
+
+		if ( "" != categoriesList ) {
+			Object.keys(categoriesList).map( ( item, thisIndex ) => {
+				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
+			} )
+		}
+
 		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
@@ -319,17 +321,30 @@ class UAGBPostGrid extends Component {
 					<SelectControl
 						label={ __( "Post Type" ) }
 						value={ postType }
-						onChange={ ( value ) => setAttributes( { postType: value } ) }
+						onChange={ ( value ) => this.onSelectPostType( value ) }
 						options={ uagb_blocks_info.post_types }
 					/>
+					{ "" != taxonomyList &&
+						<SelectControl
+							label={ __( "Taxonomy" ) }
+							value={ taxonomyType }
+							onChange={ ( value ) => setAttributes( { taxonomyType: value } ) }
+							options={ taxonomyListOptions }
+						/>
+					}
+					{ "" != categoriesList &&
+						<SelectControl
+							label={ taxonomyList[taxonomyType]["label"] }
+							value={ categories }
+							onChange={ ( value ) => setAttributes( { categories: value } ) }
+							options={ categoryListOptions }
+						/>
+					}
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						categoriesList={ categoriesList }
-						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: "" !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
@@ -787,10 +802,7 @@ class UAGBPostGrid extends Component {
 			return (
 				<Fragment>
 					{ inspectorControls }
-					<Placeholder
-						icon="admin-post"
-						label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }
-					>
+					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							__( "No posts found." )
@@ -825,28 +837,25 @@ class UAGBPostGrid extends Component {
 export default withSelect( ( select, props ) => {
 
 
-	let allTaxonomy = uagb_blocks_info.all_taxonomy
 
-	const { categories, postsToShow, order, orderBy, postType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
 	const { getEntityRecords } = select( "core" )
-	const categoriesListQuery = {
-		per_page: 100,
-	}
 
+	let allTaxonomy = uagb_blocks_info.all_taxonomy
+	let currentTax = allTaxonomy[postType]
 	let taxonomy = ""
-	let taxonomyList = []
-	let rest_name = ""
+	let categoriesList = []
+	let rest_base = ""
 
-	if ( "undefined" != typeof allTaxonomy[postType] ) {
+	if ( "undefined" != typeof currentTax ) {
 
-		if ( "undefined" != typeof allTaxonomy[postType]["taxonomy"][0] ) {
-			rest_name = ( allTaxonomy[postType]["taxonomy"][0]["rest_base"] == false ) ? allTaxonomy[postType]["taxonomy"][0]["name"] : allTaxonomy[postType]["taxonomy"][0]["rest_base"]
-			taxonomy = allTaxonomy[postType]["taxonomy"][0]["name"]
+		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
+			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
 		}
 
-		if ( "" != taxonomy ) {
-			if ( "undefined" != typeof allTaxonomy[postType]["terms"][taxonomy] ) {
-				taxonomyList = allTaxonomy[postType]["terms"][taxonomy]
+		if ( "" != taxonomyType ) {
+			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
+				categoriesList = currentTax["terms"][taxonomyType]
 			}
 		}
 	}
@@ -857,11 +866,12 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
-	latestPostsQuery[rest_name] = categories
+	latestPostsQuery[rest_base] = categories
 
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
-		categoriesList: taxonomyList,
+		categoriesList: categoriesList,
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
 	}
 
 } )( UAGBPostGrid )
