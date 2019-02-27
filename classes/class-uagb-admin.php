@@ -96,12 +96,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function register_notices() {
 
-			if ( /*false === get_option( 'uagb-old-setup' )*/0 ) {
+			if ( false === get_option( 'uagb-old-setup' ) ) {
 
 				set_transient( 'uagb-first-rating', true, MONTH_IN_SECONDS );
 				update_option( 'uagb-old-setup', true );
 
-			} elseif ( /*false === get_transient( 'uagb-first-rating' )*/1 ) {
+			} elseif ( false === get_transient( 'uagb-first-rating' ) ) {
 
 				$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
 
@@ -140,7 +140,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
 							__( 'I already did', 'ultimate-addons-for-gutenberg' )
 						),
-						'repeat-notice-after'        => 0,
+						'repeat-notice-after'        => MONTH_IN_SECONDS,
 						'priority'                   => 10,
 						'display-with-other-notices' => false,
 					)
@@ -246,8 +246,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.8.0
 		 */
 		static public function notice_styles_scripts() {
-
-			wp_enqueue_script( 'uagb-admin-notices', UAGB_URL . 'admin/assets/notices.js', array( 'jquery' ), UAGB_VER, true );
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
