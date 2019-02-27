@@ -12,20 +12,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 	 */
 	class UAGB_Config {
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		/**
 		 * Block Attributes
 		 *
@@ -381,7 +367,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/cf7-styler'       => array(
 						'slug'        => '',
 						'title'       => __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'                     => '',
