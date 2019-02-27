@@ -472,11 +472,11 @@ class UAGBCF7 extends Component {
 						icon="admin-post"
 						label={ __( "Select a Contact Form 7" ) }
 					>
-					<SelectControl				
-						value={ formId }
-						onChange={ this.onSelectForm }
-						options={ uagb_blocks_info.cf7_forms }
-					/>	
+						<SelectControl				
+							value={ formId }
+							onChange={ this.onSelectForm }
+							options={ uagb_blocks_info.cf7_forms }
+						/>	
 					</Placeholder>
 				</Fragment>
 			)
@@ -1075,7 +1075,7 @@ class UAGBCF7 extends Component {
 	}
 	componentDidUpdate(){				
 		$(".wpcf7-submit").click( function(event) {
-			event.preventDefault();
+			event.preventDefault()
 		})
 	}
 }
