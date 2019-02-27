@@ -141,7 +141,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 							__( 'I already did', 'ultimate-addons-for-gutenberg' )
 						),
 						'repeat-notice-after'        => MONTH_IN_SECONDS,
-						'priority'                   => 10,
+						'display-notice-after'       => WEEK_IN_SECONDS,
+						'priority'                   => 20,
 						'display-with-other-notices' => false,
 					)
 				);
@@ -162,7 +163,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								'<strong>',
 								'</strong>'
 							),
-							'priority'                   => 10,
+							'priority'                   => 20,
 							'display-with-other-notices' => true,
 						)
 					);
