@@ -1,16 +1,16 @@
-.uagb-notice .notice-container{
+.astra-notice .notice-container{
 	padding-top: 10px;
-    padding-bottom: 10px;
-    display: flex;
-    justify-content: left;
-    align-items: center;
+	padding-bottom: 10px;
+	display: flex;
+	justify-content: left;
+	align-items: center;
 }
 
-.uagb-notice .notice-content {
-    margin-left: 15px;
+.astra-notice .notice-content {
+	margin-left: 15px;
 }
 
-.uagb-notice .notice-image img{
+.astra-notice .notice-image img{
 	max-width: 70px;
 }
 
