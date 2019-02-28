@@ -117,7 +117,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 				if ( ! empty( $repeat_notice_after ) ) {
 					set_transient( $notice_id, true, $repeat_notice_after );
 				} else {
-					update_user_meta( get_current_user_id(), $notice_id, true );
+					update_user_meta( get_current_user_id(), $notice_id, 'notice-dismissed' );
 				}
 
 				wp_send_json_success();
@@ -277,7 +277,8 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 
 				if ( false !== $notice['display-notice-after'] ) {
 
-					if ( 'delayed-notice' !== get_user_meta( get_current_user_id(), $notice['id'], true ) ) {
+					if ( 'delayed-notice' !== get_user_meta( get_current_user_id(), $notice['id'], true ) &&
+						'notice-dismissed' !== get_user_meta( get_current_user_id(), $notice['id'], true ) ) {
 						set_transient( $notice['id'], 'delayed-notice', $notice['display-notice-after'] );
 						update_user_meta( get_current_user_id(), $notice['id'], 'delayed-notice' );
 

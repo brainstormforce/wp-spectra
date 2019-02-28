@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.10.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-02-28 10:44:26+00:00\n"
+"POT-Creation-Date: 2019-02-28 12:06:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,11 +123,11 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:83 classes/class-uagb-admin.php:270
+#: admin/uagb-general.php:83 classes/class-uagb-admin.php:262
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:90 classes/class-uagb-admin.php:271
+#: admin/uagb-general.php:90 classes/class-uagb-admin.php:263
 msgid "Deactivate"
 msgstr ""
 
@@ -200,32 +200,32 @@ msgstr ""
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:135
+#: classes/class-uagb-admin.php:128
 msgid ""
 "Hello! Thank you for choosing the Ultimate Addons for Gutenberg to build "
 "this website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:136
+#: classes/class-uagb-admin.php:129
 msgid ""
 "Could you please do us a BIG favor and give it a 5-star rating on "
 "WordPress? This will boost our motivation and help other users make a "
 "comfortable decision while choosing this plugin."
 msgstr ""
 
-#: classes/class-uagb-admin.php:138
+#: classes/class-uagb-admin.php:131
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:140
+#: classes/class-uagb-admin.php:133
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:141
+#: classes/class-uagb-admin.php:134
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:161
+#: classes/class-uagb-admin.php:153
 #. translators: %s: html tags
 msgid ""
 "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can "
@@ -233,31 +233,31 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:272
+#: classes/class-uagb-admin.php:264
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:273
+#: classes/class-uagb-admin.php:265
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:274
+#: classes/class-uagb-admin.php:266
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:275
+#: classes/class-uagb-admin.php:267
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:276
+#: classes/class-uagb-admin.php:268
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:434
+#: classes/class-uagb-admin.php:426
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:455
+#: classes/class-uagb-admin.php:447
 msgid "Theme Successfully Activated"
 msgstr ""
 
