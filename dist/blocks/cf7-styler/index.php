@@ -2,18 +2,18 @@
 /**
  * Server-side rendering for the Contact Form 7 Styler.
  *
- * @since   x.x.x
+ * @since   1.10.0
  * @package UAGB
  */
 
 /**
  * Renders the Contect Form 7 shortcode.
  *
- * @since x.x.x
+ * @since 1.10.0
  */
 function uagb_cf7_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
-    // @codingStandardsIgnoreEnd    
+    // @codingStandardsIgnoreEnd
 	if ( $id && 0 != $id && -1 != $id ) {
 		$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
 	} else {
@@ -31,7 +31,7 @@ add_action( 'wp_ajax_nopriv_uagb_cf7_shortcode', 'uagb_cf7_shortcode' );
  *
  * @param array  $args Array of arguments.
  * @param string $post_type Post Type.
- * @since x.x.x
+ * @since 1.10.0
  */
 function uagb_add_cpts_to_api( $args, $post_type ) {
 	if ( 'wpcf7_contact_form' === $post_type ) {
@@ -47,7 +47,7 @@ add_filter( 'register_post_type_args', 'uagb_add_cpts_to_api', 10, 2 );
 /**
  * Registers CF7.
  *
- * @since x.x.x
+ * @since 1.10.0
  */
 function uagb_blocks_register_cf7_styler() {
 	// Check if the register function exists.
@@ -546,7 +546,7 @@ add_action( 'init', 'uagb_blocks_register_cf7_styler' );
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.10.0
  */
 function uagb_render_cf7( $attributes ) {
 	$block_id = 'uagb-cf7-styler-' . $attributes['block_id'];

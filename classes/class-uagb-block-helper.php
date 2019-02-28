@@ -12,6 +12,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -620,21 +621,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			foreach ( $attr['buttons'] as $key => $button ) {
 
-				$button['size']         = ( isset( $button['size'] ) ) ? $button['size'] : '';
-				$button['borderWidth']  = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
-				$button['borderStyle']  = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
-				$button['borderColor']  = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
-				$button['borderRadius'] = ( isset( $button['borderRadius'] ) ) ? $button['borderRadius'] : '';
-				$button['background']   = ( isset( $button['background'] ) ) ? $button['background'] : '';
-				$button['hBackground']  = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
-				$button['borderHColor'] = ( isset( $button['borderHColor'] ) ) ? $button['borderHColor'] : '';
-				$button['vPadding']     = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
-				$button['hPadding']     = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
-				$button['color']        = ( isset( $button['color'] ) ) ? $button['color'] : '';
-				$button['hColor']       = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
-				$button['sizeType']     = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
-				$button['sizeMobile']   = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
-				$button['sizeTablet']   = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
+				$button['size']             = ( isset( $button['size'] ) ) ? $button['size'] : '';
+				$button['borderWidth']      = ( isset( $button['borderWidth'] ) ) ? $button['borderWidth'] : '';
+				$button['borderStyle']      = ( isset( $button['borderStyle'] ) ) ? $button['borderStyle'] : '';
+				$button['borderColor']      = ( isset( $button['borderColor'] ) ) ? $button['borderColor'] : '';
+				$button['borderRadius']     = ( isset( $button['borderRadius'] ) ) ? $button['borderRadius'] : '';
+				$button['background']       = ( isset( $button['background'] ) ) ? $button['background'] : '';
+				$button['hBackground']      = ( isset( $button['hBackground'] ) ) ? $button['hBackground'] : '';
+				$button['borderHColor']     = ( isset( $button['borderHColor'] ) ) ? $button['borderHColor'] : '';
+				$button['vPadding']         = ( isset( $button['vPadding'] ) ) ? $button['vPadding'] : '';
+				$button['hPadding']         = ( isset( $button['hPadding'] ) ) ? $button['hPadding'] : '';
+				$button['color']            = ( isset( $button['color'] ) ) ? $button['color'] : '';
+				$button['hColor']           = ( isset( $button['hColor'] ) ) ? $button['hColor'] : '';
+				$button['sizeType']         = ( isset( $button['sizeType'] ) ) ? $button['sizeType'] : 'px';
+				$button['sizeMobile']       = ( isset( $button['sizeMobile'] ) ) ? $button['sizeMobile'] : '';
+				$button['sizeTablet']       = ( isset( $button['sizeTablet'] ) ) ? $button['sizeTablet'] : '';
+				$button['lineHeight']       = ( isset( $button['lineHeight'] ) ) ? $button['lineHeight'] : '';
+				$button['lineHeightType']   = ( isset( $button['lineHeightType'] ) ) ? $button['lineHeightType'] : '';
+				$button['lineHeightMobile'] = ( isset( $button['lineHeightMobile'] ) ) ? $button['lineHeightMobile'] : '';
+				$button['lineHeightTablet'] = ( isset( $button['lineHeightTablet'] ) ) ? $button['lineHeightTablet'] : '';
+
 
 				if ( $attr['btn_count'] <= $key ) {
 					break;
@@ -3143,7 +3149,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.10.0
 		 */
 		public static function get_cf7_styler_css( $attr, $id ) {
 			$defaults = UAGB_Helper::$block_list['uagb/cf7-styler']['attributes'];
@@ -3700,7 +3706,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for CF7 Styler block.
 		 *
-		 * @since x.x.x
+		 * @since 1.10.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_cf7_styler_gfont( $attr ) {

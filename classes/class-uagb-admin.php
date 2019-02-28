@@ -96,57 +96,50 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function register_notices() {
 
-			if ( false === get_option( 'uagb-old-setup' ) ) {
+			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
 
-				set_transient( 'uagb-first-rating', true, MONTH_IN_SECONDS );
-				update_option( 'uagb-old-setup', true );
-
-			} elseif ( false === get_transient( 'uagb-first-rating' ) ) {
-
-				$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
-
-				Astra_Notices::add_notice(
-					array(
-						'id'                         => 'uagb-admin-rating',
-						'type'                       => '',
-						'message'                    => sprintf(
-							'<div class="notice-image">
-								<img src="%1$s" class="custom-logo" alt="Ultimate Addons for Gutenberg" itemprop="logo"></div>
-								<div class="notice-content">
-									<div class="notice-heading">
-										%2$s
-									</div>
-									%3$s<br />
-									<div class="uagb-review-notice-container">
-										<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
-										%5$s
-										</a>
-									<span class="dashicons dashicons-calendar"></span>
-										<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
-										%7$s
-										</a>
-									<span class="dashicons dashicons-smiley"></span>
-										<a href="#" class="astra-notice-close uagb-review-notice">
-										%8$s
-										</a>
-									</div>
-								</div>',
-							$image_path,
-							__( 'Hello! Thank you for choosing the Ultimate Addons for Gutenberg to build this website!', 'ultimate-addons-for-gutenberg' ),
-							__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This will boost our motivation and help other users make a comfortable decision while choosing this plugin.', 'ultimate-addons-for-gutenberg' ),
-							'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
-							__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
-							MONTH_IN_SECONDS,
-							__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
-							__( 'I already did', 'ultimate-addons-for-gutenberg' )
-						),
-						'repeat-notice-after'        => MONTH_IN_SECONDS,
-						'display-notice-after'       => WEEK_IN_SECONDS,
-						'priority'                   => 20,
-						'display-with-other-notices' => false,
-					)
-				);
-			}
+			Astra_Notices::add_notice(
+				array(
+					'id'                         => 'uagb-admin-rating',
+					'type'                       => '',
+					'message'                    => sprintf(
+						'<div class="notice-image">
+							<img src="%1$s" class="custom-logo" alt="Ultimate Addons for Gutenberg" itemprop="logo"></div>
+							<div class="notice-content">
+								<div class="notice-heading">
+									%2$s
+								</div>
+								%3$s<br />
+								<div class="uagb-review-notice-container">
+									<a href="%4$s" class="astra-notice-close uagb-review-notice button-primary" target="_blank">
+									%5$s
+									</a>
+								<span class="dashicons dashicons-calendar"></span>
+									<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
+									%7$s
+									</a>
+								<span class="dashicons dashicons-smiley"></span>
+									<a href="#" class="astra-notice-close uagb-review-notice">
+									%8$s
+									</a>
+								</div>
+							</div>',
+						$image_path,
+						__( 'Hello! Thank you for choosing the Ultimate Addons for Gutenberg to build this website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This will boost our motivation and help other users make a comfortable decision while choosing this plugin.', 'ultimate-addons-for-gutenberg' ),
+						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
+						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
+						MONTH_IN_SECONDS,
+						__( 'Nope, maybe later', 'ultimate-addons-for-gutenberg' ),
+						__( 'I already did', 'ultimate-addons-for-gutenberg' )
+					),
+					'repeat-notice-after'        => MONTH_IN_SECONDS,
+					'display-notice-after'       => WEEK_IN_SECONDS,
+					'priority'                   => 20,
+					'display-with-other-notices' => false,
+					'show_if'                    => UAGB_Helper::show_rating_notice(),
+				)
+			);
 
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
