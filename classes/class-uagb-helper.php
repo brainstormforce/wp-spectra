@@ -857,7 +857,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( $uag_post_count >= 5 ) {
 					update_option( 'posts-created-with-uagb', $uag_post_count );
 
-					$posts_created_with_uag = $post_count;
+					$posts_created_with_uag = $uag_post_count;
 				}
 			}
 
