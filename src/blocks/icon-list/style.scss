@@ -102,6 +102,11 @@
 	.uagb-icon-list__wrap > p {
 		display: none;
 	}
+
+	a.uagb-icon-list__wrapper[href="javascript:void(0);"] {
+	    pointer-events: none;
+	    cursor: text;
+	}
 }
 
 .uagb-icon-list__outer-wrap:not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap {
