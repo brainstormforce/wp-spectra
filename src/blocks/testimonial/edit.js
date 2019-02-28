@@ -294,7 +294,7 @@ class UAGBtestimonial extends Component {
 		let loadDescGoogleFonts
 
 		if( nameLoadGoogleFonts == true ) {
-					
+
 			const nameconfig = {
 				google: {
 					families: [ nameFontFamily + ( nameFontWeight ? ":" + nameFontWeight : "" ) ],
@@ -308,7 +308,7 @@ class UAGBtestimonial extends Component {
 		}
 
 		if( companyLoadGoogleFonts == true ) {
-					
+
 			const companyconfig = {
 				google: {
 					families: [ companyFontFamily + ( companyFontWeight ? ":" + companyFontWeight : "" ) ],
@@ -322,7 +322,7 @@ class UAGBtestimonial extends Component {
 		}
 
 		if( descLoadGoogleFonts == true ) {
-					
+
 			const descconfig = {
 				google: {
 					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
@@ -715,6 +715,7 @@ class UAGBtestimonial extends Component {
 				<PanelBody key={index}
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
+					className= {"uagb-repeater-panel"}
 				>
 
 					<BaseControl
@@ -933,6 +934,7 @@ class UAGBtestimonial extends Component {
 					{ times( test_item_count, n => tmControls( n ) ) }
 
 					{  cnt > 0 && <Fragment>
+						<hr className="uagb-editor__separator" />
 						<SelectControl
 							label={ __( "Image Position" ) }
 							value={ imagePosition }

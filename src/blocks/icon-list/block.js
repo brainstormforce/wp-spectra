@@ -53,7 +53,7 @@ registerBlockType( "uagb/icon-list", {
 				className,
 				"uagb-icon-list__outer-wrap",
 				`uagb-icon-list__layout-${icon_layout}`,
-				( iconPosition == 'top' ? 'uagb-icon-list__icon-at-top' : '' ),
+				( iconPosition == "top" ? "uagb-icon-list__icon-at-top" : "" ),
 				labelClass
 			) }
 			id={ `uagb-icon-list-${ block_id}` }>
