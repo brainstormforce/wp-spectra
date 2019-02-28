@@ -823,7 +823,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get flag if more than 5 pages are build using UAG.
 		 *
-		 * @since  x.x.x
+		 * @since  1.10.0
 		 * @return boolean true/false Flag if more than 5 pages are build using UAG.
 		 */
 		public static function show_rating_notice() {

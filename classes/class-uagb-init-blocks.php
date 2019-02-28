@@ -235,7 +235,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Function to integrate CF7 Forms.
 	 *
-	 * @since x.x.x
+	 * @since 1.10.0
 	 */
 	public function get_cf7_forms() {
 
@@ -263,7 +263,7 @@ class UAGB_Init_Blocks {
 
 		if ( empty( $field_options ) ) {
 			$field_options = array(
-				'-1' => __( 'You have not added any Contact Form 7 yet.', 'uael' ),
+				'-1' => __( 'You have not added any Contact Form 7 yet.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 		return $field_options;
