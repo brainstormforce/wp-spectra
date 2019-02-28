@@ -537,7 +537,7 @@ class UAGBtestimonial extends Component {
 									}
 								</BaseControl>
 								{ backgroundImage &&
-									<Fragment>
+									<Fragment>										
 										<SelectControl
 											label={ __( "Image Position" ) }
 											value={ backgroundPosition }
@@ -715,6 +715,7 @@ class UAGBtestimonial extends Component {
 				<PanelBody key={index}
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
+					className= {"uagb-repeater-panel"}
 				>
 
 					<BaseControl
@@ -933,6 +934,7 @@ class UAGBtestimonial extends Component {
 					{ times( test_item_count, n => tmControls( n ) ) }
 
 					{  cnt > 0 && <Fragment>
+						<hr className="uagb-editor__separator" />
 						<SelectControl
 							label={ __( "Image Position" ) }
 							value={ imagePosition }

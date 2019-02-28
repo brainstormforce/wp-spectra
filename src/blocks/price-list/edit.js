@@ -456,6 +456,7 @@ class UAGBRestaurantMenu extends Component {
 				<PanelBody key={index}
 					title={ __( "Image" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ true }
+					className= {"uagb-repeater-panel"}
 				>
 					<BaseControl
 						className="editor-bg-image-control"
@@ -671,6 +672,7 @@ class UAGBRestaurantMenu extends Component {
 					{ times( menu_item_count, n => imageControls( n ) ) }
 
 					{  cnt > 0 && <Fragment>
+						<hr className="uagb-editor__separator" />
 						<SelectControl
 							label={ __( "Image Position" ) }
 							value={ imagePosition }

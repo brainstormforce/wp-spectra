@@ -3280,3 +3280,14 @@ label.wp-block-uagb-blockquote__via-label svg {
 .components-select-control__input{
 	text-transform: capitalize;
 }
+.components-panel__body.uagb-repeater-panel {
+   max-width: 100%;
+   margin: 0 auto;
+   margin-bottom: 1em;
+   border: 1px solid #e2e4e7;
+   background: #fff; 
+   margin-top: 1em;
+}
+.edit-post-settings-sidebar__panel-block .components-panel__body.uagb-repeater-panel:last-child{
+	margin-bottom: 1em;
+}
