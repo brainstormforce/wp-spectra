@@ -1545,20 +1545,20 @@ function uagb_render_title( $attributes ) {
  */
 function uagb_render_meta( $attributes ) {
 	global $post;
-	// @codingStandardsIgnoreStart
-	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-	?>
-	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
-		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
-		if ( $attributes['displayPostDate'] ) {
-																?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
-		if ( $attributes['displayPostComment'] ) {
-																?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
+    // @codingStandardsIgnoreStart
+    do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+    ?>
+    <div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
+        ?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
+        if ( $attributes['displayPostDate'] ) {
+                                                                ?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+        if ( $attributes['displayPostComment'] ) {
+                                                                ?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
 ?></span><?php }
-		?></div>
-	<?php
-	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-	// @codingStandardsIgnoreEnd
+        ?></div>
+    <?php
+    do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+    // @codingStandardsIgnoreEnd
 }
 
 /**
