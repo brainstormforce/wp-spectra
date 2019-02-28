@@ -115,11 +115,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 									%5$s
 									</a>
 								<span class="dashicons dashicons-calendar"></span>
-									<a href="javascript:void(0);" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
+									<a href="#" data-repeat-notice-after="%6$s" class="astra-notice-close uagb-review-notice">
 									%7$s
 									</a>
 								<span class="dashicons dashicons-smiley"></span>
-									<a href="javascript:void(0);" class="astra-notice-close uagb-review-notice">
+									<a href="#" class="astra-notice-close uagb-review-notice">
 									%8$s
 									</a>
 								</div>
