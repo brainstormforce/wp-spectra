@@ -150,6 +150,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.9.1.1 =
 * New: Contact Form 7 Styler
+* Fix: Multi Buttons - Fixed PHP notices.
 * Improvement: Advanced Columns - Introduced Opacity option for Shape Divider.
 
 = 1.9.1 =
