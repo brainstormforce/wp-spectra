@@ -16,10 +16,8 @@ import WebfontLoader from "../../../components/typography/fontloader"
 // Import Post Components
 import Blog from "./blog"
 import styling from ".././styling"
+
 const { Component, Fragment } = wp.element
-import apiFetch from "@wordpress/api-fetch"
-import { addQueryArgs } from "@wordpress/url"
-//const { addQueryArgs } = wp.url;
 const { __ } = wp.i18n
 const MAX_POSTS_COLUMNS = 4
 const {
