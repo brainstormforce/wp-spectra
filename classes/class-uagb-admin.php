@@ -144,6 +144,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 						'display-notice-after'       => WEEK_IN_SECONDS,
 						'priority'                   => 20,
 						'display-with-other-notices' => false,
+						'show_if'                    => UAGB_Helper::show_rating_notice(),
 					)
 				);
 			}

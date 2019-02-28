@@ -294,7 +294,7 @@ class UAGBtestimonial extends Component {
 		let loadDescGoogleFonts
 
 		if( nameLoadGoogleFonts == true ) {
-					
+
 			const nameconfig = {
 				google: {
 					families: [ nameFontFamily + ( nameFontWeight ? ":" + nameFontWeight : "" ) ],
@@ -308,7 +308,7 @@ class UAGBtestimonial extends Component {
 		}
 
 		if( companyLoadGoogleFonts == true ) {
-					
+
 			const companyconfig = {
 				google: {
 					families: [ companyFontFamily + ( companyFontWeight ? ":" + companyFontWeight : "" ) ],
@@ -322,7 +322,7 @@ class UAGBtestimonial extends Component {
 		}
 
 		if( descLoadGoogleFonts == true ) {
-					
+
 			const descconfig = {
 				google: {
 					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
@@ -537,7 +537,7 @@ class UAGBtestimonial extends Component {
 									}
 								</BaseControl>
 								{ backgroundImage &&
-									<Fragment>										
+									<Fragment>
 										<SelectControl
 											label={ __( "Image Position" ) }
 											value={ backgroundPosition }
