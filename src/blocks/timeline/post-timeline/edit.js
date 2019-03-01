@@ -68,6 +68,22 @@ class UAGBTimeline extends Component {
 	constructor() {
 		super( ...arguments )
 		this.getTimelineicon          = this.getTimelineicon.bind(this)
+		this.onSelectPostType = this.onSelectPostType.bind( this )
+		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
+	}
+
+	onSelectPostType( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postType: value } )
+		setAttributes( { categories: "" } )
+	}
+
+	onSelectTaxonomyType( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { taxonomyType: value } )
+		setAttributes( { categories: "" } )
 	}
 
 	getTimelineicon(value) {
@@ -192,7 +208,29 @@ class UAGBTimeline extends Component {
 			iconBgFocus,
 			stack,
 			linkTarget,
+			postType,
+			taxonomyType,
 		} = attributes
+
+		let taxonomyListOptions = [
+			{ value: "", label: __( "Select Taxonomy" ) }
+		]
+
+		let categoryListOptions = [
+			{ value: "", label: __( "All" ) }
+		]
+
+		if ( "" != taxonomyList ) {
+			Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
+			} )
+		}
+
+		if ( "" != categoriesList ) {
+			Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
+			} )
+		}
 
 		// Parameters for FontIconPicker.
 		const icon_props = {
@@ -444,15 +482,38 @@ class UAGBTimeline extends Component {
 		const content_control = (
 			<InspectorControls>
 				<PanelBody title={ __( "Query" ) } initialOpen={ true } >
+					<SelectControl
+						label={ __( "Post Type" ) }
+						value={ postType }
+						onChange={ ( value ) => this.onSelectPostType( value ) }
+						options={ uagb_blocks_info.post_types }
+					/>
+					<hr className="uagb-editor__separator" />
+					{ "" != taxonomyList &&
+						<SelectControl
+							label={ __( "Taxonomy" ) }
+							value={ taxonomyType }
+							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
+							options={ taxonomyListOptions }
+						/>
+					}
+					{ "" != categoriesList &&
+						<Fragment>
+							<SelectControl
+								label={ taxonomyList[taxonomyType]["label"] }
+								value={ categories }
+								onChange={ ( value ) => setAttributes( { categories: value } ) }
+								options={ categoryListOptions }
+							/>
+							<hr className="uagb-editor__separator" />
+						</Fragment>
+					}
 					<QueryControls
-						numberOfItems={ postsToShow }
 						{ ...{ order, orderBy } }
-						categoriesList={ categoriesList }
-						selectedCategoryId={ categories }
-						onOrderChange={ ( value ) => { setAttributes( { order: value } ) } }
-						onOrderByChange={ ( value ) => { setAttributes( { orderBy: value } ) } }
-						onCategoryChange={ ( value ) => { setAttributes( { categories: "" !== value ? value : undefined } )  } }
-						onNumberOfItemsChange={ ( value ) => { setAttributes( { postsToShow: value } ) } }
+						numberOfItems={ postsToShow }
+						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
+						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
+						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 				</PanelBody>
 				<PanelBody  title={ __( "Layout" ) } initialOpen={ false } >

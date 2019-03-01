@@ -764,13 +764,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$query_args = array(
 				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 				'post_status'         => 'publish',
-				'post_type'           => ( isset( $attributes['postsType'] ) ) ? $attributes['postsType'] : 'post',
+				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
 				'ignore_sticky_posts' => 1,
 			);
 
-			if ( isset( $attributes['categories'] ) ) {
+			if ( isset( $attributes['categories'] ) && '' != $attributes['categories'] ) {
 
 				$query_args['tax_query'][] = array(
 					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
