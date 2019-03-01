@@ -846,8 +846,6 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-
-
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
 	const { getEntityRecords } = select( "core" )
 

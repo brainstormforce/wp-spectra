@@ -251,9 +251,6 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => 'category',
 				),
-				'className'               => array(
-					'type' => 'string',
-				),
 				'postsToShow'             => array(
 					'type'    => 'number',
 					'default' => 6,
@@ -616,8 +613,13 @@ function uagb_register_blocks() {
 				'categories'              => array(
 					'type' => 'string',
 				),
-				'className'               => array(
-					'type' => 'string',
+				'postType'                => array(
+					'type'    => 'string',
+					'default' => 'post',
+				),
+				'taxonomyType'            => array(
+					'type'    => 'string',
+					'default' => 'category',
 				),
 				'postsToShow'             => array(
 					'type'    => 'number',
@@ -1014,8 +1016,13 @@ function uagb_register_blocks() {
 				'categories'              => array(
 					'type' => 'string',
 				),
-				'className'               => array(
-					'type' => 'string',
+				'postType'                => array(
+					'type'    => 'string',
+					'default' => 'post',
+				),
+				'taxonomyType'            => array(
+					'type'    => 'string',
+					'default' => 'category',
 				),
 				'postsToShow'             => array(
 					'type'    => 'number',
