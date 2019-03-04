@@ -848,6 +848,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$options = array();
 
 			foreach ( $post_types as $post_type ) {
+
+				if ( 'product' == $post_type->name ) {
+					continue;
+				}
+
 				$options[] = array(
 					'value' => $post_type->name,
 					'label' => $post_type->label,
