@@ -180,7 +180,7 @@ class UAGBMarketingButtonEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<p className="components-base-control__label">{ __( "Link" ) }</p>
+						<h2>{ __( "Link" ) }</h2>
 						<TextControl
 							value={ link }
 							onChange={ ( value ) => setAttributes( { link: value } ) }

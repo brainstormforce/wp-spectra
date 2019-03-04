@@ -28,7 +28,7 @@ const attributes = {
 	// Border
 	borderStyle : {
 		type: "string",
-		default: "none"
+		default: "solid"
 	},
 	borderWidth : {
 		type: "number",
@@ -38,7 +38,8 @@ const attributes = {
 		type: "number"
 	},
 	borderColor : {
-		type: "string"
+		type: "string",
+		default: "#333"
 	},
 	borderHoverColor : {
 		type: "string"
@@ -47,11 +48,11 @@ const attributes = {
 	// Background
 	vPadding :{
 		type: "number",
-		default: 12,
+		default: 8,
 	},
 	hPadding :{
 		type: "number",
-		default: 24,
+		default: 20,
 	},
 	backgroundType: {
 		type: "string",
@@ -59,6 +60,7 @@ const attributes = {
 	},
 	backgroundColor: {
 		type: "string",
+		default: "#eeeeee"
 	},
 	backgroundHoverColor: {
 		type: "string",
@@ -94,19 +96,22 @@ const attributes = {
 
 	//Colors
 	titleColor: {
-		type: "string"
+		type: "string",
+		default: "#333"
 	},
 	titleHoverColor: {
 		type: "string"
 	},
 	iconColor: {
-		type: "string"
+		type: "string",
+		default: "#333"
 	},
 	iconHoverColor: {
 		type: "string"
 	},
 	prefixColor: {
-		type: "string"
+		type: "string",
+		default: "#333"
 	},
 	prefixHoverColor: {
 		type: "string"
@@ -117,19 +122,19 @@ const attributes = {
 	heading: {
 		source: "html",
 		selector: "h6",
-		default: "Click Here"
+		default: "Subscribe Now"
 	},
 	prefix: {
 		source: "html",
 		selector: "p",
-		default: "Lorem ipsum dolor sit amet."
+		default: "Get access to Premium Features for FREE for a year!"
 	},
 
 
 	// Icon attributes
 	icon : {
 		type : "string",
-		default : ""
+		default : "external-link-alt"
 	},
 	iconPosition: {
 		type: "string",
