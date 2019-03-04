@@ -23,6 +23,7 @@ function styling( props ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		borderHoverColor,
 		//Background
 		vPadding,
 		hPadding,
@@ -108,6 +109,9 @@ function styling( props ) {
 			"border-width": borderWidth + "px",
 			"border-color": borderColor,
 			"border-radius": borderRadius + "px",
+		},
+		" .uagb-marketing-btn__link:hover" : {
+			"border-color": borderHoverColor
 		},
 		" a.uagb-marketing-btn__link:before" : {
 			"border-radius": borderRadius + "px",
