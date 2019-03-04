@@ -3893,7 +3893,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Marketing Button block.
 		 *
-		 * @since 1.10.0
+		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_marketing_btn_gfont( $attr ) {
