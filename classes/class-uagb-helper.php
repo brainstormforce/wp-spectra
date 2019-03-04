@@ -764,11 +764,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$query_args = array(
 				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 				'post_status'         => 'publish',
+				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
-				'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
 				'ignore_sticky_posts' => 1,
 			);
+
+			if ( isset( $attributes['categories'] ) && '' != $attributes['categories'] ) {
+
+				$query_args['tax_query'][] = array(
+					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
+					'field'    => 'id',
+					'terms'    => $attributes['categories'],
+					'operator' => 'IN',
+				);
+			}
 
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
 
@@ -818,6 +828,89 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$image_sizes = apply_filters( 'uagb_post_featured_image_sizes', $image_sizes );
 
 			return $image_sizes;
+		}
+
+		/**
+		 * Get Post Types.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function get_post_types() {
+
+			$post_types = get_post_types(
+				array(
+					'public' => true,
+				),
+				'objects'
+			);
+
+			$options = array();
+
+			foreach ( $post_types as $post_type ) {
+
+				if ( 'product' == $post_type->name ) {
+					continue;
+				}
+
+				$options[] = array(
+					'value' => $post_type->name,
+					'label' => $post_type->label,
+				);
+			}
+
+			return apply_filters( 'uagb_loop_post_types', $options );
+		}
+
+		/**
+		 * Get all taxonomies.
+		 *
+		 * @since x.x.x
+		 * @access public
+		 */
+		public static function get_related_taxonomy() {
+
+			$post_types = self::get_post_types();
+
+			$return_array = array();
+
+			foreach ( $post_types as $key => $value ) {
+
+				$post_type = $value['value'];
+
+				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+				$data       = array();
+
+				foreach ( $taxonomies as $tax_slug => $tax ) {
+
+					if ( ! $tax->public || ! $tax->show_ui ) {
+						continue;
+					}
+
+					$data[ $tax_slug ] = $tax;
+
+					$terms = get_terms( $tax_slug );
+
+					$related_tax = array();
+
+					if ( ! empty( $terms ) ) {
+
+						foreach ( $terms as $t_index => $t_obj ) {
+
+							$related_tax[] = array(
+								'id'   => $t_obj->term_id,
+								'name' => $t_obj->name,
+							);
+						}
+
+						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
+					}
+				}
+
+				$return_array[ $post_type ]['taxonomy'] = $data;
+			}
+
+			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
 		}
 
 		/**

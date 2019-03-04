@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.1
-Stable tag: 1.10.0
+Stable tag: 1.10.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.10.0.1 =
+* Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies
 
 = 1.10.0 =
 * New: Contact Form 7 Styler

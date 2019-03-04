@@ -18,6 +18,7 @@
   "dependencies": {
     "@dr-kobros/react-webfont-loader": "^8.0.0",
     "@fonticonpicker/react-fonticonpicker": "^1.2.0",
+    "@wordpress/api-fetch": "^2.2.8",
     "autoprefixer": "^7.2.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
