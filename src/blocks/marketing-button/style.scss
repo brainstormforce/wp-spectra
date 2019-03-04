@@ -22,6 +22,10 @@
 		display: flex;
 	}
 
+	.uagb-marketing-btn__link {
+		z-index : 1;
+	}
+
 	.uagb-marketing-btn__link,
 	.uagb-marketing-btn__link:before {
 		display: inline-block;
@@ -44,7 +48,6 @@
 		width: 20px;
 		height: 20px;
 		display: flex;
-		z-index: 1;
 	}
 
 	.uagb-marketing-btn__link:before {
