@@ -3563,6 +3563,145 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tablet . $mobile;
 		}
 
+		/**
+		 * Get Marketing Button Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_marketing_btn_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/marketing-button']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$icon_color = ( "" == $attr["iconColor"] ) ? $attr["titleColor"] : $attr["iconColor"];
+			$icon_hover_color = ( "" == $attr["iconHoverColor"] ) ? $attr["titleHoverColor"] : $attr["iconHoverColor"];
+
+			$selectors = array(
+				" .uagb-marketing-btn__title-wrap" => array(
+					"margin-bottom" => $attr["titleSpace"] . "px"
+				),
+				" .uagb-marketing-btn__title" => array(
+					"font-size" => $attr["titleFontSize"] . $attr["titleFontSizeType"],
+					"line-height" => $attr["titleLineHeight"] . $attr["titleLineHeightType"],
+					"font-family" => $attr["titleFontFamily"],
+					"font-weight" => $attr["titleFontWeight"],
+					"color" => $attr["titleColor"],
+				),
+				" .uagb-marketing-btn__icon-wrap svg" => array(
+					"fill" => $icon_color
+				),
+				" .uagb-marketing-btn__prefix" => array(
+					"font-size" => $attr["prefixFontSize"] . $attr["prefixFontSizeType"],
+					"line-height" => $attr["prefixLineHeight"] . $attr["prefixLineHeightType"],
+					"font-family" => $attr["prefixFontFamily"],
+					"font-weight" => $attr["prefixFontWeight"],
+					"color" => $attr["prefixColor"],
+				),
+				" .uagb-marketing-btn__link:hover .uagb-marketing-btn__title" => array(
+					"color" => $attr["titleHoverColor"],
+				),
+				" .uagb-marketing-btn__link:hover .uagb-marketing-btn__prefix" => array(
+					"color" => $attr["prefixHoverColor"],
+				),
+				" .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg" => array(
+					"fill" => $icon_hover_color
+				),
+				" .uagb-marketing-btn__link" => array(
+					"padding-left" => $attr["hPadding"] . "px",
+					"padding-right" => $attr["hPadding"] . "px",
+					"padding-top" => $attr["vPadding"] . "px",
+					"padding-bottom" => $attr["vPadding"] . "px",
+					"border-style" => $attr["borderStyle"],
+					"border-width" => $attr["borderWidth"] . "px",
+					"border-color" => $attr["borderColor"],
+					"border-radius" => $attr["borderRadius"] . "px",
+				),
+				" a.uagb-marketing-btn__link:before" => array(
+					"border-radius" => $attr["borderRadius"] . "px",
+				),
+			);
+
+			if ( "transparent" == $attr["backgroundType"] ) {
+
+				$selectors[" a.uagb-marketing-btn__link:before"]["background"] = "transparent";
+
+			} else if ( "color" == $attr["backgroundType"] ) {
+
+				$selectors[" a.uagb-marketing-btn__link:before"]["background"] = $attr["backgroundColor"];
+				$selectors[' a.uagb-marketing-btn__link:before']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+				// Hover Background
+				$selectors[" a.uagb-marketing-btn__link:hover:before"] = array(
+					"background" => $attr["backgroundHoverColor"],
+					"opacity" => ( isset( $attr['backgroundHoverOpacity'] ) && '' != $attr['backgroundHoverOpacity'] ) ? $attr['backgroundHoverOpacity'] / 100 : ""
+				);
+
+			} else if ( "gradient" == $attr["backgroundType"] ) {
+
+				$selectors[' a.uagb-marketing-btn__link:before']['background-color'] = 'transparent';
+				$selectors[' a.uagb-marketing-btn__link:before']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+				if ( 'linear' === $attr['gradientType'] ) {
+
+					$selectors[' a.uagb-marketing-btn__link:before']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				} else {
+
+					$selectors[' a.uagb-marketing-btn__link:before']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+				}
+			}
+
+			if ( "after" == $attr["iconPosition"] ) {
+				$selectors[" .uagb-marketing-btn__icon-wrap"] = array(
+					"margin-left" => $attr["iconSpace"] . "px",
+				);
+			} else {
+				$selectors[" .uagb-marketing-btn__icon-wrap"] = array(
+					"margin-right" => $attr["iconSpace"] . "px",
+				);
+			}
+
+			$m_selectors = array(
+				' .uagb-marketing-btn__title'        => array(
+					'font-size' => $attr['titleFontSizeMobile'] . $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightMobile'] . $attr['titleLineHeightType'],
+				),
+				' .uagb-marketing-btn__prefix' => array(
+					'font-size' => $attr['prefixFontSizeMobile'] . $attr['prefixFontSizeType'],
+					'line-height' => $attr['prefixLineHeightMobile'] . $attr['prefixLineHeightType'],
+				)
+
+			);
+
+			$t_selectors = array(
+				' .uagb-marketing-btn__title'        => array(
+					'font-size' => $attr['titleFontSizeTablet'] . $attr['titleFontSizeType'],
+					'line-height' => $attr['titleLineHeightTablet'] . $attr['titleLineHeightType'],
+				),
+				' .uagb-marketing-btn__prefix' => array(
+					'font-size' => $attr['prefixFontSizeTablet'] . $attr['prefixFontSizeType'],
+					'line-height' => $attr['prefixLineHeightTablet'] . $attr['prefixLineHeightType'],
+				)
+
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-marketing-btn-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-marketing-btn-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-marketing-btn-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
+		}
+
 
 		/**
 		 * Get Testimonial Js
@@ -3749,6 +3888,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight, $label_font_subset );
 			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Marketing Button block.
+		 *
+		 * @since 1.10.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_marketing_btn_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$prefix_load_google_font = isset( $attr['prefixLoadGoogleFonts'] ) ? $attr['prefixLoadGoogleFonts'] : '';
+			$prefix_font_family      = isset( $attr['prefixFontFamily'] ) ? $attr['prefixFontFamily'] : '';
+			$prefix_font_weight      = isset( $attr['prefixFontWeight'] ) ? $attr['prefixFontWeight'] : '';
+			$prefix_font_subset      = isset( $attr['prefixFontSubset'] ) ? $attr['prefixFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
 		}
 
 		/**
