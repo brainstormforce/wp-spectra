@@ -3623,6 +3623,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-color" => $attr["borderColor"],
 					"border-radius" => $attr["borderRadius"] . "px",
 				),
+				" .uagb-marketing-btn__link:hover" => array(
+					"border-color" => $attr["borderHoverColor"]
+				),
 				" a.uagb-marketing-btn__link:before" => array(
 					"border-radius" => $attr["borderRadius"] . "px",
 				),
