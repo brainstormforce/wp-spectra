@@ -92,10 +92,9 @@ class UAGBTimeline extends Component {
 
 	render() {
 
-		const { attributes, categoriesList, setAttributes, latestPosts, focus } = this.props
+		const { attributes, categoriesList, setAttributes, latestPosts, focus, taxonomyList, className } = this.props
 
 		const {
-			className,
 			headingColor,
 			subHeadingColor,
 			backgroundColor,
@@ -1167,22 +1166,41 @@ class UAGBTimeline extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { postsToShow, order, orderBy, categories } = props.attributes
 
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
 	const { getEntityRecords } = select( "core" )
-	const latestPostsQuery = pickBy( {
-		categories,
-		order,
+
+	let allTaxonomy = uagb_blocks_info.all_taxonomy
+	let currentTax = allTaxonomy[postType]
+	let taxonomy = ""
+	let categoriesList = []
+	let rest_base = ""
+
+	if ( "undefined" != typeof currentTax ) {
+
+		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
+			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+		}
+
+		if ( "" != taxonomyType ) {
+			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
+				categoriesList = currentTax["terms"][taxonomyType]
+			}
+		}
+	}
+
+	let latestPostsQuery = {
+		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		ignore_sticky_posts:1,
-	}, ( value ) => ! isUndefined( value ) )
-	const categoriesListQuery = {
-		per_page: 100,
 	}
+
+	latestPostsQuery[rest_base] = categories
+
 	return {
-		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
-		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
+		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
+		categoriesList: categoriesList,
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
 	}
 
 } )( UAGBTimeline )

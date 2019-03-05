@@ -942,7 +942,7 @@ export default withSelect( ( select, props ) => {
 	if ( "undefined" != typeof currentTax ) {
 
 		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
-			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
 		}
 
 		if ( "" != taxonomyType ) {
