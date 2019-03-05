@@ -11,7 +11,7 @@ class InfoBoxCta extends React.Component {
 
 	render() {
 
-		const { attributes } = this.props
+		const { attributes, setAttributes = "not_set" } = this.props
 
 		let ctaBtnClass = "uagb-infobox-cta-link uagb-ifb-cta-button"
 
@@ -27,30 +27,59 @@ class InfoBoxCta extends React.Component {
 				{ renderSVG(attributes.ctaIcon) }
 			</span>
 		}
-		return (
-			<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
-				{  attributes.ctaType === "text" && (
-					<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
-						{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
-						<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
-						{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
-					</a>
-				)
-				}
 
-				{  attributes.ctaType === "button" && (
-					<div className = "uagb-ifb-button-wrapper">
-						<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
-                        	{ cta_icon_output }
-							<span className = "uagb-ifb-cta-content-wrapper">
-								<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
-							</span>
+		if ( setAttributes !== "not_set" ) {
+
+			return (
+				<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
+					{  attributes.ctaType === "text" && (
+						<a target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
+							{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
+							<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
+							{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
 						</a>
-					</div>
-				)
-				}
-			</div>
-		)
+					)
+					}
+
+					{  attributes.ctaType === "button" && (
+						<div className = "uagb-ifb-button-wrapper">
+							<a className = { ctaBtnClass } target= {target} rel= {rel} >
+								{ cta_icon_output }
+								<span className = "uagb-ifb-cta-content-wrapper">
+									<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
+								</span>
+							</a>
+						</div>
+					)
+					}
+				</div>
+			)
+		} else {
+			return (
+				<div className = "uagb-ifb-cta uagb-infobox-cta-link-style">
+					{  attributes.ctaType === "text" && (
+						<a href = {attributes.ctaLink} target= {target} className = "uagb-infobox-cta-link" rel= {rel} >
+							{  attributes.ctaIconPosition === "before" &&  cta_icon_output }
+							<span className = "uagb-inline-editing" >{attributes.ctaText}</span>
+							{  attributes.ctaIconPosition === "after" &&  cta_icon_output }
+						</a>
+					)
+					}
+
+					{  attributes.ctaType === "button" && (
+						<div className = "uagb-ifb-button-wrapper">
+							<a href = {attributes.ctaLink} className = { ctaBtnClass } target= {target} rel= {rel} >
+								{ cta_icon_output }
+								<span className = "uagb-ifb-cta-content-wrapper">
+									<span className   = "uagb-inline-editing " >{attributes.ctaText}</span>
+								</span>
+							</a>
+						</div>
+					)
+					}
+				</div>
+			)
+		}
 	}
 }
 
