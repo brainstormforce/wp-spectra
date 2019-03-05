@@ -506,7 +506,7 @@ class UAGBColumns extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Mobile (px)" ) }</h2>												
+												<h2>{ __( "Padding Mobile (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -548,7 +548,7 @@ class UAGBColumns extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Tablet (px)" ) }</h2>												
+												<h2>{ __( "Padding Tablet (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -590,7 +590,7 @@ class UAGBColumns extends Component {
 									} else {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding (px)" ) }</h2>												
+												<h2>{ __( "Padding (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
