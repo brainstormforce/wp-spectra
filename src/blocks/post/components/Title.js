@@ -7,6 +7,8 @@ class Title extends React.Component {
 
 		const { post, attributes } = this.props
 
+		console.log(post)
+
 		const Tag = attributes.titleTag
 
 		let target = ( attributes.newTab ) ? "_blank" : "_self"
