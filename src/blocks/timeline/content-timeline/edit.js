@@ -753,7 +753,8 @@ class UAGBcontentTimeline extends Component {
 			displayPostDate,
 			icon,
 			tm_content,
-			t_date
+			t_date,
+			timelineItem
 		} = attributes
 
 		// Add CSS.
@@ -781,7 +782,7 @@ class UAGBcontentTimeline extends Component {
 				</Fragment>
 			)
 
-		}else{
+		} else {
 
 			var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
 			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
@@ -791,7 +792,12 @@ class UAGBcontentTimeline extends Component {
 			return (
 				<div className = "uagb-timeline__days">
 					{
-						tm_content.map((post,index) => {
+						tm_content.map( ( post, index ) => {
+
+							if ( timelineItem <= index ) {
+								return
+							}
+
 							var second_index = "uagb-"+index
 							if(timelinAlignment == "center"){
 								display_inner_date = true
