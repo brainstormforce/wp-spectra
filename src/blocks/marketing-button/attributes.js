@@ -173,9 +173,11 @@ const attributes = {
 	},
 	titleFontSizeTablet: {
 		type: "number",
+		default: 20
 	},
 	titleFontSizeMobile: {
 		type: "number",
+		default: 20
 	},
 	// Title Line Height
 	titleLineHeightType: {
@@ -217,9 +219,11 @@ const attributes = {
 	},
 	prefixFontSizeTablet: {
 		type: "number",
+		default: 14
 	},
 	prefixFontSizeMobile: {
 		type: "number",
+		default: 14
 	},
 	// Prefix Line Height
 	prefixLineHeightType: {
@@ -234,6 +238,23 @@ const attributes = {
 	},
 	prefixLineHeightMobile: {
 		type: "number",
+	},
+	// Icon Font Size
+	iconFontSize: {
+		type: "number",
+		default: 20
+	},
+	iconFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	iconFontSizeTablet: {
+		type: "number",
+		default: 20
+	},
+	iconFontSizeMobile: {
+		type: "number",
+		default: 20
 	},
 }
 

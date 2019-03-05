@@ -11,6 +11,10 @@ function styling( props ) {
 		//Icon
 		iconPosition,
 		iconSpace,
+		iconFontSize,
+		iconFontSizeType,
+		iconFontSizeMobile,
+		iconFontSizeTablet,
 		//Colors
 		titleColor,
 		titleHoverColor,
@@ -84,6 +88,10 @@ function styling( props ) {
 		" .uagb-marketing-btn__icon-wrap svg" : {
 			"fill" : icon_color
 		},
+		" .uagb-marketing-btn__icon-wrap" : {
+			"width" : iconFontSize + iconFontSizeType,
+			"height" : iconFontSize + iconFontSizeType
+		},
 		" .editor-rich-text .uagb-marketing-btn__prefix" : {
 			"font-size" : prefixFontSize + prefixFontSizeType,
 			"line-height" : prefixLineHeight + prefixLineHeightType,
@@ -143,32 +151,38 @@ function styling( props ) {
 		}
 	}
 
-	if ( "after" == iconPosition ) {
-		selectors[" .uagb-marketing-btn__icon-wrap"] = {
-			"margin-left" : iconSpace + "px",
-		}
-	} else {
-		selectors[" .uagb-marketing-btn__icon-wrap"] = {
-			"margin-right" : iconSpace + "px",
+	let margin_type = ( "right" == iconPosition ) ? "margin-left" : "margin-right"
+
+	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = iconSpace + "px"
+
+	tablet_selectors = {
+		" .editor-rich-text .uagb-marketing-btn__title" : {
+			"font-size": titleFontSizeTablet + titleFontSizeType,
+			"line-height": titleLineHeightTablet + titleLineHeightType,
+		},
+		" .editor-rich-text .uagb-marketing-btn__prefix" : {
+			"font-size": prefixFontSizeTablet + prefixFontSizeType,
+			"line-height": prefixLineHeightTablet + prefixLineHeightType,
+		},
+		" .uagb-marketing-btn__icon-wrap" : {
+			"width" : iconFontSizeTablet + iconFontSizeType,
+			"height" : iconFontSizeTablet + iconFontSizeType
 		}
 	}
 
-	tablet_selectors[" .editor-rich-text .uagb-marketing-btn__title"] = {
-		"font-size": titleFontSizeTablet + titleFontSizeType,
-		"line-height": titleLineHeightTablet + titleLineHeightType,
-	}
-	tablet_selectors[" .editor-rich-text .uagb-marketing-btn__prefix"] = {
-		"font-size": prefixFontSizeTablet + prefixFontSizeType,
-		"line-height": prefixLineHeightTablet + prefixLineHeightType,
-	}
-
-	mobile_selectors[" .editor-rich-text .uagb-marketing-btn__title"] = {
-		"font-size": titleFontSizeMobile + titleFontSizeType,
-		"line-height": titleLineHeightMobile + titleLineHeightType,
-	}
-	mobile_selectors[" .editor-rich-text .uagb-marketing-btn__prefix"] = {
-		"font-size": prefixFontSizeMobile + prefixFontSizeType,
-		"line-height": prefixLineHeightMobile + prefixLineHeightType,
+	mobile_selectors = {
+		" .editor-rich-text .uagb-marketing-btn__title" : {
+			"font-size": titleFontSizeMobile + titleFontSizeType,
+			"line-height": titleLineHeightMobile + titleLineHeightType,
+		},
+		" .editor-rich-text .uagb-marketing-btn__prefix" : {
+			"font-size": prefixFontSizeMobile + prefixFontSizeType,
+			"line-height": prefixLineHeightMobile + prefixLineHeightType,
+		},
+		" .uagb-marketing-btn__icon-wrap" : {
+			"width" : iconFontSizeMobile + iconFontSizeType,
+			"height" : iconFontSizeMobile + iconFontSizeType
+		}
 	}
 
 	var id = `#uagb-marketing-btn-${ props.clientId }`
