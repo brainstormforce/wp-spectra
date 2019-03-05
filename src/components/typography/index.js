@@ -131,9 +131,9 @@ class TypographyControl extends Component {
 					sizeTabletLabel = { this.props.fontSizeTablet.label }
 					size = { this.props.fontSize }
 					sizeLabel = { this.props.fontSize.label }
-					sizeMobileText = { __( "Font Size" ) }
-					sizeTabletText = { __( "Font Size" ) }
-					sizeText = { __( "Font Size" ) }
+					sizeMobileText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
+					sizeTabletText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
+					sizeText = { ( ! this.props.fontSizeLabel ) ? __( "Font Size" ) : this.props.fontSizeLabel }
 					{ ...this.props }
 				/>
 			)
