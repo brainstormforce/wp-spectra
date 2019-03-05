@@ -845,7 +845,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$post_types = get_post_types(
 				array(
-					'public' => true,
+					'public'       => true,
+					'show_in_rest' => true,
 				),
 				'objects'
 			);

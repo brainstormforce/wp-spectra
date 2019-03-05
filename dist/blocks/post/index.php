@@ -1378,49 +1378,55 @@ add_action( 'init', 'uagb_register_blocks' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-	// Add featured image source.
-	register_rest_field(
-		'post',
-		'uagb_featured_image_src',
-		array(
-			'get_callback'    => 'uagb_blocks_get_image_src',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
 
-	// Add author info.
-	register_rest_field(
-		'post',
-		'uagb_author_info',
-		array(
-			'get_callback'    => 'uagb_blocks_get_author_info',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
+	$post_type = UAGB_Helper::get_post_types();
 
-	// Add comment info.
-	register_rest_field(
-		'post',
-		'uagb_comment_info',
-		array(
-			'get_callback'    => 'uagb_blocks_get_comment_info',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
+	foreach ( $post_type as $key => $value ) {
 
-	// Add excerpt info.
-	register_rest_field(
-		'post',
-		'uagb_excerpt',
-		array(
-			'get_callback'    => 'uagb_blocks_get_excerpt',
-			'update_callback' => null,
-			'schema'          => null,
-		)
-	);
+		// Add featured image source.
+		register_rest_field(
+			$value['value'],
+			'uagb_featured_image_src',
+			array(
+				'get_callback'    => 'uagb_blocks_get_image_src',
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+
+		// Add author info.
+		register_rest_field(
+			$value['value'],
+			'uagb_author_info',
+			array(
+				'get_callback'    => 'uagb_blocks_get_author_info',
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+
+		// Add comment info.
+		register_rest_field(
+			$value['value'],
+			'uagb_comment_info',
+			array(
+				'get_callback'    => 'uagb_blocks_get_comment_info',
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+
+		// Add excerpt info.
+		register_rest_field(
+			$value['value'],
+			'uagb_excerpt',
+			array(
+				'get_callback'    => 'uagb_blocks_get_excerpt',
+				'update_callback' => null,
+				'schema'          => null,
+			)
+		);
+	}
 }
 
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
