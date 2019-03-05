@@ -855,8 +855,6 @@ export default withSelect( ( select, props ) => {
 	let categoriesList = []
 	let rest_base = ""
 
-	console.log(allTaxonomy)
-
 	if ( "undefined" != typeof currentTax ) {
 
 		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
