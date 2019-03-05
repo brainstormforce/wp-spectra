@@ -151,6 +151,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.10.0.1 =
 * New: Marketing Button
 * Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies.
+* Fix: Info Box - Call To Action links disabled in backend editor.
 * Fix: Post - CSS issue with Twenty Nineteen theme.
 
 = 1.10.0 =

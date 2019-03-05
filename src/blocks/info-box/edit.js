@@ -232,7 +232,7 @@ class UAGBinfoBox extends Component {
 			ctaFontSizeTablet,
 			ctaFontFamily,
 			ctaFontWeight,
-			ctaFontSubset,			
+			ctaFontSubset,
 			ctaLoadGoogleFonts,
 			ctaBtnLinkColor,
 			ctaLinkHoverColor,
@@ -300,7 +300,7 @@ class UAGBinfoBox extends Component {
 		let loadHeadGoogleFonts
 
 		if( prefixLoadGoogleFonts == true ) {
-					
+
 			const prefixconfig = {
 				google: {
 					families: [ prefixFontFamily + ( prefixFontWeight ? ":" + prefixFontWeight : "" ) ],
@@ -312,9 +312,9 @@ class UAGBinfoBox extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( headLoadGoogleFonts == true ) {
-					
+
 			const headconfig = {
 				google: {
 					families: [ headFontFamily + ( headFontWeight ? ":" + headFontWeight : "" ) ],
@@ -328,7 +328,7 @@ class UAGBinfoBox extends Component {
 		}
 
 		if( subHeadLoadGoogleFonts == true ) {
-					
+
 			const subHeadconfig = {
 				google: {
 					families: [ subHeadFontFamily + ( subHeadFontWeight ? ":" + subHeadFontWeight : "" ) ],
@@ -340,9 +340,9 @@ class UAGBinfoBox extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( subHeadLoadGoogleFonts == true ) {
-					
+
 			const ctaconfig = {
 				google: {
 					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
@@ -497,7 +497,7 @@ class UAGBinfoBox extends Component {
 						fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
 						fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
 						fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
-						fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
+						fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }
 						disableLineHeight = {true}
 					/>
 				</Fragment>
@@ -1080,7 +1080,7 @@ class UAGBinfoBox extends Component {
 				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={attributes} /> }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
-					<CallToAction attributes={attributes} />
+					<CallToAction attributes={attributes} setAttributes = { setAttributes } />
 				</div>
 			</Fragment>
 		)
@@ -1163,7 +1163,7 @@ class UAGBinfoBox extends Component {
 				id = { `uagb-infobox-${ this.props.clientId }` }
 				>
 					{ ( ctaType == "all") &&
-						<a href= {ctaLink} className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
+						<a className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
 					}
 					{ ( ctaType !== "all") && output }
 				</div>
