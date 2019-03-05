@@ -3594,6 +3594,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-weight" => $attr["titleFontWeight"],
 					"color" => $attr["titleColor"],
 				),
+				" .uagb-marketing-btn__icon-wrap" => array(
+					"width" => $attr["iconFontSize"] . $attr["iconFontSizeType"],
+					"height" => $attr["iconFontSize"] . $attr["iconFontSizeType"],
+				),
 				" .uagb-marketing-btn__icon-wrap svg" => array(
 					"fill" => $icon_color
 				),
@@ -3660,15 +3664,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 
-			if ( "after" == $attr["iconPosition"] ) {
-				$selectors[" .uagb-marketing-btn__icon-wrap"] = array(
-					"margin-left" => $attr["iconSpace"] . "px",
-				);
-			} else {
-				$selectors[" .uagb-marketing-btn__icon-wrap"] = array(
-					"margin-right" => $attr["iconSpace"] . "px",
-				);
-			}
+			$margin_type = ( "after" == $attr["iconPosition"] ) ? "margin-left" : "margin-right";
+
+			$selectors[" .uagb-marketing-btn__icon-wrap"][$margin_type] = $attr["iconSpace"] . "px";
 
 			$m_selectors = array(
 				' .uagb-marketing-btn__title'        => array(
@@ -3678,7 +3676,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__prefix' => array(
 					'font-size' => $attr['prefixFontSizeMobile'] . $attr['prefixFontSizeType'],
 					'line-height' => $attr['prefixLineHeightMobile'] . $attr['prefixLineHeightType'],
-				)
+				),
+				' .uagb-marketing-btn__icon-wrap' => array(
+					"width" => $attr["iconFontSizeMobile"] . $attr["iconFontSizeType"],
+					"height" => $attr["iconFontSizeMobile"] . $attr["iconFontSizeType"],
+				),
 
 			);
 
@@ -3690,7 +3692,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__prefix' => array(
 					'font-size' => $attr['prefixFontSizeTablet'] . $attr['prefixFontSizeType'],
 					'line-height' => $attr['prefixLineHeightTablet'] . $attr['prefixLineHeightType'],
-				)
+				),
+				' .uagb-marketing-btn__icon-wrap' => array(
+					"width" => $attr["iconFontSizeTablet"] . $attr["iconFontSizeType"],
+					"height" => $attr["iconFontSizeTablet"] . $attr["iconFontSizeType"],
+				),
 
 			);
 

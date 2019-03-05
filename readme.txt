@@ -150,7 +150,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.10.0.1 =
 * New: Marketing Button
-* Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies
+* Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies.
+* Fix: Post - CSS issue with Twenty Nineteen theme.
 
 = 1.10.0 =
 * New: Contact Form 7 Styler

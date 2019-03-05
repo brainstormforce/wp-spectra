@@ -25,7 +25,7 @@ const {
 registerBlockType( "uagb/marketing-button", {
 	title: uagb_blocks_info.blocks["uagb/marketing-button"]["title"],
 	description: uagb_blocks_info.blocks["uagb/marketing-button"]["description"],
-	icon: UAGB_Block_Icons.buttons,
+	icon: UAGB_Block_Icons.marketing_button,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "marketing button" ),

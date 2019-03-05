@@ -75,6 +75,10 @@ class UAGBMarketingButtonEdit extends Component {
 			icon,
 			iconPosition,
 			iconSpace,
+			iconFontSize,
+			iconFontSizeType,
+			iconFontSizeMobile,
+			iconFontSizeTablet,
 			//Colors
 			titleColor,
 			titleHoverColor,
@@ -230,6 +234,18 @@ class UAGBMarketingButtonEdit extends Component {
 								beforeIcon=""
 								allowReset
 							/>
+							<TypographyControl
+								label={ __( "Icon Size" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								fontSizeType = { { value: iconFontSizeType, label: __( "iconFontSizeType" ) } }
+								fontSize = { { value: iconFontSize, label: __( "iconFontSize" ) } }
+								fontSizeMobile = { { value: iconFontSizeMobile, label: __( "iconFontSizeMobile" ) } }
+								fontSizeTablet= { { value: iconFontSizeTablet, label: __( "iconFontSizeTablet" ) } }
+								disableFontFamily= { true }
+								disableLineHeight= { true }
+								disableAdvancedOptions = { true }
+							/>
 						</Fragment>
 						}
 						<RangeControl
@@ -262,9 +278,9 @@ class UAGBMarketingButtonEdit extends Component {
 							lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
 						/>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Prefix" ) }</h2>
+						<h2>{ __( "Description" ) }</h2>
 						<TypographyControl
-							label={ __( "Prefix Font" ) }
+							label={ __( "Description Font" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadPrefixGoogleFonts, label: __( "loadPrefixGoogleFonts" ) } }
@@ -313,7 +329,7 @@ class UAGBMarketingButtonEdit extends Component {
 												onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Prefix Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixColor }} ></span></span></p>
 											<ColorPalette
 												value={ prefixColor }
 												onChange={ ( colorValue ) => setAttributes( { prefixColor: colorValue } ) }
@@ -334,7 +350,7 @@ class UAGBMarketingButtonEdit extends Component {
 												onChange={ ( colorValue ) => setAttributes( { iconHoverColor: colorValue } ) }
 												allowReset
 											/>
-											<p className="uagb-setting-label">{ __( "Prefix Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixHoverColor }} ></span></span></p>
+											<p className="uagb-setting-label">{ __( "Description Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: prefixHoverColor }} ></span></span></p>
 											<ColorPalette
 												value={ prefixHoverColor }
 												onChange={ ( colorValue ) => setAttributes( { prefixHoverColor: colorValue } ) }
@@ -564,7 +580,7 @@ class UAGBMarketingButtonEdit extends Component {
 							</div>
 							<div className="uagb-marketing-btn__prefix-wrap">
 								<RichText
-									placeholder={ __( "Add Button Prefix…" ) }
+									placeholder={ __( "Add Button Description…" ) }
 									value={ prefix }
 									tagName='p'
 									onChange={ ( value ) => setAttributes( { prefix: value } ) }
