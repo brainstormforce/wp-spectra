@@ -152,8 +152,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Marketing Button
 * Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies.
 * Fix: Info Box - Call To Action links disabled in backend editor.
-* Fix: Call To Action - Links disabled in backend editor for Link to Complete Box.
-* Fix: Content Timeline - Timline count not updating the content.
+* Fix: Call To Action - Links disabled in back-end editor for Link to Complete Box.
+* Fix: Content Timeline - Timeline count not updating the content.
 * Fix: Post - CSS issue with Twenty Nineteen theme.
 
 = 1.10.0 =
