@@ -239,9 +239,9 @@ class UAGBMarketingButtonEdit extends Component {
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								fontSizeType = { { value: iconFontSizeType, label: __( "iconFontSizeType" ) } }
-								fontSize = { { value: iconFontSize, label: __( "Icon Size" ) } }
-								fontSizeMobile = { { value: iconFontSizeMobile, label: __( "Icon Size" ) } }
-								fontSizeTablet= { { value: iconFontSizeTablet, label: __( "Icon Size" ) } }
+								fontSize = { { value: iconFontSize, label: __( "iconFontSize" ) } }
+								fontSizeMobile = { { value: iconFontSizeMobile, label: __( "iconFontSizeMobile" ) } }
+								fontSizeTablet= { { value: iconFontSizeTablet, label: __( "iconFontSizeTablet" ) } }
 								fontSizeLabel= { __( "Icon Size" ) }
 								disableFontFamily= { true }
 								disableLineHeight= { true }

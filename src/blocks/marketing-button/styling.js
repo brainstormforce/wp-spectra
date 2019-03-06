@@ -151,7 +151,7 @@ function styling( props ) {
 		}
 	}
 
-	let margin_type = ( "right" == iconPosition ) ? "margin-left" : "margin-right"
+	let margin_type = ( "after" == iconPosition ) ? "margin-left" : "margin-right"
 
 	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = iconSpace + "px"
 
