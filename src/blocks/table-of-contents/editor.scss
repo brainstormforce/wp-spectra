@@ -2,25 +2,17 @@
  * Editor styles for the admin
  */
 
-.editor-rich-text p.uagb-marketing-btn__prefix {
-	margin: 0 !important;
-}
-
-.wp-block-uagb-marketing-button a.uagb-marketing-btn__link:before {
-	z-index: 0;
-}
-
 .uagb-toc__wrap {
 	background: #eee;
 	padding: 10px;
 	border: 1px solid #333;
 }
 
-.uagb-toc__list ul li * {
+.uagb-toc__list-wrap ul li * {
 	font-size: 16px;
 	line-height: 1.2em;
 }
 
-.editor-styles-wrapper .uagb-toc__list ul {
+.editor-styles-wrapper .uagb-toc__list-wrap ul {
 	list-style: none;
 }
