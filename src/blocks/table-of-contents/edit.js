@@ -8,6 +8,7 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import map from "lodash/map"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -75,10 +76,93 @@ class UAGBMarketingButtonEdit extends Component {
 
 		let this_post = wp.data.select("core/editor").getCurrentPost()
 		let content = this_post.content
+		let matches = []
+		let m
+		let headings = { 1 : "1", 2 : "2", 3 : "3", 4 : "4", 5 : "5", 6 : "6" }
+		const regex = /(<h([1-6]{1})[^>]*>).*<\/h\2>/gm;
 
-		let matches = content.match(/(<h([1-6]{1})[^>]*>).*<\/h\2>\/msuU/);
+		while (( m = regex.exec( content ) ) !== null) {
+			// This is necessary to avoid infinite loops with zero-width matches
+			if ( m.index === regex.lastIndex ) {
+				regex.lastIndex++;
+			}
+
+			matches.push( m )
+		}
 
 		console.log(matches)
+
+		let current_depth      = 100
+		let html               = ''
+		let numbered_items     = []
+		let numbered_items_min = null
+
+		// reset the internal collision collection
+		let collision_collector = []
+
+		// find the minimum heading to establish our baseline
+		for ( var j = 0; j < matches.length; j ++ ) {
+			if ( current_depth > matches[ j ][2] ) {
+				current_depth = parseInt(matches[ j ][2])
+			}
+		}
+
+		numbered_items[ current_depth ] = 0;
+		numbered_items_min = current_depth;
+
+		for ( var i = 0; i < matches.length; i ++ ) {
+
+			if ( current_depth == parseInt( matches[ i ][2] ) ) {
+
+				html += '<li>';
+			}
+
+			// start lists
+			if ( current_depth != parseInt( matches[ i ][2] ) ) {
+
+				for ( current_depth; current_depth < parseInt( matches[ i ][2] ); current_depth++ ) {
+
+					numbered_items[ current_depth + 1 ] = 0;
+					html += '<ul><li>';
+				}
+			}
+
+			//console.log(headings.includes( matches[ i ][2] ))
+			// list item
+			html += '<a href="#">' + matches[ i ][0] + '</a>';
+
+			// end lists
+			if ( i != matches.length - 1 ) {
+
+				if ( current_depth > parseInt( matches[ i + 1 ][2] ) ) {
+
+					for ( current_depth; current_depth > parseInt( matches[ i + 1 ][2] ); current_depth-- ) {
+
+						html += '</li></ul>';
+						numbered_items[ current_depth ] = 0;
+					}
+				}
+
+				if ( current_depth == parseInt( matches[ i + 1 ][2] ) ) {
+
+					html += '</li>';
+				}
+
+			} else {
+
+				// this is the last item, make sure we close off all tags
+				for ( current_depth; current_depth >= numbered_items_min; current_depth -- ) {
+
+					html += '</li>';
+
+					if ( current_depth != numbered_items_min ) {
+						html += '</ul>';
+					}
+				}
+			}
+
+			console.log(html)
+		}
 
 
 		return (
@@ -93,7 +177,10 @@ class UAGBMarketingButtonEdit extends Component {
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
-						Table Of Content
+						<h3>Table Of Content</h3>
+						<div className="uagb-toc__list">
+							<ul dangerouslySetInnerHTML={ { __html: html } }></ul>
+						</div>
 					</div>
 				</div>
 			</Fragment>

@@ -9,3 +9,18 @@
 .wp-block-uagb-marketing-button a.uagb-marketing-btn__link:before {
 	z-index: 0;
 }
+
+.uagb-toc__wrap {
+	background: #eee;
+	padding: 10px;
+	border: 1px solid #333;
+}
+
+.uagb-toc__list ul li * {
+	font-size: 16px;
+	line-height: 1.2em;
+}
+
+.editor-styles-wrapper .uagb-toc__list ul {
+	list-style: none;
+}
