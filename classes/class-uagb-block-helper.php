@@ -3630,37 +3630,31 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-marketing-btn__link:hover" => array(
 					"border-color" => $attr["borderHoverColor"]
 				),
-				" a.uagb-marketing-btn__link:before" => array(
-					"border-radius" => $attr["borderRadius"] . "px",
-				),
 			);
 
 			if ( "transparent" == $attr["backgroundType"] ) {
 
-				$selectors[" a.uagb-marketing-btn__link:before"]["background"] = "transparent";
+				$selectors[" .uagb-marketing-btn__link"]["background"] = "transparent";
 
 			} else if ( "color" == $attr["backgroundType"] ) {
 
-				$selectors[" a.uagb-marketing-btn__link:before"]["background"] = $attr["backgroundColor"];
-				$selectors[' a.uagb-marketing-btn__link:before']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+				$selectors[" .uagb-marketing-btn__link"]["background"] = UAGB_Helper::hex2rgba( $attr["backgroundColor"], $attr['backgroundOpacity'] );
 
 				// Hover Background
-				$selectors[" a.uagb-marketing-btn__link:hover:before"] = array(
-					"background" => $attr["backgroundHoverColor"],
-					"opacity" => ( isset( $attr['backgroundHoverOpacity'] ) && '' != $attr['backgroundHoverOpacity'] ) ? $attr['backgroundHoverOpacity'] / 100 : ""
+				$selectors[" .uagb-marketing-btn__link:hover"] = array(
+					"background" => UAGB_Helper::hex2rgba( $attr["backgroundHoverColor"], $attr['backgroundHoverOpacity'] ),
 				);
 
 			} else if ( "gradient" == $attr["backgroundType"] ) {
 
-				$selectors[' a.uagb-marketing-btn__link:before']['background-color'] = 'transparent';
-				$selectors[' a.uagb-marketing-btn__link:before']['opacity'] = ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+				$selectors[' .uagb-marketing-btn__link']['background-color'] = 'transparent';
 
 				if ( 'linear' === $attr['gradientType'] ) {
 
-					$selectors[' a.uagb-marketing-btn__link:before']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+					$selectors[' .uagb-marketing-btn__link']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
 				} else {
 
-					$selectors[' a.uagb-marketing-btn__link:before']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+					$selectors[' .uagb-marketing-btn__link']['background-image'] = 'radial-gradient( at center center, ' . UAGB_Helper::hex2rgba( $attr['gradientColor1'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation1'] . '%, ' . UAGB_Helper::hex2rgba( $attr['gradientColor2'], $attr['backgroundOpacity'] ) . ' ' . $attr['gradientLocation2'] . '%)';
 				}
 			}
 
