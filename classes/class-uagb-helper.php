@@ -838,7 +838,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get Post Types.
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @access public
 		 */
 		public static function get_post_types() {
@@ -871,7 +871,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get all taxonomies.
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @access public
 		 */
 		public static function get_related_taxonomy() {
@@ -961,6 +961,60 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return ( $posts_created_with_uag >= 5 );
+		}
+
+		/**
+		 *  Get - RGBA Color
+		 *
+		 *  Get HEX color and return RGBA. Default return RGB color.
+		 *
+		 * @param  var   $color      Gets the color value.
+		 * @param  var   $opacity    Gets the opacity value.
+		 * @param  array $is_array Gets an array of the value.
+		 * @since   1.11.0
+		 */
+		static public function hex2rgba( $color, $opacity = false, $is_array = false ) {
+
+			$default = $color;
+
+			// Return default if no color provided.
+			if ( empty( $color ) ) {
+				return $default;
+			}
+
+			// Sanitize $color if "#" is provided.
+			if ( '#' == $color[0] ) {
+				$color = substr( $color, 1 );
+			}
+
+			// Check if color has 6 or 3 characters and get values.
+			if ( strlen( $color ) == 6 ) {
+					$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+			} elseif ( strlen( $color ) == 3 ) {
+					$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+			} else {
+					return $default;
+			}
+
+			// Convert hexadec to rgb.
+			$rgb = array_map( 'hexdec', $hex );
+
+			// Check if opacity is set(rgba or rgb).
+			if ( false !== $opacity && '' !== $opacity ) {
+				if ( abs( $opacity ) > 1 ) {
+					$opacity = $opacity / 100;
+				}
+				$output = 'rgba(' . implode( ',', $rgb ) . ',' . $opacity . ')';
+			} else {
+				$output = 'rgb(' . implode( ',', $rgb ) . ')';
+			}
+
+			if ( $is_array ) {
+				return $rgb;
+			} else {
+				// Return rgb(a) color string.
+				return $output;
+			}
 		}
 	}
 

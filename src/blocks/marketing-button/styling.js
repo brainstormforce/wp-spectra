@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import hexToRgba from "../../../dist/blocks/uagb-controls/hexToRgba"
 
 function styling( props ) {
 
@@ -121,34 +122,33 @@ function styling( props ) {
 		" .uagb-marketing-btn__link:hover" : {
 			"border-color": borderHoverColor
 		},
-		" a.uagb-marketing-btn__link:before" : {
-			"border-radius": borderRadius + "px",
-		},
 	}
 
 	if ( "transparent" == backgroundType ) {
-		selectors[" a.uagb-marketing-btn__link:before"]["background"] = "transparent"
+
+		selectors[" .uagb-marketing-btn__link"]["background"] = "transparent"
+
 	} else if ( "color" == backgroundType ) {
-		selectors[" a.uagb-marketing-btn__link:before"]["background"] = backgroundColor
-		selectors[" a.uagb-marketing-btn__link:before"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? ( backgroundOpacity )/100 : ""
+
+		selectors[" .uagb-marketing-btn__link"]["background"] = hexToRgba( backgroundColor, backgroundOpacity )
 
 		// Hover Background
-		selectors[" a.uagb-marketing-btn__link:hover:before"] = {
-			"background" : backgroundHoverColor,
-			"opacity" : ( typeof backgroundHoverOpacity != "undefined" ) ? ( backgroundHoverOpacity )/100 : ""
+		selectors[" .uagb-marketing-btn__link:hover"] = {
+			"background" : hexToRgba( backgroundHoverColor, backgroundHoverOpacity )
 		}
 
 	} else if ( "gradient" == backgroundType ) {
-		selectors[" a.uagb-marketing-btn__link:before"]["background-color"] = "transparent"
-		selectors[" a.uagb-marketing-btn__link:before"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
+
+		selectors[" .uagb-marketing-btn__link"]["background-color"] = "transparent"
 
 		if ( "linear" === gradientType ) {
 
-			selectors[" a.uagb-marketing-btn__link:before"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			selectors[" .uagb-marketing-btn__link"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ hexToRgba( gradientColor1, backgroundOpacity ) } ${ gradientLocation1 }%, ${ hexToRgba( gradientColor2, backgroundOpacity ) } ${ gradientLocation2 }%)`
 		} else {
 
-			selectors[" a.uagb-marketing-btn__link:before"]["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			selectors[" .uagb-marketing-btn__link"]["background-image"] = `radial-gradient( at center center, ${ hexToRgba( gradientColor1, backgroundOpacity ) } ${ gradientLocation1 }%, ${ hexToRgba( gradientColor2, backgroundOpacity ) } ${ gradientLocation2 }%)`
 		}
+
 	}
 
 	let margin_type = ( "after" == iconPosition ) ? "margin-left" : "margin-right"
