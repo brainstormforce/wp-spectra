@@ -26,7 +26,7 @@ function uagb_post_timeline_callback( $attributes ) {
 
 	ob_start();
 	?>
-	<div class = "<?php echo $attributes['className']; ?> uagb-timeline__outer-wrap" id = "<?php echo $block_id; ?>" >
+	<div class = "uagb-timeline__outer-wrap" id = "<?php echo $block_id; ?>" >
 		<div  class = "uagb-timeline__content-wrap <?php echo $post_tm_class; ?>" >
 			<div class = "uagb-timeline-wrapper">
 				<div class = "uagb-timeline__main">
@@ -371,9 +371,13 @@ function uagb_register_post_timeline() {
 				'categories'              => array(
 					'type' => 'string',
 				),
-				'className'               => array(
+				'postType'                => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => 'post',
+				),
+				'taxonomyType'            => array(
+					'type'    => 'string',
+					'default' => 'category',
 				),
 				'postsToShow'             => array(
 					'type'    => 'number',

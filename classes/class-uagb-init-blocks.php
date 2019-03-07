@@ -165,7 +165,7 @@ class UAGB_Init_Blocks {
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
 			UAGB_URL . 'dist/blocks.build.js',
-			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor' ), // Dependencies, defined above.
+			array( 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-components', 'wp-editor', 'wp-api-fetch' ), // Dependencies, defined above.
 			UAGB_VER,
 			true // Enqueue the script in the footer.
 		);
@@ -227,6 +227,8 @@ class UAGB_Init_Blocks {
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
+				'post_types'        => UAGB_Helper::get_post_types(),
+				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
 			)
 		);
 	} // End function editor_assets().

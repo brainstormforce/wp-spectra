@@ -11,6 +11,10 @@ class Title extends React.Component {
 
 		let target = ( attributes.newTab ) ? "_blank" : "_self"
 
+		if ( undefined == post.title ) {
+			return null
+		}
+
 		return (
 
 			<Tag className={ "uagb-post__title" }>
