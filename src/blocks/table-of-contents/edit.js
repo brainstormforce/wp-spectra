@@ -1,13 +1,9 @@
 /**
- * BLOCK: Marketing Button
+ * BLOCK: Table of Contents
  */
 
 import classnames from "classnames"
-//import styling from "./styling"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import styling from "./styling"
 import map from "lodash/map"
 
 // Import all of our Text Options requirements.
@@ -16,7 +12,6 @@ import TypographyControl from "../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 
-let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
 
@@ -62,7 +57,7 @@ class UAGBMarketingButtonEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-marketing-btn-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
@@ -138,7 +133,10 @@ class UAGBMarketingButtonEdit extends Component {
 			if ( headings[ parseInt( matches[ i ][2] ) ] != false ) {
 
 				// list item
-				html += "<a href=\"#\">" + matches[ i ][0] + "</a>"
+				let text = matches[ i ][0]
+				text = text.replace( "<h" + matches[ i ][2] + ">", "" );
+				text = text.replace( "</h" + matches[ i ][2] + ">", "" );
+				html += "<a href=\"#\" title=\"" + text + "\">" + text + "</a>"
 			}
 
 			// end lists
@@ -189,13 +187,45 @@ class UAGBMarketingButtonEdit extends Component {
 			considerH4,
 			considerH5,
 			considerH6,
-			counter
+			counter,
+			//Color
+			linkColor,
+			linkHoverColor,
+			//Typography
+			loadGoogleFonts,
+			fontFamily,
+			fontWeight,
+			fontSubset,
+			fontSize,
+			fontSizeType,
+			fontSizeTablet,
+			fontSizeMobile,
+			lineHeightType,
+			lineHeight,
+			lineHeightTablet,
+			lineHeightMobile,
 		} = attributes
 
+		let loadGFonts
+
+		if( loadGoogleFonts == true ) {
+
+			const config = {
+				google: {
+					families: [ fontFamily + ( fontWeight ? ":" + fontWeight : "" ) ],
+				},
+			}
+
+			loadGFonts = (
+				<WebfontLoader config={ config }>
+				</WebfontLoader>
+			)
+		}
+
 		// Push Styling to Head.
-		var element = document.getElementById( "uagb-style-marketing-btn-" + this.props.clientId )
+		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
-			//element.innerHTML = styling( this.props )
+			element.innerHTML = styling( this.props )
 		}
 
 		let html = this.getTableContents()
@@ -213,19 +243,6 @@ class UAGBMarketingButtonEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<ToggleControl
-							label={ __( "Smooth Scroll" ) }
-							checked={ smoothScroll }
-							onChange={ ( value ) => setAttributes( { smoothScroll: ! smoothScroll } ) }
-						/>
-						<RangeControl
-							label={ __( "Smooth Scroll Offset (px)" ) }
-							value={ smoothScrollOffset }
-							onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
-							min={ 0 }
-							max={ 100 }
-						/>
-						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
 						<ToggleControl
 							label={ __( "H1" ) }
@@ -258,6 +275,18 @@ class UAGBMarketingButtonEdit extends Component {
 							onChange={ ( value ) => setAttributes( { considerH6: ! considerH6 } ) }
 						/>
 						<hr className="uagb-editor__separator"/>
+						<ToggleControl
+							label={ __( "Smooth Scroll" ) }
+							checked={ smoothScroll }
+							onChange={ ( value ) => setAttributes( { smoothScroll: ! smoothScroll } ) }
+						/>
+						<RangeControl
+							label={ __( "Smooth Scroll Offset (px)" ) }
+							value={ smoothScrollOffset }
+							onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
 						<SelectControl
 							label={ __( "Counter" ) }
 							value={ counter }
@@ -269,18 +298,54 @@ class UAGBMarketingButtonEdit extends Component {
 							] }
 						/>
 					</PanelBody>
+					<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+						<h2>{ __( "Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Font" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
+							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
+							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
+							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
+							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
+							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
+							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
+							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Colors" ) }</h2>
+						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
+						<ColorPalette
+							value={ linkColor }
+							onChange={ ( colorValue ) => setAttributes( { linkColor: colorValue } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
+						<ColorPalette
+							value={ linkHoverColor }
+							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
-					className
+					className,
+					`uagb-toc__align-${align}`
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
-						<h3>Table Of Content</h3>
+						<span className="uagb-toc__title">Table Of Content</span>
 						<div className="uagb-toc__list-wrap">
 							<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
 						</div>
 					</div>
 				</div>
+				{ loadGFonts }
 			</Fragment>
 		)
 	}
