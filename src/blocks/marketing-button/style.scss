@@ -26,8 +26,7 @@
 		z-index : 1;
 	}
 
-	.uagb-marketing-btn__link,
-	.uagb-marketing-btn__link:before {
+	.uagb-marketing-btn__link {
 		display: inline-block;
 		position: relative;
 		-webkit-transition: all 0.2s;
@@ -35,24 +34,11 @@
 		transition: all 0.2s;
 	}
 
-	.uagb-marketing-btn__link:before {
-		position: absolute;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		content: '';
-	}
-
 	.uagb-marketing-btn__icon-wrap {
 		width: 20px;
 		height: 20px;
 		display: flex;
 		z-index: 1;
-	}
-
-	.uagb-marketing-btn__link:before {
-		z-index: -1;
 	}
 
 	.uagb-marketing-btn__icon-wrap svg {
