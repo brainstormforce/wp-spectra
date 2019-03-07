@@ -838,7 +838,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get Post Types.
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @access public
 		 */
 		public static function get_post_types() {
@@ -871,7 +871,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get all taxonomies.
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @access public
 		 */
 		public static function get_related_taxonomy() {
@@ -971,7 +971,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  var   $color      Gets the color value.
 		 * @param  var   $opacity    Gets the opacity value.
 		 * @param  array $is_array Gets an array of the value.
-		 * @since   x.x.x
+		 * @since   1.11.0
 		 */
 		static public function hex2rgba( $color, $opacity = false, $is_array = false ) {
 

@@ -3566,7 +3566,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Marketing Button Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -3896,7 +3896,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Marketing Button block.
 		 *
-		 * @since x.x.x
+		 * @since 1.11.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_marketing_btn_gfont( $attr ) {
