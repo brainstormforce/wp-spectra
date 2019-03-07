@@ -46,6 +46,26 @@ const { withSelect } = wp.data
 
 class UAGBPostGrid extends Component {
 
+	constructor() {
+		super( ...arguments )
+		this.onSelectPostType = this.onSelectPostType.bind( this )
+		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
+	}
+
+	onSelectPostType( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postType: value } )
+		setAttributes( { categories: "" } )
+	}
+
+	onSelectTaxonomyType( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { taxonomyType: value } )
+		setAttributes( { categories: "" } )
+	}
+
 	componentDidMount() {
 
 		this.props.setAttributes( { block_id: this.props.clientId } )
@@ -60,9 +80,10 @@ class UAGBPostGrid extends Component {
 		// Caching all Props.
 		const {
 			attributes,
-			categoriesList,
 			setAttributes,
-			latestPosts
+			latestPosts,
+			categoriesList,
+			taxonomyList
 		} = this.props
 
 		// Caching all attributes.
@@ -161,7 +182,9 @@ class UAGBPostGrid extends Component {
 			excerptLength,
 			overlayOpacity,
 			bgOverlayColor,
-			linkBox
+			linkBox,
+			postType,
+			taxonomyType,
 		} = attributes
 
 		const hoverSettings = (
@@ -221,7 +244,7 @@ class UAGBPostGrid extends Component {
 		let loadCtaGoogleFonts
 
 		if( titleLoadGoogleFonts == true ) {
-					
+
 			const titleconfig = {
 				google: {
 					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
@@ -233,9 +256,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( metaLoadGoogleFonts == true ) {
-					
+
 			const metaconfig = {
 				google: {
 					families: [ metaFontFamily + ( metaFontWeight ? ":" + metaFontWeight : "" ) ],
@@ -247,9 +270,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( excerptLoadGoogleFonts == true ) {
-					
+
 			const excerptconfig = {
 				google: {
 					families: [ excerptFontFamily + ( excerptFontWeight ? ":" + excerptFontWeight : "" ) ],
@@ -261,9 +284,9 @@ class UAGBPostGrid extends Component {
 				</WebfontLoader>
 			)
 		}
-		
+
 		if( ctaLoadGoogleFonts == true ) {
-					
+
 			const ctaconfig = {
 				google: {
 					families: [ ctaFontFamily + ( ctaFontWeight ? ":" + ctaFontWeight : "" ) ],
@@ -276,18 +299,62 @@ class UAGBPostGrid extends Component {
 			)
 		}
 
+
+		let taxonomyListOptions = [
+			{ value: "", label: __( "Select Taxonomy" ) }
+		]
+
+		let categoryListOptions = [
+			{ value: "", label: __( "All" ) }
+		]
+
+		if ( "" != taxonomyList ) {
+			Object.keys( taxonomyList ).map( ( item, thisIndex ) => {
+				return taxonomyListOptions.push( { value : taxonomyList[item]["name"], label: taxonomyList[item]["label"] } )
+			} )
+		}
+
+		if ( "" != categoriesList ) {
+			Object.keys( categoriesList ).map( ( item, thisIndex ) => {
+				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
+			} )
+		}
+
 		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
+					<SelectControl
+						label={ __( "Post Type" ) }
+						value={ postType }
+						onChange={ ( value ) => this.onSelectPostType( value ) }
+						options={ uagb_blocks_info.post_types }
+					/>
+					<hr className="uagb-editor__separator" />
+					{ "" != taxonomyList &&
+						<SelectControl
+							label={ __( "Taxonomy" ) }
+							value={ taxonomyType }
+							onChange={ ( value ) => this.onSelectTaxonomyType( value ) }
+							options={ taxonomyListOptions }
+						/>
+					}
+					{ "" != categoriesList &&
+						<Fragment>
+							<SelectControl
+								label={ taxonomyList[taxonomyType]["label"] }
+								value={ categories }
+								onChange={ ( value ) => setAttributes( { categories: value } ) }
+								options={ categoryListOptions }
+							/>
+							<hr className="uagb-editor__separator" />
+						</Fragment>
+					}
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						categoriesList={ categoriesList }
-						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
-						onCategoryChange={ ( value ) => setAttributes( { categories: "" !== value ? value : undefined } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
@@ -568,7 +635,7 @@ class UAGBPostGrid extends Component {
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
 						] }
-					/>		
+					/>
 					<TypographyControl
 						label={ __( "Title Tag" ) }
 						attributes = { attributes }
@@ -585,10 +652,10 @@ class UAGBPostGrid extends Component {
 						lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
 						lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
 						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
-					/>	
-					
+					/>
+
 					{ ( displayPostAuthor || displayPostDate || displayPostComment ) && <Fragment>
-						<hr className="uagb-editor__separator" />				
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
 							label={ __( "Meta Tag" ) }
@@ -611,7 +678,7 @@ class UAGBPostGrid extends Component {
 					}
 
 					{ displayPostExcerpt &&	<Fragment>
-						<hr className="uagb-editor__separator" />				
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Excerpt" ) }</h2>
 						<TypographyControl
 							label={ __( "Excerpt Tag" ) }
@@ -745,10 +812,7 @@ class UAGBPostGrid extends Component {
 			return (
 				<Fragment>
 					{ inspectorControls }
-					<Placeholder
-						icon="admin-post"
-						label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }
-					>
+					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
 							__( "No posts found." )
@@ -781,19 +845,41 @@ class UAGBPostGrid extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-	const { categories, postsToShow, order, orderBy } = props.attributes
+
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
 	const { getEntityRecords } = select( "core" )
-	const latestPostsQuery = pickBy( {
-		categories: categories,
+
+	let allTaxonomy = uagb_blocks_info.all_taxonomy
+	let currentTax = allTaxonomy[postType]
+	let taxonomy = ""
+	let categoriesList = []
+	let rest_base = ""
+
+	if ( "undefined" != typeof currentTax ) {
+
+		if ( "undefined" != typeof currentTax["taxonomy"][taxonomyType] ) {
+			rest_base = ( currentTax["taxonomy"][taxonomyType]["rest_base"] == false || currentTax["taxonomy"][taxonomyType]["rest_base"] == null ) ? currentTax["taxonomy"][taxonomyType]["name"] : currentTax["taxonomy"][taxonomyType]["rest_base"]
+		}
+
+		if ( "" != taxonomyType ) {
+			if ( "undefined" != typeof currentTax["terms"] && "undefined" != typeof currentTax["terms"][taxonomyType] ) {
+				categoriesList = currentTax["terms"][taxonomyType]
+			}
+		}
+	}
+
+	let latestPostsQuery = {
 		order: order,
 		orderby: orderBy,
 		per_page: postsToShow,
-	}, ( value ) => ! isUndefined( value ) )
-	const categoriesListQuery = {
-		per_page: 100,
 	}
+
+	latestPostsQuery[rest_base] = categories
+
 	return {
-		latestPosts: getEntityRecords( "postType", "post", latestPostsQuery ),
-		categoriesList: getEntityRecords( "taxonomy", "category", categoriesListQuery ),
+		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
+		categoriesList: categoriesList,
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
 	}
+
 } )( UAGBPostGrid )

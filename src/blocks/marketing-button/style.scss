@@ -1,0 +1,107 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-uagb-marketing-button {
+
+	.uagb-marketing-btn__wrap > p,
+	p:empty {
+		display: none;
+	}
+
+	h6.uagb-marketing-btn__title,
+	p.uagb-marketing-btn__prefix {
+		margin: 0;
+	}
+
+	.uagb-marketing-btn__wrap {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+	}
+
+	.uagb-marketing-btn__link {
+		z-index : 1;
+	}
+
+	.uagb-marketing-btn__link {
+		display: inline-block;
+		position: relative;
+		-webkit-transition: all 0.2s;
+		-o-transition: all 0.2s;
+		transition: all 0.2s;
+	}
+
+	.uagb-marketing-btn__icon-wrap {
+		width: 20px;
+		height: 20px;
+		display: flex;
+		z-index: 1;
+	}
+
+	.uagb-marketing-btn__icon-wrap svg {
+		width: inherit;
+		height: inherit;
+	}
+
+	.uagb-marketing-btn__title-wrap {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-align: center;
+		  -ms-flex-align: center;
+		      align-items: center;
+	}
+
+	&.uagb-marketing-btn__align-center .uagb-marketing-btn__wrap,
+	&.uagb-marketing-btn__align-text-center .uagb-marketing-btn__title-wrap {
+		-webkit-box-pack: center;
+		-ms-flex-pack: center;
+		justify-content: center;
+	}
+
+	&.uagb-marketing-btn__align-left .uagb-marketing-btn__wrap,
+	&.uagb-marketing-btn__align-text-left .uagb-marketing-btn__title-wrap {
+		-webkit-box-pack: start;
+		-ms-flex-pack: start;
+		justify-content: flex-start;
+	}
+
+	&.uagb-marketing-btn__align-right .uagb-marketing-btn__wrap,
+	&.uagb-marketing-btn__align-text-right .uagb-marketing-btn__title-wrap {
+		-webkit-box-pack: end;
+		-ms-flex-pack: end;
+		justify-content: flex-end;
+	}
+
+	&.uagb-marketing-btn__align-full .uagb-marketing-btn__link {
+		width: 100%;
+	}
+
+	&.uagb-marketing-btn__align-text-center .uagb-marketing-btn__prefix-wrap {
+		text-align: center;
+	}
+
+	&.uagb-marketing-btn__align-text-left .uagb-marketing-btn__prefix-wrap {
+		text-align: left;
+	}
+
+	&.uagb-marketing-btn__align-text-right .uagb-marketing-btn__prefix-wrap {
+		text-align: right;
+	}
+
+	&.uagb-marketing-btn__icon-after .uagb-marketing-btn__title-wrap {
+		-webkit-box-orient: horizontal;
+		-webkit-box-direction: reverse;
+		  -ms-flex-direction: row-reverse;
+		      flex-direction: row-reverse;
+	}
+}
+
+.entry-content {
+	.wp-block-uagb-marketing-button .uagb-marketing-btn__link {
+		text-decoration: none;
+	}
+}

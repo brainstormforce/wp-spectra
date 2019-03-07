@@ -62,7 +62,7 @@ registerBlockType( "uagb/content-timeline", {
 			t_date,
 			date_icon,
 			stack,
-			className
+			timelineItem
 		} = props.attributes
 
 		/* Style for elements */
@@ -79,7 +79,7 @@ registerBlockType( "uagb/content-timeline", {
 
 		return (
 			<div  className={ classnames(
-				className,
+				props.className,
 				"uagb-timeline__outer-wrap"
 			) }
 			id = { `uagb-ctm-${block_id}` } >
@@ -92,6 +92,11 @@ registerBlockType( "uagb/content-timeline", {
 							<div className = "uagb-timeline__days">
 								{
 									tm_content.map((post,index) => {
+
+										if ( timelineItem <= index ) {
+											return
+										}
+
 										var second_index = "uagb-"+index
 										if(timelinAlignment == "center"){
 											display_inner_date = true

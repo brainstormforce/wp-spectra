@@ -280,7 +280,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/cf7-styler':
 					$css .= UAGB_Block_Helper::get_cf7_styler_css( $blockattr, $block_id );
-					 UAGB_Block_Helper::blocks_cf7_styler_gfont( $blockattr );
+					UAGB_Block_Helper::blocks_cf7_styler_gfont( $blockattr );
+					break;
+
+				case 'uagb/marketing-button':
+					$css .= UAGB_Block_Helper::get_marketing_btn_css( $blockattr, $block_id );
+					UAGB_Block_Helper::blocks_marketing_btn_gfont( $blockattr );
 					break;
 
                 default:
@@ -764,11 +769,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$query_args = array(
 				'posts_per_page'      => ( isset( $attributes['postsToShow'] ) ) ? $attributes['postsToShow'] : 6,
 				'post_status'         => 'publish',
+				'post_type'           => ( isset( $attributes['postType'] ) ) ? $attributes['postType'] : 'post',
 				'order'               => ( isset( $attributes['order'] ) ) ? $attributes['order'] : 'desc',
 				'orderby'             => ( isset( $attributes['orderBy'] ) ) ? $attributes['orderBy'] : 'date',
-				'category__in'        => ( isset( $attributes['categories'] ) ) ? $attributes['categories'] : '',
 				'ignore_sticky_posts' => 1,
 			);
+
+			if ( isset( $attributes['categories'] ) && '' != $attributes['categories'] ) {
+
+				$query_args['tax_query'][] = array(
+					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
+					'field'    => 'id',
+					'terms'    => $attributes['categories'],
+					'operator' => 'IN',
+				);
+			}
 
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
 
@@ -821,6 +836,90 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
+		 * Get Post Types.
+		 *
+		 * @since 1.11.0
+		 * @access public
+		 */
+		public static function get_post_types() {
+
+			$post_types = get_post_types(
+				array(
+					'public'       => true,
+					'show_in_rest' => true,
+				),
+				'objects'
+			);
+
+			$options = array();
+
+			foreach ( $post_types as $post_type ) {
+
+				if ( 'product' == $post_type->name ) {
+					continue;
+				}
+
+				$options[] = array(
+					'value' => $post_type->name,
+					'label' => $post_type->label,
+				);
+			}
+
+			return apply_filters( 'uagb_loop_post_types', $options );
+		}
+
+		/**
+		 * Get all taxonomies.
+		 *
+		 * @since 1.11.0
+		 * @access public
+		 */
+		public static function get_related_taxonomy() {
+
+			$post_types = self::get_post_types();
+
+			$return_array = array();
+
+			foreach ( $post_types as $key => $value ) {
+
+				$post_type = $value['value'];
+
+				$taxonomies = get_object_taxonomies( $post_type, 'objects' );
+				$data       = array();
+
+				foreach ( $taxonomies as $tax_slug => $tax ) {
+
+					if ( ! $tax->public || ! $tax->show_ui ) {
+						continue;
+					}
+
+					$data[ $tax_slug ] = $tax;
+
+					$terms = get_terms( $tax_slug );
+
+					$related_tax = array();
+
+					if ( ! empty( $terms ) ) {
+
+						foreach ( $terms as $t_index => $t_obj ) {
+
+							$related_tax[] = array(
+								'id'   => $t_obj->term_id,
+								'name' => $t_obj->name,
+							);
+						}
+
+						$return_array[ $post_type ]['terms'][ $tax_slug ] = $related_tax;
+					}
+				}
+
+				$return_array[ $post_type ]['taxonomy'] = $data;
+			}
+
+			return apply_filters( 'uagb_post_loop_taxonomies', $return_array );
+		}
+
+		/**
 		 * Get flag if more than 5 pages are build using UAG.
 		 *
 		 * @since  1.10.0
@@ -862,6 +961,60 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return ( $posts_created_with_uag >= 5 );
+		}
+
+		/**
+		 *  Get - RGBA Color
+		 *
+		 *  Get HEX color and return RGBA. Default return RGB color.
+		 *
+		 * @param  var   $color      Gets the color value.
+		 * @param  var   $opacity    Gets the opacity value.
+		 * @param  array $is_array Gets an array of the value.
+		 * @since   1.11.0
+		 */
+		static public function hex2rgba( $color, $opacity = false, $is_array = false ) {
+
+			$default = $color;
+
+			// Return default if no color provided.
+			if ( empty( $color ) ) {
+				return $default;
+			}
+
+			// Sanitize $color if "#" is provided.
+			if ( '#' == $color[0] ) {
+				$color = substr( $color, 1 );
+			}
+
+			// Check if color has 6 or 3 characters and get values.
+			if ( strlen( $color ) == 6 ) {
+					$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
+			} elseif ( strlen( $color ) == 3 ) {
+					$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
+			} else {
+					return $default;
+			}
+
+			// Convert hexadec to rgb.
+			$rgb = array_map( 'hexdec', $hex );
+
+			// Check if opacity is set(rgba or rgb).
+			if ( false !== $opacity && '' !== $opacity ) {
+				if ( abs( $opacity ) > 1 ) {
+					$opacity = $opacity / 100;
+				}
+				$output = 'rgba(' . implode( ',', $rgb ) . ',' . $opacity . ')';
+			} else {
+				$output = 'rgb(' . implode( ',', $rgb ) . ')';
+			}
+
+			if ( $is_array ) {
+				return $rgb;
+			} else {
+				// Return rgb(a) color string.
+				return $output;
+			}
 		}
 	}
 
