@@ -77,6 +77,7 @@ We also have an informative and detailed article that will help you to <a href="
  	<li><a href="https://www.ultimategutenberg.com/blocks/contact-form-7-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Contact Form 7 Styler </a>: The Contact Form 7 Styler is an easy to use Gutenberg block that allows to fully customize and design the existing Contact Form 7 forms on your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/google-map/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
+	<li><a href="https://www.ultimategutenberg.com/blocks/gravity-forms-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Create an attractive and simple Gravity Forms Styler for your WordPress website and make it easy for users to contact you.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/marketing-button/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Marketing Button </a>: The Marketing Button block allows you to create trendy CTA that aim at attracting the audience with conversion oriented text and a stunning button with lots of customization.</li>
@@ -149,7 +150,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+
 = 1.11.1.1 =
+* New: Gravity Forms Styler
 * Fix: Testimonial - CSS conflict fixed
 
 = 1.11.1 =
