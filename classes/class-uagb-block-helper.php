@@ -3705,6 +3705,70 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tablet . $mobile;
 		}
 
+		/**
+		 * Get Table of Contents Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_table_of_contents_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				" .uagb-toc__list-wrap ul li a:hover" => array(
+					"color" => $attr["linkHoverColor"],
+				),
+				" .uagb-toc__list-wrap ul li a" => array(
+					"font-size" => $attr["fontSize"] . $attr["fontSizeType"],
+					"line-height" => $attr["lineHeight"] . $attr["lineHeightType"],
+					"font-family" => $attr["fontFamily"],
+					"font-weight" => $attr["fontWeight"],
+					"color" => $attr["linkColor"],
+				),
+				" .uagb-toc__wrap" => array(
+					"border-style" => $attr["borderStyle"],
+					"border-width" => $attr["borderWidth"] . "px",
+					"border-color" => $attr["borderColor"],
+					"border-radius" => $attr["borderRadius"] . "px",
+				),
+			);
+
+
+			$m_selectors = array(
+				' .uagb-toc__list-wrap ul li a'        => array(
+					'font-size' => $attr['fontSizeMobile'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
+				),
+
+			);
+
+			$t_selectors = array(
+				' .uagb-toc__list-wrap ul li a'        => array(
+					'font-size' => $attr['fontSizeTablet'] . $attr['fontSizeType'],
+					'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
+				),
+
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-toc-' . $id );
+
+			$tablet = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-toc-' . $id, 'tablet' );
+
+			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-toc-' . $id, 'mobile' );
+
+			return $desktop . $tablet . $mobile;
+		}
+
 
 		/**
 		 * Get Testimonial Js

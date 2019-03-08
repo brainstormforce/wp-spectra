@@ -8,6 +8,7 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
+import generateContent from "./generateContent"
 
 
 const { __ } = wp.i18n
@@ -30,6 +31,27 @@ registerBlockType( "uagb/table-of-contents", {
 	attributes,
 	edit,
 	save: props => {
-		return null
+
+		const {
+			align,
+			block_id
+		} = props.attributes
+
+		let html = generateContent( props )
+
+		return (
+			<div className={ classnames(
+				props.className,
+				`uagb-toc__align-${align}`
+			) }
+			id={ `uagb-toc-${ block_id }` }>
+				<div className="uagb-toc__wrap">
+					<span className="uagb-toc__title">Table Of Content</span>
+					<div className="uagb-toc__list-wrap">
+						<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
+					</div>
+				</div>
+			</div>
+		)
 	},
 } )

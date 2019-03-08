@@ -2,48 +2,48 @@ const { __ } = wp.i18n
 
 const attributes = {
 	block_id : {
-		type    : 'string',
-		default : 'not_set',
+		type    : "string",
+		default : "not_set",
 	},
 	smoothScroll : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	smoothScrollOffset : {
-		type    : 'number',
+		type    : "number",
 		default : 30,
 	},
 	considerH1 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	considerH2 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	considerH3 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	considerH4 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	considerH5 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	considerH6 : {
-		type    : 'boolean',
+		type    : "boolean",
 		default : true,
 	},
 	counter : {
-		type    : 'string',
-		default : 'none',
+		type    : "string",
+		default : "none",
 	},
 	align : {
-		type    : 'string',
-		default : 'left',
+		type    : "string",
+		default : "left",
 	},
 
 	// Color
@@ -53,6 +53,23 @@ const attributes = {
 	},
 	linkHoverColor: {
 		type: "string"
+	},
+
+	// Border
+	borderStyle : {
+		type: "string",
+		default: "solid"
+	},
+	borderWidth : {
+		type: "number",
+		default: 1
+	},
+	borderRadius : {
+		type: "number"
+	},
+	borderColor : {
+		type: "string",
+		default: "#333"
 	},
 
 

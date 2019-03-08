@@ -11,6 +11,11 @@ function styling( props ) {
 		//Color
 		linkColor,
 		linkHoverColor,
+		//Border
+		borderStyle,
+		borderWidth,
+		borderRadius,
+		borderColor,
 		//Typography
 		loadGoogleFonts,
 		fontFamily,
@@ -31,27 +36,33 @@ function styling( props ) {
 	var mobile_selectors = {}
 
 	selectors = {
-		" .uagb-toc__list-wrap ul li" : {
+		" .uagb-toc__list-wrap ul li a" : {
 			"font-size" : fontSize + fontSizeType,
 			"line-height" : lineHeight + lineHeightType,
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
 			"color": linkColor,
 		},
-		" .uagb-toc__list-wrap ul li:hover" : {
+		" .uagb-toc__list-wrap ul li a:hover" : {
 			"color": linkHoverColor,
+		},
+		" .uagb-toc__wrap" : {
+			"border-style": borderStyle,
+			"border-width": borderWidth + "px",
+			"border-color": borderColor,
+			"border-radius": borderRadius + "px",
 		}
 	}
 
 	tablet_selectors = {
-		" .uagb-toc__list-wrap ul li" : {
+		" .uagb-toc__list-wrap ul li a" : {
 			"font-size": fontSizeTablet + fontSizeType,
 			"line-height": lineHeightTablet + lineHeightType,
 		}
 	}
 
 	mobile_selectors = {
-		" .uagb-toc__list-wrap ul li" : {
+		" .uagb-toc__list-wrap ul li a" : {
 			"font-size": fontSizeMobile + fontSizeType,
 			"line-height": lineHeightMobile + lineHeightType,
 		}
