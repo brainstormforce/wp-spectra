@@ -31,7 +31,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 * @var array Notices.
 		 * @since 1.4.0
 		 */
-		private static $version = '1.1.0';
+		private static $version = '1.1.2';
 
 		/**
 		 * Notices
@@ -133,7 +133,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 * @return void
 		 */
 		public function enqueue_scripts() {
-			wp_register_script( 'astra-notices', self::_get_uri() . 'notices.js', array( 'jquery' ), null, self::$version );
+			wp_register_script( 'astra-notices', self::_get_uri() . 'notices.js', array( 'jquery' ), self::$version, true );
 		}
 
 		/**
@@ -228,6 +228,22 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		}
 
 		/**
+		 * Function to check if the notice is expired or not.
+		 *
+		 * Pass Notice ID to this function to check if the notice is expired or not.
+		 *
+		 * @since 1.7.0
+		 * @param  array $id Notice id.
+		 * @return boolean
+		 */
+		public static function is_notice_expired( $id ) {
+			if ( self::is_expired( $id ) ) {
+				return true;
+			}
+			return false;
+		}
+
+		/**
 		 * Notice classes.
 		 *
 		 * @since 1.4.0
@@ -275,7 +291,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 
 			if ( false === $transient_status ) {
 
-				if ( false !== $notice['display-notice-after'] ) {
+				if ( isset( $notice['display-notice-after'] ) && false !== $notice['display-notice-after'] ) {
 
 					if ( 'delayed-notice' !== get_user_meta( get_current_user_id(), $notice['id'], true ) &&
 						'notice-dismissed' !== get_user_meta( get_current_user_id(), $notice['id'], true ) ) {
