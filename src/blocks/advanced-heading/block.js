@@ -103,44 +103,44 @@ registerBlockType( "uagb/advanced-heading", {
 				<RichText.Content
 					tagName="p"
 					value={ headingDesc }
-					className='uagb-desc-text'
+					className='uagb-desc-text'					
 				/>
 			</div>
 		)
 	},
 	deprecated: [
 		{
-		attributes,
-		save: function( props ) {
+			attributes,			
+			save: function( props ) {
 
-			const {
-				block_id,
-				headingTitle,
-				headingDesc,
-				headingTag,
-				seperatorStyle
-			} = props.attributes
+				const {
+					block_id,
+					headingTitle,
+					headingDesc,
+					headingTag,
+					seperatorStyle
+				} = props.attributes
 
-			var seprator_output =  ""
-			if( seperatorStyle !== "none" ){
-				seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
-			}
-			return (
-				<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
-					<RichText.Content
-						tagName={ headingTag }
-						value={ headingTitle }
-						className='uagb-heading-text'					
-					/>
-					{seprator_output}
-					<RichText.Content
-						tagName="p"
-						value={ headingDesc }
-						className='uagb-desc-text'
-					/>
-				</div>
-			)
-		},
+				var seprator_output =  ""
+				if( seperatorStyle !== "none" ){
+					seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
+				}
+				return (
+					<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
+						<RichText.Content
+							tagName={ headingTag }
+							value={ headingTitle }
+							className='uagb-heading-text'					
+						/>
+						{seprator_output}
+						<RichText.Content
+							tagName="p"
+							value={ headingDesc }
+							className='uagb-desc-text'
+						/>
+					</div>
+				)
+			},
 		}
 	],
 } )
