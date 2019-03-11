@@ -224,6 +224,7 @@ class UAGB_Init_Blocks {
 				'category'          => 'uagb',
 				'ajax_url'          => admin_url( 'admin-ajax.php' ),
 				'cf7_forms'         => $this->get_cf7_forms(),
+				'gf_forms'          => $this->get_gravity_forms(),
 				'tablet_breakpoint' => UAGB_TABLET_BREAKPOINT,
 				'mobile_breakpoint' => UAGB_MOBILE_BREAKPOINT,
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
@@ -270,6 +271,42 @@ class UAGB_Init_Blocks {
 		}
 		return $field_options;
 	}
+
+	/**
+	 * Returns all gravity forms with ids
+	 *
+	 * @since x.x.x
+	 * @return array Key Value paired array.
+	 */
+	public function get_gravity_forms() {
+
+		$field_options = array();
+
+		if ( class_exists( 'GFForms' ) ) {
+			$forms            = RGFormsModel::get_forms( null, 'title' );
+			$field_options[0] = array(
+				'value' => -1,
+				'label' => __( 'Select Form', 'ultimate-addons-for-gutenberg' ),
+			);
+			if ( is_array( $forms ) ) {
+				foreach ( $forms as $form ) {
+					$field_options[] = array(
+						'value' => $form->id,
+						'label' => $form->title,
+					);
+				}
+			}
+		}
+
+		if ( empty( $field_options ) ) {
+			$field_options = array(
+				'-1' => __( 'You have not added any Gravity Forms yet.', 'uael' ),
+			);
+		}
+
+		return $field_options;
+	}
+
 }
 
 /**
