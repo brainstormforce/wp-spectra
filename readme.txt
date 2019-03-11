@@ -154,6 +154,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.11.1.1 =
 * New: Gravity Forms Styler
 * Fix: Testimonial - CSS conflict fixed
+* Fix: Social Share - Email option opens a new browser tab issue.
 
 = 1.11.1 =
 * Fix: PHP Error - Conflict with Astra v1.7.0
