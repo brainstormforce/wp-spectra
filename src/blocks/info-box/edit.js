@@ -514,12 +514,13 @@ class UAGBinfoBox extends Component {
 							checked={ ctaTarget }
 							onChange={ this.toggleTarget }
 						/>
-						<hr className="uagb-editor__separator" />
+						
 					</Fragment>
 				}
 
 				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
 					<Fragment>
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Button Icon" ) }</h2>
 						<FontIconPicker {...cta_icon_props} />
 						{ ctaIcon != "" && <Fragment>
@@ -1096,7 +1097,9 @@ class UAGBinfoBox extends Component {
 		)
 
 		const output = (
-			<div className = { classnames( "uagb-infobox__content-wrap", ...InfoBoxPositionClasses( attributes ) ) }>
+			<div className = { classnames( "uagb-infobox__content-wrap", 
+				( ctaType == 'all' ? " uagb-infobox_cta-type-all" : "" ),
+				...InfoBoxPositionClasses( attributes ) ) }>
 				<div className = "uagb-ifb-left-right-wrap">
 					{ ( iconimgPosition == "left") &&
 							is_image
@@ -1158,12 +1161,14 @@ class UAGBinfoBox extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-infobox__outer-wrap"
+					"uagb-infobox__outer-wrap",
 				) }
 				id = { `uagb-infobox-${ this.props.clientId }` }
 				>
-					{ ( ctaType == "all") &&
-						<a className = "uagb-infobox-link-wrap" rel ="noopener noreferrer" > {output}</a>
+					{ ( ctaType == "all") &&<Fragment>
+						<a className = "uagb-infobox-link-wrap uagb-infbox__link-to-all" rel ="noopener noreferrer"></a>
+						{output}
+						</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
 				</div>

@@ -153,6 +153,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.11.1.1 =
 * New: Gravity Forms Styler
+* Fix: Info Box - CTA type of Complete Box structure change.
 * Fix: Testimonial - CSS conflict fixed
 * Fix: Social Share - Email option opens a new browser tab issue.
 

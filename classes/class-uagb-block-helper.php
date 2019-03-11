@@ -784,6 +784,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
+				
+				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
+					'fill' => $attr['iconHover'] ,
+				),
+
 				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 					'margin-left'   => $attr['iconLeftMargin'].'px',
 					'margin-right'  => $attr['iconRightMargin'].'px',
