@@ -13,6 +13,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 
+
 		/**
 		 * Get Section Block CSS
 		 *
@@ -4337,8 +4338,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			?>
 				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
 					var social_url = jQuery( this ).data( "href" );
+					var target = "";
+					if( social_url == "mailto:?body=" ){
+						target = "_self";
+					}
 					var request_url = social_url + window.location.href ;
-					window.open( request_url );
+					window.open( request_url,target );
 				});
 			<?php
 		}
