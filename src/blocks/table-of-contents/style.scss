@@ -8,7 +8,10 @@
 
 	.uagb-toc__wrap {
 		display: inline-block;
-		padding: 30px;
+	}
+
+	ul.uagb-toc__list {
+		margin: 0;
 	}
 
 	.uagb-toc__title {
@@ -20,7 +23,6 @@
 	.uagb-toc__list-wrap ul {
 		list-style: none;
 		padding: 0;
-		margin: 0;
 	}
 
 	.uagb-toc__list-wrap ul li a {

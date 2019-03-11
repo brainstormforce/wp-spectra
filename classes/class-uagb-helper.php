@@ -400,6 +400,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
                     break;
 
+				case 'uagb/table-of-contents':
+					$js .= UAGB_Block_Helper::get_table_of_contents_js( $blockattr, $block_id );
+					break;
+
                 default:
                     // Nothing to do here.
                     break;

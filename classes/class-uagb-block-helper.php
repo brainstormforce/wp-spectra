@@ -784,7 +784,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
-				
+
 				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
@@ -4265,6 +4265,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-width" => $attr["borderWidth"] . "px",
 					"border-color" => $attr["borderColor"],
 					"border-radius" => $attr["borderRadius"] . "px",
+					"padding-left" => $attr["hPadding"] . "px",
+					"padding-right" => $attr["hPadding"] . "px",
+					"padding-top" => $attr["vPadding"] . "px",
+					"padding-bottom" => $attr["vPadding"] . "px",
+					"background" => $attr["backgroundColor"],
 				),
 			);
 
@@ -4415,6 +4420,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					window.open( request_url,target );
 				});
 			<?php
+		}
+
+		/**
+		 * Get Table of Contents Js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_table_of_contents_js( $attr, $id ) {
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selector =	'#uagb-toc-'. $id;
+			?>
+				jQuery( document ).ready(function() {
+					UAGBTableOfContents._run( <?php echo json_encode( $attr ); ?>, '<?php echo $selector; ?>' );
+				})
+			<?php
+
+			// @codingStandardsIgnoreEnd.
 		}
 
 		/**

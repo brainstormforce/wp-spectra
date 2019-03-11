@@ -2,6 +2,8 @@
  * Returns Dynamic Generated Table of Contents
  */
 
+import getMapping from "./getMapping"
+
 function generateContent( props ) {
 
 	const { attributes, setAttributes, isSelected, className } = props
@@ -15,10 +17,7 @@ function generateContent( props ) {
 		considerH6,
 	} = attributes
 
-	let this_post = wp.data.select("core/editor").getCurrentPost()
-	let content = this_post.content
-	let matches = []
-	let m
+	let matches = getMapping( props )
 	let headings = {
 		1 : ( considerH1 ) ? "1" : false,
 		2 : ( considerH2 ) ? "2" : false,
@@ -31,18 +30,8 @@ function generateContent( props ) {
 	let html               = ""
 	let numbered_items     = []
 	let numbered_items_min = null
-	let collision_collector = []
+	let charEntity = [ "&amp;", "&gt;", "&lt;", "&quot;", "&#39;" ]
 
-	const regex = /(<h([1-6]{1})[^>]*>).*<\/h\2>/gm
-
-	while (( m = regex.exec( content ) ) !== null) {
-		// This is necessary to avoid infinite loops with zero-width matches
-		if ( m.index === regex.lastIndex ) {
-			regex.lastIndex++
-		}
-
-		matches.push( m )
-	}
 
 	// find the minimum heading to establish our baseline
 	for ( var j = 0; j < matches.length; j ++ ) {
@@ -77,7 +66,11 @@ function generateContent( props ) {
 			let text = matches[ i ][0]
 			text = text.replace( "<h" + matches[ i ][2] + ">", "" )
 			text = text.replace( "</h" + matches[ i ][2] + ">", "" )
-			let text_link = text.replace( " ", "_" )
+			let text_without_chars = text
+			for ( var k = 0 ; k < charEntity.length; k++ ) {
+				text_without_chars = text_without_chars.split(charEntity[k]).join("")
+			}
+			let text_link = text_without_chars.replace(/ /g,"_")
 			html += "<a href=\"#" + text_link + "\" title=\"" + text + "\">" + text + "</a>"
 		}
 

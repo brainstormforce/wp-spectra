@@ -9,8 +9,12 @@ function styling( props ) {
 	const {
 		counter,
 		//Color
+		backgroundColor,
 		linkColor,
 		linkHoverColor,
+		//Padding,
+		vPadding,
+		hPadding,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -51,7 +55,12 @@ function styling( props ) {
 			"border-width": borderWidth + "px",
 			"border-color": borderColor,
 			"border-radius": borderRadius + "px",
-		}
+			"padding-left": hPadding + "px",
+			"padding-right": hPadding + "px",
+			"padding-top": vPadding + "px",
+			"padding-bottom": vPadding + "px",
+			"background": backgroundColor
+		},
 	}
 
 	tablet_selectors = {

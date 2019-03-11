@@ -5,9 +5,17 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
+	mapping : {
+		type : "array",
+		default : []
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,
+	},
+	smoothScrollDelay : {
+		type    : "number",
+		default : 800,
 	},
 	smoothScrollOffset : {
 		type    : "number",
@@ -47,12 +55,25 @@ const attributes = {
 	},
 
 	// Color
+	backgroundColor: {
+		type: "string"
+	},
 	linkColor: {
 		type: "string",
 		default: "#333"
 	},
 	linkHoverColor: {
 		type: "string"
+	},
+
+	// Padding
+	vPadding :{
+		type: "number",
+		default: 30,
+	},
+	hPadding :{
+		type: "number",
+		default: 30,
 	},
 
 	// Border

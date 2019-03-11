@@ -6,6 +6,8 @@ import classnames from "classnames"
 import styling from "./styling"
 import map from "lodash/map"
 import generateContent from "./generateContent"
+import getMapping from "./getMapping"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -43,13 +45,14 @@ const {
 } = wp.components
 
 
-class UAGBMarketingButtonEdit extends Component {
+class UAGBTableOfContentsEdit extends Component {
 
 
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { mapping: getMapping( this.props ) } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
@@ -65,6 +68,7 @@ class UAGBMarketingButtonEdit extends Component {
 			align,
 			smoothScroll,
 			smoothScrollOffset,
+			smoothScrollDelay,
 			considerH1,
 			considerH2,
 			considerH3,
@@ -73,8 +77,12 @@ class UAGBMarketingButtonEdit extends Component {
 			considerH6,
 			counter,
 			//Color
+			backgroundColor,
 			linkColor,
 			linkHoverColor,
+			//Padding,
+			vPadding,
+			hPadding,
 			//Border
 			borderStyle,
 			borderWidth,
@@ -169,13 +177,24 @@ class UAGBMarketingButtonEdit extends Component {
 							checked={ smoothScroll }
 							onChange={ ( value ) => setAttributes( { smoothScroll: ! smoothScroll } ) }
 						/>
-						<RangeControl
-							label={ __( "Smooth Scroll Offset (px)" ) }
-							value={ smoothScrollOffset }
-							onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
-							min={ 0 }
-							max={ 100 }
-						/>
+						{ smoothScroll &&
+							<Fragment>
+								<RangeControl
+									label={ __( "Smooth Scroll Offset (px)" ) }
+									value={ smoothScrollOffset }
+									onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
+									min={ 0 }
+									max={ 100 }
+								/>
+								<RangeControl
+									label={ __( "Scroll Animation Delay (ms)" ) }
+									value={ smoothScrollDelay }
+									onChange={ ( value ) => setAttributes( { smoothScrollDelay: value } ) }
+									min={ 100 }
+									max={ 1000 }
+								/>
+							</Fragment>
+						}
 						<SelectControl
 							label={ __( "Counter" ) }
 							value={ counter }
@@ -208,19 +227,42 @@ class UAGBMarketingButtonEdit extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Colors" ) }</h2>
-						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+						<ColorPalette
+							value={ backgroundColor }
+							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
 						<ColorPalette
 							value={ linkColor }
 							onChange={ ( colorValue ) => setAttributes( { linkColor: colorValue } ) }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
+						<p className="uagb-setting-label">{ __( "Content Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
 						<ColorPalette
 							value={ linkHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Padding (px)" ) }</h2>
+						<RangeControl
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-margin-control" }
+							value={ vPadding }
+							onChange={ ( value ) => setAttributes( { vPadding: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+						<RangeControl
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-margin-control" }
+							value={ hPadding }
+							onChange={ ( value ) => setAttributes( { hPadding: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
 						<h2>{ __( "Border" ) }</h2>
 						<SelectControl
 							label={ __( "Border Style" ) }
@@ -286,4 +328,4 @@ class UAGBMarketingButtonEdit extends Component {
 	}
 }
 
-export default UAGBMarketingButtonEdit
+export default UAGBTableOfContentsEdit
