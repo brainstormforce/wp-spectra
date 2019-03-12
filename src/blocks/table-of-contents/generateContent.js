@@ -46,7 +46,7 @@ function generateContent( props ) {
 	for ( var i = 0; i < matches.length; i ++ ) {
 
 		if ( headings[ parseInt( matches[ i ][2] ) ] == false ) {
-			return
+			continue
 		}
 
 		if ( current_depth == parseInt( matches[ i ][2] ) ) {
