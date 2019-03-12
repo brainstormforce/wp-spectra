@@ -445,13 +445,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} elseif ( is_archive() || is_home() || is_search() ) {
 				global $wp_query;
 
-				if ( $wp_query->have_posts() ) {
-					while ( $wp_query->have_posts() ) {
-						$wp_query->the_post();
-						global $post;
-						$this_post = $post;
-						$this->_generate_stylesheet( $this_post );
-					}
+				foreach ( $wp_query as $post ) {
+					$this->_generate_stylesheet( $post );
 				}
 			}
 		}
