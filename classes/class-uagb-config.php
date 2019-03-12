@@ -367,6 +367,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'slug'        => '',
 						'title'       => __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
+						'is_active'   => class_exists( 'WPCF7_ContactForm' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'                     => '',
@@ -503,6 +504,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Gravity Form Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Gravity Forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'is_active'   => class_exists( 'GFForms' ),
 						'attributes'  => array(
 							'block_id'                     => '',
 							'align'                        => 'left',
@@ -537,6 +539,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonBorderHoverColor'       => '',
 							'fieldSpacing'                 => '',
 							'fieldLabelSpacing'            => '',
+							'enableLabel'                  => false,
+							'textAreaHeight'               => 'auto',
 							'labelFontSize'                => '',
 							'labelFontSizeType'            => 'px',
 							'labelFontSizeTablet'          => '',

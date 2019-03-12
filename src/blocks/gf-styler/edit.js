@@ -94,6 +94,7 @@ class UAGBGF extends Component {
 			fieldBorderRadius,
 			fieldBorderColor,
 			fieldBorderFocusColor,
+			textAreaHeight,
 			buttonAlignment,
 			buttonVrPadding,
 			buttonHrPadding,
@@ -108,6 +109,7 @@ class UAGBGF extends Component {
 			buttonBorderHoverColor,
 			fieldSpacing,
 			fieldLabelSpacing,
+			enableLabel,
 			labelFontSize,
 			labelFontSizeType,
 			labelFontSizeTablet,
@@ -406,33 +408,41 @@ class UAGBGF extends Component {
 
 		const typography_settings = (			
 			<PanelBody title={ __( "Content" ) } initialOpen = { false } > 
-				<h2>{ __( "Label" ) }</h2>			
-				<TypographyControl
-					label={ __( "Label Font Tag" ) }
-					attributes = { attributes }
-					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
-					fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
-					fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
-					fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
-					fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
-					fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
-					fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
-					fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
-					lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
-					lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
-					lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
-					lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
-				/>
-				<p className="uagb-setting-label">{ __( "Color" ) }
-					<span className="components-base-control__label">
-						<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
-				<ColorPalette
-					value={ fieldLabelColor }
-					onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
-					allowReset
-				/>
-				<hr className="uagb-editor__separator" />
+			   	<ToggleControl
+					label="Hide Label?"
+					checked={ enableLabel }
+					onChange={ ( value ) => setAttributes( { enableLabel: ! enableLabel } ) }
+		    	/>
+		    	{ ( ! enableLabel ) && <Fragment>
+						<h2>{ __( "Label" ) }</h2>			
+						<TypographyControl
+							label={ __( "Label Font Tag" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
+							fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
+							fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
+							fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
+							fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
+							fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
+							fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
+							fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
+							lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
+							lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
+							lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
+							lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
+						/>
+						<p className="uagb-setting-label">{ __( "Color" ) }
+							<span className="components-base-control__label">
+								<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
+						<ColorPalette
+							value={ fieldLabelColor }
+							onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+					</Fragment> 
+				}
 				<h2>{ __( "Input" ) }</h2>
 				<TypographyControl
 					label={ __( "Input Font Tag" ) }
@@ -458,7 +468,23 @@ class UAGBGF extends Component {
 					value={ fieldInputColor }
 					onChange={ ( colorValue ) => setAttributes( { fieldInputColor: colorValue } ) }
 					allowReset
-				/>						
+				/>
+				<p className="uagb-setting-label">{ __( "Background Color" ) }
+					<span className="components-base-control__label">
+						<span className="component-color-indicator" style={{ backgroundColor: fieldBgColor }} ></span></span></p>
+				<ColorPalette
+					value={ fieldBgColor }
+					onChange={ ( colorValue ) => setAttributes( { fieldBgColor: colorValue } ) }
+					allowReset
+				/>
+				<RangeControl
+					label={ __( "TextArea Height" ) }
+					value={ textAreaHeight }
+					onChange={ ( value ) => setAttributes( { textAreaHeight: value } ) }
+					min={ 0 }
+					max={ 1000 }
+					allowReset
+				/>					
 			</PanelBody>
 		)	
 
@@ -505,6 +531,7 @@ class UAGBGF extends Component {
 		    	/>
 		    	
 	    		{ ( titleDescStyle !== "none" ) && (
+
 	  		    	<SelectControl
 	  					label={ __( "Title & Description Alignment" ) }
 	  					value={ titleDescAlignment }
@@ -739,7 +766,7 @@ class UAGBGF extends Component {
 					value={ fieldLabelSpacing }
 					onChange={ ( value ) => setAttributes( { fieldLabelSpacing: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 200 }
 					allowReset
 				/>
 
@@ -748,7 +775,7 @@ class UAGBGF extends Component {
 					value={ fieldSpacing }
 					onChange={ ( value ) => setAttributes( { fieldSpacing: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 200 }
 					allowReset
 				/>
 
@@ -788,7 +815,7 @@ class UAGBGF extends Component {
 						value={ radioCheckSize }
 						onChange={ ( value ) => setAttributes( { radioCheckSize: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 200 }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
@@ -877,6 +904,9 @@ class UAGBGF extends Component {
 
 		const msg_settings = (			
 			<PanelBody title={ __( "Success / Error Message" ) } initialOpen={ false }>
+				<p className="uagb-settings-notice">{ __( "Note: This styling can be only seen on frontend" ) }</p>
+				<hr className="uagb-editor__separator" />
+				
 				<h2>{ __( "Field Validation" ) }</h2>					
 
 				<p className="uagb-setting-label">{ __( "Message Color" ) }
@@ -917,6 +947,7 @@ class UAGBGF extends Component {
 					<p className="uagb-setting-label">{ __( "Field Background Color" ) }
 						<span className="components-base-control__label">
 							<span className="component-color-indicator" style={{ backgroundColor: validationMsgBgColor }} ></span></span></p>
+
 					<ColorPalette
 						value={ validationMsgBgColor }
 						onChange={ ( colorValue ) => setAttributes( { validationMsgBgColor: colorValue } ) }
@@ -995,7 +1026,7 @@ class UAGBGF extends Component {
 					value={ msgVrPadding }
 					onChange={ ( value ) => setAttributes( { msgVrPadding: value } ) }
 					min={ 0 }
-					max={ 100 }
+					max={ 200 }
 					allowReset
 				/>					
 				<RangeControl
@@ -1004,7 +1035,7 @@ class UAGBGF extends Component {
 					value={ msgHrPadding }
 					onChange={ ( value ) => setAttributes( { msgHrPadding: value } ) }
 					min={ 0 }
-					max={ 100 }
+					max={ 200 }
 					allowReset
 				/>
 
@@ -1087,6 +1118,7 @@ class UAGBGF extends Component {
 						`uagb-gf-styler__btn-align-${buttonAlignment}`,
 						`uagb-gf-styler__gform-heading-${titleDescStyle}`,
 						( enableOveride ? "uagb-gf-styler__check-style-enabled" : "" ),
+						( enableLabel ? "uagb-gf-styler__hide-label" : "" ),
 						( advancedValidationSettings ? "uagb-gf-styler__error-yes" : "" ),
 					) }>
 

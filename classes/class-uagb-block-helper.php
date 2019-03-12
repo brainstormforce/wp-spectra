@@ -3583,8 +3583,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
-			$attr['msgVrPadding'] = ( '' === $attr['msgVrPadding'] ) ? '0' : $attr['msgVrPadding'];
-			$attr['msgHrPadding'] = ( '' === $attr['msgHrPadding'] ) ? '0' : $attr['msgHrPadding'];
+			$attr['msgVrPadding']   = ( '' === $attr['msgVrPadding'] ) ? '0' : $attr['msgVrPadding'];
+			$attr['msgHrPadding']   = ( '' === $attr['msgHrPadding'] ) ? '0' : $attr['msgHrPadding'];
+			$attr['textAreaHeight'] = ( 'auto' === $attr['msgHrPadding'] ) ? $attr['textAreaHeight'] : $attr['textAreaHeight'] . 'px';
 
 			$selectors = array(
 				' .gform_wrapper form'                   => array(
@@ -3629,6 +3630,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-weight'      => $attr['inputFontWeight'],
 					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
 					'text-align'       => $attr['align'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
 				),
 				' select.wpgf-form-control.wpgf-select:not([multiple="multiple"])' => array(
 					'padding-left'   => $attr['fieldHrPadding'] . 'px',
@@ -3660,6 +3665,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-weight'      => $attr['inputFontWeight'],
 					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
 					'text-align'       => $attr['align'],
+					'height'           => $attr['textAreaHeight'],
 				),
 				' textarea::placeholder'                 => array(
 					'color'      => $attr['fieldInputColor'],
@@ -3732,7 +3738,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' .gfield_checkbox input[type="checkbox"] + label:before' => array(
@@ -3744,12 +3750,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-width'     => $attr['fieldBorderWidth'] . 'px',
 					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' input[type="checkbox"]:checked + label:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' input[type="checkbox"] + label:before' => array(
@@ -3757,7 +3763,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['fieldInputColor'],
 					'height'           => $attr['fieldVrPadding'] . 'px',
 					'width'            => $attr['fieldVrPadding'] . 'px',
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-width'     => $attr['fieldBorderWidth'] . 'px',
@@ -3818,13 +3824,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-style'  => $attr['fieldBorderStyle'],
 					'border-width'  => $attr['fieldBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 					'border-style'  => $attr['fieldBorderStyle'],
 					'border-width'  => $attr['fieldBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' .gfield_radio input[type="radio"]:checked + label:before' => array(
 					'background-color' => $attr['fieldInputColor'],
@@ -3836,7 +3842,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['radioCheckSelectColor'],
 					'height'           => $attr['radioCheckSize'] . 'px',
 					'width'            => $attr['radioCheckSize'] . 'px',
-					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],
@@ -3849,7 +3855,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['radioCheckSelectColor'],
 					'height'           => $attr['radioCheckSize'] . 'px',
 					'width'            => $attr['radioCheckSize'] . 'px',
-					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px / 1.2 )',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],

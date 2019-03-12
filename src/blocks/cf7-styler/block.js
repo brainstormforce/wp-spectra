@@ -28,19 +28,22 @@ const {
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( "uagb/cf7-styler", {
 
-	title: uagb_blocks_info.blocks["uagb/cf7-styler"]["title"], // Block title.
-	description:uagb_blocks_info.blocks["uagb/cf7-styler"]["description"], // Block description.
-	icon: UAGB_Block_Icons.cf7_styler,
-	keywords: [
-		__( "CF7 styler" ),
-		__( "contact form styler" ),
-		__( "uag" ),
-	],
-	category: uagb_blocks_info.category,
-	edit,
-	save() {
-		return null
-	},	
-} )
+if( uagb_blocks_info.blocks["uagb/gf-styler"]['is_active'] ) {
+	registerBlockType( "uagb/cf7-styler", {
+
+		title: uagb_blocks_info.blocks["uagb/cf7-styler"]["title"], // Block title.
+		description:uagb_blocks_info.blocks["uagb/cf7-styler"]["description"], // Block description.
+		icon: UAGB_Block_Icons.cf7_styler,
+		keywords: [
+			__( "CF7 styler" ),
+			__( "contact form styler" ),
+			__( "uag" ),
+		],
+		category: uagb_blocks_info.category,
+		edit,
+		save() {
+			return null
+		},	
+	} )
+}

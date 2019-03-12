@@ -150,7 +150,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-
 = 1.11.1.1 =
 * New: Gravity Forms Styler
 * Fix: Info Box - CTA type of Complete Box structure change.
