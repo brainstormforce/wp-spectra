@@ -15,9 +15,10 @@ function generateContent( props ) {
 		considerH4,
 		considerH5,
 		considerH6,
+		mapping,
 	} = attributes
 
-	let matches = getMapping( props )
+	let matches = mapping
 	let headings = {
 		1 : ( considerH1 ) ? "1" : false,
 		2 : ( considerH2 ) ? "2" : false,
@@ -30,7 +31,6 @@ function generateContent( props ) {
 	let html               = ""
 	let numbered_items     = []
 	let numbered_items_min = null
-	let charEntity = [ "&amp;", "&gt;", "&lt;", "&quot;", "&#39;" ]
 
 
 	// find the minimum heading to establish our baseline
@@ -45,12 +45,16 @@ function generateContent( props ) {
 
 	for ( var i = 0; i < matches.length; i ++ ) {
 
+		if ( headings[ parseInt( matches[ i ][2] ) ] == false ) {
+			return
+		}
+
 		if ( current_depth == parseInt( matches[ i ][2] ) ) {
 
 			html += "<li>"
 		}
 
-		// start lists
+		// Start lists.
 		if ( current_depth != parseInt( matches[ i ][2] ) ) {
 
 			for ( current_depth; current_depth < parseInt( matches[ i ][2] ); current_depth++ ) {
@@ -60,21 +64,17 @@ function generateContent( props ) {
 			}
 		}
 
-		if ( headings[ parseInt( matches[ i ][2] ) ] != false ) {
 
-			// list item
-			let text = matches[ i ][0]
-			text = text.replace( "<h" + matches[ i ][2] + ">", "" )
-			text = text.replace( "</h" + matches[ i ][2] + ">", "" )
-			let text_without_chars = text
-			for ( var k = 0 ; k < charEntity.length; k++ ) {
-				text_without_chars = text_without_chars.split(charEntity[k]).join("")
-			}
-			let text_link = text_without_chars.replace(/ /g,"_")
-			html += "<a href=\"#" + text_link + "\" title=\"" + text + "\">" + text + "</a>"
-		}
+		// List item.
+		let text = matches[i][0]
+		text = text.replace( "<h" + matches[i][2] + ">", "" )
+		text = text.replace( "</h" + matches[i][2] + ">", "" )
 
-		// end lists
+		let href_link = UAGBTableOfContents._parse( matches[i] )
+
+		html += "<a href=\"#" + href_link + "\" title=\"" + text + "\">" + text + "</a>"
+
+		// End lists.
 		if ( i != matches.length - 1 ) {
 
 			if ( current_depth > parseInt( matches[ i + 1 ][2] ) ) {

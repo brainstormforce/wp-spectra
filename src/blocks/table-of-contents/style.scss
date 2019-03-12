@@ -14,12 +14,6 @@
 		margin: 0;
 	}
 
-	.uagb-toc__title {
-		font-size: 18px;
-		font-weight: 700;
-		margin-bottom: 20px;
-	}
-
 	.uagb-toc__list-wrap ul {
 		list-style: none;
 		padding: 0;
@@ -41,5 +35,23 @@
 
 	&.uagb-toc__align-right {
 		text-align: right;
+	}
+
+	ul li:empty {
+		display: none;
+	}
+}
+
+.uagb-toc__scroll-top {
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	padding: 10px;
+	background: #ccd0d4;
+	cursor: pointer;
+
+	&.uagb-toc__show-scroll {
+		display: inline-table;
 	}
 }

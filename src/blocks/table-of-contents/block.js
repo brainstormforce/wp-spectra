@@ -17,6 +17,10 @@ const {
 	registerBlockType
 } = wp.blocks
 
+const {
+	RichText
+} = wp.editor
+
 
 registerBlockType( "uagb/table-of-contents", {
 	title: uagb_blocks_info.blocks["uagb/table-of-contents"]["title"],
@@ -34,7 +38,8 @@ registerBlockType( "uagb/table-of-contents", {
 
 		const {
 			align,
-			block_id
+			block_id,
+			heading
 		} = props.attributes
 
 		let html = generateContent( props )
@@ -46,7 +51,11 @@ registerBlockType( "uagb/table-of-contents", {
 			) }
 			id={ `uagb-toc-${ block_id }` }>
 				<div className="uagb-toc__wrap">
-					<span className="uagb-toc__title">Table Of Content</span>
+					<RichText.Content
+						value={ heading }
+						tagName='div'
+						className='uagb-toc__title'
+					/>
 					<div className="uagb-toc__list-wrap">
 						<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
 					</div>

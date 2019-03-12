@@ -21,6 +21,16 @@ const attributes = {
 		type    : "number",
 		default : 30,
 	},
+	scrollToTop : {
+		type    : "boolean",
+		default : false,
+	},
+	scrollToTopColor : {
+		type : "string",
+	},
+	scrollToTopBgColor : {
+		type : "string",
+	},
 	considerH1 : {
 		type    : "boolean",
 		default : true,
@@ -45,24 +55,29 @@ const attributes = {
 		type    : "boolean",
 		default : true,
 	},
-	counter : {
-		type    : "string",
-		default : "none",
-	},
 	align : {
 		type    : "string",
 		default : "left",
 	},
+	heading: {
+		source: "html",
+		selector: ".uagb-toc__title",
+		default: "Table Of Content",
+	},
 
 	// Color
 	backgroundColor: {
-		type: "string"
+		type: "string",
+		default: "#eee"
 	},
 	linkColor: {
 		type: "string",
 		default: "#333"
 	},
 	linkHoverColor: {
+		type: "string"
+	},
+	headingColor : {
 		type: "string"
 	},
 
@@ -74,6 +89,9 @@ const attributes = {
 	hPadding :{
 		type: "number",
 		default: 30,
+	},
+	headingBottom :{
+		type: "number"
 	},
 
 	// Border
@@ -136,6 +154,52 @@ const attributes = {
 		type: "number",
 	},
 	lineHeightMobile: {
+		type: "number",
+	},
+
+	// Link Font Family
+	headingLoadGoogleFonts: {
+		type: "boolean",
+		default: false
+	},
+	headingFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	headingFontWeight: {
+		type: "string",
+		default: "500"
+	},
+	headingFontSubset: {
+		type: "string",
+	},
+	// Link Font Size
+	headingFontSize: {
+		type: "number",
+		default: 20
+	},
+	headingFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	headingFontSizeTablet: {
+		type: "number",
+	},
+	headingFontSizeMobile: {
+		type: "number",
+	},
+	// Link Line Height
+	headingLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	headingLineHeight: {
+		type: "number",
+	},
+	headingLineHeightTablet: {
+		type: "number",
+	},
+	headingLineHeightMobile: {
 		type: "number",
 	},
 }

@@ -28,31 +28,46 @@ const {
 	BlockAlignmentToolbar,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
 	ColorPalette
 } = wp.editor
 
 const {
+	Button,
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
-	ToggleControl,
-	TextControl
+	ToggleControl
 } = wp.components
 
 
 class UAGBTableOfContentsEdit extends Component {
 
+	constructor() {
+		super( ...arguments )
+
+		this.regenerateTable = this.regenerateTable.bind( this )
+	}
+
+	/*
+	 * Event to set Mapping Object.
+	 */
+	regenerateTable() {
+
+		const { mapping } = this.props.attributes
+		const { setAttributes } = this.props
+		setAttributes( { mapping: getMapping( this.props ) } )
+	}
 
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { mapping: getMapping( this.props ) } )
+
+		// Pushing Scroll To Top div
+		var $scrollTop = document.createElement( "div" )
+		$scrollTop.setAttribute( "class", "uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2" )
+		document.body.insertBefore( $scrollTop, document.body.lastChild )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
@@ -66,6 +81,8 @@ class UAGBTableOfContentsEdit extends Component {
 
 		const {
 			align,
+			mapping,
+			heading,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
@@ -75,14 +92,18 @@ class UAGBTableOfContentsEdit extends Component {
 			considerH4,
 			considerH5,
 			considerH6,
-			counter,
+			scrollToTop,
+			scrollToTopColor,
+			scrollToTopBgColor,
 			//Color
 			backgroundColor,
 			linkColor,
 			linkHoverColor,
+			headingColor,
 			//Padding,
 			vPadding,
 			hPadding,
+			headingBottom,
 			//Border
 			borderStyle,
 			borderWidth,
@@ -101,9 +122,22 @@ class UAGBTableOfContentsEdit extends Component {
 			lineHeight,
 			lineHeightTablet,
 			lineHeightMobile,
+			headingLoadGoogleFonts,
+			headingFontFamily,
+			headingFontWeight,
+			headingFontSubset,
+			headingFontSize,
+			headingFontSizeType,
+			headingFontSizeTablet,
+			headingFontSizeMobile,
+			headingLineHeightType,
+			headingLineHeight,
+			headingLineHeightTablet,
+			headingLineHeightMobile,
 		} = attributes
 
 		let loadGFonts
+		let headingloadGFonts
 
 		if( loadGoogleFonts == true ) {
 
@@ -119,13 +153,42 @@ class UAGBTableOfContentsEdit extends Component {
 			)
 		}
 
+
+		if( headingLoadGoogleFonts == true ) {
+
+			const headingconfig = {
+				google: {
+					families: [ headingFontFamily + ( headingFontWeight ? ":" + headingFontWeight : "" ) ],
+				},
+			}
+
+			headingloadGFonts = (
+				<WebfontLoader config={ headingconfig }>
+				</WebfontLoader>
+			)
+		}
+
 		// Push Styling to Head.
 		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId )
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
 
+		var scrollElement = jQuery( ".uagb-toc__scroll-top" )
+		if( null != scrollElement && "undefined" != typeof scrollElement ) {
+
+			if ( scrollToTop ) {
+				scrollElement.addClass( "uagb-toc__show-scroll" )
+			} else {
+				scrollElement.removeClass( "uagb-toc__show-scroll" )
+			}
+		}
+
 		let html = generateContent( this.props )
+
+		if ( "" == html || undefined == html ) {
+			html = "<p>NOTE: There are no headings on this post with the selected Heading Tags.</p>"
+		}
 
 		return (
 			<Fragment>
@@ -175,6 +238,7 @@ class UAGBTableOfContentsEdit extends Component {
 						<ToggleControl
 							label={ __( "Smooth Scroll" ) }
 							checked={ smoothScroll }
+							help={ __( "This will be in Action only in Front End." ) }
 							onChange={ ( value ) => setAttributes( { smoothScroll: ! smoothScroll } ) }
 						/>
 						{ smoothScroll &&
@@ -195,19 +259,66 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
 							</Fragment>
 						}
-						<SelectControl
-							label={ __( "Counter" ) }
-							value={ counter }
-							onChange={ ( value ) => setAttributes( { counter: value } ) }
-							options={ [
-								{ value: "none", label: __( "None" ) },
-								{ value: "numeric", label: __( "Numeric" ) },
-								{ value: "roman", label: __( "Roman" ) },
-							] }
+					</PanelBody>
+					<PanelBody title={ __( "Scroll To Top" ) } initialOpen={ false }>
+						<ToggleControl
+							label={ __( "Show Scroll To Top" ) }
+							checked={ scrollToTop }
+							help={ __( "This will add a Scroll to Top arrow at the bottom of page." ) }
+							onChange={ ( value ) => setAttributes( { scrollToTop: ! scrollToTop } ) }
 						/>
+						{ scrollToTop &&
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopColor }} ></span></span></p>
+								<ColorPalette
+									value={ scrollToTopColor }
+									onChange={ ( colorValue ) => setAttributes( { scrollToTopColor: colorValue } ) }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: scrollToTopBgColor }} ></span></span></p>
+								<ColorPalette
+									value={ scrollToTopBgColor }
+									onChange={ ( colorValue ) => setAttributes( { scrollToTopBgColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						}
 					</PanelBody>
 					<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-						<h2>{ __( "Typography" ) }</h2>
+						<h2>{ __( "Heading" ) }</h2>
+						<TypographyControl
+							label={ __( "Font" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: headingLoadGoogleFonts, label: __( "headingLoadGoogleFonts" ) } }
+							fontFamily = { { value: headingFontFamily, label: __( "headingFontFamily" ) } }
+							fontWeight = { { value: headingFontWeight, label: __( "headingFontWeight" ) } }
+							fontSubset = { { value: headingFontSubset, label: __( "headingFontSubset" ) } }
+							fontSizeType = { { value: headingFontSizeType, label: __( "headingFontSizeType" ) } }
+							fontSize = { { value: headingFontSize, label: __( "headingFontSize" ) } }
+							fontSizeMobile = { { value: headingFontSizeMobile, label: __( "headingFontSizeMobile" ) } }
+							fontSizeTablet= { { value: headingFontSizeTablet, label: __( "headingFontSizeTablet" ) } }
+							lineHeightType = { { value: headingLineHeightType, label: __( "headingLineHeightType" ) } }
+							lineHeight = { { value: headingLineHeight, label: __( "headingLineHeight" ) } }
+							lineHeightMobile = { { value: headingLineHeightMobile, label: __( "headingLineHeightMobile" ) } }
+							lineHeightTablet= { { value: headingLineHeightTablet, label: __( "headingLineHeightTablet" ) } }
+						/>
+						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+						<ColorPalette
+							value={ headingColor }
+							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Heading Bottom Space" ) }
+							value={ headingBottom }
+							onChange={ ( value ) => setAttributes( { headingBottom: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Content" ) }</h2>
 						<TypographyControl
 							label={ __( "Font" ) }
 							attributes = { attributes }
@@ -225,14 +336,6 @@ class UAGBTableOfContentsEdit extends Component {
 							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
 							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
 						/>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Colors" ) }</h2>
-						<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
-						<ColorPalette
-							value={ backgroundColor }
-							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
-							allowReset
-						/>
 						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
 						<ColorPalette
 							value={ linkColor }
@@ -243,6 +346,15 @@ class UAGBTableOfContentsEdit extends Component {
 						<ColorPalette
 							value={ linkHoverColor }
 							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
+							allowReset
+						/>
+					</PanelBody>
+					<PanelBody title={ __( "Style" ) } initialOpen={ false }>
+						<h2>{ __( "Background" ) }</h2>
+						<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundColor }} ></span></span></p>
+						<ColorPalette
+							value={ backgroundColor }
+							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 							allowReset
 						/>
 						<hr className="uagb-editor__separator" />
@@ -316,13 +428,22 @@ class UAGBTableOfContentsEdit extends Component {
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
-						<span className="uagb-toc__title">Table Of Content</span>
+						<RichText
+							tagName= { "div" }
+							placeholder={ __( "Table Of Content" ) }
+							value={ heading }
+							className = 'uagb-toc__title'
+							onChange = { ( value ) => setAttributes( { heading: value } ) }
+							multiline={ false }
+							onRemove={ () => props.onReplace( [] ) }
+						/>
 						<div className="uagb-toc__list-wrap">
 							<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
 						</div>
 					</div>
 				</div>
 				{ loadGFonts }
+				{ headingloadGFonts }
 			</Fragment>
 		)
 	}

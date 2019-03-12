@@ -12,9 +12,13 @@ function styling( props ) {
 		backgroundColor,
 		linkColor,
 		linkHoverColor,
+		scrollToTopColor,
+		scrollToTopBgColor,
+		headingColor,
 		//Padding,
 		vPadding,
 		hPadding,
+		headingBottom,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -33,6 +37,19 @@ function styling( props ) {
 		lineHeight,
 		lineHeightTablet,
 		lineHeightMobile,
+
+		headingLoadGoogleFonts,
+		headingFontFamily,
+		headingFontWeight,
+		headingFontSubset,
+		headingFontSize,
+		headingFontSizeType,
+		headingFontSizeTablet,
+		headingFontSizeMobile,
+		headingLineHeightType,
+		headingLineHeight,
+		headingLineHeightTablet,
+		headingLineHeightMobile,
 	} = props.attributes
 
 	var selectors = {}
@@ -46,6 +63,14 @@ function styling( props ) {
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
 			"color": linkColor,
+		},
+		" .uagb-toc__title" : {
+			"font-size" : headingFontSize + headingFontSizeType,
+			"line-height" : headingLineHeight + headingLineHeightType,
+			"font-family": headingFontFamily,
+			"font-weight": headingFontWeight,
+			"color": headingColor,
+			"margin-bottom" : headingBottom + "px"
 		},
 		" .uagb-toc__list-wrap ul li a:hover" : {
 			"color": linkHoverColor,
@@ -67,14 +92,22 @@ function styling( props ) {
 		" .uagb-toc__list-wrap ul li a" : {
 			"font-size": fontSizeTablet + fontSizeType,
 			"line-height": lineHeightTablet + lineHeightType,
-		}
+		},
+		" .uagb-toc__title" : {
+			"font-size" : headingFontSizeTablet + headingFontSizeType,
+			"line-height" : headingLineHeightTablet + headingLineHeightType,
+		},
 	}
 
 	mobile_selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
 			"font-size": fontSizeMobile + fontSizeType,
 			"line-height": lineHeightMobile + lineHeightType,
-		}
+		},
+		" .uagb-toc__title" : {
+			"font-size" : headingFontSizeMobile + headingFontSizeType,
+			"line-height" : headingLineHeightMobile + headingLineHeightType,
+		},
 	}
 
 	var id = `#uagb-toc-${ props.clientId }`
@@ -84,6 +117,14 @@ function styling( props ) {
 	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
 	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
+
+	if ( "" != scrollToTopColor ) {
+		styling_css += ".uagb-toc__scroll-top { color: " + scrollToTopColor + "; }"
+	}
+
+	if ( "" != scrollToTopBgColor ) {
+		styling_css += ".uagb-toc__scroll-top { background: " + scrollToTopBgColor + "; }"
+	}
 
 	return styling_css
 }

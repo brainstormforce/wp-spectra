@@ -5,3 +5,13 @@
 .editor-rich-text p.uagb-marketing-btn__prefix {
 	margin: 0 !important;
 }
+
+.block-editor-page {
+	.uagb-toc__scroll-top {
+		right: 350px;
+
+		&.uagb-toc__show-scroll {
+			display: block;
+		}
+	}
+}

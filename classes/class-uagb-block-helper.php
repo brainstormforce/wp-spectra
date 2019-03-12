@@ -4260,6 +4260,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-weight" => $attr["fontWeight"],
 					"color" => $attr["linkColor"],
 				),
+				" .uagb-toc__title" => array(
+					"font-size" => $attr["headingFontSize"] . $attr["headingFontSizeType"],
+					"line-height" => $attr["headingLineHeight"] . $attr["headingLineHeightType"],
+					"font-family" => $attr["headingFontFamily"],
+					"font-weight" => $attr["headingFontWeight"],
+					"color" => $attr["headingColor"],
+					"margin-bottom" => $attr["headingBottom"] . "px"
+				),
 				" .uagb-toc__wrap" => array(
 					"border-style" => $attr["borderStyle"],
 					"border-width" => $attr["borderWidth"] . "px",
@@ -4279,6 +4287,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size' => $attr['fontSizeMobile'] . $attr['fontSizeType'],
 					'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
 				),
+				" .uagb-toc__title" => array(
+					"font-size" => $attr["headingFontSizeMobile"] . $attr["headingFontSizeType"],
+					"line-height" => $attr["headingLineHeightMobile"] . $attr["headingLineHeightType"],
+				),
 
 			);
 
@@ -4286,6 +4298,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-toc__list-wrap ul li a'        => array(
 					'font-size' => $attr['fontSizeTablet'] . $attr['fontSizeType'],
 					'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
+				),
+				" .uagb-toc__title" => array(
+					"font-size" => $attr["headingFontSizeTablet"] . $attr["headingFontSizeType"],
+					"line-height" => $attr["headingLineHeightTablet"] . $attr["headingLineHeightType"],
 				),
 
 			);
@@ -4298,7 +4314,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-toc-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$extra_css = '';
+
+			if ( '' != $attr['scrollToTopColor'] ) {
+				$extra_css .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
+			}
+
+			if ( '' != $attr['scrollToTopBgColor'] ) {
+				$extra_css .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
+			}
+
+			return $desktop . $tablet . $mobile . $extra_css;
 		}
 
 
@@ -4586,6 +4612,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
 			UAGB_Helper::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Table Of Contents block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_table_of_contents_gfont( $attr ) {
+
+			$load_google_font = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family      = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
 		}
 
 		/**
