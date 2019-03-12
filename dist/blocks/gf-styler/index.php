@@ -182,6 +182,10 @@ function uagb_blocks_register_gf_styler() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'enableLabel'                   => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'labelFontSize'                 => array(
 					'type'    => 'number',
 					'default' => '',
@@ -263,6 +267,9 @@ function uagb_blocks_register_gf_styler() {
 				'inputLoadGoogleFonts'          => array(
 					'type'    => 'boolean',
 					'default' => false,
+				),
+				'textAreaHeight'                => array(
+					'type' => 'number',
 				),
 				'buttonFontSize'                => array(
 					'type'    => 'number',
@@ -587,6 +594,7 @@ function uagb_render_gf( $attributes ) {
 	$fieldStyle      = isset( $attributes['fieldStyle'] ) ? $attributes['fieldStyle'] : '';
 	$buttonAlignment = isset( $attributes['buttonAlignment'] ) ? $attributes['buttonAlignment'] : '';
 	$enableOveride   = isset( $attributes['enableOveride'] ) ? $attributes['enableOveride'] : '';
+	$enableLabel   	 = isset( $attributes['enableLabel'] ) ? $attributes['enableLabel'] : '';
 	$advancedValidationSettings = isset( $attributes['advancedValidationSettings'] ) ? $attributes['advancedValidationSettings'] : '';
 	$enableAjax    	= ( $attributes['enableAjax'] ) ? 'true' : 'false';
 	$formTabIndex 	= ( $attributes['enableTabSupport'] ) ? $attributes['formTabIndex'] : '';
@@ -596,6 +604,8 @@ function uagb_render_gf( $attributes ) {
 	$classname .= 'uagb-gf-styler__field-style-' . $fieldStyle . ' ';
 	$classname .= 'uagb-gf-styler__btn-align-' . $buttonAlignment . ' ';
 	$classname .= $enableOveride ? ' uagb-gf-styler__check-style-enabled' : ' ';
+
+	$classname .= $enableLabel ? ' uagb-gf-styler__hide-label' : ' ';
 	$classname .= $advancedValidationSettings ? ' uagb-gf-styler__error-yes' : '';
 	$class 		= isset( $attributes['className']) ? $attributes['className'] : '';
 
@@ -607,7 +617,6 @@ function uagb_render_gf( $attributes ) {
 	if( $titleDescStyle === 'none' ) {
 		$disableTitleDesc = ' title="false" description="false" ';
 	}
-
 
 	if ($formId && 0 != $formId && -1 != $formId) {
 	?>
