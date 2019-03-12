@@ -155,6 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Info Box - CTA type of Complete Box structure change.
 * Fix: Testimonial - CSS conflict fixed
 * Fix: Social Share - Email option opens a new browser tab issue.
+* Fix: Contact Form 7 Styler - Select box alignment & height issue.
 
 = 1.11.1 =
 * Fix: PHP Error - Conflict with Astra v1.7.0
