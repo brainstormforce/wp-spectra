@@ -513,10 +513,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 					'font-family' => $attr['headFontFamily'],
 					'font-weight' => $attr['headFontWeight'],
-					'font-size' => $attr['headFontSize'] . $attr['headFontSizeType'],
-					'line-height' => $attr['headLineHeight'] . $attr['headLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['headLineHeight'], $attr['headLineHeightType'] ),
 					'color' => $attr['headingColor'],
-					'margin-bottom' => $attr['headSpace'] . "px",
+					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['headSpace'], "px" ),
 				),
 				' .uagb-separator-wrap' => array(
 					'text-align' => $attr['headingAlign'],
@@ -525,8 +525,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'text-align' => $attr['headingAlign'],
 					'font-family' => $attr['subHeadFontFamily'],
 					'font-weight' => $attr['subHeadFontWeight'],
-					'font-size' => $attr['subHeadFontSize'] . $attr['subHeadFontSizeType'],
-					'line-height' => $attr['subHeadLineHeight'] . $attr['subHeadLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType'] ),
 					'color' => $attr['subHeadingColor'],
 				)
 
@@ -534,25 +534,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-heading-text'        => array(
-					'font-size' => $attr['headFontSizeMobile'] . $attr['headFontSizeType'],
-					'line-height' => $attr['headLineHeightMobile'] . $attr['headLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['headFontSizeMobile'], $attr['headFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['headLineHeightMobile'], $attr['headLineHeightType'] ),
 				),
 				' .uagb-desc-text' => array(
-					'font-size' => $attr['subHeadFontSizeMobile'] . $attr['subHeadFontSizeType'],
-					'line-height' => $attr['subHeadLineHeightMobile'] . $attr['subHeadLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSizeMobile'], $attr['subHeadFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['subHeadLineHeightMobile'], $attr['subHeadLineHeightType'] ),
 				)
 
 			);
 
 			$t_selectors = array(
 				' .uagb-heading-text'        => array(
-					'font-size' => $attr['headFontSizeTablet'] . $attr['headFontSizeType'],
-					'line-height' => $attr['headLineHeightTablet'] . $attr['headLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['headLineHeightTablet'], $attr['headLineHeightType'] ),
 
 				),
 				' .uagb-desc-text' => array(
-					'font-size' => $attr['subHeadFontSizeTablet'] . $attr['subHeadFontSizeType'],
-					'line-height' => $attr['subHeadLineHeightTablet'] . $attr['subHeadLineHeightType'],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType'] ),
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['subHeadLineHeightTablet'], $attr['subHeadLineHeightType'] ),
 				)
 
 			);
@@ -562,10 +562,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if( 'none' !== $seperatorStyle ){
 				$selectors[' .uagb-separator'] = array (
 					'border-top-style' => $attr['seperatorStyle'] ,
-					'border-top-width' => $attr['separatorHeight'] . "px",
-					'width' => $attr['separatorWidth'] . $attr['separatorWidthType'],
+					'border-top-width' => UAGB_Helper::uagb_get_css_value( $attr['separatorHeight'], "px" ),
+					'width' => UAGB_Helper::uagb_get_css_value( $attr['separatorWidth'], $attr['separatorWidthType'] ),
 					'border-color' => $attr['separatorColor'],
-					'margin-bottom' => $attr['separatorSpace'] . "px",
+					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['separatorSpace'], "px" ),
 				);
 
 			}

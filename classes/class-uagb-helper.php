@@ -137,13 +137,45 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$css          = '';
 
 				foreach ( $value as $j => $val ) {
-					$css .= $j . ': ' . $val . ';';
+					if( ! empty( $val ) ) {
+						$css .= $j . ': ' . $val . ';';
+					}
 				}
 
 				$styling_css .= $css . ' } ';
 			}
 
 			return $styling_css;
+		}
+
+		/**
+		 * Get CSS value
+		 *
+		 * Syntax:
+		 *
+		 * 	uagb_get_css_value( VALUE, UNIT );
+		 *
+		 * E.g.
+		 *
+		 *  uagb_get_css_value( VALUE, 'em' );
+		 *
+		 * @param  string $value        CSS value.
+		 * @param  string $unit         CSS unit.
+		 * @return string $css_val      CSS value depends on $unit
+		 */
+		public static function uagb_get_css_value( $value = '', $unit = '' ) {
+
+			if ( '' == $value ) {
+				return $value;
+			}
+
+			$css_val = '';
+
+			if ( ! empty( $value ) ) {
+				$css_val = esc_attr( $value ) . $unit;
+			}
+
+			return $css_val;
 		}
 
 		/**
