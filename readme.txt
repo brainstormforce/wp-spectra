@@ -155,7 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Updated 5 star notice.
 * Improvement: Icon List - Border options added.
 * Improvement: Post - Added more Order By options to the Query Builder.
-* Improvement: Performance - JS related to disabled blocks are is loaded.
+* Improvement: Performance - JS related to disabled blocks are not loaded.
 * Fix: Advanced Columns - Column spacing issue on editor.
 * Fix: Advanced Columns - Shape Divider height responsive compatibility.
 * Fix: Info Box - CTA type of Complete Box structure change.

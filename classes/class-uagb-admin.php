@@ -12,8 +12,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 	 */
 	final class UAGB_Admin {
 
-
-
 		/**
 		 * Calls on initialization
 		 *
