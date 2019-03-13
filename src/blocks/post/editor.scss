@@ -30,24 +30,3 @@
 	transform: translate(-50%,-50%);
 	min-height: 100%;
 }
-
-.block-editor-page #wpwrap .uagb-post__carousel_equal-height .slick-track{
-    display: flex;
-
-    .slick-slide{
-        display: flex;
-        height: auto;
-    }
-
-    .slick-slide div:first{
-    	height: auto;
-    }
-
-    .slick-slide article{
-    	height: 100%;
-    }
-
-    .slick-slide .uagb-post__inner-wrap{
-    	height: inherit;
-    }
-}
