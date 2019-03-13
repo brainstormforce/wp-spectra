@@ -1771,6 +1771,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-icon-list__source-wrap"=> array(
 					"padding" => UAGB_Helper::uagb_get_css_value( $attr['bgSize'], 'px' ),
 					"border-radius" => UAGB_Helper::uagb_get_css_value( $attr['borderRadius'], 'px' )
+					"border-style" => "solid",
+					"border-width" => UAGB_Helper::uagb_get_css_value( $attr['border'], 'px' )
 				),
 				" .uagb-icon-list__wrap"=> array(
 					"justify-content"  => $alignment,
@@ -1847,6 +1849,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
 				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
 				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
+				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
+				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
 				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
 				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
 
@@ -1893,11 +1897,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_color']
+					"background" => $icon['icon_bg_color'],
+					"border-color" => $icon['icon_border_color'],
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color']
+					"background" => $icon['icon_bg_hover_color'],
+					"border-color" => $icon['icon_border_hover_color']
 				);
 			}
 
