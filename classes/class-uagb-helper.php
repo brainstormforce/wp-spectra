@@ -138,7 +138,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $value as $j => $val ) {
 
-					if ( !empty( $val ) || 0 === $val ) {
+					if ( ! empty( $val ) || 0 === $val ) {
 						$css .= $j . ': ' . $val . ';';
 					}
 				}
