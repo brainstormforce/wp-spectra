@@ -152,6 +152,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.11.1.1 =
 * New: Gravity Forms Styler
+* Improvement: Post - Added more Order By options to the Query Builder.
 * Fix: Advanced Columns - Column spacing issue on editor.
 * Fix: Info Box - CTA type of Complete Box structure change.
 * Fix: Testimonial - CSS conflict fixed

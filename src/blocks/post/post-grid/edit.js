@@ -353,9 +353,27 @@ class UAGBPostGrid extends Component {
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
-						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					/>
+					<SelectControl
+						label={ __( "Order By" ) }
+						value={ orderBy }
+						onChange={ ( value ) => setAttributes( { orderBy: value } ) }
+						options={ [
+							{ value: "date", label: __( "Date" ) },
+							{ value: "title", label: __( "Title" ) },
+							{ value: "rand", label: __( "Random" ) },
+							{ value: "menu_order", label: __( "Menu Order" ) },
+						] }
+					/>
+					<SelectControl
+						label={ __( "Order" ) }
+						value={ order }
+						onChange={ ( value ) => setAttributes( { order: value } ) }
+						options={ [
+							{ value: "desc", label: __( "Descending" ) },
+							{ value: "asc", label: __( "Ascending" ) },
+						] }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
