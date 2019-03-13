@@ -76,5 +76,5 @@ function uagb_carousel_height(  id ) {
 			} );
 
 
-	}, 10);
+	}, 100);
 }
