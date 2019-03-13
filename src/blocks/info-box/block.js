@@ -97,7 +97,7 @@ registerBlockType( "uagb/info-box", {
 			<Fragment>
 				<div className = { classnames(
 					"uagb-infobox__content-wrap",
-					( ctaType == 'all' ? " uagb-infobox_cta-type-all" : "" ),
+					( ctaType == "all" ? " uagb-infobox_cta-type-all" : "" ),
 					...InfoBoxPositionClasses(  props.attributes  ),
 				) }>
 					<div className = "uagb-ifb-left-right-wrap">
@@ -444,77 +444,77 @@ registerBlockType( "uagb/info-box", {
 		{
 			attributes,	
 			save: function( props ) {
-			const {
-				iconimgPosition,
-				block_id,
-				source_type,
-				seperatorStyle,
-				backgroundType,
-				ctaType,
-				ctaLink,
-				ctaTarget,
-				className,
-				prefixTitle,
-				infoBoxTitle,
-				headingDesc,
-				showPrefix,
-				showTitle,
-				showDesc,
-				icon
-			} = props.attributes
+				const {
+					iconimgPosition,
+					block_id,
+					source_type,
+					seperatorStyle,
+					backgroundType,
+					ctaType,
+					ctaLink,
+					ctaTarget,
+					className,
+					prefixTitle,
+					infoBoxTitle,
+					headingDesc,
+					showPrefix,
+					showTitle,
+					showDesc,
+					icon
+				} = props.attributes
 
-			// Get icon/Image components.
-			let is_image = ""
+				// Get icon/Image components.
+				let is_image = ""
 
-			if( source_type === "icon" && icon !=="" ) {
-				is_image = <Icon attributes={ props.attributes }/>
-			}else{
-				is_image = <InfoBoxIconImage attributes={ props.attributes } />
-			}
+				if( source_type === "icon" && icon !=="" ) {
+					is_image = <Icon attributes={ props.attributes }/>
+				}else{
+					is_image = <InfoBoxIconImage attributes={ props.attributes } />
+				}
 
-			// Get description and seperator components.
-			const desc = (
-				<Fragment>
-					{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
-					<div className = "uagb-ifb-text-wrap">
-						{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
-						{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
-					</div>
-				</Fragment>
-			)
+				// Get description and seperator components.
+				const desc = (
+					<Fragment>
+						{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
+						<div className = "uagb-ifb-text-wrap">
+							{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
+							{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
+						</div>
+					</Fragment>
+				)
 
-			// Get Title and Prefix components.
-			const title_text = (
-				<Fragment>
-					<div className = "uagb-ifb-title-wrap">
-						{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
-						{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
-					</div>
-				</Fragment>
-			)
+				// Get Title and Prefix components.
+				const title_text = (
+					<Fragment>
+						<div className = "uagb-ifb-title-wrap">
+							{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
+							{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
+						</div>
+					</Fragment>
+				)
 
-			const output = (
-				<Fragment>
-					<div className = { classnames(
-						"uagb-infobox__content-wrap",
-						...InfoBoxPositionClasses(  props.attributes  ),
-					) }>
-						<div className = "uagb-ifb-left-right-wrap">
+				const output = (
+					<Fragment>
+						<div className = { classnames(
+							"uagb-infobox__content-wrap",
+							...InfoBoxPositionClasses(  props.attributes  ),
+						) }>
+							<div className = "uagb-ifb-left-right-wrap">
 
-							{ ( iconimgPosition == "left") &&
+								{ ( iconimgPosition == "left") &&
 									is_image
-							}
-							<div className = "uagb-ifb-content">
+								}
+								<div className = "uagb-ifb-content">
 
-								{  iconimgPosition == "above-title" && is_image }
+									{  iconimgPosition == "above-title" && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+									{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-								{ iconimgPosition == "below-title"  && is_image }
+									{ iconimgPosition == "below-title"  && is_image }
 
-								{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+									{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-								{ ( iconimgPosition === "left-title") &&
+									{ ( iconimgPosition === "left-title") &&
 										<Fragment>
 											<div className = "uagb-ifb-left-title-image">
 												{ is_image }
@@ -522,9 +522,9 @@ registerBlockType( "uagb/info-box", {
 											</div>
 											{ desc }
 										</Fragment>
-								}
+									}
 
-								{ ( iconimgPosition === "right-title") &&
+									{ ( iconimgPosition === "right-title") &&
 										<Fragment>
 											<div className = "uagb-ifb-right-title-image">
 												{ title_text }
@@ -532,48 +532,48 @@ registerBlockType( "uagb/info-box", {
 											</div>
 											{ desc }
 										</Fragment>
-								}
+									}
 
-								{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+									{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
 										<Fragment>
 											{ title_text }
 											{ desc }
 										</Fragment>
-								}
+									}
 
-							</div>
+								</div>
 
-							{ ( iconimgPosition == "right") &&
+								{ ( iconimgPosition == "right") &&
 									is_image
-							}
+								}
+							</div>
 						</div>
-					</div>
-				</Fragment>
-			)
+					</Fragment>
+				)
 
-			let target =""
-			if( ctaTarget ){
-				target ="_blank"
-			}
+				let target =""
+				if( ctaTarget ){
+					target ="_blank"
+				}
 
-			return (
-				<Fragment>
-					<div className={ classnames(
-						className,
-						"uagb-infobox__outer-wrap"
-					) }
-					id = { `uagb-infobox-${block_id}` } >
+				return (
+					<Fragment>
+						<div className={ classnames(
+							className,
+							"uagb-infobox__outer-wrap"
+						) }
+						id = { `uagb-infobox-${block_id}` } >
 
-						{ ( ctaType == "all") &&
+							{ ( ctaType == "all") &&
 							<Fragment>
 								<a href= {ctaLink} className = "uagb-infobox-link-wrap" target={target} rel ="noopener noreferrer"> {output}</a>
 							</Fragment>
-						}
-						{ ( ctaType !== "all") && output }
+							}
+							{ ( ctaType !== "all") && output }
 
-					</div>
-				</Fragment>
-			)
+						</div>
+					</Fragment>
+				)
 			},
 		}
 	]

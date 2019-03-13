@@ -414,34 +414,34 @@ class UAGBGF extends Component {
 					onChange={ ( value ) => setAttributes( { enableLabel: ! enableLabel } ) }
 		    	/>
 		    	{ ( ! enableLabel ) && <Fragment>
-						<h2>{ __( "Label" ) }</h2>			
-						<TypographyControl
-							label={ __( "Label Font Tag" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
-							fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
-							fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
-							fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
-							fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
-							fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
-							fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
-							fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
-							lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
-							lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
-							lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
-							lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
-						/>
-						<p className="uagb-setting-label">{ __( "Color" ) }
-							<span className="components-base-control__label">
-								<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
-						<ColorPalette
-							value={ fieldLabelColor }
-							onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
-							allowReset
-						/>
-						<hr className="uagb-editor__separator" />
-					</Fragment> 
+					<h2>{ __( "Label" ) }</h2>			
+					<TypographyControl
+						label={ __( "Label Font Tag" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
+						fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
+						fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
+						fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
+						fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
+						fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
+						fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
+						fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
+						lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
+						lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
+						lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
+						lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
+					/>
+					<p className="uagb-setting-label">{ __( "Color" ) }
+						<span className="components-base-control__label">
+							<span className="component-color-indicator" style={{ backgroundColor: fieldLabelColor }} ></span></span></p>
+					<ColorPalette
+						value={ fieldLabelColor }
+						onChange={ ( colorValue ) => setAttributes( { fieldLabelColor: colorValue } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+				</Fragment> 
 				}
 				<h2>{ __( "Input" ) }</h2>
 				<TypographyControl

@@ -29,7 +29,7 @@ const {
  *                             registered; otherwise `undefined`.
  */
 
-if( uagb_blocks_info.blocks["uagb/gf-styler"]['is_active'] ) {
+if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 	registerBlockType( "uagb/gf-styler", {
 
 		title: uagb_blocks_info.blocks["uagb/gf-styler"]["title"], // Block title.
