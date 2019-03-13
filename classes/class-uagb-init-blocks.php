@@ -82,22 +82,38 @@ class UAGB_Init_Blocks {
 			UAGB_VER
 		);
 
-		// Scripts.
-		wp_enqueue_script(
-			'uagb-masonry', // Handle.
-			UAGB_URL . 'assets/js/isotope.min.js',
-			array( 'jquery' ), // Dependencies, defined above.
-			UAGB_VER,
-			false // Enqueue the script in the footer.
-		);
+		$blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 
-		wp_enqueue_script(
-			'uagb-imagesloaded', // Handle.
-			UAGB_URL . 'assets/js/imagesloaded.min.js',
-			array( 'jquery' ), // Dependencies, defined above.
-			UAGB_VER,
-			false // Enqueue the script in the footer.
-		);
+		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) ? false : true;
+		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' == $blocks['cf7-styler'] ) ? false : true;
+		$slick_flag    = (
+			( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) &&
+			( isset( $blocks['testimonial'] ) && 'disabled' == $blocks['testimonial'] )
+		) ? false : true;
+		$timeline_flag = (
+			( isset( $blocks['post-timeline'] ) && 'disabled' == $blocks['post-timeline'] ) &&
+			( isset( $blocks['content-timeline'] ) && 'disabled' == $blocks['content-timeline'] )
+		) ? false : true;
+
+		if ( $masonry_flag ) {
+
+			// Scripts.
+			wp_enqueue_script(
+				'uagb-masonry', // Handle.
+				UAGB_URL . 'assets/js/isotope.min.js',
+				array( 'jquery' ), // Dependencies, defined above.
+				UAGB_VER,
+				false // Enqueue the script in the footer.
+			);
+
+			wp_enqueue_script(
+				'uagb-imagesloaded', // Handle.
+				UAGB_URL . 'assets/js/imagesloaded.min.js',
+				array( 'jquery' ), // Dependencies, defined above.
+				UAGB_VER,
+				false // Enqueue the script in the footer.
+			);
+		}
 
 		$value = true;
 
@@ -117,42 +133,52 @@ class UAGB_Init_Blocks {
 			);
 		}
 
-		// Scripts.
-		wp_enqueue_script(
-			'uagb-slick-js', // Handle.
-			UAGB_URL . 'assets/js/slick.min.js',
-			array( 'jquery' ), // Dependencies, defined above.
-			UAGB_VER,
-			false // Enqueue the script in the footer.
-		);
+		if ( $slick_flag ) {
 
-		// Styles.
-		wp_enqueue_style(
-			'uagb-slick-css', // Handle.
-			UAGB_URL . 'assets/css/slick.css', // Block style CSS.
-			UAGB_VER
-		);
+			// Scripts.
+			wp_enqueue_script(
+				'uagb-slick-js', // Handle.
+				UAGB_URL . 'assets/js/slick.min.js',
+				array( 'jquery' ), // Dependencies, defined above.
+				UAGB_VER,
+				false // Enqueue the script in the footer.
+			);
 
-		// Timeline js.
-		wp_enqueue_script(
-			'uagb-timeline-js', // Handle.
-			UAGB_URL . 'assets/js/timeline.js',
-			array( 'jquery' ),
-			UAGB_VER,
-			true // Enqueue the script in the footer.
-		);
+			// Styles.
+			wp_enqueue_style(
+				'uagb-slick-css', // Handle.
+				UAGB_URL . 'assets/css/slick.css', // Block style CSS.
+				UAGB_VER
+			);
+		}
+
+		if ( $timeline_flag ) {
+
+			// Timeline js.
+			wp_enqueue_script(
+				'uagb-timeline-js', // Handle.
+				UAGB_URL . 'assets/js/timeline.js',
+				array( 'jquery' ),
+				UAGB_VER,
+				true // Enqueue the script in the footer.
+			);
+		}
 
 		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
 			wp_enqueue_script( 'jquery' );
 		}
 
-		if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
-			wp_enqueue_script( 'contact-form-7' );
+		if ( $cf7_flag ) {
+
+			if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
+				wp_enqueue_script( 'contact-form-7' );
+			}
+
+			if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
+				wp_enqueue_script( ' wpcf7-admin' );
+			}
 		}
 
-		if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
-			wp_enqueue_script( ' wpcf7-admin' );
-		}
 	} // End function editor_assets().
 
 	/**
