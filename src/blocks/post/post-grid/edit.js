@@ -187,9 +187,6 @@ class UAGBPostGrid extends Component {
 			taxonomyType,
 		} = attributes
 
-		console.log(order)
-		console.log(orderBy)
-
 		const hoverSettings = (
 			<Fragment>
 				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
