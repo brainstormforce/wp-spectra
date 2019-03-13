@@ -63,7 +63,7 @@
 
 } )( jQuery )
 
-function uagb_carousel_height(  id ) {	
+function uagb_carousel_height(  id ) {
 	setTimeout(function() {
 		var wrap            = $("#block-"+id);
 		var scope = wrap.find(".wp-block-uagb-post-carousel").find( '.is-carousel' );
