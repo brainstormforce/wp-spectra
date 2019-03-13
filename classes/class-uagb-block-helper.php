@@ -331,6 +331,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::uagb_get_css_value( $attr['topMarginMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['bottomMarginMobile'], 'px' ),
 				)
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => UAGB_Helper::uagb_get_css_value( $attr['bottomHeightMobile'], 'px' )
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => UAGB_Helper::uagb_get_css_value( $attr['topHeightMobile'], 'px' )
+				),
 			);
 
 			$t_selectors = array(
@@ -342,6 +348,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::uagb_get_css_value( $attr['topMarginTablet'], 'px' ),
 					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['bottomMarginTablet'], 'px' ),
 				)
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => UAGB_Helper::uagb_get_css_value( $attr['bottomHeightTablet'], 'px' )
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => UAGB_Helper::uagb_get_css_value( $attr['topHeightTablet'], 'px' )
+				),
 			);
 
 			// @codingStandardsIgnoreEnd
@@ -785,7 +797,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
-				
+
 				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),

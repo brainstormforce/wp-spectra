@@ -185,10 +185,14 @@ class UAGBColumns extends Component {
 			bottomType,
 			bottomColor,
 			bottomHeight,
+			bottomHeightTablet,
+			bottomHeightMobile,
 			bottomWidth,
 			topType,
 			topColor,
 			topHeight,
+			topHeightTablet,
+			topHeightMobile,
 			topWidth,
 			bottomFlip,
 			topFlip,
@@ -249,14 +253,67 @@ class UAGBColumns extends Component {
 							max={ 300 }
 							allowReset
 						/>
-						<RangeControl
-							label={ __( "Height" ) }
-							value={ bottomHeight }
-							onChange={ ( value ) => setAttributes( { bottomHeight: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
+						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ bottomHeightMobile }
+												onChange={ ( value ) => setAttributes( { bottomHeightMobile: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ bottomHeightTablet }
+												onChange={ ( value ) => setAttributes( { bottomHeightTablet: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									} else {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ bottomHeight }
+												onChange={ ( value ) => setAttributes( { bottomHeight: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 						<ToggleControl
 							label={ __( "Flip" ) }
 							checked={ bottomFlip }
@@ -299,14 +356,67 @@ class UAGBColumns extends Component {
 							max={ 300 }
 							allowReset
 						/>
-						<RangeControl
-							label={ __( "Height" ) }
-							value={ topHeight }
-							onChange={ ( value ) => setAttributes( { topHeight: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
+						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ topHeightMobile }
+												onChange={ ( value ) => setAttributes( { topHeightMobile: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ topHeightTablet }
+												onChange={ ( value ) => setAttributes( { topHeightTablet: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									} else {
+										tabout = (
+											<RangeControl
+												label={ __( "Height" ) }
+												value={ topHeight }
+												onChange={ ( value ) => setAttributes( { topHeight: value } ) }
+												min={ 0 }
+												max={ 500 }
+												allowReset
+											/>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 						<ToggleControl
 							label={ __( "Flip" ) }
 							checked={ topFlip }
