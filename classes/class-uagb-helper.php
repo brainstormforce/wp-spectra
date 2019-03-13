@@ -153,17 +153,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * Syntax:
 		 *
-		 *  uagb_get_css_value( VALUE, UNIT );
+		 *  get_css_value( VALUE, UNIT );
 		 *
 		 * E.g.
 		 *
-		 *  uagb_get_css_value( VALUE, 'em' );
+		 *  get_css_value( VALUE, 'em' );
 		 *
-		 * @param  string $value        CSS value.
-		 * @param  string $unit         CSS unit.
-		 * @return string $css_val      CSS value depends on $unit
+		 * @param string $value  CSS value.
+		 * @param string $unit  CSS unit.
+		 * @since x.x.x
 		 */
-		public static function uagb_get_css_value( $value = '', $unit = '' ) {
+		public static function get_css_value( $value = '', $unit = '' ) {
 
 			if ( '' == $value ) {
 				return $value;
