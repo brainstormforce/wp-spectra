@@ -196,8 +196,8 @@ function styling( props ) {
 			"padding-top"      : fieldVrPadding + "px",
 			"padding-bottom"   : fieldVrPadding + "px",
 		},
-		' .chosen-container-single.chosen-container-active .chosen-single span' :{
-			'margin-bottom' : 0,
+		" .chosen-container-single.chosen-container-active .chosen-single span" :{
+			"margin-bottom" : 0,
 		},
 		" select.wpgf-form-control.wpgf-select:not([multiple='multiple'])" :{
 			"padding-left"   : fieldHrPadding + "px",
