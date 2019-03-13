@@ -12,6 +12,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 	 */
 	final class UAGB_Admin {
 
+
+
 		/**
 		 * Calls on initialization
 		 *
@@ -24,7 +26,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'after_setup_theme', __CLASS__ . '::init_hooks' );
 			// Activation hook.
 			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
-
 		}
 
 		/**
@@ -46,7 +47,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 0.0.1
 		 * @return void
 		 */
-		static public function init_hooks() {
+		public static function init_hooks() {
 			if ( ! is_admin() ) {
 				return;
 			}
@@ -68,7 +69,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Enqueue admin scripts.
 			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG == $_REQUEST['page'] ) {
-
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
 
 				self::save_settings();
@@ -125,8 +125,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 								</div>
 							</div>',
 						$image_path,
-						__( 'Hello! Thank you for choosing the Ultimate Addons for Gutenberg to build this website!', 'ultimate-addons-for-gutenberg' ),
-						__( 'Could you please do us a BIG favor and give it a 5-star rating on WordPress? This will boost our motivation and help other users make a comfortable decision while choosing this plugin.', 'ultimate-addons-for-gutenberg' ),
+						__( 'Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on your website!', 'ultimate-addons-for-gutenberg' ),
+						__( 'Would you please mind sharing your views and give it a 5 star rating on the WordPress repository?', 'ultimate-addons-for-gutenberg' ),
 						'https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg/reviews/?filter=5#new-post',
 						__( 'Ok, you deserve it', 'ultimate-addons-for-gutenberg' ),
 						MONTH_IN_SECONDS,
@@ -170,7 +170,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 0.0.1
 		 * @return void
 		 */
-		static public function initialise_plugin() {
+		public static function initialise_plugin() {
 
 			define( 'UAGB_PLUGIN_NAME', 'Ultimate Addons for Gutenberg' );
 			define( 'UAGB_PLUGIN_SHORT_NAME', 'UAG' );
@@ -182,7 +182,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 0.0.1
 		 * @return void
 		 */
-		static public function menu() {
+		public static function menu() {
 
 			if ( ! current_user_can( 'manage_options' ) ) {
 				return;
@@ -204,7 +204,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 0.0.1
 		 * @return void
 		 */
-		static public function render() {
+		public static function render() {
 			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
 			$action = ( ! empty( $action ) && '' != $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
@@ -223,7 +223,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 0.0.1
 		 * @return void
 		 */
-		static public function render_content() {
+		public static function render_content() {
 
 			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
 			$action = ( ! empty( $action ) && '' != $action ) ? $action : 'general';
@@ -239,7 +239,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * @since 1.8.0
 		 */
-		static public function notice_styles_scripts() {
+		public static function notice_styles_scripts() {
 			// Styles.
 			wp_enqueue_style( 'uagb-notice-settings', UAGB_URL . 'admin/assets/admin-notice.css', array(), UAGB_VER );
 		}
@@ -249,7 +249,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 *
 		 * @since 1.0.0
 		 */
-		static public function styles_scripts() {
+		public static function styles_scripts() {
 
 			// Styles.
 			wp_enqueue_style( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.css', array(), UAGB_VER );
@@ -274,7 +274,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Save All admin settings here
 		 */
-		static public function save_settings() {
+		public static function save_settings() {
 
 			// Only admins can save settings.
 			if ( ! current_user_can( 'manage_options' ) ) {
@@ -288,7 +288,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Initialize Ajax
 		 */
-		static public function initialize_ajax() {
+		public static function initialize_ajax() {
 			// Ajax requests.
 			add_action( 'wp_ajax_uagb_activate_widget', __CLASS__ . '::activate_widget' );
 			add_action( 'wp_ajax_uagb_deactivate_widget', __CLASS__ . '::deactivate_widget' );
@@ -302,7 +302,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Activate module
 		 */
-		static public function activate_widget() {
+		public static function activate_widget() {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -322,7 +322,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Deactivate module
 		 */
-		static public function deactivate_widget() {
+		public static function deactivate_widget() {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -342,7 +342,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Activate all module
 		 */
-		static public function bulk_activate_widgets() {
+		public static function bulk_activate_widgets() {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -351,7 +351,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$new_blocks = array();
 
 			// Set all extension to enabled.
-			foreach ( $all_blocks  as $slug => $value ) {
+			foreach ( $all_blocks as $slug => $value ) {
 				$_slug                = str_replace( 'uagb/', '', $slug );
 				$new_blocks[ $_slug ] = $_slug;
 			}
@@ -370,7 +370,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Deactivate all module
 		 */
-		static public function bulk_deactivate_widgets() {
+		public static function bulk_deactivate_widgets() {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -379,7 +379,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			$new_blocks = array();
 
 			// Set all extension to enabled.
-			foreach ( $old_blocks  as $slug => $value ) {
+			foreach ( $old_blocks as $slug => $value ) {
 				$_slug                = str_replace( 'uagb/', '', $slug );
 				$new_blocks[ $_slug ] = 'disabled';
 			}
@@ -398,7 +398,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Allow beta updates
 		 */
-		static public function allow_beta_updates() {
+		public static function allow_beta_updates() {
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -447,11 +447,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
 				)
 			);
-
 		}
-
 	}
 
 	UAGB_Admin::init();
-
 }
