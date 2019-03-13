@@ -1,7 +1,10 @@
 ( function( $ ) {
 
-	UAGBPostCarousel = {	
+	UAGBPostCarousel = {
 
+		init: function () {			
+			//init
+		},
 		_setHeight: function( scope ) {
 			
 			var post_wrapper = scope.find('.slick-slide'),
@@ -50,10 +53,28 @@
             selector.css( 'height', blog_post_height );
         });
 
-
 		},
 		
 	}
 
+	$( document ).ready(function() {
+		UAGBPostCarousel.init()
+	})
 
 } )( jQuery )
+
+function uagb_carousel_height(  id ) {	
+	setTimeout(function() {
+		var wrap            = $("#block-"+id);
+		var scope = wrap.find(".wp-block-uagb-post-carousel").find( '.is-carousel' );
+			scope.imagesLoaded( function() {
+				UAGBPostCarousel._setHeight( scope );
+			});
+
+			scope.on( 'afterChange', function() {
+				UAGBPostCarousel._setHeight( scope );
+			} );
+
+
+	}, 10);
+}

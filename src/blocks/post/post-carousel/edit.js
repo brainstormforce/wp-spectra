@@ -77,7 +77,35 @@ class UAGBPostCarousel extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
 		document.head.appendChild( $style )
+
 	}
+
+	/*componentDidUpdate(){
+		if( this.props.attributes.equalHeight){
+			var wrap            = $(".wp-block-uagb-post-carousel").parents("#block-"+this.props.clientId);
+			var scope = wrap.find(".is-carousel");
+			//console.log(scope);
+
+			scope.imagesLoaded( function() {
+				console.log('1');
+				uagb_carousel_height(scope);
+			});
+
+			scope.on( 'afterChange', function() {
+				console.log('2');
+				uagb_carousel_height(scope);
+			} );
+
+			
+		}
+	}*/
+
+	init( props ) {		
+		if( props.attributes.equalHeight){
+			var wrap            = $(".wp-block-uagb-post-carousel").parents("#block-"+props.clientId);
+			uagb_carousel_height(props.clientId);
+		}
+	}	
 
 	render() {
 		const {
@@ -884,6 +912,10 @@ class UAGBPostCarousel extends Component {
 		)
 
 		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = this.init( this.props )
+		}
 
 		let css = ""
 
