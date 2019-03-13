@@ -330,7 +330,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::uagb_get_css_value( $attr['rightPaddingMobile'], 'px' ),
 					'margin-top'    => UAGB_Helper::uagb_get_css_value( $attr['topMarginMobile'], 'px' ),
 					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['bottomMarginMobile'], 'px' ),
-				)
+				),
 				' .uagb-columns__shape-bottom svg' => array(
 					'height' => UAGB_Helper::uagb_get_css_value( $attr['bottomHeightMobile'], 'px' )
 				),
@@ -347,7 +347,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::uagb_get_css_value( $attr['rightPaddingTablet'], 'px' ),
 					'margin-top'    => UAGB_Helper::uagb_get_css_value( $attr['topMarginTablet'], 'px' ),
 					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['bottomMarginTablet'], 'px' ),
-				)
+				),
 				' .uagb-columns__shape-bottom svg' => array(
 					'height' => UAGB_Helper::uagb_get_css_value( $attr['bottomHeightTablet'], 'px' )
 				),
@@ -888,16 +888,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				// Description Style.
 				' .uagb-ifb-desc' => array(
-					'font-size'     => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType )'],
+					'font-size'     => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ) ,
 					'font-family' => $attr['subHeadFontFamily'],
 					'font-weight' => $attr['subHeadFontWeight'],
-					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType )'],
+					'line-height' => UAGB_Helper::uagb_get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType'] ),
 					'color'         => $attr['subHeadingColor'],
 					'margin-bottom' => UAGB_Helper::uagb_get_css_value( $attr['subHeadSpace'], 'px' ),
 				),
 				// Seperator.
 				' .uagb-ifb-separator' => array(
-					'width'            => UAGB_Helper::uagb_get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType )'],
+					'width'            => UAGB_Helper::uagb_get_css_value( $attr['seperatorWidth'], $attr['separatorWidthType'] ),
 					'border-top-width' => UAGB_Helper::uagb_get_css_value( $attr['seperatorThickness'], 'px' ),
 					'border-top-color' => $attr['seperatorColor'],
 					'border-top-style' => $attr['seperatorStyle'],
@@ -955,10 +955,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'     => UAGB_Helper::uagb_get_css_value( $attr['prefixFontSizeTablet'], $attr['prefixFontSizeType'] ),
 				),
 				' .uagb-ifb-title'        => array(
-					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType' )],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType'] ),
 				),
 				' .uagb-ifb-desc' => array(
-					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType' )],
+					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType'] ),
 				),
 				' .uagb-infobox-cta-link' => array(
 					'font-size' => UAGB_Helper::uagb_get_css_value( $attr['ctaFontSizeTablet'], $attr['ctaFontSizeType'] ),
