@@ -2739,7 +2739,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				" .uagb-blockquote__skin-quotation .uagb-blockquote__icon-wrap" => array(
 					"background"        => $attr['quoteBgColor'],
-					"border-radius"     => UAGB_Helper::get_css_value( $attr['quoteBorderRadius'],'"%' ),
+					"border-radius"     => UAGB_Helper::get_css_value( $attr['quoteBorderRadius'],'%' ),
 					"margin-top"        => UAGB_Helper::get_css_value( $attr['quoteTopMargin'], 'px' ),
 					"margin-bottom"     => UAGB_Helper::get_css_value( $attr['quoteBottomMargin'], 'px' ),
 					"margin-left"       => UAGB_Helper::get_css_value( $attr['quoteLeftMargin'], 'px' ),
