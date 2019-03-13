@@ -137,7 +137,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$css          = '';
 
 				foreach ( $value as $j => $val ) {
-					if( ! empty( $val ) ) {
+					if ( ! empty( $val ) ) {
 						$css .= $j . ': ' . $val . ';';
 					}
 				}
@@ -153,7 +153,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * Syntax:
 		 *
-		 * 	uagb_get_css_value( VALUE, UNIT );
+		 *  uagb_get_css_value( VALUE, UNIT );
 		 *
 		 * E.g.
 		 *
