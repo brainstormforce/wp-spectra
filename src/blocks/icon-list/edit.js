@@ -605,7 +605,7 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => setAttributes( { border: value } ) }
 							help={ __( "Note: Border option is useful when one adds border color to the icons." ) }
 							min={ 0 }
-							max={ 500 }
+							max={ 10 }
 						/>
 						<RangeControl
 							label={ __( "Border Radius" ) }
