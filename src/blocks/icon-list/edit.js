@@ -97,6 +97,7 @@ class UAGBIconList extends Component {
 			hideLabel,
 			borderRadius,
 			bgSize,
+			border,
 			fontSize,
 			fontSizeType,
 			fontSizeMobile,
@@ -150,6 +151,12 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
 							allowReset
 						/>
+						<p className="uagb-setting-label">{ __( "Image Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_border_color }
+							onChange={ ( value ) => this.saveIcons( { icon_border_color: value }, index ) }
+							allowReset
+						/>
 					</Fragment>
 				)
 				color_control_hover = (
@@ -164,6 +171,12 @@ class UAGBIconList extends Component {
 						<ColorPalette
 							value={ icons[ index ].icon_bg_hover_color }
 							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Image Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_border_hover_color }
+							onChange={ ( value ) => this.saveIcons( { icon_border_hover_color: value }, index ) }
 							allowReset
 						/>
 					</Fragment>
@@ -190,6 +203,12 @@ class UAGBIconList extends Component {
 							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
 							allowReset
 						/>
+						<p className="uagb-setting-label">{ __( "Icon Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_border_color }
+							onChange={ ( value ) => this.saveIcons( { icon_border_color: value }, index ) }
+							allowReset
+						/>
 					</Fragment>
 				)
 				color_control_hover = (
@@ -210,6 +229,12 @@ class UAGBIconList extends Component {
 						<ColorPalette
 							value={ icons[ index ].icon_bg_hover_color }
 							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Icon Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ icons[ index ].icon_border_hover_color }
+							onChange={ ( value ) => this.saveIcons( { icon_border_hover_color: value }, index ) }
 							allowReset
 						/>
 					</Fragment>
@@ -417,6 +442,8 @@ class UAGBIconList extends Component {
 											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
 											"icon_bg_color": cloneIcons[ 0 ].icon_bg_color,
 											"icon_bg_hover_color": cloneIcons[ 0 ].icon_bg_hover_color,
+											"icon_border_color": cloneIcons[ 0 ].icon_border_color,
+											"icon_border_hover_color": cloneIcons[ 0 ].icon_border_hover_color,
 											"link": cloneIcons[ 0 ].link,
 											"target": cloneIcons[ 0 ].target
 										} )
@@ -469,7 +496,7 @@ class UAGBIconList extends Component {
 								{ value: "top", label: __( "Top" ) },
 								{ value: "middle", label: __( "Middle" ) },
 							] }
-							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }							
+							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
 						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
@@ -573,10 +600,18 @@ class UAGBIconList extends Component {
 							max={ 500 }
 						/>
 						<RangeControl
-							label={ __( "Circular Size" ) }
+							label={ __( "Border" ) }
+							value={ border }
+							onChange={ ( value ) => setAttributes( { border: value } ) }
+							help={ __( "Note: Border option is useful when one adds border color to the icons." ) }
+							min={ 0 }
+							max={ 10 }
+						/>
+						<RangeControl
+							label={ __( "Border Radius" ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							help={ __( "Note: Circular Size option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Border Radius option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>
