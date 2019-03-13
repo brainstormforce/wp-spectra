@@ -330,7 +330,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingMobile'] . 'px',
 					'margin-top'    => $attr['topMarginMobile'] . 'px',
 					'margin-bottom' => $attr['bottomMarginMobile'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightMobile'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightMobile'] . "px"
+				),
 			);
 
 			$t_selectors = array(
@@ -341,7 +347,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingTablet'] . 'px',
 					'margin-top'    => $attr['topMarginTablet'] . 'px',
 					'margin-bottom' => $attr['bottomMarginTablet'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightTablet'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightTablet'] . "px"
+				),
 			);
 
 			// @codingStandardsIgnoreEnd
@@ -785,7 +797,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
-				
+
 				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
