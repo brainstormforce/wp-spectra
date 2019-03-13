@@ -27,7 +27,8 @@ class Blog extends React.Component {
 			arrowBorderSize,
 			arrowBorderRadius,
 			arrowColor,
-			arrowDots
+			arrowDots,
+			equalHeight
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -56,6 +57,8 @@ class Blog extends React.Component {
 		let dots = ( "dots" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 		let arrows = ( "arrows" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 
+		const equalHeightClass = equalHeight ? "uagb-post__carousel_equal-height" : ""
+
 		const settings = {
 			slidesToShow : columns,
 			slidesToScroll : 1,
@@ -67,6 +70,7 @@ class Blog extends React.Component {
 			arrows : arrows,
 			dots : dots,
 			rtl : false,
+			adaptiveHeight: false,
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
@@ -108,7 +112,8 @@ class Blog extends React.Component {
 						className,
 						"uagb-post-grid",
 						"uagb-post__arrow-outside",
-						`uagb-post__image-position-${ imgPosition }`
+						`uagb-post__image-position-${ imgPosition }`,
+						`${ equalHeightClass }`
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
@@ -119,7 +124,7 @@ class Blog extends React.Component {
 							`uagb-post__columns-${ columns }`,
 							`uagb-post__columns-tablet-${ tcolumns }`,
 							`uagb-post__columns-mobile-${ mcolumns }`,
-							"uagb-post__items"
+							"uagb-post__items",	
 						) }
 					>
 						{ all_posts }
@@ -140,7 +145,8 @@ class Blog extends React.Component {
 						"uagb-post-grid",
 						"uagb-post__arrow-outside",
 						"uagb-slick-carousel",
-						`uagb-post__image-position-${ imgPosition }`
+						`uagb-post__image-position-${ imgPosition }`,
+						`${ equalHeightClass }`
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }

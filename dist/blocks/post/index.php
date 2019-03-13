@@ -79,7 +79,7 @@ add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
  * @since 0.0.1
  */
 function uagb_post_block_add_script() {
-	global $uagb_post_settings;
+	  global $uagb_post_settings;
 
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
@@ -103,10 +103,12 @@ function uagb_post_block_add_script() {
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
-			$dots   = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$arrows = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$dots        = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$arrows      = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$equalHeight = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
 			?>
-			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
+			<script type="text/javascript" id="
+			++  <?php echo $key; ?>">
 				( function( $ ) {
 					var cols = parseInt( '<?php echo $value['columns']; ?>' );
 					var scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
@@ -146,7 +148,15 @@ function uagb_post_block_add_script() {
 						]
 					};
 
-					scope.slick( slider_options );
+					var enableEqualHeight = ( '<?php echo $equalHeight; ?>' )
+					if( enableEqualHeight ){
+						scope.slick( slider_options ).on('setPosition', function (event, slick) {
+							slick.$slides.css('height', slick.$slideTrack.height() + 'px');
+							slick.$slides.find(".uagb-post__inner-wrap").css('height', slick.$slideTrack.height() + 'px');
+						});
+					}else{
+						scope.slick( slider_options );
+					}               
 
 				} )( jQuery );
 			</script>
@@ -195,6 +205,11 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
+
+			if ( $attributes['equalHeight'] ) {
+				array_push( $wrap, 'uagb-post__carousel_equal-height' );
+			}
+
 			if ( $query->post_count > $attributes['columns'] ) {
 				array_push( $outerwrap, 'uagb-slick-carousel' );
 			}
@@ -1000,6 +1015,10 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => '#aaaaaa',
 				),
+				'equalHeight'             => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			),
 			'render_callback' => 'uagb_post_carousel_callback',
 		)
@@ -1378,11 +1397,9 @@ add_action( 'init', 'uagb_register_blocks' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-
 	$post_type = UAGB_Helper::get_post_types();
 
 	foreach ( $post_type as $key => $value ) {
-
 		// Add featured image source.
 		register_rest_field(
 			$value['value'],

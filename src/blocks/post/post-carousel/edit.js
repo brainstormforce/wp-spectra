@@ -195,6 +195,7 @@ class UAGBPostCarousel extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
+			equalHeight
 		} = attributes
 
 		const hoverSettings = (
@@ -423,6 +424,11 @@ class UAGBPostCarousel extends Component {
 							}
 						}
 					</TabPanel>
+					<ToggleControl
+						label={ __( "Equal Height" ) }
+						checked={ equalHeight }
+						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 					<ToggleControl
