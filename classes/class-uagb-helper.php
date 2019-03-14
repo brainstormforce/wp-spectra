@@ -131,10 +131,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			foreach ( $selectors as $key => $value ) {
-				$styling_css .= $id;
 
-				$styling_css .= $key . ' { ';
-				$css          = '';
+				$css = '';
 
 				foreach ( $value as $j => $val ) {
 
@@ -143,7 +141,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 				}
 
-				$styling_css .= $css . ' } ';
+				if ( ! empty( $css ) ) {
+					$styling_css .= $id;
+					$styling_css .= $key . ' { ';
+					$styling_css .= $css . ' } ';
+				}
 			}
 
 			return $styling_css;
@@ -189,11 +191,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function generate_responsive_css( $selectors, $id, $type ) {
 
-			$breakpoint = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
+			$breakpoint   = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
+			$generate_css = self::generate_css( $selectors, $id );
+			$css          = '';
 
-			$css  = '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
-			$css .= self::generate_css( $selectors, $id );
-			$css .= ' } ';
+			if ( ! empty( $generate_css ) ) {
+				$css .= '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
+				$css .= $generate_css;
+				$css .= ' } ';
+			}
 
 			return $css;
 		}
