@@ -39,12 +39,10 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 	}
 
 	if( isResponsive ) {
-		styling_css = res_styling_css;
+		return res_styling_css;
 	} else {
-		styling_css = gen_styling_css;
+		return gen_styling_css;
 	}
-
-	return styling_css
 }
 
 export default generateCSS
