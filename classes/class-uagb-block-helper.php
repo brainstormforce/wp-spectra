@@ -3855,24 +3855,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
 					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 				),
-				' .uagb-gf-styler__field-style-underline .gfield_checkbox input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
 					'border-style' => 'solid',
 				),
-				' .uagb-gf-styler__field-style-underline input[type="radio"] + label:before' => array(
-					'border-style' => 'solid',
-				),
-				' .uagb-gf-styler__field-style-underline input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
 					'border-style' => 'solid',
 				),
 				' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
-					'border-width'  => $attr['fieldBorderWidth'] . 'px',
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
-					'border-width'  => $attr['fieldBorderWidth'] . 'px',
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
@@ -3889,6 +3886,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
+					'border-style'     => 'solid',
 					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],
 				),
 				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
