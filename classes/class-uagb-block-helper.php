@@ -4295,7 +4295,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-
 			$m_selectors = array();
 			$t_selectors = array();
 
