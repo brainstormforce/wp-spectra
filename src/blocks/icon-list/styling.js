@@ -30,8 +30,9 @@ function styling( props ) {
 		lineHeightMobile,
 		loadGoogleFonts,
 		stack,
+		border,
 		bgSize,
-		borderRadius,		
+		borderRadius,
 	} = props.attributes
 
 	var selectors = {}
@@ -42,7 +43,9 @@ function styling( props ) {
 	selectors = {
 		" .uagb-icon-list__source-wrap" : {
 			"padding": bgSize + "px",
-			"border-radius": borderRadius + "px"
+			"border-radius": borderRadius + "px",
+			"border-style" : "solid",
+			"border-width" : border + "px"
 		},
 		".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper" : {
 			"margin-left" : 0,
@@ -96,7 +99,7 @@ function styling( props ) {
 		},
 	}
 
-	mobile_selectors = {		
+	mobile_selectors = {
 		" .uagb-icon-list__source-image": {
 			"width": sizeMobile + sizeType
 		},
@@ -134,7 +137,7 @@ function styling( props ) {
 			"height": sizeTablet + sizeType,
 			"font-size": sizeTablet + sizeType
 		}
-	}	
+	}
 
 	if ( "horizontal" == icon_layout ) {
 
@@ -217,11 +220,13 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_color
+			"background" : icon.icon_bg_color,
+			"border-color" : icon.icon_border_color
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_hover_color
+			"background" : icon.icon_bg_hover_color,
+			"border-color" : icon.icon_border_hover_color
 		}
 	})
 

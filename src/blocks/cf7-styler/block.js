@@ -29,7 +29,8 @@ const {
  *                             registered; otherwise `undefined`.
  */
 
-if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
+
+if( uagb_blocks_info.blocks["uagb/cf7-styler"]["is_active"] ) {
 	registerBlockType( "uagb/cf7-styler", {
 
 		title: uagb_blocks_info.blocks["uagb/cf7-styler"]["title"], // Block title.
@@ -44,6 +45,6 @@ if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 		edit,
 		save() {
 			return null
-		},	
+		},
 	} )
 }

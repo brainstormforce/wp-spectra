@@ -31,7 +31,7 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 		 * @var array Notices.
 		 * @since 1.4.0
 		 */
-		private static $version = '1.1.2';
+		private static $version = '1.1.3';
 
 		/**
 		 * Notices
@@ -218,29 +218,19 @@ if ( ! class_exists( 'Astra_Notices' ) ) :
 
 			wp_enqueue_script( 'astra-notices' );
 
+			do_action( "astra_notice_before_markup_{$notice['id']}" );
+
 			?>
 			<div id="<?php echo esc_attr( $notice['id'] ); ?>" class="<?php echo esc_attr( $notice['classes'] ); ?>" data-repeat-notice-after="<?php echo esc_attr( $notice['repeat-notice-after'] ); ?>">
 				<div class="notice-container">
+					<?php do_action( "astra_notice_inside_markup_{$notice['id']}" ); ?>
 					<?php echo wp_kses_post( $notice['message'] ); ?>
 				</div>
 			</div>
 			<?php
-		}
 
-		/**
-		 * Function to check if the notice is expired or not.
-		 *
-		 * Pass Notice ID to this function to check if the notice is expired or not.
-		 *
-		 * @since 1.7.0
-		 * @param  array $id Notice id.
-		 * @return boolean
-		 */
-		public static function is_notice_expired( $id ) {
-			if ( self::is_expired( $id ) ) {
-				return true;
-			}
-			return false;
+			do_action( "astra_notice_after_markup_{$notice['id']}" );
+
 		}
 
 		/**

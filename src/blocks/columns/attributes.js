@@ -183,6 +183,12 @@ const attributes = {
 	bottomHeight : {
 		type: "number"
 	},
+	bottomHeightTablet : {
+		type: "number"
+	},
+	bottomHeightMobile : {
+		type: "number"
+	},
 	bottomWidth : {
 		type: "number"
 	},
@@ -194,6 +200,12 @@ const attributes = {
 		type: "string"
 	},
 	topHeight : {
+		type: "number"
+	},
+	topHeightTablet : {
+		type: "number"
+	},
+	topHeightMobile : {
 		type: "number"
 	},
 	topWidth : {
