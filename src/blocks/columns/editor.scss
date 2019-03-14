@@ -182,6 +182,11 @@
 	width: 100%;
 }
 
+.editor-block-list__layout .editor-block-list__block[data-align="full"][data-type="uagb/columns"] {
+	margin-left: 0;
+	margin-right: 0;
+}
+
 @media (max-width: 976px) {
 
 	.uagb-columns__reverse-tablet.wp-block-uagb-columns > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout {

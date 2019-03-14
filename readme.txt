@@ -155,6 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Gravity Forms Styler
 * Improvement: Performance - JS related to disabled blocks are not loaded.
 * Improvement: Post - Added more Order By options to the Query Builder.
+* Improvement: Post - Conflicts with Toolset Layouts, WPCasa, FacetWP fixed.
 * Improvement: Icon List - Border options added.
 * Fix: Advanced Columns - Column spacing issue on editor.
 * Fix: Advanced Columns - Shape Divider height responsive compatibility.
