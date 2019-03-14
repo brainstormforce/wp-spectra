@@ -4,6 +4,7 @@
 
 import inlineStyles from "./inline-styles"
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -55,7 +56,7 @@ function styling( props ) {
 
 	if ( "custom" == contentWidth ) {
 		if ( "" != width ) {
-			max_width = width + "px"
+			max_width = generateCSSUnit( width, "px" )
 		}
 	}
 
@@ -71,11 +72,11 @@ function styling( props ) {
 			"max-width" : max_width
 		},
 		" .uagb-column__inner-wrap" : {
-			"padding" : columnGap + "px"
+			"padding" : generateCSSUnit( columnGap, "px" )
 		},
 		" .uagb-columns__shape-top svg" : {
 			width: "calc( " + topWidth + "% + 1.3px )",
-			height: topHeight + "px"
+			height: generateCSSUnit( topHeight, "px" )
 		},
 		" .uagb-columns__shape-top .uagb-columns__shape-fill" : {
 			fill: topColor,
@@ -83,7 +84,7 @@ function styling( props ) {
 		},
 		" .uagb-columns__shape-bottom svg" : {
 			width: "calc( " + bottomWidth + "% + 1.3px )",
-			height: bottomHeight + "px"
+			height: generateCSSUnit( bottomHeight, "px" )
 		},
 		" .uagb-columns__shape-bottom .uagb-columns__shape-fill" : {
 			fill: bottomColor,
@@ -122,39 +123,39 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" > .uagb-columns__overlay"]["border-radius"] = borderRadius + "px"
+	selectors[" > .uagb-columns__overlay"]["border-radius"] = generateCSSUnit( borderRadius, "px" )
 
 	tablet_selectors = {
 		".uagb-columns__wrap" : {
-			"padding-top": topPaddingTablet + "px",
-			"padding-bottom": bottomPaddingTablet + "px",
-			"padding-left": leftPaddingTablet + "px",
-			"padding-right": rightPaddingTablet + "px",
-			"margin-top": topMarginTablet + "px",
-			"margin-bottom": bottomMarginTablet + "px",
+			"padding-top": generateCSSUnit( topPaddingTablet, "px" ),
+			"padding-bottom": generateCSSUnit( bottomPaddingTablet, "px" ),
+			"padding-left": generateCSSUnit( leftPaddingTablet, "px" ),
+			"padding-right": generateCSSUnit( rightPaddingTablet, "px" ),
+			"margin-top": generateCSSUnit( topMarginTablet, "px" ),
+			"margin-bottom": generateCSSUnit( bottomMarginTablet, "px" ),
 		},
 		" .uagb-columns__shape-top svg" : {
-			height: topHeightTablet + "px"
+			height: generateCSSUnit( topHeightTablet, "px" )
 		},
 		" .uagb-columns__shape-bottom svg" : {
-			height: bottomHeightTablet + "px"
+			height: generateCSSUnit( bottomHeightTablet, "px" )
 		},
 	}
 
 	mobile_selectors = {
 		".uagb-columns__wrap" : {
-			"padding-top": topPaddingMobile + "px",
-			"padding-bottom": bottomPaddingMobile + "px",
-			"padding-left": leftPaddingMobile + "px",
-			"padding-right": rightPaddingMobile + "px",
-			"margin-top": topMarginMobile + "px",
-			"margin-bottom": bottomMarginMobile + "px",
+			"padding-top": generateCSSUnit( topPaddingMobile, "px" ),
+			"padding-bottom": generateCSSUnit( bottomPaddingMobile, "px" ),
+			"padding-left": generateCSSUnit( leftPaddingMobile, "px" ),
+			"padding-right": generateCSSUnit( rightPaddingMobile, "px" ),
+			"margin-top": generateCSSUnit( topMarginMobile, "px" ),
+			"margin-bottom": generateCSSUnit( bottomMarginMobile, "px" ),
 		},
 		" .uagb-columns__shape-top svg" : {
-			height: topHeightMobile + "px"
+			height: generateCSSUnit( topHeightMobile, "px" )
 		},
 		" .uagb-columns__shape-bottom svg" : {
-			height: bottomHeightMobile + "px"
+			height: generateCSSUnit( bottomHeightMobile, "px" )
 		},
 	}
 

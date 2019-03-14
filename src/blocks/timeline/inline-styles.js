@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function contentTimelineStyle( props ) {
 	const {
@@ -110,29 +111,29 @@ function contentTimelineStyle( props ) {
 
 	var selectors = {
 		" .uagb-timeline__heading" : {
-			"font-size" : headFontSize+headFontSizeType,
+			"font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
 			"font-family": headFontFamily,
 			"font-weight": headFontWeight,
-			"line-height": headLineHeight + headLineHeightType,
+			"line-height": generateCSSUnit( headLineHeight, headLineHeightType ),
 			"text-align": align,
 			"color": headingColor,
 		},
 		" .uagb-timeline__heading a" : {
-			"font-size" : headFontSize+headFontSizeType,
+			"font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
 			"font-family": headFontFamily,
 			"font-weight": headFontWeight,
-			"line-height": headLineHeight + headLineHeightType,
+			"line-height": generateCSSUnit( headLineHeight, headLineHeightType ),
 			"text-align": align,
 			"color": headingColor,
 		},
 		" .uagb-timeline__heading-text" : {
-			"margin-bottom" : headSpace+"px",
+			"margin-bottom" : generateCSSUnit( headSpace, "px" ),
 		},
 		" .uagb-timeline-desc-content" : {
-			"font-size" : subHeadFontSize+subHeadFontSizeType,
+			"font-size" : generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
-			"line-height": subHeadLineHeight + subHeadLineHeightType,
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"text-align": align,
 			"color": subHeadingColor,
 		},
@@ -159,7 +160,7 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__line" : {
 			"background-color" : separatorColor,
-			"width" : separatorwidth+"px",
+			"width" : generateCSSUnit( separatorwidth, "px" ),
 		},
 		" .uagb-timeline__right-block .uagb-timeline__line" : {
 			"right" : "calc( "+connectorBgsize+"px / 2 )",
@@ -172,61 +173,61 @@ function contentTimelineStyle( props ) {
 		},
 		" .uagb-timeline__marker" : {
 			"background-color" : separatorBg,
-			"min-height": connectorBgsize+"px",
-			"min-width" : connectorBgsize+"px",
-			"line-height" : connectorBgsize+"px",
+			"min-height": generateCSSUnit( connectorBgsize, "px" ),
+			"min-width" : generateCSSUnit( connectorBgsize, "px" ),
+			"line-height" : generateCSSUnit( connectorBgsize, "px" ),
 			"border": borderwidth+"px solid"+separatorBorder,
 		},
 		" .uagb-timeline__left-block .uagb-timeline__left .uagb-timeline__arrow" : {
-			"height" : connectorBgsize+"px",
+			"height" : generateCSSUnit( connectorBgsize, "px" ),
 		},
 		" .uagb-timeline__right-block .uagb-timeline__right .uagb-timeline__arrow" : {
-			"height" : connectorBgsize+"px",
+			"height" : generateCSSUnit( connectorBgsize, "px" ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__left .uagb-timeline__arrow" : {
-			"height" : connectorBgsize+"px",
+			"height" : generateCSSUnit( connectorBgsize, "px" ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__right .uagb-timeline__arrow" : {
-			"height" : connectorBgsize+"px",
+			"height" : generateCSSUnit( connectorBgsize, "px" ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__marker" : {
-			"margin-left" : horizontalSpace+"px",
-			"margin-right": horizontalSpace+"px",
+			"margin-left" : generateCSSUnit( horizontalSpace, "px" ),
+			"margin-right": generateCSSUnit( horizontalSpace, "px" ),
 		},
 		" .uagb-timeline__field:not(:last-child)" : {
-			"margin-bottom" : verticalSpace+"px",
+			"margin-bottom" : generateCSSUnit( verticalSpace, "px" ),
 		},
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
-			"margin-bottom" : dateBottomspace+"px",
+			"margin-bottom" : generateCSSUnit( dateBottomspace, "px" ),
 			"color": dateColor,
-			"font-size" : dateFontsize+dateFontsizeType,
+			"font-size" : generateCSSUnit( dateFontsize, dateFontsizeType ),
 			"font-family": dateFontFamily,
 			"font-weight": dateFontWeight,
-			"line-height": dateLineHeight + dateLineHeightType,
+			"line-height": generateCSSUnit( dateLineHeight, dateLineHeightType ),
 			"text-align": align,
 		},
 		" .uagb-timeline__left-block .uagb-timeline__day-new.uagb-timeline__day-left" : {
-			"margin-left" : horizontalSpace+"px",
+			"margin-left" : generateCSSUnit( horizontalSpace, "px" ),
 		},
 		" .uagb-timeline__right-block .uagb-timeline__day-new.uagb-timeline__day-right" : {
-			"margin-right" : horizontalSpace+"px",
+			"margin-right" : generateCSSUnit( horizontalSpace, "px" ),
 		},
 		" .uagb-timeline__date-new" : {
 			"color": dateColor,
-			"font-size" : dateFontsize+dateFontsizeType,
+			"font-size" : generateCSSUnit( dateFontsize, dateFontsizeType ),
 			"font-family": dateFontFamily,
 			"font-weight": dateFontWeight,
-			"line-height": dateLineHeight + dateLineHeightType,
+			"line-height": generateCSSUnit( dateLineHeight, dateLineHeightType ),
 		},
 		" .uagb-timeline__events-inner-new" : {
 			"background-color" : backgroundColor,
-			"border-radius" : borderRadius+"px",
-			"padding": bgPadding+"px",
+			"border-radius" : generateCSSUnit( borderRadius, "px" ),
+			"padding": generateCSSUnit( bgPadding, "px" ),
 		},
 		" .uagb-timeline__main .uagb-timeline__icon-new" : {
 			"color": iconColor,
-			"font-size" : iconSize+"px",
-			"width": iconSize+"px",
+			"font-size" : generateCSSUnit( iconSize, "px" ),
+			"width": generateCSSUnit( iconSize, "px" ),
 		},
 		" .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon" : {
 			"background" : iconBgFocus,
@@ -244,20 +245,20 @@ function contentTimelineStyle( props ) {
 
 		//Author and CTA
 		" .uagb-timeline__author" : {
-			"margin-bottom" : authorSpace+"px",
+			"margin-bottom" : generateCSSUnit( authorSpace, "px" ),
 			"text-align": align,
 		},
 		" .uagb-timeline__author .dashicons-admin-users" : {
-			"font-size" : authorFontSize+authorFontSizeType,			
+			"font-size" : generateCSSUnit( authorFontSize, authorFontSizeType ),			
 			"font-weight": authorFontWeight,
-			"line-height": authorLineHeight + authorLineHeightType,
+			"line-height": generateCSSUnit( authorLineHeight, authorLineHeightType ),
 			"color": authorColor,
 		},
 		" .uagb-timeline__author-link" :{
-			"font-size" : authorFontSize+authorFontSizeType,
+			"font-size" : generateCSSUnit( authorFontSize, authorFontSizeType ),
 			"font-family": authorFontFamily,
 			"font-weight": authorFontWeight,
-			"line-height": authorLineHeight + authorLineHeightType,
+			"line-height": generateCSSUnit( authorLineHeight, authorLineHeightType ),
 			"color": authorColor,
 		},
 
@@ -265,10 +266,10 @@ function contentTimelineStyle( props ) {
 			"text-align": align,
 		},
 		" .uagb-timeline__link" :{
-			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-size" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"font-family": ctaFontFamily,
 			"font-weight": ctaFontWeight,
-			"line-height": ctaLineHeight + ctaLineHeightType,
+			"line-height": generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
 			"color": ctaColor,
 			"background-color": ctaBackground,
 		}
@@ -277,24 +278,24 @@ function contentTimelineStyle( props ) {
 	/* Generate Responsive CSS for timeline */
 	var tablet_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
-			"font-size" : dateFontsizeTablet + dateFontsizeType,
-			"line-height": dateLineHeightTablet + dateLineHeightType,
+			"font-size" : generateCSSUnit( dateFontsizeTablet, dateFontsizeType ),
+			"line-height": generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 		},
 		" .uagb-timeline__date-new" : {
-			"font-size" : dateFontsizeTablet + dateFontsizeType,
-			"line-height": dateLineHeightTablet + dateLineHeightType,
+			"font-size" : generateCSSUnit( dateFontsizeTablet, dateFontsizeType ),
+			"line-height": generateCSSUnit( dateLineHeightTablet, dateLineHeightType ),
 		},
 		" .uagb-timeline__heading" : {
-			"font-size" : headFontSizeTablet + headFontSizeType,
-			"line-height": headLineHeightTablet + headLineHeightType,
+			"font-size" : generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		},
 		" .uagb-timeline__heading a" : {
-			"font-size" : headFontSizeTablet + headFontSizeType,
-			"line-height": headLineHeightTablet + headLineHeightType,
+			"font-size" : generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		},
 		" .uagb-timeline-desc-content" : {
-			"font-size" : subHeadFontSizeTablet + subHeadFontSizeType,
-			"line-height": subHeadLineHeightTablet + subHeadLineHeightType,
+			"font-size" : generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__marker" : {
 		    "margin-left" : 0,
@@ -333,49 +334,49 @@ function contentTimelineStyle( props ) {
 
 		// CTA AUTHOR.
 		" .uagb-timeline__author .dashicons-admin-users" : {
-			"font-size" : authorFontSizeTablet+authorFontSizeType,
-			"line-height": authorLineHeightTablet + authorLineHeightType,
+			"font-size" : generateCSSUnit( authorFontSizeTablet,authorFontSizeType ),
+			"line-height": generateCSSUnit( authorLineHeightTablet, authorLineHeightType ),
 		},
 		" .uagb-timeline__author-link" :{
-			"font-size" : authorFontSizeTablet+authorFontSizeType,
-			"line-height": authorLineHeightTablet + authorLineHeightType,
+			"font-size" : generateCSSUnit( authorFontSizeTablet,authorFontSizeType ),
+			"line-height": generateCSSUnit( authorLineHeightTablet, authorLineHeightType ),
 		},
 		" .uagb-timeline__link" :{
-			"font-size" : ctaFontSizeTablet+ctaFontSizeType,
-			"line-height": ctaLineHeightTablet + ctaLineHeightType,
+			"font-size" : generateCSSUnit( ctaFontSizeTablet,ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaLineHeightTablet, ctaLineHeightType ),
 		}
 	}
 
 	var mobile_selectors = {
 		" .uagb-timeline__date-hide.uagb-timeline__date-inner" : {
-			"font-size" : dateFontsizeMobile + dateFontsizeType,
-			"line-height": dateLineHeightMobile + dateLineHeightType,
+			"font-size" : generateCSSUnit( dateFontsizeMobile, dateFontsizeType ),
+			"line-height": generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 		},
 		" .uagb-timeline__date-new" : {
-			"font-size" : dateFontsizeMobile + dateFontsizeType,
-			"line-height": dateLineHeightMobile + dateLineHeightType,
+			"font-size" : generateCSSUnit( dateFontsizeMobile, dateFontsizeType ),
+			"line-height": generateCSSUnit( dateLineHeightMobile, dateLineHeightType ),
 		},
 		" .uagb-timeline__heading" : {
-			"font-size" : headFontSizeMobile + headFontSizeType,
-			"line-height": headLineHeightMobile + headLineHeightType,
+			"font-size" : generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		},
 		" .uagb-timeline__heading a" : {
-			"font-size" : headFontSizeMobile + headFontSizeType,
-			"line-height": headLineHeightMobile + headLineHeightType,
+			"font-size" : generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		},
 		" .uagb-timeline-desc-content" : {
-			"font-size" : subHeadFontSizeMobile + subHeadFontSizeType,
-			"line-height": subHeadLineHeightMobile + subHeadLineHeightType,
+			"font-size" : generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__marker" : {
 		    "margin-left" : 0,
 		    "margin-right" : 0,
 		},
 		" .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-left" : {
-			"margin-left" : horizontalSpace+"px",
+			"margin-left" : generateCSSUnit( horizontalSpace, "px" ),
 		},
 		" .uagb-timeline__center-block .uagb-timeline__day-new.uagb-timeline__day-right" : {
-		    "margin-left" : horizontalSpace+"px",
+		    "margin-left" : generateCSSUnit( horizontalSpace, "px" ),
 		},
 		" .uagb-timeline__center-block.uagb-timeline__responsive-mobile .uagb-timeline__heading" : {
 			"text-align"  : resp_selectors,
@@ -410,16 +411,16 @@ function contentTimelineStyle( props ) {
 
 		// CTA  AUthor
 		" .uagb-timeline__author .dashicons-admin-users" : {
-			"font-size" : authorFontSizeMobile+authorFontSizeType,
-			"line-height": authorLineHeightMobile + authorLineHeightType,
+			"font-size" : generateCSSUnit( authorFontSizeMobile, authorFontSizeType ),
+			"line-height": generateCSSUnit( authorLineHeightMobile, authorLineHeightType ),
 		},
 		" .uagb-timeline__author-link" :{
-			"font-size" : authorFontSizeMobile+authorFontSizeType,
-			"line-height": authorLineHeightMobile + authorLineHeightType,
+			"font-size" : generateCSSUnit( authorFontSizeMobile, authorFontSizeType ),
+			"line-height": generateCSSUnit( authorLineHeightMobile, authorLineHeightType ),
 		},
 		" .uagb-timeline__link" :{
-			"font-size" : ctaFontSizeMobile+ctaFontSizeType,
-			"line-height": ctaLineHeightMobile + ctaLineHeightType,
+			"font-size" : generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaLineHeightMobile, ctaLineHeightType ),
 		}
 	}
 
