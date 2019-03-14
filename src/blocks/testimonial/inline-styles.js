@@ -176,9 +176,15 @@ function TestimonialStyle( props ) {
 		}
 	}
 
-	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
+	if( arrowDots === "dots"){
 		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
-			"padding" : 0,
+			"padding" : "0 0 35px 0",
+		}
+	}
+
+	if( test_item_count === 1 || test_item_count === columns ){
+		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
+			"padding" : "0",
 		}
 	}
 
@@ -208,7 +214,7 @@ function TestimonialStyle( props ) {
 		},
 		" .uagb-tm__author-name": {
 			"font-size" : nameFontSizeTablet+nameFontSizeType,
-			"line-height": nameLineHeightTablet +nameLineHeightType,			
+			"line-height": nameLineHeightTablet +nameLineHeightType,
 		},
 		" .uagb-tm__content": {
 			"text-align" : "center",

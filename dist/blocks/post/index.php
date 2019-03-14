@@ -1431,6 +1431,24 @@ function uagb_blocks_register_rest_fields() {
 
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
+/**
+ * Create API Order By Fields
+ *
+ * @since 1.12.0
+ */
+function uagb_blocks_register_rest_orderby_fields() {
+
+	$post_type = UAGB_Helper::get_post_types();
+
+	foreach ( $post_type as $key => $type ) {
+
+		add_filter( "rest_{$type['value']}_collection_params", 'uagb_blocks_add_orderby', 10, 1 );
+
+	}
+}
+
+add_action( 'init', 'uagb_blocks_register_rest_orderby_fields' );
+
 
 /**
  * Get featured image source for the rest field as per size
@@ -1507,6 +1525,20 @@ function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
 		$excerpt = null;
 	}
 	return $excerpt;
+}
+
+/**
+ * Adds Order By values to Rest API
+ *
+ * @param object $params Parameters.
+ * @since 1.12.0
+ */
+function uagb_blocks_add_orderby( $params ) {
+
+	$params['orderby']['enum'][] = 'rand';
+	$params['orderby']['enum'][] = 'menu_order';
+
+	return $params;
 }
 
 /**

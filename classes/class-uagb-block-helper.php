@@ -12,7 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -328,7 +327,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingMobile'] . 'px',
 					'margin-top'    => $attr['topMarginMobile'] . 'px',
 					'margin-bottom' => $attr['bottomMarginMobile'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightMobile'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightMobile'] . "px"
+				),
 			);
 
 			$t_selectors = array(
@@ -339,7 +344,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingTablet'] . 'px',
 					'margin-top'    => $attr['topMarginTablet'] . 'px',
 					'margin-bottom' => $attr['bottomMarginTablet'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightTablet'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightTablet'] . "px"
+				),
 			);
 
 			// @codingStandardsIgnoreEnd
@@ -783,6 +794,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
+
+				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
+					'fill' => $attr['iconHover'] ,
+				),
+
 				' .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap' => array(
 					'margin-left'   => $attr['iconLeftMargin'].'px',
 					'margin-right'  => $attr['iconRightMargin'].'px',
@@ -1229,9 +1245,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ||  'dots' === $attr['arrowDots'] ){
+			if( 'dots' === $attr['arrowDots'] ){
 				$selectors['.uagb-slick-carousel'] = array(
-						'padding' => '0px',
+						'padding' => '0 0 35px 0',
+					);
+			}
+
+			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ){
+				$selectors['.uagb-slick-carousel'] = array(
+						'padding' => '0',
 					);
 			}
 
@@ -1751,7 +1773,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				" .uagb-icon-list__source-wrap"=> array(
 					"padding" => $attr['bgSize'] . "px",
-					"border-radius" => $attr['borderRadius'] . "px"
+					"border-radius" => $attr['borderRadius'] . "px",
+					"border-style" => "solid",
+					"border-width" => $attr['border'] . "px"
 				),
 				" .uagb-icon-list__wrap"=> array(
 					"justify-content"  => $alignment,
@@ -1828,6 +1852,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
 				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
 				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
+				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
+				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
 				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
 				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
 
@@ -1874,11 +1900,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_color']
+					"background" => $icon['icon_bg_color'],
+					"border-color" => $icon['icon_border_color'],
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color']
+					"background" => $icon['icon_bg_hover_color'],
+					"border-color" => $icon['icon_border_hover_color']
 				);
 			}
 
@@ -2401,7 +2429,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['arrowDots'] ) && 'dots' == $attr['arrowDots'] ) {
 
 				$selectors[".uagb-slick-carousel"] = array(
-					"padding" => "0"
+					"padding" => "0 0 35px 0"
 				);
 			}
 
@@ -3191,10 +3219,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
 					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
-					'font-size'        => $attr['labelFontSize'] . $attr['labelFontSizeType'],
-					'font-family'      => $attr['labelFontFamily'],
-					'font-weight'      => $attr['labelFontWeight'],
-					'line-height'      => $attr['labelLineHeight'] . $attr['labelLineHeightType'],
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
 					'text-align'       => $attr['align'],
 				),
 				' .wpcf7 select.wpcf7-form-control.wpcf7-select:not([multiple="multiple"])' => array(
@@ -3563,7 +3591,554 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			return $desktop . $tablet . $mobile;
 		}
 
+
+
 		/**
+		 * Get Gravity Form Styler CSS
+		 *
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @since 1.12.0
+		 */
+		public static function get_gf_styler_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/gf-styler']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$attr['msgVrPadding']   = ( '' === $attr['msgVrPadding'] ) ? '0' : $attr['msgVrPadding'];
+			$attr['msgHrPadding']   = ( '' === $attr['msgHrPadding'] ) ? '0' : $attr['msgHrPadding'];
+			$attr['textAreaHeight'] = ( 'auto' === $attr['msgHrPadding'] ) ? $attr['textAreaHeight'] : $attr['textAreaHeight'] . 'px';
+
+			$selectors = array(
+				' .gform_wrapper form'                   => array(
+					'text-align' => $attr['align'],
+				),
+				' .wp-block-uagb-gf-styler form:not(input)' => array(
+					'color' => $attr['fieldLabelColor'],
+				),
+				' .gform_heading'                        => array(
+					'text-align' => $attr['titleDescAlignment'],
+				),
+				' input:not([type=submit])'              => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
+					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
+					'text-align'       => $attr['align'],
+				),
+				' select'                                => array(
+					'background-color' => $attr['fieldBgColor'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
+					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
+					'color'            => $attr['fieldInputColor'],
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
+					'text-align'       => $attr['align'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+				),
+				' .chosen-container-single span'         => array(
+					'background-color' => $attr['fieldBgColor'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
+					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
+					'color'            => $attr['fieldInputColor'],
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
+					'text-align'       => $attr['align'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+				),
+				' .chosen-container-single.chosen-container-active .chosen-single span' => array(
+					'margin-bottom' => 0,
+				),
+				' select.wpgf-form-control.wpgf-select:not([multiple="multiple"])' => array(
+					'padding-left'   => $attr['fieldHrPadding'] . 'px',
+					'padding-right'  => $attr['fieldHrPadding'] . 'px',
+					'padding-top'    => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom' => $attr['fieldVrPadding'] . 'px',
+				),
+				' select.wpgf-select[multiple="multiple"] option' => array(
+					'padding-left'   => $attr['fieldHrPadding'] . 'px',
+					'padding-right'  => $attr['fieldHrPadding'] . 'px',
+					'padding-top'    => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom' => $attr['fieldVrPadding'] . 'px',
+				),
+				' textarea'                              => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
+					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
+					'text-align'       => $attr['align'],
+					'height'           => $attr['textAreaHeight'],
+				),
+				' textarea::placeholder'                 => array(
+					'color'      => $attr['fieldInputColor'],
+					'text-align' => $attr['align'],
+				),
+				' input::placeholder'                    => array(
+					'color'      => $attr['fieldInputColor'],
+					'text-align' => $attr['align'],
+				),
+				' form label'                            => array(
+					'color'       => $attr['fieldLabelColor'],
+					'font-size'   => $attr['labelFontSize'] . $attr['labelFontSizeType'],
+					'font-family' => $attr['labelFontFamily'],
+					'font-weight' => $attr['labelFontWeight'],
+					'line-height' => $attr['labelLineHeight'] . $attr['labelLineHeightType'],
+				),
+				' form .gfield_radio label'              => array(
+					'color'       => $attr['fieldLabelColor'],
+					'font-size'   => $attr['labelFontSize'] . $attr['labelFontSizeType'],
+					'font-family' => $attr['labelFontFamily'],
+					'font-weight' => $attr['labelFontWeight'],
+					'line-height' => $attr['labelLineHeight'] . $attr['labelLineHeightType'],
+				),
+				' form .gfield_checkbox label'           => array(
+					'color'       => $attr['fieldLabelColor'],
+					'font-size'   => $attr['labelFontSize'] . $attr['labelFontSizeType'],
+					'font-family' => $attr['labelFontFamily'],
+					'font-weight' => $attr['labelFontWeight'],
+					'line-height' => $attr['labelLineHeight'] . $attr['labelLineHeightType'],
+				),
+				' .wpgf .gfield_checkbox input[type="checkbox"] + label, .wpgf .gfield_checkbox input[type="checkbox"] + label' => array(
+					'margin-top' => $attr['fieldLabelSpacing'] . 'px',
+				),
+
+				// Focus.
+				' form input:not([type=submit]):focus'   => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+				' form select:focus'                     => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+				' textarea:focus'                        => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+
+				// Submit button.
+				' input.gform_button'                    => array(
+					'color'            => $attr['buttonTextColor'],
+					'background-color' => $attr['buttonBgColor'],
+					'font-size'        => $attr['buttonFontSize'] . $attr['buttonFontSizeType'],
+					'font-family'      => $attr['buttonFontFamily'],
+					'font-weight'      => $attr['buttonFontWeight'],
+					'line-height'      => $attr['buttonLineHeight'] . $attr['buttonLineHeightType'],
+					'border-color'     => $attr['buttonBorderColor'],
+					'border-style'     => $attr['buttonBorderStyle'],
+					'border-width'     => $attr['buttonBorderWidth'] . 'px',
+					'border-radius'    => $attr['buttonBorderRadius'] . $attr['buttonBorderRadiusType'],
+					'padding-left'     => $attr['buttonHrPadding'] . 'px',
+					'padding-right'    => $attr['buttonHrPadding'] . 'px',
+					'padding-top'      => $attr['buttonVrPadding'] . 'px',
+					'padding-bottom'   => $attr['buttonVrPadding'] . 'px',
+				),
+				' input.gform_button:hover'              => array(
+					'color'            => $attr['buttonTextHoverColor'],
+					'background-color' => $attr['buttonBgHoverColor'],
+					'border-color'     => $attr['buttonBorderHoverColor'],
+				),
+
+				// Check box Radio.
+				' .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'border-color'     => $attr['fieldBorderFocusColor'],
+				),
+				' .gfield_checkbox input[type="checkbox"] + label:before' => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'height'           => $attr['fieldVrPadding'] . 'px',
+					'width'            => $attr['fieldVrPadding'] . 'px',
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+				),
+				' input[type="checkbox"]:checked + label:before' => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'border-color'     => $attr['fieldBorderFocusColor'],
+				),
+				' input[type="checkbox"] + label:before' => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'height'           => $attr['fieldVrPadding'] . 'px',
+					'width'            => $attr['fieldVrPadding'] . 'px',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+				),
+				' .gfield_radio input[type="radio"] + label:before' => array(
+					'background-color' => $attr['fieldBgColor'],
+					'color'            => $attr['fieldInputColor'],
+					'height'           => $attr['fieldVrPadding'] . 'px',
+					'width'            => $attr['fieldVrPadding'] . 'px',
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+				),
+				' .gfield_radio input[type="radio"]:checked + label:before' => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+
+				// Underline border.
+				' .uagb-gf-styler__field-style-underline input:not([type=submit])' => array(
+					'border-style'        => 'none',
+					'border-bottom-color' => $attr['fieldBorderColor'],
+					'border-bottom-style' => 'solid',
+					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+				),
+				' .uagb-gf-styler__field-style-underline textarea' => array(
+					'border-style'        => 'none',
+					'border-bottom-color' => $attr['fieldBorderColor'],
+					'border-bottom-style' => 'solid',
+					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+				),
+				' .uagb-gf-styler__field-style-underline select' => array(
+					'border-style'        => 'none',
+					'border-bottom-color' => $attr['fieldBorderColor'],
+					'border-bottom-style' => 'solid',
+					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+				),
+				' .uagb-gf-styler__field-style-underline textarea' => array(
+					'border-style'        => 'none',
+					'border-bottom-color' => $attr['fieldBorderColor'],
+					'border-bottom-style' => 'solid',
+					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+				),
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
+					'border-style' => 'solid',
+				),
+				' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
+					'border-style' => 'solid',
+				),
+				' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
+					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+				),
+				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
+					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+				),
+				' .gfield_radio input[type="radio"]:checked + label:before' => array(
+					'background-color' => $attr['fieldInputColor'],
+				),
+
+				// Override check box.
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
+					'background-color' => $attr['radioCheckBgColor'],
+					'color'            => $attr['radioCheckSelectColor'],
+					'height'           => $attr['radioCheckSize'] . 'px',
+					'width'            => $attr['radioCheckSize'] . 'px',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
+					'border-color'     => $attr['radioCheckBorderColor'],
+					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
+					'border-style'     => 'solid',
+					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],
+				),
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+				' .uagb-gf-styler__check-style-enabled input[type="checkbox"] + label:before' => array(
+					'background-color' => $attr['radioCheckBgColor'],
+					'color'            => $attr['radioCheckSelectColor'],
+					'height'           => $attr['radioCheckSize'] . 'px',
+					'width'            => $attr['radioCheckSize'] . 'px',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
+					'border-color'     => $attr['radioCheckBorderColor'],
+					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
+					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],
+				),
+				' .uagb-gf-styler__check-style-enabled input[type="checkbox"]:checked + label:before' => array(
+					'border-color' => $attr['fieldBorderFocusColor'],
+				),
+
+				' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
+					'background-color' => $attr['radioCheckBgColor'],
+					'color'            => $attr['radioCheckSelectColor'],
+					'height'           => $attr['radioCheckSize'] . 'px',
+					'width'            => $attr['radioCheckSize'] . 'px',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px / 1.2 )',
+					'border-color'     => $attr['radioCheckBorderColor'],
+					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
+				),
+				' .uagb-gf-styler__check-style-enabled .gfield_radio input[type="radio"]:checked + label:before' => array(
+					'background-color' => $attr['radioCheckSelectColor'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
+					'font-size'   => $attr['radioCheckFontSize'] . $attr['radioCheckFontSizeType'],
+					'font-family' => $attr['radioCheckFontFamily'],
+					'font-weight' => $attr['radioCheckFontWeight'],
+					'line-height' => $attr['radioCheckLineHeight'] . $attr['radioCheckLineHeightType'],
+					'color'       => $attr['radioCheckLableColor'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
+					'font-size'   => $attr['radioCheckFontSize'] . $attr['radioCheckFontSizeType'],
+					'font-family' => $attr['radioCheckFontFamily'],
+					'font-weight' => $attr['radioCheckFontWeight'],
+					'line-height' => $attr['radioCheckLineHeight'] . $attr['radioCheckLineHeightType'],
+					'color'       => $attr['radioCheckLableColor'],
+				),
+				// Validation Errors.
+				' .gform_wrapper .gfield_description.validation_message' => array(
+					'color' => $attr['validationMsgColor'],
+				),
+				' .gform_wrapper .validation_message'    => array(
+					'font-size'   => $attr['validationMsgFontSize'] . $attr['validationMsgFontSizeType'],
+					'font-family' => $attr['validationMsgFontFamily'],
+					'font-weight' => $attr['validationMsgFontWeight'],
+					'line-height' => $attr['validationMsgLineHeight'] . $attr['validationMsgLineHeightType'],
+				),
+				' .uagb-gf-styler__error-yes .gform_wrapper .gfield.gfield_error' => array(
+					'background-color' => $attr['validationMsgBgColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input:not([type="submit"]):not([type="button"]):not([type="image"])' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper .gfield_error .ginput_container select' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper .gfield_error .ginput_container .chosen-single' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper .gfield_error .ginput_container textarea' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper li.gfield.gfield_error' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper li.gfield.gfield_error.gfield_contains_required.gfield_creditcard_warning' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes li.gfield_error .gfield_checkbox input[type="checkbox"] + label:before' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes li.gfield_error .ginput_container_consent input[type="checkbox"] + label:before' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes li.gfield_error .gfield_radio input[type="radio"] + label:before' => array(
+					'border-color' => $attr['highlightBorderColor'],
+				),
+
+				' .uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input[type="text"]' => array(
+					'border-color' => $attr['fieldBorderWidth'] . 'px ' . $attr['fieldBorderStyle'] . ' ' . $attr['fieldBorderColor'] . '!important',
+				),
+
+				' .uael-gf-style-underline.uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input[type="text"]' => array(
+					'border-width' => $attr['fieldBorderWidth'] . 'px' . '!important',
+					'border-style' => 'solid' . '!important',
+					'border-color' => $attr['fieldBorderColor'] . '!important',
+				),
+
+				' .gform_wrapper div.validation_error'   => array(
+					'color'            => $attr['errorMsgColor'],
+					'background-color' => $attr['errorMsgBgColor'],
+					'border-color'     => $attr['errorMsgBorderColor'],
+					'border-style'     => 'solid',
+					'border-width'     => $attr['msgBorderSize'] . 'px',
+					'border-radius'    => $attr['msgBorderRadius'] . $attr['msgBorderRadiusType'],
+					'padding'          => $attr['msgVrPadding'] . 'px ' . $attr['msgHrPadding'] . 'px',
+					'font-size'        => $attr['msgFontSize'] . $attr['msgFontSizeType'],
+					'font-family'      => $attr['msgFontFamily'],
+					'font-weight'      => $attr['msgFontWeight'],
+					'line-height'      => $attr['msgLineHeight'] . $attr['msgLineHeightType'],
+				),
+
+				' .gform_confirmation_message'           => array(
+					'color'       => $attr['successMsgColor'],
+					'font-size'   => $attr['successMsgFontSize'] . $attr['successMsgFontSizeType'],
+					'font-family' => $attr['successMsgFontFamily'],
+					'font-weight' => $attr['successMsgFontWeight'],
+					'line-height' => $attr['successMsgLineHeight'] . $attr['successMsgLineHeightType'],
+				),
+			);
+
+			$t_selectors = array(
+				' form.wpgf-form:not(input)'           => array(
+					'color' => $attr['fieldLabelColor'],
+				),
+				' input:not([type=submit])'            => array(
+					'font-size'   => $attr['inputFontSizeTablet'] . $attr['inputFontSizeType'],
+					'line-height' => $attr['inputLineHeightTablet'] . $attr['inputLineHeightType'],
+				),
+				' textarea'                            => array(
+					'font-size'   => $attr['inputFontSizeTablet'] . $attr['inputFontSizeType'],
+					'line-height' => $attr['inputLineHeightTablet'] . $attr['inputLineHeightType'],
+				),
+				' form label'                          => array(
+					'font-size'   => $attr['labelFontSizeTablet'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightTablet'] . $attr['labelLineHeightType'],
+				),
+
+				' form .gfield_radio label'            => array(
+					'font-size'   => $attr['labelFontSizeTablet'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightTablet'] . $attr['labelLineHeightType'],
+				),
+				' form .gfield_checkbox label'         => array(
+					'font-size'   => $attr['labelFontSizeTablet'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightTablet'] . $attr['labelLineHeightType'],
+				),
+				' input.gform_button'                  => array(
+					'font-size'   => $attr['buttonFontSizeTablet'] . $attr['buttonFontSizeType'],
+					'line-height' => $attr['buttonLineHeightTablet'] . $attr['buttonLineHeightType'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
+					'font-size'   => $attr['radioCheckFontSizeTablet'] . $attr['radioCheckFontSizeType'],
+					'line-height' => $attr['radioCheckLineHeightTablet'] . $attr['radioCheckLineHeightType'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
+					'font-size'   => $attr['radioCheckFontSizeTablet'] . $attr['radioCheckFontSizeType'],
+					'line-height' => $attr['radioCheckLineHeightTablet'] . $attr['radioCheckLineHeightType'],
+				),
+				' span.wpgf-not-valid-tip'             => array(
+					'font-size'   => $attr['validationMsgFontSizeTablet'] . $attr['validationMsgFontSizeType'],
+					'line-height' => $attr['validationMsgLineHeightTablet'] . $attr['validationMsgLineHeightType'],
+				),
+				' .wpgf-response-output'               => array(
+					'font-size'   => $attr['msgFontSizeTablet'] . $attr['msgFontSizeType'],
+					'line-height' => $attr['msgLineHeightTablet'] . $attr['msgLineHeightType'],
+				),
+				' .gform_wrapper .validation_message'  => array(
+					'font-size'   => $attr['validationMsgFontSizeTablet'] . $attr['validationMsgFontSizeType'],
+					'line-height' => $attr['validationMsgLineHeightTablet'] . $attr['validationMsgLineHeightType'],
+				),
+				' .gform_wrapper div.validation_error' => array(
+					'font-size'   => $attr['msgFontSizeTablet'] . $attr['msgFontSizeType'],
+					'line-height' => $attr['msgLineHeightTablet'] . $attr['msgLineHeightType'],
+				),
+				' .gform_confirmation_message'         => array(
+					'color'       => $attr['successMsgColor'],
+					'font-size'   => $attr['successMsgFontSizeTablet'] . $attr['successMsgFontSizeType'],
+					'line-height' => $attr['successMsgLineHeightTablet'] . $attr['successMsgLineHeightType'],
+				),
+			);
+
+			$m_selectors = array(
+				' input:not([type=submit])'            => array(
+					'font-size'   => $attr['inputFontSizeMobile'] . $attr['inputFontSizeType'],
+					'line-height' => $attr['inputLineHeightMobile'] . $attr['inputLineHeightType'],
+				),
+				' textarea'                            => array(
+					'font-size'   => $attr['inputFontSizeMobile'] . $attr['inputFontSizeType'],
+					'line-height' => $attr['inputLineHeightMobile'] . $attr['inputLineHeightType'],
+				),
+				' form label'                          => array(
+					'font-size'   => $attr['labelFontSizeMobile'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightMobile'] . $attr['labelLineHeightType'],
+				),
+
+				' form .gfield_radio label'            => array(
+					'font-size'   => $attr['labelFontSizeMobile'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightMobile'] . $attr['labelLineHeightType'],
+				),
+				' form .gfield_checkbox label'         => array(
+					'font-size'   => $attr['labelFontSizeMobile'] . $attr['labelFontSizeType'],
+					'line-height' => $attr['labelLineHeightMobile'] . $attr['labelLineHeightType'],
+				),
+				' input.gform_button'                  => array(
+					'font-size'   => $attr['buttonFontSizeMobile'] . $attr['buttonFontSizeType'],
+					'line-height' => $attr['buttonLineHeightMobile'] . $attr['buttonLineHeightType'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_radio label' => array(
+					'font-size'   => $attr['radioCheckFontSizeMobile'] . $attr['radioCheckFontSizeType'],
+					'line-height' => $attr['radioCheckLineHeightMobile'] . $attr['radioCheckLineHeightType'],
+				),
+				' .uagb-gf-styler__check-style-enabled form .gfield_checkbox label' => array(
+					'font-size'   => $attr['radioCheckFontSizeMobile'] . $attr['radioCheckFontSizeType'],
+					'line-height' => $attr['radioCheckLineHeightMobile'] . $attr['radioCheckLineHeightType'],
+				),
+				' span.wpgf-not-valid-tip'             => array(
+					'font-size'   => $attr['validationMsgFontSizeMobile'] . $attr['validationMsgFontSizeType'],
+					'line-height' => $attr['validationMsgLineHeightMobile'] . $attr['validationMsgLineHeightType'],
+				),
+				' .wpgf-response-output'               => array(
+					'font-size'   => $attr['msgFontSizeMobile'] . $attr['msgFontSizeType'],
+					'line-height' => $attr['msgLineHeightMobile'] . $attr['msgLineHeightType'],
+				),
+				' .gform_wrapper .validation_message'  => array(
+					'font-size'   => $attr['validationMsgFontSizeMobile'] . $attr['validationMsgFontSizeType'],
+					'line-height' => $attr['validationMsgLineHeightMobile'] . $attr['validationMsgLineHeightType'],
+				),
+				' .gform_wrapper div.validation_error' => array(
+					'font-size'   => $attr['msgFontSizeMobile'] . $attr['msgFontSizeType'],
+					'line-height' => $attr['msgLineHeightMobile'] . $attr['msgLineHeightType'],
+				),
+				' .gform_confirmation_message'         => array(
+					'color'       => $attr['successMsgColor'],
+					'font-size'   => $attr['successMsgFontSizeMobile'] . $attr['successMsgFontSizeType'],
+					'line-height' => $attr['successMsgLineHeightMobile'] . $attr['successMsgLineHeightType'],
+				),
+			);
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-gf-styler-' . $id );
+			$tablet  = UAGB_Helper::generate_responsive_css( $t_selectors, '#uagb-gf-styler-' . $id, 'tablet' );
+			$mobile  = UAGB_Helper::generate_responsive_css( $m_selectors, '#uagb-gf-styler-' . $id, 'mobile' );
+			return $desktop . $tablet . $mobile;
+		}
+
+		/*
 		 * Get Marketing Button Block CSS
 		 *
 		 * @since 1.11.0
@@ -3816,8 +4391,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			?>
 				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
 					var social_url = jQuery( this ).data( "href" );
+					var target = "";
+					if( social_url == "mailto:?body=" ){
+						target = "_self";
+					}
 					var request_url = social_url + window.location.href ;
-					window.open( request_url );
+					window.open( request_url,target );
 				});
 			<?php
 		}
@@ -3852,6 +4431,55 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_cf7_styler_gfont( $attr ) {
+
+			$label_load_google_font = isset( $attr['labelLoadGoogleFonts'] ) ? $attr['labelLoadGoogleFonts'] : '';
+			$label_font_family      = isset( $attr['labelFontFamily'] ) ? $attr['labelFontFamily'] : '';
+			$label_font_weight      = isset( $attr['labelFontWeight'] ) ? $attr['labelFontWeight'] : '';
+			$label_font_subset      = isset( $attr['labelFontSubset'] ) ? $attr['labelFontSubset'] : '';
+
+			$input_load_google_font = isset( $attr['inputLoadGoogleFonts'] ) ? $attr['inputLoadGoogleFonts'] : '';
+			$input_font_family      = isset( $attr['inputFontFamily'] ) ? $attr['inputFontFamily'] : '';
+			$input_font_weight      = isset( $attr['inputFontWeight'] ) ? $attr['inputFontWeight'] : '';
+			$input_font_subset      = isset( $attr['inputFontSubset'] ) ? $attr['inputFontSubset'] : '';
+
+			$radio_check_load_google_font = isset( $attr['radioCheckLoadGoogleFonts'] ) ? $attr['radioCheckLoadGoogleFonts'] : '';
+			$radio_check_font_family      = isset( $attr['radioCheckFontFamily'] ) ? $attr['radioCheckFontFamily'] : '';
+			$radio_check_font_weight      = isset( $attr['radioCheckFontWeight'] ) ? $attr['radioCheckFontWeight'] : '';
+			$radio_check_font_subset      = isset( $attr['radioCheckFontSubset'] ) ? $attr['radioCheckFontSubset'] : '';
+
+			$button_load_google_font = isset( $attr['buttonLoadGoogleFonts'] ) ? $attr['buttonLoadGoogleFonts'] : '';
+			$button_font_family      = isset( $attr['buttonFontFamily'] ) ? $attr['buttonFontFamily'] : '';
+			$button_font_weight      = isset( $attr['buttonFontWeight'] ) ? $attr['buttonFontWeight'] : '';
+			$button_font_subset      = isset( $attr['buttonFontSubset'] ) ? $attr['buttonFontSubset'] : '';
+
+			$msg_font_load_google_font = isset( $attr['msgLoadGoogleFonts'] ) ? $attr['msgLoadGoogleFonts'] : '';
+			$msg_font_family           = isset( $attr['msgFontFamily'] ) ? $attr['msgFontFamily'] : '';
+			$msg_font_weight           = isset( $attr['msgFontWeight'] ) ? $attr['msgFontWeight'] : '';
+			$msg_font_subset           = isset( $attr['msgFontSubset'] ) ? $attr['msgFontSubset'] : '';
+
+			$validation_msg_load_google_font = isset( $attr['validationMsgLoadGoogleFonts'] ) ? $attr['validationMsgLoadGoogleFonts'] : '';
+			$validation_msg_font_family      = isset( $attr['validationMsgFontFamily'] ) ? $attr['validationMsgFontFamily'] : '';
+			$validation_msg_font_weight      = isset( $attr['validationMsgFontWeight'] ) ? $attr['validationMsgFontWeight'] : '';
+			$validation_msg_font_subset      = isset( $attr['validationMsgFontSubset'] ) ? $attr['validationMsgFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $msg_font_load_google_font, $msg_font_family, $msg_font_weight, $msg_font_subset );
+			UAGB_Helper::blocks_google_font( $validation_msg_load_google_font, $validation_msg_font_family, $validation_msg_font_weight, $validation_msg_font_subset );
+
+			UAGB_Helper::blocks_google_font( $radio_check_load_google_font, $radio_check_font_family, $radio_check_font_weight, $radio_check_font_subset );
+			UAGB_Helper::blocks_google_font( $button_load_google_font, $button_font_family, $button_font_weight, $button_font_subset );
+
+			UAGB_Helper::blocks_google_font( $label_load_google_font, $label_font_family, $label_font_weight, $label_font_subset );
+			UAGB_Helper::blocks_google_font( $input_load_google_font, $input_font_family, $input_font_weight, $input_font_subset );
+		}
+
+
+		/**
+		 * Adds Google fonts for Gravity Form Styler block.
+		 *
+		 * @since 1.12.0
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_gf_styler_gfont( $attr ) {
 
 			$label_load_google_font = isset( $attr['labelLoadGoogleFonts'] ) ? $attr['labelLoadGoogleFonts'] : '';
 			$label_font_family      = isset( $attr['labelFontFamily'] ) ? $attr['labelFontFamily'] : '';

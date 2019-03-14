@@ -23,8 +23,8 @@ hr.uagb-editor__separator {
 	border-bottom: 1px solid #e2e4e7;
 }
 
-.uagb-inspect-tabs .components-tab-panel__tabs button.active-tab,
-.uagb-inspect-tabs .components-tab-panel__tabs button:focus {
+.uagb-inspect-tabs > .components-tab-panel__tabs button.active-tab,
+.uagb-inspect-tabs > .components-tab-panel__tabs button:focus {
 	border-bottom: 5px solid #333;
 	outline:none;
 	font-weight:500;
@@ -34,8 +34,8 @@ hr.uagb-editor__separator {
 	margin-top: 20px;
 }
 
-.uagb-inspect-tabs-col-2 .components-tab-panel__tabs button,
-.uagb-inspect-tabs.uagb-inspect-tabs-col-2 .components-tab-panel__tabs button {
+.uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button,
+.uagb-inspect-tabs.uagb-inspect-tabs-col-2 > .components-tab-panel__tabs button {
 	width: 50%;
 }
 
@@ -43,7 +43,7 @@ hr.uagb-editor__separator {
 	margin-bottom: 15px;
 }
 
-.uagb-inspect-tabs-col-3 .components-tab-panel__tabs button {
+.uagb-inspect-tabs-col-3 > .components-tab-panel__tabs button {
 	width: 33.33%;
 }
 .uagb-settings-notice {
@@ -3285,7 +3285,7 @@ label.wp-block-uagb-blockquote__via-label svg {
    margin: 0 auto;
    margin-bottom: 1em;
    border: 1px solid #e2e4e7;
-   background: #fff; 
+   background: #fff;
    margin-top: 1em;
 }
 .edit-post-settings-sidebar__panel-block .components-panel__body.uagb-repeater-panel:last-child{
