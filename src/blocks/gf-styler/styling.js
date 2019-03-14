@@ -375,24 +375,21 @@ function styling( props ) {
 			"border-bottom-width" : fieldBorderWidth + "px",
 			"border-radius"       : fieldBorderRadius + fieldBorderRadiusType,
 		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline .gfield_checkbox input[type='checkbox'] + label:before" : {
+		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before" : {
 			"border-style" : "solid",
 		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline input[type='radio'] + label:before" : {
-			"border-style" : "solid",
-		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline input[type='checkbox'] + label:before" : {
+		" .uagb-gf-styler__check-style-enabled input[type='radio'] + label:before" : {
 			"border-style" : "solid",
 		},
 		" .uagb-gf-styler__field-style-box .gfield_checkbox input[type='checkbox']:checked + label:before" : {
-			"border-style"  : fieldBorderStyle,
-			"border-width"  : fieldBorderWidth + "px",
+			"border-style"  : "solid",
+			"border-width"  : radioCheckBorderWidth + "px",
 			"border-radius" : fieldBorderRadius + fieldBorderRadiusType,
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8 )",
 		},
 		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before" : {
-			"border-style"  : fieldBorderStyle,
-			"border-width"  : fieldBorderWidth + "px",
+			"border-style"  : "solid",
+			"border-width"  : radioCheckBorderWidth + "px",
 			"border-radius" : fieldBorderRadius + fieldBorderRadiusType,
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8)",
 		},
@@ -409,6 +406,7 @@ function styling( props ) {
 			"font-size"        : "calc( " + radioCheckSize + "px * 1.8 )",
 			"border-color"     : radioCheckBorderColor,
 			"border-width"     : radioCheckBorderWidth + "px",
+			"border-style"     : "solid",
 			"border-radius"    : radioCheckBorderRadius + radioCheckBorderRadiusType,
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox']:checked + label:before" : {
