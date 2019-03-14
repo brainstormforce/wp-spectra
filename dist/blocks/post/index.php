@@ -76,7 +76,8 @@ add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
  * @since 0.0.1
  */
 function uagb_post_block_add_script() {
-	  global $uagb_post_settings;
+	 global $uagb_post_settings;
+
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
@@ -1606,20 +1607,20 @@ function uagb_render_title( $attributes ) {
  */
 function uagb_render_meta( $attributes ) {
 	global $post;
-    // @codingStandardsIgnoreStart
-    do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-    ?>
-    <div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
-        ?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
-        if ( $attributes['displayPostDate'] ) {
-                                                                ?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
-        if ( $attributes['displayPostComment'] ) {
-                                                                ?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
+	// @codingStandardsIgnoreStart
+	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+	?>
+	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
+		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
+		if ( $attributes['displayPostDate'] ) {
+																?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+		if ( $attributes['displayPostComment'] ) {
+																?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
 ?></span><?php }
-        ?></div>
-    <?php
-    do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-    // @codingStandardsIgnoreEnd
+		?></div>
+	<?php
+	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+	// @codingStandardsIgnoreEnd
 }
 
 /**
