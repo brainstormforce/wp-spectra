@@ -326,7 +326,7 @@ class UAGB_Init_Blocks {
 
 		if ( empty( $field_options ) ) {
 			$field_options = array(
-				'-1' => __( 'You have not added any Gravity Forms yet.', 'uael' ),
+				'-1' => __( 'You have not added any Gravity Forms yet.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
