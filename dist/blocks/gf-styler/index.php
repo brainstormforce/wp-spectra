@@ -318,11 +318,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckSize'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '20',
 				),
 				'radioCheckBgColor'             => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#fafafa',
 				),
 				'radioCheckSelectColor'         => array(
 					'type'    => 'string',
@@ -334,11 +334,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckBorderColor'         => array(
 					'type'    => 'string',
-					'default' => '#abb8c3',
+					'default' => '#cbcbcb',
 				),
 				'radioCheckBorderWidth'         => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '1',
 				),
 				'radioCheckBorderRadius'        => array(
 					'type'    => 'number',
