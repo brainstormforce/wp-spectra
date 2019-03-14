@@ -76,21 +76,26 @@ class UAGBPostCarousel extends Component {
 
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
-		document.head.appendChild( $style )
-
-		var scope = document.getElementById( 'uagb-post__carousel-'+ this.props.clientId );
-		console.log(scope);
-		$('.slick-dots li button').on('click', function(e){
-		    e.preventDefault();
-		    alert('hi');
-		});
+		document.head.appendChild( $style )		
+		window.addEventListener("load", this.carousel_init(this.props))
 	}
 
-	init( props ) {	
-		if( props.attributes.equalHeight){
-			var wrap            = $(".wp-block-uagb-post-carousel").parents("#block-"+props.clientId);
-			uagb_carousel_height(props.clientId);
-		}
+	componentDidUpdate() {
+		window.addEventListener("load", this.carousel_init(this.props))		
+	}
+
+	carousel_init(props){
+		var id = props.clientId
+		var equalHeight =  props.attributes.equalHeight
+		var main_block            = $(".uagb-post__items").parents("#block-"+id);
+		var wrap            = main_block.find(".is-carousel");
+		wrap.imagesLoaded( function() {
+            uagb_carousel_height(id)
+        });
+
+        wrap.on( 'afterChange', function() {
+           uagb_carousel_height(id)
+        } );
 	}	
 
 	render() {
@@ -898,10 +903,12 @@ class UAGBPostCarousel extends Component {
 		)
 
 		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
-
-		//if( null != element && "undefined" != typeof element ) {
-			this.init( this.props )
-		//}
+		
+		var props = this.props;
+		var current = this
+		$('.slick-dots li button').on('click', function(e){
+		   current.carousel_init(props)
+		});	
 	
 		let css = ""
 

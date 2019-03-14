@@ -3112,7 +3112,10 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
     display: none; }
   .wp-block-uagb-cf7-styler .wpcf7 select {
     height: auto;
-    padding: 10px; }
+    padding: 10px;
+    -webkit-appearance: menulist-button;
+    -moz-appearance: menulist-button;
+    -webkit-appearance: menulist-button; }
   .wp-block-uagb-cf7-styler select.wpcf7-form-control.wpcf7-select[multiple="multiple"] {
     padding: 0; }
   .wp-block-uagb-cf7-styler .wpcf7 select option {
@@ -3131,6 +3134,8 @@ h1.uagb-timeline__heading, h2.uagb-timeline__heading, h3.uagb-timeline__heading,
     margin-top: 5px; }
   .wp-block-uagb-cf7-styler .wpcf7 input[type="number"] {
     height: auto; }
+  .wp-block-uagb-cf7-styler .wpcf7 input.wpcf7-date {
+    -webkit-appearance: none; }
 
 @media (min-width: 769px) {
   .wp-block-uagb-cf7-styler .uagb-cf7_styler-col {
