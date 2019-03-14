@@ -18,8 +18,10 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 		var css = ""
 
 		for( var j in sel ) {
-			if( typeof sel[j] !== 'undefined' && sel[j].length !== 0 ) {
-				css += j + ": " + sel[j] + ";"
+			if( typeof sel[j] !== undefined ) {
+				if( sel[j].length !== 0 ) {
+					css += j + ": " + sel[j] + ";"
+				}
 			}
 		}
 
@@ -31,7 +33,7 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 		}
 	}
 
-	if ( isResponsive && gen_styling_css.length !== 0 ) {
+	if ( isResponsive && typeof gen_styling_css !== 'undefined' && gen_styling_css.length !== 0 ) {
 		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {"
 		res_styling_css += gen_styling_css
 		res_styling_css += "}"
