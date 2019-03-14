@@ -2,19 +2,19 @@
 /**
  * Server-side rendering for the Gravity Form Styler.
  *
- * @since   x.x.x
+ * @since   1.12.0
  * @package UAGB
  */
 
 /**
  * Renders the Gravity Form shortcode.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_gf_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
 
-    // @codingStandardsIgnoreEnd    
+    // @codingStandardsIgnoreEnd
 	if ( $id && 0 != $id && -1 != $id ) {
 		$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
 	} else {
@@ -29,7 +29,7 @@ add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', 'uagb_gf_shortcode' );
 /**
  * Registers Gravity Form.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_blocks_register_gf_styler() {
 	// Check if the register function exists.
@@ -318,11 +318,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckSize'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '20',
 				),
 				'radioCheckBgColor'             => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#fafafa',
 				),
 				'radioCheckSelectColor'         => array(
 					'type'    => 'string',
@@ -334,11 +334,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckBorderColor'         => array(
 					'type'    => 'string',
-					'default' => '#abb8c3',
+					'default' => '#cbcbcb',
 				),
 				'radioCheckBorderWidth'         => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '1',
 				),
 				'radioCheckBorderRadius'        => array(
 					'type'    => 'number',
@@ -584,7 +584,7 @@ add_action( 'init', 'uagb_blocks_register_gf_styler' );
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_render_gf( $attributes ) {
 	$block_id = 'uagb-gf-styler-' . $attributes['block_id'];

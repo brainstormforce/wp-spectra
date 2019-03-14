@@ -4,7 +4,7 @@
 		
 		_setHeight: function( scope ) {
 			var post_wrapper = scope.find('.slick-slide'),
-            post_active = scope.find('.slick-active'),
+            post_active = scope.find('.slick-slide.slick-active'), 
             max_height = -1,
             wrapper_height = -1,
             post_active_height = -1,
@@ -36,7 +36,7 @@
             post_active.each( function( i ) {
                 var selector = $( this ).find( '.uagb-post__inner-wrap' );
                 selector.animate({ height: max_height }, { duration: 200, easing: 'linear' });
-            });
+            });            
 
             scope.find('.slick-list.draggable').animate({ height: post_active_height }, { duration: 200, easing: 'linear' });
 

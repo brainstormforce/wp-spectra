@@ -416,9 +416,22 @@
 .uagb-gf-styler__check-style-enabled .gform_wrapper .chosen-container-single .chosen-single div {
      display: none;
 }
-.uagb-gf-styler__hide-label .gform_wrapper .gfield_label,
-.uagb-gf-styler__hide-label .gform_wrapper .gfield_required {
+.uagb-gf-styler__hide-label .gform_wrapper .gform_fields .gfield_label, 
+.uagb-gf-styler__hide-label .gform_wrapper .gform_fields .gfield_required {
      display: none;
+}
+
+.wp-block-uagb-gf-styler .gform_wrapper .chosen-container-single .chosen-single span {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.wp-block-uagb-gf-styler .gform_wrapper .chosen-container-single .chosen-single {
+    border: none;
+}
+
+.wp-block-uagb-gf-styler .gform_wrapper .chosen-container-single.chosen-container-active .chosen-single {
+    border: none;
 }
 
 /* Gravity Form ends */

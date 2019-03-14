@@ -76,8 +76,7 @@ add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
  * @since 0.0.1
  */
 function uagb_post_block_add_script() {
-		global $uagb_post_settings;
-
+	  global $uagb_post_settings;
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
@@ -100,9 +99,9 @@ function uagb_post_block_add_script() {
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
-			$dots        = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$arrows      = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$equalHeight = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
+			$dots         = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$arrows       = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$equal_height = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
 			?>
 			<script type="text/javascript" id="
 			++  <?php echo $key; ?>">
@@ -147,7 +146,7 @@ function uagb_post_block_add_script() {
 
 					scope.slick( slider_options );
 
-					var enableEqualHeight = ( '<?php echo $equalHeight; ?>' )
+					var enableEqualHeight = ( '<?php echo $equal_height; ?>' )
 
 					if( enableEqualHeight ){
 						scope.imagesLoaded( function() {
@@ -1448,6 +1447,21 @@ function uagb_blocks_register_rest_fields() {
 
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
+/**
+ * Create API Order By Fields
+ *
+ * @since 1.12.0
+ */
+function uagb_blocks_register_rest_orderby_fields() {
+	$post_type = UAGB_Helper::get_post_types();
+
+	foreach ( $post_type as $key => $type ) {
+		add_filter( "rest_{$type['value']}_collection_params", 'uagb_blocks_add_orderby', 10, 1 );
+	}
+}
+
+add_action( 'init', 'uagb_blocks_register_rest_orderby_fields' );
+
 
 /**
  * Get featured image source for the rest field as per size
@@ -1524,6 +1538,20 @@ function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
 }
 
 /**
+ * Adds Order By values to Rest API
+ *
+ * @param object $params Parameters.
+ * @since 1.12.0
+ */
+function uagb_blocks_add_orderby( $params ) {
+
+	$params['orderby']['enum'][] = 'rand';
+	$params['orderby']['enum'][] = 'menu_order';
+
+	return $params;
+}
+
+/**
  * Render Image HTML.
  *
  * @param array $attributes Array of block attributes.
@@ -1548,7 +1576,6 @@ function uagb_render_image( $attributes ) {
 		</a>
 	</div>
 	<?php
-
 	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
@@ -1560,7 +1587,7 @@ function uagb_render_image( $attributes ) {
  * @since 0.0.1
  */
 function uagb_render_title( $attributes ) {
-	 $target = ( $attributes['newTab'] ) ? '_blank' : '_self';
+	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title">

@@ -12,10 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -331,7 +327,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingMobile'] . 'px',
 					'margin-top'    => $attr['topMarginMobile'] . 'px',
 					'margin-bottom' => $attr['bottomMarginMobile'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightMobile'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightMobile'] . "px"
+				),
 			);
 
 			$t_selectors = array(
@@ -342,7 +344,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => $attr['rightPaddingTablet'] . 'px',
 					'margin-top'    => $attr['topMarginTablet'] . 'px',
 					'margin-bottom' => $attr['bottomMarginTablet'] . 'px',
-				)
+				),
+				' .uagb-columns__shape-bottom svg' => array(
+					'height' => $attr['bottomHeightTablet'] . "px"
+				),
+				' .uagb-columns__shape-top svg' => array(
+					'height' => $attr['topHeightTablet'] . "px"
+				),
 			);
 
 			// @codingStandardsIgnoreEnd
@@ -786,7 +794,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-ifb-icon:hover svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
-				
+
 				' .uagb-infbox__link-to-all:hover ~ .uagb-infobox__content-wrap .uagb-ifb-icon svg' => array(
 					'fill' => $attr['iconHover'] ,
 				),
@@ -1237,9 +1245,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ||  'dots' === $attr['arrowDots'] ){
+			if( 'dots' === $attr['arrowDots'] ){
 				$selectors['.uagb-slick-carousel'] = array(
-						'padding' => '0px',
+						'padding' => '0 0 35px 0',
+					);
+			}
+
+			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ){
+				$selectors['.uagb-slick-carousel'] = array(
+						'padding' => '0',
 					);
 			}
 
@@ -1759,7 +1773,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				" .uagb-icon-list__source-wrap"=> array(
 					"padding" => $attr['bgSize'] . "px",
-					"border-radius" => $attr['borderRadius'] . "px"
+					"border-radius" => $attr['borderRadius'] . "px",
+					"border-style" => "solid",
+					"border-width" => $attr['border'] . "px"
 				),
 				" .uagb-icon-list__wrap"=> array(
 					"justify-content"  => $alignment,
@@ -1836,6 +1852,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
 				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
 				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
+				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
+				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
 				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
 				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
 
@@ -1882,11 +1900,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_color']
+					"background" => $icon['icon_bg_color'],
+					"border-color" => $icon['icon_border_color'],
 				);
 
 				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color']
+					"background" => $icon['icon_bg_hover_color'],
+					"border-color" => $icon['icon_border_hover_color']
 				);
 			}
 
@@ -2409,7 +2429,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['arrowDots'] ) && 'dots' == $attr['arrowDots'] ) {
 
 				$selectors[".uagb-slick-carousel"] = array(
-					"padding" => "0"
+					"padding" => "0 0 35px 0"
 				);
 			}
 
@@ -3578,7 +3598,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.12.0
 		 */
 		public static function get_gf_styler_css( $attr, $id ) {
 			$defaults = UAGB_Helper::$block_list['uagb/gf-styler']['attributes'];
@@ -3636,6 +3656,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'    => $attr['fieldHrPadding'] . 'px',
 					'padding-top'      => $attr['fieldVrPadding'] . 'px',
 					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+				),
+				' .chosen-container-single span'         => array(
+					'background-color' => $attr['fieldBgColor'],
+					'border-style'     => $attr['fieldBorderStyle'],
+					'border-color'     => $attr['fieldBorderColor'],
+					'border-width'     => $attr['fieldBorderWidth'] . 'px',
+					'border-radius'    => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
+					'margin-top'       => $attr['fieldLabelSpacing'] . 'px',
+					'margin-bottom'    => $attr['fieldSpacing'] . 'px',
+					'color'            => $attr['fieldInputColor'],
+					'font-size'        => $attr['inputFontSize'] . $attr['inputFontSizeType'],
+					'font-family'      => $attr['inputFontFamily'],
+					'font-weight'      => $attr['inputFontWeight'],
+					'line-height'      => $attr['inputLineHeight'] . $attr['inputLineHeightType'],
+					'text-align'       => $attr['align'],
+					'padding-left'     => $attr['fieldHrPadding'] . 'px',
+					'padding-right'    => $attr['fieldHrPadding'] . 'px',
+					'padding-top'      => $attr['fieldVrPadding'] . 'px',
+					'padding-bottom'   => $attr['fieldVrPadding'] . 'px',
+				),
+				' .chosen-container-single.chosen-container-active .chosen-single span' => array(
+					'margin-bottom' => 0,
 				),
 				' select.wpgf-form-control.wpgf-select:not([multiple="multiple"])' => array(
 					'padding-left'   => $attr['fieldHrPadding'] . 'px',
@@ -3813,24 +3855,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-bottom-width' => $attr['fieldBorderWidth'] . 'px',
 					'border-radius'       => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 				),
-				' .uagb-gf-styler__field-style-underline .gfield_checkbox input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
 					'border-style' => 'solid',
 				),
-				' .uagb-gf-styler__field-style-underline input[type="radio"] + label:before' => array(
-					'border-style' => 'solid',
-				),
-				' .uagb-gf-styler__field-style-underline input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
 					'border-style' => 'solid',
 				),
 				' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
-					'border-width'  => $attr['fieldBorderWidth'] . 'px',
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
-					'border-width'  => $attr['fieldBorderWidth'] . 'px',
+					'border-style'  => 'solid',
+					'border-width'  => $attr['radioCheckBorderWidth'] . 'px',
 					'border-radius' => $attr['fieldBorderRadius'] . $attr['fieldBorderRadiusType'],
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
@@ -3847,6 +3886,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-width'     => $attr['radioCheckBorderWidth'] . 'px',
+					'border-style'     => 'solid',
 					'border-radius'    => $attr['radioCheckBorderRadius'] . $attr['radioCheckBorderRadiusType'],
 				),
 				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
@@ -4436,7 +4476,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Gravity Form Styler block.
 		 *
-		 * @since x.x.x
+		 * @since 1.12.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_gf_styler_gfont( $attr ) {
