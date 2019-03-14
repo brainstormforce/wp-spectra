@@ -1,5 +1,5 @@
 /**
- * BLOCK: Contact Form 7 Styler
+ * BLOCK: Gravity Form Styler
  */
 
 // Import block dependencies and components.
@@ -29,15 +29,15 @@ const {
  *                             registered; otherwise `undefined`.
  */
 
-if( uagb_blocks_info.blocks["uagb/cf7-styler"]["is_active"] ) {
-	registerBlockType( "uagb/cf7-styler", {
+if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
+	registerBlockType( "uagb/gf-styler", {
 
-		title: uagb_blocks_info.blocks["uagb/cf7-styler"]["title"], // Block title.
-		description:uagb_blocks_info.blocks["uagb/cf7-styler"]["description"], // Block description.
-		icon: UAGB_Block_Icons.cf7_styler,
+		title: uagb_blocks_info.blocks["uagb/gf-styler"]["title"], // Block title.
+		description:uagb_blocks_info.blocks["uagb/gf-styler"]["description"], // Block description.
+		icon: UAGB_Block_Icons.gf_styler,
 		keywords: [
-			__( "CF7 styler" ),
-			__( "contact form styler" ),
+			__( "GF styler" ),
+			__( "gravity form styler" ),
 			__( "uag" ),
 		],
 		category: uagb_blocks_info.category,

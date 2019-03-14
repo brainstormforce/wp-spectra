@@ -115,6 +115,9 @@ function InfoBoxStyle( props ) {
 		" .uagb-ifb-icon:hover > svg" : {
 			"fill" : iconHover,
 		},
+		" .uagb-infobox_cta-type-all:hover .uagb-ifb-icon svg" : {
+			"fill" : iconHover,
+		},
 		" .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap" : {
 			"margin-left" : iconLeftMargin+"px",
 			"margin-right" : iconRightMargin+"px",

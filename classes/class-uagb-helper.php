@@ -288,6 +288,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_Helper::blocks_marketing_btn_gfont( $blockattr );
 					break;
 
+                case 'uagb/gf-styler':
+					$css .= UAGB_Block_Helper::get_gf_styler_css( $blockattr, $block_id );
+					 UAGB_Block_Helper::blocks_gf_styler_gfont( $blockattr );
+					break;
+
                 default:
                     // Nothing to do here.
                     break;
@@ -440,13 +445,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			} elseif ( is_archive() || is_home() || is_search() ) {
 				global $wp_query;
 
-				if ( $wp_query->have_posts() ) {
-					while ( $wp_query->have_posts() ) {
-						$wp_query->the_post();
-						global $post;
-						$this_post = $post;
-						$this->_generate_stylesheet( $this_post );
-					}
+				foreach ( $wp_query as $post ) {
+					$this->_generate_stylesheet( $post );
 				}
 			}
 		}

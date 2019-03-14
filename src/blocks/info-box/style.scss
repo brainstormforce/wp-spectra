@@ -313,6 +313,21 @@ span.uagb-ifb-button-icon.uagb-ifb-align-icon-after {
     font-style: normal;
 }
 
+.uagb-infobox__outer-wrap{
+    position: relative;
+}
+a.uagb-infbox__link-to-all {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 999;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-decoration: none;
+}
+
 @media only screen and (max-width: 976px) {
     .uagb-infobox-stacked-tablet .uagb-ifb-left-right-wrap .uagb-ifb-imgicon-wrap {
         padding: 0;

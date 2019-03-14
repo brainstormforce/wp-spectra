@@ -21,9 +21,13 @@ function styling( props ) {
 		columnGap,
 		topColor,
 		topHeight,
+		topHeightTablet,
+		topHeightMobile,
 		topWidth,
 		bottomColor,
 		bottomHeight,
+		bottomHeightTablet,
+		bottomHeightMobile,
 		bottomWidth,
 		gradientColor1,
 		gradientColor2,
@@ -128,7 +132,13 @@ function styling( props ) {
 			"padding-right": rightPaddingTablet + "px",
 			"margin-top": topMarginTablet + "px",
 			"margin-bottom": bottomMarginTablet + "px",
-		}
+		},
+		" .uagb-columns__shape-top svg" : {
+			height: topHeightTablet + "px"
+		},
+		" .uagb-columns__shape-bottom svg" : {
+			height: bottomHeightTablet + "px"
+		},
 	}
 
 	mobile_selectors = {
@@ -139,7 +149,13 @@ function styling( props ) {
 			"padding-right": rightPaddingMobile + "px",
 			"margin-top": topMarginMobile + "px",
 			"margin-bottom": bottomMarginMobile + "px",
-		}
+		},
+		" .uagb-columns__shape-top svg" : {
+			height: topHeightMobile + "px"
+		},
+		" .uagb-columns__shape-bottom svg" : {
+			height: bottomHeightMobile + "px"
+		},
 	}
 
 	var styling_css = ""

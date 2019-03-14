@@ -24,6 +24,7 @@ import "./blocks/call-to-action/block.js"
 import "./blocks/column/block.js"
 import "./blocks/columns/block.js"
 import "./blocks/cf7-styler/block.js"
+import "./blocks/gf-styler/block.js"
 import "./blocks/blockquote/block.js"
 import "./blocks/marketing-button/block.js"
 
