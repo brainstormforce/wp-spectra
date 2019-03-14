@@ -38,7 +38,7 @@
                 selector.animate({ height: max_height }, { duration: 200, easing: 'linear' });
             });            
 
-            scope.find('.slick-list.draggable').animate({ height: post_active_height }, { duration: 200, easing: 'linear' });
+            scope.find('.slick-list').animate({ height: post_active_height }, { duration: 200, easing: 'linear' });
 
             max_height = -1;
             wrapper_height = -1;
