@@ -12,8 +12,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
-
-
 		/**
 		 * Get Section Block CSS
 		 *
@@ -1251,13 +1249,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors['.uagb-slick-carousel'] = array(
 						'padding' => '0 0 35px 0',
 					);
-			}		
+			}
 
 			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ){
 				$selectors['.uagb-slick-carousel'] = array(
 						'padding' => '0',
 					);
-			}	
+			}
 
 			$t_selectors = array(
 				' .uagb-tm__author-name' => array(
@@ -2434,7 +2432,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding" => "0 0 35px 0"
 				);
 			}
-		
+
 			// @codingStandardsIgnoreEnd
 
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-post__carousel-' . $id );

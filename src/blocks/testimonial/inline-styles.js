@@ -214,7 +214,7 @@ function TestimonialStyle( props ) {
 		},
 		" .uagb-tm__author-name": {
 			"font-size" : nameFontSizeTablet+nameFontSizeType,
-			"line-height": nameLineHeightTablet +nameLineHeightType,			
+			"line-height": nameLineHeightTablet +nameLineHeightType,
 		},
 		" .uagb-tm__content": {
 			"text-align" : "center",

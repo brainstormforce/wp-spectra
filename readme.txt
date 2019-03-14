@@ -152,17 +152,18 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.11.1.1 =
 * New: Gravity Forms Styler
-* Improvement: Updated 5 star notice.
-* Improvement: Icon List - Border options added.
-* Improvement: Post - Added more Order By options to the Query Builder.
 * Improvement: Performance - JS related to disabled blocks are not loaded.
+* Improvement: Post - Added more Order By options to the Query Builder.
+* Improvement: Icon List - Border options added.
+* Improvement: Updated 5 star notice.
 * Fix: Advanced Columns - Column spacing issue on editor.
 * Fix: Advanced Columns - Shape Divider height responsive compatibility.
-* Fix: Info Box - CTA type of Complete Box structure change.
-* Fix: Testimonial - CSS conflict fixed
-* Fix: Social Share - Email option opens a new browser tab issue.
 * Fix: Contact Form 7 Styler - Select box alignment & height issue.
-* Fix: Carousel arrows not visible in frontend.
+* Fix: Info Box - CTA type of Complete Box structure change.
+* Fix: Post Carousel - Arrows not visible in frontend issue.
+* Fix: Social Share - Email option opens a new browser tab issue.
+* Fix: Testimonial - CSS conflict fixed
+* Fix: Testimonial - Arrows not visible in frontend issue.
 
 = 1.11.1 =
 * Fix: PHP Error - Conflict with Astra v1.7.0
