@@ -8,7 +8,7 @@
         -webkit-box-sizing: border-box;
         box-sizing: border-box;
     }
-   
+
     span.wpcf7-list-item-label::before,
     span.wpcf7-list-item-label::after {
         content: " ";
@@ -58,15 +58,15 @@
         border-radius: 100%;
     }
 
-    .uagb-cf7-styler__field-style-box .wpcf7-radio input[type="radio"]:checked + span:before, 
+    .uagb-cf7-styler__field-style-box .wpcf7-radio input[type="radio"]:checked + span:before,
     .uagb-cf7-styler__field-style-underline .wpcf7-radio input[type="radio"]:checked + span:before {
         background-color: #545454;
         box-shadow: inset 0px 0px 0px 4px #fafafa;
     }
-   
+
     /* Submit button */
     .uagb-cf7-styler__btn-align-justify input.wpcf7-form-control.wpcf7-submit,
-    .uagb-cf7-styler__btn-align-left input.wpcf7-form-control.wpcf7-submit, 
+    .uagb-cf7-styler__btn-align-left input.wpcf7-form-control.wpcf7-submit,
     .uagb-cf7-styler__btn-align-right input.wpcf7-form-control.wpcf7-submit,
     .uagb-cf7-styler__btn-align-center input.wpcf7-form-control.wpcf7-submit {
         display: -webkit-box;
@@ -106,7 +106,7 @@
         justify-content: center;
         width: 100%;
     }
-    
+
     .wpcf7 input[type=checkbox],
     .wpcf7 input[type=radio]{
         display: none;
@@ -140,7 +140,7 @@
     }
     .wpcf7 input[type="number"]{
         height:auto;
-    }    
+    }
 }
 
 @media(min-width: 769px){
@@ -152,29 +152,29 @@
             display: -moz-box;
             display: -ms-flexbox;
             display: flex;
-        }        
+        }
         .uagb-cf7_styler-col label, .uagb-cf7_styler-col>span {
             -webkit-box-flex: 1;
             -webkit-flex-grow: 1;
             -moz-box-flex: 1;
             -ms-flex-positive: 1;
-            flex-grow: 1;     
-            flex-basis: 100%;      
-        }      
+            flex-grow: 1;
+            flex-basis: 100%;
+        }
         .uagb-cf7_styler-col br {
             display: none;
         }
         .uagb-cf7_styler-col > span.uagb-cf7_styler-col-1 {
             padding-left: 0;
-            padding-right: 15px;           
-        }  
+            padding-right: 15px;
+        }
         .uagb-cf7_styler-col > span.uagb-cf7_styler-col-3 {
             padding-left: 15px;
             padding-right: 0;
-        } 
+        }
         .wpcf7 .uagb-cf7_styler-col span.wpcf7-form-control-wrap {
             height: 100%;
-        }   
+        }
         .wpcf7 .uagb-cf7_styler-col select {
             height: 100%;
         }

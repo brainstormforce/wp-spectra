@@ -1245,7 +1245,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ||  'dots' === $attr['arrowDots'] ){
+			if( 'dots' === $attr['arrowDots'] ){
+				$selectors['.uagb-slick-carousel'] = array(
+						'padding' => '0 0 35px 0',
+					);
+			}
+
+			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ){
 				$selectors['.uagb-slick-carousel'] = array(
 						'padding' => '0',
 					);
@@ -2423,7 +2429,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['arrowDots'] ) && 'dots' == $attr['arrowDots'] ) {
 
 				$selectors[".uagb-slick-carousel"] = array(
-					"padding" => "0"
+					"padding" => "0 0 35px 0"
 				);
 			}
 
@@ -3592,7 +3598,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.12.0
 		 */
 		public static function get_gf_styler_css( $attr, $id ) {
 			$defaults = UAGB_Helper::$block_list['uagb/gf-styler']['attributes'];
@@ -3849,23 +3855,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-bottom-width' => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius'       => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 				),
-				' .uagb-gf-styler__field-style-underline .gfield_checkbox input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type="checkbox"] + label:before' => array(
 					'border-style' => 'solid',
 				),
-				' .uagb-gf-styler__field-style-underline input[type="radio"] + label:before' => array(
-					'border-style' => 'solid',
-				),
-				' .uagb-gf-styler__field-style-underline input[type="checkbox"] + label:before' => array(
+				' .uagb-gf-styler__check-style-enabled input[type="radio"] + label:before' => array(
 					'border-style' => 'solid',
 				),
 				' .uagb-gf-styler__field-style-box .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
+					'border-style'  => 'solid',
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
 				),
 				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
-					'border-style'  => $attr['fieldBorderStyle'],
+					'border-style'  => 'solid',
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
 					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
@@ -3882,6 +3885,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'            => UAGB_Helper::get_css_value( $attr['radioCheckSize'], 'px' ),
 					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
+					'border-style'     => 'solid',
 					'border-width'     => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['radioCheckBorderRadius'], $attr['radioCheckBorderRadiusType'] ),
 				),
@@ -4472,7 +4476,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Gravity Form Styler block.
 		 *
-		 * @since x.x.x
+		 * @since 1.12.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_gf_styler_gfont( $attr ) {

@@ -376,23 +376,20 @@ function styling( props ) {
 			"border-bottom-width" : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius"       : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
 		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline .gfield_checkbox input[type='checkbox'] + label:before" : {
+		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before" : {
 			"border-style" : "solid",
 		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline input[type='radio'] + label:before" : {
-			"border-style" : "solid",
-		},
-		" .uagb-gf-styler__check-style-enabled.uagb-gf-styler__field-style-underline input[type='checkbox'] + label:before" : {
+		" .uagb-gf-styler__check-style-enabled input[type='radio'] + label:before" : {
 			"border-style" : "solid",
 		},
 		" .uagb-gf-styler__field-style-box .gfield_checkbox input[type='checkbox']:checked + label:before" : {
-			"border-style"  : fieldBorderStyle,
+			"border-style"  : 'solid',
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8 )",
 		},
 		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before" : {
-			"border-style"  : fieldBorderStyle,
+			"border-style"  : 'solid',
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8)",
@@ -409,6 +406,7 @@ function styling( props ) {
 			"width"            : generateCSSUnit( radioCheckSize, "px" ),
 			"font-size"        : "calc( " + radioCheckSize + "px * 1.8 )",
 			"border-color"     : radioCheckBorderColor,
+			"border-style"     : "solid",
 			"border-width"     : generateCSSUnit( radioCheckBorderWidth, "px" ),
 			"border-radius"    : generateCSSUnit( radioCheckBorderRadius, radioCheckBorderRadiusType ),
 		},

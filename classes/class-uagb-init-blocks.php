@@ -301,7 +301,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Returns all gravity forms with ids
 	 *
-	 * @since x.x.x
+	 * @since 1.12.0
 	 * @return array Key Value paired array.
 	 */
 	public function get_gravity_forms() {
@@ -326,7 +326,7 @@ class UAGB_Init_Blocks {
 
 		if ( empty( $field_options ) ) {
 			$field_options = array(
-				'-1' => __( 'You have not added any Gravity Forms yet.', 'uael' ),
+				'-1' => __( 'You have not added any Gravity Forms yet.', 'ultimate-addons-for-gutenberg' ),
 			);
 		}
 
