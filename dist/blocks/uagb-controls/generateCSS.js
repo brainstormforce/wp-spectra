@@ -2,6 +2,8 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 
 	var styling_css = ""
 	var breakpoint = ""
+	var gen_styling_css  = ""
+	var res_styling_css  = ""
 
 	if ( responsiveType == "tablet" ) {
 		breakpoint = uagb_blocks_info.tablet_breakpoint
@@ -9,31 +11,37 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 		breakpoint = uagb_blocks_info.mobile_breakpoint
 	}
 
-	if ( isResponsive ) {
-		styling_css += "@media only screen and (max-width: " + breakpoint + "px) {"
-	}
 
 	for( var i in selectors ) {
-
-		styling_css += id
-
-		styling_css += i + " { "
 
 		var sel = selectors[i]
 		var css = ""
 
 		for( var j in sel ) {
 
-			if( typeof sel[j] !== 'undefined' ) {
+			if( typeof sel[j] !== 'undefined' && sel[j].length !== 0 ) {
 				css += j + ": " + sel[j] + ";"
 			}
 		}
 
-		styling_css += css + " } "
+		if( css.length !== 0 ) {
+			gen_styling_css += id
+			gen_styling_css += i + "{"
+			gen_styling_css += css
+			gen_styling_css += "}"
+		}
 	}
 
-	if ( isResponsive ) {
-		styling_css += " }"
+	if ( isResponsive && gen_styling_css.length !== 0 ) {
+		res_styling_css += "@media only screen and (max-width: " + breakpoint + "px) {"
+		res_styling_css += gen_styling_css
+		res_styling_css += "}"
+	}
+
+	if( isResponsive ) {
+		styling_css = res_styling_css;
+	} else {
+		styling_css = gen_styling_css;
 	}
 
 	return styling_css

@@ -33,7 +33,7 @@ function FontFamilyControl( props ) {
 	//Push Google Fonts into stytem fonts object
 	Object.keys( googleFonts ).map( ( k, v ) => {
 		fonts.push(
-			{ value: k, label: k, weight: googleFonts[k].weight }
+			{ value: v, label: v, weight: googleFonts[k].weight }
 		)
 
 		if( k === props.fontFamily.value ) {
