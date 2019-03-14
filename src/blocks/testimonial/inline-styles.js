@@ -176,9 +176,15 @@ function TestimonialStyle( props ) {
 		}
 	}
 
-	if( test_item_count === 1 || test_item_count === columns || arrowDots === "dots"){
+	if( arrowDots === "dots"){
 		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
-			"padding" : 0,
+			"padding" : "0 0 35px 0",
+		}
+	}
+
+	if( test_item_count === 1 || test_item_count === columns ){
+		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
+			"padding" : "0",
 		}
 	}
 

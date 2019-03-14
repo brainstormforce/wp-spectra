@@ -130,7 +130,7 @@ class Blog extends React.Component {
 
 			let style_str = ""
 
-			if ( "dots" == arrowDots ) { style_str = {padding:0} }
+			if ( "dots" == arrowDots ) { style_str = {padding:"0 0 35px 0"} }
 
 			return (
 
@@ -144,7 +144,7 @@ class Blog extends React.Component {
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
-					style={ ( "dots" == arrowDots ) ? { padding: 0 } : {} }
+					style={ ( "dots" == arrowDots ) ? { padding: "0 0 35px 0" } : {} }
 				>
 					<Slider
 						className={ classnames(
