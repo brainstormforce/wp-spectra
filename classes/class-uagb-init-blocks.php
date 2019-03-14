@@ -301,7 +301,7 @@ class UAGB_Init_Blocks {
 	/**
 	 * Returns all gravity forms with ids
 	 *
-	 * @since x.x.x
+	 * @since 1.12.0
 	 * @return array Key Value paired array.
 	 */
 	public function get_gravity_forms() {

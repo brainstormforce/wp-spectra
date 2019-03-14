@@ -3598,7 +3598,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 *
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.12.0
 		 */
 		public static function get_gf_styler_css( $attr, $id ) {
 			$defaults = UAGB_Helper::$block_list['uagb/gf-styler']['attributes'];
@@ -4478,7 +4478,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Gravity Form Styler block.
 		 *
-		 * @since x.x.x
+		 * @since 1.12.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_gf_styler_gfont( $attr ) {
