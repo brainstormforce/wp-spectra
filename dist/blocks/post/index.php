@@ -1434,7 +1434,7 @@ add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 /**
  * Create API Order By Fields
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_blocks_register_rest_orderby_fields() {
 
@@ -1531,7 +1531,7 @@ function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
  * Adds Order By values to Rest API
  *
  * @param object $params Parameters.
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_blocks_add_orderby( $params ) {
 
