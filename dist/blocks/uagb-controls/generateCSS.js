@@ -24,7 +24,9 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 
 		for( var j in sel ) {
 
-			css += j + ": " + sel[j] + ";"
+			if( typeof sel[j] !== 'undefined' ) {
+				css += j + ": " + sel[j] + ";"
+			}
 		}
 
 		styling_css += css + " } "
