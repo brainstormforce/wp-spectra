@@ -68,13 +68,15 @@ function uagb_carousel_height(  id ) {
 		var wrap            = $("#block-"+id);
 		var scope = wrap.find(".wp-block-uagb-post-carousel").find( '.is-carousel' );
 			scope.imagesLoaded( function() {
+                console.log('page 1');
 				UAGBPostCarousel._setHeight( scope );
 			});
 
 			scope.on( 'afterChange', function() {
+                console.log('page 2');
 				UAGBPostCarousel._setHeight( scope );
 			} );
 
 
-	}, 100);
+	}, 10);
 }
