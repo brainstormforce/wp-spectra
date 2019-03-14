@@ -105,6 +105,10 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Need help? We are just a click away!</a>
 
+<strong>Want To Contribute To The Plugin?</strong>
+
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Ultimate Addons for Gutenberg on Github</a>
+
 
 == Installation ==
 
