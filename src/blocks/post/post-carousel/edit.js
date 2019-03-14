@@ -77,25 +77,16 @@ class UAGBPostCarousel extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
 		document.head.appendChild( $style )		
-		window.addEventListener("load", this.carousel_init(this.props))
 	}
 
-	componentDidUpdate() {
-		window.addEventListener("load", this.carousel_init(this.props))		
-	}
+	componentDidUpdate() {	
 
-	carousel_init(props){
-		var id = props.clientId
-		var equalHeight =  props.attributes.equalHeight
-		var main_block            = $(".uagb-post__items").parents("#block-"+id);
-		var wrap            = main_block.find(".is-carousel");
-		wrap.imagesLoaded( function() {
-            uagb_carousel_height(id)
-        });
-
-        wrap.on( 'afterChange', function() {
-           uagb_carousel_height(id)
-        } );
+		var equalHeight =  this.props.attributes.equalHeight
+		if( equalHeight ){
+			uagb_carousel_height(this.props.clientId)
+		}else{
+			uagb_carousel_unset_height(this.props.clientId)
+		}
 	}	
 
 	render() {
@@ -903,13 +894,7 @@ class UAGBPostCarousel extends Component {
 		)
 
 		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
-		
-		var props = this.props;
-		var current = this
-		$('.slick-dots li button').on('click', function(e){
-		   current.carousel_init(props)
-		});	
-	
+
 		let css = ""
 
 		if( null != element && "undefined" != typeof element ) {

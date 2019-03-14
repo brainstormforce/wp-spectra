@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id } = this.props
+		const { setAttributes, attributes, className, latestPosts, block_id } = this.props
 
 		const {
 			columns,
@@ -54,11 +54,31 @@ class Blog extends React.Component {
 			)
 		}
 
+		function carousel_set_height(props){
+			var id = props.clientId
+			//console.log("here");
+			var equalHeight =  props.attributes.equalHeight		
+			if( equalHeight ){
+				var main_block            = $(".uagb-post__items").parents("#block-"+id);
+				var wrap            = main_block.find(".is-carousel");
+				wrap.imagesLoaded( function() {
+		            uagb_carousel_height(id)
+		        });
+
+		        wrap.on( 'afterChange', function() {
+		           uagb_carousel_height(id)
+		        } );
+		    }else{
+
+		    }
+		}	
+
 		let dots = ( "dots" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 		let arrows = ( "arrows" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 
 		const equalHeightClass = equalHeight ? "uagb-post__carousel_equal-height" : ""
 
+		var current = this 
 		const settings = {
 			slidesToShow : columns,
 			slidesToScroll : 1,
@@ -69,8 +89,12 @@ class Blog extends React.Component {
 			speed : transitionSpeed,
 			arrows : arrows,
 			dots : dots,
-			rtl : false,
-			adaptiveHeight: false,
+			rtl : false,			
+			afterChange: current  => {
+				if( equalHeight ){
+					uagb_carousel_height(block_id)
+				}
+		    },
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
