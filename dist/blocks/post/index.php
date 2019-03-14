@@ -76,8 +76,7 @@ add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
  * @since 0.0.1
  */
 function uagb_post_block_add_script() {
-	 global $uagb_post_settings;
-
+	global $uagb_post_settings;
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
