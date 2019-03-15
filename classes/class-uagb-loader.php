@@ -126,7 +126,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			 *
 			 * @param string $lang_dir The languages directory path.
 			 */
-			$lang_dir = apply_filters( 'uagb_languages_directory', UAGB_DIR . 'languages/' );
+			$lang_dir = apply_filters( 'uagb_languages_directory', dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 			load_plugin_textdomain( 'ultimate-addons-for-gutenberg', false, $lang_dir );
 		}
