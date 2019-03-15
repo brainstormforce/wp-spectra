@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.1.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-03-14 10:34:30+00:00\n"
+"POT-Creation-Date: 2019-03-15 09:48:38+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -391,9 +391,9 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-config.php:1050 classes/class-uagb-config.php:1133
-#: classes/class-uagb-config.php:1216 dist/blocks/post/index.php:311
-#: dist/blocks/post/index.php:681 dist/blocks/post/index.php:1084
-#: dist/blocks/post/index.php:1658
+#: classes/class-uagb-config.php:1216 dist/blocks/post/index.php:313
+#: dist/blocks/post/index.php:683 dist/blocks/post/index.php:1086
+#: dist/blocks/post/index.php:1660
 msgid "Read More"
 msgstr ""
 
@@ -475,7 +475,7 @@ msgid ""
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:811
+#: classes/class-uagb-helper.php:815
 msgid "Full"
 msgstr ""
 
@@ -483,16 +483,16 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:281
-#: classes/class-uagb-init-blocks.php:315
+#: classes/class-uagb-init-blocks.php:284
+#: classes/class-uagb-init-blocks.php:318
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:295
+#: classes/class-uagb-init-blocks.php:298
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:329
+#: classes/class-uagb-init-blocks.php:332
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
@@ -527,14 +527,14 @@ msgstr ""
 msgid "Untitled"
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:35
+#: ultimate-addons-for-gutenberg.php:36
 #. translators: %s: PHP version
 msgid ""
 "Ultimate Addons for Gutenberg requires PHP version %s+, plugin is currently "
 "NOT RUNNING."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:52
+#: ultimate-addons-for-gutenberg.php:53
 #. translators: %s: WordPress version
 msgid ""
 "Ultimate Addons for Gutenberg requires WordPress version %s+. Because you "

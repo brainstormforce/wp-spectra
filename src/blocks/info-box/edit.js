@@ -514,7 +514,7 @@ class UAGBinfoBox extends Component {
 							checked={ ctaTarget }
 							onChange={ this.toggleTarget }
 						/>
-						
+
 					</Fragment>
 				}
 
@@ -1097,7 +1097,7 @@ class UAGBinfoBox extends Component {
 		)
 
 		const output = (
-			<div className = { classnames( "uagb-infobox__content-wrap", 
+			<div className = { classnames( "uagb-infobox__content-wrap",
 				( ctaType == "all" ? " uagb-infobox_cta-type-all" : "" ),
 				...InfoBoxPositionClasses( attributes ) ) }>
 				<div className = "uagb-ifb-left-right-wrap">

@@ -45,8 +45,8 @@ function styling( props ) {
 		labelLineHeight,
 		labelLineHeightTablet,
 		labelLineHeightMobile,
-		textAreaHeight,	
-		inputFontSize,	
+		textAreaHeight,
+		inputFontSize,
 		inputFontSizeType,
 		inputFontSizeTablet,
 		inputFontSizeMobile,
@@ -85,10 +85,10 @@ function styling( props ) {
 		radioCheckLineHeightTablet,
 		radioCheckLineHeightMobile,
 		validationMsgColor,
-		validationMsgBgColor, 
+		validationMsgBgColor,
 		validationMsgFontFamily,
 		validationMsgFontWeight,
-		validationMsgFontSize, 
+		validationMsgFontSize,
 		validationMsgFontSizeType,
 		validationMsgFontSizeTablet,
 		validationMsgFontSizeMobile,
@@ -101,17 +101,17 @@ function styling( props ) {
 		msgFontSize,
 		msgFontSizeType,
 		msgFontSizeTablet,
-		msgFontSizeMobile,	
+		msgFontSizeMobile,
 		msgLineHeightType,
 		msgLineHeight,
 		msgLineHeightTablet,
-		msgLineHeightMobile,		
+		msgLineHeightMobile,
 		successMsgFontFamily,
 		successMsgFontWeight,
 		successMsgFontSize,
 		successMsgFontSizeType,
 		successMsgFontSizeTablet,
-		successMsgFontSizeMobile,	
+		successMsgFontSizeMobile,
 		successMsgLineHeightType,
 		successMsgLineHeight,
 		successMsgLineHeightTablet,
@@ -631,7 +631,7 @@ function styling( props ) {
 		" span.wpgf-not-valid-tip" :{
 			"font-size": generateCSSUnit( validationMsgFontSizeMobile, validationMsgFontSizeType ),
 			"line-height": generateCSSUnit( validationMsgLineHeightMobile, validationMsgLineHeightType ),	
-		},		
+		},
 		" .gform_wrapper .validation_message"    :{
 			"font-size"  : generateCSSUnit( validationMsgFontSizeMobile, validationMsgFontSizeType ),
 			"line-height": generateCSSUnit( validationMsgLineHeightMobile, validationMsgLineHeightType ),
@@ -644,7 +644,7 @@ function styling( props ) {
 			"font-size"  : generateCSSUnit( successMsgFontSizeMobile, successMsgFontSizeType ),
 			"line-height": generateCSSUnit( successMsgLineHeightMobile, successMsgLineHeightType ),
 		},
-	}	
+	}
 
 	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-gf-styler-${ props.clientId }` )
 

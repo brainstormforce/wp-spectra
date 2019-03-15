@@ -1,0 +1,57 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-uagb-table-of-contents {
+
+	.uagb-toc__wrap {
+		display: inline-block;
+	}
+
+	ul.uagb-toc__list {
+		margin: 0;
+	}
+
+	.uagb-toc__list-wrap ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.uagb-toc__list-wrap ul li a {
+		color: inherit;
+		line-height: inherit;
+		font-size: inherit;
+	}
+
+	&.uagb-toc__align-left {
+		text-align: left;
+	}
+
+	&.uagb-toc__align-center {
+		text-align: center;
+	}
+
+	&.uagb-toc__align-right {
+		text-align: right;
+	}
+
+	ul li:empty {
+		display: none;
+	}
+}
+
+.uagb-toc__scroll-top {
+	display: none;
+	position: fixed;
+	bottom: 50px;
+	right: 50px;
+	padding: 10px;
+	background: #ccd0d4;
+	cursor: pointer;
+
+	&.uagb-toc__show-scroll {
+		display: inline-table;
+	}
+}

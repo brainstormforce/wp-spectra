@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.1.1
-Stable tag: 1.12.0
+Stable tag: 1.12.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -105,6 +105,10 @@ We understand the need for a quality product backed by dedicated support that ca
 
 <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Need help? We are just a click away!</a>
 
+<strong>Want To Contribute To The Plugin?</strong>
+
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Ultimate Addons for Gutenberg on Github</a>
+
 
 == Installation ==
 
@@ -150,13 +154,25 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.12.1.1 =
+* New: Table of Contents
+* Improvement: Performance - CSS optimization upto 50%.
+* Improvement: Advanced Heading - Anchor compatibility to heading tag.
+* Fix: Language directory issue on IIS server.
+
+= 1.12.1 =
+* Improvement: Added version number to script.
+* Fix: Post - Conflicts with FacetWP.
+* Fix: Post Carousel - Columns option for responsive devices not working on front end.
+* Fix: Section - Spacing issue in editor for Full Width layout.
+
 = 1.12.0 =
 * New: Gravity Forms Styler
 * Improvement: Performance - JS related to disabled blocks are not loaded.
 * Improvement: Post - Added more Order By options to the Query Builder.
 * Improvement: Post - Conflicts with Toolset Layouts, WPCasa, FacetWP fixed.
 * Improvement: Icon List - Border options added.
-* Fix: Advanced Columns - Column spacing issue on editor.
+* Fix: Advanced Columns - Column spacing issue in editor.
 * Fix: Advanced Columns - Shape Divider height responsive compatibility.
 * Fix: Contact Form 7 Styler - Select box alignment & height issue.
 * Fix: Info Box - CTA type of Complete Box structure change.

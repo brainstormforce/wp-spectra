@@ -33,7 +33,7 @@ const {
 	BlockControls,
 	InspectorControls,
 	RichText,
-	ColorPalette
+	ColorPalette,
 } = wp.editor
 
 const {
@@ -43,7 +43,8 @@ const {
 	ButtonGroup,
 	Button,
 	TabPanel,
-	Dashicon
+	Dashicon,
+	TextControl
 } = wp.components
 
 const { Component, Fragment } = wp.element
@@ -110,6 +111,7 @@ export default class UAGBAdvancedHeading extends Component {
 			onReplace,
 			attributes: {
 				headingTitle,
+				headingId,
 				headingDesc,
 				headingAlign,
 				headingColor,
@@ -209,6 +211,12 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h5", label: __( "H5" ) },
 								{ value: "h6", label: __( "H6" ) },
 							] }
+						/>
+						<TextControl
+							label= { __( "HTML Anchor" ) }
+							value= { headingId }
+							onChange={ value => setAttributes( { headingId: value } ) }
+							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
 						/>
 						<TypographyControl
 							label={ __( "Heading Tag" ) }
