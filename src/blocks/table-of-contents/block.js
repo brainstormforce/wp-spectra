@@ -25,7 +25,7 @@ const {
 registerBlockType( "uagb/table-of-contents", {
 	title: uagb_blocks_info.blocks["uagb/table-of-contents"]["title"],
 	description: uagb_blocks_info.blocks["uagb/table-of-contents"]["description"],
-	icon: UAGB_Block_Icons.marketing_button,
+	icon: UAGB_Block_Icons.table_of_contents,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "table of contents" ),

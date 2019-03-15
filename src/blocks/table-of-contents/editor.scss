@@ -11,3 +11,13 @@
 	font-style: italic;
 	color: #666;
 }
+
+.block-editor-page {
+	.uagb-toc__scroll-top {
+		right: 350px;
+
+		&.uagb-toc__show-scroll {
+			display: block;
+		}
+	}
+}

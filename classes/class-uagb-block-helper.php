@@ -4678,7 +4678,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$font_weight      = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
 			$font_subset      = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
 
+			$heading_load_google_font = isset( $attr['headingLoadGoogleFonts'] ) ? $attr['headingLoadGoogleFonts'] : '';
+			$heading_font_family      = isset( $attr['headingFontFamily'] ) ? $attr['headingFontFamily'] : '';
+			$heading_font_weight      = isset( $attr['headingFontWeight'] ) ? $attr['headingFontWeight'] : '';
+			$heading_font_subset      = isset( $attr['headingFontSubset'] ) ? $attr['headingFontSubset'] : '';
+
 			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight, $heading_font_subset );
 		}
 
 		/**
