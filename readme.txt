@@ -155,9 +155,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.12.1 =
+* Improvement: Added version number to script.
 * Fix: Post - Conflicts with FacetWP.
+* Fix: Post Carousel - Columns option for responsive devices not working on front end.
 * Fix: Section - Spacing issue in editor for Full Width layout.
-* Improvement: Added version number to scripts.
 
 = 1.12.0 =
 * New: Gravity Forms Styler
