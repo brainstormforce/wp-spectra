@@ -1,0 +1,23 @@
+/**
+ * Editor styles for the admin
+ */
+
+.editor-styles-wrapper .uagb-toc__list-wrap ul {
+	list-style: none;
+}
+
+.uagb-toc__list > p {
+	font-size: 13px;
+	font-style: italic;
+	color: #666;
+}
+
+.block-editor-page {
+	.uagb-toc__scroll-top {
+		right: 350px;
+
+		&.uagb-toc__show-scroll {
+			display: block;
+		}
+	}
+}

@@ -442,7 +442,7 @@ registerBlockType( "uagb/info-box", {
 			},
 		},
 		{
-			attributes,	
+			attributes,
 			save: function( props ) {
 				const {
 					iconimgPosition,

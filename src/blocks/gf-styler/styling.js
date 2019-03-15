@@ -44,8 +44,8 @@ function styling( props ) {
 		labelLineHeight,
 		labelLineHeightTablet,
 		labelLineHeightMobile,
-		textAreaHeight,	
-		inputFontSize,	
+		textAreaHeight,
+		inputFontSize,
 		inputFontSizeType,
 		inputFontSizeTablet,
 		inputFontSizeMobile,
@@ -84,10 +84,10 @@ function styling( props ) {
 		radioCheckLineHeightTablet,
 		radioCheckLineHeightMobile,
 		validationMsgColor,
-		validationMsgBgColor, 
+		validationMsgBgColor,
 		validationMsgFontFamily,
 		validationMsgFontWeight,
-		validationMsgFontSize, 
+		validationMsgFontSize,
 		validationMsgFontSizeType,
 		validationMsgFontSizeTablet,
 		validationMsgFontSizeMobile,
@@ -100,17 +100,17 @@ function styling( props ) {
 		msgFontSize,
 		msgFontSizeType,
 		msgFontSizeTablet,
-		msgFontSizeMobile,	
+		msgFontSizeMobile,
 		msgLineHeightType,
 		msgLineHeight,
 		msgLineHeightTablet,
-		msgLineHeightMobile,		
+		msgLineHeightMobile,
 		successMsgFontFamily,
 		successMsgFontWeight,
 		successMsgFontSize,
 		successMsgFontSizeType,
 		successMsgFontSizeTablet,
-		successMsgFontSizeMobile,	
+		successMsgFontSizeMobile,
 		successMsgLineHeightType,
 		successMsgLineHeight,
 		successMsgLineHeightTablet,
@@ -531,50 +531,50 @@ function styling( props ) {
 			"font-family" : successMsgFontFamily,
 			"font-weight" : successMsgFontWeight,
 			"line-height" : successMsgLineHeight + successMsgLineHeightType,
-		},	
+		},
 	}
 
-	var tablet_selectors = {		
-		" input:not([type=submit])": {			
-			"font-size": inputFontSizeTablet + inputFontSizeType,	
-			"line-height": inputLineHeightTablet + inputLineHeightType,	
-		},	
-		" select": {			
-			"font-size":labelFontSizeTablet + labelFontSizeType,
-			"line-height": labelLineHeightTablet + labelLineHeightType,	
+	var tablet_selectors = {
+		" input:not([type=submit])": {
+			"font-size": inputFontSizeTablet + inputFontSizeType,
+			"line-height": inputLineHeightTablet + inputLineHeightType,
 		},
-		" textarea": {			
-			"font-size": inputFontSizeTablet + inputFontSizeType,	
-			"line-height": inputLineHeightTablet + inputLineHeightType,	
+		" select": {
+			"font-size":labelFontSizeTablet + labelFontSizeType,
+			"line-height": labelLineHeightTablet + labelLineHeightType,
+		},
+		" textarea": {
+			"font-size": inputFontSizeTablet + inputFontSizeType,
+			"line-height": inputLineHeightTablet + inputLineHeightType,
 		},
 		" form label": {
 			"font-size": labelFontSizeTablet + labelFontSizeType,
-			"line-height": labelLineHeightTablet + labelLineHeightType,	
+			"line-height": labelLineHeightTablet + labelLineHeightType,
 		},
 
 		" form .gfield_radio label" :{
 			"font-size": labelFontSizeTablet + labelFontSizeType,
-			"line-height": labelLineHeightTablet + labelLineHeightType,	
+			"line-height": labelLineHeightTablet + labelLineHeightType,
 		},
 		" form .gfield_checkbox label" :{
 			"font-size": labelFontSizeTablet + labelFontSizeType,
-			"line-height": labelLineHeightTablet + labelLineHeightType,	
+			"line-height": labelLineHeightTablet + labelLineHeightType,
 		},
-		" input.gform_button": {			
-			"font-size": buttonFontSizeTablet + buttonFontSizeType,	
-			"line-height": buttonLineHeightTablet + buttonLineHeightType,			
+		" input.gform_button": {
+			"font-size": buttonFontSizeTablet + buttonFontSizeType,
+			"line-height": buttonLineHeightTablet + buttonLineHeightType,
 		},
 		" .uagb-gf-styler__check-style-enabled form .gfield_radio label" :{
 			"font-size": radioCheckFontSizeTablet + radioCheckFontSizeType,
-			"line-height": radioCheckLineHeightTablet + radioCheckLineHeightType,	
+			"line-height": radioCheckLineHeightTablet + radioCheckLineHeightType,
 		},
 		" .uagb-gf-styler__check-style-enabled form .gfield_checkbox label" :{
 			"font-size": radioCheckFontSizeTablet + radioCheckFontSizeType,
-			"line-height": radioCheckLineHeightTablet + radioCheckLineHeightType,	
+			"line-height": radioCheckLineHeightTablet + radioCheckLineHeightType,
 		},
 		" span.wpgf-not-valid-tip" :{
 			"font-size": validationMsgFontSizeTablet + validationMsgFontSizeType,
-			"line-height": validationMsgLineHeightTablet + validationMsgLineHeightType,	
+			"line-height": validationMsgLineHeightTablet + validationMsgLineHeightType,
 		},
 		" .gform_wrapper .validation_message"    :{
 			"font-size"  : validationMsgFontSizeTablet + validationMsgFontSizeType,
@@ -590,47 +590,47 @@ function styling( props ) {
 		},
 	}
 
-	var mobile_selectors = {		
-		" input:not([type=submit])": {			
-			"font-size": inputFontSizeMobile + inputFontSizeType,	
-			"line-height": inputLineHeightMobile + inputLineHeightType,		
-		},	
-		" select": {			
-			"font-size":labelFontSizeMobile + labelFontSizeType,
-			"line-height": labelLineHeightMobile + labelLineHeightType,	
+	var mobile_selectors = {
+		" input:not([type=submit])": {
+			"font-size": inputFontSizeMobile + inputFontSizeType,
+			"line-height": inputLineHeightMobile + inputLineHeightType,
 		},
-		" textarea": {			
-			"font-size": inputFontSizeTablet + inputFontSizeType,	
-			"line-height": inputLineHeightTablet + inputLineHeightType,	
+		" select": {
+			"font-size":labelFontSizeMobile + labelFontSizeType,
+			"line-height": labelLineHeightMobile + labelLineHeightType,
+		},
+		" textarea": {
+			"font-size": inputFontSizeTablet + inputFontSizeType,
+			"line-height": inputLineHeightTablet + inputLineHeightType,
 		},
 		" form label": {
-			"font-size": inputFontSizeMobile + inputFontSizeType,	
+			"font-size": inputFontSizeMobile + inputFontSizeType,
 			"line-height": inputLineHeightMobile + inputLineHeightType,
 		},
 		" form .gfield_radio label" :{
 			"font-size": labelFontSizeMobile + labelFontSizeType,
-			"line-height": labelLineHeightMobile + labelLineHeightType,	
+			"line-height": labelLineHeightMobile + labelLineHeightType,
 		},
 		" form .gfield_checkbox label" :{
 			"font-size": labelFontSizeMobile + labelFontSizeType,
-			"line-height": labelLineHeightMobile + labelLineHeightType,	
+			"line-height": labelLineHeightMobile + labelLineHeightType,
 		},
-		" input.gform_button": {			
-			"font-size": buttonFontSizeMobile + buttonFontSizeType,	
-			"line-height": buttonLineHeightMobile + buttonLineHeightType,			
+		" input.gform_button": {
+			"font-size": buttonFontSizeMobile + buttonFontSizeType,
+			"line-height": buttonLineHeightMobile + buttonLineHeightType,
 		},
 		" .uagb-gf-styler__check-style-enabled form .gfield_radio label" :{
 			"font-size": radioCheckFontSizeMobile + radioCheckFontSizeType,
-			"line-height": radioCheckLineHeightMobile + radioCheckLineHeightType,	
+			"line-height": radioCheckLineHeightMobile + radioCheckLineHeightType,
 		},
 		" .uagb-gf-styler__check-style-enabled form .gfield_checkbox label" :{
 			"font-size": radioCheckFontSizeMobile + radioCheckFontSizeType,
-			"line-height": radioCheckLineHeightMobile + radioCheckLineHeightType,	
+			"line-height": radioCheckLineHeightMobile + radioCheckLineHeightType,
 		},
 		" span.wpgf-not-valid-tip" :{
 			"font-size": validationMsgFontSizeMobile + validationMsgFontSizeType,
-			"line-height": validationMsgLineHeightMobile + validationMsgLineHeightType,	
-		},		
+			"line-height": validationMsgLineHeightMobile + validationMsgLineHeightType,
+		},
 		" .gform_wrapper .validation_message"    :{
 			"font-size"  : validationMsgFontSizeMobile + validationMsgFontSizeType,
 			"line-height": validationMsgLineHeightMobile + validationMsgLineHeightType,
@@ -643,7 +643,7 @@ function styling( props ) {
 			"font-size"  : successMsgFontSizeMobile + successMsgFontSizeType,
 			"line-height": successMsgLineHeightMobile + successMsgLineHeightType,
 		},
-	}	
+	}
 
 	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-gf-styler-${ props.clientId }` )
 
