@@ -460,17 +460,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function _generate_stylesheet( $this_post ) {
 
 			if ( has_blocks( get_the_ID() ) ) {
-				$blocks            = $this->parse( $this_post->post_content );
-				self::$page_blocks = $blocks;
+				if( isset( $this_post->post_content ) ) {
+					$blocks            = $this->parse( $this_post->post_content );
+					self::$page_blocks = $blocks;
 
-				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-					return;
+					if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+						return;
+					}
+
+					ob_start();
+					?>
+					<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
+					<?php
+					ob_end_flush();
 				}
-
-				ob_start();
-				?>
-				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
-				<?php
 			}
 		}
 
@@ -495,6 +498,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				})(jQuery)
 			</script>
 			<?php
+			ob_end_flush();
 		}
 
 		/**
