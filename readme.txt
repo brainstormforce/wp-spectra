@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.12.0 =
+* Fix: Post Carousel - Columns option for responsive devices not working on front end.
+
+= 1.12.0 =
 * New: Gravity Forms Styler
 * Improvement: Performance - JS related to disabled blocks are not loaded.
 * Improvement: Post - Added more Order By options to the Query Builder.
