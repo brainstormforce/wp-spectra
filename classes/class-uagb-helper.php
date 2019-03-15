@@ -285,6 +285,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     UAGB_Block_Helper::blocks_call_to_action_gfont( $blockattr );
                     break;
 
+				case 'uagb/table-of-contents':
+					$css .= UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
+					UAGB_Block_Helper::blocks_table_of_contents_gfont( $blockattr );
+					break;
+
                 case 'uagb/post-timeline':
                     $css .= UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
                     UAGB_Block_Helper::blocks_post_timeline_gfont( $blockattr );
@@ -435,6 +440,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
                     break;               
 
+				case 'uagb/table-of-contents':
+					$js .= UAGB_Block_Helper::get_table_of_contents_js( $blockattr, $block_id );
+					break;
+
                 default:
                     // Nothing to do here.
                     break;
@@ -500,17 +509,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function _generate_stylesheet( $this_post ) {
 
 			if ( has_blocks( get_the_ID() ) ) {
-				$blocks            = $this->parse( $this_post->post_content );
-				self::$page_blocks = $blocks;
+				if ( isset( $this_post->post_content ) ) {
 
-				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-					return;
+					$blocks            = $this->parse( $this_post->post_content );
+					self::$page_blocks = $blocks;
+
+					if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+						return;
+					}
+
+					ob_start();
+					?>
+					<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
+					<?php
+					ob_end_flush();
 				}
-
-				ob_start();
-				?>
-				<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
-				<?php
 			}
 		}
 
@@ -535,6 +548,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				})(jQuery)
 			</script>
 			<?php
+			ob_end_flush();
 		}
 
 		/**

@@ -99,9 +99,13 @@ function uagb_post_block_add_script() {
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
+
 			$dots         = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
 			$arrows       = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
 			$equal_height = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
+			$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
+			$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+
 			?>
 			<script type="text/javascript" id="
 			++  <?php echo $key; ?>">
@@ -130,14 +134,14 @@ function uagb_post_block_add_script() {
 							{
 								'breakpoint' : 1024,
 								'settings' : {
-									'slidesToShow' : 2,
+									'slidesToShow' : tcolumns,
 									'slidesToScroll' : 1,
 								}
 							},
 							{
 								'breakpoint' : 767,
 								'settings' : {
-									'slidesToShow' : 1,
+									'slidesToShow' : mcolumns,
 									'slidesToScroll' : 1,
 								}
 							}

@@ -73,7 +73,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.12.0' );
+			define( 'UAGB_VER', '1.12.1.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -126,7 +126,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			 *
 			 * @param string $lang_dir The languages directory path.
 			 */
-			$lang_dir = apply_filters( 'uagb_languages_directory', UAGB_DIR . 'languages/' );
+			$lang_dir = apply_filters( 'uagb_languages_directory', UAGB_ROOT . '/languages/' );
 
 			load_plugin_textdomain( 'ultimate-addons-for-gutenberg', false, $lang_dir );
 		}
