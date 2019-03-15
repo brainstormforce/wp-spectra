@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.12.1.1 =
 * Improvement: Performance - CSS optimization upto 50%.
+* Improvement: Info Box - Added seperator position option.
 
 = 1.12.1 =
 * Improvement: Added version number to script.
