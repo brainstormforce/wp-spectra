@@ -103,8 +103,10 @@ function uagb_post_block_add_script() {
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
-			$dots   = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$arrows = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$dots     = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$arrows   = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$tcolumns = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
+			$mcolumns = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
 			?>
 			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
 				( function( $ ) {
@@ -132,14 +134,14 @@ function uagb_post_block_add_script() {
 							{
 								'breakpoint' : 1024,
 								'settings' : {
-									'slidesToShow' : 2,
+									'slidesToShow' : tcolumns,
 									'slidesToScroll' : 1,
 								}
 							},
 							{
 								'breakpoint' : 767,
 								'settings' : {
-									'slidesToShow' : 1,
+									'slidesToShow' : mcolumns,
 									'slidesToScroll' : 1,
 								}
 							}
@@ -1431,6 +1433,24 @@ function uagb_blocks_register_rest_fields() {
 
 add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
 
+/**
+ * Create API Order By Fields
+ *
+ * @since 1.12.0
+ */
+function uagb_blocks_register_rest_orderby_fields() {
+
+	$post_type = UAGB_Helper::get_post_types();
+
+	foreach ( $post_type as $key => $type ) {
+
+		add_filter( "rest_{$type['value']}_collection_params", 'uagb_blocks_add_orderby', 10, 1 );
+
+	}
+}
+
+add_action( 'init', 'uagb_blocks_register_rest_orderby_fields' );
+
 
 /**
  * Get featured image source for the rest field as per size
@@ -1507,6 +1527,20 @@ function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
 		$excerpt = null;
 	}
 	return $excerpt;
+}
+
+/**
+ * Adds Order By values to Rest API
+ *
+ * @param object $params Parameters.
+ * @since 1.12.0
+ */
+function uagb_blocks_add_orderby( $params ) {
+
+	$params['orderby']['enum'][] = 'rand';
+	$params['orderby']['enum'][] = 'menu_order';
+
+	return $params;
 }
 
 /**

@@ -19,6 +19,8 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"label_hover_color": "",
 			"icon_bg_color": "",
 			"icon_bg_hover_color": "",
+			"icon_border_color": "",
+			"icon_border_hover_color": "",
 			"link": "#",
 			"target": false,
 			"disableLink": false,
@@ -72,6 +74,10 @@ const attributes = {
 		type: "number",
 		default: 0
 	},
+	border: {
+		type: "number",
+		default: 0
+	},
 	borderRadius: {
 		type: "number",
 		default: 0
@@ -118,7 +124,7 @@ const attributes = {
 	},
 	loadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	icon_layout: {
 		type: "string",

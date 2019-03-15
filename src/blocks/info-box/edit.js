@@ -514,7 +514,7 @@ class UAGBinfoBox extends Component {
 							checked={ ctaTarget }
 							onChange={ this.toggleTarget }
 						/>
-						
+
 					</Fragment>
 				}
 
@@ -1097,8 +1097,8 @@ class UAGBinfoBox extends Component {
 		)
 
 		const output = (
-			<div className = { classnames( "uagb-infobox__content-wrap", 
-				( ctaType == 'all' ? " uagb-infobox_cta-type-all" : "" ),
+			<div className = { classnames( "uagb-infobox__content-wrap",
+				( ctaType == "all" ? " uagb-infobox_cta-type-all" : "" ),
 				...InfoBoxPositionClasses( attributes ) ) }>
 				<div className = "uagb-ifb-left-right-wrap">
 					{ ( iconimgPosition == "left") &&
@@ -1168,7 +1168,7 @@ class UAGBinfoBox extends Component {
 					{ ( ctaType == "all") &&<Fragment>
 						<a className = "uagb-infobox-link-wrap uagb-infbox__link-to-all" rel ="noopener noreferrer"></a>
 						{output}
-						</Fragment>
+					</Fragment>
 					}
 					{ ( ctaType !== "all") && output }
 				</div>

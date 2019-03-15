@@ -106,6 +106,10 @@
 }
 
 .editor-block-list__layout .editor-block-list__block[data-type="uagb/column"] > .editor-block-list__block-edit {
+
+	margin-left: 14px;
+	margin-right: 14px;
+
 	> div:not(.editor-block-contextual-toolbar) {
 		width: 100%;
 	}
@@ -178,9 +182,9 @@
 	width: 100%;
 }
 
-.uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout > [data-type="uagb/column"] > .editor-block-list__block-edit {
-	margin-left: -23px;
-    margin-right: -23px;
+.editor-block-list__layout .editor-block-list__block[data-align="full"][data-type="uagb/columns"] {
+	margin-left: 0;
+	margin-right: 0;
 }
 
 @media (max-width: 976px) {

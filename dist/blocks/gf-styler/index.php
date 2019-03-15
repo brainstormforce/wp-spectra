@@ -2,19 +2,19 @@
 /**
  * Server-side rendering for the Gravity Form Styler.
  *
- * @since   x.x.x
+ * @since   1.12.0
  * @package UAGB
  */
 
 /**
  * Renders the Gravity Form shortcode.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_gf_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
 
-    // @codingStandardsIgnoreEnd    
+    // @codingStandardsIgnoreEnd
 	if ( $id && 0 != $id && -1 != $id ) {
 		$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
 	} else {
@@ -29,7 +29,7 @@ add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', 'uagb_gf_shortcode' );
 /**
  * Registers Gravity Form.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_blocks_register_gf_styler() {
 	// Check if the register function exists.
@@ -182,6 +182,10 @@ function uagb_blocks_register_gf_styler() {
 					'type'    => 'number',
 					'default' => '',
 				),
+				'enableLabel'                   => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'labelFontSize'                 => array(
 					'type'    => 'number',
 					'default' => '',
@@ -264,6 +268,9 @@ function uagb_blocks_register_gf_styler() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'textAreaHeight'                => array(
+					'type' => 'number',
+				),
 				'buttonFontSize'                => array(
 					'type'    => 'number',
 					'default' => '',
@@ -311,11 +318,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckSize'                => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '20',
 				),
 				'radioCheckBgColor'             => array(
 					'type'    => 'string',
-					'default' => '',
+					'default' => '#fafafa',
 				),
 				'radioCheckSelectColor'         => array(
 					'type'    => 'string',
@@ -327,11 +334,11 @@ function uagb_blocks_register_gf_styler() {
 				),
 				'radioCheckBorderColor'         => array(
 					'type'    => 'string',
-					'default' => '#abb8c3',
+					'default' => '#cbcbcb',
 				),
 				'radioCheckBorderWidth'         => array(
 					'type'    => 'number',
-					'default' => '',
+					'default' => '1',
 				),
 				'radioCheckBorderRadius'        => array(
 					'type'    => 'number',
@@ -577,7 +584,7 @@ add_action( 'init', 'uagb_blocks_register_gf_styler' );
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.12.0
  */
 function uagb_render_gf( $attributes ) {
 	$block_id = 'uagb-gf-styler-' . $attributes['block_id'];
@@ -587,6 +594,7 @@ function uagb_render_gf( $attributes ) {
 	$fieldStyle      = isset( $attributes['fieldStyle'] ) ? $attributes['fieldStyle'] : '';
 	$buttonAlignment = isset( $attributes['buttonAlignment'] ) ? $attributes['buttonAlignment'] : '';
 	$enableOveride   = isset( $attributes['enableOveride'] ) ? $attributes['enableOveride'] : '';
+	$enableLabel   	 = isset( $attributes['enableLabel'] ) ? $attributes['enableLabel'] : '';
 	$advancedValidationSettings = isset( $attributes['advancedValidationSettings'] ) ? $attributes['advancedValidationSettings'] : '';
 	$enableAjax    	= ( $attributes['enableAjax'] ) ? 'true' : 'false';
 	$formTabIndex 	= ( $attributes['enableTabSupport'] ) ? $attributes['formTabIndex'] : '';
@@ -596,6 +604,8 @@ function uagb_render_gf( $attributes ) {
 	$classname .= 'uagb-gf-styler__field-style-' . $fieldStyle . ' ';
 	$classname .= 'uagb-gf-styler__btn-align-' . $buttonAlignment . ' ';
 	$classname .= $enableOveride ? ' uagb-gf-styler__check-style-enabled' : ' ';
+
+	$classname .= $enableLabel ? ' uagb-gf-styler__hide-label' : ' ';
 	$classname .= $advancedValidationSettings ? ' uagb-gf-styler__error-yes' : '';
 	$class 		= isset( $attributes['className']) ? $attributes['className'] : '';
 
@@ -607,7 +617,6 @@ function uagb_render_gf( $attributes ) {
 	if( $titleDescStyle === 'none' ) {
 		$disableTitleDesc = ' title="false" description="false" ';
 	}
-
 
 	if ($formId && 0 != $formId && -1 != $formId) {
 	?>

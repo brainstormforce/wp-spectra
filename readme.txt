@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.1
-Stable tag: 1.11.1.1
+Tested up to: 5.1.1
+Stable tag: 1.12.1.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -77,7 +77,7 @@ We also have an informative and detailed article that will help you to <a href="
  	<li><a href="https://www.ultimategutenberg.com/blocks/contact-form-7-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Contact Form 7 Styler </a>: The Contact Form 7 Styler is an easy to use Gutenberg block that allows to fully customize and design the existing Contact Form 7 forms on your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/content-timeline/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Content Timeline </a>: The Timeline block lets you create beautiful timelines on your website. This could be useful for displaying company history or progress, list down your personal achievements, roadmap or release cycle for products etc.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/google-map/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Google Map </a>: The Google Maps block allows you to display locations with zooming options you’ll love to try.</li>
-	<li><a href="https://www.ultimategutenberg.com/blocks/gravity-forms-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Create an attractive and simple Gravity Forms Styler for your WordPress website and make it easy for users to contact you.</li>
+	<li><a href="https://www.ultimategutenberg.com/blocks/gravity-form-styler/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Gravity Forms Styler</a>: Customize your default Gravity Form with the Gravity Form Styler to display more appealing forms that convert.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/icon-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Icon List </a>: The Icon List block allows you to place an image or icon in a list format. You can pick your favorite icon or image that suits a list to act as a bullet for each list item.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/info-box/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Info Box </a>: The Infobox allows you to place an image or icon along with a heading and description within a single block. You can select the image or icon and customize the content within the block.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/marketing-button/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Marketing Button </a>: The Marketing Button block allows you to create trendy CTA that aim at attracting the audience with conversion oriented text and a stunning button with lots of customization.</li>
@@ -104,6 +104,10 @@ The Ultimate Addons for Gutenberg is built for speed and performance along with 
 We understand the need for a quality product backed by dedicated support that cares. We are here to listen to all your queries and help you make the most out of our plugin.
 
 <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Need help? We are just a click away!</a>
+
+<strong>Want To Contribute To The Plugin?</strong>
+
+You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Ultimate Addons for Gutenberg on Github</a>
 
 
 == Installation ==
@@ -150,13 +154,33 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-
-= 1.11.1.1 =
-* New: Gravity Forms Styler
+= 1.12.1.1 =
+* New: Table of Contents
+* Improvement: Performance - CSS optimization upto 50%.
+* Fix: Language directory issue on IIS server.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
+
+= 1.12.1 =
+* Improvement: Added version number to script.
+* Fix: Post - Conflicts with FacetWP.
+* Fix: Post Carousel - Columns option for responsive devices not working on front end.
+* Fix: Section - Spacing issue in editor for Full Width layout.
+
+= 1.12.0 =
+* New: Gravity Forms Styler
+* Improvement: Performance - JS related to disabled blocks are not loaded.
+* Improvement: Post - Added more Order By options to the Query Builder.
+* Improvement: Post - Conflicts with Toolset Layouts, WPCasa, FacetWP fixed.
+* Improvement: Icon List - Border options added.
+* Fix: Advanced Columns - Column spacing issue in editor.
+* Fix: Advanced Columns - Shape Divider height responsive compatibility.
+* Fix: Contact Form 7 Styler - Select box alignment & height issue.
+>>>>>>> 6629356487a2a6346ef43e22f9d0b25adca6a3fa
 * Fix: Info Box - CTA type of Complete Box structure change.
-* Fix: Testimonial - CSS conflict fixed
+* Fix: Post Carousel - Arrows not visible in front end issue.
 * Fix: Social Share - Email option opens a new browser tab issue.
+* Fix: Testimonial - CSS conflict fixed
+* Fix: Testimonial - Arrows not visible in front end issue.
 
 = 1.11.1 =
 * Fix: PHP Error - Conflict with Astra v1.7.0
