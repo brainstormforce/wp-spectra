@@ -539,7 +539,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			</script>
 			<?php
 			ob_end_flush();
-
 		}
 
 		/**
