@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.12.1.1 =
 * New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
+* Fix: Language directory issue on IIS server.
 
 = 1.12.1 =
 * Improvement: Added version number to script.
