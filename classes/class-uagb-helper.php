@@ -460,7 +460,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function _generate_stylesheet( $this_post ) {
 
 			if ( has_blocks( get_the_ID() ) ) {
-				if( isset( $this_post->post_content ) ) {
+				if ( isset( $this_post->post_content ) ) {
 					$blocks            = $this->parse( $this_post->post_content );
 					self::$page_blocks = $blocks;
 
