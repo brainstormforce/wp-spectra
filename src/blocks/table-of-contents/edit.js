@@ -33,6 +33,7 @@ const {
 
 const {
 	Button,
+	ButtonGroup,
 	PanelBody,
 	SelectControl,
 	RangeControl,
@@ -95,6 +96,9 @@ class UAGBTableOfContentsEdit extends Component {
 			scrollToTop,
 			scrollToTopColor,
 			scrollToTopBgColor,
+			customWidth,
+			width,
+			widthType,
 			//Color
 			backgroundColor,
 			linkColor,
@@ -234,7 +238,8 @@ class UAGBTableOfContentsEdit extends Component {
 							checked={ considerH6 }
 							onChange={ ( value ) => setAttributes( { considerH6: ! considerH6 } ) }
 						/>
-						<hr className="uagb-editor__separator"/>
+					</PanelBody>
+					<PanelBody title={ __( "Scroll" ) } initialOpen={ false }>
 						<ToggleControl
 							label={ __( "Smooth Scroll" ) }
 							checked={ smoothScroll }
@@ -259,8 +264,7 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
 							</Fragment>
 						}
-					</PanelBody>
-					<PanelBody title={ __( "Scroll To Top" ) } initialOpen={ false }>
+						<hr className="uagb-editor__separator"/>
 						<ToggleControl
 							label={ __( "Show Scroll To Top" ) }
 							checked={ scrollToTop }
@@ -357,6 +361,30 @@ class UAGBTableOfContentsEdit extends Component {
 							onChange={ ( colorValue ) => setAttributes( { backgroundColor: colorValue } ) }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator"/>
+						<ToggleControl
+							label={ __( "Custom Width" ) }
+							checked={ customWidth }
+							onChange={ ( value ) => setAttributes( { customWidth: ! customWidth } ) }
+							help={ __( "Table's width will be auto if this is kept off." ) }
+						/>
+						{ customWidth &&
+							<Fragment>
+								<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+									<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
+									<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
+								</ButtonGroup>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ width }
+									onChange={ ( value ) => setAttributes( { width: value } ) }
+									min={ 0 }
+									max={ ( "%" == widthType ) ? 100 : 1000 }
+									beforeIcon=""
+									allowReset
+								/>
+							</Fragment>
+						}
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl

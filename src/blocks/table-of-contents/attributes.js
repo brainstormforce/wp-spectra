@@ -64,6 +64,18 @@ const attributes = {
 		selector: ".uagb-toc__title",
 		default: "Table Of Content",
 	},
+	customWidth : {
+		type: "boolean",
+		default : false
+	},
+	widthType : {
+		type    : "string",
+		default : "%",
+	},
+	width : {
+		type    : "number",
+		default : 100,
+	},
 
 	// Color
 	backgroundColor: {

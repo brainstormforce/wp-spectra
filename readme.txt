@@ -155,6 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.12.1.1 =
+* New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
 
 = 1.12.1 =

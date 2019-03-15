@@ -4301,54 +4301,58 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"color" => $attr["linkHoverColor"],
 				),
 				" .uagb-toc__list-wrap ul li a" => array(
-					"font-size" => $attr["fontSize"] . $attr["fontSizeType"],
-					"line-height" => $attr["lineHeight"] . $attr["lineHeightType"],
+					"font-size" => UAGB_Helper::get_css_value( $attr["fontSize"], $attr["fontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["lineHeight"], $attr["lineHeightType"] ),
 					"font-family" => $attr["fontFamily"],
 					"font-weight" => $attr["fontWeight"],
 					"color" => $attr["linkColor"],
 				),
 				" .uagb-toc__title" => array(
-					"font-size" => $attr["headingFontSize"] . $attr["headingFontSizeType"],
-					"line-height" => $attr["headingLineHeight"] . $attr["headingLineHeightType"],
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSize"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeight"], $attr["headingLineHeightType"] ),
 					"font-family" => $attr["headingFontFamily"],
 					"font-weight" => $attr["headingFontWeight"],
 					"color" => $attr["headingColor"],
-					"margin-bottom" => $attr["headingBottom"] . "px"
+					"margin-bottom" => UAGB_Helper::get_css_value( $attr["headingBottom"], "px"),
 				),
 				" .uagb-toc__wrap" => array(
 					"border-style" => $attr["borderStyle"],
-					"border-width" => $attr["borderWidth"] . "px",
+					"border-width" => UAGB_Helper::get_css_value( $attr["borderWidth"], "px" ),
 					"border-color" => $attr["borderColor"],
-					"border-radius" => $attr["borderRadius"] . "px",
-					"padding-left" => $attr["hPadding"] . "px",
-					"padding-right" => $attr["hPadding"] . "px",
-					"padding-top" => $attr["vPadding"] . "px",
-					"padding-bottom" => $attr["vPadding"] . "px",
+					"border-radius" => UAGB_Helper::get_css_value( $attr["borderRadius"], "px" ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
 					"background" => $attr["backgroundColor"],
 				),
 			);
 
+			if ( $attr["customWidth"] ) {
+				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["width"], $attr["widthType"] );
+			}
+
 
 			$m_selectors = array(
 				' .uagb-toc__list-wrap ul li a'        => array(
-					'font-size' => $attr['fontSizeMobile'] . $attr['fontSizeType'],
-					'line-height' => $attr['lineHeightMobile'] . $attr['lineHeightType'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 				),
 				" .uagb-toc__title" => array(
-					"font-size" => $attr["headingFontSizeMobile"] . $attr["headingFontSizeType"],
-					"line-height" => $attr["headingLineHeightMobile"] . $attr["headingLineHeightType"],
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeMobile"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightMobile"], $attr["headingLineHeightType"] ),
 				),
 
 			);
 
 			$t_selectors = array(
 				' .uagb-toc__list-wrap ul li a'        => array(
-					'font-size' => $attr['fontSizeTablet'] . $attr['fontSizeType'],
-					'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 				),
 				" .uagb-toc__title" => array(
-					"font-size" => $attr["headingFontSizeTablet"] . $attr["headingFontSizeType"],
-					"line-height" => $attr["headingLineHeightTablet"] . $attr["headingLineHeightType"],
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeTablet"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightTablet"], $attr["headingLineHeightType"] ),
 				),
 
 			);

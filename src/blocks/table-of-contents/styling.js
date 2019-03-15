@@ -7,7 +7,9 @@ import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 function styling( props ) {
 
 	const {
-		counter,
+		customWidth,
+		width,
+		widthType,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -86,6 +88,10 @@ function styling( props ) {
 			"padding-bottom": vPadding + "px",
 			"background": backgroundColor
 		},
+	}
+
+	if ( customWidth ) {
+		selectors[" .uagb-toc__wrap"]["width"] = width + widthType
 	}
 
 	tablet_selectors = {
