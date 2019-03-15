@@ -154,6 +154,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.12.1 =
+* Improvement: Post - Conflicts with FacetWP fixed.
+
 = 1.12.0 =
 * New: Gravity Forms Styler
 * Improvement: Performance - JS related to disabled blocks are not loaded.
