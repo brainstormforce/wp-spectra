@@ -155,7 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.12.1 =
-* Fixe: Post - Conflicts with FacetWP.
+* Fix: Post - Conflicts with FacetWP.
 * Improvement: Added version number to script.
 
 = 1.12.0 =
