@@ -175,7 +175,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Advanced Columns - Column spacing issue in editor.
 * Fix: Advanced Columns - Shape Divider height responsive compatibility.
 * Fix: Contact Form 7 Styler - Select box alignment & height issue.
->>>>>>> 6629356487a2a6346ef43e22f9d0b25adca6a3fa
 * Fix: Info Box - CTA type of Complete Box structure change.
 * Fix: Post Carousel - Arrows not visible in front end issue.
 * Fix: Social Share - Email option opens a new browser tab issue.
