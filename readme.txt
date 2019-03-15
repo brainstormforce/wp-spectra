@@ -158,6 +158,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
 * Improvement: Info Box - Added separator position option.
+* Improvement: Advanced Heading - Anchor compatibility to heading tag.
 * Fix: Language directory issue on IIS server.
 
 = 1.12.1 =
