@@ -79,6 +79,7 @@ class UAGB_Init_Blocks {
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
+			array(),
 			UAGB_VER
 		);
 
@@ -129,6 +130,7 @@ class UAGB_Init_Blocks {
 			wp_enqueue_style(
 				'uagb-fontawesome-css', // Handle.
 				$font_awesome, // Block style CSS.
+				array(),
 				UAGB_VER
 			);
 		}
@@ -148,6 +150,7 @@ class UAGB_Init_Blocks {
 			wp_enqueue_style(
 				'uagb-slick-css', // Handle.
 				UAGB_URL . 'assets/css/slick.css', // Block style CSS.
+				array(),
 				UAGB_VER
 			);
 		}
