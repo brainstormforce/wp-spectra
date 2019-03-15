@@ -16,10 +16,17 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 
 		var sel = selectors[i]
 		var css = ""
+		var checkString = true;
 
 		for( var j in sel ) {
-			if( typeof sel[j] !== undefined ) {
-				if( sel[j].length !== 0 ) {
+			
+			if( typeof sel[j] === 'string' && sel[j].length === 0 ) {
+				checkString = false;
+			}
+
+			if( typeof sel[j] != 'undefined' ) {
+
+				if( checkString ) {
 					css += j + ": " + sel[j] + ";"
 				}
 			}
