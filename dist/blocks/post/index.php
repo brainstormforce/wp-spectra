@@ -134,14 +134,14 @@ function uagb_post_block_add_script() {
 							{
 								'breakpoint' : 1024,
 								'settings' : {
-									'slidesToShow' : tcolumns,
+									'slidesToShow' : <?php echo $tcolumns ) ?>,
 									'slidesToScroll' : 1,
 								}
 							},
 							{
 								'breakpoint' : 767,
 								'settings' : {
-									'slidesToShow' : mcolumns,
+									'slidesToShow' : <?php echo $mcolumns ) ?>,
 									'slidesToScroll' : 1,
 								}
 							}
