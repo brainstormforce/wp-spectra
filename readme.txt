@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.12.1.1 =
 * Fix: Language directory issue on IIS server.
+* Fix: Post Carousel - Carousel not working.
 
 = 1.12.1 =
 * Improvement: Added version number to script.
