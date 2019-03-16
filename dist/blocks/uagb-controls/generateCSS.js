@@ -24,11 +24,8 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 				checkString = false;
 			}
 
-			if( typeof sel[j] != 'undefined' ) {
-
-				if( checkString ) {
-					css += j + ": " + sel[j] + ";"
-				}
+			if( typeof sel[j] != 'undefined' && checkString ) {
+				css += j + ": " + sel[j] + ";"
 			}
 		}
 
