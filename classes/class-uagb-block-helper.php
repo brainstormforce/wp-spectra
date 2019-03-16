@@ -198,7 +198,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-section-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -361,7 +363,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-columns-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -497,7 +501,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-column-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -586,7 +592,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-adv-heading-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -753,7 +761,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-buttons-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -982,7 +992,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-infobox-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -1146,7 +1158,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-cta-block-' . $id, 'tablet' );
 			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-cta-block-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -1298,7 +1312,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-testimonial-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -1464,7 +1480,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-team-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -1705,7 +1723,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-social-share-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -1954,7 +1974,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-icon-list-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2048,7 +2070,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2197,7 +2221,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-ctm-' . $id, 'tablet' );
 			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-ctm-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2341,7 +2367,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-rm-' . $id, 'tablet' );
 			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-rm-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2372,7 +2400,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-post__grid-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2441,7 +2471,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-post__carousel-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2472,7 +2504,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-post__masonry-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -2932,7 +2966,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-blockquote-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
@@ -3588,7 +3624,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-cf7-styler-' . $id, 'tablet' );
 			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-cf7-styler-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 
@@ -4135,7 +4173,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-gf-styler-' . $id );
 			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-gf-styler-' . $id, 'tablet' );
 			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-gf-styler-' . $id, 'mobile' );
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/*
@@ -4277,7 +4317,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-marketing-btn-' . $id, 'mobile' );
 
-			return $desktop . $tablet . $mobile;
+			$arr = array( 'desktop' => $desktop, 'tablet' => $tablet, 'mobile' => $mobile );
+			
+			return $arr;
 		}
 
 		/**
