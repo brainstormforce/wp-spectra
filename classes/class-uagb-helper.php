@@ -122,9 +122,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @since 0.0.1
 		 */
-		public static function generate_css( $selectors, $id ) {
+		public static function generate_css( $selectors, $id, $responsiveType = false ) {
 
 			$styling_css = '';
+			$breakpoint = "";
+			$gen_styling_css  = "";
+			$res_styling_css  = "";
+
+			if ( $responsiveType == "tablet" ) {
+				$breakpoint = UAGB_TABLET_BREAKPOINT;
+			} else if ( $responsiveType == "mobile" ) {
+				$breakpoint = UAGB_MOBILE_BREAKPOINT;
+			}
 
 			if ( empty( $selectors ) ) {
 				return;
@@ -142,13 +151,24 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( ! empty( $css ) ) {
-					$styling_css .= $id;
-					$styling_css .= $key . ' { ';
-					$styling_css .= $css . ' } ';
+					$gen_styling_css .= $id;
+					$gen_styling_css .= $key . ' { ';
+					$gen_styling_css .= $css . ' } ';
 				}
 			}
 
-			return $styling_css;
+
+			if ( $responsiveType &&! empty( $gen_styling_css ) || 0 === $gen_styling_css ) {
+				$res_styling_css .= '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
+				$res_styling_css .= $gen_styling_css;
+				$res_styling_css .= ' } ';
+			}
+
+			if( $responsiveType ) {
+				return $res_styling_css;
+			} else {
+				return $gen_styling_css;
+			}
 		}
 
 		/**
