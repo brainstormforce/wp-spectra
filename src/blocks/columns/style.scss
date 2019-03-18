@@ -110,6 +110,10 @@
 	    -webkit-transform: rotateY(0deg);
 	    transform: rotateY(0deg);
 	}
+	.uagb-columns__shape.uagb-columns__shape-above-content {
+	    z-index: 9;
+	    pointer-events: none;
+	}
 }
 
 .uagb-columns__valign-middle {

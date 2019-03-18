@@ -235,6 +235,14 @@ const attributes = {
 		type: "number",
 		default: 100
 	},
+	topContentAboveShape: {
+		type: "boolean",
+		default: false
+	},
+	bottomContentAboveShape: {
+		type: "boolean",
+		default: false
+	},
 }
 
 export default attributes
