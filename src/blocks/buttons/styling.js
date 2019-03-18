@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -28,20 +29,20 @@ function styling( props ) {
 		}
 
 		selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.size + button.sizeType,
-			"line-height" : button.lineHeight + button.lineHeightType,
+			"font-size" : generateCSSUnit( button.size, button.sizeType ),
+			"line-height" : generateCSSUnit( button.lineHeight, button.lineHeightType ),
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
-			"border-width": button.borderWidth + "px",
+			"border-width": generateCSSUnit( button.borderWidth, "px" ),
 			"border-style": button.borderStyle,
 			"border-color": button.borderColor,
-			"border-radius" : button.borderRadius + "px",
+			"border-radius" : generateCSSUnit( button.borderRadius, "px" ),
 			"background": button.background
 		}
 
 		selectors[" .uagb-buttons-repeater-" + index + ":hover"] = {
 			"background": button.hBackground,
-			"border-width": button.borderWidth + "px",
+			"border-width": generateCSSUnit( button.borderWidth, "px" ),
 			"border-style": button.borderStyle,
 			"border-color": button.borderHColor,
 		}
@@ -65,20 +66,20 @@ function styling( props ) {
 		}
 
 		mobile_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.sizeMobile + button.sizeType,
-			"line-height" : button.lineHeightMobile + button.lineHeightType,
+			"font-size" : generateCSSUnit( button.sizeMobile, button.sizeType ),
+			"line-height" : generateCSSUnit( button.lineHeightMobile, button.lineHeightType ),
 		}
 
 		tablet_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : button.sizeTablet + button.sizeType,
-			"line-height" : button.lineHeightTablet + button.lineHeightType,
+			"font-size" : generateCSSUnit( button.sizeTablet, button.sizeType ),
+			"line-height" : generateCSSUnit( button.lineHeightTablet, button.lineHeightType ),
 		}
 
 	})
 
 	selectors[" .uagb-button__wrapper"] = {
-		"margin-left" : ( gap/2 ) + "px",
-		"margin-right" : ( gap/2 ) + "px"
+		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
+		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 	}
 
 	selectors[" .uagb-button__wrapper:first-child"] = {
@@ -103,7 +104,7 @@ function styling( props ) {
 		selectors[" .uagb-button__wrapper"] = {
 			"margin-left" : 0,
 			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
+			"margin-bottom" : generateCSSUnit( gap, "px" )
 		}
 
 		selectors[" .uagb-buttons__wrap"] = {
@@ -119,7 +120,7 @@ function styling( props ) {
 		tablet_selectors[" .uagb-button__wrapper"] = {
 			"margin-left" : 0,
 			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
+			"margin-bottom" : generateCSSUnit( gap, "px" )
 		}
 
 		tablet_selectors[" .uagb-buttons__wrap"] = {
@@ -135,7 +136,7 @@ function styling( props ) {
 		mobile_selectors[" .uagb-button__wrapper"] = {
 			"margin-left" : 0,
 			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
+			"margin-bottom" : generateCSSUnit( gap, "px" )
 		}
 
 		mobile_selectors[" .uagb-buttons__wrap"] = {

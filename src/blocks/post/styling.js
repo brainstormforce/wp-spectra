@@ -5,6 +5,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props, id ) {
 
@@ -96,75 +97,75 @@ function styling( props, id ) {
 
 	var selectors = {
 		" .uagb-post__items": {
-			"margin-right" :  ( -rowGap/2 ) + "px",
-			"margin-left" :  ( -rowGap/2 ) + "px",
+			"margin-right" :  generateCSSUnit( ( -rowGap/2 ), "px" ),
+			"margin-left" :  generateCSSUnit( ( -rowGap/2 ), "px" ),
 		},
 		" .uagb-post__items article": {
-			"padding-right" : ( rowGap/2 ) + "px",
-			"padding-left" : ( rowGap/2 ) + "px",
-			"margin-bottom" : ( columnGap ) + "px"
+			"padding-right" : generateCSSUnit( ( rowGap/2 ) , "px" ),
+			"padding-left" : generateCSSUnit( ( rowGap/2 ) , "px" ),
+			"margin-bottom" : generateCSSUnit( ( columnGap ), "px" )
 		},
 		" .uagb-post__inner-wrap": {
 			"background" : bgColor,
 		},
 		" .uagb-post__text": {
-			"padding" : ( contentPadding ) + "px",
+			"padding" : generateCSSUnit( ( contentPadding ), "px" ),
 			"text-align" : align
 		},
 		" .uagb-post__text .uagb-post__title": {
 			"color": titleColor,
-			"font-size": titleFontSize  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
-			"line-height": titleLineHeight + titleLineHeightType,
-			"margin-bottom": titleBottomSpace  + "px"
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
+			"margin-bottom": generateCSSUnit( titleBottomSpace, "px" )
 		},
 		" .uagb-post__text .uagb-post__title a": {
 			"color": titleColor,
-			"font-size": titleFontSize  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
-			"line-height": titleLineHeight + titleLineHeightType,
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
 			"color": metaColor,
-			"font-size": metaFontSize  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
-			"line-height": metaLineHeight + metaLineHeightType,
-			"margin-bottom": metaBottomSpace  + "px"
+			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
+			"margin-bottom": generateCSSUnit( metaBottomSpace, "px" )
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
 			"color": metaColor,
-			"font-size": metaFontSize  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
-			"line-height": metaLineHeight + metaLineHeightType,
+			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
 			"color": metaColor,
-			"font-size": metaFontSize  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSize, metaFontSizeType ),
 			"font-family": metaFontFamily,
 			"font-weight": metaFontWeight,
-			"line-height": metaLineHeight + metaLineHeightType,
+			"line-height": generateCSSUnit( metaLineHeight, metaLineHeightType ),
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
 			"color": excerptColor,
-			"font-size": excerptFontSize  + excerptFontSizeType,
+			"font-size": generateCSSUnit( excerptFontSize, excerptFontSizeType ),
 			"font-family": excerptFontFamily,
 			"font-weight": excerptFontWeight,
-			"line-height": excerptLineHeight + excerptLineHeightType,
-			"margin-bottom": excerptBottomSpace  + "px"
+			"line-height": generateCSSUnit( excerptLineHeight, excerptLineHeightType ),
+			"margin-bottom": generateCSSUnit( excerptBottomSpace, "px" )
 		},
 		" .uagb-post__text .uagb-post__cta": {
 			"color": ctaColor,
-			"font-size": ctaFontSize  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"font-family": ctaFontFamily,
 			"font-weight": ctaFontWeight,
-			"line-height": ctaLineHeight + ctaLineHeightType,
+			"line-height": generateCSSUnit( ctaLineHeight, ctaLineHeightType ),
 			"background": ctaBgColor,
-			"border-width": borderWidth  + "px",
-			"border-radius": borderRadius  + "px",
+			"border-width": generateCSSUnit( borderWidth, "px" ),
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
 			"border-color": borderColor,
 			"border-style": borderStyle,
 		},
@@ -173,7 +174,7 @@ function styling( props, id ) {
 		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"color": ctaColor,
-			"font-size": ctaFontSize  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"padding": btnVPadding + "px " + btnHPadding + "px"
 		},
 		" .uagb-post__text .uagb-post__cta:hover": {
@@ -195,41 +196,41 @@ function styling( props, id ) {
 
 	selectors[" .slick-arrow svg"] = {
 		"fill" : arrowColor,
-		"height":arrowSize + "px",
-		"width":arrowSize + "px",
+		"height": generateCSSUnit( arrowSize, "px" ),
+		"width": generateCSSUnit( arrowSize, "px" ),
 	}
 
 	mobile_selectors = {
 		" .uagb-post__text .uagb-post__title": {
-			"font-size": titleFontSizeMobile  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__title a": {
-			"font-size": titleFontSizeMobile  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": titleLineHeightMobile + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
-			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
-			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
-			"font-size": metaFontSizeMobile  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeMobile, metaFontSizeType ),
 			"line-height": metaLineHeightMobile + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
-			"font-size": excerptFontSizeMobile  + excerptFontSizeType,
+			"font-size": generateCSSUnit( excerptFontSizeMobile, excerptFontSizeType ),
 			"line-height": excerptLineHeightMobile + excerptLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta": {
-			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			"line-height": ctaLineHeightMobile + ctaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta a": {
-			"font-size": ctaFontSizeMobile  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 			"line-height": ctaLineHeightMobile + ctaLineHeightType,
 		},
 		" .uagb-post__text": {
@@ -239,35 +240,35 @@ function styling( props, id ) {
 
 	tablet_selectors = {
 		" .uagb-post__text .uagb-post__title": {
-			"font-size": titleFontSizeTablet  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__title a": {
-			"font-size": titleFontSizeTablet  + titleFontSizeType,
+			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": titleLineHeightTablet + titleLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline": {
-			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author": {
-			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post-grid-byline .uagb-post__author a": {
-			"font-size": metaFontSizeTablet  + metaFontSizeType,
+			"font-size": generateCSSUnit( metaFontSizeTablet, metaFontSizeType ),
 			"line-height": metaLineHeightTablet + metaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__excerpt": {
-			"font-size": excerptFontSizeTablet  + excerptFontSizeType,
+			"font-size": generateCSSUnit( excerptFontSizeTablet, excerptFontSizeType ),
 			"line-height": excerptLineHeightTablet + excerptLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta": {
-			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			"line-height": ctaLineHeightTablet + ctaLineHeightType,
 		},
 		" .uagb-post__text .uagb-post__cta a": {
-			"font-size": ctaFontSizeTablet  + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 			"line-height": ctaLineHeightTablet + ctaLineHeightType,
 		},
 	}

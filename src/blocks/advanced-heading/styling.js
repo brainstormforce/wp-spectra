@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -52,8 +53,8 @@ function styling( props ) {
 			"text-align": headingAlign,
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
-			"font-size": subHeadFontSize + subHeadFontSizeType,
-			"line-height": subHeadLineHeight + subHeadLineHeightType,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		}
 	}
@@ -62,38 +63,38 @@ function styling( props ) {
 		"text-align": headingAlign,
 		"font-family": headFontFamily,
 		"font-weight": headFontWeight,
-		"font-size": headFontSize + headFontSizeType,
-		"line-height": headLineHeight + headLineHeightType,
+		"font-size": generateCSSUnit( headFontSize, headFontSizeType ),
+		"line-height": generateCSSUnit( headLineHeight, headLineHeightType ),
 		"color": headingColor,
-		"margin-bottom": headSpace + "px",
+		"margin-bottom": generateCSSUnit( headSpace, "px" ),
 	}
 
 	if( seperatorStyle !== "none" ){
 		selectors[" .uagb-separator"] = {
 			"border-top-style": seperatorStyle,
-			"border-top-width": separatorHeight + "px",
-			"width": separatorWidth + separatorWidthType,
+			"border-top-width": generateCSSUnit( separatorHeight, "px" ),
+			"width": generateCSSUnit( separatorWidth, separatorWidthType ),
 			"border-color": separatorColor,
-			"margin-bottom": separatorSpace + "px",
+			"margin-bottom": generateCSSUnit( separatorSpace, "px" ),
 		}
 	}
 
 	tablet_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
-		"font-size": headFontSizeTablet + headFontSizeType,
-		"line-height": headLineHeightTablet + headLineHeightType,
+		"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+		"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 	}
 	tablet_selectors[" .editor-rich-text .uagb-desc-text"] = {
-		"font-size": subHeadFontSizeTablet + subHeadFontSizeType,
-		"line-height": subHeadLineHeightTablet + subHeadLineHeightType,
+		"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+		"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 	}
 
 	mobile_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
-		"font-size": headFontSizeMobile + headFontSizeType,
-		"line-height": headLineHeightMobile + headLineHeightType,
+		"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+		"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 	}
 	mobile_selectors[" .editor-rich-text .uagb-desc-text"] = {
-		"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
-		"line-height": subHeadLineHeightMobile + subHeadLineHeightType,
+		"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+		"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 	}
 
 	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }` )
