@@ -57,7 +57,9 @@ registerBlockType( "uagb/columns", {
 			bottomFlip,
 			topFlip,
 			reverseTablet,
-			reverseMobile
+			reverseMobile,
+			topContentAboveShape,
+			bottomContentAboveShape
 		} = props.attributes
 
 		const CustomTag = `${tag}`
@@ -68,7 +70,8 @@ registerBlockType( "uagb/columns", {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-top",
-						{ "uagb-columns__shape-flip": topFlip === true }
+						{ "uagb-columns__shape-flip": topFlip === true },
+						{ "uagb-columns__shape-above-content": topContentAboveShape === true }
 					) }>
 					{shapes[topType]}
 				</div>
@@ -81,7 +84,8 @@ registerBlockType( "uagb/columns", {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-bottom",
-						{ "uagb-columns__shape-flip": bottomFlip === true }
+						{ "uagb-columns__shape-flip": bottomFlip === true },
+						{ "uagb-columns__shape-above-content": bottomContentAboveShape === true }
 					) }
 					data-negative="false">
 					{shapes[bottomType]}
