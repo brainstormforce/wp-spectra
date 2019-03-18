@@ -1563,7 +1563,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleLoadGoogleFonts'   => false,
 							'titleFontWeight'        => '',
 							'titleFontSubset'        => '',
-							'titleFontSize'          => 15,
+							'titleFontSize'          => '',
 							'titleFontSizeType'      => 'px',
 							'titleFontSizeTablet'    => '',
 							'titleFontSizeMobile'    => '',

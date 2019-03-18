@@ -158,6 +158,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
+* Fix: Team - Default font-size issue for title tag.
 
 = 1.12.2 =
 * Fix: Language directory issue on IIS server.
