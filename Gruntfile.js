@@ -112,7 +112,14 @@ module.exports = function(grunt) {
 					}
 				]
 			}
-		}
+		},
+		wp_readme_to_markdown: {
+			your_target: {
+				files: {
+					'README.md': 'readme.txt'
+				}
+			},
+		},
 	})
 
 	/* Load Tasks */
@@ -125,6 +132,10 @@ module.exports = function(grunt) {
 	/* Version Bump Task */
 	grunt.loadNpmTasks( "grunt-bumpup" )
 	grunt.loadNpmTasks( "grunt-text-replace" )
+
+	/* Read File Generation task */
+	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
+
 
 
 	/* Register task started */
@@ -144,4 +155,8 @@ module.exports = function(grunt) {
 			grunt.task.run( "replace" )
 		}
 	} )
+
+	// Generate Read me file
+	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+
 }
