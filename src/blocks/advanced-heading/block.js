@@ -83,7 +83,8 @@ registerBlockType( "uagb/advanced-heading", {
 			headingTitle,
 			headingDesc,
 			headingTag,
-			seperatorStyle
+			seperatorStyle,
+			headingId
 		} = props.attributes
 
 		var seprator_output =  ""
@@ -95,15 +96,51 @@ registerBlockType( "uagb/advanced-heading", {
 				<RichText.Content
 					tagName={ headingTag }
 					value={ headingTitle }
-					className='uagb-heading-text'
+					className='uagb-heading-text'	
+					id = { headingId }				
 				/>
 				{seprator_output}
 				<RichText.Content
 					tagName="p"
 					value={ headingDesc }
-					className='uagb-desc-text'
+					className='uagb-desc-text'					
 				/>
 			</div>
 		)
-	}
+	},
+	deprecated: [
+		{
+			attributes,			
+			save: function( props ) {
+
+				const {
+					block_id,
+					headingTitle,
+					headingDesc,
+					headingTag,
+					seperatorStyle
+				} = props.attributes
+
+				var seprator_output =  ""
+				if( seperatorStyle !== "none" ){
+					seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
+				}
+				return (
+					<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
+						<RichText.Content
+							tagName={ headingTag }
+							value={ headingTitle }
+							className='uagb-heading-text'					
+						/>
+						{seprator_output}
+						<RichText.Content
+							tagName="p"
+							value={ headingDesc }
+							className='uagb-desc-text'
+						/>
+					</div>
+				)
+			},
+		}
+	],
 } )

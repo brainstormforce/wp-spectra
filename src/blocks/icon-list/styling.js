@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -42,15 +43,15 @@ function styling( props ) {
 
 	selectors = {
 		" .uagb-icon-list__source-wrap" : {
-			"padding": bgSize + "px",
-			"border-radius": borderRadius + "px",
+			"padding": generateCSSUnit( bgSize, "px" ),
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
 			"border-style" : "solid",
-			"border-width" : border + "px"
+			"border-width" : generateCSSUnit( border, "px" )
 		},
 		".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper" : {
 			"margin-left" : 0,
 			"margin-right" : 0,
-			"margin-bottom" : gap + "px"
+			"margin-bottom" : generateCSSUnit( gap, "px" )
 		},
 		".uagb-icon-list__layout-vertical .uagb-icon-list__wrap" : {
 			 "flex-direction": "column"
@@ -59,8 +60,8 @@ function styling( props ) {
 			"margin-bottom" : 0
 		},
 		".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper" : {
-			"margin-left" : ( gap/2 ) + "px",
-			"margin-right" : ( gap/2 ) + "px"
+			"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
+			"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 		},
 		".uagb-icon-list__layout-horizontal a.uagb-icon-list__wrapper:first-child" : {
 			"margin-left" : 0
@@ -69,21 +70,21 @@ function styling( props ) {
 			"margin-right" : 0
 		},
 		" .uagb-icon-list__source-image" : {
-			"width": size + sizeType
+			"width": generateCSSUnit( size, sizeType )
 		},
 		" .uagb-icon-list__source-icon" : {
-			"width": size + sizeType,
-			"height": size + sizeType,
-			"font-size": size + sizeType
+			"width": generateCSSUnit( size, sizeType ),
+			"height": generateCSSUnit( size, sizeType ),
+			"font-size": generateCSSUnit( size, sizeType )
 		},
 		" .uagb-icon-list__source-icon svg" : {
-			"width": size + sizeType,
-			"height": size + sizeType,
+			"width": generateCSSUnit( size, sizeType ),
+			"height": generateCSSUnit( size, sizeType ),
 		},
 		" .uagb-icon-list__source-icon:before" : {
-			"width": size + sizeType,
-			"height": size + sizeType,
-			"font-size": size + sizeType
+			"width": generateCSSUnit( size, sizeType ),
+			"height": generateCSSUnit( size, sizeType ),
+			"font-size": generateCSSUnit( size, sizeType )
 		},
 		" .uagb-icon-list__label-wrap" : {
 			"text-align": align
@@ -101,41 +102,41 @@ function styling( props ) {
 
 	mobile_selectors = {
 		" .uagb-icon-list__source-image": {
-			"width": sizeMobile + sizeType
+			"width": generateCSSUnit( sizeMobile, sizeType )
 		},
 		" .uagb-icon-list__source-icon": {
-			"width": sizeMobile + sizeType,
-			"height": sizeMobile + sizeType,
-			"font-size": sizeMobile + sizeType
+			"width": generateCSSUnit( sizeMobile, sizeType ),
+			"height": generateCSSUnit( sizeMobile, sizeType ),
+			"font-size": generateCSSUnit( sizeMobile, sizeType )
 		},
 		" .uagb-icon-list__source-icon svg": {
-			"width": sizeMobile + sizeType,
-			"height": sizeMobile + sizeType,
+			"width": generateCSSUnit( sizeMobile, sizeType ),
+			"height": generateCSSUnit( sizeMobile, sizeType ),
 		},
 		" .uagb-icon-list__source-icon:before": {
-			"width": sizeMobile + sizeType,
-			"height": sizeMobile + sizeType,
-			"font-size": sizeMobile + sizeType
+			"width": generateCSSUnit( sizeMobile, sizeType ),
+			"height": generateCSSUnit( sizeMobile, sizeType ),
+			"font-size": generateCSSUnit( sizeMobile, sizeType )
 		},
 	}
 
 	tablet_selectors = {
 		" .uagb-icon-list__source-image" : {
-			"width": sizeTablet + sizeType
+			"width": generateCSSUnit( sizeTablet, sizeType )
 		},
 		" .uagb-icon-list__source-icon" : {
-			"width": sizeTablet + sizeType,
-			"height": sizeTablet + sizeType,
-			"font-size": sizeTablet + sizeType
+			"width": generateCSSUnit( sizeTablet, sizeType ),
+			"height": generateCSSUnit( sizeTablet, sizeType ),
+			"font-size": generateCSSUnit( sizeTablet, sizeType )
 		},
 		" .uagb-icon-list__source-icon svg" : {
-			"width": sizeTablet + sizeType,
-			"height": sizeTablet + sizeType,
+			"width": generateCSSUnit( sizeTablet, sizeType ),
+			"height": generateCSSUnit( sizeTablet, sizeType ),
 		},
 		" .uagb-icon-list__source-icon:before" : {
-			"width": sizeTablet + sizeType,
-			"height": sizeTablet + sizeType,
-			"font-size": sizeTablet + sizeType
+			"width": generateCSSUnit( sizeTablet, sizeType ),
+			"height": generateCSSUnit( sizeTablet, sizeType ),
+			"font-size": generateCSSUnit( sizeTablet, sizeType )
 		}
 	}
 
@@ -146,7 +147,7 @@ function styling( props ) {
 			tablet_selectors[" .uagb-icon-list__wrap a.uagb-icon-list__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
-				"margin-bottom" : gap + "px"
+				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 
 			tablet_selectors[" .uagb-icon-list__wrap"] = {
@@ -162,7 +163,7 @@ function styling( props ) {
 			mobile_selectors[" .uagb-icon-list__wrap a.uagb-icon-list__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
-				"margin-bottom" : gap + "px"
+				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 
 			mobile_selectors[" .uagb-icon-list__wrap"] = {
@@ -199,20 +200,20 @@ function styling( props ) {
 
 		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
 			"color" : icon.label_color,
-			"font-size" : fontSize + fontSizeType,
+			"font-size" : generateCSSUnit( fontSize, fontSizeType ),
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
-			"line-height": lineHeight + lineHeightType,
+			"line-height": generateCSSUnit( lineHeight, lineHeightType ),
 		}
 
 		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeMobile + fontSizeType,
-			"line-height": lineHeightMobile + lineHeightType,
+			"font-size" : generateCSSUnit( fontSizeMobile, fontSizeType ),
+			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
 		}
 
 		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : fontSizeTablet + fontSizeType,
-			"line-height": lineHeightTablet + lineHeightType,
+			"font-size" : generateCSSUnit( fontSizeTablet, fontSizeType ),
+			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
 		}
 
 		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
@@ -232,14 +233,14 @@ function styling( props ) {
 
 	if ( "right" == align ) {
 		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
-			"margin-left" : inner_gap + "px"
+			"margin-left" : generateCSSUnit( inner_gap, "px" )
 		}
 		selectors[" .uagb-icon-list__content-wrap"] = {
 			"flex-direction" : "row-reverse"
 		}
 	} else {
 		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
-			"margin-right" : inner_gap + "px"
+			"margin-right" : generateCSSUnit( inner_gap, "px" )
 		}
 	}
 

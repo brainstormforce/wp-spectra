@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function TestimonialStyle( props ) {
 	const {
@@ -89,53 +90,53 @@ function TestimonialStyle( props ) {
 
 	var selectors = {
 		" .uagb-testimonial__wrap": {
-			"padding-left" : columnGap/2+"px",
-			"padding-right" : columnGap/2+"px",
-			"margin-bottom" : rowGap+"px",
+			"padding-left" : generateCSSUnit( ( columnGap/2 ), "px" ),
+			"padding-right" : generateCSSUnit( ( columnGap/2 ), "px" ),
+			"margin-bottom" : generateCSSUnit( rowGap, "px" ),
 		},
 		" .uagb-testimonial__wrap .uagb-tm__image-content": {
-			"padding-left" : imgHrPadding+"px",
-			"padding-right" : imgHrPadding+"px",
-			"padding-top" : imgVrPadding+"px",
-			"padding-bottom" : imgVrPadding+"px",
+			"padding-left" : generateCSSUnit( imgHrPadding, "px" ),
+			"padding-right" : generateCSSUnit( imgHrPadding, "px" ),
+			"padding-top" : generateCSSUnit( imgVrPadding, "px" ),
+			"padding-bottom" : generateCSSUnit( imgVrPadding, "px" ),
 		},
 		" .uagb-tm__image-position-top .uagb-tm__image-content": {
 			"justify-content" : img_align,
 		},
 		// Image
 		" .uagb-tm__image img": {
-			"width": imageWidth+"px",
-			"max-width": imageWidth+"px",
+			"width": generateCSSUnit( imageWidth, "px" ),
+			"max-width": generateCSSUnit( imageWidth, "px" ),
 		},
 		" .uagb-tm__content": {
 			"text-align" : headingAlign,
-			"padding" : contentPadding+"px",
+			"padding" : generateCSSUnit( contentPadding, "px" ),
 		},
 		// Prefix Style
 		" .uagb-tm__author-name": {
-			"font-size" : nameFontSize+nameFontSizeType,
+			"font-size" : generateCSSUnit( nameFontSize, nameFontSizeType ),
 			"font-family": nameFontFamily,
 			"font-weight": nameFontWeight,
-			"line-height": nameLineHeight + nameLineHeightType,
+			"line-height": generateCSSUnit( nameLineHeight, nameLineHeightType ),
 			"color": authorColor,
-			"margin-bottom": nameSpace+"px",
+			"margin-bottom": generateCSSUnit( nameSpace, "px" ),
 		},
 		// Title Style
 		" .uagb-tm__company": {
-			"font-size" : companyFontSize+companyFontSizeType,
+			"font-size" : generateCSSUnit( companyFontSize, companyFontSizeType ),
 			"font-family": companyFontFamily,
 			"font-weight": companyFontWeight,
-			"line-height": companyLineHeight + companyLineHeightType,
+			"line-height": generateCSSUnit( companyLineHeight, companyLineHeightType ),
 			"color": companyColor,
 		},
 		// Description Style
 		" .uagb-tm__desc": {
-			"font-size" : descFontSize+descFontSizeType,
-			"font-family":descFontFamily,
-			"font-weight":descFontWeight,
-			"line-height":descLineHeight +descLineHeightType,
+			"font-size" : generateCSSUnit( descFontSize, descFontSizeType ),
+			"font-family": descFontFamily,
+			"font-weight": descFontWeight,
+			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 			"color": descColor,
-			"margin-bottom": descSpace+"px",
+			"margin-bottom": generateCSSUnit( descSpace, "px" ),
 		},
 		" .uagb-testimonial__wrap.uagb-tm__bg-type-color .uagb-tm__content": {
 			"background-color": backgroundColor,
@@ -158,21 +159,21 @@ function TestimonialStyle( props ) {
 		},
 		" .slick-arrow svg": {
 			"fill" : arrowColor,
-			"height":arrowSize + "px",
-			"width":arrowSize + "px",
+			"height": generateCSSUnit( arrowSize, "px" ),
+			"width": generateCSSUnit( arrowSize, "px" ),
 		},
 	}
 
 	if ( borderStyle != "none" ) {
 		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
 			"border-color": borderColor,
-			"border-style":borderStyle,
-			"border-width":borderWidth + "px",
-			"border-radius":borderRadius + "px",
+			"border-style": borderStyle,
+			"border-width": generateCSSUnit( borderWidth, "px" ),
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
 		}
 	}else{
 		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
-			"border-radius":borderRadius + "px",
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
 		}
 	}
 
@@ -190,31 +191,31 @@ function TestimonialStyle( props ) {
 
 	var mobile_selectors = {
 		" .uagb-tm__desc": {
-			"font-size" : descFontSizeMobile+descFontSizeType,
-			"line-height": descLineHeightMobile +descLineHeightType,
+			"font-size" : generateCSSUnit( descFontSizeMobile, descFontSizeType ),
+			"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},
 		" .uagb-tm__company": {
-			"font-size" : companyFontSizeMobile+companyFontSizeType,
-			"line-height": companyLineHeightMobile +companyLineHeightType,
+			"font-size" : generateCSSUnit( companyFontSizeMobile, companyFontSizeType ),
+			"line-height": generateCSSUnit( companyLineHeightMobile, companyLineHeightType ),
 		},
 		" .uagb-tm__author-name": {
-			"font-size" : nameFontSizeMobile+nameFontSizeType,
-			"line-height": nameLineHeightMobile +nameLineHeightType,
+			"font-size" : generateCSSUnit( nameFontSizeMobile, nameFontSizeType ),
+			"line-height": generateCSSUnit( nameLineHeightMobile, nameLineHeightType ),
 		},
 	}
 
 	var tablet_selectors = {
 		" .uagb-tm__desc": {
-			"font-size" : descFontSizeTablet+descFontSizeType,
-			"line-height": descLineHeightTablet +descLineHeightType,
+			"font-size" : generateCSSUnit( descFontSizeTablet, descFontSizeType ),
+			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
 		" .uagb-tm__company": {
-			"font-size" : companyFontSizeTablet+companyFontSizeType,
-			"line-height": companyLineHeightTablet +companyLineHeightType,
+			"font-size" : generateCSSUnit( companyFontSizeTablet, companyFontSizeType ),
+			"line-height": generateCSSUnit( companyLineHeightTablet, companyLineHeightType ),
 		},
 		" .uagb-tm__author-name": {
-			"font-size" : nameFontSizeTablet+nameFontSizeType,
-			"line-height": nameLineHeightTablet +nameLineHeightType,
+			"font-size" : generateCSSUnit( nameFontSizeTablet, nameFontSizeType ),
+			"line-height": generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),			
 		},
 		" .uagb-tm__content": {
 			"text-align" : "center",
