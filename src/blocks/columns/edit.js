@@ -199,7 +199,9 @@ class UAGBColumns extends Component {
 			reverseTablet,
 			reverseMobile,
 			topDividerOpacity,
-			bottomDividerOpacity
+			bottomDividerOpacity,
+			topContentAboveShape,
+			bottomContentAboveShape
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -319,6 +321,11 @@ class UAGBColumns extends Component {
 							checked={ bottomFlip }
 							onChange={ ( value ) => setAttributes( { bottomFlip: ! bottomFlip } ) }
 						/>
+						<ToggleControl
+							label={ __( "Bring To Front" ) }
+							checked={ bottomContentAboveShape }
+							onChange={ ( value ) => setAttributes( { bottomContentAboveShape: ! bottomContentAboveShape } ) }
+						/>
 					</Fragment>
 				}
 			</Fragment>
@@ -422,6 +429,11 @@ class UAGBColumns extends Component {
 							checked={ topFlip }
 							onChange={ ( value ) => setAttributes( { topFlip: ! topFlip } ) }
 						/>
+						<ToggleControl
+							label={ __( "Bring To Front" ) }
+							checked={ topContentAboveShape }
+							onChange={ ( value ) => setAttributes( { topContentAboveShape: ! topContentAboveShape } ) }
+						/>
 					</Fragment>
 				}
 			</Fragment>
@@ -433,7 +445,8 @@ class UAGBColumns extends Component {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-top",
-						{ "uagb-columns__shape-flip": topFlip === true }
+						{ "uagb-columns__shape-flip": topFlip === true },
+						{ "uagb-columns__shape-above-content": topContentAboveShape === true }
 					) }>
 					{shapes[topType]}
 				</div>
@@ -446,7 +459,8 @@ class UAGBColumns extends Component {
 					className={ classnames(
 						"uagb-columns__shape",
 						"uagb-columns__shape-bottom",
-						{ "uagb-columns__shape-flip": bottomFlip === true }
+						{ "uagb-columns__shape-flip": bottomFlip === true },
+						{ "uagb-columns__shape-above-content": bottomContentAboveShape === true }
 					) }
 					data-negative="false">
 					{shapes[bottomType]}

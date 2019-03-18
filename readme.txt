@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Performance - CSS optimization upto 50%.
 * Improvement: Info Box - Added separator position option.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
+* Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.
 * Fix: Team - Default font-size issue for title tag.
 * Fix: Post - Background color not visible if image applied as background.
 
