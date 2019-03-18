@@ -214,6 +214,7 @@ class UAGBinfoBox extends Component {
 			iconimgBorderRadius,
 			source_type,
 			sourceAlign,
+			seperatorPosition,
 			seperatorStyle,
 			seperatorWidth,
 			seperatorColor,
@@ -417,6 +418,17 @@ class UAGBinfoBox extends Component {
 				title={ __( "Separator" ) }
 				initialOpen={ false } >
 
+				<SelectControl
+					label={ __( "Position" ) }
+					value={ seperatorPosition }
+					onChange={ ( value ) => setAttributes( { seperatorPosition: value } ) }
+					options={ [
+						{ value: "after_icon", label: __( "After Icon/Image" ) },
+						{ value: "after_prefix", label: __( "After Prefix" ) },
+						{ value: "after_title", label: __( "After Title" ) },
+						{ value: "after_desc", label: __( "After Description" ) },
+					] }
+				/>
 				<SelectControl
 					label={ __( "Style" ) }
 					value={ seperatorStyle }
@@ -1075,12 +1087,42 @@ class UAGBinfoBox extends Component {
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
 
+		var icon_image_html = is_image;
+		var seperator_position = seperatorPosition;
+		var seperator_html = <InfoBoxSeparator attributes={attributes} />
+		var show_seperator = true;
+
+		if( seperatorPosition == "after_icon" && ( iconimgPosition == "above-title" || iconimgPosition =="below-title" ) ){
+			show_seperator = false;
+			icon_image_html = (
+					<Fragment>
+						{ is_image }
+						{ "none" !== seperatorStyle && seperator_html }
+					</Fragment>
+				)
+		}
+
+		if( seperatorPosition == "after_icon" && ( iconimgPosition !== "above-title" || iconimgPosition !== "below-title" ) ){
+			seperator_position = "after_title"
+		}
+
+		if( iconimgPosition == "below-title" &&  seperatorPosition == "after_title" ){
+			show_seperator = false
+			icon_image_html = (
+					<Fragment>
+						{ "none" !== seperatorStyle && seperator_html }
+						{ is_image }
+					</Fragment>
+				)
+		}
+
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={attributes} /> }
+				{ "none" !== seperatorStyle && ( seperator_position == "after_title"  && show_seperator )&& seperator_html }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && <InfoBoxDesc attributes={attributes} setAttributes = { setAttributes } props = { this.props } />}
+					{ "none" !== seperatorStyle && seperator_position == "after_desc" && seperator_html }
 					<CallToAction attributes={attributes} setAttributes = { setAttributes } />
 				</div>
 			</Fragment>
@@ -1091,6 +1133,7 @@ class UAGBinfoBox extends Component {
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
 					{ showPrefix && <Prefix attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
+					{ "none" !== seperatorStyle && seperator_position == "after_prefix" && seperator_html }
 					{ showTitle && <Title attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 				</div>
 			</Fragment>
@@ -1102,22 +1145,22 @@ class UAGBinfoBox extends Component {
 				...InfoBoxPositionClasses( attributes ) ) }>
 				<div className = "uagb-ifb-left-right-wrap">
 					{ ( iconimgPosition == "left") &&
-							is_image
+							icon_image_html
 					}
 					<div className = "uagb-ifb-content">
 
-						{  iconimgPosition == "above-title" && is_image }
+						{  iconimgPosition == "above-title" && icon_image_html }
 
 						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-						{ iconimgPosition == "below-title"  && is_image }
+						{ iconimgPosition == "below-title"  && icon_image_html }
 
 						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
 						{ ( iconimgPosition === "left-title") &&
 								<Fragment>
 									<div className = "uagb-ifb-left-title-image">
-										{ is_image }
+										{ icon_image_html }
 										{ title_text }
 									</div>
 									{ desc }
@@ -1128,7 +1171,7 @@ class UAGBinfoBox extends Component {
 								<Fragment>
 									<div className = "uagb-ifb-right-title-image">
 										{ title_text }
-										{ is_image }
+										{ icon_image_html }
 									</div>
 									{ desc }
 								</Fragment>
@@ -1143,7 +1186,7 @@ class UAGBinfoBox extends Component {
 
 					</div>
 
-					{ ( iconimgPosition == "right") && is_image	}
+					{ ( iconimgPosition == "right") && icon_image_html	}
 				</div>
 			</div>
 		)

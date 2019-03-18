@@ -60,7 +60,8 @@ registerBlockType( "uagb/info-box", {
 			showPrefix,
 			showTitle,
 			showDesc,
-			icon
+			icon,
+			seperatorPosition
 		} = props.attributes
 
 		// Get icon/Image components.
@@ -72,12 +73,41 @@ registerBlockType( "uagb/info-box", {
 			is_image = <InfoBoxIconImage attributes={ props.attributes } />
 		}
 
+		var icon_image_html = is_image;
+		var seperator_position = seperatorPosition;
+		var seperator_html = <InfoBoxSeparator attributes={props.attributes} />
+		var show_seperator = true;
+
+		if( seperatorPosition == "after_icon" && ( iconimgPosition == "above-title" || iconimgPosition == "below-title" ) ){
+			show_seperator = false;
+			icon_image_html = (
+					<Fragment>
+						{ is_image }
+						{ "none" !== seperatorStyle && seperator_html }
+					</Fragment>
+				)
+		}
+
+		if( seperatorPosition == "after_icon" && ( iconimgPosition !== "above-title" || iconimgPosition !== "below-title" ) ){
+			seperator_position = "after_title"
+		}
+
+		if( iconimgPosition == "below-title" &&  seperatorPosition == "after_title" ){
+			show_seperator = false
+			icon_image_html = (
+					<Fragment>
+						{ "none" !== seperatorStyle && seperator_html }
+						{ is_image }
+					</Fragment>
+				)
+		}
 		// Get description and seperator components.
 		const desc = (
 			<Fragment>
-				{ "none" !== seperatorStyle && <InfoBoxSeparator attributes={props.attributes} /> }
+				{ "none" !== seperatorStyle && ( seperator_position == "after_title"  && show_seperator )&& seperator_html }
 				<div className = "uagb-ifb-text-wrap">
 					{ showDesc && "" !== headingDesc && <InfoBoxDesc attributes={props.attributes} setAttributes = "not_set"/> }
+					{ "none" !== seperatorStyle && seperator_position == "after_desc" && seperator_html }
 					{ ctaType !== "none" && <CallToAction attributes={props.attributes} />}
 				</div>
 			</Fragment>
@@ -88,6 +118,7 @@ registerBlockType( "uagb/info-box", {
 			<Fragment>
 				<div className = "uagb-ifb-title-wrap">
 					{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
+					{ "none" !== seperatorStyle && seperator_position == "after_prefix" && seperator_html }
 					{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
 				</div>
 			</Fragment>
@@ -107,18 +138,18 @@ registerBlockType( "uagb/info-box", {
 						}
 						<div className = "uagb-ifb-content">
 
-							{  iconimgPosition == "above-title" && is_image }
+							{  iconimgPosition == "above-title" && icon_image_html }
 
 							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-							{ iconimgPosition == "below-title"  && is_image }
+							{ iconimgPosition == "below-title"  && icon_image_html }
 
 							{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
 							{ ( iconimgPosition === "left-title") &&
 									<Fragment>
 										<div className = "uagb-ifb-left-title-image">
-											{ is_image }
+											{ icon_image_html }
 											{ title_text }
 										</div>
 										{ desc }
@@ -129,7 +160,7 @@ registerBlockType( "uagb/info-box", {
 									<Fragment>
 										<div className = "uagb-ifb-right-title-image">
 											{ title_text }
-											{ is_image }
+											{ icon_image_html }
 										</div>
 										{ desc }
 									</Fragment>
@@ -144,9 +175,7 @@ registerBlockType( "uagb/info-box", {
 
 						</div>
 
-						{ ( iconimgPosition == "right") &&
-								is_image
-						}
+						{ ( iconimgPosition == "right") && icon_image_html }
 					</div>
 				</div>
 			</Fragment>
