@@ -4491,17 +4491,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-toc-' . $id, 'mobile' );
 
-			$extra_css = '';
-
 			if ( '' != $attr['scrollToTopColor'] ) {
-				$extra_css .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
+				$desktop .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
 			}
 
 			if ( '' != $attr['scrollToTopBgColor'] ) {
-				$extra_css .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
+				$desktop .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
 			}
 
-			return $desktop . $tablet . $mobile . $extra_css;
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
 		}
 
 
