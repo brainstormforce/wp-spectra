@@ -120,18 +120,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $selectors The block selectors.
 		 * @param string $id The selector ID.
+		 * @param string $responsive_type Responsive device name.
 		 * @since 0.0.1
 		 */
-		public static function generate_css( $selectors, $id, $responsiveType = false ) {
+		public static function generate_css( $selectors, $id, $responsive_type = false ) {
 
-			$styling_css = '';
-			$breakpoint = "";
-			$gen_styling_css  = "";
-			$res_styling_css  = "";
+			$styling_css     = '';
+			$breakpoint      = '';
+			$gen_styling_css = '';
+			$res_styling_css = '';
 
-			if ( $responsiveType == "tablet" ) {
+			if ( 'tablet' == $responsive_type ) {
 				$breakpoint = UAGB_TABLET_BREAKPOINT;
-			} else if ( $responsiveType == "mobile" ) {
+			} elseif ( 'mobile' == $responsive_type ) {
 				$breakpoint = UAGB_MOBILE_BREAKPOINT;
 			}
 
@@ -152,17 +153,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( ! empty( $css ) ) {
 					$gen_styling_css .= $id;
-					$gen_styling_css .= $key . ' { ';
-					$gen_styling_css .= $css . ' } ';
+					$gen_styling_css .= $key . '{';
+					$gen_styling_css .= $css . '}';
 				}
 			}
 
-
-			if ( $responsiveType &&! empty( $gen_styling_css ) || 0 === $gen_styling_css ) {
+			if ( $responsive_type && ! empty( $gen_styling_css ) || 0 === $gen_styling_css ) {
 				$res_styling_css .= $gen_styling_css;
 			}
 
-			if( $responsiveType ) {
+			if ( $responsive_type ) {
 				return $res_styling_css;
 			} else {
 				return $gen_styling_css;
@@ -595,8 +595,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_stylesheet( $blocks ) {
 
 			$desktop = '';
-			$tablet = '';
-			$mobile = '';
+			$tablet  = '';
+			$mobile  = '';
 
 			$tab_styling_css = '';
 			$mob_styling_css = '';
@@ -613,13 +613,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$reusable_blocks = $this->parse( $content );
 
 							$css = $this->get_stylesheet( $reusable_blocks );
-							
+
 						}
 					} else {
 						// Get CSS for the Block.
 						$css = $this->get_block_css( $block );
 
-						if( is_array( $css ) ) {
+						if ( is_array( $css ) ) {
 							$desktop .= $css['desktop'];
 							$tablet  .= $css['tablet'];
 							$mobile  .= $css['mobile'];
@@ -627,18 +627,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 				}
 			}
-			
 
-			if( !empty( $tablet ) ) {
-				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) { ';
+			if ( ! empty( $tablet ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) {';
 				$tab_styling_css .= $tablet;
-				$tab_styling_css .= ' } ';
+				$tab_styling_css .= '}';
 			}
 
-			if( !empty( $mobile ) ) {
-				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) { ';
+			if ( ! empty( $mobile ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) {';
 				$mob_styling_css .= $mobile;
-				$mob_styling_css .= ' } ';
+				$mob_styling_css .= '}';
 			}
 
 			echo $desktop . $tab_styling_css . $mob_styling_css;
