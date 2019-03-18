@@ -97,7 +97,7 @@ const attributes = {
 	},
 	prefixLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	headingTag: {
 		type: "string",
@@ -141,7 +141,7 @@ const attributes = {
 	},
 	headLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	subHeadFontSize: {
 		type: "number",
@@ -181,7 +181,7 @@ const attributes = {
 	},
 	subHeadLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	headSpace: {
 		type: "number",
@@ -226,6 +226,10 @@ const attributes = {
 	ctaIconSpace :{
 		type: "number",
 		default : 5
+	},
+	seperatorPosition: {
+		type: "string",
+		default: "after_title",
 	},
 	seperatorStyle: {
 		type: "string",
@@ -288,7 +292,7 @@ const attributes = {
 	},
 	ctaLoadGoogleFonts: {
 		type: "boolean",
-		default: false	
+		default: false
 	},
 	ctaBtnLinkColor :{
 		type: "string",
