@@ -159,9 +159,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 
 			if ( $responsiveType &&! empty( $gen_styling_css ) || 0 === $gen_styling_css ) {
-				$res_styling_css .= '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
 				$res_styling_css .= $gen_styling_css;
-				$res_styling_css .= ' } ';
 			}
 
 			if( $responsiveType ) {
@@ -375,13 +373,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                             $this->get_stylesheet( $reusable_blocks );
                         }
                     } else {
-                        // Get CSS for the Block.
-                        $css .= $this->get_block_css( $inner_block );
+                    	// Get CSS for the Block.
+                        $inner_block_css = $this->get_block_css( $inner_block );
+                        
+                        $css['desktop'] = $css['desktop'] . $inner_block_css['desktop'];
+                        $css['tablet'] = $css['tablet'] . $inner_block_css['tablet'];
+                        $css['mobile'] = $css['mobile'] . $inner_block_css['mobile'];
+                        
                     }
                 }
             }
 
-            echo $css;
+            return $css;
 
             // @codingStandardsIgnoreEnd
 		}
@@ -591,7 +594,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_stylesheet( $blocks ) {
 
+			$desktop = '';
+			$tablet = '';
+			$mobile = '';
+
+			$tab_styling_css = '';
+			$mob_styling_css = '';
+
 			foreach ( $blocks as $i => $block ) {
+
 				if ( is_array( $block ) ) {
 					if ( 'core/block' == $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
@@ -601,14 +612,36 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$reusable_blocks = $this->parse( $content );
 
-							$this->get_stylesheet( $reusable_blocks );
+							$css = $this->get_stylesheet( $reusable_blocks );
+							
 						}
 					} else {
 						// Get CSS for the Block.
-						$this->get_block_css( $block );
+						$css = $this->get_block_css( $block );
+
+						if( is_array( $css ) ) {
+							$desktop .= $css['desktop'];
+							$tablet  .= $css['tablet'];
+							$mobile  .= $css['mobile'];
+						}
 					}
 				}
 			}
+			
+
+			if( !empty( $tablet ) ) {
+				$tab_styling_css .= '@media only screen and (max-width: ' . UAGB_TABLET_BREAKPOINT . 'px) { ';
+				$tab_styling_css .= $tablet;
+				$tab_styling_css .= ' } ';
+			}
+
+			if( !empty( $mobile ) ) {
+				$mob_styling_css .= '@media only screen and (max-width: ' . UAGB_MOBILE_BREAKPOINT . 'px) { ';
+				$mob_styling_css .= $mobile;
+				$mob_styling_css .= ' } ';
+			}
+
+			echo $desktop . $tab_styling_css . $mob_styling_css;
 		}
 
 
