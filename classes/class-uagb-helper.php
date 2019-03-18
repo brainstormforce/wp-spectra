@@ -126,15 +126,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function generate_css( $selectors, $id, $responsive_type = false ) {
 
 			$styling_css     = '';
-			$breakpoint      = '';
 			$gen_styling_css = '';
 			$res_styling_css = '';
-
-			if ( 'tablet' == $responsive_type ) {
-				$breakpoint = UAGB_TABLET_BREAKPOINT;
-			} elseif ( 'mobile' == $responsive_type ) {
-				$breakpoint = UAGB_MOBILE_BREAKPOINT;
-			}
 
 			if ( empty( $selectors ) ) {
 				return;
@@ -197,29 +190,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $css_val;
-		}
-
-		/**
-		 * Parse CSS into correct CSS syntax.
-		 *
-		 * @param array  $selectors The block selectors.
-		 * @param string $id The selector ID.
-		 * @param string $type Media Query type mobile/tablet.
-		 * @since 0.0.1
-		 */
-		public static function generate_responsive_css( $selectors, $id, $type ) {
-
-			$breakpoint   = ( 'mobile' == $type ) ? UAGB_MOBILE_BREAKPOINT : UAGB_TABLET_BREAKPOINT;
-			$generate_css = self::generate_css( $selectors, $id );
-			$css          = '';
-
-			if ( ! empty( $generate_css ) ) {
-				$css .= '@media only screen and (max-width: ' . $breakpoint . 'px) { ';
-				$css .= $generate_css;
-				$css .= ' } ';
-			}
-
-			return $css;
 		}
 
 		/**
@@ -612,7 +582,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$reusable_blocks = $this->parse( $content );
 
-							$css = $this->get_stylesheet( $reusable_blocks );
+							$this->get_stylesheet( $reusable_blocks );
 
 						}
 					} else {
