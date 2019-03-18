@@ -120,14 +120,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $selectors The block selectors.
 		 * @param string $id The selector ID.
-		 * @param string $responsive_type Responsive device name.
 		 * @since 0.0.1
 		 */
-		public static function generate_css( $selectors, $id, $responsive_type = false ) {
+		public static function generate_css( $selectors, $id ) {
 
-			$styling_css     = '';
-			$gen_styling_css = '';
-			$res_styling_css = '';
+			$styling_css = '';
+			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
 				return;
@@ -145,21 +143,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( ! empty( $css ) ) {
-					$gen_styling_css .= $id;
-					$gen_styling_css .= $key . '{';
-					$gen_styling_css .= $css . '}';
+					$styling_css .= $id;
+					$styling_css .= $key . '{';
+					$styling_css .= $css . '}';
 				}
 			}
 
-			if ( $responsive_type && ! empty( $gen_styling_css ) || 0 === $gen_styling_css ) {
-				$res_styling_css .= $gen_styling_css;
-			}
-
-			if ( $responsive_type ) {
-				return $res_styling_css;
-			} else {
-				return $gen_styling_css;
-			}
+			return $styling_css;
 		}
 
 		/**
