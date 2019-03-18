@@ -4,6 +4,7 @@
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 import hexToRgba from "../../../dist/blocks/uagb-controls/hexToRgba"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -77,11 +78,11 @@ function styling( props ) {
 
 	selectors = {
 		" .uagb-marketing-btn__title-wrap" : {
-			"margin-bottom" : titleSpace + "px"
+			"margin-bottom" : generateCSSUnit( titleSpace, "px" )
 		},
 		" .editor-rich-text .uagb-marketing-btn__title" : {
-			"font-size" : titleFontSize + titleFontSizeType,
-			"line-height" : titleLineHeight + titleLineHeightType,
+			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
+			"line-height" : generateCSSUnit( titleLineHeight, titleLineHeightType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
 			"color": titleColor,
@@ -90,12 +91,12 @@ function styling( props ) {
 			"fill" : icon_color
 		},
 		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : iconFontSize + iconFontSizeType,
-			"height" : iconFontSize + iconFontSizeType
+			"width" : generateCSSUnit( iconFontSize, iconFontSizeType ),
+			"height" : generateCSSUnit( iconFontSize, iconFontSizeType )
 		},
 		" .editor-rich-text .uagb-marketing-btn__prefix" : {
-			"font-size" : prefixFontSize + prefixFontSizeType,
-			"line-height" : prefixLineHeight + prefixLineHeightType,
+			"font-size" : generateCSSUnit( prefixFontSize, prefixFontSizeType ),
+			"line-height" : generateCSSUnit( prefixLineHeight, prefixLineHeightType ),
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
 			"color": prefixColor,
@@ -110,14 +111,14 @@ function styling( props ) {
 			"fill" : icon_hover_color
 		},
 		" .uagb-marketing-btn__link" : {
-			"padding-left" : hPadding + "px",
-			"padding-right" : hPadding + "px",
-			"padding-top" : vPadding + "px",
-			"padding-bottom" : vPadding + "px",
+			"padding-left" : generateCSSUnit( hPadding, "px" ),
+			"padding-right" : generateCSSUnit( hPadding, "px" ),
+			"padding-top" : generateCSSUnit( vPadding, "px" ),
+			"padding-bottom" : generateCSSUnit( vPadding, "px" ),
 			"border-style": borderStyle,
-			"border-width": borderWidth + "px",
+			"border-width": generateCSSUnit( borderWidth, "px" ),
 			"border-color": borderColor,
-			"border-radius": borderRadius + "px",
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
 		},
 		" .uagb-marketing-btn__link:hover" : {
 			"border-color": borderHoverColor
@@ -153,35 +154,35 @@ function styling( props ) {
 
 	let margin_type = ( "after" == iconPosition ) ? "margin-left" : "margin-right"
 
-	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = iconSpace + "px"
+	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = generateCSSUnit( iconSpace, "px" )
 
 	tablet_selectors = {
 		" .editor-rich-text .uagb-marketing-btn__title" : {
-			"font-size": titleFontSizeTablet + titleFontSizeType,
-			"line-height": titleLineHeightTablet + titleLineHeightType,
+			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 		},
 		" .editor-rich-text .uagb-marketing-btn__prefix" : {
-			"font-size": prefixFontSizeTablet + prefixFontSizeType,
-			"line-height": prefixLineHeightTablet + prefixLineHeightType,
+			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
+			"line-height": generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
 		},
 		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : iconFontSizeTablet + iconFontSizeType,
-			"height" : iconFontSizeTablet + iconFontSizeType
+			"width" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
+			"height" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType )
 		}
 	}
 
 	mobile_selectors = {
 		" .editor-rich-text .uagb-marketing-btn__title" : {
-			"font-size": titleFontSizeMobile + titleFontSizeType,
-			"line-height": titleLineHeightMobile + titleLineHeightType,
+			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 		},
 		" .editor-rich-text .uagb-marketing-btn__prefix" : {
-			"font-size": prefixFontSizeMobile + prefixFontSizeType,
-			"line-height": prefixLineHeightMobile + prefixLineHeightType,
+			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
+			"line-height": generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
 		},
 		" .uagb-marketing-btn__icon-wrap" : {
-			"width" : iconFontSizeMobile + iconFontSizeType,
-			"height" : iconFontSizeMobile + iconFontSizeType
+			"width" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
+			"height" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType )
 		}
 	}
 

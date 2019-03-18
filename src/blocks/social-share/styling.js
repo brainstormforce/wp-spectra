@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -37,15 +38,15 @@ function styling( props ) {
 
 		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
 			"color" : social.icon_color,
-			"padding": bgSize + bgSizeType
+			"padding": generateCSSUnit( bgSize, bgSizeType )
 		}
 
 		mobile_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": bgSizeMobile + bgSizeType
+			"padding": generateCSSUnit( bgSizeMobile, bgSizeType )
 		}
 
 		tablet_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": bgSizeTablet + bgSizeType
+			"padding": generateCSSUnit( bgSizeTablet, bgSizeType )
 		}
 
 		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link svg"] = {
@@ -72,7 +73,7 @@ function styling( props ) {
 	selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = {
 		"margin-left" : 0,
 		"margin-right" : 0,
-		"margin-bottom" : gap + "px"
+		"margin-bottom" : generateCSSUnit( gap, "px" )
 	}
 
 	selectors[".uagb-social-share__layout-vertical .uagb-social-share__wrap"] = {
@@ -84,8 +85,8 @@ function styling( props ) {
 	}
 
 	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
-		"margin-left" : ( gap/2 ) + "px",
-		"margin-right" : ( gap/2 ) + "px"
+		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
+		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 	}
 
 	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = {
@@ -97,27 +98,27 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-ss__wrapper"] = {
-		"border-radius": borderRadius + "px"
+		"border-radius": generateCSSUnit( borderRadius, "px" )
 	}
 
 	selectors[" .uagb-ss__source-image"] = {
-		"width": size + sizeType
+		"width": generateCSSUnit( size, sizeType )
 	}
 
 	selectors[" .uagb-ss__source-wrap"] = {
-		"width": size + sizeType,
+		"width": generateCSSUnit( size, sizeType ),
 	}
 
 	selectors[" .uagb-ss__source-wrap svg"] = {
-		"width": size + sizeType,
-		"height": size + sizeType,
+		"width": generateCSSUnit( size, sizeType ),
+		"height": generateCSSUnit( size, sizeType ),
 	}
 
 	selectors[" .uagb-ss__source-icon"] = {
-		"width": size + sizeType,
-		"height": size + sizeType,
-		"font-size": size + sizeType,
-		"line-height": size + sizeType
+		"width": generateCSSUnit( size, sizeType ),
+		"height": generateCSSUnit( size, sizeType ),
+		"font-size": generateCSSUnit( size, sizeType ),
+		"line-height": generateCSSUnit( size, sizeType )
 	}
 
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
@@ -139,7 +140,7 @@ function styling( props ) {
 			selectors[" .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
-				"margin-bottom" : gap + "px"
+				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 
 			selectors[" .uagb-social-share__wrap"] = {
@@ -156,7 +157,7 @@ function styling( props ) {
 			tablet_selectors[" .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
-				"margin-bottom" : gap + "px"
+				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 
 			tablet_selectors[" .uagb-social-share__wrap"] = {
@@ -177,7 +178,7 @@ function styling( props ) {
 			mobile_selectors[" .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
-				"margin-bottom" : gap + "px"
+				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 
 			mobile_selectors[" .uagb-social-share__wrap"] = {
@@ -197,48 +198,48 @@ function styling( props ) {
 	}
 
 	mobile_selectors[" .uagb-ss__source-image"] = {
-		"width": sizeMobile + sizeType
+		"width": generateCSSUnit( sizeMobile, sizeType )
 	}
 
 	mobile_selectors[" .uagb-ss__source-wrap"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
-		"line-height": sizeMobile + sizeType
+		"width": generateCSSUnit( sizeMobile, sizeType ),
+		"height": generateCSSUnit( sizeMobile, sizeType ),
+		"line-height": generateCSSUnit( sizeMobile, sizeType )
 	}
 
 	mobile_selectors[" .uagb-ss__source-wrap svg"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
+		"width": generateCSSUnit( sizeMobile, sizeType ),
+		"height": generateCSSUnit( sizeMobile, sizeType ),
 	}
 
 	mobile_selectors[" .uagb-ss__source-icon"] = {
-		"width": sizeMobile + sizeType,
-		"height": sizeMobile + sizeType,
-		"font-size": sizeMobile + sizeType,
-		"line-height": sizeMobile + sizeType
+		"width": generateCSSUnit( sizeMobile, sizeType ),
+		"height": generateCSSUnit( sizeMobile, sizeType ),
+		"font-size": generateCSSUnit( sizeMobile, sizeType ),
+		"line-height": generateCSSUnit( sizeMobile, sizeType )
 	}
 
 
 	tablet_selectors[" .uagb-ss__source-image"] = {
-		"width": sizeTablet + sizeType
+		"width": generateCSSUnit( sizeTablet, sizeType )
 	}
 
 	tablet_selectors[" .uagb-ss__source-wrap"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
-		"line-height": sizeTablet + sizeType
+		"width": generateCSSUnit( sizeTablet, sizeType ),
+		"height": generateCSSUnit( sizeTablet, sizeType ),
+		"line-height": generateCSSUnit( sizeTablet, sizeType )
 	}
 
 	tablet_selectors[" .uagb-ss__source-wrap svg"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
+		"width": generateCSSUnit( sizeTablet, sizeType ),
+		"height": generateCSSUnit( sizeTablet, sizeType ),
 	}
 
 	tablet_selectors[" .uagb-ss__source-icon"] = {
-		"width": sizeTablet + sizeType,
-		"height": sizeTablet + sizeType,
-		"font-size": sizeTablet + sizeType,
-		"line-height": sizeTablet + sizeType
+		"width": generateCSSUnit( sizeTablet, sizeType ),
+		"height": generateCSSUnit( sizeTablet, sizeType ),
+		"font-size": generateCSSUnit( sizeTablet, sizeType ),
+		"line-height": generateCSSUnit( sizeTablet, sizeType )
 	}
 
 	var styling_css = ""
