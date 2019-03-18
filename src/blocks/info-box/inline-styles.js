@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function InfoBoxStyle( props ) {
 	const {
@@ -94,17 +95,17 @@ function InfoBoxStyle( props ) {
 	var selectors = {
 		// Icon css
 		" .uagb-ifb-icon" : {
-			"height" : iconSize+"px",
-			"width" : iconSize+"px",
-			"line-height" : iconSize+"px",
+			"height" : generateCSSUnit( iconSize, "px" ),
+			"width" : generateCSSUnit( iconSize, "px" ),
+			"line-height" : generateCSSUnit( iconSize, "px" ),
 		},
 		" .uagb-ifb-icon > span" : {
-			"font-size" : iconSize+"px",
-			"height": iconSize+"px",
+			"font-size" : generateCSSUnit( iconSize, "px" ),
+			"height": generateCSSUnit( iconSize, "px" ),
 			"color": iconColor,
 			"fill": iconColor,
-			"width": iconSize+"px",
-			"line-height": iconSize + "px",
+			"width": generateCSSUnit( iconSize, "px" ),
+			"line-height": generateCSSUnit( iconSize, "px" ),
 		},
 		" .uagb-ifb-icon > svg" : {
 			"fill": iconColor,
@@ -119,22 +120,22 @@ function InfoBoxStyle( props ) {
 			"fill" : iconHover,
 		},
 		" .uagb-infobox__content-wrap .uagb-ifb-imgicon-wrap" : {
-			"margin-left" : iconLeftMargin+"px",
-			"margin-right" : iconRightMargin+"px",
-			"margin-top" : iconTopMargin+"px",
-			"margin-bottom" : iconBottomMargin+"px",
+			"margin-left" : generateCSSUnit( iconLeftMargin, "px" ),
+			"margin-right" : generateCSSUnit( iconRightMargin, "px" ),
+			"margin-top" : generateCSSUnit( iconTopMargin, "px" ),
+			"margin-bottom" : generateCSSUnit( iconBottomMargin, "px" ),
 		},
 		// Image
 		" .uagb-ifb-image-content img" : {
-			"width": imageWidth+"px",
-			"max-width": imageWidth+"px",
+			"width": generateCSSUnit( imageWidth, "px" ),
+			"max-width": generateCSSUnit( imageWidth, "px" ),
 		},
 		" .uagb-infobox .uagb-ifb-image-content img" : {
-			"border-radius" : iconimgBorderRadius+"px",
+			"border-radius" : generateCSSUnit( iconimgBorderRadius, "px" ),
 		},
 		// CTA style
 		" .uagb-infobox-cta-link" : {
-			"font-size" : ctaFontSize+ctaFontSizeType,
+			"font-size" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 			"font-family": ctaFontFamily,
 			"font-weight": ctaFontWeight,
 			"color": ctaLinkColor,
@@ -143,16 +144,16 @@ function InfoBoxStyle( props ) {
 			"color": ctaLinkHoverColor,
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
-			"font-size" : ctaFontSize+ctaFontSizeType,
-			"height" : ctaFontSize+ctaFontSizeType,
-			"width" : ctaFontSize+ctaFontSizeType,
-			"line-height" : ctaFontSize+ctaFontSizeType,
+			"font-size" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"height" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"width" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"line-height" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
-			"font-size" : ctaFontSize+ctaFontSizeType,
-			"height" : ctaFontSize+ctaFontSizeType,
-			"width" : ctaFontSize+ctaFontSizeType,
-			"line-height" : ctaFontSize+ctaFontSizeType,
+			"font-size" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"height" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"width" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
+			"line-height" : generateCSSUnit( ctaFontSize, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link svg" : {
 			"fill": ctaLinkColor,
@@ -165,12 +166,12 @@ function InfoBoxStyle( props ) {
 			"background-color": ctaBgColor,
 			"border-style": ctaBorderStyle,
 			"border-color": ctaBorderColor,
-			"border-radius": ctaBorderRadius + "px",
-			"border-width": ctaBorderWidth + "px",
-			"padding-top": ctaBtnVertPadding + "px",
-			"padding-bottom": ctaBtnVertPadding + "px",
-			"padding-left": ctaBtnHrPadding + "px",
-			"padding-right": ctaBtnHrPadding + "px",
+			"border-radius": generateCSSUnit( ctaBorderRadius, "px" ),
+			"border-width": generateCSSUnit( ctaBorderWidth, "px" ),
+			"padding-top": generateCSSUnit( ctaBtnVertPadding, "px" ),
+			"padding-bottom": generateCSSUnit( ctaBtnVertPadding, "px" ),
+			"padding-left": generateCSSUnit( ctaBtnHrPadding, "px" ),
+			"padding-right": generateCSSUnit( ctaBtnHrPadding, "px" ),
 		},
 		" .uagb-ifb-button-wrapper:hover .uagb-infobox-cta-link" : {
 			"color": ctaLinkHoverColor,
@@ -185,49 +186,49 @@ function InfoBoxStyle( props ) {
 		},
 		// Prefix Style
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
-			"font-size" : prefixFontSize+prefixFontSizeType,
+			"font-size" : generateCSSUnit( prefixFontSize, prefixFontSizeType ),
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
-			"line-height": prefixLineHeight + prefixLineHeightType,
+			"line-height": generateCSSUnit( prefixLineHeight, prefixLineHeightType ),
 			"color": prefixColor,
-			"margin-bottom": prefixSpace+"px",
+			"margin-bottom": generateCSSUnit( prefixSpace, "px" ),
 		},
 		// Title Style
 		" .editor-rich-text .uagb-ifb-title" : {
-			"font-size" : headFontSize+headFontSizeType,
+			"font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
 			"font-family": headFontFamily,
 			"font-weight": headFontWeight,
-			"line-height": headLineHeight + headLineHeightType,
+			"line-height": generateCSSUnit( headLineHeight, headLineHeightType ),
 			"color": headingColor,
-			"margin-bottom": headSpace+"px",
+			"margin-bottom": generateCSSUnit( headSpace, "px" ),
 		},
 		// Description Style
 		" .editor-rich-text .uagb-ifb-desc" : {
-			"font-size" : subHeadFontSize+subHeadFontSizeType,
+			"font-size" : generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
-			"line-height": subHeadLineHeight + subHeadLineHeightType,
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
-			"margin-bottom": subHeadSpace+"px",
+			"margin-bottom": generateCSSUnit( subHeadSpace, "px" ),
 		},
 		// Seperator
 		" .uagb-ifb-separator" : {
-			"width" : seperatorWidth+separatorWidthType,
-			"border-top-width" : seperatorThickness+"px",
+			"width" : generateCSSUnit( seperatorWidth, separatorWidthType ),
+			"border-top-width" : generateCSSUnit( seperatorThickness, "px" ),
 			"border-top-color": seperatorColor,
 			"border-top-style": seperatorStyle,
 		},
 		" .uagb-ifb-separator-parent" : {
-			"margin-bottom":seperatorSpace+"px"
+			"margin-bottom": generateCSSUnit( seperatorSpace, "px" )
 		},
 		" .uagb-ifb-content" : {
 			"padding": ( typeof blockPadding != "undefined" ) ? blockPadding+"px": "inherit"
 		},
 		" .uagb-ifb-align-icon-after" : {
-			"margin-left" : ctaIconSpace+"px",
+			"margin-left" : generateCSSUnit( ctaIconSpace, "px" ),
 		},
 		" .uagb-ifb-align-icon-before" : {
-			"margin-right" : ctaIconSpace+"px",
+			"margin-right" : generateCSSUnit( ctaIconSpace, "px" ),
 		},
 	}
 
@@ -239,61 +240,61 @@ function InfoBoxStyle( props ) {
 
 	var tablet_selectors = {
 		" .editor-rich-text .uagb-ifb-desc" : {
-			"font-size": subHeadFontSizeTablet + subHeadFontSizeType,
-			"line-height": subHeadLineHeightTablet + subHeadLineHeightType,
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
 		" .editor-rich-text .uagb-ifb-title" : {
-			"font-size": headFontSizeTablet + headFontSizeType,
-			"line-height": headLineHeightTablet + headLineHeightType,
+			"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		},
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
-			"font-size": prefixFontSizeTablet + prefixFontSizeType,
-			"line-height": prefixLineHeightTablet + prefixLineHeightType,
+			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
+			"line-height": generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
 		},
 		" .uagb-infobox-cta-link" : {
-			"font-size": ctaFontSizeTablet + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
-			"font-size": ctaFontSizeTablet + ctaFontSizeType,
-			"height": ctaFontSizeTablet + ctaFontSizeType,
-			"line-height": ctaFontSizeTablet + ctaFontSizeType,
-			"width": ctaFontSizeTablet + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"height": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"width": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
-			"font-size": ctaFontSizeTablet + ctaFontSizeType,
-			"height": ctaFontSizeTablet + ctaFontSizeType,
-			"line-height": ctaFontSizeTablet + ctaFontSizeType,
-			"width": ctaFontSizeTablet + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"height": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
+			"width": generateCSSUnit( ctaFontSizeTablet, ctaFontSizeType ),
 		}
 	}
 
 	var mobile_selectors = {
 		" .editor-rich-text .uagb-ifb-desc" : {
-			"font-size": subHeadFontSizeMobile + subHeadFontSizeType,
-			"line-height": subHeadLineHeightMobile + subHeadLineHeightType,
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
 		" .editor-rich-text .uagb-ifb-title" : {
-			"font-size": headFontSizeMobile + headFontSizeType,
-			"line-height": headLineHeightMobile + headLineHeightType,
+			"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+			"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		},
 		" .editor-rich-text .uagb-ifb-title-prefix" : {
-			"font-size": prefixFontSizeMobile + prefixFontSizeType,
-			"line-height": prefixLineHeightMobile + prefixLineHeightType,
+			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
+			"line-height": generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
 		},
 		" .uagb-infobox-cta-link" : {
-			"font-size": ctaFontSizeMobile + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-text-icon" : {
-			"font-size": ctaFontSizeMobile + ctaFontSizeType,
-			"height": ctaFontSizeMobile + ctaFontSizeType,
-			"line-height": ctaFontSizeMobile + ctaFontSizeType,
-			"width": ctaFontSizeMobile + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"height": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"width": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		},
 		" .uagb-infobox-cta-link .uagb-ifb-button-icon" : {
-			"font-size": ctaFontSizeMobile + ctaFontSizeType,
-			"height": ctaFontSizeMobile + ctaFontSizeType,
-			"line-height": ctaFontSizeMobile + ctaFontSizeType,
-			"width": ctaFontSizeMobile + ctaFontSizeType,
+			"font-size": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"height": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"line-height": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
+			"width": generateCSSUnit( ctaFontSizeMobile, ctaFontSizeType ),
 		}
 	}
 
