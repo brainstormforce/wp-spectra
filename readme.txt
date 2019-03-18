@@ -160,6 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Info Box - Added separator position option.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
 * Fix: Team - Default font-size issue for title tag.
+* Fix: Post - Background color not visible if image applied as background.
 
 = 1.12.2 =
 * Fix: Language directory issue on IIS server.

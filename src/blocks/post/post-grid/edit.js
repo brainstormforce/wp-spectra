@@ -719,31 +719,23 @@ class UAGBPostGrid extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
-					{ imgPosition == "top" &&
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
-							<ColorPalette
-								value={ bgColor }
-								onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					}
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
-						<ColorPalette
-							value={ titleColor }
-							onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
-							allowReset
-						/>
-					</Fragment>
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
-						<ColorPalette
-							value={ metaColor }
-							onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
-						/>
-					</Fragment>
+					<p className="uagb-setting-label">{ __( "Blog Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bgColor }} ></span></span></p>
+					<ColorPalette
+						value={ bgColor }
+						onChange={ ( colorValue ) => setAttributes( { bgColor: colorValue } ) }
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+					<ColorPalette
+						value={ titleColor }
+						onChange={ ( colorValue ) => setAttributes( { titleColor: colorValue } ) }
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Meta Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: metaColor }} ></span></span></p>
+					<ColorPalette
+						value={ metaColor }
+						onChange={ ( colorValue ) => setAttributes( { metaColor: colorValue } ) }
+					/>
 					{ displayPostExcerpt == true &&
 						<Fragment>
 							<p className="uagb-setting-label">{ __( "Excerpt Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: excerptColor }} ></span></span></p>
