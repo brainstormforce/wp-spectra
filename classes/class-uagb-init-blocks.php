@@ -19,6 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class UAGB_Init_Blocks {
 
+
 	/**
 	 * Member Variable
 	 *
@@ -40,7 +41,6 @@ class UAGB_Init_Blocks {
 	 * Constructor
 	 */
 	public function __construct() {
-
 		// Hook: Frontend assets.
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 
@@ -88,13 +88,15 @@ class UAGB_Init_Blocks {
 		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) ? false : true;
 		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' == $blocks['cf7-styler'] ) ? false : true;
 		$slick_flag    = (
-			( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) &&
+			( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) &&
 			( isset( $blocks['testimonial'] ) && 'disabled' == $blocks['testimonial'] )
 		) ? false : true;
 		$timeline_flag = (
 			( isset( $blocks['post-timeline'] ) && 'disabled' == $blocks['post-timeline'] ) &&
 			( isset( $blocks['content-timeline'] ) && 'disabled' == $blocks['content-timeline'] )
 		) ? false : true;
+
+		$carousel_flag = ( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) ? false : true;
 
 		if ( $masonry_flag ) {
 
@@ -172,6 +174,17 @@ class UAGB_Init_Blocks {
 			wp_enqueue_script(
 				'uagb-timeline-js', // Handle.
 				UAGB_URL . 'assets/js/timeline.js',
+				array( 'jquery' ),
+				UAGB_VER,
+				true // Enqueue the script in the footer.
+			);
+		}
+
+		if ( $carousel_flag ) {
+			// Carousel js.
+			wp_enqueue_script(
+				'uagb-carousel-js', // Handle.
+				UAGB_URL . 'assets/js/post-carousel.js',
 				array( 'jquery' ),
 				UAGB_VER,
 				true // Enqueue the script in the footer.
@@ -281,7 +294,6 @@ class UAGB_Init_Blocks {
 	 * @since 1.10.0
 	 */
 	public function get_cf7_forms() {
-
 		$field_options = array();
 
 		if ( class_exists( 'WPCF7_ContactForm' ) ) {
@@ -319,7 +331,6 @@ class UAGB_Init_Blocks {
 	 * @return array Key Value paired array.
 	 */
 	public function get_gravity_forms() {
-
 		$field_options = array();
 
 		if ( class_exists( 'GFForms' ) ) {
@@ -346,7 +357,6 @@ class UAGB_Init_Blocks {
 
 		return $field_options;
 	}
-
 }
 
 /**

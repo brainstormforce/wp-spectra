@@ -115,6 +115,9 @@
     .wpcf7 select{
         height: auto;
         padding: 10px;
+        -webkit-appearance: menulist-button;
+        -moz-appearance: menulist-button;
+        -webkit-appearance: menulist-button;
     }
     select.wpcf7-form-control.wpcf7-select[multiple="multiple"] {
         padding: 0;
@@ -140,6 +143,10 @@
     }
     .wpcf7 input[type="number"]{
         height:auto;
+    }    
+
+    .wpcf7 input.wpcf7-date {
+        -webkit-appearance: none;
     }
 }
 

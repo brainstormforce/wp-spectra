@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.12.2.1 =
 * New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
+* Improvement: Post Carousel - Added equal height option.
 * Improvement: Info Box - Added separator position option.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
 * Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.

@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id } = this.props
+		const { setAttributes, attributes, className, latestPosts, block_id } = this.props
 
 		const {
 			columns,
@@ -27,7 +27,8 @@ class Blog extends React.Component {
 			arrowBorderSize,
 			arrowBorderRadius,
 			arrowColor,
-			arrowDots
+			arrowDots,
+			equalHeight
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -53,9 +54,30 @@ class Blog extends React.Component {
 			)
 		}
 
+		function carousel_set_height(props){
+			var id = props.clientId
+			var equalHeight =  props.attributes.equalHeight
+			if( equalHeight ){
+				var main_block            = $(".uagb-post__items").parents("#block-"+id);
+				var wrap            = main_block.find(".is-carousel");
+				wrap.imagesLoaded( function() {
+		            uagb_carousel_height(id)
+		        });
+
+		        wrap.on( 'afterChange', function() {
+		           uagb_carousel_height(id)
+		        } );
+		    }else{
+
+		    }
+		}
+
 		let dots = ( "dots" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 		let arrows = ( "arrows" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 
+		const equalHeightClass = equalHeight ? "uagb-post__carousel_equal-height" : ""
+
+		var current = this
 		const settings = {
 			slidesToShow : columns,
 			slidesToScroll : 1,
@@ -67,6 +89,11 @@ class Blog extends React.Component {
 			arrows : arrows,
 			dots : dots,
 			rtl : false,
+			afterChange: current  => {
+				if( equalHeight ){
+					uagb_carousel_height(block_id)
+				}
+		    },
 			nextArrow: <NextArrow arrowSize={arrowSize}/>,
 			prevArrow: <PrevArrow arrowSize={arrowSize}/>,
 			responsive : [
@@ -108,7 +135,8 @@ class Blog extends React.Component {
 						className,
 						"uagb-post-grid",
 						"uagb-post__arrow-outside",
-						`uagb-post__image-position-${ imgPosition }`
+						`uagb-post__image-position-${ imgPosition }`,
+						`${ equalHeightClass }`
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }
@@ -119,7 +147,7 @@ class Blog extends React.Component {
 							`uagb-post__columns-${ columns }`,
 							`uagb-post__columns-tablet-${ tcolumns }`,
 							`uagb-post__columns-mobile-${ mcolumns }`,
-							"uagb-post__items"
+							"uagb-post__items",
 						) }
 					>
 						{ all_posts }
@@ -140,7 +168,8 @@ class Blog extends React.Component {
 						"uagb-post-grid",
 						"uagb-post__arrow-outside",
 						"uagb-slick-carousel",
-						`uagb-post__image-position-${ imgPosition }`
+						`uagb-post__image-position-${ imgPosition }`,
+						`${ equalHeightClass }`
 					) }
 					data-blog-id={block_id}
 					id={ `uagb-post__carousel-${ block_id }` }

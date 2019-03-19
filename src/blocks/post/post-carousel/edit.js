@@ -71,12 +71,20 @@ class UAGBPostCarousel extends Component {
 	}
 
 	componentDidMount() {
-
 		this.props.setAttributes( { block_id: this.props.clientId } )
-
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate() {
+
+		var equalHeight =  this.props.attributes.equalHeight
+		if( equalHeight ){
+			uagb_carousel_height(this.props.clientId)
+		}else{
+			uagb_carousel_unset_height(this.props.clientId)
+		}
 	}
 
 	render() {
@@ -195,6 +203,7 @@ class UAGBPostCarousel extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
+			equalHeight
 		} = attributes
 
 		const hoverSettings = (
@@ -441,6 +450,11 @@ class UAGBPostCarousel extends Component {
 							}
 						}
 					</TabPanel>
+					<ToggleControl
+						label={ __( "Equal Height" ) }
+						checked={ equalHeight }
+						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Carousel" ) } initialOpen={ false }>
 					<ToggleControl

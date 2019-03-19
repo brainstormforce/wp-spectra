@@ -16,7 +16,6 @@ global $uagb_post_settings;
  * @since 0.0.1
  */
 function uagb_post_carousel_callback( $attributes ) {
-
 	$query = UAGB_Helper::get_query( $attributes, 'carousel' );
 	global $uagb_post_settings;
 
@@ -37,7 +36,6 @@ function uagb_post_carousel_callback( $attributes ) {
  * @since 0.0.1
  */
 function uagb_post_grid_callback( $attributes ) {
-
 	$query = UAGB_Helper::get_query( $attributes, 'grid' );
 	global $uagb_post_settings;
 
@@ -58,7 +56,6 @@ function uagb_post_grid_callback( $attributes ) {
  * @since 0.0.1
  */
 function uagb_post_masonry_callback( $attributes ) {
-
 	$query = UAGB_Helper::get_query( $attributes, 'masonry' );
 	global $uagb_post_settings;
 
@@ -80,7 +77,6 @@ add_action( 'wp_footer', 'uagb_post_block_add_script', 1000 );
  */
 function uagb_post_block_add_script() {
 	global $uagb_post_settings;
-
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
@@ -103,12 +99,16 @@ function uagb_post_block_add_script() {
 
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
-			$dots     = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$arrows   = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$tcolumns = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
-			$mcolumns = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+
+			$dots         = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$arrows       = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$equal_height = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
+			$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
+			$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
+
 			?>
-			<script type="text/javascript" id="uagb-post-carousel-script-<?php echo $key; ?>">
+			<script type="text/javascript" id="
+			++  <?php echo $key; ?>">
 				( function( $ ) {
 					var cols = parseInt( '<?php echo $value['columns']; ?>' );
 					var scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
@@ -150,6 +150,18 @@ function uagb_post_block_add_script() {
 
 					scope.slick( slider_options );
 
+					var enableEqualHeight = ( '<?php echo $equal_height; ?>' )
+
+					if( enableEqualHeight ){
+						scope.imagesLoaded( function() {
+							UAGBPostCarousel._setHeight( scope );
+						});
+
+						scope.on( 'afterChange', function() {
+							UAGBPostCarousel._setHeight( scope );
+						} );
+					}
+
 				} )( jQuery );
 			</script>
 			<?php
@@ -167,7 +179,6 @@ function uagb_post_block_add_script() {
  * @since 0.0.1
  */
 function uagb_get_post_html( $attributes, $query, $layout ) {
-
 	$attributes['post_type'] = $layout;
 
 	$wrap = array(
@@ -197,6 +208,11 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		case 'carousel':
 			array_push( $outerwrap, 'uagb-post__arrow-outside' );
+
+			if ( $attributes['equalHeight'] ) {
+				array_push( $wrap, 'uagb-post__carousel_equal-height' );
+			}
+
 			if ( $query->post_count > $attributes['columns'] ) {
 				array_push( $outerwrap, 'uagb-slick-carousel' );
 			}
@@ -1002,6 +1018,10 @@ function uagb_register_blocks() {
 					'type'    => 'string',
 					'default' => '#aaaaaa',
 				),
+				'equalHeight'             => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			),
 			'render_callback' => 'uagb_post_carousel_callback',
 		)
@@ -1380,11 +1400,9 @@ add_action( 'init', 'uagb_register_blocks' );
  * @since 0.0.1
  */
 function uagb_blocks_register_rest_fields() {
-
 	$post_type = UAGB_Helper::get_post_types();
 
 	foreach ( $post_type as $key => $value ) {
-
 		// Add featured image source.
 		register_rest_field(
 			$value['value'],
@@ -1439,13 +1457,10 @@ add_action( 'rest_api_init', 'uagb_blocks_register_rest_fields' );
  * @since 1.12.0
  */
 function uagb_blocks_register_rest_orderby_fields() {
-
 	$post_type = UAGB_Helper::get_post_types();
 
 	foreach ( $post_type as $key => $type ) {
-
 		add_filter( "rest_{$type['value']}_collection_params", 'uagb_blocks_add_orderby', 10, 1 );
-
 	}
 }
 
@@ -1461,7 +1476,6 @@ add_action( 'init', 'uagb_blocks_register_rest_orderby_fields' );
  * @since 0.0.1
  */
 function uagb_blocks_get_image_src( $object, $field_name, $request ) {
-
 	$image_sizes = UAGB_Helper::get_image_sizes();
 
 	$featured_images = array();
@@ -1506,7 +1520,6 @@ function uagb_blocks_get_author_info( $object, $field_name, $request ) {
  * @since 0.0.1
  */
 function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
-
 	// Get the comments link.
 	$comments_count = wp_count_comments( $object['id'] );
 	return $comments_count->total_comments;
@@ -1521,7 +1534,6 @@ function uagb_blocks_get_comment_info( $object, $field_name, $request ) {
  * @since 0.0.1
  */
 function uagb_blocks_get_excerpt( $object, $field_name, $request ) {
-
 	$excerpt = wp_trim_words( get_the_excerpt( $object['id'] ) );
 	if ( ! $excerpt ) {
 		$excerpt = null;
@@ -1551,7 +1563,6 @@ function uagb_blocks_add_orderby( $params ) {
  * @since 0.0.1
  */
 function uagb_render_image( $attributes ) {
-
 	if ( ! $attributes['displayPostImage'] ) {
 		return;
 	}
@@ -1569,7 +1580,6 @@ function uagb_render_image( $attributes ) {
 		</a>
 	</div>
 	<?php
-
 	do_action( "uagb_single_post_after_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
 
@@ -1600,20 +1610,20 @@ function uagb_render_title( $attributes ) {
  */
 function uagb_render_meta( $attributes ) {
 	global $post;
-    // @codingStandardsIgnoreStart
-    do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-    ?>
-    <div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
-        ?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
-        if ( $attributes['displayPostDate'] ) {
-                                                                ?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
-        if ( $attributes['displayPostComment'] ) {
-                                                                ?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
+	// @codingStandardsIgnoreStart
+	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+	?>
+	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
+		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
+		if ( $attributes['displayPostDate'] ) {
+																?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
+		if ( $attributes['displayPostComment'] ) {
+																?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
 ?></span><?php }
-        ?></div>
-    <?php
-    do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
-    // @codingStandardsIgnoreEnd
+		?></div>
+	<?php
+	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+	// @codingStandardsIgnoreEnd
 }
 
 /**
@@ -1624,7 +1634,6 @@ function uagb_render_meta( $attributes ) {
  * @since 0.0.1
  */
 function uagb_render_excerpt( $attributes ) {
-
 	if ( ! $attributes['displayPostExcerpt'] ) {
 		return;
 	}
