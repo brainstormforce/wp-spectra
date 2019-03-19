@@ -181,7 +181,7 @@ class UAGB_Init_Blocks {
 		// Carousel js.
 		wp_enqueue_script(
 			'uagb-carousel-js', // Handle.
-			UAGB_URL . 'assets/js/post_carousel.js',
+			UAGB_URL . 'assets/js/post-carousel.js',
 			array( 'jquery' ),
 			UAGB_VER,
 			true // Enqueue the script in the footer.

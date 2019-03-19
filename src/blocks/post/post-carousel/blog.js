@@ -56,8 +56,7 @@ class Blog extends React.Component {
 
 		function carousel_set_height(props){
 			var id = props.clientId
-			//console.log("here");
-			var equalHeight =  props.attributes.equalHeight		
+			var equalHeight =  props.attributes.equalHeight
 			if( equalHeight ){
 				var main_block            = $(".uagb-post__items").parents("#block-"+id);
 				var wrap            = main_block.find(".is-carousel");
@@ -71,14 +70,14 @@ class Blog extends React.Component {
 		    }else{
 
 		    }
-		}	
+		}
 
 		let dots = ( "dots" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 		let arrows = ( "arrows" == arrowDots || "arrows_dots" == arrowDots ) ? true : false
 
 		const equalHeightClass = equalHeight ? "uagb-post__carousel_equal-height" : ""
 
-		var current = this 
+		var current = this
 		const settings = {
 			slidesToShow : columns,
 			slidesToScroll : 1,
@@ -89,7 +88,7 @@ class Blog extends React.Component {
 			speed : transitionSpeed,
 			arrows : arrows,
 			dots : dots,
-			rtl : false,			
+			rtl : false,
 			afterChange: current  => {
 				if( equalHeight ){
 					uagb_carousel_height(block_id)
@@ -148,7 +147,7 @@ class Blog extends React.Component {
 							`uagb-post__columns-${ columns }`,
 							`uagb-post__columns-tablet-${ tcolumns }`,
 							`uagb-post__columns-mobile-${ mcolumns }`,
-							"uagb-post__items",	
+							"uagb-post__items",
 						) }
 					>
 						{ all_posts }

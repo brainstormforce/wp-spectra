@@ -71,15 +71,13 @@ class UAGBPostCarousel extends Component {
 	}
 
 	componentDidMount() {
-		var id = this.props.clientId
 		this.props.setAttributes( { block_id: this.props.clientId } )
-
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
-		document.head.appendChild( $style )		
+		document.head.appendChild( $style )
 	}
 
-	componentDidUpdate() {	
+	componentDidUpdate() {
 
 		var equalHeight =  this.props.attributes.equalHeight
 		if( equalHeight ){
@@ -87,7 +85,7 @@ class UAGBPostCarousel extends Component {
 		}else{
 			uagb_carousel_unset_height(this.props.clientId)
 		}
-	}	
+	}
 
 	render() {
 		const {

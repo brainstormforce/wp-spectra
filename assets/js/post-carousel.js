@@ -1,10 +1,10 @@
 ( function( $ ) {
 
 	UAGBPostCarousel = {
-		
+
 		_setHeight: function( scope ) {
 			var post_wrapper = scope.find('.slick-slide'),
-            post_active = scope.find('.slick-slide.slick-active'), 
+            post_active = scope.find('.slick-slide.slick-active'),
             max_height = -1,
             wrapper_height = -1,
             post_active_height = -1,
@@ -15,10 +15,10 @@
                     blog_post = $( this ).find( '.uagb-post__inner-wrap' ),
                     blog_post_height = blog_post.outerHeight(),
                     post_img_ht = $( this ).find( '.uagb-post__image' ).outerHeight(),
-                    post_text_ht = $( this ).find( '.uagb-post__text' ).outerHeight();                   
-                    
+                    post_text_ht = $( this ).find( '.uagb-post__text' ).outerHeight();
+
                     if( is_background_enabled ){
-                     blog_post_height =  post_text_ht;                    
+                     blog_post_height =  post_text_ht;
                     }else{
                         blog_post_height = post_img_ht+ post_text_ht;
                     }
@@ -36,7 +36,7 @@
             post_active.each( function( i ) {
                 var selector = $( this ).find( '.uagb-post__inner-wrap' );
                 selector.animate({ height: max_height }, { duration: 200, easing: 'linear' });
-            });            
+            });
 
             scope.find('.slick-list').animate({ height: post_active_height }, { duration: 200, easing: 'linear' });
 
@@ -76,20 +76,20 @@
             });
 
         },
-	}	
+	}
 
 } )( jQuery )
 
 // Set Carousel Height for Customiser.
-function uagb_carousel_height(  id ) {	
+function uagb_carousel_height(  id ) {
 	var wrap            = $("#block-"+id);
 	var scope = wrap.find(".wp-block-uagb-post-carousel").find( '.is-carousel' );
-    UAGBPostCarousel._setHeight( scope );	
+    UAGBPostCarousel._setHeight( scope );
 }
 
 // Unset Carousel Height for Customiser.
 function uagb_carousel_unset_height(  id ) {
     var wrap            = $("#block-"+id);
     var scope = wrap.find(".wp-block-uagb-post-carousel").find( '.is-carousel' );
-    UAGBPostCarousel._unSetHeight( scope );   
+    UAGBPostCarousel._unSetHeight( scope );
 }
