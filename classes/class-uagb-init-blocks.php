@@ -88,7 +88,7 @@ class UAGB_Init_Blocks {
 		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) ? false : true;
 		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' == $blocks['cf7-styler'] ) ? false : true;
 		$slick_flag    = (
-			( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) &&
+			( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) &&
 			( isset( $blocks['testimonial'] ) && 'disabled' == $blocks['testimonial'] )
 		) ? false : true;
 		$timeline_flag = (
