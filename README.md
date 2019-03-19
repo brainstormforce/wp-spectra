@@ -1,17 +1,17 @@
-=== Gutenberg Blocks – Ultimate Addons for Gutenberg ===
-Contributors: brainstormforce
-Donate link: https://www.paypal.me/BrainstormForce
-Tags: gutenberg, blocks, gutenberg blocks, editor, block
-Requires at least: 4.7
-Requires PHP: 5.6
-Tested up to: 5.1.1
-Stable tag: 1.12.2
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+# Gutenberg Blocks – Ultimate Addons for Gutenberg #
+**Contributors:** [brainstormforce](https://profiles.wordpress.org/brainstormforce)  
+**Donate link:** https://www.paypal.me/BrainstormForce  
+**Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
+**Requires at least:** 4.7  
+**Requires PHP:** 5.6  
+**Tested up to:** 5.1.1  
+**Stable tag:** 1.12.2  
+**License:** GPLv2 or later  
+**License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
 Power-up the Gutenberg editor with advanced and powerful blocks that help you build websites in minutes!
 
-== Description ==
+## Description ##
 
 <strong>Ultimate Addons for Gutenberg</strong>
 
@@ -110,7 +110,7 @@ We understand the need for a quality product backed by dedicated support that ca
 You may now contribute to the plugin on Github: <a href="https://github.com/brainstormforce/ultimate-addons-for-gutenberg" target="_blank" rel="">Ultimate Addons for Gutenberg on Github</a>
 
 
-== Installation ==
+## Installation ##
 
 1. Install the Ultimate Addons for Gutenberg either via the WordPress plugin directory or by uploading the files to your server at wp-content/plugins.
 
@@ -118,63 +118,61 @@ You can refer to our <a href="https://www.ultimategutenberg.com/getting-started-
 
 For more information, please visit our <a href="https://www.ultimategutenberg.com/docs/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Knowledge Base.</a>
 
-== Frequently Asked Questions ==
+## Frequently Asked Questions ##
 
-= Who should use the Ultimate Addons for Gutenberg? =
+### Who should use the Ultimate Addons for Gutenberg? ###
 
 The Ultimate Addons for Gutenberg is a complete package of unique and creative blocks that help build beautiful pages and posts on a website. Therefore, it is certainly an asset for all those who love Gutenberg.
 
-= What are the requirements to use the Ultimate Addons for Gutenberg? =
+### What are the requirements to use the Ultimate Addons for Gutenberg? ###
 
 You only need to have the latest version of WordPress on your website, to begin with. The Ultimate Addons for Gutenberg is basically an addon for the default WordPress editor. Therefore, the latest WordPress installation along with a theme should be enough, to begin with.
 
-= What themes does the Ultimate Addons for Gutenberg work with? =
+### What themes does the Ultimate Addons for Gutenberg work with? ###
 
 The Ultimate Addons for Gutenberg is built to work great with all the themes. But, <a href="https://wpastra.com/gutenberg-compatible/?utm_source=wp-repo&utm_medium=uagb&utm_campaign=readme" target="_blank" rel="">Astra being among the first ones to be Gutenberg ready</a>, we recommend you to try using Astra since it is lightweight, fast, simple and comes with a lot of options.
 
-= Can I use the Ultimate Addons for Gutenberg even while having another Page Builder? =
+### Can I use the Ultimate Addons for Gutenberg even while having another Page Builder? ###
 
 The basic need of the Ultimate Addons for Gutenberg is the latest WordPress version. We have also made it compatible with all major page builders and therefore, it won’t interfere in their working. Should you need help, you can <a href="https://support.brainstormforce.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">get in touch with us.</a>
 
-= Can I use the Ultimate Addons on client websites? =
+### Can I use the Ultimate Addons on client websites? ###
 
 Yes! You can certainly use the Ultimate Addons on yours as well as your client’s websites.
 
-= Will the Ultimate Addons slow down my website? =
+### Will the Ultimate Addons slow down my website? ###
 
 Absolutely no! The Ultimate Addons for Gutenberg is built with ease and performance in mind. Its module architecture and the clean code keep it lightweight and fast. Therefore, it will not affect your website speed and performance in any way.
 
-= What more do I get with the Ultimate Addons for Gutenberg? =
+### What more do I get with the Ultimate Addons for Gutenberg? ###
 
 When you use the Ultimate Addons for Gutenberg along with the free Astra theme, you get a huge library of ready-to-use starter sites that can be imported and used to build your own. Read an article about the <a href="https://www.ultimategutenberg.com/ready-websites-for-gutenberg/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank" rel="">Starter Sites with Gutenberg</a> to know more.
 
-== Screenshots ==
+## Screenshots ##
 
 1. /assets/screenshots/1.png
 
-== Changelog ==
+## Changelog ##
 
-= 1.12.2.1 =
+### 1.12.2.1 ###
 * New: Table of Contents
 * Improvement: Performance - CSS optimization upto 50%.
-* Improvement: Post Carousel - Added equal height option.
 * Improvement: Info Box - Added separator position option.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
 * Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.
 * Fix: Team - Default font-size issue for title tag.
-* Fix: Post - Background color not visible if image applied as background.
 
-= 1.12.2 =
+### 1.12.2 ###
 * Fix: Language directory issue on IIS server.
 * Fix: Post Carousel - Carousel not working.
 
-= 1.12.1 =
+### 1.12.1 ###
 * Improvement: Added version number to script.
 * Fix: Post - Conflicts with FacetWP.
 * Fix: Post Carousel - Columns option for responsive devices not working on front end.
 * Fix: Section - Spacing issue in editor for Full Width layout.
 
-= 1.12.0 =
+### 1.12.0 ###
 * New: Gravity Forms Styler
 * Improvement: Performance - JS related to disabled blocks are not loaded.
 * Improvement: Post - Added more Order By options to the Query Builder.
@@ -189,10 +187,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Testimonial - CSS conflict fixed
 * Fix: Testimonial - Arrows not visible in front end issue.
 
-= 1.11.1 =
+### 1.11.1 ###
 * Fix: PHP Error - Conflict with Astra v1.7.0
 
-= 1.11.0 =
+### 1.11.0 ###
 * New: Marketing Button
 * Improvement: Post - Added Compatibility to Custom Post Types and Taxonomies.
 * Fix: Info Box - Call To Action links disabled in back-end editor.
@@ -200,13 +198,13 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Content Timeline - Timeline count not updating the content.
 * Fix: Post - CSS issue with Twenty Nineteen theme.
 
-= 1.10.0 =
+### 1.10.0 ###
 * New: Contact Form 7 Styler
 * Fix: Multi Buttons - Fixed PHP notices.
 * Fix: Icon List - Disable Link CSS issue.
 * Improvement: Advanced Columns - Introduced Opacity option for Shape Divider.
 
-= 1.9.1 =
+### 1.9.1 ###
 * Fix: Advanced Columns - Column wrapping issue due to v1.9.0
 * Fix: Icon List - Disable Link not working issue.
 * Fix: Post - Rest API fields conflict removed.
@@ -221,7 +219,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Icon List - Added icon position option.
 * Improvement: Post Timeline - Added Action/Filter hooks.
 
-= 1.9.0 =
+### 1.9.0 ###
 * New: Blockquote
 * Fix: Advanced Columns - Move block handler button issue.
 * Fix: Advanced Columns - Fixed Background Image property disabled for Mobile devices.
@@ -234,7 +232,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Post - All registered Image Sizes are fetched.
 * Improvement: Advanced Columns- Responsive compatibility to Column Width.
 
-= 1.8.2 =
+### 1.8.2 ###
 * Fix: Advanced Columns - Bulk Deactivate caused missing Column block.
 * Fix: Call to Action - Width issue when elements stack.
 * Fix: Icon List - Label not editable in Firefox browser.
@@ -242,7 +240,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Social Share - Extra height and space issue.
 * Improvement: Responsive Support with Mobile Editing Block Controls
 
-= 1.8.1 =
+### 1.8.1 ###
 * Fix: Advanced Columns - Editor end, width issue.
 * Fix: Advanced Columns - Editor end, move pointer overflow issue.
 * Fix: Info Box - Separator width issue.
@@ -257,27 +255,27 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Advanced Columns - Added alignment option for inner column.
 * Improvement: Changed Block Category name to Ultimate Addons Block.
 
-= 1.8.0 =
+### 1.8.0 ###
 * New: Advanced Columns
 * Fix: Post Masonry - Messed view on first load issue fixed.
 * Improvement: Post - Added Action/Filter hooks.
 
-= 1.7.0 =
+### 1.7.0 ###
 * New: Call to Action
 * Fix: Section - Background Opacity issue fix.
 * Improvement: Post - Added an option for Complete Box Link.
 
-= 1.6.2 =
+### 1.6.2 ###
 * Fix: Info Box - Editable RichText issue with Prefix.
 * Fix: Icon List - Editable RichText issue with List Label.
 * Fix: Multi Buttons- Editable RichText issue with Button Text.
 * Improvement: Content Timeline - Date value can be both Dates and Arbitrary Text values.
 
-= 1.6.1 =
+### 1.6.1 ###
 * Improvement: Post - Added an option for Content Padding on Mobile devices.
 * Improvement: Post - Added an option for padding to Read More link button.
 
-= 1.6.0 =
+### 1.6.0 ###
 * New: Post Masonry
 * Fix: Icon List - Gap between items not being applied on editor issue fixed.
 * Fix: Post Grid - Twenty Nineteen theme related issues fixed.
@@ -287,7 +285,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Testimonial - Duplicate block content error.
 * Improvement: Info Box - Added option to Enable/Disable Prefix, Heading and Description.
 
-= 1.5.0 =
+### 1.5.0 ###
 * New: Post Carousel
 * Fix: Icon List - Image height issue fixed.
 * Fix: Multi Buttons - Border not applying in few cases in editor issue fixed.
@@ -297,7 +295,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Post Grid - Added Border options for CTA button.
 * Improvement: Section - Added option to inherit Content Width from Theme.
 
-= 1.4.0 =
+### 1.4.0 ###
 * New: Post Timeline
 * Fix: Section - Spacing values update issue.
 * Fix: Restaurant Menu - Separator alignment issue.
@@ -311,28 +309,28 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Info Box - Added before/after icon CTA button.
 * Deprecated: Content Timeline - Connector Hover properties removed.
 
-= 1.3.0 =
+### 1.3.0 ###
 * New: Icon List
 * New: Restaurant Menu
 * New: Testimonial
 * Improvement: Compatibility to latest Gutenberg
 
-= 1.2.0 =
+### 1.2.0 ###
 * New: Content Timeline
 * New: Team
 * New: Social Share
 * Improvement: Compatibility to WordPress 5.0
 
-= 1.1.0 =
+### 1.1.0 ###
 * New: Google Map
 * Improvement: Compatibility to Gutenberg v.4.3.0
 
-= 1.0.0 =
+### 1.0.0 ###
 * New: Info Box
 * New: Section
 * New: Multi Buttons
 * New: Post Grid
 * Improvement: Advanced Heading - Compatibility to Gutenberg v.4.1.1
 
-= 0.0.1 =
+### 0.0.1 ###
 * Initial release
