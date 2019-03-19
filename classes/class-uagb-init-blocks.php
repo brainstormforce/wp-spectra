@@ -96,6 +96,8 @@ class UAGB_Init_Blocks {
 			( isset( $blocks['content-timeline'] ) && 'disabled' == $blocks['content-timeline'] )
 		) ? false : true;
 
+		$carousel_flag = ( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) ? false : true;
+
 		if ( $masonry_flag ) {
 
 			// Scripts.
@@ -178,14 +180,16 @@ class UAGB_Init_Blocks {
 			);
 		}
 
-		// Carousel js.
-		wp_enqueue_script(
-			'uagb-carousel-js', // Handle.
-			UAGB_URL . 'assets/js/post-carousel.js',
-			array( 'jquery' ),
-			UAGB_VER,
-			true // Enqueue the script in the footer.
-		);
+		if ( $carousel_flag ) {
+			// Carousel js.
+			wp_enqueue_script(
+				'uagb-carousel-js', // Handle.
+				UAGB_URL . 'assets/js/post-carousel.js',
+				array( 'jquery' ),
+				UAGB_VER,
+				true // Enqueue the script in the footer.
+			);
+		}
 
 		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
 			wp_enqueue_script( 'jquery' );
