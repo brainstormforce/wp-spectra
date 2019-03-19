@@ -119,6 +119,21 @@ hr.uagb-editor__separator {
     margin-bottom: -18px
 }
 
+.uagb-size-type-field-tabs .components-range-control .components-base-control__field {
+	display: block;
+	flex-wrap: unset;
+}
+
+.uagb-size-type-field-tabs .components-range-control .components-range-control__slider {
+	width: 42%;
+	margin-bottom: 0;
+	padding-bottom: 2px;
+}
+
+.uagb-size-type-field-tabs .components-range-control .dashicon {
+	vertical-align: middle;
+}
+
 .edit-post-sidebar h2.uagb-size-type-field-title {
     font-size: 14px;
     margin-bottom: 0;
