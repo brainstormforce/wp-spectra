@@ -36,6 +36,7 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
+	ButtonGroup,
 	BaseControl,
 	withNotices,
 	ToggleControl,
@@ -201,7 +202,13 @@ class UAGBColumns extends Component {
 			topDividerOpacity,
 			bottomDividerOpacity,
 			topContentAboveShape,
-			bottomContentAboveShape
+			bottomContentAboveShape,
+			mobileMarginType,
+			tabletMarginType,
+			desktopMarginType,
+			mobilePaddingType,
+			tabletPaddingType,
+			desktopPaddingType,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -605,7 +612,7 @@ class UAGBColumns extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
@@ -630,6 +637,10 @@ class UAGBColumns extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Padding Mobile (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
@@ -672,6 +683,10 @@ class UAGBColumns extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Padding Tablet (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
@@ -714,6 +729,10 @@ class UAGBColumns extends Component {
 									} else {
 										tabout = (
 											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Padding (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
@@ -760,7 +779,7 @@ class UAGBColumns extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
@@ -785,6 +804,10 @@ class UAGBColumns extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Margin Mobile (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
@@ -809,6 +832,10 @@ class UAGBColumns extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Margin Tablet (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
@@ -833,6 +860,10 @@ class UAGBColumns extends Component {
 									} else {
 										tabout = (
 											<Fragment>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
 												<h2>{ __( "Margin (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }

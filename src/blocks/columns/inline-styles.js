@@ -23,16 +23,18 @@ function inlineStyles( props, isEditor ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		desktopMarginType,
+		desktopPaddingType,
 	} = props.attributes
 
 	var style = {
-		"padding-top": topPadding + "px",
-		"padding-bottom": bottomPadding + "px",
-		"padding-left": leftPadding + "px",
-		"padding-right": rightPadding + "px",
-		"margin-top": topMargin + "px",
-		"margin-bottom": bottomMargin + "px",
-		"border-radius": borderRadius + "px",
+		"padding-top": topPadding + desktopPaddingType,
+		"padding-bottom": bottomPadding + desktopPaddingType,
+		"padding-left": leftPadding + desktopPaddingType,
+		"padding-right": rightPadding + desktopPaddingType,
+		"margin-top": topMargin + desktopMarginType,
+		"margin-bottom": bottomMargin + desktopMarginType,
+		"border-radius": borderRadius + desktopMarginType,
 	}
 
 	if ( borderStyle != "none" ) {
