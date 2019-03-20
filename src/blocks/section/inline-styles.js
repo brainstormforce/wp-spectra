@@ -33,35 +33,37 @@ function inlineStyles( props, isEditor ) {
 		borderStyle,
 		borderWidth,
 		borderRadius,
-		borderColor
+		borderColor,
+		desktopMarginType,
+		desktopPaddingType,
 	} = props.attributes
 
 	var style = {
-		"padding-top": topPadding + "px",
-		"padding-bottom": bottomPadding + "px",
-		"padding-left": leftPadding + "px",
-		"padding-right": rightPadding + "px",
+		"padding-top": topPadding + desktopPaddingType,
+		"padding-bottom": bottomPadding + desktopPaddingType,
+		"padding-left": leftPadding + desktopPaddingType,
+		"padding-right": rightPadding + desktopPaddingType,
 		"border-radius": borderRadius + "px"
 	}
 
 	if ( "right" == align ) {
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-right"] =  rightMargin + "px"
+		style["margin-top"] = topMargin + desktopMarginType
+		style["margin-bottom"] =  bottomMargin + desktopMarginType
+		style["margin-right"] =  rightMargin + desktopMarginType
 	} else if ( "left" == align ) {
 		style["margin-right"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-left"] =  leftMargin + "px"
+		style["margin-top"] = topMargin + desktopMarginType
+		style["margin-bottom"] =  bottomMargin + desktopMarginType
+		style["margin-left"] =  leftMargin + desktopMarginType
 	} else if ( "center" == align ) {
 		style["margin-right"] = "auto"
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-top"] = topMargin + desktopMarginType
+		style["margin-bottom"] =  bottomMargin + desktopMarginType
 	} else {
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-top"] = topMargin + desktopMarginType
+		style["margin-bottom"] =  bottomMargin + desktopMarginType
 	}
 
 	if ( borderStyle != "none" ) {

@@ -3306,3 +3306,12 @@ label.wp-block-uagb-blockquote__via-label svg {
 .edit-post-settings-sidebar__panel-block .components-panel__body.uagb-repeater-panel:last-child{
 	margin-bottom: 1em;
 }
+
+.uagb-inline-margin .uagb-margin-control label.components-base-control__label {
+    display: inline-block;
+}
+
+.uagb-inline-margin .components-button-group.uagb-size-type-field {
+    display: inline-block;
+    float: right;
+}
