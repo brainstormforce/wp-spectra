@@ -383,13 +383,13 @@ function styling( props ) {
 			"border-style" : "solid",
 		},
 		" .uagb-gf-styler__field-style-box .gfield_checkbox input[type='checkbox']:checked + label:before" : {
-			"border-style"  : 'solid',
+			"border-style"  : "solid",
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8 )",
 		},
 		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before" : {
-			"border-style"  : 'solid',
+			"border-style"  : "solid",
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
 			"font-size"     : "calc( " + fieldVrPadding + "px * 1.8)",

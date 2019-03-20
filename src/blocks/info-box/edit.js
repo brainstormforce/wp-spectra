@@ -1087,19 +1087,19 @@ class UAGBinfoBox extends Component {
 			is_image = <InfoBoxIconImage attributes={attributes} />
 		}
 
-		var icon_image_html = is_image;
-		var seperator_position = seperatorPosition;
+		var icon_image_html = is_image
+		var seperator_position = seperatorPosition
 		var seperator_html = <InfoBoxSeparator attributes={attributes} />
-		var show_seperator = true;
+		var show_seperator = true
 
 		if( seperatorPosition == "after_icon" && ( iconimgPosition == "above-title" || iconimgPosition =="below-title" ) ){
-			show_seperator = false;
+			show_seperator = false
 			icon_image_html = (
-					<Fragment>
-						{ is_image }
-						{ "none" !== seperatorStyle && seperator_html }
-					</Fragment>
-				)
+				<Fragment>
+					{ is_image }
+					{ "none" !== seperatorStyle && seperator_html }
+				</Fragment>
+			)
 		}
 
 		if( seperatorPosition == "after_icon" && ( iconimgPosition !== "above-title" || iconimgPosition !== "below-title" ) ){
@@ -1109,11 +1109,11 @@ class UAGBinfoBox extends Component {
 		if( iconimgPosition == "below-title" &&  seperatorPosition == "after_title" ){
 			show_seperator = false
 			icon_image_html = (
-					<Fragment>
-						{ "none" !== seperatorStyle && seperator_html }
-						{ is_image }
-					</Fragment>
-				)
+				<Fragment>
+					{ "none" !== seperatorStyle && seperator_html }
+					{ is_image }
+				</Fragment>
+			)
 		}
 
 		// Get description and seperator components.

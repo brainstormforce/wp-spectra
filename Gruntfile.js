@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 		wp_readme_to_markdown: {
 			your_target: {
 				files: {
-					'README.md': 'readme.txt'
+					"README.md": "readme.txt"
 				}
 			},
 		},
@@ -134,7 +134,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks( "grunt-text-replace" )
 
 	/* Read File Generation task */
-	grunt.loadNpmTasks('grunt-wp-readme-to-markdown');
+	grunt.loadNpmTasks("grunt-wp-readme-to-markdown")
 
 
 
@@ -157,6 +157,6 @@ module.exports = function(grunt) {
 	} )
 
 	// Generate Read me file
-	grunt.registerTask( 'readme', ['wp_readme_to_markdown'] );
+	grunt.registerTask( "readme", ["wp_readme_to_markdown"] )
 
 }

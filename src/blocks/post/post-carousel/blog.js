@@ -58,15 +58,15 @@ class Blog extends React.Component {
 			var id = props.clientId
 			var equalHeight =  props.attributes.equalHeight
 			if( equalHeight ){
-				var main_block            = $(".uagb-post__items").parents("#block-"+id);
-				var wrap            = main_block.find(".is-carousel");
+				var main_block            = $(".uagb-post__items").parents("#block-"+id)
+				var wrap            = main_block.find(".is-carousel")
 				wrap.imagesLoaded( function() {
 		            uagb_carousel_height(id)
-		        });
+		        })
 
-		        wrap.on( 'afterChange', function() {
+		        wrap.on( "afterChange", function() {
 		           uagb_carousel_height(id)
-		        } );
+		        } )
 		    }else{
 
 		    }

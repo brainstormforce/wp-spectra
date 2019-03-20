@@ -2,7 +2,7 @@ function generateCSSUnit ( value, unit ) {
 
 	var css = ""
 
-	if( typeof value != 'undefined' ) {
+	if( typeof value != "undefined" ) {
 		css += value + unit
 	}
 	
