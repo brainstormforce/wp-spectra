@@ -1,6 +1,7 @@
 /**
  * Returns Dynamic Generated CSS
  */
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function inlineStyles( props, isEditor ) {
 
@@ -39,36 +40,36 @@ function inlineStyles( props, isEditor ) {
 	} = props.attributes
 
 	var style = {
-		"padding-top": topPadding + desktopPaddingType,
-		"padding-bottom": bottomPadding + desktopPaddingType,
-		"padding-left": leftPadding + desktopPaddingType,
-		"padding-right": rightPadding + desktopPaddingType,
-		"border-radius": borderRadius + "px"
+		"padding-top": generateCSSUnit( topPadding, desktopPaddingType ),
+		"padding-bottom": generateCSSUnit( bottomPadding, desktopPaddingType),
+		"padding-left": generateCSSUnit( leftPadding, desktopPaddingType),
+		"padding-right": generateCSSUnit( rightPadding, desktopPaddingType),
+		"border-radius": generateCSSUnit( borderRadius, "px")
 	}
 
 	if ( "right" == align ) {
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + desktopMarginType
-		style["margin-bottom"] =  bottomMargin + desktopMarginType
-		style["margin-right"] =  rightMargin + desktopMarginType
+		style["margin-top"] = generateCSSUnit( topMargin, desktopMarginType)
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, desktopMarginType)
+		style["margin-right"] =  generateCSSUnit( rightMargin, desktopMarginType)
 	} else if ( "left" == align ) {
 		style["margin-right"] = "auto"
-		style["margin-top"] = topMargin + desktopMarginType
-		style["margin-bottom"] =  bottomMargin + desktopMarginType
-		style["margin-left"] =  leftMargin + desktopMarginType
+		style["margin-top"] = generateCSSUnit( topMargin, desktopMarginType)
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, desktopMarginType)
+		style["margin-left"] =  generateCSSUnit( leftMargin, desktopMarginType)
 	} else if ( "center" == align ) {
 		style["margin-right"] = "auto"
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + desktopMarginType
-		style["margin-bottom"] =  bottomMargin + desktopMarginType
+		style["margin-top"] = generateCSSUnit( topMargin, desktopMarginType)
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, desktopMarginType)
 	} else {
-		style["margin-top"] = topMargin + desktopMarginType
-		style["margin-bottom"] =  bottomMargin + desktopMarginType
+		style["margin-top"] = generateCSSUnit( topMargin, desktopMarginType)
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, desktopMarginType)
 	}
 
 	if ( borderStyle != "none" ) {
 		style["border-style"] = borderStyle
-		style["border-width"] = borderWidth + "px"
+		style["border-width"] = generateCSSUnit( borderWidth, "px")
 		style["border-color"] =  borderColor
 	}
 
