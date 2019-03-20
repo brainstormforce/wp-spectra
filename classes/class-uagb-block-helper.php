@@ -395,14 +395,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
 
 			$style = array(
-				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], 'px' ),
-				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], 'px' ),
-				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPadding'], 'px' ),
-				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], 'px' ),
-				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMargin'], 'px' ),
-				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMargin'], 'px' ),
-				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], 'px' ),
-				'margin-right' => UAGB_Helper::get_css_value( $attr['rightMargin'], 'px' ),
+				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
+				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
+				'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPadding'], $attr['desktopPaddingType'] ),
+				'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPadding'], $attr['desktopPaddingType'] ),
+				'margin-top'    => UAGB_Helper::get_css_value( $attr['topMargin'], $attr['desktopMarginType'] ),
+				'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMargin'], $attr['desktopMarginType'] ),
+				'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMargin'], $attr['desktopMarginType'] ),
+				'margin-right' => UAGB_Helper::get_css_value( $attr['rightMargin'], $attr['desktopMarginType'] ),
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 			);
 
@@ -463,27 +463,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				'.uagb-column__wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], 'px' ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], 'px' ),
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], 'px' ),
-					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], 'px' ),
-					'margin-right' => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingMobile'], $attr['tabletPaddingType'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingMobile'], $attr['tabletPaddingType'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingMobile'], $attr['tabletPaddingType'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingMobile'], $attr['tabletPaddingType'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginMobile'], $attr['tabletMarginType'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginMobile'], $attr['tabletMarginType'] ),
+					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginMobile'], $attr['tabletMarginType'] ),
+					'margin-right' => UAGB_Helper::get_css_value( $attr['rightMarginMobile'], $attr['tabletMarginType'] ),
 				)
 			);
 
 			$t_selectors = array(
 				'.uagb-column__wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], 'px' ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], 'px' ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], 'px' ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], 'px' ),
-					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], 'px' ),
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], 'px' ),
-					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], 'px' ),
-					'margin-right' => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['topPaddingTablet'], $attr['mobilePaddingType'] ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPaddingTablet'], $attr['mobilePaddingType'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['leftPaddingTablet'], $attr['mobilePaddingType'] ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['rightPaddingTablet'], $attr['mobilePaddingType'] ),
+					'margin-top'    => UAGB_Helper::get_css_value( $attr['topMarginTablet'], $attr['mobileMarginType'] ),
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['bottomMarginTablet'], $attr['mobileMarginType'] ),
+					'margin-left'    => UAGB_Helper::get_css_value( $attr['leftMarginTablet'], $attr['mobileMarginType'] ),
+					'margin-right' => UAGB_Helper::get_css_value( $attr['rightMarginTablet'], $attr['mobileMarginType'] ),
 				)
 			);
 
