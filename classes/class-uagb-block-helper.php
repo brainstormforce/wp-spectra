@@ -4246,10 +4246,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-gf-styler-' . $id );
-			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-gf-styler-' . $id );
-			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-gf-styler-' . $id );
-			$arr     = array(
+			$desktop       = UAGB_Helper::generate_css( $selectors, '#uagb-gf-styler-' . $id );
+			$tablet        = UAGB_Helper::generate_css( $t_selectors, '#uagb-gf-styler-' . $id );
+			$mobile        = UAGB_Helper::generate_css( $m_selectors, '#uagb-gf-styler-' . $id );
+			$generated_css = array(
 				'desktop' => $desktop,
 				'tablet'  => $tablet,
 				'mobile'  => $mobile,
