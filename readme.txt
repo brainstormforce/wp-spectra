@@ -163,7 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.
 * Fix: Team - Default font-size issue for title tag.
 * Fix: Post - Background color not visible if image applied as background.
-* Fix: Section - Added px/em compatibility for padding and margin spacing.
+* Fix: Section - Added px/% compatibility for padding and margin spacing.
 
 = 1.12.2 =
 * Fix: Language directory issue on IIS server.
