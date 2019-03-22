@@ -19,6 +19,13 @@ function inlineStyles( props, isEditor ) {
 		backgroundImageColor,
 		borderStyle,
 		borderRadius,
+		overlayType,
+		gradientOverlayColor1,
+		gradientOverlayColor2,
+		gradientOverlayType,
+		gradientOverlayLocation1,
+		gradientOverlayLocation2,
+		gradientOverlayAngle,
 	} = props.attributes
 
 	var style = {}
@@ -26,9 +33,21 @@ function inlineStyles( props, isEditor ) {
 	var position = backgroundPosition.replace( "-", " " )
 
 	if ( "image" === backgroundType ) {
+		if( "color" == overlayType ){
+			style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
+			style["background-color"] = backgroundImageColor
+		}else{
+			style["background-color"] = "transparent"
+			style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 
-		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-		style["background-color"] = backgroundImageColor
+			if ( "linear" === gradientOverlayType ) {
+
+				style["background-image"] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
+			} else {
+
+				style["background-image"] = `radial-gradient( at center center, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
+			}
+		}
 
 	} else if ( "gradient" === backgroundType ) {
 		style["background-color"] = "transparent"

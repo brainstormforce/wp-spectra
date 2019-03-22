@@ -154,7 +154,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 = 1.12.2.2 =
-* Improvement: Section - Gradient Overlay.
+* Improvement: Section - Gradient Overlay for background type of Image.
+* Improvement: Advanced Columns - Gradient Overlay for background type of Image.
 
 = 1.12.2.1 =
 * New: Table of Contents
