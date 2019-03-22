@@ -153,11 +153,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.12.2.2 =
-* Improvement: Section - Gradient Overlay.
 
-= 1.12.2.1 =
-* New: Table of Contents
+= 1.12.3 =
 * Improvement: Performance - CSS optimization upto 50%.
 * Improvement: Post Carousel - Added equal height option.
 * Improvement: Info Box - Added separator position option.
