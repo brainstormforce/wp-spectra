@@ -154,13 +154,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
-### 1.12.2.1 ###
-* New: Table of Contents
+### 1.12.3 ###
 * Improvement: Performance - CSS optimization upto 50%.
+* Improvement: Post Carousel - Added equal height option.
 * Improvement: Info Box - Added separator position option.
 * Improvement: Advanced Heading - Anchor compatibility to heading tag.
 * Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.
 * Fix: Team - Default font-size issue for title tag.
+* Fix: Post - Background color not visible if image applied as background.
 
 ### 1.12.2 ###
 * Fix: Language directory issue on IIS server.

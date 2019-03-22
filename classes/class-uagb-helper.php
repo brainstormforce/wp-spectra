@@ -336,11 +336,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     } else {
                     	// Get CSS for the Block.
                         $inner_block_css = $this->get_block_css( $inner_block );
-                        
-                        $css['desktop'] = $css['desktop'] . $inner_block_css['desktop'];
-                        $css['tablet'] = $css['tablet'] . $inner_block_css['tablet'];
-                        $css['mobile'] = $css['mobile'] . $inner_block_css['mobile'];
-                        
+
+                        if( isset( $inner_block_css['desktop'] ) && isset( $css['desktop'] ) ){
+	                        $css['desktop'] = $css['desktop'] . $inner_block_css['desktop'];
+	                        $css['tablet'] = $css['tablet'] . $inner_block_css['tablet'];
+	                        $css['mobile'] = $css['mobile'] . $inner_block_css['mobile'];
+                        }
                     }
                 }
             }
@@ -421,7 +422,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                 case 'uagb/social-share':
                     $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
-                    break;               
+                    break;
 
 				case 'uagb/table-of-contents':
 					$js .= UAGB_Block_Helper::get_table_of_contents_js( $blockattr, $block_id );
@@ -580,7 +581,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						// Get CSS for the Block.
 						$css = $this->get_block_css( $block );
 
-						if ( is_array( $css ) ) {
+						if ( isset( $css['desktop'] ) ) {
 							$desktop .= $css['desktop'];
 							$tablet  .= $css['tablet'];
 							$mobile  .= $css['mobile'];

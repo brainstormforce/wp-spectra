@@ -2,6 +2,8 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+
 function inlineStyles( props, isEditor ) {
 
 	const {
@@ -47,7 +49,7 @@ function inlineStyles( props, isEditor ) {
 		style["background-color"] = backgroundColor
 	}
 
-	style["border-radius"] = borderRadius + "px"
+	style["border-radius"] = generateCSSUnit( borderRadius, "px" )
 
 	return style
 }

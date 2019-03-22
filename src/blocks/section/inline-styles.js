@@ -2,6 +2,8 @@
  * Returns Dynamic Generated CSS
  */
 
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
+
 function inlineStyles( props, isEditor ) {
 
 	const {
@@ -37,36 +39,36 @@ function inlineStyles( props, isEditor ) {
 	} = props.attributes
 
 	var style = {
-		"padding-top": topPadding + "px",
-		"padding-bottom": bottomPadding + "px",
-		"padding-left": leftPadding + "px",
-		"padding-right": rightPadding + "px",
-		"border-radius": borderRadius + "px"
+		"padding-top": generateCSSUnit( topPadding, "px" ),
+		"padding-bottom": generateCSSUnit( bottomPadding, "px" ),
+		"padding-left": generateCSSUnit( leftPadding, "px" ),
+		"padding-right": generateCSSUnit( rightPadding, "px" ),
+		"border-radius": generateCSSUnit( borderRadius, "px" )
 	}
 
 	if ( "right" == align ) {
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-right"] =  rightMargin + "px"
+		style["margin-top"] = generateCSSUnit( topMargin, "px" )
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, "px" )
+		style["margin-right"] =  generateCSSUnit( rightMargin, "px" )
 	} else if ( "left" == align ) {
 		style["margin-right"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
-		style["margin-left"] =  leftMargin + "px"
+		style["margin-top"] = generateCSSUnit( topMargin, "px" )
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, "px" )
+		style["margin-left"] =  generateCSSUnit( leftMargin, "px" )
 	} else if ( "center" == align ) {
 		style["margin-right"] = "auto"
 		style["margin-left"] = "auto"
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-top"] = generateCSSUnit( topMargin, "px" )
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, "px" )
 	} else {
-		style["margin-top"] = topMargin + "px"
-		style["margin-bottom"] =  bottomMargin + "px"
+		style["margin-top"] = generateCSSUnit( topMargin, "px" )
+		style["margin-bottom"] =  generateCSSUnit( bottomMargin, "px" )
 	}
 
 	if ( borderStyle != "none" ) {
 		style["border-style"] = borderStyle
-		style["border-width"] = borderWidth + "px"
+		style["border-width"] = generateCSSUnit( borderWidth, "px" )
 		style["border-color"] =  borderColor
 	}
 
@@ -76,7 +78,7 @@ function inlineStyles( props, isEditor ) {
 
 	if ( "boxed" == contentWidth ) {
 		if ( "" != width ) {
-			section_width = width + "px"
+			section_width = generateCSSUnit( width, "px" )
 		}
 	}
 

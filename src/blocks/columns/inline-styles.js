@@ -40,7 +40,7 @@ function inlineStyles( props, isEditor ) {
 
 	if ( borderStyle != "none" ) {
 		style["border-style"] = borderStyle
-		style["border-width"] = generateCSSUnit( borderWidth , "px")
+		style["border-width"] = generateCSSUnit( borderWidth, "px" )
 		style["border-color"] =  borderColor
 	}
 
