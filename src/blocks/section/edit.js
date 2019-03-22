@@ -171,6 +171,13 @@ class UAGBSectionEdit extends Component {
 			backgroundVideoColor,
 			backgroundVideoOpacity,
 			backgroundImageColor,
+			overlayType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			gradientOverlayType,
+			gradientOverlayLocation1,
+			gradientOverlayLocation2,
+			gradientOverlayAngle,
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -293,7 +300,7 @@ class UAGBSectionEdit extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Mobile (px)" ) }</h2>												
+												<h2>{ __( "Padding Mobile (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -335,7 +342,7 @@ class UAGBSectionEdit extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Tablet (px)" ) }</h2>												
+												<h2>{ __( "Padding Tablet (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -377,7 +384,7 @@ class UAGBSectionEdit extends Component {
 									} else {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding (px)" ) }</h2>												
+												<h2>{ __( "Padding (px)" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -671,14 +678,78 @@ class UAGBSectionEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<Fragment>
+										<SelectControl
+											label={ __( "Image Overlay Type" ) }
+											value={ overlayType }
+											onChange={ ( value ) => setAttributes( { overlayType: value } ) }
+											options={ [
+												{ value: "color", label: __( "Color" ) },
+												{ value: "gradient", label: __( "Gradient" ) },
+											] }
+										/>
+										{ overlayType == 'color' && <Fragment>
 											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</Fragment>
+											</Fragment>
+										}
+
+										{ "gradient" == overlayType &&
+											( <Fragment>
+												<PanelColorSettings
+													title={ __( "Color Settings" ) }
+													colorSettings={ [
+														{
+															value: gradientOverlayColor2,
+															onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
+															label: __( "Color 1" ),
+														},
+														{
+															value: gradientOverlayColor1,
+															onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
+															label: __( "Color 2" ),
+														},
+													] }
+												>
+												</PanelColorSettings>
+												<SelectControl
+													label={ __( "Type" ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear" ) },
+														{ value: "radial", label: __( "Radial" ) },
+													] }
+												/>
+												<RangeControl
+													label={ __( "Location 1" ) }
+													value={ gradientOverlayLocation1 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 2" ) }
+													value={ gradientOverlayLocation2 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation2: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Angle" ) }
+													value={ gradientOverlayAngle }
+													onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+													min={ 0 }
+													max={ 360 }
+													allowReset
+												/>
+											</Fragment> )
+										}
 									</Fragment> )
 								}
 							</Fragment> )

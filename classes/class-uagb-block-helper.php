@@ -29,6 +29,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, $attr );
 
 			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+			$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
 
 			$style = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], 'px' ),
@@ -124,10 +125,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['backgroundVideoColor'],
 				);
 			} else if ( 'image' == $bg_type ) {
-				$selectors[' > .uagb-section__overlay'] = array(
-					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
-					'background-color' => $attr['backgroundImageColor'],
-				);
+				if( 'color' == $overlay_type ){
+					$selectors[' > .uagb-section__overlay'] = array(
+						'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+						'background-color' => $attr['backgroundImageColor'],
+					);
+				}else{
+					$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
+					$selectors[' > .uagb-section__overlay']['opacity'] =  ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+					if ( 'linear' === $attr['gradientOverlayType'] ) {
+
+						$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					} else {
+
+						$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					}
+				}
 			} else if ( 'color' == $bg_type ) {
 				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",

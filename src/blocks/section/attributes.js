@@ -203,7 +203,33 @@ const attributes = {
 	},
 	borderColor : {
 		type: "string"
-	}
+	},
+	overlayType: {
+		type: "string",
+		default: "color"
+	},
+	gradientOverlayColor1: {
+		type: "string",
+	},
+	gradientOverlayColor2: {
+		type: "string",
+	},
+	gradientOverlayType: {
+		type: "string",
+		default: "linear"
+	},
+	gradientOverlayLocation1: {
+		type: "number",
+		default: 0
+	},
+	gradientOverlayLocation2: {
+		type: "number",
+		default: 100
+	},
+	gradientOverlayAngle: {
+		type: "number",
+		default: 0
+	},
 }
 
 export default attributes

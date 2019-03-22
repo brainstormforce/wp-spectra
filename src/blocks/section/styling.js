@@ -42,7 +42,15 @@ function styling( props ) {
 		bottomMarginMobile,
 		leftMarginMobile,
 		rightMarginMobile,
-		align
+		align,
+		overlayType,
+		gradientOverlayColor1,
+		gradientOverlayColor2,
+		gradientOverlayType,
+		gradientOverlayLocation1,
+		gradientOverlayLocation2,
+		gradientOverlayAngle,
+		backgroundOverlayOpacity,
 	} = props.attributes
 
 	var inner_width = "100%"
@@ -76,9 +84,22 @@ function styling( props ) {
 			"background-color": backgroundVideoColor
 		}
 	} else if( "image" == backgroundType ) {
-		selectors[" > .uagb-section__overlay"] = {
-			"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
-			"background-color": backgroundImageColor
+		if( "color" == overlayType ){
+			selectors[" > .uagb-section__overlay"] = {
+				"opacity" : ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : 0,
+				"background-color": backgroundImageColor
+			}
+		}else{
+			selectors[" > .uagb-section__overlay"]["background-color"] = "transparent"
+			selectors[" > .uagb-section__overlay"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
+
+			if ( "linear" === gradientOverlayType ) {
+
+				selectors[" > .uagb-section__overlay"]["background-image"] = `linear-gradient(${ gradientOverlayAngle }deg, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
+			} else {
+
+				selectors[" > .uagb-section__overlay"]["background-image"] = `radial-gradient( at center center, ${ gradientOverlayColor1 } ${ gradientOverlayLocation1 }%, ${ gradientOverlayColor2 } ${ gradientOverlayLocation2 }%)`
+			}
 		}
 	} else if( "color" == backgroundType ) {
 		selectors[" > .uagb-section__overlay"] = {
@@ -115,7 +136,7 @@ function styling( props ) {
 			"padding-bottom": generateCSSUnit( bottomPaddingMobile, "px" ),
 			"padding-left": generateCSSUnit( leftPaddingMobile, "px" ),
 			"padding-right": generateCSSUnit( rightPaddingMobile, "px" ),
-		}		
+		}
 	}
 
 	if ( "right" == align ) {
