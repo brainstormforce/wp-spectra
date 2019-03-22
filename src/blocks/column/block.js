@@ -1157,9 +1157,6 @@ registerBlockType( "uagb/column", {
 			type: "number",
 			default: 0
 		},
-		backgroundOverlayOpacity: {
-			type: "number"
-		},
 	},
 
 	edit: UAGBColumnEdit,
