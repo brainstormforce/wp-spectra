@@ -48,10 +48,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Enque Style and Script Variable
 		 *
-		 * @since 1.6.0
+		 * @since x.x.x
 		 * @var instance
 		 */
-		public static $css_file;
+		public static $css_file_handler;
 
 		/**
 		 * Google fonts to enqueue
@@ -96,9 +96,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		function register_scripts() {
 
-			$css_arr = self::$css_file;
+			$file_handler = self::$css_file_handler;
 
-			wp_register_style( 'uag-style', $css_arr['css_url'] );
+			wp_register_style( 'uag-style', $file_handler['css_url'] );
 			wp_enqueue_style( 'uag-style' );
 		}
 
@@ -557,6 +557,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				})(jQuery)
 			</script>
 			<?php
+
 			ob_end_flush();
 		}
 
@@ -1114,7 +1115,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$wp_info  = wp_upload_dir( null, false );
 			$dir_name = basename( UAGB_DIR );
 
-			// We use bb-plugin for the lite version as well.
 			if ( 'ultimate-addons-for-gutenberg' == $dir_name ) {
 				$dir_name = 'uag-plugin';
 			}
@@ -1176,8 +1176,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$info = array(
 				'css'     => $uploads_dir['path'] . $post_id . $suffix . '.css',
 				'css_url' => $uploads_dir['url'] . $post_id . $suffix . '.css',
-				'js'      => $uploads_dir['path'] . $post_id . $suffix . '.js',
-				'js_url'  => $uploads_dir['url'] . $post_id . $suffix . '.js',
 			);
 
 			return $info;
@@ -1192,20 +1190,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $css_data ) {
 
-			$css_arr = self::get_asset_info();
+			$assets_info = self::get_asset_info();
 
-			$handle = fopen( $css_arr['css'], 'a' );
-			$old_data = file_get_contents( $css_arr['css'] );
+			$handle = fopen( $assets_info['css'], 'a' );
+			$old_data = file_get_contents( $assets_info['css'] );
 			
 			if( $old_data != $css_data ) {
-				file_put_contents( $css_arr['css'], $css_data );
+				file_put_contents( $assets_info['css'], $css_data );
 			}
 
 			fclose( $handle );
 
-			self::$css_file = $css_arr;
+			self::$css_file_handler = $assets_info;
 
-			return $css_arr;
+			return $assets_info;
 		}
 	}
 
