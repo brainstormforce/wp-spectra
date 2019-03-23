@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_asset_info() {
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$suffix      = '-style';
+			$suffix      = '-uag-style';
 
 			$info = array(
 				'css'     => $uploads_dir['path'] . $post_id . $suffix . '.css',
@@ -1186,8 +1186,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Creates css and js files.
 		 *
-		 * @param  var $css_data      Gets the CSS for the current Page.
-		 * @since x.x.x
+		 * @param  var $css_data    Gets the CSS for the current Page.
+		 * @since  x.x.x
 		 * @return array
 		 */
 		public static function file_write( $css_data ) {
