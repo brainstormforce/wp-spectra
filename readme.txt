@@ -155,7 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.12.4 =
-* Fix: CSS not applying to inner blocks on front end.
+* Fix: CSS not applying to inner blocks on front end in some cases.
 
 = 1.12.3 =
 * Improvement: Performance - CSS optimization upto 50%.
