@@ -154,6 +154,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.12.4 =
+* Fix: CSS not applying to inner blocks on front end.
+
 = 1.12.3 =
 * Improvement: Performance - CSS optimization upto 50%.
 * Improvement: Post Carousel - Added equal height option.
