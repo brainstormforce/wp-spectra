@@ -46,6 +46,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $page_blocks;
 
 		/**
+		 * Enque Style and Script Variable
+		 *
+		 * @since 1.6.0
+		 * @var instance
+		 */
+		public static $css_file;
+
+		/**
 		 * Google fonts to enqueue
 		 *
 		 * @var array
@@ -77,11 +85,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = UAGB_Config::get_block_attributes();
 			self::get_upload_dir();
 
-			echo "should should be created by now";
-
-			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
-			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 80 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 81 );
+		}
+
+		function register_scripts() {
+
+			$css_arr = self::$css_file;			
+
+			wp_register_style( 'uag-style', $css_arr['css_url'] );
+			wp_enqueue_style( 'uag-style' );
+
 		}
 
 		/**
@@ -512,9 +528,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 
 					ob_start();
-					?>
-					<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
-					<?php
+					$this->get_stylesheet( $blocks );
 					ob_end_flush();
 				}
 			}
@@ -610,8 +624,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$mob_styling_css .= $mobile;
 				$mob_styling_css .= '}';
 			}
-
-			echo $desktop . $tab_styling_css . $mob_styling_css;
+			
+			$css_data = $desktop . $tab_styling_css . $mob_styling_css;
+			self::file_write( $css_data );
 		}
 
 
@@ -1093,7 +1108,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since x.x.x
 		 * @return array
 		 */
-		static public function get_upload_dir() {
+		public static function get_upload_dir() {
 			$wp_info  = wp_upload_dir( null, false );
 			$dir_name = basename( UAGB_DIR );
 
@@ -1124,6 +1139,59 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
+		}
+
+		/**
+		 * Checks to see if the site has SSL enabled or not.
+		 *
+		 * @since x.x.x
+		 * @return bool
+		 */
+		public static function is_ssl() {
+			if ( is_ssl() ) {
+				return true;
+			} elseif ( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) {
+				return true;
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' == $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+				return true;
+			}
+
+			return false;
+		}
+
+		/**
+		 * Returns an array of paths for the CSS and JS assets
+		 * of the current post.
+		 *
+		 * @since 1.0
+		 * @return array
+		 */
+		public static function get_asset_info() {
+			$post_id     = get_the_ID();
+			$uploads_dir = self::get_upload_dir();
+			$suffix 	 = '-style';
+
+			$info = array(
+				'css'	          => $uploads_dir['path'] . $post_id . $suffix . '.css',
+				'css_url'	      => $uploads_dir['url'] . $post_id . $suffix . '.css',
+				'js'	          => $uploads_dir['path'] . $post_id . $suffix . '.js',
+				'js_url'	      => $uploads_dir['url'] . $post_id . $suffix . '.js',
+			);
+
+			return $info;
+		}
+
+		public static function file_write( $css_data ) {
+
+			$css_arr = self::get_asset_info();
+			
+			$file = fopen( $css_arr['css'],"w");
+			fwrite( $file, $css_data );
+			fclose( $file );
+
+			self::$css_file = $css_arr;
+
+			return $css_arr;
 		}
 	}
 
