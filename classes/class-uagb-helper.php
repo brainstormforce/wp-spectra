@@ -72,7 +72,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			require( UAGB_DIR . 'classes/class-uagb-config.php' );
 			require( UAGB_DIR . 'classes/class-uagb-block-helper.php' );
 
+			var_dump('helper function constructor is called');
+
 			self::$block_list = UAGB_Config::get_block_attributes();
+			self::get_upload_dir();
+
+			echo "should should be created by now";
 
 			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
@@ -1079,6 +1084,46 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				// Return rgb(a) color string.
 				return $output;
 			}
+		}
+
+		/**
+		 * Returns an array of paths for the upload directory
+		 * of the current site.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 */
+		static public function get_upload_dir() {
+			$wp_info  = wp_upload_dir( null, false );
+			$dir_name = basename( UAGB_DIR );
+
+			// We use bb-plugin for the lite version as well.
+			if ( 'ultimate-addons-for-gutenberg' == $dir_name ) {
+				$dir_name = 'uag-plugin';
+			}
+
+			// SSL workaround.
+			if ( self::is_ssl() ) {
+				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
+			}
+
+			// Build the paths.
+			$dir_info = array(
+				'path'	 => $wp_info['basedir'] . '/' . $dir_name . '/',
+				'url'	 => $wp_info['baseurl'] . '/' . $dir_name . '/',
+			);
+
+			// Create the upload dir if it doesn't exist.
+			if ( ! file_exists( $dir_info['path'] ) ) {
+
+				// Create the directory.
+				mkdir( $dir_info['path'] );
+
+				// Add an index file for security.
+				file_put_contents( $dir_info['path'] . 'index.html', '' );
+			}
+
+			return apply_filters( 'uag_get_upload_dir', $dir_info );
 		}
 	}
 
