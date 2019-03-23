@@ -89,13 +89,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 81 );
 		}
 
+		/**
+		 * Register scripts
+		 *
+		 * @return void
+		 */
 		function register_scripts() {
 
-			$css_arr = self::$css_file;			
+			$css_arr = self::$css_file;
 
 			wp_register_style( 'uag-style', $css_arr['css_url'] );
 			wp_enqueue_style( 'uag-style' );
-
 		}
 
 		/**
@@ -622,7 +626,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$mob_styling_css .= $mobile;
 				$mob_styling_css .= '}';
 			}
-			
+
 			$css_data = $desktop . $tab_styling_css . $mob_styling_css;
 			self::file_write( $css_data );
 		}
@@ -1122,8 +1126,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Build the paths.
 			$dir_info = array(
-				'path'	 => $wp_info['basedir'] . '/' . $dir_name . '/',
-				'url'	 => $wp_info['baseurl'] . '/' . $dir_name . '/',
+				'path' => $wp_info['basedir'] . '/' . $dir_name . '/',
+				'url'  => $wp_info['baseurl'] . '/' . $dir_name . '/',
 			);
 
 			// Create the upload dir if it doesn't exist.
@@ -1161,29 +1165,36 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Returns an array of paths for the CSS and JS assets
 		 * of the current post.
 		 *
-		 * @since 1.0
+		 * @since x.x.x
 		 * @return array
 		 */
 		public static function get_asset_info() {
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$suffix 	 = '-style';
+			$suffix      = '-style';
 
 			$info = array(
-				'css'	          => $uploads_dir['path'] . $post_id . $suffix . '.css',
-				'css_url'	      => $uploads_dir['url'] . $post_id . $suffix . '.css',
-				'js'	          => $uploads_dir['path'] . $post_id . $suffix . '.js',
-				'js_url'	      => $uploads_dir['url'] . $post_id . $suffix . '.js',
+				'css'     => $uploads_dir['path'] . $post_id . $suffix . '.css',
+				'css_url' => $uploads_dir['url'] . $post_id . $suffix . '.css',
+				'js'      => $uploads_dir['path'] . $post_id . $suffix . '.js',
+				'js_url'  => $uploads_dir['url'] . $post_id . $suffix . '.js',
 			);
 
 			return $info;
 		}
 
+		/**
+		 * Creates css and js files.
+		 *
+		 * @param  var $css_data      Gets the CSS for the current Page.
+		 * @since x.x.x
+		 * @return array
+		 */
 		public static function file_write( $css_data ) {
 
 			$css_arr = self::get_asset_info();
-			
-			$file = fopen( $css_arr['css'],"w");
+
+			$file = fopen( $css_arr['css'], 'w' );
 			fwrite( $file, $css_data );
 			fclose( $file );
 
