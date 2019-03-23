@@ -80,8 +80,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			require( UAGB_DIR . 'classes/class-uagb-config.php' );
 			require( UAGB_DIR . 'classes/class-uagb-block-helper.php' );
 
-			var_dump('helper function constructor is called');
-
 			self::$block_list = UAGB_Config::get_block_attributes();
 			self::get_upload_dir();
 
