@@ -1194,9 +1194,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$css_arr = self::get_asset_info();
 
-			$file = fopen( $css_arr['css'], 'w' );
-			fwrite( $file, $css_data );
-			fclose( $file );
+			$handle = fopen( $css_arr['css'], 'a' );
+			$old_data = file_get_contents( $css_arr['css'] );
+			
+			if( $old_data != $css_data ) {
+				file_put_contents( $css_arr['css'], $css_data );
+			}
+
+			fclose( $handle );
 
 			self::$css_file = $css_arr;
 
