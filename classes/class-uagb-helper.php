@@ -1192,10 +1192,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$assets_info = self::get_asset_info();
 
-			$handle = fopen( $assets_info['css'], 'a' );
+			$handle   = fopen( $assets_info['css'], 'a' );
 			$old_data = file_get_contents( $assets_info['css'] );
-			
-			if( $old_data != $css_data ) {
+
+			if ( $old_data != $css_data ) {
 				file_put_contents( $assets_info['css'], $css_data );
 			}
 
