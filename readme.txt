@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.1.1
-Stable tag: 1.12.2
+Stable tag: 1.12.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,9 +153,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.12.2.2 =
-* Improvement: Section - Gradient Overlay for background type of Image.
-* Improvement: Advanced Columns - Gradient Overlay for background type of Image.
+= 1.13.0 =
+* Improvement: Advanced Columns - Introduced Gradient Overlay for background type of Image.
+
+= 1.12.4 =
+* Fix: CSS not applying to inner blocks on front end in some cases.
 
 = 1.12.3 =
 * Improvement: Performance - CSS optimization upto 50%.
