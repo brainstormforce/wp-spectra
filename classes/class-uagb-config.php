@@ -764,7 +764,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							),
 							'gap'              => '10',
 							'inner_gap'        => '15',
-							'size'             => '40',
+							'size'             => '16',
 							'sizeType'         => 'px',
 							'sizeMobile'       => '',
 							'sizeTablet'       => '',
