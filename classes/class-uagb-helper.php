@@ -99,12 +99,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$file_handler = self::$css_file_handler;
 
 			if ( isset( $file_handler['css_url'] ) ) {
-				wp_enqueue_style( 'uag-style', $file_handler['css_url'] );
+				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', true );
 			}
 
-			var_dump( isset( $file_handler['js_url'] ) );
 			if ( isset( $file_handler['js_url'] ) ) {
-				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), false, false );
+				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
 			}
 
 		}
