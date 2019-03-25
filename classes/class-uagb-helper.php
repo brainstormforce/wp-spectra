@@ -1177,8 +1177,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_asset_info() {
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$css_suffix      = '-uag-style';
-			$js_suffix      = '-uag-script';
+			$css_suffix  = '-uag-style';
+			$js_suffix   = '-uag-script';
 
 			$info = array(
 				'css'     => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
