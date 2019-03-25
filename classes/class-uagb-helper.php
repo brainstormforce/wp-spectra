@@ -337,11 +337,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     	// Get CSS for the Block.
                         $inner_block_css = $this->get_block_css( $inner_block );
 
-                        if( isset( $inner_block_css['desktop'] ) && isset( $css['desktop'] ) ){
-	                        $css['desktop'] = $css['desktop'] . $inner_block_css['desktop'];
-	                        $css['tablet'] = $css['tablet'] . $inner_block_css['tablet'];
-	                        $css['mobile'] = $css['mobile'] . $inner_block_css['mobile'];
-	                    }
+                        $css_desktop = ( isset( $css['desktop'] ) ? $css['desktop'] : '' );
+                        $css_tablet = ( isset( $css['tablet'] ) ? $css['tablet'] : '' );
+                        $css_mobile = ( isset( $css['mobile'] ) ? $css['mobile'] : '' );
+
+                        if( isset( $inner_block_css['desktop'] ) ){
+	                        $css['desktop'] = $css_desktop . $inner_block_css['desktop'];
+	                        $css['tablet'] = $css_tablet . $inner_block_css['tablet'];
+	                        $css['mobile'] = $css_mobile . $inner_block_css['mobile'];
+                        }
+
                     }
                 }
             }
