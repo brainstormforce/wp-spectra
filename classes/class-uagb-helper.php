@@ -84,7 +84,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::get_upload_dir();
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 80 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'frontend_gfonts' ), 120 );
+			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
 			add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 81 );
 		}
