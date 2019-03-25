@@ -99,14 +99,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$file_handler = self::$css_file_handler;
 
 			if ( isset( $file_handler['css_url'] ) ) {
-				wp_register_style( 'uag-style', $file_handler['css_url'] );
-				wp_enqueue_style( 'uag-style' );
+				wp_enqueue_style( 'uag-style', $file_handler['css_url'] );
 			}
 
 			var_dump( isset( $file_handler['js_url'] ) );
 			if ( isset( $file_handler['js_url'] ) ) {
-				wp_register_script( 'uag-script', $file_handler['js'], array(), false, false );
-				wp_enqueue_script( 'uag-script' );
+				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), false, false );
 			}
 
 		}
@@ -1179,13 +1177,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_asset_info() {
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$suffix      = '-uag-style';
+			$css_suffix      = '-uag-style';
+			$js_suffix      = '-uag-script';
 
 			$info = array(
-				'css'     => $uploads_dir['path'] . $post_id . $suffix . '.css',
-				'js'      => $uploads_dir['path'] . $post_id . $suffix . '.js',
-				'css_url' => $uploads_dir['path'] . $post_id . $suffix . '.css',
-				'js_url'  => $uploads_dir['url'] . $post_id . $suffix . '.js',
+				'css'     => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
+				'js'      => $uploads_dir['path'] . $post_id . $js_suffix . '.js',
+				'css_url' => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
+				'js_url'  => $uploads_dir['url'] . $post_id . $js_suffix . '.js',
 			);
 
 			return $info;
