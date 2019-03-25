@@ -98,8 +98,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$file_handler = self::$css_file_handler;
 
-			wp_register_style( 'uag-style', $file_handler['css_url'] );
-			wp_enqueue_style( 'uag-style' );
+			if ( isset( $file_handler['css_url'] ) ) {
+				wp_register_style( 'uag-style', $file_handler['css_url'] );
+				wp_enqueue_style( 'uag-style' );
+			}
+
+			var_dump( isset( $file_handler['js_url'] ) );
+			if ( isset( $file_handler['js_url'] ) ) {
+				wp_register_script( 'uag-script', $file_handler['js'], array(), false, false );
+				wp_enqueue_script( 'uag-script' );
+			}
+
 		}
 
 		/**
@@ -481,7 +490,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 }
             }
 
-            echo $js;
+            return $js;
 
             // @codingStandardsIgnoreEnd
 		}
@@ -550,14 +559,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			ob_start();
-			?>
-			<script type="text/javascript" id="uagb-script-frontend">
-				( function( $ ) {
-					<?php $this->get_scripts( $blocks ); ?>
-				})(jQuery)
-			</script>
-			<?php
-
+			$this->get_scripts( $blocks );
 			ob_end_flush();
 		}
 
@@ -629,7 +631,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			$css_data = $desktop . $tab_styling_css . $mob_styling_css;
-			self::file_write( $css_data );
+			self::file_write( $css_data, 'css' );
 		}
 
 
@@ -641,6 +643,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_scripts( $blocks ) {
 
+			$js = '';
 			foreach ( $blocks as $i => $block ) {
 				if ( is_array( $block ) ) {
 					if ( 'core/block' == $block['blockName'] ) {
@@ -655,10 +658,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 						// Get JS for the Block.
-						$this->get_block_js( $block );
+						$js .= $this->get_block_js( $block );
 					}
 				}
 			}
+
+			$js_data = '( function( $ ) {' . $js . '})(jQuery)';
+
+			self::file_write( $js_data, 'js' );
+
 		}
 
 		/**
@@ -1175,7 +1183,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$info = array(
 				'css'     => $uploads_dir['path'] . $post_id . $suffix . '.css',
-				'css_url' => $uploads_dir['url'] . $post_id . $suffix . '.css',
+				'js'      => $uploads_dir['path'] . $post_id . $suffix . '.js',
+				'css_url' => $uploads_dir['path'] . $post_id . $suffix . '.css',
+				'js_url'  => $uploads_dir['url'] . $post_id . $suffix . '.js',
 			);
 
 			return $info;
@@ -1184,19 +1194,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Creates css and js files.
 		 *
-		 * @param  var $css_data    Gets the CSS for the current Page.
+		 * @param  var $style_data    Gets the CSS\JS for the current Page.
+		 * @param  var $type    Gets the CSS\JS type.
 		 * @since  x.x.x
 		 * @return array
 		 */
-		public static function file_write( $css_data ) {
+		public static function file_write( $style_data, $type ) {
 
 			$assets_info = self::get_asset_info();
 
-			$handle   = fopen( $assets_info['css'], 'a' );
-			$old_data = file_get_contents( $assets_info['css'] );
+			if ( 'css' === $type ) {
+				$var = 'css';
+			} else {
+				$var = 'js';
+			}
+			$handle   = fopen( $assets_info[ $var ], 'a' );
+			$old_data = file_get_contents( $assets_info[ $var ] );
 
-			if ( $old_data != $css_data ) {
-				file_put_contents( $assets_info['css'], $css_data );
+			if ( $old_data != $style_data ) {
+				file_put_contents( $assets_info[ $var ], $style_data );
 			}
 
 			fclose( $handle );
