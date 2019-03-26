@@ -155,7 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.13.0-dev.1 ###
-* Fix: Testimonial - Border options are not working in editor.
+* Fix: Testimonial - Border options not working in editor.
 
 ### 1.12.4 ###
 * Fix: CSS not applying to inner blocks on front end in some cases.
