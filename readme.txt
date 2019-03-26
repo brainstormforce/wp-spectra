@@ -153,8 +153,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
-= 1.13.0 =
-* Improvement: Icon List - Default option changes.
+
+= 1.13.0-dev.1 =
+* Fix: Testimonial - Border options not working in editor.
 
 = 1.12.4 =
 * Fix: CSS not applying to inner blocks on front end in some cases.
