@@ -1834,7 +1834,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-icon-list__source-wrap"=> array(
 					"padding" => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 					"border-radius" => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-					"border-style" => "solid",
+					"border-style" => ( $attr['border'] > 0 ) ? 'solid' : '',
 					"border-width" => UAGB_Helper::get_css_value( $attr['border'], 'px' )
 				),
 				" .uagb-icon-list__wrap"=> array(
