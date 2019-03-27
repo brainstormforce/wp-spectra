@@ -155,6 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.13.0-dev.1 ###
+* New: Table Of Contents.
 * Fix: Testimonial - Border options not working in editor.
 
 ### 1.12.4 ###
