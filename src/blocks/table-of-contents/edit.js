@@ -99,6 +99,7 @@ class UAGBTableOfContentsEdit extends Component {
 			customWidth,
 			width,
 			widthType,
+			tColumns,
 			//Color
 			backgroundColor,
 			linkColor,
@@ -385,6 +386,13 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
 							</Fragment>
 						}
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ tColumns }
+							onChange={ ( value ) => setAttributes( { tColumns: value } ) }
+							min={ 1 }
+							max={ 10 }
+						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
@@ -452,7 +460,8 @@ class UAGBTableOfContentsEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					className,
-					`uagb-toc__align-${align}`
+					`uagb-toc__align-${align}`,
+					`uagb-toc__columns-${tColumns}`
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">

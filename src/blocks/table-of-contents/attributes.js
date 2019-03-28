@@ -76,6 +76,10 @@ const attributes = {
 		type    : "number",
 		default : 100,
 	},
+	tColumns : {
+		type    : "number",
+		default : 1,
+	},
 
 	// Color
 	backgroundColor: {

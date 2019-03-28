@@ -1506,6 +1506,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'considerH6'              => true,
 							'customWidth'             => false,
 							'width'                   => 100,
+							'tColumns'                => 1,
 							'widthType'               => '%',
 							'align'                   => 'left',
 							'linkColor'               => '#333',

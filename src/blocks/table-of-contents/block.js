@@ -38,6 +38,7 @@ registerBlockType( "uagb/table-of-contents", {
 
 		const {
 			align,
+			tColumns,
 			block_id,
 			heading
 		} = props.attributes
@@ -47,7 +48,8 @@ registerBlockType( "uagb/table-of-contents", {
 		return (
 			<div className={ classnames(
 				props.className,
-				`uagb-toc__align-${align}`
+				`uagb-toc__align-${align}`,
+				`uagb-toc__columns-${tColumns}`
 			) }
 			id={ `uagb-toc-${ block_id }` }>
 				<div className="uagb-toc__wrap">
