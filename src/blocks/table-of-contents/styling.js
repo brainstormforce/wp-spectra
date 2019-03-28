@@ -95,7 +95,6 @@ function styling( props ) {
 		'column-count': tColumns
 	}
 
-
 	if ( customWidth ) {
 		selectors[" .uagb-toc__wrap"]["width"] = width + widthType
 	}
