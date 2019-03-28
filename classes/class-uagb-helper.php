@@ -1182,7 +1182,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$info = array(
 				'css'     => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
 				'js'      => $uploads_dir['path'] . $post_id . $js_suffix . '.js',
-				'css_url' => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
+				'css_url' => $uploads_dir['url'] . $post_id . $css_suffix . '.css',
 				'js_url'  => $uploads_dir['url'] . $post_id . $js_suffix . '.js',
 			);
 
