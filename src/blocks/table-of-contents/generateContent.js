@@ -31,6 +31,7 @@ function generateContent( props ) {
 	let html               = ""
 	let numbered_items     = []
 	let numbered_items_min = null
+	let hierarchy_flag = false
 
 
 	// find the minimum heading to establish our baseline
@@ -60,7 +61,13 @@ function generateContent( props ) {
 			for ( current_depth; current_depth < parseInt( matches[ i ][2] ); current_depth++ ) {
 
 				numbered_items[ current_depth + 1 ] = 0
-				html += "<ul><li>"
+
+				if ( hierarchy_flag ) {
+					html += "<ul><li>"
+				} else {
+					hierarchy_flag = true
+					html += "<li>"
+				}
 			}
 		}
 
@@ -81,12 +88,17 @@ function generateContent( props ) {
 
 				for ( current_depth; current_depth > parseInt( matches[ i + 1 ][2] ); current_depth-- ) {
 
-					html += "</li></ul>"
+					if ( hierarchy_flag ) {
+						html += "</li></ul>"
+					} else {
+						hierarchy_flag = true
+						html += "</li>"
+					}
 					numbered_items[ current_depth ] = 0
 				}
 			}
 
-			if ( current_depth == parseInt( matches[ i + 1 ][2] ) ) {
+			if ( current_depth == parseInt( matches[ i + 1 ][2] ) && ! hierarchy_flag ) {
 
 				html += "</li>"
 			}
@@ -98,7 +110,7 @@ function generateContent( props ) {
 
 				html += "</li>"
 
-				if ( current_depth != numbered_items_min ) {
+				if ( current_depth != numbered_items_min && ! hierarchy_flag ) {
 					html += "</ul>"
 				}
 			}
