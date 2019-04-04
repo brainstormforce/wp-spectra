@@ -40,6 +40,41 @@ function generateContent( props ) {
 		}
 	}
 
+	let heirarchy = []
+		heirarchy[1] = []
+		heirarchy[2] = []
+		heirarchy[3] = []
+		heirarchy[4] = []
+		heirarchy[5] = []
+		heirarchy[6] = []
+
+	for ( var x = 0; x < matches.length; x ++ ) {
+		console.log("start")
+		let parent_depth = parseInt( matches[x][2] )
+		let curr_depth = ( parent_depth + 1 )
+		console.log('parent_depth ' + parent_depth)
+		console.log('curr_depth ' + curr_depth)
+		if ( undefined != matches[x + 1] ) {
+
+			if ( curr_depth == matches[x + 1][2] ) {
+				heirarchy[parent_depth].push( matches[x] )
+			}
+		}
+
+		/*heirarchy[x] = []
+		heirarchy[x][( depth + 1 )] = []
+		for ( var y = ( x + 1 ); y < matches.length; y ++ ) {
+
+			if ( ( depth + 1 ) == matches[y][2] ) {
+				heirarchy[x][( depth + 1 )].push( matches[y] )
+			} else {
+				break;
+			}
+		}*/
+		console.log("end")
+	}
+	console.log(heirarchy)
+
 	numbered_items[ current_depth ] = 0
 	numbered_items_min = current_depth
 
