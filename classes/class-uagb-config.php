@@ -1461,6 +1461,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'           => '',
 							'borderColor'            => '',
 							'themeWidth'             => false,
+							'mobileMarginType'       => 'px',
+							'tabletMarginType'       => 'px',
+							'desktopMarginType'      => 'px',
+							'mobilePaddingType'      => 'px',
+							'tabletPaddingType'      => 'px',
+							'desktopPaddingType'     => 'px',
 						),
 					),
 					'uagb/social-share'     => array(
