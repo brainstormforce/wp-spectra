@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.4\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-03-23 05:37:38+00:00\n"
+"POT-Creation-Date: 2019-04-11 07:22:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,11 +123,11 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:83 classes/class-uagb-admin.php:260
+#: admin/uagb-general.php:83 classes/class-uagb-admin.php:264
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:90 classes/class-uagb-admin.php:261
+#: admin/uagb-general.php:90 classes/class-uagb-admin.php:265
 msgid "Deactivate"
 msgstr ""
 
@@ -232,31 +232,31 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:262
+#: classes/class-uagb-admin.php:266
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:263
+#: classes/class-uagb-admin.php:267
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:264
+#: classes/class-uagb-admin.php:268
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:265
+#: classes/class-uagb-admin.php:269
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:266
+#: classes/class-uagb-admin.php:270
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:424
+#: classes/class-uagb-admin.php:428
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:445
+#: classes/class-uagb-admin.php:449
 msgid "Theme Successfully Activated"
 msgstr ""
 
@@ -455,27 +455,27 @@ msgid ""
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1550
+#: classes/class-uagb-config.php:1490
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:1551
+#: classes/class-uagb-config.php:1491
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:1621
+#: classes/class-uagb-config.php:1561
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:1622
+#: classes/class-uagb-config.php:1562
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:881
+#: classes/class-uagb-helper.php:872
 msgid "Full"
 msgstr ""
 
@@ -483,16 +483,16 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:307
-#: classes/class-uagb-init-blocks.php:340
+#: classes/class-uagb-init-blocks.php:296
+#: classes/class-uagb-init-blocks.php:329
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:321
+#: classes/class-uagb-init-blocks.php:310
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:354
+#: classes/class-uagb-init-blocks.php:343
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
