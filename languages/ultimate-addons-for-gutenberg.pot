@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.4\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.12.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-03-23 05:37:38+00:00\n"
+"POT-Creation-Date: 2019-04-11 06:33:30+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,11 +123,11 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:83 classes/class-uagb-admin.php:260
+#: admin/uagb-general.php:83 classes/class-uagb-admin.php:264
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:90 classes/class-uagb-admin.php:261
+#: admin/uagb-general.php:90 classes/class-uagb-admin.php:265
 msgid "Deactivate"
 msgstr ""
 
@@ -232,31 +232,31 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:262
+#: classes/class-uagb-admin.php:266
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:263
+#: classes/class-uagb-admin.php:267
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:264
+#: classes/class-uagb-admin.php:268
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:265
+#: classes/class-uagb-admin.php:269
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:266
+#: classes/class-uagb-admin.php:270
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:424
+#: classes/class-uagb-admin.php:428
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:445
+#: classes/class-uagb-admin.php:449
 msgid "Theme Successfully Activated"
 msgstr ""
 
