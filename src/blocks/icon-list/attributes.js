@@ -11,7 +11,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 		{
 			"label": "Label #" + i,
 			"image_icon": "icon",
-			"icon": "fab fa-facebook",
+			"icon": "fab fa-arrow-circle-right",
 			"image": "",
 			"icon_color": "#3a3a3a",
 			"label_color": "",
@@ -23,7 +23,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"icon_border_hover_color": "",
 			"link": "#",
 			"target": false,
-			"disableLink": false,
+			"disableLink": true,
 		}
 	)
 }
@@ -58,7 +58,7 @@ const attributes = {
 	},
 	size: {
 		type: "number",
-		default: 40
+		default: 16
 	},
 	sizeType: {
 		type: "string",

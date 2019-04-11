@@ -67,7 +67,7 @@ function generateContent( props ) {
 
 		// List item.
 		let text = matches[i][0]
-		text = text.replace( "<h" + matches[i][2] + ">", "" )
+		text = text.replace( matches[i][1], "" )
 		text = text.replace( "</h" + matches[i][2] + ">", "" )
 
 		let href_link = UAGBTableOfContents._parse( matches[i] )
