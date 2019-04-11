@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.12.5\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-04-11 06:33:30+00:00\n"
+"POT-Creation-Date: 2019-04-11 07:22:20+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -455,27 +455,27 @@ msgid ""
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1550
+#: classes/class-uagb-config.php:1490
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:1551
+#: classes/class-uagb-config.php:1491
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:1621
+#: classes/class-uagb-config.php:1561
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:1622
+#: classes/class-uagb-config.php:1562
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:881
+#: classes/class-uagb-helper.php:872
 msgid "Full"
 msgstr ""
 
@@ -483,16 +483,16 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:307
-#: classes/class-uagb-init-blocks.php:340
+#: classes/class-uagb-init-blocks.php:296
+#: classes/class-uagb-init-blocks.php:329
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:321
+#: classes/class-uagb-init-blocks.php:310
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:354
+#: classes/class-uagb-init-blocks.php:343
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
