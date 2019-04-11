@@ -155,7 +155,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.0-dev.1 =
-* Improvement: Advanced Columns - Added px/% compatibility for spacing.
+* Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
+* Improvement: Section - Added px/% option for margin and padding spacing.
 
 = 1.12.5 =
 * Fix: Testimonial - Border options not working in editor.
@@ -174,7 +175,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Advanced Columns - Introduced Bring to Front option for Shape Divider.
 * Fix: Team - Default font-size issue for title tag.
 * Fix: Post - Background color not visible if image applied as background.
-* Fix: Section - Added px/% compatibility for padding and margin spacing.
 
 = 1.12.2 =
 * Fix: Language directory issue on IIS server.
