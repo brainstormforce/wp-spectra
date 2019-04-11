@@ -471,7 +471,7 @@ class UAGBSectionEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Margin Mobile (px)" ) }</h2>
+												<h2>{ __( "Margin Mobile" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -517,7 +517,7 @@ class UAGBSectionEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Margin Tablet (px)" ) }</h2>
+												<h2>{ __( "Margin Tablet" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -563,7 +563,7 @@ class UAGBSectionEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Margin (px)" ) }</h2>
+												<h2>{ __( "Margin" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
