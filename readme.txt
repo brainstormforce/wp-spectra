@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.1.1
-Stable tag: 1.12.4
+Stable tag: 1.13.0-dev.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,6 +155,16 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 = 1.13.0 =
 -Improvement: Section - Introduced Gradient overlay option for Image background.
+
+= 1.13.0-dev.1 =
+* Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
+* Improvement: Section - Added px/% option for margin and padding spacing.
+
+= 1.12.5 =
+* Fix: Testimonial - Border options not working in editor.
+* Fix: List Icon - Border options not working on frontend.
+* Fix: Advanced Columns - Removed Extra padding from the editor.
+* Fix: Advanced Columns - Block settings not visible in the editor.
 
 = 1.12.4 =
 * Fix: CSS not applying to inner blocks on front end in some cases.

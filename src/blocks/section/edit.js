@@ -29,6 +29,7 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
+	ButtonGroup,
 	Dashicon,
 	BaseControl,
 	withNotices,
@@ -167,6 +168,7 @@ class UAGBSectionEdit extends Component {
 			gradientLocation2,
 			gradientType,
 			gradientAngle,
+			gradientPosition,
 			backgroundOpacity,
 			backgroundVideoColor,
 			backgroundVideoOpacity,
@@ -178,10 +180,17 @@ class UAGBSectionEdit extends Component {
 			gradientOverlayLocation1,
 			gradientOverlayLocation2,
 			gradientOverlayAngle,
+			gradientOverlayPosition,
 			borderStyle,
 			borderWidth,
 			borderRadius,
-			borderColor
+			borderColor,
+			mobileMarginType,
+			tabletMarginType,
+			desktopMarginType,
+			mobilePaddingType,
+			tabletPaddingType,
+			desktopPaddingType,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -275,7 +284,7 @@ class UAGBSectionEdit extends Component {
 						/>
 					</PanelBody>
 					<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
@@ -300,7 +309,11 @@ class UAGBSectionEdit extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Mobile (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding Mobile" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -342,7 +355,11 @@ class UAGBSectionEdit extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding Tablet (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding Tablet" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -384,7 +401,11 @@ class UAGBSectionEdit extends Component {
 									} else {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Padding (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -430,7 +451,7 @@ class UAGBSectionEdit extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
@@ -455,7 +476,11 @@ class UAGBSectionEdit extends Component {
 									if ( "mobile" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Margin Mobile (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Margin Mobile" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -497,7 +522,11 @@ class UAGBSectionEdit extends Component {
 									} else if ( "tablet" === tab.name ) {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Margin Tablet (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Margin Tablet" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -539,7 +568,11 @@ class UAGBSectionEdit extends Component {
 									} else {
 										tabout = (
 											<Fragment>
-												<h2>{ __( "Margin (px)" ) }</h2>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Margin" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
@@ -699,30 +732,11 @@ class UAGBSectionEdit extends Component {
 
 										{ "gradient" == overlayType &&
 											( <Fragment>
-												<PanelColorSettings
-													title={ __( "Color Settings" ) }
-													colorSettings={ [
-														{
-															value: gradientOverlayColor2,
-															onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
-															label: __( "Color 1" ),
-														},
-														{
-															value: gradientOverlayColor1,
-															onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
-															label: __( "Color 2" ),
-														},
-													] }
-												>
-												</PanelColorSettings>
-												<SelectControl
-													label={ __( "Type" ) }
-													value={ gradientOverlayType }
-													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
-													options={ [
-														{ value: "linear", label: __( "Linear" ) },
-														{ value: "radial", label: __( "Radial" ) },
-													] }
+												<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+												<ColorPalette
+													value={ gradientOverlayColor1 }
+													onChange={ ( colorValue ) => setAttributes( { gradientOverlayColor1: colorValue } ) }
+													allowReset
 												/>
 												<RangeControl
 													label={ __( "Location 1" ) }
@@ -730,6 +744,12 @@ class UAGBSectionEdit extends Component {
 													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
 													min={ 0 }
 													max={ 100 }
+													allowReset
+												/>
+												<p className="uagb-setting-label">{ __( "Color 2" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+												<ColorPalette
+													value={ gradientOverlayColor2 }
+													onChange={ ( colorValue ) => setAttributes( { gradientOverlayColor2: colorValue } ) }
 													allowReset
 												/>
 												<RangeControl
@@ -740,14 +760,41 @@ class UAGBSectionEdit extends Component {
 													max={ 100 }
 													allowReset
 												/>
-												<RangeControl
-													label={ __( "Angle" ) }
-													value={ gradientOverlayAngle }
-													onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
-													min={ 0 }
-													max={ 360 }
-													allowReset
+												<SelectControl
+													label={ __( "Type" ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear" ) },
+														{ value: "radial", label: __( "Radial" ) },
+													] }
 												/>
+												{ "linear" == gradientOverlayType && <RangeControl
+														label={ __( "Angle" ) }
+														value={ gradientOverlayAngle }
+														onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+														min={ 0 }
+														max={ 360 }
+														allowReset
+													/>
+												}
+												{ "radial" == gradientOverlayType && <SelectControl
+														label={ __( "Type" ) }
+														value={ gradientOverlayPosition }
+														onChange={ ( value ) => setAttributes( { gradientOverlayPosition: value } ) }
+														options={ [
+															{ value: "center center", label: __( "Center Center" ) },
+															{ value: "center left", label: __( "Center Left" ) },
+															{ value: "center right", label: __( "Center Right" ) },
+															{ value: "top center", label: __( "Top Center" ) },
+															{ value: "top left", label: __( "Top Left" ) },
+															{ value: "top right", label: __( "Top Right" ) },
+															{ value: "bottom center", label: __( "Bottom Center" ) },
+															{ value: "bottom left", label: __( "Bottom Left" ) },
+															{ value: "bottom right", label: __( "Bottom Right" ) },
+														] }
+													/>
+												}
 											</Fragment> )
 										}
 									</Fragment> )
@@ -756,30 +803,11 @@ class UAGBSectionEdit extends Component {
 						}
 						{ "gradient" == backgroundType &&
 							( <Fragment>
-								<PanelColorSettings
-									title={ __( "Color Settings" ) }
-									colorSettings={ [
-										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
-											label: __( "Color 1" ),
-										},
-										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
-											label: __( "Color 2" ),
-										},
-									] }
-								>
-								</PanelColorSettings>
-								<SelectControl
-									label={ __( "Type" ) }
-									value={ gradientType }
-									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
-									options={ [
-										{ value: "linear", label: __( "Linear" ) },
-										{ value: "radial", label: __( "Radial" ) },
-									] }
+								<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+								<ColorPalette
+									value={ gradientColor1 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
+									allowReset
 								/>
 								<RangeControl
 									label={ __( "Location 1" ) }
@@ -787,6 +815,12 @@ class UAGBSectionEdit extends Component {
 									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
 									min={ 0 }
 									max={ 100 }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Color 2" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+								<ColorPalette
+									value={ gradientColor2 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor2: colorValue } ) }
 									allowReset
 								/>
 								<RangeControl
@@ -797,14 +831,41 @@ class UAGBSectionEdit extends Component {
 									max={ 100 }
 									allowReset
 								/>
-								<RangeControl
-									label={ __( "Angle" ) }
-									value={ gradientAngle }
-									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
-									min={ 0 }
-									max={ 360 }
-									allowReset
+								<SelectControl
+									label={ __( "Type" ) }
+									value={ gradientType }
+									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
+									options={ [
+										{ value: "linear", label: __( "Linear" ) },
+										{ value: "radial", label: __( "Radial" ) },
+									] }
 								/>
+								{ "linear" == gradientType && <RangeControl
+										label={ __( "Angle" ) }
+										value={ gradientAngle }
+										onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
+										min={ 0 }
+										max={ 360 }
+										allowReset
+									/>
+								}
+								{ "radial" == gradientType && <SelectControl
+										label={ __( "Type" ) }
+										value={ gradientPosition }
+										onChange={ ( value ) => setAttributes( { gradientPosition: value } ) }
+										options={ [
+											{ value: "center center", label: __( "Center Center" ) },
+											{ value: "center left", label: __( "Center Left" ) },
+											{ value: "center right", label: __( "Center Right" ) },
+											{ value: "top center", label: __( "Top Center" ) },
+											{ value: "top left", label: __( "Top Left" ) },
+											{ value: "top right", label: __( "Top Right" ) },
+											{ value: "bottom center", label: __( "Bottom Center" ) },
+											{ value: "bottom left", label: __( "Bottom Left" ) },
+											{ value: "bottom right", label: __( "Bottom Right" ) },
+										] }
+									/>
+								}
 							</Fragment> )
 						}
 						{ "video" == backgroundType && (
