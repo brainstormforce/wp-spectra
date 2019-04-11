@@ -263,11 +263,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     UAGB_Block_Helper::blocks_call_to_action_gfont( $blockattr );
                     break;
 
-				case 'uagb/table-of-contents':
-					$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
-					UAGB_Block_Helper::blocks_table_of_contents_gfont( $blockattr );
-					break;
-
                 case 'uagb/post-timeline':
                     $css += UAGB_Block_Helper::get_post_timeline_css( $blockattr, $block_id );
                     UAGB_Block_Helper::blocks_post_timeline_gfont( $blockattr );
@@ -427,10 +422,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/social-share':
                     $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
                     break;
-
-				case 'uagb/table-of-contents':
-					$js .= UAGB_Block_Helper::get_table_of_contents_js( $blockattr, $block_id );
-					break;
 
                 default:
                     // Nothing to do here.
