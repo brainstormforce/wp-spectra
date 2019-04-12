@@ -5,8 +5,6 @@
 import classnames from "classnames"
 import styling from "./styling"
 import map from "lodash/map"
-import generateContent from "./generateContent"
-import getMapping from "./getMapping"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
@@ -55,16 +53,13 @@ class UAGBTableOfContentsEdit extends Component {
 	 */
 	regenerateTable() {
 
-		const { mapping } = this.props.attributes
 		const { setAttributes } = this.props
-		setAttributes( { mapping: getMapping( this.props ) } )
 	}
 
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
-		this.props.setAttributes( { mapping: getMapping( this.props ) } )
 
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
@@ -83,7 +78,6 @@ class UAGBTableOfContentsEdit extends Component {
 
 		const {
 			align,
-			mapping,
 			heading,
 			smoothScroll,
 			smoothScrollOffset,
@@ -185,12 +179,6 @@ class UAGBTableOfContentsEdit extends Component {
 				scrollElement.removeClass( "uagb-toc__show-scroll" )
 			}
 		}
-
-		// let html = generateContent( this.props )
-
-		// if ( "" == html || undefined == html ) {
-		// 	html = "<p>NOTE: There are no headings on this post with the selected Heading Tags.</p>"
-		// }
 
 		return (
 			<Fragment>

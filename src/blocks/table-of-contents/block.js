@@ -55,7 +55,7 @@ registerBlockType( "uagb/table-of-contents", {
 				`uagb-toc__align-${align}`,
 				`uagb-toc__columns-${tColumns}`
 			) }
-			id={ `uagb-toc-${ props.clientId }` }>
+			id={ `uagb-toc-${ block_id }` }>
 				<div className="uagb-toc__wrap">
 
 					<RichText.Content
