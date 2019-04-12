@@ -31,29 +31,13 @@ const attributes = {
 	scrollToTopBgColor : {
 		type : "string",
 	},
-	considerH1 : {
-		type    : "boolean",
-		default : true,
+	allowedHeaders: {
+		type: 'array',
+		default: Array(6).fill(true)
 	},
-	considerH2 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH3 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH4 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH5 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH6 : {
-		type    : "boolean",
-		default : true,
+	links: {
+		type: 'string',
+		default: ''
 	},
 	align : {
 		type    : "string",

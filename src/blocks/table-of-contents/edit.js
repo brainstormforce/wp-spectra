@@ -14,7 +14,7 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-
+import TableOfContents from './components';
 
 const { __ } = wp.i18n
 
@@ -35,6 +35,7 @@ const {
 	Button,
 	ButtonGroup,
 	PanelBody,
+	PanelRow,
 	SelectControl,
 	RangeControl,
 	ToggleControl
@@ -87,12 +88,6 @@ class UAGBTableOfContentsEdit extends Component {
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
-			considerH1,
-			considerH2,
-			considerH3,
-			considerH4,
-			considerH5,
-			considerH6,
 			scrollToTop,
 			scrollToTopColor,
 			scrollToTopBgColor,
@@ -139,6 +134,8 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeight,
 			headingLineHeightTablet,
 			headingLineHeightMobile,
+			links,
+			allowedHeaders,
 		} = attributes
 
 		let loadGFonts
@@ -189,11 +186,11 @@ class UAGBTableOfContentsEdit extends Component {
 			}
 		}
 
-		let html = generateContent( this.props )
+		// let html = generateContent( this.props )
 
-		if ( "" == html || undefined == html ) {
-			html = "<p>NOTE: There are no headings on this post with the selected Heading Tags.</p>"
-		}
+		// if ( "" == html || undefined == html ) {
+		// 	html = "<p>NOTE: There are no headings on this post with the selected Heading Tags.</p>"
+		// }
 
 		return (
 			<Fragment>
@@ -207,38 +204,28 @@ class UAGBTableOfContentsEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
+
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
-						<ToggleControl
-							label={ __( "H1" ) }
-							checked={ considerH1 }
-							onChange={ ( value ) => setAttributes( { considerH1: ! considerH1 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H2" ) }
-							checked={ considerH2 }
-							onChange={ ( value ) => setAttributes( { considerH2: ! considerH2 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H3" ) }
-							checked={ considerH3 }
-							onChange={ ( value ) => setAttributes( { considerH3: ! considerH3 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H4" ) }
-							checked={ considerH4 }
-							onChange={ ( value ) => setAttributes( { considerH4: ! considerH4 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H5" ) }
-							checked={ considerH5 }
-							onChange={ ( value ) => setAttributes( { considerH5: ! considerH5 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H6" ) }
-							checked={ considerH6 }
-							onChange={ ( value ) => setAttributes( { considerH6: ! considerH6 } ) }
-						/>
+						{allowedHeaders.map((a, i) => (
+							<PanelRow>
+								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i +
+									1}`}</label>
+								<ToggleControl
+									id={`ub_toggle_h${i + 1}`}
+									checked={a}
+									onChange={() =>
+										setAttributes({
+											allowedHeaders: [
+												...allowedHeaders.slice(0, i),
+												!allowedHeaders[i],
+												...allowedHeaders.slice(i + 1)
+											]
+										})
+									}
+								/>
+							</PanelRow>
+						))}
 					</PanelBody>
 					<PanelBody title={ __( "Scroll" ) } initialOpen={ false }>
 						<ToggleControl
@@ -474,9 +461,14 @@ class UAGBTableOfContentsEdit extends Component {
 							multiline={ false }
 							onRemove={ () => props.onReplace( [] ) }
 						/>
-						<div className="uagb-toc__list-wrap">
-							<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
-						</div>
+						<TableOfContents
+							align={align}
+							numcolumns={tColumns}
+							heading={heading}
+							allowedHeaders={allowedHeaders}
+							headers={links && JSON.parse(links)}
+							blockProp={this.props}
+						/>
 					</div>
 				</div>
 				{ loadGFonts }
