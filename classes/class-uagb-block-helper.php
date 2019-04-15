@@ -4452,7 +4452,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
 					"background" => $attr["backgroundColor"],
 				),
-				".uagb-toc__columns-" . $attr['tColumns'] . " .uagb-toc__list" => array( 
+				".uagb-toc__columns-" . $attr['tColumns'] . " .uagb-toc__list-wrap" => array( 
 					'column-count' => $attr['tColumns'],
 				)
 			);

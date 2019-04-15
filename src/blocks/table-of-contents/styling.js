@@ -91,7 +91,7 @@ function styling( props ) {
 		},
 	}
 
-	selectors[".uagb-toc__columns-" + tColumns + " .uagb-toc__list"] = {
+	selectors[".uagb-toc__columns-" + tColumns + " .uagb-toc__list-wrap"] = {
 		'column-count': tColumns
 	}
 
