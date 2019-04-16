@@ -83,6 +83,7 @@ class TypographyControl extends Component {
 		let fontWeight
 		let fontFamily
 		let fontAdvancedControls
+		let fontTypoAdvancedControls
 		let showAdvancedFontControls
 		let resetFontAdvancedControls
 
@@ -160,6 +161,7 @@ class TypographyControl extends Component {
 		} else {
 			showAdvancedFontControls = (
 				<Fragment>
+					{ fontSize }
 					{ fontFamily }
 					{ fontWeight }
 				</Fragment>
@@ -171,22 +173,28 @@ class TypographyControl extends Component {
 
 			showAdvancedFontControls = (
 				<div className="uagb-typography-advanced">
+					{ fontSize }
 					{ fontFamily }
 					{ fontWeight }
 				</div>
 			)
 		}
 
+		if( true !== disableFontFamily && true !== disableFontSize ) {
+			fontTypoAdvancedControls =  (
+				<div className="uag-typography-option-actions">
+					<strong>{ this.props.label }</strong>
+					{ fontAdvancedControls }
+					{ resetFontAdvancedControls }
+				</div>
+			)
+		}
+
 		return (
 			<div className="uag-typography-options">
-				{ fontSize }
 				{ !disableAdvancedOptions &&
 					<Fragment>
-						<div className="uag-typography-option-actions">
-							<strong>{ __( "Advanced Typography" ) }</strong>
-							{ fontAdvancedControls }
-							{ resetFontAdvancedControls }
-						</div>
+						{ fontTypoAdvancedControls }
 						{ showAdvancedFontControls }
 					</Fragment>
 				}

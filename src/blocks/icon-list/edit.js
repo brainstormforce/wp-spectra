@@ -572,9 +572,8 @@ class UAGBIconList extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Label Size" ) }</h2>
 						<TypographyControl
-							label={ __( "Label Tag" ) }
+							label={ __( "Label Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
