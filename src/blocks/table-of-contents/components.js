@@ -7,7 +7,7 @@ class TableOfContents extends Component {
 		super(props);
 		this.state = {
 			headers: props.headers,
-			unsubscribe: null
+			deregister: null
 		};
 	}
 
@@ -52,14 +52,14 @@ class TableOfContents extends Component {
 
 		setHeaders();
 
-		const unsubscribe = subscribe(() => {
+		const deregister = subscribe(() => {
 			setHeaders();
 		});
-		this.setState({ unsubscribe });
+		this.setState({ deregister });
 	}
 
 	componentWillUnmount() {
-		this.state.unsubscribe();
+		this.state.deregister();
 	}
 
 	componentDidUpdate(prevProps, prevState) {
@@ -68,13 +68,13 @@ class TableOfContents extends Component {
 			JSON.stringify(prevState.headers)
 		) {
 			this.props.blockProp.setAttributes({
-				links: JSON.stringify(this.state.headers)
+				headerLinks: JSON.stringify(this.state.headers)
 			});
 		}
 	}
 
 	render() {
-		const { allowedHeaders, blockProp, style } = this.props;
+		const { mappingHeaders, blockProp, style } = this.props;
 
 		const { headers } = this.state;
 
@@ -82,7 +82,7 @@ class TableOfContents extends Component {
 			let arrays = [];
 
 			origHeaders
-				.filter(header => allowedHeaders[header.level - 1])
+				.filter(header => mappingHeaders[header.level - 1])
 				.forEach(header => {
 					let last = arrays.length - 1;
 					if (
@@ -141,7 +141,7 @@ class TableOfContents extends Component {
 
 		if (
 			headers.length > 0 &&
-			headers.filter(header => allowedHeaders[header.level - 1]).length >
+			headers.filter(header => mappingHeaders[header.level - 1]).length >
 				0
 		) {
 			return (

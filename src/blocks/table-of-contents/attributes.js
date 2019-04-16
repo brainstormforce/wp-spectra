@@ -5,10 +5,6 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
-	mapping : {
-		type : "array",
-		default : []
-	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,
@@ -31,11 +27,11 @@ const attributes = {
 	scrollToTopBgColor : {
 		type : "string",
 	},
-	allowedHeaders: {
+	mappingheaders: {
 		type: 'array',
 		default: Array(6).fill(true)
 	},
-	links: {
+	headerLinks: {
 		type: 'string',
 		default: ''
 	},

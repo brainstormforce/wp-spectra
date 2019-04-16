@@ -44,8 +44,9 @@ registerBlockType( "uagb/table-of-contents", {
 			block_id,
 			tColumns,
 			heading,
-			links,
-			allowedHeaders
+			headerLinks,
+			mappingheaders,
+			scrollToTop
 		} = props.attributes
 
 		return (
@@ -66,8 +67,9 @@ registerBlockType( "uagb/table-of-contents", {
 					<TableOfContents
 						align={align}
 						numcolumns={tColumns}
-						allowedHeaders={allowedHeaders}
-						headers={links && JSON.parse(links)}
+						scrollToTop={scrollToTop}
+						mappingheaders={mappingheaders}
+						headers={headerLinks && JSON.parse(headerLinks)}
 						blockProp={props}
 					/>
 				</div>

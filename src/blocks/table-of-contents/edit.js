@@ -128,8 +128,8 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeight,
 			headingLineHeightTablet,
 			headingLineHeightMobile,
-			links,
-			allowedHeaders,
+			headerLinks,
+			mappingheaders,
 		} = attributes
 
 		let loadGFonts
@@ -195,7 +195,7 @@ class UAGBTableOfContentsEdit extends Component {
 
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
-						{allowedHeaders.map((a, i) => (
+						{mappingheaders.map((a, i) => (
 							<PanelRow>
 								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i +
 									1}`}</label>
@@ -204,10 +204,10 @@ class UAGBTableOfContentsEdit extends Component {
 									checked={a}
 									onChange={() =>
 										setAttributes({
-											allowedHeaders: [
-												...allowedHeaders.slice(0, i),
-												!allowedHeaders[i],
-												...allowedHeaders.slice(i + 1)
+											mappingheaders: [
+												...mappingheaders.slice(0, i),
+												!mappingheaders[i],
+												...mappingheaders.slice(i + 1)
 											]
 										})
 									}
@@ -453,8 +453,8 @@ class UAGBTableOfContentsEdit extends Component {
 							align={align}
 							numcolumns={tColumns}
 							heading={heading}
-							allowedHeaders={allowedHeaders}
-							headers={links && JSON.parse(links)}
+							mappingheaders={mappingheaders}
+							headers={headerLinks && JSON.parse(headerLinks)}
 							blockProp={this.props}
 						/>
 					</div>
