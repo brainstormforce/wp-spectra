@@ -98,44 +98,24 @@
 		 */
 		_run: function( attr, id ) {
 
-			let mapping = attr.mapping
+			scroll = attr.smoothScroll
+			scroll_offset = attr.smoothScrollOffset
+			scroll_delay = attr.smoothScrollDelay
+			scroll_to_top = attr.scrollToTop
 
-			if ( undefined != mapping ) {
-				for ( var i = 0; i < mapping.length; i++ ) {
-
-					let text = mapping[i][0]
-					text = text.replace( "<h" + mapping[i][2] + ">", "" )
-					text = text.replace( "</h" + mapping[i][2] + ">", "" )
-
-					var parser = new DOMParser
-					var dom = parser.parseFromString( "<!doctype html><body>" + text, "text/html" )
-					var decodedString = dom.body.textContent
-
-					let href_link = UAGBTableOfContents._parse( mapping[i] )
-					let heading_selector = $( "h" + mapping[i][2] + ":contains(\"" + decodedString + "\")" )
-
-					heading_selector.html( "<span class='uagb-toc__heading-link' id='" + href_link + "'>" + text + "</span>" )
-				}
-
-				scroll = attr.smoothScroll
-				scroll_offset = attr.smoothScrollOffset
-				scroll_delay = attr.smoothScrollDelay
-				scroll_to_top = attr.scrollToTop
-
+			scroll_element = $( ".uagb-toc__scroll-top" )
+			if ( 0 == scroll_element.length ) {
+				$( "body" ).append( "<div class=\"uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2\"></div>" )
 				scroll_element = $( ".uagb-toc__scroll-top" )
-				if ( 0 == scroll_element.length ) {
-					$( "body" ).append( "<div class=\"uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2\"></div>" )
-					scroll_element = $( ".uagb-toc__scroll-top" )
-				}
-
-				if ( scroll_to_top ) {
-					scroll_element.addClass( "uagb-toc__show-scroll" )
-				} else {
-					scroll_element.removeClass( "uagb-toc__show-scroll" )
-				}
-
-				UAGBTableOfContents._showHideScroll()
 			}
+
+			if ( scroll_to_top ) {
+				scroll_element.addClass( "uagb-toc__show-scroll" )
+			} else {
+				scroll_element.removeClass( "uagb-toc__show-scroll" )
+			}
+
+			UAGBTableOfContents._showHideScroll()
 		},
 	}
 
