@@ -98,9 +98,6 @@
 		 */
 		_run: function( attr, id ) {
 
-			scroll = attr.smoothScroll
-			scroll_offset = attr.smoothScrollOffset
-			scroll_delay = attr.smoothScrollDelay
 			scroll_to_top = attr.scrollToTop
 
 			scroll_element = $( ".uagb-toc__scroll-top" )
