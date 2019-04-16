@@ -643,7 +643,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-button__wrapper:last-child' => array (
 					'margin-right' => 0
 				),
-				' .uagb-buttons__wrap' => array (
+			);
+
+			if( 'full' === $attr['align'] ) {
+				$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
+					'justify-content' => 'center',
+					'-webkit-box-pack'=> 'center',
+					'-ms-flex-pack' => 'center',
+					'justify-content' => 'center',
+					'-webkit-box-align' => 'center',
+					'-ms-flex-align' => 'center',
+					'align-items' => 'center',
+					'width' => '100%',
+					'text-align' => 'center',
+				);
+			} else {
+				$selectors[' .uagb-buttons__wrap'] = array (
 					'justify-content' => $alignment,
 					'-webkit-box-pack'=> $alignment,
 					'-ms-flex-pack' => $alignment,
@@ -651,8 +666,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'-webkit-box-align' => $alignment,
 					'-ms-flex-align' => $alignment,
 					'align-items' => $alignment,
-				)
-			);
+				);
+			}
 
 			foreach ( $attr['buttons'] as $key => $button ) {
 
