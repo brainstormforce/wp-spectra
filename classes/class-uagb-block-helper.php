@@ -4422,7 +4422,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$dots = ( "dots" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
 			$arrows = ( "arrows" == $attr['arrowDots'] || "arrowDots" == $attr['arrowDots'] ) ? true : false;
 
-			$slick_options = [
+			$slick_options = apply_filters( 'uagb_testimonials_slick_options',[
 				'slidesToShow'   => $attr['columns'],
 				'slidesToScroll' => 1,
 				'autoplaySpeed'  =>  $attr['autoplaySpeed'],
@@ -4451,7 +4451,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						],
 					]
 				]
-			];
+			], $id );
 
 			$settings = json_encode($slick_options);
 			$selector =	'#uagb-testimonial-'. $id;
