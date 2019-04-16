@@ -109,6 +109,14 @@
 	}
 }
 
+.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper {
+	text-decoration: none;
+}
+
+.uagb-icon-list__wrap .uagb-icon-list__wrapper {
+	box-shadow: none;
+}
+
 .uagb-icon-list__outer-wrap:not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap {
 	margin-right: 15px;
 }
