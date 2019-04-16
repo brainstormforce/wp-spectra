@@ -1295,7 +1295,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if( '1' === $attr['test_item_count'] || $attr['test_item_count'] === $attr['columns'] ){
 				$selectors['.uagb-slick-carousel'] = array(
-						'padding' => '0',
+						'padding' => 0,
 					);
 			}
 
