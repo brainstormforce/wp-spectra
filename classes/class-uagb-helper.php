@@ -311,6 +311,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					 UAGB_Block_Helper::blocks_gf_styler_gfont( $blockattr );
 					break;
 
+				case 'uagb/table-of-contents':
+					$css += UAGB_Block_Helper::get_table_of_contents_css( $blockattr, $block_id );
+					UAGB_Block_Helper::blocks_table_of_contents_gfont( $blockattr );
+					break;
+
                 default:
                     // Nothing to do here.
                     break;

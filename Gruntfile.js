@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 					"!package.json",
 					"!package-lock.json",
 					"!.gitignore",
-					"!ultimate-addons-for-gutenberg.zip",
+					"!*.zip",
 					"!Optimization.txt",
 					"!composer.json",
 					"!composer.lock",
@@ -52,7 +52,7 @@ module.exports = function(grunt) {
 		},
 		clean: {
 			main: ["ultimate-addons-for-gutenberg"],
-			zip: ["ultimate-addons-for-gutenberg.zip"],
+			zip: ["*.zip"],
 		},
 		makepot: {
 			target: {
