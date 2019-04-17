@@ -146,6 +146,10 @@ const attributes = {
 		type: "number",
 		default: 0
 	},
+	gradientPosition: {
+		type: "string",
+		default: "center center"
+	},
 	backgroundOpacity: {
 		type: "number",
 	},

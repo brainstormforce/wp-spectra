@@ -36,6 +36,7 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
+		gradientPosition,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -123,7 +124,7 @@ function styling( props ) {
 			selectors[" > .uagb-columns__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		} else {
 
-			selectors[" > .uagb-columns__overlay"]["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			selectors[" > .uagb-columns__overlay"]["background-image"] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 	}
 
