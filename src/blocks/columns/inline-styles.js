@@ -1,7 +1,6 @@
 /**
  * Returns Dynamic Generated CSS
  */
-
 import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function inlineStyles( props, isEditor ) {
@@ -25,16 +24,18 @@ function inlineStyles( props, isEditor ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		desktopMarginType,
+		desktopPaddingType,
 	} = props.attributes
 
 	var style = {
-		"padding-top": generateCSSUnit( topPadding, "px" ),
-		"padding-bottom": generateCSSUnit( bottomPadding, "px" ),
-		"padding-left": generateCSSUnit( leftPadding, "px" ),
-		"padding-right": generateCSSUnit( rightPadding, "px" ),
-		"margin-top": generateCSSUnit( topMargin, "px" ),
-		"margin-bottom": generateCSSUnit( bottomMargin, "px" ),
-		"border-radius": generateCSSUnit( borderRadius, "px" ),
+		"padding-top": generateCSSUnit( topPadding , desktopPaddingType),
+		"padding-bottom": generateCSSUnit( bottomPadding , desktopPaddingType),
+		"padding-left": generateCSSUnit( leftPadding , desktopPaddingType),
+		"padding-right": generateCSSUnit( rightPadding , desktopPaddingType),
+		"margin-top": generateCSSUnit( topMargin , desktopMarginType),
+		"margin-bottom": generateCSSUnit( bottomMargin , desktopMarginType),
+		"border-radius": generateCSSUnit( borderRadius , desktopMarginType),
 	}
 
 	if ( borderStyle != "none" ) {
