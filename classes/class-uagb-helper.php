@@ -99,7 +99,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$file_handler = self::$css_file_handler;
 
 			if ( isset( $file_handler['css_url'] ) ) {
-				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', true );
+				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
 			}
 
 			if ( isset( $file_handler['js_url'] ) ) {
