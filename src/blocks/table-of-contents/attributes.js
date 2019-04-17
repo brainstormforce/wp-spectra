@@ -27,7 +27,7 @@ const attributes = {
 	scrollToTopBgColor : {
 		type : "string",
 	},
-	mappingheaders: {
+	mappingHeaders: {
 		type: 'array',
 		default: Array(6).fill(true)
 	},

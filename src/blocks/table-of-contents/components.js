@@ -140,10 +140,9 @@ class TableOfContents extends Component {
 		};
 
 		if (
-			headers.length > 0 &&
-			headers.filter(header => mappingHeaders[header.level - 1]).length >
-				0
+			typeof mappingHeaders != undefined && headers.length > 0 && headers.filter(header => mappingHeaders[header.level - 1]).length > 0
 		) {
+
 			return (
 				<div style={style} className="uagb-toc__list-wrap">
 					{parseList(makeHeaderArray(headers))}
