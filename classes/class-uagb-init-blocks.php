@@ -118,6 +118,16 @@ class UAGB_Init_Blocks {
 			);
 		}
 
+		if ( ! ( isset( $blocks['table-of-contents'] ) && 'disabled' == $blocks['table-of-contents'] ) ) {
+			wp_enqueue_script(
+				'uagb-table-of-contents', // Handle.
+				UAGB_URL . 'assets/js/table-of-contents.js',
+				array( 'jquery' ), // Dependencies, defined above.
+				UAGB_VER,
+				false // Enqueue the script in the footer.
+			);
+		}
+
 		$value = true;
 
 		if ( did_action( 'elementor/loaded' ) ) {

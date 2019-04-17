@@ -4422,6 +4422,112 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		}
 
 		/**
+		 * Get Table of Contents Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_table_of_contents_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$selectors = array(
+				" .uagb-toc__list-wrap ul li a:hover" => array(
+					"color" => $attr["linkHoverColor"],
+				),
+				" .uagb-toc__list-wrap ul li a" => array(
+					"font-size" => UAGB_Helper::get_css_value( $attr["fontSize"], $attr["fontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["lineHeight"], $attr["lineHeightType"] ),
+					"font-family" => $attr["fontFamily"],
+					"font-weight" => $attr["fontWeight"],
+					"color" => $attr["linkColor"],
+				),
+				" .uagb-toc__title" => array(
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSize"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeight"], $attr["headingLineHeightType"] ),
+					"font-family" => $attr["headingFontFamily"],
+					"font-weight" => $attr["headingFontWeight"],
+					"color" => $attr["headingColor"],
+					"margin-bottom" => UAGB_Helper::get_css_value( $attr["headingBottom"], "px"),
+				),
+				" .uagb-toc__wrap" => array(
+					"border-style" => $attr["borderStyle"],
+					"border-width" => UAGB_Helper::get_css_value( $attr["borderWidth"], "px" ),
+					"border-color" => $attr["borderColor"],
+					"border-radius" => UAGB_Helper::get_css_value( $attr["borderRadius"], "px" ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
+					"background" => $attr["backgroundColor"],
+				),
+				".uagb-toc__columns-" . $attr['tColumns'] . " .uagb-toc__list-wrap" => array( 
+					'column-count' => $attr['tColumns'],
+				)
+			);
+
+			if ( $attr["customWidth"] ) {
+				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["width"], $attr["widthType"] );
+			}
+
+
+			$m_selectors = array(
+				' .uagb-toc__list-wrap ul li a'        => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+				),
+				" .uagb-toc__title" => array(
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeMobile"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightMobile"], $attr["headingLineHeightType"] ),
+				),
+
+			);
+
+			$t_selectors = array(
+				' .uagb-toc__list-wrap ul li a'        => array(
+					'font-size' => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+				),
+				" .uagb-toc__title" => array(
+					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeTablet"], $attr["headingFontSizeType"] ),
+					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightTablet"], $attr["headingLineHeightType"] ),
+				),
+
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-toc-' . $id );
+
+			$tablet = UAGB_Helper::generate_css( $t_selectors, '#uagb-toc-' . $id );
+
+			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-toc-' . $id );
+
+			if ( '' != $attr['scrollToTopColor'] ) {
+				$desktop .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
+			}
+
+			if ( '' != $attr['scrollToTopBgColor'] ) {
+				$desktop .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
+			}
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
+		}
+
+
+		/**
 		 * Get Testimonial Js
 		 *
 		 * @since 1.6.0
@@ -4681,6 +4787,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
 			UAGB_Helper::blocks_google_font( $prefix_load_google_font, $prefix_font_family, $prefix_font_weight, $prefix_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Table Of Contents block.
+		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_table_of_contents_gfont( $attr ) {
+			$load_google_font         = isset( $attr['loadGoogleFonts'] ) ? $attr['loadGoogleFonts'] : '';
+			$font_family              = isset( $attr['fontFamily'] ) ? $attr['fontFamily'] : '';
+			$font_weight              = isset( $attr['fontWeight'] ) ? $attr['fontWeight'] : '';
+			$font_subset              = isset( $attr['fontSubset'] ) ? $attr['fontSubset'] : '';
+			$heading_load_google_font = isset( $attr['headingLoadGoogleFonts'] ) ? $attr['headingLoadGoogleFonts'] : '';
+			$heading_font_family      = isset( $attr['headingFontFamily'] ) ? $attr['headingFontFamily'] : '';
+			$heading_font_weight      = isset( $attr['headingFontWeight'] ) ? $attr['headingFontWeight'] : '';
+			$heading_font_subset      = isset( $attr['headingFontSubset'] ) ? $attr['headingFontSubset'] : '';
+			UAGB_Helper::blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset );
+			UAGB_Helper::blocks_google_font( $heading_load_google_font, $heading_font_family, $heading_font_weight, $heading_font_subset );
 		}
 
 		/**
