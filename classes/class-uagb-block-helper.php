@@ -257,12 +257,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$inner_width = '100%';
-
+			
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
-					$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
+					$inner_width = UAGB_Helper::get_css_value( $content_width, $attr['widthType'] );
 				} else if ( 'custom' == $attr['contentWidth'] ) {
-					$inner_width = UAGB_Helper::get_css_value( $attr['width'], 'px' );
+					$inner_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthType'] );
 				}
 			}
 

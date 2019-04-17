@@ -19,6 +19,7 @@ function styling( props ) {
 		borderRadius,
 		contentWidth,
 		width,
+		widthType,
 		columnGap,
 		topColor,
 		topHeight,
@@ -60,7 +61,7 @@ function styling( props ) {
 
 	if ( "custom" == contentWidth ) {
 		if ( "" != width ) {
-			max_width = generateCSSUnit( width, "px" )
+			max_width = generateCSSUnit( width, widthType )
 		}
 	}
 
