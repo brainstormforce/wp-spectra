@@ -9,6 +9,18 @@ const attributes = {
 	block_id: {
 		type: "string",
 	},
+	mobilePaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletPaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopPaddingType: {
+		type: "string",
+		default: 'px'
+	},
 	topPadding: {
 		type: "number",
 		default: 20
@@ -24,6 +36,18 @@ const attributes = {
 	rightPadding: {
 		type: "number",
 		default: 20
+	},
+	mobileMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopMarginType: {
+		type: "string",
+		default: 'px'
 	},
 	topMargin: {
 		type: "number",

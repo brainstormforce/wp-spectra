@@ -10,8 +10,13 @@
 		display: inline-block;
 	}
 
-	ul.uagb-toc__list {
+	ul.uagb-toc__list:first-child {
 		margin: 0;
+	}
+
+	ul.uagb-toc__list {
+		margin-left:3em;
+		margin-bottom:0;
 	}
 
 	.uagb-toc__list-wrap ul {

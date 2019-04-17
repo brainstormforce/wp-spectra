@@ -243,6 +243,30 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	mobileMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	mobilePaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletPaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopPaddingType: {
+		type: "string",
+		default: 'px'
+	},
 }
 
 export default attributes

@@ -25,6 +25,7 @@ const {
 	RangeControl,
 	SelectControl,
 	Button,
+	ButtonGroup,
 	BaseControl,
 	TabPanel,
 	Dashicon
@@ -97,7 +98,6 @@ export default class UAGBColumnEdit extends Component {
 				bottomMargin,
 				leftMargin,
 				rightMargin,
-
 				topPaddingTablet,
 				bottomPaddingTablet,
 				leftPaddingTablet,
@@ -106,7 +106,6 @@ export default class UAGBColumnEdit extends Component {
 				bottomMarginTablet,
 				leftMarginTablet,
 				rightMarginTablet,
-
 				topPaddingMobile,
 				bottomPaddingMobile,
 				leftPaddingMobile,
@@ -115,11 +114,9 @@ export default class UAGBColumnEdit extends Component {
 				bottomMarginMobile,
 				leftMarginMobile,
 				rightMarginMobile,
-
 				colWidth,
 				colWidthTablet,
 				colWidthMobile,
-
 				backgroundType,
 				backgroundImage,
 				backgroundColor,
@@ -141,7 +138,13 @@ export default class UAGBColumnEdit extends Component {
 				borderColor,
 				align,
 				alignMobile,
-				alignTablet
+				alignTablet,
+				mobileMarginType,
+				tabletMarginType,
+				desktopMarginType,
+				mobilePaddingType,
+				tabletPaddingType,
+				desktopPaddingType,
 			},
 			setAttributes,
 			className,
@@ -347,7 +350,7 @@ export default class UAGBColumnEdit extends Component {
 					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 						tabs={ [
 							{
 								name: "desktop",
@@ -372,7 +375,11 @@ export default class UAGBColumnEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding Mobile (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding Mobile" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -414,7 +421,11 @@ export default class UAGBColumnEdit extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding Tablet (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding Tablet" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -456,7 +467,11 @@ export default class UAGBColumnEdit extends Component {
 								} else {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -502,7 +517,7 @@ export default class UAGBColumnEdit extends Component {
 						}
 					</TabPanel>
 					<hr className="uagb-editor__separator" />
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 						tabs={ [
 							{
 								name: "desktop",
@@ -527,7 +542,11 @@ export default class UAGBColumnEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin Mobile (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Margin Mobile" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -569,7 +588,11 @@ export default class UAGBColumnEdit extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin Tablet (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Margin Tablet" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -611,7 +634,11 @@ export default class UAGBColumnEdit extends Component {
 								} else {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+											<h2>{ __( "Margin" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -1063,6 +1090,30 @@ registerBlockType( "uagb/column", {
 		},
 		borderColor : {
 			type: "string"
+		},
+		mobileMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		tabletMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		desktopMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		mobilePaddingType: {
+			type: "string",
+			default: 'px'
+		},
+		tabletPaddingType: {
+			type: "string",
+			default: 'px'
+		},
+		desktopPaddingType: {
+			type: "string",
+			default: 'px'
 		},
 	},
 

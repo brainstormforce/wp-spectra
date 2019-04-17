@@ -45,7 +45,7 @@ function styling( props ) {
 		" .uagb-icon-list__source-wrap" : {
 			"padding": generateCSSUnit( bgSize, "px" ),
 			"border-radius": generateCSSUnit( borderRadius, "px" ),
-			"border-style" : "solid",
+			"border-style" : ( 0 == border || undefined == border ) ? "none" : "solid",
 			"border-width" : generateCSSUnit( border, "px" )
 		},
 		".uagb-icon-list__layout-vertical a.uagb-icon-list__wrapper" : {
