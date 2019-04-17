@@ -526,7 +526,7 @@ class UAGBPostMasonry extends Component {
 								onChange={ value => setAttributes( { ctaText: value } ) }
 							/>
 							<TypographyControl
-								label={ __( "CTA Tag" ) }
+								label={ __( "Typography" ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
 								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
@@ -638,7 +638,7 @@ class UAGBPostMasonry extends Component {
 						] }
 					/>
 					<TypographyControl
-						label={ __( "Title Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
@@ -659,7 +659,7 @@ class UAGBPostMasonry extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
-							label={ __( "Meta Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: __( "metaLoadGoogleFonts" ) } }
@@ -682,7 +682,7 @@ class UAGBPostMasonry extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Excerpt" ) }</h2>
 						<TypographyControl
-							label={ __( "Excerpt Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: __( "excerptLoadGoogleFonts" ) } }

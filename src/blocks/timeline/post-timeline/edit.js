@@ -645,7 +645,7 @@ class UAGBTimeline extends Component {
 					/>
 
 					<TypographyControl
-						label={ __( "Heading Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
@@ -665,7 +665,7 @@ class UAGBTimeline extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content" ) }</h2>
 						<TypographyControl
-							label={ __( "Content Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
@@ -688,7 +688,7 @@ class UAGBTimeline extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Date" ) }</h2>
 						<TypographyControl
-							label={ __( "Date Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
@@ -711,7 +711,7 @@ class UAGBTimeline extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Author" ) }</h2>
 						<TypographyControl
-							label={ __( "Author Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: authorLoadGoogleFonts, label: __( "authorLoadGoogleFonts" ) } }
@@ -734,7 +734,7 @@ class UAGBTimeline extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "CTA" ) }</h2>
 						<TypographyControl
-							label={ __( "CTA Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
