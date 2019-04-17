@@ -219,7 +219,7 @@ export default class UAGBAdvancedHeading extends Component {
 							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
 						/>
 						<TypographyControl
-							label={ __( "Heading Typography" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
@@ -244,7 +244,7 @@ export default class UAGBAdvancedHeading extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Sub-Heading" ) }</h2>
 						<TypographyControl
-							label={ __( "Sub Heading Typography" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }

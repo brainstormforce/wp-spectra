@@ -183,7 +183,7 @@ class TypographyControl extends Component {
 		if( true !== disableFontFamily && true !== disableFontSize ) {
 			fontTypoAdvancedControls =  (
 				<div className="uag-typography-option-actions">
-					<strong>{ this.props.label }</strong>
+					<span>{ this.props.label }</span>
 					{ fontAdvancedControls }
 					{ resetFontAdvancedControls }
 				</div>
