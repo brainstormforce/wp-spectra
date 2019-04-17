@@ -10,6 +10,7 @@ function styling( props ) {
 		customWidth,
 		width,
 		widthType,
+		tColumns,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -88,6 +89,10 @@ function styling( props ) {
 			"padding-bottom": vPadding + "px",
 			"background": backgroundColor
 		},
+	}
+
+	selectors[".uagb-toc__columns-" + tColumns + " .uagb-toc__list-wrap"] = {
+		'column-count': tColumns
 	}
 
 	if ( customWidth ) {

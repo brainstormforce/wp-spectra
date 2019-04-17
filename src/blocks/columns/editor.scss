@@ -187,6 +187,26 @@
 	margin-right: 0;
 }
 
+.edit-post-visual-editor .editor-writing-flow .editor-block-list__layout .editor-block-list__block[data-type="uagb/column"] > .editor-block-list__block-edit {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.editor-block-list__layout .uagb-column__wrap .uagb-column__inner-wrap {
+    z-index: unset;
+}
+
+.editor-block-list__layout .uagb-column__wrap {
+    overflow: visible;
+}
+
+@media (min-width: 600px) {
+    .edit-post-visual-editor .editor-block-list__block[data-type="uagb/column"] .editor-block-list__block-edit {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
 @media (max-width: 976px) {
 
 	.uagb-columns__reverse-tablet.wp-block-uagb-columns > .uagb-columns__inner-wrap > .editor-inner-blocks > .editor-block-list__layout {

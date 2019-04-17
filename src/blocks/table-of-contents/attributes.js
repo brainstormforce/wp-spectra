@@ -5,10 +5,6 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
-	mapping : {
-		type : "array",
-		default : []
-	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,
@@ -31,29 +27,13 @@ const attributes = {
 	scrollToTopBgColor : {
 		type : "string",
 	},
-	considerH1 : {
-		type    : "boolean",
-		default : true,
+	mappingHeaders: {
+		type: 'array',
+		default: Array(6).fill(true)
 	},
-	considerH2 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH3 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH4 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH5 : {
-		type    : "boolean",
-		default : true,
-	},
-	considerH6 : {
-		type    : "boolean",
-		default : true,
+	headerLinks: {
+		type: 'string',
+		default: ''
 	},
 	align : {
 		type    : "string",
@@ -75,6 +55,10 @@ const attributes = {
 	width : {
 		type    : "number",
 		default : 100,
+	},
+	tColumns : {
+		type    : "number",
+		default : 1,
 	},
 
 	// Color

@@ -50,6 +50,12 @@ function styling( props ) {
 		borderWidth,
 		borderRadius,
 		borderColor,
+		mobileMarginType,
+		tabletMarginType,
+		desktopMarginType,
+		mobilePaddingType,
+		tabletPaddingType,
+		desktopPaddingType,
 	} = props.attributes
 
 	var position = backgroundPosition.replace( "-", " " )
@@ -57,15 +63,15 @@ function styling( props ) {
 	var mobile_selectors = {}
 
 	var style = {
-		"padding-top": generateCSSUnit( topPadding, "px" ),
-		"padding-bottom": generateCSSUnit( bottomPadding, "px" ),
-		"padding-left": generateCSSUnit( leftPadding, "px" ),
-		"padding-right": generateCSSUnit( rightPadding, "px" ),
-		"margin-top": generateCSSUnit( topMargin, "px" ),
-		"margin-bottom": generateCSSUnit( bottomMargin, "px" ),
-		"margin-left": generateCSSUnit( leftMargin, "px" ),
-		"margin-right": generateCSSUnit( rightMargin, "px" ),
-		"border-radius": generateCSSUnit( borderRadius, "px" ),
+		"padding-top": generateCSSUnit( topPadding, desktopPaddingType ),
+		"padding-bottom": generateCSSUnit( bottomPadding, desktopPaddingType ),
+		"padding-left": generateCSSUnit( leftPadding, desktopPaddingType ),
+		"padding-right": generateCSSUnit( rightPadding, desktopPaddingType ),
+		"margin-top": generateCSSUnit( topMargin, desktopMarginType ),
+		"margin-bottom": generateCSSUnit( bottomMargin, desktopMarginType ),
+		"margin-left": generateCSSUnit( leftMargin, desktopMarginType ),
+		"margin-right": generateCSSUnit( rightMargin, desktopMarginType ),
+		"border-radius": generateCSSUnit( borderRadius, desktopMarginType ),
 	}
 
 	if ( borderStyle != "none" ) {
@@ -91,27 +97,27 @@ function styling( props ) {
 
 	tablet_selectors = {
 		"" : {
-			"padding-top": generateCSSUnit( topPaddingTablet, "px" ),
-			"padding-bottom": generateCSSUnit( bottomPaddingTablet, "px" ),
-			"padding-left": generateCSSUnit( leftPaddingTablet, "px" ),
-			"padding-right": generateCSSUnit( rightPaddingTablet, "px" ),
-			"margin-top": generateCSSUnit( topMarginTablet, "px" ),
-			"margin-bottom": generateCSSUnit( bottomMarginTablet, "px" ),
-			"margin-left": generateCSSUnit( leftMarginTablet, "px" ),
-			"margin-right": generateCSSUnit( rightMarginTablet, "px" ),
+			"padding-top": generateCSSUnit( topPaddingTablet, tabletPaddingType ),
+			"padding-bottom": generateCSSUnit( bottomPaddingTablet, tabletPaddingType ),
+			"padding-left": generateCSSUnit( leftPaddingTablet, tabletPaddingType ),
+			"padding-right": generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
+			"margin-top": generateCSSUnit( topMarginTablet, tabletMarginType ),
+			"margin-bottom": generateCSSUnit( bottomMarginTablet, tabletMarginType ),
+			"margin-left": generateCSSUnit( leftMarginTablet, tabletMarginType ),
+			"margin-right": generateCSSUnit( rightMarginTablet, tabletMarginType ),
 		}
 	}
 
 	mobile_selectors = {
 		"" : {
-			"padding-top": generateCSSUnit( topPaddingMobile, "px" ),
-			"padding-bottom": generateCSSUnit( bottomPaddingMobile, "px" ),
-			"padding-left": generateCSSUnit( leftPaddingMobile, "px" ),
-			"padding-right": generateCSSUnit( rightPaddingMobile, "px" ),
-			"margin-top": generateCSSUnit( topMarginMobile, "px" ),
-			"margin-bottom": generateCSSUnit( bottomMarginMobile, "px" ),
-			"margin-left": generateCSSUnit( leftMarginMobile, "px" ),
-			"margin-right": generateCSSUnit( rightMarginMobile, "px" ),
+			"padding-top": generateCSSUnit( topPaddingMobile, mobilePaddingType ),
+			"padding-bottom": generateCSSUnit( bottomPaddingMobile, mobilePaddingType ),
+			"padding-left": generateCSSUnit( leftPaddingMobile, mobilePaddingType ),
+			"padding-right": generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
+			"margin-top": generateCSSUnit( topMarginMobile, mobileMarginType ),
+			"margin-bottom": generateCSSUnit( bottomMarginMobile, mobileMarginType ),
+			"margin-left": generateCSSUnit( leftMarginMobile, mobileMarginType ),
+			"margin-right": generateCSSUnit( rightMarginMobile, mobileMarginType ),
 		}
 	}
 

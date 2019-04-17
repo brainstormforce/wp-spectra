@@ -5,8 +5,6 @@
 import classnames from "classnames"
 import styling from "./styling"
 import map from "lodash/map"
-import generateContent from "./generateContent"
-import getMapping from "./getMapping"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
@@ -14,7 +12,7 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-
+import TableOfContents from './components';
 
 const { __ } = wp.i18n
 
@@ -35,6 +33,7 @@ const {
 	Button,
 	ButtonGroup,
 	PanelBody,
+	PanelRow,
 	SelectControl,
 	RangeControl,
 	ToggleControl
@@ -54,16 +53,13 @@ class UAGBTableOfContentsEdit extends Component {
 	 */
 	regenerateTable() {
 
-		const { mapping } = this.props.attributes
 		const { setAttributes } = this.props
-		setAttributes( { mapping: getMapping( this.props ) } )
 	}
 
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
-		this.props.setAttributes( { mapping: getMapping( this.props ) } )
 
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
@@ -82,23 +78,17 @@ class UAGBTableOfContentsEdit extends Component {
 
 		const {
 			align,
-			mapping,
 			heading,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
-			considerH1,
-			considerH2,
-			considerH3,
-			considerH4,
-			considerH5,
-			considerH6,
 			scrollToTop,
 			scrollToTopColor,
 			scrollToTopBgColor,
 			customWidth,
 			width,
 			widthType,
+			tColumns,
 			//Color
 			backgroundColor,
 			linkColor,
@@ -138,6 +128,8 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeight,
 			headingLineHeightTablet,
 			headingLineHeightMobile,
+			headerLinks,
+			mappingHeaders,
 		} = attributes
 
 		let loadGFonts
@@ -188,12 +180,6 @@ class UAGBTableOfContentsEdit extends Component {
 			}
 		}
 
-		let html = generateContent( this.props )
-
-		if ( "" == html || undefined == html ) {
-			html = "<p>NOTE: There are no headings on this post with the selected Heading Tags.</p>"
-		}
-
 		return (
 			<Fragment>
 				<BlockControls>
@@ -206,38 +192,28 @@ class UAGBTableOfContentsEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
+
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
-						<ToggleControl
-							label={ __( "H1" ) }
-							checked={ considerH1 }
-							onChange={ ( value ) => setAttributes( { considerH1: ! considerH1 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H2" ) }
-							checked={ considerH2 }
-							onChange={ ( value ) => setAttributes( { considerH2: ! considerH2 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H3" ) }
-							checked={ considerH3 }
-							onChange={ ( value ) => setAttributes( { considerH3: ! considerH3 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H4" ) }
-							checked={ considerH4 }
-							onChange={ ( value ) => setAttributes( { considerH4: ! considerH4 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H5" ) }
-							checked={ considerH5 }
-							onChange={ ( value ) => setAttributes( { considerH5: ! considerH5 } ) }
-						/>
-						<ToggleControl
-							label={ __( "H6" ) }
-							checked={ considerH6 }
-							onChange={ ( value ) => setAttributes( { considerH6: ! considerH6 } ) }
-						/>
+						{mappingHeaders.map((a, i) => (
+							<PanelRow>
+								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i +
+									1}`}</label>
+								<ToggleControl
+									id={`ub_toggle_h${i + 1}`}
+									checked={a}
+									onChange={() =>
+										setAttributes({
+											mappingHeaders: [
+												...mappingHeaders.slice(0, i),
+												!mappingHeaders[i],
+												...mappingHeaders.slice(i + 1)
+											]
+										})
+									}
+								/>
+							</PanelRow>
+						))}
 					</PanelBody>
 					<PanelBody title={ __( "Scroll" ) } initialOpen={ false }>
 						<ToggleControl
@@ -385,6 +361,13 @@ class UAGBTableOfContentsEdit extends Component {
 								/>
 							</Fragment>
 						}
+						<RangeControl
+							label={ __( "Columns" ) }
+							value={ tColumns }
+							onChange={ ( value ) => setAttributes( { tColumns: value } ) }
+							min={ 1 }
+							max={ 10 }
+						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Padding (px)" ) }</h2>
 						<RangeControl
@@ -452,7 +435,8 @@ class UAGBTableOfContentsEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					className,
-					`uagb-toc__align-${align}`
+					`uagb-toc__align-${align}`,
+					`uagb-toc__columns-${tColumns}`
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
@@ -465,9 +449,14 @@ class UAGBTableOfContentsEdit extends Component {
 							multiline={ false }
 							onRemove={ () => props.onReplace( [] ) }
 						/>
-						<div className="uagb-toc__list-wrap">
-							<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
-						</div>
+						<TableOfContents
+							align={align}
+							numcolumns={tColumns}
+							heading={heading}
+							mappingHeaders={mappingHeaders}
+							headers={headerLinks && JSON.parse(headerLinks)}
+							blockProp={this.props}
+						/>
 					</div>
 				</div>
 				{ loadGFonts }

@@ -164,27 +164,34 @@ function TestimonialStyle( props ) {
 		},
 	}
 
+	if( test_item_count == columns ) {
+		selectors[".uagb-slick-carousel"] = {
+			"padding": '0',
+		}
+	}
+
 	if ( borderStyle != "none" ) {
-		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
+
+		selectors[" .uagb-testimonial__wrap .uagb-tm__content"] = {
 			"border-color": borderColor,
 			"border-style": borderStyle,
 			"border-width": generateCSSUnit( borderWidth, "px" ),
 			"border-radius": generateCSSUnit( borderRadius, "px" ),
 		}
 	}else{
-		selectors[".uagb-testimonial__wrap .uagb-tm__content"] = {
+		selectors[" .uagb-testimonial__wrap .uagb-tm__content"] = {
 			"border-radius": generateCSSUnit( borderRadius, "px" ),
 		}
 	}
 
 	if( arrowDots === "dots"){
-		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
+		selectors[" .uagb-slick-carousel.uagb-tm__arrow-outside"] = {
 			"padding" : "0 0 35px 0",
 		}
 	}
 
 	if( test_item_count === 1 || test_item_count === columns ){
-		selectors[".uagb-slick-carousel.uagb-tm__arrow-outside"] = {
+		selectors[" .uagb-slick-carousel.uagb-tm__arrow-outside"] = {
 			"padding" : "0",
 		}
 	}
@@ -215,7 +222,7 @@ function TestimonialStyle( props ) {
 		},
 		" .uagb-tm__author-name": {
 			"font-size" : generateCSSUnit( nameFontSizeTablet, nameFontSizeType ),
-			"line-height": generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),			
+			"line-height": generateCSSUnit( nameLineHeightTablet, nameLineHeightType ),
 		},
 		" .uagb-tm__content": {
 			"text-align" : "center",

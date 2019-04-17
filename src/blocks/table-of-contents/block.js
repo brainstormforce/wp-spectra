@@ -8,7 +8,7 @@ import "./style.scss"
 import "./editor.scss"
 import attributes from "./attributes"
 import edit from "./edit"
-import generateContent from "./generateContent"
+import TableOfContents from './components';
 
 
 const { __ } = wp.i18n
@@ -36,29 +36,42 @@ registerBlockType( "uagb/table-of-contents", {
 	edit,
 	save: props => {
 
+
+		const { className } = props
+
 		const {
 			align,
 			block_id,
-			heading
+			tColumns,
+			heading,
+			headerLinks,
+			mappingHeaders,
+			scrollToTop
 		} = props.attributes
 
-		let html = generateContent( props )
-
 		return (
+
 			<div className={ classnames(
-				props.className,
-				`uagb-toc__align-${align}`
+				className,
+				`uagb-toc__align-${align}`,
+				`uagb-toc__columns-${tColumns}`
 			) }
 			id={ `uagb-toc-${ block_id }` }>
 				<div className="uagb-toc__wrap">
+
 					<RichText.Content
 						value={ heading }
 						tagName='div'
 						className='uagb-toc__title'
 					/>
-					<div className="uagb-toc__list-wrap">
-						<ul className="uagb-toc__list" dangerouslySetInnerHTML={ { __html: html } }></ul>
-					</div>
+					<TableOfContents
+						align={align}
+						numcolumns={tColumns}
+						scrollToTop={scrollToTop}
+						mappingHeaders={mappingHeaders}
+						headers={headerLinks && JSON.parse(headerLinks)}
+						blockProp={props}
+					/>
 				</div>
 			</div>
 		)

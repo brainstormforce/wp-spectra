@@ -14,13 +14,14 @@ module.exports = function(grunt) {
 					"!node_modules/**",
 					"!.git/**",
 					"!*.sh",
+					"!*.zip",
 					"!eslintrc.json",
 					"!README.md",
 					"!Gruntfile.js",
 					"!package.json",
 					"!package-lock.json",
 					"!.gitignore",
-					"!ultimate-addons-for-gutenberg.zip",
+					"!*.zip",
 					"!Optimization.txt",
 					"!composer.json",
 					"!composer.lock",
@@ -36,7 +37,7 @@ module.exports = function(grunt) {
 		compress: {
 			main: {
 				options: {
-					archive: "ultimate-addons-for-gutenberg.zip",
+					archive: "ultimate-addons-for-gutenberg-<%= pkg.version %>.zip",
 					mode: "zip"
 				},
 				files: [
@@ -51,7 +52,7 @@ module.exports = function(grunt) {
 		},
 		clean: {
 			main: ["ultimate-addons-for-gutenberg"],
-			zip: ["ultimate-addons-for-gutenberg.zip"],
+			zip: ["*.zip"],
 		},
 		makepot: {
 			target: {
@@ -144,10 +145,10 @@ module.exports = function(grunt) {
 
 	// Default
 	//grunt.registerTask('default', ['style']);
-    
+
 	// Version Bump `grunt bump-version --ver=<version-number>`
 	grunt.registerTask( "bump-version", function() {
-		
+
 		var newVersion = grunt.option("ver")
 
 		if ( newVersion ) {
