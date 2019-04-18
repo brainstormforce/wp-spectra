@@ -4606,13 +4606,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$settings = json_encode($slick_options);
 			$selector =	'#uagb-testimonial-'. $id;
-			?>
-			if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){
-				return true
-			} else {
-				jQuery( "<?php echo $selector ?>" ).find( ".is-carousel" ).slick( <?php echo $settings ?> );
-			}
-			<?php
+			$js = 'if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){ ' .
+				'return true ' .
+				'} else {' .
+				'jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' );'.
+			'}';
+
+			return $js;
 			// @codingStandardsIgnoreEnd.
 		}
 
@@ -4645,14 +4645,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selector =	'#uagb-blockquote-'. $id;
 
-			?>
-				jQuery( "<?php echo $selector ?>" ).find( ".uagb-blockquote__tweet-button" ).click(function(){
-				  var content = jQuery("<?php echo $selector ?>").find(".uagb-blockquote__content").text();
-				  var request_url = "https://twitter.com/share?url="+ encodeURIComponent("<?php echo $url ?>")+"&text="+content+"&via="+("<?php echo $via;?>");
-				  window.open( request_url );
-				});
-			<?php
+			$js = 'jQuery( "' . $selector . '" ).find( ".uagb-blockquote__tweet-button" ).click(function(){'.
+				  'var content = jQuery("' . $selector . '").find(".uagb-blockquote__content").text();'.
+				  'var request_url = "https://twitter.com/share?url="+ encodeURIComponent("' . $url . '")+"&text="+content+"&via="+("' . $via . '");'.
+				  'window.open( request_url );'.
+				'});';
 
+			return $js;
 			// @codingStandardsIgnoreEnd.
 		}
 
@@ -4664,17 +4663,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_social_share_js( $id ) {
 			$selector = '#uagb-social-share-' . $id;
-			?>
-				jQuery( "<?php echo $selector; ?>" ).find( ".uagb-ss__link" ).click(function(){
-					var social_url = jQuery( this ).data( "href" );
-					var target = "";
-					if( social_url == "mailto:?body=" ){
-						target = "_self";
-					}
-					var request_url = social_url + window.location.href ;
-					window.open( request_url,target );
-				});
-			<?php
+			$js       = 'jQuery( " ' . $selector . ' " ).find( ".uagb-ss__link" ).click(function(){ ' .
+					'var social_url = jQuery( this ).data( "href" ); ' .
+					'var target = ""; ' .
+					'if( social_url == "mailto:?body=" ){ ' .
+						'target = "_self";' .
+					'}' .
+					'var request_url = social_url + window.location.href ;' .
+					'window.open( request_url,target );' .
+				'});';
+
+			return $js;
+		}
+
+		/**
+		 * Get Table of Contents Js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_table_of_contents_js( $attr, $id ) {
+			// @codingStandardsIgnoreStart.
+
+			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selector =	'#uagb-toc-'. $id;
+
+			$js = 'jQuery( document ).ready(function() { ' .
+					 'UAGBTableOfContents._run( ' . json_encode( $attr ) . ', "'. $selector .'" ); '.
+				'})';
+
+			return $js;
+			// @codingStandardsIgnoreEnd.
 		}
 
 		/**
