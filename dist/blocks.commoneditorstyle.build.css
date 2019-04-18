@@ -12,7 +12,7 @@
     border-top: none;
     border-left: none;
     border-right: none;
-    border-bottom: 5px solid #eee;
+    border-bottom: 3px solid #eee;
     cursor: pointer;
     -webkit-transition: all 0.2s;
     -o-transition: all 0.2s;
@@ -25,7 +25,7 @@ hr.uagb-editor__separator {
 
 .uagb-inspect-tabs > .components-tab-panel__tabs button.active-tab,
 .uagb-inspect-tabs > .components-tab-panel__tabs button:focus {
-	border-bottom: 5px solid #333;
+	border-bottom: 3px solid #333;
 	outline:none;
 	font-weight:500;
 }
@@ -217,6 +217,11 @@ hr.uagb-editor__separator {
     outline: none
 }
 
+.components-button-group .components-button.is-button {
+	position: relative;
+	z-index: 1;
+}
+
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled=true]) {
     color: #000;
     background: transparent;
@@ -289,7 +294,7 @@ hr.uagb-editor__separator {
 }*/
 
 .uag-typography-option-actions {
-    padding: 10px 0;
+    margin-bottom: 1.5em;
 }
 
 .uag-typography-font-family-options .components-base-control__field {

@@ -641,7 +641,7 @@ class UAGBTeam extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Title" ) }</h2>
 						<TypographyControl
-							label={ __( "Title" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
@@ -660,7 +660,7 @@ class UAGBTeam extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Prefix" ) }</h2>
 						<TypographyControl
-							label={ __( "Prefix" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: prefixLoadGoogleFonts, label: __( "prefixLoadGoogleFonts" ) } }
@@ -679,7 +679,7 @@ class UAGBTeam extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Description" ) }</h2>
 						<TypographyControl
-							label={ __( "Description" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
@@ -698,7 +698,7 @@ class UAGBTeam extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Social Icons" ) }</h2>
 						<TypographyControl
-							label={ __( "Social" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							fontSizeType = { { value: socialFontSizeType, label: __( "socialFontSizeType" ) } }

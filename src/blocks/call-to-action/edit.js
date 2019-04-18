@@ -232,7 +232,7 @@ class UAGBCallToAction extends Component {
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
 						<TypographyControl
-							label={ __( "CTA Font Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
@@ -506,7 +506,7 @@ class UAGBCallToAction extends Component {
 				/>
 
 				<TypographyControl
-					label={ __( "Title Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
@@ -531,7 +531,7 @@ class UAGBCallToAction extends Component {
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( "Description" ) }</h2>
 				<TypographyControl
-					label={ __( "Description Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }

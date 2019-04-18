@@ -375,6 +375,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 	                        $css['tablet'] = $css_tablet . $inner_block_css['tablet'];
 	                        $css['mobile'] = $css_mobile . $inner_block_css['mobile'];
                         }
+
                     }
                 }
             }

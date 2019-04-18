@@ -678,7 +678,7 @@ class UAGBBlockQuote extends Component {
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<h2>{ __( "Quote" ) }</h2>
 					<TypographyControl
-						label={ __( "Quote Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
@@ -705,7 +705,7 @@ class UAGBBlockQuote extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Author" ) }</h2>
 					<TypographyControl
-						label={ __( "Author Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: authorLoadGoogleFonts, label: __( "authorLoadGoogleFonts" ) } }
@@ -941,7 +941,7 @@ class UAGBBlockQuote extends Component {
 				
 				{ enableTweet && <Fragment>
 					<TypographyControl
-						label={ __( "Tweet Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: tweetBtnLoadGoogleFonts, label: __( "tweetBtnLoadGoogleFonts" ) } }
