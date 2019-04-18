@@ -638,6 +638,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function get_scripts( $blocks ) {
 
 			$js = '';
+			$js_data = '';
 			foreach ( $blocks as $i => $block ) {
 				if ( is_array( $block ) ) {
 					if ( 'core/block' == $block['blockName'] ) {
@@ -657,9 +658,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			$js_data = '( function( $ ) {' . $js . '})(jQuery)';
+			echo "check here";
+			var_dump( ! empty( $js ) );
+			if( ! empty( $js ) ) {
+				$js_data = '( function( $ ) {' . $js . '})(jQuery)';
+				self::file_write( $js_data, 'js' );
+			}
 
-			self::file_write( $js_data, 'js' );
 
 		}
 
@@ -1167,21 +1172,25 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Returns an array of paths for the CSS and JS assets
 		 * of the current post.
 		 *
+		 * @param  var $data    Gets the CSS\JS for the current Page.
+		 * @param  var $type    Gets the CSS\JS type.
 		 * @since x.x.x
 		 * @return array
 		 */
-		public static function get_asset_info() {
+		public static function get_asset_info( $data, $type ) {
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
 			$css_suffix  = '-uag-style';
 			$js_suffix   = '-uag-script';
+			$info = array();
 
-			$info = array(
-				'css'     => $uploads_dir['path'] . $post_id . $css_suffix . '.css',
-				'js'      => $uploads_dir['path'] . $post_id . $js_suffix . '.js',
-				'css_url' => $uploads_dir['url'] . $post_id . $css_suffix . '.css',
-				'js_url'  => $uploads_dir['url'] . $post_id . $js_suffix . '.js',
-			);
+			if( ! empty( $data ) && 'css' === $type ) {
+				$info['css'] = $uploads_dir['path'] . $post_id . $css_suffix . '.css';
+				$info['css_url'] = $uploads_dir['url'] . $post_id . $css_suffix . '.css';
+			} else if( ! empty( $data ) && 'js' === $type ) {
+				$info['js'] = $uploads_dir['path'] . $post_id . $js_suffix . '.js';
+				$info['js_url'] = $uploads_dir['url'] . $post_id . $js_suffix . '.js';
+			}
 
 			return $info;
 		}
@@ -1196,13 +1205,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$assets_info = self::get_asset_info();
+			$assets_info = self::get_asset_info( $style_data, $type );
 
 			if ( 'css' === $type ) {
 				$var = 'css';
 			} else {
 				$var = 'js';
 			}
+
 			$handle   = fopen( $assets_info[ $var ], 'a' );
 			$old_data = file_get_contents( $assets_info[ $var ] );
 
