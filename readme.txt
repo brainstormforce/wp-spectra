@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.0-dev.1 =
 * Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
+* Improvement: Advanced Columns - Introduced Gradient Overlay for background type of Image.
 * Improvement: Advanced Columns - Custom Inner Width % compatibility
 * Improvement: Section - Added px/% option for margin and padding spacing.
 * Improvement: Section - Introduced Gradient overlay option for Image background.

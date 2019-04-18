@@ -139,6 +139,13 @@ export default class UAGBColumnEdit extends Component {
 				align,
 				alignMobile,
 				alignTablet,
+				overlayType,
+				gradientOverlayColor1,
+				gradientOverlayColor2,
+				gradientOverlayType,
+				gradientOverlayLocation1,
+				gradientOverlayLocation2,
+				gradientOverlayAngle,
 				mobileMarginType,
 				tabletMarginType,
 				desktopMarginType,
@@ -776,14 +783,78 @@ export default class UAGBColumnEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<Fragment>
-											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
-											<ColorPalette
-												value={ backgroundImageColor }
-												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
-												allowReset
-											/>
-										</Fragment>
+										<SelectControl
+											label={ __( "Image Overlay Type" ) }
+											value={ overlayType }
+											onChange={ ( value ) => setAttributes( { overlayType: value } ) }
+											options={ [
+												{ value: "color", label: __( "Color" ) },
+												{ value: "gradient", label: __( "Gradient" ) },
+											] }
+										/>
+										{ "color" == overlayType &&<Fragment>
+												<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
+												<ColorPalette
+													value={ backgroundImageColor }
+													onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+													allowReset
+												/>
+											</Fragment>
+										}
+
+										{ "gradient" == overlayType &&
+											( <Fragment>
+												<PanelColorSettings
+													title={ __( "Color Settings" ) }
+													colorSettings={ [
+														{
+															value: gradientOverlayColor2,
+															onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
+															label: __( "Color 1" ),
+														},
+														{
+															value: gradientOverlayColor1,
+															onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
+															label: __( "Color 2" ),
+														},
+													] }
+												>
+												</PanelColorSettings>
+												<SelectControl
+													label={ __( "Type" ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear" ) },
+														{ value: "radial", label: __( "Radial" ) },
+													] }
+												/>
+												<RangeControl
+													label={ __( "Location 1" ) }
+													value={ gradientOverlayLocation1 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 2" ) }
+													value={ gradientOverlayLocation2 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation2: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Angle" ) }
+													value={ gradientOverlayAngle }
+													onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+													min={ 0 }
+													max={ 360 }
+													allowReset
+												/>
+											</Fragment> )
+										}
 									</Fragment> )
 								}
 							</Fragment> )
@@ -1090,6 +1161,32 @@ registerBlockType( "uagb/column", {
 		},
 		borderColor : {
 			type: "string"
+		},
+		overlayType: {
+			type: "string",
+			default: "color"
+		},
+		gradientOverlayColor1: {
+			type: "string",
+		},
+		gradientOverlayColor2: {
+			type: "string",
+		},
+		gradientOverlayType: {
+			type: "string",
+			default: "linear"
+		},
+		gradientOverlayLocation1: {
+			type: "number",
+			default: 0
+		},
+		gradientOverlayLocation2: {
+			type: "number",
+			default: 100
+		},
+		gradientOverlayAngle: {
+			type: "number",
+			default: 0
 		},
 		mobileMarginType: {
 			type: "string",
