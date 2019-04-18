@@ -103,6 +103,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'bottomMarginTablet'     => '',
 							'contentWidth'           => 'theme',
 							'width'                  => '900',
+							'widthType'              => 'px',
 							'tag'                    => 'section',
 							'backgroundType'         => 'none',
 							'backgroundImage'        => '',

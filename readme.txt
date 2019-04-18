@@ -156,11 +156,13 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.0-dev.1 =
 * Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
+* Improvement: Advanced Columns - Custom Inner Width % compatibility
 * Improvement: Section - Added px/% option for margin and padding spacing.
 * Improvement: Section - Introduced Gradient overlay option for Image background.
 * Improvement: Testimonials - Added filter `uagb_testimonials_slick_options` to change the slick options.
 * Fix: Button - Text align justified option not working.
 * Fix: Icon list – Underline issue with 2017/2019 theme.
+* Fix: Post timeline- Disable image option not working.
 
 = 1.12.5 =
 * Fix: Testimonial - Border options not working in editor.
