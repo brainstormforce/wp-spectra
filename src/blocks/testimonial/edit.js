@@ -341,7 +341,7 @@ class UAGBtestimonial extends Component {
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false } >
 					<h2>{ __( "Testimonial" ) }</h2>
 					<TypographyControl
-						label={ __( "Desc Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
@@ -361,7 +361,7 @@ class UAGBtestimonial extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Name" ) }</h2>
 					<TypographyControl
-						label={ __( "Name Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: nameLoadGoogleFonts, label: __( "nameLoadGoogleFonts" ) } }
@@ -381,7 +381,7 @@ class UAGBtestimonial extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Company" ) }</h2>
 					<TypographyControl
-						label={ __( "Company Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: companyLoadGoogleFonts, label: __( "companyLoadGoogleFonts" ) } }

@@ -289,7 +289,7 @@ hr.uagb-editor__separator {
 }*/
 
 .uag-typography-option-actions {
-    padding: 10px 0;
+    margin-bottom: 1.5em;
 }
 
 .uag-typography-font-family-options .components-base-control__field {

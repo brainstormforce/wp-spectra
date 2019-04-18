@@ -499,7 +499,7 @@ class UAGBinfoBox extends Component {
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
 					<TypographyControl
-						label={ __( "CTA Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
@@ -761,7 +761,7 @@ class UAGBinfoBox extends Component {
 				{ showPrefix &&
 					<Fragment>
 						<TypographyControl
-							label={ __( "Prefix Font Tag" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: prefixLoadGoogleFonts, label: __( "prefixLoadGoogleFonts" ) } }
@@ -807,7 +807,7 @@ class UAGBinfoBox extends Component {
 						] }
 					/>
 					<TypographyControl
-						label={ __( "Title Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
@@ -839,7 +839,7 @@ class UAGBinfoBox extends Component {
 				/>
 				{ showDesc && <Fragment>
 					<TypographyControl
-						label={ __( "Description Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
