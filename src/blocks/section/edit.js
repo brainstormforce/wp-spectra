@@ -168,10 +168,19 @@ class UAGBSectionEdit extends Component {
 			gradientLocation2,
 			gradientType,
 			gradientAngle,
+			gradientPosition,
 			backgroundOpacity,
 			backgroundVideoColor,
 			backgroundVideoOpacity,
 			backgroundImageColor,
+			overlayType,
+			gradientOverlayColor1,
+			gradientOverlayColor2,
+			gradientOverlayType,
+			gradientOverlayLocation1,
+			gradientOverlayLocation2,
+			gradientOverlayAngle,
+			gradientOverlayPosition,
 			borderStyle,
 			borderWidth,
 			borderRadius,
@@ -702,44 +711,103 @@ class UAGBSectionEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<Fragment>
+										<SelectControl
+											label={ __( "Image Overlay Type" ) }
+											value={ overlayType }
+											onChange={ ( value ) => setAttributes( { overlayType: value } ) }
+											options={ [
+												{ value: "color", label: __( "Color" ) },
+												{ value: "gradient", label: __( "Gradient" ) },
+											] }
+										/>
+										{ overlayType == 'color' && <Fragment>
 											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
 											<ColorPalette
 												value={ backgroundImageColor }
 												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
 												allowReset
 											/>
-										</Fragment>
+											</Fragment>
+										}
+
+										{ "gradient" == overlayType &&
+											( <Fragment>
+												<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+												<ColorPalette
+													value={ gradientOverlayColor1 }
+													onChange={ ( colorValue ) => setAttributes( { gradientOverlayColor1: colorValue } ) }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 1" ) }
+													value={ gradientOverlayLocation1 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<p className="uagb-setting-label">{ __( "Color 2" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+												<ColorPalette
+													value={ gradientOverlayColor2 }
+													onChange={ ( colorValue ) => setAttributes( { gradientOverlayColor2: colorValue } ) }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 2" ) }
+													value={ gradientOverlayLocation2 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation2: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<SelectControl
+													label={ __( "Type" ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear" ) },
+														{ value: "radial", label: __( "Radial" ) },
+													] }
+												/>
+												{ "linear" == gradientOverlayType && <RangeControl
+														label={ __( "Angle" ) }
+														value={ gradientOverlayAngle }
+														onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+														min={ 0 }
+														max={ 360 }
+														allowReset
+													/>
+												}
+												{ "radial" == gradientOverlayType && <SelectControl
+														label={ __( "Type" ) }
+														value={ gradientOverlayPosition }
+														onChange={ ( value ) => setAttributes( { gradientOverlayPosition: value } ) }
+														options={ [
+															{ value: "center center", label: __( "Center Center" ) },
+															{ value: "center left", label: __( "Center Left" ) },
+															{ value: "center right", label: __( "Center Right" ) },
+															{ value: "top center", label: __( "Top Center" ) },
+															{ value: "top left", label: __( "Top Left" ) },
+															{ value: "top right", label: __( "Top Right" ) },
+															{ value: "bottom center", label: __( "Bottom Center" ) },
+															{ value: "bottom left", label: __( "Bottom Left" ) },
+															{ value: "bottom right", label: __( "Bottom Right" ) },
+														] }
+													/>
+												}
+											</Fragment> )
+										}
 									</Fragment> )
 								}
 							</Fragment> )
 						}
 						{ "gradient" == backgroundType &&
 							( <Fragment>
-								<PanelColorSettings
-									title={ __( "Color Settings" ) }
-									colorSettings={ [
-										{
-											value: gradientColor2,
-											onChange:( value ) => setAttributes( { gradientColor2: value } ),
-											label: __( "Color 1" ),
-										},
-										{
-											value: gradientColor1,
-											onChange:( value ) => setAttributes( { gradientColor1: value } ),
-											label: __( "Color 2" ),
-										},
-									] }
-								>
-								</PanelColorSettings>
-								<SelectControl
-									label={ __( "Type" ) }
-									value={ gradientType }
-									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
-									options={ [
-										{ value: "linear", label: __( "Linear" ) },
-										{ value: "radial", label: __( "Radial" ) },
-									] }
+								<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+								<ColorPalette
+									value={ gradientColor1 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
+									allowReset
 								/>
 								<RangeControl
 									label={ __( "Location 1" ) }
@@ -747,6 +815,12 @@ class UAGBSectionEdit extends Component {
 									onChange={ ( value ) => setAttributes( { gradientLocation1: value } ) }
 									min={ 0 }
 									max={ 100 }
+									allowReset
+								/>
+								<p className="uagb-setting-label">{ __( "Color 2" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+								<ColorPalette
+									value={ gradientColor2 }
+									onChange={ ( colorValue ) => setAttributes( { gradientColor2: colorValue } ) }
 									allowReset
 								/>
 								<RangeControl
@@ -757,14 +831,41 @@ class UAGBSectionEdit extends Component {
 									max={ 100 }
 									allowReset
 								/>
-								<RangeControl
-									label={ __( "Angle" ) }
-									value={ gradientAngle }
-									onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
-									min={ 0 }
-									max={ 360 }
-									allowReset
+								<SelectControl
+									label={ __( "Type" ) }
+									value={ gradientType }
+									onChange={ ( value ) => setAttributes( { gradientType: value } ) }
+									options={ [
+										{ value: "linear", label: __( "Linear" ) },
+										{ value: "radial", label: __( "Radial" ) },
+									] }
 								/>
+								{ "linear" == gradientType && <RangeControl
+										label={ __( "Angle" ) }
+										value={ gradientAngle }
+										onChange={ ( value ) => setAttributes( { gradientAngle: value } ) }
+										min={ 0 }
+										max={ 360 }
+										allowReset
+									/>
+								}
+								{ "radial" == gradientType && <SelectControl
+										label={ __( "Type" ) }
+										value={ gradientPosition }
+										onChange={ ( value ) => setAttributes( { gradientPosition: value } ) }
+										options={ [
+											{ value: "center center", label: __( "Center Center" ) },
+											{ value: "center left", label: __( "Center Left" ) },
+											{ value: "center right", label: __( "Center Right" ) },
+											{ value: "top center", label: __( "Top Center" ) },
+											{ value: "top left", label: __( "Top Left" ) },
+											{ value: "top right", label: __( "Top Right" ) },
+											{ value: "bottom center", label: __( "Bottom Center" ) },
+											{ value: "bottom left", label: __( "Bottom Left" ) },
+											{ value: "bottom right", label: __( "Bottom Right" ) },
+										] }
+									/>
+								}
 							</Fragment> )
 						}
 						{ "video" == backgroundType && (

@@ -29,6 +29,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, $attr );
 
 			$bg_type = ( isset( $attr['backgroundType'] ) ) ? $attr['backgroundType'] : 'none';
+			$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
+			$gradientOverlayPosition = ( isset( $attr['gradientOverlayPosition'] ) ) ? $attr['gradientOverlayPosition'] : 'center center';
+			$gradientPosition = ( isset( $attr['gradientPosition'] ) ) ? $attr['gradientPosition'] : 'center center';
 
 			$style = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
@@ -124,10 +127,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['backgroundVideoColor'],
 				);
 			} else if ( 'image' == $bg_type ) {
-				$selectors[' > .uagb-section__overlay'] = array(
-					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
-					'background-color' => $attr['backgroundImageColor'],
-				);
+				if( 'color' == $overlay_type ){
+					$selectors[' > .uagb-section__overlay'] = array(
+						'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : 0,
+						'background-color' => $attr['backgroundImageColor'],
+					);
+				}else{
+					$selectors[' > .uagb-section__overlay']['background-color'] = 'transparent';
+					$selectors[' > .uagb-section__overlay']['opacity'] =  ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "";
+
+					if ( 'linear' === $attr['gradientOverlayType'] ) {
+
+						$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientOverlayAngle'] . 'deg, ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					} else {
+
+						$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientOverlayPosition . ', ' . $attr['gradientOverlayColor1'] . ' ' . $attr['gradientOverlayLocation1'] . '%, ' . $attr['gradientOverlayColor2'] . ' ' . $attr['gradientOverlayLocation2'] . '%)';
+					}
+				}
 			} else if ( 'color' == $bg_type ) {
 				$selectors[' > .uagb-section__overlay'] = array(
 					'opacity' => ( isset( $attr['backgroundOpacity'] ) && '' != $attr['backgroundOpacity'] ) ? $attr['backgroundOpacity'] / 100 : "",
@@ -141,8 +157,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 					$selectors[' > .uagb-section__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 				} else {
-
-					$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $attr['gradientPosition'] . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
+					$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 				}
 			}
 
@@ -257,12 +272,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$inner_width = '100%';
-
+			
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
-					$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
+					$inner_width = UAGB_Helper::get_css_value( $content_width, $attr['widthType'] );
 				} else if ( 'custom' == $attr['contentWidth'] ) {
-					$inner_width = UAGB_Helper::get_css_value( $attr['width'], 'px' );
+					$inner_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthType'] );
 				}
 			}
 
