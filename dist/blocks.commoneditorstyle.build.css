@@ -217,6 +217,11 @@ hr.uagb-editor__separator {
     outline: none
 }
 
+.components-button-group .components-button.is-button {
+	position: relative;
+	z-index: 1;
+}
+
 .uagb-size-type-field button.components-button.uagb-size-btn:hover,.uagb-size-type-field button.components-button.uagb-size-btn:hover:focus:not(:disabled):not([aria-disabled=true]) {
     color: #000;
     background: transparent;

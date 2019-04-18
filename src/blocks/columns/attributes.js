@@ -92,6 +92,10 @@ const attributes = {
 		type: "number",
 		default: 900
 	},
+	widthType: {
+		type: "string",
+		default: "px"
+	},
 	tag: {
 		type: "string",
 		default: "section"

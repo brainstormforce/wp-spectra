@@ -140,6 +140,7 @@ class UAGBColumns extends Component {
 			vAlign,
 			contentWidth,
 			width,
+			widthType,
 			tag,
 			columnGap,
 			topMargin,
@@ -563,13 +564,21 @@ class UAGBColumns extends Component {
 						/>
 						{
 							contentWidth == "custom" &&
-							( <RangeControl
-								label={ __( "Inner Width" ) }
-								value={ width }
-								min={ 0 }
-								max={ 2000 }
-								onChange={ ( value ) => setAttributes( { width: value } ) }
-							/> )
+							( 
+								<Fragment>
+									<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+										<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
+										<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
+									</ButtonGroup>
+									<RangeControl
+										label={ __( "Inner Width" ) }
+										value={ width }
+										min={ 0 }
+										max={ ( "%" == widthType ) ? 100 : 2000 }
+										onChange={ ( value ) => setAttributes( { width: value } ) }
+									/>
+								</Fragment>
+							 )
 						}
 						<SelectControl
 							label={ __( "Column Gap" ) }
