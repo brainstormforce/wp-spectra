@@ -262,7 +262,7 @@ class UAGBMarketingButtonEdit extends Component {
 					<PanelBody	title={ __( "Content" ) } initialOpen={ false }	>
 						<h2>{ __( "Title" ) }</h2>
 						<TypographyControl
-							label={ __( "Title Font" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadTitleGoogleFonts, label: __( "loadTitleGoogleFonts" ) } }
@@ -281,7 +281,7 @@ class UAGBMarketingButtonEdit extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Description" ) }</h2>
 						<TypographyControl
-							label={ __( "Description Font" ) }
+							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: loadPrefixGoogleFonts, label: __( "loadPrefixGoogleFonts" ) } }
