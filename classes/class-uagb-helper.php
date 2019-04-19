@@ -658,14 +658,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			echo "check here";
-			var_dump( ! empty( $js ) );
 			if( ! empty( $js ) ) {
 				$js_data = '( function( $ ) {' . $js . '})(jQuery)';
 				self::file_write( $js_data, 'js' );
 			}
-
-
 		}
 
 		/**
@@ -1177,20 +1173,32 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since x.x.x
 		 * @return array
 		 */
-		public static function get_asset_info( $data, $type ) {
+		public static function get_asset_info( $data, $type, $timestamp ) {
+
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
 			$css_suffix  = '-uag-style';
 			$js_suffix   = '-uag-script';
 			$info = array();
 
-			if( ! empty( $data ) && 'css' === $type ) {
-				$info['css'] = $uploads_dir['path'] . $post_id . $css_suffix . '.css';
-				$info['css_url'] = $uploads_dir['url'] . $post_id . $css_suffix . '.css';
-			} else if( ! empty( $data ) && 'js' === $type ) {
-				$info['js'] = $uploads_dir['path'] . $post_id . $js_suffix . '.js';
-				$info['js_url'] = $uploads_dir['url'] . $post_id . $js_suffix . '.js';
+			$post_meta = get_post_meta( get_the_ID() );
+			$post_timestamp = $post_meta['uagb_style_timestamp'][0];
+
+			if( '' != $timestamp ) {
+				$tme = ( isset( $post_meta['uagb_style_timestamp'] ) ) ? $post_timestamp : $timestamp ;
+			} else {
+				$tme = $timestamp;
 			}
+
+			if( ! empty( $data ) && 'css' === $type ) {
+				$info['css'] = $uploads_dir['path'] . $post_id . '-' . $tme . $css_suffix . '.css';
+				$info['css_url'] = $uploads_dir['url'] . $post_id . '-' . $tme . $css_suffix . '.css';
+			} else if( ! empty( $data ) && 'js' === $type ) {
+				$info['js'] = $uploads_dir['path'] . $post_id . '-' . $tme . $js_suffix . '.js';
+				$info['js_url'] = $uploads_dir['url'] . $post_id . '-' . $tme . $js_suffix . '.js';
+			}
+
+			$info['timestamp'] = $tme;
 
 			return $info;
 		}
@@ -1205,7 +1213,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$assets_info = self::get_asset_info( $style_data, $type );
+			$date = new DateTime();
+			$timestamp = $date->getTimestamp();
+
+			$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
 
 			if ( 'css' === $type ) {
 				$var = 'css';
@@ -1217,13 +1228,20 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$old_data = file_get_contents( $assets_info[ $var ] );
 
 			if ( $old_data != $style_data ) {
-				file_put_contents( $assets_info[ $var ], $style_data );
+
+				update_post_meta( get_the_ID(), 'uagb_style_timestamp', $timestamp );
+				$assets_info_new = self::get_asset_info( $style_data, $type, $timestamp );
+				file_put_contents( $assets_info_new[ $var ], $style_data );
+				
+				self::$css_file_handler = $assets_info_new;
+
+				unlink( $assets_info[ $var ] );
+			} else {
+				self::$css_file_handler = $assets_info;
 			}
 
 			fclose( $handle );
-
-			self::$css_file_handler = $assets_info;
-
+ 
 			return $assets_info;
 		}
 	}
