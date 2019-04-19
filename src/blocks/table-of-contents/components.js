@@ -17,28 +17,36 @@ class TableOfContents extends Component {
 				.getBlocks()
 				.filter(block => block.name === 'core/heading');
 
-		const getData = ( headerData ) => {
 
-			headerData.map(( header ) => {
+		const getData = ( headerData, a ) => {
+
+			headerData.map( ( header ) => {
 
 				let innerBlock = header.innerBlocks;
-				
-				innerBlock.forEach(function(element) {
-					if( element.innerBlocks.length > 0 ) {
-						element.innerBlocks.map( header => header.attributes )
-					} else {
-						getData( element.innerBlocks );
 
+				if( innerBlock.length > 0 ) {
+					innerBlock.forEach(function(element) {
+						if( element.innerBlocks.length > 0 ) {
+							getData( element.innerBlocks, a );
+						} else {
+							a.push( element.attributes );
+						}
+					});
+				} else {
+					if( header.name === 'core/heading' ) {
+						a.push( header.attributes );
 					}
-				});
+				}
 
 			});
+
+			return a; 
 		}
 
 		const setHeaders = () => {
-			const headers = getData( select('core/editor').getBlocks() );
+			let a = [];
+			const headers = getData( select('core/editor').getBlocks(), a );
 
-			console.log( headers );
 			if( typeof headers != 'undefined' ) {
 				headers.forEach((heading, key) => {
 					const headingAnchorEmpty =
