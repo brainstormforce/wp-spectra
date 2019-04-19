@@ -17,35 +17,65 @@ class TableOfContents extends Component {
 				.getBlocks()
 				.filter(block => block.name === 'core/heading');
 
-		const setHeaders = () => {
-			const headers = getHeaderBlocks().map(header => header.attributes);
-			headers.forEach((heading, key) => {
-				const headingAnchorEmpty =
-					typeof heading.anchor === 'undefined' ||
-					heading.anchor === '';
-				const headingContentEmpty =
-					typeof heading.content === 'undefined' ||
-					heading.content === '';
-				const headingDefaultAnchor =
-					!headingAnchorEmpty &&
-					heading.anchor.indexOf(key + '-') === 0;
-				if (
-					!headingContentEmpty &&
-					(headingAnchorEmpty || headingDefaultAnchor)
-				) {
-					heading.anchor =
-						key +
-						'-' +
-						heading.content
-							.toString()
-							.toLowerCase()
-							.replace(/( |<.+?>|&nbsp;)/g, '-');
-					heading.anchor = heading.anchor.replace(
-						/[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
-						''
-					);
+
+		const getData = ( headerData, a ) => {
+
+			headerData.map( ( header ) => {
+
+				let innerBlock = header.innerBlocks;
+
+				if( innerBlock.length > 0 ) {
+					innerBlock.forEach(function(element) {
+						if( element.innerBlocks.length > 0 ) {
+							getData( element.innerBlocks, a );
+						} else {
+							a.push( element.attributes );
+						}
+					});
+				} else {
+					if( header.name === 'core/heading' ) {
+						a.push( header.attributes );
+					}
 				}
+
 			});
+
+			return a; 
+		}
+
+		const setHeaders = () => {
+			let a = [];
+			const headers = getData( select('core/editor').getBlocks(), a );
+
+			if( typeof headers != 'undefined' ) {
+				headers.forEach((heading, key) => {
+					const headingAnchorEmpty =
+						typeof heading.anchor === 'undefined' ||
+						heading.anchor === '';
+					const headingContentEmpty =
+						typeof heading.content === 'undefined' ||
+						heading.content === '';
+					const headingDefaultAnchor =
+						!headingAnchorEmpty &&
+						heading.anchor.indexOf(key + '-') === 0;
+					if (
+						!headingContentEmpty &&
+						(headingAnchorEmpty || headingDefaultAnchor)
+					) {
+						heading.anchor =
+							key +
+							'-' +
+							heading.content
+								.toString()
+								.toLowerCase()
+								.replace(/( |<.+?>|&nbsp;)/g, '-');
+						heading.anchor = heading.anchor.replace(
+							/[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
+							''
+						);
+					}
+				});
+			}
 
 			this.setState({ headers });
 		};
