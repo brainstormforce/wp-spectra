@@ -111,6 +111,7 @@ class TableOfContents extends Component {
 		const makeHeaderArray = origHeaders => {
 			let arrays = [];
 
+			console.log( origHeaders );
 			origHeaders
 				.filter(header => mappingHeaders[header.level - 1])
 				.forEach(header => {
