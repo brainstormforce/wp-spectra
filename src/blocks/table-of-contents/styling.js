@@ -14,7 +14,9 @@ function styling( props ) {
 		widthTypeTablet,
 		widthTypeMobile,
 		widthTypeDesktop,
-		tColumns,
+		tColumnsDesktop,
+		tColumnsTablet,
+		tColumnsMobile,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -23,9 +25,16 @@ function styling( props ) {
 		scrollToTopBgColor,
 		headingColor,
 		//Padding,
-		vPadding,
-		hPadding,
+		vPaddingDesktop,
+		vPaddingTablet,
+		vPaddingMobile,
+		hPaddingDesktop,
+		hPaddingTablet,
+		hPaddingMobile,
 		headingBottom,
+		paddingTypeDesktop,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -87,16 +96,16 @@ function styling( props ) {
 			"border-width": borderWidth + "px",
 			"border-color": borderColor,
 			"border-radius": borderRadius + "px",
-			"padding-left": hPadding + "px",
-			"padding-right": hPadding + "px",
-			"padding-top": vPadding + "px",
-			"padding-bottom": vPadding + "px",
+			"padding-left": hPaddingDesktop + paddingTypeDesktop,
+			"padding-right": hPaddingDesktop + paddingTypeDesktop,
+			"padding-top": vPaddingDesktop + paddingTypeDesktop,
+			"padding-bottom": vPaddingDesktop + paddingTypeDesktop,
 			"background": backgroundColor
 		},
 	}
 
-	selectors[".uagb-toc__columns-" + tColumns + " .uagb-toc__list-wrap"] = {
-		'column-count': tColumns
+	selectors[" .uagb-toc__list-wrap"] = {
+		'column-count': tColumnsDesktop
 	}
 
 	if ( customWidth ) {
@@ -113,7 +122,14 @@ function styling( props ) {
 			"line-height" : headingLineHeightTablet + headingLineHeightType,
 		},
 		" .uagb-toc__wrap" : {
-			"width" : widthTablet + widthTypeTablet
+			"width" : widthTablet + widthTypeTablet,
+			"padding-left": hPaddingTablet + paddingTypeTablet,
+			"padding-right": hPaddingTablet + paddingTypeTablet,
+			"padding-top": vPaddingTablet + paddingTypeTablet,
+			"padding-bottom": vPaddingTablet + paddingTypeTablet,
+		},
+		" .uagb-toc__list-wrap" : {
+			'column-count': tColumnsTablet
 		},
 	}
 
@@ -127,7 +143,14 @@ function styling( props ) {
 			"line-height" : headingLineHeightMobile + headingLineHeightType,
 		},
 		" .uagb-toc__wrap" : {
-			"width" : widthMobile + widthTypeMobile
+			"width" : widthMobile + widthTypeMobile,
+			"padding-left": hPaddingMobile + paddingTypeMobile,
+			"padding-right": hPaddingMobile + paddingTypeMobile,
+			"padding-top": vPaddingMobile + paddingTypeMobile,
+			"padding-bottom": vPaddingMobile + paddingTypeMobile,
+		},
+		" .uagb-toc__list-wrap" : {
+			'column-count': tColumnsMobile
 		},
 	}
 

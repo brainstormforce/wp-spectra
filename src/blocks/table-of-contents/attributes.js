@@ -70,7 +70,15 @@ const attributes = {
 	widthMobile : {
 		type    : "number",
 	},
-	tColumns : {
+	tColumnsDesktop : {
+		type    : "number",
+		default : 1,
+	},
+	tColumnsTablet : {
+		type    : "number",
+		default : 1,
+	},
+	tColumnsMobile : {
 		type    : "number",
 		default : 1,
 	},
@@ -92,16 +100,40 @@ const attributes = {
 	},
 
 	// Padding
-	vPadding :{
+	vPaddingDesktop :{
 		type: "number",
 		default: 30,
 	},
-	hPadding :{
+	hPaddingDesktop :{
 		type: "number",
 		default: 30,
+	},
+	vPaddingTablet :{
+		type: "number",
+	},
+	hPaddingTablet :{
+		type: "number",
+	},
+	vPaddingMobile :{
+		type: "number",
+	},
+	hPaddingMobile :{
+		type: "number",
 	},
 	headingBottom :{
 		type: "number"
+	},	
+	paddingTypeDesktop : {
+		type    : "string",
+		default : "px",
+	},
+	paddingTypeTablet : {
+		type    : "string",
+		default : "px",
+	},
+	paddingTypeMobile : {
+		type    : "string",
+		default : "px",
 	},
 
 	// Border

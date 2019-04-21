@@ -4491,14 +4491,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-width" => UAGB_Helper::get_css_value( $attr["borderWidth"], "px" ),
 					"border-color" => $attr["borderColor"],
 					"border-radius" => UAGB_Helper::get_css_value( $attr["borderRadius"], "px" ),
-					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
-					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], "px" ),
-					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
-					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], "px" ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingDesktop"], $attr["paddingTypeDesktop"] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingDesktop"], $attr["paddingTypeDesktop"] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingDesktop"], $attr["paddingTypeDesktop"] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingDesktop"], $attr["paddingTypeDesktop"] ),
 					"background" => $attr["backgroundColor"],
 				),
-				".uagb-toc__columns-" . $attr['tColumns'] . " .uagb-toc__list-wrap" => array( 
-					'column-count' => $attr['tColumns'],
+				" .uagb-toc__list-wrap" => array( 
+					'column-count' => $attr['tColumnsDesktop'],
 				)
 			);
 
@@ -4518,7 +4518,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__wrap" => array(
 					"width" => UAGB_Helper::get_css_value( $attr["widthMobile"], $attr["widthTypeMobile"] ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr["paddingTypeMobile"] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr["paddingTypeMobile"] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr["paddingTypeMobile"] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr["paddingTypeMobile"] ),
 				),
+				" .uagb-toc__list-wrap" => array( 
+					'column-count' => $attr['tColumnsMobile'],
+				)
 
 			);
 
@@ -4533,7 +4540,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__wrap" => array(
 					"width" => UAGB_Helper::get_css_value( $attr["widthTablet"], $attr["widthTypeTablet"] ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr["paddingTypeTablet"] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr["paddingTypeTablet"] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr["paddingTypeTablet"] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr["paddingTypeTablet"] ),
 				),
+				" .uagb-toc__list-wrap" => array( 
+					'column-count' => $attr['tColumnsTablet'],
+				)
 
 			);
 
