@@ -8,8 +8,12 @@ function styling( props ) {
 
 	const {
 		customWidth,
-		width,
-		widthType,
+		widthDesktop,
+		widthTablet,
+		widthMobile,
+		widthTypeTablet,
+		widthTypeMobile,
+		widthTypeDesktop,
 		tColumns,
 		//Color
 		backgroundColor,
@@ -96,7 +100,7 @@ function styling( props ) {
 	}
 
 	if ( customWidth ) {
-		selectors[" .uagb-toc__wrap"]["width"] = width + widthType
+		selectors[" .uagb-toc__wrap"]["width"] = widthDesktop + widthTypeDesktop
 	}
 
 	tablet_selectors = {
@@ -108,6 +112,9 @@ function styling( props ) {
 			"font-size" : headingFontSizeTablet + headingFontSizeType,
 			"line-height" : headingLineHeightTablet + headingLineHeightType,
 		},
+		" .uagb-toc__wrap" : {
+			"width" : widthTablet + widthTypeTablet
+		},
 	}
 
 	mobile_selectors = {
@@ -118,6 +125,9 @@ function styling( props ) {
 		" .uagb-toc__title" : {
 			"font-size" : headingFontSizeMobile + headingFontSizeType,
 			"line-height" : headingLineHeightMobile + headingLineHeightType,
+		},
+		" .uagb-toc__wrap" : {
+			"width" : widthMobile + widthTypeMobile
 		},
 	}
 

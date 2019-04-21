@@ -4503,7 +4503,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( $attr["customWidth"] ) {
-				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["width"], $attr["widthType"] );
+				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["widthDesktop"], $attr["widthTypeDesktop"] );
 			}
 
 
@@ -4516,6 +4516,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeMobile"], $attr["headingFontSizeType"] ),
 					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightMobile"], $attr["headingLineHeightType"] ),
 				),
+				" .uagb-toc__wrap" => array(
+					"width" => UAGB_Helper::get_css_value( $attr["widthMobile"], $attr["widthTypeMobile"] ),
+				),
 
 			);
 
@@ -4527,6 +4530,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__title" => array(
 					"font-size" => UAGB_Helper::get_css_value( $attr["headingFontSizeTablet"], $attr["headingFontSizeType"] ),
 					"line-height" => UAGB_Helper::get_css_value( $attr["headingLineHeightTablet"], $attr["headingLineHeightType"] ),
+				),
+				" .uagb-toc__wrap" => array(
+					"width" => UAGB_Helper::get_css_value( $attr["widthTablet"], $attr["widthTypeTablet"] ),
 				),
 
 			);

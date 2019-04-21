@@ -48,13 +48,27 @@ const attributes = {
 		type: "boolean",
 		default : false
 	},
-	widthType : {
+	widthTypeDesktop : {
 		type    : "string",
 		default : "%",
 	},
-	width : {
+	widthTypeTablet : {
+		type    : "string",
+		default : "%",
+	},
+	widthTypeMobile : {
+		type    : "string",
+		default : "%",
+	},
+	widthDesktop : {
 		type    : "number",
 		default : 100,
+	},
+	widthTablet : {
+		type    : "number",
+	},
+	widthMobile : {
+		type    : "number",
 	},
 	tColumns : {
 		type    : "number",

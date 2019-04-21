@@ -36,7 +36,9 @@ const {
 	PanelRow,
 	SelectControl,
 	RangeControl,
-	ToggleControl
+	ToggleControl,
+	Dashicon,
+	TabPanel
 } = wp.components
 
 
@@ -86,8 +88,12 @@ class UAGBTableOfContentsEdit extends Component {
 			scrollToTopColor,
 			scrollToTopBgColor,
 			customWidth,
-			width,
-			widthType,
+			widthDesktop,
+			widthTablet,
+			widthMobile,
+			widthTypeMobile,
+			widthTypeTablet,
+			widthTypeDesktop,
 			tColumns,
 			//Color
 			backgroundColor,
@@ -345,21 +351,88 @@ class UAGBTableOfContentsEdit extends Component {
 							help={ __( "Table's width will be auto if this is kept off." ) }
 						/>
 						{ customWidth &&
-							<Fragment>
-								<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-									<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
-									<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
-								</ButtonGroup>
-								<RangeControl
-									label={ __( "Width" ) }
-									value={ width }
-									onChange={ ( value ) => setAttributes( { width: value } ) }
-									min={ 0 }
-									max={ ( "%" == widthType ) ? 100 : 1000 }
-									beforeIcon=""
-									allowReset
-								/>
-							</Fragment>
+							<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+								tabs={ [
+									{
+										name: "desktop",
+										title: <Dashicon icon="desktop" />,
+										className: "uagb-desktop-tab uagb-responsive-tabs",
+									},
+									{
+										name: "tablet",
+										title: <Dashicon icon="tablet" />,
+										className: "uagb-tablet-tab uagb-responsive-tabs",
+									},
+									{
+										name: "mobile",
+										title: <Dashicon icon="smartphone" />,
+										className: "uagb-mobile-tab uagb-responsive-tabs",
+									},
+								] }>
+								{
+									( tab ) => {
+										let tabout
+
+										if ( "mobile" === tab.name ) {
+											tabout = (
+												<Fragment>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthTypeMobile === "px" } aria-pressed={ widthTypeMobile === "px" } onClick={ () => setAttributes( { widthTypeMobile: "px" } ) }>{ "px" }</Button>
+														<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthTypeMobile === "%" } aria-pressed={ widthTypeMobile === "%" } onClick={ () => setAttributes( { widthTypeMobile: "%" } ) }>{ "%" }</Button>
+													</ButtonGroup>
+													<RangeControl
+														label={ __( "Width" ) }
+														value={ widthMobile }
+														onChange={ ( value ) => setAttributes( { widthMobile: value } ) }
+														min={ 0 }
+														max={ ( "%" == widthTypeMobile ) ? 100 : 1000 }
+														beforeIcon=""
+														allowReset
+													/>
+												</Fragment>
+											)
+										} else if ( "tablet" === tab.name ) {
+											tabout = (
+												<Fragment>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthTypeTablet === "px" } aria-pressed={ widthTypeTablet === "px" } onClick={ () => setAttributes( { widthTypeTablet: "px" } ) }>{ "px" }</Button>
+														<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthTypeTablet === "%" } aria-pressed={ widthTypeTablet === "%" } onClick={ () => setAttributes( { widthTypeTablet: "%" } ) }>{ "%" }</Button>
+													</ButtonGroup>
+													<RangeControl
+														label={ __( "Width" ) }
+														value={ widthTablet }
+														onChange={ ( value ) => setAttributes( { widthTablet: value } ) }
+														min={ 0 }
+														max={ ( "%" == widthTypeTablet ) ? 100 : 1000 }
+														beforeIcon=""
+														allowReset
+													/>
+												</Fragment>
+											)
+										} else {
+											tabout = (
+												<Fragment>
+													<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+														<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthTypeDesktop === "px" } aria-pressed={ widthTypeDesktop === "px" } onClick={ () => setAttributes( { widthTypeDesktop: "px" } ) }>{ "px" }</Button>
+														<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthTypeDesktop === "%" } aria-pressed={ widthTypeDesktop === "%" } onClick={ () => setAttributes( { widthTypeDesktop: "%" } ) }>{ "%" }</Button>
+													</ButtonGroup>
+													<RangeControl
+														label={ __( "Width" ) }
+														value={ widthDesktop }
+														onChange={ ( value ) => setAttributes( { widthDesktop: value } ) }
+														min={ 0 }
+														max={ ( "%" == widthTypeDesktop ) ? 100 : 1000 }
+														beforeIcon=""
+														allowReset
+													/>
+												</Fragment>
+											)
+										}
+
+										return <div>{ tabout }</div>
+									}
+								}
+							</TabPanel>
 						}
 						<RangeControl
 							label={ __( "Columns" ) }
