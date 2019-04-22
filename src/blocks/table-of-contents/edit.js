@@ -473,7 +473,6 @@ class UAGBTableOfContentsEdit extends Component {
 												onChange={ ( value ) => setAttributes( { tColumnsMobile: value } ) }
 												min={ 1 }
 												max={ 10 }
-												allowReset
 											/>
 										)
 									} else if ( "tablet" === tab.name ) {
@@ -484,7 +483,6 @@ class UAGBTableOfContentsEdit extends Component {
 												onChange={ ( value ) => setAttributes( { tColumnsTablet: value } ) }
 												min={ 1 }
 												max={ 10 }
-												allowReset
 											/>
 										)
 									} else {
@@ -495,7 +493,6 @@ class UAGBTableOfContentsEdit extends Component {
 												onChange={ ( value ) => setAttributes( { tColumnsDesktop: value } ) }
 												min={ 1 }
 												max={ 10 }
-												allowReset
 											/>
 										)
 									}
@@ -505,8 +502,7 @@ class UAGBTableOfContentsEdit extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Padding (px)" ) }</h2>
-						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
 									name: "desktop",
@@ -535,6 +531,7 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeMobile === "px" } aria-pressed={ paddingTypeMobile === "px" } onClick={ () => setAttributes( { paddingTypeMobile: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeMobile === "%" } aria-pressed={ paddingTypeMobile === "%" } onClick={ () => setAttributes( { paddingTypeMobile: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
@@ -562,6 +559,7 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeTablet === "px" } aria-pressed={ paddingTypeTablet === "px" } onClick={ () => setAttributes( { paddingTypeTablet: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeTablet === "%" } aria-pressed={ paddingTypeTablet === "%" } onClick={ () => setAttributes( { paddingTypeTablet: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
@@ -589,6 +587,7 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeDesktop === "px" } aria-pressed={ paddingTypeDesktop === "px" } onClick={ () => setAttributes( { paddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingTypeDesktop === "%" } aria-pressed={ paddingTypeDesktop === "%" } onClick={ () => setAttributes( { paddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
