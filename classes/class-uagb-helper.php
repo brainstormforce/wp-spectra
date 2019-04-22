@@ -637,7 +637,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function get_scripts( $blocks ) {
 
-			$js = '';
+			$js      = '';
 			$js_data = '';
 			foreach ( $blocks as $i => $block ) {
 				if ( is_array( $block ) ) {
@@ -658,7 +658,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			if( ! empty( $js ) ) {
+			if ( ! empty( $js ) ) {
 				$js_data = '( function( $ ) {' . $js . '})(jQuery)';
 				self::file_write( $js_data, 'js' );
 			}
@@ -1179,22 +1179,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$uploads_dir = self::get_upload_dir();
 			$css_suffix  = 'uag-style';
 			$js_suffix   = 'uag-script';
-			
-			$info 		 = array();
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp', true );
+			$info = array();
 
-			$tme = ( 'false' != $post_timestamp ) ? $post_timestamp : $timestamp ;
-
-			if( ! empty( $data ) && 'css' === $type ) {
-				$info['css'] = $uploads_dir['path'] . $css_suffix . '-' .$post_id . '-' . $tme . '.css';
-				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' .$post_id . '-' . $tme . '.css';
-			} else if( ! empty( $data ) && 'js' === $type ) {
-				$info['js'] = $uploads_dir['path'] . $js_suffix . '-' .$post_id . '-' . $tme . '.js';
-				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' .$post_id . '-' . $tme . '.js';
+			if ( ! empty( $data ) && 'css' === $type ) {
+				$info['css']     = $uploads_dir['path'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
+				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
+			} elseif ( ! empty( $data ) && 'js' === $type ) {
+				$info['js']     = $uploads_dir['path'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
+				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
 			}
 
-			$info['timestamp'] = $tme;
+			$info['timestamp'] = $timestamp;
 
 			return $info;
 		}
@@ -1205,63 +1201,66 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  var $style_data    Gets the CSS\JS for the current Page.
 		 * @param  var $type    Gets the CSS\JS type.
 		 * @since  x.x.x
-		 * @return array
 		 */
 		public static function file_write( $style_data, $type ) {
-			
-			$date 		 = new DateTime();
-			$timestamp   = $date->getTimestamp();
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp', true );
+			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
 
-			if( isset( $post_timestamp ) ) {
-				$assets_info = self::get_asset_info( $style_data, $type, $post_timestamp );
-			} else {
+			$var = ( 'css' === $type ) ? 'css' : 'js';
+
+			if ( '' == $post_timestamp || false == $post_timestamp ) {
+				// File not created yet.
+
+				$date      = new DateTime();
+				$timestamp = $date->getTimestamp();
+
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
-			}
 
-			$old_data = '';
-
-			if ( 'css' === $type ) {
-				$var = 'css';
-			} else {
-				$var = 'js';
-			}
-
-			$bool = true;
-
-			if( file_exists( $assets_info[ $var ] ) ) {
-				$handle   = fopen( $assets_info[ $var ], 'r' );
-				$old_data = file_get_contents( $assets_info[ $var ] );
-
-				if( $old_data != $style_data ) {
-					$bool = true;
-				} else {
-					$bool = false;
-				}
-				
+				// Create a new file.
+				$handle = fopen( $assets_info[ $var ], 'a' );
+				file_put_contents( $assets_info[ $var ], $style_data );
 				fclose( $handle );
-			}
 
-			if ( $bool ) {
+				// Update the post meta.
+				update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
 
-				update_post_meta( get_the_ID(), 'uagb_style_timestamp', $timestamp );
-				$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp', true );
-
-				$assets_info_new = self::get_asset_info( $style_data, $type, $post_timestamp );
-				
-				$handle   = fopen( $assets_info_new[ $var ], 'a' );
-				file_put_contents( $assets_info_new[ $var ], $style_data );
-				fclose( $handle );
-				
-				self::$css_file_handler = $assets_info_new;
-					
-			} else {
 				self::$css_file_handler = $assets_info;
-			}
 
- 
-			return $assets_info;
+			} else {
+				// File already created.
+
+				$timestamp = $post_timestamp;
+
+				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
+
+				$handle   = fopen( $assets_info[ $var ], 'w' );
+				$old_data = file_get_contents( $assets_info[ $var ] );
+				fclose( $handle );
+
+				if ( $old_data != $style_data ) {
+					// File needs a change in content.
+
+					$date          = new DateTime();
+					$new_timestamp = $date->getTimestamp();
+
+					$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
+
+					// Create a new file.
+					$new_handle = fopen( $new_assets_info[ $var ], 'a' );
+					file_put_contents( $new_assets_info[ $var ], $style_data );
+					fclose( $new_handle );
+
+					// Update the post meta.
+					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
+
+					// Delete old file.
+					unlink( $assets_info[ $var ] );
+
+					self::$css_file_handler = $new_assets_info;
+				} else {
+					// Do nothing.
+				}
+			}
 		}
 	}
 
