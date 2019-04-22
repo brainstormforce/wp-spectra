@@ -379,21 +379,12 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeMobile === "px" } aria-pressed={ contentPaddingTypeMobile === "px" } onClick={ () => setAttributes( { contentPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeMobile === "%" } aria-pressed={ contentPaddingTypeMobile === "%" } onClick={ () => setAttributes( { contentPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
+												<h2>{ __( "Gap between Items" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
-													value={ vContentPaddingMobile }
-													onChange={ ( value ) => setAttributes( { vContentPaddingMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hContentPaddingMobile }
-													onChange={ ( value ) => setAttributes( { hContentPaddingMobile: value } ) }
+													value={ contentPaddingMobile }
+													onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 													min={ 0 }
 													max={ 100 }
 													allowReset
@@ -407,21 +398,12 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeTablet === "px" } aria-pressed={ contentPaddingTypeTablet === "px" } onClick={ () => setAttributes( { contentPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeTablet === "%" } aria-pressed={ contentPaddingTypeTablet === "%" } onClick={ () => setAttributes( { contentPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
+												<h2>{ __( "Gap between Items" ) }</h2>
 												<RangeControl
 													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
-													value={ vContentPaddingTablet }
-													onChange={ ( value ) => setAttributes( { vContentPaddingTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hContentPaddingTablet }
-													onChange={ ( value ) => setAttributes( { hContentPaddingTablet: value } ) }
+													value={ contentPaddingTablet }
+													onChange={ ( value ) => setAttributes( { contentPaddingTablet: value } ) }
 													min={ 0 }
 													max={ 100 }
 													allowReset
