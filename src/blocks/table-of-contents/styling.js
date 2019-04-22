@@ -3,6 +3,7 @@
  */
 
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
 
@@ -35,6 +36,13 @@ function styling( props ) {
 		paddingTypeDesktop,
 		paddingTypeTablet,
 		paddingTypeMobile,
+		//Padding,
+		contentPaddingDesktop,
+		contentPaddingTablet,
+		contentPaddingMobile,
+		contentPaddingTypeDesktop,
+		contentPaddingTypeTablet,
+		contentPaddingTypeMobile,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -74,33 +82,43 @@ function styling( props ) {
 
 	selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
-			"font-size" : fontSize + fontSizeType,
-			"line-height" : lineHeight + lineHeightType,
+			"font-size" : generateCSSUnit( fontSize, fontSizeType ),
+			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
 			"color": linkColor,
 		},
 		" .uagb-toc__title" : {
-			"font-size" : headingFontSize + headingFontSizeType,
-			"line-height" : headingLineHeight + headingLineHeightType,
+			"font-size" : generateCSSUnit( headingFontSize, headingFontSizeType ),
+			"line-height" : generateCSSUnit( headingLineHeight, headingLineHeightType ),
 			"font-family": headingFontFamily,
 			"font-weight": headingFontWeight,
 			"color": headingColor,
-			"margin-bottom" : headingBottom + "px"
+			"margin-bottom" : generateCSSUnit( headingBottom, "px" )
 		},
 		" .uagb-toc__list-wrap ul li a:hover" : {
 			"color": linkHoverColor,
 		},
 		" .uagb-toc__wrap" : {
 			"border-style": borderStyle,
-			"border-width": borderWidth + "px",
+			"border-width": generateCSSUnit( borderWidth, "px" ),
 			"border-color": borderColor,
-			"border-radius": borderRadius + "px",
-			"padding-left": hPaddingDesktop + paddingTypeDesktop,
-			"padding-right": hPaddingDesktop + paddingTypeDesktop,
-			"padding-top": vPaddingDesktop + paddingTypeDesktop,
-			"padding-bottom": vPaddingDesktop + paddingTypeDesktop,
+			"border-radius": generateCSSUnit( borderRadius, "px" ),
+			"padding-left": generateCSSUnit( hPaddingDesktop, paddingTypeDesktop ),
+			"padding-right": generateCSSUnit( hPaddingDesktop, paddingTypeDesktop ),
+			"padding-top": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
+			"padding-bottom": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
 			"background": backgroundColor
+		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": 0
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": 0
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
+		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
 		},
 	}
 
@@ -109,48 +127,69 @@ function styling( props ) {
 	}
 
 	if ( customWidth ) {
-		selectors[" .uagb-toc__wrap"]["width"] = widthDesktop + widthTypeDesktop
+		selectors[" .uagb-toc__wrap"]["width"] = generateCSSUnit( widthDesktop, widthTypeDesktop )
 	}
 
 	tablet_selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
-			"font-size": fontSizeTablet + fontSizeType,
-			"line-height": lineHeightTablet + lineHeightType,
+			"font-size": generateCSSUnit( fontSizeTablet, fontSizeType ),
+			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
 		},
 		" .uagb-toc__title" : {
-			"font-size" : headingFontSizeTablet + headingFontSizeType,
-			"line-height" : headingLineHeightTablet + headingLineHeightType,
+			"font-size" : generateCSSUnit( headingFontSizeTablet, headingFontSizeType ),
+			"line-height" : generateCSSUnit( headingLineHeightTablet, headingLineHeightType ),
 		},
 		" .uagb-toc__wrap" : {
-			"width" : widthTablet + widthTypeTablet,
-			"padding-left": hPaddingTablet + paddingTypeTablet,
-			"padding-right": hPaddingTablet + paddingTypeTablet,
-			"padding-top": vPaddingTablet + paddingTypeTablet,
-			"padding-bottom": vPaddingTablet + paddingTypeTablet,
+			"width" : generateCSSUnit( widthTablet, widthTypeTablet ),
+			"padding-left": generateCSSUnit( hPaddingTablet, paddingTypeTablet ),
+			"padding-right": generateCSSUnit( hPaddingTablet, paddingTypeTablet ),
+			"padding-top": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
+			"padding-bottom": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
 		},
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsTablet
+		},
+
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )",
+		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet ) + " / 2 )"
 		},
 	}
 
 	mobile_selectors = {
 		" .uagb-toc__list-wrap ul li a" : {
-			"font-size": fontSizeMobile + fontSizeType,
-			"line-height": lineHeightMobile + lineHeightType,
+			"font-size": generateCSSUnit( fontSizeMobile, fontSizeType ),
+			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
 		},
 		" .uagb-toc__title" : {
-			"font-size" : headingFontSizeMobile + headingFontSizeType,
-			"line-height" : headingLineHeightMobile + headingLineHeightType,
+			"font-size" : generateCSSUnit( headingFontSizeMobile, headingFontSizeType ),
+			"line-height" : generateCSSUnit( headingLineHeightMobile, headingLineHeightType ),
 		},
 		" .uagb-toc__wrap" : {
-			"width" : widthMobile + widthTypeMobile,
-			"padding-left": hPaddingMobile + paddingTypeMobile,
-			"padding-right": hPaddingMobile + paddingTypeMobile,
-			"padding-top": vPaddingMobile + paddingTypeMobile,
-			"padding-bottom": vPaddingMobile + paddingTypeMobile,
+			"width" : generateCSSUnit( widthMobile, widthTypeMobile ),
+			"padding-left": generateCSSUnit( hPaddingMobile, paddingTypeMobile ),
+			"padding-right": generateCSSUnit( hPaddingMobile, paddingTypeMobile ),
+			"padding-top": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
+			"padding-bottom": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
 		},
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsMobile
+		},		
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )",
+		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile ) + " / 2 )"
 		},
 	}
 

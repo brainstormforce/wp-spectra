@@ -4499,8 +4499,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap" => array( 
 					'column-count' => $attr['tColumnsDesktop'],
-				)
+				),
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
+				    "padding-top" => 0	
+				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				    "padding-bottom" => 0
+				),
 			);
+
+			if ( '' != $attr["contentPaddingDesktop"] ) {
+				$selectors[" .uagb-toc__list-wrap ul.uagb-toc__list > li"]["padding-top"] = "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] ) . " / 2 )";
+				$selectors[" .uagb-toc__list-wrap ul.uagb-toc__list > li"]["padding-bottom"] = "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] ) . " / 2 )";
+			}
 
 			if ( $attr["customWidth"] ) {
 				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["widthDesktop"], $attr["widthTypeDesktop"] );
@@ -4525,7 +4536,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap" => array( 
 					'column-count' => $attr['tColumnsMobile'],
-				)
+				),
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
+				    "padding-top" => 0	
+				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				    "padding-bottom" => 0
+				),
 
 			);
 
@@ -4547,9 +4564,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap" => array( 
 					'column-count' => $attr['tColumnsTablet'],
-				)
+				),
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
+				    "padding-top" => 0	
+				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				    "padding-bottom" => 0
+				),			);
 
-			);
+			if ( '' != $attr["contentPaddingTablet"] ) {
+				$t_selectors[" .uagb-toc__list-wrap ul.uagb-toc__list > li"] = array(
+					"padding-top" => "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'] . $attr['contentPaddingTypeTablet'] ) . " / 2 )",
+					"padding-bottom" => "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingTablet'] . $attr['contentPaddingTypeTablet'] ) . " / 2 )",
+				);
+			}
+
+			if ( '' != $attr["contentPaddingMobile"] ) {
+				$m_selectors[" .uagb-toc__list-wrap ul.uagb-toc__list > li"] = array(
+					"padding-top" => "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'] . $attr['contentPaddingTypeMobile'] ) . " / 2 )",
+					"padding-bottom" => "calc( " . UAGB_Helper::get_css_value( $attr['contentPaddingMobile'] . $attr['contentPaddingTypeMobile'] ) . " / 2 )",
+				);
+			}
 
 			// @codingStandardsIgnoreEnd
 
