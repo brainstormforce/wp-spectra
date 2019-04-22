@@ -1173,29 +1173,29 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since x.x.x
 		 * @return array
 		 */
-		public static function get_asset_info( $data, $type, $timestamp ) {
+		public static function get_asset_info( $data, $type ) {
 
 			$post_id     = get_the_ID();
 			$uploads_dir = self::get_upload_dir();
-			$css_suffix  = '-uag-style';
-			$js_suffix   = '-uag-script';
-			$info = array();
+			$css_suffix  = 'uag-style';
+			$js_suffix   = 'uag-script';
+			
+			$info 		 = array();
+
+			$date 		 = new DateTime();
+			$timestamp   = $date->getTimestamp();
 
 			$post_meta = get_post_meta( get_the_ID() );
 			$post_timestamp = $post_meta['uagb_style_timestamp'][0];
 
-			if( '' != $timestamp ) {
-				$tme = ( isset( $post_meta['uagb_style_timestamp'] ) ) ? $post_timestamp : $timestamp ;
-			} else {
-				$tme = $timestamp;
-			}
+			$tme = ( isset( $post_meta['uagb_style_timestamp'] ) ) ? $post_timestamp : $timestamp ;
 
 			if( ! empty( $data ) && 'css' === $type ) {
-				$info['css'] = $uploads_dir['path'] . $post_id . '-' . $tme . $css_suffix . '.css';
-				$info['css_url'] = $uploads_dir['url'] . $post_id . '-' . $tme . $css_suffix . '.css';
+				$info['css'] = $uploads_dir['path'] . $css_suffix . '-' .$post_id . '-' . $tme . '.css';
+				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' .$post_id . '-' . $tme . '.css';
 			} else if( ! empty( $data ) && 'js' === $type ) {
-				$info['js'] = $uploads_dir['path'] . $post_id . '-' . $tme . $js_suffix . '.js';
-				$info['js_url'] = $uploads_dir['url'] . $post_id . '-' . $tme . $js_suffix . '.js';
+				$info['js'] = $uploads_dir['path'] . $js_suffix . '-' .$post_id . '-' . $tme . '.js';
+				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' .$post_id . '-' . $tme . '.js';
 			}
 
 			$info['timestamp'] = $tme;
@@ -1213,10 +1213,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$date = new DateTime();
-			$timestamp = $date->getTimestamp();
+			$assets_info = self::get_asset_info( $style_data, $type );
 
-			$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
+			$date 		 = new DateTime();
+			$timestamp   = $date->getTimestamp();
 
 			if ( 'css' === $type ) {
 				$var = 'css';
@@ -1230,7 +1230,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( $old_data != $style_data ) {
 
 				update_post_meta( get_the_ID(), 'uagb_style_timestamp', $timestamp );
-				$assets_info_new = self::get_asset_info( $style_data, $type, $timestamp );
+
+				$assets_info_new = self::get_asset_info( $style_data, $type,  );
 				file_put_contents( $assets_info_new[ $var ], $style_data );
 				
 				self::$css_file_handler = $assets_info_new;
