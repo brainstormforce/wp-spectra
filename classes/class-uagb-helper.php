@@ -1185,10 +1185,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$date 		 = new DateTime();
 			$timestamp   = $date->getTimestamp();
 
-			$post_meta = get_post_meta( get_the_ID() );
-			$post_timestamp = $post_meta['uagb_style_timestamp'][0];
+			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp', true );
 
-			$tme = ( isset( $post_meta['uagb_style_timestamp'] ) ) ? $post_timestamp : $timestamp ;
+			var_dump( $post_timestamp );
+
+			$tme = ( 'false' != $post_timestamp ) ? $post_timestamp : $timestamp ;
 
 			if( ! empty( $data ) && 'css' === $type ) {
 				$info['css'] = $uploads_dir['path'] . $css_suffix . '-' .$post_id . '-' . $tme . '.css';
@@ -1199,6 +1200,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			$info['timestamp'] = $tme;
+
+			var_dump( $info );
 
 			return $info;
 		}
@@ -1218,30 +1221,45 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$date 		 = new DateTime();
 			$timestamp   = $date->getTimestamp();
 
+			$old_data = '';
+
 			if ( 'css' === $type ) {
 				$var = 'css';
 			} else {
 				$var = 'js';
 			}
 
-			$handle   = fopen( $assets_info[ $var ], 'a' );
-			$old_data = file_get_contents( $assets_info[ $var ] );
+			if( file_exists( $assets_info[ $var ] ) ) {
+				$handle   = fopen( $assets_info[ $var ], 'r' );
+				$old_data = file_get_contents( $assets_info[ $var ] );
+				fclose( $handle );
+			}
 
+			var_dump( $assets_info[ $var ] );
+			var_dump( $old_data != $style_data );
+			echo "<pre>";
+			var_dump( $style_data );
+			var_dump( $old_data );
+			echo "</pre>";
 			if ( $old_data != $style_data ) {
 
 				update_post_meta( get_the_ID(), 'uagb_style_timestamp', $timestamp );
 
-				$assets_info_new = self::get_asset_info( $style_data, $type,  );
+				$assets_info_new = self::get_asset_info( $style_data, $type );
+				
+				$handle   = fopen( $assets_info_new[ $var ], 'a' );
 				file_put_contents( $assets_info_new[ $var ], $style_data );
+				fclose( $handle );
 				
 				self::$css_file_handler = $assets_info_new;
 
-				unlink( $assets_info[ $var ] );
+
+				( file_exists( $assets_info[ $var ] ) ) ? unlink( $assets_info[ $var ] ) :'';
+					
 			} else {
 				self::$css_file_handler = $assets_info;
 			}
 
-			fclose( $handle );
  
 			return $assets_info;
 		}
