@@ -139,7 +139,6 @@ const attributes = {
 	// Content Padding
 	contentPaddingDesktop :{
 		type: "number",
-		default: 30,
 	},
 	contentPaddingTablet :{
 		type: "number",

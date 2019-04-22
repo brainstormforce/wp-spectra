@@ -1561,7 +1561,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paddingTypeDesktop'      => 'px',
 							'paddingTypeTablet'       => 'px',
 							'paddingTypeMobile'       => 'px',
-							'contentPaddingDesktop'         => 30,
+							'contentPaddingDesktop'         => '',
 							'contentPaddingTablet'          => '',
 							'contentPaddingMobile'          => '',
 							'contentPaddingTypeDesktop'      => 'px',
