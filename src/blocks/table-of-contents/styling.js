@@ -35,6 +35,13 @@ function styling( props ) {
 		paddingTypeDesktop,
 		paddingTypeTablet,
 		paddingTypeMobile,
+		//Padding,
+		contentPaddingDesktop,
+		contentPaddingTablet,
+		contentPaddingMobile,
+		contentPaddingTypeDesktop,
+		contentPaddingTypeTablet,
+		contentPaddingTypeMobile,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -102,6 +109,16 @@ function styling( props ) {
 			"padding-bottom": vPaddingDesktop + paddingTypeDesktop,
 			"background": backgroundColor
 		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": 0
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": 0
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + contentPaddingDesktop + contentPaddingTypeDesktop + " / 2 )",
+		    "padding-bottom": "calc( " + contentPaddingDesktop + contentPaddingTypeDesktop + " / 2 )"
+		},
 	}
 
 	selectors[" .uagb-toc__list-wrap"] = {
@@ -131,6 +148,17 @@ function styling( props ) {
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsTablet
 		},
+
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": contentPaddingTablet + contentPaddingTypeTablet
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": contentPaddingTablet + contentPaddingTypeTablet
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + contentPaddingTablet + contentPaddingTypeTablet + " / 2 )",
+		    "padding-bottom": "calc( " + contentPaddingTablet + contentPaddingTypeTablet + " / 2 )"
+		},
 	}
 
 	mobile_selectors = {
@@ -151,6 +179,16 @@ function styling( props ) {
 		},
 		" .uagb-toc__list-wrap" : {
 			'column-count': tColumnsMobile
+		},		
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
+		    "padding-top": contentPaddingMobile + contentPaddingTypeMobile
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
+		    "padding-bottom": contentPaddingMobile + contentPaddingTypeMobile
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
+		    "padding-top": "calc( " + contentPaddingMobile + contentPaddingTypeMobile + " / 2 )",
+		    "padding-bottom": "calc( " + contentPaddingMobile + contentPaddingTypeMobile + " / 2 )"
 		},
 	}
 

@@ -4499,7 +4499,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap" => array( 
 					'column-count' => $attr['tColumnsDesktop'],
-				)
+				),
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
+				    "padding-top" => 0	
+				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				    "padding-bottom" => 0
+				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list > li" => array( 
+				    "padding-top" => "calc( " . $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] . " / 2 )",
+				    "padding-bottom" => "calc( " . $attr['contentPaddingDesktop'] . $attr['contentPaddingTypeDesktop'] . " / 2 )"
+				),
 			);
 
 			if ( $attr["customWidth"] ) {

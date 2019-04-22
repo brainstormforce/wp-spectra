@@ -136,6 +136,30 @@ const attributes = {
 		default : "px",
 	},
 
+	// Content Padding
+	contentPaddingDesktop :{
+		type: "number",
+		default: 30,
+	},
+	contentPaddingTablet :{
+		type: "number",
+	},
+	contentPaddingMobile :{
+		type: "number",
+	},	
+	contentPaddingTypeDesktop : {
+		type    : "string",
+		default : "px",
+	},
+	contentPaddingTypeTablet : {
+		type    : "string",
+		default : "px",
+	},
+	contentPaddingTypeMobile : {
+		type    : "string",
+		default : "px",
+	},
+
 	// Border
 	borderStyle : {
 		type: "string",
