@@ -8,9 +8,15 @@ function styling( props ) {
 
 	const {
 		customWidth,
-		width,
-		widthType,
-		tColumns,
+		widthDesktop,
+		widthTablet,
+		widthMobile,
+		widthTypeTablet,
+		widthTypeMobile,
+		widthTypeDesktop,
+		tColumnsDesktop,
+		tColumnsTablet,
+		tColumnsMobile,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -19,9 +25,16 @@ function styling( props ) {
 		scrollToTopBgColor,
 		headingColor,
 		//Padding,
-		vPadding,
-		hPadding,
+		vPaddingDesktop,
+		vPaddingTablet,
+		vPaddingMobile,
+		hPaddingDesktop,
+		hPaddingTablet,
+		hPaddingMobile,
 		headingBottom,
+		paddingTypeDesktop,
+		paddingTypeTablet,
+		paddingTypeMobile,
 		//Border
 		borderStyle,
 		borderWidth,
@@ -83,20 +96,20 @@ function styling( props ) {
 			"border-width": borderWidth + "px",
 			"border-color": borderColor,
 			"border-radius": borderRadius + "px",
-			"padding-left": hPadding + "px",
-			"padding-right": hPadding + "px",
-			"padding-top": vPadding + "px",
-			"padding-bottom": vPadding + "px",
+			"padding-left": hPaddingDesktop + paddingTypeDesktop,
+			"padding-right": hPaddingDesktop + paddingTypeDesktop,
+			"padding-top": vPaddingDesktop + paddingTypeDesktop,
+			"padding-bottom": vPaddingDesktop + paddingTypeDesktop,
 			"background": backgroundColor
 		},
 	}
 
-	selectors[".uagb-toc__columns-" + tColumns + " .uagb-toc__list-wrap"] = {
-		'column-count': tColumns
+	selectors[" .uagb-toc__list-wrap"] = {
+		'column-count': tColumnsDesktop
 	}
 
 	if ( customWidth ) {
-		selectors[" .uagb-toc__wrap"]["width"] = width + widthType
+		selectors[" .uagb-toc__wrap"]["width"] = widthDesktop + widthTypeDesktop
 	}
 
 	tablet_selectors = {
@@ -108,6 +121,16 @@ function styling( props ) {
 			"font-size" : headingFontSizeTablet + headingFontSizeType,
 			"line-height" : headingLineHeightTablet + headingLineHeightType,
 		},
+		" .uagb-toc__wrap" : {
+			"width" : widthTablet + widthTypeTablet,
+			"padding-left": hPaddingTablet + paddingTypeTablet,
+			"padding-right": hPaddingTablet + paddingTypeTablet,
+			"padding-top": vPaddingTablet + paddingTypeTablet,
+			"padding-bottom": vPaddingTablet + paddingTypeTablet,
+		},
+		" .uagb-toc__list-wrap" : {
+			'column-count': tColumnsTablet
+		},
 	}
 
 	mobile_selectors = {
@@ -118,6 +141,16 @@ function styling( props ) {
 		" .uagb-toc__title" : {
 			"font-size" : headingFontSizeMobile + headingFontSizeType,
 			"line-height" : headingLineHeightMobile + headingLineHeightType,
+		},
+		" .uagb-toc__wrap" : {
+			"width" : widthMobile + widthTypeMobile,
+			"padding-left": hPaddingMobile + paddingTypeMobile,
+			"padding-right": hPaddingMobile + paddingTypeMobile,
+			"padding-top": vPaddingMobile + paddingTypeMobile,
+			"padding-bottom": vPaddingMobile + paddingTypeMobile,
+		},
+		" .uagb-toc__list-wrap" : {
+			'column-count': tColumnsMobile
 		},
 	}
 
