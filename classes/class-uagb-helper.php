@@ -1168,8 +1168,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Returns an array of paths for the CSS and JS assets
 		 * of the current post.
 		 *
-		 * @param  var $data    Gets the CSS\JS for the current Page.
-		 * @param  var $type    Gets the CSS\JS type.
+		 * @param  var $data    	Gets the CSS\JS for the current Page.
+		 * @param  var $type       	Gets the CSS\JS type.
+		 * @param  var $timestamp  	Gets the timestamp of the current file.
 		 * @since x.x.x
 		 * @return array
 		 */
@@ -1208,12 +1209,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( '' == $post_timestamp || false == $post_timestamp ) {
 				// File not created yet.
-
 				$date      = new DateTime();
 				$timestamp = $date->getTimestamp();
-				
+
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
-		
+
 				// Create a new file.
 				$handle = fopen( $assets_info[ $var ], 'a' );
 				file_put_contents( $assets_info[ $var ], $style_data );
@@ -1222,15 +1222,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				// Update the post meta.
 				update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
 
-				if( is_array( self::$css_file_handler ) ) {
+				if ( is_array( self::$css_file_handler ) ) {
 					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
 				} else {
 					self::$css_file_handler = $assets_info;
 				}
-
 			} else {
 				// File already created.
-
 				$timestamp = $post_timestamp;
 
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
@@ -1241,7 +1239,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( $old_data != $style_data ) {
 					// File needs a change in content.
-
 					$date          = new DateTime();
 					$new_timestamp = $date->getTimestamp();
 
@@ -1258,14 +1255,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					// Delete old file.
 					unlink( $assets_info[ $var ] );
 
-					if( is_array( self::$css_file_handler ) ) {
+					if ( is_array( self::$css_file_handler ) ) {
 						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
 					} else {
 						self::$css_file_handler = $new_assets_info;
 					}
 				} else {
 					// Do nothing.
-					if( is_array( self::$css_file_handler ) ) {
+					if ( is_array( self::$css_file_handler ) ) {
 						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
 					} else {
 						self::$css_file_handler = $assets_info;
