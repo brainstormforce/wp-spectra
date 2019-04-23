@@ -27,6 +27,7 @@ module.exports = function(grunt) {
 					"!composer.lock",
 					"!phpcs.xml.dist",
 					"!vendor/**",
+					"!src/**",
 					"!scripts/**",
 					"!config/**"
 				],
