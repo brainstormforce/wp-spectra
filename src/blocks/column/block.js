@@ -25,6 +25,7 @@ const {
 	RangeControl,
 	SelectControl,
 	Button,
+	ButtonGroup,
 	BaseControl,
 	TabPanel,
 	Dashicon
@@ -97,7 +98,6 @@ export default class UAGBColumnEdit extends Component {
 				bottomMargin,
 				leftMargin,
 				rightMargin,
-
 				topPaddingTablet,
 				bottomPaddingTablet,
 				leftPaddingTablet,
@@ -106,7 +106,6 @@ export default class UAGBColumnEdit extends Component {
 				bottomMarginTablet,
 				leftMarginTablet,
 				rightMarginTablet,
-
 				topPaddingMobile,
 				bottomPaddingMobile,
 				leftPaddingMobile,
@@ -115,11 +114,9 @@ export default class UAGBColumnEdit extends Component {
 				bottomMarginMobile,
 				leftMarginMobile,
 				rightMarginMobile,
-
 				colWidth,
 				colWidthTablet,
 				colWidthMobile,
-
 				backgroundType,
 				backgroundImage,
 				backgroundColor,
@@ -141,7 +138,20 @@ export default class UAGBColumnEdit extends Component {
 				borderColor,
 				align,
 				alignMobile,
-				alignTablet
+				alignTablet,
+				overlayType,
+				gradientOverlayColor1,
+				gradientOverlayColor2,
+				gradientOverlayType,
+				gradientOverlayLocation1,
+				gradientOverlayLocation2,
+				gradientOverlayAngle,
+				mobileMarginType,
+				tabletMarginType,
+				desktopMarginType,
+				mobilePaddingType,
+				tabletPaddingType,
+				desktopPaddingType,
 			},
 			setAttributes,
 			className,
@@ -347,7 +357,7 @@ export default class UAGBColumnEdit extends Component {
 					</TabPanel>
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 						tabs={ [
 							{
 								name: "desktop",
@@ -372,7 +382,11 @@ export default class UAGBColumnEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding Mobile (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "px" } aria-pressed={ mobilePaddingType === "px" } onClick={ () => setAttributes( { mobilePaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobilePaddingType === "%" } aria-pressed={ mobilePaddingType === "%" } onClick={ () => setAttributes( { mobilePaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding Mobile" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -414,7 +428,11 @@ export default class UAGBColumnEdit extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding Tablet (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "px" } aria-pressed={ tabletPaddingType === "px" } onClick={ () => setAttributes( { tabletPaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletPaddingType === "%" } aria-pressed={ tabletPaddingType === "%" } onClick={ () => setAttributes( { tabletPaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding Tablet" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -456,7 +474,11 @@ export default class UAGBColumnEdit extends Component {
 								} else {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Padding (px)" ) }</h2>											
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "px" } aria-pressed={ desktopPaddingType === "px" } onClick={ () => setAttributes( { desktopPaddingType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopPaddingType === "%" } aria-pressed={ desktopPaddingType === "%" } onClick={ () => setAttributes( { desktopPaddingType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Padding" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -502,7 +524,7 @@ export default class UAGBColumnEdit extends Component {
 						}
 					</TabPanel>
 					<hr className="uagb-editor__separator" />
-					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-without-size-type" activeClass="active-tab"
+					<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 						tabs={ [
 							{
 								name: "desktop",
@@ -527,7 +549,11 @@ export default class UAGBColumnEdit extends Component {
 								if ( "mobile" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin Mobile (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "px" } aria-pressed={ mobileMarginType === "px" } onClick={ () => setAttributes( { mobileMarginType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ mobileMarginType === "%" } aria-pressed={ mobileMarginType === "%" } onClick={ () => setAttributes( { mobileMarginType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Margin Mobile" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -569,7 +595,11 @@ export default class UAGBColumnEdit extends Component {
 								} else if ( "tablet" === tab.name ) {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin Tablet (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+												<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "px" } aria-pressed={ tabletMarginType === "px" } onClick={ () => setAttributes( { tabletMarginType: "px" } ) }>{ "px" }</Button>
+												<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ tabletMarginType === "%" } aria-pressed={ tabletMarginType === "%" } onClick={ () => setAttributes( { tabletMarginType: "%" } ) }>{ "%" }</Button>
+											</ButtonGroup>
+											<h2>{ __( "Margin Tablet" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -611,7 +641,11 @@ export default class UAGBColumnEdit extends Component {
 								} else {
 									tabout = (
 										<Fragment>
-											<h2>{ __( "Margin (px)" ) }</h2>
+											<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "px" } aria-pressed={ desktopMarginType === "px" } onClick={ () => setAttributes( { desktopMarginType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ desktopMarginType === "%" } aria-pressed={ desktopMarginType === "%" } onClick={ () => setAttributes( { desktopMarginType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+											<h2>{ __( "Margin" ) }</h2>
 											<RangeControl
 												label={ UAGB_Block_Icons.top_margin }
 												className={ "uagb-margin-control" }
@@ -749,14 +783,78 @@ export default class UAGBColumnEdit extends Component {
 												{ value: "contain", label: __( "Contain" ) }
 											] }
 										/>
-										<Fragment>
-											<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
-											<ColorPalette
-												value={ backgroundImageColor }
-												onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
-												allowReset
-											/>
-										</Fragment>
+										<SelectControl
+											label={ __( "Image Overlay Type" ) }
+											value={ overlayType }
+											onChange={ ( value ) => setAttributes( { overlayType: value } ) }
+											options={ [
+												{ value: "color", label: __( "Color" ) },
+												{ value: "gradient", label: __( "Gradient" ) },
+											] }
+										/>
+										{ "color" == overlayType &&<Fragment>
+												<p className="uagb-setting-label">{ __( "Image Overlay Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundImageColor }} ></span></span></p>
+												<ColorPalette
+													value={ backgroundImageColor }
+													onChange={ ( colorValue ) => setAttributes( { backgroundImageColor: colorValue } ) }
+													allowReset
+												/>
+											</Fragment>
+										}
+
+										{ "gradient" == overlayType &&
+											( <Fragment>
+												<PanelColorSettings
+													title={ __( "Color Settings" ) }
+													colorSettings={ [
+														{
+															value: gradientOverlayColor2,
+															onChange:( value ) => setAttributes( { gradientOverlayColor2: value } ),
+															label: __( "Color 1" ),
+														},
+														{
+															value: gradientOverlayColor1,
+															onChange:( value ) => setAttributes( { gradientOverlayColor1: value } ),
+															label: __( "Color 2" ),
+														},
+													] }
+												>
+												</PanelColorSettings>
+												<SelectControl
+													label={ __( "Type" ) }
+													value={ gradientOverlayType }
+													onChange={ ( value ) => setAttributes( { gradientOverlayType: value } ) }
+													options={ [
+														{ value: "linear", label: __( "Linear" ) },
+														{ value: "radial", label: __( "Radial" ) },
+													] }
+												/>
+												<RangeControl
+													label={ __( "Location 1" ) }
+													value={ gradientOverlayLocation1 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation1: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Location 2" ) }
+													value={ gradientOverlayLocation2 }
+													onChange={ ( value ) => setAttributes( { gradientOverlayLocation2: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ __( "Angle" ) }
+													value={ gradientOverlayAngle }
+													onChange={ ( value ) => setAttributes( { gradientOverlayAngle: value } ) }
+													min={ 0 }
+													max={ 360 }
+													allowReset
+												/>
+											</Fragment> )
+										}
 									</Fragment> )
 								}
 							</Fragment> )
@@ -1063,6 +1161,56 @@ registerBlockType( "uagb/column", {
 		},
 		borderColor : {
 			type: "string"
+		},
+		overlayType: {
+			type: "string",
+			default: "color"
+		},
+		gradientOverlayColor1: {
+			type: "string",
+		},
+		gradientOverlayColor2: {
+			type: "string",
+		},
+		gradientOverlayType: {
+			type: "string",
+			default: "linear"
+		},
+		gradientOverlayLocation1: {
+			type: "number",
+			default: 0
+		},
+		gradientOverlayLocation2: {
+			type: "number",
+			default: 100
+		},
+		gradientOverlayAngle: {
+			type: "number",
+			default: 0
+		},
+		mobileMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		tabletMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		desktopMarginType: {
+			type: "string",
+			default: 'px'
+		},
+		mobilePaddingType: {
+			type: "string",
+			default: 'px'
+		},
+		tabletPaddingType: {
+			type: "string",
+			default: 'px'
+		},
+		desktopPaddingType: {
+			type: "string",
+			default: 'px'
 		},
 	},
 

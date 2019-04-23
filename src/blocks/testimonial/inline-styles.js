@@ -164,6 +164,12 @@ function TestimonialStyle( props ) {
 		},
 	}
 
+	if( test_item_count == columns ) {
+		selectors[".uagb-slick-carousel"] = {
+			"padding": '0',
+		}
+	}
+
 	if ( borderStyle != "none" ) {
 
 		selectors[" .uagb-testimonial__wrap .uagb-tm__content"] = {

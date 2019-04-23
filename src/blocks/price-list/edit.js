@@ -311,7 +311,7 @@ class UAGBRestaurantMenu extends Component {
 						] }
 					/>					
 					<TypographyControl
-						label={ __( "Title Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
@@ -330,7 +330,7 @@ class UAGBRestaurantMenu extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Content" ) }</h2>
 					<TypographyControl
-						label={ __( "Description Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
@@ -349,7 +349,7 @@ class UAGBRestaurantMenu extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Price" ) }</h2>
 					<TypographyControl
-						label={ __( "Price Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: __( "priceLoadGoogleFonts" ) } }

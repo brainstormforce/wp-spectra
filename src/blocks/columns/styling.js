@@ -19,6 +19,7 @@ function styling( props ) {
 		borderRadius,
 		contentWidth,
 		width,
+		widthType,
 		columnGap,
 		topColor,
 		topHeight,
@@ -36,6 +37,7 @@ function styling( props ) {
 		gradientLocation2,
 		gradientType,
 		gradientAngle,
+		gradientPosition,
 		topPaddingTablet,
 		bottomPaddingTablet,
 		leftPaddingTablet,
@@ -49,14 +51,18 @@ function styling( props ) {
 		topMarginTablet,
 		bottomMarginTablet,
 		topDividerOpacity,
-		bottomDividerOpacity
+		bottomDividerOpacity,
+		mobileMarginType,
+		tabletMarginType,
+		mobilePaddingType,
+		tabletPaddingType,
 	} = props.attributes
 
 	let max_width = "100%"
 
 	if ( "custom" == contentWidth ) {
 		if ( "" != width ) {
-			max_width = generateCSSUnit( width, "px" )
+			max_width = generateCSSUnit( width, widthType )
 		}
 	}
 
@@ -119,7 +125,7 @@ function styling( props ) {
 			selectors[" > .uagb-columns__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		} else {
 
-			selectors[" > .uagb-columns__overlay"]["background-image"] = `radial-gradient( at center center, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
+			selectors[" > .uagb-columns__overlay"]["background-image"] = `radial-gradient( at ${ gradientPosition }, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
 		}
 	}
 
@@ -127,12 +133,12 @@ function styling( props ) {
 
 	tablet_selectors = {
 		".uagb-columns__wrap" : {
-			"padding-top": generateCSSUnit( topPaddingTablet, "px" ),
-			"padding-bottom": generateCSSUnit( bottomPaddingTablet, "px" ),
-			"padding-left": generateCSSUnit( leftPaddingTablet, "px" ),
-			"padding-right": generateCSSUnit( rightPaddingTablet, "px" ),
-			"margin-top": generateCSSUnit( topMarginTablet, "px" ),
-			"margin-bottom": generateCSSUnit( bottomMarginTablet, "px" ),
+			"padding-top": generateCSSUnit( topPaddingTablet, tabletPaddingType ),
+			"padding-bottom": generateCSSUnit( bottomPaddingTablet, tabletPaddingType ),
+			"padding-left": generateCSSUnit( leftPaddingTablet, tabletPaddingType ),
+			"padding-right": generateCSSUnit( rightPaddingTablet, tabletPaddingType ),
+			"margin-top": generateCSSUnit( topMarginTablet, tabletMarginType ),
+			"margin-bottom": generateCSSUnit( bottomMarginTablet, tabletMarginType ),
 		},
 		" .uagb-columns__shape-top svg" : {
 			height: generateCSSUnit( topHeightTablet, "px" )
@@ -144,12 +150,12 @@ function styling( props ) {
 
 	mobile_selectors = {
 		".uagb-columns__wrap" : {
-			"padding-top": generateCSSUnit( topPaddingMobile, "px" ),
-			"padding-bottom": generateCSSUnit( bottomPaddingMobile, "px" ),
-			"padding-left": generateCSSUnit( leftPaddingMobile, "px" ),
-			"padding-right": generateCSSUnit( rightPaddingMobile, "px" ),
-			"margin-top": generateCSSUnit( topMarginMobile, "px" ),
-			"margin-bottom": generateCSSUnit( bottomMarginMobile, "px" ),
+			"padding-top": generateCSSUnit( topPaddingMobile, mobilePaddingType ),
+			"padding-bottom": generateCSSUnit( bottomPaddingMobile, mobilePaddingType ),
+			"padding-left": generateCSSUnit( leftPaddingMobile, mobilePaddingType ),
+			"padding-right": generateCSSUnit( rightPaddingMobile, mobilePaddingType ),
+			"margin-top": generateCSSUnit( topMarginMobile, mobileMarginType ),
+			"margin-bottom": generateCSSUnit( bottomMarginMobile, mobileMarginType ),
 		},
 		" .uagb-columns__shape-top svg" : {
 			height: generateCSSUnit( topHeightMobile, "px" )
