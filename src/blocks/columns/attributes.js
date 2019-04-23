@@ -92,6 +92,10 @@ const attributes = {
 		type: "number",
 		default: 900
 	},
+	widthType: {
+		type: "string",
+		default: "px"
+	},
 	tag: {
 		type: "string",
 		default: "section"
@@ -145,6 +149,10 @@ const attributes = {
 	gradientAngle: {
 		type: "number",
 		default: 0
+	},
+	gradientPosition: {
+		type: "string",
+		default: "center center"
 	},
 	backgroundOpacity: {
 		type: "number",
@@ -242,6 +250,30 @@ const attributes = {
 	bottomContentAboveShape: {
 		type: "boolean",
 		default: false
+	},
+	mobileMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopMarginType: {
+		type: "string",
+		default: 'px'
+	},
+	mobilePaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	tabletPaddingType: {
+		type: "string",
+		default: 'px'
+	},
+	desktopPaddingType: {
+		type: "string",
+		default: 'px'
 	},
 }
 

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.1.1
-Stable tag: 1.12.5
+Stable tag: 1.13.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -153,6 +153,19 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.13.0 =
+* New: Table Of Contents. 
+* Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
+* Improvement: Advanced Columns - Introduced Gradient Overlay for background type of Image.
+* Improvement: Advanced Columns - Added % option for Custom Inner Width.
+* Improvement: Section - Added px/% option for margin and padding spacing.
+* Improvement: Section - Introduced Gradient overlay option for Image background.
+* Improvement: Testimonials - Added filter `uagb_testimonials_slick_options` to change the slick options.
+* Improvement: Implemented better assets loading techniques.
+* Fix: Button - Text align justified option not working.
+* Fix: Icon list – Underline issue with 2017/2019 theme.
+* Fix: Post timeline- Disable image option not working.
 
 = 1.12.5 =
 * Fix: Testimonial - Border options not working in editor.

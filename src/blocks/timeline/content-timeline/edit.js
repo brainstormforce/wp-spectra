@@ -415,7 +415,7 @@ class UAGBcontentTimeline extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Date Typography" ) }</h2>
 					<TypographyControl
-						label={ __( "Date Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
@@ -544,7 +544,7 @@ class UAGBcontentTimeline extends Component {
 				</PanelBody>
 				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
 					<SelectControl
-						label={ __( "Heading Tag" ) }
+						label={ __( "Typography" ) }
 						value={ headingTag }
 						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 						options={ [
@@ -577,7 +577,7 @@ class UAGBcontentTimeline extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Heading" ) }</h2>
 					<TypographyControl
-						label={ __( "Title Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }

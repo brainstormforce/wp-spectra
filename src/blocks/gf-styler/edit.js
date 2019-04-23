@@ -416,7 +416,7 @@ class UAGBGF extends Component {
 		    	{ ( ! enableLabel ) && <Fragment>
 					<h2>{ __( "Label" ) }</h2>			
 					<TypographyControl
-						label={ __( "Label Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
@@ -445,7 +445,7 @@ class UAGBGF extends Component {
 				}
 				<h2>{ __( "Input" ) }</h2>
 				<TypographyControl
-					label={ __( "Input Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: inputLoadGoogleFonts, label: __( "inputLoadGoogleFonts" ) } }
@@ -691,7 +691,7 @@ class UAGBGF extends Component {
 				/>
 				<h2>{ __( "Button Font" ) }</h2>
 				<TypographyControl
-					label={ __( "Button Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: buttonLoadGoogleFonts, label: __( "buttonLoadGoogleFonts" ) } }
@@ -821,7 +821,7 @@ class UAGBGF extends Component {
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Radio & Checkbox Label" ) }</h2>
 					<TypographyControl
-						label={ __( "Label Font Tag" ) }
+						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						loadGoogleFonts = { { value: radioCheckLoadGoogleFonts, label: __( "radioCheckLoadGoogleFonts" ) } }
@@ -918,9 +918,8 @@ class UAGBGF extends Component {
 					allowReset
 				/>
 
-				<h2>{ __( "Typography" ) }</h2>
 				<TypographyControl
-					label={ __( "Validation Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: __( "validationMsgLoadGoogleFonts" ) } }
@@ -1040,7 +1039,7 @@ class UAGBGF extends Component {
 				/>
 
 				<TypographyControl
-					label={ __( "Message Font Tag" ) }
+					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
 					loadGoogleFonts = { { value: msgLoadGoogleFonts, label: __( "msgLoadGoogleFonts" ) } }
