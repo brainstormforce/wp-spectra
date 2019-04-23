@@ -1235,7 +1235,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
 
-				$handle   = fopen( $assets_info[ $var ], 'w' );
+				$handle   = fopen( $assets_info[ $var ], 'r' );
 				$old_data = file_get_contents( $assets_info[ $var ] );
 				fclose( $handle );
 
@@ -1265,6 +1265,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 				} else {
 					// Do nothing.
+					if( is_array( self::$css_file_handler ) ) {
+						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
+					} else {
+						self::$css_file_handler = $assets_info;
+					}
 				}
 			}
 		}
