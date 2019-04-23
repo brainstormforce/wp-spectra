@@ -734,7 +734,7 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 	$display_post_date  = $attributes['displayPostDate'];
 	$posts_to_show      = $attributes['postsToShow'];
 	$align              = $attributes['align'];
-	$displayPostImage   = $attributes['displayPostImage'];
+	$display_post_image = $attributes['displayPostImage'];
 
 	$content_align_class = uagb_tm_get_align_classes( $attributes, 0 ); // Get classname for layout alignment.
 	$day_align_class     = uagb_tm_get_day_align_classes( $attributes, 0 ); // Get classname for day alignment.
@@ -766,7 +766,7 @@ function uagb_tm_get_post_content( $attributes, $recent_posts ) {
 									<?php echo uagb_tm_get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
 								</div>
 
-								<?php echo ( $displayPostImage ) ? uagb_tm_get_image( $attributes ) : ''; ?>
+								<?php echo ( $display_post_image ) ? uagb_tm_get_image( $attributes ) : ''; ?>
 
 								<div class = "uagb-content" >
 									<?php

@@ -48,15 +48,37 @@ const attributes = {
 		type: "boolean",
 		default : false
 	},
-	widthType : {
+	widthTypeDesktop : {
 		type    : "string",
 		default : "%",
 	},
-	width : {
+	widthTypeTablet : {
+		type    : "string",
+		default : "%",
+	},
+	widthTypeMobile : {
+		type    : "string",
+		default : "%",
+	},
+	widthDesktop : {
 		type    : "number",
 		default : 100,
 	},
-	tColumns : {
+	widthTablet : {
+		type    : "number",
+	},
+	widthMobile : {
+		type    : "number",
+	},
+	tColumnsDesktop : {
+		type    : "number",
+		default : 1,
+	},
+	tColumnsTablet : {
+		type    : "number",
+		default : 1,
+	},
+	tColumnsMobile : {
 		type    : "number",
 		default : 1,
 	},
@@ -78,16 +100,63 @@ const attributes = {
 	},
 
 	// Padding
-	vPadding :{
+	vPaddingDesktop :{
 		type: "number",
 		default: 30,
 	},
-	hPadding :{
+	hPaddingDesktop :{
 		type: "number",
 		default: 30,
+	},
+	vPaddingTablet :{
+		type: "number",
+	},
+	hPaddingTablet :{
+		type: "number",
+	},
+	vPaddingMobile :{
+		type: "number",
+	},
+	hPaddingMobile :{
+		type: "number",
 	},
 	headingBottom :{
 		type: "number"
+	},	
+	paddingTypeDesktop : {
+		type    : "string",
+		default : "px",
+	},
+	paddingTypeTablet : {
+		type    : "string",
+		default : "px",
+	},
+	paddingTypeMobile : {
+		type    : "string",
+		default : "px",
+	},
+
+	// Content Padding
+	contentPaddingDesktop :{
+		type: "number",
+	},
+	contentPaddingTablet :{
+		type: "number",
+	},
+	contentPaddingMobile :{
+		type: "number",
+	},	
+	contentPaddingTypeDesktop : {
+		type    : "string",
+		default : "px",
+	},
+	contentPaddingTypeTablet : {
+		type    : "string",
+		default : "px",
+	},
+	contentPaddingTypeMobile : {
+		type    : "string",
+		default : "px",
 	},
 
 	// Border
