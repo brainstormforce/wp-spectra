@@ -5,6 +5,10 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
+	disableBullets : {
+		type    : "boolean",
+		default : false,
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,

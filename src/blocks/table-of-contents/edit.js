@@ -81,6 +81,7 @@ class UAGBTableOfContentsEdit extends Component {
 		const {
 			align,
 			heading,
+			disableBullets,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
@@ -435,6 +436,11 @@ class UAGBTableOfContentsEdit extends Component {
 								}
 							}
 						</TabPanel>
+						<ToggleControl
+							label={ __( "Disable Bullet points" ) }
+							checked={ disableBullets }
+							onChange={ ( value ) => setAttributes( { disableBullets: ! disableBullets } ) }
+						/>
 					</PanelBody>
 					<PanelBody title={ __( "Style" ) } initialOpen={ false }>
 						<h2>{ __( "Background" ) }</h2>

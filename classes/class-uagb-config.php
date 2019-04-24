@@ -1524,11 +1524,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/table-of-contents' => array(
 						'slug'        => '',
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to place a Table of Content for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'                  => '',
-							'heading'                   => 'Table Of Content',
+							'heading'                   => 'Table Of Contents',
+							'disableBullets'			=> false,
 							'smoothScroll'              => true,
 							'smoothScrollOffset'        => 30,
 							'scrollToTop'               => false,
