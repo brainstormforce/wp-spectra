@@ -768,7 +768,7 @@ class UAGBTableOfContentsEdit extends Component {
 					<div className="uagb-toc__wrap">
 						<RichText
 							tagName= { "div" }
-							placeholder={ __( "Table Of Content" ) }
+							placeholder={ __( "Table Of Contents" ) }
 							value={ heading }
 							className = 'uagb-toc__title'
 							onChange = { ( value ) => setAttributes( { heading: value } ) }
