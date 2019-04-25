@@ -155,6 +155,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.13.1 =
+* Improvement: Table Of Contents - Changed the bullet styles for sub lists.
+* Fix: Table Of Contents - Scroll to Top option not working on frontend.
+
 = 1.13.0 =
 * New: Table Of Contents. 
 * Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
