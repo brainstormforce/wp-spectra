@@ -4517,6 +4517,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[" .uagb-toc__wrap"]["width"] = UAGB_Helper::get_css_value( $attr["widthDesktop"], $attr["widthTypeDesktop"] );
 			}
 
+			if ( $attr["disableBullets"] ) {
+				$selectors[" .uagb-toc__list"] = array( 
+				    "list-style-type" => 'none'
+				);
+				$selectors[" .uagb-toc__list .uagb-toc__list"] = array( 
+				    "list-style-type" => 'none'
+				);
+			}
+
 
 			$m_selectors = array(
 				' .uagb-toc__list-wrap ul li a'        => array(
