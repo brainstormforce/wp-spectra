@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-04-23 09:50:01+00:00\n"
+"POT-Creation-Date: 2019-04-25 05:57:03+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -393,7 +393,7 @@ msgstr ""
 #: classes/class-uagb-config.php:1071 classes/class-uagb-config.php:1154
 #: classes/class-uagb-config.php:1237 dist/blocks/post/index.php:329
 #: dist/blocks/post/index.php:699 dist/blocks/post/index.php:1106
-#: dist/blocks/post/index.php:1669
+#: dist/blocks/post/index.php:1672
 msgid "Read More"
 msgstr ""
 
@@ -460,30 +460,30 @@ msgid "Table of Contents"
 msgstr ""
 
 #: classes/class-uagb-config.php:1527
-msgid "This block allows you to place a Table of Content for Pages/Posts."
-msgstr ""
-
-#: classes/class-uagb-config.php:1606
-msgid "Team"
+msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
 #: classes/class-uagb-config.php:1607
+msgid "Team"
+msgstr ""
+
+#: classes/class-uagb-config.php:1608
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:1677
+#: classes/class-uagb-config.php:1678
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:1678
+#: classes/class-uagb-config.php:1679
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:877
+#: classes/class-uagb-helper.php:880
 msgid "Full"
 msgstr ""
 

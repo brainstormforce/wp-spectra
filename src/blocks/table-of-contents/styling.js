@@ -74,6 +74,7 @@ function styling( props ) {
 		headingLineHeight,
 		headingLineHeightTablet,
 		headingLineHeightMobile,
+		disableBullets,
 	} = props.attributes
 
 	var selectors = {}
@@ -128,6 +129,15 @@ function styling( props ) {
 
 	if ( customWidth ) {
 		selectors[" .uagb-toc__wrap"]["width"] = generateCSSUnit( widthDesktop, widthTypeDesktop )
+	}
+
+	if ( disableBullets ) {
+		selectors[" .uagb-toc__list"] = {
+			'list-style-type': 'none'
+		}
+		selectors[" .uagb-toc__list .uagb-toc__list"] = {
+			'list-style-type': 'none'
+		}
 	}
 
 	tablet_selectors = {
