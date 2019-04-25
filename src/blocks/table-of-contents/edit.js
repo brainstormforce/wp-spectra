@@ -81,6 +81,7 @@ class UAGBTableOfContentsEdit extends Component {
 		const {
 			align,
 			heading,
+			disableBullets,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
@@ -287,7 +288,15 @@ class UAGBTableOfContentsEdit extends Component {
 						}
 					</PanelBody>
 					<PanelBody title={ __( "Content" ) } initialOpen={ false }>
-						<h2>{ __( "Heading" ) }</h2>
+						<h2>{ __( "Heading" ) }</h2>						
+						<RangeControl
+							label={ __( "Bottom Space" ) }
+							value={ headingBottom }
+							onChange={ ( value ) => setAttributes( { headingBottom: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -311,44 +320,12 @@ class UAGBTableOfContentsEdit extends Component {
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
 						/>
-						<RangeControl
-							label={ __( "Heading Bottom Space" ) }
-							value={ headingBottom }
-							onChange={ ( value ) => setAttributes( { headingBottom: value } ) }
-							min={ 0 }
-							max={ 50 }
-							allowReset
-						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
-							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
-							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
-							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
-							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
-							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
-							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
-							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
-							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
-							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
-							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
-						/>
-						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
-						<ColorPalette
-							value={ linkColor }
-							onChange={ ( colorValue ) => setAttributes( { linkColor: colorValue } ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Content Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
-						<ColorPalette
-							value={ linkHoverColor }
-							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
-							allowReset
+						<ToggleControl
+							label={ __( "Disable Bullet points" ) }
+							checked={ disableBullets }
+							onChange={ ( value ) => setAttributes( { disableBullets: ! disableBullets } ) }
 						/>
 						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
@@ -379,16 +356,15 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeMobile === "px" } aria-pressed={ contentPaddingTypeMobile === "px" } onClick={ () => setAttributes( { contentPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeMobile === "%" } aria-pressed={ contentPaddingTypeMobile === "%" } onClick={ () => setAttributes( { contentPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Gap between Items" ) }</h2>
+												<h2 className="uagb-light-font-weight">{ __( "Gap Between Lists" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
 													value={ contentPaddingMobile }
 													onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 													min={ 0 }
 													max={ 100 }
 													allowReset
-												/>
+													/>
 											</Fragment>
 										)
 									} else if ( "tablet" === tab.name ) {
@@ -398,16 +374,15 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeTablet === "px" } aria-pressed={ contentPaddingTypeTablet === "px" } onClick={ () => setAttributes( { contentPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeTablet === "%" } aria-pressed={ contentPaddingTypeTablet === "%" } onClick={ () => setAttributes( { contentPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Gap between Items" ) }</h2>
+												<h2 className="uagb-lighter-font-weight">{ __( "Gap Between Lists" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
 													className={ "uagb-margin-control" }
 													value={ contentPaddingTablet }
 													onChange={ ( value ) => setAttributes( { contentPaddingTablet: value } ) }
 													min={ 0 }
 													max={ 100 }
 													allowReset
-												/>
+													/>
 											</Fragment>
 										)
 									} else {
@@ -417,10 +392,9 @@ class UAGBTableOfContentsEdit extends Component {
 													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeDesktop === "px" } aria-pressed={ contentPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { contentPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
 													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ contentPaddingTypeDesktop === "%" } aria-pressed={ contentPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { contentPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
 												</ButtonGroup>
-												<h2>{ __( "Gap between Items" ) }</h2>
+												<h2 className="uagb-light-font-weight">{ __( "Gap Between Lists" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
+													className={ "uagb-gap-control" }
 													value={ contentPaddingDesktop }
 													onChange={ ( value ) => setAttributes( { contentPaddingDesktop: value } ) }
 													min={ 0 }
@@ -434,7 +408,36 @@ class UAGBTableOfContentsEdit extends Component {
 									return <div>{ tabout }</div>
 								}
 							}
-						</TabPanel>
+						</TabPanel>					
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
+							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
+							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
+							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
+							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
+							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
+							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
+							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+						/>
+						<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkColor }} ></span></span></p>
+						<ColorPalette
+							value={ linkColor }
+							onChange={ ( colorValue ) => setAttributes( { linkColor: colorValue } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Content Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: linkHoverColor }} ></span></span></p>
+						<ColorPalette
+							value={ linkHoverColor }
+							onChange={ ( colorValue ) => setAttributes( { linkHoverColor: colorValue } ) }
+							allowReset
+						/>
 					</PanelBody>
 					<PanelBody title={ __( "Style" ) } initialOpen={ false }>
 						<h2>{ __( "Background" ) }</h2>
@@ -762,7 +765,7 @@ class UAGBTableOfContentsEdit extends Component {
 					<div className="uagb-toc__wrap">
 						<RichText
 							tagName= { "div" }
-							placeholder={ __( "Table Of Content" ) }
+							placeholder={ __( "Table Of Contents" ) }
 							value={ heading }
 							className = 'uagb-toc__title'
 							onChange = { ( value ) => setAttributes( { heading: value } ) }

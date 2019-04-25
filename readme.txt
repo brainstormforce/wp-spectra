@@ -89,6 +89,7 @@ We also have an informative and detailed article that will help you to <a href="
  	<li><a href="https://www.ultimategutenberg.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/table-of-contents/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Table Of Contents </a>: The Table of Contents Block lets you display an index or a list of headings included within a long post or page. This gives users an overview of the content and links to the specific sections on the page or post.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
 </ul>
@@ -153,6 +154,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.13.1 =
+* Improvement: Table Of Contents - Changed the bullet styles for sub lists.
+* Fix: Table Of Contents - Scroll to Top option not working on frontend.
 
 = 1.13.0 =
 * New: Table Of Contents. 

@@ -15,7 +15,7 @@
 	}
 
 	ul.uagb-toc__list {
-		margin-left:3em;
+		margin-left:1em;
 		margin-bottom:0;
 	}
 
@@ -43,6 +43,12 @@
 
 	ul li:empty {
 		display: none;
+	}
+}
+
+.uagb-toc__list {
+	.uagb-toc__list {
+		list-style-type: circle;
 	}
 }
 

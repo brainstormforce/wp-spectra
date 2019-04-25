@@ -1501,11 +1501,14 @@ function uagb_blocks_get_image_src( $object, $field_name, $request ) {
  * @since 0.0.1
  */
 function uagb_blocks_get_author_info( $object, $field_name, $request ) {
+
+	$author = ( isset( $object['author'] ) ) ? $object['author'] : '';
+	
 	// Get the author name.
-	$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
+	$author_data['display_name'] = get_the_author_meta( 'display_name', $author );
 
 	// Get the author link.
-	$author_data['author_link'] = get_author_posts_url( $object['author'] );
+	$author_data['author_link'] = get_author_posts_url( $author );
 
 	// Return the author data.
 	return $author_data;

@@ -5,6 +5,10 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
+	disableBullets : {
+		type    : "boolean",
+		default : false,
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,
@@ -42,7 +46,7 @@ const attributes = {
 	heading: {
 		source: "html",
 		selector: ".uagb-toc__title",
-		default: "Table Of Content",
+		default: "Table Of Contents",
 	},
 	customWidth : {
 		type: "boolean",
