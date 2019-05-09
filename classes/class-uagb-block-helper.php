@@ -89,7 +89,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'image' === $bg_type ) {
 
-				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) && isset( $attr['backgroundImage']['url'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
 				$style['background-position']   = $position;
 				$style['background-attachment'] = $attr['backgroundAttachment'];
 				$style['background-repeat']     = $attr['backgroundRepeat'];
@@ -263,7 +263,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'image' === $bg_type ) {
 
-				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) && isset( $attr['backgroundImage']['url'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
 				$style['background-position']   = $position;
 				$style['background-attachment'] = $attr['backgroundAttachment'];
 				$style['background-repeat']     = $attr['backgroundRepeat'];
@@ -272,7 +272,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$inner_width = '100%';
-			
+
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
 					$inner_width = UAGB_Helper::get_css_value( $content_width, $attr['widthType'] );
@@ -435,7 +435,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( 'image' === $bg_type ) {
 
-				$style['background-image']      = ( isset( $attr['backgroundImage'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
+				$style['background-image']      = ( isset( $attr['backgroundImage'] ) && isset( $attr['backgroundImage']['url'] ) ) ? "url('" . $attr['backgroundImage']['url'] . "' )" : null;
 				$style['background-position']   = $position;
 				$style['background-attachment'] = $attr['backgroundAttachment'];
 				$style['background-repeat']     = $attr['backgroundRepeat'];
@@ -1306,7 +1306,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color'   => $attr['backgroundColor'],
 				),
 				' .uagb-testimonial__wrap.uagb-tm__bg-type-image .uagb-tm__content' => array(
-					'background-image'   => ( isset( $attr['backgroundImage']['url'] ) ) ? 'url("'.$attr['backgroundImage']['url'].'")' : null,
+					'background-image'   => ( isset( $attr['backgroundImage']['url'] ) && isset( $attr['backgroundImage']['url'] ) ) ? 'url("'.$attr['backgroundImage']['url'].'")' : null,
 					'background-position'=> $position,
 					'background-repeat'=> $attr['backgroundRepeat'],
 					'background-size'=> $attr['backgroundSize'],
@@ -4454,7 +4454,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Table of Contents Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.13.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -4497,13 +4497,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingDesktop"], $attr["paddingTypeDesktop"] ),
 					"background" => $attr["backgroundColor"],
 				),
-				" .uagb-toc__list-wrap" => array( 
+				" .uagb-toc__list-wrap" => array(
 					'column-count' => $attr['tColumnsDesktop'],
 				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
-				    "padding-top" => 0	
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
+				    "padding-top" => 0
 				),
-				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
 			);
@@ -4518,10 +4518,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			if ( $attr["disableBullets"] ) {
-				$selectors[" .uagb-toc__list"] = array( 
+				$selectors[" .uagb-toc__list"] = array(
 				    "list-style-type" => 'none'
 				);
-				$selectors[" .uagb-toc__list .uagb-toc__list"] = array( 
+				$selectors[" .uagb-toc__list .uagb-toc__list"] = array(
 				    "list-style-type" => 'none'
 				);
 			}
@@ -4543,13 +4543,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr["paddingTypeMobile"] ),
 					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr["paddingTypeMobile"] ),
 				),
-				" .uagb-toc__list-wrap" => array( 
+				" .uagb-toc__list-wrap" => array(
 					'column-count' => $attr['tColumnsMobile'],
 				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
-				    "padding-top" => 0	
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
+				    "padding-top" => 0
 				),
-				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
 
@@ -4571,13 +4571,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr["paddingTypeTablet"] ),
 					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr["paddingTypeTablet"] ),
 				),
-				" .uagb-toc__list-wrap" => array( 
+				" .uagb-toc__list-wrap" => array(
 					'column-count' => $attr['tColumnsTablet'],
 				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array( 
-				    "padding-top" => 0	
+				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
+				    "padding-top" => 0
 				),
-				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array( 
+				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),			);
 
@@ -4603,11 +4603,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-toc-' . $id );
 
-			if ( '' != $attr['scrollToTopColor'] ) {
+			if ( '' !== $attr['scrollToTopColor'] ) {
 				$desktop .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
 			}
 
-			if ( '' != $attr['scrollToTopBgColor'] ) {
+			if ( '' !== $attr['scrollToTopBgColor'] ) {
 				$desktop .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
 			}
 
@@ -4743,7 +4743,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Table of Contents Js
 		 *
-		 * @since x.x.x
+		 * @since 1.13.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
@@ -4909,7 +4909,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Adds Google fonts for Table Of Contents block.
 		 *
-		 * @since x.x.x
+		 * @since 1.13.0
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_table_of_contents_gfont( $attr ) {

@@ -85,18 +85,18 @@ class UAGB_Init_Blocks {
 
 		$blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 
-		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' == $blocks['post-masonry'] ) ? false : true;
-		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' == $blocks['cf7-styler'] ) ? false : true;
+		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' === $blocks['post-masonry'] ) ? false : true;
+		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' === $blocks['cf7-styler'] ) ? false : true;
 		$slick_flag    = (
-			( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) &&
-			( isset( $blocks['testimonial'] ) && 'disabled' == $blocks['testimonial'] )
+			( isset( $blocks['post-carousel'] ) && 'disabled' === $blocks['post-carousel'] ) &&
+			( isset( $blocks['testimonial'] ) && 'disabled' === $blocks['testimonial'] )
 		) ? false : true;
 		$timeline_flag = (
-			( isset( $blocks['post-timeline'] ) && 'disabled' == $blocks['post-timeline'] ) &&
-			( isset( $blocks['content-timeline'] ) && 'disabled' == $blocks['content-timeline'] )
+			( isset( $blocks['post-timeline'] ) && 'disabled' === $blocks['post-timeline'] ) &&
+			( isset( $blocks['content-timeline'] ) && 'disabled' === $blocks['content-timeline'] )
 		) ? false : true;
 
-		$carousel_flag = ( isset( $blocks['post-carousel'] ) && 'disabled' == $blocks['post-carousel'] ) ? false : true;
+		$carousel_flag = ( isset( $blocks['post-carousel'] ) && 'disabled' === $blocks['post-carousel'] ) ? false : true;
 
 		if ( $masonry_flag ) {
 
@@ -118,32 +118,13 @@ class UAGB_Init_Blocks {
 			);
 		}
 
-		if ( ! ( isset( $blocks['table-of-contents'] ) && 'disabled' == $blocks['table-of-contents'] ) ) {
+		if ( ! ( isset( $blocks['table-of-contents'] ) && 'disabled' === $blocks['table-of-contents'] ) ) {
 			wp_enqueue_script(
 				'uagb-table-of-contents', // Handle.
 				UAGB_URL . 'assets/js/table-of-contents.js',
 				array( 'jquery' ), // Dependencies, defined above.
 				UAGB_VER,
 				false // Enqueue the script in the footer.
-			);
-		}
-
-		$value = true;
-
-		if ( did_action( 'elementor/loaded' ) ) {
-			$value = false;
-		}
-
-		$enable_font_awesome = apply_filters( 'uagb_font_awesome_enable', $value );
-
-		if ( $enable_font_awesome ) {
-			$font_awesome = apply_filters( 'uagb_font_awesome_url', 'https://use.fontawesome.com/releases/v5.6.0/css/all.css' );
-			// Font Awesome.
-			wp_enqueue_style(
-				'uagb-fontawesome-css', // Handle.
-				$font_awesome, // Block style CSS.
-				array(),
-				UAGB_VER
 			);
 		}
 

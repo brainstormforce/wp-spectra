@@ -15,7 +15,7 @@ function uagb_gf_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
 
     // @codingStandardsIgnoreEnd
-	if ( $id && 0 != $id && -1 != $id ) {
+	if ( $id && 0 !== $id && -1 !== $id ) {
 		$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
 	} else {
 		$data['html'] = '<p>' . __( 'Please select a valid Gravity Form.', 'ultimate-addons-for-gutenberg' ) . '</p>';

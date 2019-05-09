@@ -14,7 +14,7 @@
 function uagb_cf7_shortcode() { 	// @codingStandardsIgnoreStart
     $id = intval($_POST['formId']);
     // @codingStandardsIgnoreEnd
-	if ( $id && 0 != $id && -1 != $id ) {
+	if ( $id && 0 !== $id && -1 !== $id ) {
 		$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
 	} else {
 		$data['html'] = '<p>' . __( 'Please select a valid Contact Form 7.', 'ultimate-addons-for-gutenberg' ) . '</p>';

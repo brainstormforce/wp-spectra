@@ -100,8 +100,8 @@ function uagb_post_block_add_script() {
 	if ( isset( $uagb_post_settings['carousel'] ) && ! empty( $uagb_post_settings['carousel'] ) ) {
 		foreach ( $uagb_post_settings['carousel'] as $key => $value ) {
 
-			$dots         = ( 'dots' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
-			$arrows       = ( 'arrows' == $value['arrowDots'] || 'arrows_dots' == $value['arrowDots'] ) ? true : false;
+			$dots         = ( 'dots' === $value['arrowDots'] || 'arrows_dots' === $value['arrowDots'] ) ? true : false;
+			$arrows       = ( 'arrows' === $value['arrowDots'] || 'arrows_dots' === $value['arrowDots'] ) ? true : false;
 			$equal_height = isset( $value['equalHeight'] ) ? $value['equalHeight'] : '';
 			$tcolumns     = ( isset( $value['tcolumns'] ) ) ? $value['tcolumns'] : 2;
 			$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
@@ -1480,6 +1480,10 @@ function uagb_blocks_get_image_src( $object, $field_name, $request ) {
 
 	$featured_images = array();
 
+	if ( ! isset( $object['featured_media'] ) ) {
+		return $featured_images;
+	}
+
 	foreach ( $image_sizes as $key => $value ) {
 		$size = $value['value'];
 
@@ -1489,6 +1493,7 @@ function uagb_blocks_get_image_src( $object, $field_name, $request ) {
 			false
 		);
 	}
+
 	return $featured_images;
 }
 
@@ -1503,7 +1508,7 @@ function uagb_blocks_get_image_src( $object, $field_name, $request ) {
 function uagb_blocks_get_author_info( $object, $field_name, $request ) {
 
 	$author = ( isset( $object['author'] ) ) ? $object['author'] : '';
-	
+
 	// Get the author name.
 	$author_data['display_name'] = get_the_author_meta( 'display_name', $author );
 

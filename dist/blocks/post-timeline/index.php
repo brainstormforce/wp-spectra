@@ -515,7 +515,7 @@ function uagb_tm_get_image( $attributes ) {
 		return;
 	}
 
-	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_featured_image_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class='uagb-timeline__image'>
@@ -557,7 +557,7 @@ function uagb_tm_get_date( $attributes, $classname ) {
  */
 function uagb_tm_get_title( $attributes ) {
 
-	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 
 	$tag = $attributes['headingTag'];
 	global $post;
@@ -582,7 +582,7 @@ function uagb_tm_get_cta( $attributes ) {
 	if ( ! $attributes['displayPostLink'] ) {
 		return;
 	}
-	$target = ( isset( $attributes['linkTarget'] ) && ( true == $attributes['linkTarget'] ) ) ? '_blank' : '_self';
+	$target = ( isset( $attributes['linkTarget'] ) && ( true === $attributes['linkTarget'] ) ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-timeline__link_parent">
@@ -684,8 +684,8 @@ function uagb_tm_get_align_classes( $attributes, $index_val ) {
 		$align_class = 'uagb-timeline__widget uagb-timeline__left';
 	} elseif ( 'right' === $attributes['timelinAlignment'] ) {
 		$align_class = 'uagb-timeline__widget uagb-timeline__right';
-	} elseif ( 'center' == $attributes['timelinAlignment'] ) {
-		if ( '0' == $index_val % 2 ) {
+	} elseif ( 'center' === $attributes['timelinAlignment'] ) {
+		if ( 0 === $index_val % 2 ) {
 			$align_class = 'uagb-timeline__widget uagb-timeline__right';
 		} else {
 			$align_class = 'uagb-timeline__widget uagb-timeline__left';
@@ -711,7 +711,7 @@ function uagb_tm_get_day_align_classes( $attributes, $index_val ) {
 	} elseif ( 'right' === $attributes['timelinAlignment'] ) {
 		$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-right';
 	} elseif ( 'center' === $attributes['timelinAlignment'] ) {
-		if ( '0' == $index_val % 2 ) {
+		if ( 0 === $index_val % 2 ) {
 			$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-right';
 		} else {
 			$day_align_class = 'uagb-timeline__day-new uagb-timeline__day-left';

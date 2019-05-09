@@ -1529,7 +1529,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'block_id'                  => '',
 							'heading'                   => 'Table Of Contents',
-							'disableBullets'			=> false,
+							'disableBullets'            => false,
 							'smoothScroll'              => true,
 							'smoothScrollOffset'        => 30,
 							'scrollToTop'               => false,
