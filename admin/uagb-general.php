@@ -71,7 +71,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 
 									$addon = str_replace( 'uagb/', '', $addon );
 
-									if ( 'column' == $addon ) {
+									if ( 'column' === $addon ) {
 										continue; }
 
 									$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';

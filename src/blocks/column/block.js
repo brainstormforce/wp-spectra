@@ -393,7 +393,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ topPaddingMobile }
 												onChange={ ( value ) => setAttributes( { topPaddingMobile: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -402,7 +402,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ bottomPaddingMobile }
 												onChange={ ( value ) => setAttributes( { bottomPaddingMobile: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -411,7 +411,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ leftPaddingMobile }
 												onChange={ ( value ) => setAttributes( { leftPaddingMobile: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -420,7 +420,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ rightPaddingMobile }
 												onChange={ ( value ) => setAttributes( { rightPaddingMobile: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == mobilePaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 										</Fragment>
@@ -439,7 +439,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ topPaddingTablet }
 												onChange={ ( value ) => setAttributes( { topPaddingTablet: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -448,7 +448,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ bottomPaddingTablet }
 												onChange={ ( value ) => setAttributes( { bottomPaddingTablet: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -457,7 +457,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ leftPaddingTablet }
 												onChange={ ( value ) => setAttributes( { leftPaddingTablet: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -466,7 +466,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ rightPaddingTablet }
 												onChange={ ( value ) => setAttributes( { rightPaddingTablet: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == tabletPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 										</Fragment>
@@ -485,7 +485,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ topPadding }
 												onChange={ ( value ) => setAttributes( { topPadding: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -494,7 +494,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ bottomPadding }
 												onChange={ ( value ) => setAttributes( { bottomPadding: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -503,7 +503,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ leftPadding }
 												onChange={ ( value ) => setAttributes( { leftPadding: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -512,7 +512,7 @@ export default class UAGBColumnEdit extends Component {
 												value={ rightPadding }
 												onChange={ ( value ) => setAttributes( { rightPadding: value } ) }
 												min={ 0 }
-												max={ 200 }
+												max={ ( "%" == desktopPaddingType ) ? 100 : 2000 }
 												allowReset
 											/>
 										</Fragment>
@@ -559,8 +559,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ topMarginMobile }
 												onChange={ ( value ) => setAttributes( { topMarginMobile: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -568,8 +568,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ bottomMarginMobile }
 												onChange={ ( value ) => setAttributes( { bottomMarginMobile: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -577,8 +577,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ leftMarginMobile }
 												onChange={ ( value ) => setAttributes( { leftMarginMobile: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -586,8 +586,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ rightMarginMobile }
 												onChange={ ( value ) => setAttributes( { rightMarginMobile: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 										</Fragment>
@@ -605,8 +605,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ topMarginTablet }
 												onChange={ ( value ) => setAttributes( { topMarginTablet: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -614,8 +614,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ bottomMarginTablet }
 												onChange={ ( value ) => setAttributes( { bottomMarginTablet: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -623,8 +623,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ leftMarginTablet }
 												onChange={ ( value ) => setAttributes( { leftMarginTablet: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -632,8 +632,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ rightMarginTablet }
 												onChange={ ( value ) => setAttributes( { rightMarginTablet: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 										</Fragment>
@@ -651,8 +651,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ topMargin }
 												onChange={ ( value ) => setAttributes( { topMargin: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -660,8 +660,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ bottomMargin }
 												onChange={ ( value ) => setAttributes( { bottomMargin: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -669,8 +669,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ leftMargin }
 												onChange={ ( value ) => setAttributes( { leftMargin: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 											<RangeControl
@@ -678,8 +678,8 @@ export default class UAGBColumnEdit extends Component {
 												className={ "uagb-margin-control" }
 												value={ rightMargin }
 												onChange={ ( value ) => setAttributes( { rightMargin: value } ) }
-												min={ -200 }
-												max={ 200 }
+												min={ -2000 }
+												max={ 2000 }
 												allowReset
 											/>
 										</Fragment>
