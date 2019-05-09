@@ -68,12 +68,12 @@
 
 		img {
 			display: block;
-			width: 100%;
 		}
 	}
 
 	.uagb-post__text {
 		text-align: left;
+		box-sizing: border-box;
 	}
 
 	.uagb-post__title {
