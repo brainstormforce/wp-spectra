@@ -171,6 +171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_css_value( $value = '', $unit = '' ) {
 
 			// @codingStandardsIgnoreStart
+			
 			if ( '' == $value ) {
 				return $value;
 			}
