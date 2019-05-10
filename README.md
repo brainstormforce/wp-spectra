@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.13.3 ###
+* Fix: CSS not applying on front end if the value is set to 0.
+
 ### 1.13.2 ###
 * Fix: PHP notices in some cases fixed.
 * Fix: Advanced Columns - Spacing limits increased.
