@@ -85,6 +85,7 @@ function RangeTypographyControl( props ) {
 										onChange={ ( value ) => props.setAttributes( { [props.sizeMobileLabel]: value } ) }
 										min={ 0 }
 										max={ 100 }
+										step={ props.steps }
 										beforeIcon="editor-textcolor"
 										allowReset
 										initialPosition={30}
@@ -101,6 +102,7 @@ function RangeTypographyControl( props ) {
 										onChange={ ( value ) => props.setAttributes( { [props.sizeTabletLabel]: value } ) }
 										min={ 0 }
 										max={ 100 }
+										step={ props.steps }
 										beforeIcon="editor-textcolor"
 										allowReset
 										initialPosition={30}
@@ -117,6 +119,7 @@ function RangeTypographyControl( props ) {
 										onChange={ ( value ) => props.setAttributes( { [props.sizeLabel]: value } ) }
 										min={ 0 }
 										max={ 100 }
+										step={ props.steps }
 										beforeIcon="editor-textcolor"
 										allowReset
 										initialPosition={30}
