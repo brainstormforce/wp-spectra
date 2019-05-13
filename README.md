@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.1.1  
-**Stable tag:** 1.13.0  
+**Tested up to:** 5.2  
+**Stable tag:** 1.13.2  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -89,6 +89,7 @@ We also have an informative and detailed article that will help you to <a href="
  	<li><a href="https://www.ultimategutenberg.com/blocks/price-list/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Price List </a>: This block allows you to design a nice-looking, easy to manage, Price List for your website.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/sections/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Section </a>: This is an outer wrap section that allows you to add other blocks within it. You can manage the layout of this section and customize it using options like spacing, background, border and the advanced settings.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/social-share/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Social Share </a>: The Social Share block allows you to let users share your content across various social networking sites.</li>
+ 	<li><a href="https://www.ultimategutenberg.com/blocks/table-of-contents/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Table Of Contents </a>: The Table of Contents Block lets you display an index or a list of headings included within a long post or page. This gives users an overview of the content and links to the specific sections on the page or post.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/team/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Team </a>: The Team block allows you to display your team. Add their picture, name, what they do and links to their social profiles.</li>
  	<li><a href="https://www.ultimategutenberg.com/blocks/testimonials/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme" target="_blank">Testimonial </a>: The Testimonial block helps your display some amazing client feedback within your website in carousel layout.</li>
 </ul>
@@ -154,8 +155,22 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.13.3 ###
+* Fix: CSS not applying on front end if the value is set to 0.
+
+### 1.13.2 ###
+* Fix: PHP notices in some cases fixed.
+* Fix: Advanced Columns - Spacing limits increased.
+* Fix: Icon List - Text decoration issue with few themes.
+* Fix: Post - CSS conflicts with few themes.
+* Fix: Section - Spacing limits increased.
+
+### 1.13.1 ###
+* Improvement: Table Of Contents - Changed the bullet styles for sub lists.
+* Fix: Table Of Contents - Scroll to Top option not working on frontend.
+
 ### 1.13.0 ###
-* New: Table Of Contents. 
+* New: Table Of Contents.
 * Improvement: Advanced Columns - Added px/% option for margin and padding spacing.
 * Improvement: Advanced Columns - Introduced Gradient Overlay for background type of Image.
 * Improvement: Advanced Columns - Added % option for Custom Inner Width.
@@ -164,11 +179,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Testimonials - Added filter `uagb_testimonials_slick_options` to change the slick options.
 * Fix: Button - Text align justified option not working.
 * Fix: Icon list – Underline issue with 2017/2019 theme.
-* Fix: Post timeline- Disable image option not working.
+* Fix: Post Timeline- Disable image option not working.
 
 ### 1.12.5 ###
 * Fix: Testimonial - Border options not working in editor.
-* Fix: List Icon - Border options not working on frontend.
+* Fix: Icon List - Border options not working on frontend.
 * Fix: Advanced Columns - Removed Extra padding from the editor.
 * Fix: Advanced Columns - Block settings not visible in the editor.
 

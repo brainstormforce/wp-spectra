@@ -30,7 +30,7 @@
 
 		<?php
 		// Settings update message.
-		if ( isset( $_REQUEST['message'] ) && ( 'saved' == $_REQUEST['message'] || 'saved_ext' == $_REQUEST['message'] ) ) {
+		if ( isset( $_REQUEST['message'] ) && ( 'saved' === $_REQUEST['message'] || 'saved_ext' === $_REQUEST['message'] ) ) {
 			?>
 				<div id="message" class="notice notice-success is-dismissive uagb-notice"><p> <?php esc_html_e( 'Settings saved successfully.', 'ultimate-addons-for-gutenberg' ); ?> </p></div>
 			<?php

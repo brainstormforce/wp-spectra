@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 				if ( ! empty( $gfont_values['fontsubsets'] ) ) {
 					foreach ( $gfont_values['fontsubsets'] as $subset ) {
-						if ( ! in_array( $subset, $subsets ) ) {
+						if ( ! in_array( $subset, $subsets, true ) ) {
 							array_push( $subsets, $subset );
 						}
 					}
@@ -170,9 +170,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {
 
+			// @codingStandardsIgnoreStart
+			
 			if ( '' == $value ) {
 				return $value;
 			}
+			// @codingStandardsIgnoreEnd
 
 			$css_val = '';
 
@@ -365,7 +368,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function blocks_google_font( $load_google_font, $font_family, $font_weight, $font_subset ) {
 
-			if ( true == $load_google_font ) {
+			if ( true === $load_google_font ) {
 				if ( ! array_key_exists( $font_family, self::$gfonts ) ) {
 					$add_font                     = array(
 						'fontfamily'   => $font_family,
@@ -569,7 +572,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( $blocks as $i => $block ) {
 
 				if ( is_array( $block ) ) {
-					if ( 'core/block' == $block['blockName'] ) {
+					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
@@ -619,7 +622,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			foreach ( $blocks as $i => $block ) {
 				if ( is_array( $block ) ) {
-					if ( 'core/block' == $block['blockName'] ) {
+					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
 						if ( $id ) {
@@ -845,7 +848,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'ignore_sticky_posts' => 1,
 			);
 
-			if ( isset( $attributes['categories'] ) && '' != $attributes['categories'] ) {
+			if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
 				$query_args['tax_query'][] = array(
 					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
 					'field'    => 'id',
@@ -881,7 +884,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			);
 
 			foreach ( $sizes as $size ) {
-				if ( in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ) ) ) {
+				if ( in_array( $size, array( 'thumbnail', 'medium', 'medium_large', 'large' ), true ) ) {
 					$image_sizes[] = array(
 						'value' => $size,
 						'label' => ucwords( trim( str_replace( array( '-', '_' ), array( ' ', ' ' ), $size ) ) ),
@@ -923,7 +926,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$options = array();
 
 			foreach ( $post_types as $post_type ) {
-				if ( 'product' == $post_type->name ) {
+				if ( 'product' === $post_type->name ) {
 					continue;
 				}
 
@@ -1046,14 +1049,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			// Sanitize $color if "#" is provided.
-			if ( '#' == $color[0] ) {
+			if ( '#' === $color[0] ) {
 				$color = substr( $color, 1 );
 			}
 
 			// Check if color has 6 or 3 characters and get values.
-			if ( strlen( $color ) == 6 ) {
+			if ( strlen( $color ) === 6 ) {
 					$hex = array( $color[0] . $color[1], $color[2] . $color[3], $color[4] . $color[5] );
-			} elseif ( strlen( $color ) == 3 ) {
+			} elseif ( strlen( $color ) === 3 ) {
 					$hex = array( $color[0] . $color[0], $color[1] . $color[1], $color[2] . $color[2] );
 			} else {
 					return $default;

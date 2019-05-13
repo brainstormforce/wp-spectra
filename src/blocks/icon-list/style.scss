@@ -25,10 +25,10 @@
 		justify-content: flex-start;
 	}
 
-	a.uagb-icon-list__wrapper,
-	a.uagb-icon-list__wrapper:focus,
-	a.uagb-icon-list__wrapper:active,
-	a.uagb-icon-list__wrapper:visited {
+	&.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper,
+	&.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper:focus,
+	&.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper:active,
+	&.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper:visited {
 		text-decoration: none;
 	}
 

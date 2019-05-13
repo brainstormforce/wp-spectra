@@ -66,7 +66,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'wp_ajax_uag-theme-activate', __CLASS__ . '::theme_activate' );
 
 			// Enqueue admin scripts.
-			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG == $_REQUEST['page'] ) {
+			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG === $_REQUEST['page'] ) {
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
 
 				self::save_settings();
@@ -141,7 +141,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			if ( class_exists( 'Classic_Editor' ) ) {
 				$editor_option = get_option( 'classic-editor-replace' );
-				if ( isset( $editor_option ) && 'block' != $editor_option ) {
+				if ( isset( $editor_option ) && 'block' !== $editor_option ) {
 					Astra_Notices::add_notice(
 						array(
 							'id'                         => 'uagb-classic-editor',
@@ -204,7 +204,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function render() {
 			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
-			$action = ( ! empty( $action ) && '' != $action ) ? $action : 'general';
+			$action = ( ! empty( $action ) && '' !== $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
 
 			// Enable header icon filter below.
@@ -224,7 +224,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		public static function render_content() {
 
 			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
-			$action = ( ! empty( $action ) && '' != $action ) ? $action : 'general';
+			$action = ( ! empty( $action ) && '' !== $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
 
 			$uagb_header_wrapper_class = apply_filters( 'uagb_header_wrapper_class', array( $action ) );
