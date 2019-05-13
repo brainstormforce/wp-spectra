@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.2  
-**Stable tag:** 1.13.2  
+**Stable tag:** 1.13.3  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -156,7 +156,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.13.3 ###
-* Fix: CSS not applying on front end if the value is set to 0.
+* Fix: CSS not applying on the front-end if the range control field value was 0.
+* Fix: Line height field didn't accept decimal values.
 
 ### 1.13.2 ###
 * Fix: PHP notices in some cases fixed.
