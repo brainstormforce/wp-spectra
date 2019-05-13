@@ -348,8 +348,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Quote Icon Size" ) }
 											value={ quoteSizeMobile }
 											onChange={ ( value ) => setAttributes( { quoteSizeMobile: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -364,8 +364,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Quote Icon Size" ) }
 											value={ quoteSizeTablet }
 											onChange={ ( value ) => setAttributes( { quoteSizeTablet: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -380,8 +380,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Quote Icon Size" ) }
 											value={ quoteSize }
 											onChange={ ( value ) => setAttributes( { quoteSize: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -424,8 +424,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Background Size" ) }
 											value={ quotePaddingMobile }
 											onChange={ ( value ) => setAttributes( { quotePaddingMobile: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -440,8 +440,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Background Size" ) }
 											value={ quotePaddingTablet }
 											onChange={ ( value ) => setAttributes( { quotePaddingTablet: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -456,8 +456,8 @@ class UAGBBlockQuote extends Component {
 											label={ __( "Background Size" ) }
 											value={ quotePadding }
 											onChange={ ( value ) => setAttributes( { quotePadding: value } ) }
-											min={ 10 }
-											max={ 100 }
+											min={ 0 }
+											max={ 500 }
 											beforeIcon="editor-textcolor"
 											allowReset
 											initialPosition={30}
@@ -586,7 +586,7 @@ class UAGBBlockQuote extends Component {
 							value={ authorImageWidth }
 							onChange={ ( value ) => setAttributes( { authorImageWidth: value } ) }
 							min={ 0 }
-							max={ 200 }
+							max={ 500 }
 							beforeIcon=""
 							allowReset
 						/>
@@ -819,7 +819,7 @@ class UAGBBlockQuote extends Component {
 						value={ quoteTopMargin }
 						onChange={ ( value ) => setAttributes( { quoteTopMargin: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 					<RangeControl
@@ -828,7 +828,7 @@ class UAGBBlockQuote extends Component {
 						value={ quoteBottomMargin }
 						onChange={ ( value ) => setAttributes( { quoteBottomMargin: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 					<RangeControl
@@ -837,7 +837,7 @@ class UAGBBlockQuote extends Component {
 						value={ quoteLeftMargin }
 						onChange={ ( value ) => setAttributes( { quoteLeftMargin: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 					<RangeControl
@@ -846,7 +846,7 @@ class UAGBBlockQuote extends Component {
 						value={ quoteRightMargin }
 						onChange={ ( value ) => setAttributes( { quoteRightMargin: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
@@ -858,7 +858,7 @@ class UAGBBlockQuote extends Component {
 						value={ borderGap }
 						onChange={ ( value ) => setAttributes( { borderGap: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 				}
@@ -867,7 +867,7 @@ class UAGBBlockQuote extends Component {
 					value={ descSpace }
 					onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 200 }
 					allowReset
 					initialPosition={0}
 				/>
@@ -876,7 +876,7 @@ class UAGBBlockQuote extends Component {
 					value={ authorSpace }
 					onChange={ ( value ) => setAttributes( { authorSpace: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 200 }
 					allowReset
 					initialPosition={0}
 				/>
@@ -891,7 +891,7 @@ class UAGBBlockQuote extends Component {
 						value={ verticalPadding }
 						onChange={ ( value ) => setAttributes( { verticalPadding: value } ) }
 						min={ 0 }
-						max={ 100 }
+						max={ 500 }
 						allowReset
 					/>
 				</Fragment>
@@ -983,7 +983,7 @@ class UAGBBlockQuote extends Component {
 						value={ tweetBtnVrPadding }
 						onChange={ ( value ) => setAttributes( { tweetBtnVrPadding: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						allowReset
 						initialPosition={5}
 					/>
@@ -993,7 +993,7 @@ class UAGBBlockQuote extends Component {
 						value={ tweetBtnHrPadding }
 						onChange={ ( value ) => setAttributes( { tweetBtnHrPadding: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						allowReset
 						initialPosition={5}
 					/>														

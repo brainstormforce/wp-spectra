@@ -323,7 +323,7 @@ export default class UAGBAdvancedHeading extends Component {
 							value={ headSpace }
 							onChange={ ( value ) => setAttributes( { headSpace: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							beforeIcon=""
 							allowReset
 							initialPosition={0}
@@ -333,7 +333,7 @@ export default class UAGBAdvancedHeading extends Component {
 							value={ separatorSpace }
 							onChange={ ( value ) => setAttributes( { separatorSpace: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							beforeIcon=""
 							allowReset
 							initialPosition={0}
