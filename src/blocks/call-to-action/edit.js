@@ -301,7 +301,7 @@ class UAGBCallToAction extends Component {
 							value={ ctaBtnVertPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnVertPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							beforeIcon=""
 							allowReset
 						/>
@@ -311,7 +311,7 @@ class UAGBCallToAction extends Component {
 							value={ ctaBtnHrPadding }
 							onChange={ ( value ) => setAttributes( { ctaBtnHrPadding: value } ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 							beforeIcon=""
 							allowReset
 						/>
@@ -564,7 +564,7 @@ class UAGBCallToAction extends Component {
 					value={ titleSpace }
 					onChange={ ( value ) => setAttributes( { titleSpace: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 500 }
 					beforeIcon=""
 					allowReset
 				/>
@@ -573,7 +573,7 @@ class UAGBCallToAction extends Component {
 					value={ descSpace }
 					onChange={ ( value ) => setAttributes( { descSpace: value } ) }
 					min={ 0 }
-					max={ 50 }
+					max={ 500 }
 					beforeIcon=""
 					allowReset
 				/>
@@ -584,7 +584,7 @@ class UAGBCallToAction extends Component {
 						value={ ctaLeftSpace }
 						onChange={ ( value ) => setAttributes( { ctaLeftSpace: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						beforeIcon=""
 						allowReset
 					/>
@@ -595,7 +595,7 @@ class UAGBCallToAction extends Component {
 						value={ ctaRightSpace }
 						onChange={ ( value ) => setAttributes( { ctaRightSpace: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						beforeIcon=""
 						allowReset
 					/>

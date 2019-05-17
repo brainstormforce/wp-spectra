@@ -202,7 +202,7 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { sizeMobile: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
 												beforeIcon="editor-textcolor"
 												allowReset
@@ -241,7 +241,7 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { sizeTablet: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
 												beforeIcon="editor-textcolor"
 												allowReset
@@ -280,7 +280,7 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { size: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
 												beforeIcon="editor-textcolor"
 												allowReset
@@ -347,7 +347,7 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { lineHeightMobile: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
 												beforeIcon="editor-textcolor"
 												allowReset
@@ -386,10 +386,11 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { lineHeightTablet: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
 												beforeIcon="editor-textcolor"
 												allowReset
+												step={0.1}
 												initialPosition={16}
 											/>
 										</Fragment>
@@ -425,8 +426,9 @@ class UAGBMultiButtonEdit extends Component {
 												onChange={ value => {
 													this.saveButton( { lineHeight: value }, index )
 												} }
-												min={ 10 }
+												min={ 0 }
 												max={ 100 }
+												step={0.1}
 												beforeIcon="editor-textcolor"
 												allowReset
 												initialPosition={16}

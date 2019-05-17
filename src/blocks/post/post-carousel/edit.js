@@ -862,7 +862,7 @@ class UAGBPostCarousel extends Component {
 						value={ contentPadding }
 						onChange={ ( value ) => setAttributes( { contentPadding: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						allowReset
 					/>
 					<RangeControl
@@ -870,7 +870,7 @@ class UAGBPostCarousel extends Component {
 						value={ contentPaddingMobile }
 						onChange={ ( value ) => setAttributes( { contentPaddingMobile: value } ) }
 						min={ 0 }
-						max={ 50 }
+						max={ 500 }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
