@@ -998,7 +998,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( false === $posts_created_with_uag ) {
 				$query_args = array(
-					'posts_per_page' => -1,
+					'posts_per_page' => 100,
 					'post_status'    => 'publish',
 					'post_type'      => 'any',
 				);

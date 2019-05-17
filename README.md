@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.2  
-**Stable tag:** 1.13.3  
+**Stable tag:** 1.13.3.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -154,6 +154,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+
+### 1.13.3.1 ###
+* Fix: UAG admin notice causing issue fix.
 
 ### 1.13.3 ###
 * Fix: CSS not applying on the front-end if the range control field value was 0.
