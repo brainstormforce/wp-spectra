@@ -1067,7 +1067,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Check if opacity is set(rgba or rgb).
 			if ( false !== $opacity && '' !== $opacity ) {
-				if ( abs( $opacity ) > 1 ) {
+				if ( abs( $opacity ) >= 1 ) {
 					$opacity = $opacity / 100;
 				}
 				$output = 'rgba(' . implode( ',', $rgb ) . ',' . $opacity . ')';
