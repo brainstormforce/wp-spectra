@@ -259,7 +259,7 @@ class UAGBTableOfContentsEdit extends Component {
 									value={ smoothScrollDelay }
 									onChange={ ( value ) => setAttributes( { smoothScrollDelay: value } ) }
 									min={ 100 }
-									max={ 1000 }
+									max={ 5000 }
 								/>
 							</Fragment>
 						}

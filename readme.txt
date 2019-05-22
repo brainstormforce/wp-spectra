@@ -157,8 +157,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.3.1 =
 * Fix: UAG admin notice causing issue fix.
-* Fix: Marketing Button - Background Color and Background Hover Color opacity issue fixed.
 * Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
+* Fix: Marketing Button - Background Color and Background Hover Color opacity issue fixed.
+* Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue fixed.
 
 = 1.13.3 =
 * Fix: CSS not applying on the front-end if the range control field value was 0.
