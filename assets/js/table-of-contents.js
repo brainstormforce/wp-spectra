@@ -48,7 +48,13 @@
 		_scroll: function( e ) {
 
 			if ( this.hash !== "" ) {
+
 				var hash = this.hash
+				var node = $( this ). closest( '.wp-block-uagb-table-of-contents' )
+
+				scroll = node.data( 'scroll' )
+				scroll_offset = node.data( 'offset' )
+				scroll_delay = node.data( 'delay' )
 
 				if ( scroll ) {
 
