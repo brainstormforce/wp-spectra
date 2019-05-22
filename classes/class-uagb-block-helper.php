@@ -102,7 +102,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
 					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
-						$inner_width = $content_width . 'px';
+						$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
 							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], 'px' );
@@ -293,7 +293,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' )
 				),
 				' .uagb-columns__shape-top svg' => array(
-					'width' => "calc( " . $attr['topWidth'] . "% + 1.3px )",
 					'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' )
 				),
 				' .uagb-columns__shape-top .uagb-columns__shape-fill' => array(
@@ -301,7 +300,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['topDividerOpacity'] ) && '' != $attr['topDividerOpacity'] ) ? ( ( $attr['topDividerOpacity'] ) / 100 ) : ""
 				),
 				' .uagb-columns__shape-bottom svg' => array(
-					'width' => "calc( " . $attr['bottomWidth'] . "% + 1.3px )",
 					'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' )
 				),
 				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
@@ -309,6 +307,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['bottomDividerOpacity'] ) && '' != $attr['bottomDividerOpacity'] ) ? ( ( $attr['bottomDividerOpacity'] ) / 100 ) : ""
 				),
 			);
+
+			if ( '' !== $attr['topWidth'] ) {
+				$selectors[' .uagb-columns__shape-top svg']['width'] = "calc( " . $attr['topWidth'] . "% + 1.3px )";
+			}
+
+			if ( '' !== $attr['bottomWidth'] ) {
+				$selectors[' .uagb-columns__shape-bottom svg']['width'] = "calc( " . $attr['bottomWidth'] . "% + 1.3px )";
+			}
 
 			if ( 'video' == $bg_type ) {
 				$selectors[' > .uagb-columns__overlay'] = array(

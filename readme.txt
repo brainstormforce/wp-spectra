@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.3.1 =
 * Fix: UAG admin notice causing issue fix.
+* Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
 
 = 1.13.3 =
 * Fix: CSS not applying on the front-end if the range control field value was 0.
