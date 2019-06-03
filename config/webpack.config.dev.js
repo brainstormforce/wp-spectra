@@ -34,6 +34,37 @@ const editBlocksCSSPlugin = new ExtractTextPlugin( {
 	filename: "./dist/blocks.editor.build.css",
 } )
 
+const fs = require( "fs" )
+const sass = require('node-sass');
+
+fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
+    console.log(items)
+
+    for (var i=0; i<items.length; i++) {
+		console.log(items[i]);
+		//console.log("@import \"./src/blocks/" + items[i] + "/style.scss\";\n");
+
+		var result = sass.render({
+			file: paths.pluginSrc + '/blocks/' + items[i] + '/style.scss',
+			outputStyle: 'compressed',
+			data: "@import \"./src/blocks/" + items[i] + "/style.scss\";\n",
+			outFile: './assets/css/blocks/' + items[i] + '.css',
+			sourceMap: true
+		}, function(error, result) { // node-style callback from v3.0.0 onwards
+			if(!error){
+				// No errors during the compilation, write this result on the disk
+				fs.writeFile('./assets/css/blocks/' + items[i] + '.css', result.css, function(err){
+					console.log(err);
+					if(!err){
+						console.log('done');
+					}
+				});
+			}
+		});
+		console.log(result);
+    }
+});
+
 // Configuration for the ExtractTextPlugin — DRY rule.
 const extractConfig = {
 	use: [
@@ -68,8 +99,6 @@ const extractConfig = {
 	],
 }
 
-// console.log( paths );
-
 // Export configuration.
 module.exports = {
 	entry: {
@@ -102,7 +131,7 @@ module.exports = {
 			},
 			{
 				test: /style\.s?css$/,
-				exclude: /(node_modules|bower_components)/,
+				exclude: ["(node_modules|bower_components)"],
 				use: blocksCSSPlugin.extract( extractConfig ),
 			},
 			{

@@ -473,8 +473,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public function generate_stylesheet() {
 
 			$this_post = array();
-
-			if ( is_single() || is_page() || is_404() ) {
+			global $post;
+			echo '<xmp>'; print_r($post); echo '</xmp>';
+			var_dump(is_shop());
+			if ( is_single() || is_page() || is_404() || is_shop() ) {
 				global $post;
 				$this_post = $post;
 				$this->_generate_stylesheet( $this_post );
