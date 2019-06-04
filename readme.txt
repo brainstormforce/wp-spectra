@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.3.1 =
+* Improvement: WooCommerce Compatibility - Now WooCommerce Pages could also be designed using UAG.
 * Fix: UAG admin notice causing issue fix.
 * Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
 * Fix: Marketing Button - Background Color and Background Hover Color opacity issue fixed.
