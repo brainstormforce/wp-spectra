@@ -315,6 +315,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update blocks.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo $block_id;
 
@@ -335,6 +336,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update blocks.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo $block_id;
 
@@ -363,6 +365,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update new_extensions.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo 'success';
 
@@ -391,6 +394,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update new_extensions.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo 'success';
 

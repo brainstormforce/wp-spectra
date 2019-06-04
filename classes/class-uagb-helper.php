@@ -1122,6 +1122,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return $output;
 			}
 		}
+
+		/**
+		 *  Get Specific Stylesheet
+		 *
+		 * @since x.x.x
+		 */
+		public static function create_specific_stylesheet() {
+
+			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
+			var_dump($saved_blocks);
+		}
 	}
 
 	/**
