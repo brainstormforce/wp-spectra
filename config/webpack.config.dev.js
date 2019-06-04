@@ -38,31 +38,34 @@ const fs = require( "fs" )
 const sass = require('node-sass');
 
 fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
-    console.log(items)
 
-    for (var i=0; i<items.length; i++) {
-		console.log(items[i]);
-		//console.log("@import \"./src/blocks/" + items[i] + "/style.scss\";\n");
-
+	for ( var i=0; i<items.length; i++ ) {
+		
 		var result = sass.render({
+
 			file: paths.pluginSrc + '/blocks/' + items[i] + '/style.scss',
 			outputStyle: 'compressed',
-			data: "@import \"./src/blocks/" + items[i] + "/style.scss\";\n",
 			outFile: './assets/css/blocks/' + items[i] + '.css',
-			sourceMap: true
-		}, function(error, result) { // node-style callback from v3.0.0 onwards
-			if(!error){
-				// No errors during the compilation, write this result on the disk
-				fs.writeFile('./assets/css/blocks/' + items[i] + '.css', result.css, function(err){
-					console.log(err);
-					if(!err){
-						console.log('done');
+			sourceMap: true,
+
+		}, function( error, result ) {
+
+			let file_path = result.stats.entry
+			let new_path = file_path.replace( paths.pluginSrc + "\\blocks\\", "" );
+			new_path = new_path.replace( "\\style.scss", "" );
+
+			if ( !error && undefined !== new_path ) {
+				fs.writeFile('./assets/css/blocks/' + new_path + '.css', result.css, function(err) {
+						if (err) throw err;
 					}
+				);
+
+				fs.appendFile('./assets/css/blocks/combined.css', result.css, function (err) {
+					if (err) throw err;
 				});
 			}
 		});
-		console.log(result);
-    }
+	}
 });
 
 // Configuration for the ExtractTextPlugin — DRY rule.
@@ -88,6 +91,15 @@ const extractConfig = {
 			},
 		},
 		// "sass" loader converst SCSS to CSS.
+		{
+			loader: "sass-loader",
+			options: {
+				implementation: sass,
+				sourcemap: 'none',
+				outputStyle: 'expanded',
+				linefeed: 'lf',
+			},
+		},
 		{
 			loader: "sass-loader",
 			options: {
