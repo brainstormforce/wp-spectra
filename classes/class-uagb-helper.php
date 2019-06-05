@@ -1130,8 +1130,59 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function create_specific_stylesheet() {
 
-			$saved_blocks = self::get_admin_settings_option( '_uagb_blocks' );
-			var_dump($saved_blocks);
+			$saved_blocks        = self::get_admin_settings_option( '_uagb_blocks' );
+			$combined            = array();
+			$is_already_post     = false;
+			$is_already_timeline = false;
+
+			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
+
+				$block_name = str_replace( 'uagb/', '', $key );
+				$slug       = $block_name;
+
+				if ( isset( $saved_blocks[ $block_name ] ) && 'disabled' === $saved_blocks[ $block_name ] ) {
+					continue;
+				}
+
+				switch ( $block_name ) {
+
+					case 'post-grid':
+					case 'post-carousel':
+					case 'post-masonry':
+						if ( ! $is_already_post ) {
+							$combined[]      = 'post';
+							$is_already_post = true;
+						}
+						break;
+
+					case 'post-timeline':
+					case 'content-timeline':
+						if ( ! $is_already_timeline ) {
+							$combined[]          = 'timeline';
+							$is_already_timeline = true;
+						}
+						break;
+
+					default:
+						$combined[] = $block_name;
+						break;
+				}
+			}
+
+			$combined_path = plugin_dir_path( UAGB_FILE ) . 'assets\\css\\specific.css';
+			unlink( $combined_path );
+
+			$handle = fopen( $combined_path, 'a' );
+
+			foreach ( $combined as $key => $c_block ) {
+
+				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets\\css\\blocks\\' . $c_block . '.css', 'r' );
+				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets\\css\\blocks\\' . $c_block . '.css' ) );
+				fclose( $c_handle );
+				fwrite( $handle, $style );
+			}
+
+			fclose( $handle );
 		}
 	}
 
