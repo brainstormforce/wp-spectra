@@ -537,6 +537,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function _generate_stylesheet( $this_post ) {
 
+			if ( ! is_object( $this_post ) ) {
+				return;
+			}
+
+			if ( ! isset( $this_post->ID ) ) {
+				return;
+			}
+
 			if ( has_blocks( $this_post->ID ) ) {
 
 				if ( isset( $this_post->post_content ) ) {

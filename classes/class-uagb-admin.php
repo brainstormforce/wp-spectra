@@ -94,6 +94,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function register_notices() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
 
 			Astra_Notices::add_notice(
