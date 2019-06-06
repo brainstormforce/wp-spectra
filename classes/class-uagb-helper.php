@@ -1177,15 +1177,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			$combined_path = plugin_dir_path( UAGB_FILE ) . 'assets\\css\\specific.css';
+			$combined_path = plugin_dir_path( UAGB_FILE ) . 'assets/css/specific.css';
 			unlink( $combined_path );
 
 			$handle = fopen( $combined_path, 'a' );
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets\\css\\blocks\\' . $c_block . '.css', 'r' );
-				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets\\css\\blocks\\' . $c_block . '.css' ) );
+				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css', 'r' );
+				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' ) );
 				fclose( $c_handle );
 				fwrite( $handle, $style );
 			}
