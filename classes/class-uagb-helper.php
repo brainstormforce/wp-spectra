@@ -1142,6 +1142,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$combined            = array();
 			$is_already_post     = false;
 			$is_already_timeline = false;
+			$is_already_column   = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
@@ -1160,6 +1161,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						if ( ! $is_already_post ) {
 							$combined[]      = 'post';
 							$is_already_post = true;
+						}
+						break;
+
+					case 'columns':
+					case 'column':
+						if ( ! $is_already_column ) {
+							$combined[]        = 'column';
+							$combined[]        = 'columns';
+							$is_already_column = true;
 						}
 						break;
 
