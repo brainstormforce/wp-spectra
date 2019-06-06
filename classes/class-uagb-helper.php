@@ -1177,7 +1177,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			$combined_path = plugin_dir_path( UAGB_FILE ) . 'assets/css/specific.css';
+			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
 			unlink( $combined_path );
 
 			$handle = fopen( $combined_path, 'a' );

@@ -64,11 +64,7 @@ fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
 					}
 				);
 
-				fs.appendFile('./assets/css/combined.css', result.css, function (err) {
-					if (err) throw err;
-				});
-
-				fs.appendFile('./assets/css/specific.css', result.css, function (err) {
+				fs.appendFile('./dist/blocks.style.css', result.css, function (err) {
 					if (err) throw err;
 				});
 			}
