@@ -111,9 +111,9 @@ function uagb_post_block_add_script() {
 			++  <?php echo $key; ?>">
 				( function( $ ) {
 					var cols = parseInt( '<?php echo $value['columns']; ?>' );
-					var scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
+					var $scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
 
-					if ( cols >= scope.children().length ) {
+					if ( cols >= $scope.children().length ) {
 						return;
 					}
 
@@ -148,17 +148,19 @@ function uagb_post_block_add_script() {
 						]
 					};
 
-					scope.slick( slider_options );
+					$scope.imagesLoaded( function() {
+						$scope.slick( slider_options );
+					});
 
 					var enableEqualHeight = ( '<?php echo $equal_height; ?>' )
 
 					if( enableEqualHeight ){
-						scope.imagesLoaded( function() {
-							UAGBPostCarousel._setHeight( scope );
+						$scope.imagesLoaded( function() {
+							UAGBPostCarousel._setHeight( $scope );
 						});
 
-						scope.on( 'afterChange', function() {
-							UAGBPostCarousel._setHeight( scope );
+						$scope.on( 'afterChange', function() {
+							UAGBPostCarousel._setHeight( $scope );
 						} );
 					}
 
