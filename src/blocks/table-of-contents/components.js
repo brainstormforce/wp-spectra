@@ -44,8 +44,6 @@ class TableOfContents extends Component {
 
 			});
 
-			//console.log(a);
-
 			return a; 
 		}
 
@@ -65,9 +63,6 @@ class TableOfContents extends Component {
 						!headingAnchorEmpty &&
 						heading.anchor.indexOf(key + '-') === 0;
 
-					//console.log(contentName);
-					//console.log(headingContentEmpty);
-
 					if (
 						!headingContentEmpty &&
 						(headingAnchorEmpty || headingDefaultAnchor)
@@ -86,8 +81,6 @@ class TableOfContents extends Component {
 					}
 				});
 			}
-
-			console.log(headers);
 
 			this.setState({ headers });
 		};
@@ -119,9 +112,6 @@ class TableOfContents extends Component {
 		const { mappingHeaders, blockProp, style } = this.props;
 
 		const { headers } = this.state;
-		console.log('1');
-		console.log(headers);
-		console.log('2');
 
 		const makeHeaderArray = origHeaders => {
 			let arrays = [];
@@ -157,14 +147,14 @@ class TableOfContents extends Component {
 			) {
 				arrays[arrays.length - 2].push(arrays.pop());
 			}
-			//console.log(arrays);
+
 			return arrays[0];
 		};
 
 		const parseList = list => {
 			let items = [];
 			list.forEach(item => {
-				//console.log(item);
+				
 				if (Array.isArray(item)) {
 					items.push(parseList(item));
 				} else {
