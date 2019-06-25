@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Blockquote - Preview for the quote and author styling options not working issue.
 * Fix: Post - Image Width issue for smaller images.
 * Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue fixed.
+* Fix: Table Of Contents - Supports Advanced Heading.
 
 = 1.13.3 =
 * Fix: CSS not applying on the front-end if the range control field value was 0.
