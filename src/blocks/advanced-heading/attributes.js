@@ -31,7 +31,7 @@ const attributes = {
 		type: "string",
 		default: "h2"
 	},
-	separatorHeight: {
+	level: {
 		type: "number",
 		default: 2
 	},
