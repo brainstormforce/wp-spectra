@@ -649,7 +649,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						return;
 					}
 
-					self::$stylesheet = $this->get_stylesheet( $blocks );
+					self::$stylesheet .= $this->get_stylesheet( $blocks );
 				}
 			}
 		}
@@ -701,6 +701,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( $blocks as $i => $block ) {
 
 				if ( is_array( $block ) ) {
+
+					if ( '' === $block['blockName'] ) {
+						continue;
+					}
 					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
@@ -709,7 +713,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$reusable_blocks = $this->parse( $content );
 
-							$this->get_stylesheet( $reusable_blocks );
+							self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
 
 						}
 					} else {
