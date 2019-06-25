@@ -68,6 +68,19 @@ export default class UAGBAdvancedHeading extends Component {
 		document.head.appendChild( $style )
 	}
 
+	/*
+	 * Heading Tag Change
+	 */
+	onTagChange( value ) {
+		const { headingTag, level } = this.props.attributes
+		const { setAttributes } = this.props
+
+		let level_val = parseInt( headingTag.replace( 'h' , '' ) )
+
+		setAttributes( { level: level_val } )
+		setAttributes( { headingTag: value } )
+	}
+
 	splitBlock( before, after, ...blocks ) {
 		const {
 			attributes,
@@ -110,6 +123,7 @@ export default class UAGBAdvancedHeading extends Component {
 			mergeBlocks,
 			onReplace,
 			attributes: {
+				level,
 				headingTitle,
 				headingId,
 				headingDesc,
@@ -202,7 +216,9 @@ export default class UAGBAdvancedHeading extends Component {
 						<SelectControl
 							label={ __( "Heading Tag" ) }
 							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							onChange={ value => {
+								this.onTagChange( value )
+							} }
 							options={ [
 								{ value: "h1", label: __( "H1" ) },
 								{ value: "h2", label: __( "H2" ) },
