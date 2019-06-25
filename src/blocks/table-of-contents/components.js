@@ -15,7 +15,7 @@ class TableOfContents extends Component {
 		const getHeaderBlocks = () =>
 			select('core/editor')
 				.getBlocks()
-				.filter(block => block.name === 'core/heading');
+				.filter(block => block.name === 'core/heading' );
 
 
 		const getData = ( headerData, a ) => {
@@ -36,9 +36,15 @@ class TableOfContents extends Component {
 					if( header.name === 'core/heading' ) {
 						a.push( header.attributes );
 					}
+
+					if( header.name === 'uagb/advanced-heading' ) {
+						a.push( header.attributes );
+					}
 				}
 
 			});
+
+			//console.log(a);
 
 			return a; 
 		}
@@ -52,12 +58,16 @@ class TableOfContents extends Component {
 					const headingAnchorEmpty =
 						typeof heading.anchor === 'undefined' ||
 						heading.anchor === '';
-					const headingContentEmpty =
-						typeof heading.content === 'undefined' ||
-						heading.content === '';
+					const contentName = ( typeof heading.content === 'undefined' ||
+						heading.content === '' ) ? 'headingTitle' : 'content'
+					const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
 					const headingDefaultAnchor =
 						!headingAnchorEmpty &&
 						heading.anchor.indexOf(key + '-') === 0;
+
+					//console.log(contentName);
+					//console.log(headingContentEmpty);
+
 					if (
 						!headingContentEmpty &&
 						(headingAnchorEmpty || headingDefaultAnchor)
@@ -65,7 +75,7 @@ class TableOfContents extends Component {
 						heading.anchor =
 							key +
 							'-' +
-							heading.content
+							heading[contentName]
 								.toString()
 								.toLowerCase()
 								.replace(/( |<.+?>|&nbsp;)/g, '-');
@@ -76,6 +86,8 @@ class TableOfContents extends Component {
 					}
 				});
 			}
+
+			console.log(headers);
 
 			this.setState({ headers });
 		};
@@ -107,6 +119,9 @@ class TableOfContents extends Component {
 		const { mappingHeaders, blockProp, style } = this.props;
 
 		const { headers } = this.state;
+		console.log('1');
+		console.log(headers);
+		console.log('2');
 
 		const makeHeaderArray = origHeaders => {
 			let arrays = [];
@@ -142,21 +157,25 @@ class TableOfContents extends Component {
 			) {
 				arrays[arrays.length - 2].push(arrays.pop());
 			}
+			//console.log(arrays);
 			return arrays[0];
 		};
 
 		const parseList = list => {
 			let items = [];
 			list.forEach(item => {
+				//console.log(item);
 				if (Array.isArray(item)) {
 					items.push(parseList(item));
 				} else {
+					let contentName = ( typeof item.content === 'undefined' ||
+						item.content === '' ) ? 'headingTitle' : 'content'
 					items.push(
 						<li>
 							<a
 								href={`#${item.anchor}`}
 								dangerouslySetInnerHTML={{
-									__html: item.content.replace(
+									__html: item[contentName].replace(
 										/(<a.+?>|<\/a>)/g,
 										''
 									)
