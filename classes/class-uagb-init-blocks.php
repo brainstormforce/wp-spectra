@@ -80,6 +80,10 @@ class UAGB_Init_Blocks {
 			return;
 		}
 
+		if ( false === UAGB_Helper::$uag_flag ) {
+			return;
+		}
+
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
 			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.

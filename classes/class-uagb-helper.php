@@ -38,6 +38,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $current_block_list = array();
 
 		/**
+		 * UAG Block Flag
+		 *
+		 * @since x.x.x
+		 * @var uag_flag
+		 */
+		public static $uag_flag = false;
+
+		/**
 		 * Stylesheet
 		 *
 		 * @since x.x.x
@@ -302,6 +310,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             }
 
             self::$current_block_list[] = $name;
+
+			if ( strpos( $name, 'uagb/' ) !== false ) {
+				self::$uag_flag = true;
+			}
 
             switch ( $name ) {
                 case 'uagb/section':
