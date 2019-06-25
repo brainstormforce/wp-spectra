@@ -105,7 +105,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
-							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], 'px' );
+							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], $attr['innerWidthType'] );
 						}
 					}
 				}
