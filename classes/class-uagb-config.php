@@ -1776,11 +1776,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		}
 
 		/**
-		 * Get Widget List.
+		 * Get Block Assets.
 		 *
-		 * @since 0.0.1
+		 * @since x.x.x
 		 *
-		 * @return array The Widget List.
+		 * @return array The Asset List.
 		 */
 		public static function get_block_assets() {
 
