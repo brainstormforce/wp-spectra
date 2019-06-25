@@ -94,6 +94,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function register_notices() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			$image_path = UAGB_URL . 'admin/assets/images/uagb_notice.svg';
 
 			Astra_Notices::add_notice(
@@ -315,6 +319,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update blocks.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo $block_id;
 
@@ -335,6 +340,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update blocks.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo $block_id;
 
@@ -363,6 +369,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update new_extensions.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo 'success';
 
@@ -391,6 +398,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			// Update new_extensions.
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
+			UAGB_Helper::create_specific_stylesheet();
 
 			echo 'success';
 

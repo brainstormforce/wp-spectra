@@ -30,6 +30,38 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $block_list;
 
 		/**
+		 * Current Block List
+		 *
+		 * @since x.x.x
+		 * @var current_block_list
+		 */
+		public static $current_block_list = array();
+
+		/**
+		 * UAG Block Flag
+		 *
+		 * @since x.x.x
+		 * @var uag_flag
+		 */
+		public static $uag_flag = false;
+
+		/**
+		 * Stylesheet
+		 *
+		 * @since x.x.x
+		 * @var stylesheet
+		 */
+		public static $stylesheet;
+
+		/**
+		 * Script
+		 *
+		 * @since x.x.x
+		 * @var script
+		 */
+		public static $script;
+
+		/**
 		 * Store Json variable
 		 *
 		 * @since 1.8.1
@@ -74,13 +106,78 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list = UAGB_Config::get_block_attributes();
 
-			add_action( 'wp_head', array( $this, 'generate_stylesheet' ), 80 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ) );
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 10 );
+			add_action( 'wp', array( $this, 'generate_script' ), 11 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
-			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
+			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 		}
 
 		/**
-		 * Load the front end Google Fonts
+		 * Enqueue Gutenberg block assets for both frontend + backend.
+		 *
+		 * @since x.x.x
+		 */
+		public function block_assets() {
+
+			$block_list_for_assets = self::$current_block_list;
+
+			$blocks = UAGB_Config::get_block_attributes();
+
+			foreach ( $block_list_for_assets as $key => $curr_block_name ) {
+
+				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
+
+				$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
+
+				foreach ( $js_assets as $asset_handle => $val ) {
+					// Scripts.
+					wp_enqueue_script( $val );
+				}
+
+				foreach ( $css_assets as $asset_handle => $val ) {
+					// Styles.
+					wp_enqueue_style( $val );
+				}
+			}
+
+		}
+
+		/**
+		 * Print the Script in footer.
+		 */
+		public function print_script() {
+
+			if ( is_null( self::$script ) || '' === self::$script ) {
+				return;
+			}
+
+			ob_start();
+			?>
+			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; ?> })(jQuery) </script>
+			<?php
+			ob_end_flush();
+		}
+
+		/**
+		 * Print the Stylesheet in header.
+		 */
+		public function print_stylesheet() {
+
+			if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
+				return;
+			}
+
+			ob_start();
+			?>
+			<style type="text/css" media="all" id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
+			<?php
+			ob_end_flush();
+		}
+
+		/**
+		 * Load the front end Google Fonts.
 		 */
 		public function frontend_gfonts() {
 			if ( empty( self::$gfonts ) ) {
@@ -211,6 +308,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $block_id = $blockattr['block_id'];
                 }
             }
+
+            self::$current_block_list[] = $name;
+
+			if ( strpos( $name, 'uagb/' ) !== false ) {
+				self::$uag_flag = true;
+			}
 
             switch ( $name ) {
                 case 'uagb/section':
@@ -353,6 +456,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 }
             }
 
+            self::$current_block_list = array_unique( self::$current_block_list );
+
             return $css;
 
             // @codingStandardsIgnoreEnd
@@ -460,7 +565,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 }
             }
 
-            echo $js;
+            return $js;
 
             // @codingStandardsIgnoreEnd
 		}
@@ -537,6 +642,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function _generate_stylesheet( $this_post ) {
 
+			if ( ! is_object( $this_post ) ) {
+				return;
+			}
+
+			if ( ! isset( $this_post->ID ) ) {
+				return;
+			}
+
 			if ( has_blocks( $this_post->ID ) ) {
 
 				if ( isset( $this_post->post_content ) ) {
@@ -548,11 +661,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						return;
 					}
 
-					ob_start();
-					?>
-					<style type="text/css" media="all" id="uagb-style-frontend"><?php $this->get_stylesheet( $blocks ); ?></style>
-					<?php
-					ob_end_flush();
+					self::$stylesheet .= $this->get_stylesheet( $blocks );
 				}
 			}
 		}
@@ -570,15 +679,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			ob_start();
-			?>
-			<script type="text/javascript" id="uagb-script-frontend">
-				( function( $ ) {
-					<?php $this->get_scripts( $blocks ); ?>
-				})(jQuery)
-			</script>
-			<?php
-			ob_end_flush();
+			$this->get_scripts( $blocks );
 		}
 
 		/**
@@ -612,6 +713,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( $blocks as $i => $block ) {
 
 				if ( is_array( $block ) ) {
+
+					if ( '' === $block['blockName'] ) {
+						continue;
+					}
 					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
@@ -620,7 +725,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$reusable_blocks = $this->parse( $content );
 
-							$this->get_stylesheet( $reusable_blocks );
+							self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
 
 						}
 					} else {
@@ -648,7 +753,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$mob_styling_css .= '}';
 			}
 
-			echo $desktop . $tab_styling_css . $mob_styling_css;
+			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
 
 
@@ -674,7 +779,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 						// Get JS for the Block.
-						$this->get_block_js( $block );
+						self::$script .= $this->get_block_js( $block );
 					}
 				}
 			}
@@ -1121,6 +1226,82 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				// Return rgb(a) color string.
 				return $output;
 			}
+		}
+
+		/**
+		 *  Get Specific Stylesheet
+		 *
+		 * @since x.x.x
+		 */
+		public static function create_specific_stylesheet() {
+
+			$saved_blocks        = self::get_admin_settings_option( '_uagb_blocks' );
+			$combined            = array();
+			$is_already_post     = false;
+			$is_already_timeline = false;
+			$is_already_column   = false;
+
+			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
+
+				$block_name = str_replace( 'uagb/', '', $key );
+				$slug       = $block_name;
+
+				if ( isset( $saved_blocks[ $block_name ] ) && 'disabled' === $saved_blocks[ $block_name ] ) {
+					continue;
+				}
+
+				switch ( $block_name ) {
+
+					case 'post-grid':
+					case 'post-carousel':
+					case 'post-masonry':
+						if ( ! $is_already_post ) {
+							$combined[]      = 'post';
+							$is_already_post = true;
+						}
+						break;
+
+					case 'columns':
+					case 'column':
+						if ( ! $is_already_column ) {
+							$combined[]        = 'column';
+							$combined[]        = 'columns';
+							$is_already_column = true;
+						}
+						break;
+
+					case 'post-timeline':
+					case 'content-timeline':
+						if ( ! $is_already_timeline ) {
+							$combined[]          = 'timeline';
+							$is_already_timeline = true;
+						}
+						break;
+
+					case 'restaurant-menu':
+						$combined[] = 'price-list';
+						break;
+
+					default:
+						$combined[] = $block_name;
+						break;
+				}
+			}
+
+			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
+			unlink( $combined_path );
+
+			$handle = fopen( $combined_path, 'a' );
+
+			foreach ( $combined as $key => $c_block ) {
+
+				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css', 'r' );
+				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' ) );
+				fclose( $c_handle );
+				fwrite( $handle, $style );
+			}
+
+			fclose( $handle );
 		}
 	}
 
