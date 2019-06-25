@@ -113,6 +113,8 @@ class TableOfContents extends Component {
 
 		const { headers } = this.state;
 
+		console.log(headers);
+
 		const makeHeaderArray = origHeaders => {
 			let arrays = [];
 
