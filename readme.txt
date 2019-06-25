@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Better CSS generation as per the enabled/disabled blocks.
 * Improvement: WooCommerce Compatibility - Now WooCommerce Pages could also be designed using UAG.
 * Improvement: Restaurant Menu - Increased Limit to menu list count.
+* Improvement: Section - Added px/% option for Inner Width.
 * Fix: UAG admin notice causing issue fix.
 * Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
 * Fix: Marketing Button - Background Color and Background Hover Color opacity issue fixed.

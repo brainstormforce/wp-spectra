@@ -1459,6 +1459,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'contentWidth'             => 'boxed',
 							'width'                    => '900',
 							'innerWidth'               => '1140',
+							'innerWidthType'           => 'px',
 							'tag'                      => 'section',
 							'backgroundType'           => 'none',
 							'gradientColor1'           => '',

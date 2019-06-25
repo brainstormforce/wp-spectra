@@ -76,12 +76,15 @@ class UAGB_Init_Blocks {
 	 */
 	public function block_assets() {
 
-		if ( false === has_blocks() ) {
-			return;
-		}
+		if ( ! is_admin() ) {
 
-		if ( false === UAGB_Helper::$uag_flag ) {
-			return;
+			if ( false === has_blocks() ) {
+				return;
+			}
+
+			if ( false === UAGB_Helper::$uag_flag ) {
+				return;
+			}
 		}
 
 		wp_enqueue_style(
