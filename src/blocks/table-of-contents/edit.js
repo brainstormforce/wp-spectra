@@ -252,7 +252,7 @@ class UAGBTableOfContentsEdit extends Component {
 									value={ smoothScrollOffset }
 									onChange={ ( value ) => setAttributes( { smoothScrollOffset: value } ) }
 									min={ 0 }
-									max={ 500 }
+									max={ 1000 }
 								/>
 								<RangeControl
 									label={ __( "Scroll Animation Delay (ms)" ) }
