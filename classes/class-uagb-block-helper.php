@@ -4364,10 +4364,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"fill" => $icon_hover_color
 				),
 				" .uagb-marketing-btn__link" => array(
-					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], 'px' ),
-					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], 'px' ),
-					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], 'px' ),
-					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], 'px' ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], $attr['paddingType'] ),
 					"border-style" => $attr["borderStyle"],
 					"border-width" => UAGB_Helper::get_css_value( $attr["borderWidth"], 'px' ),
 					"border-color" => $attr["borderColor"],
@@ -4421,6 +4421,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => UAGB_Helper::get_css_value( $attr["iconFontSizeMobile"], $attr["iconFontSizeType"] ),
 					"height" => UAGB_Helper::get_css_value( $attr["iconFontSizeMobile"], $attr["iconFontSizeType"] ),
 				),
+				" .uagb-marketing-btn__link" => array(
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr['paddingType'] ),
+				),
 
 			);
 
@@ -4436,6 +4442,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap' => array(
 					"width" => UAGB_Helper::get_css_value( $attr["iconFontSizeTablet"], $attr["iconFontSizeType"] ),
 					"height" => UAGB_Helper::get_css_value( $attr["iconFontSizeTablet"], $attr["iconFontSizeType"] ),
+				),
+				" .uagb-marketing-btn__link" => array(
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr['paddingType'] ),
 				),
 
 			);
