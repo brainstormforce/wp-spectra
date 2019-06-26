@@ -93,8 +93,8 @@ class UAGBMarketingButtonEdit extends Component {
 			borderColor,
 			borderHoverColor,
 			//Background
-			hPadding,
 			vPadding,
+			hPadding,
 			hPaddingMobile,
 			vPaddingMobile,
 			hPaddingTablet,

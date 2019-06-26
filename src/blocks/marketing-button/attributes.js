@@ -70,10 +70,6 @@ const attributes = {
 		type: "string",
 		default: "px",
 	},
-	paddingType :{
-		type: "string",
-		default: "px",
-	},
 	backgroundType: {
 		type: "string",
 		default: "color"
