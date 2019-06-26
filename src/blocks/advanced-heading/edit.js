@@ -76,8 +76,6 @@ export default class UAGBAdvancedHeading extends Component {
 
 		let level_val = parseInt( value.replace( 'h' , '' ) )
 
-		console.log(level_val)
-
 		setAttributes( { level: level_val } )
 		setAttributes( { headingTag: value } )
 	}
