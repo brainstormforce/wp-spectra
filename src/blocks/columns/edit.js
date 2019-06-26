@@ -1226,7 +1226,9 @@ class UAGBColumns extends Component {
 					{ "video" == backgroundType &&
 						<div className="uagb-columns__video-wrap">
 							{  backgroundVideo &&
-								<video src={ backgroundVideo.url } autoPlay loop muted></video>
+								<video autoplay loop muted playsinline>
+									<source src={ backgroundVideo.url } type='video/mp4' />
+								</video>
 							}
 
 						</div>
