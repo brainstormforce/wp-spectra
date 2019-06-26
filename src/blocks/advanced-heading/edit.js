@@ -72,10 +72,9 @@ export default class UAGBAdvancedHeading extends Component {
 	 * Heading Tag Change
 	 */
 	onTagChange( value ) {
-		const { headingTag, level } = this.props.attributes
 		const { setAttributes } = this.props
 
-		let level_val = parseInt( headingTag.replace( 'h' , '' ) )
+		let level_val = parseInt( value.replace( 'h' , '' ) )
 
 		setAttributes( { level: level_val } )
 		setAttributes( { headingTag: value } )
@@ -124,6 +123,7 @@ export default class UAGBAdvancedHeading extends Component {
 			onReplace,
 			attributes: {
 				level,
+				anchor,
 				headingTitle,
 				headingId,
 				headingDesc,
