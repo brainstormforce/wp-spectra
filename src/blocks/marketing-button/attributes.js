@@ -54,6 +54,26 @@ const attributes = {
 		type: "number",
 		default: 20,
 	},
+	vPaddingTablet :{
+		type: "number"
+	},
+	hPaddingTablet :{
+		type: "number"
+	},
+	vPaddingMobile :{
+		type: "number"
+	},
+	hPaddingMobile :{
+		type: "number"
+	},
+	paddingType :{
+		type: "string",
+		default: "px",
+	},
+	paddingType :{
+		type: "string",
+		default: "px",
+	},
 	backgroundType: {
 		type: "string",
 		default: "color"
