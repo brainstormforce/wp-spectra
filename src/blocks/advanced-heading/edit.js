@@ -62,6 +62,9 @@ export default class UAGBAdvancedHeading extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
+		this.props.setAttributes( { level: level_val } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId )
