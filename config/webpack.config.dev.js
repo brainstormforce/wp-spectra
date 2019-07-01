@@ -39,6 +39,11 @@ const sass = require('node-sass');
 
 fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
 
+	fs.writeFile('./dist/blocks.style.css', '', function(err) {
+			if (err) throw err;
+		}
+	);
+
 	for ( var i=0; i<items.length; i++ ) {
 		
 		var result = sass.render({
