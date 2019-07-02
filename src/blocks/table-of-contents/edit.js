@@ -96,6 +96,8 @@ class UAGBTableOfContentsEdit extends Component {
 			makeCollapsible,
 			initialCollapse,
 			icon,
+			iconColor,
+			iconSize,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
@@ -366,6 +368,20 @@ class UAGBTableOfContentsEdit extends Component {
 									onChange={ ( value ) => setAttributes( { initialCollapse: ! initialCollapse } ) }
 								/>
 								<FontIconPicker {...icon_props} />
+								<RangeControl
+									label = { __( "Icon Size" ) }
+									value = { iconSize }
+									onChange = { ( value ) => setAttributes( { iconSize: value } ) }
+									min = { 0 }
+									max = { 300 }
+									beforeIcon = ""
+									allowReset
+								/>
+								<ColorPalette
+									value={ iconColor }
+									onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
+									allowReset
+								/>
 							</Fragment>
 						}
 						<hr className="uagb-editor__separator" />

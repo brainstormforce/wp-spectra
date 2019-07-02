@@ -21,6 +21,12 @@ const attributes = {
 		type : "string",
 		default : "fa-angle-down"
 	},
+	iconSize : {
+		type: "number",
+	},
+	iconColor : {
+		type : "string",
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,
