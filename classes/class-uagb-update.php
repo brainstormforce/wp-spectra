@@ -10,7 +10,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 	/**
 	 * UAGB Update initial setup
 	 *
-	 * @since x.x.x
+	 * @since 1.13.4
 	 */
 	class UAGB_Update {
 
@@ -42,7 +42,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		/**
 		 * Init
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 * @return void
 		 */
 		static public function init() {

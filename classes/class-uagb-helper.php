@@ -32,7 +32,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Current Block List
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 * @var current_block_list
 		 */
 		public static $current_block_list = array();
@@ -40,7 +40,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * UAG Block Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 * @var uag_flag
 		 */
 		public static $uag_flag = false;
@@ -48,7 +48,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Stylesheet
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 * @var stylesheet
 		 */
 		public static $stylesheet;
@@ -56,7 +56,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Script
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 * @var script
 		 */
 		public static $script;
@@ -117,7 +117,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Enqueue Gutenberg block assets for both frontend + backend.
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 */
 		public function block_assets() {
 
@@ -263,7 +263,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $value  CSS value.
 		 * @param string $unit  CSS unit.
-		 * @since x.x.x
+		 * @since 1.13.4
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {
 
@@ -1231,7 +1231,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 *  Get Specific Stylesheet
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 */
 		public static function create_specific_stylesheet() {
 

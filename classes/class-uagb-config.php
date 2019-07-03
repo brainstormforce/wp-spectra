@@ -1790,7 +1790,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		/**
 		 * Get Block Assets.
 		 *
-		 * @since x.x.x
+		 * @since 1.13.4
 		 *
 		 * @return array The Asset List.
 		 */
