@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.2  
-**Stable tag:** 1.13.4  
+**Stable tag:** 1.13.5  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -155,6 +155,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.13.5 ###
+* Fix: Section - Missing Theme Width issue.
+* Fix: Advanced Columns - Missing Theme Width issue.
+
 ### 1.13.4 ###
 * Improvement: Better methods to handle the assets that enhance the speed of the website.
 * Improvement: WooCommerce Compatibility - Now WooCommerce Pages could also be designed using Ultimate Addons for Gutenberg.
@@ -174,6 +178,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Section - Background Video not visible in iOS.
 * Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue.
 * Fix: Table Of Contents - Supports Advanced Heading.
+* Fix: Testimonial - Inline Editing for Testimonials in safari issue.
 
 ### 1.13.3 ###
 * Fix: CSS not applying on the front-end if the range control field value was 0.

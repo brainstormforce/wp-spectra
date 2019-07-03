@@ -165,9 +165,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function print_stylesheet() {
 
+			global $content_width;
+
 			if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
 				return;
 			}
+
+			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
 
 			ob_start();
 			?>
