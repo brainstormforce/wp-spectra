@@ -102,10 +102,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
 					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
-						$inner_width = $content_width . 'px';
+						$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
-							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], 'px' );
+							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], $attr['innerWidthType'] );
 						}
 					}
 				}
@@ -293,7 +293,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' )
 				),
 				' .uagb-columns__shape-top svg' => array(
-					'width' => "calc( " . $attr['topWidth'] . "% + 1.3px )",
 					'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' )
 				),
 				' .uagb-columns__shape-top .uagb-columns__shape-fill' => array(
@@ -301,7 +300,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['topDividerOpacity'] ) && '' != $attr['topDividerOpacity'] ) ? ( ( $attr['topDividerOpacity'] ) / 100 ) : ""
 				),
 				' .uagb-columns__shape-bottom svg' => array(
-					'width' => "calc( " . $attr['bottomWidth'] . "% + 1.3px )",
 					'height' => UAGB_Helper::get_css_value( $attr['bottomHeight'], 'px' )
 				),
 				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
@@ -309,6 +307,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['bottomDividerOpacity'] ) && '' != $attr['bottomDividerOpacity'] ) ? ( ( $attr['bottomDividerOpacity'] ) / 100 ) : ""
 				),
 			);
+
+			if ( '' !== $attr['topWidth'] ) {
+				$selectors[' .uagb-columns__shape-top svg']['width'] = "calc( " . $attr['topWidth'] . "% + 1.3px )";
+			}
+
+			if ( '' !== $attr['bottomWidth'] ) {
+				$selectors[' .uagb-columns__shape-bottom svg']['width'] = "calc( " . $attr['bottomWidth'] . "% + 1.3px )";
+			}
 
 			if ( 'video' == $bg_type ) {
 				$selectors[' > .uagb-columns__overlay'] = array(
@@ -880,11 +886,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 				),
-				// Image.
-				' .uagb-ifb-image-content > img' => array(
-					'width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
-				    'max-width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
-				),
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
 					'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], 'px' ),
 				),
@@ -985,6 +986,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 				),
 			);
+
+			if ( $attr['imageWidthType'] ) {
+				// Image.
+				$selectors[' .uagb-ifb-image-content > img'] = array(
+					'width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
+				    'max-width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
+				);
+			}
 
 			if( 'above-title' === $attr['iconimgPosition'] ||  'below-title' === $attr['iconimgPosition'] ){
 				$selectors[' .uagb-infobox__content-wrap'] = array(
@@ -4358,10 +4367,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"fill" => $icon_hover_color
 				),
 				" .uagb-marketing-btn__link" => array(
-					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], 'px' ),
-					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], 'px' ),
-					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], 'px' ),
-					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], 'px' ),
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPadding"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPadding"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPadding"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPadding"], $attr['paddingType'] ),
 					"border-style" => $attr["borderStyle"],
 					"border-width" => UAGB_Helper::get_css_value( $attr["borderWidth"], 'px' ),
 					"border-color" => $attr["borderColor"],
@@ -4415,6 +4424,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"width" => UAGB_Helper::get_css_value( $attr["iconFontSizeMobile"], $attr["iconFontSizeType"] ),
 					"height" => UAGB_Helper::get_css_value( $attr["iconFontSizeMobile"], $attr["iconFontSizeType"] ),
 				),
+				" .uagb-marketing-btn__link" => array(
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingMobile"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingMobile"], $attr['paddingType'] ),
+				),
 
 			);
 
@@ -4430,6 +4445,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-marketing-btn__icon-wrap' => array(
 					"width" => UAGB_Helper::get_css_value( $attr["iconFontSizeTablet"], $attr["iconFontSizeType"] ),
 					"height" => UAGB_Helper::get_css_value( $attr["iconFontSizeTablet"], $attr["iconFontSizeType"] ),
+				),
+				" .uagb-marketing-btn__link" => array(
+					"padding-left" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr['paddingType'] ),
+					"padding-right" => UAGB_Helper::get_css_value( $attr["hPaddingTablet"], $attr['paddingType'] ),
+					"padding-top" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr['paddingType'] ),
+					"padding-bottom" => UAGB_Helper::get_css_value( $attr["vPaddingTablet"], $attr['paddingType'] ),
 				),
 
 			);
@@ -4505,6 +4526,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
+				),
+				" .uag-toc__collapsible-wrap svg" => array(
+					"width" => UAGB_Helper::get_css_value( $attr["iconSize"], "px" ),
+					"height" => UAGB_Helper::get_css_value( $attr["iconSize"], "px" ),
+					"fill" => $attr["iconColor"]
 				),
 			);
 

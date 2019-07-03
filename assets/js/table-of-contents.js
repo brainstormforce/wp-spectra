@@ -12,8 +12,19 @@
 
 			$( document ).delegate( ".uagb-toc__list a", "click", UAGBTableOfContents._scroll )
 			$( document ).delegate( ".uagb-toc__scroll-top", "click", UAGBTableOfContents._scrollTop )
+			$( document ).delegate( '.uag-toc__collapsible-wrap', 'click', UAGBTableOfContents._toggleCollapse )
 			$( document ).on( "scroll", UAGBTableOfContents._showHideScroll  )
 
+		},
+
+		_toggleCollapse: function( e ) {
+			let $root = $( this ).closest( '.wp-block-uagb-table-of-contents' )
+
+			if ( $root.hasClass( 'uagb-toc__collapse' ) ) {
+				$root.removeClass( 'uagb-toc__collapse' );
+			} else {
+				$root.addClass( 'uagb-toc__collapse' );
+			}
 		},
 
 		_showHideScroll: function( e ) {
@@ -48,7 +59,13 @@
 		_scroll: function( e ) {
 
 			if ( this.hash !== "" ) {
+
 				var hash = this.hash
+				var node = $( this ). closest( '.wp-block-uagb-table-of-contents' )
+
+				scroll = node.data( 'scroll' )
+				scroll_offset = node.data( 'offset' )
+				scroll_delay = node.data( 'delay' )
 
 				if ( scroll ) {
 

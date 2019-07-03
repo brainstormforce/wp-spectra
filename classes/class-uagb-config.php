@@ -20,6 +20,13 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		public static $block_attributes = null;
 
 		/**
+		 * Block Assets
+		 *
+		 * @var block_attributes
+		 */
+		public static $block_assets = null;
+
+		/**
 		 * Get Widget List.
 		 *
 		 * @since 0.0.1
@@ -682,6 +689,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-timeline-js' ),
 						'attributes'  => array(
 							'align'                   => 'center',
 							'headingColor'            => '',
@@ -894,6 +902,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconTopMargin'           => '5',
 							'iconBottomMargin'        => '5',
 							'imageSize'               => 'thumbnail',
+							'imageWidthType'          => true,
 							'imageWidth'              => '120',
 							'seperatorSpace'          => '15',
 							'ctaLinkHoverColor'       => '',
@@ -921,6 +930,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderHoverColor'       => '',
 							'vPadding'               => 8,
 							'hPadding'               => 20,
+							'vPaddingMobile'         => '',
+							'hPaddingMobile'         => '',
+							'vPaddingTablet'         => '',
+							'hPaddingTablet'         => '',
+							'paddingType'            => 'px',
 							'backgroundType'         => 'color',
 							'backgroundColor'        => '#eeeeee',
 							'backgroundHoverColor'   => '',
@@ -941,7 +955,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'prefixHoverColor'       => '',
 							'iconSpace'              => 10,
 							'titleLoadGoogleFonts'   => false,
-							'titleFontFamily'        => 'Default',
+							'titleFontFamily'        => '',
 							'titleFontWeight'        => '',
 							'titleFontSubset'        => '',
 							'titleFontSize'          => 20,
@@ -953,7 +967,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleLineHeightTablet'  => '',
 							'titleLineHeightMobile'  => '',
 							'prefixLoadGoogleFonts'  => false,
-							'prefixFontFamily'       => 'Default',
+							'prefixFontFamily'       => '',
 							'prefixFontWeight'       => '',
 							'prefixFontSubset'       => '',
 							'prefixFontSize'         => 14,
@@ -993,6 +1007,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-slick-js', 'uagb-carousel-js', 'uagb-imagesloaded' ),
+						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
 							'align'                   => 'left',
 							'rowGap'                  => '20',
@@ -1164,6 +1180,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded' ),
 						'attributes'  => array(
 							'align'                   => 'left',
 							'rowGap'                  => '20',
@@ -1247,6 +1264,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-timeline-js' ),
 						'attributes'  => array(
 							'align'                   => 'center',
 							'headingColor'            => '',
@@ -1447,6 +1465,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'contentWidth'             => 'boxed',
 							'width'                    => '900',
 							'innerWidth'               => '1140',
+							'innerWidthType'           => 'px',
 							'tag'                      => 'section',
 							'backgroundType'           => 'none',
 							'gradientColor1'           => '',
@@ -1526,6 +1545,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-table-of-contents' ),
 						'attributes'  => array(
 							'block_id'                  => '',
 							'heading'                   => 'Table Of Contents',
@@ -1551,6 +1571,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'widthTypeDesktop'          => '%',
 							'widthTypeTablet'           => '%',
 							'widthTypeMobile'           => '%',
+							'makeCollapsible'           => false,
+							'initialCollapse'           => false,
+							'icon'                      => 'fa-angle-down',
+							'iconColor'                 => '',
+							'iconSize'                  => '',
 							'align'                     => 'left',
 							'linkColor'                 => '#333',
 							'vPaddingDesktop'           => 30,
@@ -1577,7 +1602,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'              => '',
 							'borderColor'               => '#333',
 							'loadGoogleFonts'           => false,
-							'fontFamily'                => 'Default',
+							'fontFamily'                => '',
 							'fontWeight'                => '',
 							'fontSubset'                => '',
 							'fontSize'                  => '',
@@ -1589,7 +1614,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'lineHeightTablet'          => '',
 							'lineHeightMobile'          => '',
 							'headingLoadGoogleFonts'    => false,
-							'headingFontFamily'         => 'Default',
+							'headingFontFamily'         => '',
 							'headingFontWeight'         => '500',
 							'headingFontSubset'         => '',
 							'headingFontSize'           => 20,
@@ -1678,6 +1703,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array( 'uagb-slick-js' ),
+						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
 							'headingAlign'            => 'center',
 							'companyColor'            => '#888888',
@@ -1758,6 +1785,50 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 				);
 			}
 			return self::$block_attributes;
+		}
+
+		/**
+		 * Get Block Assets.
+		 *
+		 * @since 1.13.4
+		 *
+		 * @return array The Asset List.
+		 */
+		public static function get_block_assets() {
+
+			if ( null === self::$block_assets ) {
+				self::$block_assets = array(
+					'uagb-timeline-js'       => array(
+						'src' => UAGB_URL . 'assets/js/timeline.js',
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-masonry'           => array(
+						'src' => UAGB_URL . 'assets/js/isotope.min.js',
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-imagesloaded'      => array(
+						'src' => UAGB_URL . 'assets/js/imagesloaded.min.js',
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-table-of-contents' => array(
+						'src' => UAGB_URL . 'assets/js/table-of-contents.js',
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-slick-js'          => array(
+						'src' => UAGB_URL . 'assets/js/slick.min.js',
+						'dep' => array( 'jquery' ),
+					),
+					'uagb-slick-css'         => array(
+						'src' => UAGB_URL . 'assets/css/slick.css',
+						'dep' => array(),
+					),
+					'uagb-carousel-js'       => array(
+						'src' => UAGB_URL . 'assets/js/post-carousel.js',
+						'dep' => array( 'jquery', 'uagb-slick-js' ),
+					),
+				);
+			}
+			return self::$block_assets;
 		}
 	}
 }

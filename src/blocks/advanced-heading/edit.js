@@ -62,10 +62,25 @@ export default class UAGBAdvancedHeading extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
+		this.props.setAttributes( { level: level_val } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	/*
+	 * Heading Tag Change
+	 */
+	onTagChange( value ) {
+		const { setAttributes } = this.props
+
+		let level_val = parseInt( value.replace( 'h' , '' ) )
+
+		setAttributes( { level: level_val } )
+		setAttributes( { headingTag: value } )
 	}
 
 	splitBlock( before, after, ...blocks ) {
@@ -110,6 +125,8 @@ export default class UAGBAdvancedHeading extends Component {
 			mergeBlocks,
 			onReplace,
 			attributes: {
+				level,
+				anchor,
 				headingTitle,
 				headingId,
 				headingDesc,
@@ -202,7 +219,9 @@ export default class UAGBAdvancedHeading extends Component {
 						<SelectControl
 							label={ __( "Heading Tag" ) }
 							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							onChange={ value => {
+								this.onTagChange( value )
+							} }
 							options={ [
 								{ value: "h1", label: __( "H1" ) },
 								{ value: "h2", label: __( "H2" ) },

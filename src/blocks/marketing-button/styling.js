@@ -33,6 +33,11 @@ function styling( props ) {
 		//Background
 		vPadding,
 		hPadding,
+		hPaddingMobile,
+		vPaddingMobile,
+		hPaddingTablet,
+		vPaddingTablet,
+		paddingType,
 		backgroundType,
 		backgroundColor,
 		backgroundHoverColor,
@@ -111,10 +116,10 @@ function styling( props ) {
 			"fill" : icon_hover_color
 		},
 		" .uagb-marketing-btn__link" : {
-			"padding-left" : generateCSSUnit( hPadding, "px" ),
-			"padding-right" : generateCSSUnit( hPadding, "px" ),
-			"padding-top" : generateCSSUnit( vPadding, "px" ),
-			"padding-bottom" : generateCSSUnit( vPadding, "px" ),
+			"padding-left" : generateCSSUnit( hPadding, paddingType ),
+			"padding-right" : generateCSSUnit( hPadding, paddingType ),
+			"padding-top" : generateCSSUnit( vPadding, paddingType ),
+			"padding-bottom" : generateCSSUnit( vPadding, paddingType ),
 			"border-style": borderStyle,
 			"border-width": generateCSSUnit( borderWidth, "px" ),
 			"border-color": borderColor,
@@ -168,7 +173,13 @@ function styling( props ) {
 		" .uagb-marketing-btn__icon-wrap" : {
 			"width" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType ),
 			"height" : generateCSSUnit( iconFontSizeTablet, iconFontSizeType )
-		}
+		},
+		" .uagb-marketing-btn__link" : {
+			"padding-left" : generateCSSUnit( hPaddingTablet, paddingType ),
+			"padding-right" : generateCSSUnit( hPaddingTablet, paddingType ),
+			"padding-top" : generateCSSUnit( vPaddingTablet, paddingType ),
+			"padding-bottom" : generateCSSUnit( vPaddingTablet, paddingType ),
+		},
 	}
 
 	mobile_selectors = {
@@ -183,7 +194,13 @@ function styling( props ) {
 		" .uagb-marketing-btn__icon-wrap" : {
 			"width" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType ),
 			"height" : generateCSSUnit( iconFontSizeMobile, iconFontSizeType )
-		}
+		},
+		" .uagb-marketing-btn__link" : {
+			"padding-left" : generateCSSUnit( hPaddingMobile, paddingType ),
+			"padding-right" : generateCSSUnit( hPaddingMobile, paddingType ),
+			"padding-top" : generateCSSUnit( vPaddingMobile, paddingType ),
+			"padding-bottom" : generateCSSUnit( vPaddingMobile, paddingType ),
+		},
 	}
 
 	var id = `#uagb-marketing-btn-${ props.clientId }`

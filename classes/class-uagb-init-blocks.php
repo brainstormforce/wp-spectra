@@ -74,115 +74,76 @@ class UAGB_Init_Blocks {
 	 *
 	 * @since 1.0.0
 	 */
-	function block_assets() {
-		// Styles.
+	public function block_assets() {
+
+		if ( ! is_admin() ) {
+
+			if ( false === has_blocks() ) {
+				return;
+			}
+
+			if ( false === UAGB_Helper::$uag_flag ) {
+				return;
+			}
+		}
+
 		wp_enqueue_style(
 			'uagb-block-css', // Handle.
-			UAGB_URL . 'dist/blocks.style.build.css', // Block style CSS.
+			UAGB_URL . 'dist/blocks.style.css', // Block style CSS.
 			array(),
 			UAGB_VER
 		);
 
-		$blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+		$blocks          = UAGB_Config::get_block_attributes();
+		$disabled_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+		$block_assets    = UAGB_Config::get_block_assets();
 
-		$masonry_flag  = ( isset( $blocks['post-masonry'] ) && 'disabled' === $blocks['post-masonry'] ) ? false : true;
-		$cf7_flag      = ( isset( $blocks['cf7-styler'] ) && 'disabled' === $blocks['cf7-styler'] ) ? false : true;
-		$slick_flag    = (
-			( isset( $blocks['post-carousel'] ) && 'disabled' === $blocks['post-carousel'] ) &&
-			( isset( $blocks['testimonial'] ) && 'disabled' === $blocks['testimonial'] )
-		) ? false : true;
-		$timeline_flag = (
-			( isset( $blocks['post-timeline'] ) && 'disabled' === $blocks['post-timeline'] ) &&
-			( isset( $blocks['content-timeline'] ) && 'disabled' === $blocks['content-timeline'] )
-		) ? false : true;
+		foreach ( $blocks as $slug => $value ) {
+			$_slug = str_replace( 'uagb/', '', $slug );
 
-		$carousel_flag = ( isset( $blocks['post-carousel'] ) && 'disabled' === $blocks['post-carousel'] ) ? false : true;
+			if ( ! ( isset( $disabled_blocks[ $_slug ] ) && 'disabled' === $disabled_blocks[ $_slug ] ) ) {
 
-		if ( $masonry_flag ) {
+				$js_assets = ( isset( $blocks[ $slug ]['js_assets'] ) ) ? $blocks[ $slug ]['js_assets'] : array();
 
-			// Scripts.
-			wp_enqueue_script(
-				'uagb-masonry', // Handle.
-				UAGB_URL . 'assets/js/isotope.min.js',
-				array( 'jquery' ), // Dependencies, defined above.
-				UAGB_VER,
-				false // Enqueue the script in the footer.
-			);
+				$css_assets = ( isset( $blocks[ $slug ]['css_assets'] ) ) ? $blocks[ $slug ]['css_assets'] : array();
 
-			wp_enqueue_script(
-				'uagb-imagesloaded', // Handle.
-				UAGB_URL . 'assets/js/imagesloaded.min.js',
-				array( 'jquery' ), // Dependencies, defined above.
-				UAGB_VER,
-				false // Enqueue the script in the footer.
-			);
-		}
+				if ( 'cf7-styler' === $_slug ) {
+					if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
+						wp_enqueue_script( 'contact-form-7' );
+					}
 
-		if ( ! ( isset( $blocks['table-of-contents'] ) && 'disabled' === $blocks['table-of-contents'] ) ) {
-			wp_enqueue_script(
-				'uagb-table-of-contents', // Handle.
-				UAGB_URL . 'assets/js/table-of-contents.js',
-				array( 'jquery' ), // Dependencies, defined above.
-				UAGB_VER,
-				false // Enqueue the script in the footer.
-			);
-		}
+					if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
+						wp_enqueue_script( ' wpcf7-admin' );
+					}
+				}
 
-		if ( $slick_flag ) {
+				foreach ( $js_assets as $asset_handle => $val ) {
+					// Scripts.
+					wp_register_script(
+						$val, // Handle.
+						$block_assets[ $val ]['src'],
+						$block_assets[ $val ]['dep'],
+						UAGB_VER
+					);
 
-			// Scripts.
-			wp_enqueue_script(
-				'uagb-slick-js', // Handle.
-				UAGB_URL . 'assets/js/slick.min.js',
-				array( 'jquery' ), // Dependencies, defined above.
-				UAGB_VER,
-				false // Enqueue the script in the footer.
-			);
+					if ( is_admin() ) {
+						wp_enqueue_script( $val );
+					}
+				}
 
-			// Styles.
-			wp_enqueue_style(
-				'uagb-slick-css', // Handle.
-				UAGB_URL . 'assets/css/slick.css', // Block style CSS.
-				array(),
-				UAGB_VER
-			);
-		}
+				foreach ( $css_assets as $asset_handle => $val ) {
+					// Styles.
+					wp_register_style(
+						$val, // Handle.
+						$block_assets[ $val ]['src'],
+						$block_assets[ $val ]['dep'],
+						UAGB_VER
+					);
 
-		if ( $timeline_flag ) {
-
-			// Timeline js.
-			wp_enqueue_script(
-				'uagb-timeline-js', // Handle.
-				UAGB_URL . 'assets/js/timeline.js',
-				array( 'jquery' ),
-				UAGB_VER,
-				true // Enqueue the script in the footer.
-			);
-		}
-
-		if ( $carousel_flag ) {
-			// Carousel js.
-			wp_enqueue_script(
-				'uagb-carousel-js', // Handle.
-				UAGB_URL . 'assets/js/post-carousel.js',
-				array( 'jquery' ),
-				UAGB_VER,
-				true // Enqueue the script in the footer.
-			);
-		}
-
-		if ( ! wp_script_is( 'jquery', 'enqueued' ) ) {
-			wp_enqueue_script( 'jquery' );
-		}
-
-		if ( $cf7_flag ) {
-
-			if ( ! wp_script_is( 'contact-form-7', 'enqueued' ) ) {
-				wp_enqueue_script( 'contact-form-7' );
-			}
-
-			if ( ! wp_script_is( ' wpcf7-admin', 'enqueued' ) ) {
-				wp_enqueue_script( ' wpcf7-admin' );
+					if ( is_admin() ) {
+						wp_enqueue_style( $val );
+					}
+				}
 			}
 		}
 
