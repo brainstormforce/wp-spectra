@@ -174,6 +174,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Section - Background Video not visible in iOS.
 * Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue.
 * Fix: Table Of Contents - Supports Advanced Heading.
+* Fix: Testimonial - Inline Editing for Testimonials in safari issue.
 
 = 1.13.3 =
 * Fix: CSS not applying on the front-end if the range control field value was 0.
