@@ -9,6 +9,24 @@ const attributes = {
 		type    : "boolean",
 		default : false,
 	},
+	makeCollapsible : {
+		type    : "boolean",
+		default : false,
+	},
+	initialCollapse : {
+		type    : "boolean",
+		default : false,
+	},
+	icon : {
+		type : "string",
+		default : "fa-angle-down"
+	},
+	iconSize : {
+		type: "number",
+	},
+	iconColor : {
+		type : "string",
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,

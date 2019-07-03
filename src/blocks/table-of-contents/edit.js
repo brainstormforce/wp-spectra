@@ -7,12 +7,18 @@ import styling from "./styling"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
 import TableOfContents from './components';
+
+let svg_icons = Object.keys( UAGBIcon )
 
 const { __ } = wp.i18n
 
@@ -48,6 +54,7 @@ class UAGBTableOfContentsEdit extends Component {
 		super( ...arguments )
 
 		this.regenerateTable = this.regenerateTable.bind( this )
+		this.getIcon  	 = this.getIcon.bind(this)
 	}
 
 	/*
@@ -56,6 +63,10 @@ class UAGBTableOfContentsEdit extends Component {
 	regenerateTable() {
 
 		const { setAttributes } = this.props
+	}
+
+	getIcon(value) {
+		this.props.setAttributes( { icon: value } )
 	}
 
 	componentDidMount() {
@@ -82,6 +93,11 @@ class UAGBTableOfContentsEdit extends Component {
 			align,
 			heading,
 			disableBullets,
+			makeCollapsible,
+			initialCollapse,
+			icon,
+			iconColor,
+			iconSize,
 			smoothScroll,
 			smoothScrollOffset,
 			smoothScrollDelay,
@@ -203,6 +219,24 @@ class UAGBTableOfContentsEdit extends Component {
 			}
 		}
 
+		// Icon properties.
+		const icon_props = {
+			icons: svg_icons,
+			value: icon,
+			onChange: this.getIcon,
+			isMulti: false,
+			renderFunc: renderSVG,
+			noSelectedPlaceholder: __( "Select Icon" )
+		}
+
+		let icon_html = ''
+
+		if ( makeCollapsible && icon ) {
+			icon_html = (
+				<span className="uag-toc__collapsible-wrap">{renderSVG(icon)}</span>
+			)	
+		}
+
 		return (
 			<Fragment>
 				<BlockControls>
@@ -215,13 +249,11 @@ class UAGBTableOfContentsEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
 						{mappingHeaders.map((a, i) => (
 							<PanelRow>
-								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i +
-									1}`}</label>
+								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i + 1}`}</label>
 								<ToggleControl
 									id={`ub_toggle_h${i + 1}`}
 									checked={a}
@@ -320,6 +352,37 @@ class UAGBTableOfContentsEdit extends Component {
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Collapsible" ) }</h2>
+						<ToggleControl
+							label={ __( "Make Content Collapsible" ) }
+							checked={ makeCollapsible }
+							onChange={ ( value ) => setAttributes( { makeCollapsible: ! makeCollapsible } ) }
+						/>
+						{ makeCollapsible &&
+							<Fragment>
+								<ToggleControl
+									label={ __( "Keep Collapsed Initially" ) }
+									checked={ initialCollapse }
+									onChange={ ( value ) => setAttributes( { initialCollapse: ! initialCollapse } ) }
+								/>
+								<FontIconPicker {...icon_props} />
+								<RangeControl
+									label = { __( "Icon Size" ) }
+									value = { iconSize }
+									onChange = { ( value ) => setAttributes( { iconSize: value } ) }
+									min = { 0 }
+									max = { 300 }
+									beforeIcon = ""
+									allowReset
+								/>
+								<ColorPalette
+									value={ iconColor }
+									onChange={ ( colorValue ) => setAttributes( { iconColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						}
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content" ) }</h2>
 						<ToggleControl
@@ -759,19 +822,23 @@ class UAGBTableOfContentsEdit extends Component {
 				<div className={ classnames(
 					className,
 					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumnsDesktop}`
+					`uagb-toc__columns-${tColumnsDesktop}`,
+					( initialCollapse ) ? `uagb-toc__collapse` : ''
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
-						<RichText
-							tagName= { "div" }
-							placeholder={ __( "Table Of Contents" ) }
-							value={ heading }
-							className = 'uagb-toc__title'
-							onChange = { ( value ) => setAttributes( { heading: value } ) }
-							multiline={ false }
-							onRemove={ () => props.onReplace( [] ) }
-						/>
+						<div className="uagb-toc__title-wrap">
+							<RichText
+								tagName= { "div" }
+								placeholder={ __( "Table Of Contents" ) }
+								value={ heading }
+								className = 'uagb-toc__title'
+								onChange = { ( value ) => setAttributes( { heading: value } ) }
+								multiline={ false }
+								onRemove={ () => props.onReplace( [] ) }
+							/>
+							{icon_html}
+						</div>
 						<TableOfContents
 							align={align}
 							numcolumns={tColumnsDesktop}

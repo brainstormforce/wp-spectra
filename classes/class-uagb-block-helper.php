@@ -4524,6 +4524,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
+				" .uag-toc__collapsible-wrap svg" => array(
+					"width" => UAGB_Helper::get_css_value( $attr["iconSize"], "px" ),
+					"height" => UAGB_Helper::get_css_value( $attr["iconSize"], "px" ),
+					"fill" => $attr["iconColor"]
+				),
 			);
 
 			if ( '' != $attr["contentPaddingDesktop"] ) {
