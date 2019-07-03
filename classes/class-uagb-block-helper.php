@@ -886,11 +886,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-top'    => UAGB_Helper::get_css_value( $attr['iconTopMargin'], 'px' ),
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['iconBottomMargin'], 'px' ),
 				),
-				// Image.
-				' .uagb-ifb-image-content > img' => array(
-					'width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
-				    'max-width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
-				),
 				' .uagb-infobox .uagb-ifb-image-content img' => array(
 					'border-radius' => UAGB_Helper::get_css_value( $attr['iconimgBorderRadius'], 'px' ),
 				),
@@ -991,6 +986,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['ctaIconSpace'], 'px' ),
 				),
 			);
+
+			if ( $attr['imageWidthType'] ) {
+				// Image.
+				$selectors[' .uagb-ifb-image-content > img'] = array(
+					'width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
+				    'max-width'=> UAGB_Helper::get_css_value( $attr['imageWidth'], 'px' ),
+				);
+			}
 
 			if( 'above-title' === $attr['iconimgPosition'] ||  'below-title' === $attr['iconimgPosition'] ){
 				$selectors[' .uagb-infobox__content-wrap'] = array(

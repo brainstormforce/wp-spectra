@@ -86,6 +86,7 @@ function InfoBoxStyle( props ) {
 		iconBottomMargin,
 		imageSize,
 		imageWidth,
+		imageWidthType,
 		ctaLinkHoverColor,
 		ctaBgHoverColor,
 		ctaBorderhoverColor,
@@ -124,11 +125,6 @@ function InfoBoxStyle( props ) {
 			"margin-right" : generateCSSUnit( iconRightMargin, "px" ),
 			"margin-top" : generateCSSUnit( iconTopMargin, "px" ),
 			"margin-bottom" : generateCSSUnit( iconBottomMargin, "px" ),
-		},
-		// Image
-		" .uagb-ifb-image-content img" : {
-			"width": generateCSSUnit( imageWidth, "px" ),
-			"max-width": generateCSSUnit( imageWidth, "px" ),
 		},
 		" .uagb-infobox .uagb-ifb-image-content img" : {
 			"border-radius" : generateCSSUnit( iconimgBorderRadius, "px" ),
@@ -230,6 +226,14 @@ function InfoBoxStyle( props ) {
 		" .uagb-ifb-align-icon-before" : {
 			"margin-right" : generateCSSUnit( ctaIconSpace, "px" ),
 		},
+	}
+
+	if ( imageWidthType ) {
+		// Image
+		selectors[" .uagb-ifb-image-content img"] = {
+			"width": generateCSSUnit( imageWidth, "px" ),
+			"max-width": generateCSSUnit( imageWidth, "px" ),
+		}
 	}
 
 	if( iconimgPosition == "above-title" ||  iconimgPosition == "below-title" ){
