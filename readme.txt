@@ -161,6 +161,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Restaurant Menu - Increased Limit to menu list count.
 * Improvement: Section - Added px/% option for Inner Width.
 * Improvement: Table Of Contents - Added Collapsible feature.
+* Improvement: Info Box - Added option to retain the natural width of the Image.
 * Fix: UAG admin notice causing issue fix.
 * Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
 * Fix: Advanced Columns - Background Video not visible in iOS.

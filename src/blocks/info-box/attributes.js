@@ -373,6 +373,10 @@ const attributes = {
 		type: "number",
 		default: 120,
 	},
+	imageWidthType : {
+		type    : "boolean",
+		default : true,
+	},
 	stack: {
 		type: "string",
 		default: "tablet"

@@ -254,6 +254,7 @@ class UAGBinfoBox extends Component {
 			iconImage,
 			imageSize,
 			imageWidth,
+			imageWidthType,
 			stack,
 			showPrefix,
 			showTitle,
@@ -990,17 +991,25 @@ class UAGBinfoBox extends Component {
 							value={ imageSize }
 							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
 						/>
-						<RangeControl
-							label={ __( "Width" ) }
-							value={ imageWidth }
-							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							beforeIcon=""
-							allowReset
+						<ToggleControl
+							label={ __( "Custom Width" ) }
+							checked={ imageWidthType }
+							onChange={ (value) => setAttributes( { imageWidthType: !imageWidthType } ) }
+							help={ __( "Turn this off to inherit the natural width of Image." ) }
 						/>
+						{ imageWidthType &&
+							<RangeControl
+								label={ __( "Width (px)" ) }
+								value={ imageWidth }
+								onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+								min={ 0 }
+								max={ 500 }
+								beforeIcon=""
+								allowReset
+							/>
+						}
 						<RangeControl
-							label = { __( "Rounded Corners" ) }
+							label = { __( "Rounded Corners (px)" ) }
 							value = { iconimgBorderRadius }
 							onChange = { ( value ) => setAttributes( { iconimgBorderRadius: value } ) }
 							min = { 0 }

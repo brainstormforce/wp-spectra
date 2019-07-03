@@ -902,6 +902,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconTopMargin'           => '5',
 							'iconBottomMargin'        => '5',
 							'imageSize'               => 'thumbnail',
+							'imageWidthType'          => true,
 							'imageWidth'              => '120',
 							'seperatorSpace'          => '15',
 							'ctaLinkHoverColor'       => '',
