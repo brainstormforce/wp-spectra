@@ -60,6 +60,10 @@
 		margin-left: 10px;
 		display: flex;
 	}
+
+	&.uagb-toc__collapse .uagb-toc__list-wrap {
+		display: none;
+	}
 }
 
 .uagb-toc__list {

@@ -249,7 +249,6 @@ class UAGBTableOfContentsEdit extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
 						{mappingHeaders.map((a, i) => (
@@ -823,7 +822,8 @@ class UAGBTableOfContentsEdit extends Component {
 				<div className={ classnames(
 					className,
 					`uagb-toc__align-${align}`,
-					`uagb-toc__columns-${tColumnsDesktop}`
+					`uagb-toc__columns-${tColumnsDesktop}`,
+					( initialCollapse ) ? `uagb-toc__collapse` : ''
 				) }
 				id={ `uagb-toc-${ this.props.clientId }` }>
 					<div className="uagb-toc__wrap">
