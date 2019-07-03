@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.2
-Stable tag: 1.13.4
+Stable tag: 1.13.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.13.5 =
+* Fix: Section - Missing Theme Width issue.
+* Fix: Advanced Columns - Missing Theme Width issue.
 
 = 1.13.4 =
 * Improvement: Better methods to handle the assets that enhance the speed of the website.
