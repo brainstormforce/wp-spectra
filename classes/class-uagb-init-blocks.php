@@ -78,12 +78,20 @@ class UAGB_Init_Blocks {
 
 		if ( ! is_admin() ) {
 
-			if ( false === has_blocks() ) {
-				return;
-			}
+			if ( class_exists( 'WooCommerce' ) ) {
 
-			if ( false === UAGB_Helper::$uag_flag ) {
-				return;
+				if ( false === UAGB_Helper::$uag_flag ) {
+					return;
+				}
+			} else {
+
+				if ( false === has_blocks() ) {
+					return;
+				}
+
+				if ( false === UAGB_Helper::$uag_flag ) {
+					return;
+				}
 			}
 		}
 
