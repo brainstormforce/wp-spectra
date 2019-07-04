@@ -88,6 +88,10 @@ class UAGB_Init_Blocks {
 				if ( false === has_blocks() ) {
 					return;
 				}
+
+				if ( false === UAGB_Helper::$uag_flag ) {
+					return;
+				}
 			}
 		}
 

@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.13.6 =
+* Fix: WooCommerce Compatibility - Shop Page Common CSS not been enqueued issue.
+
 = 1.13.5 =
 * Fix: Section - Missing Theme Width issue.
 * Fix: Advanced Columns - Missing Theme Width issue.
