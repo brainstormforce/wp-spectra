@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.5\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.5.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-07-03 14:01:27+00:00\n"
+"POT-Creation-Date: 2019-07-04 10:32:05+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -491,16 +491,16 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:248
-#: classes/class-uagb-init-blocks.php:281
+#: classes/class-uagb-init-blocks.php:256
+#: classes/class-uagb-init-blocks.php:289
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:262
+#: classes/class-uagb-init-blocks.php:270
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:295
+#: classes/class-uagb-init-blocks.php:303
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
