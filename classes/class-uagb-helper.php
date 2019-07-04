@@ -587,19 +587,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( is_cart() ) {
 
-					if ( is_checkout() ) {
+					$id        = get_option( 'woocommerce_cart_page_id' );
+					$this_post = get_post( $id );
 
-						$id        = get_option( 'woocommerce_checkout_page_id' );
-						$this_post = get_post( $id );
-
-					} else {
-
-						$id        = get_option( 'woocommerce_cart_page_id' );
-						$this_post = get_post( $id );
-					}
 				} elseif ( is_account_page() ) {
 
 					$id        = get_option( 'woocommerce_myaccount_page_id' );
+					$this_post = get_post( $id );
+
+				} elseif ( is_checkout() ) {
+
+					$id        = get_option( 'woocommerce_checkout_page_id' );
 					$this_post = get_post( $id );
 
 				} elseif ( is_checkout_pay_page() ) {
