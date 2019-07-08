@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.5.1 =
+* Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.
 * Fix: WooCommerce Compatibility - Shop Page Common CSS not been enqueued issue.
 * Fix: Contact Form 7 Styler - Unregistered console error for certain case scenario issue.
 * Fix: Gravity Forms Styler - Unregistered console error for certain case scenario issue.
