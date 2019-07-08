@@ -157,6 +157,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.5.1 =
 * Fix: WooCommerce Compatibility - Shop Page Common CSS not been enqueued issue.
+* Fix: Contact Form 7 Styler - Unregistered console error for certain case scenario issue.
+* Fix: Gravity Forms Styler - Unregistered console error for certain case scenario issue.
 
 = 1.13.5 =
 * Fix: Section - Missing Theme Width issue.
