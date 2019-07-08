@@ -202,6 +202,10 @@ class UAGB_Init_Blocks {
 					continue;
 				}
 
+				if ( isset( $current_block['is_active'] ) && ! $current_block['is_active'] ) {
+					continue;
+				}
+
 				if ( isset( $saved_blocks[ $slug ] ) ) {
 					if ( 'disabled' === $saved_blocks[ $slug ] ) {
 						array_push( $blocks, $_slug );
