@@ -78,12 +78,20 @@ class UAGB_Init_Blocks {
 
 		if ( ! is_admin() ) {
 
-			if ( false === has_blocks() ) {
-				return;
-			}
+			if ( class_exists( 'WooCommerce' ) ) {
 
-			if ( false === UAGB_Helper::$uag_flag ) {
-				return;
+				if ( false === UAGB_Helper::$uag_flag ) {
+					return;
+				}
+			} else {
+
+				if ( false === has_blocks() ) {
+					return;
+				}
+
+				if ( false === UAGB_Helper::$uag_flag ) {
+					return;
+				}
 			}
 		}
 
@@ -191,6 +199,10 @@ class UAGB_Init_Blocks {
 				$current_block = UAGB_Config::$block_attributes[ $_slug ];
 
 				if ( isset( $current_block['is_child'] ) && $current_block['is_child'] ) {
+					continue;
+				}
+
+				if ( isset( $current_block['is_active'] ) && ! $current_block['is_active'] ) {
 					continue;
 				}
 

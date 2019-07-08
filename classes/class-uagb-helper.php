@@ -441,7 +441,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                             $reusable_blocks = $this->parse( $content );
 
-                            $this->get_stylesheet( $reusable_blocks );
+                            self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
                         }
                     } else {
                     	// Get CSS for the Block.
