@@ -605,7 +605,7 @@ class UAGBRestaurantMenu extends Component {
 							setAttributes( { menu_item_count: newCount } )
 						} }
 						min={ 0 }
-						max={ 10 }
+						max={ 20 }
 						allowReset
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"

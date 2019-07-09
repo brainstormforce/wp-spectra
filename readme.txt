@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.2
-Stable tag: 1.13.3.1
+Stable tag: 1.13.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,13 +155,36 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.13.3.1 =
-* Fix: UAG admin notice causing issue fix.
-* Fix: Broken CSS getting generated for Advanced Column and Section issue fixed.
-* Fix: Marketing Button - Background Color and Background Hover Color opacity issue fixed.
+= 1.13.6 =
+* Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.
+* Fix: WooCommerce Compatibility - Shop Page Common CSS not been enqueued issue.
+* Fix: Contact Form 7 Styler - Unregistered console error for certain case scenario issue.
+* Fix: Gravity Forms Styler - Unregistered console error for certain case scenario issue.
+
+= 1.13.5 =
+* Fix: Section - Missing Theme Width issue.
+* Fix: Advanced Columns - Missing Theme Width issue.
+
+= 1.13.4 =
+* Improvement: Better methods to handle the assets that enhance the speed of the website.
+* Improvement: WooCommerce Compatibility - Now WooCommerce Pages could also be designed using Ultimate Addons for Gutenberg.
+* Improvement: Restaurant Menu - Increased Limit to menu list count.
+* Improvement: Marketing Button - Responsive option for Button Padding.
+* Improvement: Section - Added px/% option for Inner Width.
+* Improvement: Table Of Contents - Added Collapsible feature.
+* Improvement: Info Box - Added option to retain the natural width of the Image.
+* Fix: Admin notice causing issue.
+* Fix: Broken CSS getting generated for Advanced Column and Section issue.
+* Fix: Advanced Columns - Background Video not visible in iOS.
+* Fix: Advanced Columns - Testimonial inside Advanced Columns in Firefox browser issue.
+* Fix: Marketing Button - Background Color and Background Hover Color opacity issue.
+* Fix: Marketing Button - Incorrect Font Family for Edge browser issue.
 * Fix: Blockquote - Preview for the quote and author styling options not working issue.
 * Fix: Post - Image Width issue for smaller images.
-* Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue fixed.
+* Fix: Section - Background Video not visible in iOS.
+* Fix: Table Of Contents - Scroll Offset and Scroll Delay not working issue.
+* Fix: Table Of Contents - Supports Advanced Heading.
+* Fix: Testimonial - Inline Editing for Testimonials in safari issue.
 
 = 1.13.3 =
 * Fix: CSS not applying on the front-end if the range control field value was 0.

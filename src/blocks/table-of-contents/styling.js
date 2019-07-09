@@ -18,6 +18,8 @@ function styling( props ) {
 		tColumnsDesktop,
 		tColumnsTablet,
 		tColumnsMobile,
+		iconColor,
+		iconSize,
 		//Color
 		backgroundColor,
 		linkColor,
@@ -121,6 +123,11 @@ function styling( props ) {
 		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
 		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
 		},
+		" .uag-toc__collapsible-wrap svg" : {
+			"width" : generateCSSUnit( iconSize, "px" ),
+			"height" : generateCSSUnit( iconSize, "px" ),
+			"fill" : iconColor
+		}
 	}
 
 	selectors[" .uagb-toc__list-wrap"] = {

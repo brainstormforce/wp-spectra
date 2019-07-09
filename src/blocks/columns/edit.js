@@ -568,8 +568,8 @@ class UAGBColumns extends Component {
 							(
 								<Fragment>
 									<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-										<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
-										<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
+										<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ widthType === "px" } aria-pressed={ widthType === "px" } min={0} max={2000} onClick={ () => setAttributes( { widthType: "px" } ) }>{ "px" }</Button>
+										<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ widthType === "%" } aria-pressed={ widthType === "%" } min={0} max={100} onClick={ () => setAttributes( { widthType: "%" } ) }>{ "%" }</Button>
 									</ButtonGroup>
 									<RangeControl
 										label={ __( "Inner Width" ) }
@@ -1226,7 +1226,9 @@ class UAGBColumns extends Component {
 					{ "video" == backgroundType &&
 						<div className="uagb-columns__video-wrap">
 							{  backgroundVideo &&
-								<video src={ backgroundVideo.url } autoPlay loop muted></video>
+								<video autoplay loop muted playsinline>
+									<source src={ backgroundVideo.url } type='video/mp4' />
+								</video>
 							}
 
 						</div>

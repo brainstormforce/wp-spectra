@@ -30,6 +30,46 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $block_list;
 
 		/**
+		 * Current Block List
+		 *
+		 * @since 1.13.4
+		 * @var current_block_list
+		 */
+		public static $current_block_list = array();
+
+		/**
+		 * UAG Block Flag
+		 *
+		 * @since 1.13.4
+		 * @var uag_flag
+		 */
+		public static $uag_flag = false;
+
+		/**
+		 * Enque Style and Script Variable
+		 *
+		 * @since x.x.x
+		 * @var instance
+		 */
+		public static $css_file_handler;
+
+		/**
+		 * Stylesheet
+		 *
+		 * @since 1.13.4
+		 * @var stylesheet
+		 */
+		public static $stylesheet;
+
+		/**
+		 * Script
+		 *
+		 * @since 1.13.4
+		 * @var script
+		 */
+		public static $script;
+
+		/**
 		 * Store Json variable
 		 *
 		 * @since 1.8.1
@@ -44,14 +84,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @var instance
 		 */
 		public static $page_blocks;
-
-		/**
-		 * Enque Style and Script Variable
-		 *
-		 * @since x.x.x
-		 * @var instance
-		 */
-		public static $css_file_handler;
 
 		/**
 		 * Google fonts to enqueue
@@ -82,30 +114,82 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$block_list = UAGB_Config::get_block_attributes();
 
-			add_action( 'wp_enqueue_scripts', array( $this, 'generate_stylesheet' ), 80 );
+			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ) );
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 10 );
+			add_action( 'wp', array( $this, 'generate_script' ), 11 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'generate_script' ), 80 );
-			add_action( 'wp_footer', array( $this, 'generate_script' ), 1000 );
-			add_action( 'wp_enqueue_scripts', array( $this, 'register_scripts' ), 81 );
+			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 		}
 
 		/**
-		 * Register scripts
+		 * Enqueue Gutenberg block assets for both frontend + backend.
 		 *
-		 * @return void
+		 * @since 1.13.4
 		 */
-		function register_scripts() {
-			$file_handler = self::$css_file_handler;
-			if ( isset( $file_handler['css_url'] ) ) {
-				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
+		public function block_assets() {
+
+			$block_list_for_assets = self::$current_block_list;
+
+			$blocks = UAGB_Config::get_block_attributes();
+
+			foreach ( $block_list_for_assets as $key => $curr_block_name ) {
+
+				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
+
+				$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
+
+				foreach ( $js_assets as $asset_handle => $val ) {
+					// Scripts.
+					wp_enqueue_script( $val );
+				}
+
+				foreach ( $css_assets as $asset_handle => $val ) {
+					// Styles.
+					wp_enqueue_style( $val );
+				}
 			}
-			if ( isset( $file_handler['js_url'] ) ) {
-				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
-			}
+
 		}
 
 		/**
-		 * Load the front end Google Fonts
+		 * Print the Script in footer.
+		 */
+		public function print_script() {
+
+			if ( is_null( self::$script ) || '' === self::$script ) {
+				return;
+			}
+
+			ob_start();
+			?>
+			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; ?> })(jQuery) </script>
+			<?php
+			ob_end_flush();
+		}
+
+		/**
+		 * Print the Stylesheet in header.
+		 */
+		public function print_stylesheet() {
+
+			global $content_width;
+
+			if ( is_null( self::$stylesheet ) || '' === self::$stylesheet ) {
+				return;
+			}
+
+			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
+
+			ob_start();
+			?>
+			<style type="text/css" media="all" id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
+			<?php
+			ob_end_flush();
+		}
+
+		/**
+		 * Load the front end Google Fonts.
 		 */
 		public function frontend_gfonts() {
 			if ( empty( self::$gfonts ) ) {
@@ -191,7 +275,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $value  CSS value.
 		 * @param string $unit  CSS unit.
-		 * @since x.x.x
+		 * @since 1.13.4
 		 */
 		public static function get_css_value( $value = '', $unit = '' ) {
 
@@ -236,6 +320,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     $block_id = $blockattr['block_id'];
                 }
             }
+
+            self::$current_block_list[] = $name;
+
+			if ( strpos( $name, 'uagb/' ) !== false ) {
+				self::$uag_flag = true;
+			}
 
             switch ( $name ) {
                 case 'uagb/section':
@@ -359,7 +449,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
                             $reusable_blocks = $this->parse( $content );
 
-                            $this->get_stylesheet( $reusable_blocks );
+                            self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
                         }
                     } else {
                     	// Get CSS for the Block.
@@ -377,6 +467,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     }
                 }
             }
+
+            self::$current_block_list = array_unique( self::$current_block_list );
 
             return $css;
 
@@ -499,14 +591,53 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$this_post = array();
 
-			if ( is_single() || is_page() || is_404() ) {
-				global $post;
-				$this_post = $post;
-				$this->_generate_stylesheet( $this_post );
-				if ( ! is_object( $post ) ) {
+			if ( class_exists( 'WooCommerce' ) ) {
+
+				if ( is_cart() ) {
+
+					$id        = get_option( 'woocommerce_cart_page_id' );
+					$this_post = get_post( $id );
+
+				} elseif ( is_account_page() ) {
+
+					$id        = get_option( 'woocommerce_myaccount_page_id' );
+					$this_post = get_post( $id );
+
+				} elseif ( is_checkout() ) {
+
+					$id        = get_option( 'woocommerce_checkout_page_id' );
+					$this_post = get_post( $id );
+
+				} elseif ( is_checkout_pay_page() ) {
+
+					$id        = get_option( 'woocommerce_pay_page_id' );
+					$this_post = get_post( $id );
+
+				} elseif ( is_shop() ) {
+
+					$id        = get_option( 'woocommerce_shop_page_id' );
+					$this_post = get_post( $id );
+				}
+
+				if ( is_object( $this_post ) ) {
+					$this->_generate_stylesheet( $this_post );
 					return;
 				}
+			}
+
+			if ( is_single() || is_page() || is_404() ) {
+
+				global $post;
+				$this_post = $post;
+
+				if ( ! is_object( $this_post ) ) {
+					return;
+				}
+
+				$this->_generate_stylesheet( $this_post );
+
 			} elseif ( is_archive() || is_home() || is_search() ) {
+
 				global $wp_query;
 
 				foreach ( $wp_query as $post ) {
@@ -523,7 +654,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function _generate_stylesheet( $this_post ) {
 
-			if ( has_blocks( get_the_ID() ) ) {
+			if ( ! is_object( $this_post ) ) {
+				return;
+			}
+
+			if ( ! isset( $this_post->ID ) ) {
+				return;
+			}
+
+			if ( has_blocks( $this_post->ID ) ) {
+
 				if ( isset( $this_post->post_content ) ) {
 
 					$blocks            = $this->parse( $this_post->post_content );
@@ -533,9 +673,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						return;
 					}
 
-					ob_start();
-					$this->get_stylesheet( $blocks );
-					ob_end_flush();
+					self::$stylesheet .= $this->get_stylesheet( $blocks );
 				}
 			}
 		}
@@ -553,9 +691,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			ob_start();
 			$this->get_scripts( $blocks );
-			ob_end_flush();
 		}
 
 		/**
@@ -589,6 +725,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( $blocks as $i => $block ) {
 
 				if ( is_array( $block ) ) {
+
+					if ( '' === $block['blockName'] ) {
+						continue;
+					}
 					if ( 'core/block' === $block['blockName'] ) {
 						$id = ( isset( $block['attrs']['ref'] ) ) ? $block['attrs']['ref'] : 0;
 
@@ -597,7 +737,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 							$reusable_blocks = $this->parse( $content );
 
-							$this->get_stylesheet( $reusable_blocks );
+							self::$stylesheet .= $this->get_stylesheet( $reusable_blocks );
 
 						}
 					} else {
@@ -624,8 +764,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$mob_styling_css .= $mobile;
 				$mob_styling_css .= '}';
 			}
-			$css_data = $desktop . $tab_styling_css . $mob_styling_css;
-			self::file_write( $css_data, 'css' );
+
+			return $desktop . $tab_styling_css . $mob_styling_css;
 		}
 
 
@@ -636,9 +776,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.6.0
 		 */
 		public function get_scripts( $blocks ) {
-
-			$js      = '';
-			$js_data = '';
 
 			foreach ( $blocks as $i => $block ) {
 				if ( is_array( $block ) ) {
@@ -654,13 +791,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					} else {
 						// Get JS for the Block.
-						$js .= $this->get_block_js( $block );
+						self::$script .= $this->get_block_js( $block );
 					}
-				}
-
-				if ( ! empty( $js ) ) {
-					$js_data = '( function( $ ) {' . $js . '})(jQuery)';
-					self::file_write( $js_data, 'js' );
 				}
 			}
 		}
@@ -1109,153 +1241,79 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 
 		/**
-		 * Returns an array of paths for the upload directory
-		 * of the current site.
+		 *  Get Specific Stylesheet
 		 *
-		 * @since x.x.x
-		 * @return array
+		 * @since 1.13.4
 		 */
-		public static function get_upload_dir() {
-			$wp_info  = wp_upload_dir( null, false );
-			$dir_name = basename( UAGB_DIR );
-			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
-				$dir_name = 'uag-plugin';
-			}
-			// SSL workaround.
-			if ( self::is_ssl() ) {
-				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
-			}
-			// Build the paths.
-			$dir_info = array(
-				'path' => $wp_info['basedir'] . '/' . $dir_name . '/',
-				'url'  => $wp_info['baseurl'] . '/' . $dir_name . '/',
-			);
-			// Create the upload dir if it doesn't exist.
-			if ( ! file_exists( $dir_info['path'] ) ) {
-				// Create the directory.
-				mkdir( $dir_info['path'] );
-				// Add an index file for security.
-				file_put_contents( $dir_info['path'] . 'index.html', '' );
-			}
-			return apply_filters( 'uag_get_upload_dir', $dir_info );
-		}
-		/**
-		 * Checks to see if the site has SSL enabled or not.
-		 *
-		 * @since x.x.x
-		 * @return bool
-		 */
-		public static function is_ssl() {
-			if ( is_ssl() ) {
-				return true;
-			} elseif ( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) {
-				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
-				return true;
-			}
-			return false;
-		}
+		public static function create_specific_stylesheet() {
 
-		/**
-		 * Returns an array of paths for the CSS and JS assets
-		 * of the current post.
-		 *
-		 * @param  var $data    Gets the CSS\JS for the current Page.
-		 * @param  var $type    Gets the CSS\JS type.
-		 * @param  var $timestamp Timestamp.
-		 * @since x.x.x
-		 * @return array
-		 */
-		public static function get_asset_info( $data, $type, $timestamp ) {
-			$post_id     = get_the_ID();
-			$uploads_dir = self::get_upload_dir();
-			$css_suffix  = 'uag-style';
-			$js_suffix   = 'uag-script';
-			$info        = array();
-			if ( ! empty( $data ) && 'css' === $type ) {
-				$info['css']     = $uploads_dir['path'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
-				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
-			} elseif ( ! empty( $data ) && 'js' === $type ) {
-				$info['js']     = $uploads_dir['path'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
-				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
-			}
-			return $info;
-		}
-		/**
-		 * Creates css and js files.
-		 *
-		 * @param  var $style_data    Gets the CSS\JS for the current Page.
-		 * @param  var $type    Gets the CSS\JS type.
-		 * @since  x.x.x
-		 */
-		public static function file_write( $style_data, $type ) {
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
-			var_dump( $post_timestamp );
-			var_dump( $type );
-			$var = ( 'css' === $type ) ? 'css' : 'js';
-			if ( '' === $post_timestamp || false === $post_timestamp ) {
-				var_dump( 'if' );
-				// File not created yet.
-				$date      = new DateTime();
-				$timestamp = $date->getTimestamp();
+			$saved_blocks        = self::get_admin_settings_option( '_uagb_blocks' );
+			$combined            = array();
+			$is_already_post     = false;
+			$is_already_timeline = false;
+			$is_already_column   = false;
 
-				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
+			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
-				// Create a new file.
-				$handle = fopen( $assets_info[ $var ], 'a' );
-				file_put_contents( $assets_info[ $var ], $style_data );
-				fclose( $handle );
-				// Update the post meta.
-				update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
-				if ( is_array( self::$css_file_handler ) ) {
-					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
-				} else {
-					self::$css_file_handler = $assets_info;
+				$block_name = str_replace( 'uagb/', '', $key );
+				$slug       = $block_name;
+
+				if ( isset( $saved_blocks[ $block_name ] ) && 'disabled' === $saved_blocks[ $block_name ] ) {
+					continue;
 				}
-			} else {
-				var_dump( 'else' );
-				// File already created.
-				$timestamp   = $post_timestamp;
-				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
-				$handle      = fopen( $assets_info[ $var ], 'r' );
-				$old_data    = file_get_contents( $assets_info[ $var ] );
-				fclose( $handle );
-				if ( 'js' === $type ) {
 
-					var_dump( strlen( $old_data ) . 'old' );
-					echo '<br/>';
-					var_dump( strlen( $style_data ) . 'new' );
-					echo '<br/>';
-				}
-				if ( $old_data !== $style_data ) {
-					var_dump( 'data not same' );
-					// File needs a change in content.
-					$date            = new DateTime();
-					$new_timestamp   = $date->getTimestamp();
-					$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
-					// Create a new file.
-					$new_handle = fopen( $new_assets_info[ $var ], 'a' );
-					file_put_contents( $new_assets_info[ $var ], $style_data );
-					fclose( $new_handle );
-					// Update the post meta.
-					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
-					// Delete old file.
-					// unlink( $assets_info[ $var ] );.
-					if ( is_array( self::$css_file_handler, true ) ) {
-						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
-					} else {
-						self::$css_file_handler = $new_assets_info;
-					}
-				} else {
-					var_dump( 'data same' );
-					// Do nothing.
-					if ( is_array( self::$css_file_handler ) ) {
-						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
-					} else {
-						self::$css_file_handler = $assets_info;
-					}
+				switch ( $block_name ) {
+
+					case 'post-grid':
+					case 'post-carousel':
+					case 'post-masonry':
+						if ( ! $is_already_post ) {
+							$combined[]      = 'post';
+							$is_already_post = true;
+						}
+						break;
+
+					case 'columns':
+					case 'column':
+						if ( ! $is_already_column ) {
+							$combined[]        = 'column';
+							$combined[]        = 'columns';
+							$is_already_column = true;
+						}
+						break;
+
+					case 'post-timeline':
+					case 'content-timeline':
+						if ( ! $is_already_timeline ) {
+							$combined[]          = 'timeline';
+							$is_already_timeline = true;
+						}
+						break;
+
+					case 'restaurant-menu':
+						$combined[] = 'price-list';
+						break;
+
+					default:
+						$combined[] = $block_name;
+						break;
 				}
 			}
+
+			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
+			unlink( $combined_path );
+
+			$handle = fopen( $combined_path, 'a' );
+
+			foreach ( $combined as $key => $c_block ) {
+
+				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css', 'r' );
+				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' ) );
+				fclose( $c_handle );
+				fwrite( $handle, $style );
+			}
+
+			fclose( $handle );
 		}
 	}
 

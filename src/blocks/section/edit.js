@@ -127,6 +127,7 @@ class UAGBSectionEdit extends Component {
 			contentWidth,
 			width,
 			innerWidth,
+			innerWidthType,
 			tag,
 			themeWidth,
 			leftPadding,
@@ -259,13 +260,21 @@ class UAGBSectionEdit extends Component {
 						}
 						{
 							contentWidth != "boxed" && ! themeWidth &&
-							( <RangeControl
-								label={ __( "Inner Width" ) }
-								value={ innerWidth }
-								min={ 0 }
-								max={ 2000 }
-								onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
-							/> )
+							(
+								<Fragment>
+									<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+										<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ innerWidthType === "px" } aria-pressed={ innerWidthType === "px" } onClick={ () => setAttributes( { innerWidthType: "px" } ) }>{ "px" }</Button>
+										<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ innerWidthType === "%" } aria-pressed={ innerWidthType === "%" } onClick={ () => setAttributes( { innerWidthType: "%" } ) }>{ "%" }</Button>
+									</ButtonGroup>
+									<RangeControl
+										label={ __( "Inner Width" ) }
+										value={ innerWidth }
+										min={ 0 }
+										max={ 2000 }
+										onChange={ ( value ) => setAttributes( { innerWidth: value } ) }
+									/>
+								</Fragment>
+							)
 						}
 						<SelectControl
 							label={ __( "HTML Tag" ) }
@@ -985,7 +994,9 @@ class UAGBSectionEdit extends Component {
 					{ "video" == backgroundType &&
 						<div className="uagb-section__video-wrap">
 							{  backgroundVideo &&
-								<video src={ backgroundVideo.url } autoPlay loop muted></video>
+								<video autoplay loop muted playsinline>
+									<source src={ backgroundVideo.url } type='video/mp4' />
+								</video>
 							}
 
 						</div>

@@ -95,6 +95,11 @@ class UAGBMarketingButtonEdit extends Component {
 			//Background
 			vPadding,
 			hPadding,
+			hPaddingMobile,
+			vPaddingMobile,
+			hPaddingTablet,
+			vPaddingTablet,
+			paddingType,
 			backgroundType,
 			backgroundColor,
 			backgroundHoverColor,
@@ -365,23 +370,112 @@ class UAGBMarketingButtonEdit extends Component {
 						</TabPanel>
 					</PanelBody>
 					<PanelBody title={ __( "Background" ) } initialOpen={ false }>
-						<h2>{ __( "Button Padding (px)" ) }</h2>
-						<RangeControl
-							label={ UAGB_Block_Icons.vertical_spacing }
-							className={ "uagb-margin-control" }
-							value={ vPadding }
-							onChange={ ( value ) => setAttributes( { vPadding: value } ) }
-							min={ 0 }
-							max={ 100 }
-						/>
-						<RangeControl
-							label={ UAGB_Block_Icons.horizontal_spacing }
-							className={ "uagb-margin-control" }
-							value={ hPadding }
-							onChange={ ( value ) => setAttributes( { hPadding: value } ) }
-							min={ 0 }
-							max={ 100 }
-						/>
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Button Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vPaddingMobile }
+													onChange={ ( value ) => setAttributes( { vPaddingMobile: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hPaddingMobile }
+													onChange={ ( value ) => setAttributes( { hPaddingMobile: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Button Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vPaddingTablet }
+													onChange={ ( value ) => setAttributes( { vPaddingTablet: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hPaddingTablet }
+													onChange={ ( value ) => setAttributes( { hPaddingTablet: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "px" } aria-pressed={ paddingType === "px" } onClick={ () => setAttributes( { paddingType: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paddingType === "%" } aria-pressed={ paddingType === "%" } onClick={ () => setAttributes( { paddingType: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Button Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vPadding }
+													onChange={ ( value ) => setAttributes( { vPadding: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hPadding }
+													onChange={ ( value ) => setAttributes( { hPadding: value } ) }
+													min={ 0 }
+													max={ ( "%" == paddingType ) ? 100 : 2000 }
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Button Background" ) }</h2>
 						<SelectControl

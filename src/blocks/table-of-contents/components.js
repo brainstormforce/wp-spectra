@@ -15,7 +15,7 @@ class TableOfContents extends Component {
 		const getHeaderBlocks = () =>
 			select('core/editor')
 				.getBlocks()
-				.filter(block => block.name === 'core/heading');
+				.filter(block => block.name === 'core/heading' );
 
 
 		const getData = ( headerData, a ) => {
@@ -36,6 +36,10 @@ class TableOfContents extends Component {
 					if( header.name === 'core/heading' ) {
 						a.push( header.attributes );
 					}
+
+					if( header.name === 'uagb/advanced-heading' ) {
+						a.push( header.attributes );
+					}
 				}
 
 			});
@@ -49,27 +53,30 @@ class TableOfContents extends Component {
 
 			if( typeof headers != 'undefined' ) {
 				headers.forEach((heading, key) => {
+					const contentAnchor = ( typeof heading.content === 'undefined' ||
+						heading.content === '' ) ? 'headingId' : 'anchor'
 					const headingAnchorEmpty =
-						typeof heading.anchor === 'undefined' ||
-						heading.anchor === '';
-					const headingContentEmpty =
-						typeof heading.content === 'undefined' ||
-						heading.content === '';
+						typeof heading[contentAnchor] === 'undefined' ||
+						heading[contentAnchor] === '';
+					const contentName = ( typeof heading.content === 'undefined' ||
+						heading.content === '' ) ? 'headingTitle' : 'content'
+					const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
 					const headingDefaultAnchor =
 						!headingAnchorEmpty &&
-						heading.anchor.indexOf(key + '-') === 0;
+						heading[contentAnchor].indexOf(key + '-') === 0;
+
 					if (
 						!headingContentEmpty &&
 						(headingAnchorEmpty || headingDefaultAnchor)
 					) {
-						heading.anchor =
+						heading[contentAnchor] =
 							key +
 							'-' +
-							heading.content
+							heading[contentName]
 								.toString()
 								.toLowerCase()
 								.replace(/( |<.+?>|&nbsp;)/g, '-');
-						heading.anchor = heading.anchor.replace(
+						heading[contentAnchor] = heading[contentAnchor].replace(
 							/[^\w\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF\s-]/g,
 							''
 						);
@@ -142,28 +149,49 @@ class TableOfContents extends Component {
 			) {
 				arrays[arrays.length - 2].push(arrays.pop());
 			}
+
 			return arrays[0];
 		};
 
 		const parseList = list => {
 			let items = [];
 			list.forEach(item => {
+				
 				if (Array.isArray(item)) {
 					items.push(parseList(item));
 				} else {
-					items.push(
-						<li>
-							<a
-								href={`#${item.anchor}`}
-								dangerouslySetInnerHTML={{
-									__html: item.content.replace(
-										/(<a.+?>|<\/a>)/g,
-										''
-									)
-								}}
-							/>
-						</li>
-					);
+
+					if ( typeof item.content === 'undefined' || item.content === '' ) {
+
+						items.push(
+							<li>
+								<a
+									href={`#${item.headingId}`}
+									dangerouslySetInnerHTML={{
+										__html: item.headingTitle.replace(
+											/(<a.+?>|<\/a>)/g,
+											''
+										)
+									}}
+								/>
+							</li>
+						);
+					} else {
+
+						items.push(
+							<li>
+								<a
+									href={`#${item.anchor}`}
+									dangerouslySetInnerHTML={{
+										__html: item.content.replace(
+											/(<a.+?>|<\/a>)/g,
+											''
+										)
+									}}
+								/>
+							</li>
+						);
+					}
 				}
 			});
 			return <ul className="uagb-toc__list" >{items}</ul>;

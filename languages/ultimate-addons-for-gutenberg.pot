@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.3.1\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.6\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-05-17 09:36:52+00:00\n"
+"POT-Creation-Date: 2019-07-08 07:30:19+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -123,11 +123,11 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:83 classes/class-uagb-admin.php:264
+#: admin/uagb-general.php:83 classes/class-uagb-admin.php:268
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:90 classes/class-uagb-admin.php:265
+#: admin/uagb-general.php:90 classes/class-uagb-admin.php:269
 msgid "Deactivate"
 msgstr ""
 
@@ -200,31 +200,31 @@ msgstr ""
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:126
+#: classes/class-uagb-admin.php:130
 msgid ""
 "Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on "
 "your website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:127
+#: classes/class-uagb-admin.php:131
 msgid ""
 "Would you please mind sharing your views and give it a 5 star rating on the "
 "WordPress repository?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:129
+#: classes/class-uagb-admin.php:133
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:131
+#: classes/class-uagb-admin.php:135
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:132
+#: classes/class-uagb-admin.php:136
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:151
+#: classes/class-uagb-admin.php:155
 #. translators: %s: html tags
 msgid ""
 "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can "
@@ -232,258 +232,258 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:266
+#: classes/class-uagb-admin.php:270
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:267
+#: classes/class-uagb-admin.php:271
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:268
+#: classes/class-uagb-admin.php:272
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:269
+#: classes/class-uagb-admin.php:273
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:270
+#: classes/class-uagb-admin.php:274
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:428
+#: classes/class-uagb-admin.php:436
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:449
+#: classes/class-uagb-admin.php:457
 msgid "Theme Successfully Activated"
 msgstr ""
 
-#: classes/class-uagb-config.php:35
+#: classes/class-uagb-config.php:42
 msgid "Advanced Heading"
 msgstr ""
 
-#: classes/class-uagb-config.php:36
+#: classes/class-uagb-config.php:43
 msgid ""
 "This block lets you add a combination of a heading and a sub-heading with a "
 "separator in between."
 msgstr ""
 
-#: classes/class-uagb-config.php:77
+#: classes/class-uagb-config.php:84
 msgid "Advanced Columns"
 msgstr ""
 
-#: classes/class-uagb-config.php:78
+#: classes/class-uagb-config.php:85
 msgid ""
 "This block gives you advanced options to insert a number of columns within "
 "a single row."
 msgstr ""
 
-#: classes/class-uagb-config.php:156
+#: classes/class-uagb-config.php:163
 msgid "Column"
 msgstr ""
 
-#: classes/class-uagb-config.php:157
+#: classes/class-uagb-config.php:164
 msgid "This block is an immediate child of Advanced Columns."
 msgstr ""
 
-#: classes/class-uagb-config.php:228
+#: classes/class-uagb-config.php:235
 msgid "Blockquote"
 msgstr ""
 
-#: classes/class-uagb-config.php:229
+#: classes/class-uagb-config.php:236
 msgid "This block allows you to display your Blockquote."
 msgstr ""
 
-#: classes/class-uagb-config.php:323
+#: classes/class-uagb-config.php:330
 msgid "Call To Action"
 msgstr ""
 
-#: classes/class-uagb-config.php:324
+#: classes/class-uagb-config.php:331
 msgid ""
 "This block allows you to place an CTA along with a heading and description "
 "within a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:393
+#: classes/class-uagb-config.php:400
 msgid "Contact Form 7 Styler"
 msgstr ""
 
-#: classes/class-uagb-config.php:394
+#: classes/class-uagb-config.php:401
 msgid ""
 "This block allows you to add and style your Contact Form 7 forms right in "
 "the Gutenberg editor."
 msgstr ""
 
-#: classes/class-uagb-config.php:529
+#: classes/class-uagb-config.php:536
 msgid "Gravity Form Styler"
 msgstr ""
 
-#: classes/class-uagb-config.php:530
+#: classes/class-uagb-config.php:537
 msgid ""
 "This block allows you to add and style your Gravity Forms right in the "
 "Gutenberg editor."
 msgstr ""
 
-#: classes/class-uagb-config.php:682
+#: classes/class-uagb-config.php:689
 msgid "Content Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:683
+#: classes/class-uagb-config.php:690
 msgid "The Timeline block lets you create beautiful timelines on your website."
 msgstr ""
 
-#: classes/class-uagb-config.php:752
+#: classes/class-uagb-config.php:760
 msgid "Google Map"
 msgstr ""
 
-#: classes/class-uagb-config.php:753
+#: classes/class-uagb-config.php:761
 msgid "This block allows you to place a Google Map Location."
 msgstr ""
 
-#: classes/class-uagb-config.php:762
+#: classes/class-uagb-config.php:770
 msgid "Icon List"
 msgstr ""
 
-#: classes/class-uagb-config.php:763
+#: classes/class-uagb-config.php:771
 msgid "This block allows you to place an image or icon in a list format."
 msgstr ""
 
-#: classes/class-uagb-config.php:770
+#: classes/class-uagb-config.php:778
 msgid "Label #1"
 msgstr ""
 
-#: classes/class-uagb-config.php:813
+#: classes/class-uagb-config.php:821
 msgid "Info Box"
 msgstr ""
 
-#: classes/class-uagb-config.php:814
+#: classes/class-uagb-config.php:822
 msgid ""
 "This block allows you to place an image or icon along with a heading and "
 "description within a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:907
+#: classes/class-uagb-config.php:916
 msgid "Marketing Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:908
+#: classes/class-uagb-config.php:917
 msgid "This block allows you to place a Marketing Button with small description."
 msgstr ""
 
-#: classes/class-uagb-config.php:975
+#: classes/class-uagb-config.php:989
 msgid "Multi Buttons"
 msgstr ""
 
-#: classes/class-uagb-config.php:976
+#: classes/class-uagb-config.php:990
 msgid "This block allows you to add multiple buttons with a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:993
+#: classes/class-uagb-config.php:1007
 msgid "Post Carousel"
 msgstr ""
 
-#: classes/class-uagb-config.php:994
+#: classes/class-uagb-config.php:1008
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a carousel layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1071 classes/class-uagb-config.php:1154
-#: classes/class-uagb-config.php:1237 dist/blocks/post/index.php:329
-#: dist/blocks/post/index.php:699 dist/blocks/post/index.php:1106
-#: dist/blocks/post/index.php:1677
+#: classes/class-uagb-config.php:1087 classes/class-uagb-config.php:1170
+#: classes/class-uagb-config.php:1254 dist/blocks/post/index.php:331
+#: dist/blocks/post/index.php:701 dist/blocks/post/index.php:1108
+#: dist/blocks/post/index.php:1679
 msgid "Read More"
 msgstr ""
 
-#: classes/class-uagb-config.php:1081
+#: classes/class-uagb-config.php:1097
 msgid "Post Grid"
 msgstr ""
 
-#: classes/class-uagb-config.php:1082
+#: classes/class-uagb-config.php:1098
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a grid layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1164
+#: classes/class-uagb-config.php:1180
 msgid "Post Masonry"
 msgstr ""
 
-#: classes/class-uagb-config.php:1165
+#: classes/class-uagb-config.php:1181
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a masonry layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1247
+#: classes/class-uagb-config.php:1264
 msgid "Post Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:1248
+#: classes/class-uagb-config.php:1265
 msgid ""
 "The Timeline block lets you create beautiful timelines of Posts on your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:1347
+#: classes/class-uagb-config.php:1365
 msgid "Price List"
 msgstr ""
 
-#: classes/class-uagb-config.php:1348
+#: classes/class-uagb-config.php:1366
 msgid "This block allows you to add attractive Price List."
 msgstr ""
 
-#: classes/class-uagb-config.php:1419
+#: classes/class-uagb-config.php:1437
 msgid "Section"
 msgstr ""
 
-#: classes/class-uagb-config.php:1420
+#: classes/class-uagb-config.php:1438
 msgid ""
 "This block is an outer wrap section that allows you to add other blocks "
 "within it."
 msgstr ""
 
-#: classes/class-uagb-config.php:1492
+#: classes/class-uagb-config.php:1511
 msgid "Social Share"
 msgstr ""
 
-#: classes/class-uagb-config.php:1493
+#: classes/class-uagb-config.php:1512
 msgid ""
 "This block allows you to let users share your content across various social "
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1526
+#: classes/class-uagb-config.php:1545
 msgid "Table of Contents"
 msgstr ""
 
-#: classes/class-uagb-config.php:1527
+#: classes/class-uagb-config.php:1546
 msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
-#: classes/class-uagb-config.php:1607
+#: classes/class-uagb-config.php:1632
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:1608
+#: classes/class-uagb-config.php:1633
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:1678
+#: classes/class-uagb-config.php:1703
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:1679
+#: classes/class-uagb-config.php:1704
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:883
+#: classes/class-uagb-helper.php:1032
 msgid "Full"
 msgstr ""
 
@@ -491,31 +491,31 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:287
-#: classes/class-uagb-init-blocks.php:320
+#: classes/class-uagb-init-blocks.php:260
+#: classes/class-uagb-init-blocks.php:293
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:301
+#: classes/class-uagb-init-blocks.php:274
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:334
+#: classes/class-uagb-init-blocks.php:307
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-loader.php:144
+#: classes/class-uagb-loader.php:145
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:154
+#: classes/class-uagb-loader.php:155
 msgid "Activate Gutenberg"
 msgstr ""
 
-#: classes/class-uagb-loader.php:161
+#: classes/class-uagb-loader.php:162
 msgid "Install Gutenberg"
 msgstr ""
 

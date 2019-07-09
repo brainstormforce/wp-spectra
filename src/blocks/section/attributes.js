@@ -143,6 +143,10 @@ const attributes = {
 		type: "number",
 		default: 1140
 	},
+	innerWidthType: {
+		type: "string",
+		default: "px"
+	},
 	themeWidth: {
 		type: "boolean",
 		default: false

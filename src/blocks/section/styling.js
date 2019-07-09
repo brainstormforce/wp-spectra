@@ -18,6 +18,7 @@ function styling( props ) {
 		backgroundVideo,
 		className,
 		innerWidth,
+		innerWidthType,
 		contentWidth,
 		gradientColor1,
 		gradientColor2,
@@ -64,7 +65,7 @@ function styling( props ) {
 	if( typeof contentWidth != "undefined" ) {
 		if ( "boxed" != contentWidth ) {
 			if ( typeof innerWidth != "undefined" ) {
-				inner_width = generateCSSUnit( innerWidth, "px" )
+				inner_width = generateCSSUnit( innerWidth, innerWidthType )
 			}
 		}
 	}
