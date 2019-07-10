@@ -152,7 +152,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$file_handler = self::$css_file_handler;
 
-			echo '<xmp>'; print_r($file_handler); echo '</xmp>';
+			//echo '<xmp>'; print_r($file_handler); echo '</xmp>';
 
 			if ( isset( $file_handler['css_url'] ) ) {
 				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
@@ -1363,7 +1363,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 			// Build the paths.
 			$dir_info = array(
-				'path' => $wp_info['basedir'] . '\\' . $dir_name . '\\',
+				'path' => $wp_info['basedir'] . '/' . $dir_name . '/',
 				'url'  => $wp_info['baseurl'] . '/' . $dir_name . '/',
 			);
 			// Create the upload dir if it doesn't exist.
