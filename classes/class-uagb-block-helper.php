@@ -4696,11 +4696,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$settings = json_encode($slick_options);
 			$selector =	'#uagb-testimonial-'. $id;
-			$js = 'if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){ ' .
-				'return true ' .
-				'} else {' .
-				'jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' );'.
-			'}';
+			$js = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' ); } } );';
 
 			return $js;
 			// @codingStandardsIgnoreEnd.

@@ -118,8 +118,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp', array( $this, 'generate_stylesheet' ), 10 );
 			add_action( 'wp', array( $this, 'generate_script' ), 11 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
-			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			//add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			//add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 		}
 
 		/**
@@ -150,6 +150,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
+			$file_handler = self::$css_file_handler;
+
+			echo '<xmp>'; print_r($file_handler); echo '</xmp>';
+
+			if ( isset( $file_handler['css_url'] ) ) {
+				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
+			}
+			if ( isset( $file_handler['js_url'] ) ) {
+				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
+			}
+
 		}
 
 		/**
@@ -160,6 +171,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( is_null( self::$script ) || '' === self::$script ) {
 				return;
 			}
+
+			//self::file_write( self::$script, 'js' );
 
 			ob_start();
 			?>
@@ -180,6 +193,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
+
+			//self::file_write( self::$stylesheet, 'css' );
 
 			ob_start();
 			?>
@@ -644,6 +659,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$this->_generate_stylesheet( $post );
 				}
 			}
+
+			self::file_write( self::$stylesheet, 'css' );
 		}
 
 		/**
@@ -692,6 +709,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			$this->get_scripts( $blocks );
+
+			if ( ! empty( self::$script ) ) {
+				self::file_write( self::$script, 'js' );
+			}
+
 		}
 
 		/**
@@ -794,6 +816,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						self::$script .= $this->get_block_js( $block );
 					}
 				}
+			}
+
+			if ( ! empty( self::$script ) ) {
+				self::$script = '( function( $ ) { ' . self::$script . '})(jQuery)';
 			}
 		}
 
@@ -1314,6 +1340,167 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			fclose( $handle );
+		}
+
+		/**
+		 * Returns an array of paths for the upload directory
+		 * of the current site.
+		 *
+		 * @since x.x.x
+		 * @return array
+		 */
+		public static function get_upload_dir() {
+
+			$wp_info  = wp_upload_dir( null, false );
+
+			$dir_name = basename( UAGB_DIR );
+			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
+				$dir_name = 'uag-plugin';
+			}
+			// SSL workaround.
+			if ( self::is_ssl() ) {
+				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
+			}
+			// Build the paths.
+			$dir_info = array(
+				'path' => $wp_info['basedir'] . '\\' . $dir_name . '\\',
+				'url'  => $wp_info['baseurl'] . '/' . $dir_name . '/',
+			);
+			// Create the upload dir if it doesn't exist.
+			if ( ! file_exists( $dir_info['path'] ) ) {
+				// Create the directory.
+				mkdir( $dir_info['path'] );
+				// Add an index file for security.
+				file_put_contents( $dir_info['path'] . 'index.html', '' );
+			}
+
+			return apply_filters( 'uag_get_upload_dir', $dir_info );
+		}
+		/**
+		 * Checks to see if the site has SSL enabled or not.
+		 *
+		 * @since x.x.x
+		 * @return bool
+		 */
+		public static function is_ssl() {
+			if ( is_ssl() ) {
+				return true;
+			} elseif ( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) {
+				return true;
+			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+				return true;
+			}
+			return false;
+		}
+
+		/**
+		 * Returns an array of paths for the CSS and JS assets
+		 * of the current post.
+		 *
+		 * @param  var $data    Gets the CSS\JS for the current Page.
+		 * @param  var $type    Gets the CSS\JS type.
+		 * @param  var $timestamp Timestamp.
+		 * @since x.x.x
+		 * @return array
+		 */
+		public static function get_asset_info( $data, $type, $timestamp ) {
+
+			$post_id     = get_the_ID();
+			$uploads_dir = self::get_upload_dir();
+			$css_suffix  = 'uag-style';
+			$js_suffix   = 'uag-script';
+			$info        = array();
+
+			if ( ! empty( $data ) && 'css' === $type ) {
+
+				$info['css']     = $uploads_dir['path'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
+				$info['css_url'] = $uploads_dir['url'] . $css_suffix . '-' . $post_id . '-' . $timestamp . '.css';
+
+			} elseif ( ! empty( $data ) && 'js' === $type ) {
+
+				$info['js']     = $uploads_dir['path'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
+				$info['js_url'] = $uploads_dir['url'] . $js_suffix . '-' . $post_id . '-' . $timestamp . '.js';
+
+			}
+
+			return $info;
+		}
+		/**
+		 * Creates css and js files.
+		 *
+		 * @param  var $style_data    Gets the CSS\JS for the current Page.
+		 * @param  var $type    Gets the CSS\JS type.
+		 * @since  x.x.x
+		 */
+		public static function file_write( $style_data, $type ) {
+			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
+
+			$var = ( 'css' === $type ) ? 'css' : 'js';
+
+			if ( '' === $post_timestamp || false === $post_timestamp ) {
+
+				// File not created yet.
+				$date      = new DateTime();
+				$timestamp = $date->getTimestamp();
+
+				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
+
+				// Create a new file.
+				$handle = fopen( $assets_info[ $var ], 'a' );
+				file_put_contents( $assets_info[ $var ], $style_data );
+				fclose( $handle );
+				// Update the post meta.
+				update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+
+				if ( is_array( self::$css_file_handler ) ) {
+					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
+				} else {
+					self::$css_file_handler = $assets_info;
+				}
+
+			} else {
+
+				// File already created.
+				$timestamp   = $post_timestamp;
+				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
+				$handle      = fopen( $assets_info[ $var ], 'r' );
+				$old_data    = file_get_contents( $assets_info[ $var ] );
+
+				if ( $old_data !== $style_data ) {
+
+					// File needs a change in content.
+					$date            = new DateTime();
+					$new_timestamp   = $date->getTimestamp();
+					$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
+
+					// Create a new file.
+					$new_handle = fopen( $new_assets_info[ $var ], 'a' );
+					file_put_contents( $new_assets_info[ $var ], $style_data );
+					fclose( $new_handle );
+
+					// Update the post meta.
+					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
+					// Delete old file.
+					// var_dump('vrunda');
+					// var_dump($assets_info[ $var ]);
+					// var_dump('kansara');
+					// var_dump( file_exists( $assets_info[ $var ] ) );
+					wp_delete_file( $assets_info[ $var ] );
+					if ( is_array( self::$css_file_handler ) ) {
+						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
+					} else {
+						self::$css_file_handler = $new_assets_info;
+					}
+				} else {
+
+					// Do nothing.
+					if ( is_array( self::$css_file_handler ) ) {
+						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
+					} else {
+						self::$css_file_handler = $assets_info;
+					}
+				}
+			}
 		}
 	}
 
