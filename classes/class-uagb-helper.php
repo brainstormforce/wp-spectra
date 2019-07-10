@@ -118,8 +118,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp', array( $this, 'generate_stylesheet' ), 10 );
 			add_action( 'wp', array( $this, 'generate_script' ), 11 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
-			//add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-			//add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			// add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			// add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 		}
 
 		/**
@@ -152,7 +152,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$file_handler = self::$css_file_handler;
 
-			//echo '<xmp>'; print_r($file_handler); echo '</xmp>';
+			// echo '<xmp>'; print_r($file_handler); echo '</xmp>';
 
 			if ( isset( $file_handler['css_url'] ) ) {
 				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
@@ -172,7 +172,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			//self::file_write( self::$script, 'js' );
+			// self::file_write( self::$script, 'js' );
 
 			ob_start();
 			?>
@@ -194,7 +194,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			self::$stylesheet = str_replace( '#CONTENT_WIDTH#', $content_width . 'px', self::$stylesheet );
 
-			//self::file_write( self::$stylesheet, 'css' );
+			// self::file_write( self::$stylesheet, 'css' );
 
 			ob_start();
 			?>
@@ -1327,7 +1327,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
-			unlink( $combined_path );
+			wp_delete_file( $combined_path );
 
 			$handle = fopen( $combined_path, 'a' );
 
@@ -1351,7 +1351,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_upload_dir() {
 
-			$wp_info  = wp_upload_dir( null, false );
+			$wp_info = wp_upload_dir( null, false );
 
 			$dir_name = basename( UAGB_DIR );
 			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
@@ -1457,7 +1457,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				} else {
 					self::$css_file_handler = $assets_info;
 				}
-
 			} else {
 
 				// File already created.
