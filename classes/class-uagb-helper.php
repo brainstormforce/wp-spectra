@@ -1444,16 +1444,22 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
 
-				// Create a new file.
-				$handle = fopen( $assets_info[ $var ], 'a' );
-				file_put_contents( $assets_info[ $var ], $style_data );
-				fclose( $handle );
+				if ( isset( $assets_info[ $var ] ) && file_exists( $assets_info[ $var ] ) ) {
 
-				// Update the post meta.
-				update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+					// Create a new file.
+					$handle = fopen( $assets_info[ $var ], 'a' );
+					file_put_contents( $assets_info[ $var ], $style_data );
+					fclose( $handle );
 
-				if ( is_array( self::$css_file_handler ) ) {
-					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
+					// Update the post meta.
+					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+
+					if ( is_array( self::$css_file_handler ) ) {
+						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
+					} else {
+						self::$css_file_handler = $assets_info;
+					}
+
 				} else {
 					self::$css_file_handler = $assets_info;
 				}
