@@ -4784,7 +4784,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$js = 'jQuery( document ).ready(function() { ' .
 					 'UAGBTableOfContents._run( ' . json_encode( $attr ) . ', "'. $selector .'" ); '.
-				'})';
+				'});';
 
 			return $js;
 			// @codingStandardsIgnoreEnd.
