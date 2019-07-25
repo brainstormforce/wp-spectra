@@ -1703,7 +1703,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			foreach ( $attr['socials'] as $key => $social ) {
 
 				$social['icon_color'] = ( isset( $social['icon_color'] ) ) ? $social['icon_color'] : '';
+				$social['icon_bg_color'] = ( isset( $social['icon_bg_color'] ) ) ? $social['icon_bg_color'] : '';		
 				$social['icon_hover_color'] = ( isset( $social['icon_hover_color'] ) ) ? $social['icon_hover_color'] : '';
+				$social['icon_bg_hover_color'] = ( isset( $social['icon_bg_hover_color'] ) ) ? $social['icon_bg_hover_color'] : '';
 
 				if ( $attr['social_count'] <= $key ) {
 					break;
