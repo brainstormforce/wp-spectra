@@ -71,6 +71,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 				self::save_settings();
 			}
+
+			add_filter('rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
 		}
 
 		/**
@@ -457,6 +459,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
 				)
 			);
+		}
+
+		/**
+		 * Rank Math SEO filter to add kb-elementor to the TOC list.
+		 *
+		 * @param array TOC plugins.
+		 */
+		public static function toc_plugin( $plugins ) {
+			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
+    	return $plugins;
 		}
 	}
 
