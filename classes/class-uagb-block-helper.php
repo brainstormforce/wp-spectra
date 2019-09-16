@@ -2714,9 +2714,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-radius" => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 					"border-style"  => $attr['borderStyle'],
 				),
-				" .uagb-post__text .uagb-post__cta:hover" => array(
-					"border-color"=> $attr['borderHColor']
-				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
 					"font-size"     => UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSizeType'] ),
@@ -2727,7 +2724,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
 					"color"=> $attr['ctaHColor'],
-					"background"=> $attr['ctaBgHColor']
+					"background"=> $attr['ctaBgHColor'],
+					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta:hover a" => array(
 					"color"=> $attr['ctaHColor']
