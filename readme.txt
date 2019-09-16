@@ -162,7 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post - Border Color not being applied on hover.
 * Fix: Post - Invalid Font Family being applied issue.
 * Fix: Post - Added {$attributes} parameter to the Query filter.
-* Fix: Advanced Columns - Nested Columns causing issue for stacking options.
+* Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
 
 = 1.13.6 =
 * Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.
