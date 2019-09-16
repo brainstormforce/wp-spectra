@@ -305,6 +305,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
             $name = $block['blockName'];
             $css  = array();
+            $block_id = '';
 
             if( ! isset( $name ) ) {
                 return;
@@ -315,6 +316,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 if ( isset( $blockattr['block_id'] ) ) {
                     $block_id = $blockattr['block_id'];
                 }
+            }
+
+            if ( '' === $block_id ) {
+            	return;
             }
 
             self::$current_block_list[] = $name;
@@ -1010,7 +1015,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
-			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
+			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
 
 			return new WP_Query( $query_args );
 		}
