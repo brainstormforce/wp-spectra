@@ -1010,7 +1010,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
-			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
+			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
 
 			return new WP_Query( $query_args );
 		}
