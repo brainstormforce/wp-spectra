@@ -156,6 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.6.1 =
+* New: Rank Math SEO compatibility.
 * Fix: Table of Contents - JS issue with Social Share.
 
 = 1.13.6 =
