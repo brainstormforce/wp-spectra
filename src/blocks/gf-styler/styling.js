@@ -159,6 +159,23 @@ function styling( props ) {
 			"line-height"      : generateCSSUnit( inputLineHeight, inputLineHeightType ),
 			"text-align"       : align,
 		},
+		" input[type=button]" :{
+
+			"color"            : buttonTextColor,
+			"background-color" : buttonBgColor,
+			"font-size"        : generateCSSUnit( buttonFontSize, buttonFontSizeType ),
+			"font-family"      : buttonFontFamily,
+			"font-weight"      : buttonFontWeight,
+			"line-height"      : generateCSSUnit( buttonLineHeight, buttonLineHeightType ),
+			"border-color"     : buttonBorderColor,
+			"border-style"     : buttonBorderStyle,
+			"border-width"     : generateCSSUnit( buttonBorderWidth, "px" ),
+			"border-radius"    : generateCSSUnit( buttonBorderRadius, buttonBorderRadiusType ),
+			"padding-left"     : generateCSSUnit( buttonHrPadding, "px" ),
+			"padding-right"    : generateCSSUnit( buttonHrPadding, "px" ),
+			"padding-top"      : generateCSSUnit( buttonVrPadding, "px" ),
+			"padding-bottom"   : generateCSSUnit( buttonVrPadding, "px" )
+		},
 		" select" :{
 			"background-color" : fieldBgColor,
 			"border-style"     : fieldBorderStyle,
