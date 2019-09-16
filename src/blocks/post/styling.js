@@ -169,9 +169,6 @@ function styling( props, id ) {
 			"border-color": borderColor,
 			"border-style": borderStyle,
 		},
-		" .uagb-post__text .uagb-post__cta:hover": {
-			"border-color": borderHColor,
-		},
 		" .uagb-post__text .uagb-post__cta a": {
 			"color": ctaColor,
 			"font-size": generateCSSUnit( ctaFontSize, ctaFontSizeType ),
@@ -179,7 +176,8 @@ function styling( props, id ) {
 		},
 		" .uagb-post__text .uagb-post__cta:hover": {
 			"color": ctaHColor,
-			"background": ctaBgHColor
+			"background": ctaBgHColor,
+			"border-color": borderHColor,
 		},
 		" .uagb-post__text .uagb-post__cta:hover a": {
 			"color": ctaHColor
