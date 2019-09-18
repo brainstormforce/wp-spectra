@@ -87,6 +87,7 @@ class UAGBPostGrid extends Component {
 		// Caching all attributes.
 		const {
 			block_id,
+			displayPostTitle,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -489,6 +490,11 @@ class UAGBPostGrid extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( "Show Title" ) }
+						checked={ displayPostTitle }
+						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
+					/>
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }

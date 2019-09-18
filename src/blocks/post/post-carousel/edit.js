@@ -95,6 +95,7 @@ class UAGBPostCarousel extends Component {
 		} = this.props
 		const {
 			block_id,
+			displayPostTitle,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -575,6 +576,11 @@ class UAGBPostCarousel extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( "Show Title" ) }
+						checked={ displayPostTitle }
+						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
+					/>
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }

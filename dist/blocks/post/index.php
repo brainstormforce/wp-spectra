@@ -290,6 +290,10 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
+				'displayPostTitle'       => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
 				'displayPostComment'      => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -661,6 +665,10 @@ function uagb_register_blocks() {
 					'default' => 25,
 				),
 				'displayPostAuthor'       => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'displayPostTitle'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -1072,6 +1080,10 @@ function uagb_register_blocks() {
 					'default' => 25,
 				),
 				'displayPostAuthor'       => array(
+					'type'    => 'boolean',
+					'default' => true,
+				),
+				'displayPostTitle'       => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -1612,6 +1624,11 @@ function uagb_render_image( $attributes ) {
  * @since 0.0.1
  */
 function uagb_render_title( $attributes ) {
+
+	if ( ! $attributes['displayPostTitle'] ) {
+		return;
+	}
+
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
