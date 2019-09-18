@@ -79,6 +79,7 @@ class UAGBPostMasonry extends Component {
 			taxonomyList
 		} = this.props
 		const {
+			displayPostTitle,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
@@ -472,6 +473,11 @@ class UAGBPostMasonry extends Component {
 					}
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
+					<ToggleControl
+						label={ __( "Show Title" ) }
+						checked={ displayPostTitle }
+						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
+					/>
 					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
