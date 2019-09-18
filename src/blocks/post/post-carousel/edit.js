@@ -3,8 +3,6 @@
  */
 
 import get from "lodash/get"
-import isUndefined from "lodash/isUndefined"
-import pickBy from "lodash/pickBy"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 

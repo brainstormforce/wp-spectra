@@ -1,5 +1,4 @@
 const { dateI18n, format, __experimentalGetSettings } = wp.date
-import pickBy from "lodash/pickBy"
 
 class Meta extends React.Component {
 
