@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { setAttributes, attributes, className, latestPosts, block_id } = this.props
+		const { setAttributes, attributes, className, latestPosts, block_id, categoriesList } = this.props
 
 		const {
 			columns,
@@ -120,7 +120,7 @@ class Blog extends React.Component {
 					<FeaturedImage post={post} attributes={attributes} />
 					<div className="uagb-post__text">
 						<Title post={post} attributes={attributes} />
-						<Meta post={post} attributes={attributes} />
+						<Meta post={post} attributes={attributes} categoriesList={categoriesList} />
 						<Excerpt post={post} attributes={attributes} />
 						<Button post={post} attributes={attributes} />
 					</div>

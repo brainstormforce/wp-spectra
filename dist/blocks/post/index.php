@@ -1695,10 +1695,20 @@ function uagb_render_meta_taxonomy( $attributes ) {
 	if ( ! $attributes['displayPostTaxonomy'] ) {
 		return;
 	}
+	global $post;
+
+	$terms = get_the_terms( $post->ID, $attributes['taxonomyType'] );
+	if ( is_wp_error( $terms ) ) {
+		return;
+	}
+
+	if ( ! isset( $terms[0] ) ) {
+		return;
+	}
 	?>
-	<span class="uagb-post__comment">
+	<span class="uagb-post__taxonomy">
 		<span class="dashicons-tag dashicons"></span>
-		<?php comments_number(); ?>
+		<?php echo $terms[0]->name; ?>
 	</span>
 	<?php
 }

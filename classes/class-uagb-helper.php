@@ -1088,6 +1088,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					continue;
 				}
 
+				if ( 'attachment' === $post_type->name ) {
+					continue;
+				}
+
 				$options[] = array(
 					'value' => $post_type->name,
 					'label' => $post_type->label,

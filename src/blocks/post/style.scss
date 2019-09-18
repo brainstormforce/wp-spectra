@@ -41,6 +41,7 @@
 
 	.uagb-post__author span,
 	.uagb-post__comment span,
+	.uagb-post__taxonomy span,
 	.uagb-post__date span {
 		font-size: inherit;
 		line-height: inherit;
@@ -140,7 +141,8 @@
 		}
 	}
 
-	.uagb-post__comment {
+	.uagb-post__comment,
+	.uagb-post__taxonomy {
 		display: inline-block;
 	}
 
