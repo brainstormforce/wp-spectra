@@ -159,9 +159,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Rank Math SEO compatibility.
 * Fix: Table of Contents - JS issue with Social Share.
 * Fix: Typography - Decimal values allowed for the Font Sizes.
+* Fix: Post - Added {$attributes} parameter to the Query filter.
 * Fix: Post - Border Color not being applied on hover.
 * Fix: Post - Invalid Font Family being applied issue.
-* Fix: Post - Added {$attributes} parameter to the Query filter.
+* Fix: Post - Seo analysis tool scan timed out issue.
 * Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
 
 = 1.13.6 =

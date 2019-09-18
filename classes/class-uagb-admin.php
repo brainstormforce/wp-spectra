@@ -464,7 +464,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.
 		 *
-		 * @param array TOC plugins.
+		 * @param array $plugins TOC plugins.
 		 */
 		public static function toc_plugin( $plugins ) {
 			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';

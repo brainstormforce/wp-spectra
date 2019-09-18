@@ -107,8 +107,7 @@ function uagb_post_block_add_script() {
 			$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
 
 			?>
-			<script type="text/javascript" id="
-			++  <?php echo $key; ?>">
+			<script type="text/javascript" id="<?php echo $key; ?>">
 				( function( $ ) {
 					var cols = parseInt( '<?php echo $value['columns']; ?>' );
 					var $scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
