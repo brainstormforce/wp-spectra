@@ -294,6 +294,10 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
+				'displayPostTaxonomy'     => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 				'displayPostImage'        => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -663,6 +667,10 @@ function uagb_register_blocks() {
 				'displayPostComment'      => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'displayPostTaxonomy'     => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 				'displayPostImage'        => array(
 					'type'    => 'boolean',
@@ -1070,6 +1078,10 @@ function uagb_register_blocks() {
 				'displayPostComment'      => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'displayPostTaxonomy'     => array(
+					'type'    => 'boolean',
+					'default' => false,
 				),
 				'displayPostImage'        => array(
 					'type'    => 'boolean',
@@ -1611,6 +1623,87 @@ function uagb_render_title( $attributes ) {
 }
 
 /**
+ * Render Post Meta - Author HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since x.x.x
+ */
+function uagb_render_meta_author( $attributes ) {
+
+	if ( ! $attributes['displayPostAuthor'] ) {
+		return;
+	}
+	?>
+	<span class="uagb-post__author">
+		<span class="dashicons-admin-users dashicons"></span>
+		<?php the_author_posts_link(); ?>
+	</span>
+	<?php
+}
+
+/**
+ * Render Post Meta - Date HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since x.x.x
+ */
+function uagb_render_meta_date( $attributes ) {
+
+	if ( ! $attributes['displayPostDate'] ) {
+		return;
+	}
+	global $post;
+	?>
+	<time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date">
+		<span class="dashicons-calendar dashicons"></span>
+		<?php echo esc_html( get_the_date( '', $post->ID ) ); ?>
+	</time>
+	<?php
+}
+
+/**
+ * Render Post Meta - Comment HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since x.x.x
+ */
+function uagb_render_meta_comment( $attributes ) {
+
+	if ( ! $attributes['displayPostComment'] ) {
+		return;
+	}
+	?>
+	<span class="uagb-post__comment">
+		<span class="dashicons-admin-comments dashicons"></span>
+		<?php comments_number(); ?>
+	</span>
+	<?php
+}
+
+/**
+ * Render Post Meta - Comment HTML.
+ *
+ * @param array $attributes Array of block attributes.
+ *
+ * @since x.x.x
+ */
+function uagb_render_meta_taxonomy( $attributes ) {
+
+	if ( ! $attributes['displayPostTaxonomy'] ) {
+		return;
+	}
+	?>
+	<span class="uagb-post__comment">
+		<span class="dashicons-tag dashicons"></span>
+		<?php comments_number(); ?>
+	</span>
+	<?php
+}
+
+/**
  * Render Post Meta HTML.
  *
  * @param array $attributes Array of block attributes.
@@ -1621,15 +1714,37 @@ function uagb_render_meta( $attributes ) {
 	global $post;
 	// @codingStandardsIgnoreStart
 	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
+
+	$meta_sequence = array( 'author', 'date', 'comment', 'taxonomy' );
+	$meta_sequence = apply_filters( "uagb_single_post_meta_sequence_{$attributes['post_type']}", $meta_sequence, get_the_ID(), $attributes );
 	?>
-	<div class="uagb-post-grid-byline"><?php if ( $attributes['displayPostAuthor'] ) {
-		?><span class="uagb-post__author"><span class="dashicons-admin-users dashicons"></span><?php the_author_posts_link(); ?></span><?php }
-		if ( $attributes['displayPostDate'] ) {
-																?><time datetime="<?php echo esc_attr( get_the_date( 'c', $post->ID ) ); ?>" class="uagb-post__date"><span class="dashicons-calendar dashicons"></span><?php echo esc_html( get_the_date( '', $post->ID ) ); ?></time><?php }
-		if ( $attributes['displayPostComment'] ) {
-																?><span class="uagb-post__comment"><span class="dashicons-admin-comments dashicons"></span><?php comments_number();
-?></span><?php }
-		?></div>
+	<div class="uagb-post-grid-byline">
+		<?php
+		foreach ( $meta_sequence as $key => $sequence ) {
+			switch ( $sequence ) {
+				case 'author':
+					uagb_render_meta_author( $attributes );
+					break;
+
+				case 'date':
+					uagb_render_meta_date( $attributes );
+					break;
+
+				case 'comment':
+					uagb_render_meta_comment( $attributes );
+					break;
+
+				case 'taxonomy':
+					uagb_render_meta_taxonomy( $attributes );
+					break;
+				
+				default:
+					break;
+			}
+		}
+		?>
+	
+	</div>
 	<?php
 	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	// @codingStandardsIgnoreEnd

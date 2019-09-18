@@ -94,6 +94,7 @@ class UAGBPostGrid extends Component {
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
+			displayPostTaxonomy,
 			imgSize,
 			imgPosition,
 			displayPostLink,
@@ -506,6 +507,11 @@ class UAGBPostGrid extends Component {
 						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
+						label={ __( "Show Taxonomy" ) }
+						checked={ displayPostTaxonomy }
+						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
+					/>
+					<ToggleControl
 						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
@@ -672,7 +678,7 @@ class UAGBPostGrid extends Component {
 						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
 					/>
 
-					{ ( displayPostAuthor || displayPostDate || displayPostComment ) && <Fragment>
+					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
