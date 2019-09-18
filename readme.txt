@@ -158,6 +158,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.13.6.1 =
 * New: Rank Math SEO compatibility.
 * Improvement: Post - Show Category option added.
+* Improvement - Filter added to disable redirect on activation
 * Fix: Table of Contents - JS issue with Social Share.
 * Fix: Typography - Decimal values allowed for the Font Sizes.
 * Fix: Post - Added {$attributes} parameter to the Query filter.
