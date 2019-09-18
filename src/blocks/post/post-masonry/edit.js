@@ -1,9 +1,6 @@
 /**
  * External dependencies
  */
-
-import isUndefined from "lodash/isUndefined"
-import pickBy from "lodash/pickBy"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 // Import all of our Text Options requirements.
@@ -87,6 +84,7 @@ class UAGBPostMasonry extends Component {
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
+			displayPostTaxonomy,
 			imgSize,
 			imgPosition,
 			displayPostLink,
@@ -490,6 +488,11 @@ class UAGBPostMasonry extends Component {
 						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
 					/>
 					<ToggleControl
+						label={ __( "Show Taxonomy" ) }
+						checked={ displayPostTaxonomy }
+						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
+					/>
+					<ToggleControl
 						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
@@ -655,7 +658,7 @@ class UAGBPostMasonry extends Component {
 						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
 					/>
 
-					{ ( displayPostAuthor || displayPostDate || displayPostComment ) &&	<Fragment>
+					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&	<Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
@@ -831,7 +834,7 @@ class UAGBPostMasonry extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} blogID={this.props.clientId} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList} />
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
