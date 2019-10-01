@@ -37,6 +37,10 @@ registerBlockType( "uagb/columns", {
 		return { "data-align": attributes.align }
 		return { "data-valign": attributes.vAlign }
 	},
+	supports: {
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator: true,
+	},
 	save : function( props ) {
 
 		const { attributes, className } = props
