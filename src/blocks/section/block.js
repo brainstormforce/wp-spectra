@@ -19,7 +19,7 @@ const {
 
 const {
 	InnerBlocks,
-} = wp.editor
+} = wp.blockEditor
 
 registerBlockType( "uagb/section", {
 	title: uagb_blocks_info.blocks["uagb/section"]["title"],

@@ -18,7 +18,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	PanelColorSettings,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

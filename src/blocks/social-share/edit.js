@@ -24,7 +24,7 @@ const {
 	PanelColorSettings,
 	MediaUpload,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

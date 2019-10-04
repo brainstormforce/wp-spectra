@@ -38,7 +38,7 @@ const {
 	BlockAlignmentToolbar,
 	BlockControls,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const { withSelect } = wp.data
 

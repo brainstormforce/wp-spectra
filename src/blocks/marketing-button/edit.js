@@ -31,7 +31,7 @@ const {
 	RichText,
 	PanelColorSettings,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
