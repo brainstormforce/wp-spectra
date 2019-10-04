@@ -34,7 +34,7 @@ const {
 	InspectorControls,
 	RichText,
 	ColorPalette,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

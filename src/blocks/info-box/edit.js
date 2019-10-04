@@ -35,7 +35,7 @@ const {
 	InspectorControls,
 	RichText,
 	MediaUpload
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

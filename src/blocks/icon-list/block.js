@@ -19,7 +19,7 @@ const {
 
 const {
 	RichText
-} = wp.editor
+} = wp.blockEditor
 
 registerBlockType( "uagb/icon-list", {
 	title: uagb_blocks_info.blocks["uagb/icon-list"]["title"],
