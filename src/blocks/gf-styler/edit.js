@@ -19,7 +19,7 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	withSelect

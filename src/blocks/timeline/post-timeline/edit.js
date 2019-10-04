@@ -59,7 +59,7 @@ const {
 	BlockAlignmentToolbar,
 	BlockControls,
 	PanelColorSettings,
-} = wp.editor
+} = wp.blockEditor
 
 let svg_icons = Object.keys( UAGBIcon )
 

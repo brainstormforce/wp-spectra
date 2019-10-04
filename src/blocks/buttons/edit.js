@@ -30,7 +30,7 @@ const {
 	PanelColorSettings,
 	URLInput,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
