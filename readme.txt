@@ -167,6 +167,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post - Border Color not being applied on hover.
 * Fix: Post - Invalid Font Family being applied issue.
 * Fix: Post - Seo analysis tool scan timed out issue.
+* Fix: Post Carousel - Console error fixed in editor.
+* Fix: Post Carousel - Carousel arrows issue with OceanWP theme.
 * Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
 
 = 1.13.6 =
