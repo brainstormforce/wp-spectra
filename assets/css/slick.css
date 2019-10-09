@@ -209,7 +209,7 @@
 }
 
 .uagb-slick-carousel ul.slick-dots li button:before {
-	font-family: 'slick';
+	font-family: none;
     font-size: 30px;
     line-height: 20px;
     position: absolute;
