@@ -260,6 +260,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				foreach ( $value as $j => $val ) {
 
+					if ( 'font-family' === $j && 'Default' === $val ) {
+						continue;
+					}
+
 					if ( ! empty( $val ) || 0 === $val ) {
 						$css .= $j . ': ' . $val . ';';
 					}
@@ -322,6 +326,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
             $name = $block['blockName'];
             $css  = array();
+            $block_id = '';
 
             if( ! isset( $name ) ) {
                 return;
@@ -332,6 +337,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 if ( isset( $blockattr['block_id'] ) ) {
                     $block_id = $blockattr['block_id'];
                 }
+            }
+
+            if ( '' === $block_id ) {
+            	return;
             }
 
             self::$current_block_list[] = $name;
@@ -1038,7 +1047,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
-			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args );
+			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
 
 			return new WP_Query( $query_args );
 		}
@@ -1108,6 +1117,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			foreach ( $post_types as $post_type ) {
 				if ( 'product' === $post_type->name ) {
+					continue;
+				}
+
+				if ( 'attachment' === $post_type->name ) {
 					continue;
 				}
 

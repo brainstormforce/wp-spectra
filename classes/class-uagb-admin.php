@@ -30,7 +30,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Activation Reset
 		 */
 		public static function activation_redirect() {
-			if ( get_option( '__uagb_do_redirect' ) ) {
+			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
+			if ( $do_redirect ) {
 				update_option( '__uagb_do_redirect', false );
 				if ( ! is_multisite() ) {
 					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
@@ -71,6 +72,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 				self::save_settings();
 			}
+
+			add_filter( 'rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
 		}
 
 		/**
@@ -457,6 +460,16 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					'message' => __( 'Theme Successfully Activated', 'ultimate-addons-for-gutenberg' ),
 				)
 			);
+		}
+
+		/**
+		 * Rank Math SEO filter to add kb-elementor to the TOC list.
+		 *
+		 * @param array $plugins TOC plugins.
+		 */
+		public static function toc_plugin( $plugins ) {
+			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
+			return $plugins;
 		}
 	}
 

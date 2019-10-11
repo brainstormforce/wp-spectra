@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.2
-Stable tag: 1.13.6
+Stable tag: 1.13.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,24 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.13.6.1 =
+* New: Rank Math SEO compatibility.
+* Improvement: Post - Show/Hide Category option added.
+* Improvement: Post - Show/Hide Title option added.
+* Improvement: Social Share - Removed jQuery dependency for Social Share script.
+* Improvement - Filter added to disable redirect on activation
+* Improvement - Add support for EditorsKit navigator toolbar.
+* Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
+* Fix: Multi Buttons - Font Size not replicating on front end issue in few themes.
+* Fix: Post - Added {$attributes} parameter to the Query filter.
+* Fix: Post - Border Color not being applied on hover.
+* Fix: Post - Invalid Font Family being applied issue.
+* Fix: Post - Seo analysis tool scan timed out issue.
+* Fix: Post Carousel - Console error fixed in editor.
+* Fix: Post Carousel - Carousel arrows issue with OceanWP theme.
+* Fix: Table of Contents - JS issue with Social Share.
+* Fix: Typography - Decimal values allowed for the Font Sizes.
 
 = 1.13.6 =
 * Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.

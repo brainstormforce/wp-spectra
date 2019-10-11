@@ -3,8 +3,6 @@
  */
 
 import get from "lodash/get"
-import isUndefined from "lodash/isUndefined"
-import pickBy from "lodash/pickBy"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
 
@@ -44,7 +42,7 @@ const {
 	BlockControls,
 	ColorPalette,
 	RichText
-} = wp.editor
+} = wp.blockEditor
 
 const { withSelect } = wp.data
 
@@ -97,11 +95,13 @@ class UAGBPostCarousel extends Component {
 		} = this.props
 		const {
 			block_id,
+			displayPostTitle,
 			displayPostDate,
 			displayPostComment,
 			displayPostExcerpt,
 			displayPostAuthor,
 			displayPostImage,
+			displayPostTaxonomy,
 			imgSize,
 			imgPosition,
 			displayPostLink,
@@ -577,6 +577,11 @@ class UAGBPostCarousel extends Component {
 				</PanelBody>
 				<PanelBody title={ __( "Content" ) } initialOpen={ false }>
 					<ToggleControl
+						label={ __( "Show Title" ) }
+						checked={ displayPostTitle }
+						onChange={ ( value ) => setAttributes( { displayPostTitle: ! displayPostTitle } ) }
+					/>
+					<ToggleControl
 						label={ __( "Show Author" ) }
 						checked={ displayPostAuthor }
 						onChange={ ( value ) => setAttributes( { displayPostAuthor: ! displayPostAuthor } ) }
@@ -590,6 +595,11 @@ class UAGBPostCarousel extends Component {
 						label={ __( "Show Comment" ) }
 						checked={ displayPostComment }
 						onChange={ ( value ) => setAttributes( { displayPostComment: ! displayPostComment } ) }
+					/>
+					<ToggleControl
+						label={ __( "Show Taxonomy" ) }
+						checked={ displayPostTaxonomy }
+						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
 					/>
 					<ToggleControl
 						label={ __( "Show Excerpt" ) }
@@ -756,7 +766,7 @@ class UAGBPostCarousel extends Component {
 						lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
 						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
 					/>
-					{ ( displayPostAuthor || displayPostDate || displayPostComment ) && <Fragment>
+					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Meta" ) }</h2>
 						<TypographyControl
@@ -943,7 +953,7 @@ class UAGBPostCarousel extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId}/>
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList}/>
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }

@@ -1,6 +1,6 @@
 const {
 	RichText,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	createBlock

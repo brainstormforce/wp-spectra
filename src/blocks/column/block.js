@@ -18,7 +18,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	PanelColorSettings,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -968,7 +968,9 @@ registerBlockType( "uagb/column", {
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/columns" ],
 	supports: {
-		inserter: false
+		inserter: false,
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator: true,
 	},
 	attributes: {
 		block_id: {

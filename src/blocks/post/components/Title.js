@@ -15,12 +15,18 @@ class Title extends React.Component {
 			return null
 		}
 
-		return (
+		if ( attributes.displayPostTitle ) {
 
-			<Tag className={ "uagb-post__title" }>
-				<a href={ post.link } target={ target } rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
-			</Tag>
-		)
+			return (
+
+				<Tag className={ "uagb-post__title" }>
+					<a href={ post.link } target={ target } rel ="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( "(Untitled)" ) }</a>
+				</Tag>
+			)
+		} else {
+			return null
+		}
+
 	}
 }
 

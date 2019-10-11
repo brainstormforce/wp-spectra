@@ -40,7 +40,7 @@ const {
 	RichText,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

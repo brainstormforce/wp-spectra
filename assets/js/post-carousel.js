@@ -82,14 +82,14 @@
 
 // Set Carousel Height for Customiser.
 function uagb_carousel_height(  id ) {
-	var wrap            = $("#block-"+id)
+	var wrap            = jQuery("#block-"+id)
 	var scope = wrap.find(".wp-block-uagb-post-carousel").find( ".is-carousel" )
 	UAGBPostCarousel._setHeight( scope )
 }
 
 // Unset Carousel Height for Customiser.
 function uagb_carousel_unset_height(  id ) {
-	var wrap            = $("#block-"+id)
+	var wrap            = jQuery("#block-"+id)
 	var scope = wrap.find(".wp-block-uagb-post-carousel").find( ".is-carousel" )
 	UAGBPostCarousel._unSetHeight( scope )
 }
