@@ -290,7 +290,7 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'       => array(
+				'displayPostTitle'        => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -668,7 +668,7 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'       => array(
+				'displayPostTitle'        => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
@@ -1083,7 +1083,7 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'displayPostTitle'       => array(
+				'displayPostTitle'        => array(
 					'type'    => 'boolean',
 					'default' => true,
 				),
