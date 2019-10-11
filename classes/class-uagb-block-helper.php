@@ -4752,16 +4752,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {
+
 			$selector = '#uagb-social-share-' . $id;
-			$js       = 'jQuery( " ' . $selector . ' " ).find( ".uagb-ss__link" ).click(function(){ ' .
-					'var social_url = jQuery( this ).data( "href" ); ' .
+			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
+			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
+				ssLink[i].addEventListener( "click", function() {' .
+					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
 						'target = "_self";' .
 					'}' .
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
-				'});';
+				'});' . '}';
 
 			return $js;
 		}
