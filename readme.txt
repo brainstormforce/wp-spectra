@@ -161,15 +161,16 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Post - Show/Hide Title option added.
 * Improvement - Filter added to disable redirect on activation
 * Improvement - Add support for EditorsKit navigator toolbar.
-* Fix: Table of Contents - JS issue with Social Share.
-* Fix: Typography - Decimal values allowed for the Font Sizes.
+* Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
+* Fix: Multi Buttons - Font Size not replicating on front end issue in few themes.
 * Fix: Post - Added {$attributes} parameter to the Query filter.
 * Fix: Post - Border Color not being applied on hover.
 * Fix: Post - Invalid Font Family being applied issue.
 * Fix: Post - Seo analysis tool scan timed out issue.
 * Fix: Post Carousel - Console error fixed in editor.
 * Fix: Post Carousel - Carousel arrows issue with OceanWP theme.
-* Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
+* Fix: Table of Contents - JS issue with Social Share.
+* Fix: Typography - Decimal values allowed for the Font Sizes.
 
 = 1.13.6 =
 * Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.
