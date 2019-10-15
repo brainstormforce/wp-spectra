@@ -13,7 +13,7 @@ class TableOfContents extends Component {
 
 	componentDidMount() {
 		const getHeaderBlocks = () =>
-			select('core/editor')
+			select('core/block-editor')
 				.getBlocks()
 				.filter(block => block.name === 'core/heading' );
 
@@ -49,7 +49,7 @@ class TableOfContents extends Component {
 
 		const setHeaders = () => {
 			let a = [];
-			const headers = getData( select('core/editor').getBlocks(), a );
+			const headers = getData( select('core/block-editor').getBlocks(), a );
 
 			if( typeof headers != 'undefined' ) {
 				headers.forEach((heading, key) => {
