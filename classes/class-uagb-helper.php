@@ -115,8 +115,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			self::$block_list = UAGB_Config::get_block_attributes();
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ) );
-			add_action( 'wp', array( $this, 'generate_stylesheet' ), 10 );
-			add_action( 'wp', array( $this, 'generate_script' ), 11 );
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
+			add_action( 'wp', array( $this, 'generate_script' ), 100 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			// add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			// add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
