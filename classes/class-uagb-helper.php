@@ -1450,15 +1450,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$var = ( 'css' === $type ) ? 'css' : 'js';
 
 			if ( '' === $post_timestamp || false === $post_timestamp ) {
-
 				// File not created yet.
 				$date      = new DateTime();
 				$timestamp = $date->getTimestamp();
 
 				$assets_info = self::get_asset_info( $style_data, $type, $timestamp );
 
-				if ( isset( $assets_info[ $var ] ) && file_exists( $assets_info[ $var ] ) ) {
-
+				if ( isset( $assets_info[ $var ] ) ) {
 					// Create a new file.
 					$handle = fopen( $assets_info[ $var ], 'a' );
 					file_put_contents( $assets_info[ $var ], $style_data );
@@ -1472,7 +1470,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					} else {
 						self::$css_file_handler = $assets_info;
 					}
-
 				} else {
 					self::$css_file_handler = $assets_info;
 				}
