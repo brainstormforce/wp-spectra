@@ -327,7 +327,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $name = $block['blockName'];
             $css  = array();
             $block_id = '';
-			//echo '<xmp>'; print_r($name); echo '</xmp>';
 
             if( ! isset( $name ) ) {
                 return;
