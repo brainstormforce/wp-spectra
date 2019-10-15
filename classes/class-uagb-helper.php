@@ -327,6 +327,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $name = $block['blockName'];
             $css  = array();
             $block_id = '';
+			//echo '<xmp>'; print_r($name); echo '</xmp>';
 
             if( ! isset( $name ) ) {
                 return;
@@ -337,10 +338,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 if ( isset( $blockattr['block_id'] ) ) {
                     $block_id = $blockattr['block_id'];
                 }
-            }
-
-            if ( '' === $block_id ) {
-            	return;
             }
 
             self::$current_block_list[] = $name;
