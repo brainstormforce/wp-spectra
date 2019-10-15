@@ -170,6 +170,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post - Seo analysis tool scan timed out issue.
 * Fix: Post Carousel - Console error fixed in editor.
 * Fix: Post Carousel - Carousel arrows issue with OceanWP theme.
+* Fix: Post Masonry - Masonry not working in Safari browser issue.
 * Fix: Table of Contents - JS issue with Social Share.
 * Fix: Typography - Decimal values allowed for the Font Sizes.
 
