@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.6.1 =
 * New: Rank Math SEO compatibility.
+* Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
 * Improvement: Post - Show/Hide Category option added.
 * Improvement: Post - Show/Hide Title option added.
 * Improvement: Social Share - Removed jQuery dependency for Social Share script.
