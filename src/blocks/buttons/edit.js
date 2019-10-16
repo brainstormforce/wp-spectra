@@ -709,7 +709,7 @@ class UAGBMultiButtonEdit extends Component {
 											onChange={ value => {
 												this.saveButton( { label: value }, index )
 											} }
-											formattingControls={ [ "bold", "italic", "strikethrough" ] }
+											allowedFormats={ [ "bold", "italic", "strikethrough" ] }
 											className='uagb-button__link'
 											rel ="noopener noreferrer"
 											keepPlaceholderOnFocus

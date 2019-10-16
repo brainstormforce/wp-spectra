@@ -82,6 +82,7 @@ class UAGBinfoBox extends Component {
 		this.onSelectImage    = this.onSelectImage.bind( this )
 		this.onRemoveImage    = this.onRemoveImage.bind( this )
 		this.getCtaicon  	  = this.getCtaicon.bind(this)
+		this.getImageSize  	  = this.getImageSize.bind(this)
 	}
 
 	getIfbIcon(value) {
@@ -287,7 +288,7 @@ class UAGBinfoBox extends Component {
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
-		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=="" ){
+		if( attributes.iconImage ){
 			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 
