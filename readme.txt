@@ -156,7 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.6.1 =
-* New: Rank Math SEO compatibility.
+* Improvement: Rank Math SEO compatibility.
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
 * Improvement: Post - Show/Hide Category option added.
 * Improvement: Post - Show/Hide Title option added.
@@ -174,6 +174,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Masonry - Masonry not working in Safari browser issue.
 * Fix: Table of Contents - JS issue with Social Share.
 * Fix: Typography - Decimal values allowed for the Font Sizes.
+* Deprecated: Advanced Columns - Deprecated Content Alignment option.
 
 = 1.13.6 =
 * Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.
