@@ -100,6 +100,10 @@ class TableOfContents extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
+		console.log(prevProps.headers);
+		console.log(prevState.headers);
+		console.log(this.state.headers);
+		console.log((JSON.stringify(prevProps.headers) !== JSON.stringify(prevState.headers)));
 		if (
 			JSON.stringify(prevProps.headers) !==
 			JSON.stringify(prevState.headers)
