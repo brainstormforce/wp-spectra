@@ -109,12 +109,14 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
-		var new_img = this.getImageSize(media["sizes"])
-		imageSizeOptions = new_img
+		if ( media["sizes"] ) {
+			var new_img = this.getImageSize(media["sizes"])
+			imageSizeOptions = new_img
+		}
 		setAttributes( { iconImage: media } )
 	}
 
-	getImageSize(sizes) {
+	getImageSize( sizes ) {
 		var size_arr = []
 		$.each(sizes, function (index, item) {
 		  var name = index
@@ -288,7 +290,7 @@ class UAGBinfoBox extends Component {
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
-		if( attributes.iconImage ){
+		if( iconImage && iconImage["sizes"] ){
 			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 
