@@ -119,7 +119,6 @@ class UAGBinfoBox extends Component {
 	}
 
 	getImageSize( sizes ) {
-		console.log(sizes);
 		var size_arr = []
 		$.each(sizes, function (index, item) {
 		  var name = index
