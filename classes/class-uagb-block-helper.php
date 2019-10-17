@@ -4524,6 +4524,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
 				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" => array(
+					"margin-left" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-right" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-top" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-bottom" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),

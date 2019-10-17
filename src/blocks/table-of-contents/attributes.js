@@ -142,6 +142,37 @@ const attributes = {
 	hPaddingMobile :{
 		type: "number",
 	},
+	// Margin
+	vMarginDesktop :{
+		type: "number",
+	},
+	hMarginDesktop :{
+		type: "number",
+	},
+	vMarginTablet :{
+		type: "number",
+	},
+	hMarginTablet :{
+		type: "number",
+	},
+	vMarginMobile :{
+		type: "number",
+	},
+	hMarginMobile :{
+		type: "number",
+	},
+	marginTypeDesktop : {
+		type    : "string",
+		default : "px",
+	},
+	marginTypeTablet : {
+		type    : "string",
+		default : "px",
+	},
+	marginTypeMobile : {
+		type    : "string",
+		default : "px",
+	},
 	headingBottom :{
 		type: "number"
 	},	
