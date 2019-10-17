@@ -161,6 +161,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Post - Show/Hide Category option added.
 * Improvement: Post - Show/Hide Title option added.
 * Improvement: Social Share - Removed jQuery dependency for Social Share script.
+* Improvement: Table of Contents - Margin option added.
 * Improvement - Filter added to disable redirect on activation
 * Improvement - Add support for EditorsKit navigator toolbar.
 * Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
