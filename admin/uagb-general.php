@@ -151,6 +151,58 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 				</div>
 				<?php } ?>
 				<div class="postbox">
+					<h2 class="hndle ast-normal-cusror">
+						<span class="dashicons dashicons-admin-page"></span>
+						<span>
+							<?php printf( esc_html( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</span>
+					</h2>
+					<div class="inside">
+						<p class="warning">
+						</p>
+							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'astra-sites' ); ?>
+						<p>
+						<?php
+						$file_generation_doc_link = esc_url( 'https://wpastra.com/astra-2-1/?utm_source=astra-pro-dashboard&utm_medium=astra-menu-page&utm_campaign=astra-pro-plugin' );
+						$a_tag_open  = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
+						$a_tag_close = '</a>';
+
+						printf(
+							/* translators: %1$s: a tag open. */
+							__( 'Please read %1$s this article %2$s to know more.', 'astra-addon' ),
+							$a_tag_open,
+							$a_tag_close
+						);
+						?>
+						</p>
+						<label for="astra_file_generation">
+							<?php
+
+							if ( /*'disable' === $allow_file_generation*/1 ) {
+								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else {
+								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
+							}
+							?>
+							<button class="button astra-beta-updates" id="astra_file_generation" data-value="<?php echo esc_attr( $allow_file_generation ); ?>">
+								<?php echo esc_html( $file_generation_string ); ?>
+							</button>
+						</label>
+							<!-- <div class="astra-refresh-assets-wrapper" style="<?php //echo ( 'disable' === $allow_file_generation ) ? 'display: none' : 'display: block'; ?>">
+								<p class="warning">
+									<?php //echo $refresh_assets_message; ?>
+								</p>
+
+								<label for="astra_refresh_assets">
+									<button class="button astra-refresh-assets" id="astra_refresh_assets">
+										<span class="ast-loader"></span>
+										<span class="ast-refresh-btn-text"><?php //echo $refresh_assets_button_text; ?></span>
+									</button>
+								</label>
+							</div> -->
+					</div>
+				</div>
+				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
 						<span><?php esc_html_e( 'Knowledge Base', 'ultimate-addons-for-gutenberg' ); ?></span>
