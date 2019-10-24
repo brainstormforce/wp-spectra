@@ -5,6 +5,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 $blocks    = UAGB_Helper::get_block_options();
 $kb_data   = UAGB_Helper::knowledgebase_data();
 $enable_kb = $kb_data['enable_knowledgebase'];
@@ -61,61 +65,61 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						<a class="uagb-reusable-block-link button button-primary" href="<?php echo admin_url( 'edit.php?post_type=wp_block' ); ?>" rel="noopener"> <?php esc_html_e( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ); ?> <span class="dashicons-controls-repeat dashicons"></span></a>
 					</div>
 				</h2>
-					<div class="uagb-list-section">
-						<?php
-						if ( is_array( $blocks ) && ! empty( $blocks ) ) :
-							?>
-							<ul class="uagb-widget-list">
-								<?php
-								foreach ( $blocks as $addon => $info ) {
+				<div class="uagb-list-section">
+					<?php
+					if ( is_array( $blocks ) && ! empty( $blocks ) ) :
+						?>
+						<ul class="uagb-widget-list">
+							<?php
+							foreach ( $blocks as $addon => $info ) {
 
-									$addon = str_replace( 'uagb/', '', $addon );
+								$addon = str_replace( 'uagb/', '', $addon );
 
-									if ( 'column' === $addon ) {
-										continue; }
+								if ( 'column' === $addon ) {
+									continue; }
 
-									$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';
-									$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
+								$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';
+								$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
 
-									$class = 'deactivate';
+								$class = 'deactivate';
+								$link  = array(
+									'link_class' => 'uagb-activate-widget',
+									'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+								);
+
+								if ( $info['is_activate'] ) {
+									$class = 'activate';
 									$link  = array(
-										'link_class' => 'uagb-activate-widget',
-										'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+										'link_class' => 'uagb-deactivate-widget',
+										'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
 									);
+								}
 
-									if ( $info['is_activate'] ) {
-										$class = 'activate';
-										$link  = array(
-											'link_class' => 'uagb-deactivate-widget',
-											'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
-										);
-									}
+								echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . $title_url . $anchor_target . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
 
-									echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . $title_url . $anchor_target . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
+								printf(
+									'<a href="%1$s" class="%2$s"> %3$s </a>',
+									( isset( $link['link_url'] ) && ! empty( $link['link_url'] ) ) ? esc_url( $link['link_url'] ) : '#',
+									esc_attr( $link['link_class'] ),
+									esc_html( $link['link_text'] )
+								);
+
+								if ( $info['is_activate'] && isset( $info['setting_url'] ) ) {
 
 									printf(
 										'<a href="%1$s" class="%2$s"> %3$s </a>',
-										( isset( $link['link_url'] ) && ! empty( $link['link_url'] ) ) ? esc_url( $link['link_url'] ) : '#',
-										esc_attr( $link['link_class'] ),
-										esc_html( $link['link_text'] )
+										esc_url( $info['setting_url'] ),
+										esc_attr( 'uagb-advanced-settings' ),
+										esc_html( $info['setting_text'] )
 									);
-
-									if ( $info['is_activate'] && isset( $info['setting_url'] ) ) {
-
-										printf(
-											'<a href="%1$s" class="%2$s"> %3$s </a>',
-											esc_url( $info['setting_url'] ),
-											esc_attr( 'uagb-advanced-settings' ),
-											esc_html( $info['setting_text'] )
-										);
-									}
-
-									echo '</div></li>';
 								}
-								?>
-							</ul>
-						<?php endif; ?>
-					</div>
+
+								echo '</div></li>';
+							}
+							?>
+						</ul>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 		<div class="postbox-container uagb-sidebar" id="postbox-container-1">
