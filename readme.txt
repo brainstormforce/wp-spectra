@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement - Filter added to disable redirect on activation
 * Improvement: Post - Show/Hide Category option added.
 * Improvement: Post - Show/Hide Title option added.
+* Improvement: Post - Filter for attributes.
 * Improvement: Price List - P and Span tag options added for Price List Title.
 * Improvement: Post Timeline - P and Span tag options added for Price List Title.
 * Improvement: Rank Math SEO compatibility.

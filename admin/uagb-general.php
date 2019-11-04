@@ -161,7 +161,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					<div class="inside">
 						<p class="warning">
 						</p>
-							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'astra-sites' ); ?>
+							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
 						<p>
 						<?php
 						$file_generation_doc_link = esc_url( '#' );
@@ -170,7 +170,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 
 						printf(
 							/* translators: %1$s: a tag open. */
-							__( 'Please read %1$s this article %2$s to know more.', 'astra-addon' ),
+							__( 'Please read %1$s this article %2$s to know more.', 'ultimate-addons-for-gutenberg' ),
 							$a_tag_open,
 							$a_tag_close
 						);

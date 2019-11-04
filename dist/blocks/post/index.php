@@ -235,6 +235,8 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		<?php
 		while ( $query->have_posts() ) {
 			$query->the_post();
+			// Filter to modify the attributes based on content requirement.
+			$attributes = apply_filters( 'uagb_post_alter_attributes', get_the_ID(), $attributes );
 			include 'single.php';
 		}
 			wp_reset_postdata();
