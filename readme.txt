@@ -168,6 +168,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Social Share - Removed jQuery dependency for Social Share script.
 * Improvement: Table of Contents - Margin option added.
 * Improvement: Testimonial - Enabled to add more than 10 testimonials.
+* Fix: Correctly added nonce to allow notice to be dismissed.
 * Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
 * Fix: Multi Buttons - Font Size not replicating on front end issue in few themes.
 * Fix: Post - Added {$attributes} parameter to the Query filter.
