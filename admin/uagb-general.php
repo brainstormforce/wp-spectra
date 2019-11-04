@@ -9,10 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$blocks    = UAGB_Helper::get_block_options();
-$kb_data   = UAGB_Helper::knowledgebase_data();
-$enable_kb = $kb_data['enable_knowledgebase'];
-$kb_url    = $kb_data['knowledgebase_url'];
+$blocks                = UAGB_Helper::get_block_options();
+$allow_file_generation = UAGB_Helper::allow_file_generation();
+$kb_data               = UAGB_Helper::knowledgebase_data();
+$enable_kb             = $kb_data['enable_knowledgebase'];
+$kb_url                = $kb_data['knowledgebase_url'];
 
 $support_data   = UAGB_Helper::support_data();
 $enable_support = $support_data['enable_support'];
@@ -150,6 +151,47 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</div>
 				</div>
 				<?php } ?>
+				<div class="postbox">
+					<h2 class="hndle ast-normal-cusror">
+						<span class="dashicons dashicons-admin-page"></span>
+						<span>
+							<?php printf( esc_html( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</span>
+					</h2>
+					<div class="inside">
+						<p class="warning">
+						</p>
+							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'astra-sites' ); ?>
+						<p>
+						<?php
+						$file_generation_doc_link = esc_url( '#' );
+						$a_tag_open               = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
+						$a_tag_close              = '</a>';
+
+						printf(
+							/* translators: %1$s: a tag open. */
+							__( 'Please read %1$s this article %2$s to know more.', 'astra-addon' ),
+							$a_tag_open,
+							$a_tag_close
+						);
+						?>
+						</p>
+						<label for="uag_file_generation">
+							<?php
+							if ( 'disabled' === $allow_file_generation ) {
+								$val                    = 'enabled';
+								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else {
+								$val                    = 'disabled';
+								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
+							}
+							?>
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
+								<?php echo esc_html( $file_generation_string ); ?>
+							</button>
+						</label>
+					</div>
+				</div>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>
