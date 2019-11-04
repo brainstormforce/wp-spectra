@@ -50,6 +50,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static $uag_flag = false;
 
 		/**
+		 * UAG File Generation Flag
+		 *
+		 * @since x.x.x
+		 * @var file_generation
+		 */
+		public static $file_generation = 'disabled';
+
+		/**
 		 * Enque Style and Script Variable
 		 *
 		 * @since x.x.x
@@ -116,14 +124,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			require( UAGB_DIR . 'classes/class-uagb-config.php' );
 			require( UAGB_DIR . 'classes/class-uagb-block-helper.php' );
 
-			self::$block_list = UAGB_Config::get_block_attributes();
+			self::$block_list      = UAGB_Config::get_block_attributes();
+			self::$file_generation = self::allow_file_generation();
 
 			add_action( 'wp_enqueue_scripts', array( $this, 'block_assets' ) );
 			add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
 			add_action( 'wp', array( $this, 'generate_script' ), 100 );
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
-			// add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
-			// add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
+			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
 		}
 
 		/**
@@ -154,13 +163,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 			}
 
-			$file_handler = self::$css_file_handler;
+			if ( 'enabled' === self::$file_generation ) {
+				$file_handler = self::$css_file_handler;
 
-			if ( isset( $file_handler['css_url'] ) ) {
-				wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
-			}
-			if ( isset( $file_handler['js_url'] ) ) {
-				wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
+				if ( isset( $file_handler['css_url'] ) ) {
+					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
+				}
+				if ( isset( $file_handler['js_url'] ) ) {
+					wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
+				}
 			}
 
 		}
@@ -169,6 +180,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Print the Script in footer.
 		 */
 		public function print_script() {
+
+			if ( 'enabled' === self::$file_generation ) {
+				return;
+			}
 
 			if ( is_null( self::$script ) || '' === self::$script ) {
 				return;
@@ -187,6 +202,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Print the Stylesheet in header.
 		 */
 		public function print_stylesheet() {
+
+			if ( 'enabled' === self::$file_generation ) {
+				return;
+			}
 
 			global $content_width;
 
@@ -1436,6 +1455,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			return $info;
 		}
+
 		/**
 		 * Creates css and js files.
 		 *
@@ -1525,6 +1545,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					self::$css_file_handler = $assets_info;
 				}
 			}
+		}
+
+		/**
+		 * Allow File Geranation flag.
+		 *
+		 * @since  x.x.x
+		 */
+		public static function allow_file_generation() {
+			return get_option( '_uagb_allow_file_generation', 'disabled' );
 		}
 	}
 

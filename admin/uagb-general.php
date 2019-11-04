@@ -9,10 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$blocks    = UAGB_Helper::get_block_options();
-$kb_data   = UAGB_Helper::knowledgebase_data();
-$enable_kb = $kb_data['enable_knowledgebase'];
-$kb_url    = $kb_data['knowledgebase_url'];
+$blocks                = UAGB_Helper::get_block_options();
+$allow_file_generation = UAGB_Helper::allow_file_generation();
+$kb_data               = UAGB_Helper::knowledgebase_data();
+$enable_kb             = $kb_data['enable_knowledgebase'];
+$kb_url                = $kb_data['knowledgebase_url'];
 
 $support_data   = UAGB_Helper::support_data();
 $enable_support = $support_data['enable_support'];
@@ -163,9 +164,9 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'astra-sites' ); ?>
 						<p>
 						<?php
-						$file_generation_doc_link = esc_url( 'https://wpastra.com/astra-2-1/?utm_source=astra-pro-dashboard&utm_medium=astra-menu-page&utm_campaign=astra-pro-plugin' );
-						$a_tag_open  = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
-						$a_tag_close = '</a>';
+						$file_generation_doc_link = esc_url( '#' );
+						$a_tag_open               = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
+						$a_tag_close              = '</a>';
 
 						printf(
 							/* translators: %1$s: a tag open. */
@@ -175,31 +176,20 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						);
 						?>
 						</p>
-						<label for="astra_file_generation">
+						<label for="uag_file_generation">
 							<?php
-
-							if ( /*'disable' === $allow_file_generation*/1 ) {
+							if ( 'disabled' === $allow_file_generation ) {
+								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
 							} else {
+								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
 							?>
-							<button class="button astra-beta-updates" id="astra_file_generation" data-value="<?php echo esc_attr( $allow_file_generation ); ?>">
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
 						</label>
-							<!-- <div class="astra-refresh-assets-wrapper" style="<?php //echo ( 'disable' === $allow_file_generation ) ? 'display: none' : 'display: block'; ?>">
-								<p class="warning">
-									<?php //echo $refresh_assets_message; ?>
-								</p>
-
-								<label for="astra_refresh_assets">
-									<button class="button astra-refresh-assets" id="astra_refresh_assets">
-										<span class="ast-loader"></span>
-										<span class="ast-refresh-btn-text"><?php //echo $refresh_assets_button_text; ?></span>
-									</button>
-								</label>
-							</div> -->
 					</div>
 				</div>
 				<div class="postbox">
