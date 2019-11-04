@@ -641,6 +641,8 @@ class UAGBTimeline extends Component {
 							{ value: "h4", label: __( "H4" ) },
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
+							{ value: "p", label: __( "P" ) },
+							{ value: "span", label: __( "SPAN" ) },
 						] }
 					/>
 

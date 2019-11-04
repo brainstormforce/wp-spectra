@@ -863,7 +863,7 @@ class UAGBtestimonial extends Component {
 							setAttributes( { test_item_count: newCount } )
 						} }
 						min={ 0 }
-						max={ 10 }
+						max={ 50 }
 						allowReset
 					/>
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
