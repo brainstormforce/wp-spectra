@@ -156,14 +156,19 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.13.6.1 =
-* Improvement: Rank Math SEO compatibility.
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
+* Improvement: Content Timeline - P and Span tag options added for Price List Title.
+* Improvement - EditorsKit navigator toolbar support.
+* Improvement - Filter added to disable redirect on activation
 * Improvement: Post - Show/Hide Category option added.
 * Improvement: Post - Show/Hide Title option added.
+* Improvement: Price List - P and Span tag options added for Price List Title.
+* Improvement: Post Timeline - P and Span tag options added for Price List Title.
+* Improvement: Rank Math SEO compatibility.
 * Improvement: Social Share - Removed jQuery dependency for Social Share script.
 * Improvement: Table of Contents - Margin option added.
-* Improvement - Filter added to disable redirect on activation
-* Improvement - Add support for EditorsKit navigator toolbar.
+* Improvement: Testimonial - Enabled to add more than 10 testimonials.
+* Improvement: Testimonial - Enabled to add more than 10 testimonials.
 * Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
 * Fix: Multi Buttons - Font Size not replicating on front end issue in few themes.
 * Fix: Post - Added {$attributes} parameter to the Query filter.
