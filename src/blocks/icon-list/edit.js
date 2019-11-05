@@ -31,7 +31,7 @@ const {
 	MediaUpload,
 	RichText,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,

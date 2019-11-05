@@ -18,7 +18,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	PanelColorSettings,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -280,73 +280,6 @@ export default class UAGBColumnEdit extends Component {
 											} }
 											min={ 0 }
 											max={ 100 }
-										/>
-									)
-								}
-
-								return <div>{ tabout }</div>
-							}
-						}
-					</TabPanel>
-					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
-						tabs={ [
-							{
-								name: "desktop",
-								title: <Dashicon icon="desktop" />,
-								className: "uagb-desktop-tab uagb-responsive-tabs",
-							},
-							{
-								name: "tablet",
-								title: <Dashicon icon="tablet" />,
-								className: "uagb-tablet-tab uagb-responsive-tabs",
-							},
-							{
-								name: "mobile",
-								title: <Dashicon icon="smartphone" />,
-								className: "uagb-mobile-tab uagb-responsive-tabs",
-							},
-						] }>
-						{
-							( tab ) => {
-								let tabout
-
-								if ( "mobile" === tab.name ) {
-									tabout = (
-										<SelectControl
-											label={ __( "Content Alignment" ) }
-											value={ alignMobile }
-											onChange={ ( value ) => setAttributes( { alignMobile: value } ) }
-											options={ [
-												{ value: "left", label: __( "Left" ) },
-												{ value: "center", label: __( "Center" ) },
-												{ value: "right", label: __( "Right" ) },
-											] }
-										/>
-									)
-								} else if ( "tablet" === tab.name ) {
-									tabout = (
-										<SelectControl
-											label={ __( "Content Alignment" ) }
-											value={ alignTablet }
-											onChange={ ( value ) => setAttributes( { alignTablet: value } ) }
-											options={ [
-												{ value: "left", label: __( "Left" ) },
-												{ value: "center", label: __( "Center" ) },
-												{ value: "right", label: __( "Right" ) },
-											] }
-										/>
-									)
-								} else {
-									tabout = (
-										<SelectControl
-											label={ __( "Content Alignment" ) }
-											value={ align }
-											onChange={ ( value ) => setAttributes( { align: value } ) }
-											options={ [
-												{ value: "left", label: __( "Left" ) },
-												{ value: "center", label: __( "Center" ) },
-												{ value: "right", label: __( "Right" ) },
-											] }
 										/>
 									)
 								}

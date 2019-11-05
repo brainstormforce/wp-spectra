@@ -5,6 +5,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 	/**
@@ -30,7 +34,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Activation Reset
 		 */
 		public static function activation_redirect() {
-			if ( get_option( '__uagb_do_redirect' ) ) {
+			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
+			if ( $do_redirect ) {
 				update_option( '__uagb_do_redirect', false );
 				if ( ! is_multisite() ) {
 					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
@@ -65,6 +70,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_action( 'wp_ajax_uag-theme-activate', __CLASS__ . '::theme_activate' );
 
+			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
+
 			// Enqueue admin scripts.
 			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG === $_REQUEST['page'] ) {
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
@@ -72,7 +79,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 				self::save_settings();
 			}
 
-			add_filter('rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
+			add_filter( 'rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
 		}
 
 		/**
@@ -425,6 +432,23 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		}
 
 		/**
+		 * File Generation Flag
+		 *
+		 * @since 1.14.0
+		 */
+		public static function file_generation() {
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => update_option( '_uagb_allow_file_generation', $_POST['value'] ),
+				)
+			);
+		}
+
+		/**
 		 * Required Plugin Activate
 		 *
 		 * @since 1.8.2
@@ -464,11 +488,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * Rank Math SEO filter to add kb-elementor to the TOC list.
 		 *
-		 * @param array TOC plugins.
+		 * @param array $plugins TOC plugins.
 		 */
 		public static function toc_plugin( $plugins ) {
 			$plugins['ultimate-addons-for-gutenberg/ultimate-addons-for-gutenberg.php'] = 'Ultimate Addons for Gutenberg';
-    	return $plugins;
+			return $plugins;
 		}
 	}
 

@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.2
-Stable tag: 1.13.6
+Stable tag: 1.14.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 200,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 500,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -154,6 +154,35 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.14.0 =
+* Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
+* Improvement: WordPress 5.3 compatibility changes.
+* Improvement: Content Timeline - P and Span tag options added for Price List Title.
+* Improvement - EditorsKit navigator toolbar support.
+* Improvement - Filter added to disable redirect on activation
+* Improvement: Post - Show/Hide Category option added.
+* Improvement: Post - Show/Hide Title option added.
+* Improvement: Post - Filter for attributes.
+* Improvement: Price List - P and Span tag options added for Price List Title.
+* Improvement: Post Timeline - P and Span tag options added for Price List Title.
+* Improvement: Rank Math SEO compatibility.
+* Improvement: Social Share - Removed jQuery dependency for Social Share script.
+* Improvement: Table of Contents - Margin option added.
+* Improvement: Testimonial - Enabled to add more than 10 testimonials.
+* Fix: Correctly added nonce to allow notice to be dismissed.
+* Fix: Advanced Columns - Nested Columns causing an issue for stacking options.
+* Fix: Multi Buttons - Font Size not replicating on front end issue in few themes.
+* Fix: Post - Added {$attributes} parameter to the Query filter.
+* Fix: Post - Border Color not being applied on hover.
+* Fix: Post - Invalid Font Family being applied issue.
+* Fix: Post - Seo analysis tool scan timed out issue.
+* Fix: Post Carousel - Console error fixed in editor.
+* Fix: Post Carousel - Carousel arrows issue with OceanWP theme.
+* Fix: Post Masonry - Masonry not working in Safari browser issue.
+* Fix: Table of Contents - JS issue with Social Share.
+* Fix: Typography - Decimal values allowed for the Font Sizes.
+* Deprecated: Advanced Columns - Deprecated Content Alignment option.
 
 = 1.13.6 =
 * Fix: Reusable Block - Dynamic CSS not generated for Reusable Blocks in Advanced Columns.

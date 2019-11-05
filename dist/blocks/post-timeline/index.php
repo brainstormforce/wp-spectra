@@ -6,6 +6,10 @@
  * @package UAGB Block.
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 /**
  * Function Name: uagb_post_timeline_callback.
  *

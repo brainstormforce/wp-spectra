@@ -6,6 +6,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 ?>
 <?php do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 <article>

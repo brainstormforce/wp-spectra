@@ -5,6 +5,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 	/**
@@ -102,7 +106,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
 					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
-						$inner_width = '#CONTENT_WIDTH#';
+						$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
 							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], $attr['innerWidthType'] );
@@ -275,7 +279,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
-					$inner_width = '#CONTENT_WIDTH#';
+					$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 				} else if ( 'custom' == $attr['contentWidth'] ) {
 					$inner_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthType'] );
 				}
@@ -2714,9 +2718,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"border-radius" => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 					"border-style"  => $attr['borderStyle'],
 				),
-				" .uagb-post__text .uagb-post__cta:hover" => array(
-					"border-color"=> $attr['borderHColor']
-				),
 				" .uagb-post__text .uagb-post__cta a" => array(
 					"color"=> $attr['ctaColor'],
 					"font-size"     => UAGB_Helper::get_css_value( $attr['ctaFontSize'], $attr['ctaFontSizeType'] ),
@@ -2727,7 +2728,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-post__text .uagb-post__cta:hover" => array(
 					"color"=> $attr['ctaHColor'],
-					"background"=> $attr['ctaBgHColor']
+					"background"=> $attr['ctaBgHColor'],
+					"border-color"=> $attr['borderHColor']
 				),
 				" .uagb-post__text .uagb-post__cta:hover a" => array(
 					"color"=> $attr['ctaHColor']
@@ -3952,7 +3954,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .gfield_checkbox input[type="checkbox"]:checked + label:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' .gfield_checkbox input[type="checkbox"] + label:before' => array(
@@ -3964,12 +3966,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 				),
 				' input[type="checkbox"]:checked + label:before' => array(
 					'background-color' => $attr['fieldBgColor'],
 					'color'            => $attr['fieldInputColor'],
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderFocusColor'],
 				),
 				' input[type="checkbox"] + label:before' => array(
@@ -3977,7 +3979,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['fieldInputColor'],
 					'height'           => UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['fieldVrPadding'], 'px' ),
-					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 					'border-color'     => $attr['fieldBorderColor'],
 					'border-style'     => $attr['fieldBorderStyle'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
@@ -4035,13 +4037,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-style'  => 'solid',
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 				),
 				' .uagb-gf-styler__field-style-box input[type="checkbox"]:checked + label:before' => array(
 					'border-style'  => 'solid',
 					'border-width'  => UAGB_Helper::get_css_value( $attr['fieldBorderWidth'], 'px' ),
 					'border-radius' => UAGB_Helper::get_css_value( $attr['fieldBorderRadius'], $attr['fieldBorderRadiusType'] ),
-					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px * 1.8 )',
+					'font-size'     => 'calc( ' . $attr['fieldVrPadding'] . 'px / 1.2 )',
 				),
 				' .gfield_radio input[type="radio"]:checked + label:before' => array(
 					'background-color' => $attr['fieldInputColor'],
@@ -4053,7 +4055,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['radioCheckSelectColor'],
 					'height'           => UAGB_Helper::get_css_value( $attr['radioCheckSize'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['radioCheckSize'], 'px' ),
-					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px / 1.2 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-style'     => 'solid',
 					'border-width'     => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidth'], 'px' ),
@@ -4067,7 +4069,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color'            => $attr['radioCheckSelectColor'],
 					'height'           => UAGB_Helper::get_css_value( $attr['radioCheckSize'], 'px' ),
 					'width'            => UAGB_Helper::get_css_value( $attr['radioCheckSize'], 'px' ),
-					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px * 1.8 )',
+					'font-size'        => 'calc( ' . $attr['radioCheckSize'] . 'px / 1.2 )',
 					'border-color'     => $attr['radioCheckBorderColor'],
 					'border-width'     => UAGB_Helper::get_css_value( $attr['radioCheckBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['radioCheckBorderRadius'], $attr['radioCheckBorderRadiusType'] ),
@@ -4526,6 +4528,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
 				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" => array(
+					"margin-left" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-right" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-top" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-bottom" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
@@ -4698,11 +4706,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$settings = json_encode($slick_options);
 			$selector =	'#uagb-testimonial-'. $id;
-			$js = 'if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){ ' .
-				'return true ' .
-				'} else {' .
-				'jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' );'.
-			'}';
+			$js = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' ); } } );';
 
 			return $js;
 			// @codingStandardsIgnoreEnd.
@@ -4754,16 +4758,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {
+
 			$selector = '#uagb-social-share-' . $id;
-			$js       = 'jQuery( " ' . $selector . ' " ).find( ".uagb-ss__link" ).click(function(){ ' .
-					'var social_url = jQuery( this ).data( "href" ); ' .
+			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
+			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
+				ssLink[i].addEventListener( "click", function() {' .
+					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
 						'target = "_self";' .
 					'}' .
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
-				'});';
+				'});' . '}';
 
 			return $js;
 		}
@@ -4786,7 +4793,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$js = 'jQuery( document ).ready(function() { ' .
 					 'UAGBTableOfContents._run( ' . json_encode( $attr ) . ', "'. $selector .'" ); '.
-				'})';
+				'});';
 
 			return $js;
 			// @codingStandardsIgnoreEnd.

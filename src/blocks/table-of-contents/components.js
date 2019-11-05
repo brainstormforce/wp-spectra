@@ -13,7 +13,7 @@ class TableOfContents extends Component {
 
 	componentDidMount() {
 		const getHeaderBlocks = () =>
-			select('core/editor')
+			select('core/block-editor')
 				.getBlocks()
 				.filter(block => block.name === 'core/heading' );
 
@@ -49,7 +49,7 @@ class TableOfContents extends Component {
 
 		const setHeaders = () => {
 			let a = [];
-			const headers = getData( select('core/editor').getBlocks(), a );
+			const headers = getData( select('core/block-editor').getBlocks(), a );
 
 			if( typeof headers != 'undefined' ) {
 				headers.forEach((heading, key) => {
@@ -101,7 +101,7 @@ class TableOfContents extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (
-			JSON.stringify(prevProps.headers) !==
+			JSON.stringify(this.state.headers) !==
 			JSON.stringify(prevState.headers)
 		) {
 			this.props.blockProp.setAttributes({
@@ -162,35 +162,39 @@ class TableOfContents extends Component {
 				} else {
 
 					if ( typeof item.content === 'undefined' || item.content === '' ) {
+						if ( item.headingTitle ) {
 
-						items.push(
-							<li>
-								<a
-									href={`#${item.headingId}`}
-									dangerouslySetInnerHTML={{
-										__html: item.headingTitle.replace(
-											/(<a.+?>|<\/a>)/g,
-											''
-										)
-									}}
-								/>
-							</li>
-						);
+							items.push(
+								<li key={item.headingId}>
+									<a
+										href={`#${item.headingId}`}
+										dangerouslySetInnerHTML={{
+											__html: item.headingTitle.replace(
+												/(<a.+?>|<\/a>)/g,
+												''
+											)
+										}}
+									/>
+								</li>
+							);
+						}
 					} else {
+						if ( item.content ) {
 
-						items.push(
-							<li>
-								<a
-									href={`#${item.anchor}`}
-									dangerouslySetInnerHTML={{
-										__html: item.content.replace(
-											/(<a.+?>|<\/a>)/g,
-											''
-										)
-									}}
-								/>
-							</li>
-						);
+							items.push(
+								<li>
+									<a
+										href={`#${item.anchor}`}
+										dangerouslySetInnerHTML={{
+											__html: item.content.replace(
+												/(<a.+?>|<\/a>)/g,
+												''
+											)
+										}}
+									/>
+								</li>
+							);
+						}
 					}
 				}
 			});

@@ -10,7 +10,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, blogID } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
 
 		const {
 			columns,
@@ -35,8 +35,8 @@ class Blog extends React.Component {
 					"uagb-post__arrow-outside",
 					`uagb-post__image-position-${ imgPosition }`
 				) }
-				data-blog-id={blogID}
-				id={ `uagb-post__masonry-${ blogID }` }
+				data-blog-id={block_id}
+				id={ `uagb-post__masonry-${ block_id }` }
 			>
 				<Masonry
 					className={ classnames(
@@ -54,7 +54,7 @@ class Blog extends React.Component {
 
 								<div className="uagb-post__text">
 									<Title post={post} attributes={attributes} />
-									<Meta post={post} attributes={attributes} />
+									<Meta post={post} attributes={attributes} categoriesList={categoriesList} />
 									<Excerpt post={post} attributes={attributes} />
 									<Button post={post} attributes={attributes} />
 								</div>

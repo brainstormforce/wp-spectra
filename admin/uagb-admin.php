@@ -5,6 +5,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 ?>
 <div class="uagb-menu-page-wrapper wrap uagb-clear general">
 	<div id="uagb-menu-page">

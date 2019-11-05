@@ -5,6 +5,10 @@
  * @package UAGB
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
 if ( ! class_exists( 'UAGB_Config' ) ) {
 
 	/**
@@ -1587,6 +1591,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paddingTypeDesktop'        => 'px',
 							'paddingTypeTablet'         => 'px',
 							'paddingTypeMobile'         => 'px',
+							'vMarginDesktop'            => '',
+							'vMarginTablet'             => '',
+							'vMarginMobile'             => '',
+							'hMarginDesktop'            => '',
+							'hMarginTablet'             => '',
+							'hMarginMobile'             => '',
+							'marginTypeDesktop'         => 'px',
+							'marginTypeTablet'          => 'px',
+							'marginTypeMobile'          => 'px',
 							'contentPaddingDesktop'     => '',
 							'contentPaddingTablet'      => '',
 							'contentPaddingMobile'      => '',

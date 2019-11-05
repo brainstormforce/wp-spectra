@@ -4,9 +4,17 @@ class Meta extends React.Component {
 
 	render() {
 
-		const { post, attributes } = this.props
+		const { post, attributes, categoriesList } = this.props
 
 		const dateFormat = __experimentalGetSettings().formats.date
+
+		let categoryObject = ''
+
+		this.props.categoriesList.map( ( item, thisIndex ) => {
+			if ( item.id == post.categories[0] ) {
+				categoryObject = item
+			}
+		})
 
 		return (
 
@@ -29,6 +37,13 @@ class Meta extends React.Component {
 					<span className='uagb-post__comment' >
 						<span className="dashicons-admin-comments dashicons"></span>
 						{ post.uagb_comment_info }
+					</span>
+				}
+
+				{ attributes.displayPostTaxonomy && '' !== categoryObject &&
+					<span className='uagb-post__taxonomy' >
+						<span className="dashicons-tag dashicons"></span>
+						{ categoryObject.name }
 					</span>
 				}
 			</div>

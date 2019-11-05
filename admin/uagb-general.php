@@ -5,10 +5,15 @@
  * @package UAGB
  */
 
-$blocks    = UAGB_Helper::get_block_options();
-$kb_data   = UAGB_Helper::knowledgebase_data();
-$enable_kb = $kb_data['enable_knowledgebase'];
-$kb_url    = $kb_data['knowledgebase_url'];
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
+
+$blocks                = UAGB_Helper::get_block_options();
+$allow_file_generation = UAGB_Helper::allow_file_generation();
+$kb_data               = UAGB_Helper::knowledgebase_data();
+$enable_kb             = $kb_data['enable_knowledgebase'];
+$kb_url                = $kb_data['knowledgebase_url'];
 
 $support_data   = UAGB_Helper::support_data();
 $enable_support = $support_data['enable_support'];
@@ -61,61 +66,61 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						<a class="uagb-reusable-block-link button button-primary" href="<?php echo admin_url( 'edit.php?post_type=wp_block' ); ?>" rel="noopener"> <?php esc_html_e( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ); ?> <span class="dashicons-controls-repeat dashicons"></span></a>
 					</div>
 				</h2>
-					<div class="uagb-list-section">
-						<?php
-						if ( is_array( $blocks ) && ! empty( $blocks ) ) :
-							?>
-							<ul class="uagb-widget-list">
-								<?php
-								foreach ( $blocks as $addon => $info ) {
+				<div class="uagb-list-section">
+					<?php
+					if ( is_array( $blocks ) && ! empty( $blocks ) ) :
+						?>
+						<ul class="uagb-widget-list">
+							<?php
+							foreach ( $blocks as $addon => $info ) {
 
-									$addon = str_replace( 'uagb/', '', $addon );
+								$addon = str_replace( 'uagb/', '', $addon );
 
-									if ( 'column' === $addon ) {
-										continue; }
+								if ( 'column' === $addon ) {
+									continue; }
 
-									$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';
-									$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
+								$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';
+								$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
 
-									$class = 'deactivate';
+								$class = 'deactivate';
+								$link  = array(
+									'link_class' => 'uagb-activate-widget',
+									'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+								);
+
+								if ( $info['is_activate'] ) {
+									$class = 'activate';
 									$link  = array(
-										'link_class' => 'uagb-activate-widget',
-										'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
+										'link_class' => 'uagb-deactivate-widget',
+										'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
 									);
+								}
 
-									if ( $info['is_activate'] ) {
-										$class = 'activate';
-										$link  = array(
-											'link_class' => 'uagb-deactivate-widget',
-											'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
-										);
-									}
+								echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . $title_url . $anchor_target . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
 
-									echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . $title_url . $anchor_target . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
+								printf(
+									'<a href="%1$s" class="%2$s"> %3$s </a>',
+									( isset( $link['link_url'] ) && ! empty( $link['link_url'] ) ) ? esc_url( $link['link_url'] ) : '#',
+									esc_attr( $link['link_class'] ),
+									esc_html( $link['link_text'] )
+								);
+
+								if ( $info['is_activate'] && isset( $info['setting_url'] ) ) {
 
 									printf(
 										'<a href="%1$s" class="%2$s"> %3$s </a>',
-										( isset( $link['link_url'] ) && ! empty( $link['link_url'] ) ) ? esc_url( $link['link_url'] ) : '#',
-										esc_attr( $link['link_class'] ),
-										esc_html( $link['link_text'] )
+										esc_url( $info['setting_url'] ),
+										esc_attr( 'uagb-advanced-settings' ),
+										esc_html( $info['setting_text'] )
 									);
-
-									if ( $info['is_activate'] && isset( $info['setting_url'] ) ) {
-
-										printf(
-											'<a href="%1$s" class="%2$s"> %3$s </a>',
-											esc_url( $info['setting_url'] ),
-											esc_attr( 'uagb-advanced-settings' ),
-											esc_html( $info['setting_text'] )
-										);
-									}
-
-									echo '</div></li>';
 								}
-								?>
-							</ul>
-						<?php endif; ?>
-					</div>
+
+								echo '</div></li>';
+							}
+							?>
+						</ul>
+					<?php endif; ?>
+				</div>
 			</div>
 		</div>
 		<div class="postbox-container uagb-sidebar" id="postbox-container-1">
@@ -146,6 +151,47 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</div>
 				</div>
 				<?php } ?>
+				<div class="postbox">
+					<h2 class="hndle ast-normal-cusror">
+						<span class="dashicons dashicons-admin-page"></span>
+						<span>
+							<?php printf( esc_html( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</span>
+					</h2>
+					<div class="inside">
+						<p class="warning">
+						</p>
+							<?php _e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+						<p>
+						<?php
+						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
+						$a_tag_open               = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
+						$a_tag_close              = '</a>';
+
+						printf(
+							/* translators: %1$s: a tag open. */
+							__( 'Please read %1$s this article %2$s to know more.', 'ultimate-addons-for-gutenberg' ),
+							$a_tag_open,
+							$a_tag_close
+						);
+						?>
+						</p>
+						<label for="uag_file_generation">
+							<?php
+							if ( 'disabled' === $allow_file_generation ) {
+								$val                    = 'enabled';
+								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else {
+								$val                    = 'disabled';
+								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
+							}
+							?>
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
+								<?php echo esc_html( $file_generation_string ); ?>
+							</button>
+						</label>
+					</div>
+				</div>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>

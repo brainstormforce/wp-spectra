@@ -35,7 +35,7 @@ const {
 	InspectorControls,
 	RichText,
 	MediaUpload
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -71,6 +71,8 @@ let imageSizeOptions = [
 	{ value: "full", label: __( "Large" ) }
 ]
 
+$ = jQuery;
+
 class UAGBinfoBox extends Component {
 
 	constructor() {
@@ -82,6 +84,7 @@ class UAGBinfoBox extends Component {
 		this.onSelectImage    = this.onSelectImage.bind( this )
 		this.onRemoveImage    = this.onRemoveImage.bind( this )
 		this.getCtaicon  	  = this.getCtaicon.bind(this)
+		this.getImageSize  	  = this.getImageSize.bind(this)
 	}
 
 	getIfbIcon(value) {
@@ -108,12 +111,14 @@ class UAGBinfoBox extends Component {
 			setAttributes( { iconImage: null } )
 			return
 		}
-		var new_img = this.getImageSize(media["sizes"])
-		imageSizeOptions = new_img
+		if ( media["sizes"] ) {
+			var new_img = this.getImageSize(media["sizes"])
+			imageSizeOptions = new_img
+		}
 		setAttributes( { iconImage: media } )
 	}
 
-	getImageSize(sizes) {
+	getImageSize( sizes ) {
 		var size_arr = []
 		$.each(sizes, function (index, item) {
 		  var name = index
@@ -287,7 +292,7 @@ class UAGBinfoBox extends Component {
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
-		if( typeof attributes.iconImage !== "undefined" && attributes.iconImage !== null && attributes.iconImage !=="" ){
+		if( iconImage && iconImage["sizes"] ){
 			imageSizeOptions = this.getImageSize(iconImage["sizes"])
 		}
 

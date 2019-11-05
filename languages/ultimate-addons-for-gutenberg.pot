@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.13.6\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.14.0\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-07-08 07:30:19+00:00\n"
+"POT-Creation-Date: 2019-11-05 05:50:51+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,19 +25,19 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/uagb-admin.php:25
+#: admin/uagb-admin.php:29
 msgid "Take Gutenberg to The Next Level! - "
 msgstr ""
 
-#: admin/uagb-admin.php:26
+#: admin/uagb-admin.php:30
 msgid "View Demos"
 msgstr ""
 
-#: admin/uagb-admin.php:35
+#: admin/uagb-admin.php:39
 msgid "Settings saved successfully."
 msgstr ""
 
-#: admin/uagb-general.php:18
+#: admin/uagb-general.php:23
 msgid "Submit a Ticket »"
 msgstr ""
 
@@ -45,26 +45,26 @@ msgstr ""
 msgid "Ultimate Addons for Gutenberg"
 msgstr ""
 
-#: admin/uagb-general.php:32
+#: admin/uagb-general.php:37
 msgid "Welcome to the Ultimate Addons for Gutenberg!"
 msgstr ""
 
-#: admin/uagb-general.php:34
+#: admin/uagb-general.php:39
 msgid ""
 "Thank you for choosing Ultimate Addons for Gutenberg - the most "
 "comprehensive library of advanced and creative blocks to build a stunning "
 "website and blog faster than ever before!"
 msgstr ""
 
-#: admin/uagb-general.php:35
+#: admin/uagb-general.php:40
 msgid "How to use the Ultimate Addons for Gutenberg Blocks »"
 msgstr ""
 
-#: admin/uagb-general.php:36
+#: admin/uagb-general.php:41
 msgid "Ready-to-use Full Demo Websites - "
 msgstr ""
 
-#: admin/uagb-general.php:36
+#: admin/uagb-general.php:41
 msgid ""
 "Get professionally designed 20+ pre-built FREE starter sites built using "
 "Gutenberg, Ultimate Addons for Gutenberg and the Astra theme. These can be "
@@ -72,15 +72,15 @@ msgid ""
 "in minutes!"
 msgstr ""
 
-#: admin/uagb-general.php:37
+#: admin/uagb-general.php:42
 msgid "Know More »"
 msgstr ""
 
-#: admin/uagb-general.php:46
+#: admin/uagb-general.php:51
 msgid "Ever-growing Library of Gutenberg Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:48
+#: admin/uagb-general.php:53
 msgid ""
 "The easy-to-use and extremely powerful blocks of the Ultimate Addons for "
 "Gutenberg (UAG) are now available within your Gutenberg Editor. Search for "
@@ -89,142 +89,161 @@ msgid ""
 "or post."
 msgstr ""
 
-#: admin/uagb-general.php:49
+#: admin/uagb-general.php:54
 msgid "Wish to see some real design implementations with these blocks?"
 msgstr ""
 
-#: admin/uagb-general.php:50
+#: admin/uagb-general.php:55
 msgid "See Demos »"
 msgstr ""
 
-#: admin/uagb-general.php:51
+#: admin/uagb-general.php:56
 msgid ""
 "Check out the detailed knowledge base articles that will help you "
 "understand the working of each block."
 msgstr ""
 
-#: admin/uagb-general.php:52 admin/uagb-general.php:158
+#: admin/uagb-general.php:57 admin/uagb-general.php:204
 msgid "Visit Knowledge Base »"
 msgstr ""
 
-#: admin/uagb-general.php:57
+#: admin/uagb-general.php:62
 msgid "Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:59
+#: admin/uagb-general.php:64
 msgid "Activate All"
 msgstr ""
 
-#: admin/uagb-general.php:60
+#: admin/uagb-general.php:65
 msgid "Deactivate All"
 msgstr ""
 
-#: admin/uagb-general.php:61
+#: admin/uagb-general.php:66
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:83 classes/class-uagb-admin.php:268
+#: admin/uagb-general.php:88 classes/class-uagb-admin.php:277
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:90 classes/class-uagb-admin.php:269
+#: admin/uagb-general.php:95 classes/class-uagb-admin.php:278
 msgid "Deactivate"
 msgstr ""
 
-#: admin/uagb-general.php:127
+#: admin/uagb-general.php:132
 msgid "Free Theme for Gutenberg"
 msgstr ""
 
-#: admin/uagb-general.php:131
+#: admin/uagb-general.php:136
 msgid ""
 "Join over 200,000+ active users empowering their websites with Astra! From "
 "beginners to industry leaders, everyone loves the Astra theme."
 msgstr ""
 
-#: admin/uagb-general.php:132
+#: admin/uagb-general.php:137
 msgid "Why Astra Theme?"
 msgstr ""
 
-#: admin/uagb-general.php:133
+#: admin/uagb-general.php:138
 msgid "Faster Performance - "
 msgstr ""
 
-#: admin/uagb-general.php:133
+#: admin/uagb-general.php:138
 msgid ""
 "Built with speed and performance in mind, Astra follows the best coding "
 "standards and lets you build faster loading and better performing websites."
 msgstr ""
 
-#: admin/uagb-general.php:134
+#: admin/uagb-general.php:139
 msgid "Easy Customization - "
 msgstr ""
 
-#: admin/uagb-general.php:134
+#: admin/uagb-general.php:139
 msgid ""
 "With all the settings managed through the customizer, Astra keeps it simple "
 "and gives you lots of options to customize everything with a few clicks."
 msgstr ""
 
-#: admin/uagb-general.php:135
+#: admin/uagb-general.php:140
 msgid "Pixel Perfect Design - "
 msgstr ""
 
-#: admin/uagb-general.php:135
+#: admin/uagb-general.php:140
 msgid ""
 "Astra reduces your design time by giving you pixel-perfect FREE "
 "ready-to-use websites demos within a huge library of starter sites."
 msgstr ""
 
-#: admin/uagb-general.php:140
+#: admin/uagb-general.php:145
 msgid "Install Astra Now!"
 msgstr ""
 
-#: admin/uagb-general.php:142
+#: admin/uagb-general.php:147
 msgid "Activate Astra Now!"
 msgstr ""
 
-#: admin/uagb-general.php:152
+#: admin/uagb-general.php:164
+msgid ""
+"Enabling this option will generate CSS files for Ultimate Addons for "
+"Gutenberg block styling instead of loading the CSS inline on page."
+msgstr ""
+
+#: admin/uagb-general.php:173
+#. translators: %1$s: a tag open.
+msgid "Please read %1$s this article %2$s to know more."
+msgstr ""
+
+#: admin/uagb-general.php:183
+msgid "Enable File Generation"
+msgstr ""
+
+#: admin/uagb-general.php:186
+msgid "Disable File Generation"
+msgstr ""
+
+#: admin/uagb-general.php:198
 msgid "Knowledge Base"
 msgstr ""
 
-#: admin/uagb-general.php:156
+#: admin/uagb-general.php:202
 msgid "Not sure how something works? Take a peek at the knowledge base and learn."
 msgstr ""
 
-#: admin/uagb-general.php:164
+#: admin/uagb-general.php:210
 msgid "Five Star Support"
 msgstr ""
 
-#: admin/uagb-general.php:171
+#: admin/uagb-general.php:217
 #. translators: %1$s: uagb name.
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:130
+#: classes/class-uagb-admin.php:139
 msgid ""
 "Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on "
 "your website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:131
+#: classes/class-uagb-admin.php:140
 msgid ""
 "Would you please mind sharing your views and give it a 5 star rating on the "
 "WordPress repository?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:133
+#: classes/class-uagb-admin.php:142
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:135
+#: classes/class-uagb-admin.php:144
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:136
+#: classes/class-uagb-admin.php:145
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:155
+#: classes/class-uagb-admin.php:164
 #. translators: %s: html tags
 msgid ""
 "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can "
@@ -232,258 +251,258 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:270
+#: classes/class-uagb-admin.php:279
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:271
+#: classes/class-uagb-admin.php:280
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:272
+#: classes/class-uagb-admin.php:281
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:273
+#: classes/class-uagb-admin.php:282
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:274
+#: classes/class-uagb-admin.php:283
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:436
+#: classes/class-uagb-admin.php:462
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:457
+#: classes/class-uagb-admin.php:483
 msgid "Theme Successfully Activated"
 msgstr ""
 
-#: classes/class-uagb-config.php:42
+#: classes/class-uagb-config.php:46
 msgid "Advanced Heading"
 msgstr ""
 
-#: classes/class-uagb-config.php:43
+#: classes/class-uagb-config.php:47
 msgid ""
 "This block lets you add a combination of a heading and a sub-heading with a "
 "separator in between."
 msgstr ""
 
-#: classes/class-uagb-config.php:84
+#: classes/class-uagb-config.php:88
 msgid "Advanced Columns"
 msgstr ""
 
-#: classes/class-uagb-config.php:85
+#: classes/class-uagb-config.php:89
 msgid ""
 "This block gives you advanced options to insert a number of columns within "
 "a single row."
 msgstr ""
 
-#: classes/class-uagb-config.php:163
+#: classes/class-uagb-config.php:167
 msgid "Column"
 msgstr ""
 
-#: classes/class-uagb-config.php:164
+#: classes/class-uagb-config.php:168
 msgid "This block is an immediate child of Advanced Columns."
 msgstr ""
 
-#: classes/class-uagb-config.php:235
+#: classes/class-uagb-config.php:239
 msgid "Blockquote"
 msgstr ""
 
-#: classes/class-uagb-config.php:236
+#: classes/class-uagb-config.php:240
 msgid "This block allows you to display your Blockquote."
 msgstr ""
 
-#: classes/class-uagb-config.php:330
+#: classes/class-uagb-config.php:334
 msgid "Call To Action"
 msgstr ""
 
-#: classes/class-uagb-config.php:331
+#: classes/class-uagb-config.php:335
 msgid ""
 "This block allows you to place an CTA along with a heading and description "
 "within a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:400
+#: classes/class-uagb-config.php:404
 msgid "Contact Form 7 Styler"
 msgstr ""
 
-#: classes/class-uagb-config.php:401
+#: classes/class-uagb-config.php:405
 msgid ""
 "This block allows you to add and style your Contact Form 7 forms right in "
 "the Gutenberg editor."
 msgstr ""
 
-#: classes/class-uagb-config.php:536
+#: classes/class-uagb-config.php:540
 msgid "Gravity Form Styler"
 msgstr ""
 
-#: classes/class-uagb-config.php:537
+#: classes/class-uagb-config.php:541
 msgid ""
 "This block allows you to add and style your Gravity Forms right in the "
 "Gutenberg editor."
 msgstr ""
 
-#: classes/class-uagb-config.php:689
+#: classes/class-uagb-config.php:693
 msgid "Content Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:690
+#: classes/class-uagb-config.php:694
 msgid "The Timeline block lets you create beautiful timelines on your website."
 msgstr ""
 
-#: classes/class-uagb-config.php:760
+#: classes/class-uagb-config.php:764
 msgid "Google Map"
 msgstr ""
 
-#: classes/class-uagb-config.php:761
+#: classes/class-uagb-config.php:765
 msgid "This block allows you to place a Google Map Location."
 msgstr ""
 
-#: classes/class-uagb-config.php:770
+#: classes/class-uagb-config.php:774
 msgid "Icon List"
 msgstr ""
 
-#: classes/class-uagb-config.php:771
+#: classes/class-uagb-config.php:775
 msgid "This block allows you to place an image or icon in a list format."
 msgstr ""
 
-#: classes/class-uagb-config.php:778
+#: classes/class-uagb-config.php:782
 msgid "Label #1"
 msgstr ""
 
-#: classes/class-uagb-config.php:821
+#: classes/class-uagb-config.php:825
 msgid "Info Box"
 msgstr ""
 
-#: classes/class-uagb-config.php:822
+#: classes/class-uagb-config.php:826
 msgid ""
 "This block allows you to place an image or icon along with a heading and "
 "description within a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:916
+#: classes/class-uagb-config.php:920
 msgid "Marketing Button"
 msgstr ""
 
-#: classes/class-uagb-config.php:917
+#: classes/class-uagb-config.php:921
 msgid "This block allows you to place a Marketing Button with small description."
 msgstr ""
 
-#: classes/class-uagb-config.php:989
+#: classes/class-uagb-config.php:993
 msgid "Multi Buttons"
 msgstr ""
 
-#: classes/class-uagb-config.php:990
+#: classes/class-uagb-config.php:994
 msgid "This block allows you to add multiple buttons with a single block."
 msgstr ""
 
-#: classes/class-uagb-config.php:1007
+#: classes/class-uagb-config.php:1011
 msgid "Post Carousel"
 msgstr ""
 
-#: classes/class-uagb-config.php:1008
+#: classes/class-uagb-config.php:1012
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a carousel layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1087 classes/class-uagb-config.php:1170
-#: classes/class-uagb-config.php:1254 dist/blocks/post/index.php:331
-#: dist/blocks/post/index.php:701 dist/blocks/post/index.php:1108
-#: dist/blocks/post/index.php:1679
+#: classes/class-uagb-config.php:1091 classes/class-uagb-config.php:1174
+#: classes/class-uagb-config.php:1258 dist/blocks/post/index.php:344
+#: dist/blocks/post/index.php:722 dist/blocks/post/index.php:1137
+#: dist/blocks/post/index.php:1826
 msgid "Read More"
 msgstr ""
 
-#: classes/class-uagb-config.php:1097
+#: classes/class-uagb-config.php:1101
 msgid "Post Grid"
 msgstr ""
 
-#: classes/class-uagb-config.php:1098
+#: classes/class-uagb-config.php:1102
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a grid layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1180
+#: classes/class-uagb-config.php:1184
 msgid "Post Masonry"
 msgstr ""
 
-#: classes/class-uagb-config.php:1181
+#: classes/class-uagb-config.php:1185
 msgid ""
 "This block fetches the blog posts you may have on your website and displays "
 "them in a masonry layout."
 msgstr ""
 
-#: classes/class-uagb-config.php:1264
+#: classes/class-uagb-config.php:1268
 msgid "Post Timeline"
 msgstr ""
 
-#: classes/class-uagb-config.php:1265
+#: classes/class-uagb-config.php:1269
 msgid ""
 "The Timeline block lets you create beautiful timelines of Posts on your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-config.php:1365
+#: classes/class-uagb-config.php:1369
 msgid "Price List"
 msgstr ""
 
-#: classes/class-uagb-config.php:1366
+#: classes/class-uagb-config.php:1370
 msgid "This block allows you to add attractive Price List."
 msgstr ""
 
-#: classes/class-uagb-config.php:1437
+#: classes/class-uagb-config.php:1441
 msgid "Section"
 msgstr ""
 
-#: classes/class-uagb-config.php:1438
+#: classes/class-uagb-config.php:1442
 msgid ""
 "This block is an outer wrap section that allows you to add other blocks "
 "within it."
 msgstr ""
 
-#: classes/class-uagb-config.php:1511
+#: classes/class-uagb-config.php:1515
 msgid "Social Share"
 msgstr ""
 
-#: classes/class-uagb-config.php:1512
+#: classes/class-uagb-config.php:1516
 msgid ""
 "This block allows you to let users share your content across various social "
 "networking sites."
 msgstr ""
 
-#: classes/class-uagb-config.php:1545
+#: classes/class-uagb-config.php:1549
 msgid "Table of Contents"
 msgstr ""
 
-#: classes/class-uagb-config.php:1546
+#: classes/class-uagb-config.php:1550
 msgid "This block allows you to place a Table of Contents for Pages/Posts."
 msgstr ""
 
-#: classes/class-uagb-config.php:1632
+#: classes/class-uagb-config.php:1645
 msgid "Team"
 msgstr ""
 
-#: classes/class-uagb-config.php:1633
+#: classes/class-uagb-config.php:1646
 msgid ""
 "This block allows you to display your team. Add their picture, name, what "
 "they do and links to their social profiles."
 msgstr ""
 
-#: classes/class-uagb-config.php:1703
+#: classes/class-uagb-config.php:1716
 msgid "Testimonial"
 msgstr ""
 
-#: classes/class-uagb-config.php:1704
+#: classes/class-uagb-config.php:1717
 msgid ""
 "This block helps your display some amazing client feedback within your "
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:1032
+#: classes/class-uagb-helper.php:1092
 msgid "Full"
 msgstr ""
 
@@ -504,35 +523,39 @@ msgstr ""
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
-#: classes/class-uagb-loader.php:145
+#: classes/class-uagb-loader.php:149
 #. translators: %s: html tags
 msgid ""
 "The %1$sUltimate Addon for Gutenberg%2$s plugin requires %1$sGutenberg%2$s "
 "plugin installed & activated."
 msgstr ""
 
-#: classes/class-uagb-loader.php:155
+#: classes/class-uagb-loader.php:159
 msgid "Activate Gutenberg"
 msgstr ""
 
-#: classes/class-uagb-loader.php:162
+#: classes/class-uagb-loader.php:166
 msgid "Install Gutenberg"
 msgstr ""
 
-#: dist/blocks/cf7-styler/index.php:20
+#: dist/blocks/cf7-styler/index.php:24
 msgid "Please select a valid Contact Form 7."
 msgstr ""
 
-#: dist/blocks/gf-styler/index.php:21
+#: dist/blocks/gf-styler/index.php:25
 msgid "Please select a valid Gravity Form."
 msgstr ""
 
-#: dist/blocks/post-timeline/index.php:35
+#: dist/blocks/post-timeline/index.php:39
 msgid "No posts found"
 msgstr ""
 
-#: dist/blocks/post-timeline/index.php:568
+#: dist/blocks/post-timeline/index.php:572
 msgid "Untitled"
+msgstr ""
+
+#: lib/notices/class-astra-notices.php:120
+msgid "WordPress Nonce not validated."
 msgstr ""
 
 #: ultimate-addons-for-gutenberg.php:36

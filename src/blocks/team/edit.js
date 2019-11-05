@@ -26,7 +26,7 @@ const {
 	RichText,
 	PanelColorSettings,
 	MediaUpload,
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
@@ -91,9 +91,10 @@ class UAGBTeam extends Component {
 			return
 		}
 		setAttributes( { image: media } )
-
-		var new_img = this.getImageSize(media["sizes"])
-		imageSizeOptions = new_img
+		if ( media["sizes"] ) {
+			var new_img = this.getImageSize(media["sizes"])
+			imageSizeOptions = new_img
+		}
 	}
 
 	render() {
@@ -186,7 +187,7 @@ class UAGBTeam extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		if( typeof attributes.image !== "undefined" && attributes.image !== null && attributes.image !=="" ){
+		if( image && image["sizes"] ){
 			imageSizeOptions = this.getImageSize(image["sizes"])
 		}
 
