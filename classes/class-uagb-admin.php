@@ -434,7 +434,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		/**
 		 * File Generation Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.14.0
 		 */
 		public static function file_generation() {
 

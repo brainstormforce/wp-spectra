@@ -1,5 +1,7 @@
 ( function( $ ) {
 
+	$ = jQuery;
+
 	UAGBPostCarousel = {
 
 		_setHeight: function( scope ) {

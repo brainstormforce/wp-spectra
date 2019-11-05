@@ -92,27 +92,54 @@ module.exports = function(grunt) {
 			file: "package.json"
 		},
 		replace: {
-			plugin_main: {
-				src: [ "ultimate-addons-for-gutenberg.php" ],
-				overwrite: true,
-				replacements: [
-					{
-						from: /Version: \d{1,1}\.\d{1,2}\.\d{1,2}/g,
-						to: "Version: <%= pkg.version %>"
-					}
-				]
-			},
-
-			plugin_const: {
+            stable_tag: {
+                src: ['readme.txt'],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: /Stable tag:\ .*/g,
+                        to: 'Stable tag: <%= pkg.version %>'
+                    }
+                ]
+            },
+            plugin_const: {
 				src: [ "classes/class-uagb-loader.php" ],
 				overwrite: true,
 				replacements: [
 					{
 						from: /UAGB_VER', '.*?'/g,
-						to: "UAGB_VER', '<%= pkg.version %>'"
+                        to: 'UAGB_VER\', \'<%= pkg.version %>\''
 					}
 				]
-			}
+			},
+            plugin_function_comment: {
+                src: [
+                    '*.php',
+                    '**/*.php',
+                    '!node_modules/**',
+                    '!php-tests/**',
+                    '!bin/**',
+                ],
+                overwrite: true,
+                replacements: [
+                    {
+                        from: 'x.x.x',
+                        to: '<%=pkg.version %>'
+                    }
+                ]
+            },
+			plugin_main: {
+				src: [ "ultimate-addons-for-gutenberg.php" ],
+				overwrite: true,
+				replacements: [
+					{
+						from: /Version: \bv?(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)\.(?:0|[1-9]\d*)(?:-[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?(?:\+[\da-z-A-Z-]+(?:\.[\da-z-A-Z-]+)*)?\b/g,
+                        to: 'Version: <%= pkg.version %>'
+					}
+				]
+			},
+
+			
 		},
 		wp_readme_to_markdown: {
 			your_target: {
@@ -149,12 +176,14 @@ module.exports = function(grunt) {
 	// Version Bump `grunt bump-version --ver=<version-number>`
 	grunt.registerTask( "bump-version", function() {
 
-		var newVersion = grunt.option("ver")
+		var newVersion = grunt.option('ver');
 
-		if ( newVersion ) {
-			grunt.task.run( "bumpup:" + newVersion )
-			grunt.task.run( "replace" )
-		}
+        if (newVersion) {
+            newVersion = newVersion ? newVersion : 'patch';
+
+            grunt.task.run('bumpup:' + newVersion);
+            grunt.task.run('replace');
+        }
 	} )
 
 	// Generate Read me file

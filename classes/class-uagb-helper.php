@@ -52,7 +52,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * UAG File Generation Flag
 		 *
-		 * @since x.x.x
+		 * @since 1.14.0
 		 * @var file_generation
 		 */
 		public static $file_generation = 'disabled';
@@ -60,7 +60,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Enque Style and Script Variable
 		 *
-		 * @since x.x.x
+		 * @since 1.14.0
 		 * @var instance
 		 */
 		public static $css_file_handler;
@@ -1376,7 +1376,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * Returns an array of paths for the upload directory
 		 * of the current site.
 		 *
-		 * @since x.x.x
+		 * @since 1.14.0
 		 * @return array
 		 */
 		public static function get_upload_dir() {
@@ -1409,7 +1409,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Checks to see if the site has SSL enabled or not.
 		 *
-		 * @since x.x.x
+		 * @since 1.14.0
 		 * @return bool
 		 */
 		public static function is_ssl() {
@@ -1430,7 +1430,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  var $data    Gets the CSS\JS for the current Page.
 		 * @param  var $type    Gets the CSS\JS type.
 		 * @param  var $timestamp Timestamp.
-		 * @since x.x.x
+		 * @since 1.14.0
 		 * @return array
 		 */
 		public static function get_asset_info( $data, $type, $timestamp ) {
@@ -1461,7 +1461,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param  var $style_data    Gets the CSS\JS for the current Page.
 		 * @param  var $type    Gets the CSS\JS type.
-		 * @since  x.x.x
+		 * @since  1.14.0
 		 */
 		public static function file_write( $style_data, $type ) {
 
@@ -1550,7 +1550,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Allow File Geranation flag.
 		 *
-		 * @since  x.x.x
+		 * @since  1.14.0
 		 */
 		public static function allow_file_generation() {
 			return get_option( '_uagb_allow_file_generation', 'disabled' );

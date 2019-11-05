@@ -161,10 +161,10 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					<div class="inside">
 						<p class="warning">
 						</p>
-							<?php _e( 'Enabling this option will generate CSS files for UAG styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php _e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
 						<p>
 						<?php
-						$file_generation_doc_link = esc_url( '#' );
+						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
 						$a_tag_open               = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
 						$a_tag_close              = '</a>';
 
