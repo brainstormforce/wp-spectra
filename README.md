@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.2  
-**Stable tag:** 1.13.6.1  
+**Stable tag:** 1.14.0  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 200,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 500,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -155,8 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
-### 1.13.6.1 ###
+### 1.14.0 ###
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
+* Improvement: WordPress 5.3 compatibility changes.
 * Improvement: Content Timeline - P and Span tag options added for Price List Title.
 * Improvement - EditorsKit navigator toolbar support.
 * Improvement - Filter added to disable redirect on activation
