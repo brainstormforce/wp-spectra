@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.13.6.1 =
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
+* Improvement: WordPress 5.3 compatibility changes.
 * Improvement: Content Timeline - P and Span tag options added for Price List Title.
 * Improvement - EditorsKit navigator toolbar support.
 * Improvement - Filter added to disable redirect on activation
