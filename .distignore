@@ -33,3 +33,5 @@ src
 eslintrc.json
 scripts
 config
+.github
+.wordpress-org
