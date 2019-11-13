@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.14.0.1 =
+* Fix: Table of Contents - Stripped HTML tags in Headings for Table of Contents.
+
 = 1.14.0 =
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
 * Improvement: WordPress 5.3 compatibility changes.
