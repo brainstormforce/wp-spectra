@@ -73,7 +73,7 @@ class TableOfContents extends Component {
 						heading[contentAnchor] =
 							key +
 							'-' +
-							heading[contentName]
+							striptags( heading[contentName] )
 								.toString()
 								.toLowerCase()
 								.replace(/( |<.+?>|&nbsp;)/g, '-');
@@ -84,8 +84,6 @@ class TableOfContents extends Component {
 					}
 				});
 			}
-
-			console.log( headers )
 
 			this.setState({ headers });
 		};
