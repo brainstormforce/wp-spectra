@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.14.0.1 =
 * Fix: Table of Contents - Stripped HTML tags in Headings for Table of Contents.
+* Fix: Typography Control - Responsive Font Sizes not editable.
 
 = 1.14.0 =
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.
