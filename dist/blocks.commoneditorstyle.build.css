@@ -124,6 +124,11 @@ hr.uagb-editor__separator {
 	flex-wrap: unset;
 }
 
+.uagb-size-type-field-tabs .components-range-control .components-base-control__label {
+	width: auto;
+	display: block;
+}
+
 .uagb-size-type-field-tabs .components-range-control .components-range-control__slider {
 	width: 42%;
 	margin-bottom: 0;

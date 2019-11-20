@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.14.0\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.14.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2019-11-05 05:50:51+00:00\n"
+"POT-Creation-Date: 2019-11-20 08:01:07+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: admin/uagb-general.php:136
 msgid ""
-"Join over 200,000+ active users empowering their websites with Astra! From "
+"Join over 500,000+ active users empowering their websites with Astra! From "
 "beginners to industry leaders, everyone loves the Astra theme."
 msgstr ""
 

@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.2
-Stable tag: 1.14.0
+Tested up to: 5.3
+Stable tag: 1.14.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.14.1 =
+* Fix: Table of Contents - Stripped HTML tags in Headings for Table of Contents.
+* Fix: Typography Control - Responsive Font Sizes not editable.
+* Fix: Responsive Control - Responsive options not editable.
 
 = 1.14.0 =
 * Improvement: A dynamic CSS file will be generated, earlier inline CSS was loading on the page.

@@ -1,6 +1,7 @@
 const { select, subscribe } = wp.data;
 import { Component } from 'react';
 const { __ } = wp.i18n;
+const striptags = require('striptags');
 
 class TableOfContents extends Component {
 	constructor(props) {
@@ -72,7 +73,7 @@ class TableOfContents extends Component {
 						heading[contentAnchor] =
 							key +
 							'-' +
-							heading[contentName]
+							striptags( heading[contentName] )
 								.toString()
 								.toLowerCase()
 								.replace(/( |<.+?>|&nbsp;)/g, '-');
@@ -182,7 +183,7 @@ class TableOfContents extends Component {
 						if ( item.content ) {
 
 							items.push(
-								<li>
+								<li key={`#${item.anchor}`}>
 									<a
 										href={`#${item.anchor}`}
 										dangerouslySetInnerHTML={{

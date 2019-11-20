@@ -1,6 +1,6 @@
 {
   "name": "ultimate-gutenberg",
-  "version": "1.14.0",
+  "version": "1.14.1",
   "description": "Ultimate Addons for Gutenberg",
   "author": "Brainstorm Force",
   "license": "ISC",
@@ -53,6 +53,7 @@
     "react-transition-group": "^2.9.0",
     "sass-loader": "^6.0.6",
     "slick-carousel": "^1.8.1",
+    "striptags": "^3.1.1",
     "update-notifier": "^2.3.0",
     "webpack": "^3.1.0"
   },
