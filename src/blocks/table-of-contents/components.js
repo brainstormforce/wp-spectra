@@ -85,8 +85,6 @@ class TableOfContents extends Component {
 				});
 			}
 
-			console.log(headers);
-
 			this.setState({ headers });
 		};
 
