@@ -262,7 +262,7 @@ class UAGBTableOfContentsEdit extends Component {
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
 						{mappingHeaders.map((a, i) => (
-							<PanelRow>
+							<PanelRow key={i}>
 								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i + 1}`}</label>
 								<ToggleControl
 									id={`ub_toggle_h${i + 1}`}

@@ -85,6 +85,8 @@ class TableOfContents extends Component {
 				});
 			}
 
+			console.log(headers);
+
 			this.setState({ headers });
 		};
 
@@ -183,7 +185,7 @@ class TableOfContents extends Component {
 						if ( item.content ) {
 
 							items.push(
-								<li>
+								<li key={`#${item.anchor}`}>
 									<a
 										href={`#${item.anchor}`}
 										dangerouslySetInnerHTML={{
