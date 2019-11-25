@@ -1171,7 +1171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$data       = array();
 
 				foreach ( $taxonomies as $tax_slug => $tax ) {
-					if ( ! $tax->public || ! $tax->show_ui ) {
+					if ( ! $tax->public || ! $tax->show_ui || ! $tax->show_in_rest ) {
 						continue;
 					}
 
