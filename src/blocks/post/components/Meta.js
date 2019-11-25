@@ -11,7 +11,7 @@ class Meta extends React.Component {
 		let categoryObject = ''
 
 		this.props.categoriesList.map( ( item, thisIndex ) => {
-			if ( item.id == post.categories[0] ) {
+			if ( post.categories && item.id == post.categories[0] ) {
 				categoryObject = item
 			}
 		})
