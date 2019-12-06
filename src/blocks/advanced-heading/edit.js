@@ -65,6 +65,8 @@ export default class UAGBAdvancedHeading extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
 
+		this.props.anchor = this.props.headingId;
+
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
 
