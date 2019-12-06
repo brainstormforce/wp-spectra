@@ -29,7 +29,6 @@ export default function save( props ) {
 				props.className,
 				`uagb-adv-heading-${block_id}`,					
 			) }
-			id={ props.anchor }
 		>
 			<RichText.Content
 				tagName={ headingTag }
