@@ -64,6 +64,7 @@ export default class UAGBAdvancedHeading extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
+		this.props.setAttributes( { anchor: this.props.headingId } )
 
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
@@ -233,12 +234,6 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h5", label: __( "H5" ) },
 								{ value: "h6", label: __( "H6" ) },
 							] }
-						/>
-						<TextControl
-							label= { __( "HTML Anchor" ) }
-							value= { headingId }
-							onChange={ value => setAttributes( { headingId: value } ) }
-							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
 						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
