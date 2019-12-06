@@ -47,6 +47,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block lets you add a combination of a heading and a sub-heading with a separator in between.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
+							'classMigrate'            => false,
 							'headingAlign'            => 'center',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',

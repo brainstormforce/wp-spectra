@@ -638,11 +638,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-adv-heading-' . $id );
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-adv-heading-' : '#uagb-adv-heading-';
 
-			$tablet = UAGB_Helper::generate_css( $t_selectors, '#uagb-adv-heading-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 
-			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-adv-heading-' . $id );
+			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
+
+			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
 
 			$generated_css = array(
 				'desktop' => $desktop,

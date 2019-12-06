@@ -8,6 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		headingAlign,
 		headingTag,
 		headingColor,
@@ -97,11 +98,16 @@ function styling( props ) {
 		"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }` )
+	var base_selector = `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
+	if ( classMigrate ) {
+		base_selector = `.block-editor-page #wpwrap .uagb-adv-heading-${ props.clientId }`
+	}
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "tablet" )
+	var styling_css = generateCSS( selectors, base_selector )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
 
 	return styling_css
 }

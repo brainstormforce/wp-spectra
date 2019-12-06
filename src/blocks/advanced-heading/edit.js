@@ -62,6 +62,9 @@ export default class UAGBAdvancedHeading extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { classMigrate: true } )
+
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
 
@@ -124,9 +127,9 @@ export default class UAGBAdvancedHeading extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
+			anchor,
 			attributes: {
 				level,
-				anchor,
 				headingTitle,
 				headingId,
 				headingDesc,
@@ -360,7 +363,13 @@ export default class UAGBAdvancedHeading extends Component {
 						}
 					</PanelBody>
 				</InspectorControls>
-				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
+				<div
+					className={ classnames(
+						className,
+						`uagb-adv-heading-${this.props.clientId}`,					
+					) }
+					id={ anchor }
+				>
 					<RichText
 						tagName={ headingTag }
 						placeholder={ __( "Write a Heading" ) }

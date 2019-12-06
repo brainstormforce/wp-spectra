@@ -2,10 +2,12 @@
  * BLOCK: Advanced Heading
  */
 
-import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
+import save from "./save"
+import deprecated from "./deprecated"
+import transform from "./transform"
 import "./style.scss"
 
 const { __ } = wp.i18n
@@ -30,117 +32,13 @@ registerBlockType( "uagb/advanced-heading", {
 		__( "uag" ),
 		__( "heading" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
-	transforms: {
-		from: [
-			{
-				type: "block",
-				blocks: [ "core/paragraph" ],
-				transform: ( { content } ) => {
-					return createBlock( "uagb/advanced-heading", {
-						headingDesc: content,
-					} )
-				},
-			},
-			{
-				type: "block",
-				blocks: [ "core/heading" ],
-				transform: ( { content } ) => {
-					return createBlock( "uagb/advanced-heading", {
-						headingTitle: content,
-						headingTag: "h3",
-					} )
-				},
-			},
-		],
-		to: [
-			{
-				type: "block",
-				blocks: [ "core/paragraph" ],
-				transform: ( { content } ) => {
-					return createBlock( "core/paragraph", {
-						content,
-					} )
-				},
-			},
-			{
-				type: "block",
-				blocks: [ "core/heading" ],
-				transform: ( { content } ) => {
-					return createBlock( "core/heading", {
-						content: content,
-					} )
-				},
-			},
-		],
-	},
+	transform,
 	edit,
-	save: function( props ) {
-
-		const {
-			block_id,
-			headingTitle,
-			headingDesc,
-			headingTag,
-			seperatorStyle,
-			headingId
-		} = props.attributes
-
-		var seprator_output =  ""
-		if( seperatorStyle !== "none" ){
-			seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
-		}
-		return (
-			<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
-				<RichText.Content
-					tagName={ headingTag }
-					value={ headingTitle }
-					className='uagb-heading-text'	
-					id = { headingId }				
-				/>
-				{seprator_output}
-				<RichText.Content
-					tagName="p"
-					value={ headingDesc }
-					className='uagb-desc-text'					
-				/>
-			</div>
-		)
-	},
-	deprecated: [
-		{
-			attributes,			
-			save: function( props ) {
-
-				const {
-					block_id,
-					headingTitle,
-					headingDesc,
-					headingTag,
-					seperatorStyle
-				} = props.attributes
-
-				var seprator_output =  ""
-				if( seperatorStyle !== "none" ){
-					seprator_output = <div className="uagb-separator-wrap" ><div className="uagb-separator"></div></div>
-				}
-				return (
-					<div className={ props.className } id={ `uagb-adv-heading-${block_id}` }>
-						<RichText.Content
-							tagName={ headingTag }
-							value={ headingTitle }
-							className='uagb-heading-text'					
-						/>
-						{seprator_output}
-						<RichText.Content
-							tagName="p"
-							value={ headingDesc }
-							className='uagb-desc-text'
-						/>
-					</div>
-				)
-			},
-		}
-	],
+	save,
+	deprecated,
 } )
