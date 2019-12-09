@@ -878,9 +878,9 @@ export default class UAGBColumnEdit extends Component {
 						`uagb-column__edit-${ active }`,
 						align_class,
 						align_class_mobile,
-						align_class_tablet
+						align_class_tablet,
+						`uagb-block-${this.props.clientId}`
 					) }
-					id={ `uagb-column-${this.props.clientId}` }
 				>
 					<div className="uagb-column__overlay"></div>
 					<div className="uagb-column__inner-wrap">
