@@ -233,12 +233,6 @@ class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
-						<TextControl
-							label= { __( "HTML Anchor" ) }
-							value= { headingId }
-							onChange={ value => setAttributes( { headingId: value } ) }
-							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
-						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -365,7 +359,7 @@ class UAGBAdvancedHeading extends Component {
 				<div
 					className={ classnames(
 						className,
-						`uagb-adv-heading-${this.props.clientId}`,					
+						`uagb-block-${this.props.clientId}`,					
 					) }
 				>
 					<RichText
@@ -412,11 +406,8 @@ class UAGBAdvancedHeading extends Component {
 }
 
 export default withSelect( ( select, props ) => {
-
 	const { anchor, attributes } = props
-
 	return {
 		anchor: attributes.headingId
 	}
-
 } )( UAGBAdvancedHeading )

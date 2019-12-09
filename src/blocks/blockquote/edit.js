@@ -1119,8 +1119,8 @@ class UAGBBlockQuote extends Component {
 					className = { classnames(
 						className,
 						"uagb-blockquote__outer-wrap",
-					) }
-					id={ `uagb-blockquote-${ this.props.clientId }` }>
+						`uagb-block-${ this.props.clientId }`
+					) }>
 					<div className = { classnames(
 						"uagb-blockquote__wrap",
 						`uagb-blockquote__skin-${skinStyle}`,
@@ -1164,6 +1164,9 @@ class UAGBBlockQuote extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

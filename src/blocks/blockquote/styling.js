@@ -11,6 +11,7 @@ function styling( props ) {
 
 	const {
 		block_id,
+		classMigrate,
 		skinStyle,
 		align,	
 		authorColor,
@@ -311,11 +312,16 @@ function styling( props ) {
 		},		
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }` )
+	var base_selector = `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
+	if ( classMigrate ) {
+		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	}
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "tablet" )
+	var styling_css = generateCSS( selectors, base_selector )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
 
 	return styling_css
 }

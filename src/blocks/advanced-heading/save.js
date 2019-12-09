@@ -33,7 +33,8 @@ export default function save( props ) {
 			<RichText.Content
 				tagName={ headingTag }
 				value={ headingTitle }
-				className='uagb-heading-text'		
+				className='uagb-heading-text'	
+				id = { headingId }				
 			/>
 			{seprator_output}
 			<RichText.Content
