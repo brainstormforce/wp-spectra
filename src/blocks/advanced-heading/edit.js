@@ -18,9 +18,6 @@ import WebfontLoader from "../../components/typography/fontloader"
 //  Import CSS.
 import "./style.scss"
 
-/* eslint-disable */
-// Import __() from wp.i18n
-
 const { __ } = wp.i18n
 
 const {
@@ -362,7 +359,6 @@ export default class UAGBAdvancedHeading extends Component {
 						className,
 						`uagb-adv-heading-${this.props.clientId}`,					
 					) }
-					id={ anchor }
 				>
 					<RichText
 						tagName={ headingTag }
