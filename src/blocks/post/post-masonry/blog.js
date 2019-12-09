@@ -33,10 +33,10 @@ class Blog extends React.Component {
 					className,
 					"uagb-post-grid",
 					"uagb-post__arrow-outside",
-					`uagb-post__image-position-${ imgPosition }`
+					`uagb-post__image-position-${ imgPosition }`,
+					`uagb-block-${ block_id }`
 				) }
 				data-blog-id={block_id}
-				id={ `uagb-post__masonry-${ block_id }` }
 			>
 				<Masonry
 					className={ classnames(
