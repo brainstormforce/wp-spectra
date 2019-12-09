@@ -2335,9 +2335,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-ctm-' . $id );
-			$tablet  = UAGB_Helper::generate_css( $t_selectors, '#uagb-ctm-' . $id );
-			$mobile  = UAGB_Helper::generate_css( $m_selectors, '#uagb-ctm-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
+			$tablet  = UAGB_Helper::generate_css( $t_selectors, '.uagb-block-' . $id );
+			$mobile  = UAGB_Helper::generate_css( $m_selectors, '.uagb-block-' . $id );
 
 			$generated_css = array(
 				'desktop' => $desktop,
