@@ -100,7 +100,7 @@ function styling( props ) {
 
 	var base_selector = `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
 	if ( classMigrate ) {
-		base_selector = `.block-editor-page #wpwrap .uagb-adv-heading-${ props.clientId }`
+		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
 	}
 
 	var styling_css = generateCSS( selectors, base_selector )

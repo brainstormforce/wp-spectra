@@ -44,9 +44,11 @@ const {
 	TextControl
 } = wp.components
 
+const { withSelect } = wp.data
+
 const { Component, Fragment } = wp.element
 
-export default class UAGBAdvancedHeading extends Component {
+class UAGBAdvancedHeading extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -231,6 +233,12 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h6", label: __( "H6" ) },
 							] }
 						/>
+						<TextControl
+							label= { __( "HTML Anchor" ) }
+							value= { headingId }
+							onChange={ value => setAttributes( { headingId: value } ) }
+							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
+						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -402,3 +410,13 @@ export default class UAGBAdvancedHeading extends Component {
 		)
 	}
 }
+
+export default withSelect( ( select, props ) => {
+
+	const { anchor, attributes } = props
+
+	return {
+		anchor: attributes.headingId
+	}
+
+} )( UAGBAdvancedHeading )

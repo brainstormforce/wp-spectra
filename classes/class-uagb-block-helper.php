@@ -638,7 +638,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			// @codingStandardsIgnoreEnd
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-adv-heading-' : '#uagb-adv-heading-';
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-adv-heading-';
 
 			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 

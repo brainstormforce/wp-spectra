@@ -27,14 +27,13 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				props.className,
-				`uagb-adv-heading-${block_id}`,					
+				`uagb-block-${block_id}`,					
 			) }
 		>
 			<RichText.Content
 				tagName={ headingTag }
 				value={ headingTitle }
-				className='uagb-heading-text'	
-				id = { headingId }				
+				className='uagb-heading-text'		
 			/>
 			{seprator_output}
 			<RichText.Content
