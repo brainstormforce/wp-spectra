@@ -1,5 +1,5 @@
 /**
- * BLOCK: Call To Action - Deprecated Block
+ * BLOCK: Column - Deprecated Block
  */
 
 // Import block dependencies and components.
