@@ -7,6 +7,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function CtaStyle( props ) {
 	const {
+		classMigrate,
 		textAlign,
 		titleColor,
 		descColor,
@@ -64,8 +65,6 @@ function CtaStyle( props ) {
 		contentWidth,
 		ctaType
 	} = props.attributes
-
-	var clientId = "uagb-cta-block-"+props.clientId
 
 	var selectors = {
 
@@ -219,8 +218,10 @@ function CtaStyle( props ) {
 		},
 	}
 
-
-	var id = `.block-editor-page #wpwrap #${ clientId }`
+	var id = `.block-editor-page #wpwrap #uagb-cta-block-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	}
 
 	var styling_css = generateCSS( selectors, id )
 
