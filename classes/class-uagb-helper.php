@@ -1008,7 +1008,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return self::$icon_json;
 			}
 
-			$str             = file_get_contents( $json_file );
+			$str             = UAGB_Helper::get_instance()->get_filesystem()->get_contents( $json_file );
 			self::$icon_json = json_decode( $str, true );
 			return self::$icon_json;
 		}
@@ -1359,17 +1359,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$combined_path = plugin_dir_path( UAGB_FILE ) . 'dist/blocks.style.css';
 			wp_delete_file( $combined_path );
 
-			$handle = fopen( $combined_path, 'a' );
+			$style = '';
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$c_handle = fopen( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css', 'r' );
-				$style    = fread( $c_handle, filesize( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' ) );
-				fclose( $c_handle );
-				fwrite( $handle, $style );
-			}
+				$style .= UAGB_Helper::get_instance()->get_filesystem()->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
 
-			fclose( $handle );
+			}
+			UAGB_Helper::get_instance()->get_filesystem()->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
 		/**
@@ -1399,9 +1396,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				mkdir( $dir_info['path'] );
+				UAGB_Helper::get_instance()->get_filesystem()->mkdir( $dir_info['path'] );
 				// Add an index file for security.
-				file_put_contents( $dir_info['path'] . 'index.html', '' );
+				UAGB_Helper::get_instance()->get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
@@ -1478,9 +1475,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( isset( $assets_info[ $var ] ) ) {
 					// Create a new file.
-					$handle = fopen( $assets_info[ $var ], 'a' );
-					file_put_contents( $assets_info[ $var ], $style_data );
-					fclose( $handle );
+					UAGB_Helper::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 					// Update the post meta.
 					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
@@ -1502,9 +1497,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					if ( file_exists( $assets_info[ $var ] ) ) {
 
-						$handle   = fopen( $assets_info[ $var ], 'r' );
-						$old_data = file_get_contents( $assets_info[ $var ] );
-						fclose( $handle );
+						$old_data = UAGB_Helper::get_instance()->get_filesystem()->get_contents( $assets_info[ $var ] );
 
 						if ( $old_data !== $style_data ) {
 
@@ -1514,9 +1507,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
 
 							// Create a new file.
-							$new_handle = fopen( $new_assets_info[ $var ], 'a' );
-							file_put_contents( $new_assets_info[ $var ], $style_data );
-							fclose( $new_handle );
+							UAGB_Helper::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 							// Update the post meta.
 							update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
@@ -1554,6 +1545,22 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function allow_file_generation() {
 			return get_option( '_uagb_allow_file_generation', 'disabled' );
+		}
+
+		/**
+		 * Get an instance of WP_Filesystem_Direct.
+		 *
+		 * @since x.x.x
+		 * @return object A WP_Filesystem_Direct instance.
+		 */
+		public function get_filesystem() {
+			global $wp_filesystem;
+
+			require_once ABSPATH . '/wp-admin/includes/file.php';
+
+			WP_Filesystem();
+
+			return $wp_filesystem;
 		}
 	}
 
