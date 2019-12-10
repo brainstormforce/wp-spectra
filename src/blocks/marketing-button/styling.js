@@ -9,6 +9,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		titleSpace,
 		//Icon
 		iconPosition,
@@ -204,6 +205,9 @@ function styling( props ) {
 	}
 
 	var id = `#uagb-marketing-btn-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	var styling_css = generateCSS( selectors, id )
 
