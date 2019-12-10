@@ -44,6 +44,7 @@ class UAGBSocialShare extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { classMigrate: true } )
 		this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
 		// Pushing Style tag for this block css.
@@ -531,9 +532,10 @@ class UAGBSocialShare extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-social-share__outer-wrap",
-					`uagb-social-share__layout-${social_layout}`
+					`uagb-social-share__layout-${social_layout}`,
+					`uagb-block-${ this.props.clientId }`
 				) }
-				id={ `uagb-social-share-${ this.props.clientId }` }>
+				>
 					<div className="uagb-social-share__wrap">
 						{
 							socials.map( ( social, index ) => {

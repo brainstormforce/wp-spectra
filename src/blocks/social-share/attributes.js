@@ -22,6 +22,10 @@ for (var i = 1; i <= ITEM_COUNT; i++) {
 }
 
 const attributes = {
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	block_id: {
 		type: "string"
 	},
