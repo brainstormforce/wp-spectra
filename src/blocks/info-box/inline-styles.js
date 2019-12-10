@@ -7,6 +7,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function InfoBoxStyle( props ) {
 	const {
+		classMigrate,
 		headingAlign,
 		headingColor,
 		subHeadingColor,
@@ -302,11 +303,15 @@ function InfoBoxStyle( props ) {
 		}
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }` )
+	var id = `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	}
+	var styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-infobox-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 	return styling_css
 }
 

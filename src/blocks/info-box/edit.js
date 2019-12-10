@@ -1219,8 +1219,8 @@ class UAGBinfoBox extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-infobox__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
 				) }
-				id = { `uagb-infobox-${ this.props.clientId }` }
 				>
 					{ ( ctaType == "all") &&<Fragment>
 						<a className = "uagb-infobox-link-wrap uagb-infbox__link-to-all" rel ="noopener noreferrer"></a>
@@ -1241,6 +1241,8 @@ class UAGBinfoBox extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
