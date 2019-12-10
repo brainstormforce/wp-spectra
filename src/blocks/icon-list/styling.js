@@ -10,6 +10,7 @@ function styling( props ) {
 	const {
 		align,
 		icon_count,
+		classMigrate,
 		icons,
 		gap,
 		inner_gap,
@@ -246,6 +247,9 @@ function styling( props ) {
 
 	var styling_css = ""
 	var id = `#uagb-icon-list-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	styling_css = generateCSS( selectors, id )
 

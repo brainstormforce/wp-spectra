@@ -54,6 +54,8 @@ class UAGBIconList extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		this.props.setAttributes( { classMigrate : true } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
@@ -639,9 +641,9 @@ class UAGBIconList extends Component {
 					"uagb-icon-list__outer-wrap",
 					`uagb-icon-list__layout-${icon_layout}`,
 					( iconPosition == "top" ? "uagb-icon-list__icon-at-top" : "" ),
-					labelClass
-				) }
-				id={ `uagb-icon-list-${ this.props.clientId }` }>
+					labelClass,
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div className="uagb-icon-list__wrap">
 						{
 							icons.map( ( icon, index ) => {
