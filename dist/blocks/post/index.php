@@ -193,14 +193,13 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		'uagb-post__columns-mobile-' . $attributes['mcolumns'],
 	);
 
-	$block_id = 'uagb-block-' . $attributes['block_id'];
+	$block_id  = 'uagb-block-' . $attributes['block_id'];
 	$outerwrap = array(
 		'uagb-post-grid',
 		( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 		'uagb-post__image-position-' . $attributes['imgPosition'],
-		$block_id
+		$block_id,
 	);
-
 
 	switch ( $layout ) {
 		case 'masonry':

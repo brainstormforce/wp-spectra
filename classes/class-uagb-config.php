@@ -833,7 +833,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'            => false,
 							'headingAlign'            => 'center',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
@@ -929,7 +929,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'           => false,
 							'block_id'               => '',
 							'align'                  => 'center',
 							'textAlign'              => 'center',
@@ -1003,7 +1003,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'    => false,
 							'block_id'        => '',
 							'align'           => 'center',
 							'btn_count'       => '2',
@@ -1380,7 +1380,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'          => false,
 							'block_id'              => '',
 							'headingAlign'          => 'left',
 							'descColor'             => '#333',
@@ -1528,7 +1528,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'  => false,
 							'align'         => 'center',
 							'social_count'  => '1',
 							'socials'       => array(
@@ -1564,7 +1564,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'js_assets'   => array( 'uagb-table-of-contents' ),
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'              => false,
 							'block_id'                  => '',
 							'heading'                   => 'Table Of Contents',
 							'disableBullets'            => false,
@@ -1660,7 +1660,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'           => false,
 							'block_id'               => '',
 							'align'                  => 'center',
 							'tag'                    => 'h3',
@@ -1734,7 +1734,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-slick-js' ),
 						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
-							'classMigrate'             => false,
+							'classMigrate'            => false,
 							'headingAlign'            => 'center',
 							'companyColor'            => '#888888',
 							'descColor'               => '#333',
