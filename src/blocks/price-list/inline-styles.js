@@ -7,6 +7,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function RestMenuStyle( props ) {
 	const {
+		classMigrate,
 		headingAlign,
 		priceColor,
 		descColor,
@@ -67,7 +68,6 @@ function RestMenuStyle( props ) {
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
-	var clientId = "uagb-rm-"+props.clientId
 
 	var align = headingAlign
 	if( "left" === align ){
@@ -198,7 +198,10 @@ function RestMenuStyle( props ) {
 	}
 
 	var styling_css = ""
-	var id = `#wpwrap #${ clientId }`
+	var id = "#wpwrap #uagb-rm-"+props.clientId
+	if ( classMigrate ) {
+		id = `#wpwrap .uagb-block-${ props.clientId }`
+	}
 
 	styling_css = generateCSS( selectors, id )
 
