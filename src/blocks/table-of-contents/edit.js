@@ -74,6 +74,8 @@ class UAGBTableOfContentsEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		this.props.setAttributes( { classMigrate: true } )
+
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
 		$scrollTop.setAttribute( "class", "uagb-toc__scroll-top dashicons dashicons-arrow-up-alt2" )
@@ -946,9 +948,10 @@ class UAGBTableOfContentsEdit extends Component {
 					className,
 					`uagb-toc__align-${align}`,
 					`uagb-toc__columns-${tColumnsDesktop}`,
-					( initialCollapse ) ? `uagb-toc__collapse` : ''
+					( initialCollapse ) ? `uagb-toc__collapse` : '',
+					`uagb-block-${ this.props.clientId }`
 				) }
-				id={ `uagb-toc-${ this.props.clientId }` }>
+				>
 					<div className="uagb-toc__wrap">
 						<div className="uagb-toc__title-wrap">
 							<RichText

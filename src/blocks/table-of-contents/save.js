@@ -45,12 +45,13 @@ export default function save( props ) {
 			className,
 			`uagb-toc__align-${align}`,
 			`uagb-toc__columns-${tColumns}`,
-			( initialCollapse ) ? `uagb-toc__collapse` : ''
+			( initialCollapse ) ? `uagb-toc__collapse` : '',
+			`uagb-block-${ block_id }`
 		) }
 		data-scroll={smoothScroll}
 		data-offset={smoothScrollOffset}
 		data-delay={smoothScrollDelay}
-		id={ `uagb-toc-${ block_id }` }>
+		>
 			<div className="uagb-toc__wrap">
 				<div className="uagb-toc__title-wrap">
 					<RichText.Content
