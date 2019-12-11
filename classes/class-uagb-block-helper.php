@@ -4655,11 +4655,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-toc-' . $id );
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
 
-			$tablet = UAGB_Helper::generate_css( $t_selectors, '#uagb-toc-' . $id );
+			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 
-			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-toc-' . $id );
+			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
+
+			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
 
 			if ( '' !== $attr['scrollToTopColor'] ) {
 				$desktop .= '.uagb-toc__scroll-top { color: ' . $attr['scrollToTopColor'] . '; }';
