@@ -1406,11 +1406,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 
 			// @codingStandardsIgnoreEnd.
-			$desktop = UAGB_Helper::generate_css( $selectors, '#uagb-testimonial-' . $id );
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
+			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 
-			$tablet = UAGB_Helper::generate_css( $t_selectors, '#uagb-testimonial-' . $id );
+			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
 
-			$mobile = UAGB_Helper::generate_css( $m_selectors, '#uagb-testimonial-' . $id );
+			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
 
 			$generated_css = array(
 				'desktop' => $desktop,
@@ -4731,7 +4732,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			], $id );
 
 			$settings = json_encode($slick_options);
-			$selector =	'#uagb-testimonial-'. $id;
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
+			$selector =	$base_selector . $id;
 			$js = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' ); } } );';
 
 			return $js;
@@ -4765,7 +4767,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$via = isset( $attr['iconShareVia'] ) ? $attr['iconShareVia'] : '';
 
-			$selector =	'#uagb-blockquote-'. $id;
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
+			$selector =	$base_selector . $id;
 
 			$js = 'jQuery( "' . $selector . '" ).find( ".uagb-blockquote__tweet-button" ).click(function(){'.
 				  'var content = jQuery("' . $selector . '").find(".uagb-blockquote__content").text();'.
@@ -4785,7 +4788,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 */
 		public static function get_social_share_js( $id ) {
 
-			$selector = '#uagb-social-share-' . $id;
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
+			$selector = $base_selector . $id;
 			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
 			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
 				ssLink[i].addEventListener( "click", function() {' .
@@ -4814,8 +4818,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-
-			$selector =	'#uagb-toc-'. $id;
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
+			$selector =	$base_selector . $id;
 
 			$js = 'jQuery( document ).ready(function() { ' .
 					 'UAGBTableOfContents._run( ' . json_encode( $attr ) . ', "'. $selector .'" ); '.
