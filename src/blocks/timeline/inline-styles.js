@@ -100,13 +100,6 @@ function contentTimelineStyle( props ) {
 		ctaBackground,
 	} = props.attributes
 
-	if( props.clientId ){
-		var clientId = props.clientId
-	}else{
-		var clientId = block_id
-	}
-
-
 	var resp_selectors = "left"
 
 	var selectors = {
@@ -425,7 +418,7 @@ function contentTimelineStyle( props ) {
 	}
 
 	var styling_css = ""
-	var id = `.block-editor-page #wpwrap .uagb-block-${ clientId }`
+	var id = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
 
 	styling_css = generateCSS( selectors, id )
 

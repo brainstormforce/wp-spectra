@@ -691,9 +691,9 @@ class UAGBcontentTimeline extends Component {
 				</BlockControls>
 				<div  className={ classnames(
 					className,
-					"uagb-timeline__outer-wrap"
-				) }
-				id = { `uagb-ctm-${ this.props.clientId }` } >
+					"uagb-timeline__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						...ContentTmClasses( this.props.attributes ),
@@ -718,6 +718,7 @@ class UAGBcontentTimeline extends Component {
 	componentDidMount() {
 		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { classMigrate: true } )
 
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
