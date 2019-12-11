@@ -87,7 +87,7 @@ function uagb_post_block_add_script() {
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
 
-					var $scope = $( '#uagb-post__masonry-<?php echo $key; ?>' );
+					var $scope = $( '.uagb-block-<?php echo $key; ?>' );
 					$scope.imagesLoaded( function() {
 						$scope.find( '.is-masonry' ).isotope();
 					});

@@ -69,7 +69,7 @@ function styling( props ) {
 	var mobile_selectors = {}
 
 	var selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" .editor-rich-text p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 			"font-family": descFontFamily,
@@ -161,7 +161,7 @@ function styling( props ) {
 	}
 
 	mobile_selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" .editor-rich-text p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 		},
 		" .uagb-team__prefix": {
@@ -180,7 +180,7 @@ function styling( props ) {
 	}
 
 	tablet_selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" .editor-rich-text p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 		},
 		" .uagb-team__prefix": {
