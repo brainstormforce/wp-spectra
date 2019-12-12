@@ -182,7 +182,7 @@ function InfoBoxStyle( props ) {
 			"fill": ctaLinkHoverColor,
 		},
 		// Prefix Style
-		" .editor-rich-text .uagb-ifb-title-prefix" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title-prefix" : {
 			"font-size" : generateCSSUnit( prefixFontSize, prefixFontSizeType ),
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
@@ -191,7 +191,7 @@ function InfoBoxStyle( props ) {
 			"margin-bottom": generateCSSUnit( prefixSpace, "px" ),
 		},
 		// Title Style
-		" .editor-rich-text .uagb-ifb-title" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title" : {
 			"font-size" : generateCSSUnit( headFontSize, headFontSizeType ),
 			"font-family": headFontFamily,
 			"font-weight": headFontWeight,
@@ -200,7 +200,7 @@ function InfoBoxStyle( props ) {
 			"margin-bottom": generateCSSUnit( headSpace, "px" ),
 		},
 		// Description Style
-		" .editor-rich-text .uagb-ifb-desc" : {
+		" .block-editor-rich-text__editable.uagb-ifb-desc" : {
 			"font-size" : generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
@@ -244,15 +244,15 @@ function InfoBoxStyle( props ) {
 	}
 
 	var tablet_selectors = {
-		" .editor-rich-text .uagb-ifb-desc" : {
+		" .block-editor-rich-text__editable.uagb-ifb-desc" : {
 			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
-		" .editor-rich-text .uagb-ifb-title" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title" : {
 			"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 			"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 		},
-		" .editor-rich-text .uagb-ifb-title-prefix" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title-prefix" : {
 			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
 			"line-height": generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
 		},
@@ -274,15 +274,15 @@ function InfoBoxStyle( props ) {
 	}
 
 	var mobile_selectors = {
-		" .editor-rich-text .uagb-ifb-desc" : {
+		" .block-editor-rich-text__editable.uagb-ifb-desc" : {
 			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
-		" .editor-rich-text .uagb-ifb-title" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title" : {
 			"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 			"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 		},
-		" .editor-rich-text .uagb-ifb-title-prefix" : {
+		" .block-editor-rich-text__editable.uagb-ifb-title-prefix" : {
 			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
 			"line-height": generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
 		},

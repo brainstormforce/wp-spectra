@@ -121,7 +121,7 @@ function CtaStyle( props ) {
 		},
 
 		// Title Style
-		" .editor-rich-text .uagb-cta__title" : {
+		" .block-editor-rich-text__editable.uagb-cta__title" : {
 			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"font-family": titleFontFamily,
 			"font-weight": titleFontWeight,
@@ -131,7 +131,7 @@ function CtaStyle( props ) {
 		},
 
 		// Description Style
-		" .editor-rich-text .uagb-cta__desc" : {
+		" .block-editor-rich-text__editable.uagb-cta__desc" : {
 			"font-size" : generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-family": descFontFamily,
 			"font-weight": descFontWeight,
@@ -173,11 +173,11 @@ function CtaStyle( props ) {
 	}
 
 	var tablet_selectors = {
-		" .editor-rich-text .uagb-cta__title" : {
+		" .block-editor-rich-text__editable.uagb-cta__title" : {
 			"font-size" : generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 		},
-		" .editor-rich-text .uagb-cta__desc" : {
+		" .block-editor-rich-text__editable.uagb-cta__desc" : {
 			"font-size" : generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
@@ -196,11 +196,11 @@ function CtaStyle( props ) {
 	}
 
 	var mobile_selectors = {
-		" .editor-rich-text .uagb-cta__title" : {
+		" .block-editor-rich-text__editable.uagb-cta__title" : {
 			"font-size" : generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 		},
-		" .editor-rich-text .uagb-cta__desc" : {
+		" .block-editor-rich-text__editable.uagb-cta__desc" : {
 			"font-size" : generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},

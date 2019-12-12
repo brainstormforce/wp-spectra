@@ -110,7 +110,7 @@ function styling( props ) {
 	}
 
 	var selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-family": descFontFamily,
 			"font-weight": descFontWeight,
@@ -119,7 +119,7 @@ function styling( props ) {
 			"margin-bottom": generateCSSUnit( descSpace, "px" ),
 			"text-align": text_align,
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSize, authorFontSizeType ),
 			"font-family": authorFontFamily,
 			"font-weight": authorFontWeight,
@@ -261,11 +261,11 @@ function styling( props ) {
 	}
 
 	var tablet_selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSizeTablet, authorFontSizeType ),
 			"line-height": generateCSSUnit( authorLineHeightTablet, authorLineHeightType ),
 		},
@@ -287,11 +287,11 @@ function styling( props ) {
 	}
 
 	var mobile_selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSizeMobile, authorFontSizeType ),
 			"line-height": generateCSSUnit( authorLineHeightMobile, authorLineHeightType ),
 		},

@@ -4420,9 +4420,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[" .uagb-marketing-btn__link"]["background"] = UAGB_Helper::hex2rgba( $attr["backgroundColor"], $attr['backgroundOpacity'] );
 
 				// Hover Background
-				$selectors[" .uagb-marketing-btn__link:hover"] = array(
-					"background" => UAGB_Helper::hex2rgba( $attr["backgroundHoverColor"], $attr['backgroundHoverOpacity'] ),
-				);
+				$selectors[" .uagb-marketing-btn__link:hover"]["background"] = UAGB_Helper::hex2rgba( $attr["backgroundHoverColor"], $attr['backgroundHoverOpacity'] );
 
 			} else if ( "gradient" == $attr["backgroundType"] ) {
 

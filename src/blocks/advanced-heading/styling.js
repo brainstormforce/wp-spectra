@@ -50,7 +50,7 @@ function styling( props ) {
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,
 		},
-		" .editor-rich-text .uagb-desc-text": {
+		" .block-editor-rich-text__editable.uagb-desc-text": {
 			"text-align": headingAlign,
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
@@ -60,7 +60,7 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+	selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-heading-text"] = {
 		"text-align": headingAlign,
 		"font-family": headFontFamily,
 		"font-weight": headFontWeight,
@@ -80,20 +80,20 @@ function styling( props ) {
 		}
 	}
 
-	tablet_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+	tablet_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-heading-text"] = {
 		"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
 		"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
 	}
-	tablet_selectors[" .editor-rich-text .uagb-desc-text"] = {
+	tablet_selectors[" .block-editor-rich-text__editable.uagb-desc-text"] = {
 		"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 		"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 	}
 
-	mobile_selectors[" .editor-rich-text " + headingTag + ".uagb-heading-text"] = {
+	mobile_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-heading-text"] = {
 		"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
 		"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
 	}
-	mobile_selectors[" .editor-rich-text .uagb-desc-text"] = {
+	mobile_selectors[" .block-editor-rich-text__editable.uagb-desc-text"] = {
 		"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 		"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 	}
