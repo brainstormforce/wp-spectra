@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import TableOfContents from './components';
 import attributes from "./attributes"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const {
 	RichText
