@@ -89,10 +89,16 @@ const extractConfig = {
 				plugins: [
 					autoprefixer( {
 						browsers: [
-							">1%",
-							"last 4 versions",
-							"Firefox ESR",
-							"not ie < 9", // React doesn't support IE8 anyway
+							'> 1%',
+                            'ie >= 11',
+                            'last 1 Android versions',
+                            'last 1 ChromeAndroid versions',
+                            'last 2 Chrome versions',
+                            'last 2 Firefox versions',
+                            'last 2 Safari versions',
+                            'last 2 iOS versions',
+                            'last 2 Edge versions',
+                            'last 2 Opera versions'
 						],
 						flexbox: "no-2009",
 					} ),
