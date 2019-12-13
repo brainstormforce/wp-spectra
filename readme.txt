@@ -156,8 +156,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.14.3 =
+* Fix: Icon List - Block validation issue for WordPress 5.3.1.
+* Fix: Blockquote - Block validation issue for WordPress 5.3.1.
 * Fix: IE11 - Console error on New Post page issue fixed.
-* Fix: Icon List - WP5.3.1 - Console error on New Post page issue fixed.
 
 = 1.14.2 =
 * Fix: Post - Custom post taxonomy creating errors in some scenario.
