@@ -78,6 +78,8 @@ registerBlockType( "uagb/icon-list", {
 								}
 							}
 
+							console.log(icon)
+
 							let target = ( icon.target ) ? "_blank" : "_self"
 							let link_url = ( !icon.disableLink ) ? icon.link : "/"
 

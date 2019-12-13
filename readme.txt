@@ -4,8 +4,8 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.3
-Stable tag: 1.14.2.1
+Tested up to: 5.3.1
+Stable tag: 1.14.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,8 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.14.2.1 =
+= 1.14.3 =
 * Fix: IE11 - Console error on New Post page issue fixed.
+* Fix: Icon List - WP5.3.1 - Console error on New Post page issue fixed.
 
 = 1.14.2 =
 * Fix: Post - Custom post taxonomy creating errors in some scenario.
