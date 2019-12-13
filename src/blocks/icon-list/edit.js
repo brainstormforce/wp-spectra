@@ -447,7 +447,8 @@ class UAGBIconList extends Component {
 											"icon_border_color": cloneIcons[ 0 ].icon_border_color,
 											"icon_border_hover_color": cloneIcons[ 0 ].icon_border_hover_color,
 											"link": cloneIcons[ 0 ].link,
-											"target": cloneIcons[ 0 ].target
+											"target": cloneIcons[ 0 ].target,
+											"disableLink" : cloneIcons[ 0 ].disableLink,
 										} )
 									} ) }
 

@@ -179,7 +179,6 @@ const deprecated = [
 	{
 		attributes,
 		save: props => {
-
 			const { attributes, className } = props
 
 			const {
@@ -255,7 +254,7 @@ const deprecated = [
 					</div>
 				</div>
 			)
-		},
+		}
 	}
 ]
 

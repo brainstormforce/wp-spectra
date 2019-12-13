@@ -4,7 +4,7 @@
 
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
-import TweetButton from "./components/TweetButton"
+import TweetButtonCTA from "./components/TweetButtonCTA"
 import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
 import AuthorImage from "./components/AuthorImage"
@@ -62,7 +62,7 @@ export default function save( props ) {
 							{ <AuthorImage attributes={props.attributes} /> }
 							{ author !== "" && <AuthorText attributes={props.attributes} setAttributes = "not_set" props = { props } /> }
 								</div>
-							{ enableTweet &&  <TweetButton attributes={props.attributes} /> }
+							{ enableTweet &&  <TweetButtonCTA attributes={props.attributes} /> }
 						</footer>
 					</div>
 				</blockquote>

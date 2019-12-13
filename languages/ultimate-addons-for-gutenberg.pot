@@ -5,7 +5,11 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.14.3\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2019-12-05 05:00:33+00:00\n"
+=======
+"POT-Creation-Date: 2019-12-13 09:19:03+00:00\n"
+>>>>>>> 7e86ad6ef27645bdc44081b8d53fe904c1264b3d
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"

@@ -32,9 +32,8 @@ export default function save( props ) {
 			`uagb-icon-list__layout-${icon_layout}`,
 			( iconPosition == "top" ? "uagb-icon-list__icon-at-top" : "" ),
 			labelClass,
-			`uagb-block-${ block_id }`
-		) }
-		>
+			`uagb-block-${ block_id}`
+		) }>
 			<div className="uagb-icon-list__wrap">
 				{
 					icons.map( ( icon, index ) => {
@@ -57,7 +56,7 @@ export default function save( props ) {
 						}
 
 						let target = ( icon.target ) ? "_blank" : "_self"
-						let link_url = ( !icon.disableLink ) ? icon.link : "javascript:void(0);"
+						let link_url = ( !icon.disableLink ) ? icon.link : "/"
 
 						return (
 							<a
