@@ -126,7 +126,7 @@ function FontFamilyControl( props ) {
 
 	return (
 		<div className="uag-typography-font-family-options">
-			<label class="uag-typography-font-family-label">{ __( "Font Family" ) }</label>
+			<label className="uag-typography-font-family-label">{ __( "Font Family" ) }</label>
 			<Select
 				options={ fonts }
 				value={ { value: props.fontFamily.value, label: props.fontFamily.value, weight: fontWeightObj } }

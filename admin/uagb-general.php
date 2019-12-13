@@ -9,10 +9,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$blocks    = UAGB_Helper::get_block_options();
-$kb_data   = UAGB_Helper::knowledgebase_data();
-$enable_kb = $kb_data['enable_knowledgebase'];
-$kb_url    = $kb_data['knowledgebase_url'];
+$blocks                = UAGB_Helper::get_block_options();
+$allow_file_generation = UAGB_Helper::allow_file_generation();
+$kb_data               = UAGB_Helper::knowledgebase_data();
+$enable_kb             = $kb_data['enable_knowledgebase'];
+$kb_url                = $kb_data['knowledgebase_url'];
 
 $support_data   = UAGB_Helper::support_data();
 $enable_support = $support_data['enable_support'];
@@ -132,7 +133,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</h2>
 					<img class="uagb-ast-img" src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/welcome-screen-astra.jpg' ); ?>">
 					<div class="inside">
-						<p><?php esc_html_e( 'Join over 200,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<p><?php esc_html_e( 'Join over 500,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<h4><?php esc_html_e( 'Why Astra Theme?', 'ultimate-addons-for-gutenberg' ); ?></h4>
 						<p><strong><?php esc_html_e( 'Faster Performance - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Easy Customization - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks.', 'ultimate-addons-for-gutenberg' ); ?></p>
@@ -150,6 +151,47 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</div>
 				</div>
 				<?php } ?>
+				<div class="postbox">
+					<h2 class="hndle ast-normal-cusror">
+						<span class="dashicons dashicons-admin-page"></span>
+						<span>
+							<?php printf( esc_html( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+						</span>
+					</h2>
+					<div class="inside">
+						<p class="warning">
+						</p>
+							<?php _e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+						<p>
+						<?php
+						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
+						$a_tag_open               = '<a target="_blank" rel="noopener" href="' . $file_generation_doc_link . '">';
+						$a_tag_close              = '</a>';
+
+						printf(
+							/* translators: %1$s: a tag open. */
+							__( 'Please read %1$s this article %2$s to know more.', 'ultimate-addons-for-gutenberg' ),
+							$a_tag_open,
+							$a_tag_close
+						);
+						?>
+						</p>
+						<label for="uag_file_generation">
+							<?php
+							if ( 'disabled' === $allow_file_generation ) {
+								$val                    = 'enabled';
+								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else {
+								$val                    = 'disabled';
+								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
+							}
+							?>
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
+								<?php echo esc_html( $file_generation_string ); ?>
+							</button>
+						</label>
+					</div>
+				</div>
 				<div class="postbox">
 					<h2 class="hndle uagb-normal-cusror">
 						<span class="dashicons dashicons-book"></span>

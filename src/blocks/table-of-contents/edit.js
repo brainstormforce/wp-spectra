@@ -33,7 +33,7 @@ const {
 	InspectorControls,
 	RichText,
 	ColorPalette
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	Button,
@@ -129,6 +129,16 @@ class UAGBTableOfContentsEdit extends Component {
 			paddingTypeMobile,
 			paddingTypeTablet,
 			paddingTypeDesktop,
+			//Padding,
+			vMarginDesktop,
+			vMarginTablet,
+			vMarginMobile,
+			hMarginDesktop,
+			hMarginTablet,
+			hMarginMobile,
+			marginTypeMobile,
+			marginTypeTablet,
+			marginTypeDesktop,
 			headingBottom,
 			// Content Padding,
 			contentPaddingDesktop,
@@ -252,7 +262,7 @@ class UAGBTableOfContentsEdit extends Component {
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Select the heading to consider when generating the table" ) }</h2>
 						{mappingHeaders.map((a, i) => (
-							<PanelRow>
+							<PanelRow key={i}>
 								<label htmlFor={`ub_toggle_h${i + 1}`}>{`H${i + 1}`}</label>
 								<ToggleControl
 									id={`ub_toggle_h${i + 1}`}
@@ -772,6 +782,119 @@ class UAGBTableOfContentsEdit extends Component {
 								}
 							}
 						</TabPanel>
+						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ marginTypeMobile === "px" } aria-pressed={ marginTypeMobile === "px" } onClick={ () => setAttributes( { marginTypeMobile: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ marginTypeMobile === "%" } aria-pressed={ marginTypeMobile === "%" } onClick={ () => setAttributes( { marginTypeMobile: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "List Margin" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vMarginMobile }
+													onChange={ ( value ) => setAttributes( { vMarginMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hMarginMobile }
+													onChange={ ( value ) => setAttributes( { hMarginMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ marginTypeTablet === "px" } aria-pressed={ marginTypeTablet === "px" } onClick={ () => setAttributes( { marginTypeTablet: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ marginTypeTablet === "%" } aria-pressed={ marginTypeTablet === "%" } onClick={ () => setAttributes( { marginTypeTablet: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "List Margin" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vMarginTablet }
+													onChange={ ( value ) => setAttributes( { vMarginTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hMarginTablet }
+													onChange={ ( value ) => setAttributes( { hMarginTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ marginTypeDesktop === "px" } aria-pressed={ marginTypeDesktop === "px" } onClick={ () => setAttributes( { marginTypeDesktop: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ marginTypeDesktop === "%" } aria-pressed={ marginTypeDesktop === "%" } onClick={ () => setAttributes( { marginTypeDesktop: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "List Margin" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vMarginDesktop }
+													onChange={ ( value ) => setAttributes( { vMarginDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hMarginDesktop }
+													onChange={ ( value ) => setAttributes( { hMarginDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Border" ) }</h2>
 						<SelectControl
 							label={ __( "Border Style" ) }

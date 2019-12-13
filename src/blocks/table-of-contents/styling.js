@@ -27,6 +27,16 @@ function styling( props ) {
 		scrollToTopColor,
 		scrollToTopBgColor,
 		headingColor,
+		//Margin
+		vMarginDesktop,
+		vMarginTablet,
+		vMarginMobile,
+		hMarginDesktop,
+		hMarginTablet,
+		hMarginMobile,
+		marginTypeMobile,
+		marginTypeTablet,
+		marginTypeDesktop,
 		//Padding,
 		vPaddingDesktop,
 		vPaddingTablet,
@@ -112,6 +122,12 @@ function styling( props ) {
 			"padding-top": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
 			"padding-bottom": generateCSSUnit( vPaddingDesktop, paddingTypeDesktop ),
 			"background": backgroundColor
+		},
+		" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" : {
+			"margin-left": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
+			"margin-right": generateCSSUnit( hMarginDesktop, marginTypeDesktop ),
+			"margin-top": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
+			"margin-bottom": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
 		    "padding-top": 0

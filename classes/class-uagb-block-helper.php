@@ -106,7 +106,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'boxed' != $attr['contentWidth'] ) {
 					if ( isset( $attr['themeWidth'] ) && $attr['themeWidth'] == true ) {
-						$inner_width = '#CONTENT_WIDTH#';
+						$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 					} else {
 						if ( isset( $attr['innerWidth'] ) ) {
 							$inner_width = UAGB_Helper::get_css_value( $attr['innerWidth'], $attr['innerWidthType'] );
@@ -279,7 +279,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( isset( $attr['contentWidth'] ) ) {
 				if ( 'theme' == $attr['contentWidth'] ) {
-					$inner_width = '#CONTENT_WIDTH#';
+					$inner_width = UAGB_Helper::get_css_value( $content_width, 'px' );
 				} else if ( 'custom' == $attr['contentWidth'] ) {
 					$inner_width = UAGB_Helper::get_css_value( $attr['width'], $attr['widthType'] );
 				}
@@ -4528,6 +4528,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
 				),
+				" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" => array(
+					"margin-left" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-right" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-top" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+					"margin-bottom" => UAGB_Helper::get_css_value( $attr["vMarginDesktop"], $attr["marginTypeDesktop"] ),
+				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
@@ -4700,11 +4706,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$settings = json_encode($slick_options);
 			$selector =	'#uagb-testimonial-'. $id;
-			$js = 'if( jQuery( ".wp-block-uagb-testimonial" ).length > 0 ){ ' .
-				'return true ' .
-				'} else {' .
-				'jQuery( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' );'.
-			'}';
+			$js = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' ); } } );';
 
 			return $js;
 			// @codingStandardsIgnoreEnd.
@@ -4756,16 +4758,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $id ) {
+
 			$selector = '#uagb-social-share-' . $id;
-			$js       = 'jQuery( " ' . $selector . ' " ).find( ".uagb-ss__link" ).click(function(){ ' .
-					'var social_url = jQuery( this ).data( "href" ); ' .
+			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
+			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
+				ssLink[i].addEventListener( "click", function() {' .
+					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
 						'target = "_self";' .
 					'}' .
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
-				'});';
+				'});' . '}';
 
 			return $js;
 		}

@@ -235,6 +235,8 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		<?php
 		while ( $query->have_posts() ) {
 			$query->the_post();
+			// Filter to modify the attributes based on content requirement.
+			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
 			wp_reset_postdata();
@@ -1648,7 +1650,7 @@ function uagb_render_title( $attributes ) {
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.14.0
  */
 function uagb_render_meta_author( $attributes ) {
 
@@ -1668,7 +1670,7 @@ function uagb_render_meta_author( $attributes ) {
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.14.0
  */
 function uagb_render_meta_date( $attributes ) {
 
@@ -1689,7 +1691,7 @@ function uagb_render_meta_date( $attributes ) {
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.14.0
  */
 function uagb_render_meta_comment( $attributes ) {
 
@@ -1709,7 +1711,7 @@ function uagb_render_meta_comment( $attributes ) {
  *
  * @param array $attributes Array of block attributes.
  *
- * @since x.x.x
+ * @since 1.14.0
  */
 function uagb_render_meta_taxonomy( $attributes ) {
 

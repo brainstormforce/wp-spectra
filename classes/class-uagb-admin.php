@@ -70,6 +70,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 
 			add_action( 'wp_ajax_uag-theme-activate', __CLASS__ . '::theme_activate' );
 
+			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
+
 			// Enqueue admin scripts.
 			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG === $_REQUEST['page'] ) {
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
@@ -427,6 +429,23 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			echo 'success';
 
 			die();
+		}
+
+		/**
+		 * File Generation Flag
+		 *
+		 * @since 1.14.0
+		 */
+		public static function file_generation() {
+
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			wp_send_json_success(
+				array(
+					'success' => true,
+					'message' => update_option( '_uagb_allow_file_generation', $_POST['value'] ),
+				)
+			);
 		}
 
 		/**

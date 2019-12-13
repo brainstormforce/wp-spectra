@@ -42,7 +42,7 @@ const {
 	BlockControls,
 	ColorPalette,
 	RichText
-} = wp.editor
+} = wp.blockEditor
 
 const { withSelect } = wp.data
 

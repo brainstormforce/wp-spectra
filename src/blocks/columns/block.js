@@ -19,7 +19,7 @@ const {
 
 const {
 	InnerBlocks,
-} = wp.editor
+} = wp.blockEditor
 
 registerBlockType( "uagb/columns", {
 	title: uagb_blocks_info.blocks["uagb/columns"]["title"],
@@ -36,6 +36,10 @@ registerBlockType( "uagb/columns", {
 	getEditWrapperProps( attributes ) {
 		return { "data-align": attributes.align }
 		return { "data-valign": attributes.vAlign }
+	},
+	supports: {
+		// Add EditorsKit block navigator toolbar
+		editorsKitBlockNavigator: true,
 	},
 	save : function( props ) {
 

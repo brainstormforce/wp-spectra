@@ -17,7 +17,7 @@ const {
 
 const {
 	RichText
-} = wp.editor
+} = wp.blockEditor
 
 
 registerBlockType( "uagb/advanced-heading", {

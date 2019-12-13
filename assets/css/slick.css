@@ -103,7 +103,6 @@
 	top: 50%;
 	display: block;
 	width: auto;
-	height: auto;
 	padding: 0;
 	-webkit-transform: translate(0, -50%);
 	-ms-transform: translate(0, -50%);
@@ -210,7 +209,7 @@
 }
 
 .uagb-slick-carousel ul.slick-dots li button:before {
-	font-family: 'slick';
+	font-family: none;
     font-size: 30px;
     line-height: 20px;
     position: absolute;

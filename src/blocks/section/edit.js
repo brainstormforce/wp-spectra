@@ -22,7 +22,7 @@ const {
 	InnerBlocks,
 	MediaUpload,
 	PanelColorSettings
-} = wp.editor
+} = wp.blockEditor
 
 const {
 	PanelBody,
