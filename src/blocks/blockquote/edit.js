@@ -2,7 +2,7 @@
 import classnames from "classnames"
 
 // Import icon.
-import TweetButton from "./components/TweetButton"
+import TweetButtonCTA from "./components/TweetButtonCTA"
 import Description from "./components/Description"
 import AuthorText from "./components/AuthorText"
 import AuthorImage from "./components/AuthorImage"
@@ -1146,7 +1146,7 @@ class UAGBBlockQuote extends Component {
 					      		{ <AuthorImage attributes={attributes} /> }
 					      		{ <AuthorText attributes={attributes} setAttributes = { setAttributes } props = { this.props } /> }
 									</div>
-					      	{ enableTweet &&  <TweetButton attributes={attributes} /> }
+					      	{ enableTweet &&  <TweetButtonCTA attributes={attributes} /> }
 					   </footer>
 							</div>
 						</blockquote>
