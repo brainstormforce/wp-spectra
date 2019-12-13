@@ -24,7 +24,7 @@ class CTA extends React.Component {
 			</span>
 		}
 
-		var link = "javascript:void(0)" 
+		var link = "/" 
 		if( setAttributes == "not_set" ){
 			link = attributes.ctaLink
 		}
