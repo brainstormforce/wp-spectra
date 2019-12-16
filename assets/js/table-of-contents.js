@@ -115,6 +115,25 @@
 		 */
 		_run: function( attr, id ) {
 
+			var excludedSelectors = [];
+
+			$elements = jQuery( 'body' ).find( 'h3,h4,h5' ).not( 'h2' ).filter(function (index, heading) {
+				return !jQuery(heading).closest(excludedSelectors).length; // Handle excluded selectors if there are any
+			});
+
+			console.log($elements);
+
+			$elements.before(function (index) {
+
+
+				var anchor = jQuery( $elements[index] ).text()
+								.toString()
+								.toLowerCase()
+								.replace(/( |<.+?>|&nbsp;)/g, '-');
+				console.log(anchor);
+				return '<span id="' + anchor + '-' + index + '" class="uag-some-class"></span>';
+			});
+
 			scroll_to_top = attr.scrollToTop
 
 			scroll_element = $( ".uagb-toc__scroll-top" )
