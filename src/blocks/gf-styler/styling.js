@@ -663,11 +663,11 @@ function styling( props ) {
 		},
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-gf-styler-${ props.clientId }` )
+	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId }` )
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-gf-styler-${ props.clientId }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-gf-styler-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

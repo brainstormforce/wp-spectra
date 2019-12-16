@@ -67,6 +67,8 @@ class UAGBColumns extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		this.props.setAttributes( { classMigrate: true } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId )
@@ -1217,9 +1219,9 @@ class UAGBColumns extends Component {
 						`uagb-columns__gap-${columnGap}`,
 						`align${ align }`,
 						reverse_tablet,
-						reverse_mobile
+						reverse_mobile,
+						`uagb-block-${this.props.clientId}`
 					) }
-					id={ `uagb-columns-${this.props.clientId}` }
 				>
 					<div className="uagb-columns__overlay"></div>
 					{ top_divider_html }

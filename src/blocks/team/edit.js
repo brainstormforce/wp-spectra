@@ -835,9 +835,9 @@ class UAGBTeam extends Component {
 						"uagb-team__outer-wrap",
 						`uagb-team__image-position-${imgPosition}`,
 						`uagb-team__align-${align}`,
-						`uagb-team__stack-${stack}`
-					) }
-					id={ `uagb-team-${ this.props.clientId }` }>
+						`uagb-team__stack-${stack}`,
+						`uagb-block-${ this.props.clientId }`
+					) }>
 					<div className = "uagb-team__wrap">
 
 						{ ( imgPosition == "left") && image_html }
@@ -868,6 +868,7 @@ class UAGBTeam extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

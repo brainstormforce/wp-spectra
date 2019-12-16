@@ -20,11 +20,11 @@
 		color: inherit;
 	}
 
-	.editor-rich-text .uagb-ifb-title-prefix {
+	.block-editor-rich-text__editable.uagb-ifb-title-prefix {
 		margin-bottom: 5px;
 	}
 
-	.editor-rich-text .uagb-ifb-title {
+	.block-editor-rich-text__editable.uagb-ifb-title {
 		margin-bottom: 10px;
 	}
 
@@ -32,7 +32,8 @@
 		margin-bottom: 10px;
 	}
 
-	.editor-rich-text .uagb-ifb-desc {
+	.block-editor-rich-text__editable.uagb-ifb-desc {
+		margin: 0;
 		margin-bottom: 10px;
 	}
 

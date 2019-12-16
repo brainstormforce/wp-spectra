@@ -35,9 +35,9 @@ class Blog extends React.Component {
 				className={ classnames(
 					className,
 					"uagb-post-grid",
-					`uagb-post__image-position-${ imgPosition }`
+					`uagb-post__image-position-${ imgPosition }`,
+					`uagb-block-${ block_id }`
 				) }
-				id={ `uagb-post__grid-${ block_id }` }
 			>
 				<div
 					className={ classnames(

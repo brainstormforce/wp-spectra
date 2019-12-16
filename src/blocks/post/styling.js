@@ -7,7 +7,7 @@
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
 import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
-function styling( props, id ) {
+function styling( props ) {
 
 	const {
 		newTab,
@@ -273,11 +273,11 @@ function styling( props, id ) {
 
 	var styling_css = ""
 
-	styling_css = generateCSS( selectors, `#${id}-${ props.clientId }` )
+	styling_css = generateCSS( selectors, `.uagb-block-${ props.clientId }` )
 
-	styling_css += generateCSS( tablet_selectors, `#${id}-${ props.clientId }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `.uagb-block-${ props.clientId }`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `#${id}-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `.uagb-block-${ props.clientId }`, true, "mobile" )
 
 	return styling_css
 }

@@ -9,6 +9,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
@@ -172,6 +173,9 @@ function styling( props ) {
 
 	var styling_css = ""
 	var id = `#uagb-section-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	styling_css = generateCSS( selectors, id )
 

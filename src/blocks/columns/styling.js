@@ -9,6 +9,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		backgroundType,
 		backgroundVideoColor,
 		backgroundImageColor,
@@ -166,12 +167,16 @@ function styling( props ) {
 	}
 
 	var styling_css = ""
+	var id = `#uagb-columns-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
-	styling_css = generateCSS( selectors, `#uagb-columns-${ props.clientId }` )
+	styling_css = generateCSS( selectors, id )
 
-	styling_css += generateCSS( tablet_selectors, `#uagb-columns-${ props.clientId }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `#uagb-columns-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, id, true, "mobile" )
 
 	return styling_css
 }

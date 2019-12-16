@@ -2,6 +2,10 @@
  * BLOCK: UAGB Section Attributes
  */
 const attributes = {
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	align: {
 		type: "string",
 		default: "center"

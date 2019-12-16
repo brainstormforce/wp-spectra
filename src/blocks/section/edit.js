@@ -54,6 +54,8 @@ class UAGBSectionEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		this.props.setAttributes( { classMigrate: true } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-section-style-" + this.props.clientId )
@@ -986,9 +988,9 @@ class UAGBSectionEdit extends Component {
 						"uagb-section__wrap",
 						`uagb-section__background-${backgroundType}`,
 						`uagb-section__edit-${ active }`,
-						block_controls_class
+						block_controls_class,
+						`uagb-block-${this.props.clientId}`
 					) }
-					id={ `uagb-section-${this.props.clientId}` }
 				>
 					<div className="uagb-section__overlay"></div>
 					{ "video" == backgroundType &&

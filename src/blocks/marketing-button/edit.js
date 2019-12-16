@@ -53,6 +53,8 @@ class UAGBMarketingButtonEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		this.props.setAttributes( { classMigrate: true } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-marketing-btn-" + this.props.clientId )
@@ -640,9 +642,9 @@ class UAGBMarketingButtonEdit extends Component {
 					"uagb-marketing-btn__outer-wrap",
 					`uagb-marketing-btn__align-${ align }`,
 					`uagb-marketing-btn__align-text-${ textAlign }`,
-					`uagb-marketing-btn__icon-${ iconPosition }`
-				) }
-				id={ `uagb-marketing-btn-${ this.props.clientId }` }>
+					`uagb-marketing-btn__icon-${ iconPosition }`,
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div className="uagb-marketing-btn__wrap">
 						<a className="uagb-marketing-btn__link">
 							<div className="uagb-marketing-btn__title-wrap">

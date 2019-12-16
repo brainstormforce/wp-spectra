@@ -904,9 +904,9 @@ class UAGBTimeline extends Component {
 				</BlockControls>
 				<div  className={ classnames(
 					className,
-					"uagb-timeline__outer-wrap"
-				) }
-				id = { `uagb-ctm-${ this.props.clientId }` } >
+					"uagb-timeline__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						cta_enable,

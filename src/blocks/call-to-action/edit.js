@@ -728,9 +728,9 @@ class UAGBCallToAction extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-cta__outer-wrap"
+					"uagb-cta__outer-wrap",
+					`uagb-block-${this.props.clientId}`
 				) }
-				id = { `uagb-cta-block-${this.props.clientId}` }
 				>
 					{ ( ctaType == "all") &&
 							<Fragment>
@@ -751,6 +751,8 @@ class UAGBCallToAction extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

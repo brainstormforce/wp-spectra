@@ -45,6 +45,10 @@ const attributes = {
 		type: "array",
 		default : item,
 	},
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	align : {
 		type : "string",
 		default : "center",

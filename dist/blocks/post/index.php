@@ -87,7 +87,7 @@ function uagb_post_block_add_script() {
 			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
 				( function( $ ) {
 
-					var $scope = $( '#uagb-post__masonry-<?php echo $key; ?>' );
+					var $scope = $( '.uagb-block-<?php echo $key; ?>' );
 					$scope.imagesLoaded( function() {
 						$scope.find( '.is-masonry' ).isotope();
 					});
@@ -114,7 +114,7 @@ function uagb_post_block_add_script() {
 			<script type="text/javascript" id="<?php echo $key; ?>">
 				( function( $ ) {
 					var cols = parseInt( '<?php echo $value['columns']; ?>' );
-					var $scope = $( '#uagb-post__carousel-<?php echo $key; ?>' ).find( '.is-carousel' );
+					var $scope = $( '.uagb-block-<?php echo $key; ?>' ).find( '.is-carousel' );
 
 					if ( cols >= $scope.children().length ) {
 						return;
@@ -193,13 +193,13 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		'uagb-post__columns-mobile-' . $attributes['mcolumns'],
 	);
 
+	$block_id  = 'uagb-block-' . $attributes['block_id'];
 	$outerwrap = array(
 		'uagb-post-grid',
 		( isset( $attributes['className'] ) ) ? $attributes['className'] : '',
 		'uagb-post__image-position-' . $attributes['imgPosition'],
+		$block_id,
 	);
-
-	$block_id = 'uagb-post__' . $layout . '-' . $attributes['block_id'];
 
 	switch ( $layout ) {
 		case 'masonry':
@@ -228,7 +228,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 			break;
 	}
 	?>
-	<div id="<?php echo $block_id; ?>" class="<?php echo implode( ' ', $outerwrap ); ?>">
+	<div class="<?php echo implode( ' ', $outerwrap ); ?>">
 
 		<div class="<?php echo implode( ' ', $wrap ); ?>">
 

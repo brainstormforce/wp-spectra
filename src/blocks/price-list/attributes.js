@@ -22,6 +22,10 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 }
 
 const attributes = {
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	menu_item_count: {
 		type: "number",
 		default: ITEM_COUNT

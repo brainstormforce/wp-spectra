@@ -823,7 +823,7 @@ class UAGBPostGrid extends Component {
 		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props, "uagb-post__grid" )
+			element.innerHTML = styling( this.props )
 		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length

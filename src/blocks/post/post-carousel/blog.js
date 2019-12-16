@@ -136,10 +136,10 @@ class Blog extends React.Component {
 						"uagb-post-grid",
 						"uagb-post__arrow-outside",
 						`uagb-post__image-position-${ imgPosition }`,
-						`${ equalHeightClass }`
+						`${ equalHeightClass }`,
+						`uagb-block-${ block_id }`
 					) }
 					data-blog-id={block_id}
-					id={ `uagb-post__carousel-${ block_id }` }
 				>
 					<div
 						className={ classnames(
@@ -169,10 +169,10 @@ class Blog extends React.Component {
 						"uagb-post__arrow-outside",
 						"uagb-slick-carousel",
 						`uagb-post__image-position-${ imgPosition }`,
-						`${ equalHeightClass }`
+						`${ equalHeightClass }`,
+						`uagb-block-${ block_id }`
 					) }
 					data-blog-id={block_id}
-					id={ `uagb-post__carousel-${ block_id }` }
 					style={ ( "dots" == arrowDots ) ? { padding: "0 0 35px 0" } : {} }
 				>
 					<Slider

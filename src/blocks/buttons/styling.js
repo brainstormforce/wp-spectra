@@ -16,6 +16,7 @@ function styling( props ) {
 		stack,
 		fontFamily,
 		fontWeight,
+		classMigrate,
 	} = props.attributes
 
 	var selectors = {}
@@ -159,6 +160,9 @@ function styling( props ) {
 	}
 
 	var id = `#uagb-buttons-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	var styling_css = generateCSS( selectors, id )
 

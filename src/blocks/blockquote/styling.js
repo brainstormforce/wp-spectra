@@ -11,6 +11,7 @@ function styling( props ) {
 
 	const {
 		block_id,
+		classMigrate,
 		skinStyle,
 		align,	
 		authorColor,
@@ -109,7 +110,7 @@ function styling( props ) {
 	}
 
 	var selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-family": descFontFamily,
 			"font-weight": descFontWeight,
@@ -118,7 +119,7 @@ function styling( props ) {
 			"margin-bottom": generateCSSUnit( descSpace, "px" ),
 			"text-align": text_align,
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSize, authorFontSizeType ),
 			"font-family": authorFontFamily,
 			"font-weight": authorFontWeight,
@@ -260,11 +261,11 @@ function styling( props ) {
 	}
 
 	var tablet_selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSizeTablet, authorFontSizeType ),
 			"line-height": generateCSSUnit( authorLineHeightTablet, authorLineHeightType ),
 		},
@@ -286,11 +287,11 @@ function styling( props ) {
 	}
 
 	var mobile_selectors = {
-		" .editor-rich-text .uagb-blockquote__content.editor-rich-text__editable": {
+		" .uagb-blockquote__content.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 		},
-		" .editor-rich-text .uagb-blockquote__author.editor-rich-text__editable": {
+		" .uagb-blockquote__author.editor-rich-text__editable": {
 			"font-size": generateCSSUnit( authorFontSizeMobile, authorFontSizeType ),
 			"line-height": generateCSSUnit( authorLineHeightMobile, authorLineHeightType ),
 		},
@@ -311,11 +312,16 @@ function styling( props ) {
 		},		
 	}
 
-	var styling_css = generateCSS( selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }` )
+	var base_selector = `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`
+	if ( classMigrate ) {
+		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	}
 
-	styling_css += generateCSS( tablet_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "tablet" )
+	var styling_css = generateCSS( selectors, base_selector )
 
-	styling_css += generateCSS( mobile_selectors, `.block-editor-page #wpwrap #uagb-blockquote-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+
+	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
 
 	return styling_css
 }

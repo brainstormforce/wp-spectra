@@ -553,7 +553,7 @@ add_action( 'init', 'uagb_blocks_register_cf7_styler' );
  * @since 1.10.0
  */
 function uagb_render_cf7( $attributes ) {
-	$block_id = 'uagb-cf7-styler-' . $attributes['block_id'];
+	$block_id = 'uagb-block-' . $attributes['block_id'];
 	// @codingStandardsIgnoreStart
 	$formId          = $attributes['formId'];
 	$align           = isset( $attributes['align'] ) ? $attributes['align'] : '';
@@ -570,11 +570,12 @@ function uagb_render_cf7( $attributes ) {
 	$classname .= $enableOveride ? ' uagb-cf7-styler__check-style-enabled' : ' ';
 	$classname .= $enableHighlightBorder ? ' uagb-cf7-styler__highlight-border' : '';
 	$class 		= isset( $attributes['className']) ? $attributes['className'] : '';
+	$class     .= ' ' . $block_id;
 	// @codingStandardsIgnoreend
 	ob_start();
 	if ($formId && 0 != $formId && -1 != $formId) {
 	?>
-		<div class = "<?php echo $class ?> wp-block-uagb-cf7-styler uagb-cf7-styler__outer-wrap" id = "<?php echo $block_id; ?>" >
+		<div class = "<?php echo $class ?> wp-block-uagb-cf7-styler uagb-cf7-styler__outer-wrap">
 			<div class = "<?php echo $classname; ?>">
 			<?php echo do_shortcode( '[contact-form-7 id="' . $formId . '"]' ); ?>
 			</div>

@@ -2,6 +2,10 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
