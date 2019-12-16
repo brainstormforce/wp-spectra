@@ -845,7 +845,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( ! empty( self::$script ) ) {
-				self::$script = '( function( $ ) { ' . self::$script . '})(jQuery)';
+				self::$script = '( function( $ ) { ' . self::$script . '})(jQuery);';
 			}
 		}
 
