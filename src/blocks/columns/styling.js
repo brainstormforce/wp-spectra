@@ -4,6 +4,7 @@
 
 import inlineStyles from "./inline-styles"
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
+import hexToRgba from "../../../dist/blocks/uagb-controls/hexToRgba"
 import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function styling( props ) {
@@ -86,16 +87,14 @@ function styling( props ) {
 			height: generateCSSUnit( topHeight, "px" )
 		},
 		" .uagb-columns__shape-top .uagb-columns__shape-fill" : {
-			fill: topColor,
-			opacity: ( typeof topDividerOpacity != "undefined" ) ? ( topDividerOpacity )/100 : ""
+			fill: hexToRgba( topColor, ( typeof topDividerOpacity != "undefined" ) ? topDividerOpacity : 100 ),
 		},
 		" .uagb-columns__shape-bottom svg" : {
 			width: "calc( " + bottomWidth + "% + 1.3px )",
 			height: generateCSSUnit( bottomHeight, "px" )
 		},
 		" .uagb-columns__shape-bottom .uagb-columns__shape-fill" : {
-			fill: bottomColor,
-			opacity: ( typeof bottomDividerOpacity != "undefined" ) ? ( bottomDividerOpacity )/100 : ""
+			fill: hexToRgba( bottomColor, ( typeof bottomDividerOpacity != "undefined" ) ? bottomDividerOpacity : 100 ),
 		},
 	}
 

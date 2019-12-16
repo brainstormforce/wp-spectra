@@ -231,7 +231,20 @@ class UAGBColumns extends Component {
 			{ value: "mountains", label: __( "Mountains" ) },
 			{ value: "wave_brush", label: __( "Wave Brush" ) },
 			{ value: "waves", label: __( "Waves" ) },
+			{ value: "wave_pattern", label: __( "Waves Pattern" ) },
 			{ value: "triangle", label: __( "Triangle" ) },
+			{ value: "drops", label: __( "Drops" ) },
+			{ value: "clouds", label: __( "Clouds" ) },
+			{ value: "zigzag", label: __( "ZigZag" ) },
+			{ value: "pyramids", label: __( "Pyramids" ) },
+			{ value: "triangle_asymmetrical", label: __( "Triangle Asymmetrical" ) },
+			{ value: "tilt_opacity", label: __( "Tilt Opacity" ) },
+			{ value: "fan_opacity", label: __( "Fan Opacity" ) },
+			{ value: "curve", label: __( "Curve" ) },
+			{ value: "curve_asymmetrical", label: __( "Curve Asymmetrical" ) },
+			{ value: "arrow", label: __( "Arrow" ) },
+			{ value: "arrow_split", label: __( "Arrow Split" ) },
+			{ value: "book", label: __( "Book" ) },
 		]
 
 		const bottomSettings = (
@@ -263,7 +276,7 @@ class UAGBColumns extends Component {
 							value={ bottomWidth }
 							onChange={ ( value ) => setAttributes( { bottomWidth: value } ) }
 							min={ 100 }
-							max={ 300 }
+							max={ 2000 }
 							allowReset
 						/>
 						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
@@ -371,7 +384,7 @@ class UAGBColumns extends Component {
 							value={ topWidth }
 							onChange={ ( value ) => setAttributes( { topWidth: value } ) }
 							min={ 100 }
-							max={ 300 }
+							max={ 2000 }
 							allowReset
 						/>
 						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
