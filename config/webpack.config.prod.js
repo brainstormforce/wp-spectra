@@ -55,7 +55,7 @@ fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
 			file: paths.pluginSrc + '/blocks/' + items[i] + '/style.scss',
 			outputStyle: 'compressed',
 			outFile: './assets/css/blocks/' + items[i] + '.css',
-			sourceMap: true,
+			sourceMap: false,
 
 		}, function( error, result ) {
 
