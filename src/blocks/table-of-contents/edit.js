@@ -16,7 +16,7 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-import TableOfContents from './components';
+import TOC from './components';
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -965,7 +965,7 @@ class UAGBTableOfContentsEdit extends Component {
 							/>
 							{icon_html}
 						</div>
-						<TableOfContents
+						<TOC
 							align={align}
 							numcolumns={tColumnsDesktop}
 							heading={heading}
