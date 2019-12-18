@@ -16,14 +16,13 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-import TOC from './components';
+import TOC from './table-of-contents';
 
-const { select, subscribe } = wp.data;
+const { select } = wp.data;
 const striptags = require('striptags');
-
-let svg_icons = Object.keys( UAGBIcon )
-
 const { __ } = wp.i18n
+const { withSelect, withDispatch } = wp.data
+const { compose } = wp.compose
 
 const {
 	Component,
@@ -50,22 +49,13 @@ const {
 	TabPanel
 } = wp.components
 
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBTableOfContentsEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-
-		this.regenerateTable = this.regenerateTable.bind( this )
 		this.getIcon  	 = this.getIcon.bind(this)
-	}
-
-	/*
-	 * Event to set Mapping Object.
-	 */
-	regenerateTable() {
-
-		const { setAttributes } = this.props
 	}
 
 	getIcon(value) {
@@ -89,39 +79,10 @@ class UAGBTableOfContentsEdit extends Component {
 		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId )
 		document.head.appendChild( $style )
 
-		const getData = ( headerData, a ) => {
-
-			headerData.map( ( header ) => {
-
-				let innerBlock = header.innerBlocks;
-
-				if( innerBlock.length > 0 ) {
-					innerBlock.forEach(function(element) {
-						if( element.innerBlocks.length > 0 ) {
-							getData( element.innerBlocks, a );
-						} else {
-							a.push( element.attributes );
-						}
-					});
-				} else {
-					if( header.name === 'core/heading' ) {
-						a.push( header.attributes );
-					}
-
-					if( header.name === 'uagb/advanced-heading' ) {
-						a.push( header.attributes );
-					}
-				}
-
-			});
-
-			return a; 
-		}
-
 		const setHeaders = () => {
 
 			let a = [];
-			const all_headers = getData( select('core/block-editor').getBlocks(), a );
+			const all_headers = this.getData( select('core/block-editor').getBlocks(), a );
 			let headers = [];
 
 			if( typeof all_headers != 'undefined' ) {
@@ -150,7 +111,7 @@ class UAGBTableOfContentsEdit extends Component {
 							{
 								tag: contentLevel,
 								text: striptags( heading[contentName] ),
-								link: striptags( heading[contentName] ).toString().toLowerCase().replace(/( |<.+?>|&nbsp;)/g, '-'),
+								link: encodeURIComponent( striptags( heading[contentName] ).toString().toLowerCase().replace(/( |<.+?>|&nbsp;)/g, '-').replace(/[.?!]/gi, '') ),
 								content: heading.contentName
 							}
 						);
@@ -187,6 +148,60 @@ class UAGBTableOfContentsEdit extends Component {
 		};
 
 		setHeaders();
+	}
+
+	getData( headerData, a ) {
+
+		headerData.map( ( header ) => {
+
+			let innerBlock = header.innerBlocks;
+
+			if( innerBlock.length > 0 ) {
+				innerBlock.forEach(function(element) {
+					if( element.innerBlocks.length > 0 ) {
+						this.getData( element.innerBlocks, a );
+					} else {
+						a.push( element.attributes );
+					}
+				});
+			} else {
+				if( header.name === 'core/heading' ) {
+					a.push( header.attributes );
+				}
+
+				if( header.name === 'uagb/advanced-heading' ) {
+					a.push( header.attributes );
+				}
+			}
+
+		});
+		console.log(a)
+		return a; 
+	}
+
+	// The find your parent function by Victor Sabatier
+	compute( blocks ) {
+		return blocks.map( ( block, index ) => {
+			if ( undefined == block ) {
+				return
+			}
+			const blockLevel = block.level
+			if( blockLevel === 0 ) {
+				return { ...block, parentId: null }
+			}
+			let parentId = null
+			for( let i = index - 1; i >= 0; i-- ) {
+				const currentLevel = blocks[i].level
+				if( blockLevel > currentLevel ) {
+					parentId = blocks[i].clientId
+					break
+				}
+			}
+			return {
+				...block,
+				parentId
+			}
+		})
 	}
 
 	render() {
@@ -284,6 +299,19 @@ class UAGBTableOfContentsEdit extends Component {
 			headerLinks,
 			mappingHeaders,
 		} = attributes
+		//var a = [];
+
+		// const all_headers = this.getData( select('core/block-editor').getBlocks(), a );
+
+		// console.log(all_headers)
+
+		// // Get parents Id in order to make a tree for nested ul/ol > li
+		// const headingsFlat = this.compute( all_headers )
+
+		// console.log(headingsFlat)
+
+		// Make the tree
+		//const headings = arrayToTree( headingsFlat, { id: 'clientId', parentId: 'parentId' } )
 
 		let loadGFonts
 		let headingloadGFonts
@@ -350,100 +378,6 @@ class UAGBTableOfContentsEdit extends Component {
 				<span className="uag-toc__collapsible-wrap">{renderSVG(icon)}</span>
 			)	
 		}
-
-		const headers = headerLinks && JSON.parse(headerLinks);
-
-		const makeHeaderArray = origHeaders => {
-			let arrays = [];
-
-			origHeaders
-				.filter(header => mappingHeaders[header.tag - 1])
-				.forEach(header => {
-					let last = arrays.length - 1;
-					if (
-						arrays.length === 0 ||
-						arrays[last][0].tag < header.tag
-					) {
-						arrays.push([header]);
-					} else if (arrays[last][0].tag === header.tag) {
-						arrays[last].push(header);
-					} else {
-						while (arrays[last][0].tag > header.tag) {
-							if (arrays.length > 1) {
-								arrays[arrays.length - 2].push(arrays.pop());
-								last = arrays.length - 1;
-							} else break;
-						}
-						if (arrays[last][0].tag === header.tag) {
-							arrays[last].push(header);
-						}
-					}
-				});
-
-			while (
-				arrays.length > 1 &&
-				arrays[arrays.length - 1][0].tag >
-					arrays[arrays.length - 2][0].tag
-			) {
-				arrays[arrays.length - 2].push(arrays.pop());
-			}
-
-			return arrays[0];
-		};
-
-		const filterArray = origHeaders => {
-			let arrays = [];
-			headers.forEach((heading, key) => {
-				if ( mappingHeaders[heading.tag - 1] ) {
-					arrays.push( heading );
-				}
-			});
-			return makeHeaderArray( arrays );
-		};
-
-		const parseList = list => {
-			let items = [];
-			list.forEach(item => {
-				
-				if (Array.isArray(item)) {
-					items.push(parseList(item));
-				} else {
-
-					items.push(
-						<li key={list.indexOf(item)}>
-							<a
-								href={`#${item.link}-${list.indexOf(item)}`}
-								dangerouslySetInnerHTML={{
-									__html: item.text
-								}}
-							/>
-						</li>
-					);
-				}
-			});
-			return <ul className="uagb-toc__list">{items}</ul>;
-		};
-
-		const getWrap = () => {
-
-			if (
-				typeof mappingHeaders != undefined && headers.length > 0 && headers.filter(header => mappingHeaders[header.tag - 1]).length > 0
-			) {
-				return (
-					<div className="uagb-toc__list-wrap">
-						{parseList(filterArray(headers))}
-					</div>
-				);
-			} else {
-				return (
-					<p className="uagb_table-of-contents-placeholder">
-						{__(
-							'Add a header to begin generating the table of contents'
-						)}
-					</p>
-				);
-			}
-		};
 
 		return (
 			<Fragment>
@@ -1161,7 +1095,10 @@ class UAGBTableOfContentsEdit extends Component {
 							/>
 							{icon_html}
 						</div>
-						{getWrap()}
+						<TOC
+							mappingHeaders={mappingHeaders}
+							headers={headerLinks && JSON.parse(headerLinks)}
+						/>
 					</div>
 				</div>
 				{ loadGFonts }
@@ -1171,4 +1108,21 @@ class UAGBTableOfContentsEdit extends Component {
 	}
 }
 
-export default UAGBTableOfContentsEdit
+export default compose(
+	withSelect( ( select ) => ({
+		blocks: select( 'core/editor' ).getBlocks()
+	})),
+	withDispatch( dispatch => ({
+		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes
+	}))
+) ( UAGBTableOfContentsEdit )
+// export default compose( ( select, props ) => {
+
+// 	withSelect( ( select ) => ({
+// 		blocks: select( 'core/editor' ).getBlocks()
+// 	})),
+// 	withDispatch( dispatch => ({
+// 		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes
+// 	}))
+
+// } )( UAGBTableOfContentsEdit )

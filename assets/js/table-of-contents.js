@@ -113,120 +113,28 @@
 			return link_text
 		},
 
-		_generateHTML: function( level ) {
-
-			// var settings = this.getSettings(),
-			//     elementSettings = this.getElementSettings(),
-			//     icon = this.getElementSettings('icon');
-
-			// Open new list/nested list
-			var html = '<ul class="uagb-toc__list">';
-
-			console.log(UAGBTableOfContents.listItemPointer);
-
-			// for each list item, build its markup.
-			while (UAGBTableOfContents.listItemPointer < UAGBTableOfContents.headingsData.length) {
-				var currentItem = UAGBTableOfContents.headingsData[UAGBTableOfContents.listItemPointer];
-
-				console.log(currentItem);
-
-				var listItemTextClasses = '';
-
-				if (0 === currentItem.level) {
-					// If the current list item is a top level item, give it the first level class
-					listItemTextClasses += ' ' + 'uag-level-1';
-				}
-
-				if (level > currentItem.level) {
-					break;
-				}
-
-				if (level === currentItem.level) {
-					html += '<li>';
-
-					html += '<div>';
-
-					var liContent = '<a href="#uagb-toc__heading-anchor-' + UAGBTableOfContents.listItemPointer + '">' + currentItem.text + '</a>';
-
-					// If list type is bullets, add the bullet icon as an <i> tag
-					// if ('bullets' === elementSettings.marker_view && icon) {
-					// 	liContent = '<i class="' + icon.value + '"></i>' + liContent;
-					// }
-
-					html += liContent;
-
-					html += '</div>';
-
-					UAGBTableOfContents.listItemPointer++;
-
-					var nextItem = UAGBTableOfContents.headingsData[UAGBTableOfContents.listItemPointer];
-
-					if (nextItem && level < nextItem.level) {
-						// If a new nested list has to be created under the current item,
-						// this entire method is called recursively (outside the while loop, a list wrapper is created)
-						html += UAGBTableOfContents._generateHTML(nextItem.level);
-					}
-
-					html += '</li>';
-				}
-			}
-
-			html += '</ul>';
-
-			return html;
-		},
-
 		/**
 		 * Alter the_content.
 		 */
 		_run: function( attr, id ) {
 
-			// var excludedSelectors = [];
+			$this_scope = $( id );
+			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
-			// $elements = jQuery( 'body' ).find( 'h3,h4,h5' ).not( 'h2' ).filter(function (index, heading) {
-			// 	return !jQuery(heading).closest(excludedSelectors).length; // Handle excluded selectors if there are any
-			// });
+			$headers.forEach(function (element, index) {
+				var point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
 
-			// var headingsData = [];
-
-			// // Create an array for simplifying TOC list creation
-			// $elements.each(function (index, element) {
-			// 	headingsData.push({ tag: +element.nodeName.slice(1), text: element.innerText });
-			// });
-
-			// UAGBTableOfContents.headingsData = headingsData;
-
-			// UAGBTableOfContents.headingsData.forEach(function (heading, index) {
-			// 	heading.level = 0;
-
-			// 	for (var i = index - 1; i >= 0; i--) {
-			// 		var currentOrderedItem = UAGBTableOfContents.headingsData[i];
-
-			// 		if (currentOrderedItem.tag <= heading.tag) {
-			// 			heading.level = currentOrderedItem.level;
-
-			// 			if (currentOrderedItem.tag < heading.tag) {
-			// 				heading.level++;
-			// 			}
-
-			// 			break;
-			// 		}
-			// 	}
-			// });
-
-			// console.log( UAGBTableOfContents._generateHTML(0) )
-
-			// jQuery( '.uagb-toc__list-wrap' ).html( UAGBTableOfContents._generateHTML(0) );
-
-			// $elements.before(function (index) {
-
-
-			// 	var anchor = jQuery( $elements[index] ).text()
-			// 					.toString()
-			// 					.toLowerCase()
-			// 					.replace(/( |<.+?>|&nbsp;)/g, '-');
-			// 	return '<span id="' + anchor + '-' + index + '" class="uag-some-class"></span>';
-			// });
+				if (  point_header.length > 0 ) {
+					point_header.before(function (ind) {
+						var anchor = encodeURIComponent( $( point_header[ind] ).text()
+										.toString()
+										.toLowerCase()
+										.replace(/( |<.+?>|&nbsp;)/g, '-')
+										.replace(/[.?!]/gi, '') );
+						return '<span id="' + anchor + '-' + index + '" class="uag-some-class"></span>';
+					});
+				}
+			});
 
 			scroll_to_top = attr.scrollToTop
 
