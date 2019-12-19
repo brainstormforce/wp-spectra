@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.14.3.1 =
 * Fix: Testimonial - JS console error when Reuasble Testimomnil used with normal Testimonial.
+* Fix: Testimonial - JS console error when Reuasble Testimomnil used with normal Testimonial.
 
 = 1.14.3 =
 * Fix: Icon List - Block validation issue for WordPress 5.3.1.

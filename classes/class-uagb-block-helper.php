@@ -4760,7 +4760,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		public static function get_social_share_js( $id ) {
 
 			$selector = '#uagb-social-share-' . $id;
-			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
+			$js       = 'var ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
 			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
 				ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
