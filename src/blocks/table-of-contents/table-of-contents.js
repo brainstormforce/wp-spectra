@@ -66,7 +66,7 @@ class TOC extends React.Component {
 					items.push(
 						<li key={list.indexOf(item)}>
 							<a
-								href={`#${item.link}-${counter}`}
+								href={`#${item.link}`}
 								dangerouslySetInnerHTML={{
 									__html: item.text
 								}}

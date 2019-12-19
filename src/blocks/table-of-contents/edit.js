@@ -62,12 +62,25 @@ class UAGBTableOfContentsEdit extends Component {
 		this.props.setAttributes( { icon: value } )
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (
+			JSON.stringify( this.props.headers ) !==
+			JSON.stringify( prevProps.headers )
+		) {
+			this.props.setAttributes({
+				headerLinks: JSON.stringify(this.props.headers)
+			});
+		}
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		this.props.setAttributes( { classMigrate: true } )
+
+		this.props.setAttributes( { headerLinks: JSON.stringify( this.props.headers ) } )
 
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
@@ -78,135 +91,11 @@ class UAGBTableOfContentsEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-toc-" + this.props.clientId )
 		document.head.appendChild( $style )
-
-		const setHeaders = () => {
-
-			let a = [];
-			const all_headers = this.getData( select('core/block-editor').getBlocks(), a );
-			let headers = [];
-
-			if( typeof all_headers != 'undefined' ) {
-
-				all_headers.forEach((heading, key) => {
-					const contentAnchor = ( typeof heading.content === 'undefined' ||
-						heading.content === '' ) ? 'headingId' : 'anchor'
-					const contentLevel = ( typeof heading.content === 'undefined' ||
-						heading.content === '' ) ? heading.headingTag : heading.level
-					const headingAnchorEmpty =
-						typeof heading[contentAnchor] === 'undefined' ||
-						heading[contentAnchor] === '';
-					const contentName = ( typeof heading.content === 'undefined' ||
-						heading.content === '' ) ? 'headingTitle' : 'content'
-					const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
-					const headingDefaultAnchor =
-						!headingAnchorEmpty &&
-						heading[contentAnchor].indexOf(key + '-') === 0;
-
-					if (
-						!headingContentEmpty &&
-						(headingAnchorEmpty || headingDefaultAnchor)
-					) {
-
-						headers.push(
-							{
-								tag: contentLevel,
-								text: striptags( heading[contentName] ),
-								link: encodeURIComponent( striptags( heading[contentName] ).toString().toLowerCase().replace(/( |<.+?>|&nbsp;)/g, '-').replace(/[.?!]/gi, '') ),
-								content: heading.contentName
-							}
-						);
-					}
-				});
-			}
-
-			if ( headers !== undefined ) {
-
-				headers.forEach( function ( heading, index ) {
-					heading.level = 0;
-
-					for ( var i = index - 1; i >= 0; i-- ) {
-						var currentOrderedItem = headers[i];
-
-						if ( currentOrderedItem.tag <= heading.tag ) {
-							heading.level = currentOrderedItem.level;
-
-							if ( currentOrderedItem.tag < heading.tag ) {
-								heading.level++;
-							}
-
-							break;
-						}
-					}
-				});
-			}
-
-			//this.setState( { headers } );
-
-			this.props.setAttributes({
-				headerLinks: JSON.stringify(headers)
-			});
-		};
-
-		setHeaders();
-	}
-
-	getData( headerData, a ) {
-
-		headerData.map( ( header ) => {
-
-			let innerBlock = header.innerBlocks;
-
-			if( innerBlock.length > 0 ) {
-				innerBlock.forEach(function(element) {
-					if( element.innerBlocks.length > 0 ) {
-						this.getData( element.innerBlocks, a );
-					} else {
-						a.push( element.attributes );
-					}
-				});
-			} else {
-				if( header.name === 'core/heading' ) {
-					a.push( header.attributes );
-				}
-
-				if( header.name === 'uagb/advanced-heading' ) {
-					a.push( header.attributes );
-				}
-			}
-
-		});
-		console.log(a)
-		return a; 
-	}
-
-	// The find your parent function by Victor Sabatier
-	compute( blocks ) {
-		return blocks.map( ( block, index ) => {
-			if ( undefined == block ) {
-				return
-			}
-			const blockLevel = block.level
-			if( blockLevel === 0 ) {
-				return { ...block, parentId: null }
-			}
-			let parentId = null
-			for( let i = index - 1; i >= 0; i-- ) {
-				const currentLevel = blocks[i].level
-				if( blockLevel > currentLevel ) {
-					parentId = blocks[i].clientId
-					break
-				}
-			}
-			return {
-				...block,
-				parentId
-			}
-		})
 	}
 
 	render() {
 
-		const { attributes, setAttributes, isSelected, className } = this.props
+		const { attributes, setAttributes, isSelected, className, headers } = this.props
 
 		const {
 			align,
@@ -299,19 +188,6 @@ class UAGBTableOfContentsEdit extends Component {
 			headerLinks,
 			mappingHeaders,
 		} = attributes
-		//var a = [];
-
-		// const all_headers = this.getData( select('core/block-editor').getBlocks(), a );
-
-		// console.log(all_headers)
-
-		// // Get parents Id in order to make a tree for nested ul/ol > li
-		// const headingsFlat = this.compute( all_headers )
-
-		// console.log(headingsFlat)
-
-		// Make the tree
-		//const headings = arrayToTree( headingsFlat, { id: 'clientId', parentId: 'parentId' } )
 
 		let loadGFonts
 		let headingloadGFonts
@@ -1097,7 +973,7 @@ class UAGBTableOfContentsEdit extends Component {
 						</div>
 						<TOC
 							mappingHeaders={mappingHeaders}
-							headers={headerLinks && JSON.parse(headerLinks)}
+							headers={headers}
 						/>
 					</div>
 				</div>
@@ -1109,20 +985,84 @@ class UAGBTableOfContentsEdit extends Component {
 }
 
 export default compose(
-	withSelect( ( select ) => ({
-		blocks: select( 'core/editor' ).getBlocks()
-	})),
-	withDispatch( dispatch => ({
-		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes
-	}))
+	withSelect( ( select, ownProps ) => {
+
+		const getData = ( headerData, a ) => {
+			headerData.map( ( header ) => {
+				let innerBlock = header.innerBlocks;
+				if( innerBlock.length > 0 ) {
+					innerBlock.forEach(function(element) {
+						if( element.innerBlocks.length > 0 ) {
+							getData( element.innerBlocks, a );
+						} else {
+							a.push( element.attributes );
+						}
+					});
+				} else {
+					if( header.name === 'core/heading' ) {
+						a.push( header.attributes );
+					}
+
+					if( header.name === 'uagb/advanced-heading' ) {
+						a.push( header.attributes );
+					}
+				}
+
+			});
+			return a; 
+		}
+
+		let a = [];
+		let all_headers = getData( select( 'core/block-editor' ).getBlocks(), a );
+		let headers = [];
+
+		if( typeof all_headers != 'undefined' ) {
+
+			all_headers.forEach((heading, key) => {
+
+				const contentLevel = ( typeof heading.content === 'undefined' ||
+					heading.content === '' ) ? heading.headingTag : heading.level
+
+				const contentName = ( typeof heading.content === 'undefined' ||
+					heading.content === '' ) ? 'headingTitle' : 'content'
+
+				const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
+
+				if ( !headingContentEmpty ) {
+					headers.push(
+						{
+							tag: contentLevel,
+							text: striptags( heading[contentName] ),
+							link: encodeURIComponent( striptags( heading[contentName] ).toString().toLowerCase().replace(/( |<.+?>|&nbsp;)/g, '-').replace(/[.?!]/gi, '') ),
+							content: heading.contentName
+						}
+					);
+				}
+			});
+		}
+
+		if ( headers !== undefined ) {
+
+			headers.forEach( function ( heading, index ) {
+				heading.level = 0;
+
+				for ( var i = index - 1; i >= 0; i-- ) {
+					var currentOrderedItem = headers[i];
+
+					if ( currentOrderedItem.tag <= heading.tag ) {
+						heading.level = currentOrderedItem.level;
+
+						if ( currentOrderedItem.tag < heading.tag ) {
+							heading.level++;
+						}
+						break;
+					}
+				}
+			});
+		}
+
+		return {
+			headers: headers
+		};
+	} )
 ) ( UAGBTableOfContentsEdit )
-// export default compose( ( select, props ) => {
-
-// 	withSelect( ( select ) => ({
-// 		blocks: select( 'core/editor' ).getBlocks()
-// 	})),
-// 	withDispatch( dispatch => ({
-// 		updateBlockAttributes: dispatch( 'core/editor' ).updateBlockAttributes
-// 	}))
-
-// } )( UAGBTableOfContentsEdit )

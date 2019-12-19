@@ -72,7 +72,7 @@
 
 				if ( scroll ) {
 
-					var offset = $( hash ).offset()
+					var offset = $( decodeURIComponent( hash ) ).offset()
 
 					if ( "undefined" != typeof offset ) {
 
@@ -83,34 +83,6 @@
 				}
 
 			}
-		},
-
-		_parseEntity: function( text ) {
-
-			let charEntity = [ "&amp;", "&gt;", "&lt;", "&quot;", "&#39;" ]
-
-			for ( var k = 0 ; k < charEntity.length; k++ ) {
-				text = text.split(charEntity[k]).join("")
-			}
-
-			text = text.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, "")
-
-			return text
-		},
-
-		_parse: function( match ) {
-
-
-			let text = match[0]
-
-			text = text.replace( "<h" + match[2] + ">", "" )
-			text = text.replace( "</h" + match[2] + ">", "" )
-
-			let text_without_chars = UAGBTableOfContents._parseEntity( text )
-
-			let link_text = text_without_chars.replace(/  */g,"_")
-
-			return link_text
 		},
 
 		/**
@@ -131,7 +103,7 @@
 										.toLowerCase()
 										.replace(/( |<.+?>|&nbsp;)/g, '-')
 										.replace(/[.?!]/gi, '') );
-						return '<span id="' + anchor + '-' + index + '" class="uag-some-class"></span>';
+						return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
 					});
 				}
 			});
