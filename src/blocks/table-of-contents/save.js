@@ -5,7 +5,9 @@
 import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import TableOfContents from './components';
+import TOC from './table-of-contents';
+
+const { __ } = wp.i18n;
 
 const {
 	RichText
@@ -61,13 +63,9 @@ export default function save( props ) {
 					/>
 					{icon_html}
 				</div>
-				<TableOfContents
-					align={align}
-					numcolumns={tColumns}
-					scrollToTop={scrollToTop}
+				<TOC
 					mappingHeaders={mappingHeaders}
 					headers={headerLinks && JSON.parse(headerLinks)}
-					blockProp={props}
 				/>
 			</div>
 		</div>
