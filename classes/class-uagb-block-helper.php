@@ -4761,8 +4761,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selector = '#uagb-social-share-' . $id;
 			$js       = 'var ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
-			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
-				ssLink[i].addEventListener( "click", function() {' .
+			$js      .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
