@@ -271,7 +271,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function generate_css( $selectors, $id ) {
 
 			$styling_css = '';
-			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
 				return;
@@ -585,7 +584,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                     break;
 
                 case 'uagb/social-share':
-                    $js .= UAGB_Block_Helper::get_social_share_js( $block_id );
+                    $js .= UAGB_Block_Helper::get_social_share_js( $blockattr, $block_id );
 					break;
 
 				case 'uagb/table-of-contents':

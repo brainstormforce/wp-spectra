@@ -4730,7 +4730,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			], $id );
 
 			$settings = json_encode($slick_options);
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
+			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
 			$selector =	$base_selector . $id;
 			$js = '$( document ).ready( function() { if( $( "' . $selector . '" ).length > 0 ){ $( "' . $selector . '" ).find( ".is-carousel" ).slick( ' . $settings .' ); } } );';
 
@@ -4765,7 +4765,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$via = isset( $attr['iconShareVia'] ) ? $attr['iconShareVia'] : '';
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
+			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-blockquote-';
 			$selector =	$base_selector . $id;
 
 			$js = 'jQuery( "' . $selector . '" ).find( ".uagb-blockquote__tweet-button" ).click(function(){'.
@@ -4784,13 +4784,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since 1.8.1
 		 * @param string $id The selector ID.
 		 */
-		public static function get_social_share_js( $id ) {
+		public static function get_social_share_js( $attr, $id ) {
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
+			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector = $base_selector . $id;
-			$js       = 'const ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
-			$js      .= 'for (let i = 0; i < ssLink.length; i++) {
-				ssLink[i].addEventListener( "click", function() {' .
+			$js       = 'var ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
+			$js      .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
@@ -4816,7 +4815,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/table-of-contents']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
+			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-toc-';
 			$selector =	$base_selector . $id;
 
 			$js = 'jQuery( document ).ready(function() { ' .
