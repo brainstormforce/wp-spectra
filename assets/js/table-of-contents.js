@@ -6,6 +6,26 @@
 	var scroll_to_top = false
 	var scroll_element = null
 
+	var parseTocSlug = function( slug ) {
+
+		// If not have the element then return false!
+		if( ! slug ) {
+			return slug;
+		}
+
+		var parsedSlug = slug.toString().toLowerCase()
+			.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
+			.replace(/\s+/g, '-')                        // Replace spaces with -
+			.replace(/<[^<>]+>/g, '')                    // Remove tags
+			.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+			.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
+			.replace(/^-+/, '')                          // Trim - from start of text
+			.replace(/-+$/, '');                         // Trim - from end of text
+
+		return encodeURIComponent( parsedSlug );
+	};
+
+
 	UAGBTableOfContents = {
 
 		init: function() {
@@ -95,11 +115,7 @@
 
 				if (  point_header.length > 0 ) {
 					point_header.before(function (ind) {
-						var anchor = encodeURIComponent( $( point_header[ind] ).text()
-										.toString()
-										.toLowerCase()
-										.replace(/( |<.+?>|&nbsp;)/g, '-')
-										.replace(/[.?!]/gi, '') );
+						var anchor = parseTocSlug( $( point_header[ind] ).text() );
 						return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
 					});
 				}

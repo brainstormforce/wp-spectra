@@ -1012,6 +1012,25 @@ export default compose(
 			return a; 
 		}
 
+		const parseTocSlug = ( slug ) => {
+
+			// If not have the element then return false!
+			if( ! slug ) {
+				return slug;
+			}
+
+			var parsedSlug = slug.toString().toLowerCase()
+				.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
+				.replace(/\s+/g, '-')                        // Replace spaces with -
+				.replace(/<[^<>]+>/g, '')                    // Remove tags
+				.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+				.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
+				.replace(/^-+/, '')                          // Trim - from start of text
+				.replace(/-+$/, '');                         // Trim - from end of text
+
+			return encodeURIComponent( parsedSlug );
+		}
+
 		let a = [];
 		let all_headers = getData( select( 'core/block-editor' ).getBlocks(), a );
 		let headers = [];
@@ -1029,11 +1048,12 @@ export default compose(
 				const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
 
 				if ( !headingContentEmpty ) {
+					console.log(parseTocSlug(striptags( heading[contentName] )));
 					headers.push(
 						{
 							tag: contentLevel,
 							text: striptags( heading[contentName] ),
-							link: encodeURIComponent( striptags( heading[contentName] ).toString().toLowerCase().replace(/( |<.+?>|&nbsp;)/g, '-').replace(/[.?!]/gi, '') ),
+							link: parseTocSlug( striptags( heading[contentName] ) ),
 							content: heading.contentName
 						}
 					);
