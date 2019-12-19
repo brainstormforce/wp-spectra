@@ -160,6 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Now blocks use class to generate dynamic CSS instead of ID.
 * Improvement: Dynamic File Generation - Improved filesystem classes.
 * Fix: Safari Browser - JS console error for sourceMap URL.
+* Fix: Social Share - JS console error in some cases.
 * Fix: Testimonial - JS console error when Reuasble Testimomnil used with normal Testimonial.
 
 = 1.14.3 =
