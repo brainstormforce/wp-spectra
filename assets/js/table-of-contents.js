@@ -8,9 +8,6 @@
 
 	UAGBTableOfContents = {
 
-		headingsData: [],
-		listItemPointer: 0,
-
 		init: function() {
 
 			$( document ).delegate( ".uagb-toc__list a", "click", UAGBTableOfContents._scroll )
