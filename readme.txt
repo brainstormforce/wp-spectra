@@ -159,8 +159,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Advanced Columns - Introduced New Shape Dividers.
 * Improvement: Now blocks use class to generate dynamic CSS instead of ID.
 * Improvement: Dynamic File Generation - Improved filesystem classes.
-* Fix: Testimonial - JS console error when Reuasble Testimomnil used with normal Testimonial.
 * Fix: Safari Browser - JS console error for sourceMap URL.
+* Fix: Testimonial - JS console error when Reuasble Testimomnil used with normal Testimonial.
 
 = 1.14.3 =
 * Fix: Icon List - Block validation issue for WordPress 5.3.1.
