@@ -170,7 +170,10 @@ class TableOfContents extends Component {
 									<a
 										href={`#${item.headingId}`}
 										dangerouslySetInnerHTML={{
-											__html: striptags( item.headingTitle )
+											__html: item.headingTitle.replace(
+												/(<a.+?>|<\/a>)/g,
+												''
+											)
 										}}
 									/>
 								</li>
@@ -184,7 +187,10 @@ class TableOfContents extends Component {
 									<a
 										href={`#${item.anchor}`}
 										dangerouslySetInnerHTML={{
-											__html: striptags( item.content )
+											__html: item.content.replace(
+												/(<a.+?>|<\/a>)/g,
+												''
+											)
 										}}
 									/>
 								</li>
