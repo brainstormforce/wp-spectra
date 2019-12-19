@@ -1048,7 +1048,6 @@ export default compose(
 				const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
 
 				if ( !headingContentEmpty ) {
-					console.log(parseTocSlug(striptags( heading[contentName] )));
 					headers.push(
 						{
 							tag: contentLevel,
