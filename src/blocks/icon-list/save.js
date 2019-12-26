@@ -58,6 +58,8 @@ export default function save( props ) {
 						let target = ( icon.target ) ? "_blank" : "_self"
 						let link_url = ( !icon.disableLink ) ? icon.link : "/"
 
+						console.log(icon);
+
 						if ( icon.disableLink ) {
 							return (
 								<div
