@@ -1549,7 +1549,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Get an instance of WP_Filesystem_Direct.
 		 *
-		 * @since x.x.x
+		 * @since 1.14.4
 		 * @return object A WP_Filesystem_Direct instance.
 		 */
 		public function get_filesystem() {
