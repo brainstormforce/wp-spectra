@@ -103,13 +103,13 @@
 		display: none;
 	}
 
-	a.uagb-icon-list__wrapper[href="/"] {
+	.uagb-icon-list__wrapper[href="/"] {
 	    pointer-events: none;
 	    cursor: text;
 	}
 }
 
-.wp-block-uagb-icon-list .uagb-icon-list__wrap a.uagb-icon-list__wrapper {
+.wp-block-uagb-icon-list .uagb-icon-list__wrap .uagb-icon-list__wrapper {
 	text-decoration: none;
 }
 

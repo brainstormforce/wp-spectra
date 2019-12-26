@@ -670,7 +670,7 @@ class UAGBIconList extends Component {
 								let target = ( icon.target ) ? "_blank" : "_self"
 
 								return (
-									<a
+									<div
 										className={ classnames(
 											`uagb-icon-list-repeater-${index}`,
 											"uagb-icon-list__wrapper"
@@ -697,7 +697,7 @@ class UAGBIconList extends Component {
 												</div>
 											}
 										</div>
-									</a>
+									</div>
 								)
 							})
 						}
