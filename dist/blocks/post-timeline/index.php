@@ -391,9 +391,9 @@ function uagb_register_post_timeline() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
-				'dateFormat' => array(
-					'type' => 'string',
-					'default' => 'F j, Y'
+				'dateFormat'              => array(
+					'type'    => 'string',
+					'default' => 'F j, Y',
 				),
 				'displayPostExcerpt'      => array(
 					'type'    => 'boolean',

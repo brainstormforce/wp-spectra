@@ -165,6 +165,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Disabled Link icon list item no more uses anchor tag.
 * Fix: Safari Browser - JS console error for sourceMap URL.
 * Fix: Social Share - JS console error in some cases.
+* Fix: Social Share - Sharing issue with Reusable Block.
 * Fix: Table of Contents - Conflict with Section.
 * Fix: Testimonial - JS console error when Reusable Testimonial used with normal Testimonial.
 

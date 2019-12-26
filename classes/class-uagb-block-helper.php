@@ -1405,7 +1405,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd.
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-testimonial-';
-			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
+			$desktop       = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 
 			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
 
@@ -4782,14 +4782,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * Get Social Share JS
 		 *
 		 * @since 1.8.1
+		 * @param string $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
 		public static function get_social_share_js( $attr, $id ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
-			$selector = $base_selector . $id;
-			$js       = 'var ssLink = document.querySelector( "' . $selector . '" ).querySelectorAll( ".uagb-ss__link" );';
-			$js      .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
+			$selector      = $base_selector . $id;
+			$js            = 'var ssLinks = document.querySelectorAll( "' . $selector . '" );' . 'for (let j = 0; j < ssLinks.length; j++) {' . 'var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );';
+			$js           .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
@@ -4797,7 +4798,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'}' .
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
-				'});' . '}';
+				'});' . '}}';
 
 			return $js;
 		}
