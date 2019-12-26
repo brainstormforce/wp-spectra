@@ -49,6 +49,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	dateFormat: {
+		type: "string",
+		default: "F j, Y"
+	},
 	align : {
 		type : "string",
 		default : "center",
