@@ -160,6 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Now blocks use class to generate dynamic CSS instead of ID.
 * Improvement: Dynamic File Generation - Improved filesystem classes.
 * Improvement: Table of Contents - Dynamic anchor links are created at front end instead of modifying Heading Anchor attribute.
+* Fix: Icon List - Disabled Link icon list item no more uses anchor tag.
 * Fix: Safari Browser - JS console error for sourceMap URL.
 * Fix: Social Share - JS console error in some cases.
 * Fix: Table of Contents - Conflict with Section.

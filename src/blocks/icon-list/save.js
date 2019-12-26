@@ -58,30 +58,56 @@ export default function save( props ) {
 						let target = ( icon.target ) ? "_blank" : "_self"
 						let link_url = ( !icon.disableLink ) ? icon.link : "/"
 
-						return (
-							<a
-								className={ classnames(
-									`uagb-icon-list-repeater-${index}`,
-									"uagb-icon-list__wrapper"
-								) }
-								key={ index }
-								target={ target }
-								rel="noopener noreferrer"
-								href={ link_url }
-							>
-								<div className="uagb-icon-list__content-wrap">
-									<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-									{ ! hideLabel && "" != icons[ index ].label &&
-										<div className="uagb-icon-list__label-wrap">
-											<RichText.Content
-												tagName="span"
-												value={ icons[ index ].label }
-												className='uagb-icon-list__label' />
-										</div>
-									}
+						if ( icon.disableLink ) {
+							return (
+								<div
+									className={ classnames(
+										`uagb-icon-list-repeater-${index}`,
+										"uagb-icon-list__wrapper"
+									) }
+									key={ index }
+								>
+									<div className="uagb-icon-list__content-wrap">
+										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+										{ ! hideLabel && "" != icons[ index ].label &&
+											<div className="uagb-icon-list__label-wrap">
+												<RichText.Content
+													tagName="span"
+													value={ icons[ index ].label }
+													className='uagb-icon-list__label' />
+											</div>
+										}
+									</div>
 								</div>
-							</a>
-						)
+							)
+						} else {
+
+							return (
+								<a
+									className={ classnames(
+										`uagb-icon-list-repeater-${index}`,
+										"uagb-icon-list__wrapper"
+									) }
+									key={ index }
+									target={ target }
+									rel="noopener noreferrer"
+									href={ link_url }
+								>
+									<div className="uagb-icon-list__content-wrap">
+										<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+										{ ! hideLabel && "" != icons[ index ].label &&
+											<div className="uagb-icon-list__label-wrap">
+												<RichText.Content
+													tagName="span"
+													value={ icons[ index ].label }
+													className='uagb-icon-list__label' />
+											</div>
+										}
+									</div>
+								</a>
+							)
+						}
+
 					})
 				}
 			</div>
