@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.3.1  
-**Stable tag:** 1.14.3  
+**Stable tag:** 1.14.4  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -155,10 +155,25 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.14.4 ###
+* Improvement: Advanced Columns - Introduced New Shape Dividers.
+* Improvement: Now blocks use class to generate dynamic CSS instead of ID.
+* Improvement: Dynamic File Generation - Improved filesystem classes.
+* Improvement: Content Timeline - Date Format option added.
+* Improvement: Post Timeline - Date Format option added.
+* Improvement: Table of Contents - Dynamic anchor links are created at front end instead of modifying Heading Anchor attribute.
+* Fix: Icon List - Disabled Link icon list item no more uses anchor tag.
+* Fix: Safari Browser - JS console error for sourceMap URL.
+* Fix: Social Share - JS console error in some cases.
+* Fix: Social Share - Sharing issue with Reusable Block.
+* Fix: Table of Contents - Conflict with Section.
+* Fix: Testimonial - JS console error when Reusable Testimonial used with normal Testimonial.
+
 ### 1.14.3 ###
 * Fix: Icon List - Block validation issue for WordPress 5.3.1.
 * Fix: Blockquote - Block validation issue for WordPress 5.3.1.
 * Fix: IE11 - Console error on New Post page issue fixed.
+* Fix: Table of Contents - Stripped HTML tags in Headings for Table of Contents in few cases.
 
 ### 1.14.2 ###
 * Fix: Post - Custom post taxonomy creating errors in some scenario.

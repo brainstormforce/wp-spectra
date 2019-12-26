@@ -22,7 +22,7 @@ function uagb_post_timeline_callback( $attributes ) {
 
 	$recent_posts  = UAGB_Helper::get_query( $attributes, 'timeline' );
 	$post_tm_class = uagb_tm_get_classes( $attributes );
-	$block_id      = 'uagb-ctm-' . $attributes['block_id'];
+	$block_id      = 'uagb-block-' . $attributes['block_id'];
 
 	if ( $attributes['displayPostLink'] ) {
 		$post_tm_class .= ' uagb_timeline__cta-enable';
@@ -30,7 +30,7 @@ function uagb_post_timeline_callback( $attributes ) {
 
 	ob_start();
 	?>
-	<div class = "uagb-timeline__outer-wrap" id = "<?php echo $block_id; ?>" >
+	<div class = "uagb-timeline__outer-wrap <?php echo $block_id; ?>" >
 		<div  class = "uagb-timeline__content-wrap <?php echo $post_tm_class; ?>" >
 			<div class = "uagb-timeline-wrapper">
 				<div class = "uagb-timeline__main">
@@ -391,6 +391,10 @@ function uagb_register_post_timeline() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
+				'dateFormat'              => array(
+					'type'    => 'string',
+					'default' => 'F j, Y',
+				),
 				'displayPostExcerpt'      => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -547,7 +551,7 @@ function uagb_tm_get_date( $attributes, $classname ) {
 			'<div datetime="%1$s" class="%2$s">%3$s</div>',
 			esc_attr( get_the_date( 'c', $post_id ) ),
 			$classname,
-			esc_html( get_the_date( '', $post_id ) )
+			esc_html( get_the_date( $attributes['dateFormat'], $post_id ) )
 		);
 	}
 

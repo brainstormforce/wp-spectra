@@ -1017,9 +1017,9 @@ class UAGBtestimonial extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside"
+					"uagb-testomonial__outer-wrap uagb-slick-carousel uagb-tm__arrow-outside",
+					`uagb-block-${ this.props.clientId }`
 				) }
-				id = { `uagb-testimonial-${ this.props.clientId }` }
 				>
 					<Slider
 						className={ classnames(
@@ -1081,6 +1081,8 @@ class UAGBtestimonial extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

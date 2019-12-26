@@ -8,6 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		tag,
 		align,
 		titleColor,
@@ -68,7 +69,7 @@ function styling( props ) {
 	var mobile_selectors = {}
 
 	var selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 			"font-family": descFontFamily,
@@ -150,7 +151,7 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
+	selectors[" " + tag + ".uagb-team__title"] = {
 		"font-family": titleFontFamily,
 		"font-weight": titleFontWeight,
 		"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -160,7 +161,7 @@ function styling( props ) {
 	}
 
 	mobile_selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
 		},
 		" .uagb-team__prefix": {
@@ -179,7 +180,7 @@ function styling( props ) {
 	}
 
 	tablet_selectors = {
-		" .editor-rich-text p.uagb-team__desc.editor-rich-text__tinymce": {
+		" p.uagb-team__desc.block-editor-rich-text__editable": {
 			"font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
 		},
 		" .uagb-team__prefix": {
@@ -197,16 +198,19 @@ function styling( props ) {
 		},
 	}
 
-	mobile_selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
+	mobile_selectors[" " + tag + ".uagb-team__title"] = {
 		"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 	}
 
-	tablet_selectors[" .editor-rich-text " + tag + ".uagb-team__title"] = {
+	tablet_selectors[" " + tag + ".uagb-team__title"] = {
 		"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 	}
 
 	var styling_css = ""
 	var id = `#uagb-team-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	styling_css = generateCSS( selectors, id )
 

@@ -9,6 +9,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		titleSpace,
 		//Icon
 		iconPosition,
@@ -85,7 +86,7 @@ function styling( props ) {
 		" .uagb-marketing-btn__title-wrap" : {
 			"margin-bottom" : generateCSSUnit( titleSpace, "px" )
 		},
-		" .editor-rich-text .uagb-marketing-btn__title" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
 			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
 			"line-height" : generateCSSUnit( titleLineHeight, titleLineHeightType ),
 			"font-family": titleFontFamily,
@@ -99,17 +100,17 @@ function styling( props ) {
 			"width" : generateCSSUnit( iconFontSize, iconFontSizeType ),
 			"height" : generateCSSUnit( iconFontSize, iconFontSizeType )
 		},
-		" .editor-rich-text .uagb-marketing-btn__prefix" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
 			"font-size" : generateCSSUnit( prefixFontSize, prefixFontSizeType ),
 			"line-height" : generateCSSUnit( prefixLineHeight, prefixLineHeightType ),
 			"font-family": prefixFontFamily,
 			"font-weight": prefixFontWeight,
 			"color": prefixColor,
 		},
-		" .uagb-marketing-btn__link:hover .editor-rich-text .uagb-marketing-btn__title" : {
+		" .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
 			"color": titleHoverColor,
 		},
-		" .uagb-marketing-btn__link:hover .editor-rich-text .uagb-marketing-btn__prefix" : {
+		" .uagb-marketing-btn__link:hover .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
 			"color": prefixHoverColor,
 		},
 		" .uagb-marketing-btn__link:hover .uagb-marketing-btn__icon-wrap svg" : {
@@ -139,9 +140,7 @@ function styling( props ) {
 		selectors[" .uagb-marketing-btn__link"]["background"] = hexToRgba( backgroundColor, backgroundOpacity )
 
 		// Hover Background
-		selectors[" .uagb-marketing-btn__link:hover"] = {
-			"background" : hexToRgba( backgroundHoverColor, backgroundHoverOpacity )
-		}
+		selectors[" .uagb-marketing-btn__link:hover"]["background"] = hexToRgba( backgroundHoverColor, backgroundHoverOpacity )
 
 	} else if ( "gradient" == backgroundType ) {
 
@@ -162,11 +161,11 @@ function styling( props ) {
 	selectors[" .uagb-marketing-btn__icon-wrap"][margin_type] = generateCSSUnit( iconSpace, "px" )
 
 	tablet_selectors = {
-		" .editor-rich-text .uagb-marketing-btn__title" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
 			"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 		},
-		" .editor-rich-text .uagb-marketing-btn__prefix" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
 			"font-size": generateCSSUnit( prefixFontSizeTablet, prefixFontSizeType ),
 			"line-height": generateCSSUnit( prefixLineHeightTablet, prefixLineHeightType ),
 		},
@@ -183,11 +182,11 @@ function styling( props ) {
 	}
 
 	mobile_selectors = {
-		" .editor-rich-text .uagb-marketing-btn__title" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__title" : {
 			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
 			"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 		},
-		" .editor-rich-text .uagb-marketing-btn__prefix" : {
+		" .block-editor-rich-text__editable.uagb-marketing-btn__prefix" : {
 			"font-size": generateCSSUnit( prefixFontSizeMobile, prefixFontSizeType ),
 			"line-height": generateCSSUnit( prefixLineHeightMobile, prefixLineHeightType ),
 		},
@@ -204,6 +203,9 @@ function styling( props ) {
 	}
 
 	var id = `#uagb-marketing-btn-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	var styling_css = generateCSS( selectors, id )
 

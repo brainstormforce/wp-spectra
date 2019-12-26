@@ -18,9 +18,6 @@ import WebfontLoader from "../../components/typography/fontloader"
 //  Import CSS.
 import "./style.scss"
 
-/* eslint-disable */
-// Import __() from wp.i18n
-
 const { __ } = wp.i18n
 
 const {
@@ -47,9 +44,11 @@ const {
 	TextControl
 } = wp.components
 
+const { withSelect } = wp.data
+
 const { Component, Fragment } = wp.element
 
-export default class UAGBAdvancedHeading extends Component {
+class UAGBAdvancedHeading extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -61,6 +60,9 @@ export default class UAGBAdvancedHeading extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { classMigrate: true } )
 
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
@@ -124,9 +126,9 @@ export default class UAGBAdvancedHeading extends Component {
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
+			anchor,
 			attributes: {
 				level,
-				anchor,
 				headingTitle,
 				headingId,
 				headingDesc,
@@ -230,12 +232,6 @@ export default class UAGBAdvancedHeading extends Component {
 								{ value: "h5", label: __( "H5" ) },
 								{ value: "h6", label: __( "H6" ) },
 							] }
-						/>
-						<TextControl
-							label= { __( "HTML Anchor" ) }
-							value= { headingId }
-							onChange={ value => setAttributes( { headingId: value } ) }
-							help={ __( "Note: Anchors lets you link directly to a section on a page." ) }
 						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
@@ -360,7 +356,12 @@ export default class UAGBAdvancedHeading extends Component {
 						}
 					</PanelBody>
 				</InspectorControls>
-				<div className={ className } id={ `uagb-adv-heading-${this.props.clientId}` }>
+				<div
+					className={ classnames(
+						className,
+						`uagb-block-${this.props.clientId}`,					
+					) }
+				>
 					<RichText
 						tagName={ headingTag }
 						placeholder={ __( "Write a Heading" ) }
@@ -403,3 +404,10 @@ export default class UAGBAdvancedHeading extends Component {
 		)
 	}
 }
+
+export default withSelect( ( select, props ) => {
+	const { anchor, attributes } = props
+	return {
+		anchor: attributes.headingId
+	}
+} )( UAGBAdvancedHeading )

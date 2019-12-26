@@ -806,7 +806,7 @@ class UAGBPostMasonry extends Component {
 		var element = document.getElementById( "uagb-post-masonry-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props, "uagb-post__masonry" )
+			element.innerHTML = styling( this.props )
 		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length

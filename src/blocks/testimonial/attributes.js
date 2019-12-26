@@ -25,6 +25,10 @@ const attributes = {
 		type: "number",
 		default: ITEM_COUNT
 	},
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	test_block: {
 		type: "array",
 		default : testimonial_block,

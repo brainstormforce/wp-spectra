@@ -31,7 +31,7 @@ import WebfontLoader from "../../../components/typography/fontloader"
 const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
-
+const { dateI18n } = wp.date
 const { decodeEntities } = wp.htmlEntities
 
 const {
@@ -209,6 +209,7 @@ class UAGBTimeline extends Component {
 			linkTarget,
 			postType,
 			taxonomyType,
+			dateFormat
 		} = attributes
 
 		let taxonomyListOptions = [
@@ -478,6 +479,8 @@ class UAGBTimeline extends Component {
 			</PanelColorSettings>
 		)
 
+		var today = new Date()
+
 		const content_control = (
 			<InspectorControls>
 				<PanelBody title={ __( "Query" ) } initialOpen={ true } >
@@ -592,6 +595,31 @@ class UAGBTimeline extends Component {
 						checked={ displayPostDate }
 						onChange={ ( value ) => setAttributes( { displayPostDate: ! displayPostDate } ) }
 					/>
+					{displayPostDate && 
+					<SelectControl
+						label={ __( "Date Format" ) }
+						value={ dateFormat }
+						onChange={ ( value ) => setAttributes( { dateFormat: value } ) }
+						options={ [
+							{ value: 'M j, Y' , label: dateI18n( 'M j, Y', today ) },
+							{ value: 'F j, Y' , label: dateI18n( 'F j, Y', today ) },
+							{ value: 'm/d/Y'  , label: dateI18n( 'm/d/Y', today ) },
+							{ value: 'm-d-Y'  , label: dateI18n( 'm-d-Y', today ) },
+							{ value: 'm.d.Y'  , label: dateI18n( 'm.d.Y', today ) },
+							{ value: 'd M Y'  , label: dateI18n( 'd M Y', today ) },
+							{ value: 'd F Y'  , label: dateI18n( 'd F Y', today ) },
+							{ value: 'd-m-Y'  , label: dateI18n( 'd-m-Y', today ) },
+							{ value: 'd.m.Y'  , label: dateI18n( 'd.m.Y', today ) },
+							{ value: 'd/m/Y'  , label: dateI18n( 'd/m/Y', today ) },
+							{ value: 'Y-m-d'  , label: dateI18n( 'Y-m-d', today ) },
+							{ value: 'Y.m.d'  , label: dateI18n( 'Y.m.d', today ) },
+							{ value: 'Y/m/d'  , label: dateI18n( 'Y/m/d', today ) },
+							{ value: 'M, Y'   , label: dateI18n( 'M, Y', today ) },
+							{ value: 'M Y'    , label: dateI18n( 'M Y', today ) },
+							{ value: 'F, Y'   , label: dateI18n( 'F, Y', today ) },
+							{ value: 'F Y'    , label: dateI18n( 'F Y', today ) },
+						] }
+					/>}
 					<ToggleControl
 						label={ __( "Display Post Excerpt" ) }
 						checked={ displayPostExcerpt }
@@ -904,9 +932,9 @@ class UAGBTimeline extends Component {
 				</BlockControls>
 				<div  className={ classnames(
 					className,
-					"uagb-timeline__outer-wrap"
-				) }
-				id = { `uagb-ctm-${ this.props.clientId }` } >
+					"uagb-timeline__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
 						cta_enable,

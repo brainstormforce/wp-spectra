@@ -5,6 +5,10 @@ const attributes = {
 		type    : "string",
 		default : "not_set",
 	},
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	disableBullets : {
 		type    : "boolean",
 		default : false,

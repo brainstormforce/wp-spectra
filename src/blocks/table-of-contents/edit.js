@@ -16,11 +16,13 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-import TableOfContents from './components';
+import TOC from './table-of-contents';
 
-let svg_icons = Object.keys( UAGBIcon )
-
+const { select } = wp.data;
+const striptags = require('striptags');
 const { __ } = wp.i18n
+const { withSelect, withDispatch } = wp.data
+const { compose } = wp.compose
 
 const {
 	Component,
@@ -47,32 +49,38 @@ const {
 	TabPanel
 } = wp.components
 
+let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBTableOfContentsEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-
-		this.regenerateTable = this.regenerateTable.bind( this )
 		this.getIcon  	 = this.getIcon.bind(this)
-	}
-
-	/*
-	 * Event to set Mapping Object.
-	 */
-	regenerateTable() {
-
-		const { setAttributes } = this.props
 	}
 
 	getIcon(value) {
 		this.props.setAttributes( { icon: value } )
 	}
 
+	componentDidUpdate(prevProps, prevState) {
+		if (
+			JSON.stringify( this.props.headers ) !==
+			JSON.stringify( prevProps.headers )
+		) {
+			this.props.setAttributes({
+				headerLinks: JSON.stringify(this.props.headers)
+			});
+		}
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		this.props.setAttributes( { classMigrate: true } )
+
+		this.props.setAttributes( { headerLinks: JSON.stringify( this.props.headers ) } )
 
 		// Pushing Scroll To Top div
 		var $scrollTop = document.createElement( "div" )
@@ -87,7 +95,7 @@ class UAGBTableOfContentsEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes, isSelected, className } = this.props
+		const { attributes, setAttributes, isSelected, className, headers } = this.props
 
 		const {
 			align,
@@ -946,9 +954,10 @@ class UAGBTableOfContentsEdit extends Component {
 					className,
 					`uagb-toc__align-${align}`,
 					`uagb-toc__columns-${tColumnsDesktop}`,
-					( initialCollapse ) ? `uagb-toc__collapse` : ''
+					( initialCollapse ) ? `uagb-toc__collapse` : '',
+					`uagb-block-${ this.props.clientId }`
 				) }
-				id={ `uagb-toc-${ this.props.clientId }` }>
+				>
 					<div className="uagb-toc__wrap">
 						<div className="uagb-toc__title-wrap">
 							<RichText
@@ -962,13 +971,9 @@ class UAGBTableOfContentsEdit extends Component {
 							/>
 							{icon_html}
 						</div>
-						<TableOfContents
-							align={align}
-							numcolumns={tColumnsDesktop}
-							heading={heading}
+						<TOC
 							mappingHeaders={mappingHeaders}
-							headers={headerLinks && JSON.parse(headerLinks)}
-							blockProp={this.props}
+							headers={headers}
 						/>
 					</div>
 				</div>
@@ -979,4 +984,104 @@ class UAGBTableOfContentsEdit extends Component {
 	}
 }
 
-export default UAGBTableOfContentsEdit
+export default compose(
+	withSelect( ( select, ownProps ) => {
+
+		const getData = ( headerData, a ) => {
+			headerData.map( ( header ) => {
+				let innerBlock = header.innerBlocks;
+				if( innerBlock.length > 0 ) {
+					innerBlock.forEach(function(element) {
+						if( element.innerBlocks.length > 0 ) {
+							getData( element.innerBlocks, a );
+						} else {
+							a.push( element.attributes );
+						}
+					});
+				} else {
+					if( header.name === 'core/heading' ) {
+						a.push( header.attributes );
+					}
+
+					if( header.name === 'uagb/advanced-heading' ) {
+						a.push( header.attributes );
+					}
+				}
+
+			});
+			return a; 
+		}
+
+		const parseTocSlug = ( slug ) => {
+
+			// If not have the element then return false!
+			if( ! slug ) {
+				return slug;
+			}
+
+			var parsedSlug = slug.toString().toLowerCase()
+				.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
+				.replace(/\s+/g, '-')                        // Replace spaces with -
+				.replace(/<[^<>]+>/g, '')                    // Remove tags
+				.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+				.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
+				.replace(/^-+/, '')                          // Trim - from start of text
+				.replace(/-+$/, '');                         // Trim - from end of text
+
+			return encodeURIComponent( parsedSlug );
+		}
+
+		let a = [];
+		let all_headers = getData( select( 'core/block-editor' ).getBlocks(), a );
+		let headers = [];
+
+		if( typeof all_headers != 'undefined' ) {
+
+			all_headers.forEach((heading, key) => {
+
+				const contentLevel = ( typeof heading.content === 'undefined' ||
+					heading.content === '' ) ? heading.headingTag : heading.level
+
+				const contentName = ( typeof heading.content === 'undefined' ||
+					heading.content === '' ) ? 'headingTitle' : 'content'
+
+				const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
+
+				if ( !headingContentEmpty ) {
+					headers.push(
+						{
+							tag: contentLevel,
+							text: striptags( heading[contentName] ),
+							link: parseTocSlug( striptags( heading[contentName] ) ),
+							content: heading.contentName
+						}
+					);
+				}
+			});
+		}
+
+		if ( headers !== undefined ) {
+
+			headers.forEach( function ( heading, index ) {
+				heading.level = 0;
+
+				for ( var i = index - 1; i >= 0; i-- ) {
+					var currentOrderedItem = headers[i];
+
+					if ( currentOrderedItem.tag <= heading.tag ) {
+						heading.level = currentOrderedItem.level;
+
+						if ( currentOrderedItem.tag < heading.tag ) {
+							heading.level++;
+						}
+						break;
+					}
+				}
+			});
+		}
+
+		return {
+			headers: headers
+		};
+	} )
+) ( UAGBTableOfContentsEdit )

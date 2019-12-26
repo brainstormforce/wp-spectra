@@ -7,6 +7,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 
 function TestimonialStyle( props ) {
 	const {
+		classMigrate,
 		headingAlign,
 		companyColor,
 		descColor,
@@ -71,12 +72,6 @@ function TestimonialStyle( props ) {
 		arrowDots,
 		arrowSize
 	} = props.attributes
-
-	if( props.clientId ){
-		var clientId = "uagb-testimonial-"+props.clientId
-	}else{
-		var clientId = "uagb-testimonial-"+block_id
-	}
 
 	var img_align = "center"
 
@@ -230,7 +225,10 @@ function TestimonialStyle( props ) {
 	}
 
 	var styling_css = ""
-	var id = `#wpwrap #${ clientId }`
+	var id = `#wpwrap #uagb-testimonial-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	styling_css = generateCSS( selectors, id )
 	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )

@@ -744,9 +744,9 @@ class UAGBRestaurantMenu extends Component {
 				{inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-rest_menu__outer-wrap"
+					"uagb-rest_menu__outer-wrap",
+					`uagb-block-${this.props.clientId}`
 				) }
-				id = { `uagb-rm-${this.props.clientId}` }
 				>
 
 					{ rest_menu_item_arr.map( ( test, index ) =>
@@ -792,6 +792,8 @@ class UAGBRestaurantMenu extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )

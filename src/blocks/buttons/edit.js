@@ -58,6 +58,9 @@ class UAGBMultiButtonEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { classMigrate: true } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
@@ -682,9 +685,9 @@ class UAGBMultiButtonEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					className,
-					"uagb-buttons__outer-wrap"
-				) }
-				id={ `uagb-buttons-${ this.props.clientId }` }>
+					"uagb-buttons__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
+				) }>
 					<div className="uagb-buttons__wrap">
 						{
 							buttons.map( ( button, index ) => {

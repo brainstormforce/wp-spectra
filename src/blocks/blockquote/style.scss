@@ -274,18 +274,12 @@
 		width: 100%;
 	}
 	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top .uagb-blockquote__author-image,
-	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top .uagb-blockquote__author,
-	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top .editor-rich-text{
+	.uagb-blockquote__author-wrap.uagb-blockquote__author-at-top .uagb-blockquote__author {
 		width: inherit;
 	}
 
 	.uagb-blockquote__with-tweet .uagb-blockquote__author-wrap.uagb-blockquote__author-at-top{
 		width: auto;
-	}
-
-	.uagb-blockquote__author-wrap .editor-rich-text{
-		-ms-flex-item-align: center;
-    	align-self: center;
 	}
 
 	/* Left Image */

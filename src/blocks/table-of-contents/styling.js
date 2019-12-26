@@ -8,6 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
+		classMigrate,
 		customWidth,
 		widthDesktop,
 		widthTablet,
@@ -227,6 +228,9 @@ function styling( props ) {
 	}
 
 	var id = `#uagb-toc-${ props.clientId }`
+	if ( classMigrate ) {
+		id = `.uagb-block-${ props.clientId }`
+	}
 
 	var styling_css = generateCSS( selectors, id )
 

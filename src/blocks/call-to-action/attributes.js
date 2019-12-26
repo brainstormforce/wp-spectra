@@ -8,6 +8,10 @@ const attributes = {
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "Call To Action",
 	},
+	classMigrate: {
+		type: "boolean",
+		default: false
+	},
 	description: {
 		source: "html",
 		selector: "p",

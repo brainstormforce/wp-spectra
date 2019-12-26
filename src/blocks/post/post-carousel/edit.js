@@ -917,7 +917,7 @@ class UAGBPostCarousel extends Component {
 		let css = ""
 
 		if( null != element && "undefined" != typeof element ) {
-			css = styling( this.props, "uagb-post__carousel" )
+			css = styling( this.props )
 			css += "#uagb-post__carousel-" + this.props.clientId + ".uagb-post-grid ul.slick-dots li.slick-active button:before, #uagb-post__carousel-" + this.props.clientId + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + arrowColor + "; }"
 			element.innerHTML = css
 		}
