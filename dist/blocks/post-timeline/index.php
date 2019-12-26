@@ -391,6 +391,10 @@ function uagb_register_post_timeline() {
 					'type'    => 'boolean',
 					'default' => true,
 				),
+				'dateFormat' => array(
+					'type' => 'string',
+					'default' => 'F j, Y'
+				),
 				'displayPostExcerpt'      => array(
 					'type'    => 'boolean',
 					'default' => true,
@@ -547,7 +551,7 @@ function uagb_tm_get_date( $attributes, $classname ) {
 			'<div datetime="%1$s" class="%2$s">%3$s</div>',
 			esc_attr( get_the_date( 'c', $post_id ) ),
 			$classname,
-			esc_html( get_the_date( '', $post_id ) )
+			esc_html( get_the_date( $attributes['dateFormat'], $post_id ) )
 		);
 	}
 

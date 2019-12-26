@@ -28,15 +28,14 @@ export default function save( props ) {
 		t_date,
 		date_icon,
 		stack,
-		timelineItem
+		timelineItem,
+		dateFormat
 	} = props.attributes
 
 	/* Style for elements */
 	var front_style = contentTimelineStyle( props )
 
 	const hasItems = Array.isArray( tm_content ) && tm_content.length
-
-	const dateFormat = __experimentalGetSettings().formats.date
 
 	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
 	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
@@ -71,9 +70,13 @@ export default function save( props ) {
 									}
 									const Tag = headingTag
 									var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "
-									var post_date = dateI18n( dateFormat, t_date[index].title )
-									if( post_date === "Invalid date" ){
-										post_date = t_date[index].title
+									var post_date = t_date[index].title
+									if ( 'custom' != dateFormat ) {
+
+										post_date = dateI18n( dateFormat, t_date[index].title )
+										if( post_date === "Invalid date" ){
+											post_date = t_date[index].title
+										}
 									}
 									return (
 										<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>

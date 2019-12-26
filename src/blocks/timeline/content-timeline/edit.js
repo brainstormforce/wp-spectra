@@ -218,7 +218,8 @@ class UAGBcontentTimeline extends Component {
 				iconBgFocus,
 				t_date,
 				displayPostDate,
-				stack
+				stack,
+				dateFormat
 			},
 		} = this.props
 
@@ -384,6 +385,8 @@ class UAGBcontentTimeline extends Component {
 			)
 		}
 
+		var today = new Date()
+
 		const renderSettings = (
 			<PanelBody	title={ __( "Date Settings" ) }	initialOpen={ false } >
 				<ToggleControl
@@ -391,6 +394,33 @@ class UAGBcontentTimeline extends Component {
 					checked={ displayPostDate }
 					onChange={ this.toggleDisplayPostDate }
 				/>
+
+				{displayPostDate && 
+				<SelectControl
+					label={ __( "Date Format" ) }
+					value={ dateFormat }
+					onChange={ ( value ) => setAttributes( { dateFormat: value } ) }
+					options={ [
+						{ value: 'M j, Y' , label: dateI18n( 'M j, Y', today ) },
+						{ value: 'F j, Y' , label: dateI18n( 'F j, Y', today ) },
+						{ value: 'm/d/Y'  , label: dateI18n( 'm/d/Y', today ) },
+						{ value: 'm-d-Y'  , label: dateI18n( 'm-d-Y', today ) },
+						{ value: 'm.d.Y'  , label: dateI18n( 'm.d.Y', today ) },
+						{ value: 'd M Y'  , label: dateI18n( 'd M Y', today ) },
+						{ value: 'd F Y'  , label: dateI18n( 'd F Y', today ) },
+						{ value: 'd-m-Y'  , label: dateI18n( 'd-m-Y', today ) },
+						{ value: 'd.m.Y'  , label: dateI18n( 'd.m.Y', today ) },
+						{ value: 'd/m/Y'  , label: dateI18n( 'd/m/Y', today ) },
+						{ value: 'Y-m-d'  , label: dateI18n( 'Y-m-d', today ) },
+						{ value: 'Y.m.d'  , label: dateI18n( 'Y.m.d', today ) },
+						{ value: 'Y/m/d'  , label: dateI18n( 'Y/m/d', today ) },
+						{ value: 'M, Y'   , label: dateI18n( 'M, Y', today ) },
+						{ value: 'M Y'    , label: dateI18n( 'M Y', today ) },
+						{ value: 'F, Y'   , label: dateI18n( 'F, Y', today ) },
+						{ value: 'F Y'    , label: dateI18n( 'F Y', today ) },
+						{ value: 'custom'    , label: __( 'Normal Text' ) },
+					] }
+				/>}
 
 				{ displayPostDate && times( timelineItem, n => renderDateSettings( n ) ) }
 
@@ -748,8 +778,6 @@ class UAGBcontentTimeline extends Component {
 	get_content(){
 		const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
 
-		const dateFormat = __experimentalGetSettings().formats.date
-
 		const{
 			headingTag,
 			timelinAlignment,
@@ -757,7 +785,8 @@ class UAGBcontentTimeline extends Component {
 			icon,
 			tm_content,
 			t_date,
-			timelineItem
+			timelineItem,
+			dateFormat
 		} = attributes
 
 		// Add CSS.
@@ -809,9 +838,13 @@ class UAGBcontentTimeline extends Component {
 							}
 							const Tag = this.props.attributes.headingTag
 							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
-							var post_date = dateI18n( dateFormat, t_date[index].title )
-							if( post_date === "Invalid date" ){
-								post_date = t_date[index].title
+							var post_date = t_date[index].title
+							if ( 'custom' != dateFormat ) {
+
+								post_date = dateI18n( dateFormat, t_date[index].title )
+								if( post_date === "Invalid date" ){
+									post_date = t_date[index].title
+								}
 							}
 							return (
 								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
