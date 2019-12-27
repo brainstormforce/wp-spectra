@@ -110,16 +110,20 @@
 			$this_scope = $( id );
 			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
-			$headers.forEach(function (element, index) {
-				var point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+			if ( undefined !== $headers ) {
 
-				if (  point_header.length > 0 ) {
-					point_header.before(function (ind) {
-						var anchor = parseTocSlug( $( point_header[ind] ).text() );
-						return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
-					});
-				}
-			});
+				$headers.forEach(function (element, index) {
+					var point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+
+					if ( undefined !== point_header && point_header.length > 0 ) {
+						point_header.before(function (ind) {
+							var anchor = parseTocSlug( $( point_header[ind] ).text() );
+							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
+						});
+					}
+				});
+			}
+
 
 			scroll_to_top = attr.scrollToTop
 
