@@ -456,7 +456,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				'.uagb-column__wrap'        => $style
+				'.uagb-column__wrap' => $style
 			);
 
 			if ( 'image' == $bg_type ) {
@@ -498,9 +498,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( '' != $attr['colWidth'] && 0 != $attr['colWidth'] ) {
 
-				$selectors[''] = array(
-					"width" => UAGB_Helper::get_css_value( $attr['colWidth'], "%" )
-				);
+				$selectors['.uagb-column__wrap']["width"] = UAGB_Helper::get_css_value( $attr['colWidth'], "%" );
 			}
 
 			$m_selectors = array(
