@@ -529,16 +529,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( '' != $attr['colWidthTablet'] && 0 != $attr['colWidthTablet'] ) {
 
-				$t_selectors[''] = array(
-					"width" => UAGB_Helper::get_css_value( $attr['colWidthTablet'], '%' )
-				);
+				$t_selectors['.uagb-column__wrap']["width"] = UAGB_Helper::get_css_value( $attr['colWidthTablet'], '%' );
 			}
 
 			if ( '' != $attr['colWidthMobile'] && 0 != $attr['colWidthMobile'] ) {
 
-				$m_selectors[''] = array(
-					"width" => UAGB_Helper::get_css_value( $attr['colWidthMobile'], '%' )
-				);
+				$m_selectors['.uagb-column__wrap']["width"] = UAGB_Helper::get_css_value( $attr['colWidthMobile'], '%' );
 			}
 
 			// @codingStandardsIgnoreEnd
