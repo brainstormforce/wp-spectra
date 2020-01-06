@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.14.6.1 =
+* Fix: Advanced Columns - Column width issue for responsive devices.
+
 = 1.14.6 =
 * Fix: Advanced Columns - Column width issue.
 
