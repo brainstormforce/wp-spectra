@@ -1030,9 +1030,10 @@ class UAGBCF7 extends Component {
 				<div
 					className = { classnames(
 						className,	
-						"uagb-cf7-styler__outer-wrap",					
+						"uagb-cf7-styler__outer-wrap",
+						`uagb-block-${ this.props.clientId }`					
 					) }
-					id={ `uagb-cf7-styler-${ this.props.clientId }` }>
+				>
 					<div className = {  classnames(
 						`uagb-cf7-styler__align-${align}`,
 						`uagb-cf7-styler__field-style-${fieldStyle}`,

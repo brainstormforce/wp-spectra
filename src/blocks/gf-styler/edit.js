@@ -1108,9 +1108,10 @@ class UAGBGF extends Component {
 				<div
 					className = { classnames(
 						className,	
-						"uagb-gf-styler__outer-wrap",					
+						"uagb-gf-styler__outer-wrap",
+						`uagb-block-${ this.props.clientId }`
 					) }
-					id={ `uagb-gf-styler-${ this.props.clientId }` }>
+				>
 					<div className = {  classnames(
 						`uagb-gf-styler__align-${align}`,
 						`uagb-gf-styler__field-style-${fieldStyle}`,

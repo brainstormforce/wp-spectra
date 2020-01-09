@@ -1040,7 +1040,7 @@ export default compose(
 			all_headers.forEach((heading, key) => {
 
 				const contentLevel = ( typeof heading.content === 'undefined' ||
-					heading.content === '' ) ? heading.headingTag : heading.level
+					heading.content === '' ) ? parseInt( heading.headingTag[1] ) : heading.level
 
 				const contentName = ( typeof heading.content === 'undefined' ||
 					heading.content === '' ) ? 'headingTitle' : 'content'
@@ -1053,7 +1053,7 @@ export default compose(
 							tag: contentLevel,
 							text: striptags( heading[contentName] ),
 							link: parseTocSlug( striptags( heading[contentName] ) ),
-							content: heading.contentName
+							content: heading[contentName]
 						}
 					);
 				}
