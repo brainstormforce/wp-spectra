@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.14.6.1 =
 * Fix: Advanced Columns - Column width issue for responsive devices.
+* Fix: Advanced Columns - Compatibility to Gutenberg 7.2
 * Fix: Table of Contents - Advanced Heading getting skipped in some case scenario.
 * Fix: Contact Form 7 Styler - Styling not applied in editor mode.
 * Fix: Gravity Form Styler - Styling not applied in editor mode.
