@@ -257,21 +257,21 @@ function styling( props ) {
 			"color"      : fieldInputColor,
 			"text-align" : align,
 		},
-		" form label"                            : {
+		" form label.gfield_label"                            : {
 			"color"       : fieldLabelColor,
 			"font-size"   : generateCSSUnit( labelFontSize, labelFontSizeType ),
 			"font-family" : labelFontFamily,
 			"font-weight" : labelFontWeight,
 			"line-height" : generateCSSUnit( labelLineHeight, labelLineHeightType ),
 		},
-		" form .gfield_radio label"              : {
+		" form .gfield_radio label.gfield_label"              : {
 			"color"       : fieldLabelColor,
 			"font-size"   : generateCSSUnit( labelFontSize, labelFontSizeType ),
 			"font-family" : labelFontFamily,
 			"font-weight" : labelFontWeight,
 			"line-height" : generateCSSUnit( labelLineHeight, labelLineHeightType ),
 		},
-		" form .gfield_checkbox label"           : {
+		" form .gfield_checkbox label.gfield_label"           : {
 			"color"       : fieldLabelColor,
 			"font-size"   : generateCSSUnit( labelFontSize, labelFontSizeType ),
 			"font-family" : labelFontFamily,
