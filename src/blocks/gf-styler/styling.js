@@ -320,7 +320,7 @@ function styling( props ) {
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox']:checked + label:before" : {
 			"background-color" : fieldBgColor,
 			"color"            : fieldInputColor,
-			"font-size"        : "calc( " + fieldVrPadding + "px / 1.2 )",
+			"font-size"        : "calc( " + radioCheckSize + "px / 1.2 )",
 			"border-color"     : fieldBorderFocusColor,
 		},
 		" .uagb-gf-styler__check-style-enabled .gfield_checkbox input[type='checkbox'] + label:before" : {
@@ -337,7 +337,7 @@ function styling( props ) {
 		" .uagb-gf-styler__check-style-enabled input[type='checkbox']:checked + label:before" : {
 			"background-color" : fieldBgColor,
 			"color"            : fieldInputColor,
-			"font-size"        : "calc( " + fieldVrPadding + "px / 1.2 )",
+			"font-size"        : "calc( " + radioCheckSize + "px / 1.2 )",
 			"border-color"     : fieldBorderFocusColor,
 		},
 		" .uagb-gf-styler__check-style-enabled input[type='checkbox'] + label:before" : {
@@ -403,13 +403,13 @@ function styling( props ) {
 			"border-style"  : "solid",
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
-			"font-size"     : "calc( " + fieldVrPadding + "px / 1.2 )",
+			"font-size"     : "calc( " + radioCheckSize + "px / 1.2 )",
 		},
 		" .uagb-gf-styler__field-style-box input[type='checkbox']:checked + label:before" : {
 			"border-style"  : "solid",
 			"border-width"  : generateCSSUnit( fieldBorderWidth, "px" ),
 			"border-radius" : generateCSSUnit( fieldBorderRadius, fieldBorderRadiusType ),
-			"font-size"     : "calc( " + fieldVrPadding + "px / 1.2)",
+			"font-size"     : "calc( " + radioCheckSize + "px / 1.2)",
 		},
 		" .gfield_radio input[type='radio']:checked + label:before" : {
 			"background-color" : fieldInputColor,
