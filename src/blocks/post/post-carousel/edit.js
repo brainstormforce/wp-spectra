@@ -747,6 +747,8 @@ class UAGBPostCarousel extends Component {
 							{ value: "h4", label: __( "H4" ) },
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
+							{ value: "span", label: __( "span" ) },
+							{ value: "p", label: __( "p" ) },
 						] }
 					/>
 					<TypographyControl
