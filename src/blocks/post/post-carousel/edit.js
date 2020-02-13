@@ -19,7 +19,7 @@ import styling from ".././styling"
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
 const { decodeEntities } = wp.htmlEntities
-const MAX_POSTS_COLUMNS = 4
+const MAX_POSTS_COLUMNS = 8
 const {
 	PanelBody,
 	Placeholder,
@@ -612,7 +612,7 @@ class UAGBPostCarousel extends Component {
 							value={ excerptLength }
 							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 							min={ 1 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
 					}

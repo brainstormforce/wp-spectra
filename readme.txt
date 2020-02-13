@@ -156,6 +156,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.14.6.1 =
+* Improvement: Post - Post Title tag can be span/p.
+* Improvement: Post - Column count increased to 8.
+* Improvement: Post - Excerpt length maximum value increased.
 * Fix: Advanced Columns - Column width issue for responsive devices.
 * Fix: Table of Contents - Advanced Heading getting skipped in some case scenario.
 * Fix: Contact Form 7 Styler - Styling not applied in editor mode.
