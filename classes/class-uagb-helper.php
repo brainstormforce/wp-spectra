@@ -111,7 +111,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function get_instance() {
 			if ( ! isset( self::$instance ) ) {
-				self::$instance = new self;
+				self::$instance = new self();
 			}
 			return self::$instance;
 		}
@@ -121,8 +121,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function __construct() {
 
-			require( UAGB_DIR . 'classes/class-uagb-config.php' );
-			require( UAGB_DIR . 'classes/class-uagb-block-helper.php' );
+			require UAGB_DIR . 'classes/class-uagb-config.php';
+			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 
 			self::$block_list      = UAGB_Config::get_block_attributes();
 			self::$file_generation = self::allow_file_generation();
@@ -1007,7 +1007,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return self::$icon_json;
 			}
 
-			$str             = UAGB_Helper::get_instance()->get_filesystem()->get_contents( $json_file );
+			$str             = self::get_instance()->get_filesystem()->get_contents( $json_file );
 			self::$icon_json = json_decode( $str, true );
 			return self::$icon_json;
 		}
@@ -1027,7 +1027,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$icon = str_replace( 'fa', '', $icon );
 			$icon = sanitize_text_field( esc_attr( $icon ) );
 
-			$json = UAGB_Helper::backend_load_font_awesome_icons();
+			$json = self::backend_load_font_awesome_icons();
 			$path = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['path'] : $json[ $icon ]['svg']['solid']['path'];
 			$view = isset( $json[ $icon ]['svg']['brands'] ) ? $json[ $icon ]['svg']['brands']['viewBox'] : $json[ $icon ]['svg']['solid']['viewBox'];
 			if ( $view ) {
@@ -1362,10 +1362,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$style .= UAGB_Helper::get_instance()->get_filesystem()->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
+				$style .= self::get_instance()->get_filesystem()->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
-			UAGB_Helper::get_instance()->get_filesystem()->put_contents( $combined_path, $style, FS_CHMOD_FILE );
+			self::get_instance()->get_filesystem()->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
 		/**
@@ -1395,9 +1395,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				UAGB_Helper::get_instance()->get_filesystem()->mkdir( $dir_info['path'] );
+				self::get_instance()->get_filesystem()->mkdir( $dir_info['path'] );
 				// Add an index file for security.
-				UAGB_Helper::get_instance()->get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
+				self::get_instance()->get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
@@ -1474,7 +1474,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( isset( $assets_info[ $var ] ) ) {
 					// Create a new file.
-					UAGB_Helper::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
+					self::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 					// Update the post meta.
 					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
@@ -1496,7 +1496,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					if ( file_exists( $assets_info[ $var ] ) ) {
 
-						$old_data = UAGB_Helper::get_instance()->get_filesystem()->get_contents( $assets_info[ $var ] );
+						$old_data = self::get_instance()->get_filesystem()->get_contents( $assets_info[ $var ] );
 
 						if ( $old_data !== $style_data ) {
 
@@ -1506,7 +1506,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
 
 							// Create a new file.
-							UAGB_Helper::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
+							self::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 							// Update the post meta.
 							update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );

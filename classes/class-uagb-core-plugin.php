@@ -28,7 +28,7 @@ class UAGB_Core_Plugin {
 	 */
 	public static function get_instance() {
 		if ( ! isset( self::$instance ) ) {
-			self::$instance = new self;
+			self::$instance = new self();
 		}
 		return self::$instance;
 	}
@@ -48,9 +48,9 @@ class UAGB_Core_Plugin {
 	 */
 	private function includes() {
 
-		require( UAGB_DIR . 'lib/notices/class-astra-notices.php' );
-		require( UAGB_DIR . 'classes/class-uagb-admin.php' );
-		require( UAGB_DIR . 'classes/class-uagb-init-blocks.php' );
+		require UAGB_DIR . 'lib/notices/class-astra-notices.php';
+		require UAGB_DIR . 'classes/class-uagb-admin.php';
+		require UAGB_DIR . 'classes/class-uagb-init-blocks.php';
 	}
 }
 

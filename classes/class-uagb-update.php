@@ -49,7 +49,7 @@ if ( ! class_exists( 'UAGB_Update' ) ) :
 		 * @since 1.13.4
 		 * @return void
 		 */
-		static public function init() {
+		public static function init() {
 
 			do_action( 'uagb_update_before' );
 
