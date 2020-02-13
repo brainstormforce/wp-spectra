@@ -7,24 +7,15 @@
 
 .wp-block-uagb-gf-styler {
 
-	.uagb-gf-styler__gform-heading-none .gform_heading {
-		display: none;
-	}
-
-	.uagb-gf-styler__gform-heading-no .gform_heading {
-		display: none;
-	}
-
-	.uagb-gf-styler__gform-heading-no .gform_heading.custom_gform_heading {
-		display: block;
-	}
-
-	.uagb-gf-styler__gform-heading-yes .gform_heading {
-		display: block;
-	}
-
+	.uagb-gf-styler__gform-heading-none .gform_heading,
+	.uagb-gf-styler__gform-heading-no .gform_heading,
 	.uagb-gf-styler__gform-heading-yes .gform_heading.custom_gform_heading {
 		display: none;
+	}
+
+	.uagb-gf-styler__gform-heading-no .gform_heading.custom_gform_heading,
+	.uagb-gf-styler__gform-heading-yes .gform_heading {
+		display: block;
 	}
 
 	.uagb-gf-styler__check-style-enabled input[type="radio"],
@@ -63,18 +54,18 @@
 	}
 }
 
+.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler {
+	.button,
+	button,
+	input,
+	select,
+	textarea {
+		font-size: 100%;
+		color:inherit;
+	}
 
-
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler .button,
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler button,
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler input,
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler select,
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler textarea{
-	font-size: 100%;
-	color:inherit;
-}
-
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler select,
-.block-editor-page #wpwrap .edit-post-visual-editor .wp-block-uagb-gf-styler .gform_button.button {
-	height: auto;
+	select,
+	.gform_button.button {
+		height: auto;
+	}
 }
