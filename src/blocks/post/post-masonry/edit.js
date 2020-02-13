@@ -14,7 +14,7 @@ import styling from ".././styling"
 
 const { Component, Fragment } = wp.element
 const { __ } = wp.i18n
-const MAX_POSTS_COLUMNS = 4
+const MAX_POSTS_COLUMNS = 8
 const {
 	PanelBody,
 	Placeholder,
@@ -509,7 +509,7 @@ class UAGBPostMasonry extends Component {
 							value={ excerptLength }
 							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
 							min={ 1 }
-							max={ 50 }
+							max={ 500 }
 							allowReset
 						/>
 					}
@@ -644,6 +644,8 @@ class UAGBPostMasonry extends Component {
 							{ value: "h4", label: __( "H4" ) },
 							{ value: "h5", label: __( "H5" ) },
 							{ value: "h6", label: __( "H6" ) },
+							{ value: "span", label: __( "span" ) },
+							{ value: "p", label: __( "p" ) },
 						] }
 					/>
 					<TypographyControl

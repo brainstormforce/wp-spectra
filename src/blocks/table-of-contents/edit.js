@@ -1,3 +1,4 @@
+
 /**
  * BLOCK: Table of Contents
  */
@@ -995,7 +996,13 @@ export default compose(
 						if( element.innerBlocks.length > 0 ) {
 							getData( element.innerBlocks, a );
 						} else {
-							a.push( element.attributes );
+							if( element.name === 'core/heading' ) {
+								a.push( element.attributes );
+							}
+
+							if( element.name === 'uagb/advanced-heading' ) {
+								a.push( element.attributes );
+							}
 						}
 					});
 				} else {
@@ -1036,9 +1043,7 @@ export default compose(
 		let headers = [];
 
 		if( typeof all_headers != 'undefined' ) {
-
 			all_headers.forEach((heading, key) => {
-
 				const contentLevel = ( typeof heading.content === 'undefined' ||
 					heading.content === '' ) ? parseInt( heading.headingTag[1] ) : heading.level
 
