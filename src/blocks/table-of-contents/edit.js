@@ -997,21 +997,21 @@ export default compose(
 							getData( element.innerBlocks, a );
 						} else {
 							if( element.name === 'core/heading' ) {
-								a.push( element.attributes );
+								a.push( element );
 							}
 
 							if( element.name === 'uagb/advanced-heading' ) {
-								a.push( element.attributes );
+								a.push( element );
 							}
 						}
 					});
 				} else {
 					if( header.name === 'core/heading' ) {
-						a.push( header.attributes );
+						a.push( header );
 					}
 
 					if( header.name === 'uagb/advanced-heading' ) {
-						a.push( header.attributes );
+						a.push( header );
 					}
 				}
 
@@ -1044,21 +1044,22 @@ export default compose(
 
 		if( typeof all_headers != 'undefined' ) {
 			all_headers.forEach((heading, key) => {
-				const contentLevel = ( typeof heading.content === 'undefined' ||
-					heading.content === '' ) ? parseInt( heading.headingTag[1] ) : heading.level
 
-				const contentName = ( typeof heading.content === 'undefined' ||
-					heading.content === '' ) ? 'headingTitle' : 'content'
+				let heading_attr = heading.attributes
 
-				const headingContentEmpty = typeof heading[contentName] === 'undefined' || heading[contentName] === '';
+				const contentLevel = ( heading.name == 'uagb/advanced-heading' ) ? parseInt( heading_attr.headingTag[1] ) : heading_attr.level
+
+				const contentName = ( heading.name == 'uagb/advanced-heading' ) ? 'headingTitle' : 'content'
+
+				const headingContentEmpty = typeof heading_attr[contentName] === 'undefined' || heading_attr[contentName] === '';
 
 				if ( !headingContentEmpty ) {
 					headers.push(
 						{
 							tag: contentLevel,
-							text: striptags( heading[contentName] ),
-							link: parseTocSlug( striptags( heading[contentName] ) ),
-							content: heading[contentName]
+							text: striptags( heading_attr[contentName] ),
+							link: parseTocSlug( striptags( heading_attr[contentName] ) ),
+							content: heading_attr[contentName]
 						}
 					);
 				}
