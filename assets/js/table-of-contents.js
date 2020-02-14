@@ -113,11 +113,20 @@
 			if ( undefined !== $headers ) {
 
 				$headers.forEach(function (element, index) {
-					var point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+					
+					let point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+
+					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
+						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
+						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
+						if ( left_word == right_word ) {
+							point_header = $( this );
+						}
+					});
 
 					if ( undefined !== point_header && point_header.length > 0 ) {
 						point_header.before(function (ind) {
-							var anchor = parseTocSlug( $( point_header[ind] ).text() );
+							var anchor = parseTocSlug( $( point_header[ind] ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'') );
 							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
 						});
 					}

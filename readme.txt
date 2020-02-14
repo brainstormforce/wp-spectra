@@ -164,6 +164,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Contact Form 7 Styler - Styling not applied in editor mode.
 * Fix: Gravity Form Styler - Styling not applied in editor mode.
 * Fix: Table of Contents - Advanced Heading getting skipped in some case scenario.
+* Fix: Table of Contents - Issue with Single/Double quote in headers.
 
 = 1.14.6 =
 * Fix: Advanced Columns - Column width issue.
