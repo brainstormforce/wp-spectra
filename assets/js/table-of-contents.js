@@ -126,7 +126,7 @@
 
 					if ( undefined !== point_header && point_header.length > 0 ) {
 						point_header.before(function (ind) {
-							var anchor = parseTocSlug( $( point_header[ind] ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'') );
+							var anchor = parseTocSlug( $( point_header[ind] ).text() );
 							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
 						});
 					}
