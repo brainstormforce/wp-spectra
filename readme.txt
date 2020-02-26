@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.3.2
-Stable tag: 1.14.6.1
+Stable tag: 1.14.7
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 500,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 600,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -155,7 +155,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.14.6.1 =
+= 1.14.7 =
 * Improvement: Post - Post Title tag can be span/p.
 * Improvement: Post - Column count increased to 8.
 * Improvement: Post - Excerpt length maximum value increased.
@@ -164,7 +164,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Contact Form 7 Styler - Styling not applied in editor mode.
 * Fix: Gravity Form Styler - Styling not applied in editor mode.
 * Fix: Table of Contents - Advanced Heading getting skipped in some case scenario.
-* Fix: Table of Contents - Issue with Single/Double quote in headers.
 
 = 1.14.6 =
 * Fix: Advanced Columns - Column width issue.
