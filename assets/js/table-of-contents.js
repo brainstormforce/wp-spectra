@@ -32,18 +32,20 @@
 
 			$( document ).delegate( ".uagb-toc__list a", "click", UAGBTableOfContents._scroll )
 			$( document ).delegate( ".uagb-toc__scroll-top", "click", UAGBTableOfContents._scrollTop )
-			$( document ).delegate( '.uag-toc__collapsible-wrap', 'click', UAGBTableOfContents._toggleCollapse )
+			$( document ).delegate( '.uagb-toc__title-wrap', 'click', UAGBTableOfContents._toggleCollapse )
 			$( document ).on( "scroll", UAGBTableOfContents._showHideScroll  )
 
 		},
 
 		_toggleCollapse: function( e ) {
-			let $root = $( this ).closest( '.wp-block-uagb-table-of-contents' )
+			if ( $( this ).find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
+				let $root = $( this ).closest( '.wp-block-uagb-table-of-contents' )
 
-			if ( $root.hasClass( 'uagb-toc__collapse' ) ) {
-				$root.removeClass( 'uagb-toc__collapse' );
-			} else {
-				$root.addClass( 'uagb-toc__collapse' );
+				if ( $root.hasClass( 'uagb-toc__collapse' ) ) {
+					$root.removeClass( 'uagb-toc__collapse' );
+				} else {
+					$root.addClass( 'uagb-toc__collapse' );
+				}
 			}
 		},
 
@@ -108,6 +110,11 @@
 		_run: function( attr, id ) {
 
 			$this_scope = $( id );
+
+			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
+				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
+			}
+
 			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
 			if ( undefined !== $headers ) {
@@ -132,7 +139,6 @@
 					}
 				});
 			}
-
 
 			scroll_to_top = attr.scrollToTop
 
