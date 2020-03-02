@@ -51,6 +51,10 @@
 		justify-content: space-between;
 	}
 
+	.uagb-toc__is-collapsible.uagb-toc__title-wrap {
+		cursor: pointer;
+	}
+
 	.uag-toc__collapsible-wrap svg {
 		width: 20px;
 		height: 20px;
@@ -73,14 +77,17 @@
 	}
 }
 
-.uagb-toc__scroll-top {
-	display: none;
-	position: fixed;
-	bottom: 50px;
-	right: 50px;
-	padding: 10px;
-	background: #ccd0d4;
-	cursor: pointer;
+.uagb-toc__scroll-top.dashicon {
+
+	&.dashicons {
+		display: none;
+		position: fixed;
+		bottom: 50px;
+		right: 50px;
+		padding: 10px;
+		background: #ccd0d4;
+		cursor: pointer;
+	}
 
 	&.uagb-toc__show-scroll {
 		display: inline-table;
