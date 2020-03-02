@@ -156,7 +156,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.14.8 ###
-* Fix: Table of Contents - Sroll to Top issue in some scenarios.
+* Fix: Table of Contents - Scroll to Top issue in some scenarios.
 
 ### 1.14.7 ###
 * Improvement: Post - Post Title tag can be span/p.
