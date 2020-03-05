@@ -219,7 +219,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<style type="text/css" media="all" id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
+			<style id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
 			<?php
 			ob_end_flush();
 		}
