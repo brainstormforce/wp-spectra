@@ -506,7 +506,7 @@ class UAGBcontentTimeline extends Component {
 
 						} }
 						min={ 1 }
-						max={ 20 }
+						max={ 100 }
 						allowReset
 					/>
 				</PanelBody>
