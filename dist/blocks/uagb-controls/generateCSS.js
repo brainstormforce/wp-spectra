@@ -30,7 +30,11 @@ function generateCSS ( selectors, id, isResponsive = false, responsiveType = "" 
 			}
 
 			if( typeof sel[j] != "undefined" && checkString ) {
-				css += j + ": " + sel[j] + ";"
+				if ( 'font-family' === j ) {
+					css += j + ": " + "'" + sel[j] + "'" + ";"
+				} else {
+					css += j + ": " + sel[j] + ";"
+				}
 			}
 		}
 
