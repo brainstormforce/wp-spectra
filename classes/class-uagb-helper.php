@@ -287,7 +287,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 
 					if ( ! empty( $val ) || 0 === $val ) {
-						$css .= $j . ': ' . $val . ';';
+						if ( 'font-family' === $j ) {
+							$css .= $j . ': ' .'"'. $val .'"'. ';';
+						} else {
+							$css .= $j . ': ' . $val . ';';
+						}
 					}
 				}
 
