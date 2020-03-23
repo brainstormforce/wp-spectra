@@ -154,6 +154,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.14.7.2 =
+* Fix: Font Families not applying if it's name contains a space.
 
 = 1.14.7.1 =
 * Improvement: Inline CSS generation markup as per w3c standards.

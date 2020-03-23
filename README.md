@@ -5,7 +5,7 @@
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
 **Tested up to:** 5.3.2  
-**Stable tag:** 1.14.7  
+**Stable tag:** 1.14.7.1  
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -154,6 +154,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 ## Changelog ##
+### 1.14.7.2 ###
+* Fix: Font Families not applying if it's name contains a space.
+
+### 1.14.7.1 ###
+* Improvement: Inline CSS generation markup as per w3c standards.
 
 ### 1.14.7 ###
 * Improvement: Post - Post Title tag can be span/p.
