@@ -288,7 +288,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					if ( ! empty( $val ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
-							$css .= $j . ': ' .'"'. $val .'"'. ';';
+							$css .= $j . ': ' . '"' . $val . '"' . ';';
 						} else {
 							$css .= $j . ': ' . $val . ';';
 						}
