@@ -59,17 +59,6 @@ class TOC extends React.Component {
 			let items = [];
 			list.forEach(item => {
 				let link = item.link;
-
-				// var link = item.text;
-   				link = link.replace(/\W+(?!$)/g, '-').toLowerCase();
-   				link = link.replace(/\W+&$/, '').toLowerCase();
-				
-				// let link = item.text.replace(/\W+(?!$)/g, '-');
-				// let link = 'Heading & title';
-				// link = link.replace(/\W$/, '');
-				console.log(link);
-				// link = link.replace(/\s+?/g, "");
-				// console.log(link);
 				
 				if (Array.isArray(item)) {
 					items.push(parseList(item));
