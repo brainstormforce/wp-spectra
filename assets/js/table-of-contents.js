@@ -125,7 +125,6 @@
 
 					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
 						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						
 						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
 						if ( left_word == right_word ) {
 							point_header = $( this );

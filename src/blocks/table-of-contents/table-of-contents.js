@@ -58,7 +58,6 @@ class TOC extends React.Component {
 		const parseList = list => {
 			let items = [];
 			list.forEach(item => {
-				let link = item.link;
 				
 				if (Array.isArray(item)) {
 					items.push(parseList(item));
@@ -67,7 +66,7 @@ class TOC extends React.Component {
 					items.push(
 						<li key={list.indexOf(item)}>
 							<a
-								href={`#${link}`}
+								href={`#${item.link}`}
 								dangerouslySetInnerHTML={{
 									__html: item.text
 								}}
