@@ -116,6 +116,12 @@
 			}
 
 			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
+			// console.log($headers);
+			// console.log($headers[1].link.replace(/\W+(?!$)/g, '-').toLowerCase());
+			// var link = $headers[1].link;
+   			// 	link = link.replace(/\W+(?!$)/g, '-').toLowerCase();
+			// 	   link = link.replace(/\W$/, '').toLowerCase();
+			// 	   console.log(link);
 
 			if ( undefined !== $headers ) {
 
@@ -125,6 +131,7 @@
 
 					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
 						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
+						
 						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
 						if ( left_word == right_word ) {
 							point_header = $( this );
@@ -134,7 +141,19 @@
 					if ( undefined !== point_header && point_header.length > 0 ) {
 						point_header.before(function (ind) {
 							var anchor = parseTocSlug( $( point_header[ind] ).text() );
-							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
+							var link = $headers[index].link;
+   							link = link.replace(/\W+(?!$)/g, '-').toLowerCase();
+							 link = link.replace(/\W$/, '').toLowerCase();
+							// //  link = link.replace(/3b/, '');
+							// console.log(link.replace(/&(amp;)?#(\d+);/g, 'amp'));
+							// var x = '&amp;';
+				   			// console.log(x.replace(/&amp;/g, 'amp'));
+							// var x = 'heading-&-title-2';
+							
+							// anchor = anchor.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '-');
+							// console.log(x.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g,'-'));
+							return '<span id="' + link + '" class="uag-toc__heading-anchor"></span>';
+							// return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
 						});
 					}
 				});
