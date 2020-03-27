@@ -57,7 +57,7 @@ class UAGB_Init_Blocks {
 	 * @param object $post Post object.
 	 * @since 1.0.0
 	 */
-	function register_block_category( $categories, $post ) {
+	public function register_block_category( $categories, $post ) {
 		return array_merge(
 			$categories,
 			array(
@@ -162,7 +162,7 @@ class UAGB_Init_Blocks {
 	 *
 	 * @since 1.0.0
 	 */
-	function editor_assets() {
+	public function editor_assets() {
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
