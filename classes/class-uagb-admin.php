@@ -23,37 +23,12 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function init() {
 
-			self::initialize_ajax();
-			self::initialise_plugin();
-			add_action( 'after_setup_theme', __CLASS__ . '::init_hooks' );
-			// Activation hook.
-			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
-		}
-
-		/**
-		 * Activation Reset
-		 */
-		public static function activation_redirect() {
-			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
-			if ( $do_redirect ) {
-				update_option( '__uagb_do_redirect', false );
-				if ( ! is_multisite() ) {
-					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
-				}
-			}
-		}
-
-		/**
-		 * Adds the admin menu and enqueues CSS/JS if we are on
-		 * the builder admin settings page.
-		 *
-		 * @since 0.0.1
-		 * @return void
-		 */
-		public static function init_hooks() {
 			if ( ! is_admin() ) {
 				return;
 			}
+
+			self::initialize_ajax();
+			self::initialise_plugin();
 
 			// Add UAGB menu option to admin.
 			add_action( 'network_admin_menu', __CLASS__ . '::menu' );
@@ -73,13 +48,28 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
 
 			// Enqueue admin scripts.
-			if ( isset( $_REQUEST['page'] ) && UAGB_SLUG === $_REQUEST['page'] ) {
+			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) {
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
 
 				self::save_settings();
 			}
 
 			add_filter( 'rank_math/researches/toc_plugins', __CLASS__ . '::toc_plugin' );
+			// Activation hook.
+			add_action( 'admin_init', __CLASS__ . '::activation_redirect' );
+		}
+
+		/**
+		 * Activation Reset
+		 */
+		public static function activation_redirect() {
+			$do_redirect = apply_filters( 'uagb_enable_redirect_activation', get_option( '__uagb_do_redirect' ) );
+			if ( $do_redirect ) {
+				update_option( '__uagb_do_redirect', false );
+				if ( ! is_multisite() ) {
+					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+				}
+			}
 		}
 
 		/**

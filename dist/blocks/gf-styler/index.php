@@ -11,26 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Renders the Gravity Form shortcode.
- *
- * @since 1.12.0
- */
-function uagb_gf_shortcode() { 	// @codingStandardsIgnoreStart
-    $id = intval($_POST['formId']);
-
-    // @codingStandardsIgnoreEnd
-	if ( $id && 0 !== $id && -1 !== $id ) {
-		$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
-	} else {
-		$data['html'] = '<p>' . __( 'Please select a valid Gravity Form.', 'ultimate-addons-for-gutenberg' ) . '</p>';
-	}
-	wp_send_json_success( $data );
-}
-
-add_action( 'wp_ajax_uagb_gf_shortcode', 'uagb_gf_shortcode' );
-add_action( 'wp_ajax_nopriv_uagb_gf_shortcode', 'uagb_gf_shortcode' );
-
-/**
  * Registers Gravity Form.
  *
  * @since 1.12.0
