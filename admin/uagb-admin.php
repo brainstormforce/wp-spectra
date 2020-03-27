@@ -20,14 +20,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 						<img src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/uagb_logo.svg' ); ?>" class="uagb-header-icon" alt="<?php echo esc_attr( UAGB_PLUGIN_NAME ); ?> " >
 						<?php
 					} else {
-						echo '<h4>' . esc_html( UAGB_PLUGIN_NAME ) . '</h4>'; }
+						echo sprintf( '<h4>%s</h4>', esc_html( UAGB_PLUGIN_NAME ) );
+					}
 					?>
 						<span class="uagb-plugin-version"><?php echo esc_html( UAGB_VER ); ?></span>
 					</a>
 				</div>
 				<div class="uagb-top-links">
 					<?php esc_attr_e( 'Take Gutenberg to The Next Level! - ', 'ultimate-addons-for-gutenberg' ); ?>
-					<a href="<?php echo esc_url( $uagb_visit_site_url ); ?>" target="_blank" rel=""><?php esc_attr_e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
+					<a href="<?php echo esc_url( $uagb_visit_site_url ); ?>" target="_blank" rel=""><?php esc_html_e( 'View Demos', 'ultimate-addons-for-gutenberg' ); ?></a>
 				</div>
 			</div>
 		</div>
