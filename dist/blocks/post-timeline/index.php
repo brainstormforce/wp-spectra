@@ -495,21 +495,13 @@ add_action( 'init', 'uagb_register_post_timeline' );
  * Function Name: uagb_tm_get_icon.
  *
  * @param  array $attributes attribute array.
- * @return string             [description].
  */
 function uagb_tm_get_icon( $attributes ) {
-
-	$icon       = $attributes['icon'];
-	$htm        = UAGB_Helper::render_svg_html( $icon );
-	$icon_class = 'uagb-timeline__icon-new uagb-timeline__out-view-icon ';
-	$output     = '';
-	$output    .= sprintf( '<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >' );
-	$output    .= sprintf( '<span class = "%1$s" >', esc_attr( $icon_class ) );
-	$output    .= $htm;
-	$output    .= sprintf( '</span>' );
-	$output    .= sprintf( '</div>' ); // End of icon div.
-
-	return $output;
+	?>
+	<div class = "uagb-timeline__marker uagb-timeline__out-view-icon" >
+		<span class = "uagb-timeline__icon-new uagb-timeline__out-view-icon" ><?php UAGB_Helper::render_svg_html( $attributes['icon'] ); ?></span>
+	</div>
+	<?php
 }
 
 /**
@@ -565,9 +557,9 @@ function uagb_tm_get_title( $attributes ) {
 	?>
 	<div class = "uagb-timeline__heading-text" >
 		<?php do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-		<<?php echo $tag; ?> class="uagb-timeline__heading" >
+		<<?php echo esc_html( $tag ); ?> class="uagb-timeline__heading" >
 			<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="noopener noreferrer"><?php ( '' !== get_the_title( $post->ID ) ) ? the_title() : esc_html_e( 'Untitled', 'ultimate-addons-for-gutenberg' ); ?></a>
-		</<?php echo $tag; ?>>
+		</<?php echo esc_html( $tag ); ?>>
 		<?php do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 	</div>
 	<?php
@@ -604,12 +596,12 @@ function uagb_tm_get_author( $attributes, $author ) {
 	$output = '';
 	do_action( "uagb_single_post_before_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	if ( isset( $attributes['displayPostAuthor'] ) && $attributes['displayPostAuthor'] ) {
-	?>
+		?>
 	<div class="uagb-timeline__author">
 		<span class="dashicons-admin-users dashicons"></span>
 		<a class="uagb-timeline__author-link" href="<?php echo esc_url( get_author_posts_url( $author ) ); ?>"><?php echo esc_html( get_the_author_meta( 'display_name', $author ) ); ?></a>
 	</div>
-	<?php
+		<?php
 	}
 	do_action( "uagb_single_post_after_meta_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
@@ -634,7 +626,7 @@ function uagb_tm_get_excerpt( $attributes ) {
 	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-timeline-desc-content">
-		<?php echo $excerpt; ?>
+		<?php echo wp_kses_post( $excerpt ); ?>
 	</div>
 	<?php
 	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -715,17 +707,6 @@ function uagb_tm_get_day_align_classes( $attributes, $index_val ) {
  * @param  array $recent_posts post array.
  */
 function uagb_tm_get_post_content( $attributes, $recent_posts ) {
-
-	$timelin_alignment  = $attributes['timelinAlignment'];
-	$arrowlin_alignment = $attributes['arrowlinAlignment'];
-	$display_post_date  = $attributes['displayPostDate'];
-	$posts_to_show      = $attributes['postsToShow'];
-	$align              = $attributes['align'];
-	$display_post_image = $attributes['displayPostImage'];
-
-	$content_align_class = uagb_tm_get_align_classes( $attributes, 0 ); // Get classname for layout alignment.
-	$day_align_class     = uagb_tm_get_day_align_classes( $attributes, 0 ); // Get classname for day alignment.
-	$display_inner_date  = false;
 	?>
 	<div class = "uagb-timeline__days">
 		<?php

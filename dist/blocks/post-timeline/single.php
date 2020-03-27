@@ -10,6 +10,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
+$timelin_alignment  = $attributes['timelinAlignment'];
+$arrowlin_alignment = $attributes['arrowlinAlignment'];
+$display_post_date  = $attributes['displayPostDate'];
+$posts_to_show      = $attributes['postsToShow'];
+$align              = $attributes['align'];
+$display_post_image = $attributes['displayPostImage'];
+$display_inner_date = false;
+
 if ( 'center' === $timelin_alignment ) {
 	$display_inner_date  = true;
 	$content_align_class = uagb_tm_get_align_classes( $attributes, $index );

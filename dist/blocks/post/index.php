@@ -1638,9 +1638,9 @@ function uagb_render_title( $attributes ) {
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
-	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title">
+	<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
 		<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
-	</<?php echo $attributes['titleTag']; ?>>
+	</<?php echo esc_html( $attributes['titleTag'] ); ?>>
 	<?php
 	do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
@@ -1805,7 +1805,7 @@ function uagb_render_excerpt( $attributes ) {
 	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__excerpt">
-		<?php echo $excerpt; ?>
+		<?php echo wp_kses_post( $excerpt ); ?>
 	</div>
 	<?php
 	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
