@@ -193,7 +193,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; ?> })(jQuery) </script>
+			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?> })(jQuery) </script> 
 			<?php
 			ob_end_flush();
 		}
@@ -219,7 +219,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<style id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
+			<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped  ?></style>
 			<?php
 			ob_end_flush();
 		}
@@ -257,7 +257,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( ! empty( $subsets ) ) {
 				$link .= '&amp;subset=' . implode( ',', $subsets );
 			}
-			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet 
 		}
 
 
@@ -288,7 +288,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					if ( ! empty( $val ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
-							$css .= $j . ': ' . '"' . $val . '"' . ';';
+							$css .= $j . ': "' . $val . '";';
 						} else {
 							$css .= $j . ': ' . $val . ';';
 						}
@@ -664,7 +664,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( is_object( $this_post ) ) {
-					$this->_generate_stylesheet( $this_post );
+					$this->uag_generate_stylesheet( $this_post );
 					return;
 				}
 			}
@@ -678,14 +678,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$this->_generate_stylesheet( $this_post );
+				$this->uag_generate_stylesheet( $this_post );
 
 			} elseif ( is_archive() || is_home() || is_search() ) {
 
 				global $wp_query;
 
 				foreach ( $wp_query as $post ) {
-					$this->_generate_stylesheet( $post );
+					$this->uag_generate_stylesheet( $post );
 				}
 			}
 
@@ -698,7 +698,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param object $this_post Current Post Object.
 		 * @since 1.7.0
 		 */
-		public function _generate_stylesheet( $this_post ) {
+		public function uag_generate_stylesheet( $this_post ) {
 
 			if ( ! is_object( $this_post ) ) {
 				return;
