@@ -1316,7 +1316,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
-				$slug       = $block_name;
 
 				if ( isset( $saved_blocks[ $block_name ] ) && 'disabled' === $saved_blocks[ $block_name ] ) {
 					continue;
