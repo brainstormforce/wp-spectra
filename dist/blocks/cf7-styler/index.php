@@ -11,26 +11,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Renders the Contect Form 7 shortcode.
- *
- * @since 1.10.0
- */
-function uagb_cf7_shortcode() { 	// @codingStandardsIgnoreStart
-    $id = intval($_POST['formId']);
-    // @codingStandardsIgnoreEnd
-	if ( $id && 0 !== $id && -1 !== $id ) {
-		$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
-	} else {
-		$data['html'] = '<p>' . __( 'Please select a valid Contact Form 7.', 'ultimate-addons-for-gutenberg' ) . '</p>';
-	}
-	wp_send_json_success( $data );
-}
-
-add_action( 'wp_ajax_uagb_cf7_shortcode', 'uagb_cf7_shortcode' );
-add_action( 'wp_ajax_nopriv_uagb_cf7_shortcode', 'uagb_cf7_shortcode' );
-
-
-/**
  * Adds the Contect Form 7 Custom Post Type to REST.
  *
  * @param array  $args Array of arguments.

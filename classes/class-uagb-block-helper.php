@@ -4177,8 +4177,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 				' .uael-gf-style-underline.uagb-gf-styler__error-yes .gform_wrapper li.gfield_error input[type="text"]' => array(
-					'border-width' => $attr['fieldBorderWidth'] . 'px' . '!important',
-					'border-style' => 'solid' . '!important',
+					'border-width' => $attr['fieldBorderWidth'] . 'px !important',
+					'border-style' => 'solid !important',
 					'border-color' => $attr['fieldBorderColor'] . '!important',
 				),
 
@@ -4783,7 +4783,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
-			$js            = 'var ssLinks = document.querySelectorAll( "' . $selector . '" );' . 'for (let j = 0; j < ssLinks.length; j++) {' . 'var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );';
+			$js            = 'var ssLinks = document.querySelectorAll( "' . $selector . '" ); for (let j = 0; j < ssLinks.length; j++) { var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );';
 			$js           .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
 					'var target = ""; ' .
@@ -4792,7 +4792,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'}' .
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
-				'});' . '}}';
+				'}); }}';
 
 			return $js;
 		}
