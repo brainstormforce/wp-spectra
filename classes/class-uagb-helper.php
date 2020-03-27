@@ -273,7 +273,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
-				return;
+				return '';
 			}
 
 			foreach ( $selectors as $key => $value ) {
@@ -355,7 +355,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $block_id = '';
 
             if( ! isset( $name ) ) {
-                return;
+                return '';
             }
 
             if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
@@ -538,15 +538,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					);
 					self::$gfonts[ $font_family ] = $add_font;
 				} else {
-					if ( isset( $font_weight ) && ! empty( $font_weight ) ) {
-						if ( ! in_array( $font_weight, self::$gfonts[ $font_family ]['fontvariants'], true ) ) {
-							array_push( self::$gfonts[ $font_family ]['fontvariants'], $font_weight );
-						}
+					if ( isset( $font_weight ) && ! empty( $font_weight ) && ! in_array( $font_weight, self::$gfonts[ $font_family ]['fontvariants'], true ) ) {
+						array_push( self::$gfonts[ $font_family ]['fontvariants'], $font_weight );
 					}
-					if ( isset( $font_subset ) && ! empty( $font_subset ) ) {
-						if ( ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
-							array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
-						}
+					if ( isset( $font_subset ) && ! empty( $font_subset ) && ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
+						array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
 					}
 				}
 			}
@@ -568,7 +564,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $js  = '';
 
             if( ! isset( $name ) ) {
-                return;
+                return '';
             }
 
             if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
@@ -708,19 +704,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			if ( has_blocks( $this_post->ID ) ) {
+			if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
 
-				if ( isset( $this_post->post_content ) ) {
+				$blocks            = $this->parse( $this_post->post_content );
+				self::$page_blocks = $blocks;
 
-					$blocks            = $this->parse( $this_post->post_content );
-					self::$page_blocks = $blocks;
-
-					if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-						return;
-					}
-
-					self::$stylesheet .= $this->get_stylesheet( $blocks );
+				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+					return;
 				}
+
+				self::$stylesheet .= $this->get_stylesheet( $blocks );
 			}
 		}
 
@@ -1413,11 +1406,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return bool
 		 */
 		public static function is_ssl() {
-			if ( is_ssl() ) {
-				return true;
-			} elseif ( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) {
-				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+			if (
+				is_ssl() ||
+				( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) ||
+				( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] )
+			) {
 				return true;
 			}
 			return false;
