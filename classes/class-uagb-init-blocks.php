@@ -170,7 +170,8 @@ class UAGB_Init_Blocks {
 						$val, // Handle.
 						$block_assets[ $val ]['src'],
 						$block_assets[ $val ]['dep'],
-						UAGB_VER
+						UAGB_VER,
+						true
 					);
 
 					if ( is_admin() ) {

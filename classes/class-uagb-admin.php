@@ -28,7 +28,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			}
 
 			self::initialize_ajax();
-			self::initialise_plugin();
 
 			// Add UAGB menu option to admin.
 			add_action( 'network_admin_menu', __CLASS__ . '::menu' );
@@ -48,7 +47,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			add_action( 'wp_ajax_uagb_file_generation', __CLASS__ . '::file_generation' );
 
 			// Enqueue admin scripts.
-			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) {
+			if ( isset( $_GET['page'] ) && UAGB_SLUG === $_GET['page'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 				add_action( 'admin_enqueue_scripts', __CLASS__ . '::styles_scripts' );
 
 				self::save_settings();
@@ -67,7 +66,8 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			if ( $do_redirect ) {
 				update_option( '__uagb_do_redirect', false );
 				if ( ! is_multisite() ) {
-					exit( wp_redirect( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+					wp_safe_redirect( esc_url( admin_url( 'options-general.php?page=' . UAGB_SLUG ) ) );
+					exit();
 				}
 			}
 		}
@@ -166,18 +166,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		}
 
 		/**
-		 * Initialises the Plugin Name.
-		 *
-		 * @since 0.0.1
-		 * @return void
-		 */
-		public static function initialise_plugin() {
-
-			define( 'UAGB_PLUGIN_NAME', 'Ultimate Addons for Gutenberg' );
-			define( 'UAGB_PLUGIN_SHORT_NAME', 'UAG' );
-		}
-
-		/**
 		 * Renders the admin settings menu.
 		 *
 		 * @since 0.0.1
@@ -206,7 +194,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @return void
 		 */
 		public static function render() {
-			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
+			$action = ( isset( $_GET['action'] ) ) ? sanitize_text_field( $_GET['action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$action = ( ! empty( $action ) && '' !== $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
 
@@ -226,7 +214,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function render_content() {
 
-			$action = ( isset( $_GET['action'] ) ) ? $_GET['action'] : '';
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
+			$action = ( isset( $_GET['action'] ) ) ? sanitize_text_field( $_GET['action'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$action = ( ! empty( $action ) && '' !== $action ) ? $action : 'general';
 			$action = str_replace( '_', '-', $action );
 
@@ -256,10 +248,14 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function styles_scripts() {
 
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
+
 			// Styles.
-			wp_enqueue_style( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.css', array(), UAGB_VER );
+			wp_enqueue_style( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.css', array(), UAGB_VER, 'all' );
 			// Script.
-			wp_enqueue_script( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER );
+			wp_enqueue_script( 'uagb-admin-settings', UAGB_URL . 'admin/assets/admin-menu-settings.js', array( 'jquery', 'wp-util', 'updates' ), UAGB_VER, true );
 
 			$localize = array(
 				'ajax_url'        => admin_url( 'admin-ajax.php' ),
@@ -294,6 +290,10 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * Initialize Ajax
 		 */
 		public static function initialize_ajax() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				return;
+			}
 			// Ajax requests.
 			add_action( 'wp_ajax_uagb_activate_widget', __CLASS__ . '::activate_widget' );
 			add_action( 'wp_ajax_uagb_deactivate_widget', __CLASS__ . '::deactivate_widget' );
@@ -320,9 +320,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Helper::create_specific_stylesheet();
 
-			echo $block_id;
-
-			die();
+			wp_send_json_success();
 		}
 
 		/**
@@ -341,9 +339,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $blocks );
 			UAGB_Helper::create_specific_stylesheet();
 
-			echo $block_id;
-
-			die();
+			wp_send_json_success();
 		}
 
 		/**
@@ -370,9 +366,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
 			UAGB_Helper::create_specific_stylesheet();
 
-			echo 'success';
-
-			die();
+			wp_send_json_success();
 		}
 
 		/**
@@ -399,9 +393,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			UAGB_Helper::update_admin_settings_option( '_uagb_blocks', $new_blocks );
 			UAGB_Helper::create_specific_stylesheet();
 
-			echo 'success';
-
-			die();
+			wp_send_json_success();
 		}
 
 		/**
@@ -416,9 +408,7 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 			// Update new_extensions.
 			UAGB_Helper::update_admin_settings_option( '_uagb_beta', $beta_update );
 
-			echo 'success';
-
-			die();
+			wp_send_json_success();
 		}
 
 		/**
@@ -427,6 +417,15 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 * @since 1.14.0
 		 */
 		public static function file_generation() {
+
+			if ( ! current_user_can( 'manage_options' ) ) {
+				wp_send_json_error(
+					array(
+						'success' => false,
+						'message' => __( 'Access Denied. You don\'t have enough capabilities to execute this action.', 'ultimate-addons-for-gutenberg' ),
+					)
+				);
+			}
 
 			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
 
@@ -445,7 +444,11 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 		 */
 		public static function theme_activate() {
 
-			if ( ! current_user_can( 'switch_themes' ) || ! isset( $_POST['slug'] ) || ! $_POST['slug'] ) {
+			check_ajax_referer( 'uagb-block-nonce', 'nonce' );
+
+			$theme_slug = ( isset( $_POST['slug'] ) ) ? sanitize_text_field( $_POST['slug'] ) : '';
+
+			if ( ! current_user_can( 'switch_themes' ) || ! $theme_slug ) {
 				wp_send_json_error(
 					array(
 						'success' => false,
@@ -453,8 +456,6 @@ if ( ! class_exists( 'UAGB_Admin' ) ) {
 					)
 				);
 			}
-
-			$theme_slug = ( isset( $_POST['slug'] ) ) ? esc_attr( $_POST['slug'] ) : '';
 
 			$activate = switch_theme( $theme_slug );
 

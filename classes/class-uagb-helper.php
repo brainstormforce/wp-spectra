@@ -167,7 +167,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$file_handler = self::$css_file_handler;
 
 				if ( isset( $file_handler['css_url'] ) ) {
-					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
+					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), UAGB_VER, 'all' );
 				}
 				if ( isset( $file_handler['js_url'] ) ) {
 					wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
@@ -660,7 +660,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( is_object( $this_post ) ) {
-					$this->uag_generate_stylesheet( $this_post );
+					$this->get_generated_stylesheet( $this_post );
 					return;
 				}
 			}
@@ -674,14 +674,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 
-				$this->uag_generate_stylesheet( $this_post );
+				$this->get_generated_stylesheet( $this_post );
 
 			} elseif ( is_archive() || is_home() || is_search() ) {
 
 				global $wp_query;
+				$cached_wp_query = $wp_query;
 
-				foreach ( $wp_query as $post ) {
-					$this->uag_generate_stylesheet( $post );
+				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					$this->get_generated_stylesheet( $post );
 				}
 			}
 
@@ -694,7 +695,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param object $this_post Current Post Object.
 		 * @since 1.7.0
 		 */
-		public function uag_generate_stylesheet( $this_post ) {
+		public function get_generated_stylesheet( $this_post ) {
 
 			if ( ! is_object( $this_post ) ) {
 				return;
@@ -1014,7 +1015,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @since 1.8.1
 		 * @param  array $icon Decoded fontawesome json file data.
-		 * @return string
 		 */
 		public static function render_svg_html( $icon ) {
 			$icon = str_replace( 'far', '', $icon );
