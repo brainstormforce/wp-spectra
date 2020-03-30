@@ -327,7 +327,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_css_value( $value = '', $unit = '' ) {
 
 			// @codingStandardsIgnoreStart
-			
+
 			if ( '' == $value ) {
 				return $value;
 			}
@@ -677,6 +677,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( ! is_object( $this_post ) ) {
 					return;
 				}
+
+				/**
+				 * Filters the post to build stylesheet for.
+				 *
+				 * @param \WP_Post $this_post The global post.
+				 */
+				$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
 				$this->get_generated_stylesheet( $this_post );
 

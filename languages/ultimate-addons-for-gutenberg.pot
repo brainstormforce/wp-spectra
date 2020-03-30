@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.14.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-03-30 07:57:11+00:00\n"
+"POT-Creation-Date: 2020-03-30 10:00:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -506,7 +506,7 @@ msgid ""
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:1093
+#: classes/class-uagb-helper.php:1100
 msgid "Full"
 msgstr ""
 
@@ -522,16 +522,16 @@ msgstr ""
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:300
-#: classes/class-uagb-init-blocks.php:333
+#: classes/class-uagb-init-blocks.php:309
+#: classes/class-uagb-init-blocks.php:342
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:314
+#: classes/class-uagb-init-blocks.php:323
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:347
+#: classes/class-uagb-init-blocks.php:356
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 

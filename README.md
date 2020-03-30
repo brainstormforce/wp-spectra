@@ -158,6 +158,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ### 1.14.8 ###
 * Improvement: Inline CSS generation markup as per w3c standards.
 * Improvement: Hardened the security of the plugin.
+* Improvement: Compatibility with Toolset Views.
 * Fix: Table of Contents - Scroll to Top issue in some scenarios.
 * Fix: Font Families not applying if it's name contains a space.
 * Fix: Undefined constant FS_CHMOD_FILE issue.
