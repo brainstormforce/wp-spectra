@@ -2,10 +2,10 @@
 # This file is distributed under the same license as the Ultimate Addons for Gutenberg package.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ultimate Addons for Gutenberg 1.14.7\n"
+"Project-Id-Version: Ultimate Addons for Gutenberg 1.14.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-03-02 10:35:47+00:00\n"
+"POT-Creation-Date: 2020-03-30 10:00:33+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -25,16 +25,12 @@ msgstr ""
 "X-Textdomain-Support: yes\n"
 "X-Generator: grunt-wp-i18n 1.0.3\n"
 
-#: admin/uagb-admin.php:29
+#: admin/uagb-admin.php:30
 msgid "Take Gutenberg to The Next Level! - "
 msgstr ""
 
-#: admin/uagb-admin.php:30
+#: admin/uagb-admin.php:31
 msgid "View Demos"
-msgstr ""
-
-#: admin/uagb-admin.php:39
-msgid "Settings saved successfully."
 msgstr ""
 
 #: admin/uagb-general.php:23
@@ -103,7 +99,7 @@ msgid ""
 "understand the working of each block."
 msgstr ""
 
-#: admin/uagb-general.php:57 admin/uagb-general.php:204
+#: admin/uagb-general.php:57 admin/uagb-general.php:205
 msgid "Visit Knowledge Base »"
 msgstr ""
 
@@ -123,127 +119,131 @@ msgstr ""
 msgid "Reusable Blocks"
 msgstr ""
 
-#: admin/uagb-general.php:88 classes/class-uagb-admin.php:277
+#: admin/uagb-general.php:89 classes/class-uagb-admin.php:263
 msgid "Activate"
 msgstr ""
 
-#: admin/uagb-general.php:95 classes/class-uagb-admin.php:278
+#: admin/uagb-general.php:96 classes/class-uagb-admin.php:264
 msgid "Deactivate"
 msgstr ""
 
-#: admin/uagb-general.php:132
+#: admin/uagb-general.php:133
 msgid "Free Theme for Gutenberg"
 msgstr ""
 
-#: admin/uagb-general.php:136
+#: admin/uagb-general.php:137
 msgid ""
 "Join over 500,000+ active users empowering their websites with Astra! From "
 "beginners to industry leaders, everyone loves the Astra theme."
 msgstr ""
 
-#: admin/uagb-general.php:137
+#: admin/uagb-general.php:138
 msgid "Why Astra Theme?"
 msgstr ""
 
-#: admin/uagb-general.php:138
+#: admin/uagb-general.php:139
 msgid "Faster Performance - "
 msgstr ""
 
-#: admin/uagb-general.php:138
+#: admin/uagb-general.php:139
 msgid ""
 "Built with speed and performance in mind, Astra follows the best coding "
 "standards and lets you build faster loading and better performing websites."
 msgstr ""
 
-#: admin/uagb-general.php:139
+#: admin/uagb-general.php:140
 msgid "Easy Customization - "
 msgstr ""
 
-#: admin/uagb-general.php:139
+#: admin/uagb-general.php:140
 msgid ""
 "With all the settings managed through the customizer, Astra keeps it simple "
 "and gives you lots of options to customize everything with a few clicks."
 msgstr ""
 
-#: admin/uagb-general.php:140
+#: admin/uagb-general.php:141
 msgid "Pixel Perfect Design - "
 msgstr ""
 
-#: admin/uagb-general.php:140
+#: admin/uagb-general.php:141
 msgid ""
 "Astra reduces your design time by giving you pixel-perfect FREE "
 "ready-to-use websites demos within a huge library of starter sites."
 msgstr ""
 
-#: admin/uagb-general.php:145
+#: admin/uagb-general.php:146
 msgid "Install Astra Now!"
 msgstr ""
 
-#: admin/uagb-general.php:147
+#: admin/uagb-general.php:148
 msgid "Activate Astra Now!"
 msgstr ""
 
-#: admin/uagb-general.php:164
+#: admin/uagb-general.php:159
+msgid "CSS File Generation"
+msgstr ""
+
+#: admin/uagb-general.php:165
 msgid ""
 "Enabling this option will generate CSS files for Ultimate Addons for "
 "Gutenberg block styling instead of loading the CSS inline on page."
 msgstr ""
 
-#: admin/uagb-general.php:173
+#: admin/uagb-general.php:174
 #. translators: %1$s: a tag open.
 msgid "Please read %1$s this article %2$s to know more."
 msgstr ""
 
-#: admin/uagb-general.php:183
+#: admin/uagb-general.php:184
 msgid "Enable File Generation"
 msgstr ""
 
-#: admin/uagb-general.php:186
+#: admin/uagb-general.php:187
 msgid "Disable File Generation"
 msgstr ""
 
-#: admin/uagb-general.php:198
+#: admin/uagb-general.php:199
 msgid "Knowledge Base"
 msgstr ""
 
-#: admin/uagb-general.php:202
+#: admin/uagb-general.php:203
 msgid "Not sure how something works? Take a peek at the knowledge base and learn."
 msgstr ""
 
-#: admin/uagb-general.php:210
+#: admin/uagb-general.php:211
 msgid "Five Star Support"
 msgstr ""
 
-#: admin/uagb-general.php:217
+#: admin/uagb-general.php:218
 #. translators: %1$s: uagb name.
 msgid "Got a question? Get in touch with %1$s developers. We're happy to help!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:139
+#: classes/class-uagb-admin.php:129
 msgid ""
 "Wow! The Ultimate Addons for Gutenberg has already powered over 5 pages on "
 "your website!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:140
+#: classes/class-uagb-admin.php:130
 msgid ""
 "Would you please mind sharing your views and give it a 5 star rating on the "
 "WordPress repository?"
 msgstr ""
 
-#: classes/class-uagb-admin.php:142
+#: classes/class-uagb-admin.php:132
 msgid "Ok, you deserve it"
 msgstr ""
 
-#: classes/class-uagb-admin.php:144
+#: classes/class-uagb-admin.php:134
 msgid "Nope, maybe later"
 msgstr ""
 
-#: classes/class-uagb-admin.php:145
+#: classes/class-uagb-admin.php:135
 msgid "I already did"
 msgstr ""
 
-#: classes/class-uagb-admin.php:164
+#: classes/class-uagb-admin.php:154
 #. translators: %s: html tags
 msgid ""
 "Ultimate Addons for Gutenberg requires&nbsp;%3$sBlock Editor%4$s. You can "
@@ -251,31 +251,35 @@ msgid ""
 "is currently NOT RUNNING."
 msgstr ""
 
-#: classes/class-uagb-admin.php:279
+#: classes/class-uagb-admin.php:265
 msgid "Enable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:280
+#: classes/class-uagb-admin.php:266
 msgid "Disable Beta Updates"
 msgstr ""
 
-#: classes/class-uagb-admin.php:281
+#: classes/class-uagb-admin.php:267
 msgid "Installing Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:282
+#: classes/class-uagb-admin.php:268
 msgid "Activating Astra"
 msgstr ""
 
-#: classes/class-uagb-admin.php:283
+#: classes/class-uagb-admin.php:269
 msgid "Astra Activated!"
 msgstr ""
 
-#: classes/class-uagb-admin.php:462
+#: classes/class-uagb-admin.php:425
+msgid "Access Denied. You don't have enough capabilities to execute this action."
+msgstr ""
+
+#: classes/class-uagb-admin.php:455
 msgid "No Theme specified"
 msgstr ""
 
-#: classes/class-uagb-admin.php:483
+#: classes/class-uagb-admin.php:474
 msgid "Theme Successfully Activated"
 msgstr ""
 
@@ -410,9 +414,9 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-config.php:1101 classes/class-uagb-config.php:1184
-#: classes/class-uagb-config.php:1268 dist/blocks/post/index.php:344
-#: dist/blocks/post/index.php:722 dist/blocks/post/index.php:1137
-#: dist/blocks/post/index.php:1826
+#: classes/class-uagb-config.php:1268 dist/blocks/post/index.php:348
+#: dist/blocks/post/index.php:726 dist/blocks/post/index.php:1141
+#: dist/blocks/post/index.php:1830
 msgid "Read More"
 msgstr ""
 
@@ -502,24 +506,32 @@ msgid ""
 "website."
 msgstr ""
 
-#: classes/class-uagb-helper.php:1091
+#: classes/class-uagb-helper.php:1100
 msgid "Full"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:66
+#: classes/class-uagb-init-blocks.php:71
+msgid "Please select a valid Gravity Form."
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:87
+msgid "Please select a valid Contact Form 7."
+msgstr ""
+
+#: classes/class-uagb-init-blocks.php:105
 msgid "Ultimate Addons Blocks"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:260
-#: classes/class-uagb-init-blocks.php:293
+#: classes/class-uagb-init-blocks.php:309
+#: classes/class-uagb-init-blocks.php:342
 msgid "Select Form"
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:274
+#: classes/class-uagb-init-blocks.php:323
 msgid "You have not added any Contact Form 7 yet."
 msgstr ""
 
-#: classes/class-uagb-init-blocks.php:307
+#: classes/class-uagb-init-blocks.php:356
 msgid "You have not added any Gravity Forms yet."
 msgstr ""
 
@@ -538,19 +550,11 @@ msgstr ""
 msgid "Install Gutenberg"
 msgstr ""
 
-#: dist/blocks/cf7-styler/index.php:24
-msgid "Please select a valid Contact Form 7."
-msgstr ""
-
-#: dist/blocks/gf-styler/index.php:25
-msgid "Please select a valid Gravity Form."
-msgstr ""
-
 #: dist/blocks/post-timeline/index.php:39
 msgid "No posts found"
 msgstr ""
 
-#: dist/blocks/post-timeline/index.php:576
+#: dist/blocks/post-timeline/index.php:561
 msgid "Untitled"
 msgstr ""
 
@@ -558,14 +562,14 @@ msgstr ""
 msgid "WordPress Nonce not validated."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:36
+#: ultimate-addons-for-gutenberg.php:38
 #. translators: %s: PHP version
 msgid ""
 "Ultimate Addons for Gutenberg requires PHP version %s+, plugin is currently "
 "NOT RUNNING."
 msgstr ""
 
-#: ultimate-addons-for-gutenberg.php:53
+#: ultimate-addons-for-gutenberg.php:55
 #. translators: %s: WordPress version
 msgid ""
 "Ultimate Addons for Gutenberg requires WordPress version %s+. Because you "

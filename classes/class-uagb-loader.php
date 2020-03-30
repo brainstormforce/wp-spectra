@@ -78,7 +78,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.14.7' );
+			define( 'UAGB_VER', '1.14.8' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -93,7 +93,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 *
 		 * @return void
 		 */
-		function load_plugin() {
+		public function load_plugin() {
 
 			$this->load_textdomain();
 
@@ -168,20 +168,20 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 
 			$button = '<p><a href="' . $action_url . '" class="button-primary">' . $button_label . '</a></p><p></p>';
 
-			printf( '<div class="%1$s"><p>%2$s</p>%3$s</div>', esc_attr( $class ), $message, $button );
+			printf( '<div class="%1$s"><p>%2$s</p>%3$s</div>', esc_attr( $class ), wp_kses_post( $message ), wp_kses_post( $button ) );
 		}
 
 		/**
 		 * Activation Reset
 		 */
-		function activation_reset() {
+		public function activation_reset() {
 			update_option( '__uagb_do_redirect', true );
 		}
 
 		/**
 		 * Deactivation Reset
 		 */
-		function deactivation_reset() {
+		public function deactivation_reset() {
 			update_option( '__uagb_do_redirect', false );
 		}
 	}

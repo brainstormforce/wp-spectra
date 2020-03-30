@@ -84,18 +84,20 @@ function uagb_post_block_add_script() {
 	if ( isset( $uagb_post_settings['masonry'] ) && ! empty( $uagb_post_settings['masonry'] ) ) {
 		foreach ( $uagb_post_settings['masonry'] as $key => $value ) {
 			?>
-			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo $key; ?>">
-				( function( $ ) {
+			<script type="text/javascript" id="uagb-post-masonry-script-<?php echo esc_html( $key ); ?>">
+				document.addEventListener("DOMContentLoaded", function(){
+					( function( $ ) {
 
-					var $scope = $( '.uagb-block-<?php echo $key; ?>' );
-					$scope.imagesLoaded( function() {
-						$scope.find( '.is-masonry' ).isotope();
-					});
+						var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' );
+						$scope.imagesLoaded( function() {
+							$scope.find( '.is-masonry' ).isotope();
+						});
 
-					$( window ).resize( function() {
-						$scope.find( '.is-masonry' ).isotope();
-					} );
-				} )( jQuery );
+						$( window ).resize( function() {
+							$scope.find( '.is-masonry' ).isotope();
+						} );
+					} )( jQuery );
+				});
 			</script>
 			<?php
 		}
@@ -111,63 +113,65 @@ function uagb_post_block_add_script() {
 			$mcolumns     = ( isset( $value['mcolumns'] ) ) ? $value['mcolumns'] : 1;
 
 			?>
-			<script type="text/javascript" id="<?php echo $key; ?>">
-				( function( $ ) {
-					var cols = parseInt( '<?php echo $value['columns']; ?>' );
-					var $scope = $( '.uagb-block-<?php echo $key; ?>' ).find( '.is-carousel' );
+			<script type="text/javascript" id="<?php echo esc_html( $key ); ?>">
+				document.addEventListener("DOMContentLoaded", function(){
+					( function( $ ) {
+						var cols = parseInt( '<?php echo esc_html( $value['columns'] ); ?>' );
+						var $scope = $( '.uagb-block-<?php echo esc_html( $key ); ?>' ).find( '.is-carousel' );
 
-					if ( cols >= $scope.children().length ) {
-						return;
-					}
+						if ( cols >= $scope.children().length ) {
+							return;
+						}
 
-					var slider_options = {
-						'slidesToShow' : cols,
-						'slidesToScroll' : 1,
-						'autoplaySpeed' : <?php echo $value['autoplaySpeed']; ?>,
-						'autoplay' : Boolean( '<?php echo $value['autoplay']; ?>' ),
-						'infinite' : Boolean( '<?php echo $value['infiniteLoop']; ?>' ),
-						'pauseOnHover' : Boolean( '<?php echo $value['pauseOnHover']; ?>' ),
-						'speed' : <?php echo $value['transitionSpeed']; ?>,
-						'arrows' : Boolean( '<?php echo $arrows; ?>' ),
-						'dots' : Boolean( '<?php echo $dots; ?>' ),
-						'rtl' : false,
-						'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z\"></path></svg><\/button>',
-						'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z\"></path></svg><\/button>',
-						'responsive' : [
-							{
-								'breakpoint' : 1024,
-								'settings' : {
-									'slidesToShow' : <?php echo $tcolumns; ?>,
-									'slidesToScroll' : 1,
+						var slider_options = {
+							'slidesToShow' : cols,
+							'slidesToScroll' : 1,
+							'autoplaySpeed' : <?php echo esc_html( $value['autoplaySpeed'] ); ?>,
+							'autoplay' : Boolean( '<?php echo esc_html( $value['autoplay'] ); ?>' ),
+							'infinite' : Boolean( '<?php echo esc_html( $value['infiniteLoop'] ); ?>' ),
+							'pauseOnHover' : Boolean( '<?php echo esc_html( $value['pauseOnHover'] ); ?>' ),
+							'speed' : <?php echo esc_html( $value['transitionSpeed'] ); ?>,
+							'arrows' : Boolean( '<?php echo esc_html( $arrows ); ?>' ),
+							'dots' : Boolean( '<?php echo esc_html( $dots ); ?>' ),
+							'rtl' : false,
+							'prevArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-prev\" aria-label=\"Previous\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M31.7 239l136-136c9.4-9.4 24.6-9.4 33.9 0l22.6 22.6c9.4 9.4 9.4 24.6 0 33.9L127.9 256l96.4 96.4c9.4 9.4 9.4 24.6 0 33.9L201.7 409c-9.4 9.4-24.6 9.4-33.9 0l-136-136c-9.5-9.4-9.5-24.6-.1-34z\"></path></svg><\/button>',
+							'nextArrow' : '<button type=\"button\" data-role=\"none\" class=\"slick-next\" aria-label=\"Next\" tabindex=\"0\" role=\"button\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 256 512\"><path d=\"M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z\"></path></svg><\/button>',
+							'responsive' : [
+								{
+									'breakpoint' : 1024,
+									'settings' : {
+										'slidesToShow' : <?php echo esc_html( $tcolumns ); ?>,
+										'slidesToScroll' : 1,
+									}
+								},
+								{
+									'breakpoint' : 767,
+									'settings' : {
+										'slidesToShow' : <?php echo esc_html( $mcolumns ); ?>,
+										'slidesToScroll' : 1,
+									}
 								}
-							},
-							{
-								'breakpoint' : 767,
-								'settings' : {
-									'slidesToShow' : <?php echo $mcolumns; ?>,
-									'slidesToScroll' : 1,
-								}
-							}
-						]
-					};
+							]
+						};
 
-					$scope.imagesLoaded( function() {
-						$scope.slick( slider_options );
-					});
-
-					var enableEqualHeight = ( '<?php echo $equal_height; ?>' )
-
-					if( enableEqualHeight ){
 						$scope.imagesLoaded( function() {
-							UAGBPostCarousel._setHeight( $scope );
+							$scope.slick( slider_options );
 						});
 
-						$scope.on( 'afterChange', function() {
-							UAGBPostCarousel._setHeight( $scope );
-						} );
-					}
+						var enableEqualHeight = ( '<?php echo esc_html( $equal_height ); ?>' )
 
-				} )( jQuery );
+						if( enableEqualHeight ){
+							$scope.imagesLoaded( function() {
+								UAGBPostCarousel._setHeight( $scope );
+							});
+
+							$scope.on( 'afterChange', function() {
+								UAGBPostCarousel._setHeight( $scope );
+							} );
+						}
+
+					} )( jQuery );
+				});
 			</script>
 			<?php
 		}
@@ -228,9 +232,9 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 			break;
 	}
 	?>
-	<div class="<?php echo implode( ' ', $outerwrap ); ?>">
+	<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
 
-		<div class="<?php echo implode( ' ', $wrap ); ?>">
+		<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
 		<?php
 		while ( $query->have_posts() ) {
@@ -1615,7 +1619,7 @@ function uagb_render_image( $attributes ) {
 
 	?>
 	<div class='uagb-post__image'>
-		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
+		<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo wp_get_attachment_image( get_post_thumbnail_id(), $attributes['imgSize'] ); ?>
 		</a>
 	</div>
 	<?php
@@ -1638,9 +1642,9 @@ function uagb_render_title( $attributes ) {
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	do_action( "uagb_single_post_before_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
-	<<?php echo $attributes['titleTag']; ?> class="uagb-post__title">
-		<a href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
-	</<?php echo $attributes['titleTag']; ?>>
+	<<?php echo esc_html( $attributes['titleTag'] ); ?> class="uagb-post__title">
+		<a href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php the_title(); ?></a>
+	</<?php echo esc_html( $attributes['titleTag'] ); ?>>
 	<?php
 	do_action( "uagb_single_post_after_title_{$attributes['post_type']}", get_the_ID(), $attributes );
 }
@@ -1731,7 +1735,7 @@ function uagb_render_meta_taxonomy( $attributes ) {
 	?>
 	<span class="uagb-post__taxonomy">
 		<span class="dashicons-tag dashicons"></span>
-		<?php echo $terms[0]->name; ?>
+		<?php echo esc_html( $terms[0]->name ); ?>
 	</span>
 	<?php
 }
@@ -1805,7 +1809,7 @@ function uagb_render_excerpt( $attributes ) {
 	do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__excerpt">
-		<?php echo $excerpt; ?>
+		<?php echo wp_kses_post( $excerpt ); ?>
 	</div>
 	<?php
 	do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1827,7 +1831,7 @@ function uagb_render_button( $attributes ) {
 	do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
 	?>
 	<div class="uagb-post__cta">
-		<a class="uagb-post__link uagb-text-link" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"><?php echo $cta_text; ?></a>
+		<a class="uagb-post__link uagb-text-link" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
 	</div>
 	<?php
 	do_action( "uagb_single_post_after_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
@@ -1846,6 +1850,6 @@ function uagb_render_complete_box_link( $attributes ) {
 	}
 	$target = ( $attributes['newTab'] ) ? '_blank' : '_self';
 	?>
-	<a class="uagb-post__link-complete-box" href="<?php echo apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ); ?>" target="<?php echo $target; ?>" rel="bookmark noopener noreferrer"></a>
+	<a class="uagb-post__link-complete-box" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"></a>
 	<?php
 }

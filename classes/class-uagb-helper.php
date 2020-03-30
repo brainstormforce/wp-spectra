@@ -121,6 +121,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function __construct() {
 
+			if ( ! defined( 'FS_CHMOD_FILE' ) ) {
+				define( 'FS_CHMOD_FILE', ( fileperms( ABSPATH . 'index.php' ) & 0777 | 0644 ) );
+			}
+
 			require UAGB_DIR . 'classes/class-uagb-config.php';
 			require UAGB_DIR . 'classes/class-uagb-block-helper.php';
 
@@ -167,7 +171,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$file_handler = self::$css_file_handler;
 
 				if ( isset( $file_handler['css_url'] ) ) {
-					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), '', 'all' );
+					wp_enqueue_style( 'uag-style', $file_handler['css_url'], array(), UAGB_VER, 'all' );
 				}
 				if ( isset( $file_handler['js_url'] ) ) {
 					wp_enqueue_script( 'uag-script', $file_handler['js_url'], array(), UAGB_VER, true );
@@ -193,7 +197,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; ?> })(jQuery) </script>
+			<script type="text/javascript" id="uagb-script-frontend">document.addEventListener("DOMContentLoaded", function(){( function( $ ) { <?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?> })(jQuery)})</script>
 			<?php
 			ob_end_flush();
 		}
@@ -219,7 +223,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<style type="text/css" media="all" id="uagb-style-frontend"><?php echo self::$stylesheet; ?></style>
+			<style id="uagb-style-frontend"><?php echo self::$stylesheet; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?></style>
 			<?php
 			ob_end_flush();
 		}
@@ -257,7 +261,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( ! empty( $subsets ) ) {
 				$link .= '&amp;subset=' . implode( ',', $subsets );
 			}
-			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+			echo '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">'; //phpcs:ignore WordPress.WP.EnqueuedResources.NonEnqueuedStylesheet 
 		}
 
 
@@ -273,7 +277,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
-				return;
+				return '';
 			}
 
 			foreach ( $selectors as $key => $value ) {
@@ -287,7 +291,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					}
 
 					if ( ! empty( $val ) || 0 === $val ) {
-						$css .= $j . ': ' . $val . ';';
+						if ( 'font-family' === $j ) {
+							$css .= $j . ': "' . $val . '";';
+						} else {
+							$css .= $j . ': ' . $val . ';';
+						}
 					}
 				}
 
@@ -351,7 +359,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $block_id = '';
 
             if( ! isset( $name ) ) {
-                return;
+                return '';
             }
 
             if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
@@ -534,15 +542,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					);
 					self::$gfonts[ $font_family ] = $add_font;
 				} else {
-					if ( isset( $font_weight ) && ! empty( $font_weight ) ) {
-						if ( ! in_array( $font_weight, self::$gfonts[ $font_family ]['fontvariants'], true ) ) {
-							array_push( self::$gfonts[ $font_family ]['fontvariants'], $font_weight );
-						}
+					if ( isset( $font_weight ) && ! empty( $font_weight ) && ! in_array( $font_weight, self::$gfonts[ $font_family ]['fontvariants'], true ) ) {
+						array_push( self::$gfonts[ $font_family ]['fontvariants'], $font_weight );
 					}
-					if ( isset( $font_subset ) && ! empty( $font_subset ) ) {
-						if ( ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
-							array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
-						}
+					if ( isset( $font_subset ) && ! empty( $font_subset ) && ! in_array( $font_subset, self::$gfonts[ $font_family ]['fontsubsets'], true ) ) {
+						array_push( self::$gfonts[ $font_family ]['fontsubsets'], $font_subset );
 					}
 				}
 			}
@@ -564,7 +568,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
             $js  = '';
 
             if( ! isset( $name ) ) {
-                return;
+                return '';
             }
 
             if ( isset( $block['attrs'] ) && is_array( $block['attrs'] ) ) {
@@ -660,7 +664,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( is_object( $this_post ) ) {
-					$this->_generate_stylesheet( $this_post );
+					$this->get_generated_stylesheet( $this_post );
 					return;
 				}
 			}
@@ -679,16 +683,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				 *
 				 * @param \WP_Post $this_post The global post.
 				 */
-				$this_post = apply_filters( "uagb_post_for_stylesheet", $this_post );
+				$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
-				$this->_generate_stylesheet( $this_post );
+				$this->get_generated_stylesheet( $this_post );
 
 			} elseif ( is_archive() || is_home() || is_search() ) {
 
 				global $wp_query;
+				$cached_wp_query = $wp_query;
 
-				foreach ( $wp_query as $post ) {
-					$this->_generate_stylesheet( $post );
+				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					$this->get_generated_stylesheet( $post );
 				}
 			}
 
@@ -701,7 +706,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param object $this_post Current Post Object.
 		 * @since 1.7.0
 		 */
-		public function _generate_stylesheet( $this_post ) {
+		public function get_generated_stylesheet( $this_post ) {
 
 			if ( ! is_object( $this_post ) ) {
 				return;
@@ -711,19 +716,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				return;
 			}
 
-			if ( has_blocks( $this_post->ID ) ) {
+			if ( has_blocks( $this_post->ID ) && isset( $this_post->post_content ) ) {
 
-				if ( isset( $this_post->post_content ) ) {
+				$blocks            = $this->parse( $this_post->post_content );
+				self::$page_blocks = $blocks;
 
-					$blocks            = $this->parse( $this_post->post_content );
-					self::$page_blocks = $blocks;
-
-					if ( ! is_array( $blocks ) || empty( $blocks ) ) {
-						return;
-					}
-
-					self::$stylesheet .= $this->get_stylesheet( $blocks );
+				if ( ! is_array( $blocks ) || empty( $blocks ) ) {
+					return;
 				}
+
+				self::$stylesheet .= $this->get_stylesheet( $blocks );
 			}
 		}
 
@@ -1024,7 +1026,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @since 1.8.1
 		 * @param  array $icon Decoded fontawesome json file data.
-		 * @return string
 		 */
 		public static function render_svg_html( $icon ) {
 			$icon = str_replace( 'far', '', $icon );
@@ -1040,8 +1041,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( $view ) {
 				$view = implode( ' ', $view );
 			}
-			$htm = '<svg xmlns="http://www.w3.org/2000/svg" viewBox= "' . $view . '"><path d="' . $path . '"></path></svg>';
-			return $htm;
+			?>
+			<svg xmlns="https://www.w3.org/2000/svg" viewBox= "<?php echo esc_html( $view ); ?>"><path d="<?php echo esc_html( $path ); ?>"></path></svg>
+			<?php
 		}
 
 		/**
@@ -1318,7 +1320,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
 				$block_name = str_replace( 'uagb/', '', $key );
-				$slug       = $block_name;
 
 				if ( isset( $saved_blocks[ $block_name ] ) && 'disabled' === $saved_blocks[ $block_name ] ) {
 					continue;
@@ -1416,11 +1417,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @return bool
 		 */
 		public static function is_ssl() {
-			if ( is_ssl() ) {
-				return true;
-			} elseif ( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) {
-				return true;
-			} elseif ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] ) {
+			if (
+				is_ssl() ||
+				( 0 === stripos( get_option( 'siteurl' ), 'https://' ) ) ||
+				( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] )
+			) {
 				return true;
 			}
 			return false;
