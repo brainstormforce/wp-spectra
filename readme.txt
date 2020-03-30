@@ -160,6 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Hardened the security of the plugin.
 * Fix: Table of Contents - Scroll to Top issue in some scenarios.
 * Fix: Font Families not applying if it's name contains a space.
+* Fix: Undefined constant FS_CHMOD_FILE issue.
 
 = 1.14.7 =
 * Improvement: Post - Post Title tag can be span/p.
