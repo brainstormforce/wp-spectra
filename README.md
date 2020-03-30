@@ -156,7 +156,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.14.8 ###
+* Improvement: Inline CSS generation markup as per w3c standards.
+* Fix: Vulnerability - Scroll to Top issue in some scenarios.
 * Fix: Table of Contents - Scroll to Top issue in some scenarios.
+* Fix: Font Families not applying if it's name contains a space.
 
 ### 1.14.7 ###
 * Improvement: Post - Post Title tag can be span/p.
