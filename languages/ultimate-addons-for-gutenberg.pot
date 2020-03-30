@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.14.8\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-03-30 07:25:37+00:00\n"
+"POT-Creation-Date: 2020-03-30 07:51:44+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -414,9 +414,9 @@ msgid ""
 msgstr ""
 
 #: classes/class-uagb-config.php:1101 classes/class-uagb-config.php:1184
-#: classes/class-uagb-config.php:1268 dist/blocks/post/index.php:344
-#: dist/blocks/post/index.php:722 dist/blocks/post/index.php:1137
-#: dist/blocks/post/index.php:1826
+#: classes/class-uagb-config.php:1268 dist/blocks/post/index.php:348
+#: dist/blocks/post/index.php:726 dist/blocks/post/index.php:1141
+#: dist/blocks/post/index.php:1830
 msgid "Read More"
 msgstr ""
 
