@@ -154,6 +154,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.14.8.1 =
+* Improvement: Added WPML compatibility.
+
 = 1.14.7.2 =
 * Fix: Font Families not applying if it's name contains a space.
 
