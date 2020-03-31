@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.14.8.1 =
 * Improvement: Added WPML compatibility.
+* Improvement: Used local variable where get_filesystem() is called more than once.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
