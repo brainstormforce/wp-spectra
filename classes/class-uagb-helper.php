@@ -1367,13 +1367,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			wp_delete_file( $combined_path );
 
 			$style = '';
+			
+			$wp_filesystem = self::get_instance()->get_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
 
-				$style .= self::get_instance()->get_filesystem()->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
+				$style .= $wp_filesystem->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
-			self::get_instance()->get_filesystem()->put_contents( $combined_path, $style, FS_CHMOD_FILE );
+			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
 		/**
@@ -1403,9 +1405,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				self::get_instance()->get_filesystem()->mkdir( $dir_info['path'] );
+				$wp_filesystem = self::get_instance()->get_filesystem(); 
+				$wp_filesystem->mkdir( $dir_info['path'] );
 				// Add an index file for security.
-				self::get_instance()->get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
+				$wp_filesystem->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
