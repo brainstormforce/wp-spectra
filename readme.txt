@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= Development version =
+- Fix: Removed Drag icon from UAG Admin Setting page.
+
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
 * Improvement: Hardened the security of the plugin.
