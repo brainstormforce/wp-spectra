@@ -194,6 +194,12 @@ class UAGBSectionEdit extends Component {
 			mobilePaddingType,
 			tabletPaddingType,
 			desktopPaddingType,
+			boxShadowColor,
+			boxShadowHOffset,
+			boxShadowVOffset,
+			boxShadowBlur,
+			boxShadowSpread,
+			boxShadowPosition,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -980,6 +986,67 @@ class UAGBSectionEdit extends Component {
 								/>
 							</Fragment>
 						) }
+					</PanelBody>
+					<PanelBody title={ __( "Box Shadow" ) } initialOpen={ false } >
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor }} ></span></span></p>
+							<ColorPalette
+								value={ boxShadowColor }
+								onChange={ ( colorValue ) => setAttributes( { boxShadowColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+						<Fragment>
+							<h2>{ __( "Horizontal Off-set" ) }</h2>
+							<RangeControl
+								value={ boxShadowHOffset }
+								onChange={ ( value ) => setAttributes( { boxShadowHOffset: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
+						<Fragment>
+							<h2>{ __( "Vertical Off-set" ) }</h2>
+							<RangeControl
+								value={ boxShadowVOffset }
+								onChange={ ( value ) => setAttributes( { boxShadowVOffset: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
+						<Fragment>
+							<h2>{ __( "Blur" ) }</h2>
+							<RangeControl
+								value={ boxShadowBlur }
+								onChange={ ( value ) => setAttributes( { boxShadowBlur: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
+						<Fragment>
+							<h2>{ __( "Spread" ) }</h2>
+							<RangeControl
+								value={ boxShadowSpread }
+								onChange={ ( value ) => setAttributes( { boxShadowSpread: value } ) }
+								min={ 0 }
+								max={ 100 }
+								allowReset
+							/>
+						</Fragment>
+						<Fragment>
+							<SelectControl
+								label={ __( "Position" ) }
+								value={ boxShadowPosition }
+								onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
+								options={ [
+									{ value: "inset", label: __( "Inset" ) },
+									{ value: "outset", label: __( "Outset" ) },
+								] }
+							/>
+						</Fragment>
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag

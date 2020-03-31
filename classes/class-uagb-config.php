@@ -1526,6 +1526,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientOverlayLocation2' => '100',
 							'gradientOverlayAngle'     => '0',
 							'gradientOverlayPosition'  => 'center center',
+							'boxShadowColor' => '#000000',
+							'boxShadowHOffset' => '',
+							'boxShadowVOffset' => '',
+							'boxShadowBlur' => '',
+							'boxShadowSpread' => '',
+							'boxShadowPosition' => 'outset',
 						),
 					),
 					'uagb/social-share'      => array(

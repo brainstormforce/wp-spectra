@@ -36,7 +36,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
 			$gradientOverlayPosition = ( isset( $attr['gradientOverlayPosition'] ) ) ? $attr['gradientOverlayPosition'] : 'center center';
 			$gradientPosition = ( isset( $attr['gradientPosition'] ) ) ? $attr['gradientPosition'] : 'center center';
-
+			
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
+			
 			$style = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
@@ -122,6 +127,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' > .uagb-section__inner-wrap' => array(
 					'max-width' => $inner_width,
+					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS
 				),
 			);
 
