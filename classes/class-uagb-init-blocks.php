@@ -124,7 +124,16 @@ class UAGB_Init_Blocks {
 				}
 			} else {
 
-				if ( false === has_blocks() ) {
+				$post = get_post();
+
+				/**
+				 * Filters the post to build stylesheet for.
+				 *
+				 * @param \WP_Post $post The global post.
+				 */
+				$post = apply_filters( 'uagb_post_for_stylesheet', $post );
+
+				if ( false === has_blocks( $post ) ) {
 					return;
 				}
 

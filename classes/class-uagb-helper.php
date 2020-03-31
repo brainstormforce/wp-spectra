@@ -197,7 +197,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			ob_start();
 			?>
-			<script type="text/javascript" id="uagb-script-frontend">( function( $ ) { <?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?> })(jQuery) </script> 
+			<script type="text/javascript" id="uagb-script-frontend">document.addEventListener("DOMContentLoaded", function(){( function( $ ) { <?php echo self::$script; //phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped ?> })(jQuery)})</script>
 			<?php
 			ob_end_flush();
 		}
@@ -327,7 +327,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		public static function get_css_value( $value = '', $unit = '' ) {
 
 			// @codingStandardsIgnoreStart
-			
+
 			if ( '' == $value ) {
 				return $value;
 			}
@@ -677,6 +677,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				if ( ! is_object( $this_post ) ) {
 					return;
 				}
+
+				/**
+				 * Filters the post to build stylesheet for.
+				 *
+				 * @param \WP_Post $this_post The global post.
+				 */
+				$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
 				$this->get_generated_stylesheet( $this_post );
 
