@@ -289,3 +289,8 @@
 .uagb-reusable-block-link > span {
 	vertical-align: text-top;
 }
+
+/* cursor */
+.js .widget .widget-top, .js .postbox .hndle {
+    cursor: unset;
+}
