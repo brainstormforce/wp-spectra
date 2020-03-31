@@ -291,6 +291,6 @@
 }
 
 /* cursor */
-.js .widget .widget-top, .js .postbox .hndle {
+.uagb-container .postbox .hndle{
     cursor: unset;
 }
