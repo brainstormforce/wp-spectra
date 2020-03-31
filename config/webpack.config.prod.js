@@ -60,9 +60,6 @@ fs.readdir(paths.pluginSrc + "/blocks", function(err, items) {
 		}, function( error, result ) {
 
 			let file_path = result.stats.entry
-			// let new_path = file_path.replace( paths.pluginSrc + "//blocks//", "" );
-
-			// new_path = new_path.replace( "/style.scss", "" );
 
 			let new_path = file_path.replace( paths.pluginSrc + "\\blocks\\", "" );
 
