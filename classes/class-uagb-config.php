@@ -162,6 +162,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'mobilePaddingType'      => 'px',
 							'tabletPaddingType'      => 'px',
 							'desktopPaddingType'     => 'px',
+							'boxShadowColor' => '#000000',
+							'boxShadowHOffset' => '',
+							'boxShadowVOffset' => '',
+							'boxShadowBlur' => '',
+							'boxShadowSpread' => '',
+							'boxShadowPosition' => 'outset',
 						),
 					),
 					'uagb/column'            => array(
