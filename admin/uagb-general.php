@@ -21,6 +21,8 @@ $support_url    = $support_data['support_url'];
 
 $uagb_support_link      = apply_filters( 'uagb_support_link', $support_url );
 $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a Ticket »', 'ultimate-addons-for-gutenberg' ) );
+$has_read_write_perms = UAGB_Helper::has_read_write_permissions();
+
 ?>
 
 <div class="uagb-container uagb-general">
@@ -134,7 +136,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</h2>
 					<img class="uagb-ast-img" src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/welcome-screen-astra.jpg' ); ?>">
 					<div class="inside">
-						<p><?php esc_html_e( 'Join over 700,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<p><?php esc_html_e( 'Join over 500,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<h4><?php esc_html_e( 'Why Astra Theme?', 'ultimate-addons-for-gutenberg' ); ?></h4>
 						<p><strong><?php esc_html_e( 'Faster Performance - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Easy Customization - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks.', 'ultimate-addons-for-gutenberg' ); ?></p>
@@ -179,15 +181,22 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 						</p>
 						<label for="uag_file_generation">
 							<?php
-							if ( 'disabled' === $allow_file_generation ) {
+							$button_disabled = '';
+							if ( 'disabled' === $allow_file_generation  && true === $has_read_write_perms ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else if ( 'disabled' === $allow_file_generation  && false === $has_read_write_perms ) {
+
+								$val                    = 'disabled';
+								$file_generation_string = __( 'Inadequate File Permission', 'ultimate-addons-for-gutenberg' );
+								$button_disabled = 'disabled';
+
 							} else {
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
 							?>
-							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
 						</label>
