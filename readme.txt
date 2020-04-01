@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added WPML compatibility.
 * Improvement: Used local variable where get_filesystem() is called more than once.
 * Improvement: Display reset button inline in section.
+* Improvement: Checked the file permissions for the plugin's upload directory and displayed the FIle Generation button accordingly.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
