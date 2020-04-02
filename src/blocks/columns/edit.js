@@ -10,7 +10,7 @@ import times from "lodash/times"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
-
+import BoxShadowControl from "../../components/box-shadow"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
@@ -1228,65 +1228,16 @@ class UAGBColumns extends Component {
 					</PanelBody>
 
 					<PanelBody title={ __( "Box Shadow" ) } initialOpen={ false } >
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor }} ></span></span></p>
-							<ColorPalette
-								value={ boxShadowColor }
-								onChange={ ( colorValue ) => setAttributes( { boxShadowColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-						<Fragment>
-							<h2>{ __( "Horizontal Off-set" ) }</h2>
-							<RangeControl
-								value={ boxShadowHOffset }
-								onChange={ ( value ) => setAttributes( { boxShadowHOffset: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						</Fragment>
-						<Fragment>
-							<h2>{ __( "Vertical Off-set" ) }</h2>
-							<RangeControl
-								value={ boxShadowVOffset }
-								onChange={ ( value ) => setAttributes( { boxShadowVOffset: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						</Fragment>
-						<Fragment>
-							<h2>{ __( "Blur" ) }</h2>
-							<RangeControl
-								value={ boxShadowBlur }
-								onChange={ ( value ) => setAttributes( { boxShadowBlur: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						</Fragment>
-						<Fragment>
-							<h2>{ __( "Spread" ) }</h2>
-							<RangeControl
-								value={ boxShadowSpread }
-								onChange={ ( value ) => setAttributes( { boxShadowSpread: value } ) }
-								min={ 0 }
-								max={ 100 }
-								allowReset
-							/>
-						</Fragment>
-						<Fragment>
-							<SelectControl
-								label={ __( "Position" ) }
-								value={ boxShadowPosition }
-								onChange={ ( value ) => setAttributes( { boxShadowPosition: value } ) }
-								options={ [
-									{ value: "inset", label: __( "Inset" ) },
-									{ value: "outset", label: __( "Outset" ) },
-								] }
-							/>
-						</Fragment>
+						<BoxShadowControl
+							setAttributes = { setAttributes }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							
+						/>
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag
