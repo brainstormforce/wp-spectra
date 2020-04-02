@@ -22,7 +22,7 @@
 			.replace(/^-+/, '')                          // Trim - from start of text
 			.replace(/-+$/, '');                         // Trim - from end of text
 
-		return encodeURIComponent( parsedSlug );
+		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
 
 
