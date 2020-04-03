@@ -1576,7 +1576,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Check if UAG upload folder has write permissions or not.
 		 * 
-		 * @since 1.14.8
+		 * @since  x.x.x
 		 * @return bool true or false.
 		 */
 		public static function has_read_write_permissions() {
