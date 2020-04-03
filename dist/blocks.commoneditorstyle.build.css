@@ -120,7 +120,7 @@ hr.uagb-editor__separator {
 }
 
 .uagb-size-type-field-tabs .components-range-control .components-base-control__field {
-	display: flex;
+	display: block;
 	flex-wrap: unset;
 }
 
