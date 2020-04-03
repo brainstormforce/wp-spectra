@@ -3336,3 +3336,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uag-typography-range-options .uagb-size-type-field-tabs .components-tab-panel__tab-content .components-base-control.components-range-control .components-base-control__field {
 	display:block;
 }
+
+.uagb-size-type-field-tabs .components-tab-panel__tab-content div.components-base-control .components-base-control__field{
+    display:block;
+}
