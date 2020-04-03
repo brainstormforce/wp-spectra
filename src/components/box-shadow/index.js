@@ -132,7 +132,6 @@ class BoxShadowControl extends Component {
                 </div>
             );
         }
-
         resetBoxShadowAdvancedControls =  (
             <Button
                 className="uagb-size-btn uagb-typography-reset-btn"

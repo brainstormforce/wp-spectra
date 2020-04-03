@@ -1151,6 +1151,17 @@ class UAGBColumns extends Component {
 								initialPosition={50}
 							/>
 						)}
+						<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							
+						/>
 					</PanelBody>
 					<PanelBody title={ __( "Shape Dividers" ) } initialOpen={ false }>
 						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
@@ -1225,20 +1236,6 @@ class UAGBColumns extends Component {
 								/>
 							</Fragment>
 						) }
-					</PanelBody>
-
-					<PanelBody title={ __( "Box Shadow" ) } initialOpen={ false } >
-						<BoxShadowControl
-							setAttributes = { setAttributes }
-							label = { __( "Box Shadow" ) }
-							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
-							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
-							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
-							
-						/>
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag
