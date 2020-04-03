@@ -155,8 +155,8 @@ class BoxShadowControl extends Component {
         return(
             <div className='uag-typography-option-actions'>
                 <span>{ this.props.label }</span>
-                { resetBoxShadowAdvancedControls }
                 { boxShadowAdvancedControls }
+                { resetBoxShadowAdvancedControls }
                 { advancedControls }
             </div>
         )
