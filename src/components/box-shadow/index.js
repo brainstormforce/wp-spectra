@@ -9,8 +9,10 @@ const {
 } = wp.blockEditor
 
 const {
+    Button,
 	SelectControl,
-	RangeControl
+    RangeControl,
+    Dashicon
 } = wp.components
 
 // Extend component
@@ -19,8 +21,38 @@ const { Component, Fragment } = wp.element
 class BoxShadowControl extends Component {
 
 	constructor() {
-		super( ...arguments )
+        super( ...arguments )
+        this.onAdvancedControlClick  = this.onAdvancedControlClick.bind( this )
+        this.onAdvancedControlReset  = this.onAdvancedControlReset.bind( this )
     }
+    onAdvancedControlClick() {
+
+		let control = true
+		let label = __( "Hide Advanced" )
+
+		if( this.state !== null && this.state.showAdvancedControls === true ) {
+			control = false
+			label = __( "Advanced" )
+		}
+
+		this.setState(
+			{
+				showAdvancedControls: control,
+				showAdvancedControlsLabel: label
+			}
+		)
+    }
+    onAdvancedControlReset() {
+
+        const { setAttributes } = this.props
+        
+        setAttributes( { boxShadowColor: "" } )
+        setAttributes( { boxShadowHOffset: "" } )
+        setAttributes( { boxShadowVOffset: "" } )
+        setAttributes( { boxShadowBlur: "" } )
+        setAttributes( { boxShadowSpread: "" } )
+        setAttributes( { boxShadowPosition: "" } )
+	}
     render() {
         const { 
             setAttributes,
@@ -31,10 +63,13 @@ class BoxShadowControl extends Component {
             boxShadowSpread,
             boxShadowPosition
         } = this.props
-
-        return(
-            <div className="uagb-box-shadow-advanced">
-                <div className="uag-box-shadow-options">
+        
+        var advancedControls;
+        var boxShadowAdvancedControls;
+        var resetBoxShadowAdvancedControls;
+        if( this.state !== null && true === this.state.showAdvancedControls ) {
+            advancedControls = (
+                <div className="uagb-box-shadow-advanced">
                     <Fragment>
                     <p className="uagb-setting-label">{ boxShadowColor.label }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: boxShadowColor.value }} ></span></span></p>
                     <ColorPalette
@@ -95,6 +130,35 @@ class BoxShadowControl extends Component {
                     />
                     </Fragment>
                 </div>
+            );
+        }
+
+        resetBoxShadowAdvancedControls =  (
+            <Button
+                className="uagb-size-btn uagb-typography-reset-btn"
+                isSmall
+                aria-pressed={ ( this.state !== null ) }
+                onClick={ this.onAdvancedControlReset }
+            ><Dashicon icon="image-rotate" />
+            </Button>
+        );
+        
+        boxShadowAdvancedControls = (
+            <Button
+                className="uagb-size-btn uagb-typography-control-btn"
+                isSmall
+                aria-pressed={ ( this.state !== null ) }
+                onClick={ this.onAdvancedControlClick }
+            ><Dashicon icon="admin-tools" />
+            </Button>
+        );
+
+        return(
+            <div className='uag-typography-option-actions'>
+                <span>{ this.props.label }</span>
+                { resetBoxShadowAdvancedControls }
+                { boxShadowAdvancedControls }
+                { advancedControls }
             </div>
         )
     }

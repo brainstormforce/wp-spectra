@@ -991,6 +991,7 @@ class UAGBSectionEdit extends Component {
 					<PanelBody title={ __( "Box Shadow" ) } initialOpen={ false } >
 						<BoxShadowControl
 							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
 							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
 							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
 							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
