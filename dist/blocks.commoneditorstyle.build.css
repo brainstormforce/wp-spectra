@@ -3340,3 +3340,7 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-size-type-field-tabs .components-tab-panel__tab-content div.components-base-control .components-base-control__field{
     display:block;
 }
+
+.uagb-typography-advanced .uag-typography-range-options .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field{
+    display:block;
+}
