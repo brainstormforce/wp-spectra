@@ -119,11 +119,6 @@ hr.uagb-editor__separator {
     margin-bottom: -18px
 }
 
-.uagb-size-type-field-tabs .components-range-control .components-base-control__field {
-	display: flex;
-	flex-wrap: unset;
-}
-
 .uagb-size-type-field-tabs .components-range-control .components-base-control__label {
 	width: auto;
 	display: block;
@@ -3322,4 +3317,22 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-inline-margin .components-button-group.uagb-size-type-field {
     display: inline-block;
     float: right;
+}
+
+/* Reset Button Alignment */
+.uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field {
+	display:flex;
+	flex-wrap: unset;
+}
+
+.uagb-size-type-field-tabs.uagb-size-type-field__common-tabs .components-base-control.components-range-control.uagb-margin-control .components-base-control__field{
+    display:flex;
+} 
+
+.uagb-size-type-field-tabs.uagb-inline-margin .components-range-control .components-base-control__field{
+    display:unset;
+}
+
+.uag-typography-range-options .uagb-size-type-field-tabs .components-tab-panel__tab-content .components-base-control.components-range-control .components-base-control__field {
+	display:block;
 }
