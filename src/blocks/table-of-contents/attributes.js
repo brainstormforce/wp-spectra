@@ -31,6 +31,9 @@ const attributes = {
 	iconColor : {
 		type : "string",
 	},
+	bulletColor : {
+		type : "string",
+	},
 	smoothScroll : {
 		type    : "boolean",
 		default : true,

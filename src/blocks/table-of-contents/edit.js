@@ -106,6 +106,7 @@ class UAGBTableOfContentsEdit extends Component {
 			initialCollapse,
 			icon,
 			iconColor,
+			bulletColor,
 			iconSize,
 			smoothScroll,
 			smoothScrollOffset,
@@ -370,6 +371,12 @@ class UAGBTableOfContentsEdit extends Component {
 							value={ headingColor }
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Bullet Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
+						<ColorPalette
+									value={ bulletColor }
+									onChange={ ( colorValue ) => setAttributes( { bulletColor: colorValue } ) }
+									allowReset
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Collapsible" ) }</h2>

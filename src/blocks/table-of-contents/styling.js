@@ -20,6 +20,7 @@ function styling( props ) {
 		tColumnsTablet,
 		tColumnsMobile,
 		iconColor,
+		bulletColor,
 		iconSize,
 		//Color
 		backgroundColor,
@@ -133,12 +134,16 @@ function styling( props ) {
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
 		    "padding-top": 0
 		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li" : {
+		    "color" : bulletColor
+		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
 		    "padding-bottom": 0
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
 		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
+			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
+			"color" : bulletColor
 		},
 		" .uag-toc__collapsible-wrap svg" : {
 			"width" : generateCSSUnit( iconSize, "px" ),
