@@ -132,7 +132,7 @@ function styling( props ) {
 			"margin-bottom": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
-		    "padding-top": 0
+			"padding-top": 0
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li" : {
 		    "color" : bulletColor
@@ -190,7 +190,10 @@ function styling( props ) {
 		},
 
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
-		    "padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+			"padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li" : {
+			color:bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
 		    "padding-bottom": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
@@ -222,6 +225,9 @@ function styling( props ) {
 		},		
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
 		    "padding-top": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
+		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list > li" : {
+			color:bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
 		    "padding-bottom": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )
