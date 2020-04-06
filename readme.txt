@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/BrainstormForce
 Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
-Tested up to: 5.3.2
+Tested up to: 5.4
 Stable tag: 1.14.8
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -160,6 +160,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Used local variable where get_filesystem() is called more than once.
 * Improvement: Display reset button inline in section.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
+* Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
+* Fix: Advanced Column : Percentage button not clickable in editor mode.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
