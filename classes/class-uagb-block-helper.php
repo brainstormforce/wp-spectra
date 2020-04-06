@@ -4605,9 +4605,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
 				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li" => array(
-				    "color" => $attr["bulletColor"]
-				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
 				),
@@ -4635,9 +4632,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
-				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li" => array(
-				    "color" => $attr["bulletColor"]
 				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" => array(
 				    "padding-bottom" => 0
