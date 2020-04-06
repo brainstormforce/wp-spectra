@@ -372,12 +372,6 @@ class UAGBTableOfContentsEdit extends Component {
 							onChange={ ( colorValue ) => setAttributes( { headingColor: colorValue } ) }
 							allowReset
 						/>
-						<p className="uagb-setting-label">{ __( "Bullet Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
-						<ColorPalette
-									value={ bulletColor }
-									onChange={ ( colorValue ) => setAttributes( { bulletColor: colorValue } ) }
-									allowReset
-						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Collapsible" ) }</h2>
 						<ToggleControl
@@ -416,6 +410,16 @@ class UAGBTableOfContentsEdit extends Component {
 							checked={ disableBullets }
 							onChange={ ( value ) => setAttributes( { disableBullets: ! disableBullets } ) }
 						/>
+						{ ! disableBullets &&
+							<Fragment>
+								<p className="uagb-setting-label">{ __( "Bullet points Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
+								<ColorPalette
+									value={ bulletColor }
+									onChange={ ( colorValue ) => setAttributes( { bulletColor: colorValue } ) }
+									allowReset
+								/>
+							</Fragment>
+						}
 						<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 							tabs={ [
 								{
