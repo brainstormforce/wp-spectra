@@ -304,7 +304,8 @@ hr.uagb-editor__separator {
 
 .uag-typography-option-actions,
 .uag-box-shadow-option-actions {
-    margin-bottom: 1.5em;
+	margin-bottom: 1.5em;
+	margin-top: 1.5em;
 }
 
 .uag-typography-font-family-options .components-base-control__field {
