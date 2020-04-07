@@ -163,6 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
+* Fix: Removed Drag icon from UAG Admin Setting page.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
