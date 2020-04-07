@@ -107,7 +107,7 @@ function styling( props ) {
 		" .uagb-columns__shape-bottom .uagb-columns__shape-fill" : {
 			fill: hexToRgba( bottomColor, ( typeof bottomDividerOpacity != "undefined" ) ? bottomDividerOpacity : 100 ),
 		},
-		" .uagb-columns__inner-wrap": {
+		".wp-block-uagb-columns": {
 			"box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
 		},
 	}

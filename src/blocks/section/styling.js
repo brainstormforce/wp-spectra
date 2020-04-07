@@ -89,7 +89,7 @@ function styling( props ) {
 		" .uagb-section__video-wrap": {
 			"opacity" : ( typeof backgroundVideoOpacity != "undefined" ) ? ( 100 - backgroundVideoOpacity )/100 : 0.5
 		},
-		" .uagb-section__inner-wrap": {
+		".wp-block-uagb-section": {
 			"max-width" : inner_width,
 			"box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		}

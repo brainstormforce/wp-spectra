@@ -126,9 +126,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
 				' > .uagb-section__inner-wrap' => array(
-					'max-width' => $inner_width,
-					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS
+					'max-width' => $inner_width
 				),
+				'.wp-block-uagb-section' => array (
+					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS
+				)
 			);
 
 			if ( 'video' == $bg_type ) {
@@ -319,7 +321,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
 					'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' != $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
 				),
-				' .uagb-columns__inner-wrap' => array(
+				'.wp-block-uagb-columns' => array(
 					"box-shadow" => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS  
 				),
 			);
