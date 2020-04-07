@@ -1572,6 +1572,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			return $wp_filesystem;
 		}
+
+		/**
+		 * Check if UAG upload folder has write permissions or not.
+		 * 
+		 * @since  x.x.x
+		 * @return bool true or false.
+		 */
+		public static function has_read_write_permissions() {
+			
+			$upload_dir = self::get_upload_dir();
+			
+			$file_created = self::get_instance()->get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
+
+			if( ! $file_created ) {
+
+				return false;
+			}
+
+			return true;
+		}
 	}
 
 	/**

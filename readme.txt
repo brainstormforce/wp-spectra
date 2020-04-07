@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added WPML compatibility.
 * Improvement: Used local variable where get_filesystem() is called more than once.
 * Improvement: Display reset button inline in section.
+* Improvement: Added a missing File Permission check for dynamic CSS File Generation.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
