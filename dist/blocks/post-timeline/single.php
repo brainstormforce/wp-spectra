@@ -10,19 +10,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
 
-$timelin_alignment  = $attributes['timelinAlignment'];
-$arrowlin_alignment = $attributes['arrowlinAlignment'];
-$display_post_date  = $attributes['displayPostDate'];
-$posts_to_show      = $attributes['postsToShow'];
-$align              = $attributes['align'];
-$display_post_image = $attributes['displayPostImage'];
-$display_inner_date = false;
+$display_inner_date  = ( 'center' === $attributes['timelinAlignment'] ) ? true : false;
+$content_align_class = uagb_tm_get_align_classes( $attributes, $index );
+$day_align_class     = uagb_tm_get_day_align_classes( $attributes, $index );
 
-if ( 'center' === $timelin_alignment ) {
-	$display_inner_date  = true;
-	$content_align_class = uagb_tm_get_align_classes( $attributes, $index );
-	$day_align_class     = uagb_tm_get_day_align_classes( $attributes, $index );
-}
 ?>
 <article class = "uagb-timeline__field uagb-timeline__field-wrap">
 	<div class = "<?php echo esc_html( $content_align_class ); ?>">
@@ -34,7 +25,7 @@ if ( 'center' === $timelin_alignment ) {
 						<?php uagb_tm_get_date( $attributes, 'uagb-timeline__inner-date-new' ); ?>
 					</div>
 
-					<?php ( $display_post_image ) ? uagb_tm_get_image( $attributes ) : ''; ?>
+					<?php ( $attributes['displayPostImage'] ) ? uagb_tm_get_image( $attributes ) : ''; ?>
 
 					<div class = "uagb-content" >
 						<?php

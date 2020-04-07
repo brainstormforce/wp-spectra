@@ -113,10 +113,16 @@ hr.uagb-editor__separator {
 }
 
 .components-button-group.uagb-size-type-field {
-    margin: 0;
+	margin: 0;
     text-align: right;
-    display: block;
-    margin-bottom: -18px
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -18px;
+}
+
+.uagb-size-type-field-tabs .components-range-control .components-base-control__field {
+	display: block;
+	flex-wrap: unset;
 }
 
 .uagb-size-type-field-tabs .components-range-control .components-base-control__label {
