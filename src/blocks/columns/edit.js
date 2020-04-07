@@ -10,7 +10,7 @@ import times from "lodash/times"
 import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
-
+import BoxShadowControl from "../../components/box-shadow"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
@@ -213,6 +213,12 @@ class UAGBColumns extends Component {
 			mobilePaddingType,
 			tabletPaddingType,
 			desktopPaddingType,
+			boxShadowColor,
+			boxShadowHOffset,
+			boxShadowVOffset,
+			boxShadowBlur,
+			boxShadowSpread,
+			boxShadowPosition,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -1219,6 +1225,17 @@ class UAGBColumns extends Component {
 								/>
 							</Fragment>
 						) }
+						<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							
+						/>
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag
