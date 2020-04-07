@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added a missing File Permission check for dynamic CSS File Generation.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
+* Fix: Post Carousel - Border radius not working.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
 * Fix: Removed Drag icon from UAG Admin Setting page.
 
