@@ -21,6 +21,8 @@ $support_url    = $support_data['support_url'];
 
 $uagb_support_link      = apply_filters( 'uagb_support_link', $support_url );
 $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a Ticket »', 'ultimate-addons-for-gutenberg' ) );
+$has_read_write_perms = UAGB_Helper::has_read_write_permissions();
+
 ?>
 
 <div class="uagb-container uagb-general">
@@ -63,7 +65,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					<div class="uagb-bulk-actions-wrap">
 						<a class="bulk-action uagb-activate-all button"> <?php esc_html_e( 'Activate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
 						<a class="bulk-action uagb-deactivate-all button"> <?php esc_html_e( 'Deactivate All', 'ultimate-addons-for-gutenberg' ); ?> </a>
-						<a class="uagb-reusable-block-link button button-primary" href="<?php echo admin_url( 'edit.php?post_type=wp_block' ); ?>" rel="noopener"> <?php esc_html_e( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ); ?> <span class="dashicons-controls-repeat dashicons"></span></a>
+						<a class="uagb-reusable-block-link button button-primary" href="<?php echo esc_url( admin_url( 'edit.php?post_type=wp_block' ) ); ?>" rel="noopener"> <?php esc_html_e( 'Reusable Blocks', 'ultimate-addons-for-gutenberg' ); ?> <span class="dashicons-controls-repeat dashicons"></span></a>
 					</div>
 				</h2>
 				<div class="uagb-list-section">
@@ -83,26 +85,27 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 								$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
 
 								$class = 'deactivate';
-								$link  = array(
+
+								$uagb_link = array(
 									'link_class' => 'uagb-activate-widget',
 									'link_text'  => __( 'Activate', 'ultimate-addons-for-gutenberg' ),
 								);
 
 								if ( $info['is_activate'] ) {
-									$class = 'activate';
-									$link  = array(
+									$class     = 'activate';
+									$uagb_link = array(
 										'link_class' => 'uagb-deactivate-widget',
 										'link_text'  => __( 'Deactivate', 'ultimate-addons-for-gutenberg' ),
 									);
 								}
 
-								echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . $title_url . $anchor_target . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
+								echo '<li id="' . esc_attr( $addon ) . '"  class="' . esc_attr( $class ) . '"><a class="uagb-widget-title"' . esc_url( $title_url ) . esc_url( $anchor_target ) . ' >' . esc_html( $info['title'] ) . '</a><div class="uagb-widget-link-wrapper">';
 
 								printf(
 									'<a href="%1$s" class="%2$s"> %3$s </a>',
-									( isset( $link['link_url'] ) && ! empty( $link['link_url'] ) ) ? esc_url( $link['link_url'] ) : '#',
-									esc_attr( $link['link_class'] ),
-									esc_html( $link['link_text'] )
+									( isset( $uagb_link['link_url'] ) && ! empty( $uagb_link['link_url'] ) ) ? esc_url( $uagb_link['link_url'] ) : '#',
+									esc_attr( $uagb_link['link_class'] ),
+									esc_html( $uagb_link['link_text'] )
 								);
 
 								if ( $info['is_activate'] && isset( $info['setting_url'] ) ) {
@@ -133,7 +136,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					</h2>
 					<img class="uagb-ast-img" src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/welcome-screen-astra.jpg' ); ?>">
 					<div class="inside">
-						<p><?php esc_html_e( 'Join over 500,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<p><?php esc_html_e( 'Join over 700,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<h4><?php esc_html_e( 'Why Astra Theme?', 'ultimate-addons-for-gutenberg' ); ?></h4>
 						<p><strong><?php esc_html_e( 'Faster Performance - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Easy Customization - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks.', 'ultimate-addons-for-gutenberg' ); ?></p>
@@ -155,13 +158,13 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 					<h2 class="hndle ast-normal-cusror">
 						<span class="dashicons dashicons-admin-page"></span>
 						<span>
-							<?php printf( esc_html( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
+							<?php printf( esc_html__( 'CSS File Generation', 'ultimate-addons-for-gutenberg' ) ); ?>
 						</span>
 					</h2>
 					<div class="inside">
 						<p class="warning">
 						</p>
-							<?php _e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
+							<?php esc_html_e( 'Enabling this option will generate CSS files for Ultimate Addons for Gutenberg block styling instead of loading the CSS inline on page.', 'ultimate-addons-for-gutenberg' ); ?>
 						<p>
 						<?php
 						$file_generation_doc_link = esc_url( 'https://www.ultimategutenberg.com/clean-html-with-uag/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard' );
@@ -170,23 +173,30 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 
 						printf(
 							/* translators: %1$s: a tag open. */
-							__( 'Please read %1$s this article %2$s to know more.', 'ultimate-addons-for-gutenberg' ),
-							$a_tag_open,
-							$a_tag_close
+							esc_html__( 'Please read %1$s this article %2$s to know more.', 'ultimate-addons-for-gutenberg' ),
+							wp_kses_post( $a_tag_open ),
+							wp_kses_post( $a_tag_close )
 						);
 						?>
 						</p>
 						<label for="uag_file_generation">
 							<?php
-							if ( 'disabled' === $allow_file_generation ) {
+							$button_disabled = '';
+							if ( 'disabled' === $allow_file_generation  && true === $has_read_write_perms ) {
 								$val                    = 'enabled';
 								$file_generation_string = __( 'Enable File Generation', 'ultimate-addons-for-gutenberg' );
+							} else if ( 'disabled' === $allow_file_generation  && false === $has_read_write_perms ) {
+
+								$val                    = 'disabled';
+								$file_generation_string = __( 'Inadequate File Permission', 'ultimate-addons-for-gutenberg' );
+								$button_disabled = 'disabled';
+
 							} else {
 								$val                    = 'disabled';
 								$file_generation_string = __( 'Disable File Generation', 'ultimate-addons-for-gutenberg' );
 							}
 							?>
-							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>">
+							<button class="button astra-beta-updates uag-file-generation" id="uag_file_generation" data-value="<?php echo esc_attr( $val ); ?>" <?php echo esc_attr( $button_disabled ); ?> >
 								<?php echo esc_html( $file_generation_string ); ?>
 							</button>
 						</label>
@@ -215,7 +225,7 @@ $uagb_support_link_text = apply_filters( 'uagb_support_link_text', __( 'Submit a
 							printf(
 								/* translators: %1$s: uagb name. */
 								esc_html__( 'Got a question? Get in touch with %1$s developers. We\'re happy to help!', 'ultimate-addons-for-gutenberg' ),
-								UAGB_PLUGIN_NAME
+								esc_html( UAGB_PLUGIN_NAME )
 							);
 							?>
 						</p>
