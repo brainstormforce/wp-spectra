@@ -159,9 +159,15 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added WPML compatibility.
 * Improvement: Used local variable where get_filesystem() is called more than once.
 * Improvement: Display reset button inline in section.
+* Improvement: Added Box Shadow option to Advanced columns and Section.
+* Improvement: Table of Contents - Added bullet point color option.
+* Improvement: Added a missing File Permission check for dynamic CSS File Generation.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
+* Fix: Table of Contents - Support Special character in heading.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
+* Fix: Post Carousel - Border radius not working.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
+* Fix: Removed Drag icon from UAG Admin Setting page.
 
 ### 1.14.8 ###
 * Improvement: Inline CSS generation markup as per w3c standards.

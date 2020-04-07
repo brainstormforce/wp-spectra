@@ -1605,6 +1605,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'initialCollapse'           => false,
 							'icon'                      => 'fa-angle-down',
 							'iconColor'                 => '',
+							'bulletColor'               => '',
 							'iconSize'                  => '',
 							'align'                     => 'left',
 							'linkColor'                 => '#333',
