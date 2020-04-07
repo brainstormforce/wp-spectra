@@ -406,13 +406,13 @@ class UAGBTableOfContentsEdit extends Component {
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content" ) }</h2>
 						<ToggleControl
-							label={ __( "Disable Bullet points" ) }
+							label={ __( "Disable Bullet Points" ) }
 							checked={ disableBullets }
 							onChange={ ( value ) => setAttributes( { disableBullets: ! disableBullets } ) }
 						/>
 						{ ! disableBullets &&
 							<Fragment>
-								<p className="uagb-setting-label">{ __( "Bullet points Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
+								<p className="uagb-setting-label">{ __( "Bullet Points Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: bulletColor }} ></span></span></p>
 								<ColorPalette
 									value={ bulletColor }
 									onChange={ ( colorValue ) => setAttributes( { bulletColor: colorValue } ) }

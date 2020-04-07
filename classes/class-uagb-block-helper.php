@@ -4545,7 +4545,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
 				),
-				" .uagb-toc__list-wrap > ul.uagb-toc__list > li" => array(
+				" .uagb-toc__list-wrap > ul.uagb-toc__list li" => array(
 				    "color" => $attr["bulletColor"]
 				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" => array(

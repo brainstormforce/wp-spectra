@@ -134,7 +134,7 @@ function styling( props ) {
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
 			"padding-top": 0
 		},
-		" .uagb-toc__list-wrap > ul.uagb-toc__list > li" : {
+		" .uagb-toc__list-wrap > ul.uagb-toc__list li" : {
 		    "color" : bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
