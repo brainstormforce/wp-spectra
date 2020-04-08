@@ -369,6 +369,10 @@ hr.uagb-editor__separator {
 	fill: #555D66;
 }
 
+.uagb__url-panel-body .block-editor-url-input input {
+	width: 100%;
+}
+
 /*
  Fonticon picker css
  */
