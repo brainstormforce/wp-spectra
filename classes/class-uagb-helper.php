@@ -1367,7 +1367,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			wp_delete_file( $combined_path );
 
 			$style = '';
-			
+
 			$wp_filesystem = self::get_instance()->get_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
@@ -1405,7 +1405,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				$wp_filesystem = self::get_instance()->get_filesystem(); 
+				$wp_filesystem = self::get_instance()->get_filesystem();
 				$wp_filesystem->mkdir( $dir_info['path'] );
 				// Add an index file for security.
 				$wp_filesystem->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
@@ -1575,17 +1575,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 		/**
 		 * Check if UAG upload folder has write permissions or not.
-		 * 
+		 *
 		 * @since  x.x.x
 		 * @return bool true or false.
 		 */
 		public static function has_read_write_permissions() {
-			
+
 			$upload_dir = self::get_upload_dir();
-			
+
 			$file_created = self::get_instance()->get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
 
-			if( ! $file_created ) {
+			if ( ! $file_created ) {
 
 				return false;
 			}

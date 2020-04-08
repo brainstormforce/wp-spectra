@@ -6,6 +6,7 @@
 import classnames from "classnames"
 import styling from "./styling"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import BoxShadowControl from "../../components/box-shadow"
 
 const { __ } = wp.i18n
 
@@ -20,8 +21,7 @@ const {
 	ColorPalette,
 	InspectorControls,
 	InnerBlocks,
-	MediaUpload,
-	PanelColorSettings
+	MediaUpload
 } = wp.blockEditor
 
 const {
@@ -194,6 +194,12 @@ class UAGBSectionEdit extends Component {
 			mobilePaddingType,
 			tabletPaddingType,
 			desktopPaddingType,
+			boxShadowColor,
+			boxShadowHOffset,
+			boxShadowVOffset,
+			boxShadowBlur,
+			boxShadowSpread,
+			boxShadowPosition,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -980,6 +986,17 @@ class UAGBSectionEdit extends Component {
 								/>
 							</Fragment>
 						) }
+						<BoxShadowControl
+							setAttributes = { setAttributes }
+							label = { __( "Box Shadow" ) }
+							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
+							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+							
+						/>
 					</PanelBody>
 				</InspectorControls>
 				<CustomTag

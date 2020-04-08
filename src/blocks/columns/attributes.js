@@ -279,6 +279,25 @@ const attributes = {
 		type: "string",
 		default: 'px'
 	},
+	boxShadowColor: {
+		type: "string"
+	},
+	boxShadowHOffset : {
+		type: "number"
+	},
+	boxShadowVOffset : {
+		type: "number"
+	},
+	boxShadowBlur : {
+		type: "number"
+	},
+	boxShadowSpread : {
+		type: "number"
+	},
+	boxShadowPosition: {
+		type: "string",
+		default: "outset"
+	},
 }
 
 export default attributes

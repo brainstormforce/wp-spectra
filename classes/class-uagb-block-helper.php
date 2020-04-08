@@ -36,7 +36,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$overlay_type = ( isset( $attr['overlayType'] ) ) ? $attr['overlayType'] : 'color';
 			$gradientOverlayPosition = ( isset( $attr['gradientOverlayPosition'] ) ) ? $attr['gradientOverlayPosition'] : 'center center';
 			$gradientPosition = ( isset( $attr['gradientPosition'] ) ) ? $attr['gradientPosition'] : 'center center';
-
+			
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
+			
 			$style = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
@@ -121,8 +126,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => ( isset( $attr['backgroundVideoOpacity'] ) && '' != $attr['backgroundVideoOpacity'] ) ? ( ( 100 - $attr['backgroundVideoOpacity'] ) / 100 ) : 0.5,
 				),
 				' > .uagb-section__inner-wrap' => array(
-					'max-width' => $inner_width,
+					'max-width' => $inner_width
 				),
+				'.wp-block-uagb-section' => array (
+					'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS
+				)
 			);
 
 			if ( 'video' == $bg_type ) {
@@ -248,7 +256,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array();
 			$t_selectors = array();
-
+			$boxShadowPositionCSS = $attr['boxShadowPosition'];
+			if ( 'outset' === $attr['boxShadowPosition'] ) {
+				$boxShadowPositionCSS = '';
+			}
 			$style = array(
 				'padding-top'    => UAGB_Helper::get_css_value( $attr['topPadding'], $attr['desktopPaddingType'] ),
 				'padding-bottom' => UAGB_Helper::get_css_value( $attr['bottomPadding'], $attr['desktopPaddingType'] ),
@@ -309,6 +320,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-columns__shape-bottom .uagb-columns__shape-fill' => array(
 					'fill' => UAGB_Helper::hex2rgba( $attr['bottomColor'], ( isset( $attr['bottomDividerOpacity'] ) && '' != $attr['bottomDividerOpacity'] ) ? $attr['bottomDividerOpacity'] : 100 ),
+				),
+				'.wp-block-uagb-columns' => array(
+					"box-shadow" => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], "px" ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], "px" ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS  
 				),
 			);
 
@@ -4544,6 +4558,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" => array(
 				    "padding-top" => 0
+				),
+				" .uagb-toc__list-wrap > ul.uagb-toc__list li" => array(
+				    "color" => $attr["bulletColor"]
 				),
 				" .uagb-toc__list-wrap ul.uagb-toc__list:first-child" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr["hMarginDesktop"], $attr["marginTypeDesktop"] ),
