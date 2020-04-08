@@ -138,7 +138,7 @@
 						});
 					}
 				});
-			}
+		}
 
 			scroll_to_top = attr.scrollToTop
 

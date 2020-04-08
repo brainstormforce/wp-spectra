@@ -133,6 +133,7 @@ class UAGBMultiButtonEdit extends Component {
 				<PanelBody key={index}
 					title={ __( "Button" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
 					initialOpen={ false }
+					className="uagb__url-panel-body"
 				>
 					<p className="components-base-control__label">{ __( "Link" ) }</p>
 					<URLInput
