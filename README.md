@@ -168,6 +168,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Carousel - Border radius not working.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
 * Fix: Removed Drag icon from UAG Admin Setting page.
+* Fix: 403 error on Astra activation.
 
 ### 1.14.8 ###
 * Improvement: Inline CSS generation markup as per w3c standards.
