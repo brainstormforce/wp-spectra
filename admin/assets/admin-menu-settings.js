@@ -293,6 +293,7 @@
 
 			// WordPress adds "Activate" button after waiting for 1000ms. So we will run our activation after that.
 			setTimeout( function() {
+				
 				$.ajax({
 					url: uagb.ajax_url,
 					type: "POST",
