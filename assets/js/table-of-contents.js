@@ -117,27 +117,28 @@
 
 			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
-			if ( undefined !== $headers ) {
+			let allowed_h_tags = [];
+			attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
+			let allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+			let all_header = ( '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : [];
 
-				$headers.forEach(function (element, index) {
-					
-					let all_header = $( 'body' ).find( 'h' + element.tag );
+			if ( undefined !== $headers && 0 !== all_header.length ) {
+
+				$headers.forEach(function (element, i) {
 					
 					all_header.each( function (){
-						var header = $( this );
-						
+						let header = $( this );
 						// let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
 						// let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
 						// if ( left_word == right_word ) {
 						// 	header = $( this );
 						// }	
-						debugger
-						var header_text = header.text()
-						var element_text = element.text
-						console.log(header.text().length)
-						console.log(element.text.length)
-						if ( undefined !== header && element_text == header_text ) {
-							var anchor = parseTocSlug( header.text() );
+						//debugger
+						
+						let header_text = header.text().replace(/’/g, "'").replace(/”/g, "\"");
+						let element_text = element.text.replace(/’/g, "'").replace(/”/g, "\"");
+						if ( element_text.localeCompare(header_text) === 0 ) {
+							var anchor = parseTocSlug(header_text);
 							header.before('<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
