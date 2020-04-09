@@ -117,9 +117,6 @@
 
 			$headers = JSON.parse(attr.headerLinks);
 
-			console.log($headers);
-			console.log(JSON.parse(attr.headerLinks));
-
 			if ( undefined !== $headers ) {
 
 				$headers.forEach(function (element, index) {
