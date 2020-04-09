@@ -109,13 +109,13 @@
 		 */
 		_run: function( attr, id ) {
 
-			$this_scope = $( id );
+			var $this_scope = $( id );
 
 			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
 
-			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
+			var $headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
 			let allowed_h_tags = [];
 			attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
@@ -125,18 +125,14 @@
 			if ( undefined !== $headers && 0 !== all_header.length ) {
 
 				$headers.forEach(function (element, i) {
-					
 					all_header.each( function (){
-						let header = $( this );
-						// let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						// let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						// if ( left_word == right_word ) {
-						// 	header = $( this );
-						// }	
-						//debugger
 						
-						let header_text = header.text().replace(/’/g, "'").replace(/”/g, "\"");
-						let element_text = element.text.replace(/’/g, "'").replace(/”/g, "\"");
+						let header = $( this );
+						
+						let header_text = header.text().replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"');
+						let element_text = element.text.replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"');
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							var anchor = parseTocSlug(header_text);
 							header.before('<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>');
