@@ -115,9 +115,10 @@
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
 
-			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
+			$headers = JSON.parse(attr.headerLinks);
 
 			console.log($headers);
+			console.log(JSON.parse(attr.headerLinks));
 
 			if ( undefined !== $headers ) {
 
