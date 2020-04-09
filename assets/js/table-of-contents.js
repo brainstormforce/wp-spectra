@@ -109,7 +109,7 @@
 		 */
 		_run: function( attr, id ) {
 
-			$this_scope = $( id );
+			var $this_scope = $( id );
 
 			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
@@ -117,28 +117,31 @@
 
 			$headers = JSON.parse(attr.headerLinks);
 
-			if ( undefined !== $headers ) {
+			// var $headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
-				$headers.forEach(function (element, index) {
-					
-					let point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+			let allowed_h_tags = [];
+			attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
+			let allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+			let all_header = ( '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : [];
 
-					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
-						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						if ( left_word == right_word ) {
-							point_header = $( this );
+			if ( undefined !== $headers && 0 !== all_header.length ) {
+
+				$headers.forEach(function (element, i) {
+					all_header.each( function (){
+						
+						let header = $( this );
+						
+						let header_text = header.text().replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"');
+						let element_text = element.text.replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"');
+						if ( element_text.localeCompare(header_text) === 0 ) {
+							var anchor = parseTocSlug(header_text);
+							header.before('<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
-
-					if ( undefined !== point_header && point_header.length > 0 ) {
-						point_header.before(function (ind) {
-							var anchor = parseTocSlug( $( point_header[ind] ).text() );
-							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
-						});
-					}
 				});
-		}
+			}
 
 			scroll_to_top = attr.scrollToTop
 
