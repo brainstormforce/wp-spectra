@@ -117,6 +117,8 @@
 
 			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
 
+			console.log($headers);
+
 			if ( undefined !== $headers ) {
 
 				$headers.forEach(function (element, index) {

@@ -1053,6 +1053,7 @@ export default compose(
 
 		let a = [];
 		let all_headers = getData( select( 'core/block-editor' ).getBlocks(), a );
+		console.log(all_headers);
 		let headers = [];
 
 		if( typeof all_headers != 'undefined' ) {
