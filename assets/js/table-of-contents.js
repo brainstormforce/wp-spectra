@@ -121,24 +121,28 @@
 
 				$headers.forEach(function (element, index) {
 					
-					let point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
-
-					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
-						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						if ( left_word == right_word ) {
-							point_header = $( this );
+					let all_header = $( 'body' ).find( 'h' + element.tag );
+					
+					all_header.each( function (){
+						var header = $( this );
+						
+						// let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
+						// let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
+						// if ( left_word == right_word ) {
+						// 	header = $( this );
+						// }	
+						debugger
+						var header_text = header.text()
+						var element_text = element.text
+						console.log(header.text().length)
+						console.log(element.text.length)
+						if ( undefined !== header && element_text == header_text ) {
+							var anchor = parseTocSlug( header.text() );
+							header.before('<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
-
-					if ( undefined !== point_header && point_header.length > 0 ) {
-						point_header.before(function (ind) {
-							var anchor = parseTocSlug( $( point_header[ind] ).text() );
-							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
-						});
-					}
 				});
-		}
+			}
 
 			scroll_to_top = attr.scrollToTop
 
