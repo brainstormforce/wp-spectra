@@ -116,9 +116,7 @@
 			}
 
 			$headers = JSON.parse(attr.headerLinks);
-
-			// var $headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
-
+			
 			let allowed_h_tags = [];
 			attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
 			let allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
