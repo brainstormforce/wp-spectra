@@ -8,7 +8,7 @@ const attributes = {
 	},
 	label: {
 		selector: ".uagb-icon-list__label",
-		default: "Label #"
+		default: "#Label"
 	},
 	image_icon: {
 		type: "string",

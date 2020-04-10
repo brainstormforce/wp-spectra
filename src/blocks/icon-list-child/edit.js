@@ -256,6 +256,7 @@ class UAGBIconListChild extends Component {
 										className='uagb-icon-list__label'
 										placeholder={ __( "Description" ) }
 										multiline={false}
+										allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 									/>
 								</div>
 							}

@@ -155,18 +155,16 @@ class UAGBIconList extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "Icon Count" ) } initialOpen={ true }>
-						<RangeControl
+					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+						{/* <RangeControl
 							label={ __( "Number of Icons" ) }
 							value={ icon_count }
 							onChange={ newCount => {
 								setAttributes( { icon_count: newCount } )
 							} }
 							min={ 1 }
-							max={ 12 }
-						/>
-					</PanelBody>
-					<PanelBody title={ __( "General" ) } initialOpen={ false }>
+							max={ 50 }
+						/> */}
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ icon_layout }
@@ -328,6 +326,7 @@ class UAGBIconList extends Component {
 							label={ __( "Gap between Items" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
 							min={ 0 }
 							max={ 100 }
 						/>
@@ -353,8 +352,10 @@ class UAGBIconList extends Component {
 					<div className="uagb-icon-list__wrap">
 						<InnerBlocks
 							template={ getIconTemplate( icon_count, icons ) }
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ 'vertical' }
+						/>
 					</div>
 				</div>
 				{googleFonts}
