@@ -1991,69 +1991,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// Tablet Icon Size CSS ends.
 
-			foreach ( $attr['icons'] as $key => $icon ) {
+			$selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+				'font-family' => $attr['fontFamily'],
+				'font-weight' => $attr['fontWeight'],
+				'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
+			);
 
-				$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
-				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
-				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
-				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
-				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
-				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+			$m_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+			);
 
-				if ( $attr['icon_count'] <= $key ) {
-					break;
-				}
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon"] = array (
-					"color" => $icon['icon_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon svg"] = array (
-					"fill" => $icon['icon_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
-					"color" => $icon['icon_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon svg"] = array (
-					"fill" => $icon['icon_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"color" => $icon['label_color'],
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-					'font-family' => $attr['fontFamily'],
-					'font-weight' => $attr['fontWeight'],
-					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
-				);
-
-				$m_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-				);
-
-				$t_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
-					"color" => $icon['label_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_color'],
-					"border-color" => $icon['icon_border_color'],
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color'],
-					"border-color" => $icon['icon_border_hover_color']
-				);
-			}
+			$t_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+			);
 
 			if ( 'horizontal' == $attr['icon_layout'] ) {
 
@@ -2105,6 +2058,62 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'desktop' => $desktop,
 				'tablet'  => $tablet,
 				'mobile'  => $mobile,
+			);
+
+			return $generated_css;
+		}
+
+		/**
+		 * Get Icon List Block CSS
+		 *
+		 * @since 0.0.1
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_icon_list_child_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = array(
+				".uagb-icon-list-repeater .uagb-icon-list__source-icon" => array(
+					"color" => $attr['icon_color']
+				),
+				".uagb-icon-list-repeater .uagb-icon-list__source-icon svg" => array(
+					"fill" => $attr['icon_color']
+				),
+				".uagb-icon-list-repeater:hover .uagb-icon-list__source-icon" => array (
+					"color" => $attr['icon_hover_color']
+				),
+				".uagb-icon-list-repeater:hover .uagb-icon-list__source-icon svg" => array (
+					"fill" => $attr['icon_hover_color']
+				),
+				".uagb-icon-list-repeater .uagb-icon-list__label" => array (
+					"color" => $attr['label_color']
+				),
+				".uagb-icon-list-repeater:hover .uagb-icon-list__label" => array (
+					"color" => $attr['label_hover_color']
+				),
+				".uagb-icon-list-repeater .uagb-icon-list__source-wrap" => array (
+					"background" => $attr['icon_bg_color'],
+					"border-color" => $attr['icon_border_color'],
+				),
+				".uagb-icon-list-repeater:hover .uagb-icon-list__source-wrap" => array (
+					"background" => $attr['icon_bg_hover_color'],
+					"border-color" => $attr['icon_border_hover_color']
+				),
+			);
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => '',
+				'mobile'  => '',
 			);
 
 			return $generated_css;

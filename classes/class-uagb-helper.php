@@ -437,7 +437,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/icon-list':
                     $css += UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
                      UAGB_Block_Helper::blocks_icon_list_gfont( $blockattr );
-                    break;
+					break;
+					
+				case 'uagb/icon-list-child':
+					$css += UAGB_Block_Helper::get_icon_list_child_css( $blockattr, $block_id );
+					break;
 
                 case 'uagb/post-grid':
                     $css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
@@ -1311,11 +1315,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function create_specific_stylesheet() {
 
-			$saved_blocks        = self::get_admin_settings_option( '_uagb_blocks' );
-			$combined            = array();
-			$is_already_post     = false;
-			$is_already_timeline = false;
-			$is_already_column   = false;
+			$saved_blocks         = self::get_admin_settings_option( '_uagb_blocks' );
+			$combined             = array();
+			$is_already_post      = false;
+			$is_already_timeline  = false;
+			$is_already_column    = false;
 			$is_already_icon_list = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
@@ -1346,14 +1350,14 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 						break;
 
-						case 'icon-list':
-						case 'icon-list-child':
-							if ( ! $is_already_icon_list ) {
-								$combined[]        = 'icon-list';
-								$combined[]        = 'icon-list-child';
-								$is_already_icon_list = true;
-							}
-							break;
+					case 'icon-list':
+					case 'icon-list-child':
+						if ( ! $is_already_icon_list ) {
+							$combined[]           = 'icon-list';
+							$combined[]           = 'icon-list-child';
+							$is_already_icon_list = true;
+						}
+						break;
 
 					case 'post-timeline':
 					case 'content-timeline':
