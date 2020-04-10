@@ -15,10 +15,14 @@ export default function save( props ) {
 	const { attributes, className } = props
 
 	const {
-		block_id,
 		label,
 		image_icon,
-		icon
+		icon,
+		image,
+		block_id,
+		link,
+		target,
+		disableLink,
 	} = attributes
 
 
@@ -35,7 +39,7 @@ export default function save( props ) {
 		}
 	}
 
-	let target = ( target ) ? "_blank" : "_self"
+	let target_val = ( target ) ? "_blank" : "_self"
 	let link_url = ( !disableLink ) ? link : "/"
 
 	if ( disableLink ) {
@@ -50,7 +54,7 @@ export default function save( props ) {
 			>
 				<div className="uagb-icon-list__content-wrap">
 					<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-					{ ! hideLabel && "" != label &&
+					{ "" != label &&
 						<div className="uagb-icon-list__label-wrap">
 							<RichText.Content
 								tagName="span"
@@ -71,14 +75,13 @@ export default function save( props ) {
 					className,
 					`uagb-block-${ block_id }`
 				) }
-				key={ index }
-				target={ target }
+				target={ target_val }
 				rel="noopener noreferrer"
 				href={ link_url }
 			>
 				<div className="uagb-icon-list__content-wrap">
 					<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-					{ ! hideLabel && "" != label &&
+					{ "" != label &&
 						<div className="uagb-icon-list__label-wrap">
 							<RichText.Content
 								tagName="span"

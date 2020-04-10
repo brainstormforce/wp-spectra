@@ -246,9 +246,9 @@ class UAGBIconListChild extends Component {
 					>
 						<div className="uagb-icon-list__content-wrap">
 							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-							{ ! hideLabel && "" != label &&
+							{ "" != label &&
 								<div className="uagb-icon-list__label-wrap">
-									<RichText.Content
+									<RichText
 										tagName="div"
 										placeholder={ __( "Label Name" ) }
 										value={ label }
@@ -272,16 +272,15 @@ class UAGBIconListChild extends Component {
 							className,
 							`uagb-block-${ this.props.clientId }`
 						) }
-						key={ index }
 						target={ target }
 						rel="noopener noreferrer"
 						href={ link_url }
 					>
 						<div className="uagb-icon-list__content-wrap">
 							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-							{ ! hideLabel && "" != label &&
+							{ "" != label &&
 								<div className="uagb-icon-list__label-wrap">
-									<RichText.Content
+									<RichText
 										tagName="div"
 										placeholder={ __( "Label Name" ) }
 										value={ label }
