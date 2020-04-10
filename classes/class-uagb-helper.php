@@ -1316,6 +1316,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$is_already_post     = false;
 			$is_already_timeline = false;
 			$is_already_column   = false;
+			$is_already_icon_list = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
@@ -1344,6 +1345,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$is_already_column = true;
 						}
 						break;
+
+						case 'icon-list':
+						case 'icon-list-child':
+							if ( ! $is_already_icon_list ) {
+								$combined[]        = 'icon-list';
+								$combined[]        = 'icon-list-child';
+								$is_already_icon_list = true;
+							}
+							break;
 
 					case 'post-timeline':
 					case 'content-timeline':

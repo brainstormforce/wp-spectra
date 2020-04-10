@@ -78,8 +78,9 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 
 								$addon = str_replace( 'uagb/', '', $addon );
 
-								if ( 'column' === $addon ) {
-									continue; }
+								if ( 'column' === $addon || 'icon-list-child' == $addon ) {
+									continue;
+								}
 
 								$title_url     = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? 'href="' . esc_url( $info['title_url'] ) . '"' : '';
 								$anchor_target = ( isset( $info['title_url'] ) && ! empty( $info['title_url'] ) ) ? "target='_blank' rel='noopener'" : '';
