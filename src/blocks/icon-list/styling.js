@@ -9,9 +9,7 @@ function styling( props ) {
 
 	const {
 		align,
-		icon_count,
 		classMigrate,
-		icons,
 		gap,
 		inner_gap,
 		icon_layout,
@@ -25,12 +23,10 @@ function styling( props ) {
 		fontSizeTablet,
 		fontFamily,
 		fontWeight,
-		fontSubset,
 		lineHeightType,
 		lineHeight,
 		lineHeightTablet,
 		lineHeightMobile,
-		loadGoogleFonts,
 		stack,
 		border,
 		bgSize,
@@ -55,7 +51,7 @@ function styling( props ) {
 			"margin-bottom" : generateCSSUnit( gap, "px" )
 		},
 		".uagb-icon-list__layout-vertical .uagb-icon-list__wrap" : {
-			 "flex-direction": "column"
+			"flex-direction": "column"
 		},
 		".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child" : {
 			"margin-bottom" : 0
@@ -188,6 +184,23 @@ function styling( props ) {
 		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
 			"margin-right" : generateCSSUnit( inner_gap, "px" )
 		}
+	}
+
+	selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = {
+		"font-size" : generateCSSUnit( fontSize, fontSizeType ),
+		"font-family": fontFamily,
+		"font-weight": fontWeight,
+		"line-height": generateCSSUnit( lineHeight, lineHeightType ),
+	}
+
+	mobile_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = {
+		"font-size" : generateCSSUnit( fontSizeMobile, fontSizeType ),
+		"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
+	}
+
+	tablet_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = {
+		"font-size" : generateCSSUnit( fontSizeTablet, fontSizeType ),
+		"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
 	}
 
 	var styling_css = ""
