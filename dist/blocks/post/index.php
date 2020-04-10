@@ -236,6 +236,9 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
 		<?php
+		$query->max_num_pages = 3;
+		$query->query['posts_per_page'] = 3;
+		$query->query_vars['posts_per_page'] = 3;
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			// Filter to modify the attributes based on content requirement.
@@ -252,12 +255,13 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 function uagb_render_pagination( $query ) {
 
 	$base = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
+	// var_dump($query);
 	echo paginate_links(
 			array(
 				'base'    => $base . '%_%',
-				'format'  => $format,
-				'current' => $current_page,
-				'total'   => $total_pages,
+				'format'  => '',
+				'current' => get_query_var( 'paged' ),
+				'total'   => 3,
 				'type'    => 'list',
 			)
 		);
