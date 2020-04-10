@@ -216,6 +216,88 @@ class UAGBIconListChild extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
+		const renderHtml = () => {
+
+			let url = ""
+			let image_icon_html = ""
+
+			if ( image_icon == "icon" ) {
+				if ( icon ) {
+					image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon) }</span>
+				}
+			} else {
+				if ( image ) {
+					image_icon_html = <img className="uagb-icon-list__source-image" src={image.url} />
+				}
+			}
+
+			let target = ( target ) ? "_blank" : "_self"
+			let link_url = ( !disableLink ) ? link : "/"
+
+			if ( disableLink ) {
+				return (
+					<div
+						className={ classnames(
+							`uagb-icon-list-repeater`,
+							"uagb-icon-list__wrapper",
+							className,
+							`uagb-block-${ this.props.clientId }`
+						) }
+					>
+						<div className="uagb-icon-list__content-wrap">
+							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+							{ ! hideLabel && "" != label &&
+								<div className="uagb-icon-list__label-wrap">
+									<RichText.Content
+										tagName="div"
+										placeholder={ __( "Label Name" ) }
+										value={ label }
+										onChange={ ( value ) => setAttributes( { label: value } ) }
+										className='uagb-icon-list__label'
+										placeholder={ __( "Description" ) }
+										multiline={false}
+									/>
+								</div>
+							}
+						</div>
+					</div>
+				)
+			} else {
+
+				return (
+					<a
+						className={ classnames(
+							`uagb-icon-list-repeater`,
+							"uagb-icon-list__wrapper",
+							className,
+							`uagb-block-${ this.props.clientId }`
+						) }
+						key={ index }
+						target={ target }
+						rel="noopener noreferrer"
+						href={ link_url }
+					>
+						<div className="uagb-icon-list__content-wrap">
+							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+							{ ! hideLabel && "" != label &&
+								<div className="uagb-icon-list__label-wrap">
+									<RichText.Content
+										tagName="div"
+										placeholder={ __( "Label Name" ) }
+										value={ label }
+										onChange={ ( value ) => setAttributes( { label: value } ) }
+										className='uagb-icon-list__label'
+										placeholder={ __( "Description" ) }
+										multiline={false}
+									/>
+								</div>
+							}
+						</div>
+					</a>
+				)
+			}
+		}
+
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -293,33 +375,7 @@ class UAGBIconListChild extends Component {
 						{ iconColorControls() }
 					</PanelBody>
 				</InspectorControls>
-				<div
-					className={ classnames(
-						`uagb-icon-list-repeater`,
-						"uagb-icon-list__wrapper",
-						className,
-						`uagb-block-${ this.props.clientId }`
-					) }
-				>
-					<div className="uagb-icon-list__content-wrap">
-						<span className="uagb-icon-list__source-wrap">
-							<span className="uagb-icon-list__source-icon">{ renderSVG(icon) }</span>
-						</span>
-						{ "" != label &&
-							<div className="uagb-icon-list__label-wrap">
-								<RichText
-									tagName="div"
-									placeholder={ __( "Label Name" ) }
-									value={ label }
-									onChange={ ( value ) => setAttributes( { label: value } ) }
-									className='uagb-icon-list__label'
-									placeholder={ __( "Description" ) }
-									multiline={false}
-								/>
-							</div>
-						}
-					</div>
-				</div>
+				{renderHtml()}
 			</Fragment>
 		)
 	}

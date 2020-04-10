@@ -143,19 +143,6 @@ class UAGBIconList extends Component {
 			return times( icon_block, n => [ "uagb/icon-list-child", icons[n] ] )
 		} )
 
-		// let url = ""
-		// let image_icon_html = ""
-
-		// if ( icon.image_icon == "icon" ) {
-		// 	if ( icon.icon ) {
-		// 		image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
-		// 	}
-		// } else {
-		// 	if ( icon.image ) {
-		// 		image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
-		// 	}
-		// }
-
 		return (
 			<Fragment>
 				<BlockControls>
@@ -373,73 +360,6 @@ class UAGBIconList extends Component {
 				{googleFonts}
 			</Fragment>
 		)
-
-
-		// let url = ""
-		// let image_icon_html = ""
-
-		// if ( icon.image_icon == "icon" ) {
-		// 	if ( icon.icon ) {
-		// 		image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
-		// 	}
-		// } else {
-		// 	if ( icon.image ) {
-		// 		image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
-		// 	}
-		// }
-
-		// let target = ( icon.target ) ? "_blank" : "_self"
-		// let link_url = ( !icon.disableLink ) ? icon.link : "/"
-
-		// if ( icon.disableLink ) {
-		// 	return (
-		// 		<div
-		// 			className={ classnames(
-		// 				`uagb-icon-list-repeater-${index}`,
-		// 				"uagb-icon-list__wrapper"
-		// 			) }
-		// 			key={ index }
-		// 		>
-		// 			<div className="uagb-icon-list__content-wrap">
-		// 				<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-		// 				{ ! hideLabel && "" != icons[ index ].label &&
-		// 					<div className="uagb-icon-list__label-wrap">
-		// 						<RichText.Content
-		// 							tagName="span"
-		// 							value={ icons[ index ].label }
-		// 							className='uagb-icon-list__label' />
-		// 					</div>
-		// 				}
-		// 			</div>
-		// 		</div>
-		// 	)
-		// } else {
-
-		// 	return (
-		// 		<a
-		// 			className={ classnames(
-		// 				`uagb-icon-list-repeater-${index}`,
-		// 				"uagb-icon-list__wrapper"
-		// 			) }
-		// 			key={ index }
-		// 			target={ target }
-		// 			rel="noopener noreferrer"
-		// 			href={ link_url }
-		// 		>
-		// 			<div className="uagb-icon-list__content-wrap">
-		// 				<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-		// 				{ ! hideLabel && "" != icons[ index ].label &&
-		// 					<div className="uagb-icon-list__label-wrap">
-		// 						<RichText.Content
-		// 							tagName="span"
-		// 							value={ icons[ index ].label }
-		// 							className='uagb-icon-list__label' />
-		// 					</div>
-		// 				}
-		// 			</div>
-		// 		</a>
-		// 	)
-		// }
 	}
 }
 
