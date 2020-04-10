@@ -185,6 +185,8 @@ class UAGBPostGrid extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
+			postPagination,
+			postsPerPage,
 		} = attributes
 
 		const hoverSettings = (
@@ -438,6 +440,21 @@ class UAGBPostGrid extends Component {
 						checked={ equalHeight }
 						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
+					<ToggleControl
+						label={ __( "Post Pagination" ) }
+						checked={ postPagination }
+						onChange={ ( value ) => setAttributes( { postPagination: ! postPagination } ) }
+					/>
+					{ postPagination == true &&
+						<RangeControl
+							label={ __( "Posts per Page" ) }
+							value={ postsPerPage }
+							onChange={ ( value ) => setAttributes( { postsPerPage: value } ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+                	}
+					
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl

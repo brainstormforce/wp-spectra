@@ -244,23 +244,25 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
-			uagb_render_pagination( $query );
+			uagb_render_pagination( $query, $attributes );
 			wp_reset_postdata();
 		?>
 		</div>
 	</div>
 	<?php
 }
-function uagb_render_pagination( $query ) {
-	// var_dump($query	);
+function uagb_render_pagination( $query , $attributes ) {
+	// var_dump($query);
 	$base = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
 	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 0;
+	$max = $query->found_posts;
+	$total_pages = ceil( $max / $attributes['postsPerPage'] );
 	echo paginate_links(
 			array(
 				'base'    => $base . '%_%',
 				'format'  => '&paged=%#%',
 				'current' => $paged,
-				'total'   => 3,
+				'total'   => $total_pages,
 				'type'    => 'list',
 			)
 		);
@@ -649,6 +651,14 @@ function uagb_register_blocks() {
 				'equalHeight'             => array(
 					'type'    => 'boolean',
 					'default' => true,
+				),
+				'postPagination'             => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
+				'postsPerPage'             => array(
+					'type'    => 'number',
+					'default' => 5,
 				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
