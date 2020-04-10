@@ -143,18 +143,18 @@ class UAGBIconList extends Component {
 			return times( icon_block, n => [ "uagb/icon-list-child", icons[n] ] )
 		} )
 
-		let url = ""
-		let image_icon_html = ""
+		// let url = ""
+		// let image_icon_html = ""
 
-		if ( icon.image_icon == "icon" ) {
-			if ( icon.icon ) {
-				image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
-			}
-		} else {
-			if ( icon.image ) {
-				image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
-			}
-		}
+		// if ( icon.image_icon == "icon" ) {
+		// 	if ( icon.icon ) {
+		// 		image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
+		// 	}
+		// } else {
+		// 	if ( icon.image ) {
+		// 		image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
+		// 	}
+		// }
 
 		return (
 			<Fragment>
