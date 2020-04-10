@@ -188,7 +188,7 @@ class UAGBPostGrid extends Component {
 			postPagination,
 			postsPerPage,
 		} = attributes
-
+console.log(latestPosts);
 		const hoverSettings = (
 			<Fragment>
 				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>

@@ -244,7 +244,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
-			uagb_render_pagination( $query, $attributes );
+			echo uagb_render_pagination( $query, $attributes );
 			wp_reset_postdata();
 		?>
 		</div>
@@ -252,18 +252,19 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 	<?php
 }
 function uagb_render_pagination( $query , $attributes ) {
-	// var_dump($query);
+	
 	$base = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
 	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 0;
 	$max = $query->found_posts;
 	$total_pages = ceil( $max / $attributes['postsPerPage'] );
-	echo paginate_links(
+	return paginate_links(
 			array(
 				'base'    => $base . '%_%',
 				'format'  => '&paged=%#%',
 				'current' => $paged,
 				'total'   => $total_pages,
 				'type'    => 'list',
+				'mid_size' => 2,
 			)
 		);
 	
