@@ -85,6 +85,7 @@ export default function save( props ) {
 						<div className="uagb-icon-list__label-wrap">
 							<RichText.Content
 								tagName="span"
+								value={ label }
 								className='uagb-icon-list__label' />
 						</div>
 					}
