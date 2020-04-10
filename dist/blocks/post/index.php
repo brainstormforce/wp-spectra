@@ -42,9 +42,8 @@ function uagb_post_carousel_callback( $attributes ) {
 function uagb_post_grid_callback( $attributes ) {
 	$query = UAGB_Helper::get_query( $attributes, 'grid' );
 	global $uagb_post_settings;
-
 	$uagb_post_settings['grid'][ $attributes['block_id'] ] = $attributes;
-
+	
 	ob_start();
 
 	uagb_get_post_html( $attributes, $query, 'grid' );
@@ -235,9 +234,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 	<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
 
 		<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
-<?php $query->query['posts_per_page'] = 5;
-$query->query_vars['posts_per_page'] = 5;
-var_dump($query); ?>
+
 		<?php
 		while ( $query->have_posts() ) {
 			$query->the_post();
@@ -245,34 +242,26 @@ var_dump($query); ?>
 			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
-		uagb_render_pagination($query);
+			uagb_render_pagination( $query );
 			wp_reset_postdata();
 		?>
 		</div>
 	</div>
 	<?php
 }
-function uagb_render_pagination($query) {
-	// global $wp_query;
-    $total = $wp_query->max_num_pages;
-	// Only paginate if we have more than one page
-	// var_dump($query);
-   
-         // Get the current page
-         if ( !$current_page = get_query_var('paged') )
-              $current_page = 1;
-         // Structure of “format” depends on whether we’re using pretty permalinks
-        $permalinks = get_option('permalink_structure');
-        $format = empty( $permalinks ) ? '&page=%#%' : 'page/%#%/';
-        echo paginate_links(array(
-              'base' => get_pagenum_link(1) . '%_%',
-              'format' => $format,
-              'current' => $current_page,
-              'total' => 2,
-              'mid_size' => 2,
-              'type' => 'list'
-        ));
-    
+function uagb_render_pagination( $query ) {
+
+	$base = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
+	echo paginate_links(
+			array(
+				'base'    => $base . '%_%',
+				'format'  => $format,
+				'current' => $current_page,
+				'total'   => $total_pages,
+				'type'    => 'list',
+			)
+		);
+	
 }
 /**
  * Registers the `core/latest-posts` block on server.
