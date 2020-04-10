@@ -177,61 +177,6 @@ function styling( props ) {
 		}
 	}
 
-	icons.map( ( icon, index ) => {
-
-		if ( icon_count <= index ) {
-			return
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon"] = {
-			"color" : icon.icon_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-icon svg"] = {
-			"fill" : icon.icon_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon"] = {
-			"color" : icon.icon_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-icon svg"] = {
-			"fill" : icon.icon_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"color" : icon.label_color,
-			"font-size" : generateCSSUnit( fontSize, fontSizeType ),
-			"font-family": fontFamily,
-			"font-weight": fontWeight,
-			"line-height": generateCSSUnit( lineHeight, lineHeightType ),
-		}
-
-		mobile_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : generateCSSUnit( fontSizeMobile, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightMobile, lineHeightType ),
-		}
-
-		tablet_selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__label"] = {
-			"font-size" : generateCSSUnit( fontSizeTablet, fontSizeType ),
-			"line-height": generateCSSUnit( lineHeightTablet, lineHeightType ),
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__label"] = {
-			"color" : icon.label_hover_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + " .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_color,
-			"border-color" : icon.icon_border_color
-		}
-
-		selectors[" .uagb-icon-list-repeater-" + index + ":hover .uagb-icon-list__source-wrap"] = {
-			"background" : icon.icon_bg_hover_color,
-			"border-color" : icon.icon_border_hover_color
-		}
-	})
-
 	if ( "right" == align ) {
 		selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = {
 			"margin-left" : generateCSSUnit( inner_gap, "px" )

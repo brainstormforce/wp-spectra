@@ -4,18 +4,10 @@
 
 // Import classes
 import classnames from "classnames"
-import times from "lodash/times"
-import map from "lodash/map"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-
-// Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
-
-// Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
 
@@ -25,8 +17,6 @@ const {
 } = wp.element
 
 const {
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
 	MediaUpload,
 	RichText,
@@ -36,13 +26,10 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl,
 	Button,
 	TextControl,
 	ToggleControl,
 	TabPanel,
-	ButtonGroup,
-	Dashicon
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -81,8 +68,6 @@ class UAGBIconListChild extends Component {
 			target,
 			disableLink,
 		} = attributes
-
-		console.log(attributes);
 
 		const iconColorControls = () => {
 
@@ -310,8 +295,10 @@ class UAGBIconListChild extends Component {
 				</InspectorControls>
 				<div
 					className={ classnames(
-						`uagb-icon-list-repeater-1`,
-						"uagb-icon-list__wrapper"
+						`uagb-icon-list-repeater`,
+						"uagb-icon-list__wrapper",
+						className,
+						`uagb-block-${ this.props.clientId }`
 					) }
 				>
 					<div className="uagb-icon-list__content-wrap">
