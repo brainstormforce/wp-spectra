@@ -6,6 +6,7 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
+import memoize from "memize"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
@@ -30,6 +31,7 @@ const {
 	InspectorControls,
 	MediaUpload,
 	RichText,
+	InnerBlocks,
 	ColorPalette
 } = wp.blockEditor
 
@@ -46,6 +48,11 @@ const {
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
+const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
+
+const getIconTemplate = memoize( ( icon_block ) => {
+	return times( icon_block, n => [ "uagb/icon-list-child", { id: n + 1 } ] )
+} )
 
 class UAGBIconList extends Component {
 
@@ -426,41 +433,13 @@ class UAGBIconList extends Component {
 							label={ __( "Number of Icons" ) }
 							value={ icon_count }
 							onChange={ newCount => {
-
-								let cloneIcons = [ ...icons ]
-
-								if ( cloneIcons.length < newCount ) {
-
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-
-									{ times( incAmount, n => {
-
-										cloneIcons.push( {
-											"label": "Label #" + ( cloneIcons.length + 1 ),
-											"image_icon": cloneIcons[ 0 ].image_icon,
-											"icon": cloneIcons[ 0 ].icon,
-											"image": cloneIcons[ 0 ].image,
-											"icon_color": cloneIcons[ 0 ].icon_color,
-											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
-											"icon_bg_color": cloneIcons[ 0 ].icon_bg_color,
-											"icon_bg_hover_color": cloneIcons[ 0 ].icon_bg_hover_color,
-											"icon_border_color": cloneIcons[ 0 ].icon_border_color,
-											"icon_border_hover_color": cloneIcons[ 0 ].icon_border_hover_color,
-											"link": cloneIcons[ 0 ].link,
-											"target": cloneIcons[ 0 ].target,
-											"disableLink" : cloneIcons[ 0 ].disableLink,
-										} )
-									} ) }
-
-									setAttributes( { icons: cloneIcons } )
-								}
 								setAttributes( { icon_count: newCount } )
 							} }
 							min={ 1 }
 							max={ 12 }
 						/>
 					</PanelBody>
-					{ times( icon_count, n => iconControls( n ) ) }
+					{/* { times( icon_count, n => iconControls( n ) ) } */}
 					<PanelBody title={ __( "General" ) } initialOpen={ false }>
 						<SelectControl
 							label={ __( "Layout" ) }
@@ -646,61 +625,10 @@ class UAGBIconList extends Component {
 					`uagb-block-${ this.props.clientId }`
 				) }>
 					<div className="uagb-icon-list__wrap">
-						{
-							icons.map( ( icon, index ) => {
-
-								if ( icon_count <= index ) {
-									return
-								}
-
-								let url = ""
-
-								let image_icon_html = ""
-
-								if ( icon.image_icon == "icon" ) {
-									if ( icon.icon ) {
-										image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
-									}
-								} else {
-									if ( icon.image ) {
-										image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
-									}
-								}
-
-								let target = ( icon.target ) ? "_blank" : "_self"
-
-								return (
-									<div
-										className={ classnames(
-											`uagb-icon-list-repeater-${index}`,
-											"uagb-icon-list__wrapper"
-										) }
-										key={ index }
-										target={ target }
-										rel="noopener noreferrer"
-									>
-										<div className="uagb-icon-list__content-wrap">
-											<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-											{ ! hideLabel &&
-												<div className="uagb-icon-list__label-wrap">
-													<RichText
-														tagName="div"
-														placeholder={ __( "Label Name" ) }
-														value={ icons[ index ].label }
-														className='uagb-icon-list__label'
-														onChange={ value => {
-															this.saveIcons( { label: value }, index )
-														} }
-														placeholder={ __( "Description" ) }
-														multiline={false}
-													/>
-												</div>
-											}
-										</div>
-									</div>
-								)
-							})
-						}
+						<InnerBlocks
+							template={ getIconTemplate( icon_count ) }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
 				{googleFonts}
