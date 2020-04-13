@@ -922,6 +922,23 @@ export default withSelect( ( select, props ) => {
 	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
+	var pagination_markup = "test";
+	// console.log(pagination_markup)
+	
+	$.ajax({
+		url: uagb_blocks_info.ajax_url,
+		data: {
+			action: "uagb_post_pagination",
+			attributes : props.attributes,
+		},
+		dataType: "json",
+		type: "POST",
+		success: function( data ) {
+			pagination_markup = data.data;
+			console.log(pagination_markup) // this gives the data we want.
+		}
+	});
+	console.log(pagination_markup) // this prints test
 
 	if ( "undefined" != typeof currentTax ) {
 
@@ -943,11 +960,11 @@ export default withSelect( ( select, props ) => {
 	}
 
 	latestPostsQuery[rest_base] = categories
-
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
+		paginationMarkup : pagination_markup 
 	}
 
 } )( UAGBPostGrid )

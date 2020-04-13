@@ -13,6 +13,26 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $uagb_post_settings;
 
 /**
+ * Sends the Post pagination markup to edit.js 
+ * @since x.x.x
+ */
+function uagb_post_pagination() {
+
+	if ( isset( $_POST['attributes'] ) ) {
+		
+		$query = UAGB_Helper::get_query( $_POST['attributes'], 'grid' );
+
+		$pagination_markup = uagb_render_pagination( $query, $_POST['attributes'] );
+
+		wp_send_json_success( $pagination_markup );
+	}
+
+	wp_send_json_error(' No attributes recieved' );
+	
+}
+add_action( 'wp_ajax_uagb_post_pagination', 'uagb_post_pagination' );
+
+/**
  * Renders the post carousel block on server.
  *
  * @param array $attributes Array of block attributes.

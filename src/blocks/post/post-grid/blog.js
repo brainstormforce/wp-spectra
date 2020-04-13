@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList, paginationMarkup } = this.props
 
 		const {
 			columns,
@@ -63,6 +63,9 @@ class Blog extends React.Component {
 							</div>
 						</article>
 					) }
+				</div>
+				<div className="uagb-post-pagination-wrap">
+					{ paginationMarkup }
 				</div>
 			</div>
 		)
