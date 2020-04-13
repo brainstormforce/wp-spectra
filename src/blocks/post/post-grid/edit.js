@@ -915,6 +915,7 @@ class UAGBPostGrid extends Component {
 export default withSelect( ( select, props ) => {
 
 	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -922,8 +923,6 @@ export default withSelect( ( select, props ) => {
 	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
-	var pagination_markup = "test";
-	// console.log(pagination_markup)
 	
 	$.ajax({
 		url: uagb_blocks_info.ajax_url,
@@ -934,11 +933,10 @@ export default withSelect( ( select, props ) => {
 		dataType: "json",
 		type: "POST",
 		success: function( data ) {
-			pagination_markup = data.data;
-			console.log(pagination_markup) // this gives the data we want.
+			
+			setAttributes( { paginationMarkup: data.data } ) 
 		}
 	});
-	console.log(pagination_markup) // this prints test
 
 	if ( "undefined" != typeof currentTax ) {
 
@@ -963,8 +961,7 @@ export default withSelect( ( select, props ) => {
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [],
-		paginationMarkup : pagination_markup 
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
 	}
 
 } )( UAGBPostGrid )

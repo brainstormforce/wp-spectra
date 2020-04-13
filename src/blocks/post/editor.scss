@@ -30,3 +30,32 @@
 	transform: translate(-50%,-50%);
 	min-height: 100%;
 }
+.uagb-post-pagination-wrap {
+	padding: 40px 0;
+   a {	   
+		outline: none;
+		color: #3a3a3a;
+		background: #efefef;
+		padding: 5px 10px;
+		margin: 0 0 5px;
+   } 
+   li {
+
+	   display: inline-block;
+
+	   span.page-numbers.current {
+
+			color: #3a3a3a;
+			background: #0274be;
+			display: inline-block;
+			padding: 5px 10px;
+			margin: 0 0 5px;
+			text-decoration: none;
+
+	   }
+   }
+   ul {
+
+	   list-style: none;
+   }
+}

@@ -709,6 +709,9 @@ function uagb_register_blocks() {
 				'paginationColor'               => array(
 					'type' => 'string',
 				),
+				'paginationMarkup'               => array(
+					'type' => 'string',
+				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
 		)

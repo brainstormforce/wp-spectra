@@ -11,7 +11,7 @@ class Blog extends React.Component {
 
 	render() {
 
-		const { attributes, className, latestPosts, block_id, categoriesList, paginationMarkup } = this.props
+		const { attributes, className, latestPosts, block_id, categoriesList } = this.props
 
 		const {
 			columns,
@@ -19,7 +19,9 @@ class Blog extends React.Component {
 			mcolumns,
 			imgPosition,
 			postsToShow,
-			equalHeight
+			equalHeight,
+			paginationMarkup,
+			postPagination
 		} = attributes
 
 		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
@@ -64,9 +66,10 @@ class Blog extends React.Component {
 						</article>
 					) }
 				</div>
-				<div className="uagb-post-pagination-wrap">
-					{ paginationMarkup }
-				</div>
+				{ postPagination == true &&
+					<div dangerouslySetInnerHTML={ { __html: paginationMarkup } } className="uagb-post-pagination-wrap">
+					</div>
+				}
 			</div>
 		)
 	}

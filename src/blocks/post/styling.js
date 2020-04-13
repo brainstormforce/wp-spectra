@@ -89,7 +89,11 @@ function styling( props ) {
 		btnHPadding,
 		linkBox,
 		arrowColor,
-		arrowSize
+		arrowSize,
+		paginationBgActiveColor,
+		paginationActiveColor,
+		paginationBgColor,
+		paginationColor
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -185,6 +189,14 @@ function styling( props ) {
 		" .uagb-post__image:before" : {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
+		},
+		" .uagb-post-pagination-wrap .page-numbers.current" : {
+			"background-color" :  paginationBgActiveColor,
+			"color" :  paginationActiveColor,
+		},
+		" .uagb-post-pagination-wrap a" : {
+			"background-color" :  paginationBgColor,
+			"color" :  paginationColor,
 		}
 	}
 
@@ -197,7 +209,7 @@ function styling( props ) {
 		"height": generateCSSUnit( arrowSize, "px" ),
 		"width": generateCSSUnit( arrowSize, "px" ),
 	}
-
+	
 	mobile_selectors = {
 		" .uagb-post__text .uagb-post__title": {
 			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
