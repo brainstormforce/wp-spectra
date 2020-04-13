@@ -243,16 +243,16 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
-			if ( $attributes['postPagination'] ) {
-
-				echo '<div class="uagb-post-pagination-wrap">';
-				echo uagb_render_pagination( $query, $attributes );
-				echo '</div>';
-			}
-
-			wp_reset_postdata();
+		
+		wp_reset_postdata();
 		?>
 		</div>
+		<?php if ( $attributes['postPagination'] ) {
+
+			echo '<div class="uagb-post-pagination-wrap">';
+			echo uagb_render_pagination( $query, $attributes );
+			echo '</div>';
+		} ?>
 	</div>
 	<?php
 }
