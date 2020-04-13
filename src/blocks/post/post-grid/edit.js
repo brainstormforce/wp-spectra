@@ -185,7 +185,11 @@ class UAGBPostGrid extends Component {
 			postType,
 			taxonomyType,
 			postPagination,
-			pageLimit
+			pageLimit,
+			paginationColor,
+			paginationBgColor,
+			paginationActiveColor,
+			paginationBgActiveColor
 		} = attributes
 
 		const hoverSettings = (
@@ -776,6 +780,30 @@ class UAGBPostGrid extends Component {
 							/>
 						</Fragment>
 					}
+					{ postPagination == true &&
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Pagination Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationColor: colorValue } ) }
+							/>
+							<p className="uagb-setting-label">{ __( "Pagination Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationBgColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationBgColor: colorValue } ) }
+							/>
+							<p className="uagb-setting-label">{ __( "Pagination Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationActiveColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationActiveColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
+							/>
+							<p className="uagb-setting-label">{ __( "Pagination Background Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgActiveColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationBgActiveColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationBgActiveColor: colorValue } ) }
+							/>
+						</Fragment>
+                	}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl

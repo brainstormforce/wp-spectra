@@ -2533,6 +2533,20 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
+			
+			// Pagination CSS
+			$pagination_css = array(
+				" .uagb-post-pagination-wrap .page-numbers.current" => array(
+					"background-color" =>  $attr['paginationBgActiveColor'],
+					"color" =>  $attr['paginationActiveColor'],
+				),
+				" .uagb-post-pagination-wrap a" => array(
+					"background-color" =>  $attr['paginationBgColor'],
+					"color" =>  $attr['paginationColor'],
+				),
+			);
+
+			$selectors = array_merge( (array) $pagination_css, $selectors );
 
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 

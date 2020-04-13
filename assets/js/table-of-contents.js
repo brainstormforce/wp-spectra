@@ -14,13 +14,15 @@
 		}
 
 		var parsedSlug = slug.toString().toLowerCase()
-			.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
-			.replace(/\s+/g, '-')                        // Replace spaces with -
-			.replace(/<[^<>]+>/g, '')                    // Remove tags
-			.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
-			.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
-			.replace(/^-+/, '')                          // Trim - from start of text
-			.replace(/-+$/, '');                         // Trim - from end of text
+			
+		.replace(/&(amp;)/g, '')
+		.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
+		.replace(/\s+/g, '-')                        // Replace spaces with -
+		.replace(/<[^<>]+>/g, '')                    // Remove tags
+		.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+		.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
+		.replace(/^-+/, '')                          // Trim - from start of text
+		.replace(/-+$/, '');                         // Trim - from end of text
 
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
@@ -115,27 +117,31 @@
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
 
-			var $headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
+			$headers = JSON.parse(attr.headerLinks);
+			
+			var allowed_h_tags = [];
+			
+			if ( undefined !== attr.mappingHeaders ) {
 
-			let allowed_h_tags = [];
-			attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
-			let allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
-			let all_header = ( '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : [];
+				attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
+				var allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+			}
+
+			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
 
 			if ( undefined !== $headers && 0 !== all_header.length ) {
 
 				$headers.forEach(function (element, i) {
 					all_header.each( function (){
-						
+
 						let header = $( this );
 						
-						let header_text = header.text().replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"');
-						let element_text = element.text.replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"');
+						let header_text = parseTocSlug(header.text().replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"'));
+						let element_text = parseTocSlug(element.text.replace(/[\u2018\u2019]/g, "'")
+						.replace(/[\u201C\u201D]/g, '"'));
 						if ( element_text.localeCompare(header_text) === 0 ) {
-							var anchor = parseTocSlug(header_text);
-							header.before('<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>');
+							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
 				});
