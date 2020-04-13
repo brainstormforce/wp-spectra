@@ -237,26 +237,41 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 
 		<?php
 		
-
 		while ( $query->have_posts() ) {
 			$query->the_post();
 			// Filter to modify the attributes based on content requirement.
 			$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 			include 'single.php';
 		}
-			echo uagb_render_pagination( $query, $attributes );
+			if ( $attributes['postPagination'] ) {
+
+				echo '<div class="uagb-post-pagination-wrap">';
+				echo uagb_render_pagination( $query, $attributes );
+				echo '</div>';
+			}
+
 			wp_reset_postdata();
 		?>
 		</div>
 	</div>
 	<?php
 }
+
+/**
+ * Renders the post post pagination on server.
+ *
+ * @param object $query WP_Query object.
+ * @param array  $attributes Array of block attributes.
+ * @since x.x.x
+ */
 function uagb_render_pagination( $query , $attributes ) {
 	
 	$base = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
-	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 0;
+	$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+	$total_posts = ( isset( $attributes['pageLimit'] ) ? $attributes['pageLimit'] : $query->found_posts );
 	$max = $query->found_posts;
-	$total_pages = ceil( $max / $attributes['postsPerPage'] );
+	$max = ( $total_posts <= $max ) ? $total_posts : $max;
+	$total_pages = ceil( $max / $attributes['postsToShow'] );
 	return paginate_links(
 			array(
 				'base'    => $base . '%_%',
@@ -264,7 +279,8 @@ function uagb_render_pagination( $query , $attributes ) {
 				'current' => $paged,
 				'total'   => $total_pages,
 				'type'    => 'list',
-				'mid_size' => 2,
+				'mid_size'     => 4, 
+				'end_size'     => 4,
 			)
 		);
 	
@@ -657,7 +673,7 @@ function uagb_register_blocks() {
 					'type'    => 'boolean',
 					'default' => false,
 				),
-				'postsPerPage'             => array(
+				'pageLimit'             => array(
 					'type'    => 'number',
 					'default' => 5,
 				),
@@ -1508,6 +1524,7 @@ function uagb_blocks_register_rest_fields() {
 				'schema'          => null,
 			)
 		);
+		
 	}
 }
 

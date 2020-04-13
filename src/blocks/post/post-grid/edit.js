@@ -21,7 +21,6 @@ const MAX_POSTS_COLUMNS = 8
 const {
 	PanelBody,
 	Placeholder,
-	QueryControls,
 	RangeControl,
 	SelectControl,
 	Spinner,
@@ -186,9 +185,9 @@ class UAGBPostGrid extends Component {
 			postType,
 			taxonomyType,
 			postPagination,
-			postsPerPage,
+			pageLimit
 		} = attributes
-console.log(latestPosts);
+
 		const hoverSettings = (
 			<Fragment>
 				<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaHColor }} ></span></span></p>
@@ -352,10 +351,12 @@ console.log(latestPosts);
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					<RangeControl
+							label={ __( "Posts per Page" ) }
+							value={ postsToShow }
+							onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+							min={ 0 }
+							max={ 100 }
 					/>
 					<SelectControl
 						label={ __( "Order By" ) }
@@ -447,9 +448,9 @@ console.log(latestPosts);
 					/>
 					{ postPagination == true &&
 						<RangeControl
-							label={ __( "Posts per Page" ) }
-							value={ postsPerPage }
-							onChange={ ( value ) => setAttributes( { postsPerPage: value } ) }
+							label={ __( "Page Limit" ) }
+							value={ pageLimit }
+							onChange={ ( value ) => setAttributes( { pageLimit: value } ) }
 							min={ 0 }
 							max={ 100 }
 						/>
