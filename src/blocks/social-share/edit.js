@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
+import memoize from "memize"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -21,6 +22,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
+	InnerBlocks,
 	PanelColorSettings,
 	MediaUpload,
 	ColorPalette
@@ -35,6 +37,8 @@ const {
 	TabPanel,
 	Dashicon
 } = wp.components
+
+const ALLOWED_BLOCKS = [ "uagb/social-share-child" ]
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -93,158 +97,7 @@ class UAGBSocialShare extends Component {
 			bgSizeTablet,
 		} = attributes
 
-		const socialControls = ( index ) => {
-			return (
-				<PanelBody key={index}
-					title={ __( "Social Share" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={ __( "Type" ) }
-						value={ socials[ index ].type }
-						options={ [
-							{ value: "facebook", label: __( "Facebook" ) },
-							{ value: "twitter", label: __( "Twitter" ) },
-							{ value: "google", label: __( "Google Plus" ) },
-							{ value: "pinterest", label: __( "Pinterest" ) },
-							{ value: "linkedin", label: __( "LinkedIn" ) },
-							{ value: "digg", label: __( "Digg" ) },
-							{ value: "blogger", label: __( "Blogger" ) },
-							{ value: "reddit", label: __( "Reddit" ) },
-							{ value: "stumbleupon", label: __( "StumbleUpon" ) },
-							{ value: "tumblr", label: __( "Tumblr" ) },
-							{ value: "myspace", label: __( "Myspace" ) },
-							{ value: "email", label: __( "Email" ) },
-						] }
-						onChange={ value => {
-							this.saveSocials( { type: value }, index )
-						} }
-					/>
-					<SelectControl
-						label={ __( "Image / Icon" ) }
-						value={ socials[ index ].image_icon }
-						options={ [
-							{ value: "icon", label: __( "Icon" ) },
-							{ value: "image", label: __( "Image" ) },
-						] }
-						onChange={ value => {
-							this.saveSocials( { image_icon: value }, index )
-						} }
-					/>
-					{ "icon" == socials[ index ].image_icon &&
-						<Fragment>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={svg_icons}
-								renderFunc={renderSVG}
-								theme="default"
-								value={socials[ index ].icon}
-								onChange={ value => {
-									this.saveSocials( { icon: value }, index )
-								} }
-								isMulti={false}
-								noSelectedPlaceholder= { __( "Select Icon" ) }
-							/>
-						</Fragment>
-					}
-					{ "image" == socials[ index ].image_icon &&
-						<Fragment>
-							<MediaUpload
-								title={ __( "Select Image" ) }
-								onSelect={ value => {
-									this.saveSocials( { image: value }, index )
-								} }
-								allowedTypes={ [ "image" ] }
-								value={ socials[ index ].image }
-								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
-										{ ! socials[ index ].image ? __( "Select Image" ) : __( "Replace image" ) }
-									</Button>
-								) }
-							/>
-							{ socials[ index ].image &&
-								<Button
-									className="uagb-rm-btn"
-									onClick={ value => {
-										this.saveSocials( { image: null }, index )
-									} }
-									isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-							<PanelColorSettings
-								title={ __( "Color Settings" ) }
-								colorSettings={ [
-									{
-										value: socials[ index ].icon_bg_color,
-										onChange:( value ) => this.saveSocials( { icon_bg_color: value }, index ),
-										label: __( "Background Color" ),
-									},
-									{
-										value: socials[ index ].icon_bg_hover_color,
-										onChange:( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ),
-										label: __( "Background Hover Color" ),
-									}
-								] }>
-							</PanelColorSettings>
-						</Fragment>
-					}
-					{ "icon" == socials[ index ].image_icon &&
-						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "normal",
-									title: __( "Normal" ),
-									className: "uagb-normal-tab",
-								},
-								{
-									name: "hover",
-									title: __( "Hover" ),
-									className: "uagb-focus-tab",
-								},
-							] }>
-							{
-								( tabName ) => {
-									let tabout_icon
-									if( "normal" === tabName.name ) {
-										tabout_icon = <Fragment>
-											<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_color }} ></span></span></p>
-											<ColorPalette
-												value={ socials[ index ].icon_color }
-												onChange={ ( value ) => this.saveSocials( { icon_color: value }, index ) }
-												allowReset
-											/>
-											<p className="uagb-setting-label">{ __( "Icon Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_color }} ></span></span></p>
-											<ColorPalette
-												value={ socials[ index ].icon_bg_color }
-												onChange={ ( value ) => this.saveSocials( { icon_bg_color: value }, index ) }
-												allowReset
-											/>
-										</Fragment>
-									}else {
-										tabout_icon = <Fragment>
-											<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_hover_color }} ></span></span></p>
-											<ColorPalette
-												value={ socials[ index ].icon_hover_color }
-												onChange={ ( value ) => this.saveSocials( { icon_hover_color: value }, index ) }
-												allowReset
-											/>
-											<p className="uagb-setting-label">{ __( "Icon Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: socials[ index ].icon_bg_hover_color }} ></span></span></p>
-											<ColorPalette
-												value={ socials[ index ].icon_bg_hover_color }
-												onChange={ ( value ) => this.saveSocials( { icon_bg_hover_color: value }, index ) }
-												allowReset
-											/>
-										</Fragment>
-									}
-									return <div>{ tabout_icon }</div>
-								}
-							}
-						</TabPanel>
-					}
-				</PanelBody>
-			)
-		}
+		
 
 		var element = document.getElementById( "uagb-style-social-share-" + this.props.clientId )
 
@@ -290,6 +143,10 @@ class UAGBSocialShare extends Component {
 				) ) }
 			</ButtonGroup>
 		)
+
+		const getSocialShareTemplate = memoize( ( icon_block, socials ) => {
+			return times( icon_block, n => [ "uagb/social-share-child", socials[n] ] )
+		} )
 
 		return (
 			<Fragment>
@@ -537,38 +394,10 @@ class UAGBSocialShare extends Component {
 				) }
 				>
 					<div className="uagb-social-share__wrap">
-						{
-							socials.map( ( social, index ) => {
-
-								if ( social_count <= index ) {
-									return
-								}
-
-								let image_icon_html = ""
-
-								if ( social.image_icon == "icon" ) {
-									if ( social.icon ) {
-										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
-									}
-								} else {
-									if ( social.image ) {
-										image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
-									}
-								}
-
-								return (
-									<div
-										className={ classnames(
-											`uagb-ss-repeater-${index}`,
-											"uagb-ss__wrapper"
-										) }
-										key={ index }
-									>
-										<a className="uagb-ss__link" href="javascript:void(0)" rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
-									</div>
-								)
-							})
-						}
+						<InnerBlocks
+							template={ getSocialShareTemplate( social_count, socials ) }
+							templateLock="all"
+							allowedBlocks={ ALLOWED_BLOCKS } />
 					</div>
 				</div>
 			</Fragment>

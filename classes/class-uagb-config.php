@@ -1592,6 +1592,23 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'         => 'none',
 						),
 					),
+					'uagb/social-share-child'         => array(
+						'slug'        => '',
+						'title'       => __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'is_child'    => true,
+						'attributes'  => array(
+							'type'                => 'facebook',
+							'image_icon'          => 'icon',
+							'icon'                => 'fab fa-facebook',
+							'image'               => '',
+							'icon_color'          => '#3a3a3a',
+							'icon_hover_color'    => '#3a3a3a',
+							'icon_bg_color'       => '',
+							'icon_bg_hover_color' => '',
+						),
+					),
 					'uagb/table-of-contents' => array(
 						'slug'        => '',
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
