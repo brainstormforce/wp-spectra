@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added Box Shadow option to Advanced columns and Section.
 * Improvement: Table of Contents - Added bullet point color option.
 * Improvement: Added a missing File Permission check for dynamic CSS File Generation.
+* Improvement: Post Grid - Added Post pagination option.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Table of Contents - Support Special character in heading.
 * Fix: Table of Contents - Not working for paragraph with html attributes inside.
