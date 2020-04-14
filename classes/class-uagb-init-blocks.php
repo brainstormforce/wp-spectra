@@ -80,7 +80,7 @@ class UAGB_Init_Blocks {
 	 */
 	public function cf7_shortcode() { 	// @codingStandardsIgnoreStart
 
-		check_ajax_referer( 'uabg_ajax_nonce', 'nonce' );
+		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 		
 		$id = intval($_POST['formId']);
 		// @codingStandardsIgnoreEnd
@@ -216,7 +216,7 @@ class UAGB_Init_Blocks {
 	 */
 	public function editor_assets() {
 
-		$uabg_ajax_nonce = wp_create_nonce('uabg_ajax_nonce');
+		$uagb_ajax_nonce = wp_create_nonce('uagb_ajax_nonce');
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
@@ -290,7 +290,7 @@ class UAGB_Init_Blocks {
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 				'post_types'        => UAGB_Helper::get_post_types(),
 				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
-				'uabg_ajax_nonce'	=> $uabg_ajax_nonce,
+				'uagb_ajax_nonce'	=> $uagb_ajax_nonce,
 			)
 		);
 	} // End function editor_assets().

@@ -929,7 +929,7 @@ export default withSelect( ( select, props ) => {
 		data: {
 			action: "uagb_post_pagination",
 			attributes : props.attributes,
-			nonce: uagb_blocks_info.uabg_ajax_nonce
+			nonce: uagb_blocks_info.uagb_ajax_nonce
 		},
 		dataType: "json",
 		type: "POST",

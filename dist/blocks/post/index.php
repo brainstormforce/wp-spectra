@@ -18,7 +18,7 @@ global $uagb_post_settings;
  */
 function uagb_post_pagination() {
 
-	check_ajax_referer( 'uabg_ajax_nonce', 'nonce' );
+	check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
 	
 	if ( isset( $_POST['attributes'] ) ) {
 		
