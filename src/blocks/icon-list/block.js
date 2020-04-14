@@ -12,7 +12,6 @@ import "./style.scss"
 import "./editor.scss"
 
 const { __ } = wp.i18n
-
 const {
 	registerBlockType
 } = wp.blocks

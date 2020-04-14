@@ -1,5 +1,5 @@
 /**
- * BLOCK: Column - Save Block
+ * BLOCK: Icon List - Child - Save Block
  */
 
 // Import block dependencies and components.
