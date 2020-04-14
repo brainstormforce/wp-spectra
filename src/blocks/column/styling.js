@@ -122,7 +122,7 @@ function styling( props ) {
 	}
 
 	if ( colWidth != "" && colWidth != 0 ) {
-		selectors[".editor-block-list__block"] = { "width" : colWidth + "%" }
+		selectors[".block-editor-block-list__block"] = { "width" : colWidth + "%" }
 	}
 
 	if ( colWidthTablet != "" && colWidthTablet != 0 ) {
