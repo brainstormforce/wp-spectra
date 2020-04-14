@@ -164,23 +164,24 @@ class UAGBSocialShareChild extends Component {
 
 			let image_icon_html = ""
 
-								if ( social.image_icon == "icon" ) {
-									if ( social.icon ) {
-										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
+								if ( image_icon == "icon" ) {
+									if ( icon ) {
+										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
 									}
 								} else {
-									if ( social.image ) {
-										image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
+									if ( image ) {
+										image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 									}
 								}
 
 								return (
 									<div
 										className={ classnames(
-											`uagb-ss-repeater-${index}`,
-											"uagb-ss__wrapper"
+											`uagb-ss-repeater`,
+											"uagb-ss__wrapper",
+											className,
+											`uagb-block-${ this.props.clientId }`
 										) }
-										key={ index }
 									>
 										<a className="uagb-ss__link" href="javascript:void(0)" rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 									</div>

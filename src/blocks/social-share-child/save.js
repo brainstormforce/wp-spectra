@@ -25,19 +25,19 @@ export default function save( props ) {
 
 	let url = ""
 
-	if( null != current_url ) {
-		url = links[social.type]
-	}
+	// if( null != current_url ) {
+	// 	url = links[social.type]
+	// }
 
 	let image_icon_html = ""
 
-	if ( social.image_icon == "icon" ) {
-		if ( social.icon ) {
-			image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(social.icon) }</span>
+	if ( image_icon == "icon" ) {
+		if ( icon ) {
+			image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
 		}
 	} else {
-		if ( social.image ) {
-			image_icon_html = <img className="uagb-ss__source-image" src={social.image.url} />
+		if ( image ) {
+			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
 
@@ -45,9 +45,10 @@ export default function save( props ) {
 		<div
 			className={ classnames(
 				`uagb-ss-repeater-${index}`,
-				"uagb-ss__wrapper"
+				"uagb-ss__wrapper",
+				className,
+				`uagb-block-${ block_id }`
 			) }
-			key={ index }
 		>
 			<a className="uagb-ss__link" data-href={url} rel ="noopener noreferrer"><span className="uagb-ss__source-wrap">{image_icon_html}</span></a>
 		</div>

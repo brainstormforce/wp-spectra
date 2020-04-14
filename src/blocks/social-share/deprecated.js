@@ -22,7 +22,7 @@ const deprecated =[
 				socials,
 				social_count,
 				social_layout,
-				current_url
+				// current_url
 			} = props.attributes
 
 			return (
@@ -42,9 +42,9 @@ const deprecated =[
 
 								let url = ""
 
-								if( null != current_url ) {
-									url = links[social.type] + encodeURI( current_url )
-								}
+								// if( null != current_url ) {
+								// 	url = links[social.type] + encodeURI( current_url )
+								// }
 
 								let image_icon_html = ""
 
@@ -89,7 +89,7 @@ const deprecated =[
 				socials,
 				social_count,
 				social_layout,
-				current_url
+				// current_url
 			} = props.attributes
 
 			return (
@@ -109,9 +109,9 @@ const deprecated =[
 
 								let url = ""
 
-								if( null != current_url ) {
-									url = links[social.type]
-								}
+								// if( null != current_url ) {
+								// 	url = links[social.type]
+								// }
 
 								let image_icon_html = ""
 
