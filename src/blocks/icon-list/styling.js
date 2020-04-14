@@ -86,14 +86,8 @@ function styling( props ) {
 		" .uagb-icon-list__label-wrap" : {
 			"text-align": align
 		},
-		" .uagb-icon-list__wrap" : {
-			"justify-content" : alignment,
-			"-webkit-box-pack": alignment,
-			"-ms-flex-pack": alignment,
-			"justify-content": alignment,
-			"-webkit-box-align": alignment,
-			"-ms-flex-align": alignment,
-			"align-items": alignment,
+		" .uagb-icon-list__wrap .block-editor-inner-blocks" : {
+			"text-align": align
 		},
 	}
 
@@ -170,6 +164,12 @@ function styling( props ) {
 			mobile_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = {
 				"margin-bottom" : 0
 			}
+		}
+
+		selectors[" .uagb-icon-list__wrap .block-editor-block-list__layout"] = {
+			"justify-content" : alignment,
+			"-webkit-box-pack": alignment,
+			"-ms-flex-pack": alignment,
 		}
 	}
 

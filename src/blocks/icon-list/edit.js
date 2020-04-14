@@ -170,7 +170,7 @@ class UAGBIconList extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left", "center", "right", "full" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
@@ -364,7 +364,7 @@ class UAGBIconList extends Component {
 							template={ getIconTemplate( icon_count, icons ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							__experimentalMoverDirection={ 'vertical' }
+							__experimentalMoverDirection={ icon_layout }
 						/>
 					</div>
 				</div>
