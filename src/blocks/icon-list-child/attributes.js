@@ -23,7 +23,7 @@ const attributes = {
 		default: "fab fa-arrow-circle-right"
 	},
 	image: {
-		type: "array",
+		type: "object",
 	},
 	icon_color: {
 		type: "string",

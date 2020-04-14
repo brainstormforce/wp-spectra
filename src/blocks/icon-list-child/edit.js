@@ -264,8 +264,6 @@ class UAGBIconListChild extends Component {
 				}
 			}
 
-			console.log(image_icon_html);
-
 			let target_val = ( target ) ? "_blank" : "_self"
 			let link_url = ( !disableLink ) ? link : "/"
 
@@ -343,12 +341,9 @@ class UAGBIconListChild extends Component {
 									) }
 								/>
 								{ image &&
-									<Button
-										className="uagb-rm-btn"
-										onClick={ this.onRemoveImage }
-										isLink isDestructive>
+									( <Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 										{ __( "Remove Image" ) }
-									</Button>
+									</Button> )
 								}
 							</Fragment>
 						}

@@ -38,8 +38,6 @@ export default function save( props ) {
 		}
 	}
 
-	console.log(image_icon_html);
-
 	let target_val = ( target ) ? "_blank" : "_self"
 	let link_url = ( !disableLink ) ? link : "/"
 
