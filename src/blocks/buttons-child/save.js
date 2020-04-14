@@ -4,6 +4,7 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
+const { __ } = wp.i18n
 
 const {
 	RichText
@@ -22,43 +23,26 @@ export default function save( props ) {
 		items,
 		buttons,
 		btn_count,
+		label
 	} = props.attributes
 
-	const renderButtons = ( index ) => {
-
-		if ( "undefined" != typeof buttons[index] ) {
-
-			return (
-				<div
-					className={ classnames(
-						`uagb-buttons-repeater-${index}`,
-						"uagb-button__wrapper"
-					) }
-					key={index}
-				>
-					<RichText.Content
-						value={ buttons[index].label }
-						tagName='a'
-						className='uagb-button__link'
-						href={ buttons[index].link }
-						rel ="noopener noreferrer"
-						target={ buttons[index].target }
-					/>
-				</div>
-			)
-		}
-	}
 
 	return (
 		<div className={ classnames(
 			className,
 			"uagb-buttons__outer-wrap",
-			`uagb-block-${ block_id }`
-		) }
-		>
+			`uagb-block-${ props.clientId }`
+			) }>
 			<div className="uagb-buttons__wrap">
-				{ times( btn_count, n => renderButtons( n ) ) }
+				<div className="uagb-buttons-repeater">
+					<RichText.Content
+						value={ label }
+						tagName='div'
+						className='uagb-button__link'
+					/>
+				</div>
 			</div>
 		</div>
+		
 	)
 }

@@ -14,69 +14,85 @@ function styling( props ) {
 		buttons,
 		gap,
 		stack,
+		loadGoogleFonts,
 		fontFamily,
 		fontWeight,
-		classMigrate,
-	} = props.attributes
-
+		fontSubset,
+		label,
+		link,
+		target,
+		size,
+		vPadding,
+		hPadding,
+		borderWidth,
+		borderRadius,
+		borderStyle,
+		borderColor,
+		borderHColor,
+		color,
+		background,
+		hColor,
+		hBackground,
+		sizeType,
+		sizeMobile,
+		sizeTablet,
+		lineHeight,
+		lineHeightType,
+		lineHeightMobile,
+		lineHeightTablet,
+		classMigrate
+	} = props.attributes;
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	buttons.map( ( button, index ) => {
-
-		if ( btn_count <= index ) {
-			return
-		}
-
-		selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : generateCSSUnit( button.size, button.sizeType ),
-			"line-height" : generateCSSUnit( button.lineHeight, button.lineHeightType ),
+		selectors[" .uagb-buttons-repeater"] = {
+			"font-size" : generateCSSUnit( size, sizeType ),
+			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
 			"font-family": fontFamily,
 			"font-weight": fontWeight,
-			"border-width": generateCSSUnit( button.borderWidth, "px" ),
-			"border-style": button.borderStyle,
-			"border-color": button.borderColor,
-			"border-radius" : generateCSSUnit( button.borderRadius, "px" ),
-			"background": button.background
+			"border-width": generateCSSUnit( borderWidth, "px" ),
+			"border-style": borderStyle,
+			"border-color": borderColor,
+			"border-radius" : generateCSSUnit( borderRadius, "px" ),
+			"background": background
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + ":hover"] = {
-			"background": button.hBackground,
-			"border-width": generateCSSUnit( button.borderWidth, "px" ),
-			"border-style": button.borderStyle,
-			"border-color": button.borderHColor,
+		selectors[" .uagb-buttons-repeater" + ":hover"] = {
+			"background": hBackground,
+			"border-width": generateCSSUnit( borderWidth, "px" ),
+			"border-style": borderStyle,
+			"border-color": borderHColor,
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + " a.uagb-button__link"] = {
-			"padding" : button.vPadding + "px " + button.hPadding + "px",
-			"color": button.color
+		selectors[" .uagb-buttons-repeater" + " a.uagb-button__link"] = {
+			"padding" : vPadding + "px " + hPadding + "px",
+			"color": color
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + ":hover a.uagb-button__link"] = {
-			"color": button.hColor
+		selectors[" .uagb-buttons-repeater" + ":hover a.uagb-button__link"] = {
+			"color": hColor
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + " .uagb-button__link"] = {
-			"padding" : button.vPadding + "px " + button.hPadding + "px",
-			"color": button.color
+		selectors[" .uagb-buttons-repeater" + " .uagb-button__link"] = {
+			"padding" : vPadding + "px " + hPadding + "px",
+			"color": color
 		}
 
-		selectors[" .uagb-buttons-repeater-" + index + ":hover .uagb-button__link"] = {
-			"color": button.hColor
+		selectors[" .uagb-buttons-repeater" + ":hover .uagb-button__link"] = {
+			"color": hColor
 		}
 
-		mobile_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : generateCSSUnit( button.sizeMobile, button.sizeType ),
-			"line-height" : generateCSSUnit( button.lineHeightMobile, button.lineHeightType ),
+		mobile_selectors[" .uagb-buttons-repeater"] = {
+			"font-size" : generateCSSUnit( sizeMobile, sizeType ),
+			"line-height" : generateCSSUnit( lineHeightMobile, lineHeightType ),
 		}
 
-		tablet_selectors[" .uagb-buttons-repeater-" + index] = {
-			"font-size" : generateCSSUnit( button.sizeTablet, button.sizeType ),
-			"line-height" : generateCSSUnit( button.lineHeightTablet, button.lineHeightType ),
+		tablet_selectors[" .uagb-buttons-repeater"] = {
+			"font-size" : generateCSSUnit( sizeTablet, sizeType ),
+			"line-height" : generateCSSUnit( lineHeightTablet, lineHeightType ),
 		}
 
-	})
 
 	selectors[" .uagb-button__wrapper"] = {
 		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),

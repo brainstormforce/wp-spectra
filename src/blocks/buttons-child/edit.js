@@ -8,7 +8,7 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 const { __ } = wp.i18n
 
 const {
@@ -17,19 +17,25 @@ const {
 } = wp.element
 
 const {
+	AlignmentToolbar,
+	BlockControls,
+	BlockAlignmentToolbar,
 	InspectorControls,
-	MediaUpload,
 	RichText,
-	ColorPalette
+	PanelColorSettings,
+	URLInput,
+	ColorPalette,
+	InnerBlocks
 } = wp.blockEditor
 
 const {
 	PanelBody,
 	SelectControl,
-	Button,
-	TextControl,
-	ToggleControl,
+	RangeControl,
 	TabPanel,
+	ButtonGroup,
+	Button,
+	Dashicon
 } = wp.components
 
 class UAGBButtonsChild extends Component {
@@ -38,9 +44,18 @@ class UAGBButtonsChild extends Component {
 		super( ...arguments )
 		
 	}
-	
+	componentDidMount() {
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { block_id: this.props.clientId } )
+        this.props.setAttributes( { classMigrate: true } )
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
+		document.head.appendChild( $style )
+	}
 	render() {
-		console.log(this.props);
+		
 		const { attributes, setAttributes, isSelected } = this.props
 	
 		const {
@@ -77,27 +92,11 @@ class UAGBButtonsChild extends Component {
 			lineHeightMobile,
 			lineHeightTablet,
 		} = attributes;
+        var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
 
-		const onMouseOut = () => {
-			if ( "false" !== this.state.isHovered ) {
-				this.setState( {
-					isHovered: "false",
-				} )
-			}
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
 		}
-
-		const updateFocusState = ( index ) => {
-			this.setState( {
-				isFocused: index,
-			} )
-		}
-
-		const updateHoverState = ( index ) => {
-			this.setState( {
-				isHovered: index,
-			} )
-		}
-
 		const buttonControls = () => {
 			return (
 				<PanelBody
@@ -474,7 +473,7 @@ class UAGBButtonsChild extends Component {
 						max={ 50 }
 					/>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Button #" ) + " " + ( index + 1 ) + " " + __( " Color Settings" ) }</h2>
+					<h2>{  __( " Color Settings" ) }</h2>
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 						activeClass="active-tab"
 						tabs={ [
@@ -543,11 +542,35 @@ class UAGBButtonsChild extends Component {
 			)
 		}
 
-		var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
+        return (
+            <Fragment>
+                    <InspectorControls>
+                        { buttonControls }
+                    </InspectorControls>
+                    <div className={ classnames(
+					className,
+					"uagb-buttons__outer-wrap",
+					`uagb-block-${ this.props.clientId }`
+				    ) }>
+                    <div className="uagb-buttons__wrap">
+                        <div className="uagb-buttons-repeater">
+                        <RichText
+                            placeholder={ __( "Add text…" ) }
+                            value={ label }
+                            tagName='div'
+                            onChange={ value => {
+                                setAttributes( { label: value })
+                            } }
+                            allowedFormats={ [ "bold", "italic", "strikethrough" ] }
+                            className='uagb-button__link'
+                            rel ="noopener noreferrer"
+                            keepPlaceholderOnFocus
+                        />
+                        </div>
+                    </div>
+                    </div>
+                </Fragment>
+        )
 	}
 }
 export default UAGBButtonsChild
