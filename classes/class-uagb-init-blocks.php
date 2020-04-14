@@ -79,6 +79,9 @@ class UAGB_Init_Blocks {
 	 * @since 1.10.0
 	 */
 	public function cf7_shortcode() { 	// @codingStandardsIgnoreStart
+
+		check_ajax_referer( 'uabg_ajax_nonce', 'nonce' );
+		
 		$id = intval($_POST['formId']);
 		// @codingStandardsIgnoreEnd
 		if ( $id && 0 !== $id && -1 !== $id ) {
