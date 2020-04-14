@@ -62,6 +62,8 @@ class UAGBIconList extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
 		document.head.appendChild( $style )
+
+		this.changeChildAttr( this.props.attributes.hideLabel )
 	}
 
 	changeChildAttr ( value ) {
