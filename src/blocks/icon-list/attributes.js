@@ -24,6 +24,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"link": "#",
 			"target": false,
 			"disableLink": true,
+			"hideLabel" : false
 		}
 	)
 }

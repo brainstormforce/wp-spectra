@@ -1385,7 +1385,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$wp_filesystem = self::get_instance()->get_filesystem();
 
 			foreach ( $combined as $key => $c_block ) {
-
 				$style .= $wp_filesystem->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}

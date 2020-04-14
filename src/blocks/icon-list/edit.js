@@ -16,6 +16,7 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
+const { select } = wp.data;
 
 const {
 	Component,
@@ -44,6 +45,12 @@ const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
 
 class UAGBIconList extends Component {
 
+	constructor() {
+		super( ...arguments )
+
+		this.changeChildAttr = this.changeChildAttr.bind( this )
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -55,6 +62,16 @@ class UAGBIconList extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	changeChildAttr ( value ) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((iconChild, key) => {
+			iconChild.attributes.hideLabel = value
+		});
+		setAttributes( { hideLabel: value } )
 	}
 
 	render() {
@@ -156,15 +173,6 @@ class UAGBIconList extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						{/* <RangeControl
-							label={ __( "Number of Icons" ) }
-							value={ icon_count }
-							onChange={ newCount => {
-								setAttributes( { icon_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 50 }
-						/> */}
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ icon_layout }
@@ -192,7 +200,7 @@ class UAGBIconList extends Component {
 						<ToggleControl
 							label={ __( "Hide Labels" ) }
 							checked={ hideLabel }
-							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
+							onChange={ (value) => this.changeChildAttr( value ) }
 						/>
 						<hr className="uagb-editor__separator" />
 						<SelectControl

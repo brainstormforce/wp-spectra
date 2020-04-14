@@ -14,6 +14,10 @@ const attributes = {
 		type: "string",
 		default: "icon"
 	},
+	hideLabel: {
+		type: "boolean",
+		default: false
+	}, 
 	icon: {
 		type: "string",
 		default: "fab fa-arrow-circle-right"

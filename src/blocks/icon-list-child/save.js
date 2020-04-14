@@ -23,10 +23,9 @@ export default function save( props ) {
 		link,
 		target,
 		disableLink,
+		hideLabel
 	} = attributes
 
-
-	let url = ""
 	let image_icon_html = ""
 
 	if ( image_icon == "icon" ) {
@@ -54,7 +53,7 @@ export default function save( props ) {
 			>
 				<div className="uagb-icon-list__content-wrap">
 					<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-					{ "" != label &&
+					{ ! hideLabel && "" != label &&
 						<div className="uagb-icon-list__label-wrap">
 							<RichText.Content
 								tagName="span"

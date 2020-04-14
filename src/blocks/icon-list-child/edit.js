@@ -67,6 +67,7 @@ class UAGBIconListChild extends Component {
 			link,
 			target,
 			disableLink,
+			hideLabel,
 		} = attributes
 
 		const iconColorControls = () => {
@@ -217,8 +218,6 @@ class UAGBIconListChild extends Component {
 		}
 
 		const renderHtml = () => {
-
-			let url = ""
 			let image_icon_html = ""
 
 			if ( image_icon == "icon" ) {
@@ -246,7 +245,7 @@ class UAGBIconListChild extends Component {
 					>
 						<div className="uagb-icon-list__content-wrap">
 							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-							{ "" != label &&
+							{ ! hideLabel && "" != label &&
 								<div className="uagb-icon-list__label-wrap">
 									<RichText
 										tagName="div"
