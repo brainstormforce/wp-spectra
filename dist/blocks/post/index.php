@@ -18,6 +18,8 @@ global $uagb_post_settings;
  */
 function uagb_post_pagination() {
 
+	check_ajax_referer( 'uabg_ajax_nonce', 'nonce' );
+	
 	if ( isset( $_POST['attributes'] ) ) {
 		
 		$query = UAGB_Helper::get_query( $_POST['attributes'], 'grid' );
