@@ -715,6 +715,7 @@ function uagb_register_blocks() {
 				),
 				'paginationMarkup'               => array(
 					'type' => 'string',
+					'default' => ''
 				),
 				'paginationLayout'               => array(
 					'type' => 'string',

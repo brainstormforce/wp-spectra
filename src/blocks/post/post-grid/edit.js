@@ -25,8 +25,6 @@ const {
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	ButtonGroup,
-	Button,
 	TabPanel,
 	Dashicon,
 	TextControl
@@ -47,6 +45,7 @@ class UAGBPostGrid extends Component {
 		super( ...arguments )
 		this.onSelectPostType = this.onSelectPostType.bind( this )
 		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
+		this.onSelectPagination = this.onSelectPagination.bind( this )
 	}
 
 	onSelectPostType( value ) {
@@ -61,6 +60,13 @@ class UAGBPostGrid extends Component {
 
 		setAttributes( { taxonomyType: value } )
 		setAttributes( { categories: "" } )
+	}
+
+	onSelectPagination( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postPagination: value } )
+		setAttributes( { paginationMarkup: "" } )
 	}
 
 	componentDidMount() {
@@ -457,7 +463,7 @@ class UAGBPostGrid extends Component {
 					<ToggleControl
 						label={ __( "Post Pagination" ) }
 						checked={ postPagination }
-						onChange={ ( value ) => setAttributes( { postPagination: ! postPagination } ) }
+						onChange={ this.onSelectPagination }
 					/>
 					{ postPagination == true &&
 						<RangeControl
@@ -993,7 +999,7 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup } = props.attributes
 	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
@@ -1002,21 +1008,22 @@ export default withSelect( ( select, props ) => {
 	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
-	
-	$.ajax({
-		url: uagb_blocks_info.ajax_url,
-		data: {
-			action: "uagb_post_pagination",
-			attributes : props.attributes,
-			nonce: uagb_blocks_info.uagb_ajax_nonce
-		},
-		dataType: "json",
-		type: "POST",
-		success: function( data ) {
-			
-			setAttributes( { paginationMarkup: data.data } ) 
-		}
-	});
+
+	if ( '' === paginationMarkup ) {
+		$.ajax({
+			url: uagb_blocks_info.ajax_url,
+			data: {
+				action: "uagb_post_pagination",
+				attributes : props.attributes,
+				nonce: uagb_blocks_info.uagb_ajax_nonce
+			},
+			dataType: "json",
+			type: "POST",
+			success: function( data ) {
+				setAttributes( { paginationMarkup: data.data } ) 
+			}
+		});
+	}
 
 	if ( "undefined" != typeof currentTax ) {
 
