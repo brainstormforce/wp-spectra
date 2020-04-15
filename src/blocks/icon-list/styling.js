@@ -45,7 +45,7 @@ function styling( props ) {
 			"border-style" : ( 0 == border || undefined == border ) ? "none" : "solid",
 			"border-width" : generateCSSUnit( border, "px" )
 		},
-		".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper" : {
+		".uagb-icon-list__layout-vertical .wp-block[data-type=\"uagb/icon-list-child\"]" : {
 			"margin-left" : 0,
 			"margin-right" : 0,
 			"margin-bottom" : generateCSSUnit( gap, "px" )
@@ -56,14 +56,14 @@ function styling( props ) {
 		".uagb-icon-list__layout-vertical .uagb-icon-list__wrapper:last-child" : {
 			"margin-bottom" : 0
 		},
-		".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper" : {
+		".uagb-icon-list__layout-horizontal .wp-block[data-type=\"uagb/icon-list-child\"]" : {
 			"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
 			"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 		},
-		".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:first-child" : {
+		".uagb-icon-list__layout-horizontal .wp-block[data-type=\"uagb/icon-list-child\"]:first-child" : {
 			"margin-left" : 0
 		},
-		".uagb-icon-list__layout-horizontal .uagb-icon-list__wrapper:last-child" : {
+		".uagb-icon-list__layout-horizontal .wp-block[data-type=\"uagb/icon-list-child\"]:last-child" : {
 			"margin-right" : 0
 		},
 		" .uagb-icon-list__source-image" : {
@@ -86,14 +86,8 @@ function styling( props ) {
 		" .uagb-icon-list__label-wrap" : {
 			"text-align": align
 		},
-		" .uagb-icon-list__wrap" : {
-			"justify-content" : alignment,
-			"-webkit-box-pack": alignment,
-			"-ms-flex-pack": alignment,
-			"justify-content": alignment,
-			"-webkit-box-align": alignment,
-			"-ms-flex-align": alignment,
-			"align-items": alignment,
+		" .uagb-icon-list__wrap .block-editor-inner-blocks" : {
+			"text-align": align
 		},
 	}
 
@@ -141,7 +135,7 @@ function styling( props ) {
 
 		if ( "tablet" == stack ) {
 
-			tablet_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = {
+			tablet_selectors[" .uagb-icon-list__wrap .wp-block[data-type=\"uagb/icon-list-child\"]"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
 				"margin-bottom" : generateCSSUnit( gap, "px" )
@@ -151,13 +145,13 @@ function styling( props ) {
 				"flex-direction": "column"
 			}
 
-			tablet_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = {
+			tablet_selectors[" .uagb-icon-list__wrap .wp-block[data-type=\"uagb/icon-list-child\"]:last-child"] = {
 				"margin-bottom" : 0
 			}
 
 		} else if ( "mobile" == stack ) {
 
-			mobile_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper"] = {
+			mobile_selectors[" .uagb-icon-list__wrap .wp-block[data-type=\"uagb/icon-list-child\"]"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
 				"margin-bottom" : generateCSSUnit( gap, "px" )
@@ -170,6 +164,12 @@ function styling( props ) {
 			mobile_selectors[" .uagb-icon-list__wrap .uagb-icon-list__wrapper:last-child"] = {
 				"margin-bottom" : 0
 			}
+		}
+
+		selectors[" .uagb-icon-list__wrap .block-editor-block-list__layout"] = {
+			"justify-content" : alignment,
+			"-webkit-box-pack": alignment,
+			"-ms-flex-pack": alignment,
 		}
 	}
 

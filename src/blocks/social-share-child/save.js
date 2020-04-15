@@ -44,7 +44,7 @@ export default function save( props ) {
 	return (
 		<div
 			className={ classnames(
-				`uagb-ss-repeater-${index}`,
+				`uagb-ss-repeater`,
 				"uagb-ss__wrapper",
 				className,
 				`uagb-block-${ block_id }`

@@ -36,6 +36,13 @@ let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBIconListChild extends Component {
 
+	constructor() {
+		super( ...arguments )
+
+		this.onRemoveImage = this.onRemoveImage.bind( this )
+		this.onSelectImage = this.onSelectImage.bind( this )
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -45,6 +52,33 @@ class UAGBIconListChild extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-child-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { setAttributes } = this.props
+		setAttributes( { image: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { image: null } )
+			return
+		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
+		setAttributes( { image: media } )
 	}
 
 	render() {
@@ -67,6 +101,7 @@ class UAGBIconListChild extends Component {
 			link,
 			target,
 			disableLink,
+			hideLabel,
 		} = attributes
 
 		const iconColorControls = () => {
@@ -217,8 +252,6 @@ class UAGBIconListChild extends Component {
 		}
 
 		const renderHtml = () => {
-
-			let url = ""
 			let image_icon_html = ""
 
 			if ( image_icon == "icon" ) {
@@ -226,75 +259,45 @@ class UAGBIconListChild extends Component {
 					image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon) }</span>
 				}
 			} else {
-				if ( image ) {
+				if ( image && image.url ) {
 					image_icon_html = <img className="uagb-icon-list__source-image" src={image.url} />
 				}
 			}
 
-			let target = ( target ) ? "_blank" : "_self"
+			let target_val = ( target ) ? "_blank" : "_self"
 			let link_url = ( !disableLink ) ? link : "/"
 
-			if ( disableLink ) {
-				return (
-					<div
-						className={ classnames(
-							`uagb-icon-list-repeater`,
-							"uagb-icon-list__wrapper",
-							className,
-							`uagb-block-${ this.props.clientId }`
-						) }
-					>
-						<div className="uagb-icon-list__content-wrap">
-							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-							{ "" != label &&
-								<div className="uagb-icon-list__label-wrap">
-									<RichText
-										tagName="div"
-										placeholder={ __( "Label Name" ) }
-										value={ label }
-										onChange={ ( value ) => setAttributes( { label: value } ) }
-										className='uagb-icon-list__label'
-										placeholder={ __( "Description" ) }
-										multiline={false}
-									/>
-								</div>
-							}
-						</div>
+			return (
+				<div
+					className={ classnames(
+						`uagb-icon-list-repeater`,
+						"uagb-icon-list__wrapper",
+						className,
+						`uagb-block-${ this.props.clientId }`
+					) }
+				>
+					{ ! disableLink &&
+						<a target={ target_val } rel="noopener noreferrer" href={ link_url }></a>
+					}
+					<div className="uagb-icon-list__content-wrap">
+						<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
+						{ ! hideLabel && "" != label &&
+							<div className="uagb-icon-list__label-wrap">
+								<RichText
+									tagName="div"
+									placeholder={ __( "Label Name" ) }
+									value={ label }
+									onChange={ ( value ) => setAttributes( { label: value } ) }
+									className='uagb-icon-list__label'
+									placeholder={ __( "Description" ) }
+									multiline={false}
+									allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+								/>
+							</div>
+						}
 					</div>
-				)
-			} else {
-
-				return (
-					<a
-						className={ classnames(
-							`uagb-icon-list-repeater`,
-							"uagb-icon-list__wrapper",
-							className,
-							`uagb-block-${ this.props.clientId }`
-						) }
-						target={ target }
-						rel="noopener noreferrer"
-						href={ link_url }
-					>
-						<div className="uagb-icon-list__content-wrap">
-							<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-							{ "" != label &&
-								<div className="uagb-icon-list__label-wrap">
-									<RichText
-										tagName="div"
-										placeholder={ __( "Label Name" ) }
-										value={ label }
-										onChange={ ( value ) => setAttributes( { label: value } ) }
-										className='uagb-icon-list__label'
-										placeholder={ __( "Description" ) }
-										multiline={false}
-									/>
-								</div>
-							}
-						</div>
-					</a>
-				)
-			}
+				</div>
+			)
 		}
 
 		return (
@@ -328,7 +331,7 @@ class UAGBIconListChild extends Component {
 							<Fragment>
 								<MediaUpload
 									title={ __( "Select Image" ) }
-									onSelect={ ( value ) => setAttributes( { image: value } ) }
+									onSelect={ this.onSelectImage }
 									allowedTypes={ [ "image" ] }
 									value={ image }
 									render={ ( { open } ) => (
@@ -338,12 +341,9 @@ class UAGBIconListChild extends Component {
 									) }
 								/>
 								{ image &&
-									<Button
-										className="uagb-rm-btn"
-										onClick={ () => setAttributes( { image: null } ) }
-										isLink isDestructive>
+									( <Button className="uagb-rm-btn" onClick={ this.onRemoveImage } isLink isDestructive>
 										{ __( "Remove Image" ) }
-									</Button>
+									</Button> )
 								}
 							</Fragment>
 						}

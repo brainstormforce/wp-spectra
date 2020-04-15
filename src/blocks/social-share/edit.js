@@ -49,7 +49,6 @@ class UAGBSocialShare extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { classMigrate: true } )
-		// this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
@@ -136,8 +135,122 @@ class UAGBSocialShare extends Component {
 			<Fragment>
 				
 				<InspectorControls>
-					
-					
+					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+						<SelectControl
+							label={ __( "Layout" ) }
+							value={ social_layout }
+							options={ [
+								{ value: "horizontal", label: __( "Horizontal" ) },
+								{ value: "vertical", label: __( "Vertical" ) },
+							] }
+							onChange={ ( value ) => setAttributes( { social_layout: value } ) }
+						/>
+						{ "horizontal" == social_layout &&
+							<Fragment>
+								<SelectControl
+									label={ __( "Stack on" ) }
+									value={ stack }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "tablet", label: __( "Tablet" ) },
+										{ value: "mobile", label: __( "Mobile" ) },
+									] }
+									onChange={ ( value ) => setAttributes( { stack: value } ) }
+									help={ __( "Note: Choose on what breakpoint the Icons will stack." ) }
+								/>
+							</Fragment>
+						}
+						<hr className="uagb-editor__separator" />
+						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeMobile }
+													onChange={ ( value ) => setAttributes( { sizeMobile: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ sizeTablet }
+													onChange={ ( value ) => setAttributes( { sizeTablet: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												{sizeTypesControls}
+												<RangeControl
+													label={ __( "Size" ) }
+													value={ size }
+													onChange={ ( value ) => setAttributes( { size: value } ) }
+													min={ 0 }
+													max={ 500 }
+													allowReset
+													initialPosition={40}
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						</TabPanel>
+						<RangeControl
+							label={ __( "Background Size" ) }
+							value={ bgSize }
+							onChange={ ( value ) => setAttributes( { bgSize: value } ) }
+							help={ __( "Note: Background Size option is useful when one adds background color to the icons." ) }
+							min={ 0 }
+							max={ 500 }
+						/>
+						<RangeControl
+							label={ __( "Circular Radius" ) }
+							value={ borderRadius }
+							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+							help={ __( "Note: Circular Radius option is useful when one adds background color to the icons." ) }
+							min={ 0 }
+							max={ 500 }
+						/>
+					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
 					className,

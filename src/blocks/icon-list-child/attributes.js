@@ -8,18 +8,22 @@ const attributes = {
 	},
 	label: {
 		selector: ".uagb-icon-list__label",
-		default: "Label #"
+		default: "#Label"
 	},
 	image_icon: {
 		type: "string",
 		default: "icon"
 	},
+	hideLabel: {
+		type: "boolean",
+		default: false
+	}, 
 	icon: {
 		type: "string",
 		default: "fab fa-arrow-circle-right"
 	},
 	image: {
-		type: "array",
+		type: "object",
 	},
 	icon_color: {
 		type: "string",

@@ -14,23 +14,23 @@ function styling( props ) {
 	} = props.attributes
 
 	var selectors = {
-		".uagb-social-share-repeater .uagb-social-share__source-icon" : {
+		".uagb-ss-repeater a.uagb-ss__link" : {
 			"color" : icon_color
 		},
-		".uagb-social-share-repeater .uagb-social-share__source-icon svg" : {
+		".uagb-ss-repeater a.uagb-ss__link svg" : {
 			"fill" : icon_color
 		},
-		".uagb-social-share-repeater:hover .uagb-social-share__source-icon" : {
+		".uagb-ss-repeater:hover a.uagb-ss__link" : {
 			"color" : icon_hover_color
 		},
-		".uagb-social-share-repeater:hover .uagb-social-share__source-icon svg" : {
+		".uagb-ss-repeater:hover a.uagb-ss__link svg" : {
 			"fill" : icon_hover_color
 		},
-		".uagb-social-share-repeater .uagb-social-share__source-wrap" : {
+		".uagb-ss-repeater.uagb-ss__wrapper" : {
 			"background" : icon_bg_color,
 			// "border-color" : icon_border_color
 		},
-		".uagb-social-share-repeater:hover .uagb-social-share__source-wrap" : {
+		".uagb-ss-repeater.uagb-ss__wrapper:hover" : {
 			"background" : icon_bg_hover_color,
 			// "border-color" : icon_border_hover_color
 		}

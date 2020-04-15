@@ -16,6 +16,7 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
+const { select } = wp.data;
 
 const {
 	Component,
@@ -44,6 +45,12 @@ const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
 
 class UAGBIconList extends Component {
 
+	constructor() {
+		super( ...arguments )
+
+		this.changeChildAttr = this.changeChildAttr.bind( this )
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -55,6 +62,18 @@ class UAGBIconList extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
 		document.head.appendChild( $style )
+
+		this.changeChildAttr( this.props.attributes.hideLabel )
+	}
+
+	changeChildAttr ( value ) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((iconChild, key) => {
+			iconChild.attributes.hideLabel = value
+		});
+		setAttributes( { hideLabel: value } )
 	}
 
 	render() {
@@ -151,22 +170,11 @@ class UAGBIconList extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left", "center", "right", "full" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "Icon Count" ) } initialOpen={ true }>
-						<RangeControl
-							label={ __( "Number of Icons" ) }
-							value={ icon_count }
-							onChange={ newCount => {
-								setAttributes( { icon_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 12 }
-						/>
-					</PanelBody>
-					<PanelBody title={ __( "General" ) } initialOpen={ false }>
+					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ icon_layout }
@@ -194,7 +202,7 @@ class UAGBIconList extends Component {
 						<ToggleControl
 							label={ __( "Hide Labels" ) }
 							checked={ hideLabel }
-							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
+							onChange={ (value) => this.changeChildAttr( value ) }
 						/>
 						<hr className="uagb-editor__separator" />
 						<SelectControl
@@ -328,6 +336,7 @@ class UAGBIconList extends Component {
 							label={ __( "Gap between Items" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
 							min={ 0 }
 							max={ 100 }
 						/>
@@ -353,8 +362,10 @@ class UAGBIconList extends Component {
 					<div className="uagb-icon-list__wrap">
 						<InnerBlocks
 							template={ getIconTemplate( icon_count, icons ) }
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ icon_layout }
+						/>
 					</div>
 				</div>
 				{googleFonts}

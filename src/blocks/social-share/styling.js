@@ -31,47 +31,8 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	socials.map( ( social, index ) => {
-
-		if ( social_count <= index ) {
-			return
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"color" : social.icon_color,
-			"padding": generateCSSUnit( bgSize, bgSizeType )
-		}
-
-		mobile_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": generateCSSUnit( bgSizeMobile, bgSizeType )
-		}
-
-		tablet_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": generateCSSUnit( bgSizeTablet, bgSizeType )
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link svg"] = {
-			"fill" : social.icon_color,
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link"] = {
-			"color" : social.icon_hover_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link svg"] = {
-			"fill" : social.icon_hover_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index] = {
-			"background" : social.icon_bg_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover"] = {
-			"background" : social.icon_bg_hover_color
-		}
-	})
-
 	selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = {
+		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : 0,
 		"margin-right" : 0,
 		"margin-bottom" : generateCSSUnit( gap, "px" )
@@ -86,6 +47,7 @@ function styling( props ) {
 	}
 
 	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
+		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
 		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 	}
