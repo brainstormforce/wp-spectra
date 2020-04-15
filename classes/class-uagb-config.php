@@ -1207,6 +1207,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationBorderSize' => '',
 							'paginationSpacing' => 20,
 							'paginationAlignment' => 'left',
+							'paginationNextText' => '« Previous',
+							'paginationPrevText' => 'Next »'
 						),
 					),
 					'uagb/post-masonry'      => array(

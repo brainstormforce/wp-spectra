@@ -303,6 +303,8 @@ function uagb_render_pagination( $query , $attributes ) {
 				'type'    => 'list',
 				'mid_size'     => 4, 
 				'end_size'     => 4,
+				'prev_text' => $attributes['paginationPrevText'],
+				'next_text' => $attributes['paginationNextText']
 			)
 		);
 	
@@ -737,6 +739,14 @@ function uagb_register_blocks() {
 				'paginationAlignment'           => array(
 					'type'    => 'string',
 					'default' => 'left',
+				),
+				'paginationPrevText'           => array(
+					'type'    => 'string',
+					'default' => '« Previous',
+				),
+				'paginationNextText'           => array(
+					'type'    => 'string',
+					'default' => 'Next »',
 				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
