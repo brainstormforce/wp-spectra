@@ -126,11 +126,11 @@ function styling( props ) {
 	}
 
 	if ( colWidthTablet != "" && colWidthTablet != 0 ) {
-		tablet_selectors[".editor-block-list__block"] = { "width" : colWidthTablet + "%" }
+		tablet_selectors[".block-editor-block-list__block"] = { "width" : colWidthTablet + "%" }
 	}
 
 	if ( colWidthMobile != "" && colWidthMobile != 0 ) {
-		mobile_selectors[".editor-block-list__block"] = { "width" : colWidthMobile + "%" }
+		mobile_selectors[".block-editor-block-list__block"] = { "width" : colWidthMobile + "%" }
 	}
 
 	var styling_css = ""
