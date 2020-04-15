@@ -1038,12 +1038,12 @@ export default compose(
 			}
 			
 			var parsedSlug = slug.toString().toLowerCase()
-
-				.replace(/&(amp;)/g, '')
+				.replace( /[^\w\s]/gi, '-' )				 // Remove special chars
+				.replace(/&(amp;)/g, '')					 // Remove &
 				.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
 				.replace(/\s+/g, '-')                        // Replace spaces with -
 				.replace(/<[^<>]+>/g, '')                    // Remove tags
-				.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+				.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '') // Remove special chars
 				.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
 				.replace(/^-+/, '')                          // Trim - from start of text
 				.replace(/-+$/, '');                         // Trim - from end of text
@@ -1072,7 +1072,9 @@ export default compose(
 						{
 							tag: contentLevel,
 							text: striptags( heading_attr[contentName] ),
-							link: parseTocSlug( striptags( heading_attr[contentName] ) ),
+							link: parseTocSlug(heading_attr[contentName].replace(/[\u2018\u2019]/g, "'")
+							.replace(/[\u201C\u201D]/g, '"')),
+							//link: parseTocSlug( striptags( heading_attr[contentName] ) ),
 							content: heading_attr[contentName]
 						}
 					);

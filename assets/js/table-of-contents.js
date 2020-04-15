@@ -14,15 +14,15 @@
 		}
 
 		var parsedSlug = slug.toString().toLowerCase()
-			
-		.replace(/&(amp;)/g, '')
-		.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
-		.replace(/\s+/g, '-')                        // Replace spaces with -
-		.replace(/<[^<>]+>/g, '')                    // Remove tags
-		.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
-		.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
-		.replace(/^-+/, '')                          // Trim - from start of text
-		.replace(/-+$/, '');                         // Trim - from end of text
+			.replace( /[^\w\s]/gi, '-' )				 // Remove special chars
+			.replace(/&(amp;)/g, '')					 // Remove &
+			.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
+			.replace(/\s+/g, '-')                        // Replace spaces with -
+			.replace(/<[^<>]+>/g, '')                    // Remove tags
+			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
+			.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
+			.replace(/^-+/, '')                          // Trim - from start of text
+			.replace(/-+$/, '');                         // Trim - from end of text
 
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
@@ -135,11 +135,12 @@
 					all_header.each( function (){
 
 						let header = $( this );
-						
-						let header_text = parseTocSlug(header.text().replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"'));
+						console.log(header);
+						let header_text = parseTocSlug(header.text());
 						let element_text = parseTocSlug(element.text.replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"'));
+						.replace(/[\u201C\u201D]/g, '"').replace(/[\u2014]/g, '-'));
+						console.log(element_text);
+						console.log(header_text);
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
