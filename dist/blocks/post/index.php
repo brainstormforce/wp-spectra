@@ -734,6 +734,10 @@ function uagb_register_blocks() {
 					'type'    => 'number',
 					'default' => 20,
 				),
+				'paginationAlignment'           => array(
+					'type'    => 'string',
+					'default' => 'left',
+				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
 		)

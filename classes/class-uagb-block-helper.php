@@ -2538,6 +2538,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[" .uagb-post-pagination-wrap"] = array (
 
 				"margin-top" => UAGB_Helper::get_css_value( $attr['paginationSpacing'], "px" ),
+				"text-align" => $attr['paginationAlignment'],
 			);
 			if ( 'filled' === $attr['paginationLayout'] ) {
 				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 

@@ -99,7 +99,8 @@ function styling( props ) {
 		paginationBorderRadius,
 		paginationBorderColor,
 		paginationBorderActiveColor,
-		paginationSpacing
+		paginationSpacing,
+		paginationAlignment
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -198,6 +199,7 @@ function styling( props ) {
 		},
 		" .uagb-post-pagination-wrap" : {
 			"margin-top" : generateCSSUnit( paginationSpacing, "px" ),
+			"text-align": paginationAlignment
 		},
 	}
 

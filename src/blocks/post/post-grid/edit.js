@@ -195,7 +195,8 @@ class UAGBPostGrid extends Component {
 			paginationBorderRadius,
 			paginationBorderColor,
 			paginationBorderActiveColor,
-			paginationSpacing
+			paginationSpacing,
+			paginationAlignment,
 		} = attributes
 
 		const hoverSettings = (
@@ -537,6 +538,16 @@ class UAGBPostGrid extends Component {
 								onChange={ ( value ) => setAttributes( { paginationSpacing: value } ) }
 								min={ 0 }
 								max={ 500 }
+							/>
+							<SelectControl
+								label={ __( "Pagination Layout" ) }
+								value={ paginationAlignment }
+								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
+								options={ [
+									{ value: "left", label: __( "Left" ) },
+									{ value: "center", label: __( "Center" ) },
+									{ value: "right", label: __( "Right" ) },
+								] }
 							/>
 						</Fragment>
 					</PanelBody>
