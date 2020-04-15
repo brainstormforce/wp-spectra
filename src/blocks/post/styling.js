@@ -93,7 +93,12 @@ function styling( props ) {
 		paginationBgActiveColor,
 		paginationActiveColor,
 		paginationBgColor,
-		paginationColor
+		paginationColor,
+		paginationLayout,
+		paginationBorderSize,
+		paginationBorderRadius,
+		paginationBorderColor,
+		paginationBorderActiveColor
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -189,16 +194,41 @@ function styling( props ) {
 		" .uagb-post__image:before" : {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
-		},
-		" .uagb-post-pagination-wrap .page-numbers.current" : {
+		}
+	}
+
+	if ( 'filled' == paginationLayout ) {
+		
+		selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+			
 			"background-color" :  paginationBgActiveColor,
 			"color" :  paginationActiveColor,
-		},
-		" .uagb-post-pagination-wrap a" : {
+		}
+		selectors[" .uagb-post-pagination-wrap a"] = {
+
 			"background-color" :  paginationBgColor,
 			"color" :  paginationColor,
 		}
 	}
+	if ( 'border' == paginationLayout ) {
+		selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+			"border-style" : "solid",
+			"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+			"border-color" :  paginationBorderActiveColor,
+			"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+			"color" :  paginationActiveColor,
+			"background-color": "transparent",
+		}
+		selectors[" .uagb-post-pagination-wrap a"] = {
+			"border-style" : "solid",
+			"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+			"border-color" :  paginationBorderColor,
+			"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+			"color" :  paginationColor,
+			"background-color": "transparent",
+		}
+	}
+
 
 	if ( linkBox ) {
 		selectors[" .uagb-post__inner-wrap"]["cursor"] = "pointer"

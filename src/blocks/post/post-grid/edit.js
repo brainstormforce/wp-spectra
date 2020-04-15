@@ -189,7 +189,12 @@ class UAGBPostGrid extends Component {
 			paginationColor,
 			paginationBgColor,
 			paginationActiveColor,
-			paginationBgActiveColor
+			paginationBgActiveColor,
+			paginationLayout,
+			paginationBorderSize,
+			paginationBorderRadius,
+			paginationBorderColor,
+			paginationBorderActiveColor
 		} = attributes
 
 		const hoverSettings = (
@@ -324,7 +329,7 @@ class UAGBPostGrid extends Component {
 				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
 			} )
 		}
-
+console.log(paginationLayout);
 		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>
@@ -356,7 +361,7 @@ class UAGBPostGrid extends Component {
 						</Fragment>
 					}
 					<RangeControl
-							label={ __( "Posts per Page" ) }
+							label={ __( "Posts Per Page" ) }
 							value={ postsToShow }
 							onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 							min={ 0 }
@@ -461,6 +466,73 @@ class UAGBPostGrid extends Component {
                 	}
 					
 				</PanelBody>
+				{ postPagination == true && 
+					<PanelBody title={ __( "Pagination" ) } initialOpen={ false }>
+						<Fragment>
+							<SelectControl
+								label={ __( "Pagination Layout" ) }
+								value={ paginationLayout }
+								onChange={ ( value ) => setAttributes( { paginationLayout: value } ) }
+								options={ [
+									{ value: "border", label: __( "Border" ) },
+									{ value: "filled", label: __( "Filled" ) },
+								] }
+							/>
+							{ paginationLayout == "filled" && 
+								<Fragment>
+									<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBgColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBgColor: colorValue } ) }
+									/>
+									<p className="uagb-setting-label">{ __( "Background Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgActiveColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBgActiveColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBgActiveColor: colorValue } ) }
+									/>
+								</Fragment>
+							}
+							{ paginationLayout == "border" && 
+								<Fragment>
+									<RangeControl
+										label={ __( "Border Size" ) }
+										value={ paginationBorderSize }
+										onChange={ ( value ) => setAttributes( { paginationBorderSize: value } ) }
+										min={ 0 }
+										max={ 10 }
+									/>
+									<RangeControl
+										label={ __( "Border Radius" ) }
+										value={ paginationBorderRadius }
+										onChange={ ( value ) => setAttributes( { paginationBorderRadius: value } ) }
+										min={ 0 }
+										max={ 500 }
+									/>
+									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBorderColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBorderColor: colorValue } ) }
+									/>
+									<p className="uagb-setting-label">{ __( "Border Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBorderActiveColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBorderActiveColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBorderActiveColor: colorValue } ) }
+									/>
+								</Fragment>
+							}
+							<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationColor: colorValue } ) }
+							/>
+							<p className="uagb-setting-label">{ __( "Text Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationActiveColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationActiveColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
+							/>
+						</Fragment>
+					</PanelBody>
+				}
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
@@ -780,30 +852,6 @@ class UAGBPostGrid extends Component {
 							/>
 						</Fragment>
 					}
-					{ postPagination == true &&
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Pagination Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationColor }} ></span></span></p>
-							<ColorPalette
-							value={ paginationColor }
-							onChange={ ( colorValue ) => setAttributes( { paginationColor: colorValue } ) }
-							/>
-							<p className="uagb-setting-label">{ __( "Pagination Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgColor }} ></span></span></p>
-							<ColorPalette
-							value={ paginationBgColor }
-							onChange={ ( colorValue ) => setAttributes( { paginationBgColor: colorValue } ) }
-							/>
-							<p className="uagb-setting-label">{ __( "Pagination Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationActiveColor }} ></span></span></p>
-							<ColorPalette
-							value={ paginationActiveColor }
-							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
-							/>
-							<p className="uagb-setting-label">{ __( "Pagination Background Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgActiveColor }} ></span></span></p>
-							<ColorPalette
-							value={ paginationBgActiveColor }
-							onChange={ ( colorValue ) => setAttributes( { paginationBgActiveColor: colorValue } ) }
-							/>
-						</Fragment>
-                	}
 				</PanelBody>
 				<PanelBody title={ __( "Spacing" ) } initialOpen={ false }>
 					<RangeControl
@@ -864,7 +912,7 @@ class UAGBPostGrid extends Component {
 						max={ 50 }
 						allowReset
 					/>
-				</PanelBody>
+				</PanelBody>	
 			</InspectorControls>
 		)
 

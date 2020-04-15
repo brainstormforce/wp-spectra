@@ -714,6 +714,22 @@ function uagb_register_blocks() {
 				'paginationMarkup'               => array(
 					'type' => 'string',
 				),
+				'paginationLayout'               => array(
+					'type' => 'string',
+					'default' => 'filled',
+				),
+				'paginationBorderActiveColor'    => array(
+					'type' => 'string',
+				),
+				'paginationBorderColor'          => array(
+					'type' => 'string',
+				),
+				'paginationBorderRadius'         => array(
+					'type'    => 'number',
+				),
+				'paginationBorderSize'           => array(
+					'type'    => 'number',
+				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
 		)

@@ -2535,19 +2535,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = self::get_post_selectors( $attr );
 			
 			// Pagination CSS
-			$pagination_css = array(
-				" .uagb-post-pagination-wrap .page-numbers.current" => array(
+			var_dump($attr['paginationLayout']);
+			wp_die();
+			if ( 'filled' === $attr['paginationLayout'] ) {
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
 					"background-color" =>  $attr['paginationBgActiveColor'],
 					"color" =>  $attr['paginationActiveColor'],
-				),
-				" .uagb-post-pagination-wrap a" => array(
+				);
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
 					"background-color" =>  $attr['paginationBgColor'],
 					"color" =>  $attr['paginationColor'],
-				),
-			);
+				);
+			}
+			if ( 'border' === $attr['paginationLayout'] ) {
 
-			$selectors = array_merge( (array) $pagination_css, $selectors );
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderActiveColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationActiveColor'],
+				);
 
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationColor'],
+				);
+
+			}
+			
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
