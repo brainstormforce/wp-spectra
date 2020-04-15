@@ -158,6 +158,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 = 1.14.8.1 =
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
+* Fix: Advanced Columns : Column width not applying in the Editor.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.
