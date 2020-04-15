@@ -46,6 +46,10 @@ class UAGBPostGrid extends Component {
 		this.onSelectPostType = this.onSelectPostType.bind( this )
 		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
 		this.onSelectPagination = this.onSelectPagination.bind( this )
+		this.onChangePostsPerPage = this.onChangePostsPerPage.bind( this )
+		this.onChangePageLimit = this.onChangePageLimit.bind( this )
+		this.onChangePrevText = this.onChangePrevText.bind( this )
+		this.onChangeNextText = this.onChangeNextText.bind( this )
 	}
 
 	onSelectPostType( value ) {
@@ -68,6 +72,31 @@ class UAGBPostGrid extends Component {
 		setAttributes( { postPagination: value } )
 		setAttributes( { paginationMarkup: "" } )
 	}
+	onChangePostsPerPage( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postsToShow: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangePageLimit( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { pageLimit: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangePrevText( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { paginationPrevText: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangeNextText( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { paginationNextText: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+
 
 	componentDidMount() {
 
@@ -373,7 +402,7 @@ class UAGBPostGrid extends Component {
 					<RangeControl
 							label={ __( "Posts Per Page" ) }
 							value={ postsToShow }
-							onChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+							onChange={ this.onChangePostsPerPage }
 							min={ 0 }
 							max={ 100 }
 					/>
@@ -469,7 +498,7 @@ class UAGBPostGrid extends Component {
 						<RangeControl
 							label={ __( "Page Limit" ) }
 							value={ pageLimit }
-							onChange={ ( value ) => setAttributes( { pageLimit: value } ) }
+							onChange={ this.onChangePageLimit }
 							min={ 0 }
 							max={ 100 }
 						/>
@@ -560,12 +589,12 @@ class UAGBPostGrid extends Component {
 							<TextControl
 								label= { __( "Previous Text" ) }
 								value= { paginationPrevText }
-								onChange={ value => setAttributes( { paginationPrevText: value } ) }
+								onChange={ this.onChangePrevText }
 							/>
 							<TextControl
 								label= { __( "Next Text" ) }
 								value= { paginationNextText }
-								onChange={ value => setAttributes( { paginationNextText: value } ) }
+								onChange={ this.onChangeNextText }
 							/>
 						</Fragment>
 					</PanelBody>
