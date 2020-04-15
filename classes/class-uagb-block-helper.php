@@ -2535,7 +2535,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = self::get_post_selectors( $attr );
 			
 			// Pagination CSS
-			
+			$selectors[" .uagb-post-pagination-wrap"] = array (
+
+				"margin-top" => UAGB_Helper::get_css_value( $attr['paginationSpacing'], "px" ),
+			);
 			if ( 'filled' === $attr['paginationLayout'] ) {
 				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
 					

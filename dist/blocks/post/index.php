@@ -730,6 +730,10 @@ function uagb_register_blocks() {
 				'paginationBorderSize'           => array(
 					'type'    => 'number',
 				),
+				'paginationSpacing'           => array(
+					'type'    => 'number',
+					'default' => 20,
+				),
 			),
 			'render_callback' => 'uagb_post_grid_callback',
 		)

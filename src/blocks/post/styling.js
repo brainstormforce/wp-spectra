@@ -98,7 +98,8 @@ function styling( props ) {
 		paginationBorderSize,
 		paginationBorderRadius,
 		paginationBorderColor,
-		paginationBorderActiveColor
+		paginationBorderActiveColor,
+		paginationSpacing
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -194,7 +195,10 @@ function styling( props ) {
 		" .uagb-post__image:before" : {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
-		}
+		},
+		" .uagb-post-pagination-wrap" : {
+			"margin-top" : generateCSSUnit( paginationSpacing, "px" ),
+		},
 	}
 
 	if ( 'filled' == paginationLayout ) {

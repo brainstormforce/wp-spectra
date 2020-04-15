@@ -194,7 +194,8 @@ class UAGBPostGrid extends Component {
 			paginationBorderSize,
 			paginationBorderRadius,
 			paginationBorderColor,
-			paginationBorderActiveColor
+			paginationBorderActiveColor,
+			paginationSpacing
 		} = attributes
 
 		const hoverSettings = (
@@ -529,6 +530,13 @@ class UAGBPostGrid extends Component {
 							<ColorPalette
 							value={ paginationActiveColor }
 							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
+							/>
+							<RangeControl
+								label={ __( "Spacing" ) }
+								value={ paginationSpacing }
+								onChange={ ( value ) => setAttributes( { paginationSpacing: value } ) }
+								min={ 0 }
+								max={ 500 }
 							/>
 						</Fragment>
 					</PanelBody>

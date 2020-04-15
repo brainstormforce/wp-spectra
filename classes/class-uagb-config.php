@@ -1204,7 +1204,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationBorderActiveColor' => '',
 							'paginationBorderColor' => '',
 							'paginationBorderRadius' => '',
-							'paginationBorderSize' => ''
+							'paginationBorderSize' => '',
+							'paginationSpacing' => 20
 						),
 					),
 					'uagb/post-masonry'      => array(
