@@ -1072,9 +1072,7 @@ export default compose(
 						{
 							tag: contentLevel,
 							text: striptags( heading_attr[contentName] ),
-							link: parseTocSlug(heading_attr[contentName].replace(/[\u2018\u2019]/g, "'")
-							.replace(/[\u201C\u201D]/g, '"')),
-							//link: parseTocSlug( striptags( heading_attr[contentName] ) ),
+							link: parseTocSlug( striptags( heading_attr[contentName] ) ),
 							content: heading_attr[contentName]
 						}
 					);

@@ -135,12 +135,8 @@
 					all_header.each( function (){
 
 						let header = $( this );
-						console.log(header);
 						let header_text = parseTocSlug(header.text());
-						let element_text = parseTocSlug(element.text.replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"').replace(/[\u2014]/g, '-'));
-						console.log(element_text);
-						console.log(header_text);
+						let element_text = parseTocSlug(element.text);
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
