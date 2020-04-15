@@ -1204,7 +1204,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationBorderActiveColor' => '',
 							'paginationBorderColor' => '',
 							'paginationBorderRadius' => '',
-							'paginationBorderSize' => '',
+							'paginationBorderSize' => 1,
 							'paginationSpacing' => 20,
 							'paginationAlignment' => 'left',
 							'paginationNextText' => '« Previous',

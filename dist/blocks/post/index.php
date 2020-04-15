@@ -732,6 +732,7 @@ function uagb_register_blocks() {
 				),
 				'paginationBorderSize'           => array(
 					'type'    => 'number',
+					'default' => 1,
 				),
 				'paginationSpacing'           => array(
 					'type'    => 'number',

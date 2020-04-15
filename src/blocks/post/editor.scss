@@ -40,7 +40,10 @@
    } 
    li {
 
-	   display: inline-block;
+		display: inline-block;
+		list-style: none;
+		margin: 0;
+		padding: 0;
 
 	   span.page-numbers.current {
 
@@ -57,6 +60,6 @@
 .wp-block-uagb-post-grid.uagb-post-grid .uagb-post-pagination-wrap ul {
 	
 	list-style: none;
-	margin: 0px;
-	padding: 0px;
+    margin: 0;
+    padding: 0;
 }

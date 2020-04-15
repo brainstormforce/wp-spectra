@@ -573,6 +573,7 @@ class UAGBPostGrid extends Component {
 								label={ __( "Spacing" ) }
 								value={ paginationSpacing }
 								onChange={ ( value ) => setAttributes( { paginationSpacing: value } ) }
+								help = { __( "This spacing is between the Post Grid and the Pagination") }
 								min={ 0 }
 								max={ 500 }
 							/>
