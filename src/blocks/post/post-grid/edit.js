@@ -329,7 +329,7 @@ class UAGBPostGrid extends Component {
 				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
 			} )
 		}
-console.log(paginationLayout);
+
 		// All Controls.
 		const inspectorControls = (
 			<InspectorControls>

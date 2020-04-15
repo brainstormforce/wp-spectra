@@ -2535,8 +2535,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = self::get_post_selectors( $attr );
 			
 			// Pagination CSS
-			var_dump($attr['paginationLayout']);
-			wp_die();
+			
 			if ( 'filled' === $attr['paginationLayout'] ) {
 				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
 					

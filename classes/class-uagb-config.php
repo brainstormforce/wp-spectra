@@ -1193,6 +1193,18 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderColor'             => '',
 							'borderHColor'            => '',
 							'borderRadius'            => '0',
+							'postPagination' => '',
+							'pageLimit' => '',
+							'paginationBgActiveColor' => '',
+							'paginationActiveColor' => '',
+							'paginationBgColor' => '',
+							'paginationColor' => '',
+							'paginationMarkup' => '',
+							'paginationLayout' => 'filled',
+							'paginationBorderActiveColor' => '',
+							'paginationBorderColor' => '',
+							'paginationBorderRadius' => '',
+							'paginationBorderSize' => ''
 						),
 					),
 					'uagb/post-masonry'      => array(
