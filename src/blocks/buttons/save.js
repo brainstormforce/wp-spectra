@@ -13,6 +13,8 @@ const {
 const { Fragment } = wp.element
 
 export default function save( props ) {
+
+	return null;
 	
 	const { attributes, className } = props
 
