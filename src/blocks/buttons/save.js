@@ -26,6 +26,8 @@ export default function save( props ) {
 
 	
 	return (
-		<InnerBlocks.Content />
+		<div className="uagb-multi-buttons-wrap">
+			<InnerBlocks.Content />
+		</div>
 	)
 }
