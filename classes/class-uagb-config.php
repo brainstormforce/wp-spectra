@@ -1065,7 +1065,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'background' => '',
 							'hColor' => '',
 							'hBackground' => '',
-							'sizeType' => '',
+							'sizeType' => 'px',
 							'sizeMobile' => '',
 							'sizeTablet' => '',
 							'lineHeight' => '',

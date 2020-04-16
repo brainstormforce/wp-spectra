@@ -23,6 +23,8 @@ export default function save( props ) {
 		items,
 		buttons,
 		btn_count,
+		target,
+		link,
 		label
 	} = props.attributes
 
@@ -36,8 +38,11 @@ export default function save( props ) {
 				<div className="uagb-buttons-repeater">
 					<RichText.Content
 						value={ label }
-						tagName='div'
+						tagName='a'
 						className='uagb-button__link'
+						href={ link }
+						rel ="noopener noreferrer"
+						target={ target }
 					/>
 				</div>
 			</div>
