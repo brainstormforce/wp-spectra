@@ -49,23 +49,22 @@ const attributes = {
 		default:"_self" 
 	},
 	size: {
-		type: "string",
-		default:"" 
+		type: "number",
 	},
 	vPadding: {
-		type: "string",
+		type: "number",
 		default:10 
 	},
 	hPadding: {
-		type: "string",
+		type: "number",
 		default:14 
 	} ,
 	borderWidth: {
-		type: "string",
+		type: "number",
 		default:1 
 	} ,
 	borderRadius: {
-		type: "string",
+		type: "number",
 		default:2 
 	} ,
 	borderStyle: {
@@ -101,15 +100,15 @@ const attributes = {
 		default:"px" 
 	} ,
 	sizeMobile: {
-		type: "string",
+		type: "number",
 		default:"" 
 	} ,
 	sizeTablet: {
-		type: "string",
+		type: "number",
 		default:"" 
 	} ,
 	lineHeight: {
-		type: "string",
+		type: "number",
 		default:"" 
 	} ,
 	lineHeightType: {
@@ -117,11 +116,11 @@ const attributes = {
 		default:"em" 
 	},
 	lineHeightMobile: {
-		type: "string",
+		type: "number",
 		default:"" 
 	} ,
 	lineHeightTablet: {
-		type: "string",
+		type: "number",
 		default:"" 
 	} ,
 }
