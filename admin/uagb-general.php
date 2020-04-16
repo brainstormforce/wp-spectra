@@ -78,7 +78,7 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 
 								$addon = str_replace( 'uagb/', '', $addon );
 
-								if ( 'column' === $addon || 'icon-list-child' === $addon ) {
+								if ( 'column' === $addon || 'icon-list-child' === $addon || 'buttons-child' === $addon ) {
 									continue;
 								}
 

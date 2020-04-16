@@ -26,12 +26,11 @@ export default function save( props ) {
 		label
 	} = props.attributes
 
-
 	return (
 		<div className={ classnames(
 			className,
 			"uagb-buttons__outer-wrap",
-			`uagb-block-${ props.clientId }`
+			`uagb-block-${ block_id }`
 			) }>
 			<div className="uagb-buttons__wrap">
 				<div className="uagb-buttons-repeater">
