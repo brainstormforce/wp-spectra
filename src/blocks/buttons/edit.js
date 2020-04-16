@@ -166,12 +166,17 @@ class UAGBMultiButtonEdit extends Component {
 						/>
 					</PanelBody>
 				</InspectorControls>
+				<div className={ classnames(
+					className,
+					`uagb-block-${ this.props.clientId }`
+				    ) }>
 					<InnerBlocks
 						template={ getButtonTemplate( btn_count, buttons ) }
 						templateLock={ false }
 						allowedBlocks={ ALLOWED_BLOCKS }
 						__experimentalMoverDirection={ 'vertical' }
 					/>
+				</div>
 				{ loadBtnGoogleFonts }
 			</Fragment>
 		)

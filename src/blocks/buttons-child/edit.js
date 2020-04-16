@@ -544,32 +544,32 @@ class UAGBButtonsChild extends Component {
 
         return (
             <Fragment>
-                    <InspectorControls>
-                        { buttonControls }
-                    </InspectorControls>
-                    <div className={ classnames(
-					className,
-					"uagb-buttons__outer-wrap",
-					`uagb-block-${ this.props.clientId }`
-				    ) }>
-                    <div className="uagb-buttons__wrap">
-                        <div className="uagb-buttons-repeater">
-                        <RichText
-                            placeholder={ __( "Add text…" ) }
-                            value={ label }
-                            tagName='div'
-                            onChange={ value => {
-                                setAttributes( { label: value })
-                            } }
-                            allowedFormats={ [ "bold", "italic", "strikethrough" ] }
-                            className='uagb-button__link'
-                            rel ="noopener noreferrer"
-                            keepPlaceholderOnFocus
-                        />
-                        </div>
-                    </div>
-                    </div>
-                </Fragment>
+				<InspectorControls>
+					{ buttonControls }
+				</InspectorControls>
+				<div className={ classnames(
+				className,
+				"uagb-buttons__outer-wrap",
+				`uagb-block-${ this.props.clientId }`
+				) }>
+					<div className="uagb-buttons__wrap">
+						<div className="uagb-buttons-repeater uagb-button__wrapper">
+							<RichText
+								placeholder={ __( "Add text…" ) }
+								value={ label }
+								tagName='div'
+								onChange={ value => {
+									setAttributes( { label: value })
+								} }
+								allowedFormats={ [ "bold", "italic", "strikethrough" ] }
+								className='uagb-button__link'
+								rel ="noopener noreferrer"
+								keepPlaceholderOnFocus
+							/>	
+						</div>
+					</div>
+				</div>
+            </Fragment>
         )
 	}
 }

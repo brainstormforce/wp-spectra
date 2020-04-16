@@ -45,7 +45,7 @@ function styling( props ) {
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
-
+// console.log(fontFamily);
 		selectors[" .uagb-buttons-repeater"] = {
 			"font-size" : generateCSSUnit( size, sizeType ),
 			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
@@ -92,20 +92,6 @@ function styling( props ) {
 			"font-size" : generateCSSUnit( sizeTablet, sizeType ),
 			"line-height" : generateCSSUnit( lineHeightTablet, lineHeightType ),
 		}
-
-
-	selectors[" .uagb-button__wrapper"] = {
-		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
-		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
-	}
-
-	selectors[" .uagb-button__wrapper:first-child"] = {
-		"margin-left" : 0
-	}
-
-	selectors[" .uagb-button__wrapper:last-child"] = {
-		"margin-right" : 0
-	}
 
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
