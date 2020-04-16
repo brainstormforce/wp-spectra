@@ -366,36 +366,12 @@
 		text-decoration: none;
 	}
 }
+
 .uagb-post-pagination-wrap {
-   a {	   
-		outline: none;
-		color: #3a3a3a;
-		background: #efefef;
+	a.page-numbers,
+	span.page-numbers.current {	   
 		padding: 5px 10px;
-		margin: 0 0 5px;
-   } 
-   li {
-
-		display: inline-block;
-		list-style: none;
 		margin: 0;
-		padding: 0;
-	   span.page-numbers.current {
-
-			color: #3a3a3a;
-			background: #0274be;
-			display: inline-block;
-			padding: 5px 10px;
-			margin: 0 0 5px;
-			text-decoration: none;
-
-	   }
-   }
-   ul {
-
-	list-style: none;
-    margin: 0;
-    padding: 0;
-    
+		display: inline-block;
    }
 }

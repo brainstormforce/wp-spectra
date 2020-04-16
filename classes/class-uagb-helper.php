@@ -1075,16 +1075,16 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			if ( $attributes['postPagination'] ) {
-				
-				$paged = ( get_query_var('paged') ) ? get_query_var('paged') : 1;
+
+				$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 				$query_args = array(
 					'posts_per_page' => $attributes['postsToShow'],
-					'paged' => $paged
+					'paged'          => $paged,
 				);
 			}
-			
+
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
-			
+
 			return new WP_Query( $query_args );
 		}
 

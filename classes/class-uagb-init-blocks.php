@@ -216,7 +216,7 @@ class UAGB_Init_Blocks {
 	 */
 	public function editor_assets() {
 
-		$uagb_ajax_nonce = wp_create_nonce('uagb_ajax_nonce');
+		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
@@ -290,7 +290,7 @@ class UAGB_Init_Blocks {
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 				'post_types'        => UAGB_Helper::get_post_types(),
 				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
-				'uagb_ajax_nonce'	=> $uagb_ajax_nonce,
+				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 			)
 		);
 	} // End function editor_assets().
