@@ -14,22 +14,24 @@ const { Fragment } = wp.element
 
 export default function save( props ) {
 
-	return null;
+	//return null;
 	
-	const { attributes, className } = props
+	const { className } = props
 
 	const {
-		block_id,
-		align,
-		items,
-		buttons,
-		btn_count,
+		block_id
 	} = props.attributes
 
-	
 	return (
-		<div className="uagb-multi-buttons-wrap">
-			<InnerBlocks.Content />
+		<div className={ classnames(
+			className,
+			"uagb-buttons__outer-wrap",
+			`uagb-block-${ block_id }`
+		) }
+		>
+			<div className="uagb-buttons__wrap">
+				<InnerBlocks.Content />
+			</div>
 		</div>
 	)
 }
