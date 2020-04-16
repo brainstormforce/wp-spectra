@@ -13,11 +13,8 @@ const {
 const { Fragment } = wp.element
 
 export default function save( props ) {
-
-	//return null;
 	
 	const { className } = props
-
 	const {
 		block_id
 	} = props.attributes
