@@ -33,5 +33,6 @@ registerBlockType( "uagb/social-share", {
 	attributes,
 	edit,
 	save,
+	transform,
 	// deprecated
 } )

@@ -8,6 +8,7 @@ import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import links from "./links"
 
 const { __ } = wp.i18n
 
@@ -40,6 +41,7 @@ class UAGBSocialShareChild extends Component {
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
@@ -51,6 +53,8 @@ class UAGBSocialShareChild extends Component {
 
 		const { attributes, setAttributes } = this.props
 		const {
+			current_url,
+			type,
 			className,
 			image_icon,
 			icon,
@@ -191,7 +195,26 @@ class UAGBSocialShareChild extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( "Icon Settings" ) } initialOpen={ true } >
+					<PanelBody title={ __( "Social Share Settings" ) } initialOpen={ true } >
+						<SelectControl
+						label={ __( "Type" ) }
+						value={ type }
+						options={ [
+							{ value: "facebook", label: __( "Facebook" ) },
+							{ value: "twitter", label: __( "Twitter" ) },
+							{ value: "google", label: __( "Google Plus" ) },
+							{ value: "pinterest", label: __( "Pinterest" ) },
+							{ value: "linkedin", label: __( "LinkedIn" ) },
+							{ value: "digg", label: __( "Digg" ) },
+							{ value: "blogger", label: __( "Blogger" ) },
+							{ value: "reddit", label: __( "Reddit" ) },
+							{ value: "stumbleupon", label: __( "StumbleUpon" ) },
+							{ value: "tumblr", label: __( "Tumblr" ) },
+							{ value: "myspace", label: __( "Myspace" ) },
+							{ value: "email", label: __( "Email" ) },
+						] }
+						onChange={ value => setAttributes( { type: value } ) }
+					/>
 						<SelectControl
 							label={ __( "Image / Icon" ) }
 							value={ image_icon }
@@ -199,7 +222,7 @@ class UAGBSocialShareChild extends Component {
 								{ value: "icon", label: __( "Icon" ) },
 								{ value: "image", label: __( "Image" ) },
 							] }
-							onChange={ ( value ) => setAttributes( { image_icon: value } ) }
+							onChange={ value => setAttributes( { image_icon: value } ) }
 						/>
 						{ "icon" == image_icon &&
 							<Fragment>

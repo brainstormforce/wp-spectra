@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import links from "./links"
 
 const {
 	RichText
@@ -15,7 +16,8 @@ export default function save( props ) {
 	const { attributes, className } = props
 
 	const {
-		// label,
+		current_url,
+		type,
 		image_icon,
 		icon,
 		image,
@@ -25,9 +27,9 @@ export default function save( props ) {
 
 	let url = ""
 
-	// if( null != current_url ) {
-	// 	url = links[social.type]
-	// }
+	if( null != current_url ) {
+		url = links[type]
+	}
 
 	let image_icon_html = ""
 

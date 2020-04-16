@@ -133,7 +133,6 @@ class UAGBSocialShare extends Component {
 
 		return (
 			<Fragment>
-				
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<SelectControl
@@ -152,6 +151,7 @@ class UAGBSocialShare extends Component {
 									value={ stack }
 									options={ [
 										{ value: "none", label: __( "None" ) },
+										{ value: "desktop", label: __( "Desktop" ) },
 										{ value: "tablet", label: __( "Tablet" ) },
 										{ value: "mobile", label: __( "Mobile" ) },
 									] }
@@ -250,6 +250,15 @@ class UAGBSocialShare extends Component {
 							min={ 0 }
 							max={ 500 }
 						/>
+						<hr className="uagb-editor__separator" />
+						<RangeControl
+							label={ __( "Gap between Items" ) }
+							value={ gap }
+							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
+							min={ 0 }
+							max={ 100 }
+						/>
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
@@ -262,8 +271,10 @@ class UAGBSocialShare extends Component {
 					<div className="uagb-social-share__wrap">
 						<InnerBlocks
 							template={ getSocialShareTemplate( social_count, socials ) }
-							templateLock="all"
-							allowedBlocks={ ALLOWED_BLOCKS } />
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS } 
+							__experimentalMoverDirection={ social_layout }	
+						/>
 					</div>
 				</div>
 			</Fragment>

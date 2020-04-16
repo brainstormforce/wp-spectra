@@ -1632,9 +1632,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"flex-direction" => "column"
 			);
 
-			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
-				"margin-bottom"  => 0
-			);
+			// $selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
+			// 	"margin-bottom"  => 0
+			// );
 
 			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
 				"padding"  => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
@@ -1642,13 +1642,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"margin-right"  => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
 			);
 
-			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
-				"margin-left"  => 0
-			);
+			// $selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
+			// 	"margin-left"  => 0
+			// );
 
-			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
-				"margin-right"  => 0
-			);
+			// $selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
+			// 	"margin-right"  => 0
+			// );
 
 			$selectors[" .uagb-ss__wrapper"] = array(
 				"border-radius" => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' )
@@ -1752,9 +1752,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						"flex-direction" => "column"
 					);
 
-					$selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
-					);
+					// $selectors[" .uagb-ss__wrapper:last-child"] = array (
+					// 	"margin-bottom" => 0
+					// );
 
 				} else if ( "tablet" == $attr['stack'] ) {
 
@@ -1768,9 +1768,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						"flex-direction" => "column"
 					);
 
-					$t_selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
-					);
+					// $t_selectors[" .uagb-ss__wrapper:last-child"] = array (
+					// 	"margin-bottom" => 0
+					// );
 
 				} else if ( "mobile" == $attr['stack'] ) {
 
@@ -1784,9 +1784,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						"flex-direction" => "column"
 					);
 
-					$m_selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
-					);
+					// $m_selectors[" .uagb-ss__wrapper:last-child"] = array (
+					// 	"margin-bottom" => 0
+					// );
 				}
 			}
 			

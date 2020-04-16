@@ -6,13 +6,20 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	type: {
+		type: "string",
+		default: "facebook"
+	},
 	image_icon: {
 		type: "string",
 		default: "icon"
 	},
+	current_url: {
+		type: "string"
+	},
 	icon: {
 		type: "string",
-		default: "fab fa-arrow-circle-right"
+		default: "fab fa-facebook"
 	},
 	image: {
 		type: "array",
