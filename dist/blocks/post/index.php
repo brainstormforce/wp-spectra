@@ -703,19 +703,23 @@ function uagb_register_blocks() {
 				),
 				'pageLimit'                   => array(
 					'type'    => 'number',
-					'default' => 5,
+					'default' => 10,
 				),
 				'paginationBgActiveColor'     => array(
 					'type' => 'string',
+					'default' => '#e2e2e2'
 				),
 				'paginationActiveColor'       => array(
 					'type' => 'string',
+					'default' => '#888686'
 				),
 				'paginationBgColor'           => array(
 					'type' => 'string',
+					'default' => '#888686'
 				),
 				'paginationColor'             => array(
 					'type' => 'string',
+					'default' => '#e2e2e2'
 				),
 				'paginationMarkup'            => array(
 					'type'    => 'string',
@@ -730,6 +734,7 @@ function uagb_register_blocks() {
 				),
 				'paginationBorderColor'       => array(
 					'type' => 'string',
+					'default' => '#888686'
 				),
 				'paginationBorderRadius'      => array(
 					'type' => 'number',
