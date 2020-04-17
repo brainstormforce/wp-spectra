@@ -116,11 +116,11 @@ class UAGBMultiButtonEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left", "center", "right", "full" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "General" ) } initialOpen={ false }>
+					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Button Typography" ) }</h2>
 						<TypographyControl
 							label={ __( "Typography" ) }

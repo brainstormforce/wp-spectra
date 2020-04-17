@@ -12,7 +12,8 @@ function styling( props ) {
 		fontWeight,
 		classMigrate,
 		gap,
-		stack
+		stack,
+		align
 	} = props.attributes
 
 	var selectors = {}
@@ -38,7 +39,7 @@ function styling( props ) {
 				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 	
-			selectors[" .uagb-buttons__wrap"] = {
+			selectors[" .block-editor-block-list__layout"] = {
 				 "flex-direction": "column"
 			}
 	
@@ -50,7 +51,7 @@ function styling( props ) {
 				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 	
-			tablet_selectors[" .uagb-buttons__wrap"] = {
+			tablet_selectors[" .block-editor-block-list__layout"] = {
 				"flex-direction": "column"
 			}
 	
@@ -62,8 +63,27 @@ function styling( props ) {
 				"margin-bottom" : generateCSSUnit( gap, "px" )
 			}
 	
-			mobile_selectors[" .uagb-buttons__wrap"] = {
+			mobile_selectors[" .block-editor-block-list__layout"] = {
 				"flex-direction": "column"
+			}
+		}
+
+		var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
+
+		if( align == "full" ) {
+			selectors[" .uagb-button__wrapper"] = {
+				"justify-content" : 'center',
+				"-webkit-box-pack": 'center',
+				"-ms-flex-pack": 'center',
+				"justify-content": 'center',
+				"width": "100%",
+			}
+		} else {
+			selectors[" .uagb-buttons__wrap"] = {
+				"justify-content" : alignment,
+				"-webkit-box-pack": alignment,
+				"-ms-flex-pack": alignment,
+				"justify-content": alignment,
 			}
 		}
 

@@ -702,7 +702,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$selectors[" .uagb-buttons__wrap"] = array (
+				$selectors[" .uagb-buttons-layout-wrap"] = array (
 					 "flex-direction" => "column"
 				);
 
@@ -714,7 +714,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$t_selectors[" .uagb-buttons__wrap"] = array (
+				$t_selectors[" .uagb-buttons-layout-wrap"] = array (
 					 "flex-direction" => "column"
 				);
 
@@ -726,8 +726,33 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$m_selectors[" .uagb-buttons__wrap"] = array (
+				$m_selectors[" .uagb-buttons-layout-wrap"] = array (
 					 "flex-direction" => "column"
+				);
+			}
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
+			if( 'full' === $attr['align'] ) {
+				$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
+					'justify-content' => 'center',
+					'-webkit-box-pack'=> 'center',
+					'-ms-flex-pack' => 'center',
+					'justify-content' => 'center',
+					'-webkit-box-align' => 'center',
+					'-ms-flex-align' => 'center',
+					'align-items' => 'center',
+					'width' => '100%',
+					'text-align' => 'center',
+				);
+			} else {
+				$selectors[' .uagb-buttons__wrap'] = array (
+					'justify-content' => $alignment,
+					'-webkit-box-pack'=> $alignment,
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
 				);
 			}
 
@@ -761,36 +786,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
-
-			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
-
 			$m_selectors = array();
 			$t_selectors = array();
-
-
-			if( 'full' === $attr['align'] ) {
-				$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
-					'justify-content' => 'center',
-					'-webkit-box-pack'=> 'center',
-					'-ms-flex-pack' => 'center',
-					'justify-content' => 'center',
-					'-webkit-box-align' => 'center',
-					'-ms-flex-align' => 'center',
-					'align-items' => 'center',
-					'width' => '100%',
-					'text-align' => 'center',
-				);
-			} else {
-				$selectors[' .uagb-buttons__wrap'] = array (
-					'justify-content' => $alignment,
-					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack' => $alignment,
-					'justify-content' => $alignment,
-					'-webkit-box-align' => $alignment,
-					'-ms-flex-align' => $alignment,
-					'align-items' => $alignment,
-				);
-			}
 
 			$selectors[' .uagb-buttons-repeater'] = array (
 				'font-size'     => $attr['size'] . $attr['sizeType'],

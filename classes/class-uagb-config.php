@@ -1035,6 +1035,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'        => '',
 							'gap'             => 10,
 							'stack'           => 'none',
+							'align'			  => 'center',	
 							'fontFamily'      => '',
 							'fontWeight'      => '',
 							'loadGoogleFonts' => false,
@@ -1049,7 +1050,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'    => false,
 							'block_id'        => '',
-							'align'           => 'center',
 							'label' => '',
 							'link' => '',
 							'target' => '',

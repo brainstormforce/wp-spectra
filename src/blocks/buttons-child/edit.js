@@ -92,7 +92,7 @@ class UAGBButtonsChild extends Component {
 			return (
 				<PanelBody
 					title={ __( "Button Settings" ) }
-					initialOpen={ false }
+					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
 					<p className="components-base-control__label">{ __( "Link" ) }</p>
