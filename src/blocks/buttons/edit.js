@@ -168,7 +168,7 @@ class UAGBMultiButtonEdit extends Component {
 							template={ getButtonTemplate( btn_count, buttons ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							__experimentalMoverDirection={ 'vertical' }
+							__experimentalMoverDirection={ 'horizontal' }
 						/>
 					</div>
 				</div>
