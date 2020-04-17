@@ -707,19 +707,19 @@ function uagb_register_blocks() {
 				),
 				'paginationBgActiveColor'     => array(
 					'type' => 'string',
-					'default' => '#e2e2e2'
+					'default' => '#e4e4e4'
 				),
 				'paginationActiveColor'       => array(
 					'type' => 'string',
-					'default' => '#888686'
+					'default' => '#333333'
 				),
 				'paginationBgColor'           => array(
 					'type' => 'string',
-					'default' => '#888686'
+					'default' => '#e4e4e4'
 				),
 				'paginationColor'             => array(
 					'type' => 'string',
-					'default' => '#333'
+					'default' => '#777777'
 				),
 				'paginationMarkup'            => array(
 					'type'    => 'string',
