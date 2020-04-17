@@ -1563,6 +1563,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'  => false,
+							'childMigrate'  => false,
 							'align'         => 'center',
 							'social_count'  => '1',
 							'socials'       => array(

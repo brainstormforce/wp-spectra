@@ -1738,6 +1738,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"align-items" => $alignment,
 			);
 
+			if ( ! $attr['childMigrate'] ) {
+
+				foreach ( $attr['socials'] as $key => $socials ) {
+
+					$socials['icon_color'] = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
+					$socials['icon_hover_color'] = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
+					$socials['icon_bg_color'] = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
+					$socials['icon_bg_hover_color'] = ( isset( $socials['icon_bg_hover_color'] ) ) ? $socials['icon_bg_hover_color'] : '';
+
+					if ( $attr['social_count'] <= $key ) {
+						break;
+					}
+
+					$child_selectors = self::get_social_share_child_selectors( $socials, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors );
+				}
+			}
+
 			if ( 'horizontal' == $attr['social_layout'] ) {
 
 				if ( "desktop" == $attr['stack'] ) {
@@ -1824,6 +1842,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, (array) $attr );
 
+			$selectors = self::get_social_share_child_selectors( $attr, $id, true );
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			return $generated_css;
+		}
+
+		/**
+		 * Get Social share Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The key for the Icon List Item.
+		 * @param string $childMigrate The child migration flag.
+		 * @return array The Widget List.
+		 */
+		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) { 			// @codingStandardsIgnoreStart
+
+			$wrapper = ( ! $childMigrate ) ? " .uagb-ss-repeater-" . $id : ".uagb-ss-repeater";
+
 			$selectors = array(
 				".uagb-ss-repeater a.uagb-ss__link" => array(
 					"color" => $attr['icon_color']
@@ -1846,19 +1892,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					// "border-color" => $attr['icon_border_hover_color']
 				),
 			);
-
 			// @codingStandardsIgnoreEnd
 
-			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
-
-			$generated_css = array(
-				'desktop' => $desktop,
-				'tablet'  => '',
-				'mobile'  => '',
-			);
-
-			return $generated_css;
+			return $selectors;
 		}
+
 
 		/**
 		 * Get Icon List Block CSS
