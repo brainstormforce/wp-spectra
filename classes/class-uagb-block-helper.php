@@ -694,19 +694,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-family'   => $attr['fontFamily'],
 				'font-weight'   => $attr['fontWeight'],
 			);
-			if ( ! $attr['childMigrate'] ) {
-				
-				foreach ( $attr['buttons'] as $key => $button ) {
-
-					if ( $attr['btn_count'] <= $key ) {
-						break;
-					}
-					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
-					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
-					$t_selectors = $child_selectors['t_selectors'];
-					$m_selectors = $child_selectors['m_selectors'];
-				}
-			}
 			
 			if ( "desktop" == $attr['stack'] ) {
 
@@ -769,7 +756,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'align-items' => $alignment,
 				);
 			}
+			if ( ! $attr['childMigrate'] ) {
+				
+				foreach ( $attr['buttons'] as $key => $button ) {
 
+					if ( $attr['btn_count'] <= $key ) {
+						break;
+					}
+					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
+					$t_selectors = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
+					$m_selectors = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );
+				}
+			}
 			// @codingStandardsIgnoreEnd
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
