@@ -4816,6 +4816,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$base_selector = ( isset( $attr['classMigrate'] ) && $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-social-share-';
 			$selector      = $base_selector . $id;
+			var_dump($selector);
 			$js            = 'var ssLinks = document.querySelectorAll( "' . $selector . '" ); for (let j = 0; j < ssLinks.length; j++) { var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );';
 			$js           .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
 					'var social_url = this.dataset.href; ' .
@@ -4826,7 +4827,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
 				'}); }}';
+				?>
+				<script type="text/javascript">
+						var ssLinks = document.querySelectorAll( ".uagb-block-b4b29930-d7e4-4048-ba5c-72d416570f2a" );
+						console.log(ssLinks);
+					for (let j = 0; j < ssLinks.length; j++) {
+							var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );
+						for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {
+							var social_url = this.dataset.href;
+							var target = "";
+								if( social_url == "mailto:?body=" ){
+									target = "_self";
+								}
+								var request_url = social_url + window.location.href ;
 
+								});
+							}}
+				</script>
+				<?php
 			return $js;
 		}
 
