@@ -2,7 +2,7 @@
 name: Feature request
 about: Suggest an idea for this project
 title: ISBAT ...
-labels: "[Priority] Low, [Type] Enhancement"
+labels: "enhancement"
 assignees: ''
 ---
 

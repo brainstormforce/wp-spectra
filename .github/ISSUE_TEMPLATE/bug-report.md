@@ -2,7 +2,7 @@
 name: Bug report
 about: Create a report to help us improve
 title: ISBAT ...
-labels: "[Priority] Low, [Type] Bug"
+labels: "bug"
 assignees: ''
 ---
 
