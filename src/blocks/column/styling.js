@@ -122,15 +122,15 @@ function styling( props ) {
 	}
 
 	if ( colWidth != "" && colWidth != 0 ) {
-		selectors[".editor-block-list__block"] = { "width" : colWidth + "%" }
+		selectors[".block-editor-block-list__block"] = { "width" : colWidth + "%" }
 	}
 
 	if ( colWidthTablet != "" && colWidthTablet != 0 ) {
-		tablet_selectors[".editor-block-list__block"] = { "width" : colWidthTablet + "%" }
+		tablet_selectors[".block-editor-block-list__block"] = { "width" : colWidthTablet + "%" }
 	}
 
 	if ( colWidthMobile != "" && colWidthMobile != 0 ) {
-		mobile_selectors[".editor-block-list__block"] = { "width" : colWidthMobile + "%" }
+		mobile_selectors[".block-editor-block-list__block"] = { "width" : colWidthMobile + "%" }
 	}
 
 	var styling_css = ""

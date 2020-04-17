@@ -788,6 +788,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'     => false,
+							'childMigrate'     => false,
 							'align'            => 'left',
 							'icon_count'       => '1',
 							'icons'            => array(

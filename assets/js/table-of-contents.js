@@ -14,15 +14,15 @@
 		}
 
 		var parsedSlug = slug.toString().toLowerCase()
-			
-		.replace(/&(amp;)/g, '')
-		.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
-		.replace(/\s+/g, '-')                        // Replace spaces with -
-		.replace(/<[^<>]+>/g, '')                    // Remove tags
-		.replace(/[&\/\\#,^!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
-		.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
-		.replace(/^-+/, '')                          // Trim - from start of text
-		.replace(/-+$/, '');                         // Trim - from end of text
+			.replace(/&(amp;)/g, '')					 	// Remove &
+			.replace(/&(mdash;)/g, '')					 	// Remove long dash
+			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
+			.replace(/[&]nbsp[;]/gi, '-')                	// Replace inseccable spaces
+			.replace(/\s+/g, '-')                        	// Replace spaces with -
+			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}‘”]/g, '')  // Remove special chars
+			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
+			.replace(/^-+/, '')                          	// Trim - from start of text
+			.replace(/-+$/, '');                         	// Trim - from end of text
 
 		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
@@ -117,7 +117,7 @@
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
 
-			$headers = JSON.parse(attr.headerLinks);
+			var $headers = JSON.parse(attr.headerLinks);
 			
 			var allowed_h_tags = [];
 			
@@ -132,14 +132,13 @@
 			if ( undefined !== $headers && 0 !== all_header.length ) {
 
 				$headers.forEach(function (element, i) {
+					
+					let element_text = parseTocSlug(element.text);
 					all_header.each( function (){
 
 						let header = $( this );
-						
-						let header_text = parseTocSlug(header.text().replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"'));
-						let element_text = parseTocSlug(element.text.replace(/[\u2018\u2019]/g, "'")
-						.replace(/[\u201C\u201D]/g, '"'));
+						let header_text = parseTocSlug(header.text());
+
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
