@@ -2551,8 +2551,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"background-color" =>  $attr['paginationBgColor'],
 					"color" =>  $attr['paginationColor'],
 				);
-			}
-			if ( 'border' === $attr['paginationLayout'] ) {
+			} else  {
 
 				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
 					
