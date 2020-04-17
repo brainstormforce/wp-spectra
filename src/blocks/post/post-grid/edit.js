@@ -517,6 +517,17 @@ class UAGBPostGrid extends Component {
 									{ value: "filled", label: __( "Filled" ) },
 								] }
 							/>
+							<SelectControl
+								label={ __( "Pagination Alignment" ) }
+								value={ paginationAlignment }
+								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
+								options={ [
+									{ value: "left", label: __( "Left" ) },
+									{ value: "center", label: __( "Center" ) },
+									{ value: "right", label: __( "Right" ) },
+								] }
+							/>
+							<hr className="uagb-editor__separator" />
 							{ paginationLayout == "filled" && 
 								<Fragment>
 									<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgColor }} ></span></span></p>
@@ -569,6 +580,7 @@ class UAGBPostGrid extends Component {
 							value={ paginationActiveColor }
 							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
 							/>
+							<hr className="uagb-editor__separator" />
 							<RangeControl
 								label={ __( "Spacing" ) }
 								value={ paginationSpacing }
@@ -577,16 +589,7 @@ class UAGBPostGrid extends Component {
 								min={ 0 }
 								max={ 500 }
 							/>
-							<SelectControl
-								label={ __( "Pagination Alignment" ) }
-								value={ paginationAlignment }
-								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
-								options={ [
-									{ value: "left", label: __( "Left" ) },
-									{ value: "center", label: __( "Center" ) },
-									{ value: "right", label: __( "Right" ) },
-								] }
-							/>
+							<hr className="uagb-editor__separator" />
 							<TextControl
 								label= { __( "Previous Text" ) }
 								value= { paginationPrevText }
