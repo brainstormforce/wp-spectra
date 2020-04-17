@@ -702,9 +702,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						break;
 					}
 					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
-					$selectors = array_merge( $selectors, (array) $child_selectors );
+					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
+					$t_selectors = $child_selectors['t_selectors'];
+					$m_selectors = $child_selectors['m_selectors'];
 				}
 			}
+			
 			if ( "desktop" == $attr['stack'] ) {
 
 				$selectors[" .uagb-button__wrapper"] = array (
@@ -782,7 +785,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'tablet'  => $tablet,
 				'mobile'  => $mobile,
 			);
-
+		
 			return $generated_css;
 		}
 		/**
