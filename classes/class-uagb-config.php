@@ -1198,7 +1198,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationBgActiveColor'     => '#e2e2e2',
 							'paginationActiveColor'       => '#888686',
 							'paginationBgColor'           => '#888686',
-							'paginationColor'             => '#e2e2e2',
+							'paginationColor'             => '#333',
 							'paginationMarkup'            => '',
 							'paginationLayout'            => 'filled',
 							'paginationBorderActiveColor' => '',

@@ -719,7 +719,7 @@ function uagb_register_blocks() {
 				),
 				'paginationColor'             => array(
 					'type' => 'string',
-					'default' => '#e2e2e2'
+					'default' => '#333'
 				),
 				'paginationMarkup'            => array(
 					'type'    => 'string',
