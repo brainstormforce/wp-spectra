@@ -12,7 +12,7 @@ import attributes from "./attributes"
 import edit from "./edit"
 import links from "./links"
 import save from "./save"
-// import deprecated from "./deprecated"
+import deprecated from "./deprecated"
 
 const { __ } = wp.i18n
 
@@ -34,5 +34,5 @@ registerBlockType( "uagb/social-share", {
 	edit,
 	save,
 	transform,
-	// deprecated
+	deprecated
 } )
