@@ -45,7 +45,7 @@ function styling( props ) {
 	var selectors = {}
 	var tablet_selectors = {}
 	var mobile_selectors = {}
-// console.log(fontFamily);
+
 		selectors[" .uagb-buttons-repeater"] = {
 			"font-size" : generateCSSUnit( size, sizeType ),
 			"line-height" : generateCSSUnit( lineHeight, lineHeightType ),
