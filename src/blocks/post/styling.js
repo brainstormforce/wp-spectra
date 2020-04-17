@@ -211,7 +211,6 @@ function styling( props ) {
 		}
 		if ( 'undefined' == typeof paginationBgActiveColor && 'undefined' == typeof paginationActiveColor ) {
 			
-			console.log(paginationBgActiveColor);
 			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
 				
 				"background-color" :  paginationBgColor,
