@@ -23,25 +23,16 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	RichText,
-	PanelColorSettings,
-	URLInput,
-	ColorPalette,
 	InnerBlocks
 } = wp.blockEditor
 
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon
+	RangeControl
 } = wp.components
 
 const ALLOWED_BLOCKS = [ "uagb/buttons-child" ]
@@ -172,12 +163,14 @@ class UAGBMultiButtonEdit extends Component {
 					`uagb-block-${ this.props.clientId }`
 				) }
 				>
-					<InnerBlocks
-						template={ getButtonTemplate( btn_count, buttons ) }
-						templateLock={ false }
-						allowedBlocks={ ALLOWED_BLOCKS }
-						__experimentalMoverDirection={ 'vertical' }
-					/>
+					<div className="uagb-buttons__wrap">
+						<InnerBlocks
+							template={ getButtonTemplate( btn_count, buttons ) }
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ 'vertical' }
+						/>
+					</div>
 				</div>
 				{ loadBtnGoogleFonts }
 			</Fragment>

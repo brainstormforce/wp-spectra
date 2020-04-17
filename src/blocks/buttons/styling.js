@@ -30,13 +30,6 @@ function styling( props ) {
 			"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 		}
 	
-		selectors[" .uagb-button__wrapper:first-child"] = {
-			"margin-left" : 0
-		}
-	
-		selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-right" : 0
-		}
 		if ( "desktop" == stack ) {
 
 			selectors[" .uagb-button__wrapper"] = {
@@ -47,10 +40,6 @@ function styling( props ) {
 	
 			selectors[" .uagb-buttons__wrap"] = {
 				 "flex-direction": "column"
-			}
-	
-			selectors[" .uagb-button__wrapper:last-child"] = {
-				"margin-bottom" : 0
 			}
 	
 		} else if ( "tablet" == stack ) {
@@ -65,10 +54,6 @@ function styling( props ) {
 				"flex-direction": "column"
 			}
 	
-			tablet_selectors[" .uagb-button__wrapper:last-child"] = {
-				"margin-bottom" : 0
-			}
-	
 		} else if ( "mobile" == stack ) {
 	
 			mobile_selectors[" .uagb-button__wrapper"] = {
@@ -79,10 +64,6 @@ function styling( props ) {
 	
 			mobile_selectors[" .uagb-buttons__wrap"] = {
 				"flex-direction": "column"
-			}
-	
-			mobile_selectors[" .uagb-button__wrapper:last-child"] = {
-				"margin-bottom" : 0
 			}
 		}
 

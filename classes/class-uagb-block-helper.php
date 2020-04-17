@@ -689,12 +689,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' ),
 					'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
 				),
-				' .uagb-button__wrapper:first-child' => array (
-					'margin-left' => 0
-				),
-				' .uagb-button__wrapper:last-child' => array (
-					'margin-right' => 0
-				),
 			);
 			$selectors[' .uagb-buttons-repeater'] = array (
 				'font-family'   => $attr['fontFamily'],
@@ -712,10 +706,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					 "flex-direction" => "column"
 				);
 
-				$selectors[" .uagb-button__wrapper:last-child"] = array (
-					"margin-bottom" => 0
-				);
-
 			} else if ( "tablet" == $attr['stack'] ) {
 
 				$t_selectors[" .uagb-button__wrapper"] = array (
@@ -728,10 +718,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					 "flex-direction" => "column"
 				);
 
-				$t_selectors[" .uagb-button__wrapper:last-child"] = array (
-					"margin-bottom" => 0
-				);
-
 			} else if ( "mobile" == $attr['stack'] ) {
 
 				$m_selectors[" .uagb-button__wrapper"] = array (
@@ -742,10 +728,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$m_selectors[" .uagb-buttons__wrap"] = array (
 					 "flex-direction" => "column"
-				);
-
-				$m_selectors[" .uagb-button__wrapper:last-child"] = array (
-					"margin-bottom" => 0
 				);
 			}
 

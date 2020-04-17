@@ -36,26 +36,6 @@
 		text-decoration: none;
 	}
 
-	.uagb-button__wrapper {
-		padding: 0;
-	    border: 1px solid #333;
-    	border-radius: 2px;
-	    margin-left: 5px;
-		margin-right: 5px;
-		-webkit-transition: all 0.2s;
-		-o-transition: all 0.2s;
-		transition: all 0.2s;
-		display: inline-flex;
-	}
-
-	.uagb-button__wrapper:first-child {
-		margin-left: 0;
-	}
-
-	.uagb-button__wrapper:last-child {
-		margin-right: 0;
-	}
-
 	.uagb-button__wrapper a.uagb-button__link,
 	.uagb-button__wrapper .uagb-button__link {
 	    padding: 10px 14px;

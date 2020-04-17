@@ -26,7 +26,9 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`
 		) }
 		>
-			<InnerBlocks.Content />
+			<div className="uagb-buttons__wrap">
+				<InnerBlocks.Content />
+			</div>
 		</div>
 	)
 }

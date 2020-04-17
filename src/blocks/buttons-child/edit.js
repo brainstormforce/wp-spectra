@@ -56,19 +56,10 @@ class UAGBButtonsChild extends Component {
 	}
 	render() {
 		
-		const { attributes, setAttributes, isSelected } = this.props
+		const { attributes, setAttributes } = this.props
 	
 		const {
-			align,
 			className,
-			btn_count,
-			buttons,
-			gap,
-			stack,
-			loadGoogleFonts,
-			fontFamily,
-			fontWeight,
-			fontSubset,
 			label,
 			link,
 			target,
@@ -552,7 +543,7 @@ class UAGBButtonsChild extends Component {
 				"uagb-buttons__outer-wrap",
 				`uagb-block-${ this.props.clientId }`
 				) }>
-					<div className="uagb-buttons__wrap">
+					<div className="uagb-button__wrapper">
 						<div className="uagb-buttons-repeater uagb-button__wrapper">
 							<RichText
 								placeholder={ __( "Add text…" ) }

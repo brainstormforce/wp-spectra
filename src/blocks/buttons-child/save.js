@@ -19,10 +19,6 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		align,
-		items,
-		buttons,
-		btn_count,
 		target,
 		link,
 		label
@@ -34,7 +30,7 @@ export default function save( props ) {
 			"uagb-buttons__outer-wrap",
 			`uagb-block-${ block_id }`
 			) }>
-			<div className="uagb-buttons__wrap">
+			<div className="uagb-button__wrapper">
 				<div className="uagb-buttons-repeater">
 					<RichText.Content
 						value={ label }
