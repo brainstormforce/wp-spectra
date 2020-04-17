@@ -694,6 +694,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-family'   => $attr['fontFamily'],
 				'font-weight'   => $attr['fontWeight'],
 			);
+			if ( ! $attr['childMigrate'] ) {
+				
+				foreach ( $attr['buttons'] as $key => $button ) {
+
+					if ( $attr['btn_count'] <= $key ) {
+						break;
+					}
+					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors );
+				}
+			}
 			if ( "desktop" == $attr['stack'] ) {
 
 				$selectors[" .uagb-button__wrapper"] = array (
@@ -783,13 +794,44 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_buttons_child_css( $attr, $id ) {
+			
 			$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
+			$all_selectors = self::get_buttons_child_selectors( $attr, $id, true );
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
+			
+			$desktop = UAGB_Helper::generate_css( $all_selectors['selectors'], $base_selector . $id );
+			
+			$tablet = UAGB_Helper::generate_css( $all_selectors['t_selectors'], $base_selector . $id );
+			
+			$mobile = UAGB_Helper::generate_css( $all_selectors['m_selectors'], $base_selector . $id );
+			
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => $tablet,
+				'mobile'  => $mobile,
+			);
+			
+			return $generated_css;
+		}
+		/**
+		 * Get Buttons Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The key for the Icon List Item.
+		 * @param string $childMigrate The child migration flag.
+		 * @return array The Widget List.
+		 */
+		public static function get_buttons_child_selectors( $attr, $id, $childMigrate ) { 	
+
+			$wrapper = ( ! $childMigrate ) ? " .uagb-buttons-repeater-" . $id : " .uagb-buttons-repeater";
+
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$selectors[' .uagb-buttons-repeater'] = array (
+			$selectors[$wrapper] = array (
 				'font-size'     => $attr['size'] . $attr['sizeType'],
 				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
@@ -799,47 +841,41 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'background'    => $attr['background']
 			);
 
-			$selectors[' .uagb-buttons-repeater' . ':hover'] = array (
+			$selectors[$wrapper . ':hover'] = array (
 				'background'   => $attr['hBackground'],
 				'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color' => $attr['borderHColor'],
 				'border-style' => $attr['borderStyle'],
 			);
 
-			$selectors[' .uagb-buttons-repeater' . ' a.uagb-button__link'] = array (
+			$selectors[$wrapper . ' a.uagb-button__link'] = array (
 				'padding' => $attr['vPadding'] . 'px ' . $attr['hPadding'] . 'px',
 				'color'   => $attr['color']
 			);
 
-			$selectors[' .uagb-buttons-repeater' . ':hover a.uagb-button__link'] = array (
+			$selectors[$wrapper . ':hover a.uagb-button__link'] = array (
 				'color' => $attr['hColor']
 			);
 
-			$m_selectors[' .uagb-buttons-repeater'] = array (
+			$m_selectors[$wrapper] = array (
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
 
-			$t_selectors[' .uagb-buttons-repeater'] = array (
+			$t_selectors[$wrapper] = array (
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
+			$all_selectors = array(
 
-			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
-
-			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
-
-			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
-
-			$generated_css = array(
-				'desktop' => $desktop,
-				'tablet'  => $tablet,
-				'mobile'  => $mobile,
+				'selectors' => $selectors,
+				'm_selectors' => $m_selectors,
+				't_selectors' => $t_selectors
 			);
 
-			return $generated_css;
+			return $all_selectors;
+
 		}
 		/**
 		 * Get Info Box CSS

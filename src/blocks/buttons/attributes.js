@@ -49,6 +49,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	childMigrate: {
+		type: "boolean",
+		default: false
+	},
 	align: {
 		type: "string",
 		default: "center"
