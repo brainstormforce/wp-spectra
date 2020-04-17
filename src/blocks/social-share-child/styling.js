@@ -28,11 +28,9 @@ function styling( props ) {
 		},
 		".uagb-ss-repeater.uagb-ss__wrapper" : {
 			"background" : icon_bg_color,
-			// "border-color" : icon_border_color
 		},
 		".uagb-ss-repeater.uagb-ss__wrapper:hover" : {
 			"background" : icon_bg_hover_color,
-			// "border-color" : icon_border_hover_color
 		}
 	}
 

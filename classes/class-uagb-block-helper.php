@@ -1632,23 +1632,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"flex-direction" => "column"
 			);
 
-			// $selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
-			// 	"margin-bottom"  => 0
-			// );
-
 			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
 				"padding"  => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 				"margin-left"  => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' ),
 				"margin-right"  => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
 			);
-
-			// $selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
-			// 	"margin-left"  => 0
-			// );
-
-			// $selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
-			// 	"margin-right"  => 0
-			// );
 
 			$selectors[" .uagb-ss__wrapper"] = array(
 				"border-radius" => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' )
@@ -1741,7 +1729,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( ! $attr['childMigrate'] ) {
 
 				foreach ( $attr['socials'] as $key => $socials ) {
-
+					
 					$socials['icon_color'] = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
 					$socials['icon_hover_color'] = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
 					$socials['icon_bg_color'] = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
@@ -1770,10 +1758,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						"flex-direction" => "column"
 					);
 
-					// $selectors[" .uagb-ss__wrapper:last-child"] = array (
-					// 	"margin-bottom" => 0
-					// );
-
 				} else if ( "tablet" == $attr['stack'] ) {
 
 					$t_selectors[" .uagb-ss__wrapper"] = array (
@@ -1786,10 +1770,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						"flex-direction" => "column"
 					);
 
-					// $t_selectors[" .uagb-ss__wrapper:last-child"] = array (
-					// 	"margin-bottom" => 0
-					// );
-
 				} else if ( "mobile" == $attr['stack'] ) {
 
 					$m_selectors[" .uagb-ss__wrapper"] = array (
@@ -1801,10 +1781,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$m_selectors[" .uagb-social-share__wrap"] = array (
 						"flex-direction" => "column"
 					);
-
-					// $m_selectors[" .uagb-ss__wrapper:last-child"] = array (
-					// 	"margin-bottom" => 0
-					// );
 				}
 			}
 			
@@ -1870,29 +1846,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$wrapper = ( ! $childMigrate ) ? " .uagb-ss-repeater-" . $id : ".uagb-ss-repeater";
 
-			$selectors = array(
-				".uagb-ss-repeater a.uagb-ss__link" => array(
-					"color" => $attr['icon_color']
-				),
-				".uagb-ss-repeater a.uagb-ss__link svg" => array(
-					"fill" => $attr['icon_color']
-				),
-				".uagb-ss-repeater:hover a.uagb-ss__link" => array (
-					"color" => $attr['icon_hover_color']
-				),
-				".uagb-ss-repeater:hover a.uagb-ss__link svg" => array (
-					"fill" => $attr['icon_hover_color']
-				),
-				".uagb-ss-repeater.uagb-ss__wrapper" => array (
-					"background" => $attr['icon_bg_color'],
-					// "border-color" => $attr['icon_border_color'],
-				),
-				".uagb-ss-repeater.uagb-ss__wrapper:hover" => array (
-					"background" => $attr['icon_bg_hover_color'],
-					// "border-color" => $attr['icon_border_hover_color']
-				),
+			$selectors[$wrapper . " a.uagb-ss__link"] = array(
+				"color" => $attr['icon_color']
 			);
-			// @codingStandardsIgnoreEnd
+			$selectors[$wrapper . " a.uagb-ss__link"] = array(
+				"color" => $attr['icon_color']
+			);
+			$selectors[$wrapper . " a.uagb-ss__link svg"] = array(
+				"fill" => $attr['icon_color']
+			);
+			$selectors[$wrapper . ":hover a.uagb-ss__link"] = array (
+				"color" => $attr['icon_hover_color']
+			);
+			$selectors[$wrapper . ":hover a.uagb-ss__link svg"] = array (
+				"fill" => $attr['icon_hover_color']
+			);
+			
+			$selectors[$wrapper . ".uagb-ss__wrapper"] = array (
+				"background" => $attr['icon_bg_color'],
+			);
+			$selectors[$wrapper . ".uagb-ss__wrapper:hover"] = array (
+				"background" => $attr['icon_bg_hover_color'],
+			);
 
 			return $selectors;
 		}

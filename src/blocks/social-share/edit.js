@@ -68,7 +68,6 @@ class UAGBSocialShare extends Component {
 			socials,
 			gap,
 			stack,
-			// current_url,
 			social_layout,
 			borderRadius,
 			size,

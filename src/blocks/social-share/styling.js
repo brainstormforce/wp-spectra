@@ -44,23 +44,11 @@ function styling( props ) {
 		 "flex-direction": "column"
 	}
 
-	// selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = {
-	// 	"margin-bottom" : 0
-	// }
-
 	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
 		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
 		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
 	}
-
-	// selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = {
-	// 	"margin-left" : 0
-	// }
-
-	// selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = {
-	// 	"margin-right" : 0
-	// }
 
 	selectors[" .uagb-ss__wrapper"] = {
 		"border-radius": generateCSSUnit( borderRadius, "px" )
@@ -112,10 +100,6 @@ function styling( props ) {
 				 "flex-direction": "column"
 			}
 
-			// selectors[" .uagb-ss__wrapper:last-child"] = {
-			// 	"margin-bottom" : 0
-			// }
-
 
 		} else if ( "tablet" == stack ) {
 
@@ -128,10 +112,6 @@ function styling( props ) {
 			tablet_selectors[" .uagb-social-share__wrap"] = {
 				"flex-direction": "column"
 			}
-
-			// tablet_selectors[" .uagb-ss__wrapper:last-child"] = {
-			// 	"margin-bottom" : 0
-			// }
 
 			tablet_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
@@ -149,10 +129,6 @@ function styling( props ) {
 			mobile_selectors[" .uagb-social-share__wrap"] = {
 				"flex-direction": "column"
 			}
-
-			// mobile_selectors[" .uagb-ss__wrapper:last-child"] = {
-			// 	"margin-bottom" : 0
-			// }
 
 			mobile_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
