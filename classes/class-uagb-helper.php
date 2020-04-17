@@ -396,7 +396,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				case 'uagb/buttons-child':
 					$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
-				break;
+					break;
 
                 case 'uagb/blockquote':
                     $css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
