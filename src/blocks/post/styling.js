@@ -204,27 +204,46 @@ function styling( props ) {
 	}
 
 	if ( 'filled' == paginationLayout ) {
-		
-		selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
-			
-			"background-color" :  paginationBgActiveColor,
-			"color" :  paginationActiveColor,
-		}
 		selectors[" .uagb-post-pagination-wrap a"] = {
-
+			
 			"background-color" :  paginationBgColor,
 			"color" :  paginationColor,
 		}
+		if ( 'undefined' == typeof paginationBgActiveColor && 'undefined' == typeof paginationActiveColor ) {
+			
+			console.log(paginationBgActiveColor);
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgColor,
+				"color" :  paginationColor,
+			}
+		}
+		if ( 'undefined' == typeof paginationBgActiveColor && 'undefined' != typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgColor,
+				"color" :  paginationActiveColor,
+			}
+		}
+		if ( 'undefined' != typeof paginationBgActiveColor && 'undefined' == typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgActiveColor,
+				"color" :  paginationColor,
+			}
+		}
+		if ( 'undefined' != typeof paginationBgActiveColor && 'undefined' != typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgActiveColor,
+				"color" :  paginationActiveColor,
+			}
+		}
 	}
 	if ( 'border' == paginationLayout ) {
-		selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
-			"border-style" : "solid",
-			"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
-			"border-color" :  paginationBorderActiveColor,
-			"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
-			"color" :  paginationActiveColor,
-			"background-color": "transparent",
-		}
 		selectors[" .uagb-post-pagination-wrap a"] = {
 			"border-style" : "solid",
 			"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
@@ -232,6 +251,46 @@ function styling( props ) {
 			"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
 			"color" :  paginationColor,
 			"background-color": "transparent",
+		}
+		if ( 'undefined' != typeof paginationBorderActiveColor && 'undefined' != typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderActiveColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationActiveColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' == typeof paginationBorderActiveColor && 'undefined' != typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationActiveColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' != typeof paginationBorderActiveColor && 'undefined' == typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderActiveColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' == typeof paginationBorderActiveColor && 'undefined' == typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationColor,
+				"background-color": "transparent",
+			}
 		}
 	}
 
