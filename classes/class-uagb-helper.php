@@ -1077,10 +1077,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( $attributes['postPagination'] ) {
 
 				$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
-				$query_args = array(
-					'posts_per_page' => $attributes['postsToShow'],
-					'paged'          => $paged,
-				);
+				$query_args['posts_per_page'] = $attributes['postsToShow'];
+				$query_args['paged'] = $paged;
+
 			}
 
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
