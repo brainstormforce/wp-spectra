@@ -27,6 +27,9 @@ registerBlockType( "uagb/post-carousel", {
 		__( "carousel" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	edit,
 	// Render via PHP
 	save() {

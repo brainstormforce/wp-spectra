@@ -35,6 +35,9 @@ registerBlockType( "uagb/call-to-action", {
 		__( "call to action" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

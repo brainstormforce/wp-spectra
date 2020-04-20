@@ -26,6 +26,9 @@ registerBlockType( "uagb/marketing-button", {
 		__( "cta" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,

@@ -32,6 +32,9 @@ registerBlockType( "uagb/icon-list", {
 		__( "image list" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,

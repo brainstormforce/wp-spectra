@@ -27,6 +27,9 @@ registerBlockType( "uagb/table-of-contents", {
 		__( "table" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,

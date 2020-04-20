@@ -28,6 +28,9 @@ registerBlockType( "uagb/info-box", {
 		__( "info box" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,
