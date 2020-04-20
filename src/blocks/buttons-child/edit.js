@@ -9,11 +9,14 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+
 const { __ } = wp.i18n
 
 const {
 	Component,
 	Fragment,
+	useCallback, 
+	useState
 } = wp.element
 
 const {
@@ -25,7 +28,8 @@ const {
 	PanelColorSettings,
 	URLInput,
 	ColorPalette,
-	InnerBlocks
+	InnerBlocks,
+	__experimentalLinkControl
 } = wp.blockEditor
 
 const {
@@ -35,17 +39,23 @@ const {
 	TabPanel,
 	ButtonGroup,
 	Button,
-	Dashicon
+	Dashicon,
+	Popover,
+	ToolbarButton,
+	ToolbarGroup,
 } = wp.components
-
 class UAGBButtonsChild extends Component {
 	
 	constructor() {
 		super( ...arguments )
-		
+		this.onChangetarget = this.onChangetarget.bind(this)
+		this.onChangeOpensInNewTab = this.onChangeOpensInNewTab.bind(this)
+		this.state = {
+			isURLPickerOpen:false,
+		}
 	}
 	componentDidMount() {
-
+		
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
         this.props.setAttributes( { classMigrate: true } )
@@ -53,6 +63,18 @@ class UAGBButtonsChild extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+	onChangetarget () {
+		this.setState( {
+			isURLPickerOpen: true
+		}) 
+	}
+	onChangeOpensInNewTab ( value ) {
+		if ( true === value ) {
+			this.props.setAttributes( { target: '_blank' } )
+		} else {
+			this.props.setAttributes( { target: '_self' } )
+		}
 	}
 	render() {
 		
@@ -82,12 +104,36 @@ class UAGBButtonsChild extends Component {
 			lineHeightType,
 			lineHeightMobile,
 			lineHeightTablet,
+			opensInNewTab
 		} = attributes;
         var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		const linkControl = this.state.isURLPickerOpen && (
+
+			<Popover
+				position="bottom center"
+				onClose={ () => this.setState( {
+					isURLPickerOpen: false
+				}) }
+			>
+				<__experimentalLinkControl
+					value={ { url:link, opensInNewTab:opensInNewTab }  }
+					onChange={( {
+					url: newURL = '',
+					opensInNewTab: newOpensInNewTab,
+					} ) => {
+						setAttributes( { link: newURL } );
+						setAttributes( { opensInNewTab: newOpensInNewTab } );
+						this.onChangeOpensInNewTab( newOpensInNewTab );
+						
+					} }
+				/>
+			</Popover>
+		);
 		const buttonControls = () => {
 			return (
 				<PanelBody
@@ -111,6 +157,11 @@ class UAGBButtonsChild extends Component {
 						] }
 						onChange={ value => {
 							setAttributes( { target: value } )
+							if ( "_self" === value ) {
+								setAttributes( { opensInNewTab: false } )
+							} else if ( "_blank" === value ) {
+								setAttributes( { opensInNewTab: true } )
+							}
 						} }
 					/>
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
@@ -535,6 +586,18 @@ class UAGBButtonsChild extends Component {
 
         return (
             <Fragment>
+
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton
+							icon = 'admin-links'
+							name="link"
+							title={ __( 'Link' ) }
+							onClick={ this.onChangetarget }
+						/>
+					</ToolbarGroup>
+				</BlockControls>
+				{ linkControl }
 				<InspectorControls>
 					{ buttonControls }
 				</InspectorControls>
