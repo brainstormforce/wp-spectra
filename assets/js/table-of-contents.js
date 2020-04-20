@@ -134,17 +134,14 @@
 				$headers.forEach(function (element, i) {
 					
 					let element_text = parseTocSlug(element.text);
-					console.log(element_text);
 					all_header.each( function (){
 
 						let header = $( this );
 						let header_text = parseTocSlug(header.text());
-						console.log(header_text);
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
-					console.log('----');
 				});
 			}
 
