@@ -15,8 +15,6 @@ const { __ } = wp.i18n
 const {
 	Component,
 	Fragment,
-	useCallback, 
-	useState
 } = wp.element
 
 const {
