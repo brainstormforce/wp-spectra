@@ -37,6 +37,13 @@ let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBSocialShareChild extends Component {
 
+	constructor() {
+		super( ...arguments )
+
+		this.onRemoveImage = this.onRemoveImage.bind( this )
+		this.onSelectImage = this.onSelectImage.bind( this )
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
@@ -47,6 +54,33 @@ class UAGBSocialShareChild extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-social-share-child-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { setAttributes } = this.props
+		setAttributes( { image: null } )
+	}
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { image: null } )
+			return
+		}
+
+		if ( ! media.type || "image" != media.type ) {
+			return
+		}
+
+		setAttributes( { image: media } )
 	}
 
 	render() {
@@ -173,7 +207,7 @@ class UAGBSocialShareChild extends Component {
 										image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
 									}
 								} else {
-									if ( image ) {
+									if ( image && image.url ) {
 										image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 									}
 								}

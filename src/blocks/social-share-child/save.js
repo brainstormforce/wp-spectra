@@ -38,11 +38,11 @@ export default function save( props ) {
 			image_icon_html = <span className="uagb-ss__source-icon">{ renderSVG(icon) }</span>
 		}
 	} else {
-		if ( image ) {
+		if ( image && image.url ) {
 			image_icon_html = <img className="uagb-ss__source-image" src={image.url} />
 		}
 	}
-
+	
 	return (
 		<div
 			className={ classnames(

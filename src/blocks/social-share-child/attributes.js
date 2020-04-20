@@ -22,7 +22,7 @@ const attributes = {
 		default: "fab fa-facebook"
 	},
 	image: {
-		type: "array",
+		type: "object",
 	},
 	icon_color: {
 		type: "string",
