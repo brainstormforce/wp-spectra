@@ -133,6 +133,15 @@ class UAGBSocialShare extends Component {
 
 		return (
 			<Fragment>
+			<BlockControls>
+					<BlockAlignmentToolbar
+						value={ align }
+						onChange={ ( value ) => {
+							setAttributes( { align: value } )
+						} }
+						controls={ [ "left", "center", "right" ] }
+					/>
+				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<SelectControl
