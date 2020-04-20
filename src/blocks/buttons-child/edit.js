@@ -48,7 +48,7 @@ class UAGBButtonsChild extends Component {
 	
 	constructor() {
 		super( ...arguments )
-		this.onChangetarget = this.onChangetarget.bind(this)
+		this.onClickLinkSettings = this.onClickLinkSettings.bind(this)
 		this.onChangeOpensInNewTab = this.onChangeOpensInNewTab.bind(this)
 		this.state = {
 			isURLPickerOpen:false,
@@ -64,7 +64,16 @@ class UAGBButtonsChild extends Component {
 		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
-	onChangetarget () {
+	onClickLinkSettings () {
+		
+		const { attributes, setAttributes } = this.props
+		const { target } = attributes 
+		if ( "_self" === target ) {
+			setAttributes( { opensInNewTab: false } )
+		} else if ( "_blank" === target ) {
+			setAttributes( { opensInNewTab: true } )
+		}
+
 		this.setState( {
 			isURLPickerOpen: true
 		}) 
@@ -570,7 +579,7 @@ class UAGBButtonsChild extends Component {
 							icon = 'admin-links'
 							name="link"
 							title={ __( 'Link' ) }
-							onClick={ this.onChangetarget }
+							onClick={ this.onClickLinkSettings }
 						/>
 					</ToolbarGroup>
 				</BlockControls>
