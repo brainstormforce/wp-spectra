@@ -83,7 +83,7 @@ class BoxShadowControl extends Component {
                     <RangeControl
                         value={ boxShadowHOffset.value }
                         onChange={ ( value ) => setAttributes( { boxShadowHOffset: value } ) }
-                        min={ 0 }
+                        min={ -100 }
                         max={ 100 }
                         allowReset
                     />
@@ -93,7 +93,7 @@ class BoxShadowControl extends Component {
                     <RangeControl
                         value={ boxShadowVOffset.value }
                         onChange={ ( value ) => setAttributes( { boxShadowVOffset: value } ) }
-                        min={ 0 }
+                        min={ -100 }
                         max={ 100 }
                         allowReset
                     />
