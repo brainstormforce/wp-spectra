@@ -76,6 +76,10 @@ function styling( props ) {
 
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
+	selectors[" .uagb-social-share__wrap .block-editor-inner-blocks"] = {
+			"text-align": align
+	}
+
 	selectors[" .uagb-social-share__wrap"] = {
 		"justify-content" : alignment,
 		"-webkit-box-pack": alignment,
@@ -97,9 +101,8 @@ function styling( props ) {
 			}
 
 			selectors[" .uagb-social-share__wrap"] = {
-				 "flex-direction": "column"
+				"flex-direction": "column"
 			}
-
 
 		} else if ( "tablet" == stack ) {
 

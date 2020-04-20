@@ -1621,6 +1621,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$selectors[" .uagb-social-share__wrap .block-editor-inner-blocks"] = array(
+			"text-align" => UAGB_Helper::get_css_value( $attr['align'] ),
+			);
+
 			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = array(
 				"padding"  => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 				"margin-left"  => 0,

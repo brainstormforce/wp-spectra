@@ -22,7 +22,6 @@ export default function save( props ) {
 		socials,
 		social_count,
 		social_layout,
-		// current_url
 	} = props.attributes
 
 	return (
