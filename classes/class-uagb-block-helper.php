@@ -2533,7 +2533,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
+			
+			// Pagination CSS
+			$selectors[" .uagb-post-pagination-wrap"] = array (
 
+				"margin-top" => UAGB_Helper::get_css_value( $attr['paginationSpacing'], "px" ),
+				"text-align" => $attr['paginationAlignment'],
+			);
+			if ( 'filled' === $attr['paginationLayout'] ) {
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
+					"background-color" =>  $attr['paginationBgActiveColor'],
+					"color" =>  $attr['paginationActiveColor'],
+				);
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
+					"background-color" =>  $attr['paginationBgColor'],
+					"color" =>  $attr['paginationColor'],
+				);
+			} else  {
+
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderActiveColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationActiveColor'],
+				);
+
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationColor'],
+				);
+
+			}
+			
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
