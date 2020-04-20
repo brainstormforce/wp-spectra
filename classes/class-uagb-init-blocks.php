@@ -79,6 +79,9 @@ class UAGB_Init_Blocks {
 	 * @since 1.10.0
 	 */
 	public function cf7_shortcode() { 	// @codingStandardsIgnoreStart
+
+		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+		
 		$id = intval($_POST['formId']);
 		// @codingStandardsIgnoreEnd
 		if ( $id && 0 !== $id && -1 !== $id ) {
@@ -212,6 +215,8 @@ class UAGB_Init_Blocks {
 	 * @since 1.0.0
 	 */
 	public function editor_assets() {
+
+		$uagb_ajax_nonce = wp_create_nonce( 'uagb_ajax_nonce' );
 		// Scripts.
 		wp_enqueue_script(
 			'uagb-block-editor-js', // Handle.
@@ -285,6 +290,7 @@ class UAGB_Init_Blocks {
 				'image_sizes'       => UAGB_Helper::get_image_sizes(),
 				'post_types'        => UAGB_Helper::get_post_types(),
 				'all_taxonomy'      => UAGB_Helper::get_related_taxonomy(),
+				'uagb_ajax_nonce'   => $uagb_ajax_nonce,
 			)
 		);
 	} // End function editor_assets().
