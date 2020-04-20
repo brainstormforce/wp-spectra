@@ -690,10 +690,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
 				),
 			);
-			$selectors[' .uagb-buttons-repeater'] = array (
-				'font-family'   => $attr['fontFamily'],
-				'font-weight'   => $attr['fontWeight'],
-			);
 			
 			if ( "desktop" == $attr['stack'] ) {
 
@@ -756,6 +752,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'align-items' => $alignment,
 				);
 			}
+
+			$selectors[' .uagb-buttons-repeater'] = array (
+				'font-family'   => $attr['fontFamily'],
+				'font-weight'   => $attr['fontWeight'],
+			);
+
 			if ( ! $attr['childMigrate'] ) {
 				
 				foreach ( $attr['buttons'] as $key => $button ) {
@@ -763,6 +765,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					if ( $attr['btn_count'] <= $key ) {
 						break;
 					}
+
+					$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-buttons-repeater-" . $key . '.uagb-button__wrapper' : " .uagb-buttons-repeater";
+					
+					$selectors[$wrapper] = array (
+						'font-family'   => $attr['fontFamily'],
+						'font-weight'   => $attr['fontWeight'],
+					);
+					
 					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
 					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
 					$t_selectors = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
