@@ -18,15 +18,10 @@ const {
 } = wp.element
 
 const {
-	AlignmentToolbar,
 	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
 	RichText,
-	PanelColorSettings,
-	URLInput,
 	ColorPalette,
-	InnerBlocks,
 	__experimentalLinkControl
 } = wp.blockEditor
 
@@ -91,7 +86,6 @@ class UAGBButtonsChild extends Component {
 			className,
 			label,
 			link,
-			target,
 			size,
 			vPadding,
 			hPadding,
