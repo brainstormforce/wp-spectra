@@ -274,10 +274,12 @@ const attributes = {
 		type: "string"
 	},
 	boxShadowHOffset : {
-		type: "number"
+		type: "number",
+		default: 0
 	},
 	boxShadowVOffset : {
-		type: "number"
+		type: "number",
+		default: 0
 	},
 	boxShadowBlur : {
 		type: "number"

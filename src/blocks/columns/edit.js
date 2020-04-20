@@ -1229,8 +1229,8 @@ class UAGBColumns extends Component {
 							setAttributes = { setAttributes }
 							label = { __( "Box Shadow" ) }
 							boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal Off-set" ) } }
-							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical Off-set" ) } }
+							boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+							boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
 							boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
 							boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
 							boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
