@@ -366,3 +366,12 @@
 		text-decoration: none;
 	}
 }
+
+.uagb-post-pagination-wrap {
+	a.page-numbers,
+	span.page-numbers.current {	   
+		padding: 5px 10px;
+		margin: 0;
+		display: inline-block;
+   }
+}

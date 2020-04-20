@@ -89,7 +89,18 @@ function styling( props ) {
 		btnHPadding,
 		linkBox,
 		arrowColor,
-		arrowSize
+		arrowSize,
+		paginationBgActiveColor,
+		paginationActiveColor,
+		paginationBgColor,
+		paginationColor,
+		paginationLayout,
+		paginationBorderSize,
+		paginationBorderRadius,
+		paginationBorderColor,
+		paginationBorderActiveColor,
+		paginationSpacing,
+		paginationAlignment
 	} = props.attributes
 
 	var mobile_selectors = {}
@@ -185,8 +196,103 @@ function styling( props ) {
 		" .uagb-post__image:before" : {
 			"background-color" : bgOverlayColor,
 			"opacity" : ( overlayOpacity / 100 )
+		},
+		" .uagb-post-pagination-wrap" : {
+			"margin-top" : generateCSSUnit( paginationSpacing, "px" ),
+			"text-align": paginationAlignment
+		},
+	}
+
+	if ( 'filled' == paginationLayout ) {
+		selectors[" .uagb-post-pagination-wrap a"] = {
+			
+			"background-color" :  paginationBgColor,
+			"color" :  paginationColor,
+		}
+		if ( 'undefined' == typeof paginationBgActiveColor && 'undefined' == typeof paginationActiveColor ) {
+			
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgColor,
+				"color" :  paginationColor,
+			}
+		}
+		if ( 'undefined' == typeof paginationBgActiveColor && 'undefined' != typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgColor,
+				"color" :  paginationActiveColor,
+			}
+		}
+		if ( 'undefined' != typeof paginationBgActiveColor && 'undefined' == typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgActiveColor,
+				"color" :  paginationColor,
+			}
+		}
+		if ( 'undefined' != typeof paginationBgActiveColor && 'undefined' != typeof paginationActiveColor ) {
+
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				
+				"background-color" :  paginationBgActiveColor,
+				"color" :  paginationActiveColor,
+			}
 		}
 	}
+	if ( 'border' == paginationLayout ) {
+		selectors[" .uagb-post-pagination-wrap a"] = {
+			"border-style" : "solid",
+			"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+			"border-color" :  paginationBorderColor,
+			"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+			"color" :  paginationColor,
+			"background-color": "transparent",
+		}
+		if ( 'undefined' != typeof paginationBorderActiveColor && 'undefined' != typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderActiveColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationActiveColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' == typeof paginationBorderActiveColor && 'undefined' != typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationActiveColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' != typeof paginationBorderActiveColor && 'undefined' == typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderActiveColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationColor,
+				"background-color": "transparent",
+			}
+		}
+		if ( 'undefined' == typeof paginationBorderActiveColor && 'undefined' == typeof paginationActiveColor  ) {
+			selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = {
+				"border-style" : "solid",
+				"border-width" :  generateCSSUnit( paginationBorderSize, "px" ),
+				"border-color" :  paginationBorderColor,
+				"border-radius" : generateCSSUnit( paginationBorderRadius, "px" ),
+				"color" :  paginationColor,
+				"background-color": "transparent",
+			}
+		}
+	}
+
 
 	if ( linkBox ) {
 		selectors[" .uagb-post__inner-wrap"]["cursor"] = "pointer"
@@ -197,7 +303,7 @@ function styling( props ) {
 		"height": generateCSSUnit( arrowSize, "px" ),
 		"width": generateCSSUnit( arrowSize, "px" ),
 	}
-
+	
 	mobile_selectors = {
 		" .uagb-post__text .uagb-post__title": {
 			"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
