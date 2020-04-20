@@ -247,7 +247,7 @@ function styling( props ) {
 	}
 
 	if ( "" != scrollToTopBgColor ) {
-		styling_css += ".uagb-toc__scroll-top { background: " + scrollToTopBgColor + "; }"
+		styling_css += ".uagb-toc__scroll-top.uagb-toc__show-scroll { background: " + scrollToTopBgColor + "; }"
 	}
 
 	return styling_css

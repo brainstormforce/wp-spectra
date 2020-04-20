@@ -19,7 +19,7 @@
 			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
 			.replace(/[&]nbsp[;]/gi, '-')                	// Replace inseccable spaces
 			.replace(/\s+/g, '-')                        	// Replace spaces with -
-			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}‘”]/g, '')  // Remove special chars
+			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}‘”“]/g, '')  // Remove special chars
 			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
 			.replace(/^-+/, '')                          	// Trim - from start of text
 			.replace(/-+$/, '');                         	// Trim - from end of text
@@ -138,7 +138,6 @@
 
 						let header = $( this );
 						let header_text = parseTocSlug(header.text());
-
 						if ( element_text.localeCompare(header_text) === 0 ) {
 							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
