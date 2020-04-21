@@ -828,7 +828,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array();
 			$t_selectors = array();
-			
+			var_dump($attr['sizeType']);
 			$selectors[$wrapper] = array (
 				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
@@ -847,7 +847,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			
 			$selectors[$wrapper . ' a.uagb-button__link'] = array (
-				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) . UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
+				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) .' '. UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
 				'color'   => $attr['color']
 			);
 

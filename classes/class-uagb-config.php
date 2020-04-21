@@ -1073,7 +1073,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'sizeMobile' => '',
 							'sizeTablet' => '',
 							'lineHeight' => '',
-							'lineHeightType' => '',
+							'lineHeightType' => 'em',
 							'lineHeightMobile' => '',
 							'lineHeightTablet' => '',
 						),
