@@ -1759,7 +1759,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 
 				} else if ( "tablet" == $attr['stack'] ) {
@@ -1771,7 +1778,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$t_selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 
 				} else if ( "mobile" == $attr['stack'] ) {
@@ -1783,7 +1797,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$m_selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 				}
 			}

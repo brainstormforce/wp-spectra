@@ -94,6 +94,10 @@ function styling( props ) {
 
 		if ( "desktop" == stack ) {
 
+			selectors[".uagb-social-share__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout"] = {
+				"flex-direction" : "column"
+			}
+
 			selectors[" .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
@@ -101,7 +105,14 @@ function styling( props ) {
 			}
 
 			selectors[" .uagb-social-share__wrap"] = {
-				"flex-direction": "column"
+				"flex-direction": "column",
+				"justify-content" : alignment,
+				"-webkit-box-pack": alignment,
+				"-ms-flex-pack": alignment,
+				"justify-content": alignment,
+				"-webkit-box-align": alignment,
+				"-ms-flex-align": alignment,
+				"align-items": alignment,
 			}
 
 		} else if ( "tablet" == stack ) {
