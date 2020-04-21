@@ -729,30 +729,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
 
-			if( 'full' === $attr['align'] ) {
-				$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
-					'justify-content' => 'center',
-					'-webkit-box-pack'=> 'center',
-					'-ms-flex-pack' => 'center',
-					'justify-content' => 'center',
-					'-webkit-box-align' => 'center',
-					'-ms-flex-align' => 'center',
-					'align-items' => 'center',
-					'width' => '100%',
-					'text-align' => 'center',
-				);
-			} else {
-				$selectors[' .uagb-buttons__wrap'] = array (
-					'justify-content' => $alignment,
-					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack' => $alignment,
-					'justify-content' => $alignment,
-					'-webkit-box-align' => $alignment,
-					'-ms-flex-align' => $alignment,
-					'align-items' => $alignment,
-				);
-			}
-
+			$selectors[' .uagb-buttons__wrap'] = array (
+				'justify-content' => $alignment,
+				'-webkit-box-pack'=> $alignment,
+				'-ms-flex-pack' => $alignment,
+				'justify-content' => $alignment,
+				'-webkit-box-align' => $alignment,
+				'-ms-flex-align' => $alignment,
+				'align-items' => $alignment,
+			);
+			
 			$selectors[' .uagb-buttons-repeater'] = array (
 				'font-family'   => $attr['fontFamily'],
 				'font-weight'   => $attr['fontWeight'],
@@ -842,10 +828,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array();
 			$t_selectors = array();
-
+			
 			$selectors[$wrapper] = array (
-				'font-size'     => $attr['size'] . $attr['sizeType'],
-				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
+				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
 				'border-style'  => $attr['borderStyle'],
@@ -859,9 +845,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['borderHColor'],
 				'border-style' => $attr['borderStyle'],
 			);
-
+			
 			$selectors[$wrapper . ' a.uagb-button__link'] = array (
-				'padding' => $attr['vPadding'] . 'px ' . $attr['hPadding'] . 'px',
+				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) . UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
 				'color'   => $attr['color']
 			);
 
