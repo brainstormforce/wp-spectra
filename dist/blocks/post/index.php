@@ -314,7 +314,12 @@ function uagb_render_pagination( $query, $attributes ) {
 		)
 	);
 
-	return wp_kses_post( implode( PHP_EOL, $links ) );
+	if ( isset( $links ) ) {
+
+		return wp_kses_post( implode( PHP_EOL, $links ) );
+	}
+
+	return '';
 }
 /**
  * Builds the base url.
