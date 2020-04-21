@@ -1,8 +1,7 @@
 /**
- * BLOCK: Icon List
+ * BLOCK: Social Share Child
  */
 
-import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
@@ -17,10 +16,6 @@ const { __ } = wp.i18n
 const {
 	registerBlockType
 } = wp.blocks
-
-const {
-	RichText
-} = wp.blockEditor
 
 registerBlockType( "uagb/social-share-child", {
 	title: uagb_blocks_info.blocks["uagb/social-share-child"]["title"],

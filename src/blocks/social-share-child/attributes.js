@@ -1,5 +1,5 @@
 /**
- * BLOCK: Icon List Child - Attributes
+ * BLOCK: Social Share Child - Attributes
  */
 
 const attributes = {

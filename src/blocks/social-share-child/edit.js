@@ -1,5 +1,5 @@
 /**
- * BLOCK: Icon List - Edit Class
+ * BLOCK: Social Share Child - Edit Class
  */
 
 // Import classes
