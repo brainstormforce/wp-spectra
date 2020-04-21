@@ -699,9 +699,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 
 			} else if ( "tablet" == $attr['stack'] ) {
 
@@ -711,9 +717,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$t_selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$t_selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$t_selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 
 			} else if ( "mobile" == $attr['stack'] ) {
 
@@ -723,40 +735,34 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$m_selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$m_selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$m_selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 			}
 			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
 
-			if( 'full' === $attr['align'] ) {
-				$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
-					'justify-content' => 'center',
-					'-webkit-box-pack'=> 'center',
-					'-ms-flex-pack' => 'center',
-					'justify-content' => 'center',
-					'-webkit-box-align' => 'center',
-					'-ms-flex-align' => 'center',
-					'align-items' => 'center',
-					'width' => '100%',
-					'text-align' => 'center',
-				);
-			} else {
-				$selectors[' .uagb-buttons__wrap'] = array (
-					'justify-content' => $alignment,
-					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack' => $alignment,
-					'justify-content' => $alignment,
-					'-webkit-box-align' => $alignment,
-					'-ms-flex-align' => $alignment,
-					'align-items' => $alignment,
+			$selectors[' .uagb-buttons__wrap'] = array (
+				'justify-content' => $alignment,
+				'-webkit-box-pack'=> $alignment,
+				'-ms-flex-pack' => $alignment,
+				'justify-content' => $alignment,
+				'-webkit-box-align' => $alignment,
+				'-ms-flex-align' => $alignment,
+				'align-items' => $alignment,
+			);
+
+			if ( $attr['childMigrate'] ) {
+				$selectors[' .uagb-buttons-repeater'] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
 				);
 			}
-
-			$selectors[' .uagb-buttons-repeater'] = array (
-				'font-family'   => $attr['fontFamily'],
-				'font-weight'   => $attr['fontWeight'],
-			);
 
 			if ( ! $attr['childMigrate'] ) {
 				
@@ -843,9 +849,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$attr['sizeType'] = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
+			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
+			
 			$selectors[$wrapper] = array (
-				'font-size'     => $attr['size'] . $attr['sizeType'],
-				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
+				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
 				'border-style'  => $attr['borderStyle'],
@@ -859,9 +868,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'border-color' => $attr['borderHColor'],
 				'border-style' => $attr['borderStyle'],
 			);
-
+			
 			$selectors[$wrapper . ' a.uagb-button__link'] = array (
-				'padding' => $attr['vPadding'] . 'px ' . $attr['hPadding'] . 'px',
+				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) .' '. UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
 				'color'   => $attr['color']
 			);
 
@@ -2618,7 +2627,48 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, (array) $attr );
 
 			$selectors = self::get_post_selectors( $attr );
+			
+			// Pagination CSS
+			$selectors[" .uagb-post-pagination-wrap"] = array (
 
+				"margin-top" => UAGB_Helper::get_css_value( $attr['paginationSpacing'], "px" ),
+				"text-align" => $attr['paginationAlignment'],
+			);
+			if ( 'filled' === $attr['paginationLayout'] ) {
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
+					"background-color" =>  $attr['paginationBgActiveColor'],
+					"color" =>  $attr['paginationActiveColor'],
+				);
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
+					"background-color" =>  $attr['paginationBgColor'],
+					"color" =>  $attr['paginationColor'],
+				);
+			} else  {
+
+				$selectors[" .uagb-post-pagination-wrap .page-numbers.current"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderActiveColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationActiveColor'],
+				);
+
+				$selectors[" .uagb-post-pagination-wrap a"] = array ( 
+					
+					"border-style" => "solid",
+					"background-color"=> "transparent",
+					"border-width" =>  UAGB_Helper::get_css_value( $attr['paginationBorderSize'], "px" ),
+					"border-color" =>  $attr['paginationBorderColor'],
+					"border-radius" => UAGB_Helper::get_css_value( $attr['paginationBorderRadius'], "px" ),
+					"color" =>  $attr['paginationColor'],
+				);
+
+			}
+			
 			$m_selectors = self::get_post_mobile_selectors( $attr );
 
 			$t_selectors = self::get_post_tablet_selectors( $attr );
@@ -4765,7 +4815,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			if ( '' !== $attr['scrollToTopBgColor'] ) {
-				$desktop .= '.uagb-toc__scroll-top { background: ' . $attr['scrollToTopBgColor'] . '; }';
+				$desktop .= '.uagb-toc__scroll-top.uagb-toc__show-scroll { background: ' . $attr['scrollToTopBgColor'] . '; }';
 			}
 
 			$generated_css = array(

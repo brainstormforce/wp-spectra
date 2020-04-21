@@ -19,7 +19,9 @@ class Blog extends React.Component {
 			mcolumns,
 			imgPosition,
 			postsToShow,
-			equalHeight
+			equalHeight,
+			paginationMarkup,
+			postPagination
 		} = attributes
 
 		const equalHeightClass = equalHeight ? "uagb-post__equal-height" : ""
@@ -64,6 +66,10 @@ class Blog extends React.Component {
 						</article>
 					) }
 				</div>
+				{ postPagination == true &&
+					<div dangerouslySetInnerHTML={ { __html: paginationMarkup } } className="uagb-post-pagination-wrap">
+					</div>
+				}
 			</div>
 		)
 	}

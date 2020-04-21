@@ -93,55 +93,6 @@ function styling( props ) {
 			"line-height" : generateCSSUnit( lineHeightTablet, lineHeightType ),
 		}
 
-	if ( "desktop" == stack ) {
-
-		selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : generateCSSUnit( gap, "px" )
-		}
-
-		selectors[" .uagb-buttons__wrap"] = {
-			 "flex-direction": "column"
-		}
-
-		selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
-		}
-
-	} else if ( "tablet" == stack ) {
-
-		tablet_selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : generateCSSUnit( gap, "px" )
-		}
-
-		tablet_selectors[" .uagb-buttons__wrap"] = {
-			"flex-direction": "column"
-		}
-
-		tablet_selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
-		}
-
-	} else if ( "mobile" == stack ) {
-
-		mobile_selectors[" .uagb-button__wrapper"] = {
-			"margin-left" : 0,
-			"margin-right" : 0,
-			"margin-bottom" : generateCSSUnit( gap, "px" )
-		}
-
-		mobile_selectors[" .uagb-buttons__wrap"] = {
-			"flex-direction": "column"
-		}
-
-		mobile_selectors[" .uagb-button__wrapper:last-child"] = {
-			"margin-bottom" : 0
-		}
-	}
-
 	var id = `#uagb-buttons-${ props.clientId }`
 	if ( classMigrate ) {
 		id = `.uagb-block-${ props.clientId }`
