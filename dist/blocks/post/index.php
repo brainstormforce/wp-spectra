@@ -274,7 +274,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
 			echo '<div class="uagb-post-pagination-wrap">';
-			echo uagb_render_pagination( $query, $attributes );
+			echo uagb_render_pagination( $query, $attributes );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 		}
 		?>
