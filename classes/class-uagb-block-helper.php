@@ -830,6 +830,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array();
 			$t_selectors = array();
+
+			$attr['sizeType'] = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
+			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
 			
 			$selectors[$wrapper] = array (
 				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
