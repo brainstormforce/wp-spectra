@@ -699,9 +699,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 
 			} else if ( "tablet" == $attr['stack'] ) {
 
@@ -711,9 +717,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$t_selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$t_selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$t_selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 
 			} else if ( "mobile" == $attr['stack'] ) {
 
@@ -723,9 +735,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 
-				$m_selectors[" .uagb-buttons-layout-wrap"] = array (
-					 "flex-direction" => "column"
-				);
+				if ( $attr['childMigrate'] ) {
+					$m_selectors[" .uagb-buttons-layout-wrap"] = array (
+						"flex-direction" => "column"
+					);
+				} else {
+					$m_selectors[" .uagb-buttons__wrap"] = array (
+						"flex-direction" => "column"
+					);
+				}
 			}
 			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
 
