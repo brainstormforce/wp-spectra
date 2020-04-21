@@ -42,7 +42,7 @@ const attributes = {
 	} ,
 	link: {
 		type: "string",
-		default:"#" 
+		default:"" 
 	} ,
 	target: {
 		type: "string",
@@ -123,6 +123,9 @@ const attributes = {
 		type: "number",
 		default:"" 
 	} ,
+	opensInNewTab: {
+		type: "boolean"
+	}
 }
 
 export default attributes
