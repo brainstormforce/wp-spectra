@@ -738,11 +738,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'-ms-flex-align' => $alignment,
 				'align-items' => $alignment,
 			);
-			
-			$selectors[' .uagb-buttons-repeater'] = array (
-				'font-family'   => $attr['fontFamily'],
-				'font-weight'   => $attr['fontWeight'],
-			);
+
+			if ( $attr['childMigrate'] ) {
+				$selectors[' .uagb-buttons-repeater'] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+				);
+			}
 
 			if ( ! $attr['childMigrate'] ) {
 				
