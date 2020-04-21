@@ -1093,6 +1093,7 @@ export default withSelect( ( select, props ) => {
 			data: {
 				action: "uagb_cf7_shortcode",
 				formId : formId,
+				nonce: uagb_blocks_info.uagb_ajax_nonce
 			},
 			dataType: "json",
 			type: "POST",
