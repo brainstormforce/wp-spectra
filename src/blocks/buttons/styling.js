@@ -70,22 +70,13 @@ function styling( props ) {
 
 		var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
-		if( align == "full" ) {
-			selectors[" .uagb-button__wrapper"] = {
-				"justify-content" : 'center',
-				"-webkit-box-pack": 'center',
-				"-ms-flex-pack": 'center',
-				"justify-content": 'center',
-				"width": "100%",
-			}
-		} else {
-			selectors[" .uagb-buttons__wrap"] = {
-				"justify-content" : alignment,
-				"-webkit-box-pack": alignment,
-				"-ms-flex-pack": alignment,
-				"justify-content": alignment,
-			}
+		selectors[" .uagb-buttons__wrap"] = {
+			"justify-content" : alignment,
+			"-webkit-box-pack": alignment,
+			"-ms-flex-pack": alignment,
+			"justify-content": alignment,
 		}
+		
 
 	var id = `#uagb-buttons-${ props.clientId }`
 	if ( classMigrate ) {
