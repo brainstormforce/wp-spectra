@@ -41,7 +41,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
-					'uagb/advanced-heading'  => array(
+					'uagb/advanced-heading'   => array(
 						'slug'        => '',
 						'title'       => __( 'Advanced Heading', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block lets you add a combination of a heading and a sub-heading with a separator in between.', 'ultimate-addons-for-gutenberg' ),
@@ -84,7 +84,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'separatorSpace'          => 15,
 						),
 					),
-					'uagb/columns'           => array(
+					'uagb/columns'            => array(
 						'slug'        => '',
 						'title'       => __( 'Advanced Columns', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
@@ -163,14 +163,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'tabletPaddingType'      => 'px',
 							'desktopPaddingType'     => 'px',
 							'boxShadowColor'         => '',
-							'boxShadowHOffset'       => '',
-							'boxShadowVOffset'       => '',
+							'boxShadowHOffset'       => 0,
+							'boxShadowVOffset'       => 0,
 							'boxShadowBlur'          => '',
 							'boxShadowSpread'        => '',
 							'boxShadowPosition'      => 'outset',
 						),
 					),
-					'uagb/column'            => array(
+					'uagb/column'             => array(
 						'slug'        => '',
 						'title'       => __( 'Column', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block is an immediate child of Advanced Columns.', 'ultimate-addons-for-gutenberg' ),
@@ -243,7 +243,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientOverlayAngle'     => '0',
 						),
 					),
-					'uagb/blockquote'        => array(
+					'uagb/blockquote'         => array(
 						'slug'        => '',
 						'title'       => __( 'Blockquote', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your Blockquote.', 'ultimate-addons-for-gutenberg' ),
@@ -339,7 +339,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'quotePaddingMobile'       => '',
 						),
 					),
-					'uagb/call-to-action'    => array(
+					'uagb/call-to-action'     => array(
 						'slug'        => '',
 						'title'       => __( 'Call To Action', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an CTA along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
@@ -410,7 +410,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaLinkHoverColor'     => '',
 						),
 					),
-					'uagb/cf7-styler'        => array(
+					'uagb/cf7-styler'         => array(
 						'slug'        => '',
 						'title'       => __( 'Contact Form 7 Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Contact Form 7 forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
@@ -546,7 +546,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonBorderRadiusType'       => 'px',
 						),
 					),
-					'uagb/gf-styler'         => array(
+					'uagb/gf-styler'          => array(
 						'slug'        => '',
 						'title'       => __( 'Gravity Form Styler', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add and style your Gravity Forms right in the Gutenberg editor.', 'ultimate-addons-for-gutenberg' ),
@@ -699,7 +699,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'successMsgLoadGoogleFonts'    => false,
 						),
 					),
-					'uagb/content-timeline'  => array(
+					'uagb/content-timeline'   => array(
 						'slug'        => '',
 						'title'       => __( 'Content Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines on your website.', 'ultimate-addons-for-gutenberg' ),
@@ -771,7 +771,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'                   => 'tablet',
 						),
 					),
-					'uagb/google-map'        => array(
+					'uagb/google-map'         => array(
 						'slug'        => '',
 						'title'       => __( 'Google Map', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Google Map Location.', 'ultimate-addons-for-gutenberg' ),
@@ -781,7 +781,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'height'   => '300',
 						),
 					),
-					'uagb/icon-list'         => array(
+					'uagb/icon-list'          => array(
 						'slug'        => '',
 						'title'       => __( 'Icon List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
@@ -834,7 +834,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'            => 'none',
 						),
 					),
-					'uagb/icon-list-child'   => array(
+					'uagb/icon-list-child'    => array(
 						'slug'        => '',
 						'title'       => __( 'Icon', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
@@ -856,7 +856,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'target'                  => false,
 						),
 					),
-					'uagb/info-box'          => array(
+					'uagb/info-box'           => array(
 						'slug'        => '',
 						'title'       => __( 'Info Box', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon along with a heading and description within a single block.', 'ultimate-addons-for-gutenberg' ),
@@ -952,7 +952,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaIconSpace'            => '5',
 						),
 					),
-					'uagb/marketing-button'  => array(
+					'uagb/marketing-button'   => array(
 						'slug'        => '',
 						'title'       => __( 'Marketing Button', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Marketing Button with small description.', 'ultimate-addons-for-gutenberg' ),
@@ -1026,7 +1026,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'iconFontSizeMobile'     => 20,
 						),
 					),
-					'uagb/buttons'           => array(
+					'uagb/buttons'            => array(
 						'slug'        => '',
 						'title'       => __( 'Multi Buttons', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add multiple buttons with a single block.', 'ultimate-addons-for-gutenberg' ),
@@ -1045,7 +1045,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'fontSubset'      => '',
 						),
 					),
-					'uagb/post-carousel'     => array(
+					'uagb/post-carousel'      => array(
 						'slug'        => '',
 						'title'       => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
@@ -1135,7 +1135,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'            => '0',
 						),
 					),
-					'uagb/post-grid'         => array(
+					'uagb/post-grid'          => array(
 						'slug'        => '',
 						'title'       => __( 'Post Grid', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
@@ -1234,7 +1234,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationPrevText'          => 'Next »',
 						),
 					),
-					'uagb/post-masonry'      => array(
+					'uagb/post-masonry'       => array(
 						'slug'        => '',
 						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'            => '0',
 						),
 					),
-					'uagb/post-timeline'     => array(
+					'uagb/post-timeline'      => array(
 						'slug'        => '',
 						'title'       => __( 'Post Timeline', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'The Timeline block lets you create beautiful timelines of Posts on your website.', 'ultimate-addons-for-gutenberg' ),
@@ -1419,7 +1419,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'ctaBackground'           => '#333',
 						),
 					),
-					'uagb/restaurant-menu'   => array(
+					'uagb/restaurant-menu'    => array(
 						'slug'        => '',
 						'title'       => __( 'Price List', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
@@ -1492,7 +1492,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorColor'        => '#b2b4b5',
 						),
 					),
-					'uagb/section'           => array(
+					'uagb/section'            => array(
 						'slug'        => '',
 						'title'       => __( 'Section', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block is an outer wrap section that allows you to add other blocks within it.', 'ultimate-addons-for-gutenberg' ),
@@ -1566,14 +1566,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientOverlayAngle'     => '0',
 							'gradientOverlayPosition'  => 'center center',
 							'boxShadowColor'           => '',
-							'boxShadowHOffset'         => '',
-							'boxShadowVOffset'         => '',
+							'boxShadowHOffset'         => 0,
+							'boxShadowVOffset'         => 0,
 							'boxShadowBlur'            => '',
 							'boxShadowSpread'          => '',
 							'boxShadowPosition'        => 'outset',
 						),
 					),
-					'uagb/social-share'      => array(
+					'uagb/social-share'       => array(
 						'slug'        => '',
 						'title'       => __( 'Social Share', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to let users share your content across various social networking sites.', 'ultimate-addons-for-gutenberg' ),
@@ -1609,7 +1609,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'stack'         => 'none',
 						),
 					),
-					'uagb/social-share-child'         => array(
+					'uagb/social-share-child' => array(
 						'slug'        => '',
 						'title'       => __( 'Social Share Child', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
@@ -1626,7 +1626,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'icon_bg_hover_color' => '',
 						),
 					),
-					'uagb/table-of-contents' => array(
+					'uagb/table-of-contents'  => array(
 						'slug'        => '',
 						'title'       => __( 'Table of Contents', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to place a Table of Contents for Pages/Posts.', 'ultimate-addons-for-gutenberg' ),
@@ -1724,7 +1724,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingLineHeightMobile'   => '',
 						),
 					),
-					'uagb/team'              => array(
+					'uagb/team'               => array(
 						'slug'        => '',
 						'title'       => __( 'Team', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block allows you to display your team. Add their picture, name, what they do and links to their social profiles.', 'ultimate-addons-for-gutenberg' ),
@@ -1796,7 +1796,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'headingTag'             => 'h3',
 						),
 					),
-					'uagb/testimonial'       => array(
+					'uagb/testimonial'        => array(
 						'slug'        => '',
 						'title'       => __( 'Testimonial', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps your display some amazing client feedback within your website.', 'ultimate-addons-for-gutenberg' ),

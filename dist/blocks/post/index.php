@@ -271,7 +271,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		?>
 		</div>
 		<?php
-		if ( $attributes['postPagination'] ) {
+		if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
 			echo '<div class="uagb-post-pagination-wrap">';
 			echo uagb_render_pagination( $query, $attributes );
@@ -706,20 +706,20 @@ function uagb_register_blocks() {
 					'default' => 10,
 				),
 				'paginationBgActiveColor'     => array(
-					'type' => 'string',
-					'default' => '#e4e4e4'
+					'type'    => 'string',
+					'default' => '#e4e4e4',
 				),
 				'paginationActiveColor'       => array(
-					'type' => 'string',
-					'default' => '#333333'
+					'type'    => 'string',
+					'default' => '#333333',
 				),
 				'paginationBgColor'           => array(
-					'type' => 'string',
-					'default' => '#e4e4e4'
+					'type'    => 'string',
+					'default' => '#e4e4e4',
 				),
 				'paginationColor'             => array(
-					'type' => 'string',
-					'default' => '#777777'
+					'type'    => 'string',
+					'default' => '#777777',
 				),
 				'paginationMarkup'            => array(
 					'type'    => 'string',
@@ -733,8 +733,8 @@ function uagb_register_blocks() {
 					'type' => 'string',
 				),
 				'paginationBorderColor'       => array(
-					'type' => 'string',
-					'default' => '#888686'
+					'type'    => 'string',
+					'default' => '#888686',
 				),
 				'paginationBorderRadius'      => array(
 					'type' => 'number',

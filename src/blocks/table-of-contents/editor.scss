@@ -10,8 +10,9 @@
 
 .block-editor-page {
 	.uagb-toc__scroll-top {
-		right: 350px;
-
+		&.dashicons {
+			right: 300px;
+		}
 		&.uagb-toc__show-scroll {
 			display: block;
 		}
