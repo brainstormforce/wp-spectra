@@ -1,5 +1,5 @@
 /**
- * BLOCK: Column - Save Block
+ * BLOCK: Social Share - Save Block
  */
 
 // Import block dependencies and components.
