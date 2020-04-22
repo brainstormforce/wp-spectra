@@ -274,21 +274,21 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function generate_css( $selectors, $id ) {
 			$styling_css = '';
-			
+
 			if ( empty( $selectors ) ) {
 				return '';
 			}
-			
+
 			foreach ( $selectors as $key => $value ) {
-				
+
 				$css = '';
-				
+
 				foreach ( $value as $j => $val ) {
-					
+
 					if ( 'font-family' === $j && 'Default' === $val ) {
 						continue;
 					}
-					
+
 					if ( ! empty( $val ) || 0 === $val ) {
 						if ( 'font-family' === $j ) {
 							$css .= $j . ': "' . $val . '";';
@@ -297,17 +297,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 					}
 				}
-				
+
 				if ( ! empty( $css ) ) {
-					$styling_css .= $id;
-					$styling_css .= $key . '{';
+					$styling_css     .= $id;
+					$styling_css     .= $key . '{';
 						$styling_css .= $css . '}';
-					}
 				}
-				
+			}
+
 			return $styling_css;
 		}
-		
+
 		/**
 		 * Get CSS value
 		 *
@@ -1336,8 +1336,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$is_already_timeline  = false;
 			$is_already_column    = false;
 			$is_already_icon_list = false;
-			$is_already_button = false;
-
+			$is_already_button    = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
@@ -1377,8 +1376,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						break;
 					case 'buttons-child':
 						if ( ! $is_already_button ) {
-							$combined[]           = 'buttons';
-							$combined[]           = 'buttons-child';
+							$combined[]        = 'buttons';
+							$combined[]        = 'buttons-child';
 							$is_already_button = true;
 						}
 						break;
