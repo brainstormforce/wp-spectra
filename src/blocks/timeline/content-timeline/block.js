@@ -50,6 +50,9 @@ registerBlockType( "uagb/content-timeline", {
 		__( "Timeline" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,
