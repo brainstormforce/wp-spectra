@@ -1085,11 +1085,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
-			if ( $attributes['postPagination'] ) {
+			if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
-				$paged      = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
+				$paged                        = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 				$query_args['posts_per_page'] = $attributes['postsToShow'];
-				$query_args['paged'] = $paged;
+				$query_args['paged']          = $paged;
 
 			}
 
