@@ -329,7 +329,7 @@ function uagb_render_pagination( $query, $attributes ) {
  * @since x.x.x
  */
 function uagb_build_base_url( $permalink_structure, $base ) {
-	// Check to see if we are using pretty permalinks
+	// Check to see if we are using pretty permalinks.
 	if ( ! empty( $permalink_structure ) ) {
 
 		if ( strrpos( $base, 'paged-' ) ) {
@@ -338,12 +338,12 @@ function uagb_build_base_url( $permalink_structure, $base ) {
 
 		// Remove query string from base URL since paginate_links() adds it automatically.
 		// This should also fix the WPML pagination issue that was added since 1.10.2.
-		if ( count( $_GET ) > 0 ) {
+		if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$base = strtok( $base, '?' );
 		}
 
 		// Add trailing slash when necessary.
-		if ( '/' == substr( $permalink_structure, -1 ) ) {
+		if ( '/' === substr( $permalink_structure, -1 ) ) {
 			$base = trailingslashit( $base );
 		} else {
 			$base = untrailingslashit( $base );
@@ -370,10 +370,10 @@ function uagb_paged_format( $permalink_structure, $base ) {
 	$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
 
 	if ( ! empty( $permalink_structure ) ) {
-		$format  = substr( $base, -1 ) != '/' ? '/' : '';
+		$format  = substr( $base, -1 ) !== '/' ? '/' : '';
 		$format .= $page_prefix . '/';
 		$format .= '%#%';
-		$format .= substr( $permalink_structure, -1 ) == '/' ? '/' : '';
+		$format .= substr( $permalink_structure, -1 ) === '/' ? '/' : '';
 	} elseif ( empty( $permalink_structure ) || is_search() ) {
 		$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
 		$format    = empty( $parse_url ) ? '?' : '&';

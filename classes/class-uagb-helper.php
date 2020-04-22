@@ -273,7 +273,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 0.0.1
 		 */
 		public static function generate_css( $selectors, $id ) {
-
 			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
@@ -300,9 +299,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( ! empty( $css ) ) {
-					$styling_css .= $id;
-					$styling_css .= $key . '{';
-					$styling_css .= $css . '}';
+					$styling_css     .= $id;
+					$styling_css     .= $key . '{';
+						$styling_css .= $css . '}';
 				}
 			}
 
@@ -393,7 +392,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/buttons':
                     $css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
                     UAGB_Block_Helper::blocks_buttons_gfont( $blockattr );
-                    break;
+					break;
+
+				case 'uagb/buttons-child':
+					$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
+					break;
 
                 case 'uagb/blockquote':
                     $css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
@@ -1333,6 +1336,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$is_already_timeline  = false;
 			$is_already_column    = false;
 			$is_already_icon_list = false;
+			$is_already_button    = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
@@ -1368,6 +1372,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							$combined[]           = 'icon-list';
 							$combined[]           = 'icon-list-child';
 							$is_already_icon_list = true;
+						}
+						break;
+					case 'buttons-child':
+						if ( ! $is_already_button ) {
+							$combined[]        = 'buttons';
+							$combined[]        = 'buttons-child';
+							$is_already_button = true;
 						}
 						break;
 
