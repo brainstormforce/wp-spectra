@@ -690,7 +690,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
 				),
 			);
-			
+
+			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+
 			if ( "desktop" == $attr['stack'] ) {
 
 				$selectors[" .uagb-button__wrapper"] = array (
@@ -705,7 +707,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 				} else {
 					$selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						'justify-content' => $alignment,
+						'-webkit-box-pack'=> $alignment,
+						'-ms-flex-pack' => $alignment,
+						'justify-content' => $alignment,
+						'-webkit-box-align' => $alignment,
+						'-ms-flex-align' => $alignment,
+						'align-items' => $alignment,
 					);
 				}
 
@@ -723,7 +732,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 				} else {
 					$t_selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						'justify-content' => $alignment,
+						'-webkit-box-pack'=> $alignment,
+						'-ms-flex-pack' => $alignment,
+						'justify-content' => $alignment,
+						'-webkit-box-align' => $alignment,
+						'-ms-flex-align' => $alignment,
+						'align-items' => $alignment,
 					);
 				}
 
@@ -741,21 +757,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 				} else {
 					$m_selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column"
+						"flex-direction" => "column",
+						'justify-content' => $alignment,
+						'-webkit-box-pack'=> $alignment,
+						'-ms-flex-pack' => $alignment,
+						'justify-content' => $alignment,
+						'-webkit-box-align' => $alignment,
+						'-ms-flex-align' => $alignment,
+						'align-items' => $alignment,
 					);
 				}
 			}
-			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+			if ( $attr['childMigrate'] ) {
 
-			$selectors[' .uagb-buttons__wrap'] = array (
-				'justify-content' => $alignment,
-				'-webkit-box-pack'=> $alignment,
-				'-ms-flex-pack' => $alignment,
-				'justify-content' => $alignment,
-				'-webkit-box-align' => $alignment,
-				'-ms-flex-align' => $alignment,
-				'align-items' => $alignment,
-			);
+				$selectors[' .uagb-buttons__wrap'] = array (
+					'justify-content' => $alignment,
+					'-webkit-box-pack'=> $alignment,
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
+				);
+			}
 
 			if ( $attr['childMigrate'] ) {
 				$selectors[' .uagb-buttons-repeater'] = array (
