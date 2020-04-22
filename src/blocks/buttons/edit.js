@@ -164,12 +164,15 @@ class UAGBMultiButtonEdit extends Component {
 					`uagb-block-${ this.props.clientId }`
 				) }
 				>
-					<div className="uagb-buttons__wrap">
+					<div className={ classnames(
+					"uagb-buttons__wrap",
+					`uagb-buttons-stack-${ stack }`
+				) }>
 						<InnerBlocks
 							template={ getButtonTemplate( btn_count, buttons ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							__experimentalMoverDirection={ 'horizontal' }
+							__experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
 						/>
 					</div>
 				</div>

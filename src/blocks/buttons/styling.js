@@ -76,7 +76,10 @@ function styling( props ) {
 			"-ms-flex-pack": alignment,
 			"justify-content": alignment,
 		}
-		
+
+		selectors[" .uagb-buttons-stack-desktop .block-editor-block-list__layout"] = {
+			"align-items" : alignment
+		}
 
 	var id = `#uagb-buttons-${ props.clientId }`
 	if ( classMigrate ) {
