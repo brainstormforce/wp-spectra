@@ -19,7 +19,7 @@ const {
 registerBlockType( "uagb/social-share-child", {
 	title: uagb_blocks_info.blocks["uagb/social-share-child"]["title"],
 	description: uagb_blocks_info.blocks["uagb/social-share-child"]["description"],
-	icon: UAGB_Block_Icons.social_share,
+	icon: UAGB_Block_Icons.social_share_child,
 	category: uagb_blocks_info.category,
 	parent: [ "uagb/social-share" ],
 	keywords: [
