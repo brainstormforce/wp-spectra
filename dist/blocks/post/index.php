@@ -274,7 +274,7 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
 		if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
 			echo '<div class="uagb-post-pagination-wrap">';
-			echo uagb_render_pagination( $query, $attributes );
+			echo uagb_render_pagination( $query, $attributes );//phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo '</div>';
 		}
 		?>
@@ -291,16 +291,19 @@ function uagb_get_post_html( $attributes, $query, $layout ) {
  */
 function uagb_render_pagination( $query, $attributes ) {
 
+	$permalink_structure = get_option('permalink_structure');
 	$base        = untrailingslashit( wp_specialchars_decode( get_pagenum_link() ) );
 	$paged       = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 	$total_posts = ( isset( $attributes['pageLimit'] ) ? $attributes['pageLimit'] : $query->found_posts );
 	$max         = $query->found_posts;
 	$max         = ( $total_posts <= $max ) ? $total_posts : $max;
 	$total_pages = ceil( $max / $attributes['postsToShow'] );
+	$base = uagb_build_base_url( $permalink_structure, $base );
+	$format = uagb_paged_format( $permalink_structure, $base );
 	$links       = paginate_links(
 		array(
 			'base'      => $base . '%_%',
-			'format'    => '&paged=%#%',
+			'format'    => $format,
 			'current'   => $paged,
 			'total'     => $total_pages,
 			'type'      => 'array',
@@ -311,7 +314,71 @@ function uagb_render_pagination( $query, $attributes ) {
 		)
 	);
 
-	return wp_kses_post( implode( PHP_EOL, $links ) );
+	if ( isset( $links ) ) {
+
+		return wp_kses_post( implode( PHP_EOL, $links ) );
+	}
+
+	return '';
+}
+/**
+ * Builds the base url.
+ * @param string $permalink_structure Premalink Structure.
+ * @param string $base Base.
+ * @since x.x.x
+ */
+function uagb_build_base_url( $permalink_structure, $base ) {
+	// Check to see if we are using pretty permalinks
+	if ( ! empty( $permalink_structure ) ) {
+
+		if ( strrpos( $base, 'paged-' ) ) {
+			$base = substr_replace( $base, '', strrpos( $base, 'paged-' ), strlen( $base ) );
+		}
+
+		// Remove query string from base URL since paginate_links() adds it automatically.
+		// This should also fix the WPML pagination issue that was added since 1.10.2.
+		if ( count( $_GET ) > 0 ) {
+			$base = strtok( $base, '?' );
+		}
+
+		// Add trailing slash when necessary.
+		if ( '/' == substr( $permalink_structure, -1 ) ) {
+			$base = trailingslashit( $base );
+		} else {
+			$base = untrailingslashit( $base );
+		}
+	} else {
+		$url_params = wp_parse_url( $base, PHP_URL_QUERY );
+
+		if ( empty( $url_params ) ) {
+			$base = trailingslashit( $base );
+		}
+	}
+
+	return $base;
+}
+/**
+ * Returns the Paged Format.
+ * @param string $permalink_structure Premalink Structure.
+ * @param string $base Base.
+ * @since x.x.x
+ */
+function uagb_paged_format( $permalink_structure, $base ) {
+
+	$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
+
+	if ( ! empty( $permalink_structure ) ) {
+		$format  = substr( $base, -1 ) != '/' ? '/' : '';
+		$format .= $page_prefix . '/';
+		$format .= '%#%';
+		$format .= substr( $permalink_structure, -1 ) == '/' ? '/' : '';
+	} elseif ( empty( $permalink_structure ) || is_search() ) {
+		$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
+		$format    = empty( $parse_url ) ? '?' : '&';
+		$format   .= $page_prefix . '=%#%';
+	}
+
+	return $format;
 }
 /**
  * Registers the `core/latest-posts` block on server.
