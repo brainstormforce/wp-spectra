@@ -2,25 +2,19 @@
  * BLOCK: Icon List
  */
 
-import classnames from "classnames"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
 import save from "./save"
+import transform from "./transform"
 import deprecated from "./deprecated"
 import "./style.scss"
 import "./editor.scss"
 
-
 const { __ } = wp.i18n
-
 const {
 	registerBlockType
 } = wp.blocks
-
-const {
-	RichText
-} = wp.blockEditor
 
 registerBlockType( "uagb/icon-list", {
 	title: uagb_blocks_info.blocks["uagb/icon-list"]["title"],
@@ -38,5 +32,6 @@ registerBlockType( "uagb/icon-list", {
 	attributes,
 	edit,
 	save,
+	transform,
 	deprecated
 } )

@@ -1621,7 +1621,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$t_selectors = array();
 
+			$selectors[" .uagb-social-share__wrap .block-editor-inner-blocks"] = array(
+			"text-align" => UAGB_Helper::get_css_value( $attr['align'] ),
+			);
+
 			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = array(
+				"padding"  => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 				"margin-left"  => 0,
 				"margin-right"  => 0,
 				"margin-bottom"  => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
@@ -1631,21 +1636,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"flex-direction" => "column"
 			);
 
-			$selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = array(
-				"margin-bottom"  => 0
-			);
-
 			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = array(
+				"padding"  => UAGB_Helper::get_css_value( $attr['bgSize'], 'px' ),
 				"margin-left"  => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' ),
 				"margin-right"  => UAGB_Helper::get_css_value( ( $attr['gap']/2 ), 'px' )
-			);
-
-			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = array(
-				"margin-left"  => 0
-			);
-
-			$selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = array(
-				"margin-right"  => 0
 			);
 
 			$selectors[" .uagb-ss__wrapper"] = array(
@@ -1726,52 +1720,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"margin-right"  => 0
 			);
 
-
-			foreach ( $attr['socials'] as $key => $social ) {
-
-				$social['icon_color'] = ( isset( $social['icon_color'] ) ) ? $social['icon_color'] : '';
-				$social['icon_bg_color'] = ( isset( $social['icon_bg_color'] ) ) ? $social['icon_bg_color'] : '';		
-				$social['icon_hover_color'] = ( isset( $social['icon_hover_color'] ) ) ? $social['icon_hover_color'] : '';
-				$social['icon_bg_hover_color'] = ( isset( $social['icon_bg_hover_color'] ) ) ? $social['icon_bg_hover_color'] : '';
-
-				if ( $attr['social_count'] <= $key ) {
-					break;
-				}
-
-				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
-					"color" => $social['icon_color'],
-					"padding" => UAGB_Helper::get_css_value( $attr['bgSize'], $attr['bgSizeType'] )
-				);
-
-				$m_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
-					"padding" => UAGB_Helper::get_css_value( $attr['bgSizeMobile'], $attr['bgSizeType'] )
-				);
-
-				$t_selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link"] = array (
-					"padding" => UAGB_Helper::get_css_value( $attr['bgSizeTablet'], $attr['bgSizeType'] )
-				);
-
-				$selectors[" .uagb-ss-repeater-" . $key . " a.uagb-ss__link svg"] = array (
-					"fill" => $social['icon_color'],
-				);
-
-				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link"] = array (
-					"color" => $social['icon_hover_color']
-				);
-
-				$selectors[" .uagb-ss-repeater-" . $key . ":hover a.uagb-ss__link svg"] = array (
-					"fill" => $social['icon_hover_color']
-				);
-
-				$selectors[" .uagb-ss-repeater-" . $key] = array (
-					"background" => $social['icon_bg_color']
-				);
-
-				$selectors[" .uagb-ss-repeater-" . $key . ":hover"] = array (
-					"background" => $social['icon_bg_hover_color']
-				);
-			}
-
 			$selectors[" .uagb-social-share__wrap"] = array(
 				"justify-content"  => $alignment,
 				"-webkit-box-pack" => $alignment,
@@ -1781,6 +1729,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"-ms-flex-align" => $alignment,
 				"align-items" => $alignment,
 			);
+
+			if ( ! $attr['childMigrate'] ) {
+
+				foreach ( $attr['socials'] as $key => $socials ) {
+					
+					$socials['icon_color'] = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
+					$socials['icon_hover_color'] = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
+					$socials['icon_bg_color'] = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
+					$socials['icon_bg_hover_color'] = ( isset( $socials['icon_bg_hover_color'] ) ) ? $socials['icon_bg_hover_color'] : '';
+
+					if ( $attr['social_count'] <= $key ) {
+						break;
+					}
+
+					$child_selectors = self::get_social_share_child_selectors( $socials, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors );
+				}
+			}
 
 			if ( 'horizontal' == $attr['social_layout'] ) {
 
@@ -1793,11 +1759,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
-					);
-
-					$selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 
 				} else if ( "tablet" == $attr['stack'] ) {
@@ -1809,11 +1778,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$t_selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
-					);
-
-					$t_selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 
 				} else if ( "mobile" == $attr['stack'] ) {
@@ -1825,14 +1797,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 
 					$m_selectors[" .uagb-social-share__wrap"] = array (
-						"flex-direction" => "column"
-					);
-
-					$m_selectors[" .uagb-ss__wrapper:last-child"] = array (
-						"margin-bottom" => 0
+						"flex-direction" => "column",
+						"justify-content"  => $alignment,
+						"-webkit-box-pack" => $alignment,
+						"-ms-flex-pack" => $alignment,
+						"justify-content" => $alignment,
+						"-webkit-box-align" => $alignment,
+						"-ms-flex-align" => $alignment,
+						"align-items" => $alignment,
 					);
 				}
 			}
+			
 
 			// @codingStandardsIgnoreEnd
 
@@ -1852,6 +1828,75 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			return $generated_css;
 		}
+
+		/**
+		 * Get social share Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_social_share_child_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/social-share-child']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = self::get_social_share_child_selectors( $attr, $id, true );
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			return $generated_css;
+		}
+
+		/**
+		 * Get Social share Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The key for the Icon List Item.
+		 * @param string $childMigrate The child migration flag.
+		 * @return array The Widget List.
+		 */
+		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) { 			// @codingStandardsIgnoreStart
+
+			$wrapper = ( ! $childMigrate ) ? " .uagb-ss-repeater-" . $id : ".uagb-ss-repeater";
+
+			$selectors[$wrapper . " a.uagb-ss__link"] = array(
+				"color" => $attr['icon_color']
+			);
+			$selectors[$wrapper . " a.uagb-ss__link"] = array(
+				"color" => $attr['icon_color']
+			);
+			$selectors[$wrapper . " a.uagb-ss__link svg"] = array(
+				"fill" => $attr['icon_color']
+			);
+			$selectors[$wrapper . ":hover a.uagb-ss__link"] = array (
+				"color" => $attr['icon_hover_color']
+			);
+			$selectors[$wrapper . ":hover a.uagb-ss__link svg"] = array (
+				"fill" => $attr['icon_hover_color']
+			);
+			
+			$selectors[$wrapper . ".uagb-ss__wrapper"] = array (
+				"background" => $attr['icon_bg_color'],
+			);
+			$selectors[$wrapper . ".uagb-ss__wrapper:hover"] = array (
+				"background" => $attr['icon_bg_hover_color'],
+			);
+
+			return $selectors;
+		}
+
 
 		/**
 		 * Get Icon List Block CSS
@@ -1933,6 +1978,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
+			if ( ! $attr['childMigrate'] ) {
+
+				foreach ( $attr['icons'] as $key => $icon ) {
+
+					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
+					$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
+					$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
+					$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
+					$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
+					$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
+					$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
+					$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+	
+					if ( $attr['icon_count'] <= $key ) {
+						break;
+					}
+
+					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors );
+				}
+	
+				
+			}
+
 			if ( 'right' == $attr['align'] ) {
 				$selectors[":not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap"] = array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['inner_gap'], 'px' )
@@ -1991,69 +2060,22 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 			// Tablet Icon Size CSS ends.
 
-			foreach ( $attr['icons'] as $key => $icon ) {
+			$selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
+				'font-family' => $attr['fontFamily'],
+				'font-weight' => $attr['fontWeight'],
+				'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
+			);
 
-				$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
-				$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
-				$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
-				$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-				$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-				$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
-				$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
-				$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+			$m_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+			);
 
-				if ( $attr['icon_count'] <= $key ) {
-					break;
-				}
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon"] = array (
-					"color" => $icon['icon_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-icon svg"] = array (
-					"fill" => $icon['icon_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon"] = array (
-					"color" => $icon['icon_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-icon svg"] = array (
-					"fill" => $icon['icon_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"color" => $icon['label_color'],
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
-					'font-family' => $attr['fontFamily'],
-					'font-weight' => $attr['fontWeight'],
-					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
-				);
-
-				$m_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-				);
-
-				$t_selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__label"] = array (
-					"color" => $icon['label_hover_color']
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . " .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_color'],
-					"border-color" => $icon['icon_border_color'],
-				);
-
-				$selectors[" .uagb-icon-list-repeater-" . $key . ":hover .uagb-icon-list__source-wrap"] = array(
-					"background" => $icon['icon_bg_hover_color'],
-					"border-color" => $icon['icon_border_hover_color']
-				);
-			}
+			$t_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+			);
 
 			if ( 'horizontal' == $attr['icon_layout'] ) {
 
@@ -2108,6 +2130,82 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			return $generated_css;
+		}
+
+		/**
+		 * Get Icon List Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_icon_list_child_css( $attr, $id ) { 			// @codingStandardsIgnoreStart
+
+			$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
+
+			$attr = array_merge( $defaults, (array) $attr );
+
+			$selectors = self::get_icon_list_child_selectors( $attr, $id, true );
+
+			// @codingStandardsIgnoreEnd
+
+			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				'tablet'  => '',
+				'mobile'  => '',
+			);
+
+			return $generated_css;
+		}
+
+		/**
+		 * Get Icon List Block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The key for the Icon List Item.
+		 * @param string $childMigrate The child migration flag.
+		 * @return array The Widget List.
+		 */
+		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) { 			// @codingStandardsIgnoreStart
+
+			$wrapper = ( ! $childMigrate ) ? " .uagb-icon-list-repeater-" . $id : ".uagb-icon-list-repeater";
+
+			$selectors[$wrapper . " .uagb-icon-list__source-icon"] = array(
+				"color" => $attr['icon_color']
+			);
+			$selectors[$wrapper . " .uagb-icon-list__source-icon"] = array(
+				"color" => $attr['icon_color']
+			);
+			$selectors[$wrapper . " .uagb-icon-list__source-icon svg"] = array(
+				"fill" => $attr['icon_color']
+			);
+			$selectors[$wrapper . ":hover .uagb-icon-list__source-icon"] = array (
+				"color" => $attr['icon_hover_color']
+			);
+			$selectors[$wrapper . ":hover .uagb-icon-list__source-icon svg"] = array (
+				"fill" => $attr['icon_hover_color']
+			);
+			$selectors[$wrapper . " .uagb-icon-list__label"] = array (
+				"color" => $attr['label_color']
+			);
+			$selectors[$wrapper . ":hover .uagb-icon-list__label"] = array (
+				"color" => $attr['label_hover_color']
+			);
+			$selectors[$wrapper . " .uagb-icon-list__source-wrap"] = array (
+				"background" => $attr['icon_bg_color'],
+				"border-color" => $attr['icon_border_color'],
+			);
+			$selectors[$wrapper . ":hover .uagb-icon-list__source-wrap"] = array (
+				"background" => $attr['icon_bg_hover_color'],
+				"border-color" => $attr['icon_border_hover_color']
+			);
+			// @codingStandardsIgnoreEnd
+
+			return $selectors;
 		}
 
 		/**
@@ -4843,7 +4941,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selector      = $base_selector . $id;
 			$js            = 'var ssLinks = document.querySelectorAll( "' . $selector . '" ); for (let j = 0; j < ssLinks.length; j++) { var ssLink = ssLinks[j].querySelectorAll( ".uagb-ss__link" );';
 			$js           .= 'for (let i = 0; i < ssLink.length; i++) { ssLink[i].addEventListener( "click", function() {' .
-					'var social_url = this.dataset.href; ' .
+					'var social_url = this.dataset.href;' .
 					'var target = ""; ' .
 					'if( social_url == "mailto:?body=" ){ ' .
 						'target = "_self";' .
@@ -4851,7 +4949,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'var request_url = social_url + window.location.href ;' .
 					'window.open( request_url,target );' .
 				'}); }}';
-
 			return $js;
 		}
 

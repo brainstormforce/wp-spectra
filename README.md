@@ -164,11 +164,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added a missing File Permission check for dynamic CSS File Generation.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Table of Contents - Support Special character in heading.
+* Fix: Table of Contents - Not working for paragraph with html attributes inside.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Post Carousel - Border radius not working.
 * Fix: Advanced Column : Percentage button not clickable in editor mode.
 * Fix: Removed Drag icon from UAG Admin Setting page.
 * Fix: 403 error on Astra activation.
+* Fix: Table of Contents - Support Single and Double quotes in heading.
+* Fix: Advanced Columns : Column width not applying in the Editor.
 
 ### 1.14.8 ###
 * Improvement: Inline CSS generation markup as per w3c standards.

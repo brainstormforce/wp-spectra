@@ -156,23 +156,24 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.14.8.1 =
+* Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.
+* Improvement: Post Grid - Added Pagination support.
 * Improvement: Added WPML compatibility.
-* Improvement: Used local variable where get_filesystem() is called more than once.
-* Improvement: Display reset button inline in section.
-* Improvement: Added Box Shadow option to Advanced columns and Section.
-* Improvement: Table of Contents - Added bullet point color option.
-* Improvement: Added a missing File Permission check for dynamic CSS File Generation.
-* Improvement: Post Grid - Added Post pagination option.
+* Improvement: Added Box Shadow option to Advanced Columns and Section.
+* Improvement: UI improvement for Reset button.
+* Improvement: Table of Contents - Color options for Bullet Points.
+* Improvement: Improved CSS File Generation functionality.
+* Improvement: Improved file system functions.
+* Fix: Advanced Columns : Percentage button not clickable in editor mode.
+* Fix: Advanced Columns : Column width not applying in the Editor.
+* Fix: 403 error on Astra activation.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
 * Fix: Table of Contents - Support Special character in heading.
 * Fix: Table of Contents - Not working for paragraph with html attributes inside.
+* Fix: Table of Contents - Support Single and Double quotes in heading.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Post Carousel - Border radius not working.
-* Fix: Advanced Column : Percentage button not clickable in editor mode.
-* Fix: Removed Drag icon from UAG Admin Setting page.
-* Fix: 403 error on Astra activation.
-* Fix: Table of Contents - Support Single and Double quotes in heading.
-* Fix: Advanced Columns : Column width not applying in the Editor.
+* Fix: UI improvement on UAG Admin Setting page.
 
 = 1.14.8 =
 * Improvement: Inline CSS generation markup as per w3c standards.

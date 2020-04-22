@@ -27,9 +27,6 @@ registerBlockType( "uagb/post-masonry", {
 		__( "masonry" ),
 		__( "uag" ),
 	],
-	supports: {
-		anchor: true,
-	},
 	edit,
 	// Render via PHP
 	save() {

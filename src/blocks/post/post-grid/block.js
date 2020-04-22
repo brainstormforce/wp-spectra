@@ -27,9 +27,6 @@ registerBlockType( "uagb/post-grid", {
 		__( "grid" ),
 		__( "uag" ),
 	],
-	supports: {
-		anchor: true,
-	},
 	edit,
 	// Render via PHP
 	save() {
