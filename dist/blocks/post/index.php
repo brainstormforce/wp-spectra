@@ -298,8 +298,8 @@ function uagb_render_pagination( $query, $attributes ) {
 	$max         = $query->found_posts;
 	$max         = ( $total_posts <= $max ) ? $total_posts : $max;
 	$total_pages = ceil( $max / $attributes['postsToShow'] );
-	$base = build_base_url( $permalink_structure, $base );
-	$format = paged_format( $permalink_structure, $base );
+	$base = uagb_build_base_url( $permalink_structure, $base );
+	$format = uagb_paged_format( $permalink_structure, $base );
 	$links       = paginate_links(
 		array(
 			'base'      => $base . '%_%',
@@ -327,7 +327,7 @@ function uagb_render_pagination( $query, $attributes ) {
  * @param string $base Base.
  * @since x.x.x
  */
-function build_base_url( $permalink_structure, $base ) {
+function uagb_build_base_url( $permalink_structure, $base ) {
 	// Check to see if we are using pretty permalinks
 	if ( ! empty( $permalink_structure ) ) {
 
@@ -363,7 +363,7 @@ function build_base_url( $permalink_structure, $base ) {
  * @param string $base Base.
  * @since x.x.x
  */
-function paged_format( $permalink_structure, $base ) {
+function uagb_paged_format( $permalink_structure, $base ) {
 
 	$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
 
