@@ -142,6 +142,129 @@ class UAGBButtonsChild extends Component {
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
+					<h2>{  __( " Color Settings" ) }</h2>
+					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+						activeClass="active-tab"
+						tabs={ [
+							{
+								name: "normal",
+								title: __( "Normal" ),
+								className: "uagb-normal-tab",
+							},
+							{
+								name: "hover",
+								title: __( "Hover" ),
+								className: "uagb-hover-tab",
+							},
+						] }>
+						{
+							( tabName ) => {
+								let btn_color_tab
+								if( "normal" === tabName.name ) {
+									btn_color_tab = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: color }} ></span></span></p>
+										<ColorPalette
+											value={ color }
+											onChange={ ( value ) => setAttributes( { color: value } ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: background }} ></span></span></p>
+										<ColorPalette
+											value={ background }
+											onChange={ ( value ) => setAttributes( { background: value } ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+										<ColorPalette
+											value={ borderColor }
+											onChange={ ( value ) => setAttributes( { borderColor: value } ) }
+											allowReset
+										/>
+									</Fragment>
+								}else {
+									btn_color_tab = <Fragment>
+										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hColor }} ></span></span></p>
+										<ColorPalette
+											value={ hColor }
+											onChange={ ( value ) => setAttributes( { hColor: value } ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hBackground }} ></span></span></p>
+										<ColorPalette
+											value={ hBackground }
+											onChange={ ( value ) => setAttributes( { hBackground: value } ) }
+											allowReset
+										/>
+										<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
+										<ColorPalette
+											value={ borderHColor }
+											onChange={ ( value ) => setAttributes( { borderHColor: value } ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+								return <div>{ btn_color_tab }</div>
+							}
+						}
+					</TabPanel>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Padding (px)" ) }</h2>
+					<RangeControl
+						label={ UAGB_Block_Icons.vertical_spacing }
+						className={ "uagb-margin-control" }
+						value={ vPadding }
+						onChange={ value => {
+							setAttributes( { vPadding: value } )
+						} }
+						min={ 0 }
+						max={ 100 }
+					/>
+					<RangeControl
+						label={ UAGB_Block_Icons.horizontal_spacing }
+						className={ "uagb-margin-control" }
+						value={ hPadding }
+						onChange={ value => {
+							setAttributes( { hPadding: value } )
+						} }
+						min={ 0 }
+						max={ 100 }
+					/>
+					<h2>{ __( "Border" ) }</h2>
+					<SelectControl
+						label={ __( "Style" ) }
+						value={ borderStyle }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "solid", label: __( "Solid" ) },
+							{ value: "dotted", label: __( "Dotted" ) },
+							{ value: "dashed", label: __( "Dashed" ) },
+							{ value: "double", label: __( "Double" ) },
+						] }
+						onChange={ value => {
+							setAttributes( { borderStyle: value } )
+						} }
+					/>
+					{ borderStyle != "none" &&
+						<RangeControl
+							label={ __( "Thickness" ) }
+							value={ borderWidth }
+							onChange={ value => {
+								setAttributes( { borderWidth: value } )
+							} }
+							min={ 0 }
+							max={ 20 }
+						/>
+					}
+					<RangeControl
+						label={ __( "Rounded Corners" ) }
+						value={ borderRadius }
+						onChange={ value => {
+							setAttributes( { borderRadius: value } )
+						} }
+						min={ 0 }
+						max={ 50 }
+					/>
+					<hr className="uagb-editor__separator" />
 					<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 						tabs={ [
 							{
@@ -435,129 +558,6 @@ class UAGBButtonsChild extends Component {
 						}
 					</TabPanel>
 					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Button Padding (px)" ) }</h2>
-					<RangeControl
-						label={ UAGB_Block_Icons.vertical_spacing }
-						className={ "uagb-margin-control" }
-						value={ vPadding }
-						onChange={ value => {
-							setAttributes( { vPadding: value } )
-						} }
-						min={ 0 }
-						max={ 100 }
-					/>
-					<RangeControl
-						label={ UAGB_Block_Icons.horizontal_spacing }
-						className={ "uagb-margin-control" }
-						value={ hPadding }
-						onChange={ value => {
-							setAttributes( { hPadding: value } )
-						} }
-						min={ 0 }
-						max={ 100 }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Button Border" ) }</h2>
-					<SelectControl
-						label={ __( "Style" ) }
-						value={ borderStyle }
-						options={ [
-							{ value: "none", label: __( "None" ) },
-							{ value: "solid", label: __( "Solid" ) },
-							{ value: "dotted", label: __( "Dotted" ) },
-							{ value: "dashed", label: __( "Dashed" ) },
-							{ value: "double", label: __( "Double" ) },
-						] }
-						onChange={ value => {
-							setAttributes( { borderStyle: value } )
-						} }
-					/>
-					{ borderStyle != "none" &&
-						<RangeControl
-							label={ __( "Thickness" ) }
-							value={ borderWidth }
-							onChange={ value => {
-								setAttributes( { borderWidth: value } )
-							} }
-							min={ 0 }
-							max={ 20 }
-						/>
-					}
-					<RangeControl
-						label={ __( "Rounded Corners" ) }
-						value={ borderRadius }
-						onChange={ value => {
-							setAttributes( { borderRadius: value } )
-						} }
-						min={ 0 }
-						max={ 50 }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{  __( " Color Settings" ) }</h2>
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
-							{
-								name: "normal",
-								title: __( "Normal" ),
-								className: "uagb-normal-tab",
-							},
-							{
-								name: "hover",
-								title: __( "Hover" ),
-								className: "uagb-hover-tab",
-							},
-						] }>
-						{
-							( tabName ) => {
-								let btn_color_tab
-								if( "normal" === tabName.name ) {
-									btn_color_tab = <Fragment>
-										<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: color }} ></span></span></p>
-										<ColorPalette
-											value={ color }
-											onChange={ ( value ) => setAttributes( { color: value } ) }
-											allowReset
-										/>
-										<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: background }} ></span></span></p>
-										<ColorPalette
-											value={ background }
-											onChange={ ( value ) => setAttributes( { background: value } ) }
-											allowReset
-										/>
-										<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
-										<ColorPalette
-											value={ borderColor }
-											onChange={ ( value ) => setAttributes( { borderColor: value } ) }
-											allowReset
-										/>
-									</Fragment>
-								}else {
-									btn_color_tab = <Fragment>
-										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hColor }} ></span></span></p>
-										<ColorPalette
-											value={ hColor }
-											onChange={ ( value ) => setAttributes( { hColor: value } ) }
-											allowReset
-										/>
-										<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: hBackground }} ></span></span></p>
-										<ColorPalette
-											value={ hBackground }
-											onChange={ ( value ) => setAttributes( { hBackground: value } ) }
-											allowReset
-										/>
-										<p className="uagb-setting-label">{ __( "Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderHColor }} ></span></span></p>
-										<ColorPalette
-											value={ borderHColor }
-											onChange={ ( value ) => setAttributes( { borderHColor: value } ) }
-											allowReset
-										/>
-									</Fragment>
-								}
-								return <div>{ btn_color_tab }</div>
-							}
-						}
-					</TabPanel>
 				</PanelBody>
 			)
 		}
