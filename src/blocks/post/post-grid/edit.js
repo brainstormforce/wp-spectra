@@ -1032,7 +1032,7 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination } = props.attributes
 	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
@@ -1042,7 +1042,7 @@ export default withSelect( ( select, props ) => {
 	let categoriesList = []
 	let rest_base = ""
 
-	if ( '' === paginationMarkup ) {
+	if ( true === postPagination && '' === paginationMarkup ) {
 		$.ajax({
 			url: uagb_blocks_info.ajax_url,
 			data: {
