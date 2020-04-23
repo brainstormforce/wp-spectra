@@ -262,18 +262,18 @@ class UAGBAdvancedHeading extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
-							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
-							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
-							fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
-							fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
-							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
-							lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
-							lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: subHeadFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: subHeadFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: subHeadFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: subHeadFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: subHeadFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: subHeadLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: subHeadLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "Line Height" ) } }
 						/>
 						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 						<ColorPalette

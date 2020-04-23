@@ -294,18 +294,18 @@ class UAGBIconList extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
-							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
-							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
-							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
-							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
-							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: fontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: fontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: fontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: fontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: fontSizeMobile, label: __( "Font Size" ) } }
 							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
-							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
-							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
-							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
-							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+							lineHeightType = { { value: lineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: lineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: lineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: lineHeightTablet, label: __( "Line Height" ) } }
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
