@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'classMigrate'    => false,
 							'childMigrate'    => false,
 							'block_id'        => '',
-							'align'           => 'center',
+							'align'           => 'left',
 							'btn_count'       => '2',
 							'buttons'         => UAGB_Helper::get_button_defaults(),
 							'gap'             => 10,
@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/buttons-child'      => array(
 						'slug'        => '',
 						'title'       => __( 'Button', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to add button.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'     => false,

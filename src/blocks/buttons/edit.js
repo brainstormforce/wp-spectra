@@ -122,24 +122,12 @@ class UAGBMultiButtonEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<h2>{ __( "Button Typography" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: fontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: fontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "Font Subset" ) } }
-							disableFontSize={true}
-							disableLineHeight={true}
-						/>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Button Spacing" ) }</h2>
+						<h2>{ __( "Spacing" ) }</h2>
 						<RangeControl
 							label={ __( "Gap Between Buttons" ) }
 							value={ gap }
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: The gap between the buttons will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
 							min={ 0 }
 							max={ 50 }
 						/>
@@ -155,6 +143,19 @@ class UAGBMultiButtonEdit extends Component {
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 							help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: fontFamily, label:  __( "Font Family" ) } }
+							fontWeight = { { value: fontWeight, label:  __( "Font Weight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "Font Subset" ) } }
+							disableFontSize={true}
+							disableLineHeight={true}
 						/>
 					</PanelBody>
 				</InspectorControls>
