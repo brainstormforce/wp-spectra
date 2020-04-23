@@ -7,7 +7,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	var link    = "#"	
 	buttons.push(	
 		{	
-			"label": label,	
+			"label": "#Click Here",	
 			"link": link,	
 			"target": "_self",	
 			"size": "",	
