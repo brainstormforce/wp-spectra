@@ -678,18 +678,18 @@ class UAGBTimeline extends Component {
 						label={ __( "Typography" ) }
 						attributes = { this.props.attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "headLoadGoogleFonts" ) } }
-						fontFamily = { { value: headFontFamily, label: __( "headFontFamily" ) } }
-						fontWeight = { { value: headFontWeight, label: __( "headFontWeight" ) } }
-						fontSubset = { { value: headFontSubset, label: __( "headFontSubset" ) } }
-						fontSizeType = { { value: headFontSizeType, label: __( "headFontSizeType" ) } }
-						fontSize = { { value: headFontSize, label: __( "headFontSize" ) } }
-						fontSizeMobile = { { value: headFontSizeMobile, label: __( "headFontSizeMobile" ) } }
-						fontSizeTablet= { { value: headFontSizeTablet, label: __( "headFontSizeTablet" ) } }
-						lineHeightType = { { value: headLineHeightType, label: __( "headLineHeightType" ) } }
-						lineHeight = { { value: headLineHeight, label: __( "headLineHeight" ) } }
-						lineHeightMobile = { { value: headLineHeightMobile, label: __( "headLineHeightMobile" ) } }
-						lineHeightTablet= { { value: headLineHeightTablet, label: __( "headLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "Font Family" ) } }
+						fontFamily = { { value: headFontFamily, label: __( "Font Family" ) } }
+						fontWeight = { { value: headFontWeight, label: __( "Font Weight" ) } }
+						fontSubset = { { value: headFontSubset, label: __( "Font Subset" ) } }
+						fontSizeType = { { value: headFontSizeType, label: __( "Line Height Type" ) } }
+						fontSize = { { value: headFontSize, label: __( "Line Height" ) } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: __( "Font Size" ) } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: __( "Font Size" ) } }
+						lineHeightType = { { value: headLineHeightType, label: __( "Line Height Type" ) } }
+						lineHeight = { { value: headLineHeight, label: __( "Line Height" ) } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: __( "Line Height" ) } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: __( "Line Height" ) } }
 					/>
 					{ displayPostExcerpt && <Fragment>
 						<hr className="uagb-editor__separator" />
@@ -698,18 +698,18 @@ class UAGBTimeline extends Component {
 							label={ __( "Typography" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "subHeadLoadGoogleFonts" ) } }
-							fontFamily = { { value: subHeadFontFamily, label: __( "subHeadFontFamily" ) } }
-							fontWeight = { { value: subHeadFontWeight, label: __( "subHeadFontWeight" ) } }
-							fontSubset = { { value: subHeadFontSubset, label: __( "subHeadFontSubset" ) } }
-							fontSizeType = { { value: subHeadFontSizeType, label: __( "subHeadFontSizeType" ) } }
-							fontSize = { { value: subHeadFontSize, label: __( "subHeadFontSize" ) } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "subHeadFontSizeMobile" ) } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "subHeadFontSizeTablet" ) } }
-							lineHeightType = { { value: subHeadLineHeightType, label: __( "subHeadLineHeightType" ) } }
-							lineHeight = { { value: subHeadLineHeight, label: __( "subHeadLineHeight" ) } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "subHeadLineHeightMobile" ) } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "subHeadLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: subHeadFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: subHeadFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: subHeadFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: subHeadFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: subHeadFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: subHeadLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: subHeadLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "Line Height" ) } }
 						/>
 					</Fragment>
 					}
@@ -721,18 +721,18 @@ class UAGBTimeline extends Component {
 							label={ __( "Typography" ) }
 							attributes = { this.props.attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "dateLoadGoogleFonts" ) } }
-							fontFamily = { { value: dateFontFamily, label: __( "dateFontFamily" ) } }
-							fontWeight = { { value: dateFontWeight, label: __( "dateFontWeight" ) } }
-							fontSubset = { { value: dateFontSubset, label: __( "dateFontSubset" ) } }
-							fontSizeType = { { value: dateFontsizeType, label: __( "dateFontsizeType" ) } }
-							fontSize = { { value: dateFontsize, label: __( "dateFontsize" ) } }
-							fontSizeMobile = { { value: dateFontsizeMobile, label: __( "dateFontsizeMobile" ) } }
-							fontSizeTablet= { { value: dateFontsizeTablet, label: __( "dateFontsizeTablet" ) } }
-							lineHeightType = { { value: dateLineHeightType, label: __( "dateLineHeightType" ) } }
-							lineHeight = { { value: dateLineHeight, label: __( "dateLineHeight" ) } }
-							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "dateLineHeightMobile" ) } }
-							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "dateLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: dateLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: dateFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: dateFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: dateFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: dateFontsizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: dateFontsize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: dateFontsizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: dateFontsizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: dateLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: dateLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: dateLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: dateLineHeightTablet, label: __( "Line Height" ) } }
 						/>
 					</Fragment>
 					}
@@ -744,18 +744,18 @@ class UAGBTimeline extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: authorLoadGoogleFonts, label: __( "authorLoadGoogleFonts" ) } }
-							fontFamily = { { value: authorFontFamily, label: __( "authorFontFamily" ) } }
-							fontWeight = { { value: authorFontWeight, label: __( "authorFontWeight" ) } }
-							fontSubset = { { value: authorFontSubset, label: __( "authorFontSubset" ) } }
-							fontSizeType = { { value: authorFontSizeType, label: __( "authorFontSizeType" ) } }
-							fontSize = { { value: authorFontSize, label: __( "authorFontSize" ) } }
-							fontSizeMobile = { { value: authorFontSizeMobile, label: __( "authorFontSizeMobile" ) } }
-							fontSizeTablet= { { value: authorFontSizeTablet, label: __( "authorFontSizeTablet" ) } }
-							lineHeightType = { { value: authorLineHeightType, label: __( "authorLineHeightType" ) } }
-							lineHeight = { { value: authorLineHeight, label: __( "authorLineHeight" ) } }
-							lineHeightMobile = { { value: authorLineHeightMobile, label: __( "authorLineHeightMobile" ) } }
-							lineHeightTablet= { { value: authorLineHeightTablet, label: __( "authorLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: authorLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: authorFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: authorFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: authorFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: authorFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: authorFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: authorFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: authorFontSizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: authorLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: authorLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: authorLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: authorLineHeightTablet, label: __( "Line Height" ) } }
 						/>
 					</Fragment>
 					}
@@ -767,18 +767,18 @@ class UAGBTimeline extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
-							fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
-							fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
-							fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
-							fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
-							fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
-							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
-							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }
-							lineHeightType = { { value: ctaLineHeightType, label: __( "ctaLineHeightType" ) } }
-							lineHeight = { { value: ctaLineHeight, label: __( "ctaLineHeight" ) } }
-							lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "ctaLineHeightMobile" ) } }
-							lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "ctaLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: ctaFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: ctaFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: ctaFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: ctaFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: ctaFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: ctaLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: ctaLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "Line Height" ) } }
 						/>
 					</Fragment>
 					}
