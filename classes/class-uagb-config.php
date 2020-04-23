@@ -1049,7 +1049,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/buttons-child'      => array(
 						'slug'        => '',
 						'title'       => __( 'Button', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to add button.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'     => false,
