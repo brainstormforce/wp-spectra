@@ -691,8 +691,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 			);
 
-			$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
-
 			if ( "desktop" == $attr['stack'] ) {
 
 				$selectors[" .uagb-button__wrapper"] = array (
@@ -700,86 +698,64 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => 0,
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
-
+				
 				if ( $attr['childMigrate'] ) {
 					$selectors[" .uagb-buttons-layout-wrap"] = array (
 						"flex-direction" => "column"
 					);
 				} else {
 					$selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column",
-						'justify-content' => $alignment,
-						'-webkit-box-pack'=> $alignment,
-						'-ms-flex-pack' => $alignment,
-						'justify-content' => $alignment,
-						'-webkit-box-align' => $alignment,
-						'-ms-flex-align' => $alignment,
-						'align-items' => $alignment,
+						"flex-direction" => "column"
 					);
 				}
-
-			} else if ( "tablet" == $attr['stack'] ) {
-
+				
+				} else if ( "tablet" == $attr['stack'] ) {
+				
 				$t_selectors[" .uagb-button__wrapper"] = array (
 					'margin-left' => 0,
 					'margin-right' => 0,
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
-
+				
 				if ( $attr['childMigrate'] ) {
 					$t_selectors[" .uagb-buttons-layout-wrap"] = array (
 						"flex-direction" => "column"
 					);
 				} else {
 					$t_selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column",
-						'justify-content' => $alignment,
-						'-webkit-box-pack'=> $alignment,
-						'-ms-flex-pack' => $alignment,
-						'justify-content' => $alignment,
-						'-webkit-box-align' => $alignment,
-						'-ms-flex-align' => $alignment,
-						'align-items' => $alignment,
+						"flex-direction" => "column"
 					);
 				}
-
-			} else if ( "mobile" == $attr['stack'] ) {
-
+				
+				} else if ( "mobile" == $attr['stack'] ) {
+				
 				$m_selectors[" .uagb-button__wrapper"] = array (
 					'margin-left' => 0,
 					'margin-right' => 0,
 					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
-
+				
 				if ( $attr['childMigrate'] ) {
 					$m_selectors[" .uagb-buttons-layout-wrap"] = array (
 						"flex-direction" => "column"
 					);
 				} else {
 					$m_selectors[" .uagb-buttons__wrap"] = array (
-						"flex-direction" => "column",
-						'justify-content' => $alignment,
-						'-webkit-box-pack'=> $alignment,
-						'-ms-flex-pack' => $alignment,
-						'justify-content' => $alignment,
-						'-webkit-box-align' => $alignment,
-						'-ms-flex-align' => $alignment,
-						'align-items' => $alignment,
+						"flex-direction" => "column"
 					);
 				}
-			}
-			if ( $attr['childMigrate'] ) {
-
-				$selectors[' .uagb-buttons__wrap'] = array (
-					'justify-content' => $alignment,
-					'-webkit-box-pack'=> $alignment,
-					'-ms-flex-pack' => $alignment,
-					'justify-content' => $alignment,
-					'-webkit-box-align' => $alignment,
-					'-ms-flex-align' => $alignment,
-					'align-items' => $alignment,
-				);
-			}
+				}
+				$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
+				
+				$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array (
+				'justify-content' => $alignment,
+				'-webkit-box-pack'=> $alignment,
+				'-ms-flex-pack' => $alignment,
+				'justify-content' => $alignment,
+				'-webkit-box-align' => $alignment,
+				'-ms-flex-align' => $alignment,
+				'align-items' => $alignment,
+				);				
 
 			if ( $attr['childMigrate'] ) {
 				$selectors[' .uagb-buttons-repeater'] = array (
