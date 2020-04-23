@@ -30,6 +30,9 @@ registerBlockType( "uagb/social-share", {
 		__( "icon" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,
