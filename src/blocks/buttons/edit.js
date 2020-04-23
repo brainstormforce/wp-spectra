@@ -122,20 +122,7 @@ class UAGBMultiButtonEdit extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<h2>{ __( "Button Typography" ) }</h2>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
-							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
-							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
-							disableFontSize={true}
-							disableLineHeight={true}
-						/>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Button Spacing" ) }</h2>
+						<h2>{ __( "Spacing" ) }</h2>
 						<RangeControl
 							label={ __( "Gap Between Buttons" ) }
 							value={ gap }
@@ -156,6 +143,19 @@ class UAGBMultiButtonEdit extends Component {
 							] }
 							onChange={ ( value ) => setAttributes( { stack: value } ) }
 							help={ __( "Note: Choose on what breakpoint the buttons will stack." ) }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
+							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
+							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
+							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
+							disableFontSize={true}
+							disableLineHeight={true}
 						/>
 					</PanelBody>
 				</InspectorControls>
