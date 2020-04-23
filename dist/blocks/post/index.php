@@ -301,11 +301,15 @@ function uagb_render_pagination( $query, $attributes ) {
 	$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 	$paged				 = UAGB_Helper::get_paged( $query );
 	
+	$current_page = $paged;
+	if ( ! $current_page ) {
+		$current_page = 1;
+	}
 	$links               = paginate_links(
 		array(
 			'base'      => $base . '%_%',
 			'format'    => $format,
-			'current'   => $paged,
+			'current'   => $current_page,
 			'total'     => $total_pages,
 			'type'      => 'array',
 			'mid_size'  => 4,
