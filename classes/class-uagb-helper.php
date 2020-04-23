@@ -137,6 +137,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		}
 
 		/**
@@ -1731,6 +1732,30 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			return $format;
+		}
+		/**
+		 * Disable canonical on Single Post.
+		 *
+		 * @param  string $redirect_url  The redirect URL.
+		 * @param  string $requested_url The requested URL.
+		 * @since  x.x.x
+		 * @return bool|string
+		 */
+		public function override_canonical( $redirect_url, $requested_url ) {
+			
+			global $wp_query;
+
+			if ( is_array( $wp_query->query ) ) {
+
+				if ( true === $wp_query->is_singular
+					&& - 1 == $wp_query->current_post
+					&& true === $wp_query->is_paged
+				) {
+					$redirect_url = false;
+				}
+			}
+
+			return $redirect_url;
 		}
 	}
 
