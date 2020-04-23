@@ -3,7 +3,7 @@ const ITEM_COUNT = 2
 const buttons = []	
 
 for ( var i = 1; i <= ITEM_COUNT; i++ ) {	
-	var label = "Click Here " + "#" + i	
+	var label = "#Click Here"	
 	var link    = "#"	
 	buttons.push(	
 		{	
@@ -55,11 +55,11 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center"
+		default: "left"
 	},
 	gap: {
 		type: "number",
-		default: 10
+		default: 20
 	},
 	stack: {
 		type: "string",
