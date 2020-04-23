@@ -59,7 +59,7 @@ const attributes = {
 	},
 	gap: {
 		type: "number",
-		default: 20
+		default: 10
 	},
 	stack: {
 		type: "string",

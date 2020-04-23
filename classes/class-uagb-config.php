@@ -1038,7 +1038,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'align'           => 'left',
 							'btn_count'       => '2',
 							'buttons'         => UAGB_Helper::get_button_defaults(),
-							'gap'             => 20,
+							'gap'             => 10,
 							'stack'           => 'none',
 							'fontFamily'      => '',
 							'fontWeight'      => '',
