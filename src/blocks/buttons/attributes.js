@@ -4,11 +4,11 @@ const buttons = []
 
 for ( var i = 1; i <= ITEM_COUNT; i++ ) {	
 	var label = "Click Here " + "#" + i	
-	var link    = "#"	
+	var link    = ""	
 	buttons.push(	
 		{	
-			"label": label,	
-			"link": link,	
+			"label": "#Click Here",	
+			"link": "",	
 			"target": "_self",	
 			"size": "",	
 			"vPadding": 10,	
