@@ -31,8 +31,6 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
-
 	selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = {
 		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : 0,
