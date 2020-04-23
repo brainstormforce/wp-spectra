@@ -235,14 +235,14 @@ class UAGBCallToAction extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
-							fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
-							fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
-							fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
-							fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
-							fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
-							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
-							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }							
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: ctaFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: ctaFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: ctaFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: ctaFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: ctaFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "Font Size" ) } }							
 							disableLineHeight = {true}
 						/>
 					</Fragment>
