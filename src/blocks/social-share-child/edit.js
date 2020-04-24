@@ -42,6 +42,7 @@ class UAGBSocialShareChild extends Component {
 
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
+		this.onChangeType  = this.onChangeType.bind( this )
 	}
 
 	componentDidMount() {
@@ -83,6 +84,29 @@ class UAGBSocialShareChild extends Component {
 		setAttributes( { image: media } )
 	}
 
+	onChangeType ( type ) {
+
+		const { setAttributes } = this.props
+
+		const icon_mapping = {
+			facebook: "fab fa-facebook",
+			twitter: "fab fa-twitter-square",
+			google: "fab fa-google-plus-square",
+			pinterest: "fab fa-pinterest-square",
+			linkedin: "fab fa-linkedin",
+			digg: "fab fa-digg",
+			blogger: "fab fa-blogger",
+			reddit: "fab fa-reddit-square",
+			stumbleupon: "fab fa-stumbleupon-circle",
+			tumblr: "fab fa-tumblr-square",
+			myspace: "fas fa-user-friends",
+			email: "fas fa-envelope",
+		}
+		
+		setAttributes( { type: type } )
+
+		setAttributes( { icon: icon_mapping[type] } )
+	}
 	render() {
 
 		const { attributes, setAttributes } = this.props
@@ -247,7 +271,7 @@ class UAGBSocialShareChild extends Component {
 							{ value: "myspace", label: __( "Myspace" ) },
 							{ value: "email", label: __( "Email" ) },
 						] }
-						onChange={ value => setAttributes( { type: value } ) }
+						onChange={ this.onChangeType }
 					/>
 						<SelectControl
 							label={ __( "Image / Icon" ) }
