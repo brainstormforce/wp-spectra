@@ -206,14 +206,33 @@ class UAGBIconList extends Component {
 							onChange={ (value) => this.changeChildAttr( value ) }
 						/>
 						<hr className="uagb-editor__separator" />
+						<RangeControl
+							label={ __( "Gap between Items" ) }
+							value={ gap }
+							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results." ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+						{ ! hideLabel &&
+							<RangeControl
+								label={ __( "Gap between Icon and Label" ) }
+								value={ inner_gap }
+								onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
+								min={ 0 }
+								max={ 100 }
+							/>
+						}
+						<hr className="uagb-editor__separator" />
 						<SelectControl
-							label={ __( "Icon Position" ) }
+							label={ __( "Icon Alignment" ) }
 							value={ iconPosition }
 							options={ [
 								{ value: "top", label: __( "Top" ) },
 								{ value: "middle", label: __( "Middle" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
+							help={ __( "Note: This manages the Icon Position with respect to the Label." ) }
 						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
@@ -289,7 +308,6 @@ class UAGBIconList extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Label" ) }</h2>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -332,24 +350,6 @@ class UAGBIconList extends Component {
 							min={ 0 }
 							max={ 500 }
 						/>
-						<hr className="uagb-editor__separator" />
-						<RangeControl
-							label={ __( "Gap between Items" ) }
-							value={ gap }
-							onChange={ ( value ) => setAttributes( { gap: value } ) }
-							help={ __( "Note: The gap between the items will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
-							min={ 0 }
-							max={ 100 }
-						/>
-						{ ! hideLabel &&
-							<RangeControl
-								label={ __( "Gap between Icon and Label" ) }
-								value={ inner_gap }
-								onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
-								min={ 0 }
-								max={ 100 }
-							/>
-						}
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
