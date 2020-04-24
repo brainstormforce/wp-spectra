@@ -305,7 +305,7 @@ function uagb_render_pagination( $query, $attributes ) {
 		array(
 			'base'      => $base . '%_%',
 			'format'    => $format,
-			'current'   => $paged,
+			'current' 	=> ( ! $paged ) ? 1 : $paged,
 			'total'     => $total_pages,
 			'type'      => 'array',
 			'mid_size'  => 4,
