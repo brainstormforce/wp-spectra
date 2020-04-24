@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 600,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 800,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
