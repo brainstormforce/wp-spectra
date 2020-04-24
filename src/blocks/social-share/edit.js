@@ -252,10 +252,10 @@ class UAGBSocialShare extends Component {
 							max={ 500 }
 						/>
 						<RangeControl
-							label={ __( "Circular Radius" ) }
+							label={ __( "Border Radius" ) }
 							value={ borderRadius }
 							onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-							help={ __( "Note: Circular Radius option is useful when one adds background color to the icons." ) }
+							help={ __( "Note: Border Radius option is useful when one adds background color to the icons." ) }
 							min={ 0 }
 							max={ 500 }
 						/>

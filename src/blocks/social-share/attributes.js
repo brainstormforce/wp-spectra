@@ -38,7 +38,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center"
+		default: "left"
 	},
 	social_count: {
 		type: "number",

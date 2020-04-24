@@ -1614,7 +1614,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'  => false,
 							'childMigrate'  => false,
-							'align'         => 'center',
+							'align'         => 'left',
 							'social_count'  => '1',
 							'socials'       => array(
 								array(
