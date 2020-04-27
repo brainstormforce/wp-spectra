@@ -404,7 +404,7 @@ class UAGBPostGrid extends Component {
 							value={ postsToShow }
 							onChange={ this.onChangePostsPerPage }
 							min={ 0 }
-							max={ 100 }
+							max={ 500 }
 					/>
 					<SelectControl
 						label={ __( "Order By" ) }
