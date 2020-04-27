@@ -712,9 +712,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				} else if ( "tablet" == $attr['stack'] ) {
 				
 				$t_selectors[" .uagb-button__wrapper"] = array (
-					'margin-left' => 0,
-					'margin-right' => 0,
-					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
+				'margin-left' => 0,
+				'margin-right' => 0,
+				"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 				
 				if ( $attr['childMigrate'] ) {
@@ -730,9 +730,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				} else if ( "mobile" == $attr['stack'] ) {
 				
 				$m_selectors[" .uagb-button__wrapper"] = array (
-					'margin-left' => 0,
-					'margin-right' => 0,
-					"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
+				'margin-left' => 0,
+				'margin-right' => 0,
+				"margin-bottom" => UAGB_Helper::get_css_value( $attr['gap'], 'px' )
 				);
 				
 				if ( $attr['childMigrate'] ) {
@@ -758,50 +758,50 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);				
 
 			if ( $attr['childMigrate'] ) {
-				$selectors[' .uagb-buttons-repeater'] = array (
+					$selectors[' .uagb-buttons-repeater'] = array (
 					'font-family'   => $attr['fontFamily'],
 					'font-weight'   => $attr['fontWeight'],
-				);
+					);
 			}
 
 			if ( ! $attr['childMigrate'] ) {
 				
-				foreach ( $attr['buttons'] as $key => $button ) {
+					foreach ( $attr['buttons'] as $key => $button ) {
 
-					if ( $attr['btn_count'] <= $key ) {
-						break;
-					}
+						if ( $attr['btn_count'] <= $key ) {
+							break;
+						}
 
-					$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-buttons-repeater-" . $key . '.uagb-button__wrapper' : " .uagb-buttons-repeater";
+						$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-buttons-repeater-" . $key . '.uagb-button__wrapper' : " .uagb-buttons-repeater";
 					
-					$selectors[$wrapper] = array (
+						$selectors[$wrapper] = array (
 						'font-family'   => $attr['fontFamily'],
 						'font-weight'   => $attr['fontWeight'],
-					);
+						);
 					
-					$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
-					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
-					$t_selectors = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
-					$m_selectors = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );
-				}
+						$child_selectors = self::get_buttons_child_selectors( $button, $key, $attr['childMigrate'] );
+						$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
+						$t_selectors = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
+						$m_selectors = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );
+						}
 			}
 			// @codingStandardsIgnoreEnd
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
+				$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
 
-			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
+				$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 
-			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
+				$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
 
-			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
+				$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
 
-			$generated_css = array(
-				'desktop' => $desktop,
-				'tablet'  => $tablet,
-				'mobile'  => $mobile,
-			);
-		
-			return $generated_css;
+				$generated_css = array(
+					'desktop' => $desktop,
+					'tablet'  => $tablet,
+					'mobile'  => $mobile,
+				);
+
+				return $generated_css;
 		}
 		/**
 		 * Get Multi Buttons - Child Block CSS
@@ -812,25 +812,25 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_buttons_child_css( $attr, $id ) {
-			
+
 			$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
 
-			$attr = array_merge( $defaults, (array) $attr );
+			$attr          = array_merge( $defaults, (array) $attr );
 			$all_selectors = self::get_buttons_child_selectors( $attr, $id, true );
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-buttons-';
-			
+
 			$desktop = UAGB_Helper::generate_css( $all_selectors['selectors'], $base_selector . $id );
-			
+
 			$tablet = UAGB_Helper::generate_css( $all_selectors['t_selectors'], $base_selector . $id );
-			
+
 			$mobile = UAGB_Helper::generate_css( $all_selectors['m_selectors'], $base_selector . $id );
-			
+
 			$generated_css = array(
 				'desktop' => $desktop,
 				'tablet'  => $tablet,
 				'mobile'  => $mobile,
 			);
-			
+
 			return $generated_css;
 		}
 		/**
@@ -839,60 +839,60 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @since x.x.x
 		 * @param array  $attr The block attributes.
 		 * @param string $id The key for the Icon List Item.
-		 * @param string $childMigrate The child migration flag.
+		 * @param string $child_migrate The child migration flag.
 		 * @return array The Widget List.
 		 */
-		public static function get_buttons_child_selectors( $attr, $id, $childMigrate ) { 	
+		public static function get_buttons_child_selectors( $attr, $id, $child_migrate ) {
 
-			$wrapper = ( ! $childMigrate ) ? " .uagb-buttons-repeater-" . $id : " .uagb-buttons-repeater";
+			$wrapper = ( ! $child_migrate ) ? ' .uagb-buttons-repeater-' . $id : ' .uagb-buttons-repeater';
 
 			$m_selectors = array();
 			$t_selectors = array();
 
-			$attr['sizeType'] = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
+			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
 			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
-			
-			$selectors[$wrapper] = array (
+
+			$selectors[ $wrapper ] = array(
 				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 				'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
 				'border-style'  => $attr['borderStyle'],
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
-				'background'    => $attr['background']
+				'background'    => $attr['background'],
 			);
 
-			$selectors[$wrapper . ':hover'] = array (
+			$selectors[ $wrapper . ':hover' ] = array(
 				'background'   => $attr['hBackground'],
 				'border-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color' => $attr['borderHColor'],
 				'border-style' => $attr['borderStyle'],
 			);
-			
-			$selectors[$wrapper . ' a.uagb-button__link'] = array (
-				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) .' '. UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
-				'color'   => $attr['color']
+
+			$selectors[ $wrapper . ' a.uagb-button__link' ] = array(
+				'padding' => UAGB_Helper::get_css_value( $attr['vPadding'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['hPadding'], 'px' ),
+				'color'   => $attr['color'],
 			);
 
-			$selectors[$wrapper . ':hover a.uagb-button__link'] = array (
-				'color' => $attr['hColor']
+			$selectors[ $wrapper . ':hover a.uagb-button__link' ] = array(
+				'color' => $attr['hColor'],
 			);
 
-			$m_selectors[$wrapper] = array (
+			$m_selectors[ $wrapper ] = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
 			);
 
-			$t_selectors[$wrapper] = array (
+			$t_selectors[ $wrapper ] = array(
 				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 			);
 
 			$all_selectors = array(
 
-				'selectors' => $selectors,
+				'selectors'   => $selectors,
 				'm_selectors' => $m_selectors,
-				't_selectors' => $t_selectors
+				't_selectors' => $t_selectors,
 			);
 
 			return $all_selectors;
