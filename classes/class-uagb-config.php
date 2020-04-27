@@ -92,6 +92,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'mainimage'               => '',
+							'imgSiz'                 => 'thumbnail',
+							'imgWidth'               => 120,
 							'headingAlign'            => 'center',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',

@@ -9,6 +9,14 @@ const attributes = {
 	mainimage: {
 		type: "object",
 	},
+	imgSize:{
+		type: "string",
+		default: "thumbnail",
+	},
+	imgWidth :{
+		type: "number",
+		default: 120,
+	},
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",

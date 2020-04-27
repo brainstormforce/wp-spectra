@@ -51,7 +51,13 @@ const { withSelect } = wp.data
 
 const { Component, Fragment } = wp.element
 
-class UAGBAdvancedHeading extends Component {
+let imageSizeOptions = [
+	{ value: "thumbnail", label: __( "Thumbnail" ) },
+	{ value: "medium", label: __( "Medium" ) },
+	{ value: "full", label: __( "Large" ) }
+]
+
+class UAGBHowTo extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -145,6 +151,21 @@ class UAGBAdvancedHeading extends Component {
 		}
 
 		setAttributes( { mainimage: media } )
+
+		if ( media["sizes"] ) {
+			var new_img = this.getImageSize(media["sizes"])
+			imageSizeOptions = new_img
+		}
+	}
+
+	getImageSize(sizes) {
+		var size_arr = []
+		$.each(sizes, function (index, item) {
+		  var name = index
+		  	var p = { "value" : name, "label": name }
+		  	size_arr.push(p)
+		})
+		return(size_arr)
 	}
 
 	render() {
@@ -162,6 +183,8 @@ class UAGBAdvancedHeading extends Component {
 			attributes: {
 				level,
 				mainimage,
+				imgSize,
+				imgWidth,
 				headingTitle,
 				headingId,
 				headingDesc,
@@ -203,11 +226,17 @@ class UAGBAdvancedHeading extends Component {
 			},
 		} = this.props
 
-		// var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId )
+		var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId )
 
-		// if( null != element && "undefined" != typeof element ) {
-		// 	element.innerHTML = styling( this.props )
-		// }
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
+		}
+
+		if( mainimage && mainimage["sizes"] ){
+			imageSizeOptions = this.getImageSize(mainimage["sizes"])
+
+			console.log(imageSizeOptions)
+		}
 
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
@@ -242,14 +271,12 @@ class UAGBAdvancedHeading extends Component {
 
 		let image_icon_html = ""
 
-		console.log(mainimage)
-
 		if ( mainimage && mainimage.url ) {
 
 			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
 
 		}else{
-			image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-includes/images/media/default.png" />
+			image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
 		}
 
 		return (
@@ -261,7 +288,7 @@ class UAGBAdvancedHeading extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-				<PanelBody title={ __( "Heading" ) }>
+				<PanelBody title={ __( "General" ) }>
 					<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
@@ -301,7 +328,48 @@ class UAGBAdvancedHeading extends Component {
 							onChange={ ( value ) => setAttributes( { headingColor: value } ) }
 							allowReset
 						/>
-						<MediaUpload
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Description" ) }</h2>
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "Font Family" ) } }
+							fontFamily = { { value: subHeadFontFamily, label: __( "Font Family" ) } }
+							fontWeight = { { value: subHeadFontWeight, label: __( "Font Weight" ) } }
+							fontSubset = { { value: subHeadFontSubset, label: __( "Font Subset" ) } }
+							fontSizeType = { { value: subHeadFontSizeType, label: __( "Line Height Type" ) } }
+							fontSize = { { value: subHeadFontSize, label: __( "Line Height" ) } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "Font Size" ) } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "Font Size" ) } }
+							lineHeightType = { { value: subHeadLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeight = { { value: subHeadLineHeight, label: __( "Line Height" ) } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "Line Height" ) } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "Line Height" ) } }
+						/>
+						<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+						<ColorPalette
+							value={ subHeadingColor }
+							onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
+							allowReset
+						/>
+						<hr className="uagb-editor__separator" />
+								<h2>{ __( "Image" ) }</h2>
+								<SelectControl
+									label={ __( "Size" ) }
+									options={ imageSizeOptions }
+									value={ imgSize }
+									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+								/>
+								<RangeControl
+									label={ __( "Width" ) }
+									value={ imgWidth }
+									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+								<MediaUpload
 									title={ __( "Select Image" ) }
 									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
 									allowedTypes={ [ "image" ] }
@@ -376,4 +444,4 @@ export default withSelect( ( select, props ) => {
 	return {
 		anchor: attributes.headingId
 	}
-} )( UAGBAdvancedHeading )
+} )( UAGBHowTo )
