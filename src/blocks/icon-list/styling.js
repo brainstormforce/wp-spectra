@@ -37,12 +37,8 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
+	var editor_gap = ( undefined !== typeof gap && '' !== gap ) ? ( gap + 15 ) : 15;
 	
-	if ( undefined !== typeof gap && '' !== gap ) {
-
-		var editor_gap = gap + 15;
-	}
-
 	selectors = {
 		" .uagb-icon-list__source-wrap" : {
 			"padding": generateCSSUnit( bgSize, "px" ),
