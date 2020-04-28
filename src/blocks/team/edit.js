@@ -699,10 +699,10 @@ class UAGBTeam extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							fontSizeType = { { value: socialFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: socialFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: socialFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: socialFontSizeTablet, label: __( "Font Size" ) } }
+							fontSizeType = { { value: socialFontSizeType, label: 'socialFontSizeType' } }
+							fontSize = { { value: socialFontSize, label: 'socialFontSize' } }
+							fontSizeMobile = { { value: socialFontSizeMobile, label: 'socialFontSizeMobile' } }
+							fontSizeTablet= { { value: socialFontSizeTablet, label: 'socialFontSizeTablet' } }
 							disableFontFamily = { true }
 							disableLineHeight = { true }
 						/>
