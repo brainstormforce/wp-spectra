@@ -538,18 +538,18 @@ class UAGBPostMasonry extends Component {
 								label={ __( "Typography" ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "Font Family" ) } }
-								fontFamily = { { value: ctaFontFamily, label: __( "Font Family" ) } }
-								fontWeight = { { value: ctaFontWeight, label: __( "Font Weight" ) } }
-								fontSubset = { { value: ctaFontSubset, label: __( "Font Subset" ) } }
-								fontSizeType = { { value: ctaFontSizeType, label: __( "Line Height Type" ) } }
-								fontSize = { { value: ctaFontSize, label: __( "Line Height" ) } }
-								fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "Font Size" ) } }
-								fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "Font Size" ) } }
-								lineHeightType = { { value: ctaLineHeightType, label: __( "Line Height Type" ) } }
-								lineHeight = { { value: ctaLineHeight, label: __( "Line Height" ) } }
-								lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "Line Height" ) } }
-								lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "Line Height" ) } }
+								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
+								fontFamily = { { value: ctaFontFamily, label: "ctaFontFamily" } }
+								fontWeight = { { value: ctaFontWeight, label: "ctaFontWeight" } }
+								fontSubset = { { value: ctaFontSubset, label: "ctaFontSubset" } }
+								fontSizeType = { { value: ctaFontSizeType, label: "ctaFontSizeType" } }
+								fontSize = { { value: ctaFontSize, label: "ctaFontSize" } }
+								fontSizeMobile = { { value: ctaFontSizeMobile, label: "ctaFontSizeMobile" } }
+								fontSizeTablet= { { value: ctaFontSizeTablet, label: "ctaFontSizeTablet" } }
+								lineHeightType = { { value: ctaLineHeightType, label: "ctaLineHeightType" } }
+								lineHeight = { { value: ctaLineHeight, label: "ctaLineHeight" } }
+								lineHeightMobile = { { value: ctaLineHeightMobile, label: "ctaLineHeightMobile" } }
+								lineHeightTablet= { { value: ctaLineHeightTablet, label: "ctaLineHeightTablet" } }
 							/>
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( "Button Border" ) }</h2>
@@ -652,18 +652,18 @@ class UAGBPostMasonry extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "Font Family" ) } }
-						fontFamily = { { value: titleFontFamily, label: __( "Font Family" ) } }
-						fontWeight = { { value: titleFontWeight, label: __( "Font Weight" ) } }
-						fontSubset = { { value: titleFontSubset, label: __( "Font Subset" ) } }
-						fontSizeType = { { value: titleFontSizeType, label: __( "Line Height Type" ) } }
-						fontSize = { { value: titleFontSize, label: __( "Line Height" ) } }
-						fontSizeMobile = { { value: titleFontSizeMobile, label: __( "Font Size" ) } }
-						fontSizeTablet= { { value: titleFontSizeTablet, label: __( "Font Size" ) } }
-						lineHeightType = { { value: titleLineHeightType, label: __( "Line Height Type" ) } }
-						lineHeight = { { value: titleLineHeight, label: __( "Line Height" ) } }
-						lineHeightMobile = { { value: titleLineHeightMobile, label: __( "Line Height" ) } }
-						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "Line Height" ) } }
+						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+						fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+						fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+						fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+						fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+						fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+						fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+						fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+						lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+						lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+						lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+						lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
 					/>
 
 					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) &&	<Fragment>
@@ -673,18 +673,18 @@ class UAGBPostMasonry extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: metaFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: metaFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: metaFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: metaFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: metaFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: metaFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: metaFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: metaLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: metaLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: metaLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: metaLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
+							fontFamily = { { value: metaFontFamily, label: "metaFontFamily" } }
+							fontWeight = { { value: metaFontWeight, label: "metaFontWeight" } }
+							fontSubset = { { value: metaFontSubset, label: "metaFontSubset" } }
+							fontSizeType = { { value: metaFontSizeType, label: "metaFontSizeType" } }
+							fontSize = { { value: metaFontSize, label: "metaFontSize" } }
+							fontSizeMobile = { { value: metaFontSizeMobile, label: "metaFontSizeMobile" } }
+							fontSizeTablet= { { value: metaFontSizeTablet, label: "metaFontSizeTablet" } }
+							lineHeightType = { { value: metaLineHeightType, label: "metaLineHeightType" } }
+							lineHeight = { { value: metaLineHeight, label: "metaLineHeight" } }
+							lineHeightMobile = { { value: metaLineHeightMobile, label: "metaLineHeightMobile" } }
+							lineHeightTablet= { { value: metaLineHeightTablet, label: "metaLineHeightTablet" } }
 						/>
 					</Fragment>
 					}
@@ -696,18 +696,18 @@ class UAGBPostMasonry extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: excerptFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: excerptFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: excerptFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: excerptFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: excerptFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: excerptFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: excerptFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: excerptLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: excerptLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: excerptLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: excerptLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
+							fontFamily = { { value: excerptFontFamily, label: "excerptFontFamily" } }
+							fontWeight = { { value: excerptFontWeight, label: "excerptFontWeight" } }
+							fontSubset = { { value: excerptFontSubset, label: "excerptFontSubset" } }
+							fontSizeType = { { value: excerptFontSizeType, label: "excerptFontSizeType" } }
+							fontSize = { { value: excerptFontSize, label: "excerptFontSize" } }
+							fontSizeMobile = { { value: excerptFontSizeMobile, label: "excerptFontSizeMobile" } }
+							fontSizeTablet= { { value: excerptFontSizeTablet, label: "excerptFontSizeTablet" } }
+							lineHeightType = { { value: excerptLineHeightType, label: "excerptLineHeightType" } }
+							lineHeight = { { value: excerptLineHeight, label: "excerptLineHeight" } }
+							lineHeightMobile = { { value: excerptLineHeightMobile, label: "excerptLineHeightMobile" } }
+							lineHeightTablet= { { value: excerptLineHeightTablet, label: "excerptLineHeightTablet" } }
 						/>
 					</Fragment>
 					}

@@ -245,10 +245,10 @@ class UAGBMarketingButtonEdit extends Component {
 								label={ __( "Icon Size" ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
-								fontSizeType = { { value: iconFontSizeType, label: __( "Line Height Type" ) } }
-								fontSize = { { value: iconFontSize, label: __( "Line Height" ) } }
-								fontSizeMobile = { { value: iconFontSizeMobile, label: __( "Font Size" ) } }
-								fontSizeTablet= { { value: iconFontSizeTablet, label: __( "Font Size" ) } }
+								fontSizeType = { { value: iconFontSizeType, label: "iconFontSizeType" } }
+								fontSize = { { value: iconFontSize, label: "iconFontSize" } }
+								fontSizeMobile = { { value: iconFontSizeMobile, label: "iconFontSizeMobile" } }
+								fontSizeTablet= { { value: iconFontSizeTablet, label: "iconFontSizeTablet" } }
 								fontSizeLabel= { __( "Icon Size" ) }
 								disableFontFamily= { true }
 								disableLineHeight= { true }
@@ -272,18 +272,18 @@ class UAGBMarketingButtonEdit extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadTitleGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: titleFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: titleFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: titleFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: titleFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: titleFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: titleFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: titleFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: titleLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: titleLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: titleLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: titleLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: loadTitleGoogleFonts, label: "loadTitleGoogleFonts" } }
+							fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+							fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+							fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+							fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+							fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+							fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+							fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+							lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+							lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+							lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+							lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Description" ) }</h2>
@@ -291,18 +291,18 @@ class UAGBMarketingButtonEdit extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadPrefixGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: prefixFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: prefixFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: prefixFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: prefixFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: prefixFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: prefixFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: prefixFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: prefixLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: prefixLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: prefixLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: prefixLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: loadPrefixGoogleFonts, label: "loadPrefixGoogleFonts" } }
+							fontFamily = { { value: prefixFontFamily, label: "prefixFontFamily" } }
+							fontWeight = { { value: prefixFontWeight, label: "prefixFontWeight" } }
+							fontSubset = { { value: prefixFontSubset, label: "prefixFontSubset" } }
+							fontSizeType = { { value: prefixFontSizeType, label: "prefixFontSizeType" } }
+							fontSize = { { value: prefixFontSize, label: "prefixFontSize" } }
+							fontSizeMobile = { { value: prefixFontSizeMobile, label: "prefixFontSizeMobile" } }
+							fontSizeTablet= { { value: prefixFontSizeTablet, label: "prefixFontSizeTablet" } }
+							lineHeightType = { { value: prefixLineHeightType, label: "prefixLineHeightType" } }
+							lineHeight = { { value: prefixLineHeight, label: "prefixLineHeight" } }
+							lineHeightMobile = { { value: prefixLineHeightMobile, label: "prefixLineHeightMobile" } }
+							lineHeightTablet= { { value: prefixLineHeightTablet, label: "prefixLineHeightTablet" } }
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Colors" ) }</h2>

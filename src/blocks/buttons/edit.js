@@ -150,10 +150,10 @@ class UAGBMultiButtonEdit extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: fontFamily, label:  __( "Font Family" ) } }
-							fontWeight = { { value: fontWeight, label:  __( "Font Weight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "Font Subset" ) } }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: "loadGoogleFonts" } }
+							fontFamily = { { value: fontFamily, label:  "fontFamily" } }
+							fontWeight = { { value: fontWeight, label:  "fontWeight" } }
+							fontSubset = { { value: fontSubset, label: "fontSubset" } }
 							disableFontSize={true}
 							disableLineHeight={true}
 						/>
