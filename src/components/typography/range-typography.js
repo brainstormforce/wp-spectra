@@ -87,7 +87,7 @@ function RangeTypographyControl( props ) {
 										max={ 100 }
 										step={ props.steps }
 										beforeIcon="editor-textcolor"
-										allowReset
+										allowReset={true}
 										initialPosition={30}
 									/>
 								</Fragment>
@@ -104,7 +104,7 @@ function RangeTypographyControl( props ) {
 										max={ 100 }
 										step={ props.steps }
 										beforeIcon="editor-textcolor"
-										allowReset
+										allowReset={true}
 										initialPosition={30}
 									/>
 								</Fragment>
@@ -115,13 +115,13 @@ function RangeTypographyControl( props ) {
 									{sizeTypesControls}
 									<RangeControl
 										label={ __( props.sizeText ) }
-										value={ props.size.value }
+										value={ props.size.value || "" }
 										onChange={ ( value ) => props.setAttributes( { [props.sizeLabel]: value } ) }
 										min={ 0 }
 										max={ 100 }
 										step={ props.steps }
 										beforeIcon="editor-textcolor"
-										allowReset
+										allowReset={true}
 										initialPosition={30}
 									/>
 								</Fragment>
