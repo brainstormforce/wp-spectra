@@ -344,18 +344,18 @@ class UAGBtestimonial extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
-						fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
-						fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
-						fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
-						fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
-						fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
-						fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
-						fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
-						lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
-						lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
-						lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
-						lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: descLoadGoogleFonts, label: "descLoadGoogleFonts" } }
+						fontFamily = { { value: descFontFamily, label: "descFontFamily" } }
+						fontWeight = { { value: descFontWeight, label: "descFontWeight" } }
+						fontSubset = { { value: descFontSubset, label: "descFontSubset" } }
+						fontSizeType = { { value: descFontSizeType, label: "descFontSizeType" } }
+						fontSize = { { value: descFontSize, label: "descFontSize" } }
+						fontSizeMobile = { { value: descFontSizeMobile, label: "descFontSizeMobile" } }
+						fontSizeTablet= { { value: descFontSizeTablet, label: "descFontSizeTablet" } }
+						lineHeightType = { { value: descLineHeightType, label: "descLineHeightType" } }
+						lineHeight = { { value: descLineHeight, label: "descLineHeight" } }
+						lineHeightMobile = { { value: descLineHeightMobile, label: "descLineHeightMobile" } }
+						lineHeightTablet= { { value: descLineHeightTablet, label: "descLineHeightTablet" } }
 					/>
 
 					<hr className="uagb-editor__separator" />
@@ -364,18 +364,18 @@ class UAGBtestimonial extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: nameLoadGoogleFonts, label: __( "nameLoadGoogleFonts" ) } }
-						fontFamily = { { value: nameFontFamily, label: __( "nameFontFamily" ) } }
-						fontWeight = { { value: nameFontWeight, label: __( "nameFontWeight" ) } }
-						fontSubset = { { value: nameFontSubset, label: __( "nameFontSubset" ) } }
-						fontSizeType = { { value: nameFontSizeType, label: __( "nameFontSizeType" ) } }
-						fontSize = { { value: nameFontSize, label: __( "nameFontSize" ) } }
-						fontSizeMobile = { { value: nameFontSizeMobile, label: __( "nameFontSizeMobile" ) } }
-						fontSizeTablet= { { value: nameFontSizeTablet, label: __( "nameFontSizeTablet" ) } }
-						lineHeightType = { { value: nameLineHeightType, label: __( "nameLineHeightType" ) } }
-						lineHeight = { { value: nameLineHeight, label: __( "nameLineHeight" ) } }
-						lineHeightMobile = { { value: nameLineHeightMobile, label: __( "nameLineHeightMobile" ) } }
-						lineHeightTablet= { { value: nameLineHeightTablet, label: __( "nameLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: nameLoadGoogleFonts, label: "nameLoadGoogleFonts" } }
+						fontFamily = { { value: nameFontFamily, label: "nameFontFamily" } }
+						fontWeight = { { value: nameFontWeight, label: "nameFontWeight" } }
+						fontSubset = { { value: nameFontSubset, label: "nameFontSubset" } }
+						fontSizeType = { { value: nameFontSizeType, label: "nameFontSizeType" } }
+						fontSize = { { value: nameFontSize, label: "nameFontSize" } }
+						fontSizeMobile = { { value: nameFontSizeMobile, label: "nameFontSizeMobile" } }
+						fontSizeTablet= { { value: nameFontSizeTablet, label: "nameFontSizeTablet" } }
+						lineHeightType = { { value: nameLineHeightType, label: "nameLineHeightType" } }
+						lineHeight = { { value: nameLineHeight, label: "nameLineHeight" } }
+						lineHeightMobile = { { value: nameLineHeightMobile, label: "nameLineHeightMobile" } }
+						lineHeightTablet= { { value: nameLineHeightTablet, label: "nameLineHeightTablet" } }
 					/>
 
 					<hr className="uagb-editor__separator" />
@@ -384,18 +384,18 @@ class UAGBtestimonial extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: companyLoadGoogleFonts, label: __( "companyLoadGoogleFonts" ) } }
-						fontFamily = { { value: companyFontFamily, label: __( "companyFontFamily" ) } }
-						fontWeight = { { value: companyFontWeight, label: __( "companyFontWeight" ) } }
-						fontSubset = { { value: companyFontSubset, label: __( "companyFontSubset" ) } }
-						fontSizeType = { { value: companyFontSizeType, label: __( "companyFontSizeType" ) } }
-						fontSize = { { value: companyFontSize, label: __( "companyFontSize" ) } }
-						fontSizeMobile = { { value: companyFontSizeMobile, label: __( "companyFontSizeMobile" ) } }
-						fontSizeTablet= { { value: companyFontSizeTablet, label: __( "companyFontSizeTablet" ) } }
-						lineHeightType = { { value: companyLineHeightType, label: __( "companyLineHeightType" ) } }
-						lineHeight = { { value: companyLineHeight, label: __( "companyLineHeight" ) } }
-						lineHeightMobile = { { value: companyLineHeightMobile, label: __( "companyLineHeightMobile" ) } }
-						lineHeightTablet= { { value: companyLineHeightTablet, label: __( "companyLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: companyLoadGoogleFonts, label:  "companyLoadGoogleFonts" } }
+						fontFamily = { { value: companyFontFamily, label:  "companyFontFamily" } }
+						fontWeight = { { value: companyFontWeight, label:  "companyFontWeight" } }
+						fontSubset = { { value: companyFontSubset, label:  "companyFontSubset" } }
+						fontSizeType = { { value: companyFontSizeType, label:  "companyFontSizeType" } }
+						fontSize = { { value: companyFontSize, label:  "companyFontSize" } }
+						fontSizeMobile = { { value: companyFontSizeMobile, label:  "companyFontSizeMobile" } }
+						fontSizeTablet= { { value: companyFontSizeTablet, label:  "companyFontSizeTablet" } }
+						lineHeightType = { { value: companyLineHeightType, label:  "companyLineHeightType" } }
+						lineHeight = { { value: companyLineHeight, label:  "companyLineHeight" } }
+						lineHeightMobile = { { value: companyLineHeightMobile, label:  "companyLineHeightMobile" } }
+						lineHeightTablet= { { value: companyLineHeightTablet, label:  "companyLineHeightTablet" } }
 					/>
 				</PanelBody>
 
