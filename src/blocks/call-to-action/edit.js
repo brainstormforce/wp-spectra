@@ -235,14 +235,14 @@ class UAGBCallToAction extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: ctaFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: ctaFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: ctaFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: ctaFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: ctaFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "Font Size" ) } }							
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
+							fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
+							fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
+							fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
+							fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
+							fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }							
 							disableLineHeight = {true}
 						/>
 					</Fragment>
@@ -509,18 +509,18 @@ class UAGBCallToAction extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
-					fontFamily = { { value: titleFontFamily, label: __( "titleFontFamily" ) } }
-					fontWeight = { { value: titleFontWeight, label: __( "titleFontWeight" ) } }
-					fontSubset = { { value: titleFontSubset, label: __( "titleFontSubset" ) } }
-					fontSizeType = { { value: titleFontSizeType, label: __( "titleFontSizeType" ) } }
-					fontSize = { { value: titleFontSize, label: __( "titleFontSize" ) } }
-					fontSizeMobile = { { value: titleFontSizeMobile, label: __( "titleFontSizeMobile" ) } }
-					fontSizeTablet= { { value: titleFontSizeTablet, label: __( "titleFontSizeTablet" ) } }
-					lineHeightType = { { value: titleLineHeightType, label: __( "titleLineHeightType" ) } }
-					lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
-					lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
-					lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
+					fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
+					fontWeight = { { value: titleFontWeight, label: 'titleFontWeight' } }
+					fontSubset = { { value: titleFontSubset, label: 'titleFontSubset' } }
+					fontSizeType = { { value: titleFontSizeType, label: 'titleFontSizeType' } }
+					fontSize = { { value: titleFontSize, label: 'titleFontSize' } }
+					fontSizeMobile = { { value: titleFontSizeMobile, label: 'titleFontSizeMobile' } }
+					fontSizeTablet= { { value: titleFontSizeTablet, label: 'titleFontSizeTablet' } }
+					lineHeightType = { { value: titleLineHeightType, label: 'titleLineHeightType' } }
+					lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
+					lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
+					lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
 				/>
 				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 				<ColorPalette
@@ -534,18 +534,18 @@ class UAGBCallToAction extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: descLoadGoogleFonts, label: __( "descLoadGoogleFonts" ) } }
-					fontFamily = { { value: descFontFamily, label: __( "descFontFamily" ) } }
-					fontWeight = { { value: descFontWeight, label: __( "descFontWeight" ) } }
-					fontSubset = { { value: descFontSubset, label: __( "descFontSubset" ) } }
-					fontSizeType = { { value: descFontSizeType, label: __( "descFontSizeType" ) } }
-					fontSize = { { value: descFontSize, label: __( "descFontSize" ) } }
-					fontSizeMobile = { { value: descFontSizeMobile, label: __( "descFontSizeMobile" ) } }
-					fontSizeTablet= { { value: descFontSizeTablet, label: __( "descFontSizeTablet" ) } }
-					lineHeightType = { { value: descLineHeightType, label: __( "descLineHeightType" ) } }
-					lineHeight = { { value: descLineHeight, label: __( "descLineHeight" ) } }
-					lineHeightMobile = { { value: descLineHeightMobile, label: __( "descLineHeightMobile" ) } }
-					lineHeightTablet= { { value: descLineHeightTablet, label: __( "descLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: descLoadGoogleFonts, label: 'descLoadGoogleFonts' } }
+					fontFamily = { { value: descFontFamily, label: 'descFontFamily' } }
+					fontWeight = { { value: descFontWeight, label: 'descFontWeight' } }
+					fontSubset = { { value: descFontSubset, label: 'descFontSubset' } }
+					fontSizeType = { { value: descFontSizeType, label: 'descFontSizeType' } }
+					fontSize = { { value: descFontSize, label: 'descFontSize' } }
+					fontSizeMobile = { { value: descFontSizeMobile, label: 'descFontSizeMobile' } }
+					fontSizeTablet= { { value: descFontSizeTablet, label: 'descFontSizeTablet' } }
+					lineHeightType = { { value: descLineHeightType, label: 'descLineHeightType' } }
+					lineHeight = { { value: descLineHeight, label: 'descLineHeight' } }
+					lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
+					lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
 				/>
 				<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
 				<ColorPalette
