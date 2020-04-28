@@ -44,6 +44,7 @@ const {
 	Button,
 	TabPanel,
 	Dashicon,
+	ToggleControl,
 	TextControl
 } = wp.components
 
@@ -138,7 +139,7 @@ class UAGBHowTo extends Component {
 	 * Event to set Image as while adding.
 	 */
 	onSelectImage( media ) {
-
+		const { mainimage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
@@ -151,7 +152,7 @@ class UAGBHowTo extends Component {
 		}
 
 		setAttributes( { mainimage: media } )
-
+		console.log(media)
 		if ( media["sizes"] ) {
 			var new_img = this.getImageSize(media["sizes"])
 			imageSizeOptions = new_img
@@ -182,6 +183,8 @@ class UAGBHowTo extends Component {
 			anchor,
 			attributes: {
 				level,
+				showTotaltime,
+				timeNeeded,
 				mainimage,
 				imgSize,
 				imgWidth,
@@ -231,11 +234,9 @@ class UAGBHowTo extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
-
+		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
-
-			console.log(imageSizeOptions)
 		}
 
 		let loadHeadingGoogleFonts;
@@ -362,7 +363,7 @@ class UAGBHowTo extends Component {
 									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 								/>
 								<RangeControl
-									label={ __( "Width" ) }
+									label={ __( "Width(%)" ) }
 									value={ imgWidth }
 									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
 									min={ 0 }
@@ -388,6 +389,13 @@ class UAGBHowTo extends Component {
 										{ __( "Remove Image" ) }
 									</Button>
 								}
+						</PanelBody>
+						<PanelBody title={ __( "Time & Cost" ) }>
+							<ToggleControl
+								label={ __( "Show Total Time" ) }
+								checked={ showTotaltime }
+								onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
+							/>
 						</PanelBody>
 				</InspectorControls>
 				<div
@@ -430,6 +438,16 @@ class UAGBHowTo extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 					<span className="uagb-howto__source-wrap">{image_icon_html}</span>
+					<RichText
+						tagName="p"
+						placeholder={ __( "Total Time Needed:" ) }
+						value={ timeNeeded }
+						className='uagb-howto-timeNeeded-text'
+						onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onRemove={ () => onReplace( [] ) }
+					/>
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }

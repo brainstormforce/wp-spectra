@@ -92,6 +92,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 							'classMigrate'            => false,
 							'mainimage'               => '',
+							'timeNeeded'             => '',
 							'imgSiz'                 => 'thumbnail',
 							'imgWidth'               => 120,
 							'headingAlign'            => 'center',
@@ -103,6 +104,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'separatorWidth'          => '',
 							'separatorWidthType'      => '%',
 							'headFontFamily'          => '',
+							'showTotaltime'           => true,
 							'headLoadGoogleFonts'     => false,
 							'headFontWeight'          => '',
 							'headFontSubset'          => '',

@@ -2,12 +2,20 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	showTotaltime: {
+		type: "boolean",
+		default: true
+	},
 	classMigrate: {
 		type: "boolean",
 		default: false
 	},
 	mainimage: {
 		type: "object",
+	},
+	timeNeeded:{
+		type: "string",
+		default: "Total Time Needed:",
 	},
 	imgSize:{
 		type: "string",

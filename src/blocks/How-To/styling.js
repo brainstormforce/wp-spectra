@@ -56,8 +56,8 @@ function styling( props ) {
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		},
-		"img.uagb-howto__source-image": {
-			"width": generateCSSUnit( imgWidth, "px" )
+		" span.uagb-howto__source-wrap .uagb-howto__source-image": {
+			"width": generateCSSUnit( imgWidth, "%" )
 		}
 	}
 
