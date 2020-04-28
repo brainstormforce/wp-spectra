@@ -241,11 +241,11 @@ class UAGBAdvancedHeading extends Component {
 							fontFamily = { { value: headFontFamily, label:'headFontFamily'  } }
 							fontWeight = { { value: headFontWeight, label:'headFontWeight'  } }
 							fontSubset = { { value: headFontSubset, label:'headFontSubset'  } }
-							fontSizeType = { { value: headFontSizeType, label: __( "Line Height Type" ) } }
+							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
 							fontSize = { { value: headFontSize, label:'headFontSize'  } }
 							fontSizeMobile = { { value: headFontSizeMobile, label:'headFontSizeMobile'  } }
 							fontSizeTablet= { { value: headFontSizeTablet, label:'headFontSizeTablet'  } }
-							lineHeightType = { { value: headLineHeightType, label: __( "Line Height Type" ) } }
+							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
 							lineHeight = { { value: headLineHeight, label:'headLineHeight'  } }
 							lineHeightMobile = { { value: headLineHeightMobile, label:'headLineHeightMobile'  } }
 							lineHeightTablet= { { value: headLineHeightTablet, label:'headLineHeightTablet'  } }
