@@ -56,7 +56,7 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 						<p><?php esc_html_e( 'Wish to see some real design implementations with these blocks?', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<a href="https://www.ultimategutenberg.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target="_blank" rel="noopener"><?php esc_attr_e( 'See Demos »', 'ultimate-addons-for-gutenberg' ); ?></a>
 						<p><?php esc_html_e( 'Check out the detailed knowledge base articles that will help you understand the working of each block.', 'ultimate-addons-for-gutenberg' ); ?></p>
-						<a href="<?php echo esc_url( $uagb_support_link ); ?>" target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'ultimate-addons-for-gutenberg' ); ?></a>
+						<a href="<?php echo esc_url( $kb_url ); ?>" target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'ultimate-addons-for-gutenberg' ); ?></a>
 					</div>
 				</div>
 			</div>
