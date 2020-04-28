@@ -20,6 +20,7 @@ function styling( props ) {
 		tColumnsTablet,
 		tColumnsMobile,
 		iconColor,
+		bulletColor,
 		iconSize,
 		//Color
 		backgroundColor,
@@ -131,14 +132,17 @@ function styling( props ) {
 			"margin-bottom": generateCSSUnit( vMarginDesktop, marginTypeDesktop ),
 		},
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
-		    "padding-top": 0
+			"padding-top": 0
+		},
+		" .uagb-toc__list-wrap > ul.uagb-toc__list li" : {
+		    "color" : bulletColor
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
 		    "padding-bottom": 0
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list > li" : {
 		    "padding-top": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )",
-		    "padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
+			"padding-bottom": "calc( " + generateCSSUnit( contentPaddingDesktop, contentPaddingTypeDesktop ) + " / 2 )"
 		},
 		" .uag-toc__collapsible-wrap svg" : {
 			"width" : generateCSSUnit( iconSize, "px" ),
@@ -185,7 +189,7 @@ function styling( props ) {
 		},
 
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
-		    "padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
+			"padding-top": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
 		},
 		" .uagb-toc__list-wrap ul.uagb-toc__list:last-child > li:last-child" : {
 		    "padding-bottom": generateCSSUnit( contentPaddingTablet, contentPaddingTypeTablet )
@@ -243,7 +247,7 @@ function styling( props ) {
 	}
 
 	if ( "" != scrollToTopBgColor ) {
-		styling_css += ".uagb-toc__scroll-top { background: " + scrollToTopBgColor + "; }"
+		styling_css += ".uagb-toc__scroll-top.uagb-toc__show-scroll { background: " + scrollToTopBgColor + "; }"
 	}
 
 	return styling_css

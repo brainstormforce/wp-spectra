@@ -3,11 +3,27 @@
  */
 
 .uagb-buttons__outer-wrap {
-	.uagb-button__wrapper div {
-	    display: inline-flex;
+	.uagb-button__wrapper  {
+	    display: flex;
 	}
 }
 
 .editor-url-input input[type=text] {
 	width: 100%;
+}
+
+[data-type="uagb/buttons"] .block-editor-inner-blocks > .block-editor-block-list__layout {
+	display: flex;
+}
+
+[data-type="uagb/buttons"] .block-editor-inner-blocks > .block-editor-block-list__layout > .wp-block {
+	width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin-left: 10px;
+	margin-right: 10px;
+}
+.uagb-buttons__outer-wrap .uagb-buttons__wrap.uagb-buttons-stack-desktop .block-editor-inner-blocks {
+
+    width:100%;
 }

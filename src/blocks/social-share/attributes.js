@@ -26,6 +26,10 @@ const attributes = {
 		type: "boolean",
 		default: false
 	},
+	childMigrate: {
+		type: "boolean",
+		default: false
+	},
 	block_id: {
 		type: "string"
 	},
@@ -34,7 +38,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "center"
+		default: "left"
 	},
 	social_count: {
 		type: "number",

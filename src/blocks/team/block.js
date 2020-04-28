@@ -27,6 +27,9 @@ registerBlockType( "uagb/team", {
 		__( "members" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

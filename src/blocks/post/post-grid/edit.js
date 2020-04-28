@@ -21,13 +21,10 @@ const MAX_POSTS_COLUMNS = 8
 const {
 	PanelBody,
 	Placeholder,
-	QueryControls,
 	RangeControl,
 	SelectControl,
 	Spinner,
 	ToggleControl,
-	ButtonGroup,
-	Button,
 	TabPanel,
 	Dashicon,
 	TextControl
@@ -48,6 +45,11 @@ class UAGBPostGrid extends Component {
 		super( ...arguments )
 		this.onSelectPostType = this.onSelectPostType.bind( this )
 		this.onSelectTaxonomyType = this.onSelectTaxonomyType.bind( this )
+		this.onSelectPagination = this.onSelectPagination.bind( this )
+		this.onChangePostsPerPage = this.onChangePostsPerPage.bind( this )
+		this.onChangePageLimit = this.onChangePageLimit.bind( this )
+		this.onChangePrevText = this.onChangePrevText.bind( this )
+		this.onChangeNextText = this.onChangeNextText.bind( this )
 	}
 
 	onSelectPostType( value ) {
@@ -63,6 +65,38 @@ class UAGBPostGrid extends Component {
 		setAttributes( { taxonomyType: value } )
 		setAttributes( { categories: "" } )
 	}
+
+	onSelectPagination( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postPagination: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangePostsPerPage( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { postsToShow: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangePageLimit( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { pageLimit: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangePrevText( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { paginationPrevText: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+	onChangeNextText( value ) {
+		const { setAttributes } = this.props
+
+		setAttributes( { paginationNextText: value } )
+		setAttributes( { paginationMarkup: "" } )
+	}
+
 
 	componentDidMount() {
 
@@ -185,6 +219,21 @@ class UAGBPostGrid extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
+			postPagination,
+			pageLimit,
+			paginationColor,
+			paginationBgColor,
+			paginationActiveColor,
+			paginationBgActiveColor,
+			paginationLayout,
+			paginationBorderSize,
+			paginationBorderRadius,
+			paginationBorderColor,
+			paginationBorderActiveColor,
+			paginationSpacing,
+			paginationAlignment,
+			paginationPrevText,
+			paginationNextText,
 		} = attributes
 
 		const hoverSettings = (
@@ -350,10 +399,12 @@ class UAGBPostGrid extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
-					<QueryControls
-						{ ...{ order, orderBy } }
-						numberOfItems={ postsToShow }
-						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
+					<RangeControl
+							label={ __( "Posts Per Page" ) }
+							value={ postsToShow }
+							onChange={ this.onChangePostsPerPage }
+							min={ 0 }
+							max={ 500 }
 					/>
 					<SelectControl
 						label={ __( "Order By" ) }
@@ -438,7 +489,120 @@ class UAGBPostGrid extends Component {
 						checked={ equalHeight }
 						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
+					<ToggleControl
+						label={ __( "Post Pagination" ) }
+						checked={ postPagination }
+						onChange={ this.onSelectPagination }
+					/>
+					{ postPagination == true &&
+						<RangeControl
+							label={ __( "Page Limit" ) }
+							value={ pageLimit }
+							onChange={ this.onChangePageLimit }
+							min={ 0 }
+							max={ 100 }
+						/>
+                	}
+					
 				</PanelBody>
+				{ postPagination == true && 
+					<PanelBody title={ __( "Pagination" ) } initialOpen={ false }>
+						<Fragment>
+							<SelectControl
+								label={ __( "Pagination Layout" ) }
+								value={ paginationLayout }
+								onChange={ ( value ) => setAttributes( { paginationLayout: value } ) }
+								options={ [
+									{ value: "border", label: __( "Border" ) },
+									{ value: "filled", label: __( "Filled" ) },
+								] }
+							/>
+							<SelectControl
+								label={ __( "Pagination Alignment" ) }
+								value={ paginationAlignment }
+								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
+								options={ [
+									{ value: "left", label: __( "Left" ) },
+									{ value: "center", label: __( "Center" ) },
+									{ value: "right", label: __( "Right" ) },
+								] }
+							/>
+							<hr className="uagb-editor__separator" />
+							{ paginationLayout == "filled" && 
+								<Fragment>
+									<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBgColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBgColor: colorValue } ) }
+									/>
+									<p className="uagb-setting-label">{ __( "Background Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgActiveColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBgActiveColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBgActiveColor: colorValue } ) }
+									/>
+								</Fragment>
+							}
+							{ paginationLayout == "border" && 
+								<Fragment>
+									<RangeControl
+										label={ __( "Border Size" ) }
+										value={ paginationBorderSize }
+										onChange={ ( value ) => setAttributes( { paginationBorderSize: value } ) }
+										min={ 0 }
+										max={ 10 }
+									/>
+									<RangeControl
+										label={ __( "Border Radius" ) }
+										value={ paginationBorderRadius }
+										onChange={ ( value ) => setAttributes( { paginationBorderRadius: value } ) }
+										min={ 0 }
+										max={ 500 }
+									/>
+									<p className="uagb-setting-label">{ __( "Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBorderColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBorderColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBorderColor: colorValue } ) }
+									/>
+									<p className="uagb-setting-label">{ __( "Border Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBorderActiveColor }} ></span></span></p>
+									<ColorPalette
+									value={ paginationBorderActiveColor }
+									onChange={ ( colorValue ) => setAttributes( { paginationBorderActiveColor: colorValue } ) }
+									/>
+								</Fragment>
+							}
+							<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationColor: colorValue } ) }
+							/>
+							<p className="uagb-setting-label">{ __( "Text Active Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationActiveColor }} ></span></span></p>
+							<ColorPalette
+							value={ paginationActiveColor }
+							onChange={ ( colorValue ) => setAttributes( { paginationActiveColor: colorValue } ) }
+							/>
+							<hr className="uagb-editor__separator" />
+							<RangeControl
+								label={ __( "Spacing" ) }
+								value={ paginationSpacing }
+								onChange={ ( value ) => setAttributes( { paginationSpacing: value } ) }
+								help = { __( "This spacing is between the Post Grid and the Pagination") }
+								min={ 0 }
+								max={ 500 }
+							/>
+							<hr className="uagb-editor__separator" />
+							<TextControl
+								label= { __( "Previous Text" ) }
+								value= { paginationPrevText }
+								onChange={ this.onChangePrevText }
+							/>
+							<TextControl
+								label= { __( "Next Text" ) }
+								value= { paginationNextText }
+								onChange={ this.onChangeNextText }
+							/>
+						</Fragment>
+					</PanelBody>
+				}
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
@@ -555,18 +719,18 @@ class UAGBPostGrid extends Component {
 								label={ __( "Typography" ) }
 								attributes = { attributes }
 								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: __( "ctaLoadGoogleFonts" ) } }
-								fontFamily = { { value: ctaFontFamily, label: __( "ctaFontFamily" ) } }
-								fontWeight = { { value: ctaFontWeight, label: __( "ctaFontWeight" ) } }
-								fontSubset = { { value: ctaFontSubset, label: __( "ctaFontSubset" ) } }
-								fontSizeType = { { value: ctaFontSizeType, label: __( "ctaFontSizeType" ) } }
-								fontSize = { { value: ctaFontSize, label: __( "ctaFontSize" ) } }
-								fontSizeMobile = { { value: ctaFontSizeMobile, label: __( "ctaFontSizeMobile" ) } }
-								fontSizeTablet= { { value: ctaFontSizeTablet, label: __( "ctaFontSizeTablet" ) } }
-								lineHeightType = { { value: ctaLineHeightType, label: __( "ctaLineHeightType" ) } }
-								lineHeight = { { value: ctaLineHeight, label: __( "ctaLineHeight" ) } }
-								lineHeightMobile = { { value: ctaLineHeightMobile, label: __( "ctaLineHeightMobile" ) } }
-								lineHeightTablet= { { value: ctaLineHeightTablet, label: __( "ctaLineHeightTablet" ) } }
+								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: "ctaLoadGoogleFonts" } }
+								fontFamily = { { value: ctaFontFamily, label: "ctaFontFamily" } }
+								fontWeight = { { value: ctaFontWeight, label: "ctaFontWeight" } }
+								fontSubset = { { value: ctaFontSubset, label: "ctaFontSubset" } }
+								fontSizeType = { { value: ctaFontSizeType, label: "ctaFontSizeType" } }
+								fontSize = { { value: ctaFontSize, label: "ctaFontSize" } }
+								fontSizeMobile = { { value: ctaFontSizeMobile, label: "ctaFontSizeMobile" } }
+								fontSizeTablet= { { value: ctaFontSizeTablet, label: "ctaFontSizeTablet" } }
+								lineHeightType = { { value: ctaLineHeightType, label: "ctaLineHeightType" } }
+								lineHeight = { { value: ctaLineHeight, label: "ctaLineHeight" } }
+								lineHeightMobile = { { value: ctaLineHeightMobile, label: "ctaLineHeightMobile" } }
+								lineHeightTablet= { { value: ctaLineHeightTablet, label: "ctaLineHeightTablet" } }
 							/>
 							<hr className="uagb-editor__separator" />
 							<h2>{ __( "Button Border" ) }</h2>
@@ -670,18 +834,18 @@ class UAGBPostGrid extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: __( "titleLoadGoogleFonts" ) } }
-						fontFamily = { { value: titleFontFamily, label: __( "titleFontFamily" ) } }
-						fontWeight = { { value: titleFontWeight, label: __( "titleFontWeight" ) } }
-						fontSubset = { { value: titleFontSubset, label: __( "titleFontSubset" ) } }
-						fontSizeType = { { value: titleFontSizeType, label: __( "titleFontSizeType" ) } }
-						fontSize = { { value: titleFontSize, label: __( "titleFontSize" ) } }
-						fontSizeMobile = { { value: titleFontSizeMobile, label: __( "titleFontSizeMobile" ) } }
-						fontSizeTablet= { { value: titleFontSizeTablet, label: __( "titleFontSizeTablet" ) } }
-						lineHeightType = { { value: titleLineHeightType, label: __( "titleLineHeightType" ) } }
-						lineHeight = { { value: titleLineHeight, label: __( "titleLineHeight" ) } }
-						lineHeightMobile = { { value: titleLineHeightMobile, label: __( "titleLineHeightMobile" ) } }
-						lineHeightTablet= { { value: titleLineHeightTablet, label: __( "titleLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+						fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+						fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+						fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+						fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+						fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+						fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+						fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+						lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+						lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+						lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+						lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
 					/>
 
 					{ ( displayPostAuthor || displayPostDate || displayPostComment || displayPostTaxonomy ) && <Fragment>
@@ -691,18 +855,18 @@ class UAGBPostGrid extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: __( "metaLoadGoogleFonts" ) } }
-							fontFamily = { { value: metaFontFamily, label: __( "metaFontFamily" ) } }
-							fontWeight = { { value: metaFontWeight, label: __( "metaFontWeight" ) } }
-							fontSubset = { { value: metaFontSubset, label: __( "metaFontSubset" ) } }
-							fontSizeType = { { value: metaFontSizeType, label: __( "metaFontSizeType" ) } }
-							fontSize = { { value: metaFontSize, label: __( "metaFontSize" ) } }
-							fontSizeMobile = { { value: metaFontSizeMobile, label: __( "metaFontSizeMobile" ) } }
-							fontSizeTablet= { { value: metaFontSizeTablet, label: __( "metaFontSizeTablet" ) } }
-							lineHeightType = { { value: metaLineHeightType, label: __( "metaLineHeightType" ) } }
-							lineHeight = { { value: metaLineHeight, label: __( "metaLineHeight" ) } }
-							lineHeightMobile = { { value: metaLineHeightMobile, label: __( "metaLineHeightMobile" ) } }
-							lineHeightTablet= { { value: metaLineHeightTablet, label: __( "metaLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: metaLoadGoogleFonts, label: "metaLoadGoogleFonts" } }
+							fontFamily = { { value: metaFontFamily, label: "metaFontFamily" } }
+							fontWeight = { { value: metaFontWeight, label: "metaFontWeight" } }
+							fontSubset = { { value: metaFontSubset, label: "metaFontSubset" } }
+							fontSizeType = { { value: metaFontSizeType, label: "metaFontSizeType" } }
+							fontSize = { { value: metaFontSize, label: "metaFontSize" } }
+							fontSizeMobile = { { value: metaFontSizeMobile, label: "metaFontSizeMobile" } }
+							fontSizeTablet= { { value: metaFontSizeTablet, label: "metaFontSizeTablet" } }
+							lineHeightType = { { value: metaLineHeightType, label: "metaLineHeightType" } }
+							lineHeight = { { value: metaLineHeight, label: "metaLineHeight" } }
+							lineHeightMobile = { { value: metaLineHeightMobile, label: "metaLineHeightMobile" } }
+							lineHeightTablet= { { value: metaLineHeightTablet, label: "metaLineHeightTablet" } }
 						/>
 					</Fragment>
 					}
@@ -714,18 +878,18 @@ class UAGBPostGrid extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: __( "excerptLoadGoogleFonts" ) } }
-							fontFamily = { { value: excerptFontFamily, label: __( "excerptFontFamily" ) } }
-							fontWeight = { { value: excerptFontWeight, label: __( "excerptFontWeight" ) } }
-							fontSubset = { { value: excerptFontSubset, label: __( "excerptFontSubset" ) } }
-							fontSizeType = { { value: excerptFontSizeType, label: __( "excerptFontSizeType" ) } }
-							fontSize = { { value: excerptFontSize, label: __( "excerptFontSize" ) } }
-							fontSizeMobile = { { value: excerptFontSizeMobile, label: __( "excerptFontSizeMobile" ) } }
-							fontSizeTablet= { { value: excerptFontSizeTablet, label: __( "excerptFontSizeTablet" ) } }
-							lineHeightType = { { value: excerptLineHeightType, label: __( "excerptLineHeightType" ) } }
-							lineHeight = { { value: excerptLineHeight, label: __( "excerptLineHeight" ) } }
-							lineHeightMobile = { { value: excerptLineHeightMobile, label: __( "excerptLineHeightMobile" ) } }
-							lineHeightTablet= { { value: excerptLineHeightTablet, label: __( "excerptLineHeightTablet" ) } }
+							loadGoogleFonts = { { value: excerptLoadGoogleFonts, label: "excerptLoadGoogleFonts" } }
+							fontFamily = { { value: excerptFontFamily, label: "excerptFontFamily" } }
+							fontWeight = { { value: excerptFontWeight, label: "excerptFontWeight" } }
+							fontSubset = { { value: excerptFontSubset, label: "excerptFontSubset" } }
+							fontSizeType = { { value: excerptFontSizeType, label: "excerptFontSizeType" } }
+							fontSize = { { value: excerptFontSize, label: "excerptFontSize" } }
+							fontSizeMobile = { { value: excerptFontSizeMobile, label: "excerptFontSizeMobile" } }
+							fontSizeTablet= { { value: excerptFontSizeTablet, label: "excerptFontSizeTablet" } }
+							lineHeightType = { { value: excerptLineHeightType, label: "excerptLineHeightType" } }
+							lineHeight = { { value: excerptLineHeight, label: "excerptLineHeight" } }
+							lineHeightMobile = { { value: excerptLineHeightMobile, label: "excerptLineHeightMobile" } }
+							lineHeightTablet= { { value: excerptLineHeightTablet, label: "excerptLineHeightTablet" } }
 						/>
 					</Fragment>
 					}
@@ -818,7 +982,7 @@ class UAGBPostGrid extends Component {
 						max={ 50 }
 						allowReset
 					/>
-				</PanelBody>
+				</PanelBody>	
 			</InspectorControls>
 		)
 
@@ -868,7 +1032,8 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination } = props.attributes
+	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -876,6 +1041,22 @@ export default withSelect( ( select, props ) => {
 	let taxonomy = ""
 	let categoriesList = []
 	let rest_base = ""
+
+	if ( true === postPagination && '' === paginationMarkup ) {
+		$.ajax({
+			url: uagb_blocks_info.ajax_url,
+			data: {
+				action: "uagb_post_pagination",
+				attributes : props.attributes,
+				nonce: uagb_blocks_info.uagb_ajax_nonce
+			},
+			dataType: "json",
+			type: "POST",
+			success: function( data ) {
+				setAttributes( { paginationMarkup: data.data } ) 
+			}
+		});
+	}
 
 	if ( "undefined" != typeof currentTax ) {
 
@@ -897,11 +1078,10 @@ export default withSelect( ( select, props ) => {
 	}
 
 	latestPostsQuery[rest_base] = categories
-
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
 	}
 
 } )( UAGBPostGrid )

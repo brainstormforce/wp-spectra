@@ -113,10 +113,11 @@ hr.uagb-editor__separator {
 }
 
 .components-button-group.uagb-size-type-field {
-    margin: 0;
+	margin: 0;
     text-align: right;
-    display: block;
-    margin-bottom: -18px
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: -18px;
 }
 
 .uagb-size-type-field-tabs .components-range-control .components-base-control__field {
@@ -240,7 +241,8 @@ hr.uagb-editor__separator {
 	margin-bottom: -34px;
 }
 
-.uagb-typography-advanced {
+.uagb-typography-advanced,
+.uagb-box-shadow-advanced {
 	box-shadow: 0 3px 30px rgba(25, 30, 35, 0.1);
     border: 1px solid #e2e4e7;
     background: #fff;
@@ -250,7 +252,8 @@ hr.uagb-editor__separator {
     position: relative;
 }
 
-.uagb-typography-advanced::before {
+.uagb-typography-advanced::before,
+.uagb-box-shadow-advanced::before {
 	border: 8px solid #e2e4e7;
 
 	content: "";
@@ -269,7 +272,8 @@ hr.uagb-editor__separator {
 	margin-left: -10px;
 }
 
-.uagb-typography-advanced::after {
+.uagb-typography-advanced::after,
+.uagb-box-shadow-advanced::after {
 	border: 8px solid #fff;
 
 	content: "";
@@ -298,8 +302,10 @@ hr.uagb-editor__separator {
 	border-color: #cccccc;
 }*/
 
-.uag-typography-option-actions {
-    margin-bottom: 1.5em;
+.uag-typography-option-actions,
+.uag-box-shadow-option-actions {
+	margin-bottom: 1.5em;
+	margin-top: 1.5em;
 }
 
 .uag-typography-font-family-options .components-base-control__field {
@@ -366,6 +372,10 @@ hr.uagb-editor__separator {
 
 .uag-typography-font-family-options .react-select__dropdown-indicator svg {
 	fill: #555D66;
+}
+
+.uagb__url-panel-body .block-editor-url-input input {
+	width: 100%;
 }
 
 /*
@@ -3322,4 +3332,30 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-inline-margin .components-button-group.uagb-size-type-field {
     display: inline-block;
     float: right;
+}
+
+/* Reset Button Alignment */
+.uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field {
+	display:flex;
+	flex-wrap: unset;
+}
+
+.uagb-size-type-field-tabs.uagb-size-type-field__common-tabs .components-base-control.components-range-control.uagb-margin-control .components-base-control__field{
+    display:flex;
+} 
+
+.uagb-size-type-field-tabs.uagb-inline-margin .components-range-control .components-base-control__field{
+    display:unset;
+}
+
+.uag-typography-range-options .uagb-size-type-field-tabs .components-tab-panel__tab-content .components-base-control.components-range-control .components-base-control__field {
+	display:block;
+}
+
+.uagb-size-type-field-tabs .components-tab-panel__tab-content div.components-base-control .components-base-control__field{
+    display:block;
+}
+
+.uagb-typography-advanced .uag-typography-range-options .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field{
+    display:block;
 }

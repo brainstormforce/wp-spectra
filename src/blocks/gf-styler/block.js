@@ -40,6 +40,9 @@ if( uagb_blocks_info.blocks["uagb/gf-styler"]["is_active"] ) {
 			__( "gravity form styler" ),
 			__( "uag" ),
 		],
+		supports: {
+			anchor: true,
+		},
 		category: uagb_blocks_info.category,
 		edit,
 		save() {

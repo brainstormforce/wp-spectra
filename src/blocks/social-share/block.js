@@ -7,6 +7,7 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import "./style.scss"
 import "./editor.scss"
+import transform from "./transform"
 import attributes from "./attributes"
 import edit from "./edit"
 import links from "./links"
@@ -29,8 +30,12 @@ registerBlockType( "uagb/social-share", {
 		__( "icon" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,
+	transform,
 	deprecated
 } )

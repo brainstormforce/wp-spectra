@@ -32,6 +32,9 @@ registerBlockType( "uagb/buttons", {
 		__( "multi buttons" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	save,

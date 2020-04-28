@@ -14,15 +14,17 @@
 		}
 
 		var parsedSlug = slug.toString().toLowerCase()
-			.replace(/[&]nbsp[;]/gi, '-')                // Replace inseccable spaces
-			.replace(/\s+/g, '-')                        // Replace spaces with -
-			.replace(/<[^<>]+>/g, '')                    // Remove tags
-			.replace(/[&\/\\#,!+()$~%.'":*?<>{}]/g, '')  // Remove special chars
-			.replace(/\-\-+/g, '-')                      // Replace multiple - with single -
-			.replace(/^-+/, '')                          // Trim - from start of text
-			.replace(/-+$/, '');                         // Trim - from end of text
+			.replace(/&(amp;)/g, '')					 	// Remove &
+			.replace(/&(mdash;)/g, '')					 	// Remove long dash
+			.replace(/\u2013|\u2014/g, '')				 	// Remove long dash
+			.replace(/[&]nbsp[;]/gi, '-')                	// Replace inseccable spaces
+			.replace(/\s+/g, '-')                        	// Replace spaces with -
+			.replace(/[&\/\\#,^!+()$~%.'":*?<>{}@‘’”“]/g, '')  // Remove special chars
+			.replace(/\-\-+/g, '-')                      	// Replace multiple - with single -
+			.replace(/^-+/, '')                          	// Trim - from start of text
+			.replace(/-+$/, '');                         	// Trim - from end of text
 
-		return encodeURIComponent( parsedSlug );
+		return decodeURI( encodeURIComponent( parsedSlug ) );
 	};
 
 
@@ -109,34 +111,37 @@
 		 */
 		_run: function( attr, id ) {
 
-			$this_scope = $( id );
+			var $this_scope = $( id );
 
 			if ( $this_scope.find( '.uag-toc__collapsible-wrap' ).length > 0 ) {
 				$this_scope.find( '.uagb-toc__title-wrap' ).addClass( 'uagb-toc__is-collapsible' );
 			}
 
-			$headers = $this_scope.find( '.uagb-toc__list-wrap' ).data( 'headers' );
+			var $headers = JSON.parse(attr.headerLinks);
+			
+			var allowed_h_tags = [];
+			
+			if ( undefined !== attr.mappingHeaders ) {
 
-			if ( undefined !== $headers ) {
+				attr.mappingHeaders.forEach((h_tag, index) => h_tag === true ? allowed_h_tags.push('h' + (index+1)) : null);
+				var allowed_h_tags_str = ( null !== allowed_h_tags ) ? allowed_h_tags.join( ',' ) : '';
+			}
 
-				$headers.forEach(function (element, index) {
+			var all_header = ( undefined !== allowed_h_tags_str && '' !== allowed_h_tags_str ) ? $( 'body' ).find( allowed_h_tags_str ) : $( 'body' ).find('h1, h2, h3, h4, h5, h6' );
+
+			if ( undefined !== $headers && 0 !== all_header.length ) {
+
+				$headers.forEach(function (element, i) {
 					
-					let point_header = $( 'body' ).find( 'h' + element.tag + ':contains("' + element.text + '")' );
+					let element_text = parseTocSlug(element.text);
+					all_header.each( function (){
 
-					let sel = $( 'body' ).find( 'h' + element.tag ).filter( function(){
-						let left_word = $( this ).text().replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						let right_word = element.text.replace(/([ #;&,.%+*~\'’:"!^$[\]()=>|\/])/g,'');
-						if ( left_word == right_word ) {
-							point_header = $( this );
+						let header = $( this );
+						let header_text = parseTocSlug(header.text());
+						if ( element_text.localeCompare(header_text) === 0 ) {
+							header.before('<span id="' + header_text + '" class="uag-toc__heading-anchor"></span>');
 						}
 					});
-
-					if ( undefined !== point_header && point_header.length > 0 ) {
-						point_header.before(function (ind) {
-							var anchor = parseTocSlug( $( point_header[ind] ).text() );
-							return '<span id="' + anchor + '" class="uag-toc__heading-anchor"></span>';
-						});
-					}
 				});
 			}
 

@@ -9,7 +9,7 @@ const icons = []
 for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 	icons.push(
 		{
-			"label": "Label #" + i,
+			"label": "#Label",
 			"image_icon": "icon",
 			"icon": "fab fa-arrow-circle-right",
 			"image": "",
@@ -24,6 +24,7 @@ for ( var i = 1; i <= ITEM_COUNT; i++ ) {
 			"link": "#",
 			"target": false,
 			"disableLink": true,
+			"hideLabel" : false
 		}
 	)
 }
@@ -33,6 +34,10 @@ const attributes = {
 		type: "string"
 	},
 	classMigrate: {
+		type: "boolean",
+		default: false
+	},
+	childMigrate: {
 		type: "boolean",
 		default: false
 	},

@@ -107,22 +107,26 @@
 	    pointer-events: none;
 	    cursor: text;
 	}
-}
 
-.wp-block-uagb-icon-list .uagb-icon-list__wrap .uagb-icon-list__wrapper {
-	text-decoration: none;
-}
+	&.wp-block-uagb-icon-list .uagb-icon-list__wrap .uagb-icon-list__wrapper {
+		text-decoration: none;
+	}
 
-.uagb-icon-list__wrap .uagb-icon-list__wrapper {
-	box-shadow: none;
+	.uagb-icon-list__wrap .uagb-icon-list__wrapper {
+		box-shadow: none;
+	}
+
+	&.uagb-icon-list__icon-at-top .uagb-icon-list__source-wrap{
+		-ms-flex-item-align: flex-start;
+		align-self: flex-start;
+		margin-top: 5px;
+	}
 }
 
 .uagb-icon-list__outer-wrap:not(.uagb-icon-list__no-label) .uagb-icon-list__source-wrap {
 	margin-right: 15px;
 }
 
-.uagb-icon-list__outer-wrap.uagb-icon-list__icon-at-top .uagb-icon-list__source-wrap{
-	-ms-flex-item-align: flex-start;
-	align-self: flex-start;
-	margin-top: 5px;
+.uagb-icon-list__no-label .uagb-icon-list__label-wrap {
+    display: none;
 }

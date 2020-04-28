@@ -29,6 +29,9 @@ registerBlockType( "uagb/section", {
 		__( "wrapper" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	attributes,
 	edit,
 	getEditWrapperProps( attributes ) {

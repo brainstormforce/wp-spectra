@@ -108,6 +108,9 @@ registerBlockType( "uagb/google-map", {
 		__( "uag" ),
 		__( "map" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes: {
 		block_id: {

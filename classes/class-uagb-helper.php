@@ -137,6 +137,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			add_action( 'wp_head', array( $this, 'frontend_gfonts' ), 120 );
 			add_action( 'wp_head', array( $this, 'print_stylesheet' ), 80 );
 			add_action( 'wp_footer', array( $this, 'print_script' ), 1000 );
+			add_filter( 'redirect_canonical', array( $this, 'override_canonical' ), 1, 2 );
 		}
 
 		/**
@@ -273,7 +274,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 0.0.1
 		 */
 		public static function generate_css( $selectors, $id ) {
-
 			$styling_css = '';
 
 			if ( empty( $selectors ) ) {
@@ -300,9 +300,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				}
 
 				if ( ! empty( $css ) ) {
-					$styling_css .= $id;
-					$styling_css .= $key . '{';
-					$styling_css .= $css . '}';
+					$styling_css     .= $id;
+					$styling_css     .= $key . '{';
+						$styling_css .= $css . '}';
 				}
 			}
 
@@ -393,7 +393,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/buttons':
                     $css += UAGB_Block_Helper::get_buttons_css( $blockattr, $block_id );
                     UAGB_Block_Helper::blocks_buttons_gfont( $blockattr );
-                    break;
+					break;
+
+				case 'uagb/buttons-child':
+					$css += UAGB_Block_Helper::get_buttons_child_css( $blockattr, $block_id );
+					break;
 
                 case 'uagb/blockquote':
                     $css += UAGB_Block_Helper::get_blockquote_css( $blockattr, $block_id );
@@ -413,6 +417,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/social-share':
                     $css += UAGB_Block_Helper::get_social_share_css( $blockattr, $block_id );
                     break;
+
+                case 'uagb/social-share-child':
+					$css += UAGB_Block_Helper::get_social_share_child_css( $blockattr, $block_id );
+					break;
 
                 case 'uagb/content-timeline':
                     $css += UAGB_Block_Helper::get_content_timeline_css( $blockattr, $block_id );
@@ -437,7 +445,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
                 case 'uagb/icon-list':
                     $css += UAGB_Block_Helper::get_icon_list_css( $blockattr, $block_id );
                      UAGB_Block_Helper::blocks_icon_list_gfont( $blockattr );
-                    break;
+					break;
+					
+				case 'uagb/icon-list-child':
+					$css += UAGB_Block_Helper::get_icon_list_child_css( $blockattr, $block_id );
+					break;
 
                 case 'uagb/post-grid':
                     $css += UAGB_Block_Helper::get_post_grid_css( $blockattr, $block_id );
@@ -1074,6 +1086,26 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				);
 			}
 
+			if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
+
+				if ( get_query_var( 'paged' ) ) {
+
+					$paged = get_query_var( 'paged' );
+
+				} elseif ( get_query_var( 'page' ) ) {
+
+					$paged = get_query_var( 'page' );
+
+				} else {
+
+					$paged = 1;
+
+				}
+				$query_args['posts_per_page'] = $attributes['postsToShow'];
+				$query_args['paged']          = $paged;
+
+			}
+
 			$query_args = apply_filters( "uagb_post_query_args_{$block_type}", $query_args, $attributes );
 
 			return new WP_Query( $query_args );
@@ -1311,11 +1343,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function create_specific_stylesheet() {
 
-			$saved_blocks        = self::get_admin_settings_option( '_uagb_blocks' );
-			$combined            = array();
-			$is_already_post     = false;
-			$is_already_timeline = false;
-			$is_already_column   = false;
+			$saved_blocks         = self::get_admin_settings_option( '_uagb_blocks' );
+			$combined             = array();
+			$is_already_post      = false;
+			$is_already_timeline  = false;
+			$is_already_column    = false;
+			$is_already_icon_list = false;
+			$is_already_button    = false;
 
 			foreach ( UAGB_Config::$block_attributes as $key => $block ) {
 
@@ -1345,6 +1379,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 						break;
 
+					case 'icon-list':
+					case 'icon-list-child':
+						if ( ! $is_already_icon_list ) {
+							$combined[]           = 'icon-list';
+							$combined[]           = 'icon-list-child';
+							$is_already_icon_list = true;
+						}
+						break;
+					case 'buttons-child':
+					case 'buttons':
+						if ( ! $is_already_button ) {
+							$combined[]        = 'buttons';
+							$combined[]        = 'buttons-child';
+							$is_already_button = true;
+						}
+						break;
+
 					case 'post-timeline':
 					case 'content-timeline':
 						if ( ! $is_already_timeline ) {
@@ -1368,12 +1419,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$style = '';
 
-			foreach ( $combined as $key => $c_block ) {
+			$wp_filesystem = self::get_instance()->get_filesystem();
 
-				$style .= self::get_instance()->get_filesystem()->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
+			foreach ( $combined as $key => $c_block ) {
+				$style .= $wp_filesystem->get_contents( plugin_dir_path( UAGB_FILE ) . 'assets/css/blocks/' . $c_block . '.css' );
 
 			}
-			self::get_instance()->get_filesystem()->put_contents( $combined_path, $style, FS_CHMOD_FILE );
+			$wp_filesystem->put_contents( $combined_path, $style, FS_CHMOD_FILE );
 		}
 
 		/**
@@ -1403,9 +1455,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			// Create the upload dir if it doesn't exist.
 			if ( ! file_exists( $dir_info['path'] ) ) {
 				// Create the directory.
-				self::get_instance()->get_filesystem()->mkdir( $dir_info['path'] );
+				$wp_filesystem = self::get_instance()->get_filesystem();
+				$wp_filesystem->mkdir( $dir_info['path'] );
 				// Add an index file for security.
-				self::get_instance()->get_filesystem()->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
+				$wp_filesystem->put_contents( $dir_info['path'] . 'index.html', '', FS_CHMOD_FILE );
 			}
 
 			return apply_filters( 'uag_get_upload_dir', $dir_info );
@@ -1568,6 +1621,143 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			WP_Filesystem();
 
 			return $wp_filesystem;
+		}
+
+		/**
+		 * Check if UAG upload folder has write permissions or not.
+		 *
+		 * @since  1.14.9
+		 * @return bool true or false.
+		 */
+		public static function has_read_write_permissions() {
+
+			$upload_dir = self::get_upload_dir();
+
+			$file_created = self::get_instance()->get_filesystem()->put_contents( $upload_dir['path'] . 'index.html', '' );
+
+			if ( ! $file_created ) {
+
+				return false;
+			}
+
+			return true;
+		}
+		/**
+		 * Gives the paged Query var.
+		 *
+		 * @param Object $query Query.
+		 * @return int $paged Paged Query var.
+		 * @since 1.14.9
+		 */
+		public static function get_paged( $query ) {
+
+			global $paged;
+
+			// Check the 'paged' query var.
+			$paged_qv = $query->get( 'paged' );
+
+			if ( is_numeric( $paged_qv ) ) {
+				return $paged_qv;
+			}
+
+			// Check the 'page' query var.
+			$page_qv = $query->get( 'page' );
+
+			if ( is_numeric( $page_qv ) ) {
+				return $page_qv;
+			}
+
+			// Check the $paged global?
+			if ( is_numeric( $paged ) ) {
+				return $paged;
+			}
+
+			return 0;
+		}
+		/**
+		 * Builds the base url.
+		 *
+		 * @param string $permalink_structure Premalink Structure.
+		 * @param string $base Base.
+		 * @since 1.14.9
+		 */
+		public static function build_base_url( $permalink_structure, $base ) {
+			// Check to see if we are using pretty permalinks.
+			if ( ! empty( $permalink_structure ) ) {
+
+				if ( strrpos( $base, 'paged-' ) ) {
+					$base = substr_replace( $base, '', strrpos( $base, 'paged-' ), strlen( $base ) );
+				}
+
+				// Remove query string from base URL since paginate_links() adds it automatically.
+				// This should also fix the WPML pagination issue that was added since 1.10.2.
+				if ( count( $_GET ) > 0 ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					$base = strtok( $base, '?' );
+				}
+
+				// Add trailing slash when necessary.
+				if ( '/' === substr( $permalink_structure, -1 ) ) {
+					$base = trailingslashit( $base );
+				} else {
+					$base = untrailingslashit( $base );
+				}
+			} else {
+				$url_params = wp_parse_url( $base, PHP_URL_QUERY );
+
+				if ( empty( $url_params ) ) {
+					$base = trailingslashit( $base );
+				}
+			}
+
+			return $base;
+		}
+		/**
+		 * Returns the Paged Format.
+		 *
+		 * @param string $permalink_structure Premalink Structure.
+		 * @param string $base Base.
+		 * @since 1.14.9
+		 */
+		public static function paged_format( $permalink_structure, $base ) {
+
+			$page_prefix = empty( $permalink_structure ) ? 'paged' : 'page';
+
+			if ( ! empty( $permalink_structure ) ) {
+				$format  = substr( $base, -1 ) !== '/' ? '/' : '';
+				$format .= $page_prefix . '/';
+				$format .= '%#%';
+				$format .= substr( $permalink_structure, -1 ) === '/' ? '/' : '';
+			} elseif ( empty( $permalink_structure ) || is_search() ) {
+				$parse_url = wp_parse_url( $base, PHP_URL_QUERY );
+				$format    = empty( $parse_url ) ? '?' : '&';
+				$format   .= $page_prefix . '=%#%';
+			}
+
+			return $format;
+		}
+		/**
+		 * Disable canonical on Single Post.
+		 *
+		 * @param  string $redirect_url  The redirect URL.
+		 * @param  string $requested_url The requested URL.
+		 * @since  1.14.9
+		 * @return bool|string
+		 */
+		public function override_canonical( $redirect_url, $requested_url ) {
+
+			global $wp_query;
+
+			if ( is_array( $wp_query->query ) ) {
+
+				if ( true === $wp_query->is_singular
+					&& - 1 === $wp_query->current_post
+					&& true === $wp_query->is_paged
+				) {
+					$redirect_url = false;
+				}
+			}
+
+			return $redirect_url;
 		}
 	}
 

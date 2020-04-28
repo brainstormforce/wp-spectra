@@ -59,6 +59,12 @@ function styling( props ) {
 		tabletMarginType,
 		mobilePaddingType,
 		tabletPaddingType,
+		boxShadowColor,
+		boxShadowHOffset,
+		boxShadowVOffset,
+		boxShadowBlur,
+		boxShadowSpread,
+		boxShadowPosition,
 	} = props.attributes
 
 	var inner_width = "100%"
@@ -73,7 +79,11 @@ function styling( props ) {
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+	var boxShadowPositionCSS = boxShadowPosition;
 
+	if ( 'outset' === boxShadowPosition ) {
+		boxShadowPositionCSS = '';
+	}
 	var selectors = {
 		".uagb-section__wrap" : inlineStyles( props ),
 		" .uagb-section__video-wrap": {
@@ -81,6 +91,9 @@ function styling( props ) {
 		},
 		" .uagb-section__inner-wrap": {
 			"max-width" : inner_width
+		},
+		".wp-block-uagb-section": {
+			"box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
 		}
 	}
 

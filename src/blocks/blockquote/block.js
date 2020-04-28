@@ -40,6 +40,9 @@ registerBlockType( "uagb/blockquote", {
 		__( "quote" ),
 		__( "uagb" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

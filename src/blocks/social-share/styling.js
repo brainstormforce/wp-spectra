@@ -31,47 +31,8 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	socials.map( ( social, index ) => {
-
-		if ( social_count <= index ) {
-			return
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"color" : social.icon_color,
-			"padding": generateCSSUnit( bgSize, bgSizeType )
-		}
-
-		mobile_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": generateCSSUnit( bgSizeMobile, bgSizeType )
-		}
-
-		tablet_selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link"] = {
-			"padding": generateCSSUnit( bgSizeTablet, bgSizeType )
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + " a.uagb-ss__link svg"] = {
-			"fill" : social.icon_color,
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link"] = {
-			"color" : social.icon_hover_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover a.uagb-ss__link svg"] = {
-			"fill" : social.icon_hover_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index] = {
-			"background" : social.icon_bg_color
-		}
-
-		selectors[" .uagb-ss-repeater-" + index + ":hover"] = {
-			"background" : social.icon_bg_hover_color
-		}
-	})
-
 	selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper"] = {
+		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : 0,
 		"margin-right" : 0,
 		"margin-bottom" : generateCSSUnit( gap, "px" )
@@ -81,21 +42,10 @@ function styling( props ) {
 		 "flex-direction": "column"
 	}
 
-	selectors[".uagb-social-share__layout-vertical .uagb-ss__wrapper:last-child"] = {
-		"margin-bottom" : 0
-	}
-
 	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
+		"padding": generateCSSUnit( bgSize, "px" ),
 		"margin-left" : generateCSSUnit( ( gap/2 ), "px" ),
 		"margin-right" : generateCSSUnit( ( gap/2 ), "px" )
-	}
-
-	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:first-child"] = {
-		"margin-left" : 0
-	}
-
-	selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper:last-child"] = {
-		"margin-right" : 0
 	}
 
 	selectors[" .uagb-ss__wrapper"] = {
@@ -124,6 +74,10 @@ function styling( props ) {
 
 	var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
+	selectors[" .uagb-social-share__wrap .block-editor-inner-blocks"] = {
+			"text-align": align
+	}
+
 	selectors[" .uagb-social-share__wrap"] = {
 		"justify-content" : alignment,
 		"-webkit-box-pack": alignment,
@@ -138,6 +92,10 @@ function styling( props ) {
 
 		if ( "desktop" == stack ) {
 
+			selectors[".uagb-social-share__layout-horizontal .block-editor-inner-blocks > .block-editor-block-list__layout"] = {
+				"flex-direction" : "column"
+			}
+
 			selectors[" .uagb-ss__wrapper"] = {
 				"margin-left" : 0,
 				"margin-right" : 0,
@@ -145,13 +103,15 @@ function styling( props ) {
 			}
 
 			selectors[" .uagb-social-share__wrap"] = {
-				 "flex-direction": "column"
+				"flex-direction": "column",
+				"justify-content" : alignment,
+				"-webkit-box-pack": alignment,
+				"-ms-flex-pack": alignment,
+				"justify-content": alignment,
+				"-webkit-box-align": alignment,
+				"-ms-flex-align": alignment,
+				"align-items": alignment,
 			}
-
-			selectors[" .uagb-ss__wrapper:last-child"] = {
-				"margin-bottom" : 0
-			}
-
 
 		} else if ( "tablet" == stack ) {
 
@@ -163,10 +123,6 @@ function styling( props ) {
 
 			tablet_selectors[" .uagb-social-share__wrap"] = {
 				"flex-direction": "column"
-			}
-
-			tablet_selectors[" .uagb-ss__wrapper:last-child"] = {
-				"margin-bottom" : 0
 			}
 
 			tablet_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {
@@ -184,10 +140,6 @@ function styling( props ) {
 
 			mobile_selectors[" .uagb-social-share__wrap"] = {
 				"flex-direction": "column"
-			}
-
-			mobile_selectors[" .uagb-ss__wrapper:last-child"] = {
-				"margin-bottom" : 0
 			}
 
 			mobile_selectors[".uagb-social-share__layout-horizontal .uagb-ss__wrapper"] = {

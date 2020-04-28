@@ -6,10 +6,8 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
-import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import memoize from "memize"
 import styling from "./styling"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -18,6 +16,7 @@ import TypographyControl from "../../components/typography"
 import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
+const { select } = wp.data;
 
 const {
 	Component,
@@ -28,9 +27,7 @@ const {
 	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
-	MediaUpload,
-	RichText,
-	ColorPalette
+	InnerBlocks,
 } = wp.blockEditor
 
 const {
@@ -38,16 +35,21 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
-	TextControl,
 	ToggleControl,
 	TabPanel,
 	ButtonGroup,
 	Dashicon
 } = wp.components
 
-let svg_icons = Object.keys( UAGBIcon )
+const ALLOWED_BLOCKS = [ "uagb/icon-list-child" ]
 
 class UAGBIconList extends Component {
+
+	constructor() {
+		super( ...arguments )
+
+		this.changeChildAttr = this.changeChildAttr.bind( this )
+	}
 
 	componentDidMount() {
 
@@ -55,32 +57,29 @@ class UAGBIconList extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
 		this.props.setAttributes( { classMigrate : true } )
+		this.props.setAttributes( { childMigrate : true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-icon-list-" + this.props.clientId )
 		document.head.appendChild( $style )
+
+		this.changeChildAttr( this.props.attributes.hideLabel )
 	}
 
-	saveIcons( value, index ) {
-		const { attributes, setAttributes } = this.props
-		const { icons } = attributes
+	changeChildAttr ( value ) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
-		const newItems = icons.map( ( item, thisIndex ) => {
-			if ( index === thisIndex ) {
-				item = { ...item, ...value }
-			}
-
-			return item
-		} )
-		setAttributes( {
-			icons: newItems,
-		} )
+		getChildBlocks.forEach((iconChild, key) => {
+			iconChild.attributes.hideLabel = value
+		});
+		setAttributes( { hideLabel: value } )
 	}
 
 	render() {
 
-		const { attributes, setAttributes, isSelected } = this.props
+		const { attributes, setAttributes } = this.props
 
 		const {
 			align,
@@ -130,238 +129,6 @@ class UAGBIconList extends Component {
 			)
 		}
 
-
-
-		const iconControls = ( index ) => {
-
-			let color_control = ""
-			let color_control_hover = ""
-
-			if ( "image" == icons[ index ].image_icon ) {
-
-				color_control = (
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].label_color }
-							onChange={ ( value ) => this.saveIcons( { label_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Image Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_bg_color }
-							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Image Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_border_color }
-							onChange={ ( value ) => this.saveIcons( { icon_border_color: value }, index ) }
-							allowReset
-						/>
-					</Fragment>
-				)
-				color_control_hover = (
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].label_hover_color }
-							onChange={ ( value ) => this.saveIcons( { label_hover_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Image Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_bg_hover_color }
-							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Image Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_border_hover_color }
-							onChange={ ( value ) => this.saveIcons( { icon_border_hover_color: value }, index ) }
-							allowReset
-						/>
-					</Fragment>
-				)
-			} else {
-
-				color_control = (
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].label_color }
-							onChange={ ( value ) => this.saveIcons( { label_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_color }
-							onChange={ ( value ) => this.saveIcons( { icon_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_bg_color }
-							onChange={ ( value ) => this.saveIcons( { icon_bg_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Border Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_border_color }
-							onChange={ ( value ) => this.saveIcons( { icon_border_color: value }, index ) }
-							allowReset
-						/>
-					</Fragment>
-				)
-				color_control_hover = (
-					<Fragment>
-						<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].label_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].label_hover_color }
-							onChange={ ( value ) => this.saveIcons( { label_hover_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_hover_color }
-							onChange={ ( value ) => this.saveIcons( { icon_hover_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_bg_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_bg_hover_color }
-							onChange={ ( value ) => this.saveIcons( { icon_bg_hover_color: value }, index ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Icon Border Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icons[ index ].icon_border_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ icons[ index ].icon_border_hover_color }
-							onChange={ ( value ) => this.saveIcons( { icon_border_hover_color: value }, index ) }
-							allowReset
-						/>
-					</Fragment>
-				)
-			}
-
-			return (
-				<PanelBody key={index}
-					title={ __( "Icon" ) + " " + ( index + 1 ) + " " + __( "Settings" ) }
-					initialOpen={ false }
-				>
-					<SelectControl
-						label={ __( "Image / Icon" ) }
-						value={ icons[ index ].image_icon }
-						options={ [
-							{ value: "icon", label: __( "Icon" ) },
-							{ value: "image", label: __( "Image" ) },
-						] }
-						onChange={ value => {
-							this.saveIcons( { image_icon: value }, index )
-						} }
-					/>
-					{ "icon" == icons[ index ].image_icon &&
-						<Fragment>
-							<p className="components-base-control__label">{__( "Icon" )}</p>
-							<FontIconPicker
-								icons={svg_icons}
-								renderFunc= {renderSVG}
-								theme="default"
-								value={icons[ index ].icon}
-								onChange={ value => {
-									this.saveIcons( { icon: value }, index )
-								} }
-								isMulti={false}
-								noSelectedPlaceholder= { __( "Select Icon" ) }
-							/>
-						</Fragment>
-					}
-					{ "image" == icons[ index ].image_icon &&
-						<Fragment>
-							<MediaUpload
-								title={ __( "Select Image" ) }
-								onSelect={ value => {
-									this.saveIcons( { image: value }, index )
-								} }
-								allowedTypes={ [ "image" ] }
-								value={ icons[ index ].image }
-								render={ ( { open } ) => (
-									<Button isDefault onClick={ open }>
-										{ ! icons[ index ].image ? __( "Select Image" ) : __( "Replace image" ) }
-									</Button>
-								) }
-							/>
-							{ icons[ index ].image &&
-								<Button
-									className="uagb-rm-btn"
-									onClick={ value => {
-										this.saveIcons( { image: null }, index )
-									} }
-									isLink isDestructive>
-									{ __( "Remove Image" ) }
-								</Button>
-							}
-						</Fragment>
-					}
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "List Item Link" ) }</h2>
-					<ToggleControl
-						label={ __( "Disable Link" ) }
-						checked={ icons[ index ].disableLink }
-						onChange={ value => {
-							this.saveIcons( { disableLink: value }, index )
-						} }
-					/>
-					{ ! icons[ index ].disableLink &&
-						<Fragment>
-							<p className="components-base-control__label">{__( "URL" )}</p>
-							<TextControl
-								value={ icons[ index ].link }
-								onChange={ value => {
-									this.saveIcons( { link: value }, index )
-								} }
-								placeholder={__( "Enter URL" )}
-							/>
-							<ToggleControl
-								label={ __( "Open in New Tab" ) }
-								checked={ icons[ index ].target }
-								onChange={ value => {
-									this.saveIcons( { target: value }, index )
-								} }
-							/>
-						</Fragment>
-					}
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Icon #" ) + " " + ( index + 1 ) + " " + __( " Color Settings" ) }</h2>
-					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-						activeClass="active-tab"
-						tabs={ [
-							{
-								name: "normal",
-								title: __( "Normal" ),
-								className: "uagb-normal-tab",
-							},
-							{
-								name: "hover",
-								title: __( "Hover" ),
-								className: "uagb-hover-tab",
-							},
-						] }>
-						{
-							( tabName ) => {
-								let color_tab
-								if( "normal" === tabName.name ) {
-									color_tab = color_control
-								}else {
-									color_tab = color_control_hover
-								}
-								return <div>{ color_tab }</div>
-							}
-						}
-					</TabPanel>
-				</PanelBody>
-			)
-		}
-
 		var element = document.getElementById( "uagb-style-icon-list-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
@@ -392,22 +159,9 @@ class UAGBIconList extends Component {
 			</ButtonGroup>
 		)
 
-		const lableSizeTypeControls = (
-			<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-				{ map( sizeTypes, ( { name, key } ) => (
-					<Button
-						key={ key }
-						className="uagb-size-btn"
-						isSmall
-						isPrimary={ fontSizeType === key }
-						aria-pressed={ fontSizeType === key }
-						onClick={ () => setAttributes( { fontSizeType: key } ) }
-					>
-						{ name }
-					</Button>
-				) ) }
-			</ButtonGroup>
-		)
+		const getIconTemplate = memoize( ( icon_block, icons ) => {
+			return times( icon_block, n => [ "uagb/icon-list-child", icons[n] ] )
+		} )
 
 		return (
 			<Fragment>
@@ -417,51 +171,11 @@ class UAGBIconList extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left", "center", "right", "full" ] }
+						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "Icon Count" ) } initialOpen={ true }>
-						<RangeControl
-							label={ __( "Number of Icons" ) }
-							value={ icon_count }
-							onChange={ newCount => {
-
-								let cloneIcons = [ ...icons ]
-
-								if ( cloneIcons.length < newCount ) {
-
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-
-									{ times( incAmount, n => {
-
-										cloneIcons.push( {
-											"label": "Label #" + ( cloneIcons.length + 1 ),
-											"image_icon": cloneIcons[ 0 ].image_icon,
-											"icon": cloneIcons[ 0 ].icon,
-											"image": cloneIcons[ 0 ].image,
-											"icon_color": cloneIcons[ 0 ].icon_color,
-											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
-											"icon_bg_color": cloneIcons[ 0 ].icon_bg_color,
-											"icon_bg_hover_color": cloneIcons[ 0 ].icon_bg_hover_color,
-											"icon_border_color": cloneIcons[ 0 ].icon_border_color,
-											"icon_border_hover_color": cloneIcons[ 0 ].icon_border_hover_color,
-											"link": cloneIcons[ 0 ].link,
-											"target": cloneIcons[ 0 ].target,
-											"disableLink" : cloneIcons[ 0 ].disableLink,
-										} )
-									} ) }
-
-									setAttributes( { icons: cloneIcons } )
-								}
-								setAttributes( { icon_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 12 }
-						/>
-					</PanelBody>
-					{ times( icon_count, n => iconControls( n ) ) }
-					<PanelBody title={ __( "General" ) } initialOpen={ false }>
+					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<SelectControl
 							label={ __( "Layout" ) }
 							value={ icon_layout }
@@ -489,17 +203,36 @@ class UAGBIconList extends Component {
 						<ToggleControl
 							label={ __( "Hide Labels" ) }
 							checked={ hideLabel }
-							onChange={ ( value ) => setAttributes( { hideLabel: ! hideLabel } ) }
+							onChange={ (value) => this.changeChildAttr( value ) }
 						/>
 						<hr className="uagb-editor__separator" />
+						<RangeControl
+							label={ __( "Gap between Items" ) }
+							value={ gap }
+							onChange={ ( value ) => setAttributes( { gap: value } ) }
+							help={ __( "Note: For better editing experience, the gap between items might look larger than applied.  Viewing in frontend will show the actual results." ) }
+							min={ 0 }
+							max={ 100 }
+						/>
+						{ ! hideLabel &&
+							<RangeControl
+								label={ __( "Gap between Icon and Label" ) }
+								value={ inner_gap }
+								onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
+								min={ 0 }
+								max={ 100 }
+							/>
+						}
+						<hr className="uagb-editor__separator" />
 						<SelectControl
-							label={ __( "Icon Position" ) }
+							label={ __( "Icon Alignment" ) }
 							value={ iconPosition }
 							options={ [
 								{ value: "top", label: __( "Top" ) },
 								{ value: "middle", label: __( "Middle" ) },
 							] }
 							onChange={ ( value ) => setAttributes( { iconPosition: value } ) }
+							help={ __( "Note: This manages the Icon Position with respect to the Label." ) }
 						/>
 						<TabPanel className="uagb-size-type-field-tabs" activeClass="active-tab"
 							tabs={ [
@@ -575,23 +308,22 @@ class UAGBIconList extends Component {
 							}
 						</TabPanel>
 						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Label" ) }</h2>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: loadGoogleFonts, label: __( "loadGoogleFonts" ) } }
-							fontFamily = { { value: fontFamily, label: __( "fontFamily" ) } }
-							fontWeight = { { value: fontWeight, label: __( "fontWeight" ) } }
-							fontSubset = { { value: fontSubset, label: __( "fontSubset" ) } }
-							fontSizeType = { { value: fontSizeType, label: __( "fontSizeType" ) } }
-							fontSize = { { value: fontSize, label: __( "fontSize" ) } }
-							fontSizeMobile = { { value: fontSizeMobile, label: __( "fontSizeMobile" ) } }
-							fontSizeTablet= { { value: fontSizeTablet, label: __( "fontSizeTablet" ) } }
-							lineHeightType = { { value: lineHeightType, label: __( "lineHeightType" ) } }
-							lineHeight = { { value: lineHeight, label: __( "lineHeight" ) } }
-							lineHeightMobile = { { value: lineHeightMobile, label: __( "lineHeightMobile" ) } }
-							lineHeightTablet= { { value: lineHeightTablet, label: __( "lineHeightTablet" ) } }
+							loadGoogleFonts = { { value: loadGoogleFonts, label: 'loadGoogleFonts'  } }
+							fontFamily = { { value: fontFamily, label: 'fontFamily'  } }
+							fontWeight = { { value: fontWeight, label: 'fontWeight'  } }
+							fontSubset = { { value: fontSubset, label: 'fontSubset'  } }
+							fontSizeType = { { value: fontSizeType, label: 'fontSizeType' } }
+							fontSize = { { value: fontSize, label: 'fontSize'  } }
+							fontSizeMobile = { { value: fontSizeMobile, label: 'fontSizeMobile'  } }
+							fontSizeTablet= { { value: fontSizeTablet, label: 'fontSizeTablet' } }
+							lineHeightType = { { value: lineHeightType, label: 'lineHeightType' } }
+							lineHeight = { { value: lineHeight, label: 'lineHeight'  } }
+							lineHeightMobile = { { value: lineHeightMobile, label: 'lineHeightMobile'  } }
+							lineHeightTablet= { { value: lineHeightTablet, label: 'lineHeightTablet'  } }
 						/>
 						<hr className="uagb-editor__separator" />
 						<RangeControl
@@ -618,23 +350,6 @@ class UAGBIconList extends Component {
 							min={ 0 }
 							max={ 500 }
 						/>
-						<hr className="uagb-editor__separator" />
-						<RangeControl
-							label={ __( "Gap between Items" ) }
-							value={ gap }
-							onChange={ ( value ) => setAttributes( { gap: value } ) }
-							min={ 0 }
-							max={ 100 }
-						/>
-						{ ! hideLabel &&
-							<RangeControl
-								label={ __( "Gap between Icon and Label" ) }
-								value={ inner_gap }
-								onChange={ ( value ) => setAttributes( { inner_gap: value } ) }
-								min={ 0 }
-								max={ 100 }
-							/>
-						}
 					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
@@ -646,61 +361,12 @@ class UAGBIconList extends Component {
 					`uagb-block-${ this.props.clientId }`
 				) }>
 					<div className="uagb-icon-list__wrap">
-						{
-							icons.map( ( icon, index ) => {
-
-								if ( icon_count <= index ) {
-									return
-								}
-
-								let url = ""
-
-								let image_icon_html = ""
-
-								if ( icon.image_icon == "icon" ) {
-									if ( icon.icon ) {
-										image_icon_html = <span className="uagb-icon-list__source-icon">{ renderSVG(icon.icon) }</span>
-									}
-								} else {
-									if ( icon.image ) {
-										image_icon_html = <img className="uagb-icon-list__source-image" src={icon.image.url} />
-									}
-								}
-
-								let target = ( icon.target ) ? "_blank" : "_self"
-
-								return (
-									<div
-										className={ classnames(
-											`uagb-icon-list-repeater-${index}`,
-											"uagb-icon-list__wrapper"
-										) }
-										key={ index }
-										target={ target }
-										rel="noopener noreferrer"
-									>
-										<div className="uagb-icon-list__content-wrap">
-											<span className="uagb-icon-list__source-wrap">{image_icon_html}</span>
-											{ ! hideLabel &&
-												<div className="uagb-icon-list__label-wrap">
-													<RichText
-														tagName="div"
-														placeholder={ __( "Label Name" ) }
-														value={ icons[ index ].label }
-														className='uagb-icon-list__label'
-														onChange={ value => {
-															this.saveIcons( { label: value }, index )
-														} }
-														placeholder={ __( "Description" ) }
-														multiline={false}
-													/>
-												</div>
-											}
-										</div>
-									</div>
-								)
-							})
-						}
+						<InnerBlocks
+							template={ getIconTemplate( icon_count, icons ) }
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							__experimentalMoverDirection={ icon_layout }
+						/>
 					</div>
 				</div>
 				{googleFonts}

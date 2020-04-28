@@ -28,6 +28,9 @@ registerBlockType( "uagb/restaurant-menu", {
 		__( "menu" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

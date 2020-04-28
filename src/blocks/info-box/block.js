@@ -16,10 +16,6 @@ const {
 	registerBlockType,
 } = wp.blocks
 
-const {
-	RichText
-} = wp.blockEditor
-
 registerBlockType( "uagb/info-box", {
 	title: uagb_blocks_info.blocks["uagb/info-box"]["title"],
 	description: uagb_blocks_info.blocks["uagb/info-box"]["description"],
@@ -28,6 +24,9 @@ registerBlockType( "uagb/info-box", {
 		__( "info box" ),
 		__( "uag" ),
 	],
+	supports: {
+		anchor: true,
+	},
 	category: uagb_blocks_info.category,
 	attributes,
 	edit,

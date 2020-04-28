@@ -41,6 +41,9 @@ if( uagb_blocks_info.blocks["uagb/cf7-styler"]["is_active"] ) {
 			__( "contact form styler" ),
 			__( "uag" ),
 		],
+		supports: {
+			anchor: true,
+		},
 		category: uagb_blocks_info.category,
 		edit,
 		save() {

@@ -393,18 +393,18 @@ class UAGBCF7 extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: labelLoadGoogleFonts, label: __( "labelLoadGoogleFonts" ) } }
-					fontFamily = { { value: labelFontFamily, label: __( "labelFontFamily" ) } }
-					fontWeight = { { value: labelFontWeight, label: __( "labelFontWeight" ) } }
-					fontSubset = { { value: labelFontSubset, label: __( "labelFontSubset" ) } }
-					fontSizeType = { { value: labelFontSizeType, label: __( "labelFontSizeType" ) } }
-					fontSize = { { value: labelFontSize, label: __( "labelFontSize" ) } }
-					fontSizeMobile = { { value: labelFontSizeMobile, label: __( "labelFontSizeMobile" ) } }
-					fontSizeTablet= { { value: labelFontSizeTablet, label: __( "labelFontSizeTablet" ) } }
-					lineHeightType = { { value: labelLineHeightType, label: __( "labelLineHeightType" ) } }
-					lineHeight = { { value: labelLineHeight, label: __( "labelLineHeight" ) } }
-					lineHeightMobile = { { value: labelLineHeightMobile, label: __( "labelLineHeightMobile" ) } }
-					lineHeightTablet= { { value: labelLineHeightTablet, label: __( "labelLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: labelLoadGoogleFonts, label: 'labelLoadGoogleFonts' } }
+					fontFamily = { { value: labelFontFamily, label: 'labelFontFamily' } }
+					fontWeight = { { value: labelFontWeight, label: 'labelFontWeight' } }
+					fontSubset = { { value: labelFontSubset, label: 'labelFontSubset' } }
+					fontSizeType = { { value: labelFontSizeType, label: 'labelFontSizeType' } }
+					fontSize = { { value: labelFontSize, label: 'labelFontSize' } }
+					fontSizeMobile = { { value: labelFontSizeMobile, label: 'labelFontSizeMobile' } }
+					fontSizeTablet= { { value: labelFontSizeTablet, label: 'labelFontSizeTablet' } }
+					lineHeightType = { { value: labelLineHeightType, label: 'labelLineHeightType' } }
+					lineHeight = { { value: labelLineHeight, label: 'labelLineHeight' } }
+					lineHeightMobile = { { value: labelLineHeightMobile, label: 'labelLineHeightMobile' } }
+					lineHeightTablet= { { value: labelLineHeightTablet, label: 'labelLineHeightTablet' } }
 				/>
 				<p className="uagb-setting-label">{ __( "Color" ) }
 					<span className="components-base-control__label">
@@ -420,18 +420,18 @@ class UAGBCF7 extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: inputLoadGoogleFonts, label: __( "inputLoadGoogleFonts" ) } }
-					fontFamily = { { value: inputFontFamily, label: __( "inputFontFamily" ) } }
-					fontWeight = { { value: inputFontWeight, label: __( "inputFontWeight" ) } }
-					fontSubset = { { value: inputFontSubset, label: __( "inputFontSubset" ) } }
-					fontSizeType = { { value: inputFontSizeType, label: __( "inputFontSizeType" ) } }
-					fontSize = { { value: inputFontSize, label: __( "inputFontSize" ) } }
-					fontSizeMobile = { { value: inputFontSizeMobile, label: __( "inputFontSizeMobile" ) } }
-					fontSizeTablet= { { value: inputFontSizeTablet, label: __( "inputFontSizeTablet" ) } }
-					lineHeightType = { { value: inputLineHeightType, label: __( "inputLineHeightType" ) } }
-					lineHeight = { { value: inputLineHeight, label: __( "inputLineHeight" ) } }
-					lineHeightMobile = { { value: inputLineHeightMobile, label: __( "inputLineHeightMobile" ) } }
-					lineHeightTablet= { { value: inputLineHeightTablet, label: __( "inputLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: inputLoadGoogleFonts, label: 'inputLoadGoogleFonts' } }
+					fontFamily = { { value: inputFontFamily, label: 'inputFontFamily' } }
+					fontWeight = { { value: inputFontWeight, label: 'inputFontWeight' } }
+					fontSubset = { { value: inputFontSubset, label: 'inputFontSubset' } }
+					fontSizeType = { { value: inputFontSizeType, label: 'inputFontSizeType' } }
+					fontSize = { { value: inputFontSize, label: 'inputFontSize' } }
+					fontSizeMobile = { { value: inputFontSizeMobile, label: 'inputFontSizeMobile' } }
+					fontSizeTablet= { { value: inputFontSizeTablet, label: 'inputFontSizeTablet' } }
+					lineHeightType = { { value: inputLineHeightType, label: 'inputLineHeightType' } }
+					lineHeight = { { value: inputLineHeight, label: 'inputLineHeight' } }
+					lineHeightMobile = { { value: inputLineHeightMobile, label: 'inputLineHeightMobile' } }
+					lineHeightTablet= { { value: inputLineHeightTablet, label: 'inputLineHeightTablet' } }
 				/>	
 				<p className="uagb-setting-label">{ __( "Color" ) }
 					<span className="components-base-control__label">
@@ -610,18 +610,18 @@ class UAGBCF7 extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: buttonLoadGoogleFonts, label: __( "buttonLoadGoogleFonts" ) } }
-					fontFamily = { { value: buttonFontFamily, label: __( "buttonFontFamily" ) } }
-					fontWeight = { { value: buttonFontWeight, label: __( "buttonFontWeight" ) } }
-					fontSubset = { { value: buttonFontSubset, label: __( "buttonFontSubset" ) } }
-					fontSizeType = { { value: buttonFontSizeType, label: __( "buttonFontSizeType" ) } }
-					fontSize = { { value: buttonFontSize, label: __( "buttonFontSize" ) } }
-					fontSizeMobile = { { value: buttonFontSizeMobile, label: __( "buttonFontSizeMobile" ) } }
-					fontSizeTablet= { { value: buttonFontSizeTablet, label: __( "buttonFontSizeTablet" ) } }
-					lineHeightType = { { value: buttonLineHeightType, label: __( "buttonLineHeightType" ) } }
-					lineHeight = { { value: buttonLineHeight, label: __( "buttonLineHeight" ) } }
-					lineHeightMobile = { { value: buttonLineHeightMobile, label: __( "buttonLineHeightMobile" ) } }
-					lineHeightTablet= { { value: buttonLineHeightTablet, label: __( "buttonLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: buttonLoadGoogleFonts, label: 'buttonLoadGoogleFonts' } }
+					fontFamily = { { value: buttonFontFamily, label: 'buttonFontFamily' } }
+					fontWeight = { { value: buttonFontWeight, label: 'buttonFontWeight' } }
+					fontSubset = { { value: buttonFontSubset, label: 'buttonFontSubset' } }
+					fontSizeType = { { value: buttonFontSizeType, label: 'buttonFontSizeType' } }
+					fontSize = { { value: buttonFontSize, label: 'buttonFontSize' } }
+					fontSizeMobile = { { value: buttonFontSizeMobile, label: 'buttonFontSizeMobile' } }
+					fontSizeTablet= { { value: buttonFontSizeTablet, label: 'buttonFontSizeTablet' } }
+					lineHeightType = { { value: buttonLineHeightType, label: 'buttonLineHeightType' } }
+					lineHeight = { { value: buttonLineHeight, label: 'buttonLineHeight' } }
+					lineHeightMobile = { { value: buttonLineHeightMobile, label: 'buttonLineHeightMobile' } }
+					lineHeightTablet= { { value: buttonLineHeightTablet, label: 'buttonLineHeightTablet' } }
 				/>
 				<hr className="uagb-editor__separator" />								
 				{ btn_border_setting }
@@ -740,18 +740,18 @@ class UAGBCF7 extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: radioCheckLoadGoogleFonts, label: __( "radioCheckLoadGoogleFonts" ) } }
-						fontFamily = { { value: radioCheckFontFamily, label: __( "radioCheckFontFamily" ) } }
-						fontWeight = { { value: radioCheckFontWeight, label: __( "radioCheckFontWeight" ) } }
-						fontSubset = { { value: radioCheckFontSubset, label: __( "radioCheckFontSubset" ) } }
-						fontSizeType = { { value: radioCheckFontSizeType, label: __( "radioCheckFontSizeType" ) } }
-						fontSize = { { value: radioCheckFontSize, label: __( "radioCheckFontSize" ) } }
-						fontSizeMobile = { { value: radioCheckFontSizeMobile, label: __( "radioCheckFontSizeMobile" ) } }
-						fontSizeTablet= { { value: radioCheckFontSizeTablet, label: __( "radioCheckFontSizeTablet" ) } }
-						lineHeightType = { { value: radioCheckLineHeightType, label: __( "radioCheckLineHeightType" ) } }
-						lineHeight = { { value: radioCheckLineHeight, label: __( "radioCheckLineHeight" ) } }
-						lineHeightMobile = { { value: radioCheckLineHeightMobile, label: __( "radioCheckLineHeightMobile" ) } }
-						lineHeightTablet= { { value: radioCheckLineHeightTablet, label: __( "radioCheckLineHeightTablet" ) } }
+						loadGoogleFonts = { { value: radioCheckLoadGoogleFonts, label: 'radioCheckLoadGoogleFonts' } }
+						fontFamily = { { value: radioCheckFontFamily, label: 'radioCheckFontFamily' } }
+						fontWeight = { { value: radioCheckFontWeight, label: 'radioCheckFontWeight' } }
+						fontSubset = { { value: radioCheckFontSubset, label: 'radioCheckFontSubset' } }
+						fontSizeType = { { value: radioCheckFontSizeType, label: 'radioCheckFontSizeType' } }
+						fontSize = { { value: radioCheckFontSize, label: 'radioCheckFontSize' } }
+						fontSizeMobile = { { value: radioCheckFontSizeMobile, label: 'radioCheckFontSizeMobile' } }
+						fontSizeTablet= { { value: radioCheckFontSizeTablet, label: 'radioCheckFontSizeTablet' } }
+						lineHeightType = { { value: radioCheckLineHeightType, label: 'radioCheckLineHeightType' } }
+						lineHeight = { { value: radioCheckLineHeight, label: 'radioCheckLineHeight' } }
+						lineHeightMobile = { { value: radioCheckLineHeightMobile, label: 'radioCheckLineHeightMobile' } }
+						lineHeightTablet= { { value: radioCheckLineHeightTablet, label: 'radioCheckLineHeightTablet' } }
 					/>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Label Color" ) }
@@ -838,18 +838,18 @@ class UAGBCF7 extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: __( "validationMsgLoadGoogleFonts" ) } }
-					fontFamily = { { value: validationMsgFontFamily, label: __( "validationMsgFontFamily" ) } }
-					fontWeight = { { value: validationMsgFontWeight, label: __( "validationMsgFontWeight" ) } }
-					fontSubset = { { value: validationMsgFontSubset, label: __( "validationMsgFontSubset" ) } }
-					fontSizeType = { { value: validationMsgFontSizeType, label: __( "validationMsgFontSizeType" ) } }
-					fontSize = { { value: validationMsgFontSize, label: __( "validationMsgFontSize" ) } }
-					fontSizeMobile = { { value: validationMsgFontSizeMobile, label: __( "validationMsgFontSizeMobile" ) } }
-					fontSizeTablet= { { value: validationMsgFontSizeTablet, label: __( "validationMsgFontSizeTablet" ) } }
-					lineHeightType = { { value: validationMsgLineHeightType, label: __( "validationMsgLineHeightType" ) } }
-					lineHeight = { { value: validationMsgLineHeight, label: __( "validationMsgLineHeight" ) } }
-					lineHeightMobile = { { value: validationMsgLineHeightMobile, label: __( "validationMsgLineHeightMobile" ) } }
-					lineHeightTablet= { { value: validationMsgLineHeightTablet, label: __( "validationMsgLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: validationMsgLoadGoogleFonts, label: 'validationMsgLoadGoogleFonts' } }
+					fontFamily = { { value: validationMsgFontFamily, label: 'validationMsgFontFamily' } }
+					fontWeight = { { value: validationMsgFontWeight, label: 'validationMsgFontWeight' } }
+					fontSubset = { { value: validationMsgFontSubset, label: 'validationMsgFontSubset' } }
+					fontSizeType = { { value: validationMsgFontSizeType, label: 'validationMsgFontSizeType' } }
+					fontSize = { { value: validationMsgFontSize, label: 'validationMsgFontSize' } }
+					fontSizeMobile = { { value: validationMsgFontSizeMobile, label: 'validationMsgFontSizeMobile' } }
+					fontSizeTablet= { { value: validationMsgFontSizeTablet, label: 'validationMsgFontSizeTablet' } }
+					lineHeightType = { { value: validationMsgLineHeightType, label: 'validationMsgLineHeightType' } }
+					lineHeight = { { value: validationMsgLineHeight, label: 'validationMsgLineHeight' } }
+					lineHeightMobile = { { value: validationMsgLineHeightMobile, label: 'validationMsgLineHeightMobile' } }
+					lineHeightTablet= { { value: validationMsgLineHeightTablet, label: 'validationMsgLineHeightTablet' } }
 				/>
 				<p className="uagb-setting-label">{ __( "Validation Message Color" ) }
 					<span className="components-base-control__label">
@@ -896,18 +896,18 @@ class UAGBCF7 extends Component {
 					label={ __( "Typography" ) }
 					attributes = { attributes }
 					setAttributes = { setAttributes }
-					loadGoogleFonts = { { value: msgLoadGoogleFonts, label: __( "msgLoadGoogleFonts" ) } }
-					fontFamily = { { value: msgFontFamily, label: __( "msgFontFamily" ) } }
-					fontWeight = { { value: msgFontWeight, label: __( "msgFontWeight" ) } }
-					fontSubset = { { value: msgFontSubset, label: __( "msgFontSubset" ) } }
-					fontSizeType = { { value: msgFontSizeType, label: __( "msgFontSizeType" ) } }
-					fontSize = { { value: msgFontSize, label: __( "msgFontSize" ) } }
-					fontSizeMobile = { { value: msgFontSizeMobile, label: __( "msgFontSizeMobile" ) } }
-					fontSizeTablet= { { value: msgFontSizeTablet, label: __( "msgFontSizeTablet" ) } }
-					lineHeightType = { { value: msgLineHeightType, label: __( "msgLineHeightType" ) } }
-					lineHeight = { { value: msgLineHeight, label: __( "msgLineHeight" ) } }
-					lineHeightMobile = { { value: msgLineHeightMobile, label: __( "msgLineHeightMobile" ) } }
-					lineHeightTablet= { { value: msgLineHeightTablet, label: __( "msgLineHeightTablet" ) } }
+					loadGoogleFonts = { { value: msgLoadGoogleFonts, label: 'msgLoadGoogleFonts' } }
+					fontFamily = { { value: msgFontFamily, label: 'msgFontFamily' } }
+					fontWeight = { { value: msgFontWeight, label: 'msgFontWeight' } }
+					fontSubset = { { value: msgFontSubset, label: 'msgFontSubset' } }
+					fontSizeType = { { value: msgFontSizeType, label: 'msgFontSizeType' } }
+					fontSize = { { value: msgFontSize, label: 'msgFontSize' } }
+					fontSizeMobile = { { value: msgFontSizeMobile, label: 'msgFontSizeMobile' } }
+					fontSizeTablet= { { value: msgFontSizeTablet, label: 'msgFontSizeTablet' } }
+					lineHeightType = { { value: msgLineHeightType, label: 'msgLineHeightType' } }
+					lineHeight = { { value: msgLineHeight, label: 'msgLineHeight' } }
+					lineHeightMobile = { { value: msgLineHeightMobile, label: 'msgLineHeightMobile' } }
+					lineHeightTablet= { { value: msgLineHeightTablet, label: 'msgLineHeightTablet' } }
 				/>
 				<hr className="uagb-editor__separator" />
 				<h2>{ __( "Success Message" ) }</h2>
@@ -1093,6 +1093,7 @@ export default withSelect( ( select, props ) => {
 			data: {
 				action: "uagb_cf7_shortcode",
 				formId : formId,
+				nonce: uagb_blocks_info.uagb_ajax_nonce
 			},
 			dataType: "json",
 			type: "POST",

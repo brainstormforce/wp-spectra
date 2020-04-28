@@ -41,6 +41,7 @@ registerBlockType( "uagb/columns", {
 	supports: {
 		// Add EditorsKit block navigator toolbar
 		editorsKitBlockNavigator: true,
+		anchor: true,
 	},
 	save : function( props ) {
 
