@@ -1626,7 +1626,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Check if UAG upload folder has write permissions or not.
 		 *
-		 * @since  x.x.x
+		 * @since  1.14.9
 		 * @return bool true or false.
 		 */
 		public static function has_read_write_permissions() {
@@ -1647,7 +1647,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param Object $query Query.
 		 * @return int $paged Paged Query var.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
 		public static function get_paged( $query ) {
 
@@ -1679,7 +1679,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $permalink_structure Premalink Structure.
 		 * @param string $base Base.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
 		public static function build_base_url( $permalink_structure, $base ) {
 			// Check to see if we are using pretty permalinks.
@@ -1716,7 +1716,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $permalink_structure Premalink Structure.
 		 * @param string $base Base.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
 		public static function paged_format( $permalink_structure, $base ) {
 
@@ -1740,7 +1740,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param  string $redirect_url  The redirect URL.
 		 * @param  string $requested_url The requested URL.
-		 * @since  x.x.x
+		 * @since  1.14.9
 		 * @return bool|string
 		 */
 		public function override_canonical( $redirect_url, $requested_url ) {

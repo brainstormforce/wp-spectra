@@ -806,7 +806,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Multi Buttons - Child Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -836,7 +836,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Buttons Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The key for the Icon List Item.
 		 * @param string $child_migrate The child migration flag.
@@ -1873,7 +1873,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get social share Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -1902,7 +1902,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Social share Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The key for the Icon List Item.
 		 * @param string $childMigrate The child migration flag.
@@ -2176,7 +2176,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Icon List Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -2205,7 +2205,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get Icon List Block CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.14.9
 		 * @param array  $attr The block attributes.
 		 * @param string $id The key for the Icon List Item.
 		 * @param string $childMigrate The child migration flag.
