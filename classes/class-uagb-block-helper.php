@@ -2019,9 +2019,23 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
+			if ( $attr['childMigrate'] ) {
+				$selectors[' .uagb-icon-list-repeater'] = array (
+				'font-family'   => $attr['fontFamily'],
+				'font-weight'   => $attr['fontWeight'],
+				);
+			}
+
 			if ( ! $attr['childMigrate'] ) {
 
 				foreach ( $attr['icons'] as $key => $icon ) {
+
+					$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-icon-list-repeater-" . $key . '.uagb-icon-list__wrapper' : " .uagb-icon-list-repeater";
+					
+					$selectors[$wrapper] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					);
 
 					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
 					$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
@@ -2039,8 +2053,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
 					$selectors = array_merge( $selectors, (array) $child_selectors );
 				}
-	
-				
+
 			}
 
 			if ( 'right' == $attr['align'] ) {
