@@ -6,12 +6,20 @@ const attributes = {
 		type: "boolean",
 		default: true
 	},
+	showEstcost: {
+		type: "boolean",
+		default: true
+	},
 	classMigrate: {
 		type: "boolean",
 		default: false
 	},
 	mainimage: {
 		type: "object",
+	},
+	estCost:{
+		type: "string",
+		default: "Total Cost:",
 	},
 	timeNeeded:{
 		type: "string",
@@ -42,6 +50,12 @@ const attributes = {
 		default: "center",
 	},
 	headingColor: {
+		type: "string",
+	},
+	showEstcostcolor: {
+		type: "string",
+	},
+	showTotaltimecolor: {
 		type: "string",
 	},
 	subHeadingColor: {
