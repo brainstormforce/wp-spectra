@@ -2026,6 +2026,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
 				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
+
+				$m_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+				);
+
+				$t_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+				);
 			}
 
 			if ( ! $attr['childMigrate'] ) {
@@ -2039,6 +2049,16 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-weight'   => $attr['fontWeight'],
 					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
 					'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
+					);
+
+					$m_selectors[$wrapper." .uagb-icon-list__label"] = array (
+						"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+						'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+					);
+
+					$t_selectors[$wrapper." .uagb-icon-list__label"] = array (
+						"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+						'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 					);
 
 					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
