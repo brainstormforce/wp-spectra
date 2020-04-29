@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.14.9.1 =
+* Fix: Icon List - Typography not working on front-end.
+
 = 1.14.9 =
 * Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.
 * Improvement: Post Grid - Added Pagination support.
