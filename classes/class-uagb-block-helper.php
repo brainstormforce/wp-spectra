@@ -2023,6 +2023,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-icon-list-repeater'] = array (
 				'font-family'   => $attr['fontFamily'],
 				'font-weight'   => $attr['fontWeight'],
+				'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 			}
 
@@ -2035,6 +2037,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$selectors[$wrapper] = array (
 					'font-family'   => $attr['fontFamily'],
 					'font-weight'   => $attr['fontWeight'],
+					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+					'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
 					);
 
 					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
