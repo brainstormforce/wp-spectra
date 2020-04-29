@@ -2204,6 +2204,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
+
 			$desktop = UAGB_Helper::generate_css( $selectors, '.uagb-block-' . $id );
 
 			$generated_css = array(
@@ -2228,6 +2229,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$wrapper = ( ! $childMigrate ) ? " .uagb-icon-list-repeater-" . $id : ".uagb-icon-list-repeater";
 
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
+			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
+
 			$selectors[$wrapper . " .uagb-icon-list__source-icon"] = array(
 				"color" => $attr['icon_color']
 			);
@@ -2250,6 +2257,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"color" => $attr['label_hover_color']
 			);
 			$selectors[$wrapper . " .uagb-icon-list__source-wrap"] = array (
+				'font-size'     => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
+				'line-height'   => UAGB_Helper::get_css_value( $attr['lineHeight'], $attr['lineHeightType'] ),
 				"background" => $attr['icon_bg_color'],
 				"border-color" => $attr['icon_border_color'],
 			);
@@ -2257,9 +2266,26 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"background" => $attr['icon_bg_hover_color'],
 				"border-color" => $attr['icon_border_hover_color']
 			);
+
+			$m_selectors[ $wrapper ] = array(
+				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+			);
+
+			$t_selectors[ $wrapper ] = array(
+				'font-size'   => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+			);
+
+			$all_selectors = array(
+
+				'selectors'   => $selectors,
+				'm_selectors' => $m_selectors,
+				't_selectors' => $t_selectors,
+			);
 			// @codingStandardsIgnoreEnd
 
-			return $selectors;
+			return $all_selectors;
 		}
 
 		/**
