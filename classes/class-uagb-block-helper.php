@@ -2027,38 +2027,30 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 
-				$m_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-				);
+				// $m_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				// 	"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+				// 	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+				// );
 
-				$t_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
-					"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-					'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
-				);
+				// $t_selectors[" .uagb-icon-list-repeater .uagb-icon-list__label"] = array (
+				// 	"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+				// 	'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+				// );
 			}
 
 			if ( ! $attr['childMigrate'] ) {
 
+				
+
 				foreach ( $attr['icons'] as $key => $icon ) {
 
 					$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-icon-list-repeater-" . $key . '.uagb-icon-list__wrapper' : " .uagb-icon-list-repeater";
-					
+
 					$selectors[$wrapper] = array (
 					'font-family'   => $attr['fontFamily'],
 					'font-weight'   => $attr['fontWeight'],
 					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
 					'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
-					);
-
-					$m_selectors[$wrapper." .uagb-icon-list__label"] = array (
-						"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
-						'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
-					);
-
-					$t_selectors[$wrapper." .uagb-icon-list__label"] = array (
-						"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
-						'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
 					);
 
 					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
@@ -2073,9 +2065,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					if ( $attr['icon_count'] <= $key ) {
 						break;
 					}
+					// var_dump($attr);
 
 					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
-					$selectors = array_merge( $selectors, (array) $child_selectors );
+					$selectors = array_merge( $selectors, (array) $child_selectors['selectors'] );
+					$t_selectors = array_merge( $t_selectors, (array) $child_selectors['t_selectors'] );
+					$m_selectors = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );				
 				}
 
 			}
@@ -2200,6 +2195,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tablet = UAGB_Helper::generate_css( $t_selectors, $base_selector . $id );
 
 			$mobile = UAGB_Helper::generate_css( $m_selectors, $base_selector . $id );
+			// var_dump($base_selector . $id);
 
 			$generated_css = array(
 				'desktop' => $desktop,
@@ -2253,6 +2249,24 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$wrapper = ( ! $childMigrate ) ? " .uagb-icon-list-repeater-" . $id : ".uagb-icon-list-repeater";
 
+			// var_dump($attr);
+
+			$m_selectors = array();
+			$t_selectors = array();
+
+			$attr['sizeType']       = isset( $attr['sizeType'] ) ? $attr['sizeType'] : 'px';
+			$attr['lineHeightType'] = isset( $attr['lineHeightType'] ) ? $attr['lineHeightType'] : 'em';
+
+			$m_selectors[ $wrapper . " .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightMobile'], $attr['lineHeightType'] ),
+			);			
+
+			$t_selectors[ $wrapper . " .uagb-icon-list__label"] = array (
+				"font-size" => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['fontSizeType'] ),
+				'line-height' => UAGB_Helper::get_css_value( $attr['lineHeightTablet'], $attr['lineHeightType'] ),
+			);
+
 			$selectors[$wrapper . " .uagb-icon-list__source-icon"] = array(
 				"color" => $attr['icon_color']
 			);
@@ -2285,7 +2299,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			// @codingStandardsIgnoreEnd
 
-			return $selectors;
+			// return $selectors;
+			$all_selectors = array(
+
+				'selectors'   => $selectors,
+				'm_selectors' => $m_selectors,
+				't_selectors' => $t_selectors,
+			);
+
+			return $all_selectors;
 		}
 
 		/**
