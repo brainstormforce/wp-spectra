@@ -31,7 +31,8 @@ import "./blocks/gf-styler/block.js"
 import "./blocks/blockquote/block.js"
 import "./blocks/marketing-button/block.js"
 import "./blocks/table-of-contents/block.js"
-import "./blocks/How-To/block.js"
+import "./blocks/how-to/block.js"
+import "./blocks/how-to-tools-child/block.js"
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
 

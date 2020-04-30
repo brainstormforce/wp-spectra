@@ -21,7 +21,7 @@ const {
 	RichText
 } = wp.blockEditor
 
-console.log('how to')
+console.log(attributes)
 
 
 registerBlockType( "uagb/how-to", {

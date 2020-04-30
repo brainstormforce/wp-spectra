@@ -1,6 +1,33 @@
+/**
+ * BLOCK: UAGB How-To Attributes
+ */
+const ITEM_COUNT = 1
+
+const tools = []
+
+for (var i = 1; i <= ITEM_COUNT; i++) {
+	tools.push(
+		{
+			"add_required_tools": "- A Computer.",
+		}
+	)
+}
+
 const attributes = {
 	block_id: {
 		type: "string"
+	},
+	toolsTitle: {
+		type: "string",
+		default : "Required Tools:"
+	},
+	tools_count: {
+		type: "number",
+		default: ITEM_COUNT
+	},
+	tools: {
+		type: "array",
+		default : tools,
 	},
 	showTotaltime: {
 		type: "boolean",
@@ -28,6 +55,10 @@ const attributes = {
 	imgSize:{
 		type: "string",
 		default: "thumbnail",
+	},
+	time:{
+		type: "number",
+		default: 30,
 	},
 	imgWidth :{
 		type: "number",
@@ -173,7 +204,87 @@ const attributes = {
 	subHeadLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
-	}
+	},
+	priceFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	priceFontSize: {
+		type: "number",
+	},
+	priceFontSizeTablet: {
+		type: "number",
+	},
+	priceFontSizeMobile: {
+		type: "number",
+	},
+	priceFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	priceFontWeight: {
+		type: "string",
+	},
+	priceFontSubset: {
+		type: "string",
+	},
+	priceLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	priceLineHeight: {
+		type: "number",
+	},
+	priceLineHeightTablet: {
+		type: "number",
+	},
+	priceLineHeightMobile: {
+		type: "number",
+	},
+	priceLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	estcostFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	estcostFontSize: {
+		type: "number",
+	},
+	estcostFontSizeTablet: {
+		type: "number",
+	},
+	estcostFontSizeMobile: {
+		type: "number",
+	},
+	estcostFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	estcostFontWeight: {
+		type: "string",
+	},
+	estcostFontSubset: {
+		type: "string",
+	},
+	estcostLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	estcostLineHeight: {
+		type: "number",
+	},
+	estcostLineHeightTablet: {
+		type: "number",
+	},
+	estcostLineHeightMobile: {
+		type: "number",
+	},
+	estcostLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
 }
 
 export default attributes

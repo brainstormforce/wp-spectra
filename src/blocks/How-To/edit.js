@@ -34,6 +34,7 @@ const {
 	InspectorControls,
 	RichText,
 	ColorPalette,
+	InnerBlocks,
 } = wp.blockEditor
 
 const {
@@ -52,6 +53,8 @@ const { withSelect } = wp.data
 
 const { Component, Fragment } = wp.element
 
+const ALLOWED_BLOCKS = [ "uagb/how-to-tools-child" ]
+
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
 	{ value: "medium", label: __( "Medium" ) },
@@ -63,7 +66,7 @@ class UAGBHowTo extends Component {
 	constructor() {
 		super( ...arguments )
 
-		this.splitBlock = this.splitBlock.bind( this )
+		// this.splitBlock = this.splitBlock.bind( this )
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 	}
@@ -97,35 +100,35 @@ class UAGBHowTo extends Component {
 		setAttributes( { headingTag: value } )
 	}
 
-	splitBlock( before, after, ...blocks ) {
-		const {
-			attributes,
-			insertBlocksAfter,
-			setAttributes,
-			onReplace,
-		} = this.props
+	// splitBlock( before, after, ...blocks ) {
+	// 	const {
+	// 		attributes,
+	// 		insertBlocksAfter,
+	// 		setAttributes,
+	// 		onReplace,
+	// 	} = this.props
 
-		if ( after ) {
-			// Append "After" content as a new paragraph block to the end of
-			// any other blocks being inserted after the current paragraph.
-			blocks.push( createBlock( "core/paragraph", { content: after } ) )
-		}
+	// 	if ( after ) {
+	// 		// Append "After" content as a new paragraph block to the end of
+	// 		// any other blocks being inserted after the current paragraph.
+	// 		blocks.push( createBlock( "core/paragraph", { content: after } ) )
+	// 	}
 
-		if ( blocks.length && insertBlocksAfter ) {
-			insertBlocksAfter( blocks )
-		}
+	// 	if ( blocks.length && insertBlocksAfter ) {
+	// 		insertBlocksAfter( blocks )
+	// 	}
 
-		const { content } = attributes
-		if ( ! before ) {
-			// If before content is omitted, treat as intent to delete block.
-			onReplace( [] )
-		} else if ( content !== before ) {
-			// Only update content if it has in-fact changed. In case that user
-			// has created a new paragraph at end of an existing one, the value
-			// of before will be strictly equal to the current content.
-			setAttributes( { content: before } )
-		}
-	}
+	// 	const { content } = attributes
+	// 	if ( ! before ) {
+	// 		// If before content is omitted, treat as intent to delete block.
+	// 		onReplace( [] )
+	// 	} else if ( content !== before ) {
+	// 		// Only update content if it has in-fact changed. In case that user
+	// 		// has created a new paragraph at end of an existing one, the value
+	// 		// of before will be strictly equal to the current content.
+	// 		setAttributes( { content: before } )
+	// 	}
+	// }
 
 	/*
 	 * Event to set Image as null while removing.
@@ -187,6 +190,9 @@ class UAGBHowTo extends Component {
 				showTotaltime,
 				showEstcostcolor,
 				showTotaltimecolor,
+				tools_count,
+				toolsTitle,
+				tools,
 				timeNeeded,
 				estCost,
 				mainimage,
@@ -230,6 +236,33 @@ class UAGBHowTo extends Component {
 				separatorSpace,
 				headLoadGoogleFonts,
 				subHeadLoadGoogleFonts,
+				//Total time.
+				priceFontSizeType,
+				priceFontSize,
+				priceFontSizeTablet,
+				priceFontSizeMobile,
+				priceFontFamily,
+				priceFontWeight,
+				priceFontSubset,
+				priceLineHeightType,
+				priceLineHeight,
+				priceLineHeightTablet,
+				priceLineHeightMobile,
+				priceLoadGoogleFonts,
+				//Est cost.
+				estcostLoadGoogleFonts,
+				estcostFontFamily,
+				estcostFontWeight,
+				estcostFontSubset,
+				estcostFontSizeType,
+				estcostFontSize,
+				estcostFontSizeMobile,
+				estcostFontSizeTablet,
+				estcostLineHeightType,
+				estcostLineHeight,
+				estcostLineHeightMobile,
+				estcostLineHeightTablet,
+				time,
 			},
 		} = this.props
 
@@ -283,6 +316,13 @@ class UAGBHowTo extends Component {
 		}else{
 			image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
 		}
+
+		// console.log(showTotaltime);
+		// console.log(showEstcost);
+
+		const getHowToToolsTemplate = memoize( ( tools_block, tools ) => {
+			return times( tools_block, n => [ "uagb/how-to-tools-child", tools[n] ] )
+		} )
 
 		return (
 			<Fragment>
@@ -400,6 +440,31 @@ class UAGBHowTo extends Component {
 								checked={ showTotaltime }
 								onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 							/>
+							<RangeControl
+								label={ __( "Time ( Minutes ) " ) }
+								value={ time }
+								onChange={ ( value ) => setAttributes( { time: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
+								fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
+								fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
+								fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
+								fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
+								fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
+								fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
+								fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
+								lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
+								lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
+								lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
+								lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
+							/>
 							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
 							<ColorPalette
 								value={ showTotaltimecolor }
@@ -410,6 +475,23 @@ class UAGBHowTo extends Component {
 								label={ __( "Show Estimated Cost" ) }
 								checked={ showEstcost }
 								onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
+							/>
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: estcostLoadGoogleFonts, label: 'estcostLoadGoogleFonts' } }
+								fontFamily = { { value: estcostFontFamily, label: 'estcostFontFamily' } }
+								fontWeight = { { value: estcostFontWeight, label: 'estcostFontWeight' } }
+								fontSubset = { { value: estcostFontSubset, label: 'estcostFontSubset' } }
+								fontSizeType = { { value: estcostFontSizeType, label: 'estcostFontSizeType' } }
+								fontSize = { { value: estcostFontSize, label: 'estcostFontSize' } }
+								fontSizeMobile = { { value: estcostFontSizeMobile, label: 'estcostFontSizeMobile' } }
+								fontSizeTablet= { { value: estcostFontSizeTablet, label: 'estcostFontSizeTablet' } }
+								lineHeightType = { { value: estcostLineHeightType, label: 'estcostLineHeightType' } }
+								lineHeight = { { value: estcostLineHeight, label: 'estcostLineHeight' } }
+								lineHeightMobile = { { value: estcostLineHeightMobile, label: 'estcostLineHeightMobile' } }
+								lineHeightTablet= { { value: estcostLineHeightTablet, label: 'estcostLineHeightTablet' } }
 							/>
 							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showEstcostcolor }} ></span></span></p>
 							<ColorPalette
@@ -459,26 +541,48 @@ class UAGBHowTo extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 					<span className="uagb-howto__source-wrap">{image_icon_html}</span>
+					{ showTotaltime &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "Total Time Needed:" ) }
+							value={ timeNeeded }
+							className='uagb-howto-timeNeeded-text'
+							onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
+					{ showEstcost &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "Total Cost:" ) }
+							value={ estCost }
+							className='uagb-howto-estcost-text'
+							onChange={ ( value ) => setAttributes( { estCost: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
 					<RichText
 						tagName="h3"
-						placeholder={ __( "Total Time Needed:" ) }
-						value={ timeNeeded }
-						className='uagb-howto-timeNeeded-text'
-						onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onRemove={ () => onReplace( [] ) }
-					/>
-					<RichText
-						tagName="h3"
-						placeholder={ __( "Total Cost:" ) }
-						value={ estCost }
+						placeholder={ __( "requirements tools:" ) }
+						value={ toolsTitle }
 						className='uagb-howto-estcost-text'
-						onChange={ ( value ) => setAttributes( { estCost: value } ) }
+						onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
 						onMerge={ mergeBlocks }
 						unstableOnSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
 					/>
+					<div className="uagb-how-to__wrap">
+						<InnerBlocks
+							template={ getHowToToolsTemplate( tools_count, tools ) }
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_BLOCKS } 
+						/>
+					</div>
+					
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
@@ -488,9 +592,4 @@ class UAGBHowTo extends Component {
 	}
 }
 
-export default withSelect( ( select, props ) => {
-	const { anchor, attributes } = props
-	return {
-		anchor: attributes.headingId
-	}
-} )( UAGBHowTo )
+export default UAGBHowTo

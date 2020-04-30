@@ -12,6 +12,10 @@ function styling( props ) {
 		classMigrate,
 		headingAlign,
 		headingTag,
+		showEstcost,
+		showTotaltime,
+		showEstcostcolor,
+		showTotaltimecolor,
 		headingColor,
 		headSpace,
 		seperatorStyle,
@@ -42,6 +46,30 @@ function styling( props ) {
 		subHeadLineHeightType,
 		subHeadLineHeightMobile,
 		subHeadLineHeightTablet,
+		estcostLoadGoogleFonts,
+		estcostFontFamily,
+		estcostFontWeight,
+		estcostFontSubset,
+		estcostFontSizeType,
+		estcostFontSize,
+		estcostFontSizeMobile,
+		estcostFontSizeTablet,
+		estcostLineHeightType,
+		estcostLineHeight,
+		estcostLineHeightMobile,
+		estcostLineHeightTablet,
+		priceFontSizeType,
+		priceFontSize,
+		priceFontSizeTablet,
+		priceFontSizeMobile,
+		priceFontFamily,
+		priceFontWeight,
+		priceFontSubset,
+		priceLineHeightType,
+		priceLineHeight,
+		priceLineHeightTablet,
+		priceLineHeightMobile,
+		priceLoadGoogleFonts,
 	} = props.attributes
 
 	var selectors = {
@@ -58,6 +86,22 @@ function styling( props ) {
 		},
 		" span.uagb-howto__source-wrap .uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" )
+		},
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
+			// "text-align": headingAlign,
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSizeType, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text": {
+			// "text-align": headingAlign,
+			"font-family": estcostFontFamily,
+			"font-weight": estcostFontWeight,
+			"font-size": generateCSSUnit( estcostFontSize, estcostFontSizeType ),
+			"line-height": generateCSSUnit( estcostLineHeight, estcostLineHeightType ),
+			"color": showEstcostcolor,
 		}
 	}
 
