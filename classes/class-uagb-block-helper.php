@@ -1525,11 +1525,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-left .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-left" => "0",
+					"margin-left" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-right .uagb-team__social-icon" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-right" => "0",
+					UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( ( $attr['socialSpace'] / 2 ), 'px' ),
@@ -1537,11 +1537,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-left" => "0",
+					"margin-left" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-right" => "0",
+					"margin-right" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				" .uagb-team__image-wrap" => array(
 					"margin-top" => UAGB_Helper::get_css_value( $attr['imgTopMargin'], 'px' ),
