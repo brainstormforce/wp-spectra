@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.14.9.1 =
 * Fix: Icon List - Typography not working on front-end.
+* Fix: Multi Buttons - Changed default button alignment to center.
 
 = 1.14.9 =
 * Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.
