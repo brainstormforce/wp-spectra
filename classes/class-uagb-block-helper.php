@@ -1525,11 +1525,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-left .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-left" => "0",
+					"margin-left" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-right .uagb-team__social-icon" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-right" => "0",
+					"margin-right" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( ( $attr['socialSpace'] / 2 ), 'px' ),
@@ -1537,11 +1537,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-above.uagb-team__align-left .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-left" => "0",
+					"margin-left" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-above.uagb-team__align-right .uagb-team__social-icon" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					"margin-right" => "0",
+					"margin-right" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				" .uagb-team__image-wrap" => array(
 					"margin-top" => UAGB_Helper::get_css_value( $attr['imgTopMargin'], 'px' ),
@@ -2019,28 +2019,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				)
 			);
 
-			if ( ! $attr['childMigrate'] ) {
-
-				foreach ( $attr['icons'] as $key => $icon ) {
-
-					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
-					$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
-					$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
-					$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-					$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-					$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
-					$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
-					$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
-	
-					if ( $attr['icon_count'] <= $key ) {
-						break;
-					}
-
-					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
-					$selectors = array_merge( $selectors, (array) $child_selectors );
-				}
-	
-				
+			if ( $attr['childMigrate'] ) {
+				$selectors[' .uagb-icon-list-repeater'] = array (
+				'font-family'   => $attr['fontFamily'],
+				'font-weight'   => $attr['fontWeight'],
+				'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+				'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
+				);
 			}
 
 			if ( 'right' == $attr['align'] ) {
@@ -2153,7 +2138,53 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					);
 				}
 			}
+			if ( ! $attr['childMigrate'] ) {
 
+				
+
+				foreach ( $attr['icons'] as $key => $icon ) {
+
+					$wrapper = ( ! $attr['childMigrate'] ) ? " .uagb-icon-list-repeater-" . $key . '.uagb-icon-list__wrapper' : " .uagb-icon-list-repeater";
+
+					$selectors[$wrapper] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+					'line-height'   => $attr['lineHeight'] . $attr['lineHeightType'],
+					);
+					$m_selectors_child[$wrapper. " .uagb-icon-list__label"] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSizeMobile'], $attr['sizeType'] ),
+					'line-height'   => $attr['lineHeightMobile'] . $attr['lineHeightType'],
+					);
+					$t_selectors_child[$wrapper. " .uagb-icon-list__label"] = array (
+					'font-family'   => $attr['fontFamily'],
+					'font-weight'   => $attr['fontWeight'],
+					'font-size'     => UAGB_Helper::get_css_value( $attr['fontSizeTablet'], $attr['sizeType'] ),
+					'line-height'   => $attr['lineHeightTablet'] . $attr['lineHeightType'],
+					);
+
+					$icon['icon_color'] = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
+					$icon['icon_hover_color'] = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
+					$icon['icon_bg_color'] = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
+					$icon['icon_bg_hover_color'] = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
+					$icon['icon_border_color'] = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
+					$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
+					$icon['label_color'] = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
+					$icon['label_hover_color'] = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
+	
+					if ( $attr['icon_count'] <= $key ) {
+						break;
+					}
+				
+					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
+					$selectors = array_merge( $selectors, (array) $child_selectors );
+					$t_selectors = array_merge( $t_selectors, (array) $t_selectors_child );
+					$m_selectors = array_merge( $m_selectors, (array) $m_selectors_child );				
+				}
+
+			}
 			// @codingStandardsIgnoreEnd
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-icon-list-';
@@ -2244,6 +2275,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"background" => $attr['icon_bg_hover_color'],
 				"border-color" => $attr['icon_border_hover_color']
 			);
+
 			// @codingStandardsIgnoreEnd
 
 			return $selectors;
