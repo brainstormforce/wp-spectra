@@ -1035,7 +1035,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'classMigrate'    => false,
 							'childMigrate'    => false,
 							'block_id'        => '',
-							'align'           => 'left',
+							'align'           => 'center',
 							'btn_count'       => '2',
 							'buttons'         => UAGB_Helper::get_button_defaults(),
 							'gap'             => 10,
