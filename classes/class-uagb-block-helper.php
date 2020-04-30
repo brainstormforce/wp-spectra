@@ -1529,7 +1529,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				".uagb-team__image-position-right .uagb-team__social-icon" => array(
 					"margin-left" => UAGB_Helper::get_css_value( $attr['socialSpace'], 'px' ),
-					UAGB_Helper::get_css_value( 0 , 'px' ),
+					"margin-right" => UAGB_Helper::get_css_value( 0 , 'px' ),
 				),
 				".uagb-team__image-position-above.uagb-team__align-center .uagb-team__social-icon" => array(
 					"margin-right" => UAGB_Helper::get_css_value( ( $attr['socialSpace'] / 2 ), 'px' ),
