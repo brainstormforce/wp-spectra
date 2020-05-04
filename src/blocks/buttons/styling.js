@@ -70,15 +70,25 @@ function styling( props ) {
 
 		var alignment = ( align == "left" ) ? "flex-start" : ( ( align == "right" ) ? "flex-end" : "center" )
 
-		selectors[" .uagb-buttons__wrap"] = {
-			"justify-content" : alignment,
-			"-webkit-box-pack": alignment,
-			"-ms-flex-pack": alignment,
-			"justify-content": alignment,
-		}
+		if( align == "full" ) {
+			selectors[" .uagb-button__wrapper"] = {
+				"justify-content" : 'center',
+				"-webkit-box-pack": 'center',
+				"-ms-flex-pack": 'center',
+				"justify-content": 'center',
+				"width": "100%",
+			}
+		} else { 
+			selectors[" .uagb-buttons__wrap"] = {
+				"justify-content" : alignment,
+				"-webkit-box-pack": alignment,
+				"-ms-flex-pack": alignment,
+				"justify-content": alignment,
+			}
 
-		selectors[" .uagb-buttons-stack-desktop .block-editor-block-list__layout"] = {
-			"align-items" : alignment
+			selectors[" .uagb-buttons-stack-desktop .block-editor-block-list__layout"] = {
+				"align-items" : alignment
+			}
 		}
 
 	var id = `#uagb-buttons-${ props.clientId }`

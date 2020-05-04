@@ -747,16 +747,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 				$alignment = ( $attr['align'] == 'left' ) ? 'flex-start' : ( ( $attr['align'] == 'right' ) ? 'flex-end' : 'center' );
 				
-				$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array (
-				'justify-content' => $alignment,
-				'-webkit-box-pack'=> $alignment,
-				'-ms-flex-pack' => $alignment,
-				'justify-content' => $alignment,
-				'-webkit-box-align' => $alignment,
-				'-ms-flex-align' => $alignment,
-				'align-items' => $alignment,
-				);				
-
+				if( 'full' === $attr['align'] ) {
+					$selectors[' .uagb-buttons__wrap .uagb-button__wrapper'] = array (
+						'justify-content' => 'center',
+						'-webkit-box-pack'=> 'center',
+						'-ms-flex-pack' => 'center',
+						'justify-content' => 'center',
+						'-webkit-box-align' => 'center',
+						'-ms-flex-align' => 'center',
+						'align-items' => 'center',
+						'width' => '100%',
+						'text-align' => 'center',
+					);
+				} else {
+					$selectors['.uagb-buttons__outer-wrap .uagb-buttons__wrap'] = array (
+					'justify-content' => $alignment,
+					'-webkit-box-pack'=> $alignment,
+					'-ms-flex-pack' => $alignment,
+					'justify-content' => $alignment,
+					'-webkit-box-align' => $alignment,
+					'-ms-flex-align' => $alignment,
+					'align-items' => $alignment,
+					);				
+				}
 			if ( $attr['childMigrate'] ) {
 					$selectors[' .uagb-buttons-repeater'] = array (
 					'font-family'   => $attr['fontFamily'],

@@ -117,7 +117,7 @@ class UAGBMultiButtonEdit extends Component {
 						onChange={ ( value ) => {
 							setAttributes( { align: value } )
 						} }
-						controls={ [ "left", "center", "right" ] }
+						controls={ [ "left", "center", "right", "full" ] }
 					/>
 				</BlockControls>
 				<InspectorControls>
