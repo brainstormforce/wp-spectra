@@ -157,6 +157,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ### 1.14.10.1 ###
 * Fix: Advanced Columns - Handled background image attachment type on smaller devices.
+* Fix: Section - Handled background image attachment type on smaller devices.
 
 ### 1.14.10 ###
 * Fix: Icon List - Typography not working on front-end.
