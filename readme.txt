@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.14.9
+Stable tag: 1.14.10
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -155,8 +155,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.14.9.1 =
+= 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
+* Fix: Multi Buttons - Changed default alignment to center.
+* Fix: Social Share - Changed default alignment to center.
+* Fix: Team - Fixed the Margin issue in Social Share icons.
 
 = 1.14.9 =
 * Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.

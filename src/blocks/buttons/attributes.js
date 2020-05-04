@@ -55,7 +55,7 @@ const attributes = {
 	},
 	align: {
 		type: "string",
-		default: "left"
+		default: "center"
 	},
 	gap: {
 		type: "number",
