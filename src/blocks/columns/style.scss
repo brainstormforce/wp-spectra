@@ -221,8 +221,8 @@
 
 @media (min-width: 768px) and (max-width: 1024px) {
   
-  .uagb-columns__wrap.uagb-columns__background-image{
-  		background-attachment: scroll!important;	
+  .wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__background-image{
+  		background-attachment: scroll;	
   	}
   
 }
