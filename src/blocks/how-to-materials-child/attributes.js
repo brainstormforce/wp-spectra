@@ -6,9 +6,9 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
-	add_required_tools: {
+	add_required_materials: {
 		type: "string",
-		default: "- A Computer."
+		default: "- A WordPress Website."
 	},
 	icon_color: {
 		type: "string",

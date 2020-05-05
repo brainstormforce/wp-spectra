@@ -1,14 +1,41 @@
 /**
  * BLOCK: UAGB How-To Attributes
  */
-const ITEM_COUNT = 1
+const ITEM_TOOLS_COUNT = 1
+
+const ITEM_MATERIALS_COUNT = 1
+
+const ITEM_STEPS_COUNT = 1
 
 const tools = []
 
-for (var i = 1; i <= ITEM_COUNT; i++) {
+const materials = []
+
+const steps = []
+
+for (var i = 1; i <= ITEM_TOOLS_COUNT; i++) {
 	tools.push(
 		{
 			"add_required_tools": "- A Computer.",
+		}
+	)
+}
+
+for (var i = 1; i <= ITEM_MATERIALS_COUNT; i++) {
+	materials.push(
+		{
+			"add_required_materials": "- A WordPress Website.",
+		}
+	)
+}
+
+for (var i = 1; i <= ITEM_STEPS_COUNT; i++) {
+	steps.push(
+		{
+			"add_required_steps": "Step 1 : Enter the HowTo Schema title you want",
+			"description": "Enter the title to your HowTo Schema",
+			"link": "#",
+			"image":"",
 		}
 	)
 }
@@ -21,13 +48,37 @@ const attributes = {
 		type: "string",
 		default : "Required Tools:"
 	},
+	materialTitle: {
+		type: "string",
+		default : "Required Materials:"
+	},
+	stepsTitle: {
+		type: "string",
+		default : "Required Steps:"
+	},
 	tools_count: {
 		type: "number",
-		default: ITEM_COUNT
+		default: ITEM_TOOLS_COUNT
+	},
+	steps_count: {
+		type: "number",
+		default: ITEM_STEPS_COUNT
+	},
+	material_count: {
+		type: "number",
+		default: ITEM_MATERIALS_COUNT
 	},
 	tools: {
 		type: "array",
 		default : tools,
+	},
+	materials: {
+		type: "array",
+		default : materials,
+	},
+	steps: {
+		type: "array",
+		default : steps,
 	},
 	showTotaltime: {
 		type: "boolean",

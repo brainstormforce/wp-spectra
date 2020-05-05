@@ -41,7 +41,7 @@ const {
 
 let svg_icons = Object.keys( UAGBIcon )
 
-class UAGBHowToToolsChild extends Component {
+class UAGBHowToMaterialsChild extends Component {
 
 	constructor() {
 		super( ...arguments )
@@ -66,7 +66,7 @@ class UAGBHowToToolsChild extends Component {
 			current_url,
 			// type,
 			className,
-			add_required_tools,
+			add_required_materials,
 			icon_color,
 			icon_hover_color,
 			toolsLoadGoogleFonts,
@@ -176,9 +176,9 @@ class UAGBHowToToolsChild extends Component {
 										<div className="uagb-materials">
 											<RichText
 												tagName="div"
-												placeholder={ __( "Requirements Tools:" ) }
-												value={ add_required_tools }
-												onChange={ ( value ) => setAttributes( { add_required_tools: value } ) }
+												placeholder={ __( "Requirements Materials:" ) }
+												value={ add_required_materials }
+												onChange={ ( value ) => setAttributes( { add_required_materials: value } ) }
 												className='uagb-materials__label'
 												placeholder={ __( "Description" ) }
 												multiline={false}
@@ -220,4 +220,4 @@ class UAGBHowToToolsChild extends Component {
 	}
 }
 
-export default UAGBHowToToolsChild
+export default UAGBHowToMaterialsChild

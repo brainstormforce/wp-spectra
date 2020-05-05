@@ -53,7 +53,11 @@ const { withSelect } = wp.data
 
 const { Component, Fragment } = wp.element
 
-const ALLOWED_BLOCKS = [ "uagb/how-to-tools-child" ]
+const ALLOWED_TOOLS_BLOCKS = [ "uagb/how-to-tools-child" ]
+
+const ALLOWED_MATERIALS_BLOCKS = [ "uagb/how-to-materials-child" ]
+
+const ALLOWED_STEPS_BLOCKS = [ "uagb/how-to-steps-child" ]
 
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
@@ -99,36 +103,6 @@ class UAGBHowTo extends Component {
 		setAttributes( { level: level_val } )
 		setAttributes( { headingTag: value } )
 	}
-
-	// splitBlock( before, after, ...blocks ) {
-	// 	const {
-	// 		attributes,
-	// 		insertBlocksAfter,
-	// 		setAttributes,
-	// 		onReplace,
-	// 	} = this.props
-
-	// 	if ( after ) {
-	// 		// Append "After" content as a new paragraph block to the end of
-	// 		// any other blocks being inserted after the current paragraph.
-	// 		blocks.push( createBlock( "core/paragraph", { content: after } ) )
-	// 	}
-
-	// 	if ( blocks.length && insertBlocksAfter ) {
-	// 		insertBlocksAfter( blocks )
-	// 	}
-
-	// 	const { content } = attributes
-	// 	if ( ! before ) {
-	// 		// If before content is omitted, treat as intent to delete block.
-	// 		onReplace( [] )
-	// 	} else if ( content !== before ) {
-	// 		// Only update content if it has in-fact changed. In case that user
-	// 		// has created a new paragraph at end of an existing one, the value
-	// 		// of before will be strictly equal to the current content.
-	// 		setAttributes( { content: before } )
-	// 	}
-	// }
 
 	/*
 	 * Event to set Image as null while removing.
@@ -191,8 +165,14 @@ class UAGBHowTo extends Component {
 				showEstcostcolor,
 				showTotaltimecolor,
 				tools_count,
+				steps_count,
+				material_count,
 				toolsTitle,
+				materialTitle,
+				stepsTitle,
 				tools,
+				materials,
+				steps,
 				timeNeeded,
 				estCost,
 				mainimage,
@@ -320,9 +300,25 @@ class UAGBHowTo extends Component {
 		// console.log(showTotaltime);
 		// console.log(showEstcost);
 
+
 		const getHowToToolsTemplate = memoize( ( tools_block, tools ) => {
 			return times( tools_block, n => [ "uagb/how-to-tools-child", tools[n] ] )
 		} )
+
+		const getHowToMaterialsTemplate = memoize( ( tools_block, materials ) => {
+			return times( tools_block, n => [ "uagb/how-to-materials-child", materials[n] ] )
+		} )
+
+		const getHowTostepsTemplate = memoize( ( tools_block, steps ) => {
+			return times( tools_block, n => [ "uagb/how-to-steps-child", steps[n] ] )
+		} )
+
+		// console.log(steps)
+
+		// console.log(steps_count)
+
+		// console.log(getHowTostepsTemplate)
+
 
 		return (
 			<Fragment>
@@ -569,20 +565,54 @@ class UAGBHowTo extends Component {
 						tagName="h3"
 						placeholder={ __( "requirements tools:" ) }
 						value={ toolsTitle }
-						className='uagb-howto-estcost-text'
+						className='uagb-howto-req-tools-text'
 						onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
 						onMerge={ mergeBlocks }
 						unstableOnSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
 					/>
-					<div className="uagb-how-to__wrap">
+					<div className="uagb-how-to-tools__wrap">
 						<InnerBlocks
 							template={ getHowToToolsTemplate( tools_count, tools ) }
 							templateLock={ false }
-							allowedBlocks={ ALLOWED_BLOCKS } 
+							allowedBlocks={ ALLOWED_TOOLS_BLOCKS } 
 						/>
 					</div>
-					
+					<RichText
+						tagName="h3"
+						placeholder={ __( "requirements materials:" ) }
+						value={ materialTitle }
+						className='uagb-howto-req-materials-text'
+						onChange={ ( value ) => setAttributes( { materialTitle: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onRemove={ () => onReplace( [] ) }
+					/>
+					<div className="uagb-how-to-materials__wrap">
+						<InnerBlocks
+							template={ getHowToMaterialsTemplate( material_count, materials ) }
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_MATERIALS_BLOCKS } 
+						/>
+					</div>
+					<RichText
+						tagName="h3"
+						placeholder={ __( "requirements Steps:" ) }
+						value={ stepsTitle }
+						className='uagb-howto-req-steps-text'
+						onChange={ ( value ) => setAttributes( { stepsTitle: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onRemove={ () => onReplace( [] ) }
+					/>		
+							<div className="uagb-how-to-steps__wrap">
+						<InnerBlocks
+							template={ getHowTostepsTemplate( steps_count, steps ) }
+							templateLock={ false }
+							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
+						/>
+					</div>
+							
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
