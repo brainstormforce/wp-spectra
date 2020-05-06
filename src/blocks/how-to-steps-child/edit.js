@@ -70,34 +70,34 @@ class UAGBHowTostepsChild extends Component {
 			description,
 			link,
 			image,
-			icon_color,
-			icon_hover_color,
-			toolsLoadGoogleFonts,
-			toolsFontFamily,
-			toolsFontWeight,
-			toolsFontSubset,
-			toolsFontSize,
-			toolsFontSizeType,
-			toolsFontSizeTablet,
-			toolsFontSizeMobile,
-			toolsLineHeightType,
-			toolsLineHeight,
-			toolsLineHeightTablet,
-			toolsLineHeightMobile,
+			steps_icon_color,
+			steps_icon_hover_color,
+			stepsLoadGoogleFonts,
+			stepsFontFamily,
+			stepsFontWeight,
+			stepsFontSubset,
+			stepsFontSize,
+			stepsFontSizeType,
+			stepsFontSizeTablet,
+			stepsFontSizeMobile,
+			stepsLineHeightType,
+			stepsLineHeight,
+			stepsLineHeightTablet,
+			stepsLineHeightMobile,
 		} = attributes
 
 		// Load Google fonts for tools.
-		let loadtoolsGoogleFonts
-		if( loadtoolsGoogleFonts == true ) {
+		let loadstepsGoogleFonts
+		if( loadstepsGoogleFonts == true ) {
 
-			const toolsconfig = {
+			const stepsconfig = {
 				google: {
-					families: [ toolsFontFamily + ( toolsFontWeight ? ":" + toolsFontWeight : "" ) ],
+					families: [ stepsFontFamily + ( stepsFontWeight ? ":" + stepsFontWeight : "" ) ],
 				},
 			}
 
-			loadtoolsGoogleFonts = (
-				<WebfontLoader config={ toolsconfig }>
+			loadstepsGoogleFonts = (
+				<WebfontLoader config={ stepsconfig }>
 				</WebfontLoader>
 			)
 		}
@@ -110,20 +110,20 @@ class UAGBHowTostepsChild extends Component {
 
 			color_control = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_color }} ></span></span></p>
 					<ColorPalette
-						value={ icon_color }
-						onChange={ ( value ) => setAttributes( { icon_color: value } ) }
+						value={ steps_icon_color }
+						onChange={ ( value ) => setAttributes( { steps_icon_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
 			)
 			color_control_hover = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_hover_color }} ></span></span></p>
 					<ColorPalette
-						value={ icon_hover_color }
-						onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
+						value={ steps_icon_hover_color }
+						onChange={ ( value ) => setAttributes( { steps_icon_hover_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
@@ -195,29 +195,29 @@ class UAGBHowTostepsChild extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( "Tools" ) } initialOpen={ true } >
+					<PanelBody title={ __( "Steps" ) } initialOpen={ true } >
 					<TypographyControl
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						// loadGoogleFonts = { { value: loadtoolsGoogleFonts, label: 'loadtoolsGoogleFonts' } }
-						fontFamily = { { value: toolsFontFamily, label: 'toolsFontFamily' } }
-						fontWeight = { { value: toolsFontWeight, label: 'toolsFontWeight' } }
-						fontSubset = { { value: toolsFontSubset, label: 'toolsFontSubset' } }
-						fontSizeType = { { value: toolsFontSizeType, label: 'toolsFontSizeType' } }
-						fontSize = { { value: toolsFontSize, label: 'toolsFontSize' } }
-						fontSizeMobile = { { value: toolsFontSizeMobile, label: 'toolsFontSizeMobile' } }
-						fontSizeTablet= { { value: toolsFontSizeTablet, label: 'toolsFontSizeTablet' } }
-						lineHeightType = { { value: toolsLineHeightType, label: 'toolsLineHeightType' } }
-						lineHeight = { { value: toolsLineHeight, label: 'toolsLineHeight' } }
-						lineHeightMobile = { { value: toolsLineHeightMobile, label: 'toolsLineHeightMobile' } }
-						lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
+						// loadGoogleFonts = { { value: loadstepsGoogleFonts, label: 'loadstepsGoogleFonts' } }
+						fontFamily = { { value: stepsFontFamily, label: 'stepsFontFamily' } }
+						fontWeight = { { value: stepsFontWeight, label: 'stepsFontWeight' } }
+						fontSubset = { { value: stepsFontSubset, label: 'stepsFontSubset' } }
+						fontSizeType = { { value: stepsFontSizeType, label: 'stepsFontSizeType' } }
+						fontSize = { { value: stepsFontSize, label: 'stepsFontSize' } }
+						fontSizeMobile = { { value: stepsFontSizeMobile, label: 'stepsFontSizeMobile' } }
+						fontSizeTablet= { { value: stepsFontSizeTablet, label: 'stepsFontSizeTablet' } }
+						lineHeightType = { { value: stepsLineHeightType, label: 'stepsLineHeightType' } }
+						lineHeight = { { value: stepsLineHeight, label: 'stepsLineHeight' } }
+						lineHeightMobile = { { value: stepsLineHeightMobile, label: 'stepsLineHeightMobile' } }
+						lineHeightTablet= { { value: stepsLineHeightTablet, label: 'stepsLineHeightTablet' } }
 					/>
 					 { iconColorControls() }
 					</PanelBody>
 				</InspectorControls>
 				{renderHtml()}
-				{ loadtoolsGoogleFonts }
+				{ loadstepsGoogleFonts }
 			</Fragment>
 		)
 	}

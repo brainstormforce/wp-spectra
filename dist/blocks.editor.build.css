@@ -952,6 +952,9 @@ p.uagb-marketing-btn__prefix.block-editor-rich-text__editable {
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-social-share__layout-horizontal .uagb-social-share__wrap .block-list-appender {
+  margin-top: 0;
+  margin-left: 20px; }
 /**
  * #.# Common SCSS
  *

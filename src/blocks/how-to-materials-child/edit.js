@@ -192,7 +192,7 @@ class UAGBHowToMaterialsChild extends Component {
 		return (
 			<Fragment>
 				<InspectorControls>
-					<PanelBody title={ __( "Tools" ) } initialOpen={ true } >
+					<PanelBody title={ __( "Materials" ) } initialOpen={ true } >
 					<TypographyControl
 						label={ __( "Typography" ) }
 						attributes = { attributes }

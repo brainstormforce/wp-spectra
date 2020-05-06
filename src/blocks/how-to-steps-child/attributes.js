@@ -21,57 +21,57 @@ const attributes = {
 	image: {
 		type: "object",
 	},
-	icon_color: {
+	steps_icon_color: {
 		type: "string",
 		default: "#3a3a3a"
 	},
-	icon_hover_color: {
+	steps_icon_hover_color: {
 		type: "string"
 	},
 	// tools Font Family
-	toolsLoadGoogleFonts: {
+	stepsLoadGoogleFonts: {
 		type: "boolean",
 		default: false
 	},
-	toolsFontFamily: {
+	stepsFontFamily: {
 		type: "string",
 		default: "Default",
 	},
-	toolsFontWeight: {
+	stepsFontWeight: {
 		type: "string",
 	},
-	toolsFontSubset: {
+	stepsFontSubset: {
 		type: "string",
 	},
 	// tools Font Size
-	toolsFontSize: {
+	stepsFontSize: {
 		type: "number",
 		default: 14
 	},
-	toolsFontSizeType: {
+	stepsFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	toolsFontSizeTablet: {
+	stepsFontSizeTablet: {
 		type: "number",
 		default: 14
 	},
-	toolsFontSizeMobile: {
+	stepsFontSizeMobile: {
 		type: "number",
 		default: 14
 	},
 	// tools Line Height
-	toolsLineHeightType: {
+	stepsLineHeightType: {
 		type: "string",
 		default: "em"
 	},
-	toolsLineHeight: {
+	stepsLineHeight: {
 		type: "number",
 	},
-	toolsLineHeightTablet: {
+	stepsLineHeightTablet: {
 		type: "number",
 	},
-	toolsLineHeightMobile: {
+	stepsLineHeightMobile: {
 		type: "number",
 	},
 }

@@ -8,33 +8,33 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		icon_color,
-		icon_hover_color,
-		toolsLoadGoogleFonts,
-		toolsFontFamily,
-		toolsFontWeight,
-		toolsFontSubset,
-		toolsFontSize,
-		toolsFontSizeType,
-		toolsFontSizeTablet,
-		toolsFontSizeMobile,
-		toolsLineHeightType,
-		toolsLineHeight,
-		toolsLineHeightTablet,
-		toolsLineHeightMobile,		
+		steps_icon_color,
+		steps_icon_hover_color,
+		stepsLoadGoogleFonts,
+		stepsFontFamily,
+		stepsFontWeight,
+		stepsFontSubset,
+		stepsFontSize,
+		stepsFontSizeType,
+		stepsFontSizeTablet,
+		stepsFontSizeMobile,
+		stepsLineHeightType,
+		stepsLineHeight,
+		stepsLineHeightTablet,
+		stepsLineHeightMobile,		
 	} = props.attributes
 
 	var selectors = {
 		" .block-editor-rich-text__editable.uagb-steps__label": {
-			"font-size" : generateCSSUnit( toolsFontSize, toolsFontSizeType ),
-			"line-height" : generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
-			"font-family": toolsFontFamily,
-			"font-weight": toolsFontWeight,
-			"color": icon_color,
+			"font-size" : generateCSSUnit( stepsFontSize, stepsFontSizeType ),
+			"line-height" : generateCSSUnit( stepsLineHeight, stepsLineHeightType ),
+			"font-family": stepsFontFamily,
+			"font-weight": stepsFontWeight,
+			"color": steps_icon_color,
 		},
 
 		" .block-editor-rich-text__editable.uagb-steps__label:hover": {
-			"color": icon_hover_color,
+			"color": steps_icon_hover_color,
 		},
 		
 	}
