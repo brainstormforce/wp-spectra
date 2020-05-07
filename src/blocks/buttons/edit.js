@@ -23,7 +23,6 @@ const {
 } = wp.element
 
 const {
-	BlockControls,
 	BlockAlignmentToolbar,
 	InspectorControls,
 	InnerBlocks
@@ -112,15 +111,6 @@ class UAGBMultiButtonEdit extends Component {
 		} )
 		return (
 			<Fragment>
-				{/* <BlockControls>
-					<BlockAlignmentToolbar
-						value={ align }
-						onChange={ ( value ) => {
-							setAttributes( { align: value } )
-						} }
-						controls={ [ "left", "center", "right", "full" ] }
-					/>
-				</BlockControls> */}
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<BaseControl>
