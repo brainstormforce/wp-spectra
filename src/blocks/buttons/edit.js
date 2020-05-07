@@ -32,7 +32,8 @@ const {
 const {
 	PanelBody,
 	SelectControl,
-	RangeControl
+	RangeControl,
+	BaseControl
 } = wp.components
 
 const ALLOWED_BLOCKS = [ "uagb/buttons-child" ]
@@ -111,7 +112,7 @@ class UAGBMultiButtonEdit extends Component {
 		} )
 		return (
 			<Fragment>
-				<BlockControls>
+				{/* <BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
 						onChange={ ( value ) => {
@@ -119,9 +120,24 @@ class UAGBMultiButtonEdit extends Component {
 						} }
 						controls={ [ "left", "center", "right", "full" ] }
 					/>
-				</BlockControls>
+				</BlockControls> */}
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
+						<BaseControl>
+							<BaseControl.VisualLabel>
+								{ __( 'Alignment' ) }
+							</BaseControl.VisualLabel>
+							<BlockAlignmentToolbar
+								value={ align }
+								onChange={ ( value ) =>
+									setAttributes( {
+										align: value,
+									} )
+								}
+								controls={ [ 'left', 'center', 'right', 'full' ] }
+								isCollapsed={ false }
+							/>
+						</BaseControl>
 						<h2>{ __( "Spacing" ) }</h2>
 						<RangeControl
 							label={ __( "Gap Between Buttons" ) }
