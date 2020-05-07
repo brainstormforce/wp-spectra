@@ -33,7 +33,7 @@ for (var i = 1; i <= ITEM_STEPS_COUNT; i++) {
 	steps.push(
 		{
 			"add_required_steps": "Step 1 : Enter the HowTo Schema title you want",
-			"description": "Enter the title to your HowTo Schema",
+			"description": "Enter the description to your HowTo Schema",
 			"link": "#",
 			"image":"",
 		}

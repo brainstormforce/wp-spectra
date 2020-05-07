@@ -24,6 +24,8 @@ const {
 } = wp.element
 
 const {
+	BlockControls,
+	BlockAlignmentToolbar,
 	InspectorControls,
 	MediaUpload,
 	RichText,
@@ -33,11 +35,18 @@ const {
 const {
 	PanelBody,
 	SelectControl,
+	RangeControl,
 	Button,
 	TextControl,
 	ToggleControl,
 	TabPanel,
 } = wp.components
+
+let imageSizeOptions = [
+	{ value: "thumbnail", label: __( "Thumbnail" ) },
+	{ value: "medium", label: __( "Medium" ) },
+	{ value: "full", label: __( "Large" ) }
+]
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -45,6 +54,9 @@ class UAGBHowTostepsChild extends Component {
 
 	constructor() {
 		super( ...arguments )
+
+		this.onRemoveImage = this.onRemoveImage.bind( this )
+		this.onSelectImage = this.onSelectImage.bind( this )
 	}
 
 	componentDidMount() {
@@ -53,10 +65,64 @@ class UAGBHowTostepsChild extends Component {
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { current_url: wp.data.select("core/editor").getPermalink() } )
 
+		// et level_val = parseInt( this.props.attributes.align.replace( 'h' , '' ) )
+		// this.props.setAttributes( { level: level_val } )
+
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-how-to-steps-child-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+	/*
+	 * Event to set Image as null while removing.
+	 */
+	onRemoveImage() {
+		const { setAttributes } = this.props
+		setAttributes( { mainimage: null } )
+	}
+
+	// onTagChange( value ) {
+	// 	const { setAttributes } = this.props
+
+	// 	let level_val = parseInt( value.replace( 'h' , '' ) )
+
+	// 	setAttributes( { level: level_val } )
+	// 	setAttributes( { align: value } )
+	// }
+
+	/*
+	 * Event to set Image as while adding.
+	 */
+	onSelectImage( media ) {
+		const { mainimage } = this.props.attributes
+		const { setAttributes } = this.props
+
+		if ( ! media || ! media.url ) {
+			setAttributes( { mainimage: null } )
+			return
+		}
+
+		if ( ! media.type ) {
+			return
+		}
+
+		setAttributes( { mainimage: media } )
+		console.log(media)
+		if ( media["sizes"] ) {
+			var new_img = this.getImageSize(media["sizes"])
+			imageSizeOptions = new_img
+		}
+	}
+
+	getImageSize(sizes) {
+		var size_arr = []
+		$.each(sizes, function (index, item) {
+		  var name = index
+		  	var p = { "value" : name, "label": name }
+		  	size_arr.push(p)
+		})
+		return(size_arr)
 	}
 
 	render() {
@@ -64,12 +130,15 @@ class UAGBHowTostepsChild extends Component {
 		const { attributes, setAttributes } = this.props
 		const {
 			current_url,
+			align,
 			// type,
 			className,
 			add_required_steps,
 			description,
 			link,
-			image,
+			mainimage,
+			imgSize,
+			imgWidth,
 			steps_icon_color,
 			steps_icon_hover_color,
 			stepsLoadGoogleFonts,
@@ -84,6 +153,21 @@ class UAGBHowTostepsChild extends Component {
 			stepsLineHeight,
 			stepsLineHeightTablet,
 			stepsLineHeightMobile,
+			//description
+			steps_desc_icon_color,
+			steps_desc_icon_hover_color,
+			stepsdescLoadGoogleFonts,
+			stepsdescFontFamily,
+			stepsdescFontWeight,
+			stepsdescFontSubset,
+			stepsdescFontSize,
+			stepsdescFontSizeType,
+			stepsdescFontSizeTablet,
+			stepsdescFontSizeMobile,
+			stepsdescLineHeightType,
+			stepsdescLineHeight,
+			stepsdescLineHeightTablet,
+			stepsdescLineHeightMobile,
 		} = attributes
 
 		// Load Google fonts for tools.
@@ -110,20 +194,32 @@ class UAGBHowTostepsChild extends Component {
 
 			color_control = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_color }} ></span></span></p>
 					<ColorPalette
 						value={ steps_icon_color }
 						onChange={ ( value ) => setAttributes( { steps_icon_color: value } ) }
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_desc_icon_color }} ></span></span></p>
+					<ColorPalette
+						value={ steps_desc_icon_color }
+						onChange={ ( value ) => setAttributes( { steps_desc_icon_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
 			)
 			color_control_hover = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_hover_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Title Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_icon_hover_color }} ></span></span></p>
 					<ColorPalette
 						value={ steps_icon_hover_color }
 						onChange={ ( value ) => setAttributes( { steps_icon_hover_color: value } ) }
+						allowReset
+					/>
+					<p className="uagb-setting-label">{ __( "Description Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: steps_desc_icon_hover_color }} ></span></span></p>
+					<ColorPalette
+						value={ steps_desc_icon_hover_color }
+						onChange={ ( value ) => setAttributes( { steps_desc_icon_hover_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
@@ -165,8 +261,22 @@ class UAGBHowTostepsChild extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		const renderHtml = () => {
+		if( mainimage && mainimage["sizes"] ){
+			imageSizeOptions = this.getImageSize(mainimage["sizes"])
+		}
 
+		let image_icon_html = ""
+
+		if ( mainimage && mainimage.url ) {
+
+			image_icon_html = <img className="uagb-howto-steps__source-image" src={mainimage.url} />
+
+		}
+		// else{
+		// 	image_icon_html = <img className="uagb-howto-steps__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
+		// }
+
+		const renderHtml = () => {
 								return (
 									<div
 										className={ classnames(
@@ -188,6 +298,18 @@ class UAGBHowTostepsChild extends Component {
 												allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 											/>
 										</div>
+										<div className="uagb-steps-description">
+											<RichText
+												tagName="div"
+												placeholder={ __( "Description" ) }
+												value={ description }
+												onChange={ ( value ) => setAttributes( { description: value } ) }
+												className='uagb-steps__description'
+												multiline={false}
+												allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+											/>
+										</div>
+										<span className="uagb-howto-steps__image-wrap">{image_icon_html}</span>
 									</div>
 								)
 		}
@@ -197,7 +319,7 @@ class UAGBHowTostepsChild extends Component {
 				<InspectorControls>
 					<PanelBody title={ __( "Steps" ) } initialOpen={ true } >
 					<TypographyControl
-						label={ __( "Typography" ) }
+						label={ __( "Title Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
 						// loadGoogleFonts = { { value: loadstepsGoogleFonts, label: 'loadstepsGoogleFonts' } }
@@ -213,7 +335,51 @@ class UAGBHowTostepsChild extends Component {
 						lineHeightMobile = { { value: stepsLineHeightMobile, label: 'stepsLineHeightMobile' } }
 						lineHeightTablet= { { value: stepsLineHeightTablet, label: 'stepsLineHeightTablet' } }
 					/>
+					<TypographyControl
+						label={ __( "Description Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						// loadGoogleFonts = { { value: loadstepsdescGoogleFonts, label: 'loadstepsdescGoogleFonts' } }
+						fontFamily = { { value: stepsdescFontFamily, label: 'stepsdescFontFamily' } }
+						fontWeight = { { value: stepsdescFontWeight, label: 'stepsdescFontWeight' } }
+						fontSubset = { { value: stepsdescFontSubset, label: 'stepsdescFontSubset' } }
+						fontSizeType = { { value: stepsdescFontSizeType, label: 'stepsdescFontSizeType' } }
+						fontSize = { { value: stepsdescFontSize, label: 'stepsdescFontSize' } }
+						fontSizeMobile = { { value: stepsdescFontSizeMobile, label: 'stepsdescFontSizeMobile' } }
+						fontSizeTablet= { { value: stepsdescFontSizeTablet, label: 'stepsdescFontSizeTablet' } }
+						lineHeightType = { { value: stepsdescLineHeightType, label: 'stepsdescLineHeightType' } }
+						lineHeight = { { value: stepsdescLineHeight, label: 'stepsdescLineHeight' } }
+						lineHeightMobile = { { value: stepsdescLineHeightMobile, label: 'stepsdescLineHeightMobile' } }
+						lineHeightTablet= { { value: stepsdescLineHeightTablet, label: 'stepsdescLineHeightTablet' } }
+					/>
 					 { iconColorControls() }
+							 <RangeControl
+									label={ __( "Width(%)" ) }
+									value={ imgWidth }
+									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
+									min={ 0 }
+									max={ 500 }
+									allowReset
+								/>
+								<MediaUpload
+									title={ __( "Select Image" ) }
+									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
+									allowedTypes={ [ "image" ] }
+									value={ mainimage }
+									render={ ( { open } ) => (
+										<Button isDefault onClick={ open }>
+											{ ! mainimage ? __( "Select Image" ) : __( "Replace image" ) }
+										</Button>
+									) }
+								/>
+								{ mainimage &&
+									<Button
+										className="uagb-rm-btn"
+										onClick={ () => setAttributes( { mainimage: null } ) }
+										isLink isDestructive>
+										{ __( "Remove Image" ) }
+									</Button>
+								}
 					</PanelBody>
 				</InspectorControls>
 				{renderHtml()}

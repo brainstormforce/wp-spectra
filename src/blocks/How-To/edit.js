@@ -293,9 +293,10 @@ class UAGBHowTo extends Component {
 
 			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
 
-		}else{
-			image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
 		}
+		// else{
+		// 	image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
+		// }
 
 		// console.log(showTotaltime);
 		// console.log(showEstcost);
@@ -313,7 +314,7 @@ class UAGBHowTo extends Component {
 			return times( tools_block, n => [ "uagb/how-to-steps-child", steps[n] ] )
 		} )
 
-		// console.log(steps)
+		console.log(time)
 
 		// console.log(steps_count)
 
@@ -537,6 +538,7 @@ class UAGBHowTo extends Component {
 						onRemove={ () => onReplace( [] ) }
 					/>
 					<span className="uagb-howto__source-wrap">{image_icon_html}</span>
+					<span className="uagb-howto__time-wrap">
 					{ showTotaltime &&
 						<RichText
 							tagName="h3"
@@ -549,6 +551,20 @@ class UAGBHowTo extends Component {
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
+					{ showTotaltime &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "30 Minutes" ) }
+							value={ time }
+							className='uagb-howto-timeNeeded-value'
+							onChange={ ( value ) => setAttributes( { time: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
+					</span>
+					<span className="uagb-howto__cost-wrap">
 					{ showEstcost &&
 						<RichText
 							tagName="h3"
@@ -561,51 +577,64 @@ class UAGBHowTo extends Component {
 							onRemove={ () => onReplace( [] ) }
 						/>
 					}
-					<RichText
-						tagName="h3"
-						placeholder={ __( "requirements tools:" ) }
-						value={ toolsTitle }
-						className='uagb-howto-req-tools-text'
-						onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onRemove={ () => onReplace( [] ) }
-					/>
+					{ showEstcost &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "30 USD" ) }
+							value={ time }
+							className='uagb-howto-estcost-value'
+							onChange={ ( value ) => setAttributes( { time: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
+					</span>
 					<div className="uagb-how-to-tools__wrap">
+						<RichText
+							tagName="h3"
+							placeholder={ __( "requirements tools:" ) }
+							value={ toolsTitle }
+							className='uagb-howto-req-tools-text'
+							onChange={ ( value ) => setAttributes( { toolsTitle: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onnRemove={ () => onReplace( [] ) }
+						/>
 						<InnerBlocks
 							template={ getHowToToolsTemplate( tools_count, tools ) }
 							templateLock={ false }
-							allowedBlocks={ ALLOWED_TOOLS_BLOCKS } 
+							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
 						/>
 					</div>
-					<RichText
-						tagName="h3"
-						placeholder={ __( "requirements materials:" ) }
-						value={ materialTitle }
-						className='uagb-howto-req-materials-text'
-						onChange={ ( value ) => setAttributes( { materialTitle: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onRemove={ () => onReplace( [] ) }
-					/>
 					<div className="uagb-how-to-materials__wrap">
+						<RichText
+							tagName="h3"
+							placeholder={ __( "requirements materials:" ) }
+							value={ materialTitle }
+							className='uagb-howto-req-materials-text'
+							onChange={ ( value ) => setAttributes( { materialTitle: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
 						<InnerBlocks
 							template={ getHowToMaterialsTemplate( material_count, materials ) }
 							templateLock={ false }
-							allowedBlocks={ ALLOWED_MATERIALS_BLOCKS } 
+							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
 						/>
 					</div>
-					<RichText
-						tagName="h3"
-						placeholder={ __( "requirements Steps:" ) }
-						value={ stepsTitle }
-						className='uagb-howto-req-steps-text'
-						onChange={ ( value ) => setAttributes( { stepsTitle: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onRemove={ () => onReplace( [] ) }
-					/>		
-							<div className="uagb-how-to-steps__wrap">
+					<div className="uagb-how-to-steps__wrap">
+						<RichText
+							tagName="h3"
+							placeholder={ __( "requirements Steps:" ) }
+							value={ stepsTitle }
+							className='uagb-howto-req-steps-text'
+							onChange={ ( value ) => setAttributes( { stepsTitle: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>	
 						<InnerBlocks
 							template={ getHowTostepsTemplate( steps_count, steps ) }
 							templateLock={ false }

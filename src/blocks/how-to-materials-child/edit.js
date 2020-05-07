@@ -67,34 +67,34 @@ class UAGBHowToMaterialsChild extends Component {
 			// type,
 			className,
 			add_required_materials,
-			icon_color,
-			icon_hover_color,
-			toolsLoadGoogleFonts,
-			toolsFontFamily,
-			toolsFontWeight,
-			toolsFontSubset,
-			toolsFontSize,
-			toolsFontSizeType,
-			toolsFontSizeTablet,
-			toolsFontSizeMobile,
-			toolsLineHeightType,
-			toolsLineHeight,
-			toolsLineHeightTablet,
-			toolsLineHeightMobile,
+			materials_icon_color,
+			materials_icon_hover_color,
+			materialsLoadGoogleFonts,
+			materialsFontFamily,
+			materialsFontWeight,
+			materialsFontSubset,
+			materialsFontSize,
+			materialsFontSizeType,
+			materialsFontSizeTablet,
+			materialsFontSizeMobile,
+			materialsLineHeight,
+			materialsLineHeightType,
+			materialsLineHeightTablet,
+			materialsLineHeightMobile,
 		} = attributes
 
 		// Load Google fonts for tools.
-		let loadtoolsGoogleFonts
-		if( loadtoolsGoogleFonts == true ) {
+		let loadmaterialsGoogleFonts
+		if( loadmaterialsGoogleFonts == true ) {
 
-			const toolsconfig = {
+			const materialsconfig = {
 				google: {
-					families: [ toolsFontFamily + ( toolsFontWeight ? ":" + toolsFontWeight : "" ) ],
+					families: [ materialsFontFamily + ( materialsFontWeight ? ":" + materialsFontWeight : "" ) ],
 				},
 			}
 
-			loadtoolsGoogleFonts = (
-				<WebfontLoader config={ toolsconfig }>
+			loadmaterialsGoogleFonts = (
+				<WebfontLoader config={ materialsconfig }>
 				</WebfontLoader>
 			)
 		}
@@ -107,20 +107,20 @@ class UAGBHowToMaterialsChild extends Component {
 
 			color_control = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
 					<ColorPalette
-						value={ icon_color }
-						onChange={ ( value ) => setAttributes( { icon_color: value } ) }
+						value={ materials_icon_color }
+						onChange={ ( value ) => setAttributes( { materials_icon_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
 			)
 			color_control_hover = (
 				<Fragment>
-					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_hover_color }} ></span></span></p>
 					<ColorPalette
-						value={ icon_hover_color }
-						onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
+						value={ materials_icon_hover_color }
+						onChange={ ( value ) => setAttributes( { materials_icon_hover_color: value } ) }
 						allowReset
 					/>
 				</Fragment>
@@ -197,24 +197,24 @@ class UAGBHowToMaterialsChild extends Component {
 						label={ __( "Typography" ) }
 						attributes = { attributes }
 						setAttributes = { setAttributes }
-						// loadGoogleFonts = { { value: loadtoolsGoogleFonts, label: 'loadtoolsGoogleFonts' } }
-						fontFamily = { { value: toolsFontFamily, label: 'toolsFontFamily' } }
-						fontWeight = { { value: toolsFontWeight, label: 'toolsFontWeight' } }
-						fontSubset = { { value: toolsFontSubset, label: 'toolsFontSubset' } }
-						fontSizeType = { { value: toolsFontSizeType, label: 'toolsFontSizeType' } }
-						fontSize = { { value: toolsFontSize, label: 'toolsFontSize' } }
-						fontSizeMobile = { { value: toolsFontSizeMobile, label: 'toolsFontSizeMobile' } }
-						fontSizeTablet= { { value: toolsFontSizeTablet, label: 'toolsFontSizeTablet' } }
-						lineHeightType = { { value: toolsLineHeightType, label: 'toolsLineHeightType' } }
-						lineHeight = { { value: toolsLineHeight, label: 'toolsLineHeight' } }
-						lineHeightMobile = { { value: toolsLineHeightMobile, label: 'toolsLineHeightMobile' } }
-						lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
+						// loadGoogleFonts = { { value: loadmaterialsGoogleFonts, label: 'loadmaterialsGoogleFonts' } }
+						fontFamily = { { value: materialsFontFamily, label: 'materialsFontFamily' } }
+						fontWeight = { { value: materialsFontWeight, label: 'materialsFontWeight' } }
+						fontSubset = { { value: materialsFontSubset, label: 'materialsFontSubset' } }
+						fontSizeType = { { value: materialsFontSizeType, label: 'materialsFontSizeType' } }
+						fontSize = { { value: materialsFontSize, label: 'materialsFontSize' } }
+						fontSizeMobile = { { value: materialsFontSizeMobile, label: 'materialsFontSizeMobile' } }
+						fontSizeTablet= { { value: materialsFontSizeTablet, label: 'materialsFontSizeTablet' } }
+						lineHeightType = { { value: materialsLineHeightType, label: 'materialsLineHeightType' } }
+						lineHeight = { { value: materialsLineHeight, label: 'materialsLineHeight' } }
+						lineHeightMobile = { { value: materialsLineHeightMobile, label: 'materialsLineHeightMobile' } }
+						lineHeightTablet= { { value: materialsLineHeightTablet, label: 'materialsLineHeightTablet' } }
 					/>
 					 { iconColorControls() }
 					</PanelBody>
 				</InspectorControls>
 				{renderHtml()}
-				{ loadtoolsGoogleFonts }
+				{ loadmaterialsGoogleFonts }
 			</Fragment>
 		)
 	}

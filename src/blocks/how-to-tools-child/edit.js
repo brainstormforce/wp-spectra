@@ -83,6 +83,8 @@ class UAGBHowToToolsChild extends Component {
 			toolsLineHeightMobile,
 		} = attributes
 
+		console.log(this.props.clientId)
+
 		// Load Google fonts for tools.
 		let loadtoolsGoogleFonts
 		if( loadtoolsGoogleFonts == true ) {

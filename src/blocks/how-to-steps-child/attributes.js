@@ -10,16 +10,28 @@ const attributes = {
 		type: "string",
 		default: "Step 1 : Enter the HowTo Schema title you want"
 	},
+	align: {
+		type: "string",
+		default: "left"
+	},
 	description: {
 		type:"string",
-		default:"Enter description for the HowTo Schema"
+		default:"Enter the description to your HowTo Schema"
 	},
 	link: {
 		type: "string",
 		default: "#"
 	},
-	image: {
+	mainimage: {
 		type: "object",
+	},
+	imgSize:{
+		type: "string",
+		default: "thumbnail",
+	},
+	imgWidth :{
+		type: "number",
+		default: 50,
 	},
 	steps_icon_color: {
 		type: "string",
@@ -28,7 +40,7 @@ const attributes = {
 	steps_icon_hover_color: {
 		type: "string"
 	},
-	// tools Font Family
+	// title Font Family
 	stepsLoadGoogleFonts: {
 		type: "boolean",
 		default: false
@@ -43,7 +55,7 @@ const attributes = {
 	stepsFontSubset: {
 		type: "string",
 	},
-	// tools Font Size
+	// title Font Size
 	stepsFontSize: {
 		type: "number",
 		default: 14
@@ -60,7 +72,7 @@ const attributes = {
 		type: "number",
 		default: 14
 	},
-	// tools Line Height
+	// title Line Height
 	stepsLineHeightType: {
 		type: "string",
 		default: "em"
@@ -72,6 +84,60 @@ const attributes = {
 		type: "number",
 	},
 	stepsLineHeightMobile: {
+		type: "number",
+	},
+	// description
+	steps_desc_icon_color: {
+		type: "string",
+		default: "#3a3a3a"
+	},
+	steps_desc_icon_hover_color: {
+		type: "string"
+	},
+	// desc Font Family
+	stepsdescLoadGoogleFonts: {
+		type: "boolean",
+		default: false
+	},
+	stepsdescFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	stepsdescFontWeight: {
+		type: "string",
+	},
+	stepsdescFontSubset: {
+		type: "string",
+	},
+	// desc Font Size
+	stepsdescFontSize: {
+		type: "number",
+		default: 14
+	},
+	stepsdescFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	stepsdescFontSizeTablet: {
+		type: "number",
+		default: 14
+	},
+	stepsdescFontSizeMobile: {
+		type: "number",
+		default: 14
+	},
+	// desc Line Height
+	stepsdescLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	stepsdescLineHeight: {
+		type: "number",
+	},
+	stepsdescLineHeightTablet: {
+		type: "number",
+	},
+	stepsdescLineHeightMobile: {
 		type: "number",
 	},
 }

@@ -10,57 +10,57 @@ const attributes = {
 		type: "string",
 		default: "- A WordPress Website."
 	},
-	icon_color: {
+	materials_icon_color: {
 		type: "string",
 		default: "#3a3a3a"
 	},
-	icon_hover_color: {
+	materials_icon_hover_color: {
 		type: "string"
 	},
-	// tools Font Family
-	toolsLoadGoogleFonts: {
+	// materials Font Family
+	materialsLoadGoogleFonts: {
 		type: "boolean",
 		default: false
 	},
-	toolsFontFamily: {
+	materialsFontFamily: {
 		type: "string",
 		default: "Default",
 	},
-	toolsFontWeight: {
+	materialsFontWeight: {
 		type: "string",
 	},
-	toolsFontSubset: {
+	materialsFontSubset: {
 		type: "string",
 	},
-	// tools Font Size
-	toolsFontSize: {
+	// materials Font Size
+	materialsFontSize: {
 		type: "number",
 		default: 14
 	},
-	toolsFontSizeType: {
+	materialsFontSizeType: {
 		type: "string",
 		default: "px"
 	},
-	toolsFontSizeTablet: {
+	materialsFontSizeTablet: {
 		type: "number",
 		default: 14
 	},
-	toolsFontSizeMobile: {
+	materialsFontSizeMobile: {
 		type: "number",
 		default: 14
 	},
-	// tools Line Height
-	toolsLineHeightType: {
+	// materials Line Height
+	materialsLineHeightType: {
 		type: "string",
 		default: "em"
 	},
-	toolsLineHeight: {
+	materialsLineHeight: {
 		type: "number",
 	},
-	toolsLineHeightTablet: {
+	materialsLineHeightTablet: {
 		type: "number",
 	},
-	toolsLineHeightMobile: {
+	materialsLineHeightMobile: {
 		type: "number",
 	},
 }
