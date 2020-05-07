@@ -167,7 +167,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Changed default alignment to center.
 * Fix: Social Share - Changed default alignment to center.
 * Fix: Team - Fixed the Margin issue in Social Share icons.
-* Fix: Multi Buttons - Added Full width option.
 
 
 ### 1.14.9 ###
