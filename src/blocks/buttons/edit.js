@@ -129,7 +129,7 @@ class UAGBMultiButtonEdit extends Component {
 							onChange={ ( value ) => setAttributes( { gap: value } ) }
 							help={ __( "Note: The gap between the buttons will seem larger in the editor, for better user edit experience. But at frontend the gap will be exactly what is set from here." ) }
 							min={ 0 }
-							max={ 50 }
+							max={ 500 }
 						/>
 						<hr className="uagb-editor__separator" />
 						<SelectControl
