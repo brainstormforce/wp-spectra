@@ -243,6 +243,7 @@ class UAGBHowTo extends Component {
 				estcostLineHeightMobile,
 				estcostLineHeightTablet,
 				time,
+				cost,
 			},
 		} = this.props
 
@@ -473,6 +474,14 @@ class UAGBHowTo extends Component {
 								checked={ showEstcost }
 								onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
 							/>
+							<RangeControl
+								label={ __( "Cost" ) }
+								value={ cost }
+								onChange={ ( value ) => setAttributes( { cost: value } ) }
+								min={ 0 }
+								max={ 500 }
+								allowReset
+							/>
 							<TypographyControl
 								label={ __( "Typography" ) }
 								attributes = { attributes }
@@ -581,9 +590,9 @@ class UAGBHowTo extends Component {
 						<RichText
 							tagName="h3"
 							placeholder={ __( "30 USD" ) }
-							value={ time }
+							value={ cost }
 							className='uagb-howto-estcost-value'
-							onChange={ ( value ) => setAttributes( { time: value } ) }
+							onChange={ ( value ) => setAttributes( { cost: value } ) }
 							onMerge={ mergeBlocks }
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }

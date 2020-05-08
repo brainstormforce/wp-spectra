@@ -8,33 +8,34 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		icon_color,
-		icon_hover_color,
-		toolsLoadGoogleFonts,
-		toolsFontFamily,
-		toolsFontWeight,
-		toolsFontSubset,
-		toolsFontSize,
-		toolsFontSizeType,
-		toolsFontSizeTablet,
-		toolsFontSizeMobile,
-		toolsLineHeightType,
-		toolsLineHeight,
-		toolsLineHeightTablet,
-		toolsLineHeightMobile,		
+		add_required_materials,
+			materials_icon_color,
+			materials_icon_hover_color,
+			materialsLoadGoogleFonts,
+			materialsFontFamily,
+			materialsFontWeight,
+			materialsFontSubset,
+			materialsFontSize,
+			materialsFontSizeType,
+			materialsFontSizeTablet,
+			materialsFontSizeMobile,
+			materialsLineHeight,
+			materialsLineHeightType,
+			materialsLineHeightTablet,
+			materialsLineHeightMobile,		
 	} = props.attributes
 
 	var selectors = {
-		" .block-editor-rich-text__editable.uagb-materials__label": {
-			"font-size" : generateCSSUnit( toolsFontSize, toolsFontSizeType ),
-			"line-height" : generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
-			"font-family": toolsFontFamily,
-			"font-weight": toolsFontWeight,
-			"color": icon_color,
+		" .uagb-materials .block-editor-rich-text__editable.uagb-materials__label": {
+			"font-size" : generateCSSUnit( materialsFontSize, materialsFontSizeType ),
+			"line-height" : generateCSSUnit( materialsLineHeight, materialsLineHeightType ),
+			"font-family": materialsFontFamily,
+			"font-weight": materialsFontWeight,
+			"color": materials_icon_color,
 		},
 
-		" .block-editor-rich-text__editable.uagb-materials__label:hover": {
-			"color": icon_hover_color,
+		" .uagb-materials .block-editor-rich-text__editable.uagb-materials__label:hover": {
+			"color": materials_icon_hover_color,
 		},
 		
 	}

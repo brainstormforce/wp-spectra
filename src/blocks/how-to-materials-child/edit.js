@@ -158,6 +158,8 @@ class UAGBHowToMaterialsChild extends Component {
 
 		var element = document.getElementById( "uagb-style-how-to-materials-child-" + this.props.clientId )
 
+		console.log(element)
+
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}

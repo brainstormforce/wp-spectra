@@ -111,6 +111,10 @@ const attributes = {
 		type: "number",
 		default: 30,
 	},
+	Cost:{
+		type: "number",
+		default: 30,
+	},
 	imgWidth :{
 		type: "number",
 		default: 120,
@@ -118,6 +122,7 @@ const attributes = {
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
+		default: "How to configure HowTo Schema in UAG?",
 	},
 	headingId: {
 		type: "string",				
@@ -125,7 +130,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: "",
+		default: "So to get started, you will just need to drag-n-drop the How-to Schema block in the Guternburg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements.",
 	},
 	headingAlign: {
 		type: "string",
