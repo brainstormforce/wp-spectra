@@ -680,8 +680,33 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 			}
+			if ( is_front_page() || is_archive() || is_home() || is_search() ) {
+				global $wp_query;
+				$cached_wp_query = $wp_query;
+				
+				if ( 'twentyseventeen' === get_template() ) {
+					
+					$panel_count = twentyseventeen_panel_count();
+					
+					$all_posts = array();
+					
+					for ( $i = 1; $i <= $panel_count; $i++ ) {
+						$mod_key = 'panel_' . $i;
+						$post_id = get_theme_mod( $mod_key );
+						$post = get_post( $post_id );
+						array_push( $all_posts, $post );
+					}
+					
+					foreach( $all_posts as $post ) {
 
-			if ( is_single() || is_page() || is_404() ) {
+						$this->get_generated_stylesheet( $post );	
+					}
+					
+				}
+				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					$this->get_generated_stylesheet( $post );
+				}
+			} else if ( is_single() || is_page() || is_404() ) {
 
 				global $post;
 				$this_post = $post;
@@ -698,15 +723,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
 				$this->get_generated_stylesheet( $this_post );
-
-			} elseif ( is_archive() || is_home() || is_search() ) {
-
-				global $wp_query;
-				$cached_wp_query = $wp_query;
-
-				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-					$this->get_generated_stylesheet( $post );
-				}
+				
 			}
 
 			self::file_write( self::$stylesheet, 'css' );
@@ -1522,7 +1539,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
+			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-new-' . $type, true );
 
 			$var = ( 'css' === $type ) ? 'css' : 'js';
 
@@ -1538,7 +1555,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					self::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 					// Update the post meta.
-					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+					update_post_meta( get_the_ID(), 'uagb_style_timestamp-new-' . $type, $timestamp );
 
 					if ( is_array( self::$css_file_handler ) ) {
 						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1570,7 +1587,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							self::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 							// Update the post meta.
-							update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
+							update_post_meta( get_the_ID(), 'uagb_style_timestamp-new-' . $type, $new_timestamp );
 
 							// Delete old file.
 							wp_delete_file( $assets_info[ $var ] );
