@@ -70,7 +70,24 @@ function styling( props ) {
 		priceLineHeightTablet,
 		priceLineHeightMobile,
 		priceLoadGoogleFonts,
+		//tools attr
+		icon_color,
+		icon_hover_color,
+		toolsLoadGoogleFonts,
+		toolsFontFamily,
+		toolsFontWeight,
+		toolsFontSubset,
+		toolsFontSize,
+		toolsFontSizeType,
+		toolsFontSizeTablet,
+		toolsFontSizeMobile,
+		toolsLineHeightType,
+		toolsLineHeight,
+		toolsLineHeightTablet,
+		toolsLineHeightMobile,
 	} = props.attributes
+
+	console.log(icon_color)
 
 	var selectors = {
 		" .uagb-separator-wrap": {
@@ -102,7 +119,15 @@ function styling( props ) {
 			"font-size": generateCSSUnit( estcostFontSize, estcostFontSizeType ),
 			"line-height": generateCSSUnit( estcostLineHeight, estcostLineHeightType ),
 			"color": showEstcostcolor,
-		}
+		},
+	}
+
+	selectors[".block-editor-rich-text__editable.uagb-tools__label"] = {
+		"color": icon_color,
+	}
+
+	selectors[".block-editor-rich-text__editable.uagb-tools__label:hover"] = {
+		"color": icon_hover_color,
 	}
 
 	selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {

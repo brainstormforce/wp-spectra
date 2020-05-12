@@ -53,11 +53,7 @@ const { withSelect } = wp.data
 
 const { Component, Fragment } = wp.element
 
-const ALLOWED_TOOLS_BLOCKS = [ "uagb/how-to-tools-child" ]
-
-const ALLOWED_MATERIALS_BLOCKS = [ "uagb/how-to-materials-child" ]
-
-const ALLOWED_STEPS_BLOCKS = [ "uagb/how-to-steps-child" ]
+const ALLOWED_BLOCKS = [ 'uagb/info-box' ];
 
 let imageSizeOptions = [
 	{ value: "thumbnail", label: __( "Thumbnail" ) },
@@ -91,6 +87,23 @@ class UAGBHowTo extends Component {
 		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
+
+	savetools( value, index ) {
+			const { attributes, setAttributes } = this.props
+			const { tools } = attributes
+
+			const newItems = tools.map( ( item, thisIndex ) => {
+			if ( index === thisIndex ) {
+				item = { ...item, ...value }
+			}
+
+			return item
+		} )
+
+			setAttributes( {
+				tools: newItems,
+			} )
+		}
 
 	/*
 	 * Heading Tag Change
@@ -244,6 +257,38 @@ class UAGBHowTo extends Component {
 				estcostLineHeightTablet,
 				time,
 				cost,
+				//Tools attributes
+				add_required_tools,
+				icon_color,
+				icon_hover_color,
+				toolsLoadGoogleFonts,
+				toolsFontFamily,
+				toolsFontWeight,
+				toolsFontSubset,
+				toolsFontSize,
+				toolsFontSizeType,
+				toolsFontSizeTablet,
+				toolsFontSizeMobile,
+				toolsLineHeightType,
+				toolsLineHeight,
+				toolsLineHeightTablet,
+				toolsLineHeightMobile,
+				//materials
+				add_required_materials,
+				materials_icon_color,
+				materials_icon_hover_color,
+				materialsLoadGoogleFonts,
+				materialsFontFamily,
+				materialsFontWeight,
+				materialsFontSubset,
+				materialsFontSize,
+				materialsFontSizeType,
+				materialsFontSizeTablet,
+				materialsFontSizeMobile,
+				materialsLineHeight,
+				materialsLineHeightType,
+				materialsLineHeightTablet,
+				materialsLineHeightMobile,
 			},
 		} = this.props
 
@@ -252,6 +297,8 @@ class UAGBHowTo extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
 		}
+
+		console.log(element)
 		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
@@ -295,42 +342,162 @@ class UAGBHowTo extends Component {
 			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
 
 		}
-		// else{
-		// 	image_icon_html = <img className="uagb-howto__source-image" src="http://localhost/wordpress-uae/wp-content/plugins/elementor/assets/images/placeholder.png" />
-		// }
 
-		// console.log(showTotaltime);
-		// console.log(showEstcost);
+		// const getHowTostepsTemplate = memoize( ( tools_block, steps ) => {
+		// 	return times( tools_block, n => [ "uagb/how-to-steps-child", steps[n] ] )
+		// } )
+
+		// console.log(steps_count)
+		// console.log(steps)
+
+		// const getHowTochildTemplate = memoize( ( tools_block, steps ) => {
+		// 	return times( tools_block, n => [ "uagb/info-box", {} ] )
+		// } )
+
+		const getInfoBoxAsChild = [ [ 'uagb/info-box', {} ] ];
 
 
-		const getHowToToolsTemplate = memoize( ( tools_block, tools ) => {
-			return times( tools_block, n => [ "uagb/how-to-tools-child", tools[n] ] )
-		} )
-
-		const getHowToMaterialsTemplate = memoize( ( tools_block, materials ) => {
-			return times( tools_block, n => [ "uagb/how-to-materials-child", materials[n] ] )
-		} )
-
-		const getHowTostepsTemplate = memoize( ( tools_block, steps ) => {
-			return times( tools_block, n => [ "uagb/how-to-steps-child", steps[n] ] )
-		} )
-
-		console.log(time)
+		// const TEMPLATE = [ [ 'core/columns', {}, [
+		//     [ 'core/column', {}, [
+		//         [ 'core/image' ],
+		//     ] ],
+		//     [ 'core/column', {}, [
+		//         [ 'core/paragraph', { placeholder: 'Enter side content...' } ],
+		//     ] ],
+		// ] ] ];
+		// console.log(getHowTochildTemplate)
 
 		// console.log(steps_count)
 
-		// console.log(getHowTostepsTemplate)
+		const iconColorControls = (index) => {
+
+			// console.log(tools[index].icon_color)
+			// console.log(icon_color)
+
+			let color_control = ""
+			let color_control_hover = ""
+
+			color_control = (
+				<Fragment>
+					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+					<ColorPalette
+						value={ icon_color }
+						onChange={ ( value ) => setAttributes( { icon_color: value } ) }
+						allowReset
+					/>
+				</Fragment>
+			)
+			color_control_hover = (
+				<Fragment>
+					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
+					<ColorPalette
+						value={ icon_hover_color }
+						onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
+						allowReset
+					/>
+				</Fragment>
+			)
+
+		return (
+				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+					activeClass="active-tab"
+					tabs={ [
+						{
+							name: "normal",
+							title: __( "Normal" ),
+							className: "uagb-normal-tab",
+						},
+						{
+							name: "hover",
+							title: __( "Hover" ),
+							className: "uagb-hover-tab",
+						},
+					] }>
+					{
+						( tabName ) => {
+							let color_tab
+							if( "normal" === tabName.name ) {
+								color_tab = color_control
+							}else {
+								color_tab = color_control_hover
+							}
+							return <div>{ color_tab }</div>
+						}
+					}
+				</TabPanel>
+			)
+		}
 
 
 		return (
 			<Fragment>
-				<BlockControls key='controls'>
+				<BlockControls key='index'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
 					/>
 				</BlockControls>
 				<InspectorControls>
+					<PanelBody title={ __( "Materials Count" ) } initialOpen={ true }>
+						<RangeControl
+							label={ __( "Number of Materials" ) }
+							value={ material_count }
+							onChange={ newCount => {
+
+								let cloneIcons = [ ...materials ]
+
+								if ( cloneIcons.length < newCount ) {
+
+									const incAmount = Math.abs( newCount - cloneIcons.length )
+
+									{ times( incAmount, n => {
+
+										cloneIcons.push( {
+											"add_required_materials": "- A WordPress Website" + ( cloneIcons.length + 1 ),
+											"materials_icon_color": cloneIcons[ 0 ].materials_icon_color,
+											"materials_icon_hover_color": cloneIcons[ 0 ].materials_icon_hover_color,
+										} )
+									} ) }
+
+									setAttributes( { materials: cloneIcons } )
+								}
+								setAttributes( { material_count: newCount } )
+							} }
+							min={ 1 }
+							max={ 12 }
+						/>
+						{ times( material_count, n => iconColorControls( n ) ) }
+					</PanelBody>
+					<PanelBody title={ __( "Tools Count" ) } initialOpen={ true }>
+						<RangeControl
+							label={ __( "Number of Tools" ) }
+							value={ tools_count }
+							onChange={ newCount => {
+
+								let cloneIcons = [ ...tools ]
+
+								if ( cloneIcons.length < newCount ) {
+
+									const incAmount = Math.abs( newCount - cloneIcons.length )
+
+									{ times( incAmount, n => {
+
+										cloneIcons.push( {
+											"add_required_tools": "- A Computer" + ( cloneIcons.length + 1 ),
+											"icon_color": cloneIcons[ 0 ].icon_color,
+											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
+										} )
+									} ) }
+
+									setAttributes( { tools: cloneIcons } )
+								}
+								setAttributes( { tools_count: newCount } )
+							} }
+							min={ 1 }
+							max={ 12 }
+						/>
+						{ times( tools_count, n => iconColorControls( n ) ) }
+					</PanelBody>
 				<PanelBody title={ __( "General" ) }>
 					<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
@@ -610,11 +777,36 @@ class UAGBHowTo extends Component {
 							unstableOnSplit={ this.splitBlock }
 							onnRemove={ () => onReplace( [] ) }
 						/>
-						<InnerBlocks
-							template={ getHowToToolsTemplate( tools_count, tools ) }
-							templateLock={ false }
-							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
-						/>
+						<div className="uagb-how-to-tools">
+						{
+						tools.map( ( tools, index ) => {
+
+								return (
+									<div
+										className={ classnames(
+											`uagb-how-to-tools-${index}`,
+											"uagb-how-to-tools-child__wrapper",
+											className,
+											`uagb-block-${ this.props.clientId }`
+										) }
+										key={ index }
+									>
+										<div className="uagb-tools">
+											<RichText
+												tagName="div"
+												placeholder={ __( "Requirements Tools:" ) }
+												value={ tools.add_required_tools }
+												onChange={ ( value ) => setAttributes( { add_required_tools: value } ) }
+												className='uagb-tools__label'
+												placeholder={ __( "Description" ) }
+												multiline={false}
+												allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+											/>
+										</div>
+									</div>
+								)
+						})
+					}
 					</div>
 					<div className="uagb-how-to-materials__wrap">
 						<RichText
@@ -627,11 +819,37 @@ class UAGBHowTo extends Component {
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
-						<InnerBlocks
-							template={ getHowToMaterialsTemplate( material_count, materials ) }
-							templateLock={ false }
-							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
-						/>
+					</div>
+					<div className="uagb-how-to-materials">
+						{
+						materials.map( ( materials, index ) => {
+
+								return (
+									<div
+										className={ classnames(
+											`uagb-how-to-materials-${index}`,
+											"uagb-how-to-materials-child__wrapper",
+											className,
+											`uagb-block-${ this.props.clientId }`
+										) }
+									>
+										<div className="uagb-materials">
+											<RichText
+												tagName="div"
+												placeholder={ __( "Requirements Materials:" ) }
+												value={ materials.add_required_materials }
+												onChange={ ( value ) => setAttributes( { add_required_materials: value } ) }
+												className='uagb-materials__label'
+												placeholder={ __( "Description" ) }
+												multiline={false}
+												allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+											/>
+										</div>
+									</div>
+								)
+						})
+					}
+					</div>
 					</div>
 					<div className="uagb-how-to-steps__wrap">
 						<RichText
@@ -643,14 +861,14 @@ class UAGBHowTo extends Component {
 							onMerge={ mergeBlocks }
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
-						/>	
-						<InnerBlocks
-							template={ getHowTostepsTemplate( steps_count, steps ) }
-							templateLock={ false }
-							allowedBlocks={ ALLOWED_STEPS_BLOCKS } 
 						/>
-					</div>
-							
+						<div className="uagb-howto-steps__wrap">
+						<InnerBlocks
+							template={ getInfoBoxAsChild }
+							allowedBlocks={ ALLOWED_BLOCKS }
+						/>
+					</div>	
+					</div>		
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
