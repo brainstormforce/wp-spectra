@@ -38,26 +38,31 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 		 */
 		public function __construct() {
 
-            add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
-        }
-        public function generate_stylesheet() {
-	
-            $panel_count = twentyseventeen_panel_count();
-            
-            $all_posts = array();
-            
-            for ( $i = 1; $i <= $panel_count; $i++ ) {
-                $mod_key = 'panel_' . $i;
-                $post_id = get_theme_mod( $mod_key );
-                $post = get_post( $post_id );
-                array_push( $all_posts, $post );
-            }
-            
-            foreach( $all_posts as $post ) {
+			add_action( 'wp', array( $this, 'generate_stylesheet' ), 99 );
+		}
+		/**
+		 * Generates stylesheet and appends in head tag.
+		 *
+		 * @since x.x.x
+		 */
+		public function generate_stylesheet() {
 
-                UAGB_Helper::get_instance()->get_generated_stylesheet( $post );	
-            }
-        }
-    }
+			$panel_count = twentyseventeen_panel_count();
+
+			$all_posts = array();
+
+			for ( $i = 1; $i <= $panel_count; $i++ ) {
+				$mod_key = 'panel_' . $i;
+				$post_id = get_theme_mod( $mod_key );
+				$post    = get_post( $post_id );
+				array_push( $all_posts, $post );
+			}
+
+			foreach ( $all_posts as $post ) {
+
+				UAGB_Helper::get_instance()->get_generated_stylesheet( $post );
+			}
+		}
+	}
 }
 UAGB_Twenty_Seventeen_Compatibility::get_instance();
