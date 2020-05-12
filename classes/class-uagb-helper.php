@@ -680,15 +680,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 			}
-			if ( is_archive() || is_home() || is_search() ) {
-				global $wp_query;
-				$cached_wp_query = $wp_query;
-				
-				
-				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-					$this->get_generated_stylesheet( $post );
-				}
-			} else if ( is_single() || is_page() || is_404() ) {
+
+			if ( is_single() || is_page() || is_404() ) {
 
 				global $post;
 				$this_post = $post;
@@ -705,7 +698,15 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				$this_post = apply_filters( 'uagb_post_for_stylesheet', $this_post );
 
 				$this->get_generated_stylesheet( $this_post );
-				
+
+			} elseif ( is_archive() || is_home() || is_search() ) {
+
+				global $wp_query;
+				$cached_wp_query = $wp_query;
+
+				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					$this->get_generated_stylesheet( $post );
+				}
 			}
 
 			self::file_write( self::$stylesheet, 'css' );

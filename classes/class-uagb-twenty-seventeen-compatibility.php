@@ -55,7 +55,7 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
             
             foreach( $all_posts as $post ) {
 
-                UAGB_Helper::get_generated_stylesheet( $post );	
+                UAGB_Helper::get_instance()->get_generated_stylesheet( $post );	
             }
         }
     }
