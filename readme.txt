@@ -159,7 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Advanced Columns - Handled background image attachment type on smaller devices.
 * Fix: Section - Handled background image attachment type on smaller devices.
 * Fix: Icon List - Links overlapping on the Label text.
-* Fix: Icon List - Image shrink issue due to lenght of the label.
+* Fix: Icon List - Label length mismatch issue when Image is used for the Icon List.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
