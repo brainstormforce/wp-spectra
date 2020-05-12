@@ -120,6 +120,14 @@ function styling( props ) {
 			"line-height": generateCSSUnit( estcostLineHeight, estcostLineHeightType ),
 			"color": showEstcostcolor,
 		},
+		" .block-editor-rich-text__editable.uagb-tools__label": {
+			// "text-align": headingAlign,
+			"font-family": toolsFontFamily,
+			"font-weight": toolsFontWeight,
+			"font-size": generateCSSUnit( toolsFontSize, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
+			"color": icon_color,
+		},
 	}
 
 	selectors[".block-editor-rich-text__editable.uagb-tools__label"] = {
