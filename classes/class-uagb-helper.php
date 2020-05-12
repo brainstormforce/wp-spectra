@@ -658,7 +658,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					$id        = get_option( 'woocommerce_myaccount_page_id' );
 					$this_post = get_post( $id );
-
+					
 				} elseif ( is_checkout() ) {
 
 					$id        = get_option( 'woocommerce_checkout_page_id' );
@@ -677,7 +677,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( is_object( $this_post ) ) {
 					$this->get_generated_stylesheet( $this_post );
-					return;
 				}
 			}
 
