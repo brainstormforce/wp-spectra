@@ -67,6 +67,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		public function loader() {
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
+
+			if ( 'twentyseventeen' === get_template() ) {
+				
+				require_once UAGB_DIR . 'classes/class-uagb-twenty-seventeen-compatibility.php';
+			}
 		}
 
 		/**

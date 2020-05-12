@@ -680,29 +680,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					return;
 				}
 			}
-			if ( is_front_page() || is_archive() || is_home() || is_search() ) {
+			if ( is_archive() || is_home() || is_search() ) {
 				global $wp_query;
 				$cached_wp_query = $wp_query;
 				
-				if ( 'twentyseventeen' === get_template() ) {
-					
-					$panel_count = twentyseventeen_panel_count();
-					
-					$all_posts = array();
-					
-					for ( $i = 1; $i <= $panel_count; $i++ ) {
-						$mod_key = 'panel_' . $i;
-						$post_id = get_theme_mod( $mod_key );
-						$post = get_post( $post_id );
-						array_push( $all_posts, $post );
-					}
-					
-					foreach( $all_posts as $post ) {
-
-						$this->get_generated_stylesheet( $post );	
-					}
-					
-				}
+				
 				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
 					$this->get_generated_stylesheet( $post );
 				}
