@@ -161,13 +161,15 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Links overlapping on the Label text.
 * Fix: Icon List - Label length mismatch issue when Image is used for the Icon List.
 * Fix: File Generation issue on WooCommerce Pages.
+* Fix: Multi Buttons - Spacing not working in the editor.
+* Fix: Multi Buttons - Full Width feature not working.
+* Fix: Multi Buttons - Alignment option shifted to side panel.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
 * Fix: Multi Buttons - Changed default alignment to center.
 * Fix: Social Share - Changed default alignment to center.
 * Fix: Team - Fixed the Margin issue in Social Share icons.
-
 
 = 1.14.9 =
 * Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.
