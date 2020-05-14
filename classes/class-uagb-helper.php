@@ -177,8 +177,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					wp_enqueue_style( $val );
 				}
 			}
-			// var_dump(self::$file_generation);
-			// wp_die();
 
 			if ( 'enabled' === self::$file_generation ) {
 				$file_handler = self::$css_file_handler;
@@ -657,12 +655,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_stylesheet() {
 
-			
-			// die();
-
-
-
-
 			$this_post = array();
 
 			if ( class_exists( 'WooCommerce' ) ) {
@@ -676,7 +668,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 					$id        = get_option( 'woocommerce_myaccount_page_id' );
 					$this_post = get_post( $id );
-
+					
 				} elseif ( is_checkout() ) {
 
 					$id        = get_option( 'woocommerce_checkout_page_id' );
@@ -695,7 +687,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( is_object( $this_post ) ) {
 					$this->get_generated_stylesheet( $this_post );
-					return;
 				}
 			}
 
@@ -722,13 +713,9 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				global $wp_query;
 				$cached_wp_query = $wp_query;
 
-				
-
 				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-					// var_dump($post);
 					$this->get_generated_stylesheet( $post );
 				}
-				// die();
 			}
 
 			self::file_write( self::$stylesheet, 'css' );
@@ -741,8 +728,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.7.0
 		 */
 		public function get_generated_stylesheet( $this_post ) {
-
-			// var_dump($this_post);die();
 
 			if ( ! is_object( $this_post ) ) {
 				return;
@@ -1546,7 +1531,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
+			$post_timestamp = get_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, true );
 
 			$var = ( 'css' === $type ) ? 'css' : 'js';
 
@@ -1562,7 +1547,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					self::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 					// Update the post meta.
-					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+					update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $timestamp );
 
 					if ( is_array( self::$css_file_handler ) ) {
 						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1594,7 +1579,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							self::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 							// Update the post meta.
-							update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
+							update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $new_timestamp );
 
 							// Delete old file.
 							wp_delete_file( $assets_info[ $var ] );
