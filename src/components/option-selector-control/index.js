@@ -1,9 +1,4 @@
 /**
- * External dependencies.
- */
-import times from 'lodash';
-
-/**
  * WordPress dependencies
  */
  const {
@@ -27,25 +22,25 @@ const { __ } = wp.i18n
  */
 const DEFAULT_OPTIONS = [
 	{
-		value: 1,
+		value: "5",
 		/* translators: abbreviation for small size */
 		label: __( 'S' ),
 		tooltip: __( 'Small' ),
 	},
 	{
-		value: 2,
+		value: "15",
 		/* translators: abbreviation for medium size */
 		label: __( 'M' ),
 		tooltip: __( 'Medium' ),
 	},
 	{
-		value: 3,
+		value: "20",
 		/* translators: abbreviation for large size */
 		label: __( 'L' ),
 		tooltip: __( 'Large' ),
 	},
 	{
-		value: 4,
+		value: "30",
 		/* translators: abbreviation for extra large size */
 		label: __( 'XL' ),
 		tooltip: __( 'Extra Large' ),
@@ -53,7 +48,7 @@ const DEFAULT_OPTIONS = [
 ];
 
 const NONE_OPTION = {
-	value: 0,
+	value: "0",
 	label: __( 'None' ),
 	tooltip: __( 'None' ),
 };
@@ -88,7 +83,7 @@ export default class OptionSelectorControl extends Component {
 				max={ advancedMaxValue }
 			/> :
 
-			<BaseControl id={ `uagb-option-selector-${ kebabCase( label ) }` } label={ label }>
+			<BaseControl id={ `uagb-option-selector-${ label }` } label={ label }>
 				<PanelRow>
 					<ButtonGroup aria-label={ label }>
 

@@ -307,7 +307,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'max-width' => $inner_width,
 				),
 				' .uagb-column__inner-wrap' => array(
-					'padding' => UAGB_Helper::get_css_value( $attr['columnGap'], 'px' )
+					'padding' => UAGB_Helper::get_css_value( $attr['gutter'], 'px' )
 				),
 				' .uagb-columns__shape-top svg' => array(
 					'height' => UAGB_Helper::get_css_value( $attr['topHeight'], 'px' )

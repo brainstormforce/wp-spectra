@@ -1,6 +1,8 @@
 /**
  * Returns Dynamic Generated CSS
  */
+import OptionSelectorControl from '../../components/option-selector-control'
+import gutterOptions from '../../components/gutter-options'
 
 import inlineStyles from "./inline-styles"
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
@@ -64,6 +66,7 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
+		gutter,
 	} = props.attributes
 
 	let max_width = "100%"
@@ -91,7 +94,7 @@ function styling( props ) {
 			"max-width" : max_width
 		},
 		" .uagb-column__inner-wrap" : {
-			"padding" : generateCSSUnit( columnGap, "px" )
+			"padding" : generateCSSUnit( gutter, "px" )
 		},
 		" .uagb-columns__shape-top svg" : {
 			width: "calc( " + topWidth + "% + 1.3px )",

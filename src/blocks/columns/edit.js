@@ -2,8 +2,8 @@
  * BLOCK: UAGB - Columns Edit Class
  */
 
- import OptionSelectorControl from '../../components/option-selector-control';
- import gutterOptions from '../../utils/gutter-options';
+import OptionSelectorControl from '../../components/option-selector-control'
+import gutterOptions from '../../components/gutter-options'
 
 // Import classes
 import classnames from "classnames"
@@ -222,6 +222,7 @@ class UAGBColumns extends Component {
 			boxShadowBlur,
 			boxShadowSpread,
 			boxShadowPosition,
+			gutter,
 		} = attributes
 
 		const CustomTag = `${tag}`
@@ -503,7 +504,7 @@ class UAGBColumns extends Component {
 
 		const reverse_tablet = ( reverseTablet ) ? "uagb-columns__reverse-tablet" : ""
 
-		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""
+		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""			
 
 		return (
 			<Fragment>
@@ -605,18 +606,11 @@ class UAGBColumns extends Component {
 								</Fragment>
 							 )
 						}
-						<SelectControl
-							label={ __( "Column Gap" ) }
-							value={ columnGap }
-							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
-							options={ [
-								{ value: "10", label: __( "Default (10px)" ) },
-								{ value: "0", label: __( "No Gap (0px)" ) },
-								{ value: "5", label: __( "Narrow (5px)" ) },
-								{ value: "15", label: __( "Extended (15px)" ) },
-								{ value: "20", label: __( "Wide (20px)" ) },
-								{ value: "30", label: __( "Wider (30px)" ) }
-							] }
+						<OptionSelectorControl
+							label={ __( 'Gutter' ) }
+							currentOption={ gutter }
+							options={ gutterOptions }
+							onChange={ ( gutter ) => setAttributes( { gutter } ) }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings." ) }
 						/>
 						<SelectControl
@@ -1249,7 +1243,7 @@ class UAGBColumns extends Component {
 						`uagb-columns__edit-${ active }`,
 						`uagb-columns__stack-${stack}`,
 						`uagb-columns__valign-${vAlign}`,
-						`uagb-columns__gap-${columnGap}`,
+						`uagb-columns__gap-${gutter}`,
 						`align${ align }`,
 						reverse_tablet,
 						reverse_mobile,

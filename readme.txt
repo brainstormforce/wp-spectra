@@ -156,6 +156,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.14.10 =
+* Improvement: Advanced Columns : Added Gutter for column gap.
+
+= 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
 * Fix: Multi Buttons - Changed default alignment to center.
 * Fix: Social Share - Changed default alignment to center.
