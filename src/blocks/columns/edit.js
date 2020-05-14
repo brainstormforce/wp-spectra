@@ -2,6 +2,9 @@
  * BLOCK: UAGB - Columns Edit Class
  */
 
+ import OptionSelectorControl from '../../components/option-selector-control';
+ import gutterOptions from '../../utils/gutter-options';
+
 // Import classes
 import classnames from "classnames"
 import styling from "./styling"

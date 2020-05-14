@@ -149,13 +149,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$block_list_for_assets = self::$current_block_list;
 
+
+
+
 			$blocks = UAGB_Config::get_block_attributes();
 
+
+
 			foreach ( $block_list_for_assets as $key => $curr_block_name ) {
+
+				
+				
 
 				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
 
 				$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
+
+				
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
@@ -167,6 +177,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					wp_enqueue_style( $val );
 				}
 			}
+			// var_dump(self::$file_generation);
+			// wp_die();
 
 			if ( 'enabled' === self::$file_generation ) {
 				$file_handler = self::$css_file_handler;
@@ -645,6 +657,12 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public function generate_stylesheet() {
 
+			
+			// die();
+
+
+
+
 			$this_post = array();
 
 			if ( class_exists( 'WooCommerce' ) ) {
@@ -699,14 +717,18 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				$this->get_generated_stylesheet( $this_post );
 
-			} elseif ( is_archive() || is_home() || is_search() ) {
+			} elseif ( is_archive() || is_home() || is_search()  ) {
 
 				global $wp_query;
 				$cached_wp_query = $wp_query;
 
+				
+
 				foreach ( $cached_wp_query as $post ) { // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+					// var_dump($post);
 					$this->get_generated_stylesheet( $post );
 				}
+				// die();
 			}
 
 			self::file_write( self::$stylesheet, 'css' );
@@ -719,6 +741,8 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @since 1.7.0
 		 */
 		public function get_generated_stylesheet( $this_post ) {
+
+			// var_dump($this_post);die();
 
 			if ( ! is_object( $this_post ) ) {
 				return;
