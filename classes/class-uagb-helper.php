@@ -149,13 +149,23 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			$block_list_for_assets = self::$current_block_list;
 
+
+
+
 			$blocks = UAGB_Config::get_block_attributes();
 
+
+
 			foreach ( $block_list_for_assets as $key => $curr_block_name ) {
+
+				
+				
 
 				$js_assets = ( isset( $blocks[ $curr_block_name ]['js_assets'] ) ) ? $blocks[ $curr_block_name ]['js_assets'] : array();
 
 				$css_assets = ( isset( $blocks[ $curr_block_name ]['css_assets'] ) ) ? $blocks[ $curr_block_name ]['css_assets'] : array();
+
+				
 
 				foreach ( $js_assets as $asset_handle => $val ) {
 					// Scripts.
@@ -698,7 +708,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				$this->get_generated_stylesheet( $this_post );
 
-			} elseif ( is_archive() || is_home() || is_search() ) {
+			} elseif ( is_archive() || is_home() || is_search()  ) {
 
 				global $wp_query;
 				$cached_wp_query = $wp_query;
