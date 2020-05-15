@@ -122,7 +122,7 @@ const attributes = {
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
-		default: "How to configure HowTo Schema in UAG?",
+		default: "How To Configure How-To Schema In Ultimate Addons For Gutenberg?",
 	},
 	headingId: {
 		type: "string",				
@@ -130,7 +130,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: "So to get started, you will just need to drag-n-drop the How-to Schema block in the Guternburg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements.",
+		default: "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.",
 	},
 	headingAlign: {
 		type: "string",

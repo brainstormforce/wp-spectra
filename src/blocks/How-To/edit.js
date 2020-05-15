@@ -9,6 +9,7 @@ import map from "lodash/map"
 import memoize from "memize"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
+// import placeholder from "./placeholder"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -298,7 +299,7 @@ class UAGBHowTo extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-		console.log(element)
+
 		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
@@ -343,29 +344,13 @@ class UAGBHowTo extends Component {
 
 		}
 
-		// const getHowTostepsTemplate = memoize( ( tools_block, steps ) => {
-		// 	return times( tools_block, n => [ "uagb/how-to-steps-child", steps[n] ] )
-		// } )
+		console.log(mainimage)
 
-		// console.log(steps_count)
-		// console.log(steps)
+		console.log('admin/assets/images/welcome-screen-astra.jpg');
 
-		// const getHowTochildTemplate = memoize( ( tools_block, steps ) => {
-		// 	return times( tools_block, n => [ "uagb/info-box", {} ] )
-		// } )
-
-		const getInfoBoxAsChild = [ [ 'uagb/info-box', {} ] ];
-
-
-		// const TEMPLATE = [ [ 'core/columns', {}, [
-		//     [ 'core/column', {}, [
-		//         [ 'core/image' ],
-		//     ] ],
-		//     [ 'core/column', {}, [
-		//         [ 'core/paragraph', { placeholder: 'Enter side content...' } ],
-		//     ] ],
-		// ] ] ];
-		// console.log(getHowTochildTemplate)
+		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
+		showPrefix:false,seperatorStyle:"none",
+		} ] ];
 
 		// console.log(steps_count)
 
