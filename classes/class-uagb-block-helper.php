@@ -16,6 +16,43 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	 */
 	class UAGB_Block_Helper {
 
+		public static function get_how_to_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/how-to']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$selectors = array(
+					' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
+			span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
+					'display' => "inline-flex",
+				),
+
+			' span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
+			span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
+					'display' => "inline-flex",
+				),
+
+			' span.uagb-howto__cost-wrap' => array(
+					'display' => "block",
+				),
+
+			);
+
+			// var_dump($defaults);wp_die();
+
+			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-how-to-';
+
+			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
+
+			$generated_css = array(
+				'desktop' => $desktop,
+				// 'tablet'  => $tablet,
+				// 'mobile'  => $mobile,
+			);
+			
+			return $generated_css;
+		}
+
 		/**
 		 * Get Section Block CSS
 		 *

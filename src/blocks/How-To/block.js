@@ -6,7 +6,7 @@ import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
 // import deprecated from "./deprecated"
-// import save from "./save"
+import save from "./save"
 import "./style.scss"
 import "./editor.scss"
 
@@ -20,8 +20,6 @@ const {
 const {
 	RichText
 } = wp.blockEditor
-
-console.log(attributes)
 
 
 registerBlockType( "uagb/how-to", {
@@ -39,6 +37,6 @@ registerBlockType( "uagb/how-to", {
 	},
 	attributes,
 	edit,
-	// save,
+	save,
 	// deprecated,
 } )

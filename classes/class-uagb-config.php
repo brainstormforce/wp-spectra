@@ -30,6 +30,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static $block_assets = null;
 
+		public static function ub_register_how_to_block(){
+			var_dump(self::$block_attributes);
+			echo "I'm here";
+		    wp_die();
+		}
+
 		/**
 		 * Get Widget List.
 		 *
@@ -39,6 +45,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static function get_block_attributes() {
 
+			// if(  )
+			// var_dump(self::$block_attributes["uagb/how-to"],"uagb/how-to");
+        
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
 					'uagb/advanced-heading'   => array(
@@ -86,8 +95,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/how-to'   => array(
 						'slug'        => '',
-						'title'       => __( 'How To Schema', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows creating How-to pages or articles. And on top of it, you will have Schema Markup added to the page, without a single line of code.', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'How To Configure How-To Schema In Ultimate Addons For Gutenberg?', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'            => false,
@@ -158,15 +167,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'estcostLineHeight'		=> '',
 							'estcostLineHeightMobile'=> '',
 							'estcostLineHeightTablet'=> '',
-						),
-					),
-					'uagb/how-to-tools-child' => array(
-						'slug'        => '',
-						'title'       => __( 'Tools', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-						'attributes'  => array(
 							'add_required_tools'  => '- A Computer',
 							'icon_color'          => '#3a3a3a',
 							'icon_hover_color'    => '',
@@ -182,18 +182,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'toolsLineHeight'     	=> '',
 							'toolsLineHeightTablet' => '',
 							'toolsLineHeightMobile' => '',
-						),
-					),
-					'uagb/how-to-materials-child' => array(
-						'slug'        => '',
-						'title'       => __( 'Materials', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-						'attributes'  => array(
 							'add_required_materials'  => '- A WordPress Website.',
-							'materials_icon_color'          => '#3a3a3a',
-							'materials_icon_hover_color'    => '',
+							'materials_icon_color'    => '#3a3a3a',
+							'materials_icon_hover_color' => '',
 							'materialsLoadGoogleFonts' 	=> '',
 							'materialsFontFamily'     	=> '',
 							'materialsFontWeight'     	=> '',
@@ -206,48 +197,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'materialsLineHeight'     	=> '',
 							'materialsLineHeightTablet' => '',
 							'materialsLineHeightMobile' => '',
-						),
-					),
-					"uagb/how-to-steps-child" => array(
-						'slug'        => '',
-						'title'       => __( 'Steps', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to place an image or icon in a list format.', 'ultimate-addons-for-gutenberg' ),
-						'default'     => true,
-						'is_child'    => true,
-						'attributes'  => array(
-							'add_required_steps'  => 'Enter the HowTo Schema title you want',
-							'description' =>'Enter the description to your HowTo Schema',
-							'link'=>'',
-							'mainimage'=>'',
-							'align'=>'left',
-							'steps_icon_color'          => '#3a3a3a',
-							'steps_icon_hover_color'    => '',
-							'stepsLoadGoogleFonts' 	=> '',
-							'stepsFontFamily'     	=> '',
-							'stepsFontWeight'     	=> '',
-							'stepsFontSubset'     	=> '',
-							'stepsFontSize'       	=> '',
-							'stepsFontSizeType'   	=> '',
-							'stepsFontSizeTablet' 	=> '',
-							'stepsFontSizeMobile' 	=> '',
-							'stepsLineHeightType' 	=> '',
-							'stepsLineHeight'     	=> '',
-							'stepsLineHeightTablet' => '',
-							'stepsLineHeightMobile' => '',
-							'steps_desc_icon_color'      => '#3a3a3a',
-							'steps_desc_icon_hover_color'=> '',
-							'stepsdescLoadGoogleFonts' 	=> '',
-							'stepsdescFontFamily'     	=> '',
-							'stepsdescFontWeight'     	=> '',
-							'stepsdescFontSubset'     	=> '',
-							'stepsdescFontSize'       	=> '',
-							'stepsdescFontSizeType'   	=> '',
-							'stepsdescFontSizeTablet' 	=> '',
-							'stepsdescFontSizeMobile' 	=> '',
-							'stepsdescLineHeightType' 	=> '',
-							'stepsdescLineHeight'     	=> '',
-							'stepsdescLineHeightTablet' => '',
-							'stepsdescLineHeightMobile' => '',
 						),
 					),
 					'uagb/columns'            => array(

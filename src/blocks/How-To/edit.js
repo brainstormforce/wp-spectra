@@ -352,7 +352,7 @@ class UAGBHowTo extends Component {
 		showPrefix:false,seperatorStyle:"none",
 		} ] ];
 
-		// console.log(steps_count)
+		console.log(headingTitle)
 
 		const iconColorControls = (index) => {
 
