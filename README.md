@@ -164,7 +164,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Spacing not working in the editor.
 * Fix: Multi Buttons - Full Width feature not working.
 * Fix: Multi Buttons - Alignment option shifted to side panel.
-* Improvement: Advanced Columns : Added Gutter for column gap.
+* Improvement: Advanced Columns : UI Improvements (Column Gap option).
 
 ### 1.14.10 ###
 * Fix: Icon List - Typography not working on front-end.
