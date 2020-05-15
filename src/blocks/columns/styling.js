@@ -1,8 +1,6 @@
 /**
  * Returns Dynamic Generated CSS
  */
-import OptionSelectorControl from '../../components/option-selector-control'
-import gutterOptions from '../../components/gutter-options'
 
 import inlineStyles from "./inline-styles"
 import generateCSS from "../../../dist/blocks/uagb-controls/generateCSS"
