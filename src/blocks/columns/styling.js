@@ -66,7 +66,6 @@ function styling( props ) {
 		boxShadowBlur,
 		boxShadowSpread,
 		boxShadowPosition,
-		gutter,
 	} = props.attributes
 
 	let max_width = "100%"
@@ -94,7 +93,7 @@ function styling( props ) {
 			"max-width" : max_width
 		},
 		" .uagb-column__inner-wrap" : {
-			"padding" : generateCSSUnit( gutter, "px" )
+			"padding" : generateCSSUnit( columnGap, "px" )
 		},
 		" .uagb-columns__shape-top svg" : {
 			width: "calc( " + topWidth + "% + 1.3px )",

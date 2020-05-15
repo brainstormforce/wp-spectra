@@ -142,7 +142,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderRadius'           => '',
 							'borderColor'            => '',
 							'columnGap'              => '10',
-							'gutter'                 => '10',
 							'bottomType'             => 'none',
 							'bottomColor'            => '#333',
 							'bottomHeight'           => '',

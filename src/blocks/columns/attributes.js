@@ -28,10 +28,6 @@ const attributes = {
 		type: "string",
 		default: "10"
 	},
-	gutter: {
-		type: "string",
-		default: "10"
-	},
 	topPadding: {
 		type: "number",
 		default: 20
