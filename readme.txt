@@ -162,8 +162,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Links overlapping on the Label text.
 * Fix: Icon List - Label length mismatch issue when Image is used for the Icon List.
 * Fix: Multi Buttons - Spacing not working in the editor.
-* Fix: Multi Buttons - Full Width feature glitch fixed.
-* Fix: Multi Buttons - Alignment option shifted to side panel.
+* Fix: Multi Buttons - Full-Width feature glitch fixed.
+* Fix: Multi Buttons - Alignment option shifted to the side panel.
+* Fix: Table of Content - Extra space at the bottom in the Safari Browser when the Column count is more than 1.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
