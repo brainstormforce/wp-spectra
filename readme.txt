@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Spacing not working in the editor.
 * Fix: Multi Buttons - Full Width feature not working.
 * Fix: Multi Buttons - Alignment option shifted to side panel.
+* Fix: Table of Content - Extra space at the bottom in the Safari Browser when Column count is more than 1.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
