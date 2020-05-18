@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Spacing not working in the editor.
 * Fix: Multi Buttons - Full Width feature not working.
 * Fix: Multi Buttons - Alignment option shifted to side panel.
+* Fix: File Generation issue on WooCommerce Pages.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
