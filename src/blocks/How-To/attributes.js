@@ -111,7 +111,7 @@ const attributes = {
 		type: "number",
 		default: 30,
 	},
-	Cost:{
+	cost:{
 		type: "number",
 		default: 30,
 	},
@@ -341,6 +341,9 @@ const attributes = {
 		type: "boolean",
 		default: false	
 	},
+	schemaJsonData: {
+			type: "array"
+	}
 }
 
 export default attributes

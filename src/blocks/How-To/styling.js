@@ -87,7 +87,7 @@ function styling( props ) {
 		toolsLineHeightMobile,
 	} = props.attributes
 
-	console.log(icon_color)
+	// console.log(icon_color)
 
 	var selectors = {
 		" .uagb-separator-wrap": {

@@ -23,6 +23,8 @@ import "./style.scss"
 
 const { __ } = wp.i18n
 
+const { select, dispatch } = wp.data
+
 const {
 	registerBlockType,
 	createBlock
@@ -87,6 +89,80 @@ class UAGBHowTo extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId )
 		document.head.appendChild( $style )
+	}
+
+		componentDidUpdate() {
+		
+		const { attributes, setAttributes } = this.props
+		const { schemaJsonData } = attributes
+
+	// 	// console.log(this.props)
+		// console.log(this.props.attributes.headingTitle)
+		// console.log(this.props.attributes.headingDesc)
+		// console.log(this.props.attributes.Cost)
+		// console.log(this.props.attributes.time)
+		var tools_data = {}
+		var materials_data = {}
+		var steps_data = {}
+		var json_data = {
+			"@context": "https://schema.org",
+			"@type": "HowTo",
+			"name": this.props.attributes.headingTitle,
+			"description": this.props.attributes.headingDesc,
+			"totalTime": this.props.attributes.time,
+			"estimatedCost": {
+				"@type": "MonetaryAmount",
+				"currency":"USD",
+				"value":this.props.attributes.cost,
+			},
+			"tool": [],
+			"supply": [],
+			"step": []
+		}
+
+		this.props.attributes.tools.forEach((tools, key) => {
+			tools_data = {	
+					"@type": "HowToTool",
+					"name": tools.add_required_tools
+			}
+			json_data["tool"][key] = tools_data;
+		});
+
+		this.props.attributes.materials.forEach((materials, key) => {
+			materials_data = {	
+					"@type": "HowToSupply",
+					"name": materials.add_required_materials
+			}
+			json_data["supply"][key] = materials_data;
+		});
+
+		this.props.attributes.steps.forEach((steps, key) => {
+			steps_data = {	
+					"@type": "HowToStep",
+					"url": "#",
+					"name": steps.add_required_steps,
+					"text": steps.description
+			}
+			json_data["step"][key] = steps_data;
+		});
+
+		let getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((steps, key) => {
+			// iconImage.url
+			console.log(steps.attributes.iconImage.url)
+			steps_data = {	
+					"@type": "HowToStep",
+					"url": steps.attributes.iconImage.url,
+					"name": steps.attributes.infoBoxTitle,
+					"text": steps.attributes.headingDesc
+			}
+			json_data["step"][key] = steps_data;
+		});
+
+		// console.log(json_data)
+
+		// setAttributes( { schemaJsonData: json_data } )
 	}
 
 	savetools( value, index ) {
@@ -290,6 +366,8 @@ class UAGBHowTo extends Component {
 				materialsLineHeightType,
 				materialsLineHeightTablet,
 				materialsLineHeightMobile,
+				//JSON data
+				schemaJsonData
 			},
 		} = this.props
 
@@ -344,15 +422,16 @@ class UAGBHowTo extends Component {
 
 		}
 
-		console.log(mainimage)
+		// console.log(Cost)
+		// console.log(cost)
 
-		console.log('admin/assets/images/welcome-screen-astra.jpg');
+		// console.log('admin/assets/images/welcome-screen-astra.jpg');
 
 		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
 		showPrefix:false,seperatorStyle:"none",
 		} ] ];
 
-		console.log(headingTitle)
+		// console.log(headingTitle)
 
 		const iconColorControls = (index) => {
 

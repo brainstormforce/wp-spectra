@@ -25,7 +25,13 @@ export default function save( props ) {
 		cost,
 		hideLabel,
 		mainimage,
-		iconPosition
+		iconPosition,
+		toolsTitle,
+		stepsTitle,
+		materialTitle,
+		tools,
+		materials,
+		schemaJsonData,
 	} = attributes
 
 	console.log(attributes)
@@ -46,6 +52,9 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,					
 			) }
 		>
+		<script type="application/ld+json">
+			{ JSON.stringify( schemaJsonData ) }
+		</script>
 			<div className="uagb-howto__wrap">
 				<RichText.Content
 					value={ headingTitle }
@@ -83,6 +92,79 @@ export default function save( props ) {
 				/>
 				</span>
 			</div>
+			<div className="uagb-how-to-tools__wrap">
+				<RichText.Content
+					value={ toolsTitle }
+					tagName='h3'
+					className='uagb-howto-req-tools-text'
+				/>
+			</div>
+			<div className="uagb-tools__wrap">
+			{
+				tools.map( ( tools, index ) => {
+					return (
+						<div
+							className={ classnames(
+								`uagb-how-to-tools-${index}`,
+								"uagb-how-to-tools-child__wrapper",
+								className,
+								`uagb-block-${ props.clientId }`
+							) }
+							key={ index }
+						>
+							<div className="uagb-tools">
+								<RichText.Content
+									tagName="div"
+									value={ tools.add_required_tools }
+									className='uagb-tools__label'
+								/>
+							</div>
+						</div>
+					)
+			})
+		}
+		</div>
+		<div className="uagb-how-to-materials__wrap">
+			<RichText.Content
+				value={ materialTitle }
+				tagName='h3'
+				className='uagb-howto-req-materials-text'
+			/>
+		</div>
+		<div className="uagb-how-to-materials">
+		{
+			materials.map( ( materials, index ) => {
+			return (
+					<div
+						className={ classnames(
+							`uagb-how-to-materials-${index}`,
+							"uagb-how-to-materials-child__wrapper",
+							className,
+							`uagb-block-${ props.clientId }`
+						) }
+					>
+						<div className="uagb-materials">
+								<RichText.Content
+									tagName="div"
+									value={ materials.add_required_materials }
+									className='uagb-materials__label'
+								/>
+						</div>
+					</div>
+				)
+			})
+		}
+		</div>
+		<div className="uagb-how-to-steps__wrap">
+			<RichText.Content
+				value={ stepsTitle }
+				tagName='h3'
+				className='uagb-howto-req-steps-text'
+			/>
+			<div className="uagb-howto-steps__wrap">
+				<InnerBlocks.Content />
+			</div>	
+		</div>
 		</div>
 	)
 }
