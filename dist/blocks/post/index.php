@@ -15,7 +15,7 @@ global $uagb_post_settings;
 /**
  * Sends the Post pagination markup to edit.js
  *
- * @since x.x.x
+ * @since 1.14.9
  */
 function uagb_post_pagination() {
 
