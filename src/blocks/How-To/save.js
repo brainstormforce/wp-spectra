@@ -14,6 +14,7 @@ const {
 export default function save( props ) {
 	
 	const { attributes, className } = props
+	console.log(props)
 
 	const {
 		block_id,
@@ -34,7 +35,7 @@ export default function save( props ) {
 		schemaJsonData,
 	} = attributes
 
-	// console.log(attributes)
+	console.log(attributes)
 
 	let image_icon_html = ""
 
@@ -43,7 +44,6 @@ export default function save( props ) {
 			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
 
 		} 
-	// const labelClass = ( hideLabel ) ? "uagb-icon-list__no-label" : ""
 
 	return (
 		<div

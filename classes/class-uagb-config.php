@@ -95,8 +95,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb/how-to'   => array(
 						'slug'        => '',
-						'title'       => __( 'How To Configure How-To Schema In Ultimate Addons For Gutenberg?', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.', 'ultimate-addons-for-gutenberg' ),
+						'title'       => __( 'How-To Schema' ),
+						'description' => __( 'How To Configure How-To Schema In Ultimate Addons For Gutenberg?', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'            => false,
