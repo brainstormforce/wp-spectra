@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.14.10
+Stable tag: 1.14.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -154,6 +154,17 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.14.11 =
+* Fix: File Generation issue on WooCommerce Pages.
+* Fix: Advanced Columns - Handled background image attachment type on smaller devices.
+* Fix: Section - Handled background image attachment type on smaller devices.
+* Fix: Icon List - Links overlapping on the Label text.
+* Fix: Icon List - Label length mismatch issue when Image is used for the Icon List.
+* Fix: Multi Buttons - Spacing not working in the editor.
+* Fix: Multi Buttons - Full-Width feature glitch fixed.
+* Fix: Multi Buttons - Alignment option shifted to the side panel.
+* Fix: Table of Content - Extra space at the bottom in the Safari Browser when the Column count is more than 1.
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.

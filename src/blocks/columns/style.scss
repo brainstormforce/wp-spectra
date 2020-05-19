@@ -219,6 +219,14 @@
 	}
 }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  
+  .wp-block-uagb-columns.uagb-columns__wrap.uagb-columns__background-image{
+  		background-attachment: scroll;	
+  	}
+  
+}
+
 @media (max-width: 449px) {
 	.uagb-columns__wrap {
 		.uagb-column__wrap.uagb-column__background-image{
