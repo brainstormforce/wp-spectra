@@ -101,7 +101,7 @@ const attributes = {
 	},
 	timeNeeded:{
 		type: "string",
-		default: "Total Time Needed:",
+		default: "Total Time Needed ( Minutes ):",
 	},
 	imgSize:{
 		type: "string",

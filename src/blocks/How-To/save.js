@@ -34,7 +34,7 @@ export default function save( props ) {
 		schemaJsonData,
 	} = attributes
 
-	console.log(attributes)
+	// console.log(attributes)
 
 	let image_icon_html = ""
 
@@ -53,7 +53,7 @@ export default function save( props ) {
 			) }
 		>
 		<script type="application/ld+json">
-			{ JSON.stringify( schemaJsonData ) }
+			{ schemaJsonData }
 		</script>
 			<div className="uagb-howto__wrap">
 				<RichText.Content

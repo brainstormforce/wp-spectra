@@ -74,24 +74,7 @@ class UAGBHowTo extends Component {
 		this.onSelectImage = this.onSelectImage.bind( this )
 	}
 
-	componentDidMount() {
-
-		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
-
-		// Assigning block_id in the attribute.
-		this.props.setAttributes( { classMigrate: true } )
-
-		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
-		this.props.setAttributes( { level: level_val } )
-
-		// Pushing Style tag for this block css.
-		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId )
-		document.head.appendChild( $style )
-	}
-
-		componentDidUpdate() {
+		componentDidUpdate(prevProps, prevState) {
 		
 		const { attributes, setAttributes } = this.props
 		const { schemaJsonData } = attributes
@@ -100,7 +83,7 @@ class UAGBHowTo extends Component {
 		// console.log(this.props.attributes.headingTitle)
 		// console.log(this.props.attributes.headingDesc)
 		// console.log(this.props.attributes.Cost)
-		// console.log(this.props.attributes.time)
+		// console.log("PT"+this.props.attributes.time+"M")
 		var tools_data = {}
 		var materials_data = {}
 		var steps_data = {}
@@ -109,7 +92,7 @@ class UAGBHowTo extends Component {
 			"@type": "HowTo",
 			"name": this.props.attributes.headingTitle,
 			"description": this.props.attributes.headingDesc,
-			"totalTime": this.props.attributes.time,
+			"totalTime": "PT"+this.props.attributes.time+"M",
 			"estimatedCost": {
 				"@type": "MonetaryAmount",
 				"currency":"USD",
@@ -137,11 +120,14 @@ class UAGBHowTo extends Component {
 		});
 
 		this.props.attributes.steps.forEach((steps, key) => {
+			// "image": 
+			
 			steps_data = {	
 					"@type": "HowToStep",
 					"url": "#",
 					"name": steps.add_required_steps,
-					"text": steps.description
+					"text": steps.description,
+					"image": steps.image
 			}
 			json_data["step"][key] = steps_data;
 		});
@@ -150,19 +136,48 @@ class UAGBHowTo extends Component {
 
 		getChildBlocks.forEach((steps, key) => {
 			// iconImage.url
-			console.log(steps.attributes.iconImage.url)
+			console.log(steps.attributes)
 			steps_data = {	
 					"@type": "HowToStep",
 					"url": steps.attributes.iconImage.url,
 					"name": steps.attributes.infoBoxTitle,
-					"text": steps.attributes.headingDesc
+					"text": steps.attributes.headingDesc,
+					"image": steps.attributes.iconImage.url
 			}
 			json_data["step"][key] = steps_data;
 		});
 
-		// console.log(json_data)
+		// console.log(prevProps)
+		// console.log(prevState)
 
-		// setAttributes( { schemaJsonData: json_data } )
+		if (
+			JSON.stringify( this.props.attributes.schemaJsonData ) !==
+			JSON.stringify( prevProps.schemaJsonData )
+		){
+			// setAttributes( { schemaJsonData: json_data } )	
+			this.props.setAttributes({
+				schemaJsonData: JSON.stringify(json_data)
+			});
+		} else {
+			setAttributes( { schemaJsonData: JSON.stringify(json_data) } )
+		}	
+	}
+
+	componentDidMount() {
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { block_id: this.props.clientId } )
+
+		// Assigning block_id in the attribute.
+		this.props.setAttributes( { classMigrate: true } )
+
+		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
+		this.props.setAttributes( { level: level_val } )
+
+		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId )
+		document.head.appendChild( $style )
 	}
 
 	savetools( value, index ) {
@@ -219,7 +234,7 @@ class UAGBHowTo extends Component {
 		}
 
 		setAttributes( { mainimage: media } )
-		console.log(media)
+		// console.log(media)
 		if ( media["sizes"] ) {
 			var new_img = this.getImageSize(media["sizes"])
 			imageSizeOptions = new_img
@@ -782,7 +797,7 @@ class UAGBHowTo extends Component {
 					{ showTotaltime &&
 						<RichText
 							tagName="h3"
-							placeholder={ __( "Total Time Needed:" ) }
+							placeholder={ __( "Total Time Needed ( Minutes ):" ) }
 							value={ timeNeeded }
 							className='uagb-howto-timeNeeded-text'
 							onChange={ ( value ) => setAttributes( { timeNeeded: value } ) }
