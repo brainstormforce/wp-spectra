@@ -191,6 +191,7 @@ class UAGBHowTo extends Component {
 			schemaJsonData,
 			attributes: {
 				level,
+				currencyType,
 				showEstcost,
 				showTotaltime,
 				showEstcostcolor,
@@ -885,6 +886,8 @@ class UAGBHowTo extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
+
+		// console.log(ownProps.attributes.currencyType)
 			
 			var tools_data = {}
 			var materials_data = {}

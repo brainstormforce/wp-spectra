@@ -5,13 +5,9 @@ const ITEM_TOOLS_COUNT = 1
 
 const ITEM_MATERIALS_COUNT = 1
 
-const ITEM_STEPS_COUNT = 1
-
 const tools = []
 
 const materials = []
-
-const steps = []
 
 for (var i = 1; i <= ITEM_TOOLS_COUNT; i++) {
 	tools.push(
@@ -25,17 +21,6 @@ for (var i = 1; i <= ITEM_MATERIALS_COUNT; i++) {
 	materials.push(
 		{
 			"add_required_materials": "- A WordPress Website.",
-		}
-	)
-}
-
-for (var i = 1; i <= ITEM_STEPS_COUNT; i++) {
-	steps.push(
-		{
-			"add_required_steps": "Step 1 : Enter the HowTo Schema title you want",
-			"description": "Enter the description to your HowTo Schema",
-			"link": "#",
-			"image":"",
 		}
 	)
 }
@@ -78,10 +63,6 @@ const attributes = {
 		type: "number",
 		default: ITEM_TOOLS_COUNT
 	},
-	steps_count: {
-		type: "number",
-		default: ITEM_STEPS_COUNT
-	},
 	material_count: {
 		type: "number",
 		default: ITEM_MATERIALS_COUNT
@@ -94,10 +75,10 @@ const attributes = {
 		type: "array",
 		default : materials,
 	},
-	steps: {
-		type: "array",
-		default : steps,
-	},
+	// steps: {
+	// 	type: "array",
+	// 	default : steps,
+	// },
 	showTotaltime: {
 		type: "boolean",
 		default: true
@@ -141,6 +122,10 @@ const attributes = {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
 		default: "How To Configure How-To Schema In Ultimate Addons For Gutenberg?",
+	},
+	currencyType: {
+		type: "string",
+		default: ""
 	},
 	headingId: {
 		type: "string",				
