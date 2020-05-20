@@ -71,6 +71,7 @@ function styling( props ) {
 		priceLineHeightMobile,
 		priceLoadGoogleFonts,
 		//tools attr
+		toolsTitleColor,
 		icon_color,
 		icon_hover_color,
 		toolsLoadGoogleFonts,
@@ -85,6 +86,23 @@ function styling( props ) {
 		toolsLineHeight,
 		toolsLineHeightTablet,
 		toolsLineHeightMobile,
+		//materials
+		materialTitleColor,
+		add_required_materials,
+		materials_icon_color,
+		materials_icon_hover_color,
+		materialsLoadGoogleFonts,
+		materialsFontFamily,
+		materialsFontWeight,
+		materialsFontSubset,
+		materialsFontSize,
+		materialsFontSizeType,
+		materialsFontSizeTablet,
+		materialsFontSizeMobile,
+		materialsLineHeight,
+		materialsLineHeightType,
+		materialsLineHeightTablet,
+		materialsLineHeightMobile,
 	} = props.attributes
 
 	// console.log(icon_color)
@@ -104,7 +122,7 @@ function styling( props ) {
 		" span.uagb-howto__source-wrap .uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" )
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value": {
 			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
@@ -112,7 +130,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-estcost-text": {
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value": {
 			// "text-align": headingAlign,
 			"font-family": estcostFontFamily,
 			"font-weight": estcostFontWeight,
@@ -128,14 +146,28 @@ function styling( props ) {
 			"line-height": generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
 			"color": icon_color,
 		},
-	}
+		" .block-editor-rich-text__editable.uagb-tools__label:hover": {
+			"color": icon_hover_color,
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label": {
+			// "text-align": headingAlign,
+			"font-family": materialsFontFamily,
+			"font-weight": materialsFontWeight,
+			"font-size": generateCSSUnit( materialsFontSize, materialsFontSizeType ),
+			"line-height": generateCSSUnit( materialsLineHeight, materialsLineHeightType ),
+			"color": materials_icon_color,
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label:hover": {
+			"color": materials_icon_hover_color,
+		},
 
-	selectors[".block-editor-rich-text__editable.uagb-tools__label"] = {
-		"color": icon_color,
-	}
+		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+			"color": toolsTitleColor,
+		},
 
-	selectors[".block-editor-rich-text__editable.uagb-tools__label:hover"] = {
-		"color": icon_hover_color,
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+			"color": materialTitleColor,
+		},
 	}
 
 	selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {

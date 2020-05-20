@@ -82,13 +82,7 @@ class UAGBHowTo extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
 
-		console.log("Im here")
-		console.log(this.props)
-
-		// this.props.setAttributes( { schemaJsonData: JSON.stringify( this.props.schemaJsonData ) } )
-			this.props.setAttributes({
-			schemaJsonData: JSON.stringify(this.props.schemaJsonData)
-		});
+		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
 
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
 		this.props.setAttributes( { level: level_val } )
@@ -101,16 +95,12 @@ class UAGBHowTo extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 
-			console.log(this.props.schemaJsonData)
-			console.log(prevProps.schemaJsonData)
-
 		if (
 				JSON.stringify( this.props.schemaJsonData ) !==
 				JSON.stringify( prevProps.schemaJsonData )
 			) {
-			console.log("if")
 				this.props.setAttributes({
-				schemaJsonData: JSON.stringify(this.props.schemaJsonData)
+				schema: JSON.stringify(this.props.schemaJsonData)
 			});
 		}
 	}
@@ -169,7 +159,6 @@ class UAGBHowTo extends Component {
 		}
 
 		setAttributes( { mainimage: media } )
-		// console.log(media)
 		if ( media["sizes"] ) {
 			var new_img = this.getImageSize(media["sizes"])
 			imageSizeOptions = new_img
@@ -198,6 +187,8 @@ class UAGBHowTo extends Component {
 			mergeBlocks,
 			onReplace,
 			anchor,
+			//JSON data
+			schemaJsonData,
 			attributes: {
 				level,
 				showEstcost,
@@ -286,6 +277,7 @@ class UAGBHowTo extends Component {
 				cost,
 				//Tools attributes
 				add_required_tools,
+				toolsTitleColor,
 				icon_color,
 				icon_hover_color,
 				toolsLoadGoogleFonts,
@@ -302,6 +294,7 @@ class UAGBHowTo extends Component {
 				toolsLineHeightMobile,
 				//materials
 				add_required_materials,
+				materialTitleColor,
 				materials_icon_color,
 				materials_icon_hover_color,
 				materialsLoadGoogleFonts,
@@ -316,12 +309,9 @@ class UAGBHowTo extends Component {
 				materialsLineHeightType,
 				materialsLineHeightTablet,
 				materialsLineHeightMobile,
-				//JSON data
-				schemaJsonData
+				
 			},
 		} = this.props
-
-		// console.log(schemaJsonData)
 
 		var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId )
 
@@ -329,8 +319,6 @@ class UAGBHowTo extends Component {
 			element.innerHTML = styling( this.props )
 		}
 
-
-		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
 		}
@@ -374,76 +362,9 @@ class UAGBHowTo extends Component {
 
 		}
 
-		// console.log(Cost)
-		// console.log(cost)
-
-		// console.log('admin/assets/images/welcome-screen-astra.jpg');
-
 		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
 		showPrefix:false,seperatorStyle:"none",ctaType:"all",
 		} ] ];
-
-		// console.log(getInfoBoxAsChild)
-
-		const iconColorControls = (index) => {
-
-			// console.log(tools[index].icon_color)
-			// console.log(icon_color)
-
-			let color_control = ""
-			let color_control_hover = ""
-
-			color_control = (
-				<Fragment>
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
-					<ColorPalette
-						value={ icon_color }
-						onChange={ ( value ) => setAttributes( { icon_color: value } ) }
-						allowReset
-					/>
-				</Fragment>
-			)
-			color_control_hover = (
-				<Fragment>
-					<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
-					<ColorPalette
-						value={ icon_hover_color }
-						onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
-						allowReset
-					/>
-				</Fragment>
-			)
-
-		return (
-				<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
-					activeClass="active-tab"
-					tabs={ [
-						{
-							name: "normal",
-							title: __( "Normal" ),
-							className: "uagb-normal-tab",
-						},
-						{
-							name: "hover",
-							title: __( "Hover" ),
-							className: "uagb-hover-tab",
-						},
-					] }>
-					{
-						( tabName ) => {
-							let color_tab
-							if( "normal" === tabName.name ) {
-								color_tab = color_control
-							}else {
-								color_tab = color_control_hover
-							}
-							return <div>{ color_tab }</div>
-						}
-					}
-				</TabPanel>
-			)
-		}
-
 
 		return (
 			<Fragment>
@@ -454,66 +375,6 @@ class UAGBHowTo extends Component {
 					/>
 				</BlockControls>
 				<InspectorControls>
-					<PanelBody title={ __( "Materials Count" ) } initialOpen={ true }>
-						<RangeControl
-							label={ __( "Number of Materials" ) }
-							value={ material_count }
-							onChange={ newCount => {
-
-								let cloneIcons = [ ...materials ]
-
-								if ( cloneIcons.length < newCount ) {
-
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-
-									{ times( incAmount, n => {
-
-										cloneIcons.push( {
-											"add_required_materials": "- A WordPress Website" + ( cloneIcons.length + 1 ),
-											"materials_icon_color": cloneIcons[ 0 ].materials_icon_color,
-											"materials_icon_hover_color": cloneIcons[ 0 ].materials_icon_hover_color,
-										} )
-									} ) }
-
-									setAttributes( { materials: cloneIcons } )
-								}
-								setAttributes( { material_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 12 }
-						/>
-						{ times( material_count, n => iconColorControls( n ) ) }
-					</PanelBody>
-					<PanelBody title={ __( "Tools Count" ) } initialOpen={ true }>
-						<RangeControl
-							label={ __( "Number of Tools" ) }
-							value={ tools_count }
-							onChange={ newCount => {
-
-								let cloneIcons = [ ...tools ]
-
-								if ( cloneIcons.length < newCount ) {
-
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-
-									{ times( incAmount, n => {
-
-										cloneIcons.push( {
-											"add_required_tools": "- A Computer" + ( cloneIcons.length + 1 ),
-											"icon_color": cloneIcons[ 0 ].icon_color,
-											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
-										} )
-									} ) }
-
-									setAttributes( { tools: cloneIcons } )
-								}
-								setAttributes( { tools_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 12 }
-						/>
-						{ times( tools_count, n => iconColorControls( n ) ) }
-					</PanelBody>
 				<PanelBody title={ __( "General" ) }>
 					<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
@@ -689,6 +550,134 @@ class UAGBHowTo extends Component {
 								allowReset
 							/>
 						</PanelBody>
+						<PanelBody title={ __( "Tools Count" ) } initialOpen={ true }>
+						<RangeControl
+							label={ __( "Number of Tools" ) }
+							value={ tools_count }
+							onChange={ newCount => {
+
+								let cloneIcons = [ ...tools ]
+
+								if ( cloneIcons.length < newCount ) {
+
+									const incAmount = Math.abs( newCount - cloneIcons.length )
+
+									{ times( incAmount, n => {
+
+										cloneIcons.push( {
+											"add_required_tools": "- A Computer" + ( cloneIcons.length + 1 ),
+											"icon_color": cloneIcons[ 0 ].icon_color,
+											"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
+										} )
+									} ) }
+
+									setAttributes( { tools: cloneIcons } )
+								}
+								setAttributes( { tools_count: newCount } )
+							} }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: toolsLoadGoogleFonts, label: 'toolsLoadGoogleFonts' } }
+								fontFamily = { { value: toolsFontFamily, label: 'toolsFontFamily' } }
+								fontWeight = { { value: toolsFontWeight, label: 'toolsFontWeight' } }
+								fontSubset = { { value: toolsFontSubset, label: 'toolsFontSubset' } }
+								fontSizeType = { { value: toolsFontSizeType, label: 'toolsFontSizeType' } }
+								fontSize = { { value: toolsFontSize, label: 'toolsFontSize' } }
+								fontSizeMobile = { { value: toolsFontSizeMobile, label: 'toolsFontSizeMobile' } }
+								fontSizeTablet= { { value: toolsFontSizeTablet, label: 'toolsFontSizeTablet' } }
+								lineHeightType = { { value: toolsLineHeightType, label: 'toolsLineHeightType' } }
+								lineHeight = { { value: toolsLineHeight, label: 'toolsLineHeight' } }
+								lineHeightMobile = { { value: toolsLineHeightMobile, label: 'toolsLineHeightMobile' } }
+								lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
+						/>
+						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: toolsTitleColor }} ></span></span></p>
+  						<ColorPalette
+  							value={ toolsTitleColor }
+  							onChange={ ( value ) => setAttributes( { toolsTitleColor: value } ) }
+  							allowReset
+  						/>
+  						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+  						<ColorPalette
+  							value={ icon_color }
+  							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
+  							allowReset
+  						/>
+  						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
+  						<ColorPalette
+  							value={ icon_hover_color }
+  							onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
+  							allowReset
+  						/>
+					</PanelBody>
+						<PanelBody title={ __( "Materials Count" ) } initialOpen={ true }>
+						<RangeControl
+							label={ __( "Number of Materials" ) }
+							value={ material_count }
+							onChange={ newCount => {
+
+								let cloneIcons = [ ...materials ]
+
+								if ( cloneIcons.length < newCount ) {
+
+									const incAmount = Math.abs( newCount - cloneIcons.length )
+
+									{ times( incAmount, n => {
+
+										cloneIcons.push( {
+											"add_required_materials": "- A WordPress Website" + ( cloneIcons.length + 1 ),
+											"materials_icon_color": cloneIcons[ 0 ].materials_icon_color,
+											"materials_icon_hover_color": cloneIcons[ 0 ].materials_icon_hover_color,
+										} )
+									} ) }
+
+									setAttributes( { materials: cloneIcons } )
+								}
+								setAttributes( { material_count: newCount } )
+							} }
+							min={ 1 }
+							max={ 12 }
+						/>
+						<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: materialsLoadGoogleFonts, label: 'materialsLoadGoogleFonts' } }
+								fontFamily = { { value: materialsFontFamily, label: 'materialsFontFamily' } }
+								fontWeight = { { value: materialsFontWeight, label: 'materialsFontWeight' } }
+								fontSubset = { { value: materialsFontSubset, label: 'materialsFontSubset' } }
+								fontSizeType = { { value: materialsFontSizeType, label: 'materialsFontSizeType' } }
+								fontSize = { { value: materialsFontSize, label: 'materialsFontSize' } }
+								fontSizeMobile = { { value: materialsFontSizeMobile, label: 'materialsFontSizeMobile' } }
+								fontSizeTablet= { { value: materialsFontSizeTablet, label: 'materialsFontSizeTablet' } }
+								lineHeightType = { { value: materialsLineHeightType, label: 'materialsLineHeightType' } }
+								lineHeight = { { value: materialsLineHeight, label: 'materialsLineHeight' } }
+								lineHeightMobile = { { value: materialsLineHeightMobile, label: 'materialsLineHeightMobile' } }
+								lineHeightTablet= { { value: materialsLineHeightTablet, label: 'materialsLineHeightTablet' } }
+						/>
+						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materialTitleColor }} ></span></span></p>
+						<ColorPalette
+							value={ materialTitleColor }
+							onChange={ ( value ) => setAttributes( { materialTitleColor: value } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
+						<ColorPalette
+							value={ materials_icon_color }
+							onChange={ ( value ) => setAttributes( { materials_icon_color: value } ) }
+							allowReset
+						/>
+						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_hover_color }} ></span></span></p>
+						<ColorPalette
+							value={ materials_icon_hover_color }
+							onChange={ ( value ) => setAttributes( { materials_icon_hover_color: value } ) }
+							allowReset
+						/>
+					</PanelBody>
 				</InspectorControls>
 				<div
 					className={ classnames(
@@ -944,7 +933,7 @@ export default compose(
 				}
 				json_data["step"][key] = steps_data;
 			});	
-			// console.log(json_data)
+			
 		return {
 			schemaJsonData: json_data
 		};

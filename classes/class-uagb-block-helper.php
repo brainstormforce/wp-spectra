@@ -21,6 +21,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, $attr );
 
+			$headingColor =  ( isset( $attr['headingColor'] ) ) ? $attr['headingColor'] : '#000';
+			$headingAlign = ( isset( $attr['headingAlign'] ) ) ? $attr['headingAlign'] : 'center';
+			$headFontFamily = ( isset( $attr['headFontFamily'] ) )? $attr['headFontFamily'] : '';
+			$headFontWeight = ( isset( $attr['headFontWeight'] ) )? $attr['headFontWeight'] :'';
+
+			$subHeadingColor = ( isset( $attr['subHeadingColor'] ) ) ? $attr['subHeadingColor'] : '#767676';
+			$subHeadFontFamily = ( isset( $attr['subHeadFontFamily'] ) )? $attr['subHeadFontFamily'] : '';
+			$subHeadFontWeight = ( isset( $attr['subHeadFontWeight'] ) )? $attr['subHeadFontWeight'] :'';
+
 			$selectors = array(
 					' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
 			span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
@@ -36,13 +45,113 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'display' => "block",
 				),
 
+			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
+				'text-align' =>  $headingAlign,
+			    'font-family' => $headFontFamily,
+			    'font-weight' => $headFontWeight,
+			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
+			    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeight'], $attr['headLineHeightType'] ),
+				'color' => $headingColor,
+				),
+
+			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
+				'text-align' =>  $headingAlign,
+			    'font-family' => $subHeadFontFamily,
+			    'font-weight' => $subHeadFontWeight,
+			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),
+			    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType'] ),
+				'color' => $subHeadingColor,
+				),
+
+			' .uagb-howto__wrap span.uagb-howto__time-wrap'=> array(
+				"font-family" => $attr['priceFontFamily'],
+				"font-weight" => $attr['priceFontWeight'],
+				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeType'], $attr['priceFontSizeType'] ),
+				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeight'], $attr['priceLineHeightType'] ),
+				"color"=> $attr['showTotaltimecolor'],
+			),
+
+			' .uagb-howto__wrap span.uagb-howto__cost-wrap'=> array(
+				"font-family" => $attr['estcostFontFamily'],
+				"font-weight" => $attr['estcostFontWeight'],
+				"font-size" => UAGB_Helper::get_css_value( $attr['estcostFontSize'], $attr['estcostFontSizeType'] ),
+				"line-height" => UAGB_Helper::get_css_value( $attr['estcostLineHeight'], $attr['estcostLineHeightType'] ),
+				"color"=> $attr['showEstcostcolor'],
+			),
+
+			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => array(
+				"color" => $attr["toolsTitleColor"],
+			),
+
+			' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+				"color" => $attr["materialTitleColor"],
+			),
+
 			);
+
+			$icon_color = ( isset( $attr['icon_color'] ) ) ? $attr['icon_color'] : '#000';
+            $icon_hover_color = ( isset( $attr['icon_hover_color'] ) ) ? $attr['icon_hover_color'] : '#000';
+			$tools_count =  ( isset( $attr['tools_count'] ) ) ? $attr['tools_count'] : '';
+
+			// var_dump($tools_count);
+
+			if( '' === $tools_count ){
+
+				$selectors[" .uagb-tools__wrap .uagb-how-to-tools-0"] = array(
+					"color" => $icon_color
+					);
+
+				$selectors[" .uagb-tools__wrap .uagb-how-to-tools-0:hover"] = array(
+					"color" => $icon_hover_color
+					);
+
+			} else {
+				for($i=0;$i<$attr['tools_count'];$i++){
+
+					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-" . $i] = array(
+					"color" => $icon_color
+					);
+
+					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-" . $i.":hover"] = array(
+					"color" => $icon_hover_color
+					);
+
+				}
+			}
+
+			$materials_icon_color = ( isset( $attr['materials_icon_color'] ) ) ? $attr['materials_icon_color'] : '#000';
+            $materials_icon_hover_color = ( isset( $attr['materials_icon_hover_color'] ) ) ? $attr['materials_icon_hover_color'] : '#000';
+			$material_count =  ( isset( $attr['material_count'] ) ) ? $attr['material_count'] : '';
+
+			// var_dump($attr);
+
+			if( '' === $material_count ){
+
+				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-0"] = array(
+					"color" => $materials_icon_color
+					);
+
+				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-0:hover"] = array(
+					"color" => $materials_icon_hover_color
+					);
+
+			} else {
+				for($i=0;$i<$attr['material_count'];$i++){
+
+					$selectors[" .uagb-how-to-materials .uagb-how-to-materials-" . $i] = array(
+					"color" => $materials_icon_color
+					);
+
+					$selectors[" .uagb-how-to-materials .uagb-how-to-materials-" . $i.":hover"] = array(
+					"color" => $materials_icon_hover_color
+					);
+
+				}
+			}
 
 			$t_selectors = "";
 
 			$m_selectors = "";
-
-			// var_dump($defaults);wp_die();
 
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-how-to-';
 

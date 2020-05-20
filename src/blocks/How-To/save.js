@@ -14,8 +14,7 @@ const {
 export default function save( props ) {
 	
 	const { attributes, className } = props
-	console.log(props)
-
+	
 	const {
 		block_id,
 		headingTitle,
@@ -32,10 +31,8 @@ export default function save( props ) {
 		materialTitle,
 		tools,
 		materials,
-		schemaJsonData,
+		schema,
 	} = attributes
-
-	console.log(attributes)
 
 	let image_icon_html = ""
 
@@ -53,7 +50,7 @@ export default function save( props ) {
 			) }
 		>
 		<script type="application/ld+json">
-			{ schemaJsonData }
+			{ schema }
 		</script>
 			<div className="uagb-howto__wrap">
 				<RichText.Content

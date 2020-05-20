@@ -44,6 +44,18 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	icon_color: {
+		type: "string"
+	},
+	icon_hover_color: {
+		type: "string"
+	},
+	materials_icon_color: {
+		type: "string"
+	},
+	materials_icon_hover_color: {
+		type: "string"
+	},
 	toolsTitle: {
 		type: "string",
 		default : "Required Tools:"
@@ -51,6 +63,12 @@ const attributes = {
 	materialTitle: {
 		type: "string",
 		default : "Required Materials:"
+	},
+	toolsTitleColor:{
+		type: "string",
+	},
+	materialTitleColor:{
+		type: "string",
 	},
 	stepsTitle: {
 		type: "string",
@@ -113,7 +131,7 @@ const attributes = {
 	},
 	cost:{
 		type: "number",
-		default: 30,
+		default: 65,
 	},
 	imgWidth :{
 		type: "number",
@@ -341,8 +359,9 @@ const attributes = {
 		type: "boolean",
 		default: false	
 	},
-	schemaJsonData: {
-			type: "array"
+	schema: {
+		type: "string",
+		default: ""
 	}
 }
 
