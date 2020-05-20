@@ -155,8 +155,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.14.12 =
-* Fix: Added an aria-label attribute for the Icon List anchor Tag.
+= 1.15.0 =
+* Improvement: Advanced Columns : UI Improvements (Column Gap option).
+* Fix: Icon List - Accessibility issue when link is enabled.
+* Fix: Post Grid - Multiple AJAX requests generated if Pagination Markup is returned empty.
 
 = 1.14.11 =
 * Fix: File Generation issue on WooCommerce Pages.
@@ -168,8 +170,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Full-Width feature glitch fixed.
 * Fix: Multi Buttons - Alignment option shifted to the side panel.
 * Fix: Table of Content - Extra space at the bottom in the Safari Browser when the Column count is more than 1.
-* Fix: Post Grid - Multiple AJAX requests generated if Pagination Markup is returned empty.
-* Improvement: Advanced Columns : UI Improvements (Column Gap option).
 
 = 1.14.10 =
 * Fix: Icon List - Typography not working on front-end.
