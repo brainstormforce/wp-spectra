@@ -29,6 +29,10 @@ const attributes = {
 	block_id: {
 		type: "string"
 	},
+	overallAlignment: {
+		type: "string",
+		default: "center",
+	},
 	icon_color: {
 		type: "string"
 	},
@@ -47,7 +51,7 @@ const attributes = {
 	},
 	materialTitle: {
 		type: "string",
-		default : "Required Materials:"
+		default : "Things Needed?"
 	},
 	toolsTitleColor:{
 		type: "string",
@@ -57,7 +61,7 @@ const attributes = {
 	},
 	stepsTitle: {
 		type: "string",
-		default : "Required Steps:"
+		default : "Steps to configure the How-to Schema:"
 	},
 	tools_count: {
 		type: "number",
@@ -75,10 +79,6 @@ const attributes = {
 		type: "array",
 		default : materials,
 	},
-	// steps: {
-	// 	type: "array",
-	// 	default : steps,
-	// },
 	showTotaltime: {
 		type: "boolean",
 		default: true
@@ -100,19 +100,31 @@ const attributes = {
 	},
 	timeNeeded:{
 		type: "string",
-		default: "Total Time Needed ( Minutes ):",
+		default: "Total Time Needed :",
+	},
+	timeIn:{
+		type: "string",
+		default: " Minutes",
 	},
 	imgSize:{
 		type: "string",
 		default: "thumbnail",
 	},
-	time:{
+	timeSpace :{
 		type: "number",
-		default: 30,
+		default: 5,
+	},
+	costSpace :{
+		type: "number",
+		default: 5,
+	},
+	time:{
+		type: "string",
+		default: "30",
 	},
 	cost:{
-		type: "number",
-		default: 65,
+		type: "string",
+		default: "65",
 	},
 	imgWidth :{
 		type: "number",
@@ -125,7 +137,7 @@ const attributes = {
 	},
 	currencyType: {
 		type: "string",
-		default: ""
+		default: " USD"
 	},
 	headingId: {
 		type: "string",				
@@ -137,7 +149,11 @@ const attributes = {
 	},
 	headingAlign: {
 		type: "string",
-		default: "center",
+		default: "left",
+	},
+	descriptionAlign: {
+		type: "string",
+		default: "left",
 	},
 	headingColor: {
 		type: "string",
@@ -218,7 +234,7 @@ const attributes = {
 	},
 	subHeadFontFamily: {
 		type: "string",
-		default: "",
+		default: "Default",
 	},
 	subHeadFontWeight: {
 		type: "string",
@@ -343,6 +359,78 @@ const attributes = {
 	estcostLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
+	},
+	materialsFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	materialsFontWeight: {
+		type: "string",
+	},
+	materialsFontSubset: {
+		type: "string",
+	},
+	materialsFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	materialsLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	materialsFontSize: {
+		type: "number",
+	},
+	materialsFontSizeTablet: {
+		type: "number",
+	},
+	materialsFontSizeMobile: {
+		type: "number",
+	},
+	materialsLineHeight: {
+		type: "number",
+	},
+	materialsLineHeightTablet: {
+		type: "number",
+	},
+	materialsLineHeightMobile: {
+		type: "number",
+	},
+	toolsFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	toolsFontWeight: {
+		type: "string",
+	},
+	toolsFontSubset: {
+		type: "string",
+	},
+	toolsFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	toolsLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	toolsFontSize: {
+		type: "number",
+	},
+	toolsFontSizeTablet: {
+		type: "number",
+	},
+	toolsFontSizeMobile: {
+		type: "number",
+	},
+	toolsLineHeight: {
+		type: "number",
+	},
+	toolsLineHeightTablet: {
+		type: "number",
+	},
+	toolsLineHeightMobile: {
+		type: "number",
 	},
 	schema: {
 		type: "string",

@@ -9,7 +9,7 @@ import map from "lodash/map"
 import memoize from "memize"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
-// import placeholder from "./placeholder"
+// import image from "../../../dist/blocks/image/placeholder"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -52,6 +52,8 @@ const {
 	TextControl
 } = wp.components
 
+// console.log(image)
+
 const { select, withSelect, dispatch } = wp.data;
 
 const { Component, Fragment } = wp.element
@@ -72,6 +74,7 @@ class UAGBHowTo extends Component {
 		// this.splitBlock = this.splitBlock.bind( this )
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
+		this.getImageSize  	  = this.getImageSize.bind(this)
 	}
 
 	componentDidMount() {
@@ -103,6 +106,23 @@ class UAGBHowTo extends Component {
 				schema: JSON.stringify(this.props.schemaJsonData)
 			});
 		}
+	}
+
+	savematerials( value, index ) {
+		const { attributes, setAttributes } = this.props
+		const { materials } = attributes
+
+		const newItems = materials.map( ( item, thisIndex ) => {
+		if ( index === thisIndex ) {
+			item = { ...item, ...value }
+		}
+
+		return item
+		} )
+
+		setAttributes( {
+			materials: newItems,
+		} )
 	}
 
 	savetools( value, index ) {
@@ -191,7 +211,9 @@ class UAGBHowTo extends Component {
 			schemaJsonData,
 			attributes: {
 				level,
+				overallAlignment,
 				currencyType,
+				timeIn,
 				showEstcost,
 				showTotaltime,
 				showEstcostcolor,
@@ -214,6 +236,7 @@ class UAGBHowTo extends Component {
 				headingId,
 				headingDesc,
 				headingAlign,
+				descriptionAlign,
 				headingColor,
 				subHeadingColor,
 				separatorColor,
@@ -310,9 +333,13 @@ class UAGBHowTo extends Component {
 				materialsLineHeightType,
 				materialsLineHeightTablet,
 				materialsLineHeightMobile,
+				timeSpace,
+				costSpace,
 				
 			},
 		} = this.props
+
+
 
 		var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId )
 
@@ -326,6 +353,8 @@ class UAGBHowTo extends Component {
 
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
+		let loadtoolsLoadGoogleFonts;
+		let loadmaterialsLoadGoogleFonts; 
 
 		if( headLoadGoogleFonts == true ) {
 			
@@ -355,13 +384,61 @@ class UAGBHowTo extends Component {
 			)
 		}
 
-		let image_icon_html = ""
+		if( toolsLoadGoogleFonts == true ) {
+			
+			const tconfig = {
+				google: {
+					families: [ toolsFontFamily + ( toolsFontWeight ? ':' + toolsFontWeight : '' ) ],
+				},
+			};
 
-		if ( mainimage && mainimage.url ) {
-
-			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
-
+			loadtoolsLoadGoogleFonts = (
+				<WebfontLoader config={ tconfig }>
+				</WebfontLoader>
+			)
 		}
+
+		if( materialsLoadGoogleFonts == true ) {
+			
+			const mconfig = {
+				google: {
+					families: [ materialsFontFamily + ( materialsFontWeight ? ':' + materialsFontWeight : '' ) ],
+				},
+			};
+
+			loadmaterialsLoadGoogleFonts = (
+				<WebfontLoader config={ mconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		
+
+		let url_chk = ""
+		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
+			url_chk = attributes.mainimage.url
+		}
+		
+		let url = ""
+		if( url_chk !== "" ){
+			let size = attributes.mainimage.sizes
+			let imageSize = attributes.imgSize
+
+			if ( typeof size !== "undefined" && typeof size[imageSize] !== "undefined" ) {
+			  url = size[imageSize].url 
+			}else{
+			  url = url_chk 
+			}
+	}
+
+	let image_icon_html = ""
+
+	if ( mainimage && mainimage.url ) {
+
+		image_icon_html = <img className="uagb-howto__source-image" src={url} />
+
+	}
+	// console.log(url)
 
 		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
 		showPrefix:false,seperatorStyle:"none",ctaType:"all",
@@ -369,18 +446,12 @@ class UAGBHowTo extends Component {
 
 		return (
 			<Fragment>
-				<BlockControls key='index'>
-					<AlignmentToolbar
-						value={ headingAlign }
-						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
-					/>
-				</BlockControls>
 				<InspectorControls>
-				<PanelBody title={ __( "General" ) }>
+				<PanelBody title={ __( "General" ) } initialOpen={ true } >
 					<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
-							value={ headingTag }
+							value={ headingAlign }
 							onChange={ value => {
 								this.onTagChange( value )
 							} }
@@ -391,6 +462,16 @@ class UAGBHowTo extends Component {
 								{ value: "h4", label: __( "H4" ) },
 								{ value: "h5", label: __( "H5" ) },
 								{ value: "h6", label: __( "H6" ) },
+							] }
+						/>
+						<SelectControl
+							label={ __( "Heading Alignment" ) }
+							value={ headingAlign }
+							onChange={ value => { setAttributes( { headingAlign: value } ) } }
+							options={ [
+								{ value: "left", label: __( "Left" ) },
+								{ value: "center", label: __( "Center" ) },
+								{ value: "right", label: __( "Right" ) },
 							] }
 						/>
 						<TypographyControl
@@ -418,6 +499,16 @@ class UAGBHowTo extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Description" ) }</h2>
+						<SelectControl
+							label={ __( "Description Alignment" ) }
+							value={ descriptionAlign }
+							onChange={ value => { setAttributes( { descriptionAlign: value } ) } }
+							options={ [
+								{ value: "left", label: __( "Left" ) },
+								{ value: "center", label: __( "Center" ) },
+								{ value: "right", label: __( "Right" ) },
+							] }
+						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -477,19 +568,12 @@ class UAGBHowTo extends Component {
 									</Button>
 								}
 						</PanelBody>
-						<PanelBody title={ __( "Time & Cost" ) }>
+						<PanelBody title={ __( "Time & Cost" ) } initialOpen={ false } >
 							<ToggleControl
 								label={ __( "Show Total Time" ) }
 								checked={ showTotaltime }
 								onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
-							/>
-							<RangeControl
-								label={ __( "Time ( Minutes ) " ) }
-								value={ time }
-								onChange={ ( value ) => setAttributes( { time: value } ) }
-								min={ 0 }
-								max={ 500 }
-								allowReset
+								help={ __( "Note: Click here to find your country's ISO code." ) }
 							/>
 							<TypographyControl
 								label={ __( "Typography" ) }
@@ -514,18 +598,19 @@ class UAGBHowTo extends Component {
 								onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
 								allowReset
 							/>
+							<RangeControl
+								label={ __( "Time Margin" ) }
+								value={ timeSpace }
+								onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
 							<ToggleControl
 								label={ __( "Show Estimated Cost" ) }
 								checked={ showEstcost }
 								onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
-							/>
-							<RangeControl
-								label={ __( "Cost" ) }
-								value={ cost }
-								onChange={ ( value ) => setAttributes( { cost: value } ) }
-								min={ 0 }
-								max={ 500 }
-								allowReset
+								help={ __( "Note: Click here to find your country's ISO code." ) }
 							/>
 							<TypographyControl
 								label={ __( "Typography" ) }
@@ -550,8 +635,16 @@ class UAGBHowTo extends Component {
 								onChange={ ( value ) => setAttributes( { showEstcostcolor: value } ) }
 								allowReset
 							/>
+							<RangeControl
+								label={ __( "Cost Margin" ) }
+								value={ costSpace }
+								onChange={ ( value ) => setAttributes( { costSpace: value } ) }
+								min={ 0 }
+								max={ 50 }
+								allowReset
+							/>
 						</PanelBody>
-						<PanelBody title={ __( "Tools Count" ) } initialOpen={ true }>
+						<PanelBody title={ __( "Tools Count" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Number of Tools" ) }
 							value={ tools_count }
@@ -615,7 +708,7 @@ class UAGBHowTo extends Component {
   							allowReset
   						/>
 					</PanelBody>
-						<PanelBody title={ __( "Materials Count" ) } initialOpen={ true }>
+						<PanelBody title={ __( "Materials Count" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Number of Materials" ) }
 							value={ material_count }
@@ -736,10 +829,22 @@ class UAGBHowTo extends Component {
 					{ showTotaltime &&
 						<RichText
 							tagName="h3"
-							placeholder={ __( "30 Minutes" ) }
+							placeholder={ __( "30" ) }
 							value={ time }
 							className='uagb-howto-timeNeeded-value'
 							onChange={ ( value ) => setAttributes( { time: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
+					{ showTotaltime &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "Minutes" ) }
+							value={ timeIn }
+							className='uagb-howto-timeINmin-text'
+							onChange={ ( value ) => setAttributes( { timeIn: value } ) }
 							onMerge={ mergeBlocks }
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
@@ -762,10 +867,22 @@ class UAGBHowTo extends Component {
 					{ showEstcost &&
 						<RichText
 							tagName="h3"
-							placeholder={ __( "30 USD" ) }
+							placeholder={ __( "30" ) }
 							value={ cost }
 							className='uagb-howto-estcost-value'
 							onChange={ ( value ) => setAttributes( { cost: value } ) }
+							onMerge={ mergeBlocks }
+							unstableOnSplit={ this.splitBlock }
+							onRemove={ () => onReplace( [] ) }
+						/>
+					}
+					{ showEstcost &&
+						<RichText
+							tagName="h3"
+							placeholder={ __( "USD" ) }
+							value={ currencyType }
+							className='uagb-howto-estcost-type'
+							onChange={ ( value ) => setAttributes( { currencyType: value } ) }
 							onMerge={ mergeBlocks }
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
@@ -802,7 +919,9 @@ class UAGBHowTo extends Component {
 												tagName="div"
 												placeholder={ __( "Requirements Tools:" ) }
 												value={ tools.add_required_tools }
-												onChange={ ( value ) => setAttributes( { add_required_tools: value } ) }
+												onChange={ value => {
+															this.savetools( { add_required_tools: value }, index )
+														} }
 												className='uagb-tools__label'
 												placeholder={ __( "Description" ) }
 												multiline={false}
@@ -844,7 +963,9 @@ class UAGBHowTo extends Component {
 												tagName="div"
 												placeholder={ __( "Requirements Materials:" ) }
 												value={ materials.add_required_materials }
-												onChange={ ( value ) => setAttributes( { add_required_materials: value } ) }
+												onChange={ value => {
+															this.savematerials( { add_required_materials: value }, index )
+														} }
 												className='uagb-materials__label'
 												placeholder={ __( "Description" ) }
 												multiline={false}
@@ -878,7 +999,8 @@ class UAGBHowTo extends Component {
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
-
+				{ loadtoolsLoadGoogleFonts }
+				{ loadmaterialsLoadGoogleFonts }
 			</Fragment>
 		)
 	}
@@ -886,8 +1008,6 @@ class UAGBHowTo extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-
-		// console.log(ownProps.attributes.currencyType)
 			
 			var tools_data = {}
 			var materials_data = {}
@@ -900,7 +1020,7 @@ export default compose(
 				"totalTime": "PT"+ownProps.attributes.time+"M",
 				"estimatedCost": {
 					"@type": "MonetaryAmount",
-					"currency":"USD",
+					"currency":ownProps.attributes.currencyType,
 					"value":ownProps.attributes.cost,
 				},
 				"tool": [],

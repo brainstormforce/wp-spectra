@@ -21,8 +21,10 @@ export default function save( props ) {
 		headingDesc,
 		timeNeeded,
 		time,
+		timeIn,
 		estCost,
 		cost,
+		currencyType,
 		hideLabel,
 		mainimage,
 		iconPosition,
@@ -32,15 +34,42 @@ export default function save( props ) {
 		tools,
 		materials,
 		schema,
+		showTotaltime,
+		showEstcost,
 	} = attributes
+
+	let url_chk = ""
+		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
+			url_chk = attributes.mainimage.url
+		}
+		
+		let url = ""
+		if( url_chk !== "" ){
+			let size = attributes.mainimage.sizes
+			let imageSize = attributes.imgSize
+
+			if ( typeof size !== "undefined" && typeof size[imageSize] !== "undefined" ) {
+			  url = size[imageSize].url 
+			}else{
+			  url = url_chk 
+			}
+	}
 
 	let image_icon_html = ""
 
-		if ( mainimage && mainimage.url ) {
+	if ( mainimage && mainimage.url ) {
 
-			image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
+		image_icon_html = <img className="uagb-howto__source-image" src={url} />
 
-		} 
+	}
+
+	// let image_icon_html = ""
+
+	// 	if ( mainimage && mainimage.url ) {
+
+	// 		image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
+
+	// 	} 
 
 	return (
 		<div
@@ -64,6 +93,7 @@ export default function save( props ) {
 					className='uagb-howto-desc-text'
 				/>
 				<span className="uagb-howto__source-wrap">{image_icon_html}</span>
+				{ showTotaltime &&
 				<span className="uagb-howto__time-wrap">
 				<RichText.Content
 					value={ timeNeeded }
@@ -75,7 +105,14 @@ export default function save( props ) {
 					tagName='h3'
 					className='uagb-howto-timeNeeded-value'
 				/>
+				<RichText.Content
+					tagName="h3"
+					value={ timeIn }
+					className='uagb-howto-timeINmin-text'
+				/>
 				</span>
+				}
+				{ showEstcost &&
 				<span className="uagb-howto__cost-wrap">
 				<RichText.Content
 					value={ estCost }
@@ -87,7 +124,13 @@ export default function save( props ) {
 					tagName='h3'
 					className='uagb-howto-estcost-value'
 				/>
+				<RichText.Content
+					tagName="h3"
+					value={ currencyType }
+					className='uagb-howto-estcost-type'
+				/>
 				</span>
+				}
 			</div>
 			<div className="uagb-how-to-tools__wrap">
 				<RichText.Content
