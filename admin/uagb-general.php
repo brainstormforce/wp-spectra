@@ -56,7 +56,7 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 						<p><?php esc_html_e( 'Wish to see some real design implementations with these blocks?', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<a href="https://www.ultimategutenberg.com/?utm_source=uag-dashboard&utm_medium=link&utm_campaign=uag-dashboard" target="_blank" rel="noopener"><?php esc_attr_e( 'See Demos »', 'ultimate-addons-for-gutenberg' ); ?></a>
 						<p><?php esc_html_e( 'Check out the detailed knowledge base articles that will help you understand the working of each block.', 'ultimate-addons-for-gutenberg' ); ?></p>
-						<a href="<?php echo esc_url( $uagb_support_link ); ?>" target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'ultimate-addons-for-gutenberg' ); ?></a>
+						<a href="<?php echo esc_url( $kb_url ); ?>" target="_blank" rel="noopener"><?php esc_attr_e( 'Visit Knowledge Base »', 'ultimate-addons-for-gutenberg' ); ?></a>
 					</div>
 				</div>
 			</div>
@@ -136,7 +136,7 @@ $has_read_write_perms   = UAGB_Helper::has_read_write_permissions();
 					</h2>
 					<img class="uagb-ast-img" src="<?php echo esc_url( UAGB_URL . 'admin/assets/images/welcome-screen-astra.jpg' ); ?>">
 					<div class="inside">
-						<p><?php esc_html_e( 'Join over 700,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
+						<p><?php esc_html_e( 'Join over 800,000+ active users empowering their websites with Astra! From beginners to industry leaders, everyone loves the Astra theme.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<h4><?php esc_html_e( 'Why Astra Theme?', 'ultimate-addons-for-gutenberg' ); ?></h4>
 						<p><strong><?php esc_html_e( 'Faster Performance - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'Built with speed and performance in mind, Astra follows the best coding standards and lets you build faster loading and better performing websites.', 'ultimate-addons-for-gutenberg' ); ?></p>
 						<p><strong><?php esc_html_e( 'Easy Customization - ', 'ultimate-addons-for-gutenberg' ); ?></strong><?php esc_html_e( 'With all the settings managed through the customizer, Astra keeps it simple and gives you lots of options to customize everything with a few clicks.', 'ultimate-addons-for-gutenberg' ); ?></p>

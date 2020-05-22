@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.14.8
+Stable tag: 1.14.11
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 600,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 800,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -155,22 +155,37 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.14.8.1 =
+= 1.14.11 =
+* Fix: File Generation issue on WooCommerce Pages.
+* Fix: Advanced Columns - Handled background image attachment type on smaller devices.
+* Fix: Section - Handled background image attachment type on smaller devices.
+* Fix: Icon List - Links overlapping on the Label text.
+* Fix: Icon List - Label length mismatch issue when Image is used for the Icon List.
+* Fix: Multi Buttons - Spacing not working in the editor.
+* Fix: Multi Buttons - Full-Width feature glitch fixed.
+* Fix: Multi Buttons - Alignment option shifted to the side panel.
+* Fix: Table of Content - Extra space at the bottom in the Safari Browser when the Column count is more than 1.
+
+= 1.14.10 =
+* Fix: Icon List - Typography not working on front-end.
+* Fix: Multi Buttons - Changed default alignment to center.
+* Fix: Social Share - Changed default alignment to center.
+* Fix: Team - Fixed the Margin issue in Social Share icons.
+
+= 1.14.9 =
 * Improvement: Better options for delete/edit/duplicate action of each item in Icon List, Multi Buttons and Social Share blocks.
 * Improvement: Post Grid - Added Pagination support.
 * Improvement: Added WPML compatibility.
 * Improvement: Added Box Shadow option to Advanced Columns and Section.
-* Improvement: UI improvement for Reset button.
+* Improvement: UI improvement for editor.
 * Improvement: Table of Contents - Color options for Bullet Points.
 * Improvement: Improved CSS File Generation functionality.
 * Improvement: Improved file system functions.
 * Fix: Advanced Columns : Percentage button not clickable in editor mode.
-* Fix: Advanced Columns : Column width not applying in the Editor.
-* Fix: 403 error on Astra activation.
+* Fix: Advanced Columns : Column width not applying in the editor.
+* Fix: Astra Theme activation issue.
 * Fix: Table of Contents - Handle UTF-8 Character for URL.
-* Fix: Table of Contents - Support Special character in heading.
-* Fix: Table of Contents - Not working for paragraph with html attributes inside.
-* Fix: Table of Contents - Support Single and Double quotes in heading.
+* Fix: Table of Contents - Handled HTML and other special characters in Heading.
 * Fix: Post Timeline - Timeline Layout for Left/Right messed up issue fixed.
 * Fix: Post Carousel - Border radius not working.
 * Fix: UI improvement on UAG Admin Setting page.

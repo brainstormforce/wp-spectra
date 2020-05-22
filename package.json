@@ -1,6 +1,6 @@
 {
   "name": "ultimate-addons-for-gutenberg",
-  "version": "1.14.8",
+  "version": "1.14.10",
   "description": "The Ultimate Addons for Gutenberg extends the Gutenberg functionality with several unique and feature-rich blocks that help build websites faster.",
   "author": "Brainstorm Force",
   "license": "ISC",
@@ -39,7 +39,7 @@
     "grunt-text-replace": "^0.4.0",
     "grunt-wp-i18n": "^1.0.3",
     "gzip-size": "^4.1.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "kind-of": ">=6.0.3",
     "mem": ">=4.0.0",
     "minimist": ">=1.2.3",

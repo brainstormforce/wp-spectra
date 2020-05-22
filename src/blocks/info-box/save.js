@@ -10,9 +10,7 @@ import InfoBoxDesc from "./components/InfoBoxDesc"
 import Icon from "./components/Icon"
 import InfoBoxPositionClasses from "./classes"
 import InfoBoxSeparator from "./components/InfoBoxSeparator"
-import InfoBoxCta from "./components/InfoBoxCta"
 import CallToAction from "./components/CallToAction"
-import InfoBoxStyle from "./inline-styles"
 import InfoBoxIconImage from "./components/InfoBoxIconImage"
 
 const {
@@ -28,7 +26,6 @@ export default function save( props ) {
 		block_id,
 		source_type,
 		seperatorStyle,
-		backgroundType,
 		ctaType,
 		ctaLink,
 		ctaTarget,
@@ -94,70 +91,66 @@ export default function save( props ) {
 
 	// Get Title and Prefix components.
 	const title_text = (
-		<Fragment>
-			<div className = "uagb-ifb-title-wrap">
-				{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
-				{ "none" !== seperatorStyle && seperator_position == "after_prefix" && seperator_html }
-				{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
-			</div>
-		</Fragment>
+		<div className = "uagb-ifb-title-wrap">
+			{ showPrefix && "" !== prefixTitle && <Prefix attributes={ props.attributes } setAttributes = "not_set"/> }
+			{ "none" !== seperatorStyle && seperator_position == "after_prefix" && seperator_html }
+			{ showTitle && "" !== infoBoxTitle && <Title attributes={ props.attributes} setAttributes = "not_set"/> }
+		</div>
 	)
 
 	const output = (
-		<Fragment>
-			<div className = { classnames(
-				"uagb-infobox__content-wrap",
-				( ctaType == "all" ? " uagb-infobox_cta-type-all" : "" ),
-				...InfoBoxPositionClasses(  props.attributes  ),
-			) }>
-				<div className = "uagb-ifb-left-right-wrap">
+		<div className = { classnames(
+			"uagb-infobox__content-wrap",
+			( ctaType == "all" ? " uagb-infobox_cta-type-all" : "" ),
+			...InfoBoxPositionClasses(  props.attributes  ),
+		) }>
+			<div className = "uagb-ifb-left-right-wrap">
 
-					{ ( iconimgPosition == "left") &&
-							is_image
-					}
-					<div className = "uagb-ifb-content">
+				{ ( iconimgPosition == "left") &&
+						is_image
+				}
+				<div className = "uagb-ifb-content">
 
-						{  iconimgPosition == "above-title" && icon_image_html }
+					{  iconimgPosition == "above-title" && icon_image_html }
 
-						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
+					{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && title_text }
 
-						{ iconimgPosition == "below-title"  && icon_image_html }
+					{ iconimgPosition == "below-title"  && icon_image_html }
 
-						{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
+					{ ( iconimgPosition == "above-title" || iconimgPosition == "below-title") && desc }
 
-						{ ( iconimgPosition === "left-title") &&
-								<Fragment>
-									<div className = "uagb-ifb-left-title-image">
-										{ icon_image_html }
-										{ title_text }
-									</div>
-									{ desc }
-								</Fragment>
-						}
-
-						{ ( iconimgPosition === "right-title") &&
-								<Fragment>
-									<div className = "uagb-ifb-right-title-image">
-										{ title_text }
-										{ icon_image_html }
-									</div>
-									{ desc }
-								</Fragment>
-						}
-
-						{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
-								<Fragment>
+					{ ( iconimgPosition === "left-title") &&
+							<Fragment>
+								<div className = "uagb-ifb-left-title-image">
+									{ icon_image_html }
 									{ title_text }
-									{ desc }
-								</Fragment>
-						}
+								</div>
+								{ desc }
+							</Fragment>
+					}
 
-					</div>
+					{ ( iconimgPosition === "right-title") &&
+							<Fragment>
+								<div className = "uagb-ifb-right-title-image">
+									{ title_text }
+									{ icon_image_html }
+								</div>
+								{ desc }
+							</Fragment>
+					}
 
-					{ ( iconimgPosition == "right") && icon_image_html }
+					{ ( iconimgPosition == "left" || iconimgPosition == "right") &&
+							<Fragment>
+								{ title_text }
+								{ desc }
+							</Fragment>
+					}
+
 				</div>
+
+				{ ( iconimgPosition == "right") && icon_image_html }
 			</div>
-		</Fragment>
+		</div>
 	)
 
 	let target =""
@@ -166,22 +159,16 @@ export default function save( props ) {
 	}
 
 	return (
-		<Fragment>
-			<div className={ classnames(
-				className,
-				"uagb-infobox__outer-wrap",
-				`uagb-block-${block_id}`
-			) }>
+		<div className={ classnames(
+			className,
+			"uagb-infobox__outer-wrap",
+			`uagb-block-${block_id}`
+		) }>
 
-				{ ( ctaType == "all") &&
-					<Fragment>
-						<a href= {ctaLink} className = "uagb-infobox-link-wrap uagb-infbox__link-to-all" target={target} rel ="noopener noreferrer"></a>
-						{output}
-					</Fragment>
-				}
-				{ ( ctaType !== "all") && output }
-
-			</div>
-		</Fragment>
+			{ ( ctaType == "all") &&
+				<a href= {ctaLink} className = "uagb-infobox-link-wrap uagb-infbox__link-to-all" target={target} rel ="noopener noreferrer"></a>
+			}
+			{output}
+		</div>
 	)
 }

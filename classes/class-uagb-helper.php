@@ -681,7 +681,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 				if ( is_object( $this_post ) ) {
 					$this->get_generated_stylesheet( $this_post );
-					return;
 				}
 			}
 
@@ -1092,19 +1091,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 
-				if ( get_query_var('paged') ) {
+				if ( get_query_var( 'paged' ) ) {
 
-					$paged = get_query_var('paged');
-			
-				} elseif ( get_query_var('page') ) {
-			
-					$paged = get_query_var('page');
-			
+					$paged = get_query_var( 'paged' );
+
+				} elseif ( get_query_var( 'page' ) ) {
+
+					$paged = get_query_var( 'page' );
+
 				} else {
-			
+
 					$paged = 1;
-			
-				}	
+
+				}
 				$query_args['posts_per_page'] = $attributes['postsToShow'];
 				$query_args['paged']          = $paged;
 
@@ -1392,6 +1391,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 						}
 						break;
 					case 'buttons-child':
+					case 'buttons':
 						if ( ! $is_already_button ) {
 							$combined[]        = 'buttons';
 							$combined[]        = 'buttons-child';
@@ -1525,7 +1525,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 */
 		public static function file_write( $style_data, $type ) {
 
-			$post_timestamp = get_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, true );
+			$post_timestamp = get_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, true );
 
 			$var = ( 'css' === $type ) ? 'css' : 'js';
 
@@ -1541,7 +1541,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					self::get_instance()->get_filesystem()->put_contents( $assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 					// Update the post meta.
-					update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $timestamp );
+					update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $timestamp );
 
 					if ( is_array( self::$css_file_handler ) ) {
 						self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1573,7 +1573,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 							self::get_instance()->get_filesystem()->put_contents( $new_assets_info[ $var ], $style_data, FS_CHMOD_FILE );
 
 							// Update the post meta.
-							update_post_meta( get_the_ID(), 'uagb_style_timestamp-' . $type, $new_timestamp );
+							update_post_meta( get_the_ID(), 'uag_style_timestamp-' . $type, $new_timestamp );
 
 							// Delete old file.
 							wp_delete_file( $assets_info[ $var ] );
@@ -1629,7 +1629,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * Check if UAG upload folder has write permissions or not.
 		 *
-		 * @since  x.x.x
+		 * @since  1.14.9
 		 * @return bool true or false.
 		 */
 		public static function has_read_write_permissions() {
@@ -1647,12 +1647,13 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		}
 		/**
 		 * Gives the paged Query var.
+		 *
 		 * @param Object $query Query.
 		 * @return int $paged Paged Query var.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
-		public static function get_paged($query) {
-				
+		public static function get_paged( $query ) {
+
 			global $paged;
 
 			// Check the 'paged' query var.
@@ -1664,11 +1665,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			// Check the 'page' query var.
 			$page_qv = $query->get( 'page' );
-			
+
 			if ( is_numeric( $page_qv ) ) {
 				return $page_qv;
 			}
-			
+
 			// Check the $paged global?
 			if ( is_numeric( $paged ) ) {
 				return $paged;
@@ -1681,7 +1682,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $permalink_structure Premalink Structure.
 		 * @param string $base Base.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
 		public static function build_base_url( $permalink_structure, $base ) {
 			// Check to see if we are using pretty permalinks.
@@ -1718,7 +1719,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param string $permalink_structure Premalink Structure.
 		 * @param string $base Base.
-		 * @since x.x.x
+		 * @since 1.14.9
 		 */
 		public static function paged_format( $permalink_structure, $base ) {
 
@@ -1742,17 +1743,17 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param  string $redirect_url  The redirect URL.
 		 * @param  string $requested_url The requested URL.
-		 * @since  x.x.x
+		 * @since  1.14.9
 		 * @return bool|string
 		 */
 		public function override_canonical( $redirect_url, $requested_url ) {
-			
+
 			global $wp_query;
 
 			if ( is_array( $wp_query->query ) ) {
 
 				if ( true === $wp_query->is_singular
-					&& - 1 == $wp_query->current_post
+					&& - 1 === $wp_query->current_post
 					&& true === $wp_query->is_paged
 				) {
 					$redirect_url = false;

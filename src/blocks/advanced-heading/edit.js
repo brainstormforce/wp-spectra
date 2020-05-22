@@ -237,18 +237,18 @@ class UAGBAdvancedHeading extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: headLoadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: headFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: headFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: headFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: headFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: headFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: headFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: headFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: headLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: headLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: headLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: headLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: headLoadGoogleFonts, label:'headLoadGoogleFonts'  } }
+							fontFamily = { { value: headFontFamily, label:'headFontFamily'  } }
+							fontWeight = { { value: headFontWeight, label:'headFontWeight'  } }
+							fontSubset = { { value: headFontSubset, label:'headFontSubset'  } }
+							fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+							fontSize = { { value: headFontSize, label:'headFontSize'  } }
+							fontSizeMobile = { { value: headFontSizeMobile, label:'headFontSizeMobile'  } }
+							fontSizeTablet= { { value: headFontSizeTablet, label:'headFontSizeTablet'  } }
+							lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+							lineHeight = { { value: headLineHeight, label:'headLineHeight'  } }
+							lineHeightMobile = { { value: headLineHeightMobile, label:'headLineHeightMobile'  } }
+							lineHeightTablet= { { value: headLineHeightTablet, label:'headLineHeightTablet'  } }
 						/>
 						<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
 						<ColorPalette
@@ -262,18 +262,18 @@ class UAGBAdvancedHeading extends Component {
 							label={ __( "Typography" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: __( "Font Family" ) } }
-							fontFamily = { { value: subHeadFontFamily, label: __( "Font Family" ) } }
-							fontWeight = { { value: subHeadFontWeight, label: __( "Font Weight" ) } }
-							fontSubset = { { value: subHeadFontSubset, label: __( "Font Subset" ) } }
-							fontSizeType = { { value: subHeadFontSizeType, label: __( "Line Height Type" ) } }
-							fontSize = { { value: subHeadFontSize, label: __( "Line Height" ) } }
-							fontSizeMobile = { { value: subHeadFontSizeMobile, label: __( "Font Size" ) } }
-							fontSizeTablet= { { value: subHeadFontSizeTablet, label: __( "Font Size" ) } }
-							lineHeightType = { { value: subHeadLineHeightType, label: __( "Line Height Type" ) } }
-							lineHeight = { { value: subHeadLineHeight, label: __( "Line Height" ) } }
-							lineHeightMobile = { { value: subHeadLineHeightMobile, label: __( "Line Height" ) } }
-							lineHeightTablet= { { value: subHeadLineHeightTablet, label: __( "Line Height" ) } }
+							loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label:'subHeadLoadGoogleFonts' } }
+							fontFamily = { { value: subHeadFontFamily, label:'subHeadFontFamily' } }
+							fontWeight = { { value: subHeadFontWeight, label:'subHeadFontWeight' } }
+							fontSubset = { { value: subHeadFontSubset, label:'subHeadFontSubset' } }
+							fontSizeType = { { value: subHeadFontSizeType, label:'subHeadFontSizeType'  } }
+							fontSize = { { value: subHeadFontSize, label:'subHeadFontSize' } }
+							fontSizeMobile = { { value: subHeadFontSizeMobile, label:'subHeadFontSizeMobile' } }
+							fontSizeTablet= { { value: subHeadFontSizeTablet, label:'subHeadFontSizeTablet' } }
+							lineHeightType = { { value: subHeadLineHeightType, label:'subHeadLineHeightType'  } }
+							lineHeight = { { value: subHeadLineHeight, label:'subHeadLineHeight' } }
+							lineHeightMobile = { { value: subHeadLineHeightMobile, label:'subHeadLineHeightMobile' } }
+							lineHeightTablet= { { value: subHeadLineHeightTablet, label:'subHeadLineHeightTablet' } }
 						/>
 						<p className="uagb-setting-label">{ __( "Sub Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
 						<ColorPalette

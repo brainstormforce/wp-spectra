@@ -15,7 +15,7 @@ global $uagb_post_settings;
 /**
  * Sends the Post pagination markup to edit.js
  *
- * @since x.x.x
+ * @since 1.14.9
  */
 function uagb_post_pagination() {
 
@@ -299,13 +299,13 @@ function uagb_render_pagination( $query, $attributes ) {
 	$total_pages         = ceil( $max / $attributes['postsToShow'] );
 	$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 	$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
-	$paged				 = UAGB_Helper::get_paged( $query );
-	
-	$links               = paginate_links(
+	$paged               = UAGB_Helper::get_paged( $query );
+
+	$links = paginate_links(
 		array(
 			'base'      => $base . '%_%',
 			'format'    => $format,
-			'current' 	=> ( ! $paged ) ? 1 : $paged,
+			'current'   => ( ! $paged ) ? 1 : $paged,
 			'total'     => $total_pages,
 			'type'      => 'array',
 			'mid_size'  => 4,
