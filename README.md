@@ -155,6 +155,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.15.0 ###
+* Improvement: New block - How-To Schema.
+
 ### 1.14.11 ###
 * Fix: File Generation issue on WooCommerce Pages.
 * Fix: Advanced Columns - Handled background image attachment type on smaller devices.
