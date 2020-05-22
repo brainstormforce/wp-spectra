@@ -39,8 +39,10 @@ export default function save( props ) {
 	} = attributes
 
 	let url_chk = ""
+	let title = ""
 		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
 			url_chk = attributes.mainimage.url
+			title = attributes.mainimage.title
 		}
 		
 		let url = ""
@@ -59,7 +61,7 @@ export default function save( props ) {
 
 	if ( mainimage && mainimage.url ) {
 
-		image_icon_html = <img className="uagb-howto__source-image" src={url} />
+		image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
 
 	}
 

@@ -52,8 +52,6 @@ const {
 	TextControl
 } = wp.components
 
-// console.log(image)
-
 const { select, withSelect, dispatch } = wp.data;
 
 const { Component, Fragment } = wp.element
@@ -339,8 +337,6 @@ class UAGBHowTo extends Component {
 			},
 		} = this.props
 
-
-
 		var element = document.getElementById( "uagb-how-to-schema-style-" + this.props.clientId )
 
 		if( null != element && "undefined" != typeof element ) {
@@ -415,8 +411,10 @@ class UAGBHowTo extends Component {
 		
 
 		let url_chk = ""
+		let title = ""
 		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
 			url_chk = attributes.mainimage.url
+			title = attributes.mainimage.title
 		}
 		
 		let url = ""
@@ -435,10 +433,9 @@ class UAGBHowTo extends Component {
 
 	if ( mainimage && mainimage.url ) {
 
-		image_icon_html = <img className="uagb-howto__source-image" src={url} />
+		image_icon_html = <img className="uagb-howto__source-image" src={url} title={title}/>
 
 	}
-	// console.log(url)
 
 		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
 		showPrefix:false,seperatorStyle:"none",ctaType:"all",
