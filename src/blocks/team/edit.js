@@ -89,7 +89,7 @@ class UAGBTeam extends Component {
 			return
 		}
 		setAttributes( { image: media } )
-		console.log(media)
+		
 		if ( media["sizes"] ) {
 			var new_img = this.getImageSize(media["sizes"])
 			imageSizeOptions = new_img

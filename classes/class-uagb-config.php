@@ -30,12 +30,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 */
 		public static $block_assets = null;
 
-		public static function ub_register_how_to_block(){
-			var_dump(self::$block_attributes);
-			echo "I'm here";
-		    wp_die();
-		}
-
 		/**
 		 * Get Widget List.
 		 *
@@ -44,9 +38,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 		 * @return array The Widget List.
 		 */
 		public static function get_block_attributes() {
-
-			// if(  )
-			// var_dump(self::$block_attributes["uagb/how-to"],"uagb/how-to");
         
 			if ( null === self::$block_attributes ) {
 				self::$block_attributes = array(
@@ -100,6 +91,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'            => false,
+							'time'                   => '',
 							'showEstcostcolor'        => '',
 							'descriptionAlign'        => 'left',
 							'costSpace'               => '5',
@@ -291,7 +283,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'boxShadowBlur'          => '',
 							'boxShadowSpread'        => '',
 							'boxShadowPosition'      => 'outset',
-							'time'                   => '',
 						),
 					),
 					'uagb/column'             => array(

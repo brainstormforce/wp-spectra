@@ -63,14 +63,6 @@ export default function save( props ) {
 
 	}
 
-	// let image_icon_html = ""
-
-	// 	if ( mainimage && mainimage.url ) {
-
-	// 		image_icon_html = <img className="uagb-howto__source-image" src={mainimage.url} />
-
-	// 	} 
-
 	return (
 		<div
 			className={ classnames(

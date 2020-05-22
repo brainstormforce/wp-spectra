@@ -109,8 +109,6 @@ function styling( props ) {
 		costSpace,
 	} = props.attributes
 
-	// console.log(icon_color)
-
 	var selectors = {
 		" .uagb-separator-wrap": {
 			"text-align": headingAlign,
