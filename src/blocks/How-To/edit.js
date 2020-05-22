@@ -454,7 +454,7 @@ class UAGBHowTo extends Component {
 					<h2>{ __( "Heading" ) }</h2>
 						<SelectControl
 							label={ __( "Heading Tag" ) }
-							value={ headingAlign }
+							value={ headingTag }
 							onChange={ value => {
 								this.onTagChange( value )
 							} }

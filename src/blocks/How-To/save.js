@@ -19,6 +19,7 @@ export default function save( props ) {
 		block_id,
 		headingTitle,
 		headingDesc,
+		headingTag,
 		timeNeeded,
 		time,
 		timeIn,
@@ -79,7 +80,7 @@ export default function save( props ) {
 			<div className="uagb-howto__wrap">
 				<RichText.Content
 					value={ headingTitle }
-					tagName='h1'
+					tagName={ headingTag }
 					className='uagb-howto-heading-text'
 				/>
 				<RichText.Content
