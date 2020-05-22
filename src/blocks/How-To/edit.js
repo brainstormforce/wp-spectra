@@ -443,6 +443,12 @@ class UAGBHowTo extends Component {
 
 		return (
 			<Fragment>
+				<BlockControls key='index'>
+					<AlignmentToolbar
+						value={ overallAlignment }
+						onChange={ ( value ) => setAttributes( { overallAlignment: value } ) }
+					/>
+				</BlockControls>
 				<InspectorControls>
 				<PanelBody title={ __( "General" ) } initialOpen={ true } >
 					<h2>{ __( "Heading" ) }</h2>
@@ -459,16 +465,6 @@ class UAGBHowTo extends Component {
 								{ value: "h4", label: __( "H4" ) },
 								{ value: "h5", label: __( "H5" ) },
 								{ value: "h6", label: __( "H6" ) },
-							] }
-						/>
-						<SelectControl
-							label={ __( "Heading Alignment" ) }
-							value={ headingAlign }
-							onChange={ value => { setAttributes( { headingAlign: value } ) } }
-							options={ [
-								{ value: "left", label: __( "Left" ) },
-								{ value: "center", label: __( "Center" ) },
-								{ value: "right", label: __( "Right" ) },
 							] }
 						/>
 						<TypographyControl
@@ -496,16 +492,6 @@ class UAGBHowTo extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Description" ) }</h2>
-						<SelectControl
-							label={ __( "Description Alignment" ) }
-							value={ descriptionAlign }
-							onChange={ value => { setAttributes( { descriptionAlign: value } ) } }
-							options={ [
-								{ value: "left", label: __( "Left" ) },
-								{ value: "center", label: __( "Center" ) },
-								{ value: "right", label: __( "Right" ) },
-							] }
-						/>
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
@@ -776,6 +762,7 @@ class UAGBHowTo extends Component {
 						`uagb-block-${this.props.clientId}`,					
 					) }
 				>
+				<div className="uagb-how-to-main-wrap">
 					<RichText
 						tagName={ headingTag }
 						placeholder={ __( "How to configure HowTo Schema in UAG?" ) }
@@ -987,12 +974,13 @@ class UAGBHowTo extends Component {
 							onRemove={ () => onReplace( [] ) }
 						/>
 						<div className="uagb-howto-steps__wrap">
-						<InnerBlocks
-							template={ getInfoBoxAsChild }
-							allowedBlocks={ ALLOWED_BLOCKS }
-						/>
-					</div>	
-					</div>		
+							<InnerBlocks
+								template={ getInfoBoxAsChild }
+								allowedBlocks={ ALLOWED_BLOCKS }
+							/>
+						</div>	
+					</div>
+				</div>	
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }

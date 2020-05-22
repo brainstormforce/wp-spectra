@@ -22,21 +22,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$attr = array_merge( $defaults, $attr );
 
 			$headingColor =  ( isset( $attr['headingColor'] ) ) ? $attr['headingColor'] : '#000';
-			$headingAlign = ( isset( $attr['headingAlign'] ) ) ? $attr['headingAlign'] : 'left';
+			$overallAlignment = ( isset( $attr['overallAlignment'] ) ) ? $attr['overallAlignment'] : 'left';
 			$headFontFamily = ( isset( $attr['headFontFamily'] ) )? $attr['headFontFamily'] : '';
 			$headFontWeight = ( isset( $attr['headFontWeight'] ) )? $attr['headFontWeight'] :'';
 
 			$subHeadingColor = ( isset( $attr['subHeadingColor'] ) ) ? $attr['subHeadingColor'] : '#767676';
-			$descriptionAlign = ( isset( $attr['descriptionAlign'] ) ) ? $attr['descriptionAlign'] : 'left';
 			$subHeadFontFamily = ( isset( $attr['subHeadFontFamily'] ) )? $attr['subHeadFontFamily'] : '';
 			$subHeadFontWeight = ( isset( $attr['subHeadFontWeight'] ) )? $attr['subHeadFontWeight'] :'';
 
 			$selectors = array(
-					' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
-			span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value,
-			span.uagb-howto__time-wrap .uagb-howto-timeINmin-text' => array(
-					'display' => "inline-flex",
-				),
+			" .uagb-how-to-main-wrap" => array(
+			    "text-align" => $overallAlignment,
+			),
 
 			' span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
 			span.uagb-howto__cost-wrap .uagb-howto-estcost-value,span.uagb-howto__cost-wrap .uagb-howto-estcost-type' => array(
@@ -63,7 +60,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
-				'text-align' =>  $headingAlign,
+				// 'text-align' =>  $headingAlign,
 			    'font-family' => $headFontFamily,
 			    'font-weight' => $headFontWeight,
 			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
@@ -72,7 +69,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
-				'text-align' =>  $descriptionAlign,
+				// 'text-align' =>  $descriptionAlign,
 			    'font-family' => $subHeadFontFamily,
 			    'font-weight' => $subHeadFontWeight,
 			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),

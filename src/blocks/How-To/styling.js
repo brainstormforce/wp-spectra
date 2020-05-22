@@ -110,11 +110,9 @@ function styling( props ) {
 	} = props.attributes
 
 	var selectors = {
-		" .uagb-separator-wrap": {
-			"text-align": headingAlign,
-		},
+		
 		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
-			"text-align": descriptionAlign,
+			// "text-align": descriptionAlign,
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
@@ -180,8 +178,13 @@ function styling( props ) {
 		},
 	}
 
+	selectors[" .uagb-how-to-main-wrap"] = {
+		    "text-align": overallAlignment,
+		    "display": "block",
+	}
+
 	selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
-		"text-align": headingAlign,
+		// "text-align": headingAlign,
 		"font-family": headFontFamily,
 		"font-weight": headFontWeight,
 		"font-size": generateCSSUnit( headFontSize, headFontSizeType ),

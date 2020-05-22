@@ -75,6 +75,7 @@ export default function save( props ) {
 		<script type="application/ld+json">
 			{ schema }
 		</script>
+		<div className="uagb-how-to-main-wrap">
 			<div className="uagb-howto__wrap">
 				<RichText.Content
 					value={ headingTitle }
@@ -198,6 +199,7 @@ export default function save( props ) {
 			<div className="uagb-howto-steps__wrap">
 				<InnerBlocks.Content />
 			</div>	
+		</div>
 		</div>
 		</div>
 	)

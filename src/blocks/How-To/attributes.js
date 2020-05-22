@@ -31,7 +31,7 @@ const attributes = {
 	},
 	overallAlignment: {
 		type: "string",
-		default: "center",
+		default: "left",
 	},
 	icon_color: {
 		type: "string"
