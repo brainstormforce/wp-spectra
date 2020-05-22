@@ -155,6 +155,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+- Fix: Info Box - Hide margin option for Separator. 
+
 ### 1.14.11 ###
 * Fix: File Generation issue on WooCommerce Pages.
 * Fix: Advanced Columns - Handled background image attachment type on smaller devices.
