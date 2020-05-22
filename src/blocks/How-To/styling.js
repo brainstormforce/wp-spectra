@@ -109,6 +109,9 @@ function styling( props ) {
 		costSpace,
 	} = props.attributes
 
+	var tablet_selectors = {}
+	var mobile_selectors = {}
+
 	var selectors = {
 		
 		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
@@ -126,7 +129,7 @@ function styling( props ) {
 			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSizeType, priceFontSizeType ),
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
@@ -138,7 +141,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( estcostLineHeight, estcostLineHeightType ),
 			"color": showEstcostcolor,
 		},
-		" .block-editor-rich-text__editable.uagb-tools__label": {
+		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
 			// "text-align": headingAlign,
 			"font-family": toolsFontFamily,
 			"font-weight": toolsFontWeight,
@@ -146,7 +149,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
 			"color": icon_color,
 		},
-		'.block-editor-rich-text__editable.uagb-howto-timeNeeded-text,.block-editor-rich-text__editable.uagb-howto-timeNeeded-value,block-editor-rich-text__editable.uagb-howto-timeINmin-text': {
+		'.block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,block-editor-rich-text__editable.uagb-howto-timeINmin-text': {
 				"margin-left" : generateCSSUnit( timeSpace,"px"),
 				"margin-right" : generateCSSUnit( timeSpace,"px"),
 		},
@@ -157,7 +160,7 @@ function styling( props ) {
 		" .block-editor-rich-text__editable.uagb-tools__label:hover": {
 			"color": icon_hover_color,
 		},
-		" .block-editor-rich-text__editable.uagb-materials__label": {
+		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			// "text-align": headingAlign,
 			"font-family": materialsFontFamily,
 			"font-weight": materialsFontWeight,
@@ -193,6 +196,62 @@ function styling( props ) {
 		"margin-bottom": generateCSSUnit( headSpace, "px" ),
 	}
 
+	mobile_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
+		"font-size": generateCSSUnit( headFontSizeMobile, headFontSizeType ),
+		"line-height": generateCSSUnit( headLineHeightMobile, headLineHeightType ),
+	}
+
+	tablet_selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
+		"font-size": generateCSSUnit( headFontSizeTablet, headFontSizeType ),
+		"line-height": generateCSSUnit( headLineHeightTablet, headLineHeightType ),
+	}
+
+	mobile_selectors = {
+		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
+			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-size": generateCSSUnit( estcostFontSizeMobile, estcostFontSizeType ),
+			"line-height": generateCSSUnit( estcostLineHeightMobile, estcostLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+			"font-size": generateCSSUnit( toolsFontSizeMobile, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeightMobile, toolsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+			"font-size": generateCSSUnit( materialsFontSizeMobile, materialsFontSizeType ),
+			"line-height": generateCSSUnit( materialsLineHeightMobile, materialsLineHeightType ),
+		},
+	}
+
+	tablet_selectors = {
+		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
+			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-size": generateCSSUnit( estcostFontSizeTablet, estcostFontSizeType ),
+			"line-height": generateCSSUnit( estcostLineHeightTablet, estcostLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+			"font-size": generateCSSUnit( toolsFontSizeTablet, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeightTablet, toolsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+			"font-size": generateCSSUnit( materialsFontSizeTablet, materialsFontSizeType ),
+			"line-height": generateCSSUnit( materialsLineHeightTablet, materialsLineHeightType ),
+		},
+	}
+
 	var base_selector = `.block-editor-page #wpwrap #uagb-how-to-${ props.clientId }`
 	
 	if ( classMigrate ) {
@@ -201,9 +260,9 @@ function styling( props ) {
 
 	var styling_css = generateCSS( selectors, base_selector )
 
-	// styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, base_selector, true, "tablet" )
 
-	// styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, base_selector, true, "mobile" )
 
 	return styling_css
 }
