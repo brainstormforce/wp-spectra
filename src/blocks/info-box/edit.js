@@ -897,17 +897,15 @@ class UAGBinfoBox extends Component {
 						allowReset
 					/>
 				}
-				{ "none" !== seperatorStyle &&
-					<RangeControl
-						label={ __( "Separator Bottom Margin" ) }
-						value={ seperatorSpace }
-						onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						beforeIcon=""
-						allowReset
-					/>
-				}
+				<RangeControl
+					label={ __( "Separator Bottom Margin" ) }
+					value={ seperatorSpace }
+					onChange={ ( value ) => setAttributes( { seperatorSpace: value } ) }
+					min={ 0 }
+					max={ 50 }
+					beforeIcon=""
+					allowReset
+				/>
 				{ showDesc &&
 					<RangeControl
 						label={ __( "Description Bottom Margin" ) }
