@@ -439,6 +439,10 @@ class UAGBHowTo extends Component {
 
 		const getInfoBoxAsChild = [ [ 'uagb/info-box', {infoBoxTitle:"Step 1",iconimgPosition:"left",source_type:"image",
 		showPrefix:false,seperatorStyle:"none",ctaType:"all",
+		} ],[ 'uagb/info-box', {infoBoxTitle:"Step 2",iconimgPosition:"left",source_type:"image",
+		showPrefix:false,seperatorStyle:"none",ctaType:"all",
+		} ],[ 'uagb/info-box', {infoBoxTitle:"Step 3",iconimgPosition:"left",source_type:"image",
+		showPrefix:false,seperatorStyle:"none",ctaType:"all",
 		} ] ];
 
 		return (
