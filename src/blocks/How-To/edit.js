@@ -597,29 +597,6 @@ class UAGBHowTo extends Component {
 								onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
 								help={ __( "Note: Click here to find your country's ISO code." ) }
 							/>
-							<TypographyControl
-								label={ __( "Typography" ) }
-								attributes = { attributes }
-								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: estcostLoadGoogleFonts, label: 'estcostLoadGoogleFonts' } }
-								fontFamily = { { value: estcostFontFamily, label: 'estcostFontFamily' } }
-								fontWeight = { { value: estcostFontWeight, label: 'estcostFontWeight' } }
-								fontSubset = { { value: estcostFontSubset, label: 'estcostFontSubset' } }
-								fontSizeType = { { value: estcostFontSizeType, label: 'estcostFontSizeType' } }
-								fontSize = { { value: estcostFontSize, label: 'estcostFontSize' } }
-								fontSizeMobile = { { value: estcostFontSizeMobile, label: 'estcostFontSizeMobile' } }
-								fontSizeTablet= { { value: estcostFontSizeTablet, label: 'estcostFontSizeTablet' } }
-								lineHeightType = { { value: estcostLineHeightType, label: 'estcostLineHeightType' } }
-								lineHeight = { { value: estcostLineHeight, label: 'estcostLineHeight' } }
-								lineHeightMobile = { { value: estcostLineHeightMobile, label: 'estcostLineHeightMobile' } }
-								lineHeightTablet= { { value: estcostLineHeightTablet, label: 'estcostLineHeightTablet' } }
-							/>
-							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showEstcostcolor }} ></span></span></p>
-							<ColorPalette
-								value={ showEstcostcolor }
-								onChange={ ( value ) => setAttributes( { showEstcostcolor: value } ) }
-								allowReset
-							/>
 							<RangeControl
 								label={ __( "Cost Margin" ) }
 								value={ costSpace }
@@ -674,22 +651,10 @@ class UAGBHowTo extends Component {
 								lineHeightMobile = { { value: toolsLineHeightMobile, label: 'toolsLineHeightMobile' } }
 								lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
 						/>
-						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: toolsTitleColor }} ></span></span></p>
-  						<ColorPalette
-  							value={ toolsTitleColor }
-  							onChange={ ( value ) => setAttributes( { toolsTitleColor: value } ) }
-  							allowReset
-  						/>
   						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
   						<ColorPalette
   							value={ icon_color }
   							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
-  							allowReset
-  						/>
-  						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_hover_color }} ></span></span></p>
-  						<ColorPalette
-  							value={ icon_hover_color }
-  							onChange={ ( value ) => setAttributes( { icon_hover_color: value } ) }
   							allowReset
   						/>
 					</PanelBody>
@@ -738,22 +703,10 @@ class UAGBHowTo extends Component {
 								lineHeightMobile = { { value: materialsLineHeightMobile, label: 'materialsLineHeightMobile' } }
 								lineHeightTablet= { { value: materialsLineHeightTablet, label: 'materialsLineHeightTablet' } }
 						/>
-						<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materialTitleColor }} ></span></span></p>
-						<ColorPalette
-							value={ materialTitleColor }
-							onChange={ ( value ) => setAttributes( { materialTitleColor: value } ) }
-							allowReset
-						/>
 						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
 						<ColorPalette
 							value={ materials_icon_color }
 							onChange={ ( value ) => setAttributes( { materials_icon_color: value } ) }
-							allowReset
-						/>
-						<p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_hover_color }} ></span></span></p>
-						<ColorPalette
-							value={ materials_icon_hover_color }
-							onChange={ ( value ) => setAttributes( { materials_icon_hover_color: value } ) }
 							allowReset
 						/>
 					</PanelBody>

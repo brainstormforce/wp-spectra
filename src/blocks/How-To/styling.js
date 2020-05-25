@@ -141,8 +141,22 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
 			// "text-align": headingAlign,
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+		},
+		"  .block-editor-rich-text__editable.uagb-tools__label":{
+			"font-family": toolsFontFamily,
+			"font-weight": toolsFontWeight,
+			"font-size": generateCSSUnit( toolsFontSize, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
+			"color": icon_color,
+		},
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text, .block-editor-rich-text__editable.uagb-howto-req-tools-text, .block-editor-rich-text__editable.uagb-howto-req-steps-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -157,27 +171,20 @@ function styling( props ) {
 				"margin-left" : generateCSSUnit( costSpace,"px"),
 				"margin-right" : generateCSSUnit( costSpace,"px"),
 		},
-		" .block-editor-rich-text__editable.uagb-tools__label:hover": {
-			"color": icon_hover_color,
-		},
-		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			// "text-align": headingAlign,
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label":{
 			"font-family": materialsFontFamily,
 			"font-weight": materialsFontWeight,
 			"font-size": generateCSSUnit( materialsFontSize, materialsFontSizeType ),
 			"line-height": generateCSSUnit( materialsLineHeight, materialsLineHeightType ),
 			"color": materials_icon_color,
-		},
-		" .block-editor-rich-text__editable.uagb-materials__label:hover": {
-			"color": materials_icon_hover_color,
-		},
-
-		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
-			"color": toolsTitleColor,
-		},
-
-		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
-			"color": materialTitleColor,
 		},
 	}
 
