@@ -451,9 +451,9 @@ class UAGBHowTo extends Component {
 				</BlockControls>
 				<InspectorControls>
 				<PanelBody title={ __( "General" ) } initialOpen={ true } >
-					<h2>{ __( "Heading" ) }</h2>
+					<h2>{ __( "Primary Heading" ) }</h2>
 						<SelectControl
-							label={ __( "Heading Tag" ) }
+							label={ __( "Tag" ) }
 							value={ headingTag }
 							onChange={ value => {
 								this.onTagChange( value )
@@ -550,6 +550,31 @@ class UAGBHowTo extends Component {
 										{ __( "Remove Image" ) }
 									</Button>
 								}
+								<hr className="uagb-editor__separator" />
+								<h2>{ __( "Secondary Heading" ) }</h2>
+								<TypographyControl
+									label={ __( "Typography" ) }
+									attributes = { attributes }
+									setAttributes = { setAttributes }
+									loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
+									fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
+									fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
+									fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
+									fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
+									fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
+									fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
+									fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
+									lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
+									lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
+									lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
+									lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
+								/>
+								<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
+								<ColorPalette
+									value={ showTotaltimecolor }
+									onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
+									allowReset
+								/>
 						</PanelBody>
 						<PanelBody title={ __( "Time & Cost" ) } initialOpen={ false } >
 							<ToggleControl
@@ -557,29 +582,6 @@ class UAGBHowTo extends Component {
 								checked={ showTotaltime }
 								onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 								help={ __( "Note: Click here to find your country's ISO code." ) }
-							/>
-							<TypographyControl
-								label={ __( "Typography" ) }
-								attributes = { attributes }
-								setAttributes = { setAttributes }
-								loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
-								fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
-								fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
-								fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
-								fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
-								fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
-								fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
-								fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
-								lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
-								lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
-								lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
-								lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
-							/>
-							<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
-							<ColorPalette
-								value={ showTotaltimecolor }
-								onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
-								allowReset
 							/>
 							<RangeControl
 								label={ __( "Time Margin" ) }
