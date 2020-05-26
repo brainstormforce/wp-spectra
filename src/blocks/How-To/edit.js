@@ -755,7 +755,7 @@ class UAGBHowTo extends Component {
 						unstableOnSplit={ this.splitBlock }
 						onRemove={ () => onReplace( [] ) }
 					/>
-					<span className="uagb-howto__source-wrap">{image_icon_html}</span>
+					<div className="uagb-howto__source-wrap">{image_icon_html}</div>
 					<span className="uagb-howto__time-wrap">
 					{ showTotaltime &&
 						<RichText
