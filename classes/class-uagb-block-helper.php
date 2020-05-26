@@ -142,19 +142,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    'font-weight' => $toolsFontWeight,
 			   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSize'], $attr['toolsFontSizeType'] ),
 			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeight'], $attr['toolsLineHeightType'] ),
-			);
-
-			// $m_selectors[" .uagb-tools .uagb-tools__label"] = array(
-			//    	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeMobile'], $attr['materialsFontSizeType'] ),
-			//     'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightMobile'], $attr['materialsLineHeightType'] ),
-			// );
-
-			// $t_selectors[" .uagb-tools .uagb-tools__label"] = array(
-			//    	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeTablet'], $attr['materialsFontSizeType'] ),
-			//     'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightTablet'], $attr['materialsLineHeightType'] ),
-			// );
-
-			
+			);			
 
 			if( '' === $material_count ){
 
@@ -185,23 +173,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    'font-weight' => $materialsFontWeight,
 			   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSize'], $attr['materialsFontSizeType'] ),
 			    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeight'], $attr['materialsLineHeightType'] ),
-			);
-
-			// $m_selectors[" .uagb-materials .uagb-materials__label"] = array(
-			//    	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeMobile'], $attr['materialsFontSizeType'] ),
-			//     'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightMobile'], $attr['materialsLineHeightType'] ),
-			// );
-
-			// $t_selectors[" .uagb-materials .uagb-materials__label"] = array(
-			//    	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeTablet'], $attr['materialsFontSizeType'] ),
-			//     'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightTablet'], $attr['materialsLineHeightType'] ),
-			// );
-
-			// $selectors[" span.uagb-howto__source-wrap .uagb-howto__source-image"] = array(
-			// 	"width"=> UAGB_Helper::generate_css( $attr['imgWidth'], "%" )
-			// );
-
-			
+			);			
 
 			$t_selectors = array(
 
