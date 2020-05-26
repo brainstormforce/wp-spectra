@@ -73,9 +73,6 @@ class UAGBHowTo extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 
-		// Assigning block_id in the attribute.
-		this.props.setAttributes( { classMigrate: true } )
-
 		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
 
 		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )

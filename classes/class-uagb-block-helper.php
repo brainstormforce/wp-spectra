@@ -249,7 +249,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 		);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-how-to-';
+			$base_selector = '.uagb-block-' ;
 
 			$desktop = UAGB_Helper::generate_css( $selectors, $base_selector . $id );
 

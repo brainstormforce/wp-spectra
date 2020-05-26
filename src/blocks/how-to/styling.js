@@ -255,10 +255,6 @@ function styling( props ) {
 	}
 
 	var base_selector = `.block-editor-page #wpwrap #uagb-how-to-${ props.clientId }`
-	
-	if ( classMigrate ) {
-		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
-	}
 
 	var styling_css = generateCSS( selectors, base_selector )
 

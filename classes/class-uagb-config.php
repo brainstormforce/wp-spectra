@@ -90,7 +90,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'How To Configure How-To Schema In Ultimate Addons For Gutenberg?', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'            => false,
 							'time'                   => '',
 							'showEstcostcolor'        => '',
 							'descriptionAlign'        => 'left',

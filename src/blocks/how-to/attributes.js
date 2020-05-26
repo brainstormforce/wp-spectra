@@ -84,10 +84,6 @@ const attributes = {
 		type: "boolean",
 		default: true
 	},
-	classMigrate: {
-		type: "boolean",
-		default: false
-	},
 	mainimage: {
 		type: "object",
 	},
