@@ -351,7 +351,7 @@ class UAGBHowTo extends Component {
 		let loadtoolsLoadGoogleFonts;
 		let loadmaterialsLoadGoogleFonts; 
 
-		if( headLoadGoogleFonts == true ) {
+		if( true === headLoadGoogleFonts ) {
 			
 			const hconfig = {
 				google: {
@@ -365,7 +365,7 @@ class UAGBHowTo extends Component {
 			)
 		}
 
-		if( subHeadLoadGoogleFonts == true ) {
+		if( true === subHeadLoadGoogleFonts ) {
 
 			const sconfig = {
 				google: {
@@ -379,7 +379,7 @@ class UAGBHowTo extends Component {
 			)
 		}
 
-		if( toolsLoadGoogleFonts == true ) {
+		if( true === toolsLoadGoogleFonts ) {
 			
 			const tconfig = {
 				google: {
@@ -393,7 +393,7 @@ class UAGBHowTo extends Component {
 			)
 		}
 
-		if( materialsLoadGoogleFonts == true ) {
+		if( true === materialsLoadGoogleFonts ) {
 			
 			const mconfig = {
 				google: {
