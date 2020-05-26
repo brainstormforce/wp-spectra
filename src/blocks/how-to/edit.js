@@ -75,9 +75,6 @@ class UAGBHowTo extends Component {
 
 		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
 
-		let level_val = parseInt( this.props.attributes.headingTag.replace( 'h' , '' ) )
-		this.props.setAttributes( { level: level_val } )
-
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-how-to-schema-style-" + this.props.clientId )
@@ -129,18 +126,6 @@ class UAGBHowTo extends Component {
 				tools: newItems,
 			} )
 		}
-
-	/*
-	 * Heading Tag Change
-	 */
-	onTagChange( value ) {
-		const { setAttributes } = this.props
-
-		let level_val = parseInt( value.replace( 'h' , '' ) )
-
-		setAttributes( { level: level_val } )
-		setAttributes( { headingTag: value } )
-	}
 
 	/*
 	 * Event to set Image as null while removing.
@@ -440,9 +425,7 @@ class UAGBHowTo extends Component {
 						<SelectControl
 							label={ __( "Tag" ) }
 							value={ headingTag }
-							onChange={ value => {
-								this.onTagChange( value )
-							} }
+							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
 							options={ [
 								{ value: "h1", label: __( "H1" ) },
 								{ value: "h2", label: __( "H2" ) },
