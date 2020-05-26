@@ -393,17 +393,17 @@ class UAGBHowTo extends Component {
 
 		let url_chk = ''
 		let title = ''
-		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
+		if( "undefined" !== typeof attributes.mainimage  && null !== attributes.mainimage && "" !== attributes.mainimage ){
 			url_chk = attributes.mainimage.url
 			title = attributes.mainimage.title
 		}
 		
 		let url = ''
-		if( url_chk !== "" ){
+		if( '' !== url_chk ){
 			let size = attributes.mainimage.sizes
 			let imageSize = attributes.imgSize
 
-			if ( typeof size !== "undefined" && typeof size[imageSize] !== "undefined" ) {
+			if ( "undefined" !== typeof size && "undefined" !== typeof size[imageSize] ) {
 			  url = size[imageSize].url 
 			}else{
 			  url = url_chk 
