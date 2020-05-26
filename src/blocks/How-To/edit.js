@@ -6,10 +6,8 @@
 import classnames from "classnames"
 import times from "lodash/times"
 import map from "lodash/map"
-import memoize from "memize"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
-// import image from "../../../dist/blocks/image/placeholder"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -44,12 +42,8 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	ButtonGroup,
 	Button,
-	TabPanel,
-	Dashicon,
-	ToggleControl,
-	TextControl
+	ToggleControl
 } = wp.components
 
 const { select, withSelect, dispatch } = wp.data;
@@ -258,12 +252,6 @@ class UAGBHowTo extends Component {
 				subHeadLineHeightType,
 				subHeadLineHeightMobile,
 				subHeadLineHeightTablet,
-				separatorWidth,
-				separatorWidthType,
-				seperatorStyle,
-				separatorHeight,
-				headSpace,
-				separatorSpace,
 				headLoadGoogleFonts,
 				subHeadLoadGoogleFonts,
 				//Total time.
