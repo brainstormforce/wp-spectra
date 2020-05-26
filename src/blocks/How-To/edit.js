@@ -615,7 +615,7 @@ class UAGBHowTo extends Component {
 								/>
 							}
 						</PanelBody>
-						<PanelBody title={ __( "Tools Count" ) } initialOpen={ false }>
+						<PanelBody title={ __( "Tools" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Number of Tools" ) }
 							value={ tools_count }
@@ -667,7 +667,7 @@ class UAGBHowTo extends Component {
   							allowReset
   						/>
 					</PanelBody>
-						<PanelBody title={ __( "Materials Count" ) } initialOpen={ false }>
+						<PanelBody title={ __( "Materials" ) } initialOpen={ false }>
 						<RangeControl
 							label={ __( "Number of Materials" ) }
 							value={ material_count }
