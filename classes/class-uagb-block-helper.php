@@ -76,7 +76,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
-				// 'text-align' =>  $headingAlign,
 			    'font-family' => $headFontFamily,
 			    'font-weight' => $headFontWeight,
 			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
@@ -85,7 +84,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
-				// 'text-align' =>  $descriptionAlign,
 			    'font-family' => $subHeadFontFamily,
 			    'font-weight' => $subHeadFontWeight,
 			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),
