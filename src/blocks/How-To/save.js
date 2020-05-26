@@ -39,14 +39,14 @@ export default function save( props ) {
 		showEstcost,
 	} = attributes
 
-	let url_chk = ""
-	let title = ""
+	let url_chk = ''
+	let title = ''
 		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
 			url_chk = attributes.mainimage.url
 			title = attributes.mainimage.title
 		}
 		
-		let url = ""
+		let url = ''
 		if( url_chk !== "" ){
 			let size = attributes.mainimage.sizes
 			let imageSize = attributes.imgSize
@@ -58,7 +58,7 @@ export default function save( props ) {
 			}
 	}
 
-	let image_icon_html = ""
+	let image_icon_html = ''
 
 	if ( mainimage && mainimage.url ) {
 
