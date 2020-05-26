@@ -1,15 +1,12 @@
 /**
  * BLOCK: UAGB How-To Attributes
  */
-const ITEM_TOOLS_COUNT = 1
-
-const ITEM_MATERIALS_COUNT = 1
 
 const tools = []
 
 const materials = []
 
-for (var i = 1; i <= ITEM_TOOLS_COUNT; i++) {
+for (var i = 1; i <= 1; i++) {
 	tools.push(
 		{
 			"add_required_tools": "- A Computer.",
@@ -17,7 +14,7 @@ for (var i = 1; i <= ITEM_TOOLS_COUNT; i++) {
 	)
 }
 
-for (var i = 1; i <= ITEM_MATERIALS_COUNT; i++) {
+for (var i = 1; i <= 1; i++) {
 	materials.push(
 		{
 			"add_required_materials": "- A WordPress Website.",
@@ -65,11 +62,11 @@ const attributes = {
 	},
 	tools_count: {
 		type: "number",
-		default: ITEM_TOOLS_COUNT
+		default: 1
 	},
 	material_count: {
 		type: "number",
-		default: ITEM_MATERIALS_COUNT
+		default: 1
 	},
 	tools: {
 		type: "array",
