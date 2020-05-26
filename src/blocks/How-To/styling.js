@@ -115,7 +115,6 @@ function styling( props ) {
 	var selectors = {
 		
 		" .block-editor-rich-text__editable.uagb-howto-desc-text": {
-			// "text-align": descriptionAlign,
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
@@ -127,7 +126,6 @@ function styling( props ) {
 			"display": "block",
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
-			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -135,7 +133,6 @@ function styling( props ) {
 			"color": showTotaltimecolor,
 		},
 		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
-			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -143,7 +140,6 @@ function styling( props ) {
 			"color": showTotaltimecolor,
 		},
 		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
-			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -173,7 +169,6 @@ function styling( props ) {
 				"margin-right" : generateCSSUnit( costSpace,"px"),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
-			// "text-align": headingAlign,
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
@@ -195,7 +190,6 @@ function styling( props ) {
 	}
 
 	selectors[" " + headingTag + ".block-editor-rich-text__editable.uagb-howto-heading-text"] = {
-		// "text-align": headingAlign,
 		"font-family": headFontFamily,
 		"font-weight": headFontWeight,
 		"font-size": generateCSSUnit( headFontSize, headFontSizeType ),
