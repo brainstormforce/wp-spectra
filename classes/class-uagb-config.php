@@ -205,6 +205,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block gives you advanced options to insert a number of columns within a single row.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
+							'classMigrate'           => false,
 							'block_id'               => '',
 							'columns'                => '2',
 							'align'                  => '',
