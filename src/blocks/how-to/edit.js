@@ -219,7 +219,6 @@ class UAGBHowTo extends Component {
 				imgSize,
 				imgWidth,
 				headingTitle,
-				headingId,
 				headingDesc,
 				headingAlign,
 				descriptionAlign,

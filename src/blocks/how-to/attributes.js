@@ -132,9 +132,6 @@ const attributes = {
 		type: "string",
 		default: " USD"
 	},
-	headingId: {
-		type: "string",				
-	},
 	headingDesc: {
 		source: "html",
 		selector: "p",
