@@ -121,7 +121,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		},
-		" div.uagb-howto__source-wrap .uagb-howto__source-image": {
+		" .uagb-howto__source-wrap img.uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" ),
 			"display": "block",
 		},
@@ -254,7 +254,7 @@ function styling( props ) {
 		},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap #uagb-how-to-${ props.clientId }`
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 
