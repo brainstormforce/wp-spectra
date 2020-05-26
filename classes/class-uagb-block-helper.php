@@ -110,22 +110,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			);
 
-			if( '' === $tools_count ){
-
-				$selectors[" .uagb-tools__wrap .uagb-how-to-tools-0"] = array(
+					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-child__wrapper"] = array(
 					"color" => $icon_color
 					);
-
-			} else {
-				for($i=0;$i<$attr['tools_count'];$i++){
-
-					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-" . $i] = array(
-					"color" => $icon_color
-					);
-
-				}
-			}
-
 
 			$selectors[" .uagb-tools .uagb-tools__label"] = array(
 				'font-family' => $toolsFontFamily,
@@ -134,21 +121,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeight'], $attr['toolsLineHeightType'] ),
 			);			
 
-			if( '' === $material_count ){
-
-				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-0"] = array(
+				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-child__wrapper"] = array(
 					"color" => $materials_icon_color
-					);
-
-			} else {
-				for($i=0;$i<$attr['material_count'];$i++){
-
-					$selectors[" .uagb-how-to-materials .uagb-how-to-materials-" . $i] = array(
-					"color" => $materials_icon_color
-					);
-
-				}
-			}
+				);
 
 			$selectors[" .uagb-materials .uagb-materials__label"] = array(
 				'font-family' => $materialsFontFamily,

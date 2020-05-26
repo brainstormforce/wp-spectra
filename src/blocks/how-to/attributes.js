@@ -153,12 +153,11 @@ const attributes = {
 	},
 	showTotaltimecolor: {
 		type: "string",
+		default:""
 	},
 	subHeadingColor: {
 		type: "string",
-	},
-	separatorColor: {
-		type: "string",
+		default:""
 	},
 	headingTag: {
 		type: "string",
@@ -167,20 +166,6 @@ const attributes = {
 	level: {
 		type: "number",
 		default: 2
-	},
-	seperatorStyle: {
-		type: "string",
-		default: "solid",
-	},
-	separatorHeight: {
-		type: "number"
-	},
-	separatorWidth: {
-		type: "number"
-	},
-	separatorWidthType : {
-		type: "string",
-		default: "%"
 	},
 	headSpace: {
 		type: "number",
