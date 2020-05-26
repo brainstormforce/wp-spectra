@@ -69,7 +69,6 @@ class UAGBHowTo extends Component {
 	constructor() {
 		super( ...arguments )
 
-		// this.splitBlock = this.splitBlock.bind( this )
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 		this.getImageSize  	  = this.getImageSize.bind(this)
