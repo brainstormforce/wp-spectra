@@ -21,8 +21,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, $attr );
 
-			$t_selectors = "";
-			$m_selectors = "";
+			$t_selectors = '';
+			$m_selectors = '';
 
 
 			$headingColor =  ( isset( $attr['headingColor'] ) ) ? $attr['headingColor'] : '#000';
@@ -103,7 +103,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"color"=> $attr['showTotaltimecolor'],
 			),
 
-			' .uagb-howto__wrap span.uagb-howto__source-wrap .uagb-howto__source-image' => array(
+			' .uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image' => array(
 			    'width' => UAGB_Helper::get_css_value( $attr['imgWidth'], "%" ),
 			    'display' => 'block',
 			),
