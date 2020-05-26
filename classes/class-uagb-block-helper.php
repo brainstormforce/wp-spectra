@@ -116,19 +116,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"color" => $icon_color
 					);
 
-				$selectors[" .uagb-tools__wrap .uagb-how-to-tools-0:hover"] = array(
-					"color" => $icon_hover_color
-					);
-
 			} else {
 				for($i=0;$i<$attr['tools_count'];$i++){
 
 					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-" . $i] = array(
 					"color" => $icon_color
-					);
-
-					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-" . $i.":hover"] = array(
-					"color" => $icon_hover_color
 					);
 
 				}
@@ -148,19 +140,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					"color" => $materials_icon_color
 					);
 
-				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-0:hover"] = array(
-					"color" => $materials_icon_hover_color
-					);
-
 			} else {
 				for($i=0;$i<$attr['material_count'];$i++){
 
 					$selectors[" .uagb-how-to-materials .uagb-how-to-materials-" . $i] = array(
 					"color" => $materials_icon_color
-					);
-
-					$selectors[" .uagb-how-to-materials .uagb-how-to-materials-" . $i.":hover"] = array(
-					"color" => $materials_icon_hover_color
 					);
 
 				}

@@ -9,7 +9,6 @@ function styling( props ) {
 
 	const {
 		imgWidth,
-		classMigrate,
 		overallAlignment,
 		headingAlign,
 		descriptionAlign,
