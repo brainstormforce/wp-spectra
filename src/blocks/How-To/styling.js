@@ -121,7 +121,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		},
-		" span.uagb-howto__source-wrap .uagb-howto__source-image": {
+		" div.uagb-howto__source-wrap .uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" ),
 			"display": "block",
 		},
