@@ -95,38 +95,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
 			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text'=> array(
+			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text, .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
+			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
+			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type, .uagb-how-to-tools__wrap .uagb-howto-req-tools-text,  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text, .uagb-how-to-steps__wrap .uagb-howto-req-steps-text'=> array(
 				"font-family" => $attr['priceFontFamily'],
 				"font-weight" => $attr['priceFontWeight'],
 				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSize'], $attr['priceFontSizeType'] ),
 				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeight'], $attr['priceLineHeightType'] ),
 				"color"=> $attr['showTotaltimecolor'],
-			),
-
-			' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
-				"font-family" => $attr['estcostFontFamily'],
-				"font-weight" => $attr['estcostFontWeight'],
-				"font-size" => UAGB_Helper::get_css_value( $attr['estcostFontSize'], $attr['estcostFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['estcostLineHeight'], $attr['estcostLineHeightType'] ),
-				"color"=> $attr['showEstcostcolor'],
-			),
-
-			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => array(
-				'font-family' => $attr['toolsFontFamily'],
-			    'font-weight' => $attr['toolsFontWeight'],
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSize'], $attr['toolsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeight'], $attr['toolsLineHeightType'] ),
-				"color" => $attr["toolsTitleColor"],
-			),
-
-			' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
-				'font-family' => $attr['materialsFontFamily'],
-			    'font-weight' => $attr['materialsFontWeight'],
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSize'], $attr['materialsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeight'], $attr['materialsLineHeightType'] ),
-				"color" => $attr["materialTitleColor"],
 			),
 
 			' .uagb-howto__wrap span.uagb-howto__source-wrap .uagb-howto__source-image' => array(

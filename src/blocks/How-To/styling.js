@@ -123,7 +123,8 @@ function styling( props ) {
 			"color": subHeadingColor,
 		},
 		" span.uagb-howto__source-wrap .uagb-howto__source-image": {
-			"width": generateCSSUnit( imgWidth, "%" )
+			"width": generateCSSUnit( imgWidth, "%" ),
+			"display": "block",
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
 			// "text-align": headingAlign,
