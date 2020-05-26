@@ -204,8 +204,6 @@ class UAGBHowTo extends Component {
 			mergeBlocks,
 			onReplace,
 			anchor,
-			//JSON data
-			schemaJsonData,
 			attributes: {
 				level,
 				overallAlignment,
