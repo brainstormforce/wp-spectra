@@ -407,14 +407,14 @@ class UAGBHowTo extends Component {
 
 		
 
-		let url_chk = ""
-		let title = ""
+		let url_chk = ''
+		let title = ''
 		if( typeof attributes.mainimage !== "undefined" && attributes.mainimage !== null && attributes.mainimage !=="" ){
 			url_chk = attributes.mainimage.url
 			title = attributes.mainimage.title
 		}
 		
-		let url = ""
+		let url = ''
 		if( url_chk !== "" ){
 			let size = attributes.mainimage.sizes
 			let imageSize = attributes.imgSize
@@ -426,7 +426,7 @@ class UAGBHowTo extends Component {
 			}
 	}
 
-	let image_icon_html = ""
+	let image_icon_html = ''
 
 	if ( mainimage && mainimage.url ) {
 
@@ -543,20 +543,6 @@ class UAGBHowTo extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 								<h2>{ __( "Image" ) }</h2>
-								<SelectControl
-									label={ __( "Size" ) }
-									options={ imageSizeOptions }
-									value={ imgSize }
-									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-								/>
-								<RangeControl
-									label={ __( "Width(%)" ) }
-									value={ imgWidth }
-									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
-									min={ 0 }
-									max={ 500 }
-									allowReset
-								/>
 								<MediaUpload
 									title={ __( "Select Image" ) }
 									onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
@@ -576,6 +562,24 @@ class UAGBHowTo extends Component {
 										{ __( "Remove Image" ) }
 									</Button>
 								}
+								{ mainimage &&
+									<SelectControl
+										label={ __( "Size" ) }
+										options={ imageSizeOptions }
+										value={ imgSize }
+										onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+									/>
+								}
+								{ mainimage &&
+									<RangeControl
+										label={ __( "Width(%)" ) }
+										value={ imgWidth }
+										onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
+										min={ 0 }
+										max={ 500 }
+										allowReset
+									/>
+								}
 						</PanelBody>
 						<PanelBody title={ __( "Time & Cost" ) } initialOpen={ false } >
 							<ToggleControl
@@ -584,28 +588,32 @@ class UAGBHowTo extends Component {
 								onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 								help={ __( "Note: Click here to find your country's ISO code." ) }
 							/>
-							<RangeControl
-								label={ __( "Time Margin" ) }
-								value={ timeSpace }
-								onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
+							{ showTotaltime &&
+								<RangeControl
+									label={ __( "Time Margin" ) }
+									value={ timeSpace }
+									onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+							}
 							<ToggleControl
 								label={ __( "Show Estimated Cost" ) }
 								checked={ showEstcost }
 								onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
 								help={ __( "Note: Click here to find your country's ISO code." ) }
 							/>
-							<RangeControl
-								label={ __( "Cost Margin" ) }
-								value={ costSpace }
-								onChange={ ( value ) => setAttributes( { costSpace: value } ) }
-								min={ 0 }
-								max={ 50 }
-								allowReset
-							/>
+							{ showEstcost &&
+								<RangeControl
+									label={ __( "Cost Margin" ) }
+									value={ costSpace }
+									onChange={ ( value ) => setAttributes( { costSpace: value } ) }
+									min={ 0 }
+									max={ 50 }
+									allowReset
+								/>
+							}
 						</PanelBody>
 						<PanelBody title={ __( "Tools Count" ) } initialOpen={ false }>
 						<RangeControl
