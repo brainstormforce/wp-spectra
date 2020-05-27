@@ -10,13 +10,13 @@ const materials = []
 
 	tools.push(
 		{
-			"add_required_tools": "- A Computer.",
+			"add_required_tools": __( "- A Computer." ),
 		}
 	)
 
 	materials.push(
 		{
-			"add_required_materials": "- A WordPress Website.",
+			"add_required_materials": __( "- A WordPress Website." ),
 		}
 	)
 
