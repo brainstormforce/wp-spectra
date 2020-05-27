@@ -61,7 +61,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			),
 
 			' span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			span.uagb-howto__cost-wrap .uagb-howto-estcost-value,span.uagb-howto__cost-wrap .uagb-howto-estcost-type' => array(
+			span.uagb-howto__cost-wrap .uagb-howto-estcost-value,span.uagb-howto__cost-wrap .uagb-howto-estcost-type,.uagb-howto__time-wrap' => array(
 					'display' => "inline-flex",
 				),
 
