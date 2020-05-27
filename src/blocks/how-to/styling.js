@@ -106,20 +106,52 @@ function styling( props ) {
 			"width": generateCSSUnit( imgWidth, "%" ),
 			"display": "block",
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value": {
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+			"margin-left" : generateCSSUnit( timeSpace,"px"),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text" :{
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+			"margin-left" : generateCSSUnit( costSpace,"px"),
+		},
+
+		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
+		},
+
 		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
@@ -127,6 +159,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
+
 		"  .block-editor-rich-text__editable.uagb-tools__label":{
 			"font-family": toolsFontFamily,
 			"font-weight": toolsFontWeight,
@@ -134,19 +167,31 @@ function styling( props ) {
 			"line-height": generateCSSUnit( toolsLineHeight, toolsLineHeightType ),
 			"color": icon_color,
 		},
-		" .block-editor-rich-text__editable.uagb-howto-req-materials-text, .block-editor-rich-text__editable.uagb-howto-req-tools-text, .block-editor-rich-text__editable.uagb-howto-req-steps-text": {
+
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text" : {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-value': {
-				"margin-left" : generateCSSUnit( timeSpace,"px"),
+
+		" .block-editor-rich-text__editable.uagb-howto-req-tools-text" : {
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
 		},
-		' .block-editor-rich-text__editable.uagb-howto-estcost-value': {
-				"margin-left" : generateCSSUnit( costSpace,"px"),
+
+		" .block-editor-rich-text__editable.uagb-howto-req-steps-text" : {
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+			"color": showTotaltimecolor,
 		},
+
 		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
@@ -154,6 +199,7 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
+		
 		" .block-editor-rich-text__editable.uagb-materials__label":{
 			"font-family": materialsFontFamily,
 			"font-weight": materialsFontWeight,
@@ -192,19 +238,43 @@ function styling( props ) {
 			"font-size": generateCSSUnit( subHeadFontSizeMobile, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text" : {
 			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
 			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text" : {
+			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
+			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-size": generateCSSUnit( priceFontSizeMobile, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightMobile, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-tools__label" : {
 			"font-size": generateCSSUnit( toolsFontSizeMobile, toolsFontSizeType ),
 			"line-height": generateCSSUnit( toolsLineHeightMobile, toolsLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+			"font-size": generateCSSUnit( toolsFontSizeMobile, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeightMobile, toolsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label" : {
+			"font-size": generateCSSUnit( materialsFontSizeMobile, materialsFontSizeType ),
+			"line-height": generateCSSUnit( materialsLineHeightMobile, materialsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-size": generateCSSUnit( materialsFontSizeMobile, materialsFontSizeType ),
 			"line-height": generateCSSUnit( materialsLineHeightMobile, materialsLineHeightType ),
 		},
@@ -215,19 +285,43 @@ function styling( props ) {
 			"font-size": generateCSSUnit( subHeadFontSizeTablet, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeightTablet, subHeadLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,.block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text" : {
 			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-howto-estcost-text, .block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type": {
+		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-value" : {
 			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
 			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-tools__label, .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+		" .block-editor-rich-text__editable.uagb-howto-timeINmin-text ": {
+			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-text" : {
+			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-value" : {
+			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
+			"font-size": generateCSSUnit( priceFontSizeTablet, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeightTablet, priceLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-tools__label" : {
 			"font-size": generateCSSUnit( toolsFontSizeTablet, toolsFontSizeType ),
 			"line-height": generateCSSUnit( toolsLineHeightTablet, toolsLineHeightType ),
 		},
-		" .block-editor-rich-text__editable.uagb-materials__label, .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
+		" .block-editor-rich-text__editable.uagb-howto-req-tools-text": {
+			"font-size": generateCSSUnit( toolsFontSizeTablet, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeightTablet, toolsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-materials__label" : {
+			"font-size": generateCSSUnit( toolsFontSizeTablet, toolsFontSizeType ),
+			"line-height": generateCSSUnit( toolsLineHeightTablet, toolsLineHeightType ),
+		},
+		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-size": generateCSSUnit( materialsFontSizeTablet, materialsFontSizeType ),
 			"line-height": generateCSSUnit( materialsLineHeightTablet, materialsLineHeightType ),
 		},

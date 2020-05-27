@@ -63,49 +63,69 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$tools_font_family = ( isset( $attr['toolsFontFamily'] ) )? $attr['toolsFontFamily'] : '';
 			$tools_font_weight = ( isset( $attr['toolsFontWeight'] ) )? $attr['toolsFontWeight'] :'';
 
-			$selectors = array(
-			" .uagb-how-to-main-wrap" => array(
-			    "text-align" => $overall_alignment,
+			$common_secondory_typography = array(
+				"font-family" => $attr['priceFontFamily'],
+				"font-weight" => $attr['priceFontWeight'],
+				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSize'], $attr['priceFontSizeType'] ),
+				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeight'], $attr['priceLineHeightType'] ),
+				"color"=> $attr['showTotaltimecolor'],
+			);
+
+		$selectors = array(
+		" .uagb-how-to-main-wrap" => array(
+		    "text-align" => $overall_alignment,
+		),
+
+		' span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
+		span.uagb-howto__cost-wrap .uagb-howto-estcost-value,span.uagb-howto__cost-wrap .uagb-howto-estcost-type,.uagb-howto__time-wrap' => array(
+				'display' => "inline-flex",
 			),
 
-			' span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			span.uagb-howto__cost-wrap .uagb-howto-estcost-value,span.uagb-howto__cost-wrap .uagb-howto-estcost-type,.uagb-howto__time-wrap' => array(
-					'display' => "inline-flex",
-				),
+		' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
+		    "margin-left"=> UAGB_Helper::get_css_value( $attr['timeSpace'],"px"  ),
+		),
 
-			' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
-			    "margin-left"=> UAGB_Helper::get_css_value( $attr['timeSpace'],"px"  ),
+		' span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
+		    "margin-left"=> UAGB_Helper::get_css_value( $attr['costSpace'],"px" ),
+		),
+
+		' span.uagb-howto__cost-wrap' => array(
+				'display' => "block",
 			),
 
-			' span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
-			    "margin-left"=> UAGB_Helper::get_css_value( $attr['costSpace'],"px" ),
+		' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
+		    'font-family' => $head_font_family,
+		    'font-weight' => $head_font_weight,
+		    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeight'], $attr['headLineHeightType'] ),
+			'color' => $heading_color,
 			),
 
-			' span.uagb-howto__cost-wrap' => array(
-					'display' => "block",
-				),
+		' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
+		    'font-family' => $sub_head_font_family,
+		    'font-weight' => $sub_head_font_weight,
+		    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType'] ),
+			'color' => $sub_heading_color,
+			),
 
-			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
-			    'font-family' => $head_font_family,
-			    'font-weight' => $head_font_weight,
-			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSize'], $attr['headFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeight'], $attr['headLineHeightType'] ),
-				'color' => $heading_color,
-				),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text ' => $common_secondory_typography,
 
-			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
-			    'font-family' => $sub_head_font_family,
-			    'font-weight' => $sub_head_font_weight,
-			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSize'], $attr['subHeadFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeight'], $attr['subHeadLineHeightType'] ),
-				'color' => $sub_heading_color,
-				),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => $common_secondory_typography,
 
-			' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text, .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type, .uagb-how-to-tools__wrap .uagb-howto-req-tools-text,  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text, .uagb-how-to-steps__wrap .uagb-howto-req-steps-text'=> array(
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text' => $common_secondory_typography,
+
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text' => $common_secondory_typography,
+
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => $common_secondory_typography,
+
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type' => $common_secondory_typography,
+
+		' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => $common_secondory_typography,
+
+		'  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => $common_secondory_typography,
+
+		' .uagb-how-to-steps__wrap .uagb-howto-req-steps-text'=> array(
 				"font-family" => $attr['priceFontFamily'],
 				"font-weight" => $attr['priceFontWeight'],
 				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSize'], $attr['priceFontSizeType'] ),
@@ -113,108 +133,132 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				"color"=> $attr['showTotaltimecolor'],
 			),
 
-			' .uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image' => array(
+		' .uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image' => array(
 			    'width' => UAGB_Helper::get_css_value( $attr['imgWidth'], "%" ),
 			    'display' => 'block',
 			),
+		);
 
-			);
+		$selectors[" .uagb-tools__wrap .uagb-how-to-tools-child__wrapper"] = array(
+			"color" => $icon_color
+		);
 
-					$selectors[" .uagb-tools__wrap .uagb-how-to-tools-child__wrapper"] = array(
-					"color" => $icon_color
-					);
+		$selectors[" .uagb-tools .uagb-tools__label"] = array(
+			'font-family' => $tools_font_family,
+		    'font-weight' => $tools_font_weight,
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSize'], $attr['toolsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeight'], $attr['toolsLineHeightType'] ),
+		);			
 
-			$selectors[" .uagb-tools .uagb-tools__label"] = array(
-				'font-family' => $tools_font_family,
-			    'font-weight' => $tools_font_weight,
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSize'], $attr['toolsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeight'], $attr['toolsLineHeightType'] ),
-			);			
+		$selectors[" .uagb-how-to-materials .uagb-how-to-materials-child__wrapper"] = array(
+			"color" => $materials_icon_color
+		);
 
-				$selectors[" .uagb-how-to-materials .uagb-how-to-materials-child__wrapper"] = array(
-					"color" => $materials_icon_color
-				);
+		$selectors[" .uagb-materials .uagb-materials__label"] = array(
+			'font-family' => $materials_font_family,
+		    'font-weight' => $materials_font_weight,
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSize'], $attr['materialsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeight'], $attr['materialsLineHeightType'] ),
+		);			
 
-			$selectors[" .uagb-materials .uagb-materials__label"] = array(
-				'font-family' => $materials_font_family,
-			    'font-weight' => $materials_font_weight,
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSize'], $attr['materialsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeight'], $attr['materialsLineHeightType'] ),
-			);			
+		$t_selectors = array(
 
-			$t_selectors = array(
-
-			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
-			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightTablet'], $attr['headLineHeightType'] ),
-				),
-
-			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
-			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightTablet'], $attr['subHeadLineHeightType'] ),
-				),
-
-			' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
+		    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSizeTablet'], $attr['headFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightTablet'], $attr['headLineHeightType'] ),
 			),
 
-			' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
+		    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSizeTablet'], $attr['subHeadFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightTablet'], $attr['subHeadLineHeightType'] ),
 			),
 
-			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeTablet'], $attr['toolsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightTablet'], $attr['toolsLineHeightType'] ),
-			),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value'
+		=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
 
-			' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeTablet'], $attr['materialsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightTablet'], $attr['materialsLineHeightType'] ),
-			),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
+		),
+
+		' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeTablet'], $attr['toolsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightTablet'], $attr['toolsLineHeightType'] ),
+		),
+
+		' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeTablet'], $attr['materialsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightTablet'], $attr['materialsLineHeightType'] ),
+		),
 
 		);
 
-			$m_selectors = array(
+		$m_selectors = array(
 
-			' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
-			    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSizeMobile'], $attr['headFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightMobile'], $attr['headLineHeightType'] ),
-				),
-
-			' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
-			    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSizeMobile'], $attr['subHeadFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightMobile'], $attr['subHeadLineHeightType'] ),
-				),
-
-			' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value,
-			.uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		' .uagb-howto__wrap .uagb-howto-heading-text'=> array(
+		    'font-size' => UAGB_Helper::get_css_value( $attr['headFontSizeMobile'], $attr['headFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['headLineHeightMobile'], $attr['headLineHeightType'] ),
 			),
 
-			' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
-			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		' .uagb-howto__wrap .uagb-howto-desc-text'=> array(
+		    'font-size' => UAGB_Helper::get_css_value( $attr['subHeadFontSizeMobile'], $attr['subHeadFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['subHeadLineHeightMobile'], $attr['subHeadLineHeightType'] ),
 			),
 
-			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeMobile'], $attr['toolsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightMobile'], $attr['toolsLineHeightType'] ),
-			),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
 
-			' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
-			   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeMobile'], $attr['materialsFontSizeType'] ),
-			    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightMobile'], $attr['materialsLineHeightType'] ),
-			),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
+		' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
+			"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+			"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
+		),
+
+		' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['toolsFontSizeMobile'], $attr['toolsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['toolsLineHeightMobile'], $attr['toolsLineHeightType'] ),
+		),
+
+		' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+		   	'font-size' => UAGB_Helper::get_css_value( $attr['materialsFontSizeMobile'], $attr['materialsFontSizeType'] ),
+		    'line-height' => UAGB_Helper::get_css_value( $attr['materialsLineHeightMobile'], $attr['materialsLineHeightType'] ),
+		),
 
 		);
 

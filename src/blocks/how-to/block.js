@@ -16,11 +16,6 @@ const {
 	registerBlockType
 } = wp.blocks
 
-const {
-	RichText
-} = wp.blockEditor
-
-
 registerBlockType( "uagb/how-to", {
 	title: uagb_blocks_info.blocks["uagb/how-to"]["title"],
 	description: uagb_blocks_info.blocks["uagb/how-to"]["description"],

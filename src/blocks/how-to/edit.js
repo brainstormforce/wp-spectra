@@ -7,7 +7,6 @@ import classnames from "classnames"
 import SchemaNotices from "./schema-notices"
 import times from "lodash/times"
 import map from "lodash/map"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import styling from "./styling"
 
 // Import all of our Text Options requirements.
