@@ -13,3 +13,30 @@
     margin-left: 20px;
     width:10%;
 }
+.uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image {
+    display: block;
+}
+.uagb-howto__cost-wrap {
+    display: block;
+    .uagb-howto-estcost-text,
+    .uagb-howto-estcost-value,
+    .uagb-howto-estcost-type {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+        display: inline-flex;
+    }
+}
+
+.uagb-howto__time-wrap {
+    display: inline-flex;
+    .uagb-howto-timeNeeded-text,
+    .uagb-howto-timeNeeded-value,
+    .uagb-howto-timeINmin-text {
+        font-size: inherit;
+        font-family: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+    }
+}
