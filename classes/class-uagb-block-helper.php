@@ -38,8 +38,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$attr = array_merge( $defaults, $attr );
 
-			$t_selectors = '';
-			$m_selectors = '';
+			$t_selectors = array();
+			$m_selectors = array();
 
 
 			$heading_color =  ( isset( $attr['headingColor'] ) ) ? $attr['headingColor'] : '#000';
@@ -75,7 +75,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
 			    "margin-left"=> UAGB_Helper::get_css_value( $attr['timeSpace'],"px"  ),
-			    'display' => "inline-flex",
 			),
 
 			' span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
@@ -165,8 +164,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
 			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
 			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['estcostFontSizeTablet'], $attr['estcostFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['estcostLineHeightTablet'], $attr['estcostLineHeightType'] ),
+				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeTablet'], $attr['priceFontSizeType'] ),
+				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightTablet'], $attr['priceLineHeightType'] ),
 			),
 
 			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(
@@ -203,8 +202,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text,
 			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value,
 			.uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type'=> array(
-				"font-size" => UAGB_Helper::get_css_value( $attr['estcostFontSizeMobile'], $attr['estcostFontSizeType'] ),
-				"line-height" => UAGB_Helper::get_css_value( $attr['estcostLineHeightMobile'], $attr['estcostLineHeightType'] ),
+				"font-size" => UAGB_Helper::get_css_value( $attr['priceFontSizeMobile'], $attr['priceFontSizeType'] ),
+				"line-height" => UAGB_Helper::get_css_value( $attr['priceLineHeightMobile'], $attr['priceLineHeightType'] ),
 			),
 
 			' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text'=> array(

@@ -251,19 +251,6 @@ class UAGBHowTo extends Component {
 				priceLineHeightTablet,
 				priceLineHeightMobile,
 				priceLoadGoogleFonts,
-				//Est cost.
-				estcostLoadGoogleFonts,
-				estcostFontFamily,
-				estcostFontWeight,
-				estcostFontSubset,
-				estcostFontSizeType,
-				estcostFontSize,
-				estcostFontSizeMobile,
-				estcostFontSizeTablet,
-				estcostLineHeightType,
-				estcostLineHeight,
-				estcostLineHeightMobile,
-				estcostLineHeightTablet,
 				time,
 				cost,
 				//Tools attributes
@@ -556,7 +543,6 @@ class UAGBHowTo extends Component {
 					label={ __( "Show Total Time" ) }
 					checked={ showTotaltime }
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
-					help={ __( "Note: Click here to find your country's ISO code." ) }
 				/>
 				{ showTotaltime &&
 					<RangeControl
@@ -596,6 +582,7 @@ class UAGBHowTo extends Component {
 					label={ __( "Show Tools" ) }
 					checked={ showTools }
 					onChange={ ( value ) => setAttributes( { showTools: ! showTools } ) }
+					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
 					/>
 					{ showTools &&
 					<RangeControl
@@ -645,12 +632,16 @@ class UAGBHowTo extends Component {
 							lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
 					/>
 				}
+				{ showTools &&
 						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+				}
+				{ showTools &&
 						<ColorPalette
 							value={ icon_color }
 							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
 							allowReset
 						/>
+				}
 				</PanelBody>
 			)
 		}
@@ -663,6 +654,7 @@ class UAGBHowTo extends Component {
 					label={ __( "Show Materials" ) }
 					checked={ showMaterials }
 					onChange={ ( value ) => setAttributes( { showMaterials: ! showMaterials } ) }
+					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
 					/>
 					{ showMaterials &&
 					<RangeControl
@@ -712,12 +704,16 @@ class UAGBHowTo extends Component {
 							lineHeightTablet= { { value: materialsLineHeightTablet, label: 'materialsLineHeightTablet' } }
 					/>
 				}
+				{ showMaterials &&
 					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
+				}
+				{ showMaterials &&
 					<ColorPalette
 						value={ materials_icon_color }
 						onChange={ ( value ) => setAttributes( { materials_icon_color: value } ) }
 						allowReset
 					/>
+				}
 				</PanelBody>
 			)
 		}

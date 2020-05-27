@@ -2,25 +2,23 @@
  * BLOCK: UAGB How-To Attributes
  */
 
+ const { __ } = wp.i18n
+
 const tools = []
 
 const materials = []
 
-for (var i = 1; i <= 1; i++) {
 	tools.push(
 		{
 			"add_required_tools": "- A Computer.",
 		}
 	)
-}
 
-for (var i = 1; i <= 1; i++) {
 	materials.push(
 		{
 			"add_required_materials": "- A WordPress Website.",
 		}
 	)
-}
 
 const attributes = {
 	block_id: {
@@ -44,11 +42,11 @@ const attributes = {
 	},
 	toolsTitle: {
 		type: "string",
-		default : "Required Tools:"
+		default : __( "Required Tools:" ),
 	},
 	materialTitle: {
 		type: "string",
-		default : "Things Needed?"
+		default : __( "Things Needed?" ),
 	},
 	toolsTitleColor:{
 		type: "string",
@@ -58,7 +56,7 @@ const attributes = {
 	},
 	stepsTitle: {
 		type: "string",
-		default : "Steps to configure the How-to Schema:"
+		default : __( "Steps to configure the How-to Schema:" ),
 	},
 	tools_count: {
 		type: "number",
@@ -97,15 +95,15 @@ const attributes = {
 	},
 	estCost:{
 		type: "string",
-		default: "Total Cost:",
+		default: __( "Total Cost:" ),
 	},
 	timeNeeded:{
 		type: "string",
-		default: "Total Time Needed :",
+		default: __( "Total Time Needed :" ),
 	},
 	timeIn:{
 		type: "string",
-		default: " Minutes",
+		default: __( " Minutes" ),
 	},
 	imgSize:{
 		type: "string",
@@ -134,7 +132,7 @@ const attributes = {
 	headingTitle: {
 		source: "html",
 		selector: "h1,h2,h3,h4,h5,h6",
-		default: "How To Configure How-To Schema In Ultimate Addons For Gutenberg?",
+		default: __( "How To Configure How-To Schema In Ultimate Addons For Gutenberg?" ),
 	},
 	currencyType: {
 		type: "string",
@@ -143,7 +141,7 @@ const attributes = {
 	headingDesc: {
 		source: "html",
 		selector: "p",
-		default: "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements.",
+		default: __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages that contain a How-to in their title and describe steps to achieve certain requirements." ),
 	},
 	headingAlign: {
 		type: "string",
@@ -300,46 +298,6 @@ const attributes = {
 		type: "number",
 	},
 	priceLoadGoogleFonts: {
-		type: "boolean",
-		default: false	
-	},
-	estcostFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	estcostFontSize: {
-		type: "number",
-	},
-	estcostFontSizeTablet: {
-		type: "number",
-	},
-	estcostFontSizeMobile: {
-		type: "number",
-	},
-	estcostFontFamily: {
-		type: "string",
-		default: "Default",
-	},
-	estcostFontWeight: {
-		type: "string",
-	},
-	estcostFontSubset: {
-		type: "string",
-	},
-	estcostLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	estcostLineHeight: {
-		type: "number",
-	},
-	estcostLineHeightTablet: {
-		type: "number",
-	},
-	estcostLineHeightMobile: {
-		type: "number",
-	},
-	estcostLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
 	},
