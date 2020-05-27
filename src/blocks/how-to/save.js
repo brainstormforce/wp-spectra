@@ -37,6 +37,8 @@ export default function save( props ) {
 		schema,
 		showTotaltime,
 		showEstcost,
+		showTools,
+		showMaterials,
 	} = attributes
 
 	let url_chk = ''
@@ -128,6 +130,7 @@ export default function save( props ) {
 				</span>
 				}
 			</div>
+			{ showTools &&
 			<div className="uagb-how-to-tools__wrap">
 				<RichText.Content
 					value={ toolsTitle }
@@ -160,6 +163,8 @@ export default function save( props ) {
 			})
 		}
 		</div>
+		}
+		{ showMaterials &&
 		<div className="uagb-how-to-materials__wrap">
 			<RichText.Content
 				value={ materialTitle }
@@ -191,6 +196,7 @@ export default function save( props ) {
 			})
 		}
 		</div>
+		}
 		<div className="uagb-how-to-steps__wrap">
 			<RichText.Content
 				value={ stepsTitle }

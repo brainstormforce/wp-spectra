@@ -84,6 +84,14 @@ const attributes = {
 		type: "boolean",
 		default: true
 	},
+	showTools: {
+		type: "boolean",
+		default: true
+	},
+	showMaterials: {
+		type: "boolean",
+		default: true
+	},
 	mainimage: {
 		type: "object",
 	},

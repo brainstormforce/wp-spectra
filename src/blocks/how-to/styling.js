@@ -159,13 +159,11 @@ function styling( props ) {
 			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
 			"color": showTotaltimecolor,
 		},
-		'.block-editor-rich-text__editable.uagb-howto-timeNeeded-text, .block-editor-rich-text__editable.uagb-howto-timeNeeded-value,block-editor-rich-text__editable.uagb-howto-timeINmin-text': {
+		' .block-editor-rich-text__editable.uagb-howto-timeNeeded-value': {
 				"margin-left" : generateCSSUnit( timeSpace,"px"),
-				"margin-right" : generateCSSUnit( timeSpace,"px"),
 		},
-		'.block-editor-rich-text__editable.uagb-howto-estcost-text,.block-editor-rich-text__editable.uagb-howto-estcost-value,.block-editor-rich-text__editable.uagb-howto-estcost-type': {
+		' .block-editor-rich-text__editable.uagb-howto-estcost-value': {
 				"margin-left" : generateCSSUnit( costSpace,"px"),
-				"margin-right" : generateCSSUnit( costSpace,"px"),
 		},
 		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-family": priceFontFamily,
