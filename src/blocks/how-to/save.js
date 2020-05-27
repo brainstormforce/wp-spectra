@@ -166,6 +166,7 @@ export default function save( props ) {
 		}
 		</div>
 	}
+	{ showMaterials &&
 		<div className="uagb-how-to-materials__wrap">
 			<RichText.Content
 				value={ materialTitle }
@@ -173,6 +174,8 @@ export default function save( props ) {
 				className='uagb-howto-req-materials-text'
 			/>
 		</div>
+	}
+	{ showMaterials &&
 		<div className="uagb-how-to-materials">
 		{
 			materials.map( ( materials, index ) => {
@@ -197,6 +200,7 @@ export default function save( props ) {
 			})
 		}
 		</div>
+	}
 		<div className="uagb-how-to-steps__wrap">
 			<RichText.Content
 				value={ stepsTitle }

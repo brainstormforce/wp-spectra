@@ -901,6 +901,7 @@ class UAGBHowTo extends Component {
 						</div>
 						}
 					<div className="uagb-how-to-materials__wrap">
+					{ showMaterials &&
 						<RichText
 							tagName="h3"
 							placeholder={ __( "requirements materials:" ) }
@@ -911,7 +912,9 @@ class UAGBHowTo extends Component {
 							unstableOnSplit={ this.splitBlock }
 							onRemove={ () => onReplace( [] ) }
 						/>
+					}
 					</div>
+					{ showMaterials &&
 					<div className="uagb-how-to-materials">
 						{
 						materials.map( ( materials, index ) => {
@@ -944,6 +947,7 @@ class UAGBHowTo extends Component {
 						})
 					}
 					</div>
+					}
 					</div>
 					<div className="uagb-how-to-steps__wrap">
 						<RichText
