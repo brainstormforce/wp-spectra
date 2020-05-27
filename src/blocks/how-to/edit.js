@@ -114,7 +114,7 @@ class UAGBHowTo extends Component {
 			const { attributes, setAttributes } = this.props
 			const { tools } = attributes
 
-			const newItems = tools.map( ( item, thisIndex ) => {
+		const newItems = tools.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item = { ...item, ...value }
 			}
@@ -599,12 +599,19 @@ class UAGBHowTo extends Component {
 
 									cloneIcons.push( {
 										"add_required_tools": "- A Computer" + ( cloneIcons.length + 1 ),
-										"icon_color": cloneIcons[ 0 ].icon_color,
-										"icon_hover_color": cloneIcons[ 0 ].icon_hover_color,
 									} )
+
 								} ) }
 
 								setAttributes( { tools: cloneIcons } )
+							}else{
+								const incAmount = Math.abs( newCount - cloneIcons.length )
+								let data_new = cloneIcons
+				            for( var i= 0; i < incAmount; i++ ){
+				                data_new.pop()
+				            }
+				            setAttributes({tools:data_new})
+
 							}
 							setAttributes( { tools_count: newCount } )
 						} }
@@ -671,12 +678,18 @@ class UAGBHowTo extends Component {
 
 									cloneIcons.push( {
 										"add_required_materials": "- A WordPress Website" + ( cloneIcons.length + 1 ),
-										"materials_icon_color": cloneIcons[ 0 ].materials_icon_color,
-										"materials_icon_hover_color": cloneIcons[ 0 ].materials_icon_hover_color,
 									} )
 								} ) }
 
 								setAttributes( { materials: cloneIcons } )
+							}else{
+								const incAmount = Math.abs( newCount - cloneIcons.length )
+								let data_new = cloneIcons
+				            for( var i= 0; i < incAmount; i++ ){
+				                data_new.pop()
+				            }
+				            setAttributes({materials:data_new})
+
 							}
 							setAttributes( { material_count: newCount } )
 						} }
