@@ -65,6 +65,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * @return void
 		 */
 		public function loader() {
+			require_once UAGB_DIR . 'classes/class-uagb-admin-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-helper.php';
 			require_once UAGB_DIR . 'classes/class-uagb-update.php';
 		}
@@ -98,10 +99,11 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			$this->load_textdomain();
 
 			require_once UAGB_DIR . 'classes/class-uagb-core-plugin.php';
-			require_once UAGB_DIR . 'dist/blocks/post/index.php';
-			require_once UAGB_DIR . 'dist/blocks/post-timeline/index.php';
-			require_once UAGB_DIR . 'dist/blocks/cf7-styler/index.php';
-			require_once UAGB_DIR . 'dist/blocks/gf-styler/index.php';
+			require_once UAGB_DIR . 'classes/class-uagb-rest-api.php';
+			require_once UAGB_DIR . 'dist/blocks/post/class-uagb-post.php';
+			require_once UAGB_DIR . 'dist/blocks/post-timeline/class-uagb-post-timeline.php';
+			require_once UAGB_DIR . 'dist/blocks/cf7-styler/class-uagb-cf7-styler.php';
+			require_once UAGB_DIR . 'dist/blocks/gf-styler/class-uagb-gf-styler.php';
 		}
 
 		/**
