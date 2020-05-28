@@ -92,6 +92,9 @@ const attributes = {
 	},
 	mainimage: {
 		type: "object",
+		default:{
+			"url": "",
+		}
 	},
 	estCost:{
 		type: "string",
@@ -300,78 +303,6 @@ const attributes = {
 	priceLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
-	},
-	materialsFontFamily: {
-		type: "string",
-		default: "Default",
-	},
-	materialsFontWeight: {
-		type: "string",
-	},
-	materialsFontSubset: {
-		type: "string",
-	},
-	materialsFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	materialsLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	materialsFontSize: {
-		type: "number",
-	},
-	materialsFontSizeTablet: {
-		type: "number",
-	},
-	materialsFontSizeMobile: {
-		type: "number",
-	},
-	materialsLineHeight: {
-		type: "number",
-	},
-	materialsLineHeightTablet: {
-		type: "number",
-	},
-	materialsLineHeightMobile: {
-		type: "number",
-	},
-	toolsFontFamily: {
-		type: "string",
-		default: "Default",
-	},
-	toolsFontWeight: {
-		type: "string",
-	},
-	toolsFontSubset: {
-		type: "string",
-	},
-	toolsFontSizeType: {
-		type: "string",
-		default: "px"
-	},
-	toolsLineHeightType: {
-		type: "string",
-		default: "em"
-	},
-	toolsFontSize: {
-		type: "number",
-	},
-	toolsFontSizeTablet: {
-		type: "number",
-	},
-	toolsFontSizeMobile: {
-		type: "number",
-	},
-	toolsLineHeight: {
-		type: "number",
-	},
-	toolsLineHeightTablet: {
-		type: "number",
-	},
-	toolsLineHeightMobile: {
-		type: "number",
 	},
 	schema: {
 		type: "string",

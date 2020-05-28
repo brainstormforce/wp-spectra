@@ -256,36 +256,10 @@ class UAGBHowTo extends Component {
 				add_required_tools,
 				toolsTitleColor,
 				icon_color,
-				icon_hover_color,
-				toolsLoadGoogleFonts,
-				toolsFontFamily,
-				toolsFontWeight,
-				toolsFontSubset,
-				toolsFontSize,
-				toolsFontSizeType,
-				toolsFontSizeTablet,
-				toolsFontSizeMobile,
-				toolsLineHeightType,
-				toolsLineHeight,
-				toolsLineHeightTablet,
-				toolsLineHeightMobile,
 				//materials
 				add_required_materials,
 				materialTitleColor,
 				materials_icon_color,
-				materials_icon_hover_color,
-				materialsLoadGoogleFonts,
-				materialsFontFamily,
-				materialsFontWeight,
-				materialsFontSubset,
-				materialsFontSize,
-				materialsFontSizeType,
-				materialsFontSizeTablet,
-				materialsFontSizeMobile,
-				materialsLineHeight,
-				materialsLineHeightType,
-				materialsLineHeightTablet,
-				materialsLineHeightMobile,
 				timeSpace,
 				costSpace,
 				
@@ -304,8 +278,8 @@ class UAGBHowTo extends Component {
 
 		let loadHeadingGoogleFonts;
 		let loadSubHeadingGoogleFonts;
-		let loadtoolsLoadGoogleFonts;
-		let loadmaterialsLoadGoogleFonts; 
+		let loadPriceGoogleFonts;
+
 
 		if( true === headLoadGoogleFonts ) {
 			
@@ -333,37 +307,20 @@ class UAGBHowTo extends Component {
 				<WebfontLoader config={ sconfig }>
 				</WebfontLoader>
 			)
-		}
+		}	
 
-		if( true === toolsLoadGoogleFonts ) {
-			
-			const tconfig = {
+		if( true === priceLoadGoogleFonts ){
+			const pconfig = {
 				google: {
-					families: [ toolsFontFamily + ( toolsFontWeight ? ':' + toolsFontWeight : '' ) ],
+					families: [ priceFontFamily + ( priceFontWeight ? ':' + priceFontWeight : '' ) ],
 				},
 			};
 
-			loadtoolsLoadGoogleFonts = (
-				<WebfontLoader config={ tconfig }>
+			loadPriceGoogleFonts = (
+				<WebfontLoader config={ pconfig }>
 				</WebfontLoader>
 			)
-		}
-
-		if( true === materialsLoadGoogleFonts ) {
-			
-			const mconfig = {
-				google: {
-					families: [ materialsFontFamily + ( materialsFontWeight ? ':' + materialsFontWeight : '' ) ],
-				},
-			};
-
-			loadmaterialsLoadGoogleFonts = (
-				<WebfontLoader config={ mconfig }>
-				</WebfontLoader>
-			)
-		}
-
-		
+		}	
 
 		let url_chk = ''
 		let title = ''
@@ -619,25 +576,6 @@ class UAGBHowTo extends Component {
 						max={ 12 }
 					/>
 					}
-					{ showTools &&
-					<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: toolsLoadGoogleFonts, label: 'toolsLoadGoogleFonts' } }
-							fontFamily = { { value: toolsFontFamily, label: 'toolsFontFamily' } }
-							fontWeight = { { value: toolsFontWeight, label: 'toolsFontWeight' } }
-							fontSubset = { { value: toolsFontSubset, label: 'toolsFontSubset' } }
-							fontSizeType = { { value: toolsFontSizeType, label: 'toolsFontSizeType' } }
-							fontSize = { { value: toolsFontSize, label: 'toolsFontSize' } }
-							fontSizeMobile = { { value: toolsFontSizeMobile, label: 'toolsFontSizeMobile' } }
-							fontSizeTablet= { { value: toolsFontSizeTablet, label: 'toolsFontSizeTablet' } }
-							lineHeightType = { { value: toolsLineHeightType, label: 'toolsLineHeightType' } }
-							lineHeight = { { value: toolsLineHeight, label: 'toolsLineHeight' } }
-							lineHeightMobile = { { value: toolsLineHeightMobile, label: 'toolsLineHeightMobile' } }
-							lineHeightTablet= { { value: toolsLineHeightTablet, label: 'toolsLineHeightTablet' } }
-					/>
-				}
 				{ showTools &&
 						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
 				}
@@ -695,25 +633,6 @@ class UAGBHowTo extends Component {
 						} }
 						min={ 1 }
 						max={ 12 }
-					/>
-				}
-				{ showMaterials &&
-					<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: materialsLoadGoogleFonts, label: 'materialsLoadGoogleFonts' } }
-							fontFamily = { { value: materialsFontFamily, label: 'materialsFontFamily' } }
-							fontWeight = { { value: materialsFontWeight, label: 'materialsFontWeight' } }
-							fontSubset = { { value: materialsFontSubset, label: 'materialsFontSubset' } }
-							fontSizeType = { { value: materialsFontSizeType, label: 'materialsFontSizeType' } }
-							fontSize = { { value: materialsFontSize, label: 'materialsFontSize' } }
-							fontSizeMobile = { { value: materialsFontSizeMobile, label: 'materialsFontSizeMobile' } }
-							fontSizeTablet= { { value: materialsFontSizeTablet, label: 'materialsFontSizeTablet' } }
-							lineHeightType = { { value: materialsLineHeightType, label: 'materialsLineHeightType' } }
-							lineHeight = { { value: materialsLineHeight, label: 'materialsLineHeight' } }
-							lineHeightMobile = { { value: materialsLineHeightMobile, label: 'materialsLineHeightMobile' } }
-							lineHeightTablet= { { value: materialsLineHeightTablet, label: 'materialsLineHeightTablet' } }
 					/>
 				}
 				{ showMaterials &&
@@ -996,8 +915,7 @@ class UAGBHowTo extends Component {
 				</div>				
 				{ loadHeadingGoogleFonts }
 				{ loadSubHeadingGoogleFonts }
-				{ loadtoolsLoadGoogleFonts }
-				{ loadmaterialsLoadGoogleFonts }
+				{ loadPriceGoogleFonts }
 			</Fragment>
 		)
 	}
@@ -1005,7 +923,14 @@ class UAGBHowTo extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-			
+
+		let url_chk = ''
+		let title = ''
+		if( "undefined" !== ownProps.attributes.mainimage  && null !== ownProps.attributes.mainimage && "" !== ownProps.attributes.mainimage ){
+			url_chk = ownProps.attributes.mainimage.url
+			title = ownProps.attributes.mainimage.title
+		}
+					
 			var tools_data = {}
 			var materials_data = {}
 			var steps_data = {}
@@ -1014,6 +939,12 @@ export default compose(
 				"@type": "HowTo",
 				"name": ownProps.attributes.headingTitle,
 				"description": ownProps.attributes.headingDesc,
+				"image": {
+						"@type": "ImageObject",
+						"url": url_chk,
+						"height": "406",
+						"width": "305"
+					},
 				"totalTime": "PT"+ownProps.attributes.time+"M",
 				"estimatedCost": {
 					"@type": "MonetaryAmount",

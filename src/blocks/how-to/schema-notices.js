@@ -48,7 +48,7 @@ class SchemaNotices extends Component {
         if ( 'undefined' === typeof headingDesc || '' === headingDesc ) {
             emptyItems.push( 'Description' );
         }
-        if ( 'undefined' === typeof mainimage || null === mainimage ) {
+        if ( 'undefined' === typeof mainimage || null === mainimage || '' === mainimage ) {
             emptyItems.push( 'Image' );
         }
         if ( true === showTotaltime && ( 'undefined' === typeof timeNeeded || '' === timeNeeded ) ) {

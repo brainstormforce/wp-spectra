@@ -1,15 +1,38 @@
-.wp-block-uagb-how-to .block-editor-button-block-appender {
-    margin-top: 0px;
-    margin-left: 20px;
-    width:10%;
+.wp-block-uagb-how-to {
+	
+	.block-editor-button-block-appender {
+	    margin-top: 0px;
+	    margin-left: 20px;
+	    width:10%;
+	}
+
+	span.uagb-howto__time-wrap {
+	    display: inline-flex;
+	}
 }
 
-.wp-block-uagb-how-to span.uagb-howto__time-wrap,
-.wp-block-uagb-how-to span.uagb-howto__cost-wrap {
-    display: inline-flex;
+.uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image {
+    display: block;
 }
-.wp-block-uagb-how-to .block-editor-button-block-appender {
-    margin-top: 0px;
-    margin-left: 20px;
-    width:10%;
+.uagb-howto__cost-wrap {
+    display: block;
+    .uagb-howto-estcost-text,
+    .uagb-howto-estcost-value,
+    .uagb-howto-estcost-type {
+        font-family: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+        display: inline-flex;
+    }
+}
+
+.uagb-howto__time-wrap {
+    display: inline-flex;
+    .uagb-howto-timeNeeded-text,
+    .uagb-howto-timeNeeded-value,
+    .uagb-howto-timeINmin-text {
+        font-family: inherit;
+        line-height: inherit;
+        font-weight: inherit;
+    }
 }
