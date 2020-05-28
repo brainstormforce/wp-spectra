@@ -54,6 +54,7 @@ function styling( props ) {
 		materials_icon_color,
 		timeSpace,
 		costSpace,
+		row_gap,
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -68,6 +69,25 @@ function styling( props ) {
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
 			"color": subHeadingColor,
 		},
+		' .uagb-how-to-main-wrap p': { 
+			"margin-bottom" :generateCSSUnit( row_gap, 'px' ),
+		 },
+
+		' .uagb-how-to-main-wrap span.uagb-howto__time-wrap' : {
+		   "margin-bottom" :generateCSSUnit( row_gap, 'px' ),
+		},
+
+		' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap' : {
+		    "margin-bottom" :generateCSSUnit( row_gap, 'px' ),
+		},
+
+		' .uagb-how-to-tools .uagb-how-to-tools-child__wrapper:last-child' : {
+		 "margin-bottom" : generateCSSUnit( row_gap, 'px' ),
+		 },
+
+		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
+		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
+		 },
 		" .uagb-howto__source-wrap img.uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" ),
 		},

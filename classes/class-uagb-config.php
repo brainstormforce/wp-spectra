@@ -154,6 +154,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'icon_color'              => '#3a3a3a',
 							'add_required_materials'  => '- A WordPress Website.',
 							'materials_icon_color'    => '#3a3a3a',
+							'row_gap'                 => 15,
 						),
 					),
 					'uagb/columns'            => array(

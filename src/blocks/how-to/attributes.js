@@ -288,6 +288,10 @@ const attributes = {
 		type: "boolean",
 		default: false	
 	},
+	row_gap: {
+		type: "number",
+		default: 20
+	},
 	schema: {
 		type: "string",
 		default: ""

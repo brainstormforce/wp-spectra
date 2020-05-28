@@ -256,6 +256,7 @@ class UAGBHowTo extends Component {
 				materials_icon_color,
 				timeSpace,
 				costSpace,
+				row_gap,
 				
 			},
 		} = this.props
@@ -440,6 +441,14 @@ class UAGBHowTo extends Component {
 					<ColorPalette
 						value={ showTotaltimecolor }
 						onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
+						allowReset
+					/>
+					<RangeControl
+						label={ __( "Row Gap" ) }
+						value={ row_gap }
+						onChange={ ( value ) => setAttributes( { row_gap: value } ) }
+						min={ 0 }
+						max={ 50 }
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
