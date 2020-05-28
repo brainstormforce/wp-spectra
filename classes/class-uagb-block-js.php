@@ -193,7 +193,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for How To block.
 		 *
-		 * @since 1.9.1
+		 * @since x.x.x
 		 * @param array $attr the blocks attr.
 		 */
 		public static function blocks_how_to_gfont( $attr ) {
