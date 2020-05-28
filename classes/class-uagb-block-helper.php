@@ -1820,7 +1820,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $childMigrate The child migration flag.
 		 * @return array The Widget List.
 		 */
-		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) { // @codingStandardsIgnoreStart
+		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) {
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-ss-repeater-' . $id : '.uagb-ss-repeater';
 
@@ -1846,8 +1846,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . '.uagb-ss__wrapper:hover' ] = array(
 				'background' => $attr['icon_bg_hover_color'],
 			);
-
-			// @codingStandardsIgnoreEnd
 
 			return $selectors;
 		}
@@ -2117,7 +2115,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_child_css( $attr, $id ) { // @codingStandardsIgnoreStart
+		public static function get_icon_list_child_css( $attr, $id ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
 
@@ -2133,8 +2131,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => '',
 			);
 
-			// @codingStandardsIgnoreEnd
-
 			return $generated_css;
 		}
 
@@ -2147,7 +2143,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $childMigrate The child migration flag.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) { // @codingStandardsIgnoreStart
+		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) {
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-icon-list-repeater-' . $id : '.uagb-icon-list-repeater';
 
@@ -2180,7 +2176,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'background'   => $attr['icon_bg_hover_color'],
 				'border-color' => $attr['icon_border_hover_color'],
 			);
-			// @codingStandardsIgnoreEnd
+
 			return $selectors;
 		}
 
