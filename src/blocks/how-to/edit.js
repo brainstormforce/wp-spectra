@@ -24,7 +24,6 @@ const { __ } = wp.i18n
 const { compose } = wp.compose
 
 const {
-	registerBlockType,
 	createBlock
 } = wp.blocks
 
@@ -46,7 +45,7 @@ const {
 	ToggleControl
 } = wp.components
 
-const { select, withSelect, dispatch } = wp.data;
+const { select, withSelect } = wp.data;
 
 const { Component, Fragment } = wp.element
 
@@ -172,14 +171,12 @@ class UAGBHowTo extends Component {
 
 		// Setup the attributes
 		const {
-			isSelected,
 			className,
 			attributes,
 			setAttributes,
 			insertBlocksAfter,
 			mergeBlocks,
 			onReplace,
-			anchor,
 			attributes: {
 				overallAlignment,
 				currencyType,
@@ -496,6 +493,7 @@ class UAGBHowTo extends Component {
 					label={ __( "Show Total Time" ) }
 					checked={ showTotaltime }
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
+					help={ __( "Note: Time & Cost is recommended field for schema.It should be ON" ) }
 				/>
 				{ showTotaltime &&
 					<RangeControl

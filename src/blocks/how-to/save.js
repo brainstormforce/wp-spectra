@@ -4,7 +4,6 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const {
 	RichText,
@@ -26,9 +25,7 @@ export default function save( props ) {
 		estCost,
 		cost,
 		currencyType,
-		hideLabel,
 		mainimage,
-		iconPosition,
 		toolsTitle,
 		stepsTitle,
 		materialTitle,

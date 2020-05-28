@@ -93,7 +93,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'time'                    => '',
 							'showEstcostcolor'        => '',
 							'schema'                  => '',
-							'descriptionAlign'        => 'left',
 							'costSpace'               => '5',
 							'timeSpace'               => '5',
 							'overallAlignment'        => 'left',
@@ -334,8 +333,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'descFontFamily'           => '',
 							'descFontWeight'           => '',
 							'descFontSubset'           => '',
-							'descLineHeightType'       => 'em
-							',
+							'descLineHeightType'       => 'em',
 							'descLineHeight'           => '',
 							'descLineHeightTablet'     => '',
 							'descLineHeightMobile'     => '',
