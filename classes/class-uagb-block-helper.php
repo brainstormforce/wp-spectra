@@ -24,7 +24,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_how_to_css( $attr, $id ) {
+		public static function get_how_to_css( $attr, $id ) { // @codingStandardsIgnoreStart
 			$defaults = UAGB_Helper::$block_list['uagb/how-to']['attributes'];
 
 			$attr = array_merge( $defaults, $attr );
@@ -115,6 +115,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
+			// @codingStandardsIgnoreEnd
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__cost-wrap', $combined_selectors );
@@ -135,7 +136,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_section_css( $attr, $id ) {
+		public static function get_section_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -329,6 +330,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
+// @codingStandardsIgnoreEnd
+
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-section-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
@@ -342,7 +345,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_columns_css( $attr, $id ) {
+		public static function get_columns_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -502,6 +505,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
+			// @codingStandardsIgnoreEnd
+
 			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-columns-';
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
@@ -515,7 +520,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_column_css( $attr, $id ) {
+		public static function get_column_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			global $content_width;
 
@@ -640,6 +645,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$m_selectors['.uagb-column__wrap']['width'] = UAGB_Helper::get_css_value( $attr['colWidthMobile'], '%' );
 			}
 
+			// @codingStandardsIgnoreEnd
+
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
@@ -659,7 +666,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_adv_heading_css( $attr, $id ) {
+		public static function get_adv_heading_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/advanced-heading']['attributes'];
 
@@ -703,6 +710,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
+			// @codingStandardsIgnoreEnd
+
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-heading-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-desc-text', $combined_selectors );
 
@@ -719,7 +728,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_buttons_css( $attr, $id ) {
+		public static function get_buttons_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/buttons']['attributes'];
 
@@ -855,7 +864,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					$m_selectors     = array_merge( $m_selectors, (array) $child_selectors['m_selectors'] );
 				}
 			}
-
+			// @codingStandardsIgnoreEnd
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,
@@ -1800,7 +1809,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $childMigrate The child migration flag.
 		 * @return array The Widget List.
 		 */
-		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) {
+		public static function get_social_share_child_selectors( $attr, $id, $childMigrate ) { // @codingStandardsIgnoreStart
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-ss-repeater-' . $id : '.uagb-ss-repeater';
 
@@ -1826,6 +1835,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors[ $wrapper . '.uagb-ss__wrapper:hover' ] = array(
 				'background' => $attr['icon_bg_hover_color'],
 			);
+
+			// @codingStandardsIgnoreEnd
 
 			return $selectors;
 		}
@@ -2098,7 +2109,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_child_css( $attr, $id ) {
+		public static function get_icon_list_child_css( $attr, $id ) { // @codingStandardsIgnoreStart
 
 			$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
 
@@ -2114,6 +2125,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => '',
 			);
 
+			// @codingStandardsIgnoreEnd
+
 			return $generated_css;
 		}
 
@@ -2126,7 +2139,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		 * @param string $childMigrate The child migration flag.
 		 * @return array The Widget List.
 		 */
-		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) {
+		public static function get_icon_list_child_selectors( $attr, $id, $childMigrate ) { // @codingStandardsIgnoreStart
 
 			$wrapper = ( ! $childMigrate ) ? ' .uagb-icon-list-repeater-' . $id : '.uagb-icon-list-repeater';
 
@@ -2159,7 +2172,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'background'   => $attr['icon_bg_hover_color'],
 				'border-color' => $attr['icon_border_hover_color'],
 			);
-
+			// @codingStandardsIgnoreEnd
 			return $selectors;
 		}
 
