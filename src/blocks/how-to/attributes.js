@@ -31,13 +31,7 @@ const attributes = {
 	icon_color: {
 		type: "string"
 	},
-	icon_hover_color: {
-		type: "string"
-	},
 	materials_icon_color: {
-		type: "string"
-	},
-	materials_icon_hover_color: {
 		type: "string"
 	},
 	toolsTitle: {
@@ -47,12 +41,6 @@ const attributes = {
 	materialTitle: {
 		type: "string",
 		default : __( "Things Needed?" ),
-	},
-	toolsTitleColor:{
-		type: "string",
-	},
-	materialTitleColor:{
-		type: "string",
 	},
 	stepsTitle: {
 		type: "string",
@@ -171,10 +159,6 @@ const attributes = {
 	headingTag: {
 		type: "string",
 		default: "h2"
-	},
-	level: {
-		type: "number",
-		default: 2
 	},
 	headSpace: {
 		type: "number",

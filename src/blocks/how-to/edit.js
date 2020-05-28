@@ -181,7 +181,6 @@ class UAGBHowTo extends Component {
 			onReplace,
 			anchor,
 			attributes: {
-				level,
 				overallAlignment,
 				currencyType,
 				timeIn,
@@ -254,11 +253,9 @@ class UAGBHowTo extends Component {
 				cost,
 				//Tools attributes
 				add_required_tools,
-				toolsTitleColor,
 				icon_color,
 				//materials
 				add_required_materials,
-				materialTitleColor,
 				materials_icon_color,
 				timeSpace,
 				costSpace,
@@ -320,7 +317,7 @@ class UAGBHowTo extends Component {
 				<WebfontLoader config={ pconfig }>
 				</WebfontLoader>
 			)
-		}	
+		}
 
 		let url_chk = ''
 		let title = ''
@@ -457,11 +454,11 @@ class UAGBHowTo extends Component {
 								value={ mainimage }
 								render={ ( { open } ) => (
 									<Button isDefault onClick={ open }>
-										{ ! mainimage ? __( "Select Image" ) : __( "Replace image" ) }
+										{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
 									</Button>
 								) }
 							/>
-							{ mainimage &&
+							{ mainimage.url &&
 								<Button
 									className="uagb-rm-btn"
 									onClick={ () => setAttributes( { mainimage: null } ) }
@@ -469,7 +466,7 @@ class UAGBHowTo extends Component {
 									{ __( "Remove Image" ) }
 								</Button>
 							}
-							{ mainimage &&
+							{ mainimage.url &&
 								<SelectControl
 									label={ __( "Size" ) }
 									options={ imageSizeOptions }
@@ -477,7 +474,7 @@ class UAGBHowTo extends Component {
 									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 								/>
 							}
-							{ mainimage &&
+							{ mainimage.url &&
 								<RangeControl
 									label={ __( "Width(%)" ) }
 									value={ imgWidth }
@@ -930,7 +927,7 @@ export default compose(
 			url_chk = ownProps.attributes.mainimage.url
 			title = ownProps.attributes.mainimage.title
 		}
-					
+
 			var tools_data = {}
 			var materials_data = {}
 			var steps_data = {}

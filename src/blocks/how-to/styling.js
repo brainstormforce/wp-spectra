@@ -54,10 +54,8 @@ function styling( props ) {
 		priceLineHeightMobile,
 		priceLoadGoogleFonts,
 		//tools attr
-		toolsTitleColor,
 		icon_color,
 		//materials
-		materialTitleColor,
 		add_required_materials,
 		materials_icon_color,
 		timeSpace,
@@ -78,7 +76,6 @@ function styling( props ) {
 		},
 		" .uagb-howto__source-wrap img.uagb-howto__source-image": {
 			"width": generateCSSUnit( imgWidth, "%" ),
-			"display": "block",
 		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,

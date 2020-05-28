@@ -33,16 +33,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 
 			$selectors = array(
-				' .uagb-how-to-main-wrap'   => array(
+				' .uagb-how-to-main-wrap'     => array(
 					'text-align' => $attr['overallAlignment'],
 				),
 
 				' span.uagb-howto__time-wrap' => array(
-				    'display' => 'flex',
-				),
-
-				' .uagb-howto__cost-wrap' => array(
-					'display' => 'flex' ,
+					'display' => 'inline-flex',
 				),
 
 				' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
@@ -53,11 +49,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $attr['costSpace'], 'px' ),
 				),
 
-				' .uagb-howto-heading-text' => array(
+				' .uagb-howto-heading-text'   => array(
 					'color' => $attr['headingColor'],
 				),
 
-				' .uagb-howto-desc-text'    => array(
+				' .uagb-howto-desc-text'      => array(
 					'color' => $attr['subHeadingColor'],
 				),
 
@@ -120,11 +116,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text', $combined_selectors );
-			// var_dump($combined_selectors);
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__cost-wrap', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__time-wrap', $combined_selectors );
-
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-howto-heading-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-howto__wrap p.uagb-howto-desc-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
