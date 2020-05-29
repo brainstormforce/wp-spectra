@@ -384,16 +384,6 @@ class UAGBHowTo extends Component {
 									onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 								/>
 							}
-							{ mainimage.url &&
-								<RangeControl
-									label={ __( "Width(%)" ) }
-									value={ imgWidth }
-									onChange={ ( value ) => setAttributes( { imgWidth: value } ) }
-									min={ 0 }
-									max={ 500 }
-									allowReset
-								/>
-							}
 				<h2>{ __( "Primary Heading" ) }</h2>
 					<SelectControl
 						label={ __( "Tag" ) }
@@ -459,7 +449,7 @@ class UAGBHowTo extends Component {
 							setAttributes( { tools_count: newCount } )
 						} }
 						min={ 1 }
-						max={ 12 }
+						max={ 50 }
 					/>
 					}
 				<ToggleControl
@@ -500,7 +490,7 @@ class UAGBHowTo extends Component {
 							setAttributes( { material_count: newCount } )
 						} }
 						min={ 1 }
-						max={ 12 }
+						max={ 50 }
 					/>
 				}			
 				</PanelBody>

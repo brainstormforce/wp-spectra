@@ -118,7 +118,7 @@ const attributes = {
 	},
 	imgWidth :{
 		type: "number",
-		default: 120,
+		default: 100,
 	},
 	headingTitle: {
 		source: "html",
