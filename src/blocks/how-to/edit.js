@@ -356,102 +356,6 @@ class UAGBHowTo extends Component {
 
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true } >
-				<h2>{ __( "Primary Heading" ) }</h2>
-					<SelectControl
-						label={ __( "Tag" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-						] }
-					/>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-						fontSize = { { value: headFontSize, label: 'headFontSize' } }
-						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-					/>
-					<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-					<ColorPalette
-						value={ headingColor }
-						onChange={ ( value ) => setAttributes( { headingColor: value } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Description" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-					/>
-					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
-					<ColorPalette
-						value={ subHeadingColor }
-						onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-							<h2>{ __( "Secondary Heading" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
-						fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
-						fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
-						fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
-						fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
-						fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
-						fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
-						fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
-						lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
-						lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
-						lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
-						lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
-					/>
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
-					<ColorPalette
-						value={ showTotaltimecolor }
-						onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Row Gap" ) }
-						value={ row_gap }
-						onChange={ ( value ) => setAttributes( { row_gap: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
 							<h2>{ __( "Image" ) }</h2>
 							<MediaUpload
 								title={ __( "Select Image" ) }
@@ -467,7 +371,7 @@ class UAGBHowTo extends Component {
 							{ mainimage.url &&
 								<Button
 									className="uagb-rm-btn"
-									onClick={ () => setAttributes( { mainimage: null } ) }
+									onClick={ () => setAttributes( { mainimage: '' } ) }
 									isLink isDestructive>
 									{ __( "Remove Image" ) }
 								</Button>
@@ -490,61 +394,39 @@ class UAGBHowTo extends Component {
 									allowReset
 								/>
 							}
-					</PanelBody>
-			)
-		}
-
-		const howtoTimeandCostSettings = () => {
-
-			return (
-				<PanelBody title={ __( "Time & Cost" ) } initialOpen={ false } >
+				<h2>{ __( "Primary Heading" ) }</h2>
+					<SelectControl
+						label={ __( "Tag" ) }
+						value={ headingTag }
+						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+				/>
 				<ToggleControl
 					label={ __( "Show Total Time" ) }
 					checked={ showTotaltime }
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
 					help={ __( "Note: Time & Cost is recommended field for schema.It should be ON" ) }
 				/>
-				{ showTotaltime &&
-					<RangeControl
-						label={ __( "Time Margin" ) }
-						value={ timeSpace }
-						onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				}
 				<ToggleControl
 					label={ __( "Show Estimated Cost" ) }
 					checked={ showEstcost }
 					onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
 					help={ __( "Note: Click here to find your country's ISO code." ) }
 				/>
-				{ showEstcost &&
-					<RangeControl
-						label={ __( "Cost Margin" ) }
-						value={ costSpace }
-						onChange={ ( value ) => setAttributes( { costSpace: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
-				}
-			</PanelBody>
-			)
-		}
-
-		const howtoToolsSettings = () => {
-
-			return (
-					<PanelBody title={ __( "Tools" ) } initialOpen={ false }>
-					<ToggleControl
+				<ToggleControl
 					label={ __( "Show Tools" ) }
 					checked={ showTools }
 					onChange={ ( value ) => setAttributes( { showTools: ! showTools } ) }
 					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					/>
-					{ showTools &&
+				/>
+				{ showTools &&
 					<RangeControl
 						label={ __( "Number of Tools" ) }
 						value={ tools_count }
@@ -580,31 +462,13 @@ class UAGBHowTo extends Component {
 						max={ 12 }
 					/>
 					}
-				{ showTools &&
-						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
-				}
-				{ showTools &&
-						<ColorPalette
-							value={ icon_color }
-							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
-							allowReset
-						/>
-				}
-				</PanelBody>
-			)
-		}
-
-		const howtoMaterialsSettings = () => {
-
-			return (
-					<PanelBody title={ __( "Materials" ) } initialOpen={ false }>
-					<ToggleControl
+				<ToggleControl
 					label={ __( "Show Materials" ) }
 					checked={ showMaterials }
 					onChange={ ( value ) => setAttributes( { showMaterials: ! showMaterials } ) }
 					help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					/>
-					{ showMaterials &&
+				/>
+				{ showMaterials &&
 					<RangeControl
 						label={ __( "Number of Materials" ) }
 						value={ material_count }
@@ -638,7 +502,141 @@ class UAGBHowTo extends Component {
 						min={ 1 }
 						max={ 12 }
 					/>
+				}			
+				</PanelBody>
+			)
+		}
+
+		const howtoSpacingSettings = () => {
+
+			return (
+				<PanelBody title={ __( "Spacing" ) } initialOpen={ false } >
+				{ showTotaltime &&
+					<RangeControl
+						label={ __( "Time Margin" ) }
+						value={ timeSpace }
+						onChange={ ( value ) => setAttributes( { timeSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
 				}
+				{ showEstcost &&
+					<RangeControl
+						label={ __( "Cost Margin" ) }
+						value={ costSpace }
+						onChange={ ( value ) => setAttributes( { costSpace: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
+					/>
+				}
+				<RangeControl
+					label={ __( "Row Gap" ) }
+					value={ row_gap }
+					onChange={ ( value ) => setAttributes( { row_gap: value } ) }
+					min={ 0 }
+					max={ 50 }
+					allowReset
+				/>
+			</PanelBody>
+			)
+		}
+
+		const howtoTypographysSettings = () => {
+
+			return (
+				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+				<h2>{ __( "Primary Heading" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+						fontSize = { { value: headFontSize, label: 'headFontSize' } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+					/>
+					<h2>{ __( "Description" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+					/>
+					<h2>{ __( "Secondary Heading" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
+						fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
+						fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
+						fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
+						fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
+						fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
+						fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
+						fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
+						lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
+						lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
+						lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
+						lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
+					/>			
+				</PanelBody>
+			)
+		}
+
+		const howtoColorsSettings = () => {
+
+			return (
+				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
+				<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+				<ColorPalette
+					value={ headingColor }
+					onChange={ ( value ) => setAttributes( { headingColor: value } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+					<ColorPalette
+						value={ subHeadingColor }
+						onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
+						allowReset
+					/>
+				<p className="uagb-setting-label">{ __( "Secondary Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
+				<ColorPalette
+					value={ showTotaltimecolor }
+					onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
+					allowReset
+				/>
+				{ showTools &&
+						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
+				}
+				{ showTools &&
+						<ColorPalette
+							value={ icon_color }
+							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
+							allowReset
+						/>
+				}					
 				{ showMaterials &&
 					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
 				}
@@ -679,9 +677,9 @@ class UAGBHowTo extends Component {
 				</BlockControls>
 				<InspectorControls>
 					{ howtoGeneralSettings() }
-					{ howtoTimeandCostSettings() }
-					{ howtoToolsSettings() }
-					{ howtoMaterialsSettings() }						
+					{ howtoColorsSettings() }
+					{ howtoTypographysSettings() }
+					{ howtoSpacingSettings() }						
 				</InspectorControls>
 				<div
 					className={ classnames(
