@@ -395,6 +395,7 @@ class UAGBHowTo extends Component {
 							{ value: "h6", label: __( "H6" ) },
 						] }
 				/>
+				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Total Time" ) }
 					checked={ showTotaltime }
@@ -407,6 +408,7 @@ class UAGBHowTo extends Component {
 					onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
 					help={ __( "Note: Click here to find your country's ISO code." ) }
 				/>
+				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Tools" ) }
 					checked={ showTools }
@@ -449,6 +451,7 @@ class UAGBHowTo extends Component {
 						max={ 50 }
 					/>
 					}
+				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Materials" ) }
 					checked={ showMaterials }
@@ -494,10 +497,84 @@ class UAGBHowTo extends Component {
 			)
 		}
 
-		const howtoSpacingSettings = () => {
+		const howtoStyleSettings = () => {
 
 			return (
-				<PanelBody title={ __( "Spacing" ) } initialOpen={ false } >
+				<PanelBody title={ __( "Style" ) } initialOpen={ false }>
+				<h2>{ __( "Colors" ) }</h2>
+				<p className="uagb-setting-label">{ __( "Heading" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
+				<ColorPalette
+					value={ headingColor }
+					onChange={ ( value ) => setAttributes( { headingColor: value } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Secondary Heading" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
+				<ColorPalette
+					value={ showTotaltimecolor }
+					onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
+					allowReset
+				/>
+				<p className="uagb-setting-label">{ __( "Description" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
+					<ColorPalette
+						value={ subHeadingColor }
+						onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
+						allowReset
+				/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Typography" ) }</h2>
+					<TypographyControl
+						label={ __( "Heading" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
+						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
+						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
+						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
+						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
+						fontSize = { { value: headFontSize, label: 'headFontSize' } }
+						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
+						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
+						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
+						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
+						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
+						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
+					/>
+					<TypographyControl
+						label={ __( "Secondary Heading" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
+						fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
+						fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
+						fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
+						fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
+						fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
+						fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
+						fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
+						lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
+						lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
+						lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
+						lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
+					/>	
+					<TypographyControl
+						label={ __( "Description" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
+						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
+						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
+						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
+						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
+						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
+						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
+						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
+						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
+						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
+						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
+						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
+					/>
+				<hr className="uagb-editor__separator" />
+				<h2>{ __( "Spacing" ) }</h2>
 				{ showTotaltime &&
 					<RangeControl
 						label={ __( "Time Margin" ) }
@@ -524,94 +601,6 @@ class UAGBHowTo extends Component {
 					onChange={ ( value ) => setAttributes( { row_gap: value } ) }
 					min={ 0 }
 					max={ 50 }
-					allowReset
-				/>
-			</PanelBody>
-			)
-		}
-
-		const howtoTypographysSettings = () => {
-
-			return (
-				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
-				<h2>{ __( "Primary Heading" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-						fontSize = { { value: headFontSize, label: 'headFontSize' } }
-						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-					/>
-					<h2>{ __( "Description" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-					/>
-					<h2>{ __( "Secondary Heading" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: 'priceLoadGoogleFonts' } }
-						fontFamily = { { value: priceFontFamily, label: 'priceFontFamily' } }
-						fontWeight = { { value: priceFontWeight, label: 'priceFontWeight' } }
-						fontSubset = { { value: priceFontSubset, label: 'priceFontSubset' } }
-						fontSizeType = { { value: priceFontSizeType, label: 'priceFontSizeType' } }
-						fontSize = { { value: priceFontSize, label: 'priceFontSize' } }
-						fontSizeMobile = { { value: priceFontSizeMobile, label: 'priceFontSizeMobile' } }
-						fontSizeTablet= { { value: priceFontSizeTablet, label: 'priceFontSizeTablet' } }
-						lineHeightType = { { value: priceLineHeightType, label: 'priceLineHeightType' } }
-						lineHeight = { { value: priceLineHeight, label: 'priceLineHeight' } }
-						lineHeightMobile = { { value: priceLineHeightMobile, label: 'priceLineHeightMobile' } }
-						lineHeightTablet= { { value: priceLineHeightTablet, label: 'priceLineHeightTablet' } }
-					/>			
-				</PanelBody>
-			)
-		}
-
-		const howtoColorsSettings = () => {
-
-			return (
-				<PanelBody title={ __( "Colors" ) } initialOpen={ false }>
-				<p className="uagb-setting-label">{ __( "Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: headingColor }} ></span></span></p>
-				<ColorPalette
-					value={ headingColor }
-					onChange={ ( value ) => setAttributes( { headingColor: value } ) }
-					allowReset
-				/>
-				<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: subHeadingColor }} ></span></span></p>
-					<ColorPalette
-						value={ subHeadingColor }
-						onChange={ ( value ) => setAttributes( { subHeadingColor: value } ) }
-						allowReset
-					/>
-				<p className="uagb-setting-label">{ __( "Secondary Heading Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: showTotaltimecolor }} ></span></span></p>
-				<ColorPalette
-					value={ showTotaltimecolor }
-					onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
 					allowReset
 				/>
 				</PanelBody>
@@ -644,9 +633,7 @@ class UAGBHowTo extends Component {
 				</BlockControls>
 				<InspectorControls>
 					{ howtoGeneralSettings() }
-					{ howtoColorsSettings() }
-					{ howtoTypographysSettings() }
-					{ howtoSpacingSettings() }						
+					{ howtoStyleSettings() }				
 				</InspectorControls>
 				<div
 					className={ classnames(

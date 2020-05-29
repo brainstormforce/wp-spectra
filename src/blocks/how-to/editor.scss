@@ -23,6 +23,7 @@
             color: #555d66;
         }
     } 
+
 }
 .wp-block-uagb-how-to {
     
@@ -30,5 +31,17 @@
         margin-top: 0px;
         margin-left: 20px;
         width:10%;
+    }
+}
+
+.editor-styles-wrapper {
+    .uagb-howto__time-wrap,
+    .uagb-howto__cost-wrap,
+    .uagb-how-to-tools__wrap,
+    .uagb-how-to-steps__wrap {
+        h3 {
+            margin: 0;
+            margin-bottom: 20px;
+        }
     }
 }
