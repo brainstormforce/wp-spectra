@@ -200,7 +200,6 @@ class UAGBHowTo extends Component {
 				estCost,
 				mainimage,
 				imgSize,
-				imgWidth,
 				headingTitle,
 				headingDesc,
 				headingAlign,
@@ -250,10 +249,8 @@ class UAGBHowTo extends Component {
 				cost,
 				//Tools attributes
 				add_required_tools,
-				icon_color,
 				//materials
 				add_required_materials,
-				materials_icon_color,
 				timeSpace,
 				costSpace,
 				row_gap,
@@ -617,26 +614,6 @@ class UAGBHowTo extends Component {
 					onChange={ ( value ) => setAttributes( { showTotaltimecolor: value } ) }
 					allowReset
 				/>
-				{ showTools &&
-						<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: icon_color }} ></span></span></p>
-				}
-				{ showTools &&
-						<ColorPalette
-							value={ icon_color }
-							onChange={ ( value ) => setAttributes( { icon_color: value } ) }
-							allowReset
-						/>
-				}					
-				{ showMaterials &&
-					<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: materials_icon_color }} ></span></span></p>
-				}
-				{ showMaterials &&
-					<ColorPalette
-						value={ materials_icon_color }
-						onChange={ ( value ) => setAttributes( { materials_icon_color: value } ) }
-						allowReset
-					/>
-				}
 				</PanelBody>
 			)
 		}
@@ -703,7 +680,7 @@ class UAGBHowTo extends Component {
 					/>
 					<RichText
 						tagName="p"
-						placeholder={ __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Guternburg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements." ) }
+						placeholder={ __( "So to get started, you will just need to drag-n-drop the How-to Schema block in the Gutenberg editor. The How-to Schema block can be used on pages which contain a How-to in their title and describe steps to achieve certain requirements." ) }
 						value={ headingDesc }
 						className='uagb-howto-desc-text'
 						onChange={ ( value ) => setAttributes( { headingDesc: value } ) }

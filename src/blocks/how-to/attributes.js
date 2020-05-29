@@ -28,12 +28,6 @@ const attributes = {
 		type: "string",
 		default: "left",
 	},
-	icon_color: {
-		type: "string"
-	},
-	materials_icon_color: {
-		type: "string"
-	},
 	toolsTitle: {
 		type: "string",
 		default : __( "Required Tools:" ),
@@ -115,10 +109,6 @@ const attributes = {
 	cost:{
 		type: "string",
 		default: "65",
-	},
-	imgWidth :{
-		type: "number",
-		default: 100,
 	},
 	headingTitle: {
 		source: "html",

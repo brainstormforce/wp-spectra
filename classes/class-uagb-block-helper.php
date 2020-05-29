@@ -69,7 +69,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $attr['costSpace'], 'px' ),
 				),
 
-				' .uagb-howto-heading-text'   => array(
+				' .uagb-how-to-main-wrap .uagb-howto-heading-text'   => array(
 					'color' => $attr['headingColor'],
 				),
 
@@ -112,18 +112,14 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-how-to-steps__wrap .uagb-howto-req-steps-text' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
-
-				' .uagb-howto__wrap .uagb-howto__source-wrap .uagb-howto__source-image' => array(
-					'width' => UAGB_Helper::get_css_value( $attr['imgWidth'], '%' ),
-				),
 			);
 
 			$selectors[' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper'] = array(
-				'color' => $attr['icon_color'],
+				'color' => $attr['subHeadingColor'],
 			);
 
 			$selectors[' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper'] = array(
-				'color' => $attr['materials_icon_color'],
+				'color' => $attr['subHeadingColor'],
 			);
 
 			$t_selectors = array();
@@ -144,7 +140,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials .uagb-materials__label', $combined_selectors );
 
-			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
 		}
 
 		/**

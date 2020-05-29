@@ -47,11 +47,6 @@ function styling( props ) {
 		priceLineHeightTablet,
 		priceLineHeightMobile,
 		priceLoadGoogleFonts,
-		//tools attr
-		icon_color,
-		//materials
-		add_required_materials,
-		materials_icon_color,
 		timeSpace,
 		costSpace,
 		row_gap,
@@ -88,9 +83,6 @@ function styling( props ) {
 		' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' : {
 		 "margin-bottom" :  generateCSSUnit( row_gap, 'px' ),
 		 },
-		" .uagb-howto__source-wrap img.uagb-howto__source-image": {
-			"width": generateCSSUnit( imgWidth, "%" ),
-		},
 		" .block-editor-rich-text__editable.uagb-howto-timeNeeded-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
@@ -150,7 +142,7 @@ function styling( props ) {
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
-			"color": icon_color,
+			"color": subHeadingColor,
 		},
 
 		" .block-editor-rich-text__editable.uagb-howto-req-materials-text" : {
@@ -190,7 +182,7 @@ function styling( props ) {
 			"font-weight": subHeadFontWeight,
 			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
 			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
-			"color": materials_icon_color,
+			"color": subHeadingColor,
 		},
 	}
 
