@@ -6,7 +6,6 @@
 import classnames from "classnames"
 import SchemaNotices from "./schema-notices"
 import times from "lodash/times"
-import map from "lodash/map"
 import styling from "./styling"
 
 // Import all of our Text Options requirements.
@@ -185,28 +184,22 @@ class UAGBHowTo extends Component {
 				showTotaltime,
 				showMaterials,
 				showTools,
-				showEstcostcolor,
 				showTotaltimecolor,
 				tools_count,
-				steps_count,
 				material_count,
 				toolsTitle,
 				materialTitle,
 				stepsTitle,
 				tools,
 				materials,
-				steps,
 				timeNeeded,
 				estCost,
 				mainimage,
 				imgSize,
 				headingTitle,
 				headingDesc,
-				headingAlign,
-				descriptionAlign,
 				headingColor,
 				subHeadingColor,
-				separatorColor,
 				headingTag,
 				headFontFamily,
 				headFontWeight,
@@ -247,10 +240,6 @@ class UAGBHowTo extends Component {
 				priceLoadGoogleFonts,
 				time,
 				cost,
-				//Tools attributes
-				add_required_tools,
-				//materials
-				add_required_materials,
 				timeSpace,
 				costSpace,
 				row_gap,
@@ -901,32 +890,44 @@ export default compose(
 						"height": "406",
 						"width": "305"
 					},
-				"totalTime": "PT"+ownProps.attributes.time+"M",
-				"estimatedCost": {
-					"@type": "MonetaryAmount",
-					"currency":ownProps.attributes.currencyType,
-					"value":ownProps.attributes.cost,
-				},
+				"totalTime": "",
+				"estimatedCost": [],
 				"tool": [],
 				"supply": [],
 				"step": []
 			}
 
-			ownProps.attributes.tools.forEach((tools, key) => {
-				tools_data = {	
-						"@type": "HowToTool",
-						"name": tools.add_required_tools
-				}
-				json_data["tool"][key] = tools_data;
-			});
+			if ( ownProps.attributes.showTotaltime ) {
+				json_data.totalTime = "PT"+ownProps.attributes.time+"M";
+			}
 
-			ownProps.attributes.materials.forEach((materials, key) => {
-				materials_data = {	
-						"@type": "HowToSupply",
-						"name": materials.add_required_materials
-				}
-				json_data["supply"][key] = materials_data;
-			});
+			if ( ownProps.attributes.showEstcost ) {
+				json_data.estimatedCost = {
+					"@type": "MonetaryAmount",
+					"currency":ownProps.attributes.currencyType,
+					"value":ownProps.attributes.cost,
+				};
+			}
+
+			if ( ownProps.attributes.showTools ) {
+				ownProps.attributes.tools.forEach((tools, key) => {
+					tools_data = {	
+							"@type": "HowToTool",
+							"name": tools.add_required_tools
+					}
+					json_data["tool"][key] = tools_data;
+				});
+			}
+
+			if ( ownProps.attributes.showMaterials ) {
+				ownProps.attributes.materials.forEach((materials, key) => {
+					materials_data = {	
+							"@type": "HowToSupply",
+							"name": materials.add_required_materials
+					}
+					json_data["supply"][key] = materials_data;
+				});
+			}
 
 			let getChildBlocks = select('core/block-editor').getBlocks( ownProps.clientId );
 

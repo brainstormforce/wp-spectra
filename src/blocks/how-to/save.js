@@ -72,9 +72,9 @@ export default function save( props ) {
 				`uagb-block-${ block_id }`,					
 			) }
 		>
-		<script type="application/ld+json">
-			{ schema }
-		</script>
+			<script type="application/ld+json">
+				{ schema }
+			</script>
 		<div className="uagb-how-to-main-wrap">
 			<div className="uagb-howto__wrap">
 				<RichText.Content
@@ -90,125 +90,125 @@ export default function save( props ) {
 				<div className="uagb-howto__source-wrap">{image_icon_html}</div>
 				{ showTotaltime &&
 				<span className="uagb-howto__time-wrap">
-				<RichText.Content
-					value={ timeNeeded }
-					tagName='h3'
-					className='uagb-howto-timeNeeded-text'
-				/>
-				<RichText.Content
-					value={ time }
-					tagName='h3'
-					className='uagb-howto-timeNeeded-value'
-				/>
-				<RichText.Content
-					tagName="h3"
-					value={ timeIn }
-					className='uagb-howto-timeINmin-text'
-				/>
+					<RichText.Content
+						value={ timeNeeded }
+						tagName='h3'
+						className='uagb-howto-timeNeeded-text'
+					/>
+					<RichText.Content
+						value={ time }
+						tagName='h3'
+						className='uagb-howto-timeNeeded-value'
+					/>
+					<RichText.Content
+						tagName="h3"
+						value={ timeIn }
+						className='uagb-howto-timeINmin-text'
+					/>
 				</span>
 				}
 				{ showEstcost &&
 				<span className="uagb-howto__cost-wrap">
-				<RichText.Content
-					value={ estCost }
-					tagName='h3'
-					className='uagb-howto-estcost-text'
-				/>
-				<RichText.Content
-					value={ cost }
-					tagName='h3'
-					className='uagb-howto-estcost-value'
-				/>
-				<RichText.Content
-					tagName="h3"
-					value={ currencyType }
-					className='uagb-howto-estcost-type'
-				/>
+					<RichText.Content
+						value={ estCost }
+						tagName='h3'
+						className='uagb-howto-estcost-text'
+					/>
+					<RichText.Content
+						value={ cost }
+						tagName='h3'
+						className='uagb-howto-estcost-value'
+					/>
+					<RichText.Content
+						tagName="h3"
+						value={ currencyType }
+						className='uagb-howto-estcost-type'
+					/>
 				</span>
 				}
 			</div>
 			{ showTools &&
-			<div className="uagb-how-to-tools__wrap">
-				<RichText.Content
-					value={ toolsTitle }
-					tagName='h3'
-					className='uagb-howto-req-tools-text'
-				/>
-			</div>
-		}
-		{ showTools &&
-			<div className="uagb-tools__wrap">
-			{
-				tools.map( ( tools, index ) => {
+				<div className="uagb-how-to-tools__wrap">
+					<RichText.Content
+						value={ toolsTitle }
+						tagName='h3'
+						className='uagb-howto-req-tools-text'
+					/>
+				</div>
+			}
+			{ showTools &&
+				<div className="uagb-tools__wrap">
+					{
+						tools.map( ( tools, index ) => {
+							return (
+								<div
+									className={ classnames(
+										`uagb-how-to-tools-${index}`,
+										"uagb-how-to-tools-child__wrapper",
+										className,
+										`uagb-block-${ props.clientId }`
+									) }
+									key={ index }
+								>
+									<div className="uagb-tools">
+										<RichText.Content
+											tagName="div"
+											value={ tools.add_required_tools }
+											className='uagb-tools__label'
+										/>
+									</div>
+								</div>
+							)
+						})
+					}
+				</div>
+			}
+			{ showMaterials &&
+				<div className="uagb-how-to-materials__wrap">
+					<RichText.Content
+						value={ materialTitle }
+						tagName='h3'
+						className='uagb-howto-req-materials-text'
+					/>
+				</div>
+			}
+			{ showMaterials &&
+				<div className="uagb-how-to-materials">
+				{
+					materials.map( ( materials, index ) => {
 					return (
-						<div
-							className={ classnames(
-								`uagb-how-to-tools-${index}`,
-								"uagb-how-to-tools-child__wrapper",
-								className,
-								`uagb-block-${ props.clientId }`
-							) }
-							key={ index }
-						>
-							<div className="uagb-tools">
-								<RichText.Content
-									tagName="div"
-									value={ tools.add_required_tools }
-									className='uagb-tools__label'
-								/>
+							<div
+								className={ classnames(
+									`uagb-how-to-materials-${index}`,
+									"uagb-how-to-materials-child__wrapper",
+									className,
+									`uagb-block-${ props.clientId }`
+								) }
+							>
+								<div className="uagb-materials">
+										<RichText.Content
+											tagName="div"
+											value={ materials.add_required_materials }
+											className='uagb-materials__label'
+										/>
+								</div>
 							</div>
-						</div>
-					)
-			})
-		}
+						)
+					})
+				}
+				</div>
+			}
+			<div className="uagb-how-to-steps__wrap">
+				<RichText.Content
+					value={ stepsTitle }
+					tagName='h3'
+					className='uagb-howto-req-steps-text'
+				/>
+				<div className="uagb-howto-steps__wrap">
+					<InnerBlocks.Content />
+				</div>	
+			</div>
 		</div>
-	}
-	{ showMaterials &&
-		<div className="uagb-how-to-materials__wrap">
-			<RichText.Content
-				value={ materialTitle }
-				tagName='h3'
-				className='uagb-howto-req-materials-text'
-			/>
-		</div>
-	}
-	{ showMaterials &&
-		<div className="uagb-how-to-materials">
-		{
-			materials.map( ( materials, index ) => {
-			return (
-					<div
-						className={ classnames(
-							`uagb-how-to-materials-${index}`,
-							"uagb-how-to-materials-child__wrapper",
-							className,
-							`uagb-block-${ props.clientId }`
-						) }
-					>
-						<div className="uagb-materials">
-								<RichText.Content
-									tagName="div"
-									value={ materials.add_required_materials }
-									className='uagb-materials__label'
-								/>
-						</div>
-					</div>
-				)
-			})
-		}
-		</div>
-	}
-		<div className="uagb-how-to-steps__wrap">
-			<RichText.Content
-				value={ stepsTitle }
-				tagName='h3'
-				className='uagb-howto-req-steps-text'
-			/>
-			<div className="uagb-howto-steps__wrap">
-				<InnerBlocks.Content />
-			</div>	
-		</div>
-		</div>
-		</div>
+	</div>
 	)
 }

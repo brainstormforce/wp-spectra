@@ -77,27 +77,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['subHeadingColor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-text ' => array(
+				' .uagb-howto__wrap span.uagb-howto__time-wrap h3' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
-				' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
-					'color' => $attr['showTotaltimecolor'],
-				),
-
-				' .uagb-howto__wrap span.uagb-howto__time-wrap .uagb-howto-timeINmin-text' => array(
-					'color' => $attr['showTotaltimecolor'],
-				),
-
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-text' => array(
-					'color' => $attr['showTotaltimecolor'],
-				),
-
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
-					'color' => $attr['showTotaltimecolor'],
-				),
-
-				' .uagb-howto__wrap span.uagb-howto__cost-wrap .uagb-howto-estcost-type' => array(
+				' .uagb-howto__wrap span.uagb-howto__cost-wrap h3' => array(
 					'color' => $attr['showTotaltimecolor'],
 				),
 
@@ -133,8 +117,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__cost-wrap', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__time-wrap', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__cost-wrap h3', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__time-wrap h3', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-howto-heading-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-howto__wrap p.uagb-howto-desc-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
