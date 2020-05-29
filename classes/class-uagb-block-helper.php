@@ -69,7 +69,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-left' => UAGB_Helper::get_css_value( $attr['costSpace'], 'px' ),
 				),
 
-				' .uagb-how-to-main-wrap .uagb-howto-heading-text'   => array(
+				' .uagb-how-to-main-wrap .uagb-howto-heading-text' => array(
 					'color' => $attr['headingColor'],
 				),
 
