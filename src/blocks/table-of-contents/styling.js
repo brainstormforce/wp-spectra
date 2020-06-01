@@ -152,7 +152,8 @@ function styling( props ) {
 	}
 
 	selectors[" .uagb-toc__list-wrap"] = {
-		'column-count': tColumnsDesktop
+		'column-count': tColumnsDesktop,
+		'overflow': 'hidden'
 	}
 
 	if ( customWidth ) {
@@ -185,7 +186,8 @@ function styling( props ) {
 			"padding-bottom": generateCSSUnit( vPaddingTablet, paddingTypeTablet ),
 		},
 		" .uagb-toc__list-wrap" : {
-			'column-count': tColumnsTablet
+			'column-count': tColumnsTablet,
+			'overflow': 'hidden'
 		},
 
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
@@ -217,7 +219,8 @@ function styling( props ) {
 			"padding-bottom": generateCSSUnit( vPaddingMobile, paddingTypeMobile ),
 		},
 		" .uagb-toc__list-wrap" : {
-			'column-count': tColumnsMobile
+			'column-count': tColumnsMobile,
+			'overflow': 'hidden'
 		},		
 		" .uagb-toc__list-wrap > ul.uagb-toc__list > li:first-child" : {
 		    "padding-top": generateCSSUnit( contentPaddingMobile, contentPaddingTypeMobile )

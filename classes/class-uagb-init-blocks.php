@@ -61,10 +61,12 @@ class UAGB_Init_Blocks {
 	 *
 	 * @since 1.12.0
 	 */
-	public function gf_shortcode() { 	// @codingStandardsIgnoreStart
-		$id = intval($_POST['formId']);
+	public function gf_shortcode() {
 
-		// @codingStandardsIgnoreEnd
+		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
+
+		$id = intval( $_POST['formId'] );
+
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[gravityforms id="' . $id . '" ajax="true"]' );
 		} else {
@@ -78,12 +80,12 @@ class UAGB_Init_Blocks {
 	 *
 	 * @since 1.10.0
 	 */
-	public function cf7_shortcode() { 	// @codingStandardsIgnoreStart
+	public function cf7_shortcode() {
 
 		check_ajax_referer( 'uagb_ajax_nonce', 'nonce' );
-		
-		$id = intval($_POST['formId']);
-		// @codingStandardsIgnoreEnd
+
+		$id = intval( $_POST['formId'] );
+
 		if ( $id && 0 !== $id && -1 !== $id ) {
 			$data['html'] = do_shortcode( '[contact-form-7 id="' . $id . '" ajax="true"]' );
 		} else {
@@ -154,7 +156,7 @@ class UAGB_Init_Blocks {
 		);
 
 		$blocks          = UAGB_Config::get_block_attributes();
-		$disabled_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks', array() );
+		$disabled_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks', array() );
 		$block_assets    = UAGB_Config::get_block_assets();
 
 		foreach ( $blocks as $slug => $value ) {
@@ -186,7 +188,9 @@ class UAGB_Init_Blocks {
 						true
 					);
 
-					if ( is_admin() ) {
+					$skip_editor = isset( $block_assets[ $val ]['skipEditor'] ) ? $block_assets[ $val ]['skipEditor'] : false;
+
+					if ( is_admin() && false === $skip_editor ) {
 						wp_enqueue_script( $val );
 					}
 				}
@@ -245,7 +249,7 @@ class UAGB_Init_Blocks {
 		wp_enqueue_script( 'uagb-deactivate-block-js', UAGB_URL . 'dist/blocks-deactivate.js', array( 'wp-blocks' ), UAGB_VER, true );
 
 		$blocks       = array();
-		$saved_blocks = UAGB_Helper::get_admin_settings_option( '_uagb_blocks' );
+		$saved_blocks = UAGB_Admin_Helper::get_admin_settings_option( '_uagb_blocks' );
 
 		if ( is_array( $saved_blocks ) ) {
 			foreach ( $saved_blocks as $slug => $data ) {

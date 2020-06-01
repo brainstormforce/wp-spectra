@@ -13,15 +13,9 @@ node_modules/
 # Skip package file from versoning
 *.zip
 
-# ignore git inside subproject
-admin/bsf-core/.git
-
 # ignore PHPCS report files
 phpcs-summary.log
 phpcs-full.log
-
-# NPM log/lock files
-package-lock.json
 
 # Exclude OS specific files
 .DS_Store
@@ -31,5 +25,5 @@ vendor/
 ultimate-addons-for-gutenberg.zip
 
 # Exclude webpack files.
-config/webpack.config.dev.js
-config/webpack.config.prod.js
+# config/webpack.config.dev.js
+# config/webpack.config.prod.js
