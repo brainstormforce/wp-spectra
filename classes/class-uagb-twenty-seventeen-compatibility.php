@@ -62,8 +62,9 @@ if ( ! class_exists( 'UAGB_Twenty_Seventeen_Compatibility' ) ) {
 
 				UAGB_Helper::get_instance()->get_generated_stylesheet( $post );
 			}
-
-			UAGB_Helper::file_write( UAGB_Helper::$stylesheet, 'css' );
+			if ( 'enabled' === UAGB_Helper::$file_generation ) {
+				UAGB_Helper::file_write( UAGB_Helper::$stylesheet, 'css' );
+			}
 		}
 	}
 }
