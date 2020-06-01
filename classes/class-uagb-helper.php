@@ -1266,12 +1266,27 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			$file_system    = self::get_instance()->get_filesystem();
 
 			// Get timestamp - Already saved OR new one.
-			$post_timestamp = ( '' === $post_timestamp || false === $post_timestamp ) ? '' : $post_timestamp;
-
+			$post_timestamp  = ( '' === $post_timestamp || false === $post_timestamp ) ? '' : $post_timestamp;
 			$assets_info     = self::get_asset_info( $style_data, $type, $post_timestamp );
 			$new_assets_info = self::get_asset_info( $style_data, $type, $new_timestamp );
 
 			$relative_src_path = $assets_info[ $var ];
+
+			if ( '' === $style_data ) {
+				/**
+				 * This is when the generated CSS/JS is blank.
+				 * This means this page does not use UAG block.
+				 * In this scenario we need to delete the existing file.
+				 * This will ensure there are no extra files added for user.
+				*/
+
+				if ( file_exists( $relative_src_path ) ) {
+					// Delete old file.
+					wp_delete_file( $relative_src_path );
+				}
+
+				return true;
+			}
 
 			/**
 			 * Timestamp present but file does not exists.
@@ -1280,7 +1295,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 */
 			if ( ! $file_system->exists( $relative_src_path ) && '' !== $post_timestamp ) {
 
-				$did_create = self::create_file( $assets_info, $style_data, $new_timestamp, $type );
+				$did_create = self::create_file( $assets_info, $style_data, $post_timestamp, $type );
 
 				if ( $did_create ) {
 					self::$css_file_handler = array_merge( self::$css_file_handler, $assets_info );
@@ -1311,18 +1326,19 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			 * Need to match the content.
 			 * If new content is present we update the current assets.
 			 */
-			if ( file_exists( $assets_info[ $var ] ) ) {
+			if ( file_exists( $relative_src_path ) ) {
 
-				$old_data = $file_system->get_contents( $assets_info[ $var ] );
+				$old_data = $file_system->get_contents( $relative_src_path );
 
 				if ( $old_data !== $style_data ) {
+
+					// Delete old file.
+					wp_delete_file( $relative_src_path );
 
 					// Create a new file.
 					$did_create = self::create_file( $new_assets_info, $style_data, $new_timestamp, $type );
 
 					if ( $did_create ) {
-						// Delete old file.
-						wp_delete_file( $assets_info[ $var ] );
 						self::$css_file_handler = array_merge( self::$css_file_handler, $new_assets_info );
 					}
 
