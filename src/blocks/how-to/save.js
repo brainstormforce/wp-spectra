@@ -184,11 +184,11 @@ export default function save( props ) {
 								) }
 							>
 								<div className="uagb-materials">
-										<RichText.Content
-											tagName="div"
-											value={ materials.add_required_materials }
-											className='uagb-materials__label'
-										/>
+									<RichText.Content
+										tagName="div"
+										value={ materials.add_required_materials }
+										className='uagb-materials__label'
+									/>
 								</div>
 							</div>
 						)

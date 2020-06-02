@@ -8,7 +8,6 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
 	const {
-		imgWidth,
 		overallAlignment,
 		headingTag,
 		showTotaltimecolor,
@@ -41,12 +40,10 @@ function styling( props ) {
 		priceFontSizeMobile,
 		priceFontFamily,
 		priceFontWeight,
-		priceFontSubset,
 		priceLineHeightType,
 		priceLineHeight,
 		priceLineHeightTablet,
 		priceLineHeightMobile,
-		priceLoadGoogleFonts,
 		timeSpace,
 		costSpace,
 		row_gap,
@@ -132,6 +129,19 @@ function styling( props ) {
 			"margin-left" : generateCSSUnit( costSpace,"px"),
 		},
 
+		" .uagb-howto-steps__wrap h4.block-editor-rich-text__editable" :{
+			"font-family": priceFontFamily,
+			"font-weight": priceFontWeight,
+			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
+			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
+		},
+		" .uagb-howto-steps__wrap p.block-editor-rich-text__editable" : {
+			"font-family": subHeadFontFamily,
+			"font-weight": subHeadFontWeight,
+			"font-size": generateCSSUnit( subHeadFontSize, subHeadFontSizeType ),
+			"line-height": generateCSSUnit( subHeadLineHeight, subHeadLineHeightType ),
+		},
+
 		" .block-editor-rich-text__editable.uagb-howto-estcost-type": {
 			"font-family": subHeadFontFamily,
 			"font-weight": subHeadFontWeight,
@@ -164,23 +174,7 @@ function styling( props ) {
 			"color": showTotaltimecolor,
 		},
 
-		" .block-editor-rich-text__editable.uagb-howto-req-tools-text" : {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
-		},
-
 		" .block-editor-rich-text__editable.uagb-howto-req-steps-text" : {
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": showTotaltimecolor,
-		},
-
-		" .block-editor-rich-text__editable.uagb-howto-req-materials-text": {
 			"font-family": priceFontFamily,
 			"font-weight": priceFontWeight,
 			"font-size": generateCSSUnit( priceFontSize, priceFontSizeType ),

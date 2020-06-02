@@ -60,7 +60,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * UAG File Generation Fallback Flag for CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @var file_generation
 		 */
 		public static $fallback_css = false;
@@ -68,7 +68,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		/**
 		 * UAG File Generation Fallback Flag for JS
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @var file_generation
 		 */
 		public static $fallback_js = false;
@@ -162,7 +162,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * CSS Path : uploads/uag-plugin/uag-style-{post_id}-{timestamp}.css
 		 * JS Path : uploads/uag-plugin/uag-script-{post_id}-{timestamp}.js
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 */
 		public function generate_asset_files() {
 
@@ -1233,7 +1233,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  string $style_data The data that needs to be copied into the created file.
 		 * @param  string $timestamp Current timestamp.
 		 * @param  string $type Type of file - CSS/JS.
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @return boolean true/false
 		 */
 		public static function create_file( $assets_info, $style_data, $timestamp, $type ) {
@@ -1521,7 +1521,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 * @param  string $slug The field slug.
 		 * @param  string $selector The selector array.
 		 * @param  array  $combined_selectors The combined selector array.
-		 * @since  x.x.x
+		 * @since  1.15.0
 		 * @return bool|string
 		 */
 		public static function get_typography_css( $attr, $slug, $selector, $combined_selectors ) {
@@ -1595,7 +1595,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 		 *
 		 * @param array  $combined_selectors The combined selector array.
 		 * @param string $id The selector ID.
-		 * @since x.x.x
+		 * @since 1.15.0
 		 */
 		public static function generate_all_css( $combined_selectors, $id ) {
 

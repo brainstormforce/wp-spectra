@@ -33,7 +33,7 @@ const {
 	InspectorControls,
 	RichText,
 	ColorPalette,
-	InnerBlocks,
+	InnerBlocks
 } = wp.blockEditor
 
 const {
@@ -41,7 +41,8 @@ const {
 	SelectControl,
 	RangeControl,
 	Button,
-	ToggleControl
+	ToggleControl,
+	ExternalLink
 } = wp.components
 
 const { select, withSelect } = wp.data;
@@ -417,14 +418,17 @@ class UAGBHowTo extends Component {
 					label={ __( "Show Total Time" ) }
 					checked={ showTotaltime }
 					onChange={ ( value ) => setAttributes( { showTotaltime: ! showTotaltime } ) }
-					help={ __( "Note: Time & Cost is recommended field for schema.It should be ON" ) }
+					help={ __( "Note: Time is recommended field for schema. It should be ON" ) }
 				/>
 				<ToggleControl
 					label={ __( "Show Estimated Cost" ) }
 					checked={ showEstcost }
 					onChange={ ( value ) => setAttributes( { showEstcost: ! showEstcost } ) }
-					help={ __( "Note: Click here to find your country's ISO code." ) }
+					help={ __( "Note: Cost is recommended field for schema.It should be ON" ) }
 				/>
+				<ExternalLink href={ 'https://en.wikipedia.org/wiki/List_of_circulating_currencies' }>
+					{ __( 'Click here to find your countrys ISO code.' ) }
+				</ExternalLink>
 				<hr className="uagb-editor__separator" />
 				<ToggleControl
 					label={ __( "Show Tools" ) }

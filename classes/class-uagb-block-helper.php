@@ -19,7 +19,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get How To CSS
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 * @return array The Widget List.
@@ -54,7 +54,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 
 				' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
-					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+					'margin-bottom' => '0px',
 				),
 
 				' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' => array(
@@ -131,14 +131,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-materials__wrap .uagb-howto-req-materials-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__cost-wrap h3.uagb-howto-estcost-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' span.uagb-howto__cost-wrap p', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' span.uagb-howto__time-wrap h3.uagb-howto-timeNeeded-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' span.uagb-howto__time-wrap p', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' h4', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-howto-heading-text', $combined_selectors );
-			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-howto__wrap p.uagb-howto-desc-text', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials .uagb-materials__label', $combined_selectors );
 
@@ -4222,7 +4217,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get FAQ CSS.
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
