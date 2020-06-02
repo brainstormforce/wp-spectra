@@ -247,8 +247,9 @@ class UAGBFaqEdit extends Component {
 						label={ __( "Layout" ) }
 						value={ layout }
 						options={ [
-							{ value: "accordion", label: __( "Accordion" ) },
-							{ value: "grid", label: __( "Grid" ) },
+							{ value: "input", label: __( "Input Box" ) },
+							{ value: "icon", label: __( "Icon" ) },
+							{ value: "input-button", label: __( "Input Box with Button" ) },
 						] }
 						onChange={ (value) => this.onchangeLayout( value ) }
 					/>
