@@ -620,7 +620,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/faq'                => array(
 						'slug'        => '',
 						'title'       => __( 'FAQ - Schema', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you add FAQ to your website.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add FAQ or Accordion with automatically adding FAQ Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'js_assets'   => array( 'uagb-faq-js' ),
 						'attributes'  => array(
@@ -887,7 +887,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/how-to'             => array(
 						'slug'        => '',
 						'title'       => __( 'How-to Schema', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'How To Configure How-To Schema In Ultimate Addons For Gutenberg?', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to design attractive How-to pages or articles with automatically adding How-to Schema to your page.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
 							'block_id'                => '',
