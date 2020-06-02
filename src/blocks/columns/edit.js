@@ -1,6 +1,7 @@
 /**
  * BLOCK: UAGB - Columns Edit Class
  */
+import OptionSelectorControl from '../../components/option-selector-control'
 
 // Import classes
 import classnames from "classnames"
@@ -24,6 +25,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	BlockAlignmentToolbar,
+	BlockVerticalAlignmentToolbar,
 	ColorPalette,
 	InspectorControls,
 	InnerBlocks,
@@ -69,6 +71,9 @@ class UAGBColumns extends Component {
 
 		this.props.setAttributes( { classMigrate: true } )
 
+		if ( 'middle' === this.props.attributes.vAlign ) {
+			this.props.setAttributes( { vAlign: 'center' } )
+		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId )
@@ -220,7 +225,7 @@ class UAGBColumns extends Component {
 			boxShadowSpread,
 			boxShadowPosition,
 		} = attributes
-
+		
 		const CustomTag = `${tag}`
 
 		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
@@ -500,7 +505,7 @@ class UAGBColumns extends Component {
 
 		const reverse_tablet = ( reverseTablet ) ? "uagb-columns__reverse-tablet" : ""
 
-		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""
+		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""			
 
 		return (
 			<Fragment>
@@ -512,48 +517,12 @@ class UAGBColumns extends Component {
 						} }
 						controls={ [ "wide","full" ] }
 					/>
-					<Toolbar>
-						<Tooltip text={ __( "Vertically Top" ) }>
-							<Button
-								className={ classnames(
-									"components-icon-button",
-									"components-toolbar__control",
-									{ "is-active": vAlign === "top" },
-								) }
-								onClick={ () => setAttributes( { vAlign: "top" } ) }
-							>
-								{ UAGB_Block_Icons.top_align }
-							</Button>
-						</Tooltip>
-					</Toolbar>
-					<Toolbar>
-						<Tooltip text={ __( "Vertically Middle" ) }>
-							<Button
-								className={ classnames(
-									"components-icon-button",
-									"components-toolbar__control",
-									{ "is-active": vAlign === "middle" },
-								) }
-								onClick={ () => setAttributes( { vAlign: "middle" } ) }
-							>
-								{ UAGB_Block_Icons.middle_align }
-							</Button>
-						</Tooltip>
-					</Toolbar>
-					<Toolbar>
-						<Tooltip text={ __( "Vertically Bottom" ) }>
-							<Button
-								className={ classnames(
-									"components-icon-button",
-									"components-toolbar__control",
-									{ "is-active": vAlign === "bottom" },
-								) }
-								onClick={ () => setAttributes( { vAlign: "bottom" } ) }
-							>
-								{ UAGB_Block_Icons.bottom_align }
-							</Button>
-						</Tooltip>
-					</Toolbar>
+					<BlockVerticalAlignmentToolbar
+						value={ vAlign }
+						onChange={ ( value ) => {
+							setAttributes( { vAlign: value } )
+						} }
+					/>
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
@@ -602,18 +571,18 @@ class UAGBColumns extends Component {
 								</Fragment>
 							 )
 						}
-						<SelectControl
+						<OptionSelectorControl
 							label={ __( "Column Gap" ) }
-							value={ columnGap }
-							onChange={ ( value ) => setAttributes( { columnGap: value } ) }
+							currentOption={ columnGap }
 							options={ [
-								{ value: "10", label: __( "Default (10px)" ) },
-								{ value: "0", label: __( "No Gap (0px)" ) },
-								{ value: "5", label: __( "Narrow (5px)" ) },
-								{ value: "15", label: __( "Extended (15px)" ) },
-								{ value: "20", label: __( "Wide (20px)" ) },
-								{ value: "30", label: __( "Wider (30px)" ) }
+								{ value: "10", label: __( "Default" ), tooltip: __( 'Default (10px)' ), },
+								{ value: "0", label: __( "None" ), tooltip: __( 'No Gap (0px)' ), },
+								{ value: "5", label: __( "S" ), tooltip: __( 'Narrow (5px)' ), },
+								{ value: "15", label: __( "M" ), tooltip: __( 'Extended (15px)' ), },
+								{ value: "20", label: __( "L" ), tooltip: __( 'Wide (20px)' ), },
+								{ value: "30", label: __( "XL" ), tooltip: __( 'Wider (30px)' ), }
 							] }
+							onChange={ ( columnGap ) => setAttributes( { columnGap } ) }
 							help={ __( "Note: The individual Column Gap can be managed from Column Settings." ) }
 						/>
 						<SelectControl
