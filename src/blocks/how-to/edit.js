@@ -848,6 +848,7 @@ class UAGBHowTo extends Component {
 											`uagb-how-to-materials-${index}`,
 											"uagb-how-to-materials-child__wrapper",
 										) }
+										key={index}
 									>
 										<div className="uagb-materials">
 											<RichText
