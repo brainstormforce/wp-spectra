@@ -122,9 +122,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'color' => $attr['subHeadingColor'],
 			);
 
-			$t_selectors = array();
-			$m_selectors = array();
-
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,

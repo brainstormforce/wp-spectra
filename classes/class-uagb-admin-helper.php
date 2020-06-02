@@ -44,6 +44,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @param  mixed   $default Option default value if option is not available.
 		 * @param  boolean $network_override Whether to allow the network admin setting to be overridden on subsites.
 		 * @return string           Return the option value
+		 * @since 0.0.1
 		 */
 		public static function get_admin_settings_option( $key, $default = false, $network_override = false ) {
 
@@ -95,6 +96,7 @@ if ( ! class_exists( 'UAGB_Admin_Helper' ) ) {
 		 * @param mixed  $value     The value to update.
 		 * @param bool   $network   Whether to allow the network admin setting to be overridden on subsites.
 		 * @return mixed
+		 * @since 0.0.1
 		 */
 		public static function update_admin_settings_option( $key, $value, $network = false ) {
 
