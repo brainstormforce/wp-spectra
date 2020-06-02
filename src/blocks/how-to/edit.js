@@ -668,7 +668,7 @@ class UAGBHowTo extends Component {
 					<span className="uagb-howto__time-wrap">
 					{ showTotaltime &&
 						<RichText
-							tagName="h3"
+							tagName="h4"
 							placeholder={ __( "Total Time Needed ( Minutes ):" ) }
 							value={ timeNeeded }
 							className='uagb-howto-timeNeeded-text'
@@ -706,7 +706,7 @@ class UAGBHowTo extends Component {
 					<span className="uagb-howto__cost-wrap">
 					{ showEstcost &&
 						<RichText
-							tagName="h3"
+							tagName="h4"
 							placeholder={ __( "Total Cost:" ) }
 							value={ estCost }
 							className='uagb-howto-estcost-text'
@@ -744,7 +744,7 @@ class UAGBHowTo extends Component {
 					<div className="uagb-how-to-tools__wrap">
 						{ showTools &&
 						<RichText
-							tagName="h3"
+							tagName="h4"
 							placeholder={ __( "requirements tools:" ) }
 							value={ toolsTitle }
 							className='uagb-howto-req-tools-text'
@@ -764,8 +764,7 @@ class UAGBHowTo extends Component {
 													className={ classnames(
 														`uagb-how-to-tools-${index}`,
 														"uagb-how-to-tools-child__wrapper",
-														className,
-														`uagb-block-${ this.props.clientId }`
+														className
 													) }
 													key={ index }
 												>
@@ -792,7 +791,7 @@ class UAGBHowTo extends Component {
 					<div className="uagb-how-to-materials__wrap">
 					{ showMaterials &&
 						<RichText
-							tagName="h3"
+							tagName="h4"
 							placeholder={ __( "requirements materials:" ) }
 							value={ materialTitle }
 							className='uagb-howto-req-materials-text'
@@ -813,8 +812,7 @@ class UAGBHowTo extends Component {
 										className={ classnames(
 											`uagb-how-to-materials-${index}`,
 											"uagb-how-to-materials-child__wrapper",
-											className,
-											`uagb-block-${ this.props.clientId }`
+											className
 										) }
 									>
 										<div className="uagb-materials">
@@ -840,7 +838,7 @@ class UAGBHowTo extends Component {
 					</div>
 					<div className="uagb-how-to-steps__wrap">
 						<RichText
-							tagName="h3"
+							tagName="h4"
 							placeholder={ __( "requirements Steps:" ) }
 							value={ stepsTitle }
 							className='uagb-howto-req-steps-text'
