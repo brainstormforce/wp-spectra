@@ -2,10 +2,14 @@
  * BLOCK: WP Search 
  */
 
-import classnames from "classnames"
+import styling from "./styling"
 import { Fragment } from "react"
-import TypographyControl from "../../components/typography"
+import classnames from "classnames"
 import BoxShadowControl from "../../components/box-shadow"
+import TypographyControl from "../../components/typography"
+import WebfontLoader from "../../components/typography/fontloader"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 const { __ } = wp.i18n
 const {
@@ -20,7 +24,11 @@ const {
 	PanelBody,
 	SelectControl,
 	RangeControl,
-	TextControl
+    TextControl,
+    TabPanel,
+    ButtonGroup,
+	Button,
+	Dashicon,
 } = wp.components
 class UAGBWpSearchEdit extends Component {
 
@@ -33,6 +41,9 @@ class UAGBWpSearchEdit extends Component {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		// Pushing Style tag for this block css.
+		const $style = document.createElement( "style" )
+		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId )
+		document.head.appendChild( $style )
 	}
 	render() {
         const { attributes, setAttributes } = this.props
@@ -75,7 +86,31 @@ class UAGBWpSearchEdit extends Component {
             inputLineHeightType,
             inputLineHeightTablet,
             inputLineHeightMobile,
+            inputPaddingTypeMobile,
+            inputPaddingTypeTablet,
+            inputPaddingTypeDesktop,
+            vinputPaddingMobile,
+            vinputPaddingTablet,
+            vinputPaddingDesktop,
+            hinputPaddingMobile,
+            hinputPaddingTablet,
+            hinputPaddingDesktop,
+            buttonPaddingTypeMobile,
+            buttonPaddingTypeTablet,
+            buttonPaddingTypeDesktop,
+            vbuttonPaddingMobile,
+            vbuttonPaddingTablet,
+            vbuttonPaddingDesktop,
+            hbuttonPaddingMobile,
+            hbuttonPaddingTablet,
+            hbuttonPaddingDesktop,
         } = attributes
+        
+        var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
+        }
         
         let loadInputGoogleFonts;
 
@@ -123,7 +158,7 @@ class UAGBWpSearchEdit extends Component {
                                 value={ inputSize }
                                 onChange={ ( value ) => setAttributes( { inputSize: value } ) }
                                 min={ 0 }
-                                max={ 500 }
+                                max={ 1000 }
 						    />
                         </Fragment>
                     }
@@ -159,7 +194,119 @@ class UAGBWpSearchEdit extends Component {
                                 lineHeight = { { value: inputLineHeight, label: 'inputLineHeight'  } }
                                 lineHeightMobile = { { value: inputLineHeightMobile, label: 'inputLineHeightMobile'  } }
                                 lineHeightTablet= { { value: inputLineHeightTablet, label: 'inputLineHeightTablet'  } }
-                            />  
+                            />
+                            <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "px" } aria-pressed={ inputPaddingTypeMobile === "px" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "%" } aria-pressed={ inputPaddingTypeMobile === "%" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vinputPaddingMobile }
+													onChange={ ( value ) => setAttributes( { vinputPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hinputPaddingMobile }
+													onChange={ ( value ) => setAttributes( { hinputPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "px" } aria-pressed={ inputPaddingTypeTablet === "px" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "%" } aria-pressed={ inputPaddingTypeTablet === "%" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vinputPaddingTablet }
+													onChange={ ( value ) => setAttributes( { vinputPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hinputPaddingTablet }
+													onChange={ ( value ) => setAttributes( { hinputPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vinputPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hinputPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { hinputPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						    </TabPanel>
                             <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
                             <ColorPalette
                                 value={ textColor }
@@ -248,6 +395,118 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 500 }
                             />
+                            <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+							tabs={ [
+								{
+									name: "desktop",
+									title: <Dashicon icon="desktop" />,
+									className: "uagb-desktop-tab uagb-responsive-tabs",
+								},
+								{
+									name: "tablet",
+									title: <Dashicon icon="tablet" />,
+									className: "uagb-tablet-tab uagb-responsive-tabs",
+								},
+								{
+									name: "mobile",
+									title: <Dashicon icon="smartphone" />,
+									className: "uagb-mobile-tab uagb-responsive-tabs",
+								},
+							] }>
+							{
+								( tab ) => {
+									let tabout
+
+									if ( "mobile" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeMobile === "px" } aria-pressed={ buttonPaddingTypeMobile === "px" } onClick={ () => setAttributes( { buttonPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeMobile === "%" } aria-pressed={ buttonPaddingTypeMobile === "%" } onClick={ () => setAttributes( { buttonPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vbuttonPaddingMobile }
+													onChange={ ( value ) => setAttributes( { vbuttonPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hbuttonPaddingMobile }
+													onChange={ ( value ) => setAttributes( { hbuttonPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else if ( "tablet" === tab.name ) {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeTablet === "px" } aria-pressed={ buttonPaddingTypeTablet === "px" } onClick={ () => setAttributes( { buttonPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeTablet === "%" } aria-pressed={ buttonPaddingTypeTablet === "%" } onClick={ () => setAttributes( { buttonPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vbuttonPaddingTablet }
+													onChange={ ( value ) => setAttributes( { vbuttonPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hbuttonPaddingTablet }
+													onChange={ ( value ) => setAttributes( { hbuttonPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									} else {
+										tabout = (
+											<Fragment>
+												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeDesktop === "px" } aria-pressed={ buttonPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { buttonPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeDesktop === "%" } aria-pressed={ buttonPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { buttonPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+												</ButtonGroup>
+												<h2>{ __( "Padding" ) }</h2>
+												<RangeControl
+													label={ UAGB_Block_Icons.vertical_spacing }
+													className={ "uagb-margin-control" }
+													value={ vbuttonPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { vbuttonPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.horizontal_spacing }
+													className={ "uagb-margin-control" }
+													value={ hbuttonPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { hbuttonPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 100 }
+													allowReset
+												/>
+											</Fragment>
+										)
+									}
+
+									return <div>{ tabout }</div>
+								}
+							}
+						    </TabPanel>
                             <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
                             <ColorPalette
                                 value={ buttonBgColor }
@@ -321,14 +580,13 @@ class UAGBWpSearchEdit extends Component {
         const renderSearchForm = () => {
 
             return (
-                <form className="uagb-search-button-wrapper" role="search" action="https://wordpress.test" method="get">
+                <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
                     <div className="uagb-search-form__container" role="tablist">
-                        <input placeholder="Type &amp; Hit Enter..." className="uagb-search-form__input" type="search" name="s" title="Search" value=""/>
-                        <button id="clear-with-button" type="reset">
-                        <i className="fas fa-times" aria-hidden="true"></i>
-                        </button>
+                        <input placeholder={ placeholder } className="uagb-search-form__input" type="search" name="s" title="Search" value=""/>
                         <button className="uagb-search-submit" type="submit">
-                        <i className="fas fa-search" aria-hidden="true"></i>
+                            <span className="uagb-wp-search-icon-wrap">
+                                { renderSVG( 'fas fa-search' ) }
+                            </span>
                         </button>
                     </div>
                 </form>
@@ -337,7 +595,7 @@ class UAGBWpSearchEdit extends Component {
 		return (
 			<div className={ classnames(
                 "uagb-wp-search__outer-wrap",
-                `uagb-block-${ this.props.clientId }`,
+                `uagb-block-${ block_id }`,
             ) }
             >
             <InspectorControls>

@@ -164,6 +164,78 @@ const attributes = {
 		type: "string",
 		default: "outset"
 	},
+	inputPaddingTypeMobile: {
+		type: "string",
+		default : "px"
+	},
+	inputPaddingTypeTablet: {
+		type: "string",
+		default : "px"
+	},
+	inputPaddingTypeDesktop: {
+		type: "string",
+		default : "px"
+	},
+	vinputPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	vinputPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	vinputPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
+	hinputPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	hinputPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	hinputPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
+	buttonPaddingTypeMobile: {
+		type: "string",
+		default : "px"
+	},
+	buttonPaddingTypeTablet: {
+		type: "string",
+		default : "px"
+	},
+	buttonPaddingTypeDesktop: {
+		type: "string",
+		default : "px"
+	},
+	vbuttonPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	vbuttonPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	vbuttonPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
+	hbuttonPaddingMobile: {
+		type: "number",
+		default : 10
+	},
+	hbuttonPaddingTablet: {
+		type: "number",
+		default : 10
+	},
+	hbuttonPaddingDesktop: {
+		type: "number",
+		default : 10
+	},
 }
 
 export default attributes
