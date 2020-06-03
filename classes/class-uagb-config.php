@@ -2090,6 +2090,15 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'test_item_count'         => 3,
 						),
 					),
+					'uagb/wp-search'          => array(
+						'slug'        => '',
+						'title'       => __( 'WP - Search', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id'   => '',
+						),
+					),
 				);
 			}
 			return self::$block_attributes;
