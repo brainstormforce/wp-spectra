@@ -631,7 +631,7 @@ if ( ! class_exists( 'UAGB_GF_Styler' ) ) {
 			);
 
 			if ( isset( $attributes['className'] ) ) {
-				$main_classes . push( $attributes['className'] );
+				$main_classes[] = $attributes['className'];
 			}
 
 			ob_start();

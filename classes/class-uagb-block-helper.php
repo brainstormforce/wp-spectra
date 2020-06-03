@@ -17,6 +17,127 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Get How To CSS
+		 *
+		 * @since 1.15.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_how_to_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/how-to']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$t_selectors = array();
+			$m_selectors = array();
+
+			$selectors = array(
+				' .uagb-how-to-main-wrap' => array(
+					'text-align' => $attr['overallAlignment'],
+				),
+
+				' .uagb-how-to-main-wrap p.uagb-howto-desc-text' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+				),
+
+				' .uagb-how-to-main-wrap .uagb-howto__source-wrap' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+				),
+
+				' .uagb-how-to-main-wrap span.uagb-howto__time-wrap' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+				),
+
+				' .uagb-how-to-main-wrap span.uagb-howto__cost-wrap' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+				),
+
+				' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper:last-child' => array(
+					'margin-bottom' => '0px',
+				),
+
+				' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper:last-child' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['row_gap'], 'px' ),
+				),
+
+				' .uagb-howto-steps__wrap .wp-block-uagb-info-box' => array(
+					'margin-bottom' => UAGB_Helper::get_css_value( $attr['step_gap'], 'px' ),
+				),
+
+				' .uagb-howto-steps__wrap .wp-block-uagb-info-box:last-child' => array(
+					'margin-bottom' => '0px',
+				),
+
+				' span.uagb-howto__time-wrap .uagb-howto-timeNeeded-value' => array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['timeSpace'], 'px' ),
+				),
+
+				' span.uagb-howto__cost-wrap .uagb-howto-estcost-value' => array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['costSpace'], 'px' ),
+				),
+
+				' .uagb-how-to-main-wrap .uagb-howto-heading-text' => array(
+					'color' => $attr['headingColor'],
+				),
+
+				' .uagb-howto-desc-text'  => array(
+					'color' => $attr['subHeadingColor'],
+				),
+
+				' .uagb-howto__wrap span.uagb-howto__time-wrap p' => array(
+					'color' => $attr['subHeadingColor'],
+				),
+
+				' .uagb-howto__wrap span.uagb-howto__cost-wrap p' => array(
+					'color' => $attr['subHeadingColor'],
+				),
+
+				' .uagb-howto__wrap span.uagb-howto__time-wrap h4.uagb-howto-timeNeeded-text' => array(
+					'color' => $attr['showTotaltimecolor'],
+				),
+
+				' .uagb-howto__wrap span.uagb-howto__cost-wrap h4.uagb-howto-estcost-text' => array(
+					'color' => $attr['showTotaltimecolor'],
+				),
+
+				' .uagb-how-to-tools__wrap .uagb-howto-req-tools-text' => array(
+					'color' => $attr['showTotaltimecolor'],
+				),
+
+				'  .uagb-how-to-materials__wrap .uagb-howto-req-materials-text' => array(
+					'color' => $attr['showTotaltimecolor'],
+				),
+
+				' .uagb-how-to-steps__wrap .uagb-howto-req-steps-text' => array(
+					'color' => $attr['showTotaltimecolor'],
+				),
+			);
+
+			$selectors[' .uagb-tools__wrap .uagb-how-to-tools-child__wrapper'] = array(
+				'color' => $attr['subHeadingColor'],
+			);
+
+			$selectors[' .uagb-how-to-materials .uagb-how-to-materials-child__wrapper'] = array(
+				'color' => $attr['subHeadingColor'],
+			);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' p', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'price', ' h4', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'head', ' .uagb-howto-heading-text', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-tools .uagb-tools__label', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'subHead', ' .uagb-materials .uagb-materials__label', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
+		}
+
+		/**
 		 * Get Section Block CSS
 		 *
 		 * @since 0.0.1
@@ -4093,7 +4214,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 		/**
 		 * Get FAQ CSS.
 		 *
-		 * @since x.x.x
+		 * @since 1.15.0
 		 * @param array  $attr The block attributes.
 		 * @param string $id The selector ID.
 		 */
@@ -4130,7 +4251,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'width'     => $icon_size,
 					'height'    => $icon_size,
 					'font-size' => $icon_size,
-					'fill'      => $attr['iconActiveColor'],
+					'fill'      => $icon_active_color,
 				),
 				' .uagb-faq-child__outer-wrap'         => array(
 					'margin-bottom' => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
@@ -4237,16 +4358,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( 'accordion' === $attr['layout'] && true === $attr['expandFirstItem'] ) {
 
-				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-child__wrapper .uagb-faq-content '] = array(
+				$selectors[' .uagb-faq__wrap.uagb-buttons-layout-wrap > .uagb-faq-child__outer-wrap:first-child > .uagb-faq-child__wrapper .uagb-faq-item.uagb-faq-item-active .uagb-faq-content '] = array(
 					'display' => 'block',
 				);
 			}
 			if ( true === $attr['enableSeparator'] ) {
 
 				$selectors[' .uagb-faq-child__outer-wrap .uagb-faq-content '] = array(
-					'border-style'     => 'solid',
-					'border-top-color' => $attr['borderColor'],
-					'border-top-width' => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-style'        => 'solid',
+					'border-top-color'    => $attr['borderColor'],
+					'border-top-width'    => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
+					'border-right-width'  => '0px',
+					'border-bottom-width' => '0px',
+					'border-left-width'   => '0px',
 				);
 			}
 			if ( 'grid' === $attr['layout'] ) {
