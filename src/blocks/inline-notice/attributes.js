@@ -35,10 +35,6 @@
 		type: "string",
 		default: "fa fa-window-close"
 	},
-	fontSize: {
-		type: "number",
-		default: "14"
-	},
 	noticeAlignment: {
 		type: "string",
 		default: "left"

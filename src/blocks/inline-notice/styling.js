@@ -13,11 +13,8 @@ function styling( props ) {
 		titleColor,
 		noticeColor,
 		noticeDismissColor,
-		fontSize,
-		noticeAlignment,
 		titleFontFamily,
 		titleFontWeight,
-		titleFontSubset,
 		titleFontSizeType,
 		titleLineHeightType,
 		titleFontSize,
@@ -28,7 +25,6 @@ function styling( props ) {
 		titleLineHeightMobile,
 		descFontFamily,
 		descFontWeight,
-		descFontSubset,
 		descFontSize,
 		descFontSizeType,
 		descFontSizeTablet,
@@ -37,8 +33,6 @@ function styling( props ) {
 		descLineHeightType,
 		descLineHeightTablet,
 		descLineHeightMobile,
-		titleLoadGoogleFonts,
-		descLoadGoogleFonts
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -48,9 +42,9 @@ function styling( props ) {
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
 	    "font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
-	    "font-weight": titleLineHeight,
+	    "font-weight": titleFontWeight,
 	    "font-family": titleFontFamily,
-	    "line-height": generateCSSUnit( titleFontSize, titleFontSizeType ),
+	    "line-height": generateCSSUnit( titleLineHeight, titleFontSizeType ),
 	    "color": titleColor,
 	    "background-color": noticeColor,
 		},
@@ -63,7 +57,7 @@ function styling( props ) {
 		    "font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 		    "font-weight": descFontWeight,
 		    "font-family": descFontFamily,
-		    "line-height": generateCSSUnit( descFontSize, descFontSizeType ),
+		    "line-height": generateCSSUnit( descLineHeight, descFontSizeType ),
 		    "color": textColor,
 		},
 
@@ -74,25 +68,25 @@ function styling( props ) {
 
 	mobile_selectors = {
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
-		    "font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleFontSize, titleFontSizeType ),
+		    "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+		    "line-height": generateCSSUnit( titleLineHeightMobile, titleFontSizeType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
-			    "font-size": generateCSSUnit( descFontSize, descFontSizeType ),
-			    "line-height": generateCSSUnit( descFontSize, descFontSizeType ),
+			    "font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
+			    "line-height": generateCSSUnit( descLineHeightMobile, descFontSizeType ),
 			},
 	}
 
 	tablet_selectors = { 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
-		    "font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleFontSize, titleFontSizeType ),
+		    "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+		    "line-height": generateCSSUnit( titleLineHeightTablet, titleFontSizeType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
-			    "font-size": generateCSSUnit( descFontSize, descFontSizeType ),
-			    "line-height": generateCSSUnit( descFontSize, descFontSizeType ),
+			    "font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
+			    "line-height": generateCSSUnit( descLineHeightTablet, descFontSizeType ),
 			},
 	}
 

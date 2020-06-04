@@ -29,10 +29,6 @@ const {
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
-	Button,
-	ToggleControl,
 } = wp.components
 
 const {
@@ -68,7 +64,6 @@ class UAGBInlineNoticeEdit extends Component {
 				titleColor,
 				noticeColor,
 				noticeDismissColor,
-				fontSize,
 				noticeAlignment,
 				titleFontFamily,
 				titleFontWeight,
@@ -231,17 +226,17 @@ class UAGBInlineNoticeEdit extends Component {
 
 		return (
 			<Fragment>
-			<BlockControls key="controls">
-				<AlignmentToolbar
-					value={ noticeAlignment }
-					onChange={ ( value ) =>
-						setAttributes( { noticeAlignment: value } )
-					}
-				/>
-			</BlockControls>
-			<InspectorControls>
-				{ inlineGeneralSettings() }
-			</InspectorControls>
+				<BlockControls key="controls">
+					<AlignmentToolbar
+						value={ noticeAlignment }
+						onChange={ ( value ) =>
+							setAttributes( { noticeAlignment: value } )
+						}
+					/>
+				</BlockControls>
+				<InspectorControls>
+					{ inlineGeneralSettings() }
+				</InspectorControls>
 			<div className={ classnames(
 				className,
 				"uagb-inline_notice__outer-wrap",
@@ -270,8 +265,8 @@ class UAGBInlineNoticeEdit extends Component {
 					}
 				/>
 			</div>
-			{ loadTitleGoogleFonts }
-			{ loadDescriptionGoogleFonts }
+				{ loadTitleGoogleFonts }
+				{ loadDescriptionGoogleFonts }
 			</Fragment>
 		)
 	}

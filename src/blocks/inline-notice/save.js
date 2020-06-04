@@ -18,10 +18,6 @@ export default function save( props ) {
 	const {
 		block_id,
 		noticeTitle,
-		textColor,
-		titleColor,
-		noticeColor,
-		fontSize,
 		noticeContent,
 		noticeAlignment,
 		icon,
@@ -41,17 +37,17 @@ export default function save( props ) {
 			`uagb-inline_notice__align-${ noticeAlignment }`,
 			`uagb-block-${ block_id }`
 		) }>
-		{image_icon_html}
-		<RichText.Content
-			value={ noticeTitle }
-			tagName="h4"
-			className='uagb-notice-title'
-		/>
-		<RichText.Content
-			value={ noticeContent }
-			tagName="div"
-			className='uagb-notice-text'
-		/>
+			{image_icon_html}
+			<RichText.Content
+				value={ noticeTitle }
+				tagName="h4"
+				className='uagb-notice-title'
+			/>
+			<RichText.Content
+				value={ noticeContent }
+				tagName="div"
+				className='uagb-notice-text'
+			/>
 		</div>
 		)
 }
