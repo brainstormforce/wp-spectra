@@ -1,11 +1,15 @@
-( function( $ ) {
+window.addEventListener(
 
-	$ = jQuery;
+    'load', function () {
 
 	var InlineNoticeElements = document.getElementsByClassName( 'wp-block-uagb-inline-notice' );
 
-	$('span.uagb-notice-dismiss').click(function () {
-	        InlineNoticeElements[0].style.display='none'   
-	    });
+	InlineNoticeElements[0].addEventListener("click", function() {
 
-} )( jQuery )
+				InlineNoticeElements[0].style.display='none'
+
+		 });
+
+    }
+
+);
