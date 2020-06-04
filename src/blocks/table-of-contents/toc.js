@@ -53,7 +53,8 @@ class TableOfContents extends React.Component {
 			return makeHeaderArray( arrays );
 		};
 
-		var counter = 0;
+        var counter = 0;
+        var ul_counter = 0;
 
 		const parseList = list => {
 			let items = [];
@@ -75,8 +76,9 @@ class TableOfContents extends React.Component {
 					);
 					counter ++;
 				}
-			});
-			return <ul className="uagb-toc__list">{items}</ul>;
+            });
+            ul_counter++;
+			return <ul key={counter + '-' + ul_counter} className="uagb-toc__list">{items}</ul>;
 		};
 
 		if (
