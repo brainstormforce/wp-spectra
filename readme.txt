@@ -157,16 +157,14 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-<<<<<<< HEAD
 = 1.16.0 =
 * New: Inline Notice Block.
-=======
+
 = 1.15.2.1 =
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
 
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
->>>>>>> 7844c49de0f541028fccf1890964a1d736cd2d25
 
 = 1.15.1 =
 * Fix: Contact Form 7 Styler - Fixed an issue when custom class is used.
