@@ -17,7 +17,7 @@ window.addEventListener(
             );
             input[0].addEventListener("blur", function() {
                     if ( this.parentElement.classList.contains( 'wp-search-active' ) ) {
-                        this.parentElement.classList.remove( 'wp-search-active' )
+                        // this.parentElement.classList.remove( 'wp-search-active' )
                     }
                 }
             );

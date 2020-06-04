@@ -149,22 +149,21 @@ class UAGBWpSearchEdit extends Component {
 						] }
 						onChange={ (value) => setAttributes( { layout: value } ) }
 					/>
-                    { ( 'input-button' === layout || 'input' === layout ) &&
-                        <Fragment>
-                            <TextControl
-                                label= { __( "Placeholder" ) }
-                                value= { placeholder }
-                                onChange={ value => setAttributes( { placeholder: value } ) }
-                            />
-                            <RangeControl
-                                label={ __( "Input Size" ) }
-                                value={ inputSize }
-                                onChange={ ( value ) => setAttributes( { inputSize: value } ) }
-                                min={ 0 }
-                                max={ 1000 }
-						    />
-                        </Fragment>
-                    }
+                    <Fragment>
+                        <TextControl
+                            label= { __( "Placeholder" ) }
+                            value= { placeholder }
+                            onChange={ value => setAttributes( { placeholder: value } ) }
+                        />
+                        <RangeControl
+                            label={ __( "Input Size" ) }
+                            value={ inputSize }
+                            onChange={ ( value ) => setAttributes( { inputSize: value } ) }
+                            min={ 0 }
+                            max={ 1000 }
+                        />
+                    </Fragment>
+                    
                 </PanelBody>
             )
         }

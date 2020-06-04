@@ -9,6 +9,7 @@ export default function save( props ) {
 	
 
     const {
+        block_id,
         layout,
         placeholder
     } = props.attributes
@@ -70,7 +71,7 @@ export default function save( props ) {
     return (
 		<div className={ classnames(
             "uagb-wp-search__outer-wrap",
-            `uagb-block-${ props.clientId }`,
+            `uagb-block-${ block_id }`,
         ) }
         >
             { renderSearchForm() }
