@@ -12,6 +12,7 @@ function styling( props ) {
 		textColor,
 		titleColor,
 		noticeColor,
+		noticeDismissColor,
 		fontSize,
 		noticeAlignment,
 		titleFontFamily,
@@ -50,6 +51,12 @@ function styling( props ) {
 	    "font-weight": titleLineHeight,
 	    "font-family": titleFontFamily,
 	    "line-height": generateCSSUnit( titleFontSize, titleFontSizeType ),
+	    "color": titleColor,
+	    "background-color": noticeColor,
+		},
+
+		" .rich-text.block-editor-rich-text__editable.uagb-notice-text" : {
+		    "border-color": noticeColor,
 		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -57,6 +64,11 @@ function styling( props ) {
 		    "font-weight": descFontWeight,
 		    "font-family": descFontFamily,
 		    "line-height": generateCSSUnit( descFontSize, descFontSizeType ),
+		    "color": textColor,
+		},
+
+		" span.uagb-notice-dismiss" : {
+			"fill": noticeDismissColor,
 		},
 	}
 

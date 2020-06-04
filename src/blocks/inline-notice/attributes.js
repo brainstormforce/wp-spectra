@@ -27,6 +27,18 @@
 		type: "string",
 		default: "#000"
 	},
+	noticeDismissColor: {
+		type: "string",
+		default: "#fff"
+	},
+	noticeDismiss: {
+		type: 'string',
+		default: '',
+	},
+	icon: {
+		type: "string",
+		default: "fa fa-window-close"
+	},
 	fontSize: {
 		type: "number",
 		default: "14"

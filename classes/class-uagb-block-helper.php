@@ -33,6 +33,21 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors = array();
 
+			$selectors = array(
+			' h4.uagb-notice-title' => array(
+					'color' => $attr['titleColor'],
+					'background-color' => $attr['noticeColor'],
+				),
+			' .uagb-notice-text' => array(
+					'border-color' => $attr['noticeColor'],
+					'color' => $attr['textColor'],
+				),
+			' span.uagb-notice-dismiss svg' => array(
+					'fill' => $attr['noticeDismissColor'],
+					'color' => $attr['noticeDismissColor'],
+				),
+			);
+
 			$combined_selectors = array(
 				'desktop' => $selectors,
 				'tablet'  => $t_selectors,

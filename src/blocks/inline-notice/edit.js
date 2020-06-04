@@ -5,6 +5,9 @@
 // Import block dependencies and components
 import classnames from 'classnames';
 import styling from "./styling"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
+import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -37,6 +40,8 @@ const {
 	Fragment,
 } = wp.element
 
+let svg_icons = Object.keys( UAGBIcon )
+
 class UAGBInlineNoticeEdit extends Component {
 
 	componentDidMount() {
@@ -51,15 +56,19 @@ class UAGBInlineNoticeEdit extends Component {
 	}
 
 	render() {
+
 		// Setup the attributes
 		const {
 			attributes: {
 				block_id,
+				icon,
 				noticeTitle,
 				noticeContent,
 				textColor,
 				titleColor,
 				noticeColor,
+				noticeDismissColor,
+				noticeDismiss,
 				fontSize,
 				noticeAlignment,
 				titleFontFamily,
@@ -91,6 +100,15 @@ class UAGBInlineNoticeEdit extends Component {
 			className,
 			attributes,
 		} = this.props;
+
+		// Notice dismiss options
+		const noticeDismissOptions = [
+			{
+				value: 'uagb-dismissable',
+				label: __( 'Disable' ),
+			},
+			{ value: null, label: __( 'Always Show' ) },
+		];
 
 		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId )
 
@@ -130,9 +148,44 @@ class UAGBInlineNoticeEdit extends Component {
 			)
 		}
 
+		let image_icon_html = ''
+
+		if ( icon ) {
+			image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
+		}
+
 		const inlineGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
+				<SelectControl
+					label={ __( 'Notice Display', 'atomic-blocks' ) }
+					description={ __(
+						'Do you want the message to always show or dismissible?',
+						'atomic-blocks'
+					) }
+					options={ noticeDismissOptions }
+					value={ noticeDismiss }
+					onChange={ ( value ) =>
+						this.props.setAttributes( {
+							noticeDismiss: value,
+						} )
+					}
+				/>
+				{ noticeDismiss &&
+					<p className="components-base-control__label">{__( "Icon" )}</p>
+				}
+				{ noticeDismiss &&
+					<FontIconPicker
+						icons={svg_icons}
+						renderFunc= {renderSVG}
+						theme="default"
+						value={icon}
+						onChange={ ( value ) => setAttributes( { icon: value } ) }
+						isMulti={false}
+						noSelectedPlaceholder= { __( "Select Icon" ) }
+					/>
+				}
+					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
@@ -154,6 +207,16 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
+					{ noticeDismiss &&
+					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
+					}
+					{ noticeDismiss &&
+					<ColorPalette
+						value={ noticeDismissColor }
+						onChange={ ( value ) => setAttributes( { noticeDismissColor: value } ) }
+						allowReset
+					/>
+					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Typography" ) }</h2>
 						<TypographyControl
@@ -213,16 +276,13 @@ class UAGBInlineNoticeEdit extends Component {
 				`uagb-inline_notice__align-${ noticeAlignment }`,
 				`uagb-block-${ block_id }`
 			) }>
+			{image_icon_html}
 				<RichText
 					tagName="h4"
 					placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }
 					keepPlaceholderOnFocus
 					value={ noticeTitle }
 					className='uagb-notice-title'
-					style={ {
-						color: titleColor,
-						backgroundColor: noticeColor,
-					} }
 					onChange={ ( value ) =>
 						setAttributes( { noticeTitle: value } )
 					}
@@ -233,10 +293,6 @@ class UAGBInlineNoticeEdit extends Component {
 					placeholder={ __( 'Add notice text...', 'ultimate-addons-for-gutenberg' ) }
 					value={ noticeContent }
 					className='uagb-notice-text'
-					style={ {
-						borderColor: noticeColor,
-						color: textColor,
-					} }
 					onChange={ ( value ) =>
 						setAttributes( { noticeContent: value } )
 					}

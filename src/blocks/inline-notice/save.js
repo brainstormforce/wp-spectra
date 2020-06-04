@@ -4,6 +4,7 @@
 
 // Import block dependencies and components.
 import classnames from "classnames"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const {
 	RichText,
@@ -23,7 +24,14 @@ export default function save( props ) {
 		fontSize,
 		noticeContent,
 		noticeAlignment,
+		icon,
 	} = attributes
+
+	let image_icon_html = ''
+
+	if ( icon ) {
+		image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
+	}
 
 
 	return (
@@ -33,22 +41,15 @@ export default function save( props ) {
 			`uagb-inline_notice__align-${ noticeAlignment }`,
 			`uagb-block-${ block_id }`
 		) }>
+		{image_icon_html}
 		<RichText.Content
 			value={ noticeTitle }
 			tagName="h4"
-			style={ {
-						color: titleColor,
-						backgroundColor: noticeColor,
-					} }
 			className='uagb-notice-title'
 		/>
 		<RichText.Content
 			value={ noticeContent }
 			tagName="div"
-			style={ {
-						borderColor: noticeColor,
-						color: textColor,
-					} }
 			className='uagb-notice-text'
 		/>
 		</div>

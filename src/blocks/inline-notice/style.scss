@@ -9,11 +9,8 @@
     text-align:left
 }
 
-.editor-styles-wrapper h4{
-    margin:0;
-}
-
 .wp-block-uagb-inline-notice{
+    position: relative;
     h4 {
         font-weight: bold;
         padding: .5em 1em;
@@ -29,4 +26,19 @@
         border: solid 2px #000;
         background: #fff;
      }
+     span.uagb-notice-dismiss svg{
+        width: 16px;
+        height: 16px;
+    }
+    span.uagb-notice-dismiss {
+        position: absolute;
+        cursor: pointer;
+        top: 13px;
+        right: 13px;
+        opacity: .8;
+        padding: 0;
+        background: none;
+        transition: .3s ease;
+    }
 }
+
