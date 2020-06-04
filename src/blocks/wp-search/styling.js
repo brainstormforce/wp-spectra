@@ -119,6 +119,7 @@ function styling( props ) {
     }
 
     if ( 'icon' === layout ) {
+
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = {
             "width": generateCSSUnit( inputSize, 'px' ),
             "color": textColor,
@@ -174,6 +175,7 @@ function styling( props ) {
             "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
         }
     }
+    
     mobile_selectors = {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' : {
             "font-size" : generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),
