@@ -2,3 +2,20 @@
     display: flex;
     width: fit-content;
 }
+
+.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle .uagb-search-form__input {
+    width: 0;
+    padding: 0;
+    border-style: none;
+}
+.wp-block .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle {
+    position: absolute;
+    right: 0;
+}
+.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input {
+    right: 0;
+    position: relative;
+}
+.uagb-wp-search-icon-wrap {
+    align-items: center;
+}

@@ -3,24 +3,68 @@
  */
 
 import classnames from "classnames"
+import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 export default function save( props ) {
 	
-    const renderSearchForm = () => {
 
-        return (
-            <form className="uagb-search-button-wrapper" role="search" action="https://wordpress.test" method="get">
-                <div className="uagb-search-form__container" role="tablist">
-                    <input placeholder="Type &amp; Hit Enter..." className="uagb-search-form__input" type="search" name="s" title="Search" value=""/>
-                    <button id="clear-with-button" type="reset">
-                    <i className="fas fa-times" aria-hidden="true"></i>
-                    </button>
+    const {
+        layout,
+        placeholder
+    } = props.attributes
+
+    const renderButton = () => {
+            
+        if ( 'input-button' === layout ) {
+            
+            return (
                     <button className="uagb-search-submit" type="submit">
-                    <i className="fas fa-search" aria-hidden="true"></i>
+                        <span className="uagb-wp-search-button-icon-wrap">
+                            { renderSVG( 'fas fa-search' ) }
+                        </span>
                     </button>
-                </div>
-            </form>
-        )
+            )
+        }
+
+        return '';
+    }
+    const renderSearchForm = () => {
+            
+        if ( 'input-button' === layout || 'input' === layout ) {
+            
+            return (
+                <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
+                    <div className="uagb-search-form__container" role="tablist">
+                        <input placeholder={ placeholder } 
+                        className="uagb-search-form__input" type="search" name="s" title="Search"/>
+                        
+                        { renderButton() }
+
+                    </div>
+                </form>
+            )
+        }
+
+        return '';
+    }
+    const renderIcon = () => {
+            
+        if ( 'icon' === layout ) {
+         
+            return (
+                <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
+                    <div className="uagb-search-form__container uagb-icon-input-toggle" role="tablist">
+                        <input placeholder={ placeholder } className="uagb-search-form__input"
+                        type="search" name="s" title="Search"/>
+                        <span className="uagb-wp-search-icon-wrap">
+                            { renderSVG( 'fas fa-search' ) }
+                        </span>
+                    </div>
+                </form>
+            )
+        }
+        
+        return '';
     }
 
     return (
@@ -30,6 +74,7 @@ export default function save( props ) {
         ) }
         >
             { renderSearchForm() }
+            { renderIcon() }
         </div>
 	)
 }

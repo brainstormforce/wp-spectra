@@ -30,10 +30,13 @@ const {
 	Button,
 	Dashicon,
 } = wp.components
+
+var inputFocus = false;
+
 class UAGBWpSearchEdit extends Component {
 
 	constructor() {
-		super( ...arguments )
+        super( ...arguments )
 	}
 
 	componentDidMount() {
@@ -44,7 +47,7 @@ class UAGBWpSearchEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId )
 		document.head.appendChild( $style )
-	}
+    }
 	render() {
         const { attributes, setAttributes } = this.props
         const {
@@ -111,7 +114,7 @@ class UAGBWpSearchEdit extends Component {
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )
         }
-        
+
         let loadInputGoogleFonts;
 
 		if( inputloadGoogleFonts == true ) {
@@ -174,213 +177,211 @@ class UAGBWpSearchEdit extends Component {
                     initialOpen={ true }
                     className="uagb__url-panel-body"
 				>
-                    { ( 'input-button' === layout || 'input' === layout ) &&
-                        <Fragment>
+                    <Fragment>
 
-                            <h2> { __( "Input Box" ) }</h2>
-                            <TypographyControl
-                                label={ __( "Typography" ) }
-                                attributes = { attributes }
-                                setAttributes = { setAttributes }
-                                loadGoogleFonts = { { value: inputloadGoogleFonts, label: 'inputloadGoogleFonts'  } }
-                                fontFamily = { { value: inputFontFamily, label: 'inputFontFamily'  } }
-                                fontWeight = { { value: inputFontWeight, label: 'inputFontWeight'  } }
-                                fontSubset = { { value: inputFontSubset, label: 'inputFontSubset'  } }
-                                fontSizeType = { { value: inputFontSizeType, label: 'inputFontSizeType' } }
-                                fontSize = { { value: inputFontSize, label: 'inputFontSize'  } }
-                                fontSizeMobile = { { value: inputFontSizeMobile, label: 'inputFontSizeMobile'  } }
-                                fontSizeTablet= { { value: inputFontSizeTablet, label: 'inputFontSizeTablet' } }
-                                lineHeightType = { { value: inputLineHeightType, label: 'inputLineHeightType' } }
-                                lineHeight = { { value: inputLineHeight, label: 'inputLineHeight'  } }
-                                lineHeightMobile = { { value: inputLineHeightMobile, label: 'inputLineHeightMobile'  } }
-                                lineHeightTablet= { { value: inputLineHeightTablet, label: 'inputLineHeightTablet'  } }
-                            />
-                            <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
+                        <h2> { __( "Input Box" ) }</h2>
+                        <TypographyControl
+                            label={ __( "Typography" ) }
+                            attributes = { attributes }
+                            setAttributes = { setAttributes }
+                            loadGoogleFonts = { { value: inputloadGoogleFonts, label: 'inputloadGoogleFonts'  } }
+                            fontFamily = { { value: inputFontFamily, label: 'inputFontFamily'  } }
+                            fontWeight = { { value: inputFontWeight, label: 'inputFontWeight'  } }
+                            fontSubset = { { value: inputFontSubset, label: 'inputFontSubset'  } }
+                            fontSizeType = { { value: inputFontSizeType, label: 'inputFontSizeType' } }
+                            fontSize = { { value: inputFontSize, label: 'inputFontSize'  } }
+                            fontSizeMobile = { { value: inputFontSizeMobile, label: 'inputFontSizeMobile'  } }
+                            fontSizeTablet= { { value: inputFontSizeTablet, label: 'inputFontSizeTablet' } }
+                            lineHeightType = { { value: inputLineHeightType, label: 'inputLineHeightType' } }
+                            lineHeight = { { value: inputLineHeight, label: 'inputLineHeight'  } }
+                            lineHeightMobile = { { value: inputLineHeightMobile, label: 'inputLineHeightMobile'  } }
+                            lineHeightTablet= { { value: inputLineHeightTablet, label: 'inputLineHeightTablet'  } }
+                        />
+                        <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+                        tabs={ [
+                            {
+                                name: "desktop",
+                                title: <Dashicon icon="desktop" />,
+                                className: "uagb-desktop-tab uagb-responsive-tabs",
+                            },
+                            {
+                                name: "tablet",
+                                title: <Dashicon icon="tablet" />,
+                                className: "uagb-tablet-tab uagb-responsive-tabs",
+                            },
+                            {
+                                name: "mobile",
+                                title: <Dashicon icon="smartphone" />,
+                                className: "uagb-mobile-tab uagb-responsive-tabs",
+                            },
+                        ] }>
+                        {
+                            ( tab ) => {
+                                let tabout
 
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "px" } aria-pressed={ inputPaddingTypeMobile === "px" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "%" } aria-pressed={ inputPaddingTypeMobile === "%" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vinputPaddingMobile }
-													onChange={ ( value ) => setAttributes( { vinputPaddingMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hinputPaddingMobile }
-													onChange={ ( value ) => setAttributes( { hinputPaddingMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "px" } aria-pressed={ inputPaddingTypeTablet === "px" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "%" } aria-pressed={ inputPaddingTypeTablet === "%" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vinputPaddingTablet }
-													onChange={ ( value ) => setAttributes( { vinputPaddingTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hinputPaddingTablet }
-													onChange={ ( value ) => setAttributes( { hinputPaddingTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vinputPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hinputPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { hinputPaddingDesktop: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									}
+                                if ( "mobile" === tab.name ) {
+                                    tabout = (
+                                        <Fragment>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "px" } aria-pressed={ inputPaddingTypeMobile === "px" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
+                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "%" } aria-pressed={ inputPaddingTypeMobile === "%" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
+                                            </ButtonGroup>
+                                            <h2>{ __( "Padding" ) }</h2>
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.vertical_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ vinputPaddingMobile }
+                                                onChange={ ( value ) => setAttributes( { vinputPaddingMobile: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.horizontal_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ hinputPaddingMobile }
+                                                onChange={ ( value ) => setAttributes( { hinputPaddingMobile: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                        </Fragment>
+                                    )
+                                } else if ( "tablet" === tab.name ) {
+                                    tabout = (
+                                        <Fragment>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "px" } aria-pressed={ inputPaddingTypeTablet === "px" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
+                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "%" } aria-pressed={ inputPaddingTypeTablet === "%" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
+                                            </ButtonGroup>
+                                            <h2>{ __( "Padding" ) }</h2>
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.vertical_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ vinputPaddingTablet }
+                                                onChange={ ( value ) => setAttributes( { vinputPaddingTablet: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.horizontal_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ hinputPaddingTablet }
+                                                onChange={ ( value ) => setAttributes( { hinputPaddingTablet: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                        </Fragment>
+                                    )
+                                } else {
+                                    tabout = (
+                                        <Fragment>
+                                            <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
+                                            </ButtonGroup>
+                                            <h2>{ __( "Padding" ) }</h2>
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.vertical_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ vinputPaddingDesktop }
+                                                onChange={ ( value ) => setAttributes( { vinputPaddingDesktop: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                            <RangeControl
+                                                label={ UAGB_Block_Icons.horizontal_spacing }
+                                                className={ "uagb-margin-control" }
+                                                value={ hinputPaddingDesktop }
+                                                onChange={ ( value ) => setAttributes( { hinputPaddingDesktop: value } ) }
+                                                min={ 0 }
+                                                max={ 100 }
+                                                allowReset
+                                            />
+                                        </Fragment>
+                                    )
+                                }
 
-									return <div>{ tabout }</div>
-								}
-							}
-						    </TabPanel>
-                            <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ textColor }
-                                onChange={ ( value ) => setAttributes( { textColor: value } ) }
-                                allowReset
-                            />
-                            <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputBgColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ inputBgColor }
-                                onChange={ ( value ) => setAttributes( { inputBgColor: value } ) }
-                                allowReset
-                            />
-                            <p className="uagb-setting-label">{ __( "Placeholder Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: placeholderColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ placeholderColor }
-                                onChange={ ( value ) => setAttributes( { placeholderColor: value } ) }
-                                allowReset
-                            />
-                            <BoxShadowControl
-                                setAttributes = { setAttributes }
-                                label = { __( "Box Shadow" ) }
-                                boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
-                                boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
-                                boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
-                                boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
-                                boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
-                                boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
-						    />
-                            <hr className="uagb-editor__separator" />
-                            <h2>{ __( "Border" ) }</h2>
-                            <SelectControl
-                                label={ __( "Style" ) }
-                                value={ borderStyle }
-                                options={ [
-                                    { value: "none", label: __( "None" ) },
-                                    { value: "solid", label: __( "Solid" ) },
-                                    { value: "dotted", label: __( "Dotted" ) },
-                                    { value: "dashed", label: __( "Dashed" ) },
-                                    { value: "double", label: __( "Double" ) },
-                                ] }
+                                return <div>{ tabout }</div>
+                            }
+                        }
+                        </TabPanel>
+                        <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ textColor }
+                            onChange={ ( value ) => setAttributes( { textColor: value } ) }
+                            allowReset
+                        />
+                        <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: inputBgColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ inputBgColor }
+                            onChange={ ( value ) => setAttributes( { inputBgColor: value } ) }
+                            allowReset
+                        />
+                        <p className="uagb-setting-label">{ __( "Placeholder Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: placeholderColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ placeholderColor }
+                            onChange={ ( value ) => setAttributes( { placeholderColor: value } ) }
+                            allowReset
+                        />
+                        <BoxShadowControl
+                            setAttributes = { setAttributes }
+                            label = { __( "Box Shadow" ) }
+                            boxShadowColor = { { value: boxShadowColor, label: __( "Color" ) } }
+                            boxShadowHOffset = { { value: boxShadowHOffset, label: __( "Horizontal" ) } }
+                            boxShadowVOffset = { { value: boxShadowVOffset, label: __( "Vertical" ) } }
+                            boxShadowBlur = { { value: boxShadowBlur, label: __( "Blur" ) } }
+                            boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
+                            boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
+                        />
+                        <hr className="uagb-editor__separator" />
+                        <h2>{ __( "Border" ) }</h2>
+                        <SelectControl
+                            label={ __( "Style" ) }
+                            value={ borderStyle }
+                            options={ [
+                                { value: "none", label: __( "None" ) },
+                                { value: "solid", label: __( "Solid" ) },
+                                { value: "dotted", label: __( "Dotted" ) },
+                                { value: "dashed", label: __( "Dashed" ) },
+                                { value: "double", label: __( "Double" ) },
+                            ] }
+                            onChange={ value => {
+                                setAttributes( { borderStyle: value } )
+                            } }
+                        />
+                        { "none" !== borderStyle &&
+                            <RangeControl
+                                label={ __( "Thickness (px)" ) }
+                                value={ borderWidth }
                                 onChange={ value => {
-                                    setAttributes( { borderStyle: value } )
+                                    setAttributes( { borderWidth: value } )
                                 } }
+                                min={ 0 }
+                                max={ 20 }
                             />
-                            { "none" !== borderStyle &&
-                                <RangeControl
-                                    label={ __( "Thickness (px)" ) }
-                                    value={ borderWidth }
-                                    onChange={ value => {
-                                        setAttributes( { borderWidth: value } )
-                                    } }
-                                    min={ 0 }
-                                    max={ 20 }
-                                />
-                            }
-                            { "none" !== borderStyle &&
-                                <RangeControl
-                                    label={ __( "Rounded Corners (px)" ) }
-                                    value={ borderRadius }
-                                    onChange={ value => {
-                                        setAttributes( { borderRadius: value } )
-                                    } }
-                                    min={ 0 }
-                                    max={ 50 }
-                                />
-                            }
-                            <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ borderColor }
-                                onChange={ ( value ) => setAttributes( { borderColor: value } ) }
-                                allowReset
+                        }
+                        { "none" !== borderStyle &&
+                            <RangeControl
+                                label={ __( "Rounded Corners (px)" ) }
+                                value={ borderRadius }
+                                onChange={ value => {
+                                    setAttributes( { borderRadius: value } )
+                                } }
+                                min={ 0 }
+                                max={ 50 }
                             />
-                        </Fragment> 
-                    }
+                        }
+                        <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: borderColor }} ></span></span></p>
+                        <ColorPalette
+                            value={ borderColor }
+                            onChange={ ( value ) => setAttributes( { borderColor: value } ) }
+                            allowReset
+                        />
+                    </Fragment> 
                     { 'input-button' === layout &&
 
                         <Fragment>
@@ -577,25 +578,63 @@ class UAGBWpSearchEdit extends Component {
             )
 
         }
-        const renderSearchForm = () => {
-
-            return (
-                <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
-                    <div className="uagb-search-form__container" role="tablist">
-                        <input placeholder={ placeholder } className="uagb-search-form__input" type="search" name="s" title="Search" value=""/>
+        const renderButton = () => {
+            
+            if ( 'input-button' === layout ) {
+                
+                return (
                         <button className="uagb-search-submit" type="submit">
-                            <span className="uagb-wp-search-icon-wrap">
+                            <span className="uagb-wp-search-button-icon-wrap">
                                 { renderSVG( 'fas fa-search' ) }
                             </span>
                         </button>
-                    </div>
-                </form>
-            )
+                )
+            }
+
+            return '';
+        }
+        const renderSearchForm = () => {
+            
+            if ( 'input-button' === layout || 'input' === layout ) {
+                
+                return (
+                    <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
+                        <div className="uagb-search-form__container" role="tablist">
+                            <input placeholder={ placeholder } 
+                            className="uagb-search-form__input" type="search" name="s" title="Search"/>
+                            
+                            { renderButton() }
+
+                        </div>
+                    </form>
+                )
+            }
+
+            return '';
+        }
+        const renderIcon = () => {
+            
+            if ( 'icon' === layout ) {
+             
+                return (
+                    <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
+                        <div className="uagb-search-form__container uagb-icon-input-toggle" role="tablist">
+                            <input placeholder={ placeholder } className="uagb-search-form__input"
+                            type="search" name="s" title="Search"/>
+                            <span className="uagb-wp-search-icon-wrap">
+                                { renderSVG( 'fas fa-search' ) }
+                            </span>
+                        </div>
+                    </form>
+                )
+            }
+            
+            return '';
         }
 		return (
 			<div className={ classnames(
                 "uagb-wp-search__outer-wrap",
-                `uagb-block-${ block_id }`,
+                `uagb-block-${ block_id }`
             ) }
             >
             <InspectorControls>
@@ -603,6 +642,7 @@ class UAGBWpSearchEdit extends Component {
                 { stylingSettings() }
             </InspectorControls>
             { renderSearchForm() }
+            { renderIcon() }
             { loadInputGoogleFonts }
             </div>
 		)

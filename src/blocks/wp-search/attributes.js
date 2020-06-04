@@ -143,27 +143,6 @@ const attributes = {
 	inputLineHeightMobile: {
 		type: "number",
 	},
-	boxShadowColor: {
-		type: "string"
-	},
-	boxShadowHOffset : {
-		type: "number",
-		default: 0
-	},
-	boxShadowVOffset : {
-		type: "number",
-		default: 0
-	},
-	boxShadowBlur : {
-		type: "number"
-	},
-	boxShadowSpread : {
-		type: "number"
-	},
-	boxShadowPosition: {
-		type: "string",
-		default: "outset"
-	},
 	inputPaddingTypeMobile: {
 		type: "string",
 		default : "px"
