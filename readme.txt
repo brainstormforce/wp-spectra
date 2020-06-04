@@ -157,6 +157,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.15.2.1 =
+* Fix: Table Of Contents - Removed the dependancy on data attribues for header.
+
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
 
