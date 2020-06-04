@@ -72,6 +72,7 @@ export default function save( props ) {
 		<div className={ classnames(
             "uagb-wp-search__outer-wrap",
             `uagb-block-${ block_id }`,
+            `uagb-layout-${ layout }`
         ) }
         >
             { renderSearchForm() }

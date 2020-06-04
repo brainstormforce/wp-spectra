@@ -630,10 +630,12 @@ class UAGBWpSearchEdit extends Component {
             
             return '';
         }
+        
 		return (
 			<div className={ classnames(
                 "uagb-wp-search__outer-wrap",
-                `uagb-block-${ block_id }`
+                `uagb-block-${ block_id }`,
+                `uagb-layout-${ layout }`
             ) }
             >
             <InspectorControls>
