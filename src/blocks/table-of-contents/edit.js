@@ -5,7 +5,6 @@
 
 import classnames from "classnames"
 import styling from "./styling"
-import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
@@ -17,12 +16,11 @@ import TypographyControl from "../../components/typography"
 
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../components/typography/fontloader"
-import TOC from './table-of-contents';
+import TableOfContents from './toc';
 
-const { select } = wp.data;
 const striptags = require('striptags');
 const { __ } = wp.i18n
-const { withSelect, withDispatch } = wp.data
+const { withSelect } = wp.data
 const { compose } = wp.compose
 
 const {
@@ -96,7 +94,7 @@ class UAGBTableOfContentsEdit extends Component {
 
 	render() {
 
-		const { attributes, setAttributes, isSelected, className, headers } = this.props
+		const { attributes, setAttributes, className, headers } = this.props
 
 		const {
 			align,
@@ -187,7 +185,6 @@ class UAGBTableOfContentsEdit extends Component {
 			headingLineHeight,
 			headingLineHeightTablet,
 			headingLineHeightMobile,
-			headerLinks,
 			mappingHeaders,
 		} = attributes
 
@@ -225,12 +222,12 @@ class UAGBTableOfContentsEdit extends Component {
 
 		// Push Styling to Head.
 		var element = document.getElementById( "uagb-style-toc-" + this.props.clientId )
-		if( null != element && "undefined" != typeof element ) {
+		if( null != element && "undefined" !== element ) {
 			element.innerHTML = styling( this.props )
 		}
 
 		var scrollElement = jQuery( ".uagb-toc__scroll-top" )
-		if( null != scrollElement && "undefined" != typeof scrollElement ) {
+		if( null != scrollElement && "undefined" !== scrollElement ) {
 
 			if ( scrollToTop ) {
 				scrollElement.addClass( "uagb-toc__show-scroll" )
@@ -983,7 +980,7 @@ class UAGBTableOfContentsEdit extends Component {
 							/>
 							{icon_html}
 						</div>
-						<TOC
+						<TableOfContents
 							mappingHeaders={mappingHeaders}
 							headers={headers}
 						/>
@@ -1056,7 +1053,7 @@ export default compose(
 
 		let headers = [];
 
-		if( typeof all_headers != 'undefined' ) {
+		if( all_headers != 'undefined' ) {
 			all_headers.forEach((heading, key) => {
 
 				let heading_attr = heading.attributes
