@@ -1136,8 +1136,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-inline-notice-js' ),
 						'attributes'  => array(
 							'block_id'              => '',
-							'noticeTitle'           => '',
-							'noticeContent'         => '',
 							'textColor'             => '#32373c',
 							'titleColor'            => '#fff',
 							'noticeColor'           => '#000',
