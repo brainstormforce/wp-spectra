@@ -31,10 +31,6 @@
 		type: "string",
 		default: "#fff"
 	},
-	noticeDismiss: {
-		type: 'string',
-		default: '',
-	},
 	icon: {
 		type: "string",
 		default: "fa fa-window-close"

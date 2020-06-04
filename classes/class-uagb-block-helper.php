@@ -31,19 +31,19 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors = array();
 			$m_selectors = array();
-			$selectors = array();
+			$selectors   = array();
 
 			$selectors = array(
-			' h4.uagb-notice-title' => array(
-					'color' => $attr['titleColor'],
+				' h4.uagb-notice-title'         => array(
+					'color'            => $attr['titleColor'],
 					'background-color' => $attr['noticeColor'],
 				),
-			' .uagb-notice-text' => array(
+				' .uagb-notice-text'            => array(
 					'border-color' => $attr['noticeColor'],
-					'color' => $attr['textColor'],
+					'color'        => $attr['textColor'],
 				),
-			' span.uagb-notice-dismiss svg' => array(
-					'fill' => $attr['noticeDismissColor'],
+				' span.uagb-notice-dismiss svg' => array(
+					'fill'  => $attr['noticeDismissColor'],
 					'color' => $attr['noticeDismissColor'],
 				),
 			);

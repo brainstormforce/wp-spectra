@@ -68,7 +68,6 @@ class UAGBInlineNoticeEdit extends Component {
 				titleColor,
 				noticeColor,
 				noticeDismissColor,
-				noticeDismiss,
 				fontSize,
 				noticeAlignment,
 				titleFontFamily,
@@ -100,15 +99,6 @@ class UAGBInlineNoticeEdit extends Component {
 			className,
 			attributes,
 		} = this.props;
-
-		// Notice dismiss options
-		const noticeDismissOptions = [
-			{
-				value: 'uagb-dismissable',
-				label: __( 'Disable' ),
-			},
-			{ value: null, label: __( 'Always Show' ) },
-		];
 
 		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId )
 
@@ -157,24 +147,7 @@ class UAGBInlineNoticeEdit extends Component {
 		const inlineGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
-				<SelectControl
-					label={ __( 'Notice Display', 'atomic-blocks' ) }
-					description={ __(
-						'Do you want the message to always show or dismissible?',
-						'atomic-blocks'
-					) }
-					options={ noticeDismissOptions }
-					value={ noticeDismiss }
-					onChange={ ( value ) =>
-						this.props.setAttributes( {
-							noticeDismiss: value,
-						} )
-					}
-				/>
-				{ noticeDismiss &&
 					<p className="components-base-control__label">{__( "Icon" )}</p>
-				}
-				{ noticeDismiss &&
 					<FontIconPicker
 						icons={svg_icons}
 						renderFunc= {renderSVG}
@@ -184,7 +157,6 @@ class UAGBInlineNoticeEdit extends Component {
 						isMulti={false}
 						noSelectedPlaceholder= { __( "Select Icon" ) }
 					/>
-				}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
@@ -207,10 +179,10 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
-					{ noticeDismiss &&
+					{ icon &&
 					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
 					}
-					{ noticeDismiss &&
+					{ icon &&
 					<ColorPalette
 						value={ noticeDismissColor }
 						onChange={ ( value ) => setAttributes( { noticeDismissColor: value } ) }
@@ -276,7 +248,7 @@ class UAGBInlineNoticeEdit extends Component {
 				`uagb-inline_notice__align-${ noticeAlignment }`,
 				`uagb-block-${ block_id }`
 			) }>
-			{image_icon_html}
+			{ image_icon_html }
 				<RichText
 					tagName="h4"
 					placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }

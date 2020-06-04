@@ -18,7 +18,7 @@ const {
 registerBlockType( "uagb/inline-notice", {
 	title: uagb_blocks_info.blocks["uagb/inline-notice"]["title"],
 	description: uagb_blocks_info.blocks["uagb/inline-notice"]["description"],
-	icon: UAGB_Block_Icons.marketing_button,
+	icon: UAGB_Block_Icons.inline_notice,
 	category: uagb_blocks_info.category,
 	keywords: [
 		__( "inline notice" ),
