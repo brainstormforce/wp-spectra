@@ -5,10 +5,12 @@ window.addEventListener(
 		for ( var item = 0;  item < searchBlocks.length; item++ ) {
             var searchIcon = searchBlocks[item].querySelectorAll( '.uagb-wp-search-icon-wrap' );
             var input = searchBlocks[item].querySelectorAll( '.uagb-search-form__input' );
-            console.log()
+            
             searchIcon[0].addEventListener("click", function() {
-                this.parentElement.getElementsByClassName( 'uagb-search-form__input' )[0].focus();
+                if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {   
+                    this.parentElement.getElementsByClassName( 'uagb-search-form__input' )[0].focus();
                 }
+            }
             );
             input[0].addEventListener("focus", function() {
                     if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {
