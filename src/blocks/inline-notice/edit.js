@@ -169,6 +169,20 @@ class UAGBInlineNoticeEdit extends Component {
 								} )
 							}
 					/>
+					{ noticeDismiss &&
+						<Fragment>
+							<p className="components-base-control__label">{__( "Icon" )}</p>
+							<FontIconPicker
+								icons={svg_icons}
+								renderFunc= {renderSVG}
+								theme="default"
+								value={icon}
+								onChange={ ( value ) => setAttributes( { icon: value } ) }
+								isMulti={false}
+								noSelectedPlaceholder= { __( "Select Icon" ) }
+							/>
+						</Fragment>
+					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
@@ -191,6 +205,7 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
+					<hr className="uagb-editor__separator" />
 					{ noticeDismiss &&
 					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
 					}
@@ -257,6 +272,7 @@ class UAGBInlineNoticeEdit extends Component {
 							max={ 50 }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Content Padding (px)" ) }</h2>
 						<RangeControl
 							label={ UAGB_Block_Icons.vertical_spacing }
