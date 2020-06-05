@@ -4,10 +4,8 @@
 
 import classnames from "classnames"
 import times from "lodash/times"
-import map from "lodash/map"
 import styling from "./styling"
 import memoize from "memize"
-import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"

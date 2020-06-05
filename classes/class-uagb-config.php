@@ -345,6 +345,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'          => false,
+							'inheritFromTheme'		=> false,
 							'textAlign'             => 'left',
 							'titleColor'            => '',
 							'descColor'             => '',
@@ -1228,7 +1229,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'     => false,
+							'inheritFromTheme'     => false,
 							'block_id'         => '',
 							'label'            => '',
 							'link'             => '',
