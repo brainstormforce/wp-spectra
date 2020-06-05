@@ -125,19 +125,19 @@
 	},
 	contentVrPadding: {
 		type: "number",
-		default : 5
+		default : 15
 	},
 	contentHrPadding: {
 		type: "number",
-		default : 5
+		default : 15
 	},
 	titleVrPadding: {
 		type: "number",
-		default : 5
+		default : 15
 	},
 	titleHrPadding: {
 		type: "number",
-		default : 5
+		default : 15
 	},
 }
 
