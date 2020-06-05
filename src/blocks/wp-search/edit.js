@@ -35,6 +35,7 @@ class UAGBWpSearchEdit extends Component {
 
 	constructor() {
         super( ...arguments )
+        this.formPreventDefault = this.formPreventDefault.bind( this )
 	}
 
 	componentDidMount() {
@@ -46,6 +47,11 @@ class UAGBWpSearchEdit extends Component {
 		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId )
 		document.head.appendChild( $style )
     }
+
+    formPreventDefault( e ) {
+        e.preventDefault();
+    }
+    
 	render() {
         const { attributes, setAttributes } = this.props
         const {
@@ -474,7 +480,7 @@ class UAGBWpSearchEdit extends Component {
             if ( 'input-button' === layout || 'input' === layout ) {
                 
                 return (
-                    <form className="uagb-search-wrapper" role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
+                    <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
                         <div className="uagb-search-form__container" role="tablist">
                             <input placeholder={ placeholder } 
                             className="uagb-search-form__input" type="search" name="s" title="Search"/>
@@ -493,7 +499,7 @@ class UAGBWpSearchEdit extends Component {
             if ( 'icon' === layout ) {
              
                 return (
-                    <form className="uagb-search-wrapper" role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
+                    <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
                         <div className="uagb-search-form__container uagb-icon-input-toggle" role="tablist">
                             <input placeholder={ placeholder } className="uagb-search-form__input"
                             type="search" name="s" title="Search"/>
