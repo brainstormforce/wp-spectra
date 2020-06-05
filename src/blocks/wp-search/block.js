@@ -1,5 +1,5 @@
 /**
- * BLOCK: Team
+ * BLOCK: WP-Search
  */
 
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
