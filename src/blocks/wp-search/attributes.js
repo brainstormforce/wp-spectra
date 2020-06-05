@@ -179,42 +179,6 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
-	buttonPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	buttonPaddingTypeTablet: {
-		type: "string",
-		default : "px"
-	},
-	buttonPaddingTypeDesktop: {
-		type: "string",
-		default : "px"
-	},
-	vbuttonPaddingMobile: {
-		type: "number",
-		default : 10
-	},
-	vbuttonPaddingTablet: {
-		type: "number",
-		default : 10
-	},
-	vbuttonPaddingDesktop: {
-		type: "number",
-		default : 10
-	},
-	hbuttonPaddingMobile: {
-		type: "number",
-		default : 10
-	},
-	hbuttonPaddingTablet: {
-		type: "number",
-		default : 10
-	},
-	hbuttonPaddingDesktop: {
-		type: "number",
-		default : 10
-	},
 }
 
 export default attributes

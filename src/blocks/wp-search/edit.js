@@ -98,15 +98,6 @@ class UAGBWpSearchEdit extends Component {
             hinputPaddingMobile,
             hinputPaddingTablet,
             hinputPaddingDesktop,
-            buttonPaddingTypeMobile,
-            buttonPaddingTypeTablet,
-            buttonPaddingTypeDesktop,
-            vbuttonPaddingMobile,
-            vbuttonPaddingTablet,
-            vbuttonPaddingDesktop,
-            hbuttonPaddingMobile,
-            hbuttonPaddingTablet,
-            hbuttonPaddingDesktop,
         } = attributes
         
         var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId )
@@ -395,118 +386,6 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 500 }
                             />
-                            <TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
-							tabs={ [
-								{
-									name: "desktop",
-									title: <Dashicon icon="desktop" />,
-									className: "uagb-desktop-tab uagb-responsive-tabs",
-								},
-								{
-									name: "tablet",
-									title: <Dashicon icon="tablet" />,
-									className: "uagb-tablet-tab uagb-responsive-tabs",
-								},
-								{
-									name: "mobile",
-									title: <Dashicon icon="smartphone" />,
-									className: "uagb-mobile-tab uagb-responsive-tabs",
-								},
-							] }>
-							{
-								( tab ) => {
-									let tabout
-
-									if ( "mobile" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeMobile === "px" } aria-pressed={ buttonPaddingTypeMobile === "px" } onClick={ () => setAttributes( { buttonPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeMobile === "%" } aria-pressed={ buttonPaddingTypeMobile === "%" } onClick={ () => setAttributes( { buttonPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vbuttonPaddingMobile }
-													onChange={ ( value ) => setAttributes( { vbuttonPaddingMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hbuttonPaddingMobile }
-													onChange={ ( value ) => setAttributes( { hbuttonPaddingMobile: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									} else if ( "tablet" === tab.name ) {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeTablet === "px" } aria-pressed={ buttonPaddingTypeTablet === "px" } onClick={ () => setAttributes( { buttonPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeTablet === "%" } aria-pressed={ buttonPaddingTypeTablet === "%" } onClick={ () => setAttributes( { buttonPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vbuttonPaddingTablet }
-													onChange={ ( value ) => setAttributes( { vbuttonPaddingTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hbuttonPaddingTablet }
-													onChange={ ( value ) => setAttributes( { hbuttonPaddingTablet: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									} else {
-										tabout = (
-											<Fragment>
-												<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-													<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeDesktop === "px" } aria-pressed={ buttonPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { buttonPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
-													<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ buttonPaddingTypeDesktop === "%" } aria-pressed={ buttonPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { buttonPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
-												</ButtonGroup>
-												<h2>{ __( "Padding" ) }</h2>
-												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
-													className={ "uagb-margin-control" }
-													value={ vbuttonPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { vbuttonPaddingDesktop: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
-													className={ "uagb-margin-control" }
-													value={ hbuttonPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { hbuttonPaddingDesktop: value } ) }
-													min={ 0 }
-													max={ 100 }
-													allowReset
-												/>
-											</Fragment>
-										)
-									}
-
-									return <div>{ tabout }</div>
-								}
-							}
-						    </TabPanel>
                             <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
                             <ColorPalette
                                 value={ buttonBgColor }
