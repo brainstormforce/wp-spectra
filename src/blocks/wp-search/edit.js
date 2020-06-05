@@ -31,8 +31,6 @@ const {
 	Dashicon,
 } = wp.components
 
-var inputFocus = false;
-
 class UAGBWpSearchEdit extends Component {
 
 	constructor() {

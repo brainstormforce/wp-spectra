@@ -53,7 +53,7 @@ export default function save( props ) {
         if ( 'icon' === layout ) {
          
             return (
-                <form className="uagb-search-wrapper" role="search" action="https://wordpress.test" method="get">
+                <form className="uagb-search-wrapper" role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
                     <div className="uagb-search-form__container uagb-icon-input-toggle" role="tablist">
                         <input placeholder={ placeholder } className="uagb-search-form__input"
                         type="search" name="s" title="Search"/>
