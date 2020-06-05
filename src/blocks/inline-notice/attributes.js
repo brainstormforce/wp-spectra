@@ -17,19 +17,19 @@
 	},
 	textColor: {
 		type: "string",
-		default: "#32373c"
+		default: ""
 	},
 	titleColor: {
 		type: "string",
-		default: "#fff"
+		default: ""
 	},
 	noticeColor: {
 		type: "string",
-		default: "#000"
+		default: "#FFB901"
 	},
 	noticeDismissColor: {
 		type: "string",
-		default: "#fff"
+		default: ""
 	},
 	icon: {
 		type: "string",
@@ -118,6 +118,22 @@
 	descLoadGoogleFonts: {
 		type: "boolean",
 		default: false	
+	},
+	contentVrPadding: {
+		type: "number",
+		default : 5
+	},
+	contentHrPadding: {
+		type: "number",
+		default : 5
+	},
+	titleVrPadding: {
+		type: "number",
+		default : 5
+	},
+	titleHrPadding: {
+		type: "number",
+		default : 5
 	},
 }
 

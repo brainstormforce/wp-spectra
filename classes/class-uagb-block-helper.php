@@ -37,10 +37,18 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' h4.uagb-notice-title'         => array(
 					'color'            => $attr['titleColor'],
 					'background-color' => $attr['noticeColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['titleHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['titleHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 				),
 				' .uagb-notice-text'            => array(
 					'border-color' => $attr['noticeColor'],
 					'color'        => $attr['textColor'],
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
 				),
 				' span.uagb-notice-dismiss svg' => array(
 					'fill'  => $attr['noticeDismissColor'],

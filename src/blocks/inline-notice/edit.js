@@ -8,6 +8,7 @@ import styling from "./styling"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
+import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -29,6 +30,7 @@ const {
 
 const {
 	PanelBody,
+	RangeControl,
 } = wp.components
 
 const {
@@ -88,7 +90,11 @@ class UAGBInlineNoticeEdit extends Component {
 				descLineHeightTablet,
 				descLineHeightMobile,
 				titleLoadGoogleFonts,
-				descLoadGoogleFonts
+				descLoadGoogleFonts,
+				contentVrPadding,
+				contentHrPadding,
+				titleVrPadding,
+				titleHrPadding,
 			},
 			setAttributes,
 			className,
@@ -161,7 +167,7 @@ class UAGBInlineNoticeEdit extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
-					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
+					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: textColor }} ></span></span></p>
 					<ColorPalette
 						value={ textColor }
 						onChange={ ( value ) => setAttributes( { textColor: value } ) }
@@ -204,7 +210,7 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
 						/>
 						<TypographyControl
-							label={ __( "Description" ) }
+							label={ __( "Content" ) }
 							attributes = { attributes }
 							setAttributes = { setAttributes }
 							loadGoogleFonts = { { value: descLoadGoogleFonts, label: 'descLoadGoogleFonts' } }
@@ -219,6 +225,45 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeight = { { value: descLineHeight, label: 'descLineHeight' } }
 							lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
 							lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
+						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Title Padding (px)" ) }</h2>
+						<RangeControl
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-margin-control" }
+							value={ titleVrPadding }
+							onChange={ ( value ) => setAttributes( { titleVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<RangeControl
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-margin-control" }
+							value={ titleHrPadding }
+							onChange={ ( value ) => setAttributes( { titleHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<h2>{ __( "Content Padding (px)" ) }</h2>
+						<RangeControl
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-margin-control" }
+							value={ contentVrPadding }
+							onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<RangeControl
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-margin-control" }
+							value={ contentHrPadding }
+							onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
 						/>
 				</PanelBody>
 			)

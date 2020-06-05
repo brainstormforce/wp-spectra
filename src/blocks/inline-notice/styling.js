@@ -33,6 +33,10 @@ function styling( props ) {
 		descLineHeightType,
 		descLineHeightTablet,
 		descLineHeightMobile,
+		contentVrPadding,
+		contentHrPadding,
+		titleVrPadding,
+		titleHrPadding,
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -47,10 +51,18 @@ function styling( props ) {
 	    "line-height": generateCSSUnit( titleLineHeight, titleFontSizeType ),
 	    "color": titleColor,
 	    "background-color": noticeColor,
+	    "padding-left" : generateCSSUnit( titleHrPadding, "px" ),
+			"padding-right" : generateCSSUnit( titleHrPadding, "px" ),
+			"padding-top" : generateCSSUnit( titleVrPadding, "px" ),
+			"padding-bottom" : generateCSSUnit( titleVrPadding, "px" ),
 		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-text" : {
 		    "border-color": noticeColor,
+		    "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
+			"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
+			"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
+			"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
 		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
