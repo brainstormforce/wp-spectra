@@ -107,6 +107,7 @@ function styling( props ) {
             "padding-bottom": generateCSSUnit( vbuttonPaddingDesktop, buttonPaddingTypeDesktop ),
             "padding-right": generateCSSUnit( hbuttonPaddingDesktop, buttonPaddingTypeDesktop ),
             "padding-left": generateCSSUnit( hbuttonPaddingDesktop, buttonPaddingTypeDesktop ),
+            "border" : 0,
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover' : {
             "background-color" : buttonBgHoverColor,

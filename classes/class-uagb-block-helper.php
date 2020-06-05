@@ -4452,6 +4452,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vbuttonPaddingDesktop'], $attr['buttonPaddingTypeDesktop'] ),
 					'padding-right'    => UAGB_Helper::get_css_value( $attr['hbuttonPaddingDesktop'], $attr['buttonPaddingTypeDesktop'] ),
 					'padding-left'     => UAGB_Helper::get_css_value( $attr['hbuttonPaddingDesktop'], $attr['buttonPaddingTypeDesktop'] ),
+					'border'			=> 0,
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover' => array(
 					'background-color' => $attr['buttonBgHoverColor'],
