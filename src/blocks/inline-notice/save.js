@@ -8,7 +8,6 @@ import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
 const {
 	RichText,
-	InnerBlocks
 } = wp.blockEditor
 
 export default function save( props ) {

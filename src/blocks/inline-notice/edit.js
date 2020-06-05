@@ -159,7 +159,6 @@ class UAGBInlineNoticeEdit extends Component {
 		const inlineGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
-					<p className="components-base-control__label">{__( "Icon" )}</p>
 					<SelectControl
 							label={ __( 'Notice Display' ) }
 							options={ noticeDismissOptions }
@@ -192,12 +191,16 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
+					{ noticeDismiss &&
 					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
+					}
+					{ noticeDismiss &&
 					<ColorPalette
 						value={ noticeDismissColor }
 						onChange={ ( value ) => setAttributes( { noticeDismissColor: value } ) }
 						allowReset
 					/>
+					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Typography" ) }</h2>
 						<TypographyControl
@@ -290,37 +293,37 @@ class UAGBInlineNoticeEdit extends Component {
 				<InspectorControls>
 					{ inlineGeneralSettings() }
 				</InspectorControls>
-			<div className={ classnames(
-				className,
-				"uagb-inline_notice__outer-wrap",
-				`${ noticeDismiss }`,
-				`uagb-inline_notice__align-${ noticeAlignment }`,
-				`uagb-block-${ block_id }`
-			) }
-			data-id= { block_id }
-			>
-			{ image_icon_html }
-				<RichText
-					tagName="h4"
-					placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }
-					keepPlaceholderOnFocus
-					value={ noticeTitle }
-					className='uagb-notice-title'
-					onChange={ ( value ) =>
-						setAttributes( { noticeTitle: value } )
-					}
-				/>
-				<RichText
-					tagName="div"
-					multiline="p"
-					placeholder={ __( 'Add notice text...', 'ultimate-addons-for-gutenberg' ) }
-					value={ noticeContent }
-					className='uagb-notice-text'
-					onChange={ ( value ) =>
-						setAttributes( { noticeContent: value } )
-					}
-				/>
-			</div>
+				<div className={ classnames(
+					className,
+					"uagb-inline_notice__outer-wrap",
+					`${ noticeDismiss }`,
+					`uagb-inline_notice__align-${ noticeAlignment }`,
+					`uagb-block-${ block_id }`
+					) }
+					data-id= { block_id }
+				>
+					{ image_icon_html }
+					<RichText
+						tagName="h4"
+						placeholder={ __( 'Notice Title', 'ultimate-addons-for-gutenberg' ) }
+						keepPlaceholderOnFocus
+						value={ noticeTitle }
+						className='uagb-notice-title'
+						onChange={ ( value ) =>
+							setAttributes( { noticeTitle: value } )
+						}
+					/>
+					<RichText
+						tagName="div"
+						multiline="p"
+						placeholder={ __( 'Add notice text...', 'ultimate-addons-for-gutenberg' ) }
+						value={ noticeContent }
+						className='uagb-notice-text'
+						onChange={ ( value ) =>
+							setAttributes( { noticeContent: value } )
+						}
+					/>
+				</div>
 				{ loadTitleGoogleFonts }
 				{ loadDescriptionGoogleFonts }
 			</Fragment>

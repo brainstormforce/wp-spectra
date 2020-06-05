@@ -8,9 +8,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 
 		var dismissible = element.querySelector( '.uagb-notice-dismiss' );
 
-		console.log(localStorage);
-
-		if ( ! localStorage.getItem( 'notice-' + unique_id ) ) {
+		if ( ! localStorage.getItem( 'uagb-notice-' + unique_id ) ) {
 
 			element.style.display = 'block';
 		}
@@ -18,7 +16,7 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		if ( dismissible ) {
 			dismissible.addEventListener( 'click', function( event ) {
 				event.preventDefault();
-				localStorage.setItem( 'notice-' + unique_id, '1' );
+				localStorage.setItem( 'uagb-notice-' + unique_id, '1' );
 				element.style.display = 'none';
 			} );
 		}

@@ -48,7 +48,7 @@ function styling( props ) {
 	    "font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
 	    "font-weight": titleFontWeight,
 	    "font-family": titleFontFamily,
-	    "line-height": generateCSSUnit( titleLineHeight, titleFontSizeType ),
+	    "line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 	    "color": titleColor,
 	    "background-color": noticeColor,
 	    "padding-left" : generateCSSUnit( titleHrPadding, "px" ),
@@ -69,7 +69,7 @@ function styling( props ) {
 		    "font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 		    "font-weight": descFontWeight,
 		    "font-family": descFontFamily,
-		    "line-height": generateCSSUnit( descLineHeight, descFontSizeType ),
+		    "line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 		    "color": textColor,
 		},
 
@@ -81,28 +81,28 @@ function styling( props ) {
 	mobile_selectors = {
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
 		    "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleLineHeightMobile, titleFontSizeType ),
+		    "line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
 			    "font-size": generateCSSUnit( descFontSizeMobile, descFontSizeType ),
-			    "line-height": generateCSSUnit( descLineHeightMobile, descFontSizeType ),
+			    "line-height": generateCSSUnit( descLineHeightMobile, descLineHeightType ),
 			},
 	}
 
 	tablet_selectors = { 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
 		    "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleLineHeightTablet, titleFontSizeType ),
+		    "line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
 			    "font-size": generateCSSUnit( descFontSizeTablet, descFontSizeType ),
-			    "line-height": generateCSSUnit( descLineHeightTablet, descFontSizeType ),
+			    "line-height": generateCSSUnit( descLineHeightTablet, descLineHeightType ),
 			},
 	}
 
-	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+	var base_selector = `.block-editor-page #wpwrap .uagb-block-${ block_id }`
 
 	var styling_css = generateCSS( selectors, base_selector )
 
