@@ -3,6 +3,10 @@
  */
 
 const attributes = {
+	inheritFromTheme: {
+		type: "boolean",
+		default: false
+	},
 	block_id: {
 		type: "string"
 	},

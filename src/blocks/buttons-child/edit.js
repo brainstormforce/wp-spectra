@@ -36,6 +36,7 @@ const {
 	Popover,
 	ToolbarButton,
 	ToolbarGroup,
+	ToggleControl
 } = wp.components
 class UAGBButtonsChild extends Component {
 	
@@ -105,7 +106,8 @@ class UAGBButtonsChild extends Component {
 			lineHeightType,
 			lineHeightMobile,
 			lineHeightTablet,
-			opensInNewTab
+			opensInNewTab,
+			inheritFromTheme
 		} = attributes;
         var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
 
@@ -142,6 +144,11 @@ class UAGBButtonsChild extends Component {
 					initialOpen={ true }
 					className="uagb__url-panel-body"
 				>
+					<ToggleControl
+						label={ __( "Inherit from Theme" ) }
+						checked={ inheritFromTheme }
+						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+					/>
 					<h2>{  __( " Color Settings" ) }</h2>
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 						activeClass="active-tab"
@@ -582,7 +589,8 @@ class UAGBButtonsChild extends Component {
 				<div className={ classnames(
 				className,
 				"uagb-buttons__outer-wrap",
-				`uagb-block-${ this.props.clientId }`
+				`uagb-block-${ this.props.clientId }`,
+				( inheritFromTheme ) ? "wp-block-button" : null
 				) }>
 					<div className="uagb-button__wrapper">
 						<div className="uagb-buttons-repeater uagb-button__wrapper">
@@ -594,7 +602,7 @@ class UAGBButtonsChild extends Component {
 									setAttributes( { label: value })
 								} }
 								allowedFormats={ [ "bold", "italic", "strikethrough" ] }
-								className='uagb-button__link'
+								className={classnames( 'uagb-button__link', ( inheritFromTheme ) ? "wp-block-button__link" : null ) }
 								rel ="noopener noreferrer"
 								keepPlaceholderOnFocus
 							/>	
