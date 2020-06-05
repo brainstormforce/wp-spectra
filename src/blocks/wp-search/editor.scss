@@ -3,6 +3,7 @@
     .uagb-search-wrapper .uagb-search-form__container {
         display: flex;
         width: fit-content;
+        overflow: hidden;
         &.uagb-icon-input-toggle {
             
             position: absolute;
