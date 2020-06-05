@@ -76,10 +76,6 @@ function styling( props ) {
     var mobile_selectors = {}
    
     selectors = {
-        ' .uagb-search-wrapper .uagb-search-form__container' : {
-
-            "border-radius" : generateCSSUnit( borderRadius, 'px' ),
-        },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' : {
             "width" : generateCSSUnit( buttonWidth, 'px' ),
             "background-color" : buttonBgColor,
@@ -118,6 +114,16 @@ function styling( props ) {
         }
     }
 
+    if ( 'input' !== layout ) {
+        selectors[' .uagb-search-wrapper .uagb-search-form__container'] = {
+            "border-style" : borderStyle,
+            "border-width" : generateCSSUnit( borderWidth, 'px' ),
+            "border-right-width" : generateCSSUnit( inputBorderRightWidth, 'px' ),
+            "border-color" : borderColor,
+            "outline" : "unset",
+            "border-radius" : generateCSSUnit( borderRadius, 'px' ),
+        }
+    }
     if ( 'icon' === layout ) {
 
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = {
@@ -128,10 +134,6 @@ function styling( props ) {
             "line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
             "font-family": inputFontFamily,
             "font-weight": inputFontWeight,
-            "border-style" : borderStyle,
-            "border-width" : generateCSSUnit( borderWidth, 'px' ),
-            "border-right-width" : generateCSSUnit( inputBorderRightWidth, 'px' ),
-            "border-color" : borderColor,
             "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
@@ -144,17 +146,33 @@ function styling( props ) {
         }
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = {
             "background-color": inputBgColor,
-            "border-style" : borderStyle,
-            "border-width" : generateCSSUnit( borderWidth, 'px' ),
-            "border-left-width" : '0px',
-            "border-color" : borderColor,
             "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
             "transition" : "all .5s",
         }
     }
-    if ( 'icon' !== layout ) {
+    if ( 'input-button' === layout ) {
+
+        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = {
+            "width": generateCSSUnit( inputSize, 'px' ),
+            "color": textColor,
+            "background-color": inputBgColor,
+            "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
+            "line-height" : generateCSSUnit( inputLineHeight, inputLineHeightType ),
+            "font-family": inputFontFamily,
+            "font-weight": inputFontWeight,
+            "outline" : "unset",
+            "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "transition" : "all .5s",
+            "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS  
+        }
+    }
+    if ( 'input' === layout ) {
+
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = {
             "width": generateCSSUnit( inputSize, 'px' ),
             "color": textColor,
@@ -167,6 +185,9 @@ function styling( props ) {
             "border-width" : generateCSSUnit( borderWidth, 'px' ),
             "border-right-width" : generateCSSUnit( inputBorderRightWidth, 'px' ),
             "border-color" : borderColor,
+            "outline" : "unset",
+            "border-radius" : generateCSSUnit( borderRadius, 'px' ),
+            "outline" : "unset",
             "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),

@@ -1,24 +1,27 @@
-[data-type="uagb/wp-search"] .uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container {
-    display: flex;
-    width: fit-content;
-    &.uagb-icon-input-toggle {
-        
-        position: absolute;
-        right: 0;
-        &.wp-search-active {
-            .uagb-search-form__input {
-                right: 0;
-                position: relative;            
+[data-type="uagb/wp-search"] .uagb-wp-search__outer-wrap {
+    min-height: 10px;
+    .uagb-search-wrapper .uagb-search-form__container {
+        display: flex;
+        width: fit-content;
+        &.uagb-icon-input-toggle {
+            
+            position: absolute;
+            right: 0;
+            &.wp-search-active {
+                .uagb-search-form__input {
+                    right: 0;
+                    position: relative;            
+                }
             }
-        }
-        .uagb-search-form__input {
+            .uagb-search-form__input {
 
-            width: 0;
-            padding: 0;
-            border-style: none;
-        }
-        .uagb-wp-search-icon-wrap {
-            align-items: center;
+                width: 0;
+                padding: 0;
+                border-style: none;
+            }
+            .uagb-wp-search-icon-wrap {
+                align-items: center;
+            }
         }
     }
 }
