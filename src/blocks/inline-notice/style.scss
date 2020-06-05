@@ -23,7 +23,7 @@
         width: 100%;
         font-family: inherit;
         font-size: inherit;
-        display: inline-block
+       display: inline-block
     }
     .uagb-notice-text{
         padding: 1em;
@@ -48,3 +48,6 @@
     }
 }
 
+body:not(.wp-admin) .wp-block-uagb-inline-notice.uagb-dismissable {
+    display: none;
+}

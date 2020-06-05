@@ -21,11 +21,12 @@ export default function save( props ) {
 		noticeContent,
 		noticeAlignment,
 		icon,
+		noticeDismiss,
 	} = attributes
 
 	let image_icon_html = ''
 
-	if ( icon ) {
+	if ( noticeDismiss ) {
 		image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
 	}
 
@@ -34,9 +35,12 @@ export default function save( props ) {
 		<div className={ classnames(
 			className,
 			"uagb-inline_notice__outer-wrap",
+			`${ noticeDismiss }`,
 			`uagb-inline_notice__align-${ noticeAlignment }`,
 			`uagb-block-${ block_id }`
-		) }>
+		) }
+		data-id= { block_id }
+		>
 			{image_icon_html}
 			<RichText.Content
 				value={ noticeTitle }

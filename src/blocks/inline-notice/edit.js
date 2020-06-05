@@ -31,6 +31,7 @@ const {
 const {
 	PanelBody,
 	RangeControl,
+	SelectControl,
 } = wp.components
 
 const {
@@ -62,6 +63,7 @@ class UAGBInlineNoticeEdit extends Component {
 				icon,
 				noticeTitle,
 				noticeContent,
+				noticeDismiss,
 				textColor,
 				titleColor,
 				noticeColor,
@@ -100,6 +102,15 @@ class UAGBInlineNoticeEdit extends Component {
 			className,
 			attributes,
 		} = this.props;
+
+		// Notice dismiss options
+		const noticeDismissOptions = [
+			{ value: '', label: __( 'Always allow' ) },
+			{
+				value: 'uagb-dismissable',
+				label: __( 'Dismissible' ),
+			},
+		];
 
 		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId )
 
@@ -141,7 +152,7 @@ class UAGBInlineNoticeEdit extends Component {
 
 		let image_icon_html = ''
 
-		if ( icon ) {
+		if ( noticeDismiss ) {
 			image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
 		}
 
@@ -149,14 +160,15 @@ class UAGBInlineNoticeEdit extends Component {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
 					<p className="components-base-control__label">{__( "Icon" )}</p>
-					<FontIconPicker
-						icons={svg_icons}
-						renderFunc= {renderSVG}
-						theme="default"
-						value={icon}
-						onChange={ ( value ) => setAttributes( { icon: value } ) }
-						isMulti={false}
-						noSelectedPlaceholder= { __( "Select Icon" ) }
+					<SelectControl
+							label={ __( 'Notice Display' ) }
+							options={ noticeDismissOptions }
+							value={ noticeDismiss }
+							onChange={ ( value ) =>
+								this.props.setAttributes( {
+									noticeDismiss: value,
+								} )
+							}
 					/>
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
@@ -180,16 +192,12 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
-					{ icon &&
 					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
-					}
-					{ icon &&
 					<ColorPalette
 						value={ noticeDismissColor }
 						onChange={ ( value ) => setAttributes( { noticeDismissColor: value } ) }
 						allowReset
 					/>
-					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Typography" ) }</h2>
 						<TypographyControl
@@ -285,9 +293,12 @@ class UAGBInlineNoticeEdit extends Component {
 			<div className={ classnames(
 				className,
 				"uagb-inline_notice__outer-wrap",
+				`${ noticeDismiss }`,
 				`uagb-inline_notice__align-${ noticeAlignment }`,
 				`uagb-block-${ block_id }`
-			) }>
+			) }
+			data-id= { block_id }
+			>
 			{ image_icon_html }
 				<RichText
 					tagName="h4"

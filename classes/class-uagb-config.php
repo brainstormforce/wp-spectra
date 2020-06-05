@@ -1169,8 +1169,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'descLoadGoogleFonts'   => '',
 							'titleHrPadding'        => '',
 							'titleVrPadding'        => '',
-							'contentHrPadding'		=> '',
-							'contentVrPadding'		=> '',
+							'contentHrPadding'      => '',
+							'contentVrPadding'      => '',
 						),
 					),
 					'uagb/marketing-button'   => array(

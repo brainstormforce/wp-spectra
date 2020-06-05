@@ -15,6 +15,10 @@
 		type: "string",
 		default: "",
 	},
+	noticeDismiss: {
+		type: "string",
+		default: "",
+	},
 	textColor: {
 		type: "string",
 		default: ""
