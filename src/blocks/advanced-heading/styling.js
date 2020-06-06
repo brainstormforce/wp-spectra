@@ -20,7 +20,6 @@ function styling( props ) {
 		separatorColor,
 		separatorSpace,
 		subHeadingColor,
-		subHeadSpace,
 		headFontFamily,
 		headFontWeight,
 		headFontSize,
@@ -98,9 +97,9 @@ function styling( props ) {
 		"line-height": generateCSSUnit( subHeadLineHeightMobile, subHeadLineHeightType ),
 	}
 
-	var base_selector = `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId }`
+	var base_selector = `.block-editor-page #wpwrap #uagb-adv-heading-${ props.clientId.substr( 2, 9 ) }`
 	if ( classMigrate ) {
-		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId }`
+		base_selector = `.block-editor-page #wpwrap .uagb-block-${ props.clientId.substr( 2, 9 ) }`
 	}
 
 	var styling_css = generateCSS( selectors, base_selector )
