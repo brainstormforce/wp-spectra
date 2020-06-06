@@ -53,7 +53,7 @@ class UAGBAdvancedHeading extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId.substr( 2, 9 ) } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
@@ -63,12 +63,12 @@ class UAGBAdvancedHeading extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 2, 9 ) )
+		$style.setAttribute( "id", "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId.substr( 2, 9 ) )
+		var element = document.getElementById( "uagb-adv-heading-style-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
@@ -351,7 +351,7 @@ class UAGBAdvancedHeading extends Component {
 				<div
 					className={ classnames(
 						className,
-						`uagb-block-${this.props.clientId.substr( 2, 9 )}`,					
+						`uagb-block-${this.props.clientId.substr( 0, 8 )}`,					
 					) }
 				>
 					<RichText
