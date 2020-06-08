@@ -233,6 +233,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'string',
 					'default' => 'post',
 				),
+				'postDisplaytext'                 => array(
+					'type'    => 'string',
+					'default' => 'No post found!',
+				),
 				'taxonomyType'            => array(
 					'type'    => 'string',
 					'default' => 'category',
@@ -672,7 +676,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		public function get_post_html( $attributes, $query, $layout ) {
 
 			$attributes['post_type'] = $layout;
-
+			
 			$wrap = array(
 				'uagb-post__items uagb-post__columns-' . $attributes['columns'],
 				'is-' . $layout,
@@ -754,6 +758,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				?>
 				</div>
 				<?php
+				$post_not_found = $query->found_posts;
+
+				if ( 0 === $post_not_found ){
+					echo $attributes['postDisplaytext'];
+				}
+				
 				if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
 					?>
 					<div class="uagb-post-pagination-wrap">

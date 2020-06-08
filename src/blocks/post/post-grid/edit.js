@@ -234,6 +234,7 @@ class UAGBPostGrid extends Component {
 			paginationAlignment,
 			paginationPrevText,
 			paginationNextText,
+			postDisplaytext,
 		} = attributes
 
 		const hoverSettings = (
@@ -503,7 +504,13 @@ class UAGBPostGrid extends Component {
 							max={ 100 }
 						/>
                 	}
-					
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
 				</PanelBody>
 				{ postPagination == true && 
 					<PanelBody title={ __( "Pagination" ) } initialOpen={ false }>
@@ -1001,7 +1008,7 @@ class UAGBPostGrid extends Component {
 					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>

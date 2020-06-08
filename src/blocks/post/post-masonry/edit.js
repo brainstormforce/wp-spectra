@@ -176,6 +176,7 @@ class UAGBPostMasonry extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
+			postDisplaytext,
 		} = attributes
 
 		const hoverSettings = (
@@ -422,6 +423,13 @@ class UAGBPostMasonry extends Component {
 							}
 						}
 					</TabPanel>
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
 				</PanelBody>
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
@@ -823,7 +831,7 @@ class UAGBPostMasonry extends Component {
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>
