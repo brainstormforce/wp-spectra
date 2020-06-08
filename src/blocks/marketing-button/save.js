@@ -46,8 +46,6 @@ export default function save( props ) {
 								{ renderSVG( icon ) }
 							</div>
 						}
-						{ console.log('save page') }
-						{ console.log(titleTag) }
 						<RichText.Content
 							value={ heading }
 							tagName={ titleTag }

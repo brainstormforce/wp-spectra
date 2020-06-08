@@ -141,7 +141,7 @@ const attributes = {
 	// Label and Sub Label
 	heading: {
 		source: "html",
-		selector: "h6",
+		selector: "h1,h2,h3,h4,h5,h6,p,span",
 		default: "Subscribe Now"
 	},
 	prefix: {

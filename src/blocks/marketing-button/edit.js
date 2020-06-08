@@ -59,7 +59,7 @@ class UAGBMarketingButtonEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-marketing-btn-" + this.props.clientId )
 		document.head.appendChild( $style )
-		
+
 	}
 	
 
@@ -675,8 +675,6 @@ class UAGBMarketingButtonEdit extends Component {
 										{ renderSVG( icon ) }
 									</div>
 								}
-								{ console.log('edit page') }
-								{ console.log(titleTag) }
 								<RichText
 									placeholder={ __( "Add Button Title…" ) }
 									value={ heading }
