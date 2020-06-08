@@ -1,6 +1,9 @@
 /**
  * External dependencies
  */
+import isUndefined from "lodash/isUndefined"
+import pickBy from "lodash/pickBy"
+import map from "lodash/map"
 import classnames from "classnames"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -29,6 +32,7 @@ const { Component, Fragment } = wp.element
 
 const { __ } = wp.i18n
 const { dateI18n } = wp.date
+const { decodeEntities } = wp.htmlEntities
 
 const {
 	withSelect,
@@ -44,6 +48,9 @@ const {
 	ToggleControl,
 	TabPanel,
 	TextControl,
+	ButtonGroup,
+	Button,
+	Dashicon,
 } = wp.components
 
 const {
@@ -85,7 +92,7 @@ class UAGBTimeline extends Component {
 
 	render() {
 
-		const { attributes, categoriesList, setAttributes, taxonomyList, className } = this.props
+		const { attributes, categoriesList, setAttributes, latestPosts, focus, taxonomyList, className } = this.props
 
 		const {
 			headingColor,
@@ -109,6 +116,8 @@ class UAGBTimeline extends Component {
 			headLineHeightTablet,
 			headLineHeightMobile,
 			headLoadGoogleFonts,
+			timelineItem,
+			postNumber,
 			timelinAlignment,
 			arrowlinAlignment,
 			subHeadFontSizeType,
@@ -151,10 +160,12 @@ class UAGBTimeline extends Component {
 			displayPostImage,
 			displayPostLink,
 			align,
+			postLayout,
 			order,
 			orderBy,
 			categories,
 			postsToShow,
+			width,
 			imageSize,
 			readMoreText,
 			ctaBackground,
@@ -191,6 +202,7 @@ class UAGBTimeline extends Component {
 			borderRadius,
 			bgPadding,
 			contentPadding,
+			block_id,
 			iconFocus,
 			iconBgFocus,
 			stack,
@@ -229,6 +241,11 @@ class UAGBTimeline extends Component {
 			renderFunc: renderSVG,
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
+
+		const sizeTypes = [
+			{ key: "px", name: __( "px" ) },
+			{ key: "em", name: __( "em" ) },
+		]
 
 		let loadHeadGoogleFonts
 		let loadSubHeadGoogleFonts
@@ -916,7 +933,7 @@ class UAGBTimeline extends Component {
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap",
-					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
+					`uagb-block-${ this.props.clientId }`
 				) }>
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
@@ -944,9 +961,9 @@ class UAGBTimeline extends Component {
 
 	componentDidMount() {
 		//Store lient id.
-		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+		this.props.setAttributes( { block_id: this.props.clientId } )
 
-		var id = this.props.clientId.substr( 0, 8 )
+		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
@@ -956,24 +973,18 @@ class UAGBTimeline extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-timeline-style-" + id )
+		$style.setAttribute( "id", "uagb-timeline-style-" + this.props.clientId )
 		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
-		var id = this.props.clientId.substr( 0, 8 )
+		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
-
-		var element = document.getElementById( "uagb-timeline-style-" + id )
-
-		if( null !== element && undefined !== element ) {
-			element.innerHTML = contentTimelineStyle( this.props )
-		}
 	}
 
 	/*  Js for timeline line and inner line filler*/
@@ -1107,13 +1118,23 @@ class UAGBTimeline extends Component {
 	/* Render output at backend */
 	get_content(){
 
-		const { attributes, latestPosts } = this.props
+		const { attributes, setAttributes, latestPosts, mergeBlocks,insertBlocksAfter,onReplace } = this.props
 
 		const {
 			timelinAlignment,
+			arrowlinAlignment,
+			displayPostDate,
 			postsToShow,
 			contentPadding,
+			align,
 		} = attributes
+
+
+		// Add CSS.
+		var element = document.getElementById( "uagb-timeline-style-" + this.props.clientId )
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = contentTimelineStyle( this.props )
+		}
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 

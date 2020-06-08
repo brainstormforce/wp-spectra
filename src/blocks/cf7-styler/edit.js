@@ -1065,7 +1065,7 @@ class UAGBCF7 extends Component {
 		$(".wpcf7-submit").click( function(event) {
 			event.preventDefault()
 		})
-		var element = document.getElementById( "uagb-cf7-style-" + this.props.clientId.substr( 0, 8 ) )
+		var element = document.getElementById( "uagb-cf7-styler-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )

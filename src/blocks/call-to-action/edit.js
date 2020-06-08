@@ -731,7 +731,7 @@ class UAGBCallToAction extends Component {
 		var element = document.getElementById( "uagb-cta-style-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
-			element.innerHTML = styling( this.props )
+			element.innerHTML = CtaStyle( this.props )
 		}
 	}
 
