@@ -219,29 +219,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Adds Google fonts for Inline Notice block.
-		 *
-		 * @since x.x.x
-		 * @param array $attr the blocks attr.
-		 */
-		public static function blocks_inline_notice_gfont( $attr ) {
-
-			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
-			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
-			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
-			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
-
-			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
-			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
-			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
-			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
-
-			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
-			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
-		}
-
-
-		/**
 		 * Adds Google fonts for CF7 Styler block.
 		 *
 		 * @since 1.10.0
