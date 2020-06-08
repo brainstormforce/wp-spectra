@@ -20,15 +20,12 @@ const attributes = {
     },
     textColor : {
         type : "string",
-        default: "#eee"
     },
     placeholderColor : {
         type : "string",
-        default: "#eee"
     },
     inputBgColor : {
         type : "string",
-        default: "#eee"
     },
     boxShadowColor: {
 		type: "string"
@@ -69,19 +66,19 @@ const attributes = {
     },
     buttonBgColor: {
 		type: "string",
-		default: "#3a3a3a"
+		default: "#eeeeee"
     },
     buttonBgHoverColor: {
 		type: "string",
-		default: "#3a3a3a"
+		default: "#eeeeee"
     },
     buttonIconColor: {
 		type: "string",
-		default: "#eee"
+		default: "#313131"
     },
     buttonIconHoverColor: {
 		type: "string",
-		default: "#eee"
+		default: "#313131"
 	},
     buttonWidth: {
 		type: "number",
@@ -93,15 +90,15 @@ const attributes = {
 	},    
     iconColor: {
 		type: "string",
-		default: "#eee"
+		default: "#cf2e2e"
     },
     iconHoverColor: {
 		type: "string",
-		default: "#eee"
+		default: "#cf2e2e"
     },
     iconSize: {
 		type: "number",
-		default : 15
+		default : 20
 	},
 	inputloadGoogleFonts: {
 		type: "boolean",
@@ -178,6 +175,14 @@ const attributes = {
 	hinputPaddingDesktop: {
 		type: "number",
 		default : 10
+	},
+	inheritButtonColors: {
+		type: "boolean",
+		default : true
+	},
+	inheritButtonIconColors: {
+		type: "boolean",
+		default : true
 	},
 }
 

@@ -51,6 +51,7 @@ function styling( props ) {
         hinputPaddingMobile,
         hinputPaddingTablet,
         hinputPaddingDesktop,
+        inheritButtonColors,
     } = props.attributes
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -90,15 +91,12 @@ function styling( props ) {
         "border-radius" : generateCSSUnit( borderRadius, 'px' ),
         "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
     }
+    
     selectors = {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' : {
             "width" : generateCSSUnit( buttonWidth, 'px' ),
-            "background-color" : buttonBgColor,
             "padding": 0,
             "border" : 0,
-        },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover' : {
-            "background-color" : buttonBgHoverColor,
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' : {
             "color": placeholderColor
@@ -144,6 +142,15 @@ function styling( props ) {
         selectors[' .uagb-search-wrapper .uagb-search-form__container'] = boxCSS
     }
     
+    if ( ! inheritButtonColors ) {
+        selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = {
+            "background-color" : buttonBgColor,
+        }
+        selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = {
+            "background-color" : buttonBgHoverColor,
+        }
+    }
+
     mobile_selectors = {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' : {
             "font-size" : generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),

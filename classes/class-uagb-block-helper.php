@@ -4447,12 +4447,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' => array(
 					'width'            => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),
-					'background-color' => $attr['buttonBgColor'],
 					'padding'          => 0,
 					'border'           => 0,
-				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover' => array(
-					'background-color' => $attr['buttonBgHoverColor'],
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' => array(
 					'color' => $attr['placeholderColor'],
@@ -4494,6 +4490,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
 				$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
+			}
+			if ( ! $attr['inheritButtonColors'] ) {
+
+				$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = array(
+					"background-color" => $attr['buttonBgColor'],
+				);
+				$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = array(
+					"background-color" => $attr['buttonBgHoverColor'],
+				);
 			}
 
 			$m_selectors = array(

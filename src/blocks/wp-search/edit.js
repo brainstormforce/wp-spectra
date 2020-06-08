@@ -28,7 +28,8 @@ const {
     TabPanel,
     ButtonGroup,
 	Button,
-	Dashicon,
+    Dashicon,
+    ToggleControl
 } = wp.components
 
 class UAGBWpSearchEdit extends Component {
@@ -102,6 +103,7 @@ class UAGBWpSearchEdit extends Component {
             hinputPaddingMobile,
             hinputPaddingTablet,
             hinputPaddingDesktop,
+            inheritButtonColors
         } = attributes
         
         var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId )
@@ -390,18 +392,27 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 500 }
                             />
-                            <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ buttonBgColor }
-                                onChange={ ( value ) => setAttributes( { buttonBgColor: value } ) }
-                                allowReset
-                            />
-                            <p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ buttonBgHoverColor }
-                                onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
-                                allowReset
-                            />
+                            <ToggleControl
+								label={ __( "Inherit Colors From Theme" ) }
+								checked={ inheritButtonColors }
+								onChange={ ( value ) => setAttributes( { inheritButtonColors: ! inheritButtonColors } ) }
+							/>
+                            { ! inheritButtonColors && 
+                                <Fragment>
+                                    <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
+                                    <ColorPalette
+                                        value={ buttonBgColor }
+                                        onChange={ ( value ) => setAttributes( { buttonBgColor: value } ) }
+                                        allowReset
+                                    />
+                                    <p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
+                                    <ColorPalette
+                                        value={ buttonBgHoverColor }
+                                        onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
+                                        allowReset
+                                    />
+                                </Fragment>
+                            }
                             <hr className="uagb-editor__separator" />
                             <h2>{ __( "Icon" ) }</h2>
                             <RangeControl
@@ -465,7 +476,7 @@ class UAGBWpSearchEdit extends Component {
             if ( 'input-button' === layout ) {
                 
                 return (
-                        <button className="uagb-search-submit" type="submit">
+                        <button className="uagb-search-submit wp-block-button__link" type="submit">
                             <span className="uagb-wp-search-button-icon-wrap">
                                 { renderSVG( 'fas fa-search' ) }
                             </span>
@@ -481,7 +492,7 @@ class UAGBWpSearchEdit extends Component {
                 
                 return (
                     <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
-                        <div className="uagb-search-form__container" role="tablist">
+                        <div className="uagb-search-form__container wp-block-button" role="tablist">
                             <input placeholder={ placeholder } 
                             className="uagb-search-form__input" type="search" name="s" title="Search"/>
                             
