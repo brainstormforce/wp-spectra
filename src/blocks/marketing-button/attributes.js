@@ -215,7 +215,6 @@ const attributes = {
 	},
 	titleTag: {
 		type: "string",
-		default: "h5"
 	},
 	// Prefix Font Family
 	prefixLoadGoogleFonts: {

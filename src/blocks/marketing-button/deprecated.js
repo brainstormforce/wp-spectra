@@ -26,8 +26,7 @@ const deprecated = [
 				heading,
 				prefix,
 				link,
-				linkTarget,
-				titleTag
+				linkTarget
 			} = props.attributes
 
 			let target = ( linkTarget ) ? "_blank" : ""
@@ -51,7 +50,7 @@ const deprecated = [
 								}
 								<RichText.Content
 									value={ heading }
-									tagName= { titleTag }
+									tagName='h6'
 									className='uagb-marketing-btn__title'
 								/>
 							</div>

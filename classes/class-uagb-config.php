@@ -1184,7 +1184,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'titleLineHeight'        => '',
 							'titleLineHeightTablet'  => '',
 							'titleLineHeightMobile'  => '',
-							'titleTag'				 => 'h5',
+							'titleTag'				 => '',
 							'prefixLoadGoogleFonts'  => false,
 							'prefixFontFamily'       => '',
 							'prefixFontWeight'       => '',
