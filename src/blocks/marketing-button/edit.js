@@ -59,10 +59,11 @@ class UAGBMarketingButtonEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-marketing-btn-" + this.props.clientId )
 		document.head.appendChild( $style )
+		
 	}
+	
 
 	render() {
-
 		const { attributes, setAttributes, isSelected, className } = this.props
 
 		const {
@@ -674,10 +675,12 @@ class UAGBMarketingButtonEdit extends Component {
 										{ renderSVG( icon ) }
 									</div>
 								}
+								{ console.log('edit page') }
+								{ console.log(titleTag) }
 								<RichText
 									placeholder={ __( "Add Button Title…" ) }
 									value={ heading }
-									tagName= { attributes.titleTag }
+									tagName= { titleTag }
 									onChange={ ( value ) => setAttributes( { heading: value } ) }
 									className='uagb-marketing-btn__title'
 									onRemove={ () => this.props.onReplace( [] ) }
