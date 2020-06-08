@@ -213,6 +213,10 @@ const attributes = {
 	titleLineHeightMobile: {
 		type: "number",
 	},
+	titleTag: {
+		type: "string",
+		default: "h5"
+	},
 	// Prefix Font Family
 	prefixLoadGoogleFonts: {
 		type: "boolean",

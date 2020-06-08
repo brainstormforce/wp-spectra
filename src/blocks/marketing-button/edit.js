@@ -126,6 +126,7 @@ class UAGBMarketingButtonEdit extends Component {
 			titleLineHeight,
 			titleLineHeightTablet,
 			titleLineHeightMobile,
+			titleTag,
 			prefixLoadGoogleFonts,
 			prefixFontFamily,
 			prefixFontWeight,
@@ -636,6 +637,26 @@ class UAGBMarketingButtonEdit extends Component {
 							</Fragment>
 						) }
 					</PanelBody>
+
+					{/* Typography editing section */}
+					<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
+						<h2>{ __( "Title" ) }</h2>
+						<SelectControl
+							label={ __( "Title Tag" ) }
+							value={ titleTag }
+							onChange={ ( value ) => setAttributes( { titleTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+								{ value: "span", label: __( "span" ) },
+								{ value: "p", label: __( "p" ) },
+							] }
+						/>
+					</PanelBody>
 				</InspectorControls>
 				<div className={ classnames(
 					className,
@@ -656,7 +677,7 @@ class UAGBMarketingButtonEdit extends Component {
 								<RichText
 									placeholder={ __( "Add Button Title…" ) }
 									value={ heading }
-									tagName='h6'
+									tagName= { attributes.titleTag }
 									onChange={ ( value ) => setAttributes( { heading: value } ) }
 									className='uagb-marketing-btn__title'
 									onRemove={ () => this.props.onReplace( [] ) }
