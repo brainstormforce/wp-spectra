@@ -37,6 +37,9 @@ class UAGBWpSearchEdit extends Component {
 	constructor() {
         super( ...arguments )
         this.formPreventDefault = this.formPreventDefault.bind( this )
+        this.state = {
+			isFocused: "false",
+		}
 	}
 
 	componentDidMount() {
@@ -48,7 +51,20 @@ class UAGBWpSearchEdit extends Component {
 		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId )
 		document.head.appendChild( $style )
     }
+    componentDidUpdate(prevProps, prevState) {
 
+		if ( ! this.props.isSelected && prevProps.isSelected && this.state.isFocused ) {
+			this.setState( {
+				isFocused: "false",
+			} )
+		}
+		if ( this.props.isSelected && ! prevProps.isSelected ) {
+
+			this.setState( {
+				isFocused: true,
+			} )
+		}
+	}
     formPreventDefault( e ) {
         e.preventDefault();
     }
@@ -511,7 +527,11 @@ class UAGBWpSearchEdit extends Component {
              
                 return (
                     <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
-                        <div className="uagb-search-form__container uagb-icon-input-toggle" role="tablist">
+                        <div className={ classnames(
+                                "uagb-search-form__container",
+                                "uagb-icon-input-toggle",
+                                ( this.props.isSelected &&  ( false !== this.state.isFocused ) ) ? "wp-search-active" : ""
+                            ) } role="tablist">
                             <input placeholder={ placeholder } className="uagb-search-form__input"
                             type="search" name="s" title="Search"/>
                             <span className="uagb-wp-search-icon-wrap">
