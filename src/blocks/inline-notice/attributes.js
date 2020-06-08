@@ -19,6 +19,14 @@
 		type: "string",
 		default: "",
 	},
+	noticeDelete: {
+		type: "string",
+		default: "none",
+	},
+	noticeUpdate: {
+		type: "string",
+		default: "",
+	},
 	textColor: {
 		type: "string",
 		default: ""

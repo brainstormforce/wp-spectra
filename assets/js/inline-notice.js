@@ -6,6 +6,8 @@ document.addEventListener( 'DOMContentLoaded', function() {
 	notices.forEach( function( element ) {
 		var unique_id = element.getAttribute( 'data-id' );
 
+		var delete_local_storage = element.getAttribute( 'data-delete' );
+
 		var dismissible = element.querySelector( '.uagb-notice-dismiss' );
 
 		if ( ! localStorage.getItem( 'uagb-notice-' + unique_id ) ) {
@@ -14,10 +16,16 @@ document.addEventListener( 'DOMContentLoaded', function() {
 		}
 
 		if ( dismissible ) {
+			if ( 'deleteThis' === delete_local_storage ){
+				localStorage.removeItem( 'uagb-notice-' + unique_id );
+			} else if( 'deleteAll' === delete_local_storage ) {
+				localStorage.clear();
+			} else{
+				localStorage.setItem( 'uagb-notice-' + unique_id, '1' );
+			}
 			dismissible.addEventListener( 'click', function( event ) {
 				event.preventDefault();
-				localStorage.setItem( 'uagb-notice-' + unique_id, '1' );
-				element.style.display = 'none';
+					element.style.display = 'none';
 			} );
 		}
 	} );

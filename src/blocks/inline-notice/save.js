@@ -21,6 +21,7 @@ export default function save( props ) {
 		noticeAlignment,
 		icon,
 		noticeDismiss,
+		noticeDelete,
 	} = attributes
 
 	let image_icon_html = ''
@@ -39,6 +40,7 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`
 		) }
 		data-id= { block_id }
+		data-delete= { noticeDelete }
 		>
 			{image_icon_html}
 			<RichText.Content

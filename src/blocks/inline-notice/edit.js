@@ -64,6 +64,7 @@ class UAGBInlineNoticeEdit extends Component {
 				noticeTitle,
 				noticeContent,
 				noticeDismiss,
+				noticeDelete,
 				textColor,
 				titleColor,
 				noticeColor,
@@ -110,6 +111,13 @@ class UAGBInlineNoticeEdit extends Component {
 				value: 'uagb-dismissable',
 				label: __( 'Dismissible' ),
 			},
+		];
+
+		// Notice dismiss options
+		const noticeDeleteOptions = [
+			{ value: 'none', label: __( 'None' ) },
+			{ value: 'deleteAll', label: __( 'Delete for All' ) },
+			{ value: 'deleteThis', label: __( 'Delete for Current Notice' ), },
 		];
 
 		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId )
@@ -182,6 +190,18 @@ class UAGBInlineNoticeEdit extends Component {
 								noSelectedPlaceholder= { __( "Select Icon" ) }
 							/>
 						</Fragment>
+					}
+					{ noticeDismiss &&
+					<SelectControl
+							label={ __( 'Delete Set Time For Notice' ) }
+							options={ noticeDeleteOptions }
+							value={ noticeDelete }
+							onChange={ ( value ) =>
+								this.props.setAttributes( {
+									noticeDelete: value,
+								} )
+							}
+					/>
 					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
@@ -317,6 +337,7 @@ class UAGBInlineNoticeEdit extends Component {
 					`uagb-block-${ block_id }`
 					) }
 					data-id= { block_id }
+					data-delete= { noticeDelete }
 				>
 					{ image_icon_html }
 					<RichText
