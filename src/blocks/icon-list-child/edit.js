@@ -54,6 +54,14 @@ class UAGBIconListChild extends Component {
 		document.head.appendChild( $style )
 	}
 
+	componentDidUpdate( prevProps ) {
+		var element = document.getElementById( "uagb-style-icon-list-child-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
+	}
+
 	/*
 	 * Event to set Image as null while removing.
 	 */
@@ -243,12 +251,6 @@ class UAGBIconListChild extends Component {
 					}
 				</TabPanel>
 			)
-		}
-
-		var element = document.getElementById( "uagb-style-icon-list-child-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
 		}
 
 		const renderHtml = () => {

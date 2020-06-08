@@ -3,7 +3,6 @@
  */
 
 import classnames from "classnames"
-import map from "lodash/map"
 import times from "lodash/times"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
@@ -19,7 +18,7 @@ import TypographyControl from "../../../components/typography"
 // Import Web font loader for google fonts.
 import WebfontLoader from "../../../components/typography/fontloader"
 
-const { dateI18n, __experimentalGetSettings } = wp.date
+const { dateI18n } = wp.date
 
 const { Component, Fragment } = wp.element
 
@@ -29,7 +28,6 @@ const { decodeEntities } = wp.htmlEntities
 
 // Import registerBlockType() from wp.blocks
 const {
-	registerBlockType,
 	createBlock
 } = wp.blocks
 
@@ -50,11 +48,7 @@ const {
 	Spinner,
 	TextControl,
 	ToggleControl,
-	Toolbar,
-	ButtonGroup,
-	Button,
 	TabPanel,
-	Dashicon,
 } = wp.components
 
 let svg_icons = Object.keys( UAGBIcon )
@@ -140,18 +134,11 @@ class UAGBcontentTimeline extends Component {
 
 		// Setup the attributes.
 		const {
-			isSelected,
 			className,
 			setAttributes,
-			insertBlocksAfter,
-			mergeBlocks,
-			onReplace,
 			attributes: {
 				tm_content,
-				headingAlign,
-				separatorHeight,
 				headSpace,
-				separatorSpace,
 				headingColor,
 				subHeadingColor,
 				backgroundColor,
@@ -213,7 +200,6 @@ class UAGBcontentTimeline extends Component {
 				iconSize,
 				borderRadius,
 				bgPadding,
-				block_id,
 				iconFocus,
 				iconBgFocus,
 				t_date,
@@ -722,7 +708,7 @@ class UAGBcontentTimeline extends Component {
 				<div  className={ classnames(
 					className,
 					"uagb-timeline__outer-wrap",
-					`uagb-block-${ this.props.clientId }`
+					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 				) }>
 					<div  className = { classnames(
 						"uagb-timeline__content-wrap",
@@ -747,10 +733,10 @@ class UAGBcontentTimeline extends Component {
 
 	componentDidMount() {
 		//Store client id.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		this.props.setAttributes( { classMigrate: true } )
 
-		var id = this.props.clientId
+		var id = this.props.clientId.substr( 0, 8 )
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
@@ -760,18 +746,24 @@ class UAGBcontentTimeline extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-content-timeline-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate(){
-		var id = this.props.clientId
+		var id = this.props.clientId.substr( 0, 8 )
 		window.addEventListener("load", this.timelineContent_back(id))
 		window.addEventListener("resize", this.timelineContent_back(id))
 		var time = this
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
+
+		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = contentTimelineStyle( this.props )
+		}
 	}
 
 	/* Render output at backend */
@@ -788,12 +780,6 @@ class UAGBcontentTimeline extends Component {
 			timelineItem,
 			dateFormat
 		} = attributes
-
-		// Add CSS.
-		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = contentTimelineStyle( this.props )
-		}
 
 		const hasItems = Array.isArray( tm_content ) && tm_content.length
 		const hasDate = Array.isArray( t_date ) && t_date.length
