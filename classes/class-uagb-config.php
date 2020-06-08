@@ -2198,8 +2198,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'skipEditor' => true,
 					),
 					'uagb-wp-search'         => array(
-						'src' => UAGB_URL . 'assets/js/wp-search.js',
-						'dep' => array(),
+						'src'        => UAGB_URL . 'assets/js/wp-search.js',
+						'dep'        => array(),
 						'skipEditor' => true,
 					),
 				);
