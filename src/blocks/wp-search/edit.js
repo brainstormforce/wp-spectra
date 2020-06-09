@@ -45,10 +45,10 @@ class UAGBWpSearchEdit extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
     }
     componentDidUpdate(prevProps, prevState) {
@@ -122,7 +122,7 @@ class UAGBWpSearchEdit extends Component {
             inheritButtonColors
         } = attributes
         
-        var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId )
+        var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null != element && "undefined" != typeof element ) {
 			element.innerHTML = styling( this.props )

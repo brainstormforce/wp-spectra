@@ -8,6 +8,7 @@ import generateCSSUnit from "../../../dist/blocks/uagb-controls/generateCSSUnit"
 function styling( props ) {
 
     const {
+        block_id,
         layout,
         inputSize,
         textColor,
@@ -183,7 +184,7 @@ function styling( props ) {
         }
     }
     var styling_css = '';
-    var id = `.uagb-block-${ props.clientId }`
+    var id = `.uagb-block-${ block_id }`
 
     styling_css = generateCSS( selectors, id )
     
