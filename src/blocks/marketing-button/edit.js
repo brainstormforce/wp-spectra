@@ -270,7 +270,6 @@ class UAGBMarketingButtonEdit extends Component {
 						/>
 					</PanelBody>
 					<PanelBody	title={ __( "Content" ) } initialOpen={ false }	>
-						<h2>{ __( "Title" ) }</h2>
 						<SelectControl
 							label={ __( "Title Tag" ) }
 							value={ titleTag }
@@ -657,8 +656,6 @@ class UAGBMarketingButtonEdit extends Component {
 							</Fragment>
 						) }
 					</PanelBody>
-
-					{/* Typography editing section */}
 					
 				</InspectorControls>
 				<div className={ classnames(
