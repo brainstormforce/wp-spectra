@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.15.2.1 =
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
+* Improvement: Post Layout: Ability to show empty post result message.
 
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
