@@ -90,6 +90,7 @@ class UAGBGoogleMap extends Component {
 				<div className={ classnames( className, "uagb-google-map__wrap", `uagb-block-${this.props.clientId.substr( 0, 8 )}` ) }>
 					<iframe
 						className="uagb-google-map__iframe"
+						title = "UAG Google Map"
 						src={url}
 						style={{height: height}}></iframe>
 				</div>
@@ -146,6 +147,7 @@ registerBlockType( "uagb/google-map", {
 			<div className={ classnames( props.className, "uagb-google-map__wrap", `uagb-block-${block_id}` ) }>
 				<iframe
 					className="uagb-google-map__iframe"
+					title = "UAG Google Map"
 					src={url}
 					style={{height: height}}></iframe>
 			</div>
@@ -186,6 +188,7 @@ registerBlockType( "uagb/google-map", {
 					<div className={ classnames( props.className, "uagb-google-map__wrap" ) } id={ `uagb-google-map-${block_id}`}>
 						<iframe
 							className="uagb-google-map__iframe"
+							title = "UAG Google Map"
 							src={url}
 							style={{height: height}}></iframe>
 					</div>
