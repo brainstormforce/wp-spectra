@@ -60,11 +60,19 @@ class UAGBPostMasonry extends Component {
 
 	componentDidMount() {
 
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-masonry-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-masonry-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-post-masonry-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	render() {
@@ -173,7 +181,8 @@ class UAGBPostMasonry extends Component {
 			linkBox,
 			postType,
 			taxonomyType,
-			inheritFromTheme
+			inheritFromTheme,
+			postDisplaytext,
 		} = attributes
 
 		const hoverSettings = (
@@ -415,6 +424,15 @@ class UAGBPostMasonry extends Component {
 							}
 						}
 					</TabPanel>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
+					<hr className="uagb-editor__separator" />
 					<ToggleControl
 						label={ __( "Inherit Styling from Theme" ) }
 						checked={ inheritFromTheme }
@@ -816,12 +834,6 @@ class UAGBPostMasonry extends Component {
 			</InspectorControls>
 		)
 
-		var element = document.getElementById( "uagb-post-masonry-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -834,7 +846,7 @@ class UAGBPostMasonry extends Component {
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>
@@ -853,7 +865,7 @@ class UAGBPostMasonry extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }

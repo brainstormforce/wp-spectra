@@ -69,19 +69,28 @@ class UAGBPostCarousel extends Component {
 	}
 
 	componentDidMount() {
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-carousel-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
 
 	componentDidUpdate() {
 
 		var equalHeight =  this.props.attributes.equalHeight
-		if( equalHeight ){
-			uagb_carousel_height(this.props.clientId)
-		}else{
-			uagb_carousel_unset_height(this.props.clientId)
+		if( equalHeight ) {
+			uagb_carousel_height(this.props.clientId.substr( 0, 8 ))
+		} else {
+			uagb_carousel_unset_height(this.props.clientId.substr( 0, 8 ))
+		}
+
+		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId.substr( 0, 8 ) )
+		let css = ""
+
+		if( null !== element && undefined !== element ) {
+			css = styling( this.props )
+			css += ".uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-post-grid ul.slick-dots li.slick-active button:before, .uagb-block-" + this.props.clientId.substr( 0, 8 ) + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + this.props.attributes.arrowColor + "; }"
+			element.innerHTML = css
 		}
 	}
 
@@ -204,7 +213,8 @@ class UAGBPostCarousel extends Component {
 			postType,
 			taxonomyType,
 			equalHeight,
-			inheritFromTheme
+			inheritFromTheme,
+			postDisplaytext,
 		} = attributes
 
 		const hoverSettings = (
@@ -451,6 +461,15 @@ class UAGBPostCarousel extends Component {
 						checked={ equalHeight }
 						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
+					<hr className="uagb-editor__separator" />
 					<ToggleControl
 						label={ __( "Inherit Styling from Theme" ) }
 						checked={ inheritFromTheme }
@@ -928,16 +947,6 @@ class UAGBPostCarousel extends Component {
 			</InspectorControls>
 		)
 
-		var element = document.getElementById( "uagb-post-carousel-style-" + this.props.clientId )
-
-		let css = ""
-
-		if( null != element && "undefined" != typeof element ) {
-			css = styling( this.props )
-			css += "#uagb-post__carousel-" + this.props.clientId + ".uagb-post-grid ul.slick-dots li.slick-active button:before, #uagb-post__carousel-" + this.props.clientId + ".uagb-slick-carousel ul.slick-dots li button:before { color: " + arrowColor + "; }"
-			element.innerHTML = css
-		}
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -950,7 +959,7 @@ class UAGBPostCarousel extends Component {
 					>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>
@@ -969,7 +978,7 @@ class UAGBPostCarousel extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList}/>
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList}/>
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }

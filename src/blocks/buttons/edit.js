@@ -47,7 +47,7 @@ class UAGBMultiButtonEdit extends Component {
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { classMigrate: true } )
@@ -55,7 +55,7 @@ class UAGBMultiButtonEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-style-buttons-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
 
@@ -64,6 +64,12 @@ class UAGBMultiButtonEdit extends Component {
 			this.setState( {
 				isFocused: "false",
 			} )
+		}
+
+		var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
 		}
 	}
 
@@ -83,12 +89,6 @@ class UAGBMultiButtonEdit extends Component {
 			fontWeight,
 			fontSubset,
 		} = attributes
-
-		var element = document.getElementById( "uagb-style-buttons-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
 
 		let loadBtnGoogleFonts
 		if( loadGoogleFonts == true ) {
@@ -166,7 +166,7 @@ class UAGBMultiButtonEdit extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-buttons__outer-wrap",
-					`uagb-block-${ this.props.clientId }`
+					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 				) }
 				>
 					<div className={ classnames(

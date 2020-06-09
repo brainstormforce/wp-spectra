@@ -248,12 +248,6 @@ class UAGBinfoBox extends Component {
 			inheritFromTheme
 		} = attributes
 
-		// Add CSS.
-		var element = document.getElementById( "uagb-info-box-style-" + this.props.clientId )
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = InfoBoxStyle( this.props )
-		}
-
 		// Icon properties.
 		const icon_props = {
 			icons: svg_icons,
@@ -1205,7 +1199,7 @@ class UAGBinfoBox extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-infobox__outer-wrap",
-					`uagb-block-${ this.props.clientId }`
+					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`
 				) }
 				>
 					{ ( ctaType == "all") &&<Fragment>
@@ -1223,16 +1217,24 @@ class UAGBinfoBox extends Component {
 		)
 	}
 
+	componentDidUpdate( prevProps ) {
+		var element = document.getElementById( "uagb-info-box-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = InfoBoxStyle( this.props )
+		}
+	}
+
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-info-box-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-info-box-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
 	}
 }

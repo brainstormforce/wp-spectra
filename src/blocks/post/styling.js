@@ -385,11 +385,11 @@ function styling( props ) {
 
 	var styling_css = ""
 
-	styling_css = generateCSS( selectors, `.uagb-block-${ props.clientId }` )
+	styling_css = generateCSS( selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }` )
 
-	styling_css += generateCSS( tablet_selectors, `.uagb-block-${ props.clientId }`, true, "tablet" )
+	styling_css += generateCSS( tablet_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "tablet" )
 
-	styling_css += generateCSS( mobile_selectors, `.uagb-block-${ props.clientId }`, true, "mobile" )
+	styling_css += generateCSS( mobile_selectors, `.uagb-block-${ props.clientId.substr( 0, 8 ) }`, true, "mobile" )
 
 	return styling_css
 }

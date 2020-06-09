@@ -99,11 +99,19 @@ class UAGBPostGrid extends Component {
 
 	componentDidMount() {
 
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	render() {
@@ -233,7 +241,8 @@ class UAGBPostGrid extends Component {
 			paginationAlignment,
 			paginationPrevText,
 			paginationNextText,
-			inheritFromTheme
+			inheritFromTheme,
+			postDisplaytext,
 		} = attributes
 
 		const hoverSettings = (
@@ -498,13 +507,21 @@ class UAGBPostGrid extends Component {
 							max={ 100 }
 						/>
                 	}
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "If Posts Not Found" ) }</h2>
+					<TextControl
+						autoComplete="off"
+						label={ __( 'Display Message' ) }
+						value={ postDisplaytext }
+						onChange={ ( value ) => setAttributes( { postDisplaytext: value } ) }
+					/>
+					<hr className="uagb-editor__separator" />
 					<ToggleControl
 						label={ __( "Inherit Styling from Theme" ) }
 						checked={ inheritFromTheme }
 						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme." ) }
 					/>
-					
 				</PanelBody>
 				{ postPagination == true && 
 					<PanelBody title={ __( "Pagination" ) } initialOpen={ false }>
@@ -999,12 +1016,6 @@ class UAGBPostGrid extends Component {
 			</InspectorControls>
 		)
 
-		var element = document.getElementById( "uagb-post-grid-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
-
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -1014,7 +1025,7 @@ class UAGBPostGrid extends Component {
 					<Placeholder icon="admin-post" label={ uagb_blocks_info.blocks["uagb/post-grid"]["title"] }>
 						{ ! Array.isArray( latestPosts ) ?
 							<Spinner /> :
-							__( "No posts found." )
+							postDisplaytext
 						}
 					</Placeholder>
 				</Fragment>
@@ -1033,7 +1044,7 @@ class UAGBPostGrid extends Component {
 						controls={ [ "left", "center", "right" ] }
 					/>
 				</BlockControls>
-				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId} categoriesList={categoriesList} />
+				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
