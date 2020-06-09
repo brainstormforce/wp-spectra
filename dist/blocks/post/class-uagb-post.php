@@ -761,7 +761,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				$post_not_found = $query->found_posts;
 
 				if ( 0 === $post_not_found ) {
-					echo esc_html( $attributes['postDisplaytext'] );
+					?>
+					<p class="uagb-post__no-posts">
+						<?php echo esc_html( $attributes['postDisplaytext'] ); ?>
+					</p>
+					<?php
 				}
 
 				if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {

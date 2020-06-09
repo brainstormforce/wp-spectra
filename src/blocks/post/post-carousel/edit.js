@@ -465,6 +465,7 @@ class UAGBPostCarousel extends Component {
 						checked={ equalHeight }
 						onChange={ ( value ) => setAttributes( { equalHeight: ! equalHeight } ) }
 					/>
+					<hr className="uagb-editor__separator" />
 					<h2>{ __( "If Posts Not Found" ) }</h2>
 					<TextControl
 						autoComplete="off"

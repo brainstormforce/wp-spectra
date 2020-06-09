@@ -512,6 +512,7 @@ class UAGBPostGrid extends Component {
 							max={ 100 }
 						/>
                 	}
+					<hr className="uagb-editor__separator" />
 					<h2>{ __( "If Posts Not Found" ) }</h2>
 					<TextControl
 						autoComplete="off"
