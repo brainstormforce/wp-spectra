@@ -194,6 +194,9 @@ class UAGBInlineNoticeEdit extends Component {
 						</Fragment>
 					}
 					{ noticeDismiss &&
+					<hr className="uagb-editor__separator" />
+					}
+					{ noticeDismiss &&
 					<ToggleControl
 					label={ __( "Enable Cookies" ) }
 					checked={ cookies }
