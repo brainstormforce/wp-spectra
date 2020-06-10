@@ -29,10 +29,15 @@ function styling( props ) {
 		lineHeightType,
 		lineHeightMobile,
 		lineHeightTablet,
+		inheritFromTheme
 	} = props.attributes;
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+
+	if ( inheritFromTheme ) {
+		return;
+	}
 
 	var selectors = {
 		" .uagb-buttons-repeater" : {

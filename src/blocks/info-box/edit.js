@@ -116,7 +116,6 @@ class UAGBinfoBox extends Component {
 	 * Event to set Image as null while removing.
 	 */
 	onRemoveImage() {
-		const { iconImage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		setAttributes( { iconImage: null } )
@@ -144,7 +143,7 @@ class UAGBinfoBox extends Component {
 
 	render() {
 
-		const { isSelected, className, setAttributes, attributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
+		const { className, setAttributes, attributes } = this.props
 
 		// Setup the attributes.
 		const {
@@ -192,13 +191,11 @@ class UAGBinfoBox extends Component {
 			separatorWidthType,
 			seperatorSpace,
 			headSpace,
-			separatorSpace,
 			subHeadSpace,
 			icon,
 			iconColor,
 			iconSize,
 			iconimgPosition,
-			block_id,
 			iconHover,
 			iconimgBorderRadius,
 			source_type,
@@ -248,6 +245,7 @@ class UAGBinfoBox extends Component {
 			showPrefix,
 			showTitle,
 			showDesc,
+			inheritFromTheme
 		} = attributes
 
 		// Icon properties.
@@ -477,20 +475,27 @@ class UAGBinfoBox extends Component {
 						value= { ctaText }
 						onChange={ value => setAttributes( { ctaText: value } ) }
 					/>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
-						fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
-						fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
-						fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
-						fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
-						fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
-						fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
-						fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }
-						disableLineHeight = {true}
+					<ToggleControl
+						label={ __( "Inherit from Theme" ) }
+						checked={ inheritFromTheme }
+						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 					/>
+					{ ( !inheritFromTheme && ctaType === "button" ) || ctaType === "text" &&
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
+							fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
+							fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
+							fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
+							fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
+							fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }
+							disableLineHeight = {true}
+						/>
+					}
 				</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -539,7 +544,7 @@ class UAGBinfoBox extends Component {
 					</Fragment>
 				}
 
-				{ ( ctaType == "button" ) && (
+				{ ( !inheritFromTheme && ctaType == "button" ) && (
 					<Fragment>
 						<h2>{ __( "Button Padding" ) }</h2>
 						<RangeControl
@@ -603,7 +608,7 @@ class UAGBinfoBox extends Component {
 				)
 				}
 
-				{ ( ctaType === "text") &&
+				{ ( ctaType === "text" ) &&
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 						activeClass="active-tab"
 						tabs={ [
@@ -630,7 +635,7 @@ class UAGBinfoBox extends Component {
 											allowReset
 										/>
 									</Fragment>
-								}else {
+								} else {
 									tabout_1 = <Fragment>
 										<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: ctaLinkHoverColor }} ></span></span></p>
 										<ColorPalette
@@ -646,7 +651,7 @@ class UAGBinfoBox extends Component {
 					</TabPanel>
 				}
 
-				{ ( ctaType === "button") &&
+				{ ( !inheritFromTheme && ctaType == "button" ) &&
 						<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 							activeClass="active-tab"
 							tabs={ [
