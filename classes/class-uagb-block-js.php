@@ -168,6 +168,32 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 		}
 
+
+		/**
+		 * Get Inline Notice Js
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_inline_notice_js( $attr, $id ) {
+
+			$defaults = UAGB_Helper::$block_list['uagb/inline-notice']['attributes'];
+
+			$attr          = array_merge( $defaults, (array) $attr );
+			$base_selector = '.uagb-block-';
+			$selector      = $base_selector . $id;
+
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				UAGBInlineNotice._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+			});
+			<?php
+			return ob_get_clean();
+
+		}
+
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
