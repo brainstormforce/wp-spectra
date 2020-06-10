@@ -412,10 +412,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			switch ( $name ) {
-				case 'uagb/inline-notice':
-					$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
-					UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );
-					break;
 				case 'uagb/how-to':
 					$css += UAGB_Block_Helper::get_how_to_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_how_to_gfont( $blockattr );
@@ -1154,8 +1150,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			if ( self::is_ssl() ) {
 				$wp_info['baseurl'] = str_ireplace( 'http://', 'https://', $wp_info['baseurl'] );
 			}
-
-			$wp_info = wp_upload_dir( null, false );
 
 			$dir_name = basename( UAGB_DIR );
 			if ( 'ultimate-addons-for-gutenberg' === $dir_name ) {
