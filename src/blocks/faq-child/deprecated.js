@@ -4,6 +4,7 @@
 
 import classnames from "classnames"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import attributes from "./attributes"
 
 const {
 	Fragment,
