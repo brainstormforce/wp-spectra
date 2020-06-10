@@ -163,6 +163,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Carousel - Border Radius applying to Next Arrow from Theme.
 * Improvement: Post Layout: Ability to show empty post result message.
 * Fix: Settings get disturbed when Gutenberg Plugin is active.
+* Improvement: FAQ Schema - Revamped the Padding options.
 
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
