@@ -235,7 +235,9 @@ class UAGBInlineNoticeEdit extends Component {
 							onChange={ ( value ) => setAttributes( { noticeColor: value } ) }
 							allowReset
 					/>
+					{ noticeDismiss &&
 					<hr className="uagb-editor__separator" />
+					}
 					{ noticeDismiss &&
 					<p className="uagb-setting-label">{ __( "Notice Dismiss Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: noticeDismissColor }} ></span></span></p>
 					}
