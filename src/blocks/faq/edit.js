@@ -64,6 +64,16 @@ class UAGBFaqEdit extends Component {
 		const {
 			questionBottomPaddingDesktop,
 			vquestionPaddingDesktop,
+			questionLeftPaddingDesktop,
+			hquestionPaddingDesktop,
+			questionBottomPaddingTablet,
+			vquestionPaddingTablet,
+			questionLeftPaddingTablet,
+			hquestionPaddingTablet,
+			questionBottomPaddingMobile,
+			vquestionPaddingMobile,
+			questionLeftPaddingMobile,
+			hquestionPaddingMobile,
 		} = attributes
 
 		// Assigning block_id in the attribute.
@@ -87,6 +97,28 @@ class UAGBFaqEdit extends Component {
 		if ( 10 === questionBottomPaddingDesktop && 10 !== vquestionPaddingDesktop ) {
 
 			setAttributes( { questionBottomPaddingDesktop: vquestionPaddingDesktop } )
+		}
+		if ( 10 === questionLeftPaddingDesktop && 10 !== hquestionPaddingDesktop ) {
+
+			setAttributes( { questionLeftPaddingDesktop: hquestionPaddingDesktop } )
+		}
+
+		if ( 10 === questionBottomPaddingTablet && 10 !== vquestionPaddingTablet ) {
+
+			setAttributes( { questionBottomPaddingTablet: vquestionPaddingTablet } )
+		}
+		if ( 10 === questionLeftPaddingTablet && 10 !== hquestionPaddingTablet ) {
+
+			setAttributes( { questionLeftPaddingTablet: hquestionPaddingTablet } )
+		}
+
+		if ( 10 === questionBottomPaddingMobile && 10 !== vquestionPaddingMobile ) {
+
+			setAttributes( { questionBottomPaddingMobile: vquestionPaddingMobile } )
+		}
+		if ( 10 === questionLeftPaddingMobile && 10 !== hquestionPaddingMobile ) {
+
+			setAttributes( { questionLeftPaddingMobile: hquestionPaddingMobile } )
 		}
 	}
 
