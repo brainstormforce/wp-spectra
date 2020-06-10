@@ -117,7 +117,8 @@ class UAGBFaqChildEdit extends Component {
                         "uagb-faq-child__outer-wrap",
                         `uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
 						( this.props.isSelected &&  ( false !== this.state.isFocused ) ) ? "uagb-faq__active" : ""
-                    ) }
+					) }
+					role="tab" tabindex="0"
                 >
                     { faqRenderHtml() }
                 </div>

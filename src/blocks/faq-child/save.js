@@ -69,6 +69,7 @@ export default function save( props ) {
 			"uagb-faq-child__outer-wrap",
 			`uagb-block-${ block_id }`
 		) }
+		role="tab" tabindex="0"
 		>
 			{ faqRenderAccordion() }
 
