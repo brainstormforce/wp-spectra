@@ -312,14 +312,6 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
-	questionRightPaddingTablet: {
-		type: "number",
-		default : 10
-	},
-	questionTopPaddingTablet: {
-		type: "number",
-		default : 10
-	},
 	questionBottomPaddingTablet: {
 		type: "number",
 		default : 10
@@ -328,27 +320,11 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
-	questionRightPaddingDesktop: {
-		type: "number",
-		default : 10
-	},
-	questionTopPaddingDesktop: {
-		type: "number",
-		default : 10
-	},
 	questionBottomPaddingDesktop: {
 		type: "number",
 		default : 10
 	},
 	questionLeftPaddingMobile: {
-		type: "number",
-		default : 10
-	},
-	questionRightPaddingMobile: {
-		type: "number",
-		default : 10
-	},
-	questionTopPaddingMobile: {
 		type: "number",
 		default : 10
 	},

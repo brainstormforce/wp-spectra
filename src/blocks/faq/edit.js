@@ -193,16 +193,16 @@ class UAGBFaqEdit extends Component {
 			enableToggle,
 			equalHeight,
 			questionLeftPaddingTablet,
-			questionRightPaddingTablet,
-			questionTopPaddingTablet,
+			hquestionPaddingTablet,
+			vquestionPaddingTablet,
 			questionBottomPaddingTablet,
 			questionLeftPaddingDesktop,
-			questionRightPaddingDesktop,
-			questionTopPaddingDesktop,
+			hquestionPaddingDesktop,
+			vquestionPaddingDesktop,
 			questionBottomPaddingDesktop,
 			questionLeftPaddingMobile,
-			questionRightPaddingMobile,
-			questionTopPaddingMobile,
+			hquestionPaddingMobile,
+			vquestionPaddingMobile,
 			questionBottomPaddingMobile,
 		} = attributes
 
@@ -648,8 +648,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ questionRightPaddingMobile }
-													onChange={ ( value ) => setAttributes( { questionRightPaddingMobile: value } ) }
+													value={ hquestionPaddingMobile }
+													onChange={ ( value ) => setAttributes( { hquestionPaddingMobile: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset
@@ -657,8 +657,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
-													value={ questionTopPaddingMobile }
-													onChange={ ( value ) => setAttributes( { questionTopPaddingMobile: value } ) }
+													value={ vquestionPaddingMobile }
+													onChange={ ( value ) => setAttributes( { vquestionPaddingMobile: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset
@@ -694,8 +694,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ questionRightPaddingTablet }
-													onChange={ ( value ) => setAttributes( { questionRightPaddingTablet: value } ) }
+													value={ hquestionPaddingTablet }
+													onChange={ ( value ) => setAttributes( { hquestionPaddingTablet: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset
@@ -703,8 +703,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
-													value={ questionTopPaddingTablet }
-													onChange={ ( value ) => setAttributes( { questionTopPaddingTablet: value } ) }
+													value={ vquestionPaddingTablet }
+													onChange={ ( value ) => setAttributes( { vquestionPaddingTablet: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset
@@ -740,8 +740,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ questionRightPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { questionRightPaddingDesktop: value } ) }
+													value={ hquestionPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { hquestionPaddingDesktop: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset
@@ -749,8 +749,8 @@ class UAGBFaqEdit extends Component {
 												<RangeControl
 													label={ UAGB_Block_Icons.top_margin }
 													className={ "uagb-margin-control" }
-													value={ questionTopPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { questionTopPaddingDesktop: value } ) }
+													value={ vquestionPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { vquestionPaddingDesktop: value } ) }
 													min={ 0 }
 													max={ 50 }
 													allowReset

@@ -71,16 +71,10 @@ function styling( props ) {
         iconSizeTablet,
         columns,
         questionLeftPaddingTablet,
-        questionRightPaddingTablet,
-        questionTopPaddingTablet,
         questionBottomPaddingTablet,
         questionLeftPaddingDesktop,
-        questionRightPaddingDesktop,
-        questionTopPaddingDesktop,
         questionBottomPaddingDesktop,
         questionLeftPaddingMobile,
-        questionRightPaddingMobile,
-        questionTopPaddingMobile,
         questionBottomPaddingMobile,
     } = props.attributes
 
@@ -138,9 +132,9 @@ function styling( props ) {
             "color": questionTextActiveColor,
         },
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( questionTopPaddingDesktop, questionPaddingTypeDesktop ),
+            "padding-top": generateCSSUnit( vquestionPaddingDesktop, questionPaddingTypeDesktop ),
             "padding-bottom": generateCSSUnit( questionBottomPaddingDesktop, questionPaddingTypeDesktop ),
-            "padding-right": generateCSSUnit( questionRightPaddingDesktop, questionPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hquestionPaddingDesktop, questionPaddingTypeDesktop ),
             "padding-left": generateCSSUnit( questionLeftPaddingDesktop, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
@@ -178,9 +172,9 @@ function styling( props ) {
     
     tablet_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( questionTopPaddingTablet, questionPaddingTypeTablet ),
+            "padding-top": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeTablet ),
             "padding-bottom": generateCSSUnit( questionBottomPaddingTablet, questionPaddingTypeTablet ),
-            "padding-right": generateCSSUnit( questionRightPaddingTablet, questionPaddingTypeTablet ),
+            "padding-right": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeTablet ),
             "padding-left": generateCSSUnit( questionLeftPaddingTablet, questionPaddingTypeTablet ),
         },
         " .uagb-faq-content span" : {
@@ -211,9 +205,9 @@ function styling( props ) {
 
     mobile_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( questionTopPaddingMobile, questionPaddingTypeMobile ),
+            "padding-top": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeMobile ),
             "padding-bottom": generateCSSUnit( questionBottomPaddingMobile, questionPaddingTypeMobile ),
-            "padding-right": generateCSSUnit( questionRightPaddingMobile, questionPaddingTypeMobile ),
+            "padding-right": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeMobile ),
             "padding-left": generateCSSUnit( questionLeftPaddingMobile, questionPaddingTypeMobile ),
         },
         " .uagb-faq-content span" : {
