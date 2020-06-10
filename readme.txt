@@ -158,10 +158,12 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.16.0 =
+* New: Users can now share non-personal usage data to help us test and develop better products.
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
 * Fix: Post Carousel - Border Radius applying to Next Arrow from Theme.
 * Improvement: Post Layout: Ability to show empty post result message.
 * Improvement: Check and add Accessibility to all the blocks
+* Fix: Settings get disturbed when Gutenberg Plugin is active.
 
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
