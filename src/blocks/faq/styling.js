@@ -22,8 +22,6 @@ function styling( props ) {
         borderColor,
         questionTextColor,
         questionTextActiveColor,
-        questionPaddingTypeMobile,
-        questionPaddingTypeTablet,
         questionPaddingTypeDesktop,
         vquestionPaddingMobile,
         vquestionPaddingTablet,
@@ -32,8 +30,6 @@ function styling( props ) {
         hquestionPaddingTablet,
         hquestionPaddingDesktop,
         answerTextColor,
-        answerPaddingTypeMobile,
-        answerPaddingTypeTablet,
         answerPaddingTypeDesktop,
         vanswerPaddingMobile,
         vanswerPaddingTablet,
@@ -172,16 +168,16 @@ function styling( props ) {
     
     tablet_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeTablet ),
-            "padding-bottom": generateCSSUnit( questionBottomPaddingTablet, questionPaddingTypeTablet ),
-            "padding-right": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeTablet ),
-            "padding-left": generateCSSUnit( questionLeftPaddingTablet, questionPaddingTypeTablet ),
+            "padding-top": generateCSSUnit( vquestionPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( questionBottomPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hquestionPaddingTablet, questionPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( questionLeftPaddingTablet, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
-            "margin-top": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-bottom": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-right": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeTablet ),
-            "margin-left": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeTablet ),
+            "margin-top": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-bottom": generateCSSUnit( vanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-right": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeDesktop ),
+            "margin-left": generateCSSUnit( hanswerPaddingTablet, answerPaddingTypeDesktop ),
         },
         " .uagb-faq-questions-button .uagb-question" : {
             "font-size" : generateCSSUnit( questionFontSizeTablet, questionFontSizeType ),
@@ -205,16 +201,16 @@ function styling( props ) {
 
     mobile_selectors = {
         " .uagb-faq-questions-button" : {
-            "padding-top": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeMobile ),
-            "padding-bottom": generateCSSUnit( questionBottomPaddingMobile, questionPaddingTypeMobile ),
-            "padding-right": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeMobile ),
-            "padding-left": generateCSSUnit( questionLeftPaddingMobile, questionPaddingTypeMobile ),
+            "padding-top": generateCSSUnit( vquestionPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( questionBottomPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-right": generateCSSUnit( hquestionPaddingMobile, questionPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( questionLeftPaddingMobile, questionPaddingTypeDesktop ),
         },
         " .uagb-faq-content span" : {
-            "margin-top": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-bottom": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-right": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeMobile ),
-            "margin-left": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeMobile ),
+            "margin-top": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-bottom": generateCSSUnit( vanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-right": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeDesktop ),
+            "margin-left": generateCSSUnit( hanswerPaddingMobile, answerPaddingTypeDesktop ),
         },
         " .uagb-faq-questions-button .uagb-question" : {
             "font-size" : generateCSSUnit( questionFontSizeMobile, questionFontSizeType ),

@@ -98,14 +98,6 @@ const attributes = {
 		type: "string",
 		default: "#313131"
 	},
-	questionPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	questionPaddingTypeTablet: {
-		type: "string",
-		default : "px"
-	},
 	questionPaddingTypeDesktop: {
 		type: "string",
 		default : "px"
@@ -137,14 +129,6 @@ const attributes = {
 	answerTextColor: {
 		type: "string",
 		default: "#313131"
-	},
-	answerPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	answerPaddingTypeTablet: {
-		type: "string",
-		default : "px"
 	},
 	answerPaddingTypeDesktop: {
 		type: "string",
