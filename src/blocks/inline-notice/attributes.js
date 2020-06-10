@@ -19,13 +19,13 @@
 		type: "string",
 		default: "",
 	},
-	noticeDelete: {
-		type: "string",
-		default: "none",
+	cookies: {
+		type: "boolean",
+		default: false
 	},
-	noticeUpdate: {
-		type: "string",
-		default: "",
+	close_cookie_days: {
+		type: "number",
+		default: 1
 	},
 	textColor: {
 		type: "string",

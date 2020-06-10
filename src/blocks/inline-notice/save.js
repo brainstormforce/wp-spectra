@@ -21,7 +21,8 @@ export default function save( props ) {
 		noticeAlignment,
 		icon,
 		noticeDismiss,
-		noticeDelete,
+		cookies,
+		close_cookie_days
 	} = attributes
 
 	let image_icon_html = ''
@@ -40,7 +41,8 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`
 		) }
 		data-id= { block_id }
-		data-delete= { noticeDelete }
+		data-cookies= { cookies }
+		data-cookies-days= { close_cookie_days }
 		>
 			{image_icon_html}
 			<RichText.Content

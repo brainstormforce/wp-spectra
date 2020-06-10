@@ -32,6 +32,7 @@ const {
 	PanelBody,
 	RangeControl,
 	SelectControl,
+	ToggleControl,
 } = wp.components
 
 const {
@@ -64,7 +65,8 @@ class UAGBInlineNoticeEdit extends Component {
 				noticeTitle,
 				noticeContent,
 				noticeDismiss,
-				noticeDelete,
+				cookies,
+				close_cookie_days,
 				textColor,
 				titleColor,
 				noticeColor,
@@ -192,15 +194,20 @@ class UAGBInlineNoticeEdit extends Component {
 						</Fragment>
 					}
 					{ noticeDismiss &&
-					<SelectControl
-							label={ __( 'Delete Set Time For Notice' ) }
-							options={ noticeDeleteOptions }
-							value={ noticeDelete }
-							onChange={ ( value ) =>
-								this.props.setAttributes( {
-									noticeDelete: value,
-								} )
-							}
+					<ToggleControl
+					label={ __( "Enable Cookies" ) }
+					checked={ cookies }
+					onChange={ ( value ) => setAttributes( { cookies: ! cookies } ) }
+					/>
+					}
+					{ cookies &&
+					<RangeControl
+						label={ __( "Do Not Show After Closing (days)" ) }
+						value={ close_cookie_days }
+						onChange={ ( value ) => setAttributes( { close_cookie_days: value } ) }
+						min={ 0 }
+						max={ 50 }
+						allowReset
 					/>
 					}
 					<hr className="uagb-editor__separator" />
@@ -337,7 +344,8 @@ class UAGBInlineNoticeEdit extends Component {
 					`uagb-block-${ block_id }`
 					) }
 					data-id= { block_id }
-					data-delete= { noticeDelete }
+					data-cookies= { cookies }
+					data-cookies-days= { close_cookie_days }
 				>
 					{ image_icon_html }
 					<RichText

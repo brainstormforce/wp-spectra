@@ -2184,9 +2184,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
+					'uagb-cookie-lib'        => array(
+						'src'        => UAGB_URL . 'assets/js/js_cookie.js',
+						'dep'        => array( 'jquery' ),
+						'skipEditor' => true,
+					),
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
-						'dep'        => array(),
+						'dep'        => array( 'jquery', 'uael-cookie-lib' ),
 						'skipEditor' => true,
 					),
 				);
