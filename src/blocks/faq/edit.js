@@ -59,10 +59,17 @@ class UAGBFaqEdit extends Component {
 
 	componentDidMount() {
 
-		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+		const { attributes, setAttributes } = this.props
 
-		this.props.setAttributes( { schema: JSON.stringify( this.props.schemaJsonData ) } )
+		const {
+			questionBottomPaddingDesktop,
+			vquestionPaddingDesktop,
+		} = attributes
+
+		// Assigning block_id in the attribute.
+		setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+
+		setAttributes( { schema: JSON.stringify( this.props.schemaJsonData ) } )
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-faq-" + this.props.clientId.substr( 0, 8 ) )
@@ -75,6 +82,11 @@ class UAGBFaqEdit extends Component {
 					"answer": 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',	
 				}	
 			)	
+		}
+		
+		if ( 10 === questionBottomPaddingDesktop && 10 !== vquestionPaddingDesktop ) {
+
+			setAttributes( { questionBottomPaddingDesktop: vquestionPaddingDesktop } )
 		}
 	}
 
