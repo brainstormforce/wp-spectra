@@ -67,7 +67,7 @@ class UAGBFaqEdit extends Component {
 		const $style = document.createElement( "style" )
 		$style.setAttribute( "id", "uagb-style-faq-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
-
+		
 		for ( var i = 1; i <= 2; i++ ) {		
 			faq.push(	
 				{	
@@ -145,12 +145,6 @@ class UAGBFaqEdit extends Component {
 			questionPaddingTypeMobile,
 			questionPaddingTypeTablet,
 			questionPaddingTypeDesktop,
-			vquestionPaddingMobile,
-			vquestionPaddingTablet,
-			vquestionPaddingDesktop,
-			hquestionPaddingMobile,
-			hquestionPaddingTablet,
-			hquestionPaddingDesktop,
 			answerTextColor,
 			answerPaddingTypeMobile,
 			answerPaddingTypeTablet,
@@ -197,7 +191,19 @@ class UAGBFaqEdit extends Component {
 			iconSize,
 			columns,
 			enableToggle,
-			equalHeight
+			equalHeight,
+			questionLeftPaddingTablet,
+			questionRightPaddingTablet,
+			questionTopPaddingTablet,
+			questionBottomPaddingTablet,
+			questionLeftPaddingDesktop,
+			questionRightPaddingDesktop,
+			questionTopPaddingDesktop,
+			questionBottomPaddingDesktop,
+			questionLeftPaddingMobile,
+			questionRightPaddingMobile,
+			questionTopPaddingMobile,
+			questionBottomPaddingMobile,
 		} = attributes
 
 		const getFaqChildTemplate = memoize( ( faq_count, faq ) => {
@@ -631,21 +637,39 @@ class UAGBFaqEdit extends Component {
 												</ButtonGroup>
 												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
+													label={ UAGB_Block_Icons.left_margin }
 													className={ "uagb-margin-control" }
-													value={ vquestionPaddingMobile }
-													onChange={ ( value ) => setAttributes( { vquestionPaddingMobile: value } ) }
+													value={ questionLeftPaddingMobile }
+													onChange={ ( value ) => setAttributes( { questionLeftPaddingMobile: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
 													allowReset
 												/>
 												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
+													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ hquestionPaddingMobile }
-													onChange={ ( value ) => setAttributes( { hquestionPaddingMobile: value } ) }
+													value={ questionRightPaddingMobile }
+													onChange={ ( value ) => setAttributes( { questionRightPaddingMobile: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.top_margin }
+													className={ "uagb-margin-control" }
+													value={ questionTopPaddingMobile }
+													onChange={ ( value ) => setAttributes( { questionTopPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.bottom_margin }
+													className={ "uagb-margin-control" }
+													value={ questionBottomPaddingMobile }
+													onChange={ ( value ) => setAttributes( { questionBottomPaddingMobile: value } ) }
+													min={ 0 }
+													max={ 50 }
 													allowReset
 												/>
 											</Fragment>
@@ -659,21 +683,39 @@ class UAGBFaqEdit extends Component {
 												</ButtonGroup>
 												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
+													label={ UAGB_Block_Icons.left_margin }
 													className={ "uagb-margin-control" }
-													value={ vquestionPaddingTablet }
-													onChange={ ( value ) => setAttributes( { vquestionPaddingTablet: value } ) }
+													value={ questionLeftPaddingTablet }
+													onChange={ ( value ) => setAttributes( { questionLeftPaddingTablet: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
 													allowReset
 												/>
 												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
+													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ hquestionPaddingTablet }
-													onChange={ ( value ) => setAttributes( { hquestionPaddingTablet: value } ) }
+													value={ questionRightPaddingTablet }
+													onChange={ ( value ) => setAttributes( { questionRightPaddingTablet: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.top_margin }
+													className={ "uagb-margin-control" }
+													value={ questionTopPaddingTablet }
+													onChange={ ( value ) => setAttributes( { questionTopPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.bottom_margin }
+													className={ "uagb-margin-control" }
+													value={ questionBottomPaddingTablet }
+													onChange={ ( value ) => setAttributes( { questionBottomPaddingTablet: value } ) }
+													min={ 0 }
+													max={ 50 }
 													allowReset
 												/>
 											</Fragment>
@@ -687,21 +729,39 @@ class UAGBFaqEdit extends Component {
 												</ButtonGroup>
 												<h2>{ __( "Padding" ) }</h2>
 												<RangeControl
-													label={ UAGB_Block_Icons.vertical_spacing }
+													label={ UAGB_Block_Icons.left_margin }
 													className={ "uagb-margin-control" }
-													value={ vquestionPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { vquestionPaddingDesktop: value } ) }
+													value={ questionLeftPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { questionLeftPaddingDesktop: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
 													allowReset
 												/>
 												<RangeControl
-													label={ UAGB_Block_Icons.horizontal_spacing }
+													label={ UAGB_Block_Icons.right_margin }
 													className={ "uagb-margin-control" }
-													value={ hquestionPaddingDesktop }
-													onChange={ ( value ) => setAttributes( { hquestionPaddingDesktop: value } ) }
+													value={ questionRightPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { questionRightPaddingDesktop: value } ) }
 													min={ 0 }
-													max={ 100 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.top_margin }
+													className={ "uagb-margin-control" }
+													value={ questionTopPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { questionTopPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 50 }
+													allowReset
+												/>
+												<RangeControl
+													label={ UAGB_Block_Icons.bottom_margin }
+													className={ "uagb-margin-control" }
+													value={ questionBottomPaddingDesktop }
+													onChange={ ( value ) => setAttributes( { questionBottomPaddingDesktop: value } ) }
+													min={ 0 }
+													max={ 50 }
 													allowReset
 												/>
 											</Fragment>
