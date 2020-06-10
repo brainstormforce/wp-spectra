@@ -345,6 +345,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'          => false,
+							'inheritFromTheme'      => false,
 							'textAlign'             => 'left',
 							'titleColor'            => '',
 							'descColor'             => '',
@@ -1041,6 +1042,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'classMigrate'            => false,
+							'inheritFromTheme'        => false,
 							'headingAlign'            => 'center',
 							'headingColor'            => '',
 							'subHeadingColor'         => '',
@@ -1231,7 +1233,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to style button.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'     => false,
+							'inheritFromTheme' => false,
 							'block_id'         => '',
 							'label'            => '',
 							'link'             => '',
@@ -1265,6 +1267,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'js_assets'   => array( 'uagb-slick-js', 'uagb-carousel-js', 'uagb-imagesloaded' ),
 						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
+							'inheritFromTheme'        => false,
 							'align'                   => 'left',
 							'rowGap'                  => '20',
 							'columnGap'               => '20',
@@ -1353,6 +1356,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a grid layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
+							'inheritFromTheme'            => false,
 							'align'                       => 'left',
 							'rowGap'                      => '20',
 							'columnGap'                   => '20',
@@ -1453,6 +1457,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded' ),
 						'attributes'  => array(
+							'inheritFromTheme'        => false,
 							'align'                   => 'left',
 							'rowGap'                  => '20',
 							'columnGap'               => '20',
