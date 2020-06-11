@@ -46,8 +46,4 @@
   	}
   }
 
-  	$( document ).ready(function() {
-		UAGBInlineNotice._run()
-	})
-
 } )( jQuery );
