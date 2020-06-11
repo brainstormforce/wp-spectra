@@ -21,21 +21,23 @@ export default function save( props ) {
 		block_id,
 		target,
 		link,
-		label
-	} = props.attributes
+		label,
+		inheritFromTheme
+	} = attributes
 
 	return (
 		<div className={ classnames(
 			className,
 			"uagb-buttons__outer-wrap",
-			`uagb-block-${ block_id }`
+			`uagb-block-${ block_id }`,
+			( inheritFromTheme ) ? "wp-block-button" : null
 			) }>
 			<div className="uagb-button__wrapper">
 				<div className="uagb-buttons-repeater">
 					<RichText.Content
 						value={ label }
 						tagName='a'
-						className='uagb-button__link'
+						className={classnames( 'uagb-button__link', ( inheritFromTheme ) ? "wp-block-button__link" : null ) }
 						href={ link }
 						rel ="noopener noreferrer"
 						target={ target }
