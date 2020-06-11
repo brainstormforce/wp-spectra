@@ -1285,6 +1285,7 @@ class UAGBColumns extends Component {
 		return (
 			<Fragment>
 				<__experimentalBlockVariationPicker
+					icon ={ UAGB_Block_Icons.columns }
 					label={ __( 'Advanced Columns' ) }
 					instructions={ __( 'Select a variation to start with.' ) }
 					variations={ variations }
