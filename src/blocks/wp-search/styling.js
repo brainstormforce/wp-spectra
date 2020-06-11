@@ -143,13 +143,11 @@ function styling( props ) {
         selectors[' .uagb-search-wrapper .uagb-search-form__container'] = boxCSS
     }
     
-    if ( ! inheritButtonColors ) {
-        selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = {
-            "background-color" : buttonBgColor,
-        }
-        selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = {
-            "background-color" : buttonBgHoverColor,
-        }
+    selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = {
+        "background-color" : buttonBgColor,
+    }
+    selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = {
+        "background-color" : buttonBgHoverColor,
     }
 
     mobile_selectors = {

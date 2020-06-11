@@ -176,14 +176,6 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
-	inheritButtonColors: {
-		type: "boolean",
-		default : true
-	},
-	inheritButtonIconColors: {
-		type: "boolean",
-		default : true
-	},
 }
 
 export default attributes

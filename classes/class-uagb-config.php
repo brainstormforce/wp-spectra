@@ -2152,8 +2152,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'hinputPaddingMobile'     => 10,
 							'hinputPaddingTablet'     => 10,
 							'hinputPaddingDesktop'    => 10,
-							'inheritButtonColors'     => true,
-							'inheritButtonIconColors' => true,
 						),
 					),
 				);

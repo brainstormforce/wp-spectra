@@ -4536,15 +4536,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
 			}
-			if ( ! $attr['inheritButtonColors'] ) {
 
-				$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit']       = array(
-					'background-color' => $attr['buttonBgColor'],
-				);
-				$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = array(
-					'background-color' => $attr['buttonBgHoverColor'],
-				);
-			}
+			$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit']       = array(
+				'background-color' => $attr['buttonBgColor'],
+			);
+			$selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = array(
+				'background-color' => $attr['buttonBgHoverColor'],
+			);
 
 			$m_selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(

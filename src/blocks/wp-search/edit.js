@@ -29,7 +29,6 @@ const {
     ButtonGroup,
 	Button,
     Dashicon,
-    ToggleControl
 } = wp.components
 
 class UAGBWpSearchEdit extends Component {
@@ -119,7 +118,6 @@ class UAGBWpSearchEdit extends Component {
             hinputPaddingMobile,
             hinputPaddingTablet,
             hinputPaddingDesktop,
-            inheritButtonColors
         } = attributes
         
         var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
@@ -408,27 +406,20 @@ class UAGBWpSearchEdit extends Component {
                                 min={ 0 }
                                 max={ 500 }
                             />
-                            <ToggleControl
-								label={ __( "Inherit Colors From Theme" ) }
-								checked={ inheritButtonColors }
-								onChange={ ( value ) => setAttributes( { inheritButtonColors: ! inheritButtonColors } ) }
-							/>
-                            { ! inheritButtonColors && 
-                                <Fragment>
-                                    <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
-                                    <ColorPalette
-                                        value={ buttonBgColor }
-                                        onChange={ ( value ) => setAttributes( { buttonBgColor: value } ) }
-                                        allowReset
-                                    />
-                                    <p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
-                                    <ColorPalette
-                                        value={ buttonBgHoverColor }
-                                        onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
-                                        allowReset
-                                    />
-                                </Fragment>
-                            }
+                            <Fragment>
+                                <p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgColor }} ></span></span></p>
+                                <ColorPalette
+                                    value={ buttonBgColor }
+                                    onChange={ ( value ) => setAttributes( { buttonBgColor: value } ) }
+                                    allowReset
+                                />
+                                <p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonBgHoverColor }} ></span></span></p>
+                                <ColorPalette
+                                    value={ buttonBgHoverColor }
+                                    onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
+                                    allowReset
+                                />
+                            </Fragment>
                             <hr className="uagb-editor__separator" />
                             <h2>{ __( "Icon" ) }</h2>
                             <RangeControl
