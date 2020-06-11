@@ -9,6 +9,7 @@ import styling from "./styling"
 import memoize from "memize"
 import times from "lodash/times"
 import map from 'lodash/map';
+import dropRight from "lodash/dropRight"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
 import BoxShadowControl from "../../components/box-shadow"
@@ -38,7 +39,8 @@ const {
 	InnerBlocks,
 	MediaUpload,
 	PanelColorSettings,
-	__experimentalBlockVariationPicker
+	__experimentalBlockVariationPicker,
+	dispatch
 } = wp.blockEditor
 
 const {
@@ -74,6 +76,7 @@ class UAGBColumns extends Component {
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 		this.onSelectVideo = this.onSelectVideo.bind( this )
+		this.onColumnsChange = this.onColumnsChange.bind( this )
 	}
 
 	componentDidMount() {
@@ -153,12 +156,17 @@ class UAGBColumns extends Component {
 		setAttributes( { backgroundVideo: media } )
 	}
 
+	onColumnsChange( value ) {
+		const { setAttributes } = this.props
+		console.log(value)
+		setAttributes( { variationsOptions: value } )	
+	}
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
 		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	}
 
 	render() {
-
+		
 		const { 
 			attributes, 
 			setAttributes, 
@@ -253,6 +261,7 @@ class UAGBColumns extends Component {
 			boxShadowBlur,
 			boxShadowSpread,
 			boxShadowPosition,
+			variationsOptions
 		} = attributes
 		
 		const CustomTag = `${tag}`
@@ -280,7 +289,34 @@ class UAGBColumns extends Component {
 			{ value: "arrow_split", label: __( "Arrow Split" ) },
 			{ value: "book", label: __( "Book" ) },
 		]
-
+		const variationsOptionsArray = [
+			{ value: {
+				name: 'one-column',
+				label: __( 'One column' ),
+				attributes: {
+					columns: 1,
+					layout: '100',
+				},
+				isDefault: true,
+				innerBlocks: [
+					[ 'uagb/column', { width: '100' } ],
+				],
+				scope: [ 'block' ],
+			}, label: __( "1" ) },
+			{ value: {
+				name: 'two-column-split',
+				label: __( 'Two columns; equal split' ),
+				attributes: {
+					columns: 2,
+					layout: '50-50',
+				},
+				innerBlocks: [
+					[ 'uagb/column', { width: '50' } ],
+					[ 'uagb/column', { width: '50' } ],
+				],
+				scope: [ 'block' ],
+			}, label: "2" },
+		]
 		const bottomSettings = (
 			<Fragment>
 				<SelectControl
@@ -550,12 +586,11 @@ class UAGBColumns extends Component {
 					</BlockControls>
 					<InspectorControls>
 						<PanelBody title={ __( "Layout" ) }>
-							<RangeControl
+							<SelectControl
 								label={ __( "Columns" ) }
-								value={ columns }
-								min={ 0 }
-								max={ 6 }
-								onChange={ ( value ) => setAttributes( { columns: value } ) }
+								value={ variationsOptions }
+								onChange={ this.onColumnsChange }
+								options={ variationsOptionsArray }
 							/>
 							<SelectControl
 								label={ __( "Stack on" ) }
@@ -1275,6 +1310,7 @@ class UAGBColumns extends Component {
 		}
 
 		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
+			
 			if ( nextVariation.attributes ) {
 				this.props.setAttributes( nextVariation.attributes );
 			}

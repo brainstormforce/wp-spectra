@@ -89,6 +89,38 @@ const variations = [
 		],
 		scope: [ 'block' ],
 	},
+	{
+		name: 'five-column',
+		label: __( 'Five columns; equal split' ),
+		icon: rowIcons.layout25252525,
+		attributes: {
+			columns: 5,
+			layout: '20-20-20-20',
+		},
+		innerBlocks: [
+			[ 'uagb/column', { width: '20' } ],
+			[ 'uagb/column', { width: '20' } ],
+			[ 'uagb/column', { width: '20' } ],
+			[ 'uagb/column', { width: '20' } ],
+		],
+		scope: [ 'block' ],
+	},
+	{
+		name: 'six-column',
+		label: __( 'Six columns; equal split' ),
+		icon: rowIcons.layout25252525,
+		attributes: {
+			columns: 6,
+			layout: '16.66-16.66-16.66-16.66',
+		},
+		innerBlocks: [
+			[ 'uagb/column', { width: '16.66' } ],
+			[ 'uagb/column', { width: '16.66' } ],
+			[ 'uagb/column', { width: '16.66' } ],
+			[ 'uagb/column', { width: '16.66' } ],
+		],
+		scope: [ 'block' ],
+	},
 ];
 
 export default variations;
