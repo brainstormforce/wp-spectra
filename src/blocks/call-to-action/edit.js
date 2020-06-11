@@ -131,7 +131,8 @@ class UAGBCallToAction extends Component {
 			stack,
 			ctaLeftSpace,
 			ctaRightSpace,
-			ctaLinkHoverColor
+			ctaLinkHoverColor,
+			inheritFromTheme
 		} = attributes
 
 		let loadCtaGoogleFonts
@@ -211,20 +212,30 @@ class UAGBCallToAction extends Component {
 							value= { ctaText }
 							onChange={ value => setAttributes( { ctaText: value } ) }
 						/>
-						<TypographyControl
-							label={ __( "Typography" ) }
-							attributes = { attributes }
-							setAttributes = { setAttributes }
-							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
-							fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
-							fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
-							fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
-							fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
-							fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
-							fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
-							fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }							
-							disableLineHeight = {true}
-						/>
+						{ ctaType === "button" &&
+							<ToggleControl
+								label={ __( "Inherit from Theme" ) }
+								checked={ inheritFromTheme }
+								onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
+							/>
+						}
+						
+						{ ( ! inheritFromTheme && ctaType === "button" ) || ctaType === "text" &&
+							<TypographyControl
+								label={ __( "Typography" ) }
+								attributes = { attributes }
+								setAttributes = { setAttributes }
+								loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
+								fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
+								fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
+								fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
+								fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
+								fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
+								fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
+								fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }							
+								disableLineHeight = {true}
+							/>
+						}
 					</Fragment>
 				}
 				{ ( ctaType !== "none" ) &&
@@ -241,10 +252,10 @@ class UAGBCallToAction extends Component {
 						/>
 					</Fragment>
 				}
-				<hr className="uagb-editor__separator" />
-				<h2>{ __( "Button Icon" ) }</h2>
 				{ ( ctaType !== "all" ) && ( ctaType !== "none" ) &&
 					<Fragment>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Button Icon" ) }</h2>
 						<FontIconPicker {...cta_icon_props} />
 						{ ctaIcon != "" &&
 							<Fragment>
@@ -271,7 +282,7 @@ class UAGBCallToAction extends Component {
 					</Fragment>
 				}
 
-				{ ( ctaType == "button" ) && (
+				{ ( ctaType == "button" ) && ! inheritFromTheme && (
 					<Fragment>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Button Padding (px)" ) }</h2>
@@ -362,7 +373,7 @@ class UAGBCallToAction extends Component {
 				</TabPanel>
 				}
 
-				{ ( ctaType === "button") &&
+				{ ( ctaType === "button") && ! inheritFromTheme &&
 					<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
 						activeClass="active-tab"
 						tabs={ [
