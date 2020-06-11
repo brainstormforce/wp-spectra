@@ -55,9 +55,11 @@ const {
 	TabPanel,
 	Dashicon
 } = wp.components
+
 const {
 	createBlock
 } = wp.blocks
+
 const getColumnsTemplate = memoize( ( columns ) => {
 	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
 } )
@@ -154,6 +156,7 @@ class UAGBColumns extends Component {
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
 		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
 	}
+
 	render() {
 
 		const { 
@@ -1270,6 +1273,7 @@ class UAGBColumns extends Component {
 				</Fragment>
 			)
 		}
+
 		const blockVariationPickerOnSelect = ( nextVariation = defaultVariation ) => {
 			if ( nextVariation.attributes ) {
 				this.props.setAttributes( nextVariation.attributes );
@@ -1282,6 +1286,7 @@ class UAGBColumns extends Component {
 				);
 			}
 		};
+
 		return (
 			<Fragment>
 				<__experimentalBlockVariationPicker
@@ -1312,8 +1317,6 @@ const applyWithSelect = withSelect( ( select, props ) => {
 		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
 		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
 		replaceInnerBlocks,
-
-		getBlocksByClientId, // passed to controls & inspector
 	};
 } );
 
