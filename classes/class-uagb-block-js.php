@@ -176,7 +176,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_wp_search_js( $attr, $id ) {
-			
+
 			ob_start();
 			?>
 				window.addEventListener(

@@ -4542,7 +4542,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['inputBgColor'],
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'padding-left'    => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
+					'padding-left'     => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 				);
 			}
 
@@ -4568,7 +4568,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 				),
 			);
 
@@ -4587,7 +4587,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-left'  => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 				),
 			);
 			$combined_selectors = array(
