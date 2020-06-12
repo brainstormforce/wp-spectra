@@ -216,7 +216,7 @@ class UAGBWpSearchEdit extends Component {
 
                 <PanelBody
                     title={ __( "Input Box" ) }
-                    initialOpen={ true }
+                    initialOpen={ false }
                     className="uagb__url-panel-body"
 				>
                     <Fragment>
@@ -433,7 +433,7 @@ class UAGBWpSearchEdit extends Component {
                 return (
                     <PanelBody
                         title={ __( "Button" ) }
-                        initialOpen={ true }
+                        initialOpen={ false }
                         className="uagb__url-panel-body"
                     >
                         <Fragment>
@@ -557,7 +557,7 @@ class UAGBWpSearchEdit extends Component {
 
                     <PanelBody
                         title={ __( "Icon" ) }
-                        initialOpen={ true }
+                        initialOpen={ false }
                         className="uagb__url-panel-body"
                     >
                         <Fragment>

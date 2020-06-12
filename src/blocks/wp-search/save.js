@@ -5,13 +5,19 @@
 import classnames from "classnames"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
 
+const {
+	RichText
+} = wp.blockEditor
+
 export default function save( props ) {
 	
 
     const {
         block_id,
         layout,
-        placeholder
+        placeholder,
+        buttonType,
+        buttonText
     } = props.attributes
 
     const renderClassic = () => {
@@ -25,11 +31,19 @@ export default function save( props ) {
                         className="uagb-search-form__input" type="search" name="s" title="Search"/>
                         
                         <button className="uagb-search-submit" type="submit">
-                            <span className="uagb-wp-search-button-icon-wrap">
-                                { renderSVG( 'fas fa-search' ) }
-                            </span>
+                            { "icon" === buttonType &&
+                                <span className="uagb-wp-search-button-icon-wrap">
+                                    { renderSVG( 'fas fa-search' ) }
+                                </span>
+                            }
+                            { "text" === buttonType &&
+                                <RichText.Content
+                                    tagName='span'
+                                    value={ buttonText }
+                                    className='uagb-wp-search-button-text'
+                                />
+                            }
                         </button>
-
                     </div>
                 </form>
             )

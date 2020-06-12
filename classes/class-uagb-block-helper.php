@@ -4466,10 +4466,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'width'            => UAGB_Helper::get_css_value( $attr['inputSize'], 'px' ),
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
-				'font-size'        => UAGB_Helper::get_css_value( $attr['inputFontSize'], $attr['inputFontSizeType'] ),
-				'line-height'      => UAGB_Helper::get_css_value( $attr['inputLineHeight'], $attr['inputLineHeightType'] ),
-				'font-family'      => $attr['inputFontFamily'],
-				'font-weight'      => $attr['inputFontWeight'],
 				'border'           => 0,
 				'border-radius'    => '0px',
 				'margin'           => 0,
@@ -4506,6 +4502,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' => array(
 					'fill' => $attr['buttonIconHoverColor'],
+				),
+				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' => array(
+					'color'			   => $attr['buttonTextColor'],
+				),
+				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
+					'color'			   => $attr['buttonTextHoverColor'],
 				),
 				' .uagb-wp-search-icon-wrap svg'       => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
@@ -4546,8 +4548,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'font-size'      => UAGB_Helper::get_css_value( $attr['inputFontSizeMobile'], $attr['inputFontSizeType'] ),
-					'line-height'    => UAGB_Helper::get_css_value( $attr['inputLineHeightMobile'], $attr['inputLineHeightType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
@@ -4562,8 +4562,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$t_selectors        = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'font-size'      => UAGB_Helper::get_css_value( $attr['inputFontSizeTablet'], $attr['inputFontSizeType'] ),
-					'line-height'    => UAGB_Helper::get_css_value( $attr['inputLineHeightTablet'], $attr['inputLineHeightType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
@@ -4581,6 +4579,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'input', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input', $combined_selectors );
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'button', ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );
 		}
