@@ -58,6 +58,9 @@ export default function save( props ) {
             return (
                 <form className="uagb-search-wrapper" role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
                     <div className="uagb-search-form__container" role="tablist">
+                        <span className="uagb-wp-search-icon-wrap">
+                            { renderSVG( 'fas fa-search' ) }
+                        </span>
                         <input placeholder={ placeholder } 
                         className="uagb-search-form__input" type="search" name="s" title="Search"/>
                     </div>

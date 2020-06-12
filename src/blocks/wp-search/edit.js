@@ -551,7 +551,7 @@ class UAGBWpSearchEdit extends Component {
         }
         const iconSettings = () => {
 
-            if( 'icon' === layout ) {
+            if( 'icon' === layout || 'input' === layout ) {
 
                 return (
 
@@ -632,7 +632,10 @@ class UAGBWpSearchEdit extends Component {
                 
                 return (
                     <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
-                        <div className="uagb-search-form__container wp-block-button" role="tablist">
+                        <div className="uagb-search-form__container" role="tablist">
+                            <span className="uagb-wp-search-icon-wrap">
+                                { renderSVG( 'fas fa-search' ) }
+                            </span>
                             <input placeholder={ placeholder } 
                             className="uagb-search-form__input" type="search" name="s" title="Search"/>
                         </div>

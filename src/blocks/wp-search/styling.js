@@ -162,6 +162,13 @@ function styling( props ) {
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = inputCSS
 
         selectors[' .uagb-search-wrapper .uagb-search-form__container'] = boxCSS
+
+        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap'] = {
+            "background-color": inputBgColor,
+            "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-left": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
+        }
     }
     
     selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = {
@@ -185,6 +192,11 @@ function styling( props ) {
             "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
         },
+        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
+            "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
+            "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
+            "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
+        },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
             "font-size" : generateCSSUnit( buttonFontSizeMobile, buttonFontSizeType ),
             "line-height" : generateCSSUnit( buttonLineHeightMobile, buttonLineHeightType ),
@@ -204,6 +216,11 @@ function styling( props ) {
             "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
+        },
+        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
+            "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
+            "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
+            "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
             "font-size" : generateCSSUnit( buttonFontSizeTablet, buttonFontSizeType ),
