@@ -4489,6 +4489,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			} else {
 				$boxCSS['width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
 			}
+			$icon_color = $attr['textColor'];
+
+			if ( $attr['iconColor'] && '' !== $attr['iconColor'] ) {
+				$icon_color = $attr['iconColor'];
+			}
+
 			$selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' => array(
 					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),
@@ -4514,7 +4520,13 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
 					'color' => $attr['buttonTextHoverColor'],
 				),
-				' .uagb-wp-search-icon-wrap svg' => array(
+				'.uagb-layout-input .uagb-wp-search-icon-wrap svg' => array(
+					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+					'height'    => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+					'fill'      => $icon_color,
+				),
+				'.uagb-layout-icon .uagb-wp-search-icon-wrap svg' => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'height'    => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),

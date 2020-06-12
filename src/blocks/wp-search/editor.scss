@@ -15,6 +15,10 @@
             display: flex;
             align-items: center;
         }
+        svg {
+            fill: currentColor;
+            opacity: 0.6;
+        }
     }
     .uagb-wp-search__outer-wrap {
         min-height: 20px;

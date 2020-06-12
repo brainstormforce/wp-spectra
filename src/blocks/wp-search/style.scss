@@ -15,6 +15,10 @@
             display: flex;
             align-items: center;
         }
+        svg {
+            fill: currentColor;
+            opacity: 0.6;
+        }
     }
     min-height: 20px;
     width: 100%;

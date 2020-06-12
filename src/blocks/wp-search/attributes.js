@@ -91,7 +91,7 @@ const attributes = {
     },
     iconSize: {
 		type: "number",
-		default : 20
+		default : 15
 	},
 	inputloadGoogleFonts: {
 		type: "boolean",
@@ -147,15 +147,15 @@ const attributes = {
 	},
 	vinputPaddingMobile: {
 		type: "number",
-		default : 8
+		default : 10
 	},
 	vinputPaddingTablet: {
 		type: "number",
-		default : 8
+		default : 10
 	},
 	vinputPaddingDesktop: {
 		type: "number",
-		default : 8
+		default : 10
 	},
 	hinputPaddingMobile: {
 		type: "number",

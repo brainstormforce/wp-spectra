@@ -103,12 +103,17 @@ function styling( props ) {
         "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
     }
 
+    var icon_color = textColor
+
+    if ( 'undefined' !== typeof iconColor && '' !== iconColor ) {
+        icon_color = iconColor
+    }
     if ( 'px' === inputSizeType ) {
         boxCSS['max-width'] = generateCSSUnit( inputSize, inputSizeType )
     } else {
         boxCSS['width'] = generateCSSUnit( inputSize, inputSizeType )
     }
-
+    
     selectors = {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' : {
             "width" : generateCSSUnit( buttonWidth, 'px' ),
@@ -138,7 +143,13 @@ function styling( props ) {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' : {
             "fill" : buttonIconHoverColor
         },
-        ' .uagb-wp-search-icon-wrap svg' : {
+        '.uagb-layout-input .uagb-wp-search-icon-wrap svg' : {
+            "width" : generateCSSUnit( iconSize, 'px' ),
+            "height" : generateCSSUnit( iconSize, 'px' ),
+            "font-size" : generateCSSUnit( iconSize, 'px' ),
+            "fill" : icon_color
+        },
+        '.uagb-layout-icon .uagb-wp-search-icon-wrap svg' : {
             "width" : generateCSSUnit( iconSize, 'px' ),
             "height" : generateCSSUnit( iconSize, 'px' ),
             "font-size" : generateCSSUnit( iconSize, 'px' ),
