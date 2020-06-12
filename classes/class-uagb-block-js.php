@@ -186,7 +186,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 					for ( var item = 0;  item < searchBlocks.length; item++ ) {
 						var searchIcon = searchBlocks[item].querySelectorAll( '.uagb-wp-search-icon-wrap' );
 						var input = searchBlocks[item].querySelectorAll( '.uagb-search-form__input' );
-						
 						searchIcon[0].addEventListener("click", function() {
 							if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {   
 								this.parentElement.getElementsByClassName( 'uagb-search-form__input' )[0].focus();

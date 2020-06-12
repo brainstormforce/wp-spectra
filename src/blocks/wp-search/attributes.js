@@ -16,7 +16,7 @@ const attributes = {
     },
     inputSize : {
         type : "number",
-        default: 250
+        default: 100
     },
     textColor : {
         type : "string",
@@ -76,7 +76,7 @@ const attributes = {
 	},
     buttonWidth: {
 		type: "number",
-		default : 30
+		default : 50
     },
     buttonIconSize: {
 		type: "number",
@@ -226,7 +226,7 @@ const attributes = {
 	},
 	inputSizeType : {
 		type:"string",
-		default: "px"
+		default: "%"
 	}
 }
 

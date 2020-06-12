@@ -4496,8 +4496,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border'  => 0,
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' => array(
-					'color' => $attr['textColor'],
-					'opacity' => 0.6
+					'color'   => $attr['textColor'],
+					'opacity' => 0.6,
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
@@ -4514,7 +4514,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
 					'color' => $attr['buttonTextHoverColor'],
 				),
-				' .uagb-wp-search-icon-wrap svg'       => array(
+				' .uagb-wp-search-icon-wrap svg' => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'height'    => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),

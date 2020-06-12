@@ -1,30 +1,49 @@
-[data-type="uagb/wp-search"] .uagb-wp-search__outer-wrap {
-    min-height: 20px;
-    width: 100%;
-    .uagb-search-wrapper .uagb-search-form__container {
-        display: flex;
-        overflow: hidden;
-        .uagb-search-form__input {
-            width: 100%;
+[data-type="uagb/wp-search"] {
+    .uagb-layout-input-button {
+        .uagb-search-submit {
+            color: #fff;
+            border: none;
+            border-radius: 0;
         }
-        &.uagb-icon-input-toggle {
-            width: fit-content;
-            position: absolute;
-            right: 0;
+        svg {
+            fill: currentColor;
+         }
+    }
+    .uagb-layout-input {
+
+        .uagb-wp-search-icon-wrap {
+            display: flex;
+            align-items: center;
+        }
+    }
+    .uagb-wp-search__outer-wrap {
+        min-height: 20px;
+        width: 100%;
+        .uagb-search-wrapper .uagb-search-form__container {
+            display: flex;
+            overflow: hidden;
             .uagb-search-form__input {
-                width: 0;
-                padding: 0;
-                border-style: none;
+                width: 100%;
             }
-            &.wp-search-active .uagb-search-form__input {
+            &.uagb-icon-input-toggle {
+                width: fit-content;
+                position: absolute;
                 right: 0;
-                position: relative;
-            }
-            .uagb-wp-search-icon-wrap {
-                display: flex;
-                align-items: center;
-                cursor: pointer;
-                z-index: 999;
+                .uagb-search-form__input {
+                    width: 0;
+                    padding: 0;
+                    border-style: none;
+                }
+                &.wp-search-active .uagb-search-form__input {
+                    right: 0;
+                    position: relative;
+                }
+                .uagb-wp-search-icon-wrap {
+                    display: flex;
+                    align-items: center;
+                    cursor: pointer;
+                    z-index: 999;
+                }
             }
         }
     }
