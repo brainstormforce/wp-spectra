@@ -2219,11 +2219,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array(),
 						'skipEditor' => true,
 					),
-					'uagb-wp-search'         => array(
-						'src'        => UAGB_URL . 'assets/js/wp-search.js',
-						'dep'        => array(),
-						'skipEditor' => true,
-					),
 				);
 			}
 			return self::$block_assets;
