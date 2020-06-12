@@ -22,7 +22,8 @@ const attributes = {
         type : "string",
     },
     inputBgColor : {
-        type : "string",
+		type : "string",
+		default: "#ECEEEF"
     },
     boxShadowColor: {
 		type: "string"
@@ -61,7 +62,7 @@ const attributes = {
     },
     buttonBgColor: {
 		type: "string",
-		default: "#eeeeee"
+		default: "#abb8c3"
     },
     buttonBgHoverColor: {
 		type: "string",
@@ -83,7 +84,7 @@ const attributes = {
 	},    
     iconColor: {
 		type: "string",
-		default: "#cf2e2e"
+		default: ""
     },
     iconHoverColor: {
 		type: "string",

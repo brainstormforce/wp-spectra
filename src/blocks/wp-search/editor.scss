@@ -8,19 +8,20 @@
             width: 100%;
         }
         &.uagb-icon-input-toggle {
-            
+            width: fit-content;
             position: absolute;
             right: 0;
-            width: 0;
-            padding: 0;
-            border-style: none;
-            &.wp-search-active {
-                .uagb-search-form__input {
-                    right: 0;
-                    position: relative;            
-                }
+            .uagb-search-form__input {
+                width: 0;
+                padding: 0;
+                border-style: none;
+            }
+            &.wp-search-active .uagb-search-form__input {
+                right: 0;
+                position: relative;
             }
             .uagb-wp-search-icon-wrap {
+                display: flex;
                 align-items: center;
                 cursor: pointer;
                 z-index: 999;
