@@ -17,7 +17,8 @@ const {
 } = wp.element
 const {
 	InspectorControls,
-	ColorPalette,
+    ColorPalette,
+    RichText
 } = wp.blockEditor
 
 const {
@@ -118,6 +119,22 @@ class UAGBWpSearchEdit extends Component {
             hinputPaddingMobile,
             hinputPaddingTablet,
             hinputPaddingDesktop,
+            buttonType,
+            buttonText,
+            buttonloadGoogleFonts,
+            buttonFontFamily,
+            buttonFontWeight,
+            buttonFontSubset,
+            buttonFontSize,
+            buttonFontSizeType,
+            buttonFontSizeTablet,
+            buttonFontSizeMobile,
+            buttonLineHeight,
+            buttonLineHeightType,
+            buttonLineHeightTablet,
+            buttonLineHeightMobile,
+            buttonTextColor,
+            buttonTextHoverColor
         } = attributes
         
         var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
@@ -141,6 +158,21 @@ class UAGBWpSearchEdit extends Component {
 				</WebfontLoader>
 			)
         }
+        let loadButtonGoogleFonts;
+
+		if( buttonloadGoogleFonts == true ) {
+			
+			const qconfig = {
+				google: {
+					families: [ buttonFontFamily + ( buttonFontWeight ? ':' + buttonFontWeight : '' ) ],
+				},
+			};
+
+			loadButtonGoogleFonts = (
+				<WebfontLoader config={ qconfig }>
+				</WebfontLoader>
+			)
+        }
         
         const generalSettings = () => {
             return (
@@ -154,9 +186,9 @@ class UAGBWpSearchEdit extends Component {
 						label={ __( "Layout" ) }
 						value={ layout }
 						options={ [
-							{ value: "input", label: __( "Input Box" ) },
+							{ value: "input", label: __( "Minimal" ) },
 							{ value: "icon", label: __( "Icon" ) },
-							{ value: "input-button", label: __( "Input Box with Button" ) },
+							{ value: "input-button", label: __( "Classic" ) },
 						] }
 						onChange={ (value) => setAttributes( { layout: value } ) }
 					/>
@@ -397,6 +429,45 @@ class UAGBWpSearchEdit extends Component {
                         <Fragment>
                             <hr className="uagb-editor__separator" />
                             <h2>{ __( "Button" ) }</h2>
+                            <SelectControl
+                                label={ __( "Type" ) }
+                                value={ buttonType }
+                                options={ [
+                                    { value: "icon", label: __( "Icon" ) },
+                                    { value: "text", label: __( "Text" ) },
+                                ] }
+                                onChange={ value => {
+                                    setAttributes( { buttonType: value } )
+                                } }
+                            />
+                            { 'text' === buttonType &&
+                                <Fragment>
+                                    <TextControl
+                                        label="Text"
+                                        value={ buttonText }
+                                        onChange={ value => {
+                                            setAttributes( { buttonText: value } )
+                                        } }
+                                    />
+                                    <TypographyControl
+                                        label={ __( "Typography" ) }
+                                        attributes = { attributes }
+                                        setAttributes = { setAttributes }
+                                        loadGoogleFonts = { { value: buttonloadGoogleFonts, label: 'buttonloadGoogleFonts'  } }
+                                        fontFamily = { { value: buttonFontFamily, label: 'buttonFontFamily'  } }
+                                        fontWeight = { { value: buttonFontWeight, label: 'buttonFontWeight'  } }
+                                        fontSubset = { { value: buttonFontSubset, label: 'buttonFontSubset'  } }
+                                        fontSizeType = { { value: buttonFontSizeType, label: 'buttonFontSizeType' } }
+                                        fontSize = { { value: buttonFontSize, label: 'buttonFontSize'  } }
+                                        fontSizeMobile = { { value: buttonFontSizeMobile, label: 'buttonFontSizeMobile'  } }
+                                        fontSizeTablet= { { value: buttonFontSizeTablet, label: 'buttonFontSizeTablet' } }
+                                        lineHeightType = { { value: buttonLineHeightType, label: 'buttonLineHeightType' } }
+                                        lineHeight = { { value: buttonLineHeight, label: 'buttonLineHeight'  } }
+                                        lineHeightMobile = { { value: buttonLineHeightMobile, label: 'buttonLineHeightMobile'  } }
+                                        lineHeightTablet= { { value: buttonLineHeightTablet, label: 'buttonLineHeightTablet'  } }
+                                    />
+                                </Fragment>
+                            }
                             <RangeControl
                                 label={ __( "Width" ) }
                                 value={ buttonWidth }
@@ -419,30 +490,50 @@ class UAGBWpSearchEdit extends Component {
                                     onChange={ ( value ) => setAttributes( { buttonBgHoverColor: value } ) }
                                     allowReset
                                 />
+                                { 'text' === buttonType &&
+                                    <Fragment>
+                                        <p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextColor }} ></span></span></p>
+                                        <ColorPalette
+                                            value={ buttonTextColor }
+                                            onChange={ ( value ) => setAttributes( { buttonTextColor: value } ) }
+                                            allowReset
+                                        />
+                                        <p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonTextHoverColor }} ></span></span></p>
+                                        <ColorPalette
+                                            value={ buttonTextHoverColor }
+                                            onChange={ ( value ) => setAttributes( { buttonTextHoverColor: value } ) }
+                                            allowReset
+                                        />
+                                    </Fragment>
+                                }
                             </Fragment>
                             <hr className="uagb-editor__separator" />
-                            <h2>{ __( "Icon" ) }</h2>
-                            <RangeControl
-                                label={ __( "Size" ) }
-                                value={ buttonIconSize }
-                                onChange={ value => {
-                                    setAttributes( { buttonIconSize: value } )
-                                } }
-                                min={ 0 }
-                                max={ 500 }
-                            />
-                            <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ buttonIconColor }
-                                onChange={ ( value ) => setAttributes( { buttonIconColor: value } ) }
-                                allowReset
-                            />
-                            <p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconHoverColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ buttonIconHoverColor }
-                                onChange={ ( value ) => setAttributes( { buttonIconHoverColor: value } ) }
-                                allowReset
-                            />
+                            { 'icon' === buttonType &&
+                                <Fragment>
+                                    <h2>{ __( "Icon" ) }</h2>
+                                    <RangeControl
+                                        label={ __( "Size" ) }
+                                        value={ buttonIconSize }
+                                        onChange={ value => {
+                                            setAttributes( { buttonIconSize: value } )
+                                        } }
+                                        min={ 0 }
+                                        max={ 500 }
+                                    />
+                                    <p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconColor }} ></span></span></p>
+                                    <ColorPalette
+                                        value={ buttonIconColor }
+                                        onChange={ ( value ) => setAttributes( { buttonIconColor: value } ) }
+                                        allowReset
+                                    />
+                                    <p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: buttonIconHoverColor }} ></span></span></p>
+                                    <ColorPalette
+                                        value={ buttonIconHoverColor }
+                                        onChange={ ( value ) => setAttributes( { buttonIconHoverColor: value } ) }
+                                        allowReset
+                                    />
+                                </Fragment>
+                            }
                         </Fragment>
 
                     }
@@ -478,24 +569,9 @@ class UAGBWpSearchEdit extends Component {
             )
 
         }
-        const renderButton = () => {
+        const renderClassic = () => {
             
             if ( 'input-button' === layout ) {
-                
-                return (
-                        <button className="uagb-search-submit wp-block-button__link" type="submit">
-                            <span className="uagb-wp-search-button-icon-wrap">
-                                { renderSVG( 'fas fa-search' ) }
-                            </span>
-                        </button>
-                )
-            }
-
-            return '';
-        }
-        const renderSearchForm = () => {
-            
-            if ( 'input-button' === layout || 'input' === layout ) {
                 
                 return (
                     <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
@@ -503,8 +579,41 @@ class UAGBWpSearchEdit extends Component {
                             <input placeholder={ placeholder } 
                             className="uagb-search-form__input" type="search" name="s" title="Search"/>
                             
-                            { renderButton() }
+                            <button className="uagb-search-submit wp-block-button__link" type="submit">
+                                { "icon" === buttonType &&
+                                    <span className="uagb-wp-search-button-icon-wrap">
+                                        { renderSVG( 'fas fa-search' ) }
+                                    </span>
+                                }
+                                { "text" === buttonType &&
+                                    <RichText
+                                        tagName="span"
+                                        placeholder={ __( "Search" ) }
+                                        value={ buttonText }
+                                        onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+                                        className='uagb-wp-search-button-text'
+                                        multiline={false}
+                                        allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
+                                    />
+                                }
+                            </button>
 
+                        </div>
+                    </form>
+                )
+            }
+
+            return '';
+        }
+        const renderMinimal = () => {
+            
+            if ( 'input' === layout ) {
+                
+                return (
+                    <form className="uagb-search-wrapper" onSubmit={ this.formPreventDefault } role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
+                        <div className="uagb-search-form__container wp-block-button" role="tablist">
+                            <input placeholder={ placeholder } 
+                            className="uagb-search-form__input" type="search" name="s" title="Search"/>
                         </div>
                     </form>
                 )
@@ -547,9 +656,11 @@ class UAGBWpSearchEdit extends Component {
                 { generalSettings() }
                 { stylingSettings() }
             </InspectorControls>
-            { renderSearchForm() }
+            { renderClassic() }
+            { renderMinimal() }
             { renderIcon() }
             { loadInputGoogleFonts }
+            { loadButtonGoogleFonts }
             </div>
 		)
 	}

@@ -176,6 +176,62 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
+	buttonType: {
+		type: "string",
+		default: "icon"
+	},
+	buttonText: {
+		type: "string",
+		default: "Search"
+	},
+	buttonloadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	buttonFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	buttonFontWeight: {
+		type: "string",
+	},
+	buttonFontSubset: {
+		type: "string",
+	},
+	buttonFontSize: {
+		type: "number",
+	},
+	buttonFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	buttonFontSizeTablet: {
+		type: "number",
+	},
+	buttonFontSizeMobile: {
+		type: "number",
+	},
+	buttonLineHeight: {
+		type: "number",
+	},
+	buttonLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	buttonLineHeightTablet: {
+		type: "number",
+	},
+	buttonLineHeightMobile: {
+		type: "number",
+	},
+	buttonTextColor: {
+		type: "string",
+		default: "#313131"
+    },
+    buttonTextHoverColor: {
+		type: "string",
+		default: "#313131"
+	},
 }
 
 export default attributes

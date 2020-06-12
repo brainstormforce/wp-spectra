@@ -52,7 +52,18 @@ function styling( props ) {
         hinputPaddingMobile,
         hinputPaddingTablet,
         hinputPaddingDesktop,
-        inheritButtonColors,
+        buttonFontFamily,
+        buttonFontWeight,
+        buttonFontSize,
+        buttonFontSizeType,
+        buttonFontSizeTablet,
+        buttonFontSizeMobile,
+        buttonLineHeight,
+        buttonLineHeightType,
+        buttonLineHeightTablet,
+        buttonLineHeightMobile,
+        buttonTextColor,
+        buttonTextHoverColor
     } = props.attributes
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -107,6 +118,16 @@ function styling( props ) {
             "height" : generateCSSUnit( buttonIconSize, 'px' ),
             "font-size" : generateCSSUnit( buttonIconSize, 'px' ),
             "fill" : buttonIconColor
+        },
+        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
+            "font-size" : generateCSSUnit( buttonFontSize, buttonFontSizeType ),
+            "line-height" : generateCSSUnit( buttonLineHeight, buttonLineHeightType ),
+            "font-family": buttonFontFamily,
+            "font-weight": buttonFontWeight,
+            "color" : buttonTextColor
+        },
+        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' : {
+            "color" : buttonTextHoverColor
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' : {
             "fill" : buttonIconHoverColor
@@ -163,7 +184,11 @@ function styling( props ) {
             "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
-        }
+        },
+        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
+            "font-size" : generateCSSUnit( buttonFontSizeMobile, buttonFontSizeType ),
+            "line-height" : generateCSSUnit( buttonLineHeightMobile, buttonLineHeightType ),
+        },
     }
 
     tablet_selectors = {
@@ -179,7 +204,11 @@ function styling( props ) {
             "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
-        }
+        },
+        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
+            "font-size" : generateCSSUnit( buttonFontSizeTablet, buttonFontSizeType ),
+            "line-height" : generateCSSUnit( buttonLineHeightTablet, buttonLineHeightType ),
+        },
     }
     var styling_css = '';
     var id = `.uagb-block-${ block_id }`
