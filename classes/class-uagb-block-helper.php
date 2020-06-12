@@ -4520,7 +4520,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'      => $attr['iconColor'],
 				),
-				' .uagb-wp-search-icon-wrap:hover svg' => array(
+				'.uagb-layout-icon .uagb-wp-search-icon-wrap:hover svg' => array(
 					'fill' => $attr['iconHoverColor'],
 				),
 			);

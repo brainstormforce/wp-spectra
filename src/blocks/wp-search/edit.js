@@ -574,12 +574,16 @@ class UAGBWpSearchEdit extends Component {
                                 onChange={ ( value ) => setAttributes( { iconColor: value } ) }
                                 allowReset
                             />
-                            <p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconHoverColor }} ></span></span></p>
-                            <ColorPalette
-                                value={ iconHoverColor }
-                                onChange={ ( value ) => setAttributes( { iconHoverColor: value } ) }
-                                allowReset
-                            />
+                            { 'icon' === layout && 
+                                <Fragment>
+                                    <p className="uagb-setting-label">{ __( "Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: iconHoverColor }} ></span></span></p>
+                                    <ColorPalette
+                                        value={ iconHoverColor }
+                                        onChange={ ( value ) => setAttributes( { iconHoverColor: value } ) }
+                                        allowReset
+                                    />
+                                </Fragment>
+                            }
                         </Fragment>
 
                     </PanelBody>

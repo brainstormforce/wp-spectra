@@ -144,7 +144,7 @@ function styling( props ) {
             "font-size" : generateCSSUnit( iconSize, 'px' ),
             "fill" : iconColor
         },
-        ' .uagb-wp-search-icon-wrap:hover svg' : {
+        '.uagb-layout-icon .uagb-wp-search-icon-wrap:hover svg' : {
             "fill" : iconHoverColor
         },
     }
