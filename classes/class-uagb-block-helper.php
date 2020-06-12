@@ -4463,7 +4463,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$boxShadowPositionCSS = '';
 			}
 			$inputCSS  = array(
-				'width'            => UAGB_Helper::get_css_value( $attr['inputSize'], 'px' ),
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
 				'border'           => 0,
@@ -4474,16 +4473,17 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 				'padding-right'    => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 				'padding-left'     => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-				'transition'       => 'all .5s',
 				'box-shadow'       => '0 0 0 transparent',
 			);
 			$boxCSS    = array(
+				'width'            => UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] ),
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
 				'outline'       => 'unset',
 				'border-radius' => UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' ),
 				'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+				'transition'       => 'all .5s'
 			);
 			$selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' => array(
@@ -4523,6 +4523,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'icon' === $attr['layout'] ) {
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = $inputCSS;
 
+				$selectors['.uagb-layout-icon.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = array (
+					'width' => '100%'
+				);
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active'] = $boxCSS;
 
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = array(

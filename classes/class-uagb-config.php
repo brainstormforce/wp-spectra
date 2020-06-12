@@ -2168,6 +2168,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonLineHeightMobile'  => '',
 							'buttonTextColor'         => '#313131',
 							'buttonTextHoverColor'    => '#313131',
+							'inputSizeType'			  => 'px',
 						),
 					),
 				);

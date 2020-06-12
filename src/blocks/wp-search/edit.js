@@ -134,7 +134,8 @@ class UAGBWpSearchEdit extends Component {
             buttonLineHeightTablet,
             buttonLineHeightMobile,
             buttonTextColor,
-            buttonTextHoverColor
+            buttonTextHoverColor,
+            inputSizeType
         } = attributes
         
         var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
@@ -198,12 +199,16 @@ class UAGBWpSearchEdit extends Component {
                             value= { placeholder }
                             onChange={ value => setAttributes( { placeholder: value } ) }
                         />
+                        <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+                            <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputSizeType === "px" } aria-pressed={ inputSizeType === "px" } onClick={ () => setAttributes( { inputSizeType: "px" } ) }>{ "px" }</Button>
+                            <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputSizeType === "%" } aria-pressed={ inputSizeType === "%" } onClick={ () => setAttributes( { inputSizeType: "%" } ) }>{ "%" }</Button>
+                        </ButtonGroup>
                         <RangeControl
                             label={ __( "Input Size" ) }
                             value={ inputSize }
                             onChange={ ( value ) => setAttributes( { inputSize: value } ) }
                             min={ 0 }
-                            max={ 1000 }
+                            max={ ( "px" === inputSizeType ) ? 500 : 100 }
                         />
                     </Fragment>
                     

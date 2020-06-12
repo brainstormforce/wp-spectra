@@ -3,9 +3,12 @@
     width: 100%;
     .uagb-search-wrapper .uagb-search-form__container {
         display: flex;
-        width: fit-content;
         overflow: hidden;
+        .uagb-search-form__input {
+            width: 100%;
+        }
         &.uagb-icon-input-toggle {
+            width: fit-content;
             position: absolute;
             right: 0;
             .uagb-search-form__input {

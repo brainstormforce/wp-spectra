@@ -232,6 +232,10 @@ const attributes = {
 		type: "string",
 		default: "#313131"
 	},
+	inputSizeType : {
+		type:"string",
+		default: "px"
+	}
 }
 
 export default attributes

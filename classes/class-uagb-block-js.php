@@ -181,7 +181,7 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			?>
 				window.addEventListener(
 				'load', function () {
-					
+
 					var searchBlocks = document.getElementsByClassName( 'uagb-layout-icon' );
 					for ( var item = 0;  item < searchBlocks.length; item++ ) {
 						var searchIcon = searchBlocks[item].querySelectorAll( '.uagb-wp-search-icon-wrap' );

@@ -63,7 +63,8 @@ function styling( props ) {
         buttonLineHeightTablet,
         buttonLineHeightMobile,
         buttonTextColor,
-        buttonTextHoverColor
+        buttonTextHoverColor,
+        inputSizeType
     } = props.attributes
 
     var boxShadowPositionCSS = boxShadowPosition;
@@ -77,7 +78,6 @@ function styling( props ) {
     var mobile_selectors = {}
     
     var inputCSS = {
-        "width": generateCSSUnit( inputSize, 'px' ),
         "color": textColor,
         "background-color": inputBgColor,
         "font-size" : generateCSSUnit( inputFontSize, inputFontSizeType ),
@@ -96,6 +96,7 @@ function styling( props ) {
         "box-shadow" : "0 0 0 transparent",
     }
     var boxCSS = {
+        "width": generateCSSUnit( inputSize, inputSizeType ),
         "border-style" : borderStyle,
         "border-width" : generateCSSUnit( borderWidth, 'px' ),
         "border-color" : borderColor,
