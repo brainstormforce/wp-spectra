@@ -21,9 +21,6 @@ const attributes = {
     textColor : {
         type : "string",
     },
-    placeholderColor : {
-        type : "string",
-    },
     inputBgColor : {
         type : "string",
     },

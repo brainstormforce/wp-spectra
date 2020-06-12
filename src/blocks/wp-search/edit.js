@@ -77,7 +77,6 @@ class UAGBWpSearchEdit extends Component {
             placeholder,
             inputSize,
             textColor,
-            placeholderColor,
             inputBgColor,
             boxShadowColor,
             boxShadowHOffset,
@@ -365,12 +364,6 @@ class UAGBWpSearchEdit extends Component {
                         <ColorPalette
                             value={ inputBgColor }
                             onChange={ ( value ) => setAttributes( { inputBgColor: value } ) }
-                            allowReset
-                        />
-                        <p className="uagb-setting-label">{ __( "Placeholder Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: placeholderColor }} ></span></span></p>
-                        <ColorPalette
-                            value={ placeholderColor }
-                            onChange={ ( value ) => setAttributes( { placeholderColor: value } ) }
                             allowReset
                         />
                         <BoxShadowControl

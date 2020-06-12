@@ -12,7 +12,6 @@ function styling( props ) {
         layout,
         inputSize,
         textColor,
-        placeholderColor,
         inputBgColor,
         boxShadowColor,
         boxShadowHOffset,
@@ -117,7 +116,8 @@ function styling( props ) {
             "border" : 0,
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' : {
-            "color": placeholderColor
+            "color": textColor,
+            "opacity": 0.6
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' : {
             "width" : generateCSSUnit( buttonIconSize, 'px' ),

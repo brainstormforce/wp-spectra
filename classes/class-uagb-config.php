@@ -2110,7 +2110,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'placeholder'             => 'Type & Hit Enter',
 							'inputSize'               => 250,
 							'textColor'               => '',
-							'placeholderColor'        => '',
 							'inputBgColor'            => '',
 							'boxShadowColor'          => '',
 							'boxShadowHOffset'        => 0,
@@ -2168,7 +2167,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonLineHeightMobile'  => '',
 							'buttonTextColor'         => '#313131',
 							'buttonTextHoverColor'    => '#313131',
-							'inputSizeType'			  => 'px',
+							'inputSizeType'           => 'px',
 						),
 					),
 				);
