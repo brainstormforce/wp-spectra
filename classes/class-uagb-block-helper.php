@@ -4504,10 +4504,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'fill' => $attr['buttonIconHoverColor'],
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' => array(
-					'color'			   => $attr['buttonTextColor'],
+					'color' => $attr['buttonTextColor'],
 				),
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
-					'color'			   => $attr['buttonTextHoverColor'],
+					'color' => $attr['buttonTextHoverColor'],
 				),
 				' .uagb-wp-search-icon-wrap svg'       => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
