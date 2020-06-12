@@ -158,7 +158,8 @@ class UAGBColumns extends Component {
 
 	onColumnsChange( value ) {
 		const { setAttributes } = this.props
-		console.log(value)
+		
+		console.log(JSON.stringify(value))
 		setAttributes( { variationsOptions: value } )	
 	}
 	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
@@ -317,6 +318,7 @@ class UAGBColumns extends Component {
 				scope: [ 'block' ],
 			}, label: "2" },
 		]
+		
 		const bottomSettings = (
 			<Fragment>
 				<SelectControl

@@ -301,7 +301,7 @@ const attributes = {
 		default: "outset"
 	},
 	variationsOptions: {
-		type: "array"
+		type: "object"
 	}
 }
 
