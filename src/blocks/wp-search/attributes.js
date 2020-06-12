@@ -47,19 +47,17 @@ const attributes = {
     },
     borderStyle: {
 		type: "string",
-		default : "solid"
+		default : "none"
 	},
 	borderWidth: {
 		type: "number",
-		default : 1
 	},
 	borderRadius: {
 		type: "number",
-		default : 4
+		default : 3
 	},
 	borderColor: {
 		type: "string",
-		default: "#313131"
     },
     buttonBgColor: {
 		type: "string",
@@ -67,7 +65,6 @@ const attributes = {
     },
     buttonBgHoverColor: {
 		type: "string",
-		default: "#eeeeee"
     },
     buttonIconColor: {
 		type: "string",
@@ -75,7 +72,6 @@ const attributes = {
     },
     buttonIconHoverColor: {
 		type: "string",
-		default: "#313131"
 	},
     buttonWidth: {
 		type: "number",
@@ -91,7 +87,6 @@ const attributes = {
     },
     iconHoverColor: {
 		type: "string",
-		default: "#cf2e2e"
     },
     iconSize: {
 		type: "number",
@@ -151,27 +146,27 @@ const attributes = {
 	},
 	vinputPaddingMobile: {
 		type: "number",
-		default : 10
+		default : 8
 	},
 	vinputPaddingTablet: {
 		type: "number",
-		default : 10
+		default : 8
 	},
 	vinputPaddingDesktop: {
 		type: "number",
-		default : 10
+		default : 8
 	},
 	hinputPaddingMobile: {
 		type: "number",
-		default : 10
+		default : 13
 	},
 	hinputPaddingTablet: {
 		type: "number",
-		default : 10
+		default : 13
 	},
 	hinputPaddingDesktop: {
 		type: "number",
-		default : 10
+		default : 13
 	},
 	buttonType: {
 		type: "string",
@@ -227,7 +222,6 @@ const attributes = {
     },
     buttonTextHoverColor: {
 		type: "string",
-		default: "#313131"
 	},
 	inputSizeType : {
 		type:"string",
