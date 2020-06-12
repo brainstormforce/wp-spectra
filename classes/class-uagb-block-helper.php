@@ -4476,7 +4476,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'box-shadow'       => '0 0 0 transparent',
 			);
 			$boxCSS    = array(
-				'width'            => UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] ),
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
@@ -4485,6 +4484,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 				'transition'       => 'all .5s'
 			);
+			if ( 'px' === $attr['inputSizeType'] ) {
+				$boxCSS['max-width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
+			} else {
+				$boxCSS['width'] = UAGB_Helper::get_css_value( $attr['inputSize'], $attr['inputSizeType'] );
+			}
 			$selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' => array(
 					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),

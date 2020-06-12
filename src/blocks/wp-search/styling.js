@@ -96,7 +96,6 @@ function styling( props ) {
         "box-shadow" : "0 0 0 transparent",
     }
     var boxCSS = {
-        "width": generateCSSUnit( inputSize, inputSizeType ),
         "border-style" : borderStyle,
         "border-width" : generateCSSUnit( borderWidth, 'px' ),
         "border-color" : borderColor,
@@ -104,7 +103,13 @@ function styling( props ) {
         "border-radius" : generateCSSUnit( borderRadius, 'px' ),
         "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
     }
-    
+
+    if ( 'px' === inputSizeType ) {
+        boxCSS['max-width'] = generateCSSUnit( inputSize, inputSizeType )
+    } else {
+        boxCSS['width'] = generateCSSUnit( inputSize, inputSizeType )
+    }
+
     selectors = {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' : {
             "width" : generateCSSUnit( buttonWidth, 'px' ),
