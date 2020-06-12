@@ -210,18 +210,17 @@ class UAGBWpSearchEdit extends Component {
                 </PanelBody>
             )
         }
-        const stylingSettings = () => {
+        const inputSettings = () => {
 
             return (
 
                 <PanelBody
-                    title={ __( "Styling" ) }
+                    title={ __( "Input Box" ) }
                     initialOpen={ true }
                     className="uagb__url-panel-body"
 				>
                     <Fragment>
 
-                        <h2> { __( "Input Box" ) }</h2>
                         <TypographyControl
                             label={ __( "Typography" ) }
                             attributes = { attributes }
@@ -379,7 +378,7 @@ class UAGBWpSearchEdit extends Component {
                             boxShadowSpread = { { value: boxShadowSpread, label: __( "Spread" ) } }
                             boxShadowPosition = { { value: boxShadowPosition, label: __( "Position" ) } }
                         />
-                        <hr className="uagb-editor__separator" />
+                        
                         <h2>{ __( "Border" ) }</h2>
                         <SelectControl
                             label={ __( "Style" ) }
@@ -424,11 +423,20 @@ class UAGBWpSearchEdit extends Component {
                             allowReset
                         />
                     </Fragment> 
-                    { 'input-button' === layout &&
+                </PanelBody>
+            )
+        }
+        const buttonSettings = () => {
 
+            if( 'input-button' === layout ) {
+
+                return (
+                    <PanelBody
+                        title={ __( "Button" ) }
+                        initialOpen={ true }
+                        className="uagb__url-panel-body"
+                    >
                         <Fragment>
-                            <hr className="uagb-editor__separator" />
-                            <h2>{ __( "Button" ) }</h2>
                             <SelectControl
                                 label={ __( "Type" ) }
                                 value={ buttonType }
@@ -507,9 +515,9 @@ class UAGBWpSearchEdit extends Component {
                                     </Fragment>
                                 }
                             </Fragment>
-                            <hr className="uagb-editor__separator" />
                             { 'icon' === buttonType &&
                                 <Fragment>
+                                    <hr className="uagb-editor__separator" />
                                     <h2>{ __( "Icon" ) }</h2>
                                     <RangeControl
                                         label={ __( "Size" ) }
@@ -534,13 +542,25 @@ class UAGBWpSearchEdit extends Component {
                                     />
                                 </Fragment>
                             }
-                        </Fragment>
+                        </Fragment> 
+                    </PanelBody>
+                )
+            }
+            
+            return '';
+        }
+        const iconSettings = () => {
 
-                    }
-                    { 'icon' === layout &&
-                        
+            if( 'icon' === layout ) {
+
+                return (
+
+                    <PanelBody
+                        title={ __( "Icon" ) }
+                        initialOpen={ true }
+                        className="uagb__url-panel-body"
+                    >
                         <Fragment>
-                            <h2>{ __( "Icon" ) }</h2>
                             <RangeControl
                                 label={ __( "Size" ) }
                                 value={ iconSize }
@@ -564,10 +584,11 @@ class UAGBWpSearchEdit extends Component {
                             />
                         </Fragment>
 
-                    }
-                </PanelBody>
-            )
+                    </PanelBody>
+                )
+            }
 
+            return '';
         }
         const renderClassic = () => {
             
@@ -654,7 +675,9 @@ class UAGBWpSearchEdit extends Component {
             >
             <InspectorControls>
                 { generalSettings() }
-                { stylingSettings() }
+                { inputSettings() }
+                { buttonSettings() }
+                { iconSettings() }
             </InspectorControls>
             { renderClassic() }
             { renderMinimal() }
