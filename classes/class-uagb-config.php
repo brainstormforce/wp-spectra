@@ -2123,7 +2123,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'borderColor'             => '',
 							'buttonBgColor'           => '#abb8c3',
 							'buttonBgHoverColor'      => '',
-							'buttonIconColor'         => '#313131',
+							'buttonIconColor'         => '',
 							'buttonIconHoverColor'    => '',
 							'buttonWidth'             => 50,
 							'buttonIconSize'          => 15,

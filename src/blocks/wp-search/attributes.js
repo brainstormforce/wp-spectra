@@ -69,7 +69,6 @@ const attributes = {
     },
     buttonIconColor: {
 		type: "string",
-		default: "#313131"
     },
     buttonIconHoverColor: {
 		type: "string",

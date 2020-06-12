@@ -186,9 +186,9 @@ class UAGBWpSearchEdit extends Component {
 						label={ __( "Layout" ) }
 						value={ layout }
 						options={ [
+                            { value: "input-button", label: __( "Classic" ) },
 							{ value: "input", label: __( "Minimal" ) },
 							{ value: "icon", label: __( "Icon" ) },
-							{ value: "input-button", label: __( "Classic" ) },
 						] }
 						onChange={ (value) => setAttributes( { layout: value } ) }
 					/>
