@@ -44,20 +44,6 @@ const variations = [
 		scope: [ 'block' ],
 	},
 	{
-		name: 'two-column-third',
-		label: __( 'Two columns; two thirds, one third split' ),
-		icon: rowIcons.layout6633,
-		attributes: {
-			columns: 2,
-			layout: '66-33',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { width: '66' } ],
-			[ 'uagb/column', { width: '33' } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
 		name: 'three-column',
 		label: __( 'Three columns; equal split' ),
 		icon: rowIcons.layout502525,

@@ -300,9 +300,6 @@ const attributes = {
 		type: "string",
 		default: "outset"
 	},
-	variationsOptions: {
-		type: "object"
-	}
 }
 
 export default attributes
