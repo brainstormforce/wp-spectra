@@ -187,13 +187,14 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 						var searchIcon = searchBlocks[item].querySelectorAll( '.uagb-wp-search-icon-wrap' );
 						var input = searchBlocks[item].querySelectorAll( '.uagb-search-form__input' );
 						searchIcon[0].addEventListener("click", function() {
+							
 							if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {   
 								this.parentElement.getElementsByClassName( 'uagb-search-form__input' )[0].focus();
 							}
 						}
 						);
 						input[0].addEventListener("focus", function() {
-								if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {
+								if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) { 
 									this.parentElement.classList.add( 'wp-search-active' )
 								}
 							}

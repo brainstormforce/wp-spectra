@@ -24,13 +24,15 @@
         min-height: 20px;
         width: 100%;
         .uagb-search-wrapper .uagb-search-form__container {
+            
             display: flex;
             overflow: hidden;
             .uagb-search-form__input {
                 width: 100%;
             }
             &.uagb-icon-input-toggle {
-                width: fit-content;
+                align-items: center;
+                width: 100%;
                 position: absolute;
                 right: 0;
                 .uagb-search-form__input {
@@ -43,6 +45,8 @@
                     position: relative;
                 }
                 .uagb-wp-search-icon-wrap {
+                    position: absolute;
+                    right: 0;
                     display: flex;
                     align-items: center;
                     cursor: pointer;

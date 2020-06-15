@@ -169,7 +169,7 @@ function styling( props ) {
         }
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active'] = boxCSS
 
-        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = {
+        selectors[' .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = {
             "background-color": inputBgColor,
             "transition" : "all .5s",
             "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
