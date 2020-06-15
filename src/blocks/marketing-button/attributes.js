@@ -280,6 +280,9 @@ const attributes = {
 		type: "number",
 		default: 20
 	},
+	opensInNewTab: {
+		type: "boolean"
+	}
 }
 
 export default attributes

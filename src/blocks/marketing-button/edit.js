@@ -30,7 +30,8 @@ const {
 	InspectorControls,
 	RichText,
 	PanelColorSettings,
-	ColorPalette
+	ColorPalette,
+	__experimentalLinkControl
 } = wp.blockEditor
 
 const {
@@ -42,11 +43,23 @@ const {
 	Button,
 	Dashicon,
 	ToggleControl,
-	TextControl
+	TextControl,
+	Popover,
+	ToolbarButton,
+	ToolbarGroup,
 } = wp.components
 
 
 class UAGBMarketingButtonEdit extends Component {
+
+	constructor() {
+		super( ...arguments )
+		this.onClickLinkSettings = this.onClickLinkSettings.bind(this)
+		this.onChangeOpensInNewTab = this.onChangeOpensInNewTab.bind(this)
+		this.state = {
+			isURLPickerOpen:false,
+		}
+	}
 
 	componentDidMount() {
 
@@ -68,6 +81,29 @@ class UAGBMarketingButtonEdit extends Component {
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
+		}
+	}
+
+	onClickLinkSettings () {
+		
+		const { attributes, setAttributes } = this.props
+		if ( false === attributes.linkTarget ) {
+			setAttributes( { opensInNewTab: false } )
+		} else if ( true === attributes.linkTarget ) {
+			setAttributes( { opensInNewTab: true } )
+		}
+
+		this.setState( {
+			isURLPickerOpen: true
+		}) 
+	}
+
+	onChangeOpensInNewTab ( value ) {
+		console.log(value)
+		if ( true === value ) {
+			this.props.setAttributes( { linkTarget: true } )
+		} else {
+			this.props.setAttributes( { linkTarget: false } )
 		}
 	}
 
@@ -147,6 +183,7 @@ class UAGBMarketingButtonEdit extends Component {
 			prefixLineHeight,
 			prefixLineHeightTablet,
 			prefixLineHeightMobile,
+			opensInNewTab,
 		} = attributes
 
 		// Load Google fonts for heading.
@@ -181,7 +218,31 @@ class UAGBMarketingButtonEdit extends Component {
 			)
 		}
 
+		const linkControl = this.state.isURLPickerOpen && (
+
+			<Popover
+				position="bottom center"
+				onClose={ () => this.setState( {
+					isURLPickerOpen: false
+				}) }
+			>
+				<__experimentalLinkControl
+					value={ { url:link, opensInNewTab:opensInNewTab }  }
+					onChange={( {
+					url: newURL = '',
+					opensInNewTab: newOpensInNewTab,
+					} ) => {
+						setAttributes( { link: newURL } );
+						setAttributes( { opensInNewTab: newOpensInNewTab } );
+						this.onChangeOpensInNewTab( newOpensInNewTab );
+						
+					} }
+				/>
+			</Popover>
+		);
+
 		return (
+			
 			<Fragment>
 				<BlockControls>
 					<BlockAlignmentToolbar
@@ -192,6 +253,17 @@ class UAGBMarketingButtonEdit extends Component {
 						controls={ [ "left", "center", "right", "full" ] }
 					/>
 				</BlockControls>
+				<BlockControls>
+					<ToolbarGroup>
+						<ToolbarButton
+							icon = 'admin-links'
+							name="link"
+							title={ __( 'Link' ) }
+							onClick={ this.onClickLinkSettings }
+						/>
+					</ToolbarGroup>
+				</BlockControls>
+				{ linkControl }
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
 						<h2>{ __( "Link" ) }</h2>
@@ -679,6 +751,7 @@ class UAGBMarketingButtonEdit extends Component {
 									value={ heading }
 									tagName= { titleTag }
 									onChange={ ( value ) => setAttributes( { heading: value } ) }
+									allowedFormats={ [ "bold", "italic", "strikethrough" ] }
 									className='uagb-marketing-btn__title'
 									onRemove={ () => this.props.onReplace( [] ) }
 									multiline={ false }
@@ -702,6 +775,7 @@ class UAGBMarketingButtonEdit extends Component {
 									value={ prefix }
 									tagName='p'
 									onChange={ ( value ) => setAttributes( { prefix: value } ) }
+									allowedFormats={ [ "bold", "italic", "strikethrough" ] }
 									className='uagb-marketing-btn__prefix'
 									onRemove={ () => this.props.onReplace( [] ) }
 									multiline={ false }
