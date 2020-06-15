@@ -267,8 +267,7 @@ class UAGBColumns extends Component {
 			boxShadowVOffset,
 			boxShadowBlur,
 			boxShadowSpread,
-			boxShadowPosition,
-			variationsOptions
+			boxShadowPosition
 		} = attributes
 		
 		const CustomTag = `${tag}`
