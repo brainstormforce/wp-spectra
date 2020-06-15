@@ -67,96 +67,6 @@ const getColumnsTemplate = memoize( ( columns ) => {
 	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
 } )
 
-const variationsOptionsArray = [
-	{ name: "uagb-first-element" },
-	{
-		name: 'one-column',
-		label: __( 'One column' ),
-		attributes: {
-			columns: 1,
-			layout: '100',
-		},
-		isDefault: true,
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 100 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'two-column-split',
-		label: __( 'Two columns; equal split' ),
-		attributes: {
-			columns: 2,
-			layout: '50-50',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 50 } ],
-			[ 'uagb/column', { colWidth: 50 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'three-column',
-		label: __( 'Three columns; equal split' ),
-		attributes: {
-			columns: 3,
-			layout: '50-25-25',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 50 } ],
-			[ 'uagb/column', { colWidth: 25 } ],
-			[ 'uagb/column', { colWidth: 25 } ],
-
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'four-column',
-		label: __( 'Four columns; equal split' ),
-		attributes: {
-			columns: 4,
-			layout: '25-25-25-25',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 25 } ],
-			[ 'uagb/column', { colWidth: 25 } ],
-			[ 'uagb/column', { colWidth: 25 } ],
-			[ 'uagb/column', { colWidth: 25 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'five-column',
-		label: __( 'Five columns; equal split' ),
-		attributes: {
-			columns: 5,
-			layout: '20-20-20-20',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 20 } ],
-			[ 'uagb/column', { colWidth: 20 } ],
-			[ 'uagb/column', { colWidth: 20 } ],
-			[ 'uagb/column', { colWidth: 20 } ],
-		],
-		scope: [ 'block' ],
-	},
-	{
-		name: 'six-column',
-		label: __( 'Six columns; equal split' ),
-		attributes: {
-			columns: 6,
-			layout: '16.66-16.66-16.66-16.66',
-		},
-		innerBlocks: [
-			[ 'uagb/column', { colWidth: 16.66 } ],
-			[ 'uagb/column', { colWidth: 16.66 } ],
-			[ 'uagb/column', { colWidth: 16.66 } ],
-			[ 'uagb/column', { colWidth: 16.66 } ],
-		],
-		scope: [ 'block' ],
-	},
-]
-
 class UAGBColumns extends Component {
 
 	constructor() {
@@ -166,7 +76,6 @@ class UAGBColumns extends Component {
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 		this.onSelectVideo = this.onSelectVideo.bind( this )
-		this.onColumnsChange = this.onColumnsChange.bind( this )
 		this.blockVariationPickerOnSelect = this.blockVariationPickerOnSelect.bind( this )
 	}
 
@@ -245,16 +154,6 @@ class UAGBColumns extends Component {
 			return
 		}
 		setAttributes( { backgroundVideo: media } )
-	}
-
-	onColumnsChange( value ) {
-
-		const { setAttributes } = this.props
-
-		setAttributes( { columns: value } )
-
-		this.blockVariationPickerOnSelect( variationsOptionsArray[ value ] )
-		
 	}
 
 	blockVariationPickerOnSelect ( nextVariation = this.props.defaultVariation ) {
@@ -671,56 +570,13 @@ class UAGBColumns extends Component {
 					<InspectorControls>
 						<PanelBody title={ __( "Layout" ) }>
 
-							<ButtonGroup className="block-editor-block-variation-picker__variations" aria-label={ __( "Size Type" ) }>
-								<Button key={ 1 } value={ 1 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 1 }`
-								) } isSmall isPrimary={ columns === 1 } aria-pressed={ columns === 1 } onClick={ () => this.onColumnsChange( 1 ) } >{ rowIcons.colOne }</Button>
-								<Button key={ 2 } value={ 2 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 2 }`
-								) } isSmall isPrimary={ columns === 2 } aria-pressed={ columns === 2 } onClick={ () => this.onColumnsChange( 2 ) }>{ rowIcons.layout5050 }</Button>
-								<Button key={ 3 } value={ 3 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 3 }`
-								) } isSmall isPrimary={ columns === 3 } aria-pressed={ columns === 3 } onClick={ () => this.onColumnsChange( 3 ) } >{ rowIcons.layout502525 }</Button>
-								<Button key={ 4 } value={ 4 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 4 }`
-								) } isSmall isPrimary={ columns === 4 } aria-pressed={ columns === 4 } onClick={ () => this.onColumnsChange( 4 ) }>{ rowIcons.layout25252525 }</Button>
-								<Button key={ 5 } value={ 5 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 5 }`
-								) } isSmall isPrimary={ columns === 5 } aria-pressed={ columns === 5 } onClick={ () => this.onColumnsChange( 5 ) } >{ rowIcons.layout25252525 }</Button>
-								<Button key={ 6 } value={ 6 } className={ classnames(
-									"components-button",
-									"block-editor-block-variation-picker__variation",
-									"uagb-variation",
-									"is-secondary",
-									"has-icon",
-									`is-active-${ columns === 6 }`
-								) } isSmall isPrimary={ columns === 6 } aria-pressed={ columns === 6 } onClick={ () => this.onColumnsChange( 6 ) }>{ rowIcons.layout25252525 }</Button>
-							</ButtonGroup>
+							<RangeControl
+								label={ __( "Columns" ) }
+								value={ columns }
+								min={ 0 }
+								max={ 6 }
+								onChange={ ( value ) => setAttributes( { columns: value } ) }
+							/>
 							<SelectControl
 								label={ __( "Stack on" ) }
 								value={ stack }
