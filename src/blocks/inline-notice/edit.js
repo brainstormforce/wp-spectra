@@ -45,6 +45,15 @@ let svg_icons = Object.keys( UAGBIcon )
 class UAGBInlineNoticeEdit extends Component {
 
 	componentDidMount() {
+		const { getCurrentPostId } = wp.data.select("core/editor");
+		const post_id = getCurrentPostId();
+
+	    // const currentHours = new Date().getHours();
+	    var currentDate = new Date(); //without params it defaults to "now"
+		var timestamp = currentDate.getHours() + "-" + currentDate.getMinutes() + "-" + currentDate.getSeconds();
+
+		// const cookie_id = currentDate + timestamp ;
+		this.props.setAttributes( { c_id: post_id + timestamp } )
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId } )
@@ -62,6 +71,7 @@ class UAGBInlineNoticeEdit extends Component {
 			attributes: {
 				block_id,
 				icon,
+				c_id,
 				noticeTitle,
 				noticeContent,
 				noticeDismiss,
@@ -106,7 +116,7 @@ class UAGBInlineNoticeEdit extends Component {
 			attributes,
 		} = this.props;
 
-		// Notice dismiss options
+	   	// Notice dismiss options
 		const noticeDismissOptions = [
 			{ value: '', label: __( 'Always allow' ) },
 			{
@@ -348,7 +358,7 @@ class UAGBInlineNoticeEdit extends Component {
 					`uagb-inline_notice__align-${ noticeAlignment }`,
 					`uagb-block-${ block_id }`
 					) }
-					data-id= { block_id }
+					data-id = { c_id }
 					data-cookies= { cookies }
 					data-cookies-days= { close_cookie_days }
 				>

@@ -7,6 +7,10 @@
 	block_id: {
 		type: "string",
 	},
+	c_id: {
+		type: "string",
+		default : null
+	},
 	noticeTitle: {
 		type: "string",
 		default: "Notice Title",

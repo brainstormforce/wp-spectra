@@ -16,6 +16,7 @@ export default function save( props ) {
 
 	const {
 		block_id,
+		c_id,
 		noticeTitle,
 		noticeContent,
 		noticeAlignment,
@@ -24,7 +25,7 @@ export default function save( props ) {
 		cookies,
 		close_cookie_days
 	} = attributes
-
+ 
 	let image_icon_html = ''
 
 	if ( noticeDismiss ) {
@@ -40,7 +41,7 @@ export default function save( props ) {
 			`uagb-inline_notice__align-${ noticeAlignment }`,
 			`uagb-block-${ block_id }`
 		) }
-		data-id= { block_id }
+		data-id = { c_id }
 		data-cookies= { cookies }
 		data-cookies-days= { close_cookie_days }
 		>
