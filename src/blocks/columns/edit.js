@@ -1297,7 +1297,7 @@ class UAGBColumns extends Component {
 			<Fragment>
 				<__experimentalBlockVariationPicker
 					icon ={ UAGB_Block_Icons.columns }
-					label={ __( 'Advanced Columns' ) }
+					label={ uagb_blocks_info.blocks["uagb/columns"]["title"] }
 					instructions={ __( 'Select a variation to start with.' ) }
 					variations={ variations }
 					allowSkip

@@ -23,7 +23,6 @@ const variations = [
 			columns: 1,
 			layout: '100',
 		},
-		isDefault: true,
 		innerBlocks: [
 			[ 'uagb/column', { colWidth: 100 } ],
 		],
@@ -37,6 +36,7 @@ const variations = [
 			columns: 2,
 			layout: '50-50',
 		},
+		isDefault: true,
 		innerBlocks: [
 			[ 'uagb/column', { colWidth: 50 } ],
 			[ 'uagb/column', { colWidth: 50 } ],
