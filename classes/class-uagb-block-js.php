@@ -180,14 +180,14 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/inline-notice']['attributes'];
 
-			$attr          = array_merge( $defaults, (array) $attr );
+			$attr          = wp_json_encode( array_merge( $defaults, (array) $attr ) );
 			$base_selector = '.uagb-block-';
-			$selector      = $base_selector . $id;
+			$selector      = esc_attr( $base_selector . $id) ;
 
 			ob_start();
 			?>
 			jQuery( document ).ready(function() {
-				UAGBInlineNotice._run( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+				UAGBInlineNotice._run( <?php echo ( $attr ); ?>, '<?php echo ( $selector ); ?>' );
 			});
 			<?php
 			return ob_get_clean();
