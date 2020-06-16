@@ -1144,7 +1144,7 @@ class UAGBGF extends Component {
 			event.preventDefault()
 		})
 
-		var element = document.getElementById( "uagb-gf-style-" + this.props.clientId.substr( 0, 8 ) )
+		var element = document.getElementById( "uagb-gf-styler-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
 			element.innerHTML = styling( this.props )
