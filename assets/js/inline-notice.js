@@ -10,9 +10,6 @@
 	var current_cookie = Cookies.get( 'uagb-notice-' + unique_id );
 
 	$( document ).ready(function() {
-		if ( true === is_cookie && 'undefined' !== typeof current_cookie ) {
-			$(id).addClass("active").hide()
-		}
 
 		if( 'undefined' === typeof current_cookie && true === is_cookie ){
 			$(id).show()

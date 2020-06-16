@@ -337,7 +337,7 @@ class UAGBInlineNoticeEdit extends Component {
 				</PanelBody>
 			)
 		}
-
+		
 		return (
 			<Fragment>
 				<BlockControls key="controls">

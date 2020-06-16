@@ -13,6 +13,9 @@
 }
 
 .wp-block-uagb-inline-notice{
+    &.active {
+        display: none;
+    }
     position: relative;
     h4 {
         font-weight: bold;

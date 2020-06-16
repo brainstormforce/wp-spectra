@@ -2199,7 +2199,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					),
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
-						'dep'        => array( 'jquery', 'uael-cookie-lib' ),
+						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
 						'skipEditor' => true,
 					),
 				);

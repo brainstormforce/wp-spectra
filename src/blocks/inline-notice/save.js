@@ -32,14 +32,18 @@ export default function save( props ) {
 		image_icon_html = <span className="uagb-notice-dismiss">{ renderSVG(icon) }</span>
 	}
 
-
+	var active = '';
+	if ( true === cookies ) {
+		active = 'active';
+	}
 	return (
 		<div className={ classnames(
 			className,
 			"uagb-inline_notice__outer-wrap",
 			`${ noticeDismiss }`,
 			`uagb-inline_notice__align-${ noticeAlignment }`,
-			`uagb-block-${ block_id }`
+			`uagb-block-${ block_id }`,
+			`${ active }`
 		) }
 		data-id = { c_id }
 		data-cookies= { cookies }
