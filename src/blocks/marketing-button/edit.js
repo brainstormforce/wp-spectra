@@ -85,20 +85,13 @@ class UAGBMarketingButtonEdit extends Component {
 	}
 
 	onClickLinkSettings () {
-		
-		const { attributes, setAttributes } = this.props
-
 		this.setState( {
 			isURLPickerOpen: true
 		}) 
 	}
 
 	onChangeOpensInNewTab ( value ) {
-		if ( true === value ) {
-			this.props.setAttributes( { linkTarget: true } )
-		} else {
-			this.props.setAttributes( { linkTarget: false } )
-		}
+		this.props.setAttributes( { linkTarget: value } )
 	}
 
 	render() {
@@ -264,11 +257,6 @@ class UAGBMarketingButtonEdit extends Component {
 							value={ link }
 							onChange={ ( value ) => setAttributes( { link: value } ) }
 							placeholder={ __( "Enter URL" ) }
-						/>
-						<ToggleControl
-							label={ __( "Open link in New Tab" ) }
-							checked={ linkTarget }
-							onChange={ ( value ) => setAttributes( { linkTarget : ! linkTarget } ) }
 						/>
 						<SelectControl
 							label={ __( "Text Alignment" ) }
