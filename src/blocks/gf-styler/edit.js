@@ -505,7 +505,7 @@ class UAGBGF extends Component {
 		    	) }
 
 		    	<SelectControl
-		    		label={ __( "Title & Description" ) }
+		    		label={ __( "Form Title & Description" ) }
 		    		value={ titleDescStyle }
 		    		onChange={ ( value ) => setAttributes( { titleDescStyle: value } ) }
 		    		options={ [
@@ -517,7 +517,7 @@ class UAGBGF extends Component {
 	    		{ ( titleDescStyle !== "none" ) && (
 
 	  		    	<SelectControl
-	  					label={ __( "Title & Description Alignment" ) }
+	  					label={ __( "Form Title & Description Alignment" ) }
 	  					value={ titleDescAlignment }
 	  					onChange={ ( value ) => setAttributes( { titleDescAlignment: value } ) }
 	  					options={ [
