@@ -188,11 +188,11 @@ module.exports = function(grunt) {
 
 	// Update Font Awesome library.
     grunt.registerTask('font-awesome', function () {
+		this.async();
         var request = require('request');
         var fs = require('fs');
 
         request('https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json', function (error, response, body) {
-			console.log(response);
 
             if (response && response.statusCode == 200) {
 
