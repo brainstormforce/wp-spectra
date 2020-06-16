@@ -169,48 +169,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Get WP Search Js
-		 *
-		 * @since x.x.x
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_wp_search_js( $attr, $id ) {
-
-			ob_start();
-			?>
-				window.addEventListener(
-				'load', function () {
-
-					var searchBlocks = document.getElementsByClassName( 'uagb-layout-icon' );
-					for ( var item = 0;  item < searchBlocks.length; item++ ) {
-						var searchIcon = searchBlocks[item].querySelectorAll( '.uagb-wp-search-icon-wrap' );
-						var input = searchBlocks[item].querySelectorAll( '.uagb-search-form__input' );
-						searchIcon[0].addEventListener("click", function() {
-							if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) {   
-								this.parentElement.getElementsByClassName( 'uagb-search-form__input' )[0].focus();
-							}
-						}
-						);
-						input[0].addEventListener("focus", function() {
-								if ( ! this.parentElement.classList.contains( 'wp-search-active' ) ) { 
-									this.parentElement.classList.add( 'wp-search-active' )
-								}
-							}
-						);
-						input[0].addEventListener("blur", function() {
-								if ( this.parentElement.classList.contains( 'wp-search-active' ) ) {
-									this.parentElement.classList.remove( 'wp-search-active' )
-								}
-							}
-						);
-					}
-				}
-			);
-			<?php
-			return ob_get_clean();
-		}
-		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
 		 * @since 1.9.1
