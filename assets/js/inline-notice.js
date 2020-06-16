@@ -4,6 +4,11 @@
 
 	_run: function( attr, id ) {
 
+	var unique_id = $(id).data( 'id' );
+	var is_cookie = $(id).data( 'cookies' );
+	var cookies_days = $(id).data( 'cookies-days' );
+	var current_cookie = Cookies.get( 'uagb-notice-' + unique_id );
+
 	$( document ).ready(function() {
 		if ( true === is_cookie && 'undefined' !== typeof current_cookie ) {
 			$(id).addClass("active").hide()
@@ -14,11 +19,6 @@
 		}
 	});
 	
-	var unique_id = $(id).data( 'id' );
-	var is_cookie = $(id).data( 'cookies' );
-	var cookies_days = $(id).data( 'cookies-days' );
-	var current_cookie = Cookies.get( 'uagb-notice-' + unique_id );
-
 	var dismissible = document.querySelector( '.uagb-notice-dismiss' );
 
 	if ( dismissible ) {
