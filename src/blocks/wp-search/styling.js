@@ -113,32 +113,32 @@ function styling( props ) {
     }
     
     selectors = {
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' : {
+        ' .uagb-search-form__container .uagb-search-submit' : {
             "width" : generateCSSUnit( buttonWidth, 'px' ),
             "padding": 0,
             "border" : 0,
         },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' : {
+        ' .uagb-search-form__container .uagb-search-form__input::placeholder' : {
             "color": textColor,
             "opacity": 0.6
         },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' : {
+        ' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' : {
             "width" : generateCSSUnit( buttonIconSize, 'px' ),
             "height" : generateCSSUnit( buttonIconSize, 'px' ),
             "font-size" : generateCSSUnit( buttonIconSize, 'px' ),
             "fill" : buttonIconColor
         },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
+        ' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
             "font-size" : generateCSSUnit( buttonFontSize, buttonFontSizeType ),
             "line-height" : generateCSSUnit( buttonLineHeight, buttonLineHeightType ),
             "font-family": buttonFontFamily,
             "font-weight": buttonFontWeight,
             "color" : buttonTextColor
         },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' : {
+        ' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' : {
             "color" : buttonTextHoverColor
         },
-        ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' : {
+        ' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' : {
             "fill" : buttonIconHoverColor
         },
         '.uagb-layout-input .uagb-wp-search-icon-wrap svg' : {
@@ -151,7 +151,7 @@ function styling( props ) {
 
     if ( 'input-button' === layout || 'input' === layout ) {
 
-        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = inputCSS
+        selectors[' .uagb-search-form__container .uagb-search-form__input'] = inputCSS
 
         selectors[' .uagb-search-wrapper .uagb-search-form__container'] = boxCSS
 
@@ -171,10 +171,10 @@ function styling( props ) {
         }
     }
     
-    selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit'] = {
+    selectors['.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit'] = {
         "background-color" : buttonBgColor,
     }
-    selectors['.uagb-layout-input-button .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover'] = {
+    selectors['.uagb-layout-input-button .uagb-search-form__container .uagb-search-submit:hover'] = {
         "background-color" : buttonBgHoverColor,
     }
 

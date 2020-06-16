@@ -4495,28 +4495,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit' => array(
+				' .uagb-search-form__container .uagb-search-submit' => array(
 					'width'   => UAGB_Helper::get_css_value( $attr['buttonWidth'], 'px' ),
 					'padding' => 0,
 					'border'  => 0,
 				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input::placeholder' => array(
+				' .uagb-search-form__container .uagb-search-form__input::placeholder' => array(
 					'color'   => $attr['textColor'],
 					'opacity' => 0.6,
 				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' => array(
+				' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' => array(
 					'width'     => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
 					'height'    => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
 					'font-size' => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
 					'fill'      => $attr['buttonIconColor'],
 				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' => array(
+				' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' => array(
 					'fill' => $attr['buttonIconHoverColor'],
 				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' => array(
+				' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' => array(
 					'color' => $attr['buttonTextColor'],
 				),
-				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
+				' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-text' => array(
 					'color' => $attr['buttonTextHoverColor'],
 				),
 				'.uagb-layout-input .uagb-wp-search-icon-wrap svg' => array(
@@ -4528,7 +4528,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
-				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
+				$selectors[' .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
 				$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
 
