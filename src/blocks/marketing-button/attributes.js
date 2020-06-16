@@ -279,7 +279,7 @@ const attributes = {
 	iconFontSizeMobile: {
 		type: "number",
 		default: 20
-	},
+	}
 }
 
 export default attributes
