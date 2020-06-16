@@ -4462,19 +4462,27 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'outset' === $attr['boxShadowPosition'] ) {
 				$boxShadowPositionCSS = '';
 			}
-			$inputCSS = array(
+			$vInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$hInputPaddingDesktop = UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] );
+			$vInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$hInputPaddingTablet  = UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeDesktop'] );
+			$vInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$hInputPaddingMobile  = UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeDesktop'] );
+			$iconSize             = UAGB_Helper::get_css_value( $attr['iconSize'], 'px' );
+			$buttonIconSize       = UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' );
+			$inputCSS             = array(
 				'color'            => $attr['textColor'],
 				'background-color' => $attr['inputBgColor'],
 				'border'           => 0,
 				'border-radius'    => '0px',
 				'margin'           => 0,
 				'outline'          => 'unset',
-				'padding-top'      => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-				'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-				'padding-right'    => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-				'padding-left'     => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
+				'padding-top'      => $vInputPaddingDesktop,
+				'padding-bottom'   => $vInputPaddingDesktop,
+				'padding-right'    => $hInputPaddingDesktop,
+				'padding-left'     => $hInputPaddingDesktop,
 			);
-			$boxCSS   = array(
+			$boxCSS               = array(
 				'border-style'  => $attr['borderStyle'],
 				'border-width'  => UAGB_Helper::get_css_value( $attr['borderWidth'], 'px' ),
 				'border-color'  => $attr['borderColor'],
@@ -4505,9 +4513,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'opacity' => 0.6,
 				),
 				' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' => array(
-					'width'     => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
-					'height'    => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
-					'font-size' => UAGB_Helper::get_css_value( $attr['buttonIconSize'], 'px' ),
+					'width'     => $buttonIconSize,
+					'height'    => $buttonIconSize,
+					'font-size' => $buttonIconSize,
 					'fill'      => $attr['buttonIconColor'],
 				),
 				' .uagb-search-form__container .uagb-search-submit:hover .uagb-wp-search-button-icon-wrap svg' => array(
@@ -4520,9 +4528,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'color' => $attr['buttonTextHoverColor'],
 				),
 				'.uagb-layout-input .uagb-wp-search-icon-wrap svg' => array(
-					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'height'    => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
+					'width'     => $iconSize,
+					'height'    => $iconSize,
+					'font-size' => $iconSize,
 					'fill'      => $icon_color,
 				),
 			);
@@ -4541,9 +4549,9 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 				$selectors[' .uagb-search-form__container .uagb-wp-search-icon-wrap'] = array(
 					'background-color' => $attr['inputBgColor'],
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
+					'padding-top'      => $vInputPaddingDesktop,
+					'padding-bottom'   => $vInputPaddingDesktop,
+					'padding-left'     => $hInputPaddingDesktop,
 				);
 			}
 
@@ -4556,29 +4564,29 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$m_selectors = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
+					'padding-top'    => $vInputPaddingMobile,
+					'padding-bottom' => $vInputPaddingMobile,
+					'padding-right'  => $hInputPaddingMobile,
+					'padding-left'   => $hInputPaddingMobile,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
+					'padding-top'    => $vInputPaddingMobile,
+					'padding-bottom' => $vInputPaddingMobile,
+					'padding-left'   => $hInputPaddingMobile,
 				),
 			);
 
 			$t_selectors        = array(
 				' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
+					'padding-top'    => $vInputPaddingTablet,
+					'padding-bottom' => $vInputPaddingTablet,
+					'padding-right'  => $hInputPaddingTablet,
+					'padding-left'   => $hInputPaddingTablet,
 				),
 				' .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
+					'padding-top'    => $vInputPaddingTablet,
+					'padding-bottom' => $vInputPaddingTablet,
+					'padding-left'   => $hInputPaddingTablet,
 				),
 			);
 			$combined_selectors = array(

@@ -129,14 +129,6 @@ const attributes = {
 	inputLineHeightMobile: {
 		type: "number",
 	},
-	inputPaddingTypeMobile: {
-		type: "string",
-		default : "px"
-	},
-	inputPaddingTypeTablet: {
-		type: "string",
-		default : "px"
-	},
 	inputPaddingTypeDesktop: {
 		type: "string",
 		default : "px"

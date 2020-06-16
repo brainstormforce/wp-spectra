@@ -115,8 +115,6 @@ class UAGBWpSearchEdit extends Component {
             inputLineHeightType,
             inputLineHeightTablet,
             inputLineHeightMobile,
-            inputPaddingTypeMobile,
-            inputPaddingTypeTablet,
             inputPaddingTypeDesktop,
             vinputPaddingMobile,
             vinputPaddingTablet,
@@ -267,8 +265,8 @@ class UAGBWpSearchEdit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "px" } aria-pressed={ inputPaddingTypeMobile === "px" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "px" } ) }>{ "px" }</Button>
-                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeMobile === "%" } aria-pressed={ inputPaddingTypeMobile === "%" } onClick={ () => setAttributes( { inputPaddingTypeMobile: "%" } ) }>{ "%" }</Button>
+                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
                                             </ButtonGroup>
                                             <h2>{ __( "Padding" ) }</h2>
                                             <RangeControl
@@ -295,8 +293,8 @@ class UAGBWpSearchEdit extends Component {
                                     tabout = (
                                         <Fragment>
                                             <ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
-                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "px" } aria-pressed={ inputPaddingTypeTablet === "px" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "px" } ) }>{ "px" }</Button>
-                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeTablet === "%" } aria-pressed={ inputPaddingTypeTablet === "%" } onClick={ () => setAttributes( { inputPaddingTypeTablet: "%" } ) }>{ "%" }</Button>
+                                                <Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "px" } aria-pressed={ inputPaddingTypeDesktop === "px" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "px" } ) }>{ "px" }</Button>
+                                                <Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ inputPaddingTypeDesktop === "%" } aria-pressed={ inputPaddingTypeDesktop === "%" } onClick={ () => setAttributes( { inputPaddingTypeDesktop: "%" } ) }>{ "%" }</Button>
                                             </ButtonGroup>
                                             <h2>{ __( "Padding" ) }</h2>
                                             <RangeControl

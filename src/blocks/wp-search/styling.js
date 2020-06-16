@@ -41,8 +41,6 @@ function styling( props ) {
         inputLineHeightType,
         inputLineHeightTablet,
         inputLineHeightMobile,
-        inputPaddingTypeMobile,
-        inputPaddingTypeTablet,
         inputPaddingTypeDesktop,
         vinputPaddingMobile,
         vinputPaddingTablet,
@@ -75,6 +73,15 @@ function styling( props ) {
     var tablet_selectors = {}
     var mobile_selectors = {}
     
+    var $vInputPaddingDesktop = generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop );
+    var $hInputPaddingDesktop = generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop );
+    var $vInputPaddingTablet = generateCSSUnit( vinputPaddingTablet, inputPaddingTypeDesktop );
+    var $hInputPaddingTablet = generateCSSUnit( hinputPaddingTablet, inputPaddingTypeDesktop );
+    var $vInputPaddingMobile = generateCSSUnit( vinputPaddingMobile, inputPaddingTypeDesktop );
+    var $hInputPaddingMobile = generateCSSUnit( hinputPaddingMobile, inputPaddingTypeDesktop );
+    var $iconSize = generateCSSUnit( iconSize, 'px' );
+    var $buttonIconSize = generateCSSUnit( buttonIconSize, 'px' );
+    
     var inputCSS = {
         "color": textColor,
         "background-color": inputBgColor,
@@ -86,10 +93,10 @@ function styling( props ) {
         "border-radius" : '0px',
         "margin" : 0,
         "outline" : "unset",
-        "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-        "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-        "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
-        "padding-left": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
+        "padding-top": $vInputPaddingDesktop,
+        "padding-bottom": $vInputPaddingDesktop,
+        "padding-right": $hInputPaddingDesktop,
+        "padding-left": $hInputPaddingDesktop,
         "transition" : "all .5s",
     }
     var boxCSS = {
@@ -123,9 +130,9 @@ function styling( props ) {
             "opacity": 0.6
         },
         ' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-icon-wrap svg' : {
-            "width" : generateCSSUnit( buttonIconSize, 'px' ),
-            "height" : generateCSSUnit( buttonIconSize, 'px' ),
-            "font-size" : generateCSSUnit( buttonIconSize, 'px' ),
+            "width" : $buttonIconSize,
+            "height" : $buttonIconSize,
+            "font-size" : $buttonIconSize,
             "fill" : buttonIconColor
         },
         ' .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
@@ -142,9 +149,9 @@ function styling( props ) {
             "fill" : buttonIconHoverColor
         },
         '.uagb-layout-input .uagb-wp-search-icon-wrap svg' : {
-            "width" : generateCSSUnit( iconSize, 'px' ),
-            "height" : generateCSSUnit( iconSize, 'px' ),
-            "font-size" : generateCSSUnit( iconSize, 'px' ),
+            "width" : $iconSize,
+            "height" : $iconSize,
+            "font-size" : $iconSize,
             "fill" : icon_color
         },
     }
@@ -165,9 +172,9 @@ function styling( props ) {
 
         selectors[' .uagb-search-form__container .uagb-wp-search-icon-wrap'] = {
             "background-color": inputBgColor,
-            "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-            "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-            "padding-left": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
+            "padding-top": $vInputPaddingDesktop,
+            "padding-bottom": $vInputPaddingDesktop,
+            "padding-left": $hInputPaddingDesktop,
         }
     }
     
@@ -182,15 +189,15 @@ function styling( props ) {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' : {
             "font-size" : generateCSSUnit( inputFontSizeMobile, inputFontSizeType ),
             "line-height" : generateCSSUnit( inputLineHeightMobile, inputLineHeightType ),
-            "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
+            "padding-top": $vInputPaddingMobile,
+            "padding-bottom": $vInputPaddingMobile,
+            "padding-right": $hInputPaddingMobile,
+            "padding-left": $hInputPaddingMobile,
         },
         ' .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
-            "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
+            "padding-top": $vInputPaddingMobile,
+            "padding-bottom": $vInputPaddingMobile,
+            "padding-left": $hInputPaddingMobile,
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
             "font-size" : generateCSSUnit( buttonFontSizeMobile, buttonFontSizeType ),
@@ -202,15 +209,15 @@ function styling( props ) {
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input' : {
             "font-size" : generateCSSUnit( inputFontSizeTablet, inputFontSizeType ),
             "line-height" : generateCSSUnit( inputLineHeightTablet, inputLineHeightType ),
-            "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
+            "padding-top": $vInputPaddingTablet,
+            "padding-bottom": $vInputPaddingTablet,
+            "padding-right": $hInputPaddingTablet,
+            "padding-left": $hInputPaddingTablet,
         },
         ' .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
-            "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
+            "padding-top": $vInputPaddingTablet,
+            "padding-bottom": $vInputPaddingTablet,
+            "padding-left": $hInputPaddingTablet,
         },
         ' .uagb-search-wrapper .uagb-search-form__container .uagb-search-submit .uagb-wp-search-button-text' : {
             "font-size" : generateCSSUnit( buttonFontSizeTablet, buttonFontSizeType ),
