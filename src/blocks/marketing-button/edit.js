@@ -87,11 +87,6 @@ class UAGBMarketingButtonEdit extends Component {
 	onClickLinkSettings () {
 		
 		const { attributes, setAttributes } = this.props
-		if ( false === attributes.linkTarget ) {
-			setAttributes( { opensInNewTab: false } )
-		} else if ( true === attributes.linkTarget ) {
-			setAttributes( { opensInNewTab: true } )
-		}
 
 		this.setState( {
 			isURLPickerOpen: true
@@ -99,7 +94,6 @@ class UAGBMarketingButtonEdit extends Component {
 	}
 
 	onChangeOpensInNewTab ( value ) {
-		console.log(value)
 		if ( true === value ) {
 			this.props.setAttributes( { linkTarget: true } )
 		} else {
@@ -183,7 +177,6 @@ class UAGBMarketingButtonEdit extends Component {
 			prefixLineHeight,
 			prefixLineHeightTablet,
 			prefixLineHeightMobile,
-			opensInNewTab,
 		} = attributes
 
 		// Load Google fonts for heading.
@@ -227,13 +220,13 @@ class UAGBMarketingButtonEdit extends Component {
 				}) }
 			>
 				<__experimentalLinkControl
-					value={ { url:link, opensInNewTab:opensInNewTab }  }
+					value={ { url:link, opensInNewTab:linkTarget }  }
 					onChange={( {
 					url: newURL = '',
 					opensInNewTab: newOpensInNewTab,
 					} ) => {
 						setAttributes( { link: newURL } );
-						setAttributes( { opensInNewTab: newOpensInNewTab } );
+						setAttributes( { linkTarget: newOpensInNewTab } );
 						this.onChangeOpensInNewTab( newOpensInNewTab );
 						
 					} }

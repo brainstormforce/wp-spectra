@@ -279,9 +279,6 @@ const attributes = {
 	iconFontSizeMobile: {
 		type: "number",
 		default: 20
-	},
-	opensInNewTab: {
-		type: "boolean"
 	}
 }
 
