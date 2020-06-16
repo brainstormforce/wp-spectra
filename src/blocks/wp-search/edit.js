@@ -63,7 +63,14 @@ class UAGBWpSearchEdit extends Component {
 			this.setState( {
 				isFocused: true,
 			} )
-		}
+        }
+        
+        var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null != element && "undefined" != typeof element ) {
+			element.innerHTML = styling( this.props )
+        }
+
 	}
     formPreventDefault( e ) {
         e.preventDefault();
@@ -136,12 +143,6 @@ class UAGBWpSearchEdit extends Component {
             inputSizeType
         } = attributes
         
-        var element = document.getElementById( "uagb-style-wp-search-" + this.props.clientId.substr( 0, 8 ) )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-        }
-
         let loadInputGoogleFonts;
 
 		if( inputloadGoogleFonts == true ) {

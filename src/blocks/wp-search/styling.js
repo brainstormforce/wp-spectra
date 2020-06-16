@@ -163,7 +163,7 @@ function styling( props ) {
             }
         }
 
-        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap'] = {
+        selectors[' .uagb-search-form__container .uagb-wp-search-icon-wrap'] = {
             "background-color": inputBgColor,
             "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
             "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
@@ -187,7 +187,7 @@ function styling( props ) {
             "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
         },
-        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
+        ' .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
             "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
@@ -207,7 +207,7 @@ function styling( props ) {
             "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
         },
-        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
+        ' .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
             "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
