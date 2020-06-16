@@ -4473,7 +4473,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 				'padding-right'    => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
 				'padding-left'     => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-				'box-shadow'       => '0 0 0 transparent',
 			);
 			$boxCSS   = array(
 				'border-style'  => $attr['borderStyle'],
@@ -4531,7 +4530,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
+				
 				$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
+
+				if ( 'inset' === $attr['boxShadowPosition'] ) {
+					$selectors[' .uagb-search-wrapper .uagb-search-form__input'] = array(
+
+						'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+					);
+				}
 
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap'] = array(
 					'background-color' => $attr['inputBgColor'],

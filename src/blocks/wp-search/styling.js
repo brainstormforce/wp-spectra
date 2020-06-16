@@ -91,7 +91,6 @@ function styling( props ) {
         "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
         "padding-left": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
         "transition" : "all .5s",
-        "box-shadow" : "0 0 0 transparent",
     }
     var boxCSS = {
         "border-style" : borderStyle,
@@ -155,6 +154,14 @@ function styling( props ) {
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = inputCSS
 
         selectors[' .uagb-search-wrapper .uagb-search-form__container'] = boxCSS
+
+        if ( 'inset' === boxShadowPosition ) {
+
+            selectors[' .uagb-search-wrapper .uagb-search-form__input'] = {
+
+                "box-shadow": generateCSSUnit( boxShadowHOffset, "px" ) + ' ' + generateCSSUnit( boxShadowVOffset, "px" ) + ' ' + generateCSSUnit( boxShadowBlur, "px" ) + ' ' + generateCSSUnit( boxShadowSpread, "px" ) + ' ' + boxShadowColor + ' ' + boxShadowPositionCSS
+            }
+        }
 
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap'] = {
             "background-color": inputBgColor,
