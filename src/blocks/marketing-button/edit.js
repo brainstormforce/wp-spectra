@@ -252,12 +252,6 @@ class UAGBMarketingButtonEdit extends Component {
 				{ linkControl }
 				<InspectorControls>
 					<PanelBody title={ __( "General" ) } initialOpen={ true }>
-						<h2>{ __( "Link" ) }</h2>
-						<TextControl
-							value={ link }
-							onChange={ ( value ) => setAttributes( { link: value } ) }
-							placeholder={ __( "Enter URL" ) }
-						/>
 						<SelectControl
 							label={ __( "Text Alignment" ) }
 							value={ textAlign }
