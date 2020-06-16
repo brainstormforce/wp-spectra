@@ -158,6 +158,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 
 = 1.16.0 =
+* New: WP-Search Block.
+* New: Inline Notice Block.
 * New: Users can now share non-personal usage data to help us test and develop better products.
 * Improvement: FAQ Schema - Revamped the Padding options.
 * Improvement: Post Layout: Ability to show empty post result message.
