@@ -85,9 +85,6 @@ const attributes = {
 		type: "string",
 		default: ""
     },
-    iconHoverColor: {
-		type: "string",
-    },
     iconSize: {
 		type: "number",
 		default : 15

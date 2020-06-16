@@ -70,28 +70,6 @@ export default function save( props ) {
 
         return '';
     }
-    const renderIcon = () => {
-        
-        if ( 'icon' === layout ) {
-         
-            return (
-                <form className="uagb-search-wrapper" role="search" action={ uagb_blocks_info.uagb_home_url } method="get">
-                    <div className={ classnames(
-                            "uagb-search-form__container",
-                            "uagb-icon-input-toggle",
-                        ) } role="tablist">
-                        <input placeholder={ placeholder } className="uagb-search-form__input"
-                        type="search" name="s" title="Search"/>
-                        <span className="uagb-wp-search-icon-wrap">
-                            { renderSVG( 'fas fa-search' ) }
-                        </span>
-                    </div>
-                </form>
-            )
-        }
-        
-        return '';
-    }
 
     return (
 		<div className={ classnames(
@@ -102,7 +80,6 @@ export default function save( props ) {
         >
             { renderClassic() }
             { renderMinimal() }
-            { renderIcon() }
         </div>
 	)
 }

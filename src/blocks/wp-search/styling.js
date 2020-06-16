@@ -30,7 +30,6 @@ function styling( props ) {
         buttonWidth,
         buttonIconSize,
         iconColor,
-        iconHoverColor,
         iconSize,
         inputFontFamily,
         inputFontWeight,
@@ -149,34 +148,8 @@ function styling( props ) {
             "font-size" : generateCSSUnit( iconSize, 'px' ),
             "fill" : icon_color
         },
-        '.uagb-layout-icon .uagb-wp-search-icon-wrap svg' : {
-            "width" : generateCSSUnit( iconSize, 'px' ),
-            "height" : generateCSSUnit( iconSize, 'px' ),
-            "font-size" : generateCSSUnit( iconSize, 'px' ),
-            "fill" : iconColor
-        },
-        '.uagb-layout-icon .uagb-wp-search-icon-wrap:hover svg' : {
-            "fill" : iconHoverColor
-        },
     }
 
-    if ( 'icon' === layout ) {
-
-        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = inputCSS
-
-        selectors['.uagb-layout-icon.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = {
-            'width' : '100%'
-        }
-        selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active'] = boxCSS
-
-        selectors[' .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = {
-            "background-color": inputBgColor,
-            "transition" : "all .5s",
-            "padding-top": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-            "padding-bottom": generateCSSUnit( vinputPaddingDesktop, inputPaddingTypeDesktop ),
-            "padding-right": generateCSSUnit( hinputPaddingDesktop, inputPaddingTypeDesktop ),
-        }
-    }
     if ( 'input-button' === layout || 'input' === layout ) {
 
         selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = inputCSS
@@ -207,11 +180,6 @@ function styling( props ) {
             "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-left": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
         },
-        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap' : {
-            "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
-            "padding-right": generateCSSUnit( hinputPaddingMobile, inputPaddingTypeMobile ),
-        },
         '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
             "padding-top": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
             "padding-bottom": generateCSSUnit( vinputPaddingMobile, inputPaddingTypeMobile ),
@@ -231,11 +199,6 @@ function styling( props ) {
             "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
             "padding-left": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
-        },
-        '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap' : {
-            "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-bottom": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),
-            "padding-right": generateCSSUnit( hinputPaddingTablet, inputPaddingTypeTablet ),
         },
         '.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' : {
             "padding-top": generateCSSUnit( vinputPaddingTablet, inputPaddingTypeTablet ),

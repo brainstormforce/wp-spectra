@@ -4526,33 +4526,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
 					'fill'      => $icon_color,
 				),
-				'.uagb-layout-icon .uagb-wp-search-icon-wrap svg' => array(
-					'width'     => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'height'    => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'font-size' => UAGB_Helper::get_css_value( $attr['iconSize'], 'px' ),
-					'fill'      => $attr['iconColor'],
-				),
-				'.uagb-layout-icon .uagb-wp-search-icon-wrap:hover svg' => array(
-					'fill' => $attr['iconHoverColor'],
-				),
 			);
 
-			if ( 'icon' === $attr['layout'] ) {
-				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = $inputCSS;
-
-				$selectors['.uagb-layout-icon.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-search-form__input'] = array(
-					'width' => '100%',
-				);
-				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active'] = $boxCSS;
-
-				$selectors[' .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap'] = array(
-					'background-color' => $attr['inputBgColor'],
-					'padding-top'      => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['hinputPaddingDesktop'], $attr['inputPaddingTypeDesktop'] ),
-					'transition'       => 'all .5s',
-				);
-			}
 			if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
@@ -4580,11 +4555,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 				),
-				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
-				),
 				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingMobile'], $attr['inputPaddingTypeMobile'] ),
@@ -4598,11 +4568,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-				),
-				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container.uagb-icon-input-toggle.wp-search-active .uagb-wp-search-icon-wrap' => array(
-					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
-					'padding-right'  => UAGB_Helper::get_css_value( $attr['hinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),
 				),
 				'.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-wp-search-icon-wrap' => array(
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vinputPaddingTablet'], $attr['inputPaddingTypeTablet'] ),

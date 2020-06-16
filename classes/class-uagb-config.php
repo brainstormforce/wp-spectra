@@ -2128,7 +2128,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'buttonWidth'             => 50,
 							'buttonIconSize'          => 15,
 							'iconColor'               => '',
-							'iconHoverColor'          => '',
 							'iconSize'                => 15,
 							'inputloadGoogleFonts'    => false,
 							'inputFontFamily'         => 'Default',
