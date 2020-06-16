@@ -28,13 +28,13 @@
    		}
   	 });
 
-  	 $( window ).on( "load", function(){
+  	 $( document ).ready(function() {
   	 	if ( true === is_cookie && 'undefined' !== typeof current_cookie ) {
-       $(id).addClass("active").css('display' ,'none')
+       $(id).addClass("active").hide()
    		}
 
    		if( 'undefined' === typeof current_cookie && true === is_cookie ){
-  	 		$(id).css('display' ,'block')
+  	 		$(id).show()
   	 	}
   	 });
 
