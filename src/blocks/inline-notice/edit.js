@@ -44,24 +44,37 @@ let svg_icons = Object.keys( UAGBIcon )
 
 class UAGBInlineNoticeEdit extends Component {
 
-	componentDidMount() {
+	constructor() {
+
+		super( ...arguments )
+		this.update_cookie_id = this.update_cookie_id.bind(this)
+	}
+
+	update_cookie_id( value ) {
 		const { getCurrentPostId } = wp.data.select("core/editor");
-		const post_id = getCurrentPostId();
+		const post_id = getCurrentPostId().toString();
+		const timestamp = new Date().getTime();
 
-	    // const currentHours = new Date().getHours();
-	    var currentDate = new Date(); //without params it defaults to "now"
-		var timestamp = currentDate.getHours() + "-" + currentDate.getMinutes() + "-" + currentDate.getSeconds();
+		this.props.setAttributes( { c_id: post_id + '-' + timestamp } )
+		this.props.setAttributes( { cookies: value } )
+	}
 
-		// const cookie_id = currentDate + timestamp ;
-		this.props.setAttributes( { c_id: post_id + timestamp } )
-
+	componentDidMount() {
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-inline-notice-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-inline-notice-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate( prevProps ) {
+		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	render() {
@@ -71,7 +84,6 @@ class UAGBInlineNoticeEdit extends Component {
 			attributes: {
 				block_id,
 				icon,
-				c_id,
 				noticeTitle,
 				noticeContent,
 				noticeDismiss,
@@ -124,19 +136,6 @@ class UAGBInlineNoticeEdit extends Component {
 				label: __( 'Dismissible' ),
 			},
 		];
-
-		// Notice dismiss options
-		const noticeDeleteOptions = [
-			{ value: 'none', label: __( 'None' ) },
-			{ value: 'deleteAll', label: __( 'Delete for All' ) },
-			{ value: 'deleteThis', label: __( 'Delete for Current Notice' ), },
-		];
-
-		var element = document.getElementById( "uagb-inline-notice-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
 
 		let loadTitleGoogleFonts;
 		let loadDescriptionGoogleFonts;
@@ -204,24 +203,24 @@ class UAGBInlineNoticeEdit extends Component {
 						</Fragment>
 					}
 					{ noticeDismiss &&
-					<hr className="uagb-editor__separator" />
+						<hr className="uagb-editor__separator" />
 					}
 					{ noticeDismiss &&
-					<ToggleControl
-					label={ __( "Enable Cookies" ) }
-					checked={ cookies }
-					onChange={ ( value ) => setAttributes( { cookies: ! cookies } ) }
-					/>
+						<ToggleControl
+							label={ __( "Enable Cookies" ) }
+							checked={ cookies }
+							onChange={ this.update_cookie_id }
+						/>
 					}
 					{ cookies &&
-					<RangeControl
-						label={ __( "Do Not Show After Closing (days)" ) }
-						value={ close_cookie_days }
-						onChange={ ( value ) => setAttributes( { close_cookie_days: value } ) }
-						min={ 0 }
-						max={ 50 }
-						allowReset
-					/>
+						<RangeControl
+							label={ __( "Do Not Show After Closing (days)" ) }
+							value={ close_cookie_days }
+							onChange={ ( value ) => setAttributes( { close_cookie_days: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
 					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "Colors" ) }</h2>
@@ -358,9 +357,6 @@ class UAGBInlineNoticeEdit extends Component {
 					`uagb-inline_notice__align-${ noticeAlignment }`,
 					`uagb-block-${ block_id }`
 					) }
-					data-id = { c_id }
-					data-cookies= { cookies }
-					data-cookies-days= { close_cookie_days }
 				>
 					{ image_icon_html }
 					<RichText

@@ -34,7 +34,7 @@ export default function save( props ) {
 
 	var active = '';
 	if ( true === cookies ) {
-		active = 'active';
+		active = 'uagb-notice__active';
 	}
 	return (
 		<div className={ classnames(
@@ -45,9 +45,6 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`,
 			`${ active }`
 		) }
-		data-id = { c_id }
-		data-cookies= { cookies }
-		data-cookies-days= { close_cookie_days }
 		>
 			{image_icon_html}
 			<RichText.Content
