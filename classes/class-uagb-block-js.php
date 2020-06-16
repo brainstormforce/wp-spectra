@@ -183,11 +183,11 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			$attr          = array_merge( $defaults, (array) $attr );
 			$base_selector = '.uagb-block-';
 			$selector      = $base_selector . $id;
-			$js_attr = array(
-				'c_id' => $attr['c_id'],
-				'cookies' => $attr['cookies'],
+			$js_attr       = array(
+				'c_id'              => $attr['c_id'],
+				'cookies'           => $attr['cookies'],
 				'close_cookie_days' => $attr['close_cookie_days'],
-				'noticeDismiss' => $attr['noticeDismiss']
+				'noticeDismiss'     => $attr['noticeDismiss'],
 			);
 
 			ob_start();
