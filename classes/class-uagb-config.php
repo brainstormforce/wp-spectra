@@ -2141,8 +2141,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'inputLineHeightType'     => 'em',
 							'inputLineHeightTablet'   => '',
 							'inputLineHeightMobile'   => '',
-							'inputPaddingTypeMobile'  => 'px',
-							'inputPaddingTypeTablet'  => 'px',
 							'inputPaddingTypeDesktop' => 'px',
 							'vinputPaddingMobile'     => 10,
 							'vinputPaddingTablet'     => 10,
