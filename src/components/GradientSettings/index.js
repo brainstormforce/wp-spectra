@@ -24,7 +24,8 @@ function GradientSettings({ attributes, setAttributes }  ) {
     };
 
     //set the gradient value if new gradientvalue is not set
-    if(gradientValue === " "){       
+    if(gradientValue === ""){       
+        setAttributes({gradientValue:"value"});
    
         if ( "linear" === gradientType ) {
             var value = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`
