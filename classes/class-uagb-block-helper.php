@@ -4530,13 +4530,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			if ( 'input-button' === $attr['layout'] || 'input' === $attr['layout'] ) {
 				$selectors['.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input'] = $inputCSS;
 
-				
 				$selectors[' .uagb-search-wrapper .uagb-search-form__container'] = $boxCSS;
 
 				if ( 'inset' === $attr['boxShadowPosition'] ) {
 					$selectors[' .uagb-search-wrapper .uagb-search-form__input'] = array(
 
-						'box-shadow'    => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
+						'box-shadow' => UAGB_Helper::get_css_value( $attr['boxShadowHOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowVOffset'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowBlur'], 'px' ) . ' ' . UAGB_Helper::get_css_value( $attr['boxShadowSpread'], 'px' ) . ' ' . $attr['boxShadowColor'] . ' ' . $boxShadowPositionCSS,
 					);
 				}
 
