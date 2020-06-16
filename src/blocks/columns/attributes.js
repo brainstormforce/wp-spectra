@@ -300,6 +300,10 @@ const attributes = {
 		type: "string",
 		default: "outset"
 	},
+	gradientValue: {
+		type: "string",
+	},
+
 }
 
 export default attributes

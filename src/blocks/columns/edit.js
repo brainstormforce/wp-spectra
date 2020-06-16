@@ -12,6 +12,7 @@ import map from "lodash/map"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
 import BoxShadowControl from "../../components/box-shadow"
+import GradientSettings from "../../components/GradientSettings"
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
@@ -30,7 +31,9 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	MediaUpload,
-	PanelColorSettings
+	PanelColorSettings,	
+	__experimentalUseGradient,
+	__experimentalPanelColorGradientSettings,
 } = wp.blockEditor
 
 const {
@@ -51,6 +54,7 @@ const {
 const getColumnsTemplate = memoize( ( columns ) => {
 	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
 } )
+
 
 
 class UAGBColumns extends Component {
@@ -137,9 +141,11 @@ class UAGBColumns extends Component {
 		setAttributes( { backgroundVideo: media } )
 	}
 
+	
+
 	render() {
 
-		const { attributes, setAttributes, isSelected, className } = this.props
+		const { attributes, setAttributes, isSelected, className,setOverlayColor } = this.props
 
 		const {
 			stack,
@@ -224,9 +230,13 @@ class UAGBColumns extends Component {
 			boxShadowBlur,
 			boxShadowSpread,
 			boxShadowPosition,
+			gradientCss,
+			overlayColor
 		} = attributes
 		
 		const CustomTag = `${tag}`
+
+		
 
 		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
 
@@ -893,6 +903,8 @@ class UAGBColumns extends Component {
 						</TabPanel>
 					</PanelBody>
 					<PanelBody title={ __( "Background" ) } initialOpen={ false }>
+					
+			
 						<SelectControl
 							label={ __( "Background Type" ) }
 							value={ backgroundType }
@@ -999,8 +1011,12 @@ class UAGBColumns extends Component {
 						}
 						{ "gradient" == backgroundType &&
 							( <Fragment>
-								<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
-								<ColorPalette
+								
+
+								<GradientSettings attributes={ attributes }	setAttributes={ setAttributes }/>
+								
+								{/*<p className="uagb-setting-label">{ __( "Color 1" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: backgroundVideoColor }} ></span></span></p>
+								 <ColorPalette
 									value={ gradientColor1 }
 									onChange={ ( colorValue ) => setAttributes( { gradientColor1: colorValue } ) }
 									allowReset
@@ -1061,7 +1077,7 @@ class UAGBColumns extends Component {
 											{ value: "bottom right", label: __( "Bottom Right" ) },
 										] }
 									/>
-								}
+								} */}
 							</Fragment>
 							)
 						}
