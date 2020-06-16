@@ -31,9 +31,6 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	MediaUpload,
-	PanelColorSettings,	
-	__experimentalUseGradient,
-	__experimentalPanelColorGradientSettings,
 } = wp.blockEditor
 
 const {

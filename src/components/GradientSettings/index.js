@@ -14,25 +14,26 @@ function GradientSettings({ attributes, setAttributes }) {
 		gradientType
 	} = attributes;
 
-	const onGradientChange = value => {
-		setAttributes({ gradientValue: value });
-	};
-
+    
 	//set the gradient value to settings if new gradientvalue is not set
 	if (gradientValue === "") {
-		const rgb_gradientColor1 = hexToRgba(gradientColor1);
+        const rgb_gradientColor1 = hexToRgba(gradientColor1);
 		const rgb_gradientColor2 = hexToRgba(gradientColor2);
-
+        
 		if ("linear" === gradientType) {
 			var value = `linear-gradient(${gradientAngle}deg,${rgb_gradientColor1} ${gradientLocation1}%, ${rgb_gradientColor2} ${gradientLocation2}%)`;
-
+            
 			setAttributes({ gradientValue: value });
 		} else {
-			var value = `radial-gradient(at ${ gradientPosition }, ${rgb_gradientColor1} ${gradientLocation1}%, ${rgb_gradientColor2} ${gradientLocation2}%)`;
+            var value = `radial-gradient(at ${ gradientPosition }, ${rgb_gradientColor1} ${gradientLocation1}%, ${rgb_gradientColor2} ${gradientLocation2}%)`;
 			setAttributes({ gradientValue: value });
 		}
 	}
-
+    
+    const onGradientChange = value => {
+        setAttributes({ gradientValue: value });
+    };
+    
 	return (
 		<__experimentalPanelColorGradientSettings
 			title={__("Color Settings")}
