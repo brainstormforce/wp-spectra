@@ -7,7 +7,7 @@ const { __ } = wp.i18n
 * Internal dependencies
 */
 const {
-    __experimentalPanelColorGradientSettings  ,
+    __experimentalPanelColorGradientSettings,
 } = wp.blockEditor
 
 
@@ -24,7 +24,7 @@ function GradientSettings({ attributes, setAttributes }  ) {
     };
 
     //set the gradient value if new gradientvalue is not set
-    if(gradientValue === ""){       
+    if(gradientValue === " "){       
    
         if ( "linear" === gradientType ) {
             var value = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`

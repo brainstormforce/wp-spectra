@@ -302,6 +302,7 @@ const attributes = {
 	},
 	gradientValue: {
 		type: "string",
+		default:"",
 	},
 
 }
