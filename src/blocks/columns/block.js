@@ -8,6 +8,7 @@ import attributes from "./attributes"
 import edit from "./edit"
 import deprecated from "./deprecated"
 import shapes from "./shapes"
+import variations from './variations';
 import "./style.scss"
 import "./editor.scss"
 
@@ -33,6 +34,7 @@ registerBlockType( "uagb/columns", {
 		__( "uag" ),
 	],
 	attributes,
+	variations,
 	edit,
 	getEditWrapperProps( attributes ) {
 		return { "data-align": attributes.align }
