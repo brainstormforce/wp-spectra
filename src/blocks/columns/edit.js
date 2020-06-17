@@ -31,6 +31,7 @@ const {
 	InspectorControls,
 	InnerBlocks,
 	MediaUpload,
+	PanelColorSettings,
 } = wp.blockEditor
 
 const {
@@ -49,9 +50,8 @@ const {
 } = wp.components
 
 const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
+	return times( columns, n => [ "uagb/column", { id: n + 2 } ] )
 } )
-
 
 
 class UAGBColumns extends Component {
@@ -137,8 +137,6 @@ class UAGBColumns extends Component {
 		}
 		setAttributes( { backgroundVideo: media } )
 	}
-
-	
 
 	render() {
 
