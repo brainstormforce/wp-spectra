@@ -183,6 +183,8 @@ class UAGBPostMasonry extends Component {
 			taxonomyType,
 			inheritFromTheme,
 			postDisplaytext,
+			paginationType,
+			paginationEventType
 		} = attributes
 
 		const hoverSettings = (
@@ -424,6 +426,27 @@ class UAGBPostMasonry extends Component {
 							}
 						}
 					</TabPanel>
+					<SelectControl
+						label={ __( "Pagination" ) }
+						value={ paginationType }
+						onChange={ ( value ) => setAttributes( { paginationType: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "infinite", label: __( "Infinite" ) },
+						] }
+					/>
+					{ 'infinite' === paginationType &&
+
+						<SelectControl
+						label={ __( "Infinite Load Event" ) }
+						value={ paginationEventType }
+						onChange={ ( value ) => setAttributes( { paginationEventType: value } ) }
+						options={ [
+							{ value: "button", label: __( "Button" ) },
+							{ value: "scroll", label: __( "Scroll" ) },
+						] }
+						/>
+					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "If Posts Not Found" ) }</h2>
 					<TextControl

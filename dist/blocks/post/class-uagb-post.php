@@ -207,7 +207,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				array(
 					'attributes'      => array_merge(
 						$common_attributes,
-						array()
+						array(
+							'paginationType'        => array(
+								'type'    => 'string',
+								'default' => 'none',
+							),
+							'paginationEventType'        => array(
+								'type'    => 'string',
+								'default' => 'button',
+							),
+						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
 				)
