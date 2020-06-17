@@ -65,7 +65,7 @@ const {
 } = wp.blocks
 
 const getColumnsTemplate = memoize( ( columns ) => {
-	return times( columns, n => [ "uagb/column", { id: n + 2 } ] )
+	return times( columns, n => [ "uagb/column", { id: n + 1 } ] )
 } )
 
 class UAGBColumns extends Component {
