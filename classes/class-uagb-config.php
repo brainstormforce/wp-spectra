@@ -2151,7 +2151,6 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'WP - Search', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps you add a Search field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'js_assets'   => array( 'uagb-wp-search' ),
 						'attributes'  => array(
 							'block_id'                => '',
 							'layout'                  => 'input-button',
