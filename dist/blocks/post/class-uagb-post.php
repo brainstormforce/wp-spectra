@@ -52,6 +52,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 		}
 
@@ -781,7 +782,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php
 				}
 
-				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) || ( isset( $attributes['paginationType'] ) && none !== $attributes['paginationType'] ) ) {
+				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) || ( isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) ) {
 
 					$style = ( 'masonry' === $layout ) ? 'style="display:none"' : '';
 					?>
@@ -853,7 +854,55 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			wp_send_json_error( ' No attributes recieved' );
 		}
+		/**
+		 * Sends the Posts to Masonry AJAX.
+		 *
+		 * @since x.x.x
+		 */
+		public function masonry_pagination() {
 
+			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
+
+			$attr = $_POST['attr'];
+			
+			$attr['paged'] = $_POST['page_number'];
+
+			$query = UAGB_Helper::get_query( $attr, 'masonry' );
+			
+			ob_start();
+			$this->masonry_posts_markup( $query, $attr );
+			$html = ob_get_clean();
+
+			wp_send_json_success( $html );
+		}
+		
+		/**
+		 * Render Posts HTML for Masonry Pagination.
+		 *
+		 * @since x.x.x 
+		 */
+		public function masonry_posts_markup( $query, $attributes ) {
+
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				// Filter to modify the attributes based on content requirement.
+				?>
+				<article>
+					<div class="uagb-post__inner-wrap">
+						<?php $this->render_complete_box_link( $attributes ); ?>
+						<?php $this->render_image( $attributes ); ?>
+						<div class="uagb-post__text">
+							<?php $this->render_title( $attributes ); ?>
+							<?php $this->render_meta( $attributes ); ?>
+							<?php $this->render_excerpt( $attributes ); ?>
+							<?php $this->render_button( $attributes ); ?>
+						</div>
+					</div>
+				</article>
+
+				<?php
+			}
+		}
 		/**
 		 * Renders the post masonry related script.
 		 *
