@@ -781,9 +781,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php
 				}
 
-				if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
+				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) || ( isset( $attributes['paginationType'] ) && none !== $attributes['paginationType'] ) ) {
+
+					$style = ( 'masonry' === $layout ) ? 'style="display:none"' : '';
 					?>
-					<div class="uagb-post-pagination-wrap">
+					<div class="uagb-post-pagination-wrap" <?php echo $style ?> >
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 					<?php

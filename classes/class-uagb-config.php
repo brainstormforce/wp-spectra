@@ -1503,7 +1503,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded' ),
+						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-masonry-js' ),
 						'attributes'  => array(
 							'inheritFromTheme'        => false,
 							'align'                   => 'left',
@@ -2273,6 +2273,10 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
 						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
 						'skipEditor' => true,
+					),
+					'uagb-masonry-js'       => array(
+						'src' => UAGB_URL . 'assets/js/post-masonry.js',
+						'dep' => array( 'jquery' ),
 					),
 				);
 			}
