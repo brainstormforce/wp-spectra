@@ -13,7 +13,7 @@ import dropRight from "lodash/dropRight"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
 import BoxShadowControl from "../../components/box-shadow"
-import GradientSettings from "../../components/GradientSettings"
+import GradientSettings from "../../components/gradient-settings"
 import rowIcons from './icons';
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
