@@ -1,5 +1,8 @@
 .uagb-buttons-repeater {
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     a.uagb-button__link {
         display: flex;
         justify-content: center;

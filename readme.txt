@@ -162,6 +162,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Inline Notice Block.
 * New: Users can now share non-personal usage data to help us test and develop better products.
 * Improvement: FAQ Schema - Revamped the Padding options.
+* Improvement: Multi Buttons - Added option to add Icon.
 * Improvement: Post Layout: Ability to show empty post result message.
 * Improvement: Added Starter Template to the Advanced Columns.
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
