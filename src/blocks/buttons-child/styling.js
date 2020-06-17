@@ -29,10 +29,15 @@ function styling( props ) {
 		lineHeightType,
 		lineHeightMobile,
 		lineHeightTablet,
+		inheritFromTheme
 	} = props.attributes;
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
+
+	if ( inheritFromTheme ) {
+		return;
+	}
 
 	var selectors = {
 		" .uagb-buttons-repeater" : {
@@ -79,7 +84,7 @@ function styling( props ) {
 		"line-height" : generateCSSUnit( lineHeightTablet, lineHeightType ),
 	}
 
-	var id = `.uagb-block-${ props.clientId }`
+	var id = `.uagb-block-${ props.clientId.substr( 0, 8 ) }`
 	var styling_css = generateCSS( selectors, id )
 
 	styling_css += generateCSS( tablet_selectors, id, true, "tablet" )

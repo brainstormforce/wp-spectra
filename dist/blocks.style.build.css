@@ -44,7 +44,6 @@
     float: left;
     display: inline-block; }
   .uagb-post-grid .uagb-post__items {
-    -js-display: flex;
     display: flex;
     flex-wrap: wrap; }
   .uagb-post-grid .is-grid.uagb-post__equal-height .uagb-post__inner-wrap {
@@ -374,35 +373,28 @@
  * CSS for both Frontend+Backend.
  */
 .uagb-buttons__outer-wrap .uagb-buttons__wrap {
-  -js-display: flex;
   display: flex;
   align-items: center;
   justify-content: center; }
-
-.uagb-buttons__outer-wrap .uagb-button__active,
-.uagb-buttons__outer-wrap .uagb-button__active:focus {
-  box-shadow: 0 0 0 1px #5b9dd9, 0 0 2px 1px rgba(30, 140, 190, 0.8); }
 
 .uagb-buttons__outer-wrap a.uagb-button__link:focus,
 .uagb-buttons__outer-wrap .uagb-button__link:focus {
   box-shadow: none;
   text-decoration: none; }
 
-.uagb-buttons__outer-wrap .uagb-button__wrapper a.uagb-button__link,
-.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-button__link {
-  padding: 10px 14px;
+.uagb-buttons__outer-wrap .uagb-button__wrapper a.uagb-button__link:not(.wp-block-button__link),
+.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-button__link:not(.wp-block-button__link) {
   width: 100%;
-  color: #333;
   text-decoration: none;
   font-family: inherit;
   line-height: inherit;
   font-weight: inherit;
   font-size: inherit; }
 
-.uagb-buttons__outer-wrap .uagb-button__wrapper a.uagb-button__link,
-.uagb-buttons__outer-wrap .uagb-button__wrapper:hover a.uagb-button__link,
-.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-button__link,
-.uagb-buttons__outer-wrap .uagb-button__wrapper:hover .uagb-button__link {
+.uagb-buttons__outer-wrap .uagb-button__wrapper a.uagb-button__link:not(.wp-block-button__link),
+.uagb-buttons__outer-wrap .uagb-button__wrapper:hover a.uagb-button__link:not(.wp-block-button__link),
+.uagb-buttons__outer-wrap .uagb-button__wrapper .uagb-button__link:not(.wp-block-button__link),
+.uagb-buttons__outer-wrap .uagb-button__wrapper:hover .uagb-button__link:not(.wp-block-button__link) {
   text-decoration: none; }
 
 .uagb-buttons__wrap .uagb-button__wrapper a.uagb-button__link {
@@ -587,6 +579,9 @@ a.uagb-infobox-link-wrap:hover,
   color: #fff;
   text-align: center; }
 
+.uagb-ifb-button-wrapper .wp-block-button__link svg {
+  fill: currentColor; }
+
 .uagb-ifb-cta a {
   box-shadow: none;
   text-decoration: none; }
@@ -682,7 +677,7 @@ a.uagb-infbox__link-to-all {
   top: 0;
   left: 0;
   position: absolute;
-  z-index: 999;
+  z-index: 3;
   box-shadow: none;
   text-decoration: none; }
 
@@ -2422,6 +2417,8 @@ a.uagb-timeline__link {
  */
 .uagb-cta__outer-wrap {
   position: relative; }
+  .uagb-cta__outer-wrap .wp-block-button__link svg {
+    fill: currentColor; }
   .uagb-cta__outer-wrap .uagb-cta__content {
     display: inline-block; }
   .uagb-cta__outer-wrap a.uagb-cta__block-link span {
@@ -2461,7 +2458,6 @@ a.uagb-timeline__link {
     width: 100%; }
   .uagb-cta__outer-wrap .uagb-cta__icon-position-left .uagb-cta__left-right-wrap,
   .uagb-cta__outer-wrap .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
-    -js-display: flex;
     display: flex; }
   .uagb-cta__outer-wrap .uagb-cta__icon-position-right .uagb-cta__left-right-wrap {
     justify-content: flex-end; }
@@ -2485,7 +2481,6 @@ a.uagb-timeline__link {
   .uagb-cta__outer-wrap .uagb-cta__content-right .uagb-cta__button-link-wrapper,
   .uagb-cta__outer-wrap .uagb-cta__content-right .uagb-cta__block-link,
   .uagb-cta__outer-wrap .uagb-cta__content-right.uagb-cta__button-valign-middle .uagb-cta__left-right-wrap {
-    -js-display: flex;
     display: flex;
     align-items: center; }
   .uagb-cta__outer-wrap .uagb-cta__content-right .uagb-cta__button-link-wrapper,
@@ -2970,6 +2965,13 @@ a.uagb-timeline__link {
   color: #444;
   text-decoration: none;
   white-space: nowrap; }
+
+.uagb-gf-styler__gform-heading-none .gform_wrapper .gform_heading, .uagb-gf-styler__gform-heading-no .gform_wrapper .gform_heading,
+.uagb-gf-styler__gform-heading-yes .gform_wrapper .gform_heading.custom_gform_heading {
+  display: none; }
+
+.uagb-gf-styler__gform-heading-no .gform_wrapper .gform_heading.custom_gform_heading, .uagb-gf-styler__gform-heading-yes .gform_wrapper .gform_heading {
+  display: block; }
 
 .uagb-gf-styler__check-style-enabled .gform_wrapper .chosen-container-single .chosen-single span {
   line-height: 1; }
@@ -3686,7 +3688,7 @@ html[dir=rtl] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer inp
 .wp-block-uagb-marketing-button p:empty {
   display: none; }
 
-.wp-block-uagb-marketing-button h6.uagb-marketing-btn__title,
+.wp-block-uagb-marketing-button .uagb-marketing-btn__title,
 .wp-block-uagb-marketing-button p.uagb-marketing-btn__prefix {
   margin: 0; }
 
@@ -3854,6 +3856,10 @@ html[dir=rtl] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer inp
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.wp-block-uagb-faq-child.uagb-faq-child__outer-wrap .uagb-faq-item:focus,
+.wp-block-uagb-faq-child.uagb-faq-child__outer-wrap .uagb-faq-item:active {
+  outline: thin dotted; }
+
 .wp-block-uagb-faq-child .uagb-faq-questions-button {
   display: flex;
   align-items: center;
@@ -3889,3 +3895,68 @@ html[dir=rtl] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer inp
   display: inline-block;
   width: auto;
   height: auto; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.uagb-inline_notice__outer-wrap.uagb-inline_notice__align-right {
+  text-align: right; }
+
+.uagb-inline_notice__outer-wrap.uagb-inline_notice__align-center {
+  text-align: center; }
+
+.uagb-inline_notice__outer-wrap.uagb-inline_notice__align-left {
+  text-align: left; }
+
+.wp-block-uagb-inline-notice {
+  position: relative; }
+  .wp-block-uagb-inline-notice.uagb-notice__active {
+    display: none; }
+  .wp-block-uagb-inline-notice h4 {
+    margin: 0;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: 100%;
+    display: inline-block; }
+  .wp-block-uagb-inline-notice .uagb-notice-text {
+    border: solid 2px #000; }
+  .wp-block-uagb-inline-notice span.uagb-notice-dismiss svg {
+    width: 16px;
+    height: 16px; }
+  .wp-block-uagb-inline-notice span.uagb-notice-dismiss {
+    position: absolute;
+    cursor: pointer;
+    top: 13px;
+    right: 13px;
+    opacity: .8;
+    padding: 0;
+    background: none;
+    transition: .3s ease; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+.wp-block-uagb-wp-search.uagb-wp-search__outer-wrap {
+  min-height: 20px;
+  width: 100%; }
+  .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap.uagb-layout-input-button .uagb-search-submit {
+    color: #fff;
+    border: none;
+    border-radius: 0; }
+  .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap.uagb-layout-input-button svg {
+    fill: currentColor; }
+  .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap.uagb-layout-input .uagb-wp-search-icon-wrap {
+    display: flex;
+    align-items: center; }
+  .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap.uagb-layout-input svg {
+    fill: currentColor;
+    opacity: 0.6; }
+  .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container {
+    display: flex;
+    overflow: hidden; }
+    .wp-block-uagb-wp-search.uagb-wp-search__outer-wrap .uagb-search-wrapper .uagb-search-form__container .uagb-search-form__input {
+      width: 100%; }

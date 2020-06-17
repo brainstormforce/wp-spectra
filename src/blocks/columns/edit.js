@@ -8,15 +8,24 @@ import classnames from "classnames"
 import styling from "./styling"
 import memoize from "memize"
 import times from "lodash/times"
-import map from "lodash/map"
+import map from 'lodash/map';
+import dropRight from "lodash/dropRight"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import shapes from "./shapes"
 import BoxShadowControl from "../../components/box-shadow"
 import GradientSettings from "../../components/GradientSettings"
+import rowIcons from './icons';
 const ALLOWED_BLOCKS = [ "uagb/column" ]
 
 const { __ } = wp.i18n
-
+const {
+	withSelect,
+	useDispatch,
+	withDispatch
+} = wp.data
+const {
+	compose,
+} = wp.compose
 const {
 	Component,
 	Fragment,
@@ -32,6 +41,8 @@ const {
 	InnerBlocks,
 	MediaUpload,
 	PanelColorSettings,
+	__experimentalBlockVariationPicker,
+	dispatch
 } = wp.blockEditor
 
 const {
@@ -49,10 +60,13 @@ const {
 	Dashicon
 } = wp.components
 
+const {
+	createBlock
+} = wp.blocks
+
 const getColumnsTemplate = memoize( ( columns ) => {
 	return times( columns, n => [ "uagb/column", { id: n + 2 } ] )
 } )
-
 
 class UAGBColumns extends Component {
 
@@ -63,12 +77,13 @@ class UAGBColumns extends Component {
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 		this.onSelectVideo = this.onSelectVideo.bind( this )
+		this.blockVariationPickerOnSelect = this.blockVariationPickerOnSelect.bind( this )
 	}
 
 	componentDidMount() {
 
 		// Assigning block_id in the attribute.
-		this.props.setAttributes( { block_id: this.props.clientId } )
+		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
 
 		this.props.setAttributes( { classMigrate: true } )
 
@@ -77,15 +92,22 @@ class UAGBColumns extends Component {
 		}
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId )
+		$style.setAttribute( "id", "uagb-columns-style-" + this.props.clientId.substr( 0, 8 ) )
 		document.head.appendChild( $style )
+	}
+
+	componentDidUpdate( prevProps ) {
+		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId.substr( 0, 8 ) )
+
+		if( null !== element && undefined !== element ) {
+			element.innerHTML = styling( this.props )
+		}
 	}
 
 	/*
 	 * Event to set Image as null while removing.
 	 */
 	onRemoveImage() {
-		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		setAttributes( { backgroundImage: null } )
@@ -96,7 +118,6 @@ class UAGBColumns extends Component {
 	 */
 	onSelectImage( media ) {
 
-		const { backgroundImage } = this.props.attributes
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
@@ -115,7 +136,6 @@ class UAGBColumns extends Component {
 	 * Event to set Video as null while removing.
 	 */
 	onRemoveVideo() {
-		const { backgroundVideo } = this.props.attributes
 		const { setAttributes } = this.props
 
 		setAttributes( { backgroundVideo: null } )
@@ -125,7 +145,6 @@ class UAGBColumns extends Component {
 	 * Event to set Video while adding.
 	 */
 	onSelectVideo( media ) {
-		const { backgroundVideo } = this.props.attributes
 		const { setAttributes } = this.props
 
 		if ( ! media || ! media.url ) {
@@ -138,9 +157,34 @@ class UAGBColumns extends Component {
 		setAttributes( { backgroundVideo: media } )
 	}
 
-	render() {
+	blockVariationPickerOnSelect ( nextVariation = this.props.defaultVariation ) {
+			
+		if ( nextVariation.attributes ) {
+			this.props.setAttributes( nextVariation.attributes );
+		}
 
-		const { attributes, setAttributes, isSelected, className,setOverlayColor } = this.props
+		if ( nextVariation.innerBlocks ) {
+			this.props.replaceInnerBlocks(
+				this.props.clientId,
+				this.createBlocksFromInnerBlocksTemplate( nextVariation.innerBlocks )
+			);
+		}
+	}
+
+	createBlocksFromInnerBlocksTemplate( innerBlocksTemplate ) {
+		return map( innerBlocksTemplate, ( [ name, attributes, innerBlocks = [] ] ) => createBlock( name, attributes, this.createBlocksFromInnerBlocksTemplate( innerBlocks ) ) );
+	}
+
+	render() {
+		
+		const { 
+			attributes, 
+			setAttributes, 
+			isSelected, 
+			className, 
+			variations,
+			hasInnerBlocks,
+		 } = this.props
 
 		const {
 			stack,
@@ -230,14 +274,6 @@ class UAGBColumns extends Component {
 		
 		const CustomTag = `${tag}`
 
-		
-
-		var element = document.getElementById( "uagb-columns-style-" + this.props.clientId )
-
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = styling( this.props )
-		}
-
 		let active = ( isSelected ) ? "active" : "not-active"
 
 		const dividers = [
@@ -261,7 +297,7 @@ class UAGBColumns extends Component {
 			{ value: "arrow_split", label: __( "Arrow Split" ) },
 			{ value: "book", label: __( "Book" ) },
 		]
-
+		
 		const bottomSettings = (
 			<Fragment>
 				<SelectControl
@@ -510,9 +546,26 @@ class UAGBColumns extends Component {
 		const reverse_tablet = ( reverseTablet ) ? "uagb-columns__reverse-tablet" : ""
 
 		const reverse_mobile = ( reverseMobile ) ? "uagb-columns__reverse-mobile" : ""			
-
+		
+		if ( ! hasInnerBlocks ) {
+			return (
+				<Fragment>
+					<__experimentalBlockVariationPicker
+						icon ={ UAGB_Block_Icons.columns }
+						label={ uagb_blocks_info.blocks["uagb/columns"]["title"] }
+						instructions={ __( 'Select a variation to start with.' ) }
+						variations={ variations }
+						allowSkip
+						onSelect={ ( nextVariation ) => this.blockVariationPickerOnSelect( nextVariation ) }
+					/>
+				</Fragment>
+			)
+		}
+			
 		return (
+			
 			<Fragment>
+				
 				<BlockControls>
 					<BlockAlignmentToolbar
 						value={ align }
@@ -530,6 +583,7 @@ class UAGBColumns extends Component {
 				</BlockControls>
 				<InspectorControls>
 					<PanelBody title={ __( "Layout" ) }>
+
 						<RangeControl
 							label={ __( "Columns" ) }
 							value={ columns }
@@ -573,7 +627,7 @@ class UAGBColumns extends Component {
 										onChange={ ( value ) => setAttributes( { width: value } ) }
 									/>
 								</Fragment>
-							 )
+							)
 						}
 						<OptionSelectorControl
 							label={ __( "Column Gap" ) }
@@ -1163,7 +1217,7 @@ class UAGBColumns extends Component {
 						`align${ align }`,
 						reverse_tablet,
 						reverse_mobile,
-						`uagb-block-${this.props.clientId}`
+						`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 					) }
 				>
 					<div className="uagb-columns__overlay"></div>
@@ -1195,4 +1249,22 @@ class UAGBColumns extends Component {
 	}
 }
 
-export default withNotices( UAGBColumns )
+const applyWithSelect = withSelect( ( select, props ) => {
+	const { getBlocks, getBlocksByClientId } = select( 'core/block-editor' );
+	const { getBlockType, getBlockVariations, getDefaultBlockVariation } = select( 'core/blocks' );
+	const innerBlocks = getBlocks( props.clientId );
+	const { replaceInnerBlocks } = useDispatch( 'core/block-editor' );
+
+	return {
+		// Subscribe to changes of the innerBlocks to control the display of the layout selection placeholder.
+		innerBlocks,
+		hasInnerBlocks: select( 'core/block-editor' ).getBlocks( props.clientId ).length > 0,
+
+		blockType: getBlockType( props.name ),
+		defaultVariation: typeof getDefaultBlockVariation === 'undefined' ? null : getDefaultBlockVariation( props.name ),
+		variations: typeof getBlockVariations === 'undefined' ? null : getBlockVariations( props.name ),
+		replaceInnerBlocks,
+	};
+} );
+
+export default compose( withNotices, applyWithSelect )( UAGBColumns );
