@@ -1285,6 +1285,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'block_id'         => '',
 							'label'            => '',
 							'link'             => '',
+							'opensInNewTab'    => false,
 							'target'           => '',
 							'size'             => '',
 							'vPadding'         => 10,
@@ -1305,6 +1306,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'lineHeightType'   => 'em',
 							'lineHeightMobile' => '',
 							'lineHeightTablet' => '',
+							'icon'             => '',
+							'iconPosition'     => 'after',
+							'iconSpace'        => 8,
 						),
 					),
 					'uagb/post-carousel'      => array(
