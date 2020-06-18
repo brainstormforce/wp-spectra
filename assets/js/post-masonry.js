@@ -3,32 +3,36 @@
     UAGBPostMasonry = {
        
         _init : function( $attr, $selector ) {
-
             
             var count = 2;
             var windowHeight50 = jQuery( window ).outerHeight() / 1.25;
             var $scope = $( $selector );
             var loader = $scope.find( '.uagb-post-inf-loader' );
-            $( window ).scroll( function () {
-                
-                if( ( $( window ).scrollTop() + windowHeight50 ) >= ( $scope.find( '.uagb-post__items:last' ).offset().top ) ) {
-    
-                    var $args = {
-                        'page_number' : count
-                    };
-                    total = $scope.data( 'total' );
-                    if( true == loadStatus ) {
-                        
-                        if ( count <= total ) {
-							loader.show();
-                            UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
-							count++;
-							loadStatus = false;
-						}
 
-					}
-                }
-            } );    
+            if ( "scroll" === $attr.paginationEventType ) {
+
+                $( window ).scroll( function () {
+                    
+                    if( ( $( window ).scrollTop() + windowHeight50 ) >= ( $scope.find( '.uagb-post__items:last' ).offset().top ) ) {
+        
+                        var $args = {
+                            'page_number' : count
+                        };
+                        total = $scope.data( 'total' );
+                        if( true == loadStatus ) {
+                            
+                            if ( count <= total ) {
+                                loader.show();
+                                UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
+                                count++;
+                                loadStatus = false;
+                            }
+
+                        }
+                    }
+                } );
+            }
+            console.log($attr.paginationEventType);   
 
         },
         _callAjax : function( $scope, $obj, $attr, loader ) {
