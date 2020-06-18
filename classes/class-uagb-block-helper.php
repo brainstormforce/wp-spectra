@@ -1001,28 +1001,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				);
 			}
 
-			$selectors[' .uagb-button__icon'] = array(
+			$selectors[ $wrapper . ' .uagb-button__icon' ] = array(
 				'width' => UAGB_Helper::get_css_value( $attr['size'], $attr['sizeType'] ),
 			);
 
 			if ( ! $attr['inheritFromTheme'] ) {
-				$selectors[' .uagb-button__icon']['color'] = $attr['color'];
+				$selectors[ $wrapper . ' .uagb-button__icon' ]['color'] = $attr['color'];
 			}
 
-			$selectors[' .uagb-button__icon-position-after'] = array(
+			$selectors[ $wrapper . ' .uagb-button__icon-position-after' ] = array(
 				'margin-left' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
 			);
 
-			$selectors[' .uagb-button__icon-position-before'] = array(
+			$selectors[ $wrapper . ' .uagb-button__icon-position-before' ] = array(
 				'margin-right' => UAGB_Helper::get_css_value( $attr['iconSpace'], 'px' ),
 			);
 
-			$m_selectors[' .uagb-button__icon'] = array(
+			$m_selectors[ $wrapper . ' .uagb-button__icon' ] = array(
 				'width'  => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 				'height' => UAGB_Helper::get_css_value( $attr['sizeMobile'], $attr['sizeType'] ),
 			);
 
-			$t_selectors[' .uagb-button__icon'] = array(
+			$t_selectors[ $wrapper . ' .uagb-button__icon' ] = array(
 				'width'  => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 				'height' => UAGB_Helper::get_css_value( $attr['sizeTablet'], $attr['sizeType'] ),
 			);
