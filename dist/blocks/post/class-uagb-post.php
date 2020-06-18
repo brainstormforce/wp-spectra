@@ -886,8 +886,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				// Filter to modify the attributes based on content requirement.
+				$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+
+				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
+
 				?>
 				<article>
+					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 					<div class="uagb-post__inner-wrap">
 						<?php $this->render_complete_box_link( $attributes ); ?>
 						<?php $this->render_image( $attributes ); ?>
@@ -898,10 +903,16 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							<?php $this->render_button( $attributes ); ?>
 						</div>
 					</div>
+					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				</article>
 
 				<?php
+
+				do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
+
 			}
+
+			wp_reset_postdata();
 		}
 		/**
 		 * Renders the post masonry related script.

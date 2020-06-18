@@ -208,8 +208,9 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		 * @param string $id The selector ID.
 		 */
 		public static function get_masonry_js( $attr, $id ) {
+var_dump($attr);
 
-			
+wp_die();
 			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
 
 			$attr = array_merge( $defaults, (array) $attr );
