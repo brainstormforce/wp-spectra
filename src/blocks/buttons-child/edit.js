@@ -45,15 +45,9 @@ class UAGBButtonsChild extends Component {
 	constructor() {
 		super( ...arguments )
 		this.onClickLinkSettings = this.onClickLinkSettings.bind(this)
-		this.onChangeOpensInNewTab = this.onChangeOpensInNewTab.bind(this)
-		this.setIcon = this.setIcon.bind(this)
 		this.state = {
 			isURLPickerOpen:false,
 		}
-	}
-
-	setIcon( value ) {
-		this.props.setAttributes( { icon: value } )
 	}
 
 	componentDidMount() {
@@ -134,7 +128,7 @@ class UAGBButtonsChild extends Component {
 		const icon_props = {
 			icons: svg_icons,
 			value: icon,
-			onChange: this.setIcon,
+			onChange: (value) => ( setAttributes( { icon: value } ) ),
 			isMulti: false,
 			renderFunc: renderSVG,
 			noSelectedPlaceholder: __( "Select Icon" )
@@ -176,7 +170,7 @@ class UAGBButtonsChild extends Component {
 					/>
 					<h2>{ __( "Button Icon" ) }</h2>
 					<FontIconPicker {...icon_props} />
-					{ icon != "" &&
+					{ "" !== icon &&
 						<Fragment>
 							<SelectControl
 								label={ __( "Icon Position" ) }
