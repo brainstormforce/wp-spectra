@@ -1,25 +1,37 @@
 ( function( $ ) {
-
+    var loadStatus = true;
     UAGBPostMasonry = {
        
         _init : function( $attr, $selector ) {
 
-            console.log($attr)
+            
+            var count = 2;
             var windowHeight50 = jQuery( window ).outerHeight() / 1.25;
             var $scope = $( $selector );
+            var loader = $scope.find( '.uagb-post-inf-loader' );
             $( window ).scroll( function () {
-            
+                
                 if( ( $( window ).scrollTop() + windowHeight50 ) >= ( $scope.find( '.uagb-post__items:last' ).offset().top ) ) {
     
                     var $args = {
-                        'page_number' : $scope.find( '.uagb-post-pagination-wrap .current' ).next( 'a' ).html()
+                        'page_number' : count
                     };
-                    UAGBPostMasonry._callAjax( $scope, $args, $attr );
+                    total = $scope.data( 'total' );
+                    if( true == loadStatus ) {
+                        
+                        if ( count <= total ) {
+							loader.show();
+                            UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
+							count++;
+							loadStatus = false;
+						}
+
+					}
                 }
             } );    
 
         },
-        _callAjax : function( $scope, $obj, $attr ) {
+        _callAjax : function( $scope, $obj, $attr, loader ) {
 
             $.ajax({
                 url: uagb_data.ajax_url,
@@ -32,7 +44,9 @@
                 dataType: 'json',
                 type: 'POST',
                 success: function( data ) {
-                    $scope.find( '.uagb-post__items:last' ).append(data.data)
+                    $scope.find( '.uagb-post__items' ).isotope( 'insert',$( data.data ));
+                    loadStatus = true; 
+                    loader.hide();
                 }
             });
         }

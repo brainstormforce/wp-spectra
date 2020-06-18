@@ -516,7 +516,6 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				case 'uagb/post-masonry':
 					$css += UAGB_Block_Helper::get_post_masonry_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_post_gfont( $blockattr );
-					$js .= UAGB_Block_JS::get_masonry_js( $blockattr, $block_id );
 					break;
 
 				case 'uagb/columns':

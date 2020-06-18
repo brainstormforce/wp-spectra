@@ -201,44 +201,6 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		}
 
 		/**
-		 * Get Post Masonry Js
-		 *
-		 * @since x.x.x
-		 * @param array  $attr The block attributes.
-		 * @param string $id The selector ID.
-		 */
-		public static function get_masonry_js( $attr, $id ) {
-var_dump($attr);
-
-wp_die();
-			$defaults = UAGB_Helper::$block_list['uagb/post-masonry']['attributes'];
-
-			$attr = array_merge( $defaults, (array) $attr );
-			
-			$base_selector = '.uagb-block-';
-			$selector      = $base_selector . $id;
-
-			$js_attr = array (
-				'postsToShow' => $attr['postsToShow'],
-				'postType' => $attr['postType'],
-				'order' => $attr['order'],
-				'orderBy' => $attr['orderBy'],
-				'categories' => $attr['categories'],
-				'taxonomyType' => $attr['taxonomyType'],
-				'paginationType' => $attr['paginationType'],
-			);
-
-			ob_start();
-			?>
-			jQuery( document ).ready(function() {
-				UAGBPostMasonry._init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
-			});
-			<?php
-			return ob_get_clean();
-
-		}
-
-		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *
 		 * @since 1.9.1

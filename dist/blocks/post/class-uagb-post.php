@@ -732,8 +732,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// Nothing to do here.
 					break;
 			}
+
+			$total = $total_pages = $query->max_num_pages;
 			?>
-			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
+
+			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php  echo $total ?>">
 
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
@@ -789,7 +792,15 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<div class="uagb-post-pagination-wrap" <?php echo $style ?> >
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
+					<?php if( 'masonry' === $layout ) { ?>
+						<div class="uagb-post-inf-loader" style="display: none;">
+							<div class="uagb-post-loader-1"></div>
+							<div class="uagb-post-loader-2"></div>
+							<div class="uagb-post-loader-3"></div>
+						</div>
 					<?php
+
+					}
 				}
 				?>
 			</div>
@@ -937,6 +948,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									$scope.find( '.is-masonry' ).isotope();
 								} );
 							} )( jQuery );
+						});
+						<?php $selector = '.uagb-block-' . $key; ?>
+						jQuery( document ).ready(function() {
+							UAGBPostMasonry._init( <?php echo wp_json_encode( $value ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 						});
 					</script>
 					<?php
