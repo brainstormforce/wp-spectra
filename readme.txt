@@ -166,12 +166,12 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: FAQ Schema - Added new padding options for Question.
 * Improvement: Multi Buttons - Added new option to add icon.
 * Improvement: Advanced Columns - Added ability to choose from given variations of columns.
-* Improvement: Post Layout: Added an option to show empty post result message.
-* Improvement: Post Layout: Added `post_class()` compatibility to Post Grid, Post Masonry and Post Carousel.
+* Improvement: Post Layout - Added an option to show an empty post result message.
+* Improvement: Post Layout - Added `post_class()` compatibility to Post Grid, Post Masonry, and Post Carousel.
 * Improvement: Added missing accessibility to all blocks.
-* Fix: Post Carousel - Incorrect Border Radius issue with respect to theme.
+* Fix: Post Carousel - Incorrect Border Radius issue with respect to the theme.
 * Fix: Info Box - Fixed a minor issue with z-index and theme heading.
-* Fix: Gravity Form Styler : Show/Hide Not working in front-end.
+* Fix: Gravity Form Styler: Show/Hide Not working in front-end.
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
 * Fix: Better UX compatibility with Gutenberg plugin.
 
