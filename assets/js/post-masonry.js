@@ -32,7 +32,24 @@
                     }
                 } );
             }
-            console.log($attr.paginationEventType);   
+            if ( "button" === $attr.paginationEventType ) {
+                $( document ).on( 'click', '.uagb-post__load-more', function( e ) {
+                    var $args = {
+                        'page_number' : count
+                    };
+                    total = $scope.data( 'total' );
+                    if( true == loadStatus ) {
+                        
+                        if ( count <= total ) {
+                            loader.show();
+                            UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
+                            count++;
+                            loadStatus = false;
+                        }
+
+                    }
+                } );
+            } 
 
         },
         _callAjax : function( $scope, $obj, $attr, loader ) {

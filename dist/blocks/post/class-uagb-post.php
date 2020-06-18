@@ -792,7 +792,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<div class="uagb-post-pagination-wrap" <?php echo $style ?> >
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
-					<?php if( 'masonry' === $layout ) { ?>
+					<?php if( 'masonry' === $layout && "scroll" === $attributes['paginationEventType'] ) { ?>
 						<div class="uagb-post-inf-loader" style="display: none;">
 							<div class="uagb-post-loader-1"></div>
 							<div class="uagb-post-loader-2"></div>
@@ -801,6 +801,14 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php
 
 					}
+					 if( 'masonry' === $layout && "button" === $attributes['paginationEventType'] ) { ?>
+						<div class="uagb-post__load-more-wrap">
+							<a class="uagb-post__load-more" href="javascript:void(0);">
+								Load More
+							</a>
+						</div>
+					<?php
+					 }
 				}
 				?>
 			</div>
