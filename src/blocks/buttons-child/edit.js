@@ -45,6 +45,7 @@ class UAGBButtonsChild extends Component {
 	constructor() {
 		super( ...arguments )
 		this.onClickLinkSettings = this.onClickLinkSettings.bind(this)
+		this.onChangeOpensInNewTab = this.onChangeOpensInNewTab.bind(this)
 		this.state = {
 			isURLPickerOpen:false,
 		}
