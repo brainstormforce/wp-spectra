@@ -700,11 +700,8 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostTaxonomy }
 						onChange={ ( value ) => setAttributes( { displayPostTaxonomy: ! displayPostTaxonomy } ) }
 					/>
-					
-				</PanelBody>
-				<PanelBody title={ __( "Post Content Settings" ) } initialOpen={ false }>
 					<ToggleControl
-						label={ __( "Post Content" ) }
+						label={ __( "Show Excerpt" ) }
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
@@ -736,6 +733,7 @@ class UAGBPostGrid extends Component {
 							/>
 						) }
 				</PanelBody>
+
 				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
 				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl

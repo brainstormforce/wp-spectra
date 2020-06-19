@@ -1153,23 +1153,22 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
-			$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			if( 'full_post' === $attributes['displayPostContentRadio'] ){
+				$excerpt = get_the_content();
+			}else{
+				$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			}
+
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
+			
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<?php if ( 'excerpt' === $attributes['displayPostContentRadio'] ) { ?>
-
 				<div class="uagb-post__excerpt">
 					<?php echo wp_kses_post( $excerpt ); ?>
 				</div>
-			<?php } elseif ( 'full_post' === $attributes['displayPostContentRadio'] ) { ?>
-				<div class="uagb-post__excerpt">
-					<?php echo wp_kses_post( get_the_content() ); ?>
-				</div>
-			<?php } ?>
 			<?php
 			do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
