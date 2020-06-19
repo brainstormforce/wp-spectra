@@ -133,10 +133,10 @@ function styling( props ) {
 
 		selectors[" > .uagb-columns__overlay"]["background-color"] = "transparent"
 		selectors[" > .uagb-columns__overlay"]["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
-		if(gradientValue){
+		if( gradientValue ) {
 			selectors[" > .uagb-columns__overlay"]["background-image"] = gradientValue
 
-		}else{
+		} else {
 			if ( "linear" === gradientType ) {
 
 				selectors[" > .uagb-columns__overlay"]["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`

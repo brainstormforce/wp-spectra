@@ -51,9 +51,9 @@ function inlineStyles( props, isEditor ) {
 		style["background-color"] = "transparent"
 		style["opacity"] = ( typeof backgroundOpacity != "undefined" ) ? backgroundOpacity/100 : ""
 
-		if(gradientValue){
+		if( gradientValue ) {
 			style["background-image"] = gradientValue
-		}else{
+		} else {
 			if ( "linear" === gradientType ) {
 
 				style["background-image"] = `linear-gradient(${ gradientAngle }deg, ${ gradientColor1 } ${ gradientLocation1 }%, ${ gradientColor2 } ${ gradientLocation2 }%)`

@@ -171,14 +171,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added missing accessibility to all blocks.
 * Fix: Post Carousel - Incorrect Border Radius issue with respect to the theme.
 * Fix: Info Box - Fixed a minor issue with z-index and theme heading.
-<<<<<<< HEAD
-* Fix: Gravity Form Styler : Show/Hide Not working in front-end.
 * Improvement: New Gradient Pallete is introduced to set background.
-=======
 * Fix: Gravity Form Styler: Show/Hide Not working in front-end.
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
 * Fix: Better UX compatibility with Gutenberg plugin.
->>>>>>> be325ec6d74d3ed49711b6cbe5d575f285a2234f
 
 = 1.15.2 =
 * Fix: Fixed compatibility to [CartFlows Templates](https://cartflows.com/templates/?utm_source=uag-repo&utm_medium=link&utm_campaign=readme).
