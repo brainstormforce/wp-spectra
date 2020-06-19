@@ -216,8 +216,8 @@ class UAGB_Init_Blocks {
 			'uagb-masonry-js',
 			'uagb_data',
 			array(
-				'ajax_url'          => admin_url( 'admin-ajax.php' ),
-				'uagb_masonry_ajax_nonce' => $uagb_masonry_ajax_nonce
+				'ajax_url'                => admin_url( 'admin-ajax.php' ),
+				'uagb_masonry_ajax_nonce' => $uagb_masonry_ajax_nonce,
 			)
 		);
 

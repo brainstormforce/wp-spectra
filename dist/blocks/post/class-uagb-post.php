@@ -209,130 +209,130 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'attributes'      => array_merge(
 						$common_attributes,
 						array(
-							'paginationType'        => array(
+							'paginationType'               => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'paginationEventType'        => array(
+							'paginationEventType'          => array(
 								'type'    => 'string',
 								'default' => 'button',
 							),
-							'buttonText'        => array(
+							'buttonText'                   => array(
 								'type'    => 'string',
 								'default' => 'Load More',
 							),
-							'paginationAlign'        => array(
+							'paginationAlign'              => array(
 								'type'    => 'string',
 								'default' => 'center',
 							),
-							'paginationTextColor'        => array(
+							'paginationTextColor'          => array(
 								'type'    => 'string',
 								'default' => '#eee',
 							),
-							'paginationMasonryBgColor'        => array(
+							'paginationMasonryBgColor'     => array(
 								'type'    => 'string',
 								'default' => '#eee',
 							),
-							'paginationBgHoverColor'        => array(
+							'paginationBgHoverColor'       => array(
 								'type'    => 'string',
 								'default' => '#eee',
 							),
-							'paginationTextHoverColor'        => array(
+							'paginationTextHoverColor'     => array(
 								'type'    => 'string',
 								'default' => '#eee',
 							),
-							'paginationMasonryBorderStyle'        => array(
+							'paginationMasonryBorderStyle' => array(
 								'type'    => 'string',
 								'default' => 'none',
 							),
-							'paginationMasonryBorderWidth'        => array(
+							'paginationMasonryBorderWidth' => array(
 								'type'    => 'number',
 								'default' => 2,
 							),
-							'paginationMasonryBorderRadius'        => array(
+							'paginationMasonryBorderRadius' => array(
 								'type'    => 'number',
 								'default' => 3,
 							),
-							'paginationMasonryBorderColor'        => array(
+							'paginationMasonryBorderColor' => array(
 								'type'    => 'string',
 								'default' => '#eee',
 							),
-							'paginationFontSize'             => array(
+							'paginationFontSize'           => array(
 								'type'    => 'number',
 								'default' => '',
 							),
-							'paginationFontSizeType'         => array(
+							'paginationFontSizeType'       => array(
 								'type'    => 'string',
 								'default' => 'px',
 							),
-							'paginationFontSizeMobile'       => array(
+							'paginationFontSizeMobile'     => array(
 								'type' => 'number',
 							),
-							'paginationFontSizeTablet'       => array(
+							'paginationFontSizeTablet'     => array(
 								'type' => 'number',
 							),
-							'paginationFontFamily'           => array(
+							'paginationFontFamily'         => array(
 								'type'    => 'string',
 								'default' => '',
 							),
-							'paginationFontWeight'           => array(
+							'paginationFontWeight'         => array(
 								'type' => 'string',
 							),
-							'paginationFontSubset'           => array(
+							'paginationFontSubset'         => array(
 								'type' => 'string',
 							),
-							'paginationLineHeightType'       => array(
+							'paginationLineHeightType'     => array(
 								'type'    => 'string',
 								'default' => 'em',
 							),
-							'paginationLineHeight'           => array(
+							'paginationLineHeight'         => array(
 								'type' => 'number',
 							),
-							'paginationLineHeightTablet'     => array(
+							'paginationLineHeightTablet'   => array(
 								'type' => 'number',
 							),
-							'paginationLineHeightMobile'     => array(
+							'paginationLineHeightMobile'   => array(
 								'type' => 'number',
 							),
-							'paginationLoadGoogleFonts'      => array(
+							'paginationLoadGoogleFonts'    => array(
 								'type'    => 'boolean',
 								'default' => false,
 							),
-							'loaderColor'        => array(
+							'loaderColor'                  => array(
 								'type'    => 'string',
 								'default' => '#0085ba',
 							),
-							'loaderSize'        => array(
+							'loaderSize'                   => array(
 								'type'    => 'number',
 								'default' => 18,
 							),
-							'paginationButtonPaddingType'=> array(
-								'type'=> "string",
-								'default' => "px"
+							'paginationButtonPaddingType'  => array(
+								'type'    => 'string',
+								'default' => 'px',
 							),
-							'vpaginationButtonPaddingMobile'=> array(
-								'type'=> "number",
-								'default' => 10
+							'vpaginationButtonPaddingMobile' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
-							'vpaginationButtonPaddingTablet'=> array(
-								'type'=> "number",
-								'default' => 10
+							'vpaginationButtonPaddingTablet' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
-							'vpaginationButtonPaddingDesktop'=> array(
-								'type'=> "number",
-								'default' => 10
+							'vpaginationButtonPaddingDesktop' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
-							'hpaginationButtonPaddingMobile'=> array(
-								'type'=> "number",
-								'default' => 10
+							'hpaginationButtonPaddingMobile' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
-							'hpaginationButtonPaddingTablet'=> array(
-								'type'=> "number",
-								'default' => 10
+							'hpaginationButtonPaddingTablet' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
-							'hpaginationButtonPaddingDesktop'=> array(
-								'type'=> "number",
-								'default' => 10
+							'hpaginationButtonPaddingDesktop' => array(
+								'type'    => 'number',
+								'default' => 10,
 							),
 						)
 					),
@@ -853,7 +853,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$total = $total_pages = $query->max_num_pages;
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php  echo $total ?>">
+			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php echo $total; ?>">
 
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
@@ -906,26 +906,27 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					$style = ( 'masonry' === $layout ) ? 'style="display:none"' : '';
 					?>
-					<div class="uagb-post-pagination-wrap" <?php echo $style ?> >
+					<div class="uagb-post-pagination-wrap" <?php echo $style; ?> >
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
-					<?php if( 'masonry' === $layout && "scroll" === $attributes['paginationEventType'] ) { ?>
+					<?php if ( 'masonry' === $layout && 'scroll' === $attributes['paginationEventType'] ) { ?>
 						<div class="uagb-post-inf-loader" style="display: none;">
 							<div class="uagb-post-loader-1"></div>
 							<div class="uagb-post-loader-2"></div>
 							<div class="uagb-post-loader-3"></div>
 						</div>
-					<?php
+						<?php
 
 					}
-					 if( 'masonry' === $layout && "button" === $attributes['paginationEventType'] ) { ?>
+					if ( 'masonry' === $layout && 'button' === $attributes['paginationEventType'] ) {
+						?>
 						<div class="uagb-post__load-more-wrap">
 							<a class="uagb-post__load-more" href="javascript:void(0);">
-								<?php echo esc_html( $attributes['buttonText'] ) ?>
+								<?php echo esc_html( $attributes['buttonText'] ); ?>
 							</a>
 						</div>
-					<?php
-					 }
+						<?php
+					}
 				}
 				?>
 			</div>
@@ -1000,22 +1001,22 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
 
 			$attr = $_POST['attr'];
-			
+
 			$attr['paged'] = $_POST['page_number'];
 
 			$query = UAGB_Helper::get_query( $attr, 'masonry' );
-			
+
 			ob_start();
 			$this->masonry_posts_markup( $query, $attr );
 			$html = ob_get_clean();
 
 			wp_send_json_success( $html );
 		}
-		
+
 		/**
 		 * Render Posts HTML for Masonry Pagination.
 		 *
-		 * @since x.x.x 
+		 * @since x.x.x
 		 */
 		public function masonry_posts_markup( $query, $attributes ) {
 

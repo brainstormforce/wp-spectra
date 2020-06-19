@@ -2273,7 +2273,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
 						'skipEditor' => true,
 					),
-					'uagb-masonry-js'       => array(
+					'uagb-masonry-js'        => array(
 						'src' => UAGB_URL . 'assets/js/post-masonry.js',
 						'dep' => array( 'jquery' ),
 					),
