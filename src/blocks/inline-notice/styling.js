@@ -12,6 +12,7 @@ function styling( props ) {
 		textColor,
 		titleColor,
 		noticeColor,
+		contentBgColor,
 		noticeDismissColor,
 		titleFontFamily,
 		titleFontWeight,
@@ -42,16 +43,24 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	var selectors = { 
+	var selectors = {
+
+		'.uagb-inline_notice__align-left .rich-text.block-editor-rich-text__editable.uagb-notice-title' : {
+		    'padding-right' : generateCSSUnit( titleHrPadding + 13, 'px' ),
+		},	
+
+		'.uagb-inline_notice__align-left .rich-text.block-editor-rich-text__editable.uagb-notice-title' : {
+		    'padding-left'  : generateCSSUnit( titleHrPadding + 13, 'px' ),
+		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
-	    "font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
-	    "font-weight": titleFontWeight,
-	    "font-family": titleFontFamily,
-	    "line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
-	    "color": titleColor,
-	    "background-color": noticeColor,
-	    "padding-left" : generateCSSUnit( titleHrPadding, "px" ),
+			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
+			"font-weight": titleFontWeight,
+			"font-family": titleFontFamily,
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
+			"color": titleColor,
+			"background-color": noticeColor,
+			"padding-left" : generateCSSUnit( titleHrPadding, "px" ),
 			"padding-right" : generateCSSUnit( titleHrPadding, "px" ),
 			"padding-top" : generateCSSUnit( titleVrPadding, "px" ),
 			"padding-bottom" : generateCSSUnit( titleVrPadding, "px" ),
@@ -63,6 +72,7 @@ function styling( props ) {
 			"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
 			"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
 			"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+			"background-color": contentBgColor,
 		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -80,8 +90,8 @@ function styling( props ) {
 
 	mobile_selectors = {
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
-		    "font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
+				"font-size": generateCSSUnit( titleFontSizeMobile, titleFontSizeType ),
+				"line-height": generateCSSUnit( titleLineHeightMobile, titleLineHeightType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {
@@ -92,8 +102,8 @@ function styling( props ) {
 
 	tablet_selectors = { 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
-		    "font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
-		    "line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
+				"font-size": generateCSSUnit( titleFontSizeTablet, titleFontSizeType ),
+				"line-height": generateCSSUnit( titleLineHeightTablet, titleLineHeightType ),
 			},
 
 			" .rich-text.block-editor-rich-text__editable.uagb-notice-text p" : {

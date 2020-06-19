@@ -9,7 +9,7 @@
 	},
 	c_id: {
 		type: "string",
-		default : null
+		default : null,
 	},
 	noticeTitle: {
 		type: "string",
@@ -41,7 +41,10 @@
 	},
 	noticeColor: {
 		type: "string",
-		default: "#FFB901"
+		default: "#FFD54F"
+	},
+	contentBgColor: {
+		type: "string",
 	},
 	noticeDismissColor: {
 		type: "string",
