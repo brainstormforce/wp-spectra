@@ -1842,6 +1842,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'boxShadowBlur'            => '',
 							'boxShadowSpread'          => '',
 							'boxShadowPosition'        => 'outset',
+							'gradientValue'            => '',
 						),
 					),
 					'uagb/social-share'       => array(
