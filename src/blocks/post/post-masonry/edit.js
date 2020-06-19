@@ -184,7 +184,8 @@ class UAGBPostMasonry extends Component {
 			inheritFromTheme,
 			postDisplaytext,
 			paginationType,
-			paginationEventType
+			paginationEventType,
+			buttonText
 		} = attributes
 
 		const hoverSettings = (
@@ -445,6 +446,14 @@ class UAGBPostMasonry extends Component {
 							{ value: "button", label: __( "Button" ) },
 							{ value: "scroll", label: __( "Scroll" ) },
 						] }
+						/>
+					}
+					{ 'button' === paginationEventType &&
+						<TextControl
+							autoComplete="off"
+							label={ __( 'Button Text' ) }
+							value={ buttonText }
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
 						/>
 					}
 					<hr className="uagb-editor__separator" />

@@ -217,6 +217,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'button',
 							),
+							'buttonText'        => array(
+								'type'    => 'string',
+								'default' => 'Load More',
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
@@ -804,7 +808,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					 if( 'masonry' === $layout && "button" === $attributes['paginationEventType'] ) { ?>
 						<div class="uagb-post__load-more-wrap">
 							<a class="uagb-post__load-more" href="javascript:void(0);">
-								Load More
+								<?php echo esc_html( $attributes['buttonText'] ) ?>
 							</a>
 						</div>
 					<?php
