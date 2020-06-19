@@ -350,8 +350,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						$selectors[' > .uagb-section__overlay']['background-image'] = 'radial-gradient( at ' . $gradientPosition . ', ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 					}
 				}
-
-				
 			}
 
 			$selectors[' > .uagb-section__overlay']['border-radius'] = UAGB_Helper::get_css_value( $attr['borderRadius'], 'px' );
@@ -672,12 +670,10 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				} else {
 					if ( 'linear' === $attr['gradientType'] ) {
 						$selectors[' > .uagb-column__overlay']['background-image'] = 'linear-gradient(' . $attr['gradientAngle'] . 'deg, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
-					} else {	
+					} else {
 						$selectors[' > .uagb-column__overlay']['background-image'] = 'radial-gradient( at center center, ' . $attr['gradientColor1'] . ' ' . $attr['gradientLocation1'] . '%, ' . $attr['gradientColor2'] . ' ' . $attr['gradientLocation2'] . '%)';
 					}
 				}
-
-				
 			}
 
 			if ( '' !== $attr['colWidth'] && 0 !== $attr['colWidth'] ) {
