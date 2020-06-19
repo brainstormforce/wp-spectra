@@ -960,7 +960,7 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 
 			}
 
-			if ( 'masonry' === $block_type && isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) {
+			if ( 'masonry' === $block_type && isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] && isset( $attributes['paged'] ) ) {
 
 				$query_args['paged'] = $attributes['paged'];
 

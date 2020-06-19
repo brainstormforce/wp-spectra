@@ -902,32 +902,36 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php
 				}
 
-				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) || ( isset( $attributes['paginationType'] ) && 'none' !== $attributes['paginationType'] ) ) {
+				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ) {
 
-					$style = ( 'masonry' === $layout ) ? 'style="display:none"' : '';
 					?>
-					<div class="uagb-post-pagination-wrap" <?php echo esc_attr( $style ); ?> >
+					<div class="uagb-post-pagination-wrap">
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
-					<?php if ( 'masonry' === $layout && 'scroll' === $attributes['paginationEventType'] ) { ?>
-						<div class="uagb-post-inf-loader" style="display: none;">
-							<div class="uagb-post-loader-1"></div>
-							<div class="uagb-post-loader-2"></div>
-							<div class="uagb-post-loader-3"></div>
-						</div>
-						<?php
+					<?php
+				}
+				if ( 'masonry' === $layout && 'infinite' === $attributes['paginationType'] ) {
+
+					if ( 'scroll' === $attributes['paginationEventType'] ) {
+						?>
+							<div class="uagb-post-inf-loader" style="display: none;">
+								<div class="uagb-post-loader-1"></div>
+								<div class="uagb-post-loader-2"></div>
+								<div class="uagb-post-loader-3"></div>
+							</div>
+							<?php
 
 					}
-					if ( 'masonry' === $layout && 'button' === $attributes['paginationEventType'] ) {
+					if ( 'button' === $attributes['paginationEventType'] ) {
 						?>
-						<div class="uagb-post__load-more-wrap">
-							<span class="uagb-post-pagination-button">
-								<a class="uagb-post__load-more" href="javascript:void(0);">
+							<div class="uagb-post__load-more-wrap">
+								<span class="uagb-post-pagination-button">
+									<a class="uagb-post__load-more" href="javascript:void(0);">
 									<?php echo esc_html( $attributes['buttonText'] ); ?>
-								</a>
-							</span>
-						</div>
-						<?php
+									</a>
+								</span>
+							</div>
+							<?php
 					}
 				}
 				?>
@@ -1393,9 +1397,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-			$wrap_classes = ( $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
-			$link_classes = ( ! $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
+			$wrap_classes = ( true === $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
+			$link_classes = ( false === $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
 			?>
 			<div class="<?php echo esc_html( $wrap_classes ); ?>">
 				<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
