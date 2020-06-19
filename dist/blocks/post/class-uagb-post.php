@@ -221,6 +221,119 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'string',
 								'default' => 'Load More',
 							),
+							'paginationAlign'        => array(
+								'type'    => 'string',
+								'default' => 'center',
+							),
+							'paginationTextColor'        => array(
+								'type'    => 'string',
+								'default' => '#eee',
+							),
+							'paginationMasonryBgColor'        => array(
+								'type'    => 'string',
+								'default' => '#eee',
+							),
+							'paginationBgHoverColor'        => array(
+								'type'    => 'string',
+								'default' => '#eee',
+							),
+							'paginationTextHoverColor'        => array(
+								'type'    => 'string',
+								'default' => '#eee',
+							),
+							'paginationMasonryBorderStyle'        => array(
+								'type'    => 'string',
+								'default' => 'none',
+							),
+							'paginationMasonryBorderWidth'        => array(
+								'type'    => 'number',
+								'default' => 2,
+							),
+							'paginationMasonryBorderRadius'        => array(
+								'type'    => 'number',
+								'default' => 3,
+							),
+							'paginationMasonryBorderColor'        => array(
+								'type'    => 'string',
+								'default' => '#eee',
+							),
+							'paginationFontSize'             => array(
+								'type'    => 'number',
+								'default' => '',
+							),
+							'paginationFontSizeType'         => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'paginationFontSizeMobile'       => array(
+								'type' => 'number',
+							),
+							'paginationFontSizeTablet'       => array(
+								'type' => 'number',
+							),
+							'paginationFontFamily'           => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'paginationFontWeight'           => array(
+								'type' => 'string',
+							),
+							'paginationFontSubset'           => array(
+								'type' => 'string',
+							),
+							'paginationLineHeightType'       => array(
+								'type'    => 'string',
+								'default' => 'em',
+							),
+							'paginationLineHeight'           => array(
+								'type' => 'number',
+							),
+							'paginationLineHeightTablet'     => array(
+								'type' => 'number',
+							),
+							'paginationLineHeightMobile'     => array(
+								'type' => 'number',
+							),
+							'paginationLoadGoogleFonts'      => array(
+								'type'    => 'boolean',
+								'default' => false,
+							),
+							'loaderColor'        => array(
+								'type'    => 'string',
+								'default' => '#0085ba',
+							),
+							'loaderSize'        => array(
+								'type'    => 'number',
+								'default' => 18,
+							),
+							'paginationButtonPaddingType'=> array(
+								'type'=> "string",
+								'default' => "px"
+							),
+							'vpaginationButtonPaddingMobile'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
+							'vpaginationButtonPaddingTablet'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
+							'vpaginationButtonPaddingDesktop'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
+							'hpaginationButtonPaddingMobile'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
+							'hpaginationButtonPaddingTablet'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
+							'hpaginationButtonPaddingDesktop'=> array(
+								'type'=> "number",
+								'default' => 10
+							),
 						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),

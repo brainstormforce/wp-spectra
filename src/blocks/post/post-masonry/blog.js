@@ -18,6 +18,8 @@ class Blog extends React.Component {
 			mcolumns,
 			imgPosition,
 			postsToShow,
+			paginationEventType,
+			buttonText
 		} = attributes
 
 		// Removing posts from display should be instant.
@@ -25,7 +27,30 @@ class Blog extends React.Component {
 			latestPosts.slice( 0, postsToShow ) :
 			latestPosts
 
-
+		const paginationRender = () => {
+			if( "scroll" === paginationEventType ) { 
+				return (
+					
+						<div className="uagb-post-inf-loader">
+							<div className="uagb-post-loader-1"></div>
+							<div className="uagb-post-loader-2"></div>
+							<div className="uagb-post-loader-3"></div>
+						</div>
+				)
+			}
+			if( "button" === paginationEventType ) { 
+				return (
+					<div className="uagb-post__load-more-wrap">
+						<span className="uagb-post-pagination-button">
+							<a className="uagb-post__load-more">
+								{ buttonText }
+							</a>
+						</span>
+					</div>
+				)
+			}
+			
+		}
 		return (
 
 			<div
@@ -62,6 +87,7 @@ class Blog extends React.Component {
 						</article>
 					) }
 				</Masonry>
+				{ paginationRender() }
 			</div>
 		)
 	}
