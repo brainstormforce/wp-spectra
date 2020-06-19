@@ -6,6 +6,12 @@
 .uagb-post-grid {
 	margin: 0;
 	position: relative;
+	.uagb-post__load-more-wrap {
+		width: 100%;
+		a {
+			color: inherit;
+		}
+	}
 
 	.is-grid {
 
@@ -366,7 +372,6 @@
    }
 }
 .uagb-post-grid .uagb-post-inf-loader {
-	display: none;
 	margin: 0 auto;
 	min-height: 58px;
 	line-height: 58px;

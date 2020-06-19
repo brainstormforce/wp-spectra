@@ -607,7 +607,7 @@ class UAGBPostMasonry extends Component {
 									value={ loaderSize }
 									onChange={ ( value ) => setAttributes( { loaderSize: value } ) }
 									min={ 1 }
-									max={ 500 }
+									max={ 50 }
 								/>
 							</Fragment>
 						}

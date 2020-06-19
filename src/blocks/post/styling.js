@@ -457,8 +457,8 @@ function styling( props ) {
 		}
 		if ( 'scroll' === paginationEventType ) {
 			selectors['.uagb-post-grid .uagb-post-inf-loader div'] = {
-				"width" : loaderSize,
-				"height" : loaderSize,
+				"width" : generateCSSUnit( loaderSize, "px" ),
+				"height" : generateCSSUnit( loaderSize, "px" ),
 				"background-color" : loaderColor
 			}
 		}

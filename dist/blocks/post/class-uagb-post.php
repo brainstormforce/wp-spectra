@@ -850,10 +850,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					break;
 			}
 
-			$total = $total_pages = $query->max_num_pages;
+			$total = $query->max_num_pages;
 			?>
 
-			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php echo $total; ?>">
+			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
 
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
@@ -906,7 +906,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 					$style = ( 'masonry' === $layout ) ? 'style="display:none"' : '';
 					?>
-					<div class="uagb-post-pagination-wrap" <?php echo $style; ?> >
+					<div class="uagb-post-pagination-wrap" <?php echo esc_attr( $style ); ?> >
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 					<?php if ( 'masonry' === $layout && 'scroll' === $attributes['paginationEventType'] ) { ?>
@@ -921,9 +921,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					if ( 'masonry' === $layout && 'button' === $attributes['paginationEventType'] ) {
 						?>
 						<div class="uagb-post__load-more-wrap">
-							<a class="uagb-post__load-more" href="javascript:void(0);">
-								<?php echo esc_html( $attributes['buttonText'] ); ?>
-							</a>
+							<span class="uagb-post-pagination-button">
+								<a class="uagb-post__load-more" href="javascript:void(0);">
+									<?php echo esc_html( $attributes['buttonText'] ); ?>
+								</a>
+							</span>
 						</div>
 						<?php
 					}
@@ -1016,6 +1018,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		/**
 		 * Render Posts HTML for Masonry Pagination.
 		 *
+		 * @param object $query WP_Query object.
+		 * @param array  $attributes Array of block attributes.
 		 * @since x.x.x
 		 */
 		public function masonry_posts_markup( $query, $attributes ) {
