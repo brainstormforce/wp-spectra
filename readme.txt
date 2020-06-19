@@ -159,6 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
+= 1.17.0 =
+* Improvement: Post Masonry - Added Pagination option.
+
 = 1.16.0 =
 * New: WP - Search Block.
 * New: Inline Notice Block.
