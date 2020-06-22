@@ -165,9 +165,13 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * New: Users can now share non-personal usage data to help us test and develop better products.
 * Improvement: FAQ Schema - Added new padding options for Question.
 * Improvement: Multi Buttons - Added new option to add icon.
+* Improvement: Multi Buttons - Added new option to inherit styling from the theme.
 * Improvement: Advanced Columns - Added ability to choose from given variations of columns.
 * Improvement: Post Layout - Added an option to show an empty post result message.
+* Improvement: Post Layout - Added new option to inherit styling from the theme.
 * Improvement: Post Layout - Added `post_class()` compatibility to Post Grid, Post Masonry, and Post Carousel.
+* Improvement: Call to Action - Added new option to inherit styling from the theme for Button.
+* Improvement: Info Box - Added new option to inherit styling from the theme for Button.
 * Improvement: Added missing accessibility to all blocks.
 * Fix: Post Carousel - Incorrect Border Radius issue with respect to the theme.
 * Fix: Info Box - Fixed a minor issue with z-index and theme heading.
