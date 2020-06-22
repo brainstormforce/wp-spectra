@@ -1592,7 +1592,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'paginationEventType'          => 'button',
 							'buttonText'                   => 'Load More',
 							'paginationAlign'              => 'center',
-							'paginationTextColor'          => '#3c2a2a',
+							'paginationTextColor'          => '#080808',
 							'paginationMasonryBgColor'     => '#eee',
 							'paginationBgHoverColor'       => '',
 							'paginationTextHoverColor'     => '',

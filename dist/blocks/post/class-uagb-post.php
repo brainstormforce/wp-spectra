@@ -227,7 +227,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationTextColor'          => array(
 								'type'    => 'string',
-								'default' => '#3c2a2a',
+								'default' => '#080808',
 							),
 							'paginationMasonryBgColor'     => array(
 								'type'    => 'string',
