@@ -730,6 +730,7 @@ class UAGBPostGrid extends Component {
 								}
 								min={ 1 }
 								max={ 100 }
+								allowReset
 							/>
 						) }
 				</PanelBody>
