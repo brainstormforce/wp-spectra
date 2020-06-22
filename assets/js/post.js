@@ -88,6 +88,8 @@
             var $scope = $( $selector );
             var loader = $scope.find( '.uagb-post-inf-loader' );
 
+			$scope.find( '.is-masonry' ).isotope();
+
             if ( "scroll" === $attr.paginationEventType ) {
 
                 $( window ).scroll( function () {
@@ -102,7 +104,7 @@
                             
                             if ( count <= total ) {
                                 loader.show();
-                                UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
+                                UAGBPostMasonry._callAjax( $scope, $args, $attr, loader, false, count );
                                 count++;
                                 loadStatus = false;
                             }
@@ -112,16 +114,18 @@
                 } );
             }
             if ( "button" === $attr.paginationEventType ) {
-                $( document ).on( 'click', '.uagb-post__load-more', function( e ) {
-                    var $args = {
+                $( document ).on( 'click', '.uagb-post-pagination-button', function( e ) {
+					total = $scope.data( 'total' );
+					var $args = {
+						'total' : total,
                         'page_number' : count
                     };
-                    total = $scope.data( 'total' );
+					$scope.find('.uagb-post__load-more-wrap').hide();
                     if( true == loadStatus ) {
                         
                         if ( count <= total ) {
-                            loader.show();
-                            UAGBPostMasonry._callAjax( $scope, $args, $attr, loader );
+							loader.show();
+                            UAGBPostMasonry._callAjax( $scope, $args, $attr, loader, true, count );
                             count++;
                             loadStatus = false;
                         }
@@ -131,7 +135,7 @@
             } 
 
         },
-        _callAjax : function( $scope, $obj, $attr, loader ) {
+        _callAjax : function( $scope, $obj, $attr, loader, append = false, count ) {
 
             $.ajax({
                 url: uagb_data.ajax_url,
@@ -144,9 +148,17 @@
                 dataType: 'json',
                 type: 'POST',
                 success: function( data ) {
-                    $scope.find( '.uagb-post__items' ).isotope( 'insert',$( data.data ));
+                    $scope.find( '.is-masonry' ).isotope( 'insert',$( data.data ));
                     loadStatus = true; 
-                    loader.hide();
+					loader.hide();
+					
+					if ( true === append ) {
+						$scope.find('.uagb-post__load-more-wrap').show();
+					}
+
+					if ( count == $obj.total ) {
+						$scope.find('.uagb-post__load-more-wrap').hide();
+					}
                 }
             });
         }

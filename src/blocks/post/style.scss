@@ -8,6 +8,9 @@
 	position: relative;
 	.uagb-post__load-more-wrap {
 		width: 100%;
+		.uagb-post-pagination-button {
+			cursor: pointer;
+		}
 		a {
 			color: inherit;
 		}
