@@ -160,6 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 == Changelog ==
 = 1.17.0 =
 * Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
+* Improvement: New Gradient Pallete is introduced to set background.
 
 = 1.16.0 =
 * New: WP - Search Block.
