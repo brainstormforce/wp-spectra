@@ -802,10 +802,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param object $query WP_Query object.
 		 * @param string $layout post grid/masonry/carousel layout.
-		 * @param bool   $ajax_call Flag for if the function is called through AJAX.
 		 * @since 0.0.1
 		 */
-		public function get_post_html( $attributes, $query, $layout, $ajax_call = false ) {
+		public function get_post_html( $attributes, $query, $layout ) {
 
 			$attributes['post_type'] = $layout;
 
@@ -860,36 +859,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 				<?php
 
-				while ( $query->have_posts() ) {
-					$query->the_post();
-					// Filter to modify the attributes based on content requirement.
-					$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
-
-					do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-					?>
-					<article <?php post_class(); ?>>
-						<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-						<div class="uagb-post__inner-wrap">
-							<?php $this->render_complete_box_link( $attributes ); ?>
-							<?php $this->render_image( $attributes ); ?>
-							<div class="uagb-post__text">
-								<?php $this->render_title( $attributes ); ?>
-								<?php $this->render_meta( $attributes ); ?>
-								<?php $this->render_excerpt( $attributes ); ?>
-								<?php $this->render_button( $attributes ); ?>
-							</div>
-						</div>
-						<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-					</article>
-
-					<?php
-
-					do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-				}
-
-				wp_reset_postdata();
+					$this->posts_articles_markup( $query, $attributes );
 				?>
 				</div>
 				<?php
@@ -911,7 +881,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					</div>
 					<?php
 				}
-				if ( 'masonry' === $layout && 'infinite' === $attributes['paginationType'] && false === $ajax_call ) {
+				if ( 'masonry' === $layout && 'infinite' === $attributes['paginationType'] ) {
 
 					if ( 'scroll' === $attributes['paginationEventType'] ) {
 						?>
@@ -1014,7 +984,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$query = UAGB_Helper::get_query( $attr, 'masonry' );
 
 			ob_start();
-			$this->get_post_html( $attr, $query, 'masonry', true );
+			$this->posts_articles_markup( $query, $attr );
 			$html = ob_get_clean();
 
 			wp_send_json_success( $html );
@@ -1027,18 +997,18 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @param array  $attributes Array of block attributes.
 		 * @since x.x.x
 		 */
-		public function masonry_posts_markup( $query, $attributes ) {
+		public function posts_articles_markup( $query, $attributes ) {
 
 			while ( $query->have_posts() ) {
 				$query->the_post();
 				// Filter to modify the attributes based on content requirement.
 				$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
 
-				do_action( "uagb_post_before_article_{$attributes['postType']}", get_the_ID(), $attributes );
+				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 
 				?>
-				<article>
-					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['postType']}", get_the_ID(), $attributes ); ?>
+				<article <?php post_class(); ?>>
+					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 					<div class="uagb-post__inner-wrap">
 						<?php $this->render_complete_box_link( $attributes ); ?>
 						<?php $this->render_image( $attributes ); ?>
@@ -1049,12 +1019,12 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							<?php $this->render_button( $attributes ); ?>
 						</div>
 					</div>
-					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['postType']}", get_the_ID(), $attributes ); ?>
+					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 				</article>
 
 				<?php
 
-				do_action( "uagb_post_after_article_{$attributes['postType']}", get_the_ID(), $attributes );
+				do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 
 			}
 
