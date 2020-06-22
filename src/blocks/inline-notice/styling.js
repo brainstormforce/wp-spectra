@@ -38,20 +38,31 @@ function styling( props ) {
 		contentHrPadding,
 		titleVrPadding,
 		titleHrPadding,
+		noticeDismiss,
+		noticeAlignment,
 	} = props.attributes
+
+
+	let lPadding;
+	let rPadding;
+
+	if ( noticeDismiss ) {
+		if( 'left' === noticeAlignment || 'center' === noticeAlignment ){
+			rPadding = ( titleHrPadding + 13 ) ;
+			lPadding = titleHrPadding;
+		}else{
+			lPadding = ( titleHrPadding + 13 ) ;
+			rPadding = titleHrPadding;
+		}
+	} else {
+		lPadding = titleHrPadding;
+		rPadding = titleHrPadding;
+	}
 
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
 	var selectors = {
-
-		'.uagb-inline_notice__align-left .rich-text.block-editor-rich-text__editable.uagb-notice-title' : {
-		    'padding-right' : generateCSSUnit( titleHrPadding + 13, 'px' ),
-		},	
-
-		'.uagb-inline_notice__align-left .rich-text.block-editor-rich-text__editable.uagb-notice-title' : {
-		    'padding-left'  : generateCSSUnit( titleHrPadding + 13, 'px' ),
-		},
 
 		" .rich-text.block-editor-rich-text__editable.uagb-notice-title.keep-placeholder-on-focus" : {
 			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
@@ -60,8 +71,8 @@ function styling( props ) {
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 			"color": titleColor,
 			"background-color": noticeColor,
-			"padding-left" : generateCSSUnit( titleHrPadding, "px" ),
-			"padding-right" : generateCSSUnit( titleHrPadding, "px" ),
+			"padding-left" : generateCSSUnit( lPadding, "px" ),
+			"padding-right" : generateCSSUnit( rPadding, "px" ),
 			"padding-top" : generateCSSUnit( titleVrPadding, "px" ),
 			"padding-bottom" : generateCSSUnit( titleVrPadding, "px" ),
 		},

@@ -524,6 +524,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'displayPostContentRadio' => array(
+					'type'    => 'string',
+					'default' => 'excerpt',
+				),
 
 				// CTA attributes.
 				'ctaColor'                => array(
@@ -732,12 +736,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
 					// Filter to modify the attributes based on content requirement.
-					$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+					$attributes         = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+					$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
 
 					do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 
 					?>
-					<article <?php post_class(); ?>>
+					<article <?php ( $post_class_enabled ) ? post_class() : ''; ?>>
 						<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 						<div class="uagb-post__inner-wrap">
 							<?php $this->render_complete_box_link( $attributes ); ?>
@@ -1149,16 +1154,22 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
-			$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
+				$excerpt = get_the_content();
+			} else {
+				$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			}
+
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
+
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-post__excerpt">
-				<?php echo wp_kses_post( $excerpt ); ?>
-			</div>
+				<div class="uagb-post__excerpt">
+					<?php echo wp_kses_post( $excerpt ); ?>
+				</div>
 			<?php
 			do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1171,7 +1182,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function render_button( $attributes ) {
-			if ( ! $attributes['displayPostLink'] ) {
+			if ( ! $attributes['displayPostLink'] || 'full_post' === $attributes['displayPostContentRadio'] ) {
 				return;
 			}
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
