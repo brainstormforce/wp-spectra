@@ -732,12 +732,13 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				while ( $query->have_posts() ) {
 					$query->the_post();
 					// Filter to modify the attributes based on content requirement.
-					$attributes = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+					$attributes         = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+					$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
 
 					do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
 
 					?>
-					<article <?php post_class(); ?>>
+					<article <?php ( $post_class_enabled ) ? post_class() : ''; ?>>
 						<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
 						<div class="uagb-post__inner-wrap">
 							<?php $this->render_complete_box_link( $attributes ); ?>
