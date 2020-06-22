@@ -802,7 +802,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 *
 		 * @param object $query WP_Query object.
 		 * @param string $layout post grid/masonry/carousel layout.
-		 * @param bool $ajax_call Flag for if the function is called through AJAX.
+		 * @param bool   $ajax_call Flag for if the function is called through AJAX.
 		 * @since 0.0.1
 		 */
 		public function get_post_html( $attributes, $query, $layout, $ajax_call = false ) {
