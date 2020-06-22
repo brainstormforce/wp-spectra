@@ -1318,7 +1318,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Carousel', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a carousel layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'js_assets'   => array( 'uagb-slick-js', 'uagb-carousel-js', 'uagb-imagesloaded' ),
+						'js_assets'   => array( 'uagb-slick-js', 'uagb-post-js', 'uagb-imagesloaded' ),
 						'css_assets'  => array( 'uagb-slick-css' ),
 						'attributes'  => array(
 							'inheritFromTheme'        => false,
@@ -1509,8 +1509,9 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Post Masonry', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block fetches the blog posts you may have on your website and displays them in a masonry layout.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-carousel-js' ),
+						'js_assets'   => array( 'uagb-masonry', 'uagb-imagesloaded', 'uagb-post-js' ),
 						'attributes'  => array(
+							'postType'                     => 'post',
 							'inheritFromTheme'             => false,
 							'align'                        => 'left',
 							'rowGap'                       => '20',
@@ -2293,8 +2294,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'src' => UAGB_URL . 'assets/css/slick.css',
 						'dep' => array(),
 					),
-					'uagb-carousel-js'       => array(
-						'src' => UAGB_URL . 'assets/js/post-carousel.js',
+					'uagb-post-js'           => array(
+						'src' => UAGB_URL . 'assets/js/post.js',
 						'dep' => array( 'jquery', 'uagb-slick-js' ),
 					),
 					'uagb-faq-js'            => array(
