@@ -158,6 +158,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+= 1.17.0 =
+* Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
 
 = 1.16.0 =
 * New: WP - Search Block.
@@ -175,7 +177,6 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Added missing accessibility to all blocks.
 * Fix: Post Carousel - Incorrect Border Radius issue with respect to the theme.
 * Fix: Info Box - Fixed a minor issue with z-index and theme heading.
-* Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
 * Fix: Gravity Form Styler: Show/Hide Not working in front-end.
 * Fix: Table Of Contents - Removed the dependency on data attributes for the header.
 * Fix: Better UX compatibility with Gutenberg plugin.
