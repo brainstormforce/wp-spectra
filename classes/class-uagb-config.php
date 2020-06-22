@@ -1135,11 +1135,12 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/inline-notice'      => array(
 						'slug'        => '',
 						'title'       => __( 'Inline Notice', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block helps you add inline notice.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'js_assets'   => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
 						'attributes'  => array(
 							'block_id'              => '',
+							'c_id'                  => null,
 							'cookies'               => false,
 							'close_cookie_days'     => 1,
 							'textColor'             => '',

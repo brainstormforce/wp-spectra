@@ -33,12 +33,28 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			$m_selectors = array();
 			$selectors   = array();
 
+			$lPadding = 0;
+			$rPadding = 0;
+
+			if ( $attr['noticeDismiss'] ) {
+				if ( 'left' === $attr['noticeAlignment'] || 'center' === $attr['noticeAlignment'] ) {
+					$rPadding = ( $attr['titleHrPadding'] + '13' );
+					$lPadding = $attr['titleHrPadding'];
+				} else {
+					$lPadding = ( $attr['titleHrPadding'] + '13' );
+					$rPadding = $attr['titleHrPadding'];
+				}
+			} else {
+				$lPadding = $attr['titleHrPadding'];
+				$rPadding = $attr['titleHrPadding'];
+			}
+
 			$selectors = array(
 				' h4.uagb-notice-title'         => array(
 					'color'            => $attr['titleColor'],
 					'background-color' => $attr['noticeColor'],
-					'padding-left'     => UAGB_Helper::get_css_value( $attr['titleHrPadding'], 'px' ),
-					'padding-right'    => UAGB_Helper::get_css_value( $attr['titleHrPadding'], 'px' ),
+					'padding-left'     => UAGB_Helper::get_css_value( $lPadding, 'px' ),
+					'padding-right'    => UAGB_Helper::get_css_value( $rPadding, 'px' ),
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['titleVrPadding'], 'px' ),
 				),
