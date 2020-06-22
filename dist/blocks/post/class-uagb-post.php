@@ -234,10 +234,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'default' => '#eee',
 							),
 							'paginationBgHoverColor'       => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'paginationTextHoverColor'     => array(
-								'type'    => 'string',
+								'type' => 'string',
 							),
 							'paginationMasonryBorderStyle' => array(
 								'type'    => 'string',
