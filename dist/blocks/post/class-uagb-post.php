@@ -227,7 +227,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationTextColor'          => array(
 								'type'    => 'string',
-								'default' => '#eee',
+								'default' => '#3c2a2a',
 							),
 							'paginationMasonryBgColor'     => array(
 								'type'    => 'string',
@@ -235,11 +235,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationBgHoverColor'       => array(
 								'type'    => 'string',
-								'default' => '#eee',
 							),
 							'paginationTextHoverColor'     => array(
 								'type'    => 'string',
-								'default' => '#eee',
 							),
 							'paginationMasonryBorderStyle' => array(
 								'type'    => 'string',
@@ -255,7 +253,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationMasonryBorderColor' => array(
 								'type'    => 'string',
-								'default' => '#eee',
+								'default' => '#3c2a2a',
 							),
 							'paginationFontSize'           => array(
 								'type'    => 'number',
