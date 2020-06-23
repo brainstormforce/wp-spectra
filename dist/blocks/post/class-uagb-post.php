@@ -981,6 +981,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$query = UAGB_Helper::get_query( $attr, 'masonry' );
 
+			foreach ( $attr as $key => $attribute ) {
+				$attr[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
+			}
+
 			ob_start();
 			$this->posts_articles_markup( $query, $attr );
 			$html = ob_get_clean();
