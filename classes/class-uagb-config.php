@@ -1763,6 +1763,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'seperatorColor'        => '#b2b4b5',
 						),
 					),
+					'uagb/ratings'      => array(
+						'slug'        => '',
+						'title'       => __( 'Ratings', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps you add an inline notice.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'js_assets'   => array( 'uagb-inline-notice-js', 'uagb-cookie-lib' ),
+						'attributes'  => array(
+							'block_id'              => '',
+						),
+					),
 					'uagb/section'            => array(
 						'slug'        => '',
 						'title'       => __( 'Section', 'ultimate-addons-for-gutenberg' ),
