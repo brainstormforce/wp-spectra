@@ -649,6 +649,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'boolean',
 					'default' => false,
 				),
+				'displayPostContentRadio' => array(
+					'type'    => 'string',
+					'default' => 'excerpt',
+				),
 
 				// CTA attributes.
 				'ctaColor'                => array(
@@ -922,7 +926,9 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$base                = UAGB_Helper::build_base_url( $permalink_structure, $base );
 			$format              = UAGB_Helper::paged_format( $permalink_structure, $base );
 			$paged               = UAGB_Helper::get_paged( $query );
-			$page_limit          = isset( $attributes['pageLimit'] ) ? $attributes['pageLimit'] : $attributes['postsToShow'];
+			$page_limit          = min( $attributes['pageLimit'], $query->max_num_pages );
+			$page_limit          = isset( $page_limit ) ? $page_limit : $attributes['postsToShow'];
+			$attributes['postsToShow'];
 
 			$links = paginate_links(
 				array(
@@ -1343,16 +1349,22 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			$length = ( isset( $attributes['excerptLength'] ) ) ? $attributes['excerptLength'] : 25;
 
-			$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			if ( 'full_post' === $attributes['displayPostContentRadio'] ) {
+				$excerpt = get_the_content();
+			} else {
+				$excerpt = wp_trim_words( get_the_excerpt(), $length );
+			}
+
 			if ( ! $excerpt ) {
 				$excerpt = null;
 			}
+
 			$excerpt = apply_filters( "uagb_single_post_excerpt_{$attributes['post_type']}", $excerpt, get_the_ID(), $attributes );
 			do_action( "uagb_single_post_before_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 			?>
-			<div class="uagb-post__excerpt">
-				<?php echo wp_kses_post( $excerpt ); ?>
-			</div>
+				<div class="uagb-post__excerpt">
+					<?php echo wp_kses_post( $excerpt ); ?>
+				</div>
 			<?php
 			do_action( "uagb_single_post_after_excerpt_{$attributes['post_type']}", get_the_ID(), $attributes );
 		}
@@ -1365,7 +1377,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 		 * @since 0.0.1
 		 */
 		public function render_button( $attributes ) {
-			if ( ! $attributes['displayPostLink'] ) {
+			if ( ! $attributes['displayPostLink'] || 'full_post' === $attributes['displayPostContentRadio'] ) {
 				return;
 			}
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
