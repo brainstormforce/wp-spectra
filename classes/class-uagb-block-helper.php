@@ -2799,10 +2799,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'border-width'     => UAGB_Helper::get_css_value( $attr['paginationMasonryBorderWidth'], 'px' ),
 					'border-radius'    => UAGB_Helper::get_css_value( $attr['paginationMasonryBorderRadius'], 'px' ),
 					'border-color'     => $attr['paginationMasonryBorderColor'],
-					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], $attr['paginationFontSizeType'] ),
-					'line-height'      => UAGB_Helper::get_css_value( $attr['paginationLineHeight'], $attr['paginationLineHeightType'] ),
-					'font-family'      => $attr['paginationFontFamily'],
-					'font-weight'      => $attr['paginationFontWeight'],
+					'font-size'        => UAGB_Helper::get_css_value( $attr['paginationFontSize'], 'px' ),
 					'padding-top'      => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
 					'padding-bottom'   => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
 					'padding-right'    => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingDesktop'], $attr['paginationButtonPaddingType'] ),
@@ -2814,16 +2811,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'background-color' => $attr['paginationBgHoverColor'],
 				);
 				$m_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'font-size'      => UAGB_Helper::get_css_value( $attr['paginationFontSizeMobile'], $attr['paginationFontSizeType'] ),
-					'line-height'    => UAGB_Helper::get_css_value( $attr['paginationLineHeightMobile'], $attr['paginationLineHeightType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
 					'padding-left'   => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingMobile'], $attr['paginationButtonPaddingType'] ),
 				);
 				$t_selectors[' .uagb-post__load-more-wrap .uagb-post-pagination-button']     = array(
-					'font-size'      => UAGB_Helper::get_css_value( $attr['paginationFontSizeTablet'], $attr['paginationFontSizeType'] ),
-					'line-height'    => UAGB_Helper::get_css_value( $attr['paginationLineHeightTablet'], $attr['paginationLineHeightType'] ),
 					'padding-top'    => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
 					'padding-bottom' => UAGB_Helper::get_css_value( $attr['vpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
 					'padding-right'  => UAGB_Helper::get_css_value( $attr['hpaginationButtonPaddingTablet'], $attr['paginationButtonPaddingType'] ),
@@ -2854,10 +2847,6 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text .uagb-post__cta', $combined_selectors );
 				$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'cta', ' .uagb-post__text .uagb-post__cta a', $combined_selectors );
 
-				if ( 'infinite' === $attr['paginationType'] ) {
-
-					$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'pagination', ' .uagb-post__load-more-wrap .uagb-post-pagination-button', $combined_selectors );
-				}
 			}
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, '.uagb-block-' . $id );

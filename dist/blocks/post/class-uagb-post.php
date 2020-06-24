@@ -259,43 +259,6 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 								'type'    => 'number',
 								'default' => '',
 							),
-							'paginationFontSizeType'       => array(
-								'type'    => 'string',
-								'default' => 'px',
-							),
-							'paginationFontSizeMobile'     => array(
-								'type' => 'number',
-							),
-							'paginationFontSizeTablet'     => array(
-								'type' => 'number',
-							),
-							'paginationFontFamily'         => array(
-								'type'    => 'string',
-								'default' => '',
-							),
-							'paginationFontWeight'         => array(
-								'type' => 'string',
-							),
-							'paginationFontSubset'         => array(
-								'type' => 'string',
-							),
-							'paginationLineHeightType'     => array(
-								'type'    => 'string',
-								'default' => 'em',
-							),
-							'paginationLineHeight'         => array(
-								'type' => 'number',
-							),
-							'paginationLineHeightTablet'   => array(
-								'type' => 'number',
-							),
-							'paginationLineHeightMobile'   => array(
-								'type' => 'number',
-							),
-							'paginationLoadGoogleFonts'    => array(
-								'type'    => 'boolean',
-								'default' => false,
-							),
 							'loaderColor'                  => array(
 								'type'    => 'string',
 								'default' => '#0085ba',

@@ -199,18 +199,7 @@ class UAGBPostMasonry extends Component {
 			paginationMasonryBorderWidth,
 			paginationMasonryBorderRadius,
 			paginationMasonryBorderColor,
-			paginationLoadGoogleFonts,
-			paginationFontFamily,
-			paginationFontWeight,
-			paginationFontSubset,
-			paginationFontSizeType,
 			paginationFontSize,
-			paginationFontSizeMobile,
-			paginationFontSizeTablet,
-			paginationLineHeightType,
-			paginationLineHeight,
-			paginationLineHeightMobile,
-			paginationLineHeightTablet,
 			loaderColor,
 			loaderSize,
 			paginationButtonPaddingType,
@@ -273,7 +262,6 @@ class UAGBPostMasonry extends Component {
 		let loadMetaGoogleFonts
 		let loadExcerptGoogleFonts
 		let loadCtaGoogleFonts
-		let loadPaginationGoogleFonts
 
 		if( titleLoadGoogleFonts == true ) {
 
@@ -327,19 +315,6 @@ class UAGBPostMasonry extends Component {
 
 			loadCtaGoogleFonts = (
 				<WebfontLoader config={ ctaconfig }>
-				</WebfontLoader>
-			)
-		}
-		if( paginationLoadGoogleFonts == true ) {
-
-			const paginationconfig = {
-				google: {
-					families: [ paginationFontFamily + ( paginationFontWeight ? ":" + paginationFontWeight : "" ) ],
-				},
-			}
-
-			loadPaginationGoogleFonts = (
-				<WebfontLoader config={ paginationconfig }>
 				</WebfontLoader>
 			)
 		}
@@ -398,6 +373,14 @@ class UAGBPostMasonry extends Component {
 									onClick={ () => setAttributes( { paginationAlign: "right" } ) }
 									aria-pressed = { "right" === paginationAlign }
 									isPrimary = { "right" === paginationAlign }
+								/>
+								<h2> { __("Font Size (px) ") } </h2>
+								<RangeControl
+									value={ paginationFontSize }
+									onChange={ ( value ) => setAttributes( { paginationFontSize: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
 								/>
 								<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
 									tabs={ [
@@ -586,29 +569,25 @@ class UAGBPostMasonry extends Component {
 									} }
 								/>
 								{ "none" !== paginationMasonryBorderStyle &&
-									<RangeControl
-										label={ __( "Thickness (px)" ) }
-										value={ paginationMasonryBorderWidth }
-										onChange={ value => {
-											setAttributes( { paginationMasonryBorderWidth: value } )
-										} }
-										min={ 0 }
-										max={ 20 }
-									/>
-								}
-								{ "none" !== paginationMasonryBorderStyle &&
-									<RangeControl
-										label={ __( "Rounded Corners (px)" ) }
-										value={ paginationMasonryBorderRadius }
-										onChange={ value => {
-											setAttributes( { paginationMasonryBorderRadius: value } )
-										} }
-										min={ 0 }
-										max={ 50 }
-									/>
-								}
-								{ "none" !== paginationMasonryBorderStyle &&
 									<Fragment>
+										<RangeControl
+											label={ __( "Thickness (px)" ) }
+											value={ paginationMasonryBorderWidth }
+											onChange={ value => {
+												setAttributes( { paginationMasonryBorderWidth: value } )
+											} }
+											min={ 0 }
+											max={ 20 }
+										/>
+										<RangeControl
+											label={ __( "Rounded Corners (px)" ) }
+											value={ paginationMasonryBorderRadius }
+											onChange={ value => {
+												setAttributes( { paginationMasonryBorderRadius: value } )
+											} }
+											min={ 0 }
+											max={ 50 }
+										/>
 										<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
 										<ColorPalette
 											value={ paginationMasonryBorderColor }
@@ -617,24 +596,6 @@ class UAGBPostMasonry extends Component {
 										/>
 									</Fragment>
 								}
-								<hr className="uagb-editor__separator" />
-								<TypographyControl
-									label={ __( "Typography" ) }
-									attributes = { attributes }
-									setAttributes = { setAttributes }
-									loadGoogleFonts = { { value: paginationLoadGoogleFonts, label: "paginationLoadGoogleFonts" } }
-									fontFamily = { { value: paginationFontFamily, label: "paginationFontFamily" } }
-									fontWeight = { { value: paginationFontWeight, label: "paginationFontWeight" } }
-									fontSubset = { { value: paginationFontSubset, label: "paginationFontSubset" } }
-									fontSizeType = { { value: paginationFontSizeType, label: "paginationFontSizeType" } }
-									fontSize = { { value: paginationFontSize, label: "paginationFontSize" } }
-									fontSizeMobile = { { value: paginationFontSizeMobile, label: "paginationFontSizeMobile" } }
-									fontSizeTablet= { { value: paginationFontSizeTablet, label: "paginationFontSizeTablet" } }
-									lineHeightType = { { value: paginationLineHeightType, label: "paginationLineHeightType" } }
-									lineHeight = { { value: paginationLineHeight, label: "paginationLineHeight" } }
-									lineHeightMobile = { { value: paginationLineHeightMobile, label: "paginationLineHeightMobile" } }
-									lineHeightTablet= { { value: paginationLineHeightTablet, label: "paginationLineHeightTablet" } }
-								/>
 							</Fragment>
 						}
 						{ 'scroll' === paginationEventType &&
@@ -1269,7 +1230,6 @@ class UAGBPostMasonry extends Component {
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
 				{ loadCtaGoogleFonts }
-				{ loadPaginationGoogleFonts }
 			</Fragment>
 		)
 	}
