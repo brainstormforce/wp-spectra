@@ -8,7 +8,24 @@ const { __ } = wp.i18n
 
 const {
 	Component,
+	Fragment
 } = wp.element
+
+const {
+	PanelBody,
+	SelectControl,
+	RangeControl,
+	TabPanel,
+	ButtonGroup,
+	Button,
+	Dashicon,
+	ToggleControl,
+	IconButton
+} = wp.components
+const {
+	InspectorControls,
+	RichText,
+} = wp.blockEditor
 
 class UAGBFormsNameEdit extends Component {
 
@@ -32,23 +49,46 @@ class UAGBFormsNameEdit extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
     }
-    
+	
 	render() {
 
-		const { attributes } = this.props
+		const { attributes, setAttributes } = this.props
 
         const {
-            block_id
+			block_id,
+			nameRequired
 		} = attributes
 		
+		const nameInspectorControls = () => {
+
+			return (
+				<PanelBody
+					title={ __( "General" ) }
+					initialOpen={ true }
+					className="uagb__url-panel-body"
+				>
+					<ToggleControl
+						label={ __( "Required" ) }
+						checked={ nameRequired }
+						onChange={ ( value ) => setAttributes( { nameRequired: ! nameRequired } ) }
+					/>
+				</PanelBody>
+			)
+		}
+
 		return (
-			<div className={ classnames(
-				"uagb-forms-name-wrap",
-				`uagb-block-${ block_id }`,
-			) }>
-				<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
-				<input type="text" className="uagb-forms-name-input"/>
-			</div>
+			<Fragment>
+				<InspectorControls>
+					{ nameInspectorControls() }
+				</InspectorControls>
+				<div className={ classnames(
+					"uagb-forms-name-wrap",
+					`uagb-block-${ block_id }`,
+				) }>
+					<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
+					<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>
+				</div>
+			</Fragment>
 		)
 	}
 }
