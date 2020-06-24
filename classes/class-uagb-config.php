@@ -2224,6 +2224,30 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'inputSizeType'           => '%',
 						),
 					),
+					'uagb/forms'        => array(
+						'slug'        => '',
+						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Forms.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+						)
+					),
+					'uagb/forms-name'        => array(
+						'slug'        => '',
+						'title'       => __( 'Name', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Name field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+						)
+					),
+					'uagb/forms-email'        => array(
+						'slug'        => '',
+						'title'       => __( 'Email', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Email field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+						)
+					),
 				);
 			}
 			return self::$block_attributes;
