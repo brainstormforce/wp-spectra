@@ -57,8 +57,7 @@
     "sass-loader": "^6.0.6",
     "slick-carousel": "^1.8.1",
     "striptags": "^3.1.1",
-    "update-notifier": "^2.3.0",
-    "webpack": "^3.1.0"
+    "update-notifier": "^2.3.0"
   },
   "babel": {
     "presets": [
@@ -122,6 +121,7 @@
     "react-memoize": "^1.0.1",
     "uglifyjs-webpack-plugin": "^2.2.0",
     "webfontloader": "^1.6.28",
+    "webpack": "^3.1.0",
     "webpack-config": "^7.5.0"
   }
 }

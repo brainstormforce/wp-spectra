@@ -53,7 +53,8 @@ class UAGBFaqChildEdit extends Component {
 			answer,
 			icon,
 			iconActive,
-			layout
+			layout,
+			headingTag
         } = attributes
 		
 		const faqRenderIcon = () => {
@@ -83,7 +84,7 @@ class UAGBFaqChildEdit extends Component {
 						<div className="uagb-faq-questions-button uagb-faq-questions">
 							{ 'accordion' === layout && faqRenderIcon() }
 							<RichText
-								tagName="span"
+								tagName={ headingTag }
 								placeholder={ __( "Question" ) }
 								value={ question }
 								onChange={ ( value ) => setAttributes( { question: value } ) }

@@ -316,5 +316,10 @@ const attributes = {
 		type: "number",
 		default : 10
 	},
+	headingTag: {
+		type: "string",
+		selector: "h1,h2,h3,h4,h5,h6",
+		default: "h3"
+	},
 }
 export default attributes
