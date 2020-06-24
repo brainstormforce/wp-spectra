@@ -511,30 +511,66 @@ class UAGBPostMasonry extends Component {
 										}
 									}
 								</TabPanel>
-								<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextColor }} ></span></span></p>
-								<ColorPalette
-									value={ paginationTextColor }
-									onChange={ ( colorValue ) => setAttributes( { paginationTextColor: colorValue } ) }
-									allowReset
-								/>
-								<p className="uagb-setting-label">{ __( "Text Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextHoverColor }} ></span></span></p>
-								<ColorPalette
-									value={ paginationTextHoverColor }
-									onChange={ ( colorValue ) => setAttributes( { paginationTextHoverColor: colorValue } ) }
-									allowReset
-								/>
-								<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBgColor }} ></span></span></p>
-								<ColorPalette
-									value={ paginationMasonryBgColor }
-									onChange={ ( colorValue ) => setAttributes( { paginationMasonryBgColor: colorValue } ) }
-									allowReset
-								/>
-								<p className="uagb-setting-label">{ __( "Background Hover Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgHoverColor }} ></span></span></p>
-								<ColorPalette
-									value={ paginationBgHoverColor }
-									onChange={ ( colorValue ) => setAttributes( { paginationBgHoverColor: colorValue } ) }
-									allowReset
-								/>
+								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+									activeClass="active-tab"
+									tabs={ [
+										{
+											name: "normal",
+											title: __( "Normal" ),
+											className: "uagb-normal-tab",
+										},
+										{
+											name: "hover",
+											title: __( "Hover" ),
+											className: "uagb-hover-tab",
+										},
+									] }>
+									{
+										( tabName ) => {
+											
+											if( "normal" === tabName.name ) {
+												
+												return (
+													<Fragment>
+														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationTextColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationTextColor: colorValue } ) }
+															allowReset
+														/>
+														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBgColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationMasonryBgColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationMasonryBgColor: colorValue } ) }
+															allowReset
+														/>
+													</Fragment>
+												)
+											} else {
+												return (
+													<Fragment>
+														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextHoverColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationTextHoverColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationTextHoverColor: colorValue } ) }
+															allowReset
+														/>
+														
+														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgHoverColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationBgHoverColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationBgHoverColor: colorValue } ) }
+															allowReset
+														/>
+													</Fragment>
+												)
+											}
+											
+										}
+									}
+								</TabPanel>
+								<hr className="uagb-editor__separator" />
+								<h2> { __( "Border" ) } </h2>
 								<SelectControl
 									label={ __( "Style" ) }
 									value={ paginationMasonryBorderStyle }
@@ -571,12 +607,17 @@ class UAGBPostMasonry extends Component {
 										max={ 50 }
 									/>
 								}
-								<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
-								<ColorPalette
-									value={ paginationMasonryBorderColor }
-									onChange={ ( value ) => setAttributes( { paginationMasonryBorderColor: value } ) }
-									allowReset
-								/>
+								{ "none" !== paginationMasonryBorderStyle &&
+									<Fragment>
+										<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
+										<ColorPalette
+											value={ paginationMasonryBorderColor }
+											onChange={ ( value ) => setAttributes( { paginationMasonryBorderColor: value } ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+								<hr className="uagb-editor__separator" />
 								<TypographyControl
 									label={ __( "Typography" ) }
 									attributes = { attributes }
