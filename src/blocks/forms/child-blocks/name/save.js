@@ -2,13 +2,25 @@
  * BLOCK: Forms - Name - Save Block
  */
 
+import classnames from "classnames"
+
+const { __ } = wp.i18n
 
 export default function save( props ) {
 	
+	const { attributes } = props
+
+	const {
+		block_id
+	} = attributes
+		
 	return (
-		<div className="uagb-forms-name-wrap">
-				<label className="uagb-forms-name-label"> Name </label>
+		<div className={ classnames(
+			"uagb-forms-name-wrap",
+			`uagb-block-${ block_id }`,
+		) }>
+				<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
 				<input type="text" className="uagb-forms-name-input"/>
-			</div>
+		</div>
 	)
 }

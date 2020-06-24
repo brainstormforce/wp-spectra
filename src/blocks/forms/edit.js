@@ -29,7 +29,7 @@ class UAGBFormsEdit extends Component {
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
-		$style.setAttribute( "id", "uagb-style-forms-" + this.props.clientId.substr( 0, 8 ) )
+		$style.setAttribute( "id", "uagb-style-forms-" + attributes.block_id )
 		document.head.appendChild( $style )
 		
 	}
@@ -39,10 +39,16 @@ class UAGBFormsEdit extends Component {
     
 	render() {
 
+        const { attributes } = this.props
+
+        const {
+            block_id
+        } = attributes
+
 		return (
 				<div className={ classnames(
 					"uagb-forms__outer-wrap",
-					`uagb-block-${ this.props.clientId.substr( 0, 8 ) }`,
+					`uagb-block-${ block_id }`,
 				) }
 				>
                     <InnerBlocks

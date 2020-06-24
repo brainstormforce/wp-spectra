@@ -2,6 +2,10 @@
  * BLOCK: Forms - Name - Edit
  */
 
+import classnames from "classnames"
+
+const { __ } = wp.i18n
+
 const {
 	Component,
 } = wp.element
@@ -31,9 +35,18 @@ class UAGBFormsNameEdit extends Component {
     
 	render() {
 
+		const { attributes } = this.props
+
+        const {
+            block_id
+		} = attributes
+		
 		return (
-			<div className="uagb-forms-name-wrap">
-				<label className="uagb-forms-name-label"> Name </label>
+			<div className={ classnames(
+				"uagb-forms-name-wrap",
+				`uagb-block-${ block_id }`,
+			) }>
+				<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
 				<input type="text" className="uagb-forms-name-input"/>
 			</div>
 		)
