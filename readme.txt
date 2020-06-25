@@ -164,6 +164,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: New Gradient Pallete is introduced to set background.
 * Fix: Post Grid - Page Limit issue with less number of Posts.
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
+* Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
 
 = 1.16.0 =
 * New: WP - Search Block.
