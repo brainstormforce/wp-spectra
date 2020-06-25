@@ -115,52 +115,17 @@ class UAGBRestaurantMenu extends Component {
 		const {
 			menu_item_count,
 			rest_menu_item_arr,
-			headingAlign,
-			priceColor,
-			descColor,
-			titleColor,
-			headingTag,
+			
+			
+			
+			
 
-			titleFontSizeType,
-			titleFontSize,
-			titleFontSizeTablet,
-			titleFontSizeMobile,
-			titleFontFamily,
-			titleFontWeight,
-			titleFontSubset,
-			titleLineHeightType,
-			titleLineHeight,
-			titleLineHeightTablet,
-			titleLineHeightMobile,
-			titleLoadGoogleFonts,
+			
 
-			priceFontSizeType,
-			priceFontSize,
-			priceFontSizeTablet,
-			priceFontSizeMobile,
-			priceFontFamily,
-			priceFontWeight,
-			priceFontSubset,
-			priceLineHeightType,
-			priceLineHeight,
-			priceLineHeightTablet,
-			priceLineHeightMobile,
 			priceLoadGoogleFonts,
-
-			descFontSizeType,
-			descFontSize,
-			descFontSizeTablet,
-			descFontSizeMobile,
-			descFontFamily,
-			descFontWeight,
-			descFontSubset,
-			descLineHeightType,
-			descLineHeight,
-			descLineHeightTablet,
-			descLineHeightMobile,
+			titleLoadGoogleFonts,
 			descLoadGoogleFonts,
-			imagePosition,
-			imageAlignment,
+
 			titleSpace,
 			imgHrPadding,
 			imgVrPadding,
@@ -173,58 +138,10 @@ class UAGBRestaurantMenu extends Component {
 			columnGap,
 			contentHrPadding,
 			contentVrPadding,
-			seperatorStyle,
-			seperatorWidth,
-			seperatorThickness,
-			seperatorColor,
+			
 			stack,
 		} = attributes	
 
-		let loadTitleGoogleFonts
-		let loadDescGoogleFonts
-		let loadPriceGoogleFonts
-
-		if( titleLoadGoogleFonts == true ) {
-			
-			const titleconfig = {
-				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
-				},
-			}
-
-			loadTitleGoogleFonts = (
-				<WebfontLoader config={ titleconfig }>
-				</WebfontLoader>
-			)
-		}
-		
-		if( descLoadGoogleFonts == true ) {
-					
-			const descconfig = {
-				google: {
-					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
-				},
-			}
-
-			loadDescGoogleFonts = (
-				<WebfontLoader config={ descconfig }>
-				</WebfontLoader>
-			)
-		}
-		
-		if( priceLoadGoogleFonts == true ) {
-					
-			const priceconfig = {
-				google: {
-					families: [ priceFontFamily + ( priceFontWeight ? ":" + priceFontWeight : "" ) ],
-				},
-			}
-
-			loadPriceGoogleFonts = (
-				<WebfontLoader config={ priceconfig }>
-				</WebfontLoader>
-			)
-		}
 		
 		
 		
@@ -436,13 +353,11 @@ class UAGBRestaurantMenu extends Component {
 							template={ getPriceListTemplate( menu_item_count, rest_menu_item_arr ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							// __experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
+							__experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
 							/>
 				
 							</div>
-				{ loadTitleGoogleFonts }
-				{ loadDescGoogleFonts }
-				{ loadPriceGoogleFonts }
+				
 			</Fragment>
 		)
 	}

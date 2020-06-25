@@ -131,8 +131,7 @@ class UAGBRestaurantMenuChild extends Component {
 			titleLineHeight,
 			titleLineHeightTablet,
 			titleLineHeightMobile,
-			titleLoadGoogleFonts,
-
+			
 			priceFontSizeType,
 			priceFontSize,
 			priceFontSizeTablet,
@@ -144,7 +143,7 @@ class UAGBRestaurantMenuChild extends Component {
 			priceLineHeight,
 			priceLineHeightTablet,
 			priceLineHeightMobile,
-			priceLoadGoogleFonts,
+			
 
 			descFontSizeType,
 			descFontSize,
@@ -157,21 +156,11 @@ class UAGBRestaurantMenuChild extends Component {
 			descLineHeight,
 			descLineHeightTablet,
 			descLineHeightMobile,
-			descLoadGoogleFonts,
+			
 			imagePosition,
 			imageAlignment,
-			titleSpace,
-			imgHrPadding,
-			imgVrPadding,
 			imageSize,
 			imageWidth,
-			columns,
-			tcolumns,
-			mcolumns,
-			rowGap,
-			columnGap,
-			contentHrPadding,
-			contentVrPadding,
 			seperatorStyle,
 			seperatorWidth,
 			seperatorThickness,
@@ -181,6 +170,9 @@ class UAGBRestaurantMenuChild extends Component {
 			title,
 			description,
 			price,
+			priceLoadGoogleFonts,
+			titleLoadGoogleFonts,
+			descLoadGoogleFonts,
 
 
 		} = attributes	
@@ -537,7 +529,9 @@ class UAGBRestaurantMenuChild extends Component {
 
 												</div>
 					</div>
-               
+					{ loadTitleGoogleFonts }
+					{ loadDescGoogleFonts }
+					{ loadPriceGoogleFonts }
 			</Fragment>
 		)
 	}

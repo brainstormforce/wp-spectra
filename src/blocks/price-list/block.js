@@ -18,7 +18,6 @@ const {
 } = wp.blocks
 
 const { addFilter } = wp.hooks;
-
 const { Fragment } = wp.element;
 const { withSelect } = wp.data;
 const { compose, createHigherOrderComponent } = wp.compose;
@@ -78,6 +77,6 @@ registerBlockType( "uagb/restaurant-menu", {
 } )
 addFilter(
 	'editor.BlockEdit',
-	'uagb/faq',
+	'uagb/restaurant-menu',
 	withPriceList
 );

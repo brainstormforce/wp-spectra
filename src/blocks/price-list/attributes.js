@@ -3,7 +3,7 @@
  */
 const { __ } = wp.i18n
 
-const ITEM_COUNT = 4
+const ITEM_COUNT = 2
 
 const rest_menu_block = []
 

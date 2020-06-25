@@ -482,6 +482,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_restaurant_menu_gfont( $blockattr );
 					break;
 
+				case 'uagb/restaurant-menu-child':
+					$css += UAGB_Block_Helper::get_restaurant_menu_child_css( $blockattr, $block_id );
+					break;	
+
 				case 'uagb/call-to-action':
 					$css += UAGB_Block_Helper::get_call_to_action_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_call_to_action_gfont( $blockattr );
