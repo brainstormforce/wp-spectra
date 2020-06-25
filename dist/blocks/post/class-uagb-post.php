@@ -52,6 +52,7 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			add_action( 'init', array( $this, 'register_blocks' ) );
 			add_action( 'wp_ajax_uagb_post_pagination', array( $this, 'post_pagination' ) );
+			add_action( 'wp_ajax_uagb_get_posts', array( $this, 'masonry_pagination' ) );
 			add_action( 'wp_footer', array( $this, 'add_post_dynamic_script' ), 1000 );
 		}
 
@@ -207,7 +208,94 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 				array(
 					'attributes'      => array_merge(
 						$common_attributes,
-						array()
+						array(
+							'paginationType'               => array(
+								'type'    => 'string',
+								'default' => 'none',
+							),
+							'paginationEventType'          => array(
+								'type'    => 'string',
+								'default' => 'button',
+							),
+							'buttonText'                   => array(
+								'type'    => 'string',
+								'default' => 'Load More',
+							),
+							'paginationAlign'              => array(
+								'type'    => 'string',
+								'default' => 'center',
+							),
+							'paginationTextColor'          => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'paginationMasonryBgColor'     => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'paginationBgHoverColor'       => array(
+								'type' => 'string',
+							),
+							'paginationTextHoverColor'     => array(
+								'type' => 'string',
+							),
+							'paginationMasonryBorderStyle' => array(
+								'type'    => 'string',
+								'default' => 'solid',
+							),
+							'paginationMasonryBorderWidth' => array(
+								'type'    => 'number',
+								'default' => 1,
+							),
+							'paginationMasonryBorderRadius' => array(
+								'type'    => 'number',
+								'default' => 2,
+							),
+							'paginationMasonryBorderColor' => array(
+								'type'    => 'string',
+								'default' => '',
+							),
+							'paginationFontSize'           => array(
+								'type'    => 'number',
+								'default' => 13,
+							),
+							'loaderColor'                  => array(
+								'type'    => 'string',
+								'default' => '#0085ba',
+							),
+							'loaderSize'                   => array(
+								'type'    => 'number',
+								'default' => 18,
+							),
+							'paginationButtonPaddingType'  => array(
+								'type'    => 'string',
+								'default' => 'px',
+							),
+							'vpaginationButtonPaddingMobile' => array(
+								'type'    => 'number',
+								'default' => 8,
+							),
+							'vpaginationButtonPaddingTablet' => array(
+								'type'    => 'number',
+								'default' => 8,
+							),
+							'vpaginationButtonPaddingDesktop' => array(
+								'type'    => 'number',
+								'default' => 8,
+							),
+							'hpaginationButtonPaddingMobile' => array(
+								'type'    => 'number',
+								'default' => 12,
+							),
+							'hpaginationButtonPaddingTablet' => array(
+								'type'    => 'number',
+								'default' => 12,
+							),
+							'hpaginationButtonPaddingDesktop' => array(
+								'type'    => 'number',
+								'default' => 12,
+							),
+						)
 					),
 					'render_callback' => array( $this, 'post_masonry_callback' ),
 				)
@@ -726,44 +814,17 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					// Nothing to do here.
 					break;
 			}
+
+			$total = $query->max_num_pages;
 			?>
-			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>">
+
+			<div class="<?php echo esc_html( implode( ' ', $outerwrap ) ); ?>" data-total="<?php echo esc_attr( $total ); ?>">
 
 				<div class="<?php echo esc_html( implode( ' ', $wrap ) ); ?>">
 
 				<?php
 
-				while ( $query->have_posts() ) {
-					$query->the_post();
-					// Filter to modify the attributes based on content requirement.
-					$attributes         = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
-					$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
-
-					do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-					?>
-					<article <?php ( $post_class_enabled ) ? post_class() : ''; ?>>
-						<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-						<div class="uagb-post__inner-wrap">
-							<?php $this->render_complete_box_link( $attributes ); ?>
-							<?php $this->render_image( $attributes ); ?>
-							<div class="uagb-post__text">
-								<?php $this->render_title( $attributes ); ?>
-								<?php $this->render_meta( $attributes ); ?>
-								<?php $this->render_excerpt( $attributes ); ?>
-								<?php $this->render_button( $attributes ); ?>
-							</div>
-						</div>
-						<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
-					</article>
-
-					<?php
-
-					do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-				}
-
-				wp_reset_postdata();
+					$this->posts_articles_markup( $query, $attributes );
 				?>
 				</div>
 				<?php
@@ -777,12 +838,37 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					<?php
 				}
 
-				if ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) {
+				if ( ( isset( $attributes['postPagination'] ) && true === $attributes['postPagination'] ) ) {
+
 					?>
 					<div class="uagb-post-pagination-wrap">
 						<?php echo $this->render_pagination( $query, $attributes ); //phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
 					</div>
 					<?php
+				}
+				if ( 'masonry' === $layout && 'infinite' === $attributes['paginationType'] ) {
+
+					if ( 'scroll' === $attributes['paginationEventType'] ) {
+						?>
+							<div class="uagb-post-inf-loader" style="display: none;">
+								<div class="uagb-post-loader-1"></div>
+								<div class="uagb-post-loader-2"></div>
+								<div class="uagb-post-loader-3"></div>
+							</div>
+							<?php
+
+					}
+					if ( 'button' === $attributes['paginationEventType'] ) {
+						?>
+							<div class="uagb-post__load-more-wrap">
+								<span class="uagb-post-pagination-button">
+									<a class="uagb-post__load-more" href="javascript:void(0);">
+									<?php echo esc_html( $attributes['buttonText'] ); ?>
+									</a>
+								</span>
+							</div>
+							<?php
+					}
 				}
 				?>
 			</div>
@@ -849,7 +935,73 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 
 			wp_send_json_error( ' No attributes recieved' );
 		}
+		/**
+		 * Sends the Posts to Masonry AJAX.
+		 *
+		 * @since x.x.x
+		 */
+		public function masonry_pagination() {
 
+			check_ajax_referer( 'uagb_masonry_ajax_nonce', 'nonce' );
+
+			$attr = $_POST['attr'];
+
+			$attr['paged'] = $_POST['page_number'];
+
+			$query = UAGB_Helper::get_query( $attr, 'masonry' );
+
+			foreach ( $attr as $key => $attribute ) {
+				$attr[ $key ] = ( 'false' === $attribute ) ? false : ( ( 'true' === $attribute ) ? true : $attribute );
+			}
+
+			ob_start();
+			$this->posts_articles_markup( $query, $attr );
+			$html = ob_get_clean();
+
+			wp_send_json_success( $html );
+		}
+
+		/**
+		 * Render Posts HTML for Masonry Pagination.
+		 *
+		 * @param object $query WP_Query object.
+		 * @param array  $attributes Array of block attributes.
+		 * @since x.x.x
+		 */
+		public function posts_articles_markup( $query, $attributes ) {
+
+			while ( $query->have_posts() ) {
+				$query->the_post();
+				// Filter to modify the attributes based on content requirement.
+				$attributes         = apply_filters( 'uagb_post_alter_attributes', $attributes, get_the_ID() );
+				$post_class_enabled = apply_filters( 'uagb_enable_post_class', false, $attributes );
+
+				do_action( "uagb_post_before_article_{$attributes['post_type']}", get_the_ID(), $attributes );
+
+				?>
+				<article <?php ( $post_class_enabled ) ? post_class() : ''; ?>>
+					<?php do_action( "uagb_post_before_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
+					<div class="uagb-post__inner-wrap">
+						<?php $this->render_complete_box_link( $attributes ); ?>
+						<?php $this->render_image( $attributes ); ?>
+						<div class="uagb-post__text">
+							<?php $this->render_title( $attributes ); ?>
+							<?php $this->render_meta( $attributes ); ?>
+							<?php $this->render_excerpt( $attributes ); ?>
+							<?php $this->render_button( $attributes ); ?>
+						</div>
+					</div>
+					<?php do_action( "uagb_post_after_inner_wrap_{$attributes['post_type']}", get_the_ID(), $attributes ); ?>
+				</article>
+
+				<?php
+
+				do_action( "uagb_post_after_article_{$attributes['post_type']}", get_the_ID(), $attributes );
+
+			}
+
+			wp_reset_postdata();
+		}
 		/**
 		 * Renders the post masonry related script.
 		 *
@@ -873,6 +1025,10 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 									$scope.find( '.is-masonry' ).isotope();
 								} );
 							} )( jQuery );
+						});
+						<?php $selector = '.uagb-block-' . $key; ?>
+						jQuery( document ).ready(function() {
+							UAGBPostMasonry._init( <?php echo wp_json_encode( $value ); ?>, '<?php echo esc_attr( $selector ); ?>' );
 						});
 					</script>
 					<?php
@@ -1190,9 +1346,8 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 			$target   = ( $attributes['newTab'] ) ? '_blank' : '_self';
 			$cta_text = ( $attributes['ctaText'] ) ? $attributes['ctaText'] : __( 'Read More', 'ultimate-addons-for-gutenberg' );
 			do_action( "uagb_single_post_before_cta_{$attributes['post_type']}", get_the_ID(), $attributes );
-
-			$wrap_classes = ( $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
-			$link_classes = ( ! $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
+			$wrap_classes = ( true === $attributes['inheritFromTheme'] ) ? 'uagb-post__cta wp-block-button' : 'uagb-post__cta';
+			$link_classes = ( false === $attributes['inheritFromTheme'] ) ? 'uagb-post__link uagb-text-link' : 'wp-block-button__link uagb-text-link';
 			?>
 			<div class="<?php echo esc_html( $wrap_classes ); ?>">
 				<a class="<?php echo esc_html( $link_classes ); ?>" href="<?php echo esc_url( apply_filters( "uagb_single_post_link_{$attributes['post_type']}", get_the_permalink(), get_the_ID(), $attributes ) ); ?>" target="<?php echo esc_html( $target ); ?>" rel="bookmark noopener noreferrer"><?php echo esc_html( $cta_text ); ?></a>
