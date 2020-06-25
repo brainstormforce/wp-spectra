@@ -27,7 +27,8 @@ const {
 	TabPanel,
 	Dashicon,
 	TextControl,
-	RadioControl
+	RadioControl,
+	IconButton
 } = wp.components
 
 const {
@@ -538,15 +539,30 @@ class UAGBPostGrid extends Component {
 									{ value: "filled", label: __( "Filled" ) },
 								] }
 							/>
-							<SelectControl
-								label={ __( "Pagination Alignment" ) }
-								value={ paginationAlignment }
-								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
-								options={ [
-									{ value: "left", label: __( "Left" ) },
-									{ value: "center", label: __( "Center" ) },
-									{ value: "right", label: __( "Right" ) },
-								] }
+							<h2> { __( "Pagination Alignment" ) }</h2>
+							<IconButton
+								key={ "left" }
+								icon="editor-alignleft"
+								label="Left"
+								onClick={ () => setAttributes( { paginationAlignment: "left" } ) }
+								aria-pressed = { "left" === paginationAlignment }
+								isPrimary = { "left" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "center" }
+								icon="editor-aligncenter"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "center" } ) }
+								aria-pressed = { "center" === paginationAlignment }
+								isPrimary = { "center" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "right" }
+								icon="editor-alignright"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "right" } ) }
+								aria-pressed = { "right" === paginationAlignment }
+								isPrimary = { "right" === paginationAlignment }
 							/>
 							<hr className="uagb-editor__separator" />
 							{ paginationLayout == "filled" && 
