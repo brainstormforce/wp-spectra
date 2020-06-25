@@ -19,7 +19,7 @@ function styling( props ) {
 	var tablet_selectors = {}
 	var mobile_selectors = {}
 
-	selectors[" .uagb-buttons-repeater"] = {
+	selectors[" .uagb-buttons-repeater:not(.wp-block-button__link)"] = {
 		"font-family": fontFamily,
 		"font-weight": fontWeight,
 	}
