@@ -159,7 +159,32 @@ class UAGBInlineNoticeEdit extends Component {
 				starSize,
 				starColor,
 				selectedStars,
-				items,
+				descColor,
+				titleColor,
+				titleFontFamily,
+				titleFontWeight,
+				titleFontSubset,
+				titleFontSizeType,
+				titleLineHeightType,
+				titleFontSize,
+				titleFontSizeTablet,
+				titleFontSizeMobile,
+				titleLineHeight,
+				titleLineHeightTablet,
+				titleLineHeightMobile,
+				descFontFamily,
+				descFontWeight,
+				descFontSubset,
+				descFontSize,
+				descFontSizeType,
+				descFontSizeTablet,
+				descFontSizeMobile,
+				descLineHeight,
+				descLineHeightType,
+				descLineHeightTablet,
+				descLineHeightMobile,
+				titleLoadGoogleFonts,
+				descLoadGoogleFonts,
 			},
 			setAttributes,
 			className,
@@ -167,6 +192,38 @@ class UAGBInlineNoticeEdit extends Component {
 			mergeBlocks,
 			highlightedStars
 		} = this.props;
+
+		let loadTitleGoogleFonts;
+		let loadDescriptionGoogleFonts;
+
+
+		if( true === titleLoadGoogleFonts ) {
+			
+			const hconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ':' + titleFontWeight : '' ) ],
+				},
+			};
+
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ hconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( true === descLoadGoogleFonts ) {
+
+			const sconfig = {
+				google: {
+					families: [ descFontFamily + ( descFontWeight ? ':' + descFontWeight : '' ) ],
+				},
+			};
+
+			loadDescriptionGoogleFonts = (
+				<WebfontLoader config={ sconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		
 		if( mainimage && mainimage["sizes"] ){
@@ -247,6 +304,64 @@ class UAGBInlineNoticeEdit extends Component {
 							] }
 					/>
 					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Colors" ) }</h2>
+					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
+					<ColorPalette
+						value={ titleColor }
+						onChange={ ( value ) => setAttributes( { titleColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Description Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: descColor }} ></span></span></p>
+					<ColorPalette
+						value={ descColor }
+						onChange={ ( value ) => setAttributes( { descColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
+					<ColorPalette
+						value={ starColor }
+						onChange={ ( value ) => setAttributes( { starColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Typography" ) }</h2>
+						<TypographyControl
+							label={ __( "Title" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: titleLoadGoogleFonts, label: 'titleLoadGoogleFonts' } }
+							fontFamily = { { value: titleFontFamily, label: 'titleFontFamily' } }
+							fontWeight = { { value: titleFontWeight, label: 'titleFontWeight' } }
+							fontSubset = { { value: titleFontSubset, label: 'titleFontSubset' } }
+							fontSizeType = { { value: titleFontSizeType, label: 'titleFontSizeType' } }
+							fontSize = { { value: titleFontSize, label: 'titleFontSize' } }
+							fontSizeMobile = { { value: titleFontSizeMobile, label: 'titleFontSizeMobile' } }
+							fontSizeTablet= { { value: titleFontSizeTablet, label: 'titleFontSizeTablet' } }
+							lineHeightType = { { value: titleLineHeightType, label: 'titleLineHeightType' } }
+							lineHeight = { { value: titleLineHeight, label: 'titleLineHeight' } }
+							lineHeightMobile = { { value: titleLineHeightMobile, label: 'titleLineHeightMobile' } }
+							lineHeightTablet= { { value: titleLineHeightTablet, label: 'titleLineHeightTablet' } }
+						/>
+						<TypographyControl
+							label={ __( "Description" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: descLoadGoogleFonts, label: 'descLoadGoogleFonts' } }
+							fontFamily = { { value: descFontFamily, label: 'descFontFamily' } }
+							fontWeight = { { value: descFontWeight, label: 'descFontWeight' } }
+							fontSubset = { { value: descFontSubset, label: 'descFontSubset' } }
+							fontSizeType = { { value: descFontSizeType, label: 'descFontSizeType' } }
+							fontSize = { { value: descFontSize, label: 'descFontSize' } }
+							fontSizeMobile = { { value: descFontSizeMobile, label: 'descFontSizeMobile' } }
+							fontSizeTablet= { { value: descFontSizeTablet, label: 'descFontSizeTablet' } }
+							lineHeightType = { { value: descLineHeightType, label: 'descLineHeightType' } }
+							lineHeight = { { value: descLineHeight, label: 'descLineHeight' } }
+							lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
+							lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
+						/>
+					<hr className="uagb-editor__separator" />
 					<ToggleControl
 						label={ __( "Show features" ) }
 						checked={ showFeature }
@@ -289,6 +404,7 @@ class UAGBInlineNoticeEdit extends Component {
 							max={ 50 }
 						/>
 						}
+						
 				</PanelBody>
 			)
 		}
@@ -488,7 +604,8 @@ class UAGBInlineNoticeEdit extends Component {
 					</div>
 				</div>
 			</div>
-			
+			{ loadTitleGoogleFonts }
+			{ loadDescriptionGoogleFonts }
 			</Fragment>
 		)
 	}

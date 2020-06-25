@@ -44,7 +44,7 @@
 	},
 	featuresAvgText : {
 		type: "string",
-		default : __( "Ratings" ),
+		default : __( "Average Ratings" ),
 	},
 	feature_count: {
 		type: "number",
@@ -94,9 +94,13 @@
 		type: "string",
 		default: "#000000",
 	},
-	items: {
+	descColor: {
 		type: "string",
-		default: '[{"label":"","value":0}]',
+		default: ""
+	},
+	titleColor: {
+		type: "string",
+		default: ""
 	},
 }
 
