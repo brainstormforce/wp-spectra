@@ -634,6 +634,8 @@ class UAGBFaqEdit extends Component {
 						value={ headingTag }
 						onChange={ (value) => this.onchangeTag( value ) }
 						options={ [
+							{ value: "span", label: __( "Span" ) },
+							{ value: "p", label: __( "P" ) },
 							{ value: "h1", label: __( "H1" ) },
 							{ value: "h2", label: __( "H2" ) },
 							{ value: "h3", label: __( "H3" ) },

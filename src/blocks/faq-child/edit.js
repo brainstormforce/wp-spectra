@@ -83,6 +83,7 @@ class UAGBFaqChildEdit extends Component {
 					<div className="uagb-faq-item" role="tab" tabindex="0">
 						<div className="uagb-faq-questions-button uagb-faq-questions">
 							{ 'accordion' === layout && faqRenderIcon() }
+							<span>
 							<RichText
 								tagName={ headingTag }
 								placeholder={ __( "Question" ) }
@@ -92,6 +93,7 @@ class UAGBFaqChildEdit extends Component {
 								multiline={false}
 								allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 							/>
+							</span>
 						</div>
 						<div className="uagb-faq-content">
 							<span>

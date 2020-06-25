@@ -25,11 +25,10 @@ const attributes = {
 		default: "accordion"
 	},
 	headingTag: {
-		type: "string",
-		selector: "h1,h2,h3,h4,h5,h6",
-		default: "h3"
-	},
-
+		type: "html",
+		selector: "span,p,h1,h2,h3,h4,h5,h6",
+		default: "span"
+	}
 }
 
 export default attributes
