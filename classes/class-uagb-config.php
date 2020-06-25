@@ -168,6 +168,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'boxShadowBlur'          => '',
 							'boxShadowSpread'        => '',
 							'boxShadowPosition'      => 'outset',
+							'gradientValue'          => '',
 						),
 					),
 					'uagb/column'             => array(
@@ -241,6 +242,8 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'gradientOverlayLocation1' => '0',
 							'gradientOverlayLocation2' => '100',
 							'gradientOverlayAngle'     => '0',
+							'gradientValue'            => '',
+
 						),
 					),
 					'uagb/blockquote'         => array(
@@ -1842,6 +1845,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 							'boxShadowBlur'            => '',
 							'boxShadowSpread'          => '',
 							'boxShadowPosition'        => 'outset',
+							'gradientValue'            => '',
 						),
 					),
 					'uagb/social-share'       => array(
