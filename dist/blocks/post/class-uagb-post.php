@@ -227,11 +227,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationTextColor'          => array(
 								'type'    => 'string',
-								'default' => '#080808',
+								'default' => '',
 							),
 							'paginationMasonryBgColor'     => array(
 								'type'    => 'string',
-								'default' => '#eee',
+								'default' => '',
 							),
 							'paginationBgHoverColor'       => array(
 								'type' => 'string',
@@ -241,23 +241,23 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'paginationMasonryBorderStyle' => array(
 								'type'    => 'string',
-								'default' => 'none',
+								'default' => 'solid',
 							),
 							'paginationMasonryBorderWidth' => array(
 								'type'    => 'number',
-								'default' => 2,
+								'default' => 1,
 							),
 							'paginationMasonryBorderRadius' => array(
 								'type'    => 'number',
-								'default' => 3,
+								'default' => 2,
 							),
 							'paginationMasonryBorderColor' => array(
 								'type'    => 'string',
-								'default' => '#3c2a2a',
+								'default' => '',
 							),
 							'paginationFontSize'           => array(
 								'type'    => 'number',
-								'default' => '',
+								'default' => 13,
 							),
 							'loaderColor'                  => array(
 								'type'    => 'string',
@@ -273,27 +273,27 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 							),
 							'vpaginationButtonPaddingMobile' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 8,
 							),
 							'vpaginationButtonPaddingTablet' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 8,
 							),
 							'vpaginationButtonPaddingDesktop' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 8,
 							),
 							'hpaginationButtonPaddingMobile' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 12,
 							),
 							'hpaginationButtonPaddingTablet' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 12,
 							),
 							'hpaginationButtonPaddingDesktop' => array(
 								'type'    => 'number',
-								'default' => 10,
+								'default' => 12,
 							),
 						)
 					),
