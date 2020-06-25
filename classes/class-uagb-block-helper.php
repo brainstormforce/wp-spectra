@@ -915,7 +915,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				}
 			}
 			if ( $attr['childMigrate'] ) {
-					$selectors[' .uagb-buttons-repeater'] = array(
+					$selectors[' .uagb-buttons-repeater:not(.wp-block-button__link)'] = array(
 						'font-family' => $attr['fontFamily'],
 						'font-weight' => $attr['fontWeight'],
 					);
