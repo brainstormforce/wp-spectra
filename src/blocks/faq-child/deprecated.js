@@ -25,8 +25,7 @@ const deprecated = [
                 answer,
                 icon,
                 iconActive,
-                layout,
-                headingTag
+                layout
             } = props.attributes
 
             const faqRenderIcon = () => {
@@ -50,7 +49,7 @@ const deprecated = [
                                 <div className="uagb-faq-questions-button uagb-faq-questions">
                                     { 'accordion' === layout && faqRenderIcon() }
                                     <RichText.Content
-                                        tagName={ headingTag }
+                                        tagName='span'
                                         value={ question }
                                         className='uagb-question'
                                     />
