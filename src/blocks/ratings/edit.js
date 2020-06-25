@@ -10,6 +10,8 @@ import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import times from "lodash/times"
+import map from "lodash/map"
+import { EmptyStar, FullStar, HalfStar } from "./icons";
 
 // Import all of our Text Options requirements.
 import TypographyControl from "../../components/typography"
@@ -150,15 +152,23 @@ class UAGBInlineNoticeEdit extends Component {
 				showFeature,
 				feature_count,
 				featuresTitle,
+				featuresAvgText,
 				features,
 				headingTag,
+				starCount,
+				starSize,
+				starColor,
+				selectedStars,
+				items,
 			},
 			setAttributes,
 			className,
 			attributes,
 			mergeBlocks,
+			highlightedStars
 		} = this.props;
 
+		
 		if( mainimage && mainimage["sizes"] ){
 			imageSizeOptions = this.getImageSize(mainimage["sizes"])
 		}
@@ -350,17 +360,132 @@ class UAGBInlineNoticeEdit extends Component {
 																	this.savefeatures( { features_name: value }, index )
 																} }
 														className='uagb-rating-feature__label'
-														placeholder={ __( "Description" ) }
+														placeholder={ __( "- Feature" ) }
 														multiline={false}
 														allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 													/>
+													<div className="uagb-features-star">
+													<div
+														className="uagb-star-inner-container"
+														onMouseLeave={() => setState({ highlightedStars: 0 })}
+													>
+														{[...Array(starCount)].map((e, i) => (
+															<div
+																key={i}
+																onMouseEnter={() => {
+																	setState({ highlightedStars: i + 1 });
+																}}
+																onClick={() => {
+																	if (selectedStars % 1 === 0) {
+																		setAttributes({
+																			selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
+																		});
+																	} else {
+																		setAttributes({
+																			selectedStars: i + (selectedStars - 0.5 === i ? 1 : 0.5)
+																		});
+																	}
+																}}
+															>
+																{i < (highlightedStars ? highlightedStars : selectedStars) ? (
+																	highlightedStars ? (
+																		highlightedStars - 1 === i ? (
+																			selectedStars % 1 > 0 ? (
+																				highlightedStars - selectedStars - 0.5 !== 0 ? (
+																					<HalfStar size={starSize} fillColor={starColor} />
+																				) : (
+																					<FullStar size={starSize} fillColor={starColor} />
+																				)
+																			) : highlightedStars - selectedStars !== 0 ? (
+																				<FullStar size={starSize} fillColor={starColor} />
+																			) : (
+																				<HalfStar size={starSize} fillColor={starColor} />
+																			)
+																		) : (
+																			<FullStar size={starSize} fillColor={starColor} />
+																		)
+																	) : selectedStars - i >= 1 ? (
+																		<FullStar size={starSize} fillColor={starColor} />
+																	) : (
+																		<HalfStar size={starSize} fillColor={starColor} />
+																	)
+																) : (
+																	<EmptyStar size={starSize} />
+																)}
+															</div>
+														))}
+														</div>
+													</div>
 												</div>
 											</div>
 										)
 									})
 								}
+
 					</div>
 					}
+				</div>
+				<div className="uagb-avg-review-star">
+				<RichText
+					tagName="h4"
+					placeholder={ __( "List Of Features:" ) }
+					value={ featuresAvgText }
+					className='uagb-avg-rating-text'
+					onChange={ ( value ) => setAttributes( { featuresAvgText: value } ) }
+					onMerge={ mergeBlocks }
+					unstableOnSplit={ this.splitBlock }
+					onnRemove={ () => onReplace( [] ) }
+				/>
+				<div
+					className="uagb-avg-review-star-inner-container"
+					onMouseLeave={() => setState({ highlightedStars: 0 })}
+				>
+					{[...Array(starCount)].map((e, i) => (
+						<div
+							key={i}
+							onMouseEnter={() => {
+								setState({ highlightedStars: i + 1 });
+							}}
+							onClick={() => {
+								if (selectedStars % 1 === 0) {
+									setAttributes({
+										selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
+									});
+								} else {
+									setAttributes({
+										selectedStars: i + (selectedStars - 0.5 === i ? 1 : 0.5)
+									});
+								}
+							}}
+						>
+							{i < (highlightedStars ? highlightedStars : selectedStars) ? (
+								highlightedStars ? (
+									highlightedStars - 1 === i ? (
+										selectedStars % 1 > 0 ? (
+											highlightedStars - selectedStars - 0.5 !== 0 ? (
+												<HalfStar size={starSize} fillColor={starColor} />
+											) : (
+												<FullStar size={starSize} fillColor={starColor} />
+											)
+										) : highlightedStars - selectedStars !== 0 ? (
+											<FullStar size={starSize} fillColor={starColor} />
+										) : (
+											<HalfStar size={starSize} fillColor={starColor} />
+										)
+									) : (
+										<FullStar size={starSize} fillColor={starColor} />
+									)
+								) : selectedStars - i >= 1 ? (
+									<FullStar size={starSize} fillColor={starColor} />
+								) : (
+									<HalfStar size={starSize} fillColor={starColor} />
+								)
+							) : (
+								<EmptyStar size={starSize} />
+							)}
+						</div>
+					))}
+					</div>
 				</div>
 			</div>
 			

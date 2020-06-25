@@ -13,6 +13,10 @@
 
 
  const attributes = {
+ 	ID: {
+ 		type: "string",
+ 		default: "",
+ 	},
 	block_id: {
 		type: "string",
 	},
@@ -38,6 +42,10 @@
 		type: "string",
 		default : __( "List Of Features:" ),
 	},
+	featuresAvgText : {
+		type: "string",
+		default : __( "Ratings" ),
+	},
 	feature_count: {
 		type: "number",
 		default: 1
@@ -53,6 +61,42 @@
 	headingTag: {
 		type: "string",
 		default: "h2"
+	},
+	starCount: {
+		type: "number",
+		default: 5,
+	},
+	starSize: {
+		type: "number",
+		default: 20,
+	},
+	starColor: {
+		type: "string",
+		default: "#ffff00",
+	},
+	selectedStars: {
+		type: "number",
+		default: 0,
+	},
+	starAlign: {
+		type: "string",
+		default: "left",
+	},
+	inactiveStarColor: {
+		type: "string",
+		default: "#888888",
+	},
+	activeStarColor: {
+		type: "string",
+		default: "#eeee00",
+	},
+	starOutlineColor: {
+		type: "string",
+		default: "#000000",
+	},
+	items: {
+		type: "string",
+		default: '[{"label":"","value":0}]',
 	},
 }
 
