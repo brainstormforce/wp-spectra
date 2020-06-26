@@ -199,7 +199,8 @@
     display: block;
     clear: both;
 }
-.uagb-rest_menu__wrap.uagb-rm__desk-column-3{
+.uagb-rm__desk-column-3 [data-type="uagb/restaurant-menu-child"]{
+
     display: block;
     width: 33%;
     float: left;
@@ -207,14 +208,15 @@
     padding-left: 10px;
     padding-right: 10px;
 }
-.uagb-rest_menu__wrap.uagb-rm__desk-column-2{
+.uagb-rm__desk-column-2 [data-type="uagb/restaurant-menu-child"]{
     display: block;
     width: 49%;
     float: left;
     padding-left: 10px;
     padding-right: 10px;
 }
-.uagb-rest_menu__wrap.uagb-rm__desk-column-1{
+.uagb-rm__desk-column-1 [data-type="uagb/restaurant-menu-child"]{
+
     display: block;
     width: 100%;
     float: left;

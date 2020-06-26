@@ -136,12 +136,7 @@ function RestMenuStyle( props ) {
 			"width": generateCSSUnit( seperatorWidth, "%" ),
 		}
 	}
-	if(columns == 2){
-		selectors[' [data-type="uagb/restaurant-menu-child"]']= {
-			"width": "49%",
-			"float":"left"
-		}
-	}
+	
 
 	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {
 		"margin-left": 0,

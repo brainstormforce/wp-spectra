@@ -488,13 +488,13 @@ class UAGBRestaurantMenuChild extends Component {
                 {inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-rest_menu__outer-wrap",
+					"uagb-rest_menu__outer-wrap_child",
 					`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 				) }
 				>
 
 			<div className = { classnames(
-				"uagb-rest_menu__wrap",
+				"uagb-rest_menu__wrap"
 				) } >
 										<div className = "uagb-rm__content" >
 											
