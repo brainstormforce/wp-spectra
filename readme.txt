@@ -167,7 +167,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
 * Improvement: FAQ Schema - Added heading options for question.
-* improvement: Added option Exclude current post for post grid, masonry, timeline, carousel
+* Improvement: Post Layout - Added an option to exclude current post.
 
 = 1.16.0 =
 * New: WP - Search Block.
