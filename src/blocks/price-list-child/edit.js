@@ -493,11 +493,8 @@ class UAGBRestaurantMenuChild extends Component {
 				) }
 				>
 
-<div className="child-repeater">
-
 			<div className = { classnames(
 				"uagb-rest_menu__wrap",
-				...PositionClasses( attributes ),
 				) } >
 										<div className = "uagb-rm__content" >
 											
@@ -527,7 +524,6 @@ class UAGBRestaurantMenuChild extends Component {
 									</div>
 							
 
-												</div>
 					</div>
 					{ loadTitleGoogleFonts }
 					{ loadDescGoogleFonts }
