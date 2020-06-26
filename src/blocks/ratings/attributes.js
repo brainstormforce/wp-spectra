@@ -102,6 +102,38 @@
 		type: "string",
 		default: ""
 	},
+	pricevalue: {
+		type: "string",
+		default: "US$65"
+	},
+	pricetext: {
+		type: "string",
+		default: "Price"
+	},
+	availabilityvalue: {
+		type: "string",
+		default: "Instock"
+	},
+	availabilitytext: {
+		type: "string",
+		default: "Availability"
+	},
+	contentVrPadding: {
+		type: "number",
+		default : 15
+	},
+	contentHrPadding: {
+		type: "number",
+		default : 50
+	},
+	star_gap: {
+		type: "number",
+		default: 100
+	},
+	contentColor: {
+		type: "string",
+		default: ""
+	}
 }
 
 export default attributes

@@ -1113,3 +1113,21 @@ p.uagb-marketing-btn__prefix.block-editor-rich-text__editable {
   margin-left: 100px;
   min-width: 100px;
   display: flex; }
+
+.uagb-ratings-wrap {
+  display: inline-flex; }
+  .uagb-ratings-wrap .uagb-avg-review-star {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-right: 25px;
+    padding-top: 10px; }
+  .uagb-ratings-wrap .uagb-product-price {
+    padding-left: 50px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-top: 10px; }
+  .uagb-ratings-wrap .uagb-stock-availability {
+    padding-left: 50px;
+    padding-bottom: 10px;
+    padding-right: 50px;
+    padding-top: 10px; }

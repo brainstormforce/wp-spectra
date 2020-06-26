@@ -12,6 +12,7 @@ function styling( props ) {
 		starColor,
 		descColor,
 		titleColor,
+		contentColor,
 		titleFontFamily,
 		titleFontWeight,
 		titleFontSizeType,
@@ -32,6 +33,20 @@ function styling( props ) {
 		descLineHeightType,
 		descLineHeightTablet,
 		descLineHeightMobile,
+		contentFontFamily,
+		contentFontWeight,
+		contentFontSubset,
+		contentFontSizeType,
+		contentLineHeightType,
+		contentFontSize,
+		contentFontSizeTablet,
+		contentFontSizeMobile,
+		contentLineHeight,
+		contentLineHeightTablet,
+		contentLineHeightMobile,
+		contentVrPadding,
+		contentHrPadding,
+		star_gap,
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -52,6 +67,13 @@ function styling( props ) {
 			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
 		    "color": titleColor,
 		},
+		" .rich-text.block-editor-rich-text__editable.uagb-rating-feature-text" : {
+			"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
+			"font-weight": titleFontWeight,
+			"font-family": titleFontFamily,
+			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
+		    "color": titleColor,
+		},
 		" .rich-text.block-editor-rich-text__editable.uagb-rating-desc.keep-placeholder-on-focus" : {
 			"font-size": generateCSSUnit( descFontSize, descFontSizeType ),
 			"font-weight": descFontWeight,
@@ -66,6 +88,60 @@ function styling( props ) {
 			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
 		    "color": descColor,
 		},
+		" .uagb-ratings-wrap .uagb-stock-availability" : {
+		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
+		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+		},
+		" .uagb-ratings-wrap .uagb-product-price" : {
+		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
+		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+		},
+		" .uagb-ratings-wrap .uagb-avg-review-star" : {
+		        "padding-left" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
+		    	"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
+		    	"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
+		},
+		" .uagb-features-star .uagb-star-inner-container" : {
+		    "margin-left":generateCSSUnit( star_gap, "px" ),
+		},
+		" .rich-text.block-editor-rich-text__editable.uagb-avg-rating-text" : {
+		   "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
+		   "font-weight": contentFontWeight,
+		   "font-family": contentFontFamily,
+		   "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+		},
+        " .rich-text.block-editor-rich-text__editable.uagb-price-text" : {
+		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
+		    "font-weight": contentFontWeight,
+		    "font-family": contentFontFamily,
+		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+		},
+		" .rich-text.block-editor-rich-text__editable.uagb-price-value-text" : {
+		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
+		    "font-weight": contentFontWeight,
+		    "font-family": contentFontFamily,
+		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+		},
+		" .rich-text.block-editor-rich-text__editable.uagb-availability-text" : {
+		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
+		    "font-weight": contentFontWeight,
+		    "font-family": contentFontFamily,
+		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+		},
+		" .rich-text.block-editor-rich-text__editable.uagb-availability-value-text" : {
+		    "font-size": generateCSSUnit( contentFontSize, contentFontSizeType ),
+		    "font-weight": contentFontWeight,
+		    "font-family": contentFontFamily,
+		    "line-height": generateCSSUnit( contentLineHeight, contentLineHeightType ),
+		},
+		" .uagb-ratings-wrap" : {
+			"color" : contentColor,
+		}
 	}
 
 	mobile_selectors = {

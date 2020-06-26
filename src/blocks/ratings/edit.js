@@ -158,9 +158,12 @@ class UAGBInlineNoticeEdit extends Component {
 				starCount,
 				starSize,
 				starColor,
+				pricevalue,
+				pricetext,
 				selectedStars,
 				descColor,
 				titleColor,
+				contentColor,
 				titleFontFamily,
 				titleFontWeight,
 				titleFontSubset,
@@ -185,6 +188,23 @@ class UAGBInlineNoticeEdit extends Component {
 				descLineHeightMobile,
 				titleLoadGoogleFonts,
 				descLoadGoogleFonts,
+				contentLoadGoogleFonts,
+				contentFontFamily,
+				contentFontWeight,
+				contentFontSubset,
+				contentFontSizeType,
+				contentLineHeightType,
+				contentFontSize,
+				contentFontSizeTablet,
+				contentFontSizeMobile,
+				contentLineHeight,
+				contentLineHeightTablet,
+				contentLineHeightMobile,
+				availabilitytext,
+				availabilityvalue,
+				contentVrPadding,
+				contentHrPadding,
+				star_gap,
 			},
 			setAttributes,
 			className,
@@ -195,6 +215,7 @@ class UAGBInlineNoticeEdit extends Component {
 
 		let loadTitleGoogleFonts;
 		let loadDescriptionGoogleFonts;
+		let loadContentGoogleFonts;
 
 
 		if( true === titleLoadGoogleFonts ) {
@@ -220,6 +241,20 @@ class UAGBInlineNoticeEdit extends Component {
 			};
 
 			loadDescriptionGoogleFonts = (
+				<WebfontLoader config={ sconfig }>
+				</WebfontLoader>
+			)
+		}
+
+		if( true === contentLoadGoogleFonts ) {
+
+			const sconfig = {
+				google: {
+					families: [ contentFontFamily + ( contentFontWeight ? ':' + contentFontWeight : '' ) ],
+				},
+			};
+
+			loadContentGoogleFonts = (
 				<WebfontLoader config={ sconfig }>
 				</WebfontLoader>
 			)
@@ -319,6 +354,13 @@ class UAGBInlineNoticeEdit extends Component {
 						allowReset
 					/>
 					<hr className="uagb-editor__separator" />
+					<p className="uagb-setting-label">{ __( "Content Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: contentColor }} ></span></span></p>
+					<ColorPalette
+						value={ contentColor }
+						onChange={ ( value ) => setAttributes( { contentColor: value } ) }
+						allowReset
+					/>
+					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Star Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: starColor }} ></span></span></p>
 					<ColorPalette
 						value={ starColor }
@@ -360,6 +402,23 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeight = { { value: descLineHeight, label: 'descLineHeight' } }
 							lineHeightMobile = { { value: descLineHeightMobile, label: 'descLineHeightMobile' } }
 							lineHeightTablet= { { value: descLineHeightTablet, label: 'descLineHeightTablet' } }
+						/>
+						<TypographyControl
+							label={ __( "Content" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: contentLoadGoogleFonts, label: 'contentLoadGoogleFonts' } }
+							fontFamily = { { value: contentFontFamily, label: 'contentFontFamily' } }
+							fontWeight = { { value: contentFontWeight, label: 'contentFontWeight' } }
+							fontSubset = { { value: contentFontSubset, label: 'contentFontSubset' } }
+							fontSizeType = { { value: contentFontSizeType, label: 'contentFontSizeType' } }
+							fontSize = { { value: contentFontSize, label: 'contentFontSize' } }
+							fontSizeMobile = { { value: contentFontSizeMobile, label: 'contentFontSizeMobile' } }
+							fontSizeTablet= { { value: contentFontSizeTablet, label: 'contentFontSizeTablet' } }
+							lineHeightType = { { value: contentLineHeightType, label: 'contentLineHeightType' } }
+							lineHeight = { { value: contentLineHeight, label: 'contentLineHeight' } }
+							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
+							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
 						/>
 					<hr className="uagb-editor__separator" />
 					<ToggleControl
@@ -404,7 +463,34 @@ class UAGBInlineNoticeEdit extends Component {
 							max={ 50 }
 						/>
 						}
-						
+						<hr className="uagb-editor__separator" />
+						<RangeControl
+							label={ __( "Gap Between Star" ) }
+							value={ star_gap }
+							onChange={ ( value ) => setAttributes( { star_gap: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+						/>
+						<h2>{ __( "Content Padding (px)" ) }</h2>
+						<RangeControl
+							label={ UAGB_Block_Icons.vertical_spacing }
+							className={ "uagb-margin-control" }
+							value={ contentVrPadding }
+							onChange={ ( value ) => setAttributes( { contentVrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
+						<RangeControl
+							label={ UAGB_Block_Icons.horizontal_spacing }
+							className={ "uagb-margin-control" }
+							value={ contentHrPadding }
+							onChange={ ( value ) => setAttributes( { contentHrPadding: value } ) }
+							min={ 0 }
+							max={ 50 }
+							allowReset
+						/>
 				</PanelBody>
 			)
 		}
@@ -541,6 +627,7 @@ class UAGBInlineNoticeEdit extends Component {
 					</div>
 					}
 				</div>
+				<div class="uagb-ratings-wrap">
 				<div className="uagb-avg-review-star">
 				<RichText
 					tagName="h4"
@@ -603,9 +690,60 @@ class UAGBInlineNoticeEdit extends Component {
 					))}
 					</div>
 				</div>
+				
+				<div className="uagb-product-price">
+					<RichText
+						tagName="h4"
+						placeholder={ __( "Price" ) }
+						value={ pricetext }
+						className='uagb-price-text'
+						onChange={ ( value ) => setAttributes( { pricetext: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onnRemove={ () => onReplace( [] ) }
+					/>
+					<div className="uagb-product-price-value">
+					<RichText
+						tagName="h4"
+						placeholder={ __( "US$65" ) }
+						value={ pricevalue }
+						className='uagb-price-value-text'
+						onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onnRemove={ () => onReplace( [] ) }
+					/>
+					</div>
+				</div>
+				<div className="uagb-stock-availability">
+					<RichText
+						tagName="h4"
+						placeholder={ __( "Availability" ) }
+						value={ availabilitytext }
+						className='uagb-availability-text'
+						onChange={ ( value ) => setAttributes( { availabilitytext: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onnRemove={ () => onReplace( [] ) }
+					/>
+					<div className="uagb-stock-availability-value">
+					<RichText
+						tagName="h4"
+						placeholder={ __( "Instock" ) }
+						value={ availabilityvalue }
+						className='uagb-availability-value-text'
+						onChange={ ( value ) => setAttributes( { availabilityvalue: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onnRemove={ () => onReplace( [] ) }
+					/>
+					</div>
+				</div>
+				</div>
 			</div>
 			{ loadTitleGoogleFonts }
 			{ loadDescriptionGoogleFonts }
+			{ loadContentGoogleFonts }
 			</Fragment>
 		)
 	}
