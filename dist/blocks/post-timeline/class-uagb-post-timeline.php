@@ -486,7 +486,7 @@ if ( ! class_exists( 'UAGB_Post_Timeline' ) ) {
 							'type'    => 'boolean',
 							'default' => false,
 						),
-						// Exclude Current Post
+						// Exclude Current Post.
 						'excludeCurrentPost'      => array(
 							'type'    => 'boolean',
 							'default' => false,
