@@ -245,7 +245,8 @@ class UAGBPostGrid extends Component {
 			paginationNextText,
 			inheritFromTheme,
 			postDisplaytext,
-			displayPostContentRadio
+			displayPostContentRadio,
+			excludeCurrentPost
 			
 		} = attributes
 
@@ -407,6 +408,11 @@ class UAGBPostGrid extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<RangeControl
 							label={ __( "Posts Per Page" ) }
 							value={ postsToShow }
@@ -1095,7 +1101,7 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
 	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
@@ -1140,6 +1146,10 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
+	
 	latestPostsQuery[rest_base] = categories
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),

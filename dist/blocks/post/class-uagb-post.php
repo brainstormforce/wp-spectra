@@ -694,6 +694,11 @@ if ( ! class_exists( 'UAGB_Post' ) ) {
 					'type'    => 'number',
 					'default' => 25,
 				),
+				// Exclude Current Post
+				'excludeCurrentPost'      => array(
+					'type'    => 'boolean',
+					'default' => false,
+				),
 			);
 		}
 
