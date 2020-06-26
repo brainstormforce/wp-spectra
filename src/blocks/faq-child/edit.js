@@ -53,7 +53,8 @@ class UAGBFaqChildEdit extends Component {
 			answer,
 			icon,
 			iconActive,
-			layout
+			layout,
+			headingTag
         } = attributes
 		
 		const faqRenderIcon = () => {
@@ -82,8 +83,9 @@ class UAGBFaqChildEdit extends Component {
 					<div className="uagb-faq-item" role="tab" tabindex="0">
 						<div className="uagb-faq-questions-button uagb-faq-questions">
 							{ 'accordion' === layout && faqRenderIcon() }
+							<span>
 							<RichText
-								tagName="span"
+								tagName={ headingTag }
 								placeholder={ __( "Question" ) }
 								value={ question }
 								onChange={ ( value ) => setAttributes( { question: value } ) }
@@ -91,6 +93,7 @@ class UAGBFaqChildEdit extends Component {
 								multiline={false}
 								allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 							/>
+							</span>
 						</div>
 						<div className="uagb-faq-content">
 							<span>

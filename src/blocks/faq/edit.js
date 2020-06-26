@@ -55,6 +55,7 @@ class UAGBFaqEdit extends Component {
 		this.onchangeIcon = this.onchangeIcon.bind( this )
 		this.onchangeActiveIcon = this.onchangeActiveIcon.bind( this )
 		this.onchangeLayout = this.onchangeLayout.bind( this )
+		this.onchangeTag = this.onchangeTag.bind( this )
 	}
 
 	componentDidMount() {
@@ -166,6 +167,16 @@ class UAGBFaqEdit extends Component {
 
 		setAttributes( { layout: value } )
 	}
+	onchangeTag ( value ) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((faqChild, key) => {
+			faqChild.attributes.headingTag = value
+		});
+
+		setAttributes( { headingTag: value } )
+	}
  
 	render() {
 
@@ -244,6 +255,7 @@ class UAGBFaqEdit extends Component {
 			hquestionPaddingMobile,
 			vquestionPaddingMobile,
 			questionBottomPaddingMobile,
+			headingTag
 		} = attributes
 
 		const getFaqChildTemplate = memoize( ( faq_count, faq ) => {
@@ -617,6 +629,21 @@ class UAGBFaqEdit extends Component {
 					initialOpen={ false }
 					className="uagb__url-panel-body"
 				>
+					<SelectControl
+						label={ __( "Question Tag" ) }
+						value={ headingTag }
+						onChange={ (value) => this.onchangeTag( value ) }
+						options={ [
+							{ value: "span", label: __( "Span" ) },
+							{ value: "p", label: __( "P" ) },
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+						] }
+					/>
 					<TypographyControl
 						label={ __( "Typography" ) }
 						attributes = { attributes }

@@ -166,6 +166,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Post Grid - Page Limit issue with less number of Posts.
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
+* Improvement: FAQ Schema - Added heading options for question.
 
 = 1.16.0 =
 * New: WP - Search Block.
