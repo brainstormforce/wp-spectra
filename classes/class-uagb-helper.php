@@ -931,6 +931,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 				'paged'               => 1,
 			);
 
+			if ( $attributes['excludeCurrentPost'] ) {
+				$query_args['post__not_in'] = array( get_the_ID() );
+			}
+
 			if ( isset( $attributes['categories'] ) && '' !== $attributes['categories'] ) {
 				$query_args['tax_query'][] = array(
 					'taxonomy' => ( isset( $attributes['taxonomyType'] ) ) ? $attributes['taxonomyType'] : 'category',
