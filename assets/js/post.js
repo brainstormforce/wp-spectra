@@ -115,6 +115,8 @@
             }
             if ( "button" === $attr.paginationEventType ) {
                 $( document ).on( 'click', '.uagb-post-pagination-button', function( e ) {
+					
+					$scope = $( this ).closest( '.uagb-post-grid' );
 					total = $scope.data( 'total' );
 					var $args = {
 						'total' : total,
