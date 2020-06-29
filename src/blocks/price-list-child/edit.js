@@ -488,14 +488,15 @@ class UAGBRestaurantMenuChild extends Component {
                 {inspect_control}
 				<div className={ classnames(
 					className,
-					"uagb-rest_menu__outer-wrap_child",
+					"uagb-rest_menu__outer-wrap",
 					`uagb-block-${this.props.clientId.substr( 0, 8 )}`
 				) }
 				>
 
 			<div className = { classnames(
-				"uagb-rest_menu__wrap"
-				) } >
+							"uagb-rest_menu__wrap",
+							...PositionClasses( attributes ),
+						) } >
 										<div className = "uagb-rm__content" >
 											
 											{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={attributes}   /> }
@@ -533,6 +534,7 @@ class UAGBRestaurantMenuChild extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+		console.log(this.props);
 		var element = document.getElementById( "uagb-restaurant-menu-style-child-" + this.props.clientId.substr( 0, 8 ) )
 		
 		if( null !== element && undefined !== element ) {
@@ -541,6 +543,7 @@ class UAGBRestaurantMenuChild extends Component {
 	}
 
 	componentDidMount() {
+		console.log(this.props);
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )

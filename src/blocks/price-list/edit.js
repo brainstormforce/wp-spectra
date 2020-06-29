@@ -345,7 +345,8 @@ class UAGBRestaurantMenu extends Component {
 				<div className={ classnames(
 					className,
 					"uagb-rest_menu__outer-wrap",
-					`uagb-block-${this.props.clientId.substr( 0, 8 )}`,...PositionClasses(attributes)
+					`uagb-block-${this.props.clientId.substr( 0, 8 )}`,
+					...PositionClasses( attributes ),
 				) }
 				>
 
