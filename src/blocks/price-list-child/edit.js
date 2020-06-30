@@ -176,7 +176,6 @@ class UAGBRestaurantMenuChild extends Component {
 
 
 		} = attributes	
-		console.log(attributes);
 		
 		
 
@@ -381,7 +380,7 @@ class UAGBRestaurantMenuChild extends Component {
 							value={ image }
 							render={ ( { open } ) => (
 								<Button isDefault onClick={ open }>
-									{  this.getImageName( rest_menu_item_arr ) }
+									{  this.getImageName( image ) }
 								</Button>
 							) }
 						/>
@@ -534,7 +533,6 @@ class UAGBRestaurantMenuChild extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
-		console.log(this.props);
 		var element = document.getElementById( "uagb-restaurant-menu-style-child-" + this.props.clientId.substr( 0, 8 ) )
 		
 		if( null !== element && undefined !== element ) {
@@ -543,7 +541,6 @@ class UAGBRestaurantMenuChild extends Component {
 	}
 
 	componentDidMount() {
-		console.log(this.props);
 
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )

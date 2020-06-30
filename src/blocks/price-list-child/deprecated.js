@@ -26,45 +26,44 @@ const deprecated = [
 
 			return (
 				<Fragment>
-					<div className={ classnames(
-						className,
-						"uagb-rest_menu__outer-wrap"
-					) }
-					id = { `uagb-rm-${block_id}` }
-					>
-						{ rest_menu_item_arr.map( ( test, index ) =>
+			<div className={ classnames(
+				className,
+				"uagb-rest_menu__outer-wrap",
+				`uagb-block-${block_id}`
+			) }
+			>
 
-							<div className = { classnames(
-								"uagb-rest_menu__wrap",
-								...PositionClasses( props.attributes ),
-							) } key ={ "wrap-"+index } >
-								<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
-									{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
+					<div className = { classnames(
+						"uagb-rest_menu__wrap",
+						...PositionClasses( props.attributes ),
+					) }>
+						<div className = "uagb-rm__content">
+							{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  /> }
 
-									<div className ="uagb-rm__text-wrap">
-										{
-											<Fragment>
-												<div className = "uagb-rm-details" key={"tm_wraps-"+index}>
-													<div className = "uagb-rm__title-wrap" key={"rm_title__wraps-"+index}>
-														<Title attributes={props.attributes} setAttributes = "not_set" props = { props } index_value = {index}/>
-														<div className = "uagb-rest-menu-text-wrap" key={"text-wrap-"+index}>
-															<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
-														</div>
-													</div>
-													<div className = "uagb-rm__price-wrap" key={"rm_price__wraps-"+index}>
-														<Price attributes={props.attributes} setAttributes = "not_set" props = { props }  index_value = {index}/>
-													</div>
+							<div className ="uagb-rm__text-wrap">
+								{
+									<Fragment>
+										<div className = "uagb-rm-details" >
+											<div className = "uagb-rm__title-wrap" >
+												<Title attributes={props.attributes} setAttributes = "not_set" props = { props } />
+												<div className = "uagb-rest-menu-text-wrap" >
+													<Description attributes={props.attributes} setAttributes = "not_set" props = { props }  />
 												</div>
-											</Fragment>
-										}
-									</div>
-									{ ( imagePosition == "right" ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
-								</div>
-								<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
+											</div>
+											<div className = "uagb-rm__price-wrap" >
+												<Price attributes={props.attributes} setAttributes = "not_set" props = { props }  />
+											</div>
+										</div>
+									</Fragment>
+								}
 							</div>
-						)}
+							{ ( imagePosition == "right" ) && <RestMenuImage  attributes={props.attributes}  /> }
+						</div>
+						<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
 					</div>
-				</Fragment>
+				
+			</div>
+		</Fragment>
 			)
 		},
 	},

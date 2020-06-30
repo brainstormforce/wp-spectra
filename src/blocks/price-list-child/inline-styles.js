@@ -48,16 +48,12 @@ function RestMenuStyle( props ) {
 
 		descSpace,
 		titleSpace,
-		imgVrPadding,
-		imgHrPadding,
 		imageWidth,
-		rowGap,
-		columnGap,
+		
 		columns,
 		tcolumns,
 		mcolumns,
-		contentVrPadding,
-		contentHrPadding,
+		
 		seperatorStyle,
 		seperatorWidth,
 		seperatorThickness,
@@ -75,17 +71,7 @@ function RestMenuStyle( props ) {
 	}
 
 	var selectors = {
-		" .uagb-rest_menu__wrap": {
-			"padding-left" : generateCSSUnit( columnGap/2, "px" ),
-			"padding-right" : generateCSSUnit( columnGap/2, "px" ),
-			"margin-bottom" : generateCSSUnit( rowGap, "px" ),
-		},
-		" .uagb-rest_menu__wrap .uagb-rm__image-content": {
-			"padding-left" : generateCSSUnit( imgHrPadding, "px" ),
-			"padding-right" : generateCSSUnit( imgHrPadding, "px" ),
-			"padding-top" : generateCSSUnit( imgVrPadding, "px" ),
-			"padding-bottom" : generateCSSUnit( imgVrPadding, "px" ),
-		},
+		
 		// Image
 		" .uagb-rm__image img": {
 			"width": generateCSSUnit( imageWidth, "px" ),
@@ -94,13 +80,7 @@ function RestMenuStyle( props ) {
 		" .uagb-rm__separator-parent": {
 			"justify-content" : align,
 		},
-		" .uagb-rm__content": {
-			"text-align" : headingAlign,
-			"padding-left" : generateCSSUnit( contentHrPadding, "px" ),
-			"padding-right" : generateCSSUnit( contentHrPadding, "px" ),
-			"padding-top" : generateCSSUnit( contentVrPadding, "px" ),
-			"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
-		},
+		
 		// Prefix Style
 		" .uagb-rm__title": {
 			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),

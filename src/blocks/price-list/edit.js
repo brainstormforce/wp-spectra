@@ -4,12 +4,12 @@
 
 
 import classnames from "classnames"
-import Title from "./components/Title"
-import Price from "./components/Price"
-import Description from "./components/Description"
+// import Title from "./components/Title"
+// import Price from "./components/Price"
+// import Description from "./components/Description"
 import PositionClasses from "./classes"
 import RestMenuStyle from "./inline-styles"
-import RestMenuImage from "./components/RestMenuImage"
+// import RestMenuImage from "./components/RestMenuImage"
 import times from "lodash/times"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import memoize from "memize"
@@ -24,21 +24,13 @@ import WebfontLoader from "../../components/typography/fontloader"
 const { __ } = wp.i18n
 
 const {
-	AlignmentToolbar,
-	BlockControls,
-	ColorPalette,
 	InspectorControls,
-	PanelColorSettings,
-	MediaUpload,
 	InnerBlocks
 } = wp.blockEditor
 
 const {
 	PanelBody,
-	SelectControl,
 	RangeControl,
-	BaseControl,
-	Button,
 	TabPanel,
 	Dashicon
 } = wp.components
@@ -115,22 +107,9 @@ class UAGBRestaurantMenu extends Component {
 		const {
 			menu_item_count,
 			rest_menu_item_arr,
-			
-			
-			
-			
-
-			
-
-			priceLoadGoogleFonts,
-			titleLoadGoogleFonts,
-			descLoadGoogleFonts,
-
 			titleSpace,
 			imgHrPadding,
 			imgVrPadding,
-			imageSize,
-			imageWidth,
 			columns,
 			tcolumns,
 			mcolumns,
@@ -138,16 +117,7 @@ class UAGBRestaurantMenu extends Component {
 			columnGap,
 			contentHrPadding,
 			contentVrPadding,
-			
-			stack,
 		} = attributes	
-
-		
-		
-		
-
-		
-		
 
 		let cnt = 0
 		rest_menu_item_arr.map( ( item, thisIndex ) => {

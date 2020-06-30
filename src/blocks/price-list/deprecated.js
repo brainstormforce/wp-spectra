@@ -5,11 +5,11 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import attributes from "./attributes"
-import Title from "./components/Title"
-import Price from "./components/Price"
-import Description from "./components/Description"
+import Title from "../price-list-child/components/Title"
+import Price from "../price-list-child/components/Price"
+import Description from "../price-list-child/components/Description"
 import PositionClasses from "./classes"
-import RestMenuImage from "./components/RestMenuImage"
+import RestMenuImage from "../price-list-child/components/RestMenuImage"
 
 const { Fragment } = wp.element
 
