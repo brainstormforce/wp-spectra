@@ -618,12 +618,57 @@ class UAGBInlineNoticeEdit extends Component {
 														))}
 														</div>
 													</div>
-												</div>
+											</div>
 											</div>
 										)
 									})
 								}
+								{ showFeature &&
+						<div
+						className="dashicons dashicons-plus-alt"
+						value={ feature_count }
+						onClick={ newCount => {
+							
+							let cloneIcons = [ ...features ]
+		
+							//if ( cloneIcons.length < newCount ) {
+								console.log("here")
 
+								const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
+
+								{ times( incAmount, n => {
+
+									cloneIcons.push( {
+										"feature_name": "- Feature Name." + ( cloneIcons.length + 1 ),
+									} )
+
+								} ) }
+
+								setAttributes( { features: cloneIcons } )
+							//}
+							console.log(isNaN(incAmount))
+							setAttributes( { feature_count: newCount } )
+							
+							} }
+						/>
+					}
+					<div
+						className="dashicons dashicons-trash"
+						value={ feature_count }
+						onClick={ newCount => {
+							
+							let cloneIcons = [ ...features ]
+							
+							const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
+							
+							let data_new = cloneIcons
+				            for( var i= 0; i < incAmount; i++ ){
+				                data_new.pop()
+				            }
+				            setAttributes({features:data_new})
+							setAttributes( { feature_count: newCount } )
+						} }
+					/>						
 					</div>
 					}
 				</div>

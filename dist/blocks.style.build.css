@@ -3978,3 +3978,10 @@ html[dir=rtl] .uagb-gf-styler__btn-align-left .gform_page .gform_page_footer inp
 .uagb-avg-review-star-inner-container {
   display: flex;
   padding: 10px 0px 10px 0px; }
+
+.dashicons.dashicons-plus-alt {
+  left: 50%;
+  width: 100%; }
+
+.dashicons.dashicons-trash {
+  float: right; }
