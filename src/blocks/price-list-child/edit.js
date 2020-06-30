@@ -30,7 +30,6 @@ const {
 	BlockControls,
 	ColorPalette,
 	InspectorControls,
-	PanelColorSettings,
 	MediaUpload
 } = wp.blockEditor
 
@@ -161,10 +160,7 @@ class UAGBRestaurantMenuChild extends Component {
 			imageAlignment,
 			imageSize,
 			imageWidth,
-			seperatorStyle,
-			seperatorWidth,
-			seperatorThickness,
-			seperatorColor,
+			
             stack,
 			image,
 			title,
@@ -313,55 +309,7 @@ class UAGBRestaurantMenuChild extends Component {
 			</Fragment>
 		)
 
-		//seperator setting
-		const separatorSettings =(
-			<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
-				<SelectControl
-					label={ __( "Separator Style" ) }
-					value={ seperatorStyle }
-					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
-					options={ [
-						{ value: "none", label: __( "None" ) },
-						{ value: "solid", label: __( "Solid" ) },
-						{ value: "dotted", label: __( "Dotted" ) },
-						{ value: "dashed", label: __( "Dashed" ) },
-						{ value: "double", label: __( "Double" ) },
-						{ value: "groove", label: __( "Groove" ) },
-						{ value: "inset", label: __( "Inset" ) },
-						{ value: "outset", label: __( "Outset" ) },
-						{ value: "ridge", label: __( "Ridge" ) },
-					] }
-				/>
-				{ "none" != seperatorStyle &&
-					<Fragment>
-						<RangeControl
-							label={ __( "Separator Width (%)" ) }
-							value={ seperatorWidth }
-							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
-							min={ 0 }
-							max={ 100 }
-							allowReset
-						/>
-						<RangeControl
-							label={ __( "Separator Thickness" ) }
-							value={ seperatorThickness }
-							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
-							min={ 0 }
-							max={ 20 }
-							allowReset
-						/>
-						<Fragment>
-							<p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
-							<ColorPalette
-								value={ seperatorColor }
-								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
-								allowReset
-							/>
-						</Fragment>
-					</Fragment>
-				}
-			</PanelBody>
-		)
+		
 
         const inspect_control = (
             <InspectorControls>
@@ -447,31 +395,10 @@ class UAGBRestaurantMenuChild extends Component {
 					}
 				</PanelBody>
 
-                <PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: titleColor,
-							onChange: ( colorValue ) => setAttributes( { titleColor: colorValue } ),
-							label: __( "Title Color" ),
-						},
-						{
-							value: descColor,
-							onChange: ( colorValue ) => setAttributes( { descColor: colorValue } ),
-							label: __( "Content Color" ),
-						},
-						{
-							value: priceColor,
-							onChange: ( colorValue ) => setAttributes( { priceColor: colorValue } ),
-							label: __( "Price Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
+                
 
 				{ TypographySettings }
-				{separatorSettings}
+				
             </InspectorControls>
         )
         

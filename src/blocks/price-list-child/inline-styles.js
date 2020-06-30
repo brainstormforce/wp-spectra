@@ -10,9 +10,7 @@ function RestMenuStyle( props ) {
 	const {
 		classMigrate,
 		headingAlign,
-		priceColor,
-		descColor,
-		titleColor,
+		
 		titleFontSizeType,
 		titleFontSize,
 		titleFontSizeTablet,
@@ -54,10 +52,7 @@ function RestMenuStyle( props ) {
 		tcolumns,
 		mcolumns,
 		
-		seperatorStyle,
-		seperatorWidth,
-		seperatorThickness,
-		seperatorColor,
+		
 	} = props.attributes
 
 	var tablet_selectors = {}
@@ -81,42 +76,10 @@ function RestMenuStyle( props ) {
 			"justify-content" : align,
 		},
 		
-		// Prefix Style
-		" .uagb-rm__title": {
-			"font-size" : generateCSSUnit( titleFontSize, titleFontSizeType ),
-			"color": titleColor,
-			"margin-bottom": generateCSSUnit( titleSpace, "px" ),
-			"font-family": titleFontFamily,
-			"font-weight": titleFontWeight,
-			"line-height": generateCSSUnit( titleLineHeight, titleLineHeightType ),
-		},
-		// Title Style
-		" .uagb-rm__price": {
-			"font-size" : generateCSSUnit( priceFontSize, priceFontSizeType ),
-			"font-family": priceFontFamily,
-			"font-weight": priceFontWeight,
-			"line-height": generateCSSUnit( priceLineHeight, priceLineHeightType ),
-			"color": priceColor,
-		},
-		// Description Style
-		" .uagb-rm__desc": {
-			"font-size" : generateCSSUnit( descFontSize, descFontSizeType ),
-			"font-family": descFontFamily,
-			"font-weight": descFontWeight,
-			"line-height": generateCSSUnit( descLineHeight, descLineHeightType ),
-			"color": descColor,
-			"margin-bottom": generateCSSUnit( descSpace, "px" ),
-		},
+		
 	}
 
-	if ( seperatorStyle !== "none" ) {
-		selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
-			"border-top-color": seperatorColor,
-			"border-top-style": seperatorStyle,
-			"border-top-width": generateCSSUnit( seperatorThickness, "px" ),
-			"width": generateCSSUnit( seperatorWidth, "%" ),
-		}
-	}
+	
 	
 
 	selectors[" .uagb-rest_menu__wrap.uagb-rm__desk-column-"+columns+":nth-child("+columns+"n+1)"] = {

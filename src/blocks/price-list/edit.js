@@ -25,15 +25,23 @@ const { __ } = wp.i18n
 
 const {
 	InspectorControls,
+	PanelColorSettings,
+	AlignmentToolbar,
+	BlockControls,
+	ColorPalette,
+	MediaUpload,
 	InnerBlocks
+	
 } = wp.blockEditor
 
 const {
 	PanelBody,
 	RangeControl,
+	SelectControl,
 	TabPanel,
 	Dashicon
 } = wp.components
+
 
 const { select, withSelect } = wp.data;
 
@@ -54,6 +62,11 @@ class UAGBRestaurantMenu extends Component {
 		this.onRemoveImage 		= this.onRemoveImage.bind( this )
 		this.onSelectImage 		= this.onSelectImage.bind( this )
 		this.setcolumns			= this.setcolumns.bind( this )
+		this.setTitleColor			= this.setTitleColor.bind( this )
+		this.setdescColor			= this.setdescColor.bind( this )
+		this.setpriceColor			= this.setpriceColor.bind( this )
+
+
 	}
 
 	setcolumns (value) {
@@ -64,6 +77,31 @@ class UAGBRestaurantMenu extends Component {
 			pricelistChild.attributes.columns = value
 		});
 		setAttributes( { columns: value } )
+	}
+
+	setTitleColor (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.titleColor = value
+		});
+		setAttributes( { titleColor: value } )
+	}
+	setdescColor (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.descColor = value
+		});
+		setAttributes( { descColor: value } )
+	}
+	setpriceColor (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.priceColor = value
+		});
+		setAttributes( { priceColor: value } )
 	}
 	
 
@@ -117,6 +155,13 @@ class UAGBRestaurantMenu extends Component {
 			columnGap,
 			contentHrPadding,
 			contentVrPadding,
+			priceColor,
+			descColor,
+			titleColor,
+			seperatorStyle,
+			seperatorWidth,
+			seperatorThickness,
+			seperatorColor,
 		} = attributes	
 
 		let cnt = 0
@@ -201,6 +246,56 @@ class UAGBRestaurantMenu extends Component {
 				</Fragment>
 				}
 
+			</PanelBody>
+		)
+
+		//seperator setting
+		const separatorSettings =(
+			<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
+				<SelectControl
+					label={ __( "Separator Style" ) }
+					value={ seperatorStyle }
+					onChange={ ( value ) => setAttributes( { seperatorStyle: value } ) }
+					options={ [
+						{ value: "none", label: __( "None" ) },
+						{ value: "solid", label: __( "Solid" ) },
+						{ value: "dotted", label: __( "Dotted" ) },
+						{ value: "dashed", label: __( "Dashed" ) },
+						{ value: "double", label: __( "Double" ) },
+						{ value: "groove", label: __( "Groove" ) },
+						{ value: "inset", label: __( "Inset" ) },
+						{ value: "outset", label: __( "Outset" ) },
+						{ value: "ridge", label: __( "Ridge" ) },
+					] }
+				/>
+				{ "none" != seperatorStyle &&
+					<Fragment>
+						<RangeControl
+							label={ __( "Separator Width (%)" ) }
+							value={ seperatorWidth }
+							onChange={ ( value ) => setAttributes( { seperatorWidth: value } ) }
+							min={ 0 }
+							max={ 100 }
+							allowReset
+						/>
+						<RangeControl
+							label={ __( "Separator Thickness" ) }
+							value={ seperatorThickness }
+							onChange={ ( value ) => setAttributes( { seperatorThickness: value } ) }
+							min={ 0 }
+							max={ 20 }
+							allowReset
+						/>
+						<Fragment>
+							<p className="uagb-setting-label">{ __( "Separator Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: seperatorColor }} ></span></span></p>
+							<ColorPalette
+								value={ seperatorColor }
+								onChange={ ( colorValue ) => setAttributes( { seperatorColor: colorValue } ) }
+								allowReset
+							/>
+						</Fragment>
+					</Fragment>
+				}
 			</PanelBody>
 		)
 
@@ -300,6 +395,31 @@ class UAGBRestaurantMenu extends Component {
 					</TabPanel>
 				</PanelBody>
 
+				<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: titleColor,
+							onChange: ( this.setTitleColor ),
+							label: __( "Title Color" ),
+						},
+						{
+							value: descColor,
+							onChange: ( this.setdescColor ),
+							label: __( "Content Color" ),
+						},
+						{
+							value: priceColor,
+							onChange: ( this.setpriceColor ),
+							label: __( "Price Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
+
+
+				{separatorSettings}
 				{ marginSettings }
 			</InspectorControls>
 		)

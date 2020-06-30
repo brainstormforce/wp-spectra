@@ -54,22 +54,7 @@ const attributes = {
 		default: "#333"
 	},
 	
-	seperatorStyle : {
-		type: "string",
-		default: "dashed"
-	},
-	seperatorWidth : {
-		type: "number",
-		default: "100"
-	},
-	seperatorThickness : {
-		type: "number",
-		default: "1"
-	},
-	seperatorColor : {
-		type: "string",
-		default: "#b2b4b5",
-	},
+	
 	headingTag: {
 		type: "string",
 		default: "h4"

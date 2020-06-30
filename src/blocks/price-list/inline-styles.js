@@ -9,7 +9,9 @@ function RestMenuStyle( props ) {
 	const {
 		classMigrate,
 		headingAlign,
-		
+		priceColor,
+		descColor,
+		titleColor,
 		titleSpace,
 		imgVrPadding,
 		imgHrPadding,
@@ -17,6 +19,10 @@ function RestMenuStyle( props ) {
 		columnGap,		
 		contentVrPadding,
 		contentHrPadding,
+		seperatorStyle,
+		seperatorWidth,
+		seperatorThickness,
+		seperatorColor,
 	} = props.attributes
 
 	
@@ -46,8 +52,17 @@ function RestMenuStyle( props ) {
 			"padding-bottom" : generateCSSUnit( contentVrPadding, "px" ),
 		},
 		
+
 		
 	}
+		if ( seperatorStyle !== "none" ) {
+			selectors[" .uagb-rest_menu__wrap .uagb-rm__separator"] = {
+				"border-top-color": seperatorColor,
+				"border-top-style": seperatorStyle,
+				"border-top-width": generateCSSUnit( seperatorThickness, "px" ),
+				"width": generateCSSUnit( seperatorWidth, "%" ),
+			}
+		}
 
 
 	var styling_css = ""
