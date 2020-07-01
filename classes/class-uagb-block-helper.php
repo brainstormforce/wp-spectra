@@ -1791,8 +1791,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/social-share-child']['attributes'];
+
 				foreach ( $attr['socials'] as $key => $socials ) {
 
+					$socials                        = array_merge( $defaults, (array) $socials );
 					$socials['icon_color']          = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
 					$socials['icon_hover_color']    = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
 					$socials['icon_bg_color']       = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
