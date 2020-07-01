@@ -3361,3 +3361,6 @@ label.wp-block-uagb-blockquote__via-label svg {
 .uagb-typography-advanced .uag-typography-range-options .uagb-size-type-field-tabs .components-base-control.components-range-control .components-base-control__field{
     display:block;
 }
+.uagb-forms-button-group {
+	margin-bottom:15px;
+}

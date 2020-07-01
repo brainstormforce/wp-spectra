@@ -2229,8 +2229,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Forms', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Forms.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
+						'js_assets'   => array ( 'uagb-forms-js' ),
 						'attributes'  => array(
-						)
+							'block_id' => '',
+							'submitButtonText' => 'Submit',
+							'formLabel' => 'UAG Form',
+							'buttonAlign' => 'left',
+							'confirmationType' => 'message',
+							'confirmationMessage' => 'The form has been submitted Successfully!',
+							'confirmationUrl' => '',
+						),
 					),
 					'uagb/forms-name'        => array(
 						'slug'        => '',
@@ -2305,6 +2313,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb-inline-notice-js'  => array(
 						'src'        => UAGB_URL . 'assets/js/inline-notice.js',
 						'dep'        => array( 'jquery', 'uagb-cookie-lib' ),
+						'skipEditor' => true,
+					),
+					'uagb-forms-js'  => array(
+						'src'        => UAGB_URL . 'assets/js/forms.js',
+						'dep'        => array( 'jquery' ),
 						'skipEditor' => true,
 					),
 				);

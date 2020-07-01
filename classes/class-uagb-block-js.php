@@ -199,7 +199,29 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 			return ob_get_clean();
 
 		}
+		/**
+		 * Get Forms Js
+		 *
+		 * @since 1.13.0
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 */
+		public static function get_forms_js( $attr, $id ) {
 
+			$defaults = UAGB_Helper::$block_list['uagb/forms']['attributes'];
+
+			$attr          = array_merge( $defaults, (array) $attr );
+			$selector      = '.uagb-block-' . $id;
+
+			ob_start();
+			?>
+			jQuery( document ).ready(function() {
+				UAGBForms.init( <?php echo wp_json_encode( $attr ); ?>, '<?php echo esc_attr( $selector ); ?>' );
+			});
+			<?php
+			return ob_get_clean();
+
+		}
 		/**
 		 * Adds Google fonts for Advanced Heading block.
 		 *

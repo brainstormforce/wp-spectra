@@ -556,6 +556,10 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					$css += UAGB_Block_Helper::get_wp_search_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_wp_search_gfont( $blockattr );
 					break;
+				
+				case 'uagb/forms':
+					$js .= UAGB_Block_JS::get_forms_js( $blockattr, $block_id );
+					break;
 
 				default:
 					// Nothing to do here.
