@@ -23,6 +23,10 @@ import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
 
+const { compose } = wp.compose
+
+const { select, withSelect } = wp.data
+
 const {
 	AlignmentToolbar,
 	BlockControls,
@@ -87,6 +91,27 @@ class UAGBInlineNoticeEdit extends Component {
 			const { features } = attributes
 
 		const newItems = features.map( ( item, thisIndex ) => {
+			if ( index === thisIndex ) {
+				item = { ...item, ...value }
+			}
+
+			return item
+		} )
+
+			setAttributes( {
+				features: newItems,
+			} )
+		}
+
+		removefeatures( value, index ) {
+			const { attributes, setAttributes } = this.props
+			const { features } = attributes
+
+			let newItemsList = []
+			
+			newItemsList = features.splice(index, 1)
+
+			const newItems = features.map( ( item, thisIndex ) => {
 			if ( index === thisIndex ) {
 				item = { ...item, ...value }
 			}
@@ -420,49 +445,13 @@ class UAGBInlineNoticeEdit extends Component {
 							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
 							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
 						/>
-					<hr className="uagb-editor__separator" />
-					<ToggleControl
-						label={ __( "Show features" ) }
-						checked={ showFeature }
-						onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
-						help={ __( "Note: This is recommended field for schema.It should be ON" ) }
-					/>
-					{ showFeature &&
-						<RangeControl
-							label={ __( "Number of Feature" ) }
-							value={ feature_count }
-							onChange={ newCount => {
-
-								let cloneIcons = [ ...features ]
-
-								if ( cloneIcons.length < newCount ) {
-
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-
-									{ times( incAmount, n => {
-
-										cloneIcons.push( {
-											"feature_name": "- Feature Name." + ( cloneIcons.length + 1 ),
-										} )
-
-									} ) }
-
-									setAttributes( { features: cloneIcons } )
-								}else{
-									const incAmount = Math.abs( newCount - cloneIcons.length )
-									let data_new = cloneIcons
-					            for( var i= 0; i < incAmount; i++ ){
-					                data_new.pop()
-					            }
-					            setAttributes({features:data_new})
-
-								}
-								setAttributes( { feature_count: newCount } )
-							} }
-							min={ 1 }
-							max={ 50 }
-						/>
-						}
+						<hr className="uagb-editor__separator" />
+					    <ToggleControl
+					    	label={ __( "Show features" ) }
+					    	checked={ showFeature }
+					    	onChange={ ( value ) => setAttributes( { showFeature: ! showFeature } ) }
+					    	help={ __( "Note: This is recommended field for schema.It should be ON" ) }
+					    />
 						<hr className="uagb-editor__separator" />
 						<RangeControl
 							label={ __( "Gap Between Star" ) }
@@ -566,6 +555,13 @@ class UAGBInlineNoticeEdit extends Component {
 														multiline={false}
 														allowedFormats={[ 'core/bold', 'core/italic', 'core/strikethrough' ]}
 													/>
+													<div
+														className="dashicons dashicons-trash"
+														value={ feature_count }
+														onClick={ value => {
+																	this.removefeatures( { features_name: value }, index )
+																} }
+													/>
 													<div className="uagb-features-star">
 													<div
 														className="uagb-star-inner-container"
@@ -651,24 +647,7 @@ class UAGBInlineNoticeEdit extends Component {
 							
 							} }
 						/>
-					}
-					<div
-						className="dashicons dashicons-trash"
-						value={ feature_count }
-						onClick={ newCount => {
-							
-							let cloneIcons = [ ...features ]
-							
-							const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
-							
-							let data_new = cloneIcons
-				            for( var i= 0; i < incAmount; i++ ){
-				                data_new.pop()
-				            }
-				            setAttributes({features:data_new})
-							setAttributes( { feature_count: newCount } )
-						} }
-					/>						
+					}						
 					</div>
 					}
 				</div>
