@@ -43,6 +43,7 @@ const {
 	ToggleControl,
 	Button,
 	TextControl,
+	DatePicker,
 } = wp.components
 
 const {
@@ -234,6 +235,14 @@ class UAGBRatingEdit extends Component {
 				sku,
 				identifier,
 				identifierType,
+				offerType,
+				offerCurrency,
+				offerStatus,
+				offerHighPrice,
+				offerLowPrice,
+				offerPrice,
+				offerCount,
+				offerExpiry,
 			},
 			setAttributes,
 			className,
@@ -510,6 +519,91 @@ class UAGBRatingEdit extends Component {
 								setAttributes({ identifierType })
 							}
 						/>
+				<SelectControl
+					label={__("Offer Type")}
+					value={offerType}
+					options={["Offer", "Aggregate Offer"].map((a) => ({
+						label: __(a),
+						value: a.replace(" ", ""),
+					}))}
+					onChange={(offerType) => setAttributes({ offerType })}
+				/>
+				<TextControl
+					label={__("Offer Currency")}
+					value={offerCurrency}
+					onChange={(offerCurrency) => setAttributes({ offerCurrency })}
+				/>
+				{offerType == "Offer" ? (
+								<Fragment>
+									<TextControl
+										label={__("Offer Price")}
+										value={offerPrice}
+										onChange={(offerPrice) => setAttributes({ offerPrice })}
+									/>
+									<SelectControl
+										label={__("Offer Status")}
+										value={offerStatus}
+										options={[
+											"Discontinued",
+											"In Stock",
+											"In Store Only",
+											"Limited Availability",
+											"Online Only",
+											"Out Of Stock",
+											"Pre Order",
+											"Pre Sale",
+											"Sold Out",
+										].map((a) => ({
+											label: __(a),
+											value: a.replace(" ", ""),
+										}))}
+										onChange={(offerStatus) => setAttributes({ offerStatus })}
+									/>
+									<ToggleControl
+										label={__("Offer expiration")}
+										checked={offerExpiry > 0}
+										onChange={(_) =>
+											setAttributes({
+												offerExpiry: offerExpiry
+													? 0
+													: 60 * (10080 + Math.ceil(Date.now() / 60000)), //default to one week from Date.now() when enabled
+											})
+										}
+									/>
+									{offerExpiry > 0 && (
+										<DatePicker
+											currentDate={offerExpiry * 1000}
+											onChange={(newDate) =>
+												setAttributes({
+													offerExpiry: Math.floor(Date.parse(newDate) / 1000),
+												})
+											}
+										/>
+									)}
+								</Fragment>
+							) : (
+								<Fragment>
+									<TextControl
+										label={__("Offer Count")}
+										value={offerCount}
+										onChange={(offerCount) => setAttributes({ offerCount })}
+									/>
+									<TextControl
+										label={__(`Lowest Available Price (${offerCurrency})`)}
+										value={offerLowPrice}
+										onChange={(offerLowPrice) =>
+											setAttributes({ offerLowPrice })
+										}
+									/>
+									<TextControl
+										label={__(`Highest Available Price (${offerCurrency})`)}
+										value={offerHighPrice}
+										onChange={(offerHighPrice) =>
+											setAttributes({ offerHighPrice })
+										}
+									/>
+								</Fragment>
+							)}
 				</PanelBody>
 			)
 		}
@@ -806,10 +900,9 @@ class UAGBRatingEdit extends Component {
 export default compose(
 	withSelect( ( select, ownProps ) => {
 			console.log(ownProps.attributes)
-			console.log(ownProps.attributes.identifierType)
-			var tools_data = {}
-			var materials_data = {}
-			var steps_data = {}
+			console.log()
+
+			var offers_data = {}
 			var json_data = {
 				"@context": "https://schema.org/",
 				"@type": "Product",
@@ -817,7 +910,6 @@ export default compose(
 				"description": ownProps.attributes.rContent,
 				"image": [],
 				"sku": ownProps.attributes.sku,
-        		`"${ownProps.attributes.identifierType}"`: ownProps.attributes.identifier,
 				"brand": {
 				      "@type": "Thing",
 				      "name": "ACME"
@@ -839,18 +931,26 @@ export default compose(
 		          "ratingValue": "4.4",
 		          "reviewCount": "89"
 		        },
-		        "offers": {
-		          "@type": "AggregateOffer",
+		        offers_data : []
+			}
+
+			json_data.offers_data = {
+				"@type": "AggregateOffer",
 		          "offerCount": "5",
 		          "lowPrice": "119.99",
 		          "highPrice": "199.99",
-		          "priceCurrency": "USD"
-		        }
+		          "priceCurrency": "USD",
+		          "price": "12002",
+		          "url": "https://www.ultimategutenberg.com/",
+		          "priceValidUntil": "2020-07-11",
+		          "availability": "https://schema.org/InStock"
 			}
 
 			if ( ownProps.attributes.mainimage ) {
 				json_data.image = ownProps.attributes.mainimage.url;
 			}
+
+			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 			
 			console.log(json_data)
 		return {

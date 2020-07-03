@@ -146,6 +146,42 @@
 		type: "string",
 		default: "gtin", // nsn, mpn, gtin8, gtin12, gtin13, gtin14, gtin
 	},
+	offerType: {
+		type: "string",
+		default: "Offer", //can also be set to aggregate offer (which prevevnts calltoactionurl from being  used as offer url)
+	},
+	offerStatus: {
+		type: "string",
+		default: "InStock", //available values: Discontinued, InStock, InStoreOnly, LimitedAvailability, OnlineOnly, OutOfStock, PreOrder, PreSale, SoldOut
+	},
+	//begin aggregate offer-only attributes
+	offerHighPrice: {
+		type: "number",
+		default: 0,
+	},
+	offerLowPrice: {
+		type: "number",
+		default: 0,
+	},
+	offerCount: {
+		type: "number",
+		default: 0,
+	},
+	//end  aggregate offer-only attributes
+	offerPrice: {
+		//only for offer
+		type: "number",
+		default: 0,
+	},
+	offerCurrency: {
+		type: "string",
+		default: "USD",
+	},
+	offerExpiry: {
+		type: "number",
+		//default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
+		default: 0,
+	},
 }
 
 export default attributes
