@@ -42,6 +42,7 @@ const {
 	SelectControl,
 	ToggleControl,
 	Button,
+	TextControl,
 } = wp.components
 
 const {
@@ -57,7 +58,7 @@ let imageSizeOptions = [
 	{ value: "full", label: __( "Large" ) }
 ]
 
-class UAGBInlineNoticeEdit extends Component {
+class UAGBRatingEdit extends Component {
 
 	constructor() {
 
@@ -230,6 +231,9 @@ class UAGBInlineNoticeEdit extends Component {
 				contentVrPadding,
 				contentHrPadding,
 				star_gap,
+				sku,
+				identifier,
+				identifierType,
 			},
 			setAttributes,
 			className,
@@ -479,6 +483,32 @@ class UAGBInlineNoticeEdit extends Component {
 							min={ 0 }
 							max={ 50 }
 							allowReset
+						/>
+						<TextControl
+							label={__("SKU")}
+							value={sku}
+							onChange={(sku) => setAttributes({ sku })}
+						/>
+						<TextControl
+							label={__("Identifier")}
+							value={identifier}
+							onChange={(identifier) => setAttributes({ identifier })}
+						/>
+						<SelectControl
+							label={__("Identifier type")}
+							value={identifierType}
+							options={[
+								"nsn",
+								"mpn",
+								"gtin8",
+								"gtin12",
+								"gtin13",
+								"gtin14",
+								"gtin",
+							].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
+							onChange={(identifierType) =>
+								setAttributes({ identifierType })
+							}
 						/>
 				</PanelBody>
 			)
@@ -773,4 +803,58 @@ class UAGBInlineNoticeEdit extends Component {
 	}
 }
 
-export default UAGBInlineNoticeEdit
+export default compose(
+	withSelect( ( select, ownProps ) => {
+			console.log(ownProps.attributes)
+			console.log(ownProps.attributes.identifierType)
+			var tools_data = {}
+			var materials_data = {}
+			var steps_data = {}
+			var json_data = {
+				"@context": "https://schema.org/",
+				"@type": "Product",
+				"name": ownProps.attributes.rTitle,
+				"description": ownProps.attributes.rContent,
+				"image": [],
+				"sku": ownProps.attributes.sku,
+        		`"${ownProps.attributes.identifierType}"`: ownProps.attributes.identifier,
+				"brand": {
+				      "@type": "Thing",
+				      "name": "ACME"
+				    },
+			    "review": {
+		          "@type": "Review",
+		          "reviewRating": {
+		            "@type": "Rating",
+		            "ratingValue": "4",
+		            "bestRating": "5"
+		          },
+		          "author": {
+		            "@type": "Person",
+		            "name": "Fred Benson"
+		          }
+		        },
+		       "aggregateRating": {
+		          "@type": "AggregateRating",
+		          "ratingValue": "4.4",
+		          "reviewCount": "89"
+		        },
+		        "offers": {
+		          "@type": "AggregateOffer",
+		          "offerCount": "5",
+		          "lowPrice": "119.99",
+		          "highPrice": "199.99",
+		          "priceCurrency": "USD"
+		        }
+			}
+
+			if ( ownProps.attributes.mainimage ) {
+				json_data.image = ownProps.attributes.mainimage.url;
+			}
+			
+			console.log(json_data)
+		return {
+			schemaJsonData: json_data
+		};
+	} )
+) ( UAGBRatingEdit )

@@ -133,7 +133,19 @@
 	contentColor: {
 		type: "string",
 		default: ""
-	}
+	},
+	sku: {
+		type: "string",
+		default: "",
+	},
+	identifier: {
+		type: "string",
+		default: "",
+	},
+	identifierType: {
+		type: "string",
+		default: "gtin", // nsn, mpn, gtin8, gtin12, gtin13, gtin14, gtin
+	},
 }
 
 export default attributes
