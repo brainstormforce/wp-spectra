@@ -156,21 +156,21 @@
 	},
 	//begin aggregate offer-only attributes
 	offerHighPrice: {
-		type: "number",
+		type: "string",
 		default: 0,
 	},
 	offerLowPrice: {
-		type: "number",
+		type: "string",
 		default: 0,
 	},
 	offerCount: {
-		type: "number",
+		type: "string",
 		default: 0,
 	},
 	//end  aggregate offer-only attributes
 	offerPrice: {
 		//only for offer
-		type: "number",
+		type: "string",
 		default: 0,
 	},
 	offerCurrency: {
@@ -178,7 +178,7 @@
 		default: "USD",
 	},
 	offerExpiry: {
-		type: "number",
+		type: "string",
 		//default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
 		default: 0,
 	},

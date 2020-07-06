@@ -1126,6 +1126,10 @@ p.uagb-marketing-btn__prefix.block-editor-rich-text__editable {
     padding-bottom: 10px;
     padding-right: 50px;
     padding-top: 10px; }
+  .uagb-ratings-wrap .uagb-product-price-value, .uagb-ratings-wrap .uagb-product-price-currency {
+    display: inline-flex;
+    margin-top: -22px;
+    margin-bottom: 0px; }
   .uagb-ratings-wrap .uagb-stock-availability {
     padding-left: 50px;
     padding-bottom: 10px;

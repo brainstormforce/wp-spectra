@@ -689,15 +689,22 @@ class UAGBRatingEdit extends Component {
 													<div className="uagb-features-star">
 													<div
 														className="uagb-star-inner-container"
-														onMouseLeave={() => setState({ highlightedStars: 0 })}
+														onMouseLeave={() => setAttributes({ highlightedStars: 0 })}
 													>
-														{[...Array(starCount)].map((e, i) => (
+														{
+														[...Array(starCount).keys()].map((e, i) => (
+														
 															<div
 																key={i}
 																onMouseEnter={() => {
-																	setState({ highlightedStars: i + 1 });
+																	setAttributes({ highlightedStars: i + 1 });
+																	// console.log(starCount)
+																	
+																 // console.log(e)
 																}}
 																onClick={() => {
+																	console.log(i)
+																	console.log(index)
 																	if (selectedStars % 1 === 0) {
 																		setAttributes({
 																			selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
@@ -735,7 +742,8 @@ class UAGBRatingEdit extends Component {
 																	<EmptyStar size={starSize} />
 																)}
 															</div>
-														))}
+														))
+													}
 														</div>
 													</div>
 											</div>
@@ -752,7 +760,7 @@ class UAGBRatingEdit extends Component {
 							let cloneIcons = [ ...features ]
 		
 							//if ( cloneIcons.length < newCount ) {
-								console.log("here")
+								//console.log("here")
 
 								const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
 
@@ -766,7 +774,7 @@ class UAGBRatingEdit extends Component {
 
 								setAttributes( { features: cloneIcons } )
 							//}
-							console.log(isNaN(incAmount))
+							//console.log(isNaN(incAmount))
 							setAttributes( { feature_count: newCount } )
 							
 							} }
@@ -789,13 +797,13 @@ class UAGBRatingEdit extends Component {
 				/>
 				<div
 					className="uagb-avg-review-star-inner-container"
-					onMouseLeave={() => setState({ highlightedStars: 0 })}
+					onMouseLeave={() => setAttributes({ highlightedStars: 0 })}
 				>
 					{[...Array(starCount)].map((e, i) => (
 						<div
 							key={i}
 							onMouseEnter={() => {
-								setState({ highlightedStars: i + 1 });
+								setAttributes({ highlightedStars: i + 1 });
 							}}
 							onClick={() => {
 								if (selectedStars % 1 === 0) {
@@ -853,15 +861,27 @@ class UAGBRatingEdit extends Component {
 					<div className="uagb-product-price-value">
 					<RichText
 						tagName="h4"
-						placeholder={ __( "US$65" ) }
-						value={ pricevalue }
+						placeholder={ __( "$65" ) }
+						value={ offerPrice }
 						className='uagb-price-value-text'
-						onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
+						//onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
 						onMerge={ mergeBlocks }
 						unstableOnSplit={ this.splitBlock }
 						onnRemove={ () => onReplace( [] ) }
 					/>
 					</div>
+					<div className="uagb-product-price-currency">
+					<RichText
+						tagName="h4"
+						placeholder={ __( "US" ) }
+						value={ offerCurrency }
+						className='uagb-price-currency-text'
+						//onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
+						onMerge={ mergeBlocks }
+						unstableOnSplit={ this.splitBlock }
+						onnRemove={ () => onReplace( [] ) }
+					/>
+				</div>
 				</div>
 				<div className="uagb-stock-availability">
 					<RichText
@@ -878,9 +898,9 @@ class UAGBRatingEdit extends Component {
 					<RichText
 						tagName="h4"
 						placeholder={ __( "Instock" ) }
-						value={ availabilityvalue }
+						value={ offerStatus }
 						className='uagb-availability-value-text'
-						onChange={ ( value ) => setAttributes( { availabilityvalue: value } ) }
+						//onChange={ ( value ) => setAttributes( { offerStatus: value } ) }
 						onMerge={ mergeBlocks }
 						unstableOnSplit={ this.splitBlock }
 						onnRemove={ () => onReplace( [] ) }
@@ -899,8 +919,15 @@ class UAGBRatingEdit extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-			console.log(ownProps.attributes)
-			console.log()
+			// console.log(ownProps.attributes)
+			// console.log(ownProps.attributes.offerHighPrice)
+			// console.log(ownProps.attributes.offerLowPrice)
+			// console.log(ownProps.attributes.offerType)
+			// console.log(ownProps.attributes.offerCount)
+			// console.log(ownProps.attributes.offerStatus)
+			// console.log(ownProps.attributes.offerPrice)
+			// console.log(ownProps.attributes.offerCurrency)
+			// console.log(ownProps.attributes.offerExpiry)
 
 			var offers_data = {}
 			var json_data = {
@@ -935,14 +962,14 @@ export default compose(
 			}
 
 			json_data.offers_data = {
-				"@type": "AggregateOffer",
-		          "offerCount": "5",
-		          "lowPrice": "119.99",
-		          "highPrice": "199.99",
-		          "priceCurrency": "USD",
-		          "price": "12002",
+				"@type": ownProps.attributes.offerType,
+		          "offerCount": ownProps.attributes.offerCount,
+		          "lowPrice": ownProps.attributes.offerLowPrice,
+		          "highPrice": ownProps.attributes.offerHighPrice,
+		          "priceCurrency": ownProps.attributes.offerCurrency,
+		          "price": ownProps.attributes.offerPrice,
 		          "url": "https://www.ultimategutenberg.com/",
-		          "priceValidUntil": "2020-07-11",
+		          "priceValidUntil": ownProps.attributes.offerExpiry,
 		          "availability": "https://schema.org/InStock"
 			}
 
@@ -952,7 +979,7 @@ export default compose(
 
 			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 			
-			console.log(json_data)
+			//console.log(json_data)
 		return {
 			schemaJsonData: json_data
 		};
