@@ -216,7 +216,8 @@ class UAGBPostCarousel extends Component {
 			equalHeight,
 			inheritFromTheme,
 			postDisplaytext,
-			displayPostContentRadio
+			displayPostContentRadio,
+			excludeCurrentPost
 		} = attributes
 
 		const hoverSettings = (
@@ -375,6 +376,11 @@ class UAGBPostCarousel extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -1012,7 +1018,7 @@ class UAGBPostCarousel extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -1040,12 +1046,15 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
-	latestPostsQuery[rest_base] = categories
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
 
+	latestPostsQuery[rest_base] = categories
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),
 		categoriesList: categoriesList,
-		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : []
+		taxonomyList: ( "undefined" != typeof currentTax ) ? currentTax["taxonomy"] : [] 
 	}
 
 } )( UAGBPostCarousel )
