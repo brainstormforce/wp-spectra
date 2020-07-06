@@ -19,24 +19,28 @@ export default function save( props ) {
 		className,
 		rest_menu_item_arr,
 		imagePosition,
+		imageSize,
+		image,
+		imageAlignment,
+		headingAlign,
 	} = props.attributes
+console.log(image);
 
 	return (
 		<Fragment>
 			<div className={ classnames(
-				className,
-				"uagb-rest_menu__outer-wrap",
-				`uagb-block-${block_id}`
-			) }
-			>
+					className,
+					"uagb-rest_menu__outer-wrap",
+					`uagb-block-${block_id}`
+				) }
+				>
 
-					<div className = { classnames(
-						"uagb-rest_menu__wrap",
-						...PositionClasses( props.attributes ),
-					) }>
+						<div className = { classnames(
+							"uagb-rest_menu__wrap",
+							...PositionClasses( props.attributes ),
+						) } >
 						<div className = "uagb-rm__content">
 							{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  /> }
-
 							<div className ="uagb-rm__text-wrap">
 								{
 									<Fragment>

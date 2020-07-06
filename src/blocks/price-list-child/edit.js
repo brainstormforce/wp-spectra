@@ -10,18 +10,8 @@ import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
 
-
-
 import times from "lodash/times"
 
-
-
-
-// Import all of our Text Options requirements.
-import TypographyControl from "../../components/typography"
-
-// Import Web font loader for google fonts.
-import WebfontLoader from "../../components/typography/fontloader"
 
 const { __ } = wp.i18n
 
@@ -114,200 +104,14 @@ class UAGBRestaurantMenuChild extends Component {
 			menu_item_count,
 			rest_menu_item_arr,
 			headingAlign,
-			priceColor,
-			descColor,
-			titleColor,
-			headingTag,
-
-			titleFontSizeType,
-			titleFontSize,
-			titleFontSizeTablet,
-			titleFontSizeMobile,
-			titleFontFamily,
-			titleFontWeight,
-			titleFontSubset,
-			titleLineHeightType,
-			titleLineHeight,
-			titleLineHeightTablet,
-			titleLineHeightMobile,
-			
-			priceFontSizeType,
-			priceFontSize,
-			priceFontSizeTablet,
-			priceFontSizeMobile,
-			priceFontFamily,
-			priceFontWeight,
-			priceFontSubset,
-			priceLineHeightType,
-			priceLineHeight,
-			priceLineHeightTablet,
-			priceLineHeightMobile,
-			
-
-			descFontSizeType,
-			descFontSize,
-			descFontSizeTablet,
-			descFontSizeMobile,
-			descFontFamily,
-			descFontWeight,
-			descFontSubset,
-			descLineHeightType,
-			descLineHeight,
-			descLineHeightTablet,
-			descLineHeightMobile,
-			
 			imagePosition,
-			imageAlignment,
 			imageSize,
-			imageWidth,
-			
-            stack,
 			image,
-			title,
-			description,
-			price,
-			priceLoadGoogleFonts,
-			titleLoadGoogleFonts,
-			descLoadGoogleFonts,
-
-
+			imageAlignment
+			
 		} = attributes	
 		
 		
-
-		let loadTitleGoogleFonts
-		let loadDescGoogleFonts
-		let loadPriceGoogleFonts
-
-		if( titleLoadGoogleFonts == true ) {
-			
-			const titleconfig = {
-				google: {
-					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
-				},
-			}
-
-			loadTitleGoogleFonts = (
-				<WebfontLoader config={ titleconfig }>
-				</WebfontLoader>
-			)
-		}
-		
-		if( descLoadGoogleFonts == true ) {
-					
-			const descconfig = {
-				google: {
-					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
-				},
-			}
-
-			loadDescGoogleFonts = (
-				<WebfontLoader config={ descconfig }>
-				</WebfontLoader>
-			)
-		}
-		
-		if( priceLoadGoogleFonts == true ) {
-					
-			const priceconfig = {
-				google: {
-					families: [ priceFontFamily + ( priceFontWeight ? ":" + priceFontWeight : "" ) ],
-				},
-			}
-
-			loadPriceGoogleFonts = (
-				<WebfontLoader config={ priceconfig }>
-				</WebfontLoader>
-			)
-		}
-        
-        // Image sizes.
-		const imageSizeOptions = [
-			{ value: "thumbnail", label: __( "Thumbnail" ) },
-			{ value: "medium", label: __( "Medium" ) },
-			{ value: "full", label: __( "Large" ) }
-		]
-
-		// Typography settings.
-		const TypographySettings = (
-			<Fragment>
-				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>
-					<h2>{ __( "Title" ) }</h2>
-					<SelectControl
-						label={ __( "Title Tag" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-							{ value: "p", label: __( "P" ) },
-							{ value: "span", label: __( "SPAN" ) },
-						] }
-					/>					
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
-						fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
-						fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
-						fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
-						fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
-						fontSize = { { value: titleFontSize, label: "titleFontSize" } }
-						fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
-						fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
-						lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
-						lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
-						lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
-						lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Content" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: descLoadGoogleFonts, label: "descLoadGoogleFonts" } }
-						fontFamily = { { value: descFontFamily, label: "descFontFamily" } }
-						fontWeight = { { value: descFontWeight, label: "descFontWeight" } }
-						fontSubset = { { value: descFontSubset, label: "descFontSubset" } }
-						fontSizeType = { { value: descFontSizeType, label: "descFontSizeType" } }
-						fontSize = { { value: descFontSize, label: "descFontSize" } }
-						fontSizeMobile = { { value: descFontSizeMobile, label: "descFontSizeMobile" } }
-						fontSizeTablet= { { value: descFontSizeTablet, label: "descFontSizeTablet" } }
-						lineHeightType = { { value: descLineHeightType, label: "descLineHeightType" } }
-						lineHeight = { { value: descLineHeight, label: "descLineHeight" } }
-						lineHeightMobile = { { value: descLineHeightMobile, label: "descLineHeightMobile" } }
-						lineHeightTablet= { { value: descLineHeightTablet, label: "descLineHeightTablet" } }
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Price" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: "priceLoadGoogleFonts" } }
-						fontFamily = { { value: priceFontFamily, label: "priceFontFamily" } }
-						fontWeight = { { value: priceFontWeight, label: "priceFontWeight" } }
-						fontSubset = { { value: priceFontSubset, label: "priceFontSubset" } }
-						fontSizeType = { { value: priceFontSizeType, label: "priceFontSizeType" } }
-						fontSize = { { value: priceFontSize, label: "priceFontSize" } }
-						fontSizeMobile = { { value: priceFontSizeMobile, label: "priceFontSizeMobile" } }
-						fontSizeTablet= { { value: priceFontSizeTablet, label: "priceFontSizeTablet" } }
-						lineHeightType = { { value: priceLineHeightType, label: "priceLineHeightType" } }
-						lineHeight = { { value: priceLineHeight, label: "priceLineHeight" } }
-						lineHeightMobile = { { value: priceLineHeightMobile, label: "priceLineHeightMobile" } }
-						lineHeightTablet= { { value: priceLineHeightTablet, label: "priceLineHeightTablet" } }
-					/>
-				</PanelBody>
-
-				
-			</Fragment>
-		)
 
 		
 
@@ -317,8 +121,7 @@ class UAGBRestaurantMenuChild extends Component {
                 <BaseControl
 						className="editor-bg-image-control"
 						label={ __( "" ) }
-					>
-                        
+					>                        
 						<MediaUpload
 							title={ __( "Select Image" ) }
 							onSelect={ ( media ) => {
@@ -340,65 +143,7 @@ class UAGBRestaurantMenuChild extends Component {
 							</Button>
 						}
 					</BaseControl>
-
-					{   <Fragment>
-						<hr className="uagb-editor__separator" />
-						<SelectControl
-							label={ __( "Image Position" ) }
-							value={ imagePosition }
-							onChange={ ( value ) => setAttributes( { imagePosition: value } ) }
-							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "left", label: __( "Left" ) },
-								{ value: "right", label: __( "Right" ) },
-							] }
-						/>
-						{ (imagePosition == "left" || imagePosition == "right") &&
-						<Fragment>
-							<SelectControl
-								label={ __( "Vertical Alignment" ) }
-								value={ imageAlignment }
-								onChange={ ( value ) => setAttributes( { imageAlignment: value } ) }
-								options={ [
-									{ value: "top", label: __( "Top" ) },
-									{ value: "middle", label: __( "Middle" ) },
-								] }
-							/>
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						</Fragment>
-						}
-						<SelectControl
-							label={ __( "Image Size" ) }
-							options={ imageSizeOptions }
-							value={ imageSize }
-							onChange={ ( value ) => setAttributes( { imageSize: value } ) }
-						/>
-					 <RangeControl
-							label={ __( "Width" ) }
-							value={ imageWidth }
-							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
-					</Fragment>
-					}
 				</PanelBody>
-
-                
-
-				{ TypographySettings }
-				
             </InspectorControls>
         )
         
@@ -452,9 +197,7 @@ class UAGBRestaurantMenuChild extends Component {
 							
 
 					</div>
-					{ loadTitleGoogleFonts }
-					{ loadDescGoogleFonts }
-					{ loadPriceGoogleFonts }
+					
 			</Fragment>
 		)
 	}

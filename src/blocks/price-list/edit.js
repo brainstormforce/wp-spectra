@@ -62,9 +62,14 @@ class UAGBRestaurantMenu extends Component {
 		this.onRemoveImage 		= this.onRemoveImage.bind( this )
 		this.onSelectImage 		= this.onSelectImage.bind( this )
 		this.setcolumns			= this.setcolumns.bind( this )
-		this.setTitleColor			= this.setTitleColor.bind( this )
-		this.setdescColor			= this.setdescColor.bind( this )
-		this.setpriceColor			= this.setpriceColor.bind( this )
+		this.setheadingTag			= this.setheadingTag.bind( this )
+		this.setimagePosition			= this.setimagePosition.bind( this )
+		this.setimageSize			= this.setimageSize.bind( this )
+		this.setimageAlignment			= this.setimageAlignment.bind( this )
+
+
+
+		
 
 
 	}
@@ -78,34 +83,44 @@ class UAGBRestaurantMenu extends Component {
 		});
 		setAttributes( { columns: value } )
 	}
+	setheadingTag (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 
-	setTitleColor (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 		getChildBlocks.forEach((pricelistChild, key) => {
-			pricelistChild.attributes.titleColor = value
+			pricelistChild.attributes.headingTag = value
 		});
-		setAttributes( { titleColor: value } )
+		setAttributes( { headingTag: value } )
 	}
-	setdescColor (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		getChildBlocks.forEach((pricelistChild, key) => {
-			pricelistChild.attributes.descColor = value
-		});
-		setAttributes( { descColor: value } )
-	}
-	setpriceColor (value) {
-		const { setAttributes } = this.props
-		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
-		getChildBlocks.forEach((pricelistChild, key) => {
-			pricelistChild.attributes.priceColor = value
-		});
-		setAttributes( { priceColor: value } )
-	}
-	
 
-	
+	setimagePosition (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.imagePosition = value
+		});
+		setAttributes( { imagePosition: value } )
+	}
+	setimageSize (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.imageSize = value
+		});
+		setAttributes( { imageSize: value } )
+	}
+
+	setimageAlignment (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		getChildBlocks.forEach((pricelistChild, key) => {
+			pricelistChild.attributes.imageAlignment = value
+		});
+		setAttributes( { imageAlignment: value } )
+	}
 
 	
 
@@ -162,6 +177,49 @@ class UAGBRestaurantMenu extends Component {
 			seperatorWidth,
 			seperatorThickness,
 			seperatorColor,
+			priceLoadGoogleFonts,
+			titleLoadGoogleFonts,
+			descLoadGoogleFonts,
+			titleFontSizeType,
+			titleFontSize,
+			titleFontSizeTablet,
+			titleFontSizeMobile,
+			titleFontFamily,
+			titleFontWeight,
+			titleFontSubset,
+			titleLineHeightType,
+			titleLineHeight,
+			titleLineHeightTablet,
+			titleLineHeightMobile,
+			
+			priceFontSizeType,
+			priceFontSize,
+			priceFontSizeTablet,
+			priceFontSizeMobile,
+			priceFontFamily,
+			priceFontWeight,
+			priceFontSubset,
+			priceLineHeightType,
+			priceLineHeight,
+			priceLineHeightTablet,
+			priceLineHeightMobile,
+			descFontSizeType,
+			descFontSize,
+			descFontSizeTablet,
+			descFontSizeMobile,
+			descFontFamily,
+			descFontWeight,
+			descFontSubset,
+			descLineHeightType,
+			descLineHeight,
+			descLineHeightTablet,
+			descLineHeightMobile,
+			headingTag,
+			imagePosition,
+			imageAlignment,
+			imageSize,
+			imageWidth,
+            stack,
 		} = attributes	
 
 		let cnt = 0
@@ -174,6 +232,52 @@ class UAGBRestaurantMenu extends Component {
 	            }
 	        }
 		} )
+
+		let loadTitleGoogleFonts
+		let loadDescGoogleFonts
+		let loadPriceGoogleFonts
+
+		if( titleLoadGoogleFonts == true ) {
+			
+			const titleconfig = {
+				google: {
+					families: [ titleFontFamily + ( titleFontWeight ? ":" + titleFontWeight : "" ) ],
+				},
+			}
+
+			loadTitleGoogleFonts = (
+				<WebfontLoader config={ titleconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( descLoadGoogleFonts == true ) {
+					
+			const descconfig = {
+				google: {
+					families: [ descFontFamily + ( descFontWeight ? ":" + descFontWeight : "" ) ],
+				},
+			}
+
+			loadDescGoogleFonts = (
+				<WebfontLoader config={ descconfig }>
+				</WebfontLoader>
+			)
+		}
+		
+		if( priceLoadGoogleFonts == true ) {
+					
+			const priceconfig = {
+				google: {
+					families: [ priceFontFamily + ( priceFontWeight ? ":" + priceFontWeight : "" ) ],
+				},
+			}
+
+			loadPriceGoogleFonts = (
+				<WebfontLoader config={ priceconfig }>
+				</WebfontLoader>
+			)
+		}
 
 		// Margin Settings.
 		const marginSettings = (
@@ -299,10 +403,98 @@ class UAGBRestaurantMenu extends Component {
 			</PanelBody>
 		)
 
+		// Typography settings.
+		const TypographySettings = (
+			<Fragment>
+				<PanelBody title={ __( "Typography" ) }  initialOpen={ false }>
+					<h2>{ __( "Title" ) }</h2>
+					<SelectControl
+						label={ __( "Title Tag" ) }
+						value={ headingTag }
+						onChange={ this.setheadingTag }
+						options={ [
+							{ value: "h1", label: __( "H1" ) },
+							{ value: "h2", label: __( "H2" ) },
+							{ value: "h3", label: __( "H3" ) },
+							{ value: "h4", label: __( "H4" ) },
+							{ value: "h5", label: __( "H5" ) },
+							{ value: "h6", label: __( "H6" ) },
+							{ value: "p", label: __( "P" ) },
+							{ value: "span", label: __( "SPAN" ) },
+						] }
+					/>					
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: titleLoadGoogleFonts, label: "titleLoadGoogleFonts" } }
+						fontFamily = { { value: titleFontFamily, label: "titleFontFamily" } }
+						fontWeight = { { value: titleFontWeight, label: "titleFontWeight" } }
+						fontSubset = { { value: titleFontSubset, label: "titleFontSubset" } }
+						fontSizeType = { { value: titleFontSizeType, label: "titleFontSizeType" } }
+						fontSize = { { value: titleFontSize, label: "titleFontSize" } }
+						fontSizeMobile = { { value: titleFontSizeMobile, label: "titleFontSizeMobile" } }
+						fontSizeTablet= { { value: titleFontSizeTablet, label: "titleFontSizeTablet" } }
+						lineHeightType = { { value: titleLineHeightType, label: "titleLineHeightType" } }
+						lineHeight = { { value: titleLineHeight, label: "titleLineHeight" } }
+						lineHeightMobile = { { value: titleLineHeightMobile, label: "titleLineHeightMobile" } }
+						lineHeightTablet= { { value: titleLineHeightTablet, label: "titleLineHeightTablet" } }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Content" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: descLoadGoogleFonts, label: "descLoadGoogleFonts" } }
+						fontFamily = { { value: descFontFamily, label: "descFontFamily" } }
+						fontWeight = { { value: descFontWeight, label: "descFontWeight" } }
+						fontSubset = { { value: descFontSubset, label: "descFontSubset" } }
+						fontSizeType = { { value: descFontSizeType, label: "descFontSizeType" } }
+						fontSize = { { value: descFontSize, label: "descFontSize" } }
+						fontSizeMobile = { { value: descFontSizeMobile, label: "descFontSizeMobile" } }
+						fontSizeTablet= { { value: descFontSizeTablet, label: "descFontSizeTablet" } }
+						lineHeightType = { { value: descLineHeightType, label: "descLineHeightType" } }
+						lineHeight = { { value: descLineHeight, label: "descLineHeight" } }
+						lineHeightMobile = { { value: descLineHeightMobile, label: "descLineHeightMobile" } }
+						lineHeightTablet= { { value: descLineHeightTablet, label: "descLineHeightTablet" } }
+					/>
+					<hr className="uagb-editor__separator" />
+					<h2>{ __( "Price" ) }</h2>
+					<TypographyControl
+						label={ __( "Typography" ) }
+						attributes = { attributes }
+						setAttributes = { setAttributes }
+						loadGoogleFonts = { { value: priceLoadGoogleFonts, label: "priceLoadGoogleFonts" } }
+						fontFamily = { { value: priceFontFamily, label: "priceFontFamily" } }
+						fontWeight = { { value: priceFontWeight, label: "priceFontWeight" } }
+						fontSubset = { { value: priceFontSubset, label: "priceFontSubset" } }
+						fontSizeType = { { value: priceFontSizeType, label: "priceFontSizeType" } }
+						fontSize = { { value: priceFontSize, label: "priceFontSize" } }
+						fontSizeMobile = { { value: priceFontSizeMobile, label: "priceFontSizeMobile" } }
+						fontSizeTablet= { { value: priceFontSizeTablet, label: "priceFontSizeTablet" } }
+						lineHeightType = { { value: priceLineHeightType, label: "priceLineHeightType" } }
+						lineHeight = { { value: priceLineHeight, label: "priceLineHeight" } }
+						lineHeightMobile = { { value: priceLineHeightMobile, label: "priceLineHeightMobile" } }
+						lineHeightTablet= { { value: priceLineHeightTablet, label: "priceLineHeightTablet" } }
+					/>
+				</PanelBody>
+
+				
+			</Fragment>
+		)
+		
+		// Image sizes.
+		const imageSizeOptions = [
+			{ value: "thumbnail", label: __( "Thumbnail" ) },
+			{ value: "medium", label: __( "Medium" ) },
+			{ value: "full", label: __( "Large" ) }
+		]
+
 		const inspect_control = (
 			<InspectorControls>
 			 	<PanelBody	title={ __( "General" ) } initialOpen={ true }	>
-			 		<RangeControl
+			 		{/* <RangeControl
 						label={ __( "Number of Items" ) }
 						value={ menu_item_count }
 						onChange={ ( newCount ) => {
@@ -334,7 +526,7 @@ class UAGBRestaurantMenu extends Component {
 						min={ 0 }
 						max={ 20 }
 						allowReset
-					/>
+					/> */}
 					<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
 							{
@@ -395,23 +587,81 @@ class UAGBRestaurantMenu extends Component {
 					</TabPanel>
 				</PanelBody>
 
+				<PanelBody title={ __( "Image" ) }initialOpen={ false } >
+                
+
+					{   <Fragment>
+						<hr className="uagb-editor__separator" />
+						<SelectControl
+							label={ __( "Image Position" ) }
+							value={ imagePosition }
+							onChange={ this.setimagePosition }
+							options={ [
+								{ value: "top", label: __( "Top" ) },
+								{ value: "left", label: __( "Left" ) },
+								{ value: "right", label: __( "Right" ) },
+							] }
+						/>
+						{ (imagePosition == "left" || imagePosition == "right") &&
+						<Fragment>
+							<SelectControl
+								label={ __( "Vertical Alignment" ) }
+								value={ imageAlignment }
+								onChange={this.setimageAlignment}
+								options={ [
+									{ value: "top", label: __( "Top" ) },
+									{ value: "middle", label: __( "Middle" ) },
+								] }
+							/>
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						</Fragment>
+						}
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ imageSize }
+							onChange={this.setimageSize }
+						/>
+					 <RangeControl
+							label={ __( "Width" ) }
+							value={ imageWidth }
+							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+						/>
+					</Fragment>
+					}
+				</PanelBody>
+
+
 				<PanelColorSettings
 					title={ __( "Color Settings" ) }
 					initialOpen={ false }
 					colorSettings={ [
 						{
 							value: titleColor,
-							onChange: ( this.setTitleColor ),
+							onChange:( ( value ) => setAttributes( { titleColor: value } ) ),
 							label: __( "Title Color" ),
 						},
 						{
 							value: descColor,
-							onChange: ( this.setdescColor ),
+							onChange: (  ( value ) => setAttributes( { descColor: value } )  ),
 							label: __( "Content Color" ),
 						},
 						{
 							value: priceColor,
-							onChange: ( this.setpriceColor ),
+							onChange: (  ( value ) => setAttributes( { priceColor: value } )  ),
 							label: __( "Price Color" ),
 						},
 					] }
@@ -421,6 +671,7 @@ class UAGBRestaurantMenu extends Component {
 
 				{separatorSettings}
 				{ marginSettings }
+				{TypographySettings}
 			</InspectorControls>
 		)
 
@@ -448,6 +699,9 @@ class UAGBRestaurantMenu extends Component {
 							/>
 				
 							</div>
+							{ loadTitleGoogleFonts }
+							{ loadDescGoogleFonts }
+							{ loadPriceGoogleFonts }
 				
 			</Fragment>
 		)

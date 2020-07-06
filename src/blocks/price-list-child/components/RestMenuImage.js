@@ -10,7 +10,7 @@ class RestMenuImage extends React.Component {
 
 		const { attributes } = this.props
 		let url_check = ""
-		let image_arr = " "
+		let image_arr = ""
 
         if(attributes.image !== ""){
 			 image_arr = attributes.image

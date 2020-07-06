@@ -20,17 +20,17 @@ export default function save( props ) {
 		block_id,
 		className,
 		rest_menu_item_arr,
-		imagePosition,
 	} = props.attributes
 
 	return (
 		<Fragment>
 			<div className={ classnames(
-				className,
-				"uagb-rest_menu__outer-wrap",
-				`uagb-block-${block_id}`,...PositionClasses( props.attributes ),
-			) }
-			>		
+					className,
+					"uagb-rest_menu__outer-wrap",
+					`uagb-block-${block_id}`,
+					...PositionClasses( props.attributes ),
+				) }
+				>	
 			<InnerBlocks.Content/>
 			</div>
 		</Fragment>
