@@ -39,7 +39,9 @@ const {
 	RangeControl,
 	SelectControl,
 	TabPanel,
-	Dashicon
+	Dashicon,
+	IconButton,
+	ButtonGroup
 } = wp.components
 
 
@@ -66,11 +68,6 @@ class UAGBRestaurantMenu extends Component {
 		this.setimagePosition			= this.setimagePosition.bind( this )
 		this.setimageSize			= this.setimageSize.bind( this )
 		this.setimageAlignment			= this.setimageAlignment.bind( this )
-
-
-
-		
-
 
 	}
 
@@ -352,10 +349,117 @@ class UAGBRestaurantMenu extends Component {
 
 			</PanelBody>
 		)
+		// Image sizes.
+		const imageSizeOptions = [
+			{ value: "thumbnail", label: __( "Thumbnail" ) },
+			{ value: "medium", label: __( "Medium" ) },
+			{ value: "full", label: __( "Large" ) }
+		]
+		
+		//Image Setting
+		const imageSettings = (
+			   <Fragment>
+						<h2><strong>Image Settings</strong></h2>						
+						<h2> { __( "Image Position" ) }</h2>
+						<ButtonGroup className="uagb-editor_imgpos_group">
+							<IconButton
+								key={ "top" }
+								icon="align-full-width"
+								label="Top"
+								onClick={ () => this.setimagePosition("top") }
+								aria-pressed = { "top" === imagePosition }
+								isPrimary = { "top" === imagePosition }
+								/>
+							<IconButton
+								key={ "left" }
+								icon="align-left"
+								label="Left"
+								onClick={ () => this.setimagePosition("left") }
+								aria-pressed = { "left" === imagePosition }
+								isPrimary = { "left" === imagePosition }
+								/>
+							<IconButton
+								key={ "right" }
+								icon="align-right"
+								label="Right"
+								onClick={ () => this.setimagePosition("right") }
+								aria-pressed = { "right" === imagePosition }
+								isPrimary = { "right" === imagePosition }
+								/>
+						</ButtonGroup>
+
+						{ (imagePosition == "left" || imagePosition == "right") &&
+						<Fragment>
+							<SelectControl
+								label={ __( "Vertical Alignment" ) }
+								value={ imageAlignment }
+								onChange={this.setimageAlignment}
+								options={ [
+									{ value: "top", label: __( "Top" ) },
+									{ value: "middle", label: __( "Middle" ) },
+								] }
+							/>
+							<SelectControl
+								label={ __( "Stack on" ) }
+								value={ stack }
+								options={ [
+									{ value: "none", label: __( "None" ) },
+									{ value: "tablet", label: __( "Tablet" ) },
+									{ value: "mobile", label: __( "Mobile" ) },
+								] }
+								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
+								onChange={ ( value ) => setAttributes( { stack: value } ) }
+							/>
+						</Fragment>
+						}
+						<SelectControl
+							label={ __( "Image Size" ) }
+							options={ imageSizeOptions }
+							value={ imageSize }
+							onChange={this.setimageSize }
+						/>
+					 <RangeControl
+							label={ __( "Width" ) }
+							value={ imageWidth }
+							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
+							min={ 0 }
+							max={ 500 }
+							allowReset
+						/>
+					</Fragment>
+					
+		)
+		
+		//Color settings
+		const colorSettings = (
+			<PanelColorSettings
+					title={ __( "Color Settings" ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: titleColor,
+							onChange:( ( value ) => setAttributes( { titleColor: value } ) ),
+							label: __( "Title Color" ),
+						},
+						{
+							value: descColor,
+							onChange: (  ( value ) => setAttributes( { descColor: value } )  ),
+							label: __( "Content Color" ),
+						},
+						{
+							value: priceColor,
+							onChange: (  ( value ) => setAttributes( { priceColor: value } )  ),
+							label: __( "Price Color" ),
+						},
+					] }
+				>
+				</PanelColorSettings>
+		)
 
 		//seperator setting
 		const separatorSettings =(
-			<PanelBody title={ __( "Separator" ) } initialOpen={ false }>
+			<Fragment>
+				<h2><strong>Separator Settings</strong></h2>
 				<SelectControl
 					label={ __( "Separator Style" ) }
 					value={ seperatorStyle }
@@ -400,7 +504,7 @@ class UAGBRestaurantMenu extends Component {
 						</Fragment>
 					</Fragment>
 				}
-			</PanelBody>
+			</Fragment>
 		)
 
 		// Typography settings.
@@ -484,12 +588,7 @@ class UAGBRestaurantMenu extends Component {
 			</Fragment>
 		)
 		
-		// Image sizes.
-		const imageSizeOptions = [
-			{ value: "thumbnail", label: __( "Thumbnail" ) },
-			{ value: "medium", label: __( "Medium" ) },
-			{ value: "full", label: __( "Large" ) }
-		]
+	
 
 		const inspect_control = (
 			<InspectorControls>
@@ -585,92 +684,21 @@ class UAGBRestaurantMenu extends Component {
 							}
 						}
 					</TabPanel>
+					<hr className="uagb-editor__separator" />
+					{imageSettings}
+					<hr className="uagb-editor__separator" />
+					{separatorSettings}
 				</PanelBody>
 
-				<PanelBody title={ __( "Image" ) }initialOpen={ false } >
-                
-
-					{   <Fragment>
-						<hr className="uagb-editor__separator" />
-						<SelectControl
-							label={ __( "Image Position" ) }
-							value={ imagePosition }
-							onChange={ this.setimagePosition }
-							options={ [
-								{ value: "top", label: __( "Top" ) },
-								{ value: "left", label: __( "Left" ) },
-								{ value: "right", label: __( "Right" ) },
-							] }
-						/>
-						{ (imagePosition == "left" || imagePosition == "right") &&
-						<Fragment>
-							<SelectControl
-								label={ __( "Vertical Alignment" ) }
-								value={ imageAlignment }
-								onChange={this.setimageAlignment}
-								options={ [
-									{ value: "top", label: __( "Top" ) },
-									{ value: "middle", label: __( "Middle" ) },
-								] }
-							/>
-							<SelectControl
-								label={ __( "Stack on" ) }
-								value={ stack }
-								options={ [
-									{ value: "none", label: __( "None" ) },
-									{ value: "tablet", label: __( "Tablet" ) },
-									{ value: "mobile", label: __( "Mobile" ) },
-								] }
-								help={ __( "Note: Choose on what breakpoint the Images will stack." ) }
-								onChange={ ( value ) => setAttributes( { stack: value } ) }
-							/>
-						</Fragment>
-						}
-						<SelectControl
-							label={ __( "Image Size" ) }
-							options={ imageSizeOptions }
-							value={ imageSize }
-							onChange={this.setimageSize }
-						/>
-					 <RangeControl
-							label={ __( "Width" ) }
-							value={ imageWidth }
-							onChange={ ( value ) => setAttributes( { imageWidth: value } ) }
-							min={ 0 }
-							max={ 500 }
-							allowReset
-						/>
-					</Fragment>
-					}
-				</PanelBody>
+				
 
 
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: titleColor,
-							onChange:( ( value ) => setAttributes( { titleColor: value } ) ),
-							label: __( "Title Color" ),
-						},
-						{
-							value: descColor,
-							onChange: (  ( value ) => setAttributes( { descColor: value } )  ),
-							label: __( "Content Color" ),
-						},
-						{
-							value: priceColor,
-							onChange: (  ( value ) => setAttributes( { priceColor: value } )  ),
-							label: __( "Price Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
+				
 
 
-				{separatorSettings}
+				
 				{ marginSettings }
+				{ colorSettings }
 				{TypographySettings}
 			</InspectorControls>
 		)

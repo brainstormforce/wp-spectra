@@ -117,7 +117,8 @@ class UAGBRestaurantMenuChild extends Component {
 
         const inspect_control = (
             <InspectorControls>
-                <PanelBody title={ __( "Image" ) }initialOpen={ false } >
+				<p className="uagb-settings-notice">{ __( "For the common styling options please select the Parent Block of this Price List Item." ) }</p>
+                <PanelBody title={ __( "Image" ) }initialOpen={ true } >
                 <BaseControl
 						className="editor-bg-image-control"
 						label={ __( "" ) }
