@@ -17,9 +17,9 @@ function PositionClasses( attributes ) {
 		}
 	} )
 
-	if( imge_cnt > 0 ){
+	// if( imge_cnt > 0 ){
 		iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
-	}
+	// }
 
 	iconimgStyle_class += " uagb-rm__align-"+attributes.headingAlign+ " "
 

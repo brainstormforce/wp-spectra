@@ -8,14 +8,9 @@ function PositionClasses( attributes ) {
 
 	let imge_cnt = 0
 
-	const image = attributes.image
-	if( typeof image !== "undefined" && image !== null && image !=="" ){
-					imge_cnt++
-				}
-
-	if( imge_cnt > 0 ){
+	
 		iconimgStyle_class += "uagb-rm__image-position-"+attributes.imagePosition+ " "
-	}
+	
 
 	iconimgStyle_class += " uagb-rm__align-"+attributes.headingAlign+ " "
 

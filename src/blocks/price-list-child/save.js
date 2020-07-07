@@ -24,17 +24,16 @@ export default function save( props ) {
 		imageAlignment,
 		headingAlign,
 	} = props.attributes
-console.log(image);
 
 	return (
 		<Fragment>
+			<div className="uagb-rest_menu_repeater">
 			<div className={ classnames(
 					className,
 					"uagb-rest_menu__outer-wrap",
 					`uagb-block-${block_id}`
 				) }
 				>
-
 						<div className = { classnames(
 							"uagb-rest_menu__wrap",
 							...PositionClasses( props.attributes ),
@@ -61,6 +60,7 @@ console.log(image);
 							{ ( imagePosition == "right" ) && <RestMenuImage  attributes={props.attributes}  /> }
 						</div>
 						<div className="uagb-rm__separator-parent"><div className="uagb-rm__separator"></div></div>
+					</div>
 					</div>
 				
 			</div>

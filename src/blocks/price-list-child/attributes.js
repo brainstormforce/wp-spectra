@@ -22,9 +22,8 @@ const attributes = {
 		default: __("$9")
 	},
 	image: {
-		type:"string",
-		default:"",
-	},			
+		type: "object",
+	},		
 	imagePosition:{
 		type: "string",
 		default: "top"

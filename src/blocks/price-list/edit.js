@@ -695,7 +695,7 @@ class UAGBRestaurantMenu extends Component {
 							template={ getPriceListTemplate( menu_item_count, rest_menu_item_arr ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							// __experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
+							__experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
 							/>
 				
 							</div>

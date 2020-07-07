@@ -14,8 +14,6 @@ class RestMenuImage extends React.Component {
 
         if(attributes.image !== ""){
 			 image_arr = attributes.image
-		}else{
-			 image_arr = attributes.rest_menu_item_arr
 		}
         
 		if( image_arr && typeof image_arr !== "undefined"){
