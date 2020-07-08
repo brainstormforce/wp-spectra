@@ -111,11 +111,11 @@ window.addEventListener(
 			
 			for ( var button = 0; button < questionButtons.length; button++ ) {
 				
-				questionButtons[button].parentElement.addEventListener("click", function( e ) {
-					faqClick( e, this, questionButtons );
+				questionButtons[button].addEventListener("click", function( e ) {
+					faqClick( e, this.parentElement, questionButtons );
 				});
-				questionButtons[button].parentElement.addEventListener("keypress", function( e ) {
-					faqClick( e, this, questionButtons );
+				questionButtons[button].addEventListener("keypress", function( e ) {
+					faqClick( e, this.parentElement, questionButtons );
 				});
 			}
 		}
@@ -141,7 +141,7 @@ function faqClick( e, faqItem, questionButtons ) {
 		slideDown( faqItem.getElementsByClassName( 'uagb-faq-content' )[0], 500 );
 		if( 'true' === faqToggle ) {
 			for ( var buttonChild = 0; buttonChild < questionButtons.length; buttonChild++ ) {
-				buttonItem = questionButtons[buttonChild].parentElement
+				var buttonItem = questionButtons[buttonChild].parentElement
 				if ( buttonItem === faqItem ) {
 					continue;
 				}
