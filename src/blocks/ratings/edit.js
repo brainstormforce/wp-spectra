@@ -251,6 +251,8 @@ class UAGBRatingEdit extends Component {
 			highlightedStars
 		} = this.props;
 
+		console.log(this.props)
+
 		let loadTitleGoogleFonts;
 		let loadDescriptionGoogleFonts;
 		let loadContentGoogleFonts;
@@ -330,53 +332,9 @@ class UAGBRatingEdit extends Component {
 
 		}
 
-
-		const ratingGeneralSettings = () => {
+		const ratingStyleSettings = () => {
 			return (
-				<PanelBody title={ __( "General" ) } initialOpen={ true }>
-					<h2>{ __( "Image" ) }</h2>
-					<MediaUpload
-						title={ __( "Select Image" ) }
-						onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
-						allowedTypes={ [ "image" ] }
-						value={ mainimage }
-						render={ ( { open } ) => (
-							<Button isDefault onClick={ open }>
-								{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
-							</Button>
-						) }
-					/>
-					{ mainimage.url &&
-						<Button
-							className="uagb-rm-btn"
-							onClick={ () => setAttributes( { mainimage: '' } ) }
-							isLink isDestructive>
-							{ __( "Remove Image" ) }
-						</Button>
-					}
-					{ mainimage.url &&
-						<SelectControl
-							label={ __( "Size" ) }
-							options={ imageSizeOptions }
-							value={ imgSize }
-							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
-						/>
-					}
-					<h2>{ __( "Primary Heading" ) }</h2>
-						<SelectControl
-							label={ __( "Tag" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-					/>
-					<hr className="uagb-editor__separator" />
+				<PanelBody title={ __( "Style" ) } initialOpen={ true }>
 					<h2>{ __( "Colors" ) }</h2>
 					<p className="uagb-setting-label">{ __( "Title Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: titleColor }} ></span></span></p>
 					<ColorPalette
@@ -458,6 +416,56 @@ class UAGBRatingEdit extends Component {
 							lineHeightMobile = { { value: contentLineHeightMobile, label: 'contentLineHeightMobile' } }
 							lineHeightTablet= { { value: contentLineHeightTablet, label: 'contentLineHeightTablet' } }
 						/>
+				</PanelBody>
+			)
+		}
+
+
+		const ratingGeneralSettings = () => {
+			return (
+				<PanelBody title={ __( "General" ) } initialOpen={ true }>
+					<h2>{ __( "Image" ) }</h2>
+					<MediaUpload
+						title={ __( "Select Image" ) }
+						onSelect={ ( value ) => setAttributes( { mainimage: value } ) }
+						allowedTypes={ [ "image" ] }
+						value={ mainimage }
+						render={ ( { open } ) => (
+							<Button isDefault onClick={ open }>
+								{ ! mainimage.url ? __( "Select Image" ) : __( "Replace image" ) }
+							</Button>
+						) }
+					/>
+					{ mainimage.url &&
+						<Button
+							className="uagb-rm-btn"
+							onClick={ () => setAttributes( { mainimage: '' } ) }
+							isLink isDestructive>
+							{ __( "Remove Image" ) }
+						</Button>
+					}
+					{ mainimage.url &&
+						<SelectControl
+							label={ __( "Size" ) }
+							options={ imageSizeOptions }
+							value={ imgSize }
+							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
+						/>
+					}
+					<h2>{ __( "Primary Heading" ) }</h2>
+						<SelectControl
+							label={ __( "Tag" ) }
+							value={ headingTag }
+							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+					/>
 						<hr className="uagb-editor__separator" />
 					    <ToggleControl
 					    	label={ __( "Show features" ) }
@@ -493,6 +501,8 @@ class UAGBRatingEdit extends Component {
 							max={ 50 }
 							allowReset
 						/>
+						<hr className="uagb-editor__separator" />
+						<h2>{ __( "Schema" ) }</h2>
 						<TextControl
 							label={__("SKU")}
 							value={sku}
@@ -612,6 +622,7 @@ class UAGBRatingEdit extends Component {
 			<Fragment>
 				<InspectorControls>
 					{ ratingGeneralSettings() }
+					{ ratingStyleSettings() }
 				</InspectorControls>
 			<div className={ classnames(
 				className,
@@ -691,20 +702,13 @@ class UAGBRatingEdit extends Component {
 														className="uagb-star-inner-container"
 														onMouseLeave={() => setAttributes({ highlightedStars: 0 })}
 													>
-														{
-														[...Array(starCount).keys()].map((e, i) => (
-														
+														{[...Array(starCount)].map((e, i) => (
 															<div
 																key={i}
 																onMouseEnter={() => {
 																	setAttributes({ highlightedStars: i + 1 });
-																	// console.log(starCount)
-																	
-																 // console.log(e)
 																}}
 																onClick={() => {
-																	console.log(i)
-																	console.log(index)
 																	if (selectedStars % 1 === 0) {
 																		setAttributes({
 																			selectedStars: i + (selectedStars - 1 === i ? 0.5 : 1)
@@ -742,8 +746,7 @@ class UAGBRatingEdit extends Component {
 																	<EmptyStar size={starSize} />
 																)}
 															</div>
-														))
-													}
+														))}
 														</div>
 													</div>
 											</div>
@@ -756,12 +759,8 @@ class UAGBRatingEdit extends Component {
 						className="dashicons dashicons-plus-alt"
 						value={ feature_count }
 						onClick={ newCount => {
-							
 							let cloneIcons = [ ...features ]
-		
-							//if ( cloneIcons.length < newCount ) {
-								//console.log("here")
-
+	
 								const incAmount = isNaN( Math.abs( newCount - cloneIcons.length ) )
 
 								{ times( incAmount, n => {
@@ -773,10 +772,8 @@ class UAGBRatingEdit extends Component {
 								} ) }
 
 								setAttributes( { features: cloneIcons } )
-							//}
-							//console.log(isNaN(incAmount))
-							setAttributes( { feature_count: newCount } )
 							
+							setAttributes( { feature_count: newCount } )
 							} }
 						/>
 					}						
@@ -858,25 +855,45 @@ class UAGBRatingEdit extends Component {
 						unstableOnSplit={ this.splitBlock }
 						onnRemove={ () => onReplace( [] ) }
 					/>
-					<div className="uagb-product-price-value">
-					<RichText
-						tagName="h4"
-						placeholder={ __( "$65" ) }
-						value={ offerPrice }
-						className='uagb-price-value-text'
-						//onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
-						onMerge={ mergeBlocks }
-						unstableOnSplit={ this.splitBlock }
-						onnRemove={ () => onReplace( [] ) }
-					/>
-					</div>
+					{offerType === "Offer" ? (
+						
+						<div className="uagb-product-price-value">
+							<RichText
+								tagName="h4"
+								placeholder={ __( "$65" ) }
+								value={ offerPrice }
+								className='uagb-price-value-text'
+								onChange={ ( value ) => setAttributes( { offerPrice: value } ) }
+								onMerge={ mergeBlocks }
+								unstableOnSplit={ this.splitBlock }
+								onnRemove={ () => onReplace( [] ) }
+							/>
+						</div>
+						
+						) : (
+
+						<div className="uagb-product-price-value">
+							<RichText
+								tagName="h4"
+								placeholder={ __( "$69" ) }
+								value={ offerLowPrice }
+								className='uagb-price-value-text'
+								onChange={ ( value ) => setAttributes( { offerLowPrice: value } ) }
+								onMerge={ mergeBlocks }
+								unstableOnSplit={ this.splitBlock }
+								onnRemove={ () => onReplace( [] ) }
+							/>
+						</div>	
+
+						)
+					}
 					<div className="uagb-product-price-currency">
 					<RichText
 						tagName="h4"
 						placeholder={ __( "US" ) }
 						value={ offerCurrency }
 						className='uagb-price-currency-text'
-						//onChange={ ( value ) => setAttributes( { pricevalue: value } ) }
+						onChange={ ( value ) => setAttributes( { offerCurrency: value } ) }
 						onMerge={ mergeBlocks }
 						unstableOnSplit={ this.splitBlock }
 						onnRemove={ () => onReplace( [] ) }
