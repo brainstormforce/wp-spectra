@@ -869,7 +869,7 @@ class UAGBRatingEdit extends Component {
 								onnRemove={ () => onReplace( [] ) }
 							/>
 						</div>
-						
+
 						) : (
 
 						<div className="uagb-product-price-value">
@@ -947,6 +947,8 @@ export default compose(
 			// console.log(ownProps.attributes.offerExpiry)
 
 			var offers_data = {}
+			var data = {}
+			var simple_offers_data = {}
 			var json_data = {
 				"@context": "https://schema.org/",
 				"@type": "Product",
@@ -978,17 +980,24 @@ export default compose(
 		        offers_data : []
 			}
 
-			json_data.offers_data = {
-				"@type": ownProps.attributes.offerType,
-		          "offerCount": ownProps.attributes.offerCount,
-		          "lowPrice": ownProps.attributes.offerLowPrice,
-		          "highPrice": ownProps.attributes.offerHighPrice,
-		          "priceCurrency": ownProps.attributes.offerCurrency,
-		          "price": ownProps.attributes.offerPrice,
-		          "url": "https://www.ultimategutenberg.com/",
-		          "priceValidUntil": ownProps.attributes.offerExpiry,
-		          "availability": "https://schema.org/InStock"
-			}
+			if( 'Aggregate Offer' == ownProps.attributes.offerType ){
+				json_data.offers_data = {
+					"@type": ownProps.attributes.offerType,
+			        "offerCount": ownProps.attributes.offerCount,
+			        "lowPrice": ownProps.attributes.offerLowPrice,
+			        "highPrice": ownProps.attributes.offerHighPrice,
+			        "priceCurrency": ownProps.attributes.offerCurrency,
+		        }	
+			} else {
+				json_data.offers_data = {
+					"@type": ownProps.attributes.offerType,
+			        "price": ownProps.attributes.offerPrice,
+			        "url": "https://www.ultimategutenberg.com/",
+			        "priceValidUntil": ownProps.attributes.offerExpiry,
+			        "priceCurrency": ownProps.attributes.offerCurrency,
+			        "availability": "https://schema.org/InStock"
+		      	}
+	      	}
 
 			if ( ownProps.attributes.mainimage ) {
 				json_data.image = ownProps.attributes.mainimage.url;
@@ -996,7 +1005,7 @@ export default compose(
 
 			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 			
-			//console.log(json_data)
+			console.log(json_data)
 		return {
 			schemaJsonData: json_data
 		};
