@@ -357,11 +357,13 @@ class UAGBRestaurantMenu extends Component {
 			{ value: "medium", label: __( "Medium" ) },
 			{ value: "full", label: __( "Large" ) }
 		]
+		
 		const alignTop = (
 			<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
 				<Path d="M9 20h6V9H9v11zM4 4v1.5h16V4H4z" />
 			</SVG>
 		);
+
 		//Image Setting
 		const imageSettings = (
 			   <Fragment>
@@ -370,7 +372,7 @@ class UAGBRestaurantMenu extends Component {
 						<ButtonGroup className="uagb-editor_imgpos_group">
 							<IconButton
 								key={ "left" }
-								icon="editor-alignright"
+								icon="editor-alignleft"
 								label="Left"
 								onClick={ () => this.setimagePosition("left") }
 								aria-pressed = { "left" === imagePosition }
