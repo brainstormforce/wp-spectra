@@ -41,7 +41,9 @@ const {
 	TabPanel,
 	Dashicon,
 	IconButton,
-	ButtonGroup
+	ButtonGroup,
+	Path,
+	SVG
 } = wp.components
 
 
@@ -355,7 +357,11 @@ class UAGBRestaurantMenu extends Component {
 			{ value: "medium", label: __( "Medium" ) },
 			{ value: "full", label: __( "Large" ) }
 		]
-		
+		const alignTop = (
+			<SVG xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+				<Path d="M9 20h6V9H9v11zM4 4v1.5h16V4H4z" />
+			</SVG>
+		);
 		//Image Setting
 		const imageSettings = (
 			   <Fragment>
@@ -363,24 +369,24 @@ class UAGBRestaurantMenu extends Component {
 						<h2> { __( "Image Position" ) }</h2>
 						<ButtonGroup className="uagb-editor_imgpos_group">
 							<IconButton
-								key={ "top" }
-								icon="align-full-width"
-								label="Top"
-								onClick={ () => this.setimagePosition("top") }
-								aria-pressed = { "top" === imagePosition }
-								isPrimary = { "top" === imagePosition }
-								/>
-							<IconButton
 								key={ "left" }
-								icon="align-left"
+								icon="editor-alignright"
 								label="Left"
 								onClick={ () => this.setimagePosition("left") }
 								aria-pressed = { "left" === imagePosition }
 								isPrimary = { "left" === imagePosition }
 								/>
 							<IconButton
+								key={ "top" }
+								icon={alignTop}
+								label="Top"
+								onClick={ () => this.setimagePosition("top") }
+								aria-pressed = { "top" === imagePosition }
+								isPrimary = { "top" === imagePosition }
+								/>
+							<IconButton
 								key={ "right" }
-								icon="align-right"
+								icon="editor-alignright"
 								label="Right"
 								onClick={ () => this.setimagePosition("right") }
 								aria-pressed = { "right" === imagePosition }
@@ -723,7 +729,7 @@ class UAGBRestaurantMenu extends Component {
 							template={ getPriceListTemplate( menu_item_count, rest_menu_item_arr ) }
 							templateLock={ false }
 							allowedBlocks={ ALLOWED_BLOCKS }
-							__experimentalMoverDirection={ 'desktop' == stack ?'vertical' : 'horizontal' }
+							__experimentalMoverDirection={ 'horizontal' }
 							/>
 				
 							</div>

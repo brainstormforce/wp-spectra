@@ -12,3 +12,8 @@
 .block-editor-page #wpwrap .uagb-rm__separator-parent {
     margin-bottom: 10px;
 }
+.uagb-editor_imgpos_group {
+    &.components-button-group {
+        margin-bottom: 15px;
+    }
+}
