@@ -4,7 +4,7 @@
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
 import edit from "./edit"
-//import save from "./save"
+import save from "./save"
 import "./style.scss"
 import "./editor.scss"
 
@@ -30,5 +30,5 @@ registerBlockType( "uagb/ratings", {
 	},
 	attributes,
 	edit,
-	//save,
+	save,
 } )

@@ -424,6 +424,20 @@ class UAGBRatingEdit extends Component {
 		const ratingGeneralSettings = () => {
 			return (
 				<PanelBody title={ __( "General" ) } initialOpen={ true }>
+				<h2>{ __( "Primary Heading" ) }</h2>
+						<SelectControl
+							label={ __( "Tag" ) }
+							value={ headingTag }
+							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
+							options={ [
+								{ value: "h1", label: __( "H1" ) },
+								{ value: "h2", label: __( "H2" ) },
+								{ value: "h3", label: __( "H3" ) },
+								{ value: "h4", label: __( "H4" ) },
+								{ value: "h5", label: __( "H5" ) },
+								{ value: "h6", label: __( "H6" ) },
+							] }
+					/>
 					<h2>{ __( "Image" ) }</h2>
 					<MediaUpload
 						title={ __( "Select Image" ) }
@@ -452,20 +466,6 @@ class UAGBRatingEdit extends Component {
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 						/>
 					}
-					<h2>{ __( "Primary Heading" ) }</h2>
-						<SelectControl
-							label={ __( "Tag" ) }
-							value={ headingTag }
-							onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-							options={ [
-								{ value: "h1", label: __( "H1" ) },
-								{ value: "h2", label: __( "H2" ) },
-								{ value: "h3", label: __( "H3" ) },
-								{ value: "h4", label: __( "H4" ) },
-								{ value: "h5", label: __( "H5" ) },
-								{ value: "h6", label: __( "H6" ) },
-							] }
-					/>
 						<hr className="uagb-editor__separator" />
 					    <ToggleControl
 					    	label={ __( "Show features" ) }
