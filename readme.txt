@@ -161,6 +161,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.16.0.1 = 
 * Fix: Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the faq.
 
 = 1.16.0 =
 * New: WP - Search Block.
