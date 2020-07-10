@@ -168,6 +168,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
 * Improvement: FAQ Schema - Added heading options for question.
 * Improvement: Post Layout - Added an option to exclude current post.
+* Improvement: Inline Notice - Added heading options for notice title.
 * Fix: Info Box - CSS selector affecting all of Gutenberg.
 
 = 1.16.0 =

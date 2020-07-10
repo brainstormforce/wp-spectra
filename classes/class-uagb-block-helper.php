@@ -50,7 +50,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 
 			$selectors = array(
-				' h4.uagb-notice-title'         => array(
+				' .uagb-notice-title'           => array(
 					'color'            => $attr['titleColor'],
 					'background-color' => $attr['noticeColor'],
 					'padding-left'     => UAGB_Helper::get_css_value( $lPadding, 'px' ),
