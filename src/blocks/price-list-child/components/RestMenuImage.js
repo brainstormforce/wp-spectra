@@ -17,7 +17,7 @@ class RestMenuImage extends React.Component {
 		}
         
 		if( image_arr && typeof image_arr !== "undefined"){
-			const image = attributes.image ? attributes.image :image_arr["image"]
+			const image = attributes.image;
 			let url = ""
            
 			if( typeof image !== "undefined" && image !== null && image !=="" ){
