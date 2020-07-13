@@ -28,19 +28,19 @@ const deprecated = [
 				<Fragment>
 					<div className={ classnames(
 						className,
-						"uagb-rest_menu__outer-wrap"
+						"uagb-rest_menu__outer-wrap",
+						`uagb-block-${block_id}`
 					) }
-					id = { `uagb-rm-${block_id}` }
 					>
 						{ rest_menu_item_arr.map( ( test, index ) =>
-
+		
 							<div className = { classnames(
 								"uagb-rest_menu__wrap",
 								...PositionClasses( props.attributes ),
 							) } key ={ "wrap-"+index } >
 								<div className = "uagb-rm__content" key ={ "tm_content-"+index }>
 									{ (imagePosition == "top" || imagePosition == "left" ) && <RestMenuImage  attributes={props.attributes}  index_value = {index} /> }
-
+		
 									<div className ="uagb-rm__text-wrap">
 										{
 											<Fragment>
