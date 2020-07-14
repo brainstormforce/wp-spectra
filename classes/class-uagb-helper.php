@@ -412,6 +412,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 			}
 
 			switch ( $name ) {
+				case 'uagb/ratings':
+					$css += UAGB_Block_Helper::get_rating_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_rating_gfont( $blockattr );
+					break;
+
 				case 'uagb/inline-notice':
 					$css += UAGB_Block_Helper::get_inline_notice_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_inline_notice_gfont( $blockattr );

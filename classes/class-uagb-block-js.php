@@ -253,6 +253,34 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 		/**
 		 * Adds Google fonts for Inline Notice block.
 		 *
+		 * @since x.x.x
+		 * @param array $attr the blocks attr.
+		 */
+		public static function blocks_rating_gfont( $attr ) {
+
+			$title_load_google_font = isset( $attr['titleLoadGoogleFonts'] ) ? $attr['titleLoadGoogleFonts'] : '';
+			$title_font_family      = isset( $attr['titleFontFamily'] ) ? $attr['titleFontFamily'] : '';
+			$title_font_weight      = isset( $attr['titleFontWeight'] ) ? $attr['titleFontWeight'] : '';
+			$title_font_subset      = isset( $attr['titleFontSubset'] ) ? $attr['titleFontSubset'] : '';
+
+			$desc_load_google_font = isset( $attr['descLoadGoogleFonts'] ) ? $attr['descLoadGoogleFonts'] : '';
+			$desc_font_family      = isset( $attr['descFontFamily'] ) ? $attr['descFontFamily'] : '';
+			$desc_font_weight      = isset( $attr['descFontWeight'] ) ? $attr['descFontWeight'] : '';
+			$desc_font_subset      = isset( $attr['descFontSubset'] ) ? $attr['descFontSubset'] : '';
+
+			$subheadload_google_fonts = isset( $attr['contentLoadGoogleFonts'] ) ? $attr['contentLoadGoogleFonts'] : '';
+			$subheadfont_family       = isset( $attr['contentFontFamily'] ) ? $attr['contentFontFamily'] : '';
+			$subheadfont_weight       = isset( $attr['contentFontWeight'] ) ? $attr['contentFontWeight'] : '';
+			$subheadfont_subset       = isset( $attr['contentFontSubset'] ) ? $attr['contentFontSubset'] : '';
+
+			UAGB_Helper::blocks_google_font( $subheadload_google_fonts, $subheadfont_family, $subheadfont_weight, $subheadfont_subset );
+			UAGB_Helper::blocks_google_font( $title_load_google_font, $title_font_family, $title_font_weight, $title_font_subset );
+			UAGB_Helper::blocks_google_font( $desc_load_google_font, $desc_font_family, $desc_font_weight, $desc_font_subset );
+		}
+
+		/**
+		 * Adds Google fonts for Inline Notice block.
+		 *
 		 * @since 1.16.0
 		 * @param array $attr the blocks attr.
 		 */

@@ -17,6 +17,68 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 	class UAGB_Block_Helper {
 
 		/**
+		 * Get Rating block CSS
+		 *
+		 * @since x.x.x
+		 * @param array  $attr The block attributes.
+		 * @param string $id The selector ID.
+		 * @return array The Widget List.
+		 */
+		public static function get_rating_css( $attr, $id ) {
+			$defaults = UAGB_Helper::$block_list['uagb/ratings']['attributes'];
+
+			$attr = array_merge( $defaults, $attr );
+
+			$t_selectors = array();
+			$m_selectors = array();
+			$selectors   = array();
+
+
+			$selectors = array(
+
+			' h2.uagb-rating-title'     => array(
+			        'color' => $attr['titleColor'],
+			),
+
+			' .uagb-rating__wrap .uagb-rating-feature-text'     => array(
+			    'color' => $attr['titleColor'],
+			),
+
+			' .uagb-rating-desc'     => array(
+			    'color' => $attr['descColor'],
+			),
+
+			' .uagb-features .uagb-rating-feature__label' =>  array(
+			    'color' => $attr['descColor'],
+			),
+
+			' .uagb-ratings-wrap .uagb-avg-review-star .uagb-avg-rating-text'     => array(
+			    'color' => $attr['contentColor'],
+			),
+
+			' .uagb-product-price .uagb-price-text, .uagb-product-price-value .uagb-price-value-text, .uagb-product-price-currency .uagb-price-currency-text'     => array(
+			    'color' => $attr['contentColor'],
+			),
+
+			' .uagb-stock-availability .uagb-availability-text, .uagb-stock-availability-value .uagb-availability-value-text' => array(
+			     'color' => $attr['contentColor'],
+			),
+		);
+
+			$combined_selectors = array(
+				'desktop' => $selectors,
+				'tablet'  => $t_selectors,
+				'mobile'  => $m_selectors,
+			);
+
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-rating-title', $combined_selectors );
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-rating-desc', $combined_selectors );
+
+			return UAGB_Helper::generate_all_css( $combined_selectors, ' .uagb-block-' . $id );
+
+		}
+
+		/**
 		 * Get Inline Notice CSS
 		 *
 		 * @since 1.16.0

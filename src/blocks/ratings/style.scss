@@ -1,5 +1,46 @@
+.uagb-star-inner-container {
+   margin-left: 100px;
+   min-width: 100px;
+   display:flex;
+}
+
 .uagb-avg-review-star-inner-container {
     display:flex;
     padding:10px 0px 10px 0px;
 }
 
+.uagb-ratings-feature .uagb-features {
+    display: flex;
+    padding: 10px 0 10px 0;
+}
+
+
+.uagb-ratings-wrap {
+    display:inline-flex;
+    .uagb-avg-review-star {
+	    padding-left: 10px;
+	    padding-bottom: 10px;
+	    padding-right: 25px;
+	    padding-top: 10px;
+	}
+
+	.uagb-product-price {
+	    padding-left: 50px;
+	    padding-bottom: 10px;
+	    padding-right: 50px;
+	    padding-top: 10px;
+	}
+
+    .uagb-product-price-value, .uagb-product-price-currency {
+	  display:inline-flex;
+	  margin-top: -22px;
+	  margin-bottom: 0px;
+	}
+
+	.uagb-stock-availability {
+	    padding-left: 50px;
+	    padding-bottom: 10px;
+	    padding-right: 50px;
+	    padding-top: 10px;
+	}
+}

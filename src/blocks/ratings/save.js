@@ -5,6 +5,7 @@
 // Import block dependencies and components.
 import classnames from "classnames"
 import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
+import { EmptyStar, FullStar, HalfStar } from "./icons";
 
 const {
 	RichText,
@@ -36,6 +37,8 @@ export default function save( props ) {
 		offerStatus,
 		availabilitytext,
 		starCount,
+		starSize,
+		starColor,
 	} = attributes
 
 	console.log(attributes)
@@ -95,17 +98,66 @@ export default function save( props ) {
 						className='uagb-rating-feature-text'
 					/>
 				}
-					<div className="uagb-ratings-feature">
-								
-									<div className="uagb-features">
-										<RichText.Content
-											tagName="div"
-											className='uagb-rating-feature__label'
-											value={ features.features_name }
-										/>
-									</div>
-				        
-					</div>
+					{ showFeature &&
+						<div className="uagb-ratings-feature">
+							{
+								features.map( ( features, index ) => {
+							
+									return( 
+										<div
+											className={ classnames(
+											`uagb-rating-feature-${index}`,
+											"uagb-rating-feature-child__wrapper",
+											) }
+											key={ index }
+										>
+											<div className="uagb-features">
+												<RichText.Content
+													tagName="div"
+													value={ features.features_name }
+													className='uagb-rating-feature__label'
+												/>
+												<div className="uagb-features-star">
+													<div className="uagb-star-inner-container">
+														{[...Array(starCount)].map((e, i) => (
+															<div>
+																{i < (highlightedStars ? highlightedStars : selectedStars) ? (
+																	highlightedStars ? (
+																		highlightedStars - 1 === i ? (
+																			selectedStars % 1 > 0 ? (
+																				highlightedStars - selectedStars - 0.5 !== 0 ? (
+																					<HalfStar size={starSize} fillColor={starColor} />
+																				) : (
+																					<FullStar size={starSize} fillColor={starColor} />
+																				)
+																			) : highlightedStars - selectedStars !== 0 ? (
+																				<FullStar size={starSize} fillColor={starColor} />
+																			) : (
+																				<HalfStar size={starSize} fillColor={starColor} />
+																			)
+																		) : (
+																			<FullStar size={starSize} fillColor={starColor} />
+																		)
+																	) : selectedStars - i >= 1 ? (
+																		<FullStar size={starSize} fillColor={starColor} />
+																	) : (
+																		<HalfStar size={starSize} fillColor={starColor} />
+																	)
+																) : (
+																	<EmptyStar size={starSize} />
+																)}
+															</div>
+														))}
+													</div>
+												</div>
+											</div>
+										</div>		
+										)
+									} 
+								)
+							}	
+						</div>
+					}
 			</div>
 			<div class="uagb-ratings-wrap">
 				<div className="uagb-avg-review-star">
@@ -114,61 +166,86 @@ export default function save( props ) {
 						value={ featuresAvgText }
 						className='uagb-avg-rating-text'
 					/>
-				</div>
-				<div className="uagb-avg-review-star-inner-container">
-				
-					<div>
-
-					</div>
-				
-				</div>
-			</div>
-			<div className="uagb-product-price">
-				<RichText.Content
-					tagName="h4"
-					value={ pricetext }
-					className='uagb-price-text'
-				/>
-					{offerType === "Offer" ? (
-						<div className="uagb-product-price-value">
-							<RichText.Content
-								tagName="h4"
-								value={ offerPrice }
-								className='uagb-price-value-text'
-							/>
+					<div className="uagb-avg-review-star-inner-container">
+					{[...Array(starCount)].map((e, i) => (
+						<div>
+							{i < (highlightedStars ? highlightedStars : selectedStars) ? (
+								highlightedStars ? (
+									highlightedStars - 1 === i ? (
+										selectedStars % 1 > 0 ? (
+											highlightedStars - selectedStars - 0.5 !== 0 ? (
+												<HalfStar size={starSize} fillColor={starColor} />
+											) : (
+												<FullStar size={starSize} fillColor={starColor} />
+											)
+										) : highlightedStars - selectedStars !== 0 ? (
+											<FullStar size={starSize} fillColor={starColor} />
+										) : (
+											<HalfStar size={starSize} fillColor={starColor} />
+										)
+									) : (
+										<FullStar size={starSize} fillColor={starColor} />
+									)
+								) : selectedStars - i >= 1 ? (
+									<FullStar size={starSize} fillColor={starColor} />
+								) : (
+									<HalfStar size={starSize} fillColor={starColor} />
+								)
+							) : (
+								<EmptyStar size={starSize} />
+							)}
 						</div>
-					) : (
-						<div className="uagb-product-price-value">
-							<RichText.Content
-								tagName="h4"
-								value={ offerLowPrice }
-								className='uagb-price-value-text'
-							/>
-						</div>
-						)
-					}
-					<div className="uagb-product-price-currency">
-						<RichText.Content
-							tagName="h4"
-							value={ offerCurrency }
-							className='uagb-price-currency-text'
-						/>
+					))}
 					</div>
-			</div>
-			<div className="uagb-stock-availability">
-				<RichText.Content
-					tagName="h4"
-					value={ availabilitytext }
-					className='uagb-availability-text'
-				/>
-				<div className="uagb-stock-availability-value">
+				</div>
+				<div className="uagb-product-price">
 					<RichText.Content
 						tagName="h4"
-						value={ offerStatus }
-						className='uagb-availability-value-text'
+						value={ pricetext }
+						className='uagb-price-text'
 					/>
+						{offerType === "Offer" ? (
+							<div className="uagb-product-price-value">
+								<RichText.Content
+									tagName="h4"
+									value={ offerPrice }
+									className='uagb-price-value-text'
+								/>
+							</div>
+						) : (
+							<div className="uagb-product-price-value">
+								<RichText.Content
+									tagName="h4"
+									value={ offerLowPrice }
+									className='uagb-price-value-text'
+								/>
+							</div>
+							)
+						}
+						<div className="uagb-product-price-currency">
+							<RichText.Content
+								tagName="h4"
+								value={ offerCurrency }
+								className='uagb-price-currency-text'
+							/>
+						</div>
+				</div>
+				<div className="uagb-stock-availability">
+					<RichText.Content
+						tagName="h4"
+						value={ availabilitytext }
+						className='uagb-availability-text'
+					/>
+					<div className="uagb-stock-availability-value">
+						<RichText.Content
+							tagName="h4"
+							value={ offerStatus }
+							className='uagb-availability-value-text'
+						/>
+					</div>
 				</div>
 			</div>
+			
 			</div>
 	)
 }

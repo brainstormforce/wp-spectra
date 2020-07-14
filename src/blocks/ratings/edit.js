@@ -251,8 +251,6 @@ class UAGBRatingEdit extends Component {
 			highlightedStars
 		} = this.props;
 
-		console.log(this.props)
-
 		let loadTitleGoogleFonts;
 		let loadDescriptionGoogleFonts;
 		let loadContentGoogleFonts;
@@ -1005,7 +1003,7 @@ export default compose(
 
 			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 			
-			console.log(json_data)
+			// console.log(json_data)
 		return {
 			schemaJsonData: json_data
 		};
