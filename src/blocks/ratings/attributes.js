@@ -1,5 +1,5 @@
 /**
- * BLOCK: UAGB Inline Notice Block Attributes
+ * BLOCK: UAGB Rating Block Attributes
  */
   const { __ } = wp.i18n
 
@@ -16,6 +16,10 @@
  	ID: {
  		type: "string",
  		default: "",
+ 	},
+ 	schema: {
+ 		type: "string",
+ 		default: ""
  	},
 	block_id: {
 		type: "string",
@@ -197,6 +201,122 @@
 		type: "string",
 		//default: 60 * (10080 + Math.ceil(Date.now() / 60000)),
 		default: 0,
+	},
+	titleFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	titleFontWeight: {
+		type: "string",
+	},
+	titleFontSubset: {
+		type: "string",
+	},
+	titleFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	titleLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	titleFontSize: {
+		type: "number",
+	},
+	titleFontSizeTablet: {
+		type: "number",
+	},
+	titleFontSizeMobile: {
+		type: "number",
+	},
+	titleLineHeight: {
+		type: "number",
+	},
+	titleLineHeightTablet: {
+		type: "number",
+	},
+	titleLineHeightMobile: {
+		type: "number",
+	},
+	descFontFamily: {
+		type: "string",
+		default: "Default",
+	},
+	descFontWeight: {
+		type: "string",
+	},
+	descFontSubset: {
+		type: "string",
+	},
+	descFontSize: {
+		type: "number",
+	},
+	descFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	descFontSizeTablet: {
+		type: "number",
+	},
+	descFontSizeMobile: {
+		type: "number",
+	},
+	descLineHeight: {
+		type: "number",
+	},
+	descLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	descLineHeightTablet: {
+		type: "number",
+	},
+	descLineHeightMobile: {
+		type: "number",
+	},
+	titleLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	descLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	contentLoadGoogleFonts: {
+		type: "boolean",
+		default: false	
+	},
+	contentFontWeight: {
+		type: "string",
+	},
+	contentFontSubset: {
+		type: "string",
+	},
+	contentFontSize: {
+		type: "number",
+	},
+	contentFontSizeType: {
+		type: "string",
+		default: "px"
+	},
+	contentFontSizeTablet: {
+		type: "number",
+	},
+	contentFontSizeMobile: {
+		type: "number",
+	},
+	contentLineHeight: {
+		type: "number",
+	},
+	contentLineHeightType: {
+		type: "string",
+		default: "em"
+	},
+	contentLineHeightTablet: {
+		type: "number",
+	},
+	contentLineHeightMobile: {
+		type: "number",
 	},
 }
 

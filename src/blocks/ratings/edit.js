@@ -1,16 +1,14 @@
 /**
- * Inline Notice Block.
+ * BLOCK: UAGB Rating Block.
  */
 
 // Import block dependencies and components
 import classnames from 'classnames';
 import styling from "./styling"
-import renderSVG from "../../../dist/blocks/uagb-controls/renderIcon"
-import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import UAGBIcon from "../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
+import SchemaNotices from "./schema-notices"
 import times from "lodash/times"
-import map from "lodash/map"
 import { EmptyStar, FullStar, HalfStar } from "./icons";
 
 // Import all of our Text Options requirements.
@@ -44,6 +42,7 @@ const {
 	Button,
 	TextControl,
 	DatePicker,
+	ExternalLink,
 } = wp.components
 
 const {
@@ -445,6 +444,138 @@ class UAGBRatingEdit extends Component {
 			)
 		}
 
+		const ratingSchemaSettings = () => {
+			return (
+				<PanelBody title={ __( "Schema" ) } initialOpen={ true }>
+					<h2>{ __( "Schema" ) }</h2>
+					<TextControl
+						label={__("Brand")}
+						value={brand}
+						onChange={(brand) => setAttributes({ brand })}
+					/>
+					<TextControl
+						label={__("Author")}
+						value={author}
+						onChange={(author) => setAttributes({ author })}
+					/>
+					<TextControl
+						label={__("SKU")}
+						value={sku}
+						onChange={(sku) => setAttributes({ sku })}
+					/>
+					<TextControl
+						label={__("Identifier")}
+						value={identifier}
+						onChange={(identifier) => setAttributes({ identifier })}
+					/>
+					<SelectControl
+						label={__("Identifier type")}
+						value={identifierType}
+						options={[
+							"nsn",
+							"mpn",
+							"gtin8",
+							"gtin12",
+							"gtin13",
+							"gtin14",
+							"gtin",
+						].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
+						onChange={(identifierType) =>
+							setAttributes({ identifierType })
+						}
+					/>
+					<SelectControl
+						label={__("Offer Type")}
+						value={offerType}
+						options={["Offer", "Aggregate Offer"].map((a) => ({
+							label: __(a),
+							value: a.replace(" ", ""),
+						}))}
+						onChange={(offerType) => setAttributes({ offerType })}
+					/>
+					<TextControl
+						label={__("Offer Currency")}
+						value={offerCurrency}
+						onChange={(offerCurrency) => setAttributes({ offerCurrency })}
+					/>
+					{offerType == "Offer" ? (
+						<Fragment>
+							<TextControl
+								label={__("Offer Price")}
+								value={offerPrice}
+								onChange={(offerPrice) => setAttributes({ offerPrice })}
+							/>
+							<SelectControl
+								label={__("Offer Status")}
+								value={offerStatus}
+								options={[
+									"Discontinued",
+									"In Stock",
+									"In Store Only",
+									"Limited Availability",
+									"Online Only",
+									"Out Of Stock",
+									"Pre Order",
+									"Pre Sale",
+									"Sold Out",
+								].map((a) => ({
+									label: __(a),
+									value: a.replace(" ", ""),
+								}))}
+								onChange={(offerStatus) => setAttributes({ offerStatus })}
+							/>
+							<ToggleControl
+								label={__("Offer expiration")}
+								checked={offerExpiry > 0}
+								onChange={(_) =>
+									setAttributes({
+										offerExpiry: offerExpiry
+											? 0
+											: 60 * (10080 + Math.ceil(Date.now() / 60000)), //default to one week from Date.now() when enabled
+									})
+								}
+							/>
+							<ExternalLink href={ 'https://en.wikipedia.org/wiki/ISO_8601' }>
+								{ __( 'Learn more about date/time formats.' ) }
+							</ExternalLink>
+							{offerExpiry > 0 && (
+								<DatePicker
+									currentDate={offerExpiry * 1000}
+									onChange={(newDate) =>
+										setAttributes({
+											offerExpiry: Math.floor(Date.parse(newDate) / 1000),
+										})
+									}
+								/>
+							)}
+						</Fragment>
+					) : (
+						<Fragment>
+							<TextControl
+								label={__("Offer Count")}
+								value={offerCount}
+								onChange={(offerCount) => setAttributes({ offerCount })}
+							/>
+							<TextControl
+								label={__(`Lowest Available Price (${offerCurrency})`)}
+								value={offerLowPrice}
+								onChange={(offerLowPrice) =>
+									setAttributes({ offerLowPrice })
+								}
+							/>
+							<TextControl
+								label={__(`Highest Available Price (${offerCurrency})`)}
+								value={offerHighPrice}
+								onChange={(offerHighPrice) =>
+									setAttributes({ offerHighPrice })
+								}
+							/>
+						</Fragment>
+					)}
+				</PanelBody>
+			)
+		}
+
 
 		const ratingGeneralSettings = () => {
 			return (
@@ -536,137 +667,34 @@ class UAGBRatingEdit extends Component {
 							max={ 50 }
 							allowReset
 						/>
-						<hr className="uagb-editor__separator" />
-						<h2>{ __( "Schema" ) }</h2>
-						<TextControl
-							label={__("Brand")}
-							value={brand}
-							onChange={(brand) => setAttributes({ brand })}
-						/>
-						<TextControl
-							label={__("Author")}
-							value={author}
-							onChange={(author) => setAttributes({ author })}
-						/>
-						<TextControl
-							label={__("SKU")}
-							value={sku}
-							onChange={(sku) => setAttributes({ sku })}
-						/>
-						<TextControl
-							label={__("Identifier")}
-							value={identifier}
-							onChange={(identifier) => setAttributes({ identifier })}
-						/>
-						<SelectControl
-							label={__("Identifier type")}
-							value={identifierType}
-							options={[
-								"nsn",
-								"mpn",
-								"gtin8",
-								"gtin12",
-								"gtin13",
-								"gtin14",
-								"gtin",
-							].map((a) => ({ label: __(a.toUpperCase()), value: a }))}
-							onChange={(identifierType) =>
-								setAttributes({ identifierType })
-							}
-						/>
-				<SelectControl
-					label={__("Offer Type")}
-					value={offerType}
-					options={["Offer", "Aggregate Offer"].map((a) => ({
-						label: __(a),
-						value: a.replace(" ", ""),
-					}))}
-					onChange={(offerType) => setAttributes({ offerType })}
-				/>
-				<TextControl
-					label={__("Offer Currency")}
-					value={offerCurrency}
-					onChange={(offerCurrency) => setAttributes({ offerCurrency })}
-				/>
-				{offerType == "Offer" ? (
-								<Fragment>
-									<TextControl
-										label={__("Offer Price")}
-										value={offerPrice}
-										onChange={(offerPrice) => setAttributes({ offerPrice })}
-									/>
-									<SelectControl
-										label={__("Offer Status")}
-										value={offerStatus}
-										options={[
-											"Discontinued",
-											"In Stock",
-											"In Store Only",
-											"Limited Availability",
-											"Online Only",
-											"Out Of Stock",
-											"Pre Order",
-											"Pre Sale",
-											"Sold Out",
-										].map((a) => ({
-											label: __(a),
-											value: a.replace(" ", ""),
-										}))}
-										onChange={(offerStatus) => setAttributes({ offerStatus })}
-									/>
-									<ToggleControl
-										label={__("Offer expiration")}
-										checked={offerExpiry > 0}
-										onChange={(_) =>
-											setAttributes({
-												offerExpiry: offerExpiry
-													? 0
-													: 60 * (10080 + Math.ceil(Date.now() / 60000)), //default to one week from Date.now() when enabled
-											})
-										}
-									/>
-									{offerExpiry > 0 && (
-										<DatePicker
-											currentDate={offerExpiry * 1000}
-											onChange={(newDate) =>
-												setAttributes({
-													offerExpiry: Math.floor(Date.parse(newDate) / 1000),
-												})
-											}
-										/>
-									)}
-								</Fragment>
-							) : (
-								<Fragment>
-									<TextControl
-										label={__("Offer Count")}
-										value={offerCount}
-										onChange={(offerCount) => setAttributes({ offerCount })}
-									/>
-									<TextControl
-										label={__(`Lowest Available Price (${offerCurrency})`)}
-										value={offerLowPrice}
-										onChange={(offerLowPrice) =>
-											setAttributes({ offerLowPrice })
-										}
-									/>
-									<TextControl
-										label={__(`Highest Available Price (${offerCurrency})`)}
-										value={offerHighPrice}
-										onChange={(offerHighPrice) =>
-											setAttributes({ offerHighPrice })
-										}
-									/>
-								</Fragment>
-							)}
 				</PanelBody>
 			)
 		}
 		
 		return (
 			<Fragment>
+				<SchemaNotices
+					rTitle = { rTitle }
+					rContent = { rContent }
+					mainimage = { mainimage }
+					sku = { sku }
+					brand = { brand }
+					author = { author }
+					offerCount = { offerCount }
+					offerLowPrice = { offerLowPrice }
+					offerHighPrice = { offerHighPrice }
+					offerCurrency = { offerCurrency }
+					offerPrice = { offerPrice }
+					ctaLink = { ctaLink }
+					offerExpiry = { offerExpiry }
+					identifier = { identifier }
+					showFeature = { showFeature }
+					features = { features }
+					clientId = { this.props.clientId }
+				/>
 				<InspectorControls>
 					{ ratingGeneralSettings() }
+					{ ratingSchemaSettings() }
 					{ ratingStyleSettings() }
 				</InspectorControls>
 			<div className={ classnames(
@@ -981,16 +1009,7 @@ class UAGBRatingEdit extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-			console.log((ownProps.attributes.offerExpiry).toISOString()) 
-			// console.log(ownProps.attributes.offerHighPrice)
-			// console.log(ownProps.attributes.offerLowPrice)
-			// console.log(ownProps.attributes.offerType)
-			// console.log(ownProps.attributes.offerCount)
-			// console.log(ownProps.attributes.offerStatus)
-			// console.log(ownProps.attributes.offerPrice)
-			// console.log(ownProps.attributes.offerCurrency)
-			// console.log(ownProps.attributes.offerExpiry)
-
+			
 			var offers = {}
 			var data = {}
 			var simple_offers_data = {}
@@ -1050,7 +1069,6 @@ export default compose(
 
 			json_data[ownProps.attributes.identifierType] = ownProps.attributes.identifier
 			
-			// console.log(json_data)
 		return {
 			schemaJsonData: json_data
 		};

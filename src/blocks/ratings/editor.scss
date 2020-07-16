@@ -44,6 +44,33 @@
     width: 100%;
 }
 
-  .dashicons.dashicons-trash{
-      margin-left: 50px;
-  }
+.dashicons.dashicons-trash{
+  margin-left: 50px;
+}
+
+.editor-styles-wrapper [data-type="uagb/ratings"] .rating-schema-notices {
+  background-color: #FFF8E5;
+  border-left: 5px solid #FFB901;
+  padding: 8px 10px;
+  font-size: 13px;
+  line-height: 20px;
+  color: #32373c; 
+}
+
+.editor-styles-wrapper [data-type="uagb/ratings"] .rating-schema-notices ul {
+  margin: 0;
+  padding-bottom: 0; 
+}
+
+.editor-styles-wrapper [data-type="uagb/ratings"] .rating-schema-notices h6 {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit; 
+}
+
+.editor-styles-wrapper [data-type="uagb/ratings"] .rating-schema-notices p {
+  margin: 0;
+  margin-top: 15px;
+  font-size: inherit;
+  color: #555d66; 
+}

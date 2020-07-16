@@ -1,5 +1,5 @@
 /**
- * BLOCK: Inline Notice Block.
+ * BLOCK: Rating Block.
  */
 import UAGB_Block_Icons from "../../../dist/blocks/uagb-controls/block-icons"
 import attributes from "./attributes"
