@@ -35,46 +35,46 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			$selectors = array(
 
-			' .uagb-rating-title'     => array(
-			        'color' => $attr['titleColor'],
-			),
+				' .uagb-rating-title' => array(
+					'color' => $attr['titleColor'],
+				),
 
-			' .uagb-rating__wrap .uagb-rating-feature-text'     => array(
-			    'color' => $attr['titleColor'],
-			),
+				' .uagb-rating__wrap .uagb-rating-feature-text' => array(
+					'color' => $attr['titleColor'],
+				),
 
-			' .uagb-rating-desc'     => array(
-			    'color' => $attr['descColor'],
-			),
+				' .uagb-rating-desc'  => array(
+					'color' => $attr['descColor'],
+				),
 
-			' .uagb-features .uagb-rating-feature__label' =>  array(
-			    'color' => $attr['descColor'],
-			),
+				' .uagb-features .uagb-rating-feature__label' => array(
+					'color' => $attr['descColor'],
+				),
 
-			' .uagb-ratings-wrap .uagb-avg-review-star .uagb-avg-rating-text'     => array(
-			    'color' => $attr['contentColor'],
-			),
+				' .uagb-ratings-wrap .uagb-avg-review-star .uagb-avg-rating-text' => array(
+					'color' => $attr['contentColor'],
+				),
 
-			' .uagb-product-price .uagb-price-text, .uagb-product-price-value .uagb-price-value-text, .uagb-product-price-currency .uagb-price-currency-text'     => array(
-			    'color' => $attr['contentColor'],
-			),
+				' .uagb-product-price .uagb-price-text, .uagb-product-price-value .uagb-price-value-text, .uagb-product-price-currency .uagb-price-currency-text' => array(
+					'color' => $attr['contentColor'],
+				),
 
-			' .uagb-stock-availability .uagb-availability-text, .uagb-stock-availability-value .uagb-availability-value-text' => array(
-			     'color' => $attr['contentColor'],
-			),
+				' .uagb-stock-availability .uagb-availability-text, .uagb-stock-availability-value .uagb-availability-value-text' => array(
+					'color' => $attr['contentColor'],
+				),
 
-			' .uagb-ratings-wrap .uagb-stock-availability, .uagb-ratings-wrap .uagb-product-price, .uagb-ratings-wrap .uagb-avg-review-star' => array(
-				    "padding-left" => UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-					"padding-right" => UAGB_Helper::get_css_value( $attr['contentHrPadding'], "px" ),
-					"padding-top"   => UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-					"padding-bottom" => UAGB_Helper::get_css_value( $attr['contentVrPadding'], "px" ),
-			),
+				' .uagb-ratings-wrap .uagb-stock-availability, .uagb-ratings-wrap .uagb-product-price, .uagb-ratings-wrap .uagb-avg-review-star' => array(
+					'padding-left'   => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-right'  => UAGB_Helper::get_css_value( $attr['contentHrPadding'], 'px' ),
+					'padding-top'    => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+					'padding-bottom' => UAGB_Helper::get_css_value( $attr['contentVrPadding'], 'px' ),
+				),
 
-			' .uagb-features-star .uagb-star-inner-container' => array(
-			    "margin-left" => UAGB_Helper::get_css_value( $attr['star_gap'], "px" ),
-			),
+				' .uagb-features-star .uagb-star-inner-container' => array(
+					'margin-left' => UAGB_Helper::get_css_value( $attr['star_gap'], 'px' ),
+				),
 
-		);
+			);
 
 			$combined_selectors = array(
 				'desktop' => $selectors,
@@ -83,7 +83,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			);
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'title', ' .uagb-rating-title, .uagb-rating-feature-text', $combined_selectors );
-			
+
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'desc', ' .uagb-rating-desc, .uagb-rating-feature__label', $combined_selectors );
 
 			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'content', ' .uagb-avg-review-star, .uagb-price-text, .uagb-price-value-text, .uagb-price-currency-text, .uagb-availability-text, .uagb-availability-value-text', $combined_selectors );
