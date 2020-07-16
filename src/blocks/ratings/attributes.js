@@ -20,6 +20,14 @@
 	block_id: {
 		type: "string",
 	},
+	ctaLink: {
+		type: "string",
+		default: "#",
+	},
+	ctaTarget: {
+		type: "boolean",
+		default: false,
+	},
 	rTitle: {
 		type: "string",
 		default: "Ultimate Addons for Gutenberg",
@@ -133,6 +141,14 @@
 	contentColor: {
 		type: "string",
 		default: ""
+	},
+	author: {
+		type: "string",
+		default: "",
+	},
+	brand: {
+		type: "string",
+		default: "",
 	},
 	sku: {
 		type: "string",

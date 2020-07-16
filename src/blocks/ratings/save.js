@@ -39,9 +39,10 @@ export default function save( props ) {
 		starCount,
 		starSize,
 		starColor,
+		schema,
 	} = attributes
 
-	console.log(attributes)
+	//console.log(attributes)
 
 		let url_chk = ''
 		let title = ''
@@ -77,6 +78,9 @@ export default function save( props ) {
 			`uagb-block-${ block_id }`
 		) }
 		>
+		<script type="application/ld+json">
+			{ schema }
+		</script>
 			<RichText.Content
 				value={ rTitle }
 				className='uagb-rating-title'

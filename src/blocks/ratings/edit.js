@@ -68,11 +68,14 @@ class UAGBRatingEdit extends Component {
 		this.onRemoveImage = this.onRemoveImage.bind( this )
 		this.onSelectImage = this.onSelectImage.bind( this )
 		this.getImageSize  = this.getImageSize.bind( this )
+		this.toggleTarget     = this.toggleTarget.bind( this )
 	}
 
 	componentDidMount() {
 		// Assigning block_id in the attribute.
 		this.props.setAttributes( { block_id: this.props.clientId.substr( 0, 8 ) } )
+
+		this.props.setAttributes({ schema: JSON.stringify(this.props.schemaJsonData) });
 
 		// Pushing Style tag for this block css.
 		const $style = document.createElement( "style" )
@@ -81,6 +84,16 @@ class UAGBRatingEdit extends Component {
 	}
 
 	componentDidUpdate( prevProps ) {
+
+		if (
+				JSON.stringify( this.props.schemaJsonData ) !==
+				JSON.stringify( prevProps.schemaJsonData )
+			) {
+				this.props.setAttributes({
+				schema: JSON.stringify(this.props.schemaJsonData)
+			});
+		}
+
 		var element = document.getElementById( "uagb-ratings-style-" + this.props.clientId.substr( 0, 8 ) )
 
 		if( null !== element && undefined !== element ) {
@@ -154,6 +167,16 @@ class UAGBRatingEdit extends Component {
 			var new_img = this.getImageSize(media["sizes"])
 			imageSizeOptions = new_img
 		}
+	}
+
+	/**
+	 * Function Name: toggleTarget.
+	 */
+	toggleTarget() {
+		const { ctaTarget } = this.props.attributes
+		const { setAttributes } = this.props
+
+		setAttributes( { ctaTarget: ! ctaTarget } )
 	}
 
 	getImageSize(sizes) {
@@ -243,6 +266,10 @@ class UAGBRatingEdit extends Component {
 				offerPrice,
 				offerCount,
 				offerExpiry,
+				ctaLink,
+				ctaTarget,
+				author,
+				brand,
 			},
 			setAttributes,
 			className,
@@ -464,6 +491,16 @@ class UAGBRatingEdit extends Component {
 							onChange={ ( value ) => setAttributes( { imgSize: value } ) }
 						/>
 					}
+					<h2>{ __( "Link" ) }</h2>
+					<TextControl
+						value= { ctaLink }
+						onChange={ value => setAttributes( { ctaLink: value } ) }
+					/>
+					<ToggleControl
+						label={ __( "Open in new Window" ) }
+						checked={ ctaTarget }
+						onChange={ this.toggleTarget }
+					/>
 						<hr className="uagb-editor__separator" />
 					    <ToggleControl
 					    	label={ __( "Show features" ) }
@@ -501,6 +538,16 @@ class UAGBRatingEdit extends Component {
 						/>
 						<hr className="uagb-editor__separator" />
 						<h2>{ __( "Schema" ) }</h2>
+						<TextControl
+							label={__("Brand")}
+							value={brand}
+							onChange={(brand) => setAttributes({ brand })}
+						/>
+						<TextControl
+							label={__("Author")}
+							value={author}
+							onChange={(author) => setAttributes({ author })}
+						/>
 						<TextControl
 							label={__("SKU")}
 							value={sku}
@@ -934,7 +981,7 @@ class UAGBRatingEdit extends Component {
 
 export default compose(
 	withSelect( ( select, ownProps ) => {
-			// console.log(ownProps.attributes)
+			console.log((ownProps.attributes.offerExpiry).toISOString()) 
 			// console.log(ownProps.attributes.offerHighPrice)
 			// console.log(ownProps.attributes.offerLowPrice)
 			// console.log(ownProps.attributes.offerType)
@@ -944,7 +991,7 @@ export default compose(
 			// console.log(ownProps.attributes.offerCurrency)
 			// console.log(ownProps.attributes.offerExpiry)
 
-			var offers_data = {}
+			var offers = {}
 			var data = {}
 			var simple_offers_data = {}
 			var json_data = {
@@ -956,7 +1003,7 @@ export default compose(
 				"sku": ownProps.attributes.sku,
 				"brand": {
 				      "@type": "Thing",
-				      "name": "ACME"
+				      "name": ownProps.attributes.brand,
 				    },
 			    "review": {
 		          "@type": "Review",
@@ -967,7 +1014,7 @@ export default compose(
 		          },
 		          "author": {
 		            "@type": "Person",
-		            "name": "Fred Benson"
+		            "name": ownProps.attributes.author,
 		          }
 		        },
 		       "aggregateRating": {
@@ -975,11 +1022,11 @@ export default compose(
 		          "ratingValue": "4.4",
 		          "reviewCount": "89"
 		        },
-		        offers_data : []
+		        offers : []
 			}
 
 			if( 'Aggregate Offer' == ownProps.attributes.offerType ){
-				json_data.offers_data = {
+				json_data.offers = {
 					"@type": ownProps.attributes.offerType,
 			        "offerCount": ownProps.attributes.offerCount,
 			        "lowPrice": ownProps.attributes.offerLowPrice,
@@ -987,10 +1034,10 @@ export default compose(
 			        "priceCurrency": ownProps.attributes.offerCurrency,
 		        }	
 			} else {
-				json_data.offers_data = {
+				json_data.offers = {
 					"@type": ownProps.attributes.offerType,
 			        "price": ownProps.attributes.offerPrice,
-			        "url": "https://www.ultimategutenberg.com/",
+			        "url": ownProps.attributes.ctaLink,
 			        "priceValidUntil": ownProps.attributes.offerExpiry,
 			        "priceCurrency": ownProps.attributes.offerCurrency,
 			        "availability": "https://schema.org/InStock"
