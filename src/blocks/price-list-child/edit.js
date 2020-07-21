@@ -150,7 +150,7 @@ class UAGBRestaurantMenuChild extends Component {
         
 		return (
 			<Fragment>
-				{  ( ( imagePosition =="top" ) ) && <BlockControls key='controls'>
+				{   ( imagePosition =="top" )  && <BlockControls key='controls'>
 					<AlignmentToolbar
 						value={ headingAlign }
 						onChange={ ( value ) => setAttributes( { headingAlign: value } ) }
