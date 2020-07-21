@@ -1722,8 +1722,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
 						'attributes'  => array(
-							'classMigrate'    => false,
-							'childMigrate'    => false,
+							'classMigrate'          => false,
 							'block_id'              => '',
 							'headingAlign'          => 'left',
 							'descColor'             => '#333',
@@ -1793,9 +1792,11 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 					'uagb/restaurant-menu-child' => array(
 						'slug'        => '',
 						'title'       => __( 'Price List-Child', 'ultimate-addons-for-gutenberg' ),
-						'description' => __( 'This block allows you to add child block of attractive Price List.', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block allows you to add attractive Price List.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'attributes'  => array(                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    							
+						'attributes'  => array(
+							'classMigrate'     => false,
+							'childMigrate'     => false,
 							'block_id'         => '',
 							'headingAlign'     => 'left',
 							'imagePosition'    => 'top',

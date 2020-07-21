@@ -27,7 +27,12 @@ export default function save( props ) {
 
 	return (
 		<Fragment>
-			<div className="uagb-rest_menu_repeater">
+			
+			<div className={ classnames(					
+					"uagb-rest_menu_repeater",
+					...PositionClasses( props.attributes )
+				) }
+				>
 			<div className={ classnames(
 					className,
 					"uagb-rest_menu__outer-wrap",
