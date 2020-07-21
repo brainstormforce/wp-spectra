@@ -69,6 +69,7 @@ const deprecated = [
 		},
 	},
 
+	//copy from master branch
 	{
 		attributes,
 		save: function( props ) {

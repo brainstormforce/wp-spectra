@@ -30,7 +30,7 @@ export default function save( props ) {
 					`uagb-block-${block_id}`,
 					...PositionClasses( props.attributes ),
 				) }
-				>	
+				>				
 			<InnerBlocks.Content/>
 			</div>
 		</Fragment>
