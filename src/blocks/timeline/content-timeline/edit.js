@@ -5,6 +5,7 @@
 import classnames from "classnames"
 import map from "lodash/map"
 import times from "lodash/times"
+import memoize from "memize"
 import UAGBIcon from "../../../../dist/blocks/uagb-controls/UAGBIcon.json"
 import FontIconPicker from "@fonticonpicker/react-fonticonpicker"
 import contentTimelineStyle from ".././inline-styles"
@@ -40,6 +41,7 @@ const {
 	RichText,
 	BlockAlignmentToolbar,
 	PanelColorSettings,
+	InnerBlocks,
 } = wp.blockEditor
 
 const {
@@ -56,6 +58,9 @@ const {
 	TabPanel,
 	Dashicon,
 } = wp.components
+
+
+const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
 let svg_icons = Object.keys( UAGBIcon )
 
@@ -707,6 +712,13 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
+		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
+			return times( icon_block, n => [ "uagb/content-timeline-child", tm_content[n] ] )
+		} )
+
+		console.log("parents edit.js")
+		console.log(getContentTimelineTemplate( timelineItem, tm_content ))
+
 		return (
 			<Fragment>
 				{ content_control }
@@ -730,7 +742,11 @@ class UAGBcontentTimeline extends Component {
 					) }>
 						<div className = "uagb-timeline-wrapper">
 							<div className = "uagb-timeline__main">
-								{ this.get_content() }
+								<InnerBlocks
+									template={ getContentTimelineTemplate( timelineItem, tm_content ) }
+									templateLock={ false }
+									allowedBlocks={ ALLOWED_BLOCKS }	
+								/>
 								<div className = "uagb-timeline__line" >
 									<div className = "uagb-timeline__line__inner"></div>
 								</div>
@@ -853,78 +869,6 @@ class UAGBcontentTimeline extends Component {
 										<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
 											<span className = {icon_class}>{ renderSVG(icon) }</span>
 										</div>
-
-										<div className = {day_align_class} >
-											<div className="uagb-timeline__events-new">
-												<div className="uagb-timeline__events-inner-new">
-													<div className="uagb-timeline__date-hide uagb-timeline__date-inner">
-														{ displayPostDate && t_date[index].title &&
-                                                            <div className={ "uagb-timeline__inner-date-new" }>
-                                                            	{ post_date }
-                                                            </div>
-														}
-													</div>
-
-													<div className="uagb-content">
-
-														<div className="uagb-timeline__heading-text">
-															<RichText
-																tagName={ headingTag }
-																value={ post.time_heading }
-																placeholder={ __( "Write a Heading" ) }
-																className='uagb-timeline__heading'
-																onChange={ ( value ) => {
-																	var p = { "time_heading" : value,"time_desc":data_copy[index]["time_desc"] }
-																	data_copy[index] = p
-																	setAttributes( { "tm_content": data_copy } )
-																} }
-																onMerge={ mergeBlocks }
-																unstableOnSplit={
-																	insertBlocksAfter ?
-																		( before, after, ...blocks ) => {
-																			setAttributes( { content: before } )
-																			insertBlocksAfter( [
-																				...blocks,
-																				createBlock( "core/paragraph", { content: after } ),
-																			] )
-																		} :
-																		undefined
-																}
-																onRemove={ () => onReplace( [] ) }
-															/>
-														</div>
-
-														<RichText
-															tagName= "p"
-															value={ post.time_desc }
-															placeholder={ __( "Write a Description" ) }
-															className='uagb-timeline-desc-content'
-															onChange={ ( value ) => {
-																var p = { "time_heading" : data_copy[index]["time_heading"],"time_desc":value }
-																data_copy[index] = p
-																setAttributes( { "tm_content": data_copy } )
-															} }
-															onMerge={ mergeBlocks }
-															unstableOnSplit={ this.splitBlock }
-															onRemove={ () => onReplace( [] ) }
-														/>
-
-														<div className="uagb-timeline__arrow"></div>
-
-													</div>
-
-												</div>
-											</div>
-										</div>
-
-										{ display_inner_date && <div className = "uagb-timeline__date-new">
-											{ displayPostDate && t_date[index].title &&
-                                                <div className={ "uagb-timeline__date-new" }>
-                                                	{ post_date }
-                                                </div>
-											}
-										</div>
-										}
 									</div>
 								</article>
 							)

@@ -45,6 +45,14 @@ const attributes = {
 	// 	type: "array",
 	// 	default : item,
 	// },
+	time_heading:{
+		type: "string",
+		default:__( "Timeline Heading " )
+	},
+	time_desc:{
+		type: "string",
+		default:__( "This is Timeline description, you can change me anytime click here " )
+	},
 	classMigrate: {
 		type: "boolean",
 		default: false
@@ -298,10 +306,10 @@ const attributes = {
 		type : "string",
 		default : "fab fa fa-calendar-alt"
 	},
-	// t_date : {
-	// 	type: "array",
-	// 	default: date_arr,
-	// },
+	t_date : {
+		type: "string",
+		default: '1/1/2019',
+	},
 	displayPostDate:{
 		type: "boolean",
 		default: true,

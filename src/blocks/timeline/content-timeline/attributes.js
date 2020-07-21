@@ -4,10 +4,12 @@
 
 const { __ } = wp.i18n
 
+const ITEM_COUNT = 1
+
 const item = []
 const date_arr = []
 
-for (var i = 1; i <= 5; i++) {
+for (var i = 1; i <= ITEM_COUNT; i++) {
 
 	item.push(
 		{
@@ -276,7 +278,7 @@ const attributes = {
 	},
 	timelineItem :{
 		type : "number",
-		default : 5,
+		default : ITEM_COUNT,
 	},
 	tm_client_id  : {
 		type : "string",
