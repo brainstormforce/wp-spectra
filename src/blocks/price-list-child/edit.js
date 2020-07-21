@@ -3,7 +3,7 @@
  */
 import classnames from "classnames"
 
-import PositionClasses from "./classes"
+import PositionClasses from "../price-list/classes"
 import RestMenuStyle from "./inline-styles"
 import RestMenuImage from "./components/RestMenuImage"
 import Title from "./components/Title"

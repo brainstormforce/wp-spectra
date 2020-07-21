@@ -11,9 +11,8 @@ import PositionClasses from "./classes"
 import RestMenuImage from "../price-list-child/components/RestMenuImage"
 
 const { Fragment } = wp.element
-const {
-	InnerBlocks
-} = wp.blockEditor
+const {	InnerBlocks } = wp.blockEditor
+
 export default function save( props ) {
 
 	const {

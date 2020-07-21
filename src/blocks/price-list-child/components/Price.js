@@ -25,6 +25,12 @@ class Price extends React.Component {
 		// 	price = rest_arr["price"]			
 		// }
 		let price = attributes.price
+		if(price == ""){
+			const rest_arr = attributes.rest_menu_item_arr[index_value]
+			price = rest_arr["price"]
+		}else{
+			price = attributes.price
+		}
 
 		// var data_copy = [...attributes.rest_menu_item_arr]
 

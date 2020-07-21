@@ -8,7 +8,6 @@ import edit from "./edit"
 import save from "./save"
 import attributes from "./attributes"
 import "./style.scss"
-import "./editor.scss"
 
 const { __ } = wp.i18n
 

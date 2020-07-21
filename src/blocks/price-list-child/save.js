@@ -7,7 +7,7 @@ import classnames from "classnames"
 import Title from "./components/Title"
 import Price from "./components/Price"
 import Description from "./components/Description"
-import PositionClasses from "./classes"
+import PositionClasses from "../price-list/classes"
 import RestMenuImage from "./components/RestMenuImage"
 
 const { Fragment } = wp.element

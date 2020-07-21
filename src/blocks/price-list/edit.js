@@ -590,9 +590,7 @@ class UAGBRestaurantMenu extends Component {
 									lineHeightMobile = { { value: priceLineHeightMobile, label: "priceLineHeightMobile" } }
 									lineHeightTablet= { { value: priceLineHeightTablet, label: "priceLineHeightTablet" } }
 									/>
-									</PanelBody>
-									
-									
+									</PanelBody>									
 									</Fragment>
 									)
 									
@@ -665,14 +663,7 @@ class UAGBRestaurantMenu extends Component {
 													<hr className="uagb-editor__separator" />
 													{separatorSettings}
 													</PanelBody>
-													
-													
-													
-													
-													
-													
-													
-													
+
 													{ marginSettings }
 													{ colorSettings }
 													{TypographySettings}
