@@ -12,14 +12,16 @@ function AlignClass( attributes, index_val ) {
 		align_class = "uagb-timeline__widget uagb-timeline__right"
 	}else if( "center" == attributes.timelinAlignment ){
 		if( index_val % 2 == "0" ){
+			console.log(index_val)
 			align_class = "uagb-timeline__widget uagb-timeline__right"
 		}else{
+			console.log("here"+index_val)
 			align_class = "uagb-timeline__widget uagb-timeline__left"
 		}  
 	}     
         
 	return [
-		align_class        
+		align_class
 	]
 }
 

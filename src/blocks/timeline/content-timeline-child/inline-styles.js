@@ -218,22 +218,22 @@ function contentTimelineStyle( props ) {
 				"border-radius" : generateCSSUnit( borderRadius, "px" ),
 				"padding": generateCSSUnit( bgPadding, "px" ),
 			},
-			" .uagb-timeline__main .uagb-timeline__icon-new" : {
+			" .uagb-timeline__icon-new" : {
 				"color": iconColor,
 				"font-size" : generateCSSUnit( iconSize, "px" ),
 				"width": generateCSSUnit( iconSize, "px" ),
 			},
-			" .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon" : {
+			" .uagb-timeline__marker.uagb-timeline__in-view-icon" : {
 				"background" : iconBgFocus,
 				"border-color": borderFocus,
 			},
-			" .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new" : {
+			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new" : {
 				"color": iconFocus,
 			},
-			" .uagb-timeline__main .uagb-timeline__icon-new svg" : {
+			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
 				"fill": iconColor,
 			},
-			" .uagb-timeline__main .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
+			" .uagb-timeline__marker.uagb-timeline__in-view-icon .uagb-timeline__icon-new svg" : {
 				"fill": iconFocus,
 			},
 
