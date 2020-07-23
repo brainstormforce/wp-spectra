@@ -2256,6 +2256,18 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 						)
 					),
+					'uagb/forms-hidden'        => array(
+						'slug'        => '',
+						'title'       => __( 'Hidden', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Hidden field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id' => '',
+							'hidden_field_name' => 'Hidden Field Name',
+							'hidden_field_value' => '',
+
+						)
+					),
 				);
 			}
 			return self::$block_attributes;
