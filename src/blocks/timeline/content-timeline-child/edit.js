@@ -66,7 +66,7 @@ class UAGBcontentTimelineChild extends Component {
 
 			// this.splitBlock = this.splitBlock.bind( this )
 
-			// this.getTimelineicon = this.getTimelineicon.bind(this)
+			this.getTimelineicon = this.getTimelineicon.bind(this)
 
 			// this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		}
@@ -262,6 +262,7 @@ class UAGBcontentTimelineChild extends Component {
 
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
+			console.log(element)
 			if( null != element && "undefined" != typeof element ) {
 				element.innerHTML = contentTimelineChildStyle( this.props )
 			}
@@ -440,12 +441,16 @@ class UAGBcontentTimelineChild extends Component {
 
 			var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
 			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
-			// let data_copy           = [ ...tm_content ]
-			// var display_inner_date  = false
+			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
 			
 			// console.log("child edit.js")
 			// console.log(this.props.attributes)
+			if(timelinAlignment == "center"){
+				display_inner_date = true
+				content_align_class = AlignClass( this.props.attributes, 0 )
+				day_align_class = DayAlignClass( this.props.attributes, 0 )
+			}
 
 				return (
 							<Fragment>
@@ -459,7 +464,8 @@ class UAGBcontentTimelineChild extends Component {
 										controls={ [ "center", "left","right" ] }
 									/>
 								</BlockControls>
-								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  >
+								<div className = "uagb-timeline__days">
+								<article className = "uagb-timeline__field uagb-timeline__field-wrap"   id={"uagb-timeline-child-"+this.props.clientId}>
 									<div className = {content_align_class}>
 
 									<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
@@ -513,9 +519,17 @@ class UAGBcontentTimelineChild extends Component {
 									</div>
 								</div>
 								</div>	
-										
+									{ display_inner_date && <div className = "uagb-timeline__date-new">
+										{ displayPostDate && t_date &&
+                                            <div className={ "uagb-timeline__date-new" }>
+                                            	{ t_date }
+                                            </div>
+										}
 									</div>
-								</article>						
+									}
+									</div>
+								</article>	
+								</div>					
 							</Fragment>
 						)
 		}

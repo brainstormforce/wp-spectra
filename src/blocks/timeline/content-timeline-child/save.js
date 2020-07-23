@@ -29,11 +29,13 @@ export default function save( props ) {
 		date_icon,
 		stack,
 		timelineItem,
-		dateFormat
+		dateFormat,
+		time_heading,
+		time_desc,
 	} = props.attributes
 
 	/* Style for elements */
-	var front_style = contentTimelineStyle( props )
+	var front_style = contentTimelineChildStyle( props )
 
 	const hasItems = Array.isArray( tm_content ) && tm_content.length
 
@@ -41,9 +43,11 @@ export default function save( props ) {
 	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 
 	var display_inner_date = false
+	var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "
 
 	return (
-		<article className = "uagb-timeline__field uagb-timeline__field-wrap" >
+		<div className = "uagb-timeline__days">
+		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+props.clientId}>
 			<div className = { classnames(
 				...content_align_class,
 			) }>
@@ -85,8 +89,17 @@ export default function save( props ) {
 
 						</div>
 					</div>
+						{ display_inner_date && <div className = "uagb-timeline__date-new">
+							{ displayPostDate && t_date &&
+                                <div className={ "uagb-timeline__date-new" }>
+                                	{ t_date }
+                                </div>
+							}
+						</div>
+						}
 				</div>
 			</div>
 		</article>
+		</div>
 	)
 }

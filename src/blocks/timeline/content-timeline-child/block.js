@@ -7,6 +7,7 @@
  import UAGB_Block_Icons from "../../../../dist/blocks/uagb-controls/block-icons"
  //  Import CSS.
  import ".././style.scss"
+ import "./style.scss"
  // import deprecated from "./deprecated"
  //import save from "./save"
  import attributes from "./attributes"
@@ -17,8 +18,6 @@
  import DayAlignClass from ".././day-align-classes"
  const { dateI18n, __experimentalGetSettings } = wp.date
  import renderSVG from "../../../../dist/blocks/uagb-controls/renderIcon"
-
-
 
 const { __ } = wp.i18n
 

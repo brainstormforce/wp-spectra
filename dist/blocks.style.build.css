@@ -2435,6 +2435,16 @@ a.uagb-timeline__link {
  * Can include things like variables and mixins
  * that are used across the project.
 */
+.uagb-timeline__events-inner-new {
+  background-color: #eee;
+  border-radius: 2px;
+  padding: 20px; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
 /**
  * #.# Styles
  *
