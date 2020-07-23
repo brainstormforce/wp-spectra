@@ -68,7 +68,7 @@ class UAGBcontentTimelineChild extends Component {
 
 			this.getTimelineicon = this.getTimelineicon.bind(this)
 
-			// this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
+			this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
 		}
 
 		splitBlock( before, after, ...blocks ) {
