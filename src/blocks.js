@@ -40,6 +40,8 @@ import "./blocks/forms/block.js"
 import "./blocks/forms/child-blocks/name/block.js"
 import "./blocks/forms/child-blocks/email/block.js"
 import "./blocks/forms/child-blocks/hidden/block.js"
+import "./blocks/forms/child-blocks/phone/block.js"
+
 
 
 import UAGB_Block_Icons from "../dist/blocks/uagb-controls/block-icons"
