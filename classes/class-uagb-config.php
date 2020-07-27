@@ -2273,6 +2273,16 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(),
 					),
+					'uagb/forms-textarea'        => array(
+						'slug'        => '',
+						'title'       => __( 'Textarea', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Textarea field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+							'block_id'           => '',
+							'textareaName' => 'Message',
+						),
+					),
 				);
 			}
 			return self::$block_attributes;
