@@ -3,7 +3,7 @@
  */
 
 import classnames from "classnames"
-
+// import { clone, pullAt, set, assign } from "lodash";
 const { __ } = wp.i18n
 
 const {
@@ -31,6 +31,7 @@ class UAGBFormsSelectEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
+		this.state = { optionsstate: null };
 	}
 
 	componentDidMount() {
@@ -78,46 +79,13 @@ class UAGBFormsSelectEdit extends Component {
 		}
 
 		const addSelect = () => {
-			let newOption = {
-				label: "Option " + (options.length + 1)
-			};
-			console.log((newOption));
+			let newOption = "Option " + (options.length + 1);
+			
+			options.push(newOption);
+			console.log((options));
 	
-			// let new_options = clone(select);
-	
-			// new_options.push(newOption);
-	
-			// setAttributes({ options: new_options });
-			// setSelect(new_options);
-		};
-		const editView = options.map((s, index) => {
-			return (
-				<div className="uagb-form-select-option">
-					<input
-						aria-label={s}
-						onChange={e => optionChange(e, index)}
-						type="text"
-						value={s.label}
-						
-					/>					
-					<IconButton
-        				icon="trash"
-        				label="Remove"
-    				/>
-				</div>
-			);
-		});
-		const SelectView = () => {
-			return (
-				<select>
-					<option value="" disabled selected>
-						Select your option
-					</option>
-					{options.map((s, index) => {
-						return <option value={s.label}>{s.label}</option>;
-					})}
-				</select>
-			);
+			setAttributes({ options:options });
+			this.setState({optionsstate : this.state.optionsstate});
 		};
 		const optionChange = (e, index) => {
 			
@@ -128,6 +96,46 @@ class UAGBFormsSelectEdit extends Component {
 				setAttributes({ options: options });
 				console.log(options);
 		};
+		const handleDelete = index => {
+			// let new_options = clone(options);
+	
+			// let deleted_options = pullAt(options, [index]); //dosen't matter :-D
+			options.splice(index, 1);
+			// setAttributes({ options: deleted_options });
+			// setCheckboxes(new_options);
+			console.log(options);
+			this.setState({optionsstate : this.state.optionsstate});
+		};
+		const editView = options.map((s, index) => {
+			return (
+				<div className="uagb-form-select-option">
+					<input
+						aria-label={s}
+						onChange={e => optionChange(e, index)}
+						type="text"
+						value={s}
+						
+					/>					
+					<IconButton
+        				icon="trash"
+        				label="Remove" onClick={() => handleDelete(index)}
+    				/>
+				</div>
+			);
+		});
+		const SelectView = () => {
+			return (
+				<select>
+					<option value="" disabled selected>
+						Select your option
+					</option>
+					{options.map((o, index) => {
+						return <option value={o}>{o}</option>;
+					})}
+				</select>
+			);
+		};
+		
 
 		return (
 			<Fragment>
@@ -138,16 +146,22 @@ class UAGBFormsSelectEdit extends Component {
 					"uagb-forms-select-wrap",
 					`uagb-block-${ block_id }`,
 				) }>
-					{this.props.isSelected && (editView)}
+					{this.props.isSelected && (
+						<Fragment>
+							<label>Select</label>
+							
+							{editView}
+						</Fragment>
+						)}
 					{this.props.isSelected && (
 						<div className="uagb-forms-select-controls">
 								<div>
-									<Button isDefault onClick={addSelect}>{ __("+ Add Option") }</Button>									
+									<Button isDefault optionsstate={this.optionsstate} onClick={addSelect}>{ __("+ Add Option") }</Button>									
 								</div>								
 							</div>
 						)}
-					</div>
 					{!this.props.isSelected && (<SelectView/>)}
+					</div>
 			</Fragment>
 		)
 	}

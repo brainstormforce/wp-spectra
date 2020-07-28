@@ -8,11 +8,7 @@ const attributes = {
     },
     options: {
         "type": "array",
-        "default": [
-            
-                "Option 1", "Option 2"
-           
-        ]
+        "default": [ "option1"],
     },
 }
 export default attributes
