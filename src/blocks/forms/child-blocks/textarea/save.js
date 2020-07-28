@@ -5,9 +5,7 @@
 import classnames from "classnames"
 
 const { __ } = wp.i18n
-const {
-	RichText,
-} = wp.blockEditor
+const {	RichText } = wp.blockEditor
 export default function save( props ) {
 	
 	const { attributes } = props

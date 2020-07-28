@@ -22,6 +22,7 @@ class UAGBFormsHiddenEdit extends Component {
 	
 	constructor() {
 		super( ...arguments )
+		this.changeHiddenName 		= this.changeHiddenName.bind( this )
 	}
 	
 	componentDidMount() {
@@ -40,7 +41,12 @@ class UAGBFormsHiddenEdit extends Component {
 	
 	componentDidUpdate(prevProps, prevState) {
 	}
-	
+
+	changeHiddenName  (value) {
+		const { setAttributes } = this.props
+		setAttributes( { hidden_field_name: value.target.value } )
+	}
+
 	render() {
 		
 		const { attributes,setAttributes } = this.props
@@ -60,12 +66,6 @@ class UAGBFormsHiddenEdit extends Component {
 				initialOpen={ true }
 				className="uagb__url-panel-body"
 				>
-
-				<TextControl
-				label= {__( "Hidden Field Name" ) }
-				value={ hidden_field_name }
-				onChange={ ( hidden_field_name ) =>setAttributes( {hidden_field_name} ) }
-				/>
 
 				<TextControl
 				label= {__( "Value" ) }
@@ -88,9 +88,18 @@ class UAGBFormsHiddenEdit extends Component {
 					"uagb-forms-hidden-wrap",
 					`uagb-block-${ block_id }`,
 					) }>
+						{/* Edit View */}
+					{this.props.isSelected && (
+						<input type="text"  className="uagb-forms-hidden-input"  onChange={ this.changeHiddenName }  value={hidden_field_name}/>
+					)}
+						{/* Hidden Field View */}
+					{!this.props.isSelected && (
+						<Fragment>
+							<label className={`uagb-forms-hidden-label uagb-form-hidden-${hidden_field_label}` }> { __( hidden_field_name ) } </label>
+							<input type="hidden" name={hidden_field_label} className="uagb-forms-hidden-input" value={hidden_field_value} />
+						</Fragment>
+					)}
 					
-					<label className={`uagb-forms-hidden-label uagb-form-hidden-${hidden_field_label}` }> { __( hidden_field_name ) } </label>
-					<input type="hidden" className="uagb-forms-hidden-input" value={hidden_field_value} />
 					</div>
 					</Fragment>
 					)

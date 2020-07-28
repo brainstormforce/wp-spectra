@@ -23,7 +23,7 @@ export default function save( props ) {
 			"uagb-forms-hidden-wrap",
 			`uagb-block-${ block_id }`,
 		) }>			
-			<input type="hidden" className={`uagb-forms-hidden-input uagb-form-hidden-${hidden_field_label}`} value={hidden_field_value} />
+			<input type="hidden"  name={hidden_field_label} className="uagb-forms-hidden-input" value={hidden_field_value} />
 		</div>
 	)
 }
