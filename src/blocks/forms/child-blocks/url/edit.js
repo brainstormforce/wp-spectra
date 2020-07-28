@@ -12,15 +12,8 @@ const {
 } = wp.element
 
 const {
-	PanelBody,
-	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
-	ToggleControl,
-	IconButton
+	PanelBody,	
+	ToggleControl
 } = wp.components
 const {
 	InspectorControls,

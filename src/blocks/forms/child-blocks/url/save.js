@@ -15,7 +15,9 @@ export default function save( props ) {
 		urlRequired,
 		urlName
 	} = attributes
-	
+
+	var url_field_name = urlName.replace(/\s+/g, '-').toLowerCase();
+
 	return (
 		<div className={ classnames(
 			"uagb-forms-url-wrap",
@@ -27,7 +29,7 @@ export default function save( props ) {
 			className='uagb-forms-url-label'
 			
 			/>
-			<input type="url" required={ urlRequired } className="uagb-forms-url-input"/>					
+			<input type="url" name={url_field_name} required={ urlRequired } className="uagb-forms-url-input"/>					
 
 		</div>
 	)
