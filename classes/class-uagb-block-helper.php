@@ -923,11 +923,15 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/buttons-child']['attributes'];
+
 				foreach ( $attr['buttons'] as $key => $button ) {
 
 					if ( $attr['btn_count'] <= $key ) {
 						break;
 					}
+
+					$button = array_merge( $defaults, (array) $button );
 
 					$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-buttons-repeater-' . $key . '.uagb-button__wrapper' : ' .uagb-buttons-repeater';
 
@@ -1795,8 +1799,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/social-share-child']['attributes'];
+
 				foreach ( $attr['socials'] as $key => $socials ) {
 
+					$socials                        = array_merge( $defaults, (array) $socials );
 					$socials['icon_color']          = ( isset( $socials['icon_color'] ) ) ? $socials['icon_color'] : '';
 					$socials['icon_hover_color']    = ( isset( $socials['icon_hover_color'] ) ) ? $socials['icon_hover_color'] : '';
 					$socials['icon_bg_color']       = ( isset( $socials['icon_bg_color'] ) ) ? $socials['icon_bg_color'] : '';
@@ -2152,6 +2159,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 			}
 			if ( ! $attr['childMigrate'] ) {
 
+				$defaults = UAGB_Helper::$block_list['uagb/icon-list-child']['attributes'];
+
 				foreach ( $attr['icons'] as $key => $icon ) {
 
 					$wrapper = ( ! $attr['childMigrate'] ) ? ' .uagb-icon-list-repeater-' . $key . '.uagb-icon-list__wrapper' : ' .uagb-icon-list-repeater';
@@ -2175,18 +2184,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 						'line-height' => $attr['lineHeightTablet'] . $attr['lineHeightType'],
 					);
 
-					$icon['icon_color']              = ( isset( $icon['icon_color'] ) ) ? $icon['icon_color'] : '';
-					$icon['icon_hover_color']        = ( isset( $icon['icon_hover_color'] ) ) ? $icon['icon_hover_color'] : '';
-					$icon['icon_bg_color']           = ( isset( $icon['icon_bg_color'] ) ) ? $icon['icon_bg_color'] : '';
-					$icon['icon_bg_hover_color']     = ( isset( $icon['icon_bg_hover_color'] ) ) ? $icon['icon_bg_hover_color'] : '';
-					$icon['icon_border_color']       = ( isset( $icon['icon_border_color'] ) ) ? $icon['icon_border_color'] : '';
-					$icon['icon_border_hover_color'] = ( isset( $icon['icon_border_hover_color'] ) ) ? $icon['icon_border_hover_color'] : '';
-					$icon['label_color']             = ( isset( $icon['label_color'] ) ) ? $icon['label_color'] : '';
-					$icon['label_hover_color']       = ( isset( $icon['label_hover_color'] ) ) ? $icon['label_hover_color'] : '';
-
 					if ( $attr['icon_count'] <= $key ) {
 						break;
 					}
+
+					$icon = array_merge( $defaults, (array) $icon );
 
 					$child_selectors = self::get_icon_list_child_selectors( $icon, $key, $attr['childMigrate'] );
 					$selectors       = array_merge( $selectors, (array) $child_selectors );

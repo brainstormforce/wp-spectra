@@ -16,7 +16,6 @@ export default function save( props ) {
 	const { attributes, className } = props
 
 	const {
-		current_url,
 		type,
 		image_icon,
 		icon,
@@ -25,11 +24,7 @@ export default function save( props ) {
 		link,
 	} = props.attributes
 
-	let url = ""
-
-	if( null != current_url ) {
-		url = links[type]
-	}
+	let url = links[type]
 
 	let image_icon_html = ""
 

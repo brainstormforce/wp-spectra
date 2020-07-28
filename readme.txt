@@ -159,17 +159,20 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 == Changelog ==
 
-= 1.17.0 =
+= 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
-* Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
-* Improvement: New Gradient Pallete is introduced to set background.
+* Improvement: Advanced Columns - New Gradient Pallete is introduced to set background.
+* Improvement: Sections - New Gradient Pallete is introduced to set background.
+* Improvement: FAQ Schema - Added heading options for question.
+* Improvement: Post Layouts - Added an option to exclude current post.
+* Improvement: Post Layouts - Option to Display Post Content Type as Excerpt/Full-Post.
+* Improvement: Inline Notice - Added heading options for Notice title.
 * Fix: Post Grid - Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the faq.
+* Fix: Social Share - Fixed an issue with reusable block.
 * Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
 * Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
-* Improvement: FAQ Schema - Added heading options for question.
-* Improvement: Post Layout - Added an option to exclude current post.
-* Improvement: Inline Notice - Added heading options for notice title.
-* Fix: Info Box - CSS selector affecting all of Gutenberg.
+* Fix: Info Box - Fixed an issue with CSS selector.
 * Fix: Icon List - Icon Top Alignment issue.
 
 = 1.16.0 =

@@ -159,6 +159,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+<<<<<<< HEAD
 ### 1.17.0 ###
 * Improvement: Post Masonry - Added Pagination option.
 * Improvement: Option to Display Post Content Type as Excerpt/Full-Post.
@@ -171,6 +172,12 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement: Inline Notice - Added heading options for notice title.
 * Fix: Info Box - CSS selector affecting all of Gutenberg.
 * Fix: Icon List - Icon Top Alignment issue.
+=======
+### 1.16.0.1 ###
+* Fix: Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the faq.
+* Fix: Social Share - Not working with reusable block.
+>>>>>>> 8ff76061f3b75e3fb5d5a7653d2b277fce89f195
 
 ### 1.16.0 ###
 * New: WP - Search Block.
