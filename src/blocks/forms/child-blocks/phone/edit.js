@@ -13,7 +13,8 @@ const {
 
 const {
 	PanelBody,	
-	ToggleControl,	
+	ToggleControl,
+	SelectControl	
 } = wp.components
 const {
 	InspectorControls,
@@ -51,7 +52,8 @@ class UAGBFormsPhoneEdit extends Component {
         const {
 			block_id,
 			phoneRequired,
-			phoneName
+			phoneName,
+			pattern
 		} = attributes
 		
 		const phoneInspectorControls = () => {
@@ -67,10 +69,34 @@ class UAGBFormsPhoneEdit extends Component {
 						checked={ phoneRequired }
 						onChange={ ( value ) => setAttributes( { phoneRequired: ! phoneRequired } ) }
 					/>
+					<SelectControl
+					label={ __( "Pattern" ) }
+					value={ pattern }
+					options={ [
+						{ label: 'None', value: '' },
+						{ label: '123-45-678', value: '[0-9]{3}-[0-9]{2}-[0-9]{3}' },
+						{ label: '123-456-6789', value: '[0-9]{3}-[0-9]{3}-[0-9]{4}' },
+
+					] }
+					onChange={ ( pattern ) => { setAttributes( { pattern } ) } }
+					/>
 				</PanelBody>
 			)
+		}	
+		var placeholder = "";
+		if(pattern == "[0-9]{3}-[0-9]{2}-[0-9]{3}"){
+			placeholder = "123-45-678"
+		}else if(pattern == "[0-9]{3}-[0-9]{3}-[0-9]{4}"){
+			placeholder = "123-456-6789"
 		}
-
+	
+		var phone_html = "";
+		if(pattern != ""){
+			phone_html = <input type="tel" placeholder={ placeholder }  pattern={pattern} required={ phoneRequired } className="uagb-forms-phone-input"/>
+		}else{
+			phone_html =  <input type="tel"  required={ phoneRequired } className="uagb-forms-phone-input"/>
+		}
+		
 		return (
 			<Fragment>
 				<InspectorControls>
@@ -88,7 +114,7 @@ class UAGBFormsPhoneEdit extends Component {
 						className='uagb-forms-textarea-label'
 						multiline={ false }
 					/>
-					<input type="text" required={ phoneRequired } className="uagb-forms-phone-input"/>
+					{phone_html}
 				</div>
 			</Fragment>
 		)
