@@ -20,7 +20,7 @@ const {
 	Button,
 	Dashicon,
 	ToggleControl,
-	IconButton
+	
 } = wp.components
 const {
 	InspectorControls,
@@ -32,6 +32,7 @@ class UAGBFormsSelectEdit extends Component {
 	constructor() {
 		super( ...arguments )
 		this.state = { optionsstate: null };
+		
 	}
 
 	componentDidMount() {
@@ -53,14 +54,15 @@ class UAGBFormsSelectEdit extends Component {
 	
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, isSelected } = this.props
 
         const {
 			block_id,
 			selectRequired,
-			options
+			options,
+			selectName
 		} = attributes
-		
+			console.log(options);
 		const selectInspectorControls = () => {
 
 			return (
@@ -79,33 +81,31 @@ class UAGBFormsSelectEdit extends Component {
 		}
 
 		const addSelect = () => {
-			let newOption = "Option " + (options.length + 1);
+			let newOption = "Option Name";
 			
 			options.push(newOption);
 			console.log((options));
 	
 			setAttributes({ options:options });
-			this.setState({optionsstate : this.state.optionsstate});
+			this.setState({optionsstate : options});
 		};
+
 		const optionChange = (e, index) => {
-			
-			
 			options[index] =  e.target.value;
-				
-				
-				setAttributes({ options: options });
-				console.log(options);
+			setAttributes({ options: options });
+			console.log(options);
+			this.setState({optionsstate : this.state.optionsstate});
+
 		};
 		const handleDelete = index => {
-			// let new_options = clone(options);
-	
-			// let deleted_options = pullAt(options, [index]); //dosen't matter :-D
+		
 			options.splice(index, 1);
-			// setAttributes({ options: deleted_options });
-			// setCheckboxes(new_options);
+			setAttributes({ options });
+			
 			console.log(options);
 			this.setState({optionsstate : this.state.optionsstate});
 		};
+
 		const editView = options.map((s, index) => {
 			return (
 				<div className="uagb-form-select-option">
@@ -116,7 +116,8 @@ class UAGBFormsSelectEdit extends Component {
 						value={s}
 						
 					/>					
-					<IconButton
+					<Button 
+						className="uagb-form-select-option-delete"
         				icon="trash"
         				label="Remove" onClick={() => handleDelete(index)}
     				/>
@@ -130,7 +131,8 @@ class UAGBFormsSelectEdit extends Component {
 						Select your option
 					</option>
 					{options.map((o, index) => {
-						return <option value={o}>{o}</option>;
+						var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
+						return <option value={optionvalue}>{o}</option>;
 					})}
 				</select>
 			);
@@ -146,21 +148,26 @@ class UAGBFormsSelectEdit extends Component {
 					"uagb-forms-select-wrap",
 					`uagb-block-${ block_id }`,
 				) }>
-					{this.props.isSelected && (
-						<Fragment>
-							<label>Select</label>
-							
+					<RichText
+						tagName="div"
+						placeholder={ __( "Select Title" ) }
+						value={ selectName }
+						onChange={ ( value ) => setAttributes( { selectName: value } ) }
+						className='uagb-forms-select-label'
+						multiline={ false }
+					/>
+					{isSelected && (
+						<Fragment>														
 							{editView}
-						</Fragment>
-						)}
-					{this.props.isSelected && (
-						<div className="uagb-forms-select-controls">
+							<div className="uagb-forms-select-controls">
 								<div>
-									<Button isDefault optionsstate={this.optionsstate} onClick={addSelect}>{ __("+ Add Option") }</Button>									
+									<Button isSecondary onClick={addSelect}>{ __(" + Add Option ") }</Button>									
 								</div>								
 							</div>
+						</Fragment>
 						)}
-					{!this.props.isSelected && (<SelectView/>)}
+					
+					{!isSelected && (<SelectView/>)}
 					</div>
 			</Fragment>
 		)

@@ -1,14 +1,17 @@
 const attributes = {
     block_id: {
 		type: "string"
-	},
+    },
+    selectName:{
+        type: "string",
+    },
 	selectRequired : {
         type: "boolean",
         default: false
     },
     options: {
         "type": "array",
-        "default": [ "option1"],
+        "default": ["Option Name"],
     },
 }
 export default attributes
