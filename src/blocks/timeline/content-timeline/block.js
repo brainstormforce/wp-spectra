@@ -38,6 +38,42 @@ const {
 	RichText
 } = wp.blockEditor
 
+const { addFilter } = wp.hooks;
+const { Fragment } = wp.element;
+const { withSelect } = wp.data;
+const { compose, createHigherOrderComponent } = wp.compose;
+
+/**
+ * Override the default block element to add	wrapper props.
+ *
+ * @param  {Function} BlockListBlock Original component
+ * @return {Function} Wrapped component
+ */
+
+const enhance = compose(
+	
+	withSelect( ( select ) => {
+		return {
+			selected: select( 'core/block-editor' ).getSelectedBlock(),
+		};
+	} )
+);
+/**
+ * Add custom UAG attributes to selected blocks
+ *
+ * @param {Function} BlockEdit Original component.
+ * @return {string} Wrapped component.
+ */
+const withcontentTimeline = createHigherOrderComponent( ( BlockEdit ) => {
+	return enhance( ( { ...props } ) => {
+		return (
+			<Fragment>
+				<BlockEdit { ...props } />
+			</Fragment>
+		);
+	} );
+}, 'withcontentTimeline' );
+
 registerBlockType( "uagb/content-timeline", {
 
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
@@ -58,3 +94,8 @@ registerBlockType( "uagb/content-timeline", {
 	save,
 	deprecated,
 } )
+addFilter(
+	'editor.BlockEdit',
+	'uagb/content-timeline',
+	withcontentTimeline
+);

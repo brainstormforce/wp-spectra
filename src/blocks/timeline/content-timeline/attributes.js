@@ -4,7 +4,7 @@
 
 const { __ } = wp.i18n
 
-const ITEM_COUNT = 1
+const ITEM_COUNT = 4
 
 const item = []
 const date_arr = []
@@ -48,6 +48,10 @@ const attributes = {
 		default : item,
 	},
 	classMigrate: {
+		type: "boolean",
+		default: false
+	},
+	childMigrate: {
 		type: "boolean",
 		default: false
 	},

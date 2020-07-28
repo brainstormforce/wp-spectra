@@ -4,47 +4,11 @@
 
 const { __ } = wp.i18n
 
-// const item = []
-// const date_arr = []
-
-// for (var i = 1; i <= 5; i++) {
-
-// 	item.push(
-// 		{
-// 			"time_heading": __( "Timeline Heading " ) + i ,
-// 			"time_desc": __( "This is Timeline description, you can change me anytime click here " ),
-// 		}
-// 	)
-
-// 	var j = i - 1
-// 	var today = new Date( "1/1/2019" )
-// 	var dd = today.getDate()
-// 	var mm = today.getMonth()+1 //January is 0!
-// 	var yyyy = today.getFullYear()-j
-
-// 	if( dd < 10 ) {
-// 		dd = "0" + dd
-// 	}
-
-// 	if( mm < 10 ) {
-// 		mm = "0" + mm
-// 	}
-
-// 	today = mm + "/" + dd + "/" + yyyy
-// 	var p = { "title" : today }
-
-// 	date_arr.push(
-// 		{
-// 			"title": today,
-// 		}
-// 	)
-// }
-
 const attributes = {
-	// tm_content: {
-	// 	type: "array",
-	// 	default : item,
-	// },
+	counter: {
+		type : "number",
+		default : 1,
+	},
 	time_heading:{
 		type: "string",
 		default:__( "Timeline Heading " )

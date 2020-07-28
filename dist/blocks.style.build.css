@@ -1617,6 +1617,9 @@ a.uagb-timeline__link {
 .uagb-timeline__field:not(:last-child) {
   margin-bottom: 20px; }
 
+.uagb-timeline__field {
+  margin-bottom: 20px; }
+
 .uagb-timeline__center-block .uagb-timeline__widget.uagb-timeline__right,
 .uagb-timeline__right-block .uagb-timeline__widget {
   flex-direction: row-reverse; }
@@ -2447,6 +2450,9 @@ a.uagb-timeline__link {
   color: #333;
   font-size: 15px;
   width: 15px; }
+
+.uagb-timeline__field {
+  margin-bottom: 15px; }
 /**
  * #.# Common SCSS
  *

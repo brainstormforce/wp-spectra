@@ -42,12 +42,12 @@ export default function save( props ) {
 	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
 	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 
-	var display_inner_date = false
+	var display_inner_date = true
 	var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "
 
 	return (
 		<div className = "uagb-timeline__days">
-		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+props.clientId}>
+		<article className = "uagb-timeline__field uagb-timeline__field-wrap" id={"uagb-timeline-child-"+block_id}>
 			<div className = { classnames(
 				...content_align_class,
 			) }>
@@ -89,15 +89,15 @@ export default function save( props ) {
 
 						</div>
 					</div>
-						{ display_inner_date && <div className = "uagb-timeline__date-new">
-							{ displayPostDate && t_date &&
-                                <div className={ "uagb-timeline__date-new" }>
-                                	{ t_date }
-                                </div>
-							}
-						</div>
-						}
 				</div>
+				{ display_inner_date && <div className = "uagb-timeline__date-new">
+					{ displayPostDate && t_date &&
+                        <div className={ "uagb-timeline__date-new" }>
+                        	{ t_date }
+                        </div>
+					}
+				</div>
+				}
 			</div>
 		</article>
 		</div>

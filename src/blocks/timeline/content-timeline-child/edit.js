@@ -143,17 +143,6 @@ class UAGBcontentTimelineChild extends Component {
 			this.props.setAttributes( { block_id: this.props.clientId } )
 			this.props.setAttributes( { classMigrate: true } )
 
-			var id = this.props.clientId
-			window.addEventListener("load", this.timelineContent_back(id))
-			window.addEventListener("resize", this.timelineContent_back(id))
-			var time = this
-			$(".edit-post-layout__content").scroll( function(event) {
-				time.timelineContent_back(id)
-			})
-
-
-
-
 			// Pushing Style tag for this block css.
 			const $style = document.createElement( "style" )
 			$style.setAttribute( "id", "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -162,12 +151,13 @@ class UAGBcontentTimelineChild extends Component {
 
 		componentDidUpdate(){
 			var id = this.props.clientId
-			window.addEventListener("load", this.timelineContent_back(id))
-			window.addEventListener("resize", this.timelineContent_back(id))
-			var time = this
-			$(".edit-post-layout__content").scroll( function(event) {
-				time.timelineContent_back(id)
-			})
+
+			// window.addEventListener("load", this.timelineContent_back(id))
+			// window.addEventListener("resize", this.timelineContent_back(id))
+			// var time = this
+			// $(".edit-post-layout__content").scroll( function(event) {
+			// 	time.timelineContent_back(id)
+			// })
 		}	
 
 		render() {
@@ -180,7 +170,9 @@ class UAGBcontentTimelineChild extends Component {
 				insertBlocksAfter,
 				mergeBlocks,
 				onReplace,
+				count,
 				attributes: {
+					counter,
 					tm_content,
 					headingAlign,
 					separatorHeight,
@@ -259,10 +251,16 @@ class UAGBcontentTimelineChild extends Component {
 				},
 			} = this.props
 
+			
+
+			
+			var x = counter + 1  
+
+			console.log(x)
 
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
-			// console.log(element)
+
 			if( null != element && "undefined" != typeof element ) {
 				element.innerHTML = contentTimelineChildStyle( this.props )
 			}
@@ -276,8 +274,6 @@ class UAGBcontentTimelineChild extends Component {
 				renderFunc: renderSVG,
 				noSelectedPlaceholder: __( "Select Icon" )
 			}
-
-			console.log(icon_props)  
 
 			const iconControls = (
 						<PanelBody	title={ __( "Connector Color Settings" ) }	initialOpen={ true }>
@@ -338,51 +334,14 @@ class UAGBcontentTimelineChild extends Component {
 						</PanelColorSettings>
 					)
 
-				const connector_control = (
-					<InspectorControls>
-						<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
-							<FontIconPicker {...icon_props} />
-							<RangeControl
-								label={ __( "Icon Size" ) }
-								value={ iconSize }
-								onChange={ ( value ) => setAttributes( { iconSize: value } ) }
-								min={ 0 }
-								max={ 30 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Icon Background Size" ) }
-								value={ connectorBgsize }
-								onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
-								min={ 25 }
-								max={ 90 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Border Width" ) }
-								value={ borderwidth }
-								onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
-								min={ 1 }
-								max={ 10 }
-								allowReset
-							/>
-							<RangeControl
-								label={ __( "Connector Width" ) }
-								value={ separatorwidth }
-								onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
-								min={ 1 }
-								max={ 10 }
-								allowReset
-							/>
-							{ iconControls }
-						</PanelBody>
-					</InspectorControls>
-				)
-
-
 			const content_control = (
 				<InspectorControls>
 				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
+					<TextControl
+						label= { __( "Date Settings" ) }
+						value= { t_date }
+						onChange={ ( value ) => setAttributes( { t_date: value } ) }
+					/>
 					<SelectControl
 							label={ __( "Typography" ) }
 							value={ headingTag }
@@ -486,20 +445,29 @@ class UAGBcontentTimelineChild extends Component {
 			var day_align_class     = DayAlignClass( this.props.attributes, 1 ) // Get classname for day alignment.
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
-			
-			// console.log("child edit.js")
-			
+
+			const hasItems = Array.isArray( time_heading ) && time_heading.length
+			const hasDate = Array.isArray( t_date ) && t_date.length
+
+			// var counter = 0
+
+			// console.log(counter++)
+
+			// console.log(timelineItem)
+			// // console.log(tm_content)
+			// console.log(t_date)
+
 			if(timelinAlignment == "center"){
-				console.log("this.props.attributes")
+				//console.log("if loop")
 				display_inner_date = true
-				content_align_class = AlignClass( this.props.attributes, 0 )
-				day_align_class = DayAlignClass( this.props.attributes, 0 )
+				content_align_class = AlignClass( this.props.attributes, 2 )
+				day_align_class = DayAlignClass( this.props.attributes, 2 )
 			}
+			console.log(this.props.attributes)
 
 				return (
 							<Fragment>
 								{ content_control }
-								{ connector_control }
 								<BlockControls>
 									<BlockAlignmentToolbar
 										value={ align }

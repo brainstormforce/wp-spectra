@@ -59,6 +59,8 @@ const {
 	Dashicon,
 } = wp.components
 
+const { select, withSelect } = wp.data;
+
 
 const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
@@ -71,10 +73,30 @@ class UAGBcontentTimeline extends Component {
 
 		this.splitBlock = this.splitBlock.bind( this )
 
-		this.getTimelineicon = this.getTimelineicon.bind(this)
+		// this.getTimelineicon = this.getTimelineicon.bind(this)
 
 		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
+
+		this.getTimelineicon			= this.getTimelineicon.bind( this )
 	}
+
+	getTimelineicon (value) {
+			const { setAttributes } = this.props
+			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+			
+			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+				UAGBcontentTimelineChild.attributes.iconSize = value,
+				UAGBcontentTimelineChild.attributes.connectorBgsize = value,
+				UAGBcontentTimelineChild.attributes.borderwidth = value,
+				UAGBcontentTimelineChild.attributes.separatorwidth = value, 
+				UAGBcontentTimelineChild.attributes.icon = value,
+				UAGBcontentTimelineChild.attributes.separatorColor  = value,
+				UAGBcontentTimelineChild.attributes.iconColor  = value, 
+				UAGBcontentTimelineChild.attributes.separatorBg  = value, 
+				UAGBcontentTimelineChild.attributes.separatorBorder  = value
+			});
+			setAttributes( { icon: value, iconSize: value, connectorBgsize: value, borderwidth : value, separatorwidth : value, separatorColor : value, iconColor : value, separatorBg : value, separatorBorder : value } )
+		}
 
 	splitBlock( before, after, ...blocks ) {
 		const {
@@ -120,9 +142,9 @@ class UAGBcontentTimeline extends Component {
      * @param  {[type]} value [description]
      * @return {[type]}       [description]
      */
-	getTimelineicon(value) {
-		this.props.setAttributes( { icon: value } )
-	}
+	// getTimelineicon(value) {
+	// 	this.props.setAttributes( { icon: value } )
+	// }
 
 	saveDate( value, index ) {
 		const { attributes, setAttributes } = this.props
@@ -237,6 +259,8 @@ class UAGBcontentTimeline extends Component {
 			renderFunc: renderSVG,
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
+
+		console.log(this.props) 
 
 		const iconColorSettings = (
 			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
@@ -473,51 +497,7 @@ class UAGBcontentTimeline extends Component {
 
 		const content_control = (
 			<InspectorControls>
-				<PanelBody	title={ __( "General" ) }	initialOpen={ true } >
-					<RangeControl
-						label={ __( "Number of Items" ) }
-						value={ timelineItem }
-						onChange={ ( newCount ) => {
-
-							let cloneDate = [ ...t_date ]
-							let cloneContent = [ ...tm_content ]
-
-							if ( cloneDate.length < newCount ) {
-
-								const incAmount = Math.abs( newCount - cloneDate.length )
-
-								// Save date.
-								{ times( incAmount, n => {
-									cloneDate.push( {
-										title: cloneDate[ 0 ].title,
-									} )
-								} ) }
-
-								setAttributes( { t_date: cloneDate } )
-
-								//Save content
-								{ times( incAmount, n => {
-									cloneContent.push( {
-										time_heading: __( "Timeline Heading " ) + ( cloneContent.length + 1 ),
-										time_desc: cloneContent[ 0 ].time_desc,
-									} )
-								} ) }
-
-								setAttributes( { tm_content: cloneContent } )
-
-							}
-
-							setAttributes( { timelineItem: newCount } )
-
-						} }
-						min={ 1 }
-						max={ 100 }
-						allowReset
-					/>
-				</PanelBody>
-
 				{ renderSettings }
-
 				<PanelBody	title={ __( "Layout" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Orientation" ) }
@@ -577,85 +557,11 @@ class UAGBcontentTimeline extends Component {
 						allowReset
 					/>
 				</PanelBody>
-				<PanelBody title={ __( "Timeline Item" ) } initialOpen={ false } >
-					<SelectControl
-						label={ __( "Typography" ) }
-						value={ headingTag }
-						onChange={ ( value ) => setAttributes( { headingTag: value } ) }
-						options={ [
-							{ value: "h1", label: __( "H1" ) },
-							{ value: "h2", label: __( "H2" ) },
-							{ value: "h3", label: __( "H3" ) },
-							{ value: "h4", label: __( "H4" ) },
-							{ value: "h5", label: __( "H5" ) },
-							{ value: "h6", label: __( "H6" ) },
-							{ value: "p", label: __( "P" ) },
-							{ value: "span", label: __( "SPAN" ) },
-						] }
-					/>
-					<RangeControl
-						label={ __( "Rounded Corners" ) }
-						value={ borderRadius }
-						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
-						min={ 0 }
-						initialPosition={10}
-						max={ 50 }
-						allowReset
-					/>
-					<RangeControl
-						label={ __( "Padding" ) }
-						value={ bgPadding }
-						onChange={ ( value ) => setAttributes( { bgPadding: value } ) }
-						min={ 1 }
-						initialPosition={10}
-						max={ 50 }
-						allowReset
-					/>
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Heading" ) }</h2>
-					<TypographyControl
-						label={ __( "Typography" ) }
-						attributes = { this.props.attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: headLoadGoogleFonts, label: 'headLoadGoogleFonts' } }
-						fontFamily = { { value: headFontFamily, label: 'headFontFamily' } }
-						fontWeight = { { value: headFontWeight, label: 'headFontWeight' } }
-						fontSubset = { { value: headFontSubset, label: 'headFontSubset' } }
-						fontSizeType = { { value: headFontSizeType, label: 'headFontSizeType' } }
-						fontSize = { { value: headFontSize, label: 'headFontSize' } }
-						fontSizeMobile = { { value: headFontSizeMobile, label: 'headFontSizeMobile' } }
-						fontSizeTablet= { { value: headFontSizeTablet, label: 'headFontSizeTablet' } }
-						lineHeightType = { { value: headLineHeightType, label: 'headLineHeightType' } }
-						lineHeight = { { value: headLineHeight, label: 'headLineHeight' } }
-						lineHeightMobile = { { value: headLineHeightMobile, label: 'headLineHeightMobile' } }
-						lineHeightTablet= { { value: headLineHeightTablet, label: 'headLineHeightTablet' } }
-					/>
-
-					<hr className="uagb-editor__separator" />
-					<h2>{ __( "Content" ) }</h2>
-					<TypographyControl
-						label={ __( "Content Tag" ) }
-						attributes = { this.props.attributes }
-						setAttributes = { setAttributes }
-						loadGoogleFonts = { { value: subHeadLoadGoogleFonts, label: 'subHeadLoadGoogleFonts' } }
-						fontFamily = { { value: subHeadFontFamily, label: 'subHeadFontFamily' } }
-						fontWeight = { { value: subHeadFontWeight, label: 'subHeadFontWeight' } }
-						fontSubset = { { value: subHeadFontSubset, label: 'subHeadFontSubset' } }
-						fontSizeType = { { value: subHeadFontSizeType, label: 'subHeadFontSizeType' } }
-						fontSize = { { value: subHeadFontSize, label: 'subHeadFontSize' } }
-						fontSizeMobile = { { value: subHeadFontSizeMobile, label: 'subHeadFontSizeMobile' } }
-						fontSizeTablet= { { value: subHeadFontSizeTablet, label: 'subHeadFontSizeTablet' } }
-						lineHeightType = { { value: subHeadLineHeightType, label: 'subHeadLineHeightType' } }
-						lineHeight = { { value: subHeadLineHeight, label: 'subHeadLineHeight' } }
-						lineHeightMobile = { { value: subHeadLineHeightMobile, label: 'subHeadLineHeightMobile' } }
-						lineHeightTablet= { { value: subHeadLineHeightTablet, label: 'subHeadLineHeightTablet' } }
-					/>
-				</PanelBody>
 				<PanelBody title={ __( "Connector" ) } initialOpen={ false } >
 					<FontIconPicker {...icon_props} />
 					<RangeControl
-						label={ __( "Icon Size" ) }
-						value={ iconSize }
+						label={ __( "Icon Size" ) }    
+						value={ iconSize }		
 						onChange={ ( value ) => setAttributes( { iconSize: value } ) }
 						min={ 0 }
 						max={ 30 }
@@ -712,12 +618,33 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
-		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
-			return times( icon_block, n => [ "uagb/content-timeline-child", tm_content[n] ] )
-		} )
+		// const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
+		// 	return times( icon_block, n => [ 'uagb/content-timeline-child', 
+		// 		{
+		// 			iconColor:iconColor,
+		// 			iconSize:iconSize,
+		// 			iconBgFocus:iconBgFocus,
+		// 			borderFocus:borderFocus,
+		// 			iconColor:iconColor,
+		// 			timelineItem:timelineItem,
+		// 			tm_content:tm_content[n],
+		// 		}
+		// 	] )
+		// } )
 
-		console.log("parents edit.js")
-		console.log(getContentTimelineTemplate( timelineItem, tm_content ))
+		const getContentTimelineTemplate = [
+			[ 'uagb/content-timeline-child', 
+				{
+					iconColor:iconColor,
+					iconSize:iconSize,
+					iconBgFocus:iconBgFocus,
+					borderFocus:borderFocus,
+					iconColor:iconColor,
+					timelineItem:timelineItem,
+					tm_content:tm_content,
+				}
+			]
+		];
 
 		return (
 			<Fragment>
@@ -743,7 +670,7 @@ class UAGBcontentTimeline extends Component {
 						<div className = "uagb-timeline-wrapper">
 							<div className = "uagb-timeline__main">
 								<InnerBlocks
-									template={ getContentTimelineTemplate( timelineItem, tm_content ) }
+									template={ getContentTimelineTemplate }
 									templateLock={ false }
 									allowedBlocks={ ALLOWED_BLOCKS }	
 								/>
@@ -765,6 +692,7 @@ class UAGBcontentTimeline extends Component {
 		//Store client id.
 		this.props.setAttributes( { block_id: this.props.clientId } )
 		this.props.setAttributes( { classMigrate: true } )
+		this.props.setAttributes( { childMigrate : true } )
 
 		var id = this.props.clientId
 		window.addEventListener("load", this.timelineContent_back(id))
@@ -788,96 +716,6 @@ class UAGBcontentTimeline extends Component {
 		$(".edit-post-layout__content").scroll( function(event) {
 			time.timelineContent_back(id)
 		})
-	}
-
-	/* Render output at backend */
-	get_content(){
-		const { attributes, setAttributes, mergeBlocks, insertBlocksAfter, onReplace } = this.props
-
-		const{
-			headingTag,
-			timelinAlignment,
-			displayPostDate,
-			icon,
-			tm_content,
-			t_date,
-			timelineItem,
-			dateFormat
-		} = attributes
-
-		// Add CSS.
-		var element = document.getElementById( "uagb-content-timeline-style-" + this.props.clientId )
-		if( null != element && "undefined" != typeof element ) {
-			element.innerHTML = contentTimelineStyle( this.props )
-		}
-
-		const hasItems = Array.isArray( tm_content ) && tm_content.length
-		const hasDate = Array.isArray( t_date ) && t_date.length
-
-		if ( ! hasItems ) {
-
-			return (
-				<Fragment>
-					<Placeholder
-						icon="admin-post"
-						label={ __( "UAGB Content Timeline" ) }
-					>
-						{ ! Array.isArray( tm_content ) ?
-							<Spinner /> :
-							__( "No content found." )
-						}
-					</Placeholder>
-				</Fragment>
-			)
-
-		} else {
-
-			var content_align_class = AlignClass( this.props.attributes, 0 ) // Get classname for layout alignment
-			var day_align_class     = DayAlignClass( this.props.attributes, 0 ) // Get classname for day alignment.
-			let data_copy           = [ ...tm_content ]
-			var display_inner_date  = false
-
-			return (
-				<div className = "uagb-timeline__days">
-					{
-						tm_content.map( ( post, index ) => {
-
-							if ( timelineItem <= index ) {
-								return
-							}
-
-							var second_index = "uagb-"+index
-							if(timelinAlignment == "center"){
-								display_inner_date = true
-								content_align_class = AlignClass( this.props.attributes, index )
-								day_align_class = DayAlignClass( this.props.attributes, index )
-							}
-							const Tag = this.props.attributes.headingTag
-							var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
-							var post_date = t_date[index].title
-							if ( 'custom' != dateFormat ) {
-
-								post_date = dateI18n( dateFormat, t_date[index].title )
-								if( post_date === "Invalid date" ){
-									post_date = t_date[index].title
-								}
-							}
-							return (
-								<article className = "uagb-timeline__field uagb-timeline__field-wrap"  key={index}>
-									<div className = {content_align_class}>
-
-										<div className = "uagb-timeline__marker uagb-timeline__out-view-icon">
-											<span className = {icon_class}>{ renderSVG(icon) }</span>
-										</div>
-									</div>
-								</article>
-							)
-
-						})
-					}
-				</div>
-			)
-		}
 	}
 
 	/*  Js for timeline line and inner line filler*/
@@ -963,48 +801,7 @@ class UAGBcontentTimeline extends Component {
 				}
 			}
 
-			//For changing icon background color and icon color.
-			var timeline_icon_pos, timeline_card_pos
-			var elementPos, elementCardPos
-			var timeline_icon_top, timeline_card_top
-			var timeline_icon   = timeline.find(".uagb-timeline__marker"),
-				animate_border  = timeline.find(".uagb-timeline__field-wrap")
-
-			for (var i = 0; i < timeline_icon.length; i++) {
-				timeline_icon_pos = $(timeline_icon[i]).offset().top
-				timeline_card_pos = $(animate_border[i]).offset().top
-				elementPos = timeline.offset().top
-				elementCardPos = timeline.offset().top
-
-				timeline_icon_top = timeline_icon_pos - $document.scrollTop()
-				timeline_card_top = timeline_card_pos - $document.scrollTop()
-
-				if ( ( timeline_card_top ) < ( ( viewportHeightHalf ) ) ) {
-
-					animate_border[i].classList.remove("out-view")
-					animate_border[i].classList.add("in-view")
-
-				} else {
-					// Remove classes if element is below than half of viewport.
-					animate_border[i].classList.add("out-view")
-					animate_border[i].classList.remove("in-view")
-				}
-
-				if ( ( timeline_icon_top ) < ( ( viewportHeightHalf ) ) ) {
-
-					// Add classes if element is above than half of viewport.
-					timeline_icon[i].classList.remove("uagb-timeline__out-view-icon")
-					timeline_icon[i].classList.add("uagb-timeline__in-view-icon")
-
-				} else {
-
-					// Remove classes if element is below than half of viewport.
-					timeline_icon[i].classList.add("uagb-timeline__out-view-icon")
-					timeline_icon[i].classList.remove("uagb-timeline__in-view-icon")
-
-				}
-			}
-
+		
 		}
 	}
 }

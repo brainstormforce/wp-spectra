@@ -477,6 +477,11 @@ if ( ! class_exists( 'UAGB_Helper' ) ) {
 					UAGB_Block_JS::blocks_content_timeline_gfont( $blockattr );
 					break;
 
+				case 'uagb/content-timeline-child':
+					$css += UAGB_Block_Helper::get_content_timeline_child_css( $blockattr, $block_id );
+					UAGB_Block_JS::blocks_content_timeline_child_gfont( $blockattr );
+					break;
+
 				case 'uagb/restaurant-menu':
 					$css += UAGB_Block_Helper::get_restaurant_menu_css( $blockattr, $block_id );
 					UAGB_Block_JS::blocks_restaurant_menu_gfont( $blockattr );

@@ -9,7 +9,7 @@
  import ".././style.scss"
  import "./style.scss"
  // import deprecated from "./deprecated"
- //import save from "./save"
+ import save from "./save"
  import attributes from "./attributes"
  import edit from "./edit"
  import contentTimelineChildStyle from "./inline-styles"
@@ -38,5 +38,5 @@ registerBlockType( "uagb/content-timeline-child", {
 	],
 	attributes,
 	edit,
-	//save,
+	save,
 } )
