@@ -55,7 +55,6 @@ class UAGBFormsHiddenEdit extends Component {
 			block_id,
 			hidden_field_name,
 			hidden_field_value,
-			hidden_field_custom_data_attr
 		} = attributes
 		
 		const hiddenFieldSettings = () => {

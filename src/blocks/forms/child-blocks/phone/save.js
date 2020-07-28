@@ -5,14 +5,15 @@
 import classnames from "classnames"
 
 const { __ } = wp.i18n
-
+const {	RichText } = wp.blockEditor
 export default function save( props ) {
 	
 	const { attributes } = props
 
 	const {
 		block_id,
-		phoneRequired
+		phoneRequired,
+		phoneName
 	} = attributes
 	
 	return (
@@ -20,8 +21,12 @@ export default function save( props ) {
 			"uagb-forms-phone-wrap",
 			`uagb-block-${ block_id }`,
 		) }>
-				<label className="uagb-forms-phone-label"> { __( "Phone" ) } </label>
-				<input type="text" required={ phoneRequired } className="uagb-forms-phone-input"/>
+			<RichText.Content
+				tagName="label"
+				value={ phoneName }
+				className='uagb-forms-phone-label'			
+			/>
+			<input type="text" required={ phoneRequired }  className="uagb-forms-phone-input" />
 		</div>
 	)
 }

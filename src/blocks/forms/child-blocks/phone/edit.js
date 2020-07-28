@@ -12,15 +12,8 @@ const {
 } = wp.element
 
 const {
-	PanelBody,
-	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
-	Button,
-	Dashicon,
-	ToggleControl,
-	IconButton
+	PanelBody,	
+	ToggleControl,	
 } = wp.components
 const {
 	InspectorControls,
@@ -31,6 +24,7 @@ class UAGBFormsPhoneEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
+		
 	}
 
 	componentDidMount() {
@@ -56,7 +50,8 @@ class UAGBFormsPhoneEdit extends Component {
 
         const {
 			block_id,
-			phoneRequired
+			phoneRequired,
+			phoneName
 		} = attributes
 		
 		const phoneInspectorControls = () => {
@@ -85,7 +80,14 @@ class UAGBFormsPhoneEdit extends Component {
 					"uagb-forms-phone-wrap",
 					`uagb-block-${ block_id }`,
 				) }>
-					<label className="uagb-forms-phone-label"> { __( "Phone" ) } </label>
+					<RichText
+						tagName="label"
+						placeholder={ __( "Phone Name" ) }
+						value={ phoneName }
+						onChange={ ( value ) => setAttributes( { phoneName: value } ) }
+						className='uagb-forms-textarea-label'
+						multiline={ false }
+					/>
 					<input type="text" required={ phoneRequired } className="uagb-forms-phone-input"/>
 				</div>
 			</Fragment>
