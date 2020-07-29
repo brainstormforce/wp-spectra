@@ -3,7 +3,6 @@
  */
 
 import classnames from "classnames"
-// import { clone, pullAt, set, assign } from "lodash";
 const { __ } = wp.i18n
 
 const {
@@ -13,12 +12,7 @@ const {
 
 const {
 	PanelBody,
-	SelectControl,
-	RangeControl,
-	TabPanel,
-	ButtonGroup,
 	Button,
-	Dashicon,
 	ToggleControl,
 	
 } = wp.components
