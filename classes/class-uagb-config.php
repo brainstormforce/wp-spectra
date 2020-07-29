@@ -2256,6 +2256,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 						)
 					),
+					'uagb/forms-checkbox'        => array(
+						'slug'        => '',
+						'title'       => __( 'Checkbox', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Checkbox field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+						)
+					),
 				);
 			}
 			return self::$block_attributes;
