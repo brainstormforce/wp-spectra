@@ -159,6 +159,9 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.17.0 ###
+* Fix: Call To Action - Anchor does not save.
+
 ### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
 * Improvement: Advanced Columns - New Gradient Palette is introduced to set background.
