@@ -255,8 +255,9 @@ class UAGBcontentTimelineChild extends Component {
 
 			
 			var x = counter + 1  
+			console.log("child")
 
-			console.log(x)
+			console.log(this.props)
 
 			// Add CSS.
 			var element = document.getElementById( "uagb-content-timeline-child-style-" + this.props.clientId )
@@ -445,6 +446,16 @@ class UAGBcontentTimelineChild extends Component {
 			var day_align_class     = DayAlignClass( this.props.attributes, 1 ) // Get classname for day alignment.
 			var display_inner_date  = false
 			var icon_class = "uagb-timeline__icon-new uagb-timeline__out-view-icon "
+			var post_date = t_date
+			if ( 'custom' != dateFormat ) {
+
+				post_date = dateI18n( dateFormat, t_date )
+				if( post_date === "Invalid date" ){
+					post_date = t_date
+				}
+			}
+
+			console.log("child "+post_date)
 
 			const hasItems = Array.isArray( time_heading ) && time_heading.length
 			const hasDate = Array.isArray( t_date ) && t_date.length
@@ -490,7 +501,7 @@ class UAGBcontentTimelineChild extends Component {
 									<div className="uagb-timeline__events-inner-new">
 										<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
 	                                        <div className={ "uagb-timeline__inner-date-new" }>
-	                                        	{ t_date }
+	                                        	{ post_date }
 	                                        </div>
 										</div>
 										<div className="uagb-content">
@@ -535,7 +546,7 @@ class UAGBcontentTimelineChild extends Component {
 									{ display_inner_date && <div className = "uagb-timeline__date-new">
 										{ displayPostDate && t_date &&
                                             <div className={ "uagb-timeline__date-new" }>
-                                            	{ t_date }
+                                            	{ post_date }
                                             </div>
 										}
 									</div>

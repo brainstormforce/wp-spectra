@@ -44,6 +44,14 @@ export default function save( props ) {
 
 	var display_inner_date = true
 	var icon_class = "uagb-timeline__icon-new out-view-uagb-timeline__icon "
+	var post_date = t_date
+	if ( 'custom' != dateFormat ) {
+
+		post_date = dateI18n( dateFormat, t_date )
+		if( post_date === "Invalid date" ){
+			post_date = t_date
+		}
+	}
 
 	return (
 		<div className = "uagb-timeline__days">
@@ -63,7 +71,7 @@ export default function save( props ) {
 						<div className="uagb-timeline__events-inner-new" >
 							<div className="uagb-timeline__date-hide uagb-timeline__date-inner" >
                                         <div className={ "uagb-timeline__inner-date-new" }>
-                                        	{ t_date }
+                                        	{ post_date }
                                         </div>
 							</div>
 
@@ -93,7 +101,7 @@ export default function save( props ) {
 				{ display_inner_date && <div className = "uagb-timeline__date-new">
 					{ displayPostDate && t_date &&
                         <div className={ "uagb-timeline__date-new" }>
-                        	{ t_date }
+                        	{ post_date }
                         </div>
 					}
 				</div>

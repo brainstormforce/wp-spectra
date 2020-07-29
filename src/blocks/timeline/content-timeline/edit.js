@@ -93,9 +93,10 @@ class UAGBcontentTimeline extends Component {
 				UAGBcontentTimelineChild.attributes.separatorColor  = value,
 				UAGBcontentTimelineChild.attributes.iconColor  = value, 
 				UAGBcontentTimelineChild.attributes.separatorBg  = value, 
-				UAGBcontentTimelineChild.attributes.separatorBorder  = value
+				UAGBcontentTimelineChild.attributes.separatorBorder  = value,
+				UAGBcontentTimelineChild.attributes.dateFormat = value
 			});
-			setAttributes( { icon: value, iconSize: value, connectorBgsize: value, borderwidth : value, separatorwidth : value, separatorColor : value, iconColor : value, separatorBg : value, separatorBorder : value } )
+			setAttributes( { dateFormat: value, icon: value, iconSize: value, connectorBgsize: value, borderwidth : value, separatorwidth : value, separatorColor : value, iconColor : value, separatorBg : value, separatorBorder : value } )
 		}
 
 	splitBlock( before, after, ...blocks ) {
@@ -450,10 +451,7 @@ class UAGBcontentTimeline extends Component {
 						{ value: 'custom'    , label: __( 'Normal Text' ) },
 					] }
 				/>}
-
-				{ displayPostDate && times( timelineItem, n => renderDateSettings( n ) ) }
-
-				{ displayPostDate && ( timelinAlignment !=="center" ) && <RangeControl
+				{ <RangeControl
 					label={ __( "Date Bottom Spacing" ) }
 					value={ dateBottomspace }
 					onChange={ ( value ) => setAttributes( { dateBottomspace: value } ) }
@@ -463,7 +461,7 @@ class UAGBcontentTimeline extends Component {
 				/>
 				}
 
-				{ displayPostDate &&  <Fragment>
+				{ <Fragment>
 					<hr className="uagb-editor__separator" />
 					<p className="uagb-setting-label">{ __( "Date Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: dateColor }} ></span></span></p>
 					<ColorPalette
@@ -494,7 +492,7 @@ class UAGBcontentTimeline extends Component {
 				}
 			</PanelBody>
 		)
-
+		console.log(dateFormat)
 		const content_control = (
 			<InspectorControls>
 				{ renderSettings }
@@ -593,28 +591,6 @@ class UAGBcontentTimeline extends Component {
 					/>
 					{ iconControls }
 				</PanelBody>
-				<PanelColorSettings
-					title={ __( "Color Settings" ) }
-					initialOpen={ false }
-					colorSettings={ [
-						{
-							value: headingColor,
-							onChange: ( colorValue ) => setAttributes( { headingColor: colorValue } ),
-							label: __( "Heading Color" ),
-						},
-						{
-							value: subHeadingColor,
-							onChange: ( colorValue ) => setAttributes( { subHeadingColor: colorValue } ),
-							label: __( "Content Color" ),
-						},
-						{
-							value: backgroundColor,
-							onChange: ( colorValue ) => setAttributes( { backgroundColor: colorValue } ),
-							label: __( "Background Color" ),
-						},
-					] }
-				>
-				</PanelColorSettings>
 			</InspectorControls>
 		)
 
