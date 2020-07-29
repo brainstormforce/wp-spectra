@@ -26,7 +26,9 @@ const {
 	ToggleControl,
 	TabPanel,
 	Dashicon,
-	TextControl
+	TextControl,
+	RadioControl,
+	IconButton
 } = wp.components
 
 const {
@@ -243,6 +245,9 @@ class UAGBPostGrid extends Component {
 			paginationNextText,
 			inheritFromTheme,
 			postDisplaytext,
+			displayPostContentRadio,
+			excludeCurrentPost
+			
 		} = attributes
 
 		const hoverSettings = (
@@ -403,6 +408,11 @@ class UAGBPostGrid extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<RangeControl
 							label={ __( "Posts Per Page" ) }
 							value={ postsToShow }
@@ -535,15 +545,30 @@ class UAGBPostGrid extends Component {
 									{ value: "filled", label: __( "Filled" ) },
 								] }
 							/>
-							<SelectControl
-								label={ __( "Pagination Alignment" ) }
-								value={ paginationAlignment }
-								onChange={ ( value ) => setAttributes( { paginationAlignment: value } ) }
-								options={ [
-									{ value: "left", label: __( "Left" ) },
-									{ value: "center", label: __( "Center" ) },
-									{ value: "right", label: __( "Right" ) },
-								] }
+							<h2> { __( "Pagination Alignment" ) }</h2>
+							<IconButton
+								key={ "left" }
+								icon="editor-alignleft"
+								label="Left"
+								onClick={ () => setAttributes( { paginationAlignment: "left" } ) }
+								aria-pressed = { "left" === paginationAlignment }
+								isPrimary = { "left" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "center" }
+								icon="editor-aligncenter"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "center" } ) }
+								aria-pressed = { "center" === paginationAlignment }
+								isPrimary = { "center" === paginationAlignment }
+							/>
+							<IconButton
+								key={ "right" }
+								icon="editor-alignright"
+								label="Right"
+								onClick={ () => setAttributes( { paginationAlignment: "right" } ) }
+								aria-pressed = { "right" === paginationAlignment }
+								isPrimary = { "right" === paginationAlignment }
 							/>
 							<hr className="uagb-editor__separator" />
 							{ paginationLayout == "filled" && 
@@ -702,17 +727,37 @@ class UAGBPostGrid extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
-					{ displayPostExcerpt &&
-						<RangeControl
-							label={ __( "Excerpt Length" ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 1 }
-							max={ 500 }
-							allowReset
+					{ displayPostExcerpt && (
+						<RadioControl
+							label={ __( 'Show:' ) }
+							selected={ displayPostContentRadio }
+							options={ [
+								{ label: __( 'Excerpt' ), value: "excerpt" },
+								{label: __( 'Full post' ), value: "full_post",},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( {
+									displayPostContentRadio: value,
+								} )
+							}
 						/>
-					}
+					) }
+					{ displayPostExcerpt &&
+						displayPostContentRadio === 'excerpt' && (
+							<RangeControl
+								label={ __( 'Max number of words in excerpt' ) }
+								value={ excerptLength }
+								onChange={ ( value ) =>
+									setAttributes( { excerptLength: value } )
+								}
+								min={ 1 }
+								max={ 100 }
+								allowReset
+							/>
+						) }
 				</PanelBody>
+
+				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
 				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
@@ -834,7 +879,7 @@ class UAGBPostGrid extends Component {
 							}
 						</Fragment>
 					}
-				</PanelBody>
+				</PanelBody>)}
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<h2>{ __( "Title" ) }</h2>
 					<SelectControl
@@ -1056,7 +1101,7 @@ class UAGBPostGrid extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, paginationMarkup, postPagination, excludeCurrentPost } = props.attributes
 	const { setAttributes } = props
 	const { getEntityRecords } = select( "core" )
 
@@ -1101,6 +1146,10 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
+	
 	latestPostsQuery[rest_base] = categories
 	return {
 		latestPosts: getEntityRecords( "postType", postType, latestPostsQuery ),

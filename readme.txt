@@ -5,7 +5,7 @@ Tags: gutenberg, blocks, gutenberg blocks, editor, block
 Requires at least: 4.7
 Requires PHP: 5.6
 Tested up to: 5.4
-Stable tag: 1.16.0
+Stable tag: 1.16.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -40,7 +40,7 @@ These Gutenberg starter sites give you -
 
 <strong>FREE And Popular Gutenberg Compatible Theme</strong>
 
-Over 900,000+ users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
+Over 1+ million users are empowering their websites with Astra - 100% Gutenberg compatible theme! From beginners to industry experts, everyone is loving Astra for its performance and ease of use.
 
 Reasons why people love the Astra Theme
 
@@ -158,6 +158,22 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 1. /assets/screenshots/1.png
 
 == Changelog ==
+
+= 1.16.1 = 
+* Improvement: Post Masonry - Added Pagination option.
+* Improvement: Advanced Columns - New Gradient Palette is introduced to set background.
+* Improvement: Sections - New Gradient Palette is introduced to set background.
+* Improvement: FAQ Schema - Added heading options for question.
+* Improvement: Post Layouts - Added an option to exclude current post.
+* Improvement: Post Layouts - Option to Display Post Content Type as Excerpt/Full-Post.
+* Improvement: Inline Notice - Added heading options for Notice title.
+* Fix: Post Grid - Page Limit issue with less number of Posts.
+* Fix: FAQ Schema - Clicking on answer collapsed the FAQ.
+* Fix: Social Share - Fixed an issue with reusable block.
+* Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
+* Fix: Multi Buttons - Inherit from theme skipping the Font Family in few case scenarios.
+* Fix: Info Box - Fixed an issue with CSS selector.
+* Fix: Icon List - Icon Top Alignment issue.
 
 = 1.16.0 =
 * New: WP - Search Block.

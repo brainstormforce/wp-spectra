@@ -23,8 +23,12 @@ const {
 	Spinner,
 	ToggleControl,
 	TabPanel,
+	ButtonGroup,
+	Button,
 	Dashicon,
-	TextControl
+	TextControl,
+	IconButton,
+	RadioControl
 } = wp.components
 
 const {
@@ -183,6 +187,30 @@ class UAGBPostMasonry extends Component {
 			taxonomyType,
 			inheritFromTheme,
 			postDisplaytext,
+			paginationType,
+			paginationEventType,
+			buttonText,
+			paginationAlign,
+			paginationTextColor,
+			paginationTextHoverColor,
+			paginationMasonryBgColor,
+			paginationBgHoverColor,
+			paginationMasonryBorderStyle,
+			paginationMasonryBorderWidth,
+			paginationMasonryBorderRadius,
+			paginationMasonryBorderColor,
+			paginationFontSize,
+			loaderColor,
+			loaderSize,
+			paginationButtonPaddingType,
+			vpaginationButtonPaddingMobile,
+			vpaginationButtonPaddingTablet,
+			vpaginationButtonPaddingDesktop,
+			hpaginationButtonPaddingMobile,
+			hpaginationButtonPaddingTablet,
+			hpaginationButtonPaddingDesktop,
+			displayPostContentRadio,
+			excludeCurrentPost
 		} = attributes
 
 		const hoverSettings = (
@@ -311,7 +339,289 @@ class UAGBPostMasonry extends Component {
 				return categoryListOptions.push( { value : categoriesList[item]["id"], label: categoriesList[item]["name"] } )
 			} )
 		}
+		const paginationSettings = () => {
 
+			if ( 'infinite' === paginationType ) {
+				return (
+					<PanelBody
+						title={ __( "Pagination" ) }
+						initialOpen={ false }
+						className="uagb__url-panel-body"
+					>
+						{ 'button' === paginationEventType &&
+							<Fragment>
+								<h2> { __( "Alignment" ) }</h2>
+								<IconButton
+									key={ "left" }
+									icon="editor-alignleft"
+									label="Left"
+									onClick={ () => setAttributes( { paginationAlign: "left" } ) }
+									aria-pressed = { "left" === paginationAlign }
+									isPrimary = { "left" === paginationAlign }
+								/>
+								<IconButton
+									key={ "center" }
+									icon="editor-aligncenter"
+									label="Right"
+									onClick={ () => setAttributes( { paginationAlign: "center" } ) }
+									aria-pressed = { "center" === paginationAlign }
+									isPrimary = { "center" === paginationAlign }
+								/>
+								<IconButton
+									key={ "right" }
+									icon="editor-alignright"
+									label="Right"
+									onClick={ () => setAttributes( { paginationAlign: "right" } ) }
+									aria-pressed = { "right" === paginationAlign }
+									isPrimary = { "right" === paginationAlign }
+								/>
+								<h2> { __("Font Size (px) ") } </h2>
+								<RangeControl
+									value={ paginationFontSize }
+									onChange={ ( value ) => setAttributes( { paginationFontSize: value } ) }
+									min={ 0 }
+									max={ 100 }
+									allowReset
+								/>
+								<TabPanel className="uagb-size-type-field-tabs uagb-size-type-field__common-tabs uagb-inline-margin" activeClass="active-tab"
+									tabs={ [
+										{
+											name: "desktop",
+											title: <Dashicon icon="desktop" />,
+											className: "uagb-desktop-tab uagb-responsive-tabs",
+										},
+										{
+											name: "tablet",
+											title: <Dashicon icon="tablet" />,
+											className: "uagb-tablet-tab uagb-responsive-tabs",
+										},
+										{
+											name: "mobile",
+											title: <Dashicon icon="smartphone" />,
+											className: "uagb-mobile-tab uagb-responsive-tabs",
+										},
+									] }>
+									{
+										( tab ) => {
+											let tabout
+
+											if ( "mobile" === tab.name ) {
+												tabout = (
+													<Fragment>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
+															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
+														</ButtonGroup>
+														<h2>{ __( "Padding" ) }</h2>
+														<RangeControl
+															label={ UAGB_Block_Icons.vertical_spacing }
+															className={ "uagb-margin-control" }
+															value={ vpaginationButtonPaddingMobile }
+															onChange={ ( value ) => setAttributes( { vpaginationButtonPaddingMobile: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+														<RangeControl
+															label={ UAGB_Block_Icons.horizontal_spacing }
+															className={ "uagb-margin-control" }
+															value={ hpaginationButtonPaddingMobile }
+															onChange={ ( value ) => setAttributes( { hpaginationButtonPaddingMobile: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+													</Fragment>
+												)
+											} else if ( "tablet" === tab.name ) {
+												tabout = (
+													<Fragment>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
+															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
+														</ButtonGroup>
+														<h2>{ __( "Padding" ) }</h2>
+														<RangeControl
+															label={ UAGB_Block_Icons.vertical_spacing }
+															className={ "uagb-margin-control" }
+															value={ vpaginationButtonPaddingTablet }
+															onChange={ ( value ) => setAttributes( { vpaginationButtonPaddingTablet: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+														<RangeControl
+															label={ UAGB_Block_Icons.horizontal_spacing }
+															className={ "uagb-margin-control" }
+															value={ hpaginationButtonPaddingTablet }
+															onChange={ ( value ) => setAttributes( { hpaginationButtonPaddingTablet: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+													</Fragment>
+												)
+											} else {
+												tabout = (
+													<Fragment>
+														<ButtonGroup className="uagb-size-type-field" aria-label={ __( "Size Type" ) }>
+															<Button key={ "px" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "px" } aria-pressed={ paginationButtonPaddingType === "px" } onClick={ () => setAttributes( { paginationButtonPaddingType: "px" } ) }>{ "px" }</Button>
+															<Button key={ "%" } className="uagb-size-btn" isSmall isPrimary={ paginationButtonPaddingType === "%" } aria-pressed={ paginationButtonPaddingType === "%" } onClick={ () => setAttributes( { paginationButtonPaddingType: "%" } ) }>{ "%" }</Button>
+														</ButtonGroup>
+														<h2>{ __( "Padding" ) }</h2>
+														<RangeControl
+															label={ UAGB_Block_Icons.vertical_spacing }
+															className={ "uagb-margin-control" }
+															value={ vpaginationButtonPaddingDesktop }
+															onChange={ ( value ) => setAttributes( { vpaginationButtonPaddingDesktop: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+														<RangeControl
+															label={ UAGB_Block_Icons.horizontal_spacing }
+															className={ "uagb-margin-control" }
+															value={ hpaginationButtonPaddingDesktop }
+															onChange={ ( value ) => setAttributes( { hpaginationButtonPaddingDesktop: value } ) }
+															min={ 0 }
+															max={ 100 }
+															allowReset
+														/>
+													</Fragment>
+												)
+											}
+
+											return <div>{ tabout }</div>
+										}
+									}
+								</TabPanel>
+								<TabPanel className="uagb-inspect-tabs uagb-inspect-tabs-col-2"
+									activeClass="active-tab"
+									tabs={ [
+										{
+											name: "normal",
+											title: __( "Normal" ),
+											className: "uagb-normal-tab",
+										},
+										{
+											name: "hover",
+											title: __( "Hover" ),
+											className: "uagb-hover-tab",
+										},
+									] }>
+									{
+										( tabName ) => {
+											
+											if( "normal" === tabName.name ) {
+												
+												return (
+													<Fragment>
+														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationTextColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationTextColor: colorValue } ) }
+															allowReset
+														/>
+														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBgColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationMasonryBgColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationMasonryBgColor: colorValue } ) }
+															allowReset
+														/>
+													</Fragment>
+												)
+											} else {
+												return (
+													<Fragment>
+														<p className="uagb-setting-label">{ __( "Text Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationTextHoverColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationTextHoverColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationTextHoverColor: colorValue } ) }
+															allowReset
+														/>
+														
+														<p className="uagb-setting-label">{ __( "Background Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationBgHoverColor }} ></span></span></p>
+														<ColorPalette
+															value={ paginationBgHoverColor }
+															onChange={ ( colorValue ) => setAttributes( { paginationBgHoverColor: colorValue } ) }
+															allowReset
+														/>
+													</Fragment>
+												)
+											}
+											
+										}
+									}
+								</TabPanel>
+								<hr className="uagb-editor__separator" />
+								<h2> { __( "Border" ) } </h2>
+								<SelectControl
+									label={ __( "Style" ) }
+									value={ paginationMasonryBorderStyle }
+									options={ [
+										{ value: "none", label: __( "None" ) },
+										{ value: "solid", label: __( "Solid" ) },
+										{ value: "dotted", label: __( "Dotted" ) },
+										{ value: "dashed", label: __( "Dashed" ) },
+										{ value: "double", label: __( "Double" ) },
+									] }
+									onChange={ value => {
+										setAttributes( { paginationMasonryBorderStyle: value } )
+									} }
+								/>
+								{ "none" !== paginationMasonryBorderStyle &&
+									<Fragment>
+										<RangeControl
+											label={ __( "Thickness (px)" ) }
+											value={ paginationMasonryBorderWidth }
+											onChange={ value => {
+												setAttributes( { paginationMasonryBorderWidth: value } )
+											} }
+											min={ 0 }
+											max={ 20 }
+										/>
+										<RangeControl
+											label={ __( "Rounded Corners (px)" ) }
+											value={ paginationMasonryBorderRadius }
+											onChange={ value => {
+												setAttributes( { paginationMasonryBorderRadius: value } )
+											} }
+											min={ 0 }
+											max={ 50 }
+										/>
+										<p className="uagb-setting-label">{ __( "Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: paginationMasonryBorderColor }} ></span></span></p>
+										<ColorPalette
+											value={ paginationMasonryBorderColor }
+											onChange={ ( value ) => setAttributes( { paginationMasonryBorderColor: value } ) }
+											allowReset
+										/>
+									</Fragment>
+								}
+							</Fragment>
+						}
+						{ 'scroll' === paginationEventType &&
+							<Fragment>
+								<p className="uagb-setting-label">{ __( " Loader Color" ) }<span className="components-base-control__label"><span className="component-color-indicator" style={{ backgroundColor: loaderColor }} ></span></span></p>
+								<ColorPalette
+									value={ loaderColor }
+									onChange={ ( value ) => setAttributes( { loaderColor: value } ) }
+									allowReset
+								/>
+								<RangeControl
+									label={ __( "Loader Size" ) }
+									value={ loaderSize }
+									onChange={ ( value ) => setAttributes( { loaderSize: value } ) }
+									min={ 1 }
+									max={ 50 }
+								/>
+							</Fragment>
+						}
+					</PanelBody>
+				)
+			}
+
+			return '';
+		}
 		const inspectorControls = (
 			<InspectorControls>
 				<PanelBody title={ __( "General" ) }>
@@ -341,6 +651,11 @@ class UAGBPostMasonry extends Component {
 							<hr className="uagb-editor__separator" />
 						</Fragment>
 					}
+					<ToggleControl
+						label={ __( "Exclude Current Post" ) }
+						checked={ excludeCurrentPost }
+						onChange={ ( value ) => setAttributes( { excludeCurrentPost: ! excludeCurrentPost } ) }
+					/>
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
@@ -424,6 +739,35 @@ class UAGBPostMasonry extends Component {
 							}
 						}
 					</TabPanel>
+					<SelectControl
+						label={ __( "Pagination" ) }
+						value={ paginationType }
+						onChange={ ( value ) => setAttributes( { paginationType: value } ) }
+						options={ [
+							{ value: "none", label: __( "None" ) },
+							{ value: "infinite", label: __( "Infinite" ) },
+						] }
+					/>
+					{ 'infinite' === paginationType &&
+
+						<SelectControl
+						label={ __( "Infinite Load Event" ) }
+						value={ paginationEventType }
+						onChange={ ( value ) => setAttributes( { paginationEventType: value } ) }
+						options={ [
+							{ value: "button", label: __( "Button" ) },
+							{ value: "scroll", label: __( "Scroll" ) },
+						] }
+						/>
+					}
+					{ 'infinite' === paginationType && 'button' === paginationEventType &&
+						<TextControl
+							autoComplete="off"
+							label={ __( 'Button Text' ) }
+							value={ buttonText }
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+						/>
+					}
 					<hr className="uagb-editor__separator" />
 					<h2>{ __( "If Posts Not Found" ) }</h2>
 					<TextControl
@@ -440,6 +784,7 @@ class UAGBPostMasonry extends Component {
 						help={ __( "This will inherit all the Typography and colors for Title, Meta, Excerpt and Read More button from the theme." ) }
 					/>
 				</PanelBody>
+				{ paginationSettings() } 
 				<PanelBody title={ __( "Image" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Featured Image" ) }
@@ -520,17 +865,37 @@ class UAGBPostMasonry extends Component {
 						checked={ displayPostExcerpt }
 						onChange={ ( value ) => setAttributes( { displayPostExcerpt: ! displayPostExcerpt } ) }
 					/>
-					{ displayPostExcerpt &&
-						<RangeControl
-							label={ __( "Excerpt Length" ) }
-							value={ excerptLength }
-							onChange={ ( value ) => setAttributes( { excerptLength: value } ) }
-							min={ 1 }
-							max={ 500 }
-							allowReset
+					{ displayPostExcerpt && (
+						<RadioControl
+							label={ __( 'Show:' ) }
+							selected={ displayPostContentRadio }
+							options={ [
+								{ label: __( 'Excerpt' ), value: "excerpt" },
+								{label: __( 'Full post' ), value: "full_post",},
+							] }
+							onChange={ ( value ) =>
+								setAttributes( {
+									displayPostContentRadio: value,
+								} )
+							}
 						/>
-					}
+					) }
+					{ displayPostExcerpt &&
+						displayPostContentRadio === 'excerpt' && (
+							<RangeControl
+								label={ __( 'Max number of words in excerpt' ) }
+								value={ excerptLength }
+								onChange={ ( value ) =>
+									setAttributes( { excerptLength: value } )
+								}
+								min={ 1 }
+								max={ 100 }
+								allowReset
+							/>
+						) }
 				</PanelBody>
+
+				{ displayPostExcerpt && displayPostContentRadio === 'excerpt' && (
 				<PanelBody title={ __( "Read More Link" ) } initialOpen={ false }>
 					<ToggleControl
 						label={ __( "Show Read More Link" ) }
@@ -652,7 +1017,7 @@ class UAGBPostMasonry extends Component {
 							}
 						</Fragment>
 					}
-				</PanelBody>
+				</PanelBody>)}
 				<PanelBody title={ __( "Typography" ) } initialOpen={ false }>
 					<SelectControl
 						label={ __( "Title Tag" ) }
@@ -833,7 +1198,7 @@ class UAGBPostMasonry extends Component {
 				</PanelBody>
 			</InspectorControls>
 		)
-
+		
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length
 
 		if ( ! hasPosts ) {
@@ -866,6 +1231,7 @@ class UAGBPostMasonry extends Component {
 					/>
 				</BlockControls>
 				<Blog attributes={attributes} className={this.props.className} latestPosts={latestPosts} block_id={this.props.clientId.substr( 0, 8 )} categoriesList={categoriesList} />
+				
 				{ loadTitleGoogleFonts }
 				{ loadMetaGoogleFonts }
 				{ loadExcerptGoogleFonts }
@@ -877,7 +1243,7 @@ class UAGBPostMasonry extends Component {
 
 export default withSelect( ( select, props ) => {
 
-	const { categories, postsToShow, order, orderBy, postType, taxonomyType } = props.attributes
+	const { categories, postsToShow, order, orderBy, postType, taxonomyType, excludeCurrentPost } = props.attributes
 	const { getEntityRecords } = select( "core" )
 
 	let allTaxonomy = uagb_blocks_info.all_taxonomy
@@ -905,6 +1271,9 @@ export default withSelect( ( select, props ) => {
 		per_page: postsToShow,
 	}
 
+	if ( excludeCurrentPost ) {		
+		latestPostsQuery['exclude'] = select("core/editor").getCurrentPostId()
+	}
 	latestPostsQuery[rest_base] = categories
 
 	return {

@@ -80,7 +80,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 			define( 'UAGB_BASE', plugin_basename( UAGB_FILE ) );
 			define( 'UAGB_DIR', plugin_dir_path( UAGB_FILE ) );
 			define( 'UAGB_URL', plugins_url( '/', UAGB_FILE ) );
-			define( 'UAGB_VER', '1.16.0' );
+			define( 'UAGB_VER', '1.16.1' );
 			define( 'UAGB_MODULES_DIR', UAGB_DIR . 'modules/' );
 			define( 'UAGB_MODULES_URL', UAGB_URL . 'modules/' );
 			define( 'UAGB_SLUG', 'uag' );
@@ -122,7 +122,7 @@ if ( ! class_exists( 'UAGB_Loader' ) ) {
 		 * Load Ultimate Gutenberg Text Domain.
 		 * This will load the translation textdomain depending on the file priorities.
 		 *      1. Global Languages /wp-content/languages/ultimate-addons-for-gutenberg/ folder
-		 *      2. Local dorectory /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder
+		 *      2. Local directory /wp-content/plugins/ultimate-addons-for-gutenberg/languages/ folder
 		 *
 		 * @since  1.0.0
 		 * @return void
