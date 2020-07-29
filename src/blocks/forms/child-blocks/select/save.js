@@ -13,8 +13,9 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		nameRequired,
-		options
+		selectRequired,
+		options,
+		selectName
 	} = attributes
 	
 	return (
@@ -22,7 +23,11 @@ export default function save( props ) {
 			"uagb-forms-select-wrap",
 			`uagb-block-${ block_id }`,
 		) }>
-			<RichText.Content/>
+			<RichText.Content
+				tagName="div"
+				value={ selectName }
+				className='uagb-forms-select-label'			
+			/>
 				<select className="uagb-forms-select-box">
 					<option value="" disabled selected>
 						Select your option
