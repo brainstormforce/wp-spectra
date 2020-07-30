@@ -56,7 +56,6 @@ class UAGBFormsSelectEdit extends Component {
 			options,
 			selectName
 		} = attributes
-			console.log(options);
 		const selectInspectorControls = () => {
 
 			return (
@@ -75,10 +74,9 @@ class UAGBFormsSelectEdit extends Component {
 		}
 
 		const addSelect = () => {
-			let newOption = "Option Name";
+			let newOption = "Option Name from here";
 			
 			options.push(newOption);
-			console.log((options));
 	
 			setAttributes({ options:options });
 			this.setState({optionsstate : options});
@@ -87,8 +85,7 @@ class UAGBFormsSelectEdit extends Component {
 		const optionChange = (e, index) => {
 			options[index] =  e.target.value;
 			setAttributes({ options: options });
-			console.log(options);
-			this.setState({optionsstate : this.state.optionsstate});
+			this.setState({optionsstate : options});
 
 		};
 		const handleDelete = index => {
@@ -96,8 +93,7 @@ class UAGBFormsSelectEdit extends Component {
 			options.splice(index, 1);
 			setAttributes({ options });
 			
-			console.log(options);
-			this.setState({optionsstate : this.state.optionsstate});
+			this.setState({optionsstate : options});
 		};
 
 		const editView = options.map((s, index) => {
@@ -119,17 +115,18 @@ class UAGBFormsSelectEdit extends Component {
 			);
 		});
 		const SelectView = () => {
-			return (
+
+			var showoptionsField =  options.map((o, index) => {
+				var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
+				return <option value={optionvalue}>{o}</option>;
+			})
+
+			return  (
 				<select>
-					<option value="" disabled selected>
-						Select your option
-					</option>
-					{options.map((o, index) => {
-						var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
-						return <option value={optionvalue}>{o}</option>;
-					})}
+					<option value="" disabled selected>Select your option</option>
+					{ showoptionsField }
 				</select>
-			);
+			)			
 		};
 		
 
