@@ -2259,9 +2259,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'title'       => __( 'Select', 'ultimate-addons-for-gutenberg' ),
 						'description' => __( 'This block helps to add Select field.', 'ultimate-addons-for-gutenberg' ),
 						'default'     => true,
-						'attributes'  => array(
-							'options' => array('Option Name'),
-						),
+						'attributes'  => array(),
 					),
 				);
 			}
