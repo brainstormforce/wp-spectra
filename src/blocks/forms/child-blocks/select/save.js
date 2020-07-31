@@ -28,7 +28,7 @@ export default function save( props ) {
 				value={ selectName }
 				className='uagb-forms-select-label'			
 			/>
-				<select className="uagb-forms-select-box">
+				<select className="uagb-forms-select-box"  required={ selectRequired }>
 					<option value="" disabled selected>
 						Select your option
 					</option>

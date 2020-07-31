@@ -73,22 +73,20 @@ class UAGBFormsSelectEdit extends Component {
 			)
 		}
 
-		const addSelect = () => {
-			let newOption = "Option Name from here";
+		const addOption = () => {
 			
-			options.push(newOption);
-	
+			options[options.length] = "Option Name"; 
 			setAttributes({ options:options });
 			this.setState({optionsstate : options});
 		};
 
-		const optionChange = (e, index) => {
+		const changeOption = (e, index) => {
 			options[index] =  e.target.value;
 			setAttributes({ options: options });
 			this.setState({optionsstate : options});
 
 		};
-		const handleDelete = index => {
+		const deleteOption = index => {
 		
 			options.splice(index, 1);
 			setAttributes({ options });
@@ -101,7 +99,7 @@ class UAGBFormsSelectEdit extends Component {
 				<div className="uagb-form-select-option">
 					<input
 						aria-label={s}
-						onChange={e => optionChange(e, index)}
+						onChange={e => changeOption(e, index)}
 						type="text"
 						value={s}
 						
@@ -109,7 +107,7 @@ class UAGBFormsSelectEdit extends Component {
 					<Button 
 						className="uagb-form-select-option-delete"
         				icon="trash"
-        				label="Remove" onClick={() => handleDelete(index)}
+        				label="Remove" onClick={() => deleteOption(index)}
     				/>
 				</div>
 			);
@@ -122,7 +120,7 @@ class UAGBFormsSelectEdit extends Component {
 			})
 
 			return  (
-				<select>
+				<select className="uagb-forms-select-box" required={ selectRequired }>
 					<option value="" disabled selected>Select your option</option>
 					{ showoptionsField }
 				</select>
@@ -152,7 +150,7 @@ class UAGBFormsSelectEdit extends Component {
 							{editView}
 							<div className="uagb-forms-select-controls">
 								<div>
-									<Button isSecondary onClick={addSelect}>{ __(" + Add Option ") }</Button>									
+									<Button isSecondary onClick={addOption}>{ __(" + Add Option ") }</Button>									
 								</div>								
 							</div>
 						</Fragment>

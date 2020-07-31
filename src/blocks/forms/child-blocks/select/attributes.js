@@ -13,8 +13,10 @@ const attributes = {
         default: false
     },
     options: {
-        "type": "array",
-        "default": ["Option Name"],
+        type: "array",
+        default: ["Option Name"],
+        
     },
+    
 }
 export default attributes
