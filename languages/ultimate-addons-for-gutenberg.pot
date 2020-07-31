@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: Ultimate Addons for Gutenberg 1.16.1\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/ultimate-addons-for-gutenberg\n"
-"POT-Creation-Date: 2020-07-28 08:24:30+00:00\n"
+"POT-Creation-Date: 2020-07-29 08:52:02+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -177,7 +177,7 @@ msgstr ""
 
 #: admin/uagb-general.php:147
 msgid ""
-"Join over 1,000,000+ active users empowering their websites with Astra! "
+"Join over 1+ million active users empowering their websites with Astra! "
 "From beginners to industry leaders, everyone loves the Astra theme."
 msgstr ""
 
