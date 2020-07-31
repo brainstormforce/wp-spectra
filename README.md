@@ -160,7 +160,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 ## Changelog ##
 
 ### 1.16.1.1 ###
-* Fix: Multi Buttons - Full Width layout for buttons not working in editor mode.
+* Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
 
 ### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
