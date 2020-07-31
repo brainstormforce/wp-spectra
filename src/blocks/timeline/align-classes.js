@@ -5,20 +5,24 @@
  */
 function AlignClass( attributes, index_val ) {
 
+	
+
 	let align_class = ""
 	if( "left" == attributes.timelinAlignment ){
 		align_class = "uagb-timeline__widget uagb-timeline__left"
 	}else if( "right" == attributes.timelinAlignment ){
 		align_class = "uagb-timeline__widget uagb-timeline__right"
 	}else if( "center" == attributes.timelinAlignment ){
-		if( index_val % 2 == "0" ){
-			//console.log("Right here-"+( index_val % 2))
-			align_class = "uagb-timeline__widget uagb-timeline__right"
-		}else{
-			//console.log("Left here-"+( index_val % 2))
-			align_class = "uagb-timeline__widget uagb-timeline__left"
-		}  
-	}     
+		// for (var i = 1; i <= attributes.counter; i++) {
+			if( index_val % 2 == 0 ){
+				// console.log("even-"+i)
+				align_class = "uagb-timeline__widget uagb-timeline__right"
+			}else{
+				// console.log("odd-"+i)
+				align_class = "uagb-timeline__widget uagb-timeline__left"
+			}  
+		}
+	// }     
         
 	return [
 		align_class
@@ -26,3 +30,13 @@ function AlignClass( attributes, index_val ) {
 }
 
 export default AlignClass
+
+
+// for (var i = 1; i <= counter; i++) {
+
+// 					if( i % 2 == 0 ){
+// 						console.log("even-"+i)
+// 					}else{
+// 						console.log("odd-"+i)
+// 					}
+// 			}

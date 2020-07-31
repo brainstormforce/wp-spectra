@@ -442,6 +442,9 @@ class UAGBcontentTimelineChild extends Component {
 			)
 
 
+
+			// var content_align_class = '';
+
 			var content_align_class = AlignClass( this.props.attributes, 1 ) // Get classname for layout alignment
 			var day_align_class     = DayAlignClass( this.props.attributes, 1 ) // Get classname for day alignment.
 			var display_inner_date  = false
@@ -455,7 +458,7 @@ class UAGBcontentTimelineChild extends Component {
 				}
 			}
 
-			console.log("child "+post_date)
+			// console.log("child "+post_date)
 
 			const hasItems = Array.isArray( time_heading ) && time_heading.length
 			const hasDate = Array.isArray( t_date ) && t_date.length
@@ -473,8 +476,10 @@ class UAGBcontentTimelineChild extends Component {
 				display_inner_date = true
 				content_align_class = AlignClass( this.props.attributes, 2 )
 				day_align_class = DayAlignClass( this.props.attributes, 2 )
-			}
-			console.log(this.props.attributes)
+			} 
+			
+			// console.log("child-"+content_align_class)
+			
 
 				return (
 							<Fragment>

@@ -20,6 +20,7 @@ const { Fragment } = wp.element
 export default function save( props ) {
 	const {
 		block_id,
+		counter,
 		headingTag,
 		timelinAlignment,
 		displayPostDate,
@@ -39,6 +40,8 @@ export default function save( props ) {
 
 	const hasItems = Array.isArray( tm_content ) && tm_content.length
 
+	// var content_align_class = '';
+
 	var content_align_class = AlignClass( props.attributes, 0 ) // Get classname for layout alignment
 	var day_align_class     = DayAlignClass( props.attributes, 0 ) //
 
@@ -52,6 +55,16 @@ export default function save( props ) {
 			post_date = t_date
 		}
 	}
+
+	// for (var i = 1; i <= counter; i++) {
+	// 	if( i % 2 == 0 ){
+	// 		console.log("even-"+i)
+	// 		content_align_class = "uagb-timeline__widget uagb-timeline__right"
+	// 	}else{
+	// 		console.log("odd-"+i)
+	// 		content_align_class = "uagb-timeline__widget uagb-timeline__left"
+	// 	} 
+	// }
 
 	return (
 		<div className = "uagb-timeline__days">

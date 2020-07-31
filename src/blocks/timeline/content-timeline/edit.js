@@ -59,8 +59,15 @@ const {
 	Dashicon,
 } = wp.components
 
-const { select, withSelect } = wp.data;
+const {
+	withSelect,
+	useDispatch,
+	select, 
+	useSelect,
+	withDispatch
+} = wp.data
 
+const { compose } = wp.compose
 
 const ALLOWED_BLOCKS = [ "uagb/content-timeline-child" ]
 
@@ -73,30 +80,127 @@ class UAGBcontentTimeline extends Component {
 
 		this.splitBlock = this.splitBlock.bind( this )
 
-		// this.getTimelineicon = this.getTimelineicon.bind(this)
+		this.getdateFormat = this.getdateFormat.bind(this)
 
-		this.toggleDisplayPostDate    = this.toggleDisplayPostDate.bind( this )
+		this.toggleDisplayPostDate  = this.toggleDisplayPostDate.bind( this )
 
-		this.getTimelineicon			= this.getTimelineicon.bind( this )
+		this.getTimelineicon = this.getTimelineicon.bind( this )
+
+		this.geticonSize = this.geticonSize.bind(this)
+
+		this.getborderwidth = this.getborderwidth.bind(this)
+
+		this.getconnectorBgsize = this.getconnectorBgsize.bind(this)
+
+		this.getseparatorwidth = this.getseparatorwidth.bind(this)
+
+		// this.getseparatorColor = this.getseparatorColor.blind(this)
+
+		// this.geticonColor = this.geticonColor.blind(this)
+
+		// this.gettimelineItem = this.gettimelineItem.blind(this)
+
+		// this.getseparatorBorder = this.getseparatorBorder.blind(this)
 	}
+
+	getseparatorBorder (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+			UAGBcontentTimelineChild.attributes.separatorBorder = value
+		});
+		setAttributes( { separatorBorder: value } )
+	}
+
+	gettimelineItem (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+			UAGBcontentTimelineChild.attributes.timelineItem = value
+		});
+		setAttributes( { timelineItem: value } )
+	}
+
+	geticonColor (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+			UAGBcontentTimelineChild.attributes.iconColor = value
+		});
+		setAttributes( { iconColor: value } )
+	}
+
+	getseparatorColor (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+			UAGBcontentTimelineChild.attributes.separatorColor = value
+		});
+		setAttributes( { separatorColor: value } )
+	}
+
+	getconnectorBgsize (value) {
+		const { setAttributes } = this.props
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+		
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+			UAGBcontentTimelineChild.attributes.connectorBgsize = value
+		});
+		setAttributes( { connectorBgsize: value } )
+	}
+
+	getborderwidth (value) {
+			const { setAttributes } = this.props
+			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+			
+			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+				UAGBcontentTimelineChild.attributes.borderwidth = value
+			});
+			setAttributes( { borderwidth: value } )
+		}
+
+	geticonSize (value) {
+			const { setAttributes } = this.props
+			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+			
+			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+				UAGBcontentTimelineChild.attributes.iconSize = value
+			});
+			setAttributes( { iconSize: value } )
+		}
+
+		getseparatorwidth (value) {
+				const { setAttributes } = this.props
+				const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+				
+				getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+					UAGBcontentTimelineChild.attributes.separatorwidth = value
+				});
+				setAttributes( { separatorwidth: value } )
+			}
+
+	getdateFormat (value) {
+			const { setAttributes } = this.props
+			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+			
+			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+				UAGBcontentTimelineChild.attributes.dateFormat = value
+			});
+			setAttributes( { dateFormat: value } )
+		}
 
 	getTimelineicon (value) {
 			const { setAttributes } = this.props
 			const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
 			
 			getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
-				UAGBcontentTimelineChild.attributes.iconSize = value,
-				UAGBcontentTimelineChild.attributes.connectorBgsize = value,
-				UAGBcontentTimelineChild.attributes.borderwidth = value,
-				UAGBcontentTimelineChild.attributes.separatorwidth = value, 
-				UAGBcontentTimelineChild.attributes.icon = value,
-				UAGBcontentTimelineChild.attributes.separatorColor  = value,
-				UAGBcontentTimelineChild.attributes.iconColor  = value, 
-				UAGBcontentTimelineChild.attributes.separatorBg  = value, 
-				UAGBcontentTimelineChild.attributes.separatorBorder  = value,
-				UAGBcontentTimelineChild.attributes.dateFormat = value
+				UAGBcontentTimelineChild.attributes.icon = value
 			});
-			setAttributes( { dateFormat: value, icon: value, iconSize: value, connectorBgsize: value, borderwidth : value, separatorwidth : value, separatorColor : value, iconColor : value, separatorBg : value, separatorBorder : value } )
+			setAttributes( { icon: value } )
 		}
 
 	splitBlock( before, after, ...blocks ) {
@@ -251,6 +355,74 @@ class UAGBcontentTimeline extends Component {
 			},
 		} = this.props
 
+		const counter = wp.data.select( 'core/editor' ).getBlockCount( this.props.clientId );
+
+		const getChildBlocks = select('core/block-editor').getBlocks( this.props.clientId );
+
+		var content_align_class = ''
+
+		// console.log(getChildBlocks[0])
+
+		getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+
+		for (var i = 1; i <= counter; i++) {
+			if( i % 2 == 0 ){
+				console.log("even-"+i)
+				content_align_class = "uagb-timeline__widget uagb-timeline__right"
+
+				
+				if (i == 1){
+					// console.log(getChildBlocks[0].clientId)
+				}else{
+					// console.log(getChildBlocks[i].clientId)
+				}
+				// console.log("left-"+content_align_class)
+
+				
+				// 	// if ( getChildBlocks[i].clientId == UAGBcontentTimelineChild.clientId ){
+				// 		if ( getChildBlocks.clientId ){
+
+							UAGBcontentTimelineChild.attributes.align = content_align_class
+
+						// }
+						
+				// 	// }
+					
+			
+			}else{
+				console.log("odd-"+i)
+				content_align_class = "uagb-timeline__widget uagb-timeline__left"
+				// console.log("right-"+getChildBlocks[i].clientId)
+				// console.log("right-"+content_align_class)
+
+				
+						UAGBcontentTimelineChild.attributes.align = content_align_class
+				// 	}
+					
+				
+
+				
+			} 
+		} 
+
+		});
+
+		setAttributes( { align: content_align_class } )
+
+
+		// getChildBlocks.forEach((UAGBcontentTimelineChild, key) => {
+		// 	UAGBcontentTimelineChild.attributes.counter = counter
+		// });
+
+		// setAttributes( { counter: counter } )
+
+		// const blockCount = useSelect( select => ({
+		//    blockCount: wp.data.select('core/block-editor').getBlockCount(this.props.clientId)
+		//  }))
+
+		// const blockHasParent = wp.data.select( 'core/editor' )
+
+		
 		// Parameters for FontIconPicker
 		const icon_props = {
 			icons: svg_icons,
@@ -261,7 +433,6 @@ class UAGBcontentTimeline extends Component {
 			noSelectedPlaceholder: __( "Select Icon" )
 		}
 
-		console.log(this.props) 
 
 		const iconColorSettings = (
 			<PanelColorSettings title={ __( "Color Settings" ) } initialOpen={ true }
@@ -269,21 +440,25 @@ class UAGBcontentTimeline extends Component {
 					{
 						value: separatorColor,
 						onChange: ( colorValue ) => setAttributes( { separatorColor: colorValue } ),
-						label: __( "Line Color" ),
+						// onChange: ( this.getseparatorColor(colorValue) ),
+						label: __( "Line Color" ) ,
 					},
 					{
 						value: iconColor,
 						onChange: ( colorValue ) => setAttributes( { iconColor: colorValue } ),
+						// onChange: ( this.geticonColor(colorValue) ),
 						label: __( "Icon Color" ),
 					},
 					{
 						value: separatorBg,
 						onChange: ( colorValue ) => setAttributes( { separatorBg: colorValue } ),
+						// onChange: ( this.getseparatorBg(colorValue) ),
 						label: __( "Background Color" ),
 					},
 					{
 						value: separatorBorder,
 						onChange: ( colorValue ) => setAttributes( { separatorBorder: colorValue } ),
+						// onChange: ( this.getseparatorBorder(colorValue) ),
 						label: __( "Border Color" ),
 					},
 				] }
@@ -429,7 +604,7 @@ class UAGBcontentTimeline extends Component {
 				<SelectControl
 					label={ __( "Date Format" ) }
 					value={ dateFormat }
-					onChange={ ( value ) => setAttributes( { dateFormat: value } ) }
+					onChange={ this.getdateFormat }
 					options={ [
 						{ value: 'M j, Y' , label: dateI18n( 'M j, Y', today ) },
 						{ value: 'F j, Y' , label: dateI18n( 'F j, Y', today ) },
@@ -492,7 +667,7 @@ class UAGBcontentTimeline extends Component {
 				}
 			</PanelBody>
 		)
-		console.log(dateFormat)
+
 		const content_control = (
 			<InspectorControls>
 				{ renderSettings }
@@ -560,7 +735,7 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Icon Size" ) }    
 						value={ iconSize }		
-						onChange={ ( value ) => setAttributes( { iconSize: value } ) }
+						onChange={ this.geticonSize }
 						min={ 0 }
 						max={ 30 }
 						allowReset
@@ -568,7 +743,7 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Icon Background Size" ) }
 						value={ connectorBgsize }
-						onChange={ ( value ) => setAttributes( { connectorBgsize: value } ) }
+						onChange={ this.getconnectorBgsize }
 						min={ 25 }
 						max={ 90 }
 						allowReset
@@ -576,7 +751,7 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Border Width" ) }
 						value={ borderwidth }
-						onChange={ ( value ) => setAttributes( { borderwidth: value } ) }
+						onChange={ this.getborderwidth }
 						min={ 1 }
 						max={ 10 }
 						allowReset
@@ -584,7 +759,7 @@ class UAGBcontentTimeline extends Component {
 					<RangeControl
 						label={ __( "Connector Width" ) }
 						value={ separatorwidth }
-						onChange={ ( value ) => setAttributes( { separatorwidth: value } ) }
+						onChange={ this.getseparatorwidth }
 						min={ 1 }
 						max={ 10 }
 						allowReset
@@ -594,8 +769,17 @@ class UAGBcontentTimeline extends Component {
 			</InspectorControls>
 		)
 
-		// const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
-		// 	return times( icon_block, n => [ 'uagb/content-timeline-child', 
+		const getContentTimelineTemplate = memoize( ( icon_block, tm_content ) => {
+			return times( icon_block, n => [ 'uagb/content-timeline-child',tm_content[n]] )
+		} )
+
+
+		// const counterx = times( timelineItem, n => this.gettimelineItem(n) )
+
+
+
+		// const getContentTimelineTemplate = [
+		// 	[ 'uagb/content-timeline-child', 
 		// 		{
 		// 			iconColor:iconColor,
 		// 			iconSize:iconSize,
@@ -603,24 +787,14 @@ class UAGBcontentTimeline extends Component {
 		// 			borderFocus:borderFocus,
 		// 			iconColor:iconColor,
 		// 			timelineItem:timelineItem,
-		// 			tm_content:tm_content[n],
+		// 			tm_content:tm_content,
 		// 		}
-		// 	] )
-		// } )
+		// 	]
+		// ];
 
-		const getContentTimelineTemplate = [
-			[ 'uagb/content-timeline-child', 
-				{
-					iconColor:iconColor,
-					iconSize:iconSize,
-					iconBgFocus:iconBgFocus,
-					borderFocus:borderFocus,
-					iconColor:iconColor,
-					timelineItem:timelineItem,
-					tm_content:tm_content,
-				}
-			]
-		];
+		// console.log("parent-"+counterx)
+
+		// console.log(getContentTimelineTemplate)
 
 		return (
 			<Fragment>
@@ -646,7 +820,7 @@ class UAGBcontentTimeline extends Component {
 						<div className = "uagb-timeline-wrapper">
 							<div className = "uagb-timeline__main">
 								<InnerBlocks
-									template={ getContentTimelineTemplate }
+									template={ getContentTimelineTemplate( timelineItem, tm_content ) }
 									templateLock={ false }
 									allowedBlocks={ ALLOWED_BLOCKS }	
 								/>
@@ -781,4 +955,25 @@ class UAGBcontentTimeline extends Component {
 		}
 	}
 }
-export default UAGBcontentTimeline
+export default compose(
+withDispatch( ( dispatch, ownProps, registry ) => {
+
+	// updateEditable( isEditing ) {
+		// console.log(isEditing)
+	  const { clientId, setAttributes } = ownProps;
+	  const { getBlockOrder, getBlock } = registry.select( 'core/block-editor' );
+
+	  //get all innerBlockIds
+	  const innerBlockIds = getBlockOrder( ownProps.clientId );
+
+	  // console.log(innerBlockIds)
+
+  return {
+    
+      // innerBlockIds.forEach( ( innerBlockId ) => {
+      //   console.log( getBlock( innerBlockId ) );
+      // } );
+    // },
+  };
+} )
+) ( UAGBcontentTimeline )
