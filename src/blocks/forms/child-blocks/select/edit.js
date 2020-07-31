@@ -25,12 +25,7 @@ class UAGBFormsSelectEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-		this.state = { optionsstate:  [
-            {
-                "optiontitle": "Option Name 1"
-            },           
-        ] };
-		
+		this.state = { optionsstate:  [ { "optiontitle": "Option Name 1" } ] };
 	}
 
 	componentDidMount() {
