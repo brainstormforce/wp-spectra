@@ -25,7 +25,11 @@ class UAGBFormsSelectEdit extends Component {
 
 	constructor() {
 		super( ...arguments )
-		this.state = { optionsstate: null };
+		this.state = { optionsstate:  [
+            {
+                "optiontitle": "Option Name 1"
+            },           
+        ] };
 		
 	}
 
@@ -74,49 +78,59 @@ class UAGBFormsSelectEdit extends Component {
 		}
 
 		const addOption = () => {
-			
-			options[options.length] = "Option Name"; 
+			var newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
+			options[options.length] = newOption; 
 			setAttributes({ options:options });
 			this.setState({optionsstate : options});
 		};
 
-		const changeOption = (e, index) => {
-			options[index] =  e.target.value;
-			setAttributes({ options: options });
-			this.setState({optionsstate : options});
-
+		const changeOption = (e, index) => {			
+			const editOptions = options.map( ( item, thisIndex ) => {
+				if ( index === thisIndex ) {
+					item = { ...item, ...e }
+				}
+				return item
+			} )
+			
+			setAttributes({ options: editOptions });
+			this.setState({ optionsstate : editOptions });
+			
 		};
+
 		const deleteOption = index => {
 		
 			options.splice(index, 1);
-			setAttributes({ options });
-			
+			setAttributes({ options });			
 			this.setState({optionsstate : options});
-		};
 
+		};
+		
+		
 		const editView = options.map((s, index) => {
+			
 			return (
 				<div className="uagb-form-select-option">
 					<input
-						aria-label={s}
-						onChange={e => changeOption(e, index)}
+						aria-label={s.optiontitle}
+						onChange={e => changeOption( { optiontitle: e.target.value }, index)}
 						type="text"
-						value={s}
-						
+						value={s.optiontitle}						
 					/>					
 					<Button 
 						className="uagb-form-select-option-delete"
         				icon="trash"
-        				label="Remove" onClick={() => deleteOption(index)}
+        				label="Remove" onClick={ () => deleteOption(index) }
     				/>
 				</div>
 			);
 		});
+
 		const SelectView = () => {
 
 			var showoptionsField =  options.map((o, index) => {
-				var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
-				return <option value={optionvalue}>{o}</option>;
+				var optiontitle = o.optiontitle;
+				var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+				return <option value={optionvalue}>{o.optiontitle}</option>;
 			})
 
 			return  (

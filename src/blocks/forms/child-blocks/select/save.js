@@ -33,8 +33,9 @@ export default function save( props ) {
 						Select your option
 					</option>
 					{options.map((o, index) => {
-						var optionvalue = o.replace(/\s+/g, '-').toLowerCase();
-						return <option defaultValue={optionvalue}>{o}</option>;
+						var optiontitle = o.optiontitle;
+						var optionvalue = optiontitle.replace(/\s+/g, '-').toLowerCase();
+						return <option value={optionvalue}>{o.optiontitle}</option>;
 					})}
 					
 				</select>
