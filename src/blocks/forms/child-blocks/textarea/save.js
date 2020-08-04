@@ -19,6 +19,7 @@ export default function save( props ) {
 	return (
 		<div className={ classnames(
 			"uagb-forms-textarea-wrap",
+			"uagb-forms-field-set",
 			`uagb-block-${ block_id }`,
 			) }>
 			<RichText.Content

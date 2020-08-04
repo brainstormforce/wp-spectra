@@ -5,6 +5,10 @@ const attributes = {
 	nameRequired : {
         type: "boolean",
         default: false
-    }
+    },
+    name: {
+        type: "string",
+        default: "Name"
+    },
 }
 export default attributes

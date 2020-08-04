@@ -47,7 +47,7 @@ class UAGBFormsPhoneEdit extends Component {
 	
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, isSelected } = this.props
 
         const {
 			block_id,
@@ -104,10 +104,20 @@ class UAGBFormsPhoneEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-phone-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ phoneRequired }
+							onChange={ ( value ) => setAttributes( { phoneRequired: ! phoneRequired } ) }
+						/>
+					</div>
+					)}
 					<RichText
-						tagName="label"
+						tagName="div"
 						placeholder={ __( "Phone Name" ) }
 						value={ phoneName }
 						onChange={ ( value ) => setAttributes( { phoneName: value } ) }

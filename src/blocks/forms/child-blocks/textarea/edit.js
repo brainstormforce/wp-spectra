@@ -45,7 +45,7 @@ class UAGBFormsTextareaEdit extends Component {
 	
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes, isSelected } = this.props
 
         const {
 			block_id,
@@ -77,8 +77,18 @@ class UAGBFormsTextareaEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-textarea-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ textareaRequired }
+							onChange={ ( value ) => setAttributes( { textareaRequired: ! textareaRequired } ) }
+						/>
+					</div>
+					)}
 					<RichText
 						tagName="div"
 						placeholder={ __( "Textarea Name" ) }

@@ -34,10 +34,11 @@ export default function save( props ) {
 	return (
 		<div className={ classnames(
 			"uagb-forms-phone-wrap",
+			"uagb-forms-field-set",
 			`uagb-block-${ block_id }`,
 		) }>
 			<RichText.Content
-				tagName="label"
+				tagName="div"
 				value={ phoneName }
 				className='uagb-forms-phone-label'			
 			/>
