@@ -12,7 +12,7 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		urlRequired,
+		required,
 		urlName
 	} = attributes
 
@@ -21,15 +21,15 @@ export default function save( props ) {
 	return (
 		<div className={ classnames(
 			"uagb-forms-url-wrap",
+			"uagb-forms-field-set",
 			`uagb-block-${ block_id }`,
 		) }>
 				<RichText.Content
 			tagName="div"
 			value={ urlName }
-			className='uagb-forms-url-label'
-			
+			className='uagb-forms-url-label'			
 			/>
-			<input type="url" name={url_field_name} required={ urlRequired } className="uagb-forms-url-input"/>					
+			<input type="url" name={url_field_name} required={ required } className="uagb-forms-url-input"/>					
 
 		</div>
 	)

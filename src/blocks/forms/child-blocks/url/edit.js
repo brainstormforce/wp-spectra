@@ -49,7 +49,7 @@ class UAGBFormsUrlEdit extends Component {
 
         const {
 			block_id,
-			urlRequired,
+			required,
 			urlName
 		} = attributes
 		
@@ -63,8 +63,8 @@ class UAGBFormsUrlEdit extends Component {
 				>
 					<ToggleControl
 						label={ __( "Required" ) }
-						checked={ urlRequired }
-						onChange={ ( value ) => setAttributes( { urlRequired: ! urlRequired } ) }
+						checked={ required }
+						onChange={ ( value ) => setAttributes( { required: ! required } ) }
 					/>
 				</PanelBody>
 			)
@@ -77,6 +77,7 @@ class UAGBFormsUrlEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-url-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
 					<RichText
@@ -87,7 +88,7 @@ class UAGBFormsUrlEdit extends Component {
 						className='uagb-forms-url-label'
 						multiline={ false }
 					/>
-					<input type="url" required={ urlRequired } className="uagb-forms-url-input"/>					
+					<input type="url" required={ required } className="uagb-forms-url-input"/>					
 					
 					
 				</div>

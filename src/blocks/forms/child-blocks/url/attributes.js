@@ -6,9 +6,9 @@ const attributes = {
     },
     urlName: {
         type: "string",
-        default: __( "URL Name" ),
+        default: __( "URL" ),
 	},
-	urlRequired : {
+	required : {
         type: "boolean",
         default: false
     }
