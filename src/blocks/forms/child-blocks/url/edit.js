@@ -50,7 +50,7 @@ class UAGBFormsUrlEdit extends Component {
         const {
 			block_id,
 			required,
-			urlName
+			name
 		} = attributes
 		
 		const urlInspectorControls = () => {
@@ -83,8 +83,8 @@ class UAGBFormsUrlEdit extends Component {
 					<RichText
 						tagName="div"
 						placeholder={ __( "URL Name" ) }
-						value={ urlName }
-						onChange={ ( value ) => setAttributes( { urlName: value } ) }
+						value={ name }
+						onChange={ ( value ) => setAttributes( { name: value } ) }
 						className='uagb-forms-url-label'
 						multiline={ false }
 					/>

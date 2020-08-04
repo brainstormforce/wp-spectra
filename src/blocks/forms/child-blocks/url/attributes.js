@@ -4,7 +4,7 @@ const attributes = {
     block_id: {
 		type: "string"
     },
-    urlName: {
+    name: {
         type: "string",
         default: __( "URL" ),
 	},

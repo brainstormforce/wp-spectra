@@ -13,10 +13,10 @@ export default function save( props ) {
 	const {
 		block_id,
 		required,
-		urlName
+		name
 	} = attributes
 
-	var url_field_name = urlName.replace(/\s+/g, '-').toLowerCase();
+	var url_field_name = name.replace(/\s+/g, '-').toLowerCase();
 
 	return (
 		<div className={ classnames(
@@ -26,7 +26,7 @@ export default function save( props ) {
 		) }>
 				<RichText.Content
 			tagName="div"
-			value={ urlName }
+			value={ name }
 			className='uagb-forms-url-label'			
 			/>
 			<input type="url" name={url_field_name} required={ required } className="uagb-forms-url-input"/>					

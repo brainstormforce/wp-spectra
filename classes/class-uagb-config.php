@@ -2261,7 +2261,7 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'default'     => true,
 						'attributes'  => array(
 							'block_id' => '',
-							'urlName'  => __( 'URL' ),
+							'name'     => __( 'URL' ),
 						),
 					),
 				);
