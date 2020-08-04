@@ -159,6 +159,10 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
+### 1.17.0 ###
+* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
+* Fix: Icon List - Icon List Border turns to oval issue.
+
 ### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
 * Improvement: Advanced Columns - New Gradient Palette is introduced to set background.
