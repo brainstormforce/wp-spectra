@@ -159,7 +159,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
-### 1.17.0 ###
+### 1.16.1.1 ###
+* Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
 * Fix: Call To Action - Anchor does not save.
 
 ### 1.16.1 ###
