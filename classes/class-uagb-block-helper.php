@@ -2045,7 +2045,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-icon-list-repeater'] = array(
 					'font-family' => $attr['fontFamily'],
 					'font-weight' => $attr['fontWeight'],
-					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 			}
