@@ -341,14 +341,7 @@ class UAGBFaqEdit extends Component {
 						onChange={ ( value ) => setAttributes( { enableSchemaSupport: ! enableSchemaSupport } ) }
 					/>
 					<hr className="uagb-editor__separator" />
-					{ 'grid' === layout &&
-						// <RangeControl
-						// 	label={ __( "Columns" ) }
-						// 	value={ columns }
-						// 	onChange={ ( value ) => setAttributes( { columns: value } ) }
-						// 	min={ 0 }
-						// 	max={ 6 }
-						// />
+					{ 'grid' === layout &&						
 						<TabPanel className="uagb-size-type-field-tabs uagb-without-size-type" activeClass="active-tab"
 						tabs={ [
 							{
