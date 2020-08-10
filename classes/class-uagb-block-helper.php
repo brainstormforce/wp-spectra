@@ -4564,6 +4564,12 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'grid-row-gap'          => UAGB_Helper::get_css_value( $attr['rowsGap'], 'px' ),
 					'display'               => 'grid',
 				);
+				$t_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']    = array(
+					'grid-template-columns' => 'repeat(' . $attr['tcolumns'] . ', 1fr)',
+				);
+				$m_selectors['.uagb-faq-layout-grid .uagb-faq__wrap.uagb-buttons-layout-wrap ']    = array(
+					'grid-template-columns' => 'repeat(' . $attr['mcolumns'] . ', 1fr)',
+				);
 			}
 
 			$combined_selectors = array(
