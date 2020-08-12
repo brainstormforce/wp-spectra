@@ -143,7 +143,7 @@ function styling( props ) {
 		}
 	}
 
-	selectors[" " + tag + ".uagb-team__title"] = {
+	selectors[" " + tag + ".rich-text.block-editor-rich-text__editable.uagb-team__title"] = {
 		"font-family": titleFontFamily,
 		"font-weight": titleFontWeight,
 		"font-size": generateCSSUnit( titleFontSize, titleFontSizeType ),
