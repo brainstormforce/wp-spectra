@@ -163,6 +163,8 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Improvement - Compatibility to WordPress 5.5.
 * Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
 * Fix: Team - Title typography in 2020 and designation color is not applying in editor.
+* Fix: Content Timeline - Date typography for frontend.
+
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
