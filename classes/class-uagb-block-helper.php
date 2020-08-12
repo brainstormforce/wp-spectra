@@ -3261,7 +3261,11 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'               => array(
-					'color' => $attr['dateColor'],
+					'color' => $attr['dateColor'],				
+					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
+					"font-family"=>$attr['dateFontFamily'],
+					"font-weight"=> $attr['dateFontWeight'],
+					'line-height' => UAGB_Helper::get_css_value( $attr['dateLineHeight'], $attr['dateLineHeightType'] ),
 				),
 				' .uagb-timeline__events-inner-new'       => array(
 					'background-color' => $attr['backgroundColor'],
