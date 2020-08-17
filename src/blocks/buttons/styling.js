@@ -90,7 +90,9 @@ function styling( props ) {
 		}
 	} else {
 		selectors[" .uagb-button__wrapper"]["justify-content"] = "center";
-		selectors[" .uagb-buttons-repeater"]["width"] = "100%";
+		selectors[" .uagb-buttons-repeater"] = {
+			"width" : "100%",
+		}
 		selectors[" .wp-block[data-type='uagb/buttons-child']:first-child .uagb-button__wrapper"] = {
 			"margin-left" : 0
 		}
