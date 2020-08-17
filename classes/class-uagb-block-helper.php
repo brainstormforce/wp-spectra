@@ -2045,7 +2045,7 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				$selectors[' .uagb-icon-list-repeater'] = array(
 					'font-family' => $attr['fontFamily'],
 					'font-weight' => $attr['fontWeight'],
-					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['sizeType'] ),
+					'font-size'   => UAGB_Helper::get_css_value( $attr['fontSize'], $attr['fontSizeType'] ),
 					'line-height' => $attr['lineHeight'] . $attr['lineHeightType'],
 				);
 			}
@@ -2367,7 +2367,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 				'mobile'  => $m_selectors,
 			);
 
-			$base_selector = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
+			$base_selector      = ( $attr['classMigrate'] ) ? '.uagb-block-' : '#uagb-ctm-';
+			$combined_selectors = UAGB_Helper::get_typography_css( $attr, 'date', ' .uagb-timeline__date-new', $combined_selectors );
 
 			return UAGB_Helper::generate_all_css( $combined_selectors, $base_selector . $id );
 		}
@@ -3261,7 +3262,8 @@ if ( ! class_exists( 'UAGB_Block_Helper' ) ) {
 					'margin-right' => UAGB_Helper::get_css_value( $attr['horizontalSpace'], 'px' ),
 				),
 				' .uagb-timeline__date-new'               => array(
-					'color' => $attr['dateColor'],
+					'color'     => $attr['dateColor'],
+					'font-size' => UAGB_Helper::get_css_value( $attr['dateFontsize'], $attr['dateFontsizeType'] ),
 				),
 				' .uagb-timeline__events-inner-new'       => array(
 					'background-color' => $attr['backgroundColor'],
