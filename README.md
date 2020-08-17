@@ -4,8 +4,8 @@
 **Tags:** gutenberg, blocks, gutenberg blocks, editor, block  
 **Requires at least:** 4.7  
 **Requires PHP:** 5.6  
-**Tested up to:** 5.4  
-**Stable tag:** 1.16.1  
+**Tested up to:** 5.5  
+**Stable tag:** 1.17.0 
 **License:** GPLv2 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-2.0.html  
 
@@ -165,6 +165,7 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 * Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
 * Fix: Icon List - Icon List Border turns to oval issue.
 * Fix: Info Box - Fixed an Typography issue with CTA-Button.
+* Fix: Call To Action - Rectofied the issue with Anchor that does not save.
 
 ### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
