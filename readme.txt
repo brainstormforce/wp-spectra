@@ -161,7 +161,11 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 = 1.17.0 =
 * Fix: Icon List - Icon List Font Size rendered as PX when configured as EM
+<<<<<<< HEAD
 * Fix: Inline Notice - Notice dismiss issue.
+=======
+* Fix: Info Box - Fixed an Typography issue with CTA-Button.
+>>>>>>> 088cc47cad31ee238cd199799d744ffb00365b45
 
 = 1.16.1 = 
 * Improvement: Post Masonry - Added Pagination option.
