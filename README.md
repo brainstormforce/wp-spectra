@@ -159,8 +159,12 @@ When you use the Ultimate Addons for Gutenberg along with the free Astra theme, 
 
 ## Changelog ##
 
-### 1.16.1.1 ###
+### 1.17.0 ###
+* Improvement: Compatibility with WordrPress 5.5.
 * Fix: Multi Buttons - Alignment Full Width for buttons not working in editor mode.
+* Fix: Icon List - Icon List Font Size rendered as PX when configured as EM.
+* Fix: Icon List - Icon List Border turns to oval issue.
+* Fix: Info Box - Fixed an Typography issue with CTA-Button.
 
 ### 1.16.1 ###
 * Improvement: Post Masonry - Added Pagination option.
