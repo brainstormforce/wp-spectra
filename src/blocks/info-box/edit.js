@@ -480,7 +480,23 @@ class UAGBinfoBox extends Component {
 						checked={ inheritFromTheme }
 						onChange={ ( value ) => setAttributes( { inheritFromTheme: ! inheritFromTheme } ) }
 					/>
-					{ ( !inheritFromTheme && ctaType === "button" ) || ctaType === "text" &&
+					{ ctaType === "text" &&
+						<TypographyControl
+							label={ __( "Typography" ) }
+							attributes = { attributes }
+							setAttributes = { setAttributes }
+							loadGoogleFonts = { { value: ctaLoadGoogleFonts, label: 'ctaLoadGoogleFonts' } }
+							fontFamily = { { value: ctaFontFamily, label: 'ctaFontFamily' } }
+							fontWeight = { { value: ctaFontWeight, label: 'ctaFontWeight' } }
+							fontSubset = { { value: ctaFontSubset, label: 'ctaFontSubset' } }
+							fontSizeType = { { value: ctaFontSizeType, label: 'ctaFontSizeType' } }
+							fontSize = { { value: ctaFontSize, label: 'ctaFontSize' } }
+							fontSizeMobile = { { value: ctaFontSizeMobile, label: 'ctaFontSizeMobile' } }
+							fontSizeTablet= { { value: ctaFontSizeTablet, label: 'ctaFontSizeTablet' } }
+							disableLineHeight = {true}
+						/>
+					}
+					{ (!inheritFromTheme  && ctaType === "button")    &&
 						<TypographyControl
 							label={ __( "Typography" ) }
 							attributes = { attributes }
