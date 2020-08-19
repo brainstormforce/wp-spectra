@@ -2256,6 +2256,14 @@ if ( ! class_exists( 'UAGB_Config' ) ) {
 						'attributes'  => array(
 						)
 					),
+					'uagb/forms-radio'        => array(
+						'slug'        => '',
+						'title'       => __( 'Radio', 'ultimate-addons-for-gutenberg' ),
+						'description' => __( 'This block helps to add Radio field.', 'ultimate-addons-for-gutenberg' ),
+						'default'     => true,
+						'attributes'  => array(
+						)
+					),
 				);
 			}
 			return self::$block_attributes;
