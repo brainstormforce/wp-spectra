@@ -73,10 +73,14 @@ class UAGBFormsSelectEdit extends Component {
 		}
 
 		const addOption = () => {
-			var newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
+			const newOption ={ "optiontitle": `Option Name ${options.length + 1}` }
 			options[options.length] = newOption; 
-			setAttributes({ options:options });
-			this.setState({optionsstate : options});
+			const addnewOptions = options.map( ( item, thisIndex ) => {				
+				return item
+			} )
+
+			setAttributes({ options:addnewOptions });
+			this.setState({optionsstate : addnewOptions});
 		};
 
 		const changeOption = (e, index) => {			
@@ -94,9 +98,16 @@ class UAGBFormsSelectEdit extends Component {
 
 		const deleteOption = index => {
 		
-			options.splice(index, 1);
-			setAttributes({ options });			
-			this.setState({optionsstate : options});
+			const deleteCurrentOptions = options.map( ( item, thisIndex ) => {
+				if ( index === thisIndex ) {
+					 options.splice(index, 1)
+					item = { options }
+				}
+				return item
+			} )
+		
+			this.setState({optionsstate : deleteCurrentOptions});
+			setAttributes({ deleteCurrentOptions });	
 
 		};
 		
