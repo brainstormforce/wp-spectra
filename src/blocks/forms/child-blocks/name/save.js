@@ -5,6 +5,7 @@
 import classnames from "classnames"
 
 const { __ } = wp.i18n
+const {	RichText } = wp.blockEditor
 
 export default function save( props ) {
 	
@@ -12,15 +13,21 @@ export default function save( props ) {
 
 	const {
 		block_id,
-		nameRequired
+		nameRequired,
+		name
 	} = attributes
 	
 	return (
 		<div className={ classnames(
 			"uagb-forms-name-wrap",
+			"uagb-forms-field-set",
 			`uagb-block-${ block_id }`,
 		) }>
-				<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
+				<RichText.Content
+				tagName="div"
+				value={ name }
+				className="uagb-forms-name-label"			
+				/>
 				<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>
 		</div>
 	)

@@ -10,6 +10,14 @@ const {
 	Component,
 } = wp.element
 
+const {
+	RichText,
+} = wp.blockEditor
+
+const {	
+	ToggleControl,
+} = wp.components
+
 class UAGBFormsEmailEdit extends Component {
 
 	constructor() {
@@ -35,19 +43,38 @@ class UAGBFormsEmailEdit extends Component {
     
 	render() {
 
-		const { attributes } = this.props
+		const { attributes,setAttributes,isSelected } = this.props
 
         const {
-            block_id
+			block_id,
+			name,
+			required
 		} = attributes
 		
 		return (
 			<div className={ classnames(
 				"uagb-forms-email-wrap",
+				"uagb-forms-field-set",
 				`uagb-block-${ block_id }`,
 			) }>
-				<label className="uagb-forms-email-label"> { __( "Email" ) } </label>
-				<input type="email" className="uagb-forms-email-input"/>
+				{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ required }
+							onChange={ ( value ) => setAttributes( { required: ! required } ) }
+						/>
+					</div>
+				)}
+				<RichText
+						tagName="div"
+						placeholder={ __( "Email" ) }
+						value={ name }
+						onChange={ ( value ) => setAttributes( { name: value } ) }
+						className="uagb-forms-email-label"
+						multiline={ false }
+				/>
+				<input type="email" className="uagb-forms-email-input" required={ required }/>
 			</div>
 		)
 	}

@@ -52,11 +52,12 @@ class UAGBFormsNameEdit extends Component {
 	
 	render() {
 
-		const { attributes, setAttributes } = this.props
+		const { attributes, setAttributes,isSelected } = this.props
 
         const {
 			block_id,
-			nameRequired
+			nameRequired,
+			name
 		} = attributes
 		
 		const nameInspectorControls = () => {
@@ -83,9 +84,27 @@ class UAGBFormsNameEdit extends Component {
 				</InspectorControls>
 				<div className={ classnames(
 					"uagb-forms-name-wrap",
+					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
+					
 				) }>
-					<label className="uagb-forms-name-label"> { __( "Name" ) } </label>
+					{isSelected && (
+						<div className="uagb-forms-required-wrap">
+							<ToggleControl
+								label={ __( "Required" ) }
+								checked={ nameRequired }
+								onChange={ ( value ) => setAttributes( { nameRequired: ! nameRequired } ) }
+							/>
+						</div>
+					)}
+					<RichText
+						tagName="div"
+						placeholder={ __( "Name" ) }
+						value={ name }
+						onChange={ ( value ) => setAttributes( { name: value } ) }
+						className="uagb-forms-name-label"
+						multiline={ false }
+					/>					
 					<input type="text" required={ nameRequired } className="uagb-forms-name-input"/>
 				</div>
 			</Fragment>
