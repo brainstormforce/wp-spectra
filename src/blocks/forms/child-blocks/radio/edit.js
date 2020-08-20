@@ -163,6 +163,15 @@ class UAGBFormsRadioEdit extends Component {
 					"uagb-forms-field-set",
 					`uagb-block-${ block_id }`,
 				) }>
+					{isSelected && (
+					<div className="uagb-forms-required-wrap">
+						<ToggleControl
+							label={ __( "Required" ) }
+							checked={ radioRequired }
+							onChange={ ( value ) => setAttributes( { radioRequired: ! radioRequired } ) }
+						/>
+					</div>
+					)}
 					<RichText
 						tagName="div"
 						placeholder={ __( "Radio Title" ) }

@@ -2,7 +2,10 @@
     .uagb-forms-main-form {
         .uagb-forms-form-hidden-data {
             display:none;
-        }
+		}
+		.uagb-forms-required-wrap {
+			float: right;
+		}
 	}
 	.uagb-forms-success-message.uagb-forms-success-message-hide {
 		display: none;
@@ -13,4 +16,5 @@
 		padding: 20px 20px;
 		background: #00800030;
 	}
+	
 }

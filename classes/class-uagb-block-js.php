@@ -210,8 +210,8 @@ if ( ! class_exists( 'UAGB_Block_JS' ) ) {
 
 			$defaults = UAGB_Helper::$block_list['uagb/forms']['attributes'];
 
-			$attr          = array_merge( $defaults, (array) $attr );
-			$selector      = '.uagb-block-' . $id;
+			$attr     = array_merge( $defaults, (array) $attr );
+			$selector = '.uagb-block-' . $id;
 
 			ob_start();
 			?>
